@@ -1,22 +1,23 @@
 {
-	"name": "mrtdown-data",
-	"version": "1.0.0",
-	"description": "Data repository",
-	"type": "module",
-	"main": "index.js",
-	"scripts": {
+  "name": "mrtdown-data",
+  "version": "1.0.0",
+  "description": "Data repository",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"author": "",
-	"license": "UNLICENSED",
-	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
-		"@types/node": "^22.13.4",
-		"tsx": "^4.19.2",
-		"typescript": "^5.7.3"
-	},
-	"dependencies": {
-		"zod": "^3.24.2",
-		"zod-to-json-schema": "^3.24.1"
-	}
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "^22.13.4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "luxon": "^3.5.0",
+    "zod": "^3.24.2",
+    "zod-to-json-schema": "^3.24.1"
+  }
 }
