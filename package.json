@@ -11,6 +11,7 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@types/luxon": "^3.4.2",
     "@types/node": "^22.13.4",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
