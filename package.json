@@ -11,5 +11,8 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@biomejs/biome": "1.9.4"
+  },
+  "dependencies": {
+    "zod": "^3.24.2"
   }
 }
