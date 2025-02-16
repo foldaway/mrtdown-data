@@ -1,0 +1,22 @@
+{
+  "lsp": {
+    "biome": {
+      "settings": {
+        "require_config_file": true
+      }
+    }
+  },
+  "formatter": {
+    "language_server": {
+      "name": "biome"
+    }
+  },
+  "languages": {
+    "TypeScript": {
+      "format_on_save": "on"
+    },
+    "JSON": {
+      "format_on_save": "on"
+    }
+  }
+}
