@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "luxon": "^3.5.0",
+    "openai": "^4.85.4",
     "zod": "^3.24.2",
     "zod-to-json-schema": "^3.24.1"
   }
