@@ -18,6 +18,7 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "dotenv": "^16.4.7",
     "luxon": "^3.5.0",
     "openai": "^4.85.4",
     "zod": "^3.24.2",
