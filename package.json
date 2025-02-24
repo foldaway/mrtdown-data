@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate-products": "tsx src/scripts/generateProducts.ts"
+    "generate-products": "tsx src/scripts/generateProducts.ts",
+    "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts"
   },
   "author": "",
   "license": "UNLICENSED",

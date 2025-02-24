@@ -1,6 +1,6 @@
 import { basename, extname, join } from 'node:path';
 import type { Issue, IssueId } from '../schema/Issue';
-import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { DateTime } from 'luxon';
 
 const dirPathIssue = join(import.meta.dirname, '../../data/source/issue');
@@ -60,6 +60,12 @@ export const IssueModel = {
       const dateTimeEndAt = DateTime.fromISO(issue.endAt);
       return dateTime >= dateTimeStartAt && dateTime < dateTimeEndAt;
     });
+  },
+
+  delete(id: string) {
+    const fileName = `${id}.json`;
+    const filePath = join(dirPathIssue, fileName);
+    rmSync(filePath);
   },
 
   save(issue: Issue) {

@@ -12,7 +12,9 @@ const IssueBase = z.object({
   id: IssueIdSchema,
   title: z
     .string()
-    .describe('In the style of a SaaS status page incident title'),
+    .describe(
+      'In the style of a SaaS status page incident title. Only describe the problem, e.g. service disruption. Do not mention resolution.',
+    ),
   componentIdsAffected: z
     .array(ComponentIdSchema)
     .describe('List of components affected'),
@@ -35,6 +37,7 @@ export type IssueOutageSeverity = z.infer<typeof IssueOutageSeveritySchema>;
 /** [OUTAGE] update type */
 export const IssueOutageUpdateTypeSchema = z.enum([
   'general-public.report',
+  'news.report',
   'operator.investigating',
   'operator.monitoring',
   'operator.update',
@@ -66,7 +69,10 @@ export const IssueOutageSchema = IssueBase.extend({
 export type IssueOutage = z.infer<typeof IssueOutageSchema>;
 
 /** [MAINTENANCE] update type */
-export const IssueMaintenanceUpdateTypeSchema = z.enum(['planned']);
+export const IssueMaintenanceUpdateTypeSchema = z.enum([
+  'planned',
+  'operator.update',
+]);
 /** [MAINTENANCE] update type */
 export type IssueMaintenanceUpdateType = z.infer<
   typeof IssueMaintenanceUpdateTypeSchema
