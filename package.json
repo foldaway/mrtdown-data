@@ -20,6 +20,7 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "hast-util-from-html": "^2.0.3",
+    "hast-util-to-mdast": "^10.1.2",
     "luxon": "^3.5.0",
     "openai": "^4.85.4",
     "rss-parser": "^3.13.0",
