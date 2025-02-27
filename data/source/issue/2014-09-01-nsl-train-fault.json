@@ -1,0 +1,37 @@
+{
+  "id": "2014-09-01-nsl-train-fault",
+  "title": "Train fault causing delays on the North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-09-01T21:44:08.000+08:00",
+  "endAt": "2014-09-01T22:16:03.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE : [NSL] Free bus service from Toa Payoh to Marina Bay has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/506451474021224449",
+      "createdAt": "2014-09-01T22:40:15.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE : [NSL] Train service from Toa Payoh to Newton has resumed. Free bus service is still available from Toa Payoh to Marina Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/506445383086526464",
+      "createdAt": "2014-09-01T22:16:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE : [NSL] Due to a train fault near Novena, please expect additional traveling time of 30 mins from Tao Payoh to Newton.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/506442024799584256",
+      "createdAt": "2014-09-01T22:02:42.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Estimate 30 mins additional travelling time from #ToaPayoh to #Marina Bay towards MarinaBay due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/506437351271190528",
+      "createdAt": "2014-09-01T21:44:08.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "2012-11-02-east-west-line-obstruction",
+  "title": "Door obstruction causing delays",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2012-11-02T18:34:40.000+08:00",
+  "endAt": "2012-11-03T05:30:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL]:Longer travelling time expected along EW line in the direction towards PasirRis due to track fault between #RafflesPlace and #CityHall",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/264361706585747457",
+      "createdAt": "2012-11-02T21:41:57.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Estimate 5 mins additional travelling time from #RafflesPlace to #CityHall towards PasirRis due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/264355753622638592",
+      "createdAt": "2012-11-02T21:18:17.000+08:00"
+    }
+  ]
+}

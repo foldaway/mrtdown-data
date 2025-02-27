@@ -1,0 +1,101 @@
+{
+  "id": "2016-11-02-signal-fault-between-pasir-panjang-and-one-north",
+  "title": "Signal fault causing additional travel time on Circle Line",
+  "componentIdsAffected": ["CCL"],
+  "startAt": "2016-11-02T07:37:27.000+08:00",
+  "endAt": "2016-11-02T07:39:40.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL] Bus bridging and free regular bus svcs have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793656539999375361",
+      "createdAt": "2016-11-02T11:30:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] Train svcs have resumed. Bus bridging svc continue btwn #Bishan &amp; #PayaLebar. Free regular bus svc are still avail at all CCL stns.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793654954476998656",
+      "createdAt": "2016-11-02T11:24:21.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Train svcs have resumed. Bus bridging svc avail btwn #Bishan &amp; #PayaLebar. Free regular bus svc are still avail at all CCL stns.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793650082021117953",
+      "createdAt": "2016-11-02T11:04:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] Train svcs have resumed. Bus bridging svc avail between #Bishan and #PayaLebar. Free regular bus svc are still avail at all CCL stns.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793645404172673024",
+      "createdAt": "2016-11-02T10:46:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] Train svcs just resumed. Bus bridging svc avail between #Bishan and #PayaLebar. Free regular bus svc are still avail at all CCL stns.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793640708976455680",
+      "createdAt": "2016-11-02T10:27:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]No train svc btwn #BotanicGardens and #Serangoon. Free regular bus svc at all CCL stns. Alt travel options:https://t.co/YpY6tCyNiW",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793631421369757697",
+      "createdAt": "2016-11-02T09:50:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] No train svc btwn #BotanicGardens and #Serangoon. Free regular bus svc at all CCL stns. Alt travel options: https://t.co/YpY6tCyNiW",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793626707680894976",
+      "createdAt": "2016-11-02T09:32:06.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] No train svc between #BotanicGardens and #Marymount. Free regular bus svc at all CCL stns. Alt travel options: https://t.co/YpY6tCyNiW",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793625335954714624",
+      "createdAt": "2016-11-02T09:26:39.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] No train service between #BotanicGardens and #Marymount",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793620342564540417",
+      "createdAt": "2016-11-02T09:06:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Estimate 30 mins additional travelling time on the Circle Line due to intermittent signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793612894235611137",
+      "createdAt": "2016-11-02T08:37:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Estimate 20 mins additional travelling time on the Circle Line due to intermittent signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793607677754482688",
+      "createdAt": "2016-11-02T08:16:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Estimate 10 mins additional travelling time from #BotanicGardens to\n  #HarbourFront due to signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793605837436489729",
+      "createdAt": "2016-11-02T08:09:10.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to a signal fault trains are moving slower towards #HarbourFront. We are investigating the fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793604689799426048",
+      "createdAt": "2016-11-02T08:04:37.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] CLEARED: Fault cleared but trains and stations are crowded. Due to\n  congestion, pls add 10mins travel time towards #DhobyGhaut.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793598411945549824",
+      "createdAt": "2016-11-02T07:39:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]\n  UPDATE: Estimate 10 mins additional travelling time between #PasirPanjang and\n  #one-north due to signal fault",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793597852437983233",
+      "createdAt": "2016-11-02T07:37:27.000+08:00"
+    }
+  ]
+}

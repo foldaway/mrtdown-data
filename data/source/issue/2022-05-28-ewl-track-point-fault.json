@@ -1,0 +1,79 @@
+{
+  "id": "2022-05-28-ewl-track-point-fault",
+  "title": "Delay on East West Line due to track point fault",
+  "componentIdsAffected": [
+    "EWL",
+    "CCL"
+  ],
+  "startAt": "2022-05-28T06:32:00.000+08:00",
+  "endAt": "2022-05-28T10:21:09.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services between #Commonwealth and #Redhill have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1530373583284756480",
+      "createdAt": "2022-05-28T10:21:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track point fault, pls add 20mins train travel time between #Commonwealth and #Redhill on both bounds. Passengers are advised to transfer to Circle Line to continue your journey. Train services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1530369087087722496",
+      "createdAt": "2022-05-28T10:03:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track point fault, pls add 20mins train travel time between #Commonwealth and #Redhill on both bounds. Passengers are advised to transfer to Circle Line to continue your journey. We are sorry for the delay to your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1530363682491801605",
+      "createdAt": "2022-05-28T09:41:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track point fault, pls add 20mins train travel time between #Commonwealth and #Redhill on both bounds. Passengers are advised to transfer to Circle Line to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1530358611385257984",
+      "createdAt": "2022-05-28T09:21:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track point fault, pls add 20mins train travel time between #Commonwealth and #Redhill on the both bounds.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1530354097576345601",
+      "createdAt": "2022-05-28T09:03:44.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] UPDATE: Due to a track point fault, pls add 15mins train travel time between #Commonwealth and #Redhill on both bounds. Passengers are advised to transfer to Circle Line to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1530348710365757440",
+      "createdAt": "2022-05-28T08:42:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track point fault, pls add 15mins train travel time between #Commonwealth and #Redhill. Passengers are advised to transfer to Circle Line to continue your journey. Train services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1530342974013722625",
+      "createdAt": "2022-05-28T08:19:32.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] UPDATE: Due to a track point fault, pls add 15mins train travel time between #Commonwealth and #Redhill. Passengers are advised to transfer to Circle Line to continue your journey. We are sorry for the delay to your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1530338329727619072",
+      "createdAt": "2022-05-28T08:01:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track point fault, pls add 15mins train travel time between #Commonwealth and #Redhill. Passengers are advised to transfer to Circle Line to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1530328177754927104",
+      "createdAt": "2022-05-28T07:20:44.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] Due to a track point fault near #Queenstown, please add 15 minutes travelling time between #Commonwealth and #Redhill.\nFor alternative travel options, please refer to https://t.co/SFAdrdqt7j",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1530323225875738625",
+      "createdAt": "2022-05-28T07:01:03.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a track point fault, pls add 15mins train travel time btwn #Commonwealth and #Redhill both bounds",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1530315912624021505",
+      "createdAt": "2022-05-28T06:32:00.000+08:00"
+    }
+  ]
+}

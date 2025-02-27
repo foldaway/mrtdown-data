@@ -1,0 +1,37 @@
+{
+  "id": "2014-06-12-sleeper-replacement-works",
+  "title": "Train service disruption due to sleeper replacement works",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-06-12T05:20:51.000+08:00",
+  "endAt": "2014-06-12T05:53:16.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services between #YewTee and #Sembawang are now running normally. Free bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/476853929590784000",
+      "createdAt": "2014-06-12T06:30:10.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services between #YewTee and #Sembawang are now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/476844642177011712",
+      "createdAt": "2014-06-12T05:53:16.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Free public &amp; shuttle buses are now available at affected stations between #YewTee and #Sembawang.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/476837432382337024",
+      "createdAt": "2014-06-12T05:24:37.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Due to sleeper replacement works,there will be no train service between Sembawang and Yew Tee stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/476836483257495552",
+      "createdAt": "2014-06-12T05:20:51.000+08:00"
+    }
+  ]
+}

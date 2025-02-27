@@ -1,0 +1,25 @@
+{
+  "id": "2014-04-09-east-west-line-train-fault",
+  "title": "Train fault causing delays on the East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2014-04-09T07:49:09.000+08:00",
+  "endAt": "2014-04-09T07:54:14.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] UPDATE: Fault is cleared. Trains service is operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/453682259640348672",
+      "createdAt": "2014-04-09T07:54:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 10 mins additional travelling time from #Lavender to #PayaLebar towards PasirRis due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/453680979589070848",
+      "createdAt": "2014-04-09T07:49:09.000+08:00"
+    }
+  ]
+}

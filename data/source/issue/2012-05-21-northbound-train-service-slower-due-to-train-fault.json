@@ -1,0 +1,29 @@
+{
+  "id": "2012-05-21-northbound-train-service-slower-due-to-train-fault",
+  "title": "Northbound train service slower due to train fault",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2012-05-21T08:09:46.000+08:00",
+  "endAt": "2012-05-21T08:32:40.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:Northbound train service towards Jurong running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/204369082399723522",
+      "createdAt": "2012-05-21T08:32:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Some trains between Marsiling and Yew Tee travelling in the direction of Jurong moving slower due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/204366834579947520",
+      "createdAt": "2012-05-21T08:23:44.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Northbound train service towards Jurong moving slower due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/204363319610585088",
+      "createdAt": "2012-05-21T08:09:46.000+08:00"
+    }
+  ]
+}

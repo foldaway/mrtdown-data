@@ -1,0 +1,37 @@
+{
+  "id": "2024-10-22-bukit-panjang-lrt-service-disruption",
+  "title": "Service disruption on Bukit Panjang LRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2024-10-22T21:48:00.000+08:00",
+  "endAt": "2024-10-22T22:00:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Train service is still available between #BukitPanjang and #Senja via Service B. We are sorry for affecting your evening commute. Stay tune for further updates.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1848723260839760307",
+      "createdAt": "2024-10-22T21:49:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Shuttle Train service between #ChoaChuKang and #BukitPanjang will end at 10.00pm. Free regular bus services between #ChoaChuKang and #BukitPanjang are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1848722977980080425",
+      "createdAt": "2024-10-22T21:48:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Due to a Train fault, normal train service is affected. Shuttle train service is available between #ChoaChuKang and #BukitPanjang. Train service between #BukitPanjang and #Petir via Service A and #Senja via Service B is not affected.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1848676253148266999",
+      "createdAt": "2024-10-22T18:42:20.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT] Due to a Train fault, normal train service is affected. Shuttle train service is available between #ChoaChuKang and #BukitPanjang. Train service between #BukitPanjang and #Petir via Service A and #Senja via Service B is not affected.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1848664662616998235",
+      "createdAt": "2024-10-22T17:56:16.000+08:00"
+    }
+  ]
+}

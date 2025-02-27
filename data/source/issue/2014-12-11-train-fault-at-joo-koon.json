@@ -1,0 +1,31 @@
+{
+  "id": "2014-12-11-train-fault-at-joo-koon",
+  "title": "Train Fault at Joo Koon",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2014-12-11T07:42:36.000+08:00",
+  "endAt": "2014-12-11T07:51:13.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL] : Free bus service between Boon Lay and Joo Koon has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/542829683075608577",
+      "createdAt": "2014-12-11T07:54:16.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services between #JooKoon and #JurongEast are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/542828914653941761",
+      "createdAt": "2014-12-11T07:51:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 20 mins additional travelling time from #JooKoon to #JurongEast in both directions due to a train fault at Joo Koon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/542826747436093440",
+      "createdAt": "2014-12-11T07:42:36.000+08:00"
+    }
+  ]
+}

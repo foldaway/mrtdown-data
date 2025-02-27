@@ -1,0 +1,31 @@
+{
+  "id": "2018-05-19-bplrt-outage",
+  "title": "Service disruption on Bukit Panjang LRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2018-05-19T14:17:34.000+08:00",
+  "endAt": "2018-05-19T15:52:07.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] UPDATE: Fault cleared. Train Service B is gradually being restored. Free bus services are available until 4pm. We are sorry.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997746709361868800",
+      "createdAt": "2018-05-19T15:52:07.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] UPDATE: Train Service A has resumed. Our engineers are working hard to recover Service B. Free bus services are still available. We are sorry.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997731831993659392",
+      "createdAt": "2018-05-19T14:53:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Due to a train fault between BP5 Phoenix and BP6 Bukit Panjang, there is no train service on BPLRT. Free bus services are available. We are sorry.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997722917176668163",
+      "createdAt": "2018-05-19T14:17:34.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "2012-10-24-nsl-southbound-congestion",
+  "title": "Service disruption on North-South Line due to track fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-10-24T18:31:45.000+08:00",
+  "endAt": "2012-10-24T19:24:05.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Southbound trains towards #MarinaBay are now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/261065520265179136",
+      "createdAt": "2012-10-24T19:24:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Southbound trains towards #MarinaBay are running slower due to track fault at #MarinaBay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/261062884363214848",
+      "createdAt": "2012-10-24T19:13:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Southbound trains towards #MarinaBay are running slower due to congestion caused by track fault at #MarinaBay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/261052352876908545",
+      "createdAt": "2012-10-24T18:31:45.000+08:00"
+    }
+  ]
+}

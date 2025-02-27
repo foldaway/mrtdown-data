@@ -1,0 +1,19 @@
+{
+  "id": "2011-12-22-train-service-disruption-due-to-track-fault",
+  "title": "Train service disruption due to track fault",
+  "componentIdsAffected": [
+    "NSL",
+    "EWL"
+  ],
+  "startAt": "2011-12-22T09:01:42.000+08:00",
+  "endAt": "2011-12-23T00:00:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Train Service towards Marina Bay is slow due to track fault.  Expect delay from Yishun to Jurong East.  Please allow extra time for travel.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/149655820823564288",
+      "createdAt": "2011-12-22T09:01:42.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "2022-01-20-sengkang-lrt-maintenance",
+  "title": "Maintenance works on Sengkang LRT system",
+  "componentIdsAffected": [
+    "SKLRT"
+  ],
+  "startAt": "2022-01-20T11:27:07.000+08:00",
+  "endAt": "2022-01-24T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Update: we have completed maintenance works on the Sengkang LRT today and it will be operating as usual tomorrow, Sunday, 23 January 2022.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1484937553119965185",
+      "createdAt": "2022-01-23T01:14:36.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "We will be conducting maintenance works on the Sengkang LRT system this weekend - 22 and 23 January 2022. Train service will operate as usual on one platform while the other will be closed for works. https://t.co/bOhmOZAscL",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1484004536704704515",
+      "createdAt": "2022-01-20T11:27:07.000+08:00"
+    }
+  ]
+}

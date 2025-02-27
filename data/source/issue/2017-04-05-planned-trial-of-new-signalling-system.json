@@ -1,0 +1,19 @@
+{
+  "id": "2017-04-05-planned-trial-of-new-signalling-system",
+  "title": "Planned trial of new signalling system on NSL",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-04-05T21:00:54.000+08:00",
+  "endAt": "2017-04-05T21:10:54.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "[NSL]:All trains along NSL will be stationary @ ard 11pm for ~10mins tonight for trial of the new signalling system. https://t.co/KXZ7cJcdCS",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/849607779916447745",
+      "createdAt": "2017-04-05T21:00:54.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "2014-04-22-ewl-track-fault",
+  "title": "Track fault causing travel delays between Joo Koon and Boon Lay",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2014-04-22T18:26:17.000+08:00",
+  "endAt": "2014-04-22T18:37:51.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services between #JooKoon and #BoonLay are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/458555275545288704",
+      "createdAt": "2014-04-22T18:37:51.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Estimate 10 mins additional travelling time between #JooKoon and #BoonLay in both directions due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/458552362936700928",
+      "createdAt": "2014-04-22T18:26:17.000+08:00"
+    }
+  ]
+}

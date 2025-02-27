@@ -1,0 +1,61 @@
+{
+  "id": "2023-10-27-novena-station-closure",
+  "title": "Novena Station Closed Due to Incident",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2023-10-27T17:49:16.000+08:00",
+  "endAt": "2023-10-27T19:29:17.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Novena station is now opened for passenger service. Free regular bus &amp; bridging bus services have ended. We are sorry for affecting your evening commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1717869451172032909",
+      "createdAt": "2023-10-27T19:42:48.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Novena station is now opened for passenger service. Free regular bus &amp; bridging bus services are still available. We are sorry for affecting your evening commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1717866052380688719",
+      "createdAt": "2023-10-27T19:29:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: All trains will not stop at Novena station in both directions due to an incident. Novena station is closed. Free regular bus and bridging bus services are available between Newton and Toa Payoh station. We apologize for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1717862821894234397",
+      "createdAt": "2023-10-27T19:16:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to an incident, Novena station is closed. All trains will not stop at Novena station in both directions. Free regular bus and bridging bus services are available between Newton and Toa Payoh station. We are sorry for affecting your evening commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1717858302334505244",
+      "createdAt": "2023-10-27T18:58:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to an incident, Novena station is closed. All trains will not stop at Novena station in both directions. Free regular bus and bridging bus services are available between Newton and Toa Payoh station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1717853876311994515",
+      "createdAt": "2023-10-27T18:40:54.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to an incident, Novena station is closed. All trains will not stop at Novena station in both directions. Free regular bus and bridging bus services are available between Newton and Toa Payoh station. We apologize for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1717848829213737229",
+      "createdAt": "2023-10-27T18:20:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to an incident, Novena station is closed. All trains will not stop at Novena station in both directions. Free regular bus and free bridging bus services are available between Newton and Toa Payoh station. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1717845436948791310",
+      "createdAt": "2023-10-27T18:07:22.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to an incident, Novena station is closed. All trains will not stop at Novena station in both directions. Free regular bus service is available between Newton and Toa Payoh station. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1717840881469067326",
+      "createdAt": "2023-10-27T17:49:16.000+08:00"
+    }
+  ]
+}

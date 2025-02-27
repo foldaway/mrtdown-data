@@ -1,0 +1,31 @@
+{
+  "id": "2012-12-20-nel-no-train-service-between-punggol-and-little-india",
+  "title": "No train service between Punggol and Little India stations due to train fault.",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2012-12-20T16:47:58.000+08:00",
+  "endAt": "2012-12-20T17:14:40.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NEL] NEL train service towards Punggol has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/281689061582843904",
+      "createdAt": "2012-12-20T17:14:40.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NEL] NEL svc down. Free bus rides available at designated bus stops near affected NEL stations. Please approach staff for help.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/281686101943521280",
+      "createdAt": "2012-12-20T17:02:54.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NEL] No train service between Punggol and Little India stations due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/281682340491710464",
+      "createdAt": "2012-12-20T16:47:58.000+08:00"
+    }
+  ]
+}

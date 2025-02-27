@@ -1,0 +1,31 @@
+{
+  "id": "2015-02-17-jurong-east-train-fault",
+  "title": "Train fault causing delays on East bound line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2015-02-17T11:11:05.000+08:00",
+  "endAt": "2015-02-17T11:40:06.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[UPDATE] Train service has resumed. Free bus service still available between Lakeside and Clementi in both directions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/567528893016313856",
+      "createdAt": "2015-02-17T11:40:06.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[UPDATE] Due to a train fault at Jurong East, there will be no train service from Lakeside to Clementi on the East bound towards Pasir Ris.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/567525750035578880",
+      "createdAt": "2015-02-17T11:27:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to a train fault at Jurong East, there will be 20 min delay from Joo Koon to Jurong East  on the East bound line towards Pasir Ris.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/567521590443659264",
+      "createdAt": "2015-02-17T11:11:05.000+08:00"
+    }
+  ]
+}

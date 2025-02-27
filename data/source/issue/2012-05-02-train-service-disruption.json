@@ -1,0 +1,25 @@
+{
+  "id": "2012-05-02-train-service-disruption",
+  "title": "Train service disruption from Clementi towards Joo Koon",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-05-02T10:33:29.000+08:00",
+  "endAt": "2012-05-02T11:00:56.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Train service towards Joo Koon is running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/197521024374419457",
+      "createdAt": "2012-05-02T11:00:56.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Train service from Clementi towards Joo Koon moving slower due to train fault.Please allow extra time for travel.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/197514115185520640",
+      "createdAt": "2012-05-02T10:33:29.000+08:00"
+    }
+  ]
+}

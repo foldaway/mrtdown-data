@@ -1,0 +1,31 @@
+{
+  "id": "2017-07-21-circle-line-signal-fault",
+  "title": "Signal fault causing delays on the Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2017-07-21T22:08:08.000+08:00",
+  "endAt": "2017-07-21T22:28:37.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Normal train service resumed towards #HarbourFront. Free regular bus services still available till 11pm.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/888405356153413634",
+      "createdAt": "2017-07-21T22:28:37.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: Train service is progressively recovering.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/888403042231435266",
+      "createdAt": "2017-07-21T22:19:25.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Estimate 15mins additional travelling time from #Caldecott to #HarbourFront towards #HarbourFront due to signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/888400201047613441",
+      "createdAt": "2017-07-21T22:08:08.000+08:00"
+    }
+  ]
+}

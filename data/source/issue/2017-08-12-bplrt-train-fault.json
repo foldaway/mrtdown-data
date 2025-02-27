@@ -1,0 +1,25 @@
+{
+  "id": "2017-08-12-bplrt-train-fault",
+  "title": "Train fault causing Service B suspension",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2017-08-12T14:07:58.000+08:00",
+  "endAt": "2017-08-12T14:56:51.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT]\nCLEARED: Train services on the Service B are running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/896264197184528385",
+      "createdAt": "2017-08-12T14:56:51.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "BPLRT:\nDue to train fault, Service B temporarily suspended.  Only Service A running.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/896251897585164288",
+      "createdAt": "2017-08-12T14:07:58.000+08:00"
+    }
+  ]
+}

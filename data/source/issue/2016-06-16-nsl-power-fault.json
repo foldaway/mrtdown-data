@@ -1,0 +1,41 @@
+{
+  "id": "2016-06-16-nsl-power-fault",
+  "title": "Power fault on North-South Line",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2016-06-23T16:34:01.000+08:00",
+  "endAt": "2016-06-23T17:01:19.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #Woodlands towards #Sembawang have resumed. Free regular bus service have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/745904558942085120",
+      "createdAt": "2016-06-23T17:01:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Train service from Woodlands to Sembawang has resumed. Free regular bus from Woodlands to Sembawang is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/745902941618462724",
+      "createdAt": "2016-06-23T16:54:54.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE:Train service from Woodlands to Sembawang has resumed. Trains are still traveling at a slower speed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/745902493356392448",
+      "createdAt": "2016-06-23T16:53:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service from #Woodlands to #Sembawang. Check our bus guides at https://t.co/skznEuT6gm",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/745900579847872513",
+      "createdAt": "2016-06-23T16:45:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service from Woodlands to Sembawang due to a power fault. Free regular bus is available from Woodlands to Sembawang.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/745897687426424832",
+      "createdAt": "2016-06-23T16:34:01.000+08:00"
+    }
+  ]
+}

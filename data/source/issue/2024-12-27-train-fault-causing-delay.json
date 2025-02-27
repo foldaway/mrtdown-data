@@ -1,0 +1,37 @@
+{
+  "id": "2024-12-27-train-fault-causing-delay",
+  "title": "Train fault causing delays on Thomson–East Coast Line",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2024-12-27T06:25:51.000+08:00",
+  "endAt": null,
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: Dear commuters, please cater additional 5 mins of travel time between Woodlands North and Bayshore in both directions. Thank you for your patience.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1872444410023321983",
+      "createdAt": "2024-12-27T08:48:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: Please allow for additional 10 mins travel time between Woodland North and Bayshore in both directions",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1872435520221163757",
+      "createdAt": "2024-12-27T08:13:10.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: Please allow for additional 5 mins travel time from Woodlands North towards Orchard.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1872419572659450167",
+      "createdAt": "2024-12-27T07:09:48.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a train fault, trains are moving slower from Springleaf towards Orchard. Please allow for additional 15 mins travel time from Springleaf towards Orchard .",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1872408512502083687",
+      "createdAt": "2024-12-27T06:25:51.000+08:00"
+    }
+  ]
+}

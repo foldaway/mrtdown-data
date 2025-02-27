@@ -1,0 +1,32 @@
+{
+  "id": "2020-02-08-sengkang-punggol-lrt-service-disruption",
+  "title": "Service disruption on Sengkang-Punggol LRT systems due to a power fault",
+  "componentIdsAffected": [
+    "SKLRT",
+    "PGLRT"
+  ],
+  "startAt": "2020-02-08T05:58:15.000+08:00",
+  "endAt": "2020-02-08T06:04:38.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Service on the Sengkang-Punggol LRT systems has resumed. Free regular and bridging bus services have ceased. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1225904688593133568",
+      "createdAt": "2020-02-08T06:10:28.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Service on the Sengkang-Punggol LRT systems has resumed. Free regular and bridging bus services are still available at designated stops.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1225903218481229824",
+      "createdAt": "2020-02-08T06:04:38.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Please be informed that there is no service on the Sengkang-Punggol LRT systems due to a power fault. Free regular and bridging bus services are available at designated stops. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1225901612096348162",
+      "createdAt": "2020-02-08T05:58:15.000+08:00"
+    }
+  ]
+}

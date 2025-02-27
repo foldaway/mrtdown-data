@@ -1,0 +1,43 @@
+{
+  "id": "2017-04-10-platform-screen-door-fault-bedok",
+  "title": "Platform Screen Door Fault at Bedok",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-04-10T09:31:45.000+08:00",
+  "endAt": "2017-04-10T10:35:27.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL] CLEARED: Train services from #Bugis to #TanahMerah are running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/851262321364148224",
+      "createdAt": "2017-04-10T10:35:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Pls cater 5 mins additional travel time from #Bugis to #TanahMerah. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/851258135490592768",
+      "createdAt": "2017-04-10T10:18:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Pls cater 10 mins additional travel time from #Bugis to #TanahMerah. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/851255760956686336",
+      "createdAt": "2017-04-10T10:09:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 15 mins travel time from #Bugis to #TanahMerah,due to a door fault at #Bedok. Train svc is still available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/851250723358621696",
+      "createdAt": "2017-04-10T09:49:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a Platform Screen Door fault at Bedok, pls add 10 mins travel time from #Bugis to #TanahMerah towards #PasirRis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/851246290776113152",
+      "createdAt": "2017-04-10T09:31:45.000+08:00"
+    }
+  ]
+}

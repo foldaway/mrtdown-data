@@ -1,0 +1,31 @@
+{
+  "id": "2013-06-16-nsl-track-fault",
+  "title": "Track Fault Affects North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2013-06-16T09:58:24.000+08:00",
+  "endAt": "2013-06-17T07:15:17.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL]CLEARED:Track fault has been rectified after operating hours last night.Travelling time from AngMoKio towards Bishan is back to normal.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/346405651171397632",
+      "createdAt": "2013-06-17T07:15:17.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE: Southbound trains from #AngMoKio to #Bishan station are running at 18 kph over the affected sector to ensure passenger safety.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/346089469490900993",
+      "createdAt": "2013-06-16T10:18:54.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 4 mins additional travelling time from #AngMoKio to #Bishan towards MarinaBay due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/346084311994359808",
+      "createdAt": "2013-06-16T09:58:24.000+08:00"
+    }
+  ]
+}

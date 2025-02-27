@@ -1,0 +1,61 @@
+{
+  "id": "2023-02-22-nsl-train-fault",
+  "title": "Train fault causes delays on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2023-02-22T10:10:23.000+08:00",
+  "endAt": "2023-02-22T10:56:03.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[Update]: Train services between #Woodlands and #AngMoKio has resumed. Free regular bus services have ceased. If you wish to download an e-Travel Chit as proof of your travel, click here: https://t.co/dYFVNdxSLs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1628231749485604866",
+      "createdAt": "2023-02-22T11:14:34.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Train svcs between Woodlands and Ang Mo Kio is progressively returning back to normal. Free regular bus svcs between Woodlands and Ang Mo Kio is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1628230717934276608",
+      "createdAt": "2023-02-22T11:10:28.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs between Woodlands and Ang Mo Kio is progressively returning back to normal. Free regular bus svcs between Woodlands and Ang Mo Kio is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1628227088112316416",
+      "createdAt": "2023-02-22T10:56:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Update : Due to a train fault, pls add 25mins train travel time btwn #Woodlands and #AngMoKio. Free regular bus svcs is available btwn #Woodlands and #AngMoKio. For alternative travel options, please take TEL or refer to https://t.co/SFAdrdqt7j.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1628224460854812672",
+      "createdAt": "2023-02-22T10:45:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Update : Due to a train fault, pls add 25mins train travel time btwn #Woodlands and #AngMoKio. Free regular bus svcs is available btwn #Woodlands and #AngMoKio. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1628223690499588096",
+      "createdAt": "2023-02-22T10:42:33.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a train fault, pls add 25mins train travel time btwn #Woodlands and #AngMoKio. Free regular bus svcs is available btwn #Woodlands and #AngMoKio. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1628219519427813377",
+      "createdAt": "2023-02-22T10:25:58.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a train fault, pls add 15mins train travel time btwn #Woodlands and #AngMoKio. Free regular bus svcs is available btwn #Woodlands and #AngMoKio. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1628218275590205441",
+      "createdAt": "2023-02-22T10:21:02.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a train fault, pls add 15mins train travel time from #Woodlands to #Yishun towards #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1628215596482723840",
+      "createdAt": "2023-02-22T10:10:23.000+08:00"
+    }
+  ]
+}

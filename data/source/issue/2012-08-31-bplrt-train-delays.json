@@ -1,0 +1,31 @@
+{
+  "id": "2012-08-31-bplrt-train-delays",
+  "title": "Train delays between Senja and Jelapang",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2012-08-31T08:12:40.000+08:00",
+  "endAt": "2012-08-31T08:15:02.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Trains are running slightly slower than normal due to cautious driving on wet tracks. Please allow extra time for travel.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/241358978829926400",
+      "createdAt": "2012-08-31T10:17:19.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] CLEARED: Train service btwn #Senja and #Jelapang are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/241328203422126081",
+      "createdAt": "2012-08-31T08:15:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]: Trains are slightly delayed btwn #Senja and #Jelapang via Senja. Estimated delay: 10 mins",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/241327609009545216",
+      "createdAt": "2012-08-31T08:12:40.000+08:00"
+    }
+  ]
+}

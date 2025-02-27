@@ -1,0 +1,77 @@
+{
+  "id": "2011-12-17-no-train-service-between-newton-and-marina-bay",
+  "title": "No train service between Newton and Marina Bay stations",
+  "componentIdsAffected": ["NSL", "EWL"],
+  "startAt": "2011-12-17T08:28:39.000+08:00",
+  "endAt": "2011-12-17T13:58:40.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "North-South & East-West Lines train service will start at 10am on 18 Dec. For MRT Shuttle Bus pick-up points visit http://t.co/fwb2wOqI",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/147998488720965632",
+      "createdAt": "2011-12-17T19:16:04.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Full southbound train service has resumed. Please expect delays",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/147918615411310592",
+      "createdAt": "2011-12-17T13:58:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Southbound train service from Toa Payoh to Raffles Place now available. Between Raffles Place and Marina Bay both bounds not available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/147911310556934146",
+      "createdAt": "2011-12-17T13:29:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "We are working to resume train service on the affected stretch as soon as possible. Please consider using other modes of public transport",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/147900776008794112",
+      "createdAt": "2011-12-17T12:47:47.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Northbound train service Marina Bay to Raffles Place is not available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/147876475067052033",
+      "createdAt": "2011-12-17T11:11:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Northbound train svc from Raffles Pl to Jurong East is ok with reduced frequencies to Toa Payoh",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/147876026788229120",
+      "createdAt": "2011-12-17T11:09:26.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Southbound train service from Toa Payoh to Newton is now ok but southbound from Newton to Marina Bay is not available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/147875337416613888",
+      "createdAt": "2011-12-17T11:06:42.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Southbound train from Toa Payoh to Marina Bay not available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/147866663109394432",
+      "createdAt": "2011-12-17T10:32:14.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "No train service between AMK and Marina Bay. Take bus bridging between Toa Payoh and Raffles Place, and Marina Bay and Raffles Place.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/147842888154361856",
+      "createdAt": "2011-12-17T08:57:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No southbound train service from Toa Payoh to Marina Bay. Northbound service from Raffles Place to Jurong East is ok. Take bus bridging",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/147840260909436928",
+      "createdAt": "2011-12-17T08:47:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No train service on both bounds between Newton and Marina Bay stations. Seek alternative transport or take bus bridging service provided.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/147835563792285696",
+      "createdAt": "2011-12-17T08:28:39.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "2016-08-02-ewl-no-train-service-betweeen-boonlay-and-jookoon",
+  "title": "No train service between Boon Lay and Joo Koon",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-08-02T08:54:26.000+08:00",
+  "endAt": "2016-08-02T09:37:54.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Free regular bus &amp; free shuttle bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/760299185140662272",
+      "createdAt": "2016-08-02T10:20:26.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train service between #BoonLay and #JooKoon has resumed. Free regular bus &amp; free shuttle bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/760288483676033029",
+      "createdAt": "2016-08-02T09:37:54.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service between #BoonLay and #JooKoon due to a track fault. Expected resumption time: 9:30am.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/760284511091306497",
+      "createdAt": "2016-08-02T09:22:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service between #BoonLay and #JooKoon due to a track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/760277544201445376",
+      "createdAt": "2016-08-02T08:54:26.000+08:00"
+    }
+  ]
+}

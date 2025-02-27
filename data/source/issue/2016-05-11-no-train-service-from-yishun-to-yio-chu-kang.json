@@ -1,0 +1,49 @@
+{
+  "id": "2016-05-11-no-train-service-from-yishun-to-yio-chu-kang",
+  "title": "No train service from Yishun to Yio Chu Kang due to a train fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2016-05-11T16:01:57.000+08:00",
+  "endAt": "2016-05-11T16:41:05.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #Yishun towards #YioChuKang have resumed. Free regular bus and free shuttle bus service have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/730319398381064192",
+      "createdAt": "2016-05-11T16:51:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train services from #Yishun towards #YioChuKang have resumed. Free regular bus and free shuttle bus service are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/730317782215098368",
+      "createdAt": "2016-05-11T16:45:02.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #Yishun towards #YioChuKang have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/730316788882235393",
+      "createdAt": "2016-05-11T16:41:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSl] No train service from #Yishun to #YioChuKang. Expected resumption time increased to 4:40PM.\nWe apologise for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/730313665673453568",
+      "createdAt": "2016-05-11T16:28:41.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL] UPDATE: No train service from #Yishun to #YioChuKang. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/730311566831165442",
+      "createdAt": "2016-05-11T16:20:20.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] : No train service from #Yishun to #Yio Chu Kang due to a train fault. Expected resumption time: 4:25pm.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/730306940052459521",
+      "createdAt": "2016-05-11T16:01:57.000+08:00"
+    }
+  ]
+}

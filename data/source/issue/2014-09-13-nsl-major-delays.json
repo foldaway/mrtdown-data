@@ -1,0 +1,43 @@
+{
+  "id": "2014-09-13-nsl-major-delays",
+  "title": "Major delays on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-09-13T15:42:58.000+08:00",
+  "endAt": "2014-09-13T15:53:20.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE: [NSL] Train service has resumed on both bounds.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/510699784173129729",
+      "createdAt": "2014-09-13T16:01:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE: [NSL] North bound service from Marina Bay to Jurong East has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/510697726321774593",
+      "createdAt": "2014-09-13T15:53:20.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE: [NSL] Estimate 10 mins additional travelling time from Toa Payoh to Marina Bay due to signalling fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/510697074283671552",
+      "createdAt": "2014-09-13T15:50:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE: [NSL] Estimate 20 mins additional travelling time between Marina Bay and Newton due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/510695999107379200",
+      "createdAt": "2014-09-13T15:46:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 20 mins additional travelling time between Marina Bay and Newton",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/510695116529360896",
+      "createdAt": "2014-09-13T15:42:58.000+08:00"
+    }
+  ]
+}

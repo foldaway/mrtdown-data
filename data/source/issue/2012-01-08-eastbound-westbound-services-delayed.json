@@ -1,0 +1,24 @@
+{
+  "id": "2012-01-08-eastbound-westbound-services-delayed",
+  "title": "Eastbound and westbound services slightly delayed between Boon Lay and Joo Koon due to track fault.",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-01-08T12:58:35.000+08:00",
+  "endAt": "2012-01-08T14:03:22.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "Fault has cleared.  Service on all lines are good but please allow extra time for travel due to wet tracks.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/155892328903606273",
+      "createdAt": "2012-01-08T14:03:22.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Eastbound services and westbound services between Boon Lay and Joo Koon are slightly delayed due track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/155876027447513090",
+      "createdAt": "2012-01-08T12:58:35.000+08:00"
+    }
+  ]
+}

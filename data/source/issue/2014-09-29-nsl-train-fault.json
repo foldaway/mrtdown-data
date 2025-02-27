@@ -1,0 +1,37 @@
+{
+  "id": "2014-09-29-nsl-train-fault",
+  "title": "Train Fault Causing Delays on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-09-29T09:12:05.000+08:00",
+  "endAt": "2014-09-29T09:45:59.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] UPDATE: Train service along the North South Line has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/516403482618626048",
+      "createdAt": "2014-09-29T09:45:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Estimate 10mins additional travelling time from YioChuKang to MarinaBay towards Marina Bay due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/516400636762390531",
+      "createdAt": "2014-09-29T09:34:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Estimate 10 mins additional travel time from #YioChuKang towards #MarinaBay due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/516397231486689280",
+      "createdAt": "2014-09-29T09:21:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 10 mins additional travelling time from #YioChuKang  to #MarinaBay towards MarinaBay due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/516394953396588545",
+      "createdAt": "2014-09-29T09:12:05.000+08:00"
+    }
+  ]
+}

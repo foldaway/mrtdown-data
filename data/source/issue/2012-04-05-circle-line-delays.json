@@ -1,0 +1,24 @@
+{
+  "id": "2012-04-05-circle-line-delays",
+  "title": "Circle line service disruption due to train fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2012-04-05T08:01:36.000+08:00",
+  "endAt": "2012-04-05T08:28:38.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Circle Line train service from Dhoby Ghaut to Paya Lebar running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/187698222272221185",
+      "createdAt": "2012-04-05T08:28:38.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Circle line service from Dhoby Ghaut to Paya Lebar slightly delayed due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/187691419220185088",
+      "createdAt": "2012-04-05T08:01:36.000+08:00"
+    }
+  ]
+}

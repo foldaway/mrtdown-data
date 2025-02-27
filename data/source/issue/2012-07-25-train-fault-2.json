@@ -1,0 +1,23 @@
+{
+  "id": "2012-07-25-train-fault-2",
+  "title": "Train fault causing delays on southbound line",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2012-07-25T12:49:35.000+08:00",
+  "endAt": "2012-07-25T12:53:14.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Southbound trains from Bukit Gombak to Yew Tee running well again",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/227989867693502465",
+      "createdAt": "2012-07-25T12:53:14.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Southbound trains from Bukit Gombak to Yew Tee moving slower due to train fault",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/227988945718362113",
+      "createdAt": "2012-07-25T12:49:35.000+08:00"
+    }
+  ]
+}

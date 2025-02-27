@@ -1,0 +1,23 @@
+{
+  "id": "2016-06-16-slight-delay-HBF-BNV-train-fault",
+  "title": "Slight delay from HBF to BNV due to train fault",
+  "componentIdsAffected": ["CCL"],
+  "startAt": "2016-06-16T08:12:28.000+08:00",
+  "endAt": "2016-06-16T08:21:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Normal service from HBF to BNV has resumed. We apologise for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/743236928623910912",
+      "createdAt": "2016-06-16T08:21:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Expect slight delay from HBF to BNV due to a train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/743234751717212160",
+      "createdAt": "2016-06-16T08:12:28.000+08:00"
+    }
+  ]
+}

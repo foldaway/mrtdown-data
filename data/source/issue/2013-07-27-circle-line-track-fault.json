@@ -1,0 +1,37 @@
+{
+  "id": "2013-07-27-circle-line-track-fault",
+  "title": "Track Fault on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2013-07-27T18:06:58.000+08:00",
+  "endAt": "2013-07-27T19:18:11.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services between #DhobyGhaut and #Promenade are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/361083088278794242",
+      "createdAt": "2013-07-27T19:18:11.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Estimate 10 mins additional travelling time between #DhobyGhaut and #Promenade due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/361073485356875780",
+      "createdAt": "2013-07-27T18:40:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Estimate 10 mins additional travelling time between #DhobyGhaut and #Promenade due to a track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/361067852628897793",
+      "createdAt": "2013-07-27T18:17:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Estimate 10 mins additional travelling time from #DhobyGhaut to #Promenade towards HarbourFront due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/361065167997517825",
+      "createdAt": "2013-07-27T18:06:58.000+08:00"
+    }
+  ]
+}

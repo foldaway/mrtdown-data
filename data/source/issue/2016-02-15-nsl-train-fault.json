@@ -1,0 +1,31 @@
+{
+  "id": "2016-02-15-nsl-train-fault",
+  "title": "Train fault affecting North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2016-02-15T09:20:51.000+08:00",
+  "endAt": "2016-02-15T09:36:24.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train service towards #JurongEast is operating normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/699044555060957184",
+      "createdAt": "2016-02-15T09:36:24.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Train service is still available. Due to safety reason, trains will be travelling at a slower speed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/699041238566080512",
+      "createdAt": "2016-02-15T09:23:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Estimate 20mins additional travelling time from #CityHall to #Newton towards #JurongEast due to a train fault near #DhobyGhaut.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/699040642136051712",
+      "createdAt": "2016-02-15T09:20:51.000+08:00"
+    }
+  ]
+}

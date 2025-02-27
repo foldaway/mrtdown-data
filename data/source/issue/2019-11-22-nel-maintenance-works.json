@@ -1,0 +1,35 @@
+{
+  "id": "2019-11-22-nel-maintenance-works",
+  "title": "NEL stations closing early for maintenance",
+  "componentIdsAffected": ["NEL"],
+  "startAt": "2019-11-22T23:00:00+08:00",
+  "endAt": "2019-11-24T00:00:00+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Due to intensified maintenance works, five NEL stations between NE13 Kovan &amp; NE17 Punggol will close earlier at around 11.00pm today, 23 Nov. Shuttle Bus 21 will be in operation to serve the closed stations while Service 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1198184669147099137",
+      "createdAt": "2019-11-23T18:21:00.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Due to intensified maintenance works, five NEL stations between NE13 Kovan &amp; NE17 Punggol will close earlier at around 11.00pm today &amp; tomorrow, 22 &amp; 23 Nov. Shuttle Bus 21 will be in operation to serve the closed stations while Service 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1197658582591782912",
+      "createdAt": "2019-11-22T07:30:32.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Due to intensified maintenance works, five NEL stations between NE13 Kovan &amp; NE17 Punggol will close earlier at around 11.00pm this Fri &amp; Sat – 22 &amp; 23 Nov. Shuttle Bus 21 will be in operation to serve the closed stations while Service 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1197065233753231360",
+      "createdAt": "2019-11-20T16:12:46.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Due to intensified maintenance works, five NEL stations between NE13 Kovan &amp; NE17 Punggol will close earlier at around 11.00pm this Fri &amp; Sat – 22 &amp; 23 Nov. Shuttle Bus 21 will be in operation to serve the closed stations while Service 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1196626654459621377",
+      "createdAt": "2019-11-19T11:10:01.000+08:00"
+    }
+  ]
+}

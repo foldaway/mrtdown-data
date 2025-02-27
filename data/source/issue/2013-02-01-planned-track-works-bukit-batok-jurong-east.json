@@ -1,0 +1,17 @@
+{
+  "id": "2013-02-01-planned-track-works-bukit-batok-jurong-east",
+  "title": "Planned track works from Bukit Batok to Jurong East",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2013-02-01T01:30:00.000+08:00",
+  "endAt": "2013-04-08T04:30:00.000+08:00",
+  "type": "outage",
+  "severity": "minor",
+  "updates": [
+    {
+      "type": "planned",
+      "text": "[NSL] Planned track works from Bukit Batok to Jurong East. 1.30am to 4.30am. 01/02/2013 to 08/04/2013 http://t.co/gn15jW66",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/297278571259523072",
+      "createdAt": "2013-02-01T17:41:49.000+08:00"
+    }
+  ]
+}

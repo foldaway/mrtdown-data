@@ -1,0 +1,29 @@
+{
+  "id": "2015-07-03-nsl-track-fault",
+  "title": "Speed Restrictions along North-South Line",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2015-07-03T09:19:12.000+08:00",
+  "endAt": "2015-07-03T09:25:58.000+08:00",
+  "type": "outage",
+  "severity": "minor",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Free bus services from Yew Tee to Toa Payoh have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/616781410972495874",
+      "createdAt": "2015-07-03T09:32:02.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #ChoaChuKang towards #Admiralty are now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/616779887085367296",
+      "createdAt": "2015-07-03T09:25:58.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE : Estimate 15 mins additional travelling time from #ChoaChuKang to #Admiralty towards MarinaBay due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/616778184294469634",
+      "createdAt": "2015-07-03T09:19:12.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "2021-09-02-nel-service-delay",
+  "title": "North East Line service disruption",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2021-09-02T08:52:13.000+08:00",
+  "endAt": "2021-09-02T09:21:11.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Update: NEL is back to regular svc. Once again, we are very sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1433238542491078656",
+      "createdAt": "2021-09-02T09:21:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Update: NEL svc is delay. Additional travel time of about 20 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1433236150353686530",
+      "createdAt": "2021-09-02T09:11:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Update: NEL svc is delayed due to a track fault at Harbourfront. Additional travel time of about 15 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1433234965320265731",
+      "createdAt": "2021-09-02T09:06:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL svc is delayed due to a track fault Harbourfront. Additional travel time of about 10 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1433231255001202697",
+      "createdAt": "2021-09-02T08:52:13.000+08:00"
+    }
+  ]
+}

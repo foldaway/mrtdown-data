@@ -1,0 +1,31 @@
+{
+  "id": "2015-09-27-nsl-train-fault-in-bukit-gombak",
+  "title": "Train fault reported on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-09-27T09:15:07.000+08:00",
+  "endAt": "2015-09-27T09:24:32.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #BukitGombak to #JurongEast is operating normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/647944879675346944",
+      "createdAt": "2015-09-27T09:24:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Expect additional 5mins travelling time from #BukitGombak to #JurongEast due to a train fault at #BukitGombak.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/647943836585472002",
+      "createdAt": "2015-09-27T09:20:23.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL] A train fault has been reported at #BukitGombak Northbound. Train will be travelling slower towards #JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/647942509109219328",
+      "createdAt": "2015-09-27T09:15:07.000+08:00"
+    }
+  ]
+}

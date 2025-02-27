@@ -1,0 +1,17 @@
+{
+  "id": "2020-01-08-urgent-maintenance-works-conducted-between-pe3-coral-edge-pe4-riviera-stations",
+  "title": "urgent maintenance works conducted between PE3 Coral Edge & PE4 Riviera Stations",
+  "componentIdsAffected": ["PGLRT"],
+  "startAt": "2020-01-08T21:00:00.000+08:00",
+  "endAt": "2020-01-09T04:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Urgent maintenance works will be conducted between PE3 Coral Edge &amp; PE4 Riviera Stations tonight, 8 Jan, from 9pm to 4am. One platform of the Punggol East LRT will be closed earlier at about 9pm, while the other platform will operate as usual &amp; serve all stations on the loop. https://t.co/fJeDEqpXRn",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1214863018070171650",
+      "createdAt": "2020-01-08T18:54:49.000+08:00"
+    }
+  ]
+}

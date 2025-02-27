@@ -1,0 +1,31 @@
+{
+  "id": "2015-05-15-nsl-train-fault",
+  "title": "Train Fault Causing Delays on the North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-05-15T16:07:23.000+08:00",
+  "endAt": "2015-05-15T16:17:09.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free bus service between #AngMoKio and #ToaPayoh has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/599129163266527233",
+      "createdAt": "2015-05-15T16:28:18.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] CLEARED: Train service has resumed. Free bus service is still available between #AngMoKio and #ToaPayoh.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/599126356698406913",
+      "createdAt": "2015-05-15T16:17:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Estimate 20 mins additional traveling time from #Yishun to #ToaPayoh towards #MarinaBay due to train fault near #Bishan.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/599123899217891329",
+      "createdAt": "2015-05-15T16:07:23.000+08:00"
+    }
+  ]
+}

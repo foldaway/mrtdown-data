@@ -1,0 +1,37 @@
+{
+  "id": "2016-03-29-sengkang-east-lrt-service-disruption",
+  "title": "Service disruption on Sengkang East LRT",
+  "componentIdsAffected": [
+    "SKLRT"
+  ],
+  "startAt": "2016-03-29T19:57:52.000+08:00",
+  "endAt": "2016-03-29T20:32:10.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "29/03, 8.55pm: Full services have resumed on the Sengkang LRT since 8.22pm. Free bus rides and bridging bus services have ceased.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/714798452488572928",
+      "createdAt": "2016-03-29T20:56:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "29/03, 8.31pm: Full svcs have resumed on the Sengkang East and Sengkang West LRT. Free bus rides and bridging bus svcs are still available",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/714792265625939968",
+      "createdAt": "2016-03-29T20:32:10.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "29/03, 8.18pm: No LRT svcs on Sengkang East &amp; West (outer loop) due to a train fault. Free bus rides &amp; bridging bus svcs are available.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/714789729309331456",
+      "createdAt": "2016-03-29T20:22:06.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "29/03, 7.56pm: No svc on Sengkang East LRT due to Train fault. Free bus rides &amp; Bridging bus services are available. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/714783629734338560",
+      "createdAt": "2016-03-29T19:57:52.000+08:00"
+    }
+  ]
+}

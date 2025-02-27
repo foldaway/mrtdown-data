@@ -1,0 +1,25 @@
+{
+  "id": "2015-12-10-ewl-travel-time-congestion",
+  "title": "Longer travel times on East West Line due to congestion",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2015-12-10T08:00:06.000+08:00",
+  "endAt": "2015-12-10T08:11:36.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services on East West Line from Pasir Ris are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/674743229766500355",
+      "createdAt": "2015-12-10T08:11:36.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Longer travelling time expected along EW line in the direction towards PasirRis due to congestion at Pasir Ris.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/674740335411462144",
+      "createdAt": "2015-12-10T08:00:06.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "2015-10-09-ewl-train-fault",
+  "title": "Service disruption due to train fault on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2015-10-09T09:21:02.000+08:00",
+  "endAt": "2015-10-09T09:37:54.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Defective train brought back to depot. Normal service resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/652296900486389760",
+      "createdAt": "2015-10-09T09:37:54.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:Estimate 15 mins additional travelling time from #OutramPark  to #JurongEast towards JooKoon due to train fault.Service still running.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/652292653795532800",
+      "createdAt": "2015-10-09T09:21:02.000+08:00"
+    }
+  ]
+}

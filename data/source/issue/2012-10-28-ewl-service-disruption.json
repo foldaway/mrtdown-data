@@ -1,0 +1,65 @@
+{
+  "id": "2012-10-28-ewl-service-disruption",
+  "title": "Service disruption on East West Line",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2012-10-28T20:30:20.000+08:00",
+  "endAt": "2012-10-28T22:21:58.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Free bus services have ceased.Affected passengers may seek a refund in the next 14 days at all SMRT MRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/262562008057147392",
+      "createdAt": "2012-10-28T22:30:35.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE:Service from #Queenstown to #OutramPark has resumed.Free bus bridging continue to be available@ designated boarding points.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/262559838687608835",
+      "createdAt": "2012-10-28T22:21:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Service from #Queenstown to #OutramPark is temporarily unavailable.Free buses continue to be available@ designated points.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/262555937695481857",
+      "createdAt": "2012-10-28T22:06:28.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Service from #Queenstown to #OutramPark is temporarily unavailable.Free bus bridging continue to be available@ designated points",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/262555412572815360",
+      "createdAt": "2012-10-28T22:04:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Services from #Queenstown to #OutramPark has resumed.Free bus services are still available at affected stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/262548128186658816",
+      "createdAt": "2012-10-28T21:35:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Services from #Queenstown to #OutramPark is currently unavailable.Free buses @ designated boarding points @ affected stns",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/262542673955659776",
+      "createdAt": "2012-10-28T21:13:45.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #Queenstown towards #OutramPark are now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/262534112466853888",
+      "createdAt": "2012-10-28T20:39:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train service is estimated to resume at 9:20pm. Please seek alternative transport. Buses are being arranged.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/262532402495246336",
+      "createdAt": "2012-10-28T20:32:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a customer related incident, there will be no train service from #Queenstown to #OutramPark towards PasirRis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/262531744509603841",
+      "createdAt": "2012-10-28T20:30:20.000+08:00"
+    }
+  ]
+}

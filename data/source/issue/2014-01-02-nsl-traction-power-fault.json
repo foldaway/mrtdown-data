@@ -1,0 +1,25 @@
+{
+  "id": "2014-01-02-nsl-traction-power-fault",
+  "title": "Service disruption on the North-South Line due to traction power fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-01-02T12:02:23.000+08:00",
+  "endAt": "2014-01-02T12:22:45.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train service from #YioChuKang to #Bishan towards Marina Bay is now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/418598211947737088",
+      "createdAt": "2014-01-02T12:22:45.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Estimate 10 mins additional travelling time from #YioChuKang to #Bishan towards MarinaBay due to a traction power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/418593086319509504",
+      "createdAt": "2014-01-02T12:02:23.000+08:00"
+    }
+  ]
+}

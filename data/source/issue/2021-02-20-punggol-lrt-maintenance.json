@@ -1,0 +1,19 @@
+{
+  "id": "2021-02-20-punggol-lrt-maintenance",
+  "title": "Maintenance works on the Punggol LRT system",
+  "componentIdsAffected": [
+    "PGLRT"
+  ],
+  "startAt": "2021-02-20T00:00:00.000+08:00",
+  "endAt": "2021-02-22T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "We will be conducting maintenance works on the Punggol LRT system this weekend, 20 &amp; 21 February 2021. Train service will operate as usual on one platform while the other will be closed for works. Service on both platforms will commence as usual on Monday, 22 February 2021.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1362254292975906823",
+      "createdAt": "2021-02-18T12:15:07.000+08:00"
+    }
+  ]
+}

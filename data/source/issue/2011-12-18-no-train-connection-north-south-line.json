@@ -1,0 +1,37 @@
+{
+  "id": "2011-12-18-no-train-connection-north-south-line",
+  "title": "No train connection on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2011-12-18T11:18:57.000+08:00",
+  "endAt": "2011-12-18T12:25:36.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Svc on North-South and East-West Lines are ok. MRT Shuttle Bus sv withdrawn. Thank you for your patience and understanding.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/148282770341367809",
+      "createdAt": "2011-12-18T14:05:42.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "Svc on North-South and East-West Lines fully resumed. MRT Shuttle Bus svc still available.Thank you for your patience.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/148257581750693888",
+      "createdAt": "2011-12-18T12:25:36.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Sv on North-South Line fr Jurong East to Ang Mo Kio on both bounds has resumed. Ang Mo Kio to Marina Bay will resume later.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/148241400373321728",
+      "createdAt": "2011-12-18T11:21:18.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No train connection 2 North-South Line at Raffles Pl, City Hall & Dhoby Ghaut. Pl take alternative transport or free MRT shuttle bus svc.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/148240809240702976",
+      "createdAt": "2011-12-18T11:18:57.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "2019-03-15-circle-line-signal-fault",
+  "title": "Service Disruption on Circle Line Due to Signal Fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2019-03-15T19:30:50.000+08:00",
+  "endAt": "2019-03-15T20:43:51.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Free regular bus services &amp; free bus bridging svcs between #DhobyGhaut/#MarinaBay and #PayaLebar have ceased. We are sorry that this has affected your Friday evening's commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1106541547141496833",
+      "createdAt": "2019-03-15T21:03:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Train service has resumed. Free regular bus services &amp; free bridging bus svcs between #DhobyGhaut/#MarinaBay and #PayaLebar are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1106536486755688450",
+      "createdAt": "2019-03-15T20:43:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: No train service btwn #DhobyGhaut and #Esplanade. Free regular bus &amp; free bridging bus services are available between #DhobyGhaut/#MarinaBay and #PayaLebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1106526939827691520",
+      "createdAt": "2019-03-15T20:05:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: No train service is available btwn #DhobyGhaut/#Marina Bay and #Stadium. Pls seek alternative transport. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1106521564558716928",
+      "createdAt": "2019-03-15T19:44:33.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] Due to a signal fault, no trains service is available btwn #DhobyGhaut/#Marina Bay and #Stadium. Free regular bus is available btwn #DhobyGhaut/#Marina Bay and #PayaLebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1106518110398406656",
+      "createdAt": "2019-03-15T19:30:50.000+08:00"
+    }
+  ]
+}

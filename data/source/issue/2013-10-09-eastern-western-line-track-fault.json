@@ -1,0 +1,43 @@
+{
+  "id": "2013-10-09-eastern-western-line-track-fault",
+  "title": "Track Fault on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2013-10-09T19:16:01.000+08:00",
+  "endAt": "2013-10-09T20:22:15.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services between #JooKoon and #BoonLay are now running normally. Free bus and bus bridging services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/387922019096223744",
+      "createdAt": "2013-10-09T20:46:31.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services between #JooKoon and #BoonLay has resumed. Bus bridging are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/387915915297587200",
+      "createdAt": "2013-10-09T20:22:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: No train service between #JooKoon and #BoonLay in both directions. Free buses and bridging buses are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/387910746170228736",
+      "createdAt": "2013-10-09T20:01:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Bus bridging are now available at affected stations between #BoonLay and #JooKoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/387907040276123648",
+      "createdAt": "2013-10-09T19:47:00.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Estimate 30 mins additional travelling time between #BoonLay and #JooKoon in both directions due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/387899243488608257",
+      "createdAt": "2013-10-09T19:16:01.000+08:00"
+    }
+  ]
+}

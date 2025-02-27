@@ -1,0 +1,31 @@
+{
+  "id": "2017-04-11-ewl-train-fault",
+  "title": "Major train fault causing delays",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-04-11T07:44:44.000+08:00",
+  "endAt": "2017-04-11T08:21:33.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services between #JooKoon &amp; #Queenstown have resumed. Free regular bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/851591011948089344",
+      "createdAt": "2017-04-11T08:21:33.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE:Train fault cleared , trains are progressively returning to normal speed. Pls add 10mins travel time btwn #JooKoon &amp; #Queenstown",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/851587695193096192",
+      "createdAt": "2017-04-11T08:08:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a train fault, pls add 25mins travel time between #JooKoon &amp; #Queenstown. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/851581744587218945",
+      "createdAt": "2017-04-11T07:44:44.000+08:00"
+    }
+  ]
+}

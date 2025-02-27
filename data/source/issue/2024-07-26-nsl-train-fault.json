@@ -1,0 +1,36 @@
+{
+  "id": "2024-07-26-nsl-train-fault",
+  "title": "Major train fault affecting North-South Line travel time",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2024-07-26T09:34:40.000+08:00",
+  "endAt": "2024-07-26T10:02:34.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train svcs btwn #MarinaSouthPier and #Newton have resumed. Free regular bus svcs have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1816655319021576463",
+      "createdAt": "2024-07-26T10:02:34.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL] UPDATE: Due to a train fault, pls add 10mins train travel time btwn #MarinaSouthPier and #Newton. Free regular bus svcs from #MarinaSouthPier and #Newton.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1816651052973973525",
+      "createdAt": "2024-07-26T09:45:37.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a train fault, pls add 25mins train travel time btwn #MarinaSouthPier and #Newton. Free regular busbetween #MarinaSouthPier and #Newton.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1816650264268697839",
+      "createdAt": "2024-07-26T09:42:29.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a train fault, pls add 25mins train travel time btwn #MarinaSouthPier and #Newton.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1816648298947838299",
+      "createdAt": "2024-07-26T09:34:40.000+08:00"
+    }
+  ]
+}

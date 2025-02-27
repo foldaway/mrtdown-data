@@ -1,0 +1,36 @@
+{
+  "id": "2016-02-14-north-east-line-delay",
+  "title": "North East Line service disruption",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2016-02-14T23:56:21.000+08:00",
+  "endAt": "2016-02-15T00:20:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "15/02, 0.59am: The last NEL train has arrived at Punggol NE17. Free bus rides have also ceased. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/698914874181623808",
+      "createdAt": "2016-02-15T01:01:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "15/02, 0.20am: NEL full svc has resumed. Free bus rides still available at designated bus stops.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/698904981202579456",
+      "createdAt": "2016-02-15T00:21:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "15/02, 0.08am: NEL delay - To assist with your journey, free bus rides available at designated bus stops near NEL stns.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/698901813831925762",
+      "createdAt": "2016-02-15T00:09:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "14/02 11.52pm NEL svc twds Punggol NE17 &amp; HarbourFront NE1 is delayed due to system fault. Additional travel time of abt 15 mins.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/698898581126709248",
+      "createdAt": "2016-02-14T23:56:21.000+08:00"
+    }
+  ]
+}

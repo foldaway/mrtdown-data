@@ -1,0 +1,31 @@
+{
+  "id": "2015-06-15-train-fault-at-marina-bay-station",
+  "title": "Train Service Disruption at Marina Bay Station",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-06-15T11:40:38.000+08:00",
+  "endAt": "2015-06-15T12:16:55.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[UPDATE] NSL: Free bus service between Marina Bay and Marina South Pier has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/610302878356410369",
+      "createdAt": "2015-06-15T12:28:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[UPDATE] Train service between Marina Bay and Marina South Pier has resumed. Free bus service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/610299923867631616",
+      "createdAt": "2015-06-15T12:16:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to train fault at Marina Bay station, there is no train service between MRB and MSP.Train service between MRB and JUR running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/610290791546621952",
+      "createdAt": "2015-06-15T11:40:38.000+08:00"
+    }
+  ]
+}

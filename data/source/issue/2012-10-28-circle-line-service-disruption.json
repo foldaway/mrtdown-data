@@ -1,0 +1,23 @@
+{
+  "id": "2012-10-28-circle-line-service-disruption",
+  "title": "Circle Line service disruption",
+  "componentIdsAffected": ["CCL"],
+  "startAt": "2012-10-28T06:44:31.000+08:00",
+  "endAt": "2012-10-28T09:23:26.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services from #TaiSeng towards #Bartley are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/262363914631778304",
+      "createdAt": "2012-10-28T09:23:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Estimate 5 mins additional travelling time from #TaiSeng to #Bartley towards HarbourFront due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/262323923025268736",
+      "createdAt": "2012-10-28T06:44:31.000+08:00"
+    }
+  ]
+}

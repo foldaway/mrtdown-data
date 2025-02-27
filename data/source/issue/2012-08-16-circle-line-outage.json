@@ -1,0 +1,61 @@
+{
+  "id": "2012-08-16-circle-line-outage",
+  "title": "Service disruption on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2012-08-16T06:05:44.000+08:00",
+  "endAt": "2012-08-16T06:57:10.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCLINE] CLEARED: Train svc is resuming between Marina Bay and Bayfront stations. Trains are now running normally. Free bus svc have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/235877694921920512",
+      "createdAt": "2012-08-16T07:16:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCLINE] UPDATE: Train service is resuming between #MarinaBay and #Bayfront at &lt;HH&gt;&lt;MM&gt;&lt;am/pm&gt; with minor delays.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/235875869149757440",
+      "createdAt": "2012-08-16T07:09:24.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[CCLINE] CLEARED: Train service is resuming between #MarinaBay and #Bayfront stations. Trains are now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/235875287794069505",
+      "createdAt": "2012-08-16T07:07:05.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[CCLINE] CLEARED: Trains are now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/235874249821257728",
+      "createdAt": "2012-08-16T07:02:58.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[CCLINE] CLEARED: No train service between #MarinaBay and #Bayfront.Trains are now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/235872793483415553",
+      "createdAt": "2012-08-16T06:57:10.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCLINE] UPDATE: Due to no train svc on CCL between MRB and PMN stn, pax are advised to use North-South line and transferred at DBG stn.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/235869549310914560",
+      "createdAt": "2012-08-16T06:44:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCLINE] UPDATE: Free public &amp; shuttle buses are now available at affected stations between Marina Bay and Promenade stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/235862165230333952",
+      "createdAt": "2012-08-16T06:14:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CIRCLELINE]: No train service between #Bayfront and #MarinaBay in both directions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/235859849894846465",
+      "createdAt": "2012-08-16T06:05:44.000+08:00"
+    }
+  ]
+}

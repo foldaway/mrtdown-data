@@ -1,0 +1,49 @@
+{
+  "id": "2023-03-05-ewl-train-fault",
+  "title": "Train Fault affecting East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2023-03-05T12:00:11.000+08:00",
+  "endAt": "2023-03-05T12:32:28.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train service on the East-West Line has resumed. Free regular bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1632240979871952900",
+      "createdAt": "2023-03-05T12:45:49.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Train services on the East-West Line are progressively returning to normal. Free regular bus services between #OutramPark and #Bugis are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1632238276764635136",
+      "createdAt": "2023-03-05T12:35:05.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Train services on the East-West Line are progressively resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1632237617633955840",
+      "createdAt": "2023-03-05T12:32:28.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a train fault, please add 25mins train travel time from #Queenstown to #Bugis towards #PasirRis. Free regular bus services between #OutramPark and #Bugis. We apologize for the delay to your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1632235914377441281",
+      "createdAt": "2023-03-05T12:25:42.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a train fault, please add 25mins train travel time from #OutramPark to #Bugis towards #PasirRis. Free regular bus services between #OutramPark and #Bugis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1632234669931642882",
+      "createdAt": "2023-03-05T12:20:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a train fault, please add 25mins train travel time from #OutramPark to #Bugis towards #PasirRis. Free regular bus services between #OutramPark and #Bugis. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1632229493774618624",
+      "createdAt": "2023-03-05T12:00:11.000+08:00"
+    }
+  ]
+}

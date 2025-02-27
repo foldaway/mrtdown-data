@@ -1,0 +1,25 @@
+{
+  "id": "2013-08-14-circle-line-track-fault",
+  "title": "Circle Line service disruption due to track fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2013-08-14T08:47:12.000+08:00",
+  "endAt": "2013-08-14T08:51:16.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services from #BotanicGardens towards #Caldecott are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/367448300556779520",
+      "createdAt": "2013-08-14T08:51:16.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Estimate 5 mins additional travelling time from #BotanicGardens to #Caldecott towards DhobyGhaut due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/367447277301817344",
+      "createdAt": "2013-08-14T08:47:12.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "2018-05-28-all-day-trials-ewl",
+  "title": "All-day trials on East-West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2018-08-14T19:08:46.000+08:00",
+  "endAt": "2018-08-14T19:40:30.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train svcs btwn #Queenstown and #TuasLink have resumed. Free regular bus svcs have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1029331926908162048",
+      "createdAt": "2018-08-14T19:40:30.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Power fault cleared, train svcs are progressively being restored. Pls add 10mins train travel time btwn #Queenstown and #TuasLink.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1029326547809759232",
+      "createdAt": "2018-08-14T19:19:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a power fault, pls add 20mins train travel time btwn #Queenstown and #TuasLink. Free regular bus service is available btwn #Lakeside and #TuasLink.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1029323942668857345",
+      "createdAt": "2018-08-14T19:08:46.000+08:00"
+    }
+  ]
+}

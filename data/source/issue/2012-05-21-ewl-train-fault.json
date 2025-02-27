@@ -1,0 +1,23 @@
+{
+  "id": "2012-05-21-ewl-train-fault",
+  "title": "Train fault on East-West Line",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2012-05-21T15:39:59.000+08:00",
+  "endAt": "2012-05-21T16:21:20.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:Eastbound train service from Joo Koon to Boon Lay running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/204487025871699968",
+      "createdAt": "2012-05-21T16:21:20.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Eastbound train service between Joo Koon and Boon Lay moving slower due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/204476616984891392",
+      "createdAt": "2012-05-21T15:39:59.000+08:00"
+    }
+  ]
+}

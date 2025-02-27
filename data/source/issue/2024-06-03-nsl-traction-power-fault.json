@@ -1,0 +1,79 @@
+{
+  "id": "2024-06-03-nsl-traction-power-fault",
+  "title": "Service disruption on North-South Line due to traction power fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2024-06-03T18:08:50.000+08:00",
+  "endAt": "2024-06-03T20:10:57.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[UPDATE] [NSL] : South bound train service from #ChoaChuKang to #Woodlands has resumed. Free Regular Bus and Bridging Bus have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1797607193409462694",
+      "createdAt": "2024-06-03T20:32:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[UPDATE] [NSL] : South bound train service from #ChoaChuKang to #Woodlands has resumed. Free Regular Bus and Bridging Bus Services are still available between #ChoaChuKang and #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1797601867301851432",
+      "createdAt": "2024-06-03T20:10:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[UPDATE] [NSL]North bound trains from #Woodlands towards #ChoaChuKang is in service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1797597440755081557",
+      "createdAt": "2024-06-03T19:53:22.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[UPDATE] [NSL]Due to traction power fault, there is no South bound train service from #ChoaChuKang to #Woodlands. Free Regular Bus and Bridging Bus Services are available between #ChoaChuKang and #Woodlands, passengers are advised to take alternative lines via [TEL] &amp; [CCL] line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1797596410155786412",
+      "createdAt": "2024-06-03T19:49:16.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[UPDATE] [NSL]Due to traction power fault, there is no train service from #ChoaChuKang to #Woodlands South Bound. Free Regular Bus and Bridging Bus Services are available between #ChoaChuKang and #Woodlands, Passengers are advised to take alternative lines via [TEL] &amp; [CCL] line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1797591715957838230",
+      "createdAt": "2024-06-03T19:30:37.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[UPDATE] [NSL]Due to traction power fault, there is no train service from #ChuaChuKang to #Woodlands South Bound. Free Regular Bus and Bridging Bus Services are available between #ChuaChuKang and #Woodlands, Passengers are advised to take alternative lines via [TEL] &amp; [CCL] line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1797588525413773549",
+      "createdAt": "2024-06-03T19:17:56.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[UPDATE] [NSL]Due to a traction power fault, there is no train service from #YewTee to #Woodlands South Bound. Free Regular Bus and Bridging Bus Service is available between #ChuaChuKang and #Woodlands, Passengers are advised to take alternative lines via [TEL] &amp; [CCL] line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1797583626177306734",
+      "createdAt": "2024-06-03T18:58:28.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[UPDATE] [NSL]: Due to a traction power fault, there is no train service from #YewTee to #Woodlands South Bound. Free Regular Bus and Bridging Bus Service is available between #ChuaChuKang and #Woodlands, Passengers are advised to take alternative lines via [TEL] &amp; [CCL] line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1797578048541491489",
+      "createdAt": "2024-06-03T18:36:18.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a traction power fault, there is no train service from #YewTee to #Woodlands South Bound. Free Regular Bus and Bridging Bus Service is available between #ChuaChuKang and #Woodlands, Passengers are advised to take alternative route via [TEL] line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1797575304237760695",
+      "createdAt": "2024-06-03T18:25:24.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a traction power fault, there is no train service from #YewTee to #Woodlands. \nFree Regular Bus and Bridging Bus Service is available between #ChuaChuKang and #Woodlands, Passengers are advised to alternative route via [TEL] line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1797573221245768030",
+      "createdAt": "2024-06-03T18:17:07.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a traction power fault, there is no train svc from #YewTee to #Woodlands.\nBridging Bus Service is available between #YewTee and #Woodlands, \nPassengers are advised to alternative route via [TEL] line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1797571134294298727",
+      "createdAt": "2024-06-03T18:08:50.000+08:00"
+    }
+  ]
+}

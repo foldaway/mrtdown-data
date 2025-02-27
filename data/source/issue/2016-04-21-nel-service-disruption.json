@@ -1,0 +1,31 @@
+{
+  "id": "2016-04-21-nel-service-disruption",
+  "title": "No North East Line Service Between Chinatown and Farrer Park",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2016-04-21T11:38:32.000+08:00",
+  "endAt": "2016-04-21T11:46:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "12:47pm NEL: NEL Services has resumed. Free bus rides have ceased. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/723010998639054848",
+      "createdAt": "2016-04-21T12:50:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "11:46am NEL: NEL Svc has resumed. Free Bus ride and Free Bus Bridging Svc still avialable. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/722995435225247744",
+      "createdAt": "2016-04-21T11:48:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "11:31am NEL: No NEL Svc btw Chinatown NE4 and Farrer Park NE8. Free Bus Ride and Free Bus Briding Svc at designated Bus stop. We are sorry",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/722992890947883008",
+      "createdAt": "2016-04-21T11:38:32.000+08:00"
+    }
+  ]
+}

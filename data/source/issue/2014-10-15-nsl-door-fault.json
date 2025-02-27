@@ -1,0 +1,37 @@
+{
+  "id": "2014-10-15-nsl-door-fault",
+  "title": "Door Fault Affecting North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-10-15T16:59:31.000+08:00",
+  "endAt": "2014-10-15T17:34:53.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Fault at Dhoby Ghaut has been cleared. Expect additional 5 minutes travelling time from Newton to Marina Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/522319690668855296",
+      "createdAt": "2014-10-15T17:34:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE: Estimated 20 mins additional traveling time between Marina Bay and Yishun on both bounds due to a door fault at Dhoby Ghaut station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/522314162639089664",
+      "createdAt": "2014-10-15T17:12:55.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Estimate 20 mins additional traveling time between #MarinaBay and #Newton on both bound due to door fault at Dhoby Ghaut station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/522312370886963202",
+      "createdAt": "2014-10-15T17:05:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 15 mins additional traveling time between #MarinaBay and #Newton on both bound due to door fault at Dhoby Ghaut station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/522310792792666112",
+      "createdAt": "2014-10-15T16:59:31.000+08:00"
+    }
+  ]
+}

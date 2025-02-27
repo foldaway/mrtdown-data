@@ -1,0 +1,61 @@
+{
+  "id": "2023-08-12-train-fault",
+  "title": "Train fault causing delays",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2023-08-12T20:17:11.000+08:00",
+  "endAt": "2023-08-12T22:25:32.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[TEL] CLEARED: Train service from Woodlands North towards Lentor has resumed. Free regular bus and bridging bus services have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1690378049467080704",
+      "createdAt": "2023-08-12T23:01:47.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[TEL] CLEARED: Train services from Woodlands North to Lentor has resumed. If you wish to download an e-Travel Chit as proof of your travel, click here: https://t.co/dYFVNdxSLs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1690368928927903745",
+      "createdAt": "2023-08-12T22:25:32.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a train fault, trains are moving slower from Woodlands North towards Lentor. Please add 20 minutes train travel time between Woodlands North and Lentor. Free regular bus services and bus bridging services available between Woodlands North and Lentor",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1690363575133773824",
+      "createdAt": "2023-08-12T22:04:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL]: Due to a train fault, trains are moving slower from Woodlands North towards Lentor. Please add 20 minutes train travel time between Woodlands North and Lentor. Free regular bus services and bus bridging services available between Woodlands North and Lentor.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1690356709485879296",
+      "createdAt": "2023-08-12T21:36:59.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a train fault, trains are moving slower from Woodlands North towards Lentor. Additional travelling time to 20mins. Free regular bus service and bus service between Woodlands North to Lentor.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1690347103313330176",
+      "createdAt": "2023-08-12T20:58:49.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a train fault, trains are moving slower from Woodlands North towards Lentor. Additional travelling 10 mins. Free regular bus service and bus bridging between Woodlands North and Lentor.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1690340161832587264",
+      "createdAt": "2023-08-12T20:31:14.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a track signal fault, trains are moving slower from Woodlands North towards Lentor. Additional travelling time 10 mins. Free regular bus service provided between Woodlands North to Lentor stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1690337384842579968",
+      "createdAt": "2023-08-12T20:20:12.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a train fault, trains are moving slower from Woodlands North towards Lentor. Additional travelling time 10 mins.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1690336629096103936",
+      "createdAt": "2023-08-12T20:17:11.000+08:00"
+    }
+  ]
+}

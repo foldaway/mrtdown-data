@@ -1,0 +1,49 @@
+{
+  "id": "2015-01-30-nsl-track-fault",
+  "title": "Track Fault on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-01-30T09:51:34.000+08:00",
+  "endAt": "2015-01-30T09:58:54.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] Free bus service between Sembawang and YioChuKang has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/560993399591796738",
+      "createdAt": "2015-01-30T10:50:23.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] FAULT CLEARED: Train services from #Woodlands  to #YioChuKang are now running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/560990485607489536",
+      "createdAt": "2015-01-30T10:38:49.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Fault cleared. Expect longer travel time from #Woodlands towards #YioChuKang. Free bus available. Our engineers are rectifying fault now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/560986164128010240",
+      "createdAt": "2015-01-30T10:21:38.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault is cleared. Expect 15mins additional travelling time from #Woodlands to #YioChuKang. Free bus is available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/560985152537374721",
+      "createdAt": "2015-01-30T10:17:37.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #Sembawang towards #YioChuKang has resumed now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/560980442044563456",
+      "createdAt": "2015-01-30T09:58:54.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Estimate 20 mins additional travelling time from #Sembawang to #YioChuKang towards MarinaBay due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/560978597125447682",
+      "createdAt": "2015-01-30T09:51:34.000+08:00"
+    }
+  ]
+}

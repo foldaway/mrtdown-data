@@ -1,0 +1,20 @@
+{
+  "id": "2020-11-26-sengkang-punggol-lrt-maintenance",
+  "title": "Maintenance works on Sengkang-Punggol LRT",
+  "componentIdsAffected": [
+    "SKLRT",
+    "PGLRT"
+  ],
+  "startAt": "2020-12-05T00:00:00.000+08:00",
+  "endAt": "2021-03-08T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Maintenance works will be conducted on weekends on the Sengkang-Punggol LRT from 5 Dec 20 to 7 Mar 21 (except 13 &amp; 14 Feb 21). On these weekends, LRT svc will operate on one platform while the other will be closed. Full svc will resume on Mondays. https://t.co/dcfYT25QDm",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1331887424272703489",
+      "createdAt": "2020-11-26T17:08:01.000+08:00"
+    }
+  ]
+}

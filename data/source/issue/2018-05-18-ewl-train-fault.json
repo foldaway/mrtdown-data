@@ -1,0 +1,25 @@
+{
+  "id": "2018-05-18-ewl-train-fault",
+  "title": "Major disruption on East West Line due to train fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2018-05-18T17:10:36.000+08:00",
+  "endAt": "2018-05-18T17:37:52.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] CLEARED: Train service on the EWL has resumed. Trains are progressively returning back to normal speed. We apologize for any inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997410934065848320",
+      "createdAt": "2018-05-18T17:37:52.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Due to a train fault, pls add 20mins train travel time from #BoonLay to #Queenstown towards #PasirRis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997404071806947328",
+      "createdAt": "2018-05-18T17:10:36.000+08:00"
+    }
+  ]
+}

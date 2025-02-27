@@ -1,0 +1,43 @@
+{
+  "id": "2017-10-25-nsl-track-fault",
+  "title": "North-South Line service disruption due to track fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-10-25T05:00:12.000+08:00",
+  "endAt": "2017-10-25T10:13:21.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #Yishun to #ToaPayoh have resumed. Free bus and bridging bus services have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/923009558045376512",
+      "createdAt": "2017-10-25T10:13:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Please add 10mins train travel time from #Yishun to #ToaPayoh. Free bus &amp; bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/922977311162449920",
+      "createdAt": "2017-10-25T08:05:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: As trains move at a slower speed due to a track fault, commuters can travel via #JurongEast and take East-West Line to city.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/922944935543824385",
+      "createdAt": "2017-10-25T05:56:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a track fault, trains to city will travel slower btwn #AngMoKio &amp; #Bishan. Free bus and bridging bus svcs are avail.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/922944472920440832",
+      "createdAt": "2017-10-25T05:54:44.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a track fault, pls add 20mins train travel time from #Yishun to #ToaPayoh SouthBound. (Not linked to new signalling project).",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/922930750466400256",
+      "createdAt": "2017-10-25T05:00:12.000+08:00"
+    }
+  ]
+}

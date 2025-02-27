@@ -1,0 +1,23 @@
+{
+  "id": "2012-10-28-nsl-train-fault",
+  "title": "Train Fault on North-South Line",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2012-10-28T07:02:52.000+08:00",
+  "endAt": "2012-10-28T07:18:24.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #ChoaChuKang towards #MarinaBay are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/262332450930294785",
+      "createdAt": "2012-10-28T07:18:24.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Estimate 5 mins additional travelling time from #ChoaChuKang to #Yishun towards MarinaBay due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/262328540144488449",
+      "createdAt": "2012-10-28T07:02:52.000+08:00"
+    }
+  ]
+}

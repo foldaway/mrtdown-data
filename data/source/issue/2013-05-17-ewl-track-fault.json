@@ -1,0 +1,59 @@
+{
+  "id": "2013-05-17-ewl-track-fault",
+  "title": "Maintenance work on East West Line from Tanah Merah to Simei",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2013-05-17T14:39:01.000+08:00",
+  "endAt": "2013-06-01T00:00:56.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "SMRT will be raising the threshold for rail change out from 14 mm to 12 mm to facilitate proactive rail replacement.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/340850198689505280",
+      "createdAt": "2013-06-01T23:19:54.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Preventive maintenance is critical &amp; SMRT will make extensive checks across curved sections of rail.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/340847771080880128",
+      "createdAt": "2013-06-01T23:10:15.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Trains are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/340498137284235264",
+      "createdAt": "2013-06-01T00:00:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "The crack rail is secured by SMRT engineers. Est 15 mins of additional traveling time from #Clementi to #OutramPark toward #PasirRis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/340495532403351553",
+      "createdAt": "2013-05-31T23:50:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a rail crack at #TiongBahru. Estimated 30 mins additional travel time from #JurongEast to #OutramPark toward #PasirRis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/340487276654120960",
+      "createdAt": "2013-05-31T23:17:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a rail crack at #TiongBahru. Estimated 30 mins additional travel time from #JurongEast towards #OutramPark.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/340484983623929856",
+      "createdAt": "2013-05-31T23:08:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a rail crack at #TiongBahru. Estimated 20 mins additional travel time from #TiongBahru towards #OutramPark.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/340481864903041024",
+      "createdAt": "2013-05-31T22:56:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] Estimate 20 mins additional travel time from #TiongBahru towards #OutramPark due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/340475926192214016",
+      "createdAt": "2013-05-31T22:32:41.000+08:00"
+    }
+  ]
+}

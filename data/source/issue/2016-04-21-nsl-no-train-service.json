@@ -1,0 +1,41 @@
+{
+  "id": "2016-04-21-nsl-no-train-service",
+  "title": "No train service on NSL",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2016-04-21T06:09:49.000+08:00",
+  "endAt": "2016-04-21T06:53:58.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL]update: Train service from RafflesPlace to MarinaSouthPier has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/722922220717146114",
+      "createdAt": "2016-04-21T06:57:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] update: Train service from MarinaSouthPier to Newton towards JurongEast has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/722921279720820737",
+      "createdAt": "2016-04-21T06:53:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: No train service from #Raffles Place towards MarinaSouthPier due to a train fault. Estimated resumption time, 0645hrs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/722915951021133827",
+      "createdAt": "2016-04-21T06:32:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: No train service from MarinaSouthPier to Newton towards JurongEast due to a train fault. Estimated resumption time, 0645hrs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/722912474542923777",
+      "createdAt": "2016-04-21T06:18:59.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: No train service from MarinaSouthPier to Newton towards JurongEast due to a train fault. Free regular bus available at affected areas",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/722910166467805184",
+      "createdAt": "2016-04-21T06:09:49.000+08:00"
+    }
+  ]
+}

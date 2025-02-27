@@ -1,0 +1,49 @@
+{
+  "id": "2016-10-26-bukit-panjang-train-fault",
+  "title": "Service disruption due to train fault between Bukit Panjang & Phoenix",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2016-10-26T17:51:06.000+08:00",
+  "endAt": "2016-10-26T19:12:48.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] UPDATE: Train services have resumed. Free regular bus services and bus bridging services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/791242254127988736",
+      "createdAt": "2016-10-26T19:37:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Train services have resumed. Free regular bus svcs and bus bridging services are still available at all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/791240960764022784",
+      "createdAt": "2016-10-26T19:32:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Train services have resumed. Free regular bus svcs are still available at all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/791236130070855680",
+      "createdAt": "2016-10-26T19:12:48.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] UPDATE: Train service estimated to resume within the next 30 minutes. Free regular bus svcs still available at all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/791231463563796480",
+      "createdAt": "2016-10-26T18:54:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: No train svc on the BPLRT. We are working to recover the svc. Free regular bus services are available at all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/791223407949918208",
+      "createdAt": "2016-10-26T18:22:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Due to a train fault between #BukitPanjang &amp; #Phoenix. BPLRT train svc will be delayed for 30 mins. We are working to recover svc.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/791215569978523648",
+      "createdAt": "2016-10-26T17:51:06.000+08:00"
+    }
+  ]
+}

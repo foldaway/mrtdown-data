@@ -1,0 +1,37 @@
+{
+  "id": "2016-10-04-no-train-service-downtown-line",
+  "title": "No train service between Downtown Line DT06 Sixth Ave to DT07 King Albert's park",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2016-10-04T07:19:40.000+08:00",
+  "endAt": "2016-10-04T08:25:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "DTL service has resumed since 8.25am. Free bus rides and bridging bus services have ceased. We are sorry for the inconvenience.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/783114794123407360",
+      "createdAt": "2016-10-04T09:21:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "DTL service has resumed since 8.25am. Free bus rides and bridging buses are still available at designated bus stops.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/783103586360143872",
+      "createdAt": "2016-10-04T08:36:59.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "No train svc btwn King Albert Pk DT6 &amp; Sixth Ave DT7 due to platform screen door fault. Free bus rides available at designated bus stops.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/783091339533488128",
+      "createdAt": "2016-10-04T07:48:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No train service between Downtown Line DT06 Sixth Ave to DT07 King Albert's park. Free bus bridging available. Sorry for the inconvenience.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/783084129617256448",
+      "createdAt": "2016-10-04T07:19:40.000+08:00"
+    }
+  ]
+}

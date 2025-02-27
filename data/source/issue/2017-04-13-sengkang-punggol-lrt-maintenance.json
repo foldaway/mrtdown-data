@@ -1,0 +1,20 @@
+{
+  "id": "2017-04-13-sengkang-punggol-lrt-maintenance",
+  "title": "Scheduled maintenance works on Sengkang-Punggol LRT",
+  "componentIdsAffected": [
+    "SKLRT",
+    "PGLRT"
+  ],
+  "startAt": "2017-04-23T00:00:00.000+08:00",
+  "endAt": "2017-09-10T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Maintenance works every Sun on Sengkang-Punggol LRT from 23 Apr-10 Sep 2017 but LRT service will not be affected. https://t.co/8x06CqGPxr",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/852490496274341888",
+      "createdAt": "2017-04-13T19:55:47.000+08:00"
+    }
+  ]
+}

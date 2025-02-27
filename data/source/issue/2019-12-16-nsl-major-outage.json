@@ -1,0 +1,41 @@
+{
+  "id": "2019-12-16-nsl-major-outage",
+  "title": "Major Outage on North-South Line",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2019-12-16T09:08:24.000+08:00",
+  "endAt": "2019-12-16T08:49:45.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular bus and free bridging bus svcs between #Kranji and #JurongEast have ceased. We are sorry to have affected your morning commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1206380521552351233",
+      "createdAt": "2019-12-16T09:08:24.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: The signalling fault on the North South Line has been rectified. Train service is progressively returning to normal. Free regular bus &amp; free bridging bus svcs btwn #Kranji and #JurongEast are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1206375829954953216",
+      "createdAt": "2019-12-16T08:49:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a signalling fault, there is no train svc btwn #Kranji and #BukitGombak. Free regular bus &amp; free bridging bus svcs btwn #Kranji and #JurongEast. We apologise for the inconvenience caused,",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1206373316547637249",
+      "createdAt": "2019-12-16T08:39:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a signalling fault, there is no train svc btwn #Kranji and #BukitGombak. Free regular bus &amp; free bridging bus svcs btwn #Kranji and #JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1206367636348497921",
+      "createdAt": "2019-12-16T08:17:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a signalling fault, there is no train svc btwn #Kranji and #BukitGombak. Free regular bus &amp; free bridging bus svcs btwn #Kranji and #BukitGombak.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1206367048873365504",
+      "createdAt": "2019-12-16T08:14:52.000+08:00"
+    }
+  ]
+}

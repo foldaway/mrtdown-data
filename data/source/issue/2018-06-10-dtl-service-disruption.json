@@ -1,0 +1,43 @@
+{
+  "id": "2018-06-10-dtl-service-disruption",
+  "title": "Service disruption on the Downtown Line",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2018-06-10T16:18:46.000+08:00",
+  "endAt": "2018-06-10T17:18:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "DTL normal train service is available. Free Passing By &amp; Bridging buses have ceased. We are sorry for the inconvenience.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1005760876278714369",
+      "createdAt": "2018-06-10T18:37:33.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "Normal train service has resumed as of 1718hrs. Free passing &amp; bridging buses are still available. We are sorry for the inconvenience.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1005742373597396992",
+      "createdAt": "2018-06-10T17:24:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train short loop service available from Bukit Panjang to MacPherson stations &amp; Bedok Reservoir to Expo. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1005735276432404480",
+      "createdAt": "2018-06-10T16:55:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No DTL svc between MacPherson &amp; Bedok resevoir stations due to power faults. Free boarding of Passing-by buses available. Shuttle buses have been activated. We are sorry",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1005732536406794240",
+      "createdAt": "2018-06-10T16:44:56.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "No DTL Svc between MacPherson &amp; Bedok Resevoir Stations due to power fault. We are sorry for the inconvenience.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1005725948505874432",
+      "createdAt": "2018-06-10T16:18:46.000+08:00"
+    }
+  ]
+}

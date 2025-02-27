@@ -1,0 +1,79 @@
+{
+  "id": "2016-03-22-no-train-service-between-tanah-merah-and-pasir-ris",
+  "title": "No train service between Tanah Merah and Pasir Ris",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-03-22T11:20:41.000+08:00",
+  "endAt": "2016-03-22T13:56:35.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] Train services between #TanahMerah and #PasirRis in both directions have resumed. Free bus and bus shuttle svcs have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/712160047627763714",
+      "createdAt": "2016-03-22T14:12:41.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] Train services resumed between #TanahMerah and #PasirRis in both directions at slower speeds. Expect additional 10 min travelling time",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/712155998035660800",
+      "createdAt": "2016-03-22T13:56:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] No train service between between #TanahMerah and #PasirRis. Free bus and shuttle bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/712152176060051457",
+      "createdAt": "2016-03-22T13:41:24.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] No train service between #TanahMerah and #PasirRis. Please seek alternate transport options when travelling to or from these stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/712147332922343424",
+      "createdAt": "2016-03-22T13:22:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] No train service between Tanah Merah and Pasir Ris. We apologise for the inconvenience. Expected time for resumption is 1.15pm",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/712138132666253313",
+      "createdAt": "2016-03-22T12:45:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] We apologise for the inconvenience caused. Expected time for resumption is now 12:45pm",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/712134646457176064",
+      "createdAt": "2016-03-22T12:31:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No train service between #TanahMerah and #PasirRis in both directions. Free regular bus services and shuttle services are available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/712132987555434496",
+      "createdAt": "2016-03-22T12:25:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] No train svc between #TanahMerah and #PasirRis. Est resumption time updated to 12.30pm",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/712128349225660416",
+      "createdAt": "2016-03-22T12:06:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train svc between #TanahMerah and #PasirRis. Expected svc resumption time: 12.15pm. Free bus and shuttle bus svcs available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/712124332307124224",
+      "createdAt": "2016-03-22T11:50:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Free regular &amp; free shuttle bus services are now available at affected stations between Tanah Merah and Pasir Ris station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/712119136420126721",
+      "createdAt": "2016-03-22T11:30:07.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: No train service between #TanahMerah and #PasirRis in both directions due to incident on track. Expected resumption time: 12.15pm.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/712116761349398529",
+      "createdAt": "2016-03-22T11:20:41.000+08:00"
+    }
+  ]
+}

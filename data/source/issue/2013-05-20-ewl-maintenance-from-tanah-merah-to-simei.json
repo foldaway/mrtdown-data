@@ -1,0 +1,19 @@
+{
+  "id": "2013-05-20-ewl-maintenance-from-tanah-merah-to-simei",
+  "title": "Maintenance work on East West Line from Tanah Merah to Simei",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2013-05-20T00:00:00+08:00",
+  "endAt": "2013-08-01T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "[EWL]: We’re doing maintenance work to keep you on track. From Tanah Merah to Simei, 20 May - 31 July. http://t.co/H0pp8ChIp9",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335283294864293888",
+      "createdAt": "2013-05-17T14:39:01.000+08:00"
+    }
+  ]
+}

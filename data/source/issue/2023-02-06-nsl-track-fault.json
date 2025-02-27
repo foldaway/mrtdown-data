@@ -1,0 +1,72 @@
+{
+  "id": "2023-02-06-nsl-track-fault",
+  "title": "Track fault affecting North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2023-02-06T05:50:55.000+08:00",
+  "endAt": "2023-02-06T07:33:34.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] UPDATE: Train services have fully resumed. Free regular bus &amp; free bridging bus services have ceased. We apologise to all commuters who were affected this morning.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622382314897702912",
+      "createdAt": "2023-02-06T07:51:00.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train services are progressively being restored. You may still experience crowding at some stations. Free regular bus &amp; free bridging bus services are still available btwn #ChoaChuKang and #Yishun.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622380871469916160",
+      "createdAt": "2023-02-06T07:45:16.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train services are progressively being restored. Pls add 5mins train travel time btwn #Yishun and #ChoaChuKang. Free regular bus &amp; free bridging bus services are still available btwn #ChoaChuKang and #Yishun.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622377927588597760",
+      "createdAt": "2023-02-06T07:33:34.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train services are progressively being restored. Pls add 15mins train travel time btwn #Yishun and #ChoaChuKang. Free regular bus and free bridging bus services are still available btwn #ChoaChuKang and #Yishun.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622373828906332160",
+      "createdAt": "2023-02-06T07:17:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: UPDATE: Due to a track fault, pls add 25mins train travel time btwn #ChoaChuKang and #Yishun. Free regular bus and free bridging bus services are available btwn #ChoaChuKang and #Yishun. You may take TEL or other alternative lines to city area.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622370751444848642",
+      "createdAt": "2023-02-06T07:05:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: UPDATE: Due to a track fault, pls add 25mins train travel time btwn #ChoaChuKang and #Yishun. Free regular bus is available btwn #ChoaChuKang and #Yishun. You may take TEL or other alternative lines to city area.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622370211856011264",
+      "createdAt": "2023-02-06T07:02:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: UPDATE: Due to a track fault, pls add 15mins train travel time btwn #ChoaChuKang and #Yishun. Free regular bus is available btwn #ChoaChuKang and #Yishun. You may take TEL or other alternative lines to city area.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622367355203649538",
+      "createdAt": "2023-02-06T06:51:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: UPDATE: Due to a track fault, pls add 15mins train travel time btwn #ChoaChuKang and #Yishun. Free regular bus is available btwn #ChoaChuKang and #Yishun. You may also take alternative line to city area.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622364778802089985",
+      "createdAt": "2023-02-06T06:41:20.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: UPDATE: Due to a track fault, pls add 15mins train travel time btwn #ChoaChuKang and #Yishun. Free regular bus is available btwn #ChoaChuKang and #Yishun.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622360859237584898",
+      "createdAt": "2023-02-06T06:25:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a track fault, pls add 10mins train travel time from #Marsiling to #Admiralty towards #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622352091401568257",
+      "createdAt": "2023-02-06T05:50:55.000+08:00"
+    }
+  ]
+}

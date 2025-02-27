@@ -1,0 +1,91 @@
+{
+  "id": "2015-11-25-nsl-no-train-service-between-yishun-and-marinasouthpier",
+  "title": "No train service between Yishun and Marina South Pier due to power fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-11-25T05:54:50.000+08:00",
+  "endAt": "2015-11-25T08:11:36.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL Update] Train services have resumed btwn Yishun and Bishan stations in both directions. Free bus and bus shuttle services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669330240250843136",
+      "createdAt": "2015-11-25T09:42:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL Update] Train services have resumed between Yishun and Bishan stations in both directions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669328804859408385",
+      "createdAt": "2015-11-25T09:36:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL Update] Train services have resumed between Yishun and Bishan stations in both directions. Free bus &amp; shuttle bus svcs are still avail.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669323030246481920",
+      "createdAt": "2015-11-25T09:13:40.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL Update]:Train service has resumed on the NSL. Free bus and shuttle bus are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669317451906048000",
+      "createdAt": "2015-11-25T08:51:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL Update]:Train service has resumed. Free bus and shuttle bus are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669312243679412224",
+      "createdAt": "2015-11-25T08:30:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL Update]:Train service has resumed. Free bus and shuttle bus are still available between Yishun and MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669307408645160961",
+      "createdAt": "2015-11-25T08:11:36.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL Update]:Our engineers have restored power at Ang Mo Kio station. We are presently testing the rail lines btwn Yishun &amp; Bishan stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669306678102200320",
+      "createdAt": "2015-11-25T08:08:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[Update]:No train service between Yishun &amp; Bishan. Free bus and shuttle bus are still available between Yishun and MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669301493640531969",
+      "createdAt": "2015-11-25T07:48:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[Update]:No train service between Yishun &amp; Bishan. More buses have been inserted to provide shuttle bus services between Yishun &amp; Bishan.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669296115515179008",
+      "createdAt": "2015-11-25T07:26:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[Update]:No train service between Yishun and Bishan. Free bus and shuttle bus are available between Yishun and MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669285604673257472",
+      "createdAt": "2015-11-25T06:44:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[Update]:No train service between Yishun and Bishan. Free bus and shuttle bus are available from Yishun and MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669282263129915392",
+      "createdAt": "2015-11-25T06:31:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[Update]: No train service between Yishun and Bishan. Free bus and shuttle bus are available from Yishun and MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669278551972048896",
+      "createdAt": "2015-11-25T06:16:56.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL] No train service between #Yishun and #MarinaSouthPier due to power fault. Free Bus service is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669272992854097920",
+      "createdAt": "2015-11-25T05:54:50.000+08:00"
+    }
+  ]
+}

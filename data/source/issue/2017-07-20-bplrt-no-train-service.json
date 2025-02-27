@@ -1,0 +1,25 @@
+{
+  "id": "2017-07-20-bplrt-no-train-service",
+  "title": "No train service between Choa Chu Kang and Bukit Panjang due to a train fault",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2017-07-20T13:45:38.000+08:00",
+  "endAt": "2017-07-20T14:03:42.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] CLEARED: Normal service resumed. Free bus services still available till1425hrs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/887915902015909888",
+      "createdAt": "2017-07-20T14:03:42.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT] No train service betwn #ChoaChuKang to #BukitPanjang due to a train fault. Free regular bus &amp; bus bridging services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/887911354782236672",
+      "createdAt": "2017-07-20T13:45:38.000+08:00"
+    }
+  ]
+}

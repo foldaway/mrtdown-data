@@ -1,0 +1,49 @@
+{
+  "id": "2012-12-31-train-fault",
+  "title": "Train fault leading to travel time increase",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-12-31T16:44:22.000+08:00",
+  "endAt": "2012-12-31T17:14:04.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #Aljunied towards #JurongEast are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/285676076871598080",
+      "createdAt": "2012-12-31T17:17:38.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Fault is cleared. Expect longer travelling time from  #Aljunied towards #JurongEast. Trains and platforms are crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/285675176119640064",
+      "createdAt": "2012-12-31T17:14:04.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Estimate 5 mins additional travel time from #Aljunied towards #JurongEast. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/285673103466582016",
+      "createdAt": "2012-12-31T17:05:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Estimate 10 mins additional travel time from #TanahMerah towards #Clementi due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/285670622430896128",
+      "createdAt": "2012-12-31T16:55:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Estimate 15 mins additional travel time from #TanahMerah towards #Clementi due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/285669264608870400",
+      "createdAt": "2012-12-31T16:50:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 20 mins additional travelling time from #TanahMerah to #Clementi towards JooKoon due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/285667703237275650",
+      "createdAt": "2012-12-31T16:44:22.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "2017-06-30-nsl-track-point-fault",
+  "title": "Track point fault causing delays",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-06-30T06:32:28.000+08:00",
+  "endAt": "2017-06-30T08:48:56.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL]CLEARED: Track point fault cleared, train service from #Woodlands to #AngMoKio is running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/880588929975459840",
+      "createdAt": "2017-06-30T08:48:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Pls add 10mins travel time from #Woodlands to #AngMoKio, due to a track point fault at #AngMoKio. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/880584283294793728",
+      "createdAt": "2017-06-30T08:30:28.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Pls add 10mins travel time from #Woodlands to #AngMoKio,due to a track point fault at #AngMoKio. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/880580002198114305",
+      "createdAt": "2017-06-30T08:13:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Pls add 10mins travel time from #Woodlands to #AngMoKio, due to a track point fault at #AngMoKio. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/880575962206715905",
+      "createdAt": "2017-06-30T07:57:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Pls add 15mins travel time from #Woodlands to #AngMoKio, due to a track point fault at #AngMoKio. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/880572255377408000",
+      "createdAt": "2017-06-30T07:42:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Pls add 15 mins travel time from #Woodlands to #AngMoKio,due to a track point fault at #AngMoKio. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/880567259634122753",
+      "createdAt": "2017-06-30T07:22:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Pls add 15mins travel time from #Woodlands to #AngMoKio,due to a track point fault at #AngMoKio. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/880561694199562240",
+      "createdAt": "2017-06-30T07:00:42.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Due to a track point fault, pls add 10mins travel time from #Woodlands to #AngMoKio. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/880554590063611904",
+      "createdAt": "2017-06-30T06:32:28.000+08:00"
+    }
+  ]
+}

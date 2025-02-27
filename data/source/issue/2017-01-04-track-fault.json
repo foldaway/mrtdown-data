@@ -1,0 +1,37 @@
+{
+  "id": "2017-01-04-track-fault",
+  "title": "Track fault causing delays on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-01-04T07:47:52.000+08:00",
+  "endAt": "2017-01-04T08:38:50.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE:Track fault cleared, trains are progressively returning to normal speed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/816443736292872192",
+      "createdAt": "2017-01-04T08:38:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Pls expect 15mins travel time fr #BoonLay to #Clementi towards #PasirRis due to track fault. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/816439643977592832",
+      "createdAt": "2017-01-04T08:22:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Trains are running slower due to track fault near #Clementi. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/816435339258576896",
+      "createdAt": "2017-01-04T08:05:28.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track fault, pls add 10 mins travel time from #BoonLay to #Clementi towards #PasirRis. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/816430912858558464",
+      "createdAt": "2017-01-04T07:47:52.000+08:00"
+    }
+  ]
+}

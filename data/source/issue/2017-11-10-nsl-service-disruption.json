@@ -1,0 +1,31 @@
+{
+  "id": "2017-11-10-nsl-service-disruption",
+  "title": "Service disruption on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-11-10T06:06:07.000+08:00",
+  "endAt": "2017-11-10T06:17:54.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Free regular bus svcs have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/928752221424041984",
+      "createdAt": "2017-11-10T06:32:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] CLEARED: Train svc from #Yishun to #AngMoKio have resumed. Free regular bus svcs is still available from #Yishun to #AngMoKio.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/928748507736956928",
+      "createdAt": "2017-11-10T06:17:54.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular bus svcs from #Yishun to #AngMoKio. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/928745544570126336",
+      "createdAt": "2017-11-10T06:06:07.000+08:00"
+    }
+  ]
+}

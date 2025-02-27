@@ -1,0 +1,31 @@
+{
+  "id": "2018-09-18-ewl-platform-screen-door-fault",
+  "title": "Platform screen door fault causing delays",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2018-09-18T08:36:26.000+08:00",
+  "endAt": "2018-09-18T09:07:26.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: The Platform Screen Doors fault has cleared. Normal train services from #JooKoon to #JurongEast have resumed. We apologise for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1041860244765196289",
+      "createdAt": "2018-09-18T09:23:33.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: The Platform Screen Doors fault have been rectified.  Train svcs are progressively being restored. Add train travel time from #JooKoon to #JurongEast reduced to 10 mins.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1041856188319596544",
+      "createdAt": "2018-09-18T09:07:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a platform screen door fault, pls add 15mins train travel time from #JooKoon to #JurongEast towards #PasirRis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1041848384439476224",
+      "createdAt": "2018-09-18T08:36:26.000+08:00"
+    }
+  ]
+}

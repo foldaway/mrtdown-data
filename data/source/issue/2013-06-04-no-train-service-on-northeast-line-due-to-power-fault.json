@@ -1,0 +1,37 @@
+{
+  "id": "2013-06-04-no-train-service-on-northeast-line-due-to-power-fault",
+  "title": "No train service on Northeast Line due to power fault",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2013-06-04T21:34:49.000+08:00",
+  "endAt": "2013-06-04T21:38:53.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Train service has just resumed on SBST-operated Northeast Line b/w Outram &amp; Dhoby Ghaut both bounds. Free bus services ceased",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/341913153627635712",
+      "createdAt": "2013-06-04T21:43:42.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "Train service has just resumed on SBST-operated Northeast Line. Free bus services between affected stations ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/341911939783471105",
+      "createdAt": "2013-06-04T21:38:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No train service earlier on SBST-operated Northeast Line b/w Outram &amp; Dhoby Ghaut stations both bounds due to a power fault",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/341911816332513280",
+      "createdAt": "2013-06-04T21:38:24.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "No train service earlier on SBST-operated Northeast Line b/w Outram &amp; Dhoby Ghaut stations both bounds due to a power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/341910914645254144",
+      "createdAt": "2013-06-04T21:34:49.000+08:00"
+    }
+  ]
+}

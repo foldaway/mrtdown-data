@@ -1,0 +1,53 @@
+{
+  "id": "2013-05-12-ccl-power-cable-changes",
+  "title": "Power cable changes on Circle Line affecting travel times",
+  "componentIdsAffected": ["CCL"],
+  "startAt": "2013-05-12T06:00:00.000+08:00",
+  "endAt": "2013-05-12T10:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL]CLEARED: Train services between Bishan and BotanicGardens are now operating normally. http://t.co/IMwFZ4B2XT",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/333381801055760385",
+      "createdAt": "2013-05-12T08:43:09.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL]Expect longer travel time (~10min) between Bishan &amp; BotanicGardens stations due to power cable change. http://t.co/IMwFZ4B2XT",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/333338076422225920",
+      "createdAt": "2013-05-12T05:49:25.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL]On 12 May,6-10am,travel time between Bishan &amp; Botanic Gardens stations will be longer due to power cable change. http://t.co/IMwFZ4B2XT",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/333053890096418816",
+      "createdAt": "2013-05-11T11:00:09.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL]:We are changing power cables on 12 May to keep you on track. Pls schedule more travelling time btwn #Bishan n #BotanicGardens station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/331914788617736192",
+      "createdAt": "2013-05-08T07:33:46.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL]:We are changing power cables on 12 May to keep you on track. Pls schedule more travelling time btwn #Bishan n #BotanicGardens station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/331602978060513280",
+      "createdAt": "2013-05-07T10:54:45.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL]On Sun 12 May morning, travelling time between #Bishan and #BotanicGardens stations will be longer due to power cable change.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/331211097690480640",
+      "createdAt": "2013-05-06T08:57:33.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL]We're changing power cables 6-10am,12May to keep u on track.Schedule more travel time btwn Marymount &amp; Caldecott http://t.co/IMwFZ4B2XT",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/330204125411291137",
+      "createdAt": "2013-05-03T14:16:13.000+08:00"
+    }
+  ]
+}

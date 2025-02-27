@@ -1,0 +1,49 @@
+{
+  "id": "2015-03-03-ccl-no-train-service",
+  "title": "No train service from Labrador Park towards HarbourFront due to signal fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2015-03-03T07:51:11.000+08:00",
+  "endAt": "2015-03-03T08:10:02.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services between #PasirPanjang and #HarbourFront are now   running normally. Free bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572553066974597120",
+      "createdAt": "2015-03-03T08:24:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]   UPDATE: Train services have resumed. Trains and platforms are crowded. Free bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572550054562557954",
+      "createdAt": "2015-03-03T08:12:25.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]   UPDATE: Train service is resuming between #PasirPanjang and #HarbourFront. \n        Trains and platforms are crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572549456907780096",
+      "createdAt": "2015-03-03T08:10:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Free public   &amp; shuttle buses are now available at affected stations between   #PasirPanjang towards #HarbourFront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572546429555625984",
+      "createdAt": "2015-03-03T07:58:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Free public  &amp; shuttle buses are now available at affected stations between   #LabradorPark towards #HarbourFront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572545224364310528",
+      "createdAt": "2015-03-03T07:53:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: No train  service from #LabradorPark towards #HarbourFront  both bounds due to signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572544712126570496",
+      "createdAt": "2015-03-03T07:51:11.000+08:00"
+    }
+  ]
+}

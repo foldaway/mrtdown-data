@@ -1,0 +1,30 @@
+{
+  "id": "2017-07-07-nsl-train-fault",
+  "title": "Service disruption on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-07-07T08:31:54.000+08:00",
+  "endAt": "2017-07-07T09:13:48.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services between #Woodlands &amp; #JurongEast have resumed. We have stopped the free regular bus services.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/883131904211288064",
+      "createdAt": "2017-07-07T09:13:48.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Pls cater 10mins additional travel time between #Woodlands &amp; #JurongEast. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/883127608296091648",
+      "createdAt": "2017-07-07T08:56:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a train fault, pls add 30mins additional travel time between #Woodlands &amp; #JurongEast. Train service is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/883121358154063874",
+      "createdAt": "2017-07-07T08:31:54.000+08:00"
+    }
+  ]
+}

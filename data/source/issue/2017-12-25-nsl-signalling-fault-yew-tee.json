@@ -1,0 +1,37 @@
+{
+  "id": "2017-12-25-nsl-signalling-fault-yew-tee",
+  "title": "Signalling Fault at Yew Tee Station",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-12-25T22:43:22.000+08:00",
+  "endAt": "2017-12-25T23:22:39.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] CLEARED: Free regular bus svcs between #ChoaChuKang &amp; #Woodlands has ceased. Train service on North South Line had progressively returning to normal.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/945318955270340608",
+      "createdAt": "2017-12-25T23:42:56.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE:Train services resumed. Pls expect add 20mins train travel time btwn  #ChoaChuKang and #Woodlands. Free regular bus services are still available between #ChoaChuKang and #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/945313850382884864",
+      "createdAt": "2017-12-25T23:22:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a signalling fault at Yew Tee station, train services btwn #ChoaChuKang and #Woodlands will be delay for about 30 mins. Free regular bus service is available between #Choa Chu Kang and #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/945306514692087808",
+      "createdAt": "2017-12-25T22:53:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a signalling fault at Yew Tee station, train services btwn #Choa Chu Kang and #Woodlandwill be delay for about 30 mins. Free regular bus service is available between #Choa Chu Kang and #Woodland.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/945303964571938816",
+      "createdAt": "2017-12-25T22:43:22.000+08:00"
+    }
+  ]
+}

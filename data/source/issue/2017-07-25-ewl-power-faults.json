@@ -1,0 +1,35 @@
+{
+  "id": "2017-07-25-ewl-power-faults",
+  "title": "Urgen repair works on East-West Line",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2017-07-25T11:15:37.000+08:00",
+  "endAt": "2017-07-25T13:58:40.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services on the EWL are running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/889726576757161986",
+      "createdAt": "2017-07-25T13:58:40.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] CLEARED: Train svcs btwn #Queenstown &amp; #Bugis are progressively returning to normal. Free regular bus svcs are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/889696644354134016",
+      "createdAt": "2017-07-25T11:59:44.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Our engineers are currently carrying out urgent repair works. For more information, please refer to: https://t.co/Ycvp6Hkoak.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/889692966276681728",
+      "createdAt": "2017-07-25T11:45:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train svc from 11.30am btwn #Queenstown &amp; #Bugis both bounds for up to 30 mins due to urgent repair works.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/889685544061419520",
+      "createdAt": "2017-07-25T11:15:37.000+08:00"
+    }
+  ]
+}

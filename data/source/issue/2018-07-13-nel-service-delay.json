@@ -1,0 +1,24 @@
+{
+  "id": "2018-07-13-nel-service-delay",
+  "title": "NEL service delay due to train fault at Outram",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2018-07-13T08:26:57.000+08:00",
+  "endAt": "2018-07-13T08:42:32.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "0830hrs NEL train service is running normally",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1017569935705292801",
+      "createdAt": "2018-07-13T08:42:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "0820hrs NEL service towards HarbourFront NE1 is delayed due to a train fault at Outram NE3. Additional travel time of about 10 minutes may be expected both bound. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1017566010474356739",
+      "createdAt": "2018-07-13T08:26:57.000+08:00"
+    }
+  ]
+}

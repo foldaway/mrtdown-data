@@ -1,0 +1,37 @@
+{
+  "id": "2014-02-27-circle-line-signal-fault",
+  "title": "Major signal fault on Circle Line causing delays",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2014-02-27T07:36:46.000+08:00",
+  "endAt": "2014-02-27T08:53:32.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services from #PayaLebar towards #DhobyGhaut are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/438839282363404288",
+      "createdAt": "2014-02-27T08:53:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Estimate 10 mins additional travelling time from #PayaLebar to #DhobyGhaut towards #DhobyGhaut due to signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/438834151051890688",
+      "createdAt": "2014-02-27T08:33:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Estimate 20 mins additional travelling time from #PayaLebar to #DhobyGhaut towards #DhobyGhaut due to signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/438828959535362049",
+      "createdAt": "2014-02-27T08:12:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Estimate 20 mins additional travelling time from #PayaLebar to #DhobyGhaut towards #DhobyGhaut due to signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/438819963613093888",
+      "createdAt": "2014-02-27T07:36:46.000+08:00"
+    }
+  ]
+}

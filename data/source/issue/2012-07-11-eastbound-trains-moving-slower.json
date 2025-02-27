@@ -1,0 +1,31 @@
+{
+  "id": "2012-07-11-eastbound-trains-moving-slower",
+  "title": "Eastbound trains from Tanjong Pagar to City Hall moving slower",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-07-11T07:43:28.000+08:00",
+  "endAt": "2012-07-11T07:54:06.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:Due to trains moving slower earlier,platforms from Tanah Merah towards City Hall maybe crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/222853471555174400",
+      "createdAt": "2012-07-11T08:43:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Eastbound train service from Tanjong Pagar to City Hall running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/222841158072672256",
+      "createdAt": "2012-07-11T07:54:06.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Eastbound trains from Tanjong Pagar to City Hall moving slower.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/222838478780641280",
+      "createdAt": "2012-07-11T07:43:28.000+08:00"
+    }
+  ]
+}

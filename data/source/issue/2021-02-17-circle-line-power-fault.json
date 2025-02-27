@@ -1,0 +1,49 @@
+{
+  "id": "2021-02-17-circle-line-power-fault",
+  "title": "Power Fault on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2021-02-17T05:16:29.000+08:00",
+  "endAt": "2021-02-17T06:08:31.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL]: UPDATE : Train Services is running normally now. We are sorry for affecting your morning commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1361806322417602560",
+      "createdAt": "2021-02-17T06:35:03.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: CLEAR: Train service progressively restored. Please add 10mins travel time. Free regular bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1361801901495357441",
+      "createdAt": "2021-02-17T06:17:29.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] CLEAR: Train service progressively restored. Please add 10mins travel time. Free regular bus service still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1361799647421894660",
+      "createdAt": "2021-02-17T06:08:31.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Update: We gradually recovering train service. Please continue 15mins additional travel time. Free bus service available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1361790476727185413",
+      "createdAt": "2021-02-17T05:32:05.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] Update: Due to a power fault, please add 30mins additional travel time on the Circle Line. Free bus service available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1361788461208899587",
+      "createdAt": "2021-02-17T05:24:04.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to power fault, please add 30mins additional travel time on the Circle Line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1361786552880222208",
+      "createdAt": "2021-02-17T05:16:29.000+08:00"
+    }
+  ]
+}

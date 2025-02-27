@@ -1,0 +1,25 @@
+{
+  "id": "2012-06-18-southbound-trains-slow",
+  "title": "Southbound trains from Ang Mo Kio to Bishan moving slower due to track fault.",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-06-18T16:56:41.000+08:00",
+  "endAt": "2012-06-18T17:09:44.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:Southbound trains from Ang Mo Kio to Bishan are running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/214646066694471680",
+      "createdAt": "2012-06-18T17:09:44.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Southbound trains from Ang Mo Kio to Bishan moving slower due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/214642779391934464",
+      "createdAt": "2012-06-18T16:56:41.000+08:00"
+    }
+  ]
+}

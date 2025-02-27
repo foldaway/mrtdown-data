@@ -1,0 +1,49 @@
+{
+  "id": "2025-01-10-nsl-major-outage-cleared",
+  "title": "Service disruption on NSL between Marina South Pier and Bishan",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2025-01-10T18:40:33.000+08:00",
+  "endAt": "2025-01-10T18:40:33.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Fault cleared, train service between #MarinaSouthPier and #Bishan has resumed. Free regular bus svc btwn #MarinaSouthPier and #ToaPayoh has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1877666835803587001",
+      "createdAt": "2025-01-10T18:40:33.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] UPDATE: Train service between #MarinaSouthPier and #Bishan has resumed. Free regular bus svc btwn #MarinaSouthPier and #ToaPayoh has ceased. Trains are running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1877665230110802208",
+      "createdAt": "2025-01-10T18:34:10.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. Pls add 10mins train travel time btwn #MarinaSouthPier and #Bishan. Free regular bus svcs btwn #MarinaSouthPier and #ToaPayoh.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1877662999550599204",
+      "createdAt": "2025-01-10T18:25:19.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. Pls add 15mins train travel time btwn #MarinaSouthPier and #Bishan. Free regular bus svcs btwn #MarinaSouthPier and #ToaPayoh.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1877660563595305283",
+      "createdAt": "2025-01-10T18:15:38.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL] UPDATE: Due to a train fault, pls add 20mins train travel time btwn #MarinaSouthPier and #Bishan.  Free regular bus svcs btwn #MarinaSouthPier and #ToaPayoh. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1877659677481120065",
+      "createdAt": "2025-01-10T18:12:06.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a train fault, pls add 15mins train travel time btwn #MarinaSouthPier and #Bishan. Free regular bus svcs btwn #MarinaSouthPier and #ToaPayoh. Passengers are advised to use alternative route to continue their journey. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1877655134899184057",
+      "createdAt": "2025-01-10T17:54:03.000+08:00"
+    }
+  ]
+}

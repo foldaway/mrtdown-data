@@ -1,0 +1,54 @@
+{
+  "id": "2021-10-03-bukit-panjang-lrt-power-fault",
+  "title": "Power fault causing slower train movements towards Choa Chu Kang on Service B",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2021-10-03T07:08:58.000+08:00",
+  "endAt": "2021-10-03T09:19:19.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] CLEARED: Train service has resumed at 0918 hrs. If your journey has been affected, you may download an e-Travel Chit as proof of your travel at https://t.co/dYFVNdOVNs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1444472097024077830",
+      "createdAt": "2021-10-03T09:19:19.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT]: Due to a traction power fault at #SouthView, train service from #BukitPanjang to #ChoaChuKang will be delayed. For alternative travel options, please refer to https://t.co/SFAdrdHw9j.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1444466401096318980",
+      "createdAt": "2021-10-03T08:56:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Additional 15 mins train travel time from #ChoaChuKang to #BukitPanjang due to a power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1444463547614994436",
+      "createdAt": "2021-10-03T08:45:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Additional 20 mins train travel time from #BukitPanjang to #ChoaChuKang due to a power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1444459277427429378",
+      "createdAt": "2021-10-03T08:28:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Additional 20 mins train travel time from #ChoaChuKang to #BukitPanjang due to a power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1444453371549667329",
+      "createdAt": "2021-10-03T08:04:55.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT]: Due to a power fault, trains are moving slower towards #ChoaChuKang. There is train running in shuttle between #Bukit Panjang and #ChoaChuKang and Community Loop for Service B. We apologise for the inconvenience.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1444444865643773957",
+      "createdAt": "2021-10-03T07:31:07.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT]: Due to a power fault, trains are moving slower towards #ChoaChuKang on Service B. We are investigating the fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1444439294462992385",
+      "createdAt": "2021-10-03T07:08:58.000+08:00"
+    }
+  ]
+}

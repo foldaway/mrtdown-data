@@ -1,0 +1,36 @@
+{
+  "id": "2021-05-09-nel-service-delayed",
+  "title": "NEL service disruption due to signalling fault",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2021-05-09T07:47:46.000+08:00",
+  "endAt": "2021-05-09T08:43:39.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "NEL service has resumed. Once again, we are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1391192103900704768",
+      "createdAt": "2021-05-09T08:43:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL service is delayed for both direction due to a signalling fault at Farrer Park NE8. Additional travel time of about 15 minutes may be expected. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1391188050936430594",
+      "createdAt": "2021-05-09T08:27:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL service is delayed for both direction due to a signalling fault at Farrer Park NE8. Additional travel time of about 10 minutes may be expected. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1391182597493981185",
+      "createdAt": "2021-05-09T08:05:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL service towards HarbourFront NE1 is delayed due to a signalling fault at Farrer Park NE8. Additional travel time of about 15 minutes may be expected. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1391178042333011970",
+      "createdAt": "2021-05-09T07:47:46.000+08:00"
+    }
+  ]
+}

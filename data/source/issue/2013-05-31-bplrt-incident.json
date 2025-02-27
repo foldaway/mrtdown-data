@@ -1,0 +1,25 @@
+{
+  "id": "2013-05-31-bplrt-incident",
+  "title": "Major Incident on Bukit Panjang LRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2013-05-31T20:51:25.000+08:00",
+  "endAt": "2013-05-31T22:04:22.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] CLEARED: Train services are now running normally.Free bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/340468800048746497",
+      "createdAt": "2013-05-31T22:04:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]: Due to an incident, expect addition traveling time of 10 min, free bus service activated.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/340450443350142976",
+      "createdAt": "2013-05-31T20:51:25.000+08:00"
+    }
+  ]
+}

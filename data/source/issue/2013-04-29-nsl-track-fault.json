@@ -1,0 +1,95 @@
+{
+  "id": "2013-04-29-nsl-track-fault",
+  "title": "Track fault causing slower speeds on NSL",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2013-04-29T19:11:01.000+08:00",
+  "endAt": "2013-04-30T05:30:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "NSL Update: Trains will travel slower from Somerset to Orchard NB. SMRT engineers can only rectify the fault after passenger service hours.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328903753019305985",
+      "createdAt": "2013-04-30T00:09:00.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE: Due to earlier track fault, trains will be travelling at a slower speed from Somerset towards Orchard.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328891231499329536",
+      "createdAt": "2013-04-29T23:19:14.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE: Due to earlier track fault, trains will be travelling at a slower speed from MarinaBay towards Orchard.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328885142074576896",
+      "createdAt": "2013-04-29T22:55:02.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE: Due to earlier track fault, trains will be travelling at a slower speed from #MarinaBay towards #Orchard.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328879459237261312",
+      "createdAt": "2013-04-29T22:32:28.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE: Due to earlier track fault, trains are still travelling at a slower speed from MarinaBay towards Orchard.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328874003727007744",
+      "createdAt": "2013-04-29T22:10:47.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE: Due to earlier track fault, trains are still travelling at a slower speed from #MarinaBay towards #Orchard.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328867170316582912",
+      "createdAt": "2013-04-29T21:43:38.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE:Estimate 10 mins additional travel time from #MarinaBay towards #AngMoKio due to track fault.  Our staff are recovering service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328859869207752706",
+      "createdAt": "2013-04-29T21:14:37.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE: Track fault believed to be caused by a rail crack. Trains safe for service but travelling at slower speed as safety precaution.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328850462621171712",
+      "createdAt": "2013-04-29T20:37:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]Only Northbound stretch btwn #Somerset &amp; #Orchard is affected. Estimated additional 10 mins travel time from #MarinaBay towards #AMK.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328849444277739520",
+      "createdAt": "2013-04-29T20:33:11.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE:Estimate 10 mins additional travel time from #MarinaBay towards #AngMoKio due to track fault. Our staff are recovering service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328843450323718145",
+      "createdAt": "2013-04-29T20:09:22.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]UPDATE: SMRT engineers are at affected track investigating the cause. They will rectify the fault after passenger service hours.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328839660895887360",
+      "createdAt": "2013-04-29T19:54:19.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE: Track fault on northbound btwn Somerset &amp; Orchard. Trains are travelling slower over the affected track as a safety precaution.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328839376769540096",
+      "createdAt": "2013-04-29T19:53:11.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE:Estimate 10 mins additional travel time from #MarinaBay towards #AngMoKio due to track fault.Our staff are recovering service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328835732028395520",
+      "createdAt": "2013-04-29T19:38:42.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]:Estimate 10 mins additional travelling time from #MarinaBay to #AngMoKio towards JurongEast due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/328828766287712256",
+      "createdAt": "2013-04-29T19:11:01.000+08:00"
+    }
+  ]
+}

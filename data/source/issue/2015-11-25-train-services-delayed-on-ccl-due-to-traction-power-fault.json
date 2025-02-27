@@ -1,0 +1,31 @@
+{
+  "id": "2015-11-25-train-services-delayed-on-ccl-due-to-traction-power-fault",
+  "title": "Train services delayed on the CCL due to traction power fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2015-11-25T05:22:29.000+08:00",
+  "endAt": "2015-11-25T05:32:58.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Normal Train service has resumed on the CCL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669302560260423680",
+      "createdAt": "2015-11-25T07:52:20.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Train service on the CCL has resumed. Traction power restored. Estimate additional 15 mins travelling time to your destination.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669267488559882242",
+      "createdAt": "2015-11-25T05:32:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train services will be delayed on the CCL due to traction power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/669264852867674112",
+      "createdAt": "2015-11-25T05:22:29.000+08:00"
+    }
+  ]
+}

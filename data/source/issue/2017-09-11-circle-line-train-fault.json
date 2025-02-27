@@ -1,0 +1,49 @@
+{
+  "id": "2017-09-11-circle-line-train-fault",
+  "title": "Train fault causing delays on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2017-09-11T09:25:39.000+08:00",
+  "endAt": "2017-09-11T10:27:47.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL] Update: Train services are running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/907068121323757569",
+      "createdAt": "2017-09-11T10:27:47.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL Update]Train Service are progressively recovering. Free Regular Bus service available till 10.30am.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/907064823061536769",
+      "createdAt": "2017-09-11T10:14:40.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL Update] Train Service are progressively recovering. Free Regular Bus service available till 10.30am.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/907061820904448000",
+      "createdAt": "2017-09-11T10:02:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL Update] Pls add 30mins additional travelling time from #PayaLebar to\n  #BuonaVista due to train fault. Free Regular bus available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/907059663450939392",
+      "createdAt": "2017-09-11T09:54:10.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL Update] Pls add 30mins additional travelling time from #PayaLebar to\n  #BuonaVista due to a train fault. Train Service still available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/907056283529785344",
+      "createdAt": "2017-09-11T09:40:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] Pls add 15mins additional travelling time from #PayaLebar to\n  #BuonaVista due to a train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/907052485688168448",
+      "createdAt": "2017-09-11T09:25:39.000+08:00"
+    }
+  ]
+}

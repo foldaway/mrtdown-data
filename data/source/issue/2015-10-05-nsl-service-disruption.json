@@ -1,0 +1,25 @@
+{
+  "id": "2015-10-05-nsl-service-disruption",
+  "title": "NSL service disruption",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-10-05T07:16:45.000+08:00",
+  "endAt": "2015-10-05T07:16:45.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #AngMoKio to #Khatib towards #JurongEast are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/650811827241127937",
+      "createdAt": "2015-10-05T07:16:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a track fault, there will be an estimated 5 mins additional travelling time from Ang Mo Kio to Khatib towards Jurong East.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/650800006790647809",
+      "createdAt": "2015-10-05T06:29:47.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "2014-02-25-nsl-track-fault",
+  "title": "Track fault causing delays on the North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-02-25T21:52:43.000+08:00",
+  "endAt": "2014-02-25T22:22:24.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #AngMoKio towards #MarinaBay are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/438318063432118272",
+      "createdAt": "2014-02-25T22:22:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Estimate 5 mins additional travel time from #AngMoKio towards #MarinaBay due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/438316975807135744",
+      "createdAt": "2014-02-25T22:18:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Estimate 10 mins additional travel time from #AngMoKio towards #MarinaBay due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/438315626327572480",
+      "createdAt": "2014-02-25T22:12:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Estimate 20 mins additional travel time from #AngMoKio towards #MarinaBay due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/438311467809394688",
+      "createdAt": "2014-02-25T21:56:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 15 mins additional travelling time from #AngMoKio to #MarinaBay towards MarinaBay due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/438310591573147648",
+      "createdAt": "2014-02-25T21:52:43.000+08:00"
+    }
+  ]
+}

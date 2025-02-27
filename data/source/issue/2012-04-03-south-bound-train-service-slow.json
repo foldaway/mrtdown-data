@@ -1,0 +1,25 @@
+{
+  "id": "2012-04-03-south-bound-train-service-slow",
+  "title": "South-bound train service is traveling slower due to track fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-04-03T08:42:46.000+08:00",
+  "endAt": "2012-04-03T10:03:17.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "Update: South-bound train service running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/186997267574689793",
+      "createdAt": "2012-04-03T10:03:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "South-bound train service is  traveling slower due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/186977003793158146",
+      "createdAt": "2012-04-03T08:42:46.000+08:00"
+    }
+  ]
+}

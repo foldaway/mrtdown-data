@@ -1,0 +1,48 @@
+{
+  "id": "2021-07-29-ccl-train-fault",
+  "title": "Train fault causing delays on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2021-07-29T09:08:25.000+08:00",
+  "endAt": "2021-07-29T10:05:07.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services between #Caldecott and #KentRidge have resumed. Free regular bus services have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1420568721089699844",
+      "createdAt": "2021-07-29T10:15:50.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services between #Caldecott and #KentRidge have resumed. Free regular bus services are still available between #Bishan and #Harbourfront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1420566025523785738",
+      "createdAt": "2021-07-29T10:05:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Additional 15mins train travel time between #Caldecott and #KentRidge due to a train fault. A train shuttle service is still available between #Caldecott and #Kent Ridge. Free regular buses are available between #Bishan and #Harbourfront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1420562272125022211",
+      "createdAt": "2021-07-29T09:50:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Additional 30mins train travel time between #Caldecott and #KentRidge due to a train fault. A train shuttle service is still available between #Caldecott and #KentRidge. Free regular buses are available between #Bishan and #Harbourfront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1420557335420817409",
+      "createdAt": "2021-07-29T09:30:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Additional 30mins train travel time between #Caldecott and #KentRidge due to a train fault. A train shuttle service is available between #Caldecott and #KentRidge. Free regular buses are available between #Bishan and #Harbourfront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1420553552116682756",
+      "createdAt": "2021-07-29T09:15:34.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to a train fault, please add 30 minutes train travel time between  #Caldecott and #KentRidge. Free regular bus services are available between #Bishan and #Harbourfront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1420551755222249473",
+      "createdAt": "2021-07-29T09:08:25.000+08:00"
+    }
+  ]
+}

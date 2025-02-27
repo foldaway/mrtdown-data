@@ -1,0 +1,30 @@
+{
+  "id": "2017-10-27-nsl-track-fault",
+  "title": "Track fault causing delays",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-10-27T05:56:48.000+08:00",
+  "endAt": "2017-10-27T06:34:51.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train svcs btwn #AngMoKio and #Bishan have resumed. Free regular bus svcs have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/923687547389190144",
+      "createdAt": "2017-10-27T07:07:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Update: Train svcs btwn AngMoKio &amp; Bishan have resumed. Free regular bus svcs is still available between AngMoKio &amp; MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/923679343724838912",
+      "createdAt": "2017-10-27T06:34:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a track fault, pls add 20mins train travel time from #AngMoKio to #Bishan towards #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/923669769135439872",
+      "createdAt": "2017-10-27T05:56:48.000+08:00"
+    }
+  ]
+}

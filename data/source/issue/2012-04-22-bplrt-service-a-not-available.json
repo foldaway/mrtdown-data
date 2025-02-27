@@ -1,0 +1,55 @@
+{
+  "id": "2012-04-22-bplrt-service-a-not-available",
+  "title": "BPLRT service disruption",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2012-04-22T17:32:58.000+08:00",
+  "endAt": "2012-04-22T19:33:07.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "BPLRT UPDATE:Service A is running again.We apologise for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/194026040543289346",
+      "createdAt": "2012-04-22T19:33:07.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "BPLRT UPDATE:Service B and C are available.Recovery of Service A is still in progress. Updates to come.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/194022573040865280",
+      "createdAt": "2012-04-22T19:19:20.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "BPLRT UPDATE:Service B and C are in operation.Recovery of Service A is in progress.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/194012423655669761",
+      "createdAt": "2012-04-22T18:39:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "BPLRT UPDATE:Service A is still not available.Passengers are advised to take Service B and C.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/194007454865043456",
+      "createdAt": "2012-04-22T18:19:16.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "BPLRT UPDATE:Service C is running again but Service A is still not available.Passengers are advised to take Service B.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/194002387051102208",
+      "createdAt": "2012-04-22T17:59:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "BPLRT UPDATE:Service A and C currently not available.Passengers are advised to take Service B.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/193999099241037825",
+      "createdAt": "2012-04-22T17:46:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "BPLRT:Service A not available.Passengers advised to take Service B.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/193995802161586176",
+      "createdAt": "2012-04-22T17:32:58.000+08:00"
+    }
+  ]
+}

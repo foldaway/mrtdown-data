@@ -1,0 +1,54 @@
+{
+  "id": "2017-10-03-nel-service-delay",
+  "title": "North East Line service disruption",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2017-10-03T13:31:54.000+08:00",
+  "endAt": "2017-10-03T14:41:09.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "NEL is back to regular service. Free bus rides and Bridging Bus Services have ceased. Once again, we are very sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/915104418437017600",
+      "createdAt": "2017-10-03T14:41:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "02:16pm: NEL is back to regular service. Free buses still available NE17 Punggol to NE15 Buangkok Once again, we are very sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/915099044531150848",
+      "createdAt": "2017-10-03T14:19:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "02:05pm: NEL service towards HarbourFront NE1 is delayed due to a train fault. Additional travel time of about 20 minutes may be expected. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/915096725689217024",
+      "createdAt": "2017-10-03T14:10:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "02:00pm: No train svc between NE17 Punggol to NE15 Buangkok due to a train fault. Free bus rides available at designated bus stops near NEL stns. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/915095452034277376",
+      "createdAt": "2017-10-03T14:05:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "01:45pm: NEL delay - To assist with your journey, free bus rides are available at NE17 Punggol to NE15 Buangkok designated bus stops near NEL stations. Please approach staff if \nyou need help.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/915091739571924993",
+      "createdAt": "2017-10-03T13:50:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "01:30pm: NEL delay - To assist with your journey, free bus rides are available at designated bus\nstops near affected NEL stations. Bridging buses are also activated.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/915088637963812865",
+      "createdAt": "2017-10-03T13:38:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "01:15pm: NEL svc is delayed due to a train fault. Additional travel time of about 15 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/915086988964794368",
+      "createdAt": "2017-10-03T13:31:54.000+08:00"
+    }
+  ]
+}

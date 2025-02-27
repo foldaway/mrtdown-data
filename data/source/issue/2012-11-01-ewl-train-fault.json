@@ -1,0 +1,23 @@
+{
+  "id": "2012-11-01-ewl-train-fault",
+  "title": "Train Fault at East-West Line",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2012-11-01T10:38:16.000+08:00",
+  "endAt": "2012-11-01T10:47:50.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #Aljunied towards #PasirRis are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/263834708566228992",
+      "createdAt": "2012-11-01T10:47:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 5 mins additional travelling time from #Aljunied to #TanahMerah towards PasirRis due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/263832298439462912",
+      "createdAt": "2012-11-01T10:38:16.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "2017-05-26-nsl-signalling-fault",
+  "title": "Signalling Fault in NSL",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2017-05-28T14:56:29.000+08:00",
+  "endAt": "2017-05-28T16:00:46.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL]Update: Free bus service between #MarinaBay &amp; #MarinaSouthPier has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/868741048607981568",
+      "createdAt": "2017-05-28T16:09:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]Update: Train service between #MarinaBay &amp; #MarinaSouthPier has resumed. Free regular bus service is still available between both stns.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/868738807213940736",
+      "createdAt": "2017-05-28T16:00:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]Update: Due to a signalling fault, free regular bus service is available between #Marinabay &amp; #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/868734538326786049",
+      "createdAt": "2017-05-28T15:43:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]Update: Due to a signalling fault, free regular bus service is still available between #Marinabay &amp; #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/868729664432242688",
+      "createdAt": "2017-05-28T15:24:26.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a signalling fault, there is no train service between #Marinabay &amp; #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/868722629103964160",
+      "createdAt": "2017-05-28T14:56:29.000+08:00"
+    }
+  ]
+}

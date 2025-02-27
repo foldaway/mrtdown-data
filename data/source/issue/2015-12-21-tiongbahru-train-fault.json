@@ -1,0 +1,43 @@
+{
+  "id": "2015-12-21-tiongbahru-train-fault",
+  "title": "Train fault reported at Tiong Bahru",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2015-12-21T10:22:05.000+08:00",
+  "endAt": "2015-12-21T10:45:48.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #Bugis towards #JooKoon are now operating normally. We apologize for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/678768302420656128",
+      "createdAt": "2015-12-21T10:45:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Estimate 10mins additional travel time from #Bugis towards #JooKoon due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/678766850184843269",
+      "createdAt": "2015-12-21T10:40:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Estimate 5 mins additional travel time from #Bugis towards #JooKoon due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/678765350360453124",
+      "createdAt": "2015-12-21T10:34:05.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Estimate 5 mins additional travelling time from #TiongBahru to #JurongEast towards JooKoon due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/678763779325169664",
+      "createdAt": "2015-12-21T10:27:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] A train fault has been reported at TiongBahru WB. Trains are moving slower towards Joo Koon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/678762333133398016",
+      "createdAt": "2015-12-21T10:22:05.000+08:00"
+    }
+  ]
+}

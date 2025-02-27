@@ -1,0 +1,31 @@
+{
+  "id": "2018-12-09-bplrt-no-train-services",
+  "title": "Train services suspended due to power fault",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2018-12-09T20:44:04.000+08:00",
+  "endAt": "2018-12-09T21:02:46.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] CLEARED: Train services have resumed. Free regular and bridging bus services have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1071753964813578241",
+      "createdAt": "2018-12-09T21:10:32.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] UPDATE: The fault has been rectified. Train service is progreesively returning to normal. Do continue to add 15 mins train travel time. Free regular and bridging bus services are still available at the affected stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1071752011022983168",
+      "createdAt": "2018-12-09T21:02:46.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT] Due to a power fault, there will be no train services system-wide. Free regular and bridging bus services are available at all affected stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1071747306213396480",
+      "createdAt": "2018-12-09T20:44:04.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "2017-07-05-ewl-train-fault",
+  "title": "East West Line train fault causing delays",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-07-05T19:02:16.000+08:00",
+  "endAt": "2017-07-05T19:29:33.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE: Train fault at #JooKoon has been cleared. Trains are progressively back to normal speed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/882562088471678978",
+      "createdAt": "2017-07-05T19:29:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 10 mins travel time from #JurongEast to #JooKoon,due to an earlier train fault at #JooKoon. Train svc is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/882557993098690560",
+      "createdAt": "2017-07-05T19:13:17.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a train fault, pls add 15 mins travel time from #JurongEast to #JooKoon towards #JooKoon. Train service is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/882555221771145216",
+      "createdAt": "2017-07-05T19:02:16.000+08:00"
+    }
+  ]
+}

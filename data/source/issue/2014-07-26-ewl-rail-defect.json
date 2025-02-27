@@ -1,0 +1,37 @@
+{
+  "id": "2014-07-26-ewl-rail-defect",
+  "title": "Major service disruption due to rail defect on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2014-07-26T16:24:12.000+08:00",
+  "endAt": "2014-07-26T17:17:52.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #OutramPark towards #Kallang are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/492961991955214337",
+      "createdAt": "2014-07-26T17:17:52.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Estimate 20 mins additional travel time from OutramPark towards Kallang due to rail defect. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/492955678500073473",
+      "createdAt": "2014-07-26T16:52:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE: Estimate 20 mins additional travelling time from #OutramPark to #Kallang towards PasirRis due to rail defect.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/492948938052231169",
+      "createdAt": "2014-07-26T16:26:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 20 mins additional travelling time from #OutramPark to #Lavender towards PasirRis due to rail defect.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/492948486946435072",
+      "createdAt": "2014-07-26T16:24:12.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "id": "2021-03-29-nsl-signalling-fault",
+  "title": "Service Disruption Due to Signalling Fault on North-South Line",
+  "componentIdsAffected": [
+    "NSL",
+    "EWL",
+    "CCL",
+    "NEL",
+    "DTL"
+  ],
+  "startAt": "2021-03-29T05:47:22.000+08:00",
+  "endAt": "2021-03-29T10:20:47.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] UPDATE: Train services have resumed. Free regular bus and bridging bus services have ceased. We apologise to commuters who were inconvenienced with longer journeys.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376365123686649856",
+      "createdAt": "2021-03-29T10:46:31.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: The reset was successfully completed. Train services are progressively returning to normal. Free regular bus &amp; bridging bus services are still available between #ToaPayoh &amp; #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376358647219941384",
+      "createdAt": "2021-03-29T10:20:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: At ard 10am, there will be a reset of the signalling system. During this period, there will be no train svcs btwn #ToaPayoh &amp; #MarinaSouthPier for approximately 15mins. Free regular bus &amp; bridging bus services are available between #ToaPayoh &amp; #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376350467945426946",
+      "createdAt": "2021-03-29T09:48:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a signalling fault, pls add 45mins train travel time between #RafflesPlace &amp; #Bishan. Free regular bus &amp; bridging bus services are available. Commuters heading towards the city are advised to take the EWL via Jurong East, CCL via Bishan, NEL and DTL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376335888016310273",
+      "createdAt": "2021-03-29T08:50:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a signalling fault, please add 45mins train travel time btwn #RafflesPlace and #Bishan. Free regular bus and bridging bus svcs are available. Commuters heading towards the city are advised to take the EWL via Jurong East, CCL via Bishan, NEL and DTL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376332059946283011",
+      "createdAt": "2021-03-29T08:35:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a signalling fault, pls add 45mins train travel time btwn #RafflesPlace &amp; #Bishan. Free regular bus &amp; bridging bus svcs are available. Commuters heading towards the city are advised to take the EWL via Jurong East, CCL via Bishan, NEL and DTL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376327312291979266",
+      "createdAt": "2021-03-29T08:16:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a signalling fault, please add 45mins train travel time btwn #RafflesPlace and #Bishan. Free regular bus and bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376320738706169857",
+      "createdAt": "2021-03-29T07:50:09.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL] UPDATE: Due to a signalling fault, please add 45mins train travel time btwn #RafflesPlace and #Bishan. Free regular bus and bridging bus services are available. We are sorry for affecting your morning commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376315861615570948",
+      "createdAt": "2021-03-29T07:30:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a signaling fault, pls add 35mins train travel time btwn #RafflesPlace and #Novena. Free regular and bridging bus services are available between #MarinaSouthPier and #ToaPayoh.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376305131180855297",
+      "createdAt": "2021-03-29T06:48:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to signaling fault, passengers are advised to avoid taking trains btwn #Bishan and #Marina South Pier. Free regular &amp; bridging bus svcs btwn #ToaPayoh and #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376303204296613888",
+      "createdAt": "2021-03-29T06:40:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Train svc is available btwn #Novena and #RafflesPlace.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376298491144589313",
+      "createdAt": "2021-03-29T06:21:45.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a signalling fault, pls add 25mins train travel time btwn #Novena and #RafflesPlace. Free bus and free bridging bus services are available between Toa Payoh and Marina South Pier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376291112508301312",
+      "createdAt": "2021-03-29T05:52:26.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a signalling fault, pls add 25mins train travel time btwn #RafflesPlace and #ToaPayoh. Free bus and free bridging bus services are available between MarinaSouthPier and ToaPayoh.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376289838425497605",
+      "createdAt": "2021-03-29T05:47:22.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "2015-07-28-nel-service-delayed",
+  "title": "North East Line service disruption due to signalling fault",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2015-07-28T19:55:13.000+08:00",
+  "endAt": "2015-07-28T20:32:43.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "28/07, 8.32pm: NEL full svc has resumed. Free bus rides have ceased. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/626007375598608385",
+      "createdAt": "2015-07-28T20:32:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "28/07, 8.12pm: NEL full svc has resumed. Free Passing-by Bus service available between Sengkang &amp; Punggol. We are sorry",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/626006098080731137",
+      "createdAt": "2015-07-28T20:27:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "28/07, 8.12pm: NEL full svc has resumed. Free Passing-by Bus service available between Sengkang &amp; Punggol. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/626002926629093376",
+      "createdAt": "2015-07-28T20:15:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "28/07, 7.53pm: NEL svc is delayed in both directions due to a signalling fault. Additional travel time of up to 15 minutes may be expected",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/625997939127640064",
+      "createdAt": "2015-07-28T19:55:13.000+08:00"
+    }
+  ]
+}

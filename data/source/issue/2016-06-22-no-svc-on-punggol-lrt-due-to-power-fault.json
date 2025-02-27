@@ -1,0 +1,31 @@
+{
+  "id": "2016-06-22-no-svc-on-punggol-lrt-due-to-power-fault",
+  "title": "Service disruption on Punggol LRT due to power fault",
+  "componentIdsAffected": [
+    "PGLRT"
+  ],
+  "startAt": "2016-06-22T17:59:04.000+08:00",
+  "endAt": "2016-06-22T18:23:21.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "22/06, 6.53pm: Punggol LRT full svc has resumed. Free bus rides &amp; bridging bus services have ceased. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/745570699264172032",
+      "createdAt": "2016-06-22T18:54:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "22/06, 6.21pm: Punggol LRT has resumed full service. Free bus rides are still available.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/745562812672442369",
+      "createdAt": "2016-06-22T18:23:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "22/06, 5.49pm: No Svc on Punggol LRT due to Power Fault - Free Bus Rides &amp; Bridging Bus Services are available at designated bus stops.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/745556701378555904",
+      "createdAt": "2016-06-22T17:59:04.000+08:00"
+    }
+  ]
+}

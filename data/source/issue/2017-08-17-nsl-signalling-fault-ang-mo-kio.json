@@ -1,0 +1,42 @@
+{
+  "id": "2017-08-17-nsl-signalling-fault-ang-mo-kio",
+  "title": "New Signalling System Fault Near Ang Mo Kio",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-08-17T18:18:56.000+08:00",
+  "endAt": "2017-08-17T20:18:27.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL]CLEARED: Train services btwn #MarinaSouthPier and #Yishun have resumed. Free regular bus and free bridging bus services have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/898157072813932544",
+      "createdAt": "2017-08-17T20:18:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Pls add 15mins train travel time between #MarinaSouthPier &amp; #Yishun,due to a new signalling system fault.Train svc is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/898151798325755904",
+      "createdAt": "2017-08-17T19:57:30.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE:Pls add 40mins train travel time between #MarinaSouthPier &amp; #Yishun,due to a new signalling system fault.Train svc is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/898137576514625536",
+      "createdAt": "2017-08-17T19:00:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Pls add 25mins travel time between #MarinaSouthPier &amp; #Yishun,due to a signalling system fault.Train svc is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/898133261611712512",
+      "createdAt": "2017-08-17T18:43:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a New Signalling System fault near Ang Mo Kio, pls add 20mins travel time btwn #Yishun &amp; #Marina South Pier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/898126996076544000",
+      "createdAt": "2017-08-17T18:18:56.000+08:00"
+    }
+  ]
+}

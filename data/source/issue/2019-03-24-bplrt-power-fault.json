@@ -1,0 +1,31 @@
+{
+  "id": "2019-03-24-bplrt-power-fault",
+  "title": "Service Disruption due to Power Fault on BPLRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2019-03-24T08:58:18.000+08:00",
+  "endAt": "2019-03-24T09:13:58.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] CLEARED: Train services between #ChoaChuKang and #BukitPanjang have resumed. Free regular and bridging bus services have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1109628578897920000",
+      "createdAt": "2019-03-24T09:30:43.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] UPDATE: The power fault has been cleared. Train services are progressively being restored. Free regular and bridging bus services are still available at all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1109624362615754753",
+      "createdAt": "2019-03-24T09:13:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Due to a power fault, there is no train service between Choa Chu Kang and Bukit Panjang stations.  Free regular and bridging buses are available for all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1109620421140189185",
+      "createdAt": "2019-03-24T08:58:18.000+08:00"
+    }
+  ]
+}

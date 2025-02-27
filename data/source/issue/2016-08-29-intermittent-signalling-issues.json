@@ -1,0 +1,103 @@
+{
+  "id": "2016-08-29-intermittent-signalling-issues",
+  "title": "Intermittent signalling issues affecting Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2016-08-29T14:54:59.000+08:00",
+  "endAt": "2016-08-31T12:44:42.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Due to intermittent signalling issues, trains may have longer dwell times at stations. Pls cater for longer travel time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770917497562210304",
+      "createdAt": "2016-08-31T17:33:49.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Due to intermittent train fault/signalling issues, please cater for additional travel time on the CCL today.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770908587677802496",
+      "createdAt": "2016-08-31T16:58:24.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Due to intermittent signalling issues, expect an additional 5 minutes of travelling time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770859878633975808",
+      "createdAt": "2016-08-31T13:44:51.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Update: Normal service resumed. All commuters are advised to hold onto the handrails as they may experience intermittent braking.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770844740161974272",
+      "createdAt": "2016-08-31T12:44:42.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Due to intermittent signalling fault, expect additional 5 minutes  of waiting time between Caldecott and Harbour Front.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770805620958191616",
+      "createdAt": "2016-08-31T10:09:15.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "{CCL] UPDATE: Due to intermittent signalling fault, expect additional 5 mins of waiting time between Dhoby Ghaut / Marina Bay and Paya Lebar",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770798539580452864",
+      "createdAt": "2016-08-31T09:41:07.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Due to intermittent signalling issues, expect an additional 5-10minutes of travelling time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770792696432644096",
+      "createdAt": "2016-08-31T09:17:54.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Due to intermittent signalling issues, expect an additional 10 minutes of travelling time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770783246569254913",
+      "createdAt": "2016-08-31T08:40:21.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Due to intermittent signalling issues, expect an additional 3-5 minutes of travelling time",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770777652546244608",
+      "createdAt": "2016-08-31T08:18:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]:UPDATE: Due to intermittent signalling issues expect an additional 3-5 minutes of travelling time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770600261626626048",
+      "createdAt": "2016-08-30T20:33:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]:UPDATE: Due to intermittent signalling issues expect an additional 5-10 minutes of travelling time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770582563744120832",
+      "createdAt": "2016-08-30T19:22:54.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]:UPDATE: Due to intermittent signalling issues expect an additional 5 minutes of travelling time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770578884773371905",
+      "createdAt": "2016-08-30T19:08:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]:UPDATE: All commuters who are standing on board the trains to hold onto the handrails as they may experience intermittent braking.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770553142530363392",
+      "createdAt": "2016-08-30T17:26:00.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Due to intermittent signalling issues expect an additional 5 -10 minutes of travelling time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770552530812055552",
+      "createdAt": "2016-08-30T17:23:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]Due to intermittent signalling issues, pls expect longer travelling time until the end of svc today. More info: https://t.co/teIi6ba8yk",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770152752420749312",
+      "createdAt": "2016-08-29T14:54:59.000+08:00"
+    }
+  ]
+}

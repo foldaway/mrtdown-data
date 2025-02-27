@@ -1,0 +1,31 @@
+{
+  "id": "2023-04-11-signal-fault",
+  "title": "Signal Fault Affecting Thomson–East Coast Line",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2023-04-11T07:50:17.000+08:00",
+  "endAt": "2023-04-11T11:31:32.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[TEL]: Train services are running normally. We are sorry to affect your morning commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1645630635007152128",
+      "createdAt": "2023-04-11T11:31:32.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL]: Train services are progressively resuming.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1645586730475732992",
+      "createdAt": "2023-04-11T08:37:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: Please allow for additional 10 mins travel time between Woodlands North and Gardens by the Bay in both directions due to a signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1645574954535235585",
+      "createdAt": "2023-04-11T07:50:17.000+08:00"
+    }
+  ]
+}

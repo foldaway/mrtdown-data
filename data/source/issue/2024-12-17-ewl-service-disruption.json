@@ -1,0 +1,30 @@
+{
+  "id": "2024-12-17-ewl-service-disruption",
+  "title": "Service disruption on the East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2024-12-17T19:51:12.000+08:00",
+  "endAt": "2024-12-17T19:51:12.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Fault cleared, train services are progressively being restored. Free regular bus service is available between Gul Circle and Jurong East.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1868987307837342009",
+      "createdAt": "2024-12-17T19:51:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track fault, pls add 10mins train travel time between #JurongEast and #GulCircle. Free regular bus service is available between Gul Circle and Jurong East",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1868985526294135081",
+      "createdAt": "2024-12-17T19:44:08.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a track fault, pls add 15mins train travel time between #JurongEast and #GulCircle.  Free regular bus service is available between Gul Circle and Jurong East.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1868983745795199257",
+      "createdAt": "2024-12-17T19:37:03.000+08:00"
+    }
+  ]
+}

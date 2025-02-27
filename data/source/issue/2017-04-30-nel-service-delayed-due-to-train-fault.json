@@ -1,0 +1,36 @@
+{
+  "id": "2017-04-30-nel-service-delayed-due-to-train-fault",
+  "title": "NEL service delayed due to train fault",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2017-04-30T21:18:39.000+08:00",
+  "endAt": "2017-04-30T21:51:50.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "30/04, 10.02pm: NEL service has resumed since 9:41pm. Free bus rides have ceased. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/858683299316629504",
+      "createdAt": "2017-04-30T22:03:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "30/04, 9.41pm: NEL svc has resumed. Free bus rides are still available at designated bus stops. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/858680296694095872",
+      "createdAt": "2017-04-30T21:51:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "30/04, 9.35pm: NEL delay - free bus rides available btw HarbourFront NE1 &amp; Dhoby Ghaut NE6 at designated bus stops near affected stns.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/858676340861452288",
+      "createdAt": "2017-04-30T21:36:07.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "30/04, 9.17pm: NEL svc is delayed due to a train fault at Outram Park. Additional travel time of up to 15 minutes may be expected.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/858671942735245312",
+      "createdAt": "2017-04-30T21:18:39.000+08:00"
+    }
+  ]
+}

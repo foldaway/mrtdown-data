@@ -1,0 +1,37 @@
+{
+  "id": "2013-06-19-nel-train-fault",
+  "title": "Service disruption due to train fault on North East Line",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2013-06-19T18:43:13.000+08:00",
+  "endAt": "2013-06-19T20:53:22.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[SBST]North-East Line update: Train service along NEL has resumed. Free buses between Woodleigh and Punggol stations has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/347346340847706114",
+      "createdAt": "2013-06-19T21:33:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[SBST]North-East Line update: Train service along NEL has resumed. Free buses between Woodleigh and Punggol stations still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/347336301223243778",
+      "createdAt": "2013-06-19T20:53:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[SBST]North-East Line update: No train svc btwn Woodleigh and Punggol. Shuttle bus &amp; free boarding svc available btwn Woodleigh &amp; Punggol.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/347316732974743553",
+      "createdAt": "2013-06-19T19:35:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[SBST] NEL: Estimate 30 minutes delay along North-East Line due to a train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/347303548243038209",
+      "createdAt": "2013-06-19T18:43:13.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "2019-01-22-train-fault-at-marsiling",
+  "title": "Train fault causing delays on the North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2019-01-22T08:06:11.000+08:00",
+  "endAt": "2019-01-22T09:03:44.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train svc from #Woodlands to #YewTee has resumed. Free regular bus svcs have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1087517419961085952",
+      "createdAt": "2019-01-22T09:08:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular bus svcs btwn #Woodlands and #YewTee has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1087516638310584321",
+      "createdAt": "2019-01-22T09:05:46.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. We apologize for any inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1087516128543272960",
+      "createdAt": "2019-01-22T09:03:44.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Due to an earlier train fault, pls add 10mins train travel time from #Woodlands to #YewTee towards #JurongEast. Free regular bus svcs btwn #Woodlands and #YewTee are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1087513175711313921",
+      "createdAt": "2019-01-22T08:52:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL UPDATE]: Due to a train fault, pls add 15mins train travel time from #Woodlands to #YewTee towards #JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1087508831221903361",
+      "createdAt": "2019-01-22T08:34:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular bus svcs btwn #Woodlands and #YewTee. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1087503088838107137",
+      "createdAt": "2019-01-22T08:11:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a train fault at Marsiling, pls add 30mins train travel time from #Woodlands to #YewTee towards #JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1087501646186180608",
+      "createdAt": "2019-01-22T08:06:11.000+08:00"
+    }
+  ]
+}

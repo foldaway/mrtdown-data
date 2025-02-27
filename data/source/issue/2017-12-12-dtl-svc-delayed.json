@@ -1,0 +1,24 @@
+{
+  "id": "2017-12-12-dtl-svc-delayed",
+  "title": "Downtown Line service disruption",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2017-12-12T19:47:24.000+08:00",
+  "endAt": "2017-12-12T20:13:44.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "DTL is back to regular svc. Once again we are very sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/940555263915859969",
+      "createdAt": "2017-12-12T20:13:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "DTL svc is delayed due to Signalling fault at DT32 Tampines Stn. Additional travel time of about 10minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/940548639591559169",
+      "createdAt": "2017-12-12T19:47:24.000+08:00"
+    }
+  ]
+}

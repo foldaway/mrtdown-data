@@ -1,0 +1,26 @@
+{
+  "id": "2011-12-23-wet-weather-delays",
+  "title": "Delay due to wet weather affecting train speed",
+  "componentIdsAffected": [
+    "EWL",
+    "NSL",
+    "BPLRT"
+  ],
+  "startAt": "2011-12-23T14:49:58.000+08:00",
+  "endAt": "2011-12-24T00:00:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Evening train service on all lines are running slower due to wet weather. Please allow for extra travel time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/150156777156132864",
+      "createdAt": "2011-12-23T18:12:20.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE: Due to wet weather, trains are travelling slower. Please allow extra time to travel.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/150105851246555136",
+      "createdAt": "2011-12-23T14:49:58.000+08:00"
+    }
+  ]
+}

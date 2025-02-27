@@ -1,0 +1,43 @@
+{
+  "id": "2013-04-02-bplrt-service-outage",
+  "title": "No service at all BPLRT stations due to suspected power fault",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2013-04-02T12:16:51.000+08:00",
+  "endAt": "2013-04-02T12:56:17.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] Train services have resumed at all BPLRT stations. Free bus services between all BPLRT stations have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/318952164007501824",
+      "createdAt": "2013-04-02T13:04:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Train services have resumed at all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/318949987067260929",
+      "createdAt": "2013-04-02T12:56:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] All services at BPLRT stations not available. Free bus services between all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/318947903320256513",
+      "createdAt": "2013-04-02T12:48:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] No service at all BPLRT stations. Free bus bridging services between all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/318942647035236352",
+      "createdAt": "2013-04-02T12:27:07.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT] No service at all BPLRT stations due to suspected power fault. Our staff is attending to recovery works.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/318940063700504577",
+      "createdAt": "2013-04-02T12:16:51.000+08:00"
+    }
+  ]
+}

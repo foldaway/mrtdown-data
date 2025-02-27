@@ -1,0 +1,25 @@
+{
+  "id": "2015-10-23-no-dtl-service-between-bgs-dt14-and-cnt-dt19",
+  "title": "No DTL service between BGS DT14 and CNT DT19",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2015-10-23T07:38:28.000+08:00",
+  "endAt": "2015-10-23T07:43:52.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Train service has resumed on Downtown Line stations. Free Boarding of buses still available. We are sorry for inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/657341632862273536",
+      "createdAt": "2015-10-23T07:43:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No DTL svc btwn BGS DT14 &amp; CNT DT19. To continue your journey free bus rides available at designated bus stops.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/657340270837501953",
+      "createdAt": "2015-10-23T07:38:28.000+08:00"
+    }
+  ]
+}

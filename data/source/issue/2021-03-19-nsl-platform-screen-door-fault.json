@@ -1,0 +1,37 @@
+{
+  "id": "2021-03-19-nsl-platform-screen-door-fault",
+  "title": "Platform screen door fault causing delays",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2021-03-19T08:28:13.000+08:00",
+  "endAt": "2021-03-19T16:03:39.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Normal train service has resumed from #AngMoKio to #Braddell towards #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1372821051420205056",
+      "createdAt": "2021-03-19T16:03:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a platform screen door fault at #Bishan, trains will be travelling at a slower speed from #AngMoKio to #Braddell towards #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1372771283721592836",
+      "createdAt": "2021-03-19T12:45:53.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a platform screen door fault, pls add 5mins train travel time from #AngMoKio to #Braddell towards #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1372727959371456517",
+      "createdAt": "2021-03-19T09:53:44.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a platform screen door fault, pls add 10mins train travel time from #AngMoKio to #Braddell towards #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1372706438192107521",
+      "createdAt": "2021-03-19T08:28:13.000+08:00"
+    }
+  ]
+}

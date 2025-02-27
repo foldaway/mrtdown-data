@@ -1,0 +1,49 @@
+{
+  "id": "2016-04-26-no-train-service-from-kranji-to-woodlands-towards-marinabay",
+  "title": "Major service disruption on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2016-04-26T06:31:52.000+08:00",
+  "endAt": "2016-04-26T06:51:03.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services between Kranji and Woodlands are now running normally.Free regular bus &amp; shuttle bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724742154841559040",
+      "createdAt": "2016-04-26T07:29:29.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]Fault cleared but some trains &amp; stations are still crowded due to congestion.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724739835638878209",
+      "createdAt": "2016-04-26T07:20:16.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]CLEARED: Free public &amp; shuttle buses are still available at affected stations between #ChoaChuKang and #Woodlands station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724732482638077953",
+      "createdAt": "2016-04-26T06:51:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Free public &amp; shuttle buses are now available at affected stations between #ChoaChuKang and #Woodlands station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724729948817084416",
+      "createdAt": "2016-04-26T06:40:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to traction power fault, there is no train service from Kranji to Woodlands station towards MarinaBay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724729427851014144",
+      "createdAt": "2016-04-26T06:38:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: No train service from #Kranji to #Woodlands towards MarinaBay. Please seek alternative transport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724727656265064448",
+      "createdAt": "2016-04-26T06:31:52.000+08:00"
+    }
+  ]
+}

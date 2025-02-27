@@ -1,0 +1,20 @@
+{
+  "id": "2022-09-23-sengkang-lrt-maintenance",
+  "title": "Sengkang LRT maintenance works on 24 & 25 Sep",
+  "componentIdsAffected": [
+    "SKLRT",
+    "PGLRT"
+  ],
+  "startAt": "2022-09-24T00:00:00.000+08:00",
+  "endAt": "2022-09-26T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Pls note: maintenance works will be carried out on the Sengkang LRT on 24 &amp; 25 Sep: a) Sengkang East via Ranggung (SE5) &amp; b) Sengkang West via Renjong (SW8). LRT services will be available in the opposite direction while Punggol LRT services will operate as usual.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1573232506639618048",
+      "createdAt": "2022-09-23T16:47:13.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "2016-02-19-train-fault",
+  "title": "Train fault causing delays between Jurong East and Joo Koon",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-02-19T17:43:22.000+08:00",
+  "endAt": "2016-02-19T18:02:58.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] Services between #JurongEast and #JooKoon have resumed. Free shuttle bus and bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/700647972296495104",
+      "createdAt": "2016-02-19T19:47:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] Service between #JurongEast and #JooKoon have resumed. Free shuttle bus and bus services are still ongoing.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/700640562894938112",
+      "createdAt": "2016-02-19T19:18:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] Service between #JurongEast and #JooKoon Stations have resumed. Free shuttle bus and free bus services are still available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/700635792863920129",
+      "createdAt": "2016-02-19T18:59:24.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Service on both bounds have resumed. Free bus services and shuttles will continue until further notice",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/700631472768622592",
+      "createdAt": "2016-02-19T18:42:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a recurring train fault, no train service between  #JurongEast to #JooKoon. Expected resumption time: 30 minutes.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/700630061666316289",
+      "createdAt": "2016-02-19T18:36:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a recurring train fault, please expect 20 minutes additional traveling time from #JurongEast to #JooKoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/700626544264245248",
+      "createdAt": "2016-02-19T18:22:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Free bus service are still available at affected stations between #JurongEast and #JooKoon stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/700621762342420480",
+      "createdAt": "2016-02-19T18:03:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train service from #JurongEast to #JooKoon has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/700621588643713024",
+      "createdAt": "2016-02-19T18:02:58.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: There is no train service between #JurongEast and #JooKoon due to train fault. Free bus service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/700620967727333376",
+      "createdAt": "2016-02-19T18:00:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 25 mins additional travelling time from #JurongEast to #JooKoon towards Joo Koon due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/700618970756349952",
+      "createdAt": "2016-02-19T17:52:34.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Estimate 15 mins additional travelling time from #JurongEast to #JooKoon towards Joo Koon due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/700616657333387265",
+      "createdAt": "2016-02-19T17:43:22.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "2013-04-22-nsl-maintenance-work-woodlands-admiralty",
+  "title": "Maintenance work on the North-South Line from Woodlands to Admiralty",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2013-04-22T17:18:22.000+08:00",
+  "endAt": "2013-05-14T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "[NSL] We’re doing maintenance work to keep you on track. From Woodlands to Admiralty, 22 April -14 May. http://t.co/H0pp8ChIp9",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/326263700308779008",
+      "createdAt": "2013-04-22T17:18:22.000+08:00"
+    }
+  ]
+}

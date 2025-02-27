@@ -1,0 +1,19 @@
+{
+  "id": "2019-07-24-maintenance-nel-stations-closure",
+  "title": "Early closure of five NEL stations due to maintenance",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2019-07-26T00:00:00.000+08:00",
+  "endAt": "2019-07-28T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Due to intensified maintenance works, five NEL stations between NE17 Punggol &amp; NE13 Kovan will close earlier at around 11.00pm this Fri &amp; Sat – 26 &amp; 27 July. Shuttle Bus 21 will be in operation to serve the closed stations while Service 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1153982110681579526",
+      "createdAt": "2019-07-24T18:55:49.000+08:00"
+    }
+  ]
+}

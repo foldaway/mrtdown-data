@@ -1,0 +1,49 @@
+{
+  "id": "2015-02-03-nsl-train-fault",
+  "title": "Train fault causing additional travel time on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-02-03T07:06:36.000+08:00",
+  "endAt": "2015-02-03T07:28:46.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL]CLEARED: Train service between Marina South Pier and MarinaBay are running normally now. Free bus service and bus bridging have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/562405887457759233",
+      "createdAt": "2015-02-03T08:23:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Update: Train service has resumed. Free bus service is still available between Marina South Pier and CityHall station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/562401215821012992",
+      "createdAt": "2015-02-03T08:04:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Update: Train service has resumed. Bus bridging is available between Marina South Pier and Marina Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/562399242413543426",
+      "createdAt": "2015-02-03T07:56:42.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NSL Train service has resumed from Marina Bay to City Hall. However, No train service between Marina Bay and Marina South Pier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/562394842160832512",
+      "createdAt": "2015-02-03T07:39:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NSL Train service resumed from Marina Bay to City Hall. No train service to Marina South Pier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/562392209165524993",
+      "createdAt": "2015-02-03T07:28:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 20 mins additional travelling time from #Marina South Pier to #RafflesPlace towards JurongEast due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/562386632184066048",
+      "createdAt": "2015-02-03T07:06:36.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "2020-10-14-ewl-power-fault",
+  "title": "Train services disrupted due to power fault",
+  "componentIdsAffected": [
+    "EWL",
+    "NSL"
+  ],
+  "startAt": "2020-10-14T19:57:45.000+08:00",
+  "endAt": "2020-10-14T22:39:23.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Train service on EWL and NSL have resumed. Free regular bus services and free bridging bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316391698080043008",
+      "createdAt": "2020-10-14T22:53:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train service on EWL and NSL have resumed. Free regular bus services and free bridging bus services are still available between Queenstown and Tuas Link, and between Jurong East and Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316388135324975104",
+      "createdAt": "2020-10-14T22:39:23.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] UPDATE: Due to a power fault, there is no train svc between #Dover and #TuasLink. Free regular bus services &amp; free bridging bus services are available btwn #Queenstown and #TuasLink. For alternative travel options, please refer to https://t.co/H0JXeZvUHA.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316377849801048065",
+      "createdAt": "2020-10-14T21:58:31.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] UPDATE: Due to a power fault, there is no train svc between #Dover and #TuasLink. Free regular bus services &amp; free bridging bus services are available between #Queenstown and #TuasLink. For alternative travel options, please refer to https://t.co/H0JXeZvUHA.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316372493230239747",
+      "createdAt": "2020-10-14T21:37:14.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] UPDATE: Due to a power fault, there is no train svc between #Dover and #TuasLink. Free regular bus service and free bridging bus services are available between #Queenstown and #TuasLink. For alternative travel options, please refer to https://t.co/H0JXeZvUHA.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316368870731444225",
+      "createdAt": "2020-10-14T21:22:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a power fault, there is no train svc between #Dover and #TuasLink. Free regular bus service and free bridging bus services are available btwn #Queenstown and #TuasLink. For alternative travel options, please refer to https://t.co/H0JXeZvUHA.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316365040845377538",
+      "createdAt": "2020-10-14T21:07:37.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] UPDATE: Due to a power fault, there is no train service btwn #Dover and #TuasLink. Free regular bus service and free bridging bus services are available btwn #Queenstown and #TuasLink. For alternative travel options, please refer to https://t.co/H0JXeZvUHA.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316361440467460098",
+      "createdAt": "2020-10-14T20:53:18.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] UPDATE: Due to a power fault, there is no train svc btwn #Dover and #TuasLink. Free regular bus service and free bridging bus services are available btwn #Queenstown and #TuasLink. For alternative travel options, please refer to https://t.co/H0JXeZvUHA.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316356957289103362",
+      "createdAt": "2020-10-14T20:35:30.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a power fault, there is no train svc btwn #Dover and #TuasLink. Free regular bus service and free bridging bus services are available btwn #Queenstown and #TuasLink. For alternative travel options, please refer to https://t.co/H0JXeZvUHA.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316353555142328321",
+      "createdAt": "2020-10-14T20:21:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a power fault, there is no train services between #Clementi and #TuasLink. Free regular bus &amp; free bridging bus svcs are available btwn #Queenstown and #TuasLink. For alternative travel options, please refer to https://t.co/H0JXeZvUHA",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316351040560664576",
+      "createdAt": "2020-10-14T20:11:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a power fault, there is no train services between #Clementi and #GulCircle. Free regular bus &amp; free bridging bus svcs are available btwn #Queenstown and #TuasLink. For alternative travel options, please refer to https://t.co/YxfqNiZDVT",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316347457295413248",
+      "createdAt": "2020-10-14T19:57:45.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "2023-11-06-signaling-fault",
+  "title": "Signaling Fault on Thomson–East Coast Line",
+  "componentIdsAffected": ["TEL"],
+  "startAt": "2023-11-06T17:36:59.000+08:00",
+  "endAt": "2023-11-06T18:22:53.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[TEL]: Free Regular Bus and Free Bridging Bus services have ceased. We apologise for affecting your evening commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1721473220396843295",
+      "createdAt": "2023-11-06T18:22:53.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL]: Train Services are progressively resuming. Free Regular Bus and Free Bridging Bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1721470703990661593",
+      "createdAt": "2023-11-06T18:12:53.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a Signaling Fault, there will be an additional travelling time of 5 minutes from Orchard to Gardens By the Bay stations. Free Regular Bus and Free Bridging Bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1721468550156812465",
+      "createdAt": "2023-11-06T18:04:20.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a Signaling Fault, there will be an additional travelling time of 15 minutes from Orchard to Gardens By the Bay station. Commuters are advised to continue their journey on alternate lines.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1721465124278673467",
+      "createdAt": "2023-11-06T17:50:43.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a Signaling Fault, there will be an additional travelling time of 10 minutes from Orchard to Gardens By the Bay station. Commuters are advised to continue their journey on alternate lines.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1721461668671373543",
+      "createdAt": "2023-11-06T17:36:59.000+08:00"
+    }
+  ]
+}

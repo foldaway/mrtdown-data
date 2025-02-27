@@ -1,0 +1,25 @@
+{
+  "id": "2017-07-21-ewl-track-fault",
+  "title": "Track Fault on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-07-21T17:34:43.000+08:00",
+  "endAt": "2017-07-21T17:45:59.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE:Track fault cleared, train services are progressively being restored.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/888334229444022273",
+      "createdAt": "2017-07-21T17:45:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:Due to a track fault(not related to new signalling system),Pls add 15mins travel time from #Clementi to #TanjongPagar towards PasirRis",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/888331394983710720",
+      "createdAt": "2017-07-21T17:34:43.000+08:00"
+    }
+  ]
+}

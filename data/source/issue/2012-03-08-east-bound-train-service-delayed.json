@@ -1,0 +1,36 @@
+{
+  "id": "2012-03-08-east-bound-train-service-delayed",
+  "title": "East-bound train service delayed due to track fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-03-08T07:16:07.000+08:00",
+  "endAt": "2012-03-08T07:45:02.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "UPDATE: Track fault cleared.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/177560849974702080",
+      "createdAt": "2012-03-08T09:06:20.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Train service between Tampines and Pasir Ris delayed in both directions due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/177552953526325248",
+      "createdAt": "2012-03-08T08:34:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE:East-bound train service running smoothly again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/177540389799075842",
+      "createdAt": "2012-03-08T07:45:02.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "East-bound train service from Tampines to Pasir Ris delayed due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/177533112698421249",
+      "createdAt": "2012-03-08T07:16:07.000+08:00"
+    }
+  ]
+}

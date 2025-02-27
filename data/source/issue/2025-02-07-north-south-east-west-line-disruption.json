@@ -1,0 +1,92 @@
+{
+  "id": "2025-02-07-north-south-east-west-line-disruption",
+  "title": "North-South Line and East-West Line disruption",
+  "componentIdsAffected": [
+    "NSL",
+    "EWL"
+  ],
+  "startAt": "2025-02-07T08:24:52.000+08:00",
+  "endAt": "2025-02-07T20:02:31.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSEWL] CLEARED: SMRT has successfully launched trains from Bishan Depot. Train services on North-South Line and East-West Line has resumed back to normal service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887834320926282020",
+      "createdAt": "2025-02-07T20:02:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSEWL]: Please expect longer intervals between trains of about 3.5 minutes on NSEWL during this evening's peak hours. Crowded trains are expected. Commuters are advised to take alternative lines or other modes of transport to continue their journey. We apologise for any",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887786609703260579",
+      "createdAt": "2025-02-07T16:52:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Pls expect a longer waiting time of up to 5 minutes for NSEWL train services due to an engineering vehicle fault. Free regular bus &amp; bridging bus services are available between Bishan &amp; Woodlands. Pax are advised to use TEL or CCL. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887670333802787231",
+      "createdAt": "2025-02-07T09:10:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Pls expect longer waiting time of up to 5 mins of NSEWL train services due to engineering vehicle fault. Free regular bus &amp; bridging bus services are available between Bishan &amp; Woodlands. Pax are advised to use TEL or CCL. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887666288828539302",
+      "createdAt": "2025-02-07T08:54:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Pls expect longer waiting time of up to 5 mins of NSEWL train service due to engineering vehicle fault. Free regular &amp; bridging bus services are available between Bishan &amp; Woodlands. Pax are advised to use TEL and CCL. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887658752591208917",
+      "createdAt": "2025-02-07T08:24:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Pls expect longer waiting time of up to 5 mins of NSEWL train service due to engineering vehicle fault. Free regular bus &amp; bridging bus services are available between Bishan &amp; Woodlands. Pax are advised to use TEL and CCL. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887655580573311284",
+      "createdAt": "2025-02-07T08:12:16.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Please expect longer waiting time of up to 5 mins of NSEWL train service due to engineering vehicle fault. Free regular bus and bridging bus services are available between Bishan and Woodlands. Pax are advised to use TEL and CCL. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887649673110036824",
+      "createdAt": "2025-02-07T07:48:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to engineering vehicle fault, please expect longer waiting time of 5 mins of NSEWL. Free regular bus services &amp; bridging bus services are available between #Bishan &amp; #Woodlands. Pax are advised to use TEL and CCL. We apologise for the delay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887645908059525615",
+      "createdAt": "2025-02-07T07:33:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to engineering vehicle fault, please add 10 minutes travelling time from #AngMoKio to #JurongEast. Free regular bus services &amp; bridging bus services are available btwn #Bishan &amp; #Woodlands. Pax are advised to use TEL and CCL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887641545924616656",
+      "createdAt": "2025-02-07T07:16:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a train fault, pls add 10mins travelling time from #AngMoKio to #JurongEast towards #JurongEast. Passengers travelling towards #Woodlands can take alternate route via TEL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887635976304140340",
+      "createdAt": "2025-02-07T06:54:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a train fault, pls add 10mins travelling time from #AngMoKio to #JurongEast towards #JurongEast. Passenger can take alternate route via TEL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887632416938074377",
+      "createdAt": "2025-02-07T06:40:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a train fault, pls add 10mins travelling time from #AngMoKio to #JurongEast towards #JurongEast.Free regular bus and free bridging bus services  are available between  #AngMoKio and #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887626075112685735",
+      "createdAt": "2025-02-07T06:15:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a train fault, pls add 10mins travelling time from #AngMoKio to #JurongEast towards #JurongEast. Passenger can alternate route via TEL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887625104554926285",
+      "createdAt": "2025-02-07T06:11:09.000+08:00"
+    }
+  ]
+}

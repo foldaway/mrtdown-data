@@ -1,0 +1,53 @@
+{
+  "id": "2013-05-19-ccl-power-cable-maintenance",
+  "title": "Power cable maintenance on Circle Line",
+  "componentIdsAffected": ["CCL"],
+  "startAt": "2013-05-19T06:00:00.000+08:00",
+  "endAt": "2013-05-19T10:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL]CLEARED:Train services between Caldecott&amp;HollandVillage are now operating normally.http://t.co/ncAmAQI128",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335936151250681856",
+      "createdAt": "2013-05-19T09:53:14.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL] Expect longer travel time (~15min) between Caldecott &amp; HollandVillage stations due to power cable change. http://t.co/ncAmAQI128",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335872438216847360",
+      "createdAt": "2013-05-19T05:40:04.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL]On 19 May,6-10am, travel time between Caldecott &amp; HollandVillage will be longer due to power cable change\nhttp://t.co/ncAmAQI128",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335634695943499776",
+      "createdAt": "2013-05-18T13:55:21.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL]:On 19 May,6-10am, travel time between Caldecott &amp; HollandVillage will be longer due to power cable change.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335272714711490560",
+      "createdAt": "2013-05-17T13:56:58.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL]:On 19 May,6-10am, travel time between Caldecott &amp; HollandVillage will be longer due to power cable change.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/334913637238071296",
+      "createdAt": "2013-05-16T14:10:08.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL]:On 19 May,6-10am, travel time between Caldecott &amp; HollandVillage will be longer due to power cable change.\nhttp://t.co/IMwFZ4B2XT",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/334548625503973377",
+      "createdAt": "2013-05-15T13:59:42.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]We're changing power cables 6-10am,19May to keep u on track.Schedule more travel time btwn BotanicGdns&amp;Farrer Rd http://t.co/IMwFZ4B2XT",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/330204758008807424",
+      "createdAt": "2013-05-03T14:18:43.000+08:00"
+    }
+  ]
+}

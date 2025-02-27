@@ -1,0 +1,25 @@
+{
+  "id": "2013-10-31-circle-line-train-fault",
+  "title": "Train Fault on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2013-10-31T19:29:50.000+08:00",
+  "endAt": "2013-10-31T19:47:16.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services from #DhobyGhaut towards #PayaLebar are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/395879641275056128",
+      "createdAt": "2013-10-31T19:47:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]Due to a train Fault, expect longer travelling time from #DhobyGhaut towards #PayaLebar. Trains and platforms are crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/395875253328412672",
+      "createdAt": "2013-10-31T19:29:50.000+08:00"
+    }
+  ]
+}

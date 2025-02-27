@@ -1,0 +1,31 @@
+{
+  "id": "2014-01-16-east-west-line-track-fault",
+  "title": "East West Line track fault causing delays",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2014-01-16T08:08:27.000+08:00",
+  "endAt": "2014-01-16T10:46:57.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train service from #Bugis to #Aljunied is now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/423647534532157440",
+      "createdAt": "2014-01-16T10:46:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:No train service from #Bugis to #Aljunied towards Pasir Ris due to defective 3rd rail. Power supply shut down for about 10 mins.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/423644652755881984",
+      "createdAt": "2014-01-16T10:35:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 5 mins additional travelling time from #Kallang to #Aljunied towards PasirRis due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/423607643412762625",
+      "createdAt": "2014-01-16T08:08:27.000+08:00"
+    }
+  ]
+}

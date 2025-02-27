@@ -1,0 +1,31 @@
+{
+  "id": "2013-10-11-eastern-outage",
+  "title": "Train service disruption due to defective 3rd rail",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2013-10-11T12:12:58.000+08:00",
+  "endAt": "2013-10-11T12:42:04.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Free bus service from #Tampines to #TanahMerah has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/388528301041389569",
+      "createdAt": "2013-10-11T12:55:40.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train service from #Tampines towards #TanahMerah is now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/388524881794461697",
+      "createdAt": "2013-10-11T12:42:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:No train service from #Tampines to #TanahMerah towards JooKoon due to defective 3rd rail. Power supply shut down for 30min.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/388517557855997952",
+      "createdAt": "2013-10-11T12:12:58.000+08:00"
+    }
+  ]
+}

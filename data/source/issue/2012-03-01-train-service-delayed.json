@@ -1,0 +1,24 @@
+{
+  "id": "2012-03-01-train-service-delayed",
+  "title": "Train service delayed due to track fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-03-01T07:30:31.000+08:00",
+  "endAt": "2012-03-01T07:55:37.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Train service from Tanah Merah to Changi Airport running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/175006341394472960",
+      "createdAt": "2012-03-01T07:55:37.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Train service from Tanah Merah to Changi Airport delayed due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/175000023174623232",
+      "createdAt": "2012-03-01T07:30:31.000+08:00"
+    }
+  ]
+}

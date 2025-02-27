@@ -1,0 +1,24 @@
+{
+  "id": "2016-02-10-nel-service-disruption",
+  "title": "NEL Service Disruption",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2016-02-10T11:01:37.000+08:00",
+  "endAt": "2016-02-10T11:05:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "1105h NEL is back to regular svc. Once again, we are very sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/697255481048367104",
+      "createdAt": "2016-02-10T11:07:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "1055h NEL svc twds HarbourFront NE1 delayed due to a train fault. Additional travel time of up to 10 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/697254060928270336",
+      "createdAt": "2016-02-10T11:01:37.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "2016-10-06-ewl-track-fault",
+  "title": "Track Fault on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-10-06T09:31:22.000+08:00",
+  "endAt": "2016-10-06T10:21:15.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Normal train services from #OutramPark to #Eunos towards #PasirRis has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/783854604144349184",
+      "createdAt": "2016-10-06T10:21:15.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Pls cater 10 mins additional travel time from #OutramPark to #Eunos towards Pasir Ris. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/783851762872487936",
+      "createdAt": "2016-10-06T10:09:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE: Please expect additional 15mins traveling time from Outram Park to Eunos due to track fault near Paya Lebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/783848116529209344",
+      "createdAt": "2016-10-06T09:55:28.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Pls cater 15 mins additional travel time from #OutramPark towards #Eunos due to a track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/783844500259037186",
+      "createdAt": "2016-10-06T09:41:06.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Pls cater  10 mins additional travelling time from #Outram Park to #Eunos towards #PasirRis due to a track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/783842048134615040",
+      "createdAt": "2016-10-06T09:31:22.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "2018-02-14-nsl-slow-train-travel",
+  "title": "Service disruption on the North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2018-02-14T05:45:54.000+08:00",
+  "endAt": "2018-02-14T10:07:50.000+08:00",
+  "type": "outage",
+  "severity": "minor",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train svcs from #AngMoKio to #RafflesPlace are running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/963595608681472000",
+      "createdAt": "2018-02-14T10:07:50.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[NSL Update]: Due to maintenance work, trains are travelling slower near #RafflesPlace. Please add 10mins additional train travel time from #AngMoKio to #Raffles Place before 10am on Wed, 14 Feb.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/963579650415865856",
+      "createdAt": "2018-02-14T09:04:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to maintenance work, south-bound trains are travelling slower near #RafflesPlace. Please add 20mins additional train travel time from #AngMoKio to #RafflesPlace before 10am on Wed, 14 Feb.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/963529692669071360",
+      "createdAt": "2018-02-14T05:45:54.000+08:00"
+    }
+  ]
+}

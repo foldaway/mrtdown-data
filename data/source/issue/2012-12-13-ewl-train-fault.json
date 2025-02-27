@@ -1,0 +1,31 @@
+{
+  "id": "2012-12-13-ewl-train-fault",
+  "title": "Train Fault on East West Line causing delays",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-12-13T23:05:32.000+08:00",
+  "endAt": "2012-12-13T23:32:46.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #Redhill towards #Clementi are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/279247496595787776",
+      "createdAt": "2012-12-13T23:32:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Estimate 10 mins additional travel time from #Redhill towards #Clementi due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/279244662575882240",
+      "createdAt": "2012-12-13T23:21:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 15 mins additional travelling time from #Redhill to #Clementi towards JooKoon due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/279240644302610432",
+      "createdAt": "2012-12-13T23:05:32.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "2016-02-05-early-closure-tanah-merah-pasir-ris-joo-koon-jurong-east",
+  "title": "Early closure on the East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-02-05T12:01:11.000+08:00",
+  "endAt": "2016-02-14T12:01:11.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Half hour early closure btw Tanah Merah to Pasir Ris and Joo Koon to Jurong East stations along the EWL starts tmr: https://t.co/aHmfCtZ10X",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/698414356850081792",
+      "createdAt": "2016-02-13T15:52:13.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Half hour early closure for Tanah Merah to Pasir Ris and Joo Koon to Jurong East stations along the EWL from 14 Feb:https://t.co/aHmfCtZ10X",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/695457113452126208",
+      "createdAt": "2016-02-05T12:01:11.000+08:00"
+    }
+  ]
+}

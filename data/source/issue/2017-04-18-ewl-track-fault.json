@@ -1,0 +1,66 @@
+{
+  "id": "2017-04-18-ewl-track-fault",
+  "title": "Major track fault on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-04-18T08:35:35.000+08:00",
+  "endAt": "2017-04-18T10:58:46.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #PayaLebar to #Simei towards #PasirRis have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854167290127949824",
+      "createdAt": "2017-04-18T10:58:46.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Pls cater 5 mins additional travel time from #PayaLebar to #Simei. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854161720109027328",
+      "createdAt": "2017-04-18T10:36:38.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Pls cater 10mins additional travel time from #PayaLebar to #Simei. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854157908979793920",
+      "createdAt": "2017-04-18T10:21:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Pls add 15 mins travel time from #PayaLebar to #Simei, due to a track fault at #Simei. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854152447488532480",
+      "createdAt": "2017-04-18T09:59:47.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE:  Pls cater 15 mins additional travel time from #PayaLebar to #Simei. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854147579814191104",
+      "createdAt": "2017-04-18T09:40:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 15 mins travel time from #PayaLebar to #Simei, due to a track fault at #Simei. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854142557902721024",
+      "createdAt": "2017-04-18T09:20:29.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Pls cater 15 mins additional travel time from #PayaLebar to #Simei. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854138088120909825",
+      "createdAt": "2017-04-18T09:02:43.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Pls cater 10 mins additional travel time from #PayaLebar to #Simei. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854136697604276224",
+      "createdAt": "2017-04-18T08:57:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track fault, pls add 10 mins travel time from #PayaLebar to #Simei towards #PasirRis. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854131259231977474",
+      "createdAt": "2017-04-18T08:35:35.000+08:00"
+    }
+  ]
+}

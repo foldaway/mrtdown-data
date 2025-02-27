@@ -1,0 +1,43 @@
+{
+  "id": "2017-02-13-nsl-train-fault",
+  "title": "Train fault causing delay on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-02-13T07:58:50.000+08:00",
+  "endAt": "2017-02-13T08:26:57.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Free regular bus service has ceased. We apologise for the inconvenience.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/830942307075567616",
+      "createdAt": "2017-02-13T08:50:58.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Train svc resumed. Free reg bus is still available. Trains are travelling at a slower speed due to an earlier train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/830936260487241728",
+      "createdAt": "2017-02-13T08:26:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Estimated resumption time at 8:25am. Free regular bus service is still available. We apologise for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/830934397314428929",
+      "createdAt": "2017-02-13T08:19:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Free regular bus is available between #Woodlands and #Yishun in both direction due to a train fault at #Admiralty",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/830931308196962304",
+      "createdAt": "2017-02-13T08:07:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Pls add 20mins travelling time from #JurongEast to #AngMoKio towards #MarinaSouthPier due to a train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/830929185350627328",
+      "createdAt": "2017-02-13T07:58:50.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "2020-12-03-sengkang-lrt-maintenance",
+  "title": "Maintenance works on the Sengkang LRT this weekend",
+  "componentIdsAffected": [
+    "SKLRT"
+  ],
+  "startAt": "2020-12-05T00:00:00.000+08:00",
+  "endAt": "2020-12-07T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "We will be conducting maintenance works on the Sengkang LRT system this weekend, 5 &amp; 6 Dec 2020. Train service will operate as usual on one platform while the other will be closed for works. Service on both platforms will commence as usual on Monday, 7 Dec 2020.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1334298026437820417",
+      "createdAt": "2020-12-03T08:46:54.000+08:00"
+    }
+  ]
+}

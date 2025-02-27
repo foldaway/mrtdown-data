@@ -1,0 +1,31 @@
+{
+  "id": "2012-12-31-circle-line-track-fault",
+  "title": "Track Fault on Circle Line Leading to Delays",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2012-12-31T07:32:56.000+08:00",
+  "endAt": "2012-12-31T12:49:58.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services from #PayaLebar towards #MacPherson are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/285608713153306625",
+      "createdAt": "2012-12-31T12:49:58.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Estimate 5 mins additional travelling time from #PayaLebar to #MacPherson towards HarbourFront due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/285535570485207042",
+      "createdAt": "2012-12-31T07:59:19.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Estimate 3 mins additional travelling time from #PayaLebar to #MacPherson towards HarbourFront due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/285528930193125376",
+      "createdAt": "2012-12-31T07:32:56.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "2023-07-05-tuaslink-tuaswestroad-outage",
+  "title": "Major service disruption between Tuas Link and Tuas West Road",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2023-07-05T05:32:16.000+08:00",
+  "endAt": "2023-07-05T07:21:08.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] UPDATE: Train svc btwn #TuasLink and #TuasWestRoad has resumed. Free regular bus and bridging bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1676370587265175552",
+      "createdAt": "2023-07-05T07:21:08.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a factory fire near #TuasLink, there is no train svc btwn #TuasLink and #TuasWestRoad. Free regular bus and bridging bus services are available btwn #TuasLink and #TuasWestRoad.  Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1676366695798304773",
+      "createdAt": "2023-07-05T07:05:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a factory fire near #TuasLink, there is no train svc btwn #TuasLink and #TuasWestRoad. Free regular bus and bridging bus services are available btwn #TuasLink and #TuasWestRoad. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1676362624467091457",
+      "createdAt": "2023-07-05T06:49:29.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a factory fire near #TuasLink, there is no train svc btwn #TuasLink and #TuasWestRoad. Free regular bus and bridging bus services are available btwn #TuasLink and  #TuasWestRoad.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1676357631009755137",
+      "createdAt": "2023-07-05T06:29:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a factory fire near #TuasLink, there is no train svc btwn #TuasLink and #TuasWestRoad. Free regular bus and bridging bus services are available btwn #TuasLink and #TuasWestRoad.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1676352708750757888",
+      "createdAt": "2023-07-05T06:10:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a factory fire near #TuasLink, there is no train svc btwn #TuasLink and #TuasWestRoad. Free regular bus services are available btwn #TuasLink and  #TuasWestRoad.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1676348522533376000",
+      "createdAt": "2023-07-05T05:53:27.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a factory fire near #TuasLink, there is no train svc btwn #TuasLink and #TuasWestRoad. Free regular bus services are available btwn #TuasLink and #TuasWestRoad.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1676343191845613573",
+      "createdAt": "2023-07-05T05:32:16.000+08:00"
+    }
+  ]
+}

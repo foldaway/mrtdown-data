@@ -1,0 +1,43 @@
+{
+  "id": "2020-10-14-circle-line-service-disruption",
+  "title": "Service disruption on Circle Line due to power fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2020-10-14T20:13:46.000+08:00",
+  "endAt": "2020-10-14T20:40:08.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEAR: Free regular bus &amp; free bridging bus svcs has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316371301087416320",
+      "createdAt": "2020-10-14T21:32:29.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] CLEAR: Train service progressively restored. Please add 25mins travel time on the Circle Line. Free regular bus &amp; free bridging bus svcs are available btwn #PayaLebar and #Habourfront..",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316358126036086784",
+      "createdAt": "2020-10-14T20:40:08.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] UPDATE: Due to a power fault, there is no train services between #Serangoon and #Habourfront. Please add 25mins travel time between #DhobyGhaut and #Serangoon Free regular bus &amp; free bridging bus svcs are available btwn #PayaLebar and #Habourfront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316354955494617089",
+      "createdAt": "2020-10-14T20:27:32.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] UPDATE: Due to a power fault, there is no train services between #Serangoon and #Habourfront. Free regular bus &amp; free bridging bus svcs are available btwn #PayaLebar and #Habourfropnt. For alternative travel options, please refer to https://t.co/H0JXeZvUHA…",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316353645575774208",
+      "createdAt": "2020-10-14T20:22:20.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to power fault, there is no train service between #Serangoon and #Habourfront. Free regular bus services are available between #PayaLebar &amp; #Harbourfront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316351489594417152",
+      "createdAt": "2020-10-14T20:13:46.000+08:00"
+    }
+  ]
+}

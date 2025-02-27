@@ -1,0 +1,41 @@
+{
+  "id": "2016-04-25-no-train-service-between-jookoon-and-bugis",
+  "title": "Service Disruption: No train service between Joo Koon and Bugis on EWL, Woodlands and Jurong East on NSL",
+  "componentIdsAffected": ["EWL", "NSL"],
+  "startAt": "2016-04-25T20:11:58.000+08:00",
+  "endAt": "2016-04-25T20:34:18.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSEWL] UPDATE: Free regular bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724585727355281408",
+      "createdAt": "2016-04-25T21:07:54.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSEWL] UPDATE: Due to an earlier power fault, expect crowding at some stations and congestion as trains are travelling at a slower speed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724585482240167937",
+      "createdAt": "2016-04-25T21:06:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSEWL] UPDATE: Free regular bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724582073588047874",
+      "createdAt": "2016-04-25T20:53:23.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSEWL] UPDATE:Train service has resumed. Expect crowding at some stations and congestions as trains are travelling at a slower speed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724577271579713537",
+      "createdAt": "2016-04-25T20:34:18.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSEWL] No train service between #JooKoon and #Bugis on EWL, between #Woodlands and #JurongEast on NSL due to traction power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724571653460512768",
+      "createdAt": "2016-04-25T20:11:58.000+08:00"
+    }
+  ]
+}

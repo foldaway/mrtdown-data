@@ -1,0 +1,35 @@
+{
+  "id": "2013-02-01-ewl-train-fault",
+  "title": "Train fault at East-West Line",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2013-02-15T19:33:15.000+08:00",
+  "endAt": "2013-02-15T20:26:49.000+08:00",
+  "type": "outage",
+  "severity": "minor",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/302393526455504897",
+      "createdAt": "2013-02-15T20:26:49.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE:Due to the earlier train fault at Raffles Place, estimate 8mins additional travelling time from #Bedok towards #Kallang.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/302390486151335937",
+      "createdAt": "2013-02-15T20:14:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE:Due to an earlier train fault at Raffles Place, estimate 15 mins additional travelling time from #PayaLebar towards #PasirRis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/302384902589009920",
+      "createdAt": "2013-02-15T19:52:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] Due to an earlier train fault, estimate 20 mins additional travelling time from #Bugis towards #PasirRis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/302380045920505857",
+      "createdAt": "2013-02-15T19:33:15.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "2017-09-15-nsl-signalling-fault",
+  "title": "Signalling fault causing train travel delay on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-09-15T21:06:51.000+08:00",
+  "endAt": "2017-09-15T21:43:11.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train svcs btwn #MarinaSouthPier and #ToaPayoh have resumed. Free regular bus svcs have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/908694258781057024",
+      "createdAt": "2017-09-15T22:09:28.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE: Fault Cleared.Train services are progressively being restored.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/908687641687728128",
+      "createdAt": "2017-09-15T21:43:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a signalling fault on the new signalling system, pls add 20mins train travel time btwn #MarinaSouthPier and #ToaPayoh.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/908678498767708160",
+      "createdAt": "2017-09-15T21:06:51.000+08:00"
+    }
+  ]
+}

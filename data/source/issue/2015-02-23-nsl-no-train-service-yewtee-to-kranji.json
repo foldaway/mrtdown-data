@@ -1,0 +1,109 @@
+{
+  "id": "2015-02-23-nsl-no-train-service-yewtee-to-kranji",
+  "title": "No train service from Yew Tee to Kranji",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-02-23T15:06:16.000+08:00",
+  "endAt": "2015-02-23T19:28:25.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Train svcs btwn Yew Tee &amp; Kranji have resumed. Free shuttle bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569829811423571968",
+      "createdAt": "2015-02-23T20:03:08.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Train svcs btwn Yew Tee &amp; Kranji have resumed. Free shuttle bus svcs are still avail btwn CCK &amp; Kranji for 30 mins.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569822236837703680",
+      "createdAt": "2015-02-23T19:33:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Train services between Yew Tee and Kranji in the direction of Woodlands have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569821073346142208",
+      "createdAt": "2015-02-23T19:28:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train svc from Yew Tee to Kranji. Free shuttle bus is avail btwn CCK &amp; Kranji. Train services expected to resume at 1930.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569819929844690945",
+      "createdAt": "2015-02-23T19:23:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service from #YewTee to #Kranji. Free shuttle bus services are still available between Choa Chu Kang and Kranji.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569815399639814144",
+      "createdAt": "2015-02-23T19:05:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service from #ChoaChuKang to #Kranji. Free shuttle bus service is still available between Choa Chu Kang and Kranji.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569810502697619456",
+      "createdAt": "2015-02-23T18:46:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service from #ChoaChuKang to #Kranji. Free shuttle bus service is still available between Choa Chu Kang &amp; Kranji.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569805718712291328",
+      "createdAt": "2015-02-23T18:27:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service from #YewTee to #Kranji. Free shuttle bus service is still available between Choa Chu Kang &amp; Kranji.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569802019029979138",
+      "createdAt": "2015-02-23T18:12:42.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service from #YewTee to #Kranji. Free shuttle bus service is still available between Choa Chu Kang and Kranji.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569797133265580033",
+      "createdAt": "2015-02-23T17:53:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service from #YewTee to #Kranji. FOC shuttle bus service is still available between Choa Chu Kang and Kranji.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569792288211144704",
+      "createdAt": "2015-02-23T17:34:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service from #YewTee to #Kranji. Free shuttle bus service is available between Choa Chu Kang and Kranji.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569787110602903552",
+      "createdAt": "2015-02-23T17:13:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service from #YewTee to #Kranji. Free shuttle bus service is available btwn Choa Chu Kang and Kranji.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569782363514802176",
+      "createdAt": "2015-02-23T16:54:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service from #YewTee to #Kranji. Free shuttle bus service available btwn Choa Chu Kang and Kranji.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569771540897619968",
+      "createdAt": "2015-02-23T16:11:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service from #YewTee towards #Kranji. Please seek alternative transport. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569760239001604096",
+      "createdAt": "2015-02-23T15:26:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service from #YewTee to #Kranji towards MarinaBay due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569757239554125824",
+      "createdAt": "2015-02-23T15:14:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: No train service from #YewTee to #Kranji towards MarinaBay. Free public &amp; shuttle buses are now available at affected stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/569755101188919296",
+      "createdAt": "2015-02-23T15:06:16.000+08:00"
+    }
+  ]
+}

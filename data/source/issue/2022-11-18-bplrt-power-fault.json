@@ -1,0 +1,25 @@
+{
+  "id": "2022-11-18-bplrt-power-fault",
+  "title": "Power fault reported at Fajar",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2022-11-18T05:33:37.000+08:00",
+  "endAt": "2022-11-18T05:49:30.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] All train service is running Service B. Train service available at all stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1593360709077073920",
+      "createdAt": "2022-11-18T05:49:30.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT] A power fault is reported at #Fajar, trains are moving slower towards #BukitPanjang.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1593356712077328384",
+      "createdAt": "2022-11-18T05:33:37.000+08:00"
+    }
+  ]
+}

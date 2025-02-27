@@ -1,0 +1,26 @@
+{
+  "id": "2012-07-19-eastbound-train-service-slow",
+  "title": "Eastbound train service moving slower due to train fault",
+  "componentIdsAffected": [
+    "EWL",
+    "NSL"
+  ],
+  "startAt": "2012-07-19T08:47:06.000+08:00",
+  "endAt": "2012-07-19T08:56:35.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:Eastbound train service from Raffles Place to Pasir Ris running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/225755981735419904",
+      "createdAt": "2012-07-19T08:56:35.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Eastbound train service from Raffles Place to Pasir Ris moving slower due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/225753597688823808",
+      "createdAt": "2012-07-19T08:47:06.000+08:00"
+    }
+  ]
+}

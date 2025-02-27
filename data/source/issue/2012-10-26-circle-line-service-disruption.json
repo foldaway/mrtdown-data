@@ -1,0 +1,29 @@
+{
+  "id": "2012-10-26-circle-line-service-disruption",
+  "title": "Circle Line service disruption",
+  "componentIdsAffected": ["CCL"],
+  "startAt": "2012-10-26T00:18:05.000+08:00",
+  "endAt": "2012-10-27T05:30:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE:Free buses and train services on the Circle Line  have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/261524120926314496",
+      "createdAt": "2012-10-26T01:46:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE:Free buses continue at affected stations between Stadium&amp;Dhoby Ghaut and Stadium&amp;Marina Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/261509935836307456",
+      "createdAt": "2012-10-26T00:50:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE:Service between Dhoby Ghaut &amp; Stadium and  Dhoby Ghaut &amp; Marina Bay will not resume tonight. Please find alternate transport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/261501896123092992",
+      "createdAt": "2012-10-26T00:18:05.000+08:00"
+    }
+  ]
+}

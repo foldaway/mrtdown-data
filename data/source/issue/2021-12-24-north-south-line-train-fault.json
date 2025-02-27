@@ -1,0 +1,36 @@
+{
+  "id": "2021-12-24-north-south-line-train-fault",
+  "title": "Train fault affecting North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2021-12-24T16:02:55.000+08:00",
+  "endAt": "2021-12-24T16:29:16.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Free regular bus service between #YewTee and #JurongEast has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1474298035354030080",
+      "createdAt": "2021-12-24T16:36:57.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train service between #YewTee and #JurongEast has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1474296101410729984",
+      "createdAt": "2021-12-24T16:29:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a train fault, pls add 20mins train travel time between #YewTee and #JurongEast. Free regular bus services between #YewTee and #JurongEast. We apologize for the delay to your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1474293375339696129",
+      "createdAt": "2021-12-24T16:18:26.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a train fault, pls add 20mins train travel time between #YewTee and #JurongEast. Free regular bus services between #YewTee and #JurongEast. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1474289468844625920",
+      "createdAt": "2021-12-24T16:02:55.000+08:00"
+    }
+  ]
+}

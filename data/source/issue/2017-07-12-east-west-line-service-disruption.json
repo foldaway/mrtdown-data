@@ -1,0 +1,42 @@
+{
+  "id": "2017-07-12-east-west-line-service-disruption",
+  "title": "Service disruption on East West Line due to signalling fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-07-12T08:41:51.000+08:00",
+  "endAt": "2017-07-12T10:58:04.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train service from #JooKoon towards #Clementi have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/884970082559860736",
+      "createdAt": "2017-07-12T10:58:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 5 mins travel time from #JooKoon towards #Clementi,due to a track circuit fault at #JurongEast. Train svc is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/884966222617468928",
+      "createdAt": "2017-07-12T10:42:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track circuit fault, pls add 10 mins travel time from #JooKoon to #Clementi towards #PasirRis. Train service is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/884952105559113728",
+      "createdAt": "2017-07-12T09:46:38.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a track circuit fault, pls add 20 mins travel time from #JooKoon to #Clementi towards #PasirRis. Train service is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/884943659895898112",
+      "createdAt": "2017-07-12T09:13:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a train fault, pls add 10 mins travel time from #JooKoon to #Clementi towards #PasirRis. Train service is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/884935803234697216",
+      "createdAt": "2017-07-12T08:41:51.000+08:00"
+    }
+  ]
+}

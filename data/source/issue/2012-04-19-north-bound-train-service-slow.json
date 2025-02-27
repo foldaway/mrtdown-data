@@ -1,0 +1,25 @@
+{
+  "id": "2012-04-19-north-bound-train-service-slow",
+  "title": "North-bound train service toward Orchard moving slower due to track fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-04-19T19:54:27.000+08:00",
+  "endAt": "2012-04-19T22:44:10.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:North-bound train service towards Orchard running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192986954655215616",
+      "createdAt": "2012-04-19T22:44:10.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "North-bound train service toward Orchard moving slower due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192944244300849152",
+      "createdAt": "2012-04-19T19:54:27.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "2015-04-10-nsl-additional-waiting-time",
+  "title": "Additional waiting time on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-04-10T06:36:40.000+08:00",
+  "endAt": "2015-04-10T06:51:02.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL]UPDATE: Train service is running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/586300315475058688",
+      "createdAt": "2015-04-10T06:51:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Please expect additional waiting time of about 2 minutes at some stations along North-South Line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/586296699636867072",
+      "createdAt": "2015-04-10T06:36:40.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "2017-11-15-signal-fault-trains-slow",
+  "title": "Signal fault causing slower train movement",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2017-11-15T06:28:49.000+08:00",
+  "endAt": "2017-11-15T08:34:37.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] CLEARED: Fault cleared but trains and stations are crowded. Due to congestion, pls add 5mins travel time towards #HarbourFront. Free regular bus service still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930594852957429761",
+      "createdAt": "2017-11-15T08:34:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Due to a Signal fault between #Farrer Road and # Buona Vista .Pls add 20mins train travel time between #Buona Vista and HarbourFornt on both bounds.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930566250106781696",
+      "createdAt": "2017-11-15T06:40:57.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to a signal  fault trains are moving slower between #BotanicGardens and #HawParVilla.  We are investigating the fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930563197345468416",
+      "createdAt": "2017-11-15T06:28:49.000+08:00"
+    }
+  ]
+}

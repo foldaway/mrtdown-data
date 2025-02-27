@@ -1,0 +1,24 @@
+{
+  "id": "2022-10-12-nel-service-delayed",
+  "title": "NEL service disruption due to train fault",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2022-10-12T07:44:59.000+08:00",
+  "endAt": "2022-10-12T07:52:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "12/10, 7.52am: NEL service has resumed. Once again, we are sorry for the inconvenience caused",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1579983503709859840",
+      "createdAt": "2022-10-12T07:53:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "12/10, 7.44am: NEL service is delayed due to a train fault. Additional travel time of about 5 minutes may be expected. We are sorry for the inconvenience caused",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1579981419119792130",
+      "createdAt": "2022-10-12T07:44:59.000+08:00"
+    }
+  ]
+}

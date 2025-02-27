@@ -1,0 +1,37 @@
+{
+  "id": "2016-04-25-no-lrt-service-on-bplrt",
+  "title": "No LRT service on BPLRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2016-04-25T21:45:38.000+08:00",
+  "endAt": "2016-04-25T21:52:37.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Free shuttle bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724602953403785217",
+      "createdAt": "2016-04-25T22:16:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Train services have resumed on BPLRT. Expect crowds at stations. Free shuttle bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724601881381609474",
+      "createdAt": "2016-04-25T22:12:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Train services have resumed on the BPLRT. Free shuttle bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724596981952188417",
+      "createdAt": "2016-04-25T21:52:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] No LRT service on BPLRT. Free shuttle bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/724595224157163521",
+      "createdAt": "2016-04-25T21:45:38.000+08:00"
+    }
+  ]
+}

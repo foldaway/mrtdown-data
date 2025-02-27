@@ -1,0 +1,37 @@
+{
+  "id": "2024-12-19-normal-train-service-resumed",
+  "title": "Normal train service has resumed",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2024-12-19T10:36:07.000+08:00",
+  "endAt": "2024-12-19T10:36:07.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[TEL] UPDATE: Normal train service between Bayshore and Woodlands North has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1869572389341982869",
+      "createdAt": "2024-12-19T10:36:07.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL] UPDATE: Please allow for additional 5 mins travel time between Bayshore and Woodlands North in both directions due to a signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1869569511294451863",
+      "createdAt": "2024-12-19T10:24:41.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL] UPDATE: Please allow for additional 10 mins travel time between Bayshore and Woodlands North in both directions due to a signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1869561892689285458",
+      "createdAt": "2024-12-19T09:54:24.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a signal fault, trains are moving slower between Bayshore and Woodlands North in both directions. Additional travelling time of 10 minutes expected.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1869558003860742549",
+      "createdAt": "2024-12-19T09:38:57.000+08:00"
+    }
+  ]
+}

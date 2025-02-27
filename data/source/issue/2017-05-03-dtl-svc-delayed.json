@@ -1,0 +1,29 @@
+{
+  "id": "2017-05-03-dtl-svc-delayed",
+  "title": "Delay on Downtown Line due to signalling fault",
+  "componentIdsAffected": ["DTL"],
+  "startAt": "2017-05-03T07:41:36.000+08:00",
+  "endAt": "2017-05-03T12:54:34.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "DTL has resumed normal service. All trains are now stopping at DT09 BTN twds DT19 CNT.  We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/859632252367581185",
+      "createdAt": "2017-05-03T12:54:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "DTL - Trains will bypass DT09 BTN twds DT19 CNT. Train service from CNT to BKP is normal. Pls transfer at DT08 TKK &amp; DT10 STV to continue.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/859582635181342720",
+      "createdAt": "2017-05-03T09:37:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "DTL svc betwn DT01 BKP &amp; DT19 CNT is delayed due to a  signalling fault. Add’l travel time of up to 10 minutes may be expected. We are sorry",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/859553490871271424",
+      "createdAt": "2017-05-03T07:41:36.000+08:00"
+    }
+  ]
+}

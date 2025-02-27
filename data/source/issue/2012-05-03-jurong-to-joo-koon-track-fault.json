@@ -1,0 +1,31 @@
+{
+  "id": "2012-05-03-jurong-to-joo-koon-track-fault",
+  "title": "Train service disruption from Jurong to Joo Koon",
+  "componentIdsAffected": [
+    "JRL"
+  ],
+  "startAt": "2012-05-03T09:37:37.000+08:00",
+  "endAt": "2012-05-03T10:39:57.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Train service from Jurong towards Joo Koon is running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/197878129224716288",
+      "createdAt": "2012-05-03T10:39:57.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:Staff are working to rectify fault. Updates to come.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/197877070326530048",
+      "createdAt": "2012-05-03T10:35:44.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Train service from Jurong towards Joo Koon moving slower due to track fault.Please allow extra time for travel.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/197862445887401984",
+      "createdAt": "2012-05-03T09:37:37.000+08:00"
+    }
+  ]
+}

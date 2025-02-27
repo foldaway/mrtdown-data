@@ -1,0 +1,25 @@
+{
+  "id": "2012-07-17-eastbound-train-service-slow",
+  "title": "Eastbound train service moving slower due to train fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-07-17T08:44:43.000+08:00",
+  "endAt": "2012-07-17T09:04:56.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Eastbound train service from Pioneer to Clementi running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/225033310227808256",
+      "createdAt": "2012-07-17T09:04:56.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Eastbound train service from Pioneer to Clementi moving slower due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/225028221199073281",
+      "createdAt": "2012-07-17T08:44:43.000+08:00"
+    }
+  ]
+}

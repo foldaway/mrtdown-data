@@ -1,0 +1,55 @@
+{
+  "id": "2013-05-18-nsl-track-fault",
+  "title": "Track fault causing delays on NSL",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2013-05-18T14:05:40.000+08:00",
+  "endAt": "2013-05-18T16:21:32.000+08:00",
+  "type": "outage",
+  "severity": "minor",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] Update: Rail replacement will be done tonight after operating hours, and normal train service will resume tomorrow morning.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335681958258565120",
+      "createdAt": "2013-05-18T17:03:10.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Update: NB train services have resumed. Travelling times are back to normal.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335680899687538689",
+      "createdAt": "2013-05-18T16:58:57.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Rail crack fault temporarily rectified. Full replacement after train operating hours. Train safe.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335671481856057345",
+      "createdAt": "2013-05-18T16:21:32.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "NB svc btn MarinaBay &amp; Braddell delayed due to rail crack. Engineers deployed to secure rail joint. Trains travelling slower for safety.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335663398626926592",
+      "createdAt": "2013-05-18T15:49:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to a rail crack near Braddell, trains are safe for travel and additional travel time of 30min from Marina Bay towards Bishan.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335658471603187712",
+      "createdAt": "2013-05-18T15:29:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Estimate 20 mins additional travel time from #DhobyGhaut towards #Bishan due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335642657621676032",
+      "createdAt": "2013-05-18T14:27:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimated 10 mins additional travelling time from #DhobyGhaut to #Bishan towards JurongEast due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335637290665787392",
+      "createdAt": "2013-05-18T14:05:40.000+08:00"
+    }
+  ]
+}

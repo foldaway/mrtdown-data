@@ -1,0 +1,31 @@
+{
+  "id": "2022-01-08-track-signal-fault-choa-chu-kang-lrt",
+  "title": "Track Signal Fault at Choa Chu Kang LRT Station",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2022-01-08T17:45:08.000+08:00",
+  "endAt": "2022-01-08T18:03:07.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "All trains services back to normal. No additional travelling time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1479757435636109317",
+      "createdAt": "2022-01-08T18:10:39.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Track signal fault at Choa Chu Kang LRT had been cleared. Train service is resuming progressively.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1479755539890405377",
+      "createdAt": "2022-01-08T18:03:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to track signal fault at Choa Chu Kang LRT station, there will be additional 15 mins travelling time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1479751012051144704",
+      "createdAt": "2022-01-08T17:45:08.000+08:00"
+    }
+  ]
+}

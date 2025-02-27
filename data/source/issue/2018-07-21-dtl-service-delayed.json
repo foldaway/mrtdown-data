@@ -1,0 +1,25 @@
+{
+  "id": "2018-07-21-dtl-service-delayed",
+  "title": "Downtown Line service disruption due to signalling fault",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2018-07-21T17:41:44.000+08:00",
+  "endAt": "2018-07-21T19:34:14.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "DTL svc is now normal. Once again, we are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1020633041432002560",
+      "createdAt": "2018-07-21T19:34:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "DTL svc is delayed due to a signalling fault. Add’l travel time of up to 10 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1020604731985616896",
+      "createdAt": "2018-07-21T17:41:44.000+08:00"
+    }
+  ]
+}

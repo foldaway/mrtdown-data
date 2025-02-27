@@ -1,0 +1,25 @@
+{
+  "id": "2011-12-26-trains-running-slower-due-to-speed-restrictions",
+  "title": "Trains running slower due to speed restrictions",
+  "componentIdsAffected": [
+    "NSL",
+    "EWL"
+  ],
+  "startAt": "2011-12-26T10:48:38.000+08:00",
+  "endAt": "2011-12-27T00:00:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "SVC UPDATE:NSEW lines are smooth but travelling slowly due to speed limits.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/151195999975649280",
+      "createdAt": "2011-12-26T15:01:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Trains are running slower this morning due to speed restrictions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/151132281954770944",
+      "createdAt": "2011-12-26T10:48:38.000+08:00"
+    }
+  ]
+}

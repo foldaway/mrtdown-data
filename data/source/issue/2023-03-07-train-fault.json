@@ -1,0 +1,61 @@
+{
+  "id": "2023-03-07-train-fault",
+  "title": "Train Fault on Thomson–East Coast Line",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2023-03-07T17:05:01.000+08:00",
+  "endAt": "2023-03-07T18:27:12.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[TEL]: Train services have resumed. Free bridging and regular bus services have ceased. We are sorry to affect your evening commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633065293894545409",
+      "createdAt": "2023-03-07T19:21:21.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL]: Train services are progressively resuming. Free bridging bus services still avail between Caldecott and Orchard. Free regular bus services still avail between Caldecott to Gardens by the Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633062298523947009",
+      "createdAt": "2023-03-07T19:09:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL]: Train services towards Gardens by the Bay have resumed. For passengers travelling towards Woodlands North, bridging bus and free regular bus services still available at affected stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633051664549826561",
+      "createdAt": "2023-03-07T18:27:12.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a train fault, please expect an additional travelling time of 15 minutes. Bridging bus and free regular bus services are available at affected stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633049817860673537",
+      "createdAt": "2023-03-07T18:19:51.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a train fault, please expect an additional travelling time of 25min. Passengers are advised to use alternative lines to get to their destination.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633048054877270016",
+      "createdAt": "2023-03-07T18:12:51.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a train fault, please expect an additional travelling time of 25mins. Bus bridging services available between Caldecott and Orchard.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633039174919159810",
+      "createdAt": "2023-03-07T17:37:34.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a track signal fault, trains are moving slower from Bright Hill towards Bright Hill.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633031154566856704",
+      "createdAt": "2023-03-07T17:05:42.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL]: Due to a train fault, please expect an additional travelling time of 25mins. Free regular bus services available between Caldecott and Gardens by the Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633030984013848580",
+      "createdAt": "2023-03-07T17:05:01.000+08:00"
+    }
+  ]
+}

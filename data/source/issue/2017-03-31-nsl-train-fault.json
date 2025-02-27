@@ -1,0 +1,25 @@
+{
+  "id": "2017-03-31-nsl-train-fault",
+  "title": "Train fault causing delays on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-03-31T07:12:22.000+08:00",
+  "endAt": "2017-03-31T07:25:50.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE:Fault cleared, trains are progressively returning to normal speed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/847590722089795584",
+      "createdAt": "2017-03-31T07:25:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a train fault, pls add 10mins travel time from #JurongEast to #ChoaChuKang towards #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/847587333285191682",
+      "createdAt": "2017-03-31T07:12:22.000+08:00"
+    }
+  ]
+}

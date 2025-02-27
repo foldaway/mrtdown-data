@@ -1,0 +1,31 @@
+{
+  "id": "2013-10-03-nsl-train-fault",
+  "title": "Train fault causing delays",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2013-10-03T17:03:38.000+08:00",
+  "endAt": "2013-10-03T17:26:36.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] CLEARED: Train services between #Yishun and #Woodlands are now operating normally. Trains and platforms are crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/385697382676967424",
+      "createdAt": "2013-10-03T17:26:36.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Estimate 20 mins additional travelling time between #Yishun and #Woodlands due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/385695596633264128",
+      "createdAt": "2013-10-03T17:19:30.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Estimate 30 mins additional travelling time between #Yishun and #Woodlands due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/385691602825379840",
+      "createdAt": "2013-10-03T17:03:38.000+08:00"
+    }
+  ]
+}

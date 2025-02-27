@@ -1,0 +1,25 @@
+{
+  "id": "2017-04-26-no-train-services-tanah-merah-changi",
+  "title": "No train services between Tanah Merah & Changi",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-04-26T11:05:47.000+08:00",
+  "endAt": "2017-05-06T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Due to track work,there will be no train svcs b/w Tanah Merah and Changi (both bounds) from 11pm tonight &amp; 5 May’17. https://t.co/pVhqiss9cU",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/857897677048094720",
+      "createdAt": "2017-04-28T18:01:59.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "No train svcs between Tanah Merah &amp; Changi (both bounds) from 11pm on 28 Apr &amp; 5 May’17 due to track work. More info https://t.co/pVhqiss9cU",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/857068159680917504",
+      "createdAt": "2017-04-26T11:05:47.000+08:00"
+    }
+  ]
+}

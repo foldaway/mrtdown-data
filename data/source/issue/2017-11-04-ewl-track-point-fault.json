@@ -1,0 +1,31 @@
+{
+  "id": "2017-11-04-ewl-track-point-fault",
+  "title": "East West Line service disruption due to a track point fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-11-04T14:53:14.000+08:00",
+  "endAt": "2017-11-04T15:30:30.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #Queenstown  to  #JurongEast have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/926713248799268864",
+      "createdAt": "2017-11-04T15:30:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track point fault, pls add 10mins train travel time from #Queenstown to #JurongEast. (Not linked to new signalling project).",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/926707347799470081",
+      "createdAt": "2017-11-04T15:07:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track point fault, pls add 30mins train travel time from #Queenstown to #JurongEast. (Not linked to new signalling project).",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/926703868066406401",
+      "createdAt": "2017-11-04T14:53:14.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "2018-02-23-dtl-delayed-due-to-train-fault",
+  "title": "DTL service disruption due to train fault",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2018-02-23T07:54:39.000+08:00",
+  "endAt": "2018-02-23T07:58:30.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Normal train service has resumed on downtown line. We are sorry for the inconvenience.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/966824551442128897",
+      "createdAt": "2018-02-23T07:58:30.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "DTL svc twds Expo station is delayed due to train fault. Add'l travel time of up to 20 minutes may be expected. Recovery works are in progress. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/966823582075506689",
+      "createdAt": "2018-02-23T07:54:39.000+08:00"
+    }
+  ]
+}

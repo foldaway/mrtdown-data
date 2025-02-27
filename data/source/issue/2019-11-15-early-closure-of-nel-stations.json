@@ -1,0 +1,29 @@
+{
+  "id": "2019-11-15-early-closure-of-nel-stations",
+  "title": "Early closure of NEL stations for maintenance",
+  "componentIdsAffected": ["NEL"],
+  "startAt": "2019-11-15T23:00:00.000+08:00",
+  "endAt": "2019-11-16T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Due to intensified maintenance works, five NEL stations between NE13 Kovan &amp; NE17 Punggol will close earlier at around 11.00pm today, 16 Nov. Shuttle Bus 21 will be in operation to serve the closed stations while Service 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1195632486211997696",
+      "createdAt": "2019-11-16T17:19:33.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Due to intensified maintenance works, five NEL stations between NE13 Kovan &amp; NE17 Punggol will close earlier at around 11.00pm today &amp; tomorrow, 15 &amp; 16 Nov. Shuttle Bus 21 will be in operation to serve the closed stations while Service 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1195259932116799488",
+      "createdAt": "2019-11-15T16:39:09.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Due to intensified maintenance works, five NEL stations between NE13 Kovan &amp; NE17 Punggol will close earlier at around 11.00pm this Fri &amp; Sat – 15 &amp; 16 Nov. Shuttle Bus 21 will be in operation to serve the closed stations while Service 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1194806512033468416",
+      "createdAt": "2019-11-14T10:37:25.000+08:00"
+    }
+  ]
+}

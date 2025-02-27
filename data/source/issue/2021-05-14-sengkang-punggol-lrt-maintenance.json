@@ -1,0 +1,20 @@
+{
+  "id": "2021-05-14-sengkang-punggol-lrt-maintenance",
+  "title": "Scheduled maintenance for Sengkang-Punggol LRT",
+  "componentIdsAffected": [
+    "SKLRT",
+    "PGLRT"
+  ],
+  "startAt": "2021-05-22T00:00:00.000+08:00",
+  "endAt": "2021-09-27T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "We will be conducting maintenance works on Sengkang-Punggol LRT system on 19 weekends, from 22 May to 26 September 2021. Train service will operate as usual on one platform while the other will be closed for works. https://t.co/otjDQykbD8",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1393105237519437826",
+      "createdAt": "2021-05-14T15:25:45.000+08:00"
+    }
+  ]
+}

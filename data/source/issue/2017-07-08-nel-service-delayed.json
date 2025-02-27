@@ -1,0 +1,42 @@
+{
+  "id": "2017-07-08-nel-service-delayed",
+  "title": "NEL service disruption",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2017-07-08T05:48:18.000+08:00",
+  "endAt": "2017-07-08T06:50:52.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "NEL is back to regular svc. Free bus rides have ceased. we are very sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/883458321562296320",
+      "createdAt": "2017-07-08T06:50:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "To assist with your journey, free bus rides available at designated bus stops near affected NEL stns.Bridging buses also activated.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/883453996739973120",
+      "createdAt": "2017-07-08T06:33:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL delay - To assist with your journey,free bus rides available at designated bus stops near affected  stns.Bridging buses also activated.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/883446352755081216",
+      "createdAt": "2017-07-08T06:03:18.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL delay -To assist with your journey,free bus rides available at designated bus stops near affected stns.Bridging buses also activated.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/883442902227075072",
+      "createdAt": "2017-07-08T05:49:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL svc is delayed due to a signalling fault. Additional travel time of about 20 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/883442577768202240",
+      "createdAt": "2017-07-08T05:48:18.000+08:00"
+    }
+  ]
+}

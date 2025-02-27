@@ -1,0 +1,53 @@
+{
+  "id": "2017-02-07-ewl-track-work-delay",
+  "title": "Track work causing travel delays on East West Line",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2017-02-07T08:12:47.000+08:00",
+  "endAt": "2017-02-07T09:11:32.000+08:00",
+  "type": "outage",
+  "severity": "minor",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE:Trains are progressively returning to normal speed from #JurongEast to #JooKoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/828773156189974528",
+      "createdAt": "2017-02-07T09:11:32.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[EWL]UPDATE:Pls add 10 mins travel time from #JurongEast towards #JooKoon,due to a track work at #JooKoon. Train svc is still available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/828770652593098752",
+      "createdAt": "2017-02-07T09:01:36.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[EWL]UPDATE:Pls add 15 mins travel time from #JurongEast towards #JooKoon,due to a track work at #JooKoon. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/828768399496925185",
+      "createdAt": "2017-02-07T08:52:38.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[EWL]UPDATE:Pls add 20 mins travel time from #JurongEast towards #JooKoon,due to a track work at #JooKoon. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/828766571396943872",
+      "createdAt": "2017-02-07T08:45:23.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[EWL]UPDATE:Pls add 25 mins travel time from #JurongEast towards #JooKoon,due to a track work at #JooKoon. Train svc is still available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/828764143633043456",
+      "createdAt": "2017-02-07T08:35:44.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[EWL]UPDATE:Pls add 20 mins travel time from #JurongEast towards #JooKoon,due to a track work at #JooKoon. Train svc is still available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/828760927331774466",
+      "createdAt": "2017-02-07T08:22:57.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[EWL]: Due to a track work, pls add 15 mins travel time from #JurongEast to #JooKoon towards #JooKoon. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/828758371020845056",
+      "createdAt": "2017-02-07T08:12:47.000+08:00"
+    }
+  ]
+}

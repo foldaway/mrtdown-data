@@ -1,0 +1,43 @@
+{
+  "id": "2021-02-25-ewl-no-train-svc-btwn-bugis-aljunied",
+  "title": "No train service between Bugis and Aljunied",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2021-02-25T22:01:26.000+08:00",
+  "endAt": null,
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] UPDATE: Train services btwn #Bugis and #Aljunied have ceased. Free regular and bridging bus services have also ceased. Thank you for your patience and we apologise to all affected commuters.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1364978196916015105",
+      "createdAt": "2021-02-26T00:38:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train services btwn #Bugis and #Aljunied. Free regular and free bridging bus are available between Bugis and Aljunied. For alternative travel options, please refer to https://t.co/H0JXeZNw6a",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1364948327700328452",
+      "createdAt": "2021-02-25T22:40:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train services btwn #Bugis and #Aljunied. Free regular and free bridging bus are available between Bugis and Aljunied.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1364944574259494912",
+      "createdAt": "2021-02-25T22:25:20.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train services btwn #Bugis and #Aljunied. Free regular and free bridging bus are available between Bugis and Aljunied. For alternative travel options, please refer to https://t.co/YxfqNiZDVT",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1364941000720871432",
+      "createdAt": "2021-02-25T22:11:08.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to an incident, there is no train svc btwn #Bugis and #Aljunied. Free regular and free bridging bus are available between Bugis and Aljunied.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1364938557131874310",
+      "createdAt": "2021-02-25T22:01:26.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "2016-04-08-circle-line-train-fault",
+  "title": "Train fault causing delays",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2016-04-08T07:27:13.000+08:00",
+  "endAt": "2016-04-08T07:37:53.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL] Update: Train service between Dhoby Ghaut &amp; Bishan are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/718229312411996161",
+      "createdAt": "2016-04-08T08:09:46.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Update: Expect additional 10mins travelling time between Dhoby Ghaut &amp; Bishan in both directions due to a train fault earlier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/718227323640758273",
+      "createdAt": "2016-04-08T08:01:52.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Update: Train fault is cleared but expect longer travalling time between Dhoby Ghaut &amp; Bishan. Trains &amp; Platforms are crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/718221288574160896",
+      "createdAt": "2016-04-08T07:37:53.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Expect 15mins additional time travel on the CCL between Dhoby Ghaut and Bishan due to a train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/718218604966088704",
+      "createdAt": "2016-04-08T07:27:13.000+08:00"
+    }
+  ]
+}

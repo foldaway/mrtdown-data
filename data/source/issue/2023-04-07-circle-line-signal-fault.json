@@ -1,0 +1,55 @@
+{
+  "id": "2023-04-07-circle-line-signal-fault",
+  "title": "Service disruption on Circle Line due to signal fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2023-04-07T12:59:37.000+08:00",
+  "endAt": "2023-04-07T15:15:30.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL]: Normal train service on the Circle Line has resumed. Free bridging and regular bus services have ceased. We are sorry to affect your afternoon commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644237446056677376",
+      "createdAt": "2023-04-07T15:15:30.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Train services are progressively returning to normal. Free regular bus and free bridging bus services are still available between #DhobyGhaut/#MarinaBay and #PayaLebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644234295811387392",
+      "createdAt": "2023-04-07T15:02:59.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Pls add 40mins of train travel time between #DhobyGhaut/#MarinaBay and #Stadium. Our engineers are on site to conduct the recovery operations. Free regular bus and free bridging bus svcs are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644231512072814594",
+      "createdAt": "2023-04-07T14:51:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Commuters are advised to add at least 30mins of train travel time between #DhobyGhaut/#MarinaBay and #PayaLebar. Free regular bus and bus bridging services are available between these stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644214178939551744",
+      "createdAt": "2023-04-07T13:43:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Additional 30mins train travel time between #DhobyGhaut/#MarinaBay and #PayaLebar due to a signal fault. If you are at #DhobyGhaut/#MarinaBay and heading towards #PayaLebar, you may take NSL and transfer to EWL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644210977079181312",
+      "createdAt": "2023-04-07T13:30:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Additional 30mins train travel time between #DhobyGhaut/#MarinaBay and #PayaLebar due to a signal fault. Free regular bus and free bridging bus services between #DhobyGhaut/#MarinaBay and #PayaLebar are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644207576907919362",
+      "createdAt": "2023-04-07T13:16:48.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Additional 30mins train travel time between #DhobyGhaut/#MarinaBay and #PayaLebar due to a signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644203251154436098",
+      "createdAt": "2023-04-07T12:59:37.000+08:00"
+    }
+  ]
+}

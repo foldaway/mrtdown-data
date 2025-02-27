@@ -1,0 +1,37 @@
+{
+  "id": "2023-04-18-circle-line-power-fault",
+  "title": "Power fault affecting Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2023-04-18T16:22:36.000+08:00",
+  "endAt": "2023-04-18T16:45:05.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] Train service is back to normal. Free regular bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1648246256098242560",
+      "createdAt": "2023-04-18T16:45:05.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Train service is resuming progressively. Free regular buses are still available btw #BuonaVista and #HarbourFront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1648243745454968832",
+      "createdAt": "2023-04-18T16:35:06.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] Due to a power fault, please add 10 minutes additional train travel time btw #KentRidge and #Harbourfront. Free regular buses are available btw #BuonaVista and #Harbourfront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1648243176858345473",
+      "createdAt": "2023-04-18T16:32:50.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] Due to a power fault, please add 20 minutes additional train travel time btw #KentRidge and #Harbourfront. Free regular buses are available btw #BuonaVista and #Harbourfront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1648240598703562754",
+      "createdAt": "2023-04-18T16:22:36.000+08:00"
+    }
+  ]
+}

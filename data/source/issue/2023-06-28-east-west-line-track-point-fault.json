@@ -1,0 +1,36 @@
+{
+  "id": "2023-06-28-east-west-line-track-point-fault",
+  "title": "Track point fault causing delays on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2023-06-28T05:59:58.000+08:00",
+  "endAt": "2023-06-28T06:31:48.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] UPDATE: Train svcs btwn #JooKoon and #JurongEast have resumed. Free regular bus svcs have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1673821459091972099",
+      "createdAt": "2023-06-28T06:31:48.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] UPDATE: Fault cleared, train svcs resumed. Free regular bus svcs is still available btwn #JooKoon and #JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1673818587738550272",
+      "createdAt": "2023-06-28T06:20:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track point fault, pls add 15mins train travel time btwn #JooKoon and #JurongEast. Free regular bus svcs btwn #JooKoon and #JurongEast. Train svc is still available btwn #JooKoon and #JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1673816906497937408",
+      "createdAt": "2023-06-28T06:13:43.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a track point fault, pls add 15mins train travel time btwn #JooKoon and #JurongEast. Free regular bus svcs btwn #JooKoon and #JurongEast. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1673813447539294209",
+      "createdAt": "2023-06-28T05:59:58.000+08:00"
+    }
+  ]
+}

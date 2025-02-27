@@ -1,0 +1,43 @@
+{
+  "id": "2021-12-09-bukit-panjang-lrt-train-fault",
+  "title": "Train Fault at Bukit Panjang LRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2021-12-09T06:22:12.000+08:00",
+  "endAt": "2021-12-09T09:49:14.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]:Normal train service has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1468761404748414977",
+      "createdAt": "2021-12-09T09:56:21.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "Normal train service has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1468759611167559683",
+      "createdAt": "2021-12-09T09:49:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[Update]: Our engineers are working to recover train services. For your convenience, you may download an e-Travel Chit as proof of your travel at https://t.co/dYFVNdOVNs if your journey has been affected.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1468712140127174661",
+      "createdAt": "2021-12-09T06:40:36.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT]: Due to a power fault, trains are moving slower towards #ChoaChuKang on Service B. We are investigating the fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1468707919541587971",
+      "createdAt": "2021-12-09T06:23:49.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT] A train fault is reported at #Bangkit, trains are moving slower towards #ChoaChuKang.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1468707511729463297",
+      "createdAt": "2021-12-09T06:22:12.000+08:00"
+    }
+  ]
+}

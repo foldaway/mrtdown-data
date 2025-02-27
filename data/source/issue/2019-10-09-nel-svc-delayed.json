@@ -1,0 +1,43 @@
+{
+  "id": "2019-10-09-nel-svc-delayed",
+  "title": "Service Disruption on North East Line due to Signalling Fault",
+  "componentIdsAffected": [
+    "NEL",
+    "SKLRT"
+  ],
+  "startAt": "2019-10-09T19:50:35.000+08:00",
+  "endAt": "2019-10-09T20:29:02.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "NEL Svc has resumed. Free bus rides have ceased. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1181910527720574976",
+      "createdAt": "2019-10-09T20:33:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL svc has resumed. Additional travel time up to 10 minutes may be expected as we are regulating the trains.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1181909434559123456",
+      "createdAt": "2019-10-09T20:29:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL Svc is delayed due to a signaling fault at Sengkang Station. Additional travel time of about 20 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1181904328921010176",
+      "createdAt": "2019-10-09T20:08:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL Svc is delayed due to a signaling fault at Sengkang Station. Additional travel time of about 15 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1181902362463457283",
+      "createdAt": "2019-10-09T20:00:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL Svc is delayed due to a Signalling fault at Sengkang station. Additional travel time about 10 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1181899757590999040",
+      "createdAt": "2019-10-09T19:50:35.000+08:00"
+    }
+  ]
+}

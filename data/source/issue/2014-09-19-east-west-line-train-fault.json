@@ -1,0 +1,55 @@
+{
+  "id": "2014-09-19-east-west-line-train-fault",
+  "title": "Major train fault causing delays in the East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2014-09-19T13:38:57.000+08:00",
+  "endAt": "2014-09-19T14:21:32.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL] Update: Train services from #OutramPark towards #JooKoon are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/512851183396876288",
+      "createdAt": "2014-09-19T14:30:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] : Update Free bus service between OutramPark and Queenstown has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/512851032368373760",
+      "createdAt": "2014-09-19T14:29:49.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #OutramPark towards #JooKoon are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/512848948793339906",
+      "createdAt": "2014-09-19T14:21:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train service from OutramPark to JooKoon has resumed service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/512844814501412864",
+      "createdAt": "2014-09-19T14:05:06.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:Estimate 10 mins additional travelling time from #OutramPark to #JooKoon due to train fault.We are working to recover the service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/512843435594620928",
+      "createdAt": "2014-09-19T13:59:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Update Estimate 15mins additional travelling time from #OutramPark  to #JooKoon  due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/512841636921876480",
+      "createdAt": "2014-09-19T13:52:29.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Estimate 20mins additional travelling time from #OutramPark  to #Joo Koon  due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/512838231889424385",
+      "createdAt": "2014-09-19T13:38:57.000+08:00"
+    }
+  ]
+}

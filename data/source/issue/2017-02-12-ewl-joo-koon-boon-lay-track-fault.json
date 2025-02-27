@@ -1,0 +1,53 @@
+{
+  "id": "2017-02-12-ewl-joo-koon-boon-lay-track-fault",
+  "title": "Service disruption between Joo Koon and Boon Lay due to track fault",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2017-02-12T05:58:21.000+08:00",
+  "endAt": "2017-02-12T07:05:56.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL]UPDATE:Train service is running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/830629030411907072",
+      "createdAt": "2017-02-12T12:06:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to an earlier track fault, pls add 10mins travel time between #BoonLay &amp; #JooKoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/830561750609039360",
+      "createdAt": "2017-02-12T07:38:47.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Free regular bus &amp; free bridging bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/830561371314024448",
+      "createdAt": "2017-02-12T07:37:16.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: [EWL]: Due to an earlier track fault, pls add 10mins travel time between #BoonLay &amp; #JooKoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/830559262241804289",
+      "createdAt": "2017-02-12T07:28:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train service resumed. Free regular bus &amp; free bridging bus services are still available between #JooKoon &amp; #BoonLay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/830553486924197889",
+      "createdAt": "2017-02-12T07:05:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service between #JooKoon &amp; #BoonLay. Check our bus guides at https://t.co/skznEuBuRM",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/830548175417008128",
+      "createdAt": "2017-02-12T06:44:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]No train service between #JooKoon &amp;#BoonLay due to a track fault at #JooKoon. Free bridging bus is available between #JooKoon &amp;#BoonLay",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/830536475716440064",
+      "createdAt": "2017-02-12T05:58:21.000+08:00"
+    }
+  ]
+}

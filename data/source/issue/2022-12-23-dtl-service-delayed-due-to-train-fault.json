@@ -1,0 +1,24 @@
+{
+  "id": "2022-12-23-dtl-service-delayed-due-to-train-fault",
+  "title": "DTL service delayed due to train fault",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2022-12-23T18:58:22.000+08:00",
+  "endAt": "2022-12-23T19:19:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "At 1919hrs, train service has resumed.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1606248644784451584",
+      "createdAt": "2022-12-23T19:21:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "DTL service from DT03 HillView to DT09 Botanic \n(towards DT35 Expo station) is \ndelayed due to a train fault. \nAdditional travel time of about 10\nminutes may be expected. We are \nsorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1606242808238522369",
+      "createdAt": "2022-12-23T18:58:22.000+08:00"
+    }
+  ]
+}

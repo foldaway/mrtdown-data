@@ -1,0 +1,29 @@
+{
+  "id": "2015-09-22-faulty-train-service-delay",
+  "title": "Faulty train causing major service delays",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2015-09-22T08:40:39.000+08:00",
+  "endAt": "2015-09-22T08:48:15.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Free bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/646128730453078016",
+      "createdAt": "2015-09-22T09:07:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Service has resumed. Free bus service between AMK - SBW still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/646123809611759616",
+      "createdAt": "2015-09-22T08:48:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to a faulty train at YISHUN North Bound , train service towards Jurong will be delayed for 25 mins.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/646121896082194432",
+      "createdAt": "2015-09-22T08:40:39.000+08:00"
+    }
+  ]
+}

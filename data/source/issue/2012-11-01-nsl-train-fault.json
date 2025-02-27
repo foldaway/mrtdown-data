@@ -1,0 +1,23 @@
+{
+  "id": "2012-11-01-nsl-train-fault",
+  "title": "Train fault at North-South Line",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2012-11-01T16:29:40.000+08:00",
+  "endAt": "2012-11-01T16:41:47.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #AngMoKio towards #JurongEast are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/263923779745501184",
+      "createdAt": "2012-11-01T16:41:47.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Estimate 5 mins additional travelling time from #AngMoKio to #YioChuKang towards JurongEast due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/263920730645860352",
+      "createdAt": "2012-11-01T16:29:40.000+08:00"
+    }
+  ]
+}

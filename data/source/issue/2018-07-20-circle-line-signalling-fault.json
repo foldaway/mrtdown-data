@@ -1,0 +1,25 @@
+{
+  "id": "2018-07-20-circle-line-signalling-fault",
+  "title": "Train services along the Circle Line operating slower than normal due to signalling fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2018-07-20T00:03:37.000+08:00",
+  "endAt": "2018-07-20T04:22:26.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL] CLEARED: We will begin train service at our normal operating hours this morning.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1020041194426937345",
+      "createdAt": "2018-07-20T04:22:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Due to signalling fault, train services along the Circle Line will be operate slower than normal.  Free regular bus services are available across the Circle Line.  We apologise for the inconvenience.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1019976059582738432",
+      "createdAt": "2018-07-20T00:03:37.000+08:00"
+    }
+  ]
+}

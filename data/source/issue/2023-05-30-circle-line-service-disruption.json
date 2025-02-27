@@ -1,0 +1,59 @@
+{
+  "id": "2023-05-30-circle-line-service-disruption",
+  "title": "Train services on the Circle Line adjusted for tunnel strengthening works",
+  "componentIdsAffected": ["CCL"],
+  "startAt": "2023-06-23T20:57:11.000+08:00",
+  "endAt": "2023-06-23T21:17:29.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE:  No train service between #Esplanade / #Bayfront and #Mountbatten. Additional 30 minutes between #DhobyGhaut and #Esplanade, #MarinaBay and #Bayfront, and #Mountbatten and #PayaLebar. Please use alternative means of transport to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1672264884137136128",
+      "createdAt": "2023-06-23T23:26:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE : No train service between #Esplanade / #Bayfront and #Mountbatten. Additional 30 minutes between #DhobyGhaut and #Esplanade, #MarinaBay and #Bayfront, and #Mountbatten and #PayaLebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1672256730573737985",
+      "createdAt": "2023-06-23T22:54:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE : Additional 30mins train travel time between #DhobyGhaut  / #MarinaBay and #PayaLebar. Free regular bus services are available between #DhobyGhaut / #MarinaBay to #PayaLebar. Bridging bus services are available between #Promenade and #PayaLebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1672253786885337092",
+      "createdAt": "2023-06-23T22:42:26.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] : [Update] Additional 30mins train travel time between #DhobyGhaut  / #MarinaBay and #PayaLebar due to a signal fault. Free regular bus services are available between #DhobyGhaut / #MarinaBay to #PayaLebar. Our engineers are still looking into the fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1672247985328234497",
+      "createdAt": "2023-06-23T22:19:23.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] : Additional 30mins train travel time between #DhobyGhaut  / #MarinaBay and #PayaLebar due to a signal fault. Free regular bus services are available between #DhobyGhaut / #MarinaBay to #PayaLebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1672243576917598209",
+      "createdAt": "2023-06-23T22:01:52.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services between #DhobyGhaut /#MarinaBay and #PayaLebar have resumed. Free regular bus &amp; free bridging bus svcs have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1672232409457377281",
+      "createdAt": "2023-06-23T21:17:29.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] : Additional 30mins train travel time between #DhobyGhaut / #MarinaBay and #PayaLebar due to a signal fault. Free Regular Bus is available between #DhobyGhaut / #MarinaBay and #PayaLebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1672227674000097280",
+      "createdAt": "2023-06-23T20:58:40.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] : Additional 30mins train travel time between #DhobyGhaut / #MarinaBay and #PayaLebar due to a signal fault. Free Regular Bus is available between #DhobyGhaut / #MarinaBay and #PayaLebar",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1672227299352264705",
+      "createdAt": "2023-06-23T20:57:11.000+08:00"
+    }
+  ]
+}

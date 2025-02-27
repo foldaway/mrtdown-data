@@ -1,0 +1,31 @@
+{
+  "id": "2021-10-17-punggol-lrt-outage",
+  "title": "Punggol LRT service disruption due to signalling fault",
+  "componentIdsAffected": [
+    "PGLRT"
+  ],
+  "startAt": "2021-10-17T12:02:25.000+08:00",
+  "endAt": "2021-10-17T12:14:08.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Punggol LRT services have resumed since 12.04pm. Free regular and bridging bus services have ceased. We are very sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1449592294361821184",
+      "createdAt": "2021-10-17T12:25:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Punggol LRT services have resumed. Free regular bus services are still available.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1449589522019221504",
+      "createdAt": "2021-10-17T12:14:08.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "No Punggol LRT services due to a signalling fault. Free regular bus services are available at designated stops. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1449586571720544256",
+      "createdAt": "2021-10-17T12:02:25.000+08:00"
+    }
+  ]
+}

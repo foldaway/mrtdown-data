@@ -1,0 +1,55 @@
+{
+  "id": "2017-03-28-nsl-signalling-fault",
+  "title": "Signalling fault on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-03-28T20:44:11.000+08:00",
+  "endAt": "2017-03-28T22:22:55.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #Bishan to #Sembawang have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/846732004292943872",
+      "createdAt": "2017-03-28T22:33:36.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE:Fault cleared, trains are progressively returning to normal speed. Pls add 10mins travel time from #Bishan to #Sembawang.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/846729319812681728",
+      "createdAt": "2017-03-28T22:22:55.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Pls cater 15 mins additional travel time from #Bishan to #Sembawang. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/846723161957658625",
+      "createdAt": "2017-03-28T21:58:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Due to a signalling fault at #Sembawang.Pls add 15mins travel time from #Bishan to #Sembawang.Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/846718578854248448",
+      "createdAt": "2017-03-28T21:40:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Pls cater 15 mins additional travel time from #Bishan towards #Sembawang. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/846713791169540096",
+      "createdAt": "2017-03-28T21:21:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Pls add 15mins travel time from #Bishan towards #Sembawang,due to a signalling fault at #Sembawang.Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/846709288407990272",
+      "createdAt": "2017-03-28T21:03:20.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a signalling fault,pls add 15mins travel time from#Bishan to #Sembawang towards #JurongEast.Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/846704469547016192",
+      "createdAt": "2017-03-28T20:44:11.000+08:00"
+    }
+  ]
+}

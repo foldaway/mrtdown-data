@@ -1,0 +1,25 @@
+{
+  "id": "2016-03-08-track-fault-redhill",
+  "title": "Track fault causing travel delays",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-03-08T17:29:35.000+08:00",
+  "endAt": "2016-03-08T17:44:01.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train service from #JurongEast to #Redhill is operating normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/707139800977936384",
+      "createdAt": "2016-03-08T17:44:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] Estimate additional 15mins travelling time from #JurongEast to #Redhill stations due to track fault at #Redhill.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/707136169784381440",
+      "createdAt": "2016-03-08T17:29:35.000+08:00"
+    }
+  ]
+}

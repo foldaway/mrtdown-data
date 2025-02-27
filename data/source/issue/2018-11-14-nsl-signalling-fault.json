@@ -1,0 +1,49 @@
+{
+  "id": "2018-11-14-nsl-signalling-fault",
+  "title": "Signalling fault on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2018-11-14T05:09:50.000+08:00",
+  "endAt": "2018-11-14T06:27:49.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train svcs between #Yishun to #Woodlands have resumed. Free regular &amp; bridging bus svcs have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1062478436042600448",
+      "createdAt": "2018-11-14T06:52:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Train service on the North South Line has resumed. Free regular bus service and free bridging bus service is still available between #Yishun and #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1062473444124647425",
+      "createdAt": "2018-11-14T06:33:03.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Signalling fault cleared, train svcs are progressively being restored.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1062472128849530880",
+      "createdAt": "2018-11-14T06:27:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a signalling fault, pls add 15mins train travel time between #Yishun and #Woodland. Free regular bus &amp; free bridging bus svcs between #Yishun and #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1062462549948432384",
+      "createdAt": "2018-11-14T05:49:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a signalling fault, pls add 15mins train travel time btwn #Yishun and #Woodland. Free regular bus &amp; free bridging bus svcs btwn #Yishun and #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1062458067457990656",
+      "createdAt": "2018-11-14T05:31:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a signalling fault, pls add 20mins train travel time btwn #Yishun and #Admiralty. Free bridging bus svcs btwn #Yishun and #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1062452502220595200",
+      "createdAt": "2018-11-14T05:09:50.000+08:00"
+    }
+  ]
+}

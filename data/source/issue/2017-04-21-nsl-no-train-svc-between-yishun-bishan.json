@@ -1,0 +1,43 @@
+{
+  "id": "2017-04-21-nsl-no-train-svc-between-yishun-bishan",
+  "title": "No train service between Yishun and Bishan",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-04-21T05:07:35.000+08:00",
+  "endAt": "2017-04-21T05:58:26.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services between #Yishun &amp; #Bishan have resumed. Free regular bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/855183157489917952",
+      "createdAt": "2017-04-21T06:15:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Train services between #Yishun &amp; #Bishan have resumed. Free regular bus svc still available between Yishun &amp; Bishan.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/855178872643440640",
+      "createdAt": "2017-04-21T05:58:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service between #Yishun &amp; #Bishan,due to a train fault at #Khatib.Est resumption time extended to 06.00am.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/855177847412883456",
+      "createdAt": "2017-04-21T05:54:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service between #Yishun &amp; #Bishan,due to a train fault at #Khatib.Est resumption time: 5:50am.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/855174259605258240",
+      "createdAt": "2017-04-21T05:40:06.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]:No train svc between #Yishun &amp; #Bishan,due to a train fault at #Khatib.Free regular bus svc is available between Yishun &amp; Bishan.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/855166077310861312",
+      "createdAt": "2017-04-21T05:07:35.000+08:00"
+    }
+  ]
+}

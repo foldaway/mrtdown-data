@@ -1,0 +1,37 @@
+{
+  "id": "2023-11-05-train-fault-on-nsl",
+  "title": "Train Fault on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2023-11-05T12:13:46.000+08:00",
+  "endAt": "2023-11-05T12:43:37.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train service on the North South Line has resumed. Free regular bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1721036123387179147",
+      "createdAt": "2023-11-05T13:26:01.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "NSL [Update]: Train services are progressively being restored. If your journey has been affected, you may download an e-Travel Chit as proof of your travel at https://t.co/dYFVNdxSLs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1721031350973866250",
+      "createdAt": "2023-11-05T13:07:03.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] CLEARED: Train services on the North South Line are progressively resumed. Free regular bus service is still available btwn #AngMoKio and #Newton.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1721025449885942149",
+      "createdAt": "2023-11-05T12:43:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a train fault, pls add 25mins train travel time from #AngMoKio to #Newton towards #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1721017939200184521",
+      "createdAt": "2023-11-05T12:13:46.000+08:00"
+    }
+  ]
+}

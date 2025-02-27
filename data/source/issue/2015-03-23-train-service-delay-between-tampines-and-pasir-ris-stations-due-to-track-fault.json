@@ -1,0 +1,42 @@
+{
+  "id": "2015-03-23-train-service-delay-between-tampines-and-pasir-ris-stations-due-to-track-fault",
+  "title": "Train service delay between Tampines and Pasir Ris stations due to track fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2015-03-23T19:28:41.000+08:00",
+  "endAt": "2015-03-23T19:52:22.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Train service has resumed between Tampines and Pasir Ris stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/579995834525208576",
+      "createdAt": "2015-03-23T21:19:17.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Expect additional 10 minutes traveling time between Tampines and Pasir Ris. Our Engineers are at site rectifying the fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/579991671124836352",
+      "createdAt": "2015-03-23T21:02:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to earlier track fault at Pasir Ris, please estimate10mins additional traveling time from Tampines to Pasir Ris on both bounds.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/579978579812818944",
+      "createdAt": "2015-03-23T20:10:43.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Train service between Tampines and Pasir Ris has resumed. Trains are moving at a slower speed.Our Engineers are rectifying the fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/579973962022543360",
+      "createdAt": "2015-03-23T19:52:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train service delay for 20mins time between Tampines and Pasir Ris stations due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/579968000540823553",
+      "createdAt": "2015-03-23T19:28:41.000+08:00"
+    }
+  ]
+}

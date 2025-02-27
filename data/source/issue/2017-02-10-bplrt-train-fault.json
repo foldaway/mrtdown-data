@@ -1,0 +1,37 @@
+{
+  "id": "2017-02-10-bplrt-train-fault",
+  "title": "Train services on BPLRT affected due to a train fault",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2017-02-10T15:26:16.000+08:00",
+  "endAt": "2017-02-10T15:43:42.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[BPLRT CLEARED] Free Regular and Shuttle Bus Services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/829966224947712000",
+      "createdAt": "2017-02-10T16:12:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT Update] Normal Train Services have resumed. Free Regular and Shuttle Bus Services are still available along BPLRT",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/829959009767534592",
+      "createdAt": "2017-02-10T15:43:42.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT Update] Faulty train is being recovered. Normal train services will resume in around 10 min.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/829957236281585666",
+      "createdAt": "2017-02-10T15:36:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Train services on BPLRT affected due to a train fault. Free regular bus services are available along BPLRT.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/829954620688474112",
+      "createdAt": "2017-02-10T15:26:16.000+08:00"
+    }
+  ]
+}

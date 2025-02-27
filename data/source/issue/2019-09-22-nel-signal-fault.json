@@ -1,0 +1,24 @@
+{
+  "id": "2019-09-22-nel-signal-fault",
+  "title": "NEL service disruption due to signalling fault",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2019-09-22T06:26:12.000+08:00",
+  "endAt": "2019-09-23T00:00:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Update: NEL svc is delayed due to a signalling fault. Additional travel time of 15 minutes may be expected. Free regular bus svc available btw Punggol and HarbourFront. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1175539782601961472",
+      "createdAt": "2019-09-22T06:38:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL svc is delayed due to a signalling fault. Additional travel time of about 10 minutes may be expected. Free regular bus services available between Punggol and HarbourFront. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1175536732713832448",
+      "createdAt": "2019-09-22T06:26:12.000+08:00"
+    }
+  ]
+}

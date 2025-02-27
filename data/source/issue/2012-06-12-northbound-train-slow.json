@@ -1,0 +1,25 @@
+{
+  "id": "2012-06-12-northbound-train-slow",
+  "title": "Northbound train service from Ang Mo Kio travelling slower.",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-06-12T18:47:19.000+08:00",
+  "endAt": "2012-06-12T18:53:01.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Northbound train service from Ang Mo Kio running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/212497730696785922",
+      "createdAt": "2012-06-12T18:53:01.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Northbound train service from Ang Mo Kio travelling slower.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/212496294474809344",
+      "createdAt": "2012-06-12T18:47:19.000+08:00"
+    }
+  ]
+}

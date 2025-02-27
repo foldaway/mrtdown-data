@@ -1,0 +1,25 @@
+{
+  "id": "2012-03-16-trains-slow-between-admiralty-and-kranji",
+  "title": "Trains experiencing delays between Admiralty and Kranji",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-03-16T12:05:15.000+08:00",
+  "endAt": "2012-03-16T12:51:56.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE: Trains travelling between Admiralty and Kranji in both directions are running smoothly now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/180516729712156672",
+      "createdAt": "2012-03-16T12:51:56.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Trains are travelling slower between Admiralty and Kranji in both directions due to a track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/180504979335954432",
+      "createdAt": "2012-03-16T12:05:15.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "2019-03-22-north-east-line-maintenance",
+  "title": "North East Line maintenance works",
+  "componentIdsAffected": ["NEL"],
+  "startAt": "2019-03-21T23:00:00.000+08:00",
+  "endAt": "2019-03-24T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Due to maintenance works, train svcs on the NEL between NE1 HarbourFront &amp; NE6 Dhoby Ghaut will be affected by early closure at ard 11pm tonight - 23 Mar. Pls note: Shuttle Bus 22 will be in operation to serve the affected stns while Svcs 315 &amp; 325 will run until 1am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1109264465663410176",
+      "createdAt": "2019-03-23T09:23:52.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Due to maintenance works, train svcs on the NEL between NE1 HarbourFront &amp; NE6 Dhoby Ghaut will be affected by early closure at ard 11pm this Fri &amp; Sat - Mar 22 &amp; 23. Pls note: Shuttle Bus 22 will be in operation to serve the affected stns while Svcs 315 &amp; 325 will run until 1am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1108572755530637312",
+      "createdAt": "2019-03-21T11:35:15.000+08:00"
+    }
+  ]
+}

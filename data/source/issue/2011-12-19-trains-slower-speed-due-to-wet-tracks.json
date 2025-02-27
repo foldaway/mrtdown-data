@@ -1,0 +1,31 @@
+{
+  "id": "2011-12-19-trains-slower-speed-due-to-wet-tracks",
+  "title": "Trains travelling at slower speed due to wet tracks",
+  "componentIdsAffected": [
+    "NSL",
+    "EWL"
+  ],
+  "startAt": "2011-12-19T11:40:23.000+08:00",
+  "endAt": "2011-12-20T00:00:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "train svc is still running smoothly, despite a 9 min delay at Orchard northbound at 1846",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/148736281948602368",
+      "createdAt": "2011-12-19T20:07:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to speed restrictions & wet tracks, trains r taking a little longer to reach u.  Pls allow extra time 4 travel.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/148694964317061120",
+      "createdAt": "2011-12-19T17:23:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Service on all lines ok. Trains travelling at slower speed due to wet tracks. Pls allow extra time 4 travel.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/148608590419197952",
+      "createdAt": "2011-12-19T11:40:23.000+08:00"
+    }
+  ]
+}

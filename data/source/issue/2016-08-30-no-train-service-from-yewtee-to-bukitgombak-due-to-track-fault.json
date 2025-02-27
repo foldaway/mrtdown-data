@@ -1,0 +1,91 @@
+{
+  "id": "2016-08-30-no-train-service-from-yewtee-to-bukitgombak-due-to-track-fault",
+  "title": "No train service from Yew Tee to Bukit Gombak due to track fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2016-08-30T06:08:57.000+08:00",
+  "endAt": "2016-08-30T06:15:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train service between Woodland and Jurong East has resumed. Free regular bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770434881922867200",
+      "createdAt": "2016-08-30T09:36:04.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]:Due to congestion,estimate 10mins additional travel time between WDL &amp; JUR.Free regular bus is still available between WDL &amp; JUR.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770430868540100608",
+      "createdAt": "2016-08-30T09:20:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]:UPDATED:Due to congestion,estimate 20mins add travel time between WDL &amp; JUR.Free regular bus is still available between WDL &amp; JUR.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770429642196983808",
+      "createdAt": "2016-08-30T09:15:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]:Please expect additional 20mins travel time between WDL &amp; JUR due to earlier fault.Free regular bus is available between WDL &amp; JUR.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770424595346141184",
+      "createdAt": "2016-08-30T08:55:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]:Due to congestion,estimate 20mins additional travel time between WDL &amp; JUR.Free regular bus is still available between WDL &amp; JUR.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770420508365959168",
+      "createdAt": "2016-08-30T08:38:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]:Due to congestion,estimate 20mins additional travel time between WDL &amp; JUR.Free regular bus is available between WDL &amp; JUR.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770416472518635521",
+      "createdAt": "2016-08-30T08:22:55.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]:Fault cleared but trains &amp; stations are still crowded.Due to congestion,estimate 20mins additional travel time between WDL &amp; JUR.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770408260662726656",
+      "createdAt": "2016-08-30T07:50:17.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]:Fault cleared but trains &amp; stations are still crowded.Due to congestion,estimate 15mins additional travel time between WDL &amp; JUR.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770407574743023617",
+      "createdAt": "2016-08-30T07:47:33.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]Update:Free regular bus still available btw YewTee &amp; JurongEast.Trains will traveling at slower speed due to earlier fault @ NSLine.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770401343399866368",
+      "createdAt": "2016-08-30T07:22:48.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]Update:Due to earlier track fault,trains will be traveling @ slower speed.Free regular bus still available between YewTee &amp; JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770395189445668868",
+      "createdAt": "2016-08-30T06:58:21.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]Update:Trains are moving at a slower speed between Choa Chu Kang and Bukit Gombak.Free regular bus service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770389579715190785",
+      "createdAt": "2016-08-30T06:36:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] CLEARED :Train service between #YewTee and #BukitGombak has resumed. Free regular bus service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770386360075186176",
+      "createdAt": "2016-08-30T06:23:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: No train service from #YewTee to #BukitGombak due to track fault until 6:15AM.Free bus service is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/770382760225615872",
+      "createdAt": "2016-08-30T06:08:57.000+08:00"
+    }
+  ]
+}

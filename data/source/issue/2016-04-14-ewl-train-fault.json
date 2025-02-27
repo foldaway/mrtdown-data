@@ -1,0 +1,35 @@
+{
+  "id": "2016-04-14-ewl-train-fault",
+  "title": "Train Fault on East-West Line",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2016-05-02T15:44:07.000+08:00",
+  "endAt": "2016-05-02T16:33:01.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Free regular bus service between #JooKoon and #BoonLay has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/727058420197543936",
+      "createdAt": "2016-05-02T16:53:30.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train service has resumed between #JooKoon and #BoonLay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/727053265381117953",
+      "createdAt": "2016-05-02T16:33:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Expected resumption time is 4:30pm. We apologize for inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/727048751253061632",
+      "createdAt": "2016-05-02T16:15:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a train fault, there is no train service between #JooKoon and #BoonLay in both bounds. Expected resumption time will be 4.05pm",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/727040960224333824",
+      "createdAt": "2016-05-02T15:44:07.000+08:00"
+    }
+  ]
+}

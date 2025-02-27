@@ -1,0 +1,25 @@
+{
+  "id": "2016-04-09-ewl-train-fault",
+  "title": "Train fault causing additional travel time on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-04-09T09:53:25.000+08:00",
+  "endAt": "2016-04-09T10:18:11.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train service from PayaLebar to Jurong East towards #JooKoon are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/718624017142288384",
+      "createdAt": "2016-04-09T10:18:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimated 20 mins additional travelling time from PayaLebar to JurongEast towards JooKoon due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/718617784372961282",
+      "createdAt": "2016-04-09T09:53:25.000+08:00"
+    }
+  ]
+}

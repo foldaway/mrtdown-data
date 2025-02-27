@@ -1,0 +1,36 @@
+{
+  "id": "2022-09-21-bukit-panjang-lrt-track-fault",
+  "title": "Track Fault at Bukit Panjang LRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2022-09-21T18:14:32.000+08:00",
+  "endAt": "2022-10-13T14:51:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] CLEARED: Fault cleared at 1451 hrs. Train service is progressively being restored.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1580451351196098567",
+      "createdAt": "2022-10-13T14:52:20.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT]: Due to a track fault, additional travel time of 10 minutes between #ChoaChuKang and #BukitPanjang.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1580445391639937024",
+      "createdAt": "2022-10-13T14:28:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]: Train service is available at all stations running on Service B.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1572530974390620168",
+      "createdAt": "2022-09-21T18:19:35.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT]: Due to a track fault at #BukitPanjang, train service is available at all stations running on Service B.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1572529705169059840",
+      "createdAt": "2022-09-21T18:14:32.000+08:00"
+    }
+  ]
+}

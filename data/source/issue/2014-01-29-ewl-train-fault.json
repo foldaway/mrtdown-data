@@ -1,0 +1,25 @@
+{
+  "id": "2014-01-29-ewl-train-fault",
+  "title": "East West Line train fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2014-01-29T19:45:17.000+08:00",
+  "endAt": "2014-01-29T20:01:29.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services between #BoonLay and #JooKoon are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/428498126312206336",
+      "createdAt": "2014-01-29T20:01:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 10 mins additional travelling time between #BoonLay and #JooKoon in both directions due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/428494052737032192",
+      "createdAt": "2014-01-29T19:45:17.000+08:00"
+    }
+  ]
+}

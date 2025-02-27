@@ -1,0 +1,31 @@
+{
+  "id": "2023-06-24-circle-line-outage",
+  "title": "Service disruption on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2023-06-24T00:17:55.000+08:00",
+  "endAt": "2023-06-24T05:17:03.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] UPDATE: Normal train services between #DhobyGhaut / #MarinaBay and #PayaLebar have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1672353097484730369",
+      "createdAt": "2023-06-24T05:17:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Train services have ended between #DhobyGhaut / #MarinaBay and #PayaLebar. Free regular bus and bridging bus have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1672281031431569412",
+      "createdAt": "2023-06-24T00:30:42.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Train services have ended between #DhobyGhaut / #MarinaBay and #Mountbatten. Please continue to add additional 30 minutes between #Mountbatten and #PayaLebar. Free regular bus services and bridging bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1672277815025369090",
+      "createdAt": "2023-06-24T00:17:55.000+08:00"
+    }
+  ]
+}

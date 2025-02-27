@@ -1,0 +1,19 @@
+{
+  "id": "2018-12-19-nel-maintenance-works",
+  "title": "Early train services ending on NEL due to maintenance works",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2019-01-04T00:00:00.000+08:00",
+  "endAt": "2019-03-03T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Due to maintenance works, train svcs on the NEL between NE12 Serangoon &amp; NE17 Punggol will end earlier at abt 11pm on Fri &amp; Sat - Jan 4 &amp;5 and 11 &amp; 12, Feb 22 &amp; 23 and Mar 1 &amp; 2. Shuttle Bus 21 will be in operation to serve the closed stations while Svc 325 will run until 12.50am",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1075311430377717760",
+      "createdAt": "2018-12-19T16:46:37.000+08:00"
+    }
+  ]
+}

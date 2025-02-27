@@ -1,0 +1,24 @@
+{
+  "id": "2020-12-28-dtl-delay",
+  "title": "Delay on Downtown Line",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2020-12-28T23:00:53.000+08:00",
+  "endAt": "2020-12-29T01:05:06.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "DTL is back to regular svc. Once again, we are very sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1343603894602006529",
+      "createdAt": "2020-12-29T01:05:06.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "DTL delay - Additional travel time of up to 20 minutes may be expected from DT35 Expo stn to DT24 Geylang Bahru stn. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1343572636312334336",
+      "createdAt": "2020-12-28T23:00:53.000+08:00"
+    }
+  ]
+}

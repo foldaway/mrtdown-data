@@ -1,0 +1,24 @@
+{
+  "id": "2022-09-13-dtl-service-disruption",
+  "title": "Downtown Line service disruption",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2022-09-13T20:24:42.000+08:00",
+  "endAt": "2022-09-13T21:00:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "DTL full svc has resumed at 2100hrs. Once again we are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1569673043559215104",
+      "createdAt": "2022-09-13T21:03:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "DTL svc is delayed due to train fault. Additional travel time of about 25 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1569663358932221960",
+      "createdAt": "2022-09-13T20:24:42.000+08:00"
+    }
+  ]
+}

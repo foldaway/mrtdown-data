@@ -1,0 +1,41 @@
+{
+  "id": "2017-07-10-east-west-line-service-disruption",
+  "title": "Service disruption on East West Line due to signalling fault",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2017-07-10T18:46:54.000+08:00",
+  "endAt": "2017-07-10T20:31:59.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE: Train services are progressively being restored to normal btwn #Queenstown &amp; #Bugis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/884389738882322432",
+      "createdAt": "2017-07-10T20:31:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: We have stopped free regular bus services between #Queenstown and #Bugis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/884388372961140736",
+      "createdAt": "2017-07-10T20:26:33.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Pls cater 15 mins additional travel time between #Queenstown &amp; #Bugis. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/884386346915188736",
+      "createdAt": "2017-07-10T20:18:30.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]Update: Due to a signalling fault, pls add 25mins travel time between #Queenstown &amp; #Bugis. Train service is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/884365850584662016",
+      "createdAt": "2017-07-10T18:57:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a signalling fault, pls add 15mins travel time between #Queenstown &amp; #Bugis. Train service is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/884363291585257472",
+      "createdAt": "2017-07-10T18:46:54.000+08:00"
+    }
+  ]
+}

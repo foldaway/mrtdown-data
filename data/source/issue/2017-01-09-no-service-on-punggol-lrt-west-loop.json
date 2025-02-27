@@ -1,0 +1,31 @@
+{
+  "id": "2017-01-09-no-service-on-punggol-lrt-west-loop",
+  "title": "No service on Punggol LRT West Loop due to power fault",
+  "componentIdsAffected": [
+    "PGLRT"
+  ],
+  "startAt": "2017-01-09T22:05:40.000+08:00",
+  "endAt": "2017-01-09T22:19:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "09/01, 10.25pm: Punggol LRT West Loop full svc has resumed. Free bus rides have ceased. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/818463964874932224",
+      "createdAt": "2017-01-09T22:26:30.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "09/01, 10.19pm: Punggol LRT West Loop full service has resumed. Free bus rides still available at designated stops near the stations.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/818462545522528256",
+      "createdAt": "2017-01-09T22:20:51.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "09/01, 10.04pm: No service on Punggol LRT West Loop due to a power fault. Free bus rides available at designated stops near the stations.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/818458722414383104",
+      "createdAt": "2017-01-09T22:05:40.000+08:00"
+    }
+  ]
+}

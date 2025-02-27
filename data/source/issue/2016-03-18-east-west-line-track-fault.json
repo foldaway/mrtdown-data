@@ -1,0 +1,91 @@
+{
+  "id": "2016-03-18-east-west-line-track-fault",
+  "title": "Service disruption due to track fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-03-18T07:09:02.000+08:00",
+  "endAt": "2016-03-18T10:11:48.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train service from #TanahMerah to #Aljunied towards #JooKoon is now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/710649876925648897",
+      "createdAt": "2016-03-18T10:11:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Please expect additional 5mins travelling time from #TanahMerah to #Aljunied towards #JooKoon due to earlier track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/710645437330358272",
+      "createdAt": "2016-03-18T09:54:10.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Please expect additional 15mins travelling time from #TanahMerah to #Aljunied towards #JooKoon due to earlier track fault",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/710643994351394816",
+      "createdAt": "2016-03-18T09:48:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Please expect additional travelling 20mins travelling time from #TanahMerah to #Aljunied towards #JooKoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/710640183247380480",
+      "createdAt": "2016-03-18T09:33:17.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE: Our engineer has cleared the fault near #PayaLebar but trains will be travelling at a slower speed due to congestion.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/710640022987231232",
+      "createdAt": "2016-03-18T09:32:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Estimate 30 mins additional travelling time from #PasirRis to #Aljunied towards JooKoon due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/710636512019255296",
+      "createdAt": "2016-03-18T09:18:42.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Estimate 25 mins additional travelling time from #PasirRis to #Aljunied towards JooKoon due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/710633297689219072",
+      "createdAt": "2016-03-18T09:05:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train service is still available on the East West line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/710616665193451520",
+      "createdAt": "2016-03-18T07:59:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Estimate 25 mins additional travelling time from #TanahMerah to #Aljunied towards JooKoon due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/710615588591112192",
+      "createdAt": "2016-03-18T07:55:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Train service is still available on the East West line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/710611709837225985",
+      "createdAt": "2016-03-18T07:40:08.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE: Estimate 20 mins additional travelling time from #TanahMerah to #Aljunied towards JooKoon due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/710611228410810368",
+      "createdAt": "2016-03-18T07:38:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Train service is still available on the East West line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/710606709505437696",
+      "createdAt": "2016-03-18T07:20:16.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Estimate 15 mins additional travelling time from #TanahMerah to #Aljunied towards JooKoon due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/710603882234155009",
+      "createdAt": "2016-03-18T07:09:02.000+08:00"
+    }
+  ]
+}

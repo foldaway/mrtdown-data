@@ -1,0 +1,25 @@
+{
+  "id": "2012-03-19-east-bound-delay",
+  "title": "Slight delay on east bound train service",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-03-19T17:19:35.000+08:00",
+  "endAt": "2012-03-19T17:44:20.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE: East bound train service from Aljunied to Tanah Merah running smoothly now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/181677474839658497",
+      "createdAt": "2012-03-19T17:44:20.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "There is a slight delay on east bound train service from Aljunied to Tanah Merah.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/181671249968234496",
+      "createdAt": "2012-03-19T17:19:35.000+08:00"
+    }
+  ]
+}

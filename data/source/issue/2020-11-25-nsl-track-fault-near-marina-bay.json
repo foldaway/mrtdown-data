@@ -1,0 +1,36 @@
+{
+  "id": "2020-11-25-nsl-track-fault-near-marina-bay",
+  "title": "Track fault near Marina Bay causing delays",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2020-11-25T06:21:55.000+08:00",
+  "endAt": "2020-11-25T06:30:58.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train service between #MarinaSouthPier and #Newton has resumed. We apologize for the delay to your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1331378783480283137",
+      "createdAt": "2020-11-25T07:26:52.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1331369553306165248",
+      "createdAt": "2020-11-25T06:50:11.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. Pls add 5mins train travel time btwn #MarinaSouthPier and #Newton.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1331364717319704576",
+      "createdAt": "2020-11-25T06:30:58.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a track fault near #MarinaBay, pls add 10mins train travel time btwn #Newton and #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1331362437686128640",
+      "createdAt": "2020-11-25T06:21:55.000+08:00"
+    }
+  ]
+}

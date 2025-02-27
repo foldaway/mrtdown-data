@@ -1,0 +1,25 @@
+{
+  "id": "2016-02-16-east-west-line-track-fault",
+  "title": "Track fault causing delays on the East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-02-16T19:11:07.000+08:00",
+  "endAt": "2016-02-16T19:45:03.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train service towards #Pasir Ris is operating normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/699560117583282176",
+      "createdAt": "2016-02-16T19:45:03.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Estimate 15 mins additional travelling time from #TanjongPagar  to #Aljunied towards PasirRis due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/699551575753121792",
+      "createdAt": "2016-02-16T19:11:07.000+08:00"
+    }
+  ]
+}

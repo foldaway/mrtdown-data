@@ -1,0 +1,37 @@
+{
+  "id": "2015-10-28-track-fault-at-pasiris",
+  "title": "Track fault at Pasir Ris causing service disruption",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2015-10-28T14:54:29.000+08:00",
+  "endAt": "2015-10-28T15:10:24.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services are now operating normally. Free bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/659293173768806400",
+      "createdAt": "2015-10-28T16:58:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to an earlier track fault, estimate additional 10 minutes travelling time between #Tampines and #PasirRis on both bound.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/659266925348847616",
+      "createdAt": "2015-10-28T15:14:18.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Train service between #Tampines and #PasirRis has resumed. Trains will be travelling at slower speed due to an earlier fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/659265946251427840",
+      "createdAt": "2015-10-28T15:10:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] Due to a track fault at #PasirRis, there is no train service between #Tampines and #PasirRis on both bound for 20 minutes.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/659261938749194240",
+      "createdAt": "2015-10-28T14:54:29.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "2012-06-01-train-slowdown-track-fault",
+  "title": "Trains from Tanjong Pagar moving slower due to track fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-06-01T18:37:43.000+08:00",
+  "endAt": "2012-06-01T18:50:31.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Trains from Tanjong Pagar on both bounds running well as of 6.40pm.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/208510835700662272",
+      "createdAt": "2012-06-01T18:50:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Trains from Tanjong Pagar on both bounds are moving slower due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/208507612982026241",
+      "createdAt": "2012-06-01T18:37:43.000+08:00"
+    }
+  ]
+}

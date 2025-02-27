@@ -1,0 +1,25 @@
+{
+  "id": "2019-07-06-bplrt-power-fault",
+  "title": "Power fault affecting Bukit Panjang LRT service",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2019-07-06T11:08:31.000+08:00",
+  "endAt": "2019-07-06T11:37:30.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] CLEARED: Train services have resumed. Free regular and bridging bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1147348820000309248",
+      "createdAt": "2019-07-06T11:37:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Due to power fault affecting the signalling system, there is no train service on BPLRT. Free regular and bridging bus services are available along the affected stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1147341527170990080",
+      "createdAt": "2019-07-06T11:08:31.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "2015-04-28-bplrt-power-fault",
+  "title": "Power fault affecting Bukit Panjang LRT services",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2015-04-28T19:32:50.000+08:00",
+  "endAt": "2015-04-28T20:35:59.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT]   CLEARED: Train services on the BPLRT are running normally. Free bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/593050641141932033",
+      "createdAt": "2015-04-28T21:54:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]   CLEARED: Train services from #Pending towards #Bangkit are now running   normally.Free bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/593046176108126208",
+      "createdAt": "2015-04-28T21:36:41.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT]:   Est. 15 mins add. travelling time from #Pending to #Bangkit due to train fault. Free public and shuttle bus are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/593040800965009409",
+      "createdAt": "2015-04-28T21:15:19.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT]   CLEARED: Services have resumed on the BPLRT. Free public and shuttle bus are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/593030899538665472",
+      "createdAt": "2015-04-28T20:35:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]  UPDATE: No service on the BPLRT due to Power fault. Free Public and Shuttle Bus are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/593026071538192385",
+      "createdAt": "2015-04-28T20:16:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]  UPDATE: Due to power fault, there is no train service on the BPLRT. Free Public and Shuttle Bus are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/593020904663224320",
+      "createdAt": "2015-04-28T19:56:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]   UPDATE: Free public &amp; shuttle buses are now available at afffected stations between #Phoenix towards #BukitPanjang.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/593015620104376320",
+      "createdAt": "2015-04-28T19:35:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]:   Estimate 20 mins additional travelling time from #Phoenix to #BukitPanjang due to power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/593015009006915584",
+      "createdAt": "2015-04-28T19:32:50.000+08:00"
+    }
+  ]
+}

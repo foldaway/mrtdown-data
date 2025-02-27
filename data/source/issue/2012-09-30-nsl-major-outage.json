@@ -1,0 +1,29 @@
+{
+  "id": "2012-09-30-nsl-major-outage",
+  "title": "Longer Travelling Time on NSL due to Emergency Button Activation",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2012-09-30T18:03:54.000+08:00",
+  "endAt": "2012-09-30T22:54:16.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #Newton towards #JurongEast are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/252421107586592768",
+      "createdAt": "2012-09-30T22:54:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Expect longer travelling time from #Woodlands towards #AngMoKio due to emergency button activation by customer at #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/252395243704573952",
+      "createdAt": "2012-09-30T21:11:30.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Expect longer travelling time from #DhobyGhaut towards #MarinaBay due to emergency button activation by customer at #DhobyGhaut.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/252348034166431744",
+      "createdAt": "2012-09-30T18:03:54.000+08:00"
+    }
+  ]
+}

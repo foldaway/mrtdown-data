@@ -1,0 +1,43 @@
+{
+  "id": "2015-10-15-train-fault-reported",
+  "title": "Train Fault Reported",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-10-15T09:49:18.000+08:00",
+  "endAt": "2015-10-15T10:17:27.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #Clementi towards #Queenstown are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/654481181061197825",
+      "createdAt": "2015-10-15T10:17:27.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Estimate 20 mins additional travelling time from Clementi to Queenstown towards PasirRis due to train fault. Train service is still running.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/654478645424066567",
+      "createdAt": "2015-10-15T10:07:23.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Estimate 15 mins additional travelling time from Clementi to Queenstown towards PasirRis due to train fault. Train service is still running.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/654477725457977344",
+      "createdAt": "2015-10-15T10:03:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 15 mins additional travelling time from #Clementi to #Queenstown towards PasirRis due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/654475484185542656",
+      "createdAt": "2015-10-15T09:54:49.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "A train fault has been reported at #Clementi EastBound. Trains are moving slower towards #Pasir Ris. We will update again on the delay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/654474094285488128",
+      "createdAt": "2015-10-15T09:49:18.000+08:00"
+    }
+  ]
+}

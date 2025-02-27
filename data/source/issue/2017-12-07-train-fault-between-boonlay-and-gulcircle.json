@@ -1,0 +1,31 @@
+{
+  "id": "2017-12-07-train-fault-between-boonlay-and-gulcircle",
+  "title": "Train fault causing disruption between Boon Lay and Gul Circle",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-12-07T05:22:30.000+08:00",
+  "endAt": "2017-12-07T06:05:48.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train svcs btwn #BoonLay and #GulCircle have resumed.  Free regular bus &amp; free bridging bus svcs have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/938534528099934208",
+      "createdAt": "2017-12-07T06:24:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] CLEARED: Train svcs btwn #BoonLay and #GulCircle resumed. Free regular bus &amp; free bridging bus svcs are still available between #BoonLay &amp; #GulCircle.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/938529937316749313",
+      "createdAt": "2017-12-07T06:05:48.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a train fault, there is no train svc btwn #BoonLay and #GulCircle.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/938519039512424449",
+      "createdAt": "2017-12-07T05:22:30.000+08:00"
+    }
+  ]
+}

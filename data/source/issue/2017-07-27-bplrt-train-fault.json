@@ -1,0 +1,31 @@
+{
+  "id": "2017-07-27-bplrt-train-fault",
+  "title": "Train fault affecting Bukit Panjang LRT Service A",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2017-07-27T17:00:50.000+08:00",
+  "endAt": "2017-07-27T17:15:47.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT]\nCLEARED: Train services on the Service A are running normally now",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/890500955770200064",
+      "createdAt": "2017-07-27T17:15:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]\nUPDATE: Train fault between #Senja and #Jelapang at Service A. \nService B is still running.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/890498491465609220",
+      "createdAt": "2017-07-27T17:05:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "BPLRT:\nDue to train fault, only Service B still running. Service A affected",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/890497193110405120",
+      "createdAt": "2017-07-27T17:00:50.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+	"id": "2014-03-03-ewl-train-doors-fault",
+	"title": "Train doors fault causing delays",
+	"componentIdsAffected": ["EWL"],
+	"startAt": "2014-03-03T08:07:06.000+08:00",
+	"endAt": "2014-03-03T08:38:35.000+08:00",
+	"type": "outage",
+	"severity": "major",
+	"updates": [
+		{
+			"type": "operator.resolved",
+			"text": "[EWL] CLEARED: Train services from #JooKoon towards #PasirRis are now operating normally.",
+			"sourceUrl": "https://x.com/SMRT_Singapore/status/440285069727395840",
+			"createdAt": "2014-03-03T08:38:35.000+08:00"
+		},
+		{
+			"type": "operator.monitoring",
+			"text": "[EWL]: Estimate 10 mins additional travelling time from #JooKoon to  PasirRis due to train doors fault.",
+			"sourceUrl": "https://x.com/SMRT_Singapore/status/440282319849402370",
+			"createdAt": "2014-03-03T08:27:39.000+08:00"
+		},
+		{
+			"type": "operator.monitoring",
+			"text": "[EWL]: Estimate 15 mins additional travelling time from #JooKoon to  PasirRis due to train doors fault.",
+			"sourceUrl": "https://x.com/SMRT_Singapore/status/440277147706355712",
+			"createdAt": "2014-03-03T08:07:06.000+08:00"
+		}
+	]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "2016-12-23-ewl-no-train-service-between-outrampark-and-aljunied-due-to-traction-power-fault",
+  "title": "No train service between Outram Park & Aljunied due to traction power fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-12-23T05:33:16.000+08:00",
+  "endAt": "2016-12-23T05:43:07.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Free regular bus between #OutramPark &amp; #Aljunied have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/812056541771677696",
+      "createdAt": "2016-12-23T06:05:41.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Free bridging bus services between #OutramPark &amp; #Aljunied have ceased. Free regular bus service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/812053122231115776",
+      "createdAt": "2016-12-23T05:52:06.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services between #OutramPark &amp; #Aljunied have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/812050862214262784",
+      "createdAt": "2016-12-23T05:43:07.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] No train service between #OutramPark &amp; #Aljunied due to a traction power fault near #Bugis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/812048385045729280",
+      "createdAt": "2016-12-23T05:33:16.000+08:00"
+    }
+  ]
+}

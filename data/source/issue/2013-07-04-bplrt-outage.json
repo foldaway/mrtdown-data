@@ -1,0 +1,41 @@
+{
+  "id": "2013-07-04-bplrt-outage",
+  "title": "BPLRT train service disruption",
+  "componentIdsAffected": ["BPLRT"],
+  "startAt": "2013-07-04T05:36:42.000+08:00",
+  "endAt": "2013-07-04T06:56:09.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] CLEARED: BPLRT train service are now running normally.Free bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/352572886344671234",
+      "createdAt": "2013-07-04T07:41:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] CLEARED: BPLRT train service are now running normally.Free bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/352561430232436736",
+      "createdAt": "2013-07-04T06:56:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Estimate 10 mins additional travelling time for BPLRT train service due to track fault. Free bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/352557816776626178",
+      "createdAt": "2013-07-04T06:41:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Estimate 15 mins additional travelling time for BPLRT train service due to track fault. Free bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/352548620928692225",
+      "createdAt": "2013-07-04T06:05:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]:Estimate 15 mins additional travelling time for BPLRT service due to track fault. Free bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/352541433573552128",
+      "createdAt": "2013-07-04T05:36:42.000+08:00"
+    }
+  ]
+}

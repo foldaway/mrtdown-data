@@ -1,0 +1,55 @@
+{
+  "id": "2014-09-23-train-fault-near-somerset-station",
+  "title": "Train fault near Somerset station causing delays",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-09-23T21:06:17.000+08:00",
+  "endAt": "2014-09-23T22:39:26.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "Train services between Marina Bay and Newton have resumed. bus bridging svcs and bus svcs between these stations are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/514432190378016768",
+      "createdAt": "2014-09-23T23:12:46.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Trains are travelling slower from Marina Bay to Bishan north bound due to an earlier train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/514425932195450880",
+      "createdAt": "2014-09-23T22:47:54.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "The train service has resumed. We apologize for the delay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/514423803305160704",
+      "createdAt": "2014-09-23T22:39:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "There is no trn svc from Marina Bay to Newton, paxs traveling to Bishan and Woodlands Line, please transfer at BuonaVista and PayaLebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/514419399344652288",
+      "createdAt": "2014-09-23T22:21:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Update: There is no train service from Marina Bay to Newton north bound.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/514413618671017985",
+      "createdAt": "2014-09-23T21:58:58.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Due to train fault at Somerset station, free bus and free bus bridging service is available between Marina Bay and Newton both bounds.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/514411211970977793",
+      "createdAt": "2014-09-23T21:49:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to a train fault near Somerset station, please expect additional 25mins from Marina Bay to Newton both bounds.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/514400357527453697",
+      "createdAt": "2014-09-23T21:06:17.000+08:00"
+    }
+  ]
+}

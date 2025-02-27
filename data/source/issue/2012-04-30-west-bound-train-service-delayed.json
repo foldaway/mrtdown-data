@@ -1,0 +1,24 @@
+{
+  "id": "2012-04-30-west-bound-train-service-delayed",
+  "title": "West-bound train service delayed due to train fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-04-30T09:22:03.000+08:00",
+  "endAt": "2012-04-30T09:51:37.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:West-bound train service running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/196778805036195841",
+      "createdAt": "2012-04-30T09:51:37.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "West-bound train service is delayed due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/196771364122796032",
+      "createdAt": "2012-04-30T09:22:03.000+08:00"
+    }
+  ]
+}

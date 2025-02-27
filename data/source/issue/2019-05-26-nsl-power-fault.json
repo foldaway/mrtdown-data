@@ -1,0 +1,61 @@
+{
+  "id": "2019-05-26-nsl-power-fault",
+  "title": "Major service disruption on the North-South Line due to power fault.",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2019-05-26T06:39:52.000+08:00",
+  "endAt": "2019-05-26T07:23:26.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL]: Train svcs between #MarinaSouthPier and #Orchard have resumed. Free regular bus and free bus bridging svcs between #MarinaSouthPier and #Newton have ceased. We are sorry for affecting your Sunday morning commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1132459086744711174",
+      "createdAt": "2019-05-26T09:31:01.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. Free regular bus &amp; free bridging bus svcs are still available btwn #MarinaSouthPier and #Newton.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1132450681657257984",
+      "createdAt": "2019-05-26T08:57:37.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a power fault, there is no train svc btwn #MarinaSouthPier and #Orchard.Free regular bus &amp; free bridging bus svcs are available btwn #MarinaSouthPier and #Newton. Pls seek alternative transport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1132444258542030850",
+      "createdAt": "2019-05-26T08:32:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a power fault, there is no train svc btwn #MarinaSouthPier and #Orchard.Free regular bus &amp; free bridging bus svcs are available btwn #MarinaSouthPier and #Newton.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1132442754401751040",
+      "createdAt": "2019-05-26T08:26:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Due to Power Fault, No train service btwn #MarinaBay and #Bayfront. Free regular bus services activated btwn  #MarinaBay and #Payalebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1132433880290435072",
+      "createdAt": "2019-05-26T07:50:51.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. Free regular bus service is still available between Marina South Pier and Newton.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1132426979804819456",
+      "createdAt": "2019-05-26T07:23:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular bus svcs btwn #MarinaSouthPier and #Newton. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1132418656565047296",
+      "createdAt": "2019-05-26T06:50:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a power fault, pls add 30mins train travel time btwn #Newton and #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1132416019522248704",
+      "createdAt": "2019-05-26T06:39:52.000+08:00"
+    }
+  ]
+}

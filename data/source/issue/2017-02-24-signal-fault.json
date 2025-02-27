@@ -1,0 +1,25 @@
+{
+  "id": "2017-02-24-signal-fault",
+  "title": "Service disruption due to signal fault on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2017-02-24T07:32:21.000+08:00",
+  "endAt": "2017-02-24T07:43:22.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "CCL: CLEARED: Train Services between #Bishan and #HarbourFront are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/834911561189740544",
+      "createdAt": "2017-02-24T07:43:22.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "CCL: Estimate 5 mins additional travelling time between #bishan and #HarbourFront in both directions due to signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/834908785848156160",
+      "createdAt": "2017-02-24T07:32:21.000+08:00"
+    }
+  ]
+}

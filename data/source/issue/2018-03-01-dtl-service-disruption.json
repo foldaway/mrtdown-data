@@ -1,0 +1,54 @@
+{
+  "id": "2018-03-01-dtl-service-disruption",
+  "title": "DTL service disruption due to signalling fault",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2018-03-01T06:51:20.000+08:00",
+  "endAt": "2018-03-02T00:00:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Pls be informed that trains on the DTL will continue to travel at lower speeds bet. Promenade &amp; Downtown Stns until the end of svc hours today. Pls add additional 15 mins when travelling on this sector. Recovery works on the signalling fault are ongoing.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/969163628891877377",
+      "createdAt": "2018-03-01T18:53:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "DTL SVC btw Expo &amp; Bukit Panjang is delayed due to a signalling fault. Additional travel time of 15 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/969127923260231680",
+      "createdAt": "2018-03-01T16:31:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "DTL svc btw Expo &amp; Bukit Panjang is delayed due to a signalling fault. Additional travel time of 15 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/969117003112898561",
+      "createdAt": "2018-03-01T15:47:53.000+08:00"
+    },
+    {
+      "type": "monitoring",
+      "text": "DTL SVC twds Expo &amp; Bukit Panjang is delayed due to signalling fault. Add'l travel time of up to 15mins may be expected. Recovery works in progress. We are sorry..",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/969093175246598144",
+      "createdAt": "2018-03-01T14:13:12.000+08:00"
+    },
+    {
+      "type": "monitoring",
+      "text": "DTL SVC twds Expo &amp; Bukit Panjang is delayed due to signalling fault. Add'l travel time of up to 15mins may be expected. Recovery works in progress. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/969022064056135681",
+      "createdAt": "2018-03-01T09:30:38.000+08:00"
+    },
+    {
+      "type": "monitoring",
+      "text": "DTL SVC twds Expo &amp; Bukit Panjang is delayed due to signalling fault. Add'l travel time of up to 15mins may be expected. Recovery works in progress. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/969014496739012609",
+      "createdAt": "2018-03-01T09:00:34.000+08:00"
+    },
+    {
+      "type": "monitoring",
+      "text": "DTL SVC twds Expo &amp; Bkt Pjg is delayed due to signalling fault. Add'l travel time of up to 15mins may be expected. Recovery works in progress. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/968981977117310976",
+      "createdAt": "2018-03-01T06:51:20.000+08:00"
+    }
+  ]
+}

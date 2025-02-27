@@ -1,0 +1,25 @@
+{
+  "id": "2014-03-26-track-fault-tanjong-pagar",
+  "title": "Track fault causing delays on the East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2014-03-26T06:29:21.000+08:00",
+  "endAt": "2014-03-26T07:17:51.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] UPDATE: Fault is cleared between #OutramPark and #RafflesPlace, trains are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/448599674996277248",
+      "createdAt": "2014-03-26T07:17:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 10 mins additional travelling time between Outram Park and RafflesPlace on both bounds due to track fault at Tanjong Pagar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/448587468170731520",
+      "createdAt": "2014-03-26T06:29:21.000+08:00"
+    }
+  ]
+}

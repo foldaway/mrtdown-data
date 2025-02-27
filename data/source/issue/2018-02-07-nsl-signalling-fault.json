@@ -1,0 +1,43 @@
+{
+  "id": "2018-02-07-nsl-signalling-fault",
+  "title": "Signalling Fault on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2018-02-07T08:14:30.000+08:00",
+  "endAt": "2018-02-07T08:46:35.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs from #AngMoKio to #RafflesPlace are running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/961066671283646464",
+      "createdAt": "2018-02-07T10:38:44.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[NSL] UPDATE: Due to on going track improvement work, please add 5mins train travel time from #AngMoKio to #RafflesPlace.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/961058086772359168",
+      "createdAt": "2018-02-07T10:04:38.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. Pls add 10mins train travel time from #AngMoKio to #RafflesPlace",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/961046421116825600",
+      "createdAt": "2018-02-07T09:18:16.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. Pls add 10mins train travel time from #AngMoKio to #RafflesPlace.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/961038447342309377",
+      "createdAt": "2018-02-07T08:46:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a signalling fault, pls add 15mins train travel time from #AngMoKio to #RafflesPlace towards #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/961030371159678976",
+      "createdAt": "2018-02-07T08:14:30.000+08:00"
+    }
+  ]
+}

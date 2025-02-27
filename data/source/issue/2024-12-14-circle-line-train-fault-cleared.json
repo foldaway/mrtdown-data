@@ -1,0 +1,31 @@
+{
+  "id": "2024-12-14-circle-line-train-fault-cleared",
+  "title": "Train fault cleared on Circle Line, service returning to normal",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2024-12-14T19:13:35.000+08:00",
+  "endAt": "2024-12-14T19:13:35.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: Train fault cleared. Train service between #Promenade and #Serangoon is progressively returning to normal. Free regular bus service are still available between #Promenade and #Serangoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1867890674324144494",
+      "createdAt": "2024-12-14T19:13:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Please add an additional 30mins train travel time between #Promenade and #Serangoon due to a train fault. Free regular bus service are available between #Promenade and #Serangoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1867888300318666910",
+      "createdAt": "2024-12-14T19:04:09.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] UPDATE: Additional 30mins train travel time between #Promenade and #Serangoon due to a train fault. Free regular bus service are available between #Promenade and #Serangoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1867884520252575930",
+      "createdAt": "2024-12-14T18:49:07.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "2019-03-11-platform-screen-door-fault",
+  "title": "Platform Screen Door Fault at Lakeside on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2019-03-11T17:26:33.000+08:00",
+  "endAt": "2019-03-11T18:03:23.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Platform screen door fault has been rectified. Normal train services have resumed. We are sorry for affecting your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1105046553230622722",
+      "createdAt": "2019-03-11T18:03:23.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a platform screen door fault at #Lakeside towards #PasirRis, commuters are advised to add 15 mins train travel time from #JooKoon to #Lakeside.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1105037282002624513",
+      "createdAt": "2019-03-11T17:26:33.000+08:00"
+    }
+  ]
+}

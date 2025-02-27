@@ -1,0 +1,41 @@
+{
+	"id": "2014-01-22-east-west-line-outage",
+	"title": "Service disruption on East West Line",
+	"componentIdsAffected": ["EWL"],
+	"startAt": "2014-01-22T22:50:01.000+08:00",
+	"endAt": "2014-01-22T23:23:08.000+08:00",
+	"type": "outage",
+	"severity": "major",
+	"updates": [
+		{
+			"type": "operator.update",
+			"text": "[EWL] Free bus services #TanahMerah and #Tampines have ceased.",
+			"sourceUrl": "https://x.com/SMRT_Singapore/status/426025146936078337",
+			"createdAt": "2014-01-23T00:14:44.000+08:00"
+		},
+		{
+			"type": "operator.update",
+			"text": "[EWL] CLEARED: Train services on EW line between #TanahMerah and #Tampines are now running normally. Free bus services are still available.",
+			"sourceUrl": "https://x.com/SMRT_Singapore/status/426013287566688256",
+			"createdAt": "2014-01-22T23:27:37.000+08:00"
+		},
+		{
+			"type": "operator.resolved",
+			"text": "[EWL] CLEARED: East Bound Train services from #TanahMerah towards #PasirRis are now running normally.",
+			"sourceUrl": "https://x.com/SMRT_Singapore/status/426012161286995968",
+			"createdAt": "2014-01-22T23:23:08.000+08:00"
+		},
+		{
+			"type": "operator.investigating",
+			"text": "[EWL] No train service between #Tampines and #TanahMerah due to a track fault. Our engineers are at site rectifying the fault now.",
+			"sourceUrl": "https://x.com/SMRT_Singapore/status/426009497673285634",
+			"createdAt": "2014-01-22T23:12:33.000+08:00"
+		},
+		{
+			"type": "operator.investigating",
+			"text": "[EWL] No train serive between #Tampines and #TanahMerah due to a track fault. Our engineers are at site rectifying the fault now.",
+			"sourceUrl": "https://x.com/SMRT_Singapore/status/426003826726797313",
+			"createdAt": "2014-01-22T22:50:01.000+08:00"
+		}
+	]
+}

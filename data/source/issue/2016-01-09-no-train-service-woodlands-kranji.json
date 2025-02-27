@@ -1,0 +1,79 @@
+{
+  "id": "2016-01-09-no-train-service-woodlands-kranji",
+  "title": "No train service between Woodlands and Kranji",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2016-01-09T17:47:32.000+08:00",
+  "endAt": "2016-01-09T18:57:38.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] Free bus service between #Kranji and #Sembawang have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/685790613812346880",
+      "createdAt": "2016-01-09T19:49:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Service on both bounds between #Kranji and #Admiralty have resumed. Free bus service will continue until further notice",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/685782126839504897",
+      "createdAt": "2016-01-09T19:16:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Service on both bounds between #Kranji and #Admiralty have resumed. Expect longer travel times as we clear the crowds at the stations",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/685777446260494336",
+      "createdAt": "2016-01-09T18:57:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: No train service between #Admiralty and #Kranji in both directions. Free bus service available between Kranji and Sembawang",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/685774594184118272",
+      "createdAt": "2016-01-09T18:46:18.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: No train service between #Admiralty and #Kranji in both directions. We are working to restore service",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/685773513995632640",
+      "createdAt": "2016-01-09T18:42:01.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: No train service between #Admiralty and #Kranji in both directions. We are working to recover the service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/685768839343177728",
+      "createdAt": "2016-01-09T18:23:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: No train service between #Admiralty and #Kranji in both directions. Free bus and bus bridging are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/685764840489529344",
+      "createdAt": "2016-01-09T18:07:33.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: No train service between #Woodlands and #Kranji in both directions, due to traction power fault. We are recovering the service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/685764336367747074",
+      "createdAt": "2016-01-09T18:05:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: No train service between #Woodlands and #Kranji in both directions. Free bus and bus bridging are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/685761321514610688",
+      "createdAt": "2016-01-09T17:53:34.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: No train service between #Woodlands and #Kranji in both directions, due to traction power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/685761219928567808",
+      "createdAt": "2016-01-09T17:53:10.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: No train service between #Woodlands and #Kranji in both directions. Free bus are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/685759804409688064",
+      "createdAt": "2016-01-09T17:47:32.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "2012-10-25-no-train-service-between-dhobyghaut-and-harbourfront",
+  "title": "No train service between Dhoby Ghaut and Harbour Front due to power fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2012-10-25T22:42:57.000+08:00",
+  "endAt": "2012-10-25T23:14:53.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CORRECTION] Passengers affected by CCL disruption on 25 Oct may seek a refund by 7 Nov at all SMRT MRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/261680703991869441",
+      "createdAt": "2012-10-26T12:08:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] service between PayaLebar and HarbourFront running normally. No service between Paya Lebar to Dhoby Ghaut &amp; Paya Lebar to Marina Bay",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/261490763542700032",
+      "createdAt": "2012-10-25T23:33:50.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services between #PayaLebar and #HarbourFront are now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/261485994493235200",
+      "createdAt": "2012-10-25T23:14:53.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: No train service between #DhobyGhaut and #HarbourFront due to power fault for about 1 hour.Buses are being arranged.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/261480619245178880",
+      "createdAt": "2012-10-25T22:53:32.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]No train service between #DhobyGhaut and #HarbourFront due to power fault. Please seek alternative transport. Buses are being arranged.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/261477954578698240",
+      "createdAt": "2012-10-25T22:42:57.000+08:00"
+    }
+  ]
+}

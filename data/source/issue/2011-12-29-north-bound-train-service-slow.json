@@ -1,0 +1,24 @@
+{
+  "id": "2011-12-29-north-bound-train-service-slow",
+  "title": "North bound train service is slow due to speed restrictions",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2011-12-29T08:53:51.000+08:00",
+  "endAt": "2011-12-29T12:50:31.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Train services are back to normal and running smoothly this afternoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/152250116433129472",
+      "createdAt": "2011-12-29T12:50:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "North bound train service is running slower due to speed restrictions.  South bound service is slightly delayed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/152190560579485697",
+      "createdAt": "2011-12-29T08:53:51.000+08:00"
+    }
+  ]
+}

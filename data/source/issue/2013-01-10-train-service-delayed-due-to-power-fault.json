@@ -1,0 +1,67 @@
+{
+  "id": "2013-01-10-train-service-delayed-due-to-power-fault",
+  "title": "Train service delayed due to power fault",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2013-01-10T10:18:12.000+08:00",
+  "endAt": "2013-01-10T16:39:52.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Update from SBST: Train services between #DhobyGhaut and #HarbourFront are now running normally. Free bus ride is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/289290449766711297",
+      "createdAt": "2013-01-10T16:39:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Update from SBST: NEL train service down between Dhoby Ghaut &amp;HarbourFront. Recovery work still in progress. Expected to resume at 4.30pm.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/289287829027176448",
+      "createdAt": "2013-01-10T16:29:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Update by SBST: No NEL train service in both directions between DhobyGhaut &amp; HarbourFront. Free bus ride available at designated bus stops.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/289252737634422784",
+      "createdAt": "2013-01-10T14:10:01.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Update from SBST: NEL train service down between Dhoby Ghaut &amp; HarbourFront. Recovery work still in progress. Expected to resume at 4.30pm.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/289244038870220800",
+      "createdAt": "2013-01-10T13:35:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Update from SBST: No NEL train service in both directions between Dhoby Ghaut &amp; HarbourFront stations. Service estimated to resume at 4.30pm",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/289221465168019456",
+      "createdAt": "2013-01-10T12:05:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Update from SBST: No NEL train service in both directions between Dhoby Ghaut &amp; HarbourFront stations due to a power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/289206850187055106",
+      "createdAt": "2013-01-10T11:07:40.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[SBST] NEL: No train service between #DhobyGhaut and #HarbourFront in both directions. Please wait for further update.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/289201817739468802",
+      "createdAt": "2013-01-10T10:47:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[SBST] NEL UPDATE: Free shuttle buses are now available at affected stations between #DhobyGhaut and #HarbourFront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/289196110818459649",
+      "createdAt": "2013-01-10T10:25:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[SBST] NEL: Train service in both directions is delayed by about 15 minutes due to a power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/289194398921666560",
+      "createdAt": "2013-01-10T10:18:12.000+08:00"
+    }
+  ]
+}

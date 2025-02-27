@@ -1,0 +1,25 @@
+{
+  "id": "2013-05-17-bplrt-train-fault",
+  "title": "Train fault causing delays between Bukit Panjang and Choa Chu Kang",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2013-05-17T10:42:47.000+08:00",
+  "endAt": "2013-05-17T10:51:37.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT]: CLEARED Train service between #BukitPanjang and #ChoaChuKang are now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335226070200639488",
+      "createdAt": "2013-05-17T10:51:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]: Estimate 20 mins additional travelling time between #BukitPanjang and #ChoaChuKang due to train fault at #Phoenix.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/335223843427848192",
+      "createdAt": "2013-05-17T10:42:47.000+08:00"
+    }
+  ]
+}

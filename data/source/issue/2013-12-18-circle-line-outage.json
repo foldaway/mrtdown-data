@@ -1,0 +1,29 @@
+{
+  "id": "2013-12-18-circle-line-outage",
+  "title": "Service disruption on Circle Line",
+  "componentIdsAffected": ["CCL"],
+  "startAt": "2013-12-18T23:42:17.000+08:00",
+  "endAt": "2013-12-19T00:54:07.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Free public &amp; shuttle buses have now terminated between #Stadium and #HarbourFront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/413351482834952192",
+      "createdAt": "2013-12-19T00:54:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Free public &amp; shuttle buses are now available at affected stations between #Stadium and #HarbourFront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/413335508626849792",
+      "createdAt": "2013-12-18T23:50:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: No train service between #Stadium and #HarbourFront in both directions. Please seek alternative transport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/413333404323545088",
+      "createdAt": "2013-12-18T23:42:17.000+08:00"
+    }
+  ]
+}

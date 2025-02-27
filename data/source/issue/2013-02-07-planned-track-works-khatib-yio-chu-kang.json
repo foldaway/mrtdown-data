@@ -1,0 +1,17 @@
+{
+  "id": "2013-02-07-planned-track-works-khatib-yio-chu-kang",
+  "title": "Planned track works from Khatib to Yio Chu Kang",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2013-02-07T01:30:00.000+08:00",
+  "endAt": "2013-04-08T04:30:00.000+08:00",
+  "type": "outage",
+  "severity": "minor",
+  "updates": [
+    {
+      "type": "planned",
+      "text": "&lt;NSL&gt;Planned track works from Khatib to Yio Chu Kang.1.30am to 4.30am. 7/2/13 to 7/4/13 http://t.co/gn15jW66",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/299121865027371008",
+      "createdAt": "2013-02-06T19:46:24.000+08:00"
+    }
+  ]
+}

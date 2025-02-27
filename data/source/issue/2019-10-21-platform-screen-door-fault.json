@@ -1,0 +1,19 @@
+{
+  "id": "2019-10-21-platform-screen-door-fault",
+  "title": "Platform Screen Door Fault at Toa Payoh cleared",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2019-10-21T07:26:39.000+08:00",
+  "endAt": "2019-10-21T07:26:39.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: The Platform Screen Door Fault at #ToaPayoh has been cleared. Train service progressively back to normal.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1186061196421525504",
+      "createdAt": "2019-10-21T07:26:39.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "2015-12-30-track-fault-jurongeast",
+  "title": "Track fault causing delays on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2015-12-30T07:49:12.000+08:00",
+  "endAt": "2015-12-30T10:05:12.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from JooKoon to Clementi towards PasirRis are now operating normally. We apologize for the inconvenience.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/682019574586318848",
+      "createdAt": "2015-12-30T10:05:12.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL Update]: The track fault has been rectified. Trains between Pioneer and JurongEast are moving slower due to earlier congestion.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/682011247521316864",
+      "createdAt": "2015-12-30T09:32:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL Update]: Estimate 30 mins additional travelling time from JooKoon to Clementi towards PasirRis due to track fault near JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/682002101392687104",
+      "createdAt": "2015-12-30T08:55:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL Update]: Estimate 20 mins additional travelling time from JooKoon to Clementi towards PasirRis due to track fault near JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/681995076860420096",
+      "createdAt": "2015-12-30T08:27:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL Update]: Estimate 15 mins additional travelling time from JooKoon to Clementi towards PasirRis due to track fault near JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/681994496578433025",
+      "createdAt": "2015-12-30T08:25:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 10 mins additional travelling time from JooKoon to Clementi towards PasirRis due to track fault near JurongEast station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/681985349459939329",
+      "createdAt": "2015-12-30T07:49:12.000+08:00"
+    }
+  ]
+}

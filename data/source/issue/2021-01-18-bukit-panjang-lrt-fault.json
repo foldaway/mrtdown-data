@@ -1,0 +1,55 @@
+{
+  "id": "2021-01-18-bukit-panjang-lrt-fault",
+  "title": "Train fault causing delays on Bukit Panjang LRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2021-01-18T11:02:55.000+08:00",
+  "endAt": "2021-06-27T10:20:01.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Update: Normal train services progressively resumed from 8am. We are sorry for the earlier late tweet.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1409146300772225028",
+      "createdAt": "2021-06-27T21:47:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Train services has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1408973359883292672",
+      "createdAt": "2021-06-27T10:20:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Additional 5mins train travel time from #BukitPanjang to #Senja on Service B due to a train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1408936516735275012",
+      "createdAt": "2021-06-27T07:53:37.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT]: Due to a train fault, trains are moving slower towards #ChoaChuKang on Service B. We are investigating the fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1408935113530822657",
+      "createdAt": "2021-06-27T07:48:02.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT]: Due to a train fault, trains are moving slower towards #BukitPanjang on Service A. We are investigating the fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1408933199854538755",
+      "createdAt": "2021-06-27T07:40:26.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[Update]: Our engineers are working to recover train services. For your convenience, you may download an e-Travel Chit as proof of your travel at https://t.co/dYFVNdxkVU if your journey has been affected.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1351003624613306372",
+      "createdAt": "2021-01-18T11:08:59.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT] There is a train fault at #Fajar, trains are moving slower towards #BukitPanjang. Please take Service A to continue your journey. We apologize for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1351002099094581251",
+      "createdAt": "2021-01-18T11:02:55.000+08:00"
+    }
+  ]
+}

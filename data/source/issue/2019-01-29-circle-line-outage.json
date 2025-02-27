@@ -1,0 +1,31 @@
+{
+  "id": "2019-01-29-circle-line-outage",
+  "title": "Service disruption on Circle Line due to track fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2019-01-29T12:50:13.000+08:00",
+  "endAt": "2019-01-29T14:09:48.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL]: CLEARED: Train services have resumed. Free regular bus services have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1090132398858092544",
+      "createdAt": "2019-01-29T14:19:52.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: The track fault has been cleared. Train services are progressively being restored. Free regular bus service are still available between #BuonaVista &amp; #HarbourFront station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1090129866802905089",
+      "createdAt": "2019-01-29T14:09:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Due to a Track fault there is no train service between Telok Blangah and HarbourFront. Free regular bus services are available between Bouna Vista and HarbourFront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1090109839051640832",
+      "createdAt": "2019-01-29T12:50:13.000+08:00"
+    }
+  ]
+}

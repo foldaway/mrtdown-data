@@ -1,0 +1,25 @@
+{
+  "id": "2015-12-01-track-fault-yishun",
+  "title": "Track fault reported at Yishun",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-12-01T05:37:12.000+08:00",
+  "endAt": "2015-12-01T05:43:26.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[UPDATE] Train service is running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/671444450871132160",
+      "createdAt": "2015-12-01T05:43:26.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "A track fault has been reported at Yishun. Trains are moving slower from Yishun to Sembawang. We will update again on the delay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/671442883816218624",
+      "createdAt": "2015-12-01T05:37:12.000+08:00"
+    }
+  ]
+}

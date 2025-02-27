@@ -1,0 +1,30 @@
+{
+  "id": "2021-10-20-east-west-line-train-fault",
+  "title": "Train fault causing delays on the East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2021-10-20T21:41:42.000+08:00",
+  "endAt": "2021-10-20T22:12:09.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services between #PasirRis and #TanahMerah have resumed. Free regular bus services have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1450827180989059076",
+      "createdAt": "2021-10-20T22:12:09.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Fault cleared, train services are progressively being restored. Free regular bus services are still available between #TanahMerah and #PasirRis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1450824336315596803",
+      "createdAt": "2021-10-20T22:00:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a train fault, pls add 20mins train travel time btwn #PasirRis and #TanahMerah.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1450819515873312769",
+      "createdAt": "2021-10-20T21:41:42.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "2023-04-25-bukit-panjang-lrt-trackside-switch-fault",
+  "title": "Trackside switch fault causing service disruption on Bukit Panjang LRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2023-04-25T18:54:03.000+08:00",
+  "endAt": "2023-05-04T17:36:40.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] CLEARED: Train service has resumed. Free bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1654057444186918913",
+      "createdAt": "2023-05-04T17:36:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Please cater additional 10 minutes travel time for your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1654053586056417282",
+      "createdAt": "2023-05-04T17:21:20.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT] Due to a train fault, normal train service is affected. Shuttle train service is available between Choa Chu Kang and Bt Panjang stations. Train service between Bt Panjang &amp; Petir via Service A and Bt Panjang &amp; Senja via Service B is not affected.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1654045602450391040",
+      "createdAt": "2023-05-04T16:49:36.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT] Due to a trackside switch fault, please use Service B for your journey till end of revenue hours.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1650815429043195904",
+      "createdAt": "2023-04-25T18:54:03.000+08:00"
+    }
+  ]
+}

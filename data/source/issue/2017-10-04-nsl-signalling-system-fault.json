@@ -1,0 +1,30 @@
+{
+  "id": "2017-10-04-nsl-signalling-system-fault",
+  "title": "Signalling system fault causing delays",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-10-04T18:01:03.000+08:00",
+  "endAt": "2017-10-04T18:24:27.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train svcs btwn #ChoaChuKang  and #JurongEast have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/915523000522350592",
+      "createdAt": "2017-10-04T18:24:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to an earlier train fault on the new signalling system, pls add 10 mins train travel time btwn #ChoaChuKang and #JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/915519927380983808",
+      "createdAt": "2017-10-04T18:12:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a train fault on the new signalling system, pls add 20mins train travel time btwn #ChoaChuKang and #JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/915517110624776192",
+      "createdAt": "2017-10-04T18:01:03.000+08:00"
+    }
+  ]
+}

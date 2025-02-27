@@ -1,0 +1,37 @@
+{
+  "id": "2022-04-27-track-signal-fault",
+  "title": "Track Signal Fault Disrupting Service",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2022-04-27T07:31:31.000+08:00",
+  "endAt": "2022-04-27T09:09:17.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: Train services have resumed. We are sorry for affecting your commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1519121472542810112",
+      "createdAt": "2022-04-27T09:09:17.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL] UPDATE: Train services are progressively recovering. Free regular bus and bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1519119076869931010",
+      "createdAt": "2022-04-27T08:59:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: Trains are moving slower between Woodlands North and Caldecott.  Free regular bus and bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1519117655201906688",
+      "createdAt": "2022-04-27T08:54:07.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a track signal fault, trains are moving slower between Woodlands North and Caldecott in both directions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1519096866243493888",
+      "createdAt": "2022-04-27T07:31:31.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "2013-08-15-ewl-train-fault",
+  "title": "Train fault causing additional travel time on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2013-08-15T07:14:23.000+08:00",
+  "endAt": "2013-08-15T07:27:10.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #TiongBahru towards #JooKoon  are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/367789526288048128",
+      "createdAt": "2013-08-15T07:27:10.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Estimate 15 mins additional travel time from #TiongBahru towards #JooKoon due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/367788534054137859",
+      "createdAt": "2013-08-15T07:23:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 15 mins additional travelling time from #TiongBahru to #Queenstown towards JooKoon due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/367786308308967424",
+      "createdAt": "2013-08-15T07:14:23.000+08:00"
+    }
+  ]
+}

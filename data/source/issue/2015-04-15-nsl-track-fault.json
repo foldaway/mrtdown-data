@@ -1,0 +1,25 @@
+{
+  "id": "2015-04-15-nsl-track-fault",
+  "title": "Major track fault causing delays on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-04-15T08:50:11.000+08:00",
+  "endAt": "2015-04-15T09:15:57.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train service from #Yishun to #JurongEast is running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/588148725068894208",
+      "createdAt": "2015-04-15T09:15:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Expect additional 10mins travelling time from #Yishun to #JurongEast due to a track fault near #Kranji.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/588142236790960128",
+      "createdAt": "2015-04-15T08:50:11.000+08:00"
+    }
+  ]
+}

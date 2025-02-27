@@ -1,0 +1,37 @@
+{
+  "id": "2024-09-05-bplrt-signalling-fault",
+  "title": "Signalling fault affecting Bukit Panjang LRT service",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2024-09-05T04:55:32.000+08:00",
+  "endAt": "2024-09-05T05:13:29.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] CLEARED: Train service has resumed. Free bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1831444644628197485",
+      "createdAt": "2024-09-05T05:30:04.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] CLEARED: Train service is progressively returning to normal. Free bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1831440472461709397",
+      "createdAt": "2024-09-05T05:13:29.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT] Due to a signalling fault, normal train service is affected. Train service is available between #ChoaChuKang and #BukitPanjang. There is no train service between #Bt Panjang and #Senja. Free bus services between #Bt Panjang and #Senja are available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1831439268247646356",
+      "createdAt": "2024-09-05T05:08:42.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT] Due to a signalling fault, normal train service is affected. Train service is available between #ChoaChuKang and #BukitPanjang. Train service between Bt Panjang and Senja is affected. Free bus services between #Bt Panjang and #Senja are available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1831435954827227347",
+      "createdAt": "2024-09-05T04:55:32.000+08:00"
+    }
+  ]
+}

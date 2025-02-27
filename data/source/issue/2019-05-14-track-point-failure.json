@@ -1,0 +1,56 @@
+{
+  "id": "2019-05-14-track-point-failure",
+  "title": "Track Point Failure on NSEWL",
+  "componentIdsAffected": [
+    "NSL",
+    "NEL"
+  ],
+  "startAt": "2019-05-14T10:37:24.000+08:00",
+  "endAt": "2019-05-14T12:33:14.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] UPDATE: Fault cleared, train services between Ang Mo Kio and Bishan are running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1128156291417772033",
+      "createdAt": "2019-05-14T12:33:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSEWL] Please add 10 mins train travelling time from Ang Mo Kio to Bishan, towards Marina Bay due to track point failure. Free regular bus service between Ang Mo Kio and Toa Payoh has ceased. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1128138277112823808",
+      "createdAt": "2019-05-14T11:21:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NSEWL] Please add 10 mins train travelling time from Ang Mo Kio to Bishan, towards Marina Bay due to track point failure. Free regular bus service is available\nbetween Ang Mo Kio and Toa Payoh. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1128131120199901184",
+      "createdAt": "2019-05-14T10:53:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NSEWL] Please add 25 mins train travelling time from Woodlands to Toa Payoh, towards Marina Bay due to track point failure. Free regular bus service is available\nbetween Ang Mo Kio and Toa Payoh. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1128129660544356353",
+      "createdAt": "2019-05-14T10:47:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NSEWL] Please add 25 mins train travelling time from Woodlands to Toa Payoh, towards Marina Bay due to track point failure. Free regular bus service is available \nbetween Ang Mo Kio and Toa Payoh. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1128128752511139841",
+      "createdAt": "2019-05-14T10:43:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NSEWL] Please add 25 mins train travelling time from AngMo Kio to Toa Payoh, towards Marina Bay due to track point failure. Free regular bus service is available \nbetween Ang Mo Kio and Toa Payoh. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1128127674604408832",
+      "createdAt": "2019-05-14T10:39:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSEWL] Please add 25 mins train travelling time from AngMo Kio to Toa Payoh, towards Marina Bay due to track point failure. Free regular bus service is available \nbetween Ang Mo Kio and Toa Payoh. Train service si still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1128127140921135104",
+      "createdAt": "2019-05-14T10:37:24.000+08:00"
+    }
+  ]
+}

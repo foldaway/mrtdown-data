@@ -1,0 +1,61 @@
+{
+  "id": "2015-03-03-east-west-line-track-fault",
+  "title": "Track fault causing delays on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2015-03-03T17:44:01.000+08:00",
+  "endAt": "2015-03-03T19:06:24.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL] Free bus service at Boon Lay station has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572730000572465152",
+      "createdAt": "2015-03-03T20:07:27.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "Train services between #Queenstown and #BoonLay have resumed. we apologise for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572714635851243521",
+      "createdAt": "2015-03-03T19:06:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Trains will be slower between #Queenstown to #BoonLay due to track fault near #Clementi. Free bus services available between both stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572710584770170882",
+      "createdAt": "2015-03-03T18:50:18.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Estimate 15 mins additional travelling time from #Queenstown to #BoonLay in both directions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572704844194029568",
+      "createdAt": "2015-03-03T18:27:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 15 mins additional travelling time from #Queenstown to #BoonLay in both directions due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572701157367283713",
+      "createdAt": "2015-03-03T18:12:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 15 mins additional travelling time from #Queenstown  to #BoonLay towards Joo Koon due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572700101648334849",
+      "createdAt": "2015-03-03T18:08:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Free bus service is activated between Boon Lay and Queenstown both bounds due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572695037466685442",
+      "createdAt": "2015-03-03T17:48:31.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Estimate 20 mins additional travelling time from #TanjongPagar to #JurongEast towards JooKoon due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/572693903964418048",
+      "createdAt": "2015-03-03T17:44:01.000+08:00"
+    }
+  ]
+}

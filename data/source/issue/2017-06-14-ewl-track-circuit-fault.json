@@ -1,0 +1,103 @@
+{
+  "id": "2017-06-14-ewl-track-circuit-fault",
+  "title": "Track circuit fault causing delays on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-06-14T08:13:40.000+08:00",
+  "endAt": "2017-06-14T12:55:54.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL]UPDATE:Congestion from #Redhill to #Dover has cleared. Normal service has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874852874857193472",
+      "createdAt": "2017-06-14T12:55:54.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE: Due to a track circuit fault at #BuonaVista,pls add 5mins travel time from #Redhill to #Dover,train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874850686520918021",
+      "createdAt": "2017-06-14T12:47:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Due to a track circuit fault at #BuonaVista,pls add 10mins travel time from #Redhill to #Dover,train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874843701545246720",
+      "createdAt": "2017-06-14T12:19:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Due to a track circuit fault at #BuonaVista,pls add 10mins travel time from #CityHall to #Dover,train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874838056976756737",
+      "createdAt": "2017-06-14T11:57:01.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE:  Pls cater 10 mins additional travel time from #CityHall to #Dover.We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874833022503268353",
+      "createdAt": "2017-06-14T11:37:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Due to a track circuit fault at #BuonaVista,pls add 10 mins travel time from #CityHall to #Dover,train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874827797130223617",
+      "createdAt": "2017-06-14T11:16:15.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Pls cater 10 mins additional travel time from #CityHall to #Dover.We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874822718654369792",
+      "createdAt": "2017-06-14T10:56:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Due to a track circuit fault at #BuonaVista,pls add 15 mins travel time from #CityHall to #Dover,train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874817565679247361",
+      "createdAt": "2017-06-14T10:35:35.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Pls cater 20 mins additional travel time from #CityHall to #Dover.We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874812781245026304",
+      "createdAt": "2017-06-14T10:16:34.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE:Due to a track circuit fault at #BuonaVista,pls add 20 mins travel time from #CityHall to #Dover,train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874807602265243649",
+      "createdAt": "2017-06-14T09:56:00.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Pls cater 25 mins additional travel time from #CityHall to #Dover.We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874802408710225920",
+      "createdAt": "2017-06-14T09:35:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 25 mins travel time from #CityHall to #Dover,due to a track circuit fault at #BuonaVista.Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874797210428358656",
+      "createdAt": "2017-06-14T09:14:42.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Pls cater 25 mins additional travel time from #CityHall to #Dover. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874791030364684288",
+      "createdAt": "2017-06-14T08:50:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 25 mins travel time from #CityHall to #Dover,due to a track circuit fault at #BuonaVista. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874786676249251841",
+      "createdAt": "2017-06-14T08:32:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 15 mins travel time from #CityHall to #Dover,due to a track circuit fault at #BuonaVista. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/874781852631834624",
+      "createdAt": "2017-06-14T08:13:40.000+08:00"
+    }
+  ]
+}

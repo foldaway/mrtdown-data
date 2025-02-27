@@ -1,0 +1,25 @@
+{
+  "id": "2012-06-08-train-delays-out-ram-park-to-raffles-place",
+  "title": "Service Disruption: Train Delays between Outram Park and Raffles Place",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-06-08T07:27:39.000+08:00",
+  "endAt": "2012-06-08T07:47:59.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Trains between Outram Park and Raffles Place are running well in both directions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/210880817608671232",
+      "createdAt": "2012-06-08T07:47:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Trains between Outram Park and Raffles Place are travelling slower in both directions due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/210875701396639744",
+      "createdAt": "2012-06-08T07:27:39.000+08:00"
+    }
+  ]
+}

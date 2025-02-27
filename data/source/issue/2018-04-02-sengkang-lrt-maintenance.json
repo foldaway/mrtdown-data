@@ -1,0 +1,19 @@
+{
+  "id": "2018-04-02-sengkang-lrt-maintenance",
+  "title": "Sengkang LRT maintenance work scheduled",
+  "componentIdsAffected": [
+    "SKLRT"
+  ],
+  "startAt": "2018-04-08T00:00:00.000+08:00",
+  "endAt": "2018-04-09T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "We will be conducting maintenance work on the Sengkang LRT system this Sunday, 8 April 2018. \n‍‍‍‍‍‍ ‍‍\nTrain service will be available as usual at all stations, but only in one direction. Service in the opposite direction will start at 7am. https://t.co/Hcejpz5qjQ",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/980631942403014656",
+      "createdAt": "2018-04-02T10:24:08.000+08:00"
+    }
+  ]
+}

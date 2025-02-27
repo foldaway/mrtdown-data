@@ -1,0 +1,31 @@
+{
+  "id": "2015-10-26-no-train-service-between-tanah-merah-and-changi-airport",
+  "title": "No train service between Tanah Merah and Changi Airport",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2015-10-26T06:23:42.000+08:00",
+  "endAt": "2015-10-26T06:38:04.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Trains service has resumed between Tanah Merah and Changi Airport. Free bus service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/658412235945984001",
+      "createdAt": "2015-10-26T06:38:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Please estimate additional 20mins traveling time between Tanah Merah and Changi Airport on both bounds due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/658410286236372993",
+      "createdAt": "2015-10-26T06:30:19.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "There is no train service between Tanah Merah and Changi Airport in both directions due to track falult. Free bus service is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/658408622053982208",
+      "createdAt": "2015-10-26T06:23:42.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "2024-04-29-circle-line-train-fault",
+  "title": "Major Delays on Circle Line Due to Train Fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2024-04-29T06:09:40.000+08:00",
+  "endAt": "2024-04-29T07:34:14.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] UPDATE: Train service has resumed. Free Bus Service and Bridging Bus Service will cease at 0815hrs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1784737142457118782",
+      "createdAt": "2024-04-29T08:11:08.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE:Train service is progressively returning to normal. Free Bus Service is still available between #PayaLebar and #one-north. Free bridging bus service is still available between #PayaLebar and #BounaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1784734444139708824",
+      "createdAt": "2024-04-29T08:00:24.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] CLEARED: Fault cleared. Train service is progressively returning to normal. Free Bus Service is still available between #PayaLebar and #one-north. Free bridging bus service is still available between #PayaLebar and #BounaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1784729413751554521",
+      "createdAt": "2024-04-29T07:40:25.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] CLEARED: Fault cleared. Train service is progressively returning to normal. Free Bus Service is still available between #PayaLebar and #one-north. Bridging bus service is still available between #PayaLrbar and #BounaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1784727858524668253",
+      "createdAt": "2024-04-29T07:34:14.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: [CCL] UPDATE: Additional 30 mins train travel time between #PayaLebar and #one-north due to a train fault. Pls seek alternative MRT lines at #Serangoon, #Bishan, #Caldecott, #BotanicalGarden and #BuonaVista. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1784716881963921488",
+      "createdAt": "2024-04-29T06:50:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Additional 30 mins train travel time between #PayaLebar and #one-north due to a train fault. Free Regular Bus Service is available between #PayaLebar and #HarbourFront. Bridging bus service is available between #PayaLebar and #BuonaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1784713218117779640",
+      "createdAt": "2024-04-29T06:36:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE:  Additional 30mins train travel time between #Bishan and #one-north due to a train fault. Free Regular bus service is available between #Bishan and #HarbourFront. You may also use alternative lines to travel to your destination.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1784711320044216616",
+      "createdAt": "2024-04-29T06:28:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE:  Additional 30 mins train travel time between #Bishan and #one-north due to a train fault. Free Regular bus service is available between #Bishan and #HarbourFront. We apologise for this delay to your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1784710513882247558",
+      "createdAt": "2024-04-29T06:25:19.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] UPDATE: Additional 30mins train travel time between #HollandVillage and #PasirPanjang due to a train fault. Free Regular Bus Service is available between #Bishan and #HarbourFront. We apologise for this delay to your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1784708479682515256",
+      "createdAt": "2024-04-29T06:17:14.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] Additional 30mins train travel time between #HollandVillage and #PasirPanjang due to a train fault. Free Regular bus service is available between #HollandVillage and #PasirPanjang. We apologise for this delay to your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1784706575271411951",
+      "createdAt": "2024-04-29T06:09:40.000+08:00"
+    }
+  ]
+}

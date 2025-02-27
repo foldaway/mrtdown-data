@@ -1,0 +1,72 @@
+{
+  "id": "2015-10-13-nel-service-delayed",
+  "title": "NEL service delayed due to power fault",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2015-10-13T07:58:46.000+08:00",
+  "endAt": "2015-10-13T08:28:24.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "13/10, 9.30am: Full NEL Svc is running. Free bus rides &amp; shuttle buses have ceased. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/653744909845852161",
+      "createdAt": "2015-10-13T09:31:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "13/10,9.25am:NEL Svc has resumed. Free bus rides &amp; shuttle buses are still available. Pls expect some delays as trains are being regulated.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/653743648173985792",
+      "createdAt": "2015-10-13T09:26:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "13/10, 9.02am: NEL Svc has resumed. However pls expect some delays as the trains are being regulated. Stns are still crowded.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/653737822763941888",
+      "createdAt": "2015-10-13T09:03:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "13/10, 8.53am: Full NEL Svc is running. Free bus rides &amp; shuttle buses are still available. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/653736347375550464",
+      "createdAt": "2015-10-13T08:57:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "13/10, 8.33am: Full NEL Svc is running. Stations are still crowded &amp; delays can be expected.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/653731620147466240",
+      "createdAt": "2015-10-13T08:38:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "13/10, 8.33am: Full NEL Svc is running. Free bus rides &amp; shuttle buses are still available. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/653730526746947584",
+      "createdAt": "2015-10-13T08:34:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "13/10, 8.26am: NEL Svc has resumed btwn Farrer Pk NE8 &amp; Hougang NE14. Full svc is now available on NEL. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/653728961810202624",
+      "createdAt": "2015-10-13T08:28:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "13/10,8.06am: No NEL service btwn Farrer Pk NE8 &amp; Hougang NE14. To continue your journey, free bus rides available at designated bus stops",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/653723652278497281",
+      "createdAt": "2015-10-13T08:07:18.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No NEL service between Farrer Pk NE8 &amp; Hougang NE14 due to power fault. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/653722701849190400",
+      "createdAt": "2015-10-13T08:03:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "13/10, 7.50am: NEL svc is delayed due to a power fault. Additional travel time of abt 15 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/653721502626418688",
+      "createdAt": "2015-10-13T07:58:46.000+08:00"
+    }
+  ]
+}

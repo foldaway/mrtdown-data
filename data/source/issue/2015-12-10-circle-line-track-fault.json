@@ -1,0 +1,25 @@
+{
+  "id": "2015-12-10-circle-line-track-fault",
+  "title": "Track fault causing delays",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2015-12-10T09:20:42.000+08:00",
+  "endAt": "2015-12-10T09:32:23.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services between #Promenade and #MarinaBay are now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/674763556751937536",
+      "createdAt": "2015-12-10T09:32:23.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Estimate 15 mins additional travelling time between #Promenade and #MarinaBay in both directions due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/674760618184839169",
+      "createdAt": "2015-12-10T09:20:42.000+08:00"
+    }
+  ]
+}

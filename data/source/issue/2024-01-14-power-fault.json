@@ -1,0 +1,44 @@
+{
+  "id": "2024-01-14-power-fault",
+  "title": "Major Power Fault Causing Delays",
+  "componentIdsAffected": [
+    "NSL",
+    "TEL"
+  ],
+  "startAt": "2024-01-14T08:09:35.000+08:00",
+  "endAt": "2024-01-14T08:53:54.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[TEL]: Train services have resumed. Free regular buses ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1746334792487182597",
+      "createdAt": "2024-01-14T08:53:54.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL]: Train services are progressively recovering between Woodlands North and Gardens By the Bay. Please add 5mins to your travelling time. Free regular buses still available. We apologize for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1746331964431614000",
+      "createdAt": "2024-01-14T08:42:40.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL]: Train services are progressively recovering between Woodlands North and Gardens By the Bay. Please add 10mins to your travelling time. Free regular buses still available. We apologize for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1746329863751925943",
+      "createdAt": "2024-01-14T08:34:19.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a power fault, there will be additional travelling time of 10 minutes from Woodlands North to Gardens by the Bay stations. \nFree Regular Bus services are available btwn Woodlands North to Gardens by the Bay stations. \nWe apologise for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1746324336938783170",
+      "createdAt": "2024-01-14T08:12:21.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Due to a power fault, there will be additional travelling time of 10 minutes btwn Woodlands North to Gardens by the Bay stations. \nFree Regular Bus services are available btwn Woodlands North to Gardens by the Bay stations. \nPls consider other MRT lines for your commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1746323639954440512",
+      "createdAt": "2024-01-14T08:09:35.000+08:00"
+    }
+  ]
+}

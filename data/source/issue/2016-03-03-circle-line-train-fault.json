@@ -1,0 +1,43 @@
+{
+  "id": "2016-03-03-circle-line-train-fault",
+  "title": "Major train fault causing delays on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2016-03-03T11:39:00.000+08:00",
+  "endAt": "2016-03-03T12:23:59.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services between #PayaLebar and #DhobyGhaut/#MarinaBay are now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/705249513372405760",
+      "createdAt": "2016-03-03T12:32:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Train services have resumed. Trains and platforms are crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/705247323723464704",
+      "createdAt": "2016-03-03T12:23:59.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: Estimate 20mins additional travelling time between #PayaLebar and #DhobyGhaut/#MarinaBay. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/705243896146587649",
+      "createdAt": "2016-03-03T12:10:22.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: Estimate 20 mins additional travelling time between #PayaLebar and #DhobyGhaut/#MarinaBay due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/705239569206108161",
+      "createdAt": "2016-03-03T11:53:10.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Estimate 20 mins additional travelling time between #Stadium and #DhobyGhaut/#MarinaBay in both directions due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/705236002869112832",
+      "createdAt": "2016-03-03T11:39:00.000+08:00"
+    }
+  ]
+}

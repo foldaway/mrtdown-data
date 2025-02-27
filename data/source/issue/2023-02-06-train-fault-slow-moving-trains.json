@@ -1,0 +1,37 @@
+{
+  "id": "2023-02-06-train-fault-slow-moving-trains",
+  "title": "Train Fault Causing Slow Moving Trains",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2023-02-06T18:42:15.000+08:00",
+  "endAt": "2023-02-06T19:31:12.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[TEL]: Train services between Woodlands North and Gardens by the Bay has resumed. Free regular bus services has ceased. We apologise to all commuters who were affected this evening.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622558524218953730",
+      "createdAt": "2023-02-06T19:31:12.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL]: Train service progressively resuming. Please allow for additional 10 mins travel time from Woodlands North to Gardens by the Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622555246806573056",
+      "createdAt": "2023-02-06T19:18:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: Please allow for additional 20 mins travel time from Woodlands North to Gardens by the Bay due to a train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622548674671955969",
+      "createdAt": "2023-02-06T18:52:04.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a train fault, trains are moving slower from Woodlands North towards Gardens by the Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622546207209058304",
+      "createdAt": "2023-02-06T18:42:15.000+08:00"
+    }
+  ]
+}

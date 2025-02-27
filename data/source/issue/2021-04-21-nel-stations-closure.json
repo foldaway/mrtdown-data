@@ -1,0 +1,21 @@
+{
+  "id": "2021-04-21-nel-stations-closure",
+  "title": "NEL stations closure between HarbourFront and Dhoby Ghaut",
+  "componentIdsAffected": [
+    "NEL",
+    "SKLRT",
+    "PGLRT"
+  ],
+  "startAt": "2021-04-23T23:00:00.000+08:00",
+  "endAt": "2021-04-25T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "NEL stations between NE1 HarbourFront &amp; NE6 Dhoby Ghaut will close at about 11pm this Fri &amp; Sat, 23 &amp; 24 Apr. Shuttle 22 will serve these stations. NEL service between NE6 Dhoby Ghaut &amp; NE17 Punggol, Sengkang-Punggol LRT services as well as Services 315 &amp; 325 will also run later. https://t.co/cVQZAiyYOf",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1384750316269178884",
+      "createdAt": "2021-04-21T14:06:17.000+08:00"
+    }
+  ]
+}

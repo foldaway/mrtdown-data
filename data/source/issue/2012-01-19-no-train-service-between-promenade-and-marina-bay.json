@@ -1,0 +1,25 @@
+{
+  "id": "2012-01-19-no-train-service-between-promenade-and-marina-bay",
+  "title": "No train service between Promenade and Marina Bay",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2012-01-19T12:30:17.000+08:00",
+  "endAt": "2012-01-19T12:51:06.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE: Service has resumed between Promenade and Marina Bay Circle Line stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/159860412144300033",
+      "createdAt": "2012-01-19T12:51:06.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "No train service between Promenade and Marina Bay Circle Line stations due to track fault. Please use alternative transport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/159855170442891265",
+      "createdAt": "2012-01-19T12:30:17.000+08:00"
+    }
+  ]
+}

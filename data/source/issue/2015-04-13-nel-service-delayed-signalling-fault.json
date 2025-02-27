@@ -1,0 +1,30 @@
+{
+  "id": "2015-04-13-nel-service-delayed-signalling-fault",
+  "title": "Service disruption on North East Line",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2015-04-13T16:23:45.000+08:00",
+  "endAt": "2015-04-13T17:12:33.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "#NEL service has resumed. Free bus rides are still available at designated bus stops btwn Punggol NE17 &amp; Buangkok NE15 Stations.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/587543889046716416",
+      "createdAt": "2015-04-13T17:12:33.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "#NEL service is delayed due to a signalling fault. Additional travel time of up to 20 minutes may be expected.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/587539340386897922",
+      "createdAt": "2015-04-13T16:54:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "#NEL service is delayed due to a signalling fault. Additional travel time of up to 10 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/587531608304914432",
+      "createdAt": "2015-04-13T16:23:45.000+08:00"
+    }
+  ]
+}

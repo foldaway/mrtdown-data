@@ -1,0 +1,42 @@
+{
+  "id": "2019-11-30-track-point-fault",
+  "title": "Track point fault causing delays",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2019-11-30T10:44:23.000+08:00",
+  "endAt": "2019-11-30T11:35:29.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Track point fault cleared, train svcs are progressively being restored.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1200619846167252992",
+      "createdAt": "2019-11-30T11:37:32.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Fault cleared, train svcs are progressively being restored.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1200619331513569280",
+      "createdAt": "2019-11-30T11:35:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Pls add 5mins train travel time btwn #TuasLink and #JooKoon. Free regular bus &amp; free bridging bus svcs btwn #TuasLink and #JooKoon have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1200617987536900096",
+      "createdAt": "2019-11-30T11:30:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Pls add 10mins train travel time btwn #TuasLink and #JooKoon. Free regular bus &amp; free bridging bus still available between #TuasLink and #JooKoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1200614972557910016",
+      "createdAt": "2019-11-30T11:18:10.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track point fault, pls add 30mins train travel time btwn #TuasLink and #JooKoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1200606468849852416",
+      "createdAt": "2019-11-30T10:44:23.000+08:00"
+    }
+  ]
+}

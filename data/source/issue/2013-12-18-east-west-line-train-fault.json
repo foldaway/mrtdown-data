@@ -1,0 +1,25 @@
+{
+  "id": "2013-12-18-east-west-line-train-fault",
+  "title": "Train Fault on East West Line causing Delays",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2013-12-18T08:23:38.000+08:00",
+  "endAt": "2013-12-18T08:36:01.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #JurongEast towards #OutramPark are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/413105332978606080",
+      "createdAt": "2013-12-18T08:36:01.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Estimate 10 mins additional travelling time from #JurongEast to #OutramPark towards #PasirRis due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/413102217713831937",
+      "createdAt": "2013-12-18T08:23:38.000+08:00"
+    }
+  ]
+}

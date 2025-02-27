@@ -1,0 +1,30 @@
+{
+  "id": "2012-01-31-east-bound-train-delay",
+  "title": "East bound train service delayed due to track fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-01-31T06:59:13.000+08:00",
+  "endAt": "2012-01-31T08:49:01.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Train service from Joo Koon towards Pasir Ris is running well.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/164148143431221248",
+      "createdAt": "2012-01-31T08:49:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Train service on the East-West line slightly delayed in both directions due to earlier track fault.Please allow extra time for travel",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/164139544906694657",
+      "createdAt": "2012-01-31T08:14:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "East bound train service from Joo Koon slightly delayed due to track fault.  Please allow extra time to travel.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/164120509724893185",
+      "createdAt": "2012-01-31T06:59:13.000+08:00"
+    }
+  ]
+}

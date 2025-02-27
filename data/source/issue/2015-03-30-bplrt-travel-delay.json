@@ -1,0 +1,31 @@
+{
+  "id": "2015-03-30-bplrt-travel-delay",
+  "title": "Additional Travel Time on Bukit Panjang LRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2015-03-30T19:20:39.000+08:00",
+  "endAt": "2015-03-30T20:15:56.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] CLEARED: Normal Train service resumed on the BPLRT.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/582516606326046720",
+      "createdAt": "2015-03-30T20:15:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]: Due to train fault, BPLRT is running on Service B only.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/582508710108348416",
+      "createdAt": "2015-03-30T19:44:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]: Estimate 20 mins additional travelling time on BPLRT",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/582502695572885504",
+      "createdAt": "2015-03-30T19:20:39.000+08:00"
+    }
+  ]
+}

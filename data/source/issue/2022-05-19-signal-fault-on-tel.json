@@ -1,0 +1,25 @@
+{
+  "id": "2022-05-19-signal-fault-on-tel",
+  "title": "Signal fault affecting train movement on Thomson–East Coast Line",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2022-05-19T10:29:16.000+08:00",
+  "endAt": "2022-05-19T11:07:42.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL] CLEARED: Train services have resumed progressively.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1527123803699961856",
+      "createdAt": "2022-05-19T11:07:42.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a signal fault, trains are moving slower between Woodlands North and Caldecott in both directions. Additional travelling time of 10 minutes is expected. We apologize for the inconvenience.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1527114132792954880",
+      "createdAt": "2022-05-19T10:29:16.000+08:00"
+    }
+  ]
+}

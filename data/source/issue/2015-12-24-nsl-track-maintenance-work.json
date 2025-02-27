@@ -1,0 +1,29 @@
+{
+  "id": "2015-12-24-nsl-track-maintenance-work",
+  "title": "Track maintenance work on NSL",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2015-12-24T05:28:24.000+08:00",
+  "endAt": "2015-12-24T05:54:18.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Updated: Free bus service from Yishun to Ang Mo Kio has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/679782104297684992",
+      "createdAt": "2015-12-24T05:54:18.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free bus service is now available at affected stations from #Yishun towards #AngMoKio.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/679776307178115072",
+      "createdAt": "2015-12-24T05:31:15.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[NSL]: Estimate 15 mins additional travelling time from #Yishun to #AngMoKio towards MarinaBay due to track maintenance work.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/679775586366062592",
+      "createdAt": "2015-12-24T05:28:24.000+08:00"
+    }
+  ]
+}

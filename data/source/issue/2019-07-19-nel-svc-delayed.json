@@ -1,0 +1,42 @@
+{
+  "id": "2019-07-19-nel-svc-delayed",
+  "title": "North East Line service disruption due to track fault",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2019-07-19T08:11:24.000+08:00",
+  "endAt": "2019-07-19T09:25:04.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "19/07, 9.24am: NEL Svc has resumed. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1152026536519667713",
+      "createdAt": "2019-07-19T09:25:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "19/07, 9.01am: NEL svc is delayed due to a track fault at Harbourfront Stn. Additional travel time of 5 to 10 mins is expected for both directions.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1152020824334819330",
+      "createdAt": "2019-07-19T09:02:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "19/07, 8.32am: NEL Svc is delayed due to a track fault at Harbourfront Stn. Additional travel time of 15 mins is expected for both directions. We are sorry",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1152013304799219712",
+      "createdAt": "2019-07-19T08:32:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "19/07, 8.20am: NEL Svc is delayed due to a track fault at Harbourfront Stn. Additional travel time abt 10mins is expected for both directions. We are sorry",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1152010344836943872",
+      "createdAt": "2019-07-19T08:20:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "19/07, 8.10am: NEL Svc is delayed due to a track fault at Harbourfront Stn. Additional travel time of abt 5mins is expected for both directions.  We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1152007997960228864",
+      "createdAt": "2019-07-19T08:11:24.000+08:00"
+    }
+  ]
+}

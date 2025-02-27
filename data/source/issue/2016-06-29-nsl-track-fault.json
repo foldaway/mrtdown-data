@@ -1,0 +1,37 @@
+{
+  "id": "2016-06-29-nsl-track-fault",
+  "title": "North-South Line track fault causing delays",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2016-06-29T21:19:25.000+08:00",
+  "endAt": "2016-06-29T22:49:08.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Normal train service from #YioChuKang to #AngMoKio towards #MarinaBay has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/748166417300631554",
+      "createdAt": "2016-06-29T22:49:08.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]Update: Estimate 5 mins additional travelling time from #YioChuKang to #AngMoKio towards #MarinaBay due to a track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/748161008137469953",
+      "createdAt": "2016-06-29T22:27:39.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]Update: Estimate 10 mins additional travelling time from #Yishun to #AngMoKio towards #MarinaBay due to a track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/748154874823479297",
+      "createdAt": "2016-06-29T22:03:16.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Estimate 15 mins additional travelling time from #Woodlands to #AngMoKio towards #MarinaBay due to a track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/748143836958887937",
+      "createdAt": "2016-06-29T21:19:25.000+08:00"
+    }
+  ]
+}

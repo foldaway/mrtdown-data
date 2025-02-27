@@ -1,0 +1,25 @@
+{
+  "id": "2012-11-02-circle-line-train-fault",
+  "title": "Train Fault Affecting Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2012-11-02T20:24:53.000+08:00",
+  "endAt": "2012-11-02T20:29:47.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services from #HarbourFront to #PayaLebar on both bounds are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/264343547262681088",
+      "createdAt": "2012-11-02T20:29:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Estimate 5 mins additional travelling time from #HarbourFront to #PayaLebar on both bounds due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/264342314904866817",
+      "createdAt": "2012-11-02T20:24:53.000+08:00"
+    }
+  ]
+}

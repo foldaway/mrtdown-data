@@ -1,0 +1,25 @@
+{
+  "id": "2011-12-25-slow-train-services-due-to-wet-weather",
+  "title": "Train services running slower due to wet weather",
+  "componentIdsAffected": [
+    "NSL",
+    "EWL"
+  ],
+  "startAt": "2011-12-25T09:12:29.000+08:00",
+  "endAt": "2011-12-26T00:00:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "SVC UPDATE: Due to speed restrictions, trains are travelling slower on the NS line.  Please allow extra time for travel.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/150813579443048448",
+      "createdAt": "2011-12-25T13:42:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "SVC UPDATE:Due to wet weather, train services are running slower on the NSEW lines.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/150745698877452290",
+      "createdAt": "2011-12-25T09:12:29.000+08:00"
+    }
+  ]
+}

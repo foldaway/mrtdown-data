@@ -1,0 +1,37 @@
+{
+  "id": "2015-10-23-circle-line-delay-due-train-fault",
+  "title": "Delay on Circle Line due to train fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2015-10-23T06:49:55.000+08:00",
+  "endAt": "2015-10-23T07:23:52.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Normal service resumed. All available trains launched for service and at maximum capacity.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/657340617891037185",
+      "createdAt": "2015-10-23T07:39:50.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services from #Mounbatten towards #PayaLebar are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/657336599932309504",
+      "createdAt": "2015-10-23T07:23:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Estimate 15 mins additional travelling time between #Mounbatten to #PayaLebar due to train fault. Free Bus services provided.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/657333794509225984",
+      "createdAt": "2015-10-23T07:12:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Expect 20 mins delay on Circle Line Between Mounbaten to Paya Lebar due to train fault",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/657328055942168576",
+      "createdAt": "2015-10-23T06:49:55.000+08:00"
+    }
+  ]
+}

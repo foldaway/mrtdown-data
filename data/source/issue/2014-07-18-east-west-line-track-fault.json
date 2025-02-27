@@ -1,0 +1,43 @@
+{
+  "id": "2014-07-18-east-west-line-track-fault",
+  "title": "Track Fault on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2014-07-18T00:25:30.000+08:00",
+  "endAt": "2014-07-18T00:47:05.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL Update]: Train service from City Hall to Outram Park towards Joo Koon is operating normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/490012762043457538",
+      "createdAt": "2014-07-18T13:58:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to a train fault near City Hall, please expect 15 mins additional traveling time from City Hall to Outram Park towards Joo Koon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/490009919395868672",
+      "createdAt": "2014-07-18T13:47:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Free bus services at #Tampines have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/489814562066030592",
+      "createdAt": "2014-07-18T00:51:06.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #Tampines towards #PasirRis has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/489813550425075712",
+      "createdAt": "2014-07-18T00:47:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 20 mins additional travelling time from #Tampines to #PasirRis due to track fault. Free bus is available at #Tampines.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/489808117866037248",
+      "createdAt": "2014-07-18T00:25:30.000+08:00"
+    }
+  ]
+}

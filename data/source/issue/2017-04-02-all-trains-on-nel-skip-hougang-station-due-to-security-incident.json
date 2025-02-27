@@ -1,0 +1,43 @@
+{
+  "id": "2017-04-02-all-trains-on-nel-skip-hougang-station-due-to-security-incident",
+  "title": "All trains on the NEL will skip NE14 Hougang Station due to a security incident",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2017-04-02T14:56:22.000+08:00",
+  "endAt": "2017-04-02T16:07:39.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "02/04, 4.16pm: NEL service has resumed. Once again, we are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/848449120083730432",
+      "createdAt": "2017-04-02T16:16:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "02/04, 4.07pm: All NEL trains will now stop at NE14 HGN. We are sorry for inconvenience caused. Free Passing bus from NE12 SER to NE15 BGK.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/848446816345403393",
+      "createdAt": "2017-04-02T16:07:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "02/04, 3.56pm: All trains on the NEL will skip NE14 HGN Station due to a security incident. Free Passing bus from NE12 SER to NE15 BGK.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/848444115511410688",
+      "createdAt": "2017-04-02T15:56:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "02/04, 3.06pm: All trains on the NEL will skip NE14 HGN Station due to a security incident. Free passing bus from NE12 SER to NE15 BGK.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/848431957008564224",
+      "createdAt": "2017-04-02T15:08:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "02/04, 2.55pm: All trains on the NEL will skip NE14 Hougang Station due to a security incident.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/848428880339664897",
+      "createdAt": "2017-04-02T14:56:22.000+08:00"
+    }
+  ]
+}

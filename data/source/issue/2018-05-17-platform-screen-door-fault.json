@@ -1,0 +1,73 @@
+{
+  "id": "2018-05-17-platform-screen-door-fault",
+  "title": "Major service disruption on North-South Line due to platform screen door fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2018-05-17T18:06:12.000+08:00",
+  "endAt": "2018-05-17T20:08:23.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train service on the NSL has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997090190043758592",
+      "createdAt": "2018-05-17T20:23:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular bus svcs between #Novena and #MarinaSouthPier have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997089206580068353",
+      "createdAt": "2018-05-17T20:19:26.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: platform screen door fault  cleared, train svcs are progressively being restored. Pls add 10mins train travel time from #AngMoKio to #DhobyGhaut.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997088568055971841",
+      "createdAt": "2018-05-17T20:16:54.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: platform screen door fault  cleared, train svcs are progressively being restored. Pls add 25mins train travel time from #AngMoKio to #DhobyGhaut.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997086424846385153",
+      "createdAt": "2018-05-17T20:08:23.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE: Due to a platform screen door fault, pls add 45mins train travel time from #AngMoKio to #DhobyGhaut towards #MarinaSouthPier. Free regular bus svcs between #Novena and #MarinaSouthPier. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997079280629694465",
+      "createdAt": "2018-05-17T19:39:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Due to a platform screen door fault, pls add 35mins train travel time from #AngMoKio to #DhobyGhaut towards #MarinaSouthPier. Free regular bus svcs between #Novena and #MarinaSouthPier. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997072513111752704",
+      "createdAt": "2018-05-17T19:13:06.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular bus svcs between #Novena and #MarinaSouthPier. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997065817555521537",
+      "createdAt": "2018-05-17T18:46:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Due to a platform screen door fault, pls add 35mins train travel time from #AngMoKio to #DhobyGhaut towards #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997065060991188994",
+      "createdAt": "2018-05-17T18:43:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Due to a platform screen door fault, pls add 25mins train travel time from #AngMoKio to #DhobyGhaut towards #MarinaSouthPier. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997063230231986176",
+      "createdAt": "2018-05-17T18:36:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a platform screen door fault, pls add 15mins train travel time from #AngMoKio to #DhobyGhaut towards #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/997055678324723712",
+      "createdAt": "2018-05-17T18:06:12.000+08:00"
+    }
+  ]
+}

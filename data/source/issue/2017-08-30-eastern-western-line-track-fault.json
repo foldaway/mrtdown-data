@@ -1,0 +1,36 @@
+{
+  "id": "2017-08-30-eastern-western-line-track-fault",
+  "title": "Track Fault on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-08-30T08:42:27.000+08:00",
+  "endAt": "2017-08-30T12:28:32.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #JurongEast to #Redhill have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/902749857387081728",
+      "createdAt": "2017-08-30T12:28:32.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Additional train travel time reduced to 5mins from #JurongEast to #Redhill due to a track fault. Train svc is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/902733066157694977",
+      "createdAt": "2017-08-30T11:21:49.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Additional train travel time reduced to 10mins from #JurongEast to #Redhill due to a track fault. Train svc is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/902726624528842752",
+      "createdAt": "2017-08-30T10:56:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Pls add 15mins train travel time from #JurongEast to #Redhill due to a track fault at #Redhill. Train svc is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/902692958654234624",
+      "createdAt": "2017-08-30T08:42:27.000+08:00"
+    }
+  ]
+}

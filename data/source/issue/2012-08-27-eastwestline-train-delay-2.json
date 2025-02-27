@@ -1,0 +1,41 @@
+{
+  "id": "2012-08-27-eastwestline-train-delay-2",
+  "title": "Train Delay on East West Line",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2012-08-27T08:16:28.000+08:00",
+  "endAt": "2012-08-27T08:21:21.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "Trains are running slightly slower than normal due to wet tracks. Please allow extra time for travel.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/240017698262757377",
+      "createdAt": "2012-08-27T17:27:33.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Trains are running slightly slower than normal due to wet track. Please allow extra time for travel.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/239986629870247936",
+      "createdAt": "2012-08-27T15:24:05.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Train services from #JurongEast towards #Redhill are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/239885156972892160",
+      "createdAt": "2012-08-27T08:40:52.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWLINE] UPDATE: Fault is cleared. Expect minor delays from  #JurongEast towards #Redhill. Trains and platforms are crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/239880242183942144",
+      "createdAt": "2012-08-27T08:21:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EASTWESTLINE]: Trains are delayed from #JurongEast to #Redhill towards PasirRis due train fault. Estimated delay: 10 mins",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/239879012846039040",
+      "createdAt": "2012-08-27T08:16:28.000+08:00"
+    }
+  ]
+}

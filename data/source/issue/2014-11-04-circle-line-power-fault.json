@@ -1,0 +1,25 @@
+{
+  "id": "2014-11-04-circle-line-power-fault",
+  "title": "Service disruption on Circle Line due to power fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2014-11-04T16:33:31.000+08:00",
+  "endAt": "2014-11-04T16:52:27.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services between #KentRidge and #HarbourFront are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/529556770490822657",
+      "createdAt": "2014-11-04T16:52:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Estimate 15 mins additional travelling time between #KentRidge and #HarbourFront in both directions due to power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/529552005543378944",
+      "createdAt": "2014-11-04T16:33:31.000+08:00"
+    }
+  ]
+}

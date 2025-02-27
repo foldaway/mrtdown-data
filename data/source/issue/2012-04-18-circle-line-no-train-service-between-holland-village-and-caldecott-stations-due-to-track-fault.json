@@ -1,0 +1,65 @@
+{
+  "id": "2012-04-18-circle-line-no-train-service-between-holland-village-and-caldecott-stations-due-to-track-fault",
+  "title": "Circle Line: Service disruption due to track fault",
+  "componentIdsAffected": ["CCL"],
+  "startAt": "2012-04-18T08:07:04.000+08:00",
+  "endAt": "2012-04-18T10:21:49.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE CIRCLE LINE:Free bus bridging services between one-north and Bishan Circle Line stations has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192456039289995264",
+      "createdAt": "2012-04-18T11:34:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE CIRCLE LINE:Free bus bridging services between one-north and Bishan Circle Line stations continues.Free bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192444974233681920",
+      "createdAt": "2012-04-18T10:50:31.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE CCL:Service between one-north & Bishan stations in both directions has resumed.Bridging bus service between these stations continues",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192437747812802560",
+      "createdAt": "2012-04-18T10:21:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE CIRCLE LINE:Still no train service between one-north & Bishan in both directions. We are working to restore the service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192433160900984833",
+      "createdAt": "2012-04-18T10:03:35.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "UPDATE CIRCLE LINE:Free bus services and bus bridging at designated bus boarding points between one-North and Bishan Circle Line stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192423700056903680",
+      "createdAt": "2012-04-18T09:25:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE CIRCLE LINE:No service between One-north & Bishan in both directions. Free bus bridging services between One-north & Bishan stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192421052918407168",
+      "createdAt": "2012-04-18T09:15:28.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE CIRCLE LINE:Free bus bridging services available between Marymount and One-north stations.Make alternate travel plans where possible.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192416124443439105",
+      "createdAt": "2012-04-18T08:55:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE CIRCLE LINE:Free bus bridging services between Holland Village and Caldecott stations.Make alternate travel plans where possible.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192405928870547457",
+      "createdAt": "2012-04-18T08:15:22.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Circle Line: No train service between Holland Village and Caldecott stations due to track fault.More updates to come.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192403837728985088",
+      "createdAt": "2012-04-18T08:07:04.000+08:00"
+    }
+  ]
+}

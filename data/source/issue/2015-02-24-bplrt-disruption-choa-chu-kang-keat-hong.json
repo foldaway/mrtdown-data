@@ -1,0 +1,55 @@
+{
+  "id": "2015-02-24-bplrt-disruption-choa-chu-kang-keat-hong",
+  "title": "No train service between Choa Chu Kang & Keat Hong",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2015-02-24T12:18:25.000+08:00",
+  "endAt": "2015-02-24T13:35:20.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] UPDATE: Train services at Bukit Panjang LRT have resumed. Free bus services and bus bridging services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/570099588746518528",
+      "createdAt": "2015-02-24T13:55:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Train services at Bukit Panjang LRT have resumed. Free bus services and bus bridging services will cont to be in operation.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/570094607171657728",
+      "createdAt": "2015-02-24T13:35:20.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: No train service btwn #ChoaChuKang and #Senja in both dir. Free public &amp; shuttle buses are now avail at all BPLRT stations",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/570093887643000832",
+      "createdAt": "2015-02-24T13:32:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: No train service btwn #ChoaChuKang &amp; #Senja in both dir. Free public &amp; shuttle buses are now avail at all BPLRT stations",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/570089735332306946",
+      "createdAt": "2015-02-24T13:15:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: No train service btwn #ChoaChuKang &amp; #Senja in both dir. Free public &amp; shuttle buses are now available at all BPLRT stations",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/570084931348475906",
+      "createdAt": "2015-02-24T12:56:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: No train service btwn #Choa Chu Kang &amp; #Keat Hong. Free public &amp; shuttle buses are now available at all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/570080784284938241",
+      "createdAt": "2015-02-24T12:40:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]  No train service btwn #Choa Chu Kang &amp; #Keat Hong. Free public &amp; shuttle buses are now available at all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/570075247140954113",
+      "createdAt": "2015-02-24T12:18:25.000+08:00"
+    }
+  ]
+}

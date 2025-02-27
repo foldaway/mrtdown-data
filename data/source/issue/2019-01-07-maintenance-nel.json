@@ -1,0 +1,98 @@
+{
+  "id": "2019-01-07-maintenance-nel",
+  "title": "Early service ending on North East Line due to maintenance",
+  "componentIdsAffected": [
+    "NEL",
+    "SKLRT"
+  ],
+  "startAt": "2019-01-07T14:10:00.000+08:00",
+  "endAt": "2019-01-13T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Due to the early closure of the NEL stations between Punggol and Serangoon, train svcs between NE1 HarbourFront and NE12 Serangoon will operate at a longer frequency of about 9 minutes while svc hours on the Sengkang-Punggol LRT will be extended on the affected dates.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1084097638985658374",
+      "createdAt": "2019-01-12T22:39:53.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Just a gentle reminder, train svcs on the NEL between NE12 Serangoon and NE17 Punggol will end earlier at around 11pm tonight - Jan 12. Pls note that Shuttle Bus 21 will be in operation to serve the closed stations while Svc 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1084097547063386113",
+      "createdAt": "2019-01-12T22:39:31.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "With the early closure of the NEL stations between Punggol &amp; Serangoon, train svcs between NE1 HarbourFront and NE12 Serangoon will operate at a longer frequency of about 9 minutes while svc hours on the Sengkang-Punggol LRT will be extended on the affected dates.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1084013025806344193",
+      "createdAt": "2019-01-12T17:03:39.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Due to maintenance works, train svcs on the NEL between NE12 Serangoon and NE17 Punggol will end earlier at around 11pm tonight, 12 Jan. Pls note that Shuttle Bus 21 will be in operation to serve the closed stations while Svc 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1084012925579218944",
+      "createdAt": "2019-01-12T17:03:16.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Due to the early closure of the NEL stations between Punggol and Serangoon, train svcs between NE1 HarbourFront and NE12 Serangoon will operate at a longer frequency of about 9 minutes while svc hours on the Sengkang-Punggol LRT will be extended on the affected dates.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1083730846144651267",
+      "createdAt": "2019-01-11T22:22:23.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Just a gentle reminder, train svcs on the NEL between NE12 Serangoon and NE17 Punggol will end earlier at around 11pm tonight and tomorrow night - Jan 11 &amp; 12. Pls note that Shuttle Bus 21 will be in operation to serve the closed stations while Svc 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1083730684097683456",
+      "createdAt": "2019-01-11T22:21:44.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "With the early closure of the NEL stations between Punggol &amp; Serangoon, train svcs between NE1 HarbourFront and NE12 Serangoon will operate at a longer frequency of about 9 minutes while svc hours on the Sengkang-Punggol LRT will be extended on the affected dates.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1083648856267452416",
+      "createdAt": "2019-01-11T16:56:35.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Due to maintenance works, train svcs on the NEL between NE12 Serangoon and NE17 Punggol will end earlier at around 11pm this Fri and Sat - Jan 11 &amp; 12. Pls note that Shuttle Bus 21 will be in operation to serve the closed stations while Svc 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1083250911768600576",
+      "createdAt": "2019-01-10T14:35:17.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "With the early closure of the NEL stations between Punggol and Serangoon, train svcs between NE1 HarbourFront and NE12 Serangoon will operate at a longer frequency of about 9 minutes while svc hours on the Sengkang-Punggol LRT will be extended on the affected dates.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1082919366868402176",
+      "createdAt": "2019-01-09T16:37:51.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Due to maintenance works, train svcs on the NEL between NE12 Serangoon and NE17 Punggol will end earlier at around 11pm this Fri and Sat - Jan 11 &amp; 12. Pls note that Shuttle Bus 21 will be in operation to serve the closed stations while Svc 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1082919285498867712",
+      "createdAt": "2019-01-09T16:37:31.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "With the early closure of the NEL stations between Punggol and Serangoon, train svcs between NE1 HarbourFront and NE12 Serangoon will operate at a longer frequency of about 9 minutes while svc hours on the Sengkang-Punggol LRT will be extended on the affected dates.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1082492316546265088",
+      "createdAt": "2019-01-08T12:20:54.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Due to maintenance works, train svcs on the NEL between NE12 Serangoon and NE17 Punggol will end earlier at around 11pm this Fri and Sat - Jan 11 &amp; 12. Pls note that Shuttle Bus 21 will be in operation to serve the closed stations while Svc 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1082492116335439872",
+      "createdAt": "2019-01-08T12:20:06.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "With the early closure of the NEL stations between Punggol and Serangoon, train svcs between NE1 HarbourFront and NE12 Serangoon will operate at a longer frequency of about 9 minutes while svc hours on the Sengkang-Punggol LRT will be extended on the affected dates.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1082157449082109952",
+      "createdAt": "2019-01-07T14:10:16.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Due to maintenance works, train svcs on the NEL between NE12 Serangoon and NE17 Punggol will end earlier at around 11pm this Fri and Sat - Jan 11 &amp; 12. Pls note that Shuttle Bus 21 will be in operation to serve the closed stations while Svc 325 will run until 12.50am.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1082157384494022656",
+      "createdAt": "2019-01-07T14:10:00.000+08:00"
+    }
+  ]
+}

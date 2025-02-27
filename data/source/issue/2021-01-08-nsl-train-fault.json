@@ -1,0 +1,42 @@
+{
+  "id": "2021-01-08-nsl-train-fault",
+  "title": "Train fault causing delays",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2021-01-08T23:02:40.000+08:00",
+  "endAt": "2021-01-08T23:27:16.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. Pls add 10mins train travel time from #YewTee to #AngMoKio. Free regular bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1347566381890342915",
+      "createdAt": "2021-01-08T23:30:36.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. Pls add 10mins train travel time from #YewTee to #AngMoKio.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1347565541720879104",
+      "createdAt": "2021-01-08T23:27:16.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. Pls add 10mins train travel time from #Kranji to #JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1347564838369726471",
+      "createdAt": "2021-01-08T23:24:28.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. Pls add 10mins train travel time btwn #Kranji and #JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1347563572662919169",
+      "createdAt": "2021-01-08T23:19:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a train fault, pls add 25mins train travel time btwn #Woodlands and #JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1347559350164807681",
+      "createdAt": "2021-01-08T23:02:40.000+08:00"
+    }
+  ]
+}

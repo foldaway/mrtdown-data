@@ -1,0 +1,24 @@
+{
+  "id": "2022-02-14-ewl-signaling-fault",
+  "title": "Signaling fault causing delays on EWL",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2022-02-14T05:58:38.000+08:00",
+  "endAt": "2022-02-14T06:15:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train service has resumed at 0615Hrs. Free bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1492986861773799426",
+      "createdAt": "2022-02-14T06:19:40.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a signaling fault, pls add 20mins train travel time from #TanahMerah to #Aljunied towards #TuasLink. Free regular bus svcs between #TanahMerah and #Aljunied.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1492981568914092033",
+      "createdAt": "2022-02-14T05:58:38.000+08:00"
+    }
+  ]
+}

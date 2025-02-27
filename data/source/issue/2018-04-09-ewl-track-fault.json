@@ -1,0 +1,59 @@
+{
+  "id": "2018-04-09-ewl-track-fault",
+  "title": "Service disruption on East West Line due to track fault",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2018-04-09T07:36:42.000+08:00",
+  "endAt": "2018-04-09T10:18:19.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] UPDATE: Train service on the EWL has resumed. Trains are running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/983167189879439360",
+      "createdAt": "2018-04-09T10:18:19.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Due to a track fault, pls add 10mins train travel time from #Clementi to #JooKoon towards #JooKoon. We are working to recover svc.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/983161475782008832",
+      "createdAt": "2018-04-09T09:55:36.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Due to a track fault, pls add 20mins train travel time from #Clementi to #JooKoon towards #JooKoon. We are working to recover svc.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/983155693657063424",
+      "createdAt": "2018-04-09T09:32:38.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Due to a track fault, pls add 25mins train travel time from #Clementi to #JooKoon towards #JooKoon. We are working to recover svc.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/983146798049935365",
+      "createdAt": "2018-04-09T08:57:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track fault, pls add 25mins train travel time from #JurongEast to #JooKoon towards #JooKoon. We are working to recover svc.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/983143219306250240",
+      "createdAt": "2018-04-09T08:43:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track fault, pls add 20mins train travel time from #JurongEast to #JooKoon towards #JooKoon. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/983138243284615168",
+      "createdAt": "2018-04-09T08:23:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track fault, pls add 20mins train travel time from #JurongEast to #JooKoon towards #JooKoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/983131062774611968",
+      "createdAt": "2018-04-09T07:54:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track fault, pls add 15mins train travel time from #JurongEast to #JooKoon towards #JooKoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/983126517403168770",
+      "createdAt": "2018-04-09T07:36:42.000+08:00"
+    }
+  ]
+}

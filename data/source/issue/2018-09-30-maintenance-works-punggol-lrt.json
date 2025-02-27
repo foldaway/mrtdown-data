@@ -1,0 +1,19 @@
+{
+  "id": "2018-09-30-maintenance-works-punggol-lrt",
+  "title": "Maintenance works on the Punggol LRT system",
+  "componentIdsAffected": [
+    "PGLRT"
+  ],
+  "startAt": "2018-09-30T00:00:00.000+08:00",
+  "endAt": "2018-09-30T17:30:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "We will be conducting maintenance works on the Punggol LRT system this Sunday, 30 September 2018.\n\nTrain service will be available as usual at all stations, but only in one direction. Service in the opposite direction will start at 5.30pm. https://t.co/AnDGuXPj5v",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1045112098219413504",
+      "createdAt": "2018-09-27T08:45:16.000+08:00"
+    }
+  ]
+}

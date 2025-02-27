@@ -1,0 +1,23 @@
+{
+  "id": "2012-10-24-ewl-platform-screen-door-fault",
+  "title": "Platform screen door fault causing delays on EWL",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2012-10-24T18:03:30.000+08:00",
+  "endAt": "2012-10-24T18:37:03.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Estimate 5 mins additional travelling time from #ChineseGarden towards #JurongEast due to platform screen door fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/261053687307325440",
+      "createdAt": "2012-10-24T18:37:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 5 mins additional travelling time from #ChineseGarden  to #JurongEast towards PasirRis due to platform screen door.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/261045243422593024",
+      "createdAt": "2012-10-24T18:03:30.000+08:00"
+    }
+  ]
+}

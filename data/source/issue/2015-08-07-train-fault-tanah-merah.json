@@ -1,0 +1,25 @@
+{
+  "id": "2015-08-07-train-fault-tanah-merah",
+  "title": "Train fault near Tanah Merah",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2015-08-07T23:41:01.000+08:00",
+  "endAt": "2015-08-07T23:50:09.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "Train service is resumed.Free bus service is still available between Pasir Ris and Eunos stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/629680937412923392",
+      "createdAt": "2015-08-07T23:50:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to a train fault near Tanah Merah, please expect additional travelling time of 15mins from Pasir Ris to Eunos Westbound.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/629678639693467648",
+      "createdAt": "2015-08-07T23:41:01.000+08:00"
+    }
+  ]
+}

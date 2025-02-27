@@ -1,0 +1,36 @@
+{
+  "id": "2016-05-03-train-fault-toa-payoh",
+  "title": "Train fault reported at Toa Payoh station",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2016-05-03T17:45:55.000+08:00",
+  "endAt": "2016-05-03T18:03:32.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] CLEARED: Train service from MarinaSouthPier to ToaPayoh has resumed. Trains may be traveling at a slower speed due to earlier fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/727438434608930816",
+      "createdAt": "2016-05-03T18:03:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]DELAY: Due to a train fault @ Toa Payoh, please expect additional traveling time of 25 mins from Marina South Pier to Toa Payoh.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/727435550810992641",
+      "createdAt": "2016-05-03T17:52:05.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]:Our engineers are working on it. We will update again on the delay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/727434213897555968",
+      "createdAt": "2016-05-03T17:46:46.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]:A train fault has been reported at Toa Payoh station, Trains are moving slower towards Jurong East.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/727434000910839808",
+      "createdAt": "2016-05-03T17:45:55.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+	"id": "2012-02-08-train-service-delay",
+	"title": "Train service delay on North-South line",
+	"componentIdsAffected": ["NSL"],
+	"startAt": "2012-02-08T07:25:27.000+08:00",
+	"endAt": "2012-02-08T07:48:45.000+08:00",
+	"type": "outage",
+	"severity": "major",
+	"updates": [
+		{
+			"type": "operator.monitoring",
+			"text": "Train service on all lines are running well.",
+			"sourceUrl": "https://x.com/SMRT_Singapore/status/167032080205758464",
+			"createdAt": "2012-02-08T07:48:45.000+08:00"
+		},
+		{
+			"type": "operator.monitoring",
+			"text": "Train service on North-South line towards Marina Bay slightly delayed due to train fault. Please allow extra time for travel.",
+			"sourceUrl": "https://x.com/SMRT_Singapore/status/167026214018621440",
+			"createdAt": "2012-02-08T07:25:27.000+08:00"
+		}
+	]
+}

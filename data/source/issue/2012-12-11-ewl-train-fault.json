@@ -1,0 +1,31 @@
+{
+  "id": "2012-12-11-ewl-train-fault",
+  "title": "Train Fault on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-12-11T15:37:13.000+08:00",
+  "endAt": "2012-12-11T16:19:07.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #Kembangan towards #PasirRis are now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/278413592703946752",
+      "createdAt": "2012-12-11T16:19:07.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Train service is resuming from #Kembangan towards #PasirRis.  Trains would be travelling at slower speed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/278410218029867008",
+      "createdAt": "2012-12-11T16:05:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 20 mins additional travelling time from #Kembangan to #PasirRis towards PasirRis due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/278403047695192066",
+      "createdAt": "2012-12-11T15:37:13.000+08:00"
+    }
+  ]
+}

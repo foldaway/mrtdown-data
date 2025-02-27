@@ -1,0 +1,43 @@
+{
+  "id": "2017-08-23-nsl-track-fault",
+  "title": "Major track fault causing delays on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-08-23T07:32:31.000+08:00",
+  "endAt": "2017-08-23T08:53:29.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "[NSL] UPDATE: Pls expect slightly longer train travel time between #YewTee and #JurongEast on the NSL this evening.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/900286506958323712",
+      "createdAt": "2017-08-23T17:20:04.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Due to a track point fault near #JurongEast, only one stn platform is operational for NSL train svc to #JurongEast this evening.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/900283832405860352",
+      "createdAt": "2017-08-23T17:09:26.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train svc from #Yewtee to #JurongEast is running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/900159020454912000",
+      "createdAt": "2017-08-23T08:53:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Due to a track fault, pls add 10mins train travel time from #YewTee to #JurongEast. (Not linked to new signalling project).",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/900148926656913408",
+      "createdAt": "2017-08-23T08:13:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a track fault, pls add 15mins train travel time from #YewTee to #JurongEast. (Not linked to new signalling project).",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/900138646916931584",
+      "createdAt": "2017-08-23T07:32:31.000+08:00"
+    }
+  ]
+}

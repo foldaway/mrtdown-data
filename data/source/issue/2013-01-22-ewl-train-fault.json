@@ -1,0 +1,25 @@
+{
+  "id": "2013-01-22-ewl-train-fault",
+  "title": "Train Fault Causing Delays on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2013-01-22T08:12:08.000+08:00",
+  "endAt": "2013-01-22T08:18:19.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Fault is cleared. Expect longer travelling time from  #TiongBahru towards #PasirRis. Trains and platforms are crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/293512886452617216",
+      "createdAt": "2013-01-22T08:18:19.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Estimate 10 mins additional travelling time from #TiongBahru to #OutramPark towards PasirRis due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/293511329447280641",
+      "createdAt": "2013-01-22T08:12:08.000+08:00"
+    }
+  ]
+}

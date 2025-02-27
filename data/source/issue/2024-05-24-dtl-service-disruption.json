@@ -1,0 +1,37 @@
+{
+  "id": "2024-05-24-dtl-service-disruption",
+  "title": "DTL service disruption due to track closure",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2024-05-24T05:12:43.000+08:00",
+  "endAt": "2024-05-24T07:26:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "DTL full service has resumed at 8.01am. Stations are still crowded and delays can be expected. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1793796089457541572",
+      "createdAt": "2024-05-24T08:08:09.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "DTL full service has resumed progressively at 0726hrs. Stations are still crowded and delays can be expected. Free regular &amp; bridging bus services are still available at designated bus stops. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1793787900251029537",
+      "createdAt": "2024-05-24T07:35:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No MRT svc on DTL btwn DT20 Fort Canning &amp; DT25 Mattar due to track closure.  Free regular bus rides &amp; free bridging bus svcs are available btwn DT19 Chinatown &amp; DT29 Bedok North while a Shuttle Train svc runs btwn DT26 MacPherson &amp; DT29 Bedok North.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1793756353858847001",
+      "createdAt": "2024-05-24T05:30:15.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "No DTL service between DT20 FCN and DT25 MTR due to track closure. Free regular and bridging bus services are available btwn DT19 CNT and DT29 BDN. Recovery work is in progress, with shuttle service btwn DT26 MPS and DT29 BDN. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1793751940075340086",
+      "createdAt": "2024-05-24T05:12:43.000+08:00"
+    }
+  ]
+}

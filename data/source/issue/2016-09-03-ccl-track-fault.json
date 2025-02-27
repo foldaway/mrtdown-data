@@ -1,0 +1,35 @@
+{
+  "id": "2016-09-03-ccl-track-fault",
+  "title": "CCL Track Fault",
+  "componentIdsAffected": ["CCL"],
+  "startAt": "2016-09-05T20:22:46.000+08:00",
+  "endAt": "2016-09-05T21:13:59.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services from #PayaLebar towards #MacPherson are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/772784845349015552",
+      "createdAt": "2016-09-05T21:13:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]\nUpdate: Estimate 5mins additional travelling time from #PayaLebar to\n#MacPherson towards #HarbourFront due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/772780683987038208",
+      "createdAt": "2016-09-05T20:57:27.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Update: Estimate 10mins additional travelling time from #PayaLebar to\n#MacPherson towards #HarbourFront due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/772774516166529025",
+      "createdAt": "2016-09-05T20:32:56.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Estimate 5mins additional travelling time from #PayaLebar to #MacPherson\n  towards #HarbourFront due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/772771954684112896",
+      "createdAt": "2016-09-05T20:22:46.000+08:00"
+    }
+  ]
+}

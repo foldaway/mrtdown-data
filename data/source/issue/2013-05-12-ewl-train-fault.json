@@ -1,0 +1,29 @@
+{
+  "id": "2013-05-12-ewl-train-fault",
+  "title": "Train Fault Impacting Service Between Kembangan and Eunos",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2013-05-12T16:48:23.000+08:00",
+  "endAt": "2013-05-12T17:13:14.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL] CLEARED: Train services from #PasirRis towards #JooKoon are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/333510164298756096",
+      "createdAt": "2013-05-12T17:13:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train traveling at a slower speed. Estimate 20 mins additional travel time from #PasirRis towards #JooKoon due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/333507907725455360",
+      "createdAt": "2013-05-12T17:04:16.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Estimate 10 mins additional travelling time from #Kembangan to #Eunos due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/333503910176231424",
+      "createdAt": "2013-05-12T16:48:23.000+08:00"
+    }
+  ]
+}

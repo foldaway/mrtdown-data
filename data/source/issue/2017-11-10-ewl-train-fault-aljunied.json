@@ -1,0 +1,29 @@
+{
+  "id": "2017-11-10-ewl-train-fault-aljunied",
+  "title": "Train Fault Causing Delay on East West Line at Aljunied Station",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2017-11-10T23:15:15.000+08:00",
+  "endAt": "2017-11-11T00:13:07.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service from #Bugis to #TanahMerah towards #PasirRis due to a train fault at #Aljunied until the end of train service. We are sorry that your journey this evening has been affected.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/929019096032624641",
+      "createdAt": "2017-11-11T00:13:07.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: No train svc from #Bugis to #TanahMerah towards #PasirRis due to a train fault at #Aljunied.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/929010448665473026",
+      "createdAt": "2017-11-10T23:38:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:Due to a train fault,pls add one hour train travel time from #TiongBahru to #PasirRis.Not linked to new signalling project.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/929004531534381056",
+      "createdAt": "2017-11-10T23:15:15.000+08:00"
+    }
+  ]
+}

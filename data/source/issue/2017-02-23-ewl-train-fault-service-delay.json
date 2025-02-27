@@ -1,0 +1,31 @@
+{
+  "id": "2017-02-23-ewl-train-fault-service-delay",
+  "title": "Train service disruption due to fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-02-23T08:28:26.000+08:00",
+  "endAt": "2017-02-23T08:36:05.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services between #JooKoon &amp; #Lakeside have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/834569205819207680",
+      "createdAt": "2017-02-23T09:02:58.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE:Fault cleared , trains service are progressively returning to normal speed btwn #JooKoon &amp; #Lakeside.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/834562440805310465",
+      "createdAt": "2017-02-23T08:36:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a train fault, train service between #JooKoon &amp; #Lakeside will delay for 20 minutes.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/834560512138452992",
+      "createdAt": "2017-02-23T08:28:26.000+08:00"
+    }
+  ]
+}

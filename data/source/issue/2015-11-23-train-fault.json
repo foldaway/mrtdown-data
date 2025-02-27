@@ -1,0 +1,25 @@
+{
+  "id": "2015-11-23-train-fault",
+  "title": "Train fault causing delays",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-11-23T06:36:50.000+08:00",
+  "endAt": "2015-11-23T06:52:30.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Train service from Yishun to Marina South Pier has been resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/668562729334996992",
+      "createdAt": "2015-11-23T06:52:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Estimated 20mins additional traveling time from Yishun to Marina South Pier,due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/668558784336302080",
+      "createdAt": "2015-11-23T06:36:50.000+08:00"
+    }
+  ]
+}

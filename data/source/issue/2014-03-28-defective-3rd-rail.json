@@ -1,0 +1,25 @@
+{
+  "id": "2014-03-28-defective-3rd-rail",
+  "title": "Defective 3rd Rail Causing Delays on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2014-03-28T13:02:34.000+08:00",
+  "endAt": "2014-03-28T13:10:57.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #Queenstown towards #Redhill are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/449413309997912065",
+      "createdAt": "2014-03-28T13:10:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 10 mins additional travelling time from #Queenstown to #Redhill towards PasirRis due to defective 3rd rail.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/449411201642946560",
+      "createdAt": "2014-03-28T13:02:34.000+08:00"
+    }
+  ]
+}

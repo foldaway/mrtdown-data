@@ -1,0 +1,49 @@
+{
+  "id": "2012-08-17-northeastline-train-service-delay",
+  "title": "Train service delay along North-East Line",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2012-08-17T08:10:09.000+08:00",
+  "endAt": "2012-08-17T17:19:16.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "[SBST] NEL Update:NEL train frequency 7.5 - 8mins until end of service today.Free shuttle bus service in both directions has ceased at 10pm.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/236467012883324928",
+      "createdAt": "2012-08-17T22:18:23.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[SBST] NEL Update:NEL train frequency 7.5 - 8mins until end of service today.Free shuttle bus service in both directions will cease at 10pm.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/236454217987014656",
+      "createdAt": "2012-08-17T21:27:33.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NORTHEASTLINE]: LTA advised the fault in NEL signalling system has been rectified. Trains will be operating between 7.5 &amp; 9 mins interval.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/236391734257528833",
+      "createdAt": "2012-08-17T17:19:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "SBST advised that the service on NEL is now extended to 30 mins due to a new fault that has been found in their signaling system.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/236359310777659393",
+      "createdAt": "2012-08-17T15:10:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[SBST] UPDATE: North-East Line service towards HarbourFront is experiencing a 2 mins delay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/236350166700003328",
+      "createdAt": "2012-08-17T14:34:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NORTHEASTLINE]: Train service delay of about 15 mins along North-East Line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/236253545064697857",
+      "createdAt": "2012-08-17T08:10:09.000+08:00"
+    }
+  ]
+}

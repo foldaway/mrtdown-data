@@ -1,0 +1,113 @@
+{
+  "id": "2013-01-20-nsl-train-fault",
+  "title": "Train Fault in North-East Line",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2013-02-07T12:11:34.000+08:00",
+  "endAt": "2013-02-20T00:05:05.000+08:00",
+  "type": "outage",
+  "severity": "minor",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #MarinaBay towards #Bishan are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/303898004715360258",
+      "createdAt": "2013-02-20T00:05:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 15 mins additional travelling time from #MarinaBay to #Bishan towards JurongEast due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/303895963087560704",
+      "createdAt": "2013-02-19T23:56:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Free buses ceased at 12pm. Affected passengers can go to any SMRT station from now till 26Feb for refund.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/301542738711691264",
+      "createdAt": "2013-02-13T12:06:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Free buses at affected stations to continue until further notice.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/301539831446654976",
+      "createdAt": "2013-02-13T11:54:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Northbound service from Marina Bay to Toa Payoh has resumed. Free buses to continue until further notice.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/301533248817885185",
+      "createdAt": "2013-02-13T11:28:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Affected passengers can take free buses from designated bus stops,NEL from Dhoby Ghaut or CCL at Marina Bay or Dhoby Ghaut.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/301529248722743296",
+      "createdAt": "2013-02-13T11:12:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Northbound service from Marina Bay to Toa Payoh expected to resume at 11.25am.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/301523580968108032",
+      "createdAt": "2013-02-13T10:49:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Service from Marina Bay to Toa Payoh expected to resume in 1hr.Affected passengers can take free buses, CCL or NEL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/301518779576365056",
+      "createdAt": "2013-02-13T10:30:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: No northbound service from Marina Bay to Toa Payoh. Free bus services at affected stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/301515086063882240",
+      "createdAt": "2013-02-13T10:16:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Estimate 20 mins additional travel time between #MarinaBay and #Woodlands due an incident at Newton station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/301509341402513409",
+      "createdAt": "2013-02-13T09:53:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free public &amp; shuttle buses are now available at affected stations between #ToaPayoh and #Newton.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/301505592554577920",
+      "createdAt": "2013-02-13T09:38:29.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Estimated 30 mins additional travelling time between #MarinaBay and #Woodlands due an incident at Newton station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/301504704804966400",
+      "createdAt": "2013-02-13T09:34:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Estimated 25 mins additional travel time between #Newton and #MarinaBay due to an incident at Newton station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/301501757861801984",
+      "createdAt": "2013-02-13T09:23:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimated 30 mins additional travelling time between #MarinaBay and #Woodlands due to an incident at Newton station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/301498116807458816",
+      "createdAt": "2013-02-13T09:08:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE Train service from Bishan to Marina Bay now operating normally",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/299372970978209794",
+      "createdAt": "2013-02-07T12:24:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE Train fault cleared. Expect longer travelling time from Bishan to Marina Bay. Trains and platforms may be crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/299371593291948033",
+      "createdAt": "2013-02-07T12:18:44.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]Estimated 10mins additional travelling time from Bishan toward Marina Bay due to train fault",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/299369791553159168",
+      "createdAt": "2013-02-07T12:11:34.000+08:00"
+    }
+  ]
+}

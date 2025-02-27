@@ -1,0 +1,23 @@
+{
+  "id": "2015-07-08-nsew-train-degradation",
+  "title": "Trains on the NSEW line running at degraded mode",
+  "componentIdsAffected": ["NSL", "EWL"],
+  "startAt": "2015-07-08T05:21:19.000+08:00",
+  "endAt": "2015-07-08T05:33:35.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Train service resumes today at reduced speeds. Free travel for commuters exiting NSEW stations. For details, refer to http://t.co/KjRtKRHnZa",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618533344062472192",
+      "createdAt": "2015-07-08T05:33:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Trains on the NSEW line are running at degraded mode. Please Expect longer waiting time and running at a reduced speed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618530255834251264",
+      "createdAt": "2015-07-08T05:21:19.000+08:00"
+    }
+  ]
+}

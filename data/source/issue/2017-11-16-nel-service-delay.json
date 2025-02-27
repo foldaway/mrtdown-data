@@ -1,0 +1,66 @@
+{
+  "id": "2017-11-16-nel-service-delay",
+  "title": "NEL service delay due to train fault at Clarke Quay station",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2017-11-16T18:24:15.000+08:00",
+  "endAt": "2017-11-16T19:53:00+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "16/11, 8.47pm: Train svc has resumed since 7:53pm. Free bus rides &amp; bridging bus services have ceased. Once again we are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/931141977176813569",
+      "createdAt": "2017-11-16T20:48:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "16/11, 8.03pm: NEL is progressively back to regular svc at affected stns at 7:53pm. Trains are now in full svc at all stns.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/931130806130458624",
+      "createdAt": "2017-11-16T20:04:18.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "16/11, 7.47pm: Train svc is available btwn HarbourFront &amp; Chinatown and bwtn Potong Pasir &amp; Punggol.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/931126631032221701",
+      "createdAt": "2017-11-16T19:47:42.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train svc is available btwn HarbourFront &amp; Chinatown and bwtn Potong Pasir &amp; Punggol. Free bus rides are available btwn Outram Pk &amp; Farrer Pk.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/931126516095709185",
+      "createdAt": "2017-11-16T19:47:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "16/11, 7.18pm: NEL delay - free passing &amp; free bridging bus rides are available at designated bus stops betwn Outram Pk NE3 &amp; Farrer Pk NE8.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/931119527705718784",
+      "createdAt": "2017-11-16T19:19:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "16/11, 7.03pm: Train svc is available btwn HarbourFront &amp; Outram Pk and bwtn Farrer Pk &amp; Punggol. Free bus rides are available btwn Outram Pk &amp; Farrer Pk.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/931115650822520834",
+      "createdAt": "2017-11-16T19:04:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "16/11, 6.42pm: NEL delay - free bus rides are available at designated bus stops betwn Outram Pk NE3 &amp; Farrer Pk NE8.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/931110357229223937",
+      "createdAt": "2017-11-16T18:43:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "16/11, 6.32pm: Due to a train fault at Clarke Quay stn twds Punggol, additional travel time of 15mins is expected in both directions. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/931108229693587457",
+      "createdAt": "2017-11-16T18:34:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "16/11, 6.20pm: NEL svc is delayed due to a Train fault at Clarke Quay stn twds Punggol. Additional travel time of abt 10mins is expected in both directions",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/931105629397123072",
+      "createdAt": "2017-11-16T18:24:15.000+08:00"
+    }
+  ]
+}

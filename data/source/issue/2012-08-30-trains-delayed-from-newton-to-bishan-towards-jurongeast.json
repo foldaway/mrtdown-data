@@ -1,0 +1,25 @@
+{
+  "id": "2012-08-30-trains-delayed-from-newton-to-bishan-towards-jurongeast",
+  "title": "Trains delayed from Newton to Bishan towards Jurong East",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-08-30T06:25:49.000+08:00",
+  "endAt": "2012-08-30T06:42:13.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #Novena towards #Bishan are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/240942458157023233",
+      "createdAt": "2012-08-30T06:42:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Trains are delayed from #Newton to #Bishan towards JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/240938334174728192",
+      "createdAt": "2012-08-30T06:25:49.000+08:00"
+    }
+  ]
+}

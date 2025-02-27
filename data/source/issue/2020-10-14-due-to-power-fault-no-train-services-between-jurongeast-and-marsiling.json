@@ -1,0 +1,55 @@
+{
+  "id": "2020-10-14-due-to-power-fault-no-train-services-between-jurongeast-and-marsiling",
+  "title": "Service disruption due to power fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2020-10-14T19:55:51.000+08:00",
+  "endAt": null,
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a power fault, there is no train svcs between #JurongEast and #Marsiling. Free regular bus svcs &amp; free bridging bus svcs are available between #JurongEast and #Woodlands. For alternative travel options, please refer to https://t.co/H0JXeZvUHA",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316378245596495873",
+      "createdAt": "2020-10-14T22:00:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a power fault, there is no train svc between #JurongEast and #Marsiling. Free regular bus &amp; free bridging bus svcs are available between #JurongEast and #Woodlands. For alternative travel options, please refer to https://t.co/H0JXeZvUHA",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316372807706525696",
+      "createdAt": "2020-10-14T21:38:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a power fault, there is no train service between #JurongEast and #Marsiling. Free regular bus &amp; free bridging bus svcs are available between #JurongEast and #Woodlands. For alternative travel options, please refer to https://t.co/H0JXeZvUHA",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316369071319859200",
+      "createdAt": "2020-10-14T21:23:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a power fault, there is no train service between #JurongEast and #Marsiling. Free regular bus &amp; free bridging bus svcs are available btwn #JurongEast and #Woodlands. For alternative travel options, please refer to https://t.co/H0JXeZvUHA",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316365784591994883",
+      "createdAt": "2020-10-14T21:10:34.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL] UPDATE: Due to a power fault, there is no train svc between #JurongEast and #Marsiling. Free regular bus &amp; free bridging bus svcs are available btwn #JurongEast and #Woodlands. For alternative travel options, please refer to https://t.co/H0JXeZvUHA",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316361776255037445",
+      "createdAt": "2020-10-14T20:54:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a power fault, there is no train services between #JurongEast and #Marsiling. Free regular bus &amp; free bridging bus svcs are available btwn #JurongEast and #Woodlands. For alternative travel options, please refer to https://t.co/H0JXeZvUHA",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316355369086578688",
+      "createdAt": "2020-10-14T20:29:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a power fault, there is no train services between #JurongEast and #Marsiling. Free regular bus &amp; free bridging bus svcs are available btwn #JurongEast and #Woodlands. For alternative travel options, please refer to https://t.co/YxfqNiZDVT",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316346979446710274",
+      "createdAt": "2020-10-14T19:55:51.000+08:00"
+    }
+  ]
+}

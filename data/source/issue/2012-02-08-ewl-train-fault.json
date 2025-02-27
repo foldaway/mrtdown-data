@@ -1,0 +1,18 @@
+{
+  "id": "2012-02-08-ewl-train-fault",
+  "title": "Train fault on East-West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-02-08T07:25:27.000+08:00",
+  "endAt": "2012-02-09T05:30:00.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE: Expect some delay from Jurong East to Joo Koon due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/167221394814414848",
+      "createdAt": "2012-02-08T20:21:02.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "2018-08-04-circle-line-service-disruption",
+  "title": "Circle Line Service Disruption between Tai Seng and MacPherson",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2018-08-04T18:21:30.000+08:00",
+  "endAt": "2018-08-04T19:02:25.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL Update]: Train service resume between Tai Seng and Mountbatten. Additional 5 minutes travelling time between Stadium and Bartley is expected.  Free regular bus services are still available between Stadium and Bartley.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1025698466377289728",
+      "createdAt": "2018-08-04T19:02:25.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL Update]: Trains service is available between Tai Seng and Mountbatten. Additional travel time between Stadium and Bartley is expected.  Free regular bus services are still available between Stadium and Bartley.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1025695867540463616",
+      "createdAt": "2018-08-04T18:52:05.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to signalling fault, there is no train Service between Taiseng to Mountbatten on both bounds.  Free regular bus services are available between Bartley and Stadium.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1025691594396119040",
+      "createdAt": "2018-08-04T18:35:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Due to signalling fault, there is no Train Service between Tai Seng to MacPherson on both bounds.  Free regular bus services are available.  We apologise for the inconvenience.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1025688170547929088",
+      "createdAt": "2018-08-04T18:21:30.000+08:00"
+    }
+  ]
+}

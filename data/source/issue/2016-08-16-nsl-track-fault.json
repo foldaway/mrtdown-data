@@ -1,0 +1,36 @@
+{
+  "id": "2016-08-16-nsl-track-fault",
+  "title": "Track Fault on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2016-08-16T08:44:51.000+08:00",
+  "endAt": "2016-08-16T10:09:46.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train service from #MarinaSouthPier to #Braddell, towards #JurongEast has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/765369932200554496",
+      "createdAt": "2016-08-16T10:09:46.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]Update: Estimate 5 mins additional travel time from #MarinaSouthPier to #Braddell towards #JurongEast due to earlier track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/765366858421706752",
+      "createdAt": "2016-08-16T09:57:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Expect longer travelling time along NS line in the direction towards JurongEast due to track fault near Braddell.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/765357054399696898",
+      "createdAt": "2016-08-16T09:18:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 10 mins additional travel time from #MarinaSouthPier to #Braddell towards #JurongEast due to a track fault near Braddell.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/765348562620321794",
+      "createdAt": "2016-08-16T08:44:51.000+08:00"
+    }
+  ]
+}

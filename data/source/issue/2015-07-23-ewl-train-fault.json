@@ -1,0 +1,31 @@
+{
+  "id": "2015-07-23-ewl-train-fault",
+  "title": "Train fault on East West Line affecting travel time",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2015-07-23T20:41:19.000+08:00",
+  "endAt": "2015-07-23T20:49:07.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Free bus service between #JurongEast and #JooKoon has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/624206825039093761",
+      "createdAt": "2015-07-23T21:17:58.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #Clementi towards #JooKoon are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/624199561154670592",
+      "createdAt": "2015-07-23T20:49:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 20 mins additional travelling time from #Clementi  to #JooKoon towards JooKoon due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/624197598191026177",
+      "createdAt": "2015-07-23T20:41:19.000+08:00"
+    }
+  ]
+}

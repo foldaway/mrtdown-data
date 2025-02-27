@@ -1,0 +1,36 @@
+{
+  "id": "2019-03-04-nsl-train-fault",
+  "title": "Service disruption on North-South Line due to train fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2019-03-04T10:58:49.000+08:00",
+  "endAt": "2019-03-04T11:23:07.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE:Train service between #JurongEast and #Woodlands has resumed. Free regular bus between #ChoaChuKang and #Woodlands has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1102409106088849408",
+      "createdAt": "2019-03-04T11:23:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a train fault, pls add 10mins train travel time btwn #JurongEast and #Woodlands. Free Regular bus is available between #ChoaChuKang and #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1102406616798846977",
+      "createdAt": "2019-03-04T11:13:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a train fault, pls add 10mins train travel time btwn #JurongEast and #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1102405432780288001",
+      "createdAt": "2019-03-04T11:08:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a train fault, pls add 30 mins train travel time btwn #JurongEast and #Woodlands.Free Regular bus is available between Choa Chu Kang and Woodlands",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1102402990604861440",
+      "createdAt": "2019-03-04T10:58:49.000+08:00"
+    }
+  ]
+}

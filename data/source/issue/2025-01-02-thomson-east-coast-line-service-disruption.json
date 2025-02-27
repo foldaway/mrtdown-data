@@ -1,0 +1,25 @@
+{
+  "id": "2025-01-02-thomson-east-coast-line-service-disruption",
+  "title": "Thomson–East Coast Line service disruption",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2025-01-02T20:00:44.000+08:00",
+  "endAt": "2025-01-02T20:00:44.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL] UPDATE: Fault has been cleared and train service is progressively resuming. No more additional travel time between Caldecott and Bayshore in both directions. We apologize for any inconvenience.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1874787911771856900",
+      "createdAt": "2025-01-02T20:00:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: Please allow for additional 10 mins travel time between Caldecott and Bayshore in both directions due to a train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1874784557008093548",
+      "createdAt": "2025-01-02T19:47:24.000+08:00"
+    }
+  ]
+}

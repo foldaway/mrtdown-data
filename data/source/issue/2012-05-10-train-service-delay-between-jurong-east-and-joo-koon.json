@@ -1,0 +1,25 @@
+{
+  "id": "2012-05-10-train-service-delay-between-jurong-east-and-joo-koon",
+  "title": "Train service delay between Jurong East and Joo Koon",
+  "componentIdsAffected": [
+    "EWL",
+    "JRL"
+  ],
+  "startAt": "2012-05-10T09:04:39.000+08:00",
+  "endAt": "2012-05-10T09:07:41.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:Train service between Jurong East and Joo Koon in both directions running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/200391626999345152",
+      "createdAt": "2012-05-10T09:07:41.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Train service between Jurong East and Joo Koon in both directions delayed.  Updates to come",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/200390863816368130",
+      "createdAt": "2012-05-10T09:04:39.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "2017-10-07-nel-service-disruption",
+  "title": "NEL service disruption due to train fault",
+  "componentIdsAffected": [
+    "NEL",
+    "SKLRT"
+  ],
+  "startAt": "2017-10-07T12:39:51.000+08:00",
+  "endAt": "2017-10-07T13:03:52.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "1.00pm: NEL delay - Full train svc has resumed. We are sorry for the \ninconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/916529488082616320",
+      "createdAt": "2017-10-07T13:03:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "12.39pm: NEL svc towards PunggoL NE17 is delayed due to a train fault at \nSengkang NE16. Add travel time of about 15 minutes may be expected both bound. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/916523443587182592",
+      "createdAt": "2017-10-07T12:39:51.000+08:00"
+    }
+  ]
+}

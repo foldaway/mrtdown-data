@@ -1,0 +1,23 @@
+{
+  "id": "2012-07-25-train-fault-slow-down",
+  "title": "Train fault causing delays on southbound line",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2012-07-25T06:01:43.000+08:00",
+  "endAt": "2012-07-25T06:17:47.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Southbound trains from Woodlands to Yishun running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/227890348209364992",
+      "createdAt": "2012-07-25T06:17:47.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Southbound trains from Woodlands to Yishun are travelling slower due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/227886303742660608",
+      "createdAt": "2012-07-25T06:01:43.000+08:00"
+    }
+  ]
+}

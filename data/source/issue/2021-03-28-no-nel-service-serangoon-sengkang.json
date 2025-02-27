@@ -1,0 +1,61 @@
+{
+  "id": "2021-03-28-no-nel-service-serangoon-sengkang",
+  "title": "No NEL service between Serangoon and Sengkang due to power fault",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2021-03-28T07:18:42.000+08:00",
+  "endAt": "2021-03-28T09:53:03.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "NEL service has resumed. Bridging buses &amp; free bus rides at designated bus stops has ceased. Once again, we are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1375995651545133061",
+      "createdAt": "2021-03-28T10:18:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL SVC has resumed. Free regular and bridging buses at affected stations to continue till further notice. Once again, we are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1375989279789211652",
+      "createdAt": "2021-03-28T09:53:03.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Update: Train svc is available btw HarbourFront &amp; Serangoon. Free bus rides are available btw Serangoon &amp; Punggol. Recovery work is still in progress. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1375983742863335424",
+      "createdAt": "2021-03-28T09:31:03.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Update: Train svc is available btwn HarbourFront &amp; Serangoon. Free bus rides are available btwn Serangoon &amp; Punggol. Recovery work is still in progress. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1375975445548605447",
+      "createdAt": "2021-03-28T08:58:05.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Update: Train svc is available btwn HarbourFront &amp; Serangoon. Free bus rides are available btwn Serangoon &amp; Punggol. Recovery work is in progress. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1375962589788659714",
+      "createdAt": "2021-03-28T08:07:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Update: Train svc is available btwn HarbourFront &amp; Serangoon. Free bus rides are available btwn Serangoon &amp; Punggol.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1375958698577731584",
+      "createdAt": "2021-03-28T07:51:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train svc is available btwn HarbourFront &amp; Serangoon and bwtn Sengkang &amp; Punggol. Free bus rides are available btwn Serangoon &amp; Punggol. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1375953986998558722",
+      "createdAt": "2021-03-28T07:32:49.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "No NEL svc between Serangoon NE12 &amp; Sengkang NE16 due to power fault. Free bus rides are available at affected stns. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1375950436100829184",
+      "createdAt": "2021-03-28T07:18:42.000+08:00"
+    }
+  ]
+}

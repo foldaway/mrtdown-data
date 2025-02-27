@@ -1,0 +1,30 @@
+{
+  "id": "2018-01-11-ewl-track-fault",
+  "title": "Major disruption on East West Line due to track fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2018-01-11T06:19:35.000+08:00",
+  "endAt": "2018-01-11T06:33:41.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] UPDATE: Free regular bus svcs between #OutramPark and #Bugis have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/951223051470819328",
+      "createdAt": "2018-01-11T06:43:42.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Train service from #OutramPark to #Bugis has resumed. Free regular bus svcs from #OutramPark to #Bugis is available. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/951220527074439169",
+      "createdAt": "2018-01-11T06:33:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track fault, pls add 20mins train travel time from #OutramPark to #Bugis towards #PasirRis. Free regular bus svcs btwn #OutramPark and #Bugis. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/951216982266822656",
+      "createdAt": "2018-01-11T06:19:35.000+08:00"
+    }
+  ]
+}

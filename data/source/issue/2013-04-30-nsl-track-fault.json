@@ -1,0 +1,23 @@
+{
+  "id": "2013-04-30-nsl-track-fault",
+  "title": "Track fault on North-South Line",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2013-05-03T07:01:41.000+08:00",
+  "endAt": "2013-05-03T07:18:05.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault is cleared. Expect longer travelling time between #Bishan and #MarinaBay. Trains and platforms are crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/330098900834861056",
+      "createdAt": "2013-05-03T07:18:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 20 mins additional travelling time between #Bishan and #MarinaBay due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/330094775246155777",
+      "createdAt": "2013-05-03T07:01:41.000+08:00"
+    }
+  ]
+}

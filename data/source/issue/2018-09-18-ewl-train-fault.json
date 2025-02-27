@@ -1,0 +1,53 @@
+{
+  "id": "2018-09-18-ewl-train-fault",
+  "title": "East-West Line Disruption",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2018-09-19T07:10:51.000+08:00",
+  "endAt": "2018-09-19T07:10:51.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services have resumed. Free regular &amp; bridging bus services have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1042289685391798273",
+      "createdAt": "2018-09-19T13:50:00.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: The fault has been rectified. Trains are progressively returning to normal speed. Do continue to add 15 mins train travel time between #BoonLay and #Queenstown. Free regular and bridging bus services are available between #BoonLay and #Queenstown.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1042286023621767168",
+      "createdAt": "2018-09-19T13:35:27.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Our engineers are still rectifying the fault, train services on the EWL are available. However, please add 30 mins train travel time between #BoonLay and #Queenstown. Free regular and bridging bus services are available between #BoonLay and #Queenstown.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1042268826853814273",
+      "createdAt": "2018-09-19T12:27:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Trains are moving slower between #Clementi and #JurongEast. Free regular and bridging bus services are available between #BoonLay and #Queenstown. For alternative travel options, please refer to https://t.co/Le6ROZGqsm",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1042224608441593856",
+      "createdAt": "2018-09-19T09:31:24.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Our staff is rectifying the fault, train service on the EWL is available. However, please add 40 mins travelling time between #BoonLay and #Queenstown. Free regular bus and bridging bus svc are available between #BoonLay and #Queenstown.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1042205410587865088",
+      "createdAt": "2018-09-19T08:15:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track point fault at #Clementi, train service btwn #JurongEast and #Clementi will be delayed for 30mins. Free regular bus service and free bridging bus service are available between #BoonLay and #Queenstown.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1042193167603228672",
+      "createdAt": "2018-09-19T07:26:28.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track point fault at #Clementi, train service btwn #JurongEast and #Clementi will be delayed for 30mins. Free regular bus service is available between #JurongEast and #Queenstown.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1042189236445765632",
+      "createdAt": "2018-09-19T07:10:51.000+08:00"
+    }
+  ]
+}

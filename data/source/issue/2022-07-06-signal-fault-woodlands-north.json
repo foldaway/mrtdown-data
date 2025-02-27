@@ -1,0 +1,61 @@
+{
+  "id": "2022-07-06-signal-fault-woodlands-north",
+  "title": "Signal fault at Woodlands North",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2022-07-06T08:25:19.000+08:00",
+  "endAt": "2022-07-06T11:36:38.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[TEL] UPDATE: Train services between Woodlands North &amp; Caldecott have resumed. Free regular bus and bus bridging services have ceased. We are sorry to have affected commuters' journeys.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1544527904213966848",
+      "createdAt": "2022-07-06T11:45:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: Train services between Woodlands North &amp; Caldecott have resumed. Free regular bus and bus bridging services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1544525703143919616",
+      "createdAt": "2022-07-06T11:36:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: Free regular bus and bus bridging services are available between Woodlands North and Caldecott. Commuters are advised to travel along the North-South and Circle Lines.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1544515703507587072",
+      "createdAt": "2022-07-06T10:56:54.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: There is no train service btwn Woodlands North &amp; Caldecott in both directions. Free regular bus svcs &amp; bus bridging are avail. Commuters advised to take alternative routes along NSL or CCL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1544495376148795392",
+      "createdAt": "2022-07-06T09:36:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: There is no train service btwn Woodlands North &amp; Caldecott in both directions. Free regular bus services &amp; bus bridging are available between Woodlands North and Caldecott.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1544490341352742912",
+      "createdAt": "2022-07-06T09:16:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: There is no train service between Woodlands North and Caldecott in both directions. Free regular bus services and bus bridging are available between Woodlands North and Caldecott.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1544485340425007104",
+      "createdAt": "2022-07-06T08:56:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: There is no train service between Woodlands North and Caldecott in both directions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1544481112054833152",
+      "createdAt": "2022-07-06T08:39:26.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: A signal fault has been reported at Woodlands North. Trains are moving slower between Woodlands North and Caldecott in both directions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1544477558577569794",
+      "createdAt": "2022-07-06T08:25:19.000+08:00"
+    }
+  ]
+}

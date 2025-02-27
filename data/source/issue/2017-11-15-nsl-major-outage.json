@@ -1,0 +1,47 @@
+{
+  "id": "2017-11-15-nsl-major-outage",
+  "title": "Major disruption on the North-South Line",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2017-11-15T17:05:07.000+08:00",
+  "endAt": "2017-11-15T20:19:43.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] update: Train service on North South Line has running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930802076057182211",
+      "createdAt": "2017-11-15T22:18:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to fewer trains serving the NSL tmr, pls add 40mins train travel time. Free bridging bus svcs from #Yishun to #MarinaSouthPier (one way) and free regular bus svcs between #Yishun and #MarinaSouthPier (both directions) are avail from the start of train service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930775748750622721",
+      "createdAt": "2017-11-15T20:33:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular bus and bridging bus services between #Bishan and #Yishun have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930772297446600705",
+      "createdAt": "2017-11-15T20:19:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Pls add 40 mins train travel time when commuting on the NSL. Free bridging bus services from #Bishan to #Yishun (one way) and free regular bus services btwn #Bishan and #Yishun (both directions) are still avail. Commuters are advised to take alternative train lines.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930744558903705601",
+      "createdAt": "2017-11-15T18:29:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Pls add 25 mins train travel time when commuting on the NSL. Free bridging bus services from #Bishan to #Yishun (one way) and free regular bus services btwn #Bishan and #Yishun (both directions) are available. Pls seek alternative transport: https://t.co/LmN15nP6k6.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930733371277262849",
+      "createdAt": "2017-11-15T17:45:02.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[NSL]: Due to fewer trains serving the NSL this evening, please cater additional 15 minutes train travel time. Free bridging bus services from #Bishan to #Yishun (one way) and free regular bus services between #Bishan and #Yishun (both directions) are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930723326971985920",
+      "createdAt": "2017-11-15T17:05:07.000+08:00"
+    }
+  ]
+}

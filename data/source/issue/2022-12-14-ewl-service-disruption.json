@@ -1,0 +1,37 @@
+{
+  "id": "2022-12-14-ewl-service-disruption",
+  "title": "Service disruption on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2022-12-14T11:31:55.000+08:00",
+  "endAt": "2022-12-14T12:25:10.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train svc btwn #GulCircle and #Lakeside have resumed. Free regular bus and free bridging bus btwn #GulCircle and #Lakeside have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1602882363905581059",
+      "createdAt": "2022-12-14T12:25:10.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train svc btwn #GulCircle and #Lakeside have resumed. Free regular bus is still available btwn #GulCircle and #Lakeside. Free bridging bus ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1602878143848927234",
+      "createdAt": "2022-12-14T12:08:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train svc btwn #GulCircle and #Lakeside have resumed. Free regular bus &amp; free bridging bus is still available btwn #GulCircle and #Lakeside.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1602877142416531457",
+      "createdAt": "2022-12-14T12:04:25.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a signalling fault, there is no train svc btwn #GulCircle and #Lakeside. Free regular bus and free bus bridging is available btwn #GulCircle and #Lakeside.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1602868962290634753",
+      "createdAt": "2022-12-14T11:31:55.000+08:00"
+    }
+  ]
+}

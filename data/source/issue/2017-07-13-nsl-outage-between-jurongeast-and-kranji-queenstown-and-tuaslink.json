@@ -1,0 +1,35 @@
+{
+  "id": "2017-07-13-nsl-outage-between-jurongeast-and-kranji-queenstown-and-tuaslink",
+  "title": "No train service on NSL between Jurong East and Kranji, Queenstown and Tuas Link",
+  "componentIdsAffected": ["NSL", "EWL"],
+  "startAt": "2017-07-13T00:02:45.000+08:00",
+  "endAt": "2017-07-13T01:20:02.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] CLEARED: Train service and bridging bus services have ended. Our engineers will continue to work and rectify the fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/885187002471137281",
+      "createdAt": "2017-07-13T01:20:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train service between #JurongEast &amp; #ChoaChuKang due to a power fault. Free bus bridging services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/885174643920781312",
+      "createdAt": "2017-07-13T00:30:55.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services between #TuasLink &amp; #Queenstown have resumed. Free regular bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/885171964410642433",
+      "createdAt": "2017-07-13T00:20:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] No train service between #JurongEast &amp; #Kranji, #Queenstown &amp; #tuaslink due to a power fault. Est resumption time: 00:30am.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/885167556952154112",
+      "createdAt": "2017-07-13T00:02:45.000+08:00"
+    }
+  ]
+}

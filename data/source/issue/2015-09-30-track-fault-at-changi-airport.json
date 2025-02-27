@@ -1,0 +1,55 @@
+{
+  "id": "2015-09-30-track-fault-at-changi-airport",
+  "title": "Track fault reported at Changi Airport",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2015-09-30T15:16:14.000+08:00",
+  "endAt": "2015-09-30T15:45:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #TanahMerah towards #ChangiAirport are now running normally. Free bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/649136295525003264",
+      "createdAt": "2015-09-30T16:18:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] Free bus service between Expo and Changi Airport has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/649134100201078784",
+      "createdAt": "2015-09-30T16:10:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] Update: Please cater 5 minutes additional traveling time between EXPO AND Changi airport station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/649132685877600256",
+      "createdAt": "2015-09-30T16:04:27.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] CLEARED: Train services has resumed. Please cater 5 minutes additional traveling time between EXPO AND Changi airport station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/649127791162601472",
+      "createdAt": "2015-09-30T15:45:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Free bus is now available at affected station between #Expo and #ChangiAirport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/649124164851240960",
+      "createdAt": "2015-09-30T15:30:35.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Estimate 20 mins additional travelling time from #TanahMerah to #ChangiAirport towards ChangiAirport due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/649121784260751360",
+      "createdAt": "2015-09-30T15:21:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] A track fault has been reported at #ChangiAirport. Train will be travelling slower towards #ChangiAirport .",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/649120553505198080",
+      "createdAt": "2015-09-30T15:16:14.000+08:00"
+    }
+  ]
+}

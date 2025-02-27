@@ -1,0 +1,55 @@
+{
+  "id": "2014-02-24-nsl-track-fault",
+  "title": "Major Track Fault on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-02-24T07:02:20.000+08:00",
+  "endAt": "2014-02-24T09:00:15.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free bus service between #Admiralty and #AngMoKio has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/437762204255809536",
+      "createdAt": "2014-02-24T09:33:37.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #JurongEast towards #Kranji are now operating normally.Free buses are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/437753807858970626",
+      "createdAt": "2014-02-24T09:00:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Estimate 10 mins additional travelling time from #JurongEast to #Kranji towards MarinaBay due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/437750380055625728",
+      "createdAt": "2014-02-24T08:46:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free buses are now available at affected stations between #Admiralty and #AngMoKio.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/437746425766506496",
+      "createdAt": "2014-02-24T08:30:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free buses are now available at affected stations between #Admiralty and #Khatib.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/437740572418134016",
+      "createdAt": "2014-02-24T08:07:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Estimate 20 mins additional travelling time from #JurongEast to #Kranji towards MarinaBay due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/437729340957003776",
+      "createdAt": "2014-02-24T07:23:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 10 mins additional travelling time from #ChoaChuKang to #Kranji towards MarinaBay due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/437724134663925761",
+      "createdAt": "2014-02-24T07:02:20.000+08:00"
+    }
+  ]
+}

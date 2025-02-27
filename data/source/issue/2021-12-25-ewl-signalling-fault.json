@@ -1,0 +1,36 @@
+{
+  "id": "2021-12-25-ewl-signalling-fault",
+  "title": "Signalling fault causing train delays",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2021-12-25T06:04:47.000+08:00",
+  "endAt": "2021-12-25T06:41:09.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train svcs btwn #TuasLink and #TuasCrescent have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1474510487618404356",
+      "createdAt": "2021-12-25T06:41:09.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] UPDATE: Free regular bus &amp; free bridging bus svcs btwn #TuasLink and #JooKoon have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1474508904365056000",
+      "createdAt": "2021-12-25T06:34:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train svc is available btwn #TuasLink and #TuasCrescent.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1474507059185942529",
+      "createdAt": "2021-12-25T06:27:32.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a signalling fault, pls add 15mins train travel time btwn #TuasLink and #TuasCrescent.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1474501333809975297",
+      "createdAt": "2021-12-25T06:04:47.000+08:00"
+    }
+  ]
+}

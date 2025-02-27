@@ -1,0 +1,37 @@
+{
+  "id": "2015-10-27-nsl-train-fault-issues",
+  "title": "Train fault causing longer travelling times on NS line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-10-27T18:14:17.000+08:00",
+  "endAt": "2015-10-27T18:22:19.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "NSL] CLEARED: Train services are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/658957237268844545",
+      "createdAt": "2015-10-27T18:43:42.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Estimate 10 mins additional travelling time from #MarinaBay to #AngMoKio towards JurongEast due to a train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/658955132269297665",
+      "createdAt": "2015-10-27T18:35:20.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/658951853464424449",
+      "createdAt": "2015-10-27T18:22:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Longer travelling time expected along NS line in the direction towards JurongEast due to a train fault at Orchard station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/658949833181388800",
+      "createdAt": "2015-10-27T18:14:17.000+08:00"
+    }
+  ]
+}

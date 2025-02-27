@@ -1,0 +1,38 @@
+{
+  "id": "2019-10-01-sengkang-punggol-lrt-outage",
+  "title": "No LRT Service for Sengkang and Punggol due to System Fault",
+  "componentIdsAffected": [
+    "SKLRT",
+    "PGLRT"
+  ],
+  "startAt": "2019-10-01T06:10:35.000+08:00",
+  "endAt": "2019-10-01T08:17:04.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Train service on the Sengkang LRT has resumed. Free bridging and regular bus services have ceased. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1178826127537655809",
+      "createdAt": "2019-10-01T08:17:04.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Service on Punggol LRT has resumed but Sengkang LRT is still down. Free regular and bridging bus services are available at designated bus stops near affected stations.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1178808653912014848",
+      "createdAt": "2019-10-01T07:07:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No service on Sengkang and Punggol LRT. Free bridging and regular bus svcs are available at designated bus stops for affected stations.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1178801652083486721",
+      "createdAt": "2019-10-01T06:39:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "At 0608hrs, no LRT Svc for Sengkang and Punggol LRT due to System Fault. Free Regular Bus Svc is available for both Sengkang and Punggol LRT.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1178794296129966080",
+      "createdAt": "2019-10-01T06:10:35.000+08:00"
+    }
+  ]
+}

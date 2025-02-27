@@ -1,0 +1,689 @@
+{
+  "id": "2024-09-25-ewl-power-fault",
+  "title": "No train service between Jurong East and Buona Vista due to Track Repair Works",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2024-09-25T10:09:05.000+08:00",
+  "endAt": "2024-10-01T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Full train services on the East-West Line (EWL) will resume on 1 Oct (Tue) 2024 from the start of passenger service hours.\n\nFor safety reasons, there will be Temporary Speed Restrictions (TSR) imposed on the repaired sections of the tracks. Passengers are advised to https://t.co/gQAHCLSOAQ",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1840716582898761840",
+      "createdAt": "2024-09-30T19:33:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to Track Repair Works, there is no train svc btwn #JurongEast &amp; #BuonaVista. Free regular bus services are available btwn #BoonLay &amp; #Queenstown. Bridging bus services are available btwn #JUR &amp; #BNV. Further updates will be provided if there are changes.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1840499234011037927",
+      "createdAt": "2024-09-30T05:09:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btwn #JurongEast and #BuonaVista due to Track Repair Works. Shuttle train services are available btwn #BoonLay and #JurongEast, &amp; btwn #Queenstown and #BuonaVista. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1840496970055721274",
+      "createdAt": "2024-09-30T05:00:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: There will be no train service between Jurong East and Buona Vista tomorrow, 30 Sep (Mon).\nFree Regular Bus services are available between Boon Lay and Queenstown.  Free Bridging Bus services are also available between Jurong East and Buona Vista.\nShuttle Trains https://t.co/jCDX3qIfXg",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1840345980237234577",
+      "createdAt": "2024-09-29T19:00:48.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] UPDATE: Due to Track Repair Works, there is no train svc btwn #JurongEast &amp; #BuonaVista. Free regular bus services are available btwn #BoonLay &amp; #Queenstown. Bridging bus services are available btwn #JUR &amp; #BNV. Further updates will be provided if there are changes.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1840144779004502253",
+      "createdAt": "2024-09-29T05:41:18.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btwn #JurongEast and #BuonaVista due to Track Repair Works. Shuttle train services are available btwn #BoonLay and #JurongEast, &amp; btwn #Queenstown and #BuonaVista. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1840142749817008520",
+      "createdAt": "2024-09-29T05:33:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btwn #JurongEast and #BuonaVista due to Track Repair Works. Shuttle train services are available btwn #BoonLay and #JurongEast, &amp; btwn #Queenstown and #BuonaVista. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839998691094286844",
+      "createdAt": "2024-09-28T20:00:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btw Jurong East(JUR) and Buona Vista(BNV) due to Track Repair Works. For the concertgoers to The Star Vista tonight, please note that the frequency of the shuttle train service from Queenstown to BNV and Boon Lay to JUR is about 10 mins. https://t.co/yeku0GKEYy",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839952494568583177",
+      "createdAt": "2024-09-28T16:57:14.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] UPDATE: Due to Track Repair Works, there is no train svc btwn #JurongEast &amp; #BuonaVista. Free regular bus services are available btwn #BoonLay &amp; #Queenstown. Bridging bus services are available btwn #JUR &amp; #BNV. Further updates will be provided if there are changes.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839799053493920103",
+      "createdAt": "2024-09-28T06:47:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btwn #JurongEast and #BuonaVista due to Track Repair Works. Shuttle train services are available btwn #BoonLay and #JurongEast, &amp; btwn #Queenstown and #BuonaVista. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839772167631974780",
+      "createdAt": "2024-09-28T05:00:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btw Jurong East(JUR) &amp; Buona Vista(BNV) due to Track Repair Works. Please take the bridging bus(BB) services on the affected stations. Exit to BB:\nBNV - JUR: D &amp; B\nJUR - BNV: A\nClementi(CLE) - JUR: A\nDover(DVR) - JUR: A\nCLE - BNV: B\nDVR - BNV: B",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839518412948857323",
+      "createdAt": "2024-09-27T12:12:20.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to Track Repair Works, there is no train svc btwn #JurongEast &amp; #BuonaVista. Free regular bus services are available btwn #BoonLay &amp; #Queenstown. Bridging bus services are available btwn #JUR &amp; #BNV. Further updates will be provided if there are changes.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839478928026837401",
+      "createdAt": "2024-09-27T09:35:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE : No train service btwn #JurongEast and #BuonaVista due to Track Repair Works. Shuttle train services are available btwn #BoonLay and #JurongEast, &amp; btwn #Queenstown and #BuonaVista. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839478238105776606",
+      "createdAt": "2024-09-27T09:32:42.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE : Due to Track Repair Works, there is no train svc btwn #JurongEast and #BuonaVista. Free regular bus services are available btwn #BoonLay and #Queenstown. Bridging bus services are available btwn #JurongEast and #BuonaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839473833738445109",
+      "createdAt": "2024-09-27T09:15:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE : Due to Track Repair Works, there is no train svc btwn #JurongEast and #BuonaVista. Free regular bus services are available btwn #BoonLay and #Queenstown. Bridging bus services are available btwn #JurongEast and #BuonaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839466622966517773",
+      "createdAt": "2024-09-27T08:46:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Due to Track Repair Works, there is no train svc btwn #JurongEast and #BuonaVista. Free regular bus services are available btwn #BoonLay and #Queenstown. Bridging bus services are available btwn #JurongEast and #BuonaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839459780810907663",
+      "createdAt": "2024-09-27T08:19:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE:  Due to Track Repair Works, there is no train svc btwn #JurongEast and #BuonaVista. Free regular bus services are available btwn #BoonLay and #Queenstown. Bridging bus services are available btwn #JurongEast and #BuonaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839453516794040674",
+      "createdAt": "2024-09-27T07:54:28.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]  UPDATE: Due to Track Repair Works, there is no train svc btwn #JurongEast and #BuonaVista. Free regular bus services are available btwn #BoonLay and #Queenstown. Bridging bus services are available btwn #JurongEast and #BuonaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839446816313778268",
+      "createdAt": "2024-09-27T07:27:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE:  No train service btwn #JurongEast and #BuonaVista due to Track Repair Works. Shuttle train services are available btwn #BoonLay and #JurongEast, &amp; btwn #Queenstown and #BuonaVista. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839439252616339918",
+      "createdAt": "2024-09-27T06:57:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to Track Repair Works, there is no train svc btwn #JurongEast and #BuonaVista. Free regular bus services are available btween #BoonLay and #Queenstown. Bridging bus services are available btwn #JurongEast and #BuonaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839431092925002066",
+      "createdAt": "2024-09-27T06:25:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btween #JurongEast and #BuonaVista due to Track Repair Works. Shuttle train services are available btwn #BoonLay and #JurongEast, &amp; btwn #Queenstown and #BuonaVista. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839424557289202171",
+      "createdAt": "2024-09-27T05:59:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to Track Repair Works, there is no train svc btween #JurongEast and #BuonaVista. Free regular bus services are available btwn #BoonLay and #Queenstown. Bridging bus services are available btwn #JurongEast and #BuonaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839415807140614479",
+      "createdAt": "2024-09-27T05:24:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btwn #JurongEast and #BuonaVista due to Track Repair Works. Shuttle train services are available btwn #BoonLay and #JurongEast, &amp; btwn #Queenstown and #BuonaVista. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839409396566372366",
+      "createdAt": "2024-09-27T04:59:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to Track Repair Works, there is no train svc btwn #JurongEast and #BuonaVista. Free regular bus services are available btwn #BoonLay and #Queenstown. Bridging bus services are available btwn #JurongEast and #BuonaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839402534823444622",
+      "createdAt": "2024-09-27T04:31:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:No train service between Jurong East and Buona Vista due to Track Repair Works.Shuttle train services are available between BNL and JUR. Shuttle train services are also available between QUE and BNV. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839344667500159320",
+      "createdAt": "2024-09-27T00:41:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:No train service between Jurong East and Buona Vista due to Track Repair Works. Shuttle train services are available between BNL and JUR.Shuttle train services are also available between QUE and BNV. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839338342896607304",
+      "createdAt": "2024-09-27T00:16:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:No train service between Jurong East and Buona Vista due to Track Repair Works. Shuttle train services are available between BNL and JUR.  Shuttle train services are also available between QUE and BNV. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839330862120554814",
+      "createdAt": "2024-09-26T23:47:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Due to Track Repair Works, there is no train svc btwn Jurong East &amp; Buona Vista. Last shuttle train connecting to last East Bound train at Queenstown(QUE) will depart Boon Lay(BNL) at 2249hrs. Last shuttle train to last West-Bound train at BNL departs QUE at 2325hrs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839315698998563251",
+      "createdAt": "2024-09-26T22:46:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Due to Track Repair Works, there is no train svc btwn Jurong East &amp; Buona Vista. Last shuttle train connecting to last East Bound train at Queenstown(QUE) will depart Boon Lay(BNL) at 2249hrs. Last shuttle train to last West-Bound train at BNL departs QUE at 2325hrs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839308629402595450",
+      "createdAt": "2024-09-26T22:18:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:No train service between Jurong East and Buona Vista due to Track Repair Works. Shuttle train services are available between BNL and JUR. Shuttle train services are also available between QUE and BNV. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839303873162523111",
+      "createdAt": "2024-09-26T21:59:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btw Jurong East(JUR) and Buona Vista(BNV) due to track repair works. Refer to Fig.2 on the difference between bridging bus(BB) and free regular bus(FRB) services. FRB is available btw Boon Lay to Queenstown. BB available btw JUR to BNV. https://t.co/I3EM2qHvWv",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839296323868307655",
+      "createdAt": "2024-09-26T21:29:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE :No train service between Jurong East and Buona Vista due to Track Repair Works. Shuttle train services are available between BNL and JUR. Shuttle train services are also available between QUE and BNV. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839288385590145121",
+      "createdAt": "2024-09-26T20:58:18.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to Track Repair Works, there is no train service btw Jurong East(JUR) and Buona Vista(BNV). Refer to Fig.2 on the difference between bridging bus(BB) and free regular bus(FRB) services. FRB is available btw Boon Lay to Queenstown. BB available btw JUR to BNV. https://t.co/QJBhITFUeg",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839281226680844330",
+      "createdAt": "2024-09-26T20:29:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:  No train service between Jurong East and Buona Vista due to Track Repair Works. Shuttle train services are available between BNL and JUR. Shuttle train services are also available between QUE and BNV. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839273592166691023",
+      "createdAt": "2024-09-26T19:59:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE:No train service btw Jurong East(JUR) and Buona Vista(BNV) due to track repair works. For more information on alternative travel options. Please refer to Fig. 3a &amp; 3b.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839266024526589999",
+      "createdAt": "2024-09-26T19:29:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE:No train service btw Jurong East(JUR) and Buona Vista(BNV) due to track repair works. Refer to Fig.2 on the difference between bridging bus(BB) and free regular bus(FRB) services. FRB is available btw Boon Lay to Queenstown. BB available btw JUR to BNV.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839265949217862140",
+      "createdAt": "2024-09-26T19:29:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE:No train service between Jurong East and Buona Vista due to Track Repair Works. Shuttle train services are available between BNL and JUR. Shuttle train services are also available between QUE and BNV. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839258728236986866",
+      "createdAt": "2024-09-26T19:00:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE:  No train service btw Jurong East(JUR) and Buona Vista(BNV) due to track repair works. For more information on alternative travel options. Please refer to Fig. 3a &amp; 3b.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839252541370257492",
+      "createdAt": "2024-09-26T18:35:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE:  No train service btw Jurong East(JUR) and Buona Vista(BNV) due to track repair works. Refer to Fig.2 on the difference between bridging bus(BB) and free regular bus(FRB) services. FRB is available btw Boon Lay to Queenstown. BB available btw JUR to BNV.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839252478589808810",
+      "createdAt": "2024-09-26T18:35:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btw Jurong East(JUR) and Buona Vista(BNV) due to track repair works. For more information on alternative travel options. Please refer to Fig. 3a &amp; 3b.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839248971161559207",
+      "createdAt": "2024-09-26T18:21:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btw Jurong East(JUR) and Buona Vista(BNV) due to track repair works. Refer to Fig.2 on the difference between bridging bus(BB) and free regular bus(FRB) services. FRB is available btw Boon Lay to Queenstown. BB available btw JUR to BNV.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839248892673790158",
+      "createdAt": "2024-09-26T18:21:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btw Jurong East(JUR) and Buona Vista(BNV) due to track repair works. Refer to Fig.2 on the difference between bridging bus(BB) and free regular bus(FRB) services. FRB is available btw Boon Lay to Queenstown. BB available btw JUR to BNV. https://t.co/WMMQ3QkI9d",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839236122125480215",
+      "createdAt": "2024-09-26T17:30:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service between Jurong East and Buona Vista due to Track Repair Works. Shuttle train services are available between BNL and JUR. Shuttle train services are also available between QUE and BNV. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839227342893494693",
+      "createdAt": "2024-09-26T16:55:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "04:30pm:\n[EWL]: UPDATE Due to a train fault, there is no train svc between JUR and BNV. Shuttle train services are available between BNL and JUR, as well as between QUE and BNV. Bridging bus will be available btw JUR &amp; BNV. Free regular bus services are available btw BNL &amp; QUE.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839220722553483444",
+      "createdAt": "2024-09-26T16:29:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE:  No train service between Jurong East and Buona Vista due to a train fault. Shuttle train services are available between BNL and JUR. Shuttle train services are also available between QUE and BNV. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839213234668319076",
+      "createdAt": "2024-09-26T15:59:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]  UPDATE: No train service between Jurong East and Buona Vista due to a train fault. Shuttle train services are available between BNL and JUR. Shuttle train services are also available between QUE and BNV. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839206569046847869",
+      "createdAt": "2024-09-26T15:33:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service between Jurong East and Buona Vista due to a train fault. Shuttle train services are available between BNL and JUR. Shuttle train services are also available between QUE and BNV. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839196283178987984",
+      "createdAt": "2024-09-26T14:52:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service between Jurong East(JUR) and Buona Vista(BNV). Avoid the marked stretch of EWL(See Fig.1b)to city centre. To continue your journeys:\nNSL (Red) - JUR, Woodlands(WDL), Bishan\nTEL (Brown) - WDL &amp; Caldecott\nDTL (Blue) - Botanic Gardens https://t.co/AQVJ4vOfX5",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839188166546436534",
+      "createdAt": "2024-09-26T14:20:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Due to a train fault, there is no train service between JUR and BNV. Shuttle train services are available between BNL and JUR, as well as between QUE and BNV. Bridging bus will be available btw JUR &amp; BNV. Free regular bus services are available btw BNL &amp; QUE.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839180607060062719",
+      "createdAt": "2024-09-26T13:50:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btwn Jurong East(JUR) &amp; Buona Vista(BNV). Free Regular bus services are available btwn Boon Lay(BNL) and Queenstown(QUE)(See Fig.1a). Bridging bus services are available btwn JUR to BNV.\nShuttle Trains Svc:\nBNL &amp; JUR\nBNV &amp; QUE https://t.co/Mxh7u1TjNh",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839175594879418547",
+      "createdAt": "2024-09-26T13:30:06.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]  UPDATE: No train service between Jurong East and Buona Vista due to traction power fault. Shuttle train services are available between BNL and JUR. Shuttle train services are also available between QUE and BNV. We apologize to affect your commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839168046851829778",
+      "createdAt": "2024-09-26T13:00:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]  UPDATE: Due to a traction power fault, there is no train svc btwn JUR and BNV. Free regular bus services are available btwn BNL and QUE. Bridging bus services are available btwn JUR and BNV. If you need any special assistance, please contact our station staff for help.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839160546177765663",
+      "createdAt": "2024-09-26T12:30:18.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: No train service btwn Jurong East and Buona Vista due to traction power fault. Shuttle train services are available btwn BNL and JUR. Shuttle train services are also available btwn QUE and BNV. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839153011035353262",
+      "createdAt": "2024-09-26T12:00:22.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]:UPDATE Due to a power fault, there is no train svc between Jurong East and Buona Vista. Bridging bus will be available btw JUR &amp; BNV. Free regular bus services are available btw BNL &amp; QUE. We encourage fellow commuters to look out for persons with special needs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839145684441727180",
+      "createdAt": "2024-09-26T11:31:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service between Jurong East(JUR) and Buona Vista(BNV). Avoid the marked stretch of EWL(See Fig.1b)to city centre. To continue your journeys:\nNSL (Red) - JUR, Woodlands(WDL), Bishan\nTEL (Brown) - WDL &amp; Caldecott\nDTL (Blue) - Botanic Gardens https://t.co/DiQEntOIJ9",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839137942977262003",
+      "createdAt": "2024-09-26T11:00:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service between Jurong East(JUR) &amp; Buona Vista(BNV). Free Regular bus services are available between Boon Lay(BNL) and Queenstown(QUE)(See Fig.1a). Bridging bus services are available between JUR to BNV.\nShuttle Trains Svc:\nBNL &amp; JUR\nBNV &amp; QUE https://t.co/GNm40Z54s6",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839130295028822238",
+      "createdAt": "2024-09-26T10:30:06.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] UPDATE: No train service between Jurong East and Buona Vista due to traction power fault. Shuttle train services are available between BNL and JUR. Shuttle train services are also available between QUE and BNV. We apologize to affect your commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839122736645550190",
+      "createdAt": "2024-09-26T10:00:04.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] UPDATE: Due to a traction power fault, there is no train svc btwn JUR and BNV. Free regular bus services are available btwn BNL and QUE. Bridging bus services are available btwn JUR and BNV. If you need any special assistance, please contact our station staff for help.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839115222034035016",
+      "createdAt": "2024-09-26T09:30:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btwn Jurong East and Buona Vista due to traction power fault. Shuttle train services are available btwn BNL and JUR. Shuttle train services are also available btwn QUE and BNV. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839107675931684877",
+      "createdAt": "2024-09-26T09:00:13.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: UPDATE Due to a power fault, there is no train svc between Jurong East and Buona Vista. Bridging bus will be available btw JUR &amp; BNV. Free regular bus services are available btw BNL &amp; QUE. We encourage fellow commuters to look out for persons with special needs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839100140138934570",
+      "createdAt": "2024-09-26T08:30:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btwn Jurong East(JUR) and Buona Vista(BNV). Avoid the marked stretch of EWL(See Fig.1b)to city centre. To continue your journeys:\nNSL (Red) - JUR, Woodlands(WDL), Bishan\nTEL (Brown) - WDL &amp; Caldecott\nDTL (Blue) - Botanic Gardens https://t.co/ndFnixFAmU",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839092744767287704",
+      "createdAt": "2024-09-26T08:00:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btwn Jurong East(JUR) &amp; Buona Vista(BNV). Free Regular bus services are available btwn Boon Lay(BNL) and Queenstown(QUE)(See Fig.1a). Bridging bus services are available btwn JUR to BNV.\nShuttle Trains Svc:\nBNL &amp; JUR\nBNV &amp; QUE https://t.co/MW52ovYiL8",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839085353648689545",
+      "createdAt": "2024-09-26T07:31:31.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]  UPDATE: No train service btwn Jurong East and Buona Vista due to traction power fault. Shuttle train services are available btwn Boon Lay and Jurong East, &amp; btwn Queenstown and Buona Vista. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839077606484029703",
+      "createdAt": "2024-09-26T07:00:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE : Due to a traction power fault, there is no train svc btwn #JurongEast and #BuonaVista. Free regular bus services are available btwn #BoonLay and #Queenstown. Bridging bus services are available btwn #JurongEast and #BuonaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839070125288468614",
+      "createdAt": "2024-09-26T06:31:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btwn Jurong East(JUR) and Buona Vista(BNV). Avoid the marked stretch of EWL(See Fig.1b)to city centre. To continue your journeys:\nNSL (Red) - JUR, Woodlands(WDL), Bishan\nTEL (Brown) - WDL &amp; Caldecott\nDTL (Blue) - Botanic Gardens https://t.co/OkKUky95kf",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839062375674282446",
+      "createdAt": "2024-09-26T06:00:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btwn Jurong East(JUR) &amp; Buona Vista(BNV). Free Regular bus services are available btwn Boon Lay(BNL) and Queenstown(QUE)(See Fig.1a). Bridging bus services are available btwn JUR to BNV.\nShuttle Trains Svc:\nBNL &amp; JUR\nBNV &amp; QUE https://t.co/UDi20LJylE",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839054872437797124",
+      "createdAt": "2024-09-26T05:30:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service btwn Jurong East and Buona Vista due to traction power fault. Shuttle train services are available btwn Boon Lay and Jurong East, &amp; btwn Queenstown and Buona Vista. Kindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839047390130745743",
+      "createdAt": "2024-09-26T05:00:40.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL] UPDATE: Due to a traction power fault, there is no train svc btwn #JurongEast and #BuonaVista. Free regular bus services are available btwn #BoonLay and #Queenstown. Bridging bus services are available btwn #JurongEast and #BuonaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1839042248685793713",
+      "createdAt": "2024-09-26T04:40:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Tmw(26 Sep 2024), no train service btw Jurong East(JUR) &amp; Buona Vista(BNV). Free Regular bus will be available btw Boon Lay(BNL) and Queenstown(QUE)(See Fig.1a). Free bridging bus services will be available btw JUR to BNV.\nShuttle Trains Svc:\nBNL &amp; JUR\nBNV &amp; QUE https://t.co/CtOTmUiB3I",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838987208600256725",
+      "createdAt": "2024-09-26T01:01:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Tmw (26 Sep 2024), no train service btw Jurong East(JUR) and Buona Vista(BNV). Avoid the marked stretch of EWL(See Fig.1b)to city centre. To continue your journeys:\nNSL (Red) - JUR, Woodlands(WDL), Bishan\nTEL (Brown) - WDL &amp; Caldecott\nDTL (Blue) - Botanic Gardens https://t.co/H3vM5rjGJw",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838982580491960740",
+      "createdAt": "2024-09-26T00:43:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Tmw(26 Sep 2024), no train service btw Jurong East(JUR) &amp; Buona Vista(BNV). Free Regular bus will be available btw Boon Lay(BNL) and Queenstown(QUE)(See Fig.1a). Free bridging bus services will be available btw JUR to BNV.\nShuttle Trains Svc:\nBNL &amp; JUR\nBNV &amp; QUE https://t.co/G5YKVfiNuH",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838975427085561973",
+      "createdAt": "2024-09-26T00:14:42.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Due to a power fault, there is no train svc between Jurong East(JUR) and Buona Vista(BNV). Free regular buses are available btw Boon Lay &amp; Queenstown. Bridging buses are available btw JUR &amp; BNV. We encourage fellow commuters to look out for one another.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838967695720751551",
+      "createdAt": "2024-09-25T23:43:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to power fault, there is no train service between Jurong East &amp; Buona Vista. Last shuttle train connecting to last East-Bound train at Queenstown (QUE) will depart Boon Lay (BNL) at 2249hrs. Last shuttle train to last West-Bound train at BNL departs QUE at 2325h",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838961017365422316",
+      "createdAt": "2024-09-25T23:17:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Due to power fault,there is no train service between Jurong East &amp; Bouna Vista. Last shuttle train connecting to last East-Bound train at Queenstown(QUE) will depart Boon Lay(BNL) at 2249hrs. Last shuttle train to last West-Bound train at BNL departs QUE at 2325hrs",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838953994670268655",
+      "createdAt": "2024-09-25T22:49:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Tomorrow (26 Sep 2024), there is no train service btw Jurong East and Buona Vista. Free Regular and Bridging Bus services will be available btw Boon Lay and Queenstown.  Shuttle Trains will run btw: •Boon Lay and Jurong East •Buona Vista and Queenstown https://t.co/c4fdJxsoZl",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838947074911711641",
+      "createdAt": "2024-09-25T22:22:03.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]UPDATE: Due to power fault, there is no train service between Jurong East &amp; Bouna Vista. Last shuttle train connecting to last East-Bound train at Queenstown(QUE) will depart Boon Lay(BNL) at 2249hrs. Last shuttle train to last West-Bound train at BNL departs QUE at 2325hrs",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838940421587640647",
+      "createdAt": "2024-09-25T21:55:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Tomorrow (26 Sep 2024), there is no train service btw Jurong East and Buona Vista.\nFree Regular and Bridging Bus services will be available btw Boon Lay and Queenstown.  Shuttle Trains will run btw:\n•Boon Lay and Jurong East\n•Buona Vista and Queenstown https://t.co/hdlRIpfKEC",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838934029992968511",
+      "createdAt": "2024-09-25T21:30:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Due to power fault, there is no train service between Jurong East and Buona Vista. Bridging bus will be available between Jurong East and Buona Vista. Free regular bus services are also available btw Boon Lay &amp; Queenstown.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838926748026646817",
+      "createdAt": "2024-09-25T21:01:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Due to power fault, there is no train svc between Jurong East(JUR) &amp; Buona Vista(BNV). Shuttle train svc are available btw Boon Lay(BNL) &amp; JUR, &amp; btw Queenstown(QUE) &amp; BNV. Bridging bus will be available btw JUR &amp; BNV &amp; free regular bus services  btw BNL &amp; QUE.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838919688337994037",
+      "createdAt": "2024-09-25T20:33:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Due to power fault, there is no train svc between Jurong East(JUR) &amp; Buona Vista(BNV). Shuttle train svc are available btw Boon Lay(BNL) &amp; JUR, &amp; btw Queenstown(QUE) &amp; BNV. Bridging bus will be available btw JUR &amp; BNV and free regular bus services btw BNL &amp; QUE.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838911834163920994",
+      "createdAt": "2024-09-25T20:02:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE No train service between Jurong East and Buona Vista due to traction power fault. Shuttle train services are available at Boon Lay and Jurong East, Queenstown and Buona Vista. Free regular and bridging bus services are available between Boon Lay and Queenstown.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838905809863876772",
+      "createdAt": "2024-09-25T19:38:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:UPDATE Due to a power fault, there is no train svc between Jurong East and Buona Vista. Free regular bus &amp; bridging bus services are available between Boon Lay and Queenstown. We encourage fellow commuters to look out for persons with special needs &amp; give a helping hand.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838898084451119335",
+      "createdAt": "2024-09-25T19:07:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "EWL]: UPDATE No train service between Jurong East and Buona Vista due to traction power fault. Shuttle train services are available at Boon Lay and Jurong East, Queenstown and Buona Vista.\nKindly follow station staff instruction to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838891181998235979",
+      "createdAt": "2024-09-25T18:39:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Due to a power fault, there is no train svc between Jurong East and Buona Vista. Passengers travelling from Boon Lay to Jurong East, or Jurong East to Boon Lay, please continue your journey on the train shutter available at the platform.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838884427335971205",
+      "createdAt": "2024-09-25T18:13:06.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:UPDATE Due to a power fault, there is no train svc between Jurong East and Buona Vista. Free regular bus &amp; bridging bus services is still available between #BoonLay and #Queenstown.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838880910672068779",
+      "createdAt": "2024-09-25T17:59:08.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: UPDATE Due to a power fault, there is no train service between Jurong East and Buona Vista. If you are heading towards #Jurong East, take NSL (Red line) at #City Hall or TEL (Brown line) at #Outram Park",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838876736966311969",
+      "createdAt": "2024-09-25T17:42:33.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: UPDATE No train service between JUR and BNV due to traction power fault. Shuttle train services are available at BNL &amp; JUR, QUE &amp; BNV.\nKindly follow station staff instruction to continue your journey. Free regular and bridging bus services are available between BNL &amp; QUE.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838864768897274100",
+      "createdAt": "2024-09-25T16:55:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:UPDATE Due to a power fault, there is no train svc between Jurong East and Buona Vista. We encourage fellow commuters to look out for persons with special needs. Please lend a helping hand and approach our station staff if you need further assistance.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838861774201983265",
+      "createdAt": "2024-09-25T16:43:06.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: UPDATE Due to a power fault, there is no train svc between #BoonLay and #Queenstown. Free regular bus &amp; bridging bus services is still available between #BoonLay and #Queenstown. If you need any special assistance, please contact our station staff for help.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838857746029940913",
+      "createdAt": "2024-09-25T16:27:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:UPDATE Passengers travelling from Tuas Link towards Buona Vista, please find other alternative travel options. Free regular buses and bridging buses are also available. We apologize to affect your commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838848977787146499",
+      "createdAt": "2024-09-25T15:52:15.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]:UPDATE Due to a power fault, there is no train svc between #BoonLay and #Queenstown. Free regular bus &amp; bridging bus services is still available between #BoonLay and #Queenstown.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838842425969651713",
+      "createdAt": "2024-09-25T15:26:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:UPDATE Due to a power fault, there is no train svc between #Boon Lay and #Queenstown. If you are heading towards #Jurong East take the free regular or bridging bus to #Jurong East at #Boon Lay and continue your journey on NSL (Red line) to #Outram Park via #Woodlands",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838838442446459210",
+      "createdAt": "2024-09-25T15:10:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Due to a power fault, there is no train service between #Boon Lay and #Queenstown. If you are heading towards #Jurong East, take NSL (Red line) at #City Hall or TEL (Brown line) at #Outram Park.\nWe apologise to affect your commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838834556432191772",
+      "createdAt": "2024-09-25T14:54:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:UPDATE Free regular bus &amp; bridging bus services are still available between #BoonLay and #Queenstown. Passengers with special needs, please approach our station staff for assistance. Our staff are attending to the matter.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838830829054869728",
+      "createdAt": "2024-09-25T14:40:08.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]:UPDATE Due to a power fault, there is no train svc between #BoonLay and #Queenstown. We encourage fellow commuters to look out for persons with special needs. Please lend a helping hand and approach our station staff if you need further assistance.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838826745325310434",
+      "createdAt": "2024-09-25T14:23:54.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]:UPDATE Due to a power fault, there is no train svc between #BoonLay and #Queenstown. Free regular bus &amp; bridging bus services is still available between #BoonLay and #Queenstown. If you need any special assistance, please contact our station staff for help.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838822846547792012",
+      "createdAt": "2024-09-25T14:08:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE There is no train svc due to a power fault,  between #Boon Lay and #Queenstown. If you are heading towards #Jurong East take the free regular or bridging bus to #Jurong East at #Boon Lay and continue your journey on NSL (Red line) to #Outram Park via #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838814975609180399",
+      "createdAt": "2024-09-25T13:37:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Free regular bus &amp; bridging bus services are still available between #BoonLay and #Queenstown. Passengers with special needs, please approach our station staffs for assistance. We apologies to affect your commuting journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838809905681306024",
+      "createdAt": "2024-09-25T13:16:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Due to a power fault, there is no train svc between #Boon Lay and #Queenstown. If you are heading towards #Jurong East take the free regular or bridging bus to #Jurong East at #Boon Lay and continue your journey on NSL (Red line) to #Outram Park via #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838805925521691077",
+      "createdAt": "2024-09-25T13:01:10.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]:UPDATE Passengers travelling from Buona Vista towards Tuas Link, please find other alternative travel options on Circle Line to North-South Line. Free regular buses and bridging buses are also available .Our staff are attending to the matter.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838802447059620092",
+      "createdAt": "2024-09-25T12:47:21.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]:UPDATE Free regular bus &amp; bridging bus services are still available between #BoonLay and #Queenstown. Passengers with special needs, please approach our station staff for assistance. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838799278405489076",
+      "createdAt": "2024-09-25T12:34:45.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]:UPDATE Due to a power fault, there is no train service between #BoonLay and #Queenstown. Free regular bus &amp; bridging bus services are still available between #BoonLay and #Queenstown. We apologies for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838795536499118358",
+      "createdAt": "2024-09-25T12:19:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:UPDATE Free regular bus &amp; bridging bus services are still available between #BoonLay and #Queenstown. Passengers with special needs, please approach our station staff for assistance. We apologies to affect your commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838786996262834574",
+      "createdAt": "2024-09-25T11:45:57.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: UPDATE Due to a power fault, there is no train svc between #Boon Lay and #Queenstown. If you are heading towards #Jurong East take the free regular or bridging bus to #Jurong East at #Boon Lay and continue your journey on NSL (Red line) to #Outram Park via #Woodlands",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838777815464055230",
+      "createdAt": "2024-09-25T11:09:28.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: UPDATE Due to a power fault, there is no train service between #Boon Lay and #Queenstown. If you are heading towards #Jurong East, take NSL (Red line) at #City Hall or TEL (Brown line) at #Outram Park",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838777726964240457",
+      "createdAt": "2024-09-25T11:09:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Due to a power fault, there is no train svc btwn #BoonLay and #Queenstown. If you are heading towards #Jurong East, take the free regular or bridging bus to #Jurong East at #Boon Lay and continue your journey on NSL (Red line) to #Outram Park via #Woodlands",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838773196734239123",
+      "createdAt": "2024-09-25T10:51:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Due to a power fault, there is no train service between #BoonLay and #Queenstown. If you are heading towards #Jurong East, take NSL (Red line) at #City Hall or TEL (Brown line) at #Outram Park",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838772649344012305",
+      "createdAt": "2024-09-25T10:48:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Due to a power fault, there is no train service  between #BoonLay and # If you are heading towards #Jurong East take the free regular or bridging bus to #Jurong East at #Boon Lay and continue your journey on NSL (Red line) to #Outram Park via #Woodlands",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838765771171991650",
+      "createdAt": "2024-09-25T10:21:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Due to a power fault, there is no train svc btwn #BoonLay and # If you are heading towards.\nIf you are heading towards #Jurong East, take NSL (Red line) at #City Hall or TEL (Brown line) at #Outram Park",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838765409232982198",
+      "createdAt": "2024-09-25T10:20:10.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "09:57 AM - [EWL]: Due to a power fault, there is no train svc btwn #BoonLay and #Queenstown. Free regular bus &amp; free bridging bus svcs btwn #BoonLay and #Queenstown.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838762740409864505",
+      "createdAt": "2024-09-25T10:09:34.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "09:56 AM - [EWL]: Due to a train fault, there is no train svc btwn #BoonLay and #Queenstown. Free regular bus &amp; free bridging bus svcs btwn #BoonLay and #Queenstown.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838762707853676804",
+      "createdAt": "2024-09-25T10:09:26.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "09:52 AM - [EWL]: Due to a traction power fault, there is no train svc btwn #BoonLay and #Queenstown. Free regular bus services are available from #BoonLay and #Queenstown.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838762674928431413",
+      "createdAt": "2024-09-25T10:09:18.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a power fault, there is no train service between #BoonLay and #Queenstown.\n\nFree regular bus &amp; bridging bus  services are available between #BoonLay and #Queenstown.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838762618997346794",
+      "createdAt": "2024-09-25T10:09:05.000+08:00"
+    }
+  ]
+}

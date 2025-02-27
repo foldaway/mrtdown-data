@@ -1,0 +1,31 @@
+{
+  "id": "2014-11-30-circle-line-signal-fault",
+  "title": "Signal fault causing delays on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2014-11-30T16:47:48.000+08:00",
+  "endAt": "2014-11-30T16:55:13.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services between #one-north and #HarbourFront are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/538983664864854016",
+      "createdAt": "2014-11-30T17:11:34.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]UPDATE: Fault is cleared. Expect longer travelling time between #one-north and #HarbourFront. Trains and platforms are crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/538979550311374849",
+      "createdAt": "2014-11-30T16:55:13.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Estimate 15 mins additional travelling time between #one-north and #HarbourFront in both directions due to signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/538977683477000192",
+      "createdAt": "2014-11-30T16:47:48.000+08:00"
+    }
+  ]
+}

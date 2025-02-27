@@ -1,0 +1,31 @@
+{
+  "id": "2014-03-28-nsl-train-fault",
+  "title": "Train Fault on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-03-28T07:32:48.000+08:00",
+  "endAt": "2014-03-28T08:01:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] CLEARED: Train services from #YewTee towards #JurongEast are now operating normally. Trains and platforms may be crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/449335309654695936",
+      "createdAt": "2014-03-28T08:01:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 10 mins additional travelling time from #YewTee to #JurongEast towards JurongEast due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/449331126868267008",
+      "createdAt": "2014-03-28T07:44:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 10 mins additional travelling time from #ChoaChuKang to #JurongEast towards JurongEast due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/449328212699394048",
+      "createdAt": "2014-03-28T07:32:48.000+08:00"
+    }
+  ]
+}

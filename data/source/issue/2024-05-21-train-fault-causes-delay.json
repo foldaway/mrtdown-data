@@ -1,0 +1,32 @@
+{
+  "id": "2024-05-21-train-fault-causes-delay",
+  "title": "Train Fault Causing Delays Between Orchard and Gardens by the Bay",
+  "componentIdsAffected": [
+    "NSL",
+    "TEL"
+  ],
+  "startAt": "2024-05-21T09:03:55.000+08:00",
+  "endAt": "2024-05-21T09:27:17.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[TEL]: No more additional travelling time between Orchard and Gardens by the Bay in both directions. Train service resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1792728842228101477",
+      "createdAt": "2024-05-21T09:27:17.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a train fault, additional travelling time of 10mins between Orchard and Gardens by the Bay in both directions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1792724560053514381",
+      "createdAt": "2024-05-21T09:10:16.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Due to a train fault, additional travelling time of 10mins between Orchard and Gardens by the Bay in both directions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1792722958907256989",
+      "createdAt": "2024-05-21T09:03:55.000+08:00"
+    }
+  ]
+}

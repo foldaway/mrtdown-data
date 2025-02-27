@@ -1,0 +1,49 @@
+{
+  "id": "2016-10-18-east-west-line-track-fault",
+  "title": "Major service disruption on East West Line due to track fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-10-18T19:08:43.000+08:00",
+  "endAt": "2016-10-18T21:03:21.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Normal train service has resumed from #TanahMerah to #Bugis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/788364846848966656",
+      "createdAt": "2016-10-18T21:03:21.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE:Additional travel time has been reduced to 5mins from #TanahMerah to #Bugis. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/788358597121933312",
+      "createdAt": "2016-10-18T20:38:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Additional travel time remained at 10mins from #TanahMerah to #Bugis. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/788355760711307265",
+      "createdAt": "2016-10-18T20:27:14.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE:Additional travel time has been reduced to 10mins from #TanahMerah to #Bugis. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/788350081481084928",
+      "createdAt": "2016-10-18T20:04:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]Update:Due to track fault, pls add 20 mins travel time from #TanahMerah to #Bugis towards #JooKoon. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/788340821451870208",
+      "createdAt": "2016-10-18T19:27:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track fault, pls add 10 mins travel time from #TanahMerah to #Bugis towards #JooKoon. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/788335998383955969",
+      "createdAt": "2016-10-18T19:08:43.000+08:00"
+    }
+  ]
+}

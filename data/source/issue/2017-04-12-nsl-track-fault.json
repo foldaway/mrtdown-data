@@ -1,0 +1,120 @@
+{
+  "id": "2017-04-12-nsl-track-fault",
+  "title": "Track Fault on NSL",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-04-18T07:19:08.000+08:00",
+  "endAt": "2017-04-18T12:41:05.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #Bishan to #Khatib towards #JurongEast have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854193041329893376",
+      "createdAt": "2017-04-18T12:41:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Please add 5mins travel time from #Bishan to #Khatib, due to a track fault at #Khatib. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854187628702212096",
+      "createdAt": "2017-04-18T12:19:35.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE:  Pls cater 5 mins additional travel time from #Bishan to #Khatib.  We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854182541858713600",
+      "createdAt": "2017-04-18T11:59:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Pls add 5mins travel time from #Bishan to #Khatib,due to a track fault at #Khatib. Train svc is still available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854177241990692864",
+      "createdAt": "2017-04-18T11:38:18.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Pls add 5 mins travel time from #Bishan to #Khatib, due to a track fault at #Khatib. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854167722887860224",
+      "createdAt": "2017-04-18T11:00:29.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Pls cater 5 mins additional travel time from #Bishan to #Khatib. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854162152084484096",
+      "createdAt": "2017-04-18T10:38:21.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Pls cater 10mins additional travel time from #Bishan to #Khatib. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854158232612356098",
+      "createdAt": "2017-04-18T10:22:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Pls add 20mins travel time from #Bishan to #Khatib, due to a track fault at #Khatib. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854153036918251521",
+      "createdAt": "2017-04-18T10:02:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE:  Pls cater 20 mins additional travel time from #Bishan to #Khatib. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854148206493450241",
+      "createdAt": "2017-04-18T09:42:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Pls add 20mins travel time from #Bishan to #Khatib, due to a track fault at #Khatib. Train svc is still available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854143197622149120",
+      "createdAt": "2017-04-18T09:23:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Pls cater 20 mins additional travel time from #Bishan to #Khatib. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854138691857530880",
+      "createdAt": "2017-04-18T09:05:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Pls add 20mins travel time from #Bishan to #Khatib, due to a track fault at #Khatib. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854134156028030976",
+      "createdAt": "2017-04-18T08:47:06.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Pls cater 15 mins additional travel time from #Bishan to #Khatib.  We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854132362958970880",
+      "createdAt": "2017-04-18T08:39:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Pls add 15mins travel time from #Bishan to #Khatib,due to a track fault at #Khatib. Train svc is still available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854127517455732736",
+      "createdAt": "2017-04-18T08:20:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Pls cater 15 mins additional travel time from #Bishan to #Khatib. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854122717938827264",
+      "createdAt": "2017-04-18T08:01:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Pls add 15mins travel time from #Bishan to #Khatib, due to a track fault at #Khatib. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854117853322035200",
+      "createdAt": "2017-04-18T07:42:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Pls add 10mins travel time from #Bishan to #Khatib, due to a track fault at #Khatib. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854117234377019392",
+      "createdAt": "2017-04-18T07:39:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a track fault, pls add 10mins travel time from #Bishan to #Khatib towards #JurongEast. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/854112017128370176",
+      "createdAt": "2017-04-18T07:19:08.000+08:00"
+    }
+  ]
+}

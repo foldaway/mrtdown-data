@@ -1,0 +1,29 @@
+{
+  "id": "2012-08-14-ewline-service-disruption",
+  "title": "East West Line service disruption",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2012-08-14T10:03:54.000+08:00",
+  "endAt": "2012-08-14T10:14:24.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EASTWESTLINE]: Train services from #Bedok towards #Eunos are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/235200623618973696",
+      "createdAt": "2012-08-14T10:26:13.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWLINE] UPDATE: Fault is cleared. Trains are moving slowly. Expect minor delays from  #Bedok towards #Eunos.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/235197651094736896",
+      "createdAt": "2012-08-14T10:14:24.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWLINE] UPDATE: Fault is cleared. Service is resumed but trains are moving slowly. Expect minor delays from  #Bedok towards #Eunos.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/235195010830712832",
+      "createdAt": "2012-08-14T10:03:54.000+08:00"
+    }
+  ]
+}

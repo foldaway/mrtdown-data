@@ -1,0 +1,25 @@
+{
+  "id": "2018-01-18-bplrt-no-train-service",
+  "title": "Service disruption on Bukit Panjang LRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2018-01-18T16:12:02.000+08:00",
+  "endAt": "2018-01-18T16:54:50.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] Fault cleared. Normal train services across BPLRT gradually being restored.  Free regular bus services and bridging bus services available until 1700hrs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/953913560198885376",
+      "createdAt": "2018-01-18T16:54:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]: No train service between #ChoaChuKang and #Phoenix due to a train fault.  Free bridging bus services available across BPLRT.  Free regular bus services available at affected stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/953902791931527168",
+      "createdAt": "2018-01-18T16:12:02.000+08:00"
+    }
+  ]
+}

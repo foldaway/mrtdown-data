@@ -1,0 +1,31 @@
+{
+  "id": "2015-10-28-nsl-train-fault-braddell-station",
+  "title": "Train fault causing delays on the North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-10-28T19:17:37.000+08:00",
+  "endAt": "2015-10-28T19:41:56.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services are now operating normally. Free bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/659347336036876288",
+      "createdAt": "2015-10-28T20:33:49.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] Train service has resumed. Trains are travelling at a slower speed due to an earlier train fault. Free bus service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/659334277390139392",
+      "createdAt": "2015-10-28T19:41:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Estimate 25 mins additional travelling time from Marina Bay to Ang Mo Kio due to train fault at Braddell station.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/659328158768893952",
+      "createdAt": "2015-10-28T19:17:37.000+08:00"
+    }
+  ]
+}

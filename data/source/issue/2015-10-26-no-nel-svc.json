@@ -1,0 +1,101 @@
+{
+  "id": "2015-10-26-no-nel-svc",
+  "title": "No North East Line Service due to Power Fault",
+  "componentIdsAffected": ["NEL"],
+  "startAt": "2015-10-26T05:23:32.000+08:00",
+  "endAt": "2015-10-26T07:32:25.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "26/10, 9.15am: NEL svcs in both directions available. Addn travelling time of 5 mins. Free bus rides &amp; shuttle bus svcs still available.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658452030810271745",
+      "createdAt": "2015-10-26T09:16:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "26/10, 8.39am: NEL svcs in both directions available. Free bus svcs are available islandwide. Please approach our staff if u need assistance",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658442845515198464",
+      "createdAt": "2015-10-26T08:39:42.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "26/10, 8.25am: NEL svcs in both directions available. Addn travelling time of 10 mins. Free bus rides &amp; shuttle bus svcs still available.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658439205253582848",
+      "createdAt": "2015-10-26T08:25:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "26/10, 8.11am: NEL svcs in both directions available. Free bus services are available islandwide.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658435716158910464",
+      "createdAt": "2015-10-26T08:11:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "26/10, 7.55am: NEL svcs in both directions now available. Addn travelling time of 10 mins. Free bus rides &amp; shuttle bus svcs still available",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658431704273563648",
+      "createdAt": "2015-10-26T07:55:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "26/10, 7.47am: NEL svcs in both directions now available. Please approach our staff if you need assistance.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658429832468938752",
+      "createdAt": "2015-10-26T07:47:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "26/10, 7.28am: NEL svcs in both directions now available. Addn travelling time of 20 mins. Free bus rides &amp; shuttle bus svcs still available",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658425914993176576",
+      "createdAt": "2015-10-26T07:32:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "26/10, 7.05: NEL svc in the direction from Punggol NE17 to HarbourFront NE1 is now available.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658419259517759488",
+      "createdAt": "2015-10-26T07:05:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "26/10, 6.51am: NEL svc in the direction from Sengkang NE16 to HarbourFront NE1 is now available.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658416879522877441",
+      "createdAt": "2015-10-26T06:56:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "26/10, 6.46am: No NEL svc due to a power fault. Free bus rides &amp; Shuttle Bus svc available at designated bus stops along NEL.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658414568415203328",
+      "createdAt": "2015-10-26T06:47:20.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "26/10, 6.37am: No NEL svc due to a power fault. Free bus rides &amp; Shuttle Bus svc available at designated bus stops along NEL.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658412228287164416",
+      "createdAt": "2015-10-26T06:38:02.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "26/10, 6.24am: No NEL svc due to a power fault. Free bus rides &amp; Shuttle Bus svc available at designated bus stops along the NEL line.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658408927646756865",
+      "createdAt": "2015-10-26T06:24:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "26/10, 6.09am: No NEL svc due to a power fault. Free bus rides &amp; Shuttle Bus svc available at designated bus stops along the NEL line.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658405094434566144",
+      "createdAt": "2015-10-26T06:09:41.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "26/10, 5.47am: No NEL svc due to a power fault. Free bus rides available at designated bus stops along the NEL line.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658400105087660032",
+      "createdAt": "2015-10-26T05:49:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "26/10 05:23 - No NEL svc due to a power fault. Free bus rides available at designated bus stops along the NEL line.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658393481132412928",
+      "createdAt": "2015-10-26T05:23:32.000+08:00"
+    }
+  ]
+}

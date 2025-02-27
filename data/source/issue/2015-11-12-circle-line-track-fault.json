@@ -1,0 +1,37 @@
+{
+  "id": "2015-11-12-circle-line-track-fault",
+  "title": "Track fault on Circle Line causing delays",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2015-11-12T06:33:15.000+08:00",
+  "endAt": "2015-11-12T06:47:58.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "CCL] UPDATE: Free Bus boarding has ceased between #DhobyGhaut and #Promenade.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/664576155350007812",
+      "createdAt": "2015-11-12T06:51:17.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]UPDATE: Fault is cleared. Expect longer travelling time between #DhobyGhaut and #Promenade.\n.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/664575323376218112",
+      "createdAt": "2015-11-12T06:47:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Free Bus boarding are now available at affected stations between #DhobyGhaut and #Promenade.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/664572861403664384",
+      "createdAt": "2015-11-12T06:38:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Estimate 15 mins additional travelling time between #DhobyGhaut and #Promenade in both directions due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/664571618694270976",
+      "createdAt": "2015-11-12T06:33:15.000+08:00"
+    }
+  ]
+}

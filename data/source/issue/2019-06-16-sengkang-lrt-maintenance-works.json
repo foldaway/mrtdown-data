@@ -1,0 +1,37 @@
+{
+  "id": "2019-06-16-sengkang-lrt-maintenance-works",
+  "title": "Sengkang LRT service disruption due to urgent maintenance works",
+  "componentIdsAffected": [
+    "SKLRT"
+  ],
+  "startAt": "2019-06-16T00:00:00.000+08:00",
+  "endAt": "2019-10-21T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Reminder: All stations on the Sengkang-Punggol LRT system will close earlier at 10.15pm tonight &amp; open later at 8am tomorrow for urgent maintenance works.\n\nLook out for directional signs around the stations to get to the boarding points for the free bridging bus services. https://t.co/jr6RVVQ5SG",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1180117408263987201",
+      "createdAt": "2019-10-04T21:48:10.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Asset renewal &amp; maintenance works will be conducted on the Sengkang LRT system on Sundays from 16 June to 20 October. Train svc will continue to operate as usual on one platform, while the other platform will start svc at 5.30pm. https://t.co/sbKRecX8bp",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1143688356389244928",
+      "createdAt": "2019-06-26T09:12:07.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Asset renewal &amp; maintenance works will be conducted on the Sengkang LRT system on Sundays from 16 June to 20 October. Train svc will continue to operate as usual on one platform, while the other platform will start svc at 5.30pm. https://t.co/sbKRecX8bp",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1141167807037464576",
+      "createdAt": "2019-06-19T10:16:21.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Asset renewal &amp; maintenance works will be conducted on the Sengkang LRT system on Sundays from 16 June to 20 October. Train svc will continue to operate as usual on one platform, while the other platform will start svc at 5.30pm. https://t.co/sbKRecX8bp",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1138051237318864898",
+      "createdAt": "2019-06-10T19:52:13.000+08:00"
+    }
+  ]
+}

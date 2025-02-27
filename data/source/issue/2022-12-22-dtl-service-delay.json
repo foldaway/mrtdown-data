@@ -1,0 +1,24 @@
+{
+  "id": "2022-12-22-dtl-service-delay",
+  "title": "DTL service disruption due to signalling fault",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2022-12-22T07:06:02.000+08:00",
+  "endAt": "2022-12-22T07:16:45.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "DTL service has resumed. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1605703852807753728",
+      "createdAt": "2022-12-22T07:16:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "DTL service from DT1 Bukit Panjang to DT24 Geylang Bahru (towards Expo) is delayed due to a signalling fault. Additional travel time of about 15 minutes may be expected. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1605701155597664257",
+      "createdAt": "2022-12-22T07:06:02.000+08:00"
+    }
+  ]
+}

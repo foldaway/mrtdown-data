@@ -1,0 +1,24 @@
+{
+  "id": "2017-06-01-nel-svc-twds-punggol-delay",
+  "title": "NEL service delayed due to train fault",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2017-06-01T12:39:39.000+08:00",
+  "endAt": "2017-06-01T12:51:44.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "NEL is back to regular svc. Once again, we are very sorry for the inconvenience \ncaused",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/870140787446562816",
+      "createdAt": "2017-06-01T12:51:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL svc twds Punggol NE17 is delayed due to a train fault. Additional travel \ntime of about 10 minutes may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/870137744369909760",
+      "createdAt": "2017-06-01T12:39:39.000+08:00"
+    }
+  ]
+}

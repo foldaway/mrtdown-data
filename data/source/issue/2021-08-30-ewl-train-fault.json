@@ -1,0 +1,36 @@
+{
+  "id": "2021-08-30-ewl-train-fault",
+  "title": "Train Fault on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2021-08-30T19:44:48.000+08:00",
+  "endAt": "2021-08-30T20:14:02.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train service has resumed at 2008Hrs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1432316227142107140",
+      "createdAt": "2021-08-30T20:16:14.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] UPDATE: Fault cleared, train svcs has resumed. Free Regular Bus svc has ceased..",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1432315675234607105",
+      "createdAt": "2021-08-30T20:14:02.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a train fault, pls add 25mins train travel time btwn #JooKoon and #TuasLink. Free regular bus svcs btwn #JooKoon and #TuasLink. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1432311111353659395",
+      "createdAt": "2021-08-30T19:55:54.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a train fault, pls add 25mins train travel time from #JooKoon to #TuasLink towards #TuasLink.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1432308318870016003",
+      "createdAt": "2021-08-30T19:44:48.000+08:00"
+    }
+  ]
+}

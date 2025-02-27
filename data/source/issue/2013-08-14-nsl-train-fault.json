@@ -1,0 +1,25 @@
+{
+  "id": "2013-08-14-nsl-train-fault",
+  "title": "Service disruption on North-South Line due to train fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2013-08-14T08:37:00.000+08:00",
+  "endAt": "2013-08-14T08:47:40.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] CLEARED: Train services from #Yishun towards #Woodlands are now operating normally. Trains and platforms are crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/367447395803484160",
+      "createdAt": "2013-08-14T08:47:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 20 mins additional travelling time from #Yishun to #Woodlands towards JurongEast due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/367444709230141440",
+      "createdAt": "2013-08-14T08:37:00.000+08:00"
+    }
+  ]
+}

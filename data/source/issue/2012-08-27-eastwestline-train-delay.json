@@ -1,0 +1,23 @@
+{
+  "id": "2012-08-27-eastwestline-train-delay",
+  "title": "Train Delay on East West Line",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2012-08-27T07:30:11.000+08:00",
+  "endAt": "2012-08-27T07:41:51.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EASTWESTLINE]: Train services from #JooKoon towards #ChineseGarden are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/239870303671549953",
+      "createdAt": "2012-08-27T07:41:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EASTWESTLINE]: Trains are delayed from #JooKoon to #ChineseGarden towards PasirRis due train fault. Estimated delay: 3 mins",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/239867366652121088",
+      "createdAt": "2012-08-27T07:30:11.000+08:00"
+    }
+  ]
+}

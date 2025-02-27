@@ -1,0 +1,30 @@
+{
+  "id": "2011-12-27-train-services-delay",
+  "title": "Train services running slower due to speed restrictions",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2011-12-27T09:14:55.000+08:00",
+  "endAt": "2011-12-27T19:33:58.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "SVC UPDATE: North-bound train service is now running smoothly. Have a good evening.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/151626874404085760",
+      "createdAt": "2011-12-27T19:33:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train service from Bishan to Jurong is running slower this evening.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/151612828862791680",
+      "createdAt": "2011-12-27T18:38:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train services are running slower this morning due to speed restrictions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/151471083244097536",
+      "createdAt": "2011-12-27T09:14:55.000+08:00"
+    }
+  ]
+}

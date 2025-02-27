@@ -1,0 +1,31 @@
+{
+  "id": "2016-01-22-bplrt-major-service-disruption",
+  "title": "Major service disruption on Bukit Panjang LRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2016-01-22T05:54:44.000+08:00",
+  "endAt": "2016-01-22T10:43:29.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] Service B is now in operation. Normal service has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/690364129333399553",
+      "createdAt": "2016-01-22T10:43:29.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] We are working to recover service B. Service A is still available. Free public &amp; shuttle buses still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/690362254164955137",
+      "createdAt": "2016-01-22T10:36:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "BPLRT : Only service A is available. Bus bridging available. Expect additional travel time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/690291465289728001",
+      "createdAt": "2016-01-22T05:54:44.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "2024-07-04-ewl-track-fault",
+  "title": "Train delay due to track fault on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2024-07-04T06:17:00.000+08:00",
+  "endAt": "2024-07-04T07:48:53.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train svcs from #BoonLay to #Clementi have resumed. Free regular bus &amp; free bridging bus svcs have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1808653619950203010",
+      "createdAt": "2024-07-04T08:06:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Fault on the EWL has cleared, train service has resumed. Free regular bus and bridging bus services are still available between #BoonLay &amp; #Clementi.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1808652868855169118",
+      "createdAt": "2024-07-04T08:03:41.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Fault on the EWL has cleared, train services are progressively returning to normal speed. Free regular bus &amp; bridging bus services are still available between #BoonLay &amp; #Clementi.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1808650504446300509",
+      "createdAt": "2024-07-04T07:54:18.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Fault on the EWL has cleared, train services are progressively returning to normal. Free regular bus and bridging bus services are still available between #BoonLay and #Clementi.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1808649143784780116",
+      "createdAt": "2024-07-04T07:48:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track fault, pls add 30mins train travel time from #BoonLay to #Clementi towards #PasirRis.  Free regular bus &amp; free bridging bus svcs are available btwn #BoonLay and #Clementi.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1808639859139227860",
+      "createdAt": "2024-07-04T07:11:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track fault, pls add 20mins train travel time from #BoonLay to #Clementi towards #PasirRis. Free regular bus &amp; bridging bus svcs are available btwn #BoonLay and #Clementi.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1808638093211369486",
+      "createdAt": "2024-07-04T07:04:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track fault, pls add 20mins train travel time from #BoonLay to #Clementi towards #PasirRis. Free regular bus svcs btwn #BoonLay and #Clementi. Passengers travelling towards city area, please and take North South Line towards #AngMoKio and #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1808631010143469892",
+      "createdAt": "2024-07-04T06:36:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE: Due to a track fault, pls add 20mins train travel time from #BoonLay to #Clementi towards #PasirRis. Free regular bus svcs from #BoonLay to #Clementi. Passengers travelling towards city area, please take North South Line towards #AngMoKio and #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1808629269423411278",
+      "createdAt": "2024-07-04T06:29:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train svc is available from #BoonLay to #Clementi towards #PasirRis. Free regular bus svcs from #BoonLay to #Clementi. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1808627432674767240",
+      "createdAt": "2024-07-04T06:22:37.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a track fault, pls add 20mins train travel time from #BuonaVista to #Clementi towards #PasirRis. Free regular bus svcs from #BuonaVista to #Clementi. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1808626018749665642",
+      "createdAt": "2024-07-04T06:17:00.000+08:00"
+    }
+  ]
+}

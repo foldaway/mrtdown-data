@@ -1,0 +1,29 @@
+{
+  "id": "2016-08-06-track-fault",
+  "title": "Track fault results in additional travel time",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2016-08-06T08:52:22.000+08:00",
+  "endAt": "2016-08-06T12:13:17.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train service from #Yishun to #Bishan is operating normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/761777136252227584",
+      "createdAt": "2016-08-06T12:13:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSEW]Update Estimated10 mins additional traveling time from Yishun to Bishan, towards Marina South Pier due to a track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/761727909341990913",
+      "createdAt": "2016-08-06T08:57:40.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSEW] Estimated15 mins additional traveling time from Yishun to Ang Mo Kio, towards Marina South Pier due to a track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/761726575708561408",
+      "createdAt": "2016-08-06T08:52:22.000+08:00"
+    }
+  ]
+}

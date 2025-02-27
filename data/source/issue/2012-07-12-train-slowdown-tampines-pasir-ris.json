@@ -1,0 +1,25 @@
+{
+  "id": "2012-07-12-train-slowdown-tampines-pasir-ris",
+  "title": "Trains moving slower from Tampines to Pasir Ris due to track fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-07-12T20:05:35.000+08:00",
+  "endAt": "2012-07-12T20:33:46.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE: Trains are now running normally from Tampines to Pasir Ris",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/223394722511720448",
+      "createdAt": "2012-07-12T20:33:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Trains from Tampines to Pasir Ris are moving slower due to track fault",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/223387629012516865",
+      "createdAt": "2012-07-12T20:05:35.000+08:00"
+    }
+  ]
+}

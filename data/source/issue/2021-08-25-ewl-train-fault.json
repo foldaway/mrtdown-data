@@ -1,0 +1,42 @@
+{
+  "id": "2021-08-25-ewl-train-fault",
+  "title": "Train fault causing delays on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2021-08-25T07:20:33.000+08:00",
+  "endAt": "2021-08-25T07:46:17.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] UPDATE: Train services from Bugis to Outram Park have resumed at 0744 hrs. Free regular bus services between Bugis and Outram Park have ceased at 0744hrs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1430373551597441025",
+      "createdAt": "2021-08-25T11:36:44.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from Bugis to Outram Park have resumed. Free regular bus services between Bugis and Outram Park have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1430366888731676678",
+      "createdAt": "2021-08-25T11:10:15.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Fault cleared, train svcs are progressively being restored.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1430315557136392194",
+      "createdAt": "2021-08-25T07:46:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a train fault, pls add 10mins train travel time from #Bugis to #OutramPark towards #JooKoon. Free regular bus service is available between Bugis and Outram Park.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1430313149375279106",
+      "createdAt": "2021-08-25T07:36:43.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a train fault, pls add 15mins train travel time from #Bugis to #OutramPark towards #JooKoon. Free regular bus service is available between Bugis and Outram Park.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1430309079621111810",
+      "createdAt": "2021-08-25T07:20:33.000+08:00"
+    }
+  ]
+}

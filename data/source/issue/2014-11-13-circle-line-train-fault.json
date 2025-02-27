@@ -1,0 +1,31 @@
+{
+  "id": "2014-11-13-circle-line-train-fault",
+  "title": "Train fault causing delays on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2014-11-13T10:14:19.000+08:00",
+  "endAt": "2014-11-13T10:30:56.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services between #Stadium and #DhobyGhaut are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/532722249355108352",
+      "createdAt": "2014-11-13T10:30:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Estimate 15 mins additional travelling time between #Stadium and #DhobyGhaut due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/532721408321650692",
+      "createdAt": "2014-11-13T10:27:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Estimate 20 mins additional travelling time from #PayaLebar to #DhobyGhaut towards #DhobyGhaut due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/532718068934266880",
+      "createdAt": "2014-11-13T10:14:19.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "2012-02-28-south-bound-train-delay",
+  "title": "South-bound train service delay from Novena to Marina Bay",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-02-28T08:24:50.000+08:00",
+  "endAt": "2012-02-28T08:53:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:South-bound train service to Marina Bay is running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/174296004802248705",
+      "createdAt": "2012-02-28T08:53:00.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "South-bound train service from Novena to Marina Bay delayed due to train fault.Please allow extra time for travel.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/174288916768239617",
+      "createdAt": "2012-02-28T08:24:50.000+08:00"
+    }
+  ]
+}

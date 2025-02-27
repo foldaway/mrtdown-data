@@ -1,0 +1,29 @@
+{
+  "id": "2016-08-17-nel-svc-disruption-bet-buangkok-punggol",
+  "title": "No North East Line service between Buangkok and Punggol stations",
+  "componentIdsAffected": ["NEL"],
+  "startAt": "2016-08-17T21:30:27.000+08:00",
+  "endAt": "2016-08-17T22:21:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "17/08, 10.49pm: NEL service has resumed since 10:21pm. Free bus rides &amp; Bridging bus svc have ceased. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/765923810327396353",
+      "createdAt": "2016-08-17T22:50:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No NEL svc btwn Buangkok &amp; Punggol stn due to a train fault. Free bus rides are available at designated bus stops near affected stations",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/765909595248218113",
+      "createdAt": "2016-08-17T21:54:12.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "No NEL service between Woodleigh and Punggol Stations due to a train fault.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/765903621380681728",
+      "createdAt": "2016-08-17T21:30:27.000+08:00"
+    }
+  ]
+}

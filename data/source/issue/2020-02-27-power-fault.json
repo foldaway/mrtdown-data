@@ -1,0 +1,37 @@
+{
+  "id": "2020-02-27-power-fault",
+  "title": "Service disruption due to power fault",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2020-02-27T08:31:56.000+08:00",
+  "endAt": "2020-02-27T12:22:13.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Please be informed that NEL service has resumed at affected stations. With this, NEL is back to normal operations and free regular &amp; bridging bus services have ceased. We are very sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1232886295493406720",
+      "createdAt": "2020-02-27T12:32:53.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "Please be informed that NEL service has resumed at affected stations. Free regular &amp; bridging bus services are still available. With this, NEL is back to normal operations.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1232883613286273024",
+      "createdAt": "2020-02-27T12:22:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Shuttle train service will run btwn NE12 Serangoon &amp; NE14 Hougang while regular service between NE1 HarbourFront and NE12 Serangoon will run at an interval of 9 mins. Pls add extra travel time.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1232856926095958016",
+      "createdAt": "2020-02-27T10:36:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to a power fault, there is only svc on 1 platform btwn NE15 Buangkok &amp; NE17 Punggol &amp; shuttle trains are running btwn these stns. Pls add extra travel time. Free regular &amp; bridging bus svcs are also available. There is regular svc btwn NE1 HarbourFront &amp; NE15 Buangkok.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1232825659048656896",
+      "createdAt": "2020-02-27T08:31:56.000+08:00"
+    }
+  ]
+}

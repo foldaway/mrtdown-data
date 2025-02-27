@@ -1,0 +1,102 @@
+{
+  "id": "2023-09-29-circle-line-track-fault",
+  "title": "Track fault affecting Circle Line services",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2023-09-29T05:00:56.000+08:00",
+  "endAt": "2023-09-29T19:31:27.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services between #DhobyGhaut /#MarinaBay and #Stadium have resumed. Free regular bus and bridging bus services have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707719735855739305",
+      "createdAt": "2023-09-29T19:31:27.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: Train services are progressively being restored. Free regular bus services are still available between #DhobyGhaut/ #MarinaBay and #PayaLebar. Bridging bus services are available between #Promenade and #PayaLebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707715863842079018",
+      "createdAt": "2023-09-29T19:16:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: If your journey has been impacted, you can obtain an e-Travel Chit to serve as proof of your travel by visiting https://t.co/dYFVNdxSLs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707700198489854167",
+      "createdAt": "2023-09-29T18:13:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: If your travel has been affected, you can obtain an e-Travel Chit as evidence of your journey by visiting https://t.co/dYFVNdxSLs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707681391289553320",
+      "createdAt": "2023-09-29T16:59:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: You may download an e-Travel Chit as proof of your travel at https://t.co/Rcx8ksSrKK if your journey has been affected.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707662794068509061",
+      "createdAt": "2023-09-29T15:45:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: If your travel has been affected, you have the option to acquire an e-Travel Chit as proof of your travel at https://t.co/dYFVNdxSLs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707644238694170828",
+      "createdAt": "2023-09-29T14:31:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: If your journey has been impacted, you have the option to acquire an e-Travel Chit as proof of your travel at https://t.co/dYFVNdxSLs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707627349033009253",
+      "createdAt": "2023-09-29T13:24:20.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: If your journey has been impacted, please download an e-Travel Chit as proof of your travel at https://t.co/dYFVNdxSLs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707609827290268149",
+      "createdAt": "2023-09-29T12:14:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Download an e-Travel Chit as proof of your travel at https://t.co/dYFVNdxSLs if your journey has been affected.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707592192213336557",
+      "createdAt": "2023-09-29T11:04:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: You may download an e-Travel Chit as proof of your travel at https://t.co/dYFVNdxSLs if your journey has been affected.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707574845721235963",
+      "createdAt": "2023-09-29T09:55:43.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: Our engineers are working to recover train services. For your convenience, you may download an e-Travel Chit as proof of your travel at https://t.co/dYFVNdxSLs if your journey has been affected.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707557384640713185",
+      "createdAt": "2023-09-29T08:46:20.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] UPDATE: Our engineers are still rectifying the fault. Please add 30 mins train travel time between #DhobyGhaut / #MarinaBay and #Stadium.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707542794053865617",
+      "createdAt": "2023-09-29T07:48:21.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] UPDATE: Our engineers are still rectifying the fault. Please add 30 minutes travelling time between #DhobyGhaut / #MarinaBay and #Stadium.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707529533619147210",
+      "createdAt": "2023-09-29T06:55:39.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] UPDATE: Our engineers are still rectifying the fault. Please add 30 minutes train travel time between #DhobyGhaut / #MarinaBay and #Stadium.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707515545275564211",
+      "createdAt": "2023-09-29T06:00:04.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to a track fault, train services between #DhobyGhaut / #MarinaBayand #Stadium are affected. Train shuttle services are available between #DhobyGhaut/ #MarinaBayand #Stadium. Please add 30 minutes additional travel time between #DhobyGhaut/ #MarinaBay and #Stadium.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1707500662345683016",
+      "createdAt": "2023-09-29T05:00:56.000+08:00"
+    }
+  ]
+}

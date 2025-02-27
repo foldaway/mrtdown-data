@@ -1,0 +1,53 @@
+{
+  "id": "2017-07-25-intermittent-power-fault-on-nsewl",
+  "title": "Intermittent power fault on NSEWL",
+  "componentIdsAffected": ["NSL", "EWL"],
+  "startAt": "2017-07-25T07:26:15.000+08:00",
+  "endAt": "2017-07-25T10:19:09.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[NSEWL] UPDATE: Trains are running normally on the NSL. Our staff are working to rectify the fault on the EWL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/889671333730172928",
+      "createdAt": "2017-07-25T10:19:09.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSEWL] UPDATE: Trains are running at longer intervals. Our staff are working to rectify the fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/889666074794381312",
+      "createdAt": "2017-07-25T09:58:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSEWL] UPDATE: Trains are running at longer intervals. Pls expect crowds at stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/889648202441535489",
+      "createdAt": "2017-07-25T08:47:14.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[NSEWL] UPDATE: Trains are running at longer intervals. Our engineers are carrying out checks.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/889643375657455617",
+      "createdAt": "2017-07-25T08:28:04.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSEWL] UPDATE: Trains are running at longer intervals due to intermittent power fault. Our engineers are carrying out checks.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/889638023180288003",
+      "createdAt": "2017-07-25T08:06:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Trains along the NSEWL are running slower. Pls expect crowds at stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/889632912592822273",
+      "createdAt": "2017-07-25T07:46:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Trains running at longer intervals due to intermittent power fault on NSEWL. Crowds expected at stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/889627820762288130",
+      "createdAt": "2017-07-25T07:26:15.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "2024-09-17-circle-line-power-fault",
+  "title": "Major Power Fault on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2024-09-17T18:11:28.000+08:00",
+  "endAt": "2024-09-17T19:29:35.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] UPDATE: Fault cleared. Train services has fully resumed to normal. Free Regular Buses at all Circle Line stations have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1836008466990973214",
+      "createdAt": "2024-09-17T19:45:04.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: Fault cleared, train services are progressively returning to normal. Free Regular Buses are still available for all Circle Line stations. Passengers are advised to take other lines and alternative means of transport to continue the journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1836004570822307887",
+      "createdAt": "2024-09-17T19:29:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Due to a power fault, please add 30 minutes additional travelling time on Circle Line. Free Regular Buses are available for all Circle Line stations. Passengers are advised to take other lines and alternative means of transport to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1835999460721381776",
+      "createdAt": "2024-09-17T19:09:17.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Due to a power fault, please add 30 minutes additional travel time on the Circle Line. Free Regular Buses are available for all Circle Line stations. Passenger are advised to take other lines and alternative means of transport to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1835994723250835591",
+      "createdAt": "2024-09-17T18:50:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[UPDATE] : Due to a power fault, please add 30 minutes additional travel time on the Circle Line. Free Regular Buses are available for all Circle Line stations. Please make use of other lines and alternative means of transportation to continue your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1835989738207228153",
+      "createdAt": "2024-09-17T18:30:39.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to a power fault, please add 30 minutes additional travel time on the Circle Line.  Free Regular Buses are available for all Circle Line stations.  Please make use of alternative Lines for your commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1835984909422469581",
+      "createdAt": "2024-09-17T18:11:28.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "2012-10-30-ewl-train-fault",
+  "title": "Train fault at East-West Line",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2012-10-30T10:18:19.000+08:00",
+  "endAt": "2012-10-30T10:28:57.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services from #PayaLebar towards #Eunos are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/263105178255888386",
+      "createdAt": "2012-10-30T10:28:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 5 mins additional travelling time from #PayaLebar to #Eunos towards PasirRis due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/263102501639831553",
+      "createdAt": "2012-10-30T10:18:19.000+08:00"
+    }
+  ]
+}

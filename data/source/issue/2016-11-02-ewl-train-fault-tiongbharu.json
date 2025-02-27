@@ -1,0 +1,37 @@
+{
+  "id": "2016-11-02-ewl-train-fault-tiongbharu",
+  "title": "Train fault causing service disruption between Queenstown and Outram Park on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-11-02T17:48:31.000+08:00",
+  "endAt": "2016-11-02T18:20:50.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE:Fault cleared, trains are progressively returning to normal speed. Free regular bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793760719678300160",
+      "createdAt": "2016-11-02T18:24:37.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] CLEARED: Train services from #Queenstown towards #OutramPark have resumed. Train are progressively return to normal speed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793759769173516288",
+      "createdAt": "2016-11-02T18:20:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: No train service from #Queenstown to #Outram Park towards PasirRis.Free regular bus still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793757782478458880",
+      "createdAt": "2016-11-02T18:12:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]No train service from #Queenstown to #Outram Park towards PasirRis,due to a train fault at #TiongBharu.Est resumption time: 18:10hrs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/793751632706097153",
+      "createdAt": "2016-11-02T17:48:31.000+08:00"
+    }
+  ]
+}

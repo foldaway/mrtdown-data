@@ -1,0 +1,89 @@
+{
+  "id": "2017-10-07-nsl-track-fault",
+  "title": "Major service disruption on the North-South Line due to track fault and tunnel flooding",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2017-10-07T17:36:54.000+08:00",
+  "endAt": "2017-10-08T13:52:28.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Free regular bus and bridging bus services have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/916910493305991169",
+      "createdAt": "2017-10-08T14:17:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Train services in both directions btwn #AngMoKio &amp; #Newton have resumed. Free bus &amp; bridging bus svcs are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/916904104630263808",
+      "createdAt": "2017-10-08T13:52:28.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Our teams are working on cleaning and testing trackside equipment btwn #AngMoKio and #Newton before train services resume.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/916851159242989569",
+      "createdAt": "2017-10-08T10:22:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free bus &amp; bridging bus svcs are avail btwn #Newton &amp; #Ang Mo Kio. Our staff at bus boarding points will assist you.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/916823848846106624",
+      "createdAt": "2017-10-08T08:33:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular &amp; bridging bus svcs btwn #Orchard and #MarinaSouthPier have ended while btwn #AngMoKio and #Orchard are avail.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/916681099698364416",
+      "createdAt": "2017-10-07T23:06:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Train svcs btwn #AngMoKio and #Newton in both directions are not avail till end of svc. We're working to resume svcs for Sun.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/916676174201233410",
+      "createdAt": "2017-10-07T22:46:45.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Train svcs btwn #Newton &amp; #MarinaSouthPier have resumed. There is no train svc btwn #AngMoKio &amp; #Newton.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/916657058669142016",
+      "createdAt": "2017-10-07T21:30:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train svc btwn #AngMoKio &amp; #MarinaSouthPier. Pls seek alternative transport or continue your journey via other MRT lines.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/916623201278484480",
+      "createdAt": "2017-10-07T19:16:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular bus &amp; bridging bus svcs btwn #AngMoKio and #MarinaSouthPier. We are sorry and are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/916616104436408321",
+      "createdAt": "2017-10-07T18:48:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train svc btwn #AngMoKio and #MarinaSouthPier. Pls seek alternative transport. Bus guides here: https://t.co/xm0TV4199t",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/916610482240229376",
+      "createdAt": "2017-10-07T18:25:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: No train svc btwn #AngMoKio and #MarinaSouthPier. Pls consider alternative transport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/916605420734636034",
+      "createdAt": "2017-10-07T18:05:36.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL] UPDATE: No train svc btwn #AngMoKio and #ToaPayoh due to a track fault at #Bishan.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/916600322222473216",
+      "createdAt": "2017-10-07T17:45:21.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL] Due to a track fault, there is no train svc from #Bishan to #ToaPayoh towards #MarinaSouthPier. (Not linked to new signalling project)",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/916598195488038913",
+      "createdAt": "2017-10-07T17:36:54.000+08:00"
+    }
+  ]
+}

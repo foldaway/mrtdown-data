@@ -1,0 +1,25 @@
+{
+  "id": "2012-06-11-trains-moving-slower",
+  "title": "Service disruption between Paya Lebar and Bedok",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-06-11T15:48:49.000+08:00",
+  "endAt": "2012-06-11T16:21:21.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:Trains travelling between Paya Lebar and Bedok in both directions are running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/212097173620391936",
+      "createdAt": "2012-06-11T16:21:21.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Some trains moving slower between Paya Lebar and Bedok in both directions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/212088985072308224",
+      "createdAt": "2012-06-11T15:48:49.000+08:00"
+    }
+  ]
+}

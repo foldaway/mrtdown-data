@@ -1,0 +1,61 @@
+{
+  "id": "2015-12-17-traction-power-fault",
+  "title": "Traction power fault causing delays",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2015-12-17T19:49:33.000+08:00",
+  "endAt": "2015-12-17T22:05:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Train service has resumed. Free bus and shuttle bus services are still available between Joo Koon &amp; Jurong East.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/677494431038046209",
+      "createdAt": "2015-12-17T22:23:54.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train service has resumed. Free bus and shuttle bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/677489674194059264",
+      "createdAt": "2015-12-17T22:05:00.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "We are in the process of recovering the train that stalled between Joo Koon &amp; Pioneer MRT stations to enable the resumption of train svc.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/677486816195248128",
+      "createdAt": "2015-12-17T21:53:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No train service between Joo Koon &amp; Boon Lay in both directions. Free bus and shuttle bus service is avail between Joo Koon &amp; Jurong East.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/677477258471170049",
+      "createdAt": "2015-12-17T21:15:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Additional 10mins traveling time between Boon Lay and Jurong East in both directions due to power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/677462555992809472",
+      "createdAt": "2015-12-17T20:17:14.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "No train service between Joo Koon and  Boon Lay  in both directions due to power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/677462090928418816",
+      "createdAt": "2015-12-17T20:15:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Estimated 20mins additional traveling time between Joo Koon and Jurong East, in the both directions due to traction power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/677457890433601536",
+      "createdAt": "2015-12-17T19:58:42.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Estimated 20mins additional traveling time between Joo Koon and Boon Lay,in the both directions due to traction power fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/677455586586312704",
+      "createdAt": "2015-12-17T19:49:33.000+08:00"
+    }
+  ]
+}

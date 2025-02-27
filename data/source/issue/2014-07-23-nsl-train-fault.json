@@ -1,0 +1,43 @@
+{
+  "id": "2014-07-23-nsl-train-fault",
+  "title": "Train fault causing delays",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-07-23T09:13:40.000+08:00",
+  "endAt": "2014-07-23T10:04:44.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Free bus service from #MarinaBay to #ToaPayoh  has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/491775267656839168",
+      "createdAt": "2014-07-23T10:42:15.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #ToaPayoh towards #MarinaBay are now running normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/491765828828684288",
+      "createdAt": "2014-07-23T10:04:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Trains are moving at a slower speed from #ToaPayoh to #Newton towards #MarinaBay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/491758196969971712",
+      "createdAt": "2014-07-23T09:34:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Estimate 40mins additional travelling time from #ToaPayoh to #Newton towards MarinaBay due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/491754506229530624",
+      "createdAt": "2014-07-23T09:19:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 20 mins additional travelling time from #ToaPayoh to #Newton towards MarinaBay due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/491752974696214529",
+      "createdAt": "2014-07-23T09:13:40.000+08:00"
+    }
+  ]
+}

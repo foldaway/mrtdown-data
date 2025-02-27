@@ -1,0 +1,37 @@
+{
+  "id": "2024-10-01-tel-service-resuming",
+  "title": "Train service disruption on Thomson–East Coast Line",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2024-10-01T17:33:50.000+08:00",
+  "endAt": null,
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "05:33 PM - [TEL]: Train service is resuming progressively. Free regular bus service is still available between Woodlands North and Lentor.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1841048871432306755",
+      "createdAt": "2024-10-01T17:33:50.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "05:24 PM - [TEL]: Due to a train fault, additional travelling time of 10min between Woodlands North and Lentor. Free regular bus service is available between Woodlands North and Lentor",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1841047244658917854",
+      "createdAt": "2024-10-01T17:27:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "05:11 PM - [TEL]: Due to a train fault. Shuttle train service is available between Woodlands North and Woodlands South &amp; between Woodlands South and Lentor. Provisory service is available between Lentor and Bayshore. Free regular bus service is available between Woodlands North",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1841043813911183855",
+      "createdAt": "2024-10-01T17:13:44.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "04:56 PM - [TEL]: Due to a train fault, trains are moving slower from Woodlands North towards Lentor. Additional travelling time of 10min.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1841041695867342953",
+      "createdAt": "2024-10-01T17:05:19.000+08:00"
+    }
+  ]
+}

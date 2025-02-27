@@ -1,0 +1,24 @@
+{
+  "id": "2017-12-21-dtl-service-disruption",
+  "title": "Downtown Line service disruption",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2017-12-21T07:50:35.000+08:00",
+  "endAt": "2017-12-21T08:03:34.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "DTL has resume full train svc. Once again, we are very sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/943633001769943040",
+      "createdAt": "2017-12-21T08:03:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "DTL svc from Downtown towards Expo is delayed to a train fault. Add 10mins to travel time. We are v sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/943629736772644864",
+      "createdAt": "2017-12-21T07:50:35.000+08:00"
+    }
+  ]
+}

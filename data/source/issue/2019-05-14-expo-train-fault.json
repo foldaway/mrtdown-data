@@ -1,0 +1,25 @@
+{
+  "id": "2019-05-14-expo-train-fault",
+  "title": "Train Fault at Expo Station",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2019-05-14T18:48:39.000+08:00",
+  "endAt": "2019-05-14T19:18:34.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Normal train service has resumed at DTL. Once again, we are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1128258296886902785",
+      "createdAt": "2019-05-14T19:18:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to a train fault at Expo station, additional travelling time of 10 minutes from Bedok Reservoir station to Expo station may be expected. We are sorry for the inconvenience.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1128250766685163520",
+      "createdAt": "2019-05-14T18:48:39.000+08:00"
+    }
+  ]
+}

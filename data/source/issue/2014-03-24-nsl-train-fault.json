@@ -1,0 +1,31 @@
+{
+  "id": "2014-03-24-nsl-train-fault",
+  "title": "Train fault causing delays on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-03-24T08:59:58.000+08:00",
+  "endAt": "2014-03-24T09:19:02.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train services from #RafflesPlace towards #MarinaBay are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/447905393264820224",
+      "createdAt": "2014-03-24T09:19:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Estimate 10 mins additional travelling time from #Newton to #MarinaBay towards MarinaBay due to an earlier train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/447903471409172481",
+      "createdAt": "2014-03-24T09:11:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Estimate 10 mins additional travelling time from #RafflesPlace to #MarinaBay towards MarinaBay due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/447900597044248576",
+      "createdAt": "2014-03-24T08:59:58.000+08:00"
+    }
+  ]
+}

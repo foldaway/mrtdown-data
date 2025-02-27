@@ -1,0 +1,31 @@
+{
+  "id": "2016-11-18-ewl-track-fault",
+  "title": "East West Line track fault causing travel delays",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-11-18T18:03:47.000+08:00",
+  "endAt": "2016-11-18T18:25:58.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE:Track fault cleared, trains are progressively returning to normal speed from #TanahMerah to #Bugis towards #JooKoon",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/799559266575101952",
+      "createdAt": "2016-11-18T18:25:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 5 mins travel time from #TanahMerah towards #JooKoon,due to a track fault at #Lavender. Train svc is still available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/799557018654740480",
+      "createdAt": "2016-11-18T18:17:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track fault, pls add 10 mins travel time from #Tanah Merah to #Bugis towards #Joo Koon. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/799553683029655552",
+      "createdAt": "2016-11-18T18:03:47.000+08:00"
+    }
+  ]
+}

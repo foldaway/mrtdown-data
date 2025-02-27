@@ -1,0 +1,36 @@
+{
+  "id": "2024-10-10-ewl-train-services-restore",
+  "title": "Train services restoration in progress on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2024-10-10T13:04:23.000+08:00",
+  "endAt": null,
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Fault cleared, train services are progressively being restored. Pls add 10mins train travel time between #Queenstown and #Bugis. Free regular bus service still available between #Queenstown and #Bugis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1844245029973524949",
+      "createdAt": "2024-10-10T13:14:14.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Fault cleared, train services are progressively being restored. Pls add 20mins train travel time from #Queenstown to #Bugis. Free regular bus service still available between #Queenstown and #Bugis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1844243552320282836",
+      "createdAt": "2024-10-10T13:08:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: UPDATE Due to a train fault, pls add 20mins train travel time from #Queenstown to #Bugis towards #PasirRis. Free regular bus service is available between #Queenstown and #Bugis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1844242550888202687",
+      "createdAt": "2024-10-10T13:04:23.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[EWL]: Due to a train fault, pls add 25mins train travel time from #OutramPark to #Queenstown towards #JooKoon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1844234217955459472",
+      "createdAt": "2024-10-10T12:31:16.000+08:00"
+    }
+  ]
+}

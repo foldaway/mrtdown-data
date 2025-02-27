@@ -1,0 +1,31 @@
+{
+  "id": "2016-02-26-bplrt-outage",
+  "title": "No train service on BPLRT due to traction power fault",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2016-02-26T05:25:38.000+08:00",
+  "endAt": "2016-02-26T06:24:16.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Train Service on BPLRT has resumed. Free Bus Services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/702982472145858561",
+      "createdAt": "2016-02-26T06:24:16.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "No train service on BPLRT due to Power Fault. Bus Bridging provided.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/702968967720148992",
+      "createdAt": "2016-02-26T05:30:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No train service on BPLRT due to traction power fault. Free Bus Bridging provided.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/702967716911517697",
+      "createdAt": "2016-02-26T05:25:38.000+08:00"
+    }
+  ]
+}

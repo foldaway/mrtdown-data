@@ -1,0 +1,67 @@
+{
+  "id": "2018-04-11-north-east-line-service-delayed",
+  "title": "NEL service delay due to train fault at Little India",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2018-04-11T07:35:55.000+08:00",
+  "endAt": "2018-04-11T08:36:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "09:18am: NEL is back to regular service. Free boarding and bridging bus has ceased. Once again, we are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/983877246619303941",
+      "createdAt": "2018-04-11T09:19:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "08:53am: NEL – Additional travelling time of 15min between Punggol and HarbourFront stations bth bound. Free boarding and bridging bus are still available from Outram Park to Potong Pasir stations. We are sorry for inconvenience.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/983870624249466880",
+      "createdAt": "2018-04-11T08:53:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "08:37am: NEL Train service resume at 0836hrs, please note that Stations may still be crowded. Please add 15min additional traveling time between Punggol and HarbourFront both bound,",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/983866780643876864",
+      "createdAt": "2018-04-11T08:38:14.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "08:17am: NEL delay - Due to train fault at Little India, trains are moving slower speed. Please add 30 minutes of travelling time between Punggol and HarbourFront. Free bus bridging are available from Outram Park to Potong Pasir stations.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/983862196634402822",
+      "createdAt": "2018-04-11T08:20:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "7.58am: NEL delay - Due to train fault at Little India, trains are moving slower speed. Please add 30 minutes of travelling time between Punggol and HarbourFront. Free bus boarding are available from Outram Park to Potong Pasir stations.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/983858098539454464",
+      "createdAt": "2018-04-11T08:03:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "11/04, 7.58am: NEL delay - Due to train fault at LTI, additional travel time of about 30 minutes may be expected bth bound. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/983856854018097152",
+      "createdAt": "2018-04-11T07:58:47.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "11/04, 7.55am: NEL delay - Due to train fault at LTI, no train svc frm Outram to Potong Pasir bth bound, free bus rides available frm OTP to PTP. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/983856296406368257",
+      "createdAt": "2018-04-11T07:56:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "07.46am: NEL delay - To assist with yr journey, free bus rides avail at designated bus stops from Outram to Potong Pasir. Pls approach staff for help.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/983854156715737088",
+      "createdAt": "2018-04-11T07:48:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "0730h/ NEL service towards HarbourFront NE1 is delayed due to a train\nfault Little India. Additional travel time of about 15minutes may be expected. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/983851099072249862",
+      "createdAt": "2018-04-11T07:35:55.000+08:00"
+    }
+  ]
+}

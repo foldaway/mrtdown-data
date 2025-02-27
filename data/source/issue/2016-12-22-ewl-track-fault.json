@@ -1,0 +1,37 @@
+{
+  "id": "2016-12-22-ewl-track-fault",
+  "title": "East West Line track fault causing delay",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2016-12-22T19:29:01.000+08:00",
+  "endAt": "2016-12-22T20:24:46.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL]CLEARED: Train services from #Aljunied to #Eunos have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/811910347397304320",
+      "createdAt": "2016-12-22T20:24:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track fault, pls add 5 mins travel time from #Aljunied to #Eunos towards #PasirRis. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/811906203928305666",
+      "createdAt": "2016-12-22T20:08:18.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]: Due to a track fault, pls add 10 mins travel time from #OutramPark to #Eunos towards #PasirRis. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/811901959506513920",
+      "createdAt": "2016-12-22T19:51:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track fault, pls add 15 mins travel time from #OutramPark to #Eunos towards #PasirRis. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/811896318549377025",
+      "createdAt": "2016-12-22T19:29:01.000+08:00"
+    }
+  ]
+}

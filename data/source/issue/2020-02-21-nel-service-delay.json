@@ -1,0 +1,30 @@
+{
+  "id": "2020-02-21-nel-service-delay",
+  "title": "NEL service disruption due to train fault at HarbourFront",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2020-02-21T21:28:49.000+08:00",
+  "endAt": "2020-02-21T21:53:45.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "21/02, 10.06pm: NEL is back to regular operation. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1230856359203074048",
+      "createdAt": "2020-02-21T22:06:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "21/02, 9.53pm: NEL Svc has resumed. However, pls expect additional travel time of abt 20 mins as trains are progressively being regulated.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1230853116779565056",
+      "createdAt": "2020-02-21T21:53:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "21/02, 9.25pm: NEL svc is delayed due to a train fault at HarbourFront NE01. Additional travel time of abt 15 mins may be expected. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1230846840205012992",
+      "createdAt": "2020-02-21T21:28:49.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "2015-02-27-nsl-track-intrusion",
+  "title": "Track intrusion causing delays on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2015-02-27T21:05:28.000+08:00",
+  "endAt": "2015-02-27T21:32:05.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Updated: Normal train service has resumed. Free bus and free bus bridging are still available between Jurong East and Yew Tee stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/571322053720039425",
+      "createdAt": "2015-02-27T22:52:46.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Train services between JurongEast and YewTee have resumed now. Pls expect additional 10mins traveling time between Jurong East and Yew Tee.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/571317749558808579",
+      "createdAt": "2015-02-27T22:35:40.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] Update : Train services between Jurong East and Yew Tee are now running slowly.Free bus and bus bridging are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/571315803854802944",
+      "createdAt": "2015-02-27T22:27:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Update: No train service between Jurong East and YewTee in both directions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/571310514875146240",
+      "createdAt": "2015-02-27T22:06:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Update: Free bus and bus bridging service is still available between Bukit Gombak and Yew Tee stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/571305915086802944",
+      "createdAt": "2015-02-27T21:48:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: No train service between BukitGombak and YewTee in both directions.The person intrudes to the track again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/571304872114434048",
+      "createdAt": "2015-02-27T21:44:30.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "Update: Trains are running normally now. Free bus service between Bukit Gombak and Yew Tee has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/571301746183507968",
+      "createdAt": "2015-02-27T21:32:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Update: Estimate 10 mins additional travelling time between Bukit Gombak and Yew Tee due to track intrusion.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/571299977126785025",
+      "createdAt": "2015-02-27T21:25:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Update: Free bus service is activated between Bukit Gombak and Yew Tee stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/571297498528030721",
+      "createdAt": "2015-02-27T21:15:12.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Estimate 15 mins additional travelling time between YewTee and Jurong East due to track intrusion.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/571295047125053443",
+      "createdAt": "2015-02-27T21:05:28.000+08:00"
+    }
+  ]
+}

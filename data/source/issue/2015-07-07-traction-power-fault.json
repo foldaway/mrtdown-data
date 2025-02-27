@@ -1,0 +1,122 @@
+{
+  "id": "2015-07-07-traction-power-fault",
+  "title": "Traction power fault causing delays",
+  "componentIdsAffected": [
+    "NSL",
+    "EWL"
+  ],
+  "startAt": "2015-07-07T19:16:12.000+08:00",
+  "endAt": "2015-07-07T22:35:58.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "Trains on the NSEW line are running at slower speeds. Free bus services are still available until further notice.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618438130249523200",
+      "createdAt": "2015-07-07T23:15:14.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Trains on the NSEW line are currently running at slower speeds. Free bus services are still available until further notice.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618433268648546308",
+      "createdAt": "2015-07-07T22:55:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train service on NS Line has resumed. Free boarding of buses still available.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/618432575288115201",
+      "createdAt": "2015-07-07T22:53:10.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Service on the North South line has resumed at reduced speeds. Free bus services will continue until further notice.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618428248662278144",
+      "createdAt": "2015-07-07T22:35:58.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Service on NS line is still unavailable. Service on EW line is running at slower speeds. We apologise for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618425103630516224",
+      "createdAt": "2015-07-07T22:23:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Service on the North South line is still unavailable. Free bus services is still available at all NSEW stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618420152061669376",
+      "createdAt": "2015-07-07T22:03:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train service on EW Line has resumed. Free boarding of buses are still available.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/618416654699999233",
+      "createdAt": "2015-07-07T21:49:54.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Service on EW line has resumed at slower speeds. Service on North South line is still unavailable. We are working to rectify the problem.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618415101662474240",
+      "createdAt": "2015-07-07T21:43:44.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "We are still investigating the cause of the power fault and are doing our best to restore service on the North South lines.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618410156225761280",
+      "createdAt": "2015-07-07T21:24:05.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Services on the EW line from Pasir Ris to Joo Koon have resumed. We are proceeding with caution and trains are moving at a slower speed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618410023312461825",
+      "createdAt": "2015-07-07T21:23:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NSEW Lines down. Take the NEL, Downtwn or Circle Line or other tpt mode to continue your journey.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/618406084986834944",
+      "createdAt": "2015-07-07T21:07:54.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "We are concurrently running tests on the North South line to systematically isolate the source of the power fault and rectify the problem.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618405191130320896",
+      "createdAt": "2015-07-07T21:04:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Our trains have completed tests on the EWL from Pasir Ris to Joo Koon MRT stations. We are working towards resuming services on EWL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618399929094967296",
+      "createdAt": "2015-07-07T20:43:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "No train service on NSEW lines. Commuters are advised to take the free bus services or other train lines such as the Circle or NEL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618394897947582464",
+      "createdAt": "2015-07-07T20:23:27.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "No train service at all NSEWL stations. Free boarding of passing by buses available.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/618391028148518912",
+      "createdAt": "2015-07-07T20:08:04.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Commuters are advised to avoid the NSEWL as we rectify the power fault. Pls take the free bus services or other train lines.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618389939676254208",
+      "createdAt": "2015-07-07T20:03:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train service is not available on the North-South and East-West Lines (NSEWL). Free bus services are available at all NSEWL MRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618384913306222592",
+      "createdAt": "2015-07-07T19:43:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to traction power fault, please expect additional 20mins traveling time between CLE and JKN and between MRB and YIS both bounds.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/618377972597174272",
+      "createdAt": "2015-07-07T19:16:12.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "2012-05-17-south-bound-service-restored",
+  "title": "South-bound train service restoration",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-05-17T09:19:51.000+08:00",
+  "endAt": "2012-05-17T11:01:05.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:South-bound train service from Somerset towards Marina Bay running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/202956878379094016",
+      "createdAt": "2012-05-17T11:01:05.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "South-bound train service from Somerset towards Marina Bay moving slower due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/202944148242833408",
+      "createdAt": "2012-05-17T10:10:30.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:South-bound train service from Braddell to Toa Payoh running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/202931402881236992",
+      "createdAt": "2012-05-17T09:19:51.000+08:00"
+    }
+  ]
+}

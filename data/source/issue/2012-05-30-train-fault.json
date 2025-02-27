@@ -1,0 +1,24 @@
+{
+  "id": "2012-05-30-train-fault",
+  "title": "Train fault causing delays from Yew Tee to Jurong East",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-05-30T08:25:42.000+08:00",
+  "endAt": "2012-05-30T08:51:55.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:Train service from Yew Tee towards Jurong East has been running well as of 8.40am",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/207635416101294080",
+      "createdAt": "2012-05-30T08:51:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Trains from Yew Tee towards Jurong East are slightly delayed due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/207628817223778304",
+      "createdAt": "2012-05-30T08:25:42.000+08:00"
+    }
+  ]
+}

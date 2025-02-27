@@ -1,0 +1,61 @@
+{
+  "id": "2013-05-30-track-fault-nsl",
+  "title": "Track Fault on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2013-05-30T06:52:05.000+08:00",
+  "endAt": "2013-05-30T09:44:42.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]CLEARED: Normal train service resumed. Trains are travelling at a slower speed over the affected track.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/339920269428793344",
+      "createdAt": "2013-05-30T09:44:42.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Due to a rail crack at #YioChuKang, estimate 15mins additional traveling time from #Woodlands to #AngMoKio towards #MarinaBay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/339890680937709569",
+      "createdAt": "2013-05-30T07:47:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Due to a rail crack at #YioChuKang, estimate 15mins additional traveling time from #Woodlands to #DhobyGhaut towards #MarinaBay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/339889740029521920",
+      "createdAt": "2013-05-30T07:43:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE: Due to a track fault at #YioChuKang, as a safety precaution trains are travelling slower from #Woodlands to #DhobyGhaut.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/339889565089296384",
+      "createdAt": "2013-05-30T07:42:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]UPDATE:Due to a rail crack at #YioChuKang, estimate 30mins additional traveling time from #Woodlands to #DhobyGhaut towards #MarinaBay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/339885245056831488",
+      "createdAt": "2013-05-30T07:25:31.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE:SMRT engineers are at affected track checking the cause.Trains travelling slower over the affected track as a safety precaution",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/339880035961954304",
+      "createdAt": "2013-05-30T07:04:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Due to a rail crack at #YioChuKang, estimate 30mins additional traveling time from #Woodlands to #AngMoKio towards #MarinaBay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/339878645558562816",
+      "createdAt": "2013-05-30T06:59:18.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Estimate 30 mins additional travelling time from #Woodlands to #AngMoKio towards MarinaBay due to track fault at Yio Chu Kang.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/339876831828275200",
+      "createdAt": "2013-05-30T06:52:05.000+08:00"
+    }
+  ]
+}

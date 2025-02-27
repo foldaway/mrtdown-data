@@ -1,0 +1,115 @@
+{
+  "id": "2020-12-04-tel-signalling-fault",
+  "title": "Signalling fault causing no train service on TEL",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2020-12-04T05:43:01.000+08:00",
+  "endAt": "2020-12-04T10:56:35.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[TEL] CLEARED: Free regular bus and bridging bus services have ceased. We are sorry for affecting your morning commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334700747607314434",
+      "createdAt": "2020-12-04T11:27:10.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: Train service between Woodlands North and Woodlands South has commenced. Free regular bus and bridging bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334693050635878400",
+      "createdAt": "2020-12-04T10:56:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: There is no train service between Woodlands North and Woodlands South stations. Free regular bus and bridging bus services are available. We are sorry for affecting your morning commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334686104201510913",
+      "createdAt": "2020-12-04T10:28:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "TEL] UPDATE: There is no train service between Woodlands North and Woodlands South stations.  Free regular bus and bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334680905344929792",
+      "createdAt": "2020-12-04T10:08:19.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL] UPDATE: Due to a signalling fault, there is no train service between Woodlands North and Woodlands South stations.  Free regular bus and bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334675880946192384",
+      "createdAt": "2020-12-04T09:48:21.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL] UPDATE: There is no train service between Woodlands North and Woodlands South stations. Free regular bus and bridging bus services are available. We apologise for affecting your morning commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334670862289661953",
+      "createdAt": "2020-12-04T09:28:25.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL] UPDATE: Due to a signalling fault, there is no train service between Woodlands North and Woodlands South. Free regular bus and bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334665741056897025",
+      "createdAt": "2020-12-04T09:08:04.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL] UPDATE: There is no train service between Woodlands North and Woodlands South stations. Free regular bus and bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334660302856617984",
+      "createdAt": "2020-12-04T08:46:27.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL] UPDATE: Due to a signalling fault, there is no train service between Woodlands North and Woodlands South. Free regular bus and bridging bus services are available. We are sorry for affecting your commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334655146370818049",
+      "createdAt": "2020-12-04T08:25:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: No train service between Woodlands North and Woodlands South. Free regular bus and bridging bus services are available..",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334650812685930497",
+      "createdAt": "2020-12-04T08:08:45.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a signalling fault, there is no train service between Woodlands North and Woodlands South. Free regular bus and bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334644863166414848",
+      "createdAt": "2020-12-04T07:45:06.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: No train service between Woodlands North and Woodlands South. Free regular bus and bridging bus services are available. We apologize for the delay to your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334639314651684864",
+      "createdAt": "2020-12-04T07:23:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: No train service between Woodlands North and Woodlands South. Free regular bus and bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334634218073145345",
+      "createdAt": "2020-12-04T07:02:48.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL] UPDATE: No train service between Woodlands North and Woodlands South. Please seek alternative transport. We are working to recover service..",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334628832058384384",
+      "createdAt": "2020-12-04T06:41:24.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL] UPDATE: No train service between Woodlands North and Woodlands South. Please seek alternative transport. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334622604573900800",
+      "createdAt": "2020-12-04T06:16:39.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL] UPDATE: There is no train service between Woodlands North and Woodlands South. Please seek alternative transport. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334616787619512321",
+      "createdAt": "2020-12-04T05:53:32.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to signalling fault no trains service in TEL. Free buses and bridging buses are provided at these stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1334614141680513024",
+      "createdAt": "2020-12-04T05:43:01.000+08:00"
+    }
+  ]
+}

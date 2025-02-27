@@ -1,0 +1,25 @@
+{
+  "id": "2021-06-02-nel-signalling-fault",
+  "title": "Signalling fault on North East Line",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2021-06-02T20:06:23.000+08:00",
+  "endAt": "2021-06-02T20:11:21.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "NEL service is back to normal operations. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1400062479581945859",
+      "createdAt": "2021-06-02T20:11:21.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "NEL service has resumed as the signalling fault has been cleared. Please expect about 10 minutes of additional travel time.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1400061228714659843",
+      "createdAt": "2021-06-02T20:06:23.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "2021-05-21-circle-line-signal-fault",
+  "title": "Signal fault causing delays on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2021-05-21T05:21:53.000+08:00",
+  "endAt": "2021-05-21T07:15:33.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL]: Train services have resumed. Free regular and bridging bus services have ceased. We are sorry for affecting your morning commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1395522301026725892",
+      "createdAt": "2021-05-21T07:30:18.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: Train services are progressively returning to normal. Free regular and bridging bus services are still available between Paya Lebar and Buona Vista MRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1395518586337193984",
+      "createdAt": "2021-05-21T07:15:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Due to a signal fault, pls add 30min travel time on CCL. Commuters may make alternative travel arrangements including taking other train lines (EWL, NSL, NEL and DTL). Free regular and bridging bus services are available between Paya Lebar and Buona Vista MRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1395514592416079873",
+      "createdAt": "2021-05-21T06:59:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Due to a signal fault, please add additional 30mins between #LorongChuan and #FarrerRoad. Free regular bus and bus bridging services are available between #PayaLebar and #BuonaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1395511304312348672",
+      "createdAt": "2021-05-21T06:46:36.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to a signaling fault, please add additional 30mins between #LorongChuan and #FarrerRoad. Free regular bus service and bus bridging is available between #PayaLebar and #BuonaVista. For alternative travel options, please refer to https://t.co/H0JXeZvUHA",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1395506079933493249",
+      "createdAt": "2021-05-21T06:25:51.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL] UPDATE: Please add 30min travel time on CCL. Pls seek alternative transport. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1395502351742431233",
+      "createdAt": "2021-05-21T06:11:02.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to a signal fault, please add 30mins additional time on Circle Line. Free regular bus service and bus bridging is available between #PayaLebar and #BuonaVista.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1395500595935473664",
+      "createdAt": "2021-05-21T06:04:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Additional 30mins train travel time between #Bartley and #BotanicGardens due to a signal fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1395497386470830081",
+      "createdAt": "2021-05-21T05:51:18.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to a signal fault, please add 30mins additional time on Circle Line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1395494838175354885",
+      "createdAt": "2021-05-21T05:41:11.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to a signal fault, please add 15mins additional time between #LorongChuan and #Caldecott",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1395489982307966977",
+      "createdAt": "2021-05-21T05:21:53.000+08:00"
+    }
+  ]
+}

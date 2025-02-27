@@ -1,0 +1,25 @@
+{
+  "id": "2014-10-31-track-fault-lightning",
+  "title": "Track fault causing delays between Kranji and Admiralty",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-10-31T15:54:05.000+08:00",
+  "endAt": "2014-10-31T16:16:18.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Train services on North South line are operating normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/528098121520128000",
+      "createdAt": "2014-10-31T16:16:18.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Estimate 15 minutes additional traveling time between Kranji and Admiralty on both bounds due to track fault, possibly due to lightning.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/528092529913131008",
+      "createdAt": "2014-10-31T15:54:05.000+08:00"
+    }
+  ]
+}

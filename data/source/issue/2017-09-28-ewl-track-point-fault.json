@@ -1,0 +1,49 @@
+{
+  "id": "2017-09-28-ewl-track-point-fault",
+  "title": "Track Point Fault Causing Delays on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2017-09-28T05:53:52.000+08:00",
+  "endAt": "2017-09-28T06:47:24.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train svcs btwn #TanahMerah and #PasirRis have resumed. Free regular bus &amp; free bridging bus svcs have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/913201083807182850",
+      "createdAt": "2017-09-28T08:37:59.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Train svcs are progressively being restored. Pls add 10mins train travel time btwn #TanahMerah and #PasirRis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/913192547035488257",
+      "createdAt": "2017-09-28T08:04:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Train svcs has resumed. Pls add 20mins travel time btwn #TanahMerah and #PasirRis due to track point fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/913173255267139585",
+      "createdAt": "2017-09-28T06:47:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:Due to track point fault,pls expect 30mins delay train travel time btwn Tampines &amp; PasirRis.(Not linked to new signalling project).",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/913171343201386496",
+      "createdAt": "2017-09-28T06:39:48.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Train svcs has resumed. Pls add 20mins travel time btwn #Tampines and #PasirRis due to track point fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/913165121215619072",
+      "createdAt": "2017-09-28T06:15:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]:Due to track point fault,pls expect 30mins delay train travel time btwn TanahMerah &amp; PasirRis.(Not linked to new signalling project).",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/913159781644242944",
+      "createdAt": "2017-09-28T05:53:52.000+08:00"
+    }
+  ]
+}

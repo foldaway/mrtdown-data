@@ -1,0 +1,65 @@
+{
+  "id": "2017-11-11-ewl-train-fault",
+  "title": "No train service on East West Line due to train fault",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2017-11-15T08:25:28.000+08:00",
+  "endAt": "2017-11-15T17:15:45.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Free regular bus and bridging bus services between #BoonLay and #TuasLink have ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930730820922368000",
+      "createdAt": "2017-11-15T17:34:54.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Train services between #BoonLay and #TuasLink have resumed but are running slower. Commuters travelling between #JurongEast and #TuasLink are advised to cater additional 10 minutes travelling time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930726002606481408",
+      "createdAt": "2017-11-15T17:15:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: No train service between #BoonLay and #TuasLink. Free regular bus and bridging bus services are available between #BoonLay and #TuasLink. Please seek alternative transport: https://t.co/4Qu9aPz41m. We are sorry that your journey has been affected.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930676315879084032",
+      "createdAt": "2017-11-15T13:58:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Please add 10 mins train travel time between #BoonLay and #TuasLink. Free regular bus services are still available between #JurongEast and #TuasLink.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930624376428306432",
+      "createdAt": "2017-11-15T10:31:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Please add 15 mins train travel time between #JurongEast and #TuasLink. Free regular bus services are still available between #JurongEast and #TuasLink.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930615917314064385",
+      "createdAt": "2017-11-15T09:58:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a train fault, please add 30mins train travel time between #Queenstown and #TuasLink. Free regular bus services are available between #JurongEast and #TuasLink.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930607998069653504",
+      "createdAt": "2017-11-15T09:26:51.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Pls add 30mins train travel time btwn #JurongEast and #TuasLink. We are working to recover svc.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930601415092838403",
+      "createdAt": "2017-11-15T09:00:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Pls add 30mins train travel time btwn #JurongEast and #TuasLink due to a train fault at #JooKoon. Train svc is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930595651435479040",
+      "createdAt": "2017-11-15T08:37:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Pls add 20mins train travel time btwn #JurongEast and #JooKoon due to a train fault at #JooKoon. Train svc is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/930592553434464256",
+      "createdAt": "2017-11-15T08:25:28.000+08:00"
+    }
+  ]
+}

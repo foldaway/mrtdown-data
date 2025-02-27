@@ -1,0 +1,43 @@
+{
+  "id": "2022-06-20-circle-line-track-fault",
+  "title": "Track fault causing delays on Circle Line",
+  "componentIdsAffected": [
+    "CCL",
+    "DTL"
+  ],
+  "startAt": "2022-06-20T13:34:29.000+08:00",
+  "endAt": "2022-06-20T14:20:12.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] CLEARED: Fault cleared. We are progressively recovering the service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1538768660176642053",
+      "createdAt": "2022-06-20T14:20:12.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to a track fault, additional 10 mins travelling time between #Promenade &amp; #MarinaBay. Shuttle train service is available #Bayfront &amp; #MarinaBay at Platform B. Passengers are advised to use DTL to continue their journey between #Bayfront and #Promenade",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1538766364114006016",
+      "createdAt": "2022-06-20T14:11:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Shuttle train service is available #Bayfront &amp; #MarinaBay at Platform B. Passengers are advised to use DTL to continue their journey between #Bayfront and #Promenade.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1538761083489783808",
+      "createdAt": "2022-06-20T13:50:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Additional 10mins train travel time from #Promenade to #MarinaBay. We are working to recover service.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1538759499145543681",
+      "createdAt": "2022-06-20T13:43:48.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to a track fault, additional 10 mins travelling time between #Promenade &amp; #MarinaBay. Shuttle train service is available #Bayfront &amp; #MarinaBay at Platform B. Passengers are advised to use DTL to continue their journey between #Bayfront and #Promenade.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1538757155830267905",
+      "createdAt": "2022-06-20T13:34:29.000+08:00"
+    }
+  ]
+}

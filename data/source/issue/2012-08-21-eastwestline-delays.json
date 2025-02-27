@@ -1,0 +1,25 @@
+{
+  "id": "2012-08-21-eastwestline-delays",
+  "title": "Service Disruption on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-08-21T08:29:28.000+08:00",
+  "endAt": "2012-08-21T08:38:25.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EASTWESTLINE] : Train services from #PayaLebar towards #PasirRis are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/237710211840884736",
+      "createdAt": "2012-08-21T08:38:25.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EASTWESTLINE]: Trains are slightly delayed from #PayaLebar to #PasirRis in the direction towards PasirRis. Estimated delay: 5 mins",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/237707960674050048",
+      "createdAt": "2012-08-21T08:29:28.000+08:00"
+    }
+  ]
+}

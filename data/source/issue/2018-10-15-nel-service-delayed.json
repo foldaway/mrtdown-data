@@ -1,0 +1,48 @@
+{
+  "id": "2018-10-15-nel-service-delayed",
+  "title": "Service Delay on North East Line",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2018-10-15T16:08:05.000+08:00",
+  "endAt": "2018-10-15T16:53:00Z",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "15/10, 5.07pm: NEL full svc has resumed. Free bus rides &amp; Bridging Buses svc have ceased. We are sorry for the inconvenience caused",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1051761748980654080",
+      "createdAt": "2018-10-15T17:08:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "15/10, 4.53pm: NEL full svc has resumed. Free bus rides &amp; Bridging Buses svc still available at designated bus stops. We are sorry for the inconvenience caused",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1051758238289485825",
+      "createdAt": "2018-10-15T16:54:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "15/10, 4.38pm: No NEL svc btw Farrer Park NE8 &amp; Potong Pasir NE10 - To continue your journey, free bus rides &amp; Bridging Buses available at designated bus stops",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1051754472202878976",
+      "createdAt": "2018-10-15T16:39:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "15/10, 4.30pm: No NEL svc btw Farrer Park NE8 &amp; Potong Pasir NE10 - To continue your journey, free bus rides available at affected stns. Bridging buses has been activated.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1051752479547744258",
+      "createdAt": "2018-10-15T16:31:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "15/10, 4.18pm: No NEL svc btwn Farrer Park NE8 &amp; Potong Pasir NE10 due to power fault. Free bus rides available at affected NEL stations. We are sorry",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1051749280606613504",
+      "createdAt": "2018-10-15T16:19:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "15/10, 4.06pm: NEL svc is delayed due to a power fault at Farrer Park NE8. Additional travel time of abt 20 minutes may be expected for both bounds",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1051746519651512325",
+      "createdAt": "2018-10-15T16:08:05.000+08:00"
+    }
+  ]
+}

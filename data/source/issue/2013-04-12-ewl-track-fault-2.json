@@ -1,0 +1,23 @@
+{
+  "id": "2013-04-12-ewl-track-fault-2",
+  "title": "Second Track Fault on East-West Line",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2013-04-12T09:10:33.000+08:00",
+  "endAt": "2013-04-12T09:50:35.000+08:00",
+  "type": "outage",
+  "severity": "minor",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services between #Tampines and #PasirRis are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/322527133115248640",
+      "createdAt": "2013-04-12T09:50:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Estimate 20 mins additional travelling time between #Tampines and #PasirRis in both directions due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/322517060510949376",
+      "createdAt": "2013-04-12T09:10:33.000+08:00"
+    }
+  ]
+}

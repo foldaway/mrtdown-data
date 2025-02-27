@@ -1,0 +1,54 @@
+{
+  "id": "2022-09-21-nsl-track-fault",
+  "title": "Track Fault on North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2022-09-21T06:02:06.000+08:00",
+  "endAt": "2022-09-21T06:53:54.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Train services has resumed. Free regular bus services between #Yishun and #ToaPayoh has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1572359639987290112",
+      "createdAt": "2022-09-21T06:58:45.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1572358416974381056",
+      "createdAt": "2022-09-21T06:53:54.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE : Due to a track fault, pls add 10mins train travel time btwn #Yishun and #ToaPayoh.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1572358168461848578",
+      "createdAt": "2022-09-21T06:52:55.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL] UPDATE: Due to a track fault, pls add 15mins train travel time btwn #Yishun and #ToaPayoh. Free regular bus svcs from #Yishun to #ToaPayoh.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1572355079847686147",
+      "createdAt": "2022-09-21T06:40:38.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL] Due to a track fault, pls add 15mins train travel time btwn #Yishun and #ToaPayoh. Free regular bus svcs from #Yishun to #ToaPayoh. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1572350995098906626",
+      "createdAt": "2022-09-21T06:24:24.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a track fault, pls add 15mins train travel time btwn #Yishun and #ToaPayoh. Free regular bus svcs from #Yishun to #ToaPayoh. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1572347970582114308",
+      "createdAt": "2022-09-21T06:12:23.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[NSL]: Due to a track fault, pls add 15mins train travel time btwn #Yishun and #ToaPayoh.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1572345383514443776",
+      "createdAt": "2022-09-21T06:02:06.000+08:00"
+    }
+  ]
+}

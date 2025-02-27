@@ -1,0 +1,49 @@
+{
+  "id": "2018-08-18-track-fault-tampines-pasirris",
+  "title": "Track fault causing delays between Tampines and Pasir Ris",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2018-08-18T21:57:21.000+08:00",
+  "endAt": "2018-08-18T23:45:13.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Train services between #Tampines and #PasirRis have resumed. Free regular bus services between #Tampines and #PasirRis have ceased. We apologize for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1030845997000220672",
+      "createdAt": "2018-08-18T23:56:52.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[EWL] CLEARED: Normal train services between #Tampines and #PasirRis have resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1030843064745525249",
+      "createdAt": "2018-08-18T23:45:13.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Due to an earlier track fault, please expect longer travelling time of 10 mins btwn #Tampines and #PasirRis. Our staff is working on it.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1030833698520719362",
+      "createdAt": "2018-08-18T23:08:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to an earlier track fault, please expect longer travelling time of 10 mins btwn #Tampines and #PasirRis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1030829005547626497",
+      "createdAt": "2018-08-18T22:49:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to an earlier track fault, please expect longer travelling time of 10 mins between #Tampines and #PasirRis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1030823430206025731",
+      "createdAt": "2018-08-18T22:27:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track fault, train travel time btwn #Tampines and #PasirRis will be delayed for 20mins. Free regular bus service is available btwn #Tampines and #PasirRis.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1030815920950657026",
+      "createdAt": "2018-08-18T21:57:21.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "2016-09-20-circle-line-track-fault",
+  "title": "Circle Line track fault causing delays",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2016-09-20T06:57:42.000+08:00",
+  "endAt": "2016-09-20T07:06:03.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train service is running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/778054886923481088",
+      "createdAt": "2016-09-20T10:15:15.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Update: Estimate 10mins additional travelling time from #DhobyGhaut to\n#Bishan towards #HarbourFront due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/778049423402086400",
+      "createdAt": "2016-09-20T09:53:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] Update: Estimate 15 mins additional travelling time from #DhobyGhaut to\n#Bishan towards #HarbourFront due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/778046482981150721",
+      "createdAt": "2016-09-20T09:41:51.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Update: Estimate 15mins additional travelling time from #DhobyGhaut to\n#Bishan towards #HarbourFront due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/778029429020774400",
+      "createdAt": "2016-09-20T08:34:05.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] Update: Estimate 10mins additional travelling time from #DhobyGhaut to\n#MacPherson towards #HarbourFront due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/778014363311497216",
+      "createdAt": "2016-09-20T07:34:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Estimate 5mins additional travelling time from #DhobyGhaut to #MacPherson towards #HarbourFront due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/778009102127472640",
+      "createdAt": "2016-09-20T07:13:19.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services from #PayaLebar towards #MacPherson are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/778007274723782656",
+      "createdAt": "2016-09-20T07:06:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Estimate 5mins additional travelling time from #PayaLebar to #MacPherson towards #HarbourFront due to track fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/778005174098866176",
+      "createdAt": "2016-09-20T06:57:42.000+08:00"
+    }
+  ]
+}

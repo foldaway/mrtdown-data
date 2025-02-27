@@ -1,0 +1,19 @@
+{
+  "id": "2017-11-11-bukit-panjang-lrt-track-maintenance",
+  "title": "Bukit Panjang LRT adjusted start time for track maintenance",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2017-11-11T14:02:42.000+08:00",
+  "endAt": "2018-01-01T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "To provide more time for our team to carry out track maintenance work, Bukit Panjang LRT will begin at 7am instead of 5.30am every Sunday, starting from tomorrow till 31 Dec. Shuttle bus services along the LRT route will be available. More info: https://t.co/6clveusSvB https://t.co/MEwZMzNsyp",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/929227865870102528",
+      "createdAt": "2017-11-11T14:02:42.000+08:00"
+    }
+  ]
+}

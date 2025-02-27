@@ -1,0 +1,163 @@
+{
+  "id": "2015-03-08-bplrt-outage",
+  "title": "Service disruption on Bukit Panjang LRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2015-03-08T21:49:33.000+08:00",
+  "endAt": "2015-03-10T08:07:01.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Svcs have resumed for Svc B. Free public and shuttle bus svcs for both Svc A &amp; B will op till further notice. http://t.co/pka0ZrRWKr",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/575220043992068097",
+      "createdAt": "2015-03-10T17:02:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Svcs have resumed for Svc B. Free public (for Svc A&amp;B) &amp; shuttle bus (for Svc B) will op till further notice. http://t.co/0oWq25JhTw",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/575214742429564928",
+      "createdAt": "2015-03-10T16:40:56.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] Svcs have resumed for Svc A. Commuters will not be charged for train journeys on the #BPLRT. More info http://t.co/b9nJMMBj07",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/575174131563397121",
+      "createdAt": "2015-03-10T13:59:33.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] Svcs have resumed for outer loop Svc A. Free public (for Svc A &amp; B) &amp; shuttle bus svcs (for Svc B) are avail. http://t.co/U7nWzl6weF",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/575159354908790784",
+      "createdAt": "2015-03-10T13:00:50.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] #BPLRT services have just resumed for outer loop Service A. Free public &amp; shuttle bus svcs are still avail. http://t.co/Nv300rSw9R",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/575155006879350784",
+      "createdAt": "2015-03-10T12:43:34.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[BPLRT] We are testing our LRT trains to ensure safety &amp; reliability. These free public &amp; shuttle bus svcs are avail. http://t.co/ElJgaeZ6yz",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/575146905128206338",
+      "createdAt": "2015-03-10T12:11:22.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] Testing of LRT trains are ongoing to ensure safety. Meanwhile, these free public bus svcs are avail. http://t.co/SUORwnU5O8",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/575111888612147200",
+      "createdAt": "2015-03-10T09:52:13.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] According to ground observations, congestion around Senja has cleared. Free shuttle bus are still ongoing. http://t.co/IgvtgcKEzo",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/575091218226372608",
+      "createdAt": "2015-03-10T08:30:05.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[BPLRT] Testing of LRT trains have begun to ensure safety and reliability. Watch for updates http://t.co/1IV1TfxoFX",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/575085413003489280",
+      "createdAt": "2015-03-10T08:07:01.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] We are still working to restore service on the BPLRT. Free public and bus services continue to be available. http://t.co/y9sEr1hCHV",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/575062847312433153",
+      "createdAt": "2015-03-10T06:37:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] BPLRT services will not be available this morning. Free public bus svc available from 5am. More info - http://t.co/HDASjD9P3u",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/575031324995551232",
+      "createdAt": "2015-03-10T04:32:06.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: #BPLRT svcs will not resume today. We are working to recover svc by tmr morn. Free public and shuttle bus svcs will cont.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574930582301360128",
+      "createdAt": "2015-03-09T21:51:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: #BPLRT svcs will not resume today. We are working to recover svc by tmr morn. Free public &amp; shuttle bus svcs will cont.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574925689574453249",
+      "createdAt": "2015-03-09T21:32:20.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: #BPLRT services will not resume this evening. Free public &amp; shuttle bus services will cont. Please seek alt transport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574920974765678592",
+      "createdAt": "2015-03-09T21:13:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: #BPLRT services will not resume this evening. Free public &amp; shuttle bus services will cont. Pls seek alternative transport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574916007870910464",
+      "createdAt": "2015-03-09T20:53:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]: As power tie-breakers at Senja stn were damaged, #BPLRT will not resume svc this evening. Free public &amp; shuttle buses will cont.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574911055584849921",
+      "createdAt": "2015-03-09T20:34:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: #BPLRT services will not resume this evening. Free public &amp; shuttle bus services will cont. Pls seek alt transport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574906126900142080",
+      "createdAt": "2015-03-09T20:14:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]UPDATE: Power tie-breakers at Senja stn were damaged. #BPLRT will not resume svc this evening. Free public &amp; shuttle buses will cont.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574900815002890240",
+      "createdAt": "2015-03-09T19:53:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Services on the #BPLRT will not resume this evening. Free public and shuttle bus services will cont. Pls seek alt transport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574896064978808832",
+      "createdAt": "2015-03-09T19:34:37.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Services on the #BPLRT will not resume this evening. Free public &amp; shuttle bus services will cont. Pls seek alt transport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574891062818295809",
+      "createdAt": "2015-03-09T19:14:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: No train service on #BPLRT in both directions. Free public and shuttle bus services are available at all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574886769969094658",
+      "createdAt": "2015-03-09T18:57:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: No train service on #BPLRT in both directions. Free public &amp; shuttle bus services are available at all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574882230671011840",
+      "createdAt": "2015-03-09T18:39:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: No train service on #BPLRT in both directions. Free public &amp; shuttle buses are available at all BPLRT stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574877481955516416",
+      "createdAt": "2015-03-09T18:20:47.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT]   No train service on #BPLRT in both directions. Free public &amp; shuttle buses are now available at afffected stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574872505858461697",
+      "createdAt": "2015-03-09T18:01:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]   No train service from #BukitPanjang to #Senja via #Petir.  Service A #BukitPanjang to #Petir via #Senja is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/574567634626174976",
+      "createdAt": "2015-03-08T21:49:33.000+08:00"
+    }
+  ]
+}

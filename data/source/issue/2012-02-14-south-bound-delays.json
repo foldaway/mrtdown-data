@@ -1,0 +1,24 @@
+{
+  "id": "2012-02-14-south-bound-delays",
+  "title": "Delays on South-bound and East-bound Train Services",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2012-02-14T08:30:13.000+08:00",
+  "endAt": "2012-02-14T09:10:32.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:East-bound train service is running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/169226986689011712",
+      "createdAt": "2012-02-14T09:10:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "South-bound service to Marina Bay and East-bound service to Pasir Ris slightly delayed due to train faults.Please allow extra time to travel",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/169216843280695297",
+      "createdAt": "2012-02-14T08:30:13.000+08:00"
+    }
+  ]
+}

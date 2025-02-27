@@ -1,0 +1,31 @@
+{
+  "id": "2012-04-17-train-fault-delay",
+  "title": "Train Fault Causing Delays",
+  "componentIdsAffected": [
+    "EWL",
+    "JRL"
+  ],
+  "startAt": "2012-04-17T07:40:16.000+08:00",
+  "endAt": "2012-04-17T08:31:04.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:Service from Joo Koon  to Jurong running smoothly again.Stations and trains maybe crowded due to earlier service delay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192047492249038848",
+      "createdAt": "2012-04-17T08:31:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Trains are moving slowly from Joo Koon to Clementi.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192042283850399744",
+      "createdAt": "2012-04-17T08:10:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Expect 20 minute delay from Joo Koon to Jurong due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/192034704608870400",
+      "createdAt": "2012-04-17T07:40:16.000+08:00"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "2014-05-02-due-to-a-traction-power-fault",
+  "title": "Service disruption due to traction power fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2014-05-02T05:43:18.000+08:00",
+  "endAt": "2014-05-02T06:01:55.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Normal train service has resumed. Free bus service and bridging has ceased. We apologies for the inconvenience.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/461996065026101248",
+      "createdAt": "2014-05-02T06:30:20.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "At 0553 train service resume for Yio Chu Kang to Yishun northbound.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/461988915918823425",
+      "createdAt": "2014-05-02T06:01:55.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Free bus bridging services activated from Yio Chu Kang to Yishun. Our maintenance engineers are on site trying to rectify the fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/461985716373688321",
+      "createdAt": "2014-05-02T05:49:12.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Due to a traction power fault, there will be no train service from Yio Chu Kang northbound towards Yishun northbound.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/461984229601984513",
+      "createdAt": "2014-05-02T05:43:18.000+08:00"
+    }
+  ]
+}

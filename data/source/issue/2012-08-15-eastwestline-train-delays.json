@@ -1,0 +1,25 @@
+{
+  "id": "2012-08-15-eastwestline-train-delays",
+  "title": "Train delays on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-08-15T06:57:33.000+08:00",
+  "endAt": "2012-08-15T07:14:02.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EASTWESTLINE]: Train services from #Queenstown towards #OutramPark are now operating normally.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/235514647715905536",
+      "createdAt": "2012-08-15T07:14:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EASTWESTLINE]: Trains are slightly delayed from #Queenstown to #OutramPark in the direction towards PasirRis. Estimated delay: 5 mins",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/235510501965197313",
+      "createdAt": "2012-08-15T06:57:33.000+08:00"
+    }
+  ]
+}

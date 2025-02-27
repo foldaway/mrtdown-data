@@ -1,0 +1,37 @@
+{
+  "id": "2017-06-01-nsl-signal-checks",
+  "title": "North-South Line travel time extension due to signalling system checks",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2017-06-01T18:47:52.000+08:00",
+  "endAt": "2017-06-01T19:41:23.000+08:00",
+  "type": "outage",
+  "severity": "minor",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Train services are returning to normal. Free regular bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/870243879563309056",
+      "createdAt": "2017-06-01T19:41:23.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Commuters pls remain calm while train services are progressively resuming. Follow in-train announcements and Twitter updates.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/870240142384025600",
+      "createdAt": "2017-06-01T19:26:32.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE:Trains are progressively returning to normal speed.Pls expect 15mins additional travel time btwn #MarinaSouthPier &amp; #JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/870237917649584128",
+      "createdAt": "2017-06-01T19:17:42.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[NSL] Due to new signalling system checks, pls add 20mins travel time between #MarinaSouthPier &amp; #JurongEast both bounds. We are sorry.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/870230409639936000",
+      "createdAt": "2017-06-01T18:47:52.000+08:00"
+    }
+  ]
+}

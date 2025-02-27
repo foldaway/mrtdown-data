@@ -1,0 +1,31 @@
+{
+  "id": "2017-10-15-downtown-line-service-disruption",
+  "title": "Train service disruption between Bukit Panjang and Beauty World Stations",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2017-10-15T13:04:55.000+08:00",
+  "endAt": "2017-10-15T13:21:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Train services have resumed since 1.21pm. Free bus rides and bridging bus services have ceased. We are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/919445845866459136",
+      "createdAt": "2017-10-15T14:12:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train services between DT1 Bukit Panjang &amp; DT5 Beauty World Stations have resumed at 1.21pm. \n\nFree bus rides &amp; bridging bus services are still available at designated bus stops near affected stations. \n\nServices on the DTL3 are running as usual. \n\nWe are sorry.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/919436143220867072",
+      "createdAt": "2017-10-15T13:33:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to a train fault, there is no train service between DT1 Bukit Panjang and DT5 Beauty World Stations. Free bus rides are available at designated bus stops near affected stations. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/919428854162145285",
+      "createdAt": "2017-10-15T13:04:55.000+08:00"
+    }
+  ]
+}

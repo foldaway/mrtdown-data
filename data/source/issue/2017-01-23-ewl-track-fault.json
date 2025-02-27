@@ -1,0 +1,71 @@
+{
+  "id": "2017-01-23-ewl-track-fault",
+  "title": "Track Fault on East West Line",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2017-01-23T18:34:48.000+08:00",
+  "endAt": "2017-01-23T18:34:48.000+08:00",
+  "type": "outage",
+  "severity": "minor",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[EWL]UPDATE:Train service is running normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/823535165641105409",
+      "createdAt": "2017-01-23T22:17:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 15 mins travel time from #JooKoon towards #Clementi,due to a track fault at #JurongEast. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/823527700048424961",
+      "createdAt": "2017-01-23T21:47:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 20 mins travel time from #JooKoon towards #Clementi,due to a track fault at #JurongEast. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/823523345266196480",
+      "createdAt": "2017-01-23T21:30:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Pls add 25mins travel time from #JooKoon towards #Clementi,due to a track fault at #JurongEast. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/823520387661053952",
+      "createdAt": "2017-01-23T21:18:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 25 mins travel time from #JooKoon towards #Clementi, due to a track fault at #JurongEast.Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/823510566798913536",
+      "createdAt": "2017-01-23T20:39:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 25 mins travel time from #JooKoon towards #Clementi, due to a track fault at #JurongEast. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/823505690073272320",
+      "createdAt": "2017-01-23T20:20:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE: Pls add 25 mins travel time from #JooKoon towards #Clementi,due to a track fault at #JurongEast. Train svc is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/823496409475223553",
+      "createdAt": "2017-01-23T19:43:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 25 mins travel time from #JooKoon towards #Clementi,due to a track fault at #JurongEast. Train svc is still available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/823492086338965504",
+      "createdAt": "2017-01-23T19:26:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]UPDATE:Pls add 20 mins travel time from #JooKoon towards #Clementi,due to a track fault at #JurongEast. Train svc is still available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/823485427881345024",
+      "createdAt": "2017-01-23T19:00:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track fault, pls add 10 mins travel time from #JooKoon to #Clementi towards #PasirRis. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/823479086357975040",
+      "createdAt": "2017-01-23T18:34:48.000+08:00"
+    }
+  ]
+}

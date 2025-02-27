@@ -1,0 +1,37 @@
+{
+  "id": "2021-01-19-no-service-on-punggol-lrt",
+  "title": "No service on Punggol LRT due to a power fault",
+  "componentIdsAffected": [
+    "PGLRT"
+  ],
+  "startAt": "2021-01-19T12:17:21.000+08:00",
+  "endAt": "2021-01-19T12:35:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Punggol LRT service has fully resumed since 12.38pm. Free regular and bridging bus services have ceased. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1351392455703240704",
+      "createdAt": "2021-01-19T12:54:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Punggol LRT service has fully resumed at 12.38pm. Free regular and bridging bus services are still available.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1351390788882628614",
+      "createdAt": "2021-01-19T12:47:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "One direction of the Punggol East &amp; West Loop LRT service has resumed at 12.35pm.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1351389273438654465",
+      "createdAt": "2021-01-19T12:41:25.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "No service on Punggol LRT due to a power fault. Free regular and bridging bus services are available at designated stops.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1351383219912937473",
+      "createdAt": "2021-01-19T12:17:21.000+08:00"
+    }
+  ]
+}

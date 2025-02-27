@@ -1,0 +1,24 @@
+{
+  "id": "2012-04-26-train-service-disruption",
+  "title": "Train service disruption from Pasir Ris to Tampines",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-04-26T10:01:05.000+08:00",
+  "endAt": "2012-04-26T10:06:14.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "UPDATE:Train service from Pasir Ris towards Joo Koon is running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/195332932867592196",
+      "createdAt": "2012-04-26T10:06:14.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Train service from Pasir Ris to Tampines in the direction of Joo Koon delayed due to train fault.Updates to come.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/195331634529181696",
+      "createdAt": "2012-04-26T10:01:05.000+08:00"
+    }
+  ]
+}

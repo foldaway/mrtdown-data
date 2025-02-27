@@ -1,0 +1,73 @@
+{
+  "id": "2022-05-24-bukit-panjang-lrt-train-fault",
+  "title": "Train service delay from Bukit Panjang to Choa Chu Kang",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2022-05-24T09:21:43.000+08:00",
+  "endAt": "2022-05-24T09:46:05.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[BPLRT] CLEARED: Normal train service has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1528953144876576768",
+      "createdAt": "2022-05-24T12:16:50.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] CLEARED: Normal train service is progressively being restored. Free bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1528950187003027456",
+      "createdAt": "2022-05-24T12:05:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Shuttle train service from #ChoaChuKang to #BukitPanjang is available. Service B between #BukitPanjang and loop stations (#Petir to #Senja) are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1528936699858161664",
+      "createdAt": "2022-05-24T11:11:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Service B between #BukitPanjang and loop stations (#Petir to #Senja) are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1528931575521349632",
+      "createdAt": "2022-05-24T10:51:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Services A &amp; B between #BukitPanjang and loop stations (#Petir to #Senja) are available. If your journey has been affected, you may download an e-Travel Chit as proof of your travel at https://t.co/dYFVNdxSLs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1528921493232824320",
+      "createdAt": "2022-05-24T10:11:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Shuttle train service from #ChoaChuKang to #BukitPanjang is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1528917681206075392",
+      "createdAt": "2022-05-24T09:55:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Services A &amp; B between #BukitPanjang and loop stations (#Petir to #Senja) are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1528915203886546944",
+      "createdAt": "2022-05-24T09:46:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Shuttle train service from #ChoaChuKang to #BukitPanjang is available. Services A &amp; B between #BukitPanjang and loop stations (#Petir to #Senja) are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1528911380169957376",
+      "createdAt": "2022-05-24T09:30:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Free regular bus services between #ChoaChuKang and #Bukit Panjang are available. If your journey has been affected, you may download an e-Travel Chit as proof of your travel at https://t.co/dYFVNdxSLs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1528911009381249024",
+      "createdAt": "2022-05-24T09:29:25.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT]: Due to a train fault at #KeatHong, train service from #BukitPanjang to #ChoaChuKang will be delayed. For alternative travel options, please refer to https://t.co/SFAdrdqt7j.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1528909073227616256",
+      "createdAt": "2022-05-24T09:21:43.000+08:00"
+    }
+  ]
+}

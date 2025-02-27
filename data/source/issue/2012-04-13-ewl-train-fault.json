@@ -1,0 +1,30 @@
+{
+  "id": "2012-04-13-ewl-train-fault",
+  "title": "Train Fault on East-West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2012-04-13T19:33:31.000+08:00",
+  "endAt": "2012-04-13T19:53:53.000+08:00",
+  "type": "delay",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "UPDATE:Train service between Tanah Merah and Pasir Ris in both directions is running well again.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/190769773712375808",
+      "createdAt": "2012-04-13T19:53:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "CORRECTION:Train service between TANAH MERAH and Pasir Ris delayed in both directions due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/190765664036847617",
+      "createdAt": "2012-04-13T19:37:33.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "Train service between Tampines and Pasir Ris delayed in both directions due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/190764650080645120",
+      "createdAt": "2012-04-13T19:33:31.000+08:00"
+    }
+  ]
+}

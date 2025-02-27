@@ -1,0 +1,37 @@
+{
+  "id": "2021-10-01-circle-line-traction-power-fault",
+  "title": "Traction power fault on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2021-10-01T17:56:23.000+08:00",
+  "endAt": "2021-10-01T18:12:39.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL] CLEARED: Train services between #PasirPanjang and #HarbourFront have resumed. Free regular bus and bridging bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1443885940498259975",
+      "createdAt": "2021-10-01T18:30:08.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] CLEARED: Fault cleared. Train service is progressively returning back to normal. Free regular bus and bridging bus service are still available between #BuonaVista and  #HarbourFront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1443881538957938690",
+      "createdAt": "2021-10-01T18:12:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]UPDATE: Additional 15 mins train travel time between #PasirPanjang and #HarbourFront due to a traction power fault. Free regular bus and bridging bus service are available between #BuonaVista and  #HarbourFront.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1443880637002256384",
+      "createdAt": "2021-10-01T18:09:04.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[CCL]: Due to a traction power fault, please allow additional 15mins travelling time between #PasirPanjang and #HarbourFront on both bounds.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1443877446831378433",
+      "createdAt": "2021-10-01T17:56:23.000+08:00"
+    }
+  ]
+}
