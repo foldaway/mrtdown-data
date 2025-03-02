@@ -1,0 +1,40 @@
+import { writeFileSync } from 'node:fs';
+import { DateTime } from 'luxon';
+import { join } from 'node:path';
+import { IssueModel } from '../../model/IssueModel';
+import type { IssuesOverview } from '../../schema/IssuesOverview';
+
+export function buildIssuesOverview() {
+  const issues = IssueModel.getAll();
+  const filePath = join(
+    import.meta.dirname,
+    '../../../data/product/issues_overview.json',
+  );
+
+  const content: IssuesOverview = {
+    issuesOngoing: [],
+  };
+
+  for (const issue of issues) {
+    if (issue.endAt != null) {
+      continue;
+    }
+    content.issuesOngoing.push(issue);
+  }
+
+  content.issuesOngoing.sort((a, b) => {
+    const startAtA = DateTime.fromISO(a.startAt);
+    const startAtB = DateTime.fromISO(b.startAt);
+    const diffSeconds = startAtA.diff(startAtB).as('seconds');
+
+    if (diffSeconds < 0) {
+      return 1;
+    }
+    if (diffSeconds > 0) {
+      return -1;
+    }
+    return 0;
+  });
+
+  writeFileSync(filePath, JSON.stringify(content, null, 2));
+}
