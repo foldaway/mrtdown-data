@@ -1,0 +1,70 @@
+name: Check RSS
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  checkRss:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+      - uses: actions/cache@v4
+        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm install
+      - run: npm run check-rss-feeds
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - name: Check for changes
+        id: make-changes
+        run: |-
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "There are uncommitted changes"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "Working directory is clean"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Push changes
+        if: steps.make-changes.outputs.has_changes == 'true'
+        run: |-
+          $BRANCH_NAME = "automated-${{ github.run_id }}"
+          git checkout -b $BRANCH_NAME
+          git add -A
+          git commit -m "chore(data): Automated changes"
+          git push origin $BRANCH_NAME
+      - name: Create Pull Request
+        if: steps.make-changes.outputs.has_changes == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const branchName = 'automated-${{ github.run_id }}';
+
+            // Create PR using GitHub API
+            const { data: pullRequest } = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `[Automated] Update Data`,
+              body: `
+              # Automated Data
+
+              This PR was automatically created by the scheduled GitHub Action workflow.
+              `,
+              head: branchName,
+              base: 'main'
+            });
+
+            console.log(`Pull Request created: ${pullRequest.html_url}`);
