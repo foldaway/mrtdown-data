@@ -2,6 +2,14 @@ import { z } from 'zod';
 import { ComponentIdSchema } from './Component';
 import { DateTime } from 'luxon';
 
+export const IssueTypeSchema = z.enum([
+  'outage',
+  'maintenance',
+  'delay',
+  'infra',
+]);
+export type IssueType = z.infer<typeof IssueTypeSchema>;
+
 export const IssueIdSchema = z
   .string()
   .refine((val) => /^\d{4}-\d{2}-\d{2}-.+$/.test(val))
@@ -61,7 +69,7 @@ export type IssueOutageUpdate = z.infer<typeof IssueOutageUpdateSchema>;
 
 /** [OUTAGE] */
 export const IssueOutageSchema = IssueBase.extend({
-  type: z.literal('outage'),
+  type: z.literal(IssueTypeSchema.Enum.outage),
   severity: IssueOutageSeveritySchema,
   updates: z.array(IssueOutageUpdateSchema),
 });
@@ -95,7 +103,7 @@ export type IssueMaintenanceUpdate = z.infer<
 
 /** [MAINTENANCE] */
 export const IssueMaintenanceSchema = IssueBase.extend({
-  type: z.literal('maintenance'),
+  type: z.literal(IssueTypeSchema.Enum.maintenance),
   cancelledAt: z
     .string()
     .refine((val) => DateTime.fromISO(val).isValid)
@@ -108,7 +116,7 @@ export type IssueMaintenance = z.infer<typeof IssueMaintenanceSchema>;
 
 /** [INFRA] update */
 export const IssueInfraUpdateSchema = z.object({
-  type: z.literal('update'),
+  type: z.literal(IssueTypeSchema.Enum.infra),
   createdAt: z
     .string()
     .refine((val) => DateTime.fromISO(val).isValid)
@@ -152,7 +160,7 @@ export const IssueDelayUpdateSchema = z.object({
 export type IssueDelayUpdate = z.infer<typeof IssueDelayUpdateSchema>;
 /** [DELAY] */
 export const IssueDelaySchema = IssueBase.extend({
-  type: z.literal('delay'),
+  type: z.literal(IssueTypeSchema.Enum.delay),
   updates: z.array(IssueDelayUpdateSchema),
 });
 /** [DELAY] */

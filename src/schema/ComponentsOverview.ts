@@ -1,26 +1,26 @@
 import { z } from 'zod';
 import { ComponentSchema } from './Component';
+import { IssueIdSchema, IssueTypeSchema } from './Issue';
 
-export const ComponentsOverviewEntryStatusSchema = z.enum([
-  'operational',
-  'degraded',
-  'minor_outage',
-  'major_outage',
-  'maintenance',
-]);
-export type ComponentsOverviewEntryStatus = z.infer<
-  typeof ComponentsOverviewEntryStatusSchema
->;
-
-export const ComponentsOverviewEntrySchema = z.object({
-  component: ComponentSchema,
-  status: ComponentsOverviewEntryStatusSchema,
+export const IssueReferenceSchema = z.object({
+  id: IssueIdSchema,
+  title: z.string(),
 });
-export type ComponentsOverviewEntry = z.infer<
-  typeof ComponentsOverviewEntrySchema
->;
+export type IssueReference = z.infer<typeof IssueReferenceSchema>;
+
+export const COEntryDateOverviewSchema = z.object({
+  issueTypesDurationMs: z.record(IssueTypeSchema, z.number()),
+  issues: z.array(IssueReferenceSchema),
+});
+export type COEntryDateOverview = z.infer<typeof COEntryDateOverviewSchema>;
+
+export const COEntrySchema = z.object({
+  component: ComponentSchema,
+  dates: z.record(z.string().date(), COEntryDateOverviewSchema),
+});
+export type COEntry = z.infer<typeof COEntrySchema>;
 
 export const ComponentsOverviewSchema = z.object({
-  entries: z.array(ComponentsOverviewEntrySchema),
+  entries: z.array(COEntrySchema),
 });
 export type ComponentsOverview = z.infer<typeof ComponentsOverviewSchema>;
