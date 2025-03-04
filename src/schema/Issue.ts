@@ -114,9 +114,14 @@ export const IssueMaintenanceSchema = IssueBase.extend({
 /** [MAINTENANCE] */
 export type IssueMaintenance = z.infer<typeof IssueMaintenanceSchema>;
 
+/** [INFRA] update type */
+export const IssueInfraUpdateTypeSchema = z.enum(['operator.update']);
+/** [INFRA] update type */
+export type IssueInfraUpdateType = z.infer<typeof IssueInfraUpdateTypeSchema>;
+
 /** [INFRA] update */
 export const IssueInfraUpdateSchema = z.object({
-  type: z.literal(IssueTypeSchema.Enum.infra),
+  type: IssueInfraUpdateTypeSchema,
   createdAt: z
     .string()
     .refine((val) => DateTime.fromISO(val).isValid)
@@ -129,7 +134,7 @@ export type IssueInfraUpdate = z.infer<typeof IssueInfraUpdateSchema>;
 
 /** [INFRA] */
 export const IssueInfraSchema = IssueBase.extend({
-  type: z.literal('infra'),
+  type: z.literal(IssueTypeSchema.Enum.infra),
   updates: z.array(IssueInfraUpdateSchema),
 });
 /** [INFRA] */
