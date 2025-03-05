@@ -6,7 +6,7 @@
   ],
   "startAt": "2024-12-16T00:36:01.000+08:00",
   "endAt": null,
-  "type": "outage",
+  "type": "disruption",
   "severity": "major",
   "updates": [
     {

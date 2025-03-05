@@ -6,7 +6,7 @@
   ],
   "startAt": "2023-06-23T20:57:11.000+08:00",
   "endAt": "2023-06-23T21:17:29.000+08:00",
-  "type": "delay",
+  "type": "disruption",
   "updates": [
     {
       "type": "operator.update",
@@ -68,5 +68,6 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1672227299352264705",
       "createdAt": "2023-06-23T20:57:11.000+08:00"
     }
-  ]
+  ],
+  "severity": "minor"
 }

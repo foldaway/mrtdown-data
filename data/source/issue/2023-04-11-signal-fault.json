@@ -6,7 +6,7 @@
   ],
   "startAt": "2023-04-11T07:50:17.000+08:00",
   "endAt": "2023-04-11T11:31:32.000+08:00",
-  "type": "outage",
+  "type": "disruption",
   "severity": "major",
   "updates": [
     {

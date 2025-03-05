@@ -6,7 +6,7 @@
   ],
   "startAt": "2021-12-28T06:23:37.000+08:00",
   "endAt": "2021-12-28T07:25:00.000+08:00",
-  "type": "outage",
+  "type": "disruption",
   "severity": "major",
   "updates": [
     {

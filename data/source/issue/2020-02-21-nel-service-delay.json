@@ -6,7 +6,7 @@
   ],
   "startAt": "2020-02-21T21:28:49.000+08:00",
   "endAt": "2020-02-21T21:53:45.000+08:00",
-  "type": "delay",
+  "type": "disruption",
   "updates": [
     {
       "type": "operator.update",
@@ -26,5 +26,6 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1230846840205012992",
       "createdAt": "2020-02-21T21:28:49.000+08:00"
     }
-  ]
+  ],
+  "severity": "minor"
 }

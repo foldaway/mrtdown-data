@@ -6,7 +6,7 @@
   ],
   "startAt": "2019-01-22T08:06:11.000+08:00",
   "endAt": "2019-01-22T09:03:44.000+08:00",
-  "type": "delay",
+  "type": "disruption",
   "updates": [
     {
       "type": "operator.resolved",
@@ -50,5 +50,6 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1087501646186180608",
       "createdAt": "2019-01-22T08:06:11.000+08:00"
     }
-  ]
+  ],
+  "severity": "minor"
 }

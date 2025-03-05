@@ -6,7 +6,7 @@
   ],
   "startAt": "2020-02-27T08:31:56.000+08:00",
   "endAt": "2020-02-27T12:22:13.000+08:00",
-  "type": "outage",
+  "type": "disruption",
   "severity": "major",
   "updates": [
     {

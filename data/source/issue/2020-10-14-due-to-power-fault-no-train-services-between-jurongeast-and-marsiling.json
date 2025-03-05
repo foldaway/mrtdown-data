@@ -6,7 +6,7 @@
   ],
   "startAt": "2020-10-14T19:55:51.000+08:00",
   "endAt": null,
-  "type": "outage",
+  "type": "disruption",
   "severity": "major",
   "updates": [
     {

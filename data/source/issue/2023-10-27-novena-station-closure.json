@@ -6,7 +6,7 @@
   ],
   "startAt": "2023-10-27T17:49:16.000+08:00",
   "endAt": "2023-10-27T19:29:17.000+08:00",
-  "type": "outage",
+  "type": "disruption",
   "severity": "major",
   "updates": [
     {

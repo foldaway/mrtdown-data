@@ -6,7 +6,7 @@
   ],
   "startAt": "2019-07-19T08:11:24.000+08:00",
   "endAt": "2019-07-19T09:25:04.000+08:00",
-  "type": "delay",
+  "type": "disruption",
   "updates": [
     {
       "type": "operator.update",
@@ -38,5 +38,6 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1152007997960228864",
       "createdAt": "2019-07-19T08:11:24.000+08:00"
     }
-  ]
+  ],
+  "severity": "minor"
 }

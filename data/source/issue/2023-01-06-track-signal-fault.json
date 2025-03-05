@@ -6,7 +6,7 @@
   ],
   "startAt": "2023-01-06T05:48:13.000+08:00",
   "endAt": "2023-01-06T07:27:42.000+08:00",
-  "type": "outage",
+  "type": "disruption",
   "severity": "major",
   "updates": [
     {

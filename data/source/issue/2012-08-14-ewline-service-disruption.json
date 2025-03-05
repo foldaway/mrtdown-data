@@ -6,7 +6,7 @@
   ],
   "startAt": "2012-08-14T10:03:54.000+08:00",
   "endAt": "2012-08-14T10:14:24.000+08:00",
-  "type": "outage",
+  "type": "disruption",
   "severity": "major",
   "updates": [
     {

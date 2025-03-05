@@ -6,7 +6,7 @@
   ],
   "startAt": "2012-02-08T07:25:27.000+08:00",
   "endAt": "2012-02-09T05:30:00.000+08:00",
-  "type": "delay",
+  "type": "disruption",
   "updates": [
     {
       "type": "operator.update",
@@ -14,5 +14,6 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/167221394814414848",
       "createdAt": "2012-02-08T20:21:02.000+08:00"
     }
-  ]
+  ],
+  "severity": "minor"
 }

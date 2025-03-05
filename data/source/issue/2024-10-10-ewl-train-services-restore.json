@@ -6,7 +6,7 @@
   ],
   "startAt": "2024-10-10T13:04:23.000+08:00",
   "endAt": "2024-10-10T13:22:49.000+08:00",
-  "type": "delay",
+  "type": "disruption",
   "updates": [
     {
       "type": "operator.update",
@@ -50,5 +50,6 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1844234217955459472",
       "createdAt": "2024-10-10T12:31:16.000+08:00"
     }
-  ]
+  ],
+  "severity": "minor"
 }

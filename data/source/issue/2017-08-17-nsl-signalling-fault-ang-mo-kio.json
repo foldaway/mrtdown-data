@@ -6,7 +6,7 @@
   ],
   "startAt": "2017-08-17T18:18:56.000+08:00",
   "endAt": "2017-08-17T20:18:27.000+08:00",
-  "type": "delay",
+  "type": "disruption",
   "updates": [
     {
       "type": "operator.resolved",
@@ -38,5 +38,6 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/898126996076544000",
       "createdAt": "2017-08-17T18:18:56.000+08:00"
     }
-  ]
+  ],
+  "severity": "minor"
 }

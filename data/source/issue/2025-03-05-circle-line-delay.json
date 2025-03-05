@@ -6,7 +6,7 @@
   ],
   "startAt": "2025-03-05T08:14:03.000+00:00",
   "endAt": "2025-03-05T09:01:12.000+00:00",
-  "type": "delay",
+  "type": "disruption",
   "updates": [
     {
       "type": "operator.update",
@@ -50,5 +50,6 @@
       "sourceUrl": "https://mastodon.social/@smrtsg_bot/114108821914866507",
       "createdAt": "2025-03-05T16:14:03.000+08:00"
     }
-  ]
+  ],
+  "severity": "minor"
 }

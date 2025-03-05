@@ -6,7 +6,7 @@
   ],
   "startAt": "2016-11-03T18:07:16.000+08:00",
   "endAt": "2016-11-03T22:30:05.000+08:00",
-  "type": "delay",
+  "type": "disruption",
   "updates": [
     {
       "type": "operator.monitoring",
@@ -26,5 +26,6 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/794118739407020032",
       "createdAt": "2016-11-03T18:07:16.000+08:00"
     }
-  ]
+  ],
+  "severity": "minor"
 }

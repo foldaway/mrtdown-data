@@ -6,7 +6,7 @@
   ],
   "startAt": "2021-12-25T06:04:47.000+08:00",
   "endAt": "2021-12-25T06:41:09.000+08:00",
-  "type": "delay",
+  "type": "disruption",
   "updates": [
     {
       "type": "operator.resolved",
@@ -38,5 +38,6 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1474501333809975297",
       "createdAt": "2021-12-25T06:04:47.000+08:00"
     }
-  ]
+  ],
+  "severity": "minor"
 }

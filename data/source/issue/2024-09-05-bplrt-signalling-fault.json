@@ -6,7 +6,7 @@
   ],
   "startAt": "2024-09-05T04:55:32.000+08:00",
   "endAt": "2024-09-05T05:13:29.000+08:00",
-  "type": "outage",
+  "type": "disruption",
   "severity": "major",
   "updates": [
     {

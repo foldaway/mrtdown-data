@@ -6,7 +6,7 @@
   ],
   "startAt": "2015-10-15T09:49:18.000+08:00",
   "endAt": "2015-10-15T10:17:27.000+08:00",
-  "type": "outage",
+  "type": "disruption",
   "severity": "major",
   "updates": [
     {
