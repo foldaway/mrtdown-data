@@ -41,24 +41,34 @@ export const IssueModel = {
     return issue;
   },
 
-  getAllBySingleDate(date: string): Issue[] {
+  getAllByOverlappingDateRange(dateMin: string, dateMax: string): Issue[] {
     const issues = this.getAll();
 
-    const dateTime = DateTime.fromISO(date);
+    const dateTimeMin = DateTime.fromISO(dateMin).startOf('day');
+    const dateTimeMax = DateTime.fromISO(dateMax)
+      .startOf('day')
+      .plus({ day: 1 });
 
     return issues.filter((issue) => {
       const dateTimeStartAt = DateTime.fromISO(issue.startAt);
 
-      if (dateTime.hasSame(dateTimeStartAt, 'day')) {
-        return true;
-      }
-
       if (issue.endAt == null) {
-        return dateTime >= dateTimeStartAt;
+        // startAt within specified range
+        return dateTimeStartAt <= dateTimeMax;
       }
 
       const dateTimeEndAt = DateTime.fromISO(issue.endAt);
-      return dateTime >= dateTimeStartAt && dateTime < dateTimeEndAt;
+
+      // endAt before specified range
+      if (dateTimeEndAt < dateTimeMin) {
+        return false;
+      }
+      // startAt after specified range
+      if (dateTimeStartAt > dateTimeMax) {
+        return false;
+      }
+
+      return true;
     });
   },
 

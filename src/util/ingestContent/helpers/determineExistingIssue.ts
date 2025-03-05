@@ -26,20 +26,23 @@ type Result = z.infer<typeof ResultSchema>;
 const ResultJsonSchema = zodToJsonSchema(ResultSchema);
 
 const ToolSearchIssuesParametersSchema = z.object({
-  date: z.string().date(),
+  dateMin: z.string().date(),
+  dateMax: z.string().date(),
   reason: z.string(),
 });
 
 export async function determineExistingIssue(
   content: IngestContent,
 ): Promise<Result> {
+  let toolCallCount = 0;
+
   const messages: ChatCompletionMessageParam[] = [
     {
       role: 'system',
       content: `
 Your role is to help ingest the given post into an incidents system that tracks the MRT and LRT in Singapore.
 Determine whether the post is part of an existing issue.
-Call the "searchIssues" tool once to get a list of all existing issues based on either the post date or the expected date.
+You can call the "searchIssues" tool once to get a list of all existing issues based on either the post date or the expected date.
 
 Take Note:
 - The rail line is very often mentioned in the post text. e.g. [BPLRT] refers to BPLRT rail line.
@@ -79,7 +82,7 @@ If there is no relation to any existing issues, return "no-existing-issue"
           type: 'function',
           function: {
             name: 'searchIssues',
-            description: 'Fetch a list of issues',
+            description: 'Fetch a list of issues across all rail lines',
             parameters: zodToJsonSchema(ToolSearchIssuesParametersSchema),
           },
         },
@@ -98,29 +101,40 @@ If there is no relation to any existing issues, return "no-existing-issue"
               `[ingest.determineExistingIssues] ${toolCall.id} calling tool "searchIssues" with params`,
               toolCall.function.arguments,
             );
-            const { date } = ToolSearchIssuesParametersSchema.parse(
+            if (toolCallCount > 10) {
+              messages.push({
+                role: 'tool',
+                tool_call_id: toolCall.id,
+                content: 'Ran out of tool calls. Stop Calling.',
+              });
+              console.log(
+                'Forced short-circuit, returning error message in tool call result.',
+              );
+              break;
+            }
+            const { dateMin, dateMax } = ToolSearchIssuesParametersSchema.parse(
               JSON.parse(toolCall.function.arguments),
+            );
+            const issues = IssueModel.getAllByOverlappingDateRange(
+              dateMin,
+              dateMax,
             );
             messages.push({
               role: 'tool',
               tool_call_id: toolCall.id,
-              content: JSON.stringify(IssueModel.getAllBySingleDate(date)),
+              content: `Here are the issues: ${JSON.stringify(issues)}`,
             });
+            console.log(
+              `[ingest.determineExistingIssues] ${toolCall.id} calling tool "searchIssues" returned ${issues.length} results.`,
+            );
             break;
           }
         }
+        toolCallCount++;
       }
     }
-
-    if (messages.length > 10) {
-      console.dir(messages, { depth: null });
-      throw new Error(
-        'forced short-circuit, model became stupid and has gone into looping.',
-      );
-    }
   } while (response.choices[0].message.tool_calls != null);
-  // console.log('[ingestContent.determineExistingIssue]');
-  // console.dir(messages, { depth: null });
+
   const result = ResultSchema.parse(
     JSON.parse(response.choices[0].message.content ?? ''),
   );
