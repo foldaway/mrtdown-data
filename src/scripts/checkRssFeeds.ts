@@ -71,7 +71,7 @@ for (const feedUrl of TWITTER_MASTODON_RSS_FEEDS) {
       continue;
     }
 
-    const createdAt = dateTime.toISO();
+    const createdAt = dateTime.setZone('Asia/Singapore').toISO();
     assert(createdAt != null);
 
     assert(link != null);
@@ -116,7 +116,7 @@ for (const { subreddit, feedUrl } of REDDIT_RSS_FEEDS) {
       continue;
     }
 
-    const createdAt = dateTime.toISO();
+    const createdAt = dateTime.setZone('Asia/Singapore').toISO();
     assert(createdAt != null);
 
     assert(link != null);
@@ -169,7 +169,7 @@ for (const feedUrl of NEWS_RSS_FEEDS) {
       continue;
     }
 
-    const createdAt = dateTime.toISO();
+    const createdAt = dateTime.setZone('Asia/Singapore').toISO();
     assert(createdAt != null);
     assert(link != null);
 
