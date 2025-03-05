@@ -1,0 +1,42 @@
+{
+  "id": "2025-03-05-circle-line-delay",
+  "title": "Service disruption on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2025-03-05T08:19:22.000+00:00",
+  "endAt": null,
+  "type": "delay",
+  "updates": [
+    {
+      "type": "update",
+      "text": "[CCL]: Due to a train fault, please add 30 mins of additional travelling time between #Promenade and #Serangoon in both directions. Free regular bus services are available between #Promenade and #Serangoon. Shuttle train service is available between #Bartley and #Mountbatten.",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114108842819031788",
+      "createdAt": "2025-03-05T08:19:22.000+00:00"
+    },
+    {
+      "type": "update",
+      "text": "[CCL]: Please add 30 mins train travel time between #Promenade and #Serangoon, in both directions due to train fault. Free regular bus service is available between #Promenade and #Serangoon. Train service is still available.",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114108821914866507",
+      "createdAt": "2025-03-05T08:14:03.000+00:00"
+    },
+    {
+      "type": "update",
+      "text": "New MRT lines for Tengah and Seletar areas are currently being studied, with potential operations expected to begin in the 2040s. The information is sourced from a Reddit post on the /r/singapore subreddit.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1j3xx8u/new_tengah_and_seletar_mrt_lines_being_studied/",
+      "createdAt": "2025-03-05T07:42:36.000+00:00"
+    },
+    {
+      "type": "update",
+      "text": "The two new MRT lines could connect at Greater Southern Waterfront, according to preliminary assessments.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/new-mrt-lines-tengah-seletar-transport-4977621",
+      "createdAt": "2025-03-05T07:39:00.000+00:00"
+    },
+    {
+      "type": "update",
+      "text": "The proposed Tengah and Seletar lines could form a single rail line, says Minister Chee Hong Tat.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/politics/two-new-mrt-lines-under-study-jurong-region-line-extension-in-west-coast-to-proceed",
+      "createdAt": "2025-03-05T07:38:48.000+00:00"
+    }
+  ]
+}
