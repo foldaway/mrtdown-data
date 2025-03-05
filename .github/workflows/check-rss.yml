@@ -41,7 +41,7 @@ jobs:
       - name: Push changes
         if: steps.make-changes.outputs.has_changes == 'true'
         run: |-
-          $BRANCH_NAME = "automated-${{ github.run_id }}"
+          BRANCH_NAME="automated-${{ github.run_id }}"
           git checkout -b $BRANCH_NAME
           git add -A
           git commit -m "chore(data): Automated changes"
