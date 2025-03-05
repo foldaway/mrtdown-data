@@ -61,7 +61,7 @@ export async function ingestIssueDelay(
     }
   }
   const update: IssueDelayUpdate = {
-    type: 'update', // Currently no other value, classification not required.
+    type: 'operator.update', // Currently no other value, classification not required.
     text,
     sourceUrl: content.url,
     createdAt: content.createdAt,
