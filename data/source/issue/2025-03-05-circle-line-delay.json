@@ -1,0 +1,24 @@
+{
+  "id": "2025-03-05-circle-line-delay",
+  "title": "Service disruption on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2025-03-05T08:14:03.000+00:00",
+  "endAt": null,
+  "type": "delay",
+  "updates": [
+    {
+      "type": "update",
+      "text": "[CCL]: Due to a train fault, please add 30 mins of additional travelling time between #Promenade and #Serangoon in both directions. Free regular bus services are available between #Promenade and #Serangoon. Shuttle train service is available between #Bartley and #Mountbatten.",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114108842819031788",
+      "createdAt": "2025-03-05T08:19:22.000+00:00"
+    },
+    {
+      "type": "update",
+      "text": "[CCL]: Please add 30 mins train travel time between #Promenade and #Serangoon, in both directions due to train fault. Free regular bus service is available between #Promenade and #Serangoon. Train service is still available.",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114108821914866507",
+      "createdAt": "2025-03-05T08:14:03.000+00:00"
+    }
+  ]
+}
