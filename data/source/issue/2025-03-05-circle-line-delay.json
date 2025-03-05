@@ -10,6 +10,12 @@
   "updates": [
     {
       "type": "update",
+      "text": "A user on Reddit is asking whether it is normal for the MRT to be loud when travelling underground, specifically mentioning experiences in the Outram area and on the new TEL line along East Coast Park. They found the noise level to be distracting, especially while listening to a podcast, and are curious if this issue is common in other countries' underground transit systems.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1j41con/why_is_the_mrt_so_loud_when_underground_is_this/",
+      "createdAt": "2025-03-05T11:53:52.000+00:00"
+    },
+    {
+      "type": "update",
       "text": "[CCL]:  Train services have resumed to normalcy. Free regular bus services will cease between #Promenade and #Serangoon. We are sorry for affecting your commute.",
       "sourceUrl": "https://mastodon.social/@smrtsg_bot/114109007323137898",
       "createdAt": "2025-03-05T09:01:12.000+00:00"
