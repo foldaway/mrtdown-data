@@ -1,7 +1,9 @@
 {
   "id": "2015-07-03-nsl-track-fault",
   "title": "Speed Restrictions along North-South Line",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2015-07-03T09:19:12.000+08:00",
   "endAt": "2015-07-03T09:25:58.000+08:00",
   "type": "outage",

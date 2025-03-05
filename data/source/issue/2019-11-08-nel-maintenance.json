@@ -1,7 +1,9 @@
 {
   "id": "2019-11-08-nel-maintenance",
   "title": "Maintenance works on five NEL stations",
-  "componentIdsAffected": ["NEL"],
+  "componentIdsAffected": [
+    "NEL"
+  ],
   "startAt": "2019-11-08T23:00:00.000+08:00",
   "endAt": "2019-11-10T00:00:00.000+08:00",
   "type": "maintenance",

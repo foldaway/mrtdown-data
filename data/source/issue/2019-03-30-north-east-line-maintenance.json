@@ -1,7 +1,9 @@
 {
   "id": "2019-03-30-north-east-line-maintenance",
   "title": "North East Line - Early Closure Due to Maintenance Works",
-  "componentIdsAffected": ["NEL"],
+  "componentIdsAffected": [
+    "NEL"
+  ],
   "startAt": "2019-03-30T23:00:00.000+08:00",
   "endAt": "2019-03-31T00:00:00.000+08:00",
   "type": "maintenance",

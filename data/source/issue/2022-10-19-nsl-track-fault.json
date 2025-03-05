@@ -2,9 +2,7 @@
   "id": "2022-10-19-nsl-track-fault",
   "title": "Track fault causing delays on North-South Line",
   "componentIdsAffected": [
-    "NSL",
-    "CCL",
-    "TEL"
+    "NSL"
   ],
   "startAt": "2022-10-19T05:46:11.000+08:00",
   "endAt": "2022-10-19T07:45:05.000+08:00",
@@ -61,6 +59,18 @@
     },
     {
       "type": "operator.update",
+      "text": "[NSL]: Passengers be advised to avoid sector between #Woodlands and #AngMoKio. For alternative transport to transit at #CircleLine #Bishan to #Caldecott and to #Thomson-EastCoastLine #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1582507118535446530",
+      "createdAt": "2022-10-19T07:01:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: For alternative travel options, please refer to https://t.co/YxfqNjhNa1",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1582502529082200064",
+      "createdAt": "2022-10-19T06:42:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[NSL] UPDATE: Due to a track fault, there will be no train svc from #YioChuKang to #Canberra. Train svc from #JurongEast to #MarinaSouthPier still available Free regular bus &amp; free bridging bus svcs btwn  #AngMoKio and #Woodlands.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1582502413927579648",
       "createdAt": "2022-10-19T06:42:31.000+08:00"
@@ -70,6 +80,12 @@
       "text": "[NSL] UPDATE:  Due to a track fault, pls add 15mins train travel time btwn #AngMoKio and #Woodlands. Free regular bus &amp; free bridging bus svcs btwn  #AngMoKio and #Woodlands.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1582498624537186306",
       "createdAt": "2022-10-19T06:27:28.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: For alternative travel options, please refer to https://t.co/YxfqNiZDVT",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1582492394083086338",
+      "createdAt": "2022-10-19T06:02:42.000+08:00"
     },
     {
       "type": "operator.update",

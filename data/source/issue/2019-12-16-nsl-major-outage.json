@@ -1,7 +1,9 @@
 {
   "id": "2019-12-16-nsl-major-outage",
   "title": "Major Outage on North-South Line",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2019-12-16T09:08:24.000+08:00",
   "endAt": "2019-12-16T08:49:45.000+08:00",
   "type": "outage",

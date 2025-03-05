@@ -1,7 +1,9 @@
 {
   "id": "2016-04-21-nsl-no-train-service",
   "title": "No train service on NSL",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2016-04-21T06:09:49.000+08:00",
   "endAt": "2016-04-21T06:53:58.000+08:00",
   "type": "outage",

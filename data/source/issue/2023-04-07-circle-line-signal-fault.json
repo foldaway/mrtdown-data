@@ -29,6 +29,30 @@
     },
     {
       "type": "operator.update",
+      "text": "[CCL]: If you are at #Promenade, #Bayfront or #MarinaBay, you may take the TEL, DTL, or alternative modes of transport. Free regular bus and free bridging bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644227826261061634",
+      "createdAt": "2023-04-07T14:37:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: If you are at #DhobyGhaut and heading towards #PayaLebar, you may take the NSL and EWL instead. Free regular bus and free bridging bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644224018583801857",
+      "createdAt": "2023-04-07T14:22:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Pls add 40mins of train travel time between #DhobyGhaut/#MarinaBay and #Stadium. Commuters are advised to take other lines such as DTL, NSL and NEL if you are at #DhobyGhaut, #MarinaBay, #Promenade or #Bayfront. Free regular bus and free bus bridging svcs are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644220467509866496",
+      "createdAt": "2023-04-07T14:08:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Pls add 40mins of train travel time between #DhobyGhaut/#MarinaBay and #PayaLebar. If you are heading towards #PayaLebar from these stations, you may take NSL and transfer to EWL.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644216724043218944",
+      "createdAt": "2023-04-07T13:53:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[CCL]: Commuters are advised to add at least 30mins of train travel time between #DhobyGhaut/#MarinaBay and #PayaLebar. Free regular bus and bus bridging services are available between these stations.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1644214178939551744",
       "createdAt": "2023-04-07T13:43:02.000+08:00"
@@ -41,9 +65,27 @@
     },
     {
       "type": "operator.update",
+      "text": "[CCL] UPDATE: Passengers heading to town area are advised to transfer to EWL at #PayaLebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644208009365815296",
+      "createdAt": "2023-04-07T13:18:31.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[CCL] UPDATE: Additional 30mins train travel time between #DhobyGhaut/#MarinaBay and #PayaLebar due to a signal fault. Free regular bus and free bridging bus services between #DhobyGhaut/#MarinaBay and #PayaLebar are available.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1644207576907919362",
       "createdAt": "2023-04-07T13:16:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Free regular bus and free bridging bus services between #DhobyGhaut/#MarinaBay and #PayaLebar are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644206622980595712",
+      "createdAt": "2023-04-07T13:13:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Free regular bus services between #DhobyGhaut/#MarinaBay and #PayaLebar are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1644203804211150849",
+      "createdAt": "2023-04-07T13:01:49.000+08:00"
     },
     {
       "type": "operator.investigating",

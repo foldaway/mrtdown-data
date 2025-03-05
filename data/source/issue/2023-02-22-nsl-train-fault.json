@@ -52,6 +52,12 @@
       "createdAt": "2023-02-22T10:21:02.000+08:00"
     },
     {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular bus svcs is available between #Woodlands and #AngMoKio. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1628216639245398017",
+      "createdAt": "2023-02-22T10:14:32.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "[NSL]: Due to a train fault, pls add 15mins train travel time from #Woodlands to #Yishun towards #MarinaSouthPier.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1628215596482723840",

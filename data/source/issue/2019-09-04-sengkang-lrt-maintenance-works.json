@@ -1,7 +1,9 @@
 {
   "id": "2019-09-04-sengkang-lrt-maintenance-works",
   "title": "Sengkang LRT Maintenance Works on 8 September 2019",
-  "componentIdsAffected": ["SKLRT"],
+  "componentIdsAffected": [
+    "SKLRT"
+  ],
   "startAt": "2019-09-08T00:00:00.000+08:00",
   "endAt": "2019-09-09T00:00:00.000+08:00",
   "type": "maintenance",

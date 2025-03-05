@@ -23,6 +23,12 @@
     },
     {
       "type": "operator.update",
+      "text": "[TEL]: Free regular bus services are available between Springleaf and Caldecott.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1622550335318536192",
+      "createdAt": "2023-02-06T18:58:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[TEL] UPDATE: Please allow for additional 20 mins travel time from Woodlands North to Gardens by the Bay due to a train fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1622548674671955969",
       "createdAt": "2023-02-06T18:52:04.000+08:00"

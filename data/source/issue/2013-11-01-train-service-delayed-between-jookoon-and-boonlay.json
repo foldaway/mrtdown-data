@@ -1,7 +1,9 @@
 {
   "id": "2013-11-01-train-service-delayed-between-jookoon-and-boonlay",
   "title": "Train service disruption between Joo Koon and Boon Lay",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2013-11-01T15:21:34.000+08:00",
   "endAt": "2013-11-01T15:29:40.000+08:00",
   "type": "outage",

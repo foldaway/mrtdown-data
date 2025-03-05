@@ -1,7 +1,9 @@
 {
   "id": "2013-05-12-ccl-power-cable-changes",
   "title": "Power cable changes on Circle Line affecting travel times",
-  "componentIdsAffected": ["CCL"],
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2013-05-12T06:00:00.000+08:00",
   "endAt": "2013-05-12T10:00:00.000+08:00",
   "type": "maintenance",

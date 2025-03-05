@@ -1,7 +1,9 @@
 {
   "id": "2012-10-28-circle-line-service-disruption",
   "title": "Circle Line service disruption",
-  "componentIdsAffected": ["CCL"],
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2012-10-28T06:44:31.000+08:00",
   "endAt": "2012-10-28T09:23:26.000+08:00",
   "type": "outage",

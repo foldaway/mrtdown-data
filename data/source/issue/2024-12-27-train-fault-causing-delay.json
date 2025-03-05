@@ -5,15 +5,27 @@
     "TEL"
   ],
   "startAt": "2024-12-27T06:25:51.000+08:00",
-  "endAt": null,
+  "endAt": "2024-12-27T09:06:43.000+08:00",
   "type": "outage",
   "severity": "major",
   "updates": [
     {
       "type": "operator.update",
+      "text": "[TEL] UPDATE: Dear commuters, train services between Woodlands North and Bayshore have resumed. We apologise for the inconvenience and thank you for your patience.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1872448995223888186",
+      "createdAt": "2024-12-27T09:06:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[TEL] UPDATE: Dear commuters, please cater additional 5 mins of travel time between Woodlands North and Bayshore in both directions. Thank you for your patience.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1872444410023321983",
       "createdAt": "2024-12-27T08:48:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: Please cater additional 5 mins of travel time between Woodlands North and Bayshore in both directions. Thank you.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1872440142524518770",
+      "createdAt": "2024-12-27T08:31:32.000+08:00"
     },
     {
       "type": "operator.update",
@@ -23,9 +35,21 @@
     },
     {
       "type": "operator.update",
+      "text": "[TEL] UPDATE: Please allow for additional 10 mins travel time between Woodlands North and Bayshore in both directions.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1872423225562673632",
+      "createdAt": "2024-12-27T07:24:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[TEL] UPDATE: Please allow for additional 5 mins travel time from Woodlands North towards Orchard.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1872419572659450167",
       "createdAt": "2024-12-27T07:09:48.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL] UPDATE: Please allow for additional 10 mins travel time from Woodlands North towards Orchard.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1872413431841894603",
+      "createdAt": "2024-12-27T06:45:24.000+08:00"
     },
     {
       "type": "operator.investigating",

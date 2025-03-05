@@ -28,6 +28,12 @@
       "createdAt": "2021-02-17T06:08:31.000+08:00"
     },
     {
+      "type": "operator.update",
+      "text": "[CCL] Update: Free regular bus service still available at all Circle Line stations. Please add 15mins additional travel time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1361793816370372609",
+      "createdAt": "2021-02-17T05:45:21.000+08:00"
+    },
+    {
       "type": "operator.monitoring",
       "text": "[CCL] Update: We gradually recovering train service. Please continue 15mins additional travel time. Free bus service available.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1361790476727185413",

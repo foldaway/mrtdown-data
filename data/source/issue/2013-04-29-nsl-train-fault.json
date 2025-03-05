@@ -1,7 +1,9 @@
 {
   "id": "2013-04-29-nsl-train-fault",
   "title": "Train fault causing slower speeds on NSL",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2013-04-29T18:23:41.000+08:00",
   "endAt": "2013-04-29T18:42:32.000+08:00",
   "type": "outage",

@@ -22,6 +22,12 @@
       "createdAt": "2024-03-28T19:28:23.000+08:00"
     },
     {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Free regular bus &amp; free bridging bus services are available between #ChoaChuKang and #BukitPanjang.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1773302147574284489",
+      "createdAt": "2024-03-28T18:52:32.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "[BPLRT] UPDATE: No train service between #ChoaChuKang and #SouthView due to a power fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1773301899623801228",

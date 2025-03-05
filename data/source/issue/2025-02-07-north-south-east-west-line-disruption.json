@@ -23,10 +23,28 @@
       "createdAt": "2025-02-07T16:52:55.000+08:00"
     },
     {
+      "type": "operator.resolved",
+      "text": "[NSL] Update: The NSEWL train service has returned to normal. Free regular bus and bridging bus services have ceased. We thank you for your understanding and patience.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887675349330481609",
+      "createdAt": "2025-02-07T09:30:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "For alt. travel options, please refer to the link here. https://t.co/EEiVzwLMv1 1. Select the line you wish to find out on alternative travel. 2. Select the station 3. Click on \"Alternative Travel Information\"",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887673157185950043",
+      "createdAt": "2025-02-07T09:22:06.000+08:00"
+    },
+    {
       "type": "operator.update",
       "text": "[NSL] UPDATE: Pls expect a longer waiting time of up to 5 minutes for NSEWL train services due to an engineering vehicle fault. Free regular bus &amp; bridging bus services are available between Bishan &amp; Woodlands. Pax are advised to use TEL or CCL. Train service is still available.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1887670333802787231",
       "createdAt": "2025-02-07T09:10:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "For alternative travel options, please refer to the link here. https://t.co/EEiVzwLMv1 1. Select the line you wish to find out on alternative travel. 2. Select the station 3. Click on \"Alternative Travel Information\"",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887667932215582877",
+      "createdAt": "2025-02-07T09:01:20.000+08:00"
     },
     {
       "type": "operator.update",
@@ -47,10 +65,22 @@
       "createdAt": "2025-02-07T08:12:16.000+08:00"
     },
     {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Please expect longer waiting time of up to 5 mins of NSEWL train service due to engineering vehicle fault. Free regular bus &amp; bridging bus services are available between Bishan &amp; Woodlands. Pax are advised to use TEL and CCL. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887652600436433273",
+      "createdAt": "2025-02-07T08:00:25.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "Please expect longer waiting time of up to 5 mins of NSEWL train service due to engineering vehicle fault. Free regular bus and bridging bus services are available between Bishan and Woodlands. Pax are advised to use TEL and CCL. Train service is still available.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1887649673110036824",
       "createdAt": "2025-02-07T07:48:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to engineering vehicle fault, please expect longer waiting time of up to 5 mins of NSEWL. Free regular bus services &amp; bridging bus services are available between #Bishan &amp; #Woodlands. Pax are advised to use TEL and CCL. We apologise for the delay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887646791388307915",
+      "createdAt": "2025-02-07T07:37:20.000+08:00"
     },
     {
       "type": "operator.update",
@@ -60,9 +90,21 @@
     },
     {
       "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to engineering vehicle fault, please expect longer waiting time of 5 mins from #AngMoKio to #JurongEast. Free regular bus services &amp; bridging bus services are available between #Bishan &amp; #Woodlands. Pax are advised to use TEL and CCL. We apologise for the delay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887644436479549927",
+      "createdAt": "2025-02-07T07:27:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[NSL] UPDATE: Due to engineering vehicle fault, please add 10 minutes travelling time from #AngMoKio to #JurongEast. Free regular bus services &amp; bridging bus services are available btwn #Bishan &amp; #Woodlands. Pax are advised to use TEL and CCL.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1887641545924616656",
       "createdAt": "2025-02-07T07:16:29.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to engineering vehicle fault, please add 10 minutes travelling time from #AngMoKio to #JurongEast. Free regular bus services and bridging bus services are available between #Bishan and #Woodlands. We apologise for this delay to your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887639217314144384",
+      "createdAt": "2025-02-07T07:07:14.000+08:00"
     },
     {
       "type": "operator.update",
@@ -78,6 +120,12 @@
     },
     {
       "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a train fault, pls add 10mins travelling time from #AngMoKio to #JurongEast towards #JurongEast.Free regular bus and free bridging bus services  are available between  #Bishan and #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887630125740793908",
+      "createdAt": "2025-02-07T06:31:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[NSL] UPDATE: Due to a train fault, pls add 10mins travelling time from #AngMoKio to #JurongEast towards #JurongEast.Free regular bus and free bridging bus services  are available between  #AngMoKio and #Woodlands.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1887626075112685735",
       "createdAt": "2025-02-07T06:15:01.000+08:00"
@@ -87,6 +135,12 @@
       "text": "[NSL] UPDATE: Due to a train fault, pls add 10mins travelling time from #AngMoKio to #JurongEast towards #JurongEast. Passenger can alternate route via TEL.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1887625104554926285",
       "createdAt": "2025-02-07T06:11:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a train fault, pls add 20mins travelling time from #AngMoKio to #JurongEast towards #JurongEast. Free regular bus and free bridging bus services  are available between  #AngMoKio and #JurongEast.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1887620378031448477",
+      "createdAt": "2025-02-07T05:52:23.000+08:00"
     }
   ]
 }

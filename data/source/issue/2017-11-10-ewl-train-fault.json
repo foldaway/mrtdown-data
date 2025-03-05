@@ -1,7 +1,9 @@
 {
   "id": "2017-11-10-ewl-train-fault",
   "title": "Train Fault Causing Delay on East West Line",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2017-11-10T21:53:47.000+08:00",
   "endAt": "2017-11-10T22:58:19.000+08:00",
   "type": "outage",

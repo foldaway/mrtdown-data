@@ -1,7 +1,9 @@
 {
   "id": "2013-12-18-circle-line-outage",
   "title": "Service disruption on Circle Line",
-  "componentIdsAffected": ["CCL"],
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2013-12-18T23:42:17.000+08:00",
   "endAt": "2013-12-19T00:54:07.000+08:00",
   "type": "outage",

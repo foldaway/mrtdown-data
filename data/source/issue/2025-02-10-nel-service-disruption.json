@@ -15,6 +15,12 @@
       "createdAt": "2025-02-10T08:46:49.000+08:00"
     },
     {
+      "type": "operator.update",
+      "text": "NEL is back to regular svc. Free bridging &amp; regular bus svc are still available at designated bus stops. Once again, we are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1888746727282561066",
+      "createdAt": "2025-02-10T08:28:05.000+08:00"
+    },
+    {
       "type": "operator.monitoring",
       "text": "NEL Service is progressively resuming due to Signaling Fault. Additional travel time of about 5 minutes may be expected. We are sorry for the inconvenience caused.",
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1888743237793501658",
@@ -27,16 +33,64 @@
       "createdAt": "2025-02-10T08:09:24.000+08:00"
     },
     {
+      "type": "operator.update",
+      "text": "NEL Service is delayed due to Signaling Fault. Additional travel time of about 20 minutes may be expected. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1888741062308683840",
+      "createdAt": "2025-02-10T08:05:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL Service Delay - To assist with your journey, free regular &amp; bridging bus services available at designated bus stops between DBG and PGC.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1888737719544889789",
+      "createdAt": "2025-02-10T07:52:18.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL Service is delayed due to a Signaling Fault. Additional travel time of about 30 minutes may be expected. We are sorry for the inconvenience caused",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1888735447863713936",
+      "createdAt": "2025-02-10T07:43:16.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "NEL Service is delayed due to a Signaling Fault. Additional travel time of about 20 minutes may be expected. We are sorry for the inconvenience caused",
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1888733000730652725",
       "createdAt": "2025-02-10T07:33:32.000+08:00"
     },
     {
+      "type": "operator.update",
+      "text": "Alternative Route: Pax from NE17 Punggol to NE13 Kovan traveling to Little India - Take Circle Line CC13 at Serangoon to CC19 Botanic Gardens &amp; transfer to Downtown Line to DT12 Little India",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1888731942050529284",
+      "createdAt": "2025-02-10T07:29:20.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL Service Delay - To assist with your journey, free regular bus services are available at designated bus stops between DBG and PGC.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1888730784854585743",
+      "createdAt": "2025-02-10T07:24:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Alternative Route: Pax from NE17 Punggol to NE13 Kovan travelling to Dhoby Ghaut - Take Circle Line CC13 at Serangoon to C15 Bishan &amp; transfer to NS17 Bishan to NS24 Dhoby Ghaut",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1888729344849428858",
+      "createdAt": "2025-02-10T07:19:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Another Way to NE1 HarbourFront from NE12 Serangoon - Take Circle Line to CC29 HarbourFront",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1888728525739557087",
+      "createdAt": "2025-02-10T07:15:46.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "NEL Service is delayed due to a Signaling Fault. Additional travel time of about 20 minutes may be expected. We are sorry for the inconvenience caused.",
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1888727469769044160",
       "createdAt": "2025-02-10T07:11:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL Service Delay - To assist with your journey, free regular bus services available at designated bus stops between DBG and PGC.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1888725030940594288",
+      "createdAt": "2025-02-10T07:01:52.000+08:00"
     },
     {
       "type": "operator.investigating",

@@ -1,7 +1,9 @@
 {
   "id": "2016-06-16-slight-delay-HBF-BNV-train-fault",
   "title": "Slight delay from HBF to BNV due to train fault",
-  "componentIdsAffected": ["CCL"],
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2016-06-16T08:12:28.000+08:00",
   "endAt": "2016-06-16T08:21:00.000+08:00",
   "type": "outage",

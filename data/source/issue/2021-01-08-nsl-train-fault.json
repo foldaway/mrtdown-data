@@ -34,6 +34,12 @@
     },
     {
       "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular bus svcs btwn #Woodlands and #JurongEast. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1347560744292765697",
+      "createdAt": "2021-01-08T23:08:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[NSL]: Due to a train fault, pls add 25mins train travel time btwn #Woodlands and #JurongEast.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1347559350164807681",
       "createdAt": "2021-01-08T23:02:40.000+08:00"

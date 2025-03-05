@@ -1,7 +1,9 @@
 {
   "id": "2017-07-10-east-west-line-service-disruption",
   "title": "Service disruption on East West Line due to signalling fault",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2017-07-10T18:46:54.000+08:00",
   "endAt": "2017-07-10T20:31:59.000+08:00",
   "type": "outage",

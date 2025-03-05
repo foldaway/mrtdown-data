@@ -29,6 +29,12 @@
     },
     {
       "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular bus svcs btwn #AngMoKio and #Newton. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1721018529821217016",
+      "createdAt": "2023-11-05T12:16:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[NSL]: Due to a train fault, pls add 25mins train travel time from #AngMoKio to #Newton towards #MarinaSouthPier.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1721017939200184521",
       "createdAt": "2023-11-05T12:13:46.000+08:00"

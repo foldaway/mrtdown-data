@@ -1,7 +1,9 @@
 {
   "id": "2013-05-19-ccl-power-cable-maintenance",
   "title": "Power cable maintenance on Circle Line",
-  "componentIdsAffected": ["CCL"],
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2013-05-19T06:00:00.000+08:00",
   "endAt": "2013-05-19T10:00:00.000+08:00",
   "type": "maintenance",

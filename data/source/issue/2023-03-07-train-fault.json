@@ -23,6 +23,18 @@
     },
     {
       "type": "operator.update",
+      "text": "[TEL]: Free bridging bus services still avail between Caldecott to Orchard. Free regular bus services avail between Caldecott to Gardens by the Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633060083046420482",
+      "createdAt": "2023-03-07T19:00:39.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL]: For passengers travelling towards Woodlands North, bridging bus and free regular bus services still available at affected stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633056198059601923",
+      "createdAt": "2023-03-07T18:45:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[TEL]: Train services towards Gardens by the Bay have resumed. For passengers travelling towards Woodlands North, bridging bus and free regular bus services still available at affected stations.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1633051664549826561",
       "createdAt": "2023-03-07T18:27:12.000+08:00"
@@ -40,10 +52,34 @@
       "createdAt": "2023-03-07T18:12:51.000+08:00"
     },
     {
+      "type": "operator.update",
+      "text": "[TEL]: Train shuttle service available between Caldecott and Orchard stations. Bridging bus and free regular bus services still available at affected stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633043923399745541",
+      "createdAt": "2023-03-07T17:56:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL]: Passengers are advised to use alternative lines to get to their destination.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633039774364860418",
+      "createdAt": "2023-03-07T17:39:57.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "[TEL]: Due to a train fault, please expect an additional travelling time of 25mins. Bus bridging services available between Caldecott and Orchard.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1633039174919159810",
       "createdAt": "2023-03-07T17:37:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL]: [Correction] Please use alternate lines to your destination. Free regular bus still available between Caldecott and Gardens by the Bay",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633035698801627137",
+      "createdAt": "2023-03-07T17:23:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL]: Please use alternate lines to your destination. Free regular bus still available between Woodlands North and Gardens by the Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633035027478114304",
+      "createdAt": "2023-03-07T17:21:05.000+08:00"
     },
     {
       "type": "operator.investigating",

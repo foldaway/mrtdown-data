@@ -1,7 +1,9 @@
 {
   "id": "2012-05-21-northbound-train-service-slower-due-to-train-fault",
   "title": "Northbound train service slower due to train fault",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2012-05-21T08:09:46.000+08:00",
   "endAt": "2012-05-21T08:32:40.000+08:00",
   "type": "outage",

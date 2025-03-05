@@ -1,7 +1,9 @@
 {
   "id": "2013-02-01-planned-track-works",
   "title": "Planned track works from Pasir Ris to Tampines",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2013-02-01T17:22:02.000+08:00",
   "endAt": "2013-02-15T04:30:00.000+08:00",
   "type": "outage",

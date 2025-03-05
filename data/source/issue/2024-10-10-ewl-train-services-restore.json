@@ -5,9 +5,15 @@
     "EWL"
   ],
   "startAt": "2024-10-10T13:04:23.000+08:00",
-  "endAt": null,
+  "endAt": "2024-10-10T13:22:49.000+08:00",
   "type": "delay",
   "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL] CLEARED : Train services from #Queenstown to #Bugis have resumed. Free regular bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1844247193110392843",
+      "createdAt": "2024-10-10T13:22:49.000+08:00"
+    },
     {
       "type": "operator.monitoring",
       "text": "[EWL] UPDATE: Fault cleared, train services are progressively being restored. Pls add 10mins train travel time between #Queenstown and #Bugis. Free regular bus service still available between #Queenstown and #Bugis.",
@@ -25,6 +31,18 @@
       "text": "[EWL]: UPDATE Due to a train fault, pls add 20mins train travel time from #Queenstown to #Bugis towards #PasirRis. Free regular bus service is available between #Queenstown and #Bugis.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1844242550888202687",
       "createdAt": "2024-10-10T13:04:23.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a train fault, pls add 20mins train travel time from #Queenstown to #Bugis towards #PasirRis. \nFree regular bus service is available between #Queenstown and #Outram Park.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1844240365223805375",
+      "createdAt": "2024-10-10T12:55:42.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Free regular bus svcs btwn #OutramPark and #Queenstown. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1844234999203242308",
+      "createdAt": "2024-10-10T12:34:22.000+08:00"
     },
     {
       "type": "operator.investigating",

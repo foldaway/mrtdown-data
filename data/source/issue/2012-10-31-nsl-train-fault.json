@@ -1,7 +1,9 @@
 {
   "id": "2012-10-31-nsl-train-fault",
   "title": "Train fault causing additional travel time on North-South Line",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2012-10-31T19:21:53.000+08:00",
   "endAt": "2012-10-31T19:23:07.000+08:00",
   "type": "outage",

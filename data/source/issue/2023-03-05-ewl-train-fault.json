@@ -41,6 +41,18 @@
     },
     {
       "type": "operator.update",
+      "text": "[EWL] UPDATE: If you are near #Bugis, you may transfer to Downtown Line at #Bugis for alternative route.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1632232996580519937",
+      "createdAt": "2023-03-05T12:14:06.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: If you are near #BuonaVista and heading towards East, you may transfer to Circle Line at #BuonaVista to avoid the affected area.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1632232268990386176",
+      "createdAt": "2023-03-05T12:11:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[EWL]: Due to a train fault, please add 25mins train travel time from #OutramPark to #Bugis towards #PasirRis. Free regular bus services between #OutramPark and #Bugis. Our station staff will assist.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1632229493774618624",
       "createdAt": "2023-03-05T12:00:11.000+08:00"

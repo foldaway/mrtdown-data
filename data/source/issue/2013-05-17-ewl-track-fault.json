@@ -1,7 +1,9 @@
 {
   "id": "2013-05-17-ewl-track-fault",
   "title": "Maintenance work on East West Line from Tanah Merah to Simei",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2013-05-17T14:39:01.000+08:00",
   "endAt": "2013-06-01T00:00:56.000+08:00",
   "type": "outage",

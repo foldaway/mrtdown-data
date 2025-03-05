@@ -1,7 +1,9 @@
 {
   "id": "2020-01-08-urgent-maintenance-works-conducted-between-pe3-coral-edge-pe4-riviera-stations",
   "title": "urgent maintenance works conducted between PE3 Coral Edge & PE4 Riviera Stations",
-  "componentIdsAffected": ["PGLRT"],
+  "componentIdsAffected": [
+    "PGLRT"
+  ],
   "startAt": "2020-01-08T21:00:00.000+08:00",
   "endAt": "2020-01-09T04:00:00.000+08:00",
   "type": "maintenance",

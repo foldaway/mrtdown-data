@@ -1,7 +1,9 @@
 {
   "id": "2016-01-17-ccl-operational-exercise",
   "title": "CCL operational exercise",
-  "componentIdsAffected": ["CCL"],
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2016-01-17T07:00:01.000+08:00",
   "endAt": "2016-01-17T09:00:00.000+08:00",
   "type": "maintenance",

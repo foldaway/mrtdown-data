@@ -52,6 +52,30 @@
       "createdAt": "2023-02-08T11:08:47.000+08:00"
     },
     {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Please add 25mins train travel time btwn #Yishun and #Woodlands. For alternative travel options, pls take TEL or refer to https://t.co/SFAdrdqt7j. Free regular bus &amp; bridging bus svcs are still avail.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1623151774092902401",
+      "createdAt": "2023-02-08T10:48:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Pls add 25mins train travel time between #Yishun and #Woodlands. For alternative travel options, pls take TEL or refer to https://t.co/SFAdrdqt7j. Free regular bus &amp; bridging bus svcs are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1623146932427444225",
+      "createdAt": "2023-02-08T10:29:19.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Please add 25mins train travel time between #Yishun and #Woodlands. For alternative travel options, please take TEL or refer to https://t.co/SFAdrdqt7j. Free regular bus &amp; bridging bus svcs are still avail.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1623141831566561280",
+      "createdAt": "2023-02-08T10:09:03.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Pls add 25mins train travel time btwn #Yishun and #Woodlands. For alternative travel options, pls take TEL or refer to https://t.co/SFAdrdqt7j. Free regular bus &amp; bridging bus svcs are still avail.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1623137220709470209",
+      "createdAt": "2023-02-08T09:50:44.000+08:00"
+    },
+    {
       "type": "operator.monitoring",
       "text": "[NSL] UPDATE: Please add 25mins train travel time btwn #Yishun and #Woodlands. We are working to recover svc. Pls take TEL or refer to https://t.co/SFAdrdqt7j. Free regular bus &amp; bridging bus svcs are still avail.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1623132277185327104",
@@ -62,6 +86,18 @@
       "text": "[NSL] UPDATE: Pls add 25mins train travel time btwn #Yishun and #Woodlands. Please take TEL or refer to https://t.co/SFAdrdqt7j. Free regular bus &amp; bridging bus svcs are still available.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1623128546104446976",
       "createdAt": "2023-02-08T09:16:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Pls add 25mins train travel time btwn #Yishun and #Woodlands. For alternative travel options, please take TEL or refer to https://t.co/SFAdrdqt7j. Free regular bus &amp; bridging bus svcs are still avail.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1623124341033664512",
+      "createdAt": "2023-02-08T08:59:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Pls add 20mins train travel time btwn #Yishun and #Woodlands. For alternative travel options, please take TEL or refer to https://t.co/SFAdrdqt7j. Free regular bus &amp; bridging bus svcs are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1623120505544015872",
+      "createdAt": "2023-02-08T08:44:19.000+08:00"
     },
     {
       "type": "operator.update",
@@ -86,6 +122,18 @@
       "text": "[NSL] UPDATE: Pls add 15mins train travel time btwn #Yishun and #Woodlands due to a track point fault at #Admiralty. Train svc is available. For alternative travel options, please take TEL or refer to https://t.co/SFAdrdqt7j",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1623103917449166848",
       "createdAt": "2023-02-08T07:38:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Free regular bus &amp; bridging bus svcs btwn #Yishun and #Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1623100459040018432",
+      "createdAt": "2023-02-08T07:24:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: For alternative travel options, please take TEL or refer to https://t.co/SFAdrdqt7j",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1623099840115908608",
+      "createdAt": "2023-02-08T07:22:12.000+08:00"
     },
     {
       "type": "operator.update",

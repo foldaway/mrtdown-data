@@ -1,7 +1,9 @@
 {
   "id": "2013-07-04-bplrt-outage",
   "title": "BPLRT train service disruption",
-  "componentIdsAffected": ["BPLRT"],
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
   "startAt": "2013-07-04T05:36:42.000+08:00",
   "endAt": "2013-07-04T06:56:09.000+08:00",
   "type": "outage",

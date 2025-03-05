@@ -1,7 +1,9 @@
 {
   "id": "2019-11-15-early-closure-of-nel-stations",
   "title": "Early closure of NEL stations for maintenance",
-  "componentIdsAffected": ["NEL"],
+  "componentIdsAffected": [
+    "NEL"
+  ],
   "startAt": "2019-11-15T23:00:00.000+08:00",
   "endAt": "2019-11-16T00:00:00.000+08:00",
   "type": "maintenance",

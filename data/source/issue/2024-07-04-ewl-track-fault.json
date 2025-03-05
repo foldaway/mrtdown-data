@@ -35,6 +35,12 @@
     },
     {
       "type": "operator.update",
+      "text": "[EWL] UPDATE: Passengers travelling towards city area, please avoid east bound service. Please take North South Line (Red)  towards #AngMoKio and #MarinaSouthPier, or take Thomson East Coast Line (Brown) and Downtown line (Blue) for alternative route of transport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1808643232634655121",
+      "createdAt": "2024-07-04T07:25:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[EWL] UPDATE: Due to a track fault, pls add 30mins train travel time from #BoonLay to #Clementi towards #PasirRis.  Free regular bus &amp; free bridging bus svcs are available btwn #BoonLay and #Clementi.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1808639859139227860",
       "createdAt": "2024-07-04T07:11:59.000+08:00"
@@ -44,6 +50,12 @@
       "text": "[EWL] UPDATE: Due to a track fault, pls add 20mins train travel time from #BoonLay to #Clementi towards #PasirRis. Free regular bus &amp; bridging bus svcs are available btwn #BoonLay and #Clementi.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1808638093211369486",
       "createdAt": "2024-07-04T07:04:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Passengers travelling towards city area, please avoid east bound service. Please take North South Line towards #AngMoKio and #MarinaSouthPier, or take Thomson East Coast Line and Downtown line for alternative route of transport.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1808635818678104153",
+      "createdAt": "2024-07-04T06:55:56.000+08:00"
     },
     {
       "type": "operator.update",

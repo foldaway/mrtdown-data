@@ -1,7 +1,9 @@
 {
   "id": "2016-11-04-ccl-train-delays",
   "title": "Intermittent signal interference causing delays",
-  "componentIdsAffected": ["CCL"],
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2016-11-04T06:43:28.000+08:00",
   "endAt": "2016-11-05T14:35:03.000+08:00",
   "type": "maintenance",

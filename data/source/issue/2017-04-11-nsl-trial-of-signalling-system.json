@@ -1,7 +1,9 @@
 {
   "id": "2017-04-11-nsl-trial-of-signalling-system",
   "title": "Trial of New Signalling System on North-South Line",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2017-04-11T21:00:23.000+08:00",
   "endAt": "2017-04-11T21:10:23.000+08:00",
   "type": "maintenance",

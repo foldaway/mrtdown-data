@@ -1,17 +1,30 @@
 {
-  "id": "2023-05-30-circle-line-service-disruption",
-  "title": "Train services on the Circle Line adjusted for tunnel strengthening works",
-  "componentIdsAffected": ["CCL"],
+  "id": "2023-06-23-circle-line-signal-fault",
+  "title": "Delay due to signal fault on Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2023-06-23T20:57:11.000+08:00",
   "endAt": "2023-06-23T21:17:29.000+08:00",
-  "type": "outage",
-  "severity": "major",
+  "type": "delay",
   "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Please use alternative means of transport to your destination. Free regular bus services are still available between #DhobyGhaut / #MarinaBay to #PayaLebar. Bridging bus services are still available between #Promenade and #PayaLebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1672272771198627841",
+      "createdAt": "2023-06-23T23:57:52.000+08:00"
+    },
     {
       "type": "operator.update",
       "text": "[CCL] UPDATE:  No train service between #Esplanade / #Bayfront and #Mountbatten. Additional 30 minutes between #DhobyGhaut and #Esplanade, #MarinaBay and #Bayfront, and #Mountbatten and #PayaLebar. Please use alternative means of transport to continue your journey.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1672264884137136128",
       "createdAt": "2023-06-23T23:26:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE : Free regular bus services are still available between #DhobyGhaut / #MarinaBay to #PayaLebar. Bridging bus services are still available between #Promenade and #PayaLebar.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1672260093130448898",
+      "createdAt": "2023-06-23T23:07:29.000+08:00"
     },
     {
       "type": "operator.update",
@@ -26,31 +39,31 @@
       "createdAt": "2023-06-23T22:42:26.000+08:00"
     },
     {
-      "type": "operator.investigating",
+      "type": "operator.update",
       "text": "[CCL] : [Update] Additional 30mins train travel time between #DhobyGhaut  / #MarinaBay and #PayaLebar due to a signal fault. Free regular bus services are available between #DhobyGhaut / #MarinaBay to #PayaLebar. Our engineers are still looking into the fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1672247985328234497",
       "createdAt": "2023-06-23T22:19:23.000+08:00"
     },
     {
-      "type": "operator.investigating",
+      "type": "operator.update",
       "text": "[CCL] : Additional 30mins train travel time between #DhobyGhaut  / #MarinaBay and #PayaLebar due to a signal fault. Free regular bus services are available between #DhobyGhaut / #MarinaBay to #PayaLebar.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1672243576917598209",
       "createdAt": "2023-06-23T22:01:52.000+08:00"
     },
     {
-      "type": "operator.resolved",
+      "type": "operator.update",
       "text": "[CCL] CLEARED: Train services between #DhobyGhaut /#MarinaBay and #PayaLebar have resumed. Free regular bus &amp; free bridging bus svcs have ceased.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1672232409457377281",
       "createdAt": "2023-06-23T21:17:29.000+08:00"
     },
     {
-      "type": "operator.investigating",
+      "type": "operator.update",
       "text": "[CCL] : Additional 30mins train travel time between #DhobyGhaut / #MarinaBay and #PayaLebar due to a signal fault. Free Regular Bus is available between #DhobyGhaut / #MarinaBay and #PayaLebar.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1672227674000097280",
       "createdAt": "2023-06-23T20:58:40.000+08:00"
     },
     {
-      "type": "operator.investigating",
+      "type": "operator.update",
       "text": "[CCL] : Additional 30mins train travel time between #DhobyGhaut / #MarinaBay and #PayaLebar due to a signal fault. Free Regular Bus is available between #DhobyGhaut / #MarinaBay and #PayaLebar",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1672227299352264705",
       "createdAt": "2023-06-23T20:57:11.000+08:00"

@@ -1,7 +1,9 @@
 {
   "id": "2017-11-10-ewl-train-fault-aljunied",
   "title": "Train Fault Causing Delay on East West Line at Aljunied Station",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2017-11-10T23:15:15.000+08:00",
   "endAt": "2017-11-11T00:13:07.000+08:00",
   "type": "outage",

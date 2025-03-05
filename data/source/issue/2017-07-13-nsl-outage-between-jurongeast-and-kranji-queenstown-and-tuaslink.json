@@ -1,7 +1,10 @@
 {
   "id": "2017-07-13-nsl-outage-between-jurongeast-and-kranji-queenstown-and-tuaslink",
   "title": "No train service on NSL between Jurong East and Kranji, Queenstown and Tuas Link",
-  "componentIdsAffected": ["NSL", "EWL"],
+  "componentIdsAffected": [
+    "NSL",
+    "EWL"
+  ],
   "startAt": "2017-07-13T00:02:45.000+08:00",
   "endAt": "2017-07-13T01:20:02.000+08:00",
   "type": "outage",

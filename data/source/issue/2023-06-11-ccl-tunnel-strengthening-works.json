@@ -1,0 +1,25 @@
+{
+  "id": "2023-06-11-ccl-tunnel-strengthening-works",
+  "title": "Tunnel strengthening works affecting Circle Line services",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2023-06-11T00:00:00.000+08:00",
+  "endAt": "2023-06-27T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "📢Good news! Starting today, 27 June 2023, train services at 7 Circle Line stations will resume normal operations.😄This is made possible because tunnel strengthening works have progressed ahead of schedule🔧Refer to @LTAsg post below for full details. Have a great week ahead!💕",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1673500775111360512",
+      "createdAt": "2023-06-27T09:17:31.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "#ICYMI: From 11 Jun to 20 Jul train services on 7 stations along the CCL will be adjusted to facilitate tunnel strengthening works.🔧 Commuters are advised to plan their journeys and use alternative lines like NSEWL &amp; TEL or bus services. See @LTAsg's post 👇",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1663434686906114050",
+      "createdAt": "2023-05-30T14:38:29.000+08:00"
+    }
+  ]
+}

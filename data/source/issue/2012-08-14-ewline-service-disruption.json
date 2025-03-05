@@ -1,7 +1,9 @@
 {
   "id": "2012-08-14-ewline-service-disruption",
   "title": "East West Line service disruption",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2012-08-14T10:03:54.000+08:00",
   "endAt": "2012-08-14T10:14:24.000+08:00",
   "type": "outage",

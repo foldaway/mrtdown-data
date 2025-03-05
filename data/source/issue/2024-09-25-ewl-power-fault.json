@@ -1,7 +1,9 @@
 {
   "id": "2024-09-25-ewl-power-fault",
   "title": "No train service between Jurong East and Buona Vista due to Track Repair Works",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2024-09-25T10:09:05.000+08:00",
   "endAt": "2024-10-01T00:00:00.000+08:00",
   "type": "maintenance",
@@ -24,6 +26,24 @@
       "text": "[EWL] UPDATE: No train service btwn #JurongEast and #BuonaVista due to Track Repair Works. Shuttle train services are available btwn #BoonLay and #JurongEast, &amp; btwn #Queenstown and #BuonaVista. Kindly follow station staff instruction to continue your journey.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1840496970055721274",
       "createdAt": "2024-09-30T05:00:47.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: N-Level exam takers, if you are unable to reach your schools in time, you may take the N-Level exam at the nearest Exam Centre. You can download https://t.co/ffNClKnrCd app on your mobile to check the nearest Exam Centre. Under Public Transport Tab, Click &lt;Exam",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1840504862355993075",
+      "createdAt": "2024-09-30T05:32:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: PSLE takers, if you are unable to reach your schools in time, please approach our station staff for help.\nN-level exam takers, if you are unable to reach your schools in time, you may take the N-Level exam at the nearest Exam Centre. https://t.co/iVeo3ggxz5\n(Fig.5) https://t.co/lDLHI9xy0l",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1840501091907285490",
+      "createdAt": "2024-09-30T05:17:09.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Passengers travelling towards the city centre, avoid the indicated stretch of EWL. Use the following to continue your journeys:\n•NSL (Red) - Jurong East, Woodlands, Bishan\n•TEL (Brown) - Woodlands &amp; Caldecott\n•DTL (Blue) - Botanic Gardens https://t.co/XMaNIfoRg5",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1840349090288464379",
+      "createdAt": "2024-09-29T19:13:09.000+08:00"
     },
     {
       "type": "operator.update",
@@ -464,6 +484,12 @@
       "createdAt": "2024-09-25T21:55:37.000+08:00"
     },
     {
+      "type": "planned",
+      "text": "[EWL] UPDATE: Passengers travelling towards the city centre, avoid the indicated stretch of EWL(See Figure 1b). Use the following to continue your journeys:\n•NSL (Red) - Jurong East, Woodlands, Bishan\n•TEL (Brown) - Woodlands &amp; Caldecott\n•DTL (Blue) - Botanic Gardens https://t.co/4uPjmafbFt",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838934658723250292",
+      "createdAt": "2024-09-25T21:32:43.000+08:00"
+    },
+    {
       "type": "operator.update",
       "text": "[EWL] UPDATE: Tomorrow (26 Sep 2024), there is no train service btw Jurong East and Buona Vista.\nFree Regular and Bridging Bus services will be available btw Boon Lay and Queenstown.  Shuttle Trains will run btw:\n•Boon Lay and Jurong East\n•Buona Vista and Queenstown https://t.co/hdlRIpfKEC",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1838934029992968511",
@@ -524,6 +550,24 @@
       "createdAt": "2024-09-25T17:42:33.000+08:00"
     },
     {
+      "type": "planned",
+      "text": "[EWL] UPDATE: Passengers travelling towards the city centre, avoid the indicated stretch of EWL. Use the following to continue your journeys:\n\nNSL (Red) - Jurong East, Woodlands, Bishan\nTEL (Brown) - Woodlands &amp; Caldecott\nDTL (Blue) - Botanic Gardens https://t.co/DYz9QndPLJ",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838872637554221226",
+      "createdAt": "2024-09-25T17:26:16.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[EWL] UPDATE: Passengers leaving the city centre, please make use of:\nNSL (Red) - Raffles Place, City Hall, Dhoby Ghaut\nTEL (Brown) - Marina Bay, Outram Park\nDTL (Blue) - Bugis\nNEL (Purple) - Dhoby Ghaut\nCCL (Orange) - Buona Vista &amp; HarbourFront https://t.co/LXw5BOXDv3",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838872348751237528",
+      "createdAt": "2024-09-25T17:25:07.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[EWL]: UPDATE Free regular bus &amp; bridging bus services are still available between #BoonLay and #Queenstown. Passengers with special needs, please approach our station staff for assistance. Our staff are attending to the matter.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838868861938282526",
+      "createdAt": "2024-09-25T17:11:15.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "[EWL]: UPDATE No train service between JUR and BNV due to traction power fault. Shuttle train services are available at BNL &amp; JUR, QUE &amp; BNV.\nKindly follow station staff instruction to continue your journey. Free regular and bridging bus services are available between BNL &amp; QUE.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1838864768897274100",
@@ -542,10 +586,28 @@
       "createdAt": "2024-09-25T16:27:05.000+08:00"
     },
     {
+      "type": "planned",
+      "text": "[EWL] UPDATE: Passengers travelling towards the city centre, avoid the indicated stretch of EWL. Use the following to continue your journeys:\n\nNSL (Red) - Jurong East, Woodlands, Bishan\nTEL (Brown) - Woodlands &amp; Caldecott\nDTL (Blue) - Botanic Gardens https://t.co/376EqP04TL",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838853719380865196",
+      "createdAt": "2024-09-25T16:11:05.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[EWL] UPDATE: Passengers leaving the city centre, please make use of:\nNSL (Red) - Raffles Place, City Hall, Dhoby Ghaut\nTEL (Brown) - Marina Bay, Outram Park\nDTL (Blue) - Bugis\nNEL (Purple) - Dhoby Ghaut\nCCL (Orange) - Buona Vista &amp; HarbourFront https://t.co/p9lgCz1RkE",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838853271924150683",
+      "createdAt": "2024-09-25T16:09:18.000+08:00"
+    },
+    {
       "type": "operator.update",
       "text": "[EWL]:UPDATE Passengers travelling from Tuas Link towards Buona Vista, please find other alternative travel options. Free regular buses and bridging buses are also available. We apologize to affect your commute.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1838848977787146499",
       "createdAt": "2024-09-25T15:52:15.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[EWL]:UPDATE Passengers travelling from Buona Vista towards Tuas Link, please find other alternative travel options on Circle Line to North-South Line. Free regular buses and bridging buses are also available .Our staff are attending to the matter.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838846407429574667",
+      "createdAt": "2024-09-25T15:42:02.000+08:00"
     },
     {
       "type": "operator.investigating",
@@ -584,6 +646,12 @@
       "createdAt": "2024-09-25T14:08:24.000+08:00"
     },
     {
+      "type": "planned",
+      "text": "[EWL]:UPDATE Passengers travelling from Tuas Link towards Buona Vista, please find other alternative travel options. Free regular buses and bridging buses are also available. We apologise to affect your commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838819010227638316",
+      "createdAt": "2024-09-25T13:53:10.000+08:00"
+    },
+    {
       "type": "operator.update",
       "text": "[EWL]: UPDATE There is no train svc due to a power fault,  between #Boon Lay and #Queenstown. If you are heading towards #Jurong East take the free regular or bridging bus to #Jurong East at #Boon Lay and continue your journey on NSL (Red line) to #Outram Park via #Woodlands.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1838814975609180399",
@@ -618,6 +686,18 @@
       "text": "[EWL]:UPDATE Due to a power fault, there is no train service between #BoonLay and #Queenstown. Free regular bus &amp; bridging bus services are still available between #BoonLay and #Queenstown. We apologies for the inconvenience caused.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1838795536499118358",
       "createdAt": "2024-09-25T12:19:53.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[EWL]:UPDATE Passengers travelling from Buona Vista towards Tuas Link, please find other alternative travel options on Circle Line to North-South Line. Free regular buses and bridging buses are also available. https://t.co/FbcZOTFdPd",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838793672944685151",
+      "createdAt": "2024-09-25T12:12:29.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "For alternative travel options, please refer to the link here: https://t.co/FbcZOTFdPd\n1. Select East-West Line to find out on alternative travel. \n2. Select the affected station \n3. Click on \"Alternative Travel Information\"",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1838790949436297344",
+      "createdAt": "2024-09-25T12:01:40.000+08:00"
     },
     {
       "type": "operator.update",

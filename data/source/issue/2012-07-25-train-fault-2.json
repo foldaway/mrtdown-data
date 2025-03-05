@@ -1,7 +1,9 @@
 {
   "id": "2012-07-25-train-fault-2",
   "title": "Train fault causing delays on southbound line",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2012-07-25T12:49:35.000+08:00",
   "endAt": "2012-07-25T12:53:14.000+08:00",
   "type": "outage",

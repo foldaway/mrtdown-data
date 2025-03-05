@@ -1,7 +1,9 @@
 {
   "id": "2015-09-22-faulty-train-service-delay",
   "title": "Faulty train causing major service delays",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2015-09-22T08:40:39.000+08:00",
   "endAt": "2015-09-22T08:48:15.000+08:00",
   "type": "outage",

@@ -1,0 +1,19 @@
+{
+  "id": "2020-11-21-circuit-breaker-replacement",
+  "title": "Early Closure of 4 MRT Stations for Circuit Breaker Replacement",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2020-11-21T23:00:00.000+08:00",
+  "endAt": "2020-11-29T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "To facilitate 22kV circuit breaker trip coil replacement works along the Tuas West Extension, 4 MRT stations from Gul Circle to Tuas Link along the East-West Line will close earlier at about 11pm on 21 and 28 November. Please plan your journey ahead. https://t.co/EAUA3pkEYT https://t.co/P0FPqmvlMg",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1329272659385860096",
+      "createdAt": "2020-11-19T11:57:53.000+08:00"
+    }
+  ]
+}

@@ -1,7 +1,9 @@
 {
   "id": "2013-02-07-planned-track-works-khatib-yio-chu-kang",
   "title": "Planned track works from Khatib to Yio Chu Kang",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2013-02-07T01:30:00.000+08:00",
   "endAt": "2013-04-08T04:30:00.000+08:00",
   "type": "outage",

@@ -1,0 +1,79 @@
+{
+  "id": "2023-01-06-track-signal-fault",
+  "title": "Track signal fault causing slower trains on TEL",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2023-01-06T05:48:13.000+08:00",
+  "endAt": "2023-01-06T07:27:42.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[TEL]: Train services have resumed between Woodlands North and Gardens by the Bay. We are sorry to affect your morning commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1611142425367678977",
+      "createdAt": "2023-01-06T07:27:42.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL]: Train services are progressively resuming. Free regular bus and bus bridging services have ceased. Please continue to factor in additional 10mins travelling time.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1611140253678718976",
+      "createdAt": "2023-01-06T07:19:04.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL]: Please factor in additional 10mins of travelling time between Woodlands North and Gardens by the Bay MRT stations. Free regular bus and bus bridging services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1611138267424133120",
+      "createdAt": "2023-01-06T07:11:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL]: Please factor in an additional 20mins travelling time between Woodlands North and Gardens by the Bay stations. Free regular bus and bus bridging services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1611134397440491520",
+      "createdAt": "2023-01-06T06:55:48.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL] Train svcs are being progressively resumed between Woodlands North to Gardens by the Bay. Please factor in an additional 30mins travelling time. Free regular bus and bus bridging services still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1611130573057323008",
+      "createdAt": "2023-01-06T06:40:36.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL]: Train services between Woodlands North to Gardens by the Bay have progressively resumed. Free Regular Bus and Bridging Bus services are still available. Passengers may also travel on alternate lines.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1611126998121984001",
+      "createdAt": "2023-01-06T06:26:24.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL]: Train services between Woodlands North to Gardens by the Bay are progressively recovering. Free Regular Bus and Bridging Bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1611124776927657984",
+      "createdAt": "2023-01-06T06:17:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL]: No Train services between Caldecott to Gardens By the Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1611122999599706112",
+      "createdAt": "2023-01-06T06:10:30.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: No Train services between Stevens to Gardens By the Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1611121631069626368",
+      "createdAt": "2023-01-06T06:05:04.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL]: Due to a system fault, train services are affected between Woodlands North and Gardens By the Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1611117825208504320",
+      "createdAt": "2023-01-06T05:49:57.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[TEL]: Due to a track signal fault, trains are moving slower from Woodlands North towards Gardens by the Bay.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1611117391815249920",
+      "createdAt": "2023-01-06T05:48:13.000+08:00"
+    }
+  ]
+}

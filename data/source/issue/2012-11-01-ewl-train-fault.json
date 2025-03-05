@@ -1,7 +1,9 @@
 {
   "id": "2012-11-01-ewl-train-fault",
   "title": "Train Fault at East-West Line",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2012-11-01T10:38:16.000+08:00",
   "endAt": "2012-11-01T10:47:50.000+08:00",
   "type": "outage",

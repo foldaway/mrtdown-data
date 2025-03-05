@@ -1,7 +1,9 @@
 {
   "id": "2013-10-27-circle-line-power-cable-change",
   "title": "Travel time extension between Labrador Park & HarbourFront due to power cable change",
-  "componentIdsAffected": ["CCL"],
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2013-10-27T06:00:00.000+08:00",
   "endAt": "2013-10-27T10:00:00.000+08:00",
   "type": "maintenance",

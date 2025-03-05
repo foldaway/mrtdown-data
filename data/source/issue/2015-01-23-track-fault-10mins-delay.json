@@ -1,7 +1,9 @@
 {
   "id": "2015-01-23-track-fault-10mins-delay",
   "title": "Track fault causing delays between Bishan and Ang Mo Kio",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2015-01-23T05:37:32.000+08:00",
   "endAt": "2015-01-23T05:49:43+08:00",
   "type": "outage",
@@ -11,7 +13,7 @@
       "type": "operator.update",
       "text": "Train service from Bishan to Ang Mo Kio has resumed.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/558381019397505024",
-      "createdAt": "2015-01-23T05:49:43+08:00"
+      "createdAt": "2015-01-23T05:49:43.000+08:00"
     },
     {
       "type": "operator.update",

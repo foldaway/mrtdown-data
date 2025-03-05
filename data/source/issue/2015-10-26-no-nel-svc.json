@@ -1,7 +1,9 @@
 {
   "id": "2015-10-26-no-nel-svc",
   "title": "No North East Line Service due to Power Fault",
-  "componentIdsAffected": ["NEL"],
+  "componentIdsAffected": [
+    "NEL"
+  ],
   "startAt": "2015-10-26T05:23:32.000+08:00",
   "endAt": "2015-10-26T07:32:25.000+08:00",
   "type": "outage",

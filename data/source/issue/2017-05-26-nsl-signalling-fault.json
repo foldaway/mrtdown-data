@@ -1,7 +1,9 @@
 {
   "id": "2017-05-26-nsl-signalling-fault",
   "title": "Signalling Fault in NSL",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2017-05-28T14:56:29.000+08:00",
   "endAt": "2017-05-28T16:00:46.000+08:00",
   "type": "outage",

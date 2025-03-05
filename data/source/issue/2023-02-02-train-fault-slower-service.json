@@ -22,6 +22,12 @@
       "createdAt": "2023-02-02T06:47:13.000+08:00"
     },
     {
+      "type": "operator.update",
+      "text": "[TEL]: Shuttle Train service between Woodlands North. Shuttle Train Service between Caldecott to Orchard. Free Regular buses and Bus Bridging available between Woodlands North to Orchard. Train services from Orchard to Gardens by the Bay. Additional travelling time 10 mins.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1620912844740116482",
+      "createdAt": "2023-02-02T06:31:51.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "[TEL]: Due to a train fault, trains are moving slower from Woodlands North towards Caldecott. Free regular bus services between WDN to CDT.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1620902837281763328",

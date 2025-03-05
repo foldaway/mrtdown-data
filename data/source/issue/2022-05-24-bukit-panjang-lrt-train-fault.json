@@ -23,6 +23,18 @@
     },
     {
       "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Free regular bus services between #ChoaChuKang and #Senja are available. If your journey has been affected, you may download an e-Travel Chit as proof of your travel at https://t.co/dYFVNdxSLs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1528947445056811008",
+      "createdAt": "2022-05-24T11:54:12.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] UPDATE: Shuttle train service from #ChoaChuKang to #BukitPanjang is available. Service B between #BukitPanjang and loop stations (#Petir to #Senja) is available. For alternative travel options, please refer to https://t.co/SFAdrdqt7j.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1528941636570722306",
+      "createdAt": "2022-05-24T11:31:07.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[BPLRT] UPDATE: Shuttle train service from #ChoaChuKang to #BukitPanjang is available. Service B between #BukitPanjang and loop stations (#Petir to #Senja) are available.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1528936699858161664",
       "createdAt": "2022-05-24T11:11:30.000+08:00"
@@ -50,6 +62,12 @@
       "text": "[BPLRT] UPDATE: Services A &amp; B between #BukitPanjang and loop stations (#Petir to #Senja) are available.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1528915203886546944",
       "createdAt": "2022-05-24T09:46:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] UPDATE: Free regular bus services between #ChoaChuKang and #Senja are available. For alternative travel options, please refer to https://t.co/SFAdrdqt7j.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1528913263664459776",
+      "createdAt": "2022-05-24T09:38:22.000+08:00"
     },
     {
       "type": "operator.update",

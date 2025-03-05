@@ -1,7 +1,9 @@
 {
   "id": "2015-03-18-nsl-track-fault-delays",
   "title": "Track Fault Causes Delays on North-South Line",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2015-03-18T14:37:25.000+08:00",
   "endAt": "2015-03-18T14:50:55.000+08:00",
   "type": "outage",

@@ -1,7 +1,9 @@
 {
   "id": "2017-01-23-ewl-track-fault",
   "title": "Track Fault on East West Line",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2017-01-23T18:34:48.000+08:00",
   "endAt": "2017-01-23T18:34:48.000+08:00",
   "type": "outage",

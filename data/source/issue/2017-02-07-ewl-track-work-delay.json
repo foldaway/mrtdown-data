@@ -1,7 +1,9 @@
 {
   "id": "2017-02-07-ewl-track-work-delay",
   "title": "Track work causing travel delays on East West Line",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2017-02-07T08:12:47.000+08:00",
   "endAt": "2017-02-07T09:11:32.000+08:00",
   "type": "outage",

@@ -1,7 +1,9 @@
 {
   "id": "2016-09-02-ccl-intermittent-signalling-issue",
   "title": "Intermittent signalling issue on Circle Line",
-  "componentIdsAffected": ["CCL"],
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2016-09-02T06:13:22.000+08:00",
   "endAt": "2016-09-03T18:14:24.000+08:00",
   "type": "outage",

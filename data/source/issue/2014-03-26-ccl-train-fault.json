@@ -1,23 +1,25 @@
 {
-	"id": "2014-03-26-ccl-train-fault",
-	"title": "Train Fault at Circle Line",
-	"componentIdsAffected": ["CCL"],
-	"startAt": "2014-03-30T20:58:32.000+08:00",
-	"endAt": "2014-03-30T21:05:33.000+08:00",
-	"type": "outage",
-	"severity": "minor",
-	"updates": [
-		{
-			"type": "operator.monitoring",
-			"text": "[CCL] UPDATE: CCL Trains services have resumed.Tains and platforms are crowded.",
-			"sourceUrl": "https://x.com/SMRT_Singapore/status/450257521245036544",
-			"createdAt": "2014-03-30T21:05:33.000+08:00"
-		},
-		{
-			"type": "operator.update",
-			"text": "[CCL] UPDATE: Estimate 10 mins additional travelling time between #DhobyGhaut and #Mounbatten due to train fault.",
-			"sourceUrl": "https://x.com/SMRT_Singapore/status/450255758647500801",
-			"createdAt": "2014-03-30T20:58:32.000+08:00"
-		}
-	]
+  "id": "2014-03-26-ccl-train-fault",
+  "title": "Train Fault at Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2014-03-30T20:58:32.000+08:00",
+  "endAt": "2014-03-30T21:05:33.000+08:00",
+  "type": "outage",
+  "severity": "minor",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: CCL Trains services have resumed.Tains and platforms are crowded.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/450257521245036544",
+      "createdAt": "2014-03-30T21:05:33.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] UPDATE: Estimate 10 mins additional travelling time between #DhobyGhaut and #Mounbatten due to train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/450255758647500801",
+      "createdAt": "2014-03-30T20:58:32.000+08:00"
+    }
+  ]
 }

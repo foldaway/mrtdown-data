@@ -22,6 +22,12 @@
     },
     {
       "type": "operator.update",
+      "text": "[EWL] UPDATE: Free regular bus svcs btwn #TanahMerah and #PasirRis. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1450820248223956996",
+      "createdAt": "2021-10-20T21:44:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "[EWL]: Due to a train fault, pls add 20mins train travel time btwn #PasirRis and #TanahMerah.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1450819515873312769",
       "createdAt": "2021-10-20T21:41:42.000+08:00"

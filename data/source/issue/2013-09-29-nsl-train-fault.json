@@ -1,7 +1,9 @@
 {
   "id": "2013-09-29-nsl-train-fault",
   "title": "Train fault causing delays on North-South Line",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2013-09-29T07:06:52.000+08:00",
   "endAt": "2013-09-29T07:28:32.000+08:00",
   "type": "outage",

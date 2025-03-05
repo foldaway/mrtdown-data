@@ -1,7 +1,9 @@
 {
   "id": "2013-04-12-ewl-track-fault",
   "title": "Track fault on East-West Line",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2013-04-12T09:50:35.000+08:00",
   "endAt": "2013-04-12T08:35:25.000+08:00",
   "type": "outage",

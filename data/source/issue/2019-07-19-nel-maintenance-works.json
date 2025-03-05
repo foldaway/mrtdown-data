@@ -1,7 +1,9 @@
 {
   "id": "2019-07-19-nel-maintenance-works",
   "title": "North East Line maintenance works",
-  "componentIdsAffected": ["NEL"],
+  "componentIdsAffected": [
+    "NEL"
+  ],
   "startAt": "2019-07-19T00:00:00.000+08:00",
   "endAt": "2019-07-21T00:00:00.000+08:00",
   "type": "maintenance",

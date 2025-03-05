@@ -1,7 +1,9 @@
 {
   "id": "2012-10-28-ewl-service-disruption",
   "title": "Service disruption on East West Line",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2012-10-28T20:30:20.000+08:00",
   "endAt": "2012-10-28T22:21:58.000+08:00",
   "type": "outage",

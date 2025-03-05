@@ -1,7 +1,9 @@
 {
   "id": "2013-02-01-nsl-track-fault",
   "title": "Track fault on North-South Line",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2013-04-03T07:25:14.000+08:00",
   "endAt": "2013-04-03T07:35:52.000+08:00",
   "type": "outage",

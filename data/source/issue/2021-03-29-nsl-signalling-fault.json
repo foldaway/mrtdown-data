@@ -2,11 +2,7 @@
   "id": "2021-03-29-nsl-signalling-fault",
   "title": "Service Disruption Due to Signalling Fault on North-South Line",
   "componentIdsAffected": [
-    "NSL",
-    "EWL",
-    "CCL",
-    "NEL",
-    "DTL"
+    "NSL"
   ],
   "startAt": "2021-03-29T05:47:22.000+08:00",
   "endAt": "2021-03-29T10:20:47.000+08:00",
@@ -60,6 +56,18 @@
       "text": "[NSL] UPDATE: Due to a signalling fault, please add 45mins train travel time btwn #RafflesPlace and #Bishan. Free regular bus and bridging bus services are available. We are sorry for affecting your morning commute.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1376315861615570948",
       "createdAt": "2021-03-29T07:30:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Commuters coming from the North are advised to take the East West Line via Jurong East, and the Circle Line via Bishan. Free regular bus and bridging bus services are available between #MarinaSouthPier and #ToaPayoh.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376310319862013957",
+      "createdAt": "2021-03-29T07:08:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Commuters are advised to make alternative travel arrangements, including taking East West Line, Circle Line, North East Line and Downtown Line to the city.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1376305883781558272",
+      "createdAt": "2021-03-29T06:51:07.000+08:00"
     },
     {
       "type": "operator.update",

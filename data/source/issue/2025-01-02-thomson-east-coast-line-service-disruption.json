@@ -4,7 +4,7 @@
   "componentIdsAffected": [
     "TEL"
   ],
-  "startAt": "2025-01-02T20:00:44.000+08:00",
+  "startAt": "2025-01-02T19:38:58.000+08:00",
   "endAt": "2025-01-02T20:00:44.000+08:00",
   "type": "outage",
   "severity": "major",
@@ -20,6 +20,12 @@
       "text": "[TEL] UPDATE: Please allow for additional 10 mins travel time between Caldecott and Bayshore in both directions due to a train fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1874784557008093548",
       "createdAt": "2025-01-02T19:47:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL]: Please allow for additional 10 mins travelling time from Caldecott to Gardens by the Bay due to a train fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1874782432857383077",
+      "createdAt": "2025-01-02T19:38:58.000+08:00"
     }
   ]
 }

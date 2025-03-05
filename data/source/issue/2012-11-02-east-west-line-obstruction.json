@@ -1,7 +1,9 @@
 {
   "id": "2012-11-02-east-west-line-obstruction",
   "title": "Door obstruction causing delays",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2012-11-02T18:34:40.000+08:00",
   "endAt": "2012-11-03T05:30:00.000+08:00",
   "type": "outage",

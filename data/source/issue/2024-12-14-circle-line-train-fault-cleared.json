@@ -10,6 +10,12 @@
   "severity": "major",
   "updates": [
     {
+      "type": "operator.resolved",
+      "text": "[CCL] UPDATE: Train service has returned to normal. Free regular bus service has ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1867894335771217968",
+      "createdAt": "2024-12-14T19:28:08.000+08:00"
+    },
+    {
       "type": "operator.monitoring",
       "text": "[CCL] UPDATE: Train fault cleared. Train service between #Promenade and #Serangoon is progressively returning to normal. Free regular bus service are still available between #Promenade and #Serangoon.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1867890674324144494",

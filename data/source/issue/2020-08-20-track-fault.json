@@ -1,0 +1,25 @@
+{
+  "id": "2020-08-20-track-fault",
+  "title": "Track Fault Causing Delay",
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2020-08-20T09:55:42.000+08:00",
+  "endAt": "2020-08-20T10:30:00.000+08:00",
+  "type": "outage",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "At 1030hrs Track fault normalized. Normal Train service resumed.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1296276983534346240",
+      "createdAt": "2020-08-20T10:44:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to Track Fault, additional Travelling time of 15 minute expected between Bedok North Station and Expo Station in both direction.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1296264617505636352",
+      "createdAt": "2020-08-20T09:55:42.000+08:00"
+    }
+  ]
+}

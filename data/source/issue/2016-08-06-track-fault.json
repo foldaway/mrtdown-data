@@ -1,7 +1,9 @@
 {
   "id": "2016-08-06-track-fault",
   "title": "Track fault results in additional travel time",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2016-08-06T08:52:22.000+08:00",
   "endAt": "2016-08-06T12:13:17.000+08:00",
   "type": "outage",

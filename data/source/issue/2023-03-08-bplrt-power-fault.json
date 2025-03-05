@@ -27,6 +27,12 @@
       "createdAt": "2023-03-08T20:42:24.000+08:00"
     },
     {
+      "type": "operator.update",
+      "text": "[BPLRT]: For alternative travel options, please refer to https://t.co/SFAdrdqt7j. If your journey has been affected, you may download an e-Travel Chit as proof of your travel at https://t.co/dYFVNdxSLs.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1633446462003752960",
+      "createdAt": "2023-03-08T20:35:59.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "[BPLRT]: Due to a power fault between Choa Chua Kang and Keat Hong Station, shuttle service is available between Choa Chu Kang to Bukit Panjang Station. Train service is still available for loopside.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1633442482506842113",

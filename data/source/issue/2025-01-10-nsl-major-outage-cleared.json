@@ -22,6 +22,12 @@
       "createdAt": "2025-01-10T18:34:10.000+08:00"
     },
     {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Train service between #MarinaSouthPier and #Bishan has resumed. Free regular bus svc btwn #MarinaSouthPier and #ToaPayoh is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1877664002383462831",
+      "createdAt": "2025-01-10T18:29:18.000+08:00"
+    },
+    {
       "type": "operator.monitoring",
       "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. Pls add 10mins train travel time btwn #MarinaSouthPier and #Bishan. Free regular bus svcs btwn #MarinaSouthPier and #ToaPayoh.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1877662999550599204",
@@ -38,6 +44,24 @@
       "text": "[NSL] UPDATE: Due to a train fault, pls add 20mins train travel time btwn #MarinaSouthPier and #Bishan.  Free regular bus svcs btwn #MarinaSouthPier and #ToaPayoh. Our station staff will assist.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1877659677481120065",
       "createdAt": "2025-01-10T18:12:06.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a train fault, pls add 25mins train travel time btwn #MarinaSouthPier and #Bishan. Free regular bus svcs btwn #MarinaSouthPier and #ToaPayoh. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1877657830309933195",
+      "createdAt": "2025-01-10T18:04:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Passengers travelling towards #Woodlands kindly transfer at #Orchard and #MarinaBay for the TEL line. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1877657142947414362",
+      "createdAt": "2025-01-10T18:02:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a train fault, pls add 20mins train travel time btwn #MarinaSouthPier and #Bishan. Free regular bus svcs btwn #MarinaSouthPier and #ToaPayoh. Our station staff will assist.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1877656483669872757",
+      "createdAt": "2025-01-10T17:59:25.000+08:00"
     },
     {
       "type": "operator.investigating",

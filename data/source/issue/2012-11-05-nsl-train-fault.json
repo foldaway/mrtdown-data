@@ -1,7 +1,9 @@
 {
   "id": "2012-11-05-nsl-train-fault",
   "title": "Train Fault at North-South Line",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2012-11-05T18:23:27.000+08:00",
   "endAt": "2012-11-05T18:41:25.000+08:00",
   "type": "outage",

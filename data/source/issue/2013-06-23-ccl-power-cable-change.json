@@ -1,7 +1,9 @@
 {
   "id": "2013-06-23-ccl-power-cable-change",
   "title": "Travel time increase on Circle Line due to maintenance",
-  "componentIdsAffected": ["CCL"],
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2013-06-23T06:00:00.000+08:00",
   "endAt": "2013-06-23T10:00:00.000+08:00",
   "type": "outage",

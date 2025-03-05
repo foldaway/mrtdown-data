@@ -1,7 +1,9 @@
 {
   "id": "2017-02-12-ewl-joo-koon-boon-lay-track-fault",
   "title": "Service disruption between Joo Koon and Boon Lay due to track fault",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2017-02-12T05:58:21.000+08:00",
   "endAt": "2017-02-12T07:05:56.000+08:00",
   "type": "outage",

@@ -16,6 +16,12 @@
       "createdAt": "2024-12-19T10:36:07.000+08:00"
     },
     {
+      "type": "operator.monitoring",
+      "text": "[TEL] UPDATE: Train service between Bayshore and Woodlands North progressively resuming.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1869571871399870830",
+      "createdAt": "2024-12-19T10:34:03.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "[TEL] UPDATE: Please allow for additional 5 mins travel time between Bayshore and Woodlands North in both directions due to a signal fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1869569511294451863",

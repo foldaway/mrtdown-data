@@ -1,7 +1,9 @@
 {
   "id": "2017-10-07-nsl-track-fault",
   "title": "Major service disruption on the North-South Line due to track fault and tunnel flooding",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2017-10-07T17:36:54.000+08:00",
   "endAt": "2017-10-08T13:52:28.000+08:00",
   "type": "outage",
