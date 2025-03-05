@@ -2,10 +2,10 @@ import type { ChatCompletionMessageParam } from 'openai/resources';
 import zodToJsonSchema from 'zod-to-json-schema';
 import { IssueModel } from '../../../model/IssueModel';
 import {
-  type IssueOutage,
-  IssueOutageSchema,
-  type IssueOutageUpdate,
-  IssueOutageUpdateTypeSchema,
+  type IssueDisruption,
+  IssueDisruptionSchema,
+  type IssueDisruptionUpdate,
+  IssueDisruptionUpdateTypeSchema,
 } from '../../../schema/Issue';
 import { openAiClient } from '../constants';
 import type { IngestContent } from '../types';
@@ -15,16 +15,16 @@ import { ComponentModel } from '../../../model/ComponentModel';
 import { summarizeUpdate } from './summarizeUpdate';
 import { buildComponentTable } from '../buildComponentTable';
 
-const IssueOutageAugmentResultSchema = IssueOutageSchema.omit({
+const IssueDisruptionAugmentResultSchema = IssueDisruptionSchema.omit({
   updates: true,
 });
 
-const IssueOutageAugmentJsonSchema = zodToJsonSchema(
-  IssueOutageAugmentResultSchema,
+const IssueDisruptionAugmentJsonSchema = zodToJsonSchema(
+  IssueDisruptionAugmentResultSchema,
 );
 
 const ClassifyUpdateTypeResultSchema = z.object({
-  type: IssueOutageUpdateTypeSchema,
+  type: IssueDisruptionUpdateTypeSchema,
   reason: z.string().describe('Explain briefly.'),
 });
 
@@ -73,18 +73,18 @@ Notes:
   );
 }
 
-export async function ingestIssueOutage(
+export async function ingestIssueDisruption(
   content: IngestContent,
   existingIssueId: string | null,
 ) {
-  let issue: IssueOutage;
+  let issue: IssueDisruption;
 
   if (existingIssueId != null) {
-    issue = IssueModel.getOne(existingIssueId) as IssueOutage;
+    issue = IssueModel.getOne(existingIssueId) as IssueDisruption;
   } else {
     issue = {
       id: 'please-overwrite',
-      type: 'outage',
+      type: 'disruption',
       componentIdsAffected: [],
       severity: 'major',
       title: 'please-overwrite',
@@ -95,7 +95,7 @@ export async function ingestIssueOutage(
   }
 
   const updateType = await classifyUpdateType(content);
-  console.log('[ingestContent.outage.classifyUpdateType]', updateType);
+  console.log('[ingestContent.disruption.classifyUpdateType]', updateType);
 
   const updateIndex = issue.updates.findIndex(
     (upd) => upd.sourceUrl === content.url,
@@ -104,7 +104,7 @@ export async function ingestIssueOutage(
   switch (content.source) {
     case 'reddit': {
       text = await summarizeUpdate(content);
-      console.log('[ingestContent.outage.summarizeUpdate]', text);
+      console.log('[ingestContent.disruption.summarizeUpdate]', text);
       break;
     }
     case 'news-website': {
@@ -117,7 +117,7 @@ export async function ingestIssueOutage(
       break;
     }
   }
-  const update: IssueOutageUpdate = {
+  const update: IssueDisruptionUpdate = {
     type: updateType.type,
     text,
     sourceUrl: content.url,
@@ -153,8 +153,8 @@ Please modify the issue with details extracted from the post. You should:
   - "id" field if it has the value "please-overwrite". It must follow the format! Do not overwrite if there is any other value.
   - "title" field
   - "startAt" field
-  - "endAt" field if the outage is considered finished.
-  - "severity" field
+  - "endAt" field if the disruption is considered finished.
+  - "severity" field. It's "major" if service is disrupted, "minor" if there are only delays.
   - correct the "components" field based on the updates, see below for table.
     - recommendations to utilise other rail lines does not make them affected components.
 
@@ -173,9 +173,9 @@ ${buildComponentTable()}
     response_format: {
       type: 'json_schema',
       json_schema: {
-        name: 'IssueOutage',
+        name: 'IssueDisruption',
         strict: true,
-        schema: IssueOutageAugmentJsonSchema,
+        schema: IssueDisruptionAugmentJsonSchema,
       },
     },
   });
@@ -184,12 +184,12 @@ ${buildComponentTable()}
   messages.push(message);
 
   try {
-    const issueOutage = IssueOutageAugmentResultSchema.parse(
+    const issueDisruption = IssueDisruptionAugmentResultSchema.parse(
       JSON.parse(message.content ?? ''),
     );
 
     issue = {
-      ...issueOutage,
+      ...issueDisruption,
       updates: issue.updates,
     };
 
@@ -198,9 +198,9 @@ ${buildComponentTable()}
     if (existingIssueId != null && issue.id !== existingIssueId) {
       IssueModel.delete(existingIssueId);
     }
-    console.log('[ingestIssueOutage] saved', issue);
+    console.log('[ingestIssueDisruption] saved', issue);
   } catch (e) {
     console.error(e);
-    console.log('[ingestIssueOutage] crash debug', messages);
+    console.log('[ingestIssueDisruption] crash debug', messages);
   }
 }

@@ -48,6 +48,7 @@ Determine whether the post is part of an existing issue.
 You can call the "searchIssues" tool once to get a list of all existing issues based on either the post date or the expected date.
 
 Take Note:
+- Both breakdowns and delays are considered "disruption" type issues.
 - The rail line is very often mentioned in the post text. e.g. [BPLRT] refers to BPLRT rail line.
 - Incidents typically only affect a single rail line, unless explicitly stated otherwise.
 - There could be multiple incidents on the same rail line in the same day. If an existing incident already has "endAt" populated, a new one will be required for the post.

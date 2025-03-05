@@ -2,12 +2,7 @@ import { z } from 'zod';
 import { ComponentIdSchema } from './Component';
 import { DateTime } from 'luxon';
 
-export const IssueTypeSchema = z.enum([
-  'outage',
-  'maintenance',
-  'delay',
-  'infra',
-]);
+export const IssueTypeSchema = z.enum(['disruption', 'maintenance', 'infra']);
 export type IssueType = z.infer<typeof IssueTypeSchema>;
 
 export const IssueIdSchema = z
@@ -37,13 +32,15 @@ const IssueBase = z.object({
     .describe('ISO8601 end timestamp of the issue, if applicable.'),
 });
 
-/** [OUTAGE] severity */
-export const IssueOutageSeveritySchema = z.enum(['minor', 'major']);
-/** [OUTAGE] severity */
-export type IssueOutageSeverity = z.infer<typeof IssueOutageSeveritySchema>;
+/** [DISRUPTION] severity */
+export const IssueDisruptionSeveritySchema = z.enum(['minor', 'major']);
+/** [DISRUPTION] severity */
+export type IssueDisruptionSeverity = z.infer<
+  typeof IssueDisruptionSeveritySchema
+>;
 
-/** [OUTAGE] update type */
-export const IssueOutageUpdateTypeSchema = z.enum([
+/** [DISRUPTION] update type */
+export const IssueDisruptionUpdateTypeSchema = z.enum([
   'general-public.report',
   'news.report',
   'operator.investigating',
@@ -51,12 +48,14 @@ export const IssueOutageUpdateTypeSchema = z.enum([
   'operator.update',
   'operator.resolved',
 ]);
-/** [OUTAGE] update type */
-export type IssueOutageUpdateType = z.infer<typeof IssueOutageUpdateTypeSchema>;
+/** [DISRUPTION] update type */
+export type IssueDisruptionUpdateType = z.infer<
+  typeof IssueDisruptionUpdateTypeSchema
+>;
 
-/** [OUTAGE] update */
-export const IssueOutageUpdateSchema = z.object({
-  type: IssueOutageUpdateTypeSchema,
+/** [DISRUPTION] update */
+export const IssueDisruptionUpdateSchema = z.object({
+  type: IssueDisruptionUpdateTypeSchema,
   createdAt: z
     .string()
     .refine((val) => DateTime.fromISO(val).isValid)
@@ -64,17 +63,17 @@ export const IssueOutageUpdateSchema = z.object({
   text: z.string().describe('summary of the update in formal sentence(s)'),
   sourceUrl: z.string(),
 });
-/** [OUTAGE] update */
-export type IssueOutageUpdate = z.infer<typeof IssueOutageUpdateSchema>;
+/** [DISRUPTION] update */
+export type IssueDisruptionUpdate = z.infer<typeof IssueDisruptionUpdateSchema>;
 
-/** [OUTAGE] */
-export const IssueOutageSchema = IssueBase.extend({
-  type: z.literal(IssueTypeSchema.Enum.outage),
-  severity: IssueOutageSeveritySchema,
-  updates: z.array(IssueOutageUpdateSchema),
+/** [DISRUPTION] */
+export const IssueDisruptionSchema = IssueBase.extend({
+  type: z.literal(IssueTypeSchema.Enum.disruption),
+  severity: IssueDisruptionSeveritySchema,
+  updates: z.array(IssueDisruptionUpdateSchema),
 });
-/** [OUTAGE] */
-export type IssueOutage = z.infer<typeof IssueOutageSchema>;
+/** [DISRUPTION] */
+export type IssueDisruption = z.infer<typeof IssueDisruptionSchema>;
 
 /** [MAINTENANCE] update type */
 export const IssueMaintenanceUpdateTypeSchema = z.enum([
@@ -140,45 +139,13 @@ export const IssueInfraSchema = IssueBase.extend({
 /** [INFRA] */
 export type IssueInfra = z.infer<typeof IssueInfraSchema>;
 
-/** [DELAY] update type */
-export const IssueDelayUpdateTypeSchema = z.enum([
-  'general-public.report',
-  'news.report',
-  'operator.investigating',
-  'operator.monitoring',
-  'operator.update',
-  'operator.resolved',
-]);
-/** [OUTAGE] update type */
-export type IssueDelayUpdateType = z.infer<typeof IssueDelayUpdateTypeSchema>;
-/** [DELAY] update */
-export const IssueDelayUpdateSchema = z.object({
-  type: IssueDelayUpdateTypeSchema,
-  createdAt: z
-    .string()
-    .refine((val) => DateTime.fromISO(val).isValid)
-    .describe('ISO8601 datetime'),
-  text: z.string(),
-  sourceUrl: z.string(),
-});
-/** [DELAY] update */
-export type IssueDelayUpdate = z.infer<typeof IssueDelayUpdateSchema>;
-/** [DELAY] */
-export const IssueDelaySchema = IssueBase.extend({
-  type: z.literal(IssueTypeSchema.Enum.delay),
-  updates: z.array(IssueDelayUpdateSchema),
-});
-/** [DELAY] */
-export type IssueDelay = z.infer<typeof IssueDelaySchema>;
-
 /**
  * ISSUE
  */
 export const IssueSchema = z.discriminatedUnion('type', [
-  IssueOutageSchema,
+  IssueDisruptionSchema,
   IssueMaintenanceSchema,
   IssueInfraSchema,
-  IssueDelaySchema,
 ]);
 /**
  * ISSUE

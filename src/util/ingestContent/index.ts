@@ -1,9 +1,8 @@
 import { IssueModel } from '../../model/IssueModel';
 import { determineExistingIssue } from './helpers/determineExistingIssue';
-import { ingestIssueDelay } from './helpers/ingestIssueDelay';
 import { ingestIssueInfra } from './helpers/ingestIssueInfra';
 import { ingestIssueMaintenance } from './helpers/ingestIssueMaintenance';
-import { ingestIssueOutage } from './helpers/ingestIssueOutage';
+import { ingestIssueDisruption } from './helpers/ingestIssueDisruption';
 import type { IngestContent } from './types';
 
 export async function ingestContent(content: IngestContent) {
@@ -21,8 +20,8 @@ export async function ingestContent(content: IngestContent) {
       const issue = IssueModel.getOne(issueDeterminationResult.result.issueId);
 
       switch (issue.type) {
-        case 'outage': {
-          await ingestIssueOutage(content, issue.id);
+        case 'disruption': {
+          await ingestIssueDisruption(content, issue.id);
           break;
         }
         case 'maintenance': {
@@ -33,17 +32,13 @@ export async function ingestContent(content: IngestContent) {
           await ingestIssueInfra(content, issue.id);
           break;
         }
-        case 'delay': {
-          await ingestIssueDelay(content, issue.id);
-          break;
-        }
       }
       break;
     }
     case 'create-new-issue': {
       switch (issueDeterminationResult.result.issueType) {
-        case 'outage': {
-          await ingestIssueOutage(content, null);
+        case 'disruption': {
+          await ingestIssueDisruption(content, null);
           break;
         }
         case 'maintenance': {
@@ -52,10 +47,6 @@ export async function ingestContent(content: IngestContent) {
         }
         case 'infra': {
           await ingestIssueInfra(content, null);
-          break;
-        }
-        case 'delay': {
-          await ingestIssueDelay(content, null);
           break;
         }
       }
