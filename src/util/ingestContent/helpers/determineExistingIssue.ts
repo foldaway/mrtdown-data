@@ -1,14 +1,13 @@
 import { z } from 'zod';
 import zodToJsonSchema from 'zod-to-json-schema';
 import type { IngestContent } from '../types';
-import { IssueIdSchema } from '../../../schema/Issue';
+import { IssueIdSchema, IssueTypeSchema } from '../../../schema/Issue';
 import { IssueModel } from '../../../model/IssueModel';
 import { openAiClient } from '../constants';
 import type {
   ChatCompletion,
   ChatCompletionMessageParam,
 } from 'openai/resources';
-import type { ClassifyType } from '../schema/ClassifyType';
 
 const ResultSchema = z.object({
   result: z.discriminatedUnion('type', [
@@ -17,7 +16,11 @@ const ResultSchema = z.object({
       issueId: IssueIdSchema,
     }),
     z.object({
-      type: z.literal('no-existing-issue'),
+      type: z.literal('create-new-issue'),
+      issueType: IssueTypeSchema,
+    }),
+    z.object({
+      type: z.literal('irrelevant-content'),
     }),
   ]),
   reason: z.string().describe('Explain why in less than 20 words'),
@@ -55,8 +58,11 @@ Take Note:
   - check and ensure whether the post is relevant.
   - there could be multiple issues for the same rail line on the same day. check using the timestamps.
   - for "delay" type, updates from another day belong in a separate issue.
+- The following cases are considered irrelevant:
+  - Updates for bus services that are unrelated to MRT/LRT services
+  - Extension of service hours for festivities
 
-If there is no relation to any existing issues, return "no-existing-issue"
+
 `.trim(),
     },
     {
@@ -101,7 +107,7 @@ If there is no relation to any existing issues, return "no-existing-issue"
               `[ingest.determineExistingIssues] ${toolCall.id} calling tool "searchIssues" with params`,
               toolCall.function.arguments,
             );
-            if (toolCallCount > 10) {
+            if (toolCallCount > 2) {
               messages.push({
                 role: 'tool',
                 tool_call_id: toolCall.id,

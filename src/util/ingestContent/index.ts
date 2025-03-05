@@ -1,5 +1,4 @@
 import { IssueModel } from '../../model/IssueModel';
-import { classifyContent } from './helpers/classifyContent';
 import { determineExistingIssue } from './helpers/determineExistingIssue';
 import { ingestIssueDelay } from './helpers/ingestIssueDelay';
 import { ingestIssueInfra } from './helpers/ingestIssueInfra';
@@ -41,28 +40,17 @@ export async function ingestContent(content: IngestContent) {
       }
       break;
     }
-    case 'no-existing-issue': {
-      const classification = await classifyContent(content);
-      console.log('[ingestContent.classifyContent]', classification);
-      switch (classification.type) {
-        case 'discussion':
-        case 'news':
-        case 'irrelevant': {
-          console.log('[ingestContent] Nothing to do.');
-          return;
-        }
-      }
-
-      switch (classification.type) {
-        case 'service-outage': {
+    case 'create-new-issue': {
+      switch (issueDeterminationResult.result.issueType) {
+        case 'outage': {
           await ingestIssueOutage(content, null);
           break;
         }
-        case 'planned-maintenance': {
+        case 'maintenance': {
           await ingestIssueMaintenance(content, null);
           break;
         }
-        case 'infrastructure': {
+        case 'infra': {
           await ingestIssueInfra(content, null);
           break;
         }
@@ -71,6 +59,10 @@ export async function ingestContent(content: IngestContent) {
           break;
         }
       }
+      break;
+    }
+    case 'irrelevant-content': {
+      console.log('[ingestContent] Nothing to do.');
       break;
     }
   }

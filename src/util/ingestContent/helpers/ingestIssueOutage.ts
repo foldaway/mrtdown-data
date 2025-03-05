@@ -153,7 +153,7 @@ Please modify the issue with details extracted from the post. You should:
   - "id" field if it has the value "please-overwrite". It must follow the format! Do not overwrite if there is any other value.
   - "title" field
   - "startAt" field
-  - "endAt" field if it the outage is considered finished.
+  - "endAt" field if the outage is considered finished.
   - "severity" field
   - correct the "components" field based on the updates, see below for table.
     - recommendations to utilise other rail lines does not make them affected components.
