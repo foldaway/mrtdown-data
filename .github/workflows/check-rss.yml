@@ -44,6 +44,8 @@ jobs:
           BRANCH_NAME="automated-${{ github.run_id }}"
           git checkout -b $BRANCH_NAME
           git add -A
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
           git commit -m "chore(data): Automated changes"
           git push origin $BRANCH_NAME
       - name: Create Pull Request
