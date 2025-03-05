@@ -1,14 +1,24 @@
 {
   "id": "2020-10-14-due-to-power-fault-no-train-services-between-jurongeast-and-marsiling",
   "title": "Service disruption due to power fault",
-  "componentIdsAffected": [
-    "NSL"
-  ],
+  "componentIdsAffected": ["NSL"],
   "startAt": "2020-10-14T19:55:51.000+08:00",
-  "endAt": null,
+  "endAt": "2020-10-14T22:53:32.000+08:00",
   "type": "disruption",
   "severity": "major",
   "updates": [
+    {
+      "type": "operator.update",
+      "text": "Train service on EWL and NSL have resumed. Free regular bus services and free bridging bus services have ceased.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316391698080043008",
+      "createdAt": "2020-10-14T22:53:32.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Train service on EWL and NSL have resumed. Free regular bus services and free bridging bus services are still available between Queenstown and Tuas Link, and between Jurong East and Woodlands.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1316388135324975104",
+      "createdAt": "2020-10-14T22:39:23.000+08:000"
+    },
     {
       "type": "operator.update",
       "text": "[NSL] UPDATE: Due to a power fault, there is no train svcs between #JurongEast and #Marsiling. Free regular bus svcs &amp; free bridging bus svcs are available between #JurongEast and #Woodlands. For alternative travel options, please refer to https://t.co/H0JXeZvUHA",
