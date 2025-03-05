@@ -11,6 +11,7 @@ import { buildComponentTable } from '../buildComponentTable';
 import { openAiClient } from '../constants';
 import type { IngestContent } from '../types';
 import { summarizeUpdate } from './summarizeUpdate';
+import { assert } from '../../assert';
 
 const IssueDelayAugmentResultSchema = IssueDelaySchema.omit({
   updates: true,
@@ -29,13 +30,18 @@ export async function ingestIssueDelay(
   if (existingIssueId != null) {
     issue = IssueModel.getOne(existingIssueId) as IssueDelay;
   } else {
+    const dateTimeEndOfFallback = DateTime.fromISO(content.createdAt)
+      .startOf('day')
+      .plus({ days: 1 });
+    const dateTimeEndOfFallbackIso = dateTimeEndOfFallback.toISO();
+    assert(dateTimeEndOfFallbackIso != null);
     issue = {
       id: 'please-overwrite',
       type: 'delay',
       componentIdsAffected: [],
       title: 'please-overwrite',
       startAt: content.createdAt,
-      endAt: DateTime.fromISO(content.createdAt).endOf('day').toISO()!,
+      endAt: dateTimeEndOfFallbackIso,
       updates: [],
     };
   }
