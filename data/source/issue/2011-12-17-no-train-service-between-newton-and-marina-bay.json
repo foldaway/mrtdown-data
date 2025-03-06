@@ -1,21 +1,12 @@
 {
   "id": "2011-12-17-no-train-service-between-newton-and-marina-bay",
   "title": "No train service between Newton and Marina Bay stations",
-  "componentIdsAffected": [
-    "NSL",
-    "EWL"
-  ],
+  "componentIdsAffected": ["NSL", "EWL"],
   "startAt": "2011-12-17T08:28:39.000+08:00",
   "endAt": "2011-12-17T13:58:40.000+08:00",
   "type": "disruption",
   "severity": "major",
   "updates": [
-    {
-      "type": "operator.update",
-      "text": "North-South & East-West Lines train service will start at 10am on 18 Dec. For MRT Shuttle Bus pick-up points visit http://t.co/fwb2wOqI",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/147998488720965632",
-      "createdAt": "2011-12-17T19:16:04.000+08:00"
-    },
     {
       "type": "operator.monitoring",
       "text": "Full southbound train service has resumed. Please expect delays",

@@ -4,7 +4,7 @@
   "componentIdsAffected": [
     "TEL"
   ],
-  "startAt": "2024-12-19T10:36:07.000+08:00",
+  "startAt": "2024-12-19T09:38:57.000+08:00",
   "endAt": "2024-12-19T10:36:07.000+08:00",
   "type": "disruption",
   "severity": "major",

@@ -1,13 +1,17 @@
 {
   "id": "2021-01-08-nsl-train-fault",
   "title": "Train fault causing delays",
-  "componentIdsAffected": [
-    "NSL"
-  ],
+  "componentIdsAffected": ["NSL"],
   "startAt": "2021-01-08T23:02:40.000+08:00",
-  "endAt": "2021-01-08T23:27:16.000+08:00",
+  "endAt": "2021-01-09T00:01:43.000+08:00",
   "type": "disruption",
   "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Train svcs from #YewTee to #AngMoKio has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1347574213020844039",
+      "createdAt": "2021-01-09T00:01:43.000+08:00"
+    },
     {
       "type": "operator.monitoring",
       "text": "[NSL] UPDATE: Fault cleared, train svcs are progressively being restored. Pls add 10mins train travel time from #YewTee to #AngMoKio. Free regular bus service has ceased.",

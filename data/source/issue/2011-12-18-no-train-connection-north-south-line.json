@@ -1,10 +1,8 @@
 {
   "id": "2011-12-18-no-train-connection-north-south-line",
   "title": "No train connection on North-South Line",
-  "componentIdsAffected": [
-    "NSL"
-  ],
-  "startAt": "2011-12-18T11:18:57.000+08:00",
+  "componentIdsAffected": ["NSL"],
+  "startAt": "2011-12-17T19:16:04.000+08:00",
   "endAt": "2011-12-18T12:25:36.000+08:00",
   "type": "disruption",
   "severity": "major",
@@ -32,6 +30,18 @@
       "text": "No train connection 2 North-South Line at Raffles Pl, City Hall & Dhoby Ghaut. Pl take alternative transport or free MRT shuttle bus svc.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/148240809240702976",
       "createdAt": "2011-12-18T11:18:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Svc on East-West Line has resumed. Please refer to RATIS for train arrival information.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/148236776220278784",
+      "createdAt": "2011-12-18T11:02:56.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "North-South & East-West Lines train service will start at 10am on 18 Dec. For MRT Shuttle Bus pick-up points visit http://t.co/fwb2wOqI",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/147998488720965632",
+      "createdAt": "2011-12-17T19:16:04.000+08:00"
     }
   ]
 }

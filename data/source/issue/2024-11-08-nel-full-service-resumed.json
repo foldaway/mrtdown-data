@@ -1,19 +1,31 @@
 {
   "id": "2024-11-08-nel-full-service-resumed",
-  "title": "NEL full service resumed",
+  "title": "NEL service disruption due to track fault at Harbour Front",
   "componentIdsAffected": [
     "NEL"
   ],
-  "startAt": "2024-11-08T08:32:39.000+08:00",
-  "endAt": "2024-11-08T08:32:39.000+08:00",
+  "startAt": "2024-11-08T08:03:26.000+08:00",
+  "endAt": "2024-11-08T08:32:52.000+08:00",
   "type": "disruption",
   "severity": "major",
   "updates": [
     {
       "type": "operator.resolved",
       "text": "NEL full service has resumed since 0832am. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1854683470771241084",
+      "createdAt": "2024-11-08T08:32:52.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "NEL full service has resumed since 0832am. We are sorry for the inconvenience caused.",
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1854683415460954343",
       "createdAt": "2024-11-08T08:32:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL service is delayed due to track fault at Harbour Front. Additional travel time of about 5 minutes may be expected. We are sorry for the inconvenience caused",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1854676063139643815",
+      "createdAt": "2024-11-08T08:03:26.000+08:00"
     }
   ]
 }
