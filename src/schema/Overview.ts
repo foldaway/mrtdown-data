@@ -8,22 +8,21 @@ export const IssueReferenceSchema = z.object({
 });
 export type IssueReference = z.infer<typeof IssueReferenceSchema>;
 
-export const OverviewComponentDateSummarySchema = z.object({
+export const DateSummarySchema = z.object({
   issueTypesDurationMs: z.record(IssueTypeSchema, z.number()),
   issues: z.array(IssueReferenceSchema),
 });
-export type OverviewComponentDateSummary = z.infer<
-  typeof OverviewComponentDateSummarySchema
->;
+export type DateSummary = z.infer<typeof DateSummarySchema>;
 
 export const OverviewComponentSchema = z.object({
   component: ComponentSchema,
-  dates: z.record(z.string().date(), OverviewComponentDateSummarySchema),
+  dates: z.record(z.string().date(), DateSummarySchema),
 });
 export type OverviewComponent = z.infer<typeof OverviewComponentSchema>;
 
 export const OverviewSchema = z.object({
-  components: z.array(OverviewComponentSchema),
+  components: z.record(z.string(), OverviewComponentSchema),
   issuesOngoing: z.array(IssueSchema),
+  dates: z.record(z.string().date(), DateSummarySchema),
 });
 export type Overview = z.infer<typeof OverviewSchema>;

@@ -2,8 +2,9 @@ import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ComponentModel } from '../../model/ComponentModel';
 import type {
-  OverviewComponentDateSummary,
+  DateSummary,
   Overview,
+  OverviewComponent,
 } from '../../schema/Overview';
 import { IssueModel } from '../../model/IssueModel';
 import { DateTime } from 'luxon';
@@ -32,31 +33,50 @@ export function buildOverview() {
   );
 
   const content: Overview = {
-    components: [],
+    components: {},
     issuesOngoing: issues.filter((issue) => issue.endAt == null),
+    dates: {},
   };
 
   for (const component of components) {
-    const dates: Record<string, OverviewComponentDateSummary> = {};
+    const dates: Record<string, DateSummary> = {};
 
-    for (const issue of issues) {
-      if (!issue.componentIdsAffected.includes(component.id)) {
-        continue;
-      }
-      if (issue.endAt == null) {
-        continue;
-      }
-      const startAt = DateTime.fromISO(issue.startAt);
-      const endAt = DateTime.fromISO(issue.endAt);
-      const dayCount = endAt.diff(startAt).as('days');
+    content.components[component.id] = {
+      component,
+      dates,
+    };
+  }
 
-      for (let i = 0; i < dayCount; i++) {
-        const segmentStart = startAt.plus({ days: i });
-        const segmentEnd = DateTime.min(endAt, segmentStart.plus({ days: 1 }));
-        const durationMs = segmentEnd.diff(segmentStart).as('milliseconds');
-        const segmentStartIsoDate = segmentStart.toISODate();
-        assert(segmentStartIsoDate != null);
-        const dateSummary = dates[segmentStartIsoDate] ?? {
+  for (const issue of issues) {
+    if (issue.endAt == null) {
+      continue;
+    }
+    const startAt = DateTime.fromISO(issue.startAt);
+    const endAt = DateTime.fromISO(issue.endAt);
+    const dayCount = endAt.diff(startAt).as('days');
+
+    for (let i = 0; i < dayCount; i++) {
+      const segmentStart = startAt.plus({ days: i });
+      const segmentEnd = DateTime.min(endAt, segmentStart.plus({ days: 1 }));
+      const durationMs = segmentEnd.diff(segmentStart).as('milliseconds');
+      const segmentStartIsoDate = segmentStart.toISODate();
+      assert(segmentStartIsoDate != null);
+      const dateSummary = content.dates[segmentStartIsoDate] ?? {
+        issueTypesDurationMs: {},
+        issues: [],
+      };
+      let issueTypeDuration = dateSummary.issueTypesDurationMs[issue.type] ?? 0;
+      issueTypeDuration += durationMs;
+      dateSummary.issueTypesDurationMs[issue.type] = issueTypeDuration;
+      dateSummary.issues.push({
+        id: issue.id,
+        title: issue.title,
+      });
+      content.dates[segmentStartIsoDate] = dateSummary;
+
+      for (const componentId of issue.componentIdsAffected) {
+        const overviewComponent = content.components[componentId];
+        const dateSummary = overviewComponent.dates[segmentStartIsoDate] ?? {
           issueTypesDurationMs: {},
           issues: [],
         };
@@ -68,14 +88,9 @@ export function buildOverview() {
           id: issue.id,
           title: issue.title,
         });
-        dates[segmentStartIsoDate] = dateSummary;
+        overviewComponent.dates[segmentStartIsoDate] = dateSummary;
       }
     }
-
-    content.components.push({
-      component,
-      dates,
-    });
   }
 
   writeFileSync(filePath, JSON.stringify(content, null, 2));
