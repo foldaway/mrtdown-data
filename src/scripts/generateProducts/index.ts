@@ -1,7 +1,5 @@
-import { buildComponentsOverview } from './buildComponentsOverview';
+import { buildOverview } from './buildOverview';
 import { buildIssuesHistory } from './buildIssuesHistory';
-import { buildIssuesOverview } from './buildIssuesOverview';
 
-buildComponentsOverview();
+buildOverview();
 buildIssuesHistory();
-buildIssuesOverview();

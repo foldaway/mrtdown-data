@@ -2,28 +2,42 @@ import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ComponentModel } from '../../model/ComponentModel';
 import type {
-  COEntryDateOverview,
-  ComponentsOverview,
-  IssueReference,
-} from '../../schema/ComponentsOverview';
+  OverviewComponentDateSummary,
+  Overview,
+} from '../../schema/Overview';
 import { IssueModel } from '../../model/IssueModel';
 import { DateTime } from 'luxon';
+import { assert } from '../../util/assert';
 
-export function buildComponentsOverview() {
+export function buildOverview() {
   const components = ComponentModel.getAll();
   const issues = IssueModel.getAll();
+  issues.sort((a, b) => {
+    const startAtA = DateTime.fromISO(a.startAt);
+    const startAtB = DateTime.fromISO(b.startAt);
+    const diffSeconds = startAtA.diff(startAtB).as('seconds');
+
+    if (diffSeconds < 0) {
+      return 1;
+    }
+    if (diffSeconds > 0) {
+      return -1;
+    }
+    return 0;
+  });
 
   const filePath = join(
     import.meta.dirname,
-    '../../../data/product/components_overview.json',
+    '../../../data/product/overview.json',
   );
 
-  const content: ComponentsOverview = {
-    entries: [],
+  const content: Overview = {
+    components: [],
+    issuesOngoing: issues.filter((issue) => issue.endAt == null),
   };
 
   for (const component of components) {
-    const dates: Record<string, COEntryDateOverview> = {};
+    const dates: Record<string, OverviewComponentDateSummary> = {};
 
     for (const issue of issues) {
       if (!issue.componentIdsAffected.includes(component.id)) {
@@ -40,24 +54,25 @@ export function buildComponentsOverview() {
         const segmentStart = startAt.plus({ days: i });
         const segmentEnd = DateTime.min(endAt, segmentStart.plus({ days: 1 }));
         const durationMs = segmentEnd.diff(segmentStart).as('milliseconds');
-        const segmentStartIsoDate = segmentStart.toISODate()!;
-        const dateIssueRefs = dates[segmentStartIsoDate] ?? {
+        const segmentStartIsoDate = segmentStart.toISODate();
+        assert(segmentStartIsoDate != null);
+        const dateSummary = dates[segmentStartIsoDate] ?? {
           issueTypesDurationMs: {},
           issues: [],
         };
         let issueTypeDuration =
-          dateIssueRefs.issueTypesDurationMs[issue.type] ?? 0;
+          dateSummary.issueTypesDurationMs[issue.type] ?? 0;
         issueTypeDuration += durationMs;
-        dateIssueRefs.issueTypesDurationMs[issue.type] = issueTypeDuration;
-        dateIssueRefs.issues.push({
+        dateSummary.issueTypesDurationMs[issue.type] = issueTypeDuration;
+        dateSummary.issues.push({
           id: issue.id,
           title: issue.title,
         });
-        dates[segmentStartIsoDate] = dateIssueRefs;
+        dates[segmentStartIsoDate] = dateSummary;
       }
     }
 
-    content.entries.push({
+    content.components.push({
       component,
       dates,
     });
