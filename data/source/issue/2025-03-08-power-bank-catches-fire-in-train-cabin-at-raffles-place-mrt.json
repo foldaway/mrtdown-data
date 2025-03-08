@@ -1,0 +1,16 @@
+{
+  "id": "2025-03-08-power-bank-catches-fire-in-train-cabin-at-raffles-place-mrt",
+  "title": "Power bank catches fire in train cabin at Raffles Place MRT",
+  "componentIdsAffected": [],
+  "startAt": "2025-03-08T12:35:00.000+08:00",
+  "endAt": null,
+  "type": "infra",
+  "updates": [
+    {
+      "type": "update",
+      "text": "Preliminary findings by SCDF showed that it was likely caused by an electrical origin from the power bank.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/power-bank-catches-fire-in-train-cabin-at-raffles-place-mrt",
+      "createdAt": "2025-03-08T12:35:00.000+08:00"
+    }
+  ]
+}
