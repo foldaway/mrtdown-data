@@ -1,0 +1,19 @@
+{
+  "id": "2025-03-08-power-bank-catches-fire-in-mrt-train",
+  "title": "Power bank catches fire in MRT train",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2025-03-08T12:04:38.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "news.report",
+      "text": "All 650 commuters disembarked safely at Raffles Place station, said SMRT.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/power-bank-catches-fire-mrt-train-raffles-place-station-4987086",
+      "createdAt": "2025-03-08T12:04:38.000+08:00"
+    }
+  ]
+}
