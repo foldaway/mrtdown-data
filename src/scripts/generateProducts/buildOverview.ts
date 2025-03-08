@@ -1,11 +1,7 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ComponentModel } from '../../model/ComponentModel';
-import type {
-  DateSummary,
-  Overview,
-  OverviewComponent,
-} from '../../schema/Overview';
+import type { DateSummary, Overview } from '../../schema/Overview';
 import { IssueModel } from '../../model/IssueModel';
 import { DateTime } from 'luxon';
 import { assert } from '../../util/assert';
@@ -44,6 +40,7 @@ export function buildOverview() {
     content.components[component.id] = {
       component,
       dates,
+      issueCountByType: {},
     };
   }
 
@@ -70,7 +67,11 @@ export function buildOverview() {
       dateSummary.issueTypesDurationMs[issue.type] = issueTypeDuration;
       dateSummary.issues.push({
         id: issue.id,
+        type: issue.type,
         title: issue.title,
+        componentIdsAffected: issue.componentIdsAffected,
+        startAt: issue.startAt,
+        endAt: issue.endAt,
       });
       content.dates[segmentStartIsoDate] = dateSummary;
 
@@ -86,9 +87,18 @@ export function buildOverview() {
         dateSummary.issueTypesDurationMs[issue.type] = issueTypeDuration;
         dateSummary.issues.push({
           id: issue.id,
+          type: issue.type,
           title: issue.title,
+          componentIdsAffected: issue.componentIdsAffected,
+          startAt: issue.startAt,
+          endAt: issue.endAt,
         });
         overviewComponent.dates[segmentStartIsoDate] = dateSummary;
+
+        let issueTypeCount =
+          overviewComponent.issueCountByType[issue.type] ?? 0;
+        issueTypeCount++;
+        overviewComponent.issueCountByType[issue.type] = issueTypeCount;
       }
     }
   }
