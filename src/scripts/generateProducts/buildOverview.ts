@@ -10,8 +10,8 @@ export function buildOverview() {
   const components = ComponentModel.getAll();
   const issues = IssueModel.getAll();
   issues.sort((a, b) => {
-    const startAtA = DateTime.fromISO(a.startAt);
-    const startAtB = DateTime.fromISO(b.startAt);
+    const startAtA = DateTime.fromISO(a.startAt).setZone('Asia/Singapore');
+    const startAtB = DateTime.fromISO(b.startAt).setZone('Asia/Singapore');
     const diffSeconds = startAtA.diff(startAtB).as('seconds');
 
     if (diffSeconds < 0) {
@@ -48,8 +48,8 @@ export function buildOverview() {
     if (issue.endAt == null) {
       continue;
     }
-    const startAt = DateTime.fromISO(issue.startAt);
-    const endAt = DateTime.fromISO(issue.endAt);
+    const startAt = DateTime.fromISO(issue.startAt).setZone('Asia/Singapore');
+    const endAt = DateTime.fromISO(issue.endAt).setZone('Asia/Singapore');
     const dayCount = endAt.diff(startAt).as('days');
 
     for (let i = 0; i < dayCount; i++) {
