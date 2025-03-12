@@ -1,0 +1,23 @@
+{
+  "id": "2025-03-12-tel-train-fault",
+  "title": "Train service disruption on Thomson–East Coast Line",
+  "componentIdsAffected": ["TEL"],
+  "startAt": "2025-03-12T05:41:49.000+08:00",
+  "endAt": "2025-03-12T06:24:01.000+08:00",
+  "type": "disruption",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[TEL]: Train service available between Woodlands North to Bayshore. Free Regular Bus ceased between Gardens By The Bay to Bayshore. We apologise for the inconvenience.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1899587139685494827",
+      "createdAt": "2025-03-12T06:24:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[TEL]: Due to a train fault, there will be no train service between Gardens By The Bay to Bayshore. Train service is available between Woodlands North to Gardens By The Bay. Free Regular Bus available between Gardens By The Bay to Bayshore.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1899576519300899093",
+      "createdAt": "2025-03-12T05:41:49.000+08:00"
+    }
+  ]
+}
