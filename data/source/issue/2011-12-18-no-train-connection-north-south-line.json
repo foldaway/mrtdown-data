@@ -1,7 +1,9 @@
 {
   "id": "2011-12-18-no-train-connection-north-south-line",
   "title": "No train connection on North-South Line",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2011-12-17T19:16:04.000+08:00",
   "endAt": "2011-12-18T12:25:36.000+08:00",
   "type": "disruption",

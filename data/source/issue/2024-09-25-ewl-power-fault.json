@@ -1,7 +1,9 @@
 {
   "id": "2024-09-25-ewl-power-fault",
   "title": "No train service between Jurong East and Buona Vista due to Track Repair Works",
-  "componentIdsAffected": ["EWL"],
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2024-09-25T10:09:05.000+08:00",
   "endAt": "2024-10-01T00:00:00.000+08:00",
   "type": "disruption",
@@ -482,7 +484,7 @@
       "createdAt": "2024-09-25T21:55:37.000+08:00"
     },
     {
-      "type": "planned",
+      "type": "operator.update",
       "text": "[EWL] UPDATE: Passengers travelling towards the city centre, avoid the indicated stretch of EWL(See Figure 1b). Use the following to continue your journeys:\n•NSL (Red) - Jurong East, Woodlands, Bishan\n•TEL (Brown) - Woodlands &amp; Caldecott\n•DTL (Blue) - Botanic Gardens https://t.co/4uPjmafbFt",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1838934658723250292",
       "createdAt": "2024-09-25T21:32:43.000+08:00"

@@ -10,13 +10,13 @@
   "cancelledAt": null,
   "updates": [
     {
-      "type": "operator.resolved",
+      "type": "operator.update",
       "text": "[NSL] CLEARED: Train services from #Yishun towards #Bishan have resumed. Free regular bus services have ceased.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/848756307356078080",
       "createdAt": "2017-04-03T12:37:27.000+08:00"
     },
     {
-      "type": "operator.monitoring",
+      "type": "operator.update",
       "text": "[NSL]UPDATE:Fault cleared, trains are progressively returning to normal speed.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/848755414543941632",
       "createdAt": "2017-04-03T12:33:54.000+08:00"

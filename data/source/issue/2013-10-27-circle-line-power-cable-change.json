@@ -10,7 +10,7 @@
   "cancelledAt": null,
   "updates": [
     {
-      "type": "operator.resolved",
+      "type": "operator.update",
       "text": "[CCL] CLEARED: Train services between #LabradorPark &amp; #HarbourFront are now operating normally. http://t.co/M6xQuxGQ4P",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/394257137079033856",
       "createdAt": "2013-10-27T08:20:01.000+08:00"

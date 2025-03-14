@@ -1,12 +1,14 @@
 {
   "id": "2013-06-06-ccl-travel-time-increase",
   "title": "Travel time increase between Caldecott and Holland Village due to maintenance",
-  "componentIdsAffected": ["CCL"],
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2013-06-09T06:00:00.000+08:00",
   "endAt": "2013-06-09T10:00:00.000+08:00",
   "updates": [
     {
-      "type": "operator.resolved",
+      "type": "operator.update",
       "text": "[CCL]CLEARED: Train services between Caldecott &amp; HollandVillage are now operating normally. http://t.co/Wo7S6s3JZs",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/343512210150141952",
       "createdAt": "2013-06-09T07:37:47.000+08:00"

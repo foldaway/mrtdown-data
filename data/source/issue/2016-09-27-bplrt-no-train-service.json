@@ -40,7 +40,7 @@
       "createdAt": "2016-09-28T13:53:55.000+08:00"
     },
     {
-      "type": "planned",
+      "type": "operator.update",
       "text": "[BPLRT] BPLRT train svcs will be suspended temporarily for engineers to conduct inspection. Free regular bus &amp; bridging bus svcs are avail.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/780984606254305280",
       "createdAt": "2016-09-28T12:16:54.000+08:00"

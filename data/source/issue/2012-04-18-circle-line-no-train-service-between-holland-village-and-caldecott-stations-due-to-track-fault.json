@@ -34,7 +34,7 @@
       "createdAt": "2012-04-18T10:03:35.000+08:00"
     },
     {
-      "type": "planned",
+      "type": "operator.update",
       "text": "UPDATE CIRCLE LINE:Free bus services and bus bridging at designated bus boarding points between one-North and Bishan Circle Line stations.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/192423700056903680",
       "createdAt": "2012-04-18T09:25:59.000+08:00"

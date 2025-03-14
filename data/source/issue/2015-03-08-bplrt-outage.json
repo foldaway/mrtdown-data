@@ -40,7 +40,7 @@
       "createdAt": "2015-03-10T12:43:34.000+08:00"
     },
     {
-      "type": "planned",
+      "type": "operator.update",
       "text": "[BPLRT] We are testing our LRT trains to ensure safety &amp; reliability. These free public &amp; shuttle bus svcs are avail. http://t.co/ElJgaeZ6yz",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/575146905128206338",
       "createdAt": "2015-03-10T12:11:22.000+08:00"
@@ -58,7 +58,7 @@
       "createdAt": "2015-03-10T08:30:05.000+08:00"
     },
     {
-      "type": "planned",
+      "type": "operator.update",
       "text": "[BPLRT] Testing of LRT trains have begun to ensure safety and reliability. Watch for updates http://t.co/1IV1TfxoFX",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/575085413003489280",
       "createdAt": "2015-03-10T08:07:01.000+08:00"

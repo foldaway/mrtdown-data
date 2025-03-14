@@ -1,7 +1,9 @@
 {
   "id": "2020-10-14-due-to-power-fault-no-train-services-between-jurongeast-and-marsiling",
   "title": "Service disruption due to power fault",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2020-10-14T19:55:51.000+08:00",
   "endAt": "2020-10-14T22:53:32.000+08:00",
   "type": "disruption",

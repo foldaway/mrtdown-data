@@ -1,7 +1,9 @@
 {
   "id": "2025-03-12-tel-train-fault",
   "title": "Train service disruption on Thomson–East Coast Line",
-  "componentIdsAffected": ["TEL"],
+  "componentIdsAffected": [
+    "TEL"
+  ],
   "startAt": "2025-03-12T05:41:49.000+08:00",
   "endAt": "2025-03-12T06:24:01.000+08:00",
   "type": "disruption",

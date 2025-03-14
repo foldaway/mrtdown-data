@@ -77,7 +77,7 @@
       "createdAt": "2015-07-07T21:07:54.000+08:00"
     },
     {
-      "type": "planned",
+      "type": "operator.update",
       "text": "We are concurrently running tests on the North South line to systematically isolate the source of the power fault and rectify the problem.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/618405191130320896",
       "createdAt": "2015-07-07T21:04:21.000+08:00"

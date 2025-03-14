@@ -10,7 +10,7 @@
   "cancelledAt": null,
   "updates": [
     {
-      "type": "operator.resolved",
+      "type": "operator.update",
       "text": "[CCL] CLEARED: Train services between#Mounbatten and #PayaLebar are now operating normally.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/313106612707528704",
       "createdAt": "2013-03-17T09:56:48.000+08:00"

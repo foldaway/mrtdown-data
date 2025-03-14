@@ -1,7 +1,9 @@
 {
   "id": "2021-05-24-tel-testing-extended-hours",
   "title": "Testing of integrated systems and trains for TEL Stage 2",
-  "componentIdsAffected": ["TEL"],
+  "componentIdsAffected": [
+    "TEL"
+  ],
   "startAt": "2021-05-24T06:30:00.000+08:00",
   "endAt": "2021-08-08T21:00:00.000+08:00",
   "type": "maintenance",

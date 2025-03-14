@@ -16,13 +16,13 @@
       "createdAt": "2017-03-30T21:00:19.000+08:00"
     },
     {
-      "type": "operator.resolved",
+      "type": "operator.update",
       "text": "[EWL] CLEARED: Free regular bus services have ceased.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/847407022693785600",
       "createdAt": "2017-03-30T19:15:52.000+08:00"
     },
     {
-      "type": "operator.monitoring",
+      "type": "operator.update",
       "text": "[EWL] UPDATE: Pls cater 20 mins additional travel time from #PasirRis towards #PayaLebar. We are working to recover service.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/847397574247981056",
       "createdAt": "2017-03-30T18:38:20.000+08:00"
