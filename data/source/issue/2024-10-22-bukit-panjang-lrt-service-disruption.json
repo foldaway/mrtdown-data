@@ -4,7 +4,7 @@
   "componentIdsAffected": [
     "BPLRT"
   ],
-  "startAt": "2024-10-22T21:48:00.000+08:00",
+  "startAt": "2024-10-22T17:56:16.000+08:00",
   "endAt": "2024-10-23T04:53:34.000+08:00",
   "type": "disruption",
   "severity": "major",

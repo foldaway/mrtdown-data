@@ -4,7 +4,7 @@
   "componentIdsAffected": [
     "NSL"
   ],
-  "startAt": "2019-12-16T09:08:24.000+08:00",
+  "startAt": "2019-12-16T08:14:52.000+08:00",
   "endAt": "2019-12-16T08:49:45.000+08:00",
   "type": "disruption",
   "severity": "major",
