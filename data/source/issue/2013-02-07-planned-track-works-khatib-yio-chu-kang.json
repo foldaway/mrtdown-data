@@ -6,8 +6,6 @@
   ],
   "startAt": "2013-02-07T01:30:00.000+08:00",
   "endAt": "2013-04-08T04:30:00.000+08:00",
-  "type": "disruption",
-  "severity": "minor",
   "updates": [
     {
       "type": "planned",
@@ -15,5 +13,7 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/299121865027371008",
       "createdAt": "2013-02-06T19:46:24.000+08:00"
     }
-  ]
+  ],
+  "type": "maintenance",
+  "cancelledAt": null
 }

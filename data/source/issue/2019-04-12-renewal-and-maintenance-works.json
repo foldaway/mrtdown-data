@@ -7,8 +7,6 @@
   ],
   "startAt": "2019-04-12T14:59:52.000+08:00",
   "endAt": "2019-05-21T04:28:36.000+08:00",
-  "type": "disruption",
-  "severity": "minor",
   "updates": [
     {
       "type": "operator.resolved",
@@ -52,5 +50,7 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1116596778596356099",
       "createdAt": "2019-04-12T14:59:52.000+08:00"
     }
-  ]
+  ],
+  "type": "maintenance",
+  "cancelledAt": null
 }

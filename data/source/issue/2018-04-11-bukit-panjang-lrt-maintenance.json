@@ -6,8 +6,6 @@
   ],
   "startAt": "2018-06-23T05:43:41.000+08:00",
   "endAt": "2018-06-23T06:40:53.000+08:00",
-  "type": "disruption",
-  "severity": "major",
   "updates": [
     {
       "type": "operator.update",
@@ -21,5 +19,7 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1010277166926331906",
       "createdAt": "2018-06-23T05:43:41.000+08:00"
     }
-  ]
+  ],
+  "type": "maintenance",
+  "cancelledAt": null
 }
