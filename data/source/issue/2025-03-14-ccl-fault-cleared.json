@@ -1,0 +1,31 @@
+{
+  "id": "2025-03-14-ccl-fault-cleared",
+  "title": "Service disruption on Circle Line due to fault.",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2025-03-14T19:29:19.000+08:00",
+  "endAt": "2025-03-14T19:29:19.000+08:00",
+  "type": "disruption",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: Fault cleared trains are progressively returning to normal between #HarbourFront, #MarinaBay and #DhobyGhaut. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1900509542351507760",
+      "createdAt": "2025-03-14T19:29:19.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: Fault cleared trains are progressively returning to normal between #HarbourFront, #MarinaBay and #DhobyGhaut.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1900504632004313464",
+      "createdAt": "2025-03-14T19:09:48.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]: Additional 15 mins train travel time between #HarbourFront, #MarinaBay and #DhobyGhaut due to a signal system fault.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1900502980346143157",
+      "createdAt": "2025-03-14T19:03:14.000+08:00"
+    }
+  ]
+}
