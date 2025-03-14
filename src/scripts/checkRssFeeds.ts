@@ -52,9 +52,11 @@ for (const feedUrl of TWITTER_MASTODON_RSS_FEEDS) {
     const { title = '', items } = await parser.parseURL(feedUrl);
     console.log(`[checkRssFeeds] itemCount=${items.length}`);
 
-    for (const item of items) {
+    for (const item of items.reverse()) {
       const { contentSnippet, link, isoDate } = item;
       assert(contentSnippet != null);
+
+      console.log(`[checkRssFeeds] text=${title} isoDate=${isoDate}`);
 
       if (!isTextRailRelated(contentSnippet)) {
         continue;
@@ -100,10 +102,12 @@ for (const { subreddit, feedUrl } of REDDIT_RSS_FEEDS) {
     const { items } = await parser.parseURL(feedUrl);
     console.log(`[checkRssFeeds] itemCount=${items.length}`);
 
-    for (const item of items) {
+    for (const item of items.reverse()) {
       const { title, content: contentHtml, link, isoDate, thumbnail } = item;
       assert(title != null);
       assert(contentHtml != null);
+
+      console.log(`[checkRssFeeds] title=${title} isoDate=${isoDate}`);
 
       if (!isTextRailRelated(title) && !isTextRailRelated(contentHtml)) {
         continue;
@@ -157,10 +161,12 @@ for (const feedUrl of NEWS_RSS_FEEDS) {
     const { items } = await parser.parseURL(feedUrl);
     console.log(`[checkRssFeeds] itemCount=${items.length}`);
 
-    for (const item of items) {
+    for (const item of items.reverse()) {
       const { title, contentSnippet, link, isoDate } = item;
       assert(title != null);
       assert(contentSnippet != null);
+
+      console.log(`[checkRssFeeds] title=${title} isoDate=${isoDate}`);
 
       if (!isTextRailRelated(title) && !isTextRailRelated(contentSnippet)) {
         continue;
