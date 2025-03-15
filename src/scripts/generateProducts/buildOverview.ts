@@ -1,10 +1,11 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ComponentModel } from '../../model/ComponentModel';
-import type { DateSummary, Overview } from '../../schema/Overview';
+import type { Overview } from '../../schema/Overview';
 import { IssueModel } from '../../model/IssueModel';
 import { DateTime } from 'luxon';
 import { assert } from '../../util/assert';
+import type { DateSummary } from '../../schema/DateSummary';
 
 export function buildOverview() {
   const components = ComponentModel.getAll();
@@ -31,7 +32,6 @@ export function buildOverview() {
   const content: Overview = {
     components: {},
     issuesOngoing: issues.filter((issue) => issue.endAt == null),
-    dates: {},
   };
 
   for (const component of components) {
@@ -58,22 +58,6 @@ export function buildOverview() {
       const durationMs = segmentEnd.diff(segmentStart).as('milliseconds');
       const segmentStartIsoDate = segmentStart.toISODate();
       assert(segmentStartIsoDate != null);
-      const dateSummary = content.dates[segmentStartIsoDate] ?? {
-        issueTypesDurationMs: {},
-        issues: [],
-      };
-      let issueTypeDuration = dateSummary.issueTypesDurationMs[issue.type] ?? 0;
-      issueTypeDuration += durationMs;
-      dateSummary.issueTypesDurationMs[issue.type] = issueTypeDuration;
-      dateSummary.issues.push({
-        id: issue.id,
-        type: issue.type,
-        title: issue.title,
-        componentIdsAffected: issue.componentIdsAffected,
-        startAt: issue.startAt,
-        endAt: issue.endAt,
-      });
-      content.dates[segmentStartIsoDate] = dateSummary;
 
       for (const componentId of issue.componentIdsAffected) {
         const overviewComponent = content.components[componentId];
