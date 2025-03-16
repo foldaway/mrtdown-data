@@ -1,7 +1,9 @@
 {
   "id": "2013-01-20-nsl-train-fault",
   "title": "Train Fault in North-East Line",
-  "componentIdsAffected": ["NSL"],
+  "componentIdsAffected": [
+    "NSL"
+  ],
   "startAt": "2013-02-07T12:11:34.000+08:00",
   "endAt": "2013-02-07T12:24:13.000+08:00",
   "type": "disruption",

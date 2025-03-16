@@ -2,8 +2,7 @@
   "id": "2012-05-10-train-service-delay-between-jurong-east-and-joo-koon",
   "title": "Train service delay between Jurong East and Joo Koon",
   "componentIdsAffected": [
-    "EWL",
-    "JRL"
+    "EWL"
   ],
   "startAt": "2012-05-10T09:04:39.000+08:00",
   "endAt": "2012-05-10T09:07:41.000+08:00",

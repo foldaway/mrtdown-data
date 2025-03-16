@@ -2,8 +2,7 @@
   "id": "2012-04-17-train-fault-delay",
   "title": "Train Fault Causing Delays",
   "componentIdsAffected": [
-    "EWL",
-    "JRL"
+    "EWL"
   ],
   "startAt": "2012-04-17T07:40:16.000+08:00",
   "endAt": "2012-04-17T08:31:04.000+08:00",
