@@ -30,19 +30,10 @@ export function buildOverview() {
   );
 
   const content: Overview = {
-    components: {},
+    components,
+    dates: {},
     issuesOngoing: issues.filter((issue) => issue.endAt == null),
   };
-
-  for (const component of components) {
-    const dates: Record<string, DateSummary> = {};
-
-    content.components[component.id] = {
-      component,
-      dates,
-      issueCountByType: {},
-    };
-  }
 
   for (const issue of issues) {
     if (issue.endAt == null) {
@@ -59,31 +50,22 @@ export function buildOverview() {
       const segmentStartIsoDate = segmentStart.toISODate();
       assert(segmentStartIsoDate != null);
 
-      for (const componentId of issue.componentIdsAffected) {
-        const overviewComponent = content.components[componentId];
-        const dateSummary = overviewComponent.dates[segmentStartIsoDate] ?? {
-          issueTypesDurationMs: {},
-          issues: [],
-        };
-        let issueTypeDuration =
-          dateSummary.issueTypesDurationMs[issue.type] ?? 0;
-        issueTypeDuration += durationMs;
-        dateSummary.issueTypesDurationMs[issue.type] = issueTypeDuration;
-        dateSummary.issues.push({
-          id: issue.id,
-          type: issue.type,
-          title: issue.title,
-          componentIdsAffected: issue.componentIdsAffected,
-          startAt: issue.startAt,
-          endAt: issue.endAt,
-        });
-        overviewComponent.dates[segmentStartIsoDate] = dateSummary;
-
-        let issueTypeCount =
-          overviewComponent.issueCountByType[issue.type] ?? 0;
-        issueTypeCount++;
-        overviewComponent.issueCountByType[issue.type] = issueTypeCount;
-      }
+      const dateSummary = content.dates[segmentStartIsoDate] ?? {
+        issueTypesDurationMs: {},
+        issues: [],
+      };
+      let issueTypeDuration = dateSummary.issueTypesDurationMs[issue.type] ?? 0;
+      issueTypeDuration += durationMs;
+      dateSummary.issueTypesDurationMs[issue.type] = issueTypeDuration;
+      dateSummary.issues.push({
+        id: issue.id,
+        type: issue.type,
+        title: issue.title,
+        componentIdsAffected: issue.componentIdsAffected,
+        startAt: issue.startAt,
+        endAt: issue.endAt,
+      });
+      content.dates[segmentStartIsoDate] = dateSummary;
     }
   }
 

@@ -21,15 +21,9 @@ export const IssueReferenceSchema = z.object({
 });
 export type IssueReference = z.infer<typeof IssueReferenceSchema>;
 
-export const OverviewComponentSchema = z.object({
-  component: ComponentSchema,
-  dates: z.record(z.string().date(), DateSummarySchema),
-  issueCountByType: z.record(IssueTypeSchema, z.number()),
-});
-export type OverviewComponent = z.infer<typeof OverviewComponentSchema>;
-
 export const OverviewSchema = z.object({
-  components: z.record(z.string(), OverviewComponentSchema),
+  components: z.array(ComponentSchema),
   issuesOngoing: z.array(IssueSchema),
+  dates: z.record(z.string().date(), DateSummarySchema),
 });
 export type Overview = z.infer<typeof OverviewSchema>;
