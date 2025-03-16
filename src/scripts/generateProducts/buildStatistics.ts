@@ -29,14 +29,14 @@ export function buildStatistics() {
   const content: Statistics = {
     dates: {},
     issuesOngoing: issues.filter((issue) => issue.endAt == null),
-    issueHistoricalCount: 0,
-    issueHistoricalDurationTotalDays: 0,
-    issueDisruptionLongest: issues
+    issuesHistoricalCount: 0,
+    issuesHistoricalDurationTotalDays: 0,
+    issuesDisruptionLongest: issues
       .filter((issue) => issue.endAt != null && issue.type === 'disruption')
       .map(({ updates, ...otherProps }) => otherProps),
   };
 
-  content.issueDisruptionLongest.sort((a, b) => {
+  content.issuesDisruptionLongest.sort((a, b) => {
     assert(a.endAt != null && b.endAt != null);
     const startAtA = DateTime.fromISO(a.startAt).setZone('Asia/Singapore');
     const endAtA = DateTime.fromISO(a.endAt).setZone('Asia/Singapore');
@@ -60,13 +60,13 @@ export function buildStatistics() {
       continue;
     }
 
-    content.issueHistoricalCount += 1;
+    content.issuesHistoricalCount += 1;
 
     const startAt = DateTime.fromISO(issue.startAt).setZone('Asia/Singapore');
     const endAt = DateTime.fromISO(issue.endAt).setZone('Asia/Singapore');
 
     const dayCount = endAt.diff(startAt).as('days');
-    content.issueHistoricalDurationTotalDays += dayCount;
+    content.issuesHistoricalDurationTotalDays += dayCount;
 
     for (let i = 0; i < dayCount; i++) {
       const segmentStart = startAt.plus({ days: i });

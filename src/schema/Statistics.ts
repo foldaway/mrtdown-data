@@ -6,8 +6,8 @@ import { IssueSchema } from './Issue';
 export const StatisticsSchema = z.object({
   dates: z.record(z.string().date(), DateSummarySchema),
   issuesOngoing: z.array(IssueSchema),
-  issueHistoricalCount: z.number(),
-  issueHistoricalDurationTotalDays: z.number(),
-  issueDisruptionLongest: z.array(IssueReferenceSchema),
+  issuesHistoricalCount: z.number(),
+  issuesHistoricalDurationTotalDays: z.number(),
+  issuesDisruptionLongest: z.array(IssueReferenceSchema),
 });
 export type Statistics = z.infer<typeof StatisticsSchema>;
