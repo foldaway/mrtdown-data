@@ -55,6 +55,12 @@ export function buildStatistics() {
     return 0;
   });
 
+  // Retain only top 10 longest disruption issues
+  content.issuesDisruptionLongest = content.issuesDisruptionLongest.slice(
+    0,
+    10,
+  );
+
   for (const issue of issues) {
     if (issue.endAt == null) {
       continue;
