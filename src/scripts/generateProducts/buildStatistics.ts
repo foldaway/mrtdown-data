@@ -4,6 +4,7 @@ import { IssueModel } from '../../model/IssueModel';
 import { DateTime } from 'luxon';
 import { assert } from '../../util/assert';
 import type { Statistics } from '../../schema/Statistics';
+import { ComponentModel } from '../../model/ComponentModel';
 
 export function buildStatistics() {
   const issues = IssueModel.getAll();
@@ -34,7 +35,13 @@ export function buildStatistics() {
     issuesDisruptionLongest: issues
       .filter((issue) => issue.endAt != null && issue.type === 'disruption')
       .map(({ updates, ...otherProps }) => otherProps),
+    componentsIssuesDisruptionCount: {},
   };
+
+  const components = ComponentModel.getAll();
+  for (const component of components) {
+    content.componentsIssuesDisruptionCount[component.id] = 0;
+  }
 
   content.issuesDisruptionLongest.sort((a, b) => {
     assert(a.endAt != null && b.endAt != null);
@@ -75,6 +82,10 @@ export function buildStatistics() {
       case 'disruption': {
         content.issuesDisruptionHistoricalCount += 1;
         content.issuesDisruptionDurationTotalDays += dayCount;
+
+        for (const componentId of issue.componentIdsAffected) {
+          content.componentsIssuesDisruptionCount[componentId] += 1;
+        }
         break;
       }
     }
