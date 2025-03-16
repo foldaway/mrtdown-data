@@ -7,7 +7,7 @@ export const StatisticsSchema = z.object({
   dates: z.record(z.string().date(), DateSummarySchema),
   issuesOngoing: z.array(IssueSchema),
   issueHistoricalCount: z.number(),
-  issueHistoricalDurationAvgDays: z.number(),
+  issueHistoricalDurationTotalDays: z.number(),
   issueDisruptionLongest: z.array(IssueReferenceSchema),
 });
 export type Statistics = z.infer<typeof StatisticsSchema>;

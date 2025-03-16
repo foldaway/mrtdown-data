@@ -30,7 +30,7 @@ export function buildStatistics() {
     dates: {},
     issuesOngoing: issues.filter((issue) => issue.endAt == null),
     issueHistoricalCount: 0,
-    issueHistoricalDurationAvgDays: 0,
+    issueHistoricalDurationTotalDays: 0,
     issueDisruptionLongest: issues
       .filter((issue) => issue.endAt != null && issue.type === 'disruption')
       .map(({ updates, ...otherProps }) => otherProps),
@@ -66,7 +66,7 @@ export function buildStatistics() {
     const endAt = DateTime.fromISO(issue.endAt).setZone('Asia/Singapore');
 
     const dayCount = endAt.diff(startAt).as('days');
-    content.issueHistoricalDurationAvgDays += dayCount;
+    content.issueHistoricalDurationTotalDays += dayCount;
 
     for (let i = 0; i < dayCount; i++) {
       const segmentStart = startAt.plus({ days: i });
