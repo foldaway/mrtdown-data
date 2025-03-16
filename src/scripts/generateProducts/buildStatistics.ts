@@ -27,17 +27,46 @@ export function buildStatistics() {
   );
 
   const content: Statistics = {
-    issuesOngoing: issues.filter((issue) => issue.endAt == null),
     dates: {},
+    issuesOngoing: issues.filter((issue) => issue.endAt == null),
+    issueHistoricalCount: 0,
+    issueHistoricalDurationAvgDays: 0,
+    issueDisruptionLongest: issues
+      .filter((issue) => issue.endAt != null && issue.type === 'disruption')
+      .map(({ updates, ...otherProps }) => otherProps),
   };
+
+  content.issueDisruptionLongest.sort((a, b) => {
+    assert(a.endAt != null && b.endAt != null);
+    const startAtA = DateTime.fromISO(a.startAt).setZone('Asia/Singapore');
+    const endAtA = DateTime.fromISO(a.endAt).setZone('Asia/Singapore');
+    const durationA = endAtA.diff(startAtA);
+
+    const startAtB = DateTime.fromISO(b.startAt).setZone('Asia/Singapore');
+    const endAtB = DateTime.fromISO(b.endAt).setZone('Asia/Singapore');
+    const durationB = endAtB.diff(startAtB);
+
+    if (durationA < durationB) {
+      return 1;
+    }
+    if (durationA > durationB) {
+      return -1;
+    }
+    return 0;
+  });
 
   for (const issue of issues) {
     if (issue.endAt == null) {
       continue;
     }
+
+    content.issueHistoricalCount += 1;
+
     const startAt = DateTime.fromISO(issue.startAt).setZone('Asia/Singapore');
     const endAt = DateTime.fromISO(issue.endAt).setZone('Asia/Singapore');
+
     const dayCount = endAt.diff(startAt).as('days');
+    content.issueHistoricalDurationAvgDays += dayCount;
 
     for (let i = 0; i < dayCount; i++) {
       const segmentStart = startAt.plus({ days: i });
