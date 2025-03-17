@@ -1,0 +1,19 @@
+{
+  "id": "2011-12-14-smrt-apologises-for-circle-line-disruption",
+  "title": "Circle Line service disruption",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2011-12-14T06:00:00+08:00",
+  "endAt": "2011-12-14T11:45:00+08:00",
+  "type": "disruption",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "news.report",
+      "text": "SINGAPORE - SMRT has confirmed the train service on the Circle Line between Marymount and...",
+      "sourceUrl": "https://web.archive.org/web/20120108015638/http://www.todayonline.com/Singapore/EDC111214-0000107/SMRT-apologises-for-Circle-Line-disruption",
+      "createdAt": "2011-12-14T13:23:00+08:00"
+    }
+  ]
+}

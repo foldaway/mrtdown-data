@@ -1,0 +1,25 @@
+{
+  "id": "2011-12-15-north-south-mrt-line-breakdown",
+  "title": "North-South MRT Line breakdown hits thousands",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2011-12-15T19:58:00+08:00",
+  "endAt": "2011-12-15T23:40:00+08:00",
+  "type": "disruption",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "news.report",
+      "text": "Train services on the northbound North-South MRT Line - between Marina Bay and Bishan stations - resumed at 11.40pm on Thursday.",
+      "sourceUrl": "https://web.archive.org/web/20120105191538/http://www.channelnewsasia.com/stories/singaporelocalnews/view/1171624/1/.html",
+      "createdAt": "2011-12-16T01:45:00+08:00"
+    },
+    {
+      "type": "news.report",
+      "text": "Thousands were stranded after the North-South MRT Line broke down during the evening peak hours. Some commuters used a fire extinguisher to break the windows of a train stuck underground due to lack of ventilation.",
+      "sourceUrl": "https://web.archive.org/web/20120103113431/http://www.channelnewsasia.com/stories/singaporelocalnews/view/1171573/1/.html",
+      "createdAt": "2011-12-15T19:58:00+08:00"
+    }
+  ]
+}
