@@ -25,8 +25,11 @@ interface RedditFeed {
 const REDDIT_RSS_FEEDS: RedditFeed[] = [
   {
     subreddit: '/r/singapore',
-    feedUrl:
-      'https://www.reddit.com/r/singapore/search.rss?q=mrt&sort=new&restrict_sr=on',
+    feedUrl: 'https://www.reddit.com/r/singapore/new.rss',
+  },
+  {
+    subreddit: '/r/askSingapore',
+    feedUrl: 'https://www.reddit.com/r/askSingapore/new.rss',
   },
 ];
 
