@@ -59,7 +59,9 @@ for (const feedUrl of TWITTER_MASTODON_RSS_FEEDS) {
       const { contentSnippet, link, isoDate } = item;
       assert(contentSnippet != null);
 
-      console.log(`[checkRssFeeds] text=${title} isoDate=${isoDate}`);
+      console.log(
+        `[checkRssFeeds] account=${title} text=${contentSnippet} isoDate=${isoDate}`,
+      );
 
       if (!isTextRailRelated(contentSnippet)) {
         continue;
