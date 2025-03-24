@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "generate-products": "tsx src/scripts/generateProducts/index.ts",
     "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts"
   },

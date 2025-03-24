@@ -1,17 +1,19 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { IssueModel } from '../../model/IssueModel';
-import { DateTime, Duration } from 'luxon';
+import { DateTime, Duration, Interval } from 'luxon';
 import { assert } from '../../util/assert';
 import type { Statistics } from '../../schema/Statistics';
 import { ComponentModel } from '../../model/ComponentModel';
 import type { IssueReference } from '../../schema/Overview';
 import type { IssueType } from '../../schema/Issue';
 import type { DateSummary } from '../../schema/DateSummary';
+import { calculateDurationWithinServiceHours } from '../../helpers/calculateDurationWithinServiceHours';
+import { splitIntervalByServiceHours } from '../../helpers/splitIntervalByServiceHours';
 
 interface DateSummaryPartial {
   issues: IssueReference[];
-  issueTypesMinutesOfDayMap: Record<IssueType, Record<number, boolean>>;
+  issueTypesIntervals: Record<IssueType, Interval[]>;
 }
 
 export function buildStatistics() {
@@ -38,31 +40,31 @@ export function buildStatistics() {
   // This calculation excludes overlapping time between two issues of the same type (e.g. two overlapping disruptions)
   const datesPartial: Record<string, DateSummaryPartial> = {};
 
-  const content: Statistics = {
-    dates: {},
-    issuesOngoing: issues.filter((issue) => issue.endAt == null),
-    issuesDisruptionHistoricalCount: 0,
-    issuesDisruptionDurationTotalDays: 0,
-    issuesDisruptionLongest: issues
-      .filter((issue) => issue.endAt != null && issue.type === 'disruption')
-      .map(({ updates, ...otherProps }) => otherProps),
-    componentsIssuesDisruptionCount: {},
-  };
+  const dates: Statistics['dates'] = {};
+
+  const componentsIssuesDisruptionCount: Statistics['componentsIssuesDisruptionCount'] =
+    {};
+  let issuesDisruptionHistoricalCount = 0;
+  let issuesDisruptionDurationTotalDays = 0;
 
   const components = ComponentModel.getAll();
   for (const component of components) {
-    content.componentsIssuesDisruptionCount[component.id] = 0;
+    componentsIssuesDisruptionCount[component.id] = 0;
   }
 
-  content.issuesDisruptionLongest.sort((a, b) => {
+  let issuesDisruptionLongest = issues
+    .filter((issue) => issue.endAt != null && issue.type === 'disruption')
+    .map(({ updates, ...otherProps }) => otherProps);
+
+  issuesDisruptionLongest.sort((a, b) => {
     assert(a.endAt != null && b.endAt != null);
     const startAtA = DateTime.fromISO(a.startAt).setZone('Asia/Singapore');
     const endAtA = DateTime.fromISO(a.endAt).setZone('Asia/Singapore');
-    const durationA = endAtA.diff(startAtA);
+    const durationA = calculateDurationWithinServiceHours(startAtA, endAtA);
 
     const startAtB = DateTime.fromISO(b.startAt).setZone('Asia/Singapore');
     const endAtB = DateTime.fromISO(b.endAt).setZone('Asia/Singapore');
-    const durationB = endAtB.diff(startAtB);
+    const durationB = calculateDurationWithinServiceHours(startAtB, endAtB);
 
     if (durationA < durationB) {
       return 1;
@@ -74,10 +76,7 @@ export function buildStatistics() {
   });
 
   // Retain only top 10 longest disruption issues
-  content.issuesDisruptionLongest = content.issuesDisruptionLongest.slice(
-    0,
-    10,
-  );
+  issuesDisruptionLongest = issuesDisruptionLongest.slice(0, 10);
 
   for (const issue of issues) {
     if (issue.endAt == null) {
@@ -89,40 +88,33 @@ export function buildStatistics() {
     const endAt = DateTime.fromISO(issue.endAt).setZone('Asia/Singapore');
     assert(endAt.isValid);
 
-    const dayCount = endAt.diff(startAt).as('days');
-
     switch (issue.type) {
       case 'disruption': {
-        content.issuesDisruptionHistoricalCount += 1;
-        content.issuesDisruptionDurationTotalDays += dayCount;
+        issuesDisruptionHistoricalCount += 1;
+        issuesDisruptionDurationTotalDays +=
+          calculateDurationWithinServiceHours(startAt, endAt).as('days');
 
         for (const componentId of issue.componentIdsAffected) {
-          content.componentsIssuesDisruptionCount[componentId] += 1;
+          componentsIssuesDisruptionCount[componentId] += 1;
         }
         break;
       }
     }
 
-    for (let i = 0; i < dayCount; i++) {
-      const segmentStart = startAt.plus({ days: i });
-      const segmentEnd = DateTime.min(endAt, segmentStart.plus({ days: 1 }));
-      const dayStart = segmentStart.startOf('day');
-      const segmentStartIsoDate = segmentStart.toISODate();
+    const interval = Interval.fromDateTimes(startAt, endAt);
+    for (const segment of splitIntervalByServiceHours(interval)) {
+      assert(segment.start != null);
+      assert(segment.end != null);
+
+      const segmentStartIsoDate = segment.start.toISODate();
       const dateSummary = datesPartial[segmentStartIsoDate] ?? {
-        issueTypesMinutesOfDayMap: {},
         issues: [],
+        issueTypesIntervals: {},
       };
 
-      const issueTypeMinutesOfDay =
-        dateSummary.issueTypesMinutesOfDayMap[issue.type] ?? {};
-      for (
-        let j = segmentStart.diff(dayStart).as('minutes');
-        j < segmentEnd.diff(dayStart).as('minutes');
-        j++
-      ) {
-        issueTypeMinutesOfDay[j] = true;
-      }
-      dateSummary.issueTypesMinutesOfDayMap[issue.type] = issueTypeMinutesOfDay;
+      const intervals = dateSummary.issueTypesIntervals[issue.type] ?? [];
+      intervals.push(segment);
+      dateSummary.issueTypesIntervals[issue.type] = intervals;
       dateSummary.issues.push({
         id: issue.id,
         type: issue.type,
@@ -138,20 +130,31 @@ export function buildStatistics() {
   for (const [dateIso, dateSummaryPartial] of Object.entries(datesPartial)) {
     const issueTypesDurationMs: DateSummary['issueTypesDurationMs'] = {};
 
-    for (const [issueType, minutesOfDayMap] of Object.entries(
-      dateSummaryPartial.issueTypesMinutesOfDayMap,
+    for (const [issueType, intervals] of Object.entries(
+      dateSummaryPartial.issueTypesIntervals,
     )) {
-      issueTypesDurationMs[issueType as IssueType] = Duration.fromObject({
-        minutes: Object.values(minutesOfDayMap).filter((val) => val === true)
-          .length,
-      }).as('milliseconds');
+      let duration = Duration.fromObject({ milliseconds: 0 });
+      for (const segment of intervals) {
+        duration = duration.plus(segment.toDuration());
+      }
+      issueTypesDurationMs[issueType as IssueType] =
+        duration.as('milliseconds');
     }
 
-    content.dates[dateIso] = {
+    dates[dateIso] = {
       issues: dateSummaryPartial.issues,
       issueTypesDurationMs,
     };
   }
+
+  const content: Statistics = {
+    dates,
+    issuesOngoing: issues.filter((issue) => issue.endAt == null),
+    issuesDisruptionHistoricalCount,
+    issuesDisruptionDurationTotalDays,
+    issuesDisruptionLongest,
+    componentsIssuesDisruptionCount,
+  };
 
   writeFileSync(filePath, JSON.stringify(content, null, 2));
 }

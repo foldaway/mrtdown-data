@@ -3,14 +3,15 @@ import { join } from 'node:path';
 import { ComponentModel } from '../../model/ComponentModel';
 import type { IssueReference, Overview } from '../../schema/Overview';
 import { IssueModel } from '../../model/IssueModel';
-import { DateTime, Duration } from 'luxon';
+import { DateTime, Duration, Interval } from 'luxon';
 import { assert } from '../../util/assert';
 import type { IssueType } from '../../schema/Issue';
 import type { DateSummary } from '../../schema/DateSummary';
+import { splitIntervalByServiceHours } from '../../helpers/splitIntervalByServiceHours';
 
 interface DateSummaryPartial {
   issues: IssueReference[];
-  issueTypesMinutesOfDayMap: Record<IssueType, Record<number, boolean>>;
+  issueTypesIntervals: Record<IssueType, Interval[]>;
 }
 
 export function buildOverview() {
@@ -52,29 +53,20 @@ export function buildOverview() {
     assert(startAt.isValid);
     const endAt = DateTime.fromISO(issue.endAt).setZone('Asia/Singapore');
     assert(endAt.isValid);
-    const dayCount = endAt.diff(startAt).as('days');
 
-    for (let i = 0; i < dayCount; i++) {
-      const segmentStart = startAt.plus({ days: i });
-      const segmentEnd = DateTime.min(endAt, segmentStart.plus({ days: 1 }));
-      const dayStart = segmentStart.startOf('day');
-      const segmentStartIsoDate = segmentStart.toISODate();
-      assert(segmentStartIsoDate != null);
+    const interval = Interval.fromDateTimes(startAt, endAt);
+    for (const segment of splitIntervalByServiceHours(interval)) {
+      assert(segment.start != null);
+      assert(segment.end != null);
 
+      const segmentStartIsoDate = segment.start.toISODate();
       const dateSummary = datesPartial[segmentStartIsoDate] ?? {
-        issueTypesMinutesOfDayMap: {},
         issues: [],
+        issueTypesIntervals: {},
       };
-      const issueTypeMinutesOfDay =
-        dateSummary.issueTypesMinutesOfDayMap[issue.type] ?? {};
-      for (
-        let j = segmentStart.diff(dayStart).as('minutes');
-        j < segmentEnd.diff(dayStart).as('minutes');
-        j++
-      ) {
-        issueTypeMinutesOfDay[j] = true;
-      }
-      dateSummary.issueTypesMinutesOfDayMap[issue.type] = issueTypeMinutesOfDay;
+      const intervals = dateSummary.issueTypesIntervals[issue.type] ?? [];
+      intervals.push(segment);
+      dateSummary.issueTypesIntervals[issue.type] = intervals;
 
       dateSummary.issues.push({
         id: issue.id,
@@ -91,13 +83,15 @@ export function buildOverview() {
   for (const [dateIso, dateSummaryPartial] of Object.entries(datesPartial)) {
     const issueTypesDurationMs: DateSummary['issueTypesDurationMs'] = {};
 
-    for (const [issueType, minutesOfDayMap] of Object.entries(
-      dateSummaryPartial.issueTypesMinutesOfDayMap,
+    for (const [issueType, intervals] of Object.entries(
+      dateSummaryPartial.issueTypesIntervals,
     )) {
-      issueTypesDurationMs[issueType as IssueType] = Duration.fromObject({
-        minutes: Object.values(minutesOfDayMap).filter((val) => val === true)
-          .length,
-      }).as('milliseconds');
+      let duration = Duration.fromObject({ milliseconds: 0 });
+      for (const segment of intervals) {
+        duration = duration.plus(segment.toDuration());
+      }
+      issueTypesDurationMs[issueType as IssueType] =
+        duration.as('milliseconds');
     }
 
     content.dates[dateIso] = {
