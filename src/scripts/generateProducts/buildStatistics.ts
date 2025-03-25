@@ -10,10 +10,16 @@ import type { IssueType } from '../../schema/Issue';
 import type { DateSummary } from '../../schema/DateSummary';
 import { calculateDurationWithinServiceHours } from '../../helpers/calculateDurationWithinServiceHours';
 import { splitIntervalByServiceHours } from '../../helpers/splitIntervalByServiceHours';
+import type { ComponentId } from '../../schema/Component';
+import { sumIntervalDuration } from '../../helpers/sumIntervalDuration';
 
 interface DateSummaryPartial {
   issues: IssueReference[];
   issueTypesIntervals: Record<IssueType, Interval[]>;
+  componentIdsIssueTypeIntervals: Record<
+    ComponentId,
+    Record<IssueType, Interval[]>
+  >;
 }
 
 export function buildStatistics() {
@@ -107,14 +113,38 @@ export function buildStatistics() {
       assert(segment.end != null);
 
       const segmentStartIsoDate = segment.start.toISODate();
-      const dateSummary = datesPartial[segmentStartIsoDate] ?? {
-        issues: [],
-        issueTypesIntervals: {},
-      };
+      const dateSummary =
+        datesPartial[segmentStartIsoDate] ??
+        ({
+          issues: [],
+          issueTypesIntervals: {
+            disruption: [],
+            maintenance: [],
+            infra: [],
+          },
+          componentIdsIssueTypeIntervals: {},
+        } satisfies DateSummaryPartial);
 
       const intervals = dateSummary.issueTypesIntervals[issue.type] ?? [];
       intervals.push(segment);
       dateSummary.issueTypesIntervals[issue.type] = intervals;
+
+      for (const componentId of issue.componentIdsAffected) {
+        const componentIssueTypeIntervals =
+          dateSummary.componentIdsIssueTypeIntervals[componentId] ??
+          ({
+            disruption: [],
+            maintenance: [],
+            infra: [],
+          } satisfies Record<IssueType, Interval[]>);
+
+        const intervals = componentIssueTypeIntervals[issue.type] ?? [];
+        intervals.push(segment);
+        componentIssueTypeIntervals[issue.type] = intervals;
+        dateSummary.componentIdsIssueTypeIntervals[componentId] =
+          componentIssueTypeIntervals;
+      }
+
       dateSummary.issues.push({
         id: issue.id,
         type: issue.type,
@@ -129,21 +159,31 @@ export function buildStatistics() {
 
   for (const [dateIso, dateSummaryPartial] of Object.entries(datesPartial)) {
     const issueTypesDurationMs: DateSummary['issueTypesDurationMs'] = {};
+    const componentIdsIssueTypesDurationMs: DateSummary['componentIdsIssueTypesDurationMs'] =
+      {};
 
     for (const [issueType, intervals] of Object.entries(
       dateSummaryPartial.issueTypesIntervals,
     )) {
-      let duration = Duration.fromObject({ milliseconds: 0 });
-      for (const segment of intervals) {
-        duration = duration.plus(segment.toDuration());
-      }
       issueTypesDurationMs[issueType as IssueType] =
-        duration.as('milliseconds');
+        sumIntervalDuration(intervals).as('milliseconds');
+    }
+
+    for (const [componentId, issueTypeIntervals] of Object.entries(
+      dateSummaryPartial.componentIdsIssueTypeIntervals,
+    )) {
+      componentIdsIssueTypesDurationMs[componentId] = {};
+
+      for (const [issueType, intervals] of Object.entries(issueTypeIntervals)) {
+        componentIdsIssueTypesDurationMs[componentId][issueType as IssueType] =
+          sumIntervalDuration(intervals).as('milliseconds');
+      }
     }
 
     dates[dateIso] = {
       issues: dateSummaryPartial.issues,
       issueTypesDurationMs,
+      componentIdsIssueTypesDurationMs,
     };
   }
 
