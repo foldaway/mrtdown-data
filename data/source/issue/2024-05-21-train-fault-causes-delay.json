@@ -2,7 +2,6 @@
   "id": "2024-05-21-train-fault-causes-delay",
   "title": "Train Fault Causing Delays Between Orchard and Gardens by the Bay",
   "componentIdsAffected": [
-    "NSL",
     "TEL"
   ],
   "startAt": "2024-05-21T09:03:55.000+08:00",

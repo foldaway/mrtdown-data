@@ -2,7 +2,6 @@
   "id": "2012-02-10-west-bound-train-delayed",
   "title": "West-bound train service delayed due to train fault",
   "componentIdsAffected": [
-    "NSL",
     "EWL"
   ],
   "startAt": "2012-02-10T18:27:51.000+08:00",

@@ -2,10 +2,9 @@
   "id": "2019-04-12-renewal-and-maintenance-works",
   "title": "Renewal and Maintenance Works along North-South and East-West Lines",
   "componentIdsAffected": [
-    "NSL",
-    "EWL"
+    "NSL"
   ],
-  "startAt": "2019-04-12T14:59:52.000+08:00",
+  "startAt": "2019-05-17T17:00:01.000+08:00",
   "endAt": "2019-05-21T04:28:36.000+08:00",
   "updates": [
     {
@@ -43,12 +42,6 @@
       "text": "[NSL]: Due to the construction of a crossover track at #Canberra station, there will be no train svcs at the following stations:\n18 &amp; 19 May: Between #Woodlands and #Yishun\n20 May: Between #Woodlands and #AngMoKio\nPlease plan your journey ahead. https://t.co/9rm83F5WjL",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1129310591162568704",
       "createdAt": "2019-05-17T17:00:01.000+08:00"
-    },
-    {
-      "type": "planned",
-      "text": "To facilitate renewal and maintenance works along the North-South and East-West lines, we will extend engineering hours with longer train service intervals and early closures of selected stations from April to June 2019. Please plan your journey ahead. https://t.co/NratIRZ2Qu https://t.co/mCPaFZbewr",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/1116596778596356099",
-      "createdAt": "2019-04-12T14:59:52.000+08:00"
     }
   ],
   "type": "maintenance",

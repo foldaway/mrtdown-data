@@ -2,8 +2,7 @@
   "id": "2022-05-28-ewl-track-point-fault",
   "title": "Delay on East West Line due to track point fault",
   "componentIdsAffected": [
-    "EWL",
-    "CCL"
+    "EWL"
   ],
   "startAt": "2022-05-28T06:32:00.000+08:00",
   "endAt": "2022-05-28T10:21:09.000+08:00",

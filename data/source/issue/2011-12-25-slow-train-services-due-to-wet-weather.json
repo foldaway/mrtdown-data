@@ -3,7 +3,8 @@
   "title": "Train services running slower due to wet weather",
   "componentIdsAffected": [
     "NSL",
-    "EWL"
+    "EWL",
+    "CCL"
   ],
   "startAt": "2011-12-25T09:12:29.000+08:00",
   "endAt": "2011-12-26T00:00:00.000+08:00",

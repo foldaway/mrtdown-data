@@ -3,7 +3,8 @@
   "title": "Trains running slower due to speed restrictions",
   "componentIdsAffected": [
     "NSL",
-    "EWL"
+    "EWL",
+    "CCL"
   ],
   "startAt": "2011-12-26T10:48:38.000+08:00",
   "endAt": "2011-12-27T00:00:00.000+08:00",

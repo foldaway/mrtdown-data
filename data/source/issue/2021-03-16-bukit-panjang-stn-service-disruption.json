@@ -2,7 +2,6 @@
   "id": "2021-03-16-bukit-panjang-stn-service-disruption",
   "title": "Service disruption at Bukit Panjang Station due to technical fault",
   "componentIdsAffected": [
-    "BPLRT",
     "DTL"
   ],
   "startAt": "2021-03-16T08:11:07.000+08:00",

@@ -2,8 +2,7 @@
   "id": "2022-06-20-circle-line-track-fault",
   "title": "Track fault causing delays on Circle Line",
   "componentIdsAffected": [
-    "CCL",
-    "DTL"
+    "CCL"
   ],
   "startAt": "2022-06-20T13:34:29.000+08:00",
   "endAt": "2022-06-20T14:20:12.000+08:00",

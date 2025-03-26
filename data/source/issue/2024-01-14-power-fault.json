@@ -2,7 +2,6 @@
   "id": "2024-01-14-power-fault",
   "title": "Major Power Fault Causing Delays",
   "componentIdsAffected": [
-    "NSL",
     "TEL"
   ],
   "startAt": "2024-01-14T08:09:35.000+08:00",

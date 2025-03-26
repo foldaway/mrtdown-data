@@ -2,8 +2,7 @@
   "id": "2023-02-08-nsl-track-point-fault",
   "title": "Track point fault causing delays",
   "componentIdsAffected": [
-    "NSL",
-    "TEL"
+    "NSL"
   ],
   "startAt": "2023-02-08T06:58:55.000+08:00",
   "endAt": "2023-02-08T12:38:14.000+08:00",

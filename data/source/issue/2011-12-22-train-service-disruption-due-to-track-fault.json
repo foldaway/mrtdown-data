@@ -2,8 +2,7 @@
   "id": "2011-12-22-train-service-disruption-due-to-track-fault",
   "title": "Train service disruption due to track fault",
   "componentIdsAffected": [
-    "NSL",
-    "EWL"
+    "NSL"
   ],
   "startAt": "2011-12-22T09:01:42.000+08:00",
   "endAt": "2011-12-23T00:00:00.000+08:00",

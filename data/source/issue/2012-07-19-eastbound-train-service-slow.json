@@ -2,8 +2,7 @@
   "id": "2012-07-19-eastbound-train-service-slow",
   "title": "Eastbound train service moving slower due to train fault",
   "componentIdsAffected": [
-    "EWL",
-    "NSL"
+    "EWL"
   ],
   "startAt": "2012-07-19T08:47:06.000+08:00",
   "endAt": "2012-07-19T08:56:35.000+08:00",

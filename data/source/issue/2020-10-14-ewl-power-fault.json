@@ -2,8 +2,7 @@
   "id": "2020-10-14-ewl-power-fault",
   "title": "Train services disrupted due to power fault",
   "componentIdsAffected": [
-    "EWL",
-    "NSL"
+    "EWL"
   ],
   "startAt": "2020-10-14T19:57:45.000+08:00",
   "endAt": "2020-10-14T22:39:23.000+08:00",

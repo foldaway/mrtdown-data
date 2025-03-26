@@ -4,7 +4,8 @@
   "componentIdsAffected": [
     "BPLRT",
     "EWL",
-    "NSL"
+    "NSL",
+    "CCL"
   ],
   "startAt": "2011-12-24T13:57:23.000+08:00",
   "endAt": "2011-12-25T00:00:00.000+08:00",

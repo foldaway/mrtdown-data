@@ -2,8 +2,7 @@
   "id": "2017-10-07-nel-service-disruption",
   "title": "NEL service disruption due to train fault",
   "componentIdsAffected": [
-    "NEL",
-    "SKLRT"
+    "NEL"
   ],
   "startAt": "2017-10-07T12:39:51.000+08:00",
   "endAt": "2017-10-07T13:03:52.000+08:00",

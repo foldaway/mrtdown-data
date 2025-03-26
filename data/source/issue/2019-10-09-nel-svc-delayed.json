@@ -2,8 +2,7 @@
   "id": "2019-10-09-nel-svc-delayed",
   "title": "Service Disruption on North East Line due to Signalling Fault",
   "componentIdsAffected": [
-    "NEL",
-    "SKLRT"
+    "NEL"
   ],
   "startAt": "2019-10-09T19:50:35.000+08:00",
   "endAt": "2019-10-09T20:29:02.000+08:00",
