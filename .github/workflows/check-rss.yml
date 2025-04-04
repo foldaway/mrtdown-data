@@ -13,10 +13,11 @@ jobs:
       - name: Find and checkout latest updated branch
         id: brancher
         run: |
-          LATEST_BRANCH=$(git for-each-ref --sort=-committerdate refs/remotes/origin/ --format='%(refname:short)' | sed 's/origin\///' | head -n 1)
-          echo "Latest updated branch: $LATEST_BRANCH"
-          git checkout $LATEST_BRANCH
-          echo "latest-branch=$LATEST_BRANCH" >> $GITHUB_OUTPUT
+          LATEST_BRANCH=$(git for-each-ref --sort=-committerdate refs/remotes/origin/ --format='%(refname:short)' | grep -v "HEAD" | head -n 1)
+          BRANCH_NAME=${LATEST_BRANCH#origin/}
+          echo "Latest updated branch: $BRANCH_NAME"
+          git checkout $BRANCH_NAME
+          echo "latest-branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
       - uses: actions/setup-node@v4
         with:
           node-version: 22
