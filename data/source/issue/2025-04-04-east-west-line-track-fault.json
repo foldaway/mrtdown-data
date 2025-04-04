@@ -10,14 +10,14 @@
   "severity": "minor",
   "updates": [
     {
-      "type": "operator.resolved",
-      "text": "East-West Line train services in Singapore have resumed following an hours-long disruption between Queenstown and Boon Lay. The incident was reported in a Reddit post on April 4, 2025.",
+      "type": "general-public.report",
+      "text": "Train services on the East-West Line between Queenstown and Boon Lay have resumed after a disruption that lasted several hours. The incident has been reported in a Reddit post, providing further details.",
       "sourceUrl": "https://www.reddit.com/r/singapore/comments/1jr79ha/eastwest_line_train_services_resume_after/",
       "createdAt": "2025-04-04T16:48:57.000+08:00"
     },
     {
       "type": "general-public.report",
-      "text": "A Reddit user posted an edited MRT map for the East West Line (EWL) train disruption that occurred earlier on April 4, 2025. The post showcases the map and is inspired by previous edits, emphasizing that the user is not affiliated with any government organizations.",
+      "text": "A Reddit user created an edited MRT map to illustrate the East West Line (EWL) train disruption that occurred earlier on April 4, 2025. The post includes an image of the edited map and provides a link for further details on reddit. The user notes that they are not affiliated with any government organizations.",
       "sourceUrl": "https://www.reddit.com/r/singapore/comments/1jr7550/mrt_map_edit_i_made_for_the_ewl_train_disruption/",
       "createdAt": "2025-04-04T16:39:43.000+08:00"
     },
