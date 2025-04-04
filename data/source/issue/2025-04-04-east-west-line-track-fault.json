@@ -11,6 +11,60 @@
   "updates": [
     {
       "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Train services are progressively being restored. Free regular bus is available between #Buona Vista and #BoonLay.",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114278637061080545",
+      "createdAt": "2025-04-04T16:00:17.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Train services are progressively being restored.  Free regular bus is available between #Queenstown and #BoonLay.",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114278628189535071",
+      "createdAt": "2025-04-04T15:58:01.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "A travel advisory for the East West Line (EWL) of Singapore's MRT has been posted by SMRT at 15:36 hours on April 4, 2025. The advisory was shared on the subreddit r/singapore.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1jr6efb/ewl_green_line_travel_advisory_posted_by_smrt_as/",
+      "createdAt": "2025-04-04T15:43:53.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to a track fault, please expect an additional 20mins of travelling time between #Queenstown and #BoonLay. Passenger travelling between #BuonaVista and #BoonLay, please take the alternative route via Circle Line at #BuonaVista.",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114278544618830859",
+      "createdAt": "2025-04-04T15:36:46.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track fault, please expect an additional 20 mins of travelling time between #Queenstown and #BoonLay. Shuttle train is available between #JurongEast and #Lakeside. Please look out for fellow commuters in need and give a helping hand. We apologise for…",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114278542284050110",
+      "createdAt": "2025-04-04T15:36:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to a track fault, please expect an additional 20mins of travelling time between #Queenstown and #BoonLay. Passengers are advised to take North-South Line train service and change to Thomson-East Coast Line at #Woodlands to city area. Train service is still available.",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114278481641892374",
+      "createdAt": "2025-04-04T15:20:45.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "Due to a track fault, please expect an additional 20mins of travelling time between #Queenstown and #BoonLay. Passengers are advised to take North-South Line train service and change to Thomson-East Coast Line at #Woodlands to city area. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1908057128759341228",
+      "createdAt": "2025-04-04T15:20:44.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track fault, please expect an additional 20mins of travelling time between #Queenstown and #BoonLay. Passenger are advised to take the alternative route via Circle Line at #BuonaVista and North-South Line to city area. We apologise for the delay to your…",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114278441904758456",
+      "createdAt": "2025-04-04T15:10:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to a track fault, please expect an additional 20mins of travelling time between #Queenstown and #BoonLay. Passenger are advised to take the alternative route via Circle Line at #BuonaVista and North-South Line to city area. We apologise for the delay to your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1908054585836712313",
+      "createdAt": "2025-04-04T15:10:37.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
       "text": "[EWL] UPDATE: Due to a track fault, please expect an additional 20mins of travelling time between #Queenstown and #BoonLay. Shuttle train is available between #JurongEast and #Lakeside. Free regular bus is available between #BuonaVista and #BoonLay. Train service is still…",
       "sourceUrl": "https://mastodon.social/@smrtsg_bot/114278240627835156",
       "createdAt": "2025-04-04T14:19:28.000+08:00"
