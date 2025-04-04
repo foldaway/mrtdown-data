@@ -1,0 +1,49 @@
+{
+  "id": "2025-04-04-east-west-line-track-fault",
+  "title": "Track fault causing delays on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2025-04-04T13:35:01.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "severity": "major",
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Due to a track fault, please expect an additional 20mins of travelling time between #Queenstown and #BoonLay. Shuttle train is available between #JurongEast and #Lakeside. Free regular bus is available between #BuonaVista and #BoonLay. Train service is still…",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114278240627835156",
+      "createdAt": "2025-04-04T14:19:28.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL] UPDATE: Due to a track fault, please expect an additional 20mins of travelling time between #Queenstown and #BoonLay. Passengers are advised to take North-South Line train service and change to Thomson-East Coast Line at #Woodlands to city area. Train service is still…",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114278184538296260",
+      "createdAt": "2025-04-04T14:05:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Passenger travelling between #BuonaVista and #BoonLay, please take the alternative route via Circle Line at #BuonaVista.",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114278127106207382",
+      "createdAt": "2025-04-04T13:50:35.000+08:00"
+    },
+    {
+      "type": "general-public.report",
+      "text": "There is a platform fault at Lakeside station where Platform A is down, causing trains in both directions of the East West Line to stop at Platform B. Passengers are confused about the situation.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1jr4phz/platform_fault_at_lakeside_everyones_confused/",
+      "createdAt": "2025-04-04T13:46:28.000+08:00"
+    },
+    {
+      "type": "general-public.report",
+      "text": "A user reported an apparent fault on the East West Line (EWL) of Singapore's MRT system, sharing a post on Reddit. The post includes an image related to the incident and provides a link for further discussion.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1jr4mpa/apparent_fault_on_ewl/",
+      "createdAt": "2025-04-04T13:41:30.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track fault, please expect an additional 20mins of travelling time between #Queenstown and #BoonLay. Shuttle train is available between  #JurongEast and #Lakeside. Free regular bus is available between #BuonaVista and #BoonLay.",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114278065872277602",
+      "createdAt": "2025-04-04T13:35:01.000+08:00"
+    }
+  ]
+}
