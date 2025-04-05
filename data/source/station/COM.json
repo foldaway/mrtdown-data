@@ -1,0 +1,12 @@
+{
+  "id": "COM",
+  "name": "Commonwealth",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW20",
+        "startedAt": "1988-03-12"
+      }
+    ]
+  }
+}

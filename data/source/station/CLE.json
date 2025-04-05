@@ -1,0 +1,12 @@
+{
+  "id": "CLE",
+  "name": "Clementi",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW23",
+        "startedAt": "1988-03-12"
+      }
+    ]
+  }
+}

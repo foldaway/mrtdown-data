@@ -1,0 +1,18 @@
+{
+  "id": "BNV",
+  "name": "Buona Vista",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW21",
+        "startedAt": "1988-03-12"
+      }
+    ],
+    "CCL": [
+      {
+        "code": "CC22",
+        "startedAt": "2011-10-08"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "QUE",
+  "name": "Queenstown",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW19",
+        "startedAt": "1988-03-12"
+      }
+    ]
+  }
+}

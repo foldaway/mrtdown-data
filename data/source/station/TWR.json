@@ -1,0 +1,12 @@
+{
+  "id": "TWR",
+  "name": "Tuas West Road",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW32",
+        "startedAt": "2017-06-18"
+      }
+    ]
+  }
+}

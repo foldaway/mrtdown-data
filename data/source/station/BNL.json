@@ -1,0 +1,18 @@
+{
+  "id": "BNL",
+  "name": "Boon Lay",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW27",
+        "startedAt": "1990-07-06"
+      }
+    ],
+    "JRL": [
+      {
+        "code": "JS8",
+        "startedAt": "2027-12-31"
+      }
+    ]
+  }
+}

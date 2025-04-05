@@ -1,0 +1,18 @@
+{
+  "id": "CTH",
+  "name": "City Hall",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW13",
+        "startedAt": "1987-12-12"
+      }
+    ],
+    "NSL": [
+      {
+        "code": "NS25",
+        "startedAt": "1987-12-12"
+      }
+    ]
+  }
+}

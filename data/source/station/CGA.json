@@ -1,0 +1,12 @@
+{
+  "id": "CGA",
+  "name": "Changi Airport",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "CG2",
+        "startedAt": "2002-02-08"
+      }
+    ]
+  }
+}

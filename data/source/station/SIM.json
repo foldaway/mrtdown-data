@@ -1,0 +1,12 @@
+{
+  "id": "SIM",
+  "name": "Simei",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW3",
+        "startedAt": "1989-12-16"
+      }
+    ]
+  }
+}

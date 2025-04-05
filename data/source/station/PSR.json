@@ -1,0 +1,22 @@
+{
+  "id": "PSR",
+  "name": "Pasir Ris",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW1",
+        "startedAt": "1989-12-16"
+      }
+    ],
+    "CRL": [
+      {
+        "code": "CR5",
+        "startedAt": "2030-12-31"
+      },
+      {
+        "code": "CP1",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

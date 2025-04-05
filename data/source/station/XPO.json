@@ -1,0 +1,18 @@
+{
+  "id": "XPO",
+  "name": "Expo",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "CG1",
+        "startedAt": "2001-01-10"
+      }
+    ],
+    "DTL": [
+      {
+        "code": "DT35",
+        "startedAt": "2017-10-21"
+      }
+    ]
+  }
+}

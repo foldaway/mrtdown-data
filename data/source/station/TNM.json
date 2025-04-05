@@ -1,0 +1,16 @@
+{
+  "id": "TNM",
+  "name": "Tanah Merah",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW4",
+        "startedAt": "1989-11-04"
+      },
+      {
+        "code": "CG",
+        "startedAt": "2001-01-10"
+      }
+    ]
+  }
+}

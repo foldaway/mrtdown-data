@@ -1,0 +1,12 @@
+{
+  "id": "KAL",
+  "name": "Kallang",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW10",
+        "startedAt": "1989-11-04"
+      }
+    ]
+  }
+}
