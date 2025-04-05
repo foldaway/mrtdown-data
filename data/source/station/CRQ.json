@@ -1,0 +1,12 @@
+{
+  "id": "CRQ",
+  "name": "Clarke Quay",
+  "componentMembers": {
+    "NEL": [
+      {
+        "code": "NE5",
+        "startedAt": "2003-06-20"
+      }
+    ]
+  }
+}

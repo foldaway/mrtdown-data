@@ -1,0 +1,18 @@
+{
+  "id": "SRG",
+  "name": "Serangoon",
+  "componentMembers": {
+    "NEL": [
+      {
+        "code": "NE12",
+        "startedAt": "2003-06-20"
+      }
+    ],
+    "CCL": [
+      {
+        "code": "CC13",
+        "startedAt": "2009-05-28"
+      }
+    ]
+  }
+}

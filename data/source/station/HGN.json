@@ -1,0 +1,18 @@
+{
+  "id": "HGN",
+  "name": "Hougang",
+  "componentMembers": {
+    "NEL": [
+      {
+        "code": "NE14",
+        "startedAt": "2003-06-20"
+      }
+    ],
+    "CRL": [
+      {
+        "code": "CR8",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

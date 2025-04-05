@@ -1,0 +1,18 @@
+{
+  "id": "LTI",
+  "name": "Little India",
+  "componentMembers": {
+    "NEL": [
+      {
+        "code": "NE7",
+        "startedAt": "2003-06-20"
+      }
+    ],
+    "DTL": [
+      {
+        "code": "DT12",
+        "startedAt": "2015-12-27"
+      }
+    ]
+  }
+}

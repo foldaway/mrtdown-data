@@ -1,0 +1,12 @@
+{
+  "id": "PGC",
+  "name": "Punggol Coast",
+  "componentMembers": {
+    "NEL": [
+      {
+        "code": "NE18",
+        "startedAt": "2024-12-10"
+      }
+    ]
+  }
+}

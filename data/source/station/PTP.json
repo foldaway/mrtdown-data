@@ -1,0 +1,12 @@
+{
+  "id": "PTP",
+  "name": "Potong Pasir",
+  "componentMembers": {
+    "NEL": [
+      {
+        "code": "NE10",
+        "startedAt": "2003-06-20"
+      }
+    ]
+  }
+}

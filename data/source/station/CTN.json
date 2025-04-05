@@ -1,0 +1,18 @@
+{
+  "id": "CTN",
+  "name": "Chinatown",
+  "componentMembers": {
+    "NEL": [
+      {
+        "code": "NE4",
+        "startedAt": "2003-06-20"
+      }
+    ],
+    "DTL": [
+      {
+        "code": "DT19",
+        "startedAt": "2013-12-22"
+      }
+    ]
+  }
+}
