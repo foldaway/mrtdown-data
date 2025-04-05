@@ -13,8 +13,7 @@ import { isTextRailRelated } from '../util/isTextRailRelated';
 const TWITTER_MASTODON_RSS_FEEDS: string[] = [
   'https://mastodon.social/@smrtsg_bot.rss',
   'https://mastodon.social/@sbssg_bot.rss',
-  'https://rsshub.app/twitter/user/SMRT_Singapore',
-  'https://rsshub.app/twitter/user/SBSTransit_Ltd',
+  'https://mastodon.social/@ltatrainservicealerts.rss',
 ];
 
 interface RedditFeed {
@@ -22,16 +21,7 @@ interface RedditFeed {
   feedUrl: string;
 }
 
-const REDDIT_RSS_FEEDS: RedditFeed[] = [
-  {
-    subreddit: '/r/singapore',
-    feedUrl: 'https://www.reddit.com/r/singapore/new.rss',
-  },
-  {
-    subreddit: '/r/askSingapore',
-    feedUrl: 'https://www.reddit.com/r/askSingapore/new.rss',
-  },
-];
+const REDDIT_RSS_FEEDS: RedditFeed[] = [];
 
 const NEWS_RSS_FEEDS: string[] = [
   'https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=10416',
