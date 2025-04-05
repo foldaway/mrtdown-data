@@ -1,0 +1,18 @@
+{
+  "id": "RFL",
+  "name": "Raffles Place",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS26",
+        "startedAt": "1987-12-12"
+      }
+    ],
+    "EWL": [
+      {
+        "code": "EW14",
+        "startedAt": "1987-12-12"
+      }
+    ]
+  }
+}

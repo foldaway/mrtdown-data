@@ -1,0 +1,12 @@
+{
+  "id": "SBW",
+  "name": "Sembawang",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS11",
+        "startedAt": "1996-02-10"
+      }
+    ]
+  }
+}

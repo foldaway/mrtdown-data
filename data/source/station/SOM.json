@@ -1,0 +1,12 @@
+{
+  "id": "SOM",
+  "name": "Somerset",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS23",
+        "startedAt": "1987-12-12"
+      }
+    ]
+  }
+}

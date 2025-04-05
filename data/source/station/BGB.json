@@ -1,0 +1,12 @@
+{
+  "id": "BGB",
+  "name": "Bukit Gombak",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS3",
+        "startedAt": "1990-03-10"
+      }
+    ]
+  }
+}

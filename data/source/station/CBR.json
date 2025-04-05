@@ -1,0 +1,12 @@
+{
+  "id": "CBR",
+  "name": "Canberra",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS12",
+        "startedAt": "2019-11-02"
+      }
+    ]
+  }
+}

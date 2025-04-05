@@ -1,0 +1,12 @@
+{
+  "id": "BBT",
+  "name": "Bukit Batok",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS2",
+        "startedAt": "1990-03-10"
+      }
+    ]
+  }
+}

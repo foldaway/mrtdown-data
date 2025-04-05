@@ -1,0 +1,18 @@
+{
+  "id": "NEW",
+  "name": "Newton",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS21",
+        "startedAt": "1987-12-12"
+      }
+    ],
+    "DTL": [
+      {
+        "code": "DT11",
+        "startedAt": "2015-12-27"
+      }
+    ]
+  }
+}

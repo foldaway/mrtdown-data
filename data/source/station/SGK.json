@@ -1,0 +1,18 @@
+{
+  "id": "SGK",
+  "name": "Sungei Kadut",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS6",
+        "startedAt": "2035-01-01"
+      }
+    ],
+    "DTL": [
+      {
+        "code": "DE2",
+        "startedAt": "2035-01-01"
+      }
+    ]
+  }
+}

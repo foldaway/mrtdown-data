@@ -1,0 +1,24 @@
+{
+  "id": "DBG",
+  "name": "Dhoby Ghaut",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS24",
+        "startedAt": "1987-12-12"
+      }
+    ],
+    "NEL": [
+      {
+        "code": "NE6",
+        "startedAt": "2003-06-20"
+      }
+    ],
+    "CCL": [
+      {
+        "code": "CC1",
+        "startedAt": "2010-04-17"
+      }
+    ]
+  }
+}

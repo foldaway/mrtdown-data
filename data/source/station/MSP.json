@@ -1,0 +1,12 @@
+{
+  "id": "MSP",
+  "name": "Marina South Pier",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS28",
+        "startedAt": "2014-11-23"
+      }
+    ]
+  }
+}
