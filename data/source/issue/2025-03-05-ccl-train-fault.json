@@ -1,0 +1,47 @@
+{
+  "id": "2025-03-05-ccl-train-fault",
+  "title": "Train travel time added between Promenade and Serangoon due to train fault",
+  "componentIdsAffected": ["CCL"],
+  "startAt": "2025-03-05T16:07:26.000+08:00",
+  "endAt": "2025-03-05T17:01:12.000+08:00",
+  "type": "disruption",
+  "severity": "minor",
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[CCL]:  Train services have resumed to normalcy. Free regular bus services will cease between #Promenade and #Serangoon. We are sorry for affecting your commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1897210775976255999",
+      "createdAt": "2025-03-05T17:01:12.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL]:  Train services are progressively returning to normalcy. Please add 5 mins of additional travelling time between #Promenade and #Serangoon in both directions. Free regular bus services are available between #Promenade and #Serangoon. Shuttle train service will cease",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1897209030579552745",
+      "createdAt": "2025-03-05T16:54:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Due to a train fault, please add 30 mins of additional travelling time between #Promenade and #Serangoon in both directions. Free regular bus services are available between #Promenade and #Serangoon. Shuttle train service is available between #Bartley and #Mountbatten. https://t.co/HZ8nrB6Wrr",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1897205794577535262",
+      "createdAt": "2025-03-05T16:41:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Please take alternative routes on North-South, North-East, Downtown and East-West Line. \nFor alternative travel options, please refer to the link here. https://t.co/rRSIwZU2pU\n1. Select the line you wish to find out on alternative travel.\n2. Select the station\n3. Click on",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1897202388555235458",
+      "createdAt": "2025-03-05T16:27:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Due to a train fault, please add 30 mins of additional travelling time between #Promenade and #Serangoon in both directions. Free regular bus services are available between #Promenade and #Serangoon. Shuttle train service is available between #Bartley and #Mountbatten.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1897200247073595538",
+      "createdAt": "2025-03-05T16:19:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL]: Please add 30 mins train travel time between #Promenade and #Serangoon, in both directions due to train fault. Free regular bus service is available between #Promenade and #Serangoon. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1897197246871167416",
+      "createdAt": "2025-03-05T16:07:26.000+08:00"
+    }
+  ]
+}
