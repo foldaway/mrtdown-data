@@ -1,0 +1,12 @@
+{
+  "id": "PTR",
+  "name": "Petir",
+  "componentMembers": {
+    "BPLRT": [
+      {
+        "code": "BP7",
+        "startedAt": "1999-11-06"
+      }
+    ]
+  }
+}

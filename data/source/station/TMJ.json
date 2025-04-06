@@ -1,0 +1,13 @@
+{
+  "id": "TMJ",
+  "name": "Ten Mile Junction",
+  "componentMembers": {
+    "BPLRT": [
+      {
+        "code": "BP14",
+        "startedAt": "1999-11-06",
+        "endedAt": "2019-01-13"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "JLP",
+  "name": "Jelapang",
+  "componentMembers": {
+    "BPLRT": [
+      {
+        "code": "BP12",
+        "startedAt": "1999-11-06"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "SGR",
+  "name": "Segar",
+  "componentMembers": {
+    "BPLRT": [
+      {
+        "code": "BP11",
+        "startedAt": "1999-11-06"
+      }
+    ]
+  }
+}

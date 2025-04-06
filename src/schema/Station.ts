@@ -12,6 +12,7 @@ export type StationCode = z.infer<typeof StationCodeSchema>;
 export const StationComponentMemberSchema = z.object({
   code: StationCodeSchema,
   startedAt: z.string().date(),
+  endedAt: z.string().date().optional(),
 });
 export type StationComponentMember = z.infer<
   typeof StationComponentMemberSchema
