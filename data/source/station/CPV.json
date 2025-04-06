@@ -1,0 +1,12 @@
+{
+  "id": "CPV",
+  "name": "Compassvale",
+  "componentMembers": {
+    "SKLRT": [
+      {
+        "code": "SE1",
+        "startedAt": "2003-01-18"
+      }
+    ]
+  }
+}

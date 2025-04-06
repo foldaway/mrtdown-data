@@ -1,0 +1,12 @@
+{
+  "id": "RMB",
+  "name": "Rumbia",
+  "componentMembers": {
+    "SKLRT": [
+      {
+        "code": "SE2",
+        "startedAt": "2003-01-18"
+      }
+    ]
+  }
+}
