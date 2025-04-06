@@ -1,0 +1,12 @@
+{
+  "id": "TVK",
+  "name": "Tavistock",
+  "componentMembers": {
+    "CRL": [
+      {
+        "code": "CR10",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

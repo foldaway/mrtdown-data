@@ -1,0 +1,12 @@
+{
+  "id": "TGE",
+  "name": "Teck Ghee",
+  "componentMembers": {
+    "CRL": [
+      {
+        "code": "CR12",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

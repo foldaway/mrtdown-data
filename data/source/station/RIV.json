@@ -1,0 +1,18 @@
+{
+  "id": "RIV",
+  "name": "Riviera",
+  "componentMembers": {
+    "PGLRT": [
+      {
+        "code": "PE4",
+        "startedAt": "2005-01-29"
+      }
+    ],
+    "CRL": [
+      {
+        "code": "CP3",
+        "startedAt": "2032-01-01"
+      }
+    ]
+  }
+}

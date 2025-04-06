@@ -1,0 +1,12 @@
+{
+  "id": "MAJ",
+  "name": "Maju",
+  "componentMembers": {
+    "CRL": [
+      {
+        "code": "CR16",
+        "startedAt": "2032-01-01"
+      }
+    ]
+  }
+}

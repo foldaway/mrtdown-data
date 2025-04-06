@@ -1,0 +1,12 @@
+{
+  "id": "DFU",
+  "name": "Defu",
+  "componentMembers": {
+    "CRL": [
+      {
+        "code": "CR7",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

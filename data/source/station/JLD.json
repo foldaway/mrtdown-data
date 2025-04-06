@@ -1,0 +1,12 @@
+{
+  "id": "JLD",
+  "name": "Jurong Lake District",
+  "componentMembers": {
+    "CRL": [
+      {
+        "code": "CR19",
+        "startedAt": "2032-01-01"
+      }
+    ]
+  }
+}
