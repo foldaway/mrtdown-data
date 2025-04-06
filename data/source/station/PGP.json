@@ -1,0 +1,12 @@
+{
+  "id": "PGP",
+  "name": "Punggol Point",
+  "componentMembers": {
+    "PGLRT": [
+      {
+        "code": "PW3",
+        "startedAt": "2016-12-29"
+      }
+    ]
+  }
+}
