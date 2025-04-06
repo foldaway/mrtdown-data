@@ -1,0 +1,12 @@
+{
+  "id": "BDS",
+  "name": "Bedok South",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE30",
+        "startedAt": "2024-01-20"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "MTC",
+  "name": "Marine Terrace",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE27",
+        "startedAt": "2024-06-23"
+      }
+    ]
+  }
+}

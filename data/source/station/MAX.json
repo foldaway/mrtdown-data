@@ -1,0 +1,12 @@
+{
+  "id": "MAX",
+  "name": "Maxwell",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE18",
+        "startedAt": "2022-11-13"
+      }
+    ]
+  }
+}

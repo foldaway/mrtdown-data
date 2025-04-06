@@ -1,0 +1,12 @@
+{
+  "id": "MFL",
+  "name": "Mayflower",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE6",
+        "startedAt": "2021-08-28"
+      }
+    ]
+  }
+}

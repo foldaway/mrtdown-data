@@ -1,0 +1,12 @@
+{
+  "id": "GRB",
+  "name": "Gardens by the Bay",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE22",
+        "startedAt": "2022-11-13"
+      }
+    ]
+  }
+}

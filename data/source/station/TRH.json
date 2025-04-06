@@ -1,0 +1,12 @@
+{
+  "id": "TRH",
+  "name": "Tanjong Rhu",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE23",
+        "startedAt": "2024-06-23"
+      }
+    ]
+  }
+}

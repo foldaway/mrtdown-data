@@ -1,0 +1,12 @@
+{
+  "id": "MPR",
+  "name": "Marine Parade",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE26",
+        "startedAt": "2024-06-23"
+      }
+    ]
+  }
+}

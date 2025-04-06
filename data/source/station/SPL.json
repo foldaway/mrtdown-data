@@ -1,0 +1,12 @@
+{
+  "id": "SPL",
+  "name": "Springleaf",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE4",
+        "startedAt": "2021-08-28"
+      }
+    ]
+  }
+}

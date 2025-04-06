@@ -1,0 +1,12 @@
+{
+  "id": "TKT",
+  "name": "Tanjong Katong",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE25",
+        "startedAt": "2024-06-23"
+      }
+    ]
+  }
+}

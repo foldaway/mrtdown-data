@@ -1,0 +1,12 @@
+{
+  "id": "MPL",
+  "name": "Mount Pleasant",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE10",
+        "startedAt": "2040-12-31"
+      }
+    ]
+  }
+}

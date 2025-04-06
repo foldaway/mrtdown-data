@@ -1,0 +1,12 @@
+{
+  "id": "SGL",
+  "name": "Siglap",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE28",
+        "startedAt": "2024-06-23"
+      }
+    ]
+  }
+}
