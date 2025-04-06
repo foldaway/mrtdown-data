@@ -1,0 +1,12 @@
+{
+  "id": "JRW",
+  "name": "Jurong West",
+  "componentMembers": {
+    "JRL": [
+      {
+        "code": "JS6",
+        "startedAt": "2027-12-31"
+      }
+    ]
+  }
+}

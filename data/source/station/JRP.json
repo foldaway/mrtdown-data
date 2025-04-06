@@ -1,0 +1,18 @@
+{
+  "id": "JRP",
+  "name": "Jurong Pier",
+  "componentMembers": {
+    "JRL": [
+      {
+        "code": "JS12",
+        "startedAt": "2029-12-31"
+      }
+    ],
+    "CRL": [
+      {
+        "code": "CR21",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

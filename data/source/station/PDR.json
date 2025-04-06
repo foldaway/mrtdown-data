@@ -1,0 +1,12 @@
+{
+  "id": "PDR",
+  "name": "Pandan Reservoir",
+  "componentMembers": {
+    "JRL": [
+      {
+        "code": "JE7",
+        "startedAt": "2028-12-31"
+      }
+    ]
+  }
+}

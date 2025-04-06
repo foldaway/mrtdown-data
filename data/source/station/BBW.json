@@ -1,0 +1,12 @@
+{
+  "id": "BBW",
+  "name": "Bukit Batok West",
+  "componentMembers": {
+    "JRL": [
+      {
+        "code": "JE3",
+        "startedAt": "2028-12-31"
+      }
+    ]
+  }
+}

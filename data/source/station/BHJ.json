@@ -1,0 +1,12 @@
+{
+  "id": "BHJ",
+  "name": "Bahar Junction",
+  "componentMembers": {
+    "JRL": [
+      {
+        "code": "JS7",
+        "startedAt": "2027-12-31"
+      }
+    ]
+  }
+}

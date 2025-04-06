@@ -1,0 +1,12 @@
+{
+  "id": "TGP",
+  "name": "Tengah Plantation",
+  "componentMembers": {
+    "JRL": [
+      {
+        "code": "JE1",
+        "startedAt": "2028-12-31"
+      }
+    ]
+  }
+}

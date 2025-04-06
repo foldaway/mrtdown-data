@@ -1,0 +1,12 @@
+{
+  "id": "JRH",
+  "name": "Jurong Hill",
+  "componentMembers": {
+    "JRL": [
+      {
+        "code": "JS11",
+        "startedAt": "2029-12-31"
+      }
+    ]
+  }
+}
