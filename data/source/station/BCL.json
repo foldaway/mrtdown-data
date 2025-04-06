@@ -1,0 +1,12 @@
+{
+  "id": "BCL",
+  "name": "Bencoolen",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT21",
+        "startedAt": "2017-10-21"
+      }
+    ]
+  }
+}

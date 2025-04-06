@@ -1,0 +1,12 @@
+{
+  "id": "UPC",
+  "name": "Upper Changi",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT34",
+        "startedAt": "2017-10-21"
+      }
+    ]
+  }
+}

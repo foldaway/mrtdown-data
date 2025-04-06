@@ -1,0 +1,12 @@
+{
+  "id": "MTR",
+  "name": "Mattar",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT25",
+        "startedAt": "2017-10-21"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "BKP",
+  "name": "Bukit Panjang",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT1",
+        "startedAt": "2015-12-27"
+      }
+    ],
+    "BPLRT": [
+      {
+        "code": "BP6",
+        "startedAt": "1999-11-06"
+      }
+    ]
+  }
+}

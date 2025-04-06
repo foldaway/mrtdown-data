@@ -1,0 +1,12 @@
+{
+  "id": "JLB",
+  "name": "Jalan Besar",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT22",
+        "startedAt": "2017-10-21"
+      }
+    ]
+  }
+}

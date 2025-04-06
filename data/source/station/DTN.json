@@ -1,0 +1,12 @@
+{
+  "id": "DTN",
+  "name": "Downtown",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT17",
+        "startedAt": "2013-12-22"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "XLN",
+  "name": "Xilin",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT36",
+        "startedAt": "2026-12-31"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "BDN",
+  "name": "Bedok North",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT29",
+        "startedAt": "2017-10-21"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "TPE",
+  "name": "Tampines East",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT33",
+        "startedAt": "2017-10-21"
+      }
+    ]
+  }
+}
