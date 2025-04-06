@@ -1,0 +1,12 @@
+{
+  "id": "CTM",
+  "name": "Cantonment",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC31",
+        "startedAt": "2026-12-31"
+      }
+    ]
+  }
+}

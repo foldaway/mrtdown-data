@@ -1,0 +1,12 @@
+{
+  "id": "KPL",
+  "name": "Keppel",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC30",
+        "startedAt": "2026-12-31"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "SDM",
+  "name": "Stadium",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC6",
+        "startedAt": "2010-04-17"
+      }
+    ]
+  }
+}

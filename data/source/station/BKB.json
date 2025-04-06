@@ -1,0 +1,12 @@
+{
+  "id": "BKB",
+  "name": "Bukit Brown",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC18",
+        "startedAt": "2040-12-31"
+      }
+    ]
+  }
+}

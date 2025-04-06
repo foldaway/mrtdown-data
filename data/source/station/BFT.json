@@ -1,0 +1,18 @@
+{
+  "id": "BFT",
+  "name": "Bayfront",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CE1",
+        "startedAt": "2012-01-14"
+      }
+    ],
+    "DTL": [
+      {
+        "code": "DT16",
+        "startedAt": "2013-12-22"
+      }
+    ]
+  }
+}

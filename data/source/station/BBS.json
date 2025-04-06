@@ -1,0 +1,12 @@
+{
+  "id": "BBS",
+  "name": "Bras Basah",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC2",
+        "startedAt": "2010-04-17"
+      }
+    ]
+  }
+}

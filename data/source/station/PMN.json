@@ -1,0 +1,18 @@
+{
+  "id": "PMN",
+  "name": "Promenade",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC4",
+        "startedAt": "2010-04-17"
+      }
+    ],
+    "DTL": [
+      {
+        "code": "DT15",
+        "startedAt": "2013-12-22"
+      }
+    ]
+  }
+}

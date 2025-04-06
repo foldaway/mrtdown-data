@@ -1,0 +1,18 @@
+{
+  "id": "MPS",
+  "name": "MacPherson",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC10",
+        "startedAt": "2010-04-17"
+      }
+    ],
+    "DTL": [
+      {
+        "code": "DT26",
+        "startedAt": "2017-10-21"
+      }
+    ]
+  }
+}

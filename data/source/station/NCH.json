@@ -1,0 +1,12 @@
+{
+  "id": "NCH",
+  "name": "Nicoll Highway",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC5",
+        "startedAt": "2010-04-17"
+      }
+    ]
+  }
+}
