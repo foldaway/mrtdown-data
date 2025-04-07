@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { ComponentIdSchema } from './Component';
 import { DateTime } from 'luxon';
+import { StationIdSchema } from './StationId';
 
 export const IssueTypeSchema = z.enum(['disruption', 'maintenance', 'infra']);
 export type IssueType = z.infer<typeof IssueTypeSchema>;
@@ -21,6 +22,9 @@ const IssueBase = z.object({
   componentIdsAffected: z
     .array(ComponentIdSchema)
     .describe('List of components affected'),
+  stationIdsAffected: z
+    .array(StationIdSchema)
+    .describe('List of station IDs affected'),
   startAt: z
     .string()
     .refine((val) => DateTime.fromISO(val).isValid)

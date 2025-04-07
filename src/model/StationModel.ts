@@ -1,6 +1,8 @@
 import { readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Station, StationId } from '../schema/Station';
+import type { ComponentId } from '../schema/Component';
+import { assert } from '../util/assert';
 
 const dirPathIssue = join(import.meta.dirname, '../../data/source/station');
 
@@ -27,6 +29,18 @@ export const StationModel = {
       readFileSync(filePath, { encoding: 'utf-8' }),
     ) as Station;
     return station;
+  },
+
+  getByComponentId(componentId: ComponentId): Station[] {
+    const stations = this.getAll();
+    return stations.filter((s) => componentId in s.componentMembers);
+  },
+
+  searchByName(names: string[]): Station[] {
+    const _names = new Set(names.map((n) => n.toLowerCase()));
+
+    const stations = this.getAll();
+    return stations.filter((s) => _names.has(s.name.toLowerCase()));
   },
 
   delete(id: StationId) {

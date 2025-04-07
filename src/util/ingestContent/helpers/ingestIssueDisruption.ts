@@ -1,4 +1,7 @@
-import type { ChatCompletionMessageParam } from 'openai/resources';
+import type {
+  ChatCompletion,
+  ChatCompletionMessageParam,
+} from 'openai/resources';
 import zodToJsonSchema from 'zod-to-json-schema';
 import { IssueModel } from '../../../model/IssueModel';
 import {
@@ -11,17 +14,30 @@ import { openAiClient } from '../constants';
 import type { IngestContent } from '../types';
 import { z } from 'zod';
 import { DateTime } from 'luxon';
-import { ComponentModel } from '../../../model/ComponentModel';
 import { summarizeUpdate } from './summarizeUpdate';
 import { buildComponentTable } from '../buildComponentTable';
+import {
+  computeAffectedStations,
+  LineSectionSchema,
+} from '../../../helpers/computeAffectedStations';
+import {
+  TOOL_DEFINITION_STATION_SEARCH,
+  TOOL_NAME_STATION_SEARCH,
+  ToolStationSearchParameters,
+} from '../tools/stationSearch';
+import { StationModel } from '../../../model/StationModel';
 
-const IssueDisruptionAugmentResultSchema = IssueDisruptionSchema.omit({
-  updates: true,
+const ResultSchema = z.object({
+  issue: IssueDisruptionSchema.omit({
+    updates: true,
+  }),
+  lineSections: z.array(LineSectionSchema),
 });
 
-const IssueDisruptionAugmentJsonSchema = zodToJsonSchema(
-  IssueDisruptionAugmentResultSchema,
-);
+const ResultJsonSchema = zodToJsonSchema(ResultSchema, {
+  target: 'openAi',
+  $refStrategy: 'none',
+});
 
 const ClassifyUpdateTypeResultSchema = z.object({
   type: IssueDisruptionUpdateTypeSchema,
@@ -86,6 +102,7 @@ export async function ingestIssueDisruption(
       id: 'please-overwrite',
       type: 'disruption',
       componentIdsAffected: [],
+      stationIdsAffected: [],
       severity: 'major',
       title: 'please-overwrite',
       startAt: content.createdAt,
@@ -157,6 +174,8 @@ Please modify the issue with details extracted from the post. You should:
   - "severity" field. It's "major" if service is disrupted, "minor" if there are only delays.
   - correct the "components" field based on the updates, see below for table.
     - recommendations to utilise other rail lines does not make them affected components.
+  - determine the affected section(s) of rail line(s).
+  - leave the "stationIdsAffected" field as empty.
 
 # Components table
 ${buildComponentTable()}
@@ -167,30 +186,78 @@ ${buildComponentTable()}
       content: `The post: ${JSON.stringify(content)}`,
     },
   ];
-  const response = await openAiClient.chat.completions.create({
-    model: 'gpt-4o-mini',
-    messages,
-    response_format: {
-      type: 'json_schema',
-      json_schema: {
-        name: 'IssueDisruption',
-        strict: true,
-        schema: IssueDisruptionAugmentJsonSchema,
-      },
-    },
-  });
 
-  const { message } = response.choices[0];
-  messages.push(message);
+  let response: ChatCompletion;
+  let toolCallCount = 0;
+
+  do {
+    response = await openAiClient.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages,
+      response_format: {
+        type: 'json_schema',
+        json_schema: {
+          name: 'Result',
+          strict: true,
+          schema: ResultJsonSchema,
+        },
+      },
+      tools: [TOOL_DEFINITION_STATION_SEARCH],
+    });
+
+    const { message } = response.choices[0];
+    messages.push(message);
+
+    const { tool_calls } = message;
+    if (tool_calls != null) {
+      for (const toolCall of tool_calls) {
+        switch (toolCall.function.name) {
+          case TOOL_NAME_STATION_SEARCH: {
+            console.log(
+              `[ingest.disruption] ${toolCall.id} calling tool "${TOOL_NAME_STATION_SEARCH}" with params`,
+              toolCall.function.arguments,
+            );
+            if (toolCallCount > 4) {
+              messages.push({
+                role: 'tool',
+                tool_call_id: toolCall.id,
+                content: 'Ran out of tool calls. Stop Calling.',
+              });
+              console.log(
+                'Forced short-circuit, returning error message in tool call result.',
+              );
+              break;
+            }
+            const { names } = ToolStationSearchParameters.parse(
+              JSON.parse(toolCall.function.arguments),
+            );
+            const stations = StationModel.searchByName(names);
+            messages.push({
+              role: 'tool',
+              tool_call_id: toolCall.id,
+              content: `Valid station names: ${JSON.stringify(stations.map((s) => s.name))}`,
+            });
+            console.log(
+              `[ingest.disruption] ${toolCall.id} calling tool "${TOOL_NAME_STATION_SEARCH}" returned ${stations.length} results.`,
+            );
+            break;
+          }
+        }
+        toolCallCount++;
+      }
+    }
+  } while (response.choices[0].message.tool_calls != null);
 
   try {
-    const issueDisruption = IssueDisruptionAugmentResultSchema.parse(
-      JSON.parse(message.content ?? ''),
+    const result = ResultSchema.parse(
+      JSON.parse(response.choices[0].message.content ?? ''),
     );
 
     issue = {
-      ...issueDisruption,
+      ...result.issue,
+      id: existingIssueId ?? result.issue.id,
       updates: issue.updates,
+      stationIdsAffected: computeAffectedStations(result.lineSections),
     };
 
     IssueModel.save(issue);

@@ -1,26 +1,42 @@
+import { DateTime } from 'luxon';
+import type {
+  ChatCompletion,
+  ChatCompletionMessageParam,
+} from 'openai/resources';
+import { z } from 'zod';
 import zodToJsonSchema from 'zod-to-json-schema';
+import {
+  computeAffectedStations,
+  LineSectionSchema,
+} from '../../../helpers/computeAffectedStations';
 import { IssueModel } from '../../../model/IssueModel';
 import {
-  type Issue,
   type IssueMaintenance,
   IssueMaintenanceSchema,
   type IssueMaintenanceUpdate,
 } from '../../../schema/Issue';
-import type { IngestContent } from '../types';
-import { openAiClient } from '../constants';
-import type { ChatCompletionMessageParam } from 'openai/resources';
-import { summarizeUpdate } from './summarizeUpdate';
-import { ComponentModel } from '../../../model/ComponentModel';
-import { DateTime } from 'luxon';
 import { buildComponentTable } from '../buildComponentTable';
+import { openAiClient } from '../constants';
+import type { IngestContent } from '../types';
+import { summarizeUpdate } from './summarizeUpdate';
+import {
+  TOOL_DEFINITION_STATION_SEARCH,
+  TOOL_NAME_STATION_SEARCH,
+  ToolStationSearchParameters,
+} from '../tools/stationSearch';
+import { StationModel } from '../../../model/StationModel';
 
-const IssueMaintenanceAugmentResultSchema = IssueMaintenanceSchema.omit({
-  updates: true,
+const ResultSchema = z.object({
+  issue: IssueMaintenanceSchema.omit({
+    updates: true,
+  }),
+  lineSections: z.array(LineSectionSchema),
 });
 
-const IssueMaintenanceAugmentJsonSchema = zodToJsonSchema(
-  IssueMaintenanceAugmentResultSchema,
-);
+const ResultJsonSchema = zodToJsonSchema(ResultSchema, {
+  target: 'openAi',
+  $refStrategy: 'none',
+});
 
 export async function ingestIssueMaintenance(
   content: IngestContent,
@@ -35,6 +51,7 @@ export async function ingestIssueMaintenance(
       id: 'please-overwrite',
       type: 'maintenance',
       componentIdsAffected: [],
+      stationIdsAffected: [],
       title: 'please-overwrite',
       startAt: content.createdAt,
       cancelledAt: null,
@@ -104,6 +121,8 @@ Please modify the issue with details extracted from the post. You should:
     - if ad-hoc, "startAt" should be when the maintenance started, and "endAt" should default to end of day (exclusive)
   - "cancelledAt" field, if an update indicated that the maintenance was cancelled.
   - correct the "components" field based on the updates, see below for table.
+  - determine the affected section(s) of rail line(s).
+  - leave the "stationIdsAffected" field as empty.
 
   # Components table
   ${buildComponentTable()}
@@ -114,30 +133,78 @@ Please modify the issue with details extracted from the post. You should:
       content: `The post: ${JSON.stringify(content)}`,
     },
   ];
-  const response = await openAiClient.chat.completions.create({
-    model: 'gpt-4o-mini',
-    messages,
-    response_format: {
-      type: 'json_schema',
-      json_schema: {
-        name: 'IssueMaintenance',
-        strict: true,
-        schema: IssueMaintenanceAugmentJsonSchema,
-      },
-    },
-  });
 
-  const { message } = response.choices[0];
-  messages.push(message);
+  let response: ChatCompletion;
+  let toolCallCount = 0;
+
+  do {
+    response = await openAiClient.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages,
+      response_format: {
+        type: 'json_schema',
+        json_schema: {
+          name: 'Result',
+          strict: true,
+          schema: ResultJsonSchema,
+        },
+      },
+      tools: [TOOL_DEFINITION_STATION_SEARCH],
+    });
+
+    const { message } = response.choices[0];
+    messages.push(message);
+
+    const { tool_calls } = message;
+    if (tool_calls != null) {
+      for (const toolCall of tool_calls) {
+        switch (toolCall.function.name) {
+          case TOOL_NAME_STATION_SEARCH: {
+            console.log(
+              `[ingest.infra] ${toolCall.id} calling tool "${TOOL_NAME_STATION_SEARCH}" with params`,
+              toolCall.function.arguments,
+            );
+            if (toolCallCount > 4) {
+              messages.push({
+                role: 'tool',
+                tool_call_id: toolCall.id,
+                content: 'Ran out of tool calls. Stop Calling.',
+              });
+              console.log(
+                'Forced short-circuit, returning error message in tool call result.',
+              );
+              break;
+            }
+            const { names } = ToolStationSearchParameters.parse(
+              JSON.parse(toolCall.function.arguments),
+            );
+            const stations = StationModel.searchByName(names);
+            messages.push({
+              role: 'tool',
+              tool_call_id: toolCall.id,
+              content: `Valid station names: ${JSON.stringify(stations.map((s) => s.name))}`,
+            });
+            console.log(
+              `[ingest.infra] ${toolCall.id} calling tool "${TOOL_NAME_STATION_SEARCH}" returned ${stations.length} results.`,
+            );
+            break;
+          }
+        }
+        toolCallCount++;
+      }
+    }
+  } while (response.choices[0].message.tool_calls != null);
 
   try {
-    const issueMaintenance = IssueMaintenanceAugmentResultSchema.parse(
-      JSON.parse(message.content ?? ''),
+    const result = ResultSchema.parse(
+      JSON.parse(response.choices[0].message.content ?? ''),
     );
 
     issue = {
-      ...issueMaintenance,
+      ...result.issue,
+      id: existingIssueId ?? result.issue.id,
       updates: issue.updates,
+      stationIdsAffected: computeAffectedStations(result.lineSections),
     };
 
     IssueModel.save(issue);
