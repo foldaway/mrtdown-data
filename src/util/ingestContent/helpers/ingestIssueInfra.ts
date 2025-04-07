@@ -104,13 +104,29 @@ export async function ingestIssueInfra(
     return 0;
   });
 
+  try {
+    const updatedIssue = await augmentIssueInfra(issue);
+
+    IssueModel.save(updatedIssue);
+
+    if (existingIssueId != null && updatedIssue.id !== existingIssueId) {
+      IssueModel.delete(existingIssueId);
+    }
+    console.log('[ingestIssueInfra] saved', updatedIssue);
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+}
+
+export async function augmentIssueInfra(issue: IssueInfra) {
   const messages: ChatCompletionMessageParam[] = [
     {
       role: 'system',
       content: `
-Your role is to help ingest the given post into an incidents system that tracks the MRT and LRT in Singapore.
+Your role is to help update this issue in an incidents system that tracks the MRT and LRT in Singapore.
 This is the issue you are working on: ${JSON.stringify(issue)}.
-Please modify the issue with details extracted from the post. You should:
+Please modify the issue. You should:
 - perform these updates if appropriate
   - "id" field if it has the value "please-overwrite". It must follow the format!
   - "title" field
@@ -123,10 +139,6 @@ Please modify the issue with details extracted from the post. You should:
   # Components table
   ${buildComponentTable()}
 `.trim(),
-    },
-    {
-      role: 'user',
-      content: `The post: ${JSON.stringify(content)}`,
     },
   ];
 
@@ -196,21 +208,16 @@ Please modify the issue with details extracted from the post. You should:
       JSON.parse(response.choices[0].message.content ?? ''),
     );
 
-    issue = {
+    const updatedIssue: IssueInfra = {
       ...result.issue,
-      id: existingIssueId ?? result.issue.id,
       updates: issue.updates,
       stationIdsAffected: computeAffectedStations(result.lineSections),
     };
 
-    IssueModel.save(issue);
-
-    if (existingIssueId != null && issue.id !== existingIssueId) {
-      IssueModel.delete(existingIssueId);
-    }
-    console.log('[ingestIssueInfra] saved', issue);
+    return updatedIssue;
   } catch (e) {
     console.error(e);
-    console.log('[ingestIssueInfra] crash debug', messages);
+    console.log('[augmentIssueInfra] crash debug', messages);
+    throw e;
   }
 }

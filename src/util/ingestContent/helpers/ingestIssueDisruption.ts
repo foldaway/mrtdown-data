@@ -159,13 +159,25 @@ export async function ingestIssueDisruption(
     return 0;
   });
 
+  const updatedIssue = await augmentIssueDisruption(issue);
+
+  try {
+    IssueModel.save(updatedIssue);
+    if (existingIssueId != null && updatedIssue.id !== existingIssueId) {
+      IssueModel.delete(existingIssueId);
+    }
+    console.log('[ingestIssueDisruption] saved', updatedIssue);
+  } catch (e) {}
+}
+
+export async function augmentIssueDisruption(issue: IssueDisruption) {
   const messages: ChatCompletionMessageParam[] = [
     {
       role: 'system',
       content: `
-Your role is to help ingest the given post into an incidents system that tracks the MRT and LRT in Singapore.
+Your role is to help update this issue in an incidents system that tracks the MRT and LRT in Singapore.
 This is the issue you are working on: ${JSON.stringify(issue)}.
-Please modify the issue with details extracted from the post. You should:
+Please modify the issue. You should:
 - perform these updates if appropriate
   - "id" field if it has the value "please-overwrite". It must follow the format! Do not overwrite if there is any other value.
   - "title" field
@@ -180,10 +192,6 @@ Please modify the issue with details extracted from the post. You should:
 # Components table
 ${buildComponentTable()}
 `.trim(),
-    },
-    {
-      role: 'user',
-      content: `The post: ${JSON.stringify(content)}`,
     },
   ];
 
@@ -253,21 +261,16 @@ ${buildComponentTable()}
       JSON.parse(response.choices[0].message.content ?? ''),
     );
 
-    issue = {
+    const updatedIssue: IssueDisruption = {
       ...result.issue,
-      id: existingIssueId ?? result.issue.id,
       updates: issue.updates,
       stationIdsAffected: computeAffectedStations(result.lineSections),
     };
 
-    IssueModel.save(issue);
-
-    if (existingIssueId != null && issue.id !== existingIssueId) {
-      IssueModel.delete(existingIssueId);
-    }
-    console.log('[ingestIssueDisruption] saved', issue);
+    return updatedIssue;
   } catch (e) {
     console.error(e);
-    console.log('[ingestIssueDisruption] crash debug', messages);
+    console.log('[augmentIssueDisruption] crash debug', messages);
+    throw e;
   }
 }

@@ -105,13 +105,27 @@ export async function ingestIssueMaintenance(
     return 0;
   });
 
+  try {
+    const updatedIssue = await augmentIssueMaintenance(issue);
+    IssueModel.save(updatedIssue);
+
+    if (existingIssueId != null && updatedIssue.id !== existingIssueId) {
+      IssueModel.delete(existingIssueId);
+    }
+    console.log('[ingestIssueMaintenance] saved', updatedIssue);
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export async function augmentIssueMaintenance(issue: IssueMaintenance) {
   const messages: ChatCompletionMessageParam[] = [
     {
       role: 'system',
       content: `
-Your role is to help ingest the given post into an incidents system that tracks the MRT and LRT in Singapore.
+Your role is to help update this issue in an incidents system that tracks the MRT and LRT in Singapore.
 This is the issue you are working on: ${JSON.stringify(issue)}.
-Please modify the issue with details extracted from the post. You should:
+Please modify the issue. You should:
 - perform these updates if appropriate
   - "id" field if it has the value "please-overwrite", or if the date does not match "startAt". It must follow the format!
   - "title" field
@@ -127,10 +141,6 @@ Please modify the issue with details extracted from the post. You should:
   # Components table
   ${buildComponentTable()}
 `.trim(),
-    },
-    {
-      role: 'user',
-      content: `The post: ${JSON.stringify(content)}`,
     },
   ];
 
@@ -200,21 +210,15 @@ Please modify the issue with details extracted from the post. You should:
       JSON.parse(response.choices[0].message.content ?? ''),
     );
 
-    issue = {
+    const updatedIssue: IssueMaintenance = {
       ...result.issue,
-      id: existingIssueId ?? result.issue.id,
       updates: issue.updates,
       stationIdsAffected: computeAffectedStations(result.lineSections),
     };
-
-    IssueModel.save(issue);
-
-    if (existingIssueId != null && issue.id !== existingIssueId) {
-      IssueModel.delete(existingIssueId);
-    }
-    console.log('[ingestIssueMaintenance] saved', issue);
+    return updatedIssue;
   } catch (e) {
     console.error(e);
-    console.log('[ingestIssueMaintenance] crash debug', messages);
+    console.log('[augmentIssueMaintenance] crash debug', messages);
+    throw e;
   }
 }
