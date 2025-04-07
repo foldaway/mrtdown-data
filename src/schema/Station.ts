@@ -1,9 +1,7 @@
 import { z } from 'zod';
 import { ComponentIdSchema } from './Component';
+import { StationIdSchema } from './StationId';
 
-export const StationIdSchema = z
-  .string()
-  .refine((val) => /^[A-Z]{2,5}$/.test(val));
 export type StationId = z.infer<typeof StationIdSchema>;
 
 export const StationCodeSchema = z.string();
