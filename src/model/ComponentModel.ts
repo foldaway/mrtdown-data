@@ -1,13 +1,14 @@
-import { readdirSync, readFileSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, extname, join } from 'node:path';
 import type { Component, ComponentId } from '../schema/Component';
 
+const dirPathComponent = join(
+  import.meta.dirname,
+  '../../data/source/component',
+);
+
 export const ComponentModel = {
   getAllIds(): ComponentId[] {
-    const dirPathComponent = join(
-      import.meta.dirname,
-      '../../data/source/component',
-    );
     const dirFilesComponent = readdirSync(dirPathComponent);
 
     const result: ComponentId[] = [];
@@ -20,10 +21,6 @@ export const ComponentModel = {
   },
 
   getAll(): Component[] {
-    const dirPathComponent = join(
-      import.meta.dirname,
-      '../../data/source/component',
-    );
     const dirFilesComponent = readdirSync(dirPathComponent);
 
     const result: Component[] = [];
@@ -40,11 +37,6 @@ export const ComponentModel = {
   },
 
   getOne(id: string): Component {
-    const dirPathComponent = join(
-      import.meta.dirname,
-      '../../data/source/component',
-    );
-
     const fileName = `${id}.json`;
 
     const filePath = join(dirPathComponent, fileName);
@@ -52,5 +44,13 @@ export const ComponentModel = {
       readFileSync(filePath, { encoding: 'utf-8' }),
     ) as Component & { $schema: string };
     return component;
+  },
+
+  save(component: Component) {
+    const fileName = `${component.id}.json`;
+    const filePath = join(dirPathComponent, fileName);
+    writeFileSync(filePath, JSON.stringify(component, null, 2), {
+      encoding: 'utf-8',
+    });
   },
 };

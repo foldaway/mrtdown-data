@@ -2,5 +2,36 @@
   "id": "TEL",
   "title": "Thomson–East Coast Line",
   "color": "#9D5B25",
-  "startedAt": "2020-01-31"
+  "startedAt": "2020-01-31",
+  "branches": {
+    "main": [
+      "TE1",
+      "TE2",
+      "TE3",
+      "TE4",
+      "TE5",
+      "TE6",
+      "TE7",
+      "TE8",
+      "TE9",
+      "TE11",
+      "TE12",
+      "TE13",
+      "TE14",
+      "TE15",
+      "TE16",
+      "TE17",
+      "TE18",
+      "TE19",
+      "TE20",
+      "TE22",
+      "TE23",
+      "TE24",
+      "TE25",
+      "TE26",
+      "TE27",
+      "TE28",
+      "TE29"
+    ]
+  }
 }

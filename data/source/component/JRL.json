@@ -2,5 +2,6 @@
   "id": "JRL",
   "title": "Jurong Region Line",
   "color": "#0099aa",
-  "startedAt": "2027-12-31"
+  "startedAt": "2027-12-31",
+  "branches": {}
 }

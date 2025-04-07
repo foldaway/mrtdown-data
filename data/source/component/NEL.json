@@ -2,5 +2,26 @@
   "id": "NEL",
   "title": "North East Line",
   "color": "#9900aa",
-  "startedAt": "2003-11-20"
+  "startedAt": "2003-11-20",
+  "branches": {
+    "main": [
+      "NE1",
+      "NE3",
+      "NE4",
+      "NE5",
+      "NE6",
+      "NE7",
+      "NE8",
+      "NE9",
+      "NE10",
+      "NE11",
+      "NE12",
+      "NE13",
+      "NE14",
+      "NE15",
+      "NE16",
+      "NE17",
+      "NE18"
+    ]
+  }
 }

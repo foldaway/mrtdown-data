@@ -2,5 +2,6 @@
   "id": "CRL",
   "title": "Cross Island Line",
   "color": "#97C616",
-  "startedAt": "2030-12-31"
+  "startedAt": "2030-12-31",
+  "branches": {}
 }
