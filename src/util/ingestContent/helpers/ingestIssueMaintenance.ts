@@ -119,12 +119,14 @@ export async function ingestIssueMaintenance(
 }
 
 export async function augmentIssueMaintenance(issue: IssueMaintenance) {
+  const { stationIdsAffected, ...otherProps } = issue;
+
   const messages: ChatCompletionMessageParam[] = [
     {
       role: 'system',
       content: `
 Your role is to help update this issue in an incidents system that tracks the MRT and LRT in Singapore.
-This is the issue you are working on: ${JSON.stringify(issue)}.
+This is the issue you are working on: ${JSON.stringify(otherProps)}.
 Please modify the issue. You should:
 - perform these updates if appropriate
   - "id" field if it has the value "please-overwrite", or if the date does not match "startAt". It must follow the format!

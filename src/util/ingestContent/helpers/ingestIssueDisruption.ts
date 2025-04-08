@@ -171,12 +171,14 @@ export async function ingestIssueDisruption(
 }
 
 export async function augmentIssueDisruption(issue: IssueDisruption) {
+  const { stationIdsAffected, ...otherProps } = issue;
+
   const messages: ChatCompletionMessageParam[] = [
     {
       role: 'system',
       content: `
 Your role is to help update this issue in an incidents system that tracks the MRT and LRT in Singapore.
-This is the issue you are working on: ${JSON.stringify(issue)}.
+This is the issue you are working on: ${JSON.stringify(otherProps)}.
 Please modify the issue. You should:
 - perform these updates if appropriate
   - "id" field if it has the value "please-overwrite". It must follow the format! Do not overwrite if there is any other value.
