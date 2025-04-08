@@ -1,7 +1,11 @@
 import { z } from 'zod';
 import { ComponentModel } from '../model/ComponentModel';
 import { StationModel } from '../model/StationModel';
-import type { Component } from '../schema/Component';
+import {
+  type ComponentId,
+  ComponentIdSchema,
+  type Component,
+} from '../schema/Component';
 import type { Station } from '../schema/Station';
 import { assert } from '../util/assert';
 import { DateTime } from 'luxon';
@@ -12,6 +16,9 @@ export const LineSectionSchema = z
       first: z.string(),
       last: z.string(),
     }),
+    componentIdHint: ComponentIdSchema.nullable().describe(
+      'Specify the component ID as a hint if confident.',
+    ),
   })
   .describe('Affected section of rail line');
 export type LineSection = z.infer<typeof LineSectionSchema>;
@@ -35,9 +42,11 @@ interface FindComponentAndBranchResult {
 function findComponentAndBranch(
   stationFirst: Station,
   stationLast: Station,
+  componentIdHint: ComponentId | null,
 ): FindComponentAndBranchResult | null {
   const stationCodesFirst = getStationCodes(stationFirst);
   const stationCodesLast = getStationCodes(stationLast);
+  const results: FindComponentAndBranchResult[] = [];
 
   const components = ComponentModel.getAll();
   for (const component of components) {
@@ -56,19 +65,37 @@ function findComponentAndBranch(
         const indexFirst = branchStationCodes.indexOf(stationCodeFirst);
         const indexLast = branchStationCodes.indexOf(stationCodeLast);
 
-        return {
+        results.push({
           component,
           branchName,
           sectionStationCodes: branchStationCodes.slice(
             Math.min(indexFirst, indexLast),
             Math.max(indexFirst, indexLast) + 1,
           ),
-        };
+        });
       }
     }
   }
 
-  return null;
+  if (componentIdHint != null) {
+    results.sort((a, b) => {
+      if (
+        a.component.id === componentIdHint &&
+        b.component.id !== componentIdHint
+      ) {
+        return -1;
+      }
+      if (
+        a.component.id !== componentIdHint &&
+        b.component.id === componentIdHint
+      ) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  return results[0] ?? null;
 }
 
 export function computeAffectedStations(
@@ -82,7 +109,7 @@ export function computeAffectedStations(
   const stationIds: string[] = [];
 
   for (const lineSection of lineSections) {
-    const { stationNames } = lineSection;
+    const { stationNames, componentIdHint } = lineSection;
     const { first, last } = stationNames;
 
     const stations = StationModel.getAll();
@@ -101,7 +128,11 @@ export function computeAffectedStations(
       continue;
     }
 
-    const result = findComponentAndBranch(stationFirst, stationLast);
+    const result = findComponentAndBranch(
+      stationFirst,
+      stationLast,
+      componentIdHint,
+    );
 
     if (result == null) {
       return [];
