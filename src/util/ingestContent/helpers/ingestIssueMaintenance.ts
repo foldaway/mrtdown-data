@@ -137,7 +137,7 @@ Please modify the issue. You should:
     - if ad-hoc, "startAt" should be when the maintenance started, and "endAt" should default to end of day (exclusive)
   - "cancelledAt" field, if an update indicated that the maintenance was cancelled.
   - correct the "components" field based on the updates, see below for table.
-  - determine the affected section(s) of rail line(s).
+  - determine the affected section(s) of rail line(s) that went out of service.
   - leave the "stationIdsAffected" field as empty.
 
   # Components table

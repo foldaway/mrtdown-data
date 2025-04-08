@@ -188,7 +188,7 @@ Please modify the issue. You should:
   - "severity" field. It's "major" if service is disrupted, "minor" if there are only delays.
   - correct the "components" field based on the updates, see below for table.
     - recommendations to utilise other rail lines does not make them affected components.
-  - determine the affected section(s) of rail line(s).
+  - determine the affected section(s) of rail line(s) that went out of service. include only out of service stations.
   - leave the "stationIdsAffected" field as empty.
 
 # Components table
