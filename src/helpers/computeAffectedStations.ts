@@ -89,11 +89,17 @@ export function computeAffectedStations(
     const stationFirst = stations.find(
       (s) => s.name.toLowerCase() === first.toLowerCase(),
     );
-    assert(stationFirst != null, `Could not find "${first}" station`);
+    if (stationFirst == null) {
+      console.warn(`Could not find "${first}" station`);
+      continue;
+    }
     const stationLast = stations.find(
       (s) => s.name.toLowerCase() === last.toLowerCase(),
     );
-    assert(stationLast != null, `Could not find "${last}" station`);
+    if (stationLast == null) {
+      console.warn(`Could not find "${first}" station`);
+      continue;
+    }
 
     const result = findComponentAndBranch(stationFirst, stationLast);
 
