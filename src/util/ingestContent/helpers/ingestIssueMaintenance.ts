@@ -173,7 +173,7 @@ Please modify the issue. You should:
         switch (toolCall.function.name) {
           case TOOL_NAME_STATION_SEARCH: {
             console.log(
-              `[ingest.infra] ${toolCall.id} calling tool "${TOOL_NAME_STATION_SEARCH}" with params`,
+              `[ingest.maintenance] ${toolCall.id} calling tool "${TOOL_NAME_STATION_SEARCH}" with params`,
               toolCall.function.arguments,
             );
             if (toolCallCount > 4) {
@@ -197,7 +197,7 @@ Please modify the issue. You should:
               content: `Valid station names: ${JSON.stringify(stations.map((s) => s.name))}`,
             });
             console.log(
-              `[ingest.infra] ${toolCall.id} calling tool "${TOOL_NAME_STATION_SEARCH}" returned ${stations.length} results.`,
+              `[ingest.maintenance] ${toolCall.id} calling tool "${TOOL_NAME_STATION_SEARCH}" returned ${stations.length} results.`,
             );
             break;
           }
