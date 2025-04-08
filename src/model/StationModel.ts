@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import type { Station, StationId } from '../schema/Station';
 import type { ComponentId } from '../schema/Component';
 import { assert } from '../util/assert';
+import Fuse from 'fuse.js';
 
 const dirPathIssue = join(import.meta.dirname, '../../data/source/station');
 
@@ -37,10 +38,21 @@ export const StationModel = {
   },
 
   searchByName(names: string[]): Station[] {
-    const _names = new Set(names.map((n) => n.toLowerCase()));
-
     const stations = this.getAll();
-    return stations.filter((s) => _names.has(s.name.toLowerCase()));
+    const fuse = new Fuse(stations, {
+      keys: ['name'],
+      includeScore: true,
+      threshold: 0.4,
+    });
+    const results = fuse.search({
+      $or: names.map((name) => {
+        return {
+          name,
+        };
+      }),
+    });
+
+    return results.map((r) => r.item);
   },
 
   delete(id: StationId) {
