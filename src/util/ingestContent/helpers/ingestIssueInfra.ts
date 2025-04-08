@@ -56,6 +56,7 @@ export async function ingestIssueInfra(
       startAt: content.createdAt,
       endAt: null,
       updates: [],
+      subtypes: [],
     };
   }
 
@@ -134,6 +135,7 @@ Please modify the issue. You should:
   - "title" field
   - "startAt" field
   - "endAt" field
+  - "subtypes" field
   - correct the "components" field based on the updates, see below for table.
   - determine the affected section(s) of rail line(s).
   - leave the "stationIdsAffected" field as empty.

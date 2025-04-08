@@ -103,7 +103,7 @@ export async function ingestIssueDisruption(
       type: 'disruption',
       componentIdsAffected: [],
       stationIdsAffected: [],
-      severity: 'major',
+      subtypes: [],
       title: 'please-overwrite',
       startAt: content.createdAt,
       endAt: null,
@@ -185,7 +185,7 @@ Please modify the issue. You should:
   - "title" field
   - "startAt" field
   - "endAt" field if the disruption is considered finished.
-  - "severity" field. It's "major" if service is disrupted, "minor" if there are only delays.
+  - "subtypes" field.
   - correct the "components" field based on the updates, see below for table.
     - recommendations to utilise other rail lines does not make them affected components.
   - determine the affected section(s) of rail line(s) that went out of service. include only out of service stations.

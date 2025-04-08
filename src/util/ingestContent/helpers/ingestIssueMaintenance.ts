@@ -57,6 +57,7 @@ export async function ingestIssueMaintenance(
       cancelledAt: null,
       endAt: null,
       updates: [],
+      subtypes: [],
     };
   }
 
@@ -136,6 +137,7 @@ Please modify the issue. You should:
     - if planned, "startAt" should be the estimated start, and "endAt" should be the estimated end (exclusive).
     - if ad-hoc, "startAt" should be when the maintenance started, and "endAt" should default to end of day (exclusive)
   - "cancelledAt" field, if an update indicated that the maintenance was cancelled.
+  - "subtypes" field
   - correct the "components" field based on the updates, see below for table.
   - determine the affected section(s) of rail line(s) that went out of service.
   - leave the "stationIdsAffected" field as empty.
