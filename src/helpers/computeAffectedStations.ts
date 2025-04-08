@@ -1,9 +1,10 @@
 import { z } from 'zod';
 import { ComponentModel } from '../model/ComponentModel';
 import { StationModel } from '../model/StationModel';
-import { Component } from '../schema/Component';
-import { Station } from '../schema/Station';
+import type { Component } from '../schema/Component';
+import type { Station } from '../schema/Station';
 import { assert } from '../util/assert';
+import { DateTime } from 'luxon';
 
 export const LineSectionSchema = z
   .object({
@@ -70,7 +71,13 @@ function findComponentAndBranch(
   return null;
 }
 
-export function computeAffectedStations(lineSections: LineSection[]): string[] {
+export function computeAffectedStations(
+  lineSections: LineSection[],
+  startAt: string,
+): string[] {
+  const startAtDateTime = DateTime.fromISO(startAt);
+  assert(startAtDateTime.isValid);
+
   console.log('[computeAffectedStations]', lineSections);
   const stationIds: string[] = [];
 
@@ -100,7 +107,19 @@ export function computeAffectedStations(lineSections: LineSection[]): string[] {
         if (componentMembers == null) {
           return false;
         }
-        return componentMembers.some((member) => member.code === stationCode);
+        for (const componentMember of componentMembers) {
+          const componentMemberStartAtDateTime = DateTime.fromISO(
+            componentMember.startedAt,
+          );
+          assert(componentMemberStartAtDateTime.isValid);
+          if (componentMemberStartAtDateTime > startAtDateTime) {
+            return false;
+          }
+          if (componentMember.code === stationCode) {
+            return true;
+          }
+        }
+        return false;
       });
 
       if (station != null) {

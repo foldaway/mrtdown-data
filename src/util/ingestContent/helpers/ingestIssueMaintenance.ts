@@ -213,7 +213,10 @@ Please modify the issue. You should:
     const updatedIssue: IssueMaintenance = {
       ...result.issue,
       updates: issue.updates,
-      stationIdsAffected: computeAffectedStations(result.lineSections),
+      stationIdsAffected: computeAffectedStations(
+        result.lineSections,
+        result.issue.startAt,
+      ),
     };
     return updatedIssue;
   } catch (e) {

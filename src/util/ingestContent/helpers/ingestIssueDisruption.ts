@@ -264,7 +264,10 @@ ${buildComponentTable()}
     const updatedIssue: IssueDisruption = {
       ...result.issue,
       updates: issue.updates,
-      stationIdsAffected: computeAffectedStations(result.lineSections),
+      stationIdsAffected: computeAffectedStations(
+        result.lineSections,
+        result.issue.startAt,
+      ),
     };
 
     return updatedIssue;
