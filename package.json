@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "dotenv": "^16.4.7",
+    "fuse.js": "^7.1.0",
     "hast-util-from-html": "^2.0.3",
     "hast-util-to-mdast": "^10.1.2",
     "luxon": "^3.5.0",
