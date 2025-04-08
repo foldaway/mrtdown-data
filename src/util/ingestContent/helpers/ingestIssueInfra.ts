@@ -183,10 +183,10 @@ Please modify the issue. You should:
               );
               break;
             }
-            const { names } = ToolStationSearchParameters.parse(
+            const { stationNames } = ToolStationSearchParameters.parse(
               JSON.parse(toolCall.function.arguments),
             );
-            const stations = StationModel.searchByName(names);
+            const stations = StationModel.searchByName(stationNames);
             messages.push({
               role: 'tool',
               tool_call_id: toolCall.id,

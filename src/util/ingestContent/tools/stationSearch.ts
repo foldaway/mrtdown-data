@@ -3,7 +3,9 @@ import { z } from 'zod';
 import zodToJsonSchema from 'zod-to-json-schema';
 
 export const ToolStationSearchParameters = z.object({
-  names: z.array(z.string()),
+  stationNames: z
+    .array(z.string())
+    .describe('Station names. E.g. "Boon Lay", "Dakota"'),
 });
 
 export const TOOL_NAME_STATION_SEARCH = 'stationSearch';
