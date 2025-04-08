@@ -106,7 +106,7 @@ export function computeAffectedStations(
   assert(startAtDateTime.isValid);
 
   console.log('[computeAffectedStations]', lineSections);
-  const stationIds: string[] = [];
+  const stationIds = new Set<string>();
 
   for (const lineSection of lineSections) {
     const { stationNames, componentIdHint } = lineSection;
@@ -160,11 +160,11 @@ export function computeAffectedStations(
       });
 
       if (station != null) {
-        stationIds.push(station.id);
+        stationIds.add(station.id);
       }
     }
   }
 
   console.log('[computeAffectedStations]', stationIds);
-  return stationIds;
+  return Array.from(stationIds);
 }
