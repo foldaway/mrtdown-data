@@ -26,6 +26,8 @@ import {
 } from '../tools/stationSearch';
 import { StationModel } from '../../../model/StationModel';
 
+const MAX_TOOL_CALL_COUNT = 4;
+
 const ResultSchema = z.object({
   issue: IssueInfraSchema.omit({
     updates: true,
@@ -152,7 +154,13 @@ Please modify the issue. You should:
   do {
     response = await openAiClient.chat.completions.create({
       model: 'gpt-4o-mini',
-      messages,
+      messages: [
+        ...messages,
+        {
+          role: 'system',
+          content: `You have ${MAX_TOOL_CALL_COUNT - toolCallCount} tool calls remaining.`,
+        },
+      ],
       response_format: {
         type: 'json_schema',
         json_schema: {
@@ -176,7 +184,7 @@ Please modify the issue. You should:
               `[ingest.infra] ${toolCall.id} calling tool "${TOOL_NAME_STATION_SEARCH}" with params`,
               toolCall.function.arguments,
             );
-            if (toolCallCount > 4) {
+            if (toolCallCount > MAX_TOOL_CALL_COUNT) {
               messages.push({
                 role: 'tool',
                 tool_call_id: toolCall.id,
