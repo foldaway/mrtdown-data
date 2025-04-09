@@ -23,9 +23,9 @@ import {
 import {
   TOOL_DEFINITION_STATION_SEARCH,
   TOOL_NAME_STATION_SEARCH,
-  ToolStationSearchParameters,
+  ToolStationSearchParametersSchema,
+  toolStationSearchRun,
 } from '../tools/stationSearch';
-import { StationModel } from '../../../model/StationModel';
 
 const MAX_TOOL_CALL_COUNT = 6;
 
@@ -246,17 +246,17 @@ ${buildComponentTable()}
               );
               break;
             }
-            const { stationNames } = ToolStationSearchParameters.parse(
+            const params = ToolStationSearchParametersSchema.parse(
               JSON.parse(toolCall.function.arguments),
             );
-            const stations = StationModel.searchByName(stationNames);
+            const result = await toolStationSearchRun(params);
             messages.push({
               role: 'tool',
               tool_call_id: toolCall.id,
-              content: `Valid station names: ${JSON.stringify(stations.map((s) => s.name))}`,
+              content: result,
             });
             console.log(
-              `[ingest.disruption] ${toolCall.id} calling tool "${TOOL_NAME_STATION_SEARCH}" returned ${stations.length} results.`,
+              `[ingest.disruption] ${toolCall.id} calling tool "${TOOL_NAME_STATION_SEARCH}" finished.`,
             );
             break;
           }
