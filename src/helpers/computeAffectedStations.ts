@@ -11,15 +11,23 @@ import { assert } from '../util/assert';
 import { DateTime } from 'luxon';
 
 export const LineSectionSchema = z
-  .object({
-    stationNames: z.object({
-      first: z.string(),
-      last: z.string(),
+  .discriminatedUnion('type', [
+    z.object({
+      type: z.literal('station_range'),
+      stationNames: z.object({
+        first: z.string(),
+        last: z.string(),
+      }),
+      componentIdHint: ComponentIdSchema.nullable().describe(
+        'Specify the component ID as a hint if confident.',
+      ),
     }),
-    componentIdHint: ComponentIdSchema.nullable().describe(
-      'Specify the component ID as a hint if confident.',
-    ),
-  })
+    z.object({
+      type: z.literal('entire_line'),
+      componentId: ComponentIdSchema,
+      branchName: z.string(),
+    }),
+  ])
   .describe('Affected section of rail line');
 export type LineSection = z.infer<typeof LineSectionSchema>;
 
@@ -107,60 +115,97 @@ export function computeAffectedStations(
 
   console.log('[computeAffectedStations]', lineSections);
   const stationIds = new Set<string>();
+  const stations = StationModel.getAll();
 
   for (const lineSection of lineSections) {
-    const { stationNames, componentIdHint } = lineSection;
-    const { first, last } = stationNames;
+    switch (lineSection.type) {
+      case 'station_range': {
+        const { stationNames, componentIdHint } = lineSection;
+        const { first, last } = stationNames;
 
-    const stations = StationModel.getAll();
-    const stationFirst = stations.find(
-      (s) => s.name.toLowerCase() === first.toLowerCase(),
-    );
-    if (stationFirst == null) {
-      console.warn(`Could not find "${first}" station`);
-      continue;
-    }
-    const stationLast = stations.find(
-      (s) => s.name.toLowerCase() === last.toLowerCase(),
-    );
-    if (stationLast == null) {
-      console.warn(`Could not find "${first}" station`);
-      continue;
-    }
-
-    const result = findComponentAndBranch(
-      stationFirst,
-      stationLast,
-      componentIdHint,
-    );
-
-    if (result == null) {
-      return [];
-    }
-
-    for (const stationCode of result.sectionStationCodes) {
-      const station = stations.find((s) => {
-        const componentMembers = s.componentMembers[result.component.id];
-        if (componentMembers == null) {
-          return false;
+        const stationFirst = stations.find(
+          (s) => s.name.toLowerCase() === first.toLowerCase(),
+        );
+        if (stationFirst == null) {
+          console.warn(`Could not find "${first}" station`);
+          continue;
         }
-        for (const componentMember of componentMembers) {
-          const componentMemberStartAtDateTime = DateTime.fromISO(
-            componentMember.startedAt,
-          );
-          assert(componentMemberStartAtDateTime.isValid);
-          if (componentMemberStartAtDateTime > startAtDateTime) {
+        const stationLast = stations.find(
+          (s) => s.name.toLowerCase() === last.toLowerCase(),
+        );
+        if (stationLast == null) {
+          console.warn(`Could not find "${first}" station`);
+          continue;
+        }
+
+        const result = findComponentAndBranch(
+          stationFirst,
+          stationLast,
+          componentIdHint,
+        );
+
+        if (result == null) {
+          continue;
+        }
+
+        for (const stationCode of result.sectionStationCodes) {
+          const station = stations.find((s) => {
+            const componentMembers = s.componentMembers[result.component.id];
+            if (componentMembers == null) {
+              return false;
+            }
+            for (const componentMember of componentMembers) {
+              const componentMemberStartAtDateTime = DateTime.fromISO(
+                componentMember.startedAt,
+              );
+              assert(componentMemberStartAtDateTime.isValid);
+              if (componentMemberStartAtDateTime > startAtDateTime) {
+                return false;
+              }
+              if (componentMember.code === stationCode) {
+                return true;
+              }
+            }
             return false;
-          }
-          if (componentMember.code === stationCode) {
-            return true;
+          });
+
+          if (station != null) {
+            stationIds.add(station.id);
           }
         }
-        return false;
-      });
+        break;
+      }
+      case 'entire_line': {
+        const { componentId, branchName } = lineSection;
+        const component = ComponentModel.getOne(componentId);
+        const branch = component.branches[branchName];
 
-      if (station != null) {
-        stationIds.add(station.id);
+        for (const stationCode of branch) {
+          const station = stations.find((s) => {
+            const componentMembers = s.componentMembers[component.id];
+            if (componentMembers == null) {
+              return false;
+            }
+            for (const componentMember of componentMembers) {
+              const componentMemberStartAtDateTime = DateTime.fromISO(
+                componentMember.startedAt,
+              );
+              assert(componentMemberStartAtDateTime.isValid);
+              if (componentMemberStartAtDateTime > startAtDateTime) {
+                return false;
+              }
+              if (componentMember.code === stationCode) {
+                return true;
+              }
+            }
+            return false;
+          });
+
+          if (station != null) {
+            stationIds.add(station.id);
+          }
+        }
+        break;
       }
     }
   }

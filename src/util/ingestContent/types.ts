@@ -1,3 +1,5 @@
+import type { z } from 'zod';
+
 export type IngestContentTwitter = {
   source: 'twitter' | 'mastodon';
   accountName: string;
@@ -28,3 +30,12 @@ export type IngestContent =
   | IngestContentTwitter
   | IngestContentReddit
   | IngestContentNewsArticle;
+
+export type Tool<TParams = any> = {
+  name: string;
+  description: string;
+  paramSchema: z.ZodSchema<TParams>;
+  runner: (param: TParams) => Promise<string>;
+};
+
+export type ToolRegistry = Record<string, Tool>;

@@ -3,7 +3,12 @@ import type {
   ChatCompletion,
   ChatCompletionMessageParam,
 } from 'openai/resources';
+import { z } from 'zod';
 import zodToJsonSchema from 'zod-to-json-schema';
+import {
+  computeAffectedStations,
+  LineSectionSchema,
+} from '../../../helpers/computeAffectedStations';
 import { IssueModel } from '../../../model/IssueModel';
 import {
   type IssueInfra,
@@ -12,19 +17,11 @@ import {
 } from '../../../schema/Issue';
 import { buildComponentTable } from '../buildComponentTable';
 import { openAiClient } from '../constants';
-import type { IngestContent } from '../types';
+import { TOOL_COMPONENT_BRANCHES_GET } from '../tools/componentBranchesGet';
+import { TOOL_STATION_SEARCH } from '../tools/stationSearch';
+import { TOOL_STATION_SEARCH_BY_COMPONENT_ID } from '../tools/stationSearchByComponentId';
+import type { IngestContent, ToolRegistry } from '../types';
 import { summarizeUpdate } from './summarizeUpdate';
-import { z } from 'zod';
-import {
-  computeAffectedStations,
-  LineSectionSchema,
-} from '../../../helpers/computeAffectedStations';
-import {
-  TOOL_DEFINITION_STATION_SEARCH,
-  TOOL_NAME_STATION_SEARCH,
-  ToolStationSearchParametersSchema,
-  toolStationSearchRun,
-} from '../tools/stationSearch';
 
 const MAX_TOOL_CALL_COUNT = 6;
 
@@ -122,6 +119,13 @@ export async function ingestIssueInfra(
   }
 }
 
+const toolRegistry: ToolRegistry = {
+  [TOOL_STATION_SEARCH.name]: TOOL_STATION_SEARCH,
+  [TOOL_STATION_SEARCH_BY_COMPONENT_ID.name]:
+    TOOL_STATION_SEARCH_BY_COMPONENT_ID,
+  [TOOL_COMPONENT_BRANCHES_GET.name]: TOOL_COMPONENT_BRANCHES_GET,
+};
+
 export async function augmentIssueInfra(issue: IssueInfra) {
   const { stationIdsAffected, ...otherProps } = issue;
 
@@ -169,7 +173,18 @@ Please modify the issue. You should:
           schema: ResultJsonSchema,
         },
       },
-      tools: [TOOL_DEFINITION_STATION_SEARCH],
+      tools: Object.values(toolRegistry).map((tool) => {
+        return {
+          type: 'function',
+          function: {
+            name: tool.name,
+            description: tool.description,
+            parameters: zodToJsonSchema(tool.paramSchema, {
+              target: 'openAi',
+            }),
+          },
+        };
+      }),
     });
 
     const { message } = response.choices[0];
@@ -178,38 +193,38 @@ Please modify the issue. You should:
     const { tool_calls } = message;
     if (tool_calls != null) {
       for (const toolCall of tool_calls) {
-        switch (toolCall.function.name) {
-          case TOOL_NAME_STATION_SEARCH: {
-            console.log(
-              `[ingest.infra] ${toolCall.id} calling tool "${TOOL_NAME_STATION_SEARCH}" with params`,
-              toolCall.function.arguments,
-            );
-            if (toolCallCount > MAX_TOOL_CALL_COUNT) {
-              messages.push({
-                role: 'tool',
-                tool_call_id: toolCall.id,
-                content: 'Ran out of tool calls. Stop Calling.',
-              });
-              console.log(
-                'Forced short-circuit, returning error message in tool call result.',
-              );
-              break;
-            }
+        console.log(
+          `[ingest.infra] ${toolCall.id} calling tool "${toolCall.function.name}" with params`,
+          toolCall.function.arguments,
+        );
 
-            const params = ToolStationSearchParametersSchema.parse(
-              JSON.parse(toolCall.function.arguments),
-            );
-            const result = await toolStationSearchRun(params);
-            messages.push({
-              role: 'tool',
-              tool_call_id: toolCall.id,
-              content: result,
-            });
-            console.log(
-              `[ingest.infra] ${toolCall.id} calling tool "${TOOL_NAME_STATION_SEARCH}" finished.`,
-            );
-            break;
-          }
+        if (toolCallCount > MAX_TOOL_CALL_COUNT) {
+          messages.push({
+            role: 'tool',
+            tool_call_id: toolCall.id,
+            content: 'Ran out of tool calls. Stop Calling.',
+          });
+          console.log(
+            'Forced short-circuit, returning error message in tool call result.',
+          );
+          continue;
+        }
+
+        if (toolCall.function.name in toolRegistry) {
+          const tool = toolRegistry[toolCall.function.name];
+
+          const params = tool.paramSchema.parse(
+            JSON.parse(toolCall.function.arguments),
+          );
+          const result = await tool.runner(params);
+          messages.push({
+            role: 'tool',
+            tool_call_id: toolCall.id,
+            content: result,
+          });
+          console.log(
+            `[ingest.infra] ${toolCall.id} calling tool "${toolCall.function.name}" finished.`,
+          );
         }
         toolCallCount++;
       }
