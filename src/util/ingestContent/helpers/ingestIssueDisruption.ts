@@ -27,7 +27,7 @@ import {
 } from '../tools/stationSearch';
 import { StationModel } from '../../../model/StationModel';
 
-const MAX_TOOL_CALL_COUNT = 4;
+const MAX_TOOL_CALL_COUNT = 6;
 
 const ResultSchema = z.object({
   issue: IssueDisruptionSchema.omit({
