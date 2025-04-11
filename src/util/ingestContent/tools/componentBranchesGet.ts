@@ -7,6 +7,9 @@ import { ComponentModel } from '../../../model/ComponentModel';
 import type { Station } from '../../../schema/Station';
 import type { Tool } from '../types';
 import { assert } from '../../assert';
+import { gfmToMarkdown } from 'mdast-util-gfm';
+import type { Root, Table } from 'mdast';
+import { toMarkdown } from 'mdast-util-to-markdown';
 
 export const ToolComponentBranchesGetParametersSchema = z.object({
   componentId: ComponentIdSchema,
@@ -46,18 +49,84 @@ export async function toolComponentBranchesGetRun(
     `[toolComponentBranchesGetRun] found ${stations.length} results.`,
   );
 
-  const result: Record<string, string[]> = {};
+  const table: Table = {
+    type: 'table',
+    children: [
+      {
+        type: 'tableRow',
+        children: [
+          {
+            type: 'tableCell',
+            children: [
+              {
+                type: 'text',
+                value: 'Branch Name',
+              },
+            ],
+          },
+          {
+            type: 'tableCell',
+            children: [
+              {
+                type: 'text',
+                value: 'Station Names',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+
   for (const [branchName, stationCodes] of Object.entries(component.branches)) {
-    result[branchName] = stationCodes.map((stationCode) => {
-      assert(
-        stationCode in stationsByStationCode,
-        `Cannot find station by code: "${stationCode}"`,
-      );
-      return stationsByStationCode[stationCode].name;
+    table.children.push({
+      type: 'tableRow',
+      children: [
+        {
+          type: 'tableCell',
+          children: [
+            {
+              type: 'text',
+              value: branchName,
+            },
+          ],
+        },
+        {
+          type: 'tableCell',
+          children: [
+            {
+              type: 'text',
+              value: stationCodes
+                .map((stationCode) => {
+                  assert(
+                    stationCode in stationsByStationCode,
+                    `Cannot find station by code: "${stationCode}"`,
+                  );
+                  return stationsByStationCode[stationCode].name;
+                })
+                .join(', '),
+            },
+          ],
+        },
+      ],
     });
   }
 
-  return `Branches for the line: ${JSON.stringify(result)}`;
+  const root: Root = {
+    type: 'root',
+    children: [
+      {
+        type: 'heading',
+        depth: 1,
+        children: [{ type: 'text', value: component.title }],
+      },
+      table,
+    ],
+  };
+
+  return toMarkdown(root, {
+    extensions: [gfmToMarkdown()],
+  });
 }
 
 export const TOOL_COMPONENT_BRANCHES_GET: Tool<ToolComponentBranchesGetParameters> =
