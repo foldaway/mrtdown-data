@@ -1,0 +1,12 @@
+{
+  "id": "WSC",
+  "name": "West Coast",
+  "componentMembers": {
+    "CRL": [
+      {
+        "code": "CR18",
+        "startedAt": "2032-01-01"
+      }
+    ]
+  }
+}

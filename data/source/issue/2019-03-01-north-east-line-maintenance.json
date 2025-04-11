@@ -9,6 +9,10 @@
   "endAt": "2019-03-03T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work",
+    "system.upgrade"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -52,5 +56,23 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1100635897416962048",
       "createdAt": "2019-02-27T13:57:01.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "SER",
+    "KVN",
+    "HGN",
+    "BGK",
+    "SKG",
+    "PGL",
+    "HBF",
+    "OTP",
+    "CTN",
+    "CRQ",
+    "DBG",
+    "LTI",
+    "FRP",
+    "BNK",
+    "PTP",
+    "WLH"
   ]
 }

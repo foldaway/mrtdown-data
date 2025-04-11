@@ -1,13 +1,20 @@
 {
   "id": "2012-07-05-northbound-trains-moving-slower",
-  "title": "Northbound trains are moving slower",
+  "title": "Northbound Train Speeds Reduced",
   "componentIdsAffected": [
     "NSL"
+  ],
+  "stationIdsAffected": [
+    "CCK",
+    "YWT",
+    "KRJ"
   ],
   "startAt": "2012-07-05T18:56:12.000+08:00",
   "endAt": "2012-07-05T19:19:24.000+08:00",
   "type": "disruption",
-  "severity": "minor",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",

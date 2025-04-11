@@ -1,0 +1,12 @@
+{
+  "id": "DE1",
+  "name": "DE1",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DE1",
+        "startedAt": "2035-12-31"
+      }
+    ]
+  }
+}

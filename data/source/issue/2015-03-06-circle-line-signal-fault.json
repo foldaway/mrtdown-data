@@ -4,10 +4,20 @@
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "KRG",
+    "HRB",
+    "PPJ",
+    "LBD",
+    "TLB",
+    "HBF"
+  ],
   "startAt": "2015-03-06T06:53:34.000+08:00",
   "endAt": "2015-03-06T07:03:24.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

@@ -8,7 +8,9 @@
   "startAt": "2020-02-08T05:58:15.000+08:00",
   "endAt": "2020-02-08T06:04:38.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -28,5 +30,15 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1225901612096348162",
       "createdAt": "2020-02-08T05:58:15.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "SKG",
+    "CGL",
+    "FMW",
+    "KPG",
+    "TNG",
+    "PGL",
+    "SMK",
+    "PGP"
   ]
 }

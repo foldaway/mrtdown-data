@@ -1,0 +1,12 @@
+{
+  "id": "MSL",
+  "name": "Marsiling",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS8",
+        "startedAt": "1996-02-10"
+      }
+    ]
+  }
+}

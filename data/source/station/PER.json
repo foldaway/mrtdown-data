@@ -1,0 +1,12 @@
+{
+  "id": "PER",
+  "name": "Prince Edward Road",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC32",
+        "startedAt": "2026-12-31"
+      }
+    ]
+  }
+}

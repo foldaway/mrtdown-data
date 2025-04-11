@@ -7,7 +7,9 @@
   "startAt": "2021-06-27T07:40:26.000+08:00",
   "endAt": "2021-06-27T10:20:01.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",
@@ -39,5 +41,13 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1408933199854538755",
       "createdAt": "2021-06-27T07:40:26.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "CCK",
+    "SHV",
+    "KTH",
+    "TKW",
+    "PNX",
+    "BKP"
   ]
 }

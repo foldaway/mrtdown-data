@@ -1,0 +1,12 @@
+{
+  "id": "BDL",
+  "name": "Braddell",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS18",
+        "startedAt": "1987-11-07"
+      }
+    ]
+  }
+}

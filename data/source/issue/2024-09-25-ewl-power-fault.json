@@ -7,7 +7,10 @@
   "startAt": "2024-09-25T10:09:05.000+08:00",
   "endAt": "2024-10-01T00:00:00.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault",
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -765,5 +768,11 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1838762618997346794",
       "createdAt": "2024-09-25T10:09:05.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "BNV",
+    "DVR",
+    "CLE",
+    "JUR"
   ]
 }

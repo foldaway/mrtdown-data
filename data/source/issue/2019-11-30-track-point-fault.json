@@ -7,6 +7,10 @@
   "startAt": "2019-11-30T10:44:23.000+08:00",
   "endAt": "2019-11-30T11:35:29.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",
@@ -39,5 +43,11 @@
       "createdAt": "2019-11-30T10:44:23.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "JKN",
+    "GCL",
+    "TCR",
+    "TWR",
+    "TLK"
+  ]
 }

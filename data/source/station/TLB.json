@@ -1,0 +1,12 @@
+{
+  "id": "TLB",
+  "name": "Telok Blangah",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC28",
+        "startedAt": "2011-10-08"
+      }
+    ]
+  }
+}

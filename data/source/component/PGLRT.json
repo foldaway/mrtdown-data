@@ -2,5 +2,9 @@
   "id": "PGLRT",
   "title": "Punggol LRT",
   "color": "#748477",
-  "startedAt": "2005-01-29"
+  "startedAt": "2005-01-29",
+  "branches": {
+    "east": ["PTC", "PW1", "PW2", "PW3", "PW4", "PW5", "PW6", "PW7"],
+    "west": ["PTC", "PE1", "PE2", "PE3", "PE4", "PE5", "PE6", "PE7"]
+  }
 }

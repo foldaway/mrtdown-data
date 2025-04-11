@@ -4,10 +4,17 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "TAM",
+    "SIM",
+    "TNM"
+  ],
   "startAt": "2014-01-22T22:50:01.000+08:00",
   "endAt": "2014-01-22T23:23:08.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",

@@ -7,6 +7,9 @@
   "startAt": "2017-12-21T07:50:35.000+08:00",
   "endAt": "2017-12-21T08:03:34.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -21,5 +24,25 @@
       "createdAt": "2017-12-21T07:50:35.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "DTN",
+    "TLA",
+    "CTN",
+    "FCN",
+    "BCL",
+    "JLB",
+    "BDM",
+    "GLB",
+    "MTR",
+    "MPS",
+    "UBI",
+    "KKB",
+    "BDN",
+    "BDR",
+    "TPW",
+    "TAM",
+    "TPE",
+    "UPC",
+    "XPO"
+  ]
 }

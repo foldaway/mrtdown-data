@@ -1,13 +1,24 @@
 {
   "id": "2017-03-30-ewl-train-fault",
-  "title": "Train fault causing travel time delay on East West Line",
+  "title": "Train fault causing travel time delays on East West Line",
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "PSR",
+    "TAM",
+    "SIM",
+    "TNM",
+    "BDK",
+    "KEM",
+    "EUN",
+    "PYL"
+  ],
   "startAt": "2017-03-30T17:57:46.000+08:00",
-  "endAt": "2017-03-30T19:15:52.000+08:00",
+  "endAt": "2017-03-30T23:59:59.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [],
   "updates": [
     {
       "type": "planned",

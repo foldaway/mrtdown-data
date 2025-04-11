@@ -1,0 +1,12 @@
+{
+  "id": "UTS",
+  "name": "Upper Thomson",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE8",
+        "startedAt": "2021-08-28"
+      }
+    ]
+  }
+}

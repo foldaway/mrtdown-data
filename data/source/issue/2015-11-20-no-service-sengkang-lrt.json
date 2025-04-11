@@ -4,10 +4,19 @@
   "componentIdsAffected": [
     "SKLRT"
   ],
+  "stationIdsAffected": [
+    "SKG",
+    "CGL",
+    "FMW",
+    "KPG",
+    "TNG"
+  ],
   "startAt": "2015-11-20T19:31:31.000+08:00",
   "endAt": "2015-11-20T20:25:53.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

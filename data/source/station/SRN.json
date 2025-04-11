@@ -1,0 +1,12 @@
+{
+  "id": "SRN",
+  "name": "Serangoon North",
+  "componentMembers": {
+    "CRL": [
+      {
+        "code": "CR9",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

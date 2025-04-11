@@ -7,9 +7,43 @@
     "CCL",
     "BPLRT"
   ],
+  "stationIdsAffected": [
+    "DBG",
+    "BBS",
+    "EPN",
+    "PMN",
+    "NCH",
+    "SDM",
+    "MBT",
+    "DKT",
+    "PYL",
+    "MPS",
+    "TSG",
+    "BLY",
+    "SER",
+    "LRC",
+    "BSH",
+    "JUR",
+    "BBT",
+    "BGB",
+    "CCK",
+    "YWT",
+    "KRJ",
+    "MSL",
+    "WDL",
+    "ADM",
+    "SBW",
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK"
+  ],
   "startAt": "2011-12-23T14:49:58.000+08:00",
   "endAt": "2011-12-24T00:00:00.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -23,6 +57,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/150105851246555136",
       "createdAt": "2011-12-23T14:49:58.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

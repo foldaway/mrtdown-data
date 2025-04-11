@@ -8,7 +8,7 @@
   "startAt": "2019-10-01T06:10:35.000+08:00",
   "endAt": "2019-10-01T08:17:04.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.resolved",
@@ -34,5 +34,9 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1178794296129966080",
       "createdAt": "2019-10-01T06:10:35.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "SKG",
+    "PGL"
   ]
 }

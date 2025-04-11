@@ -1,0 +1,12 @@
+{
+  "id": "NYG",
+  "name": "Nanyang Gateway",
+  "componentMembers": {
+    "JRL": [
+      {
+        "code": "JW3",
+        "startedAt": "2029-12-31"
+      }
+    ]
+  }
+}

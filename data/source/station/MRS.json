@@ -1,0 +1,12 @@
+{
+  "id": "MRS",
+  "name": "Marina South",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE21",
+        "startedAt": "2040-12-31"
+      }
+    ]
+  }
+}

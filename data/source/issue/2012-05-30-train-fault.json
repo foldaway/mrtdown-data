@@ -4,9 +4,20 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "JUR",
+    "BBT",
+    "BGB",
+    "CCK",
+    "YWT"
+  ],
   "startAt": "2012-05-30T08:25:42.000+08:00",
   "endAt": "2012-05-30T08:51:55.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",
@@ -20,6 +31,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/207628817223778304",
       "createdAt": "2012-05-30T08:25:42.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

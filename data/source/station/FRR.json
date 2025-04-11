@@ -1,0 +1,12 @@
+{
+  "id": "FRR",
+  "name": "Farrer Road",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC20",
+        "startedAt": "2011-10-08"
+      }
+    ]
+  }
+}

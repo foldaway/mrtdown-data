@@ -1,0 +1,12 @@
+{
+  "id": "LRC",
+  "name": "Lorong Chuan",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC14",
+        "startedAt": "2009-05-28"
+      }
+    ]
+  }
+}

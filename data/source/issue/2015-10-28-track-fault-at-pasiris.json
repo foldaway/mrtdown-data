@@ -4,10 +4,16 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "PSR",
+    "TAM"
+  ],
   "startAt": "2015-10-28T14:54:29.000+08:00",
   "endAt": "2015-10-28T15:10:24.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

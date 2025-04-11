@@ -7,7 +7,9 @@
   "startAt": "2018-11-14T05:09:50.000+08:00",
   "endAt": "2018-11-14T06:27:49.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -45,5 +47,11 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1062452502220595200",
       "createdAt": "2018-11-14T05:09:50.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "WDL",
+    "ADM",
+    "SBW",
+    "YIS"
   ]
 }

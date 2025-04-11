@@ -1,0 +1,18 @@
+{
+  "id": "TAM",
+  "name": "Tampines",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW2",
+        "startedAt": "1989-12-16"
+      }
+    ],
+    "DTL": [
+      {
+        "code": "DT32",
+        "startedAt": "2017-10-21"
+      }
+    ]
+  }
+}

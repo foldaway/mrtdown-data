@@ -4,10 +4,14 @@
   "componentIdsAffected": [
     "NEL"
   ],
-  "startAt": "2021-04-16T23:00:00.000+08:00",
+  "startAt": "2021-04-09T23:00:00.000+08:00",
   "endAt": "2021-06-01T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work",
+    "system.upgrade"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -27,5 +31,13 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1378155270522556421",
       "createdAt": "2021-04-03T09:19:56.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "SER",
+    "KVN",
+    "HGN",
+    "BGK",
+    "SKG",
+    "PGL"
   ]
 }

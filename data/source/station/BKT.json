@@ -1,0 +1,12 @@
+{
+  "id": "BKT",
+  "name": "Bangkit",
+  "componentMembers": {
+    "BPLRT": [
+      {
+        "code": "BP9",
+        "startedAt": "1999-11-06"
+      }
+    ]
+  }
+}

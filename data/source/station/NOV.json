@@ -1,0 +1,12 @@
+{
+  "id": "NOV",
+  "name": "Novena",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS20",
+        "startedAt": "1987-12-12"
+      }
+    ]
+  }
+}

@@ -7,7 +7,10 @@
   "startAt": "2021-12-28T06:23:37.000+08:00",
   "endAt": "2021-12-28T07:25:00.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -39,5 +42,12 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1475593234822746112",
       "createdAt": "2021-12-28T06:23:37.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "HBF",
+    "OTP",
+    "CTN",
+    "CRQ",
+    "DBG"
   ]
 }

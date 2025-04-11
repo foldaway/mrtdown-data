@@ -4,10 +4,16 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "SBW",
+    "YIS"
+  ],
   "startAt": "2015-12-01T05:37:12.000+08:00",
   "endAt": "2015-12-01T05:43:26.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

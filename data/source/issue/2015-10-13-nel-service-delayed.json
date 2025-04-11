@@ -4,9 +4,22 @@
   "componentIdsAffected": [
     "NEL"
   ],
+  "stationIdsAffected": [
+    "FRP",
+    "BNK",
+    "PTP",
+    "WLH",
+    "SER",
+    "KVN",
+    "HGN"
+  ],
   "startAt": "2015-10-13T07:58:46.000+08:00",
   "endAt": "2015-10-13T08:28:24.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "power.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -68,6 +81,5 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/653721502626418688",
       "createdAt": "2015-10-13T07:58:46.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

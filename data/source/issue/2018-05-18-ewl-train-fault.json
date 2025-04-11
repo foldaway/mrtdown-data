@@ -7,7 +7,9 @@
   "startAt": "2018-05-18T17:10:36.000+08:00",
   "endAt": "2018-05-18T17:37:52.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",
@@ -21,5 +23,16 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/997404071806947328",
       "createdAt": "2018-05-18T17:10:36.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "QUE",
+    "COM",
+    "BNV",
+    "DVR",
+    "CLE",
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL"
   ]
 }

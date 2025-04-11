@@ -7,7 +7,9 @@
   "startAt": "2025-03-12T05:41:49.000+08:00",
   "endAt": "2025-03-12T06:24:01.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -21,5 +23,15 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1899576519300899093",
       "createdAt": "2025-03-12T05:41:49.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "GRB",
+    "TRH",
+    "KTP",
+    "TKT",
+    "MPR",
+    "MTC",
+    "SGL",
+    "BSR"
   ]
 }

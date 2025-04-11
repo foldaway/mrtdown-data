@@ -8,6 +8,11 @@
   "endAt": "2019-11-24T00:00:00+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work",
+    "station.renovation",
+    "system.upgrade"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -33,5 +38,12 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1196626654459621377",
       "createdAt": "2019-11-19T11:10:01.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "KVN",
+    "HGN",
+    "BGK",
+    "SKG",
+    "PGL"
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "id": "LYG",
+  "name": "Loyang",
+  "componentMembers": {
+    "CRL": [
+      {
+        "code": "CR3",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

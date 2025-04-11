@@ -7,7 +7,9 @@
   "startAt": "2023-04-18T16:22:36.000+08:00",
   "endAt": "2023-04-18T16:45:05.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,5 +35,13 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1648240598703562754",
       "createdAt": "2023-04-18T16:22:36.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "KRG",
+    "HRB",
+    "PPJ",
+    "LBD",
+    "TLB",
+    "HBF"
   ]
 }

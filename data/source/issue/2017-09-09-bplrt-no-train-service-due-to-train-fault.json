@@ -7,7 +7,9 @@
   "startAt": "2017-09-09T11:12:18.000+08:00",
   "endAt": "2017-09-09T16:25:08.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,5 +35,15 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/906354550138740736",
       "createdAt": "2017-09-09T11:12:18.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "SHV",
+    "KTH",
+    "TKW",
+    "PNX",
+    "BKP",
+    "PTR",
+    "PND",
+    "BKT"
   ]
 }

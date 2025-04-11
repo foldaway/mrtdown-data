@@ -1,13 +1,35 @@
 {
   "id": "2017-04-04-nsl-stationary-trial-new-signalling",
-  "title": "North-South Line trains stationary for new signalling trial",
+  "title": "North-South Line trains stationary for signalling trial",
   "componentIdsAffected": [
     "NSL"
+  ],
+  "stationIdsAffected": [
+    "KRJ",
+    "MSL",
+    "WDL",
+    "ADM",
+    "SBW",
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK",
+    "BSH",
+    "BDL",
+    "TAP",
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG"
   ],
   "startAt": "2017-04-04T21:00:52.000+08:00",
   "endAt": "2017-04-04T23:10:52.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "system.upgrade"
+  ],
   "updates": [
     {
       "type": "planned",

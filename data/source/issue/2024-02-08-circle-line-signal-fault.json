@@ -7,6 +7,9 @@
   "startAt": "2024-02-08T08:00:10.000+08:00",
   "endAt": "2024-02-08T11:30:11.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -51,5 +54,15 @@
       "createdAt": "2024-02-08T08:00:10.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "DBG",
+    "BBS",
+    "EPN",
+    "PMN",
+    "NCH",
+    "SDM",
+    "MBT",
+    "DKT",
+    "PYL"
+  ]
 }

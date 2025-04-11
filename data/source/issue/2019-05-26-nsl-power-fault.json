@@ -1,13 +1,15 @@
 {
   "id": "2019-05-26-nsl-power-fault",
-  "title": "Major service disruption on the North-South Line due to power fault.",
+  "title": "Major service disruption on the North-South Line due to power fault resolved.",
   "componentIdsAffected": [
     "NSL"
   ],
   "startAt": "2019-05-26T06:39:52.000+08:00",
   "endAt": "2019-05-26T07:23:26.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -57,5 +59,14 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1132416019522248704",
       "createdAt": "2019-05-26T06:39:52.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "ORC",
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB",
+    "MSP"
   ]
 }

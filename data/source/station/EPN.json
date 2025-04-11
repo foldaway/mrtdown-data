@@ -1,0 +1,12 @@
+{
+  "id": "EPN",
+  "name": "Esplanade",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC3",
+        "startedAt": "2010-04-17"
+      }
+    ]
+  }
+}

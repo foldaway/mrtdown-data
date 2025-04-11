@@ -7,6 +7,10 @@
   "startAt": "2024-12-01T06:18:10.000+08:00",
   "endAt": "2024-12-01T06:57:00.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -21,5 +25,12 @@
       "createdAt": "2024-12-01T06:18:10.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "BKP",
+    "CSW",
+    "HVW",
+    "BTW",
+    "KAP",
+    "XPO"
+  ]
 }

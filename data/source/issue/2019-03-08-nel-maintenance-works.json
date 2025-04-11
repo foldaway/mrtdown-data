@@ -8,6 +8,9 @@
   "endAt": "2019-03-10T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -21,5 +24,12 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1103459711972564992",
       "createdAt": "2019-03-07T08:57:51.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "HBF",
+    "OTP",
+    "CTN",
+    "CRQ",
+    "DBG"
   ]
 }

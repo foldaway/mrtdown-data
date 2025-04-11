@@ -1,13 +1,15 @@
 {
   "id": "2017-08-18-dtl-signal-fault",
-  "title": "no DTL train service due to signalling fault",
+  "title": "No DTL train service due to signalling fault",
   "componentIdsAffected": [
     "DTL"
   ],
   "startAt": "2017-08-18T06:25:35.000+08:00",
   "endAt": "2017-08-18T09:00:00.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -21,5 +23,25 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/898309862869786624",
       "createdAt": "2017-08-18T06:25:35.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "BKP",
+    "CSW",
+    "HVW",
+    "BTW",
+    "KAP",
+    "SAV",
+    "TKK",
+    "BTN",
+    "STV",
+    "NEW",
+    "LTI",
+    "RCR",
+    "BGS",
+    "PMN",
+    "BFT",
+    "DTN",
+    "TLA",
+    "CTN"
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "id": "BRK",
+  "name": "Brickland",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS3A",
+        "startedAt": "2034-01-01"
+      }
+    ]
+  }
+}

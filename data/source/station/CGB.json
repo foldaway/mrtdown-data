@@ -1,0 +1,12 @@
+{
+  "id": "CGB",
+  "name": "Changi Airport Terminal 5",
+  "componentMembers": {
+    "CRL": [
+      {
+        "code": "CR1",
+        "startedAt": "2050-12-31"
+      }
+    ]
+  }
+}

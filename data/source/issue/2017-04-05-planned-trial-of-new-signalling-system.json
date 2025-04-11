@@ -4,10 +4,19 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB"
+  ],
   "startAt": "2017-04-05T21:00:54.000+08:00",
   "endAt": "2017-04-05T21:10:54.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "system.upgrade"
+  ],
   "updates": [
     {
       "type": "planned",

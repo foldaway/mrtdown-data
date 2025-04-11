@@ -7,7 +7,9 @@
   "startAt": "2024-12-14T18:49:07.000+08:00",
   "endAt": "2024-12-14T19:13:35.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,5 +35,17 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1867884520252575930",
       "createdAt": "2024-12-14T18:49:07.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "PMN",
+    "NCH",
+    "SDM",
+    "MBT",
+    "DKT",
+    "PYL",
+    "MPS",
+    "TSG",
+    "BLY",
+    "SER"
   ]
 }

@@ -7,7 +7,9 @@
   "startAt": "2021-03-28T07:18:42.000+08:00",
   "endAt": "2021-03-28T09:53:03.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -57,5 +59,12 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1375950436100829184",
       "createdAt": "2021-03-28T07:18:42.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "SER",
+    "KVN",
+    "HGN",
+    "BGK",
+    "SKG"
   ]
 }

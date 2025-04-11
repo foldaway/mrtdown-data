@@ -1,0 +1,12 @@
+{
+  "id": "MRD",
+  "name": "Meridian",
+  "componentMembers": {
+    "PGLRT": [
+      {
+        "code": "PE2",
+        "startedAt": "2005-01-29"
+      }
+    ]
+  }
+}

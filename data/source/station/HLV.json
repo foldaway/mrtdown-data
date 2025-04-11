@@ -1,0 +1,12 @@
+{
+  "id": "HLV",
+  "name": "Holland Village",
+  "componentMembers": {
+    "CCL": [
+      {
+        "code": "CC21",
+        "startedAt": "2011-10-08"
+      }
+    ]
+  }
+}

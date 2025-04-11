@@ -4,10 +4,18 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK",
+    "BSH"
+  ],
   "startAt": "2017-04-03T12:13:43.000+08:00",
-  "endAt": "2017-04-03T12:37:27.000+08:00",
+  "endAt": "2017-04-03T23:59:59.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.update",

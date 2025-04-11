@@ -7,7 +7,7 @@
   "startAt": "2017-11-10T06:06:07.000+08:00",
   "endAt": "2017-11-10T06:17:54.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.resolved",
@@ -27,5 +27,11 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/928745544570126336",
       "createdAt": "2017-11-10T06:06:07.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK"
   ]
 }

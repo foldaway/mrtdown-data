@@ -8,6 +8,9 @@
   "endAt": "2021-02-22T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -15,5 +18,21 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1362254292975906823",
       "createdAt": "2021-02-18T12:15:07.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "PGL",
+    "SMK",
+    "PGP",
+    "SMD",
+    "NBG",
+    "SMG",
+    "STK",
+    "COV",
+    "MRD",
+    "CRE",
+    "RIV",
+    "KDL",
+    "OAS",
+    "DAM"
   ]
 }

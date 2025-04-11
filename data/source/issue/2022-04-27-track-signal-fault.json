@@ -7,7 +7,10 @@
   "startAt": "2022-04-27T07:31:31.000+08:00",
   "endAt": "2022-04-27T09:09:17.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault",
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -45,5 +48,16 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1519096866243493888",
       "createdAt": "2022-04-27T07:31:31.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "WDN",
+    "WDL",
+    "WDS",
+    "SPL",
+    "LTR",
+    "MFL",
+    "BRH",
+    "UTS",
+    "CDT"
   ]
 }

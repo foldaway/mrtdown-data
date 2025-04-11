@@ -8,7 +8,10 @@
   "startAt": "2025-02-07T05:52:23.000+08:00",
   "endAt": "2025-02-07T20:02:31.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -142,5 +145,25 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1887620378031448477",
       "createdAt": "2025-02-07T05:52:23.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "JUR",
+    "BBT",
+    "BGB",
+    "CCK",
+    "YWT",
+    "KRJ",
+    "MSL",
+    "WDL",
+    "ADM",
+    "SBW",
+    "CBR",
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK",
+    "CNG",
+    "LKS",
+    "BNL"
   ]
 }

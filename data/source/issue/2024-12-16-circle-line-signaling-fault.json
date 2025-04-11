@@ -4,10 +4,25 @@
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "FRR",
+    "HLV",
+    "BNV",
+    "ONH",
+    "KRG",
+    "HRB",
+    "PPJ",
+    "LBD",
+    "TLB",
+    "HBF"
+  ],
   "startAt": "2024-12-16T00:36:01.000+08:00",
   "endAt": "2024-12-16T01:25:00.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",

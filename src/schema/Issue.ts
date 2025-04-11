@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { ComponentIdSchema } from './Component';
 import { DateTime } from 'luxon';
+import { StationIdSchema } from './StationId';
 
 export const IssueTypeSchema = z.enum(['disruption', 'maintenance', 'infra']);
 export type IssueType = z.infer<typeof IssueTypeSchema>;
@@ -21,6 +22,9 @@ const IssueBase = z.object({
   componentIdsAffected: z
     .array(ComponentIdSchema)
     .describe('List of components affected'),
+  stationIdsAffected: z
+    .array(StationIdSchema)
+    .describe('List of station IDs affected'),
   startAt: z
     .string()
     .refine((val) => DateTime.fromISO(val).isValid)
@@ -32,11 +36,21 @@ const IssueBase = z.object({
     .describe('ISO8601 end timestamp of the issue, if applicable.'),
 });
 
-/** [DISRUPTION] severity */
-export const IssueDisruptionSeveritySchema = z.enum(['minor', 'major']);
-/** [DISRUPTION] severity */
-export type IssueDisruptionSeverity = z.infer<
-  typeof IssueDisruptionSeveritySchema
+/** [DISRUPTION] subtype */
+export const IssueDisruptionSubtypeSchema = z.enum([
+  'signal.fault',
+  'track.fault',
+  'train.fault',
+  'power.fault',
+  'security',
+  'weather',
+  'passenger.incident',
+  'platform_door.fault',
+  'delay',
+]);
+/** [DISRUPTION] subtype */
+export type IssueDisruptionSubtype = z.infer<
+  typeof IssueDisruptionSubtypeSchema
 >;
 
 /** [DISRUPTION] update type */
@@ -69,7 +83,7 @@ export type IssueDisruptionUpdate = z.infer<typeof IssueDisruptionUpdateSchema>;
 /** [DISRUPTION] */
 export const IssueDisruptionSchema = IssueBase.extend({
   type: z.literal(IssueTypeSchema.Enum.disruption),
-  severity: IssueDisruptionSeveritySchema,
+  subtypes: z.array(IssueDisruptionSubtypeSchema),
   updates: z.array(IssueDisruptionUpdateSchema),
 });
 /** [DISRUPTION] */
@@ -100,6 +114,17 @@ export type IssueMaintenanceUpdate = z.infer<
   typeof IssueMaintenanceUpdateSchema
 >;
 
+/** [MAINTENANCE] subtype */
+export const IssueMaintenanceSubtypeSchema = z.enum([
+  'track.work',
+  'station.renovation',
+  'system.upgrade',
+]);
+/** [MAINTENANCE] subtype */
+export type IssueMaintenanceSubtype = z.infer<
+  typeof IssueDisruptionSubtypeSchema
+>;
+
 /** [MAINTENANCE] */
 export const IssueMaintenanceSchema = IssueBase.extend({
   type: z.literal(IssueTypeSchema.Enum.maintenance),
@@ -109,6 +134,7 @@ export const IssueMaintenanceSchema = IssueBase.extend({
     .nullable()
     .describe('ISO8601 date'),
   updates: z.array(IssueMaintenanceUpdateSchema),
+  subtypes: z.array(IssueMaintenanceSubtypeSchema),
 });
 /** [MAINTENANCE] */
 export type IssueMaintenance = z.infer<typeof IssueMaintenanceSchema>;
@@ -131,10 +157,20 @@ export const IssueInfraUpdateSchema = z.object({
 /** [INFRA] update */
 export type IssueInfraUpdate = z.infer<typeof IssueInfraUpdateSchema>;
 
+/** [INFRA] subtype */
+export const IssueInfraSubtypeSchema = z.enum([
+  'elevator.outage',
+  'escalator.outage',
+  'air_conditioning.issue',
+]);
+/** [INFRA] subtype */
+export type IssueInfraSubtype = z.infer<typeof IssueDisruptionSubtypeSchema>;
+
 /** [INFRA] */
 export const IssueInfraSchema = IssueBase.extend({
   type: z.literal(IssueTypeSchema.Enum.infra),
   updates: z.array(IssueInfraUpdateSchema),
+  subtypes: z.array(IssueInfraSubtypeSchema),
 });
 /** [INFRA] */
 export type IssueInfra = z.infer<typeof IssueInfraSchema>;

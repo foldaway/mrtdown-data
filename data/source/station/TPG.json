@@ -1,0 +1,12 @@
+{
+  "id": "TPG",
+  "name": "Tanjong Pagar",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW15",
+        "startedAt": "1987-12-12"
+      }
+    ]
+  }
+}

@@ -1,12 +1,16 @@
 {
   "id": "2021-05-09-nel-service-delayed",
-  "title": "NEL service disruption due to signalling fault",
+  "title": "NEL service disruption due to signalling fault at Farrer Park",
   "componentIdsAffected": [
     "NEL"
   ],
   "startAt": "2021-05-09T07:47:46.000+08:00",
   "endAt": "2021-05-09T08:43:39.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -33,5 +37,9 @@
       "createdAt": "2021-05-09T07:47:46.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "DBG",
+    "LTI",
+    "FRP"
+  ]
 }

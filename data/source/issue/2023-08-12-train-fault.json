@@ -7,7 +7,10 @@
   "startAt": "2023-08-12T20:17:11.000+08:00",
   "endAt": "2023-08-12T22:25:32.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -57,5 +60,12 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1690336629096103936",
       "createdAt": "2023-08-12T20:17:11.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "WDN",
+    "WDL",
+    "WDS",
+    "SPL",
+    "LTR"
   ]
 }

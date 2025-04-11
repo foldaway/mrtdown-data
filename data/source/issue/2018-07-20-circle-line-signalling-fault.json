@@ -7,7 +7,9 @@
   "startAt": "2018-07-20T00:03:37.000+08:00",
   "endAt": "2018-07-20T04:22:26.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -21,5 +23,21 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1019976059582738432",
       "createdAt": "2018-07-20T00:03:37.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "BSH",
+    "MRM",
+    "CDT",
+    "BTN",
+    "FRR",
+    "HLV",
+    "BNV",
+    "ONH",
+    "KRG",
+    "HRB",
+    "PPJ",
+    "LBD",
+    "TLB",
+    "HBF"
   ]
 }

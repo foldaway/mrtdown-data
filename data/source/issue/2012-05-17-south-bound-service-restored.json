@@ -1,13 +1,24 @@
 {
   "id": "2012-05-17-south-bound-service-restored",
-  "title": "South-bound train service restoration",
+  "title": "South-bound train service disruption due to track fault",
   "componentIdsAffected": [
     "NSL"
+  ],
+  "stationIdsAffected": [
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB",
+    "BDL",
+    "TAP"
   ],
   "startAt": "2012-05-17T09:19:51.000+08:00",
   "endAt": "2012-05-17T11:01:05.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

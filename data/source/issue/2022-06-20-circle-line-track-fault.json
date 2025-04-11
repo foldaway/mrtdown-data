@@ -7,6 +7,10 @@
   "startAt": "2022-06-20T13:34:29.000+08:00",
   "endAt": "2022-06-20T14:20:12.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",
@@ -39,5 +43,8 @@
       "createdAt": "2022-06-20T13:34:29.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "MRB",
+    "PMN"
+  ]
 }

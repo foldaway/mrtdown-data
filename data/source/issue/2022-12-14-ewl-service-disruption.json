@@ -7,7 +7,9 @@
   "startAt": "2022-12-14T11:31:55.000+08:00",
   "endAt": "2022-12-14T12:25:10.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -33,5 +35,12 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1602868962290634753",
       "createdAt": "2022-12-14T11:31:55.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN",
+    "GCL"
   ]
 }

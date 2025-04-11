@@ -4,10 +4,25 @@
   "componentIdsAffected": [
     "BPLRT"
   ],
+  "stationIdsAffected": [
+    "CCK",
+    "SHV",
+    "KTH",
+    "TKW",
+    "PNX",
+    "BKP",
+    "PTR",
+    "PND",
+    "BKT",
+    "FJR",
+    "SGR",
+    "JLP",
+    "SNJ"
+  ],
   "startAt": "2016-01-22T05:54:44.000+08:00",
   "endAt": "2016-01-22T10:43:29.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.resolved",

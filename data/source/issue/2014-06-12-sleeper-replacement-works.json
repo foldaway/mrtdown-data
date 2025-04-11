@@ -1,13 +1,21 @@
 {
   "id": "2014-06-12-sleeper-replacement-works",
-  "title": "Train service disruption due to sleeper replacement works",
+  "title": "Service disruption due to sleeper replacement works",
   "componentIdsAffected": [
     "NSL"
+  ],
+  "stationIdsAffected": [
+    "YWT",
+    "KRJ",
+    "MSL",
+    "WDL",
+    "ADM",
+    "SBW"
   ],
   "startAt": "2014-06-12T05:20:51.000+08:00",
   "endAt": "2014-06-12T05:53:16.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.resolved",

@@ -7,6 +7,10 @@
   "startAt": "2022-01-23T15:29:57.000+08:00",
   "endAt": "2022-01-23T16:14:08.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -57,5 +61,11 @@
       "createdAt": "2022-01-23T15:29:57.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "SER",
+    "KVN",
+    "HGN",
+    "BGK",
+    "SKG"
+  ]
 }

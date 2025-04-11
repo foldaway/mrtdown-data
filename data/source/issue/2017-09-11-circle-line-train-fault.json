@@ -7,7 +7,10 @@
   "startAt": "2017-09-11T09:25:39.000+08:00",
   "endAt": "2017-09-11T10:27:47.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -45,5 +48,20 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/907052485688168448",
       "createdAt": "2017-09-11T09:25:39.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "PYL",
+    "MPS",
+    "TSG",
+    "BLY",
+    "SER",
+    "LRC",
+    "BSH",
+    "MRM",
+    "CDT",
+    "BTN",
+    "FRR",
+    "HLV",
+    "BNV"
   ]
 }

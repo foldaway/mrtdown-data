@@ -1,13 +1,18 @@
 {
   "id": "2012-02-08-train-service-delay",
-  "title": "Train service delay on North-South line",
+  "title": "Train service delay on North-South Line",
   "componentIdsAffected": [
     "NSL"
+  ],
+  "stationIdsAffected": [
+    "MRB"
   ],
   "startAt": "2012-02-08T07:25:27.000+08:00",
   "endAt": "2012-02-08T07:48:45.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

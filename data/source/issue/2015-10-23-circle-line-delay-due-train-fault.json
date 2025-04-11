@@ -4,10 +4,18 @@
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "MBT",
+    "DKT",
+    "PYL"
+  ],
   "startAt": "2015-10-23T06:49:55.000+08:00",
-  "endAt": "2015-10-23T07:23:52.000+08:00",
+  "endAt": "2015-10-23T07:39:50.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

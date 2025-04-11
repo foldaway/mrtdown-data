@@ -7,7 +7,10 @@
   "startAt": "2017-11-04T14:53:14.000+08:00",
   "endAt": "2017-11-04T15:30:30.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -27,5 +30,13 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/926703868066406401",
       "createdAt": "2017-11-04T14:53:14.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "QUE",
+    "COM",
+    "BNV",
+    "DVR",
+    "CLE",
+    "JUR"
   ]
 }

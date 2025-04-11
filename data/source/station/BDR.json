@@ -1,0 +1,12 @@
+{
+  "id": "BDR",
+  "name": "Bedok Reservoir",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT30",
+        "startedAt": "2017-10-21"
+      }
+    ]
+  }
+}

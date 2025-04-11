@@ -7,6 +7,9 @@
   "startAt": "2011-12-27T09:14:55.000+08:00",
   "endAt": "2011-12-27T19:33:58.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -27,5 +30,21 @@
       "createdAt": "2011-12-27T09:14:55.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "JUR",
+    "BBT",
+    "BGB",
+    "CCK",
+    "YWT",
+    "KRJ",
+    "MSL",
+    "WDL",
+    "ADM",
+    "SBW",
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK",
+    "BSH"
+  ]
 }

@@ -1,0 +1,12 @@
+{
+  "id": "KVN",
+  "name": "Kovan",
+  "componentMembers": {
+    "NEL": [
+      {
+        "code": "NE13",
+        "startedAt": "2003-06-20"
+      }
+    ]
+  }
+}

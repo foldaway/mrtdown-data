@@ -1,0 +1,12 @@
+{
+  "id": "TLK",
+  "name": "Tuas Link",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW33",
+        "startedAt": "2017-06-18"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "PRE",
+  "name": "Pasir Ris East",
+  "componentMembers": {
+    "CRL": [
+      {
+        "code": "CR4",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

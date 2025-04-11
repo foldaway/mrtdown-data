@@ -1,0 +1,18 @@
+{
+  "id": "STV",
+  "name": "Stevens",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT10",
+        "startedAt": "2015-12-27"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE11",
+        "startedAt": "2022-11-13"
+      }
+    ]
+  }
+}

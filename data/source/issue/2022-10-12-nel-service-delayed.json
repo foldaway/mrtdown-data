@@ -7,6 +7,10 @@
   "startAt": "2022-10-12T07:44:59.000+08:00",
   "endAt": "2022-10-12T07:52:00.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -21,5 +25,22 @@
       "createdAt": "2022-10-12T07:44:59.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "HBF",
+    "OTP",
+    "CTN",
+    "CRQ",
+    "DBG",
+    "LTI",
+    "FRP",
+    "BNK",
+    "PTP",
+    "WLH",
+    "SER",
+    "KVN",
+    "HGN",
+    "BGK",
+    "SKG",
+    "PGL"
+  ]
 }

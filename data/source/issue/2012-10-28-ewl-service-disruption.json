@@ -4,10 +4,18 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "OTP",
+    "TIB",
+    "RDH",
+    "QUE"
+  ],
   "startAt": "2012-10-28T20:30:20.000+08:00",
   "endAt": "2012-10-28T22:21:58.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "passenger.incident"
+  ],
   "updates": [
     {
       "type": "operator.update",

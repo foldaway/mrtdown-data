@@ -7,7 +7,9 @@
   "startAt": "2019-03-15T19:30:50.000+08:00",
   "endAt": "2019-03-15T20:43:51.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -39,5 +41,13 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1106518110398406656",
       "createdAt": "2019-03-15T19:30:50.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "DBG",
+    "BBS",
+    "EPN",
+    "PMN",
+    "NCH",
+    "SDM"
   ]
 }

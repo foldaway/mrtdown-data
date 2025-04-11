@@ -1,0 +1,24 @@
+{
+  "id": "PGL",
+  "name": "Punggol",
+  "componentMembers": {
+    "NEL": [
+      {
+        "code": "NE17",
+        "startedAt": "2003-06-20"
+      }
+    ],
+    "PGLRT": [
+      {
+        "code": "PTC",
+        "startedAt": "2005-01-29"
+      }
+    ],
+    "CRL": [
+      {
+        "code": "CP4",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

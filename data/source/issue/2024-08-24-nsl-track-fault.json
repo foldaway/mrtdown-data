@@ -7,6 +7,9 @@
   "startAt": "2024-08-24T14:27:30.000+08:00",
   "endAt": "2024-08-24T14:45:46.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -27,5 +30,13 @@
       "createdAt": "2024-08-24T14:27:30.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "KRJ",
+    "MSL",
+    "WDL",
+    "ADM",
+    "SBW",
+    "CBR",
+    "YIS"
+  ]
 }

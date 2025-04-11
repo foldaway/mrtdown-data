@@ -4,10 +4,21 @@
   "componentIdsAffected": [
     "BPLRT"
   ],
+  "stationIdsAffected": [
+    "CCK",
+    "SHV",
+    "KTH",
+    "TKW",
+    "PNX",
+    "BKP"
+  ],
   "startAt": "2013-05-17T10:42:47.000+08:00",
   "endAt": "2013-05-17T10:51:37.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

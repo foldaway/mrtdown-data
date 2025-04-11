@@ -2,12 +2,15 @@
   "id": "2019-05-14-track-point-failure",
   "title": "Track Point Failure on NSEWL",
   "componentIdsAffected": [
-    "NSL"
+    "NSL",
+    "EWL"
   ],
   "startAt": "2019-05-14T10:37:24.000+08:00",
   "endAt": "2019-05-14T12:33:14.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -51,5 +54,17 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1128127140921135104",
       "createdAt": "2019-05-14T10:37:24.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "AMK",
+    "BSH",
+    "WDL",
+    "ADM",
+    "SBW",
+    "YIS",
+    "KTB",
+    "YCK",
+    "BDL",
+    "TAP"
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "id": "HBF",
+  "name": "HarbourFront",
+  "componentMembers": {
+    "NEL": [
+      {
+        "code": "NE1",
+        "startedAt": "2003-06-20"
+      }
+    ],
+    "CCL": [
+      {
+        "code": "CC29",
+        "startedAt": "2011-10-08"
+      }
+    ]
+  }
+}

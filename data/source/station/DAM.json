@@ -1,0 +1,12 @@
+{
+  "id": "DAM",
+  "name": "Damai",
+  "componentMembers": {
+    "PGLRT": [
+      {
+        "code": "PE7",
+        "startedAt": "2011-06-20"
+      }
+    ]
+  }
+}

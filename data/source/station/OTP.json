@@ -1,0 +1,24 @@
+{
+  "id": "OTP",
+  "name": "Outram Park",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW16",
+        "startedAt": "1987-12-12"
+      }
+    ],
+    "NEL": [
+      {
+        "code": "NE3",
+        "startedAt": "2003-06-20"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE17",
+        "startedAt": "2022-11-13"
+      }
+    ]
+  }
+}

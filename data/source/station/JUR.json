@@ -1,0 +1,24 @@
+{
+  "id": "JUR",
+  "name": "Jurong East",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW24",
+        "startedAt": "1988-11-05"
+      }
+    ],
+    "NSL": [
+      {
+        "code": "NS1",
+        "startedAt": "1988-11-05"
+      }
+    ],
+    "JRL": [
+      {
+        "code": "JE5",
+        "startedAt": "2027-12-31"
+      }
+    ]
+  }
+}

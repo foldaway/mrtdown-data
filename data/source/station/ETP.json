@@ -1,0 +1,12 @@
+{
+  "id": "ETP",
+  "name": "Enterprise",
+  "componentMembers": {
+    "JRL": [
+      {
+        "code": "JS9",
+        "startedAt": "2029-12-31"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "CCK",
+  "name": "Choa Chu Kang",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS4",
+        "startedAt": "1990-03-10"
+      }
+    ],
+    "BPLRT": [
+      {
+        "code": "BP1",
+        "startedAt": "1999-11-06"
+      }
+    ],
+    "JRL": [
+      {
+        "code": "JS1",
+        "startedAt": "2027-12-31"
+      }
+    ]
+  }
+}

@@ -4,10 +4,16 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "OTP",
+    "TIB",
+    "RDH",
+    "QUE"
+  ],
   "startAt": "2012-08-15T06:57:33.000+08:00",
   "endAt": "2012-08-15T07:14:02.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.resolved",

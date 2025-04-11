@@ -1,0 +1,12 @@
+{
+  "id": "GRW",
+  "name": "Great World",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE15",
+        "startedAt": "2022-11-13"
+      }
+    ]
+  }
+}

@@ -2,12 +2,15 @@
   "id": "2019-05-14-expo-train-fault",
   "title": "Train Fault at Expo Station",
   "componentIdsAffected": [
-    "EWL"
+    "EWL",
+    "DTL"
   ],
   "startAt": "2019-05-14T18:48:39.000+08:00",
   "endAt": "2019-05-14T19:18:34.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -21,5 +24,14 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1128250766685163520",
       "createdAt": "2019-05-14T18:48:39.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "BDR",
+    "TPW",
+    "TAM",
+    "TPE",
+    "UPC",
+    "XPO",
+    "TNM"
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "id": "SHW",
+  "name": "Shenton Way",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE19",
+        "startedAt": "2022-11-13"
+      }
+    ]
+  }
+}

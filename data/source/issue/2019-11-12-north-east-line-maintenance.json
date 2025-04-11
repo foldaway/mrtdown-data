@@ -8,6 +8,9 @@
   "endAt": "2019-11-16T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -15,5 +18,12 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1194224058201567232",
       "createdAt": "2019-11-12T20:02:57.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "KVN",
+    "HGN",
+    "BGK",
+    "SKG",
+    "PGL"
   ]
 }

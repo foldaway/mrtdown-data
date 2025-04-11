@@ -1,0 +1,12 @@
+{
+  "id": "BSR",
+  "name": "Bayshore",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE29",
+        "startedAt": "2024-06-23"
+      }
+    ]
+  }
+}

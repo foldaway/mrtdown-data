@@ -7,7 +7,9 @@
   "startAt": "2019-01-29T12:50:13.000+08:00",
   "endAt": "2019-01-29T14:09:48.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -27,5 +29,9 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1090109839051640832",
       "createdAt": "2019-01-29T12:50:13.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "TLB",
+    "HBF"
   ]
 }

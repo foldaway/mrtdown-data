@@ -1,0 +1,12 @@
+{
+  "id": "CSW",
+  "name": "Cashew",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT2",
+        "startedAt": "2015-12-27"
+      }
+    ]
+  }
+}

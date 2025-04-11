@@ -7,6 +7,9 @@
   "startAt": "2021-09-02T08:52:13.000+08:00",
   "endAt": "2021-09-02T09:21:11.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -33,5 +36,20 @@
       "createdAt": "2021-09-02T08:52:13.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "HBF",
+    "OTP",
+    "CTN",
+    "CRQ",
+    "DBG",
+    "LTI",
+    "FRP",
+    "BNK",
+    "PTP",
+    "WLH",
+    "SER",
+    "KVN",
+    "HGN",
+    "BGK"
+  ]
 }

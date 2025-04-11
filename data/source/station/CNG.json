@@ -1,0 +1,12 @@
+{
+  "id": "CNG",
+  "name": "Chinese Garden",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW25",
+        "startedAt": "1988-11-05"
+      }
+    ]
+  }
+}

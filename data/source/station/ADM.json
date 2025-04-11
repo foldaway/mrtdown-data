@@ -1,0 +1,12 @@
+{
+  "id": "ADM",
+  "name": "Admiralty",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS10",
+        "startedAt": "1996-02-10"
+      }
+    ]
+  }
+}

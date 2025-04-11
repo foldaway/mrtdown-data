@@ -7,6 +7,11 @@
   "startAt": "2017-10-04T18:01:03.000+08:00",
   "endAt": "2017-10-04T18:24:27.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault",
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -27,5 +32,10 @@
       "createdAt": "2017-10-04T18:01:03.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "JUR",
+    "BBT",
+    "BGB",
+    "CCK"
+  ]
 }

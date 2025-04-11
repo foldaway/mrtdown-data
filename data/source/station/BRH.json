@@ -1,0 +1,18 @@
+{
+  "id": "BRH",
+  "name": "Bright Hill",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE7",
+        "startedAt": "2021-08-28"
+      }
+    ],
+    "CRL": [
+      {
+        "code": "CR13",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

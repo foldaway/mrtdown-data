@@ -5,9 +5,11 @@
     "EWL"
   ],
   "startAt": "2018-12-12T04:59:48.000+08:00",
-  "endAt": "2018-12-12T06:22:57.000+08:00",
+  "endAt": "2018-12-12T06:49:18.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -57,5 +59,11 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1072596836278591488",
       "createdAt": "2018-12-12T04:59:48.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "BNL",
+    "PNR",
+    "JKN",
+    "GCL"
   ]
 }

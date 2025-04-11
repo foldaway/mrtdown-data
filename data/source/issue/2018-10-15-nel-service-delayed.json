@@ -7,6 +7,10 @@
   "startAt": "2018-10-15T16:08:05.000+08:00",
   "endAt": "2018-10-15T16:53:00Z",
   "type": "disruption",
+  "subtypes": [
+    "power.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -45,5 +49,9 @@
       "createdAt": "2018-10-15T16:08:05.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "FRP",
+    "BNK",
+    "PTP"
+  ]
 }

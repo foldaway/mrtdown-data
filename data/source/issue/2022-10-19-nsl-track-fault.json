@@ -5,9 +5,11 @@
     "NSL"
   ],
   "startAt": "2022-10-19T05:46:11.000+08:00",
-  "endAt": "2022-10-19T07:45:05.000+08:00",
+  "endAt": "2022-10-19T08:47:38.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -99,5 +101,11 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1582488238102437889",
       "createdAt": "2022-10-19T05:46:11.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "CBR",
+    "YIS",
+    "KTB",
+    "YCK"
   ]
 }

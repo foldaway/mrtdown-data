@@ -4,9 +4,43 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "TNM",
+    "BDK",
+    "KEM",
+    "EUN",
+    "PYL",
+    "ALJ",
+    "KAL",
+    "LVR",
+    "BGS",
+    "CTH",
+    "RFL",
+    "TPG",
+    "PSR",
+    "TAM",
+    "SIM",
+    "OTP",
+    "TIB",
+    "RDH",
+    "QUE",
+    "COM",
+    "BNV",
+    "DVR",
+    "CLE",
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN"
+  ],
   "startAt": "2012-04-30T09:22:03.000+08:00",
   "endAt": "2012-04-30T09:51:37.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -20,6 +54,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/196771364122796032",
       "createdAt": "2012-04-30T09:22:03.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

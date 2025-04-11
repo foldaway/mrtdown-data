@@ -7,7 +7,10 @@
   "startAt": "2017-11-10T21:53:47.000+08:00",
   "endAt": "2017-11-10T22:58:19.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -27,5 +30,15 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/928984033416986629",
       "createdAt": "2017-11-10T21:53:47.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "BGS",
+    "CTH",
+    "RFL",
+    "TPG",
+    "OTP",
+    "TIB",
+    "RDH",
+    "QUE"
   ]
 }

@@ -7,7 +7,10 @@
   "startAt": "2024-05-21T09:03:55.000+08:00",
   "endAt": "2024-05-21T09:27:17.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -27,5 +30,15 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1792722958907256989",
       "createdAt": "2024-05-21T09:03:55.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "ORC",
+    "GRW",
+    "HVL",
+    "OTP",
+    "MAX",
+    "SHW",
+    "MRB",
+    "GRB"
   ]
 }

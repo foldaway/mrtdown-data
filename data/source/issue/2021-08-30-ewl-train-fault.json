@@ -7,6 +7,10 @@
   "startAt": "2021-08-30T19:44:48.000+08:00",
   "endAt": "2021-08-30T20:14:02.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -33,5 +37,11 @@
       "createdAt": "2021-08-30T19:44:48.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "JKN",
+    "GCL",
+    "TCR",
+    "TWR",
+    "TLK"
+  ]
 }

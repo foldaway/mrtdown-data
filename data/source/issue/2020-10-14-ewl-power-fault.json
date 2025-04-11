@@ -2,12 +2,15 @@
   "id": "2020-10-14-ewl-power-fault",
   "title": "Train services disrupted due to power fault",
   "componentIdsAffected": [
-    "EWL"
+    "EWL",
+    "NSL"
   ],
   "startAt": "2020-10-14T19:57:45.000+08:00",
   "endAt": "2020-10-14T22:39:23.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -75,5 +78,19 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1316347457295413248",
       "createdAt": "2020-10-14T19:57:45.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "DVR",
+    "CLE",
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN",
+    "GCL",
+    "TCR",
+    "TWR",
+    "TLK"
   ]
 }

@@ -7,7 +7,9 @@
   "startAt": "2025-01-02T19:38:58.000+08:00",
   "endAt": "2025-01-02T20:00:44.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",
@@ -27,5 +29,26 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1874782432857383077",
       "createdAt": "2025-01-02T19:38:58.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "CDT",
+    "STV",
+    "NPR",
+    "OBV",
+    "ORC",
+    "GRW",
+    "HVL",
+    "OTP",
+    "MAX",
+    "SHW",
+    "MRB",
+    "GRB",
+    "TRH",
+    "KTP",
+    "TKT",
+    "MPR",
+    "MTC",
+    "SGL",
+    "BSR"
   ]
 }

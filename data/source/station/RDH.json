@@ -1,0 +1,12 @@
+{
+  "id": "RDH",
+  "name": "Redhill",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW18",
+        "startedAt": "1988-03-12"
+      }
+    ]
+  }
+}

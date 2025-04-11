@@ -1,0 +1,12 @@
+{
+  "id": "AVP",
+  "name": "Aviation Park",
+  "componentMembers": {
+    "CRL": [
+      {
+        "code": "CR2",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

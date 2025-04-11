@@ -1,0 +1,12 @@
+{
+  "id": "TIB",
+  "name": "Tiong Bahru",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW17",
+        "startedAt": "1988-03-12"
+      }
+    ]
+  }
+}

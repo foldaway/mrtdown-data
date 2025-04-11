@@ -1,0 +1,12 @@
+{
+  "id": "CPN",
+  "name": "Corporation",
+  "componentMembers": {
+    "JRL": [
+      {
+        "code": "JS5",
+        "startedAt": "2027-12-31"
+      }
+    ]
+  }
+}

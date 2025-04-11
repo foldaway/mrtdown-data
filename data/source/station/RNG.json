@@ -1,0 +1,12 @@
+{
+  "id": "RNG",
+  "name": "Ranggung",
+  "componentMembers": {
+    "SKLRT": [
+      {
+        "code": "SE5",
+        "startedAt": "2003-01-18"
+      }
+    ]
+  }
+}

@@ -4,10 +4,16 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "CCK",
+    "YWT"
+  ],
   "startAt": "2014-03-28T07:32:48.000+08:00",
   "endAt": "2014-03-28T08:01:00.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

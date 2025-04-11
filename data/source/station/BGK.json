@@ -1,0 +1,12 @@
+{
+  "id": "BGK",
+  "name": "Buangkok",
+  "componentMembers": {
+    "NEL": [
+      {
+        "code": "NE15",
+        "startedAt": "2006-01-15"
+      }
+    ]
+  }
+}

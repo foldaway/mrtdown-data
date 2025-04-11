@@ -1,0 +1,18 @@
+{
+  "id": "WDL",
+  "name": "Woodlands",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS9",
+        "startedAt": "1996-02-10"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE2",
+        "startedAt": "2020-01-31"
+      }
+    ]
+  }
+}

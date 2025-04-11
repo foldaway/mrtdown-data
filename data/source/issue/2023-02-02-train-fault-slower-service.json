@@ -2,12 +2,15 @@
   "id": "2023-02-02-train-fault-slower-service",
   "title": "Train fault causing slower service from Woodlands North to Caldecott",
   "componentIdsAffected": [
-    "TEL"
+    "TEL",
+    "NSL"
   ],
   "startAt": "2023-02-02T05:39:47.000+08:00",
   "endAt": "2023-02-02T07:05:09.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -39,5 +42,16 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1620899739880521729",
       "createdAt": "2023-02-02T05:39:47.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "WDN",
+    "WDL",
+    "WDS",
+    "SPL",
+    "LTR",
+    "MFL",
+    "BRH",
+    "UTS",
+    "CDT"
   ]
 }

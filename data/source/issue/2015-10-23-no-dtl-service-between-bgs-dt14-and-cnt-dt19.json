@@ -1,13 +1,21 @@
 {
   "id": "2015-10-23-no-dtl-service-between-bgs-dt14-and-cnt-dt19",
-  "title": "No DTL service between BGS DT14 and CNT DT19",
+  "title": "No Downtown Line service between Bugis DT14 and Chinatown DT19",
   "componentIdsAffected": [
     "DTL"
+  ],
+  "stationIdsAffected": [
+    "BGS",
+    "PMN",
+    "BFT",
+    "DTN",
+    "TLA",
+    "CTN"
   ],
   "startAt": "2015-10-23T07:38:28.000+08:00",
   "endAt": "2015-10-23T07:43:52.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.update",

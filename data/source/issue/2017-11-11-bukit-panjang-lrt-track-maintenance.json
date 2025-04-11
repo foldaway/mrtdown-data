@@ -4,10 +4,16 @@
   "componentIdsAffected": [
     "BPLRT"
   ],
-  "startAt": "2017-11-11T14:02:42.000+08:00",
-  "endAt": "2018-01-01T00:00:00.000+08:00",
+  "stationIdsAffected": [
+    "BKP"
+  ],
+  "startAt": "2017-11-12T07:00:00.000+08:00",
+  "endAt": "2017-12-31T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",

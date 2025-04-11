@@ -1,0 +1,18 @@
+{
+  "id": "KAP",
+  "name": "King Albert Park",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT6",
+        "startedAt": "2015-12-27"
+      }
+    ],
+    "CRL": [
+      {
+        "code": "CR15",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

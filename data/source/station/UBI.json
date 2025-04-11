@@ -1,0 +1,12 @@
+{
+  "id": "UBI",
+  "name": "Ubi",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT27",
+        "startedAt": "2017-10-21"
+      }
+    ]
+  }
+}

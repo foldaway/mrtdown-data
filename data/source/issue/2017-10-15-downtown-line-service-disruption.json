@@ -7,7 +7,9 @@
   "startAt": "2017-10-15T13:04:55.000+08:00",
   "endAt": "2017-10-15T13:21:00.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -27,5 +29,11 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/919428854162145285",
       "createdAt": "2017-10-15T13:04:55.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "BKP",
+    "CSW",
+    "HVW",
+    "BTW"
   ]
 }

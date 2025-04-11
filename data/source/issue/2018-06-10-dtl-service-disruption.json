@@ -7,7 +7,9 @@
   "startAt": "2018-06-10T16:18:46.000+08:00",
   "endAt": "2018-06-10T17:18:00.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -39,5 +41,12 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1005725948505874432",
       "createdAt": "2018-06-10T16:18:46.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "MPS",
+    "UBI",
+    "KKB",
+    "BDN",
+    "BDR"
   ]
 }

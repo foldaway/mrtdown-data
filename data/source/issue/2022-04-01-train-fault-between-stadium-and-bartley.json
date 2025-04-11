@@ -4,9 +4,22 @@
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "SDM",
+    "MBT",
+    "DKT",
+    "PYL",
+    "MPS",
+    "TSG",
+    "BLY"
+  ],
   "startAt": "2022-04-01T11:38:57.000+08:00",
   "endAt": "2022-04-01T12:18:31.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -56,6 +69,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1509737052828741632",
       "createdAt": "2022-04-01T11:38:57.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

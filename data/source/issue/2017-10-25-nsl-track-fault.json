@@ -7,7 +7,9 @@
   "startAt": "2017-10-25T05:00:12.000+08:00",
   "endAt": "2017-10-25T10:13:21.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -39,5 +41,14 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/922930750466400256",
       "createdAt": "2017-10-25T05:00:12.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK",
+    "BSH",
+    "BDL",
+    "TAP"
   ]
 }

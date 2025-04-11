@@ -1,0 +1,12 @@
+{
+  "id": "TPW",
+  "name": "Tampines West",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT31",
+        "startedAt": "2017-10-21"
+      }
+    ]
+  }
+}

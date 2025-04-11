@@ -7,7 +7,9 @@
   "startAt": "2023-04-25T18:54:03.000+08:00",
   "endAt": "2023-04-26T00:00:00.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.investigating",
@@ -15,5 +17,20 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1650815429043195904",
       "createdAt": "2023-04-25T18:54:03.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "CCK",
+    "SHV",
+    "KTH",
+    "TKW",
+    "PNX",
+    "BKP",
+    "PTR",
+    "PND",
+    "BKT",
+    "FJR",
+    "SGR",
+    "JLP",
+    "SNJ"
   ]
 }

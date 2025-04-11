@@ -7,6 +7,10 @@
   "startAt": "2024-07-26T09:34:40.000+08:00",
   "endAt": "2024-07-26T10:02:34.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,5 +37,14 @@
       "createdAt": "2024-07-26T09:34:40.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB",
+    "MSP"
+  ]
 }

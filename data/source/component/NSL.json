@@ -2,5 +2,36 @@
   "id": "NSL",
   "title": "North-South Line",
   "color": "#d42e12",
-  "startedAt": "1987-11-07"
+  "startedAt": "1987-11-07",
+  "branches": {
+    "main": [
+      "NS1",
+      "NS2",
+      "NS3",
+      "NS4",
+      "NS5",
+      "NS7",
+      "NS8",
+      "NS9",
+      "NS10",
+      "NS11",
+      "NS12",
+      "NS13",
+      "NS14",
+      "NS15",
+      "NS16",
+      "NS17",
+      "NS18",
+      "NS19",
+      "NS20",
+      "NS21",
+      "NS22",
+      "NS23",
+      "NS24",
+      "NS25",
+      "NS26",
+      "NS27",
+      "NS28"
+    ]
+  }
 }

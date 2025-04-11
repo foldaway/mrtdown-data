@@ -7,6 +7,9 @@
   "startAt": "2018-03-01T06:51:20.000+08:00",
   "endAt": "2018-03-02T00:00:00.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -51,5 +54,40 @@
       "createdAt": "2018-03-01T06:51:20.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "BKP",
+    "CSW",
+    "HVW",
+    "BTW",
+    "KAP",
+    "SAV",
+    "TKK",
+    "BTN",
+    "STV",
+    "NEW",
+    "LTI",
+    "RCR",
+    "BGS",
+    "PMN",
+    "BFT",
+    "DTN",
+    "TLA",
+    "CTN",
+    "FCN",
+    "BCL",
+    "JLB",
+    "BDM",
+    "GLB",
+    "MTR",
+    "MPS",
+    "UBI",
+    "KKB",
+    "BDN",
+    "BDR",
+    "TPW",
+    "TAM",
+    "TPE",
+    "UPC",
+    "XPO"
+  ]
 }

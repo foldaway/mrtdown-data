@@ -4,9 +4,17 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "TNM",
+    "XPO",
+    "CGA"
+  ],
   "startAt": "2012-03-01T07:30:31.000+08:00",
   "endAt": "2012-03-01T07:55:37.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -20,6 +28,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/175000023174623232",
       "createdAt": "2012-03-01T07:30:31.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

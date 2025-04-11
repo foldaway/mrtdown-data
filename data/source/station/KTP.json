@@ -1,0 +1,12 @@
+{
+  "id": "KTP",
+  "name": "Katong Park",
+  "componentMembers": {
+    "TEL": [
+      {
+        "code": "TE24",
+        "startedAt": "2024-06-23"
+      }
+    ]
+  }
+}

@@ -4,10 +4,15 @@
   "componentIdsAffected": [
     "BPLRT"
   ],
+  "stationIdsAffected": [
+    "JLP",
+    "SNJ"
+  ],
   "startAt": "2012-08-31T08:12:40.000+08:00",
   "endAt": "2012-08-31T08:15:02.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [],
   "updates": [
     {
       "type": "planned",

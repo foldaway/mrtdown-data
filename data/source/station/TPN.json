@@ -1,0 +1,12 @@
+{
+  "id": "TPN",
+  "name": "Tampines North",
+  "componentMembers": {
+    "CRL": [
+      {
+        "code": "CR6",
+        "startedAt": "2030-12-31"
+      }
+    ]
+  }
+}

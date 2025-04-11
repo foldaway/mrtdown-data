@@ -4,10 +4,19 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK",
+    "BSH"
+  ],
   "startAt": "2017-04-21T05:07:35.000+08:00",
   "endAt": "2017-04-21T05:58:26.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

@@ -4,10 +4,18 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "TAP",
+    "NOV",
+    "NEW"
+  ],
   "startAt": "2014-09-01T21:44:08.000+08:00",
   "endAt": "2014-09-01T22:16:03.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",

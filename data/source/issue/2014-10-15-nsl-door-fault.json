@@ -1,13 +1,32 @@
 {
   "id": "2014-10-15-nsl-door-fault",
-  "title": "Door Fault Affecting North-South Line",
+  "title": "Door Fault at Dhoby Ghaut Station",
   "componentIdsAffected": [
     "NSL"
+  ],
+  "stationIdsAffected": [
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB",
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK",
+    "BSH",
+    "BDL",
+    "TAP",
+    "NOV"
   ],
   "startAt": "2014-10-15T16:59:31.000+08:00",
   "endAt": "2014-10-15T17:34:53.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "platform_door.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",

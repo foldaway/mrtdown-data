@@ -1,13 +1,16 @@
 {
   "id": "2021-03-19-nsl-platform-screen-door-fault",
-  "title": "Platform screen door fault causing delays",
+  "title": "Platform Screen Door Fault on NSL Between Ang Mo Kio and Braddell",
   "componentIdsAffected": [
     "NSL"
   ],
   "startAt": "2021-03-19T08:28:13.000+08:00",
   "endAt": "2021-03-19T16:03:39.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "platform_door.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -33,5 +36,10 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1372706438192107521",
       "createdAt": "2021-03-19T08:28:13.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "AMK",
+    "BSH",
+    "BDL"
   ]
 }

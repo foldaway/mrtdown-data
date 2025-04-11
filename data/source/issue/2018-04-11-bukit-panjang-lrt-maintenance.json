@@ -1,11 +1,16 @@
 {
   "id": "2018-04-11-bukit-panjang-lrt-maintenance",
-  "title": "Maintenance works on Bukit Panjang LRT",
+  "title": "Service Disruption on Bukit Panjang LRT Due to Power Fault",
   "componentIdsAffected": [
     "BPLRT"
   ],
   "startAt": "2018-06-23T05:43:41.000+08:00",
-  "endAt": "2018-06-23T06:40:53.000+08:00",
+  "endAt": "2018-06-24T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -20,6 +25,19 @@
       "createdAt": "2018-06-23T05:43:41.000+08:00"
     }
   ],
-  "type": "maintenance",
-  "cancelledAt": null
+  "stationIdsAffected": [
+    "CCK",
+    "SHV",
+    "KTH",
+    "TKW",
+    "PNX",
+    "BKP",
+    "PTR",
+    "PND",
+    "BKT",
+    "FJR",
+    "SGR",
+    "JLP",
+    "SNJ"
+  ]
 }

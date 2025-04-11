@@ -1,0 +1,18 @@
+{
+  "id": "SKG",
+  "name": "Sengkang",
+  "componentMembers": {
+    "NEL": [
+      {
+        "code": "NE16",
+        "startedAt": "2003-06-20"
+      }
+    ],
+    "SKLRT": [
+      {
+        "code": "STC",
+        "startedAt": "2003-01-18"
+      }
+    ]
+  }
+}

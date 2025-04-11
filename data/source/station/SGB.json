@@ -1,0 +1,18 @@
+{
+  "id": "SGB",
+  "name": "Sungei Bedok",
+  "componentMembers": {
+    "DTL": [
+      {
+        "code": "DT37",
+        "startedAt": "2026-12-31"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE31",
+        "startedAt": "2026-12-31"
+      }
+    ]
+  }
+}

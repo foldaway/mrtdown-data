@@ -1,12 +1,16 @@
 {
   "id": "2018-01-02-track-signalling-fault",
-  "title": "Track Signalling Fault on East West Line",
+  "title": "Track Signalling Fault Resolved on East West Line",
   "componentIdsAffected": [
     "EWL"
   ],
   "startAt": "2018-01-02T05:49:14.000+08:00",
   "endAt": "2018-01-02T09:02:47.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault",
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -51,5 +55,9 @@
       "createdAt": "2018-01-02T05:49:14.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "TNM",
+    "XPO",
+    "CGA"
+  ]
 }

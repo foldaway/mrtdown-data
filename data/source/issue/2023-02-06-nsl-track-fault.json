@@ -5,8 +5,11 @@
     "NSL"
   ],
   "startAt": "2023-02-06T05:50:55.000+08:00",
-  "endAt": "2023-02-06T07:33:34.000+08:00",
+  "endAt": "2023-02-06T07:51:00.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -69,5 +72,15 @@
       "createdAt": "2023-02-06T05:50:55.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "CCK",
+    "YWT",
+    "KRJ",
+    "MSL",
+    "WDL",
+    "ADM",
+    "SBW",
+    "CBR",
+    "YIS"
+  ]
 }

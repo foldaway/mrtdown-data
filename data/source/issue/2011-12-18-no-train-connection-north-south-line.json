@@ -4,10 +4,24 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "DBG",
+    "CTH",
+    "RFL",
+    "AMK",
+    "BSH",
+    "BDL",
+    "TAP",
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "MRB"
+  ],
   "startAt": "2011-12-17T19:16:04.000+08:00",
   "endAt": "2011-12-18T12:25:36.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.update",

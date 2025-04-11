@@ -1,0 +1,12 @@
+{
+  "id": "TCR",
+  "name": "Tuas Crescent",
+  "componentMembers": {
+    "EWL": [
+      {
+        "code": "EW31",
+        "startedAt": "2017-06-18"
+      }
+    ]
+  }
+}

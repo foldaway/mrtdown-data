@@ -7,6 +7,10 @@
   "startAt": "2021-10-20T21:41:42.000+08:00",
   "endAt": "2021-10-20T22:12:09.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,5 +37,10 @@
       "createdAt": "2021-10-20T21:41:42.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "PSR",
+    "TAM",
+    "SIM",
+    "TNM"
+  ]
 }

@@ -1,13 +1,20 @@
 {
   "id": "2013-04-22-nsl-maintenance-work-woodlands-admiralty",
-  "title": "Maintenance work on the North-South Line from Woodlands to Admiralty",
+  "title": "Maintenance work on the North-South Line",
   "componentIdsAffected": [
     "NSL"
+  ],
+  "stationIdsAffected": [
+    "WDL",
+    "ADM"
   ],
   "startAt": "2013-04-22T17:18:22.000+08:00",
   "endAt": "2013-05-14T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",

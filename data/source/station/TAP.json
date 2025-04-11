@@ -1,0 +1,12 @@
+{
+  "id": "TAP",
+  "name": "Toa Payoh",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS19",
+        "startedAt": "1987-11-07"
+      }
+    ]
+  }
+}

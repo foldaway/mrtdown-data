@@ -1,0 +1,12 @@
+{
+  "id": "PNX",
+  "name": "Phoenix",
+  "componentMembers": {
+    "BPLRT": [
+      {
+        "code": "BP5",
+        "startedAt": "1999-11-06"
+      }
+    ]
+  }
+}

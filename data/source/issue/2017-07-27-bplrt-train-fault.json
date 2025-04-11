@@ -4,10 +4,16 @@
   "componentIdsAffected": [
     "BPLRT"
   ],
+  "stationIdsAffected": [
+    "JLP",
+    "SNJ"
+  ],
   "startAt": "2017-07-27T17:00:50.000+08:00",
   "endAt": "2017-07-27T17:15:47.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

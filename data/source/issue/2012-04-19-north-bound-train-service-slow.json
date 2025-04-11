@@ -4,10 +4,17 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "ORC",
+    "SOM",
+    "DBG"
+  ],
   "startAt": "2012-04-19T19:54:27.000+08:00",
   "endAt": "2012-04-19T22:44:10.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",

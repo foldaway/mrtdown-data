@@ -7,6 +7,9 @@
   "startAt": "2019-03-04T10:58:49.000+08:00",
   "endAt": "2019-03-04T11:23:07.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -33,5 +36,14 @@
       "createdAt": "2019-03-04T10:58:49.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "JUR",
+    "BBT",
+    "BGB",
+    "CCK",
+    "YWT",
+    "KRJ",
+    "MSL",
+    "WDL"
+  ]
 }

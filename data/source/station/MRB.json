@@ -1,0 +1,24 @@
+{
+  "id": "MRB",
+  "name": "Marina Bay",
+  "componentMembers": {
+    "NSL": [
+      {
+        "code": "NS27",
+        "startedAt": "1987-12-12"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE20",
+        "startedAt": "2022-11-13"
+      }
+    ],
+    "CCL": [
+      {
+        "code": "CE2",
+        "startedAt": "2012-01-14"
+      }
+    ]
+  }
+}

@@ -4,9 +4,16 @@
   "componentIdsAffected": [
     "NEL"
   ],
+  "stationIdsAffected": [
+    "SKG",
+    "PGL"
+  ],
   "startAt": "2015-07-28T19:55:13.000+08:00",
   "endAt": "2015-07-28T20:32:43.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -32,6 +39,5 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/625997939127640064",
       "createdAt": "2015-07-28T19:55:13.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

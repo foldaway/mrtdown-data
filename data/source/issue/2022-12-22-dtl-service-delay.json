@@ -1,12 +1,16 @@
 {
   "id": "2022-12-22-dtl-service-delay",
-  "title": "DTL service disruption due to signalling fault",
+  "title": "Downtown Line service disruption due to signalling fault",
   "componentIdsAffected": [
     "DTL"
   ],
   "startAt": "2022-12-22T07:06:02.000+08:00",
   "endAt": "2022-12-22T07:16:45.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -21,5 +25,29 @@
       "createdAt": "2022-12-22T07:06:02.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "BKP",
+    "CSW",
+    "HVW",
+    "BTW",
+    "KAP",
+    "SAV",
+    "TKK",
+    "BTN",
+    "STV",
+    "NEW",
+    "LTI",
+    "RCR",
+    "BGS",
+    "PMN",
+    "BFT",
+    "DTN",
+    "TLA",
+    "CTN",
+    "FCN",
+    "BCL",
+    "JLB",
+    "BDM",
+    "GLB"
+  ]
 }
