@@ -28,6 +28,7 @@ const MAX_TOOL_CALL_COUNT = 6;
 const ResultSchema = z.object({
   issue: IssueInfraSchema.omit({
     updates: true,
+    stationIdsAffected: true,
   }),
   lineSections: z.array(LineSectionSchema),
 });
@@ -143,8 +144,7 @@ Please modify the issue. You should:
   - "endAt" field
   - "subtypes" field
   - correct the "components" field based on the updates, see below for table.
-  - determine the affected section(s) of rail line(s).
-  - leave the "stationIdsAffected" field as empty.
+  - determine the section(s) of rail line(s) that this issue affected.
 
   # Components table
   ${buildComponentTable()}

@@ -29,6 +29,7 @@ const MAX_TOOL_CALL_COUNT = 6;
 const ResultSchema = z.object({
   issue: IssueDisruptionSchema.omit({
     updates: true,
+    stationIdsAffected: true,
   }),
   lineSections: z.array(LineSectionSchema),
 });
@@ -194,8 +195,7 @@ Please modify the issue. You should:
   - "subtypes" field.
   - correct the "components" field based on the updates, see below for table.
     - recommendations to utilise other rail lines does not make them affected components.
-  - determine the affected section(s) of rail line(s) that went out of service. include only out of service stations.
-  - leave the "stationIdsAffected" field as empty.
+  - determine the section(s) of rail line(s) that this issue affected. do not include adjacent stations that may have activated shuttle/bus bridging services.
 
 # Components table
 ${buildComponentTable()}

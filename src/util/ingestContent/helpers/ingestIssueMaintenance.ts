@@ -28,6 +28,7 @@ const MAX_TOOL_CALL_COUNT = 6;
 const ResultSchema = z.object({
   issue: IssueMaintenanceSchema.omit({
     updates: true,
+    stationIdsAffected: true,
   }),
   lineSections: z.array(LineSectionSchema),
 });
@@ -145,8 +146,8 @@ Please modify the issue. You should:
   - "cancelledAt" field, if an update indicated that the maintenance was cancelled.
   - "subtypes" field
   - correct the "components" field based on the updates, see below for table.
-  - determine the affected section(s) of rail line(s) that went out of service.
-  - leave the "stationIdsAffected" field as empty.
+  - determine the section(s) of rail line(s) that this issue affected.
+    - mentions of a system without specific stations may mean all branches of the line
 
   # Components table
   ${buildComponentTable()}
