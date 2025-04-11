@@ -1,13 +1,15 @@
 {
   "id": "2022-12-25-thomson-east-coast-line-train-fault",
-  "title": "Train services affected between Caldecott and Gardens by the Bay",
+  "title": "Train services affected due to train fault between Caldecott and Gardens by the Bay",
   "componentIdsAffected": [
     "TEL"
   ],
   "startAt": "2022-12-25T06:46:29.000+08:00",
   "endAt": "2022-12-25T07:53:38.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,5 +35,19 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1606783399313960961",
       "createdAt": "2022-12-25T06:46:29.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "CDT",
+    "STV",
+    "NPR",
+    "OBV",
+    "ORC",
+    "GRW",
+    "HVL",
+    "OTP",
+    "MAX",
+    "SHW",
+    "MRB",
+    "GRB"
   ]
 }

@@ -7,6 +7,10 @@
   "startAt": "2020-02-21T21:28:49.000+08:00",
   "endAt": "2020-02-21T21:53:45.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -27,5 +31,7 @@
       "createdAt": "2020-02-21T21:28:49.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "HBF"
+  ]
 }

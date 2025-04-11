@@ -4,10 +4,19 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "CNG",
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN"
+  ],
   "startAt": "2012-08-27T07:30:11.000+08:00",
   "endAt": "2012-08-27T07:41:51.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",

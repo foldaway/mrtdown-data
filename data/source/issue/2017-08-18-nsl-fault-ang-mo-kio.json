@@ -5,9 +5,10 @@
     "NSL"
   ],
   "startAt": "2017-08-18T06:29:03.000+08:00",
-  "endAt": "2017-08-18T09:22:24.000+08:00",
+  "endAt": "2017-08-18T23:59:59.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [],
   "updates": [
     {
       "type": "planned",
@@ -45,5 +46,24 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/898310734060240897",
       "createdAt": "2017-08-18T06:29:03.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "SBW",
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK",
+    "BSH",
+    "BDL",
+    "TAP",
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB",
+    "MSP"
   ]
 }

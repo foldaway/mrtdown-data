@@ -4,10 +4,19 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK",
+    "BSH"
+  ],
   "startAt": "2015-08-13T05:26:43.000+08:00",
   "endAt": "2015-08-13T05:37:12.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

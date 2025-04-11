@@ -9,6 +9,9 @@
   "endAt": "2020-09-07T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -34,5 +37,9 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1286120892301365248",
       "createdAt": "2020-07-23T10:08:10.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "SKG",
+    "PGL"
   ]
 }

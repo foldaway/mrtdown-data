@@ -4,10 +4,16 @@
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "CDT",
+    "BTN"
+  ],
   "startAt": "2013-08-14T08:47:12.000+08:00",
   "endAt": "2013-08-14T08:51:16.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

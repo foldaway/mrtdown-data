@@ -7,9 +7,19 @@
     "NSL",
     "CCL"
   ],
+  "stationIdsAffected": [
+    "JKN",
+    "DBG",
+    "BBS",
+    "EPN",
+    "PMN"
+  ],
   "startAt": "2011-12-24T13:57:23.000+08:00",
   "endAt": "2011-12-25T00:00:00.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "weather"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -23,6 +33,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/150455006049484800",
       "createdAt": "2011-12-24T13:57:23.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

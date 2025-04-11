@@ -4,10 +4,16 @@
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "TSG",
+    "BLY"
+  ],
   "startAt": "2012-10-28T06:44:31.000+08:00",
   "endAt": "2012-10-28T09:23:26.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

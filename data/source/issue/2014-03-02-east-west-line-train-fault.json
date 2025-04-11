@@ -4,10 +4,17 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "TNM",
+    "XPO",
+    "CGA"
+  ],
   "startAt": "2014-03-02T20:57:53.000+08:00",
-  "endAt": "2014-03-02T21:04:15.000+08:00",
+  "endAt": "2014-03-02T21:06:46.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

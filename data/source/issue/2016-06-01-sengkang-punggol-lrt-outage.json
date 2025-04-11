@@ -1,6 +1,6 @@
 {
   "id": "2016-06-01-sengkang-punggol-lrt-outage",
-  "title": "No service on Sengkang & Punggol LRT due to power fault",
+  "title": "LRT services disrupted on Sengkang & Punggol due to power fault",
   "componentIdsAffected": [
     "PGLRT",
     "SKLRT"
@@ -8,7 +8,9 @@
   "startAt": "2016-06-01T19:13:26.000+08:00",
   "endAt": "2016-06-01T21:30:43.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -52,5 +54,15 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/737965273051975680",
       "createdAt": "2016-06-01T19:13:26.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "PGL",
+    "COV",
+    "MRD",
+    "CRE",
+    "RIV",
+    "KDL",
+    "OAS",
+    "DAM"
   ]
 }

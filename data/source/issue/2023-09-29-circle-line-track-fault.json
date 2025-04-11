@@ -7,6 +7,9 @@
   "startAt": "2023-09-29T05:00:56.000+08:00",
   "endAt": "2023-09-29T19:31:27.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -309,5 +312,12 @@
       "createdAt": "2023-09-29T05:00:56.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "DBG",
+    "BBS",
+    "EPN",
+    "PMN",
+    "NCH",
+    "SDM"
+  ]
 }

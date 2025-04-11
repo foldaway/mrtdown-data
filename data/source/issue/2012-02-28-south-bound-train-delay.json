@@ -4,10 +4,22 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB"
+  ],
   "startAt": "2012-02-28T08:24:50.000+08:00",
   "endAt": "2012-02-28T08:53:00.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

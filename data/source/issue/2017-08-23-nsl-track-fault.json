@@ -8,6 +8,9 @@
   "endAt": "2017-08-23T08:53:29.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -39,5 +42,12 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/900138646916931584",
       "createdAt": "2017-08-23T07:32:31.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "JUR",
+    "BBT",
+    "BGB",
+    "CCK",
+    "YWT"
   ]
 }

@@ -4,10 +4,17 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "JUR",
+    "CNG"
+  ],
   "startAt": "2012-10-24T18:03:30.000+08:00",
   "endAt": "2012-10-24T18:37:03.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "platform_door.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",

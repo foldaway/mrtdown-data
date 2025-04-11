@@ -7,7 +7,10 @@
   "startAt": "2018-09-18T08:36:26.000+08:00",
   "endAt": "2018-09-18T09:07:26.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "platform_door.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -27,5 +30,13 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1041848384439476224",
       "createdAt": "2018-09-18T08:36:26.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN"
   ]
 }

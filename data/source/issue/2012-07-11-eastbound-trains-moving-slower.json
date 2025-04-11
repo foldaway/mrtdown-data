@@ -4,10 +4,17 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "CTH",
+    "RFL",
+    "TPG"
+  ],
   "startAt": "2012-07-11T07:43:28.000+08:00",
   "endAt": "2012-07-11T07:54:06.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

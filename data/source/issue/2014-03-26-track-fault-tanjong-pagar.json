@@ -4,10 +4,15 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "TPG"
+  ],
   "startAt": "2014-03-26T06:29:21.000+08:00",
   "endAt": "2014-03-26T07:17:51.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

@@ -4,10 +4,22 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "PSR",
+    "TAM",
+    "SIM",
+    "TNM",
+    "BDK",
+    "KEM",
+    "EUN",
+    "PYL"
+  ],
   "startAt": "2012-08-21T08:29:28.000+08:00",
   "endAt": "2012-08-21T08:38:25.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

@@ -1,13 +1,17 @@
 {
   "id": "2023-10-05-service-adjustments-ccl-tel",
-  "title": "Temporary service adjustments for Circle Line and Thomson East-Coast Line",
+  "title": "Service adjustments for Circle Line and Thomson East-Coast Line due to train fault",
   "componentIdsAffected": [
-    "CCL"
+    "CCL",
+    "TEL"
   ],
   "startAt": "2024-03-22T09:31:49.000+08:00",
   "endAt": "2024-03-22T10:30:10.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -39,5 +43,27 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1770986708710137869",
       "createdAt": "2024-03-22T09:31:49.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "DBG",
+    "BBS",
+    "EPN",
+    "PMN",
+    "NCH",
+    "SDM",
+    "MBT",
+    "DKT",
+    "PYL",
+    "MRB",
+    "CDT",
+    "STV",
+    "NPR",
+    "OBV",
+    "ORC",
+    "GRW",
+    "HVL",
+    "OTP",
+    "MAX",
+    "SHW"
   ]
 }

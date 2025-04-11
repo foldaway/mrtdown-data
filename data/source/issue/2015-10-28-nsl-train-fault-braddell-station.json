@@ -1,13 +1,30 @@
 {
   "id": "2015-10-28-nsl-train-fault-braddell-station",
-  "title": "Train fault causing delays on the North-South Line",
+  "title": "Train fault at Braddell station causing delays on North-South Line",
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "AMK",
+    "BSH",
+    "BDL",
+    "TAP",
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB"
+  ],
   "startAt": "2015-10-28T19:17:37.000+08:00",
-  "endAt": "2015-10-28T19:41:56.000+08:00",
+  "endAt": "2015-10-28T20:33:49.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

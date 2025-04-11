@@ -4,10 +4,20 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "TNM",
+    "BDK",
+    "KEM",
+    "EUN",
+    "PYL",
+    "ALJ"
+  ],
   "startAt": "2012-03-19T17:19:35.000+08:00",
   "endAt": "2012-03-19T17:44:20.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

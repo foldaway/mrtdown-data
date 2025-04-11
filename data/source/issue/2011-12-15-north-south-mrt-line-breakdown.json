@@ -1,13 +1,28 @@
 {
   "id": "2011-12-15-north-south-mrt-line-breakdown",
-  "title": "North-South MRT Line breakdown hits thousands",
+  "title": "North-South MRT Line breakdown during evening peak hours",
   "componentIdsAffected": [
     "NSL"
+  ],
+  "stationIdsAffected": [
+    "BSH",
+    "BDL",
+    "TAP",
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB"
   ],
   "startAt": "2011-12-15T19:58:00+08:00",
   "endAt": "2011-12-15T23:40:00+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "passenger.incident"
+  ],
   "updates": [
     {
       "type": "news.report",

@@ -8,6 +8,10 @@
   "endAt": "2019-10-21T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work",
+    "system.upgrade"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -33,5 +37,11 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1138051237318864898",
       "createdAt": "2019-06-10T19:52:13.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "SKG",
+    "CPV",
+    "RMB",
+    "BAK"
   ]
 }

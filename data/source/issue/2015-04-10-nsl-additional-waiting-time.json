@@ -4,10 +4,17 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "KRJ",
+    "MSL",
+    "WDL",
+    "ADM",
+    "SBW"
+  ],
   "startAt": "2015-04-10T06:36:40.000+08:00",
   "endAt": "2015-04-10T06:51:02.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.resolved",

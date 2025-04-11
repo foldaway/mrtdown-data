@@ -4,9 +4,17 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "JUR",
+    "BBT",
+    "JKN"
+  ],
   "startAt": "2012-04-16T09:26:18.000+08:00",
   "endAt": "2012-04-16T11:43:04.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -20,6 +28,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/191699002792742914",
       "createdAt": "2012-04-16T09:26:18.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

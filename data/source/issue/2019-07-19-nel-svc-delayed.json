@@ -7,6 +7,10 @@
   "startAt": "2019-07-19T08:11:24.000+08:00",
   "endAt": "2019-07-19T09:25:04.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -39,5 +43,21 @@
       "createdAt": "2019-07-19T08:11:24.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "HBF",
+    "OTP",
+    "CTN",
+    "CRQ",
+    "DBG",
+    "LTI",
+    "FRP",
+    "BNK",
+    "PTP",
+    "WLH",
+    "SER",
+    "KVN",
+    "HGN",
+    "BGK",
+    "SKG"
+  ]
 }

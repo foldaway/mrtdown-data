@@ -4,10 +4,30 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "SBW",
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK",
+    "BSH",
+    "BDL",
+    "TAP",
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB"
+  ],
   "startAt": "2014-01-20T08:24:13.000+08:00",
   "endAt": "2014-01-20T09:03:05.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

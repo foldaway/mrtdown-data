@@ -4,10 +4,21 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "CLE",
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN"
+  ],
   "startAt": "2012-05-02T10:33:29.000+08:00",
   "endAt": "2012-05-02T11:00:56.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",

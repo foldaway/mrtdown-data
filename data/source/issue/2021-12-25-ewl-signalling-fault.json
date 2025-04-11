@@ -7,6 +7,9 @@
   "startAt": "2021-12-25T06:04:47.000+08:00",
   "endAt": "2021-12-25T06:41:09.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -39,5 +42,9 @@
       "createdAt": "2021-12-25T06:04:47.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "TCR",
+    "TWR",
+    "TLK"
+  ]
 }

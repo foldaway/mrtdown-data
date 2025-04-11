@@ -7,7 +7,10 @@
   "startAt": "2017-11-10T23:15:15.000+08:00",
   "endAt": "2017-11-11T00:13:07.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -27,5 +30,24 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/929004531534381056",
       "createdAt": "2017-11-10T23:15:15.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "TNM",
+    "BDK",
+    "KEM",
+    "EUN",
+    "PYL",
+    "ALJ",
+    "KAL",
+    "LVR",
+    "BGS",
+    "PSR",
+    "TAM",
+    "SIM",
+    "CTH",
+    "RFL",
+    "TPG",
+    "OTP",
+    "TIB"
   ]
 }

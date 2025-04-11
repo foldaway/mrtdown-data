@@ -7,7 +7,9 @@
   "startAt": "2020-12-04T05:43:01.000+08:00",
   "endAt": "2020-12-04T10:56:35.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -111,5 +113,10 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1334614141680513024",
       "createdAt": "2020-12-04T05:43:01.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "WDN",
+    "WDL",
+    "WDS"
   ]
 }

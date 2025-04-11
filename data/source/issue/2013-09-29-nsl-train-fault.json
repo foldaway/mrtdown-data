@@ -4,10 +4,18 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "KRJ",
+    "MSL",
+    "WDL"
+  ],
   "startAt": "2013-09-29T07:06:52.000+08:00",
   "endAt": "2013-09-29T07:28:32.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

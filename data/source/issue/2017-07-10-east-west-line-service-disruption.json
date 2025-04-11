@@ -4,10 +4,22 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "BGS",
+    "CTH",
+    "RFL",
+    "TPG",
+    "OTP",
+    "TIB",
+    "RDH",
+    "QUE"
+  ],
   "startAt": "2017-07-10T18:46:54.000+08:00",
   "endAt": "2017-07-10T20:31:59.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

@@ -7,7 +7,9 @@
   "startAt": "2018-02-07T08:14:30.000+08:00",
   "endAt": "2018-02-07T08:46:35.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -39,5 +41,18 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/961030371159678976",
       "createdAt": "2018-02-07T08:14:30.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "AMK",
+    "BSH",
+    "BDL",
+    "TAP",
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL"
   ]
 }

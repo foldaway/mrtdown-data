@@ -7,7 +7,10 @@
   "startAt": "2024-01-14T08:09:35.000+08:00",
   "endAt": "2024-01-14T08:53:54.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -39,5 +42,27 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1746323639954440512",
       "createdAt": "2024-01-14T08:09:35.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "WDN",
+    "WDL",
+    "WDS",
+    "SPL",
+    "LTR",
+    "MFL",
+    "BRH",
+    "UTS",
+    "CDT",
+    "STV",
+    "NPR",
+    "OBV",
+    "ORC",
+    "GRW",
+    "HVL",
+    "OTP",
+    "MAX",
+    "SHW",
+    "MRB",
+    "GRB"
   ]
 }

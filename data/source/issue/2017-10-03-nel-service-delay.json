@@ -7,6 +7,10 @@
   "startAt": "2017-10-03T13:31:54.000+08:00",
   "endAt": "2017-10-03T14:41:09.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -51,5 +55,9 @@
       "createdAt": "2017-10-03T13:31:54.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "BGK",
+    "SKG",
+    "PGL"
+  ]
 }

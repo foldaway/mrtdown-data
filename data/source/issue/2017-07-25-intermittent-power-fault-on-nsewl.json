@@ -5,10 +5,39 @@
     "NSL",
     "EWL"
   ],
+  "stationIdsAffected": [
+    "CTH",
+    "RFL",
+    "TPG",
+    "OTP",
+    "TIB",
+    "RDH",
+    "QUE",
+    "COM",
+    "BNV",
+    "DVR",
+    "CLE",
+    "JUR",
+    "TAP",
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "CCK",
+    "YWT",
+    "KRJ",
+    "MSL",
+    "WDL",
+    "ADM",
+    "SBW"
+  ],
   "startAt": "2017-07-25T07:26:15.000+08:00",
   "endAt": "2017-07-25T10:19:09.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

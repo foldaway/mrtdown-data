@@ -1,13 +1,18 @@
 {
   "id": "2012-06-12-northbound-train-slow",
-  "title": "Northbound train service from Ang Mo Kio travelling slower.",
+  "title": "Northbound train service disruption from Ang Mo Kio",
   "componentIdsAffected": [
     "NSL"
+  ],
+  "stationIdsAffected": [
+    "AMK"
   ],
   "startAt": "2012-06-12T18:47:19.000+08:00",
   "endAt": "2012-06-12T18:53:01.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",

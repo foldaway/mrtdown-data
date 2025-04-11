@@ -4,9 +4,22 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "YWT",
+    "KRJ",
+    "MSL",
+    "WDL",
+    "ADM",
+    "SBW",
+    "YIS"
+  ],
   "startAt": "2017-06-02T17:53:31.000+08:00",
   "endAt": "2017-06-02T20:27:12.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -50,6 +63,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/870579121016799232",
       "createdAt": "2017-06-02T17:53:31.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

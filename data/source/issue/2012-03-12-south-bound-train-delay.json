@@ -1,12 +1,23 @@
 {
   "id": "2012-03-12-south-bound-train-delay",
-  "title": "South-bound train service delayed from Bukit Gombak to Woodlands",
+  "title": "South-bound train service from Bukit Gombak to Woodlands disrupted",
   "componentIdsAffected": [
     "NSL"
+  ],
+  "stationIdsAffected": [
+    "BGB",
+    "CCK",
+    "YWT",
+    "KRJ",
+    "MSL",
+    "WDL"
   ],
   "startAt": "2012-03-12T09:36:33.000+08:00",
   "endAt": "2012-03-12T09:51:46.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",
@@ -20,6 +31,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/179018006360375296",
       "createdAt": "2012-03-12T09:36:33.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

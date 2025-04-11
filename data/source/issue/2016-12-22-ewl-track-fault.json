@@ -4,10 +4,25 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "EUN",
+    "PYL",
+    "ALJ",
+    "KAL",
+    "LVR",
+    "BGS",
+    "CTH",
+    "RFL",
+    "TPG",
+    "OTP"
+  ],
   "startAt": "2016-12-22T19:29:01.000+08:00",
   "endAt": "2016-12-22T20:24:46.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

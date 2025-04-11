@@ -4,10 +4,25 @@
   "componentIdsAffected": [
     "NEL"
   ],
+  "stationIdsAffected": [
+    "LTI",
+    "FRP",
+    "BNK",
+    "PTP",
+    "WLH",
+    "SER",
+    "KVN",
+    "HGN",
+    "BGK",
+    "SKG",
+    "PGL"
+  ],
   "startAt": "2012-12-20T16:47:58.000+08:00",
   "endAt": "2012-12-20T17:14:40.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",

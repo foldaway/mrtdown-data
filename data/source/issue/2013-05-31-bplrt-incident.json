@@ -4,10 +4,18 @@
   "componentIdsAffected": [
     "BPLRT"
   ],
+  "stationIdsAffected": [
+    "CCK",
+    "SHV",
+    "KTH",
+    "TKW",
+    "PNX",
+    "BKP"
+  ],
   "startAt": "2013-05-31T20:51:25.000+08:00",
   "endAt": "2013-05-31T22:04:22.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.resolved",

@@ -1,12 +1,20 @@
 {
   "id": "2015-01-19-train-service-delay",
-  "title": "Train service delay between Admiralty and Yishun on southbound",
+  "title": "Train service disruption between Admiralty and Yishun on southbound",
   "componentIdsAffected": [
     "NSL"
+  ],
+  "stationIdsAffected": [
+    "ADM",
+    "SBW",
+    "YIS"
   ],
   "startAt": "2015-01-19T15:23:43.000+08:00",
   "endAt": "2015-01-19T15:32:00.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -20,6 +28,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/557075917772554240",
       "createdAt": "2015-01-19T15:23:43.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

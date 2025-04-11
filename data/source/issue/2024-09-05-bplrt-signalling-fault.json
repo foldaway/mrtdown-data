@@ -7,7 +7,9 @@
   "startAt": "2024-09-05T04:55:32.000+08:00",
   "endAt": "2024-09-05T05:13:29.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,5 +35,15 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1831435954827227347",
       "createdAt": "2024-09-05T04:55:32.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "BKP",
+    "PTR",
+    "PND",
+    "BKT",
+    "FJR",
+    "SGR",
+    "JLP",
+    "SNJ"
   ]
 }

@@ -4,10 +4,20 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN"
+  ],
   "startAt": "2016-02-19T17:43:22.000+08:00",
   "endAt": "2016-02-19T18:02:58.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

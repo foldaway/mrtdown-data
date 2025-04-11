@@ -4,10 +4,23 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "TPG",
+    "OTP",
+    "TIB",
+    "RDH",
+    "QUE",
+    "COM",
+    "BNV",
+    "DVR",
+    "CLE"
+  ],
   "startAt": "2017-07-21T17:34:43.000+08:00",
   "endAt": "2017-07-21T17:45:59.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

@@ -7,7 +7,10 @@
   "startAt": "2017-08-31T18:19:33.000+08:00",
   "endAt": "2017-08-31T18:55:24.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,5 +36,18 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/903200580876636161",
       "createdAt": "2017-08-31T18:19:33.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "JUR",
+    "BBT",
+    "BGB",
+    "CCK",
+    "YWT",
+    "KRJ",
+    "MSL",
+    "WDL",
+    "ADM",
+    "SBW",
+    "YIS"
   ]
 }

@@ -4,9 +4,17 @@
   "componentIdsAffected": [
     "NEL"
   ],
+  "stationIdsAffected": [
+    "BGK",
+    "SKG"
+  ],
   "startAt": "2015-04-13T16:23:45.000+08:00",
   "endAt": "2015-04-13T17:12:33.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -26,6 +34,5 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/587531608304914432",
       "createdAt": "2015-04-13T16:23:45.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

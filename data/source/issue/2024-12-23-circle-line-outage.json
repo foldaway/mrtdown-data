@@ -7,7 +7,9 @@
   "startAt": "2024-12-23T12:46:48.000+08:00",
   "endAt": "2024-12-23T13:19:28.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -39,5 +41,17 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1871054828673421706",
       "createdAt": "2024-12-23T12:46:48.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "PYL",
+    "MPS",
+    "TSG",
+    "BLY",
+    "SER",
+    "LRC",
+    "BSH",
+    "MRM",
+    "CDT",
+    "BTN"
   ]
 }

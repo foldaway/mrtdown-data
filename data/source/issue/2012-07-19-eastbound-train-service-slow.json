@@ -4,10 +4,28 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "PSR",
+    "TAM",
+    "SIM",
+    "TNM",
+    "BDK",
+    "KEM",
+    "EUN",
+    "PYL",
+    "ALJ",
+    "KAL",
+    "LVR",
+    "BGS",
+    "CTH",
+    "RFL"
+  ],
   "startAt": "2012-07-19T08:47:06.000+08:00",
   "endAt": "2012-07-19T08:56:35.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

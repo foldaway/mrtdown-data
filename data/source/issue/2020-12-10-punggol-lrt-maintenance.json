@@ -4,10 +4,13 @@
   "componentIdsAffected": [
     "PGLRT"
   ],
-  "startAt": "2020-12-10T08:08:53.000+08:00",
+  "startAt": "2020-12-12T00:00:00.000+08:00",
   "endAt": "2020-12-14T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -15,5 +18,21 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1336825175619223552",
       "createdAt": "2020-12-10T08:08:53.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "PGL",
+    "SMK",
+    "PGP",
+    "SMD",
+    "NBG",
+    "SMG",
+    "STK",
+    "COV",
+    "MRD",
+    "CRE",
+    "RIV",
+    "KDL",
+    "OAS",
+    "DAM"
   ]
 }

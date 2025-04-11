@@ -4,10 +4,16 @@
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "MRB",
+    "PMN"
+  ],
   "startAt": "2015-12-10T09:20:42.000+08:00",
   "endAt": "2015-12-10T09:32:23.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

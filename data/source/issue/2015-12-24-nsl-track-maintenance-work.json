@@ -1,13 +1,22 @@
 {
   "id": "2015-12-24-nsl-track-maintenance-work",
-  "title": "Track maintenance work on NSL",
+  "title": "Track maintenance work on North-South Line",
   "componentIdsAffected": [
     "NSL"
+  ],
+  "stationIdsAffected": [
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK"
   ],
   "startAt": "2015-12-24T05:28:24.000+08:00",
   "endAt": "2015-12-24T05:54:18.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "operator.update",

@@ -8,6 +8,9 @@
   "endAt": "2019-07-21T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -15,5 +18,9 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1152179214394675200",
       "createdAt": "2019-07-19T19:31:45.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "SER",
+    "KVN"
   ]
 }

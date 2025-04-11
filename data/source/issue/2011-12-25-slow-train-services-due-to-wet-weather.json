@@ -6,9 +6,30 @@
     "EWL",
     "CCL"
   ],
+  "stationIdsAffected": [
+    "BSH",
+    "BDL",
+    "TAP",
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "PSR",
+    "TAM",
+    "SIM",
+    "TNM",
+    "CTH",
+    "RFL",
+    "MRB"
+  ],
   "startAt": "2011-12-25T09:12:29.000+08:00",
   "endAt": "2011-12-26T00:00:00.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "weather",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -22,6 +43,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/150745698877452290",
       "createdAt": "2011-12-25T09:12:29.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

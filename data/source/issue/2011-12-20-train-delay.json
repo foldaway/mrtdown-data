@@ -5,9 +5,19 @@
     "EWL",
     "NSL"
   ],
+  "stationIdsAffected": [
+    "ORC",
+    "SOM",
+    "DBG",
+    "BSH",
+    "BDL"
+  ],
   "startAt": "2011-12-20T08:37:29.000+08:00",
-  "endAt": "2011-12-21T00:00:00.000+08:00",
+  "endAt": "2011-12-20T00:00:00.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -21,6 +31,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/148924948289818624",
       "createdAt": "2011-12-20T08:37:29.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

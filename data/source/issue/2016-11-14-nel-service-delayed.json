@@ -4,9 +4,19 @@
   "componentIdsAffected": [
     "NEL"
   ],
+  "stationIdsAffected": [
+    "OTP",
+    "CTN",
+    "CRQ",
+    "DBG"
+  ],
   "startAt": "2016-11-14T09:34:50.000+08:00",
   "endAt": "2016-11-14T10:56:00.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -32,6 +42,5 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/797976050617577472",
       "createdAt": "2016-11-14T09:34:50.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

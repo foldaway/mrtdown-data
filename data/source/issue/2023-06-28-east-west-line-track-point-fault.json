@@ -7,6 +7,10 @@
   "startAt": "2023-06-28T05:59:58.000+08:00",
   "endAt": "2023-06-28T06:31:48.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,5 +37,12 @@
       "createdAt": "2023-06-28T05:59:58.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN"
+  ]
 }

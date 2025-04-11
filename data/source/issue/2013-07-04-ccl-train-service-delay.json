@@ -4,9 +4,42 @@
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "DBG",
+    "BBS",
+    "EPN",
+    "PMN",
+    "NCH",
+    "SDM",
+    "MBT",
+    "DKT",
+    "PYL",
+    "MPS",
+    "TSG",
+    "BLY",
+    "SER",
+    "LRC",
+    "BSH",
+    "MRM",
+    "CDT",
+    "BTN",
+    "FRR",
+    "HLV",
+    "BNV",
+    "ONH",
+    "KRG",
+    "HRB",
+    "PPJ",
+    "LBD",
+    "TLB",
+    "HBF"
+  ],
   "startAt": "2013-07-04T18:03:44.000+08:00",
   "endAt": "2013-07-04T18:18:25.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -20,6 +53,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/352729432269668352",
       "createdAt": "2013-07-04T18:03:44.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

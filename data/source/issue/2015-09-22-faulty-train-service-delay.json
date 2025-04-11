@@ -4,10 +4,16 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "YIS"
+  ],
   "startAt": "2015-09-22T08:40:39.000+08:00",
   "endAt": "2015-09-22T08:48:15.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",

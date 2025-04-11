@@ -4,10 +4,27 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "AMK",
+    "BSH",
+    "BDL",
+    "TAP",
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB"
+  ],
   "startAt": "2014-01-29T20:32:47.000+08:00",
   "endAt": "2014-01-29T21:15:08.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

@@ -4,10 +4,26 @@
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "CDT",
+    "BTN",
+    "FRR",
+    "HLV",
+    "BNV",
+    "ONH",
+    "KRG",
+    "HRB",
+    "PPJ",
+    "LBD",
+    "TLB",
+    "HBF"
+  ],
   "startAt": "2014-05-27T11:35:29.000+08:00",
   "endAt": "2014-05-27T12:02:48.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

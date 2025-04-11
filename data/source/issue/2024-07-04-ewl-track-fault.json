@@ -7,7 +7,10 @@
   "startAt": "2024-07-04T06:17:00.000+08:00",
   "endAt": "2024-07-04T07:48:53.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -81,5 +84,12 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1808626018749665642",
       "createdAt": "2024-07-04T06:17:00.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "CLE",
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL"
   ]
 }

@@ -4,10 +4,22 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "CCK",
+    "YWT",
+    "KRJ",
+    "MSL",
+    "WDL",
+    "ADM",
+    "SBW",
+    "YIS"
+  ],
   "startAt": "2012-10-28T07:02:52.000+08:00",
   "endAt": "2012-10-28T07:18:24.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

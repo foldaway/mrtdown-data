@@ -4,10 +4,18 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "BNL",
+    "PNR",
+    "JKN"
+  ],
   "startAt": "2015-12-17T19:49:33.000+08:00",
   "endAt": "2015-12-17T22:05:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",

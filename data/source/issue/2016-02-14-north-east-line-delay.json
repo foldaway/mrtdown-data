@@ -4,9 +4,30 @@
   "componentIdsAffected": [
     "NEL"
   ],
+  "stationIdsAffected": [
+    "HBF",
+    "OTP",
+    "CTN",
+    "CRQ",
+    "DBG",
+    "LTI",
+    "FRP",
+    "BNK",
+    "PTP",
+    "WLH",
+    "SER",
+    "KVN",
+    "HGN",
+    "BGK",
+    "SKG",
+    "PGL"
+  ],
   "startAt": "2016-02-14T23:56:21.000+08:00",
   "endAt": "2016-02-15T00:20:00.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -32,6 +53,5 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/698898581126709248",
       "createdAt": "2016-02-14T23:56:21.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

@@ -7,7 +7,10 @@
   "startAt": "2019-05-22T12:40:17.000+08:00",
   "endAt": "2019-05-22T13:07:41.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,5 +36,11 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1131057168252252160",
       "createdAt": "2019-05-22T12:40:17.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "DBG",
+    "BBS",
+    "EPN",
+    "PMN"
   ]
 }

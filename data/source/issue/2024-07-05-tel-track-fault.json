@@ -7,7 +7,9 @@
   "startAt": "2024-07-05T11:13:36.000+08:00",
   "endAt": "2024-07-05T11:24:20.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",
@@ -21,5 +23,20 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1809063049892171915",
       "createdAt": "2024-07-05T11:13:36.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "WDN",
+    "WDL",
+    "WDS",
+    "SPL",
+    "LTR",
+    "MFL",
+    "BRH",
+    "UTS",
+    "CDT",
+    "STV",
+    "NPR",
+    "OBV",
+    "ORC"
   ]
 }

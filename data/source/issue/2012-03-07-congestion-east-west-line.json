@@ -1,13 +1,15 @@
 {
   "id": "2012-03-07-congestion-east-west-line",
-  "title": "Congestion on East-West line due to earlier track fault",
+  "title": "Congestion on East-West Line due to earlier track fault",
   "componentIdsAffected": [
     "EWL"
   ],
   "startAt": "2012-03-07T20:47:27.000+08:00",
   "endAt": "2012-03-07T21:37:19.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -21,5 +23,36 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/177374906965688320",
       "createdAt": "2012-03-07T20:47:27.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "PSR",
+    "TAM",
+    "SIM",
+    "TNM",
+    "BDK",
+    "KEM",
+    "EUN",
+    "PYL",
+    "ALJ",
+    "KAL",
+    "LVR",
+    "BGS",
+    "CTH",
+    "RFL",
+    "TPG",
+    "OTP",
+    "TIB",
+    "RDH",
+    "QUE",
+    "COM",
+    "BNV",
+    "DVR",
+    "CLE",
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN"
   ]
 }

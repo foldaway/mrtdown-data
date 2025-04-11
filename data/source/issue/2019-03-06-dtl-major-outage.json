@@ -7,7 +7,7 @@
   "startAt": "2019-03-06T09:01:32.000+08:00",
   "endAt": "2019-03-06T09:19:20.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.resolved",
@@ -21,5 +21,33 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1103098252340060160",
       "createdAt": "2019-03-06T09:01:32.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "BTW",
+    "KAP",
+    "SAV",
+    "TKK",
+    "BTN",
+    "STV",
+    "NEW",
+    "LTI",
+    "RCR",
+    "BGS",
+    "PMN",
+    "BFT",
+    "DTN",
+    "TLA",
+    "CTN",
+    "FCN",
+    "BCL",
+    "JLB",
+    "BDM",
+    "GLB",
+    "MTR",
+    "MPS",
+    "UBI",
+    "KKB",
+    "BDN",
+    "BDR"
   ]
 }

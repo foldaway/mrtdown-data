@@ -7,6 +7,9 @@
   "startAt": "2024-10-10T12:31:16.000+08:00",
   "endAt": "2024-10-10T13:22:49.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -51,5 +54,14 @@
       "createdAt": "2024-10-10T12:31:16.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "BGS",
+    "CTH",
+    "RFL",
+    "TPG",
+    "OTP",
+    "TIB",
+    "RDH",
+    "QUE"
+  ]
 }

@@ -4,10 +4,17 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "AMK",
+    "BSH"
+  ],
   "startAt": "2015-01-23T05:37:32.000+08:00",
   "endAt": "2015-01-23T05:49:43+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",

@@ -4,9 +4,25 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "TAP",
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB",
+    "MSP"
+  ],
   "startAt": "2017-09-15T21:06:51.000+08:00",
   "endAt": "2017-09-15T21:43:11.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -26,6 +42,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/908678498767708160",
       "createdAt": "2017-09-15T21:06:51.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

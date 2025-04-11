@@ -4,10 +4,19 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "CLE",
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL"
+  ],
   "startAt": "2017-01-04T07:47:52.000+08:00",
   "endAt": "2017-01-04T08:38:50.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

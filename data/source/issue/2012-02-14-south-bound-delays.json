@@ -1,12 +1,16 @@
 {
   "id": "2012-02-14-south-bound-delays",
-  "title": "Delays on South-bound and East-bound Train Services",
+  "title": "Delays on South-bound Train Services",
   "componentIdsAffected": [
-    "NSL"
+    "NSL",
+    "EWL"
   ],
   "startAt": "2012-02-14T08:30:13.000+08:00",
   "endAt": "2012-02-14T09:10:32.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",
@@ -21,5 +25,8 @@
       "createdAt": "2012-02-14T08:30:13.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "MRB",
+    "PSR"
+  ]
 }

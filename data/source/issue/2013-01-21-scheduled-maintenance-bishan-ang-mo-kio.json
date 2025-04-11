@@ -1,0 +1,26 @@
+{
+  "id": "2013-01-21-scheduled-maintenance-bishan-ang-mo-kio",
+  "title": "Scheduled Maintenance for Track Works between Bishan and Ang Mo Kio Stations",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "stationIdsAffected": [
+    "AMK",
+    "BSH"
+  ],
+  "startAt": "2013-01-21T01:30:00.000+08:00",
+  "endAt": "2013-02-21T04:30:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "[NSL] Planned track works from Bishan to Ang Mo Kio stations.1.30am &amp; 4.30am. 21/01/13 to 21/02/13 http://t.co/nfVGPqDh",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/292985403856805889",
+      "createdAt": "2013-01-20T21:22:18.000+08:00"
+    }
+  ]
+}

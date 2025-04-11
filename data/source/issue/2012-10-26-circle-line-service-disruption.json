@@ -4,10 +4,16 @@
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB"
+  ],
   "startAt": "2012-10-26T00:18:05.000+08:00",
-  "endAt": "2012-10-27T05:30:00.000+08:00",
+  "endAt": null,
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.update",

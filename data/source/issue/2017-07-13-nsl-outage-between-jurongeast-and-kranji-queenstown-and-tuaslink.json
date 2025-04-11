@@ -5,10 +5,34 @@
     "NSL",
     "EWL"
   ],
+  "stationIdsAffected": [
+    "JUR",
+    "BBT",
+    "BGB",
+    "CCK",
+    "YWT",
+    "KRJ",
+    "QUE",
+    "COM",
+    "BNV",
+    "DVR",
+    "CLE",
+    "CNG",
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN",
+    "GCL",
+    "TCR",
+    "TWR",
+    "TLK"
+  ],
   "startAt": "2017-07-13T00:02:45.000+08:00",
   "endAt": "2017-07-13T01:20:02.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

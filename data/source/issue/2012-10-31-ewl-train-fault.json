@@ -4,10 +4,41 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "PSR",
+    "TAM",
+    "SIM",
+    "TNM",
+    "BDK",
+    "KEM",
+    "EUN",
+    "PYL",
+    "ALJ",
+    "KAL",
+    "LVR",
+    "BGS",
+    "CTH",
+    "RFL",
+    "TPG",
+    "OTP",
+    "TIB",
+    "RDH",
+    "QUE",
+    "COM",
+    "BNV",
+    "DVR",
+    "CLE",
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL"
+  ],
   "startAt": "2012-10-31T13:24:43.000+08:00",
   "endAt": "2012-10-31T13:35:50.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

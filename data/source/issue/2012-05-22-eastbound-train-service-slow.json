@@ -1,13 +1,19 @@
 {
   "id": "2012-05-22-eastbound-train-service-slow",
-  "title": "Eastbound train service disruption between Boon Lay and Lakeside",
+  "title": "Eastbound train service disruption",
   "componentIdsAffected": [
     "EWL"
+  ],
+  "stationIdsAffected": [
+    "LKS",
+    "BNL"
   ],
   "startAt": "2012-05-22T21:36:29.000+08:00",
   "endAt": "2012-05-22T22:23:22.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",

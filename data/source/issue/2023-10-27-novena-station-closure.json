@@ -7,7 +7,7 @@
   "startAt": "2023-10-27T17:49:16.000+08:00",
   "endAt": "2023-10-27T19:29:17.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.resolved",
@@ -57,5 +57,10 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1717840881469067326",
       "createdAt": "2023-10-27T17:49:16.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "TAP",
+    "NOV",
+    "NEW"
   ]
 }

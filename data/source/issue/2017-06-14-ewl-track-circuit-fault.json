@@ -4,10 +4,17 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "BNV",
+    "DVR"
+  ],
   "startAt": "2017-06-14T08:13:40.000+08:00",
   "endAt": "2017-06-14T12:55:54.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

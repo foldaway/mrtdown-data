@@ -4,10 +4,19 @@
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "DBG",
+    "BBS",
+    "EPN",
+    "PMN"
+  ],
   "startAt": "2015-11-12T06:33:15.000+08:00",
   "endAt": "2015-11-12T06:47:58.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",

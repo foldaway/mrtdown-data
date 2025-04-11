@@ -1,0 +1,26 @@
+{
+  "id": "2013-05-02-ewl-maintenance",
+  "title": "Maintenance work on East West Line affecting service between Clementi and Jurong East",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "stationIdsAffected": [
+    "CLE",
+    "JUR"
+  ],
+  "startAt": "2013-05-02T00:00:00+08:00",
+  "endAt": "2013-05-20T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "[EWL]We’re  doing maintenance work to keep you on track. From Clementi to Jurong East, 2  May- 20 May. http://t.co/H0pp8ChIp9",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/329456859272593408",
+      "createdAt": "2013-05-01T12:46:50.000+08:00"
+    }
+  ]
+}

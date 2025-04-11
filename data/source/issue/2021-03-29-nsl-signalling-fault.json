@@ -7,7 +7,9 @@
   "startAt": "2021-03-29T05:47:22.000+08:00",
   "endAt": "2021-03-29T10:20:47.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -99,5 +101,19 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1376289838425497605",
       "createdAt": "2021-03-29T05:47:22.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "BSH",
+    "BDL",
+    "TAP",
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB",
+    "MSP"
   ]
 }

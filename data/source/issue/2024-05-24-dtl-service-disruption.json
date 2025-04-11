@@ -7,7 +7,7 @@
   "startAt": "2024-05-24T05:12:43.000+08:00",
   "endAt": "2024-05-24T07:26:00.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.update",
@@ -45,5 +45,18 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1793751940075340086",
       "createdAt": "2024-05-24T05:12:43.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "FCN",
+    "BCL",
+    "JLB",
+    "BDM",
+    "GLB",
+    "MTR",
+    "CTN",
+    "MPS",
+    "UBI",
+    "KKB",
+    "BDN"
   ]
 }

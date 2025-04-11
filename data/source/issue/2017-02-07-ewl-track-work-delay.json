@@ -4,10 +4,20 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN"
+  ],
   "startAt": "2017-02-07T08:12:47.000+08:00",
   "endAt": "2017-02-07T09:11:32.000+08:00",
   "type": "disruption",
-  "severity": "minor",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

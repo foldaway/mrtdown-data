@@ -4,10 +4,20 @@
   "componentIdsAffected": [
     "BPLRT"
   ],
+  "stationIdsAffected": [
+    "CCK",
+    "SHV",
+    "KTH",
+    "TKW",
+    "PNX",
+    "BKP"
+  ],
   "startAt": "2012-04-22T17:32:58.000+08:00",
   "endAt": "2012-04-22T19:33:07.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",

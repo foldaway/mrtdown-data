@@ -1,0 +1,41 @@
+{
+  "id": "2017-04-06-nsl-stationary-signalling-trial",
+  "title": "North-South Line trains stationary for signalling system trial",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "stationIdsAffected": [
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB",
+    "MSP",
+    "BDL",
+    "TAP",
+    "BSH",
+    "NOV",
+    "YWT",
+    "KRJ",
+    "MSL",
+    "WDL",
+    "ADM",
+    "SBW",
+    "KTB",
+    "YCK"
+  ],
+  "startAt": "2017-04-06T21:00:39.000+08:00",
+  "endAt": "2017-04-06T23:00:39.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "system.upgrade"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "[NSL]:All trains along NSL will be stationary @ ard 11pm for ~10mins tonight for trial of the new signalling system. https://t.co/KXZ7cJcdCS",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/849970107300196352",
+      "createdAt": "2017-04-06T21:00:39.000+08:00"
+    }
+  ]
+}

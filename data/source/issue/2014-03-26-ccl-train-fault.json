@@ -4,10 +4,21 @@
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "DBG",
+    "BBS",
+    "EPN",
+    "PMN",
+    "NCH",
+    "SDM",
+    "MBT"
+  ],
   "startAt": "2014-03-30T20:58:32.000+08:00",
   "endAt": "2014-03-30T21:05:33.000+08:00",
   "type": "disruption",
-  "severity": "minor",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

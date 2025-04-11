@@ -7,6 +7,9 @@
   "startAt": "2018-01-11T06:19:35.000+08:00",
   "endAt": "2018-01-11T06:33:41.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -27,5 +30,11 @@
       "createdAt": "2018-01-11T06:19:35.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "BGS",
+    "CTH",
+    "RFL",
+    "TPG",
+    "OTP"
+  ]
 }

@@ -1,13 +1,22 @@
 {
   "id": "2013-10-03-nsl-train-fault",
-  "title": "Train fault causing delays",
+  "title": "Train fault causing delays on NSL",
   "componentIdsAffected": [
     "NSL"
+  ],
+  "stationIdsAffected": [
+    "WDL",
+    "ADM",
+    "SBW",
+    "YIS"
   ],
   "startAt": "2013-10-03T17:03:38.000+08:00",
   "endAt": "2013-10-03T17:26:36.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",

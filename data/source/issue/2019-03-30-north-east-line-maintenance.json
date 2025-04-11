@@ -4,10 +4,43 @@
   "componentIdsAffected": [
     "NEL"
   ],
+  "stationIdsAffected": [
+    "DBG",
+    "BBS",
+    "EPN",
+    "PMN",
+    "NCH",
+    "SDM",
+    "MBT",
+    "DKT",
+    "PYL",
+    "MPS",
+    "TSG",
+    "BLY",
+    "SER",
+    "LRC",
+    "BSH",
+    "MRM",
+    "CDT",
+    "BTN",
+    "FRR",
+    "HLV",
+    "BNV",
+    "ONH",
+    "KRG",
+    "HRB",
+    "PPJ",
+    "LBD",
+    "TLB",
+    "HBF"
+  ],
   "startAt": "2019-03-30T23:00:00.000+08:00",
   "endAt": "2019-03-31T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",

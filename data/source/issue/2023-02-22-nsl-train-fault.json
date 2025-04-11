@@ -7,7 +7,10 @@
   "startAt": "2023-02-22T10:10:23.000+08:00",
   "endAt": "2023-02-22T10:56:03.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -63,5 +66,15 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1628215596482723840",
       "createdAt": "2023-02-22T10:10:23.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "WDL",
+    "ADM",
+    "SBW",
+    "CBR",
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK"
   ]
 }

@@ -4,10 +4,34 @@
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "DKT",
+    "PYL",
+    "MPS",
+    "TSG",
+    "BLY",
+    "SER",
+    "LRC",
+    "BSH",
+    "MRM",
+    "CDT",
+    "BTN",
+    "FRR",
+    "HLV",
+    "BNV",
+    "ONH",
+    "KRG",
+    "HRB",
+    "PPJ",
+    "LBD"
+  ],
   "startAt": "2015-11-25T05:22:29.000+08:00",
   "endAt": "2015-11-25T05:32:58.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

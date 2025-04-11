@@ -7,6 +7,10 @@
   "startAt": "2021-07-29T09:08:25.000+08:00",
   "endAt": "2021-07-29T10:05:07.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -45,5 +49,13 @@
       "createdAt": "2021-07-29T09:08:25.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "CDT",
+    "BTN",
+    "FRR",
+    "HLV",
+    "BNV",
+    "ONH",
+    "KRG"
+  ]
 }

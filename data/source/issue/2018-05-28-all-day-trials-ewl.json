@@ -1,12 +1,32 @@
 {
   "id": "2018-05-28-all-day-trials-ewl",
-  "title": "All-day trials on East-West Line",
+  "title": "Service disruption on East-West Line due to power fault",
   "componentIdsAffected": [
     "EWL"
+  ],
+  "stationIdsAffected": [
+    "QUE",
+    "COM",
+    "BNV",
+    "DVR",
+    "CLE",
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN",
+    "GCL",
+    "TCR",
+    "TWR",
+    "TLK"
   ],
   "startAt": "2018-08-14T19:08:46.000+08:00",
   "endAt": "2018-08-14T19:40:30.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -26,6 +46,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1029323942668857345",
       "createdAt": "2018-08-14T19:08:46.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

@@ -8,6 +8,9 @@
   "endAt": "2020-11-29T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -15,5 +18,11 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1329272659385860096",
       "createdAt": "2020-11-19T11:57:53.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "GCL",
+    "TCR",
+    "TWR",
+    "TLK"
   ]
 }

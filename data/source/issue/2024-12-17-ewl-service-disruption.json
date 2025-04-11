@@ -7,6 +7,9 @@
   "startAt": "2024-12-17T19:37:03.000+08:00",
   "endAt": "2024-12-17T20:05:43.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -33,5 +36,13 @@
       "createdAt": "2024-12-17T19:37:03.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN",
+    "GCL"
+  ]
 }

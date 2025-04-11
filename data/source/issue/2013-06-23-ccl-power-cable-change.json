@@ -1,11 +1,22 @@
 {
   "id": "2013-06-23-ccl-power-cable-change",
-  "title": "Travel time increase on Circle Line due to maintenance",
+  "title": "Travel time increase on the Circle Line due to maintenance",
   "componentIdsAffected": [
     "CCL"
   ],
+  "stationIdsAffected": [
+    "CDT",
+    "BTN",
+    "FRR",
+    "HLV"
+  ],
   "startAt": "2013-06-23T06:00:00.000+08:00",
   "endAt": "2013-06-23T10:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -31,7 +42,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/347594840747425792",
       "createdAt": "2013-06-20T14:00:42.000+08:00"
     }
-  ],
-  "type": "maintenance",
-  "cancelledAt": null
+  ]
 }

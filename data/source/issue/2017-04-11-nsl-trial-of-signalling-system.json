@@ -4,10 +4,30 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "WDL",
+    "ADM",
+    "SBW",
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK",
+    "BSH",
+    "BDL",
+    "TAP",
+    "NOV",
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG"
+  ],
   "startAt": "2017-04-11T21:00:23.000+08:00",
   "endAt": "2017-04-11T21:10:23.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "system.upgrade"
+  ],
   "updates": [
     {
       "type": "planned",

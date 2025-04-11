@@ -7,6 +7,9 @@
   "startAt": "2022-09-13T20:24:42.000+08:00",
   "endAt": "2022-09-13T21:00:00.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -21,5 +24,40 @@
       "createdAt": "2022-09-13T20:24:42.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "BKP",
+    "CSW",
+    "HVW",
+    "BTW",
+    "KAP",
+    "SAV",
+    "TKK",
+    "BTN",
+    "STV",
+    "NEW",
+    "LTI",
+    "RCR",
+    "BGS",
+    "PMN",
+    "BFT",
+    "DTN",
+    "TLA",
+    "CTN",
+    "FCN",
+    "BCL",
+    "JLB",
+    "BDM",
+    "GLB",
+    "MTR",
+    "MPS",
+    "UBI",
+    "KKB",
+    "BDN",
+    "BDR",
+    "TPW",
+    "TAM",
+    "TPE",
+    "UPC",
+    "XPO"
+  ]
 }

@@ -5,10 +5,16 @@
     "SKLRT",
     "PGLRT"
   ],
+  "stationIdsAffected": [
+    "SKG",
+    "PGL"
+  ],
   "startAt": "2015-12-23T14:06:14.000+08:00",
   "endAt": "2015-12-23T14:32:00.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

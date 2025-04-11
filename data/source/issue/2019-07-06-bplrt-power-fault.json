@@ -7,7 +7,9 @@
   "startAt": "2019-07-06T11:08:31.000+08:00",
   "endAt": "2019-07-06T11:37:30.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -21,5 +23,11 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1147341527170990080",
       "createdAt": "2019-07-06T11:08:31.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "BKT",
+    "FJR",
+    "SGR",
+    "JLP"
   ]
 }

@@ -7,7 +7,9 @@
   "startAt": "2024-03-28T18:51:33.000+08:00",
   "endAt": "2024-03-28T19:28:23.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -33,5 +35,9 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1773301899623801228",
       "createdAt": "2024-03-28T18:51:33.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "CCK",
+    "SHV"
   ]
 }

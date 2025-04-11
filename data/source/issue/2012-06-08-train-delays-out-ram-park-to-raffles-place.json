@@ -4,10 +4,17 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "RFL",
+    "TPG",
+    "OTP"
+  ],
   "startAt": "2012-06-08T07:27:39.000+08:00",
   "endAt": "2012-06-08T07:47:59.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.update",

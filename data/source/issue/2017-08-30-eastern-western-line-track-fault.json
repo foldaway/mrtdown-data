@@ -7,6 +7,9 @@
   "startAt": "2017-08-30T08:42:27.000+08:00",
   "endAt": "2017-08-30T12:28:32.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,5 +36,13 @@
       "createdAt": "2017-08-30T08:42:27.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "RDH",
+    "QUE",
+    "COM",
+    "BNV",
+    "DVR",
+    "CLE",
+    "JUR"
+  ]
 }

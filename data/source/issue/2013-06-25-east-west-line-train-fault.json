@@ -1,13 +1,19 @@
 {
   "id": "2013-06-25-east-west-line-train-fault",
-  "title": "Train Fault on East West Line",
+  "title": "Train Delay on East West Line",
   "componentIdsAffected": [
     "EWL"
+  ],
+  "stationIdsAffected": [
+    "BDK",
+    "KEM"
   ],
   "startAt": "2013-06-25T21:38:35.000+08:00",
   "endAt": "2013-06-25T21:49:49.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

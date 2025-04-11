@@ -1,11 +1,15 @@
 {
   "id": "2025-03-05-ccl-train-fault",
   "title": "Train travel time added between Promenade and Serangoon due to train fault",
-  "componentIdsAffected": ["CCL"],
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2025-03-05T16:07:26.000+08:00",
   "endAt": "2025-03-05T17:01:12.000+08:00",
   "type": "disruption",
-  "severity": "minor",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -43,5 +47,17 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1897197246871167416",
       "createdAt": "2025-03-05T16:07:26.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "PMN",
+    "NCH",
+    "SDM",
+    "MBT",
+    "DKT",
+    "PYL",
+    "MPS",
+    "TSG",
+    "BLY",
+    "SER"
   ]
 }

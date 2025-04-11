@@ -4,10 +4,27 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "MRB",
+    "PMN",
+    "NCH",
+    "SDM",
+    "MBT",
+    "DKT",
+    "PYL",
+    "MPS",
+    "TSG",
+    "BLY",
+    "SER",
+    "LRC",
+    "BSH"
+  ],
   "startAt": "2012-11-05T18:23:27.000+08:00",
   "endAt": "2012-11-05T18:41:25.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

@@ -7,7 +7,9 @@
   "startAt": "2023-03-07T17:05:01.000+08:00",
   "endAt": "2023-03-07T18:27:12.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -93,5 +95,21 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1633030984013848580",
       "createdAt": "2023-03-07T17:05:01.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "CDT",
+    "STV",
+    "NPR",
+    "OBV",
+    "ORC",
+    "GRW",
+    "HVL",
+    "OTP",
+    "MAX",
+    "SHW",
+    "MRB",
+    "GRB",
+    "WDN",
+    "WDL"
   ]
 }

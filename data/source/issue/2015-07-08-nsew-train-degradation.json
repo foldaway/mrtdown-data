@@ -5,10 +5,28 @@
     "NSL",
     "EWL"
   ],
+  "stationIdsAffected": [
+    "CTH",
+    "RFL",
+    "TPG",
+    "OTP",
+    "TIB",
+    "RDH",
+    "QUE",
+    "COM",
+    "BNV",
+    "DVR",
+    "CLE",
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL"
+  ],
   "startAt": "2015-07-08T05:21:19.000+08:00",
-  "endAt": "2015-07-08T05:33:35.000+08:00",
+  "endAt": "2015-07-08T23:59:59.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [],
   "updates": [
     {
       "type": "operator.update",

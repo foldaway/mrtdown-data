@@ -1,0 +1,67 @@
+{
+  "id": "2013-10-27-travel-time-extension-between-labrador-park-harbourfront-due-to-power-cable-change",
+  "title": "Travel Time Extension Between Labrador Park & HarbourFront Due to Power Cable Change",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "stationIdsAffected": [
+    "LBD",
+    "TLB",
+    "HBF"
+  ],
+  "startAt": "2013-10-27T06:00:00.000+08:00",
+  "endAt": "2013-10-27T10:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL] CLEARED: Train services between #LabradorPark &amp; #HarbourFront are now operating normally. http://t.co/M6xQuxGQ4P",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/394257137079033856",
+      "createdAt": "2013-10-27T08:20:01.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL] Expect longer travel time (~10min) between #LabradorPark &amp; #HarbourFront stations due to power cable change. http://t.co/M6xQuxGQ4P",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/394221964601982977",
+      "createdAt": "2013-10-27T06:00:15.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL]On 27 Oct,6-10am, travel time between #LabradorPark &amp; #HarbourFront will be longer due to power cable change. http://t.co/M6xQuxGQ4P",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/393980039441559552",
+      "createdAt": "2013-10-26T13:58:55.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL]On 27 Oct,6-10am, travel time between #LabradorPark &amp; #HarbourFront will be longer due to power cable change. http://t.co/M6xQuxGQ4P",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/393618062651310082",
+      "createdAt": "2013-10-25T14:00:33.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL] On 27 Oct, 6-10am, travel time between #LabradorPark &amp; #HarbourFront will be longer due to power cable change. http://t.co/M6xQuxGQ4P",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/393264195099033601",
+      "createdAt": "2013-10-24T14:34:25.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL] On 27 Oct, 6-10am, travel time between #LabradorPark &amp; #HarbourFront will be longer due to power cable change. http://t.co/M6xQuxGQ4P",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/392893449587789824",
+      "createdAt": "2013-10-23T14:01:12.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL] On 27 Oct, 6-10am, travel time between #LabradorPark &amp; #HarbourFront will be longer due to power cable change. http://t.co/M6xQuxGQ4P",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/392546740496125952",
+      "createdAt": "2013-10-22T15:03:30.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "[CCL] On 27 Oct, 6-10am, travel time between #LabradorPark &amp; #HarbourFront will be longer due to power cable change. http://t.co/M6xQuxGQ4P",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/392166357615136769",
+      "createdAt": "2013-10-21T13:52:00.000+08:00"
+    }
+  ]
+}

@@ -4,9 +4,16 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "PSR",
+    "TAM"
+  ],
   "startAt": "2015-03-23T19:28:41.000+08:00",
   "endAt": "2015-03-23T19:52:22.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -38,6 +45,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/579968000540823553",
       "createdAt": "2015-03-23T19:28:41.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

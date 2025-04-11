@@ -4,10 +4,19 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK",
+    "BSH"
+  ],
   "startAt": "2015-11-25T05:54:50.000+08:00",
   "endAt": "2015-11-25T08:11:36.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",

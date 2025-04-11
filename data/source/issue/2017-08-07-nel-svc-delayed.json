@@ -4,9 +4,19 @@
   "componentIdsAffected": [
     "NEL"
   ],
+  "stationIdsAffected": [
+    "HBF",
+    "OTP",
+    "CTN",
+    "CRQ",
+    "DBG"
+  ],
   "startAt": "2017-08-07T19:12:11.000+08:00",
   "endAt": "2017-08-07T20:04:16.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -32,6 +42,5 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/894516517110333441",
       "createdAt": "2017-08-07T19:12:11.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

@@ -4,10 +4,16 @@
   "componentIdsAffected": [
     "NSL"
   ],
+  "stationIdsAffected": [
+    "YCK",
+    "AMK"
+  ],
   "startAt": "2012-11-01T16:29:40.000+08:00",
   "endAt": "2012-11-01T16:41:47.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

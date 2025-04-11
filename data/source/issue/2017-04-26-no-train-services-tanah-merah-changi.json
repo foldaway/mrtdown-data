@@ -1,13 +1,21 @@
 {
   "id": "2017-04-26-no-train-services-tanah-merah-changi",
-  "title": "No train services between Tanah Merah & Changi",
+  "title": "No train services between Tanah Merah and Changi Airport",
   "componentIdsAffected": [
     "EWL"
   ],
-  "startAt": "2017-04-26T11:05:47.000+08:00",
-  "endAt": "2017-05-06T00:00:00.000+08:00",
+  "stationIdsAffected": [
+    "TNM",
+    "XPO",
+    "CGA"
+  ],
+  "startAt": "2017-04-26T23:00:00.000+08:00",
+  "endAt": "2017-05-05T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",

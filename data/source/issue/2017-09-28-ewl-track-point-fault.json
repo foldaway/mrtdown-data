@@ -7,7 +7,10 @@
   "startAt": "2017-09-28T05:53:52.000+08:00",
   "endAt": "2017-09-28T06:47:24.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -45,5 +48,11 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/913159781644242944",
       "createdAt": "2017-09-28T05:53:52.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "PSR",
+    "TAM",
+    "SIM",
+    "TNM"
   ]
 }

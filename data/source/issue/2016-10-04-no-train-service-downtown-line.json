@@ -1,13 +1,19 @@
 {
   "id": "2016-10-04-no-train-service-downtown-line",
-  "title": "No train service between Downtown Line DT06 Sixth Ave to DT07 King Albert's park",
+  "title": "No train service between Downtown Line DT06 King Albert Park to DT07 Sixth Avenue",
   "componentIdsAffected": [
     "DTL"
+  ],
+  "stationIdsAffected": [
+    "KAP",
+    "SAV"
   ],
   "startAt": "2016-10-04T07:19:40.000+08:00",
   "endAt": "2016-10-04T08:25:00.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "platform_door.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

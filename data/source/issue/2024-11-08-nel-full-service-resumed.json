@@ -7,7 +7,9 @@
   "startAt": "2024-11-08T08:03:26.000+08:00",
   "endAt": "2024-11-08T08:32:52.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -27,5 +29,9 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1854676063139643815",
       "createdAt": "2024-11-08T08:03:26.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "HBF",
+    "OTP"
   ]
 }

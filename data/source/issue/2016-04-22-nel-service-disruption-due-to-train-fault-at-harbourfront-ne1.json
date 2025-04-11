@@ -4,9 +4,17 @@
   "componentIdsAffected": [
     "NEL"
   ],
+  "stationIdsAffected": [
+    "HBF",
+    "OTP",
+    "CTN"
+  ],
   "startAt": "2016-04-22T10:02:00.000+08:00",
   "endAt": "2016-04-22T10:15:00.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -26,6 +34,5 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/723330983957696512",
       "createdAt": "2016-04-22T10:02:00.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

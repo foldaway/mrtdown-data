@@ -5,9 +5,11 @@
     "BPLRT"
   ],
   "startAt": "2022-01-08T17:45:08.000+08:00",
-  "endAt": "2022-01-08T18:03:07.000+08:00",
+  "endAt": "2022-01-08T18:10:39.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -27,5 +29,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1479751012051144704",
       "createdAt": "2022-01-08T17:45:08.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "CCK"
   ]
 }

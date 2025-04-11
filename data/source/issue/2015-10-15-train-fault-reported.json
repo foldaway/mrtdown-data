@@ -2,12 +2,39 @@
   "id": "2015-10-15-train-fault-reported",
   "title": "Train Fault Reported",
   "componentIdsAffected": [
-    "NSL"
+    "EWL"
+  ],
+  "stationIdsAffected": [
+    "QUE",
+    "COM",
+    "BNV",
+    "DVR",
+    "CLE",
+    "PSR",
+    "TAM",
+    "SIM",
+    "TNM",
+    "BDK",
+    "KEM",
+    "EUN",
+    "PYL",
+    "ALJ",
+    "KAL",
+    "LVR",
+    "BGS",
+    "CTH",
+    "RFL",
+    "TPG",
+    "OTP",
+    "TIB",
+    "RDH"
   ],
   "startAt": "2015-10-15T09:49:18.000+08:00",
   "endAt": "2015-10-15T10:17:27.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",

@@ -4,9 +4,21 @@
   "componentIdsAffected": [
     "EWL"
   ],
+  "stationIdsAffected": [
+    "CLE",
+    "JUR",
+    "CNG",
+    "LKS",
+    "BNL",
+    "PNR",
+    "JKN"
+  ],
   "startAt": "2017-07-12T08:41:51.000+08:00",
   "endAt": "2017-07-12T10:58:04.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -38,6 +50,5 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/884935803234697216",
       "createdAt": "2017-07-12T08:41:51.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

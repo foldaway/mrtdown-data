@@ -7,7 +7,9 @@
   "startAt": "2022-11-18T05:33:37.000+08:00",
   "endAt": "2022-11-18T05:49:30.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -21,5 +23,12 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1593356712077328384",
       "createdAt": "2022-11-18T05:33:37.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "BKP",
+    "PTR",
+    "PND",
+    "BKT",
+    "FJR"
   ]
 }

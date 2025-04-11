@@ -7,6 +7,10 @@
   "startAt": "2020-11-25T06:21:55.000+08:00",
   "endAt": "2020-11-25T06:30:58.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "track.fault",
+    "delay"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,5 +37,14 @@
       "createdAt": "2020-11-25T06:21:55.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "NEW",
+    "ORC",
+    "SOM",
+    "DBG",
+    "CTH",
+    "RFL",
+    "MRB",
+    "MSP"
+  ]
 }

@@ -4,9 +4,17 @@
   "componentIdsAffected": [
     "DTL"
   ],
+  "stationIdsAffected": [
+    "DTN",
+    "TLA",
+    "CTN"
+  ],
   "startAt": "2017-01-31T18:43:57.000+08:00",
   "endAt": "2017-01-31T20:26:56.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -20,6 +28,5 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/826380494170320896",
       "createdAt": "2017-01-31T18:43:57.000+08:00"
     }
-  ],
-  "severity": "minor"
+  ]
 }

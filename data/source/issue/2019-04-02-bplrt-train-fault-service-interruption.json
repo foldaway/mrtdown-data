@@ -7,7 +7,9 @@
   "startAt": "2019-04-02T10:05:38.000+08:00",
   "endAt": "2019-04-02T10:46:40.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -27,5 +29,13 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1112898854511239168",
       "createdAt": "2019-04-02T10:05:38.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "CCK",
+    "SHV",
+    "KTH",
+    "TKW",
+    "PNX",
+    "BKP"
   ]
 }

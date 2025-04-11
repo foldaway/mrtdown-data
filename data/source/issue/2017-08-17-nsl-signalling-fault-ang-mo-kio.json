@@ -7,6 +7,9 @@
   "startAt": "2017-08-17T18:18:56.000+08:00",
   "endAt": "2017-08-17T20:18:27.000+08:00",
   "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -39,5 +42,10 @@
       "createdAt": "2017-08-17T18:18:56.000+08:00"
     }
   ],
-  "severity": "minor"
+  "stationIdsAffected": [
+    "YIS",
+    "KTB",
+    "YCK",
+    "AMK"
+  ]
 }

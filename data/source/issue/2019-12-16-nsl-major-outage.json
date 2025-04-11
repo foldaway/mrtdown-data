@@ -7,7 +7,9 @@
   "startAt": "2019-12-16T08:14:52.000+08:00",
   "endAt": "2019-12-16T08:49:45.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -39,5 +41,11 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1206367048873365504",
       "createdAt": "2019-12-16T08:14:52.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "BGB",
+    "CCK",
+    "YWT",
+    "KRJ"
   ]
 }

@@ -7,7 +7,9 @@
   "startAt": "2021-02-17T05:16:29.000+08:00",
   "endAt": "2021-02-17T06:08:31.000+08:00",
   "type": "disruption",
-  "severity": "major",
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -51,5 +53,35 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1361786552880222208",
       "createdAt": "2021-02-17T05:16:29.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "DBG",
+    "BBS",
+    "EPN",
+    "PMN",
+    "NCH",
+    "SDM",
+    "MBT",
+    "DKT",
+    "PYL",
+    "MPS",
+    "TSG",
+    "BLY",
+    "SER",
+    "LRC",
+    "BSH",
+    "MRM",
+    "CDT",
+    "BTN",
+    "FRR",
+    "HLV",
+    "BNV",
+    "ONH",
+    "KRG",
+    "HRB",
+    "PPJ",
+    "LBD",
+    "TLB",
+    "HBF"
   ]
 }

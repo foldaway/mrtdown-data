@@ -8,6 +8,9 @@
   "endAt": "2018-04-09T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -15,5 +18,12 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/980631942403014656",
       "createdAt": "2018-04-02T10:24:08.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "SKG",
+    "CGL",
+    "FMW",
+    "KPG",
+    "TNG"
   ]
 }
