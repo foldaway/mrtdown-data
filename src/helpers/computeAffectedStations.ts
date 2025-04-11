@@ -25,7 +25,7 @@ export const LineSectionSchema = z
     z.object({
       type: z.literal('entire_line'),
       componentId: ComponentIdSchema,
-      branchName: z.string(),
+      branchCode: z.string(),
     }),
   ])
   .describe('Affected section of rail line');
@@ -134,7 +134,7 @@ export function computeAffectedStations(
           (s) => s.name.toLowerCase() === last.toLowerCase(),
         );
         if (stationLast == null) {
-          console.warn(`Could not find "${first}" station`);
+          console.warn(`Could not find "${last}" station`);
           continue;
         }
 
@@ -176,9 +176,13 @@ export function computeAffectedStations(
         break;
       }
       case 'entire_line': {
-        const { componentId, branchName } = lineSection;
+        const { componentId, branchCode } = lineSection;
         const component = ComponentModel.getOne(componentId);
-        const branch = component.branches[branchName];
+        assert(
+          branchCode in component.branches,
+          `Could not find branch "${branchCode}" in component "${component.id}"`,
+        );
+        const branch = component.branches[branchCode];
 
         for (const stationCode of branch) {
           const station = stations.find((s) => {

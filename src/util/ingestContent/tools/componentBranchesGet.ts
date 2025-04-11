@@ -60,7 +60,7 @@ export async function toolComponentBranchesGetRun(
             children: [
               {
                 type: 'text',
-                value: 'Branch Name',
+                value: 'Branch Code',
               },
             ],
           },
