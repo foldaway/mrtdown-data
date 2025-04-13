@@ -6,9 +6,10 @@
   ],
   "startAt": "2017-08-18T06:29:03.000+08:00",
   "endAt": "2017-08-18T23:59:59.000+08:00",
-  "type": "maintenance",
-  "cancelledAt": null,
-  "subtypes": [],
+  "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "planned",

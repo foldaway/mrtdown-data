@@ -4,21 +4,12 @@
   "componentIdsAffected": [
     "EWL"
   ],
-  "stationIdsAffected": [
-    "PSR",
-    "TAM",
-    "SIM",
-    "TNM",
-    "BDK",
-    "KEM",
-    "EUN",
-    "PYL"
-  ],
   "startAt": "2017-03-30T17:57:46.000+08:00",
   "endAt": "2017-03-30T23:59:59.000+08:00",
-  "type": "maintenance",
-  "cancelledAt": null,
-  "subtypes": [],
+  "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -50,5 +41,15 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/847387367254048769",
       "createdAt": "2017-03-30T17:57:46.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "PSR",
+    "TAM",
+    "SIM",
+    "TNM",
+    "BDK",
+    "KEM",
+    "EUN",
+    "PYL"
   ]
 }

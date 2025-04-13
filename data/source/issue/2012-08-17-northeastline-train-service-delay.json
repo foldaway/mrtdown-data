@@ -4,31 +4,12 @@
   "componentIdsAffected": [
     "NEL"
   ],
-  "stationIdsAffected": [
-    "BGK",
-    "BNK",
-    "CRQ",
-    "CTN",
-    "DBG",
-    "FRP",
-    "HBF",
-    "HGN",
-    "KVN",
-    "LTI",
-    "OTP",
-    "PGC",
-    "PGL",
-    "PTP",
-    "SER",
-    "SKG",
-    "SRG",
-    "WLH"
-  ],
   "startAt": "2012-08-17T08:10:09.000+08:00",
   "endAt": "2012-08-18T00:00:00.000+08:00",
-  "type": "maintenance",
-  "cancelledAt": null,
-  "subtypes": [],
+  "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -66,5 +47,17 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/236253545064697857",
       "createdAt": "2012-08-17T08:10:09.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "HBF",
+    "OTP",
+    "CTN",
+    "CRQ",
+    "DBG",
+    "LTI",
+    "FRP",
+    "BNK",
+    "PTP",
+    "WLH"
   ]
 }
