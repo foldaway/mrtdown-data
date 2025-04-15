@@ -21,6 +21,18 @@
   ],
   "stationIdsAffected": [
     "PGL",
-    "SMK"
+    "SMK",
+    "PGP",
+    "SMD",
+    "NBG",
+    "SMG",
+    "STK",
+    "COV",
+    "MRD",
+    "CRE",
+    "RIV",
+    "KDL",
+    "OAS",
+    "DAM"
   ]
 }

@@ -4,10 +4,6 @@
   "componentIdsAffected": [
     "PGLRT"
   ],
-  "stationIdsAffected": [
-    "PGL",
-    "SMK"
-  ],
   "startAt": "2016-06-22T17:59:04.000+08:00",
   "endAt": "2016-06-22T18:23:21.000+08:00",
   "type": "disruption",
@@ -33,5 +29,15 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/745556701378555904",
       "createdAt": "2016-06-22T17:59:04.000+08:00"
     }
+  ],
+  "stationIdsAffected": [
+    "PGL",
+    "COV",
+    "MRD",
+    "CRE",
+    "RIV",
+    "KDL",
+    "OAS",
+    "DAM"
   ]
 }

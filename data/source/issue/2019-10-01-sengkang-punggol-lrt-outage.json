@@ -37,6 +37,15 @@
   ],
   "stationIdsAffected": [
     "SKG",
-    "PGL"
+    "CGL",
+    "FMW",
+    "KPG",
+    "TNG",
+    "FNV",
+    "LYR",
+    "TKG",
+    "PGL",
+    "SMK",
+    "PGP"
   ]
 }

@@ -37,6 +37,13 @@
     }
   ],
   "stationIdsAffected": [
+    "COV",
+    "MRD",
+    "CRE",
+    "RIV",
+    "KDL",
+    "OAS",
+    "DAM",
     "PGL",
     "SMK",
     "PGP"

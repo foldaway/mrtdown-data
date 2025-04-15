@@ -33,6 +33,10 @@
   "stationIdsAffected": [
     "PGL",
     "SMK",
-    "PGP"
+    "PGP",
+    "SMD",
+    "NBG",
+    "SMG",
+    "STK"
   ]
 }

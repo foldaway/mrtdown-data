@@ -20,9 +20,18 @@
     }
   ],
   "stationIdsAffected": [
+    "SKG",
     "CGL",
     "FMW",
     "KPG",
-    "TNG"
+    "TNG",
+    "FNV",
+    "LYR",
+    "TKG",
+    "CPV",
+    "RMB",
+    "BAK",
+    "KGK",
+    "RNG"
   ]
 }

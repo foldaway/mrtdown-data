@@ -40,6 +40,31 @@
   ],
   "stationIdsAffected": [
     "SKG",
-    "PGL"
+    "CPV",
+    "RMB",
+    "BAK",
+    "KGK",
+    "RNG",
+    "CGL",
+    "FMW",
+    "KPG",
+    "TNG",
+    "FNV",
+    "LYR",
+    "TKG",
+    "PGL",
+    "SMK",
+    "PGP",
+    "SMD",
+    "NBG",
+    "SMG",
+    "STK",
+    "COV",
+    "MRD",
+    "CRE",
+    "RIV",
+    "KDL",
+    "OAS",
+    "DAM"
   ]
 }
