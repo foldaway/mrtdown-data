@@ -1,0 +1,56 @@
+{
+  "id": "2025-04-16-15-mins-delay-bis-jurong",
+  "title": "15 mins delay on NSL due to track fault",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2025-04-16T11:25:54.000+08:00",
+  "endAt": "2025-04-16T12:40:14.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL]: Dear commuters, free regular bus services have ceased. Normal trains services have resumed. We are sorry to affect your commute.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1912365391730593794",
+      "createdAt": "2025-04-16T12:40:14.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "Dear commuters, normal train services have resumed. Free regular bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1912363058682290300",
+      "createdAt": "2025-04-16T12:30:57.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a track fault, please add 15mins travel time from #ToaPayoh to #Bishan towards #JurongEast. Free regular buses are available between #ToaPayoh and #Bishan.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1912362019074027894",
+      "createdAt": "2025-04-16T12:26:49.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a track fault, please add 15mins train travel time from #ToaPayoh to #Bishan towards #JurongEast. Free regular buses are available between #ToaPayoh and #Bishan. Please look out for fellow commuters with special needs and lend a helping hand. We are sorry for",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1912358337519448294",
+      "createdAt": "2025-04-16T12:12:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a track fault, please add 15mins train travel time from #ToaPayoh to #Bishan towards #JurongEast. Free regular bus is available between #ToaPayoh and #Bishan. (Refer to Diagram 1) https://t.co/D8KyFyL3iA",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1912355942236336627",
+      "createdAt": "2025-04-16T12:02:41.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]: Due to a track fault, pls add 15mins train travel time from #ToaPayoh to #Bishan towards #JurongEast. Free regular bus is available between #ToaPayoh and #Bishan.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1912346685872988215",
+      "createdAt": "2025-04-16T11:25:54.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    "BSH",
+    "BDL",
+    "TAP"
+  ]
+}
