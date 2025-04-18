@@ -41,9 +41,15 @@
     }
   ],
   "stationIdsAffected": [
-    "ALJ",
-    "KAL",
-    "LVR",
-    "BGS"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS"
+      ]
+    }
   ]
 }

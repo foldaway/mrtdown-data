@@ -5,15 +5,21 @@
     "CCL"
   ],
   "stationIdsAffected": [
-    "DBG",
-    "BBS",
-    "EPN",
-    "PMN",
-    "NCH",
-    "SDM",
-    "MBT",
-    "DKT",
-    "PYL"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL"
+      ]
+    }
   ],
   "startAt": "2013-10-31T19:29:50.000+08:00",
   "endAt": "2013-10-31T19:47:16.000+08:00",

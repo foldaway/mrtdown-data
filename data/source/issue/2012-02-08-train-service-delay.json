@@ -5,7 +5,13 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "MRB"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "MRB"
+      ]
+    }
   ],
   "startAt": "2012-02-08T07:25:27.000+08:00",
   "endAt": "2012-02-08T07:48:45.000+08:00",

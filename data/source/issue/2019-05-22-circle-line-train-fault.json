@@ -38,9 +38,15 @@
     }
   ],
   "stationIdsAffected": [
-    "DBG",
-    "BBS",
-    "EPN",
-    "PMN"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN"
+      ]
+    }
   ]
 }

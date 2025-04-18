@@ -5,7 +5,13 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "TPG"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "TPG"
+      ]
+    }
   ],
   "startAt": "2014-03-26T06:29:21.000+08:00",
   "endAt": "2014-03-26T07:17:51.000+08:00",

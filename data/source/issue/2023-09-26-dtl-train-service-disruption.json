@@ -29,7 +29,13 @@
     }
   ],
   "stationIdsAffected": [
-    "BFT",
-    "DTN"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BFT",
+        "DTN"
+      ]
+    }
   ]
 }

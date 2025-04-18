@@ -26,7 +26,13 @@
     }
   ],
   "stationIdsAffected": [
-    "SKG",
-    "PGL"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "SKG",
+        "PGL"
+      ]
+    }
   ]
 }

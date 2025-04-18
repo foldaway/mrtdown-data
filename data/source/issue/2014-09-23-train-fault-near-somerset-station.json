@@ -5,13 +5,19 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "NEW",
-    "ORC",
-    "SOM",
-    "DBG",
-    "CTH",
-    "RFP",
-    "MRB"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "NEW",
+        "ORC",
+        "SOM",
+        "DBG",
+        "CTH",
+        "RFP",
+        "MRB"
+      ]
+    }
   ],
   "startAt": "2014-09-23T21:06:17.000+08:00",
   "endAt": "2014-09-23T22:39:26.000+08:00",

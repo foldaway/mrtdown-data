@@ -5,8 +5,14 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "TNM",
-    "BDK"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "TNM",
+        "BDK"
+      ]
+    }
   ],
   "startAt": "2017-04-10T09:31:45.000+08:00",
   "endAt": "2017-04-10T10:35:27.000+08:00",

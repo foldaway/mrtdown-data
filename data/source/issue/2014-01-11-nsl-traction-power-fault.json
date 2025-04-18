@@ -5,8 +5,14 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "YWT",
-    "KRJ"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "YWT",
+        "KRJ"
+      ]
+    }
   ],
   "startAt": "2014-01-11T12:35:20.000+08:00",
   "endAt": "2014-01-11T14:10:00.000+08:00",

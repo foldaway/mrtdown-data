@@ -5,12 +5,18 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "TNM",
-    "BDK",
-    "KEM",
-    "EUN",
-    "PYL",
-    "ALJ"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ"
+      ]
+    }
   ],
   "startAt": "2012-03-19T17:19:35.000+08:00",
   "endAt": "2012-03-19T17:44:20.000+08:00",

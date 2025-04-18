@@ -5,16 +5,22 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "EUN",
-    "PYL",
-    "ALJ",
-    "KAL",
-    "LVR",
-    "BGS",
-    "CTH",
-    "RFP",
-    "TPG",
-    "OTP"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP"
+      ]
+    }
   ],
   "startAt": "2016-12-22T19:29:01.000+08:00",
   "endAt": "2016-12-22T20:24:46.000+08:00",

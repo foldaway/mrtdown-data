@@ -37,7 +37,13 @@
     }
   ],
   "stationIdsAffected": [
-    "CCK",
-    "SHV"
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV"
+      ]
+    }
   ]
 }

@@ -26,12 +26,18 @@
     }
   ],
   "stationIdsAffected": [
-    "BDN",
-    "BDR",
-    "TPW",
-    "TAM",
-    "TPE",
-    "UPC",
-    "XPO"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BDN",
+        "BDR",
+        "TPW",
+        "TAM",
+        "TPE",
+        "UPC",
+        "XPO"
+      ]
+    }
   ]
 }

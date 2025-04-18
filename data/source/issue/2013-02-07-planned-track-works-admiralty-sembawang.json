@@ -5,8 +5,14 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "ADM",
-    "SBW"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "ADM",
+        "SBW"
+      ]
+    }
   ],
   "startAt": "2013-02-07T01:30:00.000+08:00",
   "endAt": "2013-04-10T04:30:00.000+08:00",

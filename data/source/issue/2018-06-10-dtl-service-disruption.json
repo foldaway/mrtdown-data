@@ -43,10 +43,16 @@
     }
   ],
   "stationIdsAffected": [
-    "MPS",
-    "UBI",
-    "KKB",
-    "BDN",
-    "BDR"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "MPS",
+        "UBI",
+        "KKB",
+        "BDN",
+        "BDR"
+      ]
+    }
   ]
 }

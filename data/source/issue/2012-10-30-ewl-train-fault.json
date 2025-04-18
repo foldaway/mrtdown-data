@@ -5,8 +5,14 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "EUN",
-    "PYL"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "EUN",
+        "PYL"
+      ]
+    }
   ],
   "startAt": "2012-10-30T10:18:19.000+08:00",
   "endAt": "2012-10-30T10:28:57.000+08:00",

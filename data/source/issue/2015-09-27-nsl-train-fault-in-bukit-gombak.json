@@ -5,9 +5,15 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "JUR",
-    "BBT",
-    "BGB"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB"
+      ]
+    }
   ],
   "startAt": "2015-09-27T09:15:07.000+08:00",
   "endAt": "2015-09-27T09:24:32.000+08:00",

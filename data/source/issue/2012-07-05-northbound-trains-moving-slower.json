@@ -5,9 +5,15 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "CCK",
-    "YWT",
-    "KRJ"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "YWT",
+        "KRJ"
+      ]
+    }
   ],
   "startAt": "2012-07-05T18:56:12.000+08:00",
   "endAt": "2012-07-05T19:19:24.000+08:00",

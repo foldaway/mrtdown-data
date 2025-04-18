@@ -56,8 +56,14 @@
     }
   ],
   "stationIdsAffected": [
-    "YWT",
-    "KRJ",
-    "MSL"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "YWT",
+        "KRJ",
+        "MSL"
+      ]
+    }
   ]
 }

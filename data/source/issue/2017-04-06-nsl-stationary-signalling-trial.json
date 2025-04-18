@@ -5,23 +5,29 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "DBG",
-    "CTH",
-    "RFP",
-    "MRB",
-    "MSP",
-    "BDL",
-    "TAP",
-    "BSH",
-    "NOV",
-    "YWT",
-    "KRJ",
-    "MSL",
-    "WDL",
-    "ADM",
-    "SBW",
-    "KTB",
-    "YCK"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "CTH",
+        "RFP",
+        "MRB",
+        "MSP",
+        "BDL",
+        "TAP",
+        "BSH",
+        "NOV",
+        "YWT",
+        "KRJ",
+        "MSL",
+        "WDL",
+        "ADM",
+        "SBW",
+        "KTB",
+        "YCK"
+      ]
+    }
   ],
   "startAt": "2017-04-06T21:00:39.000+08:00",
   "endAt": "2017-04-06T23:00:39.000+08:00",

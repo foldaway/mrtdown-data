@@ -25,13 +25,19 @@
     }
   ],
   "stationIdsAffected": [
-    "GRB",
-    "TRH",
-    "KTP",
-    "TKT",
-    "MPR",
-    "MTC",
-    "SGL",
-    "BSR"
+    {
+      "componentId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "GRB",
+        "TRH",
+        "KTP",
+        "TKT",
+        "MPR",
+        "MTC",
+        "SGL",
+        "BSR"
+      ]
+    }
   ]
 }

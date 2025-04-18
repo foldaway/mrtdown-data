@@ -38,8 +38,14 @@
     }
   ],
   "stationIdsAffected": [
-    "DBG",
-    "LTI",
-    "FRP"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "LTI",
+        "FRP"
+      ]
+    }
   ]
 }

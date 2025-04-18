@@ -5,8 +5,14 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "CTH",
-    "RFP"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "CTH",
+        "RFP"
+      ]
+    }
   ],
   "startAt": "2012-11-02T21:18:17.000+08:00",
   "endAt": "2012-11-03T05:30:00.000+08:00",

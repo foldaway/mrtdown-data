@@ -55,13 +55,19 @@
     }
   ],
   "stationIdsAffected": [
-    "BGS",
-    "CTH",
-    "RFP",
-    "TPG",
-    "OTP",
-    "TIB",
-    "RDH",
-    "QUE"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE"
+      ]
+    }
   ]
 }

@@ -31,9 +31,15 @@
     }
   ],
   "stationIdsAffected": [
-    "BKP",
-    "CSW",
-    "HVW",
-    "BTW"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BKP",
+        "CSW",
+        "HVW",
+        "BTW"
+      ]
+    }
   ]
 }

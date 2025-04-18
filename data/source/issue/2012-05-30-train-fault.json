@@ -5,11 +5,17 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "JUR",
-    "BBT",
-    "BGB",
-    "CCK",
-    "YWT"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK",
+        "YWT"
+      ]
+    }
   ],
   "startAt": "2012-05-30T08:25:42.000+08:00",
   "endAt": "2012-05-30T08:51:55.000+08:00",

@@ -32,7 +32,13 @@
     }
   ],
   "stationIdsAffected": [
-    "AMK",
-    "BSH"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "AMK",
+        "BSH"
+      ]
+    }
   ]
 }

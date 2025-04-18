@@ -33,9 +33,15 @@
     }
   ],
   "stationIdsAffected": [
-    "JUR",
-    "BBT",
-    "BGB",
-    "CCK"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK"
+      ]
+    }
   ]
 }

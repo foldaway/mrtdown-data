@@ -37,12 +37,18 @@
     }
   ],
   "stationIdsAffected": [
-    "JUR",
-    "CNG",
-    "LKS",
-    "BNL",
-    "PNR",
-    "JKN",
-    "GCL"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN",
+        "GCL"
+      ]
+    }
   ]
 }

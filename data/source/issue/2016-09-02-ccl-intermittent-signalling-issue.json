@@ -5,10 +5,16 @@
     "CCL"
   ],
   "stationIdsAffected": [
-    "KRG",
-    "HPV",
-    "PPJ",
-    "LBD"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD"
+      ]
+    }
   ],
   "startAt": "2016-09-02T06:13:22.000+08:00",
   "endAt": "2016-09-03T18:14:24.000+08:00",

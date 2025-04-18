@@ -5,8 +5,14 @@
     "BPLRT"
   ],
   "stationIdsAffected": [
-    "JLP",
-    "SNJ"
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "JLP",
+        "SNJ"
+      ]
+    }
   ],
   "startAt": "2017-07-27T17:00:50.000+08:00",
   "endAt": "2017-07-27T17:15:47.000+08:00",

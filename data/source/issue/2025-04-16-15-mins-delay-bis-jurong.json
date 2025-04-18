@@ -49,8 +49,14 @@
     }
   ],
   "stationIdsAffected": [
-    "BSH",
-    "BDL",
-    "TAP"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "BSH",
+        "BDL",
+        "TAP"
+      ]
+    }
   ]
 }

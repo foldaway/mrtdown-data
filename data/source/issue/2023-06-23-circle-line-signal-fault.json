@@ -5,11 +5,17 @@
     "CCL"
   ],
   "stationIdsAffected": [
-    "EPN",
-    "PMN",
-    "NCH",
-    "SDM",
-    "MBT"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT"
+      ]
+    }
   ],
   "startAt": "2023-06-23T20:57:11.000+08:00",
   "endAt": "2023-06-23T21:17:29.000+08:00",

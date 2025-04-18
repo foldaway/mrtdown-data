@@ -5,9 +5,15 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "TNM",
-    "XPO",
-    "CGA"
+    {
+      "componentId": "EWL",
+      "branchName": "changi_airport",
+      "stationIds": [
+        "TNM",
+        "XPO",
+        "CGA"
+      ]
+    }
   ],
   "startAt": "2012-03-01T07:30:31.000+08:00",
   "endAt": "2012-03-01T07:55:37.000+08:00",

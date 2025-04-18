@@ -31,10 +31,16 @@
     }
   ],
   "stationIdsAffected": [
-    "BKP",
-    "PTR",
-    "PND",
-    "BKT",
-    "FJR"
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR"
+      ]
+    }
   ]
 }

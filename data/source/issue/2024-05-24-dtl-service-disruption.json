@@ -47,16 +47,22 @@
     }
   ],
   "stationIdsAffected": [
-    "FCN",
-    "BCL",
-    "JLB",
-    "BDM",
-    "GLB",
-    "MTR",
-    "CTN",
-    "MPS",
-    "UBI",
-    "KKB",
-    "BDN"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "FCN",
+        "BCL",
+        "JLB",
+        "BDM",
+        "GLB",
+        "MTR",
+        "CTN",
+        "MPS",
+        "UBI",
+        "KKB",
+        "BDN"
+      ]
+    }
   ]
 }

@@ -97,19 +97,25 @@
     }
   ],
   "stationIdsAffected": [
-    "CDT",
-    "STV",
-    "NPR",
-    "OBV",
-    "ORC",
-    "GRW",
-    "HVL",
-    "OTP",
-    "MAX",
-    "SHW",
-    "MRB",
-    "GRB",
-    "WDN",
-    "WDL"
+    {
+      "componentId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "CDT",
+        "STV",
+        "NPR",
+        "OBV",
+        "ORC",
+        "GRW",
+        "HVL",
+        "OTP",
+        "MAX",
+        "SHW",
+        "MRB",
+        "GRB",
+        "WDN",
+        "WDL"
+      ]
+    }
   ]
 }

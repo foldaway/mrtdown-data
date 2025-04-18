@@ -38,9 +38,15 @@
     }
   ],
   "stationIdsAffected": [
-    "PSR",
-    "TAM",
-    "SIM",
-    "TNM"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR",
+        "TAM",
+        "SIM",
+        "TNM"
+      ]
+    }
   ]
 }

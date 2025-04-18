@@ -26,11 +26,17 @@
     }
   ],
   "stationIdsAffected": [
-    "BKP",
-    "CSW",
-    "HVW",
-    "BTW",
-    "KAP",
-    "XPO"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BKP",
+        "CSW",
+        "HVW",
+        "BTW",
+        "KAP",
+        "XPO"
+      ]
+    }
   ]
 }

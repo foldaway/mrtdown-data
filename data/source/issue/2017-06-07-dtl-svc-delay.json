@@ -5,24 +5,30 @@
     "DTL"
   ],
   "stationIdsAffected": [
-    "BKP",
-    "CSW",
-    "HVW",
-    "BTW",
-    "KAP",
-    "SAV",
-    "TKK",
-    "BTN",
-    "STV",
-    "NEW",
-    "LTI",
-    "RCR",
-    "BGS",
-    "PMN",
-    "BFT",
-    "DTN",
-    "TLA",
-    "CTN"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BKP",
+        "CSW",
+        "HVW",
+        "BTW",
+        "KAP",
+        "SAV",
+        "TKK",
+        "BTN",
+        "STV",
+        "NEW",
+        "LTI",
+        "RCR",
+        "BGS",
+        "PMN",
+        "BFT",
+        "DTN",
+        "TLA",
+        "CTN"
+      ]
+    }
   ],
   "startAt": "2017-06-07T20:22:04.000+08:00",
   "endAt": "2017-06-07T20:53:50.000+08:00",

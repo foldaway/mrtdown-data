@@ -5,10 +5,16 @@
     "CCL"
   ],
   "stationIdsAffected": [
-    "CDT",
-    "BTN",
-    "FRR",
-    "HLV"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV"
+      ]
+    }
   ],
   "startAt": "2012-04-18T08:07:04.000+08:00",
   "endAt": "2012-04-18T10:21:49.000+08:00",

@@ -5,18 +5,24 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "BDK",
-    "KEM",
-    "EUN",
-    "PYL",
-    "ALJ",
-    "KAL",
-    "LVR",
-    "BGS",
-    "CTH",
-    "RFP",
-    "TPG",
-    "OTP"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP"
+      ]
+    }
   ],
   "startAt": "2014-03-03T07:46:23.000+08:00",
   "endAt": "2014-03-03T08:01:22.000+08:00",

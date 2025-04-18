@@ -31,12 +31,18 @@
     }
   ],
   "stationIdsAffected": [
-    "KRJ",
-    "MSL",
-    "WDL",
-    "ADM",
-    "SBW",
-    "CBR",
-    "YIS"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "KRJ",
+        "MSL",
+        "WDL",
+        "ADM",
+        "SBW",
+        "CBR",
+        "YIS"
+      ]
+    }
   ]
 }

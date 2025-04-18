@@ -5,9 +5,15 @@
     "CCL"
   ],
   "stationIdsAffected": [
-    "MBT",
-    "DKT",
-    "PYL"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "MBT",
+        "DKT",
+        "PYL"
+      ]
+    }
   ],
   "startAt": "2013-03-17T05:30:00.000+08:00",
   "endAt": "2013-03-17T10:00:00.000+08:00",

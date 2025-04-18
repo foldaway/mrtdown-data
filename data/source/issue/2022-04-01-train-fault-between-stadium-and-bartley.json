@@ -5,13 +5,19 @@
     "CCL"
   ],
   "stationIdsAffected": [
-    "SDM",
-    "MBT",
-    "DKT",
-    "PYL",
-    "MPS",
-    "TSG",
-    "BLY"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY"
+      ]
+    }
   ],
   "startAt": "2022-04-01T11:38:57.000+08:00",
   "endAt": "2022-04-01T12:18:31.000+08:00",

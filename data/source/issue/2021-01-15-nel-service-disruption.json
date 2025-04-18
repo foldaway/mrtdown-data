@@ -25,7 +25,13 @@
     }
   ],
   "stationIdsAffected": [
-    "HBF",
-    "OTP"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "HBF",
+        "OTP"
+      ]
+    }
   ]
 }

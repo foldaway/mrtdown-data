@@ -91,10 +91,16 @@
     }
   ],
   "stationIdsAffected": [
-    "CCK",
-    "YWT",
-    "KRJ",
-    "MSL",
-    "WDL"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "YWT",
+        "KRJ",
+        "MSL",
+        "WDL"
+      ]
+    }
   ]
 }

@@ -5,9 +5,15 @@
     "DTL"
   ],
   "stationIdsAffected": [
-    "DTN",
-    "TLA",
-    "CTN"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "DTN",
+        "TLA",
+        "CTN"
+      ]
+    }
   ],
   "startAt": "2017-01-31T18:43:57.000+08:00",
   "endAt": "2017-01-31T20:26:56.000+08:00",

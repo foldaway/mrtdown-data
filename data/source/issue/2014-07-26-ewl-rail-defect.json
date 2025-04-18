@@ -5,13 +5,19 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "KAL",
-    "LVR",
-    "BGS",
-    "CTH",
-    "RFP",
-    "TPG",
-    "OTP"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP"
+      ]
+    }
   ],
   "startAt": "2014-07-26T16:24:12.000+08:00",
   "endAt": "2014-07-26T17:17:52.000+08:00",

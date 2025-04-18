@@ -59,8 +59,14 @@
     }
   ],
   "stationIdsAffected": [
-    "TAP",
-    "NOV",
-    "NEW"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "TAP",
+        "NOV",
+        "NEW"
+      ]
+    }
   ]
 }

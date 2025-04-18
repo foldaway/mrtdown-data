@@ -5,8 +5,14 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "RDH",
-    "QUE"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "RDH",
+        "QUE"
+      ]
+    }
   ],
   "startAt": "2014-03-28T13:02:34.000+08:00",
   "endAt": "2014-03-28T13:10:57.000+08:00",

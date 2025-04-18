@@ -20,9 +20,15 @@
     }
   ],
   "stationIdsAffected": [
-    "GCL",
-    "TCR",
-    "TWR",
-    "TLK"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "GCL",
+        "TCR",
+        "TWR",
+        "TLK"
+      ]
+    }
   ]
 }

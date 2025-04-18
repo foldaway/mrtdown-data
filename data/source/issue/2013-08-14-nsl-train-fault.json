@@ -5,10 +5,16 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "WDL",
-    "ADM",
-    "SBW",
-    "YIS"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "WDL",
+        "ADM",
+        "SBW",
+        "YIS"
+      ]
+    }
   ],
   "startAt": "2013-08-14T08:37:00.000+08:00",
   "endAt": "2013-08-14T08:47:40.000+08:00",

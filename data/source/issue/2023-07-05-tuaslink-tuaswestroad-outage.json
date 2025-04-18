@@ -53,7 +53,13 @@
     }
   ],
   "stationIdsAffected": [
-    "TWR",
-    "TLK"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "TWR",
+        "TLK"
+      ]
+    }
   ]
 }

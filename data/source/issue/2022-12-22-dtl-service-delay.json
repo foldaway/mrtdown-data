@@ -26,28 +26,34 @@
     }
   ],
   "stationIdsAffected": [
-    "BKP",
-    "CSW",
-    "HVW",
-    "BTW",
-    "KAP",
-    "SAV",
-    "TKK",
-    "BTN",
-    "STV",
-    "NEW",
-    "LTI",
-    "RCR",
-    "BGS",
-    "PMN",
-    "BFT",
-    "DTN",
-    "TLA",
-    "CTN",
-    "FCN",
-    "BCL",
-    "JLB",
-    "BDM",
-    "GLB"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BKP",
+        "CSW",
+        "HVW",
+        "BTW",
+        "KAP",
+        "SAV",
+        "TKK",
+        "BTN",
+        "STV",
+        "NEW",
+        "LTI",
+        "RCR",
+        "BGS",
+        "PMN",
+        "BFT",
+        "DTN",
+        "TLA",
+        "CTN",
+        "FCN",
+        "BCL",
+        "JLB",
+        "BDM",
+        "GLB"
+      ]
+    }
   ]
 }

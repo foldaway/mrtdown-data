@@ -5,12 +5,18 @@
     "BPLRT"
   ],
   "stationIdsAffected": [
-    "CCK",
-    "SHV",
-    "KTH",
-    "TKW",
-    "PNX",
-    "BKP"
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
+        "BKP"
+      ]
+    }
   ],
   "startAt": "2013-04-02T12:16:51.000+08:00",
   "endAt": "2013-04-02T12:56:17.000+08:00",

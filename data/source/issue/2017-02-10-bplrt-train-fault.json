@@ -5,10 +5,16 @@
     "BPLRT"
   ],
   "stationIdsAffected": [
-    "BKT",
-    "FJR",
-    "SGR",
-    "JLP"
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP"
+      ]
+    }
   ],
   "startAt": "2017-02-10T15:26:16.000+08:00",
   "endAt": "2017-02-10T15:43:42.000+08:00",

@@ -5,8 +5,14 @@
     "CCL"
   ],
   "stationIdsAffected": [
-    "MRB",
-    "PMN"
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "PMN"
+      ]
+    }
   ],
   "startAt": "2016-01-17T07:00:01.000+08:00",
   "endAt": "2016-01-17T09:00:00.000+08:00",

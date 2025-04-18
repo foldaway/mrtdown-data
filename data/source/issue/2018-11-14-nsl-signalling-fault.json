@@ -49,9 +49,15 @@
     }
   ],
   "stationIdsAffected": [
-    "WDL",
-    "ADM",
-    "SBW",
-    "YIS"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "WDL",
+        "ADM",
+        "SBW",
+        "YIS"
+      ]
+    }
   ]
 }
