@@ -1,6 +1,6 @@
 {
   "id": "2018-01-23-punggol-lrt-maintenance",
-  "title": "Punggol LRT maintenance works scheduled on 28 Jan",
+  "title": "Punggol LRT maintenance works scheduled",
   "componentIdsAffected": [
     "PGLRT"
   ],
@@ -20,18 +20,32 @@
     }
   ],
   "stationIdsAffected": [
-    "COV",
-    "MRD",
-    "CRE",
-    "RIV",
-    "KDL",
-    "OAS",
-    "DAM",
-    "SMK",
-    "PGP",
-    "SMD",
-    "NBG",
-    "SMG",
-    "PGL"
+    {
+      "componentId": "PGLRT",
+      "branchName": "east",
+      "stationIds": [
+        "PGL",
+        "SMK",
+        "PGP",
+        "SMD",
+        "NBG",
+        "SMG",
+        "STK"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "west",
+      "stationIds": [
+        "PGL",
+        "COV",
+        "MRD",
+        "CRE",
+        "RIV",
+        "KDL",
+        "OAS",
+        "DAM"
+      ]
+    }
   ]
 }

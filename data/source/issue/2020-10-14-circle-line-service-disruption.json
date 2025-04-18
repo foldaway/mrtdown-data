@@ -43,21 +43,27 @@
     }
   ],
   "stationIdsAffected": [
-    "SER",
-    "LRC",
-    "BSH",
-    "MRM",
-    "CDT",
-    "BTN",
-    "FRR",
-    "HLV",
-    "BNV",
-    "ONH",
-    "KRG",
-    "HPV",
-    "PPJ",
-    "LBD",
-    "TLB",
-    "HBF"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    }
   ]
 }

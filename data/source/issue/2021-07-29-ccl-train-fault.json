@@ -5,7 +5,7 @@
     "CCL"
   ],
   "startAt": "2021-07-29T09:08:25.000+08:00",
-  "endAt": "2021-07-29T10:05:07.000+08:00",
+  "endAt": "2021-07-29T10:15:50.000+08:00",
   "type": "disruption",
   "subtypes": [
     "train.fault",
@@ -50,12 +50,18 @@
     }
   ],
   "stationIdsAffected": [
-    "CDT",
-    "BTN",
-    "FRR",
-    "HLV",
-    "BNV",
-    "ONH",
-    "KRG"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG"
+      ]
+    }
   ]
 }

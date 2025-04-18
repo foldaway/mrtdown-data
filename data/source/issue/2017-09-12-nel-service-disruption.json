@@ -25,11 +25,12 @@
     }
   ],
   "stationIdsAffected": [
-    "BNK",
-    "PTP",
-    "WLH",
-    "SER",
-    "KVN",
-    "HGN"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "BNK"
+      ]
+    }
   ]
 }

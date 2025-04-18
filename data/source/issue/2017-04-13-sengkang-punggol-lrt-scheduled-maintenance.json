@@ -5,19 +5,6 @@
     "SKLRT",
     "PGLRT"
   ],
-  "stationIdsAffected": [
-    "SKG",
-    "CGL",
-    "FMW",
-    "KPG",
-    "TNG",
-    "FNV",
-    "LYR",
-    "TKG",
-    "PGL",
-    "SMK",
-    "PGP"
-  ],
   "startAt": "2017-04-23T00:00:00.000+08:00",
   "endAt": "2017-09-10T00:00:00.000+08:00",
   "type": "maintenance",
@@ -31,6 +18,61 @@
       "text": "Maintenance works every Sun on Sengkang-Punggol LRT from 23 Apr-10 Sep 2017 but LRT service will not be affected. https://t.co/8x06CqGPxr",
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/852490496274341888",
       "createdAt": "2017-04-13T19:55:47.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "SKLRT",
+      "branchName": "west",
+      "stationIds": [
+        "SKG",
+        "CGL",
+        "FMW",
+        "KPG",
+        "TNG",
+        "FNV",
+        "LYR",
+        "TKG"
+      ]
+    },
+    {
+      "componentId": "SKLRT",
+      "branchName": "east",
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK",
+        "RNG"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "east",
+      "stationIds": [
+        "PGL",
+        "SMK",
+        "PGP",
+        "SMD",
+        "NBG",
+        "SMG",
+        "STK"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "west",
+      "stationIds": [
+        "PGL",
+        "COV",
+        "MRD",
+        "CRE",
+        "RIV",
+        "KDL",
+        "OAS",
+        "DAM"
+      ]
     }
   ]
 }

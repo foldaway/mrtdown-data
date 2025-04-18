@@ -1,5 +1,5 @@
 {
-  "id": "2018-12-19-nel-maintenance-works",
+  "id": "2019-01-04-nel-maintenance-works",
   "title": "Early train services ending on NEL due to maintenance works",
   "componentIdsAffected": [
     "NEL",
@@ -28,21 +28,53 @@
     }
   ],
   "stationIdsAffected": [
-    "HBF",
-    "OTP",
-    "CTN",
-    "CRQ",
-    "DBG",
-    "LTI",
-    "FRP",
-    "BNK",
-    "PTP",
-    "WLH",
-    "SER",
-    "KVN",
-    "HGN",
-    "BGK",
-    "SKG",
-    "PGL"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "HBF",
+        "OTP",
+        "CTN",
+        "CRQ",
+        "DBG",
+        "LTI",
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL"
+      ]
+    },
+    {
+      "componentId": "SKLRT",
+      "branchName": "east",
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK",
+        "RNG"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "west",
+      "stationIds": [
+        "PGL",
+        "COV",
+        "MRD",
+        "CRE",
+        "RIV",
+        "KDL",
+        "OAS",
+        "DAM"
+      ]
+    }
   ]
 }

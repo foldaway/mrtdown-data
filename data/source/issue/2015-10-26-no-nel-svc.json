@@ -4,24 +4,6 @@
   "componentIdsAffected": [
     "NEL"
   ],
-  "stationIdsAffected": [
-    "HBF",
-    "OTP",
-    "CTN",
-    "CRQ",
-    "DBG",
-    "LTI",
-    "FRP",
-    "BNK",
-    "PTP",
-    "WLH",
-    "SER",
-    "KVN",
-    "HGN",
-    "BGK",
-    "SKG",
-    "PGL"
-  ],
   "startAt": "2015-10-26T05:23:32.000+08:00",
   "endAt": "2015-10-26T07:32:25.000+08:00",
   "type": "disruption",
@@ -118,6 +100,30 @@
       "text": "26/10 05:23 - No NEL svc due to a power fault. Free bus rides available at designated bus stops along the NEL line.",
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/658393481132412928",
       "createdAt": "2015-10-26T05:23:32.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "HBF",
+        "OTP",
+        "CTN",
+        "CRQ",
+        "DBG",
+        "LTI",
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL"
+      ]
     }
   ]
 }

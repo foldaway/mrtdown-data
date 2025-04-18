@@ -4,12 +4,6 @@
   "componentIdsAffected": [
     "CCL"
   ],
-  "stationIdsAffected": [
-    "DBG",
-    "CTH",
-    "RFP",
-    "MRB"
-  ],
   "startAt": "2012-10-26T00:18:05.000+08:00",
   "endAt": "2012-10-26T01:46:23.000+08:00",
   "type": "disruption",
@@ -32,6 +26,20 @@
       "text": "[CCL] UPDATE:Service between Dhoby Ghaut &amp; Stadium and  Dhoby Ghaut &amp; Marina Bay will not resume tonight. Please find alternate transport.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/261501896123092992",
       "createdAt": "2012-10-26T00:18:05.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM"
+      ]
     }
   ]
 }

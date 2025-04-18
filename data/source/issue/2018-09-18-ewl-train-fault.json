@@ -1,6 +1,6 @@
 {
   "id": "2018-09-18-ewl-train-fault",
-  "title": "East-West Line Disruption",
+  "title": "East-West Line Disruption due to Train Fault",
   "componentIdsAffected": [
     "EWL"
   ],
@@ -56,14 +56,13 @@
     }
   ],
   "stationIdsAffected": [
-    "CLE",
-    "JUR",
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CNG",
-    "LKS",
-    "BNL"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "CLE",
+        "JUR"
+      ]
+    }
   ]
 }

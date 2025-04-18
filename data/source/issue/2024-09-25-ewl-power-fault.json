@@ -770,9 +770,15 @@
     }
   ],
   "stationIdsAffected": [
-    "BNV",
-    "DVR",
-    "CLE",
-    "JUR"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR"
+      ]
+    }
   ]
 }

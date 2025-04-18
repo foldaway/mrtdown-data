@@ -31,8 +31,18 @@
     }
   ],
   "stationIdsAffected": [
-    "FRR",
-    "HLV",
-    "BNV"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV"
+      ]
+    }
   ]
 }

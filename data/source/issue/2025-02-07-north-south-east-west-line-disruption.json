@@ -147,23 +147,38 @@
     }
   ],
   "stationIdsAffected": [
-    "JUR",
-    "BBT",
-    "BGB",
-    "CCK",
-    "YWT",
-    "KRJ",
-    "MSL",
-    "WDL",
-    "ADM",
-    "SBW",
-    "CBR",
-    "YIS",
-    "KTB",
-    "YCK",
-    "AMK",
-    "CNG",
-    "LKS",
-    "BNL"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "WDL",
+        "ADM",
+        "SBW",
+        "CBR",
+        "YIS",
+        "KTB",
+        "YCK",
+        "AMK",
+        "BSH"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR"
+      ]
+    }
   ]
 }

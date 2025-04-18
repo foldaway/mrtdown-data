@@ -4,37 +4,6 @@
   "componentIdsAffected": [
     "EWL"
   ],
-  "stationIdsAffected": [
-    "PSR",
-    "TAM",
-    "SIM",
-    "TNM",
-    "BDK",
-    "KEM",
-    "EUN",
-    "PYL",
-    "ALJ",
-    "KAL",
-    "LVR",
-    "BGS",
-    "CTH",
-    "RFP",
-    "TPG",
-    "OTP",
-    "TIB",
-    "RDH",
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "JUR",
-    "CNG",
-    "LKS",
-    "BNL",
-    "PNR",
-    "JKN"
-  ],
   "startAt": "2015-12-10T08:00:06.000+08:00",
   "endAt": "2015-12-10T08:11:36.000+08:00",
   "type": "disruption",
@@ -51,6 +20,43 @@
       "text": "[EWL]: Longer travelling time expected along EW line in the direction towards PasirRis due to congestion at Pasir Ris.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/674740335411462144",
       "createdAt": "2015-12-10T08:00:06.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR",
+        "TAM",
+        "SIM",
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN"
+      ]
     }
   ]
 }

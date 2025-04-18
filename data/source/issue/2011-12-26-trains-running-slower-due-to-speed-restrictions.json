@@ -6,22 +6,6 @@
     "EWL",
     "CCL"
   ],
-  "stationIdsAffected": [
-    "DBG",
-    "BBS",
-    "EPN",
-    "PMN",
-    "PSR",
-    "TAM",
-    "SIM",
-    "TNM",
-    "BDK",
-    "CCK",
-    "YWT",
-    "KRJ",
-    "MSL",
-    "WDL"
-  ],
   "startAt": "2011-12-26T10:48:38.000+08:00",
   "endAt": "2011-12-27T00:00:00.000+08:00",
   "type": "disruption",
@@ -40,6 +24,74 @@
       "text": "Trains are running slower this morning due to speed restrictions.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/151132281954770944",
       "createdAt": "2011-12-26T10:48:38.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "CTH"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "CTH",
+        "RFP"
+      ]
+    },
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "BSH",
+        "BDL",
+        "TAP"
+      ]
+    },
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN"
+      ]
     }
   ]
 }

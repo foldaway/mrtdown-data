@@ -4,24 +4,6 @@
   "componentIdsAffected": [
     "CCL"
   ],
-  "stationIdsAffected": [
-    "DBG",
-    "BBS",
-    "EPN",
-    "PMN",
-    "NCH",
-    "SDM",
-    "MBT",
-    "DKT",
-    "PYL",
-    "MPS",
-    "TSG",
-    "BLY",
-    "SER",
-    "LRC",
-    "BSH",
-    "MRM"
-  ],
   "startAt": "2011-09-20T05:30:00+08:00",
   "endAt": "2011-09-20T09:50:00+08:00",
   "type": "disruption",
@@ -46,6 +28,30 @@
       "text": "MRT services on the Circle Line (CCL) between Dhoby Ghaut and Marymount stations were disrupted on Tuesday morning.",
       "sourceUrl": "https://web.archive.org/web/20110923183340/http://www.channelnewsasia.com/stories/singaporelocalnews/view/1154252/1/.html",
       "createdAt": "2011-09-20T08:32:00+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM"
+      ]
     }
   ]
 }

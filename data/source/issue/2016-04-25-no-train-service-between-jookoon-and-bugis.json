@@ -1,37 +1,7 @@
 {
   "id": "2016-04-25-no-train-service-between-jookoon-and-bugis",
-  "title": "Service Disruption: No train service between Joo Koon and Bugis on EWL, Woodlands and Jurong East on NSL",
-  "componentIdsAffected": [
-    "EWL",
-    "NSL"
-  ],
-  "stationIdsAffected": [
-    "BGS",
-    "CTH",
-    "RFP",
-    "TPG",
-    "OTP",
-    "TIB",
-    "RDH",
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "JUR",
-    "CNG",
-    "LKS",
-    "BNL",
-    "PNR",
-    "JKN",
-    "BBT",
-    "BGB",
-    "CCK",
-    "YWT",
-    "KRJ",
-    "MSL",
-    "WDL"
-  ],
+  "title": "Service Disruption: No train service between Joo Koon and Bugis, Woodlands and Jurong East",
+  "componentIdsAffected": [],
   "startAt": "2016-04-25T20:11:58.000+08:00",
   "endAt": "2016-04-25T20:34:18.000+08:00",
   "type": "disruption",
@@ -68,6 +38,46 @@
       "text": "[NSEWL] No train service between #JooKoon and #Bugis on EWL, between #Woodlands and #JurongEast on NSL due to traction power fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/724571653460512768",
       "createdAt": "2016-04-25T20:11:58.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN"
+      ]
+    },
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK",
+        "YWT",
+        "KRJ",
+        "MSL",
+        "WDL"
+      ]
     }
   ]
 }

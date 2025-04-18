@@ -2,12 +2,17 @@
   "id": "2015-03-13-track-inspection-completed",
   "title": "Track inspection completed",
   "componentIdsAffected": [
-    "EWL",
     "NSL"
   ],
   "stationIdsAffected": [
-    "YWT",
-    "KRJ"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "YWT",
+        "KRJ"
+      ]
+    }
   ],
   "startAt": "2015-03-13T16:29:10.000+08:00",
   "endAt": "2015-03-13T16:33:09.000+08:00",

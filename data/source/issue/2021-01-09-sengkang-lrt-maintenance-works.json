@@ -20,18 +20,31 @@
     }
   ],
   "stationIdsAffected": [
-    "SKG",
-    "CPV",
-    "RMB",
-    "BAK",
-    "KGK",
-    "RNG",
-    "CGL",
-    "FMW",
-    "KPG",
-    "TNG",
-    "FNV",
-    "LYR",
-    "TKG"
+    {
+      "componentId": "SKLRT",
+      "branchName": "west",
+      "stationIds": [
+        "SKG",
+        "CGL",
+        "FMW",
+        "KPG",
+        "TNG",
+        "FNV",
+        "LYR",
+        "TKG"
+      ]
+    },
+    {
+      "componentId": "SKLRT",
+      "branchName": "east",
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK",
+        "RNG"
+      ]
+    }
   ]
 }

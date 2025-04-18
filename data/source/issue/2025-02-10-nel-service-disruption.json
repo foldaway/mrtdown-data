@@ -4,31 +4,6 @@
   "componentIdsAffected": [
     "NEL"
   ],
-  "stationIdsAffected": [
-    "KVN",
-    "HGN",
-    "BGK",
-    "SKG",
-    "PGL",
-    "DBG",
-    "LTI",
-    "FRP",
-    "BNK",
-    "PTP",
-    "WLH",
-    "SER",
-    "HBF",
-    "OTP",
-    "CTN",
-    "CRQ",
-    "DBG",
-    "LTI",
-    "FRP",
-    "BNK",
-    "PTP",
-    "WLH",
-    "SER"
-  ],
   "startAt": "2025-02-10T06:23:35.000+08:00",
   "endAt": "2025-02-10T08:46:49.000+08:00",
   "type": "disruption",
@@ -131,6 +106,30 @@
       "text": "NEL Service is delayed due to a Signaling Fault. Additional travel time of about 10 minutes may be expected. We are sorry for the inconvenience caused.",
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1888715397228380474",
       "createdAt": "2025-02-10T06:23:35.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "HBF",
+        "OTP",
+        "CTN",
+        "CRQ",
+        "DBG",
+        "LTI",
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL"
+      ]
     }
   ]
 }

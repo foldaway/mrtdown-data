@@ -1,27 +1,8 @@
 {
   "id": "2012-02-10-west-bound-train-delayed",
-  "title": "West-bound train service delayed due to train fault",
+  "title": "West-bound train service disrupted due to train fault",
   "componentIdsAffected": [
     "EWL"
-  ],
-  "stationIdsAffected": [
-    "PYL",
-    "ALJ",
-    "KAL",
-    "LVR",
-    "BGS",
-    "CTH",
-    "RFP",
-    "TPG",
-    "OTP",
-    "TIB",
-    "RDH",
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "JUR"
   ],
   "startAt": "2012-02-10T18:27:51.000+08:00",
   "endAt": "2012-02-10T19:42:13.000+08:00",
@@ -41,6 +22,31 @@
       "text": "West-bound train service from Paya Lebar to Jurong East delayed due to train fault.Please allow extra time for travel.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/167917687425605632",
       "createdAt": "2012-02-10T18:27:51.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR"
+      ]
     }
   ]
 }

@@ -1,18 +1,9 @@
 {
   "id": "2011-12-24-service-disruption",
-  "title": "Train Services Running Slower Due to Wet Weather",
+  "title": "Wet Weather Causing Train Service Slower Across Affected Lines",
   "componentIdsAffected": [
-    "BPLRT",
-    "EWL",
     "NSL",
-    "CCL"
-  ],
-  "stationIdsAffected": [
-    "JKN",
-    "DBG",
-    "BBS",
-    "EPN",
-    "PMN"
+    "EWL"
   ],
   "startAt": "2011-12-24T13:57:23.000+08:00",
   "endAt": "2011-12-25T00:00:00.000+08:00",
@@ -32,6 +23,37 @@
       "text": "SVC UPDATE: Due to wet weather, train services are running slower on all lines.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/150455006049484800",
       "createdAt": "2011-12-24T13:57:23.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "CTH",
+        "RFP"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR",
+        "TAM",
+        "SIM",
+        "TNM"
+      ]
     }
   ]
 }

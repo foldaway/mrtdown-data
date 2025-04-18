@@ -1,6 +1,6 @@
 {
   "id": "2024-04-29-circle-line-train-fault",
-  "title": "Major Delays on Circle Line Due to Train Fault",
+  "title": "Major Delays on Circle Line Due to Train Fault Resolved",
   "componentIdsAffected": [
     "CCL"
   ],
@@ -73,16 +73,31 @@
     }
   ],
   "stationIdsAffected": [
-    "BSH",
-    "MRM",
-    "CDT",
-    "BTN",
-    "FRR",
-    "HLV",
-    "BNV",
-    "ONH",
-    "KRG",
-    "HPV",
-    "PPJ"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ"
+      ]
+    }
   ]
 }

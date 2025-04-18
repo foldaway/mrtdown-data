@@ -4,31 +4,6 @@
   "componentIdsAffected": [
     "EWL"
   ],
-  "stationIdsAffected": [
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "PSR",
-    "TAM",
-    "SIM",
-    "TNM",
-    "BDK",
-    "KEM",
-    "EUN",
-    "PYL",
-    "ALJ",
-    "KAL",
-    "LVR",
-    "BGS",
-    "CTH",
-    "RFP",
-    "TPG",
-    "OTP",
-    "TIB",
-    "RDH"
-  ],
   "startAt": "2015-10-15T09:49:18.000+08:00",
   "endAt": "2015-10-15T10:17:27.000+08:00",
   "type": "disruption",
@@ -65,6 +40,19 @@
       "text": "A train fault has been reported at #Clementi EastBound. Trains are moving slower towards #Pasir Ris. We will update again on the delay.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/654474094285488128",
       "createdAt": "2015-10-15T09:49:18.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE"
+      ]
     }
   ]
 }

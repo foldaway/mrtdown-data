@@ -49,15 +49,21 @@
     }
   ],
   "stationIdsAffected": [
-    "PMN",
-    "NCH",
-    "SDM",
-    "MBT",
-    "DKT",
-    "PYL",
-    "MPS",
-    "TSG",
-    "BLY",
-    "SER"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER"
+      ]
+    }
   ]
 }

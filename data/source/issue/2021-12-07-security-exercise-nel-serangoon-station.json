@@ -1,6 +1,6 @@
 {
   "id": "2021-12-07-security-exercise-nel-serangoon-station",
-  "title": "Security Exercise at NEL Serangoon Station",
+  "title": "Security Exercise at Serangoon Station",
   "componentIdsAffected": [
     "NEL"
   ],
@@ -18,14 +18,23 @@
     }
   ],
   "stationIdsAffected": [
-    "BNK",
-    "PTP",
-    "WLH",
-    "SER",
-    "KVN",
-    "HGN",
-    "BGK",
-    "SKG",
-    "PGL"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "LTI",
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL"
+      ]
+    }
   ]
 }

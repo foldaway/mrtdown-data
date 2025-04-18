@@ -2,13 +2,18 @@
   "id": "2012-05-11-track-fault",
   "title": "Service disruption due to track fault",
   "componentIdsAffected": [
-    "NSL",
     "EWL"
   ],
   "stationIdsAffected": [
-    "RFP",
-    "TPG",
-    "OTP"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "RFP",
+        "TPG",
+        "OTP"
+      ]
+    }
   ],
   "startAt": "2012-05-11T17:52:40.000+08:00",
   "endAt": "2012-05-11T18:05:44.000+08:00",

@@ -1,6 +1,6 @@
 {
   "id": "2016-11-04-ccl-train-delays",
-  "title": "Intermittent signal interference causing delays",
+  "title": "Intermittent signal interference causing delays on Circle Line",
   "componentIdsAffected": [
     "CCL"
   ],
@@ -37,33 +37,39 @@
     }
   ],
   "stationIdsAffected": [
-    "DBG",
-    "BBS",
-    "EPN",
-    "PMN",
-    "NCH",
-    "SDM",
-    "MBT",
-    "DKT",
-    "PYL",
-    "MPS",
-    "TSG",
-    "BLY",
-    "SER",
-    "LRC",
-    "BSH",
-    "MRM",
-    "CDT",
-    "BTN",
-    "FRR",
-    "HLV",
-    "BNV",
-    "ONH",
-    "KRG",
-    "HPV",
-    "PPJ",
-    "LBD",
-    "TLB",
-    "HBF"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    }
   ]
 }

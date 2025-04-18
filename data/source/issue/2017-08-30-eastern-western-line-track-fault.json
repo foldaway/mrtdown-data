@@ -37,12 +37,18 @@
     }
   ],
   "stationIdsAffected": [
-    "RDH",
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "JUR"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR"
+      ]
+    }
   ]
 }

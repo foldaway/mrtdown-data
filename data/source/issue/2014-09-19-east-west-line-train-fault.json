@@ -4,22 +4,6 @@
   "componentIdsAffected": [
     "EWL"
   ],
-  "stationIdsAffected": [
-    "OTP",
-    "TIB",
-    "RDH",
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "JUR",
-    "CNG",
-    "LKS",
-    "BNL",
-    "PNR",
-    "JKN"
-  ],
   "startAt": "2014-09-19T13:38:57.000+08:00",
   "endAt": "2014-09-19T14:21:32.000+08:00",
   "type": "disruption",
@@ -69,6 +53,28 @@
       "text": "[EWL]: Estimate 20mins additional travelling time from #OutramPark  to #Joo Koon  due to train fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/512838231889424385",
       "createdAt": "2014-09-19T13:38:57.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN"
+      ]
     }
   ]
 }

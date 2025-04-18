@@ -4,27 +4,6 @@
   "componentIdsAffected": [
     "CCL"
   ],
-  "stationIdsAffected": [
-    "DKT",
-    "PYL",
-    "MPS",
-    "TSG",
-    "BLY",
-    "SER",
-    "LRC",
-    "BSH",
-    "MRM",
-    "CDT",
-    "BTN",
-    "FRR",
-    "HLV",
-    "BNV",
-    "ONH",
-    "KRG",
-    "HPV",
-    "PPJ",
-    "LBD"
-  ],
   "startAt": "2015-11-25T05:22:29.000+08:00",
   "endAt": "2015-11-25T05:32:58.000+08:00",
   "type": "disruption",
@@ -50,6 +29,41 @@
       "text": "Train services will be delayed on the CCL due to traction power fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/669264852867674112",
       "createdAt": "2015-11-25T05:22:29.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
     }
   ]
 }

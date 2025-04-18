@@ -4,19 +4,6 @@
   "componentIdsAffected": [
     "EWL"
   ],
-  "stationIdsAffected": [
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "JUR",
-    "CNG",
-    "LKS",
-    "BNL",
-    "PNR",
-    "JKN"
-  ],
   "startAt": "2017-04-11T07:44:44.000+08:00",
   "endAt": "2017-04-11T08:21:33.000+08:00",
   "type": "disruption",
@@ -42,6 +29,25 @@
       "text": "[EWL]: Due to a train fault, pls add 25mins travel time between #JooKoon &amp; #Queenstown. Train service is still available.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/851581744587218945",
       "createdAt": "2017-04-11T07:44:44.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN"
+      ]
     }
   ]
 }

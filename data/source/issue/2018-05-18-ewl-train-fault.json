@@ -25,14 +25,20 @@
     }
   ],
   "stationIdsAffected": [
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "JUR",
-    "CNG",
-    "LKS",
-    "BNL"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL"
+      ]
+    }
   ]
 }

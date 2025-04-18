@@ -2,12 +2,7 @@
   "id": "2012-04-16-trains-moving-slowly",
   "title": "Trains on South-bound Service Moving Slowly",
   "componentIdsAffected": [
-    "NSL"
-  ],
-  "stationIdsAffected": [
-    "JUR",
-    "BBT",
-    "JKN"
+    "EWL"
   ],
   "startAt": "2012-04-16T09:26:18.000+08:00",
   "endAt": "2012-04-16T11:43:04.000+08:00",
@@ -27,6 +22,17 @@
       "text": "West-bound train service towards Joo Koon delayed due to track fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/191699002792742914",
       "createdAt": "2012-04-16T09:26:18.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "BNL",
+        "PNR",
+        "JKN"
+      ]
     }
   ]
 }

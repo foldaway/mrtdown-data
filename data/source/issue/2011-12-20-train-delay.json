@@ -5,13 +5,6 @@
     "EWL",
     "NSL"
   ],
-  "stationIdsAffected": [
-    "ORC",
-    "SOM",
-    "DBG",
-    "BSH",
-    "BDL"
-  ],
   "startAt": "2011-12-20T08:37:29.000+08:00",
   "endAt": "2011-12-21T00:00:00.000+08:00",
   "type": "disruption",
@@ -30,6 +23,67 @@
       "text": "Trains service running smoothly.  Due to wet tracks, trains will run slower at some stretches.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/148924948289818624",
       "createdAt": "2011-12-20T08:37:29.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK",
+        "YWT",
+        "KRJ",
+        "MSL",
+        "WDL",
+        "ADM",
+        "SBW",
+        "YIS",
+        "KTB",
+        "YCK",
+        "AMK",
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW",
+        "ORC",
+        "SOM",
+        "DBG",
+        "CTH"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL"
+      ]
     }
   ]
 }

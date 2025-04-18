@@ -80,17 +80,23 @@
     }
   ],
   "stationIdsAffected": [
-    "DVR",
-    "CLE",
-    "JUR",
-    "CNG",
-    "LKS",
-    "BNL",
-    "PNR",
-    "JKN",
-    "GCL",
-    "TCR",
-    "TWR",
-    "TLK"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN",
+        "GCL",
+        "TCR",
+        "TWR",
+        "TLK"
+      ]
+    }
   ]
 }

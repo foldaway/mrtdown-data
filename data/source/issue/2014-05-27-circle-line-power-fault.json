@@ -4,20 +4,6 @@
   "componentIdsAffected": [
     "CCL"
   ],
-  "stationIdsAffected": [
-    "CDT",
-    "BTN",
-    "FRR",
-    "HLV",
-    "BNV",
-    "ONH",
-    "KRG",
-    "HPV",
-    "PPJ",
-    "LBD",
-    "TLB",
-    "HBF"
-  ],
   "startAt": "2014-05-27T11:35:29.000+08:00",
   "endAt": "2014-05-27T12:02:48.000+08:00",
   "type": "disruption",
@@ -36,6 +22,26 @@
       "text": "[CCL]: Estimate 15 mins additional travelling time from #Caldecotttowards#HarbourFront due to power fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/471132555027025920",
       "createdAt": "2014-05-27T11:35:29.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
     }
   ]
 }

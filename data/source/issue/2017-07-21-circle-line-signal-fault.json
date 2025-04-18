@@ -4,20 +4,6 @@
   "componentIdsAffected": [
     "CCL"
   ],
-  "stationIdsAffected": [
-    "CDT",
-    "BTN",
-    "FRR",
-    "HLV",
-    "BNV",
-    "ONH",
-    "KRG",
-    "HPV",
-    "PPJ",
-    "LBD",
-    "TLB",
-    "HBF"
-  ],
   "startAt": "2017-07-21T22:08:08.000+08:00",
   "endAt": "2017-07-21T22:28:37.000+08:00",
   "type": "disruption",
@@ -42,6 +28,26 @@
       "text": "[CCL]: Estimate 15mins additional travelling time from #Caldecott to #HarbourFront towards #HarbourFront due to signal fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/888400201047613441",
       "createdAt": "2017-07-21T22:08:08.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
     }
   ]
 }
