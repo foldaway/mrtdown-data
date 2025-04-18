@@ -4,36 +4,6 @@
   "componentIdsAffected": [
     "CCL"
   ],
-  "stationIdsAffected": [
-    "DBG",
-    "BBS",
-    "EPN",
-    "PMN",
-    "NCH",
-    "SDM",
-    "MBT",
-    "DKT",
-    "PYL",
-    "MPS",
-    "TSG",
-    "BLY",
-    "SER",
-    "LRC",
-    "BSH",
-    "MRM",
-    "CDT",
-    "BTN",
-    "FRR",
-    "HLV",
-    "BNV",
-    "ONH",
-    "KRG",
-    "HPV",
-    "PPJ",
-    "LBD",
-    "TLB",
-    "HBF"
-  ],
   "startAt": "2016-08-29T14:54:59.000+08:00",
   "endAt": "2016-08-31T12:44:42.000+08:00",
   "type": "disruption",
@@ -130,6 +100,42 @@
       "text": "[CCL]Due to intermittent signalling issues, pls expect longer travelling time until the end of svc today. More info: https://t.co/teIi6ba8yk",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/770152752420749312",
       "createdAt": "2016-08-29T14:54:59.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
     }
   ]
 }

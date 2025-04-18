@@ -26,7 +26,13 @@
     }
   ],
   "stationIdsAffected": [
-    "OTP",
-    "CTN"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "OTP",
+        "CTN"
+      ]
+    }
   ]
 }

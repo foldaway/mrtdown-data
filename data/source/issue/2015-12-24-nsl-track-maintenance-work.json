@@ -5,10 +5,16 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "YIS",
-    "KTB",
-    "YCK",
-    "AMK"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "YIS",
+        "KTB",
+        "YCK",
+        "AMK"
+      ]
+    }
   ],
   "startAt": "2015-12-24T05:28:24.000+08:00",
   "endAt": "2015-12-24T05:54:18.000+08:00",

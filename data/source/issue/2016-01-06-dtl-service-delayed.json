@@ -5,10 +5,16 @@
     "DTL"
   ],
   "stationIdsAffected": [
-    "BGS",
-    "PMN",
-    "BFT",
-    "DTN"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BGS",
+        "PMN",
+        "BFT",
+        "DTN"
+      ]
+    }
   ],
   "startAt": "2016-01-06T08:36:42.000+08:00",
   "endAt": "2016-01-06T08:47:43.000+08:00",

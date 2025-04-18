@@ -43,15 +43,21 @@
     }
   ],
   "stationIdsAffected": [
-    "PYL",
-    "MPS",
-    "TSG",
-    "BLY",
-    "SER",
-    "LRC",
-    "BSH",
-    "MRM",
-    "CDT",
-    "BTN"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN"
+      ]
+    }
   ]
 }

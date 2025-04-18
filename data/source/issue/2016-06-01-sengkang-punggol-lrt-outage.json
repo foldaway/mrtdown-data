@@ -56,13 +56,27 @@
     }
   ],
   "stationIdsAffected": [
-    "PGL",
-    "COV",
-    "MRD",
-    "CRE",
-    "RIV",
-    "KDL",
-    "OAS",
-    "DAM"
+    {
+      "componentId": "PGLRT",
+      "branchName": "east",
+      "stationIds": [
+        "PGL",
+        "SMK"
+      ]
+    },
+    {
+      "componentId": "SKLRT",
+      "branchName": "west",
+      "stationIds": [
+        "SKG",
+        "CGL",
+        "FMW",
+        "KPG",
+        "TNG",
+        "FNV",
+        "LYR",
+        "TKG"
+      ]
+    }
   ]
 }

@@ -43,12 +43,18 @@
     }
   ],
   "stationIdsAffected": [
-    "YIS",
-    "KTB",
-    "YCK",
-    "AMK",
-    "BSH",
-    "BDL",
-    "TAP"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "YIS",
+        "KTB",
+        "YCK",
+        "AMK",
+        "BSH",
+        "BDL",
+        "TAP"
+      ]
+    }
   ]
 }

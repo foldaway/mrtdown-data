@@ -26,11 +26,17 @@
     }
   ],
   "stationIdsAffected": [
-    "HVW",
-    "BTW",
-    "KAP",
-    "SAV",
-    "TKK",
-    "BTN"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "HVW",
+        "BTW",
+        "KAP",
+        "SAV",
+        "TKK",
+        "BTN"
+      ]
+    }
   ]
 }

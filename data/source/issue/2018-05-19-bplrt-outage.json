@@ -31,7 +31,13 @@
     }
   ],
   "stationIdsAffected": [
-    "PNX",
-    "BKP"
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "PNX",
+        "BKP"
+      ]
+    }
   ]
 }

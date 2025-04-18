@@ -5,7 +5,13 @@
     "NEL"
   ],
   "stationIdsAffected": [
-    "PGL"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "PGL"
+      ]
+    }
   ],
   "startAt": "2017-06-01T12:39:39.000+08:00",
   "endAt": "2017-06-01T12:51:44.000+08:00",

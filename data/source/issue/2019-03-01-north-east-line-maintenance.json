@@ -1,6 +1,6 @@
 {
   "id": "2019-03-01-north-east-line-maintenance",
-  "title": "North East Line maintenance works",
+  "title": "North East Line Maintenance Works",
   "componentIdsAffected": [
     "NEL",
     "SKLRT"
@@ -58,21 +58,17 @@
     }
   ],
   "stationIdsAffected": [
-    "SER",
-    "KVN",
-    "HGN",
-    "BGK",
-    "SKG",
-    "PGL",
-    "HBF",
-    "OTP",
-    "CTN",
-    "CRQ",
-    "DBG",
-    "LTI",
-    "FRP",
-    "BNK",
-    "PTP",
-    "WLH"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL"
+      ]
+    }
   ]
 }

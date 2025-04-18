@@ -4,17 +4,6 @@
   "componentIdsAffected": [
     "EWL"
   ],
-  "stationIdsAffected": [
-    "OTP",
-    "TIB",
-    "RDH",
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "JUR"
-  ],
   "startAt": "2015-10-09T09:21:02.000+08:00",
   "endAt": "2015-10-09T09:37:54.000+08:00",
   "type": "disruption",
@@ -33,6 +22,28 @@
       "text": "[EWL]:Estimate 15 mins additional travelling time from #OutramPark  to #JurongEast towards JooKoon due to train fault.Service still running.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/652292653795532800",
       "createdAt": "2015-10-09T09:21:02.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN"
+      ]
     }
   ]
 }

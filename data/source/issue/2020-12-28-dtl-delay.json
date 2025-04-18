@@ -25,17 +25,23 @@
     }
   ],
   "stationIdsAffected": [
-    "GLB",
-    "MTR",
-    "MPS",
-    "UBI",
-    "KKB",
-    "BDN",
-    "BDR",
-    "TPW",
-    "TAM",
-    "TPE",
-    "UPC",
-    "XPO"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "GLB",
+        "MTR",
+        "MPS",
+        "UBI",
+        "KKB",
+        "BDN",
+        "BDR",
+        "TPW",
+        "TAM",
+        "TPE",
+        "UPC",
+        "XPO"
+      ]
+    }
   ]
 }

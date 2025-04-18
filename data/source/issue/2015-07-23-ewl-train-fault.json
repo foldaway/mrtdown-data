@@ -5,13 +5,19 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "CLE",
-    "JUR",
-    "CNG",
-    "LKS",
-    "BNL",
-    "PNR",
-    "JKN"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN"
+      ]
+    }
   ],
   "startAt": "2015-07-23T20:41:19.000+08:00",
   "endAt": "2015-07-23T20:49:07.000+08:00",

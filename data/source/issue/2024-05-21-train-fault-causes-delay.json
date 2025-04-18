@@ -32,13 +32,19 @@
     }
   ],
   "stationIdsAffected": [
-    "ORC",
-    "GRW",
-    "HVL",
-    "OTP",
-    "MAX",
-    "SHW",
-    "MRB",
-    "GRB"
+    {
+      "componentId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "ORC",
+        "GRW",
+        "HVL",
+        "OTP",
+        "MAX",
+        "SHW",
+        "MRB",
+        "GRB"
+      ]
+    }
   ]
 }

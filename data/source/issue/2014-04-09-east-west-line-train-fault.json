@@ -5,14 +5,20 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "PYL",
-    "ALJ",
-    "KAL",
-    "LVR",
-    "PSR",
-    "TAM",
-    "SIM",
-    "TNM"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "PSR",
+        "TAM",
+        "SIM",
+        "TNM"
+      ]
+    }
   ],
   "startAt": "2014-04-09T07:49:09.000+08:00",
   "endAt": "2014-04-09T07:54:14.000+08:00",

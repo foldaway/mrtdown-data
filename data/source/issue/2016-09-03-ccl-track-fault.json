@@ -5,8 +5,14 @@
     "CCL"
   ],
   "stationIdsAffected": [
-    "PYL",
-    "MPS"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "PYL",
+        "MPS"
+      ]
+    }
   ],
   "startAt": "2016-09-05T20:22:46.000+08:00",
   "endAt": "2016-09-05T21:13:59.000+08:00",

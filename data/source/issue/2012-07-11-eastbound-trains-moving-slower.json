@@ -2,12 +2,7 @@
   "id": "2012-07-11-eastbound-trains-moving-slower",
   "title": "Eastbound trains from Tanjong Pagar to City Hall moving slower",
   "componentIdsAffected": [
-    "NSL"
-  ],
-  "stationIdsAffected": [
-    "CTH",
-    "RFP",
-    "TPG"
+    "EWL"
   ],
   "startAt": "2012-07-11T07:43:28.000+08:00",
   "endAt": "2012-07-11T07:54:06.000+08:00",
@@ -33,6 +28,17 @@
       "text": "Eastbound trains from Tanjong Pagar to City Hall moving slower.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/222838478780641280",
       "createdAt": "2012-07-11T07:43:28.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "CTH",
+        "RFP",
+        "TPG"
+      ]
     }
   ]
 }

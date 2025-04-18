@@ -4,10 +4,6 @@
   "componentIdsAffected": [
     "EWL"
   ],
-  "stationIdsAffected": [
-    "BNV",
-    "DVR"
-  ],
   "startAt": "2017-06-14T08:13:40.000+08:00",
   "endAt": "2017-06-14T12:55:54.000+08:00",
   "type": "disruption",
@@ -105,6 +101,19 @@
       "text": "[EWL]UPDATE:Pls add 15 mins travel time from #CityHall to #Dover,due to a track circuit fault at #BuonaVista. Train svc is still available.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/874781852631834624",
       "createdAt": "2017-06-14T08:13:40.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR"
+      ]
     }
   ]
 }

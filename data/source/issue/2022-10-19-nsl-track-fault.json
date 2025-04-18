@@ -103,9 +103,15 @@
     }
   ],
   "stationIdsAffected": [
-    "CBR",
-    "YIS",
-    "KTB",
-    "YCK"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "CBR",
+        "YIS",
+        "KTB",
+        "YCK"
+      ]
+    }
   ]
 }

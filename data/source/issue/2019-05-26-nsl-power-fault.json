@@ -61,12 +61,18 @@
     }
   ],
   "stationIdsAffected": [
-    "ORC",
-    "SOM",
-    "DBG",
-    "CTH",
-    "RFP",
-    "MRB",
-    "MSP"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "ORC",
+        "SOM",
+        "DBG",
+        "CTH",
+        "RFP",
+        "MRB",
+        "MSP"
+      ]
+    }
   ]
 }

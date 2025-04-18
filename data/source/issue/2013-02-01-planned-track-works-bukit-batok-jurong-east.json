@@ -5,8 +5,14 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "JUR",
-    "BBT"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT"
+      ]
+    }
   ],
   "startAt": "2013-02-01T01:30:00.000+08:00",
   "endAt": "2013-04-08T04:30:00.000+08:00",

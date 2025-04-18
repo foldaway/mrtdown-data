@@ -5,28 +5,6 @@
     "NSL",
     "EWL"
   ],
-  "stationIdsAffected": [
-    "JUR",
-    "BBT",
-    "BGB",
-    "CCK",
-    "YWT",
-    "KRJ",
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "CNG",
-    "LKS",
-    "BNL",
-    "PNR",
-    "JKN",
-    "GCL",
-    "TCR",
-    "TWR",
-    "TLK"
-  ],
   "startAt": "2017-07-13T00:02:45.000+08:00",
   "endAt": "2017-07-13T01:20:02.000+08:00",
   "type": "disruption",
@@ -57,6 +35,41 @@
       "text": "[NSL] No train service between #JurongEast &amp; #Kranji, #Queenstown &amp; #tuaslink due to a power fault. Est resumption time: 00:30am.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/885167556952154112",
       "createdAt": "2017-07-13T00:02:45.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK",
+        "YWT",
+        "KRJ"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN",
+        "GCL",
+        "TCR",
+        "TWR",
+        "TLK"
+      ]
     }
   ]
 }

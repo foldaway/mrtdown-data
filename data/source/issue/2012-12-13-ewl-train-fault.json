@@ -4,20 +4,6 @@
   "componentIdsAffected": [
     "EWL"
   ],
-  "stationIdsAffected": [
-    "RDH",
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "JUR",
-    "CNG",
-    "LKS",
-    "BNL",
-    "PNR",
-    "JKN"
-  ],
   "startAt": "2012-12-13T23:05:32.000+08:00",
   "endAt": "2012-12-13T23:32:46.000+08:00",
   "type": "disruption",
@@ -42,6 +28,20 @@
       "text": "[EWL]: Estimate 15 mins additional travelling time from #Redhill to #Clementi towards JooKoon due to train fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/279240644302610432",
       "createdAt": "2012-12-13T23:05:32.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE"
+      ]
     }
   ]
 }

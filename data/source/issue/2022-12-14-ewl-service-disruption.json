@@ -37,10 +37,16 @@
     }
   ],
   "stationIdsAffected": [
-    "LKS",
-    "BNL",
-    "PNR",
-    "JKN",
-    "GCL"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN",
+        "GCL"
+      ]
+    }
   ]
 }

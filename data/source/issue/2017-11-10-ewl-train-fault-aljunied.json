@@ -32,22 +32,28 @@
     }
   ],
   "stationIdsAffected": [
-    "TNM",
-    "BDK",
-    "KEM",
-    "EUN",
-    "PYL",
-    "ALJ",
-    "KAL",
-    "LVR",
-    "BGS",
-    "PSR",
-    "TAM",
-    "SIM",
-    "CTH",
-    "RFP",
-    "TPG",
-    "OTP",
-    "TIB"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "PSR",
+        "TAM",
+        "SIM",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB"
+      ]
+    }
   ]
 }

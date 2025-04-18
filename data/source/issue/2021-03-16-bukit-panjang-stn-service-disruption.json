@@ -23,6 +23,12 @@
     }
   ],
   "stationIdsAffected": [
-    "BKP"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BKP"
+      ]
+    }
   ]
 }

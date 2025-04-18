@@ -5,7 +5,13 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "AMK"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "AMK"
+      ]
+    }
   ],
   "startAt": "2012-06-12T18:47:19.000+08:00",
   "endAt": "2012-06-12T18:53:01.000+08:00",

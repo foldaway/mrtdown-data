@@ -5,9 +5,15 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "YIS",
-    "KTB",
-    "YCK"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "YIS",
+        "KTB",
+        "YCK"
+      ]
+    }
   ],
   "startAt": "2014-05-02T05:43:18.000+08:00",
   "endAt": "2014-05-02T06:01:55.000+08:00",

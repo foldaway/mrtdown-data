@@ -5,8 +5,14 @@
     "NEL"
   ],
   "stationIdsAffected": [
-    "CRQ",
-    "DBG"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "CRQ",
+        "DBG"
+      ]
+    }
   ],
   "startAt": "2017-07-17T08:02:55.000+08:00",
   "endAt": "2017-07-17T08:03:00.000+08:00",

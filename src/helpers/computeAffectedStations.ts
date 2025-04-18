@@ -9,6 +9,7 @@ import {
 import type { Station } from '../schema/Station';
 import { assert } from '../util/assert';
 import { DateTime } from 'luxon';
+import type { IssueStationEntry } from '../schema/Issue';
 
 export const LineSectionSchema = z
   .discriminatedUnion('type', [
@@ -109,13 +110,14 @@ function findComponentAndBranch(
 export function computeAffectedStations(
   lineSections: LineSection[],
   startAt: string,
-): string[] {
+): IssueStationEntry[] {
   const startAtDateTime = DateTime.fromISO(startAt);
   assert(startAtDateTime.isValid);
 
   console.log('[computeAffectedStations]', lineSections);
-  const stationIds = new Set<string>();
   const stations = StationModel.getAll();
+
+  const results: IssueStationEntry[] = [];
 
   for (const lineSection of lineSections) {
     switch (lineSection.type) {
@@ -148,6 +150,8 @@ export function computeAffectedStations(
           continue;
         }
 
+        const stationIds = new Set<string>();
+
         for (const stationCode of result.sectionStationCodes) {
           const station = stations.find((s) => {
             const componentMembers = s.componentMembers[result.component.id];
@@ -173,6 +177,14 @@ export function computeAffectedStations(
             stationIds.add(station.id);
           }
         }
+
+        if (stationIds.size > 0) {
+          results.push({
+            componentId: result.component.id,
+            branchName: result.branchName,
+            stationIds: Array.from(stationIds),
+          });
+        }
         break;
       }
       case 'entire_line': {
@@ -183,6 +195,8 @@ export function computeAffectedStations(
           `Could not find branch "${branchCode}" in component "${component.id}"`,
         );
         const branch = component.branches[branchCode];
+
+        const stationIds = new Set<string>();
 
         for (const stationCode of branch) {
           const station = stations.find((s) => {
@@ -209,11 +223,46 @@ export function computeAffectedStations(
             stationIds.add(station.id);
           }
         }
+
+        if (stationIds.size > 0) {
+          results.push({
+            componentId,
+            branchName: branchCode,
+            stationIds: Array.from(stationIds),
+          });
+        }
+
         break;
       }
     }
   }
 
-  console.log('[computeAffectedStations]', stationIds);
-  return Array.from(stationIds);
+  function isSubsetOfAnotherEntry(index: number) {
+    const entry = results[index];
+    const stationIdsSet = new Set(entry.stationIds);
+
+    for (let j = results.length - 1; j >= 0; j--) {
+      if (index === j) {
+        continue;
+      }
+      const otherEntry = results[j];
+      const otherStationIdsSet = new Set(otherEntry.stationIds);
+      if (stationIdsSet.isSubsetOf(otherStationIdsSet)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // De-duplicate subsets
+  for (let i = results.length - 1; i >= 0; i--) {
+    const shouldDelete = isSubsetOfAnotherEntry(i);
+
+    if (shouldDelete) {
+      results.splice(i, 1);
+    }
+  }
+
+  console.log('[computeAffectedStations]', results);
+  return results;
 }

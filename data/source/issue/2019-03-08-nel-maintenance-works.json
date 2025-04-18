@@ -26,10 +26,16 @@
     }
   ],
   "stationIdsAffected": [
-    "HBF",
-    "OTP",
-    "CTN",
-    "CRQ",
-    "DBG"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "HBF",
+        "OTP",
+        "CTN",
+        "CRQ",
+        "DBG"
+      ]
+    }
   ]
 }

@@ -5,11 +5,17 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "BSH",
-    "BDL",
-    "TAP",
-    "NOV",
-    "NEW"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW"
+      ]
+    }
   ],
   "startAt": "2012-08-30T06:25:49.000+08:00",
   "endAt": "2012-08-30T06:42:13.000+08:00",

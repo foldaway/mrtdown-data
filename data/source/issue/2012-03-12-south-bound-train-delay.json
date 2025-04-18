@@ -5,12 +5,18 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "BGB",
-    "CCK",
-    "YWT",
-    "KRJ",
-    "MSL",
-    "WDL"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "BGB",
+        "CCK",
+        "YWT",
+        "KRJ",
+        "MSL",
+        "WDL"
+      ]
+    }
   ],
   "startAt": "2012-03-12T09:36:33.000+08:00",
   "endAt": "2012-03-12T09:51:46.000+08:00",

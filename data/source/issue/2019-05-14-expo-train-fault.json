@@ -2,7 +2,6 @@
   "id": "2019-05-14-expo-train-fault",
   "title": "Train Fault at Expo Station",
   "componentIdsAffected": [
-    "EWL",
     "DTL"
   ],
   "startAt": "2019-05-14T18:48:39.000+08:00",
@@ -26,12 +25,17 @@
     }
   ],
   "stationIdsAffected": [
-    "BDR",
-    "TPW",
-    "TAM",
-    "TPE",
-    "UPC",
-    "XPO",
-    "TNM"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BDR",
+        "TPW",
+        "TAM",
+        "TPE",
+        "UPC",
+        "XPO"
+      ]
+    }
   ]
 }

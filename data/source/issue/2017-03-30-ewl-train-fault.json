@@ -43,13 +43,19 @@
     }
   ],
   "stationIdsAffected": [
-    "PSR",
-    "TAM",
-    "SIM",
-    "TNM",
-    "BDK",
-    "KEM",
-    "EUN",
-    "PYL"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR",
+        "TAM",
+        "SIM",
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL"
+      ]
+    }
   ]
 }

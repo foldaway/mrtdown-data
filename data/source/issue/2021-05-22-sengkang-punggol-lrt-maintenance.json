@@ -21,32 +21,58 @@
     }
   ],
   "stationIdsAffected": [
-    "SKG",
-    "CPV",
-    "RMB",
-    "BAK",
-    "KGK",
-    "RNG",
-    "CGL",
-    "FMW",
-    "KPG",
-    "TNG",
-    "FNV",
-    "LYR",
-    "TKG",
-    "PGL",
-    "SMK",
-    "PGP",
-    "SMD",
-    "NBG",
-    "SMG",
-    "STK",
-    "COV",
-    "MRD",
-    "CRE",
-    "RIV",
-    "KDL",
-    "OAS",
-    "DAM"
+    {
+      "componentId": "SKLRT",
+      "branchName": "west",
+      "stationIds": [
+        "SKG",
+        "CGL",
+        "FMW",
+        "KPG",
+        "TNG",
+        "FNV",
+        "LYR",
+        "TKG"
+      ]
+    },
+    {
+      "componentId": "SKLRT",
+      "branchName": "east",
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK",
+        "RNG"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "east",
+      "stationIds": [
+        "PGL",
+        "SMK",
+        "PGP",
+        "SMD",
+        "NBG",
+        "SMG",
+        "STK"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "west",
+      "stationIds": [
+        "PGL",
+        "COV",
+        "MRD",
+        "CRE",
+        "RIV",
+        "KDL",
+        "OAS",
+        "DAM"
+      ]
+    }
   ]
 }

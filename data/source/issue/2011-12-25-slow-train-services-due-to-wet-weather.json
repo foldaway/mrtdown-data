@@ -6,23 +6,6 @@
     "EWL",
     "CCL"
   ],
-  "stationIdsAffected": [
-    "BSH",
-    "BDL",
-    "TAP",
-    "NOV",
-    "NEW",
-    "ORC",
-    "SOM",
-    "DBG",
-    "PSR",
-    "TAM",
-    "SIM",
-    "TNM",
-    "CTH",
-    "RFP",
-    "MRB"
-  ],
   "startAt": "2011-12-25T09:12:29.000+08:00",
   "endAt": "2011-12-26T00:00:00.000+08:00",
   "type": "disruption",
@@ -42,6 +25,51 @@
       "text": "SVC UPDATE:Due to wet weather, train services are running slower on the NSEW lines.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/150745698877452290",
       "createdAt": "2011-12-25T09:12:29.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK",
+        "YWT",
+        "KRJ",
+        "MSL",
+        "WDL",
+        "ADM",
+        "SBW",
+        "YIS",
+        "KTB",
+        "YCK",
+        "AMK",
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW",
+        "ORC",
+        "SOM",
+        "DBG"
+      ]
+    },
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW",
+        "ORC",
+        "SOM",
+        "DBG",
+        "CTH"
+      ]
     }
   ]
 }

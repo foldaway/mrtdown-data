@@ -5,15 +5,21 @@
     "DTL"
   ],
   "stationIdsAffected": [
-    "LTI",
-    "RCR",
-    "BGS",
-    "PMN",
-    "BFT",
-    "DTN",
-    "CTN",
-    "FCN",
-    "BCL"
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "LTI",
+        "RCR",
+        "BGS",
+        "PMN",
+        "BFT",
+        "DTN",
+        "CTN",
+        "FCN",
+        "BCL"
+      ]
+    }
   ],
   "startAt": "2018-07-21T17:41:44.000+08:00",
   "endAt": "2018-07-21T19:34:14.000+08:00",

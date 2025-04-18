@@ -25,10 +25,16 @@
     }
   ],
   "stationIdsAffected": [
-    "CCK",
-    "SHV",
-    "KTH",
-    "TKW",
-    "PNX"
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX"
+      ]
+    }
   ]
 }

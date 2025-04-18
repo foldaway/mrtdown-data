@@ -32,6 +32,12 @@
     }
   ],
   "stationIdsAffected": [
-    "HBF"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "HBF"
+      ]
+    }
   ]
 }

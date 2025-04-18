@@ -4,23 +4,6 @@
   "componentIdsAffected": [
     "CCL"
   ],
-  "stationIdsAffected": [
-    "DBG",
-    "BBS",
-    "EPN",
-    "PMN",
-    "NCH",
-    "SDM",
-    "MBT",
-    "DKT",
-    "PYL",
-    "MPS",
-    "TSG",
-    "BLY",
-    "SER",
-    "LRC",
-    "BSH"
-  ],
   "startAt": "2016-09-20T06:57:42.000+08:00",
   "endAt": "2016-09-20T07:06:03.000+08:00",
   "type": "disruption",
@@ -76,6 +59,29 @@
       "text": "[CCL]: Estimate 5mins additional travelling time from #PayaLebar to #MacPherson towards #HarbourFront due to track fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/778005174098866176",
       "createdAt": "2016-09-20T06:57:42.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH"
+      ]
     }
   ]
 }

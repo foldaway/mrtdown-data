@@ -37,12 +37,16 @@
     }
   ],
   "stationIdsAffected": [
-    "RMB",
-    "BAK",
-    "SKG",
-    "CGL",
-    "FMW",
-    "KPG",
-    "TNG"
+    {
+      "componentId": "SKLRT",
+      "branchName": "east",
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK"
+      ]
+    }
   ]
 }

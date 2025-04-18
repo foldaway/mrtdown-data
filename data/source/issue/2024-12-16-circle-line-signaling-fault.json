@@ -4,18 +4,6 @@
   "componentIdsAffected": [
     "CCL"
   ],
-  "stationIdsAffected": [
-    "FRR",
-    "HLV",
-    "BNV",
-    "ONH",
-    "KRG",
-    "HPV",
-    "PPJ",
-    "LBD",
-    "TLB",
-    "HBF"
-  ],
   "startAt": "2024-12-16T00:36:01.000+08:00",
   "endAt": "2024-12-16T01:25:00.000+08:00",
   "type": "disruption",
@@ -35,6 +23,24 @@
       "text": "[CCL] UPDATE: Due to signaling fault, please expect additional 30 mins travelling time btwn #Farrer Road and #HarbourFront. Free regular bus services are available between #Botanic Gardens and #HarbourFront.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1868334208512582138",
       "createdAt": "2024-12-16T00:36:01.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
     }
   ]
 }

@@ -5,9 +5,15 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "BNL",
-    "PNR",
-    "JKN"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "BNL",
+        "PNR",
+        "JKN"
+      ]
+    }
   ],
   "startAt": "2016-05-02T15:44:07.000+08:00",
   "endAt": "2016-05-02T16:33:01.000+08:00",

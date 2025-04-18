@@ -4,21 +4,6 @@
   "componentIdsAffected": [
     "NSL"
   ],
-  "stationIdsAffected": [
-    "MRB",
-    "PMN",
-    "NCH",
-    "SDM",
-    "MBT",
-    "DKT",
-    "PYL",
-    "MPS",
-    "TSG",
-    "BLY",
-    "SER",
-    "LRC",
-    "BSH"
-  ],
   "startAt": "2013-02-19T23:56:58.000+08:00",
   "endAt": "2013-02-20T00:05:05.000+08:00",
   "type": "disruption",
@@ -38,6 +23,25 @@
       "text": "[NSL]: Estimate 15 mins additional travelling time from #MarinaBay to #Bishan towards JurongEast due to train fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/303895963087560704",
       "createdAt": "2013-02-19T23:56:58.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW",
+        "ORC",
+        "SOM",
+        "DBG",
+        "CTH",
+        "RFP",
+        "MRB"
+      ]
     }
   ]
 }

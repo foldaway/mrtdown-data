@@ -37,7 +37,13 @@
     }
   ],
   "stationIdsAffected": [
-    "MPS",
-    "TSG"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "MPS",
+        "TSG"
+      ]
+    }
   ]
 }

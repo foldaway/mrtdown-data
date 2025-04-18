@@ -50,8 +50,14 @@
     }
   ],
   "stationIdsAffected": [
-    "FRP",
-    "BNK",
-    "PTP"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "FRP",
+        "BNK",
+        "PTP"
+      ]
+    }
   ]
 }

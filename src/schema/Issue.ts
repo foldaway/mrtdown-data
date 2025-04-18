@@ -12,6 +12,13 @@ export const IssueIdSchema = z
   .describe('YYYY-MM-DD followed by a lowercase blog post-like slug');
 export type IssueId = z.infer<typeof IssueIdSchema>;
 
+export const IssueStationEntrySchema = z.object({
+  componentId: ComponentIdSchema,
+  branchName: z.string(),
+  stationIds: z.array(StationIdSchema),
+});
+export type IssueStationEntry = z.infer<typeof IssueStationEntrySchema>;
+
 const IssueBase = z.object({
   id: IssueIdSchema,
   title: z
@@ -23,8 +30,8 @@ const IssueBase = z.object({
     .array(ComponentIdSchema)
     .describe('List of components affected'),
   stationIdsAffected: z
-    .array(StationIdSchema)
-    .describe('List of station IDs affected'),
+    .array(IssueStationEntrySchema)
+    .describe('List of stations affected'),
   startAt: z
     .string()
     .refine((val) => DateTime.fromISO(val).isValid)

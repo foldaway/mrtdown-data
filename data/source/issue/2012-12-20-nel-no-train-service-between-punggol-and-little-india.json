@@ -4,19 +4,6 @@
   "componentIdsAffected": [
     "NEL"
   ],
-  "stationIdsAffected": [
-    "LTI",
-    "FRP",
-    "BNK",
-    "PTP",
-    "WLH",
-    "SER",
-    "KVN",
-    "HGN",
-    "BGK",
-    "SKG",
-    "PGL"
-  ],
   "startAt": "2012-12-20T16:47:58.000+08:00",
   "endAt": "2012-12-20T17:14:40.000+08:00",
   "type": "disruption",
@@ -41,6 +28,25 @@
       "text": "[NEL] No train service between Punggol and Little India stations due to train fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/281682340491710464",
       "createdAt": "2012-12-20T16:47:58.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "LTI",
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL"
+      ]
     }
   ]
 }

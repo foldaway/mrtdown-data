@@ -1,16 +1,12 @@
 {
   "id": "2018-03-13-maintenance-work-on-the-punggol-lrt-system",
   "title": "Maintenance work on the Punggol LRT system",
-  "componentIdsAffected": [
-    "PGLRT"
-  ],
+  "componentIdsAffected": ["PGLRT"],
   "startAt": "2018-03-18T00:00:00.000+08:00",
   "endAt": "2018-03-19T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": [
-    "track.work"
-  ],
+  "subtypes": ["track.work"],
   "updates": [
     {
       "type": "planned",
@@ -20,19 +16,15 @@
     }
   ],
   "stationIdsAffected": [
-    "PGL",
-    "SMK",
-    "PGP",
-    "SMD",
-    "NBG",
-    "SMG",
-    "STK",
-    "COV",
-    "MRD",
-    "CRE",
-    "RIV",
-    "KDL",
-    "OAS",
-    "DAM"
+    {
+      "componentId": "PGLRT",
+      "branchName": "east",
+      "stationIds": ["PGL", "SMK", "PGP", "SMD", "NBG", "SMG", "STK"]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "west",
+      "stationIds": ["PGL", "COV", "MRD", "CRE", "RIV", "KDL", "OAS", "DAM"]
+    }
   ]
 }

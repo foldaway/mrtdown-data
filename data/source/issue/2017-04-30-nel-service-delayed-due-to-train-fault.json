@@ -5,10 +5,16 @@
     "NEL"
   ],
   "stationIdsAffected": [
-    "OTP",
-    "CTN",
-    "CRQ",
-    "DBG"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "OTP",
+        "CTN",
+        "CRQ",
+        "DBG"
+      ]
+    }
   ],
   "startAt": "2017-04-30T21:18:39.000+08:00",
   "endAt": "2017-04-30T21:51:50.000+08:00",

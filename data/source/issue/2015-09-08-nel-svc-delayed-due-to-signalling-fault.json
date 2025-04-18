@@ -4,18 +4,6 @@
   "componentIdsAffected": [
     "NEL"
   ],
-  "stationIdsAffected": [
-    "FRP",
-    "BNK",
-    "PTP",
-    "WLH",
-    "SER",
-    "KVN",
-    "HGN",
-    "BGK",
-    "SKG",
-    "PGL"
-  ],
   "startAt": "2015-09-08T07:22:00.000+08:00",
   "endAt": "2015-09-08T07:55:39.000+08:00",
   "type": "disruption",
@@ -59,6 +47,24 @@
       "text": "08/09, 7.19am: NEL svc is delayed due to a signalling fault at Sengkang NE16. Additional travel time of abt 10 minutes may be expected.",
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/641028673479380992",
       "createdAt": "2015-09-08T07:22:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL"
+      ]
     }
   ]
 }

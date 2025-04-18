@@ -26,7 +26,19 @@
     }
   ],
   "stationIdsAffected": [
-    "MRB",
-    "PSR"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "MRB"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR"
+      ]
+    }
   ]
 }

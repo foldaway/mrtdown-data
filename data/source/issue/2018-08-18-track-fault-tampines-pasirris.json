@@ -50,7 +50,13 @@
     }
   ],
   "stationIdsAffected": [
-    "PSR",
-    "TAM"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR",
+        "TAM"
+      ]
+    }
   ]
 }

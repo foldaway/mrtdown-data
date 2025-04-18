@@ -5,33 +5,6 @@
     "NSL",
     "EWL"
   ],
-  "stationIdsAffected": [
-    "CTH",
-    "RFP",
-    "TPG",
-    "OTP",
-    "TIB",
-    "RDH",
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "JUR",
-    "TAP",
-    "NOV",
-    "NEW",
-    "ORC",
-    "SOM",
-    "DBG",
-    "CCK",
-    "YWT",
-    "KRJ",
-    "MSL",
-    "WDL",
-    "ADM",
-    "SBW"
-  ],
   "startAt": "2017-07-25T07:26:15.000+08:00",
   "endAt": "2017-07-25T10:19:09.000+08:00",
   "type": "disruption",
@@ -80,6 +53,57 @@
       "text": "Trains running at longer intervals due to intermittent power fault on NSEWL. Crowds expected at stations.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/889627820762288130",
       "createdAt": "2017-07-25T07:26:15.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK",
+        "YWT",
+        "KRJ",
+        "MSL",
+        "WDL"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR",
+        "TAM",
+        "SIM",
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN"
+      ]
     }
   ]
 }

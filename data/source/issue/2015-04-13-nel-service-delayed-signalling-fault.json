@@ -5,8 +5,14 @@
     "NEL"
   ],
   "stationIdsAffected": [
-    "BGK",
-    "SKG"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "BGK",
+        "SKG"
+      ]
+    }
   ],
   "startAt": "2015-04-13T16:23:45.000+08:00",
   "endAt": "2015-04-13T17:12:33.000+08:00",

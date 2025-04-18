@@ -1,18 +1,10 @@
 {
   "id": "2021-04-14-nel-stations-closure",
-  "title": "NEL stations closure between NE12 Serangoon & NE17 Punggol",
+  "title": "NEL Stations Closure Between Serangoon and Punggol",
   "componentIdsAffected": [
     "NEL",
     "SKLRT",
     "PGLRT"
-  ],
-  "stationIdsAffected": [
-    "SER",
-    "KVN",
-    "HGN",
-    "BGK",
-    "SKG",
-    "PGL"
   ],
   "startAt": "2021-04-16T23:00:00.000+08:00",
   "endAt": "2021-04-18T00:00:00.000+08:00",
@@ -25,6 +17,20 @@
       "text": "NEL stations between NE12 Serangoon &amp; NE17 Punggol will close at about 11pm this Fri &amp; Sat, 16 &amp; 17 April. Bus Shuttle 21 will serve these stations. NEL service between NE12 Serangoon &amp; NE1 HarbourFront, Sengkang-Punggol LRT services as well as Service 325 will also run later. https://t.co/TLgPOYjz0W",
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1382188699853627394",
       "createdAt": "2021-04-14T12:27:20.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL"
+      ]
     }
   ]
 }

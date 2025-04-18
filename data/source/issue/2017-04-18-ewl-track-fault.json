@@ -5,9 +5,15 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "PSR",
-    "TAM",
-    "SIM"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR",
+        "TAM",
+        "SIM"
+      ]
+    }
   ],
   "startAt": "2017-04-18T08:35:35.000+08:00",
   "endAt": "2017-04-18T10:58:46.000+08:00",

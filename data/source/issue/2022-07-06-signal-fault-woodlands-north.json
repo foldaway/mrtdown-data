@@ -91,14 +91,20 @@
     }
   ],
   "stationIdsAffected": [
-    "WDN",
-    "WDL",
-    "WDS",
-    "SPL",
-    "LTR",
-    "MFL",
-    "BRH",
-    "UTS",
-    "CDT"
+    {
+      "componentId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "WDN",
+        "WDL",
+        "WDS",
+        "SPL",
+        "LTR",
+        "MFL",
+        "BRH",
+        "UTS",
+        "CDT"
+      ]
+    }
   ]
 }

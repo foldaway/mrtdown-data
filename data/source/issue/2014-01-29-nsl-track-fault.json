@@ -5,18 +5,24 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "AMK",
-    "BSH",
-    "BDL",
-    "TAP",
-    "NOV",
-    "NEW",
-    "ORC",
-    "SOM",
-    "DBG",
-    "CTH",
-    "RFP",
-    "MRB"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "AMK",
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW",
+        "ORC",
+        "SOM",
+        "DBG",
+        "CTH",
+        "RFP",
+        "MRB"
+      ]
+    }
   ],
   "startAt": "2014-01-29T20:32:47.000+08:00",
   "endAt": "2014-01-29T21:15:08.000+08:00",

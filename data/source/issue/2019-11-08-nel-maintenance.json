@@ -5,11 +5,17 @@
     "NEL"
   ],
   "stationIdsAffected": [
-    "KVN",
-    "HGN",
-    "BGK",
-    "SKG",
-    "PGL"
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL"
+      ]
+    }
   ],
   "startAt": "2019-11-08T23:00:00.000+08:00",
   "endAt": "2019-11-10T00:00:00.000+08:00",

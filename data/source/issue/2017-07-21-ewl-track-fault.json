@@ -4,17 +4,6 @@
   "componentIdsAffected": [
     "EWL"
   ],
-  "stationIdsAffected": [
-    "TPG",
-    "OTP",
-    "TIB",
-    "RDH",
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE"
-  ],
   "startAt": "2017-07-21T17:34:43.000+08:00",
   "endAt": "2017-07-21T17:45:59.000+08:00",
   "type": "disruption",
@@ -33,6 +22,23 @@
       "text": "[EWL]:Due to a track fault(not related to new signalling system),Pls add 15mins travel time from #Clementi to #TanjongPagar towards PasirRis",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/888331394983710720",
       "createdAt": "2017-07-21T17:34:43.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE"
+      ]
     }
   ]
 }

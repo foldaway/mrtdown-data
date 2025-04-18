@@ -5,8 +5,14 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "RFP",
-    "MRB"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "RFP",
+        "MRB"
+      ]
+    }
   ],
   "startAt": "2013-04-03T07:25:14.000+08:00",
   "endAt": "2013-04-03T07:35:52.000+08:00",

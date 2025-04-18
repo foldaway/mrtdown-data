@@ -4,15 +4,6 @@
   "componentIdsAffected": [
     "NEL"
   ],
-  "stationIdsAffected": [
-    "FRP",
-    "BNK",
-    "PTP",
-    "WLH",
-    "SER",
-    "KVN",
-    "HGN"
-  ],
   "startAt": "2015-10-13T07:58:46.000+08:00",
   "endAt": "2015-10-13T08:28:24.000+08:00",
   "type": "disruption",
@@ -80,6 +71,21 @@
       "text": "13/10, 7.50am: NEL svc is delayed due to a power fault. Additional travel time of abt 15 minutes may be expected. We are sorry.",
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/653721502626418688",
       "createdAt": "2015-10-13T07:58:46.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN"
+      ]
     }
   ]
 }

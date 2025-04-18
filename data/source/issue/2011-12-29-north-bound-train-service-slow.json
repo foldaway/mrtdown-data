@@ -5,13 +5,19 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "BSH",
-    "BDL",
-    "TAP",
-    "JUR",
-    "BBT",
-    "BGB",
-    "CCK"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "BSH",
+        "BDL",
+        "TAP",
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK"
+      ]
+    }
   ],
   "startAt": "2011-12-29T08:53:51.000+08:00",
   "endAt": "2011-12-29T12:50:31.000+08:00",

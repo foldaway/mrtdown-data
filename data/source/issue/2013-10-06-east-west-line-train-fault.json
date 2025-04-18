@@ -4,14 +4,6 @@
   "componentIdsAffected": [
     "EWL"
   ],
-  "stationIdsAffected": [
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "JUR"
-  ],
   "startAt": "2013-10-06T07:49:32.000+08:00",
   "endAt": "2013-10-06T07:52:05.000+08:00",
   "type": "disruption",
@@ -30,6 +22,20 @@
       "text": "[EWL]: Estimate 20 mins additional travelling time from #JurongEast to #Queenstown towards PasirRis due to train fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/386639322998259712",
       "createdAt": "2013-10-06T07:49:32.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR"
+      ]
     }
   ]
 }

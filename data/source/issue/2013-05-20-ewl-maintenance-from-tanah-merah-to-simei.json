@@ -5,8 +5,14 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "SIM",
-    "TNM"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "SIM",
+        "TNM"
+      ]
+    }
   ],
   "startAt": "2013-05-20T00:00:00+08:00",
   "endAt": "2013-08-01T00:00:00.000+08:00",

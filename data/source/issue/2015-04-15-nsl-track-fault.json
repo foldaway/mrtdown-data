@@ -5,12 +5,18 @@
     "NSL"
   ],
   "stationIdsAffected": [
-    "KRJ",
-    "MSL",
-    "WDL",
-    "ADM",
-    "SBW",
-    "YIS"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "KRJ",
+        "MSL",
+        "WDL",
+        "ADM",
+        "SBW",
+        "YIS"
+      ]
+    }
   ],
   "startAt": "2015-04-15T08:50:11.000+08:00",
   "endAt": "2015-04-15T09:15:57.000+08:00",

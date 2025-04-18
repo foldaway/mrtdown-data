@@ -5,13 +5,19 @@
     "CCL"
   ],
   "stationIdsAffected": [
-    "ONH",
-    "KRG",
-    "HPV",
-    "PPJ",
-    "LBD",
-    "TLB",
-    "HBF"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    }
   ],
   "startAt": "2014-11-30T16:47:48.000+08:00",
   "endAt": "2014-11-30T17:11:34.000+08:00",

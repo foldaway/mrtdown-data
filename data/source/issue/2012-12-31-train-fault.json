@@ -4,28 +4,6 @@
   "componentIdsAffected": [
     "EWL"
   ],
-  "stationIdsAffected": [
-    "TNM",
-    "BDK",
-    "KEM",
-    "EUN",
-    "PYL",
-    "ALJ",
-    "KAL",
-    "LVR",
-    "BGS",
-    "CTH",
-    "RFP",
-    "TPG",
-    "OTP",
-    "TIB",
-    "RDH",
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE"
-  ],
   "startAt": "2012-12-31T16:44:22.000+08:00",
   "endAt": "2012-12-31T17:14:04.000+08:00",
   "type": "disruption",
@@ -68,6 +46,34 @@
       "text": "[EWL]: Estimate 20 mins additional travelling time from #TanahMerah to #Clementi towards JooKoon due to train fault.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/285667703237275650",
       "createdAt": "2012-12-31T16:44:22.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE"
+      ]
     }
   ]
 }

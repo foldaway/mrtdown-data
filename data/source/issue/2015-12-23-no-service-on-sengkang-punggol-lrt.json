@@ -32,14 +32,26 @@
     }
   ],
   "stationIdsAffected": [
-    "SKG",
-    "CGL",
-    "FMW",
-    "KPG",
-    "TNG",
-    "FNV",
-    "LYR",
-    "TKG",
-    "PGL"
+    {
+      "componentId": "SKLRT",
+      "branchName": "west",
+      "stationIds": [
+        "SKG",
+        "CGL",
+        "FMW",
+        "KPG",
+        "TNG"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "east",
+      "stationIds": [
+        "PGL",
+        "NBG",
+        "SMG",
+        "STK"
+      ]
+    }
   ]
 }

@@ -5,9 +5,15 @@
     "CCL"
   ],
   "stationIdsAffected": [
-    "LBD",
-    "TLB",
-    "HBF"
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    }
   ],
   "startAt": "2013-10-27T06:00:00.000+08:00",
   "endAt": "2013-10-27T10:00:00.000+08:00",

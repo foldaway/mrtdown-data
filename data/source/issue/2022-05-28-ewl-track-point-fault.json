@@ -80,8 +80,14 @@
     }
   ],
   "stationIdsAffected": [
-    "RDH",
-    "QUE",
-    "COM"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "RDH",
+        "QUE",
+        "COM"
+      ]
+    }
   ]
 }

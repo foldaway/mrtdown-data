@@ -5,14 +5,20 @@
     "EWL"
   ],
   "stationIdsAffected": [
-    "BGS",
-    "CTH",
-    "RFP",
-    "TPG",
-    "OTP",
-    "TIB",
-    "RDH",
-    "QUE"
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE"
+      ]
+    }
   ],
   "startAt": "2017-07-25T11:15:37.000+08:00",
   "endAt": "2017-07-25T13:58:40.000+08:00",

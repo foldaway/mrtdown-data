@@ -4,21 +4,6 @@
   "componentIdsAffected": [
     "EWL"
   ],
-  "stationIdsAffected": [
-    "TIB",
-    "RDH",
-    "QUE",
-    "COM",
-    "BNV",
-    "DVR",
-    "CLE",
-    "JUR",
-    "CNG",
-    "LKS",
-    "BNL",
-    "PNR",
-    "JKN"
-  ],
   "startAt": "2015-12-21T10:22:05.000+08:00",
   "endAt": "2015-12-21T10:45:48.000+08:00",
   "type": "disruption",
@@ -55,6 +40,27 @@
       "text": "[EWL] A train fault has been reported at TiongBahru WB. Trains are moving slower towards Joo Koon.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/678762333133398016",
       "createdAt": "2015-12-21T10:22:05.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN"
+      ]
     }
   ]
 }

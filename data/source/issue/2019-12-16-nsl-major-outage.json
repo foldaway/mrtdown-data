@@ -43,9 +43,15 @@
     }
   ],
   "stationIdsAffected": [
-    "BGB",
-    "CCK",
-    "YWT",
-    "KRJ"
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "BGB",
+        "CCK",
+        "YWT",
+        "KRJ"
+      ]
+    }
   ]
 }

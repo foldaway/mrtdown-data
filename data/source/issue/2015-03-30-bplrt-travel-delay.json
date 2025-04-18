@@ -5,14 +5,20 @@
     "BPLRT"
   ],
   "stationIdsAffected": [
-    "BKP",
-    "PTR",
-    "PND",
-    "BKT",
-    "FJR",
-    "SGR",
-    "JLP",
-    "SNJ"
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ"
+      ]
+    }
   ],
   "startAt": "2015-03-30T19:20:39.000+08:00",
   "endAt": "2015-03-30T20:15:56.000+08:00",

@@ -4,7 +4,7 @@
   "color": "#748477",
   "startedAt": "2003-01-18",
   "branches": {
-    "west": ["STC", "SW1", "SW2", "SW3", "SW4", "SW5", "SW6", "SW7"],
-    "east": ["STC", "SE1", "SE2", "SE3", "SE4", "SE5"]
+    "west": ["STC", "SW1", "SW2", "SW3", "SW4", "SW5", "SW6", "SW7", "STC"],
+    "east": ["STC", "SE1", "SE2", "SE3", "SE4", "SE5", "STC"]
   }
 }
