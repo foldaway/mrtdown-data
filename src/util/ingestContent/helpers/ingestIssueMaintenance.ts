@@ -147,7 +147,7 @@ Please modify the issue. You should:
   - "subtypes" field
   - correct the "components" field based on the updates, see below for table.
   - determine the section(s) of rail line(s) that this issue affected.
-    - mentions of a system without specific stations may mean all branches of the line
+    - no mention of specific stations may mean all branches of the line
 
   # Components table
   ${buildComponentTable()}

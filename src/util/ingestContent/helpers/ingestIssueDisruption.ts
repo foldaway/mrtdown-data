@@ -196,6 +196,7 @@ Please modify the issue. You should:
   - correct the "components" field based on the updates, see below for table.
     - recommendations to utilise other rail lines does not make them affected components.
   - determine the section(s) of rail line(s) that this issue affected. do not include adjacent stations that may have activated shuttle/bus bridging services.
+    - no mentions of specific stations may mean all branches of the line
 
 # Components table
 ${buildComponentTable()}
