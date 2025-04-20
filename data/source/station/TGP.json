@@ -1,6 +1,10 @@
 {
   "id": "TGP",
   "name": "Tengah Plantation",
+  "name_translations": {
+    "zh-Hans": "登加种植",
+    "ta": "தெங்கா தோட்டம்"
+  },
   "componentMembers": {
     "JRL": [
       {

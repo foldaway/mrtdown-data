@@ -1,6 +1,10 @@
 {
   "id": "WSC",
   "name": "West Coast",
+  "name_translations": {
+    "zh-Hans": "西海岸",
+    "ta": "வெஸ்ட் கோஸ்ட்"
+  },
   "componentMembers": {
     "CRL": [
       {

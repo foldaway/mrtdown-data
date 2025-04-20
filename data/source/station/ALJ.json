@@ -1,6 +1,10 @@
 {
   "id": "ALJ",
   "name": "Aljunied",
+  "name_translations": {
+    "zh-Hans": "阿裕尼",
+    "ta": "அல்ஜூனிட்"
+  },
   "componentMembers": {
     "EWL": [
       {

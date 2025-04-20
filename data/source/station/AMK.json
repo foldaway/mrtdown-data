@@ -1,6 +1,10 @@
 {
   "id": "AMK",
   "name": "Ang Mo Kio",
+  "name_translations": {
+    "zh-Hans": "宏茂桥",
+    "ta": "அங் மோ கியோ"
+  },
   "componentMembers": {
     "NSL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "OAS",
   "name": "Oasis",
+  "name_translations": {
+    "zh-Hans": "绿洲",
+    "ta": "ஓய்சிஸ்"
+  },
   "componentMembers": {
     "PGLRT": [
       {

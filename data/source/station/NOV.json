@@ -1,6 +1,10 @@
 {
   "id": "NOV",
   "name": "Novena",
+  "name_translations": {
+    "zh-Hans": "诺维娜",
+    "ta": "நொவீனா"
+  },
   "componentMembers": {
     "NSL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "HVL",
   "name": "Havelock",
+  "name_translations": {
+    "zh-Hans": "合乐",
+    "ta": "ஹவ்லாக்"
+  },
   "componentMembers": {
     "TEL": [
       {

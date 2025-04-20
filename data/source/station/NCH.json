@@ -1,6 +1,10 @@
 {
   "id": "NCH",
   "name": "Nicoll Highway",
+  "name_translations": {
+    "zh-Hans": "尼诰大道",
+    "ta": "நிக்கல் நெடுஞ்சாலை"
+  },
   "componentMembers": {
     "CCL": [
       {

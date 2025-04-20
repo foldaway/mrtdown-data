@@ -1,6 +1,10 @@
 {
   "id": "BKP",
   "name": "Bukit Panjang",
+  "name_translations": {
+    "zh-Hans": "武吉班让",
+    "ta": "புக்கிட் பாஞ்சாங்"
+  },
   "componentMembers": {
     "DTL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "SIM",
   "name": "Simei",
+  "name_translations": {
+    "zh-Hans": "四美",
+    "ta": "ஸீமெய்"
+  },
   "componentMembers": {
     "EWL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "UPC",
   "name": "Upper Changi",
+  "name_translations": {
+    "zh-Hans": "樟宜上段",
+    "ta": "அப்பர் சாங்கி"
+  },
   "componentMembers": {
     "DTL": [
       {

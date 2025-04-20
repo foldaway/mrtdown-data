@@ -1,6 +1,10 @@
 {
   "id": "TPN",
   "name": "Tampines North",
+  "name_translations": {
+    "zh-Hans": "淡滨尼北",
+    "ta": "தெம்பினிஸ் நார்த்"
+  },
   "componentMembers": {
     "CRL": [
       {

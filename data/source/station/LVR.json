@@ -1,6 +1,10 @@
 {
   "id": "LVR",
   "name": "Lavender",
+  "name_translations": {
+    "zh-Hans": "劳明达",
+    "ta": "லவண்டர்"
+  },
   "componentMembers": {
     "EWL": [
       {

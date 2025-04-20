@@ -1,6 +1,10 @@
 {
   "id": "SMG",
   "name": "Sumang",
+  "name_translations": {
+    "zh-Hans": "苏芒",
+    "ta": "சுமாங்"
+  },
   "componentMembers": {
     "PGLRT": [
       {

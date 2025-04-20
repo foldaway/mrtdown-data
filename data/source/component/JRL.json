@@ -1,6 +1,11 @@
 {
   "id": "JRL",
   "title": "Jurong Region Line",
+  "title_translations": {
+    "zh-Hans": "裕廊区域线",
+    "ms": "Laluan Daerah Jurong",
+    "ta": "ஜூரோங் வட்டாரப் பாதை"
+  },
   "color": "#0099aa",
   "startedAt": "2027-12-31",
   "branches": {}

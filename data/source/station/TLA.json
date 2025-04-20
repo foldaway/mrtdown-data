@@ -1,6 +1,10 @@
 {
   "id": "TLA",
   "name": "Telok Ayer",
+  "name_translations": {
+    "zh-Hans": "直落亚逸",
+    "ta": "தெலுக் ஆயர்"
+  },
   "componentMembers": {
     "DTL": [
       {

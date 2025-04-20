@@ -1,6 +1,10 @@
 {
   "id": "CRE",
   "name": "Coral Edge",
+  "name_translations": {
+    "zh-Hans": "珊瑚",
+    "ta": "கோரல் எட்ஜ்"
+  },
   "componentMembers": {
     "PGLRT": [
       {

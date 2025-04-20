@@ -1,6 +1,10 @@
 {
   "id": "TRH",
   "name": "Tanjong Rhu",
+  "name_translations": {
+    "zh-Hans": "丹戎禺",
+    "ta": "தஞ்சோங் ரூ"
+  },
   "componentMembers": {
     "TEL": [
       {

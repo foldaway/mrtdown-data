@@ -1,6 +1,10 @@
 {
   "id": "MRD",
   "name": "Meridian",
+  "name_translations": {
+    "zh-Hans": "丽园",
+    "ta": "மெரிடியன்"
+  },
   "componentMembers": {
     "PGLRT": [
       {

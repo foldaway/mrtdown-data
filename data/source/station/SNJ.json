@@ -1,6 +1,10 @@
 {
   "id": "SNJ",
   "name": "Senja",
+  "name_translations": {
+    "zh-Hans": "信佳",
+    "ta": "சென்ஜா"
+  },
   "componentMembers": {
     "BPLRT": [
       {

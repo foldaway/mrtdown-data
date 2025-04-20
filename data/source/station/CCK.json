@@ -1,6 +1,10 @@
 {
   "id": "CCK",
   "name": "Choa Chu Kang",
+  "name_translations": {
+    "zh-Hans": "蔡厝港",
+    "ta": "சுவா சூ காங்"
+  },
   "componentMembers": {
     "NSL": [
       {

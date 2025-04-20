@@ -1,6 +1,10 @@
 {
   "id": "CTH",
   "name": "City Hall",
+  "name_translations": {
+    "zh-Hans": "政府大厦",
+    "ta": "நகர மண்டபம்"
+  },
   "componentMembers": {
     "EWL": [
       {

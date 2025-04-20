@@ -1,6 +1,10 @@
 {
   "id": "JUR",
   "name": "Jurong East",
+  "name_translations": {
+    "zh-Hans": "裕廊东",
+    "ta": "ஜூரோங் கிழக்கு"
+  },
   "componentMembers": {
     "EWL": [
       {

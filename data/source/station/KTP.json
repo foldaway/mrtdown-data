@@ -1,6 +1,10 @@
 {
   "id": "KTP",
   "name": "Katong Park",
+  "name_translations": {
+    "zh-Hans": "加东公园",
+    "ta": "காத்தோங் பார்க்"
+  },
   "componentMembers": {
     "TEL": [
       {

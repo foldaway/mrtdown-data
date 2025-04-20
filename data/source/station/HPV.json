@@ -1,6 +1,10 @@
 {
   "id": "HPV",
   "name": "Haw Par Villa",
+  "name_translations": {
+    "zh-Hans": "虎豹别墅",
+    "ta": "ஹா பர் வில்லா"
+  },
   "componentMembers": {
     "CCL": [
       {

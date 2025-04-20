@@ -1,6 +1,10 @@
 {
   "id": "TVK",
   "name": "Tavistock",
+  "name_translations": {
+    "zh-Hans": "达维士笃",
+    "ta": "தெவிஸ்தொக்"
+  },
   "componentMembers": {
     "CRL": [
       {

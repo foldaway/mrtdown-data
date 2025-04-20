@@ -1,6 +1,10 @@
 {
   "id": "BKT",
   "name": "Bangkit",
+  "name_translations": {
+    "zh-Hans": "万吉",
+    "ta": "பங்கிட்"
+  },
   "componentMembers": {
     "BPLRT": [
       {

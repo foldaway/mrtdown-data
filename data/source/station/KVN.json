@@ -1,6 +1,10 @@
 {
   "id": "KVN",
   "name": "Kovan",
+  "name_translations": {
+    "zh-Hans": "高文",
+    "ta": "கோவன்"
+  },
   "componentMembers": {
     "NEL": [
       {

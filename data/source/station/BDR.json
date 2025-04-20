@@ -1,6 +1,10 @@
 {
   "id": "BDR",
   "name": "Bedok Reservoir",
+  "name_translations": {
+    "zh-Hans": "勿洛蓄水池",
+    "ta": "பிடோக் ரெசவோர்"
+  },
   "componentMembers": {
     "DTL": [
       {

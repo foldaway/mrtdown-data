@@ -1,6 +1,10 @@
 {
   "id": "MPS",
   "name": "MacPherson",
+  "name_translations": {
+    "zh-Hans": "麦波申",
+    "ta": "மெக்பர்சன்"
+  },
   "componentMembers": {
     "CCL": [
       {

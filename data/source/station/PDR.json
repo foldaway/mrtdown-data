@@ -1,6 +1,10 @@
 {
   "id": "PDR",
   "name": "Pandan Reservoir",
+  "name_translations": {
+    "zh-Hans": "班丹蓄水池",
+    "ta": "பாண்டன் ரெசவோர்"
+  },
   "componentMembers": {
     "JRL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "SHV",
   "name": "South View",
+  "name_translations": {
+    "zh-Hans": "南景",
+    "ta": "சவுத் வியூ"
+  },
   "componentMembers": {
     "BPLRT": [
       {

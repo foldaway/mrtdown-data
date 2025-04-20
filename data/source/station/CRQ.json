@@ -1,6 +1,10 @@
 {
   "id": "CRQ",
   "name": "Clarke Quay",
+  "name_translations": {
+    "zh-Hans": "克拉码头",
+    "ta": "கிளார்க் கீ"
+  },
   "componentMembers": {
     "NEL": [
       {

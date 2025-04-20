@@ -1,6 +1,10 @@
 {
   "id": "KAP",
   "name": "King Albert Park",
+  "name_translations": {
+    "zh-Hans": "阿尔柏王园",
+    "ta": "கிங் ஆல்பர்ட் பார்க்"
+  },
   "componentMembers": {
     "DTL": [
       {

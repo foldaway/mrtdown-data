@@ -1,6 +1,10 @@
 {
   "id": "UBI",
   "name": "Ubi",
+  "name_translations": {
+    "zh-Hans": "乌美",
+    "ta": "உபி"
+  },
   "componentMembers": {
     "DTL": [
       {

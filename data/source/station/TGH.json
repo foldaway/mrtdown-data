@@ -1,6 +1,10 @@
 {
   "id": "TGH",
   "name": "Tengah",
+  "name_translations": {
+    "zh-Hans": "登加",
+    "ta": "தெங்கா"
+  },
   "componentMembers": {
     "JRL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "BAK",
   "name": "Bakau",
+  "name_translations": {
+    "zh-Hans": "码高",
+    "ta": "பக்காவ்"
+  },
   "componentMembers": {
     "SKLRT": [
       {

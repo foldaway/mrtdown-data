@@ -1,6 +1,10 @@
 {
   "id": "SPL",
   "name": "Springleaf",
+  "name_translations": {
+    "zh-Hans": "春叶",
+    "ta": "ஸ்பிரிங்லீஃவ்"
+  },
   "componentMembers": {
     "TEL": [
       {

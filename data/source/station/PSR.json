@@ -1,6 +1,10 @@
 {
   "id": "PSR",
   "name": "Pasir Ris",
+  "name_translations": {
+    "zh-Hans": "巴西立",
+    "ta": "பாசிர் ரிஸ்"
+  },
   "componentMembers": {
     "EWL": [
       {

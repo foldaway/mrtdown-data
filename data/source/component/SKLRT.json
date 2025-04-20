@@ -1,6 +1,11 @@
 {
   "id": "SKLRT",
   "title": "Sengkang LRT",
+  "title_translations": {
+    "zh-Hans": "盛港轻轨线",
+    "ms": "Laluan LRT Sengkang",
+    "ta": "செங்காங் லைட் ரெயில் வரி"
+  },
   "color": "#748477",
   "startedAt": "2003-01-18",
   "branches": {

@@ -1,6 +1,10 @@
 {
   "id": "GLB",
   "name": "Geylang Bahru",
+  "name_translations": {
+    "zh-Hans": "芽笼峇鲁",
+    "ta": "கேலாங் பாரு"
+  },
   "componentMembers": {
     "DTL": [
       {

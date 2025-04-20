@@ -1,6 +1,10 @@
 {
   "id": "YIS",
   "name": "Yishun",
+  "name_translations": {
+    "zh-Hans": "义顺",
+    "ta": "யீஷூன்"
+  },
   "componentMembers": {
     "NSL": [
       {

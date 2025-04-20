@@ -1,6 +1,10 @@
 {
   "id": "COV",
   "name": "Cove",
+  "name_translations": {
+    "zh-Hans": "海湾",
+    "ta": "கோவ்"
+  },
   "componentMembers": {
     "PGLRT": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "PMN",
   "name": "Promenade",
+  "name_translations": {
+    "zh-Hans": "宝门廊",
+    "ta": "புரொமனாட்"
+  },
   "componentMembers": {
     "CCL": [
       {

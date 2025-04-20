@@ -1,6 +1,10 @@
 {
   "id": "WDN",
   "name": "Woodlands North",
+  "name_translations": {
+    "zh-Hans": "兀兰北",
+    "ta": "உட்லண்ட்ஸ் நார்த்"
+  },
   "componentMembers": {
     "TEL": [
       {

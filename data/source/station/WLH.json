@@ -1,6 +1,10 @@
 {
   "id": "WLH",
   "name": "Woodleigh",
+  "name_translations": {
+    "zh-Hans": "兀里",
+    "ta": "உட்லீ"
+  },
   "componentMembers": {
     "NEL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "BLY",
   "name": "Bartley",
+  "name_translations": {
+    "zh-Hans": "巴特礼",
+    "ta": "பார்ட்லி"
+  },
   "componentMembers": {
     "CCL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "JTH",
   "name": "Jurong Town Hall",
+  "name_translations": {
+    "zh-Hans": "裕廊镇大会堂",
+    "ta": "ஜுராங் டவுன் ஹால்"
+  },
   "componentMembers": {
     "JRL": [
       {

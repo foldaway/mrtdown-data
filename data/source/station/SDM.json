@@ -1,6 +1,10 @@
 {
   "id": "SDM",
   "name": "Stadium",
+  "name_translations": {
+    "zh-Hans": "体育场",
+    "ta": "ஸ்டேடியம்"
+  },
   "componentMembers": {
     "CCL": [
       {

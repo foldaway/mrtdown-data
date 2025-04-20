@@ -1,6 +1,10 @@
 {
   "id": "DBG",
   "name": "Dhoby Ghaut",
+  "name_translations": {
+    "zh-Hans": "多美歌",
+    "ta": "டோபி காட்"
+  },
   "componentMembers": {
     "NSL": [
       {

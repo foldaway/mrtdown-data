@@ -1,6 +1,10 @@
 {
   "id": "KRG",
   "name": "Kent Ridge",
+  "name_translations": {
+    "zh-Hans": "肯特岗",
+    "ta": "கெண்ட் ரிஜ்"
+  },
   "componentMembers": {
     "CCL": [
       {

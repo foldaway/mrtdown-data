@@ -1,6 +1,10 @@
 {
   "id": "JLB",
   "name": "Jalan Besar",
+  "name_translations": {
+    "zh-Hans": "惹兰勿刹",
+    "ta": "ஜாலான் புசார்"
+  },
   "componentMembers": {
     "DTL": [
       {

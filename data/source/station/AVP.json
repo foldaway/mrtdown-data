@@ -1,6 +1,10 @@
 {
   "id": "AVP",
   "name": "Aviation Park",
+  "name_translations": {
+    "zh-Hans": "航空园",
+    "ta": "ஏவியேஷன் பார்க்"
+  },
   "componentMembers": {
     "CRL": [
       {

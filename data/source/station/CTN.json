@@ -1,6 +1,10 @@
 {
   "id": "CTN",
   "name": "Chinatown",
+  "name_translations": {
+    "zh-Hans": "牛车水",
+    "ta": "சைனாடவுன்"
+  },
   "componentMembers": {
     "NEL": [
       {

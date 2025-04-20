@@ -1,6 +1,10 @@
 {
   "id": "SGB",
   "name": "Sungei Bedok",
+  "name_translations": {
+    "zh-Hans": "双溪勿洛",
+    "ta": "சங்கை பிடோக்"
+  },
   "componentMembers": {
     "DTL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "BRK",
   "name": "Brickland",
+  "name_translations": {
+    "zh-Hans": "红砖",
+    "ta": "பிரிக்லேன்ட்"
+  },
   "componentMembers": {
     "NSL": [
       {

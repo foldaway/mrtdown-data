@@ -1,6 +1,11 @@
 {
   "id": "DTL",
   "title": "Downtown Line",
+  "title_translations": {
+    "zh-Hans": "滨海市区地铁线",
+    "ms": "Laluan MRT Pusat Bandar",
+    "ta": "டவுன்டவுன் எம்ஆர்டி வழி"
+  },
   "color": "#005ec4",
   "startedAt": "2013-11-22",
   "branches": {

@@ -1,6 +1,10 @@
 {
   "id": "TNG",
   "name": "Thanggam",
+  "name_translations": {
+    "zh-Hans": "丹甘",
+    "ta": "தங்கம்"
+  },
   "componentMembers": {
     "SKLRT": [
       {

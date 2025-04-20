@@ -1,6 +1,10 @@
 {
   "id": "MTC",
   "name": "Marine Terrace",
+  "name_translations": {
+    "zh-Hans": "马林台",
+    "ta": "மரீன் டெரஸ்"
+  },
   "componentMembers": {
     "TEL": [
       {

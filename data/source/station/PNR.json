@@ -1,6 +1,10 @@
 {
   "id": "PNR",
   "name": "Pioneer",
+  "name_translations": {
+    "zh-Hans": "先驱",
+    "ta": "பயனியர்"
+  },
   "componentMembers": {
     "EWL": [
       {

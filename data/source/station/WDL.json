@@ -1,6 +1,10 @@
 {
   "id": "WDL",
   "name": "Woodlands",
+  "name_translations": {
+    "zh-Hans": "兀兰",
+    "ta": "ஊட்லண்ட்ஸ்"
+  },
   "componentMembers": {
     "NSL": [
       {

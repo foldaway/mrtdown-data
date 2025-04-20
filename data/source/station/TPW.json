@@ -1,6 +1,10 @@
 {
   "id": "TPW",
   "name": "Tampines West",
+  "name_translations": {
+    "zh-Hans": "淡滨尼西",
+    "ta": "தெம்பினிஸ் வெஸ்ட்"
+  },
   "componentMembers": {
     "DTL": [
       {

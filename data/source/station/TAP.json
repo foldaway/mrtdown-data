@@ -1,6 +1,10 @@
 {
   "id": "TAP",
   "name": "Toa Payoh",
+  "name_translations": {
+    "zh-Hans": "大巴窑",
+    "ta": "தோ பாயோ"
+  },
   "componentMembers": {
     "NSL": [
       {

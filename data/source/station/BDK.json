@@ -1,6 +1,10 @@
 {
   "id": "BDK",
   "name": "Bedok",
+  "name_translations": {
+    "zh-Hans": "勿洛",
+    "ta": "பிடோக்"
+  },
   "componentMembers": {
     "EWL": [
       {

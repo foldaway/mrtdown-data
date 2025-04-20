@@ -1,6 +1,10 @@
 {
   "id": "BRH",
   "name": "Bright Hill",
+  "name_translations": {
+    "zh-Hans": "光明山",
+    "ta": "பிரைட் ஹில்"
+  },
   "componentMembers": {
     "TEL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "YCK",
   "name": "Yio Chu Kang",
+  "name_translations": {
+    "zh-Hans": "杨厝港",
+    "ta": "இயோ சூ காங்"
+  },
   "componentMembers": {
     "NSL": [
       {

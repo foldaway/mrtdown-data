@@ -1,6 +1,10 @@
 {
   "id": "OBV",
   "name": "Orchard Boulevard",
+  "name_translations": {
+    "zh-Hans": "乌节大道",
+    "ta": "ஆர்ச்சர்ட் பொலிவார்ட்"
+  },
   "componentMembers": {
     "TEL": [
       {

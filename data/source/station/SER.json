@@ -1,6 +1,10 @@
 {
   "id": "SER",
   "name": "Serangoon",
+  "name_translations": {
+    "zh-Hans": "实龙岗",
+    "ta": "சிராங்கூன்"
+  },
   "componentMembers": {
     "CCL": [
       {

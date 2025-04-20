@@ -1,6 +1,10 @@
 {
   "id": "BGK",
   "name": "Buangkok",
+  "name_translations": {
+    "zh-Hans": "万国",
+    "ta": "புவாங்கோக்"
+  },
   "componentMembers": {
     "NEL": [
       {

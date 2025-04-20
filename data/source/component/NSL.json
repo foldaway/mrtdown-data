@@ -1,6 +1,11 @@
 {
   "id": "NSL",
   "title": "North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北地铁线",
+    "ms": "Laluan MRT Utara Selatan",
+    "ta": "வடக்கு தெற்கு எம்ஆர்டி வழி"
+  },
   "color": "#d42e12",
   "startedAt": "1987-11-07",
   "branches": {

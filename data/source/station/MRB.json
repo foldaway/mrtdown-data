@@ -1,6 +1,10 @@
 {
   "id": "MRB",
   "name": "Marina Bay",
+  "name_translations": {
+    "zh-Hans": "滨海湾",
+    "ta": "மரீனா பே"
+  },
   "componentMembers": {
     "NSL": [
       {

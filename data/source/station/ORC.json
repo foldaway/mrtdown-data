@@ -1,6 +1,10 @@
 {
   "id": "ORC",
   "name": "Orchard",
+  "name_translations": {
+    "zh-Hans": "乌节",
+    "ta": "ஆர்ச்சர்ட்"
+  },
   "componentMembers": {
     "NSL": [
       {

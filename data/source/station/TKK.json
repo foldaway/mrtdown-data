@@ -1,6 +1,10 @@
 {
   "id": "TKK",
   "name": "Tan Kah Kee",
+  "name_translations": {
+    "zh-Hans": "陈嘉庚",
+    "ta": "டான் கா கீ"
+  },
   "componentMembers": {
     "DTL": [
       {

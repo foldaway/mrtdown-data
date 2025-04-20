@@ -1,6 +1,11 @@
 {
   "id": "BTN",
   "name": "Botanic Gardens",
+  "name_translations": {
+    "zh-Hans": "植物园",
+    "ms": "Kebun Bunga",
+    "ta": "பூ மலை"
+  },
   "componentMembers": {
     "CCL": [
       {

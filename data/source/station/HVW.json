@@ -1,6 +1,10 @@
 {
   "id": "HVW",
   "name": "Hillview",
+  "name_translations": {
+    "zh-Hans": "山景",
+    "ta": "ஹில்வியூ"
+  },
   "componentMembers": {
     "DTL": [
       {

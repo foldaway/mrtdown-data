@@ -1,6 +1,11 @@
 {
   "id": "BPLRT",
   "title": "Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "武吉班让轻轨线",
+    "ms": "Laluan LRT Bukit Panjang",
+    "ta": "புக்கிட் பஞ்சாங் வரி"
+  },
   "color": "#748477",
   "startedAt": "1999-11-06",
   "branches": {

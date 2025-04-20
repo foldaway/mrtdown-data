@@ -1,6 +1,10 @@
 {
   "id": "BBW",
   "name": "Bukit Batok West",
+  "name_translations": {
+    "zh-Hans": "武吉巴督西",
+    "ta": "புக்கிட் பாத்தோக் வெஸ்ட்"
+  },
   "componentMembers": {
     "JRL": [
       {

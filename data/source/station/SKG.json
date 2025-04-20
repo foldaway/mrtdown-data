@@ -1,6 +1,10 @@
 {
   "id": "SKG",
   "name": "Sengkang",
+  "name_translations": {
+    "zh-Hans": "盛港",
+    "ta": "செங்காங்"
+  },
   "componentMembers": {
     "NEL": [
       {

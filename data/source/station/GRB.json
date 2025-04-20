@@ -1,6 +1,11 @@
 {
   "id": "GRB",
   "name": "Gardens by the Bay",
+  "name_translations": {
+    "zh-Hans": "滨海湾花园",
+    "ms": "Taman di Pesisiran",
+    "ta": "கரையோரப் பூந்தோட்டங்கள்"
+  },
   "componentMembers": {
     "TEL": [
       {

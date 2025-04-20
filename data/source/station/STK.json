@@ -1,6 +1,10 @@
 {
   "id": "STK",
   "name": "Soo Teck",
+  "name_translations": {
+    "zh-Hans": "树德",
+    "ta": "சூ டெக்"
+  },
   "componentMembers": {
     "PGLRT": [
       {

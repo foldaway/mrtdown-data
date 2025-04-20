@@ -1,6 +1,10 @@
 {
   "id": "CTM",
   "name": "Cantonment",
+  "name_translations": {
+    "zh-Hans": "广东民",
+    "ta": "கெண்டொன்மன்"
+  },
   "componentMembers": {
     "CCL": [
       {

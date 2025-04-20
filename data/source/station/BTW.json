@@ -1,6 +1,10 @@
 {
   "id": "BTW",
   "name": "Beauty World",
+  "name_translations": {
+    "zh-Hans": "美世界",
+    "ta": "பியூட்டி வோர்ல்ட்"
+  },
   "componentMembers": {
     "DTL": [
       {

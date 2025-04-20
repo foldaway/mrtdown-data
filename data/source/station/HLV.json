@@ -1,6 +1,10 @@
 {
   "id": "HLV",
   "name": "Holland Village",
+  "name_translations": {
+    "zh-Hans": "荷兰村",
+    "ta": "ஹாலந்து வில்லேஜ்"
+  },
   "componentMembers": {
     "CCL": [
       {

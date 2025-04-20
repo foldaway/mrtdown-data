@@ -1,6 +1,10 @@
 {
   "id": "JKN",
   "name": "Joo Koon",
+  "name_translations": {
+    "zh-Hans": "裕群",
+    "ta": "ஜூ கூன்"
+  },
   "componentMembers": {
     "EWL": [
       {

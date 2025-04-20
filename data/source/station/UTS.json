@@ -1,6 +1,10 @@
 {
   "id": "UTS",
   "name": "Upper Thomson",
+  "name_translations": {
+    "zh-Hans": "汤申路上段",
+    "ta": "அப்பர் தாம்சன்"
+  },
   "componentMembers": {
     "TEL": [
       {

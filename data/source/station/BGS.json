@@ -1,6 +1,10 @@
 {
   "id": "BGS",
   "name": "Bugis",
+  "name_translations": {
+    "zh-Hans": "武吉士",
+    "ta": "பூகிஸ்"
+  },
   "componentMembers": {
     "EWL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "DKT",
   "name": "Dakota",
+  "name_translations": {
+    "zh-Hans": "达科达",
+    "ta": "டகோட்டா"
+  },
   "componentMembers": {
     "CCL": [
       {

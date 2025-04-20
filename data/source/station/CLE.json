@@ -1,6 +1,10 @@
 {
   "id": "CLE",
   "name": "Clementi",
+  "name_translations": {
+    "zh-Hans": "金文泰",
+    "ta": "கிளிமெண்டி"
+  },
   "componentMembers": {
     "EWL": [
       {

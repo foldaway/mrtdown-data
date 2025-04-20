@@ -1,6 +1,10 @@
 {
   "id": "BSR",
   "name": "Bayshore",
+  "name_translations": {
+    "zh-Hans": "碧湾",
+    "ta": "பேஷோர்"
+  },
   "componentMembers": {
     "TEL": [
       {

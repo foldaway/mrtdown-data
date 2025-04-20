@@ -1,6 +1,10 @@
 {
   "id": "MSP",
   "name": "Marina South Pier",
+  "name_translations": {
+    "zh-Hans": "滨海南码头",
+    "ta": "மரினா சவுத் படகுத்துறை"
+  },
   "componentMembers": {
     "NSL": [
       {

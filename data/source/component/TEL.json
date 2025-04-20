@@ -1,6 +1,11 @@
 {
   "id": "TEL",
   "title": "Thomson–East Coast Line",
+  "title_translations": {
+    "zh-Hans": "汤申-东海岸地铁线",
+    "ms": "Laluan MRT Thomson-Pantai Timur",
+    "ta": "தாம்சன் - ஈஸ்ட் கோஸ்ட் எம்ஆர்டி வழி"
+  },
   "color": "#9D5B25",
   "startedAt": "2020-01-31",
   "branches": {

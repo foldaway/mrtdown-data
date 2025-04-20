@@ -1,6 +1,10 @@
 {
   "id": "PTR",
   "name": "Petir",
+  "name_translations": {
+    "zh-Hans": "柏提",
+    "ta": "பெட்டீர்"
+  },
   "componentMembers": {
     "BPLRT": [
       {

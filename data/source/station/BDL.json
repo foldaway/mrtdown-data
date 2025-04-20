@@ -1,6 +1,10 @@
 {
   "id": "BDL",
   "name": "Braddell",
+  "name_translations": {
+    "zh-Hans": "布莱德",
+    "ta": "பிரேடல்"
+  },
   "componentMembers": {
     "NSL": [
       {

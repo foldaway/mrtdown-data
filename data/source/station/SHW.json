@@ -1,6 +1,10 @@
 {
   "id": "SHW",
   "name": "Shenton Way",
+  "name_translations": {
+    "zh-Hans": "珊顿道",
+    "ta": "ஷென்ட்டன் வே"
+  },
   "componentMembers": {
     "TEL": [
       {

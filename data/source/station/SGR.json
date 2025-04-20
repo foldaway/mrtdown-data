@@ -1,6 +1,10 @@
 {
   "id": "SGR",
   "name": "Segar",
+  "name_translations": {
+    "zh-Hans": "实加",
+    "ta": "செகார்"
+  },
   "componentMembers": {
     "BPLRT": [
       {

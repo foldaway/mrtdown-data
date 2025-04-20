@@ -1,6 +1,10 @@
 {
   "id": "KGK",
   "name": "Kangkar",
+  "name_translations": {
+    "zh-Hans": "港脚",
+    "ta": "கங்கார்"
+  },
   "componentMembers": {
     "SKLRT": [
       {

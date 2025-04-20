@@ -1,6 +1,10 @@
 {
   "id": "TPG",
   "name": "Tanjong Pagar",
+  "name_translations": {
+    "zh-Hans": "丹戎巴葛",
+    "ta": "தஞ்சோங் பகார்"
+  },
   "componentMembers": {
     "EWL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "TGN",
   "name": "Toh Guan",
+  "name_translations": {
+    "zh-Hans": "卓源",
+    "ta": "டோ குவான்"
+  },
   "componentMembers": {
     "JRL": [
       {

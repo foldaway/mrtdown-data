@@ -1,6 +1,10 @@
 {
   "id": "BNV",
   "name": "Buona Vista",
+  "name_translations": {
+    "zh-Hans": "波那维斯达",
+    "ta": "புவன விஸ்தா"
+  },
   "componentMembers": {
     "EWL": [
       {

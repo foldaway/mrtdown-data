@@ -1,6 +1,10 @@
 {
   "id": "HGK",
   "name": "Hong Kah",
+  "name_translations": {
+    "zh-Hans": "丰加",
+    "ta": "ஹோங் காஹ்"
+  },
   "componentMembers": {
     "JRL": [
       {

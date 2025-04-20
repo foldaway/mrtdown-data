@@ -1,6 +1,10 @@
 {
   "id": "BNK",
   "name": "Boon Keng",
+  "name_translations": {
+    "zh-Hans": "文庆",
+    "ta": "பூன் கெங்"
+  },
   "componentMembers": {
     "NEL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "NBG",
   "name": "Nibong",
+  "name_translations": {
+    "zh-Hans": "尼蒙",
+    "ta": "நிபொங்"
+  },
   "componentMembers": {
     "PGLRT": [
       {

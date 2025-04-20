@@ -1,6 +1,10 @@
 {
   "id": "KRJ",
   "name": "Kranji",
+  "name_translations": {
+    "zh-Hans": "克兰芝",
+    "ta": "கிராஞ்சி"
+  },
   "componentMembers": {
     "NSL": [
       {

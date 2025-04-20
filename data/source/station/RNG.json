@@ -1,6 +1,10 @@
 {
   "id": "RNG",
   "name": "Ranggung",
+  "name_translations": {
+    "zh-Hans": "兰岗",
+    "ta": "ரங்கோங்"
+  },
   "componentMembers": {
     "SKLRT": [
       {

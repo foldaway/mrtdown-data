@@ -1,6 +1,10 @@
 {
   "id": "TAM",
   "name": "Tampines",
+  "name_translations": {
+    "zh-Hans": "淡滨尼",
+    "ta": "தெம்பினிஸ்"
+  },
   "componentMembers": {
     "EWL": [
       {

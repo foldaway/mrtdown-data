@@ -1,6 +1,10 @@
 {
   "id": "DVR",
   "name": "Dover",
+  "name_translations": {
+    "zh-Hans": "杜弗",
+    "ta": "டோவெர்"
+  },
   "componentMembers": {
     "EWL": [
       {

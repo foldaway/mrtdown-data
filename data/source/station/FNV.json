@@ -1,6 +1,10 @@
 {
   "id": "FNV",
   "name": "Fernvale",
+  "name_translations": {
+    "zh-Hans": "芬微",
+    "ta": "ஃபொ்ன்வேல்"
+  },
   "componentMembers": {
     "SKLRT": [
       {

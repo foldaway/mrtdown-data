@@ -1,6 +1,10 @@
 {
   "id": "CPN",
   "name": "Corporation",
+  "name_translations": {
+    "zh-Hans": "企业",
+    "ta": "கார்ப்பரெஷன்"
+  },
   "componentMembers": {
     "JRL": [
       {

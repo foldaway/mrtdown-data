@@ -1,6 +1,10 @@
 {
   "id": "NYG",
   "name": "Nanyang Gateway",
+  "name_translations": {
+    "zh-Hans": "南洋门",
+    "ta": "நன்யாங் கேட்வே"
+  },
   "componentMembers": {
     "JRL": [
       {

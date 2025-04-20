@@ -1,6 +1,10 @@
 {
   "id": "TKW",
   "name": "Teck Whye",
+  "name_translations": {
+    "zh-Hans": "德惠",
+    "ta": "டெக் வாய்"
+  },
   "componentMembers": {
     "BPLRT": [
       {

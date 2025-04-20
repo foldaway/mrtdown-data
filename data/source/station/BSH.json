@@ -1,6 +1,10 @@
 {
   "id": "BSH",
   "name": "Bishan",
+  "name_translations": {
+    "zh-Hans": "碧山",
+    "ta": "பீஷான்"
+  },
   "componentMembers": {
     "NSL": [
       {

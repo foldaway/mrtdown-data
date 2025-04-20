@@ -1,6 +1,10 @@
 {
   "id": "PTP",
   "name": "Potong Pasir",
+  "name_translations": {
+    "zh-Hans": "波东巴西",
+    "ta": "போத்தோங் பாசிர்"
+  },
   "componentMembers": {
     "NEL": [
       {

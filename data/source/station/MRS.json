@@ -1,6 +1,10 @@
 {
   "id": "MRS",
   "name": "Marina South",
+  "name_translations": {
+    "zh-Hans": "滨海南",
+    "ta": "மரீனா சவுத்"
+  },
   "componentMembers": {
     "TEL": [
       {

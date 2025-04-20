@@ -1,6 +1,10 @@
 {
   "id": "BDS",
   "name": "Bedok South",
+  "name_translations": {
+    "zh-Hans": "勿洛南",
+    "ta": "பிடோக் சவுத்"
+  },
   "componentMembers": {
     "TEL": [
       {

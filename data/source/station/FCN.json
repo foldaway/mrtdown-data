@@ -1,6 +1,10 @@
 {
   "id": "FCN",
   "name": "Fort Canning",
+  "name_translations": {
+    "zh-Hans": "福康宁",
+    "ta": "ஃபோர்ட் கெனிங்"
+  },
   "componentMembers": {
     "DTL": [
       {

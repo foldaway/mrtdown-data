@@ -1,6 +1,10 @@
 {
   "id": "LTI",
   "name": "Little India",
+  "name_translations": {
+    "zh-Hans": "小印度",
+    "ta": "லிட்டில் இந்தியா"
+  },
   "componentMembers": {
     "NEL": [
       {

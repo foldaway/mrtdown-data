@@ -1,6 +1,10 @@
 {
   "id": "BHJ",
   "name": "Bahar Junction",
+  "name_translations": {
+    "zh-Hans": "峇哈路口",
+    "ta": "பஹார் சந்திப்பு"
+  },
   "componentMembers": {
     "JRL": [
       {

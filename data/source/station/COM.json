@@ -1,6 +1,10 @@
 {
   "id": "COM",
   "name": "Commonwealth",
+  "name_translations": {
+    "zh-Hans": "联邦",
+    "ta": "காமன்வெல்த்"
+  },
   "componentMembers": {
     "EWL": [
       {

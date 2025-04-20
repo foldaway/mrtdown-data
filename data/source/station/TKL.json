@@ -1,6 +1,10 @@
 {
   "id": "TKL",
   "name": "Teck Lee",
+  "name_translations": {
+    "zh-Hans": "德利",
+    "ta": "டெக் லீ"
+  },
   "componentMembers": {
     "PGLRT": [
       {

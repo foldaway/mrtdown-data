@@ -1,6 +1,10 @@
 {
   "id": "LYR",
   "name": "Layar",
+  "name_translations": {
+    "zh-Hans": "拉雅",
+    "ta": "லாயார்"
+  },
   "componentMembers": {
     "SKLRT": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "GRW",
   "name": "Great World",
+  "name_translations": {
+    "zh-Hans": "大世界",
+    "ta": "கிரேட் வோர்ல்ட்"
+  },
   "componentMembers": {
     "TEL": [
       {

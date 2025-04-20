@@ -1,6 +1,10 @@
 {
   "id": "KEM",
   "name": "Kembangan",
+  "name_translations": {
+    "zh-Hans": "景万岸",
+    "ta": "கெம்பாங்கான்"
+  },
   "componentMembers": {
     "EWL": [
       {

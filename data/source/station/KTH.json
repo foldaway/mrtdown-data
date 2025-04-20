@@ -1,6 +1,10 @@
 {
   "id": "KTH",
   "name": "Keat Hong",
+  "name_translations": {
+    "zh-Hans": "吉丰",
+    "ta": "கியட் ஹோங்"
+  },
   "componentMembers": {
     "BPLRT": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "FRP",
   "name": "Farrer Park",
+  "name_translations": {
+    "zh-Hans": "花拉公园",
+    "ta": "ஃபேரர் பார்க்"
+  },
   "componentMembers": {
     "NEL": [
       {

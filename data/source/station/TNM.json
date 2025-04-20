@@ -1,6 +1,10 @@
 {
   "id": "TNM",
   "name": "Tanah Merah",
+  "name_translations": {
+    "zh-Hans": "丹那美拉",
+    "ta": "தானா மேரா"
+  },
   "componentMembers": {
     "EWL": [
       {

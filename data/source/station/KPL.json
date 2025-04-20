@@ -1,6 +1,10 @@
 {
   "id": "KPL",
   "name": "Keppel",
+  "name_translations": {
+    "zh-Hans": "吉宝",
+    "ta": "கெப்பல்"
+  },
   "componentMembers": {
     "CCL": [
       {

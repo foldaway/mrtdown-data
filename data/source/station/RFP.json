@@ -1,6 +1,10 @@
 {
   "id": "RFP",
   "name": "Raffles Place",
+  "name_translations": {
+    "zh-Hans": "莱佛士坊",
+    "ta": "ராஃபிள்ஸ் பிளேஸ்"
+  },
   "componentMembers": {
     "EWL": [
       {

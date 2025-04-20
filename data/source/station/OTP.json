@@ -1,6 +1,10 @@
 {
   "id": "OTP",
   "name": "Outram Park",
+  "name_translations": {
+    "zh-Hans": "欧南园",
+    "ta": "ஊட்ரம் பார்க்"
+  },
   "componentMembers": {
     "EWL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "HME",
   "name": "Hume",
+  "name_translations": {
+    "zh-Hans": "谦道",
+    "ta": "ஹியூம்"
+  },
   "componentMembers": {
     "DTL": [
       {

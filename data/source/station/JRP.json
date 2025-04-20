@@ -1,6 +1,10 @@
 {
   "id": "JRP",
   "name": "Jurong Pier",
+  "name_translations": {
+    "zh-Hans": "裕廊渡头",
+    "ta": "ஜூரோங் பியர்"
+  },
   "componentMembers": {
     "JRL": [
       {

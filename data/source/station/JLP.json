@@ -1,6 +1,10 @@
 {
   "id": "JLP",
   "name": "Jelapang",
+  "name_translations": {
+    "zh-Hans": "泽拉邦",
+    "ta": "ஜெலப்பாங்"
+  },
   "componentMembers": {
     "BPLRT": [
       {

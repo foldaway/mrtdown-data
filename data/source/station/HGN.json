@@ -1,6 +1,10 @@
 {
   "id": "HGN",
   "name": "Hougang",
+  "name_translations": {
+    "zh-Hans": "后港",
+    "ta": "ஹவ்காங்"
+  },
   "componentMembers": {
     "NEL": [
       {

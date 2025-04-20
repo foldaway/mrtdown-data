@@ -1,6 +1,10 @@
 {
   "id": "PYL",
   "name": "Paya Lebar",
+  "name_translations": {
+    "zh-Hans": "巴耶利峇",
+    "ta": "பாய லேபார்"
+  },
   "componentMembers": {
     "EWL": [
       {

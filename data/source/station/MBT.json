@@ -1,6 +1,10 @@
 {
   "id": "MBT",
   "name": "Mountbatten",
+  "name_translations": {
+    "zh-Hans": "蒙巴登",
+    "ta": "மவுண்ட்பேட்டன்"
+  },
   "componentMembers": {
     "CCL": [
       {

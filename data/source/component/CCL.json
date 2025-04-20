@@ -1,6 +1,11 @@
 {
   "id": "CCL",
   "title": "Circle Line",
+  "title_translations": {
+    "zh-Hans": "地铁环线",
+    "ms": "Laluan MRT Circle",
+    "ta": "இணைப்பு எம்ஆர்டி வழி"
+  },
   "color": "#fa9e0d",
   "startedAt": "2009-05-28",
   "branches": {

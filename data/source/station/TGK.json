@@ -1,6 +1,10 @@
 {
   "id": "TGK",
   "name": "Tengah Park",
+  "name_translations": {
+    "zh-Hans": "登加公园",
+    "ta": "தெங்கா பூங்கா"
+  },
   "componentMembers": {
     "JRL": [
       {

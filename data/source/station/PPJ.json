@@ -1,6 +1,10 @@
 {
   "id": "PPJ",
   "name": "Pasir Panjang",
+  "name_translations": {
+    "zh-Hans": "巴西班让",
+    "ta": "பாசிர் பாஞ்சாங்"
+  },
   "componentMembers": {
     "CCL": [
       {

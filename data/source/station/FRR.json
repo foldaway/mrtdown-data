@@ -1,6 +1,10 @@
 {
   "id": "FRR",
   "name": "Farrer Road",
+  "name_translations": {
+    "zh-Hans": "花拉路",
+    "ta": "ஃபேரர் சாலை"
+  },
   "componentMembers": {
     "CCL": [
       {

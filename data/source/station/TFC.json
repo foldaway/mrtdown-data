@@ -1,6 +1,10 @@
 {
   "id": "TFC",
   "name": "Turf City",
+  "name_translations": {
+    "zh-Hans": "马城",
+    "ta": "டர்ஃப் சிட்­டி­யில்"
+  },
   "componentMembers": {
     "CRL": [
       {

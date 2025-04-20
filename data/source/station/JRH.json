@@ -1,6 +1,10 @@
 {
   "id": "JRH",
   "name": "Jurong Hill",
+  "name_translations": {
+    "zh-Hans": "裕廊山",
+    "ta": "ஜூரோங் ஹில்"
+  },
   "componentMembers": {
     "JRL": [
       {

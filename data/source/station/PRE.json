@@ -1,6 +1,10 @@
 {
   "id": "PRE",
   "name": "Pasir Ris East",
+  "name_translations": {
+    "zh-Hans": "巴西立东",
+    "ta": "பாசிர் ரிஸ் ஈஸ்ட்"
+  },
   "componentMembers": {
     "CRL": [
       {

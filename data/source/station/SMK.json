@@ -1,6 +1,10 @@
 {
   "id": "SMK",
   "name": "Sam Kee",
+  "name_translations": {
+    "zh-Hans": "三记",
+    "ta": "சாம் கீ"
+  },
   "componentMembers": {
     "PGLRT": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "LKS",
   "name": "Lakeside",
+  "name_translations": {
+    "zh-Hans": "湖畔",
+    "ta": "ஏரிக்கரை"
+  },
   "componentMembers": {
     "EWL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "MTR",
   "name": "Mattar",
+  "name_translations": {
+    "zh-Hans": "玛达",
+    "ta": "மாத்தார்"
+  },
   "componentMembers": {
     "DTL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "QUE",
   "name": "Queenstown",
+  "name_translations": {
+    "zh-Hans": "女皇镇",
+    "ta": "குவீன்ஸ்டவுன்"
+  },
   "componentMembers": {
     "EWL": [
       {

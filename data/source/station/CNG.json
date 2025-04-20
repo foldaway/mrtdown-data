@@ -1,6 +1,10 @@
 {
   "id": "CNG",
   "name": "Chinese Garden",
+  "name_translations": {
+    "zh-Hans": "裕华园",
+    "ta": "சீனத் தோட்டம்"
+  },
   "componentMembers": {
     "EWL": [
       {

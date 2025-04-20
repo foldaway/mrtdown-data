@@ -1,6 +1,10 @@
 {
   "id": "BBS",
   "name": "Bras Basah",
+  "name_translations": {
+    "zh-Hans": "百胜",
+    "ta": "பிராஸ் பாசா"
+  },
   "componentMembers": {
     "CCL": [
       {

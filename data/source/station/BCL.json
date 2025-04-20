@@ -1,6 +1,10 @@
 {
   "id": "BCL",
   "name": "Bencoolen",
+  "name_translations": {
+    "zh-Hans": "明古连",
+    "ta": "பென்கூலன்"
+  },
   "componentMembers": {
     "DTL": [
       {

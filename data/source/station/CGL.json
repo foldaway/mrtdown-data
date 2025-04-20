@@ -1,6 +1,10 @@
 {
   "id": "CGL",
   "name": "Cheng Lim",
+  "name_translations": {
+    "zh-Hans": "振林",
+    "ta": "செங் லிம்"
+  },
   "componentMembers": {
     "SKLRT": [
       {

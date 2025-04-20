@@ -1,6 +1,10 @@
 {
   "id": "TLB",
   "name": "Telok Blangah",
+  "name_translations": {
+    "zh-Hans": "直落布兰雅",
+    "ta": "தெலுக் பிளாங்கா"
+  },
   "componentMembers": {
     "CCL": [
       {

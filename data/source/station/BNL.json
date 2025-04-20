@@ -1,6 +1,10 @@
 {
   "id": "BNL",
   "name": "Boon Lay",
+  "name_translations": {
+    "zh-Hans": "文礼",
+    "ta": "பூன் லே"
+  },
   "componentMembers": {
     "EWL": [
       {

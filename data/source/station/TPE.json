@@ -1,6 +1,10 @@
 {
   "id": "TPE",
   "name": "Tampines East",
+  "name_translations": {
+    "zh-Hans": "淡滨尼东",
+    "ta": "தெம்பினிஸ் ஈஸ்ட்"
+  },
   "componentMembers": {
     "DTL": [
       {

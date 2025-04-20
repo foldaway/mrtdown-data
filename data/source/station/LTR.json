@@ -1,6 +1,10 @@
 {
   "id": "LTR",
   "name": "Lentor",
+  "name_translations": {
+    "zh-Hans": "伦多",
+    "ta": "லென்ட்டோர்"
+  },
   "componentMembers": {
     "TEL": [
       {

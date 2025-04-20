@@ -1,6 +1,10 @@
 {
   "id": "SBW",
   "name": "Sembawang",
+  "name_translations": {
+    "zh-Hans": "三巴旺",
+    "ta": "செம்பாவாங்"
+  },
   "componentMembers": {
     "NSL": [
       {

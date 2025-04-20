@@ -1,6 +1,10 @@
 {
   "id": "PER",
   "name": "Prince Edward Road",
+  "name_translations": {
+    "zh-Hans": "爱德华太子路",
+    "ta": "பிரின்ஸ் எட்வர்ட் ரோடு"
+  },
   "componentMembers": {
     "CCL": [
       {

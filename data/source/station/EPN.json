@@ -1,6 +1,10 @@
 {
   "id": "EPN",
   "name": "Esplanade",
+  "name_translations": {
+    "zh-Hans": "滨海中心",
+    "ta": "எஸ்பிளனேட்"
+  },
   "componentMembers": {
     "CCL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "PKH",
   "name": "Peng Kang Hill",
+  "name_translations": {
+    "zh-Hans": "秉光山",
+    "ta": "பெங் காங் ஹில்"
+  },
   "componentMembers": {
     "JRL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "KDL",
   "name": "Kadaloor",
+  "name_translations": {
+    "zh-Hans": "卡达鲁",
+    "ta": "கடலூர்"
+  },
   "componentMembers": {
     "PGLRT": [
       {

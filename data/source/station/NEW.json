@@ -1,6 +1,10 @@
 {
   "id": "NEW",
   "name": "Newton",
+  "name_translations": {
+    "zh-Hans": "纽顿",
+    "ta": "நியூட்டன்"
+  },
   "componentMembers": {
     "NSL": [
       {

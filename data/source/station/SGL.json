@@ -1,6 +1,10 @@
 {
   "id": "SGL",
   "name": "Siglap",
+  "name_translations": {
+    "zh-Hans": "实乞纳",
+    "ta": "சிக்லாப்"
+  },
   "componentMembers": {
     "TEL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "BDM",
   "name": "Bendemeer",
+  "name_translations": {
+    "zh-Hans": "明地迷亚",
+    "ta": "பெண்டிமியர்"
+  },
   "componentMembers": {
     "DTL": [
       {

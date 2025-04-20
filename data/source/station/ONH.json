@@ -1,6 +1,10 @@
 {
   "id": "ONH",
   "name": "one-north",
+  "name_translations": {
+    "zh-Hans": "纬壹",
+    "ta": "ஒன்-நார்த்"
+  },
   "componentMembers": {
     "CCL": [
       {

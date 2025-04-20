@@ -1,6 +1,10 @@
 {
   "id": "TSG",
   "name": "Tai Seng",
+  "name_translations": {
+    "zh-Hans": "大成",
+    "ta": "தை செங்"
+  },
   "componentMembers": {
     "CCL": [
       {

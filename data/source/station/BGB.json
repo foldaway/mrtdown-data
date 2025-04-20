@@ -1,6 +1,10 @@
 {
   "id": "BGB",
   "name": "Bukit Gombak",
+  "name_translations": {
+    "zh-Hans": "武吉甘柏",
+    "ta": "புக்கிட் கோம்பாக்"
+  },
   "componentMembers": {
     "NSL": [
       {

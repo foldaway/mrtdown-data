@@ -1,6 +1,10 @@
 {
   "id": "TWS",
   "name": "Tawas",
+  "name_translations": {
+    "zh-Hans": "大华士",
+    "ta": "தாவாஸ்"
+  },
   "componentMembers": {
     "JRL": [
       {

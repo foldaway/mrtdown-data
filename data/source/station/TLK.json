@@ -1,6 +1,10 @@
 {
   "id": "TLK",
   "name": "Tuas Link",
+  "name_translations": {
+    "zh-Hans": "大士连路",
+    "ta": "துவாஸ் லிங்க்"
+  },
   "componentMembers": {
     "EWL": [
       {

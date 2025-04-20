@@ -1,6 +1,10 @@
 {
   "id": "BKB",
   "name": "Bukit Brown",
+  "name_translations": {
+    "zh-Hans": "武吉布朗",
+    "ta": "புக்கிட் பிரவுன்"
+  },
   "componentMembers": {
     "CCL": [
       {

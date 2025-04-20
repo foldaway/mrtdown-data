@@ -1,6 +1,10 @@
 {
   "id": "MAJ",
   "name": "Maju",
+  "name_translations": {
+    "zh-Hans": "马裕",
+    "ta": "மாஜு்"
+  },
   "componentMembers": {
     "CRL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "TIB",
   "name": "Tiong Bahru",
+  "name_translations": {
+    "zh-Hans": "中峇鲁",
+    "ta": "தியோங் பாரு"
+  },
   "componentMembers": {
     "EWL": [
       {

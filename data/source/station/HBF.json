@@ -1,6 +1,10 @@
 {
   "id": "HBF",
   "name": "HarbourFront",
+  "name_translations": {
+    "zh-Hans": "港湾",
+    "ta": "துறைமுகம்"
+  },
   "componentMembers": {
     "NEL": [
       {

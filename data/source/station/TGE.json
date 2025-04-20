@@ -1,6 +1,10 @@
 {
   "id": "TGE",
   "name": "Teck Ghee",
+  "name_translations": {
+    "zh-Hans": "德义",
+    "ta": "டெக் கீ"
+  },
   "componentMembers": {
     "CRL": [
       {

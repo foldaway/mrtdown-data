@@ -1,6 +1,10 @@
 {
   "id": "SMD",
   "name": "Samudera",
+  "name_translations": {
+    "zh-Hans": "山姆",
+    "ta": "சமுத்திரா"
+  },
   "componentMembers": {
     "PGLRT": [
       {

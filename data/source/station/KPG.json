@@ -1,6 +1,10 @@
 {
   "id": "KPG",
   "name": "Kupang",
+  "name_translations": {
+    "zh-Hans": "古邦",
+    "ta": "கூப்பாங்"
+  },
   "componentMembers": {
     "SKLRT": [
       {

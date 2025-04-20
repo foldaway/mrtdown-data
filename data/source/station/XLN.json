@@ -1,6 +1,10 @@
 {
   "id": "XLN",
   "name": "Xilin",
+  "name_translations": {
+    "zh-Hans": "锡林",
+    "ta": "ஸீலின்"
+  },
   "componentMembers": {
     "DTL": [
       {

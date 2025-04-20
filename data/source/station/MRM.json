@@ -1,6 +1,10 @@
 {
   "id": "MRM",
   "name": "Marymount",
+  "name_translations": {
+    "zh-Hans": "玛丽蒙",
+    "ta": "மேரிமவுண்ட்்"
+  },
   "componentMembers": {
     "CCL": [
       {

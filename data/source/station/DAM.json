@@ -1,6 +1,10 @@
 {
   "id": "DAM",
   "name": "Damai",
+  "name_translations": {
+    "zh-Hans": "达迈",
+    "ta": "டாமாய்"
+  },
   "componentMembers": {
     "PGLRT": [
       {

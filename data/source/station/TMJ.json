@@ -1,6 +1,10 @@
 {
   "id": "TMJ",
   "name": "Ten Mile Junction",
+  "name_translations": {
+    "zh-Hans": "十里广场",
+    "ta": "பத்தாம் கல் சந்திப்பு"
+  },
   "componentMembers": {
     "BPLRT": [
       {

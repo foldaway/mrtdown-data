@@ -1,6 +1,10 @@
 {
   "id": "NPR",
   "name": "Napier",
+  "name_translations": {
+    "zh-Hans": "纳比雅",
+    "ta": "நேப்பியர்"
+  },
   "componentMembers": {
     "TEL": [
       {

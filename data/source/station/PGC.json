@@ -1,6 +1,10 @@
 {
   "id": "PGC",
   "name": "Punggol Coast",
+  "name_translations": {
+    "zh-Hans": "榜鹅海岸",
+    "ta": "பொங்கோல் கோஸ்ட்"
+  },
   "componentMembers": {
     "NEL": [
       {

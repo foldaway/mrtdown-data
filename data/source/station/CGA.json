@@ -1,6 +1,10 @@
 {
   "id": "CGA",
   "name": "Changi Airport",
+  "name_translations": {
+    "zh-Hans": "樟宜机场",
+    "ta": "சாங்கி விமானநிலையம்"
+  },
   "componentMembers": {
     "EWL": [
       {

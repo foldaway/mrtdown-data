@@ -1,6 +1,10 @@
 {
   "id": "TWR",
   "name": "Tuas West Road",
+  "name_translations": {
+    "zh-Hans": "大士西路",
+    "ta": "துவாஸ் வெஸ்ட் ரோடு"
+  },
   "componentMembers": {
     "EWL": [
       {

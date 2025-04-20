@@ -1,6 +1,10 @@
 {
   "id": "RIV",
   "name": "Riviera",
+  "name_translations": {
+    "zh-Hans": "里维拉",
+    "ta": "ரிவியாரா"
+  },
   "componentMembers": {
     "PGLRT": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "BDN",
   "name": "Bedok North",
+  "name_translations": {
+    "zh-Hans": "勿洛北",
+    "ta": "பிடோக் நார்த்"
+  },
   "componentMembers": {
     "DTL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "LRC",
   "name": "Lorong Chuan",
+  "name_translations": {
+    "zh-Hans": "罗弄泉",
+    "ta": "லோரோங் சுவான்"
+  },
   "componentMembers": {
     "CCL": [
       {

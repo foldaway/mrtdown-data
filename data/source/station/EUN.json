@@ -1,6 +1,10 @@
 {
   "id": "EUN",
   "name": "Eunos",
+  "name_translations": {
+    "zh-Hans": "友诺士",
+    "ta": "யூனுஸ்"
+  },
   "componentMembers": {
     "EWL": [
       {

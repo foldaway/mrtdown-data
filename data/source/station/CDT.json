@@ -1,6 +1,10 @@
 {
   "id": "CDT",
   "name": "Caldecott",
+  "name_translations": {
+    "zh-Hans": "加利谷",
+    "ta": "கால்டிகாட்"
+  },
   "componentMembers": {
     "CCL": [
       {

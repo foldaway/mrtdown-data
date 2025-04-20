@@ -1,6 +1,10 @@
 {
   "id": "PRL",
   "name": "Elias",
+  "name_translations": {
+    "zh-Hans": "伊莱雅",
+    "ta": "இலியாஸ்"
+  },
   "componentMembers": {
     "CRL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "PGP",
   "name": "Punggol Point",
+  "name_translations": {
+    "zh-Hans": "榜鹅坊",
+    "ta": "பொங்கோல் பாயிண்ட்"
+  },
   "componentMembers": {
     "PGLRT": [
       {

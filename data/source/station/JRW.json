@@ -1,6 +1,10 @@
 {
   "id": "JRW",
   "name": "Jurong West",
+  "name_translations": {
+    "zh-Hans": "裕廊西",
+    "ta": "ஜூரோங் வெஸ்ட்"
+  },
   "componentMembers": {
     "JRL": [
       {

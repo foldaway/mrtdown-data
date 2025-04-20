@@ -1,6 +1,10 @@
 {
   "id": "GKP",
   "name": "Gek Poh",
+  "name_translations": {
+    "zh-Hans": "玉宝",
+    "ta": "ஜெக் போ"
+  },
   "componentMembers": {
     "JRL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "KAL",
   "name": "Kallang",
+  "name_translations": {
+    "zh-Hans": "加冷",
+    "ta": "காலாங்"
+  },
   "componentMembers": {
     "EWL": [
       {

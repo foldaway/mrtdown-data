@@ -1,6 +1,10 @@
 {
   "id": "CPV",
   "name": "Compassvale",
+  "name_translations": {
+    "zh-Hans": "康埔桦",
+    "ta": "கம்பஸ்வேல்"
+  },
   "componentMembers": {
     "SKLRT": [
       {

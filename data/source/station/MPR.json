@@ -1,6 +1,10 @@
 {
   "id": "MPR",
   "name": "Marine Parade",
+  "name_translations": {
+    "zh-Hans": "马林百列",
+    "ta": "மரீன் பரேட்"
+  },
   "componentMembers": {
     "TEL": [
       {

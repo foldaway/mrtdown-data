@@ -1,6 +1,10 @@
 {
   "id": "PNX",
   "name": "Phoenix",
+  "name_translations": {
+    "zh-Hans": "凤凰",
+    "ta": "ஃபீனிக்ஸ்"
+  },
   "componentMembers": {
     "BPLRT": [
       {

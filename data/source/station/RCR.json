@@ -1,6 +1,10 @@
 {
   "id": "RCR",
   "name": "Rochor",
+  "name_translations": {
+    "zh-Hans": "梧槽",
+    "ta": "ரோச்சோர்"
+  },
   "componentMembers": {
     "DTL": [
       {

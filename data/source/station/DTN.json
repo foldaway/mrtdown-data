@@ -1,6 +1,10 @@
 {
   "id": "DTN",
   "name": "Downtown",
+  "name_translations": {
+    "zh-Hans": "市中心",
+    "ta": "டௌன்டவுன்"
+  },
   "componentMembers": {
     "DTL": [
       {

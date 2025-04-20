@@ -21,6 +21,7 @@ export const StationSchema = z.object({
     '2-5 letter abbreviation of station name that is unique in the entire network and easily understood',
   ),
   name: z.string(),
+  name_translations: z.record(z.string(), z.string()),
   componentMembers: z
     .record(ComponentIdSchema, z.array(StationComponentMemberSchema))
     .describe('Mapping of component ID to Station codes'),

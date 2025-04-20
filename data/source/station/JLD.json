@@ -1,6 +1,10 @@
 {
   "id": "JLD",
   "name": "Jurong Lake District",
+  "name_translations": {
+    "zh-Hans": "裕廊湖区",
+    "ta": "ஜூரோங் லேக் வட்­டா­ரம்"
+  },
   "componentMembers": {
     "CRL": [
       {

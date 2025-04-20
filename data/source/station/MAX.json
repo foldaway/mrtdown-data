@@ -1,6 +1,10 @@
 {
   "id": "MAX",
   "name": "Maxwell",
+  "name_translations": {
+    "zh-Hans": "麦士威",
+    "ta": "மெச்ஸ்வெல்்"
+  },
   "componentMembers": {
     "TEL": [
       {

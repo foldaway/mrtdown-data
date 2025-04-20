@@ -1,6 +1,10 @@
 {
   "id": "DFU",
   "name": "Defu",
+  "name_translations": {
+    "zh-Hans": "德福",
+    "ta": "டெஃபு"
+  },
   "componentMembers": {
     "CRL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "RNJ",
   "name": "Renjong",
+  "name_translations": {
+    "zh-Hans": "仁宗",
+    "ta": "ரெஞ்சோங்"
+  },
   "componentMembers": {
     "SKLRT": [
       {

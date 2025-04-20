@@ -1,6 +1,10 @@
 {
   "id": "FMW",
   "name": "Farmway",
+  "name_translations": {
+    "zh-Hans": "法嘉",
+    "ta": "ஃபஜார்"
+  },
   "componentMembers": {
     "SKLRT": [
       {

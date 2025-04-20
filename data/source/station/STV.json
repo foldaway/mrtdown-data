@@ -1,6 +1,10 @@
 {
   "id": "STV",
   "name": "Stevens",
+  "name_translations": {
+    "zh-Hans": "史蒂芬",
+    "ta": "ஸ்டீவன்ஸ்"
+  },
   "componentMembers": {
     "DTL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "SRN",
   "name": "Serangoon North",
+  "name_translations": {
+    "zh-Hans": "实龙岗北",
+    "ta": "சிராங்கூன் நார்த்"
+  },
   "componentMembers": {
     "CRL": [
       {

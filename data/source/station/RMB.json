@@ -1,6 +1,10 @@
 {
   "id": "RMB",
   "name": "Rumbia",
+  "name_translations": {
+    "zh-Hans": "棕美",
+    "ta": "ரூம்பியா"
+  },
   "componentMembers": {
     "SKLRT": [
       {

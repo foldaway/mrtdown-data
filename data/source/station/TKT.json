@@ -1,6 +1,10 @@
 {
   "id": "TKT",
   "name": "Tanjong Katong",
+  "name_translations": {
+    "zh-Hans": "丹戎加东",
+    "ta": "தஞ்சோங் காத்தோங்"
+  },
   "componentMembers": {
     "TEL": [
       {

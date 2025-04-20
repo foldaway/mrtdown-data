@@ -1,6 +1,10 @@
 {
   "id": "TCR",
   "name": "Tuas Crescent",
+  "name_translations": {
+    "zh-Hans": "大士弯",
+    "ta": "துவாஸ் கிரசண்ட்"
+  },
   "componentMembers": {
     "EWL": [
       {

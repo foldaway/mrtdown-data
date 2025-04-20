@@ -1,6 +1,10 @@
 {
   "id": "TKN",
   "name": "Tukang",
+  "name_translations": {
+    "zh-Hans": "都康",
+    "ta": "துக்காங்"
+  },
   "componentMembers": {
     "JRL": [
       {

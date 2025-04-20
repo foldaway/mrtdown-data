@@ -1,6 +1,10 @@
 {
   "id": "SOM",
   "name": "Somerset",
+  "name_translations": {
+    "zh-Hans": "索美塞",
+    "ta": "சாமர்செட்"
+  },
   "componentMembers": {
     "NSL": [
       {

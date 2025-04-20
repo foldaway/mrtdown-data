@@ -1,6 +1,10 @@
 {
   "id": "WDS",
   "name": "Woodlands South",
+  "name_translations": {
+    "zh-Hans": "兀兰南",
+    "ta": "உட்லண்ட்ஸ் சவுத்"
+  },
   "componentMembers": {
     "TEL": [
       {

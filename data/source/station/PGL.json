@@ -1,6 +1,10 @@
 {
   "id": "PGL",
   "name": "Punggol",
+  "name_translations": {
+    "zh-Hans": "榜鹅",
+    "ta": "பொங்கோல்"
+  },
   "componentMembers": {
     "NEL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "XPO",
   "name": "Expo",
+  "name_translations": {
+    "zh-Hans": "博览",
+    "ta": "எக்ஸ்போ"
+  },
   "componentMembers": {
     "EWL": [
       {

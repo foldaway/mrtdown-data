@@ -1,6 +1,10 @@
 {
   "id": "CBR",
   "name": "Canberra",
+  "name_translations": {
+    "zh-Hans": "坎贝拉",
+    "ta": "கான்பரா"
+  },
   "componentMembers": {
     "NSL": [
       {

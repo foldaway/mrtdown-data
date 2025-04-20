@@ -1,6 +1,10 @@
 {
   "id": "KTB",
   "name": "Khatib",
+  "name_translations": {
+    "zh-Hans": "卡迪",
+    "ta": "காதிப்"
+  },
   "componentMembers": {
     "NSL": [
       {

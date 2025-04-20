@@ -1,6 +1,10 @@
 {
   "id": "KKB",
   "name": "Kaki Bukit",
+  "name_translations": {
+    "zh-Hans": "加基武吉",
+    "ta": "காக்கி புக்கிட்"
+  },
   "componentMembers": {
     "DTL": [
       {

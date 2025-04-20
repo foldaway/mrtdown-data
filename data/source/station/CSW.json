@@ -1,6 +1,10 @@
 {
   "id": "CSW",
   "name": "Cashew",
+  "name_translations": {
+    "zh-Hans": "凯秀",
+    "ta": "கேஷ்யூ"
+  },
   "componentMembers": {
     "DTL": [
       {

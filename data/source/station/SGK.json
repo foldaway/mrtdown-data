@@ -1,6 +1,10 @@
 {
   "id": "SGK",
   "name": "Sungei Kadut",
+  "name_translations": {
+    "zh-Hans": "双溪加株",
+    "ta": "சுங்கை காடுத்"
+  },
   "componentMembers": {
     "NSL": [
       {

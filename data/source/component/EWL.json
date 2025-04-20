@@ -1,6 +1,11 @@
 {
   "id": "EWL",
   "title": "East West Line",
+  "title_translations": {
+    "zh-Hans": "东西地铁线",
+    "ms": "Laluan MRT Timur Barat",
+    "ta": "கிழக்கு மேற்கு எம்ஆர்டி வழி"
+  },
   "color": "#009645",
   "startedAt": "1987-12-12",
   "branches": {

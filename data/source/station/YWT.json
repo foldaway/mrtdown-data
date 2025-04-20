@@ -1,6 +1,10 @@
 {
   "id": "YWT",
   "name": "Yew Tee",
+  "name_translations": {
+    "zh-Hans": "油池",
+    "ta": "இயூ டீ"
+  },
   "componentMembers": {
     "NSL": [
       {

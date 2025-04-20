@@ -1,6 +1,10 @@
 {
   "id": "CKW",
   "name": "Choa Chu Kang West",
+  "name_translations": {
+    "zh-Hans": "蔡厝港西",
+    "ta": "சுவா சூ காங் வெஸ்ட்"
+  },
   "componentMembers": {
     "JRL": [
       {

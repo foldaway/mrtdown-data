@@ -1,6 +1,10 @@
 {
   "id": "ETP",
   "name": "Enterprise",
+  "name_translations": {
+    "zh-Hans": "事业",
+    "ta": "எண்டர்பிரைஸ்"
+  },
   "componentMembers": {
     "JRL": [
       {

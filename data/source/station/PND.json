@@ -1,6 +1,10 @@
 {
   "id": "PND",
   "name": "Pending",
+  "name_translations": {
+    "zh-Hans": "秉定",
+    "ta": "பெண்டிங்"
+  },
   "componentMembers": {
     "BPLRT": [
       {

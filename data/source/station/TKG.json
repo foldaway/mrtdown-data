@@ -1,6 +1,10 @@
 {
   "id": "TKG",
   "name": "Tongkang",
+  "name_translations": {
+    "zh-Hans": "同港",
+    "ta": "தொங்காங்"
+  },
   "componentMembers": {
     "SKLRT": [
       {

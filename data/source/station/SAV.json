@@ -1,6 +1,10 @@
 {
   "id": "SAV",
   "name": "Sixth Avenue",
+  "name_translations": {
+    "zh-Hans": "第六道",
+    "ta": "சிக்ஸ்த் அவென்யூ"
+  },
   "componentMembers": {
     "DTL": [
       {

@@ -1,6 +1,10 @@
 {
   "id": "BFT",
   "name": "Bayfront",
+  "name_translations": {
+    "zh-Hans": "海湾舫",
+    "ta": "பேஃபிரண்ட்"
+  },
   "componentMembers": {
     "CCL": [
       {

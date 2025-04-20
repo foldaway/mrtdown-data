@@ -1,6 +1,10 @@
 {
   "id": "ADM",
   "name": "Admiralty",
+  "name_translations": {
+    "zh-Hans": "海军部",
+    "ta": "அட்மிரல்ட்டி"
+  },
   "componentMembers": {
     "NSL": [
       {

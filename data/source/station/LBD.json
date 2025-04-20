@@ -1,6 +1,10 @@
 {
   "id": "LBD",
   "name": "Labrador Park",
+  "name_translations": {
+    "zh-Hans": "拉柏多公园",
+    "ta": "லாப்ரடார் பூங்கா"
+  },
   "componentMembers": {
     "CCL": [
       {

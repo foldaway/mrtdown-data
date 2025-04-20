@@ -1,6 +1,10 @@
 {
   "id": "LYG",
   "name": "Loyang",
+  "name_translations": {
+    "zh-Hans": "罗央",
+    "ta": "லோயாங்"
+  },
   "componentMembers": {
     "CRL": [
       {

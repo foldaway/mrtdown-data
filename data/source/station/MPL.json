@@ -1,6 +1,10 @@
 {
   "id": "MPL",
   "name": "Mount Pleasant",
+  "name_translations": {
+    "zh-Hans": "快乐山",
+    "ta": "மவுண்ட் பிளசண்ட்்"
+  },
   "componentMembers": {
     "TEL": [
       {

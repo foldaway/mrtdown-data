@@ -1,6 +1,10 @@
 {
   "id": "RDH",
   "name": "Redhill",
+  "name_translations": {
+    "zh-Hans": "红山",
+    "ta": "ரெட்ஹில்"
+  },
   "componentMembers": {
     "EWL": [
       {

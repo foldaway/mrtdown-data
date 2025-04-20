@@ -1,6 +1,10 @@
 {
   "id": "GCL",
   "name": "Gul Circle",
+  "name_translations": {
+    "zh-Hans": "卡尔圈",
+    "ta": "கல் சர்க்கல்"
+  },
   "componentMembers": {
     "EWL": [
       {

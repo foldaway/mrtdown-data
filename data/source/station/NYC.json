@@ -1,6 +1,10 @@
 {
   "id": "NYC",
   "name": "Nanyang Crescent",
+  "name_translations": {
+    "zh-Hans": "南洋弯",
+    "ta": "நன்யாங் க்ரெஸ்ஸன்"
+  },
   "componentMembers": {
     "JRL": [
       {

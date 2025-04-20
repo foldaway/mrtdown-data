@@ -1,6 +1,10 @@
 {
   "id": "CGB",
   "name": "Changi Airport Terminal 5",
+  "name_translations": {
+    "zh-Hans": "樟宜机场第五搭客大厦",
+    "ta": "சாங்கி விமானநிலையம் டெர்மினல் 5"
+  },
   "componentMembers": {
     "CRL": [
       {
