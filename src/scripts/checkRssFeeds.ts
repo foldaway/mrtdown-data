@@ -11,8 +11,6 @@ import { gfmToMarkdown } from 'mdast-util-gfm';
 import { isTextRailRelated } from '../util/isTextRailRelated';
 
 const TWITTER_MASTODON_RSS_FEEDS: string[] = [
-  'https://mastodon.social/@smrtsg_bot.rss',
-  'https://mastodon.social/@sbssg_bot.rss',
   'https://mastodon.social/@ltatrainservicealerts.rss',
 ];
 
