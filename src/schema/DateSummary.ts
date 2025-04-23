@@ -9,6 +9,14 @@ export const DateSummarySchema = z.object({
     ComponentIdSchema,
     z.record(IssueTypeSchema, z.number()),
   ),
+  issueTypesIntervalsNoOverlapMs: z.record(
+    IssueTypeSchema,
+    z.array(z.string()),
+  ),
+  componentIdsIssueTypesIntervalsNoOverlapMs: z.record(
+    ComponentIdSchema,
+    z.record(IssueTypeSchema, z.array(z.string())),
+  ),
   issues: z.array(IssueReferenceSchema),
 });
 

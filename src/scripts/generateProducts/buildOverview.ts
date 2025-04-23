@@ -112,6 +112,10 @@ export function buildOverview() {
 
   for (const [dateIso, dateSummaryPartial] of Object.entries(datesPartial)) {
     const issueTypesDurationMs: DateSummary['issueTypesDurationMs'] = {};
+    const issueTypesIntervalsNoOverlapMs: DateSummary['issueTypesIntervalsNoOverlapMs'] =
+      {};
+    const componentIdsIssueTypesIntervalsNoOverlapMs: DateSummary['componentIdsIssueTypesIntervalsNoOverlapMs'] =
+      {};
     const componentIdsIssueTypesDurationMs: DateSummary['componentIdsIssueTypesDurationMs'] =
       {};
 
@@ -120,22 +124,32 @@ export function buildOverview() {
     )) {
       issueTypesDurationMs[issueType as IssueType] =
         sumIntervalDuration(intervals).as('milliseconds');
+
+      issueTypesIntervalsNoOverlapMs[issueType as IssueType] = Interval.merge(
+        intervals,
+      ).map((interval) => interval.toISO());
     }
 
     for (const [componentId, issueTypeIntervals] of Object.entries(
       dateSummaryPartial.componentIdsIssueTypeIntervals,
     )) {
       componentIdsIssueTypesDurationMs[componentId] = {};
+      componentIdsIssueTypesIntervalsNoOverlapMs[componentId] = {};
 
       for (const [issueType, intervals] of Object.entries(issueTypeIntervals)) {
         componentIdsIssueTypesDurationMs[componentId][issueType as IssueType] =
           sumIntervalDuration(intervals).as('milliseconds');
+        componentIdsIssueTypesIntervalsNoOverlapMs[componentId][
+          issueType as IssueType
+        ] = Interval.merge(intervals).map((interval) => interval.toISO());
       }
     }
 
     content.dates[dateIso] = {
       issues: dateSummaryPartial.issues,
       issueTypesDurationMs,
+      issueTypesIntervalsNoOverlapMs,
+      componentIdsIssueTypesIntervalsNoOverlapMs,
       componentIdsIssueTypesDurationMs,
     };
   }
