@@ -5,12 +5,24 @@
     "EWL"
   ],
   "startAt": "2025-04-23T06:59:29.000+08:00",
-  "endAt": null,
+  "endAt": "2025-04-23T09:00:51.000+08:00",
   "type": "disruption",
   "subtypes": [
     "track.fault"
   ],
   "updates": [
+    {
+      "type": "operator.update",
+      "text": "9.00am: EWL - Fault cleared. Train service resumed. Free regular bus service is still available between Tampines and Pasir Ris stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114384571681218918",
+      "createdAt": "2025-04-23T09:00:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL] UPDATE: Due to track point fault, please add additional 10 mins of train travelling time between #Tampines and #PasirRis in both directions. Free regular bus service is available between #Tampines and #PasirRis. Normal train service is available for the rest of East West",
+      "sourceUrl": "https://mastodon.social/@smrtsg_bot/114384531720987938",
+      "createdAt": "2025-04-23T08:50:41.000+08:00"
+    },
     {
       "type": "operator.update",
       "text": "7.00am: EWL - Due to a track point fault, please add additional 10 minutes  of travelling time between Tampines and Pasir Ris stations. Free regular bus service is available between Tampines and Pasir Ris stations.",
