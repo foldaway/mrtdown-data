@@ -1,0 +1,55 @@
+{
+  "id": "2025-04-23-east-west-line-disruption",
+  "title": "Service disruption on the East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2025-04-23T07:20:51.000+08:00",
+  "endAt": "2025-04-23T09:00:51.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "9.00am: EWL - Fault cleared. Train service resumed. Free regular bus service is still available between Tampines and Pasir Ris stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114384571681218918",
+      "createdAt": "2025-04-23T09:00:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "8.45am: EWL - Due to a track point fault, please add additional 10 minutes of travelling time between Tampines and Pasir Ris stations. Free regular bus service is available between Tampines and Pasir Ris stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114384516665239623",
+      "createdAt": "2025-04-23T08:46:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "7.00am: EWL - Due to a track point fault, please add additional 10 minutes of travelling time between Tampines and Pasir Ris stations. Free regular bus service is available between Tampines and Pasir Ris stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114384477302942986",
+      "createdAt": "2025-04-23T08:36:51.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "7.00am: EWL - Due to a track point fault, please add additional 10 minutes of travelling time between Tampines and Pasir Ris stations. Free regular bus service is available between Tampines and Pasir Ris stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114384335765902461",
+      "createdAt": "2025-04-23T08:00:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "7.00am: EWL - Due to a track point fault, please add additional 10 minutes  of travelling time between Tampines and Pasir Ris stations. Free regular bus service is available between Tampines and Pasir Ris stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114384178478714628",
+      "createdAt": "2025-04-23T07:20:51.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR",
+        "TAM"
+      ]
+    }
+  ]
+}
