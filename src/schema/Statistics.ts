@@ -3,6 +3,7 @@ import { DateSummarySchema } from './DateSummary';
 import { IssueReferenceSchema } from './Overview';
 import { IssueSchema } from './Issue';
 import { ComponentIdSchema } from './Component';
+import { StationSchema } from './Station';
 
 export const StatisticsSchema = z.object({
   dates: z.record(z.string().date(), DateSummarySchema),
@@ -11,5 +12,11 @@ export const StatisticsSchema = z.object({
   issuesDisruptionDurationTotalDays: z.number(),
   issuesDisruptionLongest: z.array(IssueReferenceSchema),
   componentsIssuesDisruptionCount: z.record(ComponentIdSchema, z.number()),
+  stationIssues: z.array(
+    z.object({
+      station: StationSchema,
+      count: z.number(),
+    }),
+  ),
 });
 export type Statistics = z.infer<typeof StatisticsSchema>;

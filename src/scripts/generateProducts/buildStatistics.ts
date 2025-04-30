@@ -12,6 +12,8 @@ import { calculateDurationWithinServiceHours } from '../../helpers/calculateDura
 import { splitIntervalByServiceHours } from '../../helpers/splitIntervalByServiceHours';
 import type { ComponentId } from '../../schema/Component';
 import { sumIntervalDuration } from '../../helpers/sumIntervalDuration';
+import { Station } from '../../schema/Station';
+import { StationModel } from '../../model/StationModel';
 
 interface DateSummaryPartial {
   issues: IssueReference[];
@@ -52,6 +54,8 @@ export function buildStatistics() {
     {};
   let issuesDisruptionHistoricalCount = 0;
   let issuesDisruptionDurationTotalDays = 0;
+
+  const stationIssueCount: Record<string, number> = {};
 
   const components = ComponentModel.getAll();
   for (const component of components) {
@@ -155,6 +159,19 @@ export function buildStatistics() {
       });
       datesPartial[segmentStartIsoDate] = dateSummary;
     }
+
+    const stationCodes = new Set<string>();
+    for (const segment of issue.stationIdsAffected) {
+      for (const stationId of segment.stationIds) {
+        stationCodes.add(stationId);
+      }
+    }
+
+    for (const stationCode of stationCodes) {
+      let count = stationIssueCount[stationCode] ?? 0;
+      count++;
+      stationIssueCount[stationCode] = count;
+    }
   }
 
   for (const [dateIso, dateSummaryPartial] of Object.entries(datesPartial)) {
@@ -200,6 +217,18 @@ export function buildStatistics() {
     };
   }
 
+  const stationIssues: Statistics['stationIssues'] = [];
+  const stations = StationModel.getAll();
+  for (const station of stations) {
+    stationIssues.push({
+      station,
+      count: stationIssueCount[station.id] ?? 0,
+    });
+  }
+  stationIssues.sort((a, b) => {
+    return b.count - a.count;
+  });
+
   const content: Statistics = {
     dates,
     issuesOngoing: issues.filter((issue) => issue.endAt == null),
@@ -207,6 +236,7 @@ export function buildStatistics() {
     issuesDisruptionDurationTotalDays,
     issuesDisruptionLongest,
     componentsIssuesDisruptionCount,
+    stationIssues,
   };
 
   writeFileSync(filePath, JSON.stringify(content, null, 2));
