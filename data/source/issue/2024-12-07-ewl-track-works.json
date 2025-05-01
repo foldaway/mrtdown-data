@@ -1,0 +1,31 @@
+{
+  "id": "2024-12-07-ewl-track-works",
+  "title": "Tracks works on East-West Line",
+  "componentIdsAffected": ["EWL"],
+  "startAt": "2024-12-07T05:30:00.000+08:00",
+  "endAt": "2024-12-10T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": ["track.work"],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "SINGAPORE: Regular train service between Tanah Merah and Tampines MRT stations along the East-West Line (EWL) will resume on Tuesday (Dec 10), a day ahead of schedule after the completion of track works. The stretch of stations has been closed since Saturday to facilitate the connection of tracks betw",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/mrt-train-service-tanah-merah-tampines-station-resume-dec-10-4795906",
+      "createdAt": "2024-12-09T20:33:00+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "The works are to facilitate the connection of tracks between the East-West Line and the East Coast Integrated Depot.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/lta-mrt-no-train-service-between-tanah-merah-and-tampines-ewl-dec-7-10-4724231",
+      "createdAt": "2024-11-05T17:01:00+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": ["SIM"]
+    }
+  ]
+}
