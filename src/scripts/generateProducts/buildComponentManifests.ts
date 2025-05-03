@@ -34,8 +34,8 @@ export function buildComponentManifests() {
     );
 
     const stationCodes = new Set<string>();
-    for (const branchStationCodes of Object.values(component.branches)) {
-      for (const stationCode of branchStationCodes) {
+    for (const branch of Object.values(component.branches)) {
+      for (const stationCode of branch.stationCodes) {
         stationCodes.add(stationCode);
       }
     }

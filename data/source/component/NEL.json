@@ -9,24 +9,35 @@
   "color": "#9900aa",
   "startedAt": "2003-11-20",
   "branches": {
-    "main": [
-      "NE1",
-      "NE3",
-      "NE4",
-      "NE5",
-      "NE6",
-      "NE7",
-      "NE8",
-      "NE9",
-      "NE10",
-      "NE11",
-      "NE12",
-      "NE13",
-      "NE14",
-      "NE15",
-      "NE16",
-      "NE17",
-      "NE18"
-    ]
+    "main": {
+      "id": "main",
+      "title": "Main Branch",
+      "title_translations": {
+        "zh-Hans": "主干线",
+        "ms": "Cawangan Utama",
+        "ta": "முதன்மை கிளை"
+      },
+      "startedAt": "2003-11-20",
+      "endedAt": null,
+      "stationCodes": [
+        "NE1",
+        "NE3",
+        "NE4",
+        "NE5",
+        "NE6",
+        "NE7",
+        "NE8",
+        "NE9",
+        "NE10",
+        "NE11",
+        "NE12",
+        "NE13",
+        "NE14",
+        "NE15",
+        "NE16",
+        "NE17",
+        "NE18"
+      ]
+    }
   }
 }

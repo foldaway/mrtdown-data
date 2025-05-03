@@ -59,10 +59,8 @@ function findComponentAndBranch(
 
   const components = ComponentModel.getAll();
   for (const component of components) {
-    for (const [branchName, branchStationCodes] of Object.entries(
-      component.branches,
-    )) {
-      const branchStationCodesSet = new Set(branchStationCodes);
+    for (const [branchName, branch] of Object.entries(component.branches)) {
+      const branchStationCodesSet = new Set(branch.stationCodes);
       const intersectionFirst =
         branchStationCodesSet.intersection(stationCodesFirst);
       const intersectionLast =
@@ -71,13 +69,13 @@ function findComponentAndBranch(
         const stationCodeFirst = Array.from(intersectionFirst)[0];
         const stationCodeLast = Array.from(intersectionLast)[0];
 
-        const indexFirst = branchStationCodes.indexOf(stationCodeFirst);
-        const indexLast = branchStationCodes.indexOf(stationCodeLast);
+        const indexFirst = branch.stationCodes.indexOf(stationCodeFirst);
+        const indexLast = branch.stationCodes.indexOf(stationCodeLast);
 
         results.push({
           component,
           branchName,
-          sectionStationCodes: branchStationCodes.slice(
+          sectionStationCodes: branch.stationCodes.slice(
             Math.min(indexFirst, indexLast),
             Math.max(indexFirst, indexLast) + 1,
           ),
@@ -198,7 +196,7 @@ export function computeAffectedStations(
 
         const stationIds = new Set<string>();
 
-        for (const stationCode of branch) {
+        for (const stationCode of branch.stationCodes) {
           const station = stations.find((s) => {
             const componentMembers = s.componentMembers[component.id];
             if (componentMembers == null) {

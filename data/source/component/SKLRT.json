@@ -9,7 +9,39 @@
   "color": "#748477",
   "startedAt": "2003-01-18",
   "branches": {
-    "west": ["STC", "SW1", "SW2", "SW3", "SW4", "SW5", "SW6", "SW7", "STC"],
-    "east": ["STC", "SE1", "SE2", "SE3", "SE4", "SE5", "STC"]
+    "east": {
+      "id": "east",
+      "title": "East Branch",
+      "title_translations": {
+        "zh-Hans": "东部支线",
+        "ms": "Cawangan Timur",
+        "ta": "கிழக்கு கிளை"
+      },
+      "startedAt": "2003-01-18",
+      "endedAt": null,
+      "stationCodes": ["STC", "SE1", "SE2", "SE3", "SE4", "SE5", "STC"]
+    },
+    "west": {
+      "id": "west",
+      "title": "West Branch",
+      "title_translations": {
+        "zh-Hans": "西部支线",
+        "ms": "Cawangan Barat",
+        "ta": "மேற்கு கிளை"
+      },
+      "startedAt": "2005-01-29",
+      "endedAt": null,
+      "stationCodes": [
+        "STC",
+        "SW1",
+        "SW2",
+        "SW3",
+        "SW4",
+        "SW5",
+        "SW6",
+        "SW7",
+        "STC"
+      ]
+    }
   }
 }

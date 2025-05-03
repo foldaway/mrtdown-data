@@ -9,21 +9,32 @@
   "color": "#748477",
   "startedAt": "1999-11-06",
   "branches": {
-    "main": [
-      "BP1",
-      "BP2",
-      "BP3",
-      "BP4",
-      "BP5",
-      "BP6",
-      "BP7",
-      "BP8",
-      "BP9",
-      "BP10",
-      "BP11",
-      "BP12",
-      "BP13",
-      "BP6"
-    ]
+    "main": {
+      "id": "main",
+      "title": "Main Branch",
+      "title_translations": {
+        "zh-Hans": "主干线",
+        "ms": "Cawangan Utama",
+        "ta": "முதன்மை கிளை"
+      },
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "stationCodes": [
+        "BP1",
+        "BP2",
+        "BP3",
+        "BP4",
+        "BP5",
+        "BP6",
+        "BP7",
+        "BP8",
+        "BP9",
+        "BP10",
+        "BP11",
+        "BP12",
+        "BP13",
+        "BP6"
+      ]
+    }
   }
 }

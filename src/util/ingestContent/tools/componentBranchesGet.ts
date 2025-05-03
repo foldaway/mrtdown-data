@@ -78,7 +78,7 @@ export async function toolComponentBranchesGetRun(
     ],
   };
 
-  for (const [branchName, stationCodes] of Object.entries(component.branches)) {
+  for (const [branchCode, branch] of Object.entries(component.branches)) {
     table.children.push({
       type: 'tableRow',
       children: [
@@ -87,7 +87,7 @@ export async function toolComponentBranchesGetRun(
           children: [
             {
               type: 'text',
-              value: branchName,
+              value: branchCode,
             },
           ],
         },
@@ -96,7 +96,7 @@ export async function toolComponentBranchesGetRun(
           children: [
             {
               type: 'text',
-              value: stationCodes
+              value: branch.stationCodes
                 .map((stationCode) => {
                   assert(
                     stationCode in stationsByStationCode,
