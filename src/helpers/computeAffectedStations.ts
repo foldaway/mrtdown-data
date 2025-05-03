@@ -60,6 +60,15 @@ function findComponentAndBranch(
   const components = ComponentModel.getAll();
   for (const component of components) {
     for (const [branchName, branch] of Object.entries(component.branches)) {
+      if (branch.startedAt == null) {
+        continue;
+      }
+      if (
+        branch.endedAt != null &&
+        DateTime.fromISO(branch.endedAt).diffNow().as('days') < 0
+      ) {
+        continue;
+      }
       const branchStationCodesSet = new Set(branch.stationCodes);
       const intersectionFirst =
         branchStationCodesSet.intersection(stationCodesFirst);

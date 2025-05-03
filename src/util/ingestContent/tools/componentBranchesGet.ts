@@ -10,6 +10,7 @@ import { assert } from '../../assert';
 import { gfmToMarkdown } from 'mdast-util-gfm';
 import type { Root, Table } from 'mdast';
 import { toMarkdown } from 'mdast-util-to-markdown';
+import { DateTime } from 'luxon';
 
 export const ToolComponentBranchesGetParametersSchema = z.object({
   componentId: ComponentIdSchema,
@@ -79,6 +80,15 @@ export async function toolComponentBranchesGetRun(
   };
 
   for (const [branchCode, branch] of Object.entries(component.branches)) {
+    if (branch.startedAt == null) {
+      continue;
+    }
+    if (
+      branch.endedAt != null &&
+      DateTime.fromISO(branch.endedAt).diffNow().as('days') < 0
+    ) {
+      continue;
+    }
     table.children.push({
       type: 'tableRow',
       children: [
