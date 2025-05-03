@@ -8,5 +8,50 @@
   },
   "color": "#97C616",
   "startedAt": "2030-12-31",
-  "branches": {}
+  "branches": {
+    "main": {
+      "id": "main",
+      "title": "Main Branch",
+      "title_translations": {
+        "zh-Hans": "主干线",
+        "ms": "Cawangan Utama",
+        "ta": "முதன்மை கிளை"
+      },
+      "startedAt": null,
+      "endedAt": null,
+      "stationCodes": [
+        "CR1",
+        "CR2",
+        "CR3",
+        "CR4",
+        "CR5",
+        "CR6",
+        "CR7",
+        "CR8",
+        "CR9",
+        "CR10",
+        "CR11",
+        "CR12",
+        "CR13",
+        "CR14",
+        "CR15",
+        "CR16",
+        "CR17",
+        "CR18",
+        "CR19"
+      ]
+    },
+    "punggol": {
+      "id": "punggol",
+      "title": "Punggol Extension Line",
+      "title_translations": {
+        "zh-Hans": "榜鹅延长线",
+        "ms": "Laluan Sambungan Punggol",
+        "ta": "பொங்கோல் நீட்டிப்பு வழித்தடம்"
+      },
+      "startedAt": null,
+      "endedAt": null,
+      "stationCodes": ["CP1", "CP2", "CP3", "CP4"]
+    }
+  }
 }
