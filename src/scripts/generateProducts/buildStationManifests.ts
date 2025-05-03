@@ -5,6 +5,8 @@ import { StationModel } from '../../model/StationModel';
 import type { IssueReference } from '../../schema/Overview';
 import type { StationManifest } from '../../schema/StationManifest';
 import { DateTime } from 'luxon';
+import type { Component } from '../../schema/Component';
+import { ComponentModel } from '../../model/ComponentModel';
 
 export function buildStationManifests() {
   const issues = IssueModel.getAll();
@@ -39,6 +41,8 @@ export function buildStationManifests() {
     }
   }
 
+  const components = ComponentModel.getAll();
+
   const stations = StationModel.getAll();
   for (const station of stations) {
     const filePath = join(
@@ -46,9 +50,18 @@ export function buildStationManifests() {
       `../../../data/product/station_${station.id}.json`,
     );
 
+    const componentsById: Record<string, Component> = {};
+    for (const component of components) {
+      if (!(component.id in station.componentMembers)) {
+        continue;
+      }
+      componentsById[component.id] = component;
+    }
+
     const manifest: StationManifest = {
       station,
       issueRefs: issuesByStation[station.id] ?? [],
+      componentsById,
     };
 
     writeFileSync(filePath, JSON.stringify(manifest, null, 2));
