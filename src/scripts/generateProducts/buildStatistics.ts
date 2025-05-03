@@ -57,9 +57,12 @@ export function buildStatistics() {
 
   const stationIssueCount: Record<string, number> = {};
 
+  const componentsById: Statistics['componentsById'] = {};
+
   const components = ComponentModel.getAll();
   for (const component of components) {
     componentsIssuesDisruptionCount[component.id] = 0;
+    componentsById[component.id] = component;
   }
 
   let issuesDisruptionLongest = issues
@@ -237,6 +240,7 @@ export function buildStatistics() {
     issuesDisruptionLongest,
     componentsIssuesDisruptionCount,
     stationIssues,
+    componentsById,
   };
 
   writeFileSync(filePath, JSON.stringify(content, null, 2));

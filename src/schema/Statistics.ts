@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { DateSummarySchema } from './DateSummary';
 import { IssueReferenceSchema } from './Overview';
 import { IssueSchema } from './Issue';
-import { ComponentIdSchema } from './Component';
+import { ComponentIdSchema, ComponentSchema } from './Component';
 import { StationSchema } from './Station';
 
 export const StatisticsSchema = z.object({
@@ -18,5 +18,6 @@ export const StatisticsSchema = z.object({
       count: z.number(),
     }),
   ),
+  componentsById: z.record(ComponentIdSchema, ComponentSchema),
 });
 export type Statistics = z.infer<typeof StatisticsSchema>;
