@@ -35,6 +35,30 @@
         "BP13",
         "BP6"
       ]
+    },
+    "tmj": {
+      "id": "tmj",
+      "title": "Ten Mile Junction Branch",
+      "title_translations": {
+        "zh-Hans": "十里广场支线",
+        "ms": "Cawangan Ten Mile Junction",
+        "ta": "டென் மைல் ஜங்‌ஷன் கிளை"
+      },
+      "startedAt": "1999-11-06",
+      "endedAt": "2019-01-13",
+      "stationCodes": [
+        "BP14",
+        "BP6",
+        "BP13",
+        "BP12",
+        "BP11",
+        "BP10",
+        "BP9",
+        "BP8",
+        "BP7",
+        "BP6",
+        "BP14"
+      ]
     }
   }
 }
