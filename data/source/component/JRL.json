@@ -8,5 +8,42 @@
   },
   "color": "#0099aa",
   "startedAt": "2027-12-31",
-  "branches": {}
+  "branches": {
+    "main": {
+      "id": "main",
+      "title": "Main Branch",
+      "title_translations": {
+        "zh-Hans": "主干线",
+        "ms": "Cawangan Utama",
+        "ta": "முதன்மை கிளை"
+      },
+      "startedAt": null,
+      "endedAt": null,
+      "stationCodes": ["JS1", "JS2", "JS3", "JS4", "JS5", "JS6", "JS7", "JS8"]
+    },
+    "east": {
+      "id": "east",
+      "title": "East Branch",
+      "title_translations": {
+        "zh-Hans": "东部支线",
+        "ms": "Cawangan Timur",
+        "ta": "கிழக்கு கிளை"
+      },
+      "startedAt": null,
+      "endedAt": null,
+      "stationCodes": ["JS3", "JE1", "JE2", "JE3", "JE4", "JE5", "JE6", "JE7"]
+    },
+    "west": {
+      "id": "west",
+      "title": "West Branch",
+      "title_translations": {
+        "zh-Hans": "西部支线",
+        "ms": "Cawangan Barat",
+        "ta": "மேற்கு கிளை"
+      },
+      "startedAt": null,
+      "endedAt": null,
+      "stationCodes": ["JS7", "JW1", "JW2"]
+    }
+  }
 }
