@@ -1,6 +1,6 @@
 {
   "id": "EWL",
-  "title": "East West Line",
+  "title": "East-West Line",
   "title_translations": {
     "zh-Hans": "东西地铁线",
     "ms": "Laluan MRT Timur Barat",
@@ -65,7 +65,11 @@
       },
       "startedAt": "2001-01-10",
       "endedAt": null,
-      "stationCodes": ["CG", "CG1", "CG2"]
+      "stationCodes": [
+        "CG",
+        "CG1",
+        "CG2"
+      ]
     }
   }
 }
