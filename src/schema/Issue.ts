@@ -49,6 +49,7 @@ export const IssueDisruptionSubtypeSchema = z.enum([
   'track.fault',
   'train.fault',
   'power.fault',
+  'station.fault',
   'security',
   'weather',
   'passenger.incident',
