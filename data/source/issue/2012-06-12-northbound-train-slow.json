@@ -9,7 +9,20 @@
       "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
-        "AMK"
+        "AMK",
+        "YCK",
+        "KTB",
+        "YIS",
+        "SBW",
+        "ADM",
+        "WDL",
+        "MSL",
+        "KRJ",
+        "YWT",
+        "CCK",
+        "BGB",
+        "BBT",
+        "JUR"
       ]
     }
   ],

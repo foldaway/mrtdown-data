@@ -9,6 +9,8 @@
       "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
+        "TAP",
+        "NOV",
         "NEW",
         "ORC",
         "SOM",

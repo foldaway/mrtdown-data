@@ -29,42 +29,26 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
-      "branchName": "main",
-      "stationIds": [
-        "PSR",
-        "TAM",
-        "SIM",
-        "TNM",
-        "BDK",
-        "KEM",
-        "EUN",
-        "PYL",
-        "ALJ",
-        "KAL",
-        "LVR",
-        "BGS",
-        "CTH",
-        "RFP",
-        "TPG",
-        "OTP",
-        "TIB",
-        "RDH",
-        "QUE",
-        "COM",
-        "BNV",
-        "DVR",
-        "CLE",
-        "JUR"
-      ]
-    },
-    {
       "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
-        "KTB",
-        "YCK",
+        "DBG",
+        "CTH",
+        "RFP",
         "AMK",
+        "YCK",
+        "KTB",
+        "YIS",
+        "SBW",
+        "ADM",
+        "WDL",
+        "MSL",
+        "KRJ",
+        "YWT",
+        "CCK",
+        "BGB",
+        "BBT",
+        "JUR",
         "BSH",
         "BDL",
         "TAP",
@@ -72,10 +56,51 @@
         "NEW",
         "ORC",
         "SOM",
-        "DBG",
-        "CTH",
-        "RFP",
         "MRB"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "JKN",
+        "PNR",
+        "BNL",
+        "LKS",
+        "CNG",
+        "JUR",
+        "CLE",
+        "DVR",
+        "BNV",
+        "COM",
+        "QUE",
+        "RDH",
+        "TIB",
+        "OTP",
+        "TPG",
+        "RFP",
+        "CTH",
+        "BGS",
+        "LVR",
+        "KAL",
+        "ALJ",
+        "PYL",
+        "EUN",
+        "KEM",
+        "BDK",
+        "TNM",
+        "SIM",
+        "TAM",
+        "PSR"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "changi_airport",
+      "stationIds": [
+        "TNM",
+        "XPO",
+        "CGA"
       ]
     },
     {
@@ -121,7 +146,14 @@
         "KTH",
         "TKW",
         "PNX",
-        "BKP"
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ"
       ]
     }
   ]

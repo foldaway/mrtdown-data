@@ -3,8 +3,7 @@
   "title": "Trains running slower due to speed restrictions",
   "componentIdsAffected": [
     "NSL",
-    "EWL",
-    "CCL"
+    "EWL"
   ],
   "startAt": "2011-12-26T10:48:38.000+08:00",
   "endAt": "2011-12-27T00:00:00.000+08:00",
@@ -32,65 +31,74 @@
       "branchName": "main",
       "stationIds": [
         "DBG",
-        "CTH"
-      ]
-    },
-    {
-      "componentId": "EWL",
-      "branchName": "main",
-      "stationIds": [
-        "CTH",
-        "RFP"
-      ]
-    },
-    {
-      "componentId": "NSL",
-      "branchName": "main",
-      "stationIds": [
-        "BSH",
-        "BDL",
-        "TAP"
-      ]
-    },
-    {
-      "componentId": "NSL",
-      "branchName": "main",
-      "stationIds": [
-        "JUR",
-        "BBT",
-        "BGB",
-        "CCK"
-      ]
-    },
-    {
-      "componentId": "EWL",
-      "branchName": "main",
-      "stationIds": [
-        "BDK",
-        "KEM",
-        "EUN",
-        "PYL",
-        "ALJ",
-        "KAL",
-        "LVR",
-        "BGS",
         "CTH",
         "RFP",
-        "TPG",
-        "OTP",
-        "TIB",
-        "RDH",
-        "QUE",
-        "COM",
-        "BNV",
-        "DVR",
-        "CLE",
+        "AMK",
+        "YCK",
+        "KTB",
+        "YIS",
+        "SBW",
+        "ADM",
+        "WDL",
+        "MSL",
+        "KRJ",
+        "YWT",
+        "CCK",
+        "BGB",
+        "BBT",
         "JUR",
-        "CNG",
-        "LKS",
-        "BNL",
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW",
+        "ORC",
+        "SOM",
+        "MRB"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "JKN",
         "PNR",
-        "JKN"
+        "BNL",
+        "LKS",
+        "CNG",
+        "JUR",
+        "CLE",
+        "DVR",
+        "BNV",
+        "COM",
+        "QUE",
+        "RDH",
+        "TIB",
+        "OTP",
+        "TPG",
+        "RFP",
+        "CTH",
+        "BGS",
+        "LVR",
+        "KAL",
+        "ALJ",
+        "PYL",
+        "EUN",
+        "KEM",
+        "BDK",
+        "TNM",
+        "SIM",
+        "TAM",
+        "PSR"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "changi_airport",
+      "stationIds": [
+        "TNM",
+        "XPO",
+        "CGA"
       ]
     }
   ]

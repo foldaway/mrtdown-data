@@ -1,0 +1,39 @@
+{
+  "id": "2014-07-18-east-west-line-track-fault-2",
+  "title": "Track Fault on East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP"
+      ]
+    }
+  ],
+  "startAt": "2014-07-18T13:47:23.000+08:00",
+  "endAt": "2014-07-18T13:58:41.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[EWL Update]: Train service from City Hall to Outram Park towards Joo Koon is operating normally now.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/490012762043457538",
+      "createdAt": "2014-07-18T13:58:41.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "Due to a train fault near City Hall, please expect 15 mins additional traveling time from City Hall to Outram Park towards Joo Koon.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/490009919395868672",
+      "createdAt": "2014-07-18T13:47:23.000+08:00"
+    }
+  ]
+}

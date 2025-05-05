@@ -9,10 +9,14 @@
       "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
+        "BSH",
+        "MRM",
         "CDT",
         "BTN",
         "FRR",
-        "HLV"
+        "HLV",
+        "BNV",
+        "ONH"
       ]
     }
   ],

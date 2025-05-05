@@ -2,17 +2,42 @@
   "id": "2011-12-28-north-south-line-delay",
   "title": "East-bound service to Pasir Ris slightly delayed",
   "componentIdsAffected": [
-    "NSL"
+    "EWL"
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
+      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
-        "KRJ",
-        "MSL",
-        "WDL",
-        "ADM"
+        "JKN",
+        "PNR",
+        "BNL",
+        "LKS",
+        "CNG",
+        "JUR",
+        "CLE",
+        "DVR",
+        "BNV",
+        "COM",
+        "QUE",
+        "RDH",
+        "TIB",
+        "OTP",
+        "TPG",
+        "RFP",
+        "CTH",
+        "BGS",
+        "LVR",
+        "KAL",
+        "ALJ",
+        "PYL",
+        "EUN",
+        "KEM",
+        "BDK",
+        "TNM",
+        "SIM",
+        "TAM",
+        "PSR"
       ]
     }
   ],

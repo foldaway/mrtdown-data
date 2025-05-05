@@ -1,5 +1,5 @@
 {
-  "id": "2013-02-01-ewl-train-fault",
+  "id": "2013-02-15-ewl-train-fault",
   "title": "Train fault at East-West Line",
   "componentIdsAffected": [
     "EWL"
@@ -9,6 +9,14 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
+        "PSR",
+        "SIM",
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
         "KAL",
         "LVR",
         "BGS",

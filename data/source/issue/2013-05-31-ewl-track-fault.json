@@ -1,5 +1,5 @@
 {
-  "id": "2013-05-17-ewl-track-fault",
+  "id": "2013-05-31-ewl-track-fault",
   "title": "Track fault on East West Line",
   "componentIdsAffected": [
     "EWL"
@@ -9,6 +9,13 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
         "CLE",
         "JUR"
       ]

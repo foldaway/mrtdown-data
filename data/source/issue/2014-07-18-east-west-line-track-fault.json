@@ -23,18 +23,6 @@
   "updates": [
     {
       "type": "operator.update",
-      "text": "[EWL Update]: Train service from City Hall to Outram Park towards Joo Koon is operating normally now.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/490012762043457538",
-      "createdAt": "2014-07-18T13:58:41.000+08:00"
-    },
-    {
-      "type": "operator.update",
-      "text": "Due to a train fault near City Hall, please expect 15 mins additional traveling time from City Hall to Outram Park towards Joo Koon.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/490009919395868672",
-      "createdAt": "2014-07-18T13:47:23.000+08:00"
-    },
-    {
-      "type": "operator.update",
       "text": "[EWL] UPDATE: Free bus services at #Tampines have ceased.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/489814562066030592",
       "createdAt": "2014-07-18T00:51:06.000+08:00"

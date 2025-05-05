@@ -62,7 +62,13 @@
         "FRP",
         "BNK",
         "PTP",
-        "WLH"
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL"
       ]
     }
   ]

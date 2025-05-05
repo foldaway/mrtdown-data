@@ -9,9 +9,31 @@
       "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
-        "JUR",
+        "DBG",
+        "CTH",
+        "RFP",
+        "AMK",
+        "YCK",
+        "KTB",
+        "YIS",
+        "SBW",
+        "ADM",
+        "WDL",
+        "MSL",
+        "KRJ",
+        "YWT",
+        "CCK",
+        "BGB",
         "BBT",
-        "BGB"
+        "JUR",
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW",
+        "ORC",
+        "SOM",
+        "MRB"
       ]
     }
   ],

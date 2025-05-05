@@ -9,10 +9,23 @@
       "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
-        "KRJ",
-        "MSL",
-        "WDL",
-        "ADM"
+        "ADM",
+        "SBW",
+        "YIS",
+        "KTB",
+        "AMK"
+      ]
+    },
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK",
+        "YWT",
+        "KRJ"
       ]
     }
   ],

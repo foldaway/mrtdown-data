@@ -8,7 +8,8 @@
   "endAt": "2013-07-04T18:18:25.000+08:00",
   "type": "disruption",
   "subtypes": [
-    "delay"
+    "delay",
+    "signal.fault"
   ],
   "updates": [
     {
@@ -57,6 +58,15 @@
         "LBD",
         "TLB",
         "HBF"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN"
       ]
     }
   ]

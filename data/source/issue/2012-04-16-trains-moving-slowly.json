@@ -29,9 +29,35 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
-        "BNL",
+        "JKN",
         "PNR",
-        "JKN"
+        "BNL",
+        "LKS",
+        "CNG",
+        "JUR",
+        "CLE",
+        "DVR",
+        "BNV",
+        "COM",
+        "QUE",
+        "RDH",
+        "TIB",
+        "OTP",
+        "TPG",
+        "RFP",
+        "CTH",
+        "BGS",
+        "LVR",
+        "KAL",
+        "ALJ",
+        "PYL",
+        "EUN",
+        "KEM",
+        "BDK",
+        "TNM",
+        "SIM",
+        "TAM",
+        "PSR"
       ]
     }
   ]

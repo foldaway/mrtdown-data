@@ -9,21 +9,6 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
-        "PSR",
-        "TAM",
-        "SIM",
-        "TNM",
-        "BDK",
-        "KEM",
-        "EUN",
-        "PYL",
-        "ALJ",
-        "KAL",
-        "LVR",
-        "BGS",
-        "CTH",
-        "RFP",
-        "TPG",
         "OTP",
         "TIB"
       ]

@@ -10,7 +10,10 @@
       "branchName": "main",
       "stationIds": [
         "CCK",
-        "YWT"
+        "YWT",
+        "BGB",
+        "BBT",
+        "JUR"
       ]
     }
   ],

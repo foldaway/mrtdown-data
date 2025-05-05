@@ -33,6 +33,8 @@
       "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
+        "MRB",
+        "NFT",
         "DBG",
         "BBS",
         "EPN",

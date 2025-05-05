@@ -23,7 +23,10 @@
         "NEW",
         "ORC",
         "SOM",
-        "DBG"
+        "DBG",
+        "CTH",
+        "RFP",
+        "MRB"
       ]
     }
   ],
