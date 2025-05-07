@@ -12,38 +12,17 @@
         "WDL",
         "ADM",
         "SBW",
-        "YIS",
-        "KTB",
-        "YCK",
-        "AMK"
+        "YIS"
       ]
     }
   ],
   "startAt": "2016-08-02T08:58:15.000+08:00",
-  "endAt": "2016-08-02T09:29:19.000+08:00",
+  "endAt": "2016-08-02T10:35:02.000+08:00",
   "type": "disruption",
   "subtypes": [
     "track.fault"
   ],
   "updates": [
-    {
-      "type": "operator.resolved",
-      "text": "[NSL] CLEARED: Train service from #AngMoKio to #Admiralty on the NSL is running normally now.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/760351389671264256",
-      "createdAt": "2016-08-02T13:47:52.000+08:00"
-    },
-    {
-      "type": "operator.update",
-      "text": "[NSL] UPDATE: Our engineers are attending to a track fault.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/760345972803182592",
-      "createdAt": "2016-08-02T13:26:21.000+08:00"
-    },
-    {
-      "type": "operator.update",
-      "text": "[NSL]: Estimate 15mins additional travelling time from #AngMoKio to #Admiralty towards #JurongEast.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/760345762010009601",
-      "createdAt": "2016-08-02T13:25:30.000+08:00"
-    },
     {
       "type": "operator.resolved",
       "text": "[NSL] CLEARED: Train service between #Yishun and #Woodlands on the NSL is running normally now.",

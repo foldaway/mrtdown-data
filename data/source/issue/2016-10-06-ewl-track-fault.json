@@ -10,7 +10,15 @@
       "branchName": "main",
       "stationIds": [
         "EUN",
-        "PYL"
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP"
       ]
     }
   ],

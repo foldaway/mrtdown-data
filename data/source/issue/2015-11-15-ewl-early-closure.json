@@ -1,0 +1,43 @@
+{
+  "id": "2015-11-15-ewl-early-closure",
+  "title": "Early closure on the East West Line",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS"
+      ]
+    }
+  ],
+  "startAt": "2015-11-15T00:00:00.000+08:00",
+  "endAt": "2015-12-31T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Early closure between Bugis and Tanah Merah stations will be lifted from 31 Dec 2015. https://t.co/OYZnAiSiZ3",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/682169362095050752",
+      "createdAt": "2015-12-30T20:00:24.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Early closure between Bugis and Tanah Merah along EWL from 15 Nov. Check our website for more details.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/663564235662688256",
+      "createdAt": "2015-11-09T11:50:16.000+08:00"
+    }
+  ]
+}

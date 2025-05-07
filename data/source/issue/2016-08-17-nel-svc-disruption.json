@@ -1,6 +1,6 @@
 {
-  "id": "2016-08-17-nel-svc-disruption-bet-buangkok-punggol",
-  "title": "No North East Line service between Buangkok and Punggol stations",
+  "id": "2016-08-17-nel-svc-disruption",
+  "title": "No North East Line service between Woodleigh and Punggol stations",
   "componentIdsAffected": [
     "NEL"
   ],
@@ -9,6 +9,10 @@
       "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
+        "WDL",
+        "SER",
+        "KVN",
+        "HGN",
         "BGK",
         "SKG",
         "PGL"

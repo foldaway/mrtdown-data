@@ -1,5 +1,5 @@
 {
-  "id": "2016-02-05-early-closure-east-west-line",
+  "id": "2016-02-14-early-closure-east-west-line",
   "title": "Early closure on the East West Line",
   "componentIdsAffected": [
     "EWL"
@@ -23,7 +23,7 @@
     }
   ],
   "startAt": "2016-02-14T00:00:00.000+08:00",
-  "endAt": "2016-02-14T12:01:11.000+08:00",
+  "endAt": "2016-09-01T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [],
@@ -33,6 +33,12 @@
       "text": "Half hour early closure btw Tanah Merah to Pasir Ris and Joo Koon to Jurong East stations along the EWL starts tmr: https://t.co/aHmfCtZ10X",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/698414356850081792",
       "createdAt": "2016-02-13T15:52:13.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Phase 2 of early closure along the East-West Line will be carried out starting tomorrow, 14 February 2016, till end August 2016.During this period, train services between Tanah Merah and Pasir Ris stations and between Joo Koon and Jurong East stations, will end up to half an hour earlier from Sundays to Thursdays, except on the eve of Public Holidays.For more information, please refer to the sleeper replacement schedule here: http://www.smrt.com.sg/.../Serv.../Current-Upcoming-Projects",
+      "sourceUrl": "https://www.facebook.com/SMRTCorpSG/posts/phase-2-of-early-closure-along-the-east-west-line-will-be-carried-out-starting-t/1062727767081785/",
+      "createdAt": "2016-02-13T15:30:00.000+08:00"
     },
     {
       "type": "planned",

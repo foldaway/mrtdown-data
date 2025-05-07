@@ -1,0 +1,67 @@
+{
+  "id": "2016-09-28-bplrt-no-train-service-2",
+  "title": "No train service on Bukit Panjang LRT",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ",
+        "TMJ"
+      ]
+    }
+  ],
+  "startAt": "2016-09-28T05:33:00.000+08:00",
+  "endAt": "2016-09-28T09:52:26.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "power.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[BPLRT Update] Free regular bus &amp; free bridging bus services have ceased. BPLRT Service is available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/780948246885638146",
+      "createdAt": "2016-09-28T09:52:26.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT Update] Degraded Service. Expect Longer Travelling Time. Free regular bus &amp; free bridging bus services are still available",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/780903410308517888",
+      "createdAt": "2016-09-28T06:54:16.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT Update] Service has commenced following a power fault. Free regular bus &amp; free bridging bus services are still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/780899939048001536",
+      "createdAt": "2016-09-28T06:40:28.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT Update] No train service due to power fault. Free regular bus &amp; free bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/780895435225346048",
+      "createdAt": "2016-09-28T06:22:34.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] No train service due to power fault. Expected 30mins delay.Free regular bus &amp; free bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/780882960111181824",
+      "createdAt": "2016-09-28T05:33:00.000+08:00"
+    }
+  ]
+}

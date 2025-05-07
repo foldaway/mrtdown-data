@@ -1,22 +1,8 @@
 {
-  "id": "2016-11-04-ccl-train-delays",
-  "title": "Intermittent signal interference causing delays on Circle Line",
+  "id": "2016-11-03-ccl-no-mobile-signals",
+  "title": "Temporary Suspension of Telco signals on Circle Line",
   "componentIdsAffected": [
     "CCL"
-  ],
-  "startAt": "2016-11-04T06:43:28.000+08:00",
-  "endAt": "2016-11-05T00:00:00.000+08:00",
-  "type": "disruption",
-  "subtypes": [
-    "delay"
-  ],
-  "updates": [
-    {
-      "type": "operator.update",
-      "text": "Due to intermittent signal interference, CCL trains may experience delays. For safety, CCL trains are manned this morning. We are sorry.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/794309046379520000",
-      "createdAt": "2016-11-04T06:43:28.000+08:00"
-    }
   ],
   "stationIdsAffected": [
     {
@@ -85,6 +71,24 @@
         "TLB",
         "HBF"
       ]
+    }
+  ],
+  "startAt": "2016-11-03T20:58:18.000+08:00",
+  "endAt": "2016-11-03T22:30:05.000+08:00",
+  "type": "maintenance",
+  "subtypes": [],
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[CCL] UPDATE: Tests have been completed. Telco signals will progressively resume along Circle Line.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/794184881790021632",
+      "createdAt": "2016-11-03T22:30:05.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[CCL] Due to ongoing tests, commuters travelling along the CCL will experience temporary suspension of Telco signals.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/794161781933383680",
+      "createdAt": "2016-11-03T20:58:18.000+08:00"
     }
   ]
 }

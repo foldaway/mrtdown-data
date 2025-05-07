@@ -1,6 +1,6 @@
 {
   "id": "2016-12-23-ewl-track-fault",
-  "title": "Major disruption on East West Line due to track fault",
+  "title": "Disruption on East West Line due to track fault",
   "componentIdsAffected": [
     "EWL"
   ],
@@ -50,29 +50,7 @@
         "TNM",
         "BDK",
         "KEM",
-        "EUN",
-        "PYL",
-        "ALJ",
-        "KAL",
-        "LVR",
-        "BGS",
-        "CTH",
-        "RFP",
-        "TPG",
-        "OTP",
-        "TIB",
-        "RDH",
-        "QUE",
-        "COM",
-        "BNV",
-        "DVR",
-        "CLE",
-        "JUR",
-        "CNG",
-        "LKS",
-        "BNL",
-        "PNR",
-        "JKN"
+        "EUN"
       ]
     }
   ]

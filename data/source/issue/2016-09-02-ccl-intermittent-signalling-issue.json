@@ -9,10 +9,67 @@
       "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
         "KRG",
         "HPV",
         "PPJ",
-        "LBD"
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
       ]
     }
   ],
@@ -20,7 +77,8 @@
   "endAt": "2016-09-03T18:14:24.000+08:00",
   "type": "disruption",
   "subtypes": [
-    "signal.fault"
+    "signal.fault",
+    "delay"
   ],
   "updates": [
     {
@@ -28,12 +86,6 @@
       "text": "[CCL] UPDATE: SMRT and LTA continue investigations on the CCL signalling issue. Read here for more details: https://t.co/CJcFODUfaL",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/772014875614715904",
       "createdAt": "2016-09-03T18:14:24.000+08:00"
-    },
-    {
-      "type": "operator.update",
-      "text": "[CCL] Due to ongoing tests,there will be no mobile signals at 4 stns: Kent Ridge, Haw Par Villa, Pasir Panjang &amp; Labrador Pk from 7 to 9pm.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/771660685608521729",
-      "createdAt": "2016-09-02T18:46:58.000+08:00"
     },
     {
       "type": "operator.update",

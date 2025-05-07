@@ -1,0 +1,47 @@
+{
+  "id": "2016-12-06-ewl-track-fault",
+  "title": "No train service between City Hall & Jurong East due to track fault",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR"
+      ]
+    }
+  ],
+  "startAt": "2016-12-06T20:03:43.000+08:00",
+  "endAt": "2016-12-06T20:18:27.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[EWL]UPDATE:Fault cleared, trains are progressively returning to normal speed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/806110555014447104",
+      "createdAt": "2016-12-06T20:18:27.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a track fault near JurongEast, pls add 10 mins travel time from #CityHall to #JurongEast. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/806106844556967936",
+      "createdAt": "2016-12-06T20:03:43.000+08:00"
+    }
+  ]
+}

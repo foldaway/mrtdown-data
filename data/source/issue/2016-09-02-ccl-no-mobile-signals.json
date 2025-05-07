@@ -1,0 +1,31 @@
+{
+  "id": "2016-09-02-ccl-no-mobile-signals",
+  "title": "No mobile signals at certain stations on the Circle Line",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2016-09-02T19:00:00.000+08:00",
+  "endAt": "2016-09-02T21:00:00.000+08:00",
+  "type": "maintenance",
+  "subtypes": [],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[CCL] Due to ongoing tests,there will be no mobile signals at 4 stns: Kent Ridge, Haw Par Villa, Pasir Panjang &amp; Labrador Pk from 7 to 9pm.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/771660685608521729",
+      "createdAt": "2016-09-02T18:46:58.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD"
+      ]
+    }
+  ]
+}

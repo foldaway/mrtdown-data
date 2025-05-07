@@ -5,10 +5,11 @@
     "CCL"
   ],
   "startAt": "2016-09-01T06:25:34.000+08:00",
-  "endAt": "2016-09-01T14:59:40.000+08:00",
+  "endAt": "2016-09-02T00:00:00.000+08:00",
   "type": "disruption",
   "subtypes": [
-    "signal.fault"
+    "signal.fault",
+    "delay"
   ],
   "updates": [
     {
@@ -44,6 +45,39 @@
         "DBG",
         "BBS",
         "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
         "PMN",
         "NCH",
         "SDM",

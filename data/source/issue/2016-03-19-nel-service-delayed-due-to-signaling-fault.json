@@ -13,7 +13,18 @@
         "OTP",
         "CTN",
         "CRQ",
-        "DBG"
+        "DBG",
+        "LTI",
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL"
       ]
     }
   ],

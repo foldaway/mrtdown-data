@@ -18,7 +18,7 @@
       "createdAt": "2016-07-26T06:01:12.000+08:00"
     },
     {
-      "type": "oeprator.update",
+      "type": "operator.update",
       "text": "[EWL]Due to sleeper replacement work, train service between TanahMerah &amp; PasirRis and TanahMerah &amp; ChangiAirport will be delayed for 30mins.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/757687584784908289",
       "createdAt": "2016-07-26T05:22:52.000+08:00"
@@ -42,19 +42,6 @@
         "TNM",
         "XPO",
         "CGA"
-      ]
-    },
-    {
-      "componentId": "EWL",
-      "branchName": "main",
-      "stationIds": [
-        "KEM",
-        "EUN",
-        "PYL",
-        "ALJ",
-        "KAL",
-        "LVR",
-        "BGS"
       ]
     }
   ]

@@ -9,30 +9,77 @@
       "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
         "DKT",
-        "PYL"
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
       ]
     }
   ],
   "startAt": "2016-11-03T18:07:16.000+08:00",
-  "endAt": "2016-11-03T22:30:05.000+08:00",
+  "endAt": "2016-11-04T00:00:00.000+08:00",
   "type": "disruption",
   "subtypes": [
     "delay"
   ],
   "updates": [
-    {
-      "type": "operator.monitoring",
-      "text": "[CCL] UPDATE: Tests have been completed. Telco signals will progressively resume along Circle Line.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/794184881790021632",
-      "createdAt": "2016-11-03T22:30:05.000+08:00"
-    },
-    {
-      "type": "operator.update",
-      "text": "[CCL] Due to ongoing tests, commuters travelling along the CCL will experience temporary suspension of Telco signals.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/794161781933383680",
-      "createdAt": "2016-11-03T20:58:18.000+08:00"
-    },
     {
       "type": "operator.update",
       "text": "Due to intermittent signal interference, CCL trains may experience delays. For safety, CCL trains are manned this evening. We are sorry.",

@@ -9,6 +9,13 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
         "LVR",
         "BGS"
       ]

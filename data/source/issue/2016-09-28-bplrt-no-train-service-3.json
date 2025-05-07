@@ -1,0 +1,77 @@
+{
+  "id": "2016-09-28-bplrt-no-train-service-3",
+  "title": "No train service between Choa Chu Kang and Bukit Panjang",
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
+        "BKP"
+      ]
+    }
+  ],
+  "startAt": "2016-09-28T10:56:58.000+08:00",
+  "endAt": "2016-09-28T18:17:15.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "power.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] Svc B has fully resumed. BPLRT service will be free until end of revenue svc today. Free bus and bus bridging svcs are still avail.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/781075289254170624",
+      "createdAt": "2016-09-28T18:17:15.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[BPLRT]Svc is temporarily suspended. Free bus &amp; bus bridging svcs are avail. Alt travel options:https://t.co/VOMv4hcjBI",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/781062308923449344",
+      "createdAt": "2016-09-28T17:25:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT]: We intend to fully resume Svc B after engineers have thoroughly checked the tracks. More info: https://t.co/6c5EjDvCxj",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/781051625636962304",
+      "createdAt": "2016-09-28T16:43:13.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT]Svcs on the inner loop (anticlockwise dir) from #BukitPanjang towards #Senja has resumed. Free bus &amp; shuttle services are still avail https://t.co/HkcBJFOy4y",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/781034912828784640",
+      "createdAt": "2016-09-28T15:36:48.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[BPLRT] Svcs on the inner loop (anticlockwise dir) from #BukitPanjang towards #Senja has resumed. Free bus and shuttle services are avail. https://t.co/ajGaGv7Iim",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/781009020316450816",
+      "createdAt": "2016-09-28T13:53:55.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] BPLRT train svcs will be suspended temporarily for engineers to conduct inspection. Free regular bus &amp; bridging bus svcs are avail.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/780984606254305280",
+      "createdAt": "2016-09-28T12:16:54.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] No train service btwn #ChoaChuKang and #BukitPanjang in\nboth directions. Free regular bus &amp; bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/780971631778811904",
+      "createdAt": "2016-09-28T11:25:21.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[BPLRT] No train service between #ChoaChuKang and #BukitPanjang in\nboth directions. Free regular bus &amp; bridging bus services are available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/780964489684406272",
+      "createdAt": "2016-09-28T10:56:58.000+08:00"
+    }
+  ]
+}

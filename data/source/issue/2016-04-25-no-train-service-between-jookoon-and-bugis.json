@@ -1,7 +1,10 @@
 {
   "id": "2016-04-25-no-train-service-between-jookoon-and-bugis",
   "title": "Service Disruption: No train service between Joo Koon and Bugis, Woodlands and Jurong East",
-  "componentIdsAffected": [],
+  "componentIdsAffected": [
+    "NSL",
+    "EWL"
+  ],
   "startAt": "2016-04-25T20:11:58.000+08:00",
   "endAt": "2016-04-25T20:34:18.000+08:00",
   "type": "disruption",

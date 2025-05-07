@@ -9,6 +9,15 @@
       "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
         "ONH",
         "KRG",
         "HPV",
@@ -17,7 +26,7 @@
     }
   ],
   "startAt": "2016-11-02T07:37:27.000+08:00",
-  "endAt": "2016-11-02T07:39:40.000+08:00",
+  "endAt": "2016-11-02T10:27:44.000+08:00",
   "type": "disruption",
   "subtypes": [
     "signal.fault"

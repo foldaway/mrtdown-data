@@ -1,0 +1,64 @@
+{
+  "id": "2016-03-24-nel-train-fault",
+  "title": "NEL service delayed due to train fault",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2016-03-24T19:16:38.000+08:00",
+  "endAt": "2016-03-24T20:04:40.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "train.fault",
+    "delay"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "24/03, 8.04pm: NEL full service has resumed. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/712973403628515328",
+      "createdAt": "2016-03-24T20:04:40.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "NEL train service has resumed. However pls expect a delay of about 10 mins to travel time. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/712971032676536320",
+      "createdAt": "2016-03-24T19:55:15.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "24/03, 7.34pm: NEL train service has resumed. However pls expect a delay of about 10 mins to travel time.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/712966244685578240",
+      "createdAt": "2016-03-24T19:36:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "24/03, 7.15pm: NEL svc is delayed due to a train fault at Kovan stn NE13 twds Punggol. Additional travelling time of 15 mins is expected.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/712961315925401600",
+      "createdAt": "2016-03-24T19:16:38.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "HBF",
+        "OTP",
+        "CTN",
+        "CRQ",
+        "DBG",
+        "LTI",
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL"
+      ]
+    }
+  ]
+}
