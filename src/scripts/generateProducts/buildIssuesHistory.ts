@@ -43,7 +43,7 @@ export function buildIssuesHistory() {
   const pagesMap: Record<QuarterIsoDate, Record<SectionIsoDate, Issue[]>> = {};
 
   for (const issue of issues) {
-    const startAt = DateTime.fromISO(issue.startAt);
+    const startAt = DateTime.fromISO(issue.startAt).setZone('Asia/Singapore');
     const quarter = startAt.startOf('quarter').toISODate();
     assert(quarter != null);
     const month = startAt.startOf('month').toISODate();
@@ -65,6 +65,7 @@ export function buildIssuesHistory() {
     );
     content.fileNames.push(chunkFileName);
     const quarterEndAt = DateTime.fromISO(quarterIsoDate)
+      .setZone('Asia/Singapore')
       .endOf('quarter')
       .toISODate();
     assert(quarterEndAt != null);
@@ -75,10 +76,12 @@ export function buildIssuesHistory() {
       sectionMap,
     ).reverse()) {
       const sectionStartAt = DateTime.fromISO(sectionIsoDate)
+        .setZone('Asia/Singapore')
         .startOf('month')
         .toISO();
       assert(sectionStartAt != null);
       const sectionEndAt = DateTime.fromISO(sectionIsoDate)
+        .setZone('Asia/Singapore')
         .endOf('month')
         .toISO();
       assert(sectionEndAt != null);
