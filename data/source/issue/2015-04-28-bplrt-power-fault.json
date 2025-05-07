@@ -9,10 +9,20 @@
       "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
+        "BKP",
+        "PTR",
         "PND",
         "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ",
+        "BKP",
         "PNX",
-        "BKP"
+        "TKW",
+        "KTH",
+        "CCK",
+        "TMJ"
       ]
     }
   ],

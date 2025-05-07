@@ -40,17 +40,51 @@
         "CGL",
         "FMW",
         "KPG",
-        "TNG"
+        "TNG",
+        "FNV",
+        "LYR",
+        "TKG",
+        "RNJ"
+      ]
+    },
+    {
+      "componentId": "SKLRT",
+      "branchName": "east",
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK",
+        "RNG"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "west",
+      "stationIds": [
+        "SMK",
+        "TKL",
+        "PGP",
+        "SMD",
+        "NBG",
+        "SMG",
+        "STK",
+        "PGL"
       ]
     },
     {
       "componentId": "PGLRT",
       "branchName": "east",
       "stationIds": [
-        "PGL",
-        "NBG",
-        "SMG",
-        "STK"
+        "DAM",
+        "OAS",
+        "KDL",
+        "RIV",
+        "CRE",
+        "MRD",
+        "COV",
+        "PGL"
       ]
     }
   ]

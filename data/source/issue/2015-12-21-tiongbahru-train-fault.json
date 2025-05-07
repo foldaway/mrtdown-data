@@ -47,6 +47,11 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
         "TIB",
         "RDH",
         "QUE",
@@ -54,12 +59,7 @@
         "BNV",
         "DVR",
         "CLE",
-        "JUR",
-        "CNG",
-        "LKS",
-        "BNL",
-        "PNR",
-        "JKN"
+        "JUR"
       ]
     }
   ]

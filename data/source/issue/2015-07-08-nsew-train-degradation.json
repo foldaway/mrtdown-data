@@ -91,6 +91,15 @@
         "PNR",
         "JKN"
       ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "changi_airport",
+      "stationIds": [
+        "TNM",
+        "XPO",
+        "CGA"
+      ]
     }
   ]
 }

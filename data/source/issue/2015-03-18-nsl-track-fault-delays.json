@@ -9,6 +9,7 @@
       "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
+        "CCK",
         "YWT",
         "KRJ"
       ]

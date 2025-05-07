@@ -66,6 +66,7 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
+        "TPG",
         "QUE",
         "COM",
         "BNV",

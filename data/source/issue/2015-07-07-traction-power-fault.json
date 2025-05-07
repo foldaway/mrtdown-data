@@ -157,6 +157,46 @@
         "PNR",
         "JKN"
       ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "changi_airport",
+      "stationIds": [
+        "TNM",
+        "XPO",
+        "CGA"
+      ]
+    },
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "MRB",
+        "RFP",
+        "CTH",
+        "DBG",
+        "SOM",
+        "ORC",
+        "NEW",
+        "NOV",
+        "TAP",
+        "BDL",
+        "BSH",
+        "AMK",
+        "YCK",
+        "KTB",
+        "YIS",
+        "SBW",
+        "ADM",
+        "WDL",
+        "MSL",
+        "KRJ",
+        "YWT",
+        "CCK",
+        "BGB",
+        "BBT",
+        "JUR"
+      ]
     }
   ]
 }

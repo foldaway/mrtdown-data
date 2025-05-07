@@ -13,7 +13,23 @@
         "CGL",
         "FMW",
         "KPG",
-        "TNG"
+        "TNG",
+        "FNV",
+        "LYR",
+        "TKG",
+        "RNJ"
+      ]
+    },
+    {
+      "componentId": "SKLRT",
+      "branchName": "east",
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK",
+        "RNG"
       ]
     }
   ],

@@ -12,8 +12,7 @@
         "YIS",
         "KTB",
         "YCK",
-        "AMK",
-        "BSH"
+        "AMK"
       ]
     }
   ],
@@ -24,24 +23,6 @@
     "track.fault"
   ],
   "updates": [
-    {
-      "type": "operator.resolved",
-      "text": "[NSL] CLEARED: Train services from #MarinaBay towards #AngMoKio are now operating normally.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/631803678572216320",
-      "createdAt": "2015-08-13T20:25:09.000+08:00"
-    },
-    {
-      "type": "operator.monitoring",
-      "text": "[NSL]: Estimate 15 mins additional travelling time from #MarinaBay to #AngMoKio towards JurongEast due to track fault near Bishan station.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/631782338830036992",
-      "createdAt": "2015-08-13T19:00:22.000+08:00"
-    },
-    {
-      "type": "operator.update",
-      "text": "[NSL]: Estimate 10 mins additional travelling time from #MarinaBay to #AngMoKio towards JurongEast due to track fault near Bishan.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/631775252700250112",
-      "createdAt": "2015-08-13T18:32:12.000+08:00"
-    },
     {
       "type": "operator.resolved",
       "text": "[NSL] CLEARED: Train services between #AngMoKio and #Yishun are now operating normally.",
