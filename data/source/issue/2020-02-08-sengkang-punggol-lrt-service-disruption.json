@@ -34,6 +34,18 @@
   "stationIdsAffected": [
     {
       "componentId": "SKLRT",
+      "branchName": "east",
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK",
+        "RNG"
+      ]
+    },
+    {
+      "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
         "SKG",
@@ -43,7 +55,8 @@
         "TNG",
         "FNV",
         "LYR",
-        "TKG"
+        "TKG",
+        "RNJ"
       ]
     },
     {
@@ -52,7 +65,25 @@
       "stationIds": [
         "PGL",
         "SMK",
-        "PGP"
+        "PGP",
+        "SMD",
+        "NBG",
+        "SMG",
+        "STK"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "west",
+      "stationIds": [
+        "PGL",
+        "COV",
+        "MRD",
+        "CRE",
+        "RIV",
+        "KDL",
+        "OAS",
+        "DAM"
       ]
     }
   ]

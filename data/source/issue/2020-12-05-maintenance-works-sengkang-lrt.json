@@ -1,5 +1,5 @@
 {
-  "id": "2020-12-03-maintenance-works-sengkang-lrt",
+  "id": "2020-12-05-maintenance-works-sengkang-lrt",
   "title": "Maintenance works on the Sengkang LRT this weekend",
   "componentIdsAffected": [
     "SKLRT"
@@ -24,13 +24,27 @@
       "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
+        "SKG",
         "CGL",
         "FMW",
         "KPG",
         "TNG",
         "FNV",
         "LYR",
-        "TKG"
+        "TKG",
+        "RNJ"
+      ]
+    },
+    {
+      "componentId": "SKLRT",
+      "branchName": "east",
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK",
+        "RNG"
       ]
     }
   ]
