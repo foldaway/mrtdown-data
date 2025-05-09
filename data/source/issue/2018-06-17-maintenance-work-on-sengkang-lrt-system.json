@@ -1,5 +1,5 @@
 {
-  "id": "2018-06-11-maintenance-work-on-sengkang-lrt-system",
+  "id": "2018-06-17-maintenance-work-on-sengkang-lrt-system",
   "title": "Maintenance work on Sengkang LRT system",
   "componentIdsAffected": [
     "SKLRT"
@@ -31,7 +31,8 @@
         "TNG",
         "FNV",
         "LYR",
-        "TKG"
+        "TKG",
+        "RNJ"
       ]
     },
     {

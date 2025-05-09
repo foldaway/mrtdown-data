@@ -1,5 +1,5 @@
 {
-  "id": "2018-06-25-sengkang-lrt-maintenance",
+  "id": "2018-07-01-sengkang-lrt-maintenance",
   "title": "Maintenance work on Sengkang LRT system",
   "componentIdsAffected": [
     "SKLRT"
@@ -22,6 +22,18 @@
   "stationIdsAffected": [
     {
       "componentId": "SKLRT",
+      "branchName": "east",
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK",
+        "RNG"
+      ]
+    },
+    {
+      "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
         "SKG",
@@ -31,7 +43,8 @@
         "TNG",
         "FNV",
         "LYR",
-        "TKG"
+        "TKG",
+        "RNJ"
       ]
     }
   ]

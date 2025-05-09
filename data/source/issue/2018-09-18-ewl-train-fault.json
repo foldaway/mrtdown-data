@@ -60,8 +60,15 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
         "CLE",
-        "JUR"
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL"
       ]
     }
   ]

@@ -5,7 +5,7 @@
     "SKLRT"
   ],
   "startAt": "2018-02-04T00:00:00.000+08:00",
-  "endAt": "2018-02-05T00:00:00.000+08:00",
+  "endAt": "2018-02-04T07:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
@@ -43,7 +43,8 @@
         "TNG",
         "FNV",
         "LYR",
-        "TKG"
+        "TKG",
+        "RNJ"
       ]
     }
   ]

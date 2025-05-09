@@ -2,8 +2,7 @@
   "id": "2018-07-08-punggol-lrt-maintenance",
   "title": "Maintenance work on Punggol LRT system",
   "componentIdsAffected": [
-    "PGLRT",
-    "NEL"
+    "PGLRT"
   ],
   "startAt": "2018-07-08T00:00:00.000+08:00",
   "endAt": "2018-07-08T17:30:00.000+08:00",
@@ -46,28 +45,6 @@
         "KDL",
         "OAS",
         "DAM"
-      ]
-    },
-    {
-      "componentId": "NEL",
-      "branchName": "main",
-      "stationIds": [
-        "HBF",
-        "OTP",
-        "CTN",
-        "CRQ",
-        "DBG",
-        "LTI",
-        "FRP",
-        "BNK",
-        "PTP",
-        "WLH",
-        "SER",
-        "KVN",
-        "HGN",
-        "BGK",
-        "SKG",
-        "PGL"
       ]
     }
   ]

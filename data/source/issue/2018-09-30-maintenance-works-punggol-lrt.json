@@ -22,6 +22,19 @@
   "stationIdsAffected": [
     {
       "componentId": "PGLRT",
+      "branchName": "east",
+      "stationIds": [
+        "PGL",
+        "SMK",
+        "PGP",
+        "SMD",
+        "NBG",
+        "SMG",
+        "STK"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
       "branchName": "west",
       "stationIds": [
         "PGL",

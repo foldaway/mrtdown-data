@@ -1,11 +1,11 @@
 {
-  "id": "2018-01-23-punggol-lrt-maintenance",
+  "id": "2018-01-28-punggol-lrt-maintenance",
   "title": "Punggol LRT maintenance works scheduled",
   "componentIdsAffected": [
     "PGLRT"
   ],
   "startAt": "2018-01-28T00:00:00.000+08:00",
-  "endAt": "2018-01-29T00:00:00.000+08:00",
+  "endAt": "2018-01-29T07:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
