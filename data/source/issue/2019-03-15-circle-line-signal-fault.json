@@ -54,6 +54,17 @@
         "NCH",
         "SDM"
       ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN",
+        "NCH",
+        "SDM"
+      ]
     }
   ]
 }

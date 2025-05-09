@@ -47,6 +47,15 @@
         "EPN",
         "PMN"
       ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN"
+      ]
     }
   ]
 }

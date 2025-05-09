@@ -2,10 +2,9 @@
   "id": "2019-02-21-nel-maintenance",
   "title": "Upgraded Maintenance on North East Line (NEL)",
   "componentIdsAffected": [
-    "NEL",
-    "SKLRT"
+    "NEL"
   ],
-  "startAt": "2019-02-21T09:00:30.000+08:00",
+  "startAt": "2019-02-22T23:00:30.000+08:00",
   "endAt": "2019-02-24T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
@@ -50,16 +49,6 @@
       "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
-        "HBF",
-        "OTP",
-        "CTN",
-        "CRQ",
-        "DBG",
-        "LTI",
-        "FRP",
-        "BNK",
-        "PTP",
-        "WLH",
         "SER",
         "KVN",
         "HGN",

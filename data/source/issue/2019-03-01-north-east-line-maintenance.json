@@ -2,10 +2,9 @@
   "id": "2019-03-01-north-east-line-maintenance",
   "title": "North East Line Maintenance Works",
   "componentIdsAffected": [
-    "NEL",
-    "SKLRT"
+    "NEL"
   ],
-  "startAt": "2019-03-01T00:00:00.000+08:00",
+  "startAt": "2019-03-01T23:00:00.000+08:00",
   "endAt": "2019-03-03T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,

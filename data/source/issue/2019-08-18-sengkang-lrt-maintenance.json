@@ -1,11 +1,11 @@
 {
-  "id": "2019-08-14-sengkang-lrt-maintenance",
+  "id": "2019-08-18-sengkang-lrt-maintenance",
   "title": "Sengkang LRT maintenance works planned",
   "componentIdsAffected": [
     "SKLRT"
   ],
   "startAt": "2019-08-18T00:00:00.000+08:00",
-  "endAt": "2019-08-19T00:00:00.000+08:00",
+  "endAt": "2019-08-18T17:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
@@ -43,7 +43,8 @@
         "TNG",
         "FNV",
         "LYR",
-        "TKG"
+        "TKG",
+        "RNJ"
       ]
     }
   ]

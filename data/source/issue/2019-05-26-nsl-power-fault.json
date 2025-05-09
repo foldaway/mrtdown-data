@@ -65,6 +65,7 @@
       "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
+        "NEW",
         "ORC",
         "SOM",
         "DBG",
