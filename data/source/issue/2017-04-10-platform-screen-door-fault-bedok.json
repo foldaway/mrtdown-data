@@ -10,7 +10,14 @@
       "branchName": "main",
       "stationIds": [
         "TNM",
-        "BDK"
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS"
       ]
     }
   ],

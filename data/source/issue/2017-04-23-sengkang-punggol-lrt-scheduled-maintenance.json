@@ -1,5 +1,5 @@
 {
-  "id": "2017-04-13-sengkang-punggol-lrt-scheduled-maintenance",
+  "id": "2017-04-23-sengkang-punggol-lrt-scheduled-maintenance",
   "title": "Scheduled Maintenance Works on Sengkang-Punggol LRT",
   "componentIdsAffected": [
     "SKLRT",
@@ -32,7 +32,8 @@
         "TNG",
         "FNV",
         "LYR",
-        "TKG"
+        "TKG",
+        "RNJ"
       ]
     },
     {

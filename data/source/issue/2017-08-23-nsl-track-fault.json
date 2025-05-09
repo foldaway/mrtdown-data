@@ -12,18 +12,6 @@
   ],
   "updates": [
     {
-      "type": "planned",
-      "text": "[NSL] UPDATE: Pls expect slightly longer train travel time between #YewTee and #JurongEast on the NSL this evening.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/900286506958323712",
-      "createdAt": "2017-08-23T17:20:04.000+08:00"
-    },
-    {
-      "type": "operator.update",
-      "text": "[NSL]: Due to a track point fault near #JurongEast, only one stn platform is operational for NSL train svc to #JurongEast this evening.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/900283832405860352",
-      "createdAt": "2017-08-23T17:09:26.000+08:00"
-    },
-    {
       "type": "operator.update",
       "text": "[NSL] CLEARED: Train svc from #Yewtee to #JurongEast is running normally now.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/900159020454912000",

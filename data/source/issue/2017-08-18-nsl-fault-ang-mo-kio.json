@@ -5,24 +5,12 @@
     "NSL"
   ],
   "startAt": "2017-08-18T06:29:03.000+08:00",
-  "endAt": "2017-08-18T23:59:59.000+08:00",
+  "endAt": "2017-08-18T09:22:24.000+08:00",
   "type": "disruption",
   "subtypes": [
     "signal.fault"
   ],
   "updates": [
-    {
-      "type": "planned",
-      "text": "[NSL]: Our engineers are working hard to continue their checks and investigations. Our staff is ready to assist.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/898469895595151360",
-      "createdAt": "2017-08-18T17:01:30.000+08:00"
-    },
-    {
-      "type": "operator.update",
-      "text": "[NSL]: If you intend to travel on the North-South Line later, pls plan ahead. You may experience longer train travel time.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/898469803765121025",
-      "createdAt": "2017-08-18T17:01:08.000+08:00"
-    },
     {
       "type": "operator.update",
       "text": "[NSL] CLEARED: Train svcs btwn #MarinaSouthPier and #Sembawang have resumed. Free regular bus &amp; free bridging bus svcs have ended.",

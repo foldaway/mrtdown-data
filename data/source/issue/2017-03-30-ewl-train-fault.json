@@ -5,18 +5,12 @@
     "EWL"
   ],
   "startAt": "2017-03-30T17:57:46.000+08:00",
-  "endAt": "2017-03-30T23:59:59.000+08:00",
+  "endAt": "2017-03-30T19:15:52.000+08:00",
   "type": "disruption",
   "subtypes": [
     "train.fault"
   ],
   "updates": [
-    {
-      "type": "planned",
-      "text": "NSL: All trains at stations will be stationary at ard 11pm for ~10mins due to the trial of the new signalling system.https://t.co/t4l36rwuYy https://t.co/LmYvyfR2D2",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/847433304718532614",
-      "createdAt": "2017-03-30T21:00:19.000+08:00"
-    },
     {
       "type": "operator.update",
       "text": "[EWL] CLEARED: Free regular bus services have ceased.",

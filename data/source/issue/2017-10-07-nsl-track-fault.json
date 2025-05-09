@@ -100,7 +100,14 @@
         "BDL",
         "TAP",
         "NOV",
-        "NEW"
+        "NEW",
+        "ORC",
+        "SOM",
+        "DBG",
+        "CTH",
+        "RFP",
+        "MRB",
+        "MSP"
       ]
     }
   ]

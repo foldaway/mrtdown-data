@@ -41,7 +41,14 @@
       "componentId": "PGLRT",
       "branchName": "east",
       "stationIds": [
-        "SMK"
+        "DAM",
+        "OAS",
+        "KDL",
+        "RIV",
+        "CRE",
+        "MRD",
+        "COV",
+        "PGL"
       ]
     }
   ]

@@ -11,7 +11,12 @@
       "stationIds": [
         "PSR",
         "TAM",
-        "SIM"
+        "SIM",
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL"
       ]
     }
   ],

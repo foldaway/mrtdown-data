@@ -16,7 +16,7 @@
       ]
     }
   ],
-  "startAt": "2017-03-15T11:35:35.000+08:00",
+  "startAt": "2017-03-15T11:28:54+08:00",
   "endAt": "2017-03-15T11:55:00.000+08:00",
   "type": "disruption",
   "subtypes": [],
@@ -38,6 +38,12 @@
       "text": "[EWL]UPDATE: Train service expected to be resumed at 1155hrs. Free bus service available between#TanahMerah and #PasirRis.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/841855368057638912",
       "createdAt": "2017-03-15T11:35:35.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[EWL]: Due to a train fault, pls add 25 mins travel time from #PasirRis to #TanahMerah towards #JooKoon. Train service is still available.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/841853687056101377",
+      "createdAt": "2017-03-15T11:28:54+08:00"
     }
   ]
 }

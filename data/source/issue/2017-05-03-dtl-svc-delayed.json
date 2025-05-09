@@ -9,6 +9,13 @@
       "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
+        "BKP",
+        "CSW",
+        "HVW",
+        "BTW",
+        "KAP",
+        "SAV",
+        "TKK",
         "BTN",
         "STV",
         "NEW",

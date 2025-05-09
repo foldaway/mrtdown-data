@@ -9,6 +9,13 @@
       "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK",
+        "YWT",
+        "KRJ",
+        "MSL",
         "WDL",
         "ADM",
         "SBW",
@@ -23,12 +30,16 @@
         "NEW",
         "ORC",
         "SOM",
-        "DBG"
+        "DBG",
+        "CTH",
+        "RFP",
+        "MRB",
+        "MSP"
       ]
     }
   ],
-  "startAt": "2017-04-11T21:00:23.000+08:00",
-  "endAt": "2017-04-11T21:10:23.000+08:00",
+  "startAt": "2017-04-11T23:00:00.000+08:00",
+  "endAt": "2017-04-11T23:10:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [

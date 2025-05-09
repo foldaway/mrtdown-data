@@ -9,6 +9,7 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
+        "CLE",
         "JUR",
         "CNG",
         "LKS",
