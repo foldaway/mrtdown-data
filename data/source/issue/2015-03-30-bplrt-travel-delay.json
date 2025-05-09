@@ -9,6 +9,30 @@
       "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ"
+      ]
+    },
+    {
+      "componentId": "BPLRT",
+      "branchName": "tmj",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
         "BKP",
         "PTR",
         "PND",
@@ -17,11 +41,6 @@
         "SGR",
         "JLP",
         "SNJ",
-        "BKP",
-        "PNX",
-        "TKW",
-        "KTH",
-        "CCK",
         "TMJ"
       ]
     }
