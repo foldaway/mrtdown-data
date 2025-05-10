@@ -34,30 +34,17 @@
         "BBS",
         "EPN",
         "PMN",
-        "NCH",
-        "SDM",
-        "MBT",
-        "DKT",
-        "PYL",
-        "MPS",
-        "TSG",
-        "BLY",
-        "SER",
-        "LRC",
-        "BSH",
-        "MRM",
-        "CDT",
-        "BTN",
-        "FRR",
-        "HLV",
-        "BNV",
-        "ONH",
-        "KRG",
-        "HPV",
-        "PPJ",
-        "LBD",
-        "TLB",
-        "HBF"
+        "NCH"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN",
+        "NCH"
       ]
     }
   ]

@@ -9,11 +9,29 @@
       "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
+        "DBG",
+        "BBS",
         "EPN",
         "PMN",
         "NCH",
         "SDM",
-        "MBT"
+        "MBT",
+        "DKT",
+        "PYL"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL"
       ]
     }
   ],
