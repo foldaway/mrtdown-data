@@ -4,8 +4,8 @@
   "componentIdsAffected": [
     "SKLRT"
   ],
-  "startAt": "2019-09-04T00:00:00.000+08:00",
-  "endAt": "2019-09-04T17:30:00.000+08:00",
+  "startAt": "2019-08-04T00:00:00.000+08:00",
+  "endAt": "2019-08-04T17:30:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
