@@ -1,10 +1,10 @@
 {
-  "id": "2022-01-20-sengkang-lrt-maintenance",
+  "id": "2022-01-22-sengkang-lrt-maintenance",
   "title": "Maintenance works on Sengkang LRT system",
   "componentIdsAffected": [
     "SKLRT"
   ],
-  "startAt": "2022-01-20T11:27:07.000+08:00",
+  "startAt": "2022-01-22T00:00:00.000+08:00",
   "endAt": "2022-01-24T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,

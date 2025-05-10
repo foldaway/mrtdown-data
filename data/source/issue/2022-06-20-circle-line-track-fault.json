@@ -49,6 +49,7 @@
       "branchName": "extension",
       "stationIds": [
         "MRB",
+        "BFT",
         "PMN"
       ]
     }

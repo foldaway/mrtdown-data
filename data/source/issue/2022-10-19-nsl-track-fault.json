@@ -107,10 +107,14 @@
       "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
+        "WDL",
+        "ADM",
+        "SBW",
         "CBR",
         "YIS",
         "KTB",
-        "YCK"
+        "YCK",
+        "AMK"
       ]
     }
   ]
