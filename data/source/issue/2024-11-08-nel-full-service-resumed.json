@@ -36,7 +36,21 @@
       "branchName": "main",
       "stationIds": [
         "HBF",
-        "OTP"
+        "OTP",
+        "CTN",
+        "CRQ",
+        "DBG",
+        "LTI",
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL"
       ]
     }
   ]

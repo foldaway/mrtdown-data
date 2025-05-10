@@ -1,5 +1,5 @@
 {
-  "id": "2023-10-05-service-adjustments-ccl-tel",
+  "id": "2024-03-22-service-adjustments-ccl",
   "title": "Service adjustments for Circle Line due to train fault",
   "componentIdsAffected": [
     "CCL"
@@ -51,6 +51,20 @@
         "DBG",
         "BBS",
         "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
         "PMN",
         "NCH",
         "SDM",

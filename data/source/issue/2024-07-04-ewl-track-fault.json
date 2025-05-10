@@ -90,6 +90,8 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
+        "BNV",
+        "DVR",
         "CLE",
         "JUR",
         "CNG",
