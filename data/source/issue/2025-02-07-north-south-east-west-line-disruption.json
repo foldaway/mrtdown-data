@@ -151,6 +151,13 @@
       "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK",
+        "YWT",
+        "KRJ",
+        "MSL",
         "WDL",
         "ADM",
         "SBW",
@@ -159,13 +166,36 @@
         "KTB",
         "YCK",
         "AMK",
-        "BSH"
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW",
+        "ORC",
+        "SOM",
+        "DBG",
+        "CTH",
+        "RFP",
+        "MRB",
+        "MSP"
       ]
     },
     {
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
+        "PSR",
+        "TAM",
+        "SIM",
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
         "CTH",
         "RFP",
         "TPG",
@@ -177,7 +207,16 @@
         "BNV",
         "DVR",
         "CLE",
-        "JUR"
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN",
+        "GCL",
+        "TCR",
+        "TWS",
+        "TLK"
       ]
     }
   ]
