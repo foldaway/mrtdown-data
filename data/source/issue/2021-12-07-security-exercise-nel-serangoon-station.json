@@ -22,6 +22,10 @@
       "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
+        "HBF",
+        "OTP",
+        "CTN",
+        "CRQ",
         "DBG",
         "LTI",
         "FRP",

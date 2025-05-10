@@ -1,10 +1,8 @@
 {
-  "id": "2021-04-21-nel-stations-closure",
+  "id": "2021-04-23-nel-stations-closure",
   "title": "NEL stations closure between HarbourFront and Dhoby Ghaut",
   "componentIdsAffected": [
-    "NEL",
-    "SKLRT",
-    "PGLRT"
+    "NEL"
   ],
   "startAt": "2021-04-23T23:00:00.000+08:00",
   "endAt": "2021-04-25T00:00:00.000+08:00",

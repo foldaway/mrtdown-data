@@ -83,19 +83,12 @@
       "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
-        "PYL",
-        "MPS",
-        "TSG",
-        "BLY",
-        "SER",
         "LRC",
         "BSH",
         "MRM",
         "CDT",
         "BTN",
-        "FRR",
-        "HLV",
-        "BNV"
+        "FRR"
       ]
     }
   ]
