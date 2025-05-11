@@ -5,6 +5,7 @@ import { buildStationIndex } from './buildStationIndex';
 import { buildStationTranslatedNames } from './buildStationTranslatedNames';
 import { buildStationManifests } from './buildStationManifests';
 import { buildComponentManifests } from './buildComponentManifests';
+import { buildComponentIndex } from './buildComponentIndex';
 
 buildOverview();
 buildIssuesHistory();
@@ -13,3 +14,4 @@ buildStationIndex();
 buildStationTranslatedNames();
 buildStationManifests();
 buildComponentManifests();
+buildComponentIndex();
