@@ -1,0 +1,38 @@
+{
+  "id": "2025-05-11-track-fault-nsl",
+  "title": "Track Fault on the North-South Line",
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2025-05-11T14:42:25.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "3.00pm: NSL - Due to a track point fault, please expect an additional 10 minutes of travelling time between Yishun and Sembawang stations. Free regular bus service is available at the designated bus stops between Yishun and Woodlands stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114487907117196758",
+      "createdAt": "2025-05-11T15:00:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "2.30pm: NSL - Due to a track point fault, please expect an additional 10 minutes of travelling time between Yishun and Sembawang stations. Free regular bus service is available at the designated bus stops between Yishun and Woodlands stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114487836347167210",
+      "createdAt": "2025-05-11T14:42:25.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "SBW",
+        "CBR",
+        "YIS"
+      ]
+    }
+  ]
+}
