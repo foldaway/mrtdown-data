@@ -13,6 +13,12 @@
   "updates": [
     {
       "type": "operator.update",
+      "text": "5.30pm: NSL - Due to a track point fault, please expect an additional 10 minutes of travelling time between Yishun and Sembawang stations. Free regular bus service is available at the designated bus stops between Yishun and Woodlands stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114488504808983223",
+      "createdAt": "2025-05-11T17:32:24.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "5.00pm: NSL - Due to a track point fault, please expect an additional 10 minutes of travelling time between Yishun and Sembawang stations. Free regular bus service is available at the designated bus stops between Yishun and Woodlands stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114488386836762268",
       "createdAt": "2025-05-11T17:02:24.000+08:00"
