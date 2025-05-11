@@ -9,14 +9,9 @@ export function buildStationIndex() {
     '../../../data/product/station_index.json',
   );
 
-  const result: StationIndex = {};
+  const result: StationIndex = [];
   for (const station of StationModel.getAll()) {
-    const stationCodes: string[] = [];
-    const componentMembers = Object.values(station.componentMembers).flat();
-    for (const componentMember of componentMembers) {
-      stationCodes.push(componentMember.code);
-    }
-    result[station.id] = stationCodes;
+    result.push(station.id);
   }
   writeFileSync(filePath, JSON.stringify(result, null, 2));
 }
