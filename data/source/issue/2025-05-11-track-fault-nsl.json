@@ -5,12 +5,24 @@
     "NSL"
   ],
   "startAt": "2025-05-11T14:42:25.000+08:00",
-  "endAt": null,
+  "endAt": "2025-05-11T17:39:14.000+08:00",
   "type": "disruption",
   "subtypes": [
     "track.fault"
   ],
   "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train service between #Yishun and #Sembawang have resumed. Free regular bus service has ended.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1921502365599076482",
+      "createdAt": "2025-05-11T17:47:18.000+08:00"
+    },
+    {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: The earlier track point fault has been cleared. Train service has resumed. Free regular bus service is still available between #Yishun and #Woodlands. We apologise for the delay to your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1921500335958560964",
+      "createdAt": "2025-05-11T17:39:14.000+08:00"
+    },
     {
       "type": "operator.update",
       "text": "5.30pm: NSL - Due to a track point fault, please expect an additional 10 minutes of travelling time between Yishun and Sembawang stations. Free regular bus service is available at the designated bus stops between Yishun and Woodlands stations.",
