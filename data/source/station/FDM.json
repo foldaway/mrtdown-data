@@ -1,0 +1,17 @@
+{
+  "id": "FDM",
+  "name": "Founders' Memorial",
+  "name_translations": {
+    "zh-Hans": "建国先贤纪念园",
+    "ms": "Peringatan Pengasas",
+    "ta": "தேச நிறுவனர்கள் நினைவிட நிலையம்"
+  },
+  "componentMembers": {
+    "CRL": [
+      {
+        "code": "TE22A",
+        "startedAt": "2028-12-31"
+      }
+    ]
+  }
+}
