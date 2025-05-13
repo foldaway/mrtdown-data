@@ -1,0 +1,39 @@
+{
+  "id": "2024-11-01-bukit-panjang-lrt-services-end-early",
+  "title": "Bukit Panjang LRT services to end earlier",
+  "componentIdsAffected": ["BPLRT"],
+  "startAt": "2024-11-01T16:45:00+08:00",
+  "endAt": "2025-11-01T00:00:00+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": ["system.upgrade"],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "This will be from Thursdays to Sundays until Oct 31, 2025, except for public holidays. Read more at straitstimes.com. Read more at straitstimes.com.",
+      "sourceUrl": "https://web.archive.org/web/20250512051215/https://www.straitstimes.com/singapore/transport/bukit-panjang-lrt-services-to-end-earlier-at-10-30pm-from-nov-14-for-upgrading-works",
+      "createdAt": "2024-11-01T16:45:00+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ"
+      ]
+    }
+  ]
+}

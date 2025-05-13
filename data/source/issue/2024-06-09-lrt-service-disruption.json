@@ -1,0 +1,97 @@
+{
+  "id": "2024-06-09-lrt-service-disruption",
+  "title": "LRT service disruption due to signalling fault",
+  "componentIdsAffected": ["SKLRT", "PGLRT"],
+  "startAt": "2024-06-09T05:47:16.000+08:00",
+  "endAt": "2024-06-09T10:34:00.000+08:00",
+  "type": "disruption",
+  "subtypes": ["signal.fault"],
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "(1034hrs) Train svc on the Sengkang-Punggol LRT system has resumed. Free regular &amp; bridging bus services have ceased. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1799631154393559370",
+      "createdAt": "2024-06-09T10:34:37.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "(1030hrs) Train svc on the Sengkang-Punggol LRT system has resumed progressively since 10.12am. Free regular &amp; bridging bus services have ceased at 10.20am. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1799630101937885438",
+      "createdAt": "2024-06-09T10:30:26.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "(1019hrs) Train svc on the Sengkang-Punggol LRT system has resumed since 10.12am. Free regular &amp; bridging bus services are still available at designated bus stops.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1799627438567432549",
+      "createdAt": "2024-06-09T10:19:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "(0946hrs) No fares will be deducted if you exit from affected LRT stations. Please approach our station staff if you need assistance",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1799619019064094848",
+      "createdAt": "2024-06-09T09:46:24.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "(0925hrs) No train service on the Sengkang-Punggol LRT due to signalling fault. Recovery work is in progress. We are sorry for the inconvenience caused",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1799613752150782002",
+      "createdAt": "2024-06-09T09:25:28.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "(0847hrs) Due to signalling fault, no train svc for both Sengkang-Punggol LRT stns. Free regular &amp; Bridging Buses available at designated bus stops and SKG bus interchange. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1799604163158090153",
+      "createdAt": "2024-06-09T08:47:22.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "(0802hrs) No train service on the Sengkang-Punggol LRT due to signalling fault. Recovery work is in progress.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1799592786234368483",
+      "createdAt": "2024-06-09T08:02:09.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "(0631hrs) No train svc on the Sengkang-Punggol LRT due to signalling fault. To assist with your journey, free regular and bridging bus services available at designated bus stops and SKG bus interchange.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1799570287849316521",
+      "createdAt": "2024-06-09T06:32:45.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "(0545hrs) Due to signalling fault, no LRT train svc for both SKG and PGL LRT stations. To continue your journey, Free regular &amp; Bridging Buses available at all SKG and PGL LRT stations. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1799558841610424706",
+      "createdAt": "2024-06-09T05:47:16.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "SKLRT",
+      "branchName": "east",
+      "stationIds": ["SKG", "CPV", "RMB", "BAK", "KGK", "RNG"]
+    },
+    {
+      "componentId": "SKLRT",
+      "branchName": "west",
+      "stationIds": [
+        "SKG",
+        "CGL",
+        "FMW",
+        "KPG",
+        "TNG",
+        "FNV",
+        "LYR",
+        "TKG",
+        "RNJ"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "east",
+      "stationIds": ["PGL", "SMK", "PGP", "SMD", "NBG", "SMG", "STK"]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "west",
+      "stationIds": ["PGL", "COV", "MRD", "CRE", "RIV", "KDL", "OAS", "DAM"]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "2023-11-03-tel-service-adjustments",
+  "title": "Service adjustments for Thomson-East Coast Line due to Stage 4 works",
+  "componentIdsAffected": ["TEL"],
+  "startAt": "2023-11-03T00:00:00+08:00",
+  "endAt": "2024-01-28T00:00:00+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "A platform each at two Circle Line stations - Telok Blangah and HarbourFront - will also be closed temporarily.",
+      "sourceUrl": "https://web.archive.org/web/20240408192544/https://www.channelnewsasia.com/singapore/circle-thomson-east-coast-line-operate-shorter-hours-rail-expansion-works-3823096",
+      "createdAt": "2023-10-05T15:19:00+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "WDN",
+        "WDL",
+        "WDS",
+        "SPL",
+        "LTR",
+        "MFL",
+        "BRH",
+        "UTS",
+        "CDT",
+        "STV",
+        "NPR",
+        "OBV",
+        "ORC",
+        "GRW",
+        "HVL",
+        "OTP",
+        "MAX",
+        "SHW",
+        "MRB",
+        "GRB"
+      ]
+    }
+  ]
+}

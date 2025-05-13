@@ -1,0 +1,39 @@
+{
+  "id": "2023-08-19-bplrt-early-closure",
+  "title": "Early closure of train services on Bukit Panjang LRT",
+  "componentIdsAffected": ["BPLRT"],
+  "startAt": "2023-08-19T22:30:00.000+08:00",
+  "endAt": "2023-08-20T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": ["system.upgrade"],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "SINGAPORE — Train services for Bukit Panjang LRT (BPLRT) will end earlier over two weekends in August amid ongoing renewal works. ",
+      "sourceUrl": "https://web.archive.org/web/20240914071459/https://www.todayonline.com/singapore/bukit-panjang-lrt-close-early-over-two-weekends-august-amid-ongoing-renewal-works-2222851",
+      "createdAt": "2023-07-31T14:34:00+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ"
+      ]
+    }
+  ]
+}
