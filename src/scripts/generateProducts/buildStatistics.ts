@@ -1,7 +1,7 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { IssueModel } from '../../model/IssueModel';
-import { DateTime, Duration, Interval } from 'luxon';
+import { DateTime, Interval } from 'luxon';
 import { assert } from '../../util/assert';
 import type { Statistics } from '../../schema/Statistics';
 import { ComponentModel } from '../../model/ComponentModel';
@@ -12,7 +12,6 @@ import { calculateDurationWithinServiceHours } from '../../helpers/calculateDura
 import { splitIntervalByServiceHours } from '../../helpers/splitIntervalByServiceHours';
 import type { ComponentId } from '../../schema/Component';
 import { sumIntervalDuration } from '../../helpers/sumIntervalDuration';
-import { Station } from '../../schema/Station';
 import { StationModel } from '../../model/StationModel';
 
 interface DateSummaryPartial {
@@ -234,7 +233,6 @@ export function buildStatistics() {
 
   const content: Statistics = {
     dates,
-    issuesOngoing: issues.filter((issue) => issue.endAt == null),
     issuesDisruptionHistoricalCount,
     issuesDisruptionDurationTotalDays,
     issuesDisruptionLongest,

@@ -7,7 +7,6 @@ import { StationSchema } from './Station';
 
 export const StatisticsSchema = z.object({
   dates: z.record(z.string().date(), DateSummarySchema),
-  issuesOngoing: z.array(IssueSchema),
   issuesDisruptionHistoricalCount: z.number(),
   issuesDisruptionDurationTotalDays: z.number(),
   issuesDisruptionLongest: z.array(IssueReferenceSchema),
