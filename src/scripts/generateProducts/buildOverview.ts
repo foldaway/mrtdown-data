@@ -5,7 +5,7 @@ import type { IssueReference, Overview } from '../../schema/Overview';
 import { IssueModel } from '../../model/IssueModel';
 import { DateTime, Interval } from 'luxon';
 import { assert } from '../../util/assert';
-import type { IssueType } from '../../schema/Issue';
+import type { Issue, IssueType } from '../../schema/Issue';
 import type { DateSummary } from '../../schema/DateSummary';
 import { splitIntervalByServiceHours } from '../../helpers/splitIntervalByServiceHours';
 import type { ComponentId } from '../../schema/Component';
@@ -18,6 +18,14 @@ interface DateSummaryPartial {
     ComponentId,
     Record<IssueType, Interval[]>
   >;
+}
+
+function isOngoingIssue(issue: Issue, now = DateTime.now()): boolean {
+  if (issue.endAt == null) {
+    return true;
+  }
+  const endAtDateTime = DateTime.fromISO(issue.endAt);
+  return endAtDateTime > now;
 }
 
 export function buildOverview() {
@@ -48,10 +56,10 @@ export function buildOverview() {
   const content: Overview = {
     components,
     dates: {},
-    issuesOngoing: issues.filter((issue) => issue.endAt == null),
+    issuesOngoingSnapshot: issues.filter((issue) => isOngoingIssue(issue)),
   };
 
-  for (const issue of issues) {
+  for (const issue of issues.filter((issue) => !isOngoingIssue(issue))) {
     if (issue.endAt == null) {
       continue;
     }

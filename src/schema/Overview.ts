@@ -23,7 +23,8 @@ export type IssueReference = z.infer<typeof IssueReferenceSchema>;
 
 export const OverviewSchema = z.object({
   components: z.array(ComponentSchema),
-  issuesOngoing: z.array(IssueSchema),
+  // Includes all issues that are either open-ended or end after the current product build time.
+  issuesOngoingSnapshot: z.array(IssueSchema),
   dates: z.record(z.string().date(), DateSummarySchema),
 });
 export type Overview = z.infer<typeof OverviewSchema>;
