@@ -29,6 +29,7 @@ const ResultSchema = z.object({
   issue: IssueMaintenanceSchema.omit({
     updates: true,
     stationIdsAffected: true,
+    autogenRrule: true,
   }),
   lineSections: z.array(LineSectionSchema),
 });
