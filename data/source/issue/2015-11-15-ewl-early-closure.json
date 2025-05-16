@@ -21,8 +21,9 @@
       ]
     }
   ],
-  "startAt": "2015-11-15T00:00:00.000+08:00",
-  "endAt": "2015-12-31T00:00:00.000+08:00",
+  "startAt": "2015-11-15T23:30:00.000+08:00",
+  "endAt": "2015-11-16T00:00:00.000+08:00",
+  "autogenRrule": "DTSTART;TZID=Asia/Singapore:20151115T233000\nRRULE:FREQ=DAILY;UNTIL=20160101T000000;WKST=MO",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [],

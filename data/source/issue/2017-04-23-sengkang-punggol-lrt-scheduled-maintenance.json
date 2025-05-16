@@ -6,7 +6,8 @@
     "PGLRT"
   ],
   "startAt": "2017-04-23T00:00:00.000+08:00",
-  "endAt": "2017-09-10T00:00:00.000+08:00",
+  "endAt": "2017-04-24T00:00:00.000+08:00",
+  "autogenRrule": "DTSTART;TZID=Asia/Singapore:20170423T000000\nRRULE:FREQ=WEEKLY;UNTIL=20170910T000000;WKST=MO;BYDAY=SU;BYHOUR=0;BYMINUTE=0",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [

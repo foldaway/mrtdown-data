@@ -5,7 +5,8 @@
     "NEL"
   ],
   "startAt": "2021-04-09T23:00:00.000+08:00",
-  "endAt": "2021-04-11T00:00:00.000+08:00",
+  "endAt": "2021-04-10T00:00:00.000+08:00",
+  "autogenRrule": "DTSTART;TZID=Asia/Singapore:20210409T230000\nRRULE:FREQ=DAILY;UNTIL=20210411T000000;WKST=MO",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [

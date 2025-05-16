@@ -1,0 +1,34 @@
+{
+  "id": "2021-05-24-early-closure-testing-integrated-systems-tel-stage-2.json",
+  "title": "Early Closure for Testing of Integrated Systems and Trains for TEL Stage 2",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2021-05-24T21:00:00.000+08:00",
+  "endAt": "2021-05-25T00:00:00.000+08:00",
+  "autogenRrule": "DTSTART;TZID=Asia/Singapore:20210524T000000\nRRULE:FREQ=DAILY;UNTIL=20210809T000000;WKST=MO",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "system.upgrade"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "To continue testing the integrated systems and trains in preparation for Stage 2 of #TEL, train services from Woodlands North to Woodlands South will start later at 6.30am and end at 9pm daily from 24 May to 8 Aug. https://t.co/33hxDBEIs1",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1395674720129847299",
+      "createdAt": "2021-05-21T17:35:58.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "WDN",
+        "WDL",
+        "WDS"
+      ]
+    }
+  ]
+}

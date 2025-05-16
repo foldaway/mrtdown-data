@@ -22,8 +22,9 @@
       ]
     }
   ],
-  "startAt": "2016-02-14T00:00:00.000+08:00",
-  "endAt": "2016-09-01T00:00:00.000+08:00",
+  "startAt": "2016-02-14T23:30:00.000+08:00",
+  "endAt": "2016-02-15T00:00:00.000+08:00",
+  "autogenRrule": "DTSTART;TZID=Asia/Singapore:20160214T233000\nRRULE:FREQ=DAILY;UNTIL=20160901T000000;WKST=MO",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [],
