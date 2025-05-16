@@ -6,7 +6,8 @@
     "PGLRT"
   ],
   "startAt": "2020-12-05T00:00:00.000+08:00",
-  "endAt": "2021-03-08T00:00:00.000+08:00",
+  "endAt": "2020-12-06T00:00:00.000+08:00",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20201205T000000\nRRULE:FREQ=WEEKLY;UNTIL=20210308T000000;WKST=MO;BYDAY=SA,SU\nEXDATE:20210213T000000,20210214T000000",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [

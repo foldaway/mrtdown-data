@@ -1,28 +1,26 @@
 {
   "id": "2017-04-26-no-train-services-tanah-merah-changi",
   "title": "No train services between Tanah Merah and Changi Airport",
-  "componentIdsAffected": [
-    "EWL"
-  ],
+  "componentIdsAffected": ["EWL"],
   "stationIdsAffected": [
     {
       "componentId": "EWL",
       "branchName": "changi_airport",
-      "stationIds": [
-        "TNM",
-        "XPO",
-        "CGA"
-      ]
+      "stationIds": ["TNM", "XPO", "CGA"]
     }
   ],
   "startAt": "2017-04-26T23:00:00.000+08:00",
-  "endAt": "2017-05-05T00:00:00.000+08:00",
+  "endAt": "2017-04-27T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": [
-    "track.work"
-  ],
+  "subtypes": ["track.work"],
   "updates": [
+    {
+      "type": "planned",
+      "text": "Early closure lifted: Tanah Merah, Expo &amp; Changi Airport (both bounds), 5 May’17. These stations will resume normal operating hours.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/860026330141777922",
+      "createdAt": "2017-05-04T15:00:30.000+08:00"
+    },
     {
       "type": "planned",
       "text": "Due to track work,there will be no train svcs b/w Tanah Merah and Changi (both bounds) from 11pm tonight &amp; 5 May’17. https://t.co/pVhqiss9cU",

@@ -5,11 +5,12 @@ import type { IssueReference, Overview } from '../../schema/Overview';
 import { IssueModel } from '../../model/IssueModel';
 import { DateTime, Interval } from 'luxon';
 import { assert } from '../../util/assert';
-import type { Issue, IssueType } from '../../schema/Issue';
+import type { IssueType } from '../../schema/Issue';
 import type { DateSummary } from '../../schema/DateSummary';
 import { splitIntervalByServiceHours } from '../../helpers/splitIntervalByServiceHours';
 import type { ComponentId } from '../../schema/Component';
 import { sumIntervalDuration } from '../../helpers/sumIntervalDuration';
+import { computeIssueIntervals } from '../../helpers/computeIssueIntervals';
 
 interface DateSummaryPartial {
   issues: IssueReference[];
@@ -18,14 +19,6 @@ interface DateSummaryPartial {
     ComponentId,
     Record<IssueType, Interval[]>
   >;
-}
-
-function isOngoingIssue(issue: Issue, now = DateTime.now()): boolean {
-  if (issue.endAt == null) {
-    return true;
-  }
-  const endAtDateTime = DateTime.fromISO(issue.endAt);
-  return endAtDateTime > now;
 }
 
 export function buildOverview() {
@@ -56,10 +49,10 @@ export function buildOverview() {
   const content: Overview = {
     components,
     dates: {},
-    issuesOngoingSnapshot: issues.filter((issue) => isOngoingIssue(issue)),
+    issuesOngoingSnapshot: issues.filter((issue) => issue.endAt == null),
   };
 
-  for (const issue of issues.filter((issue) => !isOngoingIssue(issue))) {
+  for (const issue of issues) {
     if (issue.endAt == null) {
       continue;
     }
@@ -68,53 +61,54 @@ export function buildOverview() {
     const endAt = DateTime.fromISO(issue.endAt).setZone('Asia/Singapore');
     assert(endAt.isValid);
 
-    const interval = Interval.fromDateTimes(startAt, endAt);
-    for (const segment of splitIntervalByServiceHours(interval)) {
-      assert(segment.start != null);
-      assert(segment.end != null);
+    for (const interval of computeIssueIntervals(issue)) {
+      for (const segment of splitIntervalByServiceHours(interval)) {
+        assert(segment.start != null);
+        assert(segment.end != null);
 
-      const segmentStartIsoDate = segment.start.toISODate();
-      const dateSummary =
-        datesPartial[segmentStartIsoDate] ??
-        ({
-          issues: [],
-          issueTypesIntervals: {
-            disruption: [],
-            maintenance: [],
-            infra: [],
-          },
-          componentIdsIssueTypeIntervals: {},
-        } satisfies DateSummaryPartial);
-
-      const intervals = dateSummary.issueTypesIntervals[issue.type] ?? [];
-      intervals.push(segment);
-      dateSummary.issueTypesIntervals[issue.type] = intervals;
-
-      for (const componentId of issue.componentIdsAffected) {
-        const componentIssueTypeIntervals =
-          dateSummary.componentIdsIssueTypeIntervals[componentId] ??
+        const segmentStartIsoDate = segment.start.toISODate();
+        const dateSummary =
+          datesPartial[segmentStartIsoDate] ??
           ({
-            disruption: [],
-            maintenance: [],
-            infra: [],
-          } satisfies Record<IssueType, Interval[]>);
+            issues: [],
+            issueTypesIntervals: {
+              disruption: [],
+              maintenance: [],
+              infra: [],
+            },
+            componentIdsIssueTypeIntervals: {},
+          } satisfies DateSummaryPartial);
 
-        const intervals = componentIssueTypeIntervals[issue.type] ?? [];
+        const intervals = dateSummary.issueTypesIntervals[issue.type] ?? [];
         intervals.push(segment);
-        componentIssueTypeIntervals[issue.type] = intervals;
-        dateSummary.componentIdsIssueTypeIntervals[componentId] =
-          componentIssueTypeIntervals;
-      }
+        dateSummary.issueTypesIntervals[issue.type] = intervals;
 
-      dateSummary.issues.push({
-        id: issue.id,
-        type: issue.type,
-        title: issue.title,
-        componentIdsAffected: issue.componentIdsAffected,
-        startAt: issue.startAt,
-        endAt: issue.endAt,
-      });
-      datesPartial[segmentStartIsoDate] = dateSummary;
+        for (const componentId of issue.componentIdsAffected) {
+          const componentIssueTypeIntervals =
+            dateSummary.componentIdsIssueTypeIntervals[componentId] ??
+            ({
+              disruption: [],
+              maintenance: [],
+              infra: [],
+            } satisfies Record<IssueType, Interval[]>);
+
+          const intervals = componentIssueTypeIntervals[issue.type] ?? [];
+          intervals.push(segment);
+          componentIssueTypeIntervals[issue.type] = intervals;
+          dateSummary.componentIdsIssueTypeIntervals[componentId] =
+            componentIssueTypeIntervals;
+        }
+
+        dateSummary.issues.push({
+          id: issue.id,
+          type: issue.type,
+          title: issue.title,
+          componentIdsAffected: issue.componentIdsAffected,
+          startAt: issue.startAt,
+          endAt: issue.endAt,
+        });
+        datesPartial[segmentStartIsoDate] = dateSummary;
+      }
     }
   }
 

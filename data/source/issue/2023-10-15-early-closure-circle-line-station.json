@@ -1,0 +1,40 @@
+{
+  "id": "2023-10-15-early-closure-circle-line-station",
+  "title": "Early closure on Circle Line station maintenance for Stage 6 integration",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2023-10-15T22:00:00.000+08:00",
+  "endAt": "2023-10-16T00:00:00.000+08:00",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20231015T220000\nRRULE:FREQ=WEEKLY;UNTIL=20231106T000000;WKST=MO;BYDAY=SU",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "station.renovation"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "SINGAPORE: All train services on the Circle Line (CCL) will resume normal operations from Saturday (Apr 6) as rail expansion works have been completed ahead of schedule, said the Land Transport Authority (LTA) on Wednesday. \"We’re happy to update that the integration of the CCL with our existing rail net",
+      "sourceUrl": "https://web.archive.org/web/20250512103955/https://www.channelnewsasia.com/singapore/circle-line-rail-expansion-works-complete-early-normal-train-operations-resume-4238866",
+      "createdAt": "2024-04-03T11:29:00+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "A platform each at two Circle Line stations - Telok Blangah and HarbourFront - will also be closed temporarily.",
+      "sourceUrl": "https://web.archive.org/web/20240408192544/https://www.channelnewsasia.com/singapore/circle-thomson-east-coast-line-operate-shorter-hours-rail-expansion-works-3823096",
+      "createdAt": "2023-10-05T15:19:00+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    }
+  ]
+}

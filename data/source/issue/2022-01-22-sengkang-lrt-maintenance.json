@@ -1,16 +1,12 @@
 {
   "id": "2022-01-22-sengkang-lrt-maintenance",
   "title": "Maintenance works on Sengkang LRT system",
-  "componentIdsAffected": [
-    "SKLRT"
-  ],
+  "componentIdsAffected": ["SKLRT"],
   "startAt": "2022-01-22T00:00:00.000+08:00",
-  "endAt": "2022-01-24T00:00:00.000+08:00",
+  "endAt": "2022-01-23T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": [
-    "track.work"
-  ],
+  "subtypes": ["track.work"],
   "updates": [
     {
       "type": "planned",
@@ -29,28 +25,12 @@
     {
       "componentId": "SKLRT",
       "branchName": "west",
-      "stationIds": [
-        "SKG",
-        "CGL",
-        "FMW",
-        "KPG",
-        "TNG",
-        "FNV",
-        "LYR",
-        "TKG"
-      ]
+      "stationIds": ["SKG", "CGL", "FMW", "KPG", "TNG", "FNV", "LYR", "TKG"]
     },
     {
       "componentId": "SKLRT",
       "branchName": "east",
-      "stationIds": [
-        "SKG",
-        "CPV",
-        "RMB",
-        "BAK",
-        "KGK",
-        "RNG"
-      ]
+      "stationIds": ["SKG", "CPV", "RMB", "BAK", "KGK", "RNG"]
     }
   ]
 }

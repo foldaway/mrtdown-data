@@ -14,8 +14,9 @@
       ]
     }
   ],
-  "startAt": "2013-02-01T17:22:02.000+08:00",
-  "endAt": "2013-02-15T04:30:00.000+08:00",
+  "startAt": "2013-02-01T01:30:00.000+08:00",
+  "endAt": "2013-02-01T04:30:00.000+08:00",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20130201T013000\nRRULE:FREQ=DAILY;UNTIL=20130416T000000;WKST=MO",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [

@@ -1,16 +1,13 @@
 {
   "id": "2021-01-23-sengkang-lrt-maintenance",
   "title": "Scheduled Maintenance on Sengkang LRT System",
-  "componentIdsAffected": [
-    "SKLRT"
-  ],
+  "componentIdsAffected": ["SKLRT"],
   "startAt": "2021-01-23T00:00:00.000+08:00",
-  "endAt": "2021-01-25T00:00:00.000+08:00",
+  "endAt": "2021-01-24T00:00:00.000+08:00",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20210123T000000\nRRULE:FREQ=DAILY;UNTIL=20210125T000000;WKST=MO",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": [
-    "track.work"
-  ],
+  "subtypes": ["track.work"],
   "updates": [
     {
       "type": "planned",
@@ -38,14 +35,7 @@
     {
       "componentId": "SKLRT",
       "branchName": "east",
-      "stationIds": [
-        "SKG",
-        "CPV",
-        "RMB",
-        "BAK",
-        "KGK",
-        "RNG"
-      ]
+      "stationIds": ["SKG", "CPV", "RMB", "BAK", "KGK", "RNG"]
     }
   ]
 }

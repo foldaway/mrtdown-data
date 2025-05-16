@@ -5,7 +5,8 @@
     "EWL"
   ],
   "startAt": "2020-11-21T23:00:00.000+08:00",
-  "endAt": "2020-11-29T00:00:00.000+08:00",
+  "endAt": "2020-11-22T00:00:00.000+08:00",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20201121T230000\nRRULE:FREQ=WEEKLY;UNTIL=20201129T000000;WKST=MO",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [

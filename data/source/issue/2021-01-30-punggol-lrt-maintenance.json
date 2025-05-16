@@ -1,16 +1,13 @@
 {
   "id": "2021-01-30-punggol-lrt-maintenance",
   "title": "Maintenance works on the Punggol LRT system",
-  "componentIdsAffected": [
-    "PGLRT"
-  ],
+  "componentIdsAffected": ["PGLRT"],
   "startAt": "2021-01-30T00:00:00.000+08:00",
-  "endAt": "2021-02-01T00:00:00.000+08:00",
+  "endAt": "2021-01-31T00:00:00.000+08:00",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20210130T000000\nRRULE:FREQ=DAILY;UNTIL=20210201T000000;WKST=MO",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": [
-    "track.work"
-  ],
+  "subtypes": ["track.work"],
   "updates": [
     {
       "type": "planned",
@@ -23,29 +20,12 @@
     {
       "componentId": "PGLRT",
       "branchName": "east",
-      "stationIds": [
-        "PGL",
-        "SMK",
-        "PGP",
-        "SMD",
-        "NBG",
-        "SMG",
-        "STK"
-      ]
+      "stationIds": ["PGL", "SMK", "PGP", "SMD", "NBG", "SMG", "STK"]
     },
     {
       "componentId": "PGLRT",
       "branchName": "west",
-      "stationIds": [
-        "PGL",
-        "COV",
-        "MRD",
-        "CRE",
-        "RIV",
-        "KDL",
-        "OAS",
-        "DAM"
-      ]
+      "stationIds": ["PGL", "COV", "MRD", "CRE", "RIV", "KDL", "OAS", "DAM"]
     }
   ]
 }

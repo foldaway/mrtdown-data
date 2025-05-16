@@ -1,9 +1,12 @@
 {
-  "id": "2023-11-03-tel-service-adjustments",
-  "title": "Service adjustments for Thomson-East Coast Line due to Stage 4 works",
-  "componentIdsAffected": ["TEL"],
-  "startAt": "2023-11-03T00:00:00+08:00",
-  "endAt": "2024-01-28T00:00:00+08:00",
+  "id": "2023-11-03-early-closure-tel-service-adjustments",
+  "title": "Early closure for Thomson-East Coast Line due to Stage 4 works",
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2023-11-03T22:30:00.000+08:00",
+  "endAt": "2023-11-04T00:00:00.000+08:00",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20231103T053000\nRRULE:FREQ=WEEKLY;UNTIL=20240129T000000;WKST=MO;BYDAY=FR,SA",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [],

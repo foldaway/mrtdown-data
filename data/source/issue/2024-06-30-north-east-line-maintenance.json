@@ -1,9 +1,12 @@
 {
   "id": "2024-06-30-north-east-line-maintenance",
   "title": "Service Hour Adjustments for integration of Punggol Coast station",
-  "componentIdsAffected": ["NEL"],
-  "startAt": "2024-06-30T05:30:00+08:00",
-  "endAt": "2024-06-30T08:00:00+08:00",
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2024-06-30T05:30:00.000+08:00",
+  "endAt": "2024-06-30T08:00:00.000+08:00",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20240630T053000\nRRULE:FREQ=WEEKLY;UNTIL=20240722T000000;WKST=MO;BYDAY=SU",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [],

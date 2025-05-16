@@ -1,12 +1,12 @@
 {
-  "id": "2020-07-26-sengkang-punggol-lrt-maintenance",
-  "title": "Maintenance on Sengkang-Punggol LRT systems",
+  "id": "2020-07-26-sengkang-lrt-maintenance",
+  "title": "Maintenance on Sengkang LRT systems",
   "componentIdsAffected": [
-    "SKLRT",
-    "PGLRT"
+    "SKLRT"
   ],
   "startAt": "2020-07-26T00:00:00.000+08:00",
-  "endAt": "2020-09-07T00:00:00.000+08:00",
+  "endAt": "2020-07-27T00:00:00.000+08:00",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20200726T000000\nRRULE:FREQ=WEEKLY;UNTIL=20200906T000000;WKST=MO;BYDAY=SU\nEXDATE:20200809T000000",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
@@ -64,33 +64,6 @@
         "BAK",
         "KGK",
         "RNG"
-      ]
-    },
-    {
-      "componentId": "PGLRT",
-      "branchName": "east",
-      "stationIds": [
-        "PGL",
-        "SMK",
-        "PGP",
-        "SMD",
-        "NBG",
-        "SMG",
-        "STK"
-      ]
-    },
-    {
-      "componentId": "PGLRT",
-      "branchName": "west",
-      "stationIds": [
-        "PGL",
-        "COV",
-        "MRD",
-        "CRE",
-        "RIV",
-        "KDL",
-        "OAS",
-        "DAM"
       ]
     }
   ]

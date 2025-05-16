@@ -1,11 +1,12 @@
 {
-  "id": "2021-05-24-testing-integrated-systems-tel-stage-2",
-  "title": "Testing of Integrated Systems and Trains for TEL Stage 2",
+  "id": "2021-05-24-early-closure-testing-integrated-systems-tel-stage-2.json",
+  "title": "Early Closure for Testing of Integrated Systems and Trains for TEL Stage 2",
   "componentIdsAffected": [
     "TEL"
   ],
-  "startAt": "2021-05-24T06:30:00.000+08:00",
-  "endAt": "2021-08-08T21:00:00.000+08:00",
+  "startAt": "2021-05-24T21:00:00.000+08:00",
+  "endAt": "2021-05-25T00:00:00.000+08:00",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20210524T000000\nRRULE:FREQ=DAILY;UNTIL=20210809T000000;WKST=MO",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
