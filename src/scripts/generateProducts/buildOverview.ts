@@ -24,8 +24,13 @@ function isOngoingIssue(issue: Issue, now = DateTime.now()): boolean {
   if (issue.endAt == null) {
     return true;
   }
-  const endAtDateTime = DateTime.fromISO(issue.endAt);
-  return endAtDateTime > now;
+
+  const startAt = DateTime.fromISO(issue.startAt);
+  assert(startAt.isValid);
+  const endAt = DateTime.fromISO(issue.endAt);
+  assert(endAt.isValid);
+  const interval = Interval.fromDateTimes(startAt, endAt);
+  return interval.contains(now) || interval.isAfter(now);
 }
 
 export function buildOverview() {
