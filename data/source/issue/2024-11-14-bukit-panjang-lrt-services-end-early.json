@@ -6,7 +6,7 @@
   ],
   "startAt": "2024-11-14T22:30:00.000+08:00",
   "endAt": "2024-11-15T00:00:00.000+08:00",
-  "autogenRrule": "DTSTART;TZID=Asia/Singapore:20241114T223000\nRRULE:FREQ=WEEKLY;UNTIL=20251101T000000;WKST=MO;BYDAY=TH,FR,SA,SU",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20241114T223000\nRRULE:FREQ=WEEKLY;UNTIL=20251101T000000;WKST=MO;BYDAY=TH,FR,SA,SU",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [

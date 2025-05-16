@@ -4,7 +4,7 @@
   "componentIdsAffected": ["TEL"],
   "startAt": "2023-11-03T05:00:00+08:00",
   "endAt": "2023-11-03T08:00:00+08:00",
-  "autogenRrule": "DTSTART;TZID=Asia/Singapore:20231103T053000\nRRULE:FREQ=WEEKLY;UNTIL=20240129T000000;WKST=MO;BYDAY=SA,SU",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20231103T053000\nRRULE:FREQ=WEEKLY;UNTIL=20240129T000000;WKST=MO;BYDAY=SA,SU",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [],

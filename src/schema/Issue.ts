@@ -136,7 +136,7 @@ export type IssueMaintenanceSubtype = z.infer<
 /** [MAINTENANCE] */
 export const IssueMaintenanceSchema = IssueBase.extend({
   type: z.literal(IssueTypeSchema.Enum.maintenance),
-  autogenRrule: z.string().optional(),
+  rrule: z.string().optional(),
   cancelledAt: z
     .string()
     .refine((val) => DateTime.fromISO(val).isValid)

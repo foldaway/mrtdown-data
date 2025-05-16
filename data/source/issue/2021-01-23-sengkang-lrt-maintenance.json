@@ -4,7 +4,7 @@
   "componentIdsAffected": ["SKLRT"],
   "startAt": "2021-01-23T00:00:00.000+08:00",
   "endAt": "2021-01-24T00:00:00.000+08:00",
-  "autogenRRule": "DTSTART;TZID=Asia/Singapore:20210123T000000\nRRULE:FREQ=DAILY;UNTIL=20210125T000000;WKST=MO",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20210123T000000\nRRULE:FREQ=DAILY;UNTIL=20210125T000000;WKST=MO",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": ["track.work"],

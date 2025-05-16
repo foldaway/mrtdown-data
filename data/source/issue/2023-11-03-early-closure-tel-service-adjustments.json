@@ -6,7 +6,7 @@
   ],
   "startAt": "2023-11-03T22:30:00.000+08:00",
   "endAt": "2023-11-04T00:00:00.000+08:00",
-  "autogenRrule": "DTSTART;TZID=Asia/Singapore:20231103T053000\nRRULE:FREQ=WEEKLY;UNTIL=20240129T000000;WKST=MO;BYDAY=FR,SA",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20231103T053000\nRRULE:FREQ=WEEKLY;UNTIL=20240129T000000;WKST=MO;BYDAY=FR,SA",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [],

@@ -4,7 +4,7 @@
   "componentIdsAffected": ["PGLRT"],
   "startAt": "2020-12-12T00:00:00.000+08:00",
   "endAt": "2020-12-13T00:00:00.000+08:00",
-  "autogenRRule": "DTSTART;TZID=Asia/Singapore:20201212T000000\nRRULE:FREQ=DAILY;UNTIL=20201214T000000;WKST=MO",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20201212T000000\nRRULE:FREQ=DAILY;UNTIL=20201214T000000;WKST=MO",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": ["track.work"],

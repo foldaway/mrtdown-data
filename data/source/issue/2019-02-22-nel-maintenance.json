@@ -6,7 +6,7 @@
   ],
   "startAt": "2019-02-22T23:00:00.000+08:00",
   "endAt": "2019-02-23T00:00:00.000+08:00",
-  "autogenRrule": "DTSTART;TZID=Asia/Singapore:20190222T230000\nRRULE:FREQ=DAILY;UNTIL=20190224T000000;WKST=MO",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20190222T230000\nRRULE:FREQ=DAILY;UNTIL=20190224T000000;WKST=MO",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [

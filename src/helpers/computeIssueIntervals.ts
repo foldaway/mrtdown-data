@@ -15,8 +15,8 @@ export function computeIssueIntervals(issue: Issue): Interval[] {
 
   const issueIntervals: Interval[] = [];
 
-  if (issue.type === 'maintenance' && issue.autogenRrule != null) {
-    const rruleSet = RRuleSet.parse(issue.autogenRrule);
+  if (issue.type === 'maintenance' && issue.rrule != null) {
+    const rruleSet = RRuleSet.parse(issue.rrule);
     for (const dt of rruleSet.all()) {
       const dtStart = DateTime.fromObject(dt.toObject()).setZone(
         rruleSet.tzid,
