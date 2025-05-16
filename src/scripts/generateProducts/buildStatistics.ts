@@ -1,18 +1,19 @@
+import { DateTime, type Interval } from 'luxon';
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { IssueModel } from '../../model/IssueModel';
-import { DateTime, Interval } from 'luxon';
-import { assert } from '../../util/assert';
-import type { Statistics } from '../../schema/Statistics';
-import { ComponentModel } from '../../model/ComponentModel';
-import type { IssueReference } from '../../schema/Overview';
-import type { IssueType } from '../../schema/Issue';
-import type { DateSummary } from '../../schema/DateSummary';
 import { calculateDurationWithinServiceHours } from '../../helpers/calculateDurationWithinServiceHours';
+import { computeIssueIntervals } from '../../helpers/computeIssueIntervals';
 import { splitIntervalByServiceHours } from '../../helpers/splitIntervalByServiceHours';
-import type { ComponentId } from '../../schema/Component';
 import { sumIntervalDuration } from '../../helpers/sumIntervalDuration';
+import { ComponentModel } from '../../model/ComponentModel';
+import { IssueModel } from '../../model/IssueModel';
 import { StationModel } from '../../model/StationModel';
+import type { ComponentId } from '../../schema/Component';
+import type { DateSummary } from '../../schema/DateSummary';
+import type { IssueType } from '../../schema/Issue';
+import type { IssueReference } from '../../schema/Overview';
+import type { Statistics } from '../../schema/Statistics';
+import { assert } from '../../util/assert';
 
 interface DateSummaryPartial {
   issues: IssueReference[];
@@ -113,53 +114,54 @@ export function buildStatistics() {
       }
     }
 
-    const interval = Interval.fromDateTimes(startAt, endAt);
-    for (const segment of splitIntervalByServiceHours(interval)) {
-      assert(segment.start != null);
-      assert(segment.end != null);
+    for (const interval of computeIssueIntervals(issue)) {
+      for (const segment of splitIntervalByServiceHours(interval)) {
+        assert(segment.start != null);
+        assert(segment.end != null);
 
-      const segmentStartIsoDate = segment.start.toISODate();
-      const dateSummary =
-        datesPartial[segmentStartIsoDate] ??
-        ({
-          issues: [],
-          issueTypesIntervals: {
-            disruption: [],
-            maintenance: [],
-            infra: [],
-          },
-          componentIdsIssueTypeIntervals: {},
-        } satisfies DateSummaryPartial);
-
-      const intervals = dateSummary.issueTypesIntervals[issue.type] ?? [];
-      intervals.push(segment);
-      dateSummary.issueTypesIntervals[issue.type] = intervals;
-
-      for (const componentId of issue.componentIdsAffected) {
-        const componentIssueTypeIntervals =
-          dateSummary.componentIdsIssueTypeIntervals[componentId] ??
+        const segmentStartIsoDate = segment.start.toISODate();
+        const dateSummary =
+          datesPartial[segmentStartIsoDate] ??
           ({
-            disruption: [],
-            maintenance: [],
-            infra: [],
-          } satisfies Record<IssueType, Interval[]>);
+            issues: [],
+            issueTypesIntervals: {
+              disruption: [],
+              maintenance: [],
+              infra: [],
+            },
+            componentIdsIssueTypeIntervals: {},
+          } satisfies DateSummaryPartial);
 
-        const intervals = componentIssueTypeIntervals[issue.type] ?? [];
+        const intervals = dateSummary.issueTypesIntervals[issue.type] ?? [];
         intervals.push(segment);
-        componentIssueTypeIntervals[issue.type] = intervals;
-        dateSummary.componentIdsIssueTypeIntervals[componentId] =
-          componentIssueTypeIntervals;
-      }
+        dateSummary.issueTypesIntervals[issue.type] = intervals;
 
-      dateSummary.issues.push({
-        id: issue.id,
-        type: issue.type,
-        title: issue.title,
-        componentIdsAffected: issue.componentIdsAffected,
-        startAt: issue.startAt,
-        endAt: issue.endAt,
-      });
-      datesPartial[segmentStartIsoDate] = dateSummary;
+        for (const componentId of issue.componentIdsAffected) {
+          const componentIssueTypeIntervals =
+            dateSummary.componentIdsIssueTypeIntervals[componentId] ??
+            ({
+              disruption: [],
+              maintenance: [],
+              infra: [],
+            } satisfies Record<IssueType, Interval[]>);
+
+          const intervals = componentIssueTypeIntervals[issue.type] ?? [];
+          intervals.push(segment);
+          componentIssueTypeIntervals[issue.type] = intervals;
+          dateSummary.componentIdsIssueTypeIntervals[componentId] =
+            componentIssueTypeIntervals;
+        }
+
+        dateSummary.issues.push({
+          id: issue.id,
+          type: issue.type,
+          title: issue.title,
+          componentIdsAffected: issue.componentIdsAffected,
+          startAt: issue.startAt,
+          endAt: issue.endAt,
+        });
+        datesPartial[segmentStartIsoDate] = dateSummary;
+      }
     }
 
     const stationCodes = new Set<string>();

@@ -7,9 +7,7 @@ import { buildStationManifests } from './buildStationManifests';
 import { buildComponentManifests } from './buildComponentManifests';
 import { buildComponentIndex } from './buildComponentIndex';
 import { buildIssueIndex } from './buildIssueIndex';
-import { autogenIssues } from './autogenIssues';
 
-autogenIssues();
 buildOverview();
 buildIssuesHistory();
 buildStatistics();
