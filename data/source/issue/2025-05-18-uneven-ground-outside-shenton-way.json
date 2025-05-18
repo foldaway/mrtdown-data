@@ -1,0 +1,29 @@
+{
+  "id": "2025-05-18-uneven-ground-outside-shenton-way",
+  "title": "Uneven ground outside Shenton Way MRT station",
+  "componentIdsAffected": [
+    "TEL",
+    "CCL"
+  ],
+  "startAt": "2025-05-18T11:30:00.000+08:00",
+  "endAt": null,
+  "type": "infra",
+  "subtypes": [],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Uneven ground likely due to natural ground settlement.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/uneven-ground-outside-shenton-way-mrt-station-poses-no-safety-risk-lta-bca",
+      "createdAt": "2025-05-18T11:30:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "SHW"
+      ]
+    }
+  ]
+}
