@@ -1,0 +1,60 @@
+{
+  "id": "2025-05-20-ccl-disruption-due-to-train-fault",
+  "title": "Circle Line disruption due to train fault",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2025-05-20T08:34:32.000+08:00",
+  "endAt": "2025-05-20T08:46:31.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "8.45am: CCL - Train fault has recovered, train services are progressively resuming. Free regular bus services are still available between Serangoon and Buona Vista stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114537397745343694",
+      "createdAt": "2025-05-20T08:46:31.000+08:00"
+    },
+    {
+      "type": "news.report",
+      "text": "",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/circle-line-mrt-stations-delay-train-fault-smrt-5140776",
+      "createdAt": "2025-05-20T08:43:00.000+08:00"
+    },
+    {
+      "type": "news.report",
+      "text": "SMRT said that a train fault had occurred between Botanic Gardens and Farrer Road stations on the CCL at around 8.15am.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/train-fault-between-paya-lebar-and-buona-vista-on-circle-line-causes-delays-during-morning-peak-hour",
+      "createdAt": "2025-05-20T08:34:49.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "8.30am: CCL - Due to a train fault, please add additional 30 minutes travel time between Paya Lebar and Buona Vista stations. Free regular bus services are available between Serangoon and Buona Vista.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114537350593524561",
+      "createdAt": "2025-05-20T08:34:32.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV"
+      ]
+    }
+  ]
+}
