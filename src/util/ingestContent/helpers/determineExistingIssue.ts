@@ -49,6 +49,7 @@ You can call the "searchIssues" tool once to get a list of all existing issues b
 
 Take Note:
 - Both breakdowns and delays are considered "disruption" type issues.
+- Service hour changes or station closures are considered "maintenance" issues.
 - The rail line is very often mentioned in the post text. e.g. [BPLRT] refers to BPLRT rail line.
 - Incidents typically only affect a single rail line, unless explicitly stated otherwise.
 - There could be multiple incidents on the same rail line in the same day. If an existing incident already has "endAt" populated, a new one will be required for the post.
@@ -57,11 +58,10 @@ Take Note:
   - date range must match up.
   - rail line is denoted in "componentIdsAffected"
   - check and ensure whether the post is relevant.
-  - there could be multiple issues for the same rail line on the same day. check using the timestamps.
-  - for "delay" type, updates from another day belong in a separate issue.
+  - there could be multiple issues for the same rail line on the same day. check using the timestamps and stations mentioned
 - The following cases are considered irrelevant:
   - Updates for bus services that are unrelated to MRT/LRT services
-  - Extension of service hours for festivities
+  - Extension of service hours for festivities (note - this is about ending later)
 
 
 `.trim(),
