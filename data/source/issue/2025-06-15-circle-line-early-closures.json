@@ -1,0 +1,92 @@
+{
+  "id": "2025-06-15-circle-line-early-closures",
+  "title": "Circle Line Early Closures from Sundays to Wednesdays",
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2025-06-15T23:00:00.000+08:00",
+  "endAt": "2025-06-16T00:00:00.000+08:00",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20250615T230000\nRRULE:FREQ=DAILY;UNTIL=20250731T000000;WKST=MO;BYDAY=MO,TU,WE,SU",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "CCL train services will end at 11pm from Sundays to Wednesdays during the period, says LTA and SMRT.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/circle-line-mrt-ccl-earlier-closures-lta-smrt-5146081",
+      "createdAt": "2025-05-22T11:31:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    }
+  ]
+}
