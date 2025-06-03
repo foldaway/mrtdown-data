@@ -1,0 +1,62 @@
+{
+  "id": "2025-06-03-root-cause-unknown",
+  "title": "Investigations into the September 2024 incident",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2025-06-03T17:00:00.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
+  "updates": [
+    {
+      "type": "news.report",
+      "text": "Investigations into the September 2024 incident found that the root cause could not be determined as key train components involved were too badly burnt and damaged.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/smrt-east-west-line-ewl-disruption-lta-3-million-fine-tsib-5163921",
+      "createdAt": "2025-06-03T17:00:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR",
+        "TAM",
+        "SIM",
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN",
+        "GCL",
+        "TCR",
+        "TWR",
+        "TLK"
+      ]
+    }
+  ]
+}
