@@ -1,0 +1,40 @@
+{
+  "id": "2025-06-03-mrt-disruption",
+  "title": "MRT Disruption due to Train Fault",
+  "componentIdsAffected": [
+    "EWL",
+    "NSL"
+  ],
+  "startAt": "2025-06-03T23:35:00.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
+  "updates": [
+    {
+      "type": "news.report",
+      "text": "TSIB said it could not determine the cause of the axle box’s failure, as the components were damaged.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/first-sign-of-fault-that-sparked-mrt-disruption-surfaced-almost-2-hours-before-train-stalled",
+      "createdAt": "2025-06-03T23:35:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "CTH",
+        "RFP",
+        "TPG"
+      ]
+    }
+  ]
+}
