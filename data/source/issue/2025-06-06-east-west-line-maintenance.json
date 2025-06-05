@@ -1,0 +1,63 @@
+{
+  "id": "2025-06-06-east-west-line-maintenance",
+  "title": "East West Line maintenance",
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2025-06-06T05:00:00.000+08:00",
+  "endAt": null,
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "It also highlights the need for SMRT to tighten its maintenance protocols, says the writer.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/east-west-line-probe-shows-no-detail-is-too-minute-in-rail-maintenance",
+      "createdAt": "2025-06-06T05:00:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR",
+        "TAM",
+        "SIM",
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN",
+        "GCL",
+        "TCR",
+        "TWR",
+        "TLK"
+      ]
+    }
+  ]
+}
