@@ -1,0 +1,37 @@
+{
+  "id": "2025-06-11-smrt-files-police-report-over-track-trespassing",
+  "title": "SMRT files police report over track trespassing incident",
+  "componentIdsAffected": [
+    "EWL",
+    "NSL"
+  ],
+  "startAt": "2025-06-11T16:45:33.000+08:00",
+  "endAt": null,
+  "type": "infra",
+  "subtypes": [],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "“We take a serious view of this incident, as track trespassing poses severe safety risks,” said SMRT.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/smrt-files-police-report-over-social-media-video-taken-from-mrt-tracks",
+      "createdAt": "2025-06-11T16:45:33.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "CTH",
+        "RFP"
+      ]
+    },
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR"
+      ]
+    }
+  ]
+}
