@@ -12,6 +12,12 @@
   "updates": [
     {
       "type": "operator.update",
+      "text": "",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/smrt-police-report-video-train-track-trespass-simei-tanah-merah-5175061",
+      "createdAt": "2025-06-11T20:01:00.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "“We take a serious view of this incident, as track trespassing poses severe safety risks,” said SMRT.",
       "sourceUrl": "https://www.straitstimes.com/singapore/smrt-files-police-report-over-social-media-video-taken-from-mrt-tracks",
       "createdAt": "2025-06-11T16:45:33.000+08:00"
@@ -22,8 +28,8 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
-        "CTH",
-        "RFP"
+        "SIM",
+        "TNM"
       ]
     },
     {
