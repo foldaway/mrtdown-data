@@ -4,18 +4,36 @@
   "componentIdsAffected": [
     "NSL"
   ],
-  "startAt": "2025-06-13T09:57:28.000+08:00",
-  "endAt": null,
+  "startAt": "2025-06-13T09:28:37.000+08:00",
+  "endAt": "2025-06-13T10:24:36.000+08:00",
   "type": "disruption",
   "subtypes": [
     "signal.fault"
   ],
   "updates": [
     {
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Train service on the North-South Line has returned to normalcy.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1933349755549290994",
+      "createdAt": "2025-06-13T10:24:36.000+08:00"
+    },
+    {
       "type": "operator.update",
-      "text": "9.45am: NSL - Due to a signaling fault, please add additional 15 minutes travel time between Ang Mo Kio and Choa Chu Kang stations.",
-      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114673572167346514",
-      "createdAt": "2025-06-13T09:57:28.000+08:00"
+      "text": "[NSL]UPDATE: : Due to a signalling fault, pls add 15mins train travel time between #AngMoKio and #ChoaChuKang. Train service is still available, we apologise for the delay to your journey.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1933347351726600384",
+      "createdAt": "2025-06-13T10:15:03.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL]UPDATE: : Due to a signalling fault, pls add 15mins train travel time between #AngMoKio and #ChoaChuKang. Train service is still available. Commuters are advised to use alternative lines.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1933347181433663594",
+      "createdAt": "2025-06-13T10:14:22.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a signalling fault, pls add 15mins train travel time btwn #AngMoKio and #ChoaChuKang.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1933335667934966203",
+      "createdAt": "2025-06-13T09:28:37.000+08:00"
     }
   ],
   "stationIdsAffected": [
