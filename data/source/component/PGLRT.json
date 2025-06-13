@@ -6,6 +6,7 @@
     "ms": "Laluan LRT Punggol",
     "ta": "பொங்கோல் எல்ஆர்டி வரி"
   },
+  "type": "lrt",
   "color": "#748477",
   "startedAt": "2005-01-29",
   "branches": {

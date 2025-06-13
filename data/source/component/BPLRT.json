@@ -6,6 +6,7 @@
     "ms": "Laluan LRT Bukit Panjang",
     "ta": "புக்கிட் பஞ்சாங் வரி"
   },
+  "type": "lrt",
   "color": "#748477",
   "startedAt": "1999-11-06",
   "branches": {

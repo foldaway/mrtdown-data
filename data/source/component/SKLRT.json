@@ -6,6 +6,7 @@
     "ms": "Laluan LRT Sengkang",
     "ta": "செங்காங் லைட் ரெயில் வரி"
   },
+  "type": "lrt",
   "color": "#748477",
   "startedAt": "2003-01-18",
   "branches": {

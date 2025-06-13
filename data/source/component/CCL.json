@@ -6,6 +6,7 @@
     "ms": "Laluan MRT Circle",
     "ta": "இணைப்பு எம்ஆர்டி வழி"
   },
+  "type": "mrt.medium",
   "color": "#fa9e0d",
   "startedAt": "2009-05-28",
   "branches": {

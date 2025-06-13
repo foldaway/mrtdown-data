@@ -6,6 +6,7 @@
     "ms": "Laluan MRT Thomson-Pantai Timur",
     "ta": "தாம்சன் - ஈஸ்ட் கோஸ்ட் எம்ஆர்டி வழி"
   },
+  "type": "mrt.medium",
   "color": "#9D5B25",
   "startedAt": "2020-01-31",
   "branches": {

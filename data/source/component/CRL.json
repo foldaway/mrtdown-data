@@ -6,6 +6,7 @@
     "ms": "Laluan MRT Rentas Pulau",
     "ta": "குறுக்குத் தீவு ரயில் பாதை"
   },
+  "type": "mrt.high",
   "color": "#97C616",
   "startedAt": "2030-12-31",
   "branches": {

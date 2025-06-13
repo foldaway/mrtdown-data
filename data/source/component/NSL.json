@@ -6,6 +6,7 @@
     "ms": "Laluan MRT Utara Selatan",
     "ta": "வடக்கு தெற்கு எம்ஆர்டி வழி"
   },
+  "type": "mrt.high",
   "color": "#d42e12",
   "startedAt": "1987-11-07",
   "branches": {

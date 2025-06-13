@@ -6,6 +6,7 @@
     "ms": "Laluan Daerah Jurong",
     "ta": "ஜூரோங் வட்டாரப் பாதை"
   },
+  "type": "mrt.medium",
   "color": "#0099aa",
   "startedAt": "2027-12-31",
   "branches": {
