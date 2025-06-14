@@ -16,12 +16,23 @@ export type StationComponentMember = z.infer<
   typeof StationComponentMemberSchema
 >;
 
+export const StationGeoSchema = z.object({
+  latitude: z.number(),
+  longitude: z.number(),
+});
+export type StationGeo = z.infer<typeof StationGeoSchema>;
+
 export const StationSchema = z.object({
   id: StationIdSchema.describe(
     '2-5 letter abbreviation of station name that is unique in the entire network and easily understood',
   ),
   name: z.string(),
   name_translations: z.record(z.string(), z.string()),
+  town: z.string(),
+  town_translations: z.record(z.string(), z.string()),
+  landmarks: z.array(z.string()),
+  landmarks_translations: z.record(z.string(), z.array(z.string())),
+  geo: StationGeoSchema,
   componentMembers: z
     .record(ComponentIdSchema, z.array(StationComponentMemberSchema))
     .describe('Mapping of component ID to Station codes'),
