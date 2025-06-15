@@ -12,5 +12,33 @@
         "startedAt": "2030-12-31"
       }
     ]
+  },
+  "town": "Changi",
+  "town_translations": {
+    "zh-Hans": "樟宜",
+    "ms": "Changi",
+    "ta": "சங்கீ"
+  },
+  "landmarks": [
+    "Changi Business Park",
+    "Changi Airport Terminal 5"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "樟宜商业园",
+      "樟宜机场5号航站楼"
+    ],
+    "ms": [
+      "Taman Perniagaan Changi",
+      "Terminal 5 Lapangan Terbang Changi"
+    ],
+    "ta": [
+      "சங்கீ வாணிச்ய பூங்கா",
+      "சங்கீ விமான நிலைய 5வது கட்டிடம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3664,
+    "longitude": 103.9712
   }
 }

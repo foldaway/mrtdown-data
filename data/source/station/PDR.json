@@ -12,5 +12,37 @@
         "startedAt": "2028-12-31"
       }
     ]
+  },
+  "town": "Jurong East",
+  "town_translations": {
+    "zh-Hans": "裕廊东",
+    "ms": "Jurong Timur",
+    "ta": "ஜூரோங் கிழக்கு"
+  },
+  "landmarks": [
+    "Pandan Reservoir",
+    "Jurong Eco-Garden",
+    "Singapore Discovery Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "潘丹水库",
+      "裕廊生态花园",
+      "新加坡探索中心"
+    ],
+    "ms": [
+      "Tasek Pandan",
+      "Taman Ekologi Jurong",
+      "Pusat Penemuan Singapura"
+    ],
+    "ta": [
+      "பாண்டான் கண்ணீர்",
+      "ஜூரோங் எக்கோ-வானோகம்",
+      "சிங்கப்பூர் கண்டுபிடிப்பு மையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3632,
+    "longitude": 103.7357
   }
 }

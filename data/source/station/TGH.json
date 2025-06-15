@@ -12,5 +12,33 @@
         "startedAt": "2027-12-31"
       }
     ]
+  },
+  "town": "Tengah",
+  "town_translations": {
+    "zh-Hans": "登加",
+    "ms": "Tengah",
+    "ta": "தெங்கா"
+  },
+  "landmarks": [
+    "Tengah Forest Town",
+    "Bukit Batok Driving Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "登加森林小镇",
+      "武吉巴督驾驶中心"
+    ],
+    "ms": [
+      "Bandar Hutan Tengah",
+      "Pusat Memandu Bukit Batok"
+    ],
+    "ta": [
+      "தெங்கா காடுகள் நகரம்",
+      "புக்கிட் பாடோக் ஓட்டுநர் மையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3442,
+    "longitude": 103.7515
   }
 }

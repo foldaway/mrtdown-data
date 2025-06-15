@@ -12,5 +12,37 @@
         "startedAt": "1988-11-05"
       }
     ]
+  },
+  "town": "Jurong West",
+  "town_translations": {
+    "zh-Hans": "裕廊西",
+    "ms": "Jurong Barat",
+    "ta": "ஜுரோங்க் மேற்கு"
+  },
+  "landmarks": [
+    "Jurong Lake Gardens",
+    "Chinese Garden",
+    "Japanese Garden"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊湖花园",
+      "华侨园",
+      "日本花园"
+    ],
+    "ms": [
+      "Taman Tasik Jurong",
+      "Taman Cina",
+      "Taman Jepun"
+    ],
+    "ta": [
+      "ஜுரோங்க் ஏரியின் தோட்டம்",
+      "சீனா போர்டு",
+      "ஜப்பான் தோட்டம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.349119,
+    "longitude": 103.728223
   }
 }

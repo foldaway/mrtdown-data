@@ -12,5 +12,37 @@
         "startedAt": "2026-12-31"
       }
     ]
+  },
+  "town": "Outram",
+  "town_translations": {
+    "zh-Hans": "欧南",
+    "ms": "Outram",
+    "ta": "ஆஉட்ராம்"
+  },
+  "landmarks": [
+    "Singapore General Hospital",
+    "Public Transport Security Command",
+    "Cantonment Police Complex"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡中央医院",
+      "公共交通保安指挥部",
+      "坎吨门警察综合大楼"
+    ],
+    "ms": [
+      "Hospital Besar Singapura",
+      "Komando Keselamatan Pengangkutan Awam",
+      "Kompleks Polis Cantonment"
+    ],
+    "ta": [
+      "சிங்கப்பூர் பொதுமக்கள் மருத்துவமனை",
+      "பொது போக்குவரத்து பாதுகாப்பு கட்டளை",
+      "காண்டோன்மென்ட் போலீஸ் வளாகம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2749,
+    "longitude": 103.8416
   }
 }

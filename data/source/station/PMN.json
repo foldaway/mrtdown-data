@@ -18,5 +18,37 @@
         "startedAt": "2013-12-22"
       }
     ]
+  },
+  "town": "Downtown Core",
+  "town_translations": {
+    "zh-Hans": "市中心",
+    "ms": "Pusat Bandar",
+    "ta": "நகர மையம்"
+  },
+  "landmarks": [
+    "Marina Bay Sands",
+    "ArtScience Museum",
+    "Singapore Flyer"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "滨海湾金沙",
+      "艺术科学博物馆",
+      "新加坡摩天观景轮"
+    ],
+    "ms": [
+      "Marina Bay Sands",
+      "Muzium Seni dan Sains",
+      "Ferris Wheel Singapura"
+    ],
+    "ta": [
+      "மரீனா பே சாண்ட்ஸ்",
+      "கலை அறிவியல் அருங்காட்சியகம்",
+      "சிங்கப்பூர் முக்கோணம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2904,
+    "longitude": 103.8607
   }
 }

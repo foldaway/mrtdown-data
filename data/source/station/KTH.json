@@ -12,5 +12,29 @@
         "startedAt": "1999-11-06"
       }
     ]
+  },
+  "town": "Choa Chu Kang",
+  "town_translations": {
+    "zh-Hans": "喬治市",
+    "ms": "Choa Chu Kang",
+    "ta": "சோவா சு கங்"
+  },
+  "landmarks": [
+    "Keat Hong Shopping Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "凯鸿购物中心"
+    ],
+    "ms": [
+      "Pusat Membeli-belah Keat Hong"
+    ],
+    "ta": [
+      "கீட் ஹாங் ஷாப்பிங் சென்டர்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3931,
+    "longitude": 103.7468
   }
 }

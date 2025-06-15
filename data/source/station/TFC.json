@@ -12,5 +12,37 @@
         "startedAt": "2032-01-01"
       }
     ]
+  },
+  "town": "Bukit Timah",
+  "town_translations": {
+    "zh-Hans": "武吉知马",
+    "ms": "Bukit Timah",
+    "ta": "புக்கிட் டிமாஹ"
+  },
+  "landmarks": [
+    "Singapore Turf Club",
+    "The Grandstand",
+    "Dairy Farm Nature Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡赛马俱乐部",
+      "大草坪商场",
+      "牛奶农场自然公园"
+    ],
+    "ms": [
+      "Kelab Lumba Singapura",
+      "The Grandstand",
+      "Taman Alam Dairy Farm"
+    ],
+    "ta": [
+      "சிங்களூர் பாரம்பரிய கழகம்",
+      "தி கிரான்ட்ஸ்டாண்ட்",
+      "டெயரியார் ஃபாமின் இயற்கைப் பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3691,
+    "longitude": 103.7739
   }
 }

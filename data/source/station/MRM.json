@@ -12,5 +12,37 @@
         "startedAt": "2009-05-28"
       }
     ]
+  },
+  "town": "Bishan",
+  "town_translations": {
+    "zh-Hans": "碧山",
+    "ms": "Bishan",
+    "ta": "பிட்சான்"
+  },
+  "landmarks": [
+    "Bishan Park",
+    "Bishan Sports Hall",
+    "Marymount Convent School"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "碧山公园",
+      "碧山体育馆",
+      "玛丽蒙特修道院学校"
+    ],
+    "ms": [
+      "Taman Bishan",
+      "Dewan Sukan Bishan",
+      "Sekolah Konvent Marymount"
+    ],
+    "ta": [
+      "பிட்சான் பூங்கா",
+      "பிட்சான் விளையாட்டு மையம்",
+      "மேரி மவுண்ட் கான்வேண்ட் பள்ளி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3403,
+    "longitude": 103.8434
   }
 }

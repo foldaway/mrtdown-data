@@ -12,5 +12,37 @@
         "startedAt": "2007-06-15"
       }
     ]
+  },
+  "town": "Punggol",
+  "town_translations": {
+    "zh-Hans": "榜鹅",
+    "ms": "Punggol",
+    "ta": "புங்க்கோல்"
+  },
+  "landmarks": [
+    "Oasis Terraces",
+    "Punggol Waterway Park",
+    "Waterway Point"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "榜鹅庭院",
+      "榜鹅水道公园",
+      "水道广场"
+    ],
+    "ms": [
+      "Teras Oasis",
+      "Taman Air Punggol",
+      "Waterway Point"
+    ],
+    "ta": [
+      "ஓயாஸ் டெர்ரேஸ்ஸ்",
+      "புங்க்கோல் நீர் பாதை பூங்கா",
+      "வாட்டர் வே பாயின்ட்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.39888,
+    "longitude": 103.9101
   }
 }

@@ -12,5 +12,37 @@
         "startedAt": "2016-12-29"
       }
     ]
+  },
+  "town": "Punggol",
+  "town_translations": {
+    "zh-Hans": "榜鹅",
+    "ms": "Punggol",
+    "ta": "புங்க்கள்"
+  },
+  "landmarks": [
+    "Punggol Waterfront",
+    "Punggol Waterway Park",
+    "Punggol End"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "榜鹅滨水区",
+      "榜鹅水道公园",
+      "榜鹅尽头"
+    ],
+    "ms": [
+      "Punggol Waterfront",
+      "Taman Air Punggol",
+      "Punggol End"
+    ],
+    "ta": [
+      "பொங்கோல் நீரியல் பகுதி",
+      "பொங்கோல் நீர்வழி பூங்கா",
+      "பொங்கோல் முடிவு"
+    ]
+  },
+  "geo": {
+    "latitude": 1.4,
+    "longitude": 103.905
   }
 }

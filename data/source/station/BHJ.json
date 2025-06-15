@@ -12,5 +12,37 @@
         "startedAt": "2027-12-31"
       }
     ]
+  },
+  "town": "Jurong West",
+  "town_translations": {
+    "zh-Hans": "裕廊西",
+    "ms": "Jurong Barat",
+    "ta": "ஜூரோங் மேற்குக் காற்று"
+  },
+  "landmarks": [
+    "Jurong West Sports and Recreation Centre",
+    "Pioneer Mall",
+    "Jurong Point"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊西运动与休闲中心",
+      "先锋商场",
+      "裕廊中心"
+    ],
+    "ms": [
+      "Pusat Sukan dan Rekreasi Jurong West",
+      "Pusat Beli-Belah Pioneer",
+      "Jurong Point"
+    ],
+    "ta": [
+      "ஜூரோங் மேற்குக் விளையாட்டு மற்றும் ஓய்வு மையம்",
+      "பயோனியர் மால்",
+      "ஜூரோங் பாயினர்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3512,
+    "longitude": 103.7199
   }
 }

@@ -12,5 +12,33 @@
         "startedAt": "2015-12-27"
       }
     ]
+  },
+  "town": "Rochor",
+  "town_translations": {
+    "zh-Hans": "梧槽",
+    "ms": "Rochor",
+    "ta": "ரோச்சேர்"
+  },
+  "landmarks": [
+    "LASALLE College of the Arts",
+    "Tekka Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "拉萨尔艺术学院",
+      "德卡中心"
+    ],
+    "ms": [
+      "Kolej Seni LASALLE",
+      "Pusat Tekka"
+    ],
+    "ta": [
+      "லசால் கலைக்கல்லூரி",
+      "டெக்கா மத்திய"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3016,
+    "longitude": 103.852
   }
 }

@@ -18,5 +18,37 @@
         "startedAt": "2035-01-01"
       }
     ]
+  },
+  "town": "Sungei Kadut",
+  "town_translations": {
+    "zh-Hans": "双溪加株",
+    "ms": "Sungei Kadut",
+    "ta": "சுங்கை கடுட்"
+  },
+  "landmarks": [
+    "Kranji Countryside",
+    "Sungei Kadut Industrial Estate",
+    "Kranji War Memorial"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "克兰芝乡村",
+      "双溪加株工业区",
+      "克兰芝阵亡将士公墓"
+    ],
+    "ms": [
+      "Kawasan Luar Bandar Kranji",
+      "Kawasan Perindustrian Sungei Kadut",
+      "Tugu Peringatan Perang Kranji"
+    ],
+    "ta": [
+      "கிராஞ்சி நாட்டு சூழல்",
+      "சுங்கை கடுட் தொழிற்துறை எஸ்டேட்",
+      "கிராஞ்சி போர் நினைவிடம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.4192,
+    "longitude": 103.7464
   }
 }

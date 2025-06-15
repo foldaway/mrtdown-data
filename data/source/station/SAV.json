@@ -12,5 +12,37 @@
         "startedAt": "2015-12-27"
       }
     ]
+  },
+  "town": "Bukit Timah",
+  "town_translations": {
+    "zh-Hans": "武吉知马",
+    "ms": "Bukit Timah",
+    "ta": "புக்கிட் திமா"
+  },
+  "landmarks": [
+    "Hwa Chong Institution",
+    "Nanyang Girls' High School",
+    "Holland Village"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "华侨中学",
+      "南洋女中",
+      "荷兰村"
+    ],
+    "ms": [
+      "Hwa Chong Institution",
+      "Sekolah Menengah Perempuan Nanyang",
+      "Kampung Holland"
+    ],
+    "ta": [
+      "ஹ்வா செயாங் நிறுவனத்திற்கு",
+      "நன்யாங் பெண்கள் உயர்நிலை பள்ளி",
+      "ஹோலண்ட் கிராமம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3363,
+    "longitude": 103.7865
   }
 }

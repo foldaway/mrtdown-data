@@ -12,5 +12,37 @@
         "startedAt": "1987-12-12"
       }
     ]
+  },
+  "town": "Orchard",
+  "town_translations": {
+    "zh-Hans": "乌节",
+    "ms": "Orchard",
+    "ta": "ஆர்ச்சர்"
+  },
+  "landmarks": [
+    "Orchard Road",
+    "313@Somerset",
+    "Orchard Central"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "乌节路",
+      "313@乌节",
+      "乌节中央"
+    ],
+    "ms": [
+      "Orchard Road",
+      "313@Somerset",
+      "Orchard Central"
+    ],
+    "ta": [
+      "ஆர்ச்சர் ரோடு",
+      "313@சொமர்செட்",
+      "ஆர்ச்சர் மையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2993,
+    "longitude": 103.8398
   }
 }

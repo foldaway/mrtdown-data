@@ -24,5 +24,41 @@
         "startedAt": "2022-11-13"
       }
     ]
+  },
+  "town": "Outram",
+  "town_translations": {
+    "zh-Hans": "欧南",
+    "ms": "Outram",
+    "ta": "ஔட்ராம்"
+  },
+  "landmarks": [
+    "Singapore General Hospital",
+    "Maxwell Food Centre",
+    "Chinatown",
+    "Thaipusam Temple"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡中央医院",
+      "麦士威熟食中心",
+      "唐人街",
+      "泰米尔节寺庙"
+    ],
+    "ms": [
+      "Hospital Umum Singapura",
+      "Pusat Makanan Maxwell",
+      "Chinatown",
+      "Kuil Thaipusam"
+    ],
+    "ta": [
+      "சிங்கப்பூர் பொது மருத்துவமனை",
+      "மெக்செல் உணவு மையம்",
+      "சீன்காட்டை",
+      "தைபூசம் ஆலயம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2813,
+    "longitude": 103.8335
   }
 }

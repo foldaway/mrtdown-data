@@ -18,5 +18,37 @@
         "startedAt": "2009-05-28"
       }
     ]
+  },
+  "town": "Bishan",
+  "town_translations": {
+    "zh-Hans": "碧山",
+    "ms": "Bishan",
+    "ta": "பிஸான்"
+  },
+  "landmarks": [
+    "Bishan Park",
+    "Singapore Pool Bishan",
+    "Bishan Junction 8"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "碧山公园",
+      "新加坡博彩碧山",
+      "碧山第八商场"
+    ],
+    "ms": [
+      "Taman Bishan",
+      "Singapore Pool Bishan",
+      "Junction 8 Bishan"
+    ],
+    "ta": [
+      "பிஷான் பூங்கா",
+      "சிங்கப்பூர் பூல் பிஷான்",
+      "ஜங்க்ஷன் 8 பிஷான்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3521,
+    "longitude": 103.8481
   }
 }

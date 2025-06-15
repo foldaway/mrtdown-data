@@ -12,5 +12,37 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Rochor",
+  "town_translations": {
+    "zh-Hans": "罗楚",
+    "ms": "Rochor",
+    "ta": "ரோசோர்"
+  },
+  "landmarks": [
+    "Tekka Centre",
+    "Mustafa Centre",
+    "Little India Arcade"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "德卡中心",
+      "穆斯塔法中心",
+      "小印度拱廊"
+    ],
+    "ms": [
+      "Pusat Tekka",
+      "Pusat Mustafa",
+      "Arcade Little India"
+    ],
+    "ta": [
+      "டெக்கா மையம்",
+      "முஸ்தாஃபா மையம்",
+      "லிட்டில் இந்தியா அர்கேட்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3082,
+    "longitude": 103.8512
   }
 }

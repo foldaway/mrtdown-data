@@ -18,5 +18,37 @@
         "startedAt": "2015-12-27"
       }
     ]
+  },
+  "town": "Rochor",
+  "town_translations": {
+    "zh-Hans": "罗惹",
+    "ms": "Rochor",
+    "ta": "ரோசார்"
+  },
+  "landmarks": [
+    "Sri Veeramakaliamman Temple",
+    "Little India Arcade",
+    "Tekka Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "斯里维拉玛卡里安曼庙",
+      "小印度拱廊",
+      "德卡中心"
+    ],
+    "ms": [
+      "Kuil Sri Veeramakaliamman",
+      "Arcade Little India",
+      "Pusat Tekka"
+    ],
+    "ta": [
+      "ஸ்ரீ வீரமகளிம்மன் தேவாலயம்",
+      "லிட்டில் இந்தியா ஆர்கேடு",
+      "டெக்கா மையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3079,
+    "longitude": 103.8488
   }
 }

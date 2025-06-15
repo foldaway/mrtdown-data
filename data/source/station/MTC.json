@@ -12,5 +12,37 @@
         "startedAt": "2024-06-23"
       }
     ]
+  },
+  "town": "Marine Parade",
+  "town_translations": {
+    "zh-Hans": "马林百列",
+    "ms": "Marine Parade",
+    "ta": "மரின் பரேட்"
+  },
+  "landmarks": [
+    "East Coast Park",
+    "Marine Parade Market",
+    "I12 Katong"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "东海岸公园",
+      "海洋公园市场",
+      "I12 Katong"
+    ],
+    "ms": [
+      "Taman Pantai Timur",
+      "Pasar Marine Parade",
+      "I12 Katong"
+    ],
+    "ta": [
+      "கிழக்கு கடற்கரை பூங்கா",
+      "மரீன் பரேட் சந்தை",
+      "I12 Katong"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3002,
+    "longitude": 103.9131
   }
 }

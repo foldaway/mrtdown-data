@@ -12,5 +12,37 @@
         "startedAt": "2011-06-20"
       }
     ]
+  },
+  "town": "Toa Payoh",
+  "town_translations": {
+    "zh-Hans": "大巴窑",
+    "ms": "Toa Payoh",
+    "ta": "டோ பாயோ"
+  },
+  "landmarks": [
+    "Cedar Girls' Secondary School",
+    "Woodleigh Mall",
+    "Bidadari Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "锡德女子中学",
+      "兀里商场",
+      "比达达利公园"
+    ],
+    "ms": [
+      "Sekolah Menengah Perempuan Cedar",
+      "Woodleigh Mall",
+      "Taman Bidadari"
+    ],
+    "ta": [
+      "சிடார் மகளிர் மேல்நிலைப் பள்ளி",
+      "வுட்லீ மால்",
+      "பிடாட்ரி பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3397,
+    "longitude": 103.8704
   }
 }

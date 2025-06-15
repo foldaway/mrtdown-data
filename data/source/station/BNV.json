@@ -18,5 +18,41 @@
         "startedAt": "2011-10-08"
       }
     ]
+  },
+  "town": "Queenstown",
+  "town_translations": {
+    "zh-Hans": "昆士镇",
+    "ms": "Queenstown",
+    "ta": "க்வீன்ஸ்டவுன்"
+  },
+  "landmarks": [
+    "Star Vista",
+    "One-North",
+    "Singapore Science Park",
+    "Biopolis"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "星享道",
+      "一北",
+      "新加坡科学园",
+      "生物园区"
+    ],
+    "ms": [
+      "Star Vista",
+      "One-North",
+      "Taman Sains Singapura",
+      "Biopolis"
+    ],
+    "ta": [
+      "ஸ்டார் விர்ஸ்டா",
+      "ஒன்-நார்த்",
+      "சிங்கப்பூர் அறிவியல் பூங்கா",
+      "பயோபாலிஸ்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2958,
+    "longitude": 103.785
   }
 }

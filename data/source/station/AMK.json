@@ -18,5 +18,37 @@
         "startedAt": "2030-12-31"
       }
     ]
+  },
+  "town": "Ang Mo Kio",
+  "town_translations": {
+    "zh-Hans": "宏茂桥",
+    "ms": "Ang Mo Kio",
+    "ta": "அங் மொ கியோ"
+  },
+  "landmarks": [
+    "Ang Mo Kio Hub",
+    "Bishan-Ang Mo Kio Park",
+    "Yio Chu Kang Stadium"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "宏茂桥中心",
+      "碧山-宏茂桥公园",
+      "优筑工地体育场"
+    ],
+    "ms": [
+      "Ang Mo Kio Hub",
+      "Taman Bishan-Ang Mo Kio",
+      "Stadium Yio Chu Kang"
+    ],
+    "ta": [
+      "அங் மொ கியோ ஹப்",
+      "பிசான்-அங் மொ கியோ பூங்கா",
+      "யொ சு காங் ஸ்டేడியம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3755,
+    "longitude": 103.8484
   }
 }

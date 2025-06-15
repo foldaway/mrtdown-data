@@ -12,5 +12,33 @@
         "startedAt": "2029-12-31"
       }
     ]
+  },
+  "town": "Jurong West",
+  "town_translations": {
+    "zh-Hans": "裕廊西",
+    "ms": "Jurong Barat",
+    "ta": "ஜூராங் மேற்கு"
+  },
+  "landmarks": [
+    "Jurong West Swimming Complex",
+    "Jurong Bird Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊西游泳中心",
+      "裕廊鸟园"
+    ],
+    "ms": [
+      "Kompleks Renang Jurong Barat",
+      "Taman Burung Jurong"
+    ],
+    "ta": [
+      "ஆரஞ்சு குளியல் மையம்",
+      "ஜூராங் பறவை தோட்டம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.349,
+    "longitude": 103.686
   }
 }

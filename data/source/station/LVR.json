@@ -12,5 +12,29 @@
         "startedAt": "1989-11-04"
       }
     ]
+  },
+  "town": "Kallang",
+  "town_translations": {
+    "zh-Hans": "卡兰",
+    "ms": "Kallang",
+    "ta": "கல்லாங்"
+  },
+  "landmarks": [
+    "Meyer Mansion"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "梅耶公寓"
+    ],
+    "ms": [
+      "Meyer Mansion"
+    ],
+    "ta": [
+      "மேயர் மான்சன்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3067,
+    "longitude": 103.8652
   }
 }

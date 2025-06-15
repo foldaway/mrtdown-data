@@ -12,5 +12,33 @@
         "startedAt": "1988-03-12"
       }
     ]
+  },
+  "town": "Bukit Merah",
+  "town_translations": {
+    "zh-Hans": "实龙岗",
+    "ms": "Redhill",
+    "ta": "ரெட் ஹில்"
+  },
+  "landmarks": [
+    "Redhill Market",
+    "Queenstown Public Library"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "实龙岗市场",
+      "显丰公共图书馆"
+    ],
+    "ms": [
+      "Pasar Redhill",
+      "Perpustakaan Awam Queenstown"
+    ],
+    "ta": [
+      "ரெட் ஹில் சந்தை",
+      "குவீன்ஸ்டவுன் பொது நூலகம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2889,
+    "longitude": 103.8239
   }
 }

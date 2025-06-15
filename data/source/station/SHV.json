@@ -12,5 +12,37 @@
         "startedAt": "1999-11-06"
       }
     ]
+  },
+  "town": "Bukit Panjang",
+  "town_translations": {
+    "zh-Hans": "百龄峇峇",
+    "ms": "Bukit Panjang",
+    "ta": "புக்கித் பஞ்சாங்"
+  },
+  "landmarks": [
+    "Bukit Panjang Plaza",
+    "Hillion Mall",
+    "Zhenghua Nature Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "百龄峇峇广场",
+      "Hillion购物中心",
+      "正华自然公园"
+    ],
+    "ms": [
+      "Plaza Bukit Panjang",
+      "Hillion Mall",
+      "Taman Alam Zhenghua"
+    ],
+    "ta": [
+      "புக்கித் பஞ்சாங் ப்ளாசா",
+      "ஹில்லியன் மால்",
+      "செங்குவா இயற்கை பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3763,
+    "longitude": 103.7689
   }
 }

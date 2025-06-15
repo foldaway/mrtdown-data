@@ -12,5 +12,37 @@
         "startedAt": "2009-02-28"
       }
     ]
+  },
+  "town": "Jurong West",
+  "town_translations": {
+    "zh-Hans": "裕廊西",
+    "ms": "Jurong Barat",
+    "ta": "ஜூரோங் மேற்கு"
+  },
+  "landmarks": [
+    "Pioneer Mall",
+    "JTC Aviation One",
+    "Singapore Discovery Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "先驱商场",
+      "JTC航空一号",
+      "新加坡发现中心"
+    ],
+    "ms": [
+      "Pioneer Mall",
+      "JTC Aviation One",
+      "Singapore Discovery Centre"
+    ],
+    "ta": [
+      "பயனர் மால்",
+      "JTC ஏவியர்மெண்ட் ஒன்",
+      "சிங்கப்பூர் கண்டுபிடிப்பு மையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3476,
+    "longitude": 103.6615
   }
 }

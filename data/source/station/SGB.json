@@ -18,5 +18,37 @@
         "startedAt": "2026-12-31"
       }
     ]
+  },
+  "town": "Bedok",
+  "town_translations": {
+    "zh-Hans": "贝多克",
+    "ms": "Bedok",
+    "ta": "பேடோக்"
+  },
+  "landmarks": [
+    "Bedok Reservoir Park",
+    "Changi Methodist Church",
+    "Bedok Mall"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "贝多克蓄水池公园",
+      "樟宜卫理公会",
+      "贝多克广场"
+    ],
+    "ms": [
+      "Taman Empangan Bedok",
+      "Gereja Metodis Changi",
+      "Bedok Mall"
+    ],
+    "ta": [
+      "பேடோக் கிணற்றிற் பூங்கா",
+      "சங்கி மெத்தோதிஸ்ட் தேவாலயம்",
+      "பெடொக் மால்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.334994,
+    "longitude": 103.93413
   }
 }

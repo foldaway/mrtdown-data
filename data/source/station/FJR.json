@@ -12,5 +12,37 @@
         "startedAt": "1999-11-06"
       }
     ]
+  },
+  "town": "Bukit Panjang",
+  "town_translations": {
+    "zh-Hans": "武吉班让",
+    "ms": "Bukit Panjang",
+    "ta": "புக்கித் பஞ்ஜாங்"
+  },
+  "landmarks": [
+    "Bukit Panjang Plaza",
+    "Fajar Shopping Centre",
+    "Jellybean Montessori"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "武吉班让广场",
+      "法贾购物中心",
+      "果冻豆幼儿园"
+    ],
+    "ms": [
+      "Pusat Perbelanjaan Bukit Panjang",
+      "Pusat Membeli-belah Fajar",
+      "Jellybean Montessori"
+    ],
+    "ta": [
+      "புக்கித் பஞ்ஜாங் பாசிட்",
+      "பாசிட் ஃபஜார்",
+      "ஜெலிசூன் மான்டெசோரிங்கள்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3775,
+    "longitude": 103.7681
   }
 }

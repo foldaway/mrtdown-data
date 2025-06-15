@@ -12,5 +12,41 @@
         "startedAt": "1988-12-20"
       }
     ]
+  },
+  "town": "Yishun",
+  "town_translations": {
+    "zh-Hans": "义顺",
+    "ms": "Yishun",
+    "ta": "யீசுன்"
+  },
+  "landmarks": [
+    "Sembawang Park",
+    "Sembawang Hot Spring",
+    "Singapore Zoo",
+    "Orchid Country Club"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "三巴旺公园",
+      "三巴旺温泉",
+      "新加坡动物园",
+      "兰花乡村俱乐部"
+    ],
+    "ms": [
+      "Taman Sembawang",
+      "Kolam Air Panas Sembawang",
+      "Zoo Singapura",
+      "Kelab Negara Bunga Orkid"
+    ],
+    "ta": [
+      "செம்பவாங் பூங்கா",
+      "செம்பவாங் உலர்வு ஊற்று",
+      "சிங்கப்பூர் விலங்கு பூங்கா",
+      "ஆர்கிட் கண்ட்ரி கிளப்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.4162,
+    "longitude": 103.8357
   }
 }

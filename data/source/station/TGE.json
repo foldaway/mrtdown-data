@@ -12,5 +12,33 @@
         "startedAt": "2030-12-31"
       }
     ]
+  },
+  "town": "Ang Mo Kio",
+  "town_translations": {
+    "zh-Hans": "宏茂桥",
+    "ms": "Ang Mo Kio",
+    "ta": "அங் மோ கியோ"
+  },
+  "landmarks": [
+    "Ang Mo Kio Town Garden East",
+    "Teck Ghee Community Club"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "宏茂桥镇东园",
+      "德义社区俱乐部"
+    ],
+    "ms": [
+      "Taman Bandar Ang Mo Kio Timur",
+      "Kelab Komuniti Teck Ghee"
+    ],
+    "ta": [
+      "ஆங் மோ கியோ கல்லூரி கிழக்கு பூங்கா",
+      "தைக்கு கி சமூகக் கிளை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3734,
+    "longitude": 103.8473
   }
 }

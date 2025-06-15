@@ -12,5 +12,37 @@
         "startedAt": "2021-08-28"
       }
     ]
+  },
+  "town": "Yishun",
+  "town_translations": {
+    "zh-Hans": "义顺",
+    "ms": "Yishun",
+    "ta": "யீசுன்"
+  },
+  "landmarks": [
+    "Sembawang Park",
+    "Sembawang Shopping Centre",
+    "Canberra Plaza"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新邦安公园",
+      "新邦安购物中心",
+      "甘贝拉广场"
+    ],
+    "ms": [
+      "Taman Sembawang",
+      "Pusat Membeli-belah Sembawang",
+      "Plaza Canberra"
+    ],
+    "ta": [
+      "செம்பாவன் பூங்கா",
+      "செம்பவான் ஷாப்பிங் சென்டர்",
+      "கான்பேரா பிளாசா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.4421,
+    "longitude": 103.8186
   }
 }

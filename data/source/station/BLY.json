@@ -12,5 +12,33 @@
         "startedAt": "2009-05-28"
       }
     ]
+  },
+  "town": "Toa Payoh",
+  "town_translations": {
+    "zh-Hans": "大巴窑",
+    "ms": "Toa Payoh",
+    "ta": "டோ பாயோ"
+  },
+  "landmarks": [
+    "Nexus International School",
+    "Bartley Secondary School"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "国际学校 Nexus",
+      "巴特利中学"
+    ],
+    "ms": [
+      "Sekolah Antarabangsa Nexus",
+      "Sekolah Menengah Bartley"
+    ],
+    "ta": [
+      "நெக்சஸ் எச்.ஐ.ஸ்கூல்",
+      "பார்த்லி இரண்டாம் நிலை பள்ளி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3608,
+    "longitude": 103.8879
   }
 }

@@ -16,5 +16,37 @@
         "startedAt": "2001-01-10"
       }
     ]
+  },
+  "town": "Bedok",
+  "town_translations": {
+    "zh-Hans": "勿洛",
+    "ms": "Bedok",
+    "ta": "பெடோக்"
+  },
+  "landmarks": [
+    "Tanah Merah Ferry Terminal",
+    "Singapore Expo",
+    "Sungai Bedok"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "丹娜美拉渡轮总站",
+      "新加坡博览中心",
+      "森美乌干河"
+    ],
+    "ms": [
+      "Terminal Feri Tanah Merah",
+      "Expo Singapura",
+      "Sungai Bedok"
+    ],
+    "ta": [
+      "தனஹ் மெரா பொருந்தும் மடுத்துறை",
+      "சிங்கப்பூர் எக்ஸ்போ",
+      "சுன்கை பெடொக்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3194,
+    "longitude": 103.9528
   }
 }

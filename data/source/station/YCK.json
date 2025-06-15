@@ -12,5 +12,37 @@
         "startedAt": "1987-11-07"
       }
     ]
+  },
+  "town": "Ang Mo Kio",
+  "town_translations": {
+    "zh-Hans": "宏茂桥",
+    "ms": "Ang Mo Kio",
+    "ta": "ஆங் மோ கியோ"
+  },
+  "landmarks": [
+    "Yio Chu Kang Stadium",
+    "Singapore American School",
+    "Yishun Industrial Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "义顺体育馆",
+      "新加坡美国学校",
+      "义顺工业园"
+    ],
+    "ms": [
+      "Stadium Yio Chu Kang",
+      "Sekolah Amerika Syarikat Singapura",
+      "Taman Industir Yishun"
+    ],
+    "ta": [
+      "யியோச் ஆங்கில் ஸ்டேடியம்",
+      "சிங்கப்பூர் அமெரிக்கா பள்ளி",
+      "யிஷுன் தொழில்துறை பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.379,
+    "longitude": 103.847
   }
 }

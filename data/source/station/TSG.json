@@ -12,5 +12,33 @@
         "startedAt": "2010-04-17"
       }
     ]
+  },
+  "town": "Toa Payoh",
+  "town_translations": {
+    "zh-Hans": "大巴窑",
+    "ms": "Toa Payoh",
+    "ta": "டோ பாயோ"
+  },
+  "landmarks": [
+    "BreadTalk IHQ",
+    "SPC Tai Seng"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "面包物语国际总部大楼",
+      "新加坡石油公司泰申"
+    ],
+    "ms": [
+      "IHQ BreadTalk",
+      "SPC Tai Seng"
+    ],
+    "ta": [
+      "பிரேட்டால்க் ஐஎச்‌க்யூ",
+      "எஸ்பிசி தை செங்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3351,
+    "longitude": 103.8878
   }
 }

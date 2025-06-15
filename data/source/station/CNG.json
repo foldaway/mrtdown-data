@@ -12,5 +12,37 @@
         "startedAt": "1988-11-05"
       }
     ]
+  },
+  "town": "Jurong East",
+  "town_translations": {
+    "zh-Hans": "裕廊东",
+    "ms": "Jurong Timur",
+    "ta": "ஜுரோங் மேற்கே"
+  },
+  "landmarks": [
+    "Chinese Garden",
+    "Japanese Garden",
+    "Lakeside Gardens"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "中国园",
+      "日本园",
+      "湖畔花园"
+    ],
+    "ms": [
+      "Taman Cina",
+      "Taman Jepun",
+      "Taman Lakeside"
+    ],
+    "ta": [
+      "சீனசோலை",
+      "ஜப்பானியசோலை",
+      "ரோகமிகு தோட்டம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3357,
+    "longitude": 103.7432
   }
 }

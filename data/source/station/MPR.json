@@ -12,5 +12,37 @@
         "startedAt": "2024-06-23"
       }
     ]
+  },
+  "town": "Marine Parade",
+  "town_translations": {
+    "zh-Hans": "海洋公园",
+    "ms": "Perarakan Laut",
+    "ta": "மரீன் பேராடு"
+  },
+  "landmarks": [
+    "ECP Park Connector",
+    "Marine Parade Food Centre",
+    "Kampong Kembangan Community Club"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "ECP公园连接线",
+      "海洋公园美食中心",
+      "甘榜金边社区俱乐部"
+    ],
+    "ms": [
+      "Penyambung Taman ECP",
+      "Pusat Makanan Perarakan Laut",
+      "Kelab Komuniti Kampong Kembangan"
+    ],
+    "ta": [
+      "ஈசிபி பார்க் கனெக்டர்",
+      "மரீன் பேராத் உணவுக்கொண்டாட்டம்",
+      "காம்போங்க் கம்பேங்கான் சமூக கிளப்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3013,
+    "longitude": 103.9025
   }
 }

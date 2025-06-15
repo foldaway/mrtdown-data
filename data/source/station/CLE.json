@@ -18,5 +18,37 @@
         "startedAt": "2032-01-01"
       }
     ]
+  },
+  "town": "Clementi",
+  "town_translations": {
+    "zh-Hans": "克莱曼蒂",
+    "ms": "Clementi",
+    "ta": "கிளெமெந்தி"
+  },
+  "landmarks": [
+    "Singapore Polytechnic",
+    "Clementi Mall",
+    "Clementi Stadium"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡多媒体学院",
+      "克莱曼蒂购物商城",
+      "克莱曼蒂体育场"
+    ],
+    "ms": [
+      "Politeknik Singapura",
+      "Clementi Mall",
+      "Stadium Clementi"
+    ],
+    "ta": [
+      "சிங்கப்பூர் தொழில்நுட்பக் கல்லூரி",
+      "கிளெமெந்தி மாநிறைக்களம்",
+      "கிளெமெந்தி மைதானம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.31625,
+    "longitude": 103.77214
   }
 }

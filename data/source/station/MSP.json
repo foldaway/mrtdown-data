@@ -12,5 +12,33 @@
         "startedAt": "2014-11-23"
       }
     ]
+  },
+  "town": "Straits View",
+  "town_translations": {
+    "zh-Hans": "海峡景",
+    "ms": "Straits View",
+    "ta": "ஸ்ட்ரெயிட்ஸ் வியூ"
+  },
+  "landmarks": [
+    "Marina Bay",
+    "Gardens by the Bay"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "滨海湾",
+      "滨海湾花园"
+    ],
+    "ms": [
+      "Tebing Marina",
+      "Taman Teluk Marina"
+    ],
+    "ta": [
+      "மரீனா கொடுக்கும்",
+      "மரீனா கா jardins"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2784,
+    "longitude": 103.8623
   }
 }

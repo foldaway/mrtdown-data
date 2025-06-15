@@ -12,5 +12,37 @@
         "startedAt": "2003-06-20"
       }
     ]
+  },
+  "town": "Rochor",
+  "town_translations": {
+    "zh-Hans": "梧槽",
+    "ms": "Rochor",
+    "ta": "ரோச்சோர்"
+  },
+  "landmarks": [
+    "Sri Srinivasa Perumal Temple",
+    "City Square Mall",
+    "Jalan Besar Stadium"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "斯里斯里尼瓦萨佩尔马尔庙",
+      "城市广场购物中心",
+      "小印度体育场"
+    ],
+    "ms": [
+      "Kuil Sri Srinivasa Perumal",
+      "Pusat Membeli-Belah City Square",
+      "Stadium Jalan Besar"
+    ],
+    "ta": [
+      "ஸ்ரீ ஸ்ரீநிவாச பெருமாள் கோயில்",
+      "சிட்டி ஸ்க்வாயர் மால்",
+      "ஜாலான் பஸார் ஸ்டேடியம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3144,
+    "longitude": 103.853
   }
 }

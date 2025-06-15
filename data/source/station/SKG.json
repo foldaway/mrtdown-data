@@ -18,5 +18,45 @@
         "startedAt": "2003-01-18"
       }
     ]
+  },
+  "town": "Sengkang",
+  "town_translations": {
+    "zh-Hans": "盛港",
+    "ms": "Sengkang",
+    "ta": "செங்காங்கு"
+  },
+  "landmarks": [
+    "Sengkang Riverside Park",
+    "Compass One",
+    "Seletar Mall",
+    "Anchorvale Park",
+    "Punggol Waterway Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "盛港河滨公园",
+      "Compass One",
+      "Seletar Mall",
+      "Anchorvale 公园",
+      "丰盛水道公园"
+    ],
+    "ms": [
+      "Taman Sungai Sengkang",
+      "Compass One",
+      "Seletar Mall",
+      "Taman Anchorvale",
+      "Taman Air Punggol"
+    ],
+    "ta": [
+      "சேங்காங்கு நீர்வழி பூங்கா",
+      "Compass One",
+      "செலட்டர் மால்",
+      "ஆங்கர்வேல் பூங்கா",
+      "புங்கொல் நீர்வழி பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.393736,
+    "longitude": 103.895173
   }
 }

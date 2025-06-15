@@ -12,5 +12,37 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Museum",
+  "town_translations": {
+    "zh-Hans": "博物馆",
+    "ms": "Muzium",
+    "ta": "மூzeியம்"
+  },
+  "landmarks": [
+    "Fort Canning Park",
+    "Battlebox",
+    "Singapore National Museum"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "福特坎宁公园",
+      "战斗箱",
+      "新加坡国家博物馆"
+    ],
+    "ms": [
+      "Taman Fort Canning",
+      "Kotak Perang",
+      "Muzium Negara Singapura"
+    ],
+    "ta": [
+      "கோட்டை கடையன், மாலை நேரம்",
+      "போருக்கடுப்பு",
+      "சிங்கப்பூர் தேசிய அருங்காட்சியகம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2904,
+    "longitude": 103.848
   }
 }

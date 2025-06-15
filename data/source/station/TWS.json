@@ -12,5 +12,33 @@
         "startedAt": "2027-12-31"
       }
     ]
+  },
+  "town": "Western Water Catchment",
+  "town_translations": {
+    "zh-Hans": "西部蓄水区",
+    "ms": "Tadahan Air Barat",
+    "ta": "மேற்கு நீர் சேகரிப்பு"
+  },
+  "landmarks": [
+    "Jurong Innovation District",
+    "SAFTI City"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊创新区",
+      "新加坡武装部队培训学院"
+    ],
+    "ms": [
+      "Daerah Inovasi Jurong",
+      "Bandar SAFTI"
+    ],
+    "ta": [
+      "ஜுரோங் புதுமை மாவட்டம்",
+      "SAFTI நகரம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.349188,
+    "longitude": 103.705551
   }
 }

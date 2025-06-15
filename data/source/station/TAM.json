@@ -18,5 +18,45 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Tampines",
+  "town_translations": {
+    "zh-Hans": "淡滨尼",
+    "ms": "Tampines",
+    "ta": "தாம்பினீ"
+  },
+  "landmarks": [
+    "Tampines Mall",
+    "Century Square",
+    "Tampines 1",
+    "Singapore Expo",
+    "Changi Business Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "淡滨尼商城",
+      "世纪广场",
+      "淡滨尼1号",
+      "新加坡博览中心",
+      "樟宜商务园区"
+    ],
+    "ms": [
+      "Pusat membeli-belah Tampines",
+      "Papan Century",
+      "Tampines 1",
+      "Expo Singapura",
+      "Taman Perniagaan Changi"
+    ],
+    "ta": [
+      "தாம்பினீ மால்",
+      "சென்சுரி ஸ்க்வேர்",
+      "தாம்பினீ 1",
+      "சிங்கப்பூர் எக்ஸ்போ",
+      "சங்கியி வணிக பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3541,
+    "longitude": 103.9437
   }
 }

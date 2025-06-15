@@ -12,5 +12,37 @@
         "startedAt": "2022-11-13"
       }
     ]
+  },
+  "town": "Bukit Merah",
+  "town_translations": {
+    "zh-Hans": "红山",
+    "ms": "Bukit Merah",
+    "ta": "புக்கிட் மேரா"
+  },
+  "landmarks": [
+    "Singapore River",
+    "Robertson Walk",
+    "Furama RiverFront"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡河",
+      "罗伯逊步道",
+      "富丽华河滨酒店"
+    ],
+    "ms": [
+      "Sungai Singapura",
+      "Robertson Walk",
+      "Furama RiverFront"
+    ],
+    "ta": [
+      "சிங்கப்பூர் ஆறு",
+      "ரோபர்ட்சான் வாக்கு",
+      "புரைமா ரிவர்ஃபாண்டு"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2904,
+    "longitude": 103.8397
   }
 }

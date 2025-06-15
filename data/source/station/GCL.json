@@ -12,5 +12,37 @@
         "startedAt": "2017-06-18"
       }
     ]
+  },
+  "town": "Pioneer",
+  "town_translations": {
+    "zh-Hans": "先驱",
+    "ms": "Pioneer",
+    "ta": "பயனியர்"
+  },
+  "landmarks": [
+    "Jurong Hill",
+    "Chinese Garden",
+    "Jurong Lake Gardens"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊山",
+      "中国花园",
+      "裕廊湖花园"
+    ],
+    "ms": [
+      "Bukit Jurong",
+      "Taman Cina",
+      "Taman Danau Jurong"
+    ],
+    "ta": [
+      "ஜுரொங் மலை",
+      "சீனக் கிழமை",
+      "ஜுரொங் ஏரி தோட்டங்கள்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3501,
+    "longitude": 103.7364
   }
 }

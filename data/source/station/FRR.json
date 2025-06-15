@@ -12,5 +12,33 @@
         "startedAt": "2011-10-08"
       }
     ]
+  },
+  "town": "Bukit Timah",
+  "town_translations": {
+    "zh-Hans": "巴耶利峇",
+    "ms": "Bukit Timah",
+    "ta": "பகிட் திமா"
+  },
+  "landmarks": [
+    "Botanic Gardens",
+    "National Orchid Garden"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡植物园",
+      "国家兰花园"
+    ],
+    "ms": [
+      "Taman Botani Singapura",
+      "Taman Orkid Kebangsaan"
+    ],
+    "ta": [
+      "சிங்கப்பூர் பூங்கா",
+      "அரசு ஆடை பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3143,
+    "longitude": 103.8142
   }
 }

@@ -12,5 +12,33 @@
         "startedAt": "1996-02-10"
       }
     ]
+  },
+  "town": "Choa Chu Kang",
+  "town_translations": {
+    "zh-Hans": "蔡厝港",
+    "ms": "Choa Chu Kang",
+    "ta": "சொயா சு காங்க்"
+  },
+  "landmarks": [
+    "Lot One Shoppers' Mall",
+    "Yew Tee Point"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "黎明广场",
+      "蔡厝港购物中心"
+    ],
+    "ms": [
+      "Pusat Beli-Belah Lot One",
+      "Yew Tee Point"
+    ],
+    "ta": [
+      "லாட் ஒன் ஷாப்பர்ஸ் மால்",
+      "யூ டீ பாயின்ட்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3964,
+    "longitude": 103.7437
   }
 }

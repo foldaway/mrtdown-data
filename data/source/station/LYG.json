@@ -12,5 +12,37 @@
         "startedAt": "2030-12-31"
       }
     ]
+  },
+  "town": "Pasir Ris",
+  "town_translations": {
+    "zh-Hans": "巴西立",
+    "ms": "Pasir Ris",
+    "ta": "பாசிர் ரிஸ்"
+  },
+  "landmarks": [
+    "Changi Beach Park",
+    "Loyang Point",
+    "Loyang Tua Pek Kong Temple"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "樟宜海滩公园",
+      "Loyang Point",
+      "Loyang Tua Pek Kong庙"
+    ],
+    "ms": [
+      "Taman Pantai Changi",
+      "Loyang Point",
+      "Kuil Loyang Tua Pek Kong"
+    ],
+    "ta": [
+      "சங்கித் கடற்கரை பூங்கா",
+      "லொயாங் பாயிண்ட்",
+      "லொயாங੍ துவா பெக் கோங்க் கோவில்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3631,
+    "longitude": 104.0035
   }
 }

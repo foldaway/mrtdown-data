@@ -12,5 +12,33 @@
         "startedAt": "1989-11-04"
       }
     ]
+  },
+  "town": "Geylang",
+  "town_translations": {
+    "zh-Hans": "义安",
+    "ms": "Aljunied",
+    "ta": "அழுஹெட்கா"
+  },
+  "landmarks": [
+    "Geylang Serai Market",
+    "Singapore Post Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "芽笼士乃市集",
+      "新加坡邮政大厦"
+    ],
+    "ms": [
+      "Pasar Geylang Serai",
+      "Singapore Post Centre"
+    ],
+    "ta": [
+      "கேலாங் செரை சந்தை",
+      "சிங்கப்பூர் தபால் மையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3164,
+    "longitude": 103.9039
   }
 }

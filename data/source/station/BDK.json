@@ -12,5 +12,37 @@
         "startedAt": "1989-11-04"
       }
     ]
+  },
+  "town": "Bedok",
+  "town_translations": {
+    "zh-Hans": "勿洛",
+    "ms": "Bedok",
+    "ta": "பெடோக்"
+  },
+  "landmarks": [
+    "Bedok Mall",
+    "Bedok Reservoir Park",
+    "Bedok Point"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "勿洛商场",
+      "勿洛水库公园",
+      "勿洛点"
+    ],
+    "ms": [
+      "Pusat Bedok",
+      "Taman Reservoir Bedok",
+      "Bedok Point"
+    ],
+    "ta": [
+      "பெடோக் மால்",
+      "பெடோக் நதிக்கூடு பூங்கா",
+      "பெடோக் பாயிண்ட்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3231,
+    "longitude": 103.9355
   }
 }

@@ -12,5 +12,37 @@
         "startedAt": "2010-04-17"
       }
     ]
+  },
+  "town": "Museum",
+  "town_translations": {
+    "zh-Hans": "博物馆",
+    "ms": "Muzium",
+    "ta": "மூசியம்"
+  },
+  "landmarks": [
+    "National Museum of Singapore",
+    "Singapore Art Museum",
+    "St. Joseph's Church"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡国家博物馆",
+      "新加坡艺术博物馆",
+      "圣约瑟夫教堂"
+    ],
+    "ms": [
+      "Muzium Nasional Singapura",
+      "Muzium Seni Singapura",
+      "Gereja St. Joseph"
+    ],
+    "ta": [
+      "சிங்கப்பூர் தேசிய சரித்தாள்",
+      "சிங்கப்பூர் கலைக்கழகம்",
+      "சיינט் ஜோசப் தேவாலயம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2964,
+    "longitude": 103.8505
   }
 }

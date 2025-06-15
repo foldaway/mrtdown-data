@@ -12,5 +12,37 @@
         "startedAt": "2011-10-08"
       }
     ]
+  },
+  "town": "Queenstown",
+  "town_translations": {
+    "zh-Hans": "昆士敦",
+    "ms": "Queenstown",
+    "ta": "குவீன்ஸ்டவ்ன்"
+  },
+  "landmarks": [
+    "Fusionopolis",
+    "Biopolis",
+    "Mediapolis"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "融合科技园",
+      "生物湾",
+      "媒体园区"
+    ],
+    "ms": [
+      "Fusionopolis",
+      "Biopolis",
+      "Mediapolis"
+    ],
+    "ta": [
+      "ஃப்யூஷனோபாலிஸ்",
+      "பயோபாலிஸ்",
+      "மீடியாபாலிஸ்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2959,
+    "longitude": 103.7861
   }
 }

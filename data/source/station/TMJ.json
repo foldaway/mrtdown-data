@@ -13,5 +13,37 @@
         "endedAt": "2019-01-13"
       }
     ]
+  },
+  "town": "Bukit Panjang",
+  "town_translations": {
+    "zh-Hans": "武吉班让",
+    "ms": "Bukit Panjang",
+    "ta": "புக்கிட் பஞ்சாங்"
+  },
+  "landmarks": [
+    "Bukit Panjang Plaza",
+    "EnergyOne Mall",
+    "The Rail Mall"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "武吉班让广场",
+      "EnergyOne商场",
+      "铁路购物中心"
+    ],
+    "ms": [
+      "Plaza Bukit Panjang",
+      "Pusat Membeli Belah EnergyOne",
+      "The Rail Mall"
+    ],
+    "ta": [
+      "புக்கிட் பஞ்சாங் பிளாசா",
+      "எனர்ஜி ஒன் மால்",
+      "ரயில்வே மார்கெட்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.376,
+    "longitude": 103.768
   }
 }

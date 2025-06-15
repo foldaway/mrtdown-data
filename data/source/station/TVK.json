@@ -12,5 +12,37 @@
         "startedAt": "2030-12-31"
       }
     ]
+  },
+  "town": "Serangoon",
+  "town_translations": {
+    "zh-Hans": "实龙岗",
+    "ms": "Serangoon",
+    "ta": "சேராங்கூன்"
+  },
+  "landmarks": [
+    "Serangoon Gardens Country Club",
+    "Chomp Chomp Food Centre",
+    "MyVillage at Serangoon Garden"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "实龙岗花园俱乐部",
+      "崇崇美食中心",
+      "实龙岗花园购物中心"
+    ],
+    "ms": [
+      "Kelab Desa Serangoon Gardens",
+      "Pusat Makanan Chomp Chomp",
+      "MyVillage di Taman Serangoon"
+    ],
+    "ta": [
+      "செராங்கூன் கார்டன்ஸ் நாட்டுக்கிளப்",
+      "சொம்ப் சொம்ப் உணவகம்",
+      "செரங்கூன் கார்டன் ஷாப்பிங் மால்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3645,
+    "longitude": 103.8659
   }
 }

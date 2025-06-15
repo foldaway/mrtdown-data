@@ -24,5 +24,37 @@
         "startedAt": "2027-12-31"
       }
     ]
+  },
+  "town": "Jurong East",
+  "town_translations": {
+    "zh-Hans": "裕廊东",
+    "ms": "Jurong East",
+    "ta": "ஜூரோங் ஈஸ்ட்"
+  },
+  "landmarks": [
+    "JEM",
+    "Westgate",
+    "Jurong Regional Library"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "JEM",
+      "Westgate",
+      "裕廊区域图书馆"
+    ],
+    "ms": [
+      "JEM",
+      "Westgate",
+      "Perpustakaan Wilayah Jurong"
+    ],
+    "ta": [
+      "JEM",
+      "Westgate",
+      "ஜூரோங் பிராந்திய நூலகம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3352,
+    "longitude": 103.7438
   }
 }

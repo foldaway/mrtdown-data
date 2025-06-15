@@ -12,5 +12,33 @@
         "startedAt": "2029-12-31"
       }
     ]
+  },
+  "town": "Boon Lay",
+  "town_translations": {
+    "zh-Hans": "文礼",
+    "ms": "Boon Lay",
+    "ta": "பூன் லே"
+  },
+  "landmarks": [
+    "Jurong Hill Park",
+    "Jurong Bird Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊山公园",
+      "裕廊鸟园"
+    ],
+    "ms": [
+      "Taman Jurong Hill",
+      "Taman Burung Jurong"
+    ],
+    "ta": [
+      "ஜுரோங் மலை பூங்கா",
+      "ஜுரோங் பறவை பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3483,
+    "longitude": 103.7064
   }
 }

@@ -12,5 +12,37 @@
         "startedAt": "2027-12-31"
       }
     ]
+  },
+  "town": "Jurong West",
+  "town_translations": {
+    "zh-Hans": "裕廊西",
+    "ms": "Jurong Barat",
+    "ta": "ஜூராங் மேற்கு"
+  },
+  "landmarks": [
+    "Jurong Lake",
+    "Jurong Bird Park",
+    "Chinese Garden"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊湖",
+      "裕廊鸟园",
+      "华人花园"
+    ],
+    "ms": [
+      "Tasik Jurong",
+      "Taman Burung Jurong",
+      "Taman Cina"
+    ],
+    "ta": [
+      "ஜூராங் ஏரி",
+      "ஜூராங் பறவைகள் பூங்கா",
+      "சீன மைதானம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3498,
+    "longitude": 103.7036
   }
 }

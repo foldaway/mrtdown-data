@@ -12,5 +12,37 @@
         "startedAt": "2019-11-02"
       }
     ]
+  },
+  "town": "Sembawang",
+  "town_translations": {
+    "zh-Hans": "三巴旺",
+    "ms": "Sembawang",
+    "ta": "செம்பவாங்"
+  },
+  "landmarks": [
+    "Canberra Plaza",
+    "Sembawang Park",
+    "Canberra Secondary School"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "堪培拉广场",
+      "森茂望公园",
+      "堪培拉中学"
+    ],
+    "ms": [
+      "Plaza Canberra",
+      "Taman Sembawang",
+      "Sekolah Menengah Canberra"
+    ],
+    "ta": [
+      "கேம்பரா பிளாசா",
+      "செம்பவாங் பூங்கா",
+      "கேம்பரா தருமிகு பள்ளி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.458603,
+    "longitude": 103.830661
   }
 }

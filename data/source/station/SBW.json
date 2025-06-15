@@ -12,5 +12,37 @@
         "startedAt": "1996-02-10"
       }
     ]
+  },
+  "town": "Sembawang",
+  "town_translations": {
+    "zh-Hans": "三巴旺",
+    "ms": "Sembawang",
+    "ta": "செம்பவாங்"
+  },
+  "landmarks": [
+    "Sembawang Park",
+    "Sembawang Shopping Centre",
+    "Nexus International School Singapore"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "三巴旺公园",
+      "三巴旺购物中心",
+      "新加坡枢纽国际学校"
+    ],
+    "ms": [
+      "Taman Sembawang",
+      "Pusat Membeli-belah Sembawang",
+      "Sekolah Antarabangsa Nexus Singapura"
+    ],
+    "ta": [
+      "செம்பவாங் பூங்கா",
+      "செம்பவாங் ஷாப்பிங் சென்டர்",
+      "நெக்சஸ் சர்வதேச பள்ளி சிங்கப்பூர்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.4405,
+    "longitude": 103.8261
   }
 }

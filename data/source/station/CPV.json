@@ -12,5 +12,37 @@
         "startedAt": "2003-01-18"
       }
     ]
+  },
+  "town": "Sengkang",
+  "town_translations": {
+    "zh-Hans": "盛港",
+    "ms": "Sengkang",
+    "ta": "செங்கANG"
+  },
+  "landmarks": [
+    "Compass One",
+    "Sengkang Riverside Park",
+    "Sengkang General Hospital"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "航海一号",
+      "盛港河滨公园",
+      "盛港综合医院"
+    ],
+    "ms": [
+      "Compass One",
+      "Taman Sungai Sengkang",
+      "Hospital Umum Sengkang"
+    ],
+    "ta": [
+      "கம்பஸ் ஒன்",
+      "செங்கANG ஆற்றின் யூசேத்",
+      "செங்கANG பொதுப் மருத்துவமனை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3757,
+    "longitude": 103.8955
   }
 }

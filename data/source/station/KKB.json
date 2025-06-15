@@ -12,5 +12,29 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Bedok",
+  "town_translations": {
+    "zh-Hans": "勿洛",
+    "ms": "Bedok",
+    "ta": "பெடோக்"
+  },
+  "landmarks": [
+    "Kaki Bukit Shopping Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "卡基武吉购物中心"
+    ],
+    "ms": [
+      "Pusat Beli-belah Kaki Bukit"
+    ],
+    "ta": [
+      "காக்கி புத்தி ஷாப்பிங் மையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3199,
+    "longitude": 103.8928
   }
 }

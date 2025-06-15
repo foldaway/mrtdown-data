@@ -18,5 +18,37 @@
         "startedAt": "2003-06-20"
       }
     ]
+  },
+  "town": "Serangoon",
+  "town_translations": {
+    "zh-Hans": "实龙岗",
+    "ms": "Serangoon",
+    "ta": "செரங்கூன்"
+  },
+  "landmarks": [
+    "NEX Mall",
+    "Serangoon Stadium",
+    "Serangoon Gardens"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "NEX购物中心",
+      "实龙岗体育场",
+      "实龙岗花园"
+    ],
+    "ms": [
+      "Pusat Membeli-belah NEX",
+      "Stadium Serangoon",
+      "Taman Serangoon"
+    ],
+    "ta": [
+      "NEX மால்கள்",
+      "செரங்கூன் மைதானம்",
+      "செரங்கூன் தோட்டங்கள்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3573,
+    "longitude": 103.8676
   }
 }

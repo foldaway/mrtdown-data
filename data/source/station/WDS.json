@@ -12,5 +12,37 @@
         "startedAt": "2020-01-31"
       }
     ]
+  },
+  "town": "Woodlands",
+  "town_translations": {
+    "zh-Hans": "伍德兰",
+    "ms": "Woodlands",
+    "ta": "உட்லாந்து"
+  },
+  "landmarks": [
+    "Woodlands Civic Centre",
+    "Singapore Zoo",
+    "Woodlands Waterfront"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "伍德兰市民中心",
+      "新加坡动物园",
+      "伍德兰海滨公园"
+    ],
+    "ms": [
+      "Pusat Bandar Woodlands",
+      "Zoo Singapura",
+      "Tebing Woodlands"
+    ],
+    "ta": [
+      "வுட்லாண்ட்ஸ் சிவில் சென்டர்",
+      "சிங்கப்பூர் பூங்கா",
+      "வுட்லாண்ட்ஸ் நீர்கரை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.438,
+    "longitude": 103.786
   }
 }

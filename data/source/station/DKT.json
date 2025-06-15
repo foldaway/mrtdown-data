@@ -12,5 +12,37 @@
         "startedAt": "2010-04-17"
       }
     ]
+  },
+  "town": "Geylang",
+  "town_translations": {
+    "zh-Hans": "芽笼",
+    "ms": "Geylang",
+    "ta": "கெய்லாங்"
+  },
+  "landmarks": [
+    "Geylang Serai",
+    "Dakota Crescent",
+    "Singapore Sports Hub"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "芽笼士乃",
+      "达科他滨",
+      "新加坡体育中心"
+    ],
+    "ms": [
+      "Geylang Serai",
+      "Dakota Crescent",
+      "Pusat Sukan Singapura"
+    ],
+    "ta": [
+      "கெய்லாங் செரை",
+      "டக்கோட்டா சொருதி",
+      "சிங்கப்பூர் விளையாட்டு மையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3112,
+    "longitude": 103.8874
   }
 }

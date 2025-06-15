@@ -12,5 +12,37 @@
         "startedAt": "1990-03-10"
       }
     ]
+  },
+  "town": "Bukit Batok",
+  "town_translations": {
+    "zh-Hans": "武吉巴督",
+    "ms": "Bukit Batok",
+    "ta": "புக்கிட் பட்டக்"
+  },
+  "landmarks": [
+    "Bukit Batok Town Park",
+    "Little Guilin",
+    "Singapore Quarry"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "武吉巴督镇公园",
+      "小桂林",
+      "新加坡采石场"
+    ],
+    "ms": [
+      "Taman Bandar Bukit Batok",
+      "Guilin Kecil",
+      "Kuari Singapura"
+    ],
+    "ta": [
+      "புக்கிட் பட்டக் நகர பூங்கா",
+      "சிறிய குவிலின்",
+      "சிங்கப்பூர் குவாரி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3724,
+    "longitude": 103.7491
   }
 }

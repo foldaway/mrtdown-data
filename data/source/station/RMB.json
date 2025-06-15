@@ -12,5 +12,33 @@
         "startedAt": "2003-01-18"
       }
     ]
+  },
+  "town": "Sengkang",
+  "town_translations": {
+    "zh-Hans": "盛港",
+    "ms": "Sengkang",
+    "ta": "செங்கங்கி"
+  },
+  "landmarks": [
+    "Sengkang Sports and Recreation Centre",
+    "Compass One"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "盛港体育与娱乐中心",
+      "Compass One"
+    ],
+    "ms": [
+      "Pusat Sukan dan Rekreasi Sengkang",
+      "Compass One"
+    ],
+    "ta": [
+      "செங்கங்கை விளையாட்டு மற்றும் பொழுதுபோக்கு மையம்",
+      "காம் பஸ் ஒன்று"
+    ]
+  },
+  "geo": {
+    "latitude": 1.37541,
+    "longitude": 103.9033
   }
 }

@@ -12,5 +12,37 @@
         "startedAt": "2028-12-31"
       }
     ]
+  },
+  "town": "Jurong East",
+  "town_translations": {
+    "zh-Hans": "裕廊东",
+    "ms": "Jurong Timur",
+    "ta": "ஜூராங் ஈஸ்ட்"
+  },
+  "landmarks": [
+    "Jurong East Swimming Complex",
+    "Jurong East Library",
+    "Westgate"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊东游泳池",
+      "裕廊东图书馆",
+      "Westgate购物中心"
+    ],
+    "ms": [
+      "Kompleks Renang Jurong East",
+      "Perpustakaan Jurong East",
+      "Westgate"
+    ],
+    "ta": [
+      "ஜூராங் ஈஸ்ட் குளியலறை",
+      "ஜூராங் ஈஸ்ட் நூலகம்",
+      "Westgate"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3343,
+    "longitude": 103.7429
   }
 }

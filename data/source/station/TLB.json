@@ -12,5 +12,37 @@
         "startedAt": "2011-10-08"
       }
     ]
+  },
+  "town": "Bukit Merah",
+  "town_translations": {
+    "zh-Hans": "红山",
+    "ms": "Bukit Merah",
+    "ta": "புக்கிட் மேரா"
+  },
+  "landmarks": [
+    "Sentosa Island",
+    "VivoCity",
+    "Mount Faber Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "圣淘沙岛",
+      "维佛城",
+      "法伯山公园"
+    ],
+    "ms": [
+      "Pulau Sentosa",
+      "VivoCity",
+      "Taman Mount Faber"
+    ],
+    "ta": [
+      "செண்டோசா தீவு",
+      "விவோசிட்டி",
+      "மவுன்ட் ஃபேபர் பூக்காடு"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2634,
+    "longitude": 103.8228
   }
 }

@@ -12,5 +12,33 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Kallang",
+  "town_translations": {
+    "zh-Hans": "加冷",
+    "ms": "Kallang",
+    "ta": "காலாங்"
+  },
+  "landmarks": [
+    "Geylang Bahru Market & Food Centre",
+    "Kallang Riverside Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "芽笼巴鲁市场和熟食中心",
+      "加冷河滨公园"
+    ],
+    "ms": [
+      "Pasar & Pusat Makanan Geylang Bahru",
+      "Taman Sungai Kallang"
+    ],
+    "ta": [
+      "கெய்லாங் பாஹ்ரு சந்தை மற்றும் உணவு மையம்",
+      "கல்லங்கு ஆற்றியல் பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3151,
+    "longitude": 103.8716
   }
 }

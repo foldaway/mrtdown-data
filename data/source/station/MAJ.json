@@ -12,5 +12,33 @@
         "startedAt": "2032-01-01"
       }
     ]
+  },
+  "town": "Bukit Timah",
+  "town_translations": {
+    "zh-Hans": "武吉知马",
+    "ms": "Bukit Timah",
+    "ta": "புக்கித் திமா"
+  },
+  "landmarks": [
+    "Maju Camp",
+    "INSEAD Asia Campus"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "马裕军营",
+      "欧洲工商管理学院亚洲校区"
+    ],
+    "ms": [
+      "Kem Maju",
+      "Kampus Asia INSEAD"
+    ],
+    "ta": [
+      "மஜு முகாம்",
+      "INSEAD ஆசியா வளாகம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3312,
+    "longitude": 103.7854
   }
 }

@@ -12,5 +12,33 @@
         "startedAt": "1999-11-06"
       }
     ]
+  },
+  "town": "Bukit Panjang",
+  "town_translations": {
+    "zh-Hans": "武吉班让",
+    "ms": "Bukit Panjang",
+    "ta": "புக்கிற் பஞ்சங்"
+  },
+  "landmarks": [
+    "Bukit Panjang Plaza",
+    "Senja Cashew Community Club"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "武吉班让广场",
+      "Senja Cashew社区俱乐部"
+    ],
+    "ms": [
+      "Bukit Panjang Plaza",
+      "Kelab Komuniti Senja Cashew"
+    ],
+    "ta": [
+      "புக்கிற் பஞ்சங் பிளாஸா",
+      "செஞ்சா கசுய் சமூகக் கிளப்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.386248,
+    "longitude": 103.768456
   }
 }

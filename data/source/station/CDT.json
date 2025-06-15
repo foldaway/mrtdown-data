@@ -18,5 +18,33 @@
         "startedAt": "2021-08-28"
       }
     ]
+  },
+  "town": "Toa Payoh",
+  "town_translations": {
+    "zh-Hans": "大巴窑",
+    "ms": "Toa Payoh",
+    "ta": "டோ பாயோ"
+  },
+  "landmarks": [
+    "Singapore Institute of Technology",
+    "Bishan Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡科技学院",
+      "碧山公园"
+    ],
+    "ms": [
+      "Institut Teknologi Singapura",
+      "Taman Bishan"
+    ],
+    "ta": [
+      "சிங்கப்பூர் தொழில்நுட்ப நிறுவனம்",
+      "பிசான் பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3408,
+    "longitude": 103.8444
   }
 }

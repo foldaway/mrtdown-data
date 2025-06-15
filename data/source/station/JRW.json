@@ -12,5 +12,37 @@
         "startedAt": "2027-12-31"
       }
     ]
+  },
+  "town": "Jurong West",
+  "town_translations": {
+    "zh-Hans": "裕廊西",
+    "ms": "Jurong Barat",
+    "ta": "ஜூராங் மேற்கே"
+  },
+  "landmarks": [
+    "Jurong West Swimming Complex",
+    "Westgate",
+    "Jurong Point"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊西游泳池",
+      "Westgate",
+      "裕廊购物中心"
+    ],
+    "ms": [
+      "Kompleks Renang Jurong West",
+      "Westgate",
+      "Jurong Point"
+    ],
+    "ta": [
+      "ஜூராங்க் வெஸ்ட் நீந்தும் மையம்",
+      "வெஸ்ட் கேட்",
+      "ஜூராங்க் பாயிண்ட்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.349,
+    "longitude": 103.706
   }
 }

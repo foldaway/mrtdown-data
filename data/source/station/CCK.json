@@ -24,5 +24,37 @@
         "startedAt": "2027-12-31"
       }
     ]
+  },
+  "town": "Choa Chu Kang",
+  "town_translations": {
+    "zh-Hans": "兀兰",
+    "ms": "Choak Chukang",
+    "ta": "சோவா சு காங்"
+  },
+  "landmarks": [
+    "Lot One Shoppers' Mall",
+    "Choa Chu Kang Stadium",
+    "The Rainforest"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "劳特购物中心",
+      "兀兰体育场",
+      "雨林公园"
+    ],
+    "ms": [
+      "Lot One Shoppers' Mall",
+      "Stadium Choa Chu Kang",
+      "The Rainforest"
+    ],
+    "ta": [
+      "லோட் ஒன் ஷாப்பர்கள் மால்",
+      "சோவா சு காங்க் மைதானம்",
+      "தி ரெயின் ஃபாரஸ்ட்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.4002,
+    "longitude": 103.7457
   }
 }

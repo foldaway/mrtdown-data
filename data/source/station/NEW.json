@@ -18,5 +18,37 @@
         "startedAt": "2015-12-27"
       }
     ]
+  },
+  "town": "Newton",
+  "town_translations": {
+    "zh-Hans": "牛顿",
+    "ms": "Newton",
+    "ta": "நியூட்டன்"
+  },
+  "landmarks": [
+    "Newton Circus",
+    "United Square",
+    "Novena Square"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "牛顿圆环",
+      "联合广场",
+      "诺维娜广场"
+    ],
+    "ms": [
+      "Pusat Konvensyen Newton",
+      "Square United",
+      "Square Novena"
+    ],
+    "ta": [
+      "நியூட்டன் சிரக்கம்",
+      "யூனிட்டெட் சקוئر",
+      "நோவெனா சகுئر"
+    ]
+  },
+  "geo": {
+    "latitude": 1.31229,
+    "longitude": 103.84396
   }
 }

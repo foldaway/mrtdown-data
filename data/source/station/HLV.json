@@ -12,5 +12,37 @@
         "startedAt": "2011-10-08"
       }
     ]
+  },
+  "town": "Bukit Timah",
+  "town_translations": {
+    "zh-Hans": "武吉知马",
+    "ms": "Bukit Timah",
+    "ta": "புக்கிட் திமா"
+  },
+  "landmarks": [
+    "Holland Village Market & Food Centre",
+    "The Holland Road Shopping Centre",
+    "Raffles Holland V"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "荷兰村市场与美食中心",
+      "荷兰路购物中心",
+      "莱佛士荷兰Ⅴ"
+    ],
+    "ms": [
+      "Pusat Makanan & Pasar Holland Village",
+      "Pusat Membeli-belah Jalan Holland",
+      "Raffles Holland V"
+    ],
+    "ta": [
+      "ஹொலாண்ட் வில்லேஜ் மார்க்கெட் & உணவுப் பள்ளி",
+      "ஹொலாண்ட் ரோடு ஷாப்பிங் சென்டர்",
+      "ராஃபெல்ஸ் ஹொலாண்டு V"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3136,
+    "longitude": 103.7903
   }
 }

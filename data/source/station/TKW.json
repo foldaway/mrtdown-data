@@ -12,5 +12,33 @@
         "startedAt": "1999-11-06"
       }
     ]
+  },
+  "town": "Choa Chu Kang",
+  "town_translations": {
+    "zh-Hans": "蔡厝港",
+    "ms": "Choa Chu Kang",
+    "ta": "சொஆக் காங்கு"
+  },
+  "landmarks": [
+    "Teck Whye Community Centre",
+    "Teck Whye Secondary School"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "蔡厝港社区中心",
+      "蔡厝港中学"
+    ],
+    "ms": [
+      "Pusat Komuniti Teck Whye",
+      "Sekolah Menengah Teck Whye"
+    ],
+    "ta": [
+      "டெக் வாய் சமுதாய மையம்",
+      "டெக் வாய் மத்திய பள்ளி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.376,
+    "longitude": 103.749
   }
 }

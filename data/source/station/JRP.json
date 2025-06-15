@@ -18,5 +18,33 @@
         "startedAt": "2030-12-31"
       }
     ]
+  },
+  "town": "Jurong East",
+  "town_translations": {
+    "zh-Hans": "裕廊东",
+    "ms": "Jurong Timur",
+    "ta": "ஜூரோங் கிழக்கு"
+  },
+  "landmarks": [
+    "Jurong Bird Park",
+    "Jurong Lake Gardens"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊鸟园",
+      "裕廊湖花园"
+    ],
+    "ms": [
+      "Taman Burung Jurong",
+      "Taman Tasik Jurong"
+    ],
+    "ta": [
+      "ஜுராங் பறவைகள் பூங்கா",
+      "ஜுராங் ஏரி தோட்டம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.321,
+    "longitude": 103.703
   }
 }

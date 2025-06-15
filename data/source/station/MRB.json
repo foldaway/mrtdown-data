@@ -24,5 +24,37 @@
         "startedAt": "2012-01-14"
       }
     ]
+  },
+  "town": "Marina Bay",
+  "town_translations": {
+    "zh-Hans": "滨海湾",
+    "ms": "Marina Bay",
+    "ta": "மரீனா பே"
+  },
+  "landmarks": [
+    "Marina Bay Sands",
+    "Gardens by the Bay",
+    "Esplanade - Theatres on the Bay"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "滨海湾金沙",
+      "滨海花园",
+      "滨海艺术中心"
+    ],
+    "ms": [
+      "Marina Bay Sands",
+      "Taman di tepi Marina",
+      "Esplanade - Teater di tepi"
+    ],
+    "ta": [
+      "மரீனா பேசாண்ட்",
+      "மரீனா பாலைவனம்",
+      "எஸ்பிளனேட் - தியேட்டர்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.283,
+    "longitude": 103.859
   }
 }

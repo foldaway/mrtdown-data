@@ -12,5 +12,33 @@
         "startedAt": "2021-08-28"
       }
     ]
+  },
+  "town": "Ang Mo Kio",
+  "town_translations": {
+    "zh-Hans": "宏茂桥",
+    "ms": "Ang Mo Kio",
+    "ta": "அங் மொ கியோ"
+  },
+  "landmarks": [
+    "Mayflower Primary School",
+    "Bishan-Ang Mo Kio Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "宏茂桥小学",
+      "碧山-宏茂桥公园"
+    ],
+    "ms": [
+      "Sekolah Rendah Mayflower",
+      "Taman Bishan-Ang Mo Kio"
+    ],
+    "ta": [
+      "மெய்விளக்கு பிரதான பள்ளி",
+      "பிஷான்-அங் மொ கியோ பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3715,
+    "longitude": 103.8482
   }
 }

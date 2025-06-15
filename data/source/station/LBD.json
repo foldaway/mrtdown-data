@@ -12,5 +12,37 @@
         "startedAt": "2011-10-08"
       }
     ]
+  },
+  "town": "Bukit Merah",
+  "town_translations": {
+    "zh-Hans": "武吉美拉",
+    "ms": "Bukit Merah",
+    "ta": "புக்கிட் மேரா"
+  },
+  "landmarks": [
+    "Labrador Nature Reserve",
+    "Alexandra Arch",
+    "Berlayer Creek"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "拉布拉多自然保护区",
+      "亚历山卓拱门",
+      "贝雷尔溪"
+    ],
+    "ms": [
+      "Taman Semula Jadi Labrador",
+      "Arch Alexandra",
+      "Kali Berlayer"
+    ],
+    "ta": [
+      "லாப்ரடார் இயற்கை பாதுகாப்பு மையம்",
+      "அலெக்சான்ட்ரா கோல்ட்",
+      "பெலயர் கதவு"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2873,
+    "longitude": 103.8038
   }
 }

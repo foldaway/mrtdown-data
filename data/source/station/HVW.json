@@ -12,5 +12,37 @@
         "startedAt": "2015-12-27"
       }
     ]
+  },
+  "town": "Bukit Panjang",
+  "town_translations": {
+    "zh-Hans": "武吉班让",
+    "ms": "Bukit Panjang",
+    "ta": "புக்கிட் பாஞ்சாங்"
+  },
+  "landmarks": [
+    "Hillview Park",
+    "Greendale Mall",
+    "Singapore Quarry"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "山景公园",
+      "格林代尔购物中心",
+      "新加坡采石场"
+    ],
+    "ms": [
+      "Taman Hillview",
+      "Pusat Membeli-belah Greendale",
+      "Quarry Singapura"
+    ],
+    "ta": [
+      "ஹில் View பூங்கா",
+      "கிரீன்டேல் மால்",
+      "சிங்கப்பூர் குவாரி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.37341,
+    "longitude": 103.76995
   }
 }

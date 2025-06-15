@@ -12,5 +12,41 @@
         "startedAt": "2026-12-31"
       }
     ]
+  },
+  "town": "Downtown Core",
+  "town_translations": {
+    "zh-Hans": "市中心",
+    "ms": "Pusat Bandar",
+    "ta": "மத்திய பகுதி"
+  },
+  "landmarks": [
+    "Hong Lim Park",
+    "Central Business District",
+    "Chinatown",
+    "Pearl's Hill City Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "洪林公园",
+      "中央商业区",
+      "牛车水",
+      "珍珠河北城市公园"
+    ],
+    "ms": [
+      "Taman Hong Lim",
+      "Distrik Perniagaan Tengah",
+      "Chinatown",
+      "Taman Bandar Bukit Pearl"
+    ],
+    "ta": [
+      "ஹாங்க்ளிம் பூங்கா",
+      "மத்திய வணிக மாவட்டம்",
+      "சைனாவின் நகரம்",
+      "பீள்வாரியில் நகரம் பார்க்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2857,
+    "longitude": 103.8442
   }
 }

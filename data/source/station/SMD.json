@@ -12,5 +12,37 @@
         "startedAt": "2017-03-31"
       }
     ]
+  },
+  "town": "Punggol",
+  "town_translations": {
+    "zh-Hans": "榜鹅",
+    "ms": "Punggol",
+    "ta": "புங்கோல்"
+  },
+  "landmarks": [
+    "Punggol Waterway",
+    "Punggol Town Hub",
+    "Coney Island Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "榜鹅河",
+      "榜鹅镇中心",
+      "科尼岛公园"
+    ],
+    "ms": [
+      "Sungai Punggol",
+      "Pusat Bandar Punggol",
+      "Taman Pulau Coney"
+    ],
+    "ta": [
+      "புங்கோல் நீர்வழி",
+      "புங்கோல் நகர மையம்",
+      "கோனே தீவு பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.4011,
+    "longitude": 103.9034
   }
 }

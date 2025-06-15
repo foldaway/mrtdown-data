@@ -12,5 +12,33 @@
         "startedAt": "2025-02-28"
       }
     ]
+  },
+  "town": "Bukit Batok",
+  "town_translations": {
+    "zh-Hans": "武吉巴督",
+    "ms": "Bukit Batok",
+    "ta": "புக்கிட் பாட்டோக்"
+  },
+  "landmarks": [
+    "Dairy Farm Nature Park",
+    "The Rain Vortex"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "奶牛农场自然公园",
+      "雨漩涡"
+    ],
+    "ms": [
+      "Taman Alam Dairy Farm",
+      "Pusaran Hujan"
+    ],
+    "ta": [
+      "டெயிரி பண்ணை இயற்கை பூங்கா",
+      "மழை சுழல்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3609,
+    "longitude": 103.7694
   }
 }

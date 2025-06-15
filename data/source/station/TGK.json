@@ -12,5 +12,37 @@
         "startedAt": "2028-12-31"
       }
     ]
+  },
+  "town": "Tengah",
+  "town_translations": {
+    "zh-Hans": "中央",
+    "ms": "Tengah",
+    "ta": "தெங்கா"
+  },
+  "landmarks": [
+    "Tengah Park",
+    "Tengah Garden",
+    "Forest Town"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "中央公园",
+      "中央花园",
+      "森林城镇"
+    ],
+    "ms": [
+      "Taman Tengah",
+      "Kebun Tengah",
+      "Kota Hutan"
+    ],
+    "ta": [
+      "தெங்கா பூங்கா",
+      "தெங்கா தோட்டம்",
+      "காடாக்களை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3644,
+    "longitude": 103.6844
   }
 }

@@ -12,5 +12,29 @@
         "startedAt": "2021-08-28"
       }
     ]
+  },
+  "town": "Ang Mo Kio",
+  "town_translations": {
+    "zh-Hans": "宏茂桥",
+    "ms": "Ang Mo Kio",
+    "ta": "அங் மோ கியோ"
+  },
+  "landmarks": [
+    "Lentor Modern"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "伦多现代"
+    ],
+    "ms": [
+      "Lentor Modern"
+    ],
+    "ta": [
+      "லென்ட்டோர் மாடர்ன்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.397036,
+    "longitude": 103.846481
   }
 }

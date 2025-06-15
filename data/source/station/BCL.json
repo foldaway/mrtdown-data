@@ -12,5 +12,37 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Rochor",
+  "town_translations": {
+    "zh-Hans": "梧槽",
+    "ms": "Rochor",
+    "ta": "ரோச்சோர்"
+  },
+  "landmarks": [
+    "Singapore Management University",
+    "The Cathay",
+    "M Hotel"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡管理大学",
+      "凯瑟大厦",
+      "M酒店"
+    ],
+    "ms": [
+      "Universiti Pengurusan Singapura",
+      "The Cathay",
+      "Hotel M"
+    ],
+    "ta": [
+      "சிங்கப்பூர் மேலாண்மை பல்கலைக்கழகம்",
+      "த கெதய்ய்",
+      "எம் ஹோட்டல்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3002,
+    "longitude": 103.848
   }
 }

@@ -18,5 +18,33 @@
         "startedAt": "2030-12-31"
       }
     ]
+  },
+  "town": "Bishan",
+  "town_translations": {
+    "zh-Hans": "碧山",
+    "ms": "Bishan",
+    "ta": "பிறந்தா"
+  },
+  "landmarks": [
+    "Bishan Park",
+    "Bishan Sports Hall"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "碧山公园",
+      "碧山体育馆"
+    ],
+    "ms": [
+      "Taman Bishan",
+      "Dewan Sukan Bishan"
+    ],
+    "ta": [
+      "பிறந்தா பூங்கா",
+      "பிறந்தா விளையாட்டு மைதானம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.357569,
+    "longitude": 103.84533
   }
 }

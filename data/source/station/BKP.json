@@ -18,5 +18,33 @@
         "startedAt": "1999-11-06"
       }
     ]
+  },
+  "town": "Bukit Panjang",
+  "town_translations": {
+    "zh-Hans": "武吉班让",
+    "ms": "Bukit Panjang",
+    "ta": "புக்கிட் பணγιாங்"
+  },
+  "landmarks": [
+    "Bukit Panjang Plaza",
+    "Lot One Shoppers' Mall"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "武吉班让广场",
+      "Lot One购物中心"
+    ],
+    "ms": [
+      "Plaza Bukit Panjang",
+      "Lot One Shoppers' Mall"
+    ],
+    "ta": [
+      "புக்கிட் பணஞ் நகர squares",
+      "Lot One வாங்குபவர்கள் மால்கள்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3776,
+    "longitude": 103.7617
   }
 }

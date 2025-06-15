@@ -12,5 +12,37 @@
         "startedAt": "2013-01-01"
       }
     ]
+  },
+  "town": "Sengkang",
+  "town_translations": {
+    "zh-Hans": "盛港",
+    "ms": "Sengkang",
+    "ta": "செங்கங்கின்"
+  },
+  "landmarks": [
+    "Sengkang General Hospital",
+    "Compass One",
+    "Sengkang Sports Complex"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "盛港综合医院",
+      "智选购物中心",
+      "盛港体育中心"
+    ],
+    "ms": [
+      "Hospital Umum Sengkang",
+      "Compass One",
+      "Kompleks Sukan Sengkang"
+    ],
+    "ta": [
+      "செங்கங்க பொது மருத்துவமனை",
+      "கொம்பாஸ் ஒன்",
+      "செங்கங்க விளையாட்டு கூட"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3776,
+    "longitude": 103.8957
   }
 }

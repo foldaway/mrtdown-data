@@ -12,5 +12,37 @@
         "startedAt": "2028-12-31"
       }
     ]
+  },
+  "town": "Tengah",
+  "town_translations": {
+    "zh-Hans": "登加",
+    "ms": "Tengah",
+    "ta": "டெங்கா"
+  },
+  "landmarks": [
+    "Dulwich College (Singapore)",
+    "Shaw Institute of Medical Simulation (SIMS)",
+    "Tengah Nature Way"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡德威国际学校",
+      "邵氏医学模拟研究所",
+      "登加自然小径"
+    ],
+    "ms": [
+      "Kolej Dulwich (Singapura)",
+      "Institut Simulasi Perubatan Shaw",
+      "Jalur Alam Tengah"
+    ],
+    "ta": [
+      "டல்விட்ச் கல்லூரி (சிங்கப்பூர்)",
+      "ஷா மருத்துவ ஒத்திகை நிலையம்",
+      "டெங்கா புவிச் செங்கு"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3759,
+    "longitude": 103.7299
   }
 }

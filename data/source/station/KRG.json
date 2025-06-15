@@ -12,5 +12,37 @@
         "startedAt": "2011-10-08"
       }
     ]
+  },
+  "town": "Queenstown",
+  "town_translations": {
+    "zh-Hans": "女皇镇",
+    "ms": "Queenstown",
+    "ta": "குயின்ஸ்டவுன்"
+  },
+  "landmarks": [
+    "National University of Singapore (NUS)",
+    "Kent Ridge Park",
+    "Singapore Science Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡国立大学",
+      "肯特岭公园",
+      "新加坡科学园"
+    ],
+    "ms": [
+      "Universiti Kebangsaan Singapura (NUS)",
+      "Taman Kent Ridge",
+      "Taman Sains Singapura"
+    ],
+    "ta": [
+      "சிங்கப்புூர் தேசிய பல்கலைக்கழகம் (NUS)",
+      "கெண்ட் ரிட்ஜ் பூங்கா",
+      "சிங்கப்புூர் அறிவியல் பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2955,
+    "longitude": 103.7853
   }
 }

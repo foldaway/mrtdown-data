@@ -12,5 +12,37 @@
         "startedAt": "2001-10-18"
       }
     ]
+  },
+  "town": "Queenstown",
+  "town_translations": {
+    "zh-Hans": "女皇镇",
+    "ms": "Queenstown",
+    "ta": "குயீன்ஸ்டவுன்"
+  },
+  "landmarks": [
+    "Singapore Institute of Management",
+    "Dover Court International School",
+    "Ulu Pandan Park Connector"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡管理学院",
+      "多佛法院国际学校",
+      "乌鲁班丹公园连接道"
+    ],
+    "ms": [
+      "Institut Pengurusan Singapura",
+      "Sekolah Antarabangsa Dover Court",
+      "Penghubung Taman Ulu Pandan"
+    ],
+    "ta": [
+      "சிங்கப்பூரின் மேலாண்மை நிறுவனம்",
+      "டோவர் கோர்ட் சர்வதேச பள்ளி",
+      "உலு பாண்டான் பூங்கா இணைப்புப் பாதை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3034,
+    "longitude": 103.7865
   }
 }

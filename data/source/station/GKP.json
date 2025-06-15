@@ -12,5 +12,33 @@
         "startedAt": "2027-12-31"
       }
     ]
+  },
+  "town": "Jurong West",
+  "town_translations": {
+    "zh-Hans": "裕廊西",
+    "ms": "Jurong Barat",
+    "ta": "ஜூரோங் மேற்கில்"
+  },
+  "landmarks": [
+    "Jurong Lake Gardens",
+    "Jurong Country Club"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊湖花园",
+      "裕廊乡村俱乐部"
+    ],
+    "ms": [
+      "Taman Tasik Jurong",
+      "Kelab Negara Jurong"
+    ],
+    "ta": [
+      "ஜூரோங் ஏரிஇல் தோட்டங்கள்",
+      "ஜூரோங் நாடு சொத்துகள்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3405,
+    "longitude": 103.7037
   }
 }

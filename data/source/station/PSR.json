@@ -22,5 +22,37 @@
         "startedAt": "2030-12-31"
       }
     ]
+  },
+  "town": "Pasir Ris",
+  "town_translations": {
+    "zh-Hans": "巴西立",
+    "ms": "Pasir Ris",
+    "ta": "பசிர்ரிஸ்"
+  },
+  "landmarks": [
+    "Pasir Ris Park",
+    "Downtown East",
+    "Wild Wild Wet"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "巴西立公园",
+      "市区东",
+      "Wild Wild Wet"
+    ],
+    "ms": [
+      "Taman Pasir Ris",
+      "Downtown East",
+      "Wild Wild Wet"
+    ],
+    "ta": [
+      "பசிர்ரிஸ் ஊர்காவல்",
+      "டவுன்டவுன் இசை",
+      "வயல்து வாட்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3776,
+    "longitude": 103.9467
   }
 }

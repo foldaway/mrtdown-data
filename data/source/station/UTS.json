@@ -12,5 +12,37 @@
         "startedAt": "2021-08-28"
       }
     ]
+  },
+  "town": "Bishan",
+  "town_translations": {
+    "zh-Hans": "碧山",
+    "ms": "Bishan",
+    "ta": "பிஷான்"
+  },
+  "landmarks": [
+    "MacRitchie Reservoir",
+    "Thomson Nature Park",
+    "Singapore Island Country Club"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "麦里芝蓄水池",
+      "汤申自然公园",
+      "新加坡岛乡村俱乐部"
+    ],
+    "ms": [
+      "Empangan MacRitchie",
+      "Taman Alam Thomson",
+      "Kelab Negara Singapura"
+    ],
+    "ta": [
+      "மெக்கிரிட்சி இறுக்குப்பதிவு",
+      "தொம்சன் இயற்கை பார்க்",
+      "சிங்கப்பூர் தீவு விவசாயக் கிளப்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3673,
+    "longitude": 103.818
   }
 }

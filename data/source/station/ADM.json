@@ -12,5 +12,37 @@
         "startedAt": "1996-02-10"
       }
     ]
+  },
+  "town": "Woodlands",
+  "town_translations": {
+    "zh-Hans": "武吉班让",
+    "ms": "Woodlands",
+    "ta": "அட்மிரல்டி"
+  },
+  "landmarks": [
+    "Woodlands Waterfront Park",
+    "Causeway Point",
+    "Singapore American School"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "兀兰滨水公园",
+      "越海商业中心",
+      "新加坡美国学校"
+    ],
+    "ms": [
+      "Taman Waterfront Woodlands",
+      "Causeway Point",
+      "Sekolah Amerika Syarikat Singapura"
+    ],
+    "ta": [
+      "அட்மிரல்ட்டி நீர்தோட்டம்",
+      "காஸ்‌வே பாயிண்ட்",
+      "சிங்கப்பூர் அமெரிக்க பள்ளி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.444,
+    "longitude": 103.7878
   }
 }

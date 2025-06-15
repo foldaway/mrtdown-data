@@ -12,5 +12,37 @@
         "startedAt": "2002-02-08"
       }
     ]
+  },
+  "town": "Changi",
+  "town_translations": {
+    "zh-Hans": "樟宜",
+    "ms": "Changi",
+    "ta": "சங்கி"
+  },
+  "landmarks": [
+    "Changi Airport Terminals 1, 2, and 3",
+    "Jewel Changi Airport",
+    "Changi Beach"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "樟宜机场第一、第二、第三航站楼",
+      "樟宜机场珍珠",
+      "樟宜海滩"
+    ],
+    "ms": [
+      "Terminal Lapangan Terbang Changi 1, 2, dan 3",
+      "Jewel Changi Airport",
+      "Pantai Changi"
+    ],
+    "ta": [
+      "சங்கி விமான நிலையம் கூறுகள் 1, 2 மற்றும் 3",
+      "ஜூவேல் சங்கி விமான நிலையம்",
+      "சங்கி கடற்கரை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.364,
+    "longitude": 103.991
   }
 }

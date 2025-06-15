@@ -12,5 +12,37 @@
         "startedAt": "2015-12-27"
       }
     ]
+  },
+  "town": "Bukit Timah",
+  "town_translations": {
+    "zh-Hans": "武吉知马",
+    "ms": "Bukit Timah",
+    "ta": "புக்கித் தீமா"
+  },
+  "landmarks": [
+    "National Junior College",
+    "Hwa Chong Institution",
+    "Singapore Chinese Girls' School"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "南洋初级学院",
+      "华侨中学",
+      "新加坡华侨女子学校"
+    ],
+    "ms": [
+      "Sekolah Menengah Nasional Junior",
+      "Institusi Hwa Chong",
+      "Sekolah Perempuan Cina Singapura"
+    ],
+    "ta": [
+      "நாஷனல் ஜூனியர் கல்லூரி",
+      "ஹ்வா சோங் கல்லூரி",
+      "சிங்கப்பூர் சீன பெண்ண்கள் பள்ளி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3301,
+    "longitude": 103.7866
   }
 }

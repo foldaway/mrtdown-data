@@ -12,5 +12,37 @@
         "startedAt": "2032-01-01"
       }
     ]
+  },
+  "town": "Pasir Ris",
+  "town_translations": {
+    "zh-Hans": "巴西立",
+    "ms": "Pasir Ris",
+    "ta": "பாசிர் ரிஸ்"
+  },
+  "landmarks": [
+    "Pasir Ris Park",
+    "Downtown East",
+    "Escape Theme Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "巴西立公园",
+      "市中心东区",
+      "逃脱主题公园"
+    ],
+    "ms": [
+      "Taman Pasir Ris",
+      "Downtown East",
+      "Taman Tema Escape"
+    ],
+    "ta": [
+      "பாசிர் ரிஸ் பூங்கா",
+      "டவுன்டென் ஈஸ்ட்",
+      "எஸ்கேப் தீம்ஸ் பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3765,
+    "longitude": 103.9511
   }
 }

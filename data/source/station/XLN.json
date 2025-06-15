@@ -12,5 +12,33 @@
         "startedAt": "2026-12-31"
       }
     ]
+  },
+  "town": "Tampines",
+  "town_translations": {
+    "zh-Hans": "淡滨尼",
+    "ms": "Tampines",
+    "ta": "டெம்பினீஸ்"
+  },
+  "landmarks": [
+    "Singapore Expo",
+    "Changi Business Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡博览中心",
+      "樟宜商业园"
+    ],
+    "ms": [
+      "Singapore Expo",
+      "Taman Perniagaan Changi"
+    ],
+    "ta": [
+      "சிங்கப்பூர் கண்காட்சி மையம்",
+      "சாங்கி தொழில் பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3341,
+    "longitude": 103.9621
   }
 }

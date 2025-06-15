@@ -12,5 +12,37 @@
         "startedAt": "2005-01-29"
       }
     ]
+  },
+  "town": "Sengkang",
+  "town_translations": {
+    "zh-Hans": "盛港",
+    "ms": "Sengkang",
+    "ta": "செங்கங்கை"
+  },
+  "landmarks": [
+    "North Vista Secondary School",
+    "The Rivervale Mall",
+    "Sengkang Community Hospital"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "北景中学",
+      "瑞华购物中心",
+      "盛港社区医院"
+    ],
+    "ms": [
+      "Sekolah Menengah North Vista",
+      "The Rivervale Mall",
+      "Hospital Komuniti Sengkang"
+    ],
+    "ta": [
+      "நார்த் விஸ்டா மேல்நிலை பள்ளி",
+      "தி திரிவேர்கேல் மால்",
+      "செங்கங்க சமூகவசதி மருத்துவமனை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3776,
+    "longitude": 103.8989
   }
 }

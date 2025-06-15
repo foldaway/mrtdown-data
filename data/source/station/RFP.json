@@ -18,5 +18,41 @@
         "startedAt": "1987-12-12"
       }
     ]
+  },
+  "town": "Downtown Core",
+  "town_translations": {
+    "zh-Hans": "中央商务区",
+    "ms": "Pusat Bandar",
+    "ta": "மைய நகர்மனை"
+  },
+  "landmarks": [
+    "One Raffles Place",
+    "Raffles Place Park",
+    "The Esplanade",
+    "Singapore Exchange"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "来福士广场",
+      "来福士广场公园",
+      "滨海艺术中心",
+      "新加坡交易所"
+    ],
+    "ms": [
+      "One Raffles Place",
+      "Taman Raffles Place",
+      "Esplanade",
+      "Bursa Singapura"
+    ],
+    "ta": [
+      "ஒன்றுக்கூட்டம் ராபிளஸ் இடம்",
+      "ராஃபிளஸ் இடம் பூங்கா",
+      "எஸ்புலேனேட்",
+      "சிங்கப்பூர் பரிமாற்றம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2839,
+    "longitude": 103.851
   }
 }

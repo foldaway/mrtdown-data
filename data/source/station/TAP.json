@@ -12,5 +12,37 @@
         "startedAt": "1987-11-07"
       }
     ]
+  },
+  "town": "Toa Payoh",
+  "town_translations": {
+    "zh-Hans": "多美加坡",
+    "ms": "Toa Payoh",
+    "ta": "தோயா பஹொய"
+  },
+  "landmarks": [
+    "Toa Payoh Hub",
+    "HDB Toa Payoh Town Centre",
+    "Buddha Tooth Relic Temple"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "多美新城中心",
+      "多美公寓市中心",
+      "佛牙寺龙华院"
+    ],
+    "ms": [
+      "Pusat Toa Payoh",
+      "Pusat Perumahan HDB Toa Payoh",
+      "Kuil Relik Gigi Buddha"
+    ],
+    "ta": [
+      "தொயா பஹொய மையம்",
+      "தொயா பஹொய வாடிகைத் தொகுதி",
+      "புத்தர் பறை அருள்மிகு கோவில்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3324,
+    "longitude": 103.8484
   }
 }

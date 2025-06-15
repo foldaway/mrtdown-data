@@ -12,5 +12,37 @@
         "startedAt": "2011-06-20"
       }
     ]
+  },
+  "town": "Punggol",
+  "town_translations": {
+    "zh-Hans": "朋哥尔",
+    "ms": "Punggol",
+    "ta": "புங்க்கோல்"
+  },
+  "landmarks": [
+    "Punggol Waterway Park",
+    "Punggol Plaza",
+    "Waterway Point"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "朋哥尔水道公园",
+      "朋哥尔广场",
+      "水道点"
+    ],
+    "ms": [
+      "Taman Laluan Punggol",
+      "Plaza Punggol",
+      "Waterway Point"
+    ],
+    "ta": [
+      "புங்க்கோல் நீர்மூலம் பூங்கா",
+      "புங்க்கோல் பிளாசா",
+      "விட்டர்வே பாயிண்ட்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.402442,
+    "longitude": 103.91041
   }
 }

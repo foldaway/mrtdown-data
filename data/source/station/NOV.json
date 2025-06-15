@@ -12,5 +12,37 @@
         "startedAt": "1987-12-12"
       }
     ]
+  },
+  "town": "Novena",
+  "town_translations": {
+    "zh-Hans": "诺维娜",
+    "ms": "Novena",
+    "ta": "நொவுத்தேனா"
+  },
+  "landmarks": [
+    "Tan Tock Seng Hospital",
+    "Velocity @ Novena Square",
+    "Novena Church"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "陈笃生医院",
+      "Novena Square 购物中心",
+      "诺维娜教堂"
+    ],
+    "ms": [
+      "Hospital Tan Tock Seng",
+      "Velocity di Novena Square",
+      "Gereja Novena"
+    ],
+    "ta": [
+      "தன்தோக் செங் மருத்துவமனை",
+      "நோவினா ஸ்க்வேர் வேலொசிட்டி",
+      "நோவினா चर्च"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3193,
+    "longitude": 103.8483
   }
 }

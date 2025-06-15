@@ -12,5 +12,37 @@
         "startedAt": "2009-05-28"
       }
     ]
+  },
+  "town": "Serangoon",
+  "town_translations": {
+    "zh-Hans": "实龙岗",
+    "ms": "Serangoon",
+    "ta": "சேராங்கூன்"
+  },
+  "landmarks": [
+    "Chuan Park",
+    "Nanyang Junior College",
+    "Bishan Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "川园",
+      "南洋初级学院",
+      "碧山公园"
+    ],
+    "ms": [
+      "Taman Chuan",
+      "Kolej Menengah Nanyang",
+      "Taman Bishan"
+    ],
+    "ta": [
+      "சுவான் பூங்கா",
+      "நான்யாங்க் கல்லூரி",
+      "பிட்சன் பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.353857,
+    "longitude": 103.873364
   }
 }

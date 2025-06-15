@@ -12,5 +12,33 @@
         "startedAt": "2015-12-27"
       }
     ]
+  },
+  "town": "Bukit Panjang",
+  "town_translations": {
+    "zh-Hans": "武吉班让",
+    "ms": "Bukit Panjang",
+    "ta": "புக்கிட் பாங்"
+  },
+  "landmarks": [
+    "Warren Golf & Country Club",
+    "Zhenghua Nature Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "华胜高尔夫乡村俱乐部",
+      "郑华自然公园"
+    ],
+    "ms": [
+      "Kelab Golf & Negara Warren",
+      "Taman Alam Zhenghua"
+    ],
+    "ta": [
+      "வரென்கோப் & கொண்டாட்டிச் சாரம்",
+      "செங்குவா இயற்கை பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3742,
+    "longitude": 103.7694
   }
 }

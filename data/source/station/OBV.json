@@ -12,5 +12,37 @@
         "startedAt": "2022-11-13"
       }
     ]
+  },
+  "town": "Orchard",
+  "town_translations": {
+    "zh-Hans": "乌节",
+    "ms": "Orchard",
+    "ta": "ஆர்ச்சர்ட்"
+  },
+  "landmarks": [
+    "Orchard Gateway",
+    "ION Orchard",
+    "The Paragon"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "乌节门",
+      "ION 乌节",
+      "广场"
+    ],
+    "ms": [
+      "Orchard Gateway",
+      "ION Orchard",
+      "The Paragon"
+    ],
+    "ta": [
+      "ஆர்ச்சர்ட் கேட்வே",
+      "ION ஆர்ச்சர்ட்",
+      "த பராகான்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3033,
+    "longitude": 103.8334
   }
 }

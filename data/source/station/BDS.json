@@ -12,5 +12,37 @@
         "startedAt": "2024-01-20"
       }
     ]
+  },
+  "town": "Bedok",
+  "town_translations": {
+    "zh-Hans": "勿洛",
+    "ms": "Bedok",
+    "ta": "பெடோக்"
+  },
+  "landmarks": [
+    "Bedok Mall",
+    "Singapore Expo",
+    "East Coast Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "贝多克商场",
+      "新加坡博览中心",
+      "东海岸公园"
+    ],
+    "ms": [
+      "Bedok Mall",
+      "Singapore Expo",
+      "Taman Pantai Timur"
+    ],
+    "ta": [
+      "பெடோக்ச் மால்",
+      "சிங்கப்பூர் எக்ஸ்போ",
+      "கிழக்கு கடற்கரை பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3205,
+    "longitude": 103.922
   }
 }

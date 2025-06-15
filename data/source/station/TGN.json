@@ -12,5 +12,37 @@
         "startedAt": "2028-12-31"
       }
     ]
+  },
+  "town": "Jurong East",
+  "town_translations": {
+    "zh-Hans": "裕廊东",
+    "ms": "Jurong Timur",
+    "ta": "ஜுராங் கிழக்கு"
+  },
+  "landmarks": [
+    "Westgate",
+    "JEM",
+    "Jurong Country Club"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "西门",
+      "JEM商场",
+      "裕廊乡村俱乐部"
+    ],
+    "ms": [
+      "Westgate",
+      "JEM",
+      "Kelab Negara Jurong"
+    ],
+    "ta": [
+      "வெஸ்ட் கேட்",
+      "JEM",
+      "ஜுராங் நாடு கிளப்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3481,
+    "longitude": 103.7465
   }
 }

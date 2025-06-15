@@ -12,5 +12,37 @@
         "startedAt": "2003-01-18"
       }
     ]
+  },
+  "town": "Sengkang",
+  "town_translations": {
+    "zh-Hans": "盛港",
+    "ms": "Sengkang",
+    "ta": "செங்கங்"
+  },
+  "landmarks": [
+    "Sengkang Community Hub",
+    "Compass One",
+    "Sengkang Riverside Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "盛港社区中心",
+      "Compass One",
+      "盛港河滨公园"
+    ],
+    "ms": [
+      "Hubb Komuniti Sengkang",
+      "Compass One",
+      "Taman Sungai Sengkang"
+    ],
+    "ta": [
+      "செங்கங் சமூக மையம்",
+      "Compass One",
+      "செங்கங் நதி பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.385517,
+    "longitude": 103.895341
   }
 }

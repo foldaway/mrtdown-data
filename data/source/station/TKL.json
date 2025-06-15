@@ -12,5 +12,37 @@
         "startedAt": "2024-08-15"
       }
     ]
+  },
+  "town": "Punggol",
+  "town_translations": {
+    "zh-Hans": "榜鹅",
+    "ms": "Punggol",
+    "ta": "புங்க்கோல"
+  },
+  "landmarks": [
+    "Punggol Waterway Park",
+    "Waterway Point",
+    "Punggol Plaza"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "榜鹅水道公园",
+      "水道点",
+      "榜鹅广场"
+    ],
+    "ms": [
+      "Taman Laluan Punggol",
+      "Waterway Point",
+      "Punggol Plaza"
+    ],
+    "ta": [
+      "புங்க்கோல் நீரைப் பாதை பூங்கா",
+      "வாட்டர்வேய் பாயிண்ட்",
+      "புங்க்கோல் பிளாசா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.398751,
+    "longitude": 103.895701
   }
 }

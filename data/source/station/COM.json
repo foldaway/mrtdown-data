@@ -12,5 +12,37 @@
         "startedAt": "1988-03-12"
       }
     ]
+  },
+  "town": "Queenstown",
+  "town_translations": {
+    "zh-Hans": "女皇镇",
+    "ms": "Queenstown",
+    "ta": "குவீன்ஸ்டவுன்"
+  },
+  "landmarks": [
+    "Queenstown Public Library",
+    "Henderson Waves",
+    "Queensway Shopping Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "女皇镇公共图书馆",
+      "亨德森波浪桥",
+      "昆士威购物中心"
+    ],
+    "ms": [
+      "Perpustakaan Awam Queenstown",
+      "Henderson Waves",
+      "Pusat Beli-belah Queensway"
+    ],
+    "ta": [
+      "க்வீன்ஸ்டவுன் பொதுப் நூலகம்",
+      "ஹெண்டர்சன் அலைகள்",
+      "க்வீன்ஸ்வே ஷாப்பிங் சென்டர்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2994,
+    "longitude": 103.7984
   }
 }

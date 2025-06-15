@@ -12,5 +12,37 @@
         "startedAt": "2015-06-27"
       }
     ]
+  },
+  "town": "Sengkang",
+  "town_translations": {
+    "zh-Hans": "新加坡",
+    "ms": "Sengkang",
+    "ta": "செங்காங்கு"
+  },
+  "landmarks": [
+    "Anchorvale Community Club",
+    "Sengkang General Hospital",
+    "Sengkang Sports Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "安可维尔社区俱乐部",
+      "盛港综合医院",
+      "盛港体育中心"
+    ],
+    "ms": [
+      "Dewan Komuniti Anchorvale",
+      "Hospital Umum Sengkang",
+      "Pusat Sukan Sengkang"
+    ],
+    "ta": [
+      "ஆங்கர்வேல் சமூகவலைக்கள கிளப்",
+      "செங்காங்கு பொதுக் க医院",
+      "செங்காங்கு விளையாட்டு மையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3962,
+    "longitude": 103.8896
   }
 }

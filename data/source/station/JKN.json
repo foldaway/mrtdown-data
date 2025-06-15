@@ -12,5 +12,37 @@
         "startedAt": "2009-02-28"
       }
     ]
+  },
+  "town": "Pioneer",
+  "town_translations": {
+    "zh-Hans": "先驱",
+    "ms": "Pioneer",
+    "ta": "பயனியர்"
+  },
+  "landmarks": [
+    "Jurong Eco-Garden",
+    "Joo Koon Circle",
+    "DHL Supply Chain"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊生态花园",
+      "裕群圆环",
+      "DHL供应链"
+    ],
+    "ms": [
+      "Taman Ekologi Jurong",
+      "Kawasan Joo Koon",
+      "Rantaian Pembekalan DHL"
+    ],
+    "ta": [
+      "ஜூராங்கு சூழல் தோட்டம்",
+      "ஜூ கூன் வளாகம்",
+      "DHL வழங்கல் சங்கிலி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.34254,
+    "longitude": 103.67185
   }
 }

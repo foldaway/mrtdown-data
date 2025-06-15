@@ -12,5 +12,37 @@
         "startedAt": "2011-10-08"
       }
     ]
+  },
+  "town": "Queenstown",
+  "town_translations": {
+    "zh-Hans": "女皇镇",
+    "ms": "Queenstown",
+    "ta": "குயின்ஸ்டவுன்"
+  },
+  "landmarks": [
+    "HortPark",
+    "Pasir Panjang Fairview",
+    "Alexandra Shipyard"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "花园公园",
+      "巴西班让景观",
+      "亚历山大船厂"
+    ],
+    "ms": [
+      "Taman Hort",
+      "Fairview Pasir Panjang",
+      "Kilang Kapal Alexandra"
+    ],
+    "ta": [
+      "ஹார்ட் பார்க்",
+      "பசிர் பஞ்சாங் ஃபேர்வியூ",
+      "அலெக்சாண்ட்ரா கப்பல் கைத்தொழில்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2842,
+    "longitude": 103.7715
   }
 }

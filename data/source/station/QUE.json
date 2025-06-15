@@ -12,5 +12,37 @@
         "startedAt": "1988-03-12"
       }
     ]
+  },
+  "town": "Queenstown",
+  "town_translations": {
+    "zh-Hans": "女皇镇",
+    "ms": "Queenstown",
+    "ta": "க்வீன்ஸ்டவுன்"
+  },
+  "landmarks": [
+    "Queenstown Shopping Centre",
+    "Alexandra Hospital",
+    "Anchorpoint"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "女皇镇购物中心",
+      "亚历山大医院",
+      "Anchorpoint"
+    ],
+    "ms": [
+      "Queenstown Shopping Centre",
+      "Hospital Alexandra",
+      "Anchorpoint"
+    ],
+    "ta": [
+      "க்வீனஸ்டவுன் ஷாப்பிங் சென்டர்",
+      "அலெக்சாண்ட்ரா மருத்துவமனை",
+      "Anchorpoint"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2905,
+    "longitude": 103.7993
   }
 }

@@ -12,5 +12,37 @@
         "startedAt": "2022-11-13"
       }
     ]
+  },
+  "town": "River Valley",
+  "town_translations": {
+    "zh-Hans": "河谷",
+    "ms": "Lembah Sungai",
+    "ta": "நீர் தோட்டம்"
+  },
+  "landmarks": [
+    "Great World City",
+    "Singapore River",
+    "Fort Canning Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "大世界城",
+      "新加坡河",
+      "福肯宁公园"
+    ],
+    "ms": [
+      "Kota Dunia",
+      "Sungai Singapura",
+      "Taman Fort Canning"
+    ],
+    "ta": [
+      "பெரும் உலக நகரம்",
+      "சிங்கப்பூர் ஆறு",
+      "ஃபோர்ட் கண்ணிங்க் பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2938,
+    "longitude": 103.8315
   }
 }

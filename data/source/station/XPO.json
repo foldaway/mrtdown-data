@@ -18,5 +18,33 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Tampines",
+  "town_translations": {
+    "zh-Hans": "淡滨尼",
+    "ms": "Tampines",
+    "ta": "தாம்பினிஸ்"
+  },
+  "landmarks": [
+    "Singapore Expo",
+    "Changi City Point"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡博览中心",
+      "樟宜城市广场"
+    ],
+    "ms": [
+      "Singapore Expo",
+      "Changi City Point"
+    ],
+    "ta": [
+      "சிங்கப்பூர் எக்ஸ்போ",
+      "சங்கி நகரம் பாயிண்ட்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.327042,
+    "longitude": 103.958918
   }
 }

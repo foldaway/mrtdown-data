@@ -18,5 +18,37 @@
         "startedAt": "2022-11-13"
       }
     ]
+  },
+  "town": "Orchard",
+  "town_translations": {
+    "zh-Hans": "乌节",
+    "ms": "Orchard",
+    "ta": "ஆர்ச்சர்"
+  },
+  "landmarks": [
+    "Orchard Road",
+    "ION Orchard",
+    "Takashimaya Shopping Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "乌节路",
+      "ION Orchard",
+      "高岛屋购物中心"
+    ],
+    "ms": [
+      "Orchard Road",
+      "ION Orchard",
+      "Pusat Beli-belah Takashimaya"
+    ],
+    "ta": [
+      "ஆர்ச்சர் சாலை",
+      "ION Orchard",
+      "டகாசிமயா ஷாப்பிங் சென்டர்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.303,
+    "longitude": 103.8322
   }
 }

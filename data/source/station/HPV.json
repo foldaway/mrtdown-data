@@ -12,5 +12,29 @@
         "startedAt": "2011-10-08"
       }
     ]
+  },
+  "town": "Queenstown",
+  "town_translations": {
+    "zh-Hans": "女皇镇",
+    "ms": "Queenstown",
+    "ta": "குயின்ஸ்டவுன்"
+  },
+  "landmarks": [
+    "Haw Par Villa Theme Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "蝉蜕公园"
+    ],
+    "ms": [
+      "Taman Haw Par Villa"
+    ],
+    "ta": [
+      "ஹா பா வில்லா தீம் பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2998,
+    "longitude": 103.7881
   }
 }

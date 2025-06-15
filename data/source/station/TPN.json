@@ -12,5 +12,37 @@
         "startedAt": "2030-12-31"
       }
     ]
+  },
+  "town": "Tampines",
+  "town_translations": {
+    "zh-Hans": "淡滨尼",
+    "ms": "Tampines",
+    "ta": "தாம் பினஸ்"
+  },
+  "landmarks": [
+    "Tampines Mall",
+    "Century Square",
+    "Tampines Hub"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "淡滨尼购物中心",
+      "世纪广场",
+      "淡滨尼中心"
+    ],
+    "ms": [
+      "Pusat Membeli-belah Tampines",
+      "Pusat Perdagangan Century",
+      "Tampines Hub"
+    ],
+    "ta": [
+      "தாம் பினஸ் மால்இ",
+      "சென்சுரி ஸ்க்வெர்",
+      "தாம் பினஸ் ஹப்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3572,
+    "longitude": 103.9352
   }
 }

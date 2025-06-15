@@ -12,5 +12,33 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Geylang",
+  "town_translations": {
+    "zh-Hans": "芽笼",
+    "ms": "Geylang",
+    "ta": "கேலாங்"
+  },
+  "landmarks": [
+    "Ubi Techpark",
+    "Singapore Industrial Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "优比科技园",
+      "新加坡工业园"
+    ],
+    "ms": [
+      "Taman Teknologi Ubi",
+      "Taman Perindustrian Singapura"
+    ],
+    "ta": [
+      "உபி தொழில்நுட்ப பூங்கா",
+      "சிங்கப்பூர் தொழிற்சாலை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.320225,
+    "longitude": 103.895572
   }
 }

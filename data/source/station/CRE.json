@@ -12,5 +12,33 @@
         "startedAt": "2005-01-29"
       }
     ]
+  },
+  "town": "Punggol",
+  "town_translations": {
+    "zh-Hans": "根荫",
+    "ms": "Punggol",
+    "ta": "புங்க்கொல்"
+  },
+  "landmarks": [
+    "Coral Edge Community Centre",
+    "Punggol Waterway Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "珊瑚边社区中心",
+      "根荫水道公园"
+    ],
+    "ms": [
+      "Pusat Komuniti Coral Edge",
+      "Taman Laluan Air Punggol"
+    ],
+    "ta": [
+      "கோறல் எட்கம்யூனிட்டி மையம்",
+      "புங்க்கொல் நீரின் பாதை பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3999,
+    "longitude": 103.9155
   }
 }

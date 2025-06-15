@@ -12,5 +12,33 @@
         "startedAt": "2017-06-18"
       }
     ]
+  },
+  "town": "Tuas",
+  "town_translations": {
+    "zh-Hans": "大士",
+    "ms": "Tuas",
+    "ta": "துவாஸ்"
+  },
+  "landmarks": [
+    "Raffles Marina",
+    "Tuas Checkpoint"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "莱佛士船艇俱乐部",
+      "大士关卡"
+    ],
+    "ms": [
+      "Raffles Marina",
+      "Tuas Checkpoint"
+    ],
+    "ta": [
+      "ரைஃபிள்ஸ் மரீனா",
+      "துவாஸ் சோதனைச் சாவடி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3404,
+    "longitude": 103.6361
   }
 }

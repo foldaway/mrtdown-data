@@ -12,5 +12,37 @@
         "startedAt": "2030-12-31"
       }
     ]
+  },
+  "town": "Serangoon",
+  "town_translations": {
+    "zh-Hans": "实龙岗",
+    "ms": "Serangoon",
+    "ta": "சிராங்கூன்"
+  },
+  "landmarks": [
+    "Serangoon Gardens Country Club",
+    "Chomp Chomp Food Centre",
+    "Bowen Secondary School"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "实龙岗花园乡村俱乐部",
+      "仲记小贩中心",
+      "宝文中学"
+    ],
+    "ms": [
+      "Kelab Desa Taman Serangoon",
+      "Pusat Makanan Chomp Chomp",
+      "Sekolah Menengah Bowen"
+    ],
+    "ta": [
+      "சிராங்கூன் கார்டன்ஸ் நாட் க்ளப்",
+      "சொம்பு சொம்பு உணவகம்",
+      "போவெனின் இரண்டாம் நிலைப் பள்ளி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3663,
+    "longitude": 103.8677
   }
 }

@@ -12,5 +12,37 @@
         "startedAt": "2007-11-15"
       }
     ]
+  },
+  "town": "Sengkang",
+  "town_translations": {
+    "zh-Hans": "盛港",
+    "ms": "Sengkang",
+    "ta": "செங்காங்"
+  },
+  "landmarks": [
+    "Sengkang Riverside Park",
+    "Anchorvale Community Club",
+    "Sengkang Sports Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "盛港河畔公园",
+      "安谷社区俱乐部",
+      "盛港体育中心"
+    ],
+    "ms": [
+      "Taman Tepi Sungai Sengkang",
+      "Kelab Komuniti Anchorvale",
+      "Pusat Sukan Sengkang"
+    ],
+    "ta": [
+      "செங்காங் ரிவர்சைட் பூங்கா",
+      "அங்கவரேல் சமூக மன்றம்",
+      "செங்காங் விளையாட்டு மையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3976,
+    "longitude": 103.8881
   }
 }

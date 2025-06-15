@@ -12,5 +12,37 @@
         "startedAt": "2024-12-10"
       }
     ]
+  },
+  "town": "Punggol",
+  "town_translations": {
+    "zh-Hans": "榜鹅",
+    "ms": "Punggol",
+    "ta": "புங்க்கோல்"
+  },
+  "landmarks": [
+    "Punggol Point",
+    "Coney Island",
+    "Punggol Waterway Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "榜鹅角",
+      "考尼岛",
+      "榜鹅水道公园"
+    ],
+    "ms": [
+      "Punggol Point",
+      "Pulau Coney",
+      "Taman Punggol Waterway"
+    ],
+    "ta": [
+      "புங்க்கோல் பாயின்ட்",
+      "கோனியின் தீவு",
+      "புங்க்கோல் நீர்செலுத்து பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.404,
+    "longitude": 103.925
   }
 }

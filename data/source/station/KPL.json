@@ -12,5 +12,37 @@
         "startedAt": "2026-12-31"
       }
     ]
+  },
+  "town": "Bukit Merah",
+  "town_translations": {
+    "zh-Hans": "红山",
+    "ms": "Bukit Merah",
+    "ta": "புக்கிட் மேரா"
+  },
+  "landmarks": [
+    "Singapore Cruise Centre",
+    "HarbourFront Centre",
+    "Sentosa Gateway"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡邮轮中心",
+      "海港前广场",
+      "圣淘沙通道"
+    ],
+    "ms": [
+      "Pusat Perkhidmatan Cruise Singapura",
+      "HarbourFront Centre",
+      "Pintu Masuk Sentosa"
+    ],
+    "ta": [
+      "சிங்கப்பூர் கப்பல் நிலையம்",
+      "ஹர்பர்ஃப்ராண்ட் மையம்",
+      "சென்தோசா சாலை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2641,
+    "longitude": 103.8226
   }
 }

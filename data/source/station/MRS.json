@@ -12,5 +12,41 @@
         "startedAt": "2040-12-31"
       }
     ]
+  },
+  "town": "Straits View",
+  "town_translations": {
+    "zh-Hans": "海峡景",
+    "ms": "Straits View",
+    "ta": "ஸ்ட்ரெயிட்ஸ் வியூ"
+  },
+  "landmarks": [
+    "Marina Bay Sands",
+    "Gardens by the Bay",
+    "The Shoppes at Marina Bay Sands",
+    "Merlion Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "滨海湾金沙",
+      "滨海花园",
+      "滨海湾金沙购物广场",
+      "鱼尾狮公园"
+    ],
+    "ms": [
+      "Marina Bay Sands",
+      "Taman Gardens by the Bay",
+      "The Shoppes at Marina Bay Sands",
+      "Taman Merlion"
+    ],
+    "ta": [
+      "மரினா பே சாண்ட்ஸ்",
+      "காடென்ஸ் பை தி பே",
+      "மரினா பே சாண்ட்ஸ் ஷாப்பீஸ்",
+      "மெர்லியன் பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2816,
+    "longitude": 103.86
   }
 }

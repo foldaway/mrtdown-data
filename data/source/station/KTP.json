@@ -12,5 +12,37 @@
         "startedAt": "2024-06-23"
       }
     ]
+  },
+  "town": "Marine Parade",
+  "town_translations": {
+    "zh-Hans": "马林百列",
+    "ms": "Marine Parade",
+    "ta": "மரின் பரேட்"
+  },
+  "landmarks": [
+    "Katong Park",
+    "The Intan",
+    "Marine Parade Food Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "加东公园",
+      "印坦博物馆",
+      "海洋公园美食中心"
+    ],
+    "ms": [
+      "Taman Katong",
+      "Muzium Intan",
+      "Pusat Makanan Marine Parade"
+    ],
+    "ta": [
+      "காத்தான் குடுநகர்",
+      "இன்டன் அருங்காட்சியகம்",
+      "மரின் பார்ட் உணவகம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2995,
+    "longitude": 103.9019
   }
 }

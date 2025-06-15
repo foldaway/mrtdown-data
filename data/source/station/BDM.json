@@ -12,5 +12,37 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Kallang",
+  "town_translations": {
+    "zh-Hans": "加冷",
+    "ms": "Kallang",
+    "ta": "கல்லாங்"
+  },
+  "landmarks": [
+    "Geylang Serai Market",
+    "Singapore Sports Hub",
+    "Kallang Wave Mall"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "吉兰士市场",
+      "新加坡体育中心",
+      "加冷波浪购物中心"
+    ],
+    "ms": [
+      "Pasar Geylang Serai",
+      "Pusat Sukan Singapura",
+      "Kallang Wave Mall"
+    ],
+    "ta": [
+      "கெய்லாங் சரை சந்தை",
+      "சிங்கப்பூர் விளையாட்டு மையம்",
+      "கல்லாங் வேவு மால்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.316683,
+    "longitude": 103.872768
   }
 }

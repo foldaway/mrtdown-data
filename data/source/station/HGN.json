@@ -18,5 +18,37 @@
         "startedAt": "2030-12-31"
       }
     ]
+  },
+  "town": "Hougang",
+  "town_translations": {
+    "zh-Hans": "后港",
+    "ms": "Hougang",
+    "ta": "ஹவ்காங்"
+  },
+  "landmarks": [
+    "Hougang Mall",
+    "Hougang Sports Hall",
+    "Kovan Heartland Mall"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "后港购物中心",
+      "后港体育馆",
+      "高文心脏地带购物中心"
+    ],
+    "ms": [
+      "Pusat Membeli-belah Hougang",
+      "Dewan Sukan Hougang",
+      "Pusat Komuniti Kovan"
+    ],
+    "ta": [
+      "ஹவ்காங் மால்",
+      "ஹவ்காங் விளையாட்டு மண்டபம்",
+      "கோவான் ஹார்ட்லேண்ட் மால்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3751,
+    "longitude": 103.8923
   }
 }

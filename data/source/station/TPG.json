@@ -12,5 +12,41 @@
         "startedAt": "1987-12-12"
       }
     ]
+  },
+  "town": "Downtown Core",
+  "town_translations": {
+    "zh-Hans": "市中心",
+    "ms": "Pusat Bandar",
+    "ta": "நகர மையம்"
+  },
+  "landmarks": [
+    "Tanjong Pagar Centre",
+    "Chinatown",
+    "Sri Mariamman Temple",
+    "Duxton Hill"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "丹戎巴葛中心",
+      "牛车水",
+      "斯里马里曼寺",
+      "德享山"
+    ],
+    "ms": [
+      "Pusat Tanjong Pagar",
+      "Chinatown",
+      "Kuil Sri Mariamman",
+      "Duxton Hill"
+    ],
+    "ta": [
+      "தாஞ்சோங் பாகார் மையம்",
+      "சைனாடவுன்",
+      "ஸ்ரீமரியம்மன் கோவில்",
+      "டக்ஸ்டன் ஹில்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2763,
+    "longitude": 103.8436
   }
 }

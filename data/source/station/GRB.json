@@ -13,5 +13,37 @@
         "startedAt": "2022-11-13"
       }
     ]
+  },
+  "town": "Marina South",
+  "town_translations": {
+    "zh-Hans": "滨海南",
+    "ms": "Marina Selatan",
+    "ta": "மரீனா தெற்கு"
+  },
+  "landmarks": [
+    "Supertree Grove",
+    "Cloud Forest",
+    "Flower Dome"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "超级树穿梭",
+      "云雾林",
+      "花穹"
+    ],
+    "ms": [
+      "Supertree Grove",
+      "Kubah Awan",
+      "Dome Bunga"
+    ],
+    "ta": [
+      "சூப்பர்ட் டிரீ ஃபிரோவே",
+      "மேகக் காடியல்",
+      "மணல் மாலை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2818,
+    "longitude": 103.8646
   }
 }

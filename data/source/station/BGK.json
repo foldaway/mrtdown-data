@@ -12,5 +12,33 @@
         "startedAt": "2006-01-15"
       }
     ]
+  },
+  "town": "Sengkang",
+  "town_translations": {
+    "zh-Hans": "实龙岗",
+    "ms": "Sengkang",
+    "ta": "செங்காந்து"
+  },
+  "landmarks": [
+    "Buangkok Park",
+    "Compass One Shopping Mall"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "文兴公园",
+      "康柏斯一号购物中心"
+    ],
+    "ms": [
+      "Taman Buangkok",
+      "Pusat Membeli-Belah Compass One"
+    ],
+    "ta": [
+      "புவன்கொக் பூங்கா",
+      "கொம்பாஸ் ஒன் ஷாப்பிங் மால்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3754,
+    "longitude": 103.8867
   }
 }

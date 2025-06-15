@@ -12,5 +12,37 @@
         "startedAt": "2022-11-13"
       }
     ]
+  },
+  "town": "Tanglin",
+  "town_translations": {
+    "zh-Hans": "丹琳",
+    "ms": "Tanglin",
+    "ta": "தாங்க்லின்"
+  },
+  "landmarks": [
+    "Royal Thai Embassy",
+    "Australian High Commission",
+    "Tanglin Mall"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "泰王国驻新加坡大使馆",
+      "澳大利亚高专",
+      "丹琳购物中心"
+    ],
+    "ms": [
+      "Kedutaan Diraja Thailand",
+      "Kedutaan Besar Australia",
+      "Tanglin Mall"
+    ],
+    "ta": [
+      "தாய்லாந்து தூதரகம்",
+      "ஆஸ்திரேலிய உயர்கொடுமை",
+      "தாங்க்லின் மால்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.313,
+    "longitude": 103.815
   }
 }

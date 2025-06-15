@@ -12,5 +12,37 @@
         "startedAt": "2022-11-13"
       }
     ]
+  },
+  "town": "Downtown Core",
+  "town_translations": {
+    "zh-Hans": "市中心",
+    "ms": "Pusat Bandar",
+    "ta": "நகர மையம்"
+  },
+  "landmarks": [
+    "Marina Bay Financial Centre",
+    "One Raffles Quay",
+    "Asia Square"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "滨海湾金融中心",
+      "莱佛士坊一号",
+      "亚洲广场"
+    ],
+    "ms": [
+      "Marina Bay Financial Centre",
+      "One Raffles Quay",
+      "Asia Square"
+    ],
+    "ta": [
+      "மரினா பேய் நிதி மையம்",
+      "ஒரு ராஃபிள்ஸ் குவாய்",
+      "ஆசியா சQUARE"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2797,
+    "longitude": 103.8503
   }
 }

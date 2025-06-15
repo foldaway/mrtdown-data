@@ -12,5 +12,37 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Tampines",
+  "town_translations": {
+    "zh-Hans": "淡宾尼",
+    "ms": "Tampines",
+    "ta": "தாம்பின்ஸ்"
+  },
+  "landmarks": [
+    "Tampines Mall",
+    "Century Square",
+    "Tampines 1"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "淡宾尼购物中心",
+      "世纪广场",
+      "淡宾尼 1"
+    ],
+    "ms": [
+      "Tampines Mall",
+      "Century Square",
+      "Tampines 1"
+    ],
+    "ta": [
+      "தாம்பின்ஸ் மால்",
+      "சென்சுரி ச்க்வெயர்",
+      "தாம்பின்ஸ் 1"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3517,
+    "longitude": 103.9432
   }
 }

@@ -12,5 +12,29 @@
         "startedAt": "2029-12-31"
       }
     ]
+  },
+  "town": "Western Water Catchment",
+  "town_translations": {
+    "zh-Hans": "西部集水区",
+    "ms": "Tadahan Air Barat",
+    "ta": "மேற்கு நீர்ஒழிப்பு"
+  },
+  "landmarks": [
+    "Nanyang Technological University (NTU)"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "南洋理工大学"
+    ],
+    "ms": [
+      "Universiti Teknologi Nanyang"
+    ],
+    "ta": [
+      "நன்யாங் தொழில்நுட்ப பல்கலைக்கழகம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3483,
+    "longitude": 103.6828
   }
 }

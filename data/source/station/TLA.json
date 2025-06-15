@@ -12,5 +12,37 @@
         "startedAt": "2013-12-22"
       }
     ]
+  },
+  "town": "Outram",
+  "town_translations": {
+    "zh-Hans": "欧南",
+    "ms": "Outram",
+    "ta": "ஊட்ரம்"
+  },
+  "landmarks": [
+    "Thian Hock Keng Temple",
+    "Asia Square",
+    "The Arts House"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "天福宫",
+      "亚洲广场",
+      "艺术馆"
+    ],
+    "ms": [
+      "Kuil Thian Hock Keng",
+      "Asia Square",
+      "The Arts House"
+    ],
+    "ta": [
+      "தியான்பொகவில் கேங் கோவில்",
+      "ஆசியா ஸ்க்வையர்",
+      "அதிக அதிகாரப் பணி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2816,
+    "longitude": 103.8486
   }
 }

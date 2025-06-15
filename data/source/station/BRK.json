@@ -12,5 +12,33 @@
         "startedAt": "2034-01-01"
       }
     ]
+  },
+  "town": "Choa Chu Kang",
+  "town_translations": {
+    "zh-Hans": "蔡厝港",
+    "ms": "Choa Chu Kang",
+    "ta": "சுவா சு காங்"
+  },
+  "landmarks": [
+    "Lot One Shoppers' Mall",
+    "Choa Chu Kang Bus Interchange"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "乐融购物商场",
+      "蔡厝港巴士转换站"
+    ],
+    "ms": [
+      "Lot One Pusat Membeli-belah",
+      "Pertukaran Bas Choa Chu Kang"
+    ],
+    "ta": [
+      "லாட் ஒன் ஷாப்பிங் மால்",
+      "சுவா சு காங் பேருந்து இடமாற்ற நிலையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3857,
+    "longitude": 103.7445
   }
 }

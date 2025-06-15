@@ -12,5 +12,37 @@
         "startedAt": "2017-06-18"
       }
     ]
+  },
+  "town": "Tuas",
+  "town_translations": {
+    "zh-Hans": "大士",
+    "ms": "Tuas",
+    "ta": "துவாஸ்"
+  },
+  "landmarks": [
+    "Singapore Discovery Centre",
+    "Tuas Marine Park",
+    "JTC MedTech Hub"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡探索中心",
+      "大士海洋公园",
+      "JTC医疗科技中心"
+    ],
+    "ms": [
+      "Pusat Penemuan Singapura",
+      "Taman Marin Tuas",
+      "Ruang MedTech JTC"
+    ],
+    "ta": [
+      "சிங்கப்பூர் கண்டுபிடிப்பு மையம்",
+      "துவாஸ் கடல் பூங்கா",
+      "JTC மருத்துவ தொழில்நுட்ப மையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2832,
+    "longitude": 103.6231
   }
 }

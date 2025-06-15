@@ -12,5 +12,29 @@
         "startedAt": "1999-11-06"
       }
     ]
+  },
+  "town": "Choa Chu Kang",
+  "town_translations": {
+    "zh-Hans": "蔡厝港",
+    "ms": "Choa Chu Kang",
+    "ta": "சுவாஹோ சு காங்"
+  },
+  "landmarks": [
+    "Phoenix Heights"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "凤凰岗住宅"
+    ],
+    "ms": [
+      "Pangsapuri Phoenix"
+    ],
+    "ta": [
+      "பீனிக்ஸ் மேடுகள்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3775,
+    "longitude": 103.7581
   }
 }

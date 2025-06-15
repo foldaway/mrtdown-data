@@ -12,5 +12,37 @@
         "startedAt": "1987-11-07"
       }
     ]
+  },
+  "town": "Toa Payoh",
+  "town_translations": {
+    "zh-Hans": "大巴窑",
+    "ms": "Toa Payoh",
+    "ta": "டோ பாயோ"
+  },
+  "landmarks": [
+    "MacRitchie Reservoir",
+    "Bishan-Ang Mo Kio Park",
+    "Bishan Stadium"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "麦里芝蓄水池",
+      "美亭-宏茂桥公园",
+      "美亭体育场"
+    ],
+    "ms": [
+      "Reservoir MacRitchie",
+      "Taman Bishan-Ang Mo Kio",
+      "Stadium Bishan"
+    ],
+    "ta": [
+      "மக்கிரிட்சி நீர்தட்டு",
+      "பிஷான்-ஆங்கு மோ கியோ பூங்கா",
+      "பிஷான் நாட்டு மைதானம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3402,
+    "longitude": 103.8446
   }
 }

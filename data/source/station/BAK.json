@@ -12,5 +12,37 @@
         "startedAt": "2003-01-18"
       }
     ]
+  },
+  "town": "Sengkang",
+  "town_translations": {
+    "zh-Hans": "盛港",
+    "ms": "Sengkang",
+    "ta": "செங்காங்க்"
+  },
+  "landmarks": [
+    "Anchorvale Community Club",
+    "Sengkang Sports Complex",
+    "Sengkang Grand Mall"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "安珀维尔社区俱乐部",
+      "盛港运动广场",
+      "盛港大商场"
+    ],
+    "ms": [
+      "Dewan Komuniti Anchorvale",
+      "Kompleks Sukan Sengkang",
+      "Sengkang Grand Mall"
+    ],
+    "ta": [
+      "ஆங்கர்வேல் சமுதாய கிளப்",
+      "செங்காங்க் விளையாட்டு மையம்",
+      "செங்காங்க் கிராந்து மால்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3981,
+    "longitude": 103.8952
   }
 }

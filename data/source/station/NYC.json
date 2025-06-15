@@ -12,5 +12,37 @@
         "startedAt": "2029-12-31"
       }
     ]
+  },
+  "town": "Western Water Catchment",
+  "town_translations": {
+    "zh-Hans": "西部蓄水区",
+    "ms": "Tadahan Air Barat",
+    "ta": "மேற்கு நீர் சேகரிப்பு"
+  },
+  "landmarks": [
+    "Jurong Lake",
+    "Jurong Bird Park",
+    "Chinese Garden"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊湖",
+      "裕廊鸟园",
+      "华侨公园"
+    ],
+    "ms": [
+      "Tasik Jurong",
+      "Taman Burung Jurong",
+      "Taman Cina"
+    ],
+    "ta": [
+      "ஜூரோங் ஏரி",
+      "ஜூரோங்கின் பறவுக் களம்",
+      "சீனக் காடு"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3475,
+    "longitude": 103.7074
   }
 }

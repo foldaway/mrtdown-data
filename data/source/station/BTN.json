@@ -19,5 +19,37 @@
         "startedAt": "2015-12-27"
       }
     ]
+  },
+  "town": "Tanglin",
+  "town_translations": {
+    "zh-Hans": "丹灵",
+    "ms": "Tanglin",
+    "ta": "தாங்ளின்"
+  },
+  "landmarks": [
+    "Singapore Botanic Gardens",
+    "National Orchid Garden",
+    "Jacob Ballas Children's Garden"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡植物园",
+      "国家兰花园",
+      "雅各布·巴拉斯儿童花园"
+    ],
+    "ms": [
+      "Taman Botani Singapura",
+      "Taman Orkid Negara",
+      "Taman Kanak-kanak Jacob Ballas"
+    ],
+    "ta": [
+      "சிங்கப்பூர் பூங்கா",
+      "தேசிய ஆர்க்கிட் பூங்கா",
+      "ஜேக்கப் பாலாஸ் குழந்தைகள் பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3139,
+    "longitude": 103.8142
   }
 }

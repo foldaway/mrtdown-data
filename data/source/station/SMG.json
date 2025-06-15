@@ -12,5 +12,37 @@
         "startedAt": "2014-06-29"
       }
     ]
+  },
+  "town": "Punggol",
+  "town_translations": {
+    "zh-Hans": "榜鹅",
+    "ms": "Punggol",
+    "ta": "புங்குளான்"
+  },
+  "landmarks": [
+    "Punggol Waterway Park",
+    "Punggol Digital District",
+    "Seaside Walk"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "榜鹅水道公园",
+      "榜鹅数码区",
+      "海滨步道"
+    ],
+    "ms": [
+      "Taman Sungai Punggol",
+      "Daerah Digital Punggol",
+      "Jalan Seaside"
+    ],
+    "ta": [
+      "புங்குளான் நீர்த்தோட்டம்",
+      "புங்குளான் டிஜிட்டல் மாவட்டம்",
+      "கடற்கரை நடைபாதை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.4035,
+    "longitude": 103.9034
   }
 }

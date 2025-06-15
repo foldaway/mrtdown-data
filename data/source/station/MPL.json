@@ -12,5 +12,37 @@
         "startedAt": "2040-12-31"
       }
     ]
+  },
+  "town": "Novena",
+  "town_translations": {
+    "zh-Hans": "诺维娜",
+    "ms": "Novena",
+    "ta": "நொவீனா"
+  },
+  "landmarks": [
+    "MacRitchie Reservoir",
+    "Lornie Road",
+    "Mount Pleasant Estate"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "麦里芝蓄水池",
+      "劳尼路",
+      "芒特平乐庄园"
+    ],
+    "ms": [
+      "Reservoir MacRitchie",
+      "Jalan Lornie",
+      "Kawasan Perumahan Mount Pleasant"
+    ],
+    "ta": [
+      "மெக்‌ரிட்சி சேக்கை",
+      "லோர்னி சாலை",
+      "மவுண்ட் பிளசென்ட் காட்சி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3403,
+    "longitude": 103.8347
   }
 }

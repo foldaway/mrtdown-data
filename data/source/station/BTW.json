@@ -12,5 +12,33 @@
         "startedAt": "2015-12-27"
       }
     ]
+  },
+  "town": "Bukit Timah",
+  "town_translations": {
+    "zh-Hans": "武吉知马",
+    "ms": "Bukit Timah",
+    "ta": "புகிட் டிமா"
+  },
+  "landmarks": [
+    "Beauty World Centre",
+    "Bukit Timah Nature Reserve"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "武吉知马中心",
+      "武吉知马自然保护区"
+    ],
+    "ms": [
+      "Pusat Beauty World",
+      "Taman Negara Bukit Timah"
+    ],
+    "ta": [
+      "பியூட்டி உலக மையம்",
+      "புகிட் டிமா இயற்கை பாதுகாப்பகம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3334,
+    "longitude": 103.7697
   }
 }

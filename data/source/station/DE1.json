@@ -9,5 +9,33 @@
         "startedAt": "2035-12-31"
       }
     ]
+  },
+  "town": "Sungei Kadut",
+  "town_translations": {
+    "zh-Hans": "双溪加株",
+    "ms": "Sungei Kadut",
+    "ta": "சுங்கை கடுத்"
+  },
+  "landmarks": [
+    "Sungei Kadut Industrial Estate",
+    "Kranji Countryside"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "双溪加株工业区",
+      "克兰芝乡村"
+    ],
+    "ms": [
+      "Kawasan Perindustrian Sungei Kadut",
+      "Kampung Kranji"
+    ],
+    "ta": [
+      "சுங்கை கடுத் தொழிற்சாலை",
+      "கிராஞ்சி காண்ட்ரிசைடு"
+    ]
+  },
+  "geo": {
+    "latitude": 1.419,
+    "longitude": 103.757
   }
 }

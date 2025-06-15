@@ -12,5 +12,37 @@
         "startedAt": "2024-06-23"
       }
     ]
+  },
+  "town": "Bedok",
+  "town_translations": {
+    "zh-Hans": "勿洛",
+    "ms": "Bedok",
+    "ta": "பெடோக்"
+  },
+  "landmarks": [
+    "East Coast Park",
+    "Changi Business Park",
+    "Bayshore Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "东海岸公园",
+      "樟宜商业园区",
+      "贝莎公园"
+    ],
+    "ms": [
+      "Taman Pantai Timur",
+      "Taman Perniagaan Changi",
+      "Taman Bayshore"
+    ],
+    "ta": [
+      "கிழக்கு கடற்கரை பூங்கா",
+      "சங்கு வர்த்தக பூங்கா",
+      "பெய்ஷோர் புகுத்து"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3055,
+    "longitude": 103.9475
   }
 }

@@ -13,5 +13,37 @@
         "startedAt": "2028-12-31"
       }
     ]
+  },
+  "town": "Marina East",
+  "town_translations": {
+    "zh-Hans": "滨海东",
+    "ms": "Marina East",
+    "ta": "மரினா இஸ்ரா"
+  },
+  "landmarks": [
+    "Marina Bay Sands",
+    "The Esplanade",
+    "Gardens by the Bay"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "滨海湾金沙",
+      "滨海艺术中心",
+      "滨海湾花园"
+    ],
+    "ms": [
+      "Marina Bay Sands",
+      "Esplanade",
+      "Gardens by the Bay"
+    ],
+    "ta": [
+      "மரினா பே செய்தி",
+      "எஸ்பிளனேட்",
+      "கார்டன்ஸ் பை தி பே"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2823,
+    "longitude": 103.8558
   }
 }

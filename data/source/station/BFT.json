@@ -18,5 +18,37 @@
         "startedAt": "2013-12-22"
       }
     ]
+  },
+  "town": "Marina South",
+  "town_translations": {
+    "zh-Hans": "滨海南",
+    "ms": "Selatan Marina",
+    "ta": "மரினா தெற்கு"
+  },
+  "landmarks": [
+    "Marina Bay Sands",
+    "Gardens by the Bay",
+    "ArtScience Museum"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "滨海湾金沙",
+      "滨海湾花园",
+      "艺术科学博物馆"
+    ],
+    "ms": [
+      "Marina Bay Sands",
+      "Taman di Tepi Marina",
+      "Muzium Sains Seni"
+    ],
+    "ta": [
+      "மரினா பேய் Sands",
+      "கார்டன்ஸ் பை தி பேய்",
+      "கலை அறிவியல் மியூசியம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2841,
+    "longitude": 103.8585
   }
 }

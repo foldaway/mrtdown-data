@@ -12,5 +12,37 @@
         "startedAt": "2014-06-29"
       }
     ]
+  },
+  "town": "Punggol",
+  "town_translations": {
+    "zh-Hans": "朋哥尔",
+    "ms": "Punggol",
+    "ta": "புங்க்கொள்ளுப்"
+  },
+  "landmarks": [
+    "Punggol Waterway Park",
+    "Waterway Point",
+    "Coney Island"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "朋哥尔水道公园",
+      "水道点",
+      "科尼岛"
+    ],
+    "ms": [
+      "Taman Laluan Punggol",
+      "Waterway Point",
+      "Pulau Coney"
+    ],
+    "ta": [
+      "புங்க்கொல்லு நீர்வழி பூங்கா",
+      "வாட்டர்வே பாயின்",
+      "கோனி தீவு"
+    ]
+  },
+  "geo": {
+    "latitude": 1.397245,
+    "longitude": 103.911141
   }
 }

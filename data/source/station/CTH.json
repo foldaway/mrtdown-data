@@ -18,5 +18,37 @@
         "startedAt": "1987-12-12"
       }
     ]
+  },
+  "town": "Downtown Core",
+  "town_translations": {
+    "zh-Hans": "市中心",
+    "ms": "Pusat Bandar",
+    "ta": "மள்ளிகைச் சந்தை"
+  },
+  "landmarks": [
+    "Raffles City",
+    "National Gallery Singapore",
+    "Supreme Court"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "莱佛士城",
+      "新加坡国家美术馆",
+      "最高法院"
+    ],
+    "ms": [
+      "Raffles City",
+      "Galeri Negara Singapura",
+      "Mahkamah Agung"
+    ],
+    "ta": [
+      "ராஃபிள்ஸ் சிட்டி",
+      "நாட்டின் கலைக்காட்சி",
+      "உயர்நீதிமன்றம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2935,
+    "longitude": 103.8519
   }
 }

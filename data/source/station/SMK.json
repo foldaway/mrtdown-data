@@ -12,5 +12,37 @@
         "startedAt": "2016-02-29"
       }
     ]
+  },
+  "town": "Punggol",
+  "town_translations": {
+    "zh-Hans": "榜鹅",
+    "ms": "Punggol",
+    "ta": "புங்கோல்"
+  },
+  "landmarks": [
+    "Punggol Waterway Park",
+    "Punggol Plaza",
+    "Waterway Point"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "榜鹅水道公园",
+      "榜鹅广场",
+      "水道点"
+    ],
+    "ms": [
+      "Taman Lalu Lintas Punggol",
+      "Plaza Punggol",
+      "Waterway Point"
+    ],
+    "ta": [
+      "புங்கோல் நீர்வழி பூங்கா",
+      "புங்கோல் பட்டணம்",
+      "நீர்வழி பாயிண்ட்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3981,
+    "longitude": 103.9106
   }
 }

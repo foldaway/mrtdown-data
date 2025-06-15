@@ -24,5 +24,41 @@
         "startedAt": "2010-04-17"
       }
     ]
+  },
+  "town": "Museum",
+  "town_translations": {
+    "zh-Hans": "博物馆",
+    "ms": "Muzium",
+    "ta": "மூசியம்"
+  },
+  "landmarks": [
+    "Dhoby Ghaut Green",
+    "The Cathay",
+    "Fort Canning Park",
+    "Plaza Singapura"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "多美歌谷绿地",
+      "凯瑟剧院",
+      "福特甘宁公园",
+      "新达广场"
+    ],
+    "ms": [
+      "Dhoby Ghaut Green",
+      "The Cathay",
+      "Taman Fort Canning",
+      "Plaza Singapura"
+    ],
+    "ta": [
+      "தோபி கொத்து பச்சை நிலம்",
+      "த கத்தே",
+      "போர்ட் கானிங் பூங்கா",
+      "ப்லாஸா சிங்கப்பூர்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.300419,
+    "longitude": 103.849283
   }
 }

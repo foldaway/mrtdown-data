@@ -12,5 +12,37 @@
         "startedAt": "1999-11-06"
       }
     ]
+  },
+  "town": "Bukit Panjang",
+  "town_translations": {
+    "zh-Hans": "武吉班让",
+    "ms": "Bukit Panjang",
+    "ta": "புகிட் பங்காங்"
+  },
+  "landmarks": [
+    "Bukit Panjang Plaza",
+    "Lianhua Primary School",
+    "The Rail Mall"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "武吉班让广场",
+      "莲花小学",
+      "铁路广场"
+    ],
+    "ms": [
+      "Pusat Perbelanjaan Bukit Panjang",
+      "Sekolah Rendah Lianhua",
+      "The Rail Mall"
+    ],
+    "ta": [
+      "புகிட் பங்காங் பள்ளிவாசல்",
+      "லியான்வா பிரைமரி பள்ளி",
+      "ரெயில் மால்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3753,
+    "longitude": 103.7699
   }
 }

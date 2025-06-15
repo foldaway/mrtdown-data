@@ -12,5 +12,33 @@
         "startedAt": "2003-06-20"
       }
     ]
+  },
+  "town": "Toa Payoh",
+  "town_translations": {
+    "zh-Hans": "大巴窑",
+    "ms": "Toa Payoh",
+    "ta": "டோ பாயோ"
+  },
+  "landmarks": [
+    "Potong Pasir Park",
+    "St Andrew's Junior College"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "波东巴西公园",
+      "圣安德鲁初级学院"
+    ],
+    "ms": [
+      "Taman Potong Pasir",
+      "Kolej Menengah St Andrew"
+    ],
+    "ta": [
+      "போட்டோங் பசீர் பூங்கா",
+      "சேந்த் ஆன்ட்ரூஸ் இளைஞர் கல்லூரி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3323,
+    "longitude": 103.8646
   }
 }

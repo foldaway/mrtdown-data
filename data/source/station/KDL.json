@@ -12,5 +12,37 @@
         "startedAt": "2005-01-29"
       }
     ]
+  },
+  "town": "Punggol",
+  "town_translations": {
+    "zh-Hans": "榜鹅",
+    "ms": "Punggol",
+    "ta": "புங்கல்"
+  },
+  "landmarks": [
+    "Waterway Point",
+    "Punggol Waterway Park",
+    "Punggol Town Hub"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "水道广场",
+      "榜鹅水道公园",
+      "榜鹅镇中心"
+    ],
+    "ms": [
+      "Waterway Point",
+      "Taman Air Punggol",
+      "Pusat Bandar Punggol"
+    ],
+    "ta": [
+      "வான்குளம் பாயிண்ட்",
+      "புங்கல் நீர் உடற்கூலிகள் தோட்டம்",
+      "புங்கல் நகர அடிப்படை மையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.4035,
+    "longitude": 103.9064
   }
 }

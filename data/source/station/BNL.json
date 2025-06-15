@@ -18,5 +18,37 @@
         "startedAt": "2027-12-31"
       }
     ]
+  },
+  "town": "Jurong West",
+  "town_translations": {
+    "zh-Hans": "裕廊西",
+    "ms": "Jurong Barat",
+    "ta": "ஜூரோங் மேற்கு"
+  },
+  "landmarks": [
+    "Jurong Point",
+    "Boon Lay Shopping Centre",
+    "Lakeside Garden"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊坊",
+      "文礼购物中心",
+      "湖滨花园"
+    ],
+    "ms": [
+      "Jurong Point",
+      "Boon Lay Shopping Centre",
+      "Lakeside Garden"
+    ],
+    "ta": [
+      "ஜூராங் பாயிண்ட்",
+      "பூன் லே ஷாப்பிங் சென்டர்",
+      "மேள அறங்காணைக்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.349407,
+    "longitude": 103.70534
   }
 }

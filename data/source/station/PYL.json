@@ -18,5 +18,37 @@
         "startedAt": "2010-04-17"
       }
     ]
+  },
+  "town": "Geylang",
+  "town_translations": {
+    "zh-Hans": "芽笼",
+    "ms": "Geylang",
+    "ta": "கேலாங்"
+  },
+  "landmarks": [
+    "Singapore Post Centre",
+    "Paya Lebar Square",
+    "Geylang Serai Market"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡邮政中心",
+      "巴耶利峇广场",
+      "义顺街市"
+    ],
+    "ms": [
+      "Pusat Pos Singapura",
+      "Paya Lebar Square",
+      "Pasar Geylang Serai"
+    ],
+    "ta": [
+      "சிங்கப்பூர் அஞ்சல் மையம்",
+      "பாலைலெபர் சதுக்கம்",
+      "கெய்லாங் செரை சந்தை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3207,
+    "longitude": 103.9108
   }
 }

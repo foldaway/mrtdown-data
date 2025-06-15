@@ -12,5 +12,29 @@
         "startedAt": "2028-12-31"
       }
     ]
+  },
+  "town": "Bukit Batok",
+  "town_translations": {
+    "zh-Hans": "武吉巴督",
+    "ms": "Bukit Batok",
+    "ta": "புக்கித் பாதோக்"
+  },
+  "landmarks": [
+    "Bukit Batok Hillside Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "武吉巴督山坡公园"
+    ],
+    "ms": [
+      "Taman Bukit Batok Hillside"
+    ],
+    "ta": [
+      "புக்கித் பாதோக் மேற்பகுதி பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.351616,
+    "longitude": 103.749606
   }
 }

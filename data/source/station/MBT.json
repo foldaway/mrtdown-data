@@ -12,5 +12,37 @@
         "startedAt": "2010-04-17"
       }
     ]
+  },
+  "town": "Geylang",
+  "town_translations": {
+    "zh-Hans": "芽笼",
+    "ms": "Geylang",
+    "ta": "கேலாங்"
+  },
+  "landmarks": [
+    "Katong Park",
+    "Mountbatten Community Club",
+    "Parkway Parade"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "加东公园",
+      "蒙巴顿社区俱乐部",
+      "百威广场"
+    ],
+    "ms": [
+      "Taman Katong",
+      "Kelab Masyarakat Mountbatten",
+      "Parkway Parade"
+    ],
+    "ta": [
+      "காடாங் பூங்கா",
+      "மவுண்ட் பேட்டன் சமூக கிளப்",
+      "பார்க்வே பாரேட்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.303847,
+    "longitude": 103.885287
   }
 }

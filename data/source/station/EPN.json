@@ -12,5 +12,37 @@
         "startedAt": "2010-04-17"
       }
     ]
+  },
+  "town": "Downtown Core",
+  "town_translations": {
+    "zh-Hans": "市中心",
+    "ms": "Pusat Bandar",
+    "ta": "மத்திய பகுதியாக"
+  },
+  "landmarks": [
+    "Esplanade – Theatres on the Bay",
+    "Marina Bay Sands",
+    "Merlion Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "滨海艺术中心",
+      "滨海湾金沙",
+      "鱼尾狮公园"
+    ],
+    "ms": [
+      "Esplanade – Teater Di Teluk",
+      "Marina Bay Sands",
+      "Taman Merlion"
+    ],
+    "ta": [
+      "எஸ்பிளனேட் – தியேட்டர்ஸ் ஓன் தி பே",
+      "மரீனா பே சர்வீசுகள்",
+      "மெர்லியான் பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2913,
+    "longitude": 103.8558
   }
 }

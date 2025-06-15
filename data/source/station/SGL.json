@@ -12,5 +12,37 @@
         "startedAt": "2024-06-23"
       }
     ]
+  },
+  "town": "Bedok",
+  "town_translations": {
+    "zh-Hans": "勿洛",
+    "ms": "Bedok",
+    "ta": "பெடோக்"
+  },
+  "landmarks": [
+    "East Coast Park",
+    "Siglap Village",
+    "Bedok Mall"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "东海岸公园",
+      "西拉普村",
+      "碧东购物中心"
+    ],
+    "ms": [
+      "Taman Pantai Timur",
+      "Kampung Siglap",
+      "Pusat Membeli-Belah Bedok"
+    ],
+    "ta": [
+      "東海岸公園",
+      "சிக்லாப் ஊர்",
+      "பெடோக் மால்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3037,
+    "longitude": 103.9224
   }
 }

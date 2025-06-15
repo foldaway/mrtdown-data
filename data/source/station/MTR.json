@@ -12,5 +12,33 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Geylang",
+  "town_translations": {
+    "zh-Hans": "芽笼",
+    "ms": "Geylang",
+    "ta": "கேலாங்"
+  },
+  "landmarks": [
+    "Geylang East Public Library",
+    "Macpherson Mall"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "外东公共图书馆",
+      "麦福申购物中心"
+    ],
+    "ms": [
+      "Perpustakaan Awam Geylang East",
+      "Macpherson Mall"
+    ],
+    "ta": [
+      "கேலாங் முன் பொது நூலகம்",
+      "மெக்பர்சன் மால்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.321937,
+    "longitude": 103.885394
   }
 }

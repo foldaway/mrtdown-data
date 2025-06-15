@@ -12,5 +12,37 @@
         "startedAt": "1988-12-20"
       }
     ]
+  },
+  "town": "Yishun",
+  "town_translations": {
+    "zh-Hans": "义顺",
+    "ms": "Yishun",
+    "ta": "யிஷுன்"
+  },
+  "landmarks": [
+    "Northpoint City",
+    "Yishun Town Park",
+    "Khoo Teck Puat Hospital"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "义顺北点城",
+      "义顺市镇公园",
+      "郭德培医院"
+    ],
+    "ms": [
+      "Northpoint City",
+      "Taman Bandar Yishun",
+      "Hospital Khoo Teck Puat"
+    ],
+    "ta": [
+      "நாஸ் போயிள்ல சந்தகம்",
+      "யிஷுன் நகர பூங்கா",
+      "கோ தெக்குப் புவேத்துக் மருத்துவமனை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.4181,
+    "longitude": 103.8404
   }
 }

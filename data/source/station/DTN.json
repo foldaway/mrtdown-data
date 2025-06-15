@@ -12,5 +12,37 @@
         "startedAt": "2013-12-22"
       }
     ]
+  },
+  "town": "Downtown Core",
+  "town_translations": {
+    "zh-Hans": "市中心核心",
+    "ms": "Pusat Bandar",
+    "ta": "மையம்"
+  },
+  "landmarks": [
+    "Marina Bay Sands",
+    "Gardens by the Bay",
+    "Esplanade - Theatres on the Bay"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "滨海湾金沙",
+      "滨海湾花园",
+      "滨海艺术中心"
+    ],
+    "ms": [
+      "Marina Bay Sands",
+      "Taman Teluk Marina",
+      "Esplanade - Teater di Teluk"
+    ],
+    "ta": [
+      "மரினா பே சாண்ட்ஸ்",
+      "மரினா வளாகங்கள்",
+      "எஸ்பிளேன்ேட் - வளாகங்கள்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2822,
+    "longitude": 103.8587
   }
 }

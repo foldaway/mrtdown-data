@@ -12,5 +12,37 @@
         "startedAt": "1999-11-06"
       }
     ]
+  },
+  "town": "Bukit Panjang",
+  "town_translations": {
+    "zh-Hans": "武吉班让",
+    "ms": "Bukit Panjang",
+    "ta": "புக்கித் பஞ்சாங்"
+  },
+  "landmarks": [
+    "Bukit Panjang Mall",
+    "Hillion Mall",
+    "Chestnut Nature Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "武吉班让商场",
+      "喜年商业中心",
+      "栗子自然公园"
+    ],
+    "ms": [
+      "Pusat Membeli-belah Bukit Panjang",
+      "Hillion Mall",
+      "Taman Alam Chestnut"
+    ],
+    "ta": [
+      "புக்கித் பஞ்சாங් மால்",
+      "ஹிலியான் மால்",
+      "செஸ்ட்னட் நேச்சர் பார்க்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3761,
+    "longitude": 103.7691
   }
 }

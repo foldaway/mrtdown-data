@@ -12,5 +12,37 @@
         "startedAt": "1989-11-04"
       }
     ]
+  },
+  "town": "Bedok",
+  "town_translations": {
+    "zh-Hans": "勿洛",
+    "ms": "Bedok",
+    "ta": "பெடோக்"
+  },
+  "landmarks": [
+    "Kembangan Plaza",
+    "St. Stephen's School",
+    "East Coast Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "建功广场",
+      "圣斯蒂芬学校",
+      "东海岸公园"
+    ],
+    "ms": [
+      "Plaza Kembangan",
+      "Sekolah St. Stephen",
+      "Taman Pantai Timur"
+    ],
+    "ta": [
+      "கேம்பாங்கன் பிளாஜா",
+      "சேண்ட் ஸ்டீபன் பள்ளி",
+      "கிழக்கு கடற்கரை பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.320828,
+    "longitude": 103.910153
   }
 }

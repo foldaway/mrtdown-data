@@ -12,5 +12,29 @@
         "startedAt": "2029-12-31"
       }
     ]
+  },
+  "town": "Boon Lay",
+  "town_translations": {
+    "zh-Hans": "文礼",
+    "ms": "Boon Lay",
+    "ta": "பூன் லே"
+  },
+  "landmarks": [
+    "Pioneer Primary School"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "先锋小学"
+    ],
+    "ms": [
+      "Sekolah Rendah Pioneer"
+    ],
+    "ta": [
+      "பையனியர் தொடக்கப்பள்ளி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3196,
+    "longitude": 103.6793
   }
 }

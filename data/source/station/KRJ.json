@@ -12,5 +12,37 @@
         "startedAt": "1996-02-10"
       }
     ]
+  },
+  "town": "Sungei Kadut",
+  "town_translations": {
+    "zh-Hans": "双溪加株",
+    "ms": "Sungei Kadut",
+    "ta": "சுங்கை கடுட்"
+  },
+  "landmarks": [
+    "Kranji Farm Resort",
+    "Kranji Scenic Drive",
+    "Gurun Kranji"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "克兰芝农场度假村",
+      "克兰芝风景大道",
+      "克兰芝花园"
+    ],
+    "ms": [
+      "Kranji Farm Resort",
+      "Kranji Scenic Drive",
+      "Gurun Kranji"
+    ],
+    "ta": [
+      "கிராங்கி Farm Resort",
+      "கிராங்கி Scenic Drive",
+      "கிராங்கி காடுகள்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.4369,
+    "longitude": 103.7434
   }
 }

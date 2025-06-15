@@ -12,5 +12,37 @@
         "startedAt": "1999-11-06"
       }
     ]
+  },
+  "town": "Bukit Panjang",
+  "town_translations": {
+    "zh-Hans": "武吉班让",
+    "ms": "Bukit Panjang",
+    "ta": "புகிட் பஞ்சாங்"
+  },
+  "landmarks": [
+    "Bukit Panjang Plaza",
+    "Hillion Mall",
+    "Dairy Farm Nature Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "武吉班让广场",
+      "希连购商场",
+      "牛奶农场自然公园"
+    ],
+    "ms": [
+      "Plaza Bukit Panjang",
+      "Hillion Mall",
+      "Taman Alam Dairy Farm"
+    ],
+    "ta": [
+      "புகிட் பஞ்சாங் பிளாசா",
+      "ஹிலியோன் மால்",
+      "டெயரிய் பண்ணை இயற்கை பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3766,
+    "longitude": 103.7726
   }
 }

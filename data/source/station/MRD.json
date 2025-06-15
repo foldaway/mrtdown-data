@@ -12,5 +12,33 @@
         "startedAt": "2005-01-29"
       }
     ]
+  },
+  "town": "Punggol",
+  "town_translations": {
+    "zh-Hans": "榜鹅",
+    "ms": "Punggol",
+    "ta": "புங்கோல்"
+  },
+  "landmarks": [
+    "Punggol Waterway Park",
+    "Punggol Beach"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "榜鹅水道公园",
+      "榜鹅海滩"
+    ],
+    "ms": [
+      "Taman Jalan Air Punggol",
+      "Pantai Punggol"
+    ],
+    "ta": [
+      "புங்கோல் நீரூற்று பூங்கா",
+      "புங்கோல் கடற்கரை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3975,
+    "longitude": 103.9002
   }
 }

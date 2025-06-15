@@ -12,5 +12,37 @@
         "startedAt": "2050-12-31"
       }
     ]
+  },
+  "town": "Changi",
+  "town_translations": {
+    "zh-Hans": "樟宜",
+    "ms": "Changi",
+    "ta": "சங்கிய"
+  },
+  "landmarks": [
+    "Changi Airport Terminal 1",
+    "Changi Airport Terminal 2",
+    "Changi Airport Terminal 3"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "樟宜机场第一航站楼",
+      "樟宜机场第二航站楼",
+      "樟宜机场第三航站楼"
+    ],
+    "ms": [
+      "Terminal 1 Lapangan Terbang Changi",
+      "Terminal 2 Lapangan Terbang Changi",
+      "Terminal 3 Lapangan Terbang Changi"
+    ],
+    "ta": [
+      "சங்கி விமானநிலை 1",
+      "சங்கி விமானநிலை 2",
+      "சங்கி விமானநிலை 3"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3655,
+    "longitude": 104.0047
   }
 }

@@ -18,5 +18,37 @@
         "startedAt": "2020-01-31"
       }
     ]
+  },
+  "town": "Woodlands",
+  "town_translations": {
+    "zh-Hans": "伍德兰",
+    "ms": "Woodlands",
+    "ta": "வுட்லாண்ட்ஸ்"
+  },
+  "landmarks": [
+    "Causeway Point",
+    "Woodlands Civic Centre",
+    "Woodlands Waterfront Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "大道中心",
+      "伍德兰市政中心",
+      "伍德兰海滨公园"
+    ],
+    "ms": [
+      "Causeway Point",
+      "Pusat Sivil Woodlands",
+      "Taman Waterfront Woodlands"
+    ],
+    "ta": [
+      "காஸ்வே பாயிண்ட்",
+      "வுட்லாந்து சிவில் சென்டர்",
+      "வுட்லாந்து நீர்கரை பூங்கா"
+    ]
+  },
+  "geo": {
+    "latitude": 1.4424,
+    "longitude": 103.785
   }
 }

@@ -18,5 +18,37 @@
         "startedAt": "2022-11-13"
       }
     ]
+  },
+  "town": "Tanglin",
+  "town_translations": {
+    "zh-Hans": "东陵",
+    "ms": "Tanglin",
+    "ta": "டாங்க்லின்"
+  },
+  "landmarks": [
+    "Singapore Chinese Girls' School",
+    "Anglo-Chinese School (Barker Road)",
+    "Singapore Botanic Gardens"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡华人女子学校",
+      "华侨中学（巴克路）",
+      "新加坡植物园"
+    ],
+    "ms": [
+      "Sekolah Perempuan Cina Singapura",
+      "Sekolah Anglo-Chinese (Jalan Barker)",
+      "Taman Botani Singapura"
+    ],
+    "ta": [
+      "சிங்கப்பூர் சீன பெண்கள் பள்ளி",
+      "ஆங்கிலச் சீன பள்ளி (பார்கர் சாலை)",
+      "சிங்கப்பூர் தரிக்கோட்டம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.318328,
+    "longitude": 103.820611
   }
 }

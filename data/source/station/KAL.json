@@ -12,5 +12,37 @@
         "startedAt": "1989-11-04"
       }
     ]
+  },
+  "town": "Kallang",
+  "town_translations": {
+    "zh-Hans": "加冷",
+    "ms": "Kallang",
+    "ta": "கல்லாங்கு"
+  },
+  "landmarks": [
+    "Kallang Wave Mall",
+    "Singapore Sports Hub",
+    "National Stadium"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "加冷波浪购物中心",
+      "新加坡体育中心",
+      "国家体育场"
+    ],
+    "ms": [
+      "Kallang Wave Mall",
+      "Pusat Sukan Singapura",
+      "Stadium Nasional"
+    ],
+    "ta": [
+      "கல்லாங்கு செந்நிறை மால்சாலை",
+      "சிங்கப்பூர் விளையாட்டு மையம்",
+      "தேசிய விளையாட்டு மைதானம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3032,
+    "longitude": 103.8725
   }
 }

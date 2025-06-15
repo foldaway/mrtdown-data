@@ -12,5 +12,37 @@
         "startedAt": "2024-06-23"
       }
     ]
+  },
+  "town": "Marine Parade",
+  "town_translations": {
+    "zh-Hans": "马林百列",
+    "ms": "Marine Parade",
+    "ta": "மரின் பரேட்"
+  },
+  "landmarks": [
+    "Katong Shopping Centre",
+    "Joo Chiat Complex",
+    "One KM Mall"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "卡通购物中心",
+      "柔捷复合大厦",
+      "One KM商场"
+    ],
+    "ms": [
+      "Pusat Beli-Belah Katong",
+      "Kompleks Joo Chiat",
+      "Mmall One KM"
+    ],
+    "ta": [
+      "கடுங்காடு மால்கள்",
+      "ஜூ கீயாட் கம்ப்ளெக்‌ஸ்",
+      "One KM மால்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3041,
+    "longitude": 103.8955
   }
 }

@@ -12,5 +12,33 @@
         "startedAt": "2030-12-31"
       }
     ]
+  },
+  "town": "Hougang",
+  "town_translations": {
+    "zh-Hans": "后港",
+    "ms": "Hougang",
+    "ta": "ஹவ்காங்"
+  },
+  "landmarks": [
+    "Serangoon Eco Garden",
+    "Defu Nature Park"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "实龙岗生态花园",
+      "德福自然公园"
+    ],
+    "ms": [
+      "Taman Eco Serangoon",
+      "Taman Alam Defu"
+    ],
+    "ta": [
+      "செராங்கூன் எகோ கூடையேடு",
+      "டெபூ இயற்கை பார்த்தது"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3712,
+    "longitude": 103.9025
   }
 }

@@ -12,5 +12,41 @@
         "startedAt": "1988-03-12"
       }
     ]
+  },
+  "town": "Bukit Merah",
+  "town_translations": {
+    "zh-Hans": "孟依治",
+    "ms": "Tiong Bahru",
+    "ta": "தியோங் பாரு"
+  },
+  "landmarks": [
+    "Tiong Bahru Market",
+    "Tiong Bahru Plaza",
+    "The Bookworm",
+    "Tiong Bahru Heritage Trail"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "妥兴巴鲁市场",
+      "妥兴巴鲁广场",
+      "书虫",
+      "妥兴巴鲁遗产步道"
+    ],
+    "ms": [
+      "Pasar Tiong Bahru",
+      "Pusat Tiong Bahru",
+      "Bookworm",
+      "Jalan Warisan Tiong Bahru"
+    ],
+    "ta": [
+      "தியோங் பாரு சந்தை",
+      "தியோங் பாரு பிளாசா",
+      "புக்க்வோம்",
+      "தியோங் பாரு பாரம்பரிய பாதை"
+    ]
+  },
+  "geo": {
+    "latitude": 1.281081,
+    "longitude": 103.838865
   }
 }

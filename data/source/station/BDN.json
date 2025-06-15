@@ -12,5 +12,37 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Bedok",
+  "town_translations": {
+    "zh-Hans": "勿洛",
+    "ms": "Bedok",
+    "ta": "பெடோக்"
+  },
+  "landmarks": [
+    "Bedok Mall",
+    "Chai Chee Community Centre",
+    "Singapore Expo"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "勿洛购物中心",
+      "木厝社区中心",
+      "新加坡博览中心"
+    ],
+    "ms": [
+      "Bedok Mall",
+      "Pusat Komuniti Chai Chee",
+      "Singapore Expo"
+    ],
+    "ta": [
+      "பெடோக் மால்",
+      "சாய் சி சமூக நிலையம்",
+      "சிங்கப்பூர் எக்ஸ்போ"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3278,
+    "longitude": 103.9256
   }
 }

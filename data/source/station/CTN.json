@@ -18,5 +18,45 @@
         "startedAt": "2013-12-22"
       }
     ]
+  },
+  "town": "Outram",
+  "town_translations": {
+    "zh-Hans": "欧南",
+    "ms": "Outram",
+    "ta": "அவுஸ்ப்ரம்"
+  },
+  "landmarks": [
+    "Chinatown Heritage Centre",
+    "Buddha Tooth Relic Temple and Museum",
+    "Thian Hock Keng Temple",
+    "Sri Mariamman Temple",
+    "People's Park Complex"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "牛车水华丽中心",
+      "佛牙寺龙华院",
+      "天福宫",
+      "斯里玛丽亚曼庙",
+      "人民公园综合大厦"
+    ],
+    "ms": [
+      "Pusat Warisan Chinatown",
+      "Kuil Dan Muzium Relik Gigi Buddha",
+      "Kuil Thian Hock Keng",
+      "Kuil Sri Mariamman",
+      "Kompleks Taman Rakyat"
+    ],
+    "ta": [
+      "சைனாட்டவான் பாரம்பரிய மையம்",
+      "புட்டா தூத் நகர் கெம்பு வால்க்கள்",
+      "தியான் ஹுக் கெங் கோயில்",
+      "ஸ்ரீ مارிமன்னா கோயில்",
+      "பொதுமக்கள் பார்க் கம்பிளெக்ஸ்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2838,
+    "longitude": 103.8439
   }
 }

@@ -18,5 +18,33 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Geylang",
+  "town_translations": {
+    "zh-Hans": "芽笼",
+    "ms": "Geylang",
+    "ta": "கேலாங்"
+  },
+  "landmarks": [
+    "MacPherson Mall",
+    "Geylang East Swimming Complex"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "麦克佛逊购物中心",
+      "东海岸游泳池"
+    ],
+    "ms": [
+      "MacPherson Mall",
+      "Kompleks Renang Geylang East"
+    ],
+    "ta": [
+      "மக்க்பர்சன் மால்",
+      "கெய்லாங் ஈஸ்ட் நீச்சல் கூட"
+    ]
+  },
+  "geo": {
+    "latitude": 1.32017,
+    "longitude": 103.88736
   }
 }

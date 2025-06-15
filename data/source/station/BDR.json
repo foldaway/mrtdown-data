@@ -12,5 +12,37 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Bedok",
+  "town_translations": {
+    "zh-Hans": "勿洛",
+    "ms": "Bedok",
+    "ta": "பெடொக்"
+  },
+  "landmarks": [
+    "Bedok Reservoir Park",
+    "Bedok Green Secondary School",
+    "Singapore Sports School"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "勿洛蓄水池公园",
+      "勿洛绿华中学",
+      "新加坡体育学校"
+    ],
+    "ms": [
+      "Taman Reservoir Bedok",
+      "Sekolah Menengah Bedok Green",
+      "Sekolah Sukan Singapura"
+    ],
+    "ta": [
+      "பெடொக் உறைகள் பூங்கா",
+      "பெடொக் பச்சை உயர்நிலைப் பள்ளி",
+      "சிங்கப்பூர் விளையாட்டுப் பள்ளி"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3446,
+    "longitude": 103.9254
   }
 }

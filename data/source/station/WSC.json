@@ -12,5 +12,37 @@
         "startedAt": "2032-01-01"
       }
     ]
+  },
+  "town": "Clementi",
+  "town_translations": {
+    "zh-Hans": "金文泰",
+    "ms": "Clementi",
+    "ta": "கிளெமென்டி"
+  },
+  "landmarks": [
+    "West Coast Park",
+    "West Coast Plaza",
+    "National Sailing Centre"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "西海岸公园",
+      "西海岸广场",
+      "国家帆船中心"
+    ],
+    "ms": [
+      "Taman Pantai Barat",
+      "Plaza Pantai Barat",
+      "Pusat Belayar Kebangsaan"
+    ],
+    "ta": [
+      "மேற்கு கடற்கரை பூங்கா",
+      "மேற்கு கடற்கரை பிளாஸா",
+      "க nasional இடைநிலை மையம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.2931,
+    "longitude": 103.757
   }
 }

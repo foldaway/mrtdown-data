@@ -12,5 +12,37 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Tampines",
+  "town_translations": {
+    "zh-Hans": "淡宾尼",
+    "ms": "Tampines",
+    "ta": "கோதை"
+  },
+  "landmarks": [
+    "Tampines Mall",
+    "Century Square",
+    "Tampines Hub"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "淡宾尼购物中心",
+      "世纪广场",
+      "淡宾尼中心"
+    ],
+    "ms": [
+      "Pusat membeli-belah Tampines",
+      "Square Abad",
+      "Pusat Tampines"
+    ],
+    "ta": [
+      "தம்பினஸ் மால்",
+      "சேந்திரிய் சதுக்கா",
+      "தம்பினஸ் மஹால்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3501,
+    "longitude": 103.9358
   }
 }

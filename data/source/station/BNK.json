@@ -12,5 +12,33 @@
         "startedAt": "2003-06-20"
       }
     ]
+  },
+  "town": "Kallang",
+  "town_translations": {
+    "zh-Hans": "加冷",
+    "ms": "Kallang",
+    "ta": "கள்ளங்"
+  },
+  "landmarks": [
+    "Geylang Serai Market",
+    "Sri Sairam Indian Temple"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "旧甘榜市场",
+      "Sri Sairam印度寺庙"
+    ],
+    "ms": [
+      "Pasar Geylang Serai",
+      "Kuil Sri Sairam"
+    ],
+    "ta": [
+      "கெய்லாங் செராய் சந்தை",
+      "ஸ்ரீசைரம் இந்து கோவில்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.31357,
+    "longitude": 103.87436
   }
 }

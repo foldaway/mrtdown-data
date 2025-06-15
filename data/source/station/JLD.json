@@ -12,5 +12,37 @@
         "startedAt": "2032-01-01"
       }
     ]
+  },
+  "town": "Jurong East",
+  "town_translations": {
+    "zh-Hans": "裕廊东",
+    "ms": "Jurong Timur",
+    "ta": "ஜுரோங்க் கிழக்கு"
+  },
+  "landmarks": [
+    "Jurong Lake Gardens",
+    "Chinese Garden",
+    "Japanese Garden"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "裕廊湖花园",
+      "中国花园",
+      "日本花园"
+    ],
+    "ms": [
+      "Taman Tasik Jurong",
+      "Taman Cina",
+      "Taman Jepun"
+    ],
+    "ta": [
+      "ஜுரோங்க் ஏொழி தோட்டம்",
+      "சீன தோட்டம்",
+      "ஜப்பான் தோட்டம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3483,
+    "longitude": 103.7275
   }
 }

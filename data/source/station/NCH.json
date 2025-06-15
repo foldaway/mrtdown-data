@@ -12,5 +12,37 @@
         "startedAt": "2010-04-17"
       }
     ]
+  },
+  "town": "Downtown Core",
+  "town_translations": {
+    "zh-Hans": "市中心",
+    "ms": "Pusat Bandar",
+    "ta": "நகர மையம்"
+  },
+  "landmarks": [
+    "Singapore Indoor Stadium",
+    "Kallang Wave Mall",
+    "National Stadium"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡室内体育馆",
+      "加冷波浪购物中心",
+      "国家体育场"
+    ],
+    "ms": [
+      "Stadium Dalam Singapura",
+      "Kallang Wave Mall",
+      "Stadium Nasional"
+    ],
+    "ta": [
+      "சிங்கப்பூர் இன்டோர் ஸ்டேடியம்",
+      "கல்லாங் வேவ் மால்",
+      "தேசிய ஸ்டேடியம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.29945,
+    "longitude": 103.87389
   }
 }

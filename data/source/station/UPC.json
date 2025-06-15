@@ -12,5 +12,33 @@
         "startedAt": "2017-10-21"
       }
     ]
+  },
+  "town": "Tampines",
+  "town_translations": {
+    "zh-Hans": "淡滨尼",
+    "ms": "Tampines",
+    "ta": "தாம்பினிஸ்"
+  },
+  "landmarks": [
+    "Changi Business Park",
+    "Singapore Expo"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "樟宜商务园",
+      "新加坡博览会"
+    ],
+    "ms": [
+      "Taman Perniagaan Changi",
+      "Expo Singapura"
+    ],
+    "ta": [
+      "சாங்கி வணிக பூங்கா",
+      "சிங்கப்பூர் எக்ஸ்போ"
+    ]
+  },
+  "geo": {
+    "latitude": 1.354705,
+    "longitude": 103.962096
   }
 }

@@ -12,5 +12,37 @@
         "startedAt": "2024-06-23"
       }
     ]
+  },
+  "town": "Kallang",
+  "town_translations": {
+    "zh-Hans": "加冷",
+    "ms": "Kallang",
+    "ta": "கல்லாங்"
+  },
+  "landmarks": [
+    "Singapore Sports Hub",
+    "Kallang Wave Mall",
+    "Indoor Stadium"
+  ],
+  "landmarks_translations": {
+    "zh-Hans": [
+      "新加坡体育中心",
+      "加冷波浪购物中心",
+      "室内体育馆"
+    ],
+    "ms": [
+      "Hub Sukan Singapura",
+      "Pusat BelShopping Kallang Wave",
+      "Stadium Dalaman"
+    ],
+    "ta": [
+      "சிங்கப்பூர் மக்களின் களஞ்சியங்கள்",
+      "கல்லாங் மாவுனினில்",
+      "இன்டோர் ஸ்டேடியம்"
+    ]
+  },
+  "geo": {
+    "latitude": 1.3023,
+    "longitude": 103.8732
   }
 }
