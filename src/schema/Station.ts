@@ -7,10 +7,21 @@ export type StationId = z.infer<typeof StationIdSchema>;
 export const StationCodeSchema = z.string();
 export type StationCode = z.infer<typeof StationCodeSchema>;
 
+export const StationComponentMemberStructureTypeSchema = z.enum([
+  'elevated',
+  'underground',
+  'at_grade',
+  'in_building',
+]);
+export type StationComponentMemberStructureType = z.infer<
+  typeof StationComponentMemberStructureTypeSchema
+>;
+
 export const StationComponentMemberSchema = z.object({
   code: StationCodeSchema,
   startedAt: z.string().date(),
   endedAt: z.string().date().optional(),
+  structureType: StationComponentMemberStructureTypeSchema,
 });
 export type StationComponentMember = z.infer<
   typeof StationComponentMemberSchema
