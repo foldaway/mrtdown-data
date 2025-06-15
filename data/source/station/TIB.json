@@ -9,7 +9,8 @@
     "EWL": [
       {
         "code": "EW17",
-        "startedAt": "1988-03-12"
+        "startedAt": "1988-03-12",
+        "structureType": "underground"
       }
     ]
   },

@@ -9,19 +9,22 @@
     "NSL": [
       {
         "code": "NS4",
-        "startedAt": "1990-03-10"
+        "startedAt": "1990-03-10",
+        "structureType": "elevated"
       }
     ],
     "BPLRT": [
       {
         "code": "BP1",
-        "startedAt": "1999-11-06"
+        "startedAt": "1999-11-06",
+        "structureType": "elevated"
       }
     ],
     "JRL": [
       {
         "code": "JS1",
-        "startedAt": "2027-12-31"
+        "startedAt": "2027-12-31",
+        "structureType": "elevated"
       }
     ]
   },

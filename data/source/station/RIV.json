@@ -9,13 +9,15 @@
     "PGLRT": [
       {
         "code": "PE4",
-        "startedAt": "2005-01-29"
+        "startedAt": "2005-01-29",
+        "structureType": "elevated"
       }
     ],
     "CRL": [
       {
         "code": "CP3",
-        "startedAt": "2032-01-01"
+        "startedAt": "2032-01-01",
+        "structureType": "underground"
       }
     ]
   },

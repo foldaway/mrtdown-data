@@ -9,13 +9,15 @@
     "NEL": [
       {
         "code": "NE4",
-        "startedAt": "2003-06-20"
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
       }
     ],
     "DTL": [
       {
         "code": "DT19",
-        "startedAt": "2013-12-22"
+        "startedAt": "2013-12-22",
+        "structureType": "underground"
       }
     ]
   },

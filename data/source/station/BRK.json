@@ -9,7 +9,8 @@
     "NSL": [
       {
         "code": "NS3A",
-        "startedAt": "2034-01-01"
+        "startedAt": "2034-01-01",
+        "structureType": "elevated"
       }
     ]
   },

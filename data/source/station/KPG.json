@@ -9,7 +9,8 @@
     "SKLRT": [
       {
         "code": "SW3",
-        "startedAt": "2015-06-27"
+        "startedAt": "2015-06-27",
+        "structureType": "elevated"
       }
     ]
   },

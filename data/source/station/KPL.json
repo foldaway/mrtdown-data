@@ -9,7 +9,8 @@
     "CCL": [
       {
         "code": "CC30",
-        "startedAt": "2026-12-31"
+        "startedAt": "2026-12-31",
+        "structureType": "underground"
       }
     ]
   },

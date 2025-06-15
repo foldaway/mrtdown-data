@@ -9,7 +9,8 @@
     "EWL": [
       {
         "code": "EW25",
-        "startedAt": "1988-11-05"
+        "startedAt": "1988-11-05",
+        "structureType": "elevated"
       }
     ]
   },

@@ -9,13 +9,15 @@
     "CCL": [
       {
         "code": "CC17",
-        "startedAt": "2011-10-08"
+        "startedAt": "2011-10-08",
+        "structureType": "underground"
       }
     ],
     "TEL": [
       {
         "code": "TE9",
-        "startedAt": "2021-08-28"
+        "startedAt": "2021-08-28",
+        "structureType": "underground"
       }
     ]
   },

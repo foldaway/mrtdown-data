@@ -9,7 +9,8 @@
     "JRL": [
       {
         "code": "JS9",
-        "startedAt": "2029-12-31"
+        "startedAt": "2029-12-31",
+        "structureType": "elevated"
       }
     ]
   },

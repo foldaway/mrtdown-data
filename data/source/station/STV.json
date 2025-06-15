@@ -9,13 +9,15 @@
     "DTL": [
       {
         "code": "DT10",
-        "startedAt": "2015-12-27"
+        "startedAt": "2015-12-27",
+        "structureType": "underground"
       }
     ],
     "TEL": [
       {
         "code": "TE11",
-        "startedAt": "2022-11-13"
+        "startedAt": "2022-11-13",
+        "structureType": "underground"
       }
     ]
   },

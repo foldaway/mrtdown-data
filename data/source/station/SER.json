@@ -9,13 +9,15 @@
     "CCL": [
       {
         "code": "CC13",
-        "startedAt": "2009-05-28"
+        "startedAt": "2009-05-28",
+        "structureType": "underground"
       }
     ],
     "NEL": [
       {
         "code": "NE12",
-        "startedAt": "2003-06-20"
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
       }
     ]
   },

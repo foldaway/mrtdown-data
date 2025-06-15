@@ -9,7 +9,8 @@
     "PGLRT": [
       {
         "code": "PE6",
-        "startedAt": "2007-06-15"
+        "startedAt": "2007-06-15",
+        "structureType": "elevated"
       }
     ]
   },

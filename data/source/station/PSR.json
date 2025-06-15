@@ -9,17 +9,20 @@
     "EWL": [
       {
         "code": "EW1",
-        "startedAt": "1989-12-16"
+        "startedAt": "1989-12-16",
+        "structureType": "elevated"
       }
     ],
     "CRL": [
       {
         "code": "CR5",
-        "startedAt": "2030-12-31"
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
       },
       {
         "code": "CP1",
-        "startedAt": "2030-12-31"
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
       }
     ]
   },

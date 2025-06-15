@@ -9,13 +9,15 @@
     "EWL": [
       {
         "code": "EW27",
-        "startedAt": "1990-07-06"
+        "startedAt": "1990-07-06",
+        "structureType": "elevated"
       }
     ],
     "JRL": [
       {
         "code": "JS8",
-        "startedAt": "2027-12-31"
+        "startedAt": "2027-12-31",
+        "structureType": "elevated"
       }
     ]
   },

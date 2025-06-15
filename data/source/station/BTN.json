@@ -10,13 +10,15 @@
     "CCL": [
       {
         "code": "CC19",
-        "startedAt": "2011-10-08"
+        "startedAt": "2011-10-08",
+        "structureType": "underground"
       }
     ],
     "DTL": [
       {
         "code": "DT9",
-        "startedAt": "2015-12-27"
+        "startedAt": "2015-12-27",
+        "structureType": "underground"
       }
     ]
   },

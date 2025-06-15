@@ -9,13 +9,15 @@
     "NSL": [
       {
         "code": "NS16",
-        "startedAt": "1987-11-07"
+        "startedAt": "1987-11-07",
+        "structureType": "elevated"
       }
     ],
     "CRL": [
       {
         "code": "CR11",
-        "startedAt": "2030-12-31"
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
       }
     ]
   },

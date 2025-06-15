@@ -6,7 +6,8 @@
     "DTL": [
       {
         "code": "DE1",
-        "startedAt": "2035-12-31"
+        "startedAt": "2035-12-31",
+        "structureType": "underground"
       }
     ]
   },

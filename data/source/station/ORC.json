@@ -9,13 +9,15 @@
     "NSL": [
       {
         "code": "NS22",
-        "startedAt": "1987-12-12"
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
       }
     ],
     "TEL": [
       {
         "code": "TE14",
-        "startedAt": "2022-11-13"
+        "startedAt": "2022-11-13",
+        "structureType": "underground"
       }
     ]
   },

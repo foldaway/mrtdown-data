@@ -9,13 +9,15 @@
     "NEL": [
       {
         "code": "NE16",
-        "startedAt": "2003-06-20"
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
       }
     ],
     "SKLRT": [
       {
         "code": "STC",
-        "startedAt": "2003-01-18"
+        "startedAt": "2003-01-18",
+        "structureType": "elevated"
       }
     ]
   },

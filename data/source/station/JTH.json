@@ -9,7 +9,8 @@
     "JRL": [
       {
         "code": "JE6",
-        "startedAt": "2028-12-31"
+        "startedAt": "2028-12-31",
+        "structureType": "elevated"
       }
     ]
   },

@@ -9,7 +9,8 @@
     "EWL": [
       {
         "code": "EW33",
-        "startedAt": "2017-06-18"
+        "startedAt": "2017-06-18",
+        "structureType": "elevated"
       }
     ]
   },

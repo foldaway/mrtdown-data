@@ -10,7 +10,8 @@
       {
         "code": "BP14",
         "startedAt": "1999-11-06",
-        "endedAt": "2019-01-13"
+        "endedAt": "2019-01-13",
+        "structureType": "in_building"
       }
     ]
   },

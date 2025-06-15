@@ -9,7 +9,8 @@
     "TEL": [
       {
         "code": "TE16",
-        "startedAt": "2022-11-13"
+        "startedAt": "2022-11-13",
+        "structureType": "underground"
       }
     ]
   },

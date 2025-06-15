@@ -9,7 +9,8 @@
     "NEL": [
       {
         "code": "NE10",
-        "startedAt": "2003-06-20"
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
       }
     ]
   },

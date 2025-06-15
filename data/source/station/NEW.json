@@ -9,13 +9,15 @@
     "NSL": [
       {
         "code": "NS21",
-        "startedAt": "1987-12-12"
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
       }
     ],
     "DTL": [
       {
         "code": "DT11",
-        "startedAt": "2015-12-27"
+        "startedAt": "2015-12-27",
+        "structureType": "underground"
       }
     ]
   },

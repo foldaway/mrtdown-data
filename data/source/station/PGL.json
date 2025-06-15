@@ -9,19 +9,22 @@
     "NEL": [
       {
         "code": "NE17",
-        "startedAt": "2003-06-20"
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
       }
     ],
     "PGLRT": [
       {
         "code": "PTC",
-        "startedAt": "2005-01-29"
+        "startedAt": "2005-01-29",
+        "structureType": "elevated"
       }
     ],
     "CRL": [
       {
         "code": "CP4",
-        "startedAt": "2030-12-31"
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
       }
     ]
   },

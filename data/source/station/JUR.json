@@ -9,19 +9,22 @@
     "EWL": [
       {
         "code": "EW24",
-        "startedAt": "1988-11-05"
+        "startedAt": "1988-11-05",
+        "structureType": "elevated"
       }
     ],
     "NSL": [
       {
         "code": "NS1",
-        "startedAt": "1988-11-05"
+        "startedAt": "1988-11-05",
+        "structureType": "elevated"
       }
     ],
     "JRL": [
       {
         "code": "JE5",
-        "startedAt": "2027-12-31"
+        "startedAt": "2027-12-31",
+        "structureType": "elevated"
       }
     ]
   },

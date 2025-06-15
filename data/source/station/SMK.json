@@ -9,7 +9,8 @@
     "PGLRT": [
       {
         "code": "PW1",
-        "startedAt": "2016-02-29"
+        "startedAt": "2016-02-29",
+        "structureType": "elevated"
       }
     ]
   },

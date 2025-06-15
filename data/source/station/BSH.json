@@ -9,13 +9,15 @@
     "NSL": [
       {
         "code": "NS17",
-        "startedAt": "1987-11-07"
+        "startedAt": "1987-11-07",
+        "structureType": "at_grade"
       }
     ],
     "CCL": [
       {
         "code": "CC15",
-        "startedAt": "2009-05-28"
+        "startedAt": "2009-05-28",
+        "structureType": "underground"
       }
     ]
   },

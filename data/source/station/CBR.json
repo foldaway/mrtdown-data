@@ -9,7 +9,8 @@
     "NSL": [
       {
         "code": "NS12",
-        "startedAt": "2019-11-02"
+        "startedAt": "2019-11-02",
+        "structureType": "elevated"
       }
     ]
   },

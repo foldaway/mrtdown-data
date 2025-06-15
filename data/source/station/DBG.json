@@ -9,19 +9,22 @@
     "NSL": [
       {
         "code": "NS24",
-        "startedAt": "1987-12-12"
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
       }
     ],
     "NEL": [
       {
         "code": "NE6",
-        "startedAt": "2003-06-20"
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
       }
     ],
     "CCL": [
       {
         "code": "CC1",
-        "startedAt": "2010-04-17"
+        "startedAt": "2010-04-17",
+        "structureType": "underground"
       }
     ]
   },

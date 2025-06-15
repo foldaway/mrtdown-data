@@ -9,7 +9,8 @@
     "DTL": [
       {
         "code": "DT4",
-        "startedAt": "2025-02-28"
+        "startedAt": "2025-02-28",
+        "structureType": "underground"
       }
     ]
   },

@@ -9,7 +9,8 @@
     "SKLRT": [
       {
         "code": "SE2",
-        "startedAt": "2003-01-18"
+        "startedAt": "2003-01-18",
+        "structureType": "elevated"
       }
     ]
   },

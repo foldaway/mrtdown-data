@@ -9,7 +9,8 @@
     "BPLRT": [
       {
         "code": "BP9",
-        "startedAt": "1999-11-06"
+        "startedAt": "1999-11-06",
+        "structureType": "elevated"
       }
     ]
   },

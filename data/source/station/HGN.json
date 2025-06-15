@@ -9,13 +9,15 @@
     "NEL": [
       {
         "code": "NE14",
-        "startedAt": "2003-06-20"
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
       }
     ],
     "CRL": [
       {
         "code": "CR8",
-        "startedAt": "2030-12-31"
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
       }
     ]
   },

@@ -9,13 +9,15 @@
     "JRL": [
       {
         "code": "JS12",
-        "startedAt": "2029-12-31"
+        "startedAt": "2029-12-31",
+        "structureType": "elevated"
       }
     ],
     "CRL": [
       {
         "code": "CR21",
-        "startedAt": "2030-12-31"
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
       }
     ]
   },

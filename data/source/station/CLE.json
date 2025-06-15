@@ -9,13 +9,15 @@
     "EWL": [
       {
         "code": "EW23",
-        "startedAt": "1988-03-12"
+        "startedAt": "1988-03-12",
+        "structureType": "elevated"
       }
     ],
     "CRL": [
       {
         "code": "CR17",
-        "startedAt": "2032-01-01"
+        "startedAt": "2032-01-01",
+        "structureType": "underground"
       }
     ]
   },

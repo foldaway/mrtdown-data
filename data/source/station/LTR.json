@@ -9,7 +9,8 @@
     "TEL": [
       {
         "code": "TE5",
-        "startedAt": "2021-08-28"
+        "startedAt": "2021-08-28",
+        "structureType": "underground"
       }
     ]
   },

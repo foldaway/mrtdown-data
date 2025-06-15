@@ -10,7 +10,8 @@
     "CRL": [
       {
         "code": "TE22A",
-        "startedAt": "2028-12-31"
+        "startedAt": "2028-12-31",
+        "structureType": "underground"
       }
     ]
   },

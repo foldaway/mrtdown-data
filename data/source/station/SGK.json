@@ -9,13 +9,15 @@
     "NSL": [
       {
         "code": "NS6",
-        "startedAt": "2035-01-01"
+        "startedAt": "2035-01-01",
+        "structureType": "elevated"
       }
     ],
     "DTL": [
       {
         "code": "DE2",
-        "startedAt": "2035-01-01"
+        "startedAt": "2035-01-01",
+        "structureType": "underground"
       }
     ]
   },

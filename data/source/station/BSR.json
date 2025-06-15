@@ -9,7 +9,8 @@
     "TEL": [
       {
         "code": "TE29",
-        "startedAt": "2024-06-23"
+        "startedAt": "2024-06-23",
+        "structureType": "underground"
       }
     ]
   },

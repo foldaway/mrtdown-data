@@ -9,7 +9,8 @@
     "NSL": [
       {
         "code": "NS19",
-        "startedAt": "1987-11-07"
+        "startedAt": "1987-11-07",
+        "structureType": "underground"
       }
     ]
   },

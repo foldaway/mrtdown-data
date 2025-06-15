@@ -9,13 +9,15 @@
     "EWL": [
       {
         "code": "EW12",
-        "startedAt": "1989-11-04"
+        "startedAt": "1989-11-04",
+        "structureType": "underground"
       }
     ],
     "DTL": [
       {
         "code": "DT14",
-        "startedAt": "2013-12-22"
+        "startedAt": "2013-12-22",
+        "structureType": "underground"
       }
     ]
   },

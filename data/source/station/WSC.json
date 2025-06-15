@@ -9,7 +9,8 @@
     "CRL": [
       {
         "code": "CR18",
-        "startedAt": "2032-01-01"
+        "startedAt": "2032-01-01",
+        "structureType": "underground"
       }
     ]
   },

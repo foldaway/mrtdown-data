@@ -9,13 +9,15 @@
     "EWL": [
       {
         "code": "EW14",
-        "startedAt": "1987-12-12"
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
       }
     ],
     "NSL": [
       {
         "code": "NS26",
-        "startedAt": "1987-12-12"
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
       }
     ]
   },

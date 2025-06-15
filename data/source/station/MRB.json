@@ -9,19 +9,22 @@
     "NSL": [
       {
         "code": "NS27",
-        "startedAt": "1987-12-12"
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
       }
     ],
     "TEL": [
       {
         "code": "TE20",
-        "startedAt": "2022-11-13"
+        "startedAt": "2022-11-13",
+        "structureType": "underground"
       }
     ],
     "CCL": [
       {
         "code": "CE2",
-        "startedAt": "2012-01-14"
+        "startedAt": "2012-01-14",
+        "structureType": "underground"
       }
     ]
   },

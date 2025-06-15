@@ -9,13 +9,15 @@
     "DTL": [
       {
         "code": "DT6",
-        "startedAt": "2015-12-27"
+        "startedAt": "2015-12-27",
+        "structureType": "underground"
       }
     ],
     "CRL": [
       {
         "code": "CR15",
-        "startedAt": "2030-12-31"
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
       }
     ]
   },
