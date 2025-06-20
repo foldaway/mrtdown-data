@@ -5,6 +5,9 @@ import type { ComponentManifest } from '../../schema/ComponentManifest';
 import { StationModel } from '../../model/StationModel';
 import type { Station } from '../../schema/Station';
 import type { Component } from '../../schema/Component';
+import { IssueModel } from '../../model/IssueModel';
+import { DateTime } from 'luxon';
+import type { IssueReference } from '../../schema/Overview';
 
 export function buildComponentManifests() {
   const components = ComponentModel.getAll();
@@ -24,6 +27,31 @@ export function buildComponentManifests() {
       for (const entry of componentMemberEntries) {
         stationsByCode[entry.code] = station;
       }
+    }
+  }
+
+  const issues = IssueModel.getAll();
+  issues.sort((a, b) => {
+    const startAtA = DateTime.fromISO(a.startAt).setZone('Asia/Singapore');
+    const startAtB = DateTime.fromISO(b.startAt).setZone('Asia/Singapore');
+    const diffSeconds = startAtA.diff(startAtB).as('seconds');
+
+    if (diffSeconds < 0) {
+      return 1;
+    }
+    if (diffSeconds > 0) {
+      return -1;
+    }
+    return 0;
+  });
+
+  const issuesByComponent: Record<string, IssueReference[]> = {};
+  for (const issue of issues) {
+    for (const componentId of issue.componentIdsAffected) {
+      const componentIssues = issuesByComponent[componentId] ?? [];
+      const { updates, ...otherProps } = issue;
+      componentIssues.push(otherProps);
+      issuesByComponent[componentId] = componentIssues;
     }
   }
 
@@ -48,6 +76,7 @@ export function buildComponentManifests() {
           stationCodes.has(code),
         ),
       ),
+      issueRefs: issuesByComponent[component.id] ?? [],
     };
 
     writeFileSync(filePath, JSON.stringify(manifest, null, 2));
