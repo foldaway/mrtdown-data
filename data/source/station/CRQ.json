@@ -22,12 +22,12 @@
   },
   "landmarks": [
     "Clarke Quay Central",
-    "The Fort Canning Park",
+    "Fort Canning Park",
     "Robertson Quay"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "克拉码头中央商场",
+      "克拉码头中央",
       "福康宁公园",
       "罗伯逊码头"
     ],
@@ -38,7 +38,7 @@
     ],
     "ta": [
       "கிளார்க் குவாய் சென்ட்ரல்",
-      "பொருட்கள் காட்சி மையம்",
+      "போர்ட் கேனிங் பூங்கா",
       "ரோபர்ட்சன் குவாய்"
     ]
   },

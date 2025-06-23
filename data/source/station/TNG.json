@@ -16,7 +16,7 @@
   },
   "town": "Sengkang",
   "town_translations": {
-    "zh-Hans": "胜光",
+    "zh-Hans": "盛港",
     "ms": "Sengkang",
     "ta": "செங்காங்"
   },
@@ -27,9 +27,9 @@
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "胜光综合医院",
+      "盛港综合医院",
       "Compass One",
-      "胜光体育中心"
+      "盛港体育中心"
     ],
     "ms": [
       "Hospital Umum Sengkang",
@@ -37,7 +37,7 @@
       "Kompleks Sukan Sengkang"
     ],
     "ta": [
-      "செங்காங் பொது மருத்துவமனையில்",
+      "செங்காங் பொது மருத்துவமனை",
       "Compass One",
       "செங்காங் விளையாட்டு வளாகம்"
     ]

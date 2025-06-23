@@ -23,34 +23,30 @@
   },
   "town": "Queenstown",
   "town_translations": {
-    "zh-Hans": "昆士镇",
+    "zh-Hans": "女皇镇",
     "ms": "Queenstown",
     "ta": "க்வீன்ஸ்டவுன்"
   },
   "landmarks": [
-    "Star Vista",
-    "One-North",
-    "Singapore Science Park",
-    "Biopolis"
+    "The Star Vista",
+    "one-north",
+    "Singapore Science Park"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "星享道",
-      "一北",
-      "新加坡科学园",
-      "生物园区"
+      "星悅汇",
+      "启奥城",
+      "新加坡科学园"
     ],
     "ms": [
-      "Star Vista",
-      "One-North",
-      "Taman Sains Singapura",
-      "Biopolis"
+      "The Star Vista",
+      "one-north",
+      "Taman Sains Singapura"
     ],
     "ta": [
-      "ஸ்டார் விர்ஸ்டா",
+      "தி ஸ்டார் விஸ்டா",
       "ஒன்-நார்த்",
-      "சிங்கப்பூர் அறிவியல் பூங்கா",
-      "பயோபாலிஸ்"
+      "சிங்கப்பூர் அறிவியல் பூங்கா"
     ]
   },
   "geo": {

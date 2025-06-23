@@ -16,9 +16,9 @@
   },
   "town": "Bukit Merah",
   "town_translations": {
-    "zh-Hans": "实龙岗",
-    "ms": "Redhill",
-    "ta": "ரெட் ஹில்"
+    "zh-Hans": "红山",
+    "ms": "Bukit Merah",
+    "ta": "பிக்கிட் மேரா"
   },
   "landmarks": [
     "Redhill Market",
@@ -26,8 +26,8 @@
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "实龙岗市场",
-      "显丰公共图书馆"
+      "红山市场",
+      "女皇镇公共图书馆"
     ],
     "ms": [
       "Pasar Redhill",

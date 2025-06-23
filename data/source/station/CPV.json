@@ -18,7 +18,7 @@
   "town_translations": {
     "zh-Hans": "盛港",
     "ms": "Sengkang",
-    "ta": "செங்கANG"
+    "ta": "செங்காங்"
   },
   "landmarks": [
     "Compass One",
@@ -27,7 +27,7 @@
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "航海一号",
+      "勘宝坊",
       "盛港河滨公园",
       "盛港综合医院"
     ],
@@ -37,9 +37,9 @@
       "Hospital Umum Sengkang"
     ],
     "ta": [
-      "கம்பஸ் ஒன்",
-      "செங்கANG ஆற்றின் யூசேத்",
-      "செங்கANG பொதுப் மருத்துவமனை"
+      "Compass One",
+      "செங்காங் ரிவர்சைட் பூங்கா",
+      "செங்காங் பொது மருத்துவமனை"
     ]
   },
   "geo": {

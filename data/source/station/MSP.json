@@ -21,21 +21,21 @@
     "ta": "ஸ்ட்ரெயிட்ஸ் வியூ"
   },
   "landmarks": [
-    "Marina Bay",
+    "Marina Bay Cruise Centre Singapore",
     "Gardens by the Bay"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "滨海湾",
+      "新加坡滨海湾邮轮中心",
       "滨海湾花园"
     ],
     "ms": [
-      "Tebing Marina",
-      "Taman Teluk Marina"
+      "Pusat Peranginan Marin Bay Singapura",
+      "Taman-taman di Teluk"
     ],
     "ta": [
-      "மரீனா கொடுக்கும்",
-      "மரீனா கா jardins"
+      "மரீனா பே குரூஸ் சென்டர் சிங்கப்பூர்",
+      "தோட்டங்கள் பே விரிகுடா"
     ]
   },
   "geo": {

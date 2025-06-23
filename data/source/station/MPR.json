@@ -16,9 +16,9 @@
   },
   "town": "Marine Parade",
   "town_translations": {
-    "zh-Hans": "海洋公园",
-    "ms": "Perarakan Laut",
-    "ta": "மரீன் பேராடு"
+    "zh-Hans": "马林百列",
+    "ms": "Marine Parade",
+    "ta": "மரீன் பரேட்"
   },
   "landmarks": [
     "ECP Park Connector",
@@ -28,18 +28,18 @@
   "landmarks_translations": {
     "zh-Hans": [
       "ECP公园连接线",
-      "海洋公园美食中心",
-      "甘榜金边社区俱乐部"
+      "马林百列熟食中心",
+      "甘榜格南社区俱乐部"
     ],
     "ms": [
-      "Penyambung Taman ECP",
-      "Pusat Makanan Perarakan Laut",
-      "Kelab Komuniti Kampong Kembangan"
+      "ECP Park Connector",
+      "Marine Parade Food Centre",
+      "Kampong Kembangan Community Club"
     ],
     "ta": [
       "ஈசிபி பார்க் கனெக்டர்",
-      "மரீன் பேராத் உணவுக்கொண்டாட்டம்",
-      "காம்போங்க் கம்பேங்கான் சமூக கிளப்"
+      "மரீன் பரேட் உணவு மையம்",
+      "காம்போங் கெம்பாங்கான் சமூக மன்றம்"
     ]
   },
   "geo": {

@@ -18,28 +18,28 @@
   "town_translations": {
     "zh-Hans": "榜鹅",
     "ms": "Punggol",
-    "ta": "புங்க்கள்"
+    "ta": "புங்க்கோல்"
   },
   "landmarks": [
     "Punggol Waterfront",
     "Punggol Waterway Park",
-    "Punggol End"
+    "Punggol Point Park"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "榜鹅滨水区",
       "榜鹅水道公园",
-      "榜鹅尽头"
+      "榜鹅点公园"
     ],
     "ms": [
       "Punggol Waterfront",
-      "Taman Air Punggol",
-      "Punggol End"
+      "Taman Laluan Air Punggol",
+      "Taman Punggol Point"
     ],
     "ta": [
-      "பொங்கோல் நீரியல் பகுதி",
-      "பொங்கோல் நீர்வழி பூங்கா",
-      "பொங்கோல் முடிவு"
+      "பொங்கோல் நீர்முனை",
+      "பொங்கோல் நீர் வழிப் பூங்கா",
+      "பொங்கோல் முனைப் பூங்கா"
     ]
   },
   "geo": {

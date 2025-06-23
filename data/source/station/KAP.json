@@ -23,30 +23,26 @@
   },
   "town": "Bukit Timah",
   "town_translations": {
-    "zh-Hans": "巴西立",
+    "zh-Hans": "武吉知马",
     "ms": "Bukit Timah",
     "ta": "புக்கிட் திமா"
   },
   "landmarks": [
     "King Albert Park Shopping Centre",
-    "My Mini Golf",
-    "Holland Village"
+    "My Mini Golf"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "国王亚伯特公园购物中心",
-      "迷你高尔夫球场",
-      "荷兰村"
+      "阿尔伯特国王公园购物中心",
+      "My Mini Golf"
     ],
     "ms": [
       "Pusat Membeli-belah King Albert Park",
-      "Golf Mini Saya",
-      "Kampung Holland"
+      "My Mini Golf"
     ],
     "ta": [
-      "கிங் ஆல்பர்ட் பூங்கா ஷாப்பிங் சென்டர்",
-      "என் மினி கோல்ப்",
-      "ஹொலந்து கிராமம்"
+      "கிங் ஆல்பர்ட் பார்க் ஷாப்பிங் சென்டர்",
+      "My Mini Golf"
     ]
   },
   "geo": {

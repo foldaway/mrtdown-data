@@ -16,7 +16,7 @@
   },
   "town": "Sengkang",
   "town_translations": {
-    "zh-Hans": "新加坡",
+    "zh-Hans": "盛港",
     "ms": "Sengkang",
     "ta": "செங்காங்"
   },
@@ -29,7 +29,7 @@
     "zh-Hans": [
       "盛港体育与休闲中心",
       "Compass One",
-      "安源社区俱乐部"
+      "Anchorvale 社区俱乐部"
     ],
     "ms": [
       "Pusat Sukan dan Rekreasi Sengkang",
@@ -37,9 +37,9 @@
       "Kelab Komuniti Anchorvale"
     ],
     "ta": [
-      "செங்காங் விளையாட்டு மற்றும் பொறியியல் மையம்",
-      "கம்பாஸ் ஒன்",
-      "ஆன்சோர்வேல் சமூகம் கிளப்"
+      "செங்காங் விளையாட்டு மற்றும் பொழுதுபோக்கு மையம்",
+      "Compass One",
+      "Anchorvale சமூக மன்றம்"
     ]
   },
   "geo": {

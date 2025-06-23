@@ -23,23 +23,19 @@
   },
   "landmarks": [
     "Bukit Panjang Plaza",
-    "EnergyOne Mall",
     "The Rail Mall"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "武吉班让广场",
-      "EnergyOne商场",
       "铁路购物中心"
     ],
     "ms": [
       "Plaza Bukit Panjang",
-      "Pusat Membeli Belah EnergyOne",
       "The Rail Mall"
     ],
     "ta": [
       "புக்கிட் பஞ்சாங் பிளாசா",
-      "எனர்ஜி ஒன் மால்",
       "ரயில்வே மார்கெட்"
     ]
   },

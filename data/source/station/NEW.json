@@ -28,25 +28,25 @@
     "ta": "நியூட்டன்"
   },
   "landmarks": [
-    "Newton Circus",
-    "United Square",
-    "Novena Square"
+    "Newton Food Centre",
+    "United Square Shopping Mall",
+    "Velocity@Novena Square"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "牛顿圆环",
+      "纽顿熟食中心",
       "联合广场",
-      "诺维娜广场"
+      "Velocity@Novena 广场"
     ],
     "ms": [
-      "Pusat Konvensyen Newton",
-      "Square United",
-      "Square Novena"
+      "Pusat Makanan Newton",
+      "Pusat Beli-Belah United Square",
+      "Velocity@Novena Square"
     ],
     "ta": [
-      "நியூட்டன் சிரக்கம்",
-      "யூனிட்டெட் சקוئر",
-      "நோவெனா சகுئر"
+      "நியூட்டன் உணவு மையம்",
+      "ஐக்கிய சதுக்க வணிக வளாகம்",
+      "வெலோசிட்டி@நோவெனா சதுக்கம்"
     ]
   },
   "geo": {

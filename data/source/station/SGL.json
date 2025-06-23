@@ -22,24 +22,20 @@
   },
   "landmarks": [
     "East Coast Park",
-    "Siglap Village",
-    "Bedok Mall"
+    "Siglap Village"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "东海岸公园",
-      "西拉普村",
-      "碧东购物中心"
+      "实乞纳村"
     ],
     "ms": [
       "Taman Pantai Timur",
-      "Kampung Siglap",
-      "Pusat Membeli-Belah Bedok"
+      "Kampung Siglap"
     ],
     "ta": [
-      "東海岸公園",
-      "சிக்லாப் ஊர்",
-      "பெடோக் மால்"
+      "கிழக்கு கடற்கரை பூங்கா",
+      "சிகிலாப் கிராமம்"
     ]
   },
   "geo": {

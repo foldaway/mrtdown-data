@@ -22,24 +22,24 @@
   },
   "landmarks": [
     "Kranji Farm Resort",
-    "Kranji Scenic Drive",
-    "Gurun Kranji"
+    "Kranji Reservoir Park",
+    "Kranji War Memorial"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "克兰芝农场度假村",
-      "克兰芝风景大道",
-      "克兰芝花园"
+      "克兰芝水库公园",
+      "克兰芝战争纪念馆"
     ],
     "ms": [
       "Kranji Farm Resort",
-      "Kranji Scenic Drive",
-      "Gurun Kranji"
+      "Taman Takungan Kranji",
+      "Memorial Perang Kranji"
     ],
     "ta": [
-      "கிராங்கி Farm Resort",
-      "கிராங்கி Scenic Drive",
-      "கிராங்கி காடுகள்"
+      "கிராங்கி பண்ணை ரிசார்ட்",
+      "கிராங்கி நீர்த்தேக்கப் பூங்கா",
+      "கிராங்கி போர் நினைவிடம்"
     ]
   },
   "geo": {

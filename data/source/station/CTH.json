@@ -25,28 +25,32 @@
   "town_translations": {
     "zh-Hans": "市中心",
     "ms": "Pusat Bandar",
-    "ta": "மள்ளிகைச் சந்தை"
+    "ta": "மத்திய வணிக மாவட்டம்"
   },
   "landmarks": [
     "Raffles City",
     "National Gallery Singapore",
-    "Supreme Court"
+    "Supreme Court",
+    "St Andrew's Cathedral"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "莱佛士城",
       "新加坡国家美术馆",
-      "最高法院"
+      "最高法院",
+      "圣安德烈座堂"
     ],
     "ms": [
       "Raffles City",
       "Galeri Negara Singapura",
-      "Mahkamah Agung"
+      "Mahkamah Agung",
+      "Katedral St Andrew"
     ],
     "ta": [
       "ராஃபிள்ஸ் சிட்டி",
-      "நாட்டின் கலைக்காட்சி",
-      "உயர்நீதிமன்றம்"
+      "தேசிய கலைக்கூடம் சிங்கப்பூர்",
+      "உச்ச நீதிமன்றம்",
+      "புனித ஆண்ட்ரூ கதீட்ரல்"
     ]
   },
   "geo": {

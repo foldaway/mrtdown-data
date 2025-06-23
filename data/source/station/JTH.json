@@ -17,29 +17,29 @@
   "town": "Jurong East",
   "town_translations": {
     "zh-Hans": "裕廊东",
-    "ms": "Jurong Timur",
+    "ms": "Jurong East",
     "ta": "ஜூராங் ஈஸ்ட்"
   },
   "landmarks": [
-    "Jurong East Swimming Complex",
-    "Jurong East Library",
-    "Westgate"
+    "JTC Summit",
+    "Jurong Regional Library",
+    "JEM"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "裕廊东游泳池",
-      "裕廊东图书馆",
-      "Westgate购物中心"
+      "JTC峰会",
+      "裕廊区域图书馆",
+      "JEM购物中心"
     ],
     "ms": [
-      "Kompleks Renang Jurong East",
-      "Perpustakaan Jurong East",
-      "Westgate"
+      "JTC Summit",
+      "Perpustakaan Wilayah Jurong",
+      "Pusat Beli-belah JEM"
     ],
     "ta": [
-      "ஜூராங் ஈஸ்ட் குளியலறை",
-      "ஜூராங் ஈஸ்ட் நூலகம்",
-      "Westgate"
+      "ஜேடிசி சமிட்",
+      "ஜுராங் பிராந்திய நூலகம்",
+      "ஜெம் ஷாப்பிங் மால்"
     ]
   },
   "geo": {

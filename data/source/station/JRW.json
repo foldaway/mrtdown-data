@@ -21,25 +21,25 @@
     "ta": "ஜூராங் மேற்கே"
   },
   "landmarks": [
-    "Jurong West Swimming Complex",
-    "Westgate",
-    "Jurong Point"
+    "Corporation Primary School",
+    "Boon Lay Community Centre",
+    "Boon Lay Shopping Centre"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "裕廊西游泳池",
-      "Westgate",
-      "裕廊购物中心"
+      "合作小学",
+      "文礼社区中心",
+      "文礼购物中心"
     ],
     "ms": [
-      "Kompleks Renang Jurong West",
-      "Westgate",
-      "Jurong Point"
+      "Sekolah Rendah Corporation",
+      "Pusat Komuniti Boon Lay",
+      "Pusat Beli-belah Boon Lay"
     ],
     "ta": [
-      "ஜூராங்க் வெஸ்ட் நீந்தும் மையம்",
-      "வெஸ்ட் கேட்",
-      "ஜூராங்க் பாயிண்ட்"
+      "கார்ப்பரேஷன் பிரைமரி பள்ளி",
+      "பூன் லே சமூக மையம்",
+      "பூன் லே ஷாப்பிங் சென்டர்"
     ]
   },
   "geo": {

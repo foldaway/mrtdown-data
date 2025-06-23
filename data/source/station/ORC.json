@@ -25,7 +25,7 @@
   "town_translations": {
     "zh-Hans": "乌节",
     "ms": "Orchard",
-    "ta": "ஆர்ச்சர்"
+    "ta": "Orchard"
   },
   "landmarks": [
     "Orchard Road",
@@ -36,7 +36,7 @@
     "zh-Hans": [
       "乌节路",
       "ION Orchard",
-      "高岛屋购物中心"
+      "高岛屋百货"
     ],
     "ms": [
       "Orchard Road",
@@ -44,9 +44,9 @@
       "Pusat Beli-belah Takashimaya"
     ],
     "ta": [
-      "ஆர்ச்சர் சாலை",
+      "Orchard Road",
       "ION Orchard",
-      "டகாசிமயா ஷாப்பிங் சென்டர்"
+      "Takashimaya Shopping Centre"
     ]
   },
   "geo": {

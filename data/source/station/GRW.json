@@ -17,29 +17,25 @@
   "town": "River Valley",
   "town_translations": {
     "zh-Hans": "河谷",
-    "ms": "Lembah Sungai",
-    "ta": "நீர் தோட்டம்"
+    "ms": "River Valley",
+    "ta": "ரிவர் வேலி"
   },
   "landmarks": [
     "Great World City",
-    "Singapore River",
-    "Fort Canning Park"
+    "Singapore River"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "大世界城",
-      "新加坡河",
-      "福肯宁公园"
+      "新加坡河"
     ],
     "ms": [
-      "Kota Dunia",
-      "Sungai Singapura",
-      "Taman Fort Canning"
+      "Great World City",
+      "Sungai Singapura"
     ],
     "ta": [
       "பெரும் உலக நகரம்",
-      "சிங்கப்பூர் ஆறு",
-      "ஃபோர்ட் கண்ணிங்க் பூங்கா"
+      "சிங்கப்பூர் ஆறு"
     ]
   },
   "geo": {

@@ -21,21 +21,25 @@
     "ta": "புக்கிட் பாங்"
   },
   "landmarks": [
-    "Warren Golf & Country Club",
+    "CMPB/NS Hub",
+    "The Rail Corridor (Bukit Panjang)",
     "Zhenghua Nature Park"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "华胜高尔夫乡村俱乐部",
-      "郑华自然公园"
+      "新国民服役中心 / 国民服役中心",
+      "武吉班让段的铁路走廊",
+      "郑和自然公园"
     ],
     "ms": [
-      "Kelab Golf & Negara Warren",
+      "Hab Pusat Tenaga Manusia Pusat / Hab Perkhidmatan Negara",
+      "Koridor Keretapi (Bahagian Bukit Panjang)",
       "Taman Alam Zhenghua"
     ],
     "ta": [
-      "வரென்கோப் & கொண்டாட்டிச் சாரம்",
-      "செங்குவா இயற்கை பூங்கா"
+      "CMPB/தேசிய சேவை மையம்",
+      "இரகாயில் பாதை (புக்கிட் பாங் பிரிவு)",
+      "ஜெங்ஹுவா இயற்கை பூங்கா"
     ]
   },
   "geo": {

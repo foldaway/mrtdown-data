@@ -16,33 +16,29 @@
   },
   "town": "Bukit Merah",
   "town_translations": {
-    "zh-Hans": "孟依治",
-    "ms": "Tiong Bahru",
-    "ta": "தியோங் பாரு"
+    "zh-Hans": "红山",
+    "ms": "Bukit Merah",
+    "ta": "புக்கிட் மேரா"
   },
   "landmarks": [
     "Tiong Bahru Market",
     "Tiong Bahru Plaza",
-    "The Bookworm",
     "Tiong Bahru Heritage Trail"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "妥兴巴鲁市场",
-      "妥兴巴鲁广场",
-      "书虫",
-      "妥兴巴鲁遗产步道"
+      "中峇鲁巴刹",
+      "中峇鲁广场",
+      "中峇鲁文化遗产小径"
     ],
     "ms": [
       "Pasar Tiong Bahru",
-      "Pusat Tiong Bahru",
-      "Bookworm",
+      "Plaza Tiong Bahru",
       "Jalan Warisan Tiong Bahru"
     ],
     "ta": [
       "தியோங் பாரு சந்தை",
       "தியோங் பாரு பிளாசா",
-      "புக்க்வோம்",
       "தியோங் பாரு பாரம்பரிய பாதை"
     ]
   },

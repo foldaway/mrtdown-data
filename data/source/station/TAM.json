@@ -25,36 +25,28 @@
   "town_translations": {
     "zh-Hans": "淡滨尼",
     "ms": "Tampines",
-    "ta": "தாம்பினீ"
+    "ta": "தாம்பினீஸ்"
   },
   "landmarks": [
     "Tampines Mall",
     "Century Square",
-    "Tampines 1",
-    "Singapore Expo",
-    "Changi Business Park"
+    "Tampines 1"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "淡滨尼商城",
       "世纪广场",
-      "淡滨尼1号",
-      "新加坡博览中心",
-      "樟宜商务园区"
+      "淡滨尼1号"
     ],
     "ms": [
       "Pusat membeli-belah Tampines",
       "Papan Century",
-      "Tampines 1",
-      "Expo Singapura",
-      "Taman Perniagaan Changi"
+      "Tampines 1"
     ],
     "ta": [
       "தாம்பினீ மால்",
       "சென்சுரி ஸ்க்வேர்",
-      "தாம்பினீ 1",
-      "சிங்கப்பூர் எக்ஸ்போ",
-      "சங்கியி வணிக பூங்கா"
+      "தாம்பினீ 1"
     ]
   },
   "geo": {

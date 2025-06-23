@@ -21,21 +21,17 @@
     "ta": "தென்கா"
   },
   "landmarks": [
-    "Hong Kah Point",
     "Gek Poh Shopping Centre"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "宏佳点",
       "京宝购物中心"
     ],
     "ms": [
-      "Pusat Perbelanjaan Hong Kah",
       "Pusat Perbelanjaan Gek Poh"
     ],
     "ta": [
-      "ஹோம் கஹ் பாயிண்ட்",
-      "கெக் பொப் ஷாப்"
+      "கெக் போ ஷாப்பிங் சென்டர்"
     ]
   },
   "geo": {

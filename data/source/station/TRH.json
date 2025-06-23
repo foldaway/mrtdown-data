@@ -23,23 +23,23 @@
   "landmarks": [
     "Singapore Sports Hub",
     "Kallang Wave Mall",
-    "Indoor Stadium"
+    "Singapore Indoor Stadium"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "新加坡体育中心",
       "加冷波浪购物中心",
-      "室内体育馆"
+      "新加坡室内体育馆"
     ],
     "ms": [
-      "Hub Sukan Singapura",
-      "Pusat BelShopping Kallang Wave",
-      "Stadium Dalaman"
+      "Hab Sukan Singapura",
+      "Kallang Wave Mall",
+      "Stadium Dalaman Singapura"
     ],
     "ta": [
-      "சிங்கப்பூர் மக்களின் களஞ்சியங்கள்",
-      "கல்லாங் மாவுனினில்",
-      "இன்டோர் ஸ்டேடியம்"
+      "சிங்கப்பூர் விளையாட்டு மையம்",
+      "கல்லாங் வேவ் மால்",
+      "சிங்கப்பூர் உள் அரங்கம்"
     ]
   },
   "geo": {

@@ -21,21 +21,17 @@
     "ta": "மேற்கு நீர் சேகரிப்பு"
   },
   "landmarks": [
-    "Nanyang Technological University",
-    "Jurong Lake Gardens"
+    "Nanyang Technological University"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "南洋理工大学",
-      "裕廊湖花园"
+      "南洋理工大学"
     ],
     "ms": [
-      "Universiti Teknologi Nanyang",
-      "Taman Tasik Jurong"
+      "Universiti Teknologi Nanyang"
     ],
     "ta": [
-      "நாங்கியன் தொழில்படிப்பு பல்கலைக்கழகம்",
-      "ஜூரோங்க் ஏரியில் தோட்டம்"
+      "நாங்கியன் தொழில்படிப்பு பல்கலைக்கழகம்"
     ]
   },
   "geo": {

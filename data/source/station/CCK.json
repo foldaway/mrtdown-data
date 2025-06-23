@@ -30,8 +30,8 @@
   },
   "town": "Choa Chu Kang",
   "town_translations": {
-    "zh-Hans": "兀兰",
-    "ms": "Choak Chukang",
+    "zh-Hans": "蔡厝港",
+    "ms": "Choa Chu Kang",
     "ta": "சோவா சு காங்"
   },
   "landmarks": [
@@ -41,9 +41,9 @@
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "劳特购物中心",
-      "兀兰体育场",
-      "雨林公园"
+      "乐怡购物中心",
+      "蔡厝港体育场",
+      "雨林居"
     ],
     "ms": [
       "Lot One Shoppers' Mall",

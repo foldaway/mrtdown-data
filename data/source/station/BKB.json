@@ -21,25 +21,17 @@
     "ta": "நொவீனா"
   },
   "landmarks": [
-    "Bukit Brown Cemetery",
-    "Lian Shan Shuang Lin Monastery",
-    "MacRitchie Reservoir"
+    "Bukit Brown Cemetery"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "武吉布朗公墓",
-      "莲山双林寺",
-      "麦里芝水库"
+      "武吉布朗公墓"
     ],
     "ms": [
-      "Perkuburan Bukit Brown",
-      "Kuil Lian Shan Shuang Lin",
-      "Reservoir MacRitchie"
+      "Perkuburan Bukit Brown"
     ],
     "ta": [
-      "புக்கித் ப்ரவுன் உட்புறம்",
-      "லியான் ஷான் ஷுவாங் லின் கோவில்",
-      "மெக்கிறிட்சி நீர்ப்பிடி"
+      "புக்கித் ப்ரவுன் உட்புறம்"
     ]
   },
   "geo": {

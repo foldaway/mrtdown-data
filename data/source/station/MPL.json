@@ -22,24 +22,20 @@
   },
   "landmarks": [
     "MacRitchie Reservoir",
-    "Lornie Road",
-    "Mount Pleasant Estate"
+    "Lornie Road"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "麦里芝蓄水池",
-      "劳尼路",
-      "芒特平乐庄园"
+      "劳尼路"
     ],
     "ms": [
       "Reservoir MacRitchie",
-      "Jalan Lornie",
-      "Kawasan Perumahan Mount Pleasant"
+      "Jalan Lornie"
     ],
     "ta": [
       "மெக்‌ரிட்சி சேக்கை",
-      "லோர்னி சாலை",
-      "மவுண்ட் பிளசென்ட் காட்சி"
+      "லோர்னி சாலை"
     ]
   },
   "geo": {

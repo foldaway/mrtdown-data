@@ -16,7 +16,7 @@
   },
   "town": "Geylang",
   "town_translations": {
-    "zh-Hans": "吉隆坡",
+    "zh-Hans": "芽笼",
     "ms": "Geylang",
     "ta": "கெய்லாங்"
   },
@@ -28,8 +28,8 @@
   "landmarks_translations": {
     "zh-Hans": [
       "新加坡邮政中心",
-      "边路广场",
-      "吉隆坡赛莱市场"
+      "边连胜广场",
+      "芽笼士乃市场"
     ],
     "ms": [
       "Pusat Pos Singapura",
@@ -38,7 +38,7 @@
     ],
     "ta": [
       "சிங்கப்பூர் அஞ்சல் மையம்",
-      "பாய் லெபார் ஸ்க்வார்",
+      "Paya Lebar Square",
       "கெய்லாங் சிறை சந்தை"
     ]
   },

@@ -18,28 +18,44 @@
   "town_translations": {
     "zh-Hans": "裕廊东",
     "ms": "Jurong Timur",
-    "ta": "ஜுரோங்க் கிழக்கு"
+    "ta": "ஜுரோங் கிழக்கு"
   },
   "landmarks": [
     "Jurong Lake Gardens",
-    "Chinese Garden",
-    "Japanese Garden"
+    "Science Centre Singapore (New Site)",
+    "Jurong Gateway Precinct",
+    "JEM",
+    "Westgate",
+    "IMM Building",
+    "J'den"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "裕廊湖花园",
-      "中国花园",
-      "日本花园"
+      "新加坡科学中心（新址）",
+      "裕廊门户区",
+      "JEM",
+      "西门",
+      "IMM 大厦",
+      "J'den"
     ],
     "ms": [
       "Taman Tasik Jurong",
-      "Taman Cina",
-      "Taman Jepun"
+      "Pusat Sains Singapura (Tapak Baharu)",
+      "Presint Jurong Gateway",
+      "JEM",
+      "Westgate",
+      "IMM Building",
+      "J'den"
     ],
     "ta": [
-      "ஜுரோங்க் ஏொழி தோட்டம்",
-      "சீன தோட்டம்",
-      "ஜப்பான் தோட்டம்"
+      "Jurong Lake Gardens",
+      "Singapore Science Centre (New Site)",
+      "Jurong Gateway Precinct",
+      "JEM",
+      "Westgate",
+      "IMM Building",
+      "J'den"
     ]
   },
   "geo": {

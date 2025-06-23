@@ -21,29 +21,25 @@
     "ta": "யீசுன்"
   },
   "landmarks": [
-    "Sembawang Park",
-    "Sembawang Hot Spring",
-    "Singapore Zoo",
-    "Orchid Country Club"
+    "Orchid Country Club",
+    "Yishun Pond Park",
+    "HomeTeamNS Khatib"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "三巴旺公园",
-      "三巴旺温泉",
-      "新加坡动物园",
-      "兰花乡村俱乐部"
+      "兰花乡村俱乐部",
+      "义顺池公园",
+      "家园保安俱乐部卡迪"
     ],
     "ms": [
-      "Taman Sembawang",
-      "Kolam Air Panas Sembawang",
-      "Zoo Singapura",
-      "Kelab Negara Bunga Orkid"
+      "Kelab Negara Bunga Orkid",
+      "Taman Kolam Yishun",
+      "HomeTeamNS Khatib"
     ],
     "ta": [
-      "செம்பவாங் பூங்கா",
-      "செம்பவாங் உலர்வு ஊற்று",
-      "சிங்கப்பூர் விலங்கு பூங்கா",
-      "ஆர்கிட் கண்ட்ரி கிளப்"
+      "ஆர்கிட் கண்ட்ரி கிளப்",
+      "யிஷுன் குள பூங்கா",
+      "ஹோம் டீம் என்எஸ் காதிப்"
     ]
   },
   "geo": {

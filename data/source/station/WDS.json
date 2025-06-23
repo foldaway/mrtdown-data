@@ -16,7 +16,7 @@
   },
   "town": "Woodlands",
   "town_translations": {
-    "zh-Hans": "伍德兰",
+    "zh-Hans": "兀兰",
     "ms": "Woodlands",
     "ta": "உட்லாந்து"
   },
@@ -27,19 +27,19 @@
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "伍德兰市民中心",
+      "兀兰市政中心",
       "新加坡动物园",
-      "伍德兰海滨公园"
+      "兀兰水滨公园"
     ],
     "ms": [
       "Pusat Bandar Woodlands",
       "Zoo Singapura",
-      "Tebing Woodlands"
+      "Taman Tepi Pantai Woodlands"
     ],
     "ta": [
       "வுட்லாண்ட்ஸ் சிவில் சென்டர்",
-      "சிங்கப்பூர் பூங்கா",
-      "வுட்லாண்ட்ஸ் நீர்கரை"
+      "சிங்கப்பூர் உயிரியல் பூங்கா",
+      "வுட்லாண்ட்ஸ் வாட்டர்ஃபிரண்ட்"
     ]
   },
   "geo": {

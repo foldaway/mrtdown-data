@@ -23,7 +23,7 @@
   "landmarks": [
     "Tampines Mall",
     "Century Square",
-    "Tampines Hub"
+    "Our Tampines Hub"
   ],
   "landmarks_translations": {
     "zh-Hans": [
@@ -33,13 +33,13 @@
     ],
     "ms": [
       "Pusat Membeli-belah Tampines",
-      "Pusat Perdagangan Century",
-      "Tampines Hub"
+      "Century Square",
+      "Our Tampines Hub"
     ],
     "ta": [
-      "தாம் பினஸ் மால்இ",
-      "சென்சுரி ஸ்க்வெர்",
-      "தாம் பினஸ் ஹப்"
+      "Tampines Mall",
+      "Century Square",
+      "Our Tampines Hub"
     ]
   },
   "geo": {

@@ -25,7 +25,7 @@
   "town_translations": {
     "zh-Hans": "武吉班让",
     "ms": "Bukit Panjang",
-    "ta": "புக்கிட் பணγιாங்"
+    "ta": "புக்கிட் பங்சா"
   },
   "landmarks": [
     "Bukit Panjang Plaza",
@@ -34,15 +34,15 @@
   "landmarks_translations": {
     "zh-Hans": [
       "武吉班让广场",
-      "Lot One购物中心"
+      "Lot One 购物中心"
     ],
     "ms": [
       "Plaza Bukit Panjang",
       "Lot One Shoppers' Mall"
     ],
     "ta": [
-      "புக்கிட் பணஞ் நகர squares",
-      "Lot One வாங்குபவர்கள் மால்கள்"
+      "புக்கிட் பங்சா பிளாசா",
+      "Lot One ஷாப்பர்ஸ் மால்"
     ]
   },
   "geo": {

@@ -16,30 +16,26 @@
   },
   "town": "Toa Payoh",
   "town_translations": {
-    "zh-Hans": "多美加坡",
+    "zh-Hans": "大巴窑",
     "ms": "Toa Payoh",
-    "ta": "தோயா பஹொய"
+    "ta": "தோ பாயோ"
   },
   "landmarks": [
     "Toa Payoh Hub",
-    "HDB Toa Payoh Town Centre",
-    "Buddha Tooth Relic Temple"
+    "HDB Toa Payoh Town Centre"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "多美新城中心",
-      "多美公寓市中心",
-      "佛牙寺龙华院"
+      "大巴窑中心",
+      "大巴窑建屋发展局市镇中心"
     ],
     "ms": [
-      "Pusat Toa Payoh",
-      "Pusat Perumahan HDB Toa Payoh",
-      "Kuil Relik Gigi Buddha"
+      "Toa Payoh Hub",
+      "Pusat Bandar HDB Toa Payoh"
     ],
     "ta": [
-      "தொயா பஹொய மையம்",
-      "தொயா பஹொய வாடிகைத் தொகுதி",
-      "புத்தர் பறை அருள்மிகு கோவில்"
+      "தொயா பாயோ மையம்",
+      "தொயா பாயோ எச்டிபி நகர மையம்"
     ]
   },
   "geo": {

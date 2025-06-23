@@ -24,7 +24,7 @@
   "town": "Downtown Core",
   "town_translations": {
     "zh-Hans": "市中心",
-    "ms": "Pusat Bandar",
+    "ms": "Downtown Core",
     "ta": "நகர மையம்"
   },
   "landmarks": [
@@ -41,12 +41,12 @@
     "ms": [
       "Marina Bay Sands",
       "Muzium Seni dan Sains",
-      "Ferris Wheel Singapura"
+      "Singapore Flyer"
     ],
     "ta": [
       "மரீனா பே சாண்ட்ஸ்",
       "கலை அறிவியல் அருங்காட்சியகம்",
-      "சிங்கப்பூர் முக்கோணம்"
+      "சிங்கப்பூர் விமானம்"
     ]
   },
   "geo": {

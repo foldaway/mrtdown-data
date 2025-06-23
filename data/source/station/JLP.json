@@ -16,7 +16,7 @@
   },
   "town": "Bukit Panjang",
   "town_translations": {
-    "zh-Hans": "布吉班让",
+    "zh-Hans": "武吉班让",
     "ms": "Bukit Panjang",
     "ta": "புக்கிட் பஞ்சாங்"
   },
@@ -27,9 +27,9 @@
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "布吉班让广场",
-      "希利昂购物中心",
-      "郑华公园"
+      "武吉班让广场",
+      "Hillion Mall",
+      "正华公园"
     ],
     "ms": [
       "Plaza Bukit Panjang",
@@ -37,9 +37,9 @@
       "Taman Zhenghua"
     ],
     "ta": [
-      "புக்கிட் பஞ்சாங් பிளாசா",
+      "புக்கிட் பஞ்சாங் பிளாசா",
       "ஹில்லியன் மால்",
-      "செங்வா பூங்கா"
+      "செங்ஹுவா பூங்கா"
     ]
   },
   "geo": {

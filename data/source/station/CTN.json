@@ -32,29 +32,41 @@
     "Buddha Tooth Relic Temple and Museum",
     "Thian Hock Keng Temple",
     "Sri Mariamman Temple",
-    "People's Park Complex"
+    "Chinatown Point",
+    "People's Park Complex",
+    "Hong Lim Market & Food Centre",
+    "Chinatown Complex Food Centre"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "牛车水华丽中心",
+      "牛车水历史中心",
       "佛牙寺龙华院",
       "天福宫",
-      "斯里玛丽亚曼庙",
-      "人民公园综合大厦"
+      "马里安曼兴都庙",
+      "牛车水大厦",
+      "牛车水购物中心",
+      "芳林熟食中心",
+      "牛车水熟食中心"
     ],
     "ms": [
       "Pusat Warisan Chinatown",
-      "Kuil Dan Muzium Relik Gigi Buddha",
+      "Kuil dan Muzium Relik Gigi Buddha",
       "Kuil Thian Hock Keng",
       "Kuil Sri Mariamman",
-      "Kompleks Taman Rakyat"
+      "Chinatown Point",
+      "Kompleks Taman Rakyat",
+      "Pusat Penjaja dan Makanan Hong Lim",
+      "Pusat Penjaja Makanan Kompleks Chinatown"
     ],
     "ta": [
-      "சைனாட்டவான் பாரம்பரிய மையம்",
-      "புட்டா தூத் நகர் கெம்பு வால்க்கள்",
-      "தியான் ஹுக் கெங் கோயில்",
-      "ஸ்ரீ مارிமன்னா கோயில்",
-      "பொதுமக்கள் பார்க் கம்பிளெக்ஸ்"
+      "சைனாடவுன் பாரம்பரிய மையம்",
+      "புத்தர் பல் எச்ச நினைவிட மற்றும் அருங்காட்சியகம்",
+      "தியான் ஹுக் கெங் கோவில்",
+      "ஸ்ரீ மாரியம்மன் கோவில்",
+      "சைனாடவுன் பாயிண்ட்",
+      "மக்கள் பூங்கா வளாகம்",
+      "ஹாங் லிம் சந்தை மற்றும் உணவு மையம்",
+      "சைனாடவுன் வளாக உணவு மையம்"
     ]
   },
   "geo": {

@@ -22,24 +22,20 @@
   },
   "landmarks": [
     "Pasir Ris Park",
-    "Downtown East",
-    "Escape Theme Park"
+    "Downtown East"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "巴西立公园",
-      "市中心东区",
-      "逃脱主题公园"
+      "市中心东区"
     ],
     "ms": [
       "Taman Pasir Ris",
-      "Downtown East",
-      "Taman Tema Escape"
+      "Downtown East"
     ],
     "ta": [
       "பாசிர் ரிஸ் பூங்கா",
-      "டவுன்டென் ஈஸ்ட்",
-      "எஸ்கேப் தீம்ஸ் பூங்கா"
+      "டவுன்டென் ஈஸ்ட்"
     ]
   },
   "geo": {

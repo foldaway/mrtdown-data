@@ -21,25 +21,25 @@
     "ta": "புக்கிட் மேரா"
   },
   "landmarks": [
-    "Sentosa Island",
+    "Mount Faber Park",
     "VivoCity",
-    "Mount Faber Park"
+    "Sentosa Island"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "圣淘沙岛",
+      "法伯山公园",
       "维佛城",
-      "法伯山公园"
+      "圣淘沙岛"
     ],
     "ms": [
-      "Pulau Sentosa",
+      "Taman Mount Faber",
       "VivoCity",
-      "Taman Mount Faber"
+      "Pulau Sentosa"
     ],
     "ta": [
-      "செண்டோசா தீவு",
+      "மவுன்ட் ஃபேபர் பூக்காடு",
       "விவோசிட்டி",
-      "மவுன்ட் ஃபேபர் பூக்காடு"
+      "செண்டோசா தீவு"
     ]
   },
   "geo": {

@@ -18,28 +18,24 @@
   "town_translations": {
     "zh-Hans": "武吉班让",
     "ms": "Bukit Panjang",
-    "ta": "புக்கித் பஞ்ஜாங்"
+    "ta": "புக்கிட் பஞ்ஜாங்"
   },
   "landmarks": [
     "Bukit Panjang Plaza",
-    "Fajar Shopping Centre",
-    "Jellybean Montessori"
+    "Fajar Shopping Centre"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "武吉班让广场",
-      "法贾购物中心",
-      "果冻豆幼儿园"
+      "法贾购物中心"
     ],
     "ms": [
-      "Pusat Perbelanjaan Bukit Panjang",
-      "Pusat Membeli-belah Fajar",
-      "Jellybean Montessori"
+      "Bukit Panjang Plaza",
+      "Pusat Membeli-belah Fajar"
     ],
     "ta": [
-      "புக்கித் பஞ்ஜாங் பாசிட்",
-      "பாசிட் ஃபஜார்",
-      "ஜெலிசூன் மான்டெசோரிங்கள்"
+      "புக்கிட் பஞ்ஜாங் பாசிட்",
+      "ஃபஜார் பாசிட்"
     ]
   },
   "geo": {

@@ -21,21 +21,17 @@
     "ta": "கேலாங்"
   },
   "landmarks": [
-    "Ubi Techpark",
-    "Singapore Industrial Park"
+    "Ubi Techpark"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "优比科技园",
-      "新加坡工业园"
+      "优比科技园"
     ],
     "ms": [
-      "Taman Teknologi Ubi",
-      "Taman Perindustrian Singapura"
+      "Taman Teknologi Ubi"
     ],
     "ta": [
-      "உபி தொழில்நுட்ப பூங்கா",
-      "சிங்கப்பூர் தொழிற்சாலை"
+      "உபி தொழில்நுட்ப பூங்கா"
     ]
   },
   "geo": {

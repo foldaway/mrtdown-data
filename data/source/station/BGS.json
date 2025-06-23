@@ -29,7 +29,8 @@
   },
   "landmarks": [
     "Bugis Junction",
-    "Bugis+, BHG Bugis",
+    "Bugis+",
+    "BHG Bugis",
     "National Library",
     "Haji Lane",
     "Kampong Glam"
@@ -37,21 +38,24 @@
   "landmarks_translations": {
     "zh-Hans": [
       "武吉士交汇",
-      "武吉士+, BHG武吉士",
+      "武吉士+",
+      "BHG武吉士",
       "国家图书馆",
       "哈芝巷",
       "甘榜格南"
     ],
     "ms": [
       "Bugis Junction",
-      "Bugis+, BHG Bugis",
+      "Bugis+",
+      "BHG Bugis",
       "Perpustakaan Negara",
       "Haji Lane",
       "Kampong Glam"
     ],
     "ta": [
       "புகிஸ் ஜங்சன்",
-      "புகிஸ்+, BHG புகிஸ்",
+      "புகிஸ்+",
+      "BHG புகிஸ்",
       "தேசிய நூலகம்",
       "ஹாஜி வழி",
       "காம்போங் கிளாம்"

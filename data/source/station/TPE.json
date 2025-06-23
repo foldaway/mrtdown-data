@@ -16,30 +16,30 @@
   },
   "town": "Tampines",
   "town_translations": {
-    "zh-Hans": "淡宾尼",
+    "zh-Hans": "淡滨尼",
     "ms": "Tampines",
-    "ta": "கோதை"
+    "ta": "தெம்பினிஸ்"
   },
   "landmarks": [
     "Tampines Mall",
     "Century Square",
-    "Tampines Hub"
+    "Our Tampines Hub"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "淡宾尼购物中心",
+      "淡滨尼广场",
       "世纪广场",
-      "淡宾尼中心"
+      "淡滨尼天地"
     ],
     "ms": [
       "Pusat membeli-belah Tampines",
-      "Square Abad",
-      "Pusat Tampines"
+      "Century Square",
+      "Our Tampines Hub"
     ],
     "ta": [
       "தம்பினஸ் மால்",
-      "சேந்திரிய் சதுக்கா",
-      "தம்பினஸ் மஹால்"
+      "செஞ்சுரி சதுக்கம்",
+      "Our Tampines Hub"
     ]
   },
   "geo": {

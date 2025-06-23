@@ -38,26 +38,26 @@
     "Singapore General Hospital",
     "Maxwell Food Centre",
     "Chinatown",
-    "Thaipusam Temple"
+    "Sri Mariamman Temple"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "新加坡中央医院",
       "麦士威熟食中心",
-      "唐人街",
-      "泰米尔节寺庙"
+      "牛车水",
+      "马里安曼兴都庙"
     ],
     "ms": [
       "Hospital Umum Singapura",
       "Pusat Makanan Maxwell",
       "Chinatown",
-      "Kuil Thaipusam"
+      "Kuil Sri Mariamman"
     ],
     "ta": [
       "சிங்கப்பூர் பொது மருத்துவமனை",
       "மெக்செல் உணவு மையம்",
-      "சீன்காட்டை",
-      "தைபூசம் ஆலயம்"
+      "சீன நகரம்",
+      "ஸ்ரீ மரியம்மன் கோயில்"
     ]
   },
   "geo": {

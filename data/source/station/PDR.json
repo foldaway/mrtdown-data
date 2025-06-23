@@ -17,29 +17,21 @@
   "town": "Jurong East",
   "town_translations": {
     "zh-Hans": "裕廊东",
-    "ms": "Jurong Timur",
+    "ms": "Jurong East",
     "ta": "ஜூரோங் கிழக்கு"
   },
   "landmarks": [
-    "Pandan Reservoir",
-    "Jurong Eco-Garden",
-    "Singapore Discovery Centre"
+    "Pandan Reservoir"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "潘丹水库",
-      "裕廊生态花园",
-      "新加坡探索中心"
+      "班丹蓄水池"
     ],
     "ms": [
-      "Tasek Pandan",
-      "Taman Ekologi Jurong",
-      "Pusat Penemuan Singapura"
+      "Tasek Pandan"
     ],
     "ta": [
-      "பாண்டான் கண்ணீர்",
-      "ஜூரோங் எக்கோ-வானோகம்",
-      "சிங்கப்பூர் கண்டுபிடிப்பு மையம்"
+      "பாண்டன் ரெசவோர்"
     ]
   },
   "geo": {

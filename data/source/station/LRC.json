@@ -22,24 +22,20 @@
   },
   "landmarks": [
     "Chuan Park",
-    "Nanyang Junior College",
-    "Bishan Park"
+    "Nanyang Junior College"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "川园",
-      "南洋初级学院",
-      "碧山公园"
+      "南洋初级学院"
     ],
     "ms": [
       "Taman Chuan",
-      "Kolej Menengah Nanyang",
-      "Taman Bishan"
+      "Kolej Nanyang"
     ],
     "ta": [
       "சுவான் பூங்கா",
-      "நான்யாங்க் கல்லூரி",
-      "பிட்சன் பூங்கா"
+      "நான்யாங்க் கல்லூரி"
     ]
   },
   "geo": {

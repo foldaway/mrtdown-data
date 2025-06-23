@@ -22,24 +22,20 @@
   },
   "landmarks": [
     "Yio Chu Kang Stadium",
-    "Singapore American School",
-    "Yishun Industrial Park"
+    "Singapore American School"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "义顺体育馆",
-      "新加坡美国学校",
-      "义顺工业园"
+      "杨厝港体育场",
+      "新加坡美国学校"
     ],
     "ms": [
       "Stadium Yio Chu Kang",
-      "Sekolah Amerika Syarikat Singapura",
-      "Taman Industir Yishun"
+      "Sekolah Amerika Syarikat Singapura"
     ],
     "ta": [
-      "யியோச் ஆங்கில் ஸ்டேடியம்",
-      "சிங்கப்பூர் அமெரிக்கா பள்ளி",
-      "யிஷுன் தொழில்துறை பூங்கா"
+      "யியோ சூ காங் ஸ்டேடியம்",
+      "சிங்கப்பூர் அமெரிக்கப் பள்ளி"
     ]
   },
   "geo": {

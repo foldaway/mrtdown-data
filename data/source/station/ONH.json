@@ -16,9 +16,9 @@
   },
   "town": "Queenstown",
   "town_translations": {
-    "zh-Hans": "昆士敦",
+    "zh-Hans": "皇后镇",
     "ms": "Queenstown",
-    "ta": "குவீன்ஸ்டவ்ன்"
+    "ta": "குவீன்ஸ்டவுன்"
   },
   "landmarks": [
     "Fusionopolis",
@@ -27,9 +27,9 @@
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "融合科技园",
-      "生物湾",
-      "媒体园区"
+      "纬壹科技城",
+      "生物城",
+      "媒体城"
     ],
     "ms": [
       "Fusionopolis",

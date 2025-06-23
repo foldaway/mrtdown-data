@@ -25,11 +25,11 @@
   "town_translations": {
     "zh-Hans": "碧山",
     "ms": "Bishan",
-    "ta": "பிஸான்"
+    "ta": "பிஷான்"
   },
   "landmarks": [
     "Bishan Park",
-    "Singapore Pool Bishan",
+    "Singapore Pools Bishan",
     "Bishan Junction 8"
   ],
   "landmarks_translations": {
@@ -40,13 +40,13 @@
     ],
     "ms": [
       "Taman Bishan",
-      "Singapore Pool Bishan",
+      "Singapore Pools Bishan",
       "Junction 8 Bishan"
     ],
     "ta": [
       "பிஷான் பூங்கா",
-      "சிங்கப்பூர் பூல் பிஷான்",
-      "ஜங்க்ஷன் 8 பிஷான்"
+      "சிங்கப்பூர் பூல்ஸ் பிஷான்",
+      "ஜங்ஷன் 8 பிஷான்"
     ]
   },
   "geo": {

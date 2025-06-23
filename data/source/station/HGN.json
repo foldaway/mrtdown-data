@@ -30,23 +30,23 @@
   "landmarks": [
     "Hougang Mall",
     "Hougang Sports Hall",
-    "Kovan Heartland Mall"
+    "The Village @ Serangoon"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "后港购物中心",
       "后港体育馆",
-      "高文心脏地带购物中心"
+      "实龙岗村"
     ],
     "ms": [
       "Pusat Membeli-belah Hougang",
       "Dewan Sukan Hougang",
-      "Pusat Komuniti Kovan"
+      "The Village @ Serangoon"
     ],
     "ta": [
       "ஹவ்காங் மால்",
       "ஹவ்காங் விளையாட்டு மண்டபம்",
-      "கோவான் ஹார்ட்லேண்ட் மால்"
+      "தி வில்லேஜ் @ செராங்கூன்"
     ]
   },
   "geo": {

@@ -21,24 +21,24 @@
     "ta": "கெய்லாங்"
   },
   "landmarks": [
-    "Geylang Serai",
+    "Geylang Serai Market",
     "Dakota Crescent",
     "Singapore Sports Hub"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "芽笼士乃",
-      "达科他滨",
+      "芽笼士乃市场",
+      "达科他弯",
       "新加坡体育中心"
     ],
     "ms": [
-      "Geylang Serai",
+      "Pasar Geylang Serai",
       "Dakota Crescent",
       "Pusat Sukan Singapura"
     ],
     "ta": [
-      "கெய்லாங் செரை",
-      "டக்கோட்டா சொருதி",
+      "கெய்லாங் செரை சந்தை",
+      "டக்கோட்டா கிரசென்ட்",
       "சிங்கப்பூர் விளையாட்டு மையம்"
     ]
   },

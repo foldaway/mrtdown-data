@@ -21,21 +21,17 @@
     "ta": "புக்கிட் பாட்டோக்"
   },
   "landmarks": [
-    "Dairy Farm Nature Park",
-    "The Rain Vortex"
+    "Dairy Farm Nature Park"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "奶牛农场自然公园",
-      "雨漩涡"
+      "奶牛农场自然公园"
     ],
     "ms": [
-      "Taman Alam Dairy Farm",
-      "Pusaran Hujan"
+      "Taman Alam Dairy Farm"
     ],
     "ta": [
-      "டெயிரி பண்ணை இயற்கை பூங்கா",
-      "மழை சுழல்"
+      "டெயிரி பண்ணை இயற்கை பூங்கா"
     ]
   },
   "geo": {

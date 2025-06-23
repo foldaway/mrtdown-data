@@ -21,25 +21,37 @@
     "ta": "பயனியர்"
   },
   "landmarks": [
-    "Jurong Hill",
-    "Chinese Garden",
-    "Jurong Lake Gardens"
+    "Tuas Fire Station",
+    "JTC Space @ Tuas",
+    "Mapletree Pioneer Logistic Hub",
+    "Gul Circle Industrial Estate",
+    "Pioneer Sector 1",
+    "Tuas Mega Port"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "裕廊山",
-      "中国花园",
-      "裕廊湖花园"
+      "杜势消防局",
+      "JTC 空间 @ 杜势",
+      "嘉里物流先锋中心",
+      "古楼工业区",
+      "先锋第一区",
+      "裕涛超级港口"
     ],
     "ms": [
-      "Bukit Jurong",
-      "Taman Cina",
-      "Taman Danau Jurong"
+      "Balai Bomba Tuas",
+      "Ruang JTC @ Tuas",
+      "Hab Logistik Mapletree Pioneer",
+      "Kawasan Perindustrian Gul Circle",
+      "Sektor Pioneer 1",
+      "Pelabuhan Mega Tuas"
     ],
     "ta": [
-      "ஜுரொங் மலை",
-      "சீனக் கிழமை",
-      "ஜுரொங் ஏரி தோட்டங்கள்"
+      "துவாஸ் தீயணைப்பு நிலையம்",
+      "JTC துவாஸ் இடம்",
+      "மேப்லெட்ரி பயனியர் லாஜிஸ்டிக் ஹப்",
+      "குல் சர்க்கிள் தொழிற்பேட்டை",
+      "பயனியர் பிரிவு 1",
+      "துவாஸ் மெகா துறைமுகம்"
     ]
   },
   "geo": {

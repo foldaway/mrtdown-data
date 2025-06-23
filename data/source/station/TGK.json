@@ -16,30 +16,30 @@
   },
   "town": "Tengah",
   "town_translations": {
-    "zh-Hans": "中央",
+    "zh-Hans": "登加",
     "ms": "Tengah",
     "ta": "தெங்கா"
   },
   "landmarks": [
-    "Tengah Park",
-    "Tengah Garden",
-    "Forest Town"
+    "Central Observation Tower",
+    "Tengah Pond",
+    "Tengah Community Hub"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "中央公园",
-      "中央花园",
-      "森林城镇"
+      "中央观景塔",
+      "登加池",
+      "登加社区中心"
     ],
     "ms": [
-      "Taman Tengah",
-      "Kebun Tengah",
-      "Kota Hutan"
+      "Menara Pemerhatian Pusat",
+      "Kolam Tengah",
+      "Hab Komuniti Tengah"
     ],
     "ta": [
-      "தெங்கா பூங்கா",
-      "தெங்கா தோட்டம்",
-      "காடாக்களை"
+      "மைய கண்காணிப்பு கோபுரம்",
+      "தெங்கா குளம்",
+      "தெங்கா சமூக மையம்"
     ]
   },
   "geo": {

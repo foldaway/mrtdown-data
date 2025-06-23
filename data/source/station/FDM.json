@@ -19,7 +19,7 @@
   "town_translations": {
     "zh-Hans": "滨海东",
     "ms": "Marina East",
-    "ta": "மரினா இஸ்ரா"
+    "ta": "மரினா ஈஸ்ட்"
   },
   "landmarks": [
     "Marina Bay Sands",
@@ -34,12 +34,12 @@
     ],
     "ms": [
       "Marina Bay Sands",
-      "Esplanade",
+      "The Esplanade",
       "Gardens by the Bay"
     ],
     "ta": [
-      "மரினா பே செய்தி",
-      "எஸ்பிளனேட்",
+      "மரினா பே சாண்ட்ஸ்",
+      "தி எஸ்ப்லனேட்",
       "கார்டன்ஸ் பை தி பே"
     ]
   },

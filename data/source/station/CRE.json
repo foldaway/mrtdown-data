@@ -16,7 +16,7 @@
   },
   "town": "Punggol",
   "town_translations": {
-    "zh-Hans": "根荫",
+    "zh-Hans": "榜鹅",
     "ms": "Punggol",
     "ta": "புங்க்கொல்"
   },
@@ -27,15 +27,15 @@
   "landmarks_translations": {
     "zh-Hans": [
       "珊瑚边社区中心",
-      "根荫水道公园"
+      "榜鹅水道公园"
     ],
     "ms": [
       "Pusat Komuniti Coral Edge",
       "Taman Laluan Air Punggol"
     ],
     "ta": [
-      "கோறல் எட்கம்யூனிட்டி மையம்",
-      "புங்க்கொல் நீரின் பாதை பூங்கா"
+      "கோறல் எட்ஜ் சமூக மையம்",
+      "புங்க்கொல் நீர்வழிப் பூங்கா"
     ]
   },
   "geo": {

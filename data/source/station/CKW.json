@@ -16,30 +16,26 @@
   },
   "town": "Choa Chu Kang",
   "town_translations": {
-    "zh-Hans": "兀兰",
+    "zh-Hans": "蔡厝港",
     "ms": "Choa Chu Kang",
     "ta": "சோவா சு கண்க்"
   },
   "landmarks": [
     "Lot One Shoppers' Mall",
-    "Choa Chu Kang Park",
-    "Sembawang Hills Food Centre"
+    "Choa Chu Kang Park"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "乐一购物中心",
-      "兀兰公园",
-      "三巴旺山食品中心"
+      "蔡厝港公园"
     ],
     "ms": [
       "Lot One Shoppers' Mall",
-      "Taman Cho Chu Kang",
-      "Sembawang Hills Food Centre"
+      "Taman Choa Chu Kang"
     ],
     "ta": [
       "லாட் ஒன் ஷாப்பர்ஸ்' மால்",
-      "சோவா சு கண்க் பூங்கா",
-      "செம்பவாங்க் ஹில் உணவுக்கூடம்"
+      "சோவா சு கண்க் பூங்கா"
     ]
   },
   "geo": {

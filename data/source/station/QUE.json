@@ -21,25 +21,25 @@
     "ta": "க்வீன்ஸ்டவுன்"
   },
   "landmarks": [
-    "Queenstown Shopping Centre",
+    "Queenstown Stadium",
     "Alexandra Hospital",
-    "Anchorpoint"
+    "Anchorpoint Shopping Centre"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "女皇镇购物中心",
+      "女皇镇体育场",
       "亚历山大医院",
-      "Anchorpoint"
+      "Anchorpoint 购物中心"
     ],
     "ms": [
-      "Queenstown Shopping Centre",
+      "Stadium Queenstown",
       "Hospital Alexandra",
-      "Anchorpoint"
+      "Pusat Beli-belah Anchorpoint"
     ],
     "ta": [
-      "க்வீனஸ்டவுன் ஷாப்பிங் சென்டர்",
+      "குவீன்ஸ்டவுன் ஸ்டேடியம்",
       "அலெக்சாண்ட்ரா மருத்துவமனை",
-      "Anchorpoint"
+      "ஆங்கர்பாயிண்ட் ஷாப்பிங் சென்டர்"
     ]
   },
   "geo": {

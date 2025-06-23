@@ -16,26 +16,22 @@
   },
   "town": "Bukit Timah",
   "town_translations": {
-    "zh-Hans": "巴耶利峇",
+    "zh-Hans": "武吉知马",
     "ms": "Bukit Timah",
     "ta": "பகிட் திமா"
   },
   "landmarks": [
-    "Botanic Gardens",
-    "National Orchid Garden"
+    "Singapore Botanic Gardens"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "新加坡植物园",
-      "国家兰花园"
+      "新加坡植物园"
     ],
     "ms": [
-      "Taman Botani Singapura",
-      "Taman Orkid Kebangsaan"
+      "Taman Botani Singapura"
     ],
     "ta": [
-      "சிங்கப்பூர் பூங்கா",
-      "அரசு ஆடை பூங்கா"
+      "சிங்கப்பூர் தாவரவியல் பூங்கா"
     ]
   },
   "geo": {

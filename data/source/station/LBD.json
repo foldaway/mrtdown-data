@@ -22,24 +22,24 @@
   },
   "landmarks": [
     "Labrador Nature Reserve",
-    "Alexandra Arch",
-    "Berlayer Creek"
+    "Labrador Battery",
+    "Labrador Villa"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "拉布拉多自然保护区",
-      "亚历山卓拱门",
-      "贝雷尔溪"
+      "拉布拉多炮台",
+      "拉布拉多别墅"
     ],
     "ms": [
       "Taman Semula Jadi Labrador",
-      "Arch Alexandra",
-      "Kali Berlayer"
+      "Bateri Labrador",
+      "Villa Labrador"
     ],
     "ta": [
       "லாப்ரடார் இயற்கை பாதுகாப்பு மையம்",
-      "அலெக்சான்ட்ரா கோல்ட்",
-      "பெலயர் கதவு"
+      "லாப்ரடார் பாட்டரி",
+      "லாப்ரடார் வில்லா"
     ]
   },
   "geo": {

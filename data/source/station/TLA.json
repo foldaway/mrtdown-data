@@ -23,23 +23,27 @@
   "landmarks": [
     "Thian Hock Keng Temple",
     "Asia Square",
-    "The Arts House"
+    "The Arts House",
+    "Maxwell Food Centre"
   ],
   "landmarks_translations": {
     "zh-Hans": [
       "天福宫",
       "亚洲广场",
-      "艺术馆"
+      "艺术之家",
+      "麦士威熟食中心"
     ],
     "ms": [
       "Kuil Thian Hock Keng",
       "Asia Square",
-      "The Arts House"
+      "The Arts House",
+      "Pusat Penjaja Maxwell"
     ],
     "ta": [
-      "தியான்பொகவில் கேங் கோவில்",
-      "ஆசியா ஸ்க்வையர்",
-      "அதிக அதிகாரப் பணி"
+      "தியான் பொக் கேங் கோயில்",
+      "ஆசியா சதுக்கம்",
+      "கலைகள் இல்லம்",
+      "மேக்ஸ்வெல் உணவு மையம்"
     ]
   },
   "geo": {

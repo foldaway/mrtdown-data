@@ -21,25 +21,21 @@
     "ta": "குயின்ஸ்டவுன்"
   },
   "landmarks": [
-    "HortPark",
-    "Pasir Panjang Fairview",
-    "Alexandra Shipyard"
+    "Pasir Panjang Wholesale Centre",
+    "Mapletree Business City"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "花园公园",
-      "巴西班让景观",
-      "亚历山大船厂"
+      "巴西班让批发中心",
+      "丰树商业城"
     ],
     "ms": [
-      "Taman Hort",
-      "Fairview Pasir Panjang",
-      "Kilang Kapal Alexandra"
+      "Pusat Borong Pasir Panjang",
+      "Mapletree Business City"
     ],
     "ta": [
-      "ஹார்ட் பார்க்",
-      "பசிர் பஞ்சாங் ஃபேர்வியூ",
-      "அலெக்சாண்ட்ரா கப்பல் கைத்தொழில்"
+      "பாசிர் பாஞ்சாங் மொத்த விற்பனை மையம்",
+      "மேப்லெட்ரீ வணிக நகரம்"
     ]
   },
   "geo": {

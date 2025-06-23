@@ -30,9 +30,9 @@
   },
   "town": "Punggol",
   "town_translations": {
-    "zh-Hans": "朋河",
+    "zh-Hans": "榜鹅",
     "ms": "Punggol",
-    "ta": "புங்க் கோல்"
+    "ta": "புங்கோல்"
   },
   "landmarks": [
     "Punggol Waterway Park",
@@ -41,9 +41,9 @@
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "朋河溪公园",
-      "朋河角",
-      "朋河码头乡村俱乐部"
+      "榜鹅水道公园",
+      "榜鹅角",
+      "榜鹅滨海乡村俱乐部"
     ],
     "ms": [
       "Taman Sungai Punggol",
@@ -51,9 +51,9 @@
       "Kelab Negara Marina Punggol"
     ],
     "ta": [
-      "புங்க் கோல் நீர்கள்ளற்றி மலை",
-      "புங்க் கோள் பாய்ழ்",
-      "புங்க் கோள் Marina Country Club"
+      "Punggol Waterway Park",
+      "Punggol Point",
+      "Punggol Marina Country Club"
     ]
   },
   "geo": {

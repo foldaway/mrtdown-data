@@ -21,25 +21,17 @@
     "ta": "புக்கிட் திமா"
   },
   "landmarks": [
-    "Hwa Chong Institution",
-    "Nanyang Girls' High School",
-    "Holland Village"
+    "Nanyang Girls' High School"
   ],
   "landmarks_translations": {
     "zh-Hans": [
-      "华侨中学",
-      "南洋女中",
-      "荷兰村"
+      "南洋女中"
     ],
     "ms": [
-      "Hwa Chong Institution",
-      "Sekolah Menengah Perempuan Nanyang",
-      "Kampung Holland"
+      "Nanyang Girls' High School"
     ],
     "ta": [
-      "ஹ்வா செயாங் நிறுவனத்திற்கு",
-      "நன்யாங் பெண்கள் உயர்நிலை பள்ளி",
-      "ஹோலண்ட் கிராமம்"
+      "நன்யாங் பெண்கள் உயர்நிலை பள்ளி"
     ]
   },
   "geo": {

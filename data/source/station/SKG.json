@@ -25,7 +25,7 @@
   "town_translations": {
     "zh-Hans": "盛港",
     "ms": "Sengkang",
-    "ta": "செங்காங்கு"
+    "ta": "செங்காங்"
   },
   "landmarks": [
     "Sengkang Riverside Park",
@@ -40,21 +40,21 @@
       "Compass One",
       "Seletar Mall",
       "Anchorvale 公园",
-      "丰盛水道公园"
+      "丰盛港水道公园"
     ],
     "ms": [
       "Taman Sungai Sengkang",
       "Compass One",
       "Seletar Mall",
       "Taman Anchorvale",
-      "Taman Air Punggol"
+      "Taman Punggol Waterway"
     ],
     "ta": [
-      "சேங்காங்கு நீர்வழி பூங்கா",
+      "சேங்காங் நதிக்கரை பூங்கா",
       "Compass One",
       "செலட்டர் மால்",
       "ஆங்கர்வேல் பூங்கா",
-      "புங்கொல் நீர்வழி பூங்கா"
+      "புங்கோல் நீர்வழி பூங்கா"
     ]
   },
   "geo": {
