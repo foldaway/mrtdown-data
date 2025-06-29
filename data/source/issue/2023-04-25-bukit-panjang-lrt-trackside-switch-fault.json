@@ -1,6 +1,11 @@
 {
   "id": "2023-04-25-bukit-panjang-lrt-trackside-switch-fault",
   "title": "Trackside switch fault causing service disruption on Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "路边开关故障导致蔡厝港轻轨服务中断",
+    "ms": "Kerosakan suis tepi trek menyebabkan gangguan perkhidmatan di LRT Bukit Panjang",
+    "ta": "Bukit Panjang LRT இல் சேவை இடையூறுக்கு காரணமான தடவிளக்கு தவறு"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

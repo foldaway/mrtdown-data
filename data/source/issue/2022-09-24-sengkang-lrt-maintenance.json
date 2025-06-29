@@ -1,12 +1,21 @@
 {
   "id": "2022-09-24-sengkang-lrt-maintenance",
   "title": "Sengkang LRT Maintenance Works on 24 & 25 September",
-  "componentIdsAffected": ["SKLRT"],
+  "title_translations": {
+    "zh-Hans": "Sengkang LRT 维修工作于 9 月 24 日和 25 日",
+    "ms": "Kerja Penyelenggaraan Sengkang LRT pada 24 & 25 September",
+    "ta": "Sengkang LRT பராமரிப்புப் பணிகள் செப்டம்பர் 24 & 25"
+  },
+  "componentIdsAffected": [
+    "SKLRT"
+  ],
   "startAt": "2022-09-24T00:00:00.000+08:00",
   "endAt": "2022-09-26T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": ["track.work"],
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -34,7 +43,14 @@
     {
       "componentId": "SKLRT",
       "branchName": "east",
-      "stationIds": ["SKG", "CPV", "RMB", "BAK", "KGK", "RNG"]
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK",
+        "RNG"
+      ]
     }
   ]
 }

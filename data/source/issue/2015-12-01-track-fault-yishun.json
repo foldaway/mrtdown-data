@@ -1,6 +1,11 @@
 {
   "id": "2015-12-01-track-fault-yishun",
   "title": "Track fault reported at Yishun",
+  "title_translations": {
+    "zh-Hans": "Yishun 轨道故障已报告",
+    "ms": "Ralat trek dilaporkan di Yishun",
+    "ta": "யிஷுனில் தடப் பிழை புகாரளிக்கப்பட்டது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

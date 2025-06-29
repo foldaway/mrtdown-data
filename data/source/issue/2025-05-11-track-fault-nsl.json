@@ -1,6 +1,11 @@
 {
   "id": "2025-05-11-track-fault-nsl",
   "title": "Track Fault on the North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线轨道故障",
+    "ms": "Jejak Kesalahan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் பிழை கண்டறிதல்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

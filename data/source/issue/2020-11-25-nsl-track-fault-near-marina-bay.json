@@ -1,6 +1,11 @@
 {
   "id": "2020-11-25-nsl-track-fault-near-marina-bay",
   "title": "Track fault near Marina Bay causing delays",
+  "title_translations": {
+    "zh-Hans": "Marina Bay附近轨道故障导致延误",
+    "ms": "Kesalahan trek berhampiran Marina Bay menyebabkan kelewatan",
+    "ta": "மரீனா பேக்கு அருகில் பாதை தவறுவதால் தாமதம் ஏற்படுகிறது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

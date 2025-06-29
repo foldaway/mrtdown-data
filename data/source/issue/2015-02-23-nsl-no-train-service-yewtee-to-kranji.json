@@ -1,6 +1,11 @@
 {
   "id": "2015-02-23-nsl-no-train-service-yewtee-to-kranji",
   "title": "No train service from Yew Tee to Kranji",
+  "title_translations": {
+    "zh-Hans": "裕廊西至克兰芝 no train service",
+    "ms": "Tiada perkhidmatan kereta api dari Yew Tee ke Kranji",
+    "ta": "Yew Tee முதல் Kranji வரை ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

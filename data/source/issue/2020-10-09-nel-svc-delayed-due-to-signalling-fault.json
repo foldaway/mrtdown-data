@@ -1,6 +1,11 @@
 {
   "id": "2020-10-09-nel-svc-delayed-due-to-signalling-fault",
   "title": "North East Line service disruption due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "东北线因信号故障导致服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Timur Laut kerana kerosakan isyarat",
+    "ta": "சிக்னல் கோளாறு காரணமாக வடகிழக்கு வரிசை சேவை தடைபட்டது"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

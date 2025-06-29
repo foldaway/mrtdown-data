@@ -1,6 +1,11 @@
 {
   "id": "2015-10-23-no-dtl-service-between-bgs-dt14-and-cnt-dt19",
   "title": "No Downtown Line service between Bugis DT14 and Chinatown DT19",
+  "title_translations": {
+    "zh-Hans": "勿洛和牛车水之间没有市中心线的服务",
+    "ms": "Tiada perkhidmatan Laluan Downtown antara Bugis DT14 dan Chinatown DT19",
+    "ta": "பூகஸ் DT14 மற்றும் சைனாடவுன் DT19 இடையே டவுன்டவுன் லைனில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

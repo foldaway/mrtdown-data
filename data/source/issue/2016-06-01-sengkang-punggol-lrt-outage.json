@@ -1,6 +1,11 @@
 {
   "id": "2016-06-01-sengkang-punggol-lrt-outage",
   "title": "LRT services disrupted on Sengkang & Punggol due to power fault",
+  "title_translations": {
+    "zh-Hans": "由于电力故障，盛港和榜鹅轻轨服务中断",
+    "ms": "Perkhidmatan LRT terganggu di Sengkang & Punggol akibat gangguan kuasa",
+    "ta": "சக்தி தவறு காரணமாக செங்காங் & பு ponggol இல் LRT சேவைகள் பாதிக்கப்பட்டுள்ளன"
+  },
   "componentIdsAffected": [
     "PGLRT",
     "SKLRT"

@@ -1,6 +1,11 @@
 {
   "id": "2013-05-12-ewl-train-fault",
   "title": "Train Fault Impacting Service Between Kembangan and Eunos",
+  "title_translations": {
+    "zh-Hans": "列车故障影响榜鹅与樟宜机场之间服务",
+    "ms": "Gangguan Kereta Api Mempengaruhi Perkhidmatan Antara Kembangan dan Eunos",
+    "ta": "கெம்பாங்கன் மற்றும் யூனோஸ் இடையே சேவையை பாதிக்கும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2019-04-02-bplrt-train-fault-service-interruption",
   "title": "Train service disruption between Choa Chu Kang and Bukit Panjang stations",
+  "title_translations": {
+    "zh-Hans": "蔡厝港和武吉班让站之间列车服务中断",
+    "ms": "Gangguan perkhidmatan kereta api antara stesen Choa Chu Kang dan Bukit Panjang",
+    "ta": "சோவா சூ காங் மற்றும் புக்கிட் பாஞ்சாங் நிலையங்களுக்கு இடையே ரயில் சேவை தடங்கல்"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

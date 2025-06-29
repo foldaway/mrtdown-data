@@ -1,6 +1,11 @@
 {
   "id": "2016-11-04-ccl-no-mobile-signals",
   "title": "Temporary Suspension of Telco signals on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线电信信号临时暂停",
+    "ms": "Pengecualian Sementara isyarat telekomunikasi di Laluan Lingkaran",
+    "ta": "வட்டப் பாதையில் டெலிகாம் சிக்னல்களுக்கு தற்காலிக இடைநீக்கம்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

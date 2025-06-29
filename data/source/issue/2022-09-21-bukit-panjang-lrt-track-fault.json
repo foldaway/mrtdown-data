@@ -1,6 +1,11 @@
 {
   "id": "2022-09-21-bukit-panjang-lrt-track-fault",
   "title": "Track Fault at Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "Bukit Panjang LRT 故障追踪",
+    "ms": "Jejak Kerosakan di Bukit Panjang LRT",
+    "ta": "Bukit Panjang LRT இல் தடமறிதல்"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

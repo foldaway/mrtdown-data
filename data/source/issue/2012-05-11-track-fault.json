@@ -1,6 +1,11 @@
 {
   "id": "2012-05-11-track-fault",
   "title": "Service disruption due to track fault",
+  "title_translations": {
+    "zh-Hans": "轨道故障导致服务中断",
+    "ms": "Gangguan perkhidmatan kerana kerosakan trek",
+    "ta": "தடக் கோளாறு காரணமாக சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2016-04-21-nsl-no-train-service",
   "title": "No train service on NSL",
+  "title_translations": {
+    "zh-Hans": "NSL 无列车服务",
+    "ms": "Tiada perkhidmatan kereta di NSL",
+    "ta": "NSL இல் ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

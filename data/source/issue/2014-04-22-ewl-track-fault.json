@@ -1,6 +1,11 @@
 {
   "id": "2014-04-22-ewl-track-fault",
   "title": "Track fault causing travel delays between Joo Koon and Boon Lay",
+  "title_translations": {
+    "zh-Hans": "裕廊湖站至文礼站之间的轨道故障导致行程延误",
+    "ms": "Jalur rosak menyebabkan kelewatan perjalanan antara Joo Koon dan Boon Lay",
+    "ta": "ஜூ கூன் மற்றும் பூன் லே இடையே பயண தாமதத்தை ஏற்படுத்தும் பாதை தவறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2016-11-03-ccl-intermittent-signal-interference",
   "title": "CCL trains experiencing delays due to signal interference",
+  "title_translations": {
+    "zh-Hans": "CCL列车因信号干扰而延误",
+    "ms": "Kereta CCL mengalami kelewatan kerana gangguan isyarat",
+    "ta": "சிக்னல் குறுக்கீடு காரணமாக CCL ரயில்கள் தாமதமாகின்றன"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2012-06-11-trains-moving-slower",
   "title": "Service disruption between Paya Lebar and Bedok",
+  "title_translations": {
+    "zh-Hans": "Paya Lebar 和 Bedok 之间的服务中断",
+    "ms": "Gangguan perkhidmatan antara Paya Lebar dan Bedok",
+    "ta": "Paya Lebar மற்றும் Bedok இடையே சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

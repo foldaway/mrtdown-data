@@ -1,6 +1,11 @@
 {
   "id": "2017-01-13-track-fault-NSL",
   "title": "Track fault causing service delay",
+  "title_translations": {
+    "zh-Hans": "轨道故障导致服务延误",
+    "ms": "Gangguan trek menyebabkan kelewatan perkhidmatan",
+    "ta": "சேவை தாமதத்தை ஏற்படுத்தும் பாதை தவறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

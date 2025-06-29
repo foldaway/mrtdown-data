@@ -1,6 +1,11 @@
 {
   "id": "2022-01-08-track-signal-fault-choa-chu-kang-lrt",
   "title": "Track Signal Fault at Choa Chu Kang LRT Station",
+  "title_translations": {
+    "zh-Hans": "蔡厝港轻轨站发生列车信号故障",
+    "ms": "Ralat Isyarat Trek di Stesen LRT Choa Chu Kang",
+    "ta": "சோவா சு சுக் காங் LRT நிலையத்தில் ரயில் சமிக்ஞை தவறு"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2018-08-18-track-fault-tampines-pasirris",
   "title": "Track fault causing delays between Tampines and Pasir Ris",
+  "title_translations": {
+    "zh-Hans": "Tampines和Pasir Ris之间的轨道故障导致延误",
+    "ms": "Kesalahan trek menyebabkan kelewatan antara Tampines dan Pasir Ris",
+    "ta": "Tampines மற்றும் Pasir Ris இடையே தாமதத்தை ஏற்படுத்தும் தடப் பிழை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

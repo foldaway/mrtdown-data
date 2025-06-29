@@ -1,6 +1,11 @@
 {
   "id": "2022-05-12-bukit-panjang-lrt-train-fault",
   "title": "Train Fault on Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "武吉班让轻轨列车故障",
+    "ms": "Kerosakan Kereta Api di LRT Bukit Panjang",
+    "ta": "புக்ிட் பாஞ்சாங் LRT இல் ரயில் பழுது"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

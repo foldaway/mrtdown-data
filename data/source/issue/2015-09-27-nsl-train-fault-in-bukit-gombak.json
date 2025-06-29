@@ -1,6 +1,11 @@
 {
   "id": "2015-09-27-nsl-train-fault-in-bukit-gombak",
   "title": "Train fault reported on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线上报告列车故障",
+    "ms": "Kerosakan kereta dilaporkan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் ரயில் பழுது அறிவிக்கப்பட்டது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

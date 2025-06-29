@@ -1,6 +1,11 @@
 {
   "id": "2018-05-18-ewl-train-fault",
   "title": "Major disruption on East West Line due to train fault",
+  "title_translations": {
+    "zh-Hans": "火车故障导致东西线大面积中断",
+    "ms": "Gangguan besar di Laluan Timur Barat kerana kerosakan kereta api",
+    "ta": "ரயில் கோளாறு காரணமாக கிழக்கு மேற்கு பாதையில் பெரும் இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

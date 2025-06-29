@@ -1,6 +1,11 @@
 {
   "id": "2016-06-22-no-svc-on-punggol-lrt-due-to-power-fault",
   "title": "Service disruption on Punggol LRT due to power fault",
+  "title_translations": {
+    "zh-Hans": "榜鹅轻轨因电力故障导致服务中断",
+    "ms": "Gangguan perkhidmatan di Punggol LRT disebabkan oleh masalah kuasa",
+    "ta": "Punggol LRT இல் மின்சாரக் கோளாறு காரணமாக சேவை தடைப்பட்டது"
+  },
   "componentIdsAffected": [
     "PGLRT"
   ],

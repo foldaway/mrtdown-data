@@ -1,6 +1,11 @@
 {
   "id": "2020-02-08-sengkang-punggol-lrt-service-disruption",
   "title": "Service disruption on Sengkang-Punggol LRT systems due to a power fault",
+  "title_translations": {
+    "zh-Hans": "由于电力故障，盛港-榜鹅轻轨系统服务中断",
+    "ms": "Gangguan perkhidmatan di sistem LRT Sengkang-Punggol akibat kerosakan bekalan elektrik",
+    "ta": "சக்தி தவறு காரணமாக செங்காங்-புங்கோல் LRT அமைப்புகளில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "SKLRT",
     "PGLRT"

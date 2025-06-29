@@ -1,6 +1,11 @@
 {
   "id": "2012-07-25-train-fault-2",
   "title": "Train fault causing delays on southbound line",
+  "title_translations": {
+    "zh-Hans": "列车故障导致南行列车延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan di laluan selatan",
+    "ta": "ரயில் பழுது காரணமாக தெற்கு நோக்கி செல்லும் பாதையில் தாமதம்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

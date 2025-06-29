@@ -1,6 +1,11 @@
 {
   "id": "2015-03-30-bplrt-travel-delay",
   "title": "Additional Travel Time on Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "Bukit Panjang LRT 额外行程时间",
+    "ms": "Masa Perjalanan Tambahan di LRT Bukit Panjang",
+    "ta": "Bukit Panjang LRT இல் கூடுதல் பயண நேரம்"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

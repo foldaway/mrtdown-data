@@ -1,6 +1,11 @@
 {
   "id": "2017-12-12-dtl-svc-delayed",
   "title": "Downtown Line service disruption",
+  "title_translations": {
+    "zh-Hans": "市线服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Downtown",
+    "ta": "டவுன்டவுன் லைன் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

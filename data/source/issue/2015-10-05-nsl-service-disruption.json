@@ -1,6 +1,11 @@
 {
   "id": "2015-10-05-nsl-service-disruption",
   "title": "NSL service disruption",
+  "title_translations": {
+    "zh-Hans": "NSL 服务中断",
+    "ms": "Gangguan perkhidmatan NSL",
+    "ta": "NSL சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

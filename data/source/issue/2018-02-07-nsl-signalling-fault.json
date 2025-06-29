@@ -1,6 +1,11 @@
 {
   "id": "2018-02-07-nsl-signalling-fault",
   "title": "Signalling Fault on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线信号故障",
+    "ms": "Kerosakan Isyarat di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் சமிக்ஞை தவறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

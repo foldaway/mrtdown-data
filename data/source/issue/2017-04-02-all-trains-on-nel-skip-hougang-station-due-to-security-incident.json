@@ -1,6 +1,11 @@
 {
   "id": "2017-04-02-all-trains-on-nel-skip-hougang-station-due-to-security-incident",
   "title": "All trains on the NEL will skip NE14 Hougang Station due to a security incident",
+  "title_translations": {
+    "zh-Hans": "由于安全事件，NEL 的所有列车将跳过 NE14 后港站",
+    "ms": "Semua kereta di NEL akan melangkau Stesen NE14 Hougang kerana insiden keselamatan",
+    "ta": "பாதுகாப்பு சம்பவத்தின் காரணமாக NEL இல் உள்ள அனைத்து ரயில்களும் NE14 ஹௌகாங் நிலையத்தைத் தவிர்க்கும்"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

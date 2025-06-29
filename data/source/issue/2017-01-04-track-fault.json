@@ -1,6 +1,11 @@
 {
   "id": "2017-01-04-track-fault",
   "title": "Track fault causing delays on East West Line",
+  "title_translations": {
+    "zh-Hans": "восточное западное положение вызывает задержку на восточной западной линии",
+    "ms": "Ralat trek menyebabkan kelewatan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் தடப் பிழை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

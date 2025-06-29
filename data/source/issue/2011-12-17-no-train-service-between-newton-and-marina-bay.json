@@ -1,6 +1,11 @@
 {
   "id": "2011-12-17-no-train-service-between-newton-and-marina-bay",
   "title": "No train service between Newton and Marina Bay stations",
+  "title_translations": {
+    "zh-Hans": "牛顿站至滨海湾站之间无列车服务",
+    "ms": "Tiada perkhidmatan kereta api antara stesen Newton dan Marina Bay",
+    "ta": "நியூட்டன் மற்றும் மெரினா பே நிலையங்களுக்கு இடையில் ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2019-07-19-nel-maintenance-works",
   "title": "North East Line maintenance works",
+  "title_translations": {
+    "zh-Hans": "东北线维修工程",
+    "ms": "Kerja penyelenggaraan Laluan Timur Laut",
+    "ta": "வடக்கு கிழக்கு வரி பராமரிப்பு பணிகள்"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

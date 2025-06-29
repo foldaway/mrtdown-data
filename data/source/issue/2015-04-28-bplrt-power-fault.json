@@ -1,6 +1,11 @@
 {
   "id": "2015-04-28-bplrt-power-fault",
   "title": "Power fault affecting Bukit Panjang LRT services",
+  "title_translations": {
+    "zh-Hans": "宝龄蓝线轻轨服务受电力故障影响",
+    "ms": "Gangguan kuasa menjejaskan perkhidmatan LRT Bukit Panjang",
+    "ta": "புக் \nபங்கா LRT சேவைகளை பாதிக்கும் மின் தடங்கல்"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

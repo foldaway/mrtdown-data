@@ -1,6 +1,11 @@
 {
   "id": "2013-04-22-nsl-maintenance-work-woodlands-admiralty",
   "title": "Maintenance work on the North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线上的维护工作",
+    "ms": "Kerja penyelenggaraan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் பராமரிப்புப் பணி"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,12 +1,21 @@
 {
   "id": "2024-01-20-circle-line-station-maintenance",
   "title": "Circle Line station maintenance for Stage 6 integration",
-  "componentIdsAffected": ["CCL"],
+  "title_translations": {
+    "zh-Hans": "为6期整合进行环线车站维护",
+    "ms": "Penyelenggaraan stesen Circle Line untuk integrasi Peringkat 6",
+    "ta": "வட்டப் பாதையில் நிலை 6 ஒருங்கிணைப்புக்கான நிலையப் பராமரிப்பு"
+  },
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2024-01-20T00:00:00+08:00",
   "endAt": "2024-04-06T00:00:00+08:00",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": ["station.renovation"],
+  "subtypes": [
+    "station.renovation"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -25,7 +34,11 @@
     {
       "componentId": "CCL",
       "branchName": "main",
-      "stationIds": ["LBD", "TLB", "HBF"]
+      "stationIds": [
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
     }
   ]
 }

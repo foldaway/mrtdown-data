@@ -1,6 +1,11 @@
 {
   "id": "2013-11-01-train-service-delayed-between-jookoon-and-boonlay",
   "title": "Train service disruption between Joo Koon and Boon Lay",
+  "title_translations": {
+    "zh-Hans": "裕廊东和文礼之间的火车服务中断",
+    "ms": "Gangguan perkhidmatan kereta antara Joo Koon dan Boon Lay",
+    "ta": "ஜூ கூன் மற்றும் பூன் லே இடையே ரயில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

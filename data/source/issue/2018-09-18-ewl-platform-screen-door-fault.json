@@ -1,6 +1,11 @@
 {
   "id": "2018-09-18-ewl-platform-screen-door-fault",
   "title": "Platform screen door fault causing delays",
+  "title_translations": {
+    "zh-Hans": "站台门故障导致延误",
+    "ms": "Kerosakan pintu platform menyebabkan kelewatan",
+    "ta": "தள கதவு கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

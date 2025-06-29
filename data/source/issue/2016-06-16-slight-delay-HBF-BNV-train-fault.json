@@ -1,6 +1,11 @@
 {
   "id": "2016-06-16-slight-delay-HBF-BNV-train-fault",
   "title": "Slight delay from HBF to BNV due to train fault",
+  "title_translations": {
+    "zh-Hans": "由于火车故障，HBF至BNV轻微延误",
+    "ms": "Kelewatan sedikit dari HBF ke BNV kerana kerosakan kereta api",
+    "ta": "ரயில் கோளாறு காரணமாக HBF இலிருந்து BNV வரை தாமதம்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

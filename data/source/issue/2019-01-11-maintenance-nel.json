@@ -1,6 +1,11 @@
 {
   "id": "2019-01-11-maintenance-nel",
   "title": "Early service ending on North East Line due to maintenance",
+  "title_translations": {
+    "zh-Hans": "东北线因维护提前结束服务",
+    "ms": "Penghujung awal perkhidmatan di Laluan Timur Laut kerana penyelenggaraan",
+    "ta": "பராமரிப்பு காரணமாக வடகிழக்கு பாதையில் ஆரம்ப சேவை முடிவு"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

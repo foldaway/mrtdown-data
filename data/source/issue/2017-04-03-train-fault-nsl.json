@@ -1,6 +1,11 @@
 {
   "id": "2017-04-03-train-fault-nsl",
   "title": "Train fault causing delays on North-South Line",
+  "title_translations": {
+    "zh-Hans": "北南线列车故障导致延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan North-South",
+    "ta": "வடக்கு-தெற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

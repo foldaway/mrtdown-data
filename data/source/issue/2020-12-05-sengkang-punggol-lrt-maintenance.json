@@ -1,6 +1,11 @@
 {
   "id": "2020-12-05-sengkang-punggol-lrt-maintenance",
   "title": "Maintenance works on Sengkang-Punggol LRT",
+  "title_translations": {
+    "zh-Hans": "盛港-榜鹅轻轨的维修工程",
+    "ms": "Kerja penyelenggaraan di LRT Sengkang-Punggol",
+    "ta": "செங்காங்-புங்கிலோங் LRT இல் பராமரிப்புப் பணிகள்"
+  },
   "componentIdsAffected": [
     "SKLRT",
     "PGLRT"

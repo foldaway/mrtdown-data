@@ -1,6 +1,11 @@
 {
   "id": "2019-05-26-nsl-power-fault",
   "title": "Major service disruption on the North-South Line due to power fault resolved.",
+  "title_translations": {
+    "zh-Hans": "由于电力故障导致南北线主要服务中断已解决。",
+    "ms": "Gangguan perkhidmatan utama di Laluan Utara-Selatan akibat gangguan kuasa diselesaikan.",
+    "ta": "மின் கோளாறு காரணமாக வடக்கு-தெற்கு பாதையில் பெரிய சேவை இடையூறு தீர்க்கப்பட்டது."
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2012-04-24-south-bound-train-service-slow",
   "title": "South-bound train service moving slowly",
+  "title_translations": {
+    "zh-Hans": "南行列车服务运行缓慢",
+    "ms": "Perkhidmatan kereta api arah selatan bergerak perlahan",
+    "ta": "தெற்கு நோக்கிச் செல்லும் ரயில் சேவை மெதுவாகச் செல்கிறது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2018-07-21-dtl-service-delayed",
   "title": "Downtown Line service disruption due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "信号故障导致市区线服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Downtown kerana kerosakan isyarat",
+    "ta": "சிக்னலிங் கோளாறு காரணமாக டவுன்டவுன் லைன் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

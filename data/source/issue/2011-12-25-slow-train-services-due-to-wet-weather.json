@@ -1,6 +1,11 @@
 {
   "id": "2011-12-25-slow-train-services-due-to-wet-weather",
   "title": "Train services running slower due to wet weather",
+  "title_translations": {
+    "zh-Hans": "由于天气潮湿，火车服务运行速度较慢",
+    "ms": "Perkhidmatan kereta api berjalan lebih perlahan kerana cuaca basah",
+    "ta": "ஈரமான வானிலை காரணமாக ரயில் சேவைகள் மெதுவாக இயங்குகின்றன"
+  },
   "componentIdsAffected": [
     "NSL",
     "EWL"

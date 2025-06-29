@@ -1,6 +1,11 @@
 {
   "id": "2015-12-21-tiongbahru-train-fault",
   "title": "Train fault reported at Tiong Bahru",
+  "title_translations": {
+    "zh-Hans": "樟宜铁路报告了列车故障",
+    "ms": "Aduan kerosakan kereta api di Tiong Bahru",
+    "ta": "Tiong Bahru இல் ரயில் கோளாறு தெரிவிக்கப்பட்டது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

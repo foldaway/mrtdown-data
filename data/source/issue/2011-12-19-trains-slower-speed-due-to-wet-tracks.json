@@ -1,6 +1,11 @@
 {
   "id": "2011-12-19-trains-slower-speed-due-to-wet-tracks",
   "title": "Trains travelling at slower speed due to wet tracks",
+  "title_translations": {
+    "zh-Hans": "由于轨道潮湿，列车行驶速度较慢",
+    "ms": "Kereta api bergerak pada kelajuan yang lebih perlahan kerana trek basah",
+    "ta": "ஈரமான தண்டவாளங்கள் காரணமாக ரயில்கள் மெதுவாகச் செல்கின்றன"
+  },
   "componentIdsAffected": [
     "NSL",
     "EWL"

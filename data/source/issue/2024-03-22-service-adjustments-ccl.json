@@ -1,6 +1,11 @@
 {
   "id": "2024-03-22-service-adjustments-ccl",
   "title": "Service adjustments for Circle Line due to train fault",
+  "title_translations": {
+    "zh-Hans": "环线列车故障服务调整",
+    "ms": "Penyesuaian perkhidmatan untuk Laluan Bulat kerana kerosakan kereta api",
+    "ta": "தொடர்வண்டிக் கோளாறு காரணமாக வட்டப் பாதையில் சேவைச் சரிசெய்தல்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

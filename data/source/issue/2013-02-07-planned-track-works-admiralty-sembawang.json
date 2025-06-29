@@ -1,6 +1,11 @@
 {
   "id": "2013-02-07-planned-track-works-admiralty-sembawang",
   "title": "Planned track works affecting North-South Line from Admiralty to Sembawang",
+  "title_translations": {
+    "zh-Hans": " Admiralty 至 Sembawang 的计划轨道工程影响南北线",
+    "ms": "Kerja trek yang dirancang mempengaruhi Laluan Utara-Selatan dari Admiralty ke Sembawang",
+    "ta": "Admiralty முதல் Sembawang வரை வடக்கு-தெற்கு பாதையை பாதிக்கும் திட்டமிடப்பட்ட ரயில் பாத வேலைகள்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

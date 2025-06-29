@@ -1,6 +1,11 @@
 {
   "id": "2013-04-12-ewl-track-fault-2",
   "title": "Second Track Fault on East-West Line",
+  "title_translations": {
+    "zh-Hans": "东西线第二段轨道故障",
+    "ms": "Jalan Kedua Rosak di Laluan Timur-Barat",
+    "ta": "கிழக்கு-மேற்கு பாதையில் இரண்டாவது தடப் பிழை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

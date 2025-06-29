@@ -1,6 +1,11 @@
 {
   "id": "2021-10-03-bukit-panjang-lrt-power-fault",
   "title": "Power fault causing slower train movements towards Choa Chu Kang on Service B",
+  "title_translations": {
+    "zh-Hans": "功率故障导致B线列车向蔡厝港方向运行速度减慢",
+    "ms": "Kerosakan kuasa menyebabkan pergerakan kereta lebih perlahan ke arah Choa Chu Kang di Perkhidmatan B",
+    "ta": "சேவை B இல் சாவா சூ காங் நோக்கி மெதுவான ரயில் இயக்கங்களுக்கு காரணமான சக்தி தவறு"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

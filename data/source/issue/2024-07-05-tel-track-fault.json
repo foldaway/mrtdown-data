@@ -1,6 +1,11 @@
 {
   "id": "2024-07-05-tel-track-fault",
   "title": "Track fault causing service disruption on Thomson–East Coast Line",
+  "title_translations": {
+    "zh-Hans": "汤姆森-东海岸线轨道故障导致服务中断",
+    "ms": "Kerosakan trek menyebabkan gangguan perkhidmatan di Laluan Thomson–East Coast",
+    "ta": "தாம்சன்-கிழக்கு கடற்கரை பாதையில் சேவை இடையூறுக்கு காரணமான பாதையில் ஏற்பட்ட தவறு"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

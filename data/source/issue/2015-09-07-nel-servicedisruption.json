@@ -1,6 +1,11 @@
 {
   "id": "2015-09-07-nel-servicedisruption",
   "title": "North East Line service disruption",
+  "title_translations": {
+    "zh-Hans": "东北线服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Timur Laut",
+    "ta": "வடகிழக்கு வழித்தடத்தில் சேவை தடை"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

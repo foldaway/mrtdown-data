@@ -1,6 +1,11 @@
 {
   "id": "2012-06-18-southbound-trains-slow",
   "title": "Southbound trains from Ang Mo Kio to Bishan moving slower due to track fault.",
+  "title_translations": {
+    "zh-Hans": "由于轨道故障，南北线宏茂桥至碧山站的列车运行速度减慢。",
+    "ms": "Kereta api arah selatan dari Ang Mo Kio ke Bishan bergerak lebih perlahan kerana kerosakan landasan.",
+    "ta": "தடக் கோளாறு காரணமாக Ang Mo Kio முதல் Bishan வரையிலான தெற்கு நோக்கிச் செல்லும் ரயில்கள் மெதுவாகச் செல்கின்றன."
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2016-05-11-no-train-service-from-yishun-to-yio-chu-kang",
   "title": "No train service from Yishun to Yio Chu Kang due to a train fault",
+  "title_translations": {
+    "zh-Hans": "由于火车故障，Yishun 至 Yio Chu Kang 之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta api dari Yishun ke Yio Chu Kang kerana kerosakan kereta api",
+    "ta": "Yishun இலிருந்து Yio Chu Kang வரை ரயில் பழுது காரணமாக ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2014-03-26-track-fault-tanjong-pagar",
   "title": "Track fault causing delays on the East West Line",
+  "title_translations": {
+    "zh-Hans": "东海岸线轨道故障导致延误",
+    "ms": "Jejak kerosakan menyebabkan kelewatan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் தடப் பிழை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

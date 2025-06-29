@@ -1,6 +1,11 @@
 {
   "id": "2013-05-19-power-cable-maintenance-circle-line",
   "title": "Power cable maintenance on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线电源线维护",
+    "ms": "Penyelenggaraan kabel kuasa di Laluan Bulat",
+    "ta": "வட்டப் பாதையில் மின் கம்பி பராமரிப்பு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -7,6 +7,13 @@ import { DateSummarySchema } from './DateSummary';
 export const IssueReferenceSchema = z.object({
   id: IssueIdSchema,
   title: z.string(),
+  title_translations: z
+    .object({
+      'zh-Hans': z.string(),
+      ms: z.string(),
+      ta: z.string(),
+    })
+    .describe('Translations of the title field'),
   componentIdsAffected: z.array(ComponentIdSchema),
   type: IssueTypeSchema,
   startAt: z

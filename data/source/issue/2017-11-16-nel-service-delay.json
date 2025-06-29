@@ -1,6 +1,11 @@
 {
   "id": "2017-11-16-nel-service-delay",
   "title": "NEL service delay due to train fault at Clarke Quay station",
+  "title_translations": {
+    "zh-Hans": "由于克拉码头站列车故障，导致南北线服务延迟",
+    "ms": "Perkhidmatan NEL tertangguh disebabkan oleh kerosakan kereta api di stesen Clarke Quay",
+    "ta": "Clarke Quay நிலையத்தில் ரயில் பழுது காரணமாக NEL சேவை தாமதம்"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

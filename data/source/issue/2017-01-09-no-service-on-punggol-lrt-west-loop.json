@@ -1,6 +1,11 @@
 {
   "id": "2017-01-09-no-service-on-punggol-lrt-west-loop",
   "title": "No service on Punggol LRT West Loop due to power fault",
+  "title_translations": {
+    "zh-Hans": "由于电力故障，榜鹅轻轨西环线暂停服务",
+    "ms": "Tiada perkhidmatan di Punggol LRT Lingkaran Barat kerana kerosakan kuasa",
+    "ta": "மின்சாரக் கோளாறு காரணமாக புங்கில்கான LRT மேற்கு வளையத்தில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "PGLRT"
   ],

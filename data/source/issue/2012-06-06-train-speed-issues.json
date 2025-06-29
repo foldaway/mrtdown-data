@@ -1,6 +1,11 @@
 {
   "id": "2012-06-06-train-speed-issues",
   "title": "Trains moving slower from Tanjong Pagar due to track fault",
+  "title_translations": {
+    "zh-Hans": "丹戎巴葛至由于轨道故障导致火车运行速度减慢",
+    "ms": "Kereta api bergerak lebih perlahan dari Tanjong Pagar kerana kerosakan trek",
+    "ta": "தஞ்சோங் பகார் முதல் தண்டவாளக் கோளாறு காரணமாக ரயில்கள் மெதுவாக நகர்கின்றன"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

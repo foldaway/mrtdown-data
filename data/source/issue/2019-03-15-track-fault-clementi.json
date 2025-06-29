@@ -1,6 +1,11 @@
 {
   "id": "2019-03-15-track-fault-clementi",
   "title": "Track fault at Clementi causing train service disruption",
+  "title_translations": {
+    "zh-Hans": "Clementi 的轨道故障导致列车服务中断",
+    "ms": "Ralat trek di Clementi menyebabkan gangguan perkhidmatan kereta api",
+    "ta": "Clementi இல் உள்ள பாதை தவறு இரயில் சேவை இடையூறுக்கு காரணமாகிறது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

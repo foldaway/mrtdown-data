@@ -1,6 +1,11 @@
 {
   "id": "2012-12-31-circle-line-track-fault",
   "title": "Track Fault on Circle Line Leading to Delays",
+  "title_translations": {
+    "zh-Hans": "环线轨道故障导致延误",
+    "ms": "Jejak Kerosakan di Laluan Bulat Menyebabkan Kelewatan",
+    "ta": "வட்டப் பாதையில் தடமறிதல் தாமதங்களுக்கு வழிவகுக்கிறது"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

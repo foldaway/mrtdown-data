@@ -1,6 +1,11 @@
 {
   "id": "2016-09-28-bplrt-no-train-service-2",
   "title": "No train service on Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "武吉班让轻轨无列车服务",
+    "ms": "Tiada perkhidmatan kereta api di Bukit Panjang LRT",
+    "ta": "Bukit Panjang LRT இல் ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

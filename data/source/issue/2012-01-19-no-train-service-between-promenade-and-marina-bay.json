@@ -1,6 +1,11 @@
 {
   "id": "2012-01-19-no-train-service-between-promenade-and-marina-bay",
   "title": "No train service between Promenade and Marina Bay",
+  "title_translations": {
+    "zh-Hans": "Promenade 和 Marina Bay 之间无火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Promenade dan Marina Bay",
+    "ta": "Promenade மற்றும் Marina Bay இடையே ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

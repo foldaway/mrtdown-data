@@ -1,6 +1,11 @@
 {
   "id": "2012-04-17-train-fault-delay",
   "title": "Train Fault Causing Delays",
+  "title_translations": {
+    "zh-Hans": "火车故障导致延误",
+    "ms": "Gangguan Kereta Api Menyebabkan Kelewatan",
+    "ta": "தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

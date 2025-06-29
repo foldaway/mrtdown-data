@@ -1,6 +1,11 @@
 {
   "id": "2025-03-14-additional-15-mins-travel-time",
   "title": "Additional 15 mins train travel time due to signal fault",
+  "title_translations": {
+    "zh-Hans": "信号故障导致火车行程额外增加15分钟",
+    "ms": "15 minit tambahan masa perjalanan kereta api kerana gangguan isyarat",
+    "ta": "சிக்னல் கோளாறு காரணமாக 15 நிமிடங்கள் கூடுதல் ரயில் பயண நேரம்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2025-03-05-ccl-train-fault",
   "title": "Train travel time added between Promenade and Serangoon due to train fault",
+  "title_translations": {
+    "zh-Hans": "由于火车故障，Promenade 和 Serangoon 之间的火车行程时间已增加",
+    "ms": "Masa perjalanan kereta ditambah antara Promenade dan Serangoon kerana kerosakan kereta",
+    "ta": "ரயில் கோளாறு காரணமாக ப்ரோமனேட் மற்றும் செராங்கூன் இடையே ரயில் பயண நேரம் சேர்க்கப்பட்டுள்ளது"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2017-07-25-ewl-power-faults",
   "title": "Major Disruption on East-West Line",
+  "title_translations": {
+    "zh-Hans": "东西线上大面积中断",
+    "ms": "Gangguan Besar di Laluan Timur-Barat",
+    "ta": "கிழக்கு-மேற்கு பாதையில் பெரிய இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2013-05-02-ewl-maintenance",
   "title": "Maintenance work on East West Line affecting service between Clementi and Jurong East",
+  "title_translations": {
+    "zh-Hans": "东西线慈明寺至裕廊东段维修工程影响服务",
+    "ms": "Kerja penyelenggaraan di Laluan Timur Barat menjejaskan perkhidmatan antara Clementi dan Jurong East",
+    "ta": "Clementi மற்றும் Jurong East இடையே சேவை பாதிக்கப்படும் கிழக்கு மேற்கு பாதையில் பராமரிப்பு பணி"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

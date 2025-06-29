@@ -1,6 +1,11 @@
 {
   "id": "2012-01-31-east-bound-train-delay",
   "title": "East bound train service delayed due to track fault",
+  "title_translations": {
+    "zh-Hans": "东行列车服务因轨道故障而延误",
+    "ms": "Perkhidmatan kereta api arah timur ditangguhkan kerana kerosakan trek",
+    "ta": "கிழக்கு நோக்கிய ரயில் சேவை பாதை கோளாறு காரணமாக தாமதமாகிறது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

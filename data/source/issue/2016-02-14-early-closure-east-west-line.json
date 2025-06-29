@@ -1,6 +1,11 @@
 {
   "id": "2016-02-14-early-closure-east-west-line",
   "title": "Early closure on the East West Line",
+  "title_translations": {
+    "zh-Hans": "东西线上提前关闭",
+    "ms": "Penutupan awal di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் முன்கூட்டியே மூடல்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

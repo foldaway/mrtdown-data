@@ -1,6 +1,11 @@
 {
   "id": "2015-05-14-nel-service-delay",
   "title": "NEL service disruption",
+  "title_translations": {
+    "zh-Hans": "东北线服务中断",
+    "ms": "Gangguan perkhidmatan NEL",
+    "ta": "NEL சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

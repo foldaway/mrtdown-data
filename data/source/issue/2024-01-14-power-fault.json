@@ -1,6 +1,11 @@
 {
   "id": "2024-01-14-power-fault",
   "title": "Major Power Fault Causing Delays",
+  "title_translations": {
+    "zh-Hans": "主要电力故障导致延误",
+    "ms": "Gangguan Kuasa Utama Menyebabkan Kelewatan",
+    "ta": "தாமதத்தை ஏற்படுத்தும் பெரிய மின்சார தவறு"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

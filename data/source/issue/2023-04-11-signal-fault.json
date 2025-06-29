@@ -1,6 +1,11 @@
 {
   "id": "2023-04-11-signal-fault",
   "title": "Signal Fault Affecting Thomson–East Coast Line",
+  "title_translations": {
+    "zh-Hans": "信号故障影响汤申东海岸线",
+    "ms": "Gangguan Isyarat Menjejaskan Laluan Thomson–East Coast",
+    "ta": "தாம்சன்–கிழக்கு கடற்கரை பாதையை பாதிக்கும் சமிக்ஞை கோளாறு"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

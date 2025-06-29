@@ -1,6 +1,11 @@
 {
   "id": "2013-08-24-ewl-train-fault",
   "title": "East West Line train fault causing delays",
+  "title_translations": {
+    "zh-Hans": "东西线列车故障导致延误",
+    "ms": "Ralat kereta api Laluan Timur Barat menyebabkan kelewatan",
+    "ta": "கிழக்கு மேற்கு கோட்டு ரயில் தவறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

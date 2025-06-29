@@ -1,6 +1,11 @@
 {
   "id": "2013-10-11-eastern-outage",
   "title": "Train service disruption due to defective 3rd rail",
+  "title_translations": {
+    "zh-Hans": "第三轨故障导致火车服务中断",
+    "ms": "Gangguan perkhidmatan kereta api kerana rel ke-3 yang rosak",
+    "ta": "குறைபாடுள்ள 3வது ரயில் காரணமாக ரயில் சேவை தடங்கல்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

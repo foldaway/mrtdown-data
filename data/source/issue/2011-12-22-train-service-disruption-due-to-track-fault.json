@@ -1,6 +1,11 @@
 {
   "id": "2011-12-22-train-service-disruption-due-to-track-fault",
   "title": "Train service disruption due to track fault",
+  "title_translations": {
+    "zh-Hans": "轨道故障导致列车服务中断",
+    "ms": "Gangguan perkhidmatan kereta api disebabkan oleh kerosakan landasan",
+    "ta": "தடப் பிழையால் ரயில் சேவை தடைப்பட்டது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

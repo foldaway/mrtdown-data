@@ -1,6 +1,11 @@
 {
   "id": "2014-03-24-nsl-train-fault",
   "title": "Train fault causing delays on North-South Line",
+  "title_translations": {
+    "zh-Hans": "列车故障导致南北线延误",
+    "ms": "Ralat kereta api menyebabkan kelewatan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் ரயிலின் செயலிழப்பு காரணமாக தாமதங்கள்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

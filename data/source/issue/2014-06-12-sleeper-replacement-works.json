@@ -1,6 +1,11 @@
 {
   "id": "2014-06-12-sleeper-replacement-works",
   "title": "Service disruption due to sleeper replacement works",
+  "title_translations": {
+    "zh-Hans": "因更换枕木工程导致的服务中断",
+    "ms": "Gangguan perkhidmatan kerana kerja penggantian лягу",
+    "ta": "தூக்கப் பணியாளர்களை மாற்றுவதால் சேவை சீர்குலைவு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

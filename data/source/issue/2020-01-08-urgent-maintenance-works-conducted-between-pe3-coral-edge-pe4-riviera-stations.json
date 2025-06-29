@@ -1,6 +1,11 @@
 {
   "id": "2020-01-08-urgent-maintenance-works-conducted-between-pe3-coral-edge-pe4-riviera-stations",
   "title": "Urgent Maintenance Works Conducted Between Coral Edge & Riviera Stations",
+  "title_translations": {
+    "zh-Hans": "在珊瑚边缘和里维埃拉站之间进行了紧急维护工作",
+    "ms": "Kerja Penyelenggaraan Mendesak Dijalankan Antara Stesen Coral Edge & Riviera",
+    "ta": "கிராedge மற்றும் ரிவியரா நிலையங்களுக்கு இடையில் அவசர பராமரிப்புப் பணிகள் மேற்கொள்ளப்பட்டன"
+  },
   "componentIdsAffected": [
     "PGLRT"
   ],

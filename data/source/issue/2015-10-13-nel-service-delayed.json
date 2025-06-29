@@ -1,6 +1,11 @@
 {
   "id": "2015-10-13-nel-service-delayed",
   "title": "NEL service delayed due to power fault",
+  "title_translations": {
+    "zh-Hans": "由于电力故障，NEL服务延迟",
+    "ms": "Perkhidmatan NEL tertunda kerana kerosakan kuasa",
+    "ta": "மின் தடங்கல் காரணமாக NEL சேவை தாமதமானது"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2011-12-18-no-train-connection-north-south-line",
   "title": "Delayed service on North-South Line and East-West Line",
+  "title_translations": {
+    "zh-Hans": "南北线和东西线服务延迟",
+    "ms": "Perkhidmatan tertangguh di Laluan Utara-Selatan dan Laluan Timur-Barat",
+    "ta": "வடக்கு-தெற்கு வரி மற்றும் கிழக்கு-மேற்கு வரியில் தாமதமான சேவை"
+  },
   "componentIdsAffected": [
     "NSL",
     "EWL"

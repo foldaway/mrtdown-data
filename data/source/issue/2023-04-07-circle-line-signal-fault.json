@@ -1,6 +1,11 @@
 {
   "id": "2023-04-07-circle-line-signal-fault",
   "title": "Service disruption on Circle Line due to signal fault",
+  "title_translations": {
+    "zh-Hans": "环线因信号故障导致服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Bulat kerana kerosakan isyarat",
+    "ta": "சிக்னல் கோளாறு காரணமாக வட்டப் பாதையில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

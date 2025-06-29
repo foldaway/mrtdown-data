@@ -1,6 +1,11 @@
 {
   "id": "2016-01-06-dtl-service-delayed",
   "title": "Downtown Line service disrupted",
+  "title_translations": {
+    "zh-Hans": "市区线服务中断",
+    "ms": "Perkhidmatan Laluan Downtown terganggu",
+    "ta": "Downtown Line சேவை சீர்குலைந்தது"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2017-06-01-nel-svc-twds-punggol-delay",
   "title": "NEL service delayed towards Punggol due to train fault",
+  "title_translations": {
+    "zh-Hans": "NEL服务因列车故障延误至榜鹅",
+    "ms": "Perkhidmatan NEL tertangguh ke arah Punggol kerana kerosakan kereta api",
+    "ta": "புங்கிலுக்கு செல்லும் NEL சேவை ரயில் பழுது காரணமாக தாமதமானது"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

@@ -1,7 +1,14 @@
 {
   "id": "2023-11-03-delayed-service-start-tel-service-adjustments",
   "title": "Delayed service start for Thomson-East Coast Line due to Stage 4 works",
-  "componentIdsAffected": ["TEL"],
+  "title_translations": {
+    "zh-Hans": "由于第四阶段工程，东西海岸线服务启动延迟",
+    "ms": "Mula perkhidmatan tertangguh untuk Laluan Thomson-Timur kerana kerja Peringkat 4",
+    "ta": "நிலை 4 பணிகள் காரணமாக தாம்சன்-கிழக்கு கடற்கரை வழித்தடத்திற்கான தாமதமான சேவை தொடக்கம்"
+  },
+  "componentIdsAffected": [
+    "TEL"
+  ],
   "startAt": "2023-11-03T05:00:00+08:00",
   "endAt": "2023-11-03T08:00:00+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20231103T053000\nRRULE:FREQ=WEEKLY;UNTIL=20240129T000000;WKST=MO;BYDAY=SA,SU",

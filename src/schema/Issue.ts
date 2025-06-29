@@ -26,6 +26,13 @@ const IssueBase = z.object({
     .describe(
       'In the style of a SaaS status page incident title. Only describe the problem, e.g. service disruption. Do not mention resolution.',
     ),
+  title_translations: z
+    .object({
+      'zh-Hans': z.string(),
+      ms: z.string(),
+      ta: z.string(),
+    })
+    .describe('Translations of the title field'),
   componentIdsAffected: z
     .array(ComponentIdSchema)
     .describe('List of components affected'),

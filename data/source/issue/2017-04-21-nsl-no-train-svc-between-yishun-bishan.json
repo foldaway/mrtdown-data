@@ -1,6 +1,11 @@
 {
   "id": "2017-04-21-nsl-no-train-svc-between-yishun-bishan",
   "title": "No train service between Yishun and Bishan",
+  "title_translations": {
+    "zh-Hans": "Yishun 和 Bishan 之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta antara Yishun dan Bishan",
+    "ta": "Yishun மற்றும் Bishan இடையே ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

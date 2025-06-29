@@ -1,6 +1,11 @@
 {
   "id": "2021-10-01-circle-line-traction-power-fault",
   "title": "Traction power fault on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线牵引供电故障",
+    "ms": "Kerosakan kuasa tarikan di Laluan Bulatan",
+    "ta": "வட்டப் பாதையில் இழுவை மின்சாரம் பழுதால்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

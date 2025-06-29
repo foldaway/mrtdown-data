@@ -1,6 +1,11 @@
 {
   "id": "2015-04-15-nsl-track-fault",
   "title": "Major track fault causing delays on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线主要轨道故障导致延误",
+    "ms": "Ralat trek utama menyebabkan kelewatan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் முக்கிய பாதை தவறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

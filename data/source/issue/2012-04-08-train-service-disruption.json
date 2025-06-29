@@ -1,6 +1,11 @@
 {
   "id": "2012-04-08-train-service-disruption",
   "title": "Train service disruption between Paya Lebar and Pasir Ris",
+  "title_translations": {
+    "zh-Hans": "Paya Lebar 和 Pasir Ris 之间的列车服务中断",
+    "ms": "Gangguan perkhidmatan kereta antara Paya Lebar dan Pasir Ris",
+    "ta": "பாயா லிபார் மற்றும் பாசிர் ரிஸ் இடையே ரயில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2014-07-26-ewl-rail-defect",
   "title": "Major service disruption due to rail defect on East West Line",
+  "title_translations": {
+    "zh-Hans": "东西线轨道缺陷导致主要服务中断",
+    "ms": "Gangguan perkhidmatan utama kerana kecacatan rel di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் ரயில் குறைபாடு காரணமாக பெரும் சேவை தடை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

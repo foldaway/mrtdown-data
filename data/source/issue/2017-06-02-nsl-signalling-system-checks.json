@@ -1,6 +1,11 @@
 {
   "id": "2017-06-02-nsl-signalling-system-checks",
   "title": "Delays on NSL due to signalling system checks",
+  "title_translations": {
+    "zh-Hans": "由于信号系统检查，NSL 出现延误",
+    "ms": "Penangguhan di NSL kerana pemeriksaan sistem isyarat",
+    "ta": "சிக்னலிங் அமைப்பு சோதனைகள் காரணமாக NSL இல் தாமதங்கள்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

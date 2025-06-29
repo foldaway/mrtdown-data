@@ -1,6 +1,11 @@
 {
   "id": "2015-09-22-faulty-train-service-delay",
   "title": "Faulty train causing major service delays",
+  "title_translations": {
+    "zh-Hans": "故障列车导致大面积服务延误",
+    "ms": "Kereta api rosak menyebabkan kelewatan perkhidmatan yang ketara",
+    "ta": "தவறான ரயில் பெரும் சேவை தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2023-11-03-early-closure-tel-service-adjustments",
   "title": "Early closure for Thomson-East Coast Line due to Stage 4 works",
+  "title_translations": {
+    "zh-Hans": "汤申东海岸线因第四阶段工程提前关闭",
+    "ms": "Penutupan awal Laluan Thomson-East Coast kerana kerja-kerja Peringkat 4",
+    "ta": "தாய்-கிழக்கு கடற்கரை பாதைக்கான ஆரம்ப மூடல், நிலை 4 பணிகளுக்காக"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

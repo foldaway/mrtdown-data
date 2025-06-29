@@ -1,6 +1,11 @@
 {
   "id": "2016-06-23-nsl-power-fault",
   "title": "Power fault on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线发生电力故障",
+    "ms": "Gangguan kuasa di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் மின்சாரம் பழுது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2012-08-16-circle-line-outage",
   "title": "Service disruption on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Bulatan",
+    "ta": "வட்டப் பாதையில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

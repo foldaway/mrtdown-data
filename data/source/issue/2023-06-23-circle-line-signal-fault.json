@@ -1,6 +1,11 @@
 {
   "id": "2023-06-23-circle-line-signal-fault",
   "title": "Delay due to signal fault on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线信号故障导致延误",
+    "ms": "Kelewatan disebabkan oleh kegagalan isyarat di Laluan Bulat",
+    "ta": "வட்டப் பாதையில் சமிக்ஞை கோளாறு காரணமாக தாமதம்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

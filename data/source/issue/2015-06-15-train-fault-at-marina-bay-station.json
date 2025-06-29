@@ -1,6 +1,11 @@
 {
   "id": "2015-06-15-train-fault-at-marina-bay-station",
   "title": "Train Service Disruption at Marina Bay Station",
+  "title_translations": {
+    "zh-Hans": "湾景站列车服务中断",
+    "ms": "Gangguan Perkhidmatan Kereta Api di Stesen Marina Bay",
+    "ta": "மெரினா பே நிலையத்தில் ரயில் சேவை தடங்கல்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

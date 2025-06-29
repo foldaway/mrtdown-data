@@ -1,6 +1,11 @@
 {
   "id": "2018-08-04-circle-line-service-disruption",
   "title": "Circle Line Service Disruption between Tai Seng and MacPherson",
+  "title_translations": {
+    "zh-Hans": "环线丹戎巴葛至乌节站之间服务中断",
+    "ms": "Gangguan Perkhidmatan Laluan Bulat antara Tai Seng dan MacPherson",
+    "ta": "சை செங் மற்றும் மேக்பெர்சன் இடையே சர்க்கிள் லைன் சேவை சீர்குலைவு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2016-04-08-circle-line-train-fault",
   "title": "Train fault causing delays",
+  "title_translations": {
+    "zh-Hans": "火车故障导致延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan",
+    "ta": "தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

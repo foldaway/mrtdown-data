@@ -1,6 +1,11 @@
 {
   "id": "2017-08-30-eastern-western-line-track-fault",
   "title": "Track Fault on East West Line",
+  "title_translations": {
+    "zh-Hans": "东环线故障跟踪",
+    "ms": "Pengesanan Kesalahan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் தடங்கல்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

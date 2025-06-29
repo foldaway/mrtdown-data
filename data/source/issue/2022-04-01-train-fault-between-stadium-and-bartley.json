@@ -1,6 +1,11 @@
 {
   "id": "2022-04-01-train-fault-between-stadium-and-bartley",
   "title": "Train Fault Causing Delays Between Stadium and Bartley",
+  "title_translations": {
+    "zh-Hans": "列车故障导致体育场和巴特利之间延误",
+    "ms": "Kerosakan Kereta Api Menyebabkan Kelewatan Antara Stadium dan Bartley",
+    "ta": "ஸ்டேடியம் மற்றும் பார்ட்லி இடையே தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2017-08-23-nsl-track-fault",
   "title": "Major track fault causing delays on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线发生重大轨道故障，导致延误",
+    "ms": "Ralat trek utama menyebabkan kelewatan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் முக்கிய தண்டவாளக் கோளாறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

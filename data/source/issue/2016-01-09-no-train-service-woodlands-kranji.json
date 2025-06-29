@@ -1,6 +1,11 @@
 {
   "id": "2016-01-09-no-train-service-woodlands-kranji",
   "title": "No train service between Woodlands and Kranji",
+  "title_translations": {
+    "zh-Hans": "Woodlands 和 Kranji 之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Woodlands dan Kranji",
+    "ta": "Woodlands மற்றும் Kranji இடையே ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

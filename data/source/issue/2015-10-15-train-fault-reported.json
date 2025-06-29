@@ -1,6 +1,11 @@
 {
   "id": "2015-10-15-train-fault-reported",
   "title": "Train Fault Reported",
+  "title_translations": {
+    "zh-Hans": "列车故障已报告",
+    "ms": "Kerosakan Kereta Api Dilaporkan",
+    "ta": "ரயில் பழுது புகாரளிக்கப்பட்டது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

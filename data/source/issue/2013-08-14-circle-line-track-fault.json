@@ -1,6 +1,11 @@
 {
   "id": "2013-08-14-circle-line-track-fault",
   "title": "Circle Line service disruption due to track fault",
+  "title_translations": {
+    "zh-Hans": "环线因轨道故障服务中断",
+    "ms": "Gangguan perkhidmatan Circle Line akibat kerosakan landasan",
+    "ta": "சுற்றுப்பாதை ரயில் சேவை தடங்கல் பாதை பழுது காரணமாக"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

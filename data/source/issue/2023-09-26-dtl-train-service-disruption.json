@@ -1,6 +1,11 @@
 {
   "id": "2023-09-26-dtl-train-service-disruption",
   "title": "DTL train service disruption due to controlled detonation",
+  "title_translations": {
+    "zh-Hans": "DTL 列車服務因受控爆炸而中斷",
+    "ms": "Gangguan perkhidmatan kereta DTL kerana letupan terkawal",
+    "ta": "DTL ரயில் சேவையில் கட்டுப்பாடான வெடிப்பு காரணமாக இடையூறு"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2021-04-16-nel-stations-closure",
   "title": "NEL Stations Closure Between Serangoon and Punggol",
+  "title_translations": {
+    "zh-Hans": "NEL 车站关闭介于实龙岗和榜鹅之间",
+    "ms": "Penutupan Stesen NEL Antara Serangoon dan Punggol",
+    "ta": "நெல் நிலையங்கள் செராங்கூன் மற்றும் பு vanguard இடையே மூடப்பட்டுள்ளது"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

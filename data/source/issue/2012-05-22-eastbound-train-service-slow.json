@@ -1,6 +1,11 @@
 {
   "id": "2012-05-22-eastbound-train-service-slow",
   "title": "Eastbound train service disruption",
+  "title_translations": {
+    "zh-Hans": "东行列车服务中断",
+    "ms": "Gangguan perkhidmatan kereta arah timur",
+    "ta": "கிழக்கு திசை ரயில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

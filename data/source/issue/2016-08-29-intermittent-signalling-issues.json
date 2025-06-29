@@ -1,6 +1,11 @@
 {
   "id": "2016-08-29-intermittent-signalling-issues",
   "title": "Intermittent signalling issues affecting Circle Line",
+  "title_translations": {
+    "zh-Hans": "影响环线的间歇性信号问题",
+    "ms": "Masalah isyarat sekejap-sekejap yang mempengaruhi Laluan Lingkar",
+    "ta": "வட்டப் பாதையைப் பாதிக்கும் அவ்வப்போது சமிக்ஞை சிக்கல்கள்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2015-09-08-nel-svc-delayed-due-to-signalling-fault",
   "title": "Delay in North East Line service due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "信号故障导致东北线服务延迟",
+    "ms": "Kelewatan perkhidmatan Laluan Timur Laut kerana kerosakan isyarat",
+    "ta": "சிக்னலிங் பிழை காரணமாக வடகிழக்கு வரி சேவையில் தாமதம்"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

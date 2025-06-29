@@ -1,6 +1,11 @@
 {
   "id": "2017-08-18-dtl-signal-fault",
   "title": "No DTL train service due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "由于信号故障，DTL 无列车服务",
+    "ms": "Tiada perkhidmatan kereta DTL kerana kerosakan isyarat",
+    "ta": "சிக்னல் கோளாறு காரணமாக DTL ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

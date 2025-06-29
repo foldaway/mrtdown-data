@@ -1,6 +1,11 @@
 {
   "id": "2025-01-10-nsl-major-outage-cleared",
   "title": "Service disruption on NSL between Marina South Pier and Bishan",
+  "title_translations": {
+    "zh-Hans": "NSL 马林海鲜站至碧山站之间服务中断",
+    "ms": "Gangguan perkhidmatan di NSL antara Marina South Pier dan Bishan",
+    "ta": "NSL இல் மெரினா சவுத் பியர் மற்றும் பிஷான் இடையே சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

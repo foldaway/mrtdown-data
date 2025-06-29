@@ -1,6 +1,11 @@
 {
   "id": "2015-02-27-nsl-track-intrusion",
   "title": "Track intrusion causing delays on North-South Line",
+  "title_translations": {
+    "zh-Hans": "轨道侵入导致南北线延误",
+    "ms": "Gangguan trek menyebabkan kelewatan di Laluan North-South",
+    "ta": "டிராக் ஊடுருவல் காரணமாக வடக்கு-தெற்கு பாதையில் தாமதங்கள்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2019-03-22-north-east-line-maintenance",
   "title": "North East Line maintenance works",
+  "title_translations": {
+    "zh-Hans": "东北线维修工程",
+    "ms": "Kerja penyelenggaraan Laluan Timur Laut",
+    "ta": "வடகிழக்கு கோடு பராமரிப்பு பணிகள்"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

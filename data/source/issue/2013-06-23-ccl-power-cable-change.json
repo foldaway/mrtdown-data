@@ -1,6 +1,11 @@
 {
   "id": "2013-06-23-ccl-power-cable-change",
   "title": "Travel time increase on the Circle Line due to maintenance",
+  "title_translations": {
+    "zh-Hans": "环线因维修导致出行时间增加",
+    "ms": "Peningkatan masa perjalanan di Laluan Bulatan kerana penyelenggaraan",
+    "ta": "பராமரிப்பு காரணமாக வட்டப் பாதையில் பயண நேரம் அதிகரிப்பு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

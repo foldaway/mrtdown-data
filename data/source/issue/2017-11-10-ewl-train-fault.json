@@ -1,6 +1,11 @@
 {
   "id": "2017-11-10-ewl-train-fault",
   "title": "Train Fault Causing Delay on East West Line",
+  "title_translations": {
+    "zh-Hans": "东西线列车故障导致延误",
+    "ms": "Gangguan Kereta Api Menyebabkan Kelewatan di Laluan East West",
+    "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

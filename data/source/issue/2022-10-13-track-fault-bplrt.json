@@ -1,6 +1,11 @@
 {
   "id": "2022-10-13-track-fault-bplrt",
   "title": "Track fault causing delays on Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "股道故障导致武吉班让轻轨延误",
+    "ms": "Jejak kerosakan menyebabkan kelewatan di Bukit Panjang LRT",
+    "ta": "Bukit Panjang LRT இல் தாமதத்தை ஏற்படுத்தும் தடக் குறைபாடு"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2024-02-08-circle-line-signal-fault",
   "title": "Signal Fault Causing Travel Delays on Circle Line",
+  "title_translations": {
+    "zh-Hans": "信号故障导致环线行程延误",
+    "ms": "Kerosakan Isyarat Menyebabkan Kelewatan Perjalanan di Laluan Lingkaran",
+    "ta": "சிக்னல் தவறு வட்டப் பாதையில் பயண தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

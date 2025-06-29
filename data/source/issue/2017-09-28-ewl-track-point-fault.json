@@ -1,6 +1,11 @@
 {
   "id": "2017-09-28-ewl-track-point-fault",
   "title": "Track Point Fault Causing Delays on East West Line",
+  "title_translations": {
+    "zh-Hans": "道岔故障导致东西线延误",
+    "ms": "Ralat Jejari Trek Menyebabkan Kelewatan di Laluan Timur Barat",
+    "ta": "தடப் புள்ளி பிழை கிழக்கு மேற்கு பாதையில் தாமதங்களை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

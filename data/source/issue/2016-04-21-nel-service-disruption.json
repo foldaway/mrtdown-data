@@ -1,6 +1,11 @@
 {
   "id": "2016-04-21-nel-service-disruption",
   "title": "No North East Line Service Between Chinatown and Farrer Park",
+  "title_translations": {
+    "zh-Hans": "东北线 Chinatown 和 Farrer Park 之间无服务",
+    "ms": "Tiada Perkhidmatan Laluan Timur Laut Antara Chinatown dan Farrer Park",
+    "ta": "சைனாடவுன் மற்றும் ஃபாரர் பார்க் இடையே வடகிழக்கு லைனில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

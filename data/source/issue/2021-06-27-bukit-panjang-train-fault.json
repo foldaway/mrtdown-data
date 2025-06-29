@@ -1,6 +1,11 @@
 {
   "id": "2021-06-27-bukit-panjang-train-fault",
   "title": "Train fault causing delays towards Bukit Panjang on Service A",
+  "title_translations": {
+    "zh-Hans": "列车故障导致A号线往武吉班让方向延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan ke arah Bukit Panjang di Perkhidmatan A",
+    "ta": "தொடக்கம் A இல் புகிட் பாஞ்சாங் நோக்கி தாமதங்களை ஏற்படுத்தும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

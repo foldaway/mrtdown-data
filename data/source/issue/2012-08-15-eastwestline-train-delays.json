@@ -1,6 +1,11 @@
 {
   "id": "2012-08-15-eastwestline-train-delays",
   "title": "Train delays on East West Line",
+  "title_translations": {
+    "zh-Hans": "东西线列车延误",
+    "ms": "Perlahan kereta di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் ரயில் தாமதங்கள்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

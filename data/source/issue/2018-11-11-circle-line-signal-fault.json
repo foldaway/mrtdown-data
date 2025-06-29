@@ -1,6 +1,11 @@
 {
   "id": "2018-11-11-circle-line-signal-fault",
   "title": "Signal Fault on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线信号故障",
+    "ms": "Kerosakan Isyarat di Laluan Lingkar",
+    "ta": "வட்டப் பாதையில் சிக்னல் கோளாறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

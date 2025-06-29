@@ -1,6 +1,11 @@
 {
   "id": "2012-04-26-train-service-disruption",
   "title": "Train service disruption from Pasir Ris to Tampines",
+  "title_translations": {
+    "zh-Hans": "勿洛至淡滨尼路段火车服务中断",
+    "ms": "Gangguan perkhidmatan kereta dari Pasir Ris ke Tampines",
+    "ta": "பாசிர் ரிஸ் முதல் டாம்பினஸ் வரை ரயில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

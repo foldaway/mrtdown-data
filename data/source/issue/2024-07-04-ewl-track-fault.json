@@ -1,6 +1,11 @@
 {
   "id": "2024-07-04-ewl-track-fault",
   "title": "Train delay due to track fault on East West Line",
+  "title_translations": {
+    "zh-Hans": "东西线轨道故障导致列车延误",
+    "ms": "Kereta api tertunda karena kerusakan jalur di Jalur Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் தட 문제로 인한 ரயில் தாமதம்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

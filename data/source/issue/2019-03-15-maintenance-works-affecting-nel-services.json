@@ -1,6 +1,11 @@
 {
   "id": "2019-03-15-maintenance-works-affecting-nel-services",
   "title": "Maintenance works affecting North East Line services",
+  "title_translations": {
+    "zh-Hans": "维护工程影响东北线服务",
+    "ms": "Kerja penyelenggaraan menjejaskan perkhidmatan North East Line",
+    "ta": "North East Line சேவைகளைப் பாதிக்கும் பராமரிப்புப் பணிகள்"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

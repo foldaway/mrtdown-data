@@ -1,6 +1,11 @@
 {
   "id": "2012-05-21-northbound-train-service-slower-due-to-train-fault",
   "title": "Northbound train service slower due to train fault",
+  "title_translations": {
+    "zh-Hans": "北行列车因列车故障而运行较慢",
+    "ms": "Perkhidmatan kereta api arah utara lebih perlahan kerana kerosakan kereta api",
+    "ta": "வடக்கு நோக்கி செல்லும் ரயில் சேவையில் ரயில் கோளாறு காரணமாக தாமதம்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

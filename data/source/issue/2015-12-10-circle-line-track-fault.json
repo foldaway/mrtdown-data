@@ -1,6 +1,11 @@
 {
   "id": "2015-12-10-circle-line-track-fault",
   "title": "Track fault causing delays",
+  "title_translations": {
+    "zh-Hans": "轨道故障导致延误",
+    "ms": "Jejak kegagalan menyebabkan kelewatan",
+    "ta": "தாமதத்தை ஏற்படுத்தும் தடயப் பிழை"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

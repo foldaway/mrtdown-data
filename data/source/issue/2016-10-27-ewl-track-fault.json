@@ -1,6 +1,11 @@
 {
   "id": "2016-10-27-ewl-track-fault",
   "title": "Track fault causing delays on East West Line",
+  "title_translations": {
+    "zh-Hans": "东部东西线轨道故障导致延误",
+    "ms": "Jejak kerosakan menyebabkan kelewatan di Laluan East West",
+    "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் தடப் பிழை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

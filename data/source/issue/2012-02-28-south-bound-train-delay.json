@@ -1,6 +1,11 @@
 {
   "id": "2012-02-28-south-bound-train-delay",
   "title": "South-bound train service delay from Novena to Marina Bay",
+  "title_translations": {
+    "zh-Hans": "南部列车服务从诺维娜至滨海湾延迟",
+    "ms": "Perkhidmatan kereta api arah selatan tertangguh dari Novena ke Marina Bay",
+    "ta": "நோவினா முதல் மெரினா பே வரை தெற்கு நோக்கிச் செல்லும் ரயில் சேவை தாமதம்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2020-07-26-sengkang-lrt-maintenance",
   "title": "Maintenance on Sengkang LRT systems",
+  "title_translations": {
+    "zh-Hans": "盛港轻轨系统维护",
+    "ms": "Penyelenggaraan sistem LRT Sengkang",
+    "ta": "செங்காங் LRT அமைப்புகளில் பராமரிப்பு"
+  },
   "componentIdsAffected": [
     "SKLRT"
   ],

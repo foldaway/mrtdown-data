@@ -1,6 +1,11 @@
 {
   "id": "2012-04-22-bplrt-service-a-not-available",
   "title": "BPLRT service disruption",
+  "title_translations": {
+    "zh-Hans": "BPLRT服务中断",
+    "ms": "Gangguan perkhidmatan BPLRT",
+    "ta": "BPLRT சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

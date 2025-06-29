@@ -1,6 +1,11 @@
 {
   "id": "2012-07-12-train-slowdown-tampines-pasir-ris",
   "title": "Trains moving slower from Tampines to Pasir Ris due to track fault",
+  "title_translations": {
+    "zh-Hans": "由于轨道故障，丹那美拉至巴西立的火车速度减慢",
+    "ms": "Kereta bergerak lebih perlahan dari Tampines ke Pasir Ris kerana kerosakan landasan",
+    "ta": "தம்பினஸ் முதல் பாசிர் ரிஸ் வரை தண்டவாளக் கோளாறு காரணமாக ரயில்கள் மெதுவாக நகர்கின்றன"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

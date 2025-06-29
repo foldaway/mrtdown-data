@@ -1,6 +1,11 @@
 {
   "id": "2015-12-23-no-service-on-sengkang-punggol-lrt",
   "title": "No service on Sengkang and Punggol LRT due to power fault",
+  "title_translations": {
+    "zh-Hans": "由于电力故障，盛港和榜鹅轻轨列车暂停服务",
+    "ms": "Tiada perkhidmatan di Sengkang dan Punggol LRT kerana gangguan kuasa",
+    "ta": "மின்சாரக் கோளாறு காரணமாக செங்காங் மற்றும் புபுதுங் கல் LRT இல் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "SKLRT",
     "PGLRT"

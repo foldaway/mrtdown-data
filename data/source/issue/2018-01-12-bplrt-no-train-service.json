@@ -1,6 +1,11 @@
 {
   "id": "2018-01-12-bplrt-no-train-service",
   "title": "No Train Service on BPLRT Due to Track Fault",
+  "title_translations": {
+    "zh-Hans": "BPLRT因轨道故障暂停服务",
+    "ms": "Tiada Perkhidmatan Kereta Api di BPLRT Akibat Kerosakan Landasan",
+    "ta": "தடக் கோளாறு காரணமாக BPLRT இல் ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

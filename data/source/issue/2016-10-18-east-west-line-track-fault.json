@@ -1,6 +1,11 @@
 {
   "id": "2016-10-18-east-west-line-track-fault",
   "title": "Major service disruption on East West Line due to track fault",
+  "title_translations": {
+    "zh-Hans": "东西线因轨道故障导致主要服务中断",
+    "ms": "Gangguan perkhidmatan utama di Laluan Timur Barat kerana kerosakan trek",
+    "ta": "தடக் கோளாறு காரணமாக கிழக்கு மேற்கு பாதையில் பெரிய சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

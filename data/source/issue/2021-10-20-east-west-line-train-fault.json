@@ -1,6 +1,11 @@
 {
   "id": "2021-10-20-east-west-line-train-fault",
   "title": "Train fault causing delays on the East West Line",
+  "title_translations": {
+    "zh-Hans": "东西线列车故障导致延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

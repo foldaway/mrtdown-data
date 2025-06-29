@@ -1,6 +1,11 @@
 {
   "id": "2013-08-15-ewl-train-fault",
   "title": "Train fault causing additional travel time on East West Line",
+  "title_translations": {
+    "zh-Hans": "东西线列车故障导致额外出行时间",
+    "ms": "Kerosakan kereta api menyebabkan masa perjalanan tambahan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் கூடுதல் பயண நேரத்தை ஏற்படுத்தும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

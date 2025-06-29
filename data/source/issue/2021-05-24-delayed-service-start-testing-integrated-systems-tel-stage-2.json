@@ -1,6 +1,11 @@
 {
   "id": "2021-05-24-delayed-service-start-testing-integrated-systems-tel-stage-2",
   "title": "Delayed Service Start for Testing of Integrated Systems and Trains for TEL Stage 2",
+  "title_translations": {
+    "zh-Hans": "TEL二期综合系统和列车测试延误服务启动",
+    "ms": "Permulaan Perkhidmatan Tertangguh untuk Pengujian Sistem Bersepadu dan Kereta Api untuk Tahap 2 TEL",
+    "ta": "TEL நிலை 2க்கான ஒருங்கிணைந்த அமைப்புகள் மற்றும் ரயில்களின் சோதனைக்காக தாமதமான சேவை தொடக்கம்"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

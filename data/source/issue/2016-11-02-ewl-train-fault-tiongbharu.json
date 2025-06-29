@@ -1,6 +1,11 @@
 {
   "id": "2016-11-02-ewl-train-fault-tiongbharu",
   "title": "Train fault causing service disruption between Queenstown and Outram Park on East West Line",
+  "title_translations": {
+    "zh-Hans": "东部东西线皇后镇至欧南园之间发生列车故障，导致服务中断",
+    "ms": "Gangguan kereta api menyebabkan gangguan perkhidmatan antara Queenstown dan Outram Park di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் குயின்ஸ்டவுன் மற்றும் அவுட்ரம் பூங்கா இடையே சேவை இடையூறுக்கு காரணமான ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

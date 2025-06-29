@@ -1,6 +1,11 @@
 {
   "id": "2012-05-02-train-service-disruption",
   "title": "Train service disruption from Clementi towards Joo Koon",
+  "title_translations": {
+    "zh-Hans": "列车服务从肯尼迪道往裕廊东方向中断",
+    "ms": "Gangguan perkhidmatan kereta dari Clementi ke arah Joo Koon",
+    "ta": "கிளிமென்டி முதல் ஜூ கூன் வரை ரயில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

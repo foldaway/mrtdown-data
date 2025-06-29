@@ -1,6 +1,11 @@
 {
   "id": "2011-09-20-faulty-cable-led-to-circle-line-disruption",
   "title": "Power fault disrupts Circle Line",
+  "title_translations": {
+    "zh-Hans": "电力故障影响环线",
+    "ms": "Gangguan kuasa melumpuhkan Laluan Bulatan",
+    "ta": "வட்டப் பாதையில் மின் தடங்கல்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

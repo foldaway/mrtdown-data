@@ -1,6 +1,11 @@
 {
   "id": "2021-03-16-bukit-panjang-stn-service-disruption",
   "title": "Service disruption at Bukit Panjang Station due to technical fault",
+  "title_translations": {
+    "zh-Hans": "因技术故障导致武吉班让站服务中断",
+    "ms": "Gangguan perkhidmatan di Stesen Bukit Panjang kerana masalah teknikal",
+    "ta": "தொழில்நுட்பக் கோளாறு காரணமாக புக்கிட் பாங் நிலையத்தில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

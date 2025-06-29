@@ -1,6 +1,11 @@
 {
   "id": "2023-05-04-train-fault-disruption",
   "title": "Train service disruption due to fault on BPLRT",
+  "title_translations": {
+    "zh-Hans": "BPLRT 轨道故障导致列车服务中断",
+    "ms": "Gangguan perkhidmatan kereta api kerana kerosakan di BPLRT",
+    "ta": "BPLRT இல் கோளாறு காரணமாக ரயில் சேவை தடை"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2020-10-14-due-to-power-fault-no-train-services-between-jurongeast-and-marsiling",
   "title": "Service disruption due to power fault",
+  "title_translations": {
+    "zh-Hans": "电力故障导致服务中断",
+    "ms": "Gangguan perkhidmatan kerana kerosakan kuasa",
+    "ta": "மின்சாரக் கோளாறு காரணமாக சேவை தடை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

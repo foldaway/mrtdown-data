@@ -1,6 +1,11 @@
 {
   "id": "2016-08-02-ewl-no-train-service-betweeen-boonlay-and-jookoon",
   "title": "No train service between Boon Lay and Joo Koon",
+  "title_translations": {
+    "zh-Hans": "文礼和裕廊东之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Boon Lay dan Joo Koon",
+    "ta": "Boon Lay மற்றும் Joo Koon இடையே ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

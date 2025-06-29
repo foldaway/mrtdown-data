@@ -1,6 +1,11 @@
 {
   "id": "2016-04-25-no-lrt-service-on-bplrt",
   "title": "No LRT service on BPLRT",
+  "title_translations": {
+    "zh-Hans": "BPLRT无轻轨服务",
+    "ms": "Tiada perkhidmatan LRT di BPLRT",
+    "ta": "BPLRT இல் LRT சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

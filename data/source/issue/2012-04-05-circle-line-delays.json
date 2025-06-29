@@ -1,6 +1,11 @@
 {
   "id": "2012-04-05-circle-line-delays",
   "title": "Circle line service disruption due to train fault",
+  "title_translations": {
+    "zh-Hans": "环线列车故障导致服务中断",
+    "ms": "Gangguan perkhidmatan Circle line kerana kerosakan kereta api",
+    "ta": "தொடர்வண்டி பழுதடைந்ததால் வட்டப் பாதையில் சேவை தடைபட்டது"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

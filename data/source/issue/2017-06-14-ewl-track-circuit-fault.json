@@ -1,6 +1,11 @@
 {
   "id": "2017-06-14-ewl-track-circuit-fault",
   "title": "Track circuit fault causing delays on East West Line",
+  "title_translations": {
+    "zh-Hans": "轨道电路故障导致东西线延误",
+    "ms": "Ralat litar trek menyebabkan kelewatan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் சுற்று தடையில்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

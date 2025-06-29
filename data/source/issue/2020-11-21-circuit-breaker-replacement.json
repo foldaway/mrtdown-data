@@ -1,6 +1,11 @@
 {
   "id": "2020-11-21-circuit-breaker-replacement",
   "title": "Early Closure of 4 MRT Stations for Circuit Breaker Replacement",
+  "title_translations": {
+    "zh-Hans": "为更换断路器提前关闭4个地铁站",
+    "ms": "Penutupan Awal 4 Stesen MRT untuk Penggantian Pemutus Litar",
+    "ta": "சுற்று முறிப்பான் மாற்றுவதற்காக 4 எம்ஆர்டி நிலையங்களின் முன்கூட்டிய மூடல்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

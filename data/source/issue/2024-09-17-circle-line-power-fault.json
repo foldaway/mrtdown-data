@@ -1,6 +1,11 @@
 {
   "id": "2024-09-17-circle-line-power-fault",
   "title": "Major Power Fault on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线发生主要电力故障",
+    "ms": "Gangguan Kuasa Utama di Laluan Bulat",
+    "ta": "வட்டப் பாதையில் பெரிய மின்சாரக் கோளாறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

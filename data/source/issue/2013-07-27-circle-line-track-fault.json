@@ -1,6 +1,11 @@
 {
   "id": "2013-07-27-circle-line-track-fault",
   "title": "Track Fault on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线上轨道故障",
+    "ms": "Jejak Kerosakan di Laluan Bulat",
+    "ta": "வட்டப் பாதையில் தடயப் பிழை"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

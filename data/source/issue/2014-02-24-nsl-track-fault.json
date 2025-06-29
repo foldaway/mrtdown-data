@@ -1,6 +1,11 @@
 {
   "id": "2014-02-24-nsl-track-fault",
   "title": "Major Track Fault on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线主要轨道故障",
+    "ms": "Ralat Jejaring Utama di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் முக்கிய தடப் பிழை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2024-10-01-tel-service-resuming",
   "title": "Train service disruption on Thomson–East Coast Line",
+  "title_translations": {
+    "zh-Hans": "汤姆森-东海岸线列车服务中断",
+    "ms": "Gangguan perkhidmatan kereta di Thomson–East Coast Line",
+    "ta": "தாம்சன்-கிழக்கு கடற்கரை பாதையில் ரயில் சேவை தடங்கல்"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

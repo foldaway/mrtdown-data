@@ -1,6 +1,11 @@
 {
   "id": "2024-03-28-bplrt-no-train-service-between-choa-chu-kang-and-southview",
   "title": "No train service between Choa Chu Kang and South View due to a power fault",
+  "title_translations": {
+    "zh-Hans": "因电力故障，蔡厝港至南景之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Choa Chu Kang dan South View kerana kerosakan kuasa",
+    "ta": "மின்சாரக் கோளாறு காரணமாக சாவாச்சுக்காங் மற்றும் சவுத் வியூ இடையே ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

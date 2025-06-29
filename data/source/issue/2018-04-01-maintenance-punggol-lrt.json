@@ -1,6 +1,11 @@
 {
   "id": "2018-04-01-maintenance-punggol-lrt",
   "title": "Maintenance Work on Punggol LRT System",
+  "title_translations": {
+    "zh-Hans": "榜鹅轻轨系统维修工程",
+    "ms": "Kerja Penyelenggaraan di Sistem LRT Punggol",
+    "ta": "ப்துறையீட்டு வேலைகள் புங்காங் LRT அமைப்பில்"
+  },
   "componentIdsAffected": [
     "PGLRT"
   ],

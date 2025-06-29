@@ -1,6 +1,11 @@
 {
   "id": "2022-05-21-sengkang-punggol-lrt-maintenance",
   "title": "Maintenance works on Sengkang-Punggol LRT system",
+  "title_translations": {
+    "zh-Hans": "Sengkang-Punggol 轻轨系统维护工程",
+    "ms": "Kerja penyelenggaraan di sistem LRT Sengkang-Punggol",
+    "ta": "செங்காங்-புנגלית LRT அமைப்பில் பராமரிப்புப் பணிகள்"
+  },
   "componentIdsAffected": [
     "SKLRT",
     "PGLRT"

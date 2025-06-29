@@ -1,6 +1,11 @@
 {
   "id": "2013-10-03-nsl-train-fault",
   "title": "Train fault causing delays on NSL",
+  "title_translations": {
+    "zh-Hans": "列车故障导致南北线延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan di NSL",
+    "ta": "ரயில் பழுது NSL இல் தாமதங்களை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

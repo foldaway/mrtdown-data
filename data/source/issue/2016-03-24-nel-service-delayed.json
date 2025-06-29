@@ -1,6 +1,11 @@
 {
   "id": "2016-03-24-nel-service-delayed",
   "title": "NEL service delayed due to signal train fault",
+  "title_translations": {
+    "zh-Hans": "信号列车故障导致 NEL 服务延误",
+    "ms": "Perkhidmatan NEL tertangguh kerana kerosakan kereta isyarat",
+    "ta": "சிக்னல் ரயில் கோளாறு காரணமாக NEL சேவை தாமதமானது"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

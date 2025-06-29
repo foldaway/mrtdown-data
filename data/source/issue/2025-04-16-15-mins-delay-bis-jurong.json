@@ -1,6 +1,11 @@
 {
   "id": "2025-04-16-15-mins-delay-bis-jurong",
   "title": "15 mins delay on NSL due to track fault",
+  "title_translations": {
+    "zh-Hans": "NSL 因轨道故障延误15分钟",
+    "ms": "15 minit kelewatan di NSL disebabkan oleh kerosakan landasan",
+    "ta": "தடக் கோளாறு காரணமாக NSL இல் 15 நிமிடங்கள் தாமதம்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

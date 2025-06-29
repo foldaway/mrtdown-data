@@ -1,6 +1,11 @@
 {
   "id": "2017-05-03-dtl-svc-delayed",
   "title": "Delay on Downtown Line due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "信号故障导致市中心线延误",
+    "ms": "Kelewatan Laluan Downtown kerana kerosakan isyarat",
+    "ta": "சிக்னலிங் தவறு காரணமாக டவுன்டவுன் லைனில் தாமதம்"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

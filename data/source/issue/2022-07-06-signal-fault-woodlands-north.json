@@ -1,6 +1,11 @@
 {
   "id": "2022-07-06-signal-fault-woodlands-north",
   "title": "Signal fault at Woodlands North",
+  "title_translations": {
+    "zh-Hans": "兀兰北信号故障",
+    "ms": "Ralat isyarat di Woodlands North",
+    "ta": "வுட்லண்ட்ஸ் நார்த் இல் சமிக்ஞை தவறு"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

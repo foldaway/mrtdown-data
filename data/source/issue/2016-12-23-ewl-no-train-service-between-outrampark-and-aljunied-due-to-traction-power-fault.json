@@ -1,6 +1,11 @@
 {
   "id": "2016-12-23-ewl-no-train-service-between-outrampark-and-aljunied-due-to-traction-power-fault",
   "title": "No train service between Outram Park & Aljunied due to traction power fault",
+  "title_translations": {
+    "zh-Hans": "由于牵引力故障，Outram Park 与 Aljunied 之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Outram Park & Aljunied kerana kerosakan kuasa tarikan",
+    "ta": "Outram Park & Aljunied இடையே ரயில் சேவை இல்லை, இழுவை மின்சாரக் கோளாறு காரணமாக"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

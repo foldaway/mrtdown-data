@@ -1,6 +1,11 @@
 {
   "id": "2021-03-28-no-nel-service-serangoon-sengkang",
   "title": "No NEL service between Serangoon and Sengkang due to power fault",
+  "title_translations": {
+    "zh-Hans": "由于电力故障，实龙岗站至盛港站之间东北线列车暂停服务",
+    "ms": "Tiada perkhidmatan NEL antara Serangoon dan Sengkang kerana kerosakan kuasa",
+    "ta": "செராங்கூன் மற்றும் செங்காங் இடையே மின் துண்டிப்பு காரணமாக NEL சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

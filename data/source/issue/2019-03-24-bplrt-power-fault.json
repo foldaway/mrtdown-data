@@ -1,6 +1,11 @@
 {
   "id": "2019-03-24-bplrt-power-fault",
   "title": "Service Disruption due to Power Fault on BPLRT",
+  "title_translations": {
+    "zh-Hans": "BPLRT因电力故障导致服务中断",
+    "ms": "Gangguan Perkhidmatan kerana Kerosakan Kuasa di BPLRT",
+    "ta": "BPLRT இல் மின்சாரக் கோளாறு காரணமாக சேவை தடை"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

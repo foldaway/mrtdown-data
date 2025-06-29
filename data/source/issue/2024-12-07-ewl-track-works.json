@@ -1,12 +1,21 @@
 {
   "id": "2024-12-07-ewl-track-works",
   "title": "Tracks works on East-West Line",
-  "componentIdsAffected": ["EWL"],
+  "title_translations": {
+    "zh-Hans": "东西线轨道工程",
+    "ms": "Kerja trek di Laluan Timur-Barat",
+    "ta": "கிழக்கு-மேற்கு பாதையில் தடங்கள் வேலை"
+  },
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "startAt": "2024-12-07T05:30:00.000+08:00",
   "endAt": "2024-12-10T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": ["track.work"],
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -25,7 +34,11 @@
     {
       "componentId": "EWL",
       "branchName": "main",
-      "stationIds": ["TAM", "SIM", "TNM"]
+      "stationIds": [
+        "TAM",
+        "SIM",
+        "TNM"
+      ]
     }
   ]
 }

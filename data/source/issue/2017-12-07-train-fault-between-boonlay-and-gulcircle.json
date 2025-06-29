@@ -1,6 +1,11 @@
 {
   "id": "2017-12-07-train-fault-between-boonlay-and-gulcircle",
   "title": "Train fault causing disruption between Boon Lay and Gul Circle",
+  "title_translations": {
+    "zh-Hans": "文礼至金文泰站之间列车故障导致运营受阻",
+    "ms": "Gangguan kereta api yang menyebabkan gangguan antara Boon Lay dan Gul Circle",
+    "ta": "Boon Lay மற்றும் Gul Circle இடையே இடையூறு ஏற்படுத்தும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

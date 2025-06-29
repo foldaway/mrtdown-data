@@ -1,6 +1,11 @@
 {
   "id": "2012-11-02-east-west-line-obstruction",
   "title": "Delay on East-West Line",
+  "title_translations": {
+    "zh-Hans": "东西线上延误",
+    "ms": "Kelewatan di Laluan Timur-Barat",
+    "ta": "கிழக்கு-மேற்கு பாதையில் தாமதம்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

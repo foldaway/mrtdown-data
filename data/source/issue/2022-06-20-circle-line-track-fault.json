@@ -1,6 +1,11 @@
 {
   "id": "2022-06-20-circle-line-track-fault",
   "title": "Track fault causing delays on Circle Line",
+  "title_translations": {
+    "zh-Hans": "轨道故障导致环线延误",
+    "ms": "Kerosakan trek menyebabkan kelewatan di Laluan Bulatan",
+    "ta": "வட்டப் பாதையில் தாமதத்தை ஏற்படுத்தும் தடப் பிழை"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2019-07-19-nel-svc-delayed",
   "title": "North East Line service disruption due to track fault",
+  "title_translations": {
+    "zh-Hans": "东北线轨道故障导致服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Timur Laut akibat kerosakan trek",
+    "ta": "தடக் கோளாறு காரணமாக வடகிழக்கு வரிசையில் சேவை தடைப்பட்டது"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

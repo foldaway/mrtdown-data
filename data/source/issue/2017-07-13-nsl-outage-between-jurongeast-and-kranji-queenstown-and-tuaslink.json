@@ -1,6 +1,11 @@
 {
   "id": "2017-07-13-nsl-outage-between-jurongeast-and-kranji-queenstown-and-tuaslink",
   "title": "No train service on NSL between Jurong East and Kranji, Queenstown and Tuas Link",
+  "title_translations": {
+    "zh-Hans": "NSL 裕廊东至克兰芝、女皇镇至大士连路段暂停列车服务",
+    "ms": "Tiada perkhidmatan kereta api di NSL antara Jurong East dan Kranji, Queenstown dan Tuas Link",
+    "ta": "ஜூராங் கிழக்கு மற்றும் கிராஞ்சி, குயின்ஸ்டவுன் மற்றும் துவாஸ் லிங்க் இடையே NSL இல் ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NSL",
     "EWL"

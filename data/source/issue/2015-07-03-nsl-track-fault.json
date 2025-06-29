@@ -1,6 +1,11 @@
 {
   "id": "2015-07-03-nsl-track-fault",
   "title": "Track Fault on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线故障追踪",
+    "ms": "Jejak Kerosakan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் தடமறிதல் பிழை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

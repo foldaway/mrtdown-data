@@ -1,6 +1,11 @@
 {
   "id": "2019-11-22-nel-maintenance-works",
   "title": "NEL stations closing early for maintenance",
+  "title_translations": {
+    "zh-Hans": "NEL车站因维护提前关闭",
+    "ms": "Stesen NEL ditutup awal untuk penyelenggaraan",
+    "ta": "பராமரிப்புக்காக NEL நிலையங்கள் விரைவில் மூடப்படும்"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

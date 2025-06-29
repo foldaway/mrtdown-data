@@ -1,6 +1,11 @@
 {
   "id": "2023-02-06-train-fault-slow-moving-trains",
   "title": "Train Fault Causing Slow Moving Trains",
+  "title_translations": {
+    "zh-Hans": "火车故障导致火车运行缓慢",
+    "ms": "Kerosakan Kereta Api Menyebabkan Kereta Api Bergerak Perlahan",
+    "ta": "ரயில் தவறு மெதுவாக ரயில்களை நகர்த்துகிறது"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

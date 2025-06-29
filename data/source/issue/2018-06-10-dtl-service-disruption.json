@@ -1,6 +1,11 @@
 {
   "id": "2018-06-10-dtl-service-disruption",
   "title": "Service disruption on the Downtown Line",
+  "title_translations": {
+    "zh-Hans": " downtown线发生服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Downtown",
+    "ta": "டவுன்டவுன் பாதையில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

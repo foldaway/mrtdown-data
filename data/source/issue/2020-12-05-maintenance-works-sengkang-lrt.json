@@ -1,6 +1,11 @@
 {
   "id": "2020-12-05-maintenance-works-sengkang-lrt",
   "title": "Maintenance works on the Sengkang LRT this weekend",
+  "title_translations": {
+    "zh-Hans": "本周末盛港轻轨的维修工程",
+    "ms": "Kerja penyelenggaraan di Sengkang LRT hujung minggu ini",
+    "ta": "இந்த வார இறுதியில் செங்காங் LRT இல் பராமரிப்புப் பணிகள்"
+  },
   "componentIdsAffected": [
     "SKLRT"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2018-08-14-all-day-trials-ewl",
   "title": "Service disruption on East-West Line due to power fault",
+  "title_translations": {
+    "zh-Hans": "东西线因电力故障导致服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Timur-Barat kerana masalah kuasa",
+    "ta": "மின் தடங்கல் காரணமாக கிழக்கு-மேற்கு பாதையில் சேவை தடங்கல்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

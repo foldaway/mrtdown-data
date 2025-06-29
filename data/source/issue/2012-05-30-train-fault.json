@@ -1,6 +1,11 @@
 {
   "id": "2012-05-30-train-fault",
   "title": "Train fault causing delays from Yew Tee to Jurong East",
+  "title_translations": {
+    "zh-Hans": "列车故障导致油池至裕廊东延误",
+    "ms": "Gangguan kereta api menyebabkan kelewatan dari Yew Tee ke Jurong East",
+    "ta": "Yew Tee முதல் Jurong East வரை தாமதத்தை ஏற்படுத்தும் ரயில் தவறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

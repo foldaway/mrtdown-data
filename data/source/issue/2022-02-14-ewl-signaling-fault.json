@@ -1,6 +1,11 @@
 {
   "id": "2022-02-14-ewl-signaling-fault",
   "title": "Signaling fault causing delays on EWL",
+  "title_translations": {
+    "zh-Hans": "信号故障导致东环线延误",
+    "ms": "Ralat isyarat menyebabkan kelewatan di EWL",
+    "ta": "EWL இல் தாமதத்தை ஏற்படுத்தும் சமிக்ஞை தவறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

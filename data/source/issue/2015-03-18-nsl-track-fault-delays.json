@@ -1,6 +1,11 @@
 {
   "id": "2015-03-18-nsl-track-fault-delays",
   "title": "Track Fault Causes Delays on North-South Line",
+  "title_translations": {
+    "zh-Hans": "追踪导致南北线延误的故障原因",
+    "ms": "Jejak Punca Kerosakan Menangguhkan Laluan Utara-Selatan",
+    "ta": "தடங்கள் வடக்கு-தெற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் காரணங்களைக் கண்டறிகின்றன"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

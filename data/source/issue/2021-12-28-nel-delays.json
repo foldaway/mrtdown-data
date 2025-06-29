@@ -1,6 +1,11 @@
 {
   "id": "2021-12-28-nel-delays",
   "title": "NEL service disruption due to train fault",
+  "title_translations": {
+    "zh-Hans": "火车故障导致 NEL 服务中断",
+    "ms": "Gangguan perkhidmatan NEL disebabkan oleh kerosakan kereta api",
+    "ta": "ரயில் கோளாறு காரணமாக NEL சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

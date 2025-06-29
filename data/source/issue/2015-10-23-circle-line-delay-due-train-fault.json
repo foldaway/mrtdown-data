@@ -1,6 +1,11 @@
 {
   "id": "2015-10-23-circle-line-delay-due-train-fault",
   "title": "Delay on Circle Line due to train fault",
+  "title_translations": {
+    "zh-Hans": "环线因列车故障延误",
+    "ms": "Kelewatan di Laluan Bulat kerana kerosakan tren",
+    "ta": "ரயில் பழுது காரணமாக வட்டப் பாதையில் தாமதம்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

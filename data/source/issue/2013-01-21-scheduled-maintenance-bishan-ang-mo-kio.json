@@ -1,6 +1,11 @@
 {
   "id": "2013-01-21-scheduled-maintenance-bishan-ang-mo-kio",
   "title": "Scheduled Maintenance for Track Works between Bishan and Ang Mo Kio Stations",
+  "title_translations": {
+    "zh-Hans": "碧山至宏茂桥站之间的轨道工程计划维护",
+    "ms": "Penyelenggaraan Berjadual untuk Kerja Trek Antara Stesen Bishan dan Ang Mo Kio",
+    "ta": "பிஷான் மற்றும் ஆங் மோ கியோ நிலையங்களுக்கு இடையிலான தண்டவாளப் பணிகளுக்கான திட்டமிடப்பட்ட பராமரிப்பு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

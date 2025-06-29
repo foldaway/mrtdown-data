@@ -1,6 +1,11 @@
 {
   "id": "2024-12-16-circle-line-signaling-fault",
   "title": "Signaling fault on Circle Line causes delays",
+  "title_translations": {
+    "zh-Hans": "环线信号故障导致延误",
+    "ms": "Ralat isyarat di Laluan Bulat menyebabkan kelewatan",
+    "ta": "வட்டப் பாதையில் சிக்னல் தவறு காரணமாக தாமதம்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2015-12-24-nsl-track-maintenance-work",
   "title": "Track maintenance work on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线轨道维护工作",
+    "ms": "Kerja penyelenggaraan landasan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் தட பராமரிப்பு பணிகள்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

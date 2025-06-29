@@ -1,6 +1,11 @@
 {
   "id": "2014-09-19-east-west-line-train-fault",
   "title": "Major train fault causing delays in the East West Line",
+  "title_translations": {
+    "zh-Hans": "东西线主要列车故障导致延误",
+    "ms": "Kerosakan kereta api utama menyebabkan kelewatan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் முக்கிய ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

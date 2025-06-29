@@ -1,6 +1,11 @@
 {
   "id": "2016-10-04-no-train-service-downtown-line",
   "title": "No train service between King Albert Park and Sixth Avenue",
+  "title_translations": {
+    "zh-Hans": "King Albert Park 和 Sixth Avenue 之间无火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara King Albert Park dan Sixth Avenue",
+    "ta": "கிங் ஆல்பெர்ட் பார்க் மற்றும் ஆறாவது அவென்யூ இடையே ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

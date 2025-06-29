@@ -1,6 +1,11 @@
 {
   "id": "2019-10-01-sengkang-punggol-lrt-outage",
   "title": "No LRT Service for Sengkang and Punggol due to System Fault",
+  "title_translations": {
+    "zh-Hans": "因系统故障，盛港和榜鹅轻轨列车暂停服务",
+    "ms": "Tiada Perkhidmatan LRT untuk Sengkang dan Punggol kerana Kerosakan Sistem",
+    "ta": "கணினி செயலிழப்பு காரணமாக செங்காங் மற்றும் பு metaphoricalகலுக்கு LRT சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "SKLRT",
     "PGLRT"

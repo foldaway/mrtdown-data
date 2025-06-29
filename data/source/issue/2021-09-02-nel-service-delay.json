@@ -1,6 +1,11 @@
 {
   "id": "2021-09-02-nel-service-delay",
   "title": "North East Line service disruption",
+  "title_translations": {
+    "zh-Hans": "东北线服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Timur Laut",
+    "ta": "வடகிழக்கு வழித்தடத்தில் சேவை தடங்கல்"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

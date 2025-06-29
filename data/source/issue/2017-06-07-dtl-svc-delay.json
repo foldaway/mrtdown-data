@@ -1,6 +1,11 @@
 {
   "id": "2017-06-07-dtl-svc-delay",
   "title": "Downtown Line service disruption due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "信号故障导致市区线服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Downtown disebabkan oleh kerosakan isyarat",
+    "ta": "சிக்னலிங் கோளாறு காரணமாக டவுன்டவுன் லைன் சேவை தடங்கல்"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

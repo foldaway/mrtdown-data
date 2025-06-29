@@ -1,6 +1,11 @@
 {
   "id": "2017-08-17-nsl-signalling-fault-ang-mo-kio",
   "title": "New Signalling System Fault Near Ang Mo Kio",
+  "title_translations": {
+    "zh-Hans": "宏茂桥附近新信号系统故障",
+    "ms": "Ralat Sistem Isyarat Baharu Berhampiran Ang Mo Kio",
+    "ta": "Ang Mo Kio அருகே புதிய சமிக்ஞை அமைப்பு தவறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

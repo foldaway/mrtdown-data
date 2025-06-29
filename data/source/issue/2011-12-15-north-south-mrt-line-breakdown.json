@@ -1,6 +1,11 @@
 {
   "id": "2011-12-15-north-south-mrt-line-breakdown",
   "title": "North-South MRT Line breakdown during evening peak hours",
+  "title_translations": {
+    "zh-Hans": "南北线晚高峰时段故障",
+    "ms": "Gangguan Laluan MRT Utara-Selatan semasa waktu puncak petang",
+    "ta": "மாலை நேர நெரிசல் நேரத்தில் வடக்கு-தெற்கு எம்ஆர்டி பாதையில் ஏற்பட்ட தடங்கல்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

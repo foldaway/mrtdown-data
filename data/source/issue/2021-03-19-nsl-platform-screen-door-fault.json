@@ -1,6 +1,11 @@
 {
   "id": "2021-03-19-nsl-platform-screen-door-fault",
   "title": "Platform Screen Door Fault on NSL Between Ang Mo Kio and Braddell",
+  "title_translations": {
+    "zh-Hans": "NSL 安国和布莱德尔之间的站台门故障",
+    "ms": "Kerosakan Pintu Skrin Platform di NSL Antara Ang Mo Kio dan Braddell",
+    "ta": "NSL இல் ஆங் மோ கியோ மற்றும் பிராடல் இடையே தளத்தின் கதவு பழுது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

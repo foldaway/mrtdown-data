@@ -1,6 +1,11 @@
 {
   "id": "2019-05-14-expo-train-fault",
   "title": "Train Fault at Expo Station",
+  "title_translations": {
+    "zh-Hans": "樟宜机场站发生列车故障",
+    "ms": "Kerosakan Kereta Api di Stesen Expo",
+    "ta": "எக்ஸ்போ நிலையத்தில் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

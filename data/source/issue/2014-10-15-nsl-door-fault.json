@@ -1,6 +1,11 @@
 {
   "id": "2014-10-15-nsl-door-fault",
   "title": "Door Fault at Dhoby Ghaut Station",
+  "title_translations": {
+    "zh-Hans": "多美歌站出入口门故障",
+    "ms": "Kegagalan Pintu di Stesen Dhoby Ghaut",
+    "ta": "டோபி கவுட் நிலையத்தில் கதவு கோளாறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

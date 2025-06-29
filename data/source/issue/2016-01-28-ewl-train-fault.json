@@ -1,6 +1,11 @@
 {
   "id": "2016-01-28-ewl-train-fault",
   "title": "Train fault causing delays on East West Line",
+  "title_translations": {
+    "zh-Hans": "列车故障导致东西线延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் ரயில் பழுது காரணமாக தாமதம்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

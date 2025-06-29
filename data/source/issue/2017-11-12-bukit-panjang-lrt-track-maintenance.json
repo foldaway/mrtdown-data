@@ -1,6 +1,11 @@
 {
   "id": "2017-11-12-bukit-panjang-lrt-track-maintenance",
   "title": "Bukit Panjang LRT adjusted start time for track maintenance",
+  "title_translations": {
+    "zh-Hans": "蔡厝港轻轨调整轨道维修的起始时间",
+    "ms": "Waktu mula Bukit Panjang LRT diselaraskan untuk penyelenggaraan landasan",
+    "ta": "புக்கிட் பாங் LRT தடப் பராமரிப்புக்கான தொடக்க நேரம் சரிசெய்யப்பட்டது"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

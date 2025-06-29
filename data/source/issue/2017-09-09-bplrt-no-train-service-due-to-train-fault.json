@@ -1,6 +1,11 @@
 {
   "id": "2017-09-09-bplrt-no-train-service-due-to-train-fault",
   "title": "No train service due to train fault",
+  "title_translations": {
+    "zh-Hans": "火车故障导致火车停运",
+    "ms": "Tiada perkhidmatan kereta kerana kerosakan kereta",
+    "ta": "தொடர்வண்டி பழுது காரணமாக ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

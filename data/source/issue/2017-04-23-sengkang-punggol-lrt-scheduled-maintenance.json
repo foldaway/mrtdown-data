@@ -1,6 +1,11 @@
 {
   "id": "2017-04-23-sengkang-punggol-lrt-scheduled-maintenance",
   "title": "Scheduled Maintenance Works on Sengkang-Punggol LRT",
+  "title_translations": {
+    "zh-Hans": "Sengkang-Punggol 轻轨计划维修工程",
+    "ms": "Pekerjaan Penyelenggaraan Berjadual di LRT Sengkang-Punggol",
+    "ta": "Sengkang-Punggol LRT இல் திட்டமிடப்பட்ட பராமரிப்புப் பணிகள்"
+  },
   "componentIdsAffected": [
     "SKLRT",
     "PGLRT"

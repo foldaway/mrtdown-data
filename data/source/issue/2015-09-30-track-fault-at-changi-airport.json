@@ -1,6 +1,11 @@
 {
   "id": "2015-09-30-track-fault-at-changi-airport",
   "title": "Track fault reported at Changi Airport",
+  "title_translations": {
+    "zh-Hans": "樟宜机场报告轨道故障",
+    "ms": "Kerosakan trek dilaporkan di Lapangan Terbang Changi",
+    "ta": "சங்கி விமான நிலையத்தில் தடப் பிழை புகாரளிக்கப்பட்டது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

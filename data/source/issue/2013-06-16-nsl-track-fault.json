@@ -1,6 +1,11 @@
 {
   "id": "2013-06-16-nsl-track-fault",
   "title": "Track Fault Affects North-South Line",
+  "title_translations": {
+    "zh-Hans": "轨道故障影响南北线",
+    "ms": "Ralat Jejaki Menjejaskan Laluan Utara-Selatan",
+    "ta": "தடத்தின் பிழை வடக்கு-தெற்கு பாதையை பாதிக்கிறது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2018-02-23-dtl-delayed-due-to-train-fault",
   "title": "DTL service disruption due to train fault",
+  "title_translations": {
+    "zh-Hans": "DTL列车故障导致服务中断",
+    "ms": "Gangguan perkhidmatan DTL akibat kerosakan kereta api",
+    "ta": "தொடர்வண்டி பழுது காரணமாக DTL சேவை தடை"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2025-01-02-thomson-east-coast-line-service-disruption",
   "title": "Thomson–East Coast Line service disruption",
+  "title_translations": {
+    "zh-Hans": "汤申-东海岸线服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Thomson–East Coast",
+    "ta": "தாம்சன்-கிழக்கு கடற்கரை வரி சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

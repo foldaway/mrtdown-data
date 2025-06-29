@@ -1,6 +1,11 @@
 {
   "id": "2012-02-14-south-bound-delays",
   "title": "Delays on South-bound Train Services",
+  "title_translations": {
+    "zh-Hans": "南行列车服务延误",
+    "ms": "Kelewatan dalam Perkhidmatan Kereta Api Arah Selatan",
+    "ta": "தெற்கு நோக்கிச் செல்லும் தொடர் சேவை தாமதங்கள்"
+  },
   "componentIdsAffected": [
     "NSL",
     "EWL"

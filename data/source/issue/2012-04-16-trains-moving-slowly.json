@@ -1,6 +1,11 @@
 {
   "id": "2012-04-16-trains-moving-slowly",
   "title": "Trains on South-bound Service Moving Slowly",
+  "title_translations": {
+    "zh-Hans": "南行列车行驶缓慢",
+    "ms": "Kereta Api Perkhidmatan Selatan Bergerak Perlahan",
+    "ta": "தெற்கு நோக்கி செல்லும் ரயில்கள் மெதுவாக நகர்கின்றன"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

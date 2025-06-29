@@ -1,6 +1,11 @@
 {
   "id": "2015-12-10-ewl-travel-time-congestion",
   "title": "Longer travel times on East West Line due to congestion",
+  "title_translations": {
+    "zh-Hans": "东西线因拥堵导致行程时间延长",
+    "ms": "Perjalanan lebih lama di Laluan Timur Barat kerana kesesakan",
+    "ta": "கிழக்கு மேற்கு பாதையில் நெரிசல் காரணமாக நீண்ட பயண நேரங்கள்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

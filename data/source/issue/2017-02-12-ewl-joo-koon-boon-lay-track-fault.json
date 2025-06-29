@@ -1,6 +1,11 @@
 {
   "id": "2017-02-12-ewl-joo-koon-boon-lay-track-fault",
   "title": "Service disruption between Joo Koon and Boon Lay due to track fault",
+  "title_translations": {
+    "zh-Hans": "因轨道故障导致裕廊湖站至文礼站服务中断",
+    "ms": "Gangguan perkhidmatan antara Joo Koon dan Boon Lay disebabkan oleh kerosakan trek",
+    "ta": "தடப் பிழை காரணமாக ஜூ கூன் மற்றும் பூன் லே இடையே சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2019-03-29-nel-early-closure",
   "title": "Service disruption on North East Line due to maintenance work",
+  "title_translations": {
+    "zh-Hans": "东北线因维修工程导致服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Timur Laut disebabkan kerja penyelenggaraan",
+    "ta": "பராமரிப்புப் பணிகளால் வடகிழக்குக் கோட்டில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

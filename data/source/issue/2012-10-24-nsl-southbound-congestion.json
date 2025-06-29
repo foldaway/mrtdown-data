@@ -1,6 +1,11 @@
 {
   "id": "2012-10-24-nsl-southbound-congestion",
   "title": "Service disruption on North-South Line due to track fault",
+  "title_translations": {
+    "zh-Hans": "轨道故障导致南北线服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Utara-Selatan akibat kerosakan trek",
+    "ta": "தடப் பிழையால் வடக்கு-தெற்கு பாதையில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

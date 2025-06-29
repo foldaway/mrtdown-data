@@ -1,6 +1,11 @@
 {
   "id": "2016-10-26-bukit-panjang-train-fault",
   "title": "Service disruption due to train fault between Bukit Panjang & Phoenix",
+  "title_translations": {
+    "zh-Hans": "Bukit Panjang 和 Phoenix 之间因火车故障导致的服务中断",
+    "ms": "Gangguan perkhidmatan kerana kerosakan kereta api antara Bukit Panjang & Phoenix",
+    "ta": "Bukit Panjang & Phoenix இடையே ரயில் கோளாறு காரணமாக சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

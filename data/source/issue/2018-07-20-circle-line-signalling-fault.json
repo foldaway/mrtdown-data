@@ -1,6 +1,11 @@
 {
   "id": "2018-07-20-circle-line-signalling-fault",
   "title": "Train services along the Circle Line operating slower than normal due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "由于信号故障，环线列车服务运行速度比正常慢",
+    "ms": "Perkhidmatan kereta api di sepanjang Laluan Bulatan beroperasi lebih perlahan daripada biasa kerana kegagalan isyarat",
+    "ta": "சிக்னலிங் கோளாறு காரணமாக வட்டப் பாதையில் ரயில் சேவைகள் சாதாரணமாக இயங்குவதை விட மெதுவாக இயங்குகின்றன"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

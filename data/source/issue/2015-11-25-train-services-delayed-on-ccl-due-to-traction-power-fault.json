@@ -1,6 +1,11 @@
 {
   "id": "2015-11-25-train-services-delayed-on-ccl-due-to-traction-power-fault",
   "title": "Train services delayed on the CCL due to traction power fault",
+  "title_translations": {
+    "zh-Hans": "CCL因牵引动力故障导致列车服务延误",
+    "ms": "Perkhidmatan kereta api tergendala di CCL disebabkan oleh kerosakan kuasa tarikan",
+    "ta": "ஈர்ப்பு சக்தி கோளாறு காரணமாக CCL இல் ரயில் சேவைகள் தாமதமாகின்றன"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2017-04-05-planned-trial-of-new-signalling-system",
   "title": "Planned trial of new signalling system on NSL",
+  "title_translations": {
+    "zh-Hans": "NSL 新信号系统试验计划",
+    "ms": "Percubaan terancang sistem isyarat baharu di NSL",
+    "ta": "NSL இல் புதிய சமிக்ஞை அமைப்பின் திட்டமிடப்பட்ட சோதனை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

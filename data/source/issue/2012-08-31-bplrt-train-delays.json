@@ -1,6 +1,11 @@
 {
   "id": "2012-08-31-bplrt-train-delays",
   "title": "Train delays between Senja and Jelapang",
+  "title_translations": {
+    "zh-Hans": "先 惹 和 惹 拉 邦 之间 的 列车 延误",
+    "ms": "Kereta api tertunda antara Senja dan Jelapang",
+    "ta": "Senja மற்றும் Jelapang இடையே ரயில் தாமதங்கள்"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

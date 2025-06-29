@@ -1,6 +1,11 @@
 {
   "id": "2024-06-03-nsl-traction-power-fault",
   "title": "Service disruption on North-South Line due to traction power fault",
+  "title_translations": {
+    "zh-Hans": "北向南线因牵引力故障导致服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Utara-Selatan akibat kegagalan kuasa tarikan",
+    "ta": "தள்ளு விசையின் கோளாறு காரணமாக வடக்கு-தெற்கு பாதையில் சேவை தடங்கல்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2013-04-12-ewl-signaling-fault",
   "title": "Signaling Fault on East-West Line",
+  "title_translations": {
+    "zh-Hans": "东西线信号故障",
+    "ms": "Kerosakan Isyarat di Laluan Timur-Barat",
+    "ta": "கிழக்கு-மேற்கு பாதையில் சமிக்ஞை தவறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

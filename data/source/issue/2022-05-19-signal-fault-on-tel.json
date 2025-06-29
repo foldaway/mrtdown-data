@@ -1,6 +1,11 @@
 {
   "id": "2022-05-19-signal-fault-on-tel",
   "title": "Signal fault affecting train movement on Thomson–East Coast Line",
+  "title_translations": {
+    "zh-Hans": "汤申东海岸线信号故障影响列车运行",
+    "ms": "Ralat isyarat yang menjejaskan pergerakan kereta di Thomson–East Coast Line",
+    "ta": "தாம்சன்-கிழக்கு கடற்கரை பாதையில் ரயில் இயக்கத்தை பாதிக்கும் சமிக்ஞை தவறு"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

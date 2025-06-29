@@ -1,6 +1,11 @@
 {
   "id": "2021-02-25-ewl-no-train-svc-btwn-bugis-aljunied",
   "title": "No train service between Bugis and Aljunied",
+  "title_translations": {
+    "zh-Hans": "文庆和友诺士之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Bugis dan Aljunied",
+    "ta": "புகிஸ் மற்றும் அல்ஜுனிட் இடையே ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

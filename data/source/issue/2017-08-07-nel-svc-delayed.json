@@ -1,6 +1,11 @@
 {
   "id": "2017-08-07-nel-svc-delayed",
   "title": "NEL service disruption due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "信号故障导致 NEL 服务中断",
+    "ms": "Gangguan perkhidmatan NEL kerana kerosakan isyarat",
+    "ta": "சிக்னல் கோளாறு காரணமாக NEL சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

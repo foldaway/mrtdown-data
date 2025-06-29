@@ -1,6 +1,11 @@
 {
   "id": "2021-04-09-north-east-line-maintenance",
   "title": "Early closures of North East Line stations for overhead power system works",
+  "title_translations": {
+    "zh-Hans": "东北线车站提前关闭以进行架空电力系统工程",
+    "ms": "Penutupan awal stesen North East Line untuk kerja sistem kuasa atas",
+    "ta": "மேல்நிலை மின் அமைப்புகளுக்கான வடகிழக்கு வரி நிலையங்களின் ஆரம்ப மூடல்கள்"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

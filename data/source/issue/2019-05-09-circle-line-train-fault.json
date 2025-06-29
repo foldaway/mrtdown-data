@@ -1,6 +1,11 @@
 {
   "id": "2019-05-09-circle-line-train-fault",
   "title": "Service Disruption on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线服务中断",
+    "ms": "Gangguan Perkhidmatan di Laluan Lingaran",
+    "ta": "வட்டப் பாதையில் சேவை தடை"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

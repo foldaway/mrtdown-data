@@ -1,6 +1,11 @@
 {
   "id": "2017-06-12-nsl-signalling-system-fault",
   "title": "Signalling system fault causing delays",
+  "title_translations": {
+    "zh-Hans": "信号系统故障导致延误",
+    "ms": "Ralat sistem isyarat menyebabkan kelewatan",
+    "ta": "தாமதங்களை ஏற்படுத்தும் சமிக்ஞை அமைப்பு தவறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

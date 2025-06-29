@@ -1,6 +1,11 @@
 {
   "id": "2013-07-04-ccl-train-service-delay",
   "title": "CCL train service delay due to communication equipment failure",
+  "title_translations": {
+    "zh-Hans": "CCL列车服务因通讯设备故障延误",
+    "ms": "Kelewatan perkhidmatan kereta CCL kerana kegagalan peralatan komunikasi",
+    "ta": "தொடர்பு உபகரணங்கள் செயலிழந்ததால் CCL ரயில் சேவை தாமதம்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

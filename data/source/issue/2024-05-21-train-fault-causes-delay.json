@@ -1,6 +1,11 @@
 {
   "id": "2024-05-21-train-fault-causes-delay",
   "title": "Train Fault Causing Delays Between Orchard and Gardens by the Bay",
+  "title_translations": {
+    "zh-Hans": "火车故障导致 Orchard 和 Gardens by the Bay 之间延误",
+    "ms": "Kerosakan Kereta Api Menyebabkan Kelewatan Antara Orchard dan Gardens by the Bay",
+    "ta": "ரயில் கோளாறு காரணமாக Orchard மற்றும் Gardens by the Bay இடையே தாமதம்"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

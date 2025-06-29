@@ -1,6 +1,11 @@
 {
   "id": "2013-06-19-nel-train-fault",
   "title": "Service disruption due to train fault on North East Line",
+  "title_translations": {
+    "zh-Hans": "东北线列车故障导致的服务中断",
+    "ms": "Gangguan perkhidmatan kerana kerosakan kereta api di Laluan Timur Laut",
+    "ta": "வடகிழக்கு பாதையில் ரயில் கோளாறு காரணமாக சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

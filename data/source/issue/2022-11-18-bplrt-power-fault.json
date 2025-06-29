@@ -1,6 +1,11 @@
 {
   "id": "2022-11-18-bplrt-power-fault",
   "title": "Power fault reported at Fajar",
+  "title_translations": {
+    "zh-Hans": "报道称法加站发生电力故障",
+    "ms": "Gangguan kuasa dilaporkan di Fajar",
+    "ta": "Fajar இல் மின் தடை அறிவிக்கப்பட்டுள்ளது"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

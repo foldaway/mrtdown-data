@@ -1,6 +1,11 @@
 {
   "id": "2024-10-22-bukit-panjang-lrt-service-disruption",
   "title": "Service disruption on Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "武吉班让轻轨服务中断",
+    "ms": "Gangguan perkhidmatan di Bukit Panjang LRT",
+    "ta": "Bukit Panjang LRT இல் சேவை தடை"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

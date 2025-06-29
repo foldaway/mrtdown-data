@@ -1,6 +1,11 @@
 {
   "id": "2015-08-13-nsl-track-fault-2",
   "title": "Track Fault near Bishan on North-South Line",
+  "title_translations": {
+    "zh-Hans": "文礼附近南北线上轨道故障",
+    "ms": "Laluan Utara-Selatan berlaku kerosakan trek berhampiran Bishan",
+    "ta": "பிஷான் அருகே வடக்கு-தெற்கு பாதையில் ரயில் பாதையில் பழுது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

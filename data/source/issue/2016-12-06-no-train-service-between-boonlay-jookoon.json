@@ -1,6 +1,11 @@
 {
   "id": "2016-12-06-no-train-service-between-boonlay-jookoon",
   "title": "No train service between Boon Lay & Joo Koon due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "由于信号故障，文礼站和裕廊东站之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Boon Lay & Joo Koon disebabkan oleh ralat isyarat",
+    "ta": "சிக்னலிங் பிழை காரணமாக பூன் லே & ஜூ கூன் இடையே ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

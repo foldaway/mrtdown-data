@@ -1,6 +1,11 @@
 {
   "id": "2012-04-03-south-bound-train-service-slow",
   "title": "South-bound train service disrupted due to track fault",
+  "title_translations": {
+    "zh-Hans": "轨道故障导致南行列车服务中断",
+    "ms": "Perkhidmatan kereta api arah selatan terganggu kerana kerosakan landasan",
+    "ta": "தடக் கோளாறு காரணமாக தெற்கு நோக்கிச் செல்லும் ரயில் சேவை பாதிக்கப்பட்டுள்ளது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

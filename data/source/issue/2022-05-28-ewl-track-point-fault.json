@@ -1,6 +1,11 @@
 {
   "id": "2022-05-28-ewl-track-point-fault",
   "title": "Delay on East West Line due to track point fault",
+  "title_translations": {
+    "zh-Hans": "东西线因轨道点故障延误",
+    "ms": "Kelewatan di Laluan Timur Barat kerana kerosakan titik trek",
+    "ta": "தடப் புள்ளியில் ஏற்பட்ட கோளாறு காரணமாக கிழக்கு மேற்கு பாதையில் தாமதம்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

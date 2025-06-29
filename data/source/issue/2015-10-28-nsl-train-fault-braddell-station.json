@@ -1,6 +1,11 @@
 {
   "id": "2015-10-28-nsl-train-fault-braddell-station",
   "title": "Train fault at Braddell station causing delays on North-South Line",
+  "title_translations": {
+    "zh-Hans": "Braddell站发生列车故障，导致南北线延误",
+    "ms": "Kerosakan kereta di stesen Braddell menyebabkan kelewatan di Laluan Utara-Selatan",
+    "ta": "பிராடெல் நிலையத்தில் ரயில் கோளாறு காரணமாக வடக்கு-தெற்கு பாதையில் தாமதங்கள்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

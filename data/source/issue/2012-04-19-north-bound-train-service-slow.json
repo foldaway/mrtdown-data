@@ -1,6 +1,11 @@
 {
   "id": "2012-04-19-north-bound-train-service-slow",
   "title": "North-bound train service toward Orchard moving slower due to track fault",
+  "title_translations": {
+    "zh-Hans": "北行至乌节路 (Orchard) 的列车服务因轨道故障运行速度减慢",
+    "ms": "Perkhidmatan kereta api arah utara ke Orchard bergerak lebih perlahan kerana kerosakan landasan",
+    "ta": "ஓர்ச்சார்ட் நோக்கிய வடக்கு ரயில் சேவை தடக் கோளாறு காரணமாக மெதுவாக இயங்குகிறது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

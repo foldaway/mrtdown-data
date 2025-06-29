@@ -1,6 +1,11 @@
 {
   "id": "2012-05-03-jurong-to-joo-koon-track-fault",
   "title": "Train service disruption from Jurong to Joo Koon",
+  "title_translations": {
+    "zh-Hans": "裕廊至裕廊镇火车服务中断",
+    "ms": "Gangguan perkhidmatan kereta dari Jurong ke Joo Koon",
+    "ta": "ஜூரோங் முதல் ஜூ கூன் வரை ரயில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

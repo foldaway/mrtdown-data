@@ -1,6 +1,11 @@
 {
   "id": "2016-11-04-ccl-train-delays",
   "title": "Intermittent signal interference causing delays on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线信号间歇性干扰导致延误",
+    "ms": "Gangguan isyarat sesekali menyebabkan kelewatan di Laluan Lingaran",
+    "ta": "வட்டப் பாதையில் தாமதங்களை ஏற்படுத்தும் அவ்வப்போது சமிக்ஞை குறுக்கீடு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

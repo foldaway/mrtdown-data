@@ -1,6 +1,11 @@
 {
   "id": "2015-10-28-track-fault-at-pasiris",
   "title": "Track fault at Pasir Ris causing service disruption",
+  "title_translations": {
+    "zh-Hans": "Pasir Ris 轨道故障导致服务中断",
+    "ms": "Ralat trek di Pasir Ris menyebabkan gangguan perkhidmatan",
+    "ta": "பாசிர் ரிஸில் உள்ள பாதையில் பழுது காரணமாக சேவை தடைப்பட்டது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

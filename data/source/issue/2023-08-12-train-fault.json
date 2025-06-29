@@ -1,6 +1,11 @@
 {
   "id": "2023-08-12-train-fault",
   "title": "Train fault causing delays",
+  "title_translations": {
+    "zh-Hans": "列车故障导致延误",
+    "ms": "Laluan kereta api menyebabkan kelewatan",
+    "ta": "ரயில் கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

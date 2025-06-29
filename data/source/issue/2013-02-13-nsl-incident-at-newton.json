@@ -1,6 +1,11 @@
 {
   "id": "2013-02-13-nsl-incident-at-newton",
   "title": "Service disruption due to incident at Newton station",
+  "title_translations": {
+    "zh-Hans": "牛顿站事故导致服务中断",
+    "ms": "Gangguan perkhidmatan disebabkan insiden di stesen Newton",
+    "ta": "நியூட்டன் நிலையத்தில் ஏற்பட்ட சம்பவத்தால் சேவை தடைபட்டது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

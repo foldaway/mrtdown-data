@@ -1,6 +1,11 @@
 {
   "id": "2015-10-27-nsl-train-fault-issues",
   "title": "Train fault causing longer travelling times on NS line",
+  "title_translations": {
+    "zh-Hans": "列车故障导致南北线行程时间延长",
+    "ms": "Kerosakan kereta api menyebabkan masa perjalanan lebih lama di laluan NS",
+    "ta": "ரயில் பழுது காரணமாக NS பாதையில் பயண நேரம் அதிகரிப்பு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

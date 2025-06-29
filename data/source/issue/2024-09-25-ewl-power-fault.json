@@ -1,6 +1,11 @@
 {
   "id": "2024-09-25-ewl-power-fault",
   "title": "No train service between Jurong East and Buona Vista due to Track Repair Works",
+  "title_translations": {
+    "zh-Hans": "由于轨道维修工程，裕廊东和波那维斯达之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Jurong East dan Buona Vista kerana Kerja Pembaikan Jejak",
+    "ta": "ஜூராங் கிழக்கு மற்றும் புவானா விஸ்டா இடையே ரயில் சேவை இல்லை, தட பராமரிப்பு பணிகள் காரணமாக"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

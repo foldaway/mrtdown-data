@@ -1,6 +1,11 @@
 {
   "id": "2019-05-22-circle-line-train-fault",
   "title": "Train Fault on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线列车故障",
+    "ms": "Kerosakan Kereta Api di Laluan Lingkaran",
+    "ta": "வட்டப் பாதையில் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

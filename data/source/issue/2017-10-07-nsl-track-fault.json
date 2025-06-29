@@ -1,6 +1,11 @@
 {
   "id": "2017-10-07-nsl-track-fault",
   "title": "Major service disruption on the North-South Line due to track fault and tunnel flooding",
+  "title_translations": {
+    "zh-Hans": "轨道故障及隧道水淹导致南北线主要服务中断",
+    "ms": "Gangguan perkhidmatan utama di Laluan Utara-Selatan akibat kerosakan landasan dan banjir terowong",
+    "ta": "தடக் கோளாறு மற்றும் சுரங்க வெள்ளப்பெருக்கு காரணமாக வடக்கு-தெற்கு பாதையில் முக்கிய சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

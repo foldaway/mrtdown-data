@@ -1,6 +1,11 @@
 {
   "id": "2016-09-02-ccl-no-mobile-signals",
   "title": "No mobile signals at certain stations on the Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线部分站点没有手机信号",
+    "ms": "Tiada isyarat mudah alih di stesen-stesen tertentu di Laluan Lingkar",
+    "ta": "வட்டப் பாதையில் உள்ள சில நிலையங்களில் மொபைல் சிக்னல்கள் இல்லை"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2024-12-23-circle-line-outage",
   "title": "Train service disruption on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线列车服务中断",
+    "ms": "Gangguan perkhidmatan kereta di Laluan Bulat",
+    "ta": "வட்ட பாதையில் ரயில் சேவை தடங்கல்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

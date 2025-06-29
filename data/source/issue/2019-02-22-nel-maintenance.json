@@ -1,6 +1,11 @@
 {
   "id": "2019-02-22-nel-maintenance",
   "title": "Upgraded Maintenance on North East Line (NEL)",
+  "title_translations": {
+    "zh-Hans": "东北线（NEL）升级维修",
+    "ms": "Penyelenggaraan yang dinaik taraf di Laluan Timur Laut (NEL)",
+    "ta": "வடகிழக்கு பாதையில் மேம்படுத்தப்பட்ட பராமரிப்பு (NEL)"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

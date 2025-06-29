@@ -1,6 +1,11 @@
 {
   "id": "2012-04-18-circle-line-no-train-service-between-holland-village-and-caldecott-stations-due-to-track-fault",
   "title": "Circle Line: Service disruption due to track fault",
+  "title_translations": {
+    "zh-Hans": "环线：轨道故障导致服务中断",
+    "ms": "Lingkaran Line: Gangguan perkhidmatan disebabkan kerosakan landasan",
+    "ta": "வட்ட லைன்: தண்டவாளக் கோளாறு காரணமாக சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

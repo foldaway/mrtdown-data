@@ -1,6 +1,11 @@
 {
   "id": "2023-03-08-bplrt-power-fault",
   "title": "Power fault causing shuttle service disruption",
+  "title_translations": {
+    "zh-Hans": "电力故障导致班车服务中断",
+    "ms": "Gangguan perkhidmatan ulang-alik akibat gangguan kuasa",
+    "ta": "மின் தடை காரணமாக ஷட்டில் சேவை சீர்குலைவு"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

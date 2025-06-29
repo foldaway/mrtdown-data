@@ -1,6 +1,11 @@
 {
   "id": "2019-11-01-maintenance-nel-station-closure",
   "title": "North East Line stations early closure for maintenance works",
+  "title_translations": {
+    "zh-Hans": "东北线车站提前关闭进行维修工程",
+    "ms": "Penutupan awal stesen Laluan Timur Laut untuk kerja penyelenggaraan",
+    "ta": "பராமரிப்பு பணிகளுக்காக வடகிழக்கு வரி நிலையங்கள் முன்கூட்டியே மூடப்படும்"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

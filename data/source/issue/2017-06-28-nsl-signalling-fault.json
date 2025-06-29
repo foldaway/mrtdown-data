@@ -1,6 +1,11 @@
 {
   "id": "2017-06-28-nsl-signalling-fault",
   "title": "Train service disruption on the North-South Line due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "南北线信号故障导致列车服务中断",
+    "ms": "Gangguan perkhidmatan kereta di Laluan Utara-Selatan disebabkan oleh kerosakan isyarat",
+    "ta": "சிக்னல் கோளாறு காரணமாக வடக்கு-தெற்கு பாதையில் ரயில் சேவை தடைப்பட்டது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

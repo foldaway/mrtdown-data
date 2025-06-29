@@ -1,6 +1,11 @@
 {
   "id": "2015-07-23-ewl-train-fault",
   "title": "Train fault on East West Line affecting travel time",
+  "title_translations": {
+    "zh-Hans": "东西线列车故障影响出行时间",
+    "ms": "Kerosakan kereta di Laluan Timur Barat menjejaskan masa perjalanan",
+    "ta": "கிழக்கு மேற்கு பாதையில் ரயில் பழுது பயண நேரத்தை பாதிக்கிறது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

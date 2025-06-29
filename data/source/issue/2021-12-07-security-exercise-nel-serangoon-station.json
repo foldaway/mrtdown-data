@@ -1,6 +1,11 @@
 {
   "id": "2021-12-07-security-exercise-nel-serangoon-station",
   "title": "Security Exercise at Serangoon Station",
+  "title_translations": {
+    "zh-Hans": "实龙岗站安全演习",
+    "ms": "Latihan Keselamatan di Stesen Serangoon",
+    "ta": "சரங்கூன் நிலையத்தில் பாதுகாப்புப் பயிற்சி"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

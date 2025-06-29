@@ -1,6 +1,11 @@
 {
   "id": "2014-01-02-nsl-traction-power-fault",
   "title": "Service disruption on the North-South Line due to traction power fault",
+  "title_translations": {
+    "zh-Hans": "牵引力故障导致南北线服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Utara-Selatan disebabkan oleh kerosakan kuasa tarikan",
+    "ta": "தன்னியக்க விசை செயலிழப்பு காரணமாக வடக்கு-தெற்கு பாதையில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

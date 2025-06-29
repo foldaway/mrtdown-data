@@ -1,6 +1,11 @@
 {
   "id": "2014-01-16-east-west-line-track-fault",
   "title": "East West Line track fault causing delays",
+  "title_translations": {
+    "zh-Hans": "东西线轨道故障导致延误",
+    "ms": "Ralat trek Laluan Timur Barat menyebabkan kelewatan",
+    "ta": "கிழக்கு மேற்கு பாதையில் ஏற்பட்டுள்ள தடங்கல் தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

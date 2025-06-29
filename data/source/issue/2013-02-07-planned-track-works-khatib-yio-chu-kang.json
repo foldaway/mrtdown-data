@@ -1,6 +1,11 @@
 {
   "id": "2013-02-07-planned-track-works-khatib-yio-chu-kang",
   "title": "Planned track works from Khatib to Yio Chu Kang",
+  "title_translations": {
+    "zh-Hans": "实龙岗至宏茂桥站计划轨道工程",
+    "ms": "Kerja trek yang dirancang dari Khatib ke Yio Chu Kang",
+    "ta": "காத்திப் முதல் யோ சூ காங் வரை திட்டமிடப்பட்ட ரயில் பாதப் பணிகள்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

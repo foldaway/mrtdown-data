@@ -1,6 +1,11 @@
 {
   "id": "2019-05-18-renewal-and-maintenance-works",
   "title": "Renewal and Maintenance Works along North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线更新与维修工程",
+    "ms": "Pekerjaan Pembaharuan dan Penyelenggaraan di sepanjang North-South Line",
+    "ta": "வடக்கு-தெற்கு பாதையில் புதுப்பித்தல் மற்றும் பராமரிப்பு பணிகள்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

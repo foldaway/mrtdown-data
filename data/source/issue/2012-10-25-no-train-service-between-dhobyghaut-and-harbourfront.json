@@ -1,6 +1,11 @@
 {
   "id": "2012-10-25-no-train-service-between-dhobyghaut-and-harbourfront",
   "title": "No train service between Dhoby Ghaut and Harbour Front due to power fault",
+  "title_translations": {
+    "zh-Hans": "因电力故障，多美歌至港湾站之间无列车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Dhoby Ghaut dan Harbour Front kerana gangguan kuasa",
+    "ta": "டோபி கோட் மற்றும் ஹார்பர் ஃபிரண்ட் இடையே மின்சாரக் கோளாறு காரணமாக ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

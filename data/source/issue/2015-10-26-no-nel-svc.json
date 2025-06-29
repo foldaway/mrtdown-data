@@ -1,6 +1,11 @@
 {
   "id": "2015-10-26-no-nel-svc",
   "title": "No North East Line Service due to Power Fault",
+  "title_translations": {
+    "zh-Hans": "因电力故障，东北线停止服务",
+    "ms": "Tiada Perkhidmatan Laluan Timur Laut kerana Kerosakan Kuasa",
+    "ta": "மின்சாரக் கோளாறு காரணமாக வடகிழக்கு ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

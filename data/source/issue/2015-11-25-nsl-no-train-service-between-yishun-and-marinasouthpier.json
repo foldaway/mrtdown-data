@@ -1,6 +1,11 @@
 {
   "id": "2015-11-25-nsl-no-train-service-between-yishun-and-marinasouthpier",
   "title": "No train service between Yishun and Marina South Pier due to power fault",
+  "title_translations": {
+    "zh-Hans": "锦茂和滨海湾站之间因电力故障停运",
+    "ms": "Tiada perkhidmatan kereta api antara Yishun dan Marina South Pier kerana gangguan kuasa",
+    "ta": "Yishun மற்றும் மெரினா சவுத் பியர் இடையே மின்சாரம் பழுதடைந்ததால் ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

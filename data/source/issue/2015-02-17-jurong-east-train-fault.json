@@ -1,6 +1,11 @@
 {
   "id": "2015-02-17-jurong-east-train-fault",
   "title": "Train fault causing delays on East bound line",
+  "title_translations": {
+    "zh-Hans": "列车故障导致东行列车延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan di laluan hala ke timur",
+    "ta": "கிழக்கு நோக்கிச் செல்லும் பாதையில் ரயில் பழுது காரணமாக தாமதங்கள்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

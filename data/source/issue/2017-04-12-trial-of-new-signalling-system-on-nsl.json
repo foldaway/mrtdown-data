@@ -1,6 +1,11 @@
 {
   "id": "2017-04-12-trial-of-new-signalling-system-on-nsl",
   "title": "Trial of New Signalling System on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线新信号系统试验",
+    "ms": "Percubaan Sistem Isyarat Baharu di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் புதிய சமிக்ஞை அமைப்பின் சோதனை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

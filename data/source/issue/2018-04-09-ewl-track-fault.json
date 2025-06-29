@@ -1,6 +1,11 @@
 {
   "id": "2018-04-09-ewl-track-fault",
   "title": "Service disruption on East West Line due to track fault",
+  "title_translations": {
+    "zh-Hans": "东部西部线因轨道故障导致服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Timur Barat kerana kerosakan landasan",
+    "ta": "தடம் பழுதடைந்ததால் கிழக்கு மேற்கு பாதையில் சேவை சீர்குலைவு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2019-05-14-track-point-failure",
   "title": "Track Point Failure on NSEWL",
+  "title_translations": {
+    "zh-Hans": "NSEWL 轨道点故障",
+    "ms": "Kegagalan Jejaring Pengesanan di NSEWL",
+    "ta": "NSEWL இல் தடமறிதல் தோல்வி"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

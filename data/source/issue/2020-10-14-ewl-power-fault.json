@@ -1,6 +1,11 @@
 {
   "id": "2020-10-14-ewl-power-fault",
   "title": "Train services disrupted due to power fault",
+  "title_translations": {
+    "zh-Hans": "电力故障导致列车服务中断",
+    "ms": "Perkhidmatan kereta api terganggu kerana kerosakan kuasa",
+    "ta": "மின்சாரக் கோளாறு காரணமாக ரயில் சேவைகள் பாதிக்கப்பட்டுள்ளன"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2017-08-23-nsl-track-point-fault-jurong-east",
   "title": "Track point fault on North-South Line, only one platform operational at Jurong East",
+  "title_translations": {
+    "zh-Hans": "裕廊东站南北线轨道点故障，仅一个站台运行",
+    "ms": "Ralat titik trek di Laluan Utara-Selatan, hanya satu platform beroperasi di Jurong East",
+    "ta": "ஜூரோங் கிழக்கு நிலையத்தில் வடக்கு-தெற்கு பாதையில் தட புள்ளி பிழை, ஒரு தளம் மட்டுமே செயல்படுகிறது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

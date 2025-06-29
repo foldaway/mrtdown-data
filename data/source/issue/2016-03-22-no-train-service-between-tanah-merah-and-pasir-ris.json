@@ -1,6 +1,11 @@
 {
   "id": "2016-03-22-no-train-service-between-tanah-merah-and-pasir-ris",
   "title": "No train service between Tanah Merah and Pasir Ris",
+  "title_translations": {
+    "zh-Hans": "丹那美拉站至巴西立站之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Tanah Merah dan Pasir Ris",
+    "ta": "Tanah Merah மற்றும் Pasir Ris இடையே ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

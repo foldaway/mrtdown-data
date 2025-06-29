@@ -1,6 +1,11 @@
 {
   "id": "2013-04-20-maintenance-work-at-pasir-ris",
   "title": "Maintenance work at Pasir Ris terminal station this weekend",
+  "title_translations": {
+    "zh-Hans": "本周末杨厝港终点站的维修工程",
+    "ms": "Kerja penyelenggaraan di stesen terminal Pasir Ris hujung minggu ini",
+    "ta": "பாசிர் ரிஸ் முனைய நிலையத்தில் இந்த வார இறுதியில் பராமரிப்புப் பணிகள்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

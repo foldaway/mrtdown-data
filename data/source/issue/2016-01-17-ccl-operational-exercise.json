@@ -1,6 +1,11 @@
 {
   "id": "2016-01-17-ccl-operational-exercise",
   "title": "CCL operational exercise",
+  "title_translations": {
+    "zh-Hans": "CCL运行演习",
+    "ms": "Latihan operasi CCL",
+    "ta": "CCL செயல்பாட்டுப் பயிற்சி"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

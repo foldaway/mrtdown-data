@@ -1,6 +1,11 @@
 {
   "id": "2021-01-19-no-service-on-punggol-lrt",
   "title": "No service on Punggol LRT due to a power fault",
+  "title_translations": {
+    "zh-Hans": "Punggol LRT因电力故障暂停服务",
+    "ms": "Tiada perkhidmatan di Punggol LRT kerana kerosakan kuasa",
+    "ta": "Punggol LRT இல் மின்சாரம் பழுதடைந்ததால் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "PGLRT"
   ],

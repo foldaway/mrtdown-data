@@ -1,6 +1,11 @@
 {
   "id": "2015-08-07-train-fault-tanah-merah",
   "title": "Train fault near Tanah Merah",
+  "title_translations": {
+    "zh-Hans": "丹那美拉附近火车故障",
+    "ms": "Kerosakan kereta api berhampiran Tanah Merah",
+    "ta": "தனா மெரா அருகே ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

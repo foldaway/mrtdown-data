@@ -1,6 +1,11 @@
 {
   "id": "2014-01-29-ewl-train-fault",
   "title": "East West Line train fault",
+  "title_translations": {
+    "zh-Hans": "东西线列车故障",
+    "ms": "Ralat kereta api Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு வரி ரயில் தவறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

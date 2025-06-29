@@ -1,6 +1,11 @@
 {
   "id": "2014-02-25-nsl-track-fault",
   "title": "Track fault causing delays on the North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线轨道故障导致延误",
+    "ms": "Ralat trek menyebabkan kelewatan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் தடப் பிழை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

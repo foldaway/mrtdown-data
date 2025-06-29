@@ -1,6 +1,11 @@
 {
   "id": "2019-12-16-nsl-major-outage",
   "title": "Major Outage on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线上发生重大故障",
+    "ms": "Gangguan Besar di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் பெரிய இடையூறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

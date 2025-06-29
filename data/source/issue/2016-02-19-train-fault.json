@@ -1,6 +1,11 @@
 {
   "id": "2016-02-19-train-fault",
   "title": "Train fault causing delays between Jurong East and Joo Koon",
+  "title_translations": {
+    "zh-Hans": "列车故障导致裕廊东至裕群之间延误",
+    "ms": "Ralat kereta api menyebabkan kelewatan antara Jurong East dan Joo Koon",
+    "ta": "ஜூரோங் ஈஸ்ட் மற்றும் ஜூ கோவன் இடையே ரயில் பழுது தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

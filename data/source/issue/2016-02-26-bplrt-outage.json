@@ -1,6 +1,11 @@
 {
   "id": "2016-02-26-bplrt-outage",
   "title": "No train service on BPLRT due to traction power fault",
+  "title_translations": {
+    "zh-Hans": "由于牵引动力故障，BPLRT 未提供火车服务",
+    "ms": "Tiada perkhidmatan kereta api di BPLRT kerana kerosakan kuasa tarikan",
+    "ta": "ஈர்ப்பு சக்தி செயலிழப்பு காரணமாக பிஎல்பியர்டியில் ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

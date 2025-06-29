@@ -1,6 +1,11 @@
 {
   "id": "2016-08-02-nsl-track-fault-2",
   "title": "Second Track fault causing delays on North-South Line",
+  "title_translations": {
+    "zh-Hans": "第二轨道故障导致南北线延误",
+    "ms": "Jalan landasan kedua menyebabkan kelewatan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் இரண்டாவது பாதை தவறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

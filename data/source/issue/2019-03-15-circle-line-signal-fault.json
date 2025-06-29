@@ -1,6 +1,11 @@
 {
   "id": "2019-03-15-circle-line-signal-fault",
   "title": "Service Disruption on Circle Line Due to Signal Fault",
+  "title_translations": {
+    "zh-Hans": "信号故障导致环线服务中断",
+    "ms": "Gangguan Perkhidmatan Laluan Lingkaran Akibat Kerosakan Isyarat",
+    "ta": "சமிக்ஞை தவறு காரணமாக வட்டப் பாதையில் சேவை சீர்குலைவு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2023-09-29-circle-line-track-fault",
   "title": "Track fault affecting Circle Line services",
+  "title_translations": {
+    "zh-Hans": "影响环线的轨道故障",
+    "ms": "Jejak kerosakan yang menjejaskan perkhidmatan Laluan Bulat",
+    "ta": "வட்ட பாத சேவைகளை பாதிக்கும் தடப் பிழை"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

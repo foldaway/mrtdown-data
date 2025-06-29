@@ -1,6 +1,11 @@
 {
   "id": "2022-12-23-dtl-service-delayed-due-to-train-fault",
   "title": "DTL service delayed due to train fault",
+  "title_translations": {
+    "zh-Hans": "DTL服务因列车故障延误",
+    "ms": "Perkhidmatan DTL tertunda kerana kerosakan kereta api",
+    "ta": "ரயில் பழுது காரணமாக DTL சேவை தாமதமானது"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

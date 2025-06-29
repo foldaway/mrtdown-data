@@ -1,6 +1,11 @@
 {
   "id": "2015-02-24-bplrt-disruption-choa-chu-kang-keat-hong",
   "title": "No train service between Choa Chu Kang & Keat Hong",
+  "title_translations": {
+    "zh-Hans": "Choa Chu Kang 和 Keat Hong 之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Choa Chu Kang & Keat Hong",
+    "ta": "Choa Chu Kang & Keat Hong இடையே ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

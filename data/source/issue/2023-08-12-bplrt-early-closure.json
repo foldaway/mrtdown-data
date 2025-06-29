@@ -1,6 +1,11 @@
 {
   "id": "2023-08-12-bplrt-early-closure",
   "title": "Early closure of train services on Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "隆邦轻轨列车服务提前关闭",
+    "ms": "Penutupan awal perkhidmatan kereta api di Bukit Panjang LRT",
+    "ta": "Bukit Panjang LRT இல் தொடர்வண்டி சேவைகள் முன்கூட்டியே மூடப்படுதல்"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

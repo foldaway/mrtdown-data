@@ -1,6 +1,11 @@
 {
   "id": "2024-12-27-train-fault-causing-delay",
   "title": "Train fault causing delays on Thomson–East Coast Line",
+  "title_translations": {
+    "zh-Hans": "列车故障导致汤申-东海岸线延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Thomson–East Coast",
+    "ta": "தாம்சன்-கிழக்கு கடற்கரை பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் பழுது"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

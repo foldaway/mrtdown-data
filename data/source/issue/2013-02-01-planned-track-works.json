@@ -1,6 +1,11 @@
 {
   "id": "2013-02-01-planned-track-works",
   "title": "Planned track works from Pasir Ris to Tampines",
+  "title_translations": {
+    "zh-Hans": "淡滨尼至巴西立的计划轨道工程",
+    "ms": "Kerja trek yang dirancang dari Pasir Ris ke Tampines",
+    "ta": "பாசிர் ரிஸ் முதல் டாம்பினஸ் வரையிலான திட்டமிடப்பட்ட தடப் பணிகள்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

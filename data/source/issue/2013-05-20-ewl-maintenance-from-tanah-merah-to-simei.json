@@ -1,6 +1,11 @@
 {
   "id": "2013-05-20-ewl-maintenance-from-tanah-merah-to-simei",
   "title": "Maintenance work on East West Line from Tanah Merah to Simei",
+  "title_translations": {
+    "zh-Hans": "丹那美拉至四美区域东西线维修工程",
+    "ms": "Kerja penyelenggaraan di Laluan Timur Barat dari Tanah Merah ke Simei",
+    "ta": "தானா மேரா முதல் சிமேய் வரையிலான கிழக்கு மேற்கு பாதையில் பராமரிப்பு பணிகள்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

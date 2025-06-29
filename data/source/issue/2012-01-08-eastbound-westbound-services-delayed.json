@@ -1,6 +1,11 @@
 {
   "id": "2012-01-08-eastbound-westbound-services-delayed",
   "title": "Eastbound and westbound services slightly delayed between Boon Lay and Joo Koon due to track fault.",
+  "title_translations": {
+    "zh-Hans": "由于轨道故障，东行和西行列车在文礼站和裕廊西站之间发生轻微延误。",
+    "ms": "Perkhidmatan timur dan barat sedikit tertunda antara Boon Lay dan Joo Koon kerana kerosakan landasan.",
+    "ta": "Boon Lay மற்றும் Joo Koon இடையே கிழக்கு மற்றும் மேற்குbound சேவைகள் தட கோளாறு காரணமாக சற்று தாமதமாகின்றன."
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2017-07-20-bplrt-no-train-service",
   "title": "No train service between Choa Chu Kang and Bukit Panjang due to a train fault",
+  "title_translations": {
+    "zh-Hans": "由于火车故障，Choa Chu Kang和Bukit Panjang之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Choa Chu Kang dan Bukit Panjang kerana kerosakan kereta api",
+    "ta": "Choa Chu Kang மற்றும் Bukit Panjang இடையே ரயில் கோளாறு காரணமாக ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

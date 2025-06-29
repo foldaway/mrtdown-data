@@ -1,6 +1,11 @@
 {
   "id": "2012-06-08-train-delays-out-ram-park-to-raffles-place",
   "title": "Service Disruption: Train Delays between Outram Park and Raffles Place",
+  "title_translations": {
+    "zh-Hans": "服务中断：欧南园站至莱佛士坊站之间列车延误",
+    "ms": "Gangguan Perkhidmatan: Kelewatan Kereta Api antara Outram Park dan Raffles Place",
+    "ta": "சேவை இடையூறு: அவுட்ரம் பார்க் மற்றும் ராஃபிள்ஸ் பிளேஸ் இடையே ரயில் தாமதங்கள்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

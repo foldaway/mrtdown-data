@@ -1,6 +1,11 @@
 {
   "id": "2016-09-05-ccl-track-fault",
   "title": "Track Fault on Circle Line",
+  "title_translations": {
+    "zh-Hans": "追踪环线的故障",
+    "ms": "Jejaki Kerosakan di Laluan Bulat",
+    "ta": "வட்டப் பாதையில் தடமறிதல்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

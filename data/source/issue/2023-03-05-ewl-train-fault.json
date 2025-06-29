@@ -1,6 +1,11 @@
 {
   "id": "2023-03-05-ewl-train-fault",
   "title": "Train Fault affecting East West Line",
+  "title_translations": {
+    "zh-Hans": "列车故障影响东西线",
+    "ms": "Gangguan Kereta Api yang Mempengaruhi Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையை பாதிக்கும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

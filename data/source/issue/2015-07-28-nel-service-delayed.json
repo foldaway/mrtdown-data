@@ -1,6 +1,11 @@
 {
   "id": "2015-07-28-nel-service-delayed",
   "title": "North East Line service disruption due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "东北线因信号故障服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Timur Laut kerana kerosakan isyarat",
+    "ta": "வடகிழக்கு வரி சேவை இடையூறு சமிக்ஞை தவறு காரணமாக"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

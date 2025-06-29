@@ -1,6 +1,11 @@
 {
   "id": "2016-04-22-nel-service-disruption-due-to-train-fault-at-harbourfront-ne1",
   "title": "NEL service disruption due to train fault at HarbourFront NE1",
+  "title_translations": {
+    "zh-Hans": "HarbourFront NE1 港站因列车故障导致东北线 (NEL) 服务中断",
+    "ms": "Gangguan perkhidmatan NEL disebabkan oleh kerosakan kereta api di HarbourFront NE1",
+    "ta": "HarbourFront NE1 இல் ரயில் பழுது காரணமாக NEL சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

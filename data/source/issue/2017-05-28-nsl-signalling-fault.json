@@ -1,6 +1,11 @@
 {
   "id": "2017-05-28-nsl-signalling-fault",
   "title": "Signalling Fault in NSL",
+  "title_translations": {
+    "zh-Hans": "南北线信号故障",
+    "ms": "Kerosakan Isyarat di NSL",
+    "ta": "NSL இல் சமிக்ஞை தவறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

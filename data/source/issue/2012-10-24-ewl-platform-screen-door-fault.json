@@ -1,6 +1,11 @@
 {
   "id": "2012-10-24-ewl-platform-screen-door-fault",
   "title": "Platform screen door fault causing delays on EWL",
+  "title_translations": {
+    "zh-Hans": "站台门故障导致东海岸线延误",
+    "ms": "Kerosakan pintu platform menyebabkan kelewatan di EWL",
+    "ta": "EWL இல் தாமதத்தை ஏற்படுத்தும் தளத்தின் கதவு தவறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

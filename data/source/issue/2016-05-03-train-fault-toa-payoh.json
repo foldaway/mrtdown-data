@@ -1,6 +1,11 @@
 {
   "id": "2016-05-03-train-fault-toa-payoh",
   "title": "Train fault reported at Toa Payoh station",
+  "title_translations": {
+    "zh-Hans": "在โตอาปายา站报告了列车故障",
+    "ms": "Aduan kerosakan kereta di stesen Toa Payoh",
+    "ta": "தாவோ பா * является станцииக்கு ரயில் பழுது புகாரளிக்கப்பட்டது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

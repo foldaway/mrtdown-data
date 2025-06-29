@@ -1,6 +1,11 @@
 {
   "id": "2015-10-26-no-train-service-between-tanah-merah-and-changi-airport",
   "title": "No train service between Tanah Merah and Changi Airport",
+  "title_translations": {
+    "zh-Hans": "丹那美拉与樟宜机场之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Tanah Merah dan Lapangan Terbang Changi",
+    "ta": "தானா மேரா மற்றும் சாங்கி விமான நிலையத்திற்கு இடையே ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

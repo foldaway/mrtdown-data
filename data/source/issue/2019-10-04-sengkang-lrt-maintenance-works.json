@@ -1,6 +1,11 @@
 {
   "id": "2019-10-04-sengkang-lrt-maintenance-works",
   "title": "Sengkang LRT service disruption due to urgent maintenance works",
+  "title_translations": {
+    "zh-Hans": "Sengkang LRT因紧急维修工程导致服务中断",
+    "ms": "Gangguan perkhidmatan Sengkang LRT disebabkan kerja penyelenggaraan mendesak",
+    "ta": "அத்தியாவசிய பராமரிப்புப் பணிகளால் செங்காங் LRT சேவைக்கு இடையூறு"
+  },
   "componentIdsAffected": [
     "SKLRT"
   ],

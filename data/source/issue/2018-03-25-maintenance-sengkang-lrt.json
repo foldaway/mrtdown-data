@@ -1,6 +1,11 @@
 {
   "id": "2018-03-25-maintenance-sengkang-lrt",
   "title": "Maintenance work on Sengkang LRT system",
+  "title_translations": {
+    "zh-Hans": "盛港轻轨系统维修工作",
+    "ms": "Kerja penyelenggaraan di sistem LRT Sengkang",
+    "ta": "செங்காங் LRT அமைப்பில் பராமரிப்புப் பணி"
+  },
   "componentIdsAffected": [
     "SKLRT"
   ],

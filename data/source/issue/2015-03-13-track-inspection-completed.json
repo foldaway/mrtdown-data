@@ -1,6 +1,11 @@
 {
   "id": "2015-03-13-track-inspection-completed",
   "title": "Track inspection completed",
+  "title_translations": {
+    "zh-Hans": "轨道检查已完成",
+    "ms": "Pemeriksaan trek selesai",
+    "ta": "தட ஆய்வு முடிந்தது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

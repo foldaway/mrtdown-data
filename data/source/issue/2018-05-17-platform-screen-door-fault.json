@@ -1,6 +1,11 @@
 {
   "id": "2018-05-17-platform-screen-door-fault",
   "title": "Major service disruption on North-South Line due to platform screen door fault",
+  "title_translations": {
+    "zh-Hans": "因站台屏蔽门故障，南北线发生重大服务中断",
+    "ms": "Gangguan perkhidmatan utama di Laluan North-South akibat kerosakan pintu skrin platform",
+    "ta": "தளம் திரை கதவு செயலிழப்பு காரணமாக வடக்கு-தெற்கு பாதையில் பெரிய சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

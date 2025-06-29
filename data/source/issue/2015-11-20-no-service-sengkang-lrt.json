@@ -1,6 +1,11 @@
 {
   "id": "2015-11-20-no-service-sengkang-lrt",
   "title": "No service on Sengkang LRT due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "Sengkang LRT 因信号故障而停运",
+    "ms": "Tiada perkhidmatan di Sengkang LRT kerana gangguan isyarat",
+    "ta": "சிக்னலிங் பிழை காரணமாக செங்காங் LRT இல் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "SKLRT"
   ],

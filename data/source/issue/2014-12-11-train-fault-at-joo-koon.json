@@ -1,6 +1,11 @@
 {
   "id": "2014-12-11-train-fault-at-joo-koon",
   "title": "Train Fault at Joo Koon",
+  "title_translations": {
+    "zh-Hans": "裕廊镇站列车故障",
+    "ms": "Jalan Kereta Api Rosak di Joo Koon",
+    "ta": "ஜூ கோன் நிலையத்தில் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2016-08-16-nsl-track-fault",
   "title": "Track Fault Resolved on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线轨道故障已解决",
+    "ms": "Jejak Kerosakan Diselesaikan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் தடமறியப்பட்ட தவறு சரிசெய்யப்பட்டது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

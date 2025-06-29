@@ -1,6 +1,11 @@
 {
   "id": "2015-03-03-ccl-no-train-service",
   "title": "No train service from Labrador Park towards HarbourFront due to signal fault",
+  "title_translations": {
+    "zh-Hans": "由于信号故障，拉布拉多公园站往海湾舫站方向的列车服务暂停",
+    "ms": "Tiada perkhidmatan kereta api dari Labrador Park ke arah HarbourFront kerana kerosakan isyarat",
+    "ta": "சிக்னல் கோளாறு காரணமாக லாப்ரடோர் பார்க் முதல் ஹார்பர்ஃபிரண்ட் வரை ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

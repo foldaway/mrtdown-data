@@ -1,6 +1,11 @@
 {
   "id": "2016-08-30-no-train-service-from-yewtee-to-bukitgombak-due-to-track-fault",
   "title": "No train service from Yew Tee to Bukit Gombak due to track fault",
+  "title_translations": {
+    "zh-Hans": "由于轨道故障，友诺士至武吉甘柏站暂停服务",
+    "ms": "Tiada perkhidmatan kereta api dari Yew Tee ke Bukit Gombak kerana kerosakan landasan",
+    "ta": "Yew Tee முதல் Bukit Gombak வரை ரயில் சேவை இல்லை, தண்டவாளக் கோளாறு காரணமாக"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

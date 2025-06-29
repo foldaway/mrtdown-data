@@ -1,6 +1,11 @@
 {
   "id": "2013-10-27-travel-time-extension-between-labrador-park-harbourfront-due-to-power-cable-change",
   "title": "Travel Time Extension Between Labrador Park & HarbourFront Due to Power Cable Change",
+  "title_translations": {
+    "zh-Hans": "因更换电缆，拉布拉多公园和海湾舫之间的行程时间延长",
+    "ms": "Lanjutan Masa Perjalanan Antara Labrador Park & HarbourFront Kerana Pertukaran Kabel Kuasa",
+    "ta": "லேப்ரடோர் பார்க் மற்றும் ஹார்பர்புளோன்ட் இடையே மின் கேபிள் மாற்றம் காரணமாக பயண நேர நீட்டிப்பு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

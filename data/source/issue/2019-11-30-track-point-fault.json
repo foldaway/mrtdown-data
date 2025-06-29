@@ -1,6 +1,11 @@
 {
   "id": "2019-11-30-track-point-fault",
   "title": "Track point fault causing delays",
+  "title_translations": {
+    "zh-Hans": "轨道点故障导致延误",
+    "ms": "Rintangan landasan menyebabkan kelewatan",
+    "ta": "தடத்தின் பிழை தாமதங்களுக்குக் காரணம்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

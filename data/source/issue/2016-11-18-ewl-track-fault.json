@@ -1,6 +1,11 @@
 {
   "id": "2016-11-18-ewl-track-fault",
   "title": "East West Line track fault causing travel delays",
+  "title_translations": {
+    "zh-Hans": "东西线轨道故障导致行程延误",
+    "ms": "Gangguan landasan Laluan Timur Barat menyebabkan kelewatan perjalanan",
+    "ta": "கிழக்கு மேற்கு பாதை தடக் கோளாறு பயண தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

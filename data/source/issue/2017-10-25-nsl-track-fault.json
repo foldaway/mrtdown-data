@@ -1,6 +1,11 @@
 {
   "id": "2017-10-25-nsl-track-fault",
   "title": "North-South Line service disruption due to track fault",
+  "title_translations": {
+    "zh-Hans": "南北线因轨道故障导致服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Utara-Selatan akibat kerosakan landasan",
+    "ta": "தடக்கோளாறு காரணமாக வட-தெற்கு பாதையில் சேவை தடை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2015-04-10-nsl-additional-waiting-time",
   "title": "Additional waiting time on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线上额外等待时间",
+    "ms": "Masa menunggu tambahan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் கூடுதல் காத்திருப்பு நேரம்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

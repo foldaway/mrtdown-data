@@ -1,6 +1,11 @@
 {
   "id": "2023-02-06-nsl-track-fault",
   "title": "Track fault affecting North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线轨道故障",
+    "ms": "Ralat trek menjejaskan Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையை பாதிக்கும் தடக்குறைபாடு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

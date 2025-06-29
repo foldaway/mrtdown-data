@@ -1,6 +1,11 @@
 {
   "id": "2016-11-02-signal-fault-between-pasir-panjang-and-one-north",
   "title": "Signal fault causing additional travel time on Circle Line",
+  "title_translations": {
+    "zh-Hans": "信号故障导致环线行程时间延长",
+    "ms": "Kerosakan isyarat menyebabkan masa perjalanan tambahan di Laluan Lingkar",
+    "ta": "வட்டப் பாதையில் கூடுதல் பயண நேரத்தை ஏற்படுத்தும் சமிக்ஞை தவறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

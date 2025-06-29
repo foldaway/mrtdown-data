@@ -1,6 +1,11 @@
 {
   "id": "2015-03-08-bplrt-outage",
   "title": "Service disruption on Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "隆邦轻轨服务中断",
+    "ms": "Gangguan perkhidmatan di Bukit Panjang LRT",
+    "ta": "புக்ிட் பஞ்சாங் LRT இல் சேவை சீர்குலைவு"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

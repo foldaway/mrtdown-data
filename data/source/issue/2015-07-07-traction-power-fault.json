@@ -1,6 +1,11 @@
 {
   "id": "2015-07-07-traction-power-fault",
   "title": "Traction power fault causing delays",
+  "title_translations": {
+    "zh-Hans": "牵引力故障导致延误",
+    "ms": "Kerosakan kuasa tarikan menyebabkan kelewatan",
+    "ta": "தடைசெய்யும் ஆற்றல் பிழை தாமதங்களுக்குக் காரணம்"
+  },
   "componentIdsAffected": [
     "NSL",
     "EWL"

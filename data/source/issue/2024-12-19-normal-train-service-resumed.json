@@ -1,6 +1,11 @@
 {
   "id": "2024-12-19-normal-train-service-resumed",
   "title": "Signal fault on Thomson-East Coast Line",
+  "title_translations": {
+    "zh-Hans": "汤申东海岸线信号故障",
+    "ms": "Ralat isyarat di Laluan Thomson-East Coast",
+    "ta": "THOMSON-EAST COAST பாதையில் சமிக்ஞை தவறு"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2022-09-21-nsl-track-fault",
   "title": "Track Fault on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线轨道故障",
+    "ms": "Jejak Kesalahan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் தடயப் பிழை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

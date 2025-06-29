@@ -1,6 +1,11 @@
 {
   "id": "2013-07-04-bplrt-outage",
   "title": "BPLRT train service disruption",
+  "title_translations": {
+    "zh-Hans": "BPLRT列车服务中断",
+    "ms": "Gangguan perkhidmatan tren BPLRT",
+    "ta": "BPLRT ரயில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

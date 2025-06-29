@@ -1,6 +1,11 @@
 {
   "id": "2024-12-14-circle-line-train-fault-cleared",
   "title": "Train fault cleared on Circle Line, service returning to normal",
+  "title_translations": {
+    "zh-Hans": "环线列车故障已清除，服务恢复正常",
+    "ms": "Kerosakan kereta api dibersihkan di Laluan Bulatan, perkhidmatan kembali normal",
+    "ta": "வட்டப் பாதையில் ரயில் பழுது நீக்கப்பட்டது, சேவை இயல்பு நிலைக்குத் திரும்புகிறது"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2019-11-08-nel-maintenance",
   "title": "Maintenance works on five NEL stations",
+  "title_translations": {
+    "zh-Hans": "五个 NEL 站的维修工程",
+    "ms": "Kerja penyelenggaraan di lima stesen NEL",
+    "ta": "ஐந்து NEL நிலையங்களில் பராமரிப்புப் பணிகள்"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

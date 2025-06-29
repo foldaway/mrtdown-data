@@ -1,6 +1,11 @@
 {
   "id": "2018-12-12-ewl-accident-service-disruption",
   "title": "Major Service Disruption on East West Line",
+  "title_translations": {
+    "zh-Hans": "东西线主要服务中断",
+    "ms": "Gangguan Perkhidmatan Utama di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் பெரிய சேவை தடங்கல்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

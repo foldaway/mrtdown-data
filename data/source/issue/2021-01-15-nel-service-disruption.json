@@ -1,6 +1,11 @@
 {
   "id": "2021-01-15-nel-service-disruption",
   "title": "NEL service disruption",
+  "title_translations": {
+    "zh-Hans": "NEL 服务中断",
+    "ms": "Gangguan perkhidmatan NEL",
+    "ta": "NEL சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

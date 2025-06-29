@@ -1,6 +1,11 @@
 {
   "id": "2021-05-24-early-closure-testing-integrated-systems-tel-stage-2.json",
   "title": "Early Closure for Testing of Integrated Systems and Trains for TEL Stage 2",
+  "title_translations": {
+    "zh-Hans": "TEL二期系统与列车集成测试提前关闭",
+    "ms": "Penutupan Awal untuk Pengujian Sistem Bersepadu dan Kereta Api untuk Tahap 2 TEL",
+    "ta": "TEL நிலை 2க்கான ஒருங்கிணைந்த அமைப்புகள் மற்றும் ரயில்களுக்கான சோதனைகளுக்கான ஆரம்ப மூடல்"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2020-02-21-nel-service-delay",
   "title": "NEL service disruption due to train fault at HarbourFront",
+  "title_translations": {
+    "zh-Hans": "HarbourFront 列车故障导致 NEL 服务中断",
+    "ms": "Gangguan perkhidmatan NEL disebabkan oleh kerosakan kereta api di HarbourFront",
+    "ta": "HarbourFront இல் ரயில் கோளாறு காரணமாக NEL சேவை தடை"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

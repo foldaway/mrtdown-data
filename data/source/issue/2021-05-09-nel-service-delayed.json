@@ -1,6 +1,11 @@
 {
   "id": "2021-05-09-nel-service-delayed",
   "title": "NEL service disruption due to signalling fault at Farrer Park",
+  "title_translations": {
+    "zh-Hans": "Farrer Park 信号故障导致 NEL 服务中断",
+    "ms": "Gangguan perkhidmatan NEL kerana kerosakan isyarat di Farrer Park",
+    "ta": "ஃபேரர் பார்க் சிக்னலிங் கோளாறு காரணமாக NEL சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

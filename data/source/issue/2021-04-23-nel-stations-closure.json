@@ -1,6 +1,11 @@
 {
   "id": "2021-04-23-nel-stations-closure",
   "title": "NEL stations closure between HarbourFront and Dhoby Ghaut",
+  "title_translations": {
+    "zh-Hans": "港湾站至多美歌站之间南北线地铁站关闭",
+    "ms": "Penutupan stesen NEL antara HarbourFront dan Dhoby Ghaut",
+    "ta": "HarbourFront மற்றும் Dhoby Ghaut இடையே NEL நிலையங்கள் மூடப்பட்டுள்ளன"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

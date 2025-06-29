@@ -1,6 +1,11 @@
 {
   "id": "2019-01-04-nel-maintenance-works",
   "title": "Early train services ending on NEL due to maintenance works",
+  "title_translations": {
+    "zh-Hans": "由于维护工程，东北线（NEL）早期火车服务即将结束",
+    "ms": "Awal perkhidmatan kereta berakhir di NEL kerana kerja-kerja penyelenggaraan",
+    "ta": "பராமரிப்புப் பணிகளால் NEL இல் ஆரம்ப ரயில் சேவைகள் முடிவடைகின்றன"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

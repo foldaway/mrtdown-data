@@ -1,6 +1,11 @@
 {
   "id": "2018-12-09-bplrt-no-train-services",
   "title": "Train services suspended due to power fault",
+  "title_translations": {
+    "zh-Hans": "火车服务因电力故障暂停",
+    "ms": "Perkhidmatan kereta api digantung kerana kerosakan kuasa",
+    "ta": "மின்சாரக் கோளாறு காரணமாக ரயில் சேவைகள் இடைநிறுத்தப்பட்டுள்ளன"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

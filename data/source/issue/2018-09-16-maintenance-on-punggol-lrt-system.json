@@ -1,6 +1,11 @@
 {
   "id": "2018-09-16-maintenance-on-punggol-lrt-system",
   "title": "Maintenance on Punggol LRT System",
+  "title_translations": {
+    "zh-Hans": "榜鹅轻轨系统维护",
+    "ms": "Penyelenggaraan Sistem LRT Punggol",
+    "ta": "Punggol LRT அமைப்புக்கான பராமரிப்பு"
+  },
   "componentIdsAffected": [
     "PGLRT"
   ],

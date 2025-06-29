@@ -1,6 +1,11 @@
 {
   "id": "2012-03-01-train-service-delayed",
   "title": "Train service delayed due to track fault",
+  "title_translations": {
+    "zh-Hans": "轨道故障导致火车服务延迟",
+    "ms": "Perkhidmatan kereta api tertunda kerana kerosakan trek",
+    "ta": "தடக் கோளாறு காரணமாக ரயில் சேவை தாமதமானது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

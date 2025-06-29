@@ -1,6 +1,11 @@
 {
   "id": "2016-07-20-buona-vista-train-fault",
   "title": "Train fault at Buona Vista causing delays",
+  "title_translations": {
+    "zh-Hans": "后港站列车故障导致延误",
+    "ms": "Kereta api rosak di Buona Vista menyebabkan kelewatan",
+    "ta": "புயோனா விஸ்டாவில் ரயில் பழுது காரணமாக தாமதம்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2014-10-31-track-fault-lightning",
   "title": "Track fault causing delays between Kranji and Admiralty",
+  "title_translations": {
+    "zh-Hans": "Kranji 和 Admiralty 之间的轨道故障导致延误",
+    "ms": "Ralat trek menyebabkan kelewatan antara Kranji dan Admiralty",
+    "ta": "Kranji மற்றும் Admiralty இடையே தாமதத்தை ஏற்படுத்தும் பாதை தவறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

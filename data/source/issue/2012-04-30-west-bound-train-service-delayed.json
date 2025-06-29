@@ -1,6 +1,11 @@
 {
   "id": "2012-04-30-west-bound-train-service-delayed",
   "title": "West-bound train service delayed due to train fault",
+  "title_translations": {
+    "zh-Hans": "西行列车服务因列车故障延误",
+    "ms": "Perkhidmatan kereta arah barat tertunda kerana kerosakan kereta",
+    "ta": "மேற்கு நோக்கி செல்லும் ரயில் சேவை ரயில் கோளாறு காரணமாக தாமதமானது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

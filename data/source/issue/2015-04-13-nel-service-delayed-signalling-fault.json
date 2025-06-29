@@ -1,6 +1,11 @@
 {
   "id": "2015-04-13-nel-service-delayed-signalling-fault",
   "title": "Service disruption on North East Line",
+  "title_translations": {
+    "zh-Hans": "东北线服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Timur Laut",
+    "ta": "வடகிழக்கு பாதையில் சேவை தடை"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

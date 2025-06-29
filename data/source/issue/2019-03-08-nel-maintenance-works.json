@@ -1,6 +1,11 @@
 {
   "id": "2019-03-08-nel-maintenance-works",
   "title": "Maintenance works affecting NEL services",
+  "title_translations": {
+    "zh-Hans": "影响 NEL 服务的维修工程",
+    "ms": "Kerja penyelenggaraan menjejaskan perkhidmatan NEL",
+    "ta": "NEL சேவைகளைப் பாதிக்கும் பராமரிப்புப் பணிகள்"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

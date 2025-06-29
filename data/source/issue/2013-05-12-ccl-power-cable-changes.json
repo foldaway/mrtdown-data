@@ -1,6 +1,11 @@
 {
   "id": "2013-05-12-ccl-power-cable-changes",
   "title": "Power cable changes on Circle Line affecting travel times",
+  "title_translations": {
+    "zh-Hans": "环线电力电缆更换影响行程时间",
+    "ms": "Perubahan kabel kuasa di Laluan Bulat mempengaruhi masa perjalanan",
+    "ta": "வட்டப் பாதையில் மின் கேபிள் மாற்றங்கள் பயண நேரத்தைப் பாதிக்கின்றன"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2017-11-10-ewl-train-fault-aljunied",
   "title": "Train Fault Causing Delay on East West Line at Aljunied Station",
+  "title_translations": {
+    "zh-Hans": "列车故障导致东西线在艾炯路站延误",
+    "ms": "Kereta Api Rosak Menyebabkan Kelewatan di Laluan Timur Barat di Stesen Aljunied",
+    "ta": "Aljunied நிலையத்தில் கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

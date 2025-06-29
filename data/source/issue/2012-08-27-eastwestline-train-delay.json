@@ -1,6 +1,11 @@
 {
   "id": "2012-08-27-eastwestline-train-delay",
   "title": "Train Delay on East West Line",
+  "title_translations": {
+    "zh-Hans": "东西线上列车延误",
+    "ms": "Penangguhan Kereta di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் ரயில் தாமதம்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

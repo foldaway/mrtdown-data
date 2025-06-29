@@ -1,6 +1,11 @@
 {
   "id": "2012-03-07-congestion-east-west-line",
   "title": "Congestion on East-West Line due to earlier track fault",
+  "title_translations": {
+    "zh-Hans": "由于之前的轨道故障导致东西线拥堵",
+    "ms": "Kesempitan di Laluan Timur-Barat kerana kerosakan trek sebelum ini",
+    "ta": "முந்தைய ரயில் தடக் கோளாறு காரணமாக கிழக்கு-மேற்கு பாதையில் நெரிசல்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

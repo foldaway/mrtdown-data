@@ -1,6 +1,11 @@
 {
   "id": "2017-06-01-nsl-signal-checks",
   "title": "North-South Line Travel Time Extension Due to Signalling System Checks",
+  "title_translations": {
+    "zh-Hans": "南北线因信号系统检查导致行程时间延长",
+    "ms": "Lanjutan Masa Perjalanan Laluan Utara-Selatan Akibat Pemeriksaan Sistem Isyarat",
+    "ta": "வடக்கு-தெற்கு வழித்தடத்தில் சமிக்ஞை அமைப்பு சோதனைகள் காரணமாக பயண நேரம் நீட்டிக்கப்பட்டது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

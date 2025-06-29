@@ -1,6 +1,11 @@
 {
   "id": "2023-02-08-nsl-track-point-fault",
   "title": "Track point fault causing delays",
+  "title_translations": {
+    "zh-Hans": "轨道点故障导致延误",
+    "ms": "Ralat titik trek menyebabkan kelewatan",
+    "ta": "தடப் புள்ளி தவறு தாமதங்களுக்குக் காரணம்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

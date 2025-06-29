@@ -1,6 +1,11 @@
 {
   "id": "2015-10-05-train-fault-eastbound",
   "title": "Train fault reported at Pioneer Eastbound",
+  "title_translations": {
+    "zh-Hans": "先驱站东行方向列车故障上报",
+    "ms": "Aduan kerosakan kereta api di Pioneer Laluan Timur",
+    "ta": "பயனியரில் கிழக்கு நோக்கி செல்லும் ரயிலில் பழுது கண்டறியப்பட்டது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

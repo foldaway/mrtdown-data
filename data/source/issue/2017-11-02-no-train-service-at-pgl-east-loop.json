@@ -1,6 +1,11 @@
 {
   "id": "2017-11-02-no-train-service-at-pgl-east-loop",
   "title": "Service disruption at Punggol LRT East loop",
+  "title_translations": {
+    "zh-Hans": "榜鹅轻轨东环线服务中断",
+    "ms": "Gangguan perkhidmatan di Punggol LRT East loop",
+    "ta": "Punggol LRT கிழக்கு சுற்றில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "PGLRT"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2011-12-23-wet-weather-delays",
   "title": "Delay due to wet weather affecting train speed",
+  "title_translations": {
+    "zh-Hans": "因潮湿天气影响列车速度而延误",
+    "ms": "Kelewatan kerana cuaca basah mempengaruhi kelajuan kereta api",
+    "ta": "ஈரமான வானிலை காரணமாக ரயில் வேகம் பாதிப்பு"
+  },
   "componentIdsAffected": [
     "EWL",
     "NSL",

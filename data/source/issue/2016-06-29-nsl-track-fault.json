@@ -1,6 +1,11 @@
 {
   "id": "2016-06-29-nsl-track-fault",
   "title": "North-South Line track fault causing delays",
+  "title_translations": {
+    "zh-Hans": "南北线轨道故障导致延误",
+    "ms": "Gangguan landasan Laluan Utara-Selatan menyebabkan kelewatan",
+    "ta": "வடக்கு-தெற்கு வரிசை பாதையில் ஏற்பட்ட தவறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

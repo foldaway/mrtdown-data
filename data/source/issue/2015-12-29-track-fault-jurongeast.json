@@ -1,6 +1,11 @@
 {
   "id": "2015-12-29-track-fault-jurongeast",
   "title": "Track fault near Jurong East Station causing delays",
+  "title_translations": {
+    "zh-Hans": "裕廊东站附近轨道故障导致延误",
+    "ms": "Ralat trek berhampiran Stesen Jurong East menyebabkan kelewatan",
+    "ta": "ஜூரோங் கிழக்கு நிலையத்திற்கு அருகில் ஏற்பட்டுள்ள பாதையில் ஏற்பட்ட கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

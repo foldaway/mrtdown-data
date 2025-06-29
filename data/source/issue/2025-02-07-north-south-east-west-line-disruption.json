@@ -1,6 +1,11 @@
 {
   "id": "2025-02-07-north-south-east-west-line-disruption",
   "title": "North-South Line and East-West Line disruption",
+  "title_translations": {
+    "zh-Hans": "南北线和东西线中断",
+    "ms": "Gangguan Laluan Utara-Selatan dan Laluan Timur-Barat",
+    "ta": "வடக்கு-தெற்கு வரி மற்றும் கிழக்கு-மேற்கு வரி இடையூறு"
+  },
   "componentIdsAffected": [
     "NSL",
     "EWL"

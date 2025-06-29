@@ -1,6 +1,11 @@
 {
   "id": "2013-04-29-nsl-track-fault",
   "title": "Track fault causing slower speeds on NSL",
+  "title_translations": {
+    "zh-Hans": "轨道故障导致南北线（NSL）速度减慢",
+    "ms": "Ralat trek menyebabkan kelajuan perlahan di NSL",
+    "ta": "NSL இல் மெதுவான வேகத்திற்கு காரணமான தடப் பிழை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

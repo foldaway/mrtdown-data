@@ -1,6 +1,11 @@
 {
   "id": "2013-03-17-ccl-cable-replacement-works",
   "title": "Cable Replacement Works for Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线电缆更换工程",
+    "ms": "Kerja Penggantian Kabel untuk Laluan Lingkar",
+    "ta": "வட்டப் பாதைக்கான கேபிள் மாற்றுப் பணிகள்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

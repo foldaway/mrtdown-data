@@ -1,6 +1,11 @@
 {
   "id": "2019-12-07-punggol-lrt-maintenance",
   "title": "Punggol LRT stations close early for maintenance",
+  "title_translations": {
+    "zh-Hans": "榜鹅轻轨站提前关闭进行维护",
+    "ms": "Stesen LRT Punggol ditutup awal untuk penyelenggaraan",
+    "ta": "Punggol LRT நிலையங்கள் பராமரிப்புக்காக முன்கூட்டியே மூடப்படுகின்றன"
+  },
   "componentIdsAffected": [
     "PGLRT"
   ],

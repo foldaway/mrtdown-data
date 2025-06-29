@@ -1,6 +1,11 @@
 {
   "id": "2016-12-06-ewl-track-fault",
   "title": "No train service between City Hall & Jurong East due to track fault",
+  "title_translations": {
+    "zh-Hans": "市政厅站至裕廊东站之间因轨道故障暂停服务",
+    "ms": "Tiada perkhidmatan kereta api antara City Hall & Jurong East kerana kerosakan landasan",
+    "ta": "City Hall மற்றும் Jurong East இடையே ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

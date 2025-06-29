@@ -1,6 +1,11 @@
 {
   "id": "2021-05-21-circle-line-signal-fault",
   "title": "Signal fault causing delays on Circle Line",
+  "title_translations": {
+    "zh-Hans": "信号故障导致环线延误",
+    "ms": "Kerosakan isyarat menyebabkan kelewatan di Laluan Bulat",
+    "ta": "வட்டப் பாதையில் சமிக்ஞைக் கோளாறு காரணமாக தாமதம்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

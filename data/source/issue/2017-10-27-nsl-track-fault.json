@@ -1,6 +1,11 @@
 {
   "id": "2017-10-27-nsl-track-fault",
   "title": "Track fault causing delays",
+  "title_translations": {
+    "zh-Hans": "轨道故障导致延误",
+    "ms": "Ralat trek menyebabkan kelewatan",
+    "ta": "தடங்களில் ஏற்படும் தவறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2017-08-12-bplrt-train-fault",
   "title": "Train fault causing Service B suspension",
+  "title_translations": {
+    "zh-Hans": "列车故障导致B服务暂停",
+    "ms": "Ralat kereta menyebabkan penggantungan Perkhidmatan B",
+    "ta": "ரயில் கோளாறு சேவை பி இடைநிறுத்தத்திற்கு காரணமாகிறது"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

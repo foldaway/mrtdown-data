@@ -1,6 +1,11 @@
 {
   "id": "2012-09-30-nsl-major-outage",
   "title": "Longer Travelling Time on NSL due to Emergency Button Activation",
+  "title_translations": {
+    "zh-Hans": "因紧急按钮激活导致南北线（NSL）行程时间延长",
+    "ms": "Masa Perjalanan Lebih Lama di NSL kerana Pengaktifan Butang Kecemasan",
+    "ta": "அவசரகால பொத்தான் செயல்படுத்தப்பட்டதால் NSL இல் நீண்ட பயண நேரம்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

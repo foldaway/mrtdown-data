@@ -1,6 +1,11 @@
 {
   "id": "2024-05-24-dtl-service-disruption",
   "title": "DTL service disruption due to track closure",
+  "title_translations": {
+    "zh-Hans": "DTL轨道关闭服务中断",
+    "ms": "Gangguan perkhidmatan DTL akibat penutupan landasan",
+    "ta": "தட மூடலால் DTL சேவையில் இடையூறு"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

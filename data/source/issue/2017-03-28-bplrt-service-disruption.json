@@ -1,6 +1,11 @@
 {
   "id": "2017-03-28-bplrt-service-disruption",
   "title": "No train service between BP1 and BP6 on the Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": " Bukit Panjang LRT BP1 和 BP6 之间无列车服务",
+    "ms": "Tiada perkhidmatan kereta antara BP1 dan BP6 di LRT Bukit Panjang",
+    "ta": "Bukit Panjang LRT இல் BP1 மற்றும் BP6 க்கு இடையில் ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

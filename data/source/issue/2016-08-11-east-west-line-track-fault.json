@@ -1,6 +1,11 @@
 {
   "id": "2016-08-11-east-west-line-track-fault",
   "title": "East West Line Track Fault",
+  "title_translations": {
+    "zh-Hans": "东西线轨道故障",
+    "ms": "Ralat Jejaring Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு வழித்தட தவறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

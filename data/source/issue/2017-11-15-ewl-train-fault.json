@@ -1,6 +1,11 @@
 {
   "id": "2017-11-15-ewl-train-fault",
   "title": "Train services on East West Line affected due to train fault",
+  "title_translations": {
+    "zh-Hans": "东西线列车服务因列车故障而受影响",
+    "ms": "Perkhidmatan kereta di Laluan Timur Barat terjejas akibat kerosakan kereta",
+    "ta": "தொடர்வண்டி கோளாறு காரணமாக கிழக்கு மேற்கு பாதையில் தொடர்வண்டி சேவைகள் பாதிக்கப்பட்டுள்ளன"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2017-11-15-nsl-major-outage",
   "title": "Major disruption on the North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线发生重大中断",
+    "ms": "Gangguan besar di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் பெரிய இடையூறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2012-04-13-ewl-train-fault",
   "title": "Train Fault on East-West Line",
+  "title_translations": {
+    "zh-Hans": "东西线列车故障",
+    "ms": "Gangguan Kereta Api di Laluan Timur-Barat",
+    "ta": "கிழக்கு-மேற்கு பாதையில் ரயில் பழுது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

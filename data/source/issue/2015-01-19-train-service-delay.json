@@ -1,6 +1,11 @@
 {
   "id": "2015-01-19-train-service-delay",
   "title": "Train service disruption between Admiralty and Yishun on southbound",
+  "title_translations": {
+    "zh-Hans": "南北线海军部至义顺站之间南行列车服务受阻",
+    "ms": "Gangguan perkhidmatan kereta api antara Admiralty dan Yishun di selatan",
+    "ta": "தெற்கு திசையில் அட்மிரால்டி மற்றும் ஈஷூன் இடையே ரயில் சேவை தடங்கல்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

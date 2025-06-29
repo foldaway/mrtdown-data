@@ -1,6 +1,11 @@
 {
   "id": "2015-01-23-track-fault-10mins-delay",
   "title": "Track fault causing delays between Bishan and Ang Mo Kio",
+  "title_translations": {
+    "zh-Hans": "碧山至宏茂桥之间的轨道故障导致延误",
+    "ms": "Ralat trek menyebabkan kelewatan antara Bishan dan Ang Mo Kio",
+    "ta": "பிஷான் மற்றும் ஆங் மோ கியோ இடையே தாமதத்தை ஏற்படுத்தும் தடக் கோளாறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2013-06-09-ccl-travel-time-increase",
   "title": "Travel time increase between Caldecott and Holland Village due to maintenance",
+  "title_translations": {
+    "zh-Hans": "由于维护，Caldecott和荷兰村之间的旅行时间增加",
+    "ms": "Peningkatan masa perjalanan antara Caldecott dan Holland Village kerana penyelenggaraan",
+    "ta": "பராமரிப்பு காரணமாக கால்காட்டுக்கும் ஹாலந்து கிராமத்திற்கும் இடையிலான பயண நேரம் அதிகரிப்பு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

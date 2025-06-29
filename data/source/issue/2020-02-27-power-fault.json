@@ -1,6 +1,11 @@
 {
   "id": "2020-02-27-power-fault",
   "title": "Service disruption due to power fault",
+  "title_translations": {
+    "zh-Hans": "因电力故障导致的服务中断",
+    "ms": "Gangguan perkhidmatan akibat kerosakan kuasa",
+    "ta": "மின் தடங்கல் காரணமாக சேவை தடை"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

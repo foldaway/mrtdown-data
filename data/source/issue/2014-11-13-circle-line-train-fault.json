@@ -1,6 +1,11 @@
 {
   "id": "2014-11-13-circle-line-train-fault",
   "title": "Train fault causing delays on Circle Line",
+  "title_translations": {
+    "zh-Hans": "列车故障导致环线延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Lingkaran",
+    "ta": "வட்டப் பாதையில் ரயில் பழுது காரணமாக தாமதம்"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

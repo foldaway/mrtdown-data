@@ -1,6 +1,11 @@
 {
   "id": "2017-07-27-bplrt-train-fault",
   "title": "Train fault affecting Bukit Panjang LRT Service A",
+  "title_translations": {
+    "zh-Hans": "列车故障影响武吉班让轻轨A线服务",
+    "ms": "Kerosakan kereta api yang menjejaskan perkhidmatan LRT Bukit Panjang A",
+    "ta": "புக்கிட் பாஞ்சாங் LRT சேவை A-ஐ பாதிக்கும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

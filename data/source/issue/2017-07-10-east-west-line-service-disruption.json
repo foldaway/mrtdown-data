@@ -1,6 +1,11 @@
 {
   "id": "2017-07-10-east-west-line-service-disruption",
   "title": "Service disruption on East West Line due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "东西线因信号故障导致服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Timur Barat disebabkan oleh kerosakan isyarat",
+    "ta": "சிக்னலிங் கோளாறு காரணமாக கிழக்கு மேற்கு பாதையில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

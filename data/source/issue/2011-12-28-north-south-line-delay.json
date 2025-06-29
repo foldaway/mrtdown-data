@@ -1,6 +1,11 @@
 {
   "id": "2011-12-28-north-south-line-delay",
   "title": "East-bound service to Pasir Ris slightly delayed",
+  "title_translations": {
+    "zh-Hans": "往巴西立的东行列车服务略有延迟",
+    "ms": "Perkhidmatan arah Timur ke Pasir Ris sedikit tertunda",
+    "ta": "Pasir Ris நோக்கி கிழக்கு திசை சேவை சற்று தாமதமானது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

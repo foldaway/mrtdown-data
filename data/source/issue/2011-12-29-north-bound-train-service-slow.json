@@ -1,6 +1,11 @@
 {
   "id": "2011-12-29-north-bound-train-service-slow",
   "title": "North bound train service is slow due to speed restrictions",
+  "title_translations": {
+    "zh-Hans": "由于限速，北行列车服务缓慢",
+    "ms": "Perkhidmatan kereta arah utara lambat kerana sekatan kelajuan",
+    "ta": "வேகக் கட்டுப்பாடுகள் காரணமாக வடக்கு நோக்கிய ரயில் சேவை மெதுவாக உள்ளது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2011-12-20-train-delay",
   "title": "Train service disruption due to wet tracks",
+  "title_translations": {
+    "zh-Hans": "轨道湿滑导致列车服务中断",
+    "ms": "Gangguan perkhidmatan kereta api disebabkan trek basah",
+    "ta": "ஈரமான தண்டவாளங்களால் ரயில் சேவை தடங்கல்"
+  },
   "componentIdsAffected": [
     "EWL",
     "NSL"

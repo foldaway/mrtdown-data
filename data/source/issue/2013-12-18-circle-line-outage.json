@@ -1,6 +1,11 @@
 {
   "id": "2013-12-18-circle-line-outage",
   "title": "Service disruption on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Lingkar",
+    "ta": "வட்டப் பாதையில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2014-05-02-due-to-a-traction-power-fault",
   "title": "Service disruption due to traction power fault",
+  "title_translations": {
+    "zh-Hans": "牵引力故障导致的服务中断",
+    "ms": "Gangguan perkhidmatan disebabkan oleh kerosakan kuasa tarikan",
+    "ta": "த جوړونکو பிழையால் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

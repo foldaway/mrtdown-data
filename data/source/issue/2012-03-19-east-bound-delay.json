@@ -1,6 +1,11 @@
 {
   "id": "2012-03-19-east-bound-delay",
   "title": "Slight delay on east bound train service",
+  "title_translations": {
+    "zh-Hans": "东向列车服务略有延迟",
+    "ms": "Sedikit kelewatan perkhidmatan kereta api arah timur",
+    "ta": "கிழக்கு நோக்கிய ரயில் சேவையில் சிறிய தாமதம்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

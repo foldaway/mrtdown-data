@@ -1,6 +1,11 @@
 {
   "id": "2014-11-04-circle-line-power-fault",
   "title": "Service disruption on Circle Line due to power fault",
+  "title_translations": {
+    "zh-Hans": "因电力故障导致环线上服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Bulat kerana kerosakan kuasa",
+    "ta": "மின்சாரக் கோளாறு காரணமாக வட்டப் பாதையில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

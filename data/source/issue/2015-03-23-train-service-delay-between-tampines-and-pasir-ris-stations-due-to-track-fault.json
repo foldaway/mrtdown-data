@@ -1,6 +1,11 @@
 {
   "id": "2015-03-23-train-service-delay-between-tampines-and-pasir-ris-stations-due-to-track-fault",
   "title": "Train service delay between Tampines and Pasir Ris stations due to track fault",
+  "title_translations": {
+    "zh-Hans": "由于轨道故障，淡滨尼和巴西立站之间的火车服务延误",
+    "ms": "Perkhidmatan kereta api tertangguh antara stesen Tampines dan Pasir Ris kerana kerosakan trek",
+    "ta": "தம்பினஸ் மற்றும் பாசிர் ரிஸ் நிலையங்களுக்கு இடையில் ரயில் சேவை தாமதம் காரணமாக தட கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

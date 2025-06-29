@@ -1,6 +1,11 @@
 {
   "id": "2013-10-31-circle-line-train-fault",
   "title": "Train Fault on Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线上列车故障",
+    "ms": "Kerosakan Kereta Api di Laluan Lingkaran",
+    "ta": "வட்டப் பாதையில் ரயில் பழுது"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

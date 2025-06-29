@@ -1,6 +1,11 @@
 {
   "id": "2018-05-19-bplrt-outage",
   "title": "Service disruption on Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "Bukit Panjang LRT 发生服务中断",
+    "ms": "Gangguan perkhidmatan di Bukit Panjang LRT",
+    "ta": "Bukit Panjang LRT இல் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2012-11-02-circle-line-train-fault",
   "title": "Train Fault Affecting Circle Line",
+  "title_translations": {
+    "zh-Hans": "列车故障影响环线",
+    "ms": "Gangguan Kereta Api Mempengaruhi Laluan Lingkaran",
+    "ta": "ரயில் கோளாறு வட்டப் பாதையைப் பாதிக்கிறது"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

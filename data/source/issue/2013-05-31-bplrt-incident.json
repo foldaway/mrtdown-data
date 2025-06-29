@@ -1,6 +1,11 @@
 {
   "id": "2013-05-31-bplrt-incident",
   "title": "Incident on Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "Bukit Panjang LRT 事故",
+    "ms": "Insiden di Bukit Panjang LRT",
+    "ta": "Bukit Panjang LRT இல் சம்பவம்"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

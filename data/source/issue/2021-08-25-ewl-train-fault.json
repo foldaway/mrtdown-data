@@ -1,6 +1,11 @@
 {
   "id": "2021-08-25-ewl-train-fault",
   "title": "Train fault causing delays on East West Line",
+  "title_translations": {
+    "zh-Hans": "列车故障导致东西线延误",
+    "ms": "Gangguan kereta api menyebabkan kelewatan di Laluan Timur Barat",
+    "ta": "ரயில் கோளாறு கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

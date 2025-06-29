@@ -1,6 +1,11 @@
 {
   "id": "2021-01-18-bukit-panjang-lrt-fault",
   "title": "Train fault causing delays on Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "列车故障导致武吉班让轻轨延误",
+    "ms": "Gangguan kereta api menyebabkan kelewatan di LRT Bukit Panjang",
+    "ta": "Bukit Panjang LRT இல் தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

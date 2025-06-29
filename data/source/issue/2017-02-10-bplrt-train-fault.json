@@ -1,6 +1,11 @@
 {
   "id": "2017-02-10-bplrt-train-fault",
   "title": "Train services on BPLRT affected due to a train fault",
+  "title_translations": {
+    "zh-Hans": "由于火车故障，BPLRT 的火车服务受到影响",
+    "ms": "Perkhidmatan kereta di BPLRT terjejas akibat kerosakan kereta",
+    "ta": "தண்டவாளப் பாதையில் ரயில் பழுது காரணமாக ரயில் சேவைகள் பாதிக்கப்பட்டுள்ளன"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2017-11-15-signal-fault-trains-slow",
   "title": "Signal fault causing slower train movement",
+  "title_translations": {
+    "zh-Hans": "信号故障导致火车运行缓慢",
+    "ms": "Kerosakan isyarat menyebabkan pergerakan kereta lebih perlahan",
+    "ta": "சிக்னல் பழுது காரணமாக ரயில் இயக்கம் மெதுவாக உள்ளது"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

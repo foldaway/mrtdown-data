@@ -1,6 +1,11 @@
 {
   "id": "2012-12-20-nel-no-train-service-between-punggol-and-little-india",
   "title": "No train service between Punggol and Little India stations due to train fault.",
+  "title_translations": {
+    "zh-Hans": "由于列车故障，榜鹅站至小印度站之间没有火车服务。",
+    "ms": "Tiada perkhidmatan kereta api antara stesen Punggol dan Little India disebabkan oleh kegagalan kereta api.",
+    "ta": "புக்கோல் மற்றும் லிட்டில் இந்தியா நிலையங்களுக்கு இடையே ரயில் கோளாறு காரணமாக ரயில் சேவை இல்லை."
+  },
   "componentIdsAffected": [
     "NEL"
   ],

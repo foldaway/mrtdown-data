@@ -1,6 +1,11 @@
 {
   "id": "2024-08-24-nsl-track-fault",
   "title": "Major disruption due to track fault between Kranji and Yishun",
+  "title_translations": {
+    "zh-Hans": "克兰芝和义顺之间轨道故障导致大面积中断",
+    "ms": "Gangguan besar kerana kerosakan landasan antara Kranji dan Yishun",
+    "ta": "Kranji மற்றும் Yishun இடையே தண்டவாளக் கோளாறு காரணமாக பெரிய இடையூறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2018-04-11-north-east-line-service-delayed",
   "title": "NEL service delay due to train fault at Little India",
+  "title_translations": {
+    "zh-Hans": "由于小印度发生列车故障，NEL服务延迟",
+    "ms": "Perkhidmatan NEL tertunda kerana kerosakan kereta api di Little India",
+    "ta": "லிட்டில் இந்தியா அருகே ரயிலில் ஏற்பட்ட கோளாறு காரணமாக NEL சேவை தாமதமானது"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2019-01-29-circle-line-outage",
   "title": "Service disruption on Circle Line due to track fault",
+  "title_translations": {
+    "zh-Hans": "环线轨道故障导致服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Bulatan kerana kerosakan trek",
+    "ta": "தடக் கோளாறு காரணமாக வட்டப் பாதையில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

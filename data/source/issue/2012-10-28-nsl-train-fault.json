@@ -1,6 +1,11 @@
 {
   "id": "2012-10-28-nsl-train-fault",
   "title": "Train Fault on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线上列车故障",
+    "ms": "Kerosakan Kereta Api di Laluan North-South",
+    "ta": "வடக்கு-தெற்கு பாதையில் ரயில் பழுது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

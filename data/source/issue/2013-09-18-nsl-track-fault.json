@@ -1,6 +1,11 @@
 {
   "id": "2013-09-18-nsl-track-fault",
   "title": "Track fault causing delays on North-South Line",
+  "title_translations": {
+    "zh-Hans": "轨道故障导致南北线延误",
+    "ms": "Jejak kerosakan menyebabkan kelewatan di North-South Line",
+    "ta": "வடக்கு-தெற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் தடத்தின் தவறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

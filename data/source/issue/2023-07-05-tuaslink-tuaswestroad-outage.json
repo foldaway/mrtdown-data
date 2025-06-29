@@ -1,6 +1,11 @@
 {
   "id": "2023-07-05-tuaslink-tuaswestroad-outage",
   "title": "Major service disruption between Tuas Link and Tuas West Road",
+  "title_translations": {
+    "zh-Hans": "Tuas Link 和 Tuas West Road 之间主要服务中断",
+    "ms": "Gangguan perkhidmatan utama antara Tuas Link dan Tuas West Road",
+    "ta": "Tuas Link மற்றும் Tuas West Road இடையே முக்கிய சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

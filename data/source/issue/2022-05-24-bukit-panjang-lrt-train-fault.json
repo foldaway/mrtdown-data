@@ -1,6 +1,11 @@
 {
   "id": "2022-05-24-bukit-panjang-lrt-train-fault",
   "title": "Train service delay from Bukit Panjang to Choa Chu Kang",
+  "title_translations": {
+    "zh-Hans": "列车服务从 Bukit Panjang 延误至 Choa Chu Kang",
+    "ms": "Perkhidmatan kereta tertangguh dari Bukit Panjang ke Choa Chu Kang",
+    "ta": "Bukit Panjang முதல் Choa Chu Kang வரை ரயில் சேவை தாமதம்"
+  },
   "componentIdsAffected": [
     "BPLRT"
   ],

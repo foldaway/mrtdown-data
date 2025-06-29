@@ -1,6 +1,11 @@
 {
   "id": "2016-12-14-ewl-signalling-fault",
   "title": "Signalling fault causing travel time increase",
+  "title_translations": {
+    "zh-Hans": "信号故障导致旅行时间增加",
+    "ms": "Ralat isyarat menyebabkan peningkatan masa perjalanan",
+    "ta": "சிக்னலிங் பிழை பயண நேரத்தை அதிகரிக்கும்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

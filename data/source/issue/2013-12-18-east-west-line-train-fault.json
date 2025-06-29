@@ -1,6 +1,11 @@
 {
   "id": "2013-12-18-east-west-line-train-fault",
   "title": "Train Fault on East West Line causing Delays",
+  "title_translations": {
+    "zh-Hans": "东西线列车故障导致延误",
+    "ms": "Gangguan Kereta di Laluan Timur Barat Menyebabkan Kelewatan",
+    "ta": "கிழக்கு மேற்கு பாதையில் ரயில் பழுது காரணமாக தாமதம்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

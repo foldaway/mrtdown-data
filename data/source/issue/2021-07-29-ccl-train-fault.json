@@ -1,6 +1,11 @@
 {
   "id": "2021-07-29-ccl-train-fault",
   "title": "Train fault causing delays on Circle Line",
+  "title_translations": {
+    "zh-Hans": "列车故障导致环线延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Bulatan",
+    "ta": "வட்டப் பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

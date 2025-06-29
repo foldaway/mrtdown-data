@@ -1,6 +1,11 @@
 {
   "id": "2018-01-11-ewl-track-fault",
   "title": "Major disruption on East West Line due to track fault",
+  "title_translations": {
+    "zh-Hans": "东西线因轨道故障造成重大中断",
+    "ms": "Gangguan besar di Laluan Timur Barat kerana kerosakan landasan",
+    "ta": "தடக் கோளாறு காரணமாக கிழக்கு மேற்கு பாதையில் பெரிய இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

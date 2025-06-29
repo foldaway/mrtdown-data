@@ -1,6 +1,11 @@
 {
   "id": "2016-09-01-intermittent-signalling-issue",
   "title": "Intermittent signalling issue on the Circle Line",
+  "title_translations": {
+    "zh-Hans": "环线上间歇性信号问题",
+    "ms": "Masalah isyarat sekejap-sekejap di Laluan Bulat",
+    "ta": "வட்ட பாதையில் இடைப்பட்ட சமிக்ஞை பிரச்சனை"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

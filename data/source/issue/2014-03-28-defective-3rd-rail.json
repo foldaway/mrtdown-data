@@ -1,6 +1,11 @@
 {
   "id": "2014-03-28-defective-3rd-rail",
   "title": "Defective 3rd Rail Causing Delays on East West Line",
+  "title_translations": {
+    "zh-Hans": "西东线故障第三轨导致延误",
+    "ms": "Rel Ketiga Rosak Menyebabkan Kelewatan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் குறைபாடுள்ள 3வது ரயில்"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

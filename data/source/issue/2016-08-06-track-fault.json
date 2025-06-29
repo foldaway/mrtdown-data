@@ -1,6 +1,11 @@
 {
   "id": "2016-08-06-track-fault",
   "title": "Track fault results in additional travel time",
+  "title_translations": {
+    "zh-Hans": "轨道故障导致行程时间增加",
+    "ms": "Ralat trek mengakibatkan masa perjalanan tambahan",
+    "ta": "தடப் பிழை காரணமாக பயண நேரம் அதிகரித்துள்ளது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

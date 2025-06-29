@@ -1,19 +1,32 @@
 {
   "id": "2017-04-26-no-train-services-tanah-merah-changi",
   "title": "No train services between Tanah Merah and Changi Airport",
-  "componentIdsAffected": ["EWL"],
+  "title_translations": {
+    "zh-Hans": "丹那美拉站至樟宜机场站之间没有火车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Tanah Merah dan Changi Airport",
+    "ta": "Tanah Merah மற்றும் Changi Airport இடையே ரயில் சேவைகள் இல்லை"
+  },
+  "componentIdsAffected": [
+    "EWL"
+  ],
   "stationIdsAffected": [
     {
       "componentId": "EWL",
       "branchName": "changi_airport",
-      "stationIds": ["TNM", "XPO", "CGA"]
+      "stationIds": [
+        "TNM",
+        "XPO",
+        "CGA"
+      ]
     }
   ],
   "startAt": "2017-04-26T23:00:00.000+08:00",
   "endAt": "2017-04-27T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": ["track.work"],
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",

@@ -1,6 +1,11 @@
 {
   "id": "2013-02-01-planned-track-works-bukit-batok-jurong-east",
   "title": "Planned track works from Bukit Batok to Jurong East",
+  "title_translations": {
+    "zh-Hans": "裕廊东至武吉巴督规划轨道工程",
+    "ms": "Kerja landasan yang dirancang dari Bukit Batok ke Jurong East",
+    "ta": "பத்து மேத்திக் வரைக்கும் ஜூரோங் ஈஸ்ட் வரைக்குமான திட்டமிடப்பட்ட தட வேலைகள்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

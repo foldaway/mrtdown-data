@@ -1,6 +1,11 @@
 {
   "id": "2017-04-18-ewl-track-fault",
   "title": "Major track fault on East West Line",
+  "title_translations": {
+    "zh-Hans": "东西线轨道重大故障",
+    "ms": "Ralat trek utama di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் பெரிய ரயில் பழுது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

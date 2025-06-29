@@ -1,6 +1,11 @@
 {
   "id": "2017-02-10-no-svc-on-sengkang-lrt-east-loop",
   "title": "No service on Sengkang LRT East Loop due to power fault",
+  "title_translations": {
+    "zh-Hans": "盛港轻轨东环线因电力故障暂停服务",
+    "ms": "Tiada perkhidmatan di Sengkang LRT East Loop kerana gangguan bekalan elektrik",
+    "ta": "செங்காங் LRT கிழக்கு வளையத்தில் மின்சாரக் கோளாறு காரணமாக சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "SKLRT"
   ],

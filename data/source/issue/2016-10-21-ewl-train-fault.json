@@ -1,6 +1,11 @@
 {
   "id": "2016-10-21-ewl-train-fault",
   "title": "Major Disruption on East West Line Due to Train Fault",
+  "title_translations": {
+    "zh-Hans": "东西线火车故障导致大面积中断",
+    "ms": "Gangguan Besar Laluan Timur Barat Akibat Kerosakan Kereta Api",
+    "ta": "ரயில் கோளாறு காரணமாக கிழக்கு மேற்கு பாதையில் பெரிய இடையூறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

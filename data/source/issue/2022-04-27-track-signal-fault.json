@@ -1,6 +1,11 @@
 {
   "id": "2022-04-27-track-signal-fault",
   "title": "Track Signal Fault Disrupting Service",
+  "title_translations": {
+    "zh-Hans": "轨道信号故障扰乱服务",
+    "ms": "Gangguan Isyarat Jejaki Menjejaskan Perkhidmatan",
+    "ta": "தடக் குறிகு தடுப்பு சேவையை பாதிக்கும்"
+  },
   "componentIdsAffected": [
     "TEL"
   ],

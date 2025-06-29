@@ -1,6 +1,11 @@
 {
   "id": "2020-08-20-track-fault",
   "title": "Track Fault Causing Delay",
+  "title_translations": {
+    "zh-Hans": "追踪导致延误的轨道故障",
+    "ms": "Jejaki Kerosakan Menyebabkan Kelewatan",
+    "ta": "தாமதத்தை ஏற்படுத்தும் தடிக் கோளாறு"
+  },
   "componentIdsAffected": [
     "DTL"
   ],

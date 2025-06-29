@@ -1,6 +1,11 @@
 {
   "id": "2012-10-26-circle-line-service-disruption",
   "title": "Circle Line service disruption",
+  "title_translations": {
+    "zh-Hans": "环线服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Bulat",
+    "ta": "வட்டப் பாதையில் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "CCL"
   ],

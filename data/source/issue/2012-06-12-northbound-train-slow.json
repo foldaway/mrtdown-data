@@ -1,6 +1,11 @@
 {
   "id": "2012-06-12-northbound-train-slow",
   "title": "Northbound train service disruption from Ang Mo Kio",
+  "title_translations": {
+    "zh-Hans": "宏茂桥往北列车服务中断",
+    "ms": "Gangguan perkhidmatan kereta arah utara dari Ang Mo Kio",
+    "ta": "வடக்கு நோக்கிய ரயில் சேவையில் அங்க மோ கியோவிலிருந்து இடையூறு"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

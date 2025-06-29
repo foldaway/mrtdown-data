@@ -1,6 +1,11 @@
 {
   "id": "2013-06-04-no-train-service-on-northeast-line-due-to-power-fault",
   "title": "No train service on Northeast Line due to power fault",
+  "title_translations": {
+    "zh-Hans": "东北线因电力故障暂停服务",
+    "ms": "Tiada perkhidmatan kereta api di Laluan Timur Laut kerana gangguan kuasa",
+    "ta": "மின்சாரக் கோளாறு காரணமாக வடகிழக்கு பாதையில் ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

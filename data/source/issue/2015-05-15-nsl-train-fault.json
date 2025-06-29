@@ -1,6 +1,11 @@
 {
   "id": "2015-05-15-nsl-train-fault",
   "title": "Train Fault Causing Delays on the North-South Line",
+  "title_translations": {
+    "zh-Hans": "北向南线列车故障导致延误",
+    "ms": "Gangguan Kereta Api Menyebabkan Kelewatan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் ரயிலில் ஏற்பட்ட கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

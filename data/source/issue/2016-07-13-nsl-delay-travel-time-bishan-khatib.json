@@ -1,6 +1,11 @@
 {
   "id": "2016-07-13-nsl-delay-travel-time-bishan-khatib",
   "title": "Delay on North-South Line due to track fault",
+  "title_translations": {
+    "zh-Hans": "北干线轨道故障导致延误",
+    "ms": "Kelewatan di Laluan Utara-Selatan kerana kerosakan trek",
+    "ta": "தட செயலிழப்பு காரணமாக வடக்கு-தெற்கு பாதையில் தாமதம்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

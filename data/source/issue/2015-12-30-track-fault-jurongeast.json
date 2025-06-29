@@ -1,6 +1,11 @@
 {
   "id": "2015-12-30-track-fault-jurongeast",
   "title": "Track fault causing delays on East West Line",
+  "title_translations": {
+    "zh-Hans": "东 - 西线轨道故障导致延误",
+    "ms": "Ralat trek menyebabkan kelewatan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் தடப் பிழை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

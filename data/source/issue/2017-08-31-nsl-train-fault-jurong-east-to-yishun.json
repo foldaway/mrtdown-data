@@ -1,6 +1,11 @@
 {
   "id": "2017-08-31-nsl-train-fault-jurong-east-to-yishun",
   "title": "Major train fault on North-South Line causing delays",
+  "title_translations": {
+    "zh-Hans": "南北线发生重大列车故障导致延误",
+    "ms": "Kerosakan kereta api utama di Laluan Utara-Selatan menyebabkan kelewatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் ஏற்பட்ட பெரும் ரயில் கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

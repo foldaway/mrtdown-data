@@ -1,6 +1,11 @@
 {
   "id": "2016-04-25-no-train-service-between-jookoon-and-bugis",
   "title": "Service Disruption: No train service between Joo Koon and Bugis, Woodlands and Jurong East",
+  "title_translations": {
+    "zh-Hans": "服务中断：裕廊东和勿洛之间，兀兰和裕廊东之间没有火车服务",
+    "ms": "Gangguan Perkhidmatan: Tiada perkhidmatan kereta api antara Joo Koon dan Bugis, Woodlands dan Jurong East",
+    "ta": "சேவை இடையூறு: ஜூ கூன் மற்றும் புகிஸ், வூட்ஸ்லேண்ட்ஸ் மற்றும் ஜுரோங் ஈஸ்ட் இடையே ரயில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NSL",
     "EWL"

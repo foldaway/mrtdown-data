@@ -1,6 +1,11 @@
 {
   "id": "2022-07-08-nsl-train-fault",
   "title": "Major train delay on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线列车严重延误",
+    "ms": "Kelewatan kereta besar di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் பெரிய ரயில் தாமதம்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

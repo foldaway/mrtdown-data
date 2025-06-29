@@ -1,6 +1,11 @@
 {
   "id": "2017-02-07-ewl-track-work-delay",
   "title": "Track work causing travel delays on East West Line",
+  "title_translations": {
+    "zh-Hans": "东西线轨道工程导致行程延误",
+    "ms": "Kerja trek yang menyebabkan kelewatan perjalanan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் பயண தாமதத்தை ஏற்படுத்தும் பாதை வேலை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

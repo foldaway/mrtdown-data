@@ -1,6 +1,11 @@
 {
   "id": "2015-02-03-nsl-train-fault",
   "title": "Train fault causing additional travel time on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线列车故障导致行程时间延长",
+    "ms": "Kerosakan kereta api menyebabkan masa perjalanan tambahan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் கூடுதல் பயண நேரத்தை ஏற்படுத்தும் ரயில் பழுது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2012-12-31-train-fault",
   "title": "Train fault leading to travel time increase",
+  "title_translations": {
+    "zh-Hans": "列车故障导致行程时间增加",
+    "ms": "Kerosakan kereta yang membawa kepada peningkatan masa perjalanan",
+    "ta": "பயண நேர அதிகரிப்புக்கு வழிவகுத்த ரயில் கோளாறு"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2022-10-12-nel-service-delayed",
   "title": "NEL service disruption due to train fault",
+  "title_translations": {
+    "zh-Hans": "东北线列车故障导致服务中断",
+    "ms": "Gangguan perkhidmatan NEL kerana kerosakan kereta api",
+    "ta": "ரயில் பழுதின் காரணமாக NEL சேவை தடங்கல்"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

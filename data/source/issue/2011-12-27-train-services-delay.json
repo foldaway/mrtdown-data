@@ -1,6 +1,11 @@
 {
   "id": "2011-12-27-train-services-delay",
   "title": "Train services running slower due to speed restrictions",
+  "title_translations": {
+    "zh-Hans": "由于限速，火车服务运行较慢",
+    "ms": "Perkhidmatan kereta api berjalan lebih perlahan kerana sekatan kelajuan",
+    "ta": "வேகக் கட்டுப்பாடுகள் காரணமாக ரயில் சேவைகள் மெதுவாக இயங்குகின்றன"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

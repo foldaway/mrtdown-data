@@ -1,6 +1,11 @@
 {
   "id": "2024-10-10-ewl-train-services-restore",
   "title": "Train services restoration in progress on East West Line",
+  "title_translations": {
+    "zh-Hans": "东西线列车服务恢复进行中",
+    "ms": "Pemulihan perkhidmatan kereta api sedang dijalankan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் ரயில் சேவைகள் மீட்டெடுக்கும் பணிகள் நடைபெற்று வருகின்றன"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

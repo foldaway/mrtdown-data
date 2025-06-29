@@ -1,6 +1,11 @@
 {
   "id": "2014-03-03-ewl-train-doors-fault",
   "title": "Train doors fault causing delays",
+  "title_translations": {
+    "zh-Hans": "列车门故障导致延误",
+    "ms": "Kerosakan pintu tren menyebabkan kelewatan",
+    "ta": "ரயில் கதவு கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

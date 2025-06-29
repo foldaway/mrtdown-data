@@ -1,6 +1,11 @@
 {
   "id": "2014-09-23-train-fault-near-somerset-station",
   "title": "Train fault near Somerset station causing delays",
+  "title_translations": {
+    "zh-Hans": "Somerset站附近火车故障导致延误",
+    "ms": "Kerosakan kereta api berhampiran stesen Somerset menyebabkan kelewatan",
+    "ta": "சோமர்செட் நிலையத்திற்கு அருகே ரயில் கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

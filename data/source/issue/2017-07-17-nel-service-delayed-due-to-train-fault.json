@@ -1,6 +1,11 @@
 {
   "id": "2017-07-17-nel-service-delayed-due-to-train-fault",
   "title": "North East Line service delayed due to train fault",
+  "title_translations": {
+    "zh-Hans": "东北线列车故障导致服务延误",
+    "ms": "North East Line dijangka lewat kerana kegagalan tren",
+    "ta": "மின் தடங்கல் காரணமாக வடகிழக்கு பாதையில் சேவை தாமதமானது"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2017-04-11-ewl-train-fault",
   "title": "Major train fault causing delays",
+  "title_translations": {
+    "zh-Hans": "主要列车故障导致延误",
+    "ms": "Kesalahan kereta utama menyebabkan kelewatan",
+    "ta": "தாமதத்தை ஏற்படுத்தும் பெரிய ரயில் பிழை"
+  },
   "componentIdsAffected": [
     "EWL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2022-10-19-nsl-track-fault",
   "title": "Track fault causing delays on North-South Line",
+  "title_translations": {
+    "zh-Hans": "列车故障导致南北线延误",
+    "ms": "Jejak kerosakan menyebabkan kelewatan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் தடயப் பிழை"
+  },
   "componentIdsAffected": [
     "NSL"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2016-03-29-sengkang-east-lrt-service-disruption",
   "title": "Service disruption on Sengkang East LRT",
+  "title_translations": {
+    "zh-Hans": "盛港东轻轨服务中断",
+    "ms": "Gangguan perkhidmatan di LRT Sengkang Timur",
+    "ta": "செங்காங் கிழக்கு LRT இல் சேவை இடையூறு"
+  },
   "componentIdsAffected": [
     "SKLRT"
   ],

@@ -1,6 +1,11 @@
 {
   "id": "2016-08-17-nel-svc-disruption",
   "title": "No North East Line service between Woodleigh and Punggol stations",
+  "title_translations": {
+    "zh-Hans": "Woodleigh 和 Punggol 站之间东北线暂停服务",
+    "ms": "Tiada perkhidmatan Laluan Timur Laut antara stesen Woodleigh dan Punggol",
+    "ta": "Woodleigh மற்றும் Punggol நிலையங்களுக்கு இடையே வடகிழக்கு பாதையில் சேவை இல்லை"
+  },
   "componentIdsAffected": [
     "NEL"
   ],

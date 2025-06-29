@@ -1,6 +1,11 @@
 {
   "id": "2017-04-18-nsl-track-fault",
   "title": "Track Fault on NSL",
+  "title_translations": {
+    "zh-Hans": "追踪NSL故障",
+    "ms": "Jejak Kerosakan di NSL",
+    "ta": "NSL இல் தடத்தை சரிசெய்யவும்"
+  },
   "componentIdsAffected": [
     "NSL"
   ],
