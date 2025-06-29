@@ -8,6 +8,7 @@ import { buildComponentManifests } from './buildComponentManifests';
 import { buildComponentIndex } from './buildComponentIndex';
 import { buildIssueIndex } from './buildIssueIndex';
 import { buildComponentStatusManifests } from './buildComponentStatusManifests';
+import { buildFooterManifest } from './buildFooterManifest';
 
 buildOverview();
 buildIssuesHistory();
@@ -19,3 +20,4 @@ buildComponentManifests();
 buildComponentIndex();
 buildComponentStatusManifests();
 buildIssueIndex();
+buildFooterManifest();
