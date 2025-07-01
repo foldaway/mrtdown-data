@@ -10,12 +10,18 @@
     "TEL"
   ],
   "startAt": "2025-07-01T06:26:38.000+08:00",
-  "endAt": null,
+  "endAt": "2025-07-01T08:24:38.000+08:00",
   "type": "disruption",
   "subtypes": [
     "signal.fault"
   ],
   "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "8.20am: TEL - Train services are progressively resuming. Free regular bus and bridging bus services are still available at the designated bus stops between Caldecott and Gardens by the Bay stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114775128733485059",
+      "createdAt": "2025-07-01T08:24:38.000+08:00"
+    },
     {
       "type": "operator.update",
       "text": "7.00am: TEL - Due to a signal fault, please expect an additional 30 minutes of travelling time between Caldecott and Gardens by the Bay stations. There is no train service between Napier and Great World stations. Free regular bus and bridging bus service is available at the designated bus stops between Caldecott and Gardens by the Bay stations. Passengers are advised to take alternate lines to continue their journey.",
@@ -45,7 +51,13 @@
         "NPR",
         "OBV",
         "ORC",
-        "GRW"
+        "GRW",
+        "HVL",
+        "OTP",
+        "MAX",
+        "SHW",
+        "MRB",
+        "GRB"
       ]
     }
   ]
