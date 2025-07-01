@@ -76,6 +76,7 @@ export function computeDateSummaries(
           id: issue.id,
           type: issue.type,
           title: issue.title,
+          title_translations: issue.title_translations,
           componentIdsAffected: issue.componentIdsAffected,
           startAt: issue.startAt,
           endAt: issue.endAt,
