@@ -1,0 +1,64 @@
+{
+  "id": "2025-07-01-tel-signal-fault",
+  "title": "Service Disruption on Thomson–East Coast Line Due to Signal Fault",
+  "title_translations": {
+    "zh-Hans": "因为信号故障的汤姆森-东海岸线服务中断",
+    "ms": "Gangguan Perkhidmatan di Lajur Thomson–East Coast kerana Kerosakan Isyarat",
+    "ta": "சிக்னல் பிளவலால் தாம்சோன்-கிழக்கு கடற்கரை ரயிலில் சேவை இடைஞ்சல்"
+  },
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2025-07-01T06:26:38.000+08:00",
+  "endAt": "2025-07-01T08:24:38.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "8.20am: TEL - Train services are progressively resuming. Free regular bus and bridging bus services are still available at the designated bus stops between Caldecott and Gardens by the Bay stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114775128733485059",
+      "createdAt": "2025-07-01T08:24:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "7.00am: TEL - Due to a signal fault, please expect an additional 30 minutes of travelling time between Caldecott and Gardens by the Bay stations. There is no train service between Napier and Great World stations. Free regular bus and bridging bus service is available at the designated bus stops between Caldecott and Gardens by the Bay stations. Passengers are advised to take alternate lines to continue their journey.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114774814152597488",
+      "createdAt": "2025-07-01T07:04:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "6.40am: TEL - Due to a signal fault, please expect an additional 30 minutes of travelling time between Caldecott and Gardens by the Bay stations. There is no train service between Napier and Great World stations. Free regular bus and bridging bus service is available at the designated bus stops between Caldecott and Gardens by the Bay stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114774727623056647",
+      "createdAt": "2025-07-01T06:42:38.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "6.25am: TEL - Due to a signal fault, please expect an additional 30 minutes of travelling time between Caldecott and Bayshore stations. Free regular bus service is available at the designated bus stops between Caldecott and Gardens by the Bay stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114774664728643328",
+      "createdAt": "2025-07-01T06:26:38.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "CDT",
+        "STV",
+        "NPR",
+        "OBV",
+        "ORC",
+        "GRW",
+        "HVL",
+        "OTP",
+        "MAX",
+        "SHW",
+        "MRB",
+        "GRB"
+      ]
+    }
+  ]
+}
