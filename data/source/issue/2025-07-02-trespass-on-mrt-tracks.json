@@ -1,0 +1,35 @@
+{
+  "id": "2025-07-02-trespass-on-mrt-tracks",
+  "title": "Trespass on MRT Tracks—Simei and Tanah Merah",
+  "title_translations": {
+    "zh-Hans": "进入MRT轨道—西美和丹那美拉",
+    "ms": "Menceroboh Landasan MRT—Simei dan Tanah Merah",
+    "ta": "எம்.ஆர்.டி. பாதையில் சட்டவிரோதமாக நுழைவு - சீமே மற்றும் தானா மேரா"
+  },
+  "componentIdsAffected": [
+    "EWL",
+    "NSL"
+  ],
+  "startAt": "2025-07-02T21:28:00.000+08:00",
+  "endAt": null,
+  "type": "infra",
+  "subtypes": [],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/trespass-mrt-tracks-simei-tanah-merah-teenager-charge-5216546",
+      "createdAt": "2025-07-02T21:28:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "SIM",
+        "TNM"
+      ]
+    }
+  ]
+}
