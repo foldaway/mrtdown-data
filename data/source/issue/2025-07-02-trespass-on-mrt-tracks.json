@@ -17,6 +17,12 @@
   "updates": [
     {
       "type": "operator.update",
+      "text": "The teen faces one count of wilfully endangering safety and one count of criminal trespass.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/teen-17-to-be-charged-for-allegedly-trespassing-on-mrt-tracks",
+      "createdAt": "2025-07-02T21:42:51.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "",
       "sourceUrl": "https://www.channelnewsasia.com/singapore/trespass-mrt-tracks-simei-tanah-merah-teenager-charge-5216546",
       "createdAt": "2025-07-02T21:28:00.000+08:00"
@@ -29,6 +35,36 @@
       "stationIds": [
         "SIM",
         "TNM"
+      ]
+    },
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK",
+        "YWT",
+        "KRJ",
+        "MSL",
+        "WDL",
+        "ADM",
+        "SBW",
+        "CBR",
+        "YIS",
+        "KTB",
+        "YCK",
+        "AMK",
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW",
+        "ORC",
+        "SOM",
+        "DBG",
+        "CTH"
       ]
     }
   ]
