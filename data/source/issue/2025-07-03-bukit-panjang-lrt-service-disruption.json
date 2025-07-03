@@ -10,7 +10,7 @@
     "BPLRT"
   ],
   "startAt": "2025-07-03T09:24:25.000+08:00",
-  "endAt": null,
+  "endAt": "2025-07-03T11:30:25.000+08:00",
   "type": "disruption",
   "subtypes": [
     "power.fault"
