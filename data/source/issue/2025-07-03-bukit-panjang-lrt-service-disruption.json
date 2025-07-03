@@ -17,6 +17,18 @@
   ],
   "updates": [
     {
+      "type": "operator.monitoring",
+      "text": "11.30am: BPLRT - Train service is progressively returning to normal. Free regular buses and bridging buses are still available at the designated bus stops outside the stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114787183874435085",
+      "createdAt": "2025-07-03T11:30:25.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "11.20am: BPLRT - Due to a power fault, train service is not available at all stations. Free regular buses and bridging buses are available at the designated bus stops outside the stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114787144548896373",
+      "createdAt": "2025-07-03T11:20:25.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "9.50am: BPLRT - Due to a power fault, train service is not available at all stations. Free regular buses or bridging buses are available at the designated bus stops outside the stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114786814247456617",
@@ -43,7 +55,13 @@
         "CCK",
         "SHV",
         "KTH",
-        "TKW",
+        "TKW"
+      ]
+    },
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
         "PNX",
         "BKP",
         "PTR",
