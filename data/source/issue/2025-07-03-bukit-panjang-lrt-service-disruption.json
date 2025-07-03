@@ -1,0 +1,59 @@
+{
+  "id": "2025-07-03-bukit-panjang-lrt-service-disruption",
+  "title": "Bukit Panjang LRT service disruption due to power fault",
+  "title_translations": {
+    "zh-Hans": "由于电力故障，Bukit Panjang LRT服务中断",
+    "ms": "Disruption perkhidmatan Bukit Panjang LRT disebabkan oleh arus elektrik",
+    "ta": "சக்தி குறைபாட்டை காரணமாக, புக்கிட் பஞ்சாங்க்கு எலெக்ட்ரிக் மின்சாரத்திற்கான சேவையில் தடையேற்பாடு"
+  },
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2025-07-03T09:24:25.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "power.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.investigating",
+      "text": "9.50am: BPLRT - Due to a power fault, train service is not available at all stations. Free regular buses or bridging buses are available at the designated bus stops outside the stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114786814247456617",
+      "createdAt": "2025-07-03T09:56:25.000+08:00"
+    },
+    {
+      "type": "news.report",
+      "text": "There are free regular bus services and bridging bus services available for affected commuters, said SMRT.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/bukit-panjang-lrt-train-power-fault-no-service-5217576",
+      "createdAt": "2025-07-03T09:46:00.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "9.20am: BPLRT - Due to a power fault, train service is not available at all stations. Free regular buses or bridging buses are available at the designated bus stops at the stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114786688421195527",
+      "createdAt": "2025-07-03T09:24:25.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ"
+      ]
+    }
+  ]
+}
