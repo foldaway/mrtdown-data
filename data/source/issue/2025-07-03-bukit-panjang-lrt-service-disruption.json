@@ -17,6 +17,12 @@
   ],
   "updates": [
     {
+      "type": "news.report",
+      "text": "On July 3, a power fault led to a disruption at all stations on the Bukit Panjang LRT line.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/power-distribution-system-may-be-linked-to-bukit-panjang-lrt-disruption-smrt",
+      "createdAt": "2025-07-04T20:50:26.000+08:00"
+    },
+    {
       "type": "operator.monitoring",
       "text": "11.30am: BPLRT - Train service is progressively returning to normal. Free regular buses and bridging buses are still available at the designated bus stops outside the stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114787183874435085",
@@ -47,31 +53,5 @@
       "createdAt": "2025-07-03T09:24:25.000+08:00"
     }
   ],
-  "stationIdsAffected": [
-    {
-      "componentId": "BPLRT",
-      "branchName": "main",
-      "stationIds": [
-        "CCK",
-        "SHV",
-        "KTH",
-        "TKW"
-      ]
-    },
-    {
-      "componentId": "BPLRT",
-      "branchName": "main",
-      "stationIds": [
-        "PNX",
-        "BKP",
-        "PTR",
-        "PND",
-        "BKT",
-        "FJR",
-        "SGR",
-        "JLP",
-        "SNJ"
-      ]
-    }
-  ]
+  "stationIdsAffected": []
 }
