@@ -1,0 +1,45 @@
+{
+  "id": "2025-07-08-north-south-line-track-fault",
+  "title": "Track Fault on North-South Line",
+  "title_translations": {
+    "zh-Hans": "南北线轨道故障",
+    "ms": "Kerosakan Trek pada Laluan Utara-Selatan",
+    "ta": "வடக்கே தெற்கே நெடி பிழை"
+  },
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2025-07-08T09:48:12.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "09.55am: NSL - Due to a track fault, please add additional 10 minutes travel time from Toa Payoh to Somerset stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114815124853535369",
+      "createdAt": "2025-07-08T09:56:11.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "09.45am: NSL - Due to a track fault, please add additional 15 minutes travel time from Toa Payoh to Somerset stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114815093467121307",
+      "createdAt": "2025-07-08T09:48:12.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "TAP",
+        "NOV",
+        "NEW",
+        "ORC",
+        "SOM"
+      ]
+    }
+  ]
+}
