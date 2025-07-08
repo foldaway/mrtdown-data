@@ -9,24 +9,36 @@
   "componentIdsAffected": [
     "NSL"
   ],
-  "startAt": "2025-07-08T09:48:12.000+08:00",
-  "endAt": null,
+  "startAt": "2025-07-08T09:44:45.000+08:00",
+  "endAt": "2025-07-08T10:10:29.000+08:00",
   "type": "disruption",
   "subtypes": [
     "track.fault"
   ],
   "updates": [
     {
-      "type": "operator.update",
-      "text": "09.55am: NSL - Due to a track fault, please add additional 10 minutes travel time from Toa Payoh to Somerset stations.",
-      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114815124853535369",
-      "createdAt": "2025-07-08T09:56:11.000+08:00"
+      "type": "operator.resolved",
+      "text": "[NSL] CLEARED: Normal train service has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1942405902276927890",
+      "createdAt": "2025-07-08T10:10:29.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[Update]: Train services from #ToaPayoh to #Somerset has resumed.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1942402693538144743",
+      "createdAt": "2025-07-08T09:57:44.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Track fault cleared, train services are progressively being restored. Please add 10mins train travel time from #ToaPayoh to #Somerset.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1942401325125530012",
+      "createdAt": "2025-07-08T09:52:18.000+08:00"
     },
     {
       "type": "operator.update",
-      "text": "09.45am: NSL - Due to a track fault, please add additional 15 minutes travel time from Toa Payoh to Somerset stations.",
-      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114815093467121307",
-      "createdAt": "2025-07-08T09:48:12.000+08:00"
+      "text": "[NSL]: Due to a track fault, please add 15mins train travel time from #ToaPayoh to #Somerset towards #MarinaSouthPier.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/1942399423964930244",
+      "createdAt": "2025-07-08T09:44:45.000+08:00"
     }
   ],
   "stationIdsAffected": [
