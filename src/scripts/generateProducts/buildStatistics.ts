@@ -14,6 +14,7 @@ import type { IssueType } from '../../schema/Issue';
 import type { IssueReference } from '../../schema/Overview';
 import type { Statistics } from '../../schema/Statistics';
 import { assert } from '../../util/assert';
+import { isOngoingIssue } from '../../helpers/isOngoingIssue';
 
 interface DateSummaryPartial {
   issues: IssueReference[];
@@ -242,6 +243,7 @@ export function buildStatistics() {
     componentsIssuesDisruptionCount,
     stationIssues,
     componentsById,
+    issuesOngoingSnapshot: issues.filter((issue) => isOngoingIssue(issue)),
   };
 
   writeFileSync(filePath, JSON.stringify(content, null, 2));

@@ -11,6 +11,8 @@ export const StatisticsSchema = z.object({
   issuesDisruptionDurationTotalDays: z.number(),
   issuesDisruptionLongest: z.array(IssueReferenceSchema),
   componentsIssuesDisruptionCount: z.record(ComponentIdSchema, z.number()),
+  // Includes all issues that are either open-ended or end after the current product build time.
+  issuesOngoingSnapshot: z.array(IssueSchema),
   stationIssues: z.array(
     z.object({
       station: StationSchema,
