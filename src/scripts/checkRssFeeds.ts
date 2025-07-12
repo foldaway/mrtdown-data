@@ -19,7 +19,13 @@ interface RedditFeed {
   feedUrl: string;
 }
 
-const REDDIT_RSS_FEEDS: RedditFeed[] = [];
+const REDDIT_RSS_FEEDS: RedditFeed[] = [
+  {
+    subreddit: '/r/singapore',
+    feedUrl:
+      'https://www.reddit.com/r/singapore/search.json?q=mrt OR train&sort=new&restrict_sr=on',
+  },
+];
 
 const NEWS_RSS_FEEDS: string[] = [
   'https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=10416',
