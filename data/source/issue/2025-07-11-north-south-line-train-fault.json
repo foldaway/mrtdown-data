@@ -1,0 +1,41 @@
+{
+  "id": "2025-07-11-north-south-line-train-fault",
+  "title": "Public Reports of Train Fault at Canberra MRT Station",
+  "title_translations": {
+    "zh-Hans": "坎贝拉地铁站列车故障的公众报告",
+    "ms": "Laporan Awam tentang Kerosakan Kereta Api di Stesen MRT Canberra",
+    "ta": "கன்பெரா எம்ஆர்டி நிலையத்தில் ரயில் பழுதுபற்றிய பொது அறிக்கைகள்"
+  },
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2025-07-11T07:30:00.000+08:00",
+  "endAt": "2025-07-11T08:15:00.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
+  "updates": [
+    {
+      "type": "general-public.report",
+      "text": "A commuter reported taking the North-South Line (NSL) train from Admiralty at 8:15 AM and did not observe any delays. They noted that if there had been a delay, it must have been brief.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1lwrwfq/comment/n2h21pg",
+      "createdAt": "2025-07-11T09:40:21+08:00"
+    },
+    {
+      "type": "general-public.report",
+      "text": "At 7:30am, a train fault was announced over the PA system, with the fault occurring at Canberra station. Commuters are advised to make alternative travel arrangements to avoid delays or congestion.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1lwrwfq/train_fault_at_canberra_nsl_towards_jurong_east/",
+      "createdAt": "2025-07-11T07:40:18+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "CBR"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "2025-07-10-east-west-line-overcrowding",
+  "title": "Public Reports of Overcrowding at East-West Line stations",
+  "title_translations": {
+    "zh-Hans": "公共关于东西线车站拥挤情况的报告",
+    "ms": "Laporan Awam Mengenai Kesesakan di Stesen Laluan Timur-Barat",
+    "ta": "கிழக்கு-மேற்கு வழித்தட நிலையங்களில் கூட்டம் குறித்த பொதுக் கணக்குகள்"
+  },
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2025-07-10T18:30:00.000+08:00",
+  "endAt": "2025-07-10T19:00:00.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
+  "updates": [
+    {
+      "type": "general-public.report",
+      "text": "A commuter asked what time an incident occurred, mentioning that they were at the location around 7pm but did not notice any disruption or unusual situation.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1lw9mcb/comment/n2cyx78",
+      "createdAt": "2025-07-10T21:25:58+08:00"
+    },
+    {
+      "type": "general-public.report",
+      "text": "A commuter reported that the platform at Jurong East MRT station (toward Pasir Ris) was full, and station announcements indicated some delay due to track works. However, no official updates about the delay were found on news sites or the LTA website. The commuter asked if others were also stuck at Jurong East.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1lw9rwj/crowded_on_jurong_east_station_at_630pm/",
+      "createdAt": "2025-07-10T18:57:57+08:00"
+    },
+    {
+      "type": "general-public.report",
+      "text": "There is a train delay of approximately 5-10 minutes on the East West Line towards Tampines from Clementi MRT. Train services towards Tuas are operating normally. Commuters heading towards the city or the east are advised to take the bus instead.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1lw9mcb/ewl_mrt_delay_at_clementi/",
+      "createdAt": "2025-07-10T18:48:45+08:00"
+    },
+    {
+      "type": "general-public.report",
+      "text": "Overcrowding at Boon Lay MRT during peak hour. Only one gantry is operational, causing congestion. Trains are delayed in departing from the station.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1lw9fru/overcrowding_at_boon_lay_mrt/",
+      "createdAt": "2025-07-10T18:37:44+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "BNL",
+        "LKS",
+        "CNG",
+        "JUR",
+        "CLE"
+      ]
+    }
+  ]
+}
