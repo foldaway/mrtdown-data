@@ -1,0 +1,45 @@
+{
+  "id": "2025-07-15-dtl-service-delayed",
+  "title": "Downtown Line service delayed due to signalling fault",
+  "title_translations": {
+    "zh-Hans": "由于信号故障，市区线服务延误",
+    "ms": "Perkhidmatan Laluan Pusat ditangguhkan akibat masalah isyarat",
+    "ta": "சிட்டி ரயில் சேவை சிக்னல் குறைபாடு காரணமாக தாமதமாகியுள்ளது"
+  },
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2025-07-15T13:43:24.000+08:00",
+  "endAt": "2025-07-15T14:06:43.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "DTL signalling fault cleared. Normal train service has resumed. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1945002066805453225",
+      "createdAt": "2025-07-15T14:06:43.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "DTL service between DT16 Bayfront and DT12 Little India is delayed due to a signalling fault. Additional travel time of about 5 minutes may be expected. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1944996196659159118",
+      "createdAt": "2025-07-15T13:43:24.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "LTI",
+        "RCR",
+        "BGS",
+        "PMN",
+        "BFT"
+      ]
+    }
+  ]
+}
