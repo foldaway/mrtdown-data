@@ -10,12 +10,24 @@
     "BPLRT"
   ],
   "startAt": "2025-07-19T14:52:25.000+08:00",
-  "endAt": null,
+  "endAt": "2025-07-19T16:24:25.000+08:00",
   "type": "disruption",
   "subtypes": [
     "power.fault"
   ],
   "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "4.20pm: BPLRT - Train services have resumed normal operations. Free regular and bridging bus services are still available at the designated bus stops at the stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114878936863997030",
+      "createdAt": "2025-07-19T16:24:25.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "3.35pm: BPLRT - Due to a power fault, train service is not available at all stations. Free regular buses and bridging buses are available at the designated bus stops outside the stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114878748121243960",
+      "createdAt": "2025-07-19T15:36:25.000+08:00"
+    },
     {
       "type": "operator.update",
       "text": "2.50pm: BPLRT - Due to a power fault, train service is not available at all stations. Free regular buses and bridging buses are available at the designated bus stops outside the stations.",
