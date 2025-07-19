@@ -1,0 +1,47 @@
+{
+  "id": "2025-07-19-bukit-panjang-lrt-power-fault",
+  "title": "Power fault affecting Bukit Panjang LRT services",
+  "title_translations": {
+    "zh-Hans": "由于电力故障影响武吉班让轻轨服务",
+    "ms": "Gangguan bekalan kuasa yang menjejaskan perkhidmatan LRT Bukit Panjang",
+    "ta": "பவரால் பாதிக்கப்பட்டது புக்கித் பாங்சாங் எல்ஆர்டி சேவைகள்"
+  },
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2025-07-19T14:52:25.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "power.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "2.50pm: BPLRT - Due to a power fault, train service is not available at all stations. Free regular buses and bridging buses are available at the designated bus stops outside the stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114878575109849162",
+      "createdAt": "2025-07-19T14:52:25.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ"
+      ]
+    }
+  ]
+}
