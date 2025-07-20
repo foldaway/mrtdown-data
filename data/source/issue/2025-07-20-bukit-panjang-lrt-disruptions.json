@@ -1,0 +1,45 @@
+{
+  "id": "2025-07-20-bukit-panjang-lrt-disruptions",
+  "title": "Power system installation disruptions",
+  "title_translations": {
+    "zh-Hans": "电力系统安装造成的干扰",
+    "ms": "Gangguan pemasangan sistem kuasa",
+    "ta": "பவர் சிஸ்டம் நிறுவல் தடை"
+  },
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2025-07-20T23:30:19.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [],
+  "updates": [
+    {
+      "type": "news.report",
+      "text": "The new system is part of the ongoing LTA Power Renewal Project.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/bukit-panjang-lrt-disruptions-in-july-both-linked-to-newly-installed-power-system-smrt",
+      "createdAt": "2025-07-20T23:30:19.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ"
+      ]
+    }
+  ]
+}
