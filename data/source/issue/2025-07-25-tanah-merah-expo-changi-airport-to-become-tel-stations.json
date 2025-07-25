@@ -1,0 +1,40 @@
+{
+  "id": "2025-07-25-tanah-merah-expo-changi-airport-to-become-tel-stations",
+  "title": "Tanah Merah, Expo and Changi Airport will become TEL stations",
+  "title_translations": {
+    "zh-Hans": "Tanah Merah, Expo 和樟宜机场将成为 TEL 车站",
+    "ms": "Tanah Merah, Expo dan Changi Airport akan menjadi stesen TEL",
+    "ta": "தனாஹ் மேறா, எக்ஸ்போ மற்றும் செங்கிழிஐவயரிணா வெற்கொண் காசாபி கெ'sடத்தினப்பட்டத்தின்னில்"
+  },
+  "componentIdsAffected": [
+    "EWL",
+    "TEL",
+    "DTL"
+  ],
+  "startAt": "2025-07-25T12:45:00.000+08:00",
+  "endAt": null,
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "station.renovation"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Tanah Merah, Expo and Changi Airport will become TEL stations, creating a direct link to the city centre.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/mrt-service-changes-needed-to-modify-3-east-west-line-stations-on-changi-airport-stretch-lta",
+      "createdAt": "2025-07-25T12:45:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "changi_airport",
+      "stationIds": [
+        "TNM",
+        "XPO",
+        "CGA"
+      ]
+    }
+  ]
+}
