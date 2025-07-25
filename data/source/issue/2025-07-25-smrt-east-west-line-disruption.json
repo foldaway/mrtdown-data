@@ -1,0 +1,65 @@
+{
+  "id": "2025-07-25-smrt-east-west-line-disruption",
+  "title": "SMRT East West Line Disruption",
+  "title_translations": {
+    "zh-Hans": "东西线SMRT服务中断",
+    "ms": "Gangguan Layanan SMRT East West Line",
+    "ta": "SMRT கிழக்கு மேற்கேுக்கான ரயில் சேவை இடைஞ்சல்"
+  },
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2025-07-25T17:41:06.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [],
+  "updates": [
+    {
+      "type": "news.report",
+      "text": "LTA has also directed SMRT to invest a minimum of S$600,000 to strengthen its capabilities.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/smrt-east-west-line-disruption-sgd-3-million-fine-cut-24-million-lta-5258291",
+      "createdAt": "2025-07-25T17:41:06.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR",
+        "TAM",
+        "SIM",
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN",
+        "GCL",
+        "TCR",
+        "TWR",
+        "TLK"
+      ]
+    }
+  ]
+}
