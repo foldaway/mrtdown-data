@@ -9,7 +9,14 @@
     "CRL": [
       {
         "code": "CR1",
-        "startedAt": "2050-12-31",
+        "startedAt": "2035-12-31",
+        "structureType": "underground"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE32",
+        "startedAt": "2035-12-31",
         "structureType": "underground"
       }
     ]

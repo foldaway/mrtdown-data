@@ -12,6 +12,13 @@
         "startedAt": "2002-02-08",
         "structureType": "underground"
       }
+    ],
+    "TEL": [
+      {
+        "code": "TE33",
+        "startedAt": "2035-12-31",
+        "structureType": "underground"
+      }
     ]
   },
   "town": "Changi",

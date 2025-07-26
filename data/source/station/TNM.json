@@ -17,6 +17,13 @@
         "startedAt": "2001-01-10",
         "structureType": "elevated"
       }
+    ],
+    "TEL": [
+      {
+        "code": "TE35",
+        "startedAt": "2035-12-31",
+        "structureType": "underground"
+      }
     ]
   },
   "town": "Bedok",
