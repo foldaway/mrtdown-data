@@ -1,5 +1,5 @@
 {
-  "id": "2025-07-28-mrt-platform-screen-doors-renewal",
+  "id": "2026-04-01-mrt-platform-screen-doors-renewal",
   "title": "MRT Platform Screen Doors at Underground Stations to Undergo Renewal",
   "title_translations": {
     "zh-Hans": "地铁站台屏幕门将进行更新",
@@ -10,8 +10,8 @@
     "NSL",
     "EWL"
   ],
-  "startAt": "2025-07-28T12:50:00.000+08:00",
-  "endAt": "2027-03-31T00:00:00.000+08:00",
+  "startAt": "2026-04-01T00:00:00.000+08:00",
+  "endAt": "2026-08-01T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
@@ -30,72 +30,16 @@
       "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
-        "JUR",
-        "BBT",
-        "BGB",
-        "CCK",
-        "YWT",
-        "KRJ",
-        "MSL",
-        "WDL",
-        "ADM",
-        "SBW",
-        "CBR",
-        "YIS",
-        "KTB",
-        "YCK",
-        "AMK",
-        "BSH",
-        "BDL",
-        "TAP",
-        "NOV",
-        "NEW",
-        "ORC",
         "SOM",
-        "DBG",
-        "CTH",
-        "RFP",
-        "MRB",
-        "MSP"
+        "CTH"
       ]
     },
     {
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
-        "PSR",
-        "TAM",
-        "SIM",
-        "TNM",
-        "BDK",
-        "KEM",
-        "EUN",
-        "PYL",
-        "ALJ",
-        "KAL",
-        "LVR",
-        "BGS",
-        "CTH",
-        "RFP",
         "TPG",
-        "OTP",
-        "TIB",
-        "RDH",
-        "QUE",
-        "COM",
-        "BNV",
-        "DVR",
-        "CLE",
-        "JUR",
-        "CNG",
-        "LKS",
-        "BNL",
-        "PNR",
-        "JKN",
-        "GCL",
-        "TCR",
-        "TWR",
-        "TLK"
+        "OTP"
       ]
     }
   ]

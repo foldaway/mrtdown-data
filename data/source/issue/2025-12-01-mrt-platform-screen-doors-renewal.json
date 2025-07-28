@@ -1,0 +1,46 @@
+{
+  "id": "2025-12-01-mrt-platform-screen-doors-renewal",
+  "title": "MRT Platform Screen Doors at Underground Stations to Undergo Renewal",
+  "title_translations": {
+    "zh-Hans": "地铁站台屏幕门将进行更新",
+    "ms": "Pintu Skrin Platform MRT di Stesen Bawah Tanah Akan Dipulihkan",
+    "ta": "மெட்ரோ திடல் ஏற்படுத்தப்படும்"
+  },
+  "componentIdsAffected": [
+    "NSL",
+    "EWL"
+  ],
+  "startAt": "2025-12-01T00:00:00.000+08:00",
+  "endAt": "2026-04-01T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "station.renovation"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "The works are expected to be completed by end-March 2027.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/mrt-platform-screen-doors-at-15-underground-stations-to-undergo-renewal",
+      "createdAt": "2025-07-28T12:50:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "BDL",
+        "TAP"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "LVR",
+        "BGS"
+      ]
+    }
+  ]
+}
