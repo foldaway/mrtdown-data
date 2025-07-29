@@ -1,0 +1,29 @@
+{
+  "id": "2025-07-29-circle-line-incident",
+  "title": "Reports of a Disruption on the Circle Line",
+  "title_translations": {
+    "zh-Hans": "关于环线中断的报告",
+    "ms": "Laporan Mengenai Gangguan di Laluan Lingkaran",
+    "ta": "சர்க்கிள் லைனில் இடையூறு குறித்த அறிக்கைகள்"
+  },
+  "componentIdsAffected": ["CCL"],
+  "startAt": "2025-07-29T08:15:00.000+08:00",
+  "endAt": "2025-07-29T09:00:00.000+08:00",
+  "type": "disruption",
+  "subtypes": ["train.fault"],
+  "updates": [
+    {
+      "type": "general-public.report",
+      "text": "A commuter reported seeing a large buildup of passengers and trains appearing to be stationary for long periods on the Circle Line. The incident was described as chaos during rush hour.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1mbwx2j/something_has_gone_terribly_wrong_in_the_circle/",
+      "createdAt": "2025-07-29T08:45:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": ["SER", "LRC", "BSH", "MRM", "CDT", "BTN", "FRR", "HLV", "BNV", "ONH", "KRG", "HPV", "PPJ", "LBD", "TLB", "HBF"]
+    }
+  ]
+}
