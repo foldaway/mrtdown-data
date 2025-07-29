@@ -23,7 +23,7 @@
     {
       "componentId": "CCL",
       "branchName": "main",
-      "stationIds": ["BBS", "BFT", "BKB", "BLY", "BNV"]
+      "stationIds": ["SER", "LRC", "BSH", "MRM", "CDT", "BTN", "FRR", "HLV", "BNV", "ONH", "KRG", "HPV", "PPJ", "LBD", "TLB", "HBF"]
     }
   ]
 }
