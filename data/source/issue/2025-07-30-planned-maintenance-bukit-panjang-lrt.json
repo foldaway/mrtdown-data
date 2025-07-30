@@ -1,0 +1,48 @@
+{
+  "id": "2025-07-30-planned-maintenance-bukit-panjang-lrt",
+  "title": "Planned Maintenance on Bukit Panjang LRT",
+  "title_translations": {
+    "zh-Hans": "武吉班让轻轨的计划维修",
+    "ms": "Penyelenggaraan Terancang di LRT Bukit Panjang",
+    "ta": "புக்கித் பஞ்சாங் எல்ஆர்டி-ல் திட்டமிடப்பட்ட பராமரிப்பு"
+  },
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2025-08-31T00:00:00.000+08:00",
+  "endAt": "2025-09-22T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "The line will be closed on Aug 31 and Sep 21 for the works, and shuttle buses will be provided at the usual fares.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/bukit-panjang-lrt-closure-sundays-aug-31-sep-21-new-signalling-system-testing-5266936",
+      "createdAt": "2025-07-30T19:03:02.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ"
+      ]
+    }
+  ]
+}
