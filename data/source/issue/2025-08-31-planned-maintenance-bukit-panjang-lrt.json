@@ -1,5 +1,5 @@
 {
-  "id": "2025-07-30-planned-maintenance-bukit-panjang-lrt",
+  "id": "2025-08-31-planned-maintenance-bukit-panjang-lrt",
   "title": "Planned Maintenance on Bukit Panjang LRT",
   "title_translations": {
     "zh-Hans": "武吉班让轻轨的计划维修",
@@ -10,7 +10,7 @@
     "BPLRT"
   ],
   "startAt": "2025-08-31T00:00:00.000+08:00",
-  "endAt": "2025-09-22T00:00:00.000+08:00",
+  "endAt": "2025-09-01T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [

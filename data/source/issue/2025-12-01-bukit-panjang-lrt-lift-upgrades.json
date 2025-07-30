@@ -1,0 +1,40 @@
+{
+  "id": "2025-12-01-bukit-panjang-lrt-lift-upgrades",
+  "title": "Lift Upgrades at Bukit Panjang LRT stations",
+  "title_translations": {
+    "zh-Hans": "武吉班让轻轨站电梯升级工程",
+    "ms": "Peningkatan Lif di stesen LRT Bukit Panjang",
+    "ta": "புக்கிட் பாஞ்சாங் லைட் ரெயில் நிலையங்களில் ஏற்றுமதி лиஃப்ட் மேம்படுத்தல்"
+  },
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2025-12-01T00:00:00.000+08:00",
+  "endAt": "2026-04-01T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "station.renovation"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "The line will be closed on Aug 31 and Sep 21 for the works, and shuttle buses will be provided at the usual fares.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/bukit-panjang-lrt-closure-sundays-aug-31-sep-21-new-signalling-system-testing-5266936",
+      "createdAt": "2025-07-30T19:03:02.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "SHV",
+        "TKW",
+        "PND",
+        "FJR",
+        "JLP"
+      ]
+    }
+  ]
+}
