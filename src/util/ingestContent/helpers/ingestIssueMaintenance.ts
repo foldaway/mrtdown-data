@@ -4,7 +4,6 @@ import type {
   ChatCompletionMessageParam,
 } from 'openai/resources';
 import { z } from 'zod';
-import zodToJsonSchema from 'zod-to-json-schema';
 import {
   computeAffectedStations,
   LineSectionSchema,
@@ -34,10 +33,7 @@ const ResultSchema = z.object({
   lineSections: z.array(LineSectionSchema),
 });
 
-const ResultJsonSchema = zodToJsonSchema(ResultSchema, {
-  target: 'openAi',
-  $refStrategy: 'none',
-});
+const ResultJsonSchema = z.toJSONSchema(ResultSchema);
 
 export async function ingestIssueMaintenance(
   content: IngestContent,
@@ -54,6 +50,11 @@ export async function ingestIssueMaintenance(
       componentIdsAffected: [],
       stationIdsAffected: [],
       title: 'please-overwrite',
+      title_translations: {
+        'zh-Hans': 'please-overwrite',
+        ms: 'please-overwrite',
+        ta: 'please-overwrite',
+      },
       startAt: content.createdAt,
       cancelledAt: null,
       endAt: null,
@@ -183,9 +184,7 @@ Please modify the issue. You should:
           function: {
             name: tool.name,
             description: tool.description,
-            parameters: zodToJsonSchema(tool.paramSchema, {
-              target: 'openAi',
-            }),
+            parameters: z.toJSONSchema(tool.paramSchema),
           },
         };
       }),

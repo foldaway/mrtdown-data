@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import zodToJsonSchema from 'zod-to-json-schema';
 import type { IngestContent } from '../types';
 import { IssueIdSchema, IssueTypeSchema } from '../../../schema/Issue';
 import { IssueModel } from '../../../model/IssueModel';
@@ -26,7 +25,7 @@ const ResultSchema = z.object({
   reason: z.string().describe('Explain why in less than 20 words'),
 });
 type Result = z.infer<typeof ResultSchema>;
-const ResultJsonSchema = zodToJsonSchema(ResultSchema);
+const ResultJsonSchema = z.toJSONSchema(ResultSchema);
 
 const ToolSearchIssuesParametersSchema = z.object({
   dateMin: z.string().date(),
@@ -90,7 +89,7 @@ Take Note:
           function: {
             name: 'searchIssues',
             description: 'Fetch a list of issues across all rail lines',
-            parameters: zodToJsonSchema(ToolSearchIssuesParametersSchema),
+            parameters: z.toJSONSchema(ToolSearchIssuesParametersSchema),
           },
         },
       ],

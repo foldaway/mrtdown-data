@@ -2,12 +2,11 @@ import type { ChatCompletionMessageParam } from 'openai/resources/index.mjs';
 import type { IngestContent } from '../types';
 import { openAiClient } from '../constants';
 import { z } from 'zod';
-import zodToJsonSchema from 'zod-to-json-schema';
 
 const PostSummaryResultSchema = z.object({
   summary: z.string(),
 });
-const PostSummaryResultJsonSchema = zodToJsonSchema(PostSummaryResultSchema);
+const PostSummaryResultJsonSchema = z.toJSONSchema(PostSummaryResultSchema);
 
 export async function summarizeUpdate(content: IngestContent) {
   const messages: ChatCompletionMessageParam[] = [

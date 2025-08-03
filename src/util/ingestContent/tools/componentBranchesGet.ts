@@ -1,6 +1,5 @@
 import type { ChatCompletionTool } from 'openai/resources';
 import { z } from 'zod';
-import zodToJsonSchema from 'zod-to-json-schema';
 import { StationModel } from '../../../model/StationModel';
 import { ComponentIdSchema } from '../../../schema/Component';
 import { ComponentModel } from '../../../model/ComponentModel';
@@ -26,9 +25,7 @@ export const TOOL_DEFINITION_COMPONENT_BRANCHES_GET: ChatCompletionTool = {
   function: {
     name: TOOL_NAME_COMPONENT_BRANCHES_GET,
     description: 'Get the branches of a component',
-    parameters: zodToJsonSchema(ToolComponentBranchesGetParametersSchema, {
-      target: 'openAi',
-    }),
+    parameters: z.toJSONSchema(ToolComponentBranchesGetParametersSchema),
   },
 };
 

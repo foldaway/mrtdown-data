@@ -97,7 +97,7 @@ export type IssueDisruptionUpdate = z.infer<typeof IssueDisruptionUpdateSchema>;
 
 /** [DISRUPTION] */
 export const IssueDisruptionSchema = IssueBase.extend({
-  type: z.literal(IssueTypeSchema.Enum.disruption),
+  type: z.literal(IssueTypeSchema.enum.disruption),
   subtypes: z.array(IssueDisruptionSubtypeSchema),
   updates: z.array(IssueDisruptionUpdateSchema),
 });
@@ -142,7 +142,7 @@ export type IssueMaintenanceSubtype = z.infer<
 
 /** [MAINTENANCE] */
 export const IssueMaintenanceSchema = IssueBase.extend({
-  type: z.literal(IssueTypeSchema.Enum.maintenance),
+  type: z.literal(IssueTypeSchema.enum.maintenance),
   rrule: z.string().optional(),
   cancelledAt: z
     .string()
@@ -184,7 +184,7 @@ export type IssueInfraSubtype = z.infer<typeof IssueDisruptionSubtypeSchema>;
 
 /** [INFRA] */
 export const IssueInfraSchema = IssueBase.extend({
-  type: z.literal(IssueTypeSchema.Enum.infra),
+  type: z.literal(IssueTypeSchema.enum.infra),
   updates: z.array(IssueInfraUpdateSchema),
   subtypes: z.array(IssueInfraSubtypeSchema),
 });

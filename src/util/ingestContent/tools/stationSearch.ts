@@ -1,6 +1,5 @@
 import type { ChatCompletionTool } from 'openai/resources';
 import { z } from 'zod';
-import zodToJsonSchema from 'zod-to-json-schema';
 import { StationModel } from '../../../model/StationModel';
 import type { Tool } from '../types';
 import { gfmToMarkdown } from 'mdast-util-gfm';
@@ -23,9 +22,7 @@ export const TOOL_DEFINITION_STATION_SEARCH: ChatCompletionTool = {
   function: {
     name: TOOL_NAME_STATION_SEARCH,
     description: 'Fetch a list of stations by their names.',
-    parameters: zodToJsonSchema(ToolStationSearchParametersSchema, {
-      target: 'openAi',
-    }),
+    parameters: z.toJSONSchema(ToolStationSearchParametersSchema),
   },
 };
 

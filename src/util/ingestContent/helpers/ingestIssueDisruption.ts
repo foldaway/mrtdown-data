@@ -4,7 +4,6 @@ import type {
   ChatCompletionMessageParam,
 } from 'openai/resources';
 import { z } from 'zod';
-import zodToJsonSchema from 'zod-to-json-schema';
 import {
   computeAffectedStations,
   LineSectionSchema,
@@ -34,17 +33,14 @@ const ResultSchema = z.object({
   lineSections: z.array(LineSectionSchema),
 });
 
-const ResultJsonSchema = zodToJsonSchema(ResultSchema, {
-  target: 'openAi',
-  $refStrategy: 'none',
-});
+const ResultJsonSchema = z.toJSONSchema(ResultSchema);
 
 const ClassifyUpdateTypeResultSchema = z.object({
   type: IssueDisruptionUpdateTypeSchema,
   reason: z.string().describe('Explain briefly.'),
 });
 
-const ClassifyUpdateTypeResultJsonSchema = zodToJsonSchema(
+const ClassifyUpdateTypeResultJsonSchema = z.toJSONSchema(
   ClassifyUpdateTypeResultSchema,
 );
 
@@ -105,6 +101,11 @@ export async function ingestIssueDisruption(
       stationIdsAffected: [],
       subtypes: [],
       title: 'please-overwrite',
+      title_translations: {
+        'zh-Hans': 'please-overwrite',
+        ms: 'please-overwrite',
+        ta: 'please-overwrite',
+      },
       startAt: content.createdAt,
       endAt: null,
       updates: [],
@@ -231,9 +232,7 @@ ${buildComponentTable()}
           function: {
             name: tool.name,
             description: tool.description,
-            parameters: zodToJsonSchema(tool.paramSchema, {
-              target: 'openAi',
-            }),
+            parameters: z.toJSONSchema(tool.paramSchema),
           },
         };
       }),
