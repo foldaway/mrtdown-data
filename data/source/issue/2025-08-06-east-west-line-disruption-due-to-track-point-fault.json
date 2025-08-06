@@ -18,6 +18,12 @@
   "updates": [
     {
       "type": "operator.update",
+      "text": "11.00am: EWL - Due to a track point fault, please add additional 10 minutes train travel time from Boon Lay to Buona Vista stations towards Pasir Ris station. Free regular and bridging bus services from Boon Lay to Buona Vista stations. Passengers on the North South Line towards city area, please transfer to Thomson East Coast Line at Woodlands station or take counter bound trains towards Marina South Pier station.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114979599403511344",
+      "createdAt": "2025-08-06T11:04:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "10.30am: EWL - Due to a track point fault, please add additional 25 minutes train travel time from Boon Lay to Buona Vista stations towards Pasir Ris station. Free regular and bridging bus services from Boon Lay to Buona Vista stations. Passengers on the North South Line towards city area, please transfer to Thomson East Coast Line at Woodlands station or take counter bound trains towards Marina South Pier station.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114979473563760245",
       "createdAt": "2025-08-06T10:32:13.000+08:00"
