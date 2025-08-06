@@ -37,7 +37,7 @@ jobs:
       - run: npm run ingest:webhook
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          MESSAGE: ${{ github.event.client_payload.content }}
+          MESSAGE: ${{ toJSON(github.event.client_payload) }}
       - name: Check for changes
         id: make-changes
         run: |-

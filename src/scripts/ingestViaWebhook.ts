@@ -5,7 +5,9 @@ import type { IngestContent } from '../util/ingestContent/types';
 const { MESSAGE } = process.env;
 assert(MESSAGE != null, 'Expected MESSAGE env var');
 
-const ingestContents = JSON.parse(MESSAGE) as IngestContent[];
-for (const content of ingestContents) {
+const message = JSON.parse(MESSAGE) as {
+  content: IngestContent[];
+};
+for (const content of message.content) {
   await ingestContent(content);
 }
