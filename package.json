@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest",
+    "ingest:webhook": "tsc src/scripts/ingestViaWebhook.ts",
     "generate-products": "tsx src/scripts/generateProducts/index.ts",
     "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts"
   },
