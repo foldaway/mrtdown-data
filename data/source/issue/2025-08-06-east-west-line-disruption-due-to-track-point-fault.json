@@ -24,9 +24,9 @@
     },
     {
       "type": "news.report",
-      "text": "",
+      "text": "\"This series of recent incidents is disappointing for all of us, and we can and will do better,\" says Acting Transport Minister Jeffrey Siow.",
       "sourceUrl": "https://www.channelnewsasia.com/singapore/disappointing-mrt-lrt-disruptions-jeffrey-siow-5280171",
-      "createdAt": "2025-08-06T17:11:32.000+08:00"
+      "createdAt": "2025-08-06T17:11:00.000+08:00"
     },
     {
       "type": "operator.resolved",
@@ -106,39 +106,13 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
-        "PSR",
-        "TAM",
-        "SIM",
-        "TNM",
-        "BDK",
-        "KEM",
-        "EUN",
-        "PYL",
-        "ALJ",
-        "KAL",
-        "LVR",
-        "BGS",
-        "CTH",
-        "RFP",
-        "TPG",
-        "OTP",
-        "TIB",
-        "RDH",
-        "QUE",
-        "COM",
         "BNV",
         "DVR",
         "CLE",
         "JUR",
         "CNG",
         "LKS",
-        "BNL",
-        "PNR",
-        "JKN",
-        "GCL",
-        "TCR",
-        "TWR",
-        "TLK"
+        "BNL"
       ]
     }
   ]
