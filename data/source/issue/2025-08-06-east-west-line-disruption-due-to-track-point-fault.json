@@ -1,0 +1,65 @@
+{
+  "id": "2025-08-06-east-west-line-disruption-due-to-track-point-fault",
+  "title": "East-West Line disruption due to track point fault",
+  "title_translations": {
+    "zh-Hans": "东西线因道岔故障而中断",
+    "ms": "Gangguan di Laluan Timur-Barat akibat kerosakan noktah trek",
+    "ta": "டிராக்கு பாயிங் பாதிக்கப்பட்டு கிழக்கு-மேற்கு கோடான்கக குழாய்க்கு இடையூறு"
+  },
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2025-08-06T06:36:13.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
+  "updates": [
+    {
+      "type": "news.report",
+      "text": "",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/smrt-east-west-line-train-service-disruption-boon-lay-bouna-vista-5279311",
+      "createdAt": "2025-08-06T07:25:39.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "7.20am: EWL - Due to a track point fault, please add additional 25 minutes train travel time from Boon Lay to Buona Vista stations. Free regular and bridging bus services from Boon Lay to Buona Vista stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114978726448037118",
+      "createdAt": "2025-08-06T07:22:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "6.50am: EWL - Due to a track point fault, please add additional 15 minutes train travel time from Boon Lay to Buona Vista stations. Free regular bus services from Boon Lay to Buona Vista stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114978616353983440",
+      "createdAt": "2025-08-06T06:54:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "6.35am: EWL - Due to a track point fault, please add additional 15 minutes train travel time from Boon Lay to Buona Vista stations towards Pasir Ris station. Free regular bus services from Boon Lay to Buona Vista stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114978553441683879",
+      "createdAt": "2025-08-06T06:38:13.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "6.35am: EWL - Due to a track point fault, please add additional 15 minutes train travel time from Boon Lay to Clementi stations towards Pasir Ris station. Free regular bus services from Boon Lay to Buona Vista stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/114978545561069105",
+      "createdAt": "2025-08-06T06:36:13.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL"
+      ]
+    }
+  ]
+}
