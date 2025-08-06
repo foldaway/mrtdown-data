@@ -10,12 +10,18 @@
     "EWL"
   ],
   "startAt": "2025-08-06T06:36:13.000+08:00",
-  "endAt": null,
+  "endAt": "2025-08-06T11:30:51.000+08:00",
   "type": "disruption",
   "subtypes": [
     "track.fault"
   ],
   "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Train services on the East-West Line in Singapore have been restored after a disruption that lasted for 5 hours. The incident was reported on August 6, 2025.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1miu3ec/train_services_on_eastwest_line_restored_after/",
+      "createdAt": "2025-08-06T11:30:51.000+08:00"
+    },
     {
       "type": "operator.update",
       "text": "11.00am: EWL - Due to a track point fault, please add additional 10 minutes train travel time from Boon Lay to Buona Vista stations towards Pasir Ris station. Free regular and bridging bus services from Boon Lay to Buona Vista stations. Passengers on the North South Line towards city area, please transfer to Thomson East Coast Line at Woodlands station or take counter bound trains towards Marina South Pier station.",
