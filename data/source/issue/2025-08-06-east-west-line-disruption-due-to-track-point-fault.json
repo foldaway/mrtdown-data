@@ -17,6 +17,18 @@
   ],
   "updates": [
     {
+      "type": "news.report",
+      "text": "Acting Transport Minister Jeffrey Siow expressed disappointment over a series of recent train incidents that have affected MRT and LRT services in Singapore. The statement highlights ongoing concerns about train disruptions and their impact on commuters.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1mizty3/series_of_recent_train_incidents_disappointing/",
+      "createdAt": "2025-08-06T17:16:19.000+08:00"
+    },
+    {
+      "type": "news.report",
+      "text": "\"This series of recent incidents is disappointing for all of us, and we can and will do better,\" says Acting Transport Minister Jeffrey Siow.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/disappointing-mrt-lrt-disruptions-jeffrey-siow-5280171",
+      "createdAt": "2025-08-06T17:11:00.000+08:00"
+    },
+    {
       "type": "operator.resolved",
       "text": "Train services on the East-West Line in Singapore have been restored after a disruption that lasted for 5 hours. The incident was reported on August 6, 2025.",
       "sourceUrl": "https://www.reddit.com/r/singapore/comments/1miu3ec/train_services_on_eastwest_line_restored_after/",
