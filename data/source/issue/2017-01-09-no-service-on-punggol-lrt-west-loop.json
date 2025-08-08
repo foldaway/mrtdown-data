@@ -6,31 +6,18 @@
     "ms": "Tiada perkhidmatan di Punggol LRT Lingkaran Barat kerana kerosakan kuasa",
     "ta": "மின்சாரக் கோளாறு காரணமாக புங்கில்கான LRT மேற்கு வளையத்தில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "PGLRT"
-  ],
+  "componentIdsAffected": ["PGLRT"],
   "stationIdsAffected": [
     {
       "componentId": "PGLRT",
       "branchName": "west",
-      "stationIds": [
-        "PGL",
-        "COV",
-        "MRD",
-        "CRE",
-        "RIV",
-        "KDL",
-        "OAS",
-        "DAM"
-      ]
+      "stationIds": ["SMK", "NBG", "SMG", "STK", "PGL"]
     }
   ],
   "startAt": "2017-01-09T22:05:40.000+08:00",
   "endAt": "2017-01-09T22:19:00.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "power.fault"
-  ],
+  "subtypes": ["power.fault"],
   "updates": [
     {
       "type": "operator.resolved",

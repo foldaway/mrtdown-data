@@ -6,9 +6,7 @@
     "ms": "Gangguan perkhidmatan di Bukit Panjang LRT",
     "ta": "புக்ிட் பஞ்சாங் LRT இல் சேவை சீர்குலைவு"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
+  "componentIdsAffected": ["BPLRT"],
   "stationIdsAffected": [
     {
       "componentId": "BPLRT",
@@ -33,11 +31,6 @@
       "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
-        "CCK",
-        "SHV",
-        "KTH",
-        "TKW",
-        "PNX",
         "BKP",
         "PTR",
         "PND",
@@ -53,9 +46,7 @@
   "startAt": "2015-03-08T21:49:33.000+08:00",
   "endAt": "2015-03-10T08:07:01.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "power.fault"
-  ],
+  "subtypes": ["power.fault"],
   "updates": [
     {
       "type": "operator.update",

@@ -6,9 +6,7 @@
     "ms": "Gangguan kuasa menjejaskan perkhidmatan LRT Bukit Panjang",
     "ta": "புக் \nபங்கா LRT சேவைகளை பாதிக்கும் மின் தடங்கல்"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
+  "componentIdsAffected": ["BPLRT"],
   "stationIdsAffected": [
     {
       "componentId": "BPLRT",
@@ -33,11 +31,6 @@
       "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
-        "CCK",
-        "SHV",
-        "KTH",
-        "TKW",
-        "PNX",
         "BKP",
         "PTR",
         "PND",
@@ -53,9 +46,7 @@
   "startAt": "2015-04-28T19:32:50.000+08:00",
   "endAt": "2015-04-28T20:35:59.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "power.fault"
-  ],
+  "subtypes": ["power.fault"],
   "updates": [
     {
       "type": "operator.resolved",

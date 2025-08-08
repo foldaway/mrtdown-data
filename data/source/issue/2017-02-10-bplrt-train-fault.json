@@ -6,9 +6,7 @@
     "ms": "Perkhidmatan kereta di BPLRT terjejas akibat kerosakan kereta",
     "ta": "தண்டவாளப் பாதையில் ரயில் பழுது காரணமாக ரயில் சேவைகள் பாதிக்கப்பட்டுள்ளன"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
+  "componentIdsAffected": ["BPLRT"],
   "stationIdsAffected": [
     {
       "componentId": "BPLRT",
@@ -33,11 +31,6 @@
       "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
-        "CCK",
-        "SHV",
-        "KTH",
-        "TKW",
-        "PNX",
         "BKP",
         "PTR",
         "PND",
@@ -53,9 +46,7 @@
   "startAt": "2017-02-10T15:26:16.000+08:00",
   "endAt": "2017-02-10T15:43:42.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "train.fault"
-  ],
+  "subtypes": ["train.fault"],
   "updates": [
     {
       "type": "operator.update",

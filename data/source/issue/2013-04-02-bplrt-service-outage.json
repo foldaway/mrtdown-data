@@ -6,9 +6,7 @@
     "ms": "Tiada perkhidmatan sama sekali di stesen BPLRT kerana disyaki berlaku gangguan bekalan elektrik",
     "ta": "மின்சாரக் கோளாறு காரணமாக BPLRT நிலையங்களில் எந்த சேவையும் இல்லை"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
+  "componentIdsAffected": ["BPLRT"],
   "stationIdsAffected": [
     {
       "componentId": "BPLRT",
@@ -33,11 +31,6 @@
       "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
-        "CCK",
-        "SHV",
-        "KTH",
-        "TKW",
-        "PNX",
         "BKP",
         "PTR",
         "PND",
@@ -53,9 +46,7 @@
   "startAt": "2013-04-02T12:16:51.000+08:00",
   "endAt": "2013-04-02T12:56:17.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "power.fault"
-  ],
+  "subtypes": ["power.fault"],
   "updates": [
     {
       "type": "operator.resolved",

@@ -6,9 +6,7 @@
     "ms": "Tiada perkhidmatan LRT di BPLRT",
     "ta": "BPLRT இல் LRT சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
+  "componentIdsAffected": ["BPLRT"],
   "stationIdsAffected": [
     {
       "componentId": "BPLRT",
@@ -33,11 +31,6 @@
       "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
-        "CCK",
-        "SHV",
-        "KTH",
-        "TKW",
-        "PNX",
         "BKP",
         "PTR",
         "PND",

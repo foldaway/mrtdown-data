@@ -6,9 +6,7 @@
     "ms": "Gangguan perkhidmatan utama di Bukit Panjang LRT",
     "ta": "புக்ிட் பாங் LRT இல் பெரிய சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
+  "componentIdsAffected": ["BPLRT"],
   "stationIdsAffected": [
     {
       "componentId": "BPLRT",
@@ -33,11 +31,6 @@
       "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
-        "CCK",
-        "SHV",
-        "KTH",
-        "TKW",
-        "PNX",
         "BKP",
         "PTR",
         "PND",

@@ -6,15 +6,11 @@
     "ms": "Tiada Perkhidmatan Kereta Api di BPLRT Akibat Kerosakan Landasan",
     "ta": "தடக் கோளாறு காரணமாக BPLRT இல் ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
+  "componentIdsAffected": ["BPLRT"],
   "startAt": "2018-01-12T14:35:43.000+08:00",
   "endAt": "2018-01-12T18:30:42.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "track.fault"
-  ],
+  "subtypes": ["track.fault"],
   "updates": [
     {
       "type": "operator.resolved",
@@ -65,11 +61,6 @@
       "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
-        "CCK",
-        "SHV",
-        "KTH",
-        "TKW",
-        "PNX",
         "BKP",
         "PTR",
         "PND",

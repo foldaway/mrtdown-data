@@ -6,16 +6,12 @@
     "ms": "Stesen LRT Punggol ditutup awal untuk penyelenggaraan",
     "ta": "Punggol LRT நிலையங்கள் பராமரிப்புக்காக முன்கூட்டியே மூடப்படுகின்றன"
   },
-  "componentIdsAffected": [
-    "PGLRT"
-  ],
+  "componentIdsAffected": ["PGLRT"],
   "startAt": "2019-12-07T22:15:00.000+08:00",
   "endAt": "2019-12-08T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": [
-    "track.work"
-  ],
+  "subtypes": ["track.work"],
   "updates": [
     {
       "type": "planned",
@@ -27,30 +23,13 @@
   "stationIdsAffected": [
     {
       "componentId": "PGLRT",
-      "branchName": "east",
-      "stationIds": [
-        "PGL",
-        "SMK",
-        "PGP",
-        "SMD",
-        "NBG",
-        "SMG",
-        "STK"
-      ]
+      "branchName": "west",
+      "stationIds": ["PGL", "SMK", "PGP", "SMD", "NBG", "SMG", "STK"]
     },
     {
       "componentId": "PGLRT",
-      "branchName": "west",
-      "stationIds": [
-        "PGL",
-        "COV",
-        "MRD",
-        "CRE",
-        "RIV",
-        "KDL",
-        "OAS",
-        "DAM"
-      ]
+      "branchName": "east",
+      "stationIds": ["PGL", "COV", "MRD", "CRE", "RIV", "KDL", "OAS", "DAM"]
     }
   ]
 }

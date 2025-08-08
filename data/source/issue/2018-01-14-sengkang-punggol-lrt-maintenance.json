@@ -6,17 +6,12 @@
     "ms": "Penyelenggaraan Berjadual untuk Sistem LRT Sengkang & Punggol",
     "ta": "செங்காங் & பு ponggol இலகு ரயில் அமைப்புகளுக்கான திட்டமிடப்பட்ட பராமரிப்பு"
   },
-  "componentIdsAffected": [
-    "SKLRT",
-    "PGLRT"
-  ],
+  "componentIdsAffected": ["SKLRT", "PGLRT"],
   "startAt": "2018-01-14T00:00:00.000+08:00",
   "endAt": "2018-01-14T07:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": [
-    "track.work"
-  ],
+  "subtypes": ["track.work"],
   "updates": [
     {
       "type": "planned",
@@ -35,14 +30,7 @@
     {
       "componentId": "SKLRT",
       "branchName": "east",
-      "stationIds": [
-        "SKG",
-        "CPV",
-        "RMB",
-        "BAK",
-        "KGK",
-        "RNG"
-      ]
+      "stationIds": ["SKG", "CPV", "RMB", "BAK", "KGK", "RNG"]
     },
     {
       "componentId": "SKLRT",
@@ -61,30 +49,13 @@
     },
     {
       "componentId": "PGLRT",
-      "branchName": "east",
-      "stationIds": [
-        "PGL",
-        "SMK",
-        "PGP",
-        "SMD",
-        "NBG",
-        "SMG",
-        "STK"
-      ]
+      "branchName": "west",
+      "stationIds": ["PGL", "SMK", "PGP", "SMD", "NBG", "SMG", "STK"]
     },
     {
       "componentId": "PGLRT",
-      "branchName": "west",
-      "stationIds": [
-        "PGL",
-        "COV",
-        "MRD",
-        "CRE",
-        "RIV",
-        "KDL",
-        "OAS",
-        "DAM"
-      ]
+      "branchName": "east",
+      "stationIds": ["PGL", "COV", "MRD", "CRE", "RIV", "KDL", "OAS", "DAM"]
     }
   ]
 }

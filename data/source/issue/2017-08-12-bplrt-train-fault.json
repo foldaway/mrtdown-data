@@ -6,15 +6,11 @@
     "ms": "Ralat kereta menyebabkan penggantungan Perkhidmatan B",
     "ta": "ரயில் கோளாறு சேவை பி இடைநிறுத்தத்திற்கு காரணமாகிறது"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
+  "componentIdsAffected": ["BPLRT"],
   "startAt": "2017-08-12T14:07:58.000+08:00",
   "endAt": "2017-08-12T14:56:51.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "train.fault"
-  ],
+  "subtypes": ["train.fault"],
   "updates": [
     {
       "type": "operator.resolved",
@@ -53,11 +49,6 @@
       "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
-        "CCK",
-        "SHV",
-        "KTH",
-        "TKW",
-        "PNX",
         "BKP",
         "PTR",
         "PND",

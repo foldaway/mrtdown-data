@@ -6,16 +6,11 @@
     "ms": "Gangguan perkhidmatan LRT akibat kegagalan isyarat",
     "ta": "சிக்னல் கோளாறு காரணமாக LRT சேவை சீர்குலைவு"
   },
-  "componentIdsAffected": [
-    "SKLRT",
-    "PGLRT"
-  ],
+  "componentIdsAffected": ["SKLRT", "PGLRT"],
   "startAt": "2024-06-09T05:47:16.000+08:00",
   "endAt": "2024-06-09T10:34:00.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "signal.fault"
-  ],
+  "subtypes": ["signal.fault"],
   "updates": [
     {
       "type": "operator.resolved",
@@ -76,14 +71,7 @@
     {
       "componentId": "SKLRT",
       "branchName": "east",
-      "stationIds": [
-        "SKG",
-        "CPV",
-        "RMB",
-        "BAK",
-        "KGK",
-        "RNG"
-      ]
+      "stationIds": ["SKG", "CPV", "RMB", "BAK", "KGK", "RNG"]
     },
     {
       "componentId": "SKLRT",
@@ -102,30 +90,13 @@
     },
     {
       "componentId": "PGLRT",
-      "branchName": "east",
-      "stationIds": [
-        "PGL",
-        "SMK",
-        "PGP",
-        "SMD",
-        "NBG",
-        "SMG",
-        "STK"
-      ]
+      "branchName": "west",
+      "stationIds": ["PGL", "SMK", "PGP", "SMD", "NBG", "SMG", "STK"]
     },
     {
       "componentId": "PGLRT",
-      "branchName": "west",
-      "stationIds": [
-        "PGL",
-        "COV",
-        "MRD",
-        "CRE",
-        "RIV",
-        "KDL",
-        "OAS",
-        "DAM"
-      ]
+      "branchName": "east",
+      "stationIds": ["PGL", "COV", "MRD", "CRE", "RIV", "KDL", "OAS", "DAM"]
     }
   ]
 }

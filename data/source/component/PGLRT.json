@@ -22,13 +22,13 @@
       "endedAt": null,
       "stationCodes": [
         "PTC",
-        "PW1",
-        "PW2",
-        "PW3",
-        "PW4",
-        "PW5",
-        "PW6",
-        "PW7",
+        "PE1",
+        "PE2",
+        "PE3",
+        "PE4",
+        "PE5",
+        "PE6",
+        "PE7",
         "PTC"
       ]
     },
@@ -44,13 +44,13 @@
       "endedAt": null,
       "stationCodes": [
         "PTC",
-        "PE1",
-        "PE2",
-        "PE3",
-        "PE4",
-        "PE5",
-        "PE6",
-        "PE7",
+        "PW1",
+        "PW2",
+        "PW3",
+        "PW4",
+        "PW5",
+        "PW6",
+        "PW7",
         "PTC"
       ]
     }

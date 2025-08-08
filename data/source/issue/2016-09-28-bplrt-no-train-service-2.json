@@ -6,9 +6,7 @@
     "ms": "Tiada perkhidmatan kereta api di Bukit Panjang LRT",
     "ta": "Bukit Panjang LRT இல் ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
+  "componentIdsAffected": ["BPLRT"],
   "stationIdsAffected": [
     {
       "componentId": "BPLRT",
@@ -33,11 +31,6 @@
       "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
-        "CCK",
-        "SHV",
-        "KTH",
-        "TKW",
-        "PNX",
         "BKP",
         "PTR",
         "PND",
@@ -53,9 +46,7 @@
   "startAt": "2016-09-28T05:33:00.000+08:00",
   "endAt": "2016-09-28T09:52:26.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "power.fault"
-  ],
+  "subtypes": ["power.fault"],
   "updates": [
     {
       "type": "operator.update",

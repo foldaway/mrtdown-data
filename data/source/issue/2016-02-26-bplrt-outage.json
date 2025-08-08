@@ -6,9 +6,7 @@
     "ms": "Tiada perkhidmatan kereta api di BPLRT kerana kerosakan kuasa tarikan",
     "ta": "ஈர்ப்பு சக்தி செயலிழப்பு காரணமாக பிஎல்பியர்டியில் ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
+  "componentIdsAffected": ["BPLRT"],
   "stationIdsAffected": [
     {
       "componentId": "BPLRT",
@@ -33,11 +31,6 @@
       "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
-        "CCK",
-        "SHV",
-        "KTH",
-        "TKW",
-        "PNX",
         "BKP",
         "PTR",
         "PND",
@@ -53,9 +46,7 @@
   "startAt": "2016-02-26T05:25:38.000+08:00",
   "endAt": "2016-02-26T06:24:16.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "power.fault"
-  ],
+  "subtypes": ["power.fault"],
   "updates": [
     {
       "type": "operator.update",

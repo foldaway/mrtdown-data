@@ -6,15 +6,11 @@
     "ms": "Tiada perkhidmatan di Punggol LRT kerana kerosakan kuasa",
     "ta": "Punggol LRT இல் மின்சாரம் பழுதடைந்ததால் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "PGLRT"
-  ],
+  "componentIdsAffected": ["PGLRT"],
   "startAt": "2021-01-19T12:17:21.000+08:00",
   "endAt": "2021-01-19T12:38:00.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "power.fault"
-  ],
+  "subtypes": ["power.fault"],
   "updates": [
     {
       "type": "operator.resolved",
@@ -44,30 +40,13 @@
   "stationIdsAffected": [
     {
       "componentId": "PGLRT",
-      "branchName": "east",
-      "stationIds": [
-        "PGL",
-        "SMK",
-        "PGP",
-        "SMD",
-        "NBG",
-        "SMG",
-        "STK"
-      ]
+      "branchName": "west",
+      "stationIds": ["PGL", "SMK", "PGP", "SMD", "NBG", "SMG", "STK"]
     },
     {
       "componentId": "PGLRT",
-      "branchName": "west",
-      "stationIds": [
-        "PGL",
-        "COV",
-        "MRD",
-        "CRE",
-        "RIV",
-        "KDL",
-        "OAS",
-        "DAM"
-      ]
+      "branchName": "east",
+      "stationIds": ["PGL", "COV", "MRD", "CRE", "RIV", "KDL", "OAS", "DAM"]
     }
   ]
 }

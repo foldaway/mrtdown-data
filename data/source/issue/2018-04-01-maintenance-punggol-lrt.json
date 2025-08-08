@@ -6,16 +6,12 @@
     "ms": "Kerja Penyelenggaraan di Sistem LRT Punggol",
     "ta": "ப்துறையீட்டு வேலைகள் புங்காங் LRT அமைப்பில்"
   },
-  "componentIdsAffected": [
-    "PGLRT"
-  ],
+  "componentIdsAffected": ["PGLRT"],
   "startAt": "2018-04-01T00:00:00.000+08:00",
   "endAt": "2018-04-01T07:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": [
-    "track.work"
-  ],
+  "subtypes": ["track.work"],
   "updates": [
     {
       "type": "planned",
@@ -27,30 +23,13 @@
   "stationIdsAffected": [
     {
       "componentId": "PGLRT",
-      "branchName": "east",
-      "stationIds": [
-        "PGL",
-        "SMK",
-        "PGP",
-        "SMD",
-        "NBG",
-        "SMG",
-        "STK"
-      ]
+      "branchName": "west",
+      "stationIds": ["PGL", "SMK", "PGP", "SMD", "NBG", "SMG", "STK"]
     },
     {
       "componentId": "PGLRT",
-      "branchName": "west",
-      "stationIds": [
-        "PGL",
-        "COV",
-        "MRD",
-        "CRE",
-        "RIV",
-        "KDL",
-        "OAS",
-        "DAM"
-      ]
+      "branchName": "east",
+      "stationIds": ["PGL", "COV", "MRD", "CRE", "RIV", "KDL", "OAS", "DAM"]
     }
   ]
 }

@@ -6,18 +6,13 @@
     "ms": "Kerja penyelenggaraan di sistem LRT Sengkang-Punggol",
     "ta": "செங்காங்-புנגלית LRT அமைப்பில் பராமரிப்புப் பணிகள்"
   },
-  "componentIdsAffected": [
-    "SKLRT",
-    "PGLRT"
-  ],
+  "componentIdsAffected": ["SKLRT", "PGLRT"],
   "startAt": "2022-05-21T00:00:00.000+08:00",
   "endAt": "2022-05-22T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20220521T000000\nRRULE:FREQ=WEEKLY;UNTIL=20220926T000000;WKST=MO;BYDAY=SA,SU",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": [
-    "track.work"
-  ],
+  "subtypes": ["track.work"],
   "updates": [
     {
       "type": "planned",
@@ -45,41 +40,17 @@
     {
       "componentId": "SKLRT",
       "branchName": "east",
-      "stationIds": [
-        "SKG",
-        "CPV",
-        "RMB",
-        "BAK",
-        "KGK",
-        "RNG"
-      ]
-    },
-    {
-      "componentId": "PGLRT",
-      "branchName": "east",
-      "stationIds": [
-        "PGL",
-        "SMK",
-        "PGP",
-        "SMD",
-        "NBG",
-        "SMG",
-        "STK"
-      ]
+      "stationIds": ["SKG", "CPV", "RMB", "BAK", "KGK", "RNG"]
     },
     {
       "componentId": "PGLRT",
       "branchName": "west",
-      "stationIds": [
-        "PGL",
-        "COV",
-        "MRD",
-        "CRE",
-        "RIV",
-        "KDL",
-        "OAS",
-        "DAM"
-      ]
+      "stationIds": ["PGL", "SMK", "PGP", "SMD", "NBG", "SMG", "STK"]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "east",
+      "stationIds": ["PGL", "COV", "MRD", "CRE", "RIV", "KDL", "OAS", "DAM"]
     }
   ]
 }

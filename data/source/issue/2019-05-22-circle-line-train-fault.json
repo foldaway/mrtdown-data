@@ -6,16 +6,11 @@
     "ms": "Kerosakan Kereta Api di Laluan Lingkaran",
     "ta": "வட்டப் பாதையில் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
+  "componentIdsAffected": ["CCL"],
   "startAt": "2019-05-22T12:40:17.000+08:00",
   "endAt": "2019-05-22T13:07:41.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "train.fault",
-    "delay"
-  ],
+  "subtypes": ["train.fault", "delay"],
   "updates": [
     {
       "type": "operator.resolved",
@@ -46,21 +41,12 @@
     {
       "componentId": "CCL",
       "branchName": "main",
-      "stationIds": [
-        "DBG",
-        "BBS",
-        "EPN",
-        "PMN"
-      ]
+      "stationIds": ["DBG", "BBS", "EPN", "PMN"]
     },
     {
       "componentId": "CCL",
-      "branchName": "main",
-      "stationIds": [
-        "MRB",
-        "BFT",
-        "PMN"
-      ]
+      "branchName": "extension",
+      "stationIds": ["MRB", "BFT", "PMN"]
     }
   ]
 }
