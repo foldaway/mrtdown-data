@@ -6,31 +6,18 @@
     "ms": "Gangguan perkhidmatan kereta antara Paya Lebar dan Pasir Ris",
     "ta": "பாயா லிபார் மற்றும் பாசிர் ரிஸ் இடையே ரயில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
+  "componentIdsAffected": ["EWL"],
   "stationIdsAffected": [
     {
       "componentId": "EWL",
       "branchName": "main",
-      "stationIds": [
-        "PSR",
-        "TAM",
-        "SIM",
-        "TNM",
-        "BDK",
-        "KEM",
-        "EUN",
-        "PYL"
-      ]
+      "stationIds": ["PSR", "TAM", "SIM", "TNM", "BDK", "KEM", "EUN", "PYL"]
     }
   ],
   "startAt": "2012-04-08T15:57:00.000+08:00",
   "endAt": "2012-04-08T16:08:24.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "delay"
-  ],
+  "subtypes": ["delay"],
   "updates": [
     {
       "type": "operator.monitoring",
@@ -41,7 +28,7 @@
     {
       "type": "operator.monitoring",
       "text": "Expect delay from Paya Lebar to Pasir Ris. More updates to come.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/188901090304073728",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/188898427516633088",
       "createdAt": "2012-04-08T15:57:00.000+08:00"
     }
   ]

@@ -6,37 +6,24 @@
     "ms": "Kerosakan Isyarat di Laluan Timur-Barat",
     "ta": "கிழக்கு-மேற்கு பாதையில் சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
+  "componentIdsAffected": ["EWL"],
   "stationIdsAffected": [
     {
       "componentId": "EWL",
       "branchName": "main",
-      "stationIds": [
-        "PSR",
-        "TAM"
-      ]
+      "stationIds": ["PSR", "TAM"]
     }
   ],
   "startAt": "2013-04-12T16:33:16.000+08:00",
   "endAt": "2013-04-13T05:30:00.000+08:00",
   "type": "disruption",
-  "subtypes": [
-    "signal.fault"
-  ],
+  "subtypes": ["signal.fault"],
   "updates": [
     {
       "type": "operator.update",
       "text": "[EWL] Train frequency remains the same for all stations apart from the affected stretch btwn #Tampines and #PasirRis.",
       "sourceUrl": "https://x.com/SMRT_Singapore/status/322670570556760065",
       "createdAt": "2013-04-12T19:20:33.000+08:00"
-    },
-    {
-      "type": "operator.update",
-      "text": "SMRT engineers will proceed down to the affected track btwn #Tampines and #PasirRis to rectify the fault after passenger service hours.",
-      "sourceUrl": "https://x.com/SMRT_Singapore/status/322669974793629696",
-      "createdAt": "2013-04-12T19:18:11.000+08:00"
     },
     {
       "type": "operator.update",
