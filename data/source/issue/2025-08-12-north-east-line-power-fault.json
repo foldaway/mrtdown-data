@@ -12,12 +12,18 @@
     "PGLRT"
   ],
   "startAt": "2025-08-12T11:28:28.000+08:00",
-  "endAt": null,
+  "endAt": "2025-08-12T17:32:02.000+08:00",
   "type": "disruption",
   "subtypes": [
     "power.fault"
   ],
   "updates": [
+    {
+      "type": "operator.update",
+      "text": "5.30pm: SPLRT - Please note that the Sengkang-Punggol LRT will be running only on one track for the evening peak period till about 9pm. Please expect a frequency of about five minutes for the train services. Free regular and bridging bus services are still available between all Sengkang-Punggol LRT stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115015098210868850",
+      "createdAt": "2025-08-12T17:32:02.000+08:00"
+    },
     {
       "type": "operator.monitoring",
       "text": "4.33pm: SPLRT - Sengkang LRT is operating as usual while Punggol LRT is progressively resuming service with only one track on both East and West loops in operations. Please expect a frequency of about five minutes for the single car trains that are deployed. Free regular and bridging bus services are available between all Sengkang-Punggol LRT stations.",
