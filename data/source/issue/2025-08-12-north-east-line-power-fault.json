@@ -19,6 +19,12 @@
   ],
   "updates": [
     {
+      "type": "general-public.report",
+      "text": "The escalator at Serangoon train station leading to the North East Line (NEL) platform is currently out of service. As a result, queues for the train towards Punggol Coast are becoming extensive, reaching the opposite platform, prompting a suggestion for commuters to consider alternate travel plans.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1mo5o9q/train_station_crowd/",
+      "createdAt": "2025-08-12T19:05:03.000+08:00"
+    },
+    {
       "type": "operator.update",
       "text": "6.38pm: SPLRT - Please note that the Sengkang-Punggol LRT will be running only on one track for the evening peak period. Please expect a frequency of about five minutes for the train services. Free regular and bridging bus services are still available between all Sengkang-Punggol LRT stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115015365615187134",
@@ -191,6 +197,16 @@
         "SKG",
         "PGL",
         "PGC"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "west",
+      "stationIds": [
+        "PGL",
+        "SMK",
+        "TKL",
+        "PGP"
       ]
     }
   ]
