@@ -19,6 +19,12 @@
   ],
   "updates": [
     {
+      "type": "operator.investigating",
+      "text": "3.30pm: SPLRT - Due to a power fault, there is no service in Sengkang-Punggol LRT. Free regular and bridging bus services are available between all Sengkang-Punggol LRT stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115014626341678806",
+      "createdAt": "2025-08-12T15:32:02.000+08:00"
+    },
+    {
       "type": "operator.resolved",
       "text": "2.30pm: NEL - NEL full service has resumed. Free regular and bridging bus services are still available at the designated bus stops.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115014406121059508",
