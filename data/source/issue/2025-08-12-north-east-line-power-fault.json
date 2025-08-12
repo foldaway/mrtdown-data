@@ -1,0 +1,52 @@
+{
+  "id": "2025-08-12-north-east-line-power-fault",
+  "title": "North East Line Power Fault",
+  "title_translations": {
+    "zh-Hans": "北东线电力故障",
+    "ms": "Kecacatan Kuasa North East Line",
+    "ta": "வடக்கும் கிழக்குப் பாதை மின் குறைவு"
+  },
+  "componentIdsAffected": [
+    "NEL",
+    "SKLRT"
+  ],
+  "startAt": "2025-08-12T11:28:28.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "power.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.investigating",
+      "text": "11.27am: NEL- Due to a power fault, there is no service between Farrer Park and Punggol Coast Station. Free regular and bridging bus services from Dhoby Gaut to Punggol Coast stations. Sengkang Punggol LRT service is also not available.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115013668628935733",
+      "createdAt": "2025-08-12T11:28:28.000+08:00"
+    },
+    {
+      "type": "news.report",
+      "text": "",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/north-east-line-nel-mrt-train-service-disruption-sbs-transit-5289746",
+      "createdAt": "2025-08-12T11:27:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL",
+        "PGC"
+      ]
+    }
+  ]
+}
