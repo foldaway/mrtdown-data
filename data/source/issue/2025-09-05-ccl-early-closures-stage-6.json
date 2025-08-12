@@ -1,0 +1,93 @@
+{
+  "id": "2025-09-05-ccl-early-closures-stage-6",
+  "title": "Early Closures on Circle Line for Stage 6 Works",
+  "title_translations": {
+    "zh-Hans": "环线早间关闭以进行第六阶段工程",
+    "ms": "Tutup Awal Laluan Bulatan untuk Kerja Peringkat 6",
+    "ta": "சுற்று வரி ஆரம்ப மூடல்கள் நிலை 6 பணிகளுக்காக"
+  },
+  "componentIdsAffected": ["CCL"],
+  "startAt": "2025-09-05T23:00:00.000+08:00",
+  "endAt": "2025-09-06T09:00:00.000+08:00",
+  "rrule": "DTSTART;TZID=Asia/Singapore:20250905T230000\nRRULE:FREQ=DAILY;UNTIL=20251229T000000;WKST=MO;BYDAY=FR,SA\nEXDATE:20251003T230000,20251004T230000,20251005T230000,20251128T230000,20251129T230000,20251130T230000,20251205T230000,20251206T230000,20251207T230000",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": ["track.work"],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Commuters are advised to plan for up to 30 minutes of additional travel time due to the service adjustments, which are meant to support works ahead of the opening of the full Circle Line loop.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/circle-line-ccl-timings-start-late-end-early-weekends-5289691",
+      "createdAt": "2025-08-12T11:09:00+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    }
+  ]
+}
