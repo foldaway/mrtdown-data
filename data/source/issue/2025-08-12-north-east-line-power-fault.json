@@ -20,6 +20,30 @@
   "updates": [
     {
       "type": "operator.investigating",
+      "text": "12.30pm: NEL - Due to a power fault, there is no service between Farrer Park and Punggol Coast Station. Free regular and bridging bus services are available between Dhoby Gaut and Punggol Coast stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115013920300692830",
+      "createdAt": "2025-08-12T12:32:29.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "12.30pm: SPLRT - Due to a power fault, there is no service in Sengkang-Punggol LRT. Free regular and bridging bus services are available between all Sengkang Punggol LRT stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115013920285606600",
+      "createdAt": "2025-08-12T12:32:28.000+08:00"
+    },
+    {
+      "type": "news.report",
+      "text": "Train services have been disrupted between the North East Line's Farrer Park and Punggol Coast MRT stations.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/nel-disruption-aug-12-no-train-services-11-nel-stations-5289776",
+      "createdAt": "2025-08-12T12:31:52.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "11.42am: NEL - Due to a power fault, there is no service between Farrer Park and Punggol Coast Station. Free regular and bridging bus services are available between Dhoby Gaut and Punggol Coast stations. Sengkang Punggol LRT service is also not available.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115013873093789751",
+      "createdAt": "2025-08-12T12:20:28.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "11.43am: SPLRT - Due to a power fault, there is no service in Sengkang-Punggol LRT. Free regular and bridging bus services are available between all Sengkang Punggol LRT stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115013739393858936",
       "createdAt": "2025-08-12T11:46:28.000+08:00"
