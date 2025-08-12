@@ -20,6 +20,12 @@
   "updates": [
     {
       "type": "operator.monitoring",
+      "text": "4.33pm: SPLRT - Sengkang LRT is operating as usual while Punggol LRT is progressively resuming service with only one track on both East and West loops in operations. Please expect a frequency of about five minutes for the single car trains that are deployed. Free regular and bridging bus services are available between all Sengkang-Punggol LRT stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115014877983540510",
+      "createdAt": "2025-08-12T16:36:02.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
       "text": "4.24am: SPLRT - Sengkang LRT is operating as usual while Punggol LRT is progressively resuming service with only one track on both East and West loops in operations. Please expect a frequency of about five minutes for the single car trains that are deployed. Free regular and bridging bus services are available between all Sengkang-Punggol LRT stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115014838690454566",
       "createdAt": "2025-08-12T16:26:02.000+08:00"
