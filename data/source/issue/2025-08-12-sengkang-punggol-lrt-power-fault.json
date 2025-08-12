@@ -1,0 +1,84 @@
+{
+  "id": "2025-08-12-sengkang-punggol-lrt-power-fault",
+  "title": "Service disruption on Sengkang and Punggol LRT due to power fault",
+  "title_translations": {
+    "zh-Hans": "因电力故障导致的盛港和榜鹅轻轨服务中断",
+    "ms": "Gangguan perkhidmatan pada LRT Sengkang dan Punggol disebabkan oleh gangguan kuasa",
+    "ta": "சேங்கங் மற்றும் புங்கொல் எல்ஆர்டி இல் கால்வாய்ப்பு கோளாறு"
+  },
+  "componentIdsAffected": [
+    "SKLRT",
+    "PGLRT"
+  ],
+  "startAt": "2025-08-12T11:46:28.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "power.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.investigating",
+      "text": "11.43am: SPLRT - Due to a power fault, there is no service in Sengkang-Punggol LRT. Free regular and bridging bus services are available between all Sengkang Punggol LRT stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115013739393858936",
+      "createdAt": "2025-08-12T11:46:28.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "SKLRT",
+      "branchName": "east",
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK",
+        "RNG"
+      ]
+    },
+    {
+      "componentId": "SKLRT",
+      "branchName": "west",
+      "stationIds": [
+        "SKG",
+        "CGL",
+        "FMW",
+        "KPG",
+        "TNG",
+        "FNV",
+        "LYR",
+        "TKG",
+        "RNJ"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "east",
+      "stationIds": [
+        "PGL",
+        "COV",
+        "MRD",
+        "CRE",
+        "RIV",
+        "KDL",
+        "OAS",
+        "DAM"
+      ]
+    },
+    {
+      "componentId": "PGLRT",
+      "branchName": "west",
+      "stationIds": [
+        "PGL",
+        "SMK",
+        "TKL",
+        "PGP",
+        "SMD",
+        "NBG",
+        "SMG",
+        "STK"
+      ]
+    }
+  ]
+}

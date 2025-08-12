@@ -7,8 +7,7 @@
     "ta": "வடக்கும் கிழக்குப் பாதை மின் குறைவு"
   },
   "componentIdsAffected": [
-    "NEL",
-    "SKLRT"
+    "NEL"
   ],
   "startAt": "2025-08-12T11:28:28.000+08:00",
   "endAt": null,
@@ -17,6 +16,12 @@
     "power.fault"
   ],
   "updates": [
+    {
+      "type": "operator.investigating",
+      "text": "11.42am: NEL - Due to a power fault, there is no service between Farrer Park and Punggol Coast Station. Free regular and bridging bus services are available between Dhoby Gaut and Punggol Coast stations. Sengkang Punggol LRT service is also not available.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115013731539756924",
+      "createdAt": "2025-08-12T11:44:28.000+08:00"
+    },
     {
       "type": "operator.investigating",
       "text": "11.27am: NEL- Due to a power fault, there is no service between Farrer Park and Punggol Coast Station. Free regular and bridging bus services from Dhoby Gaut to Punggol Coast stations. Sengkang Punggol LRT service is also not available.",
