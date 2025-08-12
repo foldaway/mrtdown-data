@@ -20,6 +20,12 @@
   "updates": [
     {
       "type": "operator.update",
+      "text": "7.40pm: SPLRT - Please note that the Sengkang-Punggol LRT will be running only on one track for the evening peak period. Please expect a frequency of about five minutes for the train services. Free regular and bridging bus services are still available between all Sengkang-Punggol LRT stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115015609380473472",
+      "createdAt": "2025-08-12T19:42:02.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "7.08pm: SPLRT - Please note that the Sengkang-Punggol LRT will be running only on one track for the evening peak period. Please expect a frequency of about five minutes for the train services. Free regular and bridging bus services are still available between all Sengkang-Punggol LRT stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115015483652952225",
       "createdAt": "2025-08-12T19:10:03.000+08:00"
