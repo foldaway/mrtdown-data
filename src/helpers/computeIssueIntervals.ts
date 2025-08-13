@@ -15,7 +15,7 @@ export function computeIssueIntervals(issue: Issue): Interval[] {
 
   const issueIntervals: Interval[] = [];
 
-  if (issue.type === 'maintenance' && issue.rrule != null) {
+  if ('rrule' in issue && issue.rrule != null) {
     const rruleSet = RRuleSet.parse(issue.rrule);
     for (const dt of rruleSet.all()) {
       const dtStart = DateTime.fromObject(dt.toObject()).setZone(

@@ -41,7 +41,7 @@ export function computeDateSummaries(
         let segment = _segment;
         // Workaround: treat station renovation as a 1-minute issue, assume that there is no line downtime
         if (
-          issue.type === 'maintenance' &&
+          issue.type === 'infra' &&
           issue.subtypes.includes('station.renovation')
         ) {
           segment = Interval.fromDateTimes(

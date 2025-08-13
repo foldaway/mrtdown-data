@@ -16,7 +16,6 @@
   "cancelledAt": null,
   "subtypes": [
     "track.work",
-    "station.renovation",
     "system.upgrade"
   ],
   "updates": [

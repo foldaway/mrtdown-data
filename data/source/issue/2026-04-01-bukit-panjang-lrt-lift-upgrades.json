@@ -11,7 +11,7 @@
   ],
   "startAt": "2026-04-01T00:00:00.000+08:00",
   "endAt": "2026-08-01T00:00:00.000+08:00",
-  "type": "maintenance",
+  "type": "infra",
   "cancelledAt": null,
   "subtypes": [
     "station.renovation"

@@ -132,7 +132,6 @@ export type IssueMaintenanceUpdate = z.infer<
 /** [MAINTENANCE] subtype */
 export const IssueMaintenanceSubtypeSchema = z.enum([
   'track.work',
-  'station.renovation',
   'system.upgrade',
 ]);
 /** [MAINTENANCE] subtype */
@@ -156,7 +155,10 @@ export const IssueMaintenanceSchema = IssueBase.extend({
 export type IssueMaintenance = z.infer<typeof IssueMaintenanceSchema>;
 
 /** [INFRA] update type */
-export const IssueInfraUpdateTypeSchema = z.enum(['operator.update']);
+export const IssueInfraUpdateTypeSchema = z.enum([
+  'operator.update',
+  'planned',
+]);
 /** [INFRA] update type */
 export type IssueInfraUpdateType = z.infer<typeof IssueInfraUpdateTypeSchema>;
 
@@ -178,6 +180,7 @@ export const IssueInfraSubtypeSchema = z.enum([
   'elevator.outage',
   'escalator.outage',
   'air_conditioning.issue',
+  'station.renovation',
 ]);
 /** [INFRA] subtype */
 export type IssueInfraSubtype = z.infer<typeof IssueDisruptionSubtypeSchema>;
@@ -185,6 +188,7 @@ export type IssueInfraSubtype = z.infer<typeof IssueDisruptionSubtypeSchema>;
 /** [INFRA] */
 export const IssueInfraSchema = IssueBase.extend({
   type: z.literal(IssueTypeSchema.enum.infra),
+  rrule: z.string().optional(),
   updates: z.array(IssueInfraUpdateSchema),
   subtypes: z.array(IssueInfraSubtypeSchema),
 });

@@ -15,7 +15,7 @@
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
-    "station.renovation"
+    "system.upgrade"
   ],
   "updates": [
     {
