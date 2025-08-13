@@ -35,13 +35,6 @@
       "branchName": "main",
       "stationIds": [
         "RFP",
-        "TPG"
-      ]
-    },
-    {
-      "componentId": "EWL",
-      "branchName": "main",
-      "stationIds": [
         "TPG",
         "OTP",
         "TIB",

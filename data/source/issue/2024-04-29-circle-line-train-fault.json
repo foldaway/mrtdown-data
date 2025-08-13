@@ -89,15 +89,6 @@
         "FRR",
         "HLV",
         "BNV",
-        "ONH"
-      ]
-    },
-    {
-      "componentId": "CCL",
-      "branchName": "main",
-      "stationIds": [
-        "HLV",
-        "BNV",
         "ONH",
         "KRG",
         "HPV",
