@@ -19,6 +19,12 @@
   ],
   "updates": [
     {
+      "type": "news.report",
+      "text": "There were two switchboards that acted as backups to each other, but both had tripped.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/nel-splrt-disruption-electricity-surge-shut-down-backup-power-switchboard-says-lta",
+      "createdAt": "2025-08-13T17:45:00.000+08:00"
+    },
+    {
       "type": "operator.update",
       "text": "Sengkang-Punggol LRT is back to full service. Free regular and bridging bus services have ceased. \n\nWe are sorry for the inconvenience caused. We also thank all affected commuters for their patience and understanding.",
       "sourceUrl": "https://x.com/sbstransit_ltd/status/1955258945922371699",
