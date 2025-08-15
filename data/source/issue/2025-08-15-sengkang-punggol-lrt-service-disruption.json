@@ -11,12 +11,18 @@
     "PGLRT"
   ],
   "startAt": "2025-08-15T09:00:18.000+08:00",
-  "endAt": null,
+  "endAt": "2025-08-15T12:12:18.000+08:00",
   "type": "disruption",
   "subtypes": [
     "power.fault"
   ],
   "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "12.10pm: SPLRT - Please note that service is progressively available on the Sengkang LRT since 11.05am, and on the Punggol LRT since 11.20am. Recovery works are still ongoing.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115030827876545289",
+      "createdAt": "2025-08-15T12:12:18.000+08:00"
+    },
     {
       "type": "operator.investigating",
       "text": "11.30am: SPLRT - Due to a power fault, there is no service in Sengkang-Punggol LRT. Free regular and bridging bus services are available between all Sengkang-Punggol LRT stations.",
@@ -71,55 +77,14 @@
       "componentId": "SKLRT",
       "branchName": "east",
       "stationIds": [
-        "SKG",
-        "CPV",
-        "RMB",
-        "BAK",
-        "KGK",
-        "RNG"
-      ]
-    },
-    {
-      "componentId": "SKLRT",
-      "branchName": "west",
-      "stationIds": [
-        "SKG",
-        "CGL",
-        "FMW",
-        "KPG",
-        "TNG",
-        "FNV",
-        "LYR",
-        "TKG",
-        "RNJ"
+        "SKG"
       ]
     },
     {
       "componentId": "PGLRT",
       "branchName": "east",
       "stationIds": [
-        "PGL",
-        "COV",
-        "MRD",
-        "CRE",
-        "RIV",
-        "KDL",
-        "OAS",
-        "DAM"
-      ]
-    },
-    {
-      "componentId": "PGLRT",
-      "branchName": "west",
-      "stationIds": [
-        "PGL",
-        "SMK",
-        "TKL",
-        "PGP",
-        "SMD",
-        "NBG",
-        "SMG",
-        "STK"
+        "PGL"
       ]
     }
   ]
