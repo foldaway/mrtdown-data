@@ -18,6 +18,12 @@
   ],
   "updates": [
     {
+      "type": "operator.investigating",
+      "text": "9.30am: SPLRT - Due to a power fault, there is no service in Sengkang-Punggol LRT. Free regular and bridging bus services are available between all Sengkang-Punggol LRT stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115030190902077760",
+      "createdAt": "2025-08-15T09:30:18.000+08:00"
+    },
+    {
       "type": "news.report",
       "text": "A power fault has caused the suspension of train services on the Sengkang-Punggol LRT. The incident was reported on Reddit, with a link to a Channel News Asia article for more details.",
       "sourceUrl": "https://www.reddit.com/r/singapore/comments/1mqjnu0/no_train_service_on_sengkangpunggol_lrt_due_to/",
