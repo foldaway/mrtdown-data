@@ -74,16 +74,10 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "SKLRT",
-      "branchName": "east",
+      "componentId": "NEL",
+      "branchName": "main",
       "stationIds": [
-        "SKG"
-      ]
-    },
-    {
-      "componentId": "PGLRT",
-      "branchName": "east",
-      "stationIds": [
+        "SKG",
         "PGL"
       ]
     }
