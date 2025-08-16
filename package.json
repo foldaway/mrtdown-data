@@ -6,10 +6,12 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
+    "postbuild": "npm run db:generate",
     "test": "vitest",
     "ingest:webhook": "tsx src/scripts/ingestViaWebhook.ts",
     "generate-products": "tsx src/scripts/generateProducts/index.ts",
-    "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts"
+    "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts",
+    "db:generate": "tsx src/db/generate/index.ts"
   },
   "author": "",
   "license": "UNLICENSED",
