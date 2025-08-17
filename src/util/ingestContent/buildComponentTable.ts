@@ -1,5 +1,5 @@
 import { toMarkdown } from 'mdast-util-to-markdown';
-import { ComponentModel } from '../../model/ComponentModel';
+import { ComponentModel } from '../../model/ComponentModel.js';
 import type { Root, Table } from 'mdast';
 import { gfmToMarkdown } from 'mdast-util-gfm';
 

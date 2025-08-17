@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Data repository",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "tsc",
     "test": "vitest",
     "ingest:webhook": "tsx src/scripts/ingestViaWebhook.ts",
     "generate-products": "tsx src/scripts/generateProducts/index.ts",

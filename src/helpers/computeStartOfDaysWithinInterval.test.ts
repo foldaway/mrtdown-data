@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { computeStartOfDaysWithinInterval } from './computeStartOfDaysWithinInterval';
+import { computeStartOfDaysWithinInterval } from './computeStartOfDaysWithinInterval.js';
 import { DateTime } from 'luxon';
 
 describe('computeStartOfDaysWithinInterval', () => {

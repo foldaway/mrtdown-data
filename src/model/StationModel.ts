@@ -1,8 +1,7 @@
 import { readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { Station, StationId } from '../schema/Station';
-import type { ComponentId } from '../schema/Component';
-import { assert } from '../util/assert';
+import type { Station, StationId } from '../schema/Station.js';
+import type { ComponentId } from '../schema/Component.js';
 import Fuse from 'fuse.js';
 
 const dirPathIssue = join(import.meta.dirname, '../../data/source/station');

@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { calculateDurationWithinServiceHours } from './calculateDurationWithinServiceHours';
+import { calculateDurationWithinServiceHours } from './calculateDurationWithinServiceHours.js';
 import { DateTime } from 'luxon';
 
 describe('calculateDurationWithinServiceHours', () => {

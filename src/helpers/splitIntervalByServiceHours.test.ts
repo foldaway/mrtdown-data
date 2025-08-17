@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { DateTime, Interval } from 'luxon';
-import { splitIntervalByServiceHours } from './splitIntervalByServiceHours';
+import { splitIntervalByServiceHours } from './splitIntervalByServiceHours.js';
 
 describe('splitIntervalByServiceHours', () => {
   test('single day, within service hours', () => {

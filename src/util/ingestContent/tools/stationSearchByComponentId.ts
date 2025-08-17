@@ -1,11 +1,11 @@
 import type { ChatCompletionTool } from 'openai/resources';
 import { z } from 'zod';
-import { StationModel } from '../../../model/StationModel';
-import { ComponentIdSchema } from '../../../schema/Component';
+import { StationModel } from '../../../model/StationModel.js';
+import { ComponentIdSchema } from '../../../schema/Component.js';
 import { gfmToMarkdown } from 'mdast-util-gfm';
 import type { Root, Table } from 'mdast';
 import { toMarkdown } from 'mdast-util-to-markdown';
-import type { Tool } from '../types';
+import type { Tool } from '../types.js';
 
 export const ToolStationSearchByComponentIdParametersSchema = z.object({
   componentId: ComponentIdSchema,

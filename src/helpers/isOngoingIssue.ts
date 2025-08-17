@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
-import type { Issue } from '../schema/Issue';
-import { assert } from '../util/assert';
-import { computeIssueIntervals } from './computeIssueIntervals';
+import type { Issue } from '../schema/Issue.js';
+import { assert } from '../util/assert.js';
+import { computeIssueIntervals } from './computeIssueIntervals.js';
 
 export function isOngoingIssue(issue: Issue, now = DateTime.now()): boolean {
   if (issue.endAt == null) {

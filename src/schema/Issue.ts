@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { ComponentIdSchema } from './Component';
+import { ComponentIdSchema } from './Component.js';
 import { DateTime } from 'luxon';
-import { StationIdSchema } from './StationId';
+import { StationIdSchema } from './StationId.js';
 
 export const IssueTypeSchema = z.enum(['disruption', 'maintenance', 'infra']);
 export type IssueType = z.infer<typeof IssueTypeSchema>;

@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { ComponentIdSchema, ComponentSchema } from './Component';
-import { StationSchema } from './Station';
-import { IssueReferenceSchema } from './Overview';
+import { ComponentIdSchema, ComponentSchema } from './Component.js';
+import { StationSchema } from './Station.js';
+import { IssueReferenceSchema } from './Overview.js';
 
 export const ComponentManifestSchema = z.object({
   componentId: ComponentIdSchema,

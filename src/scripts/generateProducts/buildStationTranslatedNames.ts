@@ -1,7 +1,7 @@
 import { join } from 'node:path';
 import { writeFileSync } from 'node:fs';
-import type { StationTranslatedNames } from '../../schema/StationTranslatedNames';
-import { StationModel } from '../../model/StationModel';
+import type { StationTranslatedNames } from '../../schema/StationTranslatedNames.js';
+import { StationModel } from '../../model/StationModel.js';
 
 const LOCALES = ['en-SG', 'ms', 'zh-Hans', 'ta'];
 

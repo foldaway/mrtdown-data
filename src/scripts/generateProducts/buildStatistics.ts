@@ -1,20 +1,20 @@
 import { DateTime, type Interval } from 'luxon';
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { calculateDurationWithinServiceHours } from '../../helpers/calculateDurationWithinServiceHours';
-import { computeIssueIntervals } from '../../helpers/computeIssueIntervals';
-import { splitIntervalByServiceHours } from '../../helpers/splitIntervalByServiceHours';
-import { sumIntervalDuration } from '../../helpers/sumIntervalDuration';
-import { ComponentModel } from '../../model/ComponentModel';
-import { IssueModel } from '../../model/IssueModel';
-import { StationModel } from '../../model/StationModel';
-import type { ComponentId } from '../../schema/Component';
-import type { DateSummary } from '../../schema/DateSummary';
-import type { IssueType } from '../../schema/Issue';
-import type { IssueReference } from '../../schema/Overview';
-import type { Statistics } from '../../schema/Statistics';
-import { assert } from '../../util/assert';
-import { isOngoingIssue } from '../../helpers/isOngoingIssue';
+import { calculateDurationWithinServiceHours } from '../../helpers/calculateDurationWithinServiceHours.js';
+import { computeIssueIntervals } from '../../helpers/computeIssueIntervals.js';
+import { splitIntervalByServiceHours } from '../../helpers/splitIntervalByServiceHours.js';
+import { sumIntervalDuration } from '../../helpers/sumIntervalDuration.js';
+import { ComponentModel } from '../../model/ComponentModel.js';
+import { IssueModel } from '../../model/IssueModel.js';
+import { StationModel } from '../../model/StationModel.js';
+import type { ComponentId } from '../../schema/Component.js';
+import type { DateSummary } from '../../schema/DateSummary.js';
+import type { IssueType } from '../../schema/Issue.js';
+import type { IssueReference } from '../../schema/Overview.js';
+import type { Statistics } from '../../schema/Statistics.js';
+import { assert } from '../../util/assert.js';
+import { isOngoingIssue } from '../../helpers/isOngoingIssue.js';
 
 interface DateSummaryPartial {
   issues: IssueReference[];

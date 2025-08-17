@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import { ComponentIdSchema, ComponentSchema } from './Component';
-import { IssueIdSchema, IssueSchema, IssueTypeSchema } from './Issue';
+import { ComponentIdSchema, ComponentSchema } from './Component.js';
+import { IssueIdSchema, IssueSchema, IssueTypeSchema } from './Issue.js';
 import { DateTime } from 'luxon';
-import { DateSummarySchema } from './DateSummary';
+import { DateSummarySchema } from './DateSummary.js';
 
 export const IssueReferenceSchema = z.object({
   id: IssueIdSchema,

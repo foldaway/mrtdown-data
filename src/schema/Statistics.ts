@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { DateSummarySchema } from './DateSummary';
-import { IssueReferenceSchema } from './Overview';
-import { IssueSchema } from './Issue';
-import { ComponentIdSchema, ComponentSchema } from './Component';
-import { StationSchema } from './Station';
+import { DateSummarySchema } from './DateSummary.js';
+import { IssueReferenceSchema } from './Overview.js';
+import { IssueSchema } from './Issue.js';
+import { ComponentIdSchema, ComponentSchema } from './Component.js';
+import { StationSchema } from './Station.js';
 
 export const StatisticsSchema = z.object({
   dates: z.record(z.string().date(), DateSummarySchema),

@@ -1,6 +1,6 @@
 import { type DateTime, Duration, Interval } from 'luxon';
-import { assert } from '../util/assert';
-import { splitIntervalByServiceHours } from './splitIntervalByServiceHours';
+import { assert } from '../util/assert.js';
+import { splitIntervalByServiceHours } from './splitIntervalByServiceHours.js';
 
 export function calculateDurationWithinServiceHours(
   start: DateTime,

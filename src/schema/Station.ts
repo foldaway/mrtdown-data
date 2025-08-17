@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { ComponentIdSchema } from './Component';
-import { StationIdSchema } from './StationId';
+import { ComponentIdSchema } from './Component.js';
+import { StationIdSchema } from './StationId.js';
 
 export type StationId = z.infer<typeof StationIdSchema>;
 

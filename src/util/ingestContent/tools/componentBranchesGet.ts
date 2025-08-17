@@ -1,11 +1,11 @@
 import type { ChatCompletionTool } from 'openai/resources';
 import { z } from 'zod';
-import { StationModel } from '../../../model/StationModel';
-import { ComponentIdSchema } from '../../../schema/Component';
-import { ComponentModel } from '../../../model/ComponentModel';
-import type { Station } from '../../../schema/Station';
-import type { Tool } from '../types';
-import { assert } from '../../assert';
+import { StationModel } from '../../../model/StationModel.js';
+import { ComponentIdSchema } from '../../../schema/Component.js';
+import { ComponentModel } from '../../../model/ComponentModel.js';
+import type { Station } from '../../../schema/Station.js';
+import type { Tool } from '../types.js';
+import { assert } from '../../assert.js';
 import { gfmToMarkdown } from 'mdast-util-gfm';
 import type { Root, Table } from 'mdast';
 import { toMarkdown } from 'mdast-util-to-markdown';

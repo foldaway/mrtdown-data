@@ -1,5 +1,5 @@
 import { type DateTime, Interval } from 'luxon';
-import { assert } from '../util/assert';
+import { assert } from '../util/assert.js';
 
 export function computeStartOfDaysWithinInterval(
   start: DateTime,

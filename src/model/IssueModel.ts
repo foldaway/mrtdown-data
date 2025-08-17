@@ -1,5 +1,5 @@
 import { basename, extname, join } from 'node:path';
-import type { Issue, IssueId } from '../schema/Issue';
+import type { Issue, IssueId } from '../schema/Issue.js';
 import { readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { DateTime } from 'luxon';
 

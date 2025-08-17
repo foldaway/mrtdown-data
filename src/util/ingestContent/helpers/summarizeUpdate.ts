@@ -1,6 +1,6 @@
 import type { ChatCompletionMessageParam } from 'openai/resources/index.mjs';
-import type { IngestContent } from '../types';
-import { openAiClient } from '../constants';
+import type { IngestContent } from '../types.js';
+import { openAiClient } from '../constants.js';
 import { z } from 'zod';
 
 const PostSummaryResultSchema = z.object({

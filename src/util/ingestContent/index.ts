@@ -1,9 +1,9 @@
-import { IssueModel } from '../../model/IssueModel';
-import { determineExistingIssue } from './helpers/determineExistingIssue';
-import { ingestIssueInfra } from './helpers/ingestIssueInfra';
-import { ingestIssueMaintenance } from './helpers/ingestIssueMaintenance';
-import { ingestIssueDisruption } from './helpers/ingestIssueDisruption';
-import type { IngestContent } from './types';
+import { IssueModel } from '../../model/IssueModel.js';
+import { determineExistingIssue } from './helpers/determineExistingIssue.js';
+import { ingestIssueInfra } from './helpers/ingestIssueInfra.js';
+import { ingestIssueMaintenance } from './helpers/ingestIssueMaintenance.js';
+import { ingestIssueDisruption } from './helpers/ingestIssueDisruption.js';
+import type { IngestContent } from './types.js';
 
 export async function ingestContent(content: IngestContent) {
   console.log('[ingestContent]', content);

@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { ComponentIdSchema, ComponentSchema } from './Component';
-import { StationSchema } from './Station';
-import { IssueReferenceSchema } from './Overview';
-import { DateSummarySchema } from './DateSummary';
-import { IssueSchema, IssueTypeSchema } from './Issue';
+import { ComponentIdSchema, ComponentSchema } from './Component.js';
+import { StationSchema } from './Station.js';
+import { IssueReferenceSchema } from './Overview.js';
+import { DateSummarySchema } from './DateSummary.js';
+import { IssueSchema, IssueTypeSchema } from './Issue.js';
 
 export const ComponentStatusManifestSchema = z.object({
   componentId: ComponentIdSchema,

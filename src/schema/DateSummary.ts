@@ -1,21 +1,21 @@
 import { z } from 'zod';
-import { IssueTypeSchema } from './Issue';
-import { IssueReferenceSchema } from './Overview';
-import { ComponentIdSchema } from './Component';
+import { IssueTypeSchema } from './Issue.js';
+import { IssueReferenceSchema } from './Overview.js';
+import { ComponentIdSchema } from './Component.js';
 
 export const DateSummarySchema = z.object({
-  issueTypesDurationMs: z.record(IssueTypeSchema, z.number()),
-  componentIdsIssueTypesDurationMs: z.record(
+  issueTypesDurationMs: z.partialRecord(IssueTypeSchema, z.number()),
+  componentIdsIssueTypesDurationMs: z.partialRecord(
     ComponentIdSchema,
-    z.record(IssueTypeSchema, z.number()),
+    z.partialRecord(IssueTypeSchema, z.number()),
   ),
-  issueTypesIntervalsNoOverlapMs: z.record(
+  issueTypesIntervalsNoOverlapMs: z.partialRecord(
     IssueTypeSchema,
     z.array(z.string()),
   ),
   componentIdsIssueTypesIntervalsNoOverlapMs: z.record(
     ComponentIdSchema,
-    z.record(IssueTypeSchema, z.array(z.string())),
+    z.partialRecord(IssueTypeSchema, z.array(z.string())),
   ),
   issues: z.array(IssueReferenceSchema),
 });

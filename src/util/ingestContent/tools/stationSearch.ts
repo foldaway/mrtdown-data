@@ -1,7 +1,7 @@
 import type { ChatCompletionTool } from 'openai/resources';
 import { z } from 'zod';
-import { StationModel } from '../../../model/StationModel';
-import type { Tool } from '../types';
+import { StationModel } from '../../../model/StationModel.js';
+import type { Tool } from '../types.js';
 import { gfmToMarkdown } from 'mdast-util-gfm';
 import type { Root, Table } from 'mdast';
 import { toMarkdown } from 'mdast-util-to-markdown';

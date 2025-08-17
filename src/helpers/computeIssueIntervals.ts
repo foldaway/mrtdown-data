@@ -1,7 +1,7 @@
 import { DateTime, Interval } from 'luxon';
-import type { Issue } from '../schema/Issue';
+import type { Issue } from '../schema/Issue.js';
 import { RRuleSet } from 'rrule-rust';
-import { assert } from '../util/assert';
+import { assert } from '../util/assert.js';
 
 export function computeIssueIntervals(issue: Issue): Interval[] {
   if (issue.endAt == null) {

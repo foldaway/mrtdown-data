@@ -1,14 +1,14 @@
 import { writeFileSync } from 'node:fs';
 import { DateTime } from 'luxon';
 import { join } from 'node:path';
-import { IssueModel } from '../../model/IssueModel';
+import { IssueModel } from '../../model/IssueModel.js';
 import type {
   IssuesHistory,
   IssuesHistoryPage,
   IssuesHistoryPageSection,
-} from '../../schema/IssuesHistory';
-import type { Issue } from '../../schema/Issue';
-import { assert } from '../../util/assert';
+} from '../../schema/IssuesHistory.js';
+import type { Issue } from '../../schema/Issue.js';
+import { assert } from '../../util/assert.js';
 
 const PAGE_SIZE = 10;
 

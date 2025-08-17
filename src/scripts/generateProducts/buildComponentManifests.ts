@@ -1,13 +1,13 @@
-import { ComponentModel } from '../../model/ComponentModel';
+import { ComponentModel } from '../../model/ComponentModel.js';
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { ComponentManifest } from '../../schema/ComponentManifest';
-import { StationModel } from '../../model/StationModel';
-import type { Station } from '../../schema/Station';
-import type { Component } from '../../schema/Component';
-import { IssueModel } from '../../model/IssueModel';
+import type { ComponentManifest } from '../../schema/ComponentManifest.js';
+import { StationModel } from '../../model/StationModel.js';
+import type { Station } from '../../schema/Station.js';
+import type { Component } from '../../schema/Component.js';
+import { IssueModel } from '../../model/IssueModel.js';
 import { DateTime } from 'luxon';
-import type { IssueReference } from '../../schema/Overview';
+import type { IssueReference } from '../../schema/Overview.js';
 
 export function buildComponentManifests() {
   const components = ComponentModel.getAll();

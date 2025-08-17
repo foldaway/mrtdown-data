@@ -1,6 +1,6 @@
-import { assert } from '../util/assert';
-import { ingestContent } from '../util/ingestContent';
-import type { IngestContent } from '../util/ingestContent/types';
+import { assert } from '../util/assert.js';
+import { ingestContent } from '../util/ingestContent/index.js';
+import type { IngestContent } from '../util/ingestContent/types.js';
 
 const { MESSAGE } = process.env;
 assert(MESSAGE != null, 'Expected MESSAGE env var');

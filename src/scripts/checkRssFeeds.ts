@@ -1,14 +1,14 @@
 import 'dotenv/config';
 import { DateTime } from 'luxon';
 import Parser from 'rss-parser';
-import type { IngestContent } from '../util/ingestContent/types';
+import type { IngestContent } from '../util/ingestContent/types.js';
 import assert from 'node:assert';
-import { ingestContent } from '../util/ingestContent';
+import { ingestContent } from '../util/ingestContent/index.js';
 import { fromHtml } from 'hast-util-from-html';
 import { toMdast } from 'hast-util-to-mdast';
 import { toMarkdown } from 'mdast-util-to-markdown';
 import { gfmToMarkdown } from 'mdast-util-gfm';
-import { isTextRailRelated } from '../util/isTextRailRelated';
+import { isTextRailRelated } from '../util/isTextRailRelated.js';
 
 const TWITTER_MASTODON_RSS_FEEDS: string[] = [
   'https://mastodon.social/@ltatrainservicealerts.rss',

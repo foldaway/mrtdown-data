@@ -1,17 +1,17 @@
-import { ComponentModel } from '../../model/ComponentModel';
+import { ComponentModel } from '../../model/ComponentModel.js';
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { StationModel } from '../../model/StationModel';
-import type { Station } from '../../schema/Station';
-import type { Component } from '../../schema/Component';
-import { IssueModel } from '../../model/IssueModel';
+import { StationModel } from '../../model/StationModel.js';
+import type { Station } from '../../schema/Station.js';
+import type { Component } from '../../schema/Component.js';
+import { IssueModel } from '../../model/IssueModel.js';
 import { DateTime } from 'luxon';
-import type { ComponentStatusManifest } from '../../schema/ComponentStatusManifest';
-import { isOngoingIssue } from '../../helpers/isOngoingIssue';
-import type { Issue, IssueType } from '../../schema/Issue';
-import { computeDateSummaries } from '../../helpers/computeDateSummaries';
-import { assert } from '../../util/assert';
-import type { IssueReference } from '../../schema/Overview';
+import type { ComponentStatusManifest } from '../../schema/ComponentStatusManifest.js';
+import { isOngoingIssue } from '../../helpers/isOngoingIssue.js';
+import type { Issue, IssueType } from '../../schema/Issue.js';
+import { computeDateSummaries } from '../../helpers/computeDateSummaries.js';
+import { assert } from '../../util/assert.js';
+import type { IssueReference } from '../../schema/Overview.js';
 
 export function buildComponentStatusManifests() {
   const components = ComponentModel.getAll();

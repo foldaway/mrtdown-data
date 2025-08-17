@@ -1,15 +1,15 @@
 import { z } from 'zod';
-import { ComponentModel } from '../model/ComponentModel';
-import { StationModel } from '../model/StationModel';
+import { ComponentModel } from '../model/ComponentModel.js';
+import { StationModel } from '../model/StationModel.js';
 import {
   type ComponentId,
   ComponentIdSchema,
   type Component,
-} from '../schema/Component';
-import type { Station } from '../schema/Station';
-import { assert } from '../util/assert';
+} from '../schema/Component.js';
+import type { Station } from '../schema/Station.js';
+import { assert } from '../util/assert.js';
 import { DateTime } from 'luxon';
-import type { IssueStationEntry } from '../schema/Issue';
+import type { IssueStationEntry } from '../schema/Issue.js';
 
 export const LineSectionSchema = z
   .discriminatedUnion('type', [

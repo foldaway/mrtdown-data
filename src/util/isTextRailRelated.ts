@@ -1,4 +1,4 @@
-import { ComponentModel } from '../model/ComponentModel';
+import { ComponentModel } from '../model/ComponentModel.js';
 
 const REGEX_PHRASE_MATCHES =
   /(additional travel time|regular svc|travel time|additional travell?ing time)/i;

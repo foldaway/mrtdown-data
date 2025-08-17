@@ -1,6 +1,6 @@
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, extname, join } from 'node:path';
-import type { Component, ComponentId } from '../schema/Component';
+import type { Component, ComponentId } from '../schema/Component.js';
 
 const dirPathComponent = join(
   import.meta.dirname,

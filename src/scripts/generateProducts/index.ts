@@ -1,14 +1,14 @@
-import { buildOverview } from './buildOverview';
-import { buildIssuesHistory } from './buildIssuesHistory';
-import { buildStatistics } from './buildStatistics';
-import { buildStationIndex } from './buildStationIndex';
-import { buildStationTranslatedNames } from './buildStationTranslatedNames';
-import { buildStationManifests } from './buildStationManifests';
-import { buildComponentManifests } from './buildComponentManifests';
-import { buildComponentIndex } from './buildComponentIndex';
-import { buildIssueIndex } from './buildIssueIndex';
-import { buildComponentStatusManifests } from './buildComponentStatusManifests';
-import { buildFooterManifest } from './buildFooterManifest';
+import { buildOverview } from './buildOverview.js';
+import { buildIssuesHistory } from './buildIssuesHistory.js';
+import { buildStatistics } from './buildStatistics.js';
+import { buildStationIndex } from './buildStationIndex.js';
+import { buildStationTranslatedNames } from './buildStationTranslatedNames.js';
+import { buildStationManifests } from './buildStationManifests.js';
+import { buildComponentManifests } from './buildComponentManifests.js';
+import { buildComponentIndex } from './buildComponentIndex.js';
+import { buildIssueIndex } from './buildIssueIndex.js';
+import { buildComponentStatusManifests } from './buildComponentStatusManifests.js';
+import { buildFooterManifest } from './buildFooterManifest.js';
 
 buildOverview();
 buildIssuesHistory();

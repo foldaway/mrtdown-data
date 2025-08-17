@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { ComponentSchema } from './Component';
-import { StationSchema } from './Station';
+import { ComponentSchema } from './Component.js';
+import { StationSchema } from './Station.js';
 
 export const FooterManifestSchema = z.object({
   components: z.array(ComponentSchema),

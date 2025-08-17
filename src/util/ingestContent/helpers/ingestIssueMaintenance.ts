@@ -7,20 +7,20 @@ import { z } from 'zod';
 import {
   computeAffectedStations,
   LineSectionSchema,
-} from '../../../helpers/computeAffectedStations';
-import { IssueModel } from '../../../model/IssueModel';
+} from '../../../helpers/computeAffectedStations.js';
+import { IssueModel } from '../../../model/IssueModel.js';
 import {
   type IssueMaintenance,
   IssueMaintenanceSchema,
   type IssueMaintenanceUpdate,
-} from '../../../schema/Issue';
-import { buildComponentTable } from '../buildComponentTable';
-import { openAiClient } from '../constants';
-import { TOOL_COMPONENT_BRANCHES_GET } from '../tools/componentBranchesGet';
-import { TOOL_STATION_SEARCH } from '../tools/stationSearch';
-import { TOOL_STATION_SEARCH_BY_COMPONENT_ID } from '../tools/stationSearchByComponentId';
-import type { IngestContent, ToolRegistry } from '../types';
-import { summarizeUpdate } from './summarizeUpdate';
+} from '../../../schema/Issue.js';
+import { buildComponentTable } from '../buildComponentTable.js';
+import { openAiClient } from '../constants.js';
+import { TOOL_COMPONENT_BRANCHES_GET } from '../tools/componentBranchesGet.js';
+import { TOOL_STATION_SEARCH } from '../tools/stationSearch.js';
+import { TOOL_STATION_SEARCH_BY_COMPONENT_ID } from '../tools/stationSearchByComponentId.js';
+import type { IngestContent, ToolRegistry } from '../types.js';
+import { summarizeUpdate } from './summarizeUpdate.js';
 
 const MAX_TOOL_CALL_COUNT = 6;
 

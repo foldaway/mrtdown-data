@@ -1,13 +1,11 @@
-import { DateTime, type Interval } from 'luxon';
+import { DateTime } from 'luxon';
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { computeDateSummaries } from '../../helpers/computeDateSummaries';
-import { isOngoingIssue } from '../../helpers/isOngoingIssue';
-import { ComponentModel } from '../../model/ComponentModel';
-import { IssueModel } from '../../model/IssueModel';
-import type { ComponentId } from '../../schema/Component';
-import type { IssueType } from '../../schema/Issue';
-import type { IssueReference, Overview } from '../../schema/Overview';
+import { computeDateSummaries } from '../../helpers/computeDateSummaries.js';
+import { isOngoingIssue } from '../../helpers/isOngoingIssue.js';
+import { ComponentModel } from '../../model/ComponentModel.js';
+import { IssueModel } from '../../model/IssueModel.js';
+import type { Overview } from '../../schema/Overview.js';
 
 export function buildOverview() {
   const components = ComponentModel.getAll();

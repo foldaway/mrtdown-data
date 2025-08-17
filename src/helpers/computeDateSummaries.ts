@@ -1,12 +1,12 @@
 import { DateTime, Interval } from 'luxon';
-import type { ComponentId } from '../schema/Component';
-import type { DateSummary } from '../schema/DateSummary';
-import type { Issue, IssueType } from '../schema/Issue';
-import type { IssueReference } from '../schema/Overview';
-import { sumIntervalDuration } from './sumIntervalDuration';
-import { assert } from '../util/assert';
-import { computeIssueIntervals } from './computeIssueIntervals';
-import { splitIntervalByServiceHours } from './splitIntervalByServiceHours';
+import type { ComponentId } from '../schema/Component.js';
+import type { DateSummary } from '../schema/DateSummary.js';
+import type { Issue, IssueType } from '../schema/Issue.js';
+import type { IssueReference } from '../schema/Overview.js';
+import { sumIntervalDuration } from './sumIntervalDuration.js';
+import { assert } from '../util/assert.js';
+import { computeIssueIntervals } from './computeIssueIntervals.js';
+import { splitIntervalByServiceHours } from './splitIntervalByServiceHours.js';
 
 interface DateSummaryPartial {
   issues: IssueReference[];

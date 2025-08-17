@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { IssueReferenceSchema } from './Overview';
+import { IssueReferenceSchema } from './Overview.js';
 
 export const IssuesHistoryPageSectionSchema = z.object({
   id: z.string(),

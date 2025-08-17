@@ -1,12 +1,12 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { IssueModel } from '../../model/IssueModel';
-import { StationModel } from '../../model/StationModel';
-import type { IssueReference } from '../../schema/Overview';
-import type { StationManifest } from '../../schema/StationManifest';
+import { IssueModel } from '../../model/IssueModel.js';
+import { StationModel } from '../../model/StationModel.js';
+import type { IssueReference } from '../../schema/Overview.js';
+import type { StationManifest } from '../../schema/StationManifest.js';
 import { DateTime } from 'luxon';
-import type { Component } from '../../schema/Component';
-import { ComponentModel } from '../../model/ComponentModel';
+import type { Component } from '../../schema/Component.js';
+import { ComponentModel } from '../../model/ComponentModel.js';
 
 export function buildStationManifests() {
   const issues = IssueModel.getAll();

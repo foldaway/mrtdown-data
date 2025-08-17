@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import type { IngestContent } from '../types';
-import { IssueIdSchema, IssueTypeSchema } from '../../../schema/Issue';
-import { IssueModel } from '../../../model/IssueModel';
-import { openAiClient } from '../constants';
+import type { IngestContent } from '../types.js';
+import { IssueIdSchema, IssueTypeSchema } from '../../../schema/Issue.js';
+import { IssueModel } from '../../../model/IssueModel.js';
+import { openAiClient } from '../constants.js';
 import type {
   ChatCompletion,
   ChatCompletionMessageParam,

@@ -1,6 +1,6 @@
 import { DateTime, type Interval } from 'luxon';
-import { computeStartOfDaysWithinInterval } from './computeStartOfDaysWithinInterval';
-import { assert } from '../util/assert';
+import { computeStartOfDaysWithinInterval } from './computeStartOfDaysWithinInterval.js';
+import { assert } from '../util/assert.js';
 
 export function splitIntervalByServiceHours(interval: Interval): Interval[] {
   assert(interval.start != null);

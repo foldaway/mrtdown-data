@@ -1,7 +1,7 @@
-import { StationModel } from '../../model/StationModel';
+import { StationModel } from '../../model/StationModel.js';
 import { join } from 'node:path';
 import { writeFileSync } from 'node:fs';
-import type { StationIndex } from '../../schema/StationIndex';
+import type { StationIndex } from '../../schema/StationIndex.js';
 
 export function buildStationIndex() {
   const filePath = join(

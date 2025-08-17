@@ -1,8 +1,7 @@
-import { ComponentModel } from '../../model/ComponentModel';
 import { join } from 'node:path';
 import { writeFileSync } from 'node:fs';
-import type { IssueIndex } from '../../schema/IssueIndex';
-import { IssueModel } from '../../model/IssueModel';
+import type { IssueIndex } from '../../schema/IssueIndex.js';
+import { IssueModel } from '../../model/IssueModel.js';
 
 export function buildIssueIndex() {
   const filePath = join(

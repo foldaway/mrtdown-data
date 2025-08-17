@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { StationIdSchema } from './StationId';
+import { StationIdSchema } from './StationId.js';
 
 export const ComponentTypeSchema = z.enum(['mrt.high', 'mrt.medium', 'lrt']);
 export type ComponentType = z.infer<typeof ComponentTypeSchema>;
