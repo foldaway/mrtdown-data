@@ -4,6 +4,7 @@ import { IssueModel } from '../../model/IssueModel.js';
 import { connect } from '../connect.js';
 import { computeIssueIntervals } from '../../helpers/computeIssueIntervals.js';
 import { assert } from '../../util/assert.js';
+import { IssueTypeSchema } from '../../schema/Issue.js';
 
 const connection = await connect({
   access_mode: 'READ_WRITE',
@@ -12,13 +13,19 @@ const connection = await connect({
 await connection.run(`
   PRAGMA enable_object_cache;
 
+  CREATE TABLE public_holidays AS SELECT * FROM read_json_auto('data/source/public_holidays.json');
+
   CREATE TABLE components (
     id TEXT PRIMARY KEY,
     title TEXT,
     title_translations JSON,
     type TEXT,
     color TEXT,
-    started_at DATE
+    started_at DATE,
+    weekday_start TIME,
+    weekday_end TIME,
+    weekend_start TIME,
+    weekend_end TIME
   );
 
   CREATE TABLE branches (
@@ -27,7 +34,8 @@ await connection.run(`
     title TEXT,
     title_translations JSON,
     started_at DATE,
-    ended_at DATE
+    ended_at DATE,
+    PRIMARY KEY (id, component_id)
   );
 
   CREATE TABLE stations (
@@ -46,14 +54,21 @@ await connection.run(`
     station_id TEXT,
     code TEXT,
     started_at DATE,
-    structure_type TEXT
+    ended_at DATE,
+    structure_type TEXT,
+    sequence_order INTEGER,
+    PRIMARY KEY (component_id, branch_id, station_id, code, sequence_order)
+  );
+
+  CREATE TABLE issue_types (
+    type TEXT PRIMARY KEY
   );
 
   CREATE TABLE issues (
     id TEXT PRIMARY KEY,
     title TEXT,
     title_translations JSON,
-    type TEXT
+    type TEXT REFERENCES issue_types(type)
   );
 
   CREATE TABLE issue_intervals (
@@ -83,13 +98,29 @@ await connection.run(`
   );
 `);
 
-const components = ComponentModel.getAll();
-for (const component of components) {
-  const { id, title, type, color, startedAt, branches } = component;
-
+// Insert issue types
+const issueTypes = Object.values(IssueTypeSchema.enum);
+for (const issueType of issueTypes) {
   await connection.run(
     // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
-    `INSERT INTO components VALUES (?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO issue_types VALUES (?)`,
+    [issueType],
+  );
+}
+
+const components = ComponentModel.getAll();
+const branchMemberMetadataByComponentAndStationCode: Record<
+  string,
+  {
+    branchId: string;
+    sequenceOrder: number;
+  }[]
+> = {};
+
+for (const component of components) {
+  await connection.run(
+    // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+    `INSERT INTO components VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
       component.id,
       component.title,
@@ -97,6 +128,10 @@ for (const component of components) {
       component.type,
       component.color,
       component.startedAt,
+      component.operatingHours.weekdays.start,
+      component.operatingHours.weekdays.end,
+      component.operatingHours.weekends.start,
+      component.operatingHours.weekends.end,
     ],
   );
 
@@ -114,12 +149,13 @@ for (const component of components) {
       ],
     );
 
-    for (const st of branch.stationCodes) {
-      await connection.run(
-        // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
-        `INSERT INTO component_branch_memberships VALUES (?, ?, ?, ?, ?, ?)`,
-        [component.id, branchId, st, null, branch.startedAt, null],
-      );
+    for (const [index, code] of branch.stationCodes.entries()) {
+      const key = `${code}@${component.id}`;
+      branchMemberMetadataByComponentAndStationCode[key] ??= [];
+      branchMemberMetadataByComponentAndStationCode[key].push({
+        branchId,
+        sequenceOrder: index,
+      });
     }
   }
 }
@@ -143,14 +179,49 @@ for (const station of stations) {
     station.componentMembers,
   )) {
     for (const m of memberships) {
-      await connection.run(
-        // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
-        `INSERT INTO component_branch_memberships VALUES (?, ?, ?, ?, ?, ?)`,
-        [compId, null, station.id, m.code, m.startedAt, m.structureType],
-      );
+      const key = `${m.code}@${compId}`;
+      const branchMemberMetadatas =
+        branchMemberMetadataByComponentAndStationCode[key] ?? null;
+      if (branchMemberMetadatas == null) {
+        // Special case, this may be a membership defined in the station
+        // itself, not in a branch.
+        //
+        // This is typically reserved for stations that will open in the future.
+        continue;
+      }
+      for (const branchMemberMetadata of branchMemberMetadatas) {
+        await connection.run(
+          // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+          `INSERT INTO component_branch_memberships VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+          [
+            compId,
+            branchMemberMetadata?.branchId ?? null,
+            station.id,
+            m.code,
+            m.startedAt,
+            m.endedAt ?? null,
+            m.structureType,
+            branchMemberMetadata?.sequenceOrder ?? null,
+          ],
+        );
+      }
     }
   }
 }
+
+// Add performance indexes
+await connection.run(`
+  CREATE INDEX idx_issue_intervals_issue_id ON issue_intervals(issue_id);
+  CREATE INDEX idx_issue_intervals_times ON issue_intervals(start_at, end_at);
+  CREATE INDEX idx_issue_components_issue_id ON issue_components(issue_id);
+  CREATE INDEX idx_issue_components_component_id ON issue_components(component_id);
+  CREATE INDEX idx_issues_type ON issues(type);
+  CREATE INDEX idx_public_holidays_date ON public_holidays(date);
+  CREATE INDEX idx_components_started_at ON components(started_at);
+  CREATE INDEX idx_issue_stations_issue_id ON issue_stations(issue_id);
+  CREATE INDEX idx_issue_stations_component_id ON issue_stations(component_id);
+  CREATE INDEX idx_issue_types_type ON issue_types(type);
+`);
 
 const issues = IssueModel.getAll();
 for (const issue of issues) {
