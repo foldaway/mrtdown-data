@@ -1,7 +1,12 @@
 import { z } from 'zod';
 import { StationIdSchema } from './StationId.js';
 
-export const ComponentTypeSchema = z.enum(['mrt.high', 'mrt.medium', 'lrt']);
+export const ComponentTypeSchema = z
+  .enum(['mrt.high', 'mrt.medium', 'lrt'])
+  .meta({
+    ref: 'LineType',
+    description: 'The type of the transit component.',
+  });
 export type ComponentType = z.infer<typeof ComponentTypeSchema>;
 
 export const ComponentIdSchema = z

@@ -3,7 +3,12 @@ import { ComponentIdSchema } from './Component.js';
 import { DateTime } from 'luxon';
 import { StationIdSchema } from './StationId.js';
 
-export const IssueTypeSchema = z.enum(['disruption', 'maintenance', 'infra']);
+export const IssueTypeSchema = z
+  .enum(['disruption', 'maintenance', 'infra'])
+  .meta({
+    ref: 'IssueType',
+    description: 'The type of the issue.',
+  });
 export type IssueType = z.infer<typeof IssueTypeSchema>;
 
 export const IssueIdSchema = z

@@ -7,12 +7,13 @@ export type StationId = z.infer<typeof StationIdSchema>;
 export const StationCodeSchema = z.string();
 export type StationCode = z.infer<typeof StationCodeSchema>;
 
-export const StationComponentMemberStructureTypeSchema = z.enum([
-  'elevated',
-  'underground',
-  'at_grade',
-  'in_building',
-]);
+export const StationComponentMemberStructureTypeSchema = z
+  .enum(['elevated', 'underground', 'at_grade', 'in_building'])
+  .meta({
+    ref: 'StationComponentMemberStructureType',
+    description:
+      'The structural type of the station component member, indicating whether it is elevated, underground, at-grade, or enclosed within a building.',
+  });
 export type StationComponentMemberStructureType = z.infer<
   typeof StationComponentMemberStructureTypeSchema
 >;
