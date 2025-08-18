@@ -9,6 +9,16 @@
   "type": "mrt.medium",
   "color": "#0099aa",
   "startedAt": "2027-12-31",
+  "operatingHours": {
+    "weekdays": {
+      "start": "05:30",
+      "end": "00:00"
+    },
+    "weekends": {
+      "start": "05:30",
+      "end": "00:00"
+    }
+  },
   "branches": {
     "main": {
       "id": "main",
@@ -20,7 +30,16 @@
       },
       "startedAt": null,
       "endedAt": null,
-      "stationCodes": ["JS1", "JS2", "JS3", "JS4", "JS5", "JS6", "JS7", "JS8"]
+      "stationCodes": [
+        "JS1",
+        "JS2",
+        "JS3",
+        "JS4",
+        "JS5",
+        "JS6",
+        "JS7",
+        "JS8"
+      ]
     },
     "east": {
       "id": "east",
@@ -32,7 +51,16 @@
       },
       "startedAt": null,
       "endedAt": null,
-      "stationCodes": ["JS3", "JE1", "JE2", "JE3", "JE4", "JE5", "JE6", "JE7"]
+      "stationCodes": [
+        "JS3",
+        "JE1",
+        "JE2",
+        "JE3",
+        "JE4",
+        "JE5",
+        "JE6",
+        "JE7"
+      ]
     },
     "west": {
       "id": "west",
@@ -44,7 +72,11 @@
       },
       "startedAt": null,
       "endedAt": null,
-      "stationCodes": ["JS7", "JW1", "JW2"]
+      "stationCodes": [
+        "JS7",
+        "JW1",
+        "JW2"
+      ]
     }
   }
 }
