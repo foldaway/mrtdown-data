@@ -1,0 +1,94 @@
+[
+  {
+    "date": "2025-01-01",
+    "holiday_name": "New Year's Day"
+  },
+  {
+    "date": "2025-01-29",
+    "holiday_name": "Chinese New Year"
+  },
+  {
+    "date": "2025-01-30",
+    "holiday_name": "Chinese New Year"
+  },
+  {
+    "date": "2025-03-31",
+    "holiday_name": "Hari Raya Puasa"
+  },
+  {
+    "date": "2025-04-18",
+    "holiday_name": "Good Friday"
+  },
+  {
+    "date": "2025-05-01",
+    "holiday_name": "Labour Day"
+  },
+  {
+    "date": "2025-05-03",
+    "holiday_name": "Polling Day"
+  },
+  {
+    "date": "2025-05-12",
+    "holiday_name": "Vesak Day"
+  },
+  {
+    "date": "2025-06-07",
+    "holiday_name": "Hari Raya Haji"
+  },
+  {
+    "date": "2025-08-09",
+    "holiday_name": "National Day"
+  },
+  {
+    "date": "2025-10-20",
+    "holiday_name": "Deepavali"
+  },
+  {
+    "date": "2025-12-25",
+    "holiday_name": "Christmas Day"
+  },
+  {
+    "date": "2026-01-01",
+    "holiday_name": "New Year's Day"
+  },
+  {
+    "date": "2026-02-17",
+    "holiday_name": "Chinese New Year"
+  },
+  {
+    "date": "2026-02-18",
+    "holiday_name": "Chinese New Year"
+  },
+  {
+    "date": "2026-03-21",
+    "holiday_name": "Hari Raya Puasa"
+  },
+  {
+    "date": "2026-04-03",
+    "holiday_name": "Good Friday"
+  },
+  {
+    "date": "2026-05-01",
+    "holiday_name": "Labour Day"
+  },
+  {
+    "date": "2026-05-27",
+    "holiday_name": "Hari Raya Haji"
+  },
+  {
+    "date": "2026-05-31",
+    "holiday_name": "Vesak Day"
+  },
+  {
+    "date": "2026-08-09",
+    "holiday_name": "National Day"
+  },
+  {
+    "date": "2026-11-08",
+    "holiday_name": "Deepavali"
+  },
+  {
+    "date": "2026-12-25",
+    "holiday_name": "Christmas Day"
+  }
+]
