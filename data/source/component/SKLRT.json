@@ -9,6 +9,16 @@
   "type": "lrt",
   "color": "#748477",
   "startedAt": "2003-01-18",
+  "operatingHours": {
+    "weekdays": {
+      "start": "05:18",
+      "end": "00:37"
+    },
+    "weekends": {
+      "start": "05:38",
+      "end": "00:35"
+    }
+  },
   "branches": {
     "east": {
       "id": "east",
@@ -20,7 +30,15 @@
       },
       "startedAt": "2003-01-18",
       "endedAt": null,
-      "stationCodes": ["STC", "SE1", "SE2", "SE3", "SE4", "SE5", "STC"]
+      "stationCodes": [
+        "STC",
+        "SE1",
+        "SE2",
+        "SE3",
+        "SE4",
+        "SE5",
+        "STC"
+      ]
     },
     "west": {
       "id": "west",

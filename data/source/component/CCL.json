@@ -9,6 +9,16 @@
   "type": "mrt.medium",
   "color": "#fa9e0d",
   "startedAt": "2009-05-28",
+  "operatingHours": {
+    "weekdays": {
+      "start": "05:50",
+      "end": "23:59"
+    },
+    "weekends": {
+      "start": "06:10",
+      "end": "00:05"
+    }
+  },
   "branches": {
     "main": {
       "id": "main",
