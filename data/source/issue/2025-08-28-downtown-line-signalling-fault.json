@@ -17,6 +17,12 @@
   ],
   "updates": [
     {
+      "type": "general-public.report",
+      "text": "There is currently no service on the Downtown Line MRT between Bukit Panjang and Beauty World due to a signalling fault, as reported by SBS Transit.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1n1w3d9/no_downtown_line_mrt_service_between_bukit/",
+      "createdAt": "2025-08-28T07:04:38.000+08:00"
+    },
+    {
       "type": "operator.update",
       "text": "6.40am: DTL - Due to signalling fault, there is no service between Bukit Panjang and Beauty World stations. Free regular and bridging bus services are available between Bukit Panjang and Beauty World stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115103142311257953",
