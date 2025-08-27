@@ -1,0 +1,39 @@
+{
+  "id": "2025-08-28-downtown-line-signalling-fault",
+  "title": "Downtown Line Signalling Fault",
+  "title_translations": {
+    "zh-Hans": "Downtown Line信号故障",
+    "ms": "Downtown Line Gangguan Isyarat",
+    "ta": "Downtown Line சிக்கலான அளவீடு"
+  },
+  "componentIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2025-08-28T06:34:13+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.investigating",
+      "text": "No DTL service between DT1 Bukit Panjang and DT5 Beauty World due to a signalling fault. Free regular bus services are available at designated stops. Bridging buses have been activated. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://twitter.com/SBSTransit_Ltd/status/1960833257580454342",
+      "createdAt": "2025-08-28T06:34:13+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BKP",
+        "CSW",
+        "HVW",
+        "HME",
+        "BTW"
+      ]
+    }
+  ]
+}
