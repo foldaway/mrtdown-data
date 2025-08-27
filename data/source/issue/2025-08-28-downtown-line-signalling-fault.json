@@ -17,6 +17,12 @@
   ],
   "updates": [
     {
+      "type": "operator.update",
+      "text": "6.40am: DTL - Due to signalling fault, there is no service between Bukit Panjang and Beauty World stations. Free regular and bridging bus services are available between Bukit Panjang and Beauty World stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115103142311257953",
+      "createdAt": "2025-08-28T06:42:48.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "No DTL service between DT1 Bukit Panjang and DT5 Beauty World due to a signalling fault. Free regular bus services are available at designated stops. Bridging buses have been activated. We are sorry for the inconvenience caused.",
       "sourceUrl": "https://twitter.com/SBSTransit_Ltd/status/1960833257580454342",
