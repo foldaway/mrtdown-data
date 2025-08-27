@@ -17,6 +17,12 @@
   ],
   "updates": [
     {
+      "type": "operator.monitoring",
+      "text": "While recovery works are ongoing, train shuttle service is available between DT1 Bukit Panjang &amp; DT5 Beauty World. We are sorry.",
+      "sourceUrl": "https://twitter.com/SBSTransit_Ltd/status/1960843667289374954",
+      "createdAt": "2025-08-28T07:15:35+08:00"
+    },
+    {
       "type": "general-public.report",
       "text": "There is currently no service on the Downtown Line MRT between Bukit Panjang and Beauty World due to a signalling fault, as reported by SBS Transit.",
       "sourceUrl": "https://www.reddit.com/r/singapore/comments/1n1w3d9/no_downtown_line_mrt_service_between_bukit/",
