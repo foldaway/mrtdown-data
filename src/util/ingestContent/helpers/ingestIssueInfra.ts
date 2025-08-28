@@ -21,6 +21,7 @@ import { TOOL_STATION_SEARCH } from '../tools/stationSearch.js';
 import { TOOL_STATION_SEARCH_BY_COMPONENT_ID } from '../tools/stationSearchByComponentId.js';
 import type { IngestContent, ToolRegistry } from '../types.js';
 import { summarizeUpdate } from './summarizeUpdate.js';
+import { assert } from '../../assert.js';
 
 const MAX_TOOL_CALL_COUNT = 6;
 
@@ -192,6 +193,8 @@ Please modify the issue. You should:
     const { tool_calls } = message;
     if (tool_calls != null) {
       for (const toolCall of tool_calls) {
+        assert(toolCall.type === 'function');
+
         console.log(
           `[ingest.infra] ${toolCall.id} calling tool "${toolCall.function.name}" with params`,
           toolCall.function.arguments,

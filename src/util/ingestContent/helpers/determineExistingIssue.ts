@@ -7,6 +7,7 @@ import type {
   ChatCompletion,
   ChatCompletionMessageParam,
 } from 'openai/resources';
+import { assert } from '../../assert.js';
 
 const ResultSchema = z.object({
   result: z.discriminatedUnion('type', [
@@ -101,6 +102,8 @@ Take Note:
     const { tool_calls } = message;
     if (tool_calls != null) {
       for (const toolCall of tool_calls) {
+        assert(toolCall.type === 'function');
+
         switch (toolCall.function.name) {
           case 'searchIssues': {
             console.log(
