@@ -10,12 +10,18 @@
     "DTL"
   ],
   "startAt": "2025-08-28T06:34:13+08:00",
-  "endAt": null,
+  "endAt": "2025-08-28T08:14:14+08:00",
   "type": "disruption",
   "subtypes": [
     "signal.fault"
   ],
   "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "DTL Train service has resumed. Free Regular and Bridging bus services have ceased. We are sorry for the inconvenience caused.",
+      "sourceUrl": "https://twitter.com/SBSTransit_Ltd/status/1960858426537599140",
+      "createdAt": "2025-08-28T08:14:14+08:00"
+    },
     {
       "type": "operator.monitoring",
       "text": "DTL Train service are progressively resuming normal service as the fault has been recovered. Free regular and bridging bus svcs are still available at designated bus stops.",
