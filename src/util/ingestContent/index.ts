@@ -4,8 +4,17 @@ import { ingestIssueInfra } from './helpers/ingestIssueInfra.js';
 import { ingestIssueMaintenance } from './helpers/ingestIssueMaintenance.js';
 import { ingestIssueDisruption } from './helpers/ingestIssueDisruption.js';
 import type { IngestContent } from './types.js';
+import { assert } from '../assert.js';
+import { DateTime } from 'luxon';
 
 export async function ingestContent(content: IngestContent) {
+  // HACK: Force `createdAt` to be Asia/Singapore timezone
+  const createdAt = DateTime.fromISO(content.createdAt)
+    .setZone('Asia/Singapore')
+    .toISO();
+  assert(createdAt != null, 'Expected valid createdAt');
+
+  content.createdAt = createdAt;
   console.log('[ingestContent]', content);
 
   // Determine if the content is related to an existing issue or not
