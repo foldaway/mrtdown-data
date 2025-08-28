@@ -18,6 +18,12 @@
   "updates": [
     {
       "type": "operator.monitoring",
+      "text": "DTL Train service are progressively resuming normal service as the fault has been recovered. Free regular and bridging bus svcs are still available at designated bus stops.",
+      "sourceUrl": "https://twitter.com/SBSTransit_Ltd/status/1960850090752655746",
+      "createdAt": "2025-08-28T07:41:07+08:00"
+    },
+    {
+      "type": "operator.monitoring",
       "text": "While recovery works are ongoing, train shuttle service is available between DT1 Bukit Panjang &amp; DT5 Beauty World. We are sorry.",
       "sourceUrl": "https://twitter.com/SBSTransit_Ltd/status/1960843667289374954",
       "createdAt": "2025-08-28T07:15:35+08:00"
