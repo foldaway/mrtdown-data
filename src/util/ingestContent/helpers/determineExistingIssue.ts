@@ -73,7 +73,7 @@ Take Note:
   let response: ChatCompletion;
   do {
     response = await openAiClient.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: 'gpt-5-mini',
       messages,
       response_format: {
         type: 'json_schema',
