@@ -1,0 +1,51 @@
+{
+  "id": "2025-08-28-north-east-line-power-fault",
+  "title": "North East Line - Power Fault",
+  "title_translations": {
+    "zh-Hans": "东北线 - 电力故障",
+    "ms": "North East Line - Kerosakan Kuasa",
+    "ta": "North East Line - மின்சாரம் பிழை"
+  },
+  "componentIdsAffected": [
+    "NEL"
+  ],
+  "startAt": "2025-08-28T19:58:48.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "power.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.investigating",
+      "text": "7.55pm: NEL-  Train services will be delayed due to a power fault. Additional travel time of about 10 mins may be expected.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115106272263886286",
+      "createdAt": "2025-08-28T19:58:48.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "HBF",
+        "OTP",
+        "CTN",
+        "CRQ",
+        "DBG",
+        "LTI",
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL",
+        "PGC"
+      ]
+    }
+  ]
+}
