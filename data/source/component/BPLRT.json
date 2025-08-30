@@ -9,6 +9,16 @@
   "type": "lrt",
   "color": "#748477",
   "startedAt": "1999-11-06",
+  "operatingHours": {
+    "weekdays": {
+      "start": "05:05",
+      "end": "23:30"
+    },
+    "weekends": {
+      "start": "05:29",
+      "end": "23:30"
+    }
+  },
   "branches": {
     "main": {
       "id": "main",
