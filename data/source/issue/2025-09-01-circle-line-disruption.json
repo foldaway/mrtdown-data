@@ -7,10 +7,13 @@
     "ta": "மரீனா பே மற்றும் ப்ரோமனேட்ஸ் நிலையங்கள் இடையிலான சுழல் கோடு இழப்பு"
   },
   "componentIdsAffected": [
-    "CCL"
+    "CCL",
+    "DTL",
+    "NSL",
+    "TEL"
   ],
   "startAt": "2025-09-01T08:44:06.000+08:00",
-  "endAt": null,
+  "endAt": "2025-09-01T09:15:00.000+08:00",
   "type": "disruption",
   "subtypes": [
     "train.fault"
