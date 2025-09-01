@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "0 * * * *"
 
+concurrency:
+  group: ingestion
+
 jobs:
   checkRss:
     runs-on: "ubuntu-latest"

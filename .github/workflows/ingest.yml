@@ -4,6 +4,9 @@ on:
   repository_dispatch:
     types: [ingest]
 
+concurrency:
+  group: ingestion
+
 jobs:
   checkRss:
     runs-on: "ubuntu-latest"
