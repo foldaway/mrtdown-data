@@ -7,7 +7,8 @@
     "ta": "மரீனா பே மற்றும் ப்ரோமனேட்ஸ் நிலையங்கள் இடையிலான சுழல் கோடு இழப்பு"
   },
   "componentIdsAffected": [
-    "CCL"
+    "CCL",
+    "DTL"
   ],
   "startAt": "2025-09-01T08:44:06.000+08:00",
   "endAt": null,
@@ -16,6 +17,12 @@
     "train.fault"
   ],
   "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "9.15am: CCL - Train services are progressively resuming their scheduled service between Promenade and Marina Bay stations. Free regular bus services are still available between Marina Bay and Promenade stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115126394325495883",
+      "createdAt": "2025-09-01T09:16:06.000+08:00"
+    },
     {
       "type": "operator.investigating",
       "text": "8.50am: CCL - Due to a train fault, there is no train service between Marina Bay and Promenade stations. Free regular bus services are available between Marina Bay and Promenade stations. Passengers travelling towards Marina Bay station, please transfer at Dhoby Ghaut or Bishan stations for the North-South Line, or Caldecott station for the Thomson-East Coast Line. Passengers travelling towards Bayfront, please transfer at Promenade or MacPherson stations for the Downtown Line.",
