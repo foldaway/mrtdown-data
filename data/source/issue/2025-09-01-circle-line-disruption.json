@@ -17,6 +17,12 @@
   ],
   "updates": [
     {
+      "type": "operator.investigating",
+      "text": "8.50am: CCL - Due to a train fault, there is no train service between Marina Bay and Promenade stations. Free regular bus services are available between Marina Bay and Promenade stations. Passengers travelling towards Marina Bay station, please transfer at Dhoby Ghaut or Bishan stations for the North-South Line, or Caldecott station for the Thomson-East Coast Line. Passengers travelling towards Bayfront, please transfer at Promenade or MacPherson stations for the Downtown Line.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115126315669149082",
+      "createdAt": "2025-09-01T08:56:06.000+08:00"
+    },
+    {
       "type": "operator.update",
       "text": "8.40am: CCL -  Due to a train fault, there is no train service between Marina Bay and Promenade stations. Free regular bus services are available between Marina Bay and Promenade stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115126268498325707",
