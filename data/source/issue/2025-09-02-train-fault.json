@@ -7,8 +7,7 @@
     "ta": "மிடேல், யிஷுன்யுடன் செல்வதால் பிழை வந்துள்ளது"
   },
   "componentIdsAffected": [
-    "NSL",
-    "TEL"
+    "NSL"
   ],
   "startAt": "2025-09-02T20:34:06.000+08:00",
   "endAt": "2025-09-02T20:58:14.000+08:00",
@@ -64,14 +63,6 @@
         "SBW",
         "CBR",
         "YIS"
-      ]
-    },
-    {
-      "componentId": "TEL",
-      "branchName": "main",
-      "stationIds": [
-        "WDL",
-        "WDS"
       ]
     }
   ]
