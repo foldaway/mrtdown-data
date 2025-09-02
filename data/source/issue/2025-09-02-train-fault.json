@@ -1,0 +1,45 @@
+{
+  "id": "2025-09-02-train-fault",
+  "title": "Train Fault Between Woodlands and Yishun",
+  "title_translations": {
+    "zh-Hans": "火车故障，位于兀兰与义顺之间",
+    "ms": "Kerosakan Kereta Api di Antara Woodlands dan Yishun",
+    "ta": "மிடேல், யிஷுன்யுடன் செல்வதால் பிழை வந்துள்ளது"
+  },
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2025-09-02T20:34:06.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a train fault, please expect an additional 25 mins train travelling time from #Woodlands to #Yishun towards #MarinaSouthPier. Free regular bus service are available between #Yishun and #Woodlands. Passengers are advised to take Thomson-East Coast Line at https://t.co/BrcXK5VKbh",
+      "sourceUrl": "https://twitter.com/SMRT_Singapore/status/1962856557412311224",
+      "createdAt": "2025-09-02T20:34:06.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL]: Due to a train fault, please expect an additional 25mins travelling time from #Woodlands to #Yishun towards #MarinaSouthPier. Free regular bus service is available between #Yishun and #Woodlands.",
+      "sourceUrl": "https://twitter.com/SMRT_Singapore/status/1962853544144634260",
+      "createdAt": "2025-09-02T20:22:07.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "WDL",
+        "ADM",
+        "SBW",
+        "CBR",
+        "YIS"
+      ]
+    }
+  ]
+}
