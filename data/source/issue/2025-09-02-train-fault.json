@@ -17,6 +17,12 @@
   ],
   "updates": [
     {
+      "type": "news.report",
+      "text": "",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/north-south-line-train-fault-delay-woodlands-yishun-25-min-smrt-5329041",
+      "createdAt": "2025-09-02T21:17:49.000+08:00"
+    },
+    {
       "type": "operator.resolved",
       "text": "[NSL] UPDATE: Train service from #Woodlands to #Yishun towards #MarinaSouthPier has return to normal service. Free regular bus service between #Woodlands and #Yishun has ceased.",
       "sourceUrl": "https://twitter.com/SMRT_Singapore/status/1962862634195460358",
@@ -33,6 +39,12 @@
       "text": "8.34pm: NSL UPDATE: Due to a train fault, please expect an additional 25 minutes train travelling time from Woodlands to Yishun stations towards Marina South Pier. Free regular bus service are available between Yishun and Woodlands stations. Passengers are advised to take Thomson-East Coast Line at Woodlands station.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115134740636631794",
       "createdAt": "2025-09-02T20:38:41.000+08:00"
+    },
+    {
+      "type": "news.report",
+      "text": "The train fault affects a five-station stretch.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/expect-25-minutes-more-in-travel-time-from-woodlands-to-yishun-on-nsl-due-to-train-fault-smrt",
+      "createdAt": "2025-09-02T20:35:05.000+08:00"
     },
     {
       "type": "operator.update",
