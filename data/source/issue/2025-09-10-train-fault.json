@@ -1,0 +1,35 @@
+{
+  "id": "2025-09-10-train-fault",
+  "title": "Train fault reported at Springleaf",
+  "title_translations": {
+    "zh-Hans": "Springleaf 处报告培训故障",
+    "ms": "Kerosakan kereta api dilaporkan di Springleaf",
+    "ta": "ஸ்ப்ரிங்கிளீஃப் நகரில் ரயில் கோளாறு தெரிவிக்கப்படுகிறது"
+  },
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2025-09-10T18:21:36.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
+  "updates": [
+    {
+      "type": "general-public.report",
+      "text": "A user reported a train fault while on a train at Springleaf heading towards Woodlands. The train has been stationary for 5 minutes with no estimated delay time provided.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1ndadz0/tel_just_announced_train_fault_at_springleaf/",
+      "createdAt": "2025-09-10T18:21:36.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "SPL"
+      ]
+    }
+  ]
+}
