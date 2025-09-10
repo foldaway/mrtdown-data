@@ -1,0 +1,36 @@
+{
+  "id": "2025-09-10-track-fault-at-tanah-merah",
+  "title": "Track Fault at Tanah Merah",
+  "title_translations": {
+    "zh-Hans": "淡纳美拉的轨道故障",
+    "ms": "Kecacatan Landasan di Tanah Merah",
+    "ta": "தனா மேராவில் தெரி தவறுகள்"
+  },
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2025-09-10T18:41:37.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
+  "updates": [
+    {
+      "type": "general-public.report",
+      "text": "There is a track fault reported on the MRT line at Tanah Merah, affecting service to Changi Airport. Trains are currently operating only between the Airport and Expo stations. Passengers are advised to seek alternative transportation options.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1ndaqcu/track_fault_at_tanah_merah_changi_airport/",
+      "createdAt": "2025-09-10T18:41:37.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "changi_airport",
+      "stationIds": [
+        "XPO",
+        "CGA"
+      ]
+    }
+  ]
+}
