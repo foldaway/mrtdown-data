@@ -486,7 +486,7 @@ await connection.run(`
 
 // Insert generation timestamp
 await connection.run(
-  // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+  // biome-ignore lint/style/noUnusedTemplateLiteral: Using template literal for SQL statement formatting and readability, even though no interpolation is used.
   `INSERT INTO metadata (key, value) VALUES (?, ?)`,
   ['db_generated_at', new Date().toISOString()],
 );
