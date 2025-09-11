@@ -9,7 +9,7 @@ export async function stationGetQuery(stationId: string) {
 
   const sql = `
     SELECT
-      id,
+      id
     FROM stations
     WHERE id = $1
   `.trim();

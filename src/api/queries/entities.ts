@@ -189,7 +189,7 @@ export async function fetchLandmarksByIds(ids: string[]) {
   }
   const connection = await connect();
   const sql = `
-    SELECT id, name, name_translations AS nameTranslations,
+    SELECT id, name, name_translations AS nameTranslations
     FROM landmarks
     WHERE id IN $1
   `;
@@ -209,7 +209,7 @@ export async function fetchTownsByIds(ids: string[]) {
   }
   const connection = await connect();
   const sql = `
-    SELECT id, name, name_translations AS nameTranslations,
+    SELECT id, name, name_translations AS nameTranslations
     FROM towns
     WHERE id IN $1
   `;

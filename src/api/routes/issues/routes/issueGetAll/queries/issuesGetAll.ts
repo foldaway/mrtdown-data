@@ -9,7 +9,7 @@ export async function issueGetAllQuery() {
 
   const sql = `
     SELECT
-      i.id AS issue_id,
+      i.id AS issue_id
     FROM issues i
     ORDER BY
       i.id ASC;

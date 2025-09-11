@@ -9,7 +9,7 @@ export async function lineGetAllQuery() {
 
   const sql = `
     SELECT
-      c.id AS component_id,
+      c.id AS component_id
     FROM components c
     ORDER BY
       CASE WHEN c.started_at > NOW() THEN 1 ELSE 0 END ASC,
