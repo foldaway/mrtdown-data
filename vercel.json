@@ -10,5 +10,6 @@
       "source": "/(.*)",
       "destination": "/api/index"
     }
-  ]
+  ],
+  "outputDirectory": "data/product"
 }
