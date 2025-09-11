@@ -6,6 +6,7 @@ import type { Issue } from '../schema/Issue.js';
 import type { Landmark } from '../schema/Landmark.js';
 import type { Line } from '../schema/Line.js';
 import type { Station } from '../schema/Station.js';
+import type { Town } from '../schema/Town.js';
 
 // Much simpler individual entity queries
 export async function fetchLinesByIds(ids: string[]) {
@@ -219,6 +220,6 @@ export async function fetchTownsByIds(ids: string[]) {
     return {
       ...row,
       nameTranslations: JSON.parse(row.nameTranslations),
-    } as Landmark;
+    } as Town;
   });
 }

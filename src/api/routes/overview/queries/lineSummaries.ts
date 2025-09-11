@@ -32,7 +32,7 @@ export async function lineSummariesQuery(days: number) {
     WITH bounds AS (
       SELECT
         (CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Singapore' - INTERVAL '${days} days') AT TIME ZONE 'Asia/Singapore' AS start_time,
-        CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Singapore' AT TIME ZONE 'Asia/Singapore' AS end_time
+        CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Singapore' AS end_time
     ),
 
     calendar_days AS (
