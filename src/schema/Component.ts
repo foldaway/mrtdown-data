@@ -1,7 +1,12 @@
 import { z } from 'zod';
 import { StationIdSchema } from './StationId.js';
 
-export const ComponentTypeSchema = z.enum(['mrt.high', 'mrt.medium', 'lrt']);
+export const ComponentTypeSchema = z
+  .enum(['mrt.high', 'mrt.medium', 'lrt'])
+  .meta({
+    ref: 'LineType',
+    description: 'The type of the transit component.',
+  });
 export type ComponentType = z.infer<typeof ComponentTypeSchema>;
 
 export const ComponentIdSchema = z
@@ -19,6 +24,18 @@ export const ComponentBranchSchema = z.object({
 });
 export type ComponentBranch = z.infer<typeof ComponentBranchSchema>;
 
+export const ComponentOperatingHours = z.object({
+  weekdays: z.object({
+    start: z.iso.time(),
+    end: z.iso.time(),
+  }),
+  weekends: z.object({
+    start: z.iso.time(),
+    end: z.iso.time(),
+  }),
+});
+export type ComponentOperatingHours = z.infer<typeof ComponentOperatingHours>;
+
 export const ComponentSchema = z.object({
   id: ComponentIdSchema,
   title: z.string(),
@@ -27,5 +44,6 @@ export const ComponentSchema = z.object({
   color: z.string().refine((val) => /^#([A-Fa-f0-9]{6})/.test(val)),
   startedAt: z.string().date(),
   branches: z.record(z.string(), ComponentBranchSchema),
+  operatingHours: ComponentOperatingHours,
 });
 export type Component = z.infer<typeof ComponentSchema>;
