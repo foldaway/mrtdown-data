@@ -44,7 +44,6 @@ npm run api:dev            # Start dev server on port 4000
 
 ### Data Processing
 ```bash
-npm run generate-products  # Generate product JSON files
 npm run ingest:webhook     # Process incoming webhook data
 ```
 
@@ -81,8 +80,7 @@ All endpoints require Bearer token authentication except `/docs`.
 ### Data Flow
 1. **Source data** (JSON files in `/data/source/`)
 2. **Database generation** (DuckDB with complex analytics)
-3. **Product JSON** (API-ready files in `/data/product/`)
-4. **API endpoints** (Real-time queries with multi-language support)
+3. **API endpoints** (Real-time queries with multi-language support)
 
 ## Key Features
 

@@ -21,7 +21,6 @@ npx biome check            # Lint and format code
 npm run api:dev            # Start dev server on port 4000
 
 # Data processing
-npm run generate-products  # Generate product JSON files
 npm run ingest:webhook     # Process incoming webhook data
 ```
 
@@ -47,7 +46,7 @@ All endpoints require Bearer token authentication except `/docs`.
 ### Database Architecture
 - **Single DuckDB file** (`mrtdown.duckdb`) with normalized relational schema
 - **Source data**: JSON files in `/data/source/` (components, issues)
-- **Generated products**: API-ready JSON in `/data/product/`
+- **Generated data**: API-ready queries from DuckDB
 - **Complex analytics**: Extensive use of CTEs for uptime calculations
 
 ## Key Patterns
@@ -83,7 +82,7 @@ All endpoints require Bearer token authentication except `/docs`.
 
 ## Data Flow
 
-1. **Source data** (JSON) → **Database generation** → **Product JSON** → **API endpoints**
+1. **Source data** (JSON) → **Database generation** → **API endpoints**
 2. **Webhook ingestion** for real-time updates
 3. **Complex analytical queries** for uptime metrics and status determination
 4. **Multi-language content** served based on client preferences
