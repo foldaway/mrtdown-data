@@ -15,6 +15,12 @@
   "subtypes": [],
   "updates": [
     {
+      "type": "news.report",
+      "text": "",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/punggol-lrt-no-service-systems-fault-sbs-transit-5347531",
+      "createdAt": "2025-09-13T07:33:07.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "6.12am: PGLRT - Due to a systems fault, there is no train service at all Punggol LRT stations. Free regular and bridging bus services are available at the Punggol Bus Interchange and designated bus stops at all affected stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115193628919874971",
