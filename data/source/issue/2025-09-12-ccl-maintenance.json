@@ -1,0 +1,94 @@
+{
+  "id": "2025-09-12-ccl-maintenance",
+  "title": "Circle Line Maintenance Notification",
+  "title_translations": {
+    "zh-Hans": "Circle Line 维护通知",
+    "ms": "Pemberitahuan Penyelenggaraan Laluan Bulatan",
+    "ta": "சுழற்கோடு பராமரிப்பு அறிவிப்பு"
+  },
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2025-09-12T20:01:03.000+08:00",
+  "endAt": "2025-09-13T09:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Reminder: CCL train services will end earlier at 11:00pm tonight (12 Sep 2025, Fri) and commence later at 9:00am tomorrow (13 Sep 2025, Sat). Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115191215789138905",
+      "createdAt": "2025-09-12T20:01:03.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    }
+  ]
+}
