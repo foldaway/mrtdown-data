@@ -10,10 +10,16 @@
     "PGLRT"
   ],
   "startAt": "2025-09-13T05:22:45.000+08:00",
-  "endAt": null,
+  "endAt": "2025-09-13T08:16:35.000+08:00",
   "type": "disruption",
   "subtypes": [],
   "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "8.12am: PGLRT - Please note that the fault has been rectified and Punggol LRT is progressively resuming service since 8.10am. Free regular and bridging bus services are still available.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115194108038905682",
+      "createdAt": "2025-09-13T08:16:35.000+08:00"
+    },
     {
       "type": "news.report",
       "text": "",
