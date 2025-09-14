@@ -17,7 +17,7 @@
   ],
   "updates": [
     {
-      "type": "operator.investigating",
+      "type": "operator.update",
       "text": "11.55am: NSL - Due to a train fault, please expect and additional 25 minutes travelling time from Newton to Ang Mo Kio towards Jurong East. Free regular bus services are available between Newton and Ang Mo Kio stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115200659340400259",
       "createdAt": "2025-09-14T12:02:40.000+08:00"
