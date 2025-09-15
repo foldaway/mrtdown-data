@@ -1,0 +1,46 @@
+{
+  "id": "2025-09-14-north-south-line-train-fault",
+  "title": "North-South Line Train Fault",
+  "title_translations": {
+    "zh-Hans": "北南线列车故障",
+    "ms": "Kecacatan Kereta Barisan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு வரிசை இயந்திர மோசம்"
+  },
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2025-09-14T12:02:40.000+08:00",
+  "endAt": "2025-09-14T12:21:00.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "train.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "A train fault on the North-South Line caused a 40-minute disruption on September 14, affecting six stations: Newton, Novena, Toa Payoh, Braddell, Bishan, and Ang Mo Kio. SMRT advised commuters to expect an additional 25 minutes of travel time between Newton and Ang Mo Kio. Service resumed at 12:21 PM, and the complimentary bus service for affected commuters was discontinued.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1ngjfhg/mrt_service_resumes_between_newton_and_amk_after/",
+      "createdAt": "2025-09-14T14:02:36.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "11.55am: NSL - Due to a train fault, please expect and additional 25 minutes travelling time from Newton to Ang Mo Kio towards Jurong East. Free regular bus services are available between Newton and Ang Mo Kio stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115200659340400259",
+      "createdAt": "2025-09-14T12:02:40.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "AMK",
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW"
+      ]
+    }
+  ]
+}
