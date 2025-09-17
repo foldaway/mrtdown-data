@@ -10,12 +10,30 @@
     "TEL"
   ],
   "startAt": "2025-09-17T07:34:05.000+08:00",
-  "endAt": null,
+  "endAt": "2025-09-17T08:56:04.000+08:00",
   "type": "disruption",
   "subtypes": [
     "signal.fault"
   ],
   "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "8.50am: TEL - Train services are progressively resuming to normalcy. Free regular bus services are available between Woodlands North and Bayshore stations in both directions.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115216912540874233",
+      "createdAt": "2025-09-17T08:56:04.000+08:00"
+    },
+    {
+      "type": "general-public.report",
+      "text": "There is currently no train service on the Thomson-East Coast Line (TEL) between Woodlands North and Bayshore in both directions due to train service recovery efforts. Free regular and bridging bus services are available for commuters, who are also advised to seek alternative transport.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1niytp5/updates_no_service_for_the_entire_tel/",
+      "createdAt": "2025-09-17T08:37:48.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "8.30am: TEL - Due to a signalling fault, there will be no train services between Woodlands North and Bayshore stations in both directions to facilitate train service recovery.  Free regular and bridging bus services are available between Woodlands North and Bayshore stations. Commuters are encouraged to take alternative lines to their destination.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115216833901372800",
+      "createdAt": "2025-09-17T08:36:04.000+08:00"
+    },
     {
       "type": "operator.investigating",
       "text": "7.58am: TEL - Due to a signalling fault, please add 15 minutes of additional travelling time between Woodlands North and Bayshore stations in both directions. Free regular bus services are available between Woodlands North and Bayshore stations.",
