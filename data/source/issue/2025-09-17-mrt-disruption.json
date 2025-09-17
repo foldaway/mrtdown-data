@@ -1,0 +1,85 @@
+{
+  "id": "2025-09-17-mrt-disruption",
+  "title": "MRT Disruption affecting North-South Line and North East Line",
+  "title_translations": {
+    "zh-Hans": "MRT中断，影响南北线和东北线",
+    "ms": "Gangguan MRT menjejaskan Laluan Utara-Selatan dan Laluan Timur Laut",
+    "ta": "MRT தடுப்பு வடக்கு-தெற்கு வரி மற்றும் வடக்கு கிழக்கு வரியை பாதிக்கின்றது"
+  },
+  "componentIdsAffected": [
+    "NSL",
+    "NEL"
+  ],
+  "startAt": "2025-09-17T20:50:00.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
+  "updates": [
+    {
+      "type": "news.report",
+      "text": "The Singapore Examinations and Assessment Board said that the students were not penalised.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/18-students-late-for-n-level-paper-after-mrt-disruption-all-given-full-duration-to-sit-exam-seab",
+      "createdAt": "2025-09-17T20:50:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK",
+        "YWT",
+        "KRJ",
+        "MSL",
+        "WDL",
+        "ADM",
+        "SBW",
+        "CBR",
+        "YIS",
+        "KTB",
+        "YCK",
+        "AMK",
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW",
+        "ORC",
+        "SOM",
+        "DBG",
+        "CTH",
+        "RFP",
+        "MRB",
+        "MSP"
+      ]
+    },
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "HBF",
+        "OTP",
+        "CTN",
+        "CRQ",
+        "DBG",
+        "LTI",
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL",
+        "PGC"
+      ]
+    }
+  ]
+}
