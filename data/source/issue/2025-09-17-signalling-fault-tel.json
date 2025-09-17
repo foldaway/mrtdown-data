@@ -17,6 +17,12 @@
   ],
   "updates": [
     {
+      "type": "operator.investigating",
+      "text": "7.58am: TEL - Due to a signalling fault, please add 15 minutes of additional travelling time between Woodlands North and Bayshore stations in both directions. Free regular bus services are available between Woodlands North and Bayshore stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115216692584657451",
+      "createdAt": "2025-09-17T08:00:08.000+08:00"
+    },
+    {
       "type": "operator.update",
       "text": "7.30am: TEL - Due to a signalling fault, please add 15 minutes of additional travelling time  between Woodlands North and Bayshore in both directions.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115216590112100627",
