@@ -1,0 +1,67 @@
+{
+  "id": "2025-09-17-signalling-fault-tel",
+  "title": "Signalling Fault on Thomson–East Coast Line",
+  "title_translations": {
+    "zh-Hans": "信号故障于汤姆逊–东海岸线",
+    "ms": "Kecacatan isyarat pada Laluan Thomson–East Coast",
+    "ta": "தொம்சன்–எast கோடுப்பாதையில் குறைபாடு"
+  },
+  "componentIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2025-09-17T07:34:05.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "signal.fault"
+  ],
+  "updates": [
+    {
+      "type": "operator.investigating",
+      "text": "7.58am: TEL - Due to a signalling fault, please add 15 minutes of additional travelling time between Woodlands North and Bayshore stations in both directions. Free regular bus services are available between Woodlands North and Bayshore stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115216692584657451",
+      "createdAt": "2025-09-17T08:00:08.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "7.30am: TEL - Due to a signalling fault, please add 15 minutes of additional travelling time  between Woodlands North and Bayshore in both directions.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115216590112100627",
+      "createdAt": "2025-09-17T07:34:05.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "WDN",
+        "WDL",
+        "WDS",
+        "SPL",
+        "LTR",
+        "MFL",
+        "BRH",
+        "UTS",
+        "CDT",
+        "STV",
+        "NPR",
+        "OBV",
+        "ORC",
+        "GRW",
+        "HVL",
+        "OTP",
+        "MAX",
+        "SHW",
+        "MRB",
+        "GRB",
+        "TRH",
+        "KTP",
+        "TKT",
+        "MPR",
+        "MTC",
+        "SGL",
+        "BSR"
+      ]
+    }
+  ]
+}
