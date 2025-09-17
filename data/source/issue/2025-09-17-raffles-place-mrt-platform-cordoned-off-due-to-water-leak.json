@@ -1,0 +1,36 @@
+{
+  "id": "2025-09-17-raffles-place-mrt-platform-cordoned-off-due-to-water-leak",
+  "title": "Raffles Place MRT platform cordoned off due to water leak",
+  "title_translations": {
+    "zh-Hans": "Raffles Place MRT 由于漏水而封锁",
+    "ms": "Platform Raffles Place MRT ditutup akibat kebocoran air",
+    "ta": "ராஃஃபெிள்ஸ் இடம் மெரினா பாலம் கண்ணீர்க்கரைப்பு"
+  },
+  "componentIdsAffected": [
+    "EWL",
+    "NSL"
+  ],
+  "startAt": "2025-09-17T15:17:54.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "station.fault"
+  ],
+  "updates": [
+    {
+      "type": "general-public.report",
+      "text": "The post discusses a situation at Raffles Place MRT station where a section of the platform has been cordoned off due to water leaking from the ceiling. It includes an image of the affected area and links to the source and comments on Reddit.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1nj6ftd/raffles_place_mrt_station_platform_cordoned_off/",
+      "createdAt": "2025-09-17T15:17:54.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "RFP"
+      ]
+    }
+  ]
+}
