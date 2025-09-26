@@ -1,0 +1,61 @@
+{
+  "id": "2025-09-26-circle-line-early-closing",
+  "title": "Circle Line train services will end early",
+  "title_translations": {
+    "zh-Hans": "Circle Line列车服务提前结束",
+    "ms": "Perkhidmatan kereta api Litar Bulatan akan tamat lebih awal",
+    "ta": "சுருக்க ஓரம் ரயில் சேவைகள் முதலில் நிற்கின்றன"
+  },
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2025-09-26T20:02:24.000+08:00",
+  "endAt": "2025-09-27T09:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (26 Sep 2025, Fri) and commence later at 9:00am tomorrow (27 Sep 2025, Sat). Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115270493437533601",
+      "createdAt": "2025-09-26T20:02:24.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    }
+  ]
+}
