@@ -10,6 +10,7 @@ import { issueIdsActiveTodayQuery } from './queries/issueIdsActiveToday.js';
 import { DateTime } from 'luxon';
 import { assert } from '../../../util/assert.js';
 import { QuerySchema } from './schema/query.js';
+import { lineGetAllQuery } from './queries/lineGetAll.js';
 
 export const overviewRoute = new Hono();
 overviewRoute.get(
@@ -117,6 +118,9 @@ overviewRoute.get(
 
       lineSummaries.push(lineSummary);
     }
+
+    const lines = await lineGetAllQuery();
+    entitiesCollector.addLineIds(lines.map((line) => line.component_id));
 
     const included = await entitiesCollector.fetchIncludedEntities();
 
