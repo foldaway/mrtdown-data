@@ -1,10 +1,10 @@
 {
   "id": "2025-10-03-shuttle-bus-services",
-  "title": "Shuttle bus services during maintenance on the East-West Line",
+  "title": "Tanah Merah and Simei stations closed for maintenance, shuttle buses provided",
   "title_translations": {
-    "zh-Hans": "东西线维修期间提供接驳巴士服务",
-    "ms": "Perkhidmatan bas pengantara semasa penyenggaraan di Lanjutan Timur-Barat",
-    "ta": "கிழக்கு-மேற்கு குழுவில் பராமரிப்பின் போது ஷட்டில் பேருந்து சேவைகள்"
+    "zh-Hans": "丹那美拉和四美站因维修关闭，提供接驳巴士服务",
+    "ms": "Stesen Tanah Merah dan Simei ditutup untuk penyenggaraan, bas pengantara disediakan",
+    "ta": "தானா மேரா மற்றும் சிமெய் நிலையங்கள் பராமரிப்புக்காக மூடப்பட்டன, ஷட்டில் பேருந்துகள் வழங்கப்படுகின்றன"
   },
   "componentIdsAffected": [
     "EWL"
