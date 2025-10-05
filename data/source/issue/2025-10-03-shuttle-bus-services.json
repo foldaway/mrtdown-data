@@ -1,0 +1,37 @@
+{
+  "id": "2025-10-03-shuttle-bus-services",
+  "title": "Tanah Merah and Simei stations closed for maintenance, shuttle buses provided",
+  "title_translations": {
+    "zh-Hans": "丹那美拉和四美站因维修关闭，提供接驳巴士服务",
+    "ms": "Stesen Tanah Merah dan Simei ditutup untuk penyenggaraan, bas pengantara disediakan",
+    "ta": "தானா மேரா மற்றும் சிமெய் நிலையங்கள் பராமரிப்புக்காக மூடப்பட்டன, ஷட்டில் பேருந்துகள் வழங்கப்படுகின்றன"
+  },
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2025-10-03T17:00:00.000+08:00",
+  "endAt": null,
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Shuttle buses will run between the affected stations during the closures, which are expected to impact about 180,000 commuters.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/mrt-east-west-line-close-tanah-merah-simei-depot-5383411",
+      "createdAt": "2025-10-03T17:00:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "SIM",
+        "TNM"
+      ]
+    }
+  ]
+}
