@@ -7,9 +7,11 @@
     "ta": "சக்கர கோடை சேவையை முந்தைய நிறுத்துவது"
   },
   "componentIdsAffected": [
-    "CCL"
+    "CCL",
+    "DTL",
+    "NEL"
   ],
-  "startAt": "2025-10-10T20:00:17.000+08:00",
+  "startAt": "2025-10-10T20:00:00.000+08:00",
   "endAt": "2025-10-11T09:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
@@ -57,6 +59,70 @@
         "LBD",
         "TLB",
         "HBF"
+      ]
+    },
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BKP",
+        "CSW",
+        "HVW",
+        "HME",
+        "BTW",
+        "KAP",
+        "SAV",
+        "TKK",
+        "BTN",
+        "STV",
+        "NEW",
+        "LTI",
+        "RCR",
+        "BGS",
+        "PMN",
+        "BFT",
+        "DTN",
+        "TLA",
+        "CTN",
+        "FCN",
+        "BCL",
+        "JLB",
+        "BDM",
+        "GLB",
+        "MTR",
+        "MPS",
+        "UBI",
+        "KKB",
+        "BDN",
+        "BDR",
+        "TPW",
+        "TAM",
+        "TPE",
+        "UPC",
+        "XPO"
+      ]
+    },
+    {
+      "componentId": "NEL",
+      "branchName": "main",
+      "stationIds": [
+        "HBF",
+        "OTP",
+        "CTN",
+        "CRQ",
+        "DBG",
+        "LTI",
+        "FRP",
+        "BNK",
+        "PTP",
+        "WLH",
+        "SER",
+        "KVN",
+        "HGN",
+        "BGK",
+        "SKG",
+        "PGL",
+        "PGC"
       ]
     }
   ]

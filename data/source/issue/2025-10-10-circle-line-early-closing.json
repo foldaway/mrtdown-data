@@ -1,0 +1,61 @@
+{
+  "id": "2025-10-10-circle-line-early-closing",
+  "title": "Circle Line train services early closing tonight",
+  "title_translations": {
+    "zh-Hans": "Circle Line 列车服务今晚提前结束",
+    "ms": "Perkhidmatan kereta api Circle Line ditutup lebih awal malam ini",
+    "ta": "சர்க்கிள் லைன் தடாவில் இரவு காலையிலா திரும்புவதற் பிறகு"
+  },
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2025-10-10T23:00:00.000+08:00",
+  "endAt": "2025-10-11T07:30:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (10 Oct 2025, Fri) and commence later at 7:30am tomorrow (11 Oct 2025, Sat). Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115349922507311624",
+      "createdAt": "2025-10-10T20:42:15.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    }
+  ]
+}
