@@ -7,7 +7,8 @@
     "ta": "சர்க்கிள் கோலை விரைவான மூடல்"
   },
   "componentIdsAffected": [
-    "CCL"
+    "CCL",
+    "DTL"
   ],
   "startAt": "2025-10-11T20:56:47.000+08:00",
   "endAt": "2025-10-12T07:30:00.000+08:00",
@@ -17,6 +18,12 @@
     "track.work"
   ],
   "updates": [
+    {
+      "type": "planned",
+      "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (11 Oct 2025, Sat) and commence later at 9:00am tomorrow (12 Oct 2025, Sun). Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115355744215086574",
+      "createdAt": "2025-10-11T21:22:48.000+08:00"
+    },
     {
       "type": "planned",
       "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (11 Oct 2025, Sat) and commence later at 7:30am tomorrow (12 Oct 2025, Sun). Please use alternative MRT lines and bus services.",
@@ -57,6 +64,47 @@
         "LBD",
         "TLB",
         "HBF"
+      ]
+    },
+    {
+      "componentId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BKP",
+        "CSW",
+        "HVW",
+        "HME",
+        "BTW",
+        "KAP",
+        "SAV",
+        "TKK",
+        "BTN",
+        "STV",
+        "NEW",
+        "LTI",
+        "RCR",
+        "BGS",
+        "PMN",
+        "BFT",
+        "DTN",
+        "TLA",
+        "CTN",
+        "FCN",
+        "BCL",
+        "JLB",
+        "BDM",
+        "GLB",
+        "MTR",
+        "MPS",
+        "UBI",
+        "KKB",
+        "BDN",
+        "BDR",
+        "TPW",
+        "TAM",
+        "TPE",
+        "UPC",
+        "XPO"
       ]
     }
   ]
