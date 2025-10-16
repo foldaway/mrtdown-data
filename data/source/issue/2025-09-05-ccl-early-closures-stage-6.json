@@ -6,14 +6,42 @@
     "ms": "Tutup Awal Laluan Bulatan untuk Kerja Peringkat 6",
     "ta": "சுற்று வரி ஆரம்ப மூடல்கள் நிலை 6 பணிகளுக்காக"
   },
-  "componentIdsAffected": ["CCL"],
+  "componentIdsAffected": [
+    "CCL"
+  ],
   "startAt": "2025-09-05T23:00:00.000+08:00",
   "endAt": "2025-09-06T09:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20250905T230000\nRRULE:FREQ=DAILY;UNTIL=20251229T000000;WKST=MO;BYDAY=FR,SA\nEXDATE:20251003T230000,20251004T230000,20251005T230000,20251128T230000,20251129T230000,20251130T230000,20251205T230000,20251206T230000,20251207T230000",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": ["track.work"],
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
+    {
+      "type": "planned",
+      "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (11 Oct 2025, Sat) and commence later at 9:00am tomorrow (12 Oct 2025, Sun). Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115355744215086574",
+      "createdAt": "2025-10-11T21:22:48.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (10 Oct 2025, Fri) and commence later at 9:00am tomorrow (11 Oct 2025, Sat). Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115349757464155086",
+      "createdAt": "2025-10-10T20:00:17.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (27 Sep 2025, Sat) and commence later at 9:00am tomorrow (28 Sep 2025, Sun). Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115276150105790135",
+      "createdAt": "2025-09-27T20:00:58.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (27 Sep 2025, Sat) and commence later at 9:00am tomorrow (28 Sep 2025, Sun). Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115276150105790135",
+      "createdAt": "2025-09-27T20:00:58.000+08:00"
+    },
     {
       "type": "planned",
       "text": "Commuters are advised to plan for up to 30 minutes of additional travel time due to the service adjustments, which are meant to support works ahead of the opening of the full Circle Line loop.",
