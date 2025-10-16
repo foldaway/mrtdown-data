@@ -43,9 +43,12 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm install
       - run: npm run build
+        env:
+          DUCKDB_DATABASE_PATH: mrtdown.duckdb
       - run: npm run check-rss-feeds
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DUCKDB_DATABASE_PATH: mrtdown.duckdb
       - name: Check for changes
         id: make-changes
         run: |-

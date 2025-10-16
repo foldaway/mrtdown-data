@@ -42,10 +42,13 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm install
       - run: npm run build
+        env:
+          DUCKDB_DATABASE_PATH: mrtdown.duckdb
       - run: npm run ingest:webhook
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           MESSAGE: ${{ toJSON(github.event.client_payload) }}
+          DUCKDB_DATABASE_PATH: mrtdown.duckdb
       - name: Check for changes
         id: make-changes
         run: |-
