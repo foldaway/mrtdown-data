@@ -6,6 +6,7 @@ import { ingestIssueDisruption } from './helpers/ingestIssueDisruption.js';
 import type { IngestContent } from './types.js';
 import { assert } from '../assert.js';
 import { DateTime } from 'luxon';
+import { issueGetQuery } from './queries/issueGet.js';
 
 export async function ingestContent(content: IngestContent) {
   // HACK: Force `createdAt` to be Asia/Singapore timezone
@@ -26,19 +27,27 @@ export async function ingestContent(content: IngestContent) {
 
   switch (issueDeterminationResult.result.type) {
     case 'related-to-existing-issue': {
-      const issue = IssueModel.getOne(issueDeterminationResult.result.issueId);
+      const { issueId } = issueDeterminationResult.result;
+      const issueGetQueryRows = await issueGetQuery(
+        issueDeterminationResult.result.issueId,
+      );
+      assert(
+        issueGetQueryRows.length === 1,
+        `Expected one issue for id=${issueId}`,
+      );
+      const [issueRow] = issueGetQueryRows;
 
-      switch (issue.type) {
+      switch (issueRow.type) {
         case 'disruption': {
-          await ingestIssueDisruption(content, issue.id);
+          await ingestIssueDisruption(content, issueRow.issue_id);
           break;
         }
         case 'maintenance': {
-          await ingestIssueMaintenance(content, issue.id);
+          await ingestIssueMaintenance(content, issueRow.issue_id);
           break;
         }
         case 'infra': {
-          await ingestIssueInfra(content, issue.id);
+          await ingestIssueInfra(content, issueRow.issue_id);
           break;
         }
       }

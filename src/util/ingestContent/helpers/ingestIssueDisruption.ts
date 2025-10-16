@@ -4,10 +4,7 @@ import type {
   ChatCompletionMessageParam,
 } from 'openai/resources';
 import { z } from 'zod';
-import {
-  computeAffectedStations,
-  LineSectionSchema,
-} from '../../../helpers/computeAffectedStations.js';
+
 import { IssueModel } from '../../../model/IssueModel.js';
 import {
   type IssueDisruption,
@@ -17,12 +14,16 @@ import {
 } from '../../../schema/Issue.js';
 import { buildComponentTable } from '../buildComponentTable.js';
 import { openAiClient } from '../constants.js';
-import { TOOL_COMPONENT_BRANCHES_GET } from '../tools/componentBranchesGet.js';
+import { TOOL_LINE_BRANCHES_GET } from '../tools/lineBranchesGet.js';
 import { TOOL_STATION_SEARCH } from '../tools/stationSearch.js';
-import { TOOL_STATION_SEARCH_BY_COMPONENT_ID } from '../tools/stationSearchByComponentId.js';
 import type { IngestContent, ToolRegistry } from '../types.js';
 import { summarizeUpdate } from './summarizeUpdate.js';
 import { assert } from '../../assert.js';
+import {
+  computeAffectedStations,
+  LineSectionSchema,
+} from './computeAffectedStations.js';
+import { TOOL_STATION_SEARCH_BY_LINE_ID } from '../tools/stationSearchByLineId.js';
 
 const MAX_TOOL_CALL_COUNT = 6;
 
@@ -66,7 +67,7 @@ Notes:
     },
   ];
   const response = await openAiClient.chat.completions.create({
-    model: 'gpt-4o-mini',
+    model: 'gpt-5-nano',
     messages,
     response_format: {
       type: 'json_schema',
@@ -174,9 +175,8 @@ export async function ingestIssueDisruption(
 
 const toolRegistry: ToolRegistry = {
   [TOOL_STATION_SEARCH.name]: TOOL_STATION_SEARCH,
-  [TOOL_STATION_SEARCH_BY_COMPONENT_ID.name]:
-    TOOL_STATION_SEARCH_BY_COMPONENT_ID,
-  [TOOL_COMPONENT_BRANCHES_GET.name]: TOOL_COMPONENT_BRANCHES_GET,
+  [TOOL_STATION_SEARCH_BY_LINE_ID.name]: TOOL_STATION_SEARCH_BY_LINE_ID,
+  [TOOL_LINE_BRANCHES_GET.name]: TOOL_LINE_BRANCHES_GET,
 };
 
 export async function augmentIssueDisruption(issue: IssueDisruption) {
@@ -186,22 +186,69 @@ export async function augmentIssueDisruption(issue: IssueDisruption) {
     {
       role: 'system',
       content: `
-Your role is to help update this issue in an incidents system that tracks the MRT and LRT in Singapore.
-This is the issue you are working on: ${JSON.stringify(otherProps)}.
-Please modify the issue. You should:
-- perform these updates if appropriate
-  - "id" field if it has the value "please-overwrite". It must follow the format! Do not overwrite if there is any other value.
-  - "title" field
-  - "startAt" field
-  - "endAt" field if the disruption is considered finished.
-  - "subtypes" field.
-  - correct the "components" field based on the updates, see below for table.
-    - recommendations to utilise other rail lines does not make them affected components.
-  - determine the section(s) of rail line(s) that this issue affected. do not include adjacent stations that may have activated shuttle/bus bridging services.
-    - no mentions of specific stations may mean all branches of the line
+You are an AI assistant helping to process MRT/LRT service disruption data for Singapore's public transport system. Your task is to analyze social media posts, news articles, and official announcements to extract structured incident information.
 
-# Components table
+CURRENT ISSUE: ${JSON.stringify(otherProps)}
+
+## Your Responsibilities
+
+### 1. Issue ID Generation
+- **ONLY** update "id" field if current value is "please-overwrite"
+- Format: YYYY-MM-DD-brief-descriptive-slug (e.g., "2024-01-15-nsl-signalling-fault")
+- Use Singapore date (Asia/Singapore timezone)
+- Keep slugs concise but descriptive
+- Do NOT overwrite existing IDs
+
+### 2. Title Creation
+- Create clear, factual titles describing the disruption
+- Format: "[Line Code] [Type of Issue] - [Location/Scope]"
+- Examples: "NSL Signalling Fault - Ang Mo Kio to Bishan", "EWL Train Breakdown - Clementi Station"
+- Avoid sensational language; stick to facts
+
+### 3. Time Management
+- **startAt**: When the disruption actually began (not when reported)
+- **endAt**: When service fully resumed (set to null if ongoing)
+- Consider Singapore timezone (Asia/Singapore)
+- Look for phrases like "since 8am", "from 9:30am", "service resumed at 2pm"
+
+### 4. Component Identification
+- Identify affected MRT/LRT lines based on content
+- **Key Rule**: Recommendations to use alternative lines do NOT make them affected
+- Focus on lines experiencing actual service issues
+- Use component IDs from the table below
+
+### 5. Line Section Mapping
+- Determine specific track sections affected by the disruption
+- Do NOT include stations only mentioned for shuttle services or alternatives
+- If no specific stations mentioned, assume entire line/branch affected
+- Format sections as: startStationId → endStationId
+
+### 6. Subtype Classification
+Choose from: signal, train-fault, power, track, platform, crowding, external, security, weather, other
+
+## Singapore MRT/LRT Context
+- **Peak Hours**: 7-9am, 6-8pm weekdays
+- **Service Hours**: ~5:30am-12:30am daily
+- **Common Terms**:
+  - "train fault" = mechanical/technical issues
+  - "signalling issues" = signal system problems
+  - "power trip" = electrical failures
+  - "platform screen doors" = safety barriers
+  - "free regular/bridging service" = bus replacement
+
+## Content Source Interpretation
+- **Official sources** (SMRT, SBS Transit, LTA): Most accurate timing and technical details
+- **News sites**: Generally reliable, may have slight delays
+- **Social media**: Real-time but may lack precision, verify against other sources
+- **Reddit posts**: User experiences, good for impact assessment
+
+# Components Table
 ${buildComponentTable()}
+
+## Output Requirements
+- Provide factual, structured data based on evidence in the updates
+- If information is unclear or missing, make reasonable inferences based on Singapore MRT patterns
+- Prioritize accuracy over completeness
 `.trim(),
     },
   ];
@@ -211,7 +258,7 @@ ${buildComponentTable()}
 
   do {
     response = await openAiClient.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: 'gpt-5-mini',
       messages: [
         ...messages,
         {
@@ -293,7 +340,7 @@ ${buildComponentTable()}
     const updatedIssue: IssueDisruption = {
       ...result.issue,
       updates: issue.updates,
-      stationIdsAffected: computeAffectedStations(
+      stationIdsAffected: await computeAffectedStations(
         result.lineSections,
         result.issue.startAt,
       ),

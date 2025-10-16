@@ -19,6 +19,7 @@ export type IssueId = z.infer<typeof IssueIdSchema>;
 
 export const IssueStationEntrySchema = z.object({
   componentId: ComponentIdSchema,
+  // Legacy, should be named `branchId`
   branchName: z.string(),
   stationIds: z.array(StationIdSchema),
 });

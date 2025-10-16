@@ -4,10 +4,6 @@ import type {
   ChatCompletionMessageParam,
 } from 'openai/resources';
 import * as z from 'zod';
-import {
-  computeAffectedStations,
-  LineSectionSchema,
-} from '../../../helpers/computeAffectedStations.js';
 import { IssueModel } from '../../../model/IssueModel.js';
 import {
   type IssueInfra,
@@ -16,12 +12,16 @@ import {
 } from '../../../schema/Issue.js';
 import { buildComponentTable } from '../buildComponentTable.js';
 import { openAiClient } from '../constants.js';
-import { TOOL_COMPONENT_BRANCHES_GET } from '../tools/componentBranchesGet.js';
+import { TOOL_LINE_BRANCHES_GET } from '../tools/lineBranchesGet.js';
 import { TOOL_STATION_SEARCH } from '../tools/stationSearch.js';
-import { TOOL_STATION_SEARCH_BY_COMPONENT_ID } from '../tools/stationSearchByComponentId.js';
 import type { IngestContent, ToolRegistry } from '../types.js';
 import { summarizeUpdate } from './summarizeUpdate.js';
 import { assert } from '../../assert.js';
+import {
+  computeAffectedStations,
+  LineSectionSchema,
+} from './computeAffectedStations.js';
+import { TOOL_STATION_SEARCH_BY_LINE_ID } from '../tools/stationSearchByLineId.js';
 
 const MAX_TOOL_CALL_COUNT = 6;
 
@@ -124,9 +124,8 @@ export async function ingestIssueInfra(
 
 const toolRegistry: ToolRegistry = {
   [TOOL_STATION_SEARCH.name]: TOOL_STATION_SEARCH,
-  [TOOL_STATION_SEARCH_BY_COMPONENT_ID.name]:
-    TOOL_STATION_SEARCH_BY_COMPONENT_ID,
-  [TOOL_COMPONENT_BRANCHES_GET.name]: TOOL_COMPONENT_BRANCHES_GET,
+  [TOOL_STATION_SEARCH_BY_LINE_ID.name]: TOOL_STATION_SEARCH_BY_LINE_ID,
+  [TOOL_LINE_BRANCHES_GET.name]: TOOL_LINE_BRANCHES_GET,
 };
 
 export async function augmentIssueInfra(issue: IssueInfra) {
@@ -136,20 +135,84 @@ export async function augmentIssueInfra(issue: IssueInfra) {
     {
       role: 'system',
       content: `
-Your role is to help update this issue in an incidents system that tracks the MRT and LRT in Singapore.
-This is the issue you are working on: ${JSON.stringify(otherProps)}.
-Please modify the issue. You should:
-- perform these updates if appropriate
-  - "id" field if it has the value "please-overwrite". It must follow the format!
-  - "title" field
-  - "startAt" field
-  - "endAt" field
-  - "subtypes" field
-  - correct the "components" field based on the updates, see below for table.
-  - determine the section(s) of rail line(s) that this issue affected.
+You are an AI assistant helping to process MRT/LRT infrastructure-related issues for Singapore's public transport system. These are long-term structural, facility, or permanent infrastructure problems that affect service delivery but are distinct from operational disruptions or maintenance activities.
 
-  # Components table
-  ${buildComponentTable()}
+CURRENT ISSUE: ${JSON.stringify(otherProps)}
+
+## Your Responsibilities
+
+### 1. Issue ID Generation
+- **ONLY** update "id" field if current value is "please-overwrite"
+- Format: YYYY-MM-DD-brief-descriptive-slug (e.g., "2024-01-15-nsl-lift-replacement")
+- Use Singapore date (Asia/Singapore timezone)
+- Focus on infrastructure component/location affected
+- Keep slugs descriptive but concise
+
+### 2. Title Creation
+- Create clear titles describing the infrastructure issue
+- Format: "[Line Code] [Infrastructure Component] [Issue Type] - [Location]"
+- Examples: "NSL Lift Replacement - Ang Mo Kio Station", "EWL Platform Screen Door Upgrade"
+- Focus on permanent/semi-permanent infrastructure changes or problems
+
+### 3. Infrastructure Issue Classification
+These issues typically involve:
+- **Station facilities**: Lifts, escalators, platforms, gates, screens
+- **Accessibility improvements**: Barrier-free access, tactile guidance
+- **Infrastructure upgrades**: Platform extensions, structural modifications
+- **Facility replacements**: Long-term equipment replacement programs
+- **Structural issues**: Building, platform, track bed problems requiring extended work
+
+### 4. Time Management
+- **startAt**: When infrastructure work/problem began affecting service
+- **endAt**: When infrastructure is fully restored/completed (null if ongoing project)
+- Consider that infrastructure projects often span weeks/months
+- Look for project timelines, completion estimates
+- Singapore timezone (Asia/Singapore)
+
+### 5. Component & Section Identification
+- Identify specific MRT/LRT lines with infrastructure issues
+- Focus on structural/facility impacts rather than operational disruptions
+- Map affected stations or line sections with infrastructure problems
+- Infrastructure issues may affect entire stations rather than just track sections
+
+### 6. Subtype Classification
+Choose from infrastructure-specific categories:
+- **accessibility**: Lifts, ramps, tactile systems, barrier-free access
+- **platform**: Platform structure, extensions, screen doors
+- **station**: Station building, facilities, amenities
+- **escalator**: Escalator installation, replacement, major repairs
+- **lift**: Lift installation, replacement, major overhauls
+- **structural**: Building structure, foundations, major construction
+- **systems**: Station systems (air-con, lighting, communications)
+- **other**: Other infrastructure work
+
+## Singapore MRT Infrastructure Context
+- **Accessibility Compliance**: Ongoing program to make all stations barrier-free
+- **Platform Screen Doors**: Retrofit program across older lines
+- **Station Upgrades**: Regular facility improvements and modernization
+- **Lift/Escalator Programs**: Systematic replacement of aging equipment
+- **Infrastructure Lifecycle**: Major components have 20-30 year lifespans
+- **Regulatory Requirements**: Building codes, accessibility standards drive upgrades
+
+## Infrastructure vs. Other Issue Types
+- **Infrastructure**: Permanent facility changes, structural work, major equipment replacement
+- **Maintenance**: Routine upkeep, repairs, system testing (separate category)
+- **Disruption**: Operational service interruptions, train faults (separate category)
+
+## Content Source Interpretation
+- **Official announcements**: Primary source for infrastructure project details
+- **Tender notices**: Early indicators of upcoming infrastructure work
+- **News reports**: Public interest in major infrastructure projects
+- **User feedback**: Impact reports from facility changes
+
+# Components Table
+${buildComponentTable()}
+
+## Output Requirements
+- Distinguish infrastructure issues from operational disruptions or routine maintenance
+- Focus on structural, facility, and permanent system changes
+- Capture long-term project timelines accurately
+- Provide context for how infrastructure work impacts service delivery
 `.trim(),
     },
   ];
@@ -159,7 +222,7 @@ Please modify the issue. You should:
 
   do {
     response = await openAiClient.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: 'gpt-5-mini',
       messages: [
         ...messages,
         {
@@ -241,7 +304,7 @@ Please modify the issue. You should:
     const updatedIssue: IssueInfra = {
       ...result.issue,
       updates: issue.updates,
-      stationIdsAffected: computeAffectedStations(
+      stationIdsAffected: await computeAffectedStations(
         result.lineSections,
         result.issue.startAt,
       ),

@@ -13,8 +13,18 @@ export async function summarizeUpdate(content: IngestContent) {
     {
       role: 'system',
       content: `
-Your role is to help ingest the given post into an incidents system that tracks the MRT and LRT in Singapore.
-Please summarize the post.
+You are helping to process content for an MRT/LRT incident tracking system in Singapore. Your task is to create a concise, informative summary of the given post.
+
+Guidelines:
+- Focus on transportation-related information (disruptions, delays, maintenance, service updates)
+- Include specific line names (NSL, EWL, CCL, DTL, TEL, etc.) and station names when mentioned
+- Note any timing information (duration, affected periods)
+- Mention impact severity (full closure, partial disruption, delays)
+- Keep technical jargon minimal and use clear, factual language
+- Summarize in 1-3 sentences maximum
+- If the post is not MRT/LRT related, indicate this clearly
+
+Return only the summary content without preamble or explanation.
   `.trim(),
     },
     {
@@ -23,7 +33,7 @@ Please summarize the post.
     },
   ];
   const response = await openAiClient.chat.completions.create({
-    model: 'gpt-4o-mini',
+    model: 'gpt-5-nano',
     messages,
     response_format: {
       type: 'json_schema',

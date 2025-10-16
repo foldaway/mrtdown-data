@@ -42,6 +42,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm install
+      - run: npm run build
       - run: npm run check-rss-feeds
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

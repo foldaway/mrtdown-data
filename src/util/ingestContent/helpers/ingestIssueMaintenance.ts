@@ -4,10 +4,6 @@ import type {
   ChatCompletionMessageParam,
 } from 'openai/resources';
 import { z } from 'zod';
-import {
-  computeAffectedStations,
-  LineSectionSchema,
-} from '../../../helpers/computeAffectedStations.js';
 import { IssueModel } from '../../../model/IssueModel.js';
 import {
   type IssueMaintenance,
@@ -16,12 +12,16 @@ import {
 } from '../../../schema/Issue.js';
 import { buildComponentTable } from '../buildComponentTable.js';
 import { openAiClient } from '../constants.js';
-import { TOOL_COMPONENT_BRANCHES_GET } from '../tools/componentBranchesGet.js';
+import { TOOL_LINE_BRANCHES_GET } from '../tools/lineBranchesGet.js';
 import { TOOL_STATION_SEARCH } from '../tools/stationSearch.js';
-import { TOOL_STATION_SEARCH_BY_COMPONENT_ID } from '../tools/stationSearchByComponentId.js';
 import type { IngestContent, ToolRegistry } from '../types.js';
 import { summarizeUpdate } from './summarizeUpdate.js';
 import { assert } from '../../assert.js';
+import {
+  computeAffectedStations,
+  LineSectionSchema,
+} from './computeAffectedStations.js';
+import { TOOL_STATION_SEARCH_BY_LINE_ID } from '../tools/stationSearchByLineId.js';
 
 const MAX_TOOL_CALL_COUNT = 6;
 
@@ -124,9 +124,8 @@ export async function ingestIssueMaintenance(
 
 const toolRegistry: ToolRegistry = {
   [TOOL_STATION_SEARCH.name]: TOOL_STATION_SEARCH,
-  [TOOL_STATION_SEARCH_BY_COMPONENT_ID.name]:
-    TOOL_STATION_SEARCH_BY_COMPONENT_ID,
-  [TOOL_COMPONENT_BRANCHES_GET.name]: TOOL_COMPONENT_BRANCHES_GET,
+  [TOOL_STATION_SEARCH_BY_LINE_ID.name]: TOOL_STATION_SEARCH_BY_LINE_ID,
+  [TOOL_LINE_BRANCHES_GET.name]: TOOL_LINE_BRANCHES_GET,
 };
 
 export async function augmentIssueMaintenance(issue: IssueMaintenance) {
@@ -136,24 +135,88 @@ export async function augmentIssueMaintenance(issue: IssueMaintenance) {
     {
       role: 'system',
       content: `
-Your role is to help update this issue in an incidents system that tracks the MRT and LRT in Singapore.
-This is the issue you are working on: ${JSON.stringify(otherProps)}.
-Please modify the issue. You should:
-- perform these updates if appropriate
-  - "id" field if it has the value "please-overwrite", or if the date does not match "startAt". It must follow the format!
-  - "title" field
-  - is the maintenance planned or ad-hoc?
-    - decide this from the updates. typically, statements in future tense tend to mean planned maintenance, while mentions of urgency/faults tend to indicate ad-hoc.
-    - if planned, "startAt" should be the estimated start, and "endAt" should be the estimated end (exclusive).
-    - if ad-hoc, "startAt" should be when the maintenance started, and "endAt" should default to end of day (exclusive)
-  - "cancelledAt" field, if an update indicated that the maintenance was cancelled.
-  - "subtypes" field
-  - correct the "components" field based on the updates, see below for table.
-  - determine the section(s) of rail line(s) that this issue affected.
-    - no mention of specific stations may mean all branches of the line
+You are an AI assistant helping to process MRT/LRT maintenance data for Singapore's public transport system. Your task is to analyze announcements about planned and unplanned maintenance activities.
 
-  # Components table
-  ${buildComponentTable()}
+CURRENT ISSUE: ${JSON.stringify(otherProps)}
+
+## Your Responsibilities
+
+### 1. Issue ID Generation
+- **ONLY** update "id" field if current value is "please-overwrite" OR if date doesn't match "startAt"
+- Format: YYYY-MM-DD-brief-descriptive-slug (e.g., "2024-01-15-nsl-track-renewal")
+- Use Singapore date (Asia/Singapore timezone) based on startAt
+- Keep slugs descriptive of maintenance type and scope
+
+### 2. Title Creation
+- Create descriptive titles indicating maintenance type and scope
+- Format: "[Line Code] [Maintenance Type] - [Location/Scope]"
+- Examples: "NSL Track Renewal - Yio Chu Kang to Ang Mo Kio", "EWL Signaling System Upgrade"
+- Use technical terms when appropriate (renewal, replacement, upgrade, inspection)
+
+### 3. Maintenance Classification (Critical Decision)
+
+#### **PLANNED MAINTENANCE** Indicators:
+- Advance announcements (days/weeks ahead)
+- Specific scheduled times mentioned
+- Future tense language ("will be", "scheduled for")
+- Regular/routine maintenance cycles
+- Infrastructure upgrades or renewals
+- **Timing**: startAt = scheduled start, endAt = scheduled completion
+
+#### **AD-HOC MAINTENANCE** Indicators:
+- Urgent language ("immediate", "emergency")
+- Past tense ("has been", "was discovered")
+- Fault-related terms ("repair", "fix", "rectify")
+- Unplanned disruptions requiring maintenance
+- **Timing**: startAt = when maintenance began, endAt = end of service day if not specified
+
+### 4. Time Management
+- **startAt**:
+  - Planned: Scheduled start time
+  - Ad-hoc: When maintenance actually began
+- **endAt**:
+  - Planned: Scheduled completion time
+  - Ad-hoc: End of service day (23:59) if not specified, actual completion if known
+- **cancelledAt**: Set if announcement indicates cancellation of planned maintenance
+- All times in Singapore timezone (Asia/Singapore)
+
+### 5. Component & Section Identification
+- Identify affected MRT/LRT lines requiring maintenance
+- Map specific track sections, stations, or entire lines
+- Consider scope of work described in updates
+- No specific stations mentioned often means entire line/branch affected
+
+### 6. Subtype Classification
+Choose appropriate maintenance categories:
+- **track**: Rail, ballast, sleeper work
+- **signal**: Signaling system work
+- **power**: Electrical systems, third rail
+- **platform**: Platform upgrades, screen doors
+- **train**: Rolling stock maintenance
+- **infrastructure**: General facility work
+- **testing**: System testing, commissioning
+- **other**: Miscellaneous maintenance
+
+## Singapore MRT Maintenance Context
+- **Engineering Hours**: Typically 1:00am-4:30am when no passenger service
+- **Weekend Closures**: Common for major works (Sat night to Sun morning)
+- **Advance Notice**: Planned works announced 1-2 weeks prior
+- **Replacement Services**: Free regular/bridging bus services provided
+- **Common Maintenance**: Track renewal, signaling upgrades, platform improvements
+
+## Content Source Interpretation
+- **Official sources** (SMRT, SBS Transit, LTA): Primary source for maintenance schedules
+- **News articles**: Secondary reporting, may have timing discrepancies
+- **Social media**: Real-time updates, user reports of maintenance impact
+
+# Components Table
+${buildComponentTable()}
+
+## Output Requirements
+- Accurately classify as planned vs ad-hoc based on linguistic cues and context
+- Set appropriate time boundaries based on maintenance type
+- Provide structured data reflecting Singapore MRT operational patterns
+- When in doubt about timing, err on the side of planned maintenance for advance announcements
 `.trim(),
     },
   ];
@@ -163,7 +226,7 @@ Please modify the issue. You should:
 
   do {
     response = await openAiClient.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: 'gpt-5-mini',
       messages: [
         ...messages,
         {
@@ -245,7 +308,7 @@ Please modify the issue. You should:
     const updatedIssue: IssueMaintenance = {
       ...result.issue,
       updates: issue.updates,
-      stationIdsAffected: computeAffectedStations(
+      stationIdsAffected: await computeAffectedStations(
         result.lineSections,
         result.issue.startAt,
       ),

@@ -1,13 +1,14 @@
 import { z } from 'zod';
-import type { IngestContent } from '../types.js';
+import type { IngestContent, ToolRegistry } from '../types.js';
 import { IssueIdSchema, IssueTypeSchema } from '../../../schema/Issue.js';
-import { IssueModel } from '../../../model/IssueModel.js';
 import { openAiClient } from '../constants.js';
 import type {
   ChatCompletion,
   ChatCompletionMessageParam,
 } from 'openai/resources';
 import { assert } from '../../assert.js';
+import { lineGetAllQuery } from '../queries/lineGetAll.js';
+import { TOOL_ISSUE_SEARCH } from '../tools/issueSearch.js';
 
 const ResultSchema = z.object({
   result: z.discriminatedUnion('type', [
@@ -34,36 +35,61 @@ const ToolSearchIssuesParametersSchema = z.object({
   reason: z.string(),
 });
 
+const toolRegistry: ToolRegistry = {
+  [TOOL_ISSUE_SEARCH.name]: TOOL_ISSUE_SEARCH,
+};
+
 export async function determineExistingIssue(
   content: IngestContent,
 ): Promise<Result> {
   let toolCallCount = 0;
 
+  const lineGetAllQueryRows = await lineGetAllQuery();
+
   const messages: ChatCompletionMessageParam[] = [
     {
       role: 'system',
       content: `
-Your role is to help ingest the given post into an incidents system that tracks the MRT and LRT in Singapore.
-Determine whether the post is part of an existing issue.
-You can call the "searchIssues" tool once to get a list of all existing issues based on either the post date or the expected date.
+You are an expert system for ingesting MRT/LRT service posts into Singapore's rail incident tracking system.
 
-Take Note:
-- Both breakdowns and delays are considered "disruption" type issues.
-- Service hour changes or station closures are considered "maintenance" issues.
-- The rail line is very often mentioned in the post text. e.g. [BPLRT] refers to BPLRT rail line.
-- Incidents typically only affect a single rail line, unless explicitly stated otherwise.
-- There could be multiple incidents on the same rail line in the same day. If an existing incident already has "endAt" populated, a new one will be required for the post.
-- Faults in one line are unrelated to other lines.
-- When checking on existing issues:
-  - date range must match up.
-  - rail line is denoted in "componentIdsAffected"
-  - check and ensure whether the post is relevant.
-  - there could be multiple issues for the same rail line on the same day. check using the timestamps and stations mentioned
-- The following cases are considered irrelevant:
-  - Updates for bus services that are unrelated to MRT/LRT services
-  - Extension of service hours for festivities (note - this is about ending later)
+Your task: Determine if the given post relates to an existing issue, requires a new issue, or is irrelevant.
 
+DECISION PROCESS:
+1. Use searchIssues tool to fetch recent issues (search within ±2 days of post date)
+2. Analyze the post content and compare with existing issues
+3. Return appropriate classification with clear reasoning
 
+CLASSIFICATION RULES:
+
+RELATED TO EXISTING ISSUE:
+- Same rail line AND similar time period AND issue still ongoing (endAt is null)
+- Post provides updates, resolution, or continuation of existing incident
+- Stations mentioned align with existing issue's affected areas
+
+CREATE NEW ISSUE:
+- Disruption types: breakdowns, delays, signal faults, train faults, service slowdowns
+- Maintenance types: planned closures, service hour changes, station renovations, track work
+- Infrastructure types: permanent changes, new stations, line extensions
+- Different rail line from existing issues
+- Same rail line but existing issue has ended (endAt populated)
+- Same rail line but different stations/timeframe indicating separate incident
+
+IRRELEVANT CONTENT:
+- Bus service updates unrelated to MRT/LRT
+- General announcements without service impact
+- Promotional content or non-operational news
+- Service hour extensions for festivities (extending operating hours later)
+
+KEY CONTEXT:
+- Rail lines: ${lineGetAllQueryRows.map((line) => `${line.component_id}`).join(', ')}
+- Line codes in brackets: [NSL], [BPLRT], etc.
+- Issues typically affect single lines unless explicitly multi-line
+- componentIdsAffected field shows which rail lines are impacted
+- Multiple incidents can occur on same line if they're separate events or timeframes
+- Check timestamps carefully - ongoing issues (endAt: null) can receive updates
+
+SEARCH STRATEGY:
+Search ±2 days from post date to capture related incidents that may have started earlier or could extend beyond the post date.
 `.trim(),
     },
     {
@@ -84,16 +110,16 @@ Take Note:
           schema: ResultJsonSchema,
         },
       },
-      tools: [
-        {
+      tools: Object.values(toolRegistry).map((tool) => {
+        return {
           type: 'function',
           function: {
-            name: 'searchIssues',
-            description: 'Fetch a list of issues across all rail lines',
-            parameters: z.toJSONSchema(ToolSearchIssuesParametersSchema),
+            name: tool.name,
+            description: tool.description,
+            parameters: z.toJSONSchema(tool.paramSchema),
           },
-        },
-      ],
+        };
+      }),
     });
 
     const { message } = response.choices[0];
@@ -104,41 +130,43 @@ Take Note:
       for (const toolCall of tool_calls) {
         assert(toolCall.type === 'function');
 
-        switch (toolCall.function.name) {
-          case 'searchIssues': {
-            console.log(
-              `[ingest.determineExistingIssues] ${toolCall.id} calling tool "searchIssues" with params`,
-              toolCall.function.arguments,
-            );
-            if (toolCallCount > 2) {
-              messages.push({
-                role: 'tool',
-                tool_call_id: toolCall.id,
-                content: 'Ran out of tool calls. Stop Calling.',
-              });
-              console.log(
-                'Forced short-circuit, returning error message in tool call result.',
-              );
-              break;
-            }
-            const { dateMin, dateMax } = ToolSearchIssuesParametersSchema.parse(
-              JSON.parse(toolCall.function.arguments),
-            );
-            const issues = IssueModel.getAllByOverlappingDateRange(
-              dateMin,
-              dateMax,
-            );
-            messages.push({
-              role: 'tool',
-              tool_call_id: toolCall.id,
-              content: `Here are the issues: ${JSON.stringify(issues)}`,
-            });
-            console.log(
-              `[ingest.determineExistingIssues] ${toolCall.id} calling tool "searchIssues" returned ${issues.length} results.`,
-            );
-            break;
-          }
+        console.log(
+          `[ingest.determineExistingIssue] ${toolCall.id} calling tool "${toolCall.function.name}" with params`,
+          toolCall.function.arguments,
+        );
+
+        if (toolCallCount > 2) {
+          messages.push({
+            role: 'tool',
+            tool_call_id: toolCall.id,
+            content: 'Ran out of tool calls. Stop Calling.',
+          });
+          console.log(
+            'Forced short-circuit, returning error message in tool call result.',
+          );
         }
+
+        if (toolCall.function.name in toolRegistry) {
+          const tool = toolRegistry[toolCall.function.name];
+
+          const params = tool.paramSchema.parse(
+            JSON.parse(toolCall.function.arguments),
+          );
+          // Call the tool's run function
+          const result = await tool.runner(params);
+
+          messages.push({
+            role: 'tool',
+            tool_call_id: toolCall.id,
+            content: result,
+          });
+
+          console.log(
+            `[ingest.determineExistingIssue] ${toolCall.id} calling tool "${toolCall.function.name}" returned result`,
+            result,
+          );
+        }
+
         toolCallCount++;
       }
     }

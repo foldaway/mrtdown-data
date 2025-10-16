@@ -41,6 +41,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm install
+      - run: npm run build
       - run: npm run ingest:webhook
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

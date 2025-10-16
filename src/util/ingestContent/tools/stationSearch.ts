@@ -1,10 +1,10 @@
 import type { ChatCompletionTool } from 'openai/resources';
 import { z } from 'zod';
-import { StationModel } from '../../../model/StationModel.js';
 import type { Tool } from '../types.js';
 import { gfmToMarkdown } from 'mdast-util-gfm';
 import type { Root, Table } from 'mdast';
 import { toMarkdown } from 'mdast-util-to-markdown';
+import { stationSearchQuery } from '../queries/stationSearch.js';
 
 export const ToolStationSearchParametersSchema = z.object({
   stationNames: z
@@ -30,9 +30,10 @@ export async function toolStationSearchRun(
   params: ToolStationSearchParameters,
 ) {
   const { stationNames } = params;
-  const stations = StationModel.searchByName(stationNames);
 
-  console.log(`[toolStationSearchRun] found ${stations.length} results.`);
+  const stationRows = await stationSearchQuery(stationNames);
+
+  console.log(`[toolStationSearchRun] found ${stationRows.length} results.`);
 
   const table: Table = {
     type: 'table',
@@ -42,70 +43,44 @@ export async function toolStationSearchRun(
         children: [
           {
             type: 'tableCell',
-            children: [
-              {
-                type: 'text',
-                value: 'Station Name',
-              },
-            ],
+            children: [{ type: 'text', value: 'Station Name' }],
           },
           {
             type: 'tableCell',
-            children: [
-              {
-                type: 'text',
-                value: 'Station Codes',
-              },
-            ],
+            children: [{ type: 'text', value: 'Station Codes' }],
           },
           {
             type: 'tableCell',
-            children: [
-              {
-                type: 'text',
-                value: 'Component IDs',
-              },
-            ],
+            children: [{ type: 'text', value: 'Lines' }],
           },
         ],
       },
     ],
   };
 
-  for (const station of stations) {
-    const codes = Object.values(station.componentMembers).flatMap((members) =>
-      members.map((m) => m.code),
-    );
+  for (const stationRow of stationRows) {
+    const stationCodes: string[] = [];
+    const lineIds: string[] = [];
+
+    for (const membership of stationRow.component_memberships) {
+      stationCodes.push(membership.code);
+      lineIds.push(membership.component_id);
+    }
 
     table.children.push({
       type: 'tableRow',
       children: [
         {
           type: 'tableCell',
-          children: [
-            {
-              type: 'text',
-              value: station.name,
-            },
-          ],
+          children: [{ type: 'text', value: stationRow.name }],
         },
         {
           type: 'tableCell',
-          children: [
-            {
-              type: 'text',
-              value: codes.join(', '),
-            },
-          ],
+          children: [{ type: 'text', value: stationCodes.join(', ') }],
         },
         {
           type: 'tableCell',
-          children: [
-            {
-              type: 'text',
-              value: Object.keys(station.componentMembers).join(', '),
-            },
-          ],
+          children: [{ type: 'text', value: lineIds.join(', ') }],
         },
       ],
     });
