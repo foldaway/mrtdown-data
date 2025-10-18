@@ -307,6 +307,7 @@ ${buildComponentTable()}
 
     const updatedIssue: IssueMaintenance = {
       ...result.issue,
+      rrule: issue.rrule,
       updates: issue.updates,
       stationIdsAffected: await computeAffectedStations(
         result.lineSections,
