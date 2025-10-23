@@ -1,0 +1,35 @@
+{
+  "id": "2025-10-23-ccl-timing-display-errors-botanic-gardens",
+  "title": "CCL Platform Display Timing Error - Botanic Gardens",
+  "title_translations": {
+    "zh-Hans": "CCL 站台显示计时错误 - 植物园站",
+    "ms": "CCL Ralat Paparan Masa - Botanic Gardens",
+    "ta": "CCL தளக் காட்சிப் பிழை (நேரத் தவறு) - Botanic Gardens"
+  },
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2025-10-23T12:34:03.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "station.fault"
+  ],
+  "updates": [
+    {
+      "type": "general-public.report",
+      "text": "Reddit post reports incorrect train timing displays at Botanic Gardens station on the Circle Line (CCL), with platform screens showing wrong countdown times. The author recalls similar previous discrepancies and asks if other stations also have timing errors.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1odu34n/are_there_any_other_stations_which_get_the_timing/",
+      "createdAt": "2025-10-23T12:34:03.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "BTN"
+      ]
+    }
+  ]
+}
