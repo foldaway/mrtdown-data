@@ -11,13 +11,19 @@
   ],
   "startAt": "2025-09-05T23:00:00.000+08:00",
   "endAt": "2025-09-06T09:00:00.000+08:00",
-  "rrule": "DTSTART;TZID=Asia/Singapore:20250905T230000\nRRULE:FREQ=DAILY;UNTIL=20251229T000000;WKST=MO;BYDAY=FR,SA\nEXDATE:20251003T230000,20251004T230000,20251005T230000,20251128T230000,20251129T230000,20251130T230000,20251205T230000,20251206T230000,20251207T230000",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
     "track.work"
   ],
+  "rrule": "DTSTART;TZID=Asia/Singapore:20250905T230000\nRRULE:FREQ=DAILY;UNTIL=20251229T000000;WKST=MO;BYDAY=FR,SA\nEXDATE:20251003T230000,20251004T230000,20251005T230000,20251128T230000,20251129T230000,20251130T230000,20251205T230000,20251206T230000,20251207T230000",
   "updates": [
+    {
+      "type": "planned",
+      "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (24 Oct 2025, Fri) and commence later at 9:00am tomorrow (25 Oct 2025, Sat). Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115429032733902581",
+      "createdAt": "2025-10-24T20:01:02.000+08:00"
+    },
     {
       "type": "planned",
       "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (18 Oct 2025, Sat) and commence later at 9:00am tomorrow (19 Oct 2025, Sun). Please use alternative MRT lines and bus services.",
