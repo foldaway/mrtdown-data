@@ -1,16 +1,16 @@
 {
   "id": "2025-10-28-ccl-train-fault-paya-lebar",
-  "title": "CCL Train Fault - Paya Lebar Station",
+  "title": "CCL Train Fault at Paya Lebar Station (Public Report)",
   "title_translations": {
-    "zh-Hans": "CCL 列车故障 - 巴耶利峇站",
-    "ms": "CCL Kerosakan Kereta Api - Stesen Paya Lebar",
-    "ta": "CCL ரயில் கொண்டாட்டம் - பாயா லெபர் நிலையம்"
+    "zh-Hans": "CCL 列车故障于巴耶利峇站（公众报告）",
+    "ms": "CCL Kerosakan Kereta Api di Stesen Paya Lebar (Laporan Awam)",
+    "ta": "பாயா லெபர் நிலையத்தில் CCL ரயில் கோளாறு (பொது அறிக்கை)"
   },
   "componentIdsAffected": [
     "CCL"
   ],
   "startAt": "2025-10-28T21:46:10.000+08:00",
-  "endAt": null,
+  "endAt": "2025-10-28T22:00:00.000+08:00",
   "type": "disruption",
   "subtypes": [
     "train.fault",
