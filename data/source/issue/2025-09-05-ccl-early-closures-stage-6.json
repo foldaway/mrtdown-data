@@ -1,10 +1,10 @@
 {
   "id": "2025-09-05-ccl-early-closures-stage-6",
-  "title": "CCL Track Works - Stage 6 (Weekend Early Closures)",
+  "title": "CCL Track Works - Weekend Early Closures (Stage 6)",
   "title_translations": {
-    "zh-Hans": "环线第六阶段轨道工程（提前闭线）",
-    "ms": "Kerja Trek CCL Peringkat 6 (Tutup Awal)",
-    "ta": "CCL பாதை பணிகள் - நிலை 6 (முன்னதாக மூடல்கள்)"
+    "zh-Hans": "环线轨道工程 - 周末提前闭线（第6阶段）",
+    "ms": "Kerja Trek CCL - Tutup Awal Hujung Minggu (Peringkat 6)",
+    "ta": "CCL பாதை பணிகள் - வார இறுதி முன்னதாக மூடல் (படிநிலை 6)"
   },
   "componentIdsAffected": [
     "CCL"
@@ -18,6 +18,12 @@
   ],
   "rrule": "DTSTART;TZID=Asia/Singapore:20250905T230000\nRRULE:FREQ=DAILY;UNTIL=20251229T000000;WKST=MO;BYDAY=FR,SA\nEXDATE:20251003T230000,20251004T230000,20251005T230000,20251128T230000,20251129T230000,20251130T230000,20251205T230000,20251206T230000,20251207T230000",
   "updates": [
+    {
+      "type": "planned",
+      "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (01 Nov 2025, Sat) and commence later at 9:00am tomorrow (02 Nov 2025, Sun). Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115474328801558976",
+      "createdAt": "2025-11-01T20:00:25.000+08:00"
+    },
     {
       "type": "planned",
       "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (31 Oct 2025, Fri) and commence later at 9:00am tomorrow (01 Nov 2025, Sat). Please use alternative MRT lines and bus services.",
