@@ -1,10 +1,10 @@
 {
   "id": "2025-09-05-ccl-early-closures-stage-6",
-  "title": "CCL Track Works - Stage 6 (Weekend Early Closures)",
+  "title": "CCL Track Works - Weekend Early Closures (Stage 6)",
   "title_translations": {
-    "zh-Hans": "环线第六阶段轨道工程（提前闭线）",
-    "ms": "Kerja Trek CCL Peringkat 6 (Tutup Awal)",
-    "ta": "CCL பாதை பணிகள் - நிலை 6 (முன்னதாக மூடல்கள்)"
+    "zh-Hans": "环线轨道工程 - 周末提前闭线（第6阶段）",
+    "ms": "Kerja Trek CCL - Tutup Awal Hujung Minggu (Peringkat 6)",
+    "ta": "CCL பாதை பணிகள் - வார இறுதி முன்னதாக மூடல் (படிநிலை 6)"
   },
   "componentIdsAffected": [
     "CCL"
