@@ -9,8 +9,8 @@
   "componentIdsAffected": [
     "BPLRT"
   ],
-  "startAt": "2025-11-04T11:25:00.000+08:00",
-  "endAt": null,
+  "startAt": "2025-11-04T23:35:00.000+08:00",
+  "endAt": "2025-11-04T23:41:00.000+08:00",
   "type": "disruption",
   "subtypes": [
     "passenger.incident"
