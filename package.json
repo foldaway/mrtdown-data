@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Data repository",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/api/index.js",
   "scripts": {
     "build": "tsc",
     "postbuild": "npm run db:generate",
