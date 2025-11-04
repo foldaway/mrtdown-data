@@ -1,0 +1,35 @@
+{
+  "id": "2025-10-27-bplrt-passenger-fell-onto-track",
+  "title": "BPLRT Passenger Fell onto Tracks - Bangkit Station",
+  "title_translations": {
+    "zh-Hans": "BPLRT 乘客坠入轨道 - 邦吉站",
+    "ms": "Penumpang BPLRT Jatuh ke Landasan - Stesen Bangkit",
+    "ta": "BPLRT பயணி தண்டவாளத்தில் விழுந்தார் - பாங்கிட் நிலையம்"
+  },
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2025-10-27T23:35:00.000+08:00",
+  "endAt": "2025-10-27T23:41:00.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "passenger.incident"
+  ],
+  "updates": [
+    {
+      "type": "news.report",
+      "text": "Train intrusion or trespassing onto train tracks is a safety risk, said SMRT.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/police-report-made-after-drunk-passenger-fell-onto-lrt-track-in-bukit-panjang-smrt",
+      "createdAt": "2025-11-04T11:25:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "BKT"
+      ]
+    }
+  ]
+}
