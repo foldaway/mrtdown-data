@@ -1,10 +1,10 @@
 {
   "id": "2025-10-27-bplrt-passenger-fell-onto-track",
-  "title": "BPLRT Passenger Incident - Bukit Panjang Station",
+  "title": "BPLRT Passenger Fell onto Tracks - Bangkit Station",
   "title_translations": {
-    "zh-Hans": "BPLRT 乘客事件 - 武吉班让站",
-    "ms": "Insiden Penumpang BPLRT - Stesen Bukit Panjang",
-    "ta": "BPLRT பயணி சம்பவம் - புக்கிட் பாங் நிலையம்"
+    "zh-Hans": "BPLRT 乘客坠入轨道 - 邦吉站",
+    "ms": "Penumpang BPLRT Jatuh ke Landasan - Stesen Bangkit",
+    "ta": "BPLRT பயணி தண்டவாளத்தில் விழுந்தார் - பாங்கிட் நிலையம்"
   },
   "componentIdsAffected": [
     "BPLRT"
