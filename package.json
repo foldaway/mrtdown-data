@@ -11,7 +11,7 @@
     "ingest:webhook": "tsx src/scripts/ingestViaWebhook.ts",
     "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts",
     "db:generate": "tsx src/db/generate/index.ts",
-    "api:dev": "tsx --watch src/api/dev.ts"
+    "api:dev": "tsx --watch api/index.ts"
   },
   "author": "",
   "license": "UNLICENSED",
