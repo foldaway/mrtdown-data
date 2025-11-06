@@ -18,6 +18,7 @@ primary_region = 'sin'
 
 [env]
   DUCKDB_DATABASE_PATH = 'mrtdown.duckdb'
+  SENTRY_ENVIRONMENT = 'production'
 
 [[vm]]
   size = 'shared-cpu-1x'

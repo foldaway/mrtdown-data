@@ -1,4 +1,5 @@
 import { Hono } from 'hono';
+import * as Sentry from '@sentry/node';
 import { bearerAuth } from 'hono/bearer-auth';
 import { openAPIRouteHandler } from 'hono-openapi';
 import { Scalar } from '@scalar/hono-api-reference';
@@ -10,6 +11,7 @@ import { overviewRoute } from './routes/overview/index.js';
 import { issuesRoute } from './routes/issues/index.js';
 import { stationsRoute } from './routes/stations/index.js';
 import { metadataRoute } from './routes/metadata/index.js';
+import { HTTPException } from 'hono/http-exception';
 
 /**
  * The server accepts a comma-separated list of API tokens in the environment variable `API_TOKENS`.
@@ -18,6 +20,14 @@ const { API_TOKENS } = process.env;
 assert(API_TOKENS != null, 'API_TOKENS must be set in environment variables');
 
 const app = new Hono();
+app.onError((err, c) => {
+  if (err instanceof HTTPException) {
+    return err.getResponse();
+  }
+
+  Sentry.captureException(err);
+  return c.json({ error: 'Internal server error' }, 500);
+});
 app.use(compress());
 
 const authMiddleware = bearerAuth({
