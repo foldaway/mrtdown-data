@@ -6,12 +6,13 @@
   "main": "dist/api/index.js",
   "scripts": {
     "build": "tsc",
-    "postbuild": "npm run db:generate",
+    "postbuild": "npm run db:generate && npm run sentry:sourcemaps",
     "test": "vitest",
     "ingest:webhook": "tsx src/scripts/ingestViaWebhook.ts",
     "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts",
     "db:generate": "tsx src/db/generate/index.ts",
-    "api:dev": "tsx --watch api/index.ts"
+    "api:dev": "tsx --watch api/index.ts",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org bottleneck-co --project mrtdown-data ./dist && sentry-cli sourcemaps upload --org bottleneck-co --project mrtdown-data ./dist"
   },
   "author": "",
   "license": "UNLICENSED",
