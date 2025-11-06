@@ -7,8 +7,10 @@ FROM node:${NODE_VERSION}-slim AS base
 LABEL fly_launch_runtime="Node.js"
 
 ARG DUCKDB_DATABASE_PATH
+ARG GIT_SHA
 
 ENV DUCKDB_DATABASE_PATH=$DUCKDB_DATABASE_PATH
+ENV GIT_SHA=$GIT_SHA
 
 # Node.js app lives here
 WORKDIR /app

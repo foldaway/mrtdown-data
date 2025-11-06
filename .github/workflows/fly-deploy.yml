@@ -13,6 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --local-only --build-arg DUCKDB_DATABASE_PATH=mrtdown.duckdb
+      - run: flyctl deploy --local-only --build-arg DUCKDB_DATABASE_PATH=mrtdown.duckdb --build-arg GIT_SHA=${{ github.sha }}
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
