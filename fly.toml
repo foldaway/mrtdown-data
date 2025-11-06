@@ -16,8 +16,18 @@ primary_region = 'sin'
   min_machines_running = 0
   processes = ['app']
 
+  [[http_service.checks]]
+    interval = "15s"
+    timeout = "5s"
+    grace_period = "10s"
+    method = "GET"
+    path = "/healthz"
+    protocol = "http"
+
 [env]
   DUCKDB_DATABASE_PATH = 'mrtdown.duckdb'
+  SENTRY_ENVIRONMENT = 'production'
+  NODE_OPTIONS = '--enable-source-maps'
 
 [[vm]]
   size = 'shared-cpu-1x'

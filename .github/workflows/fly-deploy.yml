@@ -13,6 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --local-only --build-arg DUCKDB_DATABASE_PATH=mrtdown.duckdb
+      - name: Deploy
+        run: |-
+          flyctl deploy --local-only \
+            --build-arg DUCKDB_DATABASE_PATH=mrtdown.duckdb \
+            --build-arg SENTRY_ORG=${{ secrets.SENTRY_ORG }} \
+            --build-arg SENTRY_PROJECT=${{ secrets.SENTRY_PROJECT }} \
+            --build-arg SENTRY_RELEASE=${{ github.sha }} \
+            --build-secret SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} \
+            --image-label=${{ github.sha }}
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

@@ -1,8 +1,8 @@
 import { Hono } from 'hono';
+import * as Sentry from '@sentry/node';
 import { bearerAuth } from 'hono/bearer-auth';
 import { openAPIRouteHandler } from 'hono-openapi';
 import { Scalar } from '@scalar/hono-api-reference';
-import { compress } from 'hono/compress';
 import { analyticsRoute } from './routes/analytics/index.js';
 import { assert } from '../util/assert.js';
 import { linesRoute } from './routes/lines/index.js';
@@ -10,6 +10,7 @@ import { overviewRoute } from './routes/overview/index.js';
 import { issuesRoute } from './routes/issues/index.js';
 import { stationsRoute } from './routes/stations/index.js';
 import { metadataRoute } from './routes/metadata/index.js';
+import { HTTPException } from 'hono/http-exception';
 
 /**
  * The server accepts a comma-separated list of API tokens in the environment variable `API_TOKENS`.
@@ -18,7 +19,14 @@ const { API_TOKENS } = process.env;
 assert(API_TOKENS != null, 'API_TOKENS must be set in environment variables');
 
 const app = new Hono();
-app.use(compress());
+app.onError((err, c) => {
+  if (err instanceof HTTPException) {
+    return err.getResponse();
+  }
+
+  Sentry.captureException(err);
+  return c.json({ error: 'Internal server error' }, 500);
+});
 
 const authMiddleware = bearerAuth({
   token: API_TOKENS.split(','),
@@ -26,8 +34,12 @@ const authMiddleware = bearerAuth({
 
 app.use('*', async (c, next) => {
   const path = c.req.path;
-  if (path.startsWith('/openapi') || path.startsWith('/docs')) {
-    // Skip authentication for OpenAPI and docs routes
+  if (
+    path.startsWith('/openapi') ||
+    path.startsWith('/docs') ||
+    path === '/healthz'
+  ) {
+    // Skip authentication for OpenAPI, docs and health routes
     return next();
   }
 
@@ -41,7 +53,7 @@ app.route('/issues', issuesRoute);
 app.route('/stations', stationsRoute);
 app.route('/metadata', metadataRoute);
 app.get('/healthz', async (c) => {
-  return c.status(204);
+  return c.body(null, 204);
 });
 app.get(
   '/openapi.json',

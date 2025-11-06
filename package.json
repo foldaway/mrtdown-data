@@ -6,12 +6,13 @@
   "main": "dist/api/index.js",
   "scripts": {
     "build": "tsc",
-    "postbuild": "npm run db:generate",
+    "postbuild": "npm run db:generate && npm run sentry:sourcemaps",
     "test": "vitest",
     "ingest:webhook": "tsx src/scripts/ingestViaWebhook.ts",
     "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts",
     "db:generate": "tsx src/db/generate/index.ts",
-    "api:dev": "tsx --watch api/index.ts"
+    "api:dev": "tsx --watch api/index.ts",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject ./dist && sentry-cli sourcemaps upload ./dist --release $SENTRY_RELEASE"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -29,6 +30,8 @@
     "@hono/standard-validator": "^0.1.4",
     "@hono/zod-validator": "^0.4.3",
     "@scalar/hono-api-reference": "^0.9.13",
+    "@sentry/cli": "^2.58.0",
+    "@sentry/node": "^10.23.0",
     "dotenv": "^16.4.7",
     "fuse.js": "^7.1.0",
     "hast-util-from-html": "^2.0.3",
