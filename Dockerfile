@@ -34,7 +34,8 @@ RUN npm ci --include=dev
 COPY . .
 
 # Build application
-RUN npm run build
+RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
+    SENTRY_AUTH_TOKEN=$(cat /run/secrets/SENTRY_AUTH_TOKEN) npm run build
 
 # Remove development dependencies
 RUN npm prune --omit=dev
