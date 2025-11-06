@@ -36,8 +36,12 @@ const authMiddleware = bearerAuth({
 
 app.use('*', async (c, next) => {
   const path = c.req.path;
-  if (path.startsWith('/openapi') || path.startsWith('/docs')) {
-    // Skip authentication for OpenAPI and docs routes
+  if (
+    path.startsWith('/openapi') ||
+    path.startsWith('/docs') ||
+    path === '/healthz'
+  ) {
+    // Skip authentication for OpenAPI, docs and health routes
     return next();
   }
 
