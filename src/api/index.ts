@@ -53,7 +53,7 @@ app.route('/issues', issuesRoute);
 app.route('/stations', stationsRoute);
 app.route('/metadata', metadataRoute);
 app.get('/healthz', async (c) => {
-  return c.status(204);
+  return c.body(null, 204);
 });
 app.get(
   '/openapi.json',
