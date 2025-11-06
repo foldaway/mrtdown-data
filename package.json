@@ -12,7 +12,7 @@
     "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts",
     "db:generate": "tsx src/db/generate/index.ts",
     "api:dev": "tsx --watch api/index.ts",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org bottleneck-co --project mrtdown-data ./dist && sentry-cli sourcemaps upload --org bottleneck-co --project mrtdown-data ./dist"
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject ./dist && sentry-cli sourcemaps upload ./dist --release $SENTRY_RELEASE"
   },
   "author": "",
   "license": "UNLICENSED",
