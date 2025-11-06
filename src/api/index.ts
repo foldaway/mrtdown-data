@@ -3,7 +3,6 @@ import * as Sentry from '@sentry/node';
 import { bearerAuth } from 'hono/bearer-auth';
 import { openAPIRouteHandler } from 'hono-openapi';
 import { Scalar } from '@scalar/hono-api-reference';
-import { compress } from 'hono/compress';
 import { analyticsRoute } from './routes/analytics/index.js';
 import { assert } from '../util/assert.js';
 import { linesRoute } from './routes/lines/index.js';
@@ -28,7 +27,6 @@ app.onError((err, c) => {
   Sentry.captureException(err);
   return c.json({ error: 'Internal server error' }, 500);
 });
-app.use(compress());
 
 const authMiddleware = bearerAuth({
   token: API_TOKENS.split(','),
