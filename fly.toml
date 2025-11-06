@@ -31,4 +31,4 @@ swap_size_mb = 512
   NODE_OPTIONS = '--enable-source-maps'
 
 [[vm]]
-  size = 'shared-cpu-1x'
+  size = 'shared-cpu-2x'
