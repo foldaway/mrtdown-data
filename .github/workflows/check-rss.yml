@@ -45,6 +45,7 @@ jobs:
       - run: npm run build
         env:
           DUCKDB_DATABASE_PATH: mrtdown.duckdb
+          SENTRY_RELEASE: production
       - run: npm run check-rss-feeds
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
