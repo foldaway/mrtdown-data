@@ -20,6 +20,12 @@
   "updates": [
     {
       "type": "planned",
+      "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (08 Nov 2025, Sat) and commence later at 9:00am tomorrow (09 Nov 2025, Sun). Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115513971695449469",
+      "createdAt": "2025-11-08T20:02:07.000+08:00"
+    },
+    {
+      "type": "planned",
       "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (07 Nov 2025, Fri) and commence later at 9:00am tomorrow (08 Nov 2025, Sat). Please use alternative MRT lines and bus services.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115508309310930771",
       "createdAt": "2025-11-07T20:02:06.000+08:00"
