@@ -1,0 +1,66 @@
+{
+  "id": "2025-11-16-bplrt-track-renewal",
+  "title": "BPLRT Track Renewal - Line-wide Track Replacement",
+  "title_translations": {
+    "zh-Hans": "BPLRT 轨道翻新 - 全线轨道更换",
+    "ms": "BPLRT Pembaharuan Landasan - Penggantian Landasan Sepanjang Laluan",
+    "ta": "BPLRT பாதை புதுப்பிப்பு - முழு கோட்டையின் பாதை மாற்றம்"
+  },
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2025-11-16T18:00:17.000+08:00",
+  "endAt": null,
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "The renewal works mark a major milestone in efforts to improve the reliability of the line, which began operations in 1999.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/bukit-panjang-lrt-renewal-track-replacement-train-disruption-lta-smrt-5469371",
+      "createdAt": "2025-11-16T18:00:17.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ",
+        "BKP"
+      ]
+    },
+    {
+      "componentId": "BPLRT",
+      "branchName": "tmj",
+      "stationIds": [
+        "TMJ",
+        "BKP",
+        "SNJ",
+        "JLP",
+        "SGR",
+        "FJR",
+        "BKT",
+        "PND",
+        "PTR",
+        "BKP",
+        "TMJ"
+      ]
+    }
+  ]
+}
