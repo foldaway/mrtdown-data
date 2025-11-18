@@ -13,6 +13,12 @@
   "subtypes": ["train.fault"],
   "updates": [
     {
+      "type": "news.report",
+      "text": "Commuters expressed frustration over the lack of information on SMRT's social media regarding the Thomson-East Coast Line delay.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/delay-on-tel-lack-of-information-on-smrts-social-media-rankles-commuters",
+      "createdAt": "2025-11-18T08:00:00.000+08:00"
+    },
+    {
       "type": "operator.investigating",
       "text": "[TEL] Train Fault: Extra travelling time of 30 minutes between TE9 Caldecott and TE22 Gardens By The Bay. Free regular bus service available at affected stations.",
       "sourceUrl": "https://www.reddit.com/r/singapore/comments/1ozurmo/another_day_another_breakdown/",
