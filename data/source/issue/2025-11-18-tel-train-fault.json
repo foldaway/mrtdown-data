@@ -1,0 +1,48 @@
+{
+  "id": "2025-11-18-tel-train-fault",
+  "title": "Train Fault on Thomson–East Coast Line",
+  "title_translations": {
+    "zh-Hans": "汤申–东海岸线列车故障",
+    "ms": "Kerosakan Kereta Api di Laluan Thomson–East Coast",
+    "ta": "தாம்சன்–கிழக்கு கடற்கரை பாதையில் ரயில் தவறு"
+  },
+  "componentIdsAffected": ["TEL"],
+  "startAt": "2025-11-18T06:37:00.000+08:00",
+  "endAt": "2025-11-18T07:15:00.000+08:00",
+  "type": "disruption",
+  "subtypes": ["train.fault"],
+  "updates": [
+    {
+      "type": "news.report",
+      "text": "The delay was resolved before the morning peak at 7:15am. Commuters expressed frustration over the lack of information on SMRT's social media regarding the Thomson-East Coast Line delay.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/delay-on-tel-lack-of-information-on-smrts-social-media-rankles-commuters",
+      "createdAt": "2025-11-18T07:15:00.000+08:00"
+    },
+    {
+      "type": "operator.investigating",
+      "text": "[TEL] Train Fault: Extra travelling time of 30 minutes between TE9 Caldecott and TE22 Gardens By The Bay. Free regular bus service available at affected stations.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1ozurmo/another_day_another_breakdown/",
+      "createdAt": "2025-11-18T06:37:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "CDT",
+        "STV",
+        "NPR",
+        "OBV",
+        "ORC",
+        "GRW",
+        "HVL",
+        "OTP",
+        "MAX",
+        "SHW",
+        "MRB",
+        "GRB"
+      ]
+    }
+  ]
+}
