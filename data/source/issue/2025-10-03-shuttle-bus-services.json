@@ -22,6 +22,12 @@
       "text": "Shuttle buses will run between the affected stations during the closures, which are expected to impact about 180,000 commuters.",
       "sourceUrl": "https://www.channelnewsasia.com/singapore/mrt-east-west-line-close-tanah-merah-simei-depot-5383411",
       "createdAt": "2025-10-03T17:00:00.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "LTA estimates 180,000 passengers could be affected daily over the 10 days of service adjustments.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/crowds-longer-travel-times-expected-during-nov-29-dec-8-closure-of-simei-tanah-merah-mrt-stations",
+      "createdAt": "2025-11-22T12:00:00.000+08:00"
     }
   ],
   "stationIdsAffected": [
