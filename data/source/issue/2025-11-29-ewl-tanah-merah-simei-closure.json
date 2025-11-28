@@ -1,6 +1,6 @@
 {
-  "id": "2025-10-03-shuttle-bus-services",
-  "title": "Tanah Merah and Simei stations closed for maintenance, shuttle buses provided",
+  "id": "2025-11-29-ewl-tanah-merah-simei-closure",
+  "title": "EWL Track Work - Tanah Merah and Simei stations",
   "title_translations": {
     "zh-Hans": "丹那美拉和四美站因维修关闭，提供接驳巴士服务",
     "ms": "Stesen Tanah Merah dan Simei ditutup untuk penyenggaraan, bas pengantara disediakan",
@@ -19,6 +19,12 @@
   "updates": [
     {
       "type": "planned",
+      "text": "From 29 November to 8 December 2025, East-West Line's Simei and Tanah Merah stations will be closed. There will be no train service on the East-West Line between Bedok and Tampines stations, and Tanah Merah and Expo stations. Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115628005594526351",
+      "createdAt": "2025-11-28T23:22:27.000+08:00"
+    },
+    {
+      "type": "planned",
       "text": "LTA estimates 180,000 passengers could be affected daily over the 10 days of service adjustments.",
       "sourceUrl": "https://www.straitstimes.com/singapore/crowds-longer-travel-times-expected-during-nov-29-dec-8-closure-of-simei-tanah-merah-mrt-stations",
       "createdAt": "2025-11-22T12:00:00.000+08:00"
@@ -35,8 +41,18 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
+        "TAM",
         "SIM",
-        "TNM"
+        "TNM",
+        "BDK"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "changi_airport",
+      "stationIds": [
+        "TNM",
+        "XPO"
       ]
     }
   ]
