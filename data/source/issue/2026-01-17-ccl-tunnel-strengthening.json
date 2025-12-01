@@ -22,74 +22,31 @@
       "text": "This is for works to strengthen the tunnels built in soft marine clay that are more prone to deformation.",
       "sourceUrl": "https://www.straitstimes.com/singapore/transport/askst-what-you-need-to-know-about-circle-line-service-adjustments-from-jan-17-to-april-19-2026",
       "createdAt": "2025-12-01T12:01:00.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Steel reinforcement plates will be installed for a 450m stretch of tunnels connecting Mountbatten, Dakota and Paya Lebar stations that have shown some signs of deterioration, such as water leaks. The two tunnels connecting these stations will be closed one at a time during the work period to facilitate this work.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/circle-line-mrt-services-to-end-earlier-on-some-days-from-june-15-to-end-dec",
+      "createdAt": "2025-05-22T11:31:00.000+08:00"
     }
   ],
   "stationIdsAffected": [
     {
       "componentId": "CCL",
-      "branchName": "extension",
+      "branchName": "main",
       "stationIds": [
-        "MRB",
-        "BFT",
-        "PMN",
-        "NCH",
-        "SDM",
         "MBT",
         "DKT",
-        "PYL",
-        "MPS",
-        "TSG",
-        "BLY",
-        "SER",
-        "LRC",
-        "BSH",
-        "MRM",
-        "CDT",
-        "BTN",
-        "FRR",
-        "HLV",
-        "BNV",
-        "ONH",
-        "KRG",
-        "HPV",
-        "PPJ",
-        "LBD",
-        "TLB",
-        "HBF"
+        "PYL"
       ]
     },
     {
       "componentId": "CCL",
-      "branchName": "main",
+      "branchName": "extension",
       "stationIds": [
-        "DBG",
-        "BBS",
-        "EPN",
-        "PMN",
-        "NCH",
-        "SDM",
         "MBT",
         "DKT",
-        "PYL",
-        "MPS",
-        "TSG",
-        "BLY",
-        "SER",
-        "LRC",
-        "BSH",
-        "MRM",
-        "CDT",
-        "BTN",
-        "FRR",
-        "HLV",
-        "BNV",
-        "ONH",
-        "KRG",
-        "HPV",
-        "PPJ",
-        "LBD",
-        "TLB",
-        "HBF"
+        "PYL"
       ]
     }
   ]
