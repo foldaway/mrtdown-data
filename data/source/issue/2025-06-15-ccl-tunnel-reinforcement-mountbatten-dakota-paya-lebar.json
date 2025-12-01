@@ -1,0 +1,47 @@
+{
+  "id": "2025-06-15-ccl-tunnel-reinforcement-mountbatten-dakota-paya-lebar",
+  "title": "CCL Tunnel Reinforcement Works Between Mountbatten, Dakota and Paya Lebar",
+  "title_translations": {
+    "zh-Hans": "环线蒙巴登、达科塔和巴耶利峇之间的隧道加固工程",
+    "ms": "Kerja Pengukuhan Terowong CCL Antara Mountbatten, Dakota dan Paya Lebar",
+    "ta": "மவுண்ட்பேட்டன், டகோட்டா மற்றும் பாய லேபார் இடையே CCL சுரங்கப்பாதை வலுப்படுத்தல் பணிகள்"
+  },
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2025-06-15T00:00:00.000+08:00",
+  "endAt": "2025-09-15T00:00:00.000+08:00",
+  "type": "infra",
+  "cancelledAt": null,
+  "subtypes": [
+    "station.renovation"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Steel reinforcement plates will be installed for a 450m stretch of tunnels connecting Mountbatten, Dakota and Paya Lebar stations that have shown some signs of deterioration, such as water leaks. The two tunnels connecting these stations will be closed one at a time during the three months to facilitate this work.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/circle-line-mrt-services-to-end-earlier-on-some-days-from-june-15-to-end-dec",
+      "createdAt": "2025-05-22T11:31:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "MBT",
+        "DKT",
+        "PYL"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MBT",
+        "DKT",
+        "PYL"
+      ]
+    }
+  ]
+}
