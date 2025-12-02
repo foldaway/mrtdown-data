@@ -1,0 +1,96 @@
+{
+  "id": "2025-12-02-ccl-tunnel-strengthening",
+  "title": "CCL Tunnel Strengthening - Tunnels serving three stations",
+  "title_translations": {
+    "zh-Hans": "CCL 隧道加固 - 涉及三站的隧道",
+    "ms": "CCL Penguatan Terowong - Terowong di tiga stesen",
+    "ta": "CCL சுரங்க பலப்படுத்துதல் - மூன்று நிலைய்களைச் சேவிடும் சுரங்கங்கள்"
+  },
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2025-12-02T19:41:54.000+08:00",
+  "endAt": null,
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Underground tunnels serving three stations on the Circle Line will be partially closed early next year for strengthening works to address a phenomenon known as \"tunnel squatting\".",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/circle-line-tunnel-squatting-train-operations-cna-explains-5522091",
+      "createdAt": "2025-12-02T19:41:54.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    }
+  ]
+}
