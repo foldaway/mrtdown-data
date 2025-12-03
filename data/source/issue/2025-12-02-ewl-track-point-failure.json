@@ -10,7 +10,7 @@
     "EWL"
   ],
   "startAt": "2025-12-02T19:50:00.000+08:00",
-  "endAt": null,
+  "endAt": "2025-12-02T21:15:00.000+08:00",
   "type": "disruption",
   "subtypes": [
     "track.fault"
@@ -28,7 +28,14 @@
       "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
-        "ALJ"
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS"
       ]
     }
   ]
