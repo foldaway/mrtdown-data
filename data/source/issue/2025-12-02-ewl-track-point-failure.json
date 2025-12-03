@@ -1,0 +1,35 @@
+{
+  "id": "2025-12-02-ewl-track-point-failure",
+  "title": "EWL Track Fault - near Aljunied",
+  "title_translations": {
+    "zh-Hans": "EWL 轨道故障 - 亚裕尼附近",
+    "ms": "EWL Kerosakan Laluan - berhampiran Aljunied",
+    "ta": "EWL பாதை தவறு - அல்ஜுனிட் அருகில்"
+  },
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2025-12-02T19:50:00.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "track.fault"
+  ],
+  "updates": [
+    {
+      "type": "news.report",
+      "text": "SMRT said on Dec 3 that a track point failure occurred near Aljunied at about 7.50pm on Dec 2.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/east-west-line-delay-on-dec-2-goes-unreported-on-smrts-social-media-passengers-left-confused",
+      "createdAt": "2025-12-03T13:55:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "ALJ"
+      ]
+    }
+  ]
+}
