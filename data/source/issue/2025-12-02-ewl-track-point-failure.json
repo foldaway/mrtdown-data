@@ -17,6 +17,12 @@
   ],
   "updates": [
     {
+      "type": "planned",
+      "text": "Disruption on the East-West Line (EWL) on 2 Dec due to a track fault caused at least 20 minutes of extra travel time for eight stations from Bugis to Bedok, with Paya Lebar among the affected stations; shuttle services operated between Paya Lebar and Bedok amid eastern track work, fueling passenger confusion due to limited official alerts. On 3 Dec, LTA said operators would prioritise station-level alerts for minor delays and work toward location-based information online, possibly via a central app, to improve journey planning.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1pee0nk/straits_times_news_analysis_timely_information_is/",
+      "createdAt": "2025-12-05T06:33:02.000+08:00"
+    },
+    {
       "type": "news.report",
       "text": "SMRT said on Dec 3 that a track point failure occurred near Aljunied at about 7.50pm on Dec 2.",
       "sourceUrl": "https://www.straitstimes.com/singapore/transport/east-west-line-delay-on-dec-2-goes-unreported-on-smrts-social-media-passengers-left-confused",
