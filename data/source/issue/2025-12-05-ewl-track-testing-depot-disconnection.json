@@ -1,0 +1,37 @@
+{
+  "id": "2025-12-05-ewl-track-testing-depot-disconnection",
+  "title": "EWL Track Testing & Depot Disconnection Preparations - Bedok/Kembangan to Changi Depot",
+  "title_translations": {
+    "zh-Hans": "东西线轨道测试及车厂切断准备 - Bedok/Kembangan 至樟宜车厂",
+    "ms": "EWL Ujian Trek & Persiapan Pemutusan Depot - Bedok/Kembangan ke Changi Depot",
+    "ta": "EWL பாதை சோதனை மற்றும் டீப்போ பிரிக்கைக்கு முன்னேற்பாடு - Bedok/Kembangan முதல் Changi Depot"
+  },
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2025-12-05T22:12:16.000+08:00",
+  "endAt": null,
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "East-West Line (EWL) track testing of newly connected sections is causing longer waits of up to 17 minutes for trains from Bedok and Kembangan. A final service suspension to disconnect the EWL from Changi Depot is planned for the first half of 2026, signaling further disruption.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1pew307/passengers_at_kembangan_bedok_face_longer_waits/",
+      "createdAt": "2025-12-05T22:12:16.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "BDK",
+        "KEM"
+      ]
+    }
+  ]
+}
