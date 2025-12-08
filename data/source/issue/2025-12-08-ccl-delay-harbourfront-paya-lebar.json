@@ -1,0 +1,95 @@
+{
+  "id": "2025-12-08-ccl-delay-harbourfront-paya-lebar",
+  "title": "CCL Delay - HarbourFront to Paya Lebar (Public Report)",
+  "title_translations": {
+    "zh-Hans": "CCL 延误 - HarbourFront 至 Paya Lebar（公众报告）",
+    "ms": "Kelewatan CCL - HarbourFront ke Paya Lebar (Laporan Awam)",
+    "ta": "CCL தாமதம் - HarbourFront முதல் Paya Lebar வரை (பொது அறிக்கை)"
+  },
+  "componentIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2025-12-08T08:12:14+08:00",
+  "endAt": "2025-12-08T09:24:03+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
+  "updates": [
+    {
+      "type": "general-public.report",
+      "text": "Circle Line service from HarbourFront was delayed by about 5 minutes due to an incident, with congestion at Paya Lebar; the issue was later fixed.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1pgxxn3/circle_line_delayed/",
+      "createdAt": "2025-12-08T08:12:14.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    },
+    {
+      "componentId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    }
+  ]
+}
