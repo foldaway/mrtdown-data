@@ -1,6 +1,6 @@
 {
   "id": "2025-11-29-ewl-tanah-merah-simei-closure",
-  "title": "EWL Track Work - Tanah Merah & Simei (Bedok–Tampines and Tanah Merah–Expo sections)",
+  "title": "EWL Track Work - Bedok–Tampines and Tanah Merah–Expo",
   "title_translations": {
     "zh-Hans": "EWL 轨道工程 - 丹那美拉与四美（百多–淡滨尼及丹那美拉–博览馆区间）",
     "ms": "Kerja Trek EWL - Tanah Merah & Simei (bahagian Bedok–Tampines dan Tanah Merah–Expo)",
@@ -17,6 +17,12 @@
     "track.work"
   ],
   "updates": [
+    {
+      "type": "planned",
+      "text": "Some passengers were relieved that they could return to taking their original MRT routes.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/smooth-resumption-of-ewl-train-services-after-track-works-easy-navigation-at-tanah-merah-station",
+      "createdAt": "2025-12-08T12:01:57.000+08:00"
+    },
     {
       "type": "planned",
       "text": "East West Line (EWL) service on the Bedok–Tampines and Tanah Merah–Expo sections will resume ahead of schedule on 8 December, indicating a partial disruption on those segments is ending earlier than planned.",
