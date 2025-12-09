@@ -1,0 +1,36 @@
+{
+  "id": "2025-12-09-ewl-powerbank-smoke-tanjong-pagar",
+  "title": "EWL Passenger Incident - Tanjong Pagar (smoking power bank)",
+  "title_translations": {
+    "zh-Hans": "EWL 乘客事件 - 丹戎巴葛（充电宝冒烟）",
+    "ms": "EWL Insiden Penumpang - Tanjong Pagar (powerbank mengeluarkan asap)",
+    "ta": "EWL பயணிகள் சம்பவம் - Tanjong Pagar (பவர் பாங்க் புகை)"
+  },
+  "componentIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2025-12-09T16:22:17.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "passenger.incident",
+    "power.fault"
+  ],
+  "updates": [
+    {
+      "type": "general-public.report",
+      "text": "Passengers were guided off a train at Tanjong Pagar MRT on the East-West Line (EWL) after a power bank emitted smoke; no details on service disruption or delays are provided.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1pi279z/passengers_guided_off_train_at_tanjong_pagar_mrt/",
+      "createdAt": "2025-12-09T16:22:17.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "TPG"
+      ]
+    }
+  ]
+}
