@@ -1,0 +1,111 @@
+{
+  "id": "2025-12-12-nsl-ewl-track-foundation-replacement",
+  "title": "NSL & EWL Track Foundation Renewal - Trackbed Stone Replacement",
+  "title_translations": {
+    "zh-Hans": "NSL 与 EWL 轨道基础更新 - 更换轨道下方石料",
+    "ms": "Pembaikan Asas Rel NSL & EWL - Penggantian Batu Di Bawah Rel",
+    "ta": "NSL & EWL பாதை அடித்தளம் புதுப்பிப்பு - பாதையின் கீழ் கற்கள் மாற்றம்"
+  },
+  "componentIdsAffected": [
+    "NSL",
+    "EWL"
+  ],
+  "startAt": "2025-12-12T12:00:00.000+08:00",
+  "endAt": null,
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Worn stones beneath tracks are being replaced to prevent deterioration that could affect reliability.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/smrt-renews-ageing-track-foundations-to-improve-reliability-on-north-south-east-west-lines",
+      "createdAt": "2025-12-12T12:00:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "JUR",
+        "BBT",
+        "BGB",
+        "CCK",
+        "YWT",
+        "KRJ",
+        "MSL",
+        "WDL",
+        "ADM",
+        "SBW",
+        "CBR",
+        "YIS",
+        "KTB",
+        "YCK",
+        "AMK",
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW",
+        "ORC",
+        "SOM",
+        "DBG",
+        "CTH",
+        "RFP",
+        "MRB",
+        "MSP"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "changi_airport",
+      "stationIds": [
+        "TNM",
+        "XPO",
+        "CGA"
+      ]
+    },
+    {
+      "componentId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR",
+        "TAM",
+        "SIM",
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN",
+        "GCL",
+        "TCR",
+        "TWR",
+        "TLK"
+      ]
+    }
+  ]
+}
