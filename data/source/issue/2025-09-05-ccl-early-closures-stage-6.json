@@ -20,6 +20,12 @@
   "updates": [
     {
       "type": "planned",
+      "text": "23:00-CCL-Planned Circle Line Early Closure and Late Opening. Train services will end earlier at 2300hrs tonight (19 Dec 2025, Fri) and commence later at 0900hrs tomorrow (20 Dec 2025, Sat). Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115746128446124775",
+      "createdAt": "2025-12-19T20:02:38.000+08:00"
+    },
+    {
+      "type": "planned",
       "text": "Reminder: Circle Line train services will end earlier at 11:00pm tonight (13 Dec 2025, Sat) and commence later at 9:00am tomorrow (14 Dec 2025, Sun). Please use alternative MRT lines and bus services.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115712147050420660",
       "createdAt": "2025-12-13T20:00:43.000+08:00"
