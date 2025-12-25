@@ -1,0 +1,42 @@
+{
+  "id": "2025-12-26-nsl-major-delay-ang-mo-kio-woodlands",
+  "title": "NSL Major Delays - Ang Mo Kio to Woodlands",
+  "title_translations": {
+    "zh-Hans": "NSL 大规模延误 - 宏茂桥 至 兀兰",
+    "ms": "NSL Kelewatan Besar - Ang Mo Kio ke Woodlands",
+    "ta": "NSL பெரிய தாமதம் - Ang Mo Kio முதல் Woodlands வரை"
+  },
+  "componentIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2025-12-26T07:38:12.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "NSL-Major delay affecting train service between Ang Mo Kio and Woodlands stations (towards Jurong East). Commuters can continue to use the train service or consider free bus services at affected stations. Visit https://t.co/P0YW5iSd52 for live updates.",
+      "sourceUrl": "https://twitter.com/SMRT_Singapore/status/2004335901435183460",
+      "createdAt": "2025-12-26T07:38:12.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "WDL",
+        "ADM",
+        "SBW",
+        "CBR",
+        "YIS",
+        "KTB",
+        "YCK",
+        "AMK"
+      ]
+    }
+  ]
+}
