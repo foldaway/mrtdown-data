@@ -1,6 +1,6 @@
 {
   "id": "2025-12-26-nsl-major-delay-ang-mo-kio-woodlands",
-  "title": "NSL Major Delays - Ang Mo Kio to Woodlands",
+  "title": "NSL Major Delay - Ang Mo Kio to Woodlands",
   "title_translations": {
     "zh-Hans": "NSL 大规模延误 - 宏茂桥 至 兀兰",
     "ms": "NSL Kelewatan Besar - Ang Mo Kio ke Woodlands",
@@ -13,9 +13,28 @@
   "endAt": null,
   "type": "disruption",
   "subtypes": [
-    "delay"
+    "delay",
+    "train.fault"
   ],
   "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "[NSL] UPDATE: Train services from #AngMoKio to #Woodlands are progressively being restored. Free regular bus service is still available between #AngMoKio and #Woodlands.",
+      "sourceUrl": "https://twitter.com/SMRT_Singapore/status/2004341252071084124",
+      "createdAt": "2025-12-26T07:59:28.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] Major delay affecting train service between Ang Mo Kio and Woodlands stations (towards Jurong East). Commuters can continue to use the train service or consider free bus services at affected stations. Visit https://t.co/P0YW5iSd52 for live updates.",
+      "sourceUrl": "https://twitter.com/SMRT_Singapore/status/2004337914675917173",
+      "createdAt": "2025-12-26T07:46:12.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "[NSL] UPDATE: Due to a train fault, pls expect additional travelling time from #AngMoKio to #Woodland towards #JurongEast. Free regular bus service is available between #AngMoKio and #Woodlands.",
+      "sourceUrl": "https://twitter.com/SMRT_Singapore/status/2004336935654117468",
+      "createdAt": "2025-12-26T07:42:18.000+08:00"
+    },
     {
       "type": "operator.update",
       "text": "NSL-Major delay affecting train service between Ang Mo Kio and Woodlands stations (towards Jurong East). Commuters can continue to use the train service or consider free bus services at affected stations. Visit https://t.co/P0YW5iSd52 for live updates.",
