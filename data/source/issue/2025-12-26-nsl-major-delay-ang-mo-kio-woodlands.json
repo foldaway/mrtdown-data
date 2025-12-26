@@ -1,6 +1,6 @@
 {
   "id": "2025-12-26-nsl-major-delay-ang-mo-kio-woodlands",
-  "title": "NSL Major Delay - Ang Mo Kio to Woodlands",
+  "title": "NSL Major delay - Ang Mo Kio to Woodlands",
   "title_translations": {
     "zh-Hans": "NSL 大规模延误 - 宏茂桥 至 兀兰",
     "ms": "NSL Kelewatan Besar - Ang Mo Kio ke Woodlands",
@@ -17,6 +17,12 @@
     "train.fault"
   ],
   "updates": [
+    {
+      "type": "news.report",
+      "text": "According to rail operator SMRT, the delay affected train services between Ang Mo Kio and Woodlands, in the direction of Jurong East.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/train-fault-smrt-north-south-line-delay-woodlands-ang-mo-kio-5709361",
+      "createdAt": "2025-12-26T09:27:16.000+08:00"
+    },
     {
       "type": "operator.resolved",
       "text": "[NSL] CLEARED: Train services from #AngMoKio to #Woodlands have resumed. Free regular bus service has ended.",
