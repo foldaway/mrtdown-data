@@ -1,12 +1,8 @@
-import z from 'zod';
+import type z from 'zod';
 import { BaseResponseSchema } from '../../../../../schema/BaseResponse.js';
+import { OperatorProfileSchema } from '../../../../../schema/OperatorProfile.js';
 
 export const ResponseSchema = BaseResponseSchema.extend({
-  data: z.object({
-    operatorId: z.string(),
-    lineIds: z.array(z.string()).meta({
-      description: 'List of line IDs operated by this operator.',
-    }),
-  }),
+  data: OperatorProfileSchema,
 });
 export type Response = z.infer<typeof ResponseSchema>;
