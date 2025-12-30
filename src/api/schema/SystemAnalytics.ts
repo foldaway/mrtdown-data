@@ -7,6 +7,7 @@ export const SystemAnalyticsSchema = z
     timeScaleChartsIssueDuration: z.array(TimeScaleChartSchema),
     chartTotalIssueCountByLine: ChartSchema,
     chartTotalIssueCountByStation: ChartSchema,
+    chartRollingYearHeatmap: ChartSchema, // The data here is similar to the issue counts chart, but it uses a granularity and time scale that isn't available there.
     issueIdsDisruptionLongest: z.array(z.string()),
   })
   .meta({

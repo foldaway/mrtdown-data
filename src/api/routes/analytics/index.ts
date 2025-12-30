@@ -44,6 +44,10 @@ analyticsRoute.get(
         title: 'Total Issue Count By Station',
         data: [],
       },
+      chartRollingYearHeatmap: {
+        title: 'Rolling Year Heatmap',
+        data: [],
+      },
       issueIdsDisruptionLongest: [],
     };
 
@@ -146,17 +150,13 @@ analyticsRoute.get(
     const graphTotalIssueCountByLineId: Record<string, ChartEntry> = {};
 
     for (const row of totalIssueCountRows) {
-      const entry: ChartEntry = graphTotalIssueCountByLineId[
-        row.line_id
-      ] ?? {
+      const entry: ChartEntry = graphTotalIssueCountByLineId[row.line_id] ?? {
         name: row.line_id,
         payload: {
           line_id: row.line_id,
           line_color: row.line_color,
           line_title: row.line_title,
-          line_title_translations: JSON.parse(
-            row.line_title_translations,
-          ),
+          line_title_translations: JSON.parse(row.line_title_translations),
           disruption: 0,
           infra: 0,
           maintenance: 0,
@@ -202,6 +202,29 @@ analyticsRoute.get(
 
       statistics.chartTotalIssueCountByStation.data.push(chartEntry);
     }
+
+    // Rolling year heatmap
+
+    const rollingYearHeatmapRows = await issueCounts('day', 366);
+    statistics.chartRollingYearHeatmap.data = rollingYearHeatmapRows.map(
+      (row) => {
+        const name = DateTime.fromSQL(row.bucket, {
+          zone: 'Asia/Singapore',
+        }).toISODate();
+        assert(name != null);
+
+        const entry: ChartEntry = {
+          name,
+          payload: {},
+        };
+
+        for (const item of row.issue_counts) {
+          entry.payload[item.key] = item.value;
+        }
+
+        return entry;
+      },
+    );
 
     const included = await entitiesCollector.fetchIncludedEntities();
 
