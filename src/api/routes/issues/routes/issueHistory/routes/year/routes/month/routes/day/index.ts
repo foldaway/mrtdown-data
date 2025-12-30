@@ -3,22 +3,21 @@ import { describeRoute, resolver } from 'hono-openapi';
 import { zValidator } from '@hono/zod-validator';
 import { ParamSchema } from './schema/param.js';
 import { ResponseSchema, type Response } from './schema/response.js';
-import { issueHistoryQuery } from './queries/issueHistory.js';
+import { issueHistoryDayQuery } from './queries/issueHistoryDay.js';
 import { DateTime } from 'luxon';
-import { IncludedEntitiesCollector } from '../../../../../../../../utils/IncludedEntitiesCollector.js';
-import { assert } from '../../../../../../../../../util/assert.js';
-import { issueHistoryDayRoute } from './routes/day/index.js';
+import { IncludedEntitiesCollector } from '../../../../../../../../../../utils/IncludedEntitiesCollector.js';
+import { assert } from '../../../../../../../../../../../util/assert.js';
 
-export const issueHistoryMonthRoute = new Hono();
+export const issueHistoryDayRoute = new Hono();
 
-issueHistoryMonthRoute.get(
+issueHistoryDayRoute.get(
   '/',
   zValidator('param', ParamSchema),
   describeRoute({
-    description: 'Get issues for a specific month',
+    description: 'Get issues for a specific day',
     responses: {
       200: {
-        description: 'Issues for the specified month',
+        description: 'Issues for the specified day',
         content: {
           'application/json': {
             schema: resolver(ResponseSchema),
@@ -28,25 +27,20 @@ issueHistoryMonthRoute.get(
     },
   }),
   async (c) => {
-    const { month } = c.req.valid('param');
+    const { day } = c.req.valid('param');
+    const month = c.req.param('month');
     const year = c.req.param('year');
+    assert(month != null);
     assert(year != null);
     const entitiesCollector = new IncludedEntitiesCollector();
 
-    const startDate = DateTime.fromISO(`${year}-${month}-01`, {
+    const startDate = DateTime.fromISO(`${year}-${month}-${day}`, {
       zone: 'Asia/Singapore',
     });
-    const endDate = startDate.plus({ months: 1 });
+    const endDate = startDate.plus({ days: 1 });
 
-    const rows = await issueHistoryQuery(year, month);
-
-    const issuesByWeek = rows.map((row) => ({
-      week: row.week,
-      issueIds: row.issue_ids,
-    }));
-
-    const allIssueIds = rows.flatMap((row) => row.issue_ids);
-    entitiesCollector.addIssueIds(allIssueIds);
+    const issueIds = await issueHistoryDayQuery(year, month, day);
+    entitiesCollector.addIssueIds(issueIds);
 
     const startAt = startDate.toISODate();
     assert(startAt != null);
@@ -56,7 +50,7 @@ issueHistoryMonthRoute.get(
     const data = {
       startAt,
       endAt,
-      issuesByWeek,
+      issueIds,
     };
 
     const included = await entitiesCollector.fetchIncludedEntities();
@@ -68,5 +62,3 @@ issueHistoryMonthRoute.get(
     } satisfies Response);
   },
 );
-
-issueHistoryMonthRoute.route('/:day', issueHistoryDayRoute);
