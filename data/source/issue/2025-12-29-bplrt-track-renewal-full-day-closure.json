@@ -1,0 +1,56 @@
+{
+  "id": "2025-12-29-bplrt-track-renewal-full-day-closure",
+  "title": "BPLRT Track Renewal - Full-line Closure",
+  "title_translations": {
+    "zh-Hans": "BPLRT 轨道更新 - 全线停运",
+    "ms": "BPLRT Pembaharuan Rel - Tutup Sepanjang Laluan",
+    "ta": "BPLRT பாதை புதுப்பிப்பு - முழு வரிசை நிறுத்தம்"
+  },
+  "componentIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2026-01-25T00:00:00.000+08:00",
+  "endAt": "2026-01-26T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work",
+    "system.upgrade"
+  ],
+  "updates": [
+    {
+      "type": "planned",
+      "text": "The line will undergo a full-day closure for system renewal works.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/bukit-panjang-lrt-bplrt-close-jan-25-sunday-upgrading-renewal-works-jeffrey-siow-lta-smrt-5754041",
+      "createdAt": "2025-12-30T10:26:36.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Works that would otherwise need 10 nights to complete can be done in one full-day closure, he said.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/scheduled-closures-are-sometimes-necessary-jeffrey-siow-on-jan-25-bukit-panjang-lrt-closure",
+      "createdAt": "2025-12-29T22:26:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "componentId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ",
+        "BKP"
+      ]
+    }
+  ]
+}
