@@ -10,6 +10,7 @@ import {
 } from '../../schema/Issue.js';
 import { assert } from '../../util/assert.js';
 import { connect } from '../connect.js';
+import { OperatorModel } from '../../model/OperatorModel.js';
 
 const connection = await connect({
   access_mode: 'READ_WRITE',
@@ -32,10 +33,12 @@ await connection.run(`
   DROP TABLE IF EXISTS issue_subtypes;
   DROP TABLE IF EXISTS issue_types;
   DROP TABLE IF EXISTS line_branch_memberships;
+  DROP TABLE IF EXISTS line_operators;
   DROP TABLE IF EXISTS stations;
   DROP TABLE IF EXISTS towns;
   DROP TABLE IF EXISTS branches;
   DROP TABLE IF EXISTS lines;
+  DROP TABLE IF EXISTS operators;
   DROP TABLE IF EXISTS metadata;
 
   CREATE TABLE public_holidays AS SELECT * FROM read_json_auto('data/source/public_holidays.json');
@@ -154,6 +157,22 @@ await connection.run(`
     key TEXT PRIMARY KEY,
     value TEXT
   );
+
+  CREATE TABLE operators (
+    id TEXT PRIMARY KEY,
+    name TEXT,
+    name_translations JSON,
+    founded_at DATE,
+    url TEXT
+  );
+
+  CREATE TABLE line_operators (
+    line_id TEXT REFERENCES lines(id),
+    operator_id TEXT REFERENCES operators(id),
+    started_at DATE,
+    ended_at DATE,
+    PRIMARY KEY (line_id, operator_id)
+  );
 `);
 
 // Insert issue types
@@ -184,6 +203,24 @@ if (allSubtypes.length > 0) {
   await connection.run(
     `INSERT INTO issue_subtypes VALUES ${placeholders}`,
     allSubtypes.flat(),
+  );
+}
+
+// Insert operators
+const operators = OperatorModel.getAll();
+const operatorRows = operators.map((operator) => [
+  operator.id,
+  operator.name,
+  JSON.stringify(operator.nameTranslations),
+  operator.foundedAt,
+  operator.url,
+]);
+
+if (operatorRows.length > 0) {
+  const placeholders = operatorRows.map(() => '(?, ?, ?, ?, ?)').join(', ');
+  await connection.run(
+    `INSERT INTO operators VALUES ${placeholders}`,
+    operatorRows.flat(),
   );
 }
 
@@ -273,6 +310,27 @@ if (branchRows.length > 0) {
   );
 }
 
+// Batch insert line operators
+const lineOperatorRows: [string, string, string | null, string | null][] = [];
+for (const line of lines) {
+  for (const operator of line.operators) {
+    lineOperatorRows.push([
+      line.id,
+      operator.operatorId,
+      operator.startedAt ?? null,
+      operator.endedAt ?? null,
+    ]);
+  }
+}
+
+if (lineOperatorRows.length > 0) {
+  const placeholders = lineOperatorRows.map(() => '(?, ?, ?, ?)').join(', ');
+  await connection.run(
+    `INSERT INTO line_operators VALUES ${placeholders}`,
+    lineOperatorRows.flat(),
+  );
+}
+
 // Process towns from stations
 const townMap = new Map<
   string,
@@ -341,9 +399,7 @@ for (const station of stations) {
     station.geo.longitude,
   ]);
 
-  for (const [lineId, memberships] of Object.entries(
-    station.lineMembers,
-  )) {
+  for (const [lineId, memberships] of Object.entries(station.lineMembers)) {
     for (const m of memberships) {
       const key = `${m.code}@${lineId}`;
       const branchMemberMetadatas =

@@ -1,6 +1,7 @@
 import z from 'zod';
 import {
   LineOperatingHours,
+  LineOperatorSchema,
   LineTypeSchema,
 } from '../../schema/Line.js';
 
@@ -13,6 +14,7 @@ export const LineSchema = z
     color: z.string(),
     startedAt: z.iso.datetime().nullable(),
     operatingHours: LineOperatingHours,
+    operators: z.array(LineOperatorSchema),
   })
   .meta({
     ref: 'Line',

@@ -19,6 +19,13 @@
       "end": "00:00"
     }
   },
+  "operators": [
+    {
+      "operatorId": "SOR",
+      "startedAt": null,
+      "endedAt": null
+    }
+  ],
   "branches": {
     "main": {
       "id": "main",

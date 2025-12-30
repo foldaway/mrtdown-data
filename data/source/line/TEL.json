@@ -19,6 +19,13 @@
       "end": "23:50"
     }
   },
+  "operators": [
+    {
+      "operatorId": "SMRT_TRAINS",
+      "startedAt": "2020-01-31",
+      "endedAt": null
+    }
+  ],
   "branches": {
     "main": {
       "id": "main",

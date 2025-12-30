@@ -19,6 +19,13 @@
       "end": "23:50"
     }
   },
+  "operators": [
+    {
+      "operatorId": "SBS",
+      "startedAt": "2013-11-22",
+      "endedAt": null
+    }
+  ],
   "branches": {
     "main": {
       "id": "main",

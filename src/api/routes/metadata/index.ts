@@ -44,6 +44,7 @@ metadataRoute.get(
         issues: {},
         landmarks: {},
         towns: {},
+        operators: {},
       },
     } satisfies Response);
   },

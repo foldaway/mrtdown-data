@@ -7,6 +7,7 @@ import type { Landmark } from '../schema/Landmark.js';
 import type { Line } from '../schema/Line.js';
 import type { Station } from '../schema/Station.js';
 import type { Town } from '../schema/Town.js';
+import type { Operator } from '../../schema/Operator.js';
 
 // Much simpler individual entity queries
 export async function fetchLinesByIds(ids: string[]) {
@@ -19,16 +20,52 @@ export async function fetchLinesByIds(ids: string[]) {
            STRUCT_PACK(
              weekdays := STRUCT_PACK("start" := weekday_start, "end" := weekday_end),
              weekends := STRUCT_PACK("start" := weekend_start, "end" := weekend_end)
-           ) AS operatingHours
+           ) AS operatingHours,
+           COALESCE(
+             (SELECT ARRAY_AGG(
+               STRUCT_PACK(
+                 operatorId := lo.operator_id,
+                 startedAt := lo.started_at,
+                 endedAt := lo.ended_at
+               )
+               ORDER BY lo.started_at NULLS FIRST
+             )
+             FROM line_operators lo
+             WHERE lo.line_id = lines.id AND lo.operator_id IS NOT NULL),
+             ARRAY[]
+           ) AS operators
     FROM lines
     WHERE id IN $1
   `;
   const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
   return result.getRowObjectsJson().map((row) => {
     assert(typeof row.titleTranslations === 'string');
+    assert(Array.isArray(row.operators));
     return {
       ...row,
       titleTranslations: JSON.parse(row.titleTranslations),
+      operators: row.operators.map((op: unknown) => {
+        assert(
+          typeof op === 'object' && op !== null && 'operatorId' in op,
+          'Invalid operator structure',
+        );
+        const operator = op as {
+          operatorId: string;
+          startedAt: string | null;
+          endedAt: string | null;
+        };
+        return {
+          operatorId: operator.operatorId,
+          startedAt:
+            operator.startedAt != null
+              ? DateTime.fromSQL(operator.startedAt).toISO()
+              : null,
+          endedAt:
+            operator.endedAt != null
+              ? DateTime.fromSQL(operator.endedAt).toISO()
+              : null,
+        };
+      }),
     } as Line;
   });
 }
@@ -221,5 +258,25 @@ export async function fetchTownsByIds(ids: string[]) {
       ...row,
       nameTranslations: JSON.parse(row.nameTranslations),
     } as Town;
+  });
+}
+
+export async function fetchOperatorsByIds(ids: string[]) {
+  if (ids.length === 0) {
+    return []; // No IDs provided, return empty array
+  }
+  const connection = await connect();
+  const sql = `
+    SELECT id, name, name_translations AS nameTranslations, founded_at AS foundedAt, url
+    FROM operators
+    WHERE id IN $1
+  `;
+  const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
+  return result.getRowObjectsJson().map((row) => {
+    assert(typeof row.nameTranslations === 'string');
+    return {
+      ...row,
+      nameTranslations: JSON.parse(row.nameTranslations),
+    } as Operator;
   });
 }

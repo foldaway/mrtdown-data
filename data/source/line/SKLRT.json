@@ -19,6 +19,13 @@
       "end": "00:35"
     }
   },
+  "operators": [
+    {
+      "operatorId": "SBS",
+      "startedAt": "2003-01-18",
+      "endedAt": null
+    }
+  ],
   "branches": {
     "east": {
       "id": "east",

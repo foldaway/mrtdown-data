@@ -19,6 +19,7 @@
       "end": "00:00"
     }
   },
+  "operators": [],
   "branches": {
     "main": {
       "id": "main",

@@ -4,6 +4,7 @@ import { LineSchema } from './Line.js';
 import { StationSchema } from './Station.js';
 import { LandmarkSchema } from './Landmark.js';
 import { TownSchema } from './Town.js';
+import { OperatorSchema } from '../../schema/Operator.js';
 
 export const IncludedEntitiesSchema = z
   .object({
@@ -12,6 +13,7 @@ export const IncludedEntitiesSchema = z
     issues: z.record(z.string(), IssueSchema),
     landmarks: z.record(z.string(), LandmarkSchema),
     towns: z.record(z.string(), TownSchema),
+    operators: z.record(z.string(), OperatorSchema),
   })
   .meta({
     ref: 'IncludedEntities',

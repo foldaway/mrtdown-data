@@ -19,6 +19,13 @@
       "end": "23:30"
     }
   },
+  "operators": [
+    {
+      "operatorId": "SMRT_TRAINS",
+      "startedAt": "1999-11-06",
+      "endedAt": null
+    }
+  ],
   "branches": {
     "main": {
       "id": "main",

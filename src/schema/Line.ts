@@ -1,12 +1,10 @@
 import { z } from 'zod';
 import { StationIdSchema } from './StationId.js';
 
-export const LineTypeSchema = z
-  .enum(['mrt.high', 'mrt.medium', 'lrt'])
-  .meta({
-    ref: 'LineType',
-    description: 'The type of the transit line.',
-  });
+export const LineTypeSchema = z.enum(['mrt.high', 'mrt.medium', 'lrt']).meta({
+  ref: 'LineType',
+  description: 'The type of the transit line.',
+});
 export type LineType = z.infer<typeof LineTypeSchema>;
 
 export const LineIdSchema = z
@@ -36,6 +34,19 @@ export const LineOperatingHours = z.object({
 });
 export type LineOperatingHours = z.infer<typeof LineOperatingHours>;
 
+export const LineOperatorSchema = z
+  .object({
+    operatorId: z.string(),
+    startedAt: z.iso.datetime().nullable(),
+    endedAt: z.iso.datetime().nullable(),
+  })
+  .meta({
+    ref: 'LineOperator',
+    description:
+      'Represents the relationship between a line and an operator, including the period during which the operator managed the line.',
+  });
+export type LineOperator = z.infer<typeof LineOperatorSchema>;
+
 export const LineSchema = z.object({
   id: LineIdSchema,
   title: z.string(),
@@ -45,5 +56,6 @@ export const LineSchema = z.object({
   startedAt: z.string().date(),
   branches: z.record(z.string(), LineBranchSchema),
   operatingHours: LineOperatingHours,
+  operators: z.array(LineOperatorSchema),
 });
 export type Line = z.infer<typeof LineSchema>;

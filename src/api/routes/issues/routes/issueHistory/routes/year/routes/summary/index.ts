@@ -2,7 +2,10 @@ import { Hono } from 'hono';
 import { describeRoute, resolver } from 'hono-openapi';
 import { zValidator } from '@hono/zod-validator';
 import { ParamSchema } from './schema/param.js';
-import { SummaryResponseSchema, type SummaryResponse } from './schema/response.js';
+import {
+  SummaryResponseSchema,
+  type SummaryResponse,
+} from './schema/response.js';
 import { issueHistoryYearSummaryQuery } from './queries/issueHistoryYearSummary.js';
 
 export const issueHistoryYearSummaryRoute = new Hono();
@@ -25,10 +28,10 @@ issueHistoryYearSummaryRoute.get(
   }),
   async (c) => {
     const { year } = c.req.valid('param');
-    
+
     const rows = await issueHistoryYearSummaryQuery(year);
-    
-    const summaryByMonth = rows.map(row => ({
+
+    const summaryByMonth = rows.map((row) => ({
       month: row.month,
       issueCountsByType: {
         disruption: row.disruption_count,
@@ -51,6 +54,7 @@ issueHistoryYearSummaryRoute.get(
         issues: {},
         landmarks: {},
         towns: {},
+        operators: {},
       },
     } satisfies SummaryResponse);
   },

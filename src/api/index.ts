@@ -11,6 +11,7 @@ import { issuesRoute } from './routes/issues/index.js';
 import { stationsRoute } from './routes/stations/index.js';
 import { metadataRoute } from './routes/metadata/index.js';
 import { HTTPException } from 'hono/http-exception';
+import { operatorsRoute } from './routes/operators/index.js';
 
 /**
  * The server accepts a comma-separated list of API tokens in the environment variable `API_TOKENS`.
@@ -54,6 +55,7 @@ app.route('/lines', linesRoute);
 app.route('/issues', issuesRoute);
 app.route('/stations', stationsRoute);
 app.route('/metadata', metadataRoute);
+app.route('/operators', operatorsRoute);
 app.get('/healthz', async (c) => {
   return c.body(null, 204);
 });

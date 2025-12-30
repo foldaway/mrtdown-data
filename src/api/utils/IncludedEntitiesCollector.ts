@@ -2,6 +2,7 @@ import {
   fetchIssuesByIds,
   fetchLandmarksByIds,
   fetchLinesByIds,
+  fetchOperatorsByIds,
   fetchStationsByIds,
   fetchTownsByIds,
 } from '../queries/entities.js';
@@ -17,6 +18,7 @@ export class IncludedEntitiesCollector {
   private issueIds = new Set<string>();
   private landmarkIds = new Set<string>();
   private townIds = new Set<string>();
+  private operatorIds = new Set<string>();
 
   /**
    * Add a line ID to be included in the final response
@@ -99,6 +101,22 @@ export class IncludedEntitiesCollector {
   }
 
   /**
+   * Add an operator ID to be included in the final response
+   */
+  addOperatorId(operatorId: string): void {
+    this.operatorIds.add(operatorId);
+  }
+
+  /**
+   * Add multiple operator IDs to be included in the final response
+   */
+  addOperatorIds(operatorIds: string[]): void {
+    for (const operatorId of operatorIds) {
+      this.operatorIds.add(operatorId);
+    }
+  }
+
+  /**
    * Get the current set of collected line IDs
    */
   getLineIds(): string[] {
@@ -127,6 +145,13 @@ export class IncludedEntitiesCollector {
   }
 
   /**
+   * Get the current set of collected operator IDs
+   */
+  getOperatorIds(): string[] {
+    return [...this.operatorIds];
+  }
+
+  /**
    * Check if any entities have been collected
    */
   hasAnyEntities(): boolean {
@@ -135,7 +160,8 @@ export class IncludedEntitiesCollector {
       this.stationIds.size > 0 ||
       this.issueIds.size > 0 ||
       this.landmarkIds.size > 0 ||
-      this.townIds.size > 0
+      this.townIds.size > 0 ||
+      this.operatorIds.size > 0
     );
   }
 
@@ -148,6 +174,7 @@ export class IncludedEntitiesCollector {
     issues: number;
     landmarks: number;
     towns: number;
+    operators: number;
   } {
     return {
       lines: this.lineIds.size,
@@ -155,6 +182,7 @@ export class IncludedEntitiesCollector {
       issues: this.issueIds.size,
       landmarks: this.landmarkIds.size,
       towns: this.townIds.size,
+      operators: this.operatorIds.size,
     };
   }
 
@@ -200,6 +228,13 @@ export class IncludedEntitiesCollector {
       return a.id.localeCompare(b.id);
     });
 
+    // Collect operator IDs from lines
+    for (const line of lines) {
+      for (const operator of line.operators) {
+        this.addOperatorId(operator.operatorId);
+      }
+    }
+
     // Fetch landmarks (including those from stations)
     const landmarks = await fetchLandmarksByIds([...this.landmarkIds]);
     landmarks.sort((a, b) => {
@@ -209,6 +244,12 @@ export class IncludedEntitiesCollector {
     // Fetch towns (including those from stations)
     const towns = await fetchTownsByIds([...this.townIds]);
     towns.sort((a, b) => {
+      return a.id.localeCompare(b.id);
+    });
+
+    // Fetch operators (including those from lines)
+    const operators = await fetchOperatorsByIds([...this.operatorIds]);
+    operators.sort((a, b) => {
       return a.id.localeCompare(b.id);
     });
 
@@ -222,6 +263,9 @@ export class IncludedEntitiesCollector {
         landmarks.map((landmark) => [landmark.id, landmark]),
       ),
       towns: Object.fromEntries(towns.map((town) => [town.id, town])),
+      operators: Object.fromEntries(
+        operators.map((operator) => [operator.id, operator]),
+      ),
     };
   }
 
@@ -232,5 +276,8 @@ export class IncludedEntitiesCollector {
     this.lineIds.clear();
     this.stationIds.clear();
     this.issueIds.clear();
+    this.landmarkIds.clear();
+    this.townIds.clear();
+    this.operatorIds.clear();
   }
 }
