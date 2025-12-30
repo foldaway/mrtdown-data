@@ -38,17 +38,18 @@ export async function issueCounts(granularity: Granularity, count: number) {
         i.id AS issue_id,
         i.type,
         DATE_TRUNC('${granularity}', b.bucket_start) AS bucket,
-        GREATEST(iv.start_at, b.bucket_start, bo.start_time) AS start_clipped,
+        GREATEST(iv.start_at AT TIME ZONE 'Asia/Singapore', b.bucket_start, bo.start_time) AS start_clipped,
         LEAST(
-          COALESCE(iv.end_at, bo.end_time, NOW() AT TIME ZONE 'Asia/Singapore'),
+          COALESCE(iv.end_at AT TIME ZONE 'Asia/Singapore', NOW() AT TIME ZONE 'Asia/Singapore'),
+          bo.end_time,
           b.bucket_start + INTERVAL 1 ${granularity}
         ) AS end_clipped
       FROM issues i
       JOIN issue_intervals iv ON i.id = iv.issue_id
       CROSS JOIN bounds bo
       CROSS JOIN buckets b
-      WHERE iv.start_at < b.bucket_start + INTERVAL 1 ${granularity}
-        AND COALESCE(iv.end_at, bo.end_time, NOW() AT TIME ZONE 'Asia/Singapore') > b.bucket_start
+      WHERE (iv.start_at AT TIME ZONE 'Asia/Singapore') < b.bucket_start + INTERVAL 1 ${granularity}
+        AND COALESCE(iv.end_at AT TIME ZONE 'Asia/Singapore', bo.end_time, NOW() AT TIME ZONE 'Asia/Singapore') > b.bucket_start
     ),
     agg AS (
       SELECT
