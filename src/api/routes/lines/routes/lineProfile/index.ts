@@ -80,6 +80,8 @@ lineProfileRoute.get(
       totalServiceSeconds: lineSummaryRow.total_service_seconds,
       totalDowntimeSeconds: lineSummaryRow.total_downtime_seconds,
       downtimeBreakdown: null,
+      uptimeRank: lineSummaryRow.uptime_rank,
+      totalLines: lineSummaryRow.total_lines,
     };
 
     for (const dailyStat of lineSummaryRow.daily_issue_stats) {

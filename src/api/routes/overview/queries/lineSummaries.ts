@@ -17,6 +17,8 @@ interface Row {
     type: IssueType;
     downtime_seconds: number;
   }[];
+  uptime_rank: number | null;
+  total_lines: number | null;
   daily_issue_stats: {
     day: string | null;
     type: IssueType | 'none';
@@ -234,6 +236,16 @@ export async function lineSummariesQuery(days: number) {
       GROUP BY b.line_id, b.total_service_seconds
     ),
 
+    -- ranking of all lines by uptime_ratio
+    uptime_rankings AS (
+      SELECT
+        line_id,
+        uptime_ratio,
+        RANK() OVER (ORDER BY uptime_ratio DESC NULLS LAST)::INTEGER AS uptime_rank,
+        COUNT(*) OVER ()::INTEGER AS total_lines
+      FROM uptime_summary
+    ),
+
     -- ongoing issues for status flags
     ongoing AS (
       SELECT DISTINCT
@@ -266,6 +278,8 @@ export async function lineSummariesQuery(days: number) {
       COALESCE(us.total_service_seconds, 0) AS total_service_seconds,
       COALESCE(us.total_downtime_seconds, 0) AS total_downtime_seconds,
       COALESCE(us.downtime_breakdown, []) AS downtime_breakdown,
+      r.uptime_rank,
+      r.total_lines,
       LIST(
         STRUCT_PACK(
           day := p.day,
@@ -278,7 +292,8 @@ export async function lineSummariesQuery(days: number) {
     FROM lines l
     LEFT JOIN per_day_type p ON l.id = p.line_id
     LEFT JOIN uptime_summary us ON us.line_id = l.id
-    GROUP BY l.id, l.started_at, us.uptime_ratio, us.total_service_seconds, us.total_downtime_seconds, us.downtime_breakdown
+    LEFT JOIN uptime_rankings r ON r.line_id = l.id
+    GROUP BY l.id, l.started_at, us.uptime_ratio, us.total_service_seconds, us.total_downtime_seconds, us.downtime_breakdown, r.uptime_rank, r.total_lines
     ORDER BY
       CASE WHEN l.started_at > NOW() THEN 1 ELSE 0 END ASC,
       l.id ASC;

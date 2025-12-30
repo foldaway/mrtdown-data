@@ -60,6 +60,8 @@ overviewRoute.get(
         totalServiceSeconds: row.total_service_seconds,
         totalDowntimeSeconds: row.total_downtime_seconds,
         downtimeBreakdown: null,
+        uptimeRank: row.uptime_rank,
+        totalLines: row.total_lines,
       };
 
       entitiesCollector.addIssueId(row.line_id);

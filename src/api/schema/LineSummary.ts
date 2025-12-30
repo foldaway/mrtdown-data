@@ -82,6 +82,13 @@ export const LineSummarySchema = z
         }),
       )
       .nullable(),
+    uptimeRank: z.number().nullable().meta({
+      description:
+        "Rank of this line's uptime ratio among all lines (1 = best).",
+    }),
+    totalLines: z.number().nullable().meta({
+      description: 'Total number of lines used for ranking.',
+    }),
   })
   .meta({
     ref: 'LineSummary',
