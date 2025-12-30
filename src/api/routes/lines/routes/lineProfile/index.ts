@@ -256,8 +256,13 @@ lineProfileRoute.get(
         dataTimeScale.count,
       );
 
+      const title = new Intl.NumberFormat(undefined, {
+        style: 'unit',
+        unit: displayTimeScale?.granularity ?? dataTimeScale.granularity,
+      }).format(displayTimeScale?.count ?? dataTimeScale.count);
+
       const graphUptimeRatio: TimeScaleChart = {
-        title: `Uptime Ratio (${displayTimeScale?.granularity ?? dataTimeScale.granularity})`,
+        title: `Uptime Ratio (${title})`,
         displayTimeScale,
         dataTimeScale,
         data: uptimeRatioRows.map((row) => {
