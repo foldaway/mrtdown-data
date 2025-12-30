@@ -19,7 +19,6 @@ import { operatorUptimeRatiosCumulativeQuery } from './queries/operatorUptimeRat
 import { CHART_CONFIGS } from '../../../../constants.js';
 import type { ChartEntry, TimeScaleChart } from '../../../../schema/Chart.js';
 import type { OperatorProfile } from '../../../../schema/OperatorProfile.js';
-import { OperatorModel } from '../../../../../model/OperatorModel.js';
 
 export const operatorProfileRoute = new Hono();
 
@@ -275,11 +274,9 @@ operatorProfileRoute.get(
     }
 
     // Calculate years of operation
-    const operators = OperatorModel.getAll();
-    const operator = operators.find((op) => op.id === operatorId);
     let yearsOfOperation: number | null = null;
-    if (operator?.foundedAt) {
-      const foundedDate = DateTime.fromISO(operator.foundedAt);
+    if (row.founded_at) {
+      const foundedDate = DateTime.fromISO(row.founded_at);
       if (foundedDate.isValid) {
         const now = DateTime.now();
         yearsOfOperation = Math.floor(now.diff(foundedDate, 'years').years);

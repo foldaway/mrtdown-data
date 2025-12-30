@@ -3,6 +3,7 @@ import { connect } from '../../../../../../db/connect.js';
 interface Row {
   operator_id: string;
   line_ids: string[];
+  founded_at: string | null;
 }
 
 export async function operatorProfileQuery(operatorId: string) {
@@ -11,6 +12,7 @@ export async function operatorProfileQuery(operatorId: string) {
   const sql = `
     SELECT
       o.id AS operator_id,
+      o.founded_at AS founded_at,
       COALESCE(
         (SELECT ARRAY_AGG(lo.line_id ORDER BY lo.line_id)
          FROM line_operators lo
