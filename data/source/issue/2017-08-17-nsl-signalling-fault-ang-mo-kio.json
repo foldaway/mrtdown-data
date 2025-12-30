@@ -6,9 +6,6 @@
     "ms": "Ralat Sistem Isyarat Baharu Berhampiran Ang Mo Kio",
     "ta": "Ang Mo Kio அருகே புதிய சமிக்ஞை அமைப்பு தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2017-08-17T18:18:56.000+08:00",
   "endAt": "2017-08-17T20:18:27.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YIS",
@@ -67,7 +63,11 @@
         "CTH",
         "RFP",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

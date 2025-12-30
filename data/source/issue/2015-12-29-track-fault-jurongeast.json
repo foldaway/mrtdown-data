@@ -6,12 +6,8 @@
     "ms": "Ralat trek berhampiran Stesen Jurong East menyebabkan kelewatan",
     "ta": "ஜூரோங் கிழக்கு நிலையத்திற்கு அருகில் ஏற்பட்டுள்ள பாதையில் ஏற்பட்ட கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "CLE",
@@ -21,7 +17,8 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2015-12-29T08:41:13.000+08:00",
@@ -49,5 +46,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/681636050695892993",
       "createdAt": "2015-12-29T08:41:13.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

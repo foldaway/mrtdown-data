@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan kerana kerosakan kereta api di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் ரயில் பழுது காரணமாக சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2015-10-09T09:21:02.000+08:00",
   "endAt": "2015-10-09T09:37:54.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "OTP",
@@ -48,7 +44,11 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

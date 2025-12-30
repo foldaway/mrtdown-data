@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan Sengkang LRT disebabkan kerja penyelenggaraan mendesak",
     "ta": "அத்தியாவசிய பராமரிப்புப் பணிகளால் செங்காங் LRT சேவைக்கு இடையூறு"
   },
-  "componentIdsAffected": [
-    "SKLRT"
-  ],
   "startAt": "2019-10-04T22:15:00.000+08:00",
   "endAt": "2019-10-05T08:00:00.000+08:00",
   "type": "maintenance",
@@ -27,7 +24,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
         "SKG",
@@ -39,10 +35,10 @@
         "LYR",
         "TKG",
         "RNJ"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "SKLRT",
       "branchName": "east",
       "stationIds": [
         "SKG",
@@ -51,7 +47,11 @@
         "BAK",
         "KGK",
         "RNG"
-      ]
+      ],
+      "lineId": "SKLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "SKLRT"
   ]
 }

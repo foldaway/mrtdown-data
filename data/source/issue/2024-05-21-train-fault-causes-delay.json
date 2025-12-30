@@ -6,9 +6,6 @@
     "ms": "Kerosakan Kereta Api Menyebabkan Kelewatan Antara Orchard dan Gardens by the Bay",
     "ta": "ரயில் கோளாறு காரணமாக Orchard மற்றும் Gardens by the Bay இடையே தாமதம்"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2024-05-21T09:03:55.000+08:00",
   "endAt": "2024-05-21T09:27:17.000+08:00",
   "type": "disruption",
@@ -38,7 +35,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "ORC",
@@ -49,7 +45,11 @@
         "SHW",
         "MRB",
         "GRB"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

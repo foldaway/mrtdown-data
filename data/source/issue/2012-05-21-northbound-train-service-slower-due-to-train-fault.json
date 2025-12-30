@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan kereta api arah utara lebih perlahan kerana kerosakan kereta api",
     "ta": "வடக்கு நோக்கி செல்லும் ரயில் சேவையில் ரயில் கோளாறு காரணமாக தாமதம்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -39,7 +35,8 @@
         "ORC",
         "SOM",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-05-21T08:09:46.000+08:00",
@@ -67,5 +64,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/204363319610585088",
       "createdAt": "2012-05-21T08:09:46.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

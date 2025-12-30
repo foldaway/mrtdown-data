@@ -6,9 +6,6 @@
     "ms": "Kelewatan perkhidmatan kereta CCL kerana kegagalan peralatan komunikasi",
     "ta": "தொடர்பு உபகரணங்கள் செயலிழந்ததால் CCL ரயில் சேவை தாமதம்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2013-07-04T18:03:44.000+08:00",
   "endAt": "2013-07-04T18:18:25.000+08:00",
   "type": "disruption",
@@ -32,7 +29,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -63,16 +59,20 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
         "BFT",
         "PMN"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

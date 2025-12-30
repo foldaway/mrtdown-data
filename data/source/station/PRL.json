@@ -5,15 +5,6 @@
     "zh-Hans": "伊莱雅",
     "ta": "இலியாஸ்"
   },
-  "componentMembers": {
-    "CRL": [
-      {
-        "code": "CP2",
-        "startedAt": "2032-01-01",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Pasir Ris",
   "town_translations": {
     "zh-Hans": "巴西立",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3765,
     "longitude": 103.9511
+  },
+  "lineMembers": {
+    "CRL": [
+      {
+        "code": "CP2",
+        "startedAt": "2032-01-01",
+        "structureType": "underground"
+      }
+    ]
   }
 }

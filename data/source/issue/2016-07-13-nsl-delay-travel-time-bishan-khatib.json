@@ -6,19 +6,16 @@
     "ms": "Kelewatan di Laluan Utara-Selatan kerana kerosakan trek",
     "ta": "தட செயலிழப்பு காரணமாக வடக்கு-தெற்கு பாதையில் தாமதம்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "KTB",
         "YCK",
         "AMK",
         "BSH"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2016-07-13T10:39:12.000+08:00",
@@ -59,5 +56,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/753056151944564736",
       "createdAt": "2016-07-13T10:39:12.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,12 +6,8 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Lingkaran",
     "ta": "வட்டப் பாதையில் ரயில் பழுது காரணமாக தாமதம்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -23,7 +19,8 @@
         "MBT",
         "DKT",
         "PYL"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2014-11-13T10:14:19.000+08:00",
@@ -51,5 +48,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/532718068934266880",
       "createdAt": "2014-11-13T10:14:19.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

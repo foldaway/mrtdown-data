@@ -5,22 +5,6 @@
     "zh-Hans": "光明山",
     "ta": "பிரைட் ஹில்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE7",
-        "startedAt": "2021-08-28",
-        "structureType": "underground"
-      }
-    ],
-    "CRL": [
-      {
-        "code": "CR13",
-        "startedAt": "2030-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bishan",
   "town_translations": {
     "zh-Hans": "碧山",
@@ -48,5 +32,21 @@
   "geo": {
     "latitude": 1.357569,
     "longitude": 103.84533
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE7",
+        "startedAt": "2021-08-28",
+        "structureType": "underground"
+      }
+    ],
+    "CRL": [
+      {
+        "code": "CR13",
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

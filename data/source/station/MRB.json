@@ -5,29 +5,6 @@
     "zh-Hans": "滨海湾",
     "ta": "மரீனா பே"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS27",
-        "startedAt": "1987-12-12",
-        "structureType": "underground"
-      }
-    ],
-    "TEL": [
-      {
-        "code": "TE20",
-        "startedAt": "2022-11-13",
-        "structureType": "underground"
-      }
-    ],
-    "CCL": [
-      {
-        "code": "CE2",
-        "startedAt": "2012-01-14",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Marina Bay",
   "town_translations": {
     "zh-Hans": "滨海湾",
@@ -59,5 +36,28 @@
   "geo": {
     "latitude": 1.283,
     "longitude": 103.859
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS27",
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE20",
+        "startedAt": "2022-11-13",
+        "structureType": "underground"
+      }
+    ],
+    "CCL": [
+      {
+        "code": "CE2",
+        "startedAt": "2012-01-14",
+        "structureType": "underground"
+      }
+    ]
   }
 }

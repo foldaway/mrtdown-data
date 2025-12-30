@@ -6,9 +6,6 @@
     "ms": "Gangguan Laluan Timur-Barat disebabkan oleh kerosakan kereta",
     "ta": "ரயில் பழுது காரணமாக கிழக்கு-மேற்கு பாதை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2018-09-19T07:10:51.000+08:00",
   "endAt": "2018-09-19T13:50:00.000+08:00",
   "type": "disruption",
@@ -62,7 +59,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "QUE",
@@ -74,7 +70,11 @@
         "CNG",
         "LKS",
         "BNL"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

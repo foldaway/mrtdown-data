@@ -6,10 +6,6 @@
     "ms": "Perkhidmatan kereta api berjalan lebih perlahan kerana cuaca basah",
     "ta": "ஈரமான வானிலை காரணமாக ரயில் சேவைகள் மெதுவாக இயங்குகின்றன"
   },
-  "componentIdsAffected": [
-    "NSL",
-    "EWL"
-  ],
   "startAt": "2011-12-25T09:12:29.000+08:00",
   "endAt": "2011-12-26T00:00:00.000+08:00",
   "type": "disruption",
@@ -33,7 +29,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -61,10 +56,10 @@
         "ORC",
         "SOM",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     },
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JKN",
@@ -96,16 +91,21 @@
         "SIM",
         "TAM",
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     },
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL",
+    "EWL"
   ]
 }

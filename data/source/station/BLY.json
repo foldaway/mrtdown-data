@@ -5,15 +5,6 @@
     "zh-Hans": "巴特礼",
     "ta": "பார்ட்லி"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC12",
-        "startedAt": "2009-05-28",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Toa Payoh",
   "town_translations": {
     "zh-Hans": "大巴窑",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3608,
     "longitude": 103.8879
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC12",
+        "startedAt": "2009-05-28",
+        "structureType": "underground"
+      }
+    ]
   }
 }

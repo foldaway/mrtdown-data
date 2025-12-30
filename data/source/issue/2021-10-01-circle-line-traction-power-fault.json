@@ -6,9 +6,6 @@
     "ms": "Kerosakan kuasa tarikan di Laluan Bulatan",
     "ta": "வட்டப் பாதையில் இழுவை மின்சாரம் பழுதால்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2021-10-01T17:56:23.000+08:00",
   "endAt": "2021-10-01T18:12:39.000+08:00",
   "type": "disruption",
@@ -44,14 +41,17 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "PPJ",
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

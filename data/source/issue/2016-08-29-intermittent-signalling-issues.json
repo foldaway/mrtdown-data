@@ -6,9 +6,6 @@
     "ms": "Masalah isyarat sekejap-sekejap yang mempengaruhi Laluan Lingkar",
     "ta": "வட்டப் பாதையைப் பாதிக்கும் அவ்வப்போது சமிக்ஞை சிக்கல்கள்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2016-08-29T14:54:59.000+08:00",
   "endAt": "2016-08-31T12:44:42.000+08:00",
   "type": "disruption",
@@ -110,7 +107,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -141,10 +137,10 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -174,7 +170,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

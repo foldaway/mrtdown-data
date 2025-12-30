@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan utama di Laluan Utara-Selatan akibat kerosakan landasan dan banjir terowong",
     "ta": "தடக் கோளாறு மற்றும் சுரங்க வெள்ளப்பெருக்கு காரணமாக வடக்கு-தெற்கு பாதையில் முக்கிய சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2017-10-07T17:36:54.000+08:00",
   "endAt": "2017-10-08T13:52:28.000+08:00",
   "type": "disruption",
@@ -97,7 +94,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
@@ -113,7 +109,11 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

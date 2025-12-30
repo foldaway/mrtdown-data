@@ -6,7 +6,6 @@
     "ms": "Tiada Perkhidmatan LRT untuk Sengkang dan Punggol kerana Kerosakan Sistem",
     "ta": "கணினி செயலிழப்பு காரணமாக செங்காங் மற்றும் பு metaphoricalகலுக்கு LRT சேவை இல்லை"
   },
-  "componentIdsAffected": ["SKLRT", "PGLRT"],
   "startAt": "2019-10-01T06:10:35.000+08:00",
   "endAt": "2019-10-01T08:17:04.000+08:00",
   "type": "disruption",
@@ -39,7 +38,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
         "SKG",
@@ -51,22 +49,51 @@
         "LYR",
         "TKG",
         "RNJ"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "SKLRT",
       "branchName": "east",
-      "stationIds": ["SKG", "CPV", "RMB", "BAK", "KGK", "RNG"]
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK",
+        "RNG"
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "PGLRT",
       "branchName": "west",
-      "stationIds": ["PGL", "SMK", "PGP", "SMD", "NBG", "SMG", "STK"]
+      "stationIds": [
+        "PGL",
+        "SMK",
+        "PGP",
+        "SMD",
+        "NBG",
+        "SMG",
+        "STK"
+      ],
+      "lineId": "PGLRT"
     },
     {
-      "componentId": "PGLRT",
       "branchName": "east",
-      "stationIds": ["PGL", "COV", "MRD", "CRE", "RIV", "KDL", "OAS", "DAM"]
+      "stationIds": [
+        "PGL",
+        "COV",
+        "MRD",
+        "CRE",
+        "RIV",
+        "KDL",
+        "OAS",
+        "DAM"
+      ],
+      "lineId": "PGLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "SKLRT",
+    "PGLRT"
   ]
 }

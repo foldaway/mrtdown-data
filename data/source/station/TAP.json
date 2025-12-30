@@ -5,15 +5,6 @@
     "zh-Hans": "大巴窑",
     "ta": "தோ பாயோ"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS19",
-        "startedAt": "1987-11-07",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Toa Payoh",
   "town_translations": {
     "zh-Hans": "大巴窑",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3324,
     "longitude": 103.8484
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS19",
+        "startedAt": "1987-11-07",
+        "structureType": "underground"
+      }
+    ]
   }
 }

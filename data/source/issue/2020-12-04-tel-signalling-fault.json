@@ -6,9 +6,6 @@
     "ms": "Kerosakan isyarat menyebabkan tiada perkhidmatan kereta api di TEL",
     "ta": "TEL இல் ரயில் சேவை இல்லாத சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2020-12-04T05:43:01.000+08:00",
   "endAt": "2020-12-04T10:56:35.000+08:00",
   "type": "disruption",
@@ -121,13 +118,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
         "WDL",
         "WDS"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

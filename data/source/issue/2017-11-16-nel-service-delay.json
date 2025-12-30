@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan NEL tertangguh disebabkan oleh kerosakan kereta api di stesen Clarke Quay",
     "ta": "Clarke Quay நிலையத்தில் ரயில் பழுது காரணமாக NEL சேவை தாமதம்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2017-11-16T18:24:15.000+08:00",
   "endAt": "2017-11-16T19:53:00+08:00",
   "type": "disruption",
@@ -74,7 +71,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -93,7 +89,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

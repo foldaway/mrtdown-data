@@ -6,9 +6,6 @@
     "ms": "Pekerjaan Pembaharuan dan Penyelenggaraan di sepanjang North-South Line",
     "ta": "வடக்கு-தெற்கு பாதையில் புதுப்பித்தல் மற்றும் பராமரிப்பு பணிகள்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2019-05-18T00:00:00.000+08:00",
   "endAt": "2019-05-21T04:28:36.000+08:00",
   "type": "maintenance",
@@ -56,14 +53,17 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
         "ADM",
         "SBW",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,10 +6,6 @@
     "ms": "Kerosakan kuasa tarikan menyebabkan kelewatan",
     "ta": "தடைசெய்யும் ஆற்றல் பிழை தாமதங்களுக்குக் காரணம்"
   },
-  "componentIdsAffected": [
-    "NSL",
-    "EWL"
-  ],
   "startAt": "2015-07-07T19:16:12.000+08:00",
   "endAt": "2015-07-07T22:35:58.000+08:00",
   "type": "disruption",
@@ -129,7 +125,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -161,19 +156,19 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     },
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     },
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "MRB",
@@ -201,7 +196,12 @@
         "BGB",
         "BBT",
         "JUR"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL",
+    "EWL"
   ]
 }

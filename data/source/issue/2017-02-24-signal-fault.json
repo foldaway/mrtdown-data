@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan kerana kerosakan isyarat di Laluan Bulat",
     "ta": "வட்டப் பாதையில் சிக்னல் கோளாறு காரணமாக சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2017-02-24T07:32:21.000+08:00",
   "endAt": "2017-02-24T07:43:22.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "BSH",
@@ -48,7 +44,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

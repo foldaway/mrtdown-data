@@ -6,17 +6,14 @@
     "ms": "Kerosakan kereta di East-West Line",
     "ta": "கிழக்கு-மேற்கு பாதையில் ரயில் பழுது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "EUN",
         "PYL"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-10-30T10:18:19.000+08:00",
@@ -38,5 +35,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/263102501639831553",
       "createdAt": "2012-10-30T10:18:19.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

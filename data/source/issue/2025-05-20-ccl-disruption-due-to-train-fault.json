@@ -6,9 +6,6 @@
     "ms": "Gangguan Laluan Bulat kerana kerosakan kereta api",
     "ta": "வட்டப் பாதையில் ரயில் கோளாறு காரணமாக இடையூறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2025-05-20T08:34:32.000+08:00",
   "endAt": "2025-05-20T08:46:31.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "PYL",
@@ -59,7 +55,11 @@
         "FRR",
         "HLV",
         "BNV"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan NEL kerana kerosakan landasan di Harbour Front",
     "ta": "ஹார்பர் ஃபிரண்ட் ரயில் பாதையில் ஏற்பட்ட கோளாறு காரணமாக NEL சேவை சீர்குலைவு"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2024-11-08T08:03:26.000+08:00",
   "endAt": "2024-11-08T08:32:52.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -56,7 +52,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

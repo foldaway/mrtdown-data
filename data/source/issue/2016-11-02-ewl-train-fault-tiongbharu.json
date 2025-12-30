@@ -6,19 +6,16 @@
     "ms": "Gangguan kereta api menyebabkan gangguan perkhidmatan antara Queenstown dan Outram Park di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் குயின்ஸ்டவுன் மற்றும் அவுட்ரம் பூங்கா இடையே சேவை இடையூறுக்கு காரணமான ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "OTP",
         "TIB",
         "RDH",
         "QUE"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2016-11-02T17:48:31.000+08:00",
@@ -52,5 +49,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/793751632706097153",
       "createdAt": "2016-11-02T17:48:31.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

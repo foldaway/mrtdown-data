@@ -6,18 +6,15 @@
     "ms": "Tiada perkhidmatan kereta api antara Woodlands dan Kranji",
     "ta": "Woodlands மற்றும் Kranji இடையே ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "KRJ",
         "MSL",
         "WDL"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2016-01-09T17:47:32.000+08:00",
@@ -93,5 +90,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/685759804409688064",
       "createdAt": "2016-01-09T17:47:32.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

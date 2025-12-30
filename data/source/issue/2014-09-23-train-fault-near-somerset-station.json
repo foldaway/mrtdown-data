@@ -6,12 +6,8 @@
     "ms": "Kerosakan kereta api berhampiran stesen Somerset menyebabkan kelewatan",
     "ta": "சோமர்செட் நிலையத்திற்கு அருகே ரயில் கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "NEW",
@@ -21,7 +17,8 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2014-09-23T21:06:17.000+08:00",
@@ -74,5 +71,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/514400357527453697",
       "createdAt": "2014-09-23T21:06:17.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

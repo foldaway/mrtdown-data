@@ -6,17 +6,14 @@
     "ms": "Rel Ketiga Rosak Menyebabkan Kelewatan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் குறைபாடுள்ள 3வது ரயில்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "RDH",
         "QUE"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2014-03-28T13:02:34.000+08:00",
@@ -38,5 +35,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/449411201642946560",
       "createdAt": "2014-03-28T13:02:34.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

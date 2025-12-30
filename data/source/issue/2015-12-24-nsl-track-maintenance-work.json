@@ -6,19 +6,16 @@
     "ms": "Kerja penyelenggaraan landasan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் தட பராமரிப்பு பணிகள்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YIS",
         "KTB",
         "YCK",
         "AMK"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-12-24T05:28:24.000+08:00",
@@ -47,5 +44,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/679775586366062592",
       "createdAt": "2015-12-24T05:28:24.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

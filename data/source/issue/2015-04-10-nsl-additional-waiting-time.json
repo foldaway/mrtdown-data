@@ -6,12 +6,8 @@
     "ms": "Masa menunggu tambahan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் கூடுதல் காத்திருப்பு நேரம்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -40,7 +36,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-04-10T06:36:40.000+08:00",
@@ -60,5 +57,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/586296699636867072",
       "createdAt": "2015-04-10T06:36:40.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

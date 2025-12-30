@@ -5,15 +5,6 @@
     "zh-Hans": "坎贝拉",
     "ta": "கான்பரா"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS12",
-        "startedAt": "2019-11-02",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Sembawang",
   "town_translations": {
     "zh-Hans": "三巴旺",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.458603,
     "longitude": 103.830661
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS12",
+        "startedAt": "2019-11-02",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

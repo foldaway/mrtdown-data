@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Laluan Bulat kerana kerosakan isyarat",
     "ta": "சிக்னல் கோளாறு காரணமாக வட்டப் பாதையில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2023-04-07T12:59:37.000+08:00",
   "endAt": "2023-04-07T15:15:30.000+08:00",
   "type": "disruption",
@@ -103,7 +100,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -115,10 +111,10 @@
         "MBT",
         "DKT",
         "PYL"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -129,7 +125,11 @@
         "MBT",
         "DKT",
         "PYL"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

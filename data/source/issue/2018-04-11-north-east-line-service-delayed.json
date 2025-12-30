@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan NEL tertunda kerana kerosakan kereta api di Little India",
     "ta": "லிட்டில் இந்தியா அருகே ரயிலில் ஏற்பட்ட கோளாறு காரணமாக NEL சேவை தாமதமானது"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2018-04-11T07:35:55.000+08:00",
   "endAt": "2018-04-11T09:19:49.000+08:00",
   "type": "disruption",
@@ -74,7 +71,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -93,7 +89,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

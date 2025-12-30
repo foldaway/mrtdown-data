@@ -51,8 +51,8 @@ overviewRoute.get(
     const lineSummaryRows = await lineSummariesQuery(query.days ?? 30);
     for (const row of lineSummaryRows) {
       const lineSummary: LineSummary = {
-        lineId: row.component_id,
-        status: row.component_status,
+        lineId: row.line_id,
+        status: row.line_status,
         durationSecondsByIssueType: {},
         durationSecondsTotalForIssues: 0,
         breakdownByDates: {},
@@ -62,11 +62,11 @@ overviewRoute.get(
         downtimeBreakdown: null,
       };
 
-      entitiesCollector.addIssueId(row.component_id);
+      entitiesCollector.addIssueId(row.line_id);
 
       for (const dailyStat of row.daily_issue_stats) {
         if (dailyStat.day == null) {
-          // This case is possible for components that are not in service
+          // This case is possible for lines that are not in service
           continue;
         }
 
@@ -84,7 +84,7 @@ overviewRoute.get(
         };
 
         if (dailyStat.type === 'none') {
-          // This means there were no issues affecting this component on this day
+          // This means there were no issues affecting this line on this day
           // We can skip this entry
           continue;
         }
@@ -120,7 +120,7 @@ overviewRoute.get(
     }
 
     const lines = await lineGetAllQuery();
-    entitiesCollector.addLineIds(lines.map((line) => line.component_id));
+    entitiesCollector.addLineIds(lines.map((line) => line.line_id));
 
     const included = await entitiesCollector.fetchIncludedEntities();
 

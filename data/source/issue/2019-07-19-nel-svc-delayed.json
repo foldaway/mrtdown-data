@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan Laluan Timur Laut akibat kerosakan trek",
     "ta": "தடக் கோளாறு காரணமாக வடகிழக்கு வரிசையில் சேவை தடைப்பட்டது"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2019-07-19T08:11:24.000+08:00",
   "endAt": "2019-07-19T09:25:04.000+08:00",
   "type": "disruption",
@@ -50,7 +47,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -69,7 +65,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

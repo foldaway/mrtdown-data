@@ -6,17 +6,14 @@
     "ms": "Gangguan perkhidmatan kerana kerosakan landasan antara Eunos dan Paya Lebar",
     "ta": "Eunos மற்றும் Paya Lebar இடையே உள்ள தடப் பிழையால் சேவை சீர்குலைவு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "EUN",
         "PYL"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-06-25T11:22:00.000+08:00",
@@ -44,5 +41,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/217095268716380160",
       "createdAt": "2012-06-25T11:22:00.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

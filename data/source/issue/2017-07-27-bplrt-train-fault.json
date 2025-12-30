@@ -6,17 +6,14 @@
     "ms": "Kerosakan kereta api yang menjejaskan perkhidmatan LRT Bukit Panjang A",
     "ta": "புக்கிட் பாஞ்சாங் LRT சேவை A-ஐ பாதிக்கும் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
   ],
   "startAt": "2017-07-27T17:00:50.000+08:00",
@@ -44,5 +41,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/890497193110405120",
       "createdAt": "2017-07-27T17:00:50.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "BPLRT Pembaharuan Rel - Tutup Sepanjang Laluan",
     "ta": "BPLRT பாதை புதுப்பிப்பு - முழு வரிசை நிறுத்தம்"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2026-01-25T00:00:00.000+08:00",
   "endAt": "2026-01-26T00:00:00.000+08:00",
   "type": "maintenance",
@@ -33,7 +30,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -50,7 +46,11 @@
         "JLP",
         "SNJ",
         "BKP"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

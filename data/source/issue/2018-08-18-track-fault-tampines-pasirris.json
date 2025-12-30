@@ -6,9 +6,6 @@
     "ms": "Kesalahan trek menyebabkan kelewatan antara Tampines dan Pasir Ris",
     "ta": "Tampines மற்றும் Pasir Ris இடையே தாமதத்தை ஏற்படுத்தும் தடப் பிழை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2018-08-18T21:57:21.000+08:00",
   "endAt": "2018-08-18T23:45:13.000+08:00",
   "type": "disruption",
@@ -56,12 +53,15 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

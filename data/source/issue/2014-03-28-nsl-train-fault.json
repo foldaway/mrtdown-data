@@ -6,12 +6,8 @@
     "ms": "Kegagalan Kereta di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் ரயில் பழுது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -19,7 +15,8 @@
         "BGB",
         "BBT",
         "JUR"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2014-03-28T07:32:48.000+08:00",
@@ -47,5 +44,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/449328212699394048",
       "createdAt": "2014-03-28T07:32:48.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

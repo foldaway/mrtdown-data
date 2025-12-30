@@ -6,9 +6,6 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Bulatan",
     "ta": "வட்டப் பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2021-07-29T09:08:25.000+08:00",
   "endAt": "2021-07-29T10:15:50.000+08:00",
   "type": "disruption",
@@ -56,7 +53,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "CDT",
@@ -66,7 +62,11 @@
         "BNV",
         "ONH",
         "KRG"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

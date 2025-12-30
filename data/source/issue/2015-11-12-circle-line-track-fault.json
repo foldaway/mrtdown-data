@@ -6,19 +6,16 @@
     "ms": "Jejak kesalahan di Laluan Bulat menyebabkan kelewatan",
     "ta": "வட்டப் பாதையில் தடத்தினால் தாமதம் ஏற்படுகிறது"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
         "BBS",
         "EPN",
         "PMN"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2015-11-12T06:33:15.000+08:00",
@@ -53,5 +50,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/664571618694270976",
       "createdAt": "2015-11-12T06:33:15.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

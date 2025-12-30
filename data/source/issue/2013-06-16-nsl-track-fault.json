@@ -6,17 +6,14 @@
     "ms": "Ralat Jejaki Menjejaskan Laluan Utara-Selatan",
     "ta": "தடத்தின் பிழை வடக்கு-தெற்கு பாதையை பாதிக்கிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
         "BSH"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2013-06-16T09:58:24.000+08:00",
@@ -44,5 +41,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/346084311994359808",
       "createdAt": "2013-06-16T09:58:24.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

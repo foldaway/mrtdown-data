@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan Laluan Bulat",
     "ta": "வட்டப் பாதையில் சேவை சீர்குலைவு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2011-12-14T06:00:00+08:00",
   "endAt": "2011-12-14T11:45:00+08:00",
   "type": "disruption",
@@ -25,7 +22,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "MRM",
@@ -35,7 +31,11 @@
         "HLV",
         "BNV",
         "ONH"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

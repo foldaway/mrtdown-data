@@ -6,9 +6,6 @@
     "ms": "EWL Ujian Trek & Persiapan Pemutusan Depot - Bedok/Kembangan ke Changi Depot",
     "ta": "EWL பாதை சோதனை மற்றும் டீப்போ பிரிக்கைக்கு முன்னேற்பாடு - Bedok/Kembangan முதல் Changi Depot"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2025-12-05T22:12:16.000+08:00",
   "endAt": null,
   "type": "maintenance",
@@ -26,12 +23,15 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BDK",
         "KEM"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

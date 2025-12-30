@@ -5,15 +5,6 @@
     "zh-Hans": "达迈",
     "ta": "டாமாய்"
   },
-  "componentMembers": {
-    "PGLRT": [
-      {
-        "code": "PE7",
-        "startedAt": "2011-06-20",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Punggol",
   "town_translations": {
     "zh-Hans": "朋哥尔",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.402442,
     "longitude": 103.91041
+  },
+  "lineMembers": {
+    "PGLRT": [
+      {
+        "code": "PE7",
+        "startedAt": "2011-06-20",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

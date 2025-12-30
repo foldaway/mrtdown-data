@@ -6,18 +6,15 @@
     "ms": "Gangguan kuasa di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் மின்சாரம் பழுது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
         "ADM",
         "SBW"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2016-06-23T16:34:01.000+08:00",
@@ -57,5 +54,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/745897687426424832",
       "createdAt": "2016-06-23T16:34:01.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

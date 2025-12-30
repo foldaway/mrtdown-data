@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan akibat kerosakan kuasa",
     "ta": "மின் தடங்கல் காரணமாக சேவை தடை"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2020-02-27T08:31:56.000+08:00",
   "endAt": "2020-02-27T12:22:13.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "SER",
@@ -52,7 +48,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

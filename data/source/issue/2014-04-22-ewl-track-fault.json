@@ -6,18 +6,15 @@
     "ms": "Jalur rosak menyebabkan kelewatan perjalanan antara Joo Koon dan Boon Lay",
     "ta": "ஜூ கூன் மற்றும் பூன் லே இடையே பயண தாமதத்தை ஏற்படுத்தும் பாதை தவறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2014-04-22T18:26:17.000+08:00",
@@ -39,5 +36,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/458552362936700928",
       "createdAt": "2014-04-22T18:26:17.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

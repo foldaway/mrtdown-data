@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Laluan Downtown",
     "ta": "டவுன்டவுன் பாதையில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "startAt": "2018-06-10T16:18:46.000+08:00",
   "endAt": "2018-06-10T17:18:00.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "MPS",
@@ -57,7 +53,11 @@
         "KKB",
         "BDN",
         "BDR"
-      ]
+      ],
+      "lineId": "DTL"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "巴西立东",
     "ta": "பாசிர் ரிஸ் ஈஸ்ட்"
   },
-  "componentMembers": {
-    "CRL": [
-      {
-        "code": "CR4",
-        "startedAt": "2030-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Pasir Ris",
   "town_translations": {
     "zh-Hans": "巴西立",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3757,
     "longitude": 103.9478
+  },
+  "lineMembers": {
+    "CRL": [
+      {
+        "code": "CR4",
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

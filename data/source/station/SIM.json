@@ -5,15 +5,6 @@
     "zh-Hans": "四美",
     "ta": "ஸீமெய்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW3",
-        "startedAt": "1989-12-16",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Tampines",
   "town_translations": {
     "zh-Hans": "淡宾尼",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3484,
     "longitude": 103.9343
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW3",
+        "startedAt": "1989-12-16",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

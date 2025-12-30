@@ -6,9 +6,6 @@
     "ms": "Penutupan Stesen NEL Antara Serangoon dan Punggol",
     "ta": "நெல் நிலையங்கள் செராங்கூன் மற்றும் பு vanguard இடையே மூடப்பட்டுள்ளது"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2021-04-16T23:00:00.000+08:00",
   "endAt": "2021-04-17T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20210416T230000\nRRULE:FREQ=DAILY;UNTIL=20210418T000000;WKST=MO",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "SER",
@@ -40,7 +36,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

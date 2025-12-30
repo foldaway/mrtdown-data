@@ -6,12 +6,8 @@
     "ms": "Kerosakan Kereta Api di Laluan Lingkaran",
     "ta": "வட்டப் பாதையில் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -21,7 +17,8 @@
         "NCH",
         "SDM",
         "MBT"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2014-03-30T20:58:32.000+08:00",
@@ -43,5 +40,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/450255758647500801",
       "createdAt": "2014-03-30T20:58:32.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Pemulihan perkhidmatan kereta api sedang dijalankan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் ரயில் சேவைகள் மீட்டெடுக்கும் பணிகள் நடைபெற்று வருகின்றன"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2024-10-10T12:31:16.000+08:00",
   "endAt": "2024-10-10T13:22:49.000+08:00",
   "type": "disruption",
@@ -61,7 +58,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BGS",
@@ -72,7 +68,11 @@
         "TIB",
         "RDH",
         "QUE"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

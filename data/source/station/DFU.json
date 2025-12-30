@@ -5,15 +5,6 @@
     "zh-Hans": "德福",
     "ta": "டெஃபு"
   },
-  "componentMembers": {
-    "CRL": [
-      {
-        "code": "CR7",
-        "startedAt": "2030-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Hougang",
   "town_translations": {
     "zh-Hans": "后港",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3712,
     "longitude": 103.9025
+  },
+  "lineMembers": {
+    "CRL": [
+      {
+        "code": "CR7",
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

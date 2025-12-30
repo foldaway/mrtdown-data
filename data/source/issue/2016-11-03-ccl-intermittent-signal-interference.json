@@ -6,12 +6,8 @@
     "ms": "Kereta CCL mengalami kelewatan kerana gangguan isyarat",
     "ta": "சிக்னல் குறுக்கீடு காரணமாக CCL ரயில்கள் தாமதமாகின்றன"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -42,10 +38,10 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -75,7 +71,8 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2016-11-03T18:07:16.000+08:00",
@@ -91,5 +88,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/794118739407020032",
       "createdAt": "2016-11-03T18:07:16.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -6,12 +6,8 @@
     "ms": "Ralat isyarat kereta api menyebabkan kelewatan",
     "ta": "தொடர்வண்டி சமிக்ஞை தவறு தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
@@ -27,7 +23,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-05-04T07:45:01.000+08:00",
@@ -67,5 +64,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/859916736073576448",
       "createdAt": "2017-05-04T07:45:01.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

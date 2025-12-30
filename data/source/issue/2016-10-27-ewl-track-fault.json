@@ -6,12 +6,8 @@
     "ms": "Jejak kerosakan menyebabkan kelewatan di Laluan East West",
     "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் தடப் பிழை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -26,7 +22,8 @@
         "KAL",
         "LVR",
         "BGS"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2016-10-27T08:43:11.000+08:00",
@@ -97,5 +94,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/791440070599249921",
       "createdAt": "2016-10-27T08:43:11.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

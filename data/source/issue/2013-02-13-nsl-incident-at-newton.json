@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan disebabkan insiden di stesen Newton",
     "ta": "நியூட்டன் நிலையத்தில் ஏற்பட்ட சம்பவத்தால் சேவை தடைபட்டது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "TAP",
@@ -23,7 +19,8 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2013-02-13T09:08:47.000+08:00",
@@ -111,5 +108,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/301498116807458816",
       "createdAt": "2013-02-13T09:08:47.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,12 +6,8 @@
     "ms": "Kelewatan Laluan Downtown kerana kerosakan isyarat",
     "ta": "சிக்னலிங் தவறு காரணமாக டவுன்டவுன் லைனில் தாமதம்"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "BKP",
@@ -32,7 +28,8 @@
         "DTN",
         "TLA",
         "CTN"
-      ]
+      ],
+      "lineId": "DTL"
     }
   ],
   "startAt": "2017-05-03T07:41:36.000+08:00",
@@ -61,5 +58,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/859553490871271424",
       "createdAt": "2017-05-03T07:41:36.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

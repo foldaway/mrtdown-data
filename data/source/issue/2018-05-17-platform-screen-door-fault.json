@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan utama di Laluan North-South akibat kerosakan pintu skrin platform",
     "ta": "தளம் திரை கதவு செயலிழப்பு காரணமாக வடக்கு-தெற்கு பாதையில் பெரிய சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2018-05-17T18:06:12.000+08:00",
   "endAt": "2018-05-17T20:08:23.000+08:00",
   "type": "disruption",
@@ -80,7 +77,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
@@ -92,7 +88,11 @@
         "ORC",
         "SOM",
         "DBG"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

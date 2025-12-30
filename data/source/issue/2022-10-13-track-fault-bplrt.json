@@ -6,9 +6,6 @@
     "ms": "Jejak kerosakan menyebabkan kelewatan di Bukit Panjang LRT",
     "ta": "Bukit Panjang LRT இல் தாமதத்தை ஏற்படுத்தும் தடக் குறைபாடு"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2022-10-13T14:28:39.000+08:00",
   "endAt": "2022-10-13T14:51:00.000+08:00",
   "type": "disruption",
@@ -38,7 +35,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -47,7 +43,11 @@
         "TKW",
         "PNX",
         "BKP"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

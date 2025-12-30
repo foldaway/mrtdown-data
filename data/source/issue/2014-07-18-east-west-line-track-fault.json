@@ -6,17 +6,14 @@
     "ms": "Jejak Kegagalan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் தடத்தை கண்டறிதல்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2014-07-18T00:25:30.000+08:00",
@@ -44,5 +41,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/489808117866037248",
       "createdAt": "2014-07-18T00:25:30.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

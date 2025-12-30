@@ -5,15 +5,6 @@
     "zh-Hans": "谦道",
     "ta": "ஹியூம்"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT4",
-        "startedAt": "2025-02-28",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bukit Batok",
   "town_translations": {
     "zh-Hans": "武吉巴督",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.3609,
     "longitude": 103.7694
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT4",
+        "startedAt": "2025-02-28",
+        "structureType": "underground"
+      }
+    ]
   }
 }

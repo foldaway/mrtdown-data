@@ -5,15 +5,6 @@
     "zh-Hans": "滨海南码头",
     "ta": "மரினா சவுத் படகுத்துறை"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS28",
-        "startedAt": "2014-11-23",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Straits View",
   "town_translations": {
     "zh-Hans": "海峡景",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.2784,
     "longitude": 103.8623
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS28",
+        "startedAt": "2014-11-23",
+        "structureType": "underground"
+      }
+    ]
   }
 }

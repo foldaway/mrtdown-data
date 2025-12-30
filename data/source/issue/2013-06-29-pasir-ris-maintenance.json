@@ -6,16 +6,13 @@
     "ms": "Kerja penyelenggaraan menjejaskan stesen terminal Pasir Ris",
     "ta": "பசிர் ரிஸ் டெர்மினல் நிலையத்தில் பராமரிப்புப் பணிகள் பாதிப்பை ஏற்படுத்துகின்றன"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2013-06-29T00:00:00+08:00",
@@ -32,5 +29,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/350426217767383042",
       "createdAt": "2013-06-28T09:31:35.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

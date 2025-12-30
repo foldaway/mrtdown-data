@@ -6,9 +6,6 @@
     "ms": "Gangguan Punggol LRT disebabkan oleh masalah sistem",
     "ta": "சிஸ்டம் கோளாறு காரணமாக புங்கோல் எல்.ஆர்.டி. வழித்தடம் சேதம்"
   },
-  "componentIdsAffected": [
-    "PGLRT"
-  ],
   "startAt": "2025-09-13T05:22:45.000+08:00",
   "endAt": "2025-09-13T08:16:35.000+08:00",
   "type": "disruption",
@@ -41,7 +38,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "PGLRT",
       "branchName": "east",
       "stationIds": [
         "PGL",
@@ -52,10 +48,10 @@
         "KDL",
         "OAS",
         "DAM"
-      ]
+      ],
+      "lineId": "PGLRT"
     },
     {
-      "componentId": "PGLRT",
       "branchName": "west",
       "stationIds": [
         "PGL",
@@ -66,7 +62,11 @@
         "NBG",
         "SMG",
         "STK"
-      ]
+      ],
+      "lineId": "PGLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "PGLRT"
   ]
 }

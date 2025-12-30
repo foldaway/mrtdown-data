@@ -5,15 +5,6 @@
     "zh-Hans": "兰岗",
     "ta": "ரங்கோங்"
   },
-  "componentMembers": {
-    "SKLRT": [
-      {
-        "code": "SE5",
-        "startedAt": "2003-01-18",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Sengkang",
   "town_translations": {
     "zh-Hans": "升岗",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3955,
     "longitude": 103.8955
+  },
+  "lineMembers": {
+    "SKLRT": [
+      {
+        "code": "SE5",
+        "startedAt": "2003-01-18",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

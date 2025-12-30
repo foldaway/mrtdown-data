@@ -6,10 +6,6 @@
     "ms": "Gangguan Perkhidmatan: Tiada perkhidmatan kereta api antara Joo Koon dan Bugis, Woodlands dan Jurong East",
     "ta": "சேவை இடையூறு: ஜூ கூன் மற்றும் புகிஸ், வூட்ஸ்லேண்ட்ஸ் மற்றும் ஜுரோங் ஈஸ்ட் இடையே ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "NSL",
-    "EWL"
-  ],
   "startAt": "2016-04-25T20:11:58.000+08:00",
   "endAt": "2016-04-25T20:34:18.000+08:00",
   "type": "disruption",
@@ -50,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BGS",
@@ -71,10 +66,10 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     },
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -85,7 +80,12 @@
         "KRJ",
         "MSL",
         "WDL"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL",
+    "EWL"
   ]
 }

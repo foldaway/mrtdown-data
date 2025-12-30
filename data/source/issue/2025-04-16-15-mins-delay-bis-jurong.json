@@ -6,9 +6,6 @@
     "ms": "15 minit kelewatan di NSL disebabkan oleh kerosakan landasan",
     "ta": "தடக் கோளாறு காரணமாக NSL இல் 15 நிமிடங்கள் தாமதம்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2025-04-16T11:25:54.000+08:00",
   "endAt": "2025-04-16T12:40:14.000+08:00",
   "type": "disruption",
@@ -55,13 +52,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "BSH",
         "BDL",
         "TAP"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

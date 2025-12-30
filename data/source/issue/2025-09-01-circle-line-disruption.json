@@ -6,9 +6,6 @@
     "ms": "Gangguan Jalur Bulatan antara Stesen Marina Bay dan Promenade",
     "ta": "மரீனா பே மற்றும் ப்ரோமனேட்ஸ் நிலையங்கள் இடையிலான சுழல் கோடு இழப்பு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2025-09-01T08:44:06.000+08:00",
   "endAt": "2025-09-01T09:17:17+08:00",
   "type": "disruption",
@@ -67,13 +64,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
         "BFT",
         "PMN"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

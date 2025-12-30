@@ -5,22 +5,6 @@
     "zh-Hans": "樟宜机场",
     "ta": "சாங்கி விமானநிலையம்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "CG2",
-        "startedAt": "2002-02-08",
-        "structureType": "underground"
-      }
-    ],
-    "TEL": [
-      {
-        "code": "TE33",
-        "startedAt": "2035-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Changi",
   "town_translations": {
     "zh-Hans": "樟宜",
@@ -52,5 +36,21 @@
   "geo": {
     "latitude": 1.364,
     "longitude": 103.991
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "CG2",
+        "startedAt": "2002-02-08",
+        "structureType": "underground"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE33",
+        "startedAt": "2035-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

@@ -6,9 +6,6 @@
     "ms": "Tiada perkhidmatan kereta antara BP1 dan BP6 di LRT Bukit Panjang",
     "ta": "Bukit Panjang LRT இல் BP1 மற்றும் BP6 க்கு இடையில் ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2017-03-28T20:57:45.000+08:00",
   "endAt": "2017-03-28T21:28:47.000+08:00",
   "type": "disruption",
@@ -41,7 +38,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -50,7 +46,11 @@
         "TKW",
         "PNX",
         "BKP"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

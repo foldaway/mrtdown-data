@@ -6,12 +6,8 @@
     "ms": "Lanjutan Masa Perjalanan Laluan Utara-Selatan Akibat Pemeriksaan Sistem Isyarat",
     "ta": "வடக்கு-தெற்கு வழித்தடத்தில் சமிக்ஞை அமைப்பு சோதனைகள் காரணமாக பயண நேரம் நீட்டிக்கப்பட்டது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -40,7 +36,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-06-01T18:47:52.000+08:00",
@@ -74,5 +71,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/870230409639936000",
       "createdAt": "2017-06-01T18:47:52.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

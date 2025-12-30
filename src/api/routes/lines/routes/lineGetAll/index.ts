@@ -34,7 +34,7 @@ lineGetAllRoute.get(
       );
     }
 
-    const lineIds = rows.map((r) => r.component_id);
+    const lineIds = rows.map((r) => r.line_id);
     entitiesCollector.addLineIds(lineIds);
 
     const included = await entitiesCollector.fetchIncludedEntities();

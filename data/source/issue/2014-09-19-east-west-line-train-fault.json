@@ -6,9 +6,6 @@
     "ms": "Kerosakan kereta api utama menyebabkan kelewatan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் முக்கிய ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2014-09-19T13:38:57.000+08:00",
   "endAt": "2014-09-19T14:21:32.000+08:00",
   "type": "disruption",
@@ -62,7 +59,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "OTP",
@@ -79,7 +75,11 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -6,19 +6,16 @@
     "ms": "Jejak Kerosakan di Laluan Bulat",
     "ta": "வட்டப் பாதையில் தடயப் பிழை"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
         "BBS",
         "EPN",
         "PMN"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2013-07-27T18:06:58.000+08:00",
@@ -52,5 +49,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/361065167997517825",
       "createdAt": "2013-07-27T18:06:58.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

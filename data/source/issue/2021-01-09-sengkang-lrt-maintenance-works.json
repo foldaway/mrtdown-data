@@ -6,9 +6,6 @@
     "ms": "Kerja Penyelenggaraan Sistem LRT Sengkang",
     "ta": "செங்காங் LRT அமைப்பில் பராமரிப்புப் பணிகள்"
   },
-  "componentIdsAffected": [
-    "SKLRT"
-  ],
   "startAt": "2021-01-09T00:00:00.000+08:00",
   "endAt": "2021-01-10T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20210109T000000\nRRULE:FREQ=DAILY;UNTIL=20210111T000000;WKST=MO",
@@ -27,7 +24,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
         "SKG",
@@ -39,10 +35,10 @@
         "LYR",
         "TKG",
         "RNJ"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "SKLRT",
       "branchName": "east",
       "stationIds": [
         "SKG",
@@ -51,7 +47,11 @@
         "BAK",
         "KGK",
         "RNG"
-      ]
+      ],
+      "lineId": "SKLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "SKLRT"
   ]
 }

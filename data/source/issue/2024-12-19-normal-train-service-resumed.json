@@ -6,9 +6,6 @@
     "ms": "Ralat isyarat di Laluan Thomson-East Coast",
     "ta": "THOMSON-EAST COAST பாதையில் சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2024-12-19T09:38:57.000+08:00",
   "endAt": "2024-12-19T10:36:07.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
@@ -79,7 +75,11 @@
         "MTC",
         "SGL",
         "BSR"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

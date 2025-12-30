@@ -6,9 +6,6 @@
     "ms": "Kegagalan kereta menyebabkan kelewatan",
     "ta": "தாமதத்தை ஏற்படுத்தும் ரயில் தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2021-01-08T23:02:40.000+08:00",
   "endAt": "2021-01-09T00:01:43.000+08:00",
   "type": "disruption",
@@ -62,7 +59,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -73,7 +69,11 @@
         "KRJ",
         "MSL",
         "WDL"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

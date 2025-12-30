@@ -6,9 +6,6 @@
     "ms": "Tiada isyarat mudah alih di stesen-stesen tertentu di Laluan Lingkar",
     "ta": "வட்டப் பாதையில் உள்ள சில நிலையங்களில் மொபைல் சிக்னல்கள் இல்லை"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2016-09-02T19:00:00.000+08:00",
   "endAt": "2016-09-02T21:00:00.000+08:00",
   "type": "maintenance",
@@ -23,14 +20,17 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "KRG",
         "HPV",
         "PPJ",
         "LBD"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -12,7 +12,7 @@ import {
   type IssueDisruptionUpdate,
   IssueDisruptionUpdateTypeSchema,
 } from '../../../schema/Issue.js';
-import { buildComponentTable } from '../buildComponentTable.js';
+import { buildLineTable } from '../buildLineTable.js';
 import { openAiClient } from '../constants.js';
 import { TOOL_LINE_BRANCHES_GET } from '../tools/lineBranchesGet.js';
 import { TOOL_STATION_SEARCH } from '../tools/stationSearch.js';
@@ -99,7 +99,7 @@ export async function ingestIssueDisruption(
     issue = {
       id: 'please-overwrite',
       type: 'disruption',
-      componentIdsAffected: [],
+      lineIdsAffected: [],
       stationIdsAffected: [],
       subtypes: [],
       title: 'please-overwrite',
@@ -211,11 +211,11 @@ CURRENT ISSUE: ${JSON.stringify(otherProps)}
 - Consider Singapore timezone (Asia/Singapore)
 - Look for phrases like "since 8am", "from 9:30am", "service resumed at 2pm"
 
-### 4. Component Identification
+### 4. Line Identification
 - Identify affected MRT/LRT lines based on content
 - **Key Rule**: Recommendations to use alternative lines do NOT make them affected
 - Focus on lines experiencing actual service issues
-- Use component IDs from the table below
+- Use line IDs from the table below
 
 ### 5. Line Section Mapping
 - Determine specific track sections affected by the disruption
@@ -242,8 +242,8 @@ Choose from: signal, train-fault, power, track, platform, crowding, external, se
 - **Social media**: Real-time but may lack precision, verify against other sources
 - **Reddit posts**: User experiences, good for impact assessment
 
-# Components Table
-${buildComponentTable()}
+# Lines Table
+${buildLineTable()}
 
 ## Output Requirements
 - Provide factual, structured data based on evidence in the updates

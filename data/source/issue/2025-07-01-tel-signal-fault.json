@@ -6,9 +6,6 @@
     "ms": "Gangguan Perkhidmatan di Lajur Thomson–East Coast kerana Kerosakan Isyarat",
     "ta": "சிக்னல் பிளவலால் தாம்சோன்-கிழக்கு கடற்கரை ரயிலில் சேவை இடைஞ்சல்"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2025-07-01T06:26:38.000+08:00",
   "endAt": "2025-07-01T08:24:38.000+08:00",
   "type": "disruption",
@@ -55,7 +52,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "CDT",
@@ -70,7 +66,11 @@
         "SHW",
         "MRB",
         "GRB"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

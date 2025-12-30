@@ -6,12 +6,8 @@
     "ms": "Ralat trek menyebabkan kelajuan perlahan di NSL",
     "ta": "NSL இல் மெதுவான வேகத்திற்கு காரணமான தடப் பிழை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "ORC",
@@ -26,7 +22,8 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2013-04-29T19:11:01.000+08:00",
@@ -120,5 +117,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/328828766287712256",
       "createdAt": "2013-04-29T19:11:01.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan Laluan Pusat ditangguhkan akibat masalah isyarat",
     "ta": "சிட்டி ரயில் சேவை சிக்னல் குறைபாடு காரணமாக தாமதமாகியுள்ளது"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "startAt": "2025-07-15T13:43:24.000+08:00",
   "endAt": "2025-07-15T14:06:43.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "LTI",
@@ -39,7 +35,11 @@
         "BGS",
         "PMN",
         "BFT"
-      ]
+      ],
+      "lineId": "DTL"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

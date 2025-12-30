@@ -6,12 +6,8 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan",
     "ta": "ரயிலில் ஏற்பட்ட கோளாறு காரணமாக தாமதம்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BDK",
@@ -26,7 +22,8 @@
         "RFP",
         "TPG",
         "OTP"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2014-03-03T07:46:23.000+08:00",
@@ -49,5 +46,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/440271934471671808",
       "createdAt": "2014-03-03T07:46:23.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

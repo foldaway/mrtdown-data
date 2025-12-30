@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan kereta tertangguh dari Bukit Panjang ke Choa Chu Kang",
     "ta": "Bukit Panjang முதல் Choa Chu Kang வரை ரயில் சேவை தாமதம்"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2022-05-24T09:21:43.000+08:00",
   "endAt": "2022-05-24T09:46:05.000+08:00",
   "type": "disruption",
@@ -97,7 +94,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -106,7 +102,11 @@
         "TKW",
         "PNX",
         "BKP"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

@@ -1,20 +1,20 @@
 import { z } from 'zod';
 import { StationIdSchema } from './StationId.js';
 
-export const ComponentTypeSchema = z
+export const LineTypeSchema = z
   .enum(['mrt.high', 'mrt.medium', 'lrt'])
   .meta({
     ref: 'LineType',
-    description: 'The type of the transit component.',
+    description: 'The type of the transit line.',
   });
-export type ComponentType = z.infer<typeof ComponentTypeSchema>;
+export type LineType = z.infer<typeof LineTypeSchema>;
 
-export const ComponentIdSchema = z
+export const LineIdSchema = z
   .string()
   .refine((val) => /^[A-Z]{3,10}$/.test(val));
-export type ComponentId = z.infer<typeof ComponentIdSchema>;
+export type LineId = z.infer<typeof LineIdSchema>;
 
-export const ComponentBranchSchema = z.object({
+export const LineBranchSchema = z.object({
   id: z.string(),
   title: z.string(),
   title_translations: z.record(z.string(), z.string()),
@@ -22,9 +22,9 @@ export const ComponentBranchSchema = z.object({
   endedAt: z.string().date().nullable(),
   stationCodes: z.array(StationIdSchema),
 });
-export type ComponentBranch = z.infer<typeof ComponentBranchSchema>;
+export type LineBranch = z.infer<typeof LineBranchSchema>;
 
-export const ComponentOperatingHours = z.object({
+export const LineOperatingHours = z.object({
   weekdays: z.object({
     start: z.iso.time(),
     end: z.iso.time(),
@@ -34,16 +34,16 @@ export const ComponentOperatingHours = z.object({
     end: z.iso.time(),
   }),
 });
-export type ComponentOperatingHours = z.infer<typeof ComponentOperatingHours>;
+export type LineOperatingHours = z.infer<typeof LineOperatingHours>;
 
-export const ComponentSchema = z.object({
-  id: ComponentIdSchema,
+export const LineSchema = z.object({
+  id: LineIdSchema,
   title: z.string(),
   title_translations: z.record(z.string(), z.string()),
-  type: ComponentTypeSchema,
+  type: LineTypeSchema,
   color: z.string().refine((val) => /^#([A-Fa-f0-9]{6})/.test(val)),
   startedAt: z.string().date(),
-  branches: z.record(z.string(), ComponentBranchSchema),
-  operatingHours: ComponentOperatingHours,
+  branches: z.record(z.string(), LineBranchSchema),
+  operatingHours: LineOperatingHours,
 });
-export type Component = z.infer<typeof ComponentSchema>;
+export type Line = z.infer<typeof LineSchema>;

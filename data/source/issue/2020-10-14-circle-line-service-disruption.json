@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Laluan Lingkaran kerana kerosakan kuasa",
     "ta": "மின்சாரக் கோளாறு காரணமாக வட்டப் பாதையில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2020-10-14T20:13:46.000+08:00",
   "endAt": "2020-10-14T20:40:08.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "SER",
@@ -68,7 +64,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

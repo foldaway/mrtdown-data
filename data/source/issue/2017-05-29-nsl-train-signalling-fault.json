@@ -6,19 +6,16 @@
     "ms": "Rosak Isyarat Kereta Api di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் ரயில் சமிக்ஞை கோளாறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
         "BBT",
         "BGB",
         "CCK"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-05-29T18:04:01.000+08:00",
@@ -46,5 +43,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/869132210967683074",
       "createdAt": "2017-05-29T18:04:01.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

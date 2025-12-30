@@ -5,15 +5,6 @@
     "zh-Hans": "湖畔",
     "ta": "ஏரிக்கரை"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW26",
-        "startedAt": "1988-11-05",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Jurong West",
   "town_translations": {
     "zh-Hans": "裕廊西",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.349119,
     "longitude": 103.728223
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW26",
+        "startedAt": "1988-11-05",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

@@ -6,12 +6,8 @@
     "ms": "Tiada perkhidmatan Laluan Timur Laut antara stesen Woodleigh dan Punggol",
     "ta": "Woodleigh மற்றும் Punggol நிலையங்களுக்கு இடையே வடகிழக்கு பாதையில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "WLH",
@@ -21,7 +17,8 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
   ],
   "startAt": "2016-08-17T21:30:27.000+08:00",
@@ -49,5 +46,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/765903621380681728",
       "createdAt": "2016-08-17T21:30:27.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Gangguan Perkhidmatan di Laluan Lingaran",
     "ta": "வட்டப் பாதையில் சேவை தடை"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2019-05-09T17:55:14.000+08:00",
   "endAt": "2019-05-09T18:10:10.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -46,7 +42,11 @@
         "PMN",
         "NCH",
         "SDM"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

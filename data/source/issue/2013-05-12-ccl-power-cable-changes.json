@@ -6,19 +6,16 @@
     "ms": "Perubahan kabel kuasa di Laluan Bulat mempengaruhi masa perjalanan",
     "ta": "வட்டப் பாதையில் மின் கேபிள் மாற்றங்கள் பயண நேரத்தைப் பாதிக்கின்றன"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "BSH",
         "MRM",
         "CDT",
         "BTN"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2013-05-12T06:00:00.000+08:00",
@@ -71,5 +68,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/330204125411291137",
       "createdAt": "2013-05-03T14:16:13.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

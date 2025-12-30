@@ -6,9 +6,6 @@
     "ms": "Gangguan Perkhidmatan NSL Akibat Kerosakan Isyarat",
     "ta": "சிக்னலிங் கோளாறு காரணமாக NSL சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2025-06-13T09:28:37.000+08:00",
   "endAt": "2025-06-13T10:24:36.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -58,7 +54,11 @@
         "KTB",
         "YCK",
         "AMK"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

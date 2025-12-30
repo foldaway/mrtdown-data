@@ -10,7 +10,7 @@ import {
   IssueInfraSchema,
   type IssueInfraUpdate,
 } from '../../../schema/Issue.js';
-import { buildComponentTable } from '../buildComponentTable.js';
+import { buildLineTable } from '../buildLineTable.js';
 import { openAiClient } from '../constants.js';
 import { TOOL_LINE_BRANCHES_GET } from '../tools/lineBranchesGet.js';
 import { TOOL_STATION_SEARCH } from '../tools/stationSearch.js';
@@ -47,7 +47,7 @@ export async function ingestIssueInfra(
     issue = {
       id: 'please-overwrite',
       type: 'infra',
-      componentIdsAffected: [],
+      lineIdsAffected: [],
       stationIdsAffected: [],
       title: 'please-overwrite',
       title_translations: {
@@ -169,7 +169,7 @@ These issues typically involve:
 - Look for project timelines, completion estimates
 - Singapore timezone (Asia/Singapore)
 
-### 5. Component & Section Identification
+### 5. Line & Section Identification
 - Identify specific MRT/LRT lines with infrastructure issues
 - Focus on structural/facility impacts rather than operational disruptions
 - Map affected stations or line sections with infrastructure problems
@@ -205,8 +205,8 @@ Choose from infrastructure-specific categories:
 - **News reports**: Public interest in major infrastructure projects
 - **User feedback**: Impact reports from facility changes
 
-# Components Table
-${buildComponentTable()}
+# Lines Table
+${buildLineTable()}
 
 ## Output Requirements
 - Distinguish infrastructure issues from operational disruptions or routine maintenance

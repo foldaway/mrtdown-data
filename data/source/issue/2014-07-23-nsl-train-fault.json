@@ -6,18 +6,15 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan",
     "ta": "ரயில் பழுது தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "TAP",
         "NOV",
         "NEW"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2014-07-23T09:13:40.000+08:00",
@@ -58,5 +55,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/491752974696214529",
       "createdAt": "2014-07-23T09:13:40.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

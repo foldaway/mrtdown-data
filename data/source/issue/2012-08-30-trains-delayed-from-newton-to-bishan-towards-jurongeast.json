@@ -6,12 +6,8 @@
     "ms": "Kereta api tertunda dari Newton ke Bishan menuju Jurong East",
     "ta": "நியூட்டன் முதல் பிஷான் வரை ஜூரோங் ஈஸ்ட் நோக்கி ரயில்கள் தாமதமாகின்றன"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "BSH",
@@ -19,7 +15,8 @@
         "TAP",
         "NOV",
         "NEW"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-08-30T06:25:49.000+08:00",
@@ -41,5 +38,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/240938334174728192",
       "createdAt": "2012-08-30T06:25:49.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,12 +6,8 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் ஏற்படும் தாமதங்களுக்கு ரயில் பழுது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "TAP",
@@ -23,7 +19,8 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2014-09-01T21:44:08.000+08:00",
@@ -58,5 +55,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/506437351271190528",
       "createdAt": "2014-09-01T21:44:08.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

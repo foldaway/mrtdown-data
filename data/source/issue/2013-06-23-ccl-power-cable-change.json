@@ -6,19 +6,16 @@
     "ms": "Peningkatan masa perjalanan di Laluan Bulatan kerana penyelenggaraan",
     "ta": "பராமரிப்பு காரணமாக வட்டப் பாதையில் பயண நேரம் அதிகரிப்பு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "CDT",
         "BTN",
         "FRR",
         "HLV"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2013-06-23T06:00:00.000+08:00",
@@ -53,5 +50,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/347594840747425792",
       "createdAt": "2013-06-20T14:00:42.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

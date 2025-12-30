@@ -6,19 +6,16 @@
     "ms": "Gangguan perkhidmatan kereta api kerana kerosakan",
     "ta": "தவறு காரணமாக ரயில் சேவை தடைபட்டது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "LKS",
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2017-02-23T08:28:26.000+08:00",
@@ -47,5 +44,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/834560512138452992",
       "createdAt": "2017-02-23T08:28:26.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -6,17 +6,14 @@
     "ms": "Tiada perkhidmatan kereta api antara Marina Bay dan Marina South Pier",
     "ta": "மெரினா பே மற்றும் மெரினா சவுத் பியர் இடையே ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2016-07-21T07:51:26.000+08:00",
@@ -50,5 +47,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/755913036045529089",
       "createdAt": "2016-07-21T07:51:26.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

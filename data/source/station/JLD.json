@@ -5,15 +5,6 @@
     "zh-Hans": "裕廊湖区",
     "ta": "ஜூரோங் லேக் வட்­டா­ரம்"
   },
-  "componentMembers": {
-    "CRL": [
-      {
-        "code": "CR19",
-        "startedAt": "2032-01-01",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Jurong East",
   "town_translations": {
     "zh-Hans": "裕廊东",
@@ -61,5 +52,14 @@
   "geo": {
     "latitude": 1.3483,
     "longitude": 103.7275
+  },
+  "lineMembers": {
+    "CRL": [
+      {
+        "code": "CR19",
+        "startedAt": "2032-01-01",
+        "structureType": "underground"
+      }
+    ]
   }
 }

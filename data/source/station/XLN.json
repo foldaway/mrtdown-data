@@ -5,15 +5,6 @@
     "zh-Hans": "锡林",
     "ta": "ஸீலின்"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT36",
-        "startedAt": "2026-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Tampines",
   "town_translations": {
     "zh-Hans": "淡滨尼",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3341,
     "longitude": 103.9621
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT36",
+        "startedAt": "2026-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

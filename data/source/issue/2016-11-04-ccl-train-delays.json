@@ -6,9 +6,6 @@
     "ms": "Gangguan isyarat sesekali menyebabkan kelewatan di Laluan Lingaran",
     "ta": "வட்டப் பாதையில் தாமதங்களை ஏற்படுத்தும் அவ்வப்போது சமிக்ஞை குறுக்கீடு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2016-11-04T06:43:28.000+08:00",
   "endAt": "2016-11-05T00:00:00.000+08:00",
   "type": "disruption",
@@ -25,7 +22,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -56,10 +52,10 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -89,7 +85,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Kereta api tertunda antara Senja dan Jelapang",
     "ta": "Senja மற்றும் Jelapang இடையே ரயில் தாமதங்கள்"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2012-08-31T08:12:40.000+08:00",
   "endAt": "2012-08-31T08:15:02.000+08:00",
   "type": "disruption",
@@ -37,12 +34,15 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

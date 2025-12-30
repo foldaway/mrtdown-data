@@ -6,17 +6,14 @@
     "ms": "Kereta api arah selatan dari Ang Mo Kio ke Bishan bergerak lebih perlahan kerana kerosakan landasan.",
     "ta": "தடக் கோளாறு காரணமாக Ang Mo Kio முதல் Bishan வரையிலான தெற்கு நோக்கிச் செல்லும் ரயில்கள் மெதுவாகச் செல்கின்றன."
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
         "BSH"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-06-18T16:56:41.000+08:00",
@@ -38,5 +35,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/214642779391934464",
       "createdAt": "2012-06-18T16:56:41.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Kesempitan di Laluan Timur-Barat kerana kerosakan trek sebelum ini",
     "ta": "முந்தைய ரயில் தடக் கோளாறு காரணமாக கிழக்கு-மேற்கு பாதையில் நெரிசல்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2012-03-07T20:47:27.000+08:00",
   "endAt": "2012-03-07T21:37:19.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -63,7 +59,11 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Gangguan Perkhidmatan Laluan Timur Laut kerana Kerosakan Isyarat",
     "ta": "சிக்னலிங் பழுது காரணமாக வடகிழக்கு பாதையில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2019-10-09T19:50:35.000+08:00",
   "endAt": "2019-10-09T20:33:23.000+08:00",
   "type": "disruption",
@@ -50,7 +47,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -69,7 +65,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

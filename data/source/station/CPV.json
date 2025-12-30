@@ -5,15 +5,6 @@
     "zh-Hans": "康埔桦",
     "ta": "கம்பஸ்வேல்"
   },
-  "componentMembers": {
-    "SKLRT": [
-      {
-        "code": "SE1",
-        "startedAt": "2003-01-18",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Sengkang",
   "town_translations": {
     "zh-Hans": "盛港",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3757,
     "longitude": 103.8955
+  },
+  "lineMembers": {
+    "SKLRT": [
+      {
+        "code": "SE1",
+        "startedAt": "2003-01-18",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

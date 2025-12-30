@@ -6,12 +6,8 @@
     "ms": "Laluan Utara-Selatan mengalami kelewatan disebabkan kegagalan kereta",
     "ta": "வடக்கு-தெற்கு பாதையில் ரயில் கோளாறு காரணமாக தாமதம் ஏற்பட்டது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -28,7 +24,8 @@
         "KTB",
         "YCK",
         "AMK"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-02-13T07:58:50.000+08:00",
@@ -69,5 +66,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/830929185350627328",
       "createdAt": "2017-02-13T07:58:50.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Jejak Kerosakan di Bukit Panjang LRT",
     "ta": "Bukit Panjang LRT இல் தடமறிதல்"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2022-09-21T18:14:32.000+08:00",
   "endAt": "2022-09-22T05:30:00.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -47,7 +43,11 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

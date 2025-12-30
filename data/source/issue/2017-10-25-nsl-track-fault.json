@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan Laluan Utara-Selatan akibat kerosakan landasan",
     "ta": "தடக்கோளாறு காரணமாக வட-தெற்கு பாதையில் சேவை தடை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2017-10-25T05:00:12.000+08:00",
   "endAt": "2017-10-25T10:13:21.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YIS",
@@ -59,7 +55,11 @@
         "BSH",
         "BDL",
         "TAP"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

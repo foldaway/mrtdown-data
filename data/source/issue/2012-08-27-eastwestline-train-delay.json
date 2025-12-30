@@ -6,12 +6,8 @@
     "ms": "Penangguhan Kereta di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் ரயில் தாமதம்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "CNG",
@@ -19,7 +15,8 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-08-27T07:30:11.000+08:00",
@@ -41,5 +38,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/239867366652121088",
       "createdAt": "2012-08-27T07:30:11.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

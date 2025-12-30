@@ -6,19 +6,16 @@
     "ms": "Ralat trek Laluan Timur Barat menyebabkan kelewatan",
     "ta": "கிழக்கு மேற்கு பாதையில் ஏற்பட்டுள்ள தடங்கல் தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "ALJ",
         "KAL",
         "LVR",
         "BGS"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2014-01-16T08:08:27.000+08:00",
@@ -47,5 +44,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/423607643412762625",
       "createdAt": "2014-01-16T08:08:27.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

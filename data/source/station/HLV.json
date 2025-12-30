@@ -5,15 +5,6 @@
     "zh-Hans": "荷兰村",
     "ta": "ஹாலந்து வில்லேஜ்"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC21",
-        "startedAt": "2011-10-08",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bukit Timah",
   "town_translations": {
     "zh-Hans": "武吉知马",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3136,
     "longitude": 103.7903
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC21",
+        "startedAt": "2011-10-08",
+        "structureType": "underground"
+      }
+    ]
   }
 }

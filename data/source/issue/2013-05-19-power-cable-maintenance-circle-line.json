@@ -6,19 +6,16 @@
     "ms": "Penyelenggaraan kabel kuasa di Laluan Bulat",
     "ta": "வட்டப் பாதையில் மின் கம்பி பராமரிப்பு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "CDT",
         "BTN",
         "FRR",
         "HLV"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2013-05-19T06:00:00.000+08:00",
@@ -71,5 +68,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/330204758008807424",
       "createdAt": "2013-05-03T14:18:43.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

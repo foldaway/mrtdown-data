@@ -6,12 +6,8 @@
     "ms": "Jejak Kerosakan Diselesaikan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் தடமறியப்பட்ட தவறு சரிசெய்யப்பட்டது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "BDL",
@@ -25,7 +21,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2016-08-16T08:44:51.000+08:00",
@@ -59,5 +56,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/765348562620321794",
       "createdAt": "2016-08-16T08:44:51.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

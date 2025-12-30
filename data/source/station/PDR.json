@@ -5,15 +5,6 @@
     "zh-Hans": "班丹蓄水池",
     "ta": "பாண்டன் ரெசவோர்"
   },
-  "componentMembers": {
-    "JRL": [
-      {
-        "code": "JE7",
-        "startedAt": "2028-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Jurong East",
   "town_translations": {
     "zh-Hans": "裕廊东",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.3632,
     "longitude": 103.7357
+  },
+  "lineMembers": {
+    "JRL": [
+      {
+        "code": "JE7",
+        "startedAt": "2028-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

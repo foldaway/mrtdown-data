@@ -6,12 +6,8 @@
     "ms": "Laluan Utara-Selatan berlaku kerosakan trek berhampiran Bishan",
     "ta": "பிஷான் அருகே வடக்கு-தெற்கு பாதையில் ரயில் பாதையில் பழுது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
@@ -26,7 +22,8 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-08-13T18:32:12.000+08:00",
@@ -54,5 +51,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/631775252700250112",
       "createdAt": "2015-08-13T18:32:12.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

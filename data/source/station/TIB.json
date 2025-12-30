@@ -5,15 +5,6 @@
     "zh-Hans": "中峇鲁",
     "ta": "தியோங் பாரு"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW17",
-        "startedAt": "1988-03-12",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bukit Merah",
   "town_translations": {
     "zh-Hans": "红山",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.281081,
     "longitude": 103.838865
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW17",
+        "startedAt": "1988-03-12",
+        "structureType": "underground"
+      }
+    ]
   }
 }

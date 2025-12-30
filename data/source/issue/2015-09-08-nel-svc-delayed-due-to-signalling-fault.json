@@ -6,9 +6,6 @@
     "ms": "Kelewatan perkhidmatan Laluan Timur Laut kerana kerosakan isyarat",
     "ta": "சிக்னலிங் பிழை காரணமாக வடகிழக்கு வரி சேவையில் தாமதம்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2015-09-08T07:22:00.000+08:00",
   "endAt": "2015-09-08T07:55:39.000+08:00",
   "type": "disruption",
@@ -56,7 +53,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -75,7 +71,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "明古连",
     "ta": "பென்கூலன்"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT21",
-        "startedAt": "2017-10-21",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Rochor",
   "town_translations": {
     "zh-Hans": "梧槽",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3002,
     "longitude": 103.848
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT21",
+        "startedAt": "2017-10-21",
+        "structureType": "underground"
+      }
+    ]
   }
 }

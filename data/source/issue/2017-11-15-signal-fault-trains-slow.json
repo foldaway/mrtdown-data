@@ -6,9 +6,6 @@
     "ms": "Kerosakan isyarat menyebabkan pergerakan kereta lebih perlahan",
     "ta": "சிக்னல் பழுது காரணமாக ரயில் இயக்கம் மெதுவாக உள்ளது"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2017-11-15T06:28:49.000+08:00",
   "endAt": "2017-11-15T08:34:37.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "BTN",
@@ -47,7 +43,11 @@
         "ONH",
         "KRG",
         "HPV"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

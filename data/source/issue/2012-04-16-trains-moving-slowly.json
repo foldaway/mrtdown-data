@@ -6,9 +6,6 @@
     "ms": "Kereta Api Perkhidmatan Selatan Bergerak Perlahan",
     "ta": "தெற்கு நோக்கி செல்லும் ரயில்கள் மெதுவாக நகர்கின்றன"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2012-04-16T09:26:18.000+08:00",
   "endAt": "2012-04-16T11:43:04.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JKN",
@@ -63,7 +59,11 @@
         "SIM",
         "TAM",
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

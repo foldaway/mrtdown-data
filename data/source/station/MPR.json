@@ -5,15 +5,6 @@
     "zh-Hans": "马林百列",
     "ta": "மரீன் பரேட்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE26",
-        "startedAt": "2024-06-23",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Marine Parade",
   "town_translations": {
     "zh-Hans": "马林百列",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3013,
     "longitude": 103.9025
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE26",
+        "startedAt": "2024-06-23",
+        "structureType": "underground"
+      }
+    ]
   }
 }

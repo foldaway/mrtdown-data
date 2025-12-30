@@ -6,9 +6,6 @@
     "ms": "Gangguan Kuasa di Laluan Bulat",
     "ta": "வட்டப் பாதையில் மின்சாரம் தடை"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2021-02-17T05:16:29.000+08:00",
   "endAt": "2021-02-17T06:08:31.000+08:00",
   "type": "disruption",
@@ -61,7 +58,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -92,10 +88,10 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -125,7 +121,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan Laluan Timur Barat disebabkan oleh kerosakan titik trek",
     "ta": "கிழக்கு மேற்கு பாதையில் தடம்புரளல் கோளாறு காரணமாக சேவை தடைபட்டது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2017-11-04T14:53:14.000+08:00",
   "endAt": "2017-11-04T15:30:30.000+08:00",
   "type": "disruption",
@@ -38,7 +35,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "QUE",
@@ -47,7 +43,11 @@
         "DVR",
         "CLE",
         "JUR"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

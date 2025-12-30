@@ -6,12 +6,8 @@
     "ms": "Kerosakan Kereta Api di Laluan North-South",
     "ta": "வடக்கு-தெற்கு பாதையில் ரயில் பழுது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -22,7 +18,8 @@
         "ADM",
         "SBW",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-10-28T07:02:52.000+08:00",
@@ -44,5 +41,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/262328540144488449",
       "createdAt": "2012-10-28T07:02:52.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,12 +6,8 @@
     "ms": "Penggantungan Sementara Isyarat Telco di Laluan Bulat",
     "ta": "வட்டப் பாதையில் தொலைத்தொடர்பு சமிக்ஞைகள் தற்காலிகமாக இடைநிறுத்தப்பட்டுள்ளன"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -42,10 +38,10 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -75,7 +71,8 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2016-11-03T20:58:18.000+08:00",
@@ -95,5 +92,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/794161781933383680",
       "createdAt": "2016-11-03T20:58:18.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

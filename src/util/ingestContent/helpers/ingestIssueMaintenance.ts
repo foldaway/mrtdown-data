@@ -10,7 +10,7 @@ import {
   IssueMaintenanceSchema,
   type IssueMaintenanceUpdate,
 } from '../../../schema/Issue.js';
-import { buildComponentTable } from '../buildComponentTable.js';
+import { buildLineTable } from '../buildLineTable.js';
 import { openAiClient } from '../constants.js';
 import { TOOL_LINE_BRANCHES_GET } from '../tools/lineBranchesGet.js';
 import { TOOL_STATION_SEARCH } from '../tools/stationSearch.js';
@@ -48,7 +48,7 @@ export async function ingestIssueMaintenance(
     issue = {
       id: 'please-overwrite',
       type: 'maintenance',
-      componentIdsAffected: [],
+      lineIdsAffected: [],
       stationIdsAffected: [],
       title: 'please-overwrite',
       title_translations: {
@@ -180,7 +180,7 @@ CURRENT ISSUE: ${JSON.stringify(otherProps)}
 - **cancelledAt**: Set if announcement indicates cancellation of planned maintenance
 - All times in Singapore timezone (Asia/Singapore)
 
-### 5. Component & Section Identification
+### 5. Line & Section Identification
 - Identify affected MRT/LRT lines requiring maintenance
 - Map specific track sections, stations, or entire lines
 - Consider scope of work described in updates
@@ -209,8 +209,8 @@ Choose appropriate maintenance categories:
 - **News articles**: Secondary reporting, may have timing discrepancies
 - **Social media**: Real-time updates, user reports of maintenance impact
 
-# Components Table
-${buildComponentTable()}
+# Lines Table
+${buildLineTable()}
 
 ## Output Requirements
 - Accurately classify as planned vs ad-hoc based on linguistic cues and context

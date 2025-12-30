@@ -6,17 +6,14 @@
     "ms": "Kerja penyelenggaraan di Laluan Timur Barat menjejaskan perkhidmatan antara Clementi dan Jurong East",
     "ta": "Clementi மற்றும் Jurong East இடையே சேவை பாதிக்கப்படும் கிழக்கு மேற்கு பாதையில் பராமரிப்பு பணி"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "CLE",
         "JUR"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2013-05-02T00:00:00+08:00",
@@ -33,5 +30,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/329456859272593408",
       "createdAt": "2013-05-01T12:46:50.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

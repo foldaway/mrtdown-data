@@ -6,13 +6,8 @@
     "ms": "Perkhidmatan tertangguh di Laluan Utara-Selatan dan Laluan Timur-Barat",
     "ta": "வடக்கு-தெற்கு வரி மற்றும் கிழக்கு-மேற்கு வரியில் தாமதமான சேவை"
   },
-  "componentIdsAffected": [
-    "NSL",
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -40,10 +35,10 @@
         "ORC",
         "SOM",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     },
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JKN",
@@ -75,16 +70,17 @@
         "SIM",
         "TAM",
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     },
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2011-12-18T05:30:00.000+08:00",
@@ -128,5 +124,9 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/147998488720965632",
       "createdAt": "2011-12-17T19:16:04.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL",
+    "EWL"
   ]
 }

@@ -1,5 +1,5 @@
 import { computeIssueIntervals } from '../../helpers/computeIssueIntervals.js';
-import { ComponentModel } from '../../model/ComponentModel.js';
+import { LineModel } from '../../model/LineModel.js';
 import { IssueModel } from '../../model/IssueModel.js';
 import { StationModel } from '../../model/StationModel.js';
 import {
@@ -26,21 +26,21 @@ await connection.run(`
   DROP TABLE IF EXISTS station_landmarks;
   DROP TABLE IF EXISTS landmarks;
   DROP TABLE IF EXISTS issue_stations;
-  DROP TABLE IF EXISTS issue_components;
+  DROP TABLE IF EXISTS issue_lines;
   DROP TABLE IF EXISTS issue_intervals;
   DROP TABLE IF EXISTS issues;
   DROP TABLE IF EXISTS issue_subtypes;
   DROP TABLE IF EXISTS issue_types;
-  DROP TABLE IF EXISTS component_branch_memberships;
+  DROP TABLE IF EXISTS line_branch_memberships;
   DROP TABLE IF EXISTS stations;
   DROP TABLE IF EXISTS towns;
   DROP TABLE IF EXISTS branches;
-  DROP TABLE IF EXISTS components;
+  DROP TABLE IF EXISTS lines;
   DROP TABLE IF EXISTS metadata;
 
   CREATE TABLE public_holidays AS SELECT * FROM read_json_auto('data/source/public_holidays.json');
 
-  CREATE TABLE components (
+  CREATE TABLE lines (
     id TEXT PRIMARY KEY,
     title TEXT,
     title_translations JSON,
@@ -55,12 +55,12 @@ await connection.run(`
 
   CREATE TABLE branches (
     id TEXT,
-    component_id TEXT REFERENCES components(id),
+    line_id TEXT REFERENCES lines(id),
     title TEXT,
     title_translations JSON,
     started_at DATE,
     ended_at DATE,
-    PRIMARY KEY (id, component_id)
+    PRIMARY KEY (id, line_id)
   );
 
   CREATE TABLE towns (
@@ -78,8 +78,8 @@ await connection.run(`
     geo_lon DOUBLE
   );
 
-  CREATE TABLE component_branch_memberships (
-    component_id TEXT,
+  CREATE TABLE line_branch_memberships (
+    line_id TEXT,
     branch_id TEXT,
     station_id TEXT,
     code TEXT,
@@ -87,7 +87,7 @@ await connection.run(`
     ended_at DATE,
     structure_type TEXT,
     sequence_order INTEGER,
-    PRIMARY KEY (component_id, branch_id, station_id, code, sequence_order)
+    PRIMARY KEY (line_id, branch_id, station_id, code, sequence_order)
   );
 
   CREATE TABLE issue_types (
@@ -112,14 +112,14 @@ await connection.run(`
     end_at   TIMESTAMPTZ
   );
 
-  CREATE TABLE issue_components (
+  CREATE TABLE issue_lines (
     issue_id TEXT,
-    component_id TEXT
+    line_id TEXT
   );
 
   CREATE TABLE issue_stations (
     issue_id TEXT,
-    component_id TEXT,
+    line_id TEXT,
     branch_id TEXT,
     station_id TEXT
   );
@@ -187,8 +187,8 @@ if (allSubtypes.length > 0) {
   );
 }
 
-const components = ComponentModel.getAll();
-const branchMemberMetadataByComponentAndStationCode: Record<
+const lines = LineModel.getAll();
+const branchMemberMetadataByLineAndStationCode: Record<
   string,
   {
     branchId: string;
@@ -197,7 +197,7 @@ const branchMemberMetadataByComponentAndStationCode: Record<
 > = {};
 
 // Prepare batch data
-const componentRows: [
+const lineRows: [
   string,
   string,
   string,
@@ -218,24 +218,24 @@ const branchRows: [
   string | null,
 ][] = [];
 
-for (const component of components) {
-  componentRows.push([
-    component.id,
-    component.title,
-    JSON.stringify(component.title_translations),
-    component.type,
-    component.color,
-    component.startedAt,
-    component.operatingHours.weekdays.start,
-    component.operatingHours.weekdays.end,
-    component.operatingHours.weekends.start,
-    component.operatingHours.weekends.end,
+for (const line of lines) {
+  lineRows.push([
+    line.id,
+    line.title,
+    JSON.stringify(line.title_translations),
+    line.type,
+    line.color,
+    line.startedAt,
+    line.operatingHours.weekdays.start,
+    line.operatingHours.weekdays.end,
+    line.operatingHours.weekends.start,
+    line.operatingHours.weekends.end,
   ]);
 
-  for (const [branchId, branch] of Object.entries(component.branches)) {
+  for (const [branchId, branch] of Object.entries(line.branches)) {
     branchRows.push([
       branchId,
-      component.id,
+      line.id,
       branch.title,
       JSON.stringify(branch.title_translations),
       branch.startedAt,
@@ -243,9 +243,9 @@ for (const component of components) {
     ]);
 
     for (const [index, code] of branch.stationCodes.entries()) {
-      const key = `${code}@${component.id}`;
-      branchMemberMetadataByComponentAndStationCode[key] ??= [];
-      branchMemberMetadataByComponentAndStationCode[key].push({
+      const key = `${code}@${line.id}`;
+      branchMemberMetadataByLineAndStationCode[key] ??= [];
+      branchMemberMetadataByLineAndStationCode[key].push({
         branchId,
         sequenceOrder: index,
       });
@@ -253,14 +253,14 @@ for (const component of components) {
   }
 }
 
-// Batch insert components
-if (componentRows.length > 0) {
-  const placeholders = componentRows
+// Batch insert lines
+if (lineRows.length > 0) {
+  const placeholders = lineRows
     .map(() => '(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')
     .join(', ');
   await connection.run(
-    `INSERT INTO components VALUES ${placeholders}`,
-    componentRows.flat(),
+    `INSERT INTO lines VALUES ${placeholders}`,
+    lineRows.flat(),
   );
 }
 
@@ -341,19 +341,19 @@ for (const station of stations) {
     station.geo.longitude,
   ]);
 
-  for (const [compId, memberships] of Object.entries(
-    station.componentMembers,
+  for (const [lineId, memberships] of Object.entries(
+    station.lineMembers,
   )) {
     for (const m of memberships) {
-      const key = `${m.code}@${compId}`;
+      const key = `${m.code}@${lineId}`;
       const branchMemberMetadatas =
-        branchMemberMetadataByComponentAndStationCode[key] ?? null;
+        branchMemberMetadataByLineAndStationCode[key] ?? null;
       if (branchMemberMetadatas == null) {
         continue;
       }
       for (const branchMemberMetadata of branchMemberMetadatas) {
         membershipRows.push([
-          compId,
+          lineId,
           branchMemberMetadata?.branchId ?? null,
           station.id,
           m.code,
@@ -378,13 +378,13 @@ if (stationInsertRows.length > 0) {
   );
 }
 
-// Batch insert component memberships
+// Batch insert line memberships
 if (membershipRows.length > 0) {
   const placeholders = membershipRows
     .map(() => '(?, ?, ?, ?, ?, ?, ?, ?)')
     .join(', ');
   await connection.run(
-    `INSERT INTO component_branch_memberships VALUES ${placeholders}`,
+    `INSERT INTO line_branch_memberships VALUES ${placeholders}`,
     membershipRows.flat(),
   );
 }
@@ -467,13 +467,13 @@ if (stationLandmarks.length > 0) {
 await connection.run(`
   CREATE INDEX idx_issue_intervals_issue_id ON issue_intervals(issue_id);
   CREATE INDEX idx_issue_intervals_times ON issue_intervals(start_at, end_at);
-  CREATE INDEX idx_issue_components_issue_id ON issue_components(issue_id);
-  CREATE INDEX idx_issue_components_component_id ON issue_components(component_id);
+  CREATE INDEX idx_issue_lines_issue_id ON issue_lines(issue_id);
+  CREATE INDEX idx_issue_lines_line_id ON issue_lines(line_id);
   CREATE INDEX idx_issues_type ON issues(type);
   CREATE INDEX idx_public_holidays_date ON public_holidays(date);
-  CREATE INDEX idx_components_started_at ON components(started_at);
+  CREATE INDEX idx_lines_started_at ON lines(started_at);
   CREATE INDEX idx_issue_stations_issue_id ON issue_stations(issue_id);
-  CREATE INDEX idx_issue_stations_component_id ON issue_stations(component_id);
+  CREATE INDEX idx_issue_stations_line_id ON issue_stations(line_id);
   CREATE INDEX idx_issue_types_type ON issue_types(type);
   CREATE INDEX idx_issue_subtypes_subtype ON issue_subtypes(subtype);
   CREATE INDEX idx_issue_subtypes_issue_type ON issue_subtypes(issue_type);
@@ -498,7 +498,7 @@ const issues = IssueModel.getAll();
 // Prepare all batch data for issues
 const issueRows: [string, string, string, string][] = [];
 const intervalRows: [string, string, string | null][] = [];
-const issueComponentRows: [string, string][] = [];
+const issueLineRows: [string, string][] = [];
 const issueStationRows: [string, string, string, string][] = [];
 const updateRows: [string, string, string, string, string][] = [];
 const subtypeRows: [string, string][] = [];
@@ -522,13 +522,13 @@ for (const issue of issues) {
     intervalRows.push([issue.id, issue.startAt, null]);
   }
 
-  for (const compId of issue.componentIdsAffected) {
-    issueComponentRows.push([issue.id, compId]);
+  for (const compId of issue.lineIdsAffected) {
+    issueLineRows.push([issue.id, compId]);
   }
 
   for (const st of issue.stationIdsAffected) {
     for (const s of st.stationIds) {
-      issueStationRows.push([issue.id, st.componentId, st.branchName, s]);
+      issueStationRows.push([issue.id, st.lineId, st.branchName, s]);
     }
   }
 
@@ -558,11 +558,11 @@ if (intervalRows.length > 0) {
   );
 }
 
-if (issueComponentRows.length > 0) {
-  const placeholders = issueComponentRows.map(() => '(?, ?)').join(', ');
+if (issueLineRows.length > 0) {
+  const placeholders = issueLineRows.map(() => '(?, ?)').join(', ');
   await connection.run(
-    `INSERT INTO issue_components VALUES ${placeholders}`,
-    issueComponentRows.flat(),
+    `INSERT INTO issue_lines VALUES ${placeholders}`,
+    issueLineRows.flat(),
   );
 }
 

@@ -5,15 +5,6 @@
     "zh-Hans": "山姆",
     "ta": "சமுத்திரா"
   },
-  "componentMembers": {
-    "PGLRT": [
-      {
-        "code": "PW4",
-        "startedAt": "2017-03-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Punggol",
   "town_translations": {
     "zh-Hans": "榜鹅",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.4011,
     "longitude": 103.9034
+  },
+  "lineMembers": {
+    "PGLRT": [
+      {
+        "code": "PW4",
+        "startedAt": "2017-03-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

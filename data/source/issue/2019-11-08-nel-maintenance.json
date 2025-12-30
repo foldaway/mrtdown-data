@@ -6,12 +6,8 @@
     "ms": "Kerja penyelenggaraan di lima stesen NEL",
     "ta": "ஐந்து NEL நிலையங்களில் பராமரிப்புப் பணிகள்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "KVN",
@@ -19,7 +15,8 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
   ],
   "startAt": "2019-11-08T23:00:00.000+08:00",
@@ -55,5 +52,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/1191618222497206273",
       "createdAt": "2019-11-05T15:28:18.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

@@ -5,27 +5,6 @@
     "zh-Hans": "丹那美拉",
     "ta": "தானா மேரா"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW4",
-        "startedAt": "1989-11-04",
-        "structureType": "elevated"
-      },
-      {
-        "code": "CG",
-        "startedAt": "2001-01-10",
-        "structureType": "elevated"
-      }
-    ],
-    "TEL": [
-      {
-        "code": "TE35",
-        "startedAt": "2035-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bedok",
   "town_translations": {
     "zh-Hans": "勿洛",
@@ -53,5 +32,26 @@
   "geo": {
     "latitude": 1.3194,
     "longitude": 103.9528
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW4",
+        "startedAt": "1989-11-04",
+        "structureType": "elevated"
+      },
+      {
+        "code": "CG",
+        "startedAt": "2001-01-10",
+        "structureType": "elevated"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE35",
+        "startedAt": "2035-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

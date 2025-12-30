@@ -6,9 +6,6 @@
     "ms": "Gangguan Kereta Api yang Mempengaruhi Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையை பாதிக்கும் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2023-03-05T12:00:11.000+08:00",
   "endAt": "2023-03-05T12:32:28.000+08:00",
   "type": "disruption",
@@ -67,7 +64,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BGS",
@@ -78,7 +74,11 @@
         "TIB",
         "RDH",
         "QUE"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

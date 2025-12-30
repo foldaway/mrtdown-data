@@ -6,10 +6,6 @@
     "ms": "Kereta api bergerak pada kelajuan yang lebih perlahan kerana trek basah",
     "ta": "ஈரமான தண்டவாளங்கள் காரணமாக ரயில்கள் மெதுவாகச் செல்கின்றன"
   },
-  "componentIdsAffected": [
-    "NSL",
-    "EWL"
-  ],
   "startAt": "2011-12-19T11:40:23.000+08:00",
   "endAt": "2011-12-20T00:00:00.000+08:00",
   "type": "disruption",
@@ -39,7 +35,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -67,10 +62,10 @@
         "ORC",
         "SOM",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     },
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JKN",
@@ -102,16 +97,21 @@
         "SIM",
         "TAM",
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     },
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL",
+    "EWL"
   ]
 }

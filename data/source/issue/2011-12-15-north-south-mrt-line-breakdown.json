@@ -6,12 +6,8 @@
     "ms": "Gangguan Laluan MRT Utara-Selatan semasa waktu puncak petang",
     "ta": "மாலை நேர நெரிசல் நேரத்தில் வடக்கு-தெற்கு எம்ஆர்டி பாதையில் ஏற்பட்ட தடங்கல்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "BDL",
@@ -24,7 +20,8 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2011-12-15T19:58:00+08:00",
@@ -46,5 +43,8 @@
       "sourceUrl": "https://web.archive.org/web/20120103113431/http://www.channelnewsasia.com/stories/singaporelocalnews/view/1171573/1/.html",
       "createdAt": "2011-12-15T19:58:00+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

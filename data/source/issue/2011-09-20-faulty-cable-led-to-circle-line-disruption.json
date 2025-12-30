@@ -6,9 +6,6 @@
     "ms": "Gangguan kuasa melumpuhkan Laluan Bulatan",
     "ta": "வட்டப் பாதையில் மின் தடங்கல்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2011-09-20T05:30:00+08:00",
   "endAt": "2011-09-20T09:50:00+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -56,7 +52,11 @@
         "LRC",
         "BSH",
         "MRM"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

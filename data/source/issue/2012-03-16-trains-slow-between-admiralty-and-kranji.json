@@ -6,19 +6,16 @@
     "ms": "Kereta api mengalami kelewatan antara Admiralty dan Kranji",
     "ta": "Admiralty மற்றும் Kranji இடையே ரயில்கள் தாமதமாகின்றன"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "KRJ",
         "MSL",
         "WDL",
         "ADM"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-03-16T12:05:15.000+08:00",
@@ -41,5 +38,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/180504979335954432",
       "createdAt": "2012-03-16T12:05:15.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

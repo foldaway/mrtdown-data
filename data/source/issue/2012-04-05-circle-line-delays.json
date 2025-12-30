@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan Circle line kerana kerosakan kereta api",
     "ta": "தொடர்வண்டி பழுதடைந்ததால் வட்டப் பாதையில் சேவை தடைபட்டது"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -23,7 +19,8 @@
         "MBT",
         "DKT",
         "PYL"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2012-04-05T08:01:36.000+08:00",
@@ -45,5 +42,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/187691419220185088",
       "createdAt": "2012-04-05T08:01:36.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

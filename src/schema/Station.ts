@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ComponentIdSchema } from './Component.js';
+import { LineIdSchema } from './Line.js';
 import { StationIdSchema } from './StationId.js';
 
 export type StationId = z.infer<typeof StationIdSchema>;
@@ -7,25 +7,25 @@ export type StationId = z.infer<typeof StationIdSchema>;
 export const StationCodeSchema = z.string();
 export type StationCode = z.infer<typeof StationCodeSchema>;
 
-export const StationComponentMemberStructureTypeSchema = z
+export const StationLineMemberStructureTypeSchema = z
   .enum(['elevated', 'underground', 'at_grade', 'in_building'])
   .meta({
-    ref: 'StationComponentMemberStructureType',
+    ref: 'StationLineMemberStructureType',
     description:
-      'The structural type of the station component member, indicating whether it is elevated, underground, at-grade, or enclosed within a building.',
+      'The structural type of the station line member, indicating whether it is elevated, underground, at-grade, or enclosed within a building.',
   });
-export type StationComponentMemberStructureType = z.infer<
-  typeof StationComponentMemberStructureTypeSchema
+export type StationLineMemberStructureType = z.infer<
+  typeof StationLineMemberStructureTypeSchema
 >;
 
-export const StationComponentMemberSchema = z.object({
+export const StationLineMemberSchema = z.object({
   code: StationCodeSchema,
   startedAt: z.string().date(),
   endedAt: z.string().date().optional(),
-  structureType: StationComponentMemberStructureTypeSchema,
+  structureType: StationLineMemberStructureTypeSchema,
 });
-export type StationComponentMember = z.infer<
-  typeof StationComponentMemberSchema
+export type StationLineMember = z.infer<
+  typeof StationLineMemberSchema
 >;
 
 export const StationGeoSchema = z.object({
@@ -45,8 +45,8 @@ export const StationSchema = z.object({
   landmarks: z.array(z.string()),
   landmarks_translations: z.record(z.string(), z.array(z.string())),
   geo: StationGeoSchema,
-  componentMembers: z
-    .record(ComponentIdSchema, z.array(StationComponentMemberSchema))
-    .describe('Mapping of component ID to Station codes'),
+  lineMembers: z
+    .record(LineIdSchema, z.array(StationLineMemberSchema))
+    .describe('Mapping of line ID to Station codes'),
 });
 export type Station = z.infer<typeof StationSchema>;

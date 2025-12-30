@@ -6,9 +6,6 @@
     "ms": "Gangguan Perkhidmatan kerana Kerosakan Kuasa di BPLRT",
     "ta": "BPLRT இல் மின்சாரக் கோளாறு காரணமாக சேவை தடை"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2019-03-24T08:58:18.000+08:00",
   "endAt": "2019-03-24T09:13:58.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -46,7 +42,11 @@
         "TKW",
         "PNX",
         "BKP"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

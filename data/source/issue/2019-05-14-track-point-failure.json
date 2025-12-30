@@ -6,9 +6,6 @@
     "ms": "Kegagalan Jejaring Pengesanan di NSEWL",
     "ta": "NSEWL இல் தடமறிதல் தோல்வி"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2019-05-14T10:37:24.000+08:00",
   "endAt": "2019-05-14T12:33:14.000+08:00",
   "type": "disruption",
@@ -61,7 +58,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
@@ -74,7 +70,11 @@
         "BSH",
         "BDL",
         "TAP"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

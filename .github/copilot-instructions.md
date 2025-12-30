@@ -137,12 +137,12 @@ npm run build                # Must succeed without errors
 
 ### Database Architecture
 - **Single DuckDB file** (`mrtdown.duckdb`) with normalized relational schema  
-- **Source data**: JSON files in `/data/source/` (components, issues)
+- **Source data**: JSON files in `/data/source/` (lines, issues)
 - **Generated products**: API-ready JSON in `/data/product/`
 - **Complex analytics**: Extensive use of CTEs for uptime calculations
 
 ### Core Data Models
-- **Components**: MRT/LRT lines (NSL, EWL, CCL, etc.) with service schedules
+- **Lines**: MRT/LRT lines (NSL, EWL, CCL, etc.) with service schedules
 - **Issues**: Disruptions, maintenance, infrastructure problems with time intervals  
 - **Stations**: Station information with multi-language support
 - **Time-aware**: All operations handle Singapore timezone (`Asia/Singapore`)

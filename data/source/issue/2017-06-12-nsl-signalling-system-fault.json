@@ -6,19 +6,16 @@
     "ms": "Ralat sistem isyarat menyebabkan kelewatan",
     "ta": "தாமதங்களை ஏற்படுத்தும் சமிக்ஞை அமைப்பு தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
         "BBT",
         "BGB",
         "CCK"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-06-12T09:10:38.000+08:00",
@@ -47,5 +44,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/874071411060490240",
       "createdAt": "2017-06-12T09:10:38.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

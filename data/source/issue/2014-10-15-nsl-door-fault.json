@@ -6,12 +6,8 @@
     "ms": "Kegagalan Pintu di Stesen Dhoby Ghaut",
     "ta": "டோபி கவுட் நிலையத்தில் கதவு கோளாறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "NEW",
@@ -29,7 +25,8 @@
         "BDL",
         "TAP",
         "NOV"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2014-10-15T16:59:31.000+08:00",
@@ -63,5 +60,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/522310792792666112",
       "createdAt": "2014-10-15T16:59:31.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

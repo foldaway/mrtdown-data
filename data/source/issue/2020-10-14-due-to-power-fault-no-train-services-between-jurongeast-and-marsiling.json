@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan kerana kerosakan kuasa",
     "ta": "மின்சாரக் கோளாறு காரணமாக சேவை தடை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2020-10-14T19:55:51.000+08:00",
   "endAt": "2020-10-14T22:53:32.000+08:00",
   "type": "disruption",
@@ -73,7 +70,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -83,7 +79,11 @@
         "YWT",
         "KRJ",
         "MSL"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

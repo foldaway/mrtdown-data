@@ -6,10 +6,6 @@
     "ms": "Kelewatan dalam Perkhidmatan Kereta Api Arah Selatan",
     "ta": "தெற்கு நோக்கிச் செல்லும் தொடர் சேவை தாமதங்கள்"
   },
-  "componentIdsAffected": [
-    "NSL",
-    "EWL"
-  ],
   "startAt": "2012-02-14T08:30:13.000+08:00",
   "endAt": "2012-02-15T00:00:00.000+08:00",
   "type": "disruption",
@@ -32,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -60,10 +55,10 @@
         "ORC",
         "SOM",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     },
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JKN",
@@ -95,7 +90,12 @@
         "SIM",
         "TAM",
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL",
+    "EWL"
   ]
 }

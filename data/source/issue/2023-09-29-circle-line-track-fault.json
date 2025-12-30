@@ -6,9 +6,6 @@
     "ms": "Jejak kerosakan yang menjejaskan perkhidmatan Laluan Bulat",
     "ta": "வட்ட பாத சேவைகளை பாதிக்கும் தடப் பிழை"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2023-09-29T05:00:56.000+08:00",
   "endAt": "2023-09-29T19:31:27.000+08:00",
   "type": "disruption",
@@ -319,7 +316,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -328,10 +324,10 @@
         "PMN",
         "NCH",
         "SDM"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -339,7 +335,11 @@
         "PMN",
         "NCH",
         "SDM"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

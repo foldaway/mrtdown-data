@@ -5,15 +5,6 @@
     "zh-Hans": "合乐",
     "ta": "ஹவ்லாக்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE16",
-        "startedAt": "2022-11-13",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bukit Merah",
   "town_translations": {
     "zh-Hans": "红山",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2904,
     "longitude": 103.8397
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE16",
+        "startedAt": "2022-11-13",
+        "structureType": "underground"
+      }
+    ]
   }
 }

@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan kereta api arah barat terganggu kerana kerosakan kereta api",
     "ta": "மேற்கு நோக்கிச் செல்லும் ரயில் சேவை ரயில் கோளாறு காரணமாக பாதிக்கப்பட்டுள்ளது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2012-02-10T18:27:51.000+08:00",
   "endAt": "2012-02-10T19:42:13.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PYL",
@@ -51,7 +47,11 @@
         "DVR",
         "CLE",
         "JUR"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

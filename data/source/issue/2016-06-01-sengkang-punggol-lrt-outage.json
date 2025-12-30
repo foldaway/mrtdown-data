@@ -6,10 +6,6 @@
     "ms": "Perkhidmatan LRT terganggu di Sengkang & Punggol akibat gangguan kuasa",
     "ta": "சக்தி தவறு காரணமாக செங்காங் & பு ponggol இல் LRT சேவைகள் பாதிக்கப்பட்டுள்ளன"
   },
-  "componentIdsAffected": [
-    "PGLRT",
-    "SKLRT"
-  ],
   "startAt": "2016-06-01T19:13:26.000+08:00",
   "endAt": "2016-06-01T21:30:43.000+08:00",
   "type": "disruption",
@@ -62,7 +58,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
         "SKG",
@@ -74,10 +69,10 @@
         "LYR",
         "TKG",
         "RNJ"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "SKLRT",
       "branchName": "east",
       "stationIds": [
         "SKG",
@@ -86,10 +81,10 @@
         "BAK",
         "KGK",
         "RNG"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "PGLRT",
       "branchName": "west",
       "stationIds": [
         "SMK",
@@ -97,10 +92,10 @@
         "SMG",
         "STK",
         "PGL"
-      ]
+      ],
+      "lineId": "PGLRT"
     },
     {
-      "componentId": "PGLRT",
       "branchName": "east",
       "stationIds": [
         "DAM",
@@ -111,7 +106,12 @@
         "MRD",
         "COV",
         "PGL"
-      ]
+      ],
+      "lineId": "PGLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "PGLRT",
+    "SKLRT"
   ]
 }

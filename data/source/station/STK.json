@@ -5,15 +5,6 @@
     "zh-Hans": "树德",
     "ta": "சூ டெக்"
   },
-  "componentMembers": {
-    "PGLRT": [
-      {
-        "code": "PW7",
-        "startedAt": "2014-06-29",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Punggol",
   "town_translations": {
     "zh-Hans": "榜鹅",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3992,
     "longitude": 103.9032
+  },
+  "lineMembers": {
+    "PGLRT": [
+      {
+        "code": "PW7",
+        "startedAt": "2014-06-29",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

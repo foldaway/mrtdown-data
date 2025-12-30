@@ -6,9 +6,6 @@
     "ms": "Kerja penyelenggaraan di Sengkang LRT hujung minggu ini",
     "ta": "இந்த வார இறுதியில் செங்காங் LRT இல் பராமரிப்புப் பணிகள்"
   },
-  "componentIdsAffected": [
-    "SKLRT"
-  ],
   "startAt": "2020-12-05T00:00:00.000+08:00",
   "endAt": "2020-12-07T00:00:00.000+08:00",
   "type": "maintenance",
@@ -26,7 +23,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
         "SKG",
@@ -38,10 +34,10 @@
         "LYR",
         "TKG",
         "RNJ"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "SKLRT",
       "branchName": "east",
       "stationIds": [
         "SKG",
@@ -50,7 +46,11 @@
         "BAK",
         "KGK",
         "RNG"
-      ]
+      ],
+      "lineId": "SKLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "SKLRT"
   ]
 }

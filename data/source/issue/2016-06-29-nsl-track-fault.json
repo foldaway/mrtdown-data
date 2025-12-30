@@ -6,12 +6,8 @@
     "ms": "Gangguan landasan Laluan Utara-Selatan menyebabkan kelewatan",
     "ta": "வடக்கு-தெற்கு வரிசை பாதையில் ஏற்பட்ட தவறு தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
@@ -21,7 +17,8 @@
         "KTB",
         "YCK",
         "AMK"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2016-06-29T21:19:25.000+08:00",
@@ -55,5 +52,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/748143836958887937",
       "createdAt": "2016-06-29T21:19:25.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

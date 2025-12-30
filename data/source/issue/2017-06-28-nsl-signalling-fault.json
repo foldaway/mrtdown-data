@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan kereta di Laluan Utara-Selatan disebabkan oleh kerosakan isyarat",
     "ta": "சிக்னல் கோளாறு காரணமாக வடக்கு-தெற்கு பாதையில் ரயில் சேவை தடைப்பட்டது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -40,7 +36,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-06-28T17:15:21.000+08:00",
@@ -110,5 +107,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/879991599014436865",
       "createdAt": "2017-06-28T17:15:21.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "加东公园",
     "ta": "காத்தோங் பார்க்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE24",
-        "startedAt": "2024-06-23",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Marine Parade",
   "town_translations": {
     "zh-Hans": "马林百列",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2995,
     "longitude": 103.9019
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE24",
+        "startedAt": "2024-06-23",
+        "structureType": "underground"
+      }
+    ]
   }
 }

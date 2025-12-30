@@ -6,9 +6,6 @@
     "ms": "Penutupan Awal untuk Pengujian Sistem Bersepadu dan Kereta Api untuk Tahap 2 TEL",
     "ta": "TEL நிலை 2க்கான ஒருங்கிணைந்த அமைப்புகள் மற்றும் ரயில்களுக்கான சோதனைகளுக்கான ஆரம்ப மூடல்"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2021-05-24T21:00:00.000+08:00",
   "endAt": "2021-05-25T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20210524T000000\nRRULE:FREQ=DAILY;UNTIL=20210809T000000;WKST=MO",
@@ -27,13 +24,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
         "WDL",
         "WDS"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

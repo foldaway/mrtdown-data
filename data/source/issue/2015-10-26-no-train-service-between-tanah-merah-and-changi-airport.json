@@ -6,18 +6,15 @@
     "ms": "Tiada perkhidmatan kereta api antara Tanah Merah dan Lapangan Terbang Changi",
     "ta": "தானா மேரா மற்றும் சாங்கி விமான நிலையத்திற்கு இடையே ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2015-10-26T06:23:42.000+08:00",
@@ -45,5 +42,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/658408622053982208",
       "createdAt": "2015-10-26T06:23:42.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

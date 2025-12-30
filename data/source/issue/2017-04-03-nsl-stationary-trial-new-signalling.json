@@ -6,12 +6,8 @@
     "ms": "Laluan Utara-Selatan kereta api pegun untuk percubaan isyarat baharu",
     "ta": "வடக்கு-தெற்கு பாதை ரயில்கள் புதிய சமிக்ஞை சோதனைக்கு நிலையானவை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -40,7 +36,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-04-03T23:00:00.000+08:00",
@@ -57,5 +54,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/848884241953767425",
       "createdAt": "2017-04-03T21:05:49.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Kerosakan Kereta Api di Bukit Panjang LRT",
     "ta": "Bukit Panjang LRT இல் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2021-12-09T06:22:12.000+08:00",
   "endAt": "2021-12-09T09:49:14.000+08:00",
   "type": "disruption",
@@ -50,7 +47,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -66,7 +62,11 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

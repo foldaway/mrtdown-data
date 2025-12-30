@@ -6,12 +6,8 @@
     "ms": "Kerosakan kereta di stesen Braddell menyebabkan kelewatan di Laluan Utara-Selatan",
     "ta": "பிராடெல் நிலையத்தில் ரயில் கோளாறு காரணமாக வடக்கு-தெற்கு பாதையில் தாமதங்கள்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
@@ -26,7 +22,8 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-10-28T19:17:37.000+08:00",
@@ -55,5 +52,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/659328158768893952",
       "createdAt": "2015-10-28T19:17:37.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

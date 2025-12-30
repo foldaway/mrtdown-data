@@ -6,9 +6,6 @@
     "ms": "Penutupan Awal 4 Stesen MRT untuk Penggantian Pemutus Litar",
     "ta": "சுற்று முறிப்பான் மாற்றுவதற்காக 4 எம்ஆர்டி நிலையங்களின் முன்கூட்டிய மூடல்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2020-11-21T23:00:00.000+08:00",
   "endAt": "2020-11-22T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20201121T230000\nRRULE:FREQ=WEEKLY;UNTIL=20201129T000000;WKST=MO",
@@ -27,14 +24,17 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "GCL",
         "TCR",
         "TWR",
         "TLK"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

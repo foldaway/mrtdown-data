@@ -6,9 +6,6 @@
     "ms": "Tiada perkhidmatan NEL antara Serangoon dan Sengkang kerana kerosakan kuasa",
     "ta": "செராங்கூன் மற்றும் செங்காங் இடையே மின் துண்டிப்பு காரணமாக NEL சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2021-03-28T07:18:42.000+08:00",
   "endAt": "2021-03-28T09:53:03.000+08:00",
   "type": "disruption",
@@ -67,7 +64,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "SER",
@@ -75,7 +71,11 @@
         "HGN",
         "BGK",
         "SKG"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

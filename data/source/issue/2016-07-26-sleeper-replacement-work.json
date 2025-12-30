@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan kereta api tertunda kerana kerja penggantian rel",
     "ta": "தூக்க மாற்றுப் பணிகளால் ரயில் சேவை தாமதம்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2016-07-26T05:22:52.000+08:00",
   "endAt": "2016-07-26T06:01:12.000+08:00",
   "type": "disruption",
@@ -31,23 +28,26 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM",
         "SIM",
         "TNM"
-      ]
+      ],
+      "lineId": "EWL"
     },
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

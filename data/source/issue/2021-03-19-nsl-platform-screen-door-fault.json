@@ -6,9 +6,6 @@
     "ms": "Kerosakan Pintu Skrin Platform di NSL Antara Ang Mo Kio dan Braddell",
     "ta": "NSL இல் ஆங் மோ கியோ மற்றும் பிராடல் இடையே தளத்தின் கதவு பழுது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2021-03-19T08:28:13.000+08:00",
   "endAt": "2021-03-19T16:03:39.000+08:00",
   "type": "disruption",
@@ -44,13 +41,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
         "BSH",
         "BDL"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

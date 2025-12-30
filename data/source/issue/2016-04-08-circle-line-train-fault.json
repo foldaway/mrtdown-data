@@ -6,9 +6,6 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan",
     "ta": "தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2016-04-08T07:27:13.000+08:00",
   "endAt": "2016-04-08T07:37:53.000+08:00",
   "type": "disruption",
@@ -44,7 +41,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -62,7 +58,11 @@
         "SER",
         "LRC",
         "BSH"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

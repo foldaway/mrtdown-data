@@ -6,9 +6,6 @@
     "ms": "Gangguan kuasa dilaporkan di Fajar",
     "ta": "Fajar இல் மின் தடை அறிவிக்கப்பட்டுள்ளது"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2022-11-18T05:33:37.000+08:00",
   "endAt": "2022-11-18T05:49:30.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "BKP",
@@ -39,7 +35,11 @@
         "PND",
         "BKT",
         "FJR"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

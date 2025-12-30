@@ -2,7 +2,7 @@ import { connect } from '../../../../../../db/connect.js';
 import type { IssueType } from '../../../../../../schema/Issue.js';
 
 interface Row {
-  component_status:
+  line_status:
     | 'future_service'
     | 'closed_for_day'
     | 'ongoing_disruption'
@@ -27,7 +27,7 @@ interface Row {
   }[];
 }
 
-export async function lineSummaryQuery(componentId: string, days: number) {
+export async function lineSummaryQuery(lineId: string, days: number) {
   const connection = await connect();
   const sql = `
     WITH bounds AS (
@@ -46,18 +46,18 @@ export async function lineSummaryQuery(componentId: string, days: number) {
     ),
     service_days AS (
       SELECT
-        c.id AS component_id,
+        l.id AS line_id,
         cd.day,
         -- detect holiday/weekend/weekday
         CASE
-          WHEN ph.date IS NOT NULL THEN c.weekend_start
-          WHEN EXTRACT(DOW FROM cd.day) IN (0,6) THEN c.weekend_start
-          ELSE c.weekday_start
+          WHEN ph.date IS NOT NULL THEN l.weekend_start
+          WHEN EXTRACT(DOW FROM cd.day) IN (0,6) THEN l.weekend_start
+          ELSE l.weekday_start
         END AS start_time,
         CASE
-          WHEN ph.date IS NOT NULL THEN c.weekend_end
-          WHEN EXTRACT(DOW FROM cd.day) IN (0,6) THEN c.weekend_end
-          ELSE c.weekday_end
+          WHEN ph.date IS NOT NULL THEN l.weekend_end
+          WHEN EXTRACT(DOW FROM cd.day) IN (0,6) THEN l.weekend_end
+          ELSE l.weekday_end
         END AS end_time,
         b.end_time,
         CASE
@@ -66,14 +66,14 @@ export async function lineSummaryQuery(componentId: string, days: number) {
           ELSE 'weekday'
         END AS day_type
       FROM calendar_days cd
-      CROSS JOIN components c
+      CROSS JOIN lines l
       CROSS JOIN bounds b
       LEFT JOIN public_holidays ph ON ph.date = cd.day
-      WHERE c.id = $1
+      WHERE l.id = $1
     ),
     service_windows AS (
       SELECT
-        component_id,
+        line_id,
         day,
         -- build timestamps in Asia/Singapore
         (day::TEXT || ' ' || start_time::TEXT)::TIMESTAMP AS service_start,
@@ -91,7 +91,7 @@ export async function lineSummaryQuery(componentId: string, days: number) {
       SELECT
         i.id AS issue_id,
         i.type,
-        ic.component_id,
+        il.line_id,
         gs_local::DATE AS day,
         GREATEST(
           iv.start_at AT TIME ZONE 'Asia/Singapore',
@@ -104,8 +104,8 @@ export async function lineSummaryQuery(componentId: string, days: number) {
         sw.day_type
       FROM issues i
       JOIN issue_intervals iv ON i.id = iv.issue_id
-      JOIN issue_components ic ON ic.issue_id = i.id
-      JOIN components c ON c.id = ic.component_id
+      JOIN issue_lines il ON il.issue_id = i.id
+      JOIN lines l ON l.id = il.line_id
       CROSS JOIN bounds b
       JOIN LATERAL (
         SELECT gs_local
@@ -116,18 +116,18 @@ export async function lineSummaryQuery(componentId: string, days: number) {
         ) AS gs(gs_local)
       ) gs ON TRUE
       JOIN service_windows sw
-        ON sw.component_id = ic.component_id
+        ON sw.line_id = il.line_id
        AND sw.day = (gs.gs_local)::DATE
        AND iv.start_at < b.end_time
        AND COALESCE(iv.end_at, b.end_time) > b.start_time
        AND gs.gs_local < (b.end_time AT TIME ZONE 'Asia/Singapore')
-      WHERE ic.component_id = $1
+      WHERE il.line_id = $1
     ),
 
     -- durations of ALL issues
     durations_all AS (
       SELECT
-        component_id,
+        line_id,
         day,
         type,
         issue_id,
@@ -135,13 +135,13 @@ export async function lineSummaryQuery(componentId: string, days: number) {
         SUM(EXTRACT(EPOCH FROM (end_clipped - start_clipped))) AS duration_seconds
       FROM intervals_expanded_all
       WHERE end_clipped > start_clipped
-      GROUP BY component_id, day, type, issue_id, day_type
+      GROUP BY line_id, day, type, issue_id, day_type
     ),
 
     -- daily breakdown for ALL issue types (including infra)
     per_day_type AS (
       SELECT
-        sw.component_id,
+        sw.line_id,
         sw.day,
         COALESCE(d.type, 'none') AS type,
         COALESCE(SUM(d.duration_seconds), 0) AS total_duration_seconds_day,
@@ -152,9 +152,9 @@ export async function lineSummaryQuery(componentId: string, days: number) {
         ) AS issue_ids
       FROM service_windows sw
       LEFT JOIN durations_all d
-        ON d.component_id = sw.component_id
+        ON d.line_id = sw.line_id
        AND d.day = sw.day
-      GROUP BY sw.component_id, sw.day, d.type, sw.day_type
+      GROUP BY sw.line_id, sw.day, d.type, sw.day_type
     ),
 
     -- expand only disruption + maintenance for uptime calc
@@ -165,42 +165,42 @@ export async function lineSummaryQuery(componentId: string, days: number) {
     ),
     durations_downtime AS (
       SELECT
-        component_id,
+        line_id,
         day,
         type,
         SUM(EXTRACT(EPOCH FROM (end_clipped - start_clipped))) AS duration_seconds
       FROM intervals_expanded_downtime
       WHERE end_clipped > start_clipped
-      GROUP BY component_id, day, type
+      GROUP BY line_id, day, type
     ),
 
-    -- base service seconds per component
+    -- base service seconds per line
     uptime_base AS (
       SELECT
-        c.id AS component_id,
+        l.id AS line_id,
         SUM(EXTRACT(EPOCH FROM (sw.service_end - sw.service_start))) AS total_service_seconds
-      FROM components c
-      JOIN service_windows sw ON sw.component_id = c.id
-      WHERE sw.day >= c.started_at
-        AND c.id = $1
-      GROUP BY c.id
+      FROM lines l
+      JOIN service_windows sw ON sw.line_id = l.id
+      WHERE sw.day >= l.started_at
+        AND l.id = $1
+      GROUP BY l.id
     ),
 
     -- downtime breakdown per type (only disruption/maintenance)
     uptime_breakdown AS (
       SELECT
-        d.component_id,
+        d.line_id,
         d.type,
         SUM(d.duration_seconds) AS downtime_seconds
       FROM durations_downtime d
-      WHERE d.component_id = $1
-      GROUP BY d.component_id, d.type
+      WHERE d.line_id = $1
+      GROUP BY d.line_id, d.type
     ),
 
     -- final uptime summary
     uptime_summary AS (
       SELECT
-        b.component_id,
+        b.line_id,
         b.total_service_seconds,
         COALESCE(SUM(ub.downtime_seconds),0) AS total_downtime_seconds,
         (b.total_service_seconds - COALESCE(SUM(ub.downtime_seconds),0)) / b.total_service_seconds AS uptime_ratio,
@@ -211,38 +211,38 @@ export async function lineSummaryQuery(componentId: string, days: number) {
           )
         ) AS downtime_breakdown
       FROM uptime_base b
-      LEFT JOIN uptime_breakdown ub ON b.component_id = ub.component_id
-      GROUP BY b.component_id, b.total_service_seconds
+      LEFT JOIN uptime_breakdown ub ON b.line_id = ub.line_id
+      GROUP BY b.line_id, b.total_service_seconds
     ),
 
     -- ongoing issues for status flags
     ongoing AS (
       SELECT DISTINCT
-        ic.component_id,
+        il.line_id,
         i.type AS issue_type
       FROM issues i
       JOIN issue_intervals iv ON iv.issue_id = i.id
-      JOIN issue_components ic ON ic.issue_id = i.id
+      JOIN issue_lines il ON il.issue_id = i.id
       WHERE iv.start_at <= NOW()
         AND (iv.end_at IS NULL OR iv.end_at > NOW())
-        AND ic.component_id = $1
+        AND il.line_id = $1
     )
 
     -- final select
     SELECT
       CASE
-        WHEN c.started_at > NOW() THEN 'future_service'
+        WHEN l.started_at > NOW() THEN 'future_service'
         WHEN EXTRACT(HOUR FROM (NOW() AT TIME ZONE 'Asia/Singapore')) < 5
              OR (EXTRACT(HOUR FROM (NOW() AT TIME ZONE 'Asia/Singapore')) = 5 AND EXTRACT(MINUTE FROM (NOW() AT TIME ZONE 'Asia/Singapore')) < 30)
           THEN 'closed_for_day'
-        WHEN EXISTS (SELECT 1 FROM ongoing o WHERE o.component_id = c.id AND o.issue_type = 'disruption')
+        WHEN EXISTS (SELECT 1 FROM ongoing o WHERE o.line_id = l.id AND o.issue_type = 'disruption')
           THEN 'ongoing_disruption'
-        WHEN EXISTS (SELECT 1 FROM ongoing o WHERE o.component_id = c.id AND o.issue_type = 'maintenance')
+        WHEN EXISTS (SELECT 1 FROM ongoing o WHERE o.line_id = l.id AND o.issue_type = 'maintenance')
           THEN 'ongoing_maintenance'
-        WHEN EXISTS (SELECT 1 FROM ongoing o WHERE o.component_id = c.id AND o.issue_type = 'infra')
+        WHEN EXISTS (SELECT 1 FROM ongoing o WHERE o.line_id = l.id AND o.issue_type = 'infra')
           THEN 'ongoing_infra'
         ELSE 'normal'
-      END AS component_status,
+      END AS line_status,
       u.uptime_ratio,
       u.total_service_seconds,
       u.total_downtime_seconds,
@@ -256,12 +256,12 @@ export async function lineSummaryQuery(componentId: string, days: number) {
           day_type := p.day_type
         ) ORDER BY p.day DESC
       ) AS daily_issue_stats
-    FROM components c
-    LEFT JOIN per_day_type p ON c.id = p.component_id
-    LEFT JOIN uptime_summary u ON u.component_id = c.id
-    WHERE c.id = $1
-    GROUP BY c.id, c.started_at, u.uptime_ratio, u.total_service_seconds, u.total_downtime_seconds, u.downtime_breakdown;
+    FROM lines l
+    LEFT JOIN per_day_type p ON l.id = p.line_id
+    LEFT JOIN uptime_summary u ON u.line_id = l.id
+    WHERE l.id = $1
+    GROUP BY l.id, l.started_at, u.uptime_ratio, u.total_service_seconds, u.total_downtime_seconds, u.downtime_breakdown;
 `.trim();
-  const result = await connection.runAndReadAll(sql, [componentId]);
+  const result = await connection.runAndReadAll(sql, [lineId]);
   return result.getRowObjectsJson() as unknown as Row[];
 }

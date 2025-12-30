@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் சேவை தடை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2018-02-14T05:45:54.000+08:00",
   "endAt": "2018-02-14T10:07:50.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
@@ -51,7 +47,11 @@
         "DBG",
         "CTH",
         "RFP"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Laluan Utara-Selatan disebabkan oleh kerosakan kereta api",
     "ta": "தொடர்வண்டி கோளாறு காரணமாக வடக்கு-தெற்கு பாதையில் சேவை தடை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2019-03-04T10:58:49.000+08:00",
   "endAt": "2019-03-04T11:23:07.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -54,7 +50,11 @@
         "KRJ",
         "MSL",
         "WDL"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,16 +6,13 @@
     "ms": "Kerja penyelenggaraan di stesen terminal Pasir Ris hujung minggu ini",
     "ta": "பாசிர் ரிஸ் முனைய நிலையத்தில் இந்த வார இறுதியில் பராமரிப்புப் பணிகள்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2013-04-20T00:00:00+08:00",
@@ -30,5 +27,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/325144539507609600",
       "createdAt": "2013-04-19T15:11:13.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "百胜",
     "ta": "பிராஸ் பாசா"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC2",
-        "startedAt": "2010-04-17",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Museum",
   "town_translations": {
     "zh-Hans": "博物馆",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2964,
     "longitude": 103.8505
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC2",
+        "startedAt": "2010-04-17",
+        "structureType": "underground"
+      }
+    ]
   }
 }

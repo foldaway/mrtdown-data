@@ -9,7 +9,7 @@ interface IssueCountRow {
 }
 
 export async function issueCountsQuery(
-  componentId: string,
+  lineId: string,
   granularity: Granularity,
   count: number,
 ) {
@@ -49,10 +49,10 @@ export async function issueCountsQuery(
         ) AS end_clipped
       FROM issues i
       JOIN issue_intervals iv ON i.id = iv.issue_id
-      JOIN issue_components ic ON i.id = ic.issue_id
+      JOIN issue_lines il ON i.id = il.issue_id
       CROSS JOIN bounds bo
       CROSS JOIN buckets b
-      WHERE ic.component_id = $1
+      WHERE il.line_id = $1
         AND iv.start_at < b.bucket_start + INTERVAL 1 ${granularity}
         AND COALESCE(iv.end_at, bo.end_time, NOW() AT TIME ZONE 'Asia/Singapore') > b.bucket_start
     ),
@@ -77,6 +77,6 @@ export async function issueCountsQuery(
     GROUP BY bit.bucket
     ORDER BY bit.bucket;
 `.trim();
-  const rows = await connection.runAndReadAll(sql, [componentId]);
+  const rows = await connection.runAndReadAll(sql, [lineId]);
   return rows.getRowObjectsJson() as unknown as IssueCountRow[];
 }

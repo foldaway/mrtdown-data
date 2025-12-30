@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan kereta api arah selatan bergerak perlahan",
     "ta": "தெற்கு நோக்கிச் செல்லும் ரயில் சேவை மெதுவாகச் செல்கிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -39,7 +35,8 @@
         "ORC",
         "SOM",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-04-24T21:28:27.000+08:00",
@@ -67,5 +64,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/194779842410065921",
       "createdAt": "2012-04-24T21:28:27.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

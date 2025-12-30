@@ -6,17 +6,14 @@
     "ms": "Gangguan kereta di Laluan North-South",
     "ta": "வடக்கு-தெற்கு பாதையில் ரயில் பழுது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YCK",
         "AMK"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-11-01T16:29:40.000+08:00",
@@ -38,5 +35,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/263920730645860352",
       "createdAt": "2012-11-01T16:29:40.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

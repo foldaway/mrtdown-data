@@ -5,15 +5,6 @@
     "zh-Hans": "裕群",
     "ta": "ஜூ கூன்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW29",
-        "startedAt": "2009-02-28",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Pioneer",
   "town_translations": {
     "zh-Hans": "先驱",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.34254,
     "longitude": 103.67185
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW29",
+        "startedAt": "2009-02-28",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

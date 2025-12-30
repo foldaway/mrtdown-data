@@ -29,7 +29,7 @@ npm run ingest:webhook     # Process incoming webhook data
 ## Architecture
 
 ### Core Data Models
-- **Components**: MRT/LRT lines (NSL, EWL, CCL, etc.) with service schedules
+- **Lines**: MRT/LRT lines (NSL, EWL, CCL, etc.) with service schedules
 - **Issues**: Disruptions, maintenance, infrastructure problems with time intervals
 - **Stations**: Station information with multi-language support
 - **Time-aware**: All operations handle Singapore timezone (`Asia/Singapore`)
@@ -45,7 +45,7 @@ All endpoints require Bearer token authentication except `/docs`.
 
 ### Database Architecture
 - **Single DuckDB file** (`mrtdown.duckdb`) with normalized relational schema
-- **Source data**: JSON files in `/data/source/` (components, issues)
+- **Source data**: JSON files in `/data/source/` (lines, issues)
 - **Generated data**: API-ready queries from DuckDB
 - **Complex analytics**: Extensive use of CTEs for uptime calculations
 
@@ -58,7 +58,7 @@ All endpoints require Bearer token authentication except `/docs`.
 - **Multi-language**: All titles have 4-language translations
 
 ### Service Hours Logic
-- **Weekday/weekend/holiday schedules**: Components have different operating hours
+- **Weekday/weekend/holiday schedules**: Lines have different operating hours
 - **Service windows**: Dynamic calculation based on day type
 - **Uptime calculations**: Only count downtime during actual service hours
 

@@ -72,7 +72,7 @@ lineProfileRoute.get(
 
     const lineSummary: LineSummary = {
       lineId,
-      status: lineSummaryRow.component_status,
+      status: lineSummaryRow.line_status,
       durationSecondsByIssueType: {},
       durationSecondsTotalForIssues: 0,
       breakdownByDates: {},
@@ -84,7 +84,7 @@ lineProfileRoute.get(
 
     for (const dailyStat of lineSummaryRow.daily_issue_stats) {
       if (dailyStat.day == null) {
-        // This case is possible for components that are not in service
+        // This case is possible for lines that are not in service
         continue;
       }
 
@@ -100,7 +100,7 @@ lineProfileRoute.get(
       };
 
       if (dailyStat.type === 'none') {
-        // This means there were no issues affecting this component on this day
+        // This means there were no issues affecting this line on this day
         // We can skip this entry
         continue;
       }

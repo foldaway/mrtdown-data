@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் சேவை தடை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2025-04-23T07:20:51.000+08:00",
   "endAt": "2025-04-23T09:00:51.000+08:00",
   "type": "disruption",
@@ -49,12 +46,15 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

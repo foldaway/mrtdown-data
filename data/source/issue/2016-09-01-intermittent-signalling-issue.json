@@ -6,9 +6,6 @@
     "ms": "Masalah isyarat sekejap-sekejap di Laluan Bulat",
     "ta": "வட்ட பாதையில் இடைப்பட்ட சமிக்ஞை பிரச்சனை"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2016-09-01T06:25:34.000+08:00",
   "endAt": "2016-09-02T00:00:00.000+08:00",
   "type": "disruption",
@@ -44,7 +41,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -75,10 +71,10 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -108,7 +104,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -6,18 +6,15 @@
     "ms": "Tiada perkhidmatan kereta api antara Promenade dan Marina Bay",
     "ta": "Promenade மற்றும் Marina Bay இடையே ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
         "BFT",
         "PMN"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2012-01-19T12:30:17.000+08:00",
@@ -39,5 +36,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/159855170442891265",
       "createdAt": "2012-01-19T12:30:17.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

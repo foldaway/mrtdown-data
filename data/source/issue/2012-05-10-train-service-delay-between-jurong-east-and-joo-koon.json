@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan kereta api tertangguh di antara Jurong East dan Joo Koon",
     "ta": "ஜூரோங் ஈஸ்ட் மற்றும் ஜூ கூன் இடையே ரயில் சேவை தாமதம்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -20,7 +16,8 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-05-10T09:04:39.000+08:00",
@@ -42,5 +39,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/200390863816368130",
       "createdAt": "2012-05-10T09:04:39.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

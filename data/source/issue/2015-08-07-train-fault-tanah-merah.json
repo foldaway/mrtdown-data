@@ -6,12 +6,8 @@
     "ms": "Kerosakan kereta api berhampiran Tanah Merah",
     "ta": "தனா மெரா அருகே ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -21,7 +17,8 @@
         "BDK",
         "KEM",
         "EUN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2015-08-07T23:41:01.000+08:00",
@@ -43,5 +40,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/629678639693467648",
       "createdAt": "2015-08-07T23:41:01.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

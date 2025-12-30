@@ -6,9 +6,6 @@
     "ms": "Kelewatan CCL - HarbourFront ke Paya Lebar (Laporan Awam)",
     "ta": "CCL தாமதம் - HarbourFront முதல் Paya Lebar வரை (பொது அறிக்கை)"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2025-12-08T08:12:14+08:00",
   "endAt": "2025-12-08T09:24:03+08:00",
   "type": "disruption",
@@ -25,7 +22,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -55,10 +51,10 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -89,7 +85,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

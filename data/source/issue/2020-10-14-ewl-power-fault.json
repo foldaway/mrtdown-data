@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan kereta api terganggu kerana kerosakan kuasa",
     "ta": "மின்சாரக் கோளாறு காரணமாக ரயில் சேவைகள் பாதிக்கப்பட்டுள்ளன"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2020-10-14T19:57:45.000+08:00",
   "endAt": "2020-10-14T22:39:23.000+08:00",
   "type": "disruption",
@@ -85,7 +82,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "DVR",
@@ -100,7 +96,11 @@
         "TCR",
         "TWR",
         "TLK"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

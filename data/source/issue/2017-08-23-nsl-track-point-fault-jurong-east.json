@@ -6,9 +6,6 @@
     "ms": "Ralat titik trek di Laluan Utara-Selatan, hanya satu platform beroperasi di Jurong East",
     "ta": "ஜூரோங் கிழக்கு நிலையத்தில் வடக்கு-தெற்கு பாதையில் தட புள்ளி பிழை, ஒரு தளம் மட்டுமே செயல்படுகிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2017-08-23T17:09:26.000+08:00",
   "endAt": "2017-08-24T00:00:00.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -39,7 +35,11 @@
         "BGB",
         "CCK",
         "YWT"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

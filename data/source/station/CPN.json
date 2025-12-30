@@ -5,15 +5,6 @@
     "zh-Hans": "企业",
     "ta": "கார்ப்பரெஷன்"
   },
-  "componentMembers": {
-    "JRL": [
-      {
-        "code": "JS5",
-        "startedAt": "2027-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Jurong West",
   "town_translations": {
     "zh-Hans": "裕廊西",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3498,
     "longitude": 103.7036
+  },
+  "lineMembers": {
+    "JRL": [
+      {
+        "code": "JS5",
+        "startedAt": "2027-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

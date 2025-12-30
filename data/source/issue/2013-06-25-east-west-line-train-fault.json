@@ -6,17 +6,14 @@
     "ms": "Kelewatan Kereta Api di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் ரயில் தாமதம்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BDK",
         "KEM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2013-06-25T21:38:35.000+08:00",
@@ -38,5 +35,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/349522008284995585",
       "createdAt": "2013-06-25T21:38:35.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

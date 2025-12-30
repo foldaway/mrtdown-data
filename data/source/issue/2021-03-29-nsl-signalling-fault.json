@@ -6,9 +6,6 @@
     "ms": "Gangguan Perkhidmatan Akibat Kerosakan Isyarat di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் சமிக்ஞை தவறு காரணமாக சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2021-03-29T05:47:22.000+08:00",
   "endAt": "2021-03-29T10:20:47.000+08:00",
   "type": "disruption",
@@ -109,7 +106,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "BSH",
@@ -124,7 +120,11 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

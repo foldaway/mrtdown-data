@@ -6,9 +6,6 @@
     "ms": "Kerosakan Isyarat di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2018-02-07T08:14:30.000+08:00",
   "endAt": "2018-02-07T08:46:35.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
@@ -63,7 +59,11 @@
         "DBG",
         "CTH",
         "RFP"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

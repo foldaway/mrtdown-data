@@ -6,9 +6,6 @@
     "ms": "Penutupan awal Laluan Thomson-East Coast kerana kerja-kerja Peringkat 4",
     "ta": "தாய்-கிழக்கு கடற்கரை பாதைக்கான ஆரம்ப மூடல், நிலை 4 பணிகளுக்காக"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2023-11-03T22:30:00.000+08:00",
   "endAt": "2023-11-04T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20231103T053000\nRRULE:FREQ=WEEKLY;UNTIL=20240129T000000;WKST=MO;BYDAY=FR,SA",
@@ -25,7 +22,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
@@ -48,7 +44,11 @@
         "SHW",
         "MRB",
         "GRB"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

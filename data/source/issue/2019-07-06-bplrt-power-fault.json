@@ -6,9 +6,6 @@
     "ms": "Gangguan kuasa menjejaskan perkhidmatan LRT Bukit Panjang",
     "ta": "Bukit Panjang LRT சேவையில் மின்சாரம் தடைப்பட்டுள்ளது"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2019-07-06T11:08:31.000+08:00",
   "endAt": "2019-07-06T11:37:30.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -47,7 +43,11 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

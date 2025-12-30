@@ -5,15 +5,6 @@
     "zh-Hans": "加冷",
     "ta": "காலாங்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW10",
-        "startedAt": "1989-11-04",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Kallang",
   "town_translations": {
     "zh-Hans": "加冷",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3032,
     "longitude": 103.8725
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW10",
+        "startedAt": "1989-11-04",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

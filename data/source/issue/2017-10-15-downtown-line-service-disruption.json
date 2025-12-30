@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan kereta antara Bukit Panjang dan Beauty World Stations",
     "ta": "Bukit Panjang மற்றும் Beauty World நிலையங்களுக்கு இடையே ரயில் சேவை சீர்குலைவு"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "startAt": "2017-10-15T13:04:55.000+08:00",
   "endAt": "2017-10-15T13:21:00.000+08:00",
   "type": "disruption",
@@ -37,14 +34,17 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "BKP",
         "CSW",
         "HVW",
         "BTW"
-      ]
+      ],
+      "lineId": "DTL"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

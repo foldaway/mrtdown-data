@@ -6,11 +6,12 @@
     "ms": "Tiada perkhidmatan kereta kerana kerosakan kereta",
     "ta": "தொடர்வண்டி பழுது காரணமாக ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": ["BPLRT"],
   "startAt": "2017-09-09T11:12:18.000+08:00",
   "endAt": "2017-09-09T16:25:08.000+08:00",
   "type": "disruption",
-  "subtypes": ["train.fault"],
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -39,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -55,10 +55,10 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     },
     {
-      "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
         "BKP",
@@ -70,7 +70,11 @@
         "JLP",
         "SNJ",
         "TMJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

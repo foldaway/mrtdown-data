@@ -6,9 +6,6 @@
     "ms": "Kereta Api Rosak Menyebabkan Kelewatan di Laluan Timur Barat di Stesen Aljunied",
     "ta": "Aljunied நிலையத்தில் கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2017-11-10T23:15:15.000+08:00",
   "endAt": "2017-11-11T00:13:07.000+08:00",
   "type": "disruption",
@@ -38,7 +35,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TNM",
@@ -58,7 +54,11 @@
         "TPG",
         "OTP",
         "TIB"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

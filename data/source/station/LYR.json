@@ -5,15 +5,6 @@
     "zh-Hans": "拉雅",
     "ta": "லாயார்"
   },
-  "componentMembers": {
-    "SKLRT": [
-      {
-        "code": "SW6",
-        "startedAt": "2005-01-29",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Sengkang",
   "town_translations": {
     "zh-Hans": "盛港",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3776,
     "longitude": 103.8989
+  },
+  "lineMembers": {
+    "SKLRT": [
+      {
+        "code": "SW6",
+        "startedAt": "2005-01-29",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

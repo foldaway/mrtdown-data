@@ -5,15 +5,6 @@
     "zh-Hans": "福康宁",
     "ta": "ஃபோர்ட் கெனிங்"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT20",
-        "startedAt": "2017-10-21",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Museum",
   "town_translations": {
     "zh-Hans": "博物馆",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2904,
     "longitude": 103.848
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT20",
+        "startedAt": "2017-10-21",
+        "structureType": "underground"
+      }
+    ]
   }
 }

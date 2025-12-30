@@ -6,12 +6,8 @@
     "ms": "Kereta Api Laluan Utara-Selatan Pegun untuk Ujian Isyarat",
     "ta": "வடக்கு-தெற்கு பாதையில் சமிக்ஞை சோதனைக்காக ரயில்கள் நிலையாக உள்ளன"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -40,7 +36,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-04-04T23:00:00.000+08:00",
@@ -57,5 +54,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/849245383985250304",
       "createdAt": "2017-04-04T21:00:52.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

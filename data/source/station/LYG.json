@@ -5,15 +5,6 @@
     "zh-Hans": "罗央",
     "ta": "லோயாங்"
   },
-  "componentMembers": {
-    "CRL": [
-      {
-        "code": "CR3",
-        "startedAt": "2030-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Pasir Ris",
   "town_translations": {
     "zh-Hans": "巴西立",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3631,
     "longitude": 104.0035
+  },
+  "lineMembers": {
+    "CRL": [
+      {
+        "code": "CR3",
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

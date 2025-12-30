@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan kereta api di sepanjang Laluan Bulatan beroperasi lebih perlahan daripada biasa kerana kegagalan isyarat",
     "ta": "சிக்னலிங் கோளாறு காரணமாக வட்டப் பாதையில் ரயில் சேவைகள் சாதாரணமாக இயங்குவதை விட மெதுவாக இயங்குகின்றன"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2018-07-20T00:03:37.000+08:00",
   "endAt": "2018-07-20T04:22:26.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -62,10 +58,10 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -95,7 +91,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -6,18 +6,15 @@
     "ms": "Gangguan perkhidmatan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TAM",
         "SIM",
         "TNM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2014-01-22T22:50:01.000+08:00",
@@ -57,5 +54,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/426003826726797313",
       "createdAt": "2014-01-22T22:50:01.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

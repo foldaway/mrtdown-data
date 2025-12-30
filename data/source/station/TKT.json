@@ -5,15 +5,6 @@
     "zh-Hans": "丹戎加东",
     "ta": "தஞ்சோங் காத்தோங்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE25",
-        "startedAt": "2024-06-23",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Marine Parade",
   "town_translations": {
     "zh-Hans": "马林百列",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3041,
     "longitude": 103.8955
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE25",
+        "startedAt": "2024-06-23",
+        "structureType": "underground"
+      }
+    ]
   }
 }

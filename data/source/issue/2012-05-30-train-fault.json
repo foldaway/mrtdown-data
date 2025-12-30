@@ -6,12 +6,8 @@
     "ms": "Gangguan kereta api menyebabkan kelewatan dari Yew Tee ke Jurong East",
     "ta": "Yew Tee முதல் Jurong East வரை தாமதத்தை ஏற்படுத்தும் ரயில் தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -19,7 +15,8 @@
         "BGB",
         "CCK",
         "YWT"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-05-30T08:25:42.000+08:00",
@@ -42,5 +39,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/207628817223778304",
       "createdAt": "2012-05-30T08:25:42.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

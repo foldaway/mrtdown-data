@@ -6,9 +6,6 @@
     "ms": "Tiada perkhidmatan kereta api antara stesen Punggol dan Little India disebabkan oleh kegagalan kereta api.",
     "ta": "புக்கோல் மற்றும் லிட்டில் இந்தியா நிலையங்களுக்கு இடையே ரயில் கோளாறு காரணமாக ரயில் சேவை இல்லை."
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2012-12-20T16:47:58.000+08:00",
   "endAt": "2012-12-20T17:14:40.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "LTI",
@@ -51,7 +47,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

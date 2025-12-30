@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan Laluan Downtown",
     "ta": "டவுன்டவுன் லைன் சேவை தடங்கல்"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "startAt": "2022-09-13T20:24:42.000+08:00",
   "endAt": "2022-09-13T21:00:00.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "BKP",
@@ -68,7 +64,11 @@
         "TPE",
         "UPC",
         "XPO"
-      ]
+      ],
+      "lineId": "DTL"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

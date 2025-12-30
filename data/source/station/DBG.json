@@ -5,29 +5,6 @@
     "zh-Hans": "多美歌",
     "ta": "டோபி காட்"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS24",
-        "startedAt": "1987-12-12",
-        "structureType": "underground"
-      }
-    ],
-    "NEL": [
-      {
-        "code": "NE6",
-        "startedAt": "2003-06-20",
-        "structureType": "underground"
-      }
-    ],
-    "CCL": [
-      {
-        "code": "CC1",
-        "startedAt": "2010-04-17",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Museum",
   "town_translations": {
     "zh-Hans": "博物馆",
@@ -63,5 +40,28 @@
   "geo": {
     "latitude": 1.300419,
     "longitude": 103.849283
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS24",
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
+      }
+    ],
+    "NEL": [
+      {
+        "code": "NE6",
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
+      }
+    ],
+    "CCL": [
+      {
+        "code": "CC1",
+        "startedAt": "2010-04-17",
+        "structureType": "underground"
+      }
+    ]
   }
 }

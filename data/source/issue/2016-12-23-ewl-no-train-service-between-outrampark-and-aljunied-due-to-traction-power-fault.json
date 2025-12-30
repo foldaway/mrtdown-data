@@ -6,12 +6,8 @@
     "ms": "Tiada perkhidmatan kereta api antara Outram Park & Aljunied kerana kerosakan kuasa tarikan",
     "ta": "Outram Park & Aljunied இடையே ரயில் சேவை இல்லை, இழுவை மின்சாரக் கோளாறு காரணமாக"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "ALJ",
@@ -22,7 +18,8 @@
         "RFP",
         "TPG",
         "OTP"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2016-12-23T05:33:16.000+08:00",
@@ -56,5 +53,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/812048385045729280",
       "createdAt": "2016-12-23T05:33:16.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

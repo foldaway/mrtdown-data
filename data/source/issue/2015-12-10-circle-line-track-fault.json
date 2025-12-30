@@ -6,18 +6,15 @@
     "ms": "Jejak kegagalan menyebabkan kelewatan",
     "ta": "தாமதத்தை ஏற்படுத்தும் தடயப் பிழை"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
         "BFT",
         "PMN"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2015-12-10T09:20:42.000+08:00",
@@ -39,5 +36,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/674760618184839169",
       "createdAt": "2015-12-10T09:20:42.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -6,17 +6,14 @@
     "ms": "Ralat kereta api Laluan Timur Barat menyebabkan kelewatan",
     "ta": "கிழக்கு மேற்கு கோட்டு ரயில் தவறு தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2013-08-24T17:26:08.000+08:00",
@@ -57,5 +54,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/371201751644258304",
       "createdAt": "2013-08-24T17:26:08.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

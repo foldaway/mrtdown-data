@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2024-12-17T19:37:03.000+08:00",
   "endAt": "2024-12-17T20:05:43.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -53,7 +49,11 @@
         "PNR",
         "JKN",
         "GCL"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

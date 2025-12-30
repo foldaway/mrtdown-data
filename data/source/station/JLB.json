@@ -5,15 +5,6 @@
     "zh-Hans": "惹兰勿刹",
     "ta": "ஜாலான் புசார்"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT22",
-        "startedAt": "2017-10-21",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Rochor",
   "town_translations": {
     "zh-Hans": "罗楚",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3082,
     "longitude": 103.8512
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT22",
+        "startedAt": "2017-10-21",
+        "structureType": "underground"
+      }
+    ]
   }
 }

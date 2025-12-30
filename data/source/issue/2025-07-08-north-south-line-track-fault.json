@@ -6,9 +6,6 @@
     "ms": "Kerosakan Trek pada Laluan Utara-Selatan",
     "ta": "வடக்கே தெற்கே நெடி பிழை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2025-07-08T09:44:45.000+08:00",
   "endAt": "2025-07-08T10:10:29.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "TAP",
@@ -51,7 +47,11 @@
         "NEW",
         "ORC",
         "SOM"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Kerosakan kereta api menjejaskan Laluan Utara-Selatan",
     "ta": "ரயில் பழுது வடக்கு-தெற்கு பாதையை பாதிக்கிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2021-12-24T16:02:55.000+08:00",
   "endAt": "2021-12-24T16:29:16.000+08:00",
   "type": "disruption",
@@ -44,7 +41,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -52,7 +48,11 @@
         "BGB",
         "CCK",
         "YWT"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

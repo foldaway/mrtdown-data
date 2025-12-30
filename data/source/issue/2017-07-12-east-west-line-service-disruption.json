@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan di Laluan Timur Barat kerana kerosakan isyarat",
     "ta": "சிக்னலிங் கோளாறு காரணமாக கிழக்கு மேற்கு பாதையில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "CLE",
@@ -21,7 +17,8 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2017-07-12T08:41:51.000+08:00",
@@ -61,5 +58,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/884935803234697216",
       "createdAt": "2017-07-12T08:41:51.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

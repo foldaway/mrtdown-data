@@ -6,12 +6,8 @@
     "ms": "Kereta api rosak menyebabkan kelewatan antara Bukit Panjang dan Choa Chu Kang",
     "ta": "Bukit Panjang மற்றும் Choa Chu Kang இடையே தாமதத்தை ஏற்படுத்தும் ரயில் பழுது"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -20,7 +16,8 @@
         "TKW",
         "PNX",
         "BKP"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
   ],
   "startAt": "2013-05-17T10:42:47.000+08:00",
@@ -43,5 +40,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/335223843427848192",
       "createdAt": "2013-05-17T10:42:47.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

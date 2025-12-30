@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan kereta di Laluan Thomson–East Coast",
     "ta": "தாம்சன்-கிழக்கு கடற்கரை பாதையில் ரயில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2025-03-12T05:41:49.000+08:00",
   "endAt": "2025-03-12T06:24:01.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "GRB",
@@ -42,7 +38,11 @@
         "MTC",
         "SGL",
         "BSR"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

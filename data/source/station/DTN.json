@@ -5,15 +5,6 @@
     "zh-Hans": "市中心",
     "ta": "டௌன்டவுன்"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT17",
-        "startedAt": "2013-12-22",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Downtown Core",
   "town_translations": {
     "zh-Hans": "市中心核心",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2822,
     "longitude": 103.8587
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT17",
+        "startedAt": "2013-12-22",
+        "structureType": "underground"
+      }
+    ]
   }
 }

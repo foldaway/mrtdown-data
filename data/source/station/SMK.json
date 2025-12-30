@@ -5,15 +5,6 @@
     "zh-Hans": "三记",
     "ta": "சாம் கீ"
   },
-  "componentMembers": {
-    "PGLRT": [
-      {
-        "code": "PW1",
-        "startedAt": "2016-02-29",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Punggol",
   "town_translations": {
     "zh-Hans": "榜鹅",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3981,
     "longitude": 103.9106
+  },
+  "lineMembers": {
+    "PGLRT": [
+      {
+        "code": "PW1",
+        "startedAt": "2016-02-29",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

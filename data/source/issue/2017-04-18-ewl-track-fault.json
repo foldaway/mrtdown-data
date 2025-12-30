@@ -6,12 +6,8 @@
     "ms": "Ralat trek utama di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் பெரிய ரயில் பழுது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -22,7 +18,8 @@
         "KEM",
         "EUN",
         "PYL"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2017-04-18T08:35:35.000+08:00",
@@ -86,5 +83,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/854131259231977474",
       "createdAt": "2017-04-18T08:35:35.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

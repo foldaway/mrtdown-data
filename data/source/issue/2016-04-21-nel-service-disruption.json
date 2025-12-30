@@ -6,12 +6,8 @@
     "ms": "Tiada Perkhidmatan Laluan Timur Laut Antara Chinatown dan Farrer Park",
     "ta": "சைனாடவுன் மற்றும் ஃபாரர் பார்க் இடையே வடகிழக்கு லைனில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "CTN",
@@ -19,7 +15,8 @@
         "DBG",
         "LTI",
         "FRP"
-      ]
+      ],
+      "lineId": "NEL"
     }
   ],
   "startAt": "2016-04-21T11:38:32.000+08:00",
@@ -45,5 +42,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/722992890947883008",
       "createdAt": "2016-04-21T11:38:32.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

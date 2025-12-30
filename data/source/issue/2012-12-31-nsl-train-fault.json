@@ -6,12 +6,8 @@
     "ms": "Gangguan Kereta di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "BBT",
@@ -38,7 +34,8 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-12-31T12:21:55.000+08:00",
@@ -78,5 +75,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/285601656417185792",
       "createdAt": "2012-12-31T12:21:55.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan kereta api tergendala di CCL disebabkan oleh kerosakan kuasa tarikan",
     "ta": "ஈர்ப்பு சக்தி கோளாறு காரணமாக CCL இல் ரயில் சேவைகள் தாமதமாகின்றன"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2015-11-25T05:22:29.000+08:00",
   "endAt": "2015-11-25T05:32:58.000+08:00",
   "type": "disruption",
@@ -38,7 +35,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "BBS",
@@ -68,7 +64,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

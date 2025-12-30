@@ -6,9 +6,6 @@
     "ms": "Kerosakan Isyarat di Laluan Lingkar",
     "ta": "வட்டப் பாதையில் சிக்னல் கோளாறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2018-11-11T15:30:28.000+08:00",
   "endAt": "2018-11-11T15:50:09.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -49,10 +45,10 @@
         "MBT",
         "DKT",
         "PYL"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -63,7 +59,11 @@
         "MBT",
         "DKT",
         "PYL"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

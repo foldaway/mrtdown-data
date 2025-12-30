@@ -6,9 +6,6 @@
     "ms": "Penutupan Awal Laluan Bulat dari Ahad hingga Rabu",
     "ta": "வட்டப் பாதையின் ஞாயிறு முதல் புதன் வரை முன்கூட்டியே மூடல்கள்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2025-06-15T23:00:00.000+08:00",
   "endAt": "2025-06-16T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20250615T230000\nRRULE:FREQ=DAILY;UNTIL=20250731T000000;WKST=MO;BYDAY=MO,TU,WE,SU",
@@ -27,7 +24,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -58,10 +54,10 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -91,7 +87,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -6,19 +6,16 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan di NSL",
     "ta": "ரயில் பழுது NSL இல் தாமதங்களை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
         "ADM",
         "SBW",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2013-10-03T17:03:38.000+08:00",
@@ -47,5 +44,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/385691602825379840",
       "createdAt": "2013-10-03T17:03:38.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

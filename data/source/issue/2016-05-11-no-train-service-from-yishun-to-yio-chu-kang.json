@@ -6,18 +6,15 @@
     "ms": "Tiada perkhidmatan kereta api dari Yishun ke Yio Chu Kang kerana kerosakan kereta api",
     "ta": "Yishun இலிருந்து Yio Chu Kang வரை ரயில் பழுது காரணமாக ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YIS",
         "KTB",
         "YCK"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2016-05-11T16:01:57.000+08:00",
@@ -63,5 +60,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/730306940052459521",
       "createdAt": "2016-05-11T16:01:57.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

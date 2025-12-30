@@ -6,10 +6,6 @@
     "ms": "Cuaca Basah Menyebabkan Perkhidmatan Kereta Api Lebih Perlahan Merentasi Laluan yang Terjejas",
     "ta": "பாதிக்கப்பட்ட கோடுகளில் ரயில் சேவை மெதுவாக ஈரப்பதமான வானிலை காரணமாகிறது"
   },
-  "componentIdsAffected": [
-    "NSL",
-    "EWL"
-  ],
   "startAt": "2011-12-24T13:57:23.000+08:00",
   "endAt": "2011-12-25T00:00:00.000+08:00",
   "type": "disruption",
@@ -32,33 +28,37 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "DBG",
         "CTH",
         "RFP"
-      ]
+      ],
+      "lineId": "NSL"
     },
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JUR",
         "CNG",
         "LKS",
         "BNL"
-      ]
+      ],
+      "lineId": "EWL"
     },
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM",
         "SIM",
         "TNM"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL",
+    "EWL"
   ]
 }

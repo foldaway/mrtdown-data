@@ -6,17 +6,14 @@
     "ms": "Gangguan Perkhidmatan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் சேவை தடங்கல்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YWT",
         "KRJ"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2014-01-11T12:35:20.000+08:00",
@@ -56,5 +53,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/421862869106319360",
       "createdAt": "2014-01-11T12:35:20.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

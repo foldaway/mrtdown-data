@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan LRT Bukit Panjang akan berakhir lebih awal",
     "ta": "Bukit Panjang LRT சேவைகள் முன்னதாகவே முடிவடையும்"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2024-11-14T22:30:00.000+08:00",
   "endAt": "2024-11-15T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20241114T223000\nRRULE:FREQ=WEEKLY;UNTIL=20251101T000000;WKST=MO;BYDAY=TH,FR,SA,SU",
@@ -27,7 +24,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -43,7 +39,11 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

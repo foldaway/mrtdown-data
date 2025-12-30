@@ -6,12 +6,8 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan",
     "ta": "தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YIS",
@@ -30,7 +26,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-11-23T06:36:50.000+08:00",
@@ -53,5 +50,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/668558784336302080",
       "createdAt": "2015-11-23T06:36:50.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

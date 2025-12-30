@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan Laluan Timur Laut",
     "ta": "வடகிழக்கு வழித்தடத்தில் சேவை தடங்கல்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2021-09-02T08:52:13.000+08:00",
   "endAt": "2021-09-02T09:21:11.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -61,7 +57,11 @@
         "HGN",
         "BGK",
         "SKG"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

@@ -6,12 +6,8 @@
     "ms": "Percubaan Sistem Isyarat Baharu di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் புதிய சமிக்ஞை அமைப்பின் சோதனை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -40,7 +36,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-04-12T23:00:00.000+08:00",
@@ -57,5 +54,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/852144334044409856",
       "createdAt": "2017-04-12T21:00:15.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

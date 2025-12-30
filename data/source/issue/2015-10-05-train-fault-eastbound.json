@@ -6,12 +6,8 @@
     "ms": "Aduan kerosakan kereta api di Pioneer Laluan Timur",
     "ta": "பயனியரில் கிழக்கு நோக்கி செல்லும் ரயிலில் பழுது கண்டறியப்பட்டது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "CLE",
@@ -20,7 +16,8 @@
         "LKS",
         "BNL",
         "PNR"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2015-10-05T18:13:14.000+08:00",
@@ -48,5 +45,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/650977034768744449",
       "createdAt": "2015-10-05T18:13:14.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

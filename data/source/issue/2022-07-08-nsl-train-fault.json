@@ -6,9 +6,6 @@
     "ms": "Kelewatan kereta besar di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் பெரிய ரயில் தாமதம்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2022-07-08T17:56:24.000+08:00",
   "endAt": "2022-07-08T18:37:09.000+08:00",
   "type": "disruption",
@@ -62,7 +59,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -71,7 +67,11 @@
         "CCK",
         "YWT",
         "KRJ"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

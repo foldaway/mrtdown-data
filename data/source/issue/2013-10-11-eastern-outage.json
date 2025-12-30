@@ -6,18 +6,15 @@
     "ms": "Gangguan perkhidmatan kereta api kerana rel ke-3 yang rosak",
     "ta": "குறைபாடுள்ள 3வது ரயில் காரணமாக ரயில் சேவை தடங்கல்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TAM",
         "SIM",
         "TNM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2013-10-11T12:12:58.000+08:00",
@@ -45,5 +42,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/388517557855997952",
       "createdAt": "2013-10-11T12:12:58.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

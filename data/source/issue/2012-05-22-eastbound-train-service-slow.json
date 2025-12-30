@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan kereta arah timur",
     "ta": "கிழக்கு திசை ரயில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JKN",
@@ -43,7 +39,8 @@
         "SIM",
         "TAM",
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-05-22T21:36:29.000+08:00",
@@ -65,5 +62,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/204928720887234560",
       "createdAt": "2012-05-22T21:36:29.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

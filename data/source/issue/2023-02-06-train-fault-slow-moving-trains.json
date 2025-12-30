@@ -6,9 +6,6 @@
     "ms": "Kerosakan Kereta Api Menyebabkan Kereta Api Bergerak Perlahan",
     "ta": "ரயில் தவறு மெதுவாக ரயில்களை நகர்த்துகிறது"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2023-02-06T18:42:15.000+08:00",
   "endAt": "2023-02-06T19:31:12.000+08:00",
   "type": "disruption",
@@ -50,7 +47,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
@@ -73,7 +69,11 @@
         "SHW",
         "MRB",
         "GRB"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

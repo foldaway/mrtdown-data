@@ -6,9 +6,6 @@
     "ms": "Penyesuaian Waktu Perkhidmatan untuk integrasi Stesen Punggol Coast",
     "ta": "பகூங்கோல் கோஸ்ட் நிலையத்தின் ஒருங்கிணைப்புக்கான சேவை நேர மாற்றங்கள்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2024-06-30T05:30:00.000+08:00",
   "endAt": "2024-06-30T08:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20240630T053000\nRRULE:FREQ=WEEKLY;UNTIL=20240722T000000;WKST=MO;BYDAY=SU",
@@ -25,7 +22,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -44,7 +40,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

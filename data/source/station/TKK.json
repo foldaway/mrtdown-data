@@ -5,15 +5,6 @@
     "zh-Hans": "陈嘉庚",
     "ta": "டான் கா கீ"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT8",
-        "startedAt": "2015-12-27",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bukit Timah",
   "town_translations": {
     "zh-Hans": "武吉知马",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3301,
     "longitude": 103.7866
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT8",
+        "startedAt": "2015-12-27",
+        "structureType": "underground"
+      }
+    ]
   }
 }

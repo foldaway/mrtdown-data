@@ -6,9 +6,6 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan North-South",
     "ta": "வடக்கு-தெற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2017-04-03T12:13:43.000+08:00",
   "endAt": "2017-04-03T12:37:27.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YIS",
@@ -45,7 +41,11 @@
         "YCK",
         "AMK",
         "BSH"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

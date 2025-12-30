@@ -5,15 +5,6 @@
     "zh-Hans": "绿洲",
     "ta": "ஓய்சிஸ்"
   },
-  "componentMembers": {
-    "PGLRT": [
-      {
-        "code": "PE6",
-        "startedAt": "2007-06-15",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Punggol",
   "town_translations": {
     "zh-Hans": "榜鹅",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.39888,
     "longitude": 103.9101
+  },
+  "lineMembers": {
+    "PGLRT": [
+      {
+        "code": "PE6",
+        "startedAt": "2007-06-15",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

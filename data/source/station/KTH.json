@@ -5,15 +5,6 @@
     "zh-Hans": "吉丰",
     "ta": "கியட் ஹோங்"
   },
-  "componentMembers": {
-    "BPLRT": [
-      {
-        "code": "BP3",
-        "startedAt": "1999-11-06",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Choa Chu Kang",
   "town_translations": {
     "zh-Hans": "蔡厝港",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.3931,
     "longitude": 103.7468
+  },
+  "lineMembers": {
+    "BPLRT": [
+      {
+        "code": "BP3",
+        "startedAt": "1999-11-06",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

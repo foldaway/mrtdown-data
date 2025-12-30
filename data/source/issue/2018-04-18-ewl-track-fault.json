@@ -6,17 +6,14 @@
     "ms": "Gangguan perkhidmatan Laluan Timur Barat kerana kerosakan trek",
     "ta": "கிழக்கு மேற்கு வரிசை சேவை தடங்கல் பாதையின் குறைபாடு காரணமாக"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2018-04-18T13:54:22.000+08:00",
@@ -74,5 +71,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/986483052779003904",
       "createdAt": "2018-04-18T13:54:22.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

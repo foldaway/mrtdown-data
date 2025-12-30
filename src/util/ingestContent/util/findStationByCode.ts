@@ -19,14 +19,14 @@ export function findStationByCode(
   code: string,
 ) {
   for (const stationRow of stationRows) {
-    for (const membership of stationRow.component_memberships) {
+    for (const membership of stationRow.line_memberships) {
       const membershipStartAtDateTime = DateTime.fromISO(membership.started_at);
 
       if (membershipStartAtDateTime > currentDateTime) {
         continue;
       }
 
-      if (membership.component_id === lineId && membership.code === code) {
+      if (membership.line_id === lineId && membership.code === code) {
         return stationRow;
       }
     }

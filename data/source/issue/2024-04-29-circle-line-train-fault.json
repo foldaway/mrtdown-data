@@ -6,9 +6,6 @@
     "ms": "Kelewatan Besar di Laluan Bulat Akibat Kerosakan Kereta Api",
     "ta": "ரயில் கோளாறு காரணமாக வட்டப் பாதையில் பெரும் தாமதங்கள்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2024-04-29T06:09:40.000+08:00",
   "endAt": "2024-04-29T08:15:00.000+08:00",
   "type": "disruption",
@@ -79,7 +76,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "BSH",
@@ -93,7 +89,11 @@
         "KRG",
         "HPV",
         "PPJ"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

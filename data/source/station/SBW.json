@@ -5,15 +5,6 @@
     "zh-Hans": "三巴旺",
     "ta": "செம்பாவாங்"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS11",
-        "startedAt": "1996-02-10",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Sembawang",
   "town_translations": {
     "zh-Hans": "三巴旺",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.4405,
     "longitude": 103.8261
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS11",
+        "startedAt": "1996-02-10",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

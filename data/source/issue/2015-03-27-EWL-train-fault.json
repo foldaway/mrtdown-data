@@ -6,19 +6,16 @@
     "ms": "Gangguan perkhidmatan kerana kerosakan kereta api di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் ரயில் கோளாறு காரணமாக சேவை தடங்கல்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "ALJ",
         "KAL",
         "LVR",
         "BGS"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2015-03-27T17:56:51.000+08:00",
@@ -46,5 +43,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/581394442747129856",
       "createdAt": "2015-03-27T17:56:51.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "丹戎禺",
     "ta": "தஞ்சோங் ரூ"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE23",
-        "startedAt": "2024-06-23",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Kallang",
   "town_translations": {
     "zh-Hans": "加冷",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3023,
     "longitude": 103.8732
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE23",
+        "startedAt": "2024-06-23",
+        "structureType": "underground"
+      }
+    ]
   }
 }

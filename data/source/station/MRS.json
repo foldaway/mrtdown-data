@@ -5,15 +5,6 @@
     "zh-Hans": "滨海南",
     "ta": "மரீனா சவுத்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE21",
-        "startedAt": "2040-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Straits View",
   "town_translations": {
     "zh-Hans": "海峡景",
@@ -49,5 +40,14 @@
   "geo": {
     "latitude": 1.2816,
     "longitude": 103.86
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE21",
+        "startedAt": "2040-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

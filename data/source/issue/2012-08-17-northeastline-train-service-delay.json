@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan kereta api tertangguh di sepanjang Laluan Timur Laut",
     "ta": "வடகிழக்கு பாதையில் ரயில் சேவை தாமதம்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2012-08-17T08:10:09.000+08:00",
   "endAt": "2012-08-18T00:00:00.000+08:00",
   "type": "disruption",
@@ -55,7 +52,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -74,7 +70,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

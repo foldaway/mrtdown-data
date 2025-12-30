@@ -6,9 +6,6 @@
     "ms": "Kerosakan Kereta Api di Antara Woodlands dan Yishun",
     "ta": "மிடேல், யிஷுன்யுடன் செல்வதால் பிழை வந்துள்ளது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2025-09-02T20:34:06.000+08:00",
   "endAt": "2025-09-02T20:58:14.000+08:00",
   "type": "disruption",
@@ -55,7 +52,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
@@ -63,7 +59,11 @@
         "SBW",
         "CBR",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

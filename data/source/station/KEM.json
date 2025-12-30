@@ -5,15 +5,6 @@
     "zh-Hans": "景万岸",
     "ta": "கெம்பாங்கான்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW6",
-        "startedAt": "1989-11-04",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Bedok",
   "town_translations": {
     "zh-Hans": "勿洛",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.320828,
     "longitude": 103.910153
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW6",
+        "startedAt": "1989-11-04",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

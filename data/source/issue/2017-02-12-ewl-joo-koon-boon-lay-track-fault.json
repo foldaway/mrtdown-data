@@ -6,18 +6,15 @@
     "ms": "Gangguan perkhidmatan antara Joo Koon dan Boon Lay disebabkan oleh kerosakan trek",
     "ta": "தடப் பிழை காரணமாக ஜூ கூன் மற்றும் பூன் லே இடையே சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2017-02-12T05:58:21.000+08:00",
@@ -69,5 +66,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/830536475716440064",
       "createdAt": "2017-02-12T05:58:21.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

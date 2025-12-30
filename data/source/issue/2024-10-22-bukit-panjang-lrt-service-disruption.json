@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Bukit Panjang LRT",
     "ta": "Bukit Panjang LRT இல் சேவை தடை"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2024-10-22T17:56:16.000+08:00",
   "endAt": "2024-10-23T04:53:34.000+08:00",
   "type": "disruption",
@@ -67,7 +64,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "BKP",
@@ -78,7 +74,11 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

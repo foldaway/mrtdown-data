@@ -5,15 +5,6 @@
     "zh-Hans": "振林",
     "ta": "செங் லிம்"
   },
-  "componentMembers": {
-    "SKLRT": [
-      {
-        "code": "SW1",
-        "startedAt": "2013-01-01",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Sengkang",
   "town_translations": {
     "zh-Hans": "盛港",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3776,
     "longitude": 103.8957
+  },
+  "lineMembers": {
+    "SKLRT": [
+      {
+        "code": "SW1",
+        "startedAt": "2013-01-01",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

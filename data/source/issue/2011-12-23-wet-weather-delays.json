@@ -6,12 +6,6 @@
     "ms": "Kelewatan kerana cuaca basah mempengaruhi kelajuan kereta api",
     "ta": "ஈரமான வானிலை காரணமாக ரயில் வேகம் பாதிப்பு"
   },
-  "componentIdsAffected": [
-    "EWL",
-    "NSL",
-    "CCL",
-    "BPLRT"
-  ],
   "startAt": "2011-12-23T14:49:58.000+08:00",
   "endAt": "2011-12-24T00:00:00.000+08:00",
   "type": "disruption",
@@ -34,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -62,10 +55,10 @@
         "ORC",
         "SOM",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     },
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JKN",
@@ -97,19 +90,19 @@
         "SIM",
         "TAM",
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     },
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     },
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -140,10 +133,10 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -159,7 +152,14 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL",
+    "NSL",
+    "CCL",
+    "BPLRT"
   ]
 }

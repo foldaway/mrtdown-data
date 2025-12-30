@@ -5,15 +5,6 @@
     "zh-Hans": "码高",
     "ta": "பக்காவ்"
   },
-  "componentMembers": {
-    "SKLRT": [
-      {
-        "code": "SE3",
-        "startedAt": "2003-01-18",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Sengkang",
   "town_translations": {
     "zh-Hans": "盛港",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3981,
     "longitude": 103.8952
+  },
+  "lineMembers": {
+    "SKLRT": [
+      {
+        "code": "SE3",
+        "startedAt": "2003-01-18",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

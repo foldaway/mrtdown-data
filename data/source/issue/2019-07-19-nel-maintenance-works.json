@@ -6,9 +6,6 @@
     "ms": "Kerja penyelenggaraan Laluan Timur Laut",
     "ta": "வடக்கு கிழக்கு வரி பராமரிப்பு பணிகள்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2019-07-19T23:00:00.000+08:00",
   "endAt": "2019-07-20T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20190719T230000\nRRULE:FREQ=DAILY;UNTIL=20190720T000000;WKST=MO",
@@ -27,7 +24,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -46,7 +42,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

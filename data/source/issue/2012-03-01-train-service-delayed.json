@@ -6,18 +6,15 @@
     "ms": "Perkhidmatan kereta api tertunda kerana kerosakan trek",
     "ta": "தடக் கோளாறு காரணமாக ரயில் சேவை தாமதமானது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-03-01T07:30:31.000+08:00",
@@ -39,5 +36,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/175000023174623232",
       "createdAt": "2012-03-01T07:30:31.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

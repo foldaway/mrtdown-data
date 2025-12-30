@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan kereta api arah timur bergerak lebih perlahan kerana kerosakan kereta api",
     "ta": "கிழக்கு நோக்கிச் செல்லும் ரயில் சேவை ரயில் கோளாறு காரணமாக மெதுவாக நகர்கிறது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -28,7 +24,8 @@
         "BGS",
         "CTH",
         "RFP"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-07-19T08:47:06.000+08:00",
@@ -50,5 +47,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/225753597688823808",
       "createdAt": "2012-07-19T08:47:06.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

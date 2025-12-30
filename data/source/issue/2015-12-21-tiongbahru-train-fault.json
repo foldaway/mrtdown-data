@@ -6,9 +6,6 @@
     "ms": "Aduan kerosakan kereta api di Tiong Bahru",
     "ta": "Tiong Bahru இல் ரயில் கோளாறு தெரிவிக்கப்பட்டது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2015-12-21T10:22:05.000+08:00",
   "endAt": "2015-12-21T10:45:48.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BGS",
@@ -65,7 +61,11 @@
         "DVR",
         "CLE",
         "JUR"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

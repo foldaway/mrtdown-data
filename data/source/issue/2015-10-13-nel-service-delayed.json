@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan NEL tertunda kerana kerosakan kuasa",
     "ta": "மின் தடங்கல் காரணமாக NEL சேவை தாமதமானது"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2015-10-13T07:58:46.000+08:00",
   "endAt": "2015-10-13T08:28:24.000+08:00",
   "type": "disruption",
@@ -80,7 +77,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "FRP",
@@ -90,7 +86,11 @@
         "SER",
         "KVN",
         "HGN"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Kerosakan Kereta Api di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2012-11-05T18:23:27.000+08:00",
   "endAt": "2012-11-05T18:41:25.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "BSH",
@@ -45,7 +41,11 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

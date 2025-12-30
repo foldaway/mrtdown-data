@@ -6,12 +6,8 @@
     "ms": "Ralat titik trek menyebabkan kelewatan",
     "ta": "தடப் புள்ளி தவறு தாமதங்களுக்குக் காரணம்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
@@ -19,7 +15,8 @@
         "SBW",
         "CBR",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2023-02-08T06:58:55.000+08:00",
@@ -167,5 +164,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1623093982258688005",
       "createdAt": "2023-02-08T06:58:55.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

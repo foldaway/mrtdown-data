@@ -6,12 +6,8 @@
     "ms": "Kerosakan kereta api menyebabkan kelajuan perlahan di NSL",
     "ta": "ரயில் பழுது NSL இல் மெதுவான வேகத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
@@ -26,7 +22,8 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2013-04-29T18:23:41.000+08:00",
@@ -48,5 +45,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/328816851012419584",
       "createdAt": "2013-04-29T18:23:41.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

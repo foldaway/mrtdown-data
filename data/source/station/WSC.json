@@ -5,15 +5,6 @@
     "zh-Hans": "西海岸",
     "ta": "வெஸ்ட் கோஸ்ட்"
   },
-  "componentMembers": {
-    "CRL": [
-      {
-        "code": "CR18",
-        "startedAt": "2032-01-01",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Clementi",
   "town_translations": {
     "zh-Hans": "金文泰",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2931,
     "longitude": 103.757
+  },
+  "lineMembers": {
+    "CRL": [
+      {
+        "code": "CR18",
+        "startedAt": "2032-01-01",
+        "structureType": "underground"
+      }
+    ]
   }
 }

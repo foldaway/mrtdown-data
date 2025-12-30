@@ -5,15 +5,6 @@
     "zh-Hans": "马西岭",
     "ta": "மார்சிலிங்"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS8",
-        "startedAt": "1996-02-10",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Woodlands",
   "town_translations": {
     "zh-Hans": "兀兰",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.436782,
     "longitude": 103.773141
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS8",
+        "startedAt": "1996-02-10",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

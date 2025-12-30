@@ -6,9 +6,6 @@
     "ms": "Laporan Awam tentang Kerosakan Kereta Api di Stesen MRT Canberra",
     "ta": "கன்பெரா எம்ஆர்டி நிலையத்தில் ரயில் பழுதுபற்றிய பொது அறிக்கைகள்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2025-07-11T07:30:00.000+08:00",
   "endAt": "2025-07-11T08:15:00.000+08:00",
   "type": "disruption",
@@ -31,11 +28,14 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "CBR"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

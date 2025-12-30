@@ -5,15 +5,6 @@
     "zh-Hans": "巴西班让",
     "ta": "பாசிர் பாஞ்சாங்"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC26",
-        "startedAt": "2011-10-08",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Queenstown",
   "town_translations": {
     "zh-Hans": "女皇镇",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.2842,
     "longitude": 103.7715
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC26",
+        "startedAt": "2011-10-08",
+        "structureType": "underground"
+      }
+    ]
   }
 }

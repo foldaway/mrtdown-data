@@ -5,15 +5,6 @@
     "zh-Hans": "玉宝",
     "ta": "ஜெக் போ"
   },
-  "componentMembers": {
-    "JRL": [
-      {
-        "code": "JW1",
-        "startedAt": "2027-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Jurong West",
   "town_translations": {
     "zh-Hans": "裕廊西",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.3405,
     "longitude": 103.7037
+  },
+  "lineMembers": {
+    "JRL": [
+      {
+        "code": "JW1",
+        "startedAt": "2027-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

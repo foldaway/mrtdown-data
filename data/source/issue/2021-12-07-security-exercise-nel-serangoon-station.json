@@ -6,9 +6,6 @@
     "ms": "Latihan Keselamatan di Stesen Serangoon",
     "ta": "சரங்கூன் நிலையத்தில் பாதுகாப்புப் பயிற்சி"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2021-12-07T10:00:00.000+08:00",
   "endAt": "2021-12-07T16:00:00.000+08:00",
   "type": "maintenance",
@@ -24,7 +21,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -43,7 +39,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

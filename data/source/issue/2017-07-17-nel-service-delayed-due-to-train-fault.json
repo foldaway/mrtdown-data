@@ -6,12 +6,8 @@
     "ms": "North East Line dijangka lewat kerana kegagalan tren",
     "ta": "மின் தடங்கல் காரணமாக வடகிழக்கு பாதையில் சேவை தாமதமானது"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -30,7 +26,8 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
   ],
   "startAt": "2017-07-17T08:02:55.000+08:00",
@@ -53,5 +50,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/886737945805209600",
       "createdAt": "2017-07-17T08:02:55.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

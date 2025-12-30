@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Laluan Timur-Barat",
     "ta": "கிழக்கு-மேற்கு ரயிலில் சேவை குழப்பம்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2025-09-16T23:11:07.000+08:00",
   "endAt": "2025-09-17T00:00:00.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TNM",
@@ -40,7 +36,11 @@
         "EUN",
         "PYL",
         "ALJ"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

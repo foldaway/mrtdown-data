@@ -6,9 +6,6 @@
     "ms": "Kerosakan Kereta Api di Laluan North-South",
     "ta": "வடக்கு-தெற்கு பாதையில் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2013-02-07T12:11:34.000+08:00",
   "endAt": "2013-02-07T12:24:13.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "BSH",
@@ -51,7 +47,11 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

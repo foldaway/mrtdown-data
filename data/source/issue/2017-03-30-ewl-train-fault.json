@@ -6,9 +6,6 @@
     "ms": "Gangguan kereta api menyebabkan kelewatan masa perjalanan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் பயண நேர தாமதத்தை ஏற்படுத்தும் ரயில் தவறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2017-03-30T17:57:46.000+08:00",
   "endAt": "2017-03-30T19:15:52.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -54,7 +50,11 @@
         "KEM",
         "EUN",
         "PYL"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

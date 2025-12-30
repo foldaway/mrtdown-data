@@ -5,15 +5,6 @@
     "zh-Hans": "武吉巴督",
     "ta": "புக்கிட் பாத்தோக்"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS2",
-        "startedAt": "1990-03-10",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Bukit Batok",
   "town_translations": {
     "zh-Hans": "武吉巴督",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3505,
     "longitude": 103.7633
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS2",
+        "startedAt": "1990-03-10",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

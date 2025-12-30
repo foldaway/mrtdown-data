@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan kereta api arah selatan dari Bukit Gombak ke Woodlands terganggu",
     "ta": "Bukit Gombak முதல் Woodlands வரை தெற்கு நோக்கி செல்லும் ரயில் சேவைக்கு இடையூறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "BGB",
@@ -20,7 +16,8 @@
         "KRJ",
         "MSL",
         "WDL"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-03-12T09:36:33.000+08:00",
@@ -42,5 +39,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/179018006360375296",
       "createdAt": "2012-03-12T09:36:33.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

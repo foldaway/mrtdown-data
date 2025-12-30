@@ -24,6 +24,8 @@ app.onError((err, c) => {
     return err.getResponse();
   }
 
+  console.error(err);
+
   Sentry.captureException(err);
   return c.json({ error: 'Internal server error' }, 500);
 });

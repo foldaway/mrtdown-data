@@ -5,15 +5,6 @@
     "zh-Hans": "裕廊镇大会堂",
     "ta": "ஜுராங் டவுன் ஹால்"
   },
-  "componentMembers": {
-    "JRL": [
-      {
-        "code": "JE6",
-        "startedAt": "2028-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Jurong East",
   "town_translations": {
     "zh-Hans": "裕廊东",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3343,
     "longitude": 103.7429
+  },
+  "lineMembers": {
+    "JRL": [
+      {
+        "code": "JE6",
+        "startedAt": "2028-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "达维士笃",
     "ta": "தெவிஸ்தொக்"
   },
-  "componentMembers": {
-    "CRL": [
-      {
-        "code": "CR10",
-        "startedAt": "2030-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Serangoon",
   "town_translations": {
     "zh-Hans": "实龙岗",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3645,
     "longitude": 103.8659
+  },
+  "lineMembers": {
+    "CRL": [
+      {
+        "code": "CR10",
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

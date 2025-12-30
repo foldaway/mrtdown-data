@@ -6,9 +6,6 @@
     "ms": "Kerosakan Kereta Api Dilaporkan",
     "ta": "ரயில் பழுது புகாரளிக்கப்பட்டது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2015-10-15T09:49:18.000+08:00",
   "endAt": "2015-10-15T10:17:27.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "QUE",
@@ -57,7 +53,11 @@
         "BNV",
         "DVR",
         "CLE"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

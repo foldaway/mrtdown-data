@@ -6,9 +6,6 @@
     "ms": "Kerosakan Pintu Skrin Platform di Lakeside di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் லேக்ஸைடில் பிளாட்ஃபார்ம் கதவு பழுது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2019-03-11T17:26:33.000+08:00",
   "endAt": "2019-03-11T18:03:23.000+08:00",
   "type": "disruption",
@@ -31,14 +28,17 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "LKS",
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

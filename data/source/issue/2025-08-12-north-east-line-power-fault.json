@@ -6,11 +6,6 @@
     "ms": "Kecacatan Kuasa North East Line",
     "ta": "வடக்கும் கிழக்குப் பாதை மின் குறைவு"
   },
-  "componentIdsAffected": [
-    "NEL",
-    "SKLRT",
-    "PGLRT"
-  ],
   "startAt": "2025-08-12T11:28:28.000+08:00",
   "endAt": "2025-08-12T21:23:54+08:00",
   "type": "disruption",
@@ -213,7 +208,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "FRP",
@@ -227,10 +221,10 @@
         "SKG",
         "PGL",
         "PGC"
-      ]
+      ],
+      "lineId": "NEL"
     },
     {
-      "componentId": "SKLRT",
       "branchName": "east",
       "stationIds": [
         "SKG",
@@ -239,10 +233,10 @@
         "BAK",
         "KGK",
         "RNG"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
         "SKG",
@@ -254,10 +248,10 @@
         "LYR",
         "TKG",
         "RNJ"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "PGLRT",
       "branchName": "east",
       "stationIds": [
         "PGL",
@@ -268,10 +262,10 @@
         "KDL",
         "OAS",
         "DAM"
-      ]
+      ],
+      "lineId": "PGLRT"
     },
     {
-      "componentId": "PGLRT",
       "branchName": "west",
       "stationIds": [
         "PGL",
@@ -282,7 +276,13 @@
         "NBG",
         "SMG",
         "STK"
-      ]
+      ],
+      "lineId": "PGLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL",
+    "SKLRT",
+    "PGLRT"
   ]
 }

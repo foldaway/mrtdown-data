@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan kereta api arah utara ke Orchard bergerak lebih perlahan kerana kerosakan landasan",
     "ta": "ஓர்ச்சார்ட் நோக்கிய வடக்கு ரயில் சேவை தடக் கோளாறு காரணமாக மெதுவாக இயங்குகிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -39,7 +35,8 @@
         "ORC",
         "SOM",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-04-19T19:54:27.000+08:00",
@@ -61,5 +58,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/192944244300849152",
       "createdAt": "2012-04-19T19:54:27.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

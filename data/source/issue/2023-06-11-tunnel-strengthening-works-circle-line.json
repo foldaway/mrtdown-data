@@ -6,9 +6,6 @@
     "ms": "Kerja penguatan terowong mempengaruhi perkhidmatan Laluan Bulatan",
     "ta": "சுரங்க வலுப்படுத்தும் பணிகள் வட்டப் பாதையில் சேவைகளைப் பாதிக்கின்றன"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2023-06-11T00:00:00.000+08:00",
   "endAt": "2023-06-27T00:00:00.000+08:00",
   "type": "maintenance",
@@ -32,7 +29,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -40,17 +36,21 @@
         "EPN",
         "PMN",
         "NCH"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
         "BFT",
         "PMN",
         "NCH"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

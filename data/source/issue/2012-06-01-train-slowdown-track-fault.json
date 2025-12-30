@@ -6,9 +6,6 @@
     "ms": "Kereta api dari Tanjong Pagar bergerak lebih perlahan kerana kerosakan trek",
     "ta": "Tanjong Pagar இலிருந்து ரயில்கள் தடக் கோளாறு காரணமாக மெதுவாக நகர்கின்றன"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2012-06-01T18:37:43.000+08:00",
   "endAt": "2012-06-01T18:50:31.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "RFP",
@@ -45,7 +41,11 @@
         "DVR",
         "CLE",
         "JUR"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

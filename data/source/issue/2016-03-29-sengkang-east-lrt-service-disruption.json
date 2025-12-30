@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di LRT Sengkang Timur",
     "ta": "செங்காங் கிழக்கு LRT இல் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "SKLRT"
-  ],
   "startAt": "2016-03-29T19:57:52.000+08:00",
   "endAt": "2016-03-29T20:32:10.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
         "SKG",
@@ -55,10 +51,10 @@
         "LYR",
         "TKG",
         "RNJ"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "SKLRT",
       "branchName": "east",
       "stationIds": [
         "SKG",
@@ -67,7 +63,11 @@
         "BAK",
         "KGK",
         "RNG"
-      ]
+      ],
+      "lineId": "SKLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "SKLRT"
   ]
 }

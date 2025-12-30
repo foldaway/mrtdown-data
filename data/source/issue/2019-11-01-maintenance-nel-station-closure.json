@@ -6,9 +6,6 @@
     "ms": "Penutupan awal stesen Laluan Timur Laut untuk kerja penyelenggaraan",
     "ta": "பராமரிப்பு பணிகளுக்காக வடகிழக்கு வரி நிலையங்கள் முன்கூட்டியே மூடப்படும்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2019-11-01T23:00:00.000+08:00",
   "endAt": "2019-11-02T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20191101T230000\nRRULE:FREQ=DAILY;UNTIL=20191103T000000;WKST=MO",
@@ -57,7 +54,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "KVN",
@@ -65,7 +61,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

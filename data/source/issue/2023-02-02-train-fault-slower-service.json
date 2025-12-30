@@ -6,9 +6,6 @@
     "ms": "Kesalahan kereta menyebabkan perkhidmatan perlahan dari Woodlands North ke Caldecott",
     "ta": "மரங்கள் வடக்கு முதல் கல்கோட் வரை மெதுவான சேவையை ஏற்படுத்தும் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2023-02-02T05:39:47.000+08:00",
   "endAt": "2023-02-02T07:05:09.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
@@ -61,7 +57,11 @@
         "BRH",
         "UTS",
         "CDT"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

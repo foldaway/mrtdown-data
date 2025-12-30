@@ -6,17 +6,14 @@
     "ms": "Gangguan perkhidmatan Circle Line akibat kerosakan landasan",
     "ta": "சுற்றுப்பாதை ரயில் சேவை தடங்கல் பாதை பழுது காரணமாக"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "CDT",
         "BTN"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2013-08-14T08:47:12.000+08:00",
@@ -38,5 +35,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/367447277301817344",
       "createdAt": "2013-08-14T08:47:12.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

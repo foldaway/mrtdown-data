@@ -1,10 +1,10 @@
 import { toMarkdown } from 'mdast-util-to-markdown';
-import { ComponentModel } from '../../model/ComponentModel.js';
+import { LineModel } from '../../model/LineModel.js';
 import type { Root, Table } from 'mdast';
 import { gfmToMarkdown } from 'mdast-util-gfm';
 
-export function buildComponentTable() {
-  const components = ComponentModel.getAll();
+export function buildLineTable() {
+  const lines = LineModel.getAll();
 
   const table: Table = {
     type: 'table',
@@ -44,7 +44,7 @@ export function buildComponentTable() {
     ],
   };
 
-  for (const component of components) {
+  for (const line of lines) {
     table.children.push({
       type: 'tableRow',
       children: [
@@ -53,7 +53,7 @@ export function buildComponentTable() {
           children: [
             {
               type: 'text',
-              value: component.id,
+              value: line.id,
             },
           ],
         },
@@ -62,7 +62,7 @@ export function buildComponentTable() {
           children: [
             {
               type: 'text',
-              value: component.title,
+              value: line.title,
             },
           ],
         },
@@ -71,7 +71,7 @@ export function buildComponentTable() {
           children: [
             {
               type: 'text',
-              value: component.startedAt,
+              value: line.startedAt,
             },
           ],
         },

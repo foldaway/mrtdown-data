@@ -6,9 +6,6 @@
     "ms": "Kesalahan trek berhampiran Marina Bay menyebabkan kelewatan",
     "ta": "மரீனா பேக்கு அருகில் பாதை தவறுவதால் தாமதம் ஏற்படுகிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2020-11-25T06:21:55.000+08:00",
   "endAt": "2020-11-25T06:30:58.000+08:00",
   "type": "disruption",
@@ -44,7 +41,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "NEW",
@@ -55,7 +51,11 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

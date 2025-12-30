@@ -6,10 +6,6 @@
     "ms": "Gangguan Laluan Utara-Selatan dan Laluan Timur-Barat",
     "ta": "வடக்கு-தெற்கு வரி மற்றும் கிழக்கு-மேற்கு வரி இடையூறு"
   },
-  "componentIdsAffected": [
-    "NSL",
-    "EWL"
-  ],
   "startAt": "2025-02-07T05:52:23.000+08:00",
   "endAt": "2025-02-07T20:02:31.000+08:00",
   "type": "disruption",
@@ -153,7 +149,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -183,10 +178,10 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     },
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -222,7 +217,12 @@
         "TCR",
         "TWR",
         "TLK"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL",
+    "EWL"
   ]
 }

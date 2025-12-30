@@ -6,12 +6,8 @@
     "ms": "Gangguan trek menyebabkan kelewatan perkhidmatan",
     "ta": "சேவை தாமதத்தை ஏற்படுத்தும் பாதை தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
@@ -24,7 +20,8 @@
         "SOM",
         "DBG",
         "CTH"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-01-13T20:29:44.000+08:00",
@@ -58,5 +55,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/819884132683563009",
       "createdAt": "2017-01-13T20:29:44.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

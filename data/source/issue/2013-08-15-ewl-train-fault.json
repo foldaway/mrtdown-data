@@ -6,9 +6,6 @@
     "ms": "Kerosakan kereta api menyebabkan masa perjalanan tambahan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் கூடுதல் பயண நேரத்தை ஏற்படுத்தும் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2013-08-15T07:14:23.000+08:00",
   "endAt": "2013-08-15T07:27:10.000+08:00",
   "type": "disruption",
@@ -37,13 +34,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TIB",
         "RDH",
         "QUE"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

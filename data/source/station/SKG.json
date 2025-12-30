@@ -5,22 +5,6 @@
     "zh-Hans": "盛港",
     "ta": "செங்காங்"
   },
-  "componentMembers": {
-    "NEL": [
-      {
-        "code": "NE16",
-        "startedAt": "2003-06-20",
-        "structureType": "underground"
-      }
-    ],
-    "SKLRT": [
-      {
-        "code": "STC",
-        "startedAt": "2003-01-18",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Sengkang",
   "town_translations": {
     "zh-Hans": "盛港",
@@ -60,5 +44,21 @@
   "geo": {
     "latitude": 1.393736,
     "longitude": 103.895173
+  },
+  "lineMembers": {
+    "NEL": [
+      {
+        "code": "NE16",
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
+      }
+    ],
+    "SKLRT": [
+      {
+        "code": "STC",
+        "startedAt": "2003-01-18",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

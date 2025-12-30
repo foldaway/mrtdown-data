@@ -5,22 +5,6 @@
     "zh-Hans": "后港",
     "ta": "ஹவ்காங்"
   },
-  "componentMembers": {
-    "NEL": [
-      {
-        "code": "NE14",
-        "startedAt": "2003-06-20",
-        "structureType": "underground"
-      }
-    ],
-    "CRL": [
-      {
-        "code": "CR8",
-        "startedAt": "2030-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Hougang",
   "town_translations": {
     "zh-Hans": "后港",
@@ -52,5 +36,21 @@
   "geo": {
     "latitude": 1.3751,
     "longitude": 103.8923
+  },
+  "lineMembers": {
+    "NEL": [
+      {
+        "code": "NE14",
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
+      }
+    ],
+    "CRL": [
+      {
+        "code": "CR8",
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

@@ -6,9 +6,6 @@
     "ms": "Gangguan Kereta Api Lintas Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2013-10-06T07:49:32.000+08:00",
   "endAt": "2013-10-06T07:52:05.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "QUE",
@@ -40,7 +36,11 @@
         "DVR",
         "CLE",
         "JUR"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -5,22 +5,6 @@
     "zh-Hans": "宏茂桥",
     "ta": "அங் மோ கியோ"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS16",
-        "startedAt": "1987-11-07",
-        "structureType": "elevated"
-      }
-    ],
-    "CRL": [
-      {
-        "code": "CR11",
-        "startedAt": "2030-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Ang Mo Kio",
   "town_translations": {
     "zh-Hans": "宏茂桥",
@@ -52,5 +36,21 @@
   "geo": {
     "latitude": 1.3755,
     "longitude": 103.8484
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS16",
+        "startedAt": "1987-11-07",
+        "structureType": "elevated"
+      }
+    ],
+    "CRL": [
+      {
+        "code": "CR11",
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

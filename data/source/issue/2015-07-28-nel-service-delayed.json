@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan Laluan Timur Laut kerana kerosakan isyarat",
     "ta": "வடகிழக்கு வரி சேவை இடையூறு சமிக்ஞை தவறு காரணமாக"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -30,7 +26,8 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
   ],
   "startAt": "2015-07-28T19:55:13.000+08:00",
@@ -64,5 +61,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/625997939127640064",
       "createdAt": "2015-07-28T19:55:13.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

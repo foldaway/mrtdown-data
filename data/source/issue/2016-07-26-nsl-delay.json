@@ -6,17 +6,14 @@
     "ms": "Gangguan perkhidmatan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் சேவை தடை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2016-07-26T16:04:05.000+08:00",
@@ -50,5 +47,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/757848954679595009",
       "createdAt": "2016-07-26T16:04:05.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Kerosakan Kereta Api di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2021-08-30T19:44:48.000+08:00",
   "endAt": "2021-08-30T20:14:02.000+08:00",
   "type": "disruption",
@@ -44,7 +41,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JKN",
@@ -52,7 +48,11 @@
         "TCR",
         "TWR",
         "TLK"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

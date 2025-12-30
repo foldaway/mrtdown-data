@@ -6,9 +6,6 @@
     "ms": "North East Line - Kerosakan Kuasa",
     "ta": "North East Line - மின்சாரம் பிழை"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2025-08-28T19:58:48.000+08:00",
   "endAt": "2025-08-29T00:00:00.000+08:00",
   "type": "disruption",
@@ -25,7 +22,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -45,7 +41,11 @@
         "SKG",
         "PGL",
         "PGC"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

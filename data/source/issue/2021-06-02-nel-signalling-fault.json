@@ -6,9 +6,6 @@
     "ms": "Kerosakan isyarat di Laluan Timur Laut",
     "ta": "வடகிழக்கு பாதையில் சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2021-06-02T20:06:23.000+08:00",
   "endAt": "2021-06-02T20:11:21.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -50,7 +46,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

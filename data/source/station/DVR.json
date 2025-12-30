@@ -5,15 +5,6 @@
     "zh-Hans": "杜弗",
     "ta": "டோவெர்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW22",
-        "startedAt": "2001-10-18",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Queenstown",
   "town_translations": {
     "zh-Hans": "女皇镇",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3034,
     "longitude": 103.7865
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW22",
+        "startedAt": "2001-10-18",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

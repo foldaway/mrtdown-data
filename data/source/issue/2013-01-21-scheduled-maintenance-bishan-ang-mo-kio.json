@@ -6,17 +6,14 @@
     "ms": "Penyelenggaraan Berjadual untuk Kerja Trek Antara Stesen Bishan dan Ang Mo Kio",
     "ta": "பிஷான் மற்றும் ஆங் மோ கியோ நிலையங்களுக்கு இடையிலான தண்டவாளப் பணிகளுக்கான திட்டமிடப்பட்ட பராமரிப்பு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
         "BSH"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2013-01-21T01:30:00.000+08:00",
@@ -34,5 +31,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/292985403856805889",
       "createdAt": "2013-01-20T21:22:18.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

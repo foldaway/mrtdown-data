@@ -6,10 +6,8 @@
     "ms": "Gangguan perkhidmatan tren BPLRT",
     "ta": "BPLRT ரயில் சேவை இடையூறு"
   },
-  "componentIdsAffected": ["BPLRT"],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -25,10 +23,10 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     },
     {
-      "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
         "BKP",
@@ -40,13 +38,16 @@
         "JLP",
         "SNJ",
         "TMJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
   ],
   "startAt": "2013-07-04T05:36:42.000+08:00",
   "endAt": "2013-07-04T06:56:09.000+08:00",
   "type": "disruption",
-  "subtypes": ["track.fault"],
+  "subtypes": [
+    "track.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -78,5 +79,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/352541433573552128",
       "createdAt": "2013-07-04T05:36:42.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

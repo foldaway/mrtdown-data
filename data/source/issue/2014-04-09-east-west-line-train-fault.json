@@ -6,12 +6,8 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் பழுது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PYL",
@@ -22,7 +18,8 @@
         "TAM",
         "SIM",
         "TNM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2014-04-09T07:49:09.000+08:00",
@@ -45,5 +42,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/453680979589070848",
       "createdAt": "2014-04-09T07:49:09.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -6,16 +6,13 @@
     "ms": "Jejak kerosakan menyebabkan kelewatan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் தடப் பிழை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TPG"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2014-03-26T06:29:21.000+08:00",
@@ -37,5 +34,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/448587468170731520",
       "createdAt": "2014-03-26T06:29:21.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

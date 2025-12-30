@@ -6,12 +6,8 @@
     "ms": "Ralat isyarat menyebabkan peningkatan masa perjalanan",
     "ta": "சிக்னலிங் பிழை பயண நேரத்தை அதிகரிக்கும்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -30,7 +26,8 @@
         "RFP",
         "TPG",
         "OTP"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2016-12-14T08:27:25.000+08:00",
@@ -64,5 +61,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/808830719090794496",
       "createdAt": "2016-12-14T08:27:25.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

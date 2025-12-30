@@ -5,15 +5,6 @@
     "zh-Hans": "直落布兰雅",
     "ta": "தெலுக் பிளாங்கா"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC28",
-        "startedAt": "2011-10-08",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bukit Merah",
   "town_translations": {
     "zh-Hans": "红山",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2634,
     "longitude": 103.8228
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC28",
+        "startedAt": "2011-10-08",
+        "structureType": "underground"
+      }
+    ]
   }
 }

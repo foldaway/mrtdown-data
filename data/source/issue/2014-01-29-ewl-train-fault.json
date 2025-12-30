@@ -6,18 +6,15 @@
     "ms": "Ralat kereta api Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு வரி ரயில் தவறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2014-01-29T19:45:17.000+08:00",
@@ -39,5 +36,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/428494052737032192",
       "createdAt": "2014-01-29T19:45:17.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

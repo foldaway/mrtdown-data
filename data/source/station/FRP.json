@@ -5,15 +5,6 @@
     "zh-Hans": "花拉公园",
     "ta": "ஃபேரர் பார்க்"
   },
-  "componentMembers": {
-    "NEL": [
-      {
-        "code": "NE8",
-        "startedAt": "2003-06-20",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Rochor",
   "town_translations": {
     "zh-Hans": "梧槽",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3144,
     "longitude": 103.853
+  },
+  "lineMembers": {
+    "NEL": [
+      {
+        "code": "NE8",
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
+      }
+    ]
   }
 }

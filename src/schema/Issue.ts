@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ComponentIdSchema } from './Component.js';
+import { LineIdSchema } from './Line.js';
 import { DateTime } from 'luxon';
 import { StationIdSchema } from './StationId.js';
 
@@ -18,7 +18,7 @@ export const IssueIdSchema = z
 export type IssueId = z.infer<typeof IssueIdSchema>;
 
 export const IssueStationEntrySchema = z.object({
-  componentId: ComponentIdSchema,
+  lineId: LineIdSchema,
   // Legacy, should be named `branchId`
   branchName: z.string(),
   stationIds: z.array(StationIdSchema),
@@ -39,9 +39,9 @@ const IssueBase = z.object({
       ta: z.string(),
     })
     .describe('Translations of the title field'),
-  componentIdsAffected: z
-    .array(ComponentIdSchema)
-    .describe('List of components affected'),
+  lineIdsAffected: z
+    .array(LineIdSchema)
+    .describe('List of lines affected'),
   stationIdsAffected: z
     .array(IssueStationEntrySchema)
     .describe('List of stations affected'),

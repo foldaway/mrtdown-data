@@ -6,9 +6,6 @@
     "ms": "Kelewatan di Laluan Downtown",
     "ta": "டவுன்டவுன் லைனில் தாமதம்"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "startAt": "2020-12-28T23:00:53.000+08:00",
   "endAt": "2020-12-29T01:05:06.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "GLB",
@@ -46,7 +42,11 @@
         "TPE",
         "UPC",
         "XPO"
-      ]
+      ],
+      "lineId": "DTL"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

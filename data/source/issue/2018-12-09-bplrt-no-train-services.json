@@ -6,11 +6,12 @@
     "ms": "Perkhidmatan kereta api digantung kerana kerosakan kuasa",
     "ta": "மின்சாரக் கோளாறு காரணமாக ரயில் சேவைகள் இடைநிறுத்தப்பட்டுள்ளன"
   },
-  "componentIdsAffected": ["BPLRT"],
   "startAt": "2018-12-09T20:44:04.000+08:00",
   "endAt": "2018-12-09T21:02:46.000+08:00",
   "type": "disruption",
-  "subtypes": ["power.fault"],
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -49,10 +49,10 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     },
     {
-      "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
         "BKP",
@@ -64,7 +64,11 @@
         "JLP",
         "SNJ",
         "TMJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "秉定",
     "ta": "பெண்டிங்"
   },
-  "componentMembers": {
-    "BPLRT": [
-      {
-        "code": "BP8",
-        "startedAt": "1999-11-06",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Bukit Panjang",
   "town_translations": {
     "zh-Hans": "武吉班让",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3766,
     "longitude": 103.7726
+  },
+  "lineMembers": {
+    "BPLRT": [
+      {
+        "code": "BP8",
+        "startedAt": "1999-11-06",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

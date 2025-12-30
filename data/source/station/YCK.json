@@ -5,15 +5,6 @@
     "zh-Hans": "杨厝港",
     "ta": "இயோ சூ காங்"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS15",
-        "startedAt": "1987-11-07",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Ang Mo Kio",
   "town_translations": {
     "zh-Hans": "宏茂桥",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.379,
     "longitude": 103.847
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS15",
+        "startedAt": "1987-11-07",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

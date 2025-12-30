@@ -5,15 +5,6 @@
     "zh-Hans": "油池",
     "ta": "இயூ டீ"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS5",
-        "startedAt": "1996-02-10",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Choa Chu Kang",
   "town_translations": {
     "zh-Hans": "蔡厝港",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3964,
     "longitude": 103.7437
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS5",
+        "startedAt": "1996-02-10",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

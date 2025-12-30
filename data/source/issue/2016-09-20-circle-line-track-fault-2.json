@@ -6,9 +6,6 @@
     "ms": "Ralat landasan Laluan Bulatan Kedua menyebabkan kelewatan",
     "ta": "இரண்டாவது வட்டப் பாதையில் ஏற்பட்ட தடப்பிறழ்வு தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2016-09-20T07:13:19.000+08:00",
   "endAt": "2016-09-20T10:15:15.000+08:00",
   "type": "disruption",
@@ -56,7 +53,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -74,7 +70,11 @@
         "SER",
         "LRC",
         "BSH"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

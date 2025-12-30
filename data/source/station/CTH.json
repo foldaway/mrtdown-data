@@ -5,22 +5,6 @@
     "zh-Hans": "政府大厦",
     "ta": "நகர மண்டபம்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW13",
-        "startedAt": "1987-12-12",
-        "structureType": "underground"
-      }
-    ],
-    "NSL": [
-      {
-        "code": "NS25",
-        "startedAt": "1987-12-12",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Downtown Core",
   "town_translations": {
     "zh-Hans": "市中心",
@@ -56,5 +40,21 @@
   "geo": {
     "latitude": 1.2935,
     "longitude": 103.8519
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW13",
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
+      }
+    ],
+    "NSL": [
+      {
+        "code": "NS25",
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
+      }
+    ]
   }
 }

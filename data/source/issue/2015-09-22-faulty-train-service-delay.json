@@ -6,12 +6,8 @@
     "ms": "Kereta api rosak menyebabkan kelewatan perkhidmatan yang ketara",
     "ta": "தவறான ரயில் பெரும் சேவை தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -40,7 +36,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-09-22T08:40:39.000+08:00",
@@ -69,5 +66,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/646121896082194432",
       "createdAt": "2015-09-22T08:40:39.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

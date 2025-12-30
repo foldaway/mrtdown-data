@@ -6,9 +6,6 @@
     "ms": "Kerosakan kereta api utama di Laluan Utara-Selatan menyebabkan kelewatan",
     "ta": "வடக்கு-தெற்கு பாதையில் ஏற்பட்ட பெரும் ரயில் கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2017-08-31T18:19:33.000+08:00",
   "endAt": "2017-08-31T18:55:24.000+08:00",
   "type": "disruption",
@@ -44,7 +41,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -58,7 +54,11 @@
         "ADM",
         "SBW",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

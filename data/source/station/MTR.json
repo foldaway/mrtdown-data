@@ -5,15 +5,6 @@
     "zh-Hans": "玛达",
     "ta": "மாத்தார்"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT25",
-        "startedAt": "2017-10-21",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Geylang",
   "town_translations": {
     "zh-Hans": "芽笼",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.321937,
     "longitude": 103.885394
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT25",
+        "startedAt": "2017-10-21",
+        "structureType": "underground"
+      }
+    ]
   }
 }

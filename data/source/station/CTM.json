@@ -5,15 +5,6 @@
     "zh-Hans": "广东民",
     "ta": "கெண்டொன்மன்"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC31",
-        "startedAt": "2026-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Outram",
   "town_translations": {
     "zh-Hans": "欧南",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2749,
     "longitude": 103.8416
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC31",
+        "startedAt": "2026-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

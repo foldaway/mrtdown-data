@@ -6,10 +6,8 @@
     "ms": "Tiada perkhidmatan LRT di BPLRT",
     "ta": "BPLRT இல் LRT சேவை இல்லை"
   },
-  "componentIdsAffected": ["BPLRT"],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -25,10 +23,10 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     },
     {
-      "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
         "BKP",
@@ -40,7 +38,8 @@
         "JLP",
         "SNJ",
         "TMJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
   ],
   "startAt": "2016-04-25T21:45:38.000+08:00",
@@ -72,5 +71,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/724595224157163521",
       "createdAt": "2016-04-25T21:45:38.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

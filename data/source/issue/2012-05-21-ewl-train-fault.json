@@ -6,18 +6,15 @@
     "ms": "Kerosakan kereta di Laluan Timur-Barat",
     "ta": "கிழக்கு-மேற்கு பாதையில் ரயில் பழுது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-05-21T15:39:59.000+08:00",
@@ -39,5 +36,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/204476616984891392",
       "createdAt": "2012-05-21T15:39:59.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

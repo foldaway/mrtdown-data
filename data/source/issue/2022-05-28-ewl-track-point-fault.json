@@ -6,9 +6,6 @@
     "ms": "Kelewatan di Laluan Timur Barat kerana kerosakan titik trek",
     "ta": "தடப் புள்ளியில் ஏற்பட்ட கோளாறு காரணமாக கிழக்கு மேற்கு பாதையில் தாமதம்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2022-05-28T06:32:00.000+08:00",
   "endAt": "2022-05-28T10:21:09.000+08:00",
   "type": "disruption",
@@ -86,13 +83,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "RDH",
         "QUE",
         "COM"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

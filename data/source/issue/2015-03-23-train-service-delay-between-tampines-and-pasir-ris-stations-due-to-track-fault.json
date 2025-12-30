@@ -6,17 +6,14 @@
     "ms": "Perkhidmatan kereta api tertangguh antara stesen Tampines dan Pasir Ris kerana kerosakan trek",
     "ta": "தம்பினஸ் மற்றும் பாசிர் ரிஸ் நிலையங்களுக்கு இடையில் ரயில் சேவை தாமதம் காரணமாக தட கோளாறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2015-03-23T19:28:41.000+08:00",
@@ -56,5 +53,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/579968000540823553",
       "createdAt": "2015-03-23T19:28:41.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

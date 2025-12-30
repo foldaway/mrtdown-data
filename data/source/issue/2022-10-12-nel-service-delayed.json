@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan NEL kerana kerosakan kereta api",
     "ta": "ரயில் பழுதின் காரணமாக NEL சேவை தடங்கல்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2022-10-12T07:44:59.000+08:00",
   "endAt": "2022-10-12T07:52:00.000+08:00",
   "type": "disruption",
@@ -32,7 +29,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -51,7 +47,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "南洋门",
     "ta": "நன்யாங் கேட்வே"
   },
-  "componentMembers": {
-    "JRL": [
-      {
-        "code": "JW3",
-        "startedAt": "2029-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Western Water Catchment",
   "town_translations": {
     "zh-Hans": "西部蓄水区",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.3475,
     "longitude": 103.684
+  },
+  "lineMembers": {
+    "JRL": [
+      {
+        "code": "JW3",
+        "startedAt": "2029-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

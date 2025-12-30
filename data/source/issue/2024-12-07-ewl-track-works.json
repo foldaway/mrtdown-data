@@ -6,9 +6,6 @@
     "ms": "Kerja trek di Laluan Timur-Barat",
     "ta": "கிழக்கு-மேற்கு பாதையில் தடங்கள் வேலை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2024-12-07T05:30:00.000+08:00",
   "endAt": "2024-12-10T00:00:00.000+08:00",
   "type": "maintenance",
@@ -32,13 +29,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TAM",
         "SIM",
         "TNM"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

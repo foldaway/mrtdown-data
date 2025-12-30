@@ -6,11 +6,12 @@
     "ms": "Tiada perkhidmatan di Bukit Panjang LRT akibat gangguan bekalan elektrik",
     "ta": " Bukit Panjang LRT இல் மின்சாரம் தடைபட்டதால் சேவை இல்லை"
   },
-  "componentIdsAffected": ["BPLRT"],
   "startAt": "2018-11-07T23:56:28.000+08:00",
   "endAt": "2018-11-08T05:15:02.000+08:00",
   "type": "disruption",
-  "subtypes": ["power.fault"],
+  "subtypes": [
+    "power.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -39,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -55,10 +55,10 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     },
     {
-      "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
         "BKP",
@@ -70,7 +70,11 @@
         "JLP",
         "SNJ",
         "TMJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

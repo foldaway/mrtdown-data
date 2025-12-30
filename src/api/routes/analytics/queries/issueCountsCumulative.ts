@@ -29,7 +29,7 @@ export async function issueCountsCumulativeQuery(
     issue_types AS (
       SELECT DISTINCT i.type
       FROM issues i
-      JOIN issue_components ic ON i.id = ic.issue_id
+      JOIN issue_lines il ON i.id = il.issue_id
     ),
     periods AS (
       SELECT 'current' AS period
@@ -52,7 +52,7 @@ export async function issueCountsCumulativeQuery(
         ) AS end_clipped
       FROM issues i
       JOIN issue_intervals iv ON i.id = iv.issue_id
-      JOIN issue_components ic ON i.id = ic.issue_id
+      JOIN issue_lines il ON i.id = il.issue_id
       CROSS JOIN bounds bo
       WHERE iv.start_at < bo.current_end_time
         AND COALESCE(iv.end_at, bo.current_end_time, NOW() AT TIME ZONE 'Asia/Singapore') > bo.current_start_time
@@ -68,7 +68,7 @@ export async function issueCountsCumulativeQuery(
         ) AS end_clipped
       FROM issues i
       JOIN issue_intervals iv ON i.id = iv.issue_id
-      JOIN issue_components ic ON i.id = ic.issue_id
+      JOIN issue_lines il ON i.id = il.issue_id
       CROSS JOIN bounds bo
       WHERE iv.start_at < bo.prior_end_time
         AND COALESCE(iv.end_at, bo.prior_end_time, NOW() AT TIME ZONE 'Asia/Singapore') > bo.prior_start_time

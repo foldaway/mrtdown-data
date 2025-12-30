@@ -5,15 +5,6 @@
     "zh-Hans": "快乐山",
     "ta": "மவுண்ட் பிளசண்ட்்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE10",
-        "startedAt": "2040-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Novena",
   "town_translations": {
     "zh-Hans": "诺维娜",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3403,
     "longitude": 103.8347
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE10",
+        "startedAt": "2040-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

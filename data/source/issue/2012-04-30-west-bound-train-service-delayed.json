@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan kereta arah barat tertunda kerana kerosakan kereta",
     "ta": "மேற்கு நோக்கி செல்லும் ரயில் சேவை ரயில் கோளாறு காரணமாக தாமதமானது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2012-04-30T09:22:03.000+08:00",
   "endAt": "2012-04-30T09:51:37.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -63,7 +59,11 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

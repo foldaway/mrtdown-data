@@ -5,15 +5,6 @@
     "zh-Hans": "棕美",
     "ta": "ரூம்பியா"
   },
-  "componentMembers": {
-    "SKLRT": [
-      {
-        "code": "SE2",
-        "startedAt": "2003-01-18",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Sengkang",
   "town_translations": {
     "zh-Hans": "盛港",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.37541,
     "longitude": 103.9033
+  },
+  "lineMembers": {
+    "SKLRT": [
+      {
+        "code": "SE2",
+        "startedAt": "2003-01-18",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

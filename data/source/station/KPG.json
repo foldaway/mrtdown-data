@@ -5,15 +5,6 @@
     "zh-Hans": "古邦",
     "ta": "கூப்பாங்"
   },
-  "componentMembers": {
-    "SKLRT": [
-      {
-        "code": "SW3",
-        "startedAt": "2015-06-27",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Sengkang",
   "town_translations": {
     "zh-Hans": "盛港",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3962,
     "longitude": 103.8896
+  },
+  "lineMembers": {
+    "SKLRT": [
+      {
+        "code": "SW3",
+        "startedAt": "2015-06-27",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

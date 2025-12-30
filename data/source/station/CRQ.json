@@ -5,15 +5,6 @@
     "zh-Hans": "克拉码头",
     "ta": "கிளார்க் கீ"
   },
-  "componentMembers": {
-    "NEL": [
-      {
-        "code": "NE5",
-        "startedAt": "2003-06-20",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Singapore River",
   "town_translations": {
     "zh-Hans": "新加坡河",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2904,
     "longitude": 103.8462
+  },
+  "lineMembers": {
+    "NEL": [
+      {
+        "code": "NE5",
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
+      }
+    ]
   }
 }

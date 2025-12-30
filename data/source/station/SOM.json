@@ -5,15 +5,6 @@
     "zh-Hans": "索美塞",
     "ta": "சாமர்செட்"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS23",
-        "startedAt": "1987-12-12",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Orchard",
   "town_translations": {
     "zh-Hans": "乌节",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2993,
     "longitude": 103.8398
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS23",
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
+      }
+    ]
   }
 }

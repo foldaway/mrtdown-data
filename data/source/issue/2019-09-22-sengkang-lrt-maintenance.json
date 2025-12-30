@@ -6,9 +6,6 @@
     "ms": "Kerja Penyelenggaraan Sistem LRT Sengkang",
     "ta": "செங்காங் LRT அமைப்பில் பராமரிப்புப் பணிகள்"
   },
-  "componentIdsAffected": [
-    "SKLRT"
-  ],
   "startAt": "2019-09-22T00:00:00.000+08:00",
   "endAt": "2019-09-22T17:30:00.000+08:00",
   "type": "maintenance",
@@ -26,7 +23,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "SKLRT",
       "branchName": "east",
       "stationIds": [
         "SKG",
@@ -35,10 +31,10 @@
         "BAK",
         "KGK",
         "RNG"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
         "SKG",
@@ -50,7 +46,11 @@
         "LYR",
         "TKG",
         "RNJ"
-      ]
+      ],
+      "lineId": "SKLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "SKLRT"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Penutupan awal stesen North East Line untuk kerja sistem kuasa atas",
     "ta": "மேல்நிலை மின் அமைப்புகளுக்கான வடகிழக்கு வரி நிலையங்களின் ஆரம்ப மூடல்கள்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2021-04-09T23:00:00.000+08:00",
   "endAt": "2021-04-10T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20210409T230000\nRRULE:FREQ=DAILY;UNTIL=20210411T000000;WKST=MO",
@@ -34,7 +31,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -53,7 +49,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

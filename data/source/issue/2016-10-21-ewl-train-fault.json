@@ -6,9 +6,6 @@
     "ms": "Gangguan Besar Laluan Timur Barat Akibat Kerosakan Kereta Api",
     "ta": "ரயில் கோளாறு காரணமாக கிழக்கு மேற்கு பாதையில் பெரிய இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2016-10-21T07:01:13.000+08:00",
   "endAt": "2016-10-21T07:44:26.000+08:00",
   "type": "disruption",
@@ -55,7 +52,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "QUE",
@@ -64,7 +60,11 @@
         "DVR",
         "CLE",
         "JUR"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "汤申路上段",
     "ta": "அப்பர் தாம்சன்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE8",
-        "startedAt": "2021-08-28",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bishan",
   "town_translations": {
     "zh-Hans": "碧山",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3673,
     "longitude": 103.818
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE8",
+        "startedAt": "2021-08-28",
+        "structureType": "underground"
+      }
+    ]
   }
 }

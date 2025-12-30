@@ -5,15 +5,6 @@
     "zh-Hans": "登加",
     "ta": "தெங்கா"
   },
-  "componentMembers": {
-    "JRL": [
-      {
-        "code": "JS3",
-        "startedAt": "2027-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Tengah",
   "town_translations": {
     "zh-Hans": "登加",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3442,
     "longitude": 103.7515
+  },
+  "lineMembers": {
+    "JRL": [
+      {
+        "code": "JS3",
+        "startedAt": "2027-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

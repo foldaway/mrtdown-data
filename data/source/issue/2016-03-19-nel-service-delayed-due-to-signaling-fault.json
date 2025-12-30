@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan NEL tertangguh kerana masalah isyarat",
     "ta": "சிக்னல் கோளாறு காரணமாக NEL சேவை தாமதமானது"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -30,7 +26,8 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
   ],
   "startAt": "2016-03-19T17:59:54.000+08:00",
@@ -52,5 +49,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/711130066261024769",
       "createdAt": "2016-03-19T17:59:54.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

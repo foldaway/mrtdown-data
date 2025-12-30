@@ -6,9 +6,6 @@
     "ms": "Jejak kerosakan menyebabkan kelewatan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் தடயப் பிழை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2022-10-19T05:46:11.000+08:00",
   "endAt": "2022-10-19T08:47:38.000+08:00",
   "type": "disruption",
@@ -109,7 +106,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
@@ -120,7 +116,11 @@
         "KTB",
         "YCK",
         "AMK"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

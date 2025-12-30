@@ -12,10 +12,10 @@ export async function issueIdsRecentQuery(stationId: string) {
       i.id as issue_id,
       MIN(iv.start_at) AS earliest_start_at
     FROM issues i
-    JOIN issue_components ic ON i.id = ic.issue_id
+    JOIN issue_lines il ON i.id = il.issue_id
     JOIN issue_intervals iv ON i.id = iv.issue_id
-    JOIN component_branch_memberships cbm ON ic.component_id = cbm.component_id
-    WHERE cbm.station_id = ?
+    JOIN line_branch_memberships bm ON il.line_id = bm.line_id
+    WHERE bm.station_id = ?
       AND iv.start_at <= NOW()
     GROUP BY i.id
     ORDER BY earliest_start_at DESC

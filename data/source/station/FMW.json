@@ -5,15 +5,6 @@
     "zh-Hans": "法嘉",
     "ta": "ஃபஜார்"
   },
-  "componentMembers": {
-    "SKLRT": [
-      {
-        "code": "SW2",
-        "startedAt": "2007-11-15",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Sengkang",
   "town_translations": {
     "zh-Hans": "盛港",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3976,
     "longitude": 103.8881
+  },
+  "lineMembers": {
+    "SKLRT": [
+      {
+        "code": "SW2",
+        "startedAt": "2007-11-15",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

@@ -5,22 +5,6 @@
     "zh-Hans": "麦波申",
     "ta": "மெக்பர்சன்"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC10",
-        "startedAt": "2010-04-17",
-        "structureType": "underground"
-      }
-    ],
-    "DTL": [
-      {
-        "code": "DT26",
-        "startedAt": "2017-10-21",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Geylang",
   "town_translations": {
     "zh-Hans": "芽笼",
@@ -48,5 +32,21 @@
   "geo": {
     "latitude": 1.32017,
     "longitude": 103.88736
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC10",
+        "startedAt": "2010-04-17",
+        "structureType": "underground"
+      }
+    ],
+    "DTL": [
+      {
+        "code": "DT26",
+        "startedAt": "2017-10-21",
+        "structureType": "underground"
+      }
+    ]
   }
 }

@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan kereta api terjejas disebabkan oleh kerosakan kereta api antara Caldecott dan Gardens by the Bay",
     "ta": "கல்கோட் மற்றும் கார்டன்ஸ் பை தி பே இடையே ரயில் பழுது காரணமாக ரயில் சேவைகள் பாதிக்கப்பட்டுள்ளன"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2022-12-25T06:46:29.000+08:00",
   "endAt": "2022-12-25T07:53:38.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "CDT",
@@ -58,7 +54,11 @@
         "SHW",
         "MRB",
         "GRB"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

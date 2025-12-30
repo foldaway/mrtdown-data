@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan kereta api arah timur ditangguhkan kerana kerosakan trek",
     "ta": "தடக் கோளாறு காரணமாக கிழக்கு நோக்கி செல்லும் ரயில் சேவை தாமதம்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JKN",
@@ -43,7 +39,8 @@
         "SIM",
         "TAM",
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-04-13T07:32:24.000+08:00",
@@ -66,5 +63,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/190583175406301184",
       "createdAt": "2012-04-13T07:32:24.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

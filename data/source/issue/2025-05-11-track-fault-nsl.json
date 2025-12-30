@@ -6,9 +6,6 @@
     "ms": "Jejak Kesalahan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் பிழை கண்டறிதல்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2025-05-11T14:42:25.000+08:00",
   "endAt": "2025-05-11T17:39:14.000+08:00",
   "type": "disruption",
@@ -67,13 +64,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "SBW",
         "CBR",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

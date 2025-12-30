@@ -5,15 +5,6 @@
     "zh-Hans": "玛丽蒙",
     "ta": "மேரிமவுண்ட்்"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC16",
-        "startedAt": "2009-05-28",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bishan",
   "town_translations": {
     "zh-Hans": "碧山",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3403,
     "longitude": 103.8434
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC16",
+        "startedAt": "2009-05-28",
+        "structureType": "underground"
+      }
+    ]
   }
 }

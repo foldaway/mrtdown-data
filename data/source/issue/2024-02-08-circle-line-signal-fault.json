@@ -6,9 +6,6 @@
     "ms": "Kerosakan Isyarat Menyebabkan Kelewatan Perjalanan di Laluan Lingkaran",
     "ta": "சிக்னல் தவறு வட்டப் பாதையில் பயண தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2024-02-08T08:00:10.000+08:00",
   "endAt": "2024-02-08T11:30:11.000+08:00",
   "type": "disruption",
@@ -61,7 +58,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -73,10 +69,10 @@
         "MBT",
         "DKT",
         "PYL"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -87,7 +83,11 @@
         "MBT",
         "DKT",
         "PYL"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -6,18 +6,15 @@
     "ms": "Gangguan perkhidmatan NSL",
     "ta": "NSL சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "KTB",
         "YCK",
         "AMK"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-10-05T06:29:47.000+08:00",
@@ -39,5 +36,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/650800006790647809",
       "createdAt": "2015-10-05T06:29:47.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan ke arah Bukit Panjang di Perkhidmatan A",
     "ta": "தொடக்கம் A இல் புகிட் பாஞ்சாங் நோக்கி தாமதங்களை ஏற்படுத்தும் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2021-06-27T07:40:26.000+08:00",
   "endAt": "2021-06-27T10:20:01.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -65,7 +61,11 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

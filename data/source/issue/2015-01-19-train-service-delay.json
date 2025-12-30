@@ -6,18 +6,15 @@
     "ms": "Gangguan perkhidmatan kereta api antara Admiralty dan Yishun di selatan",
     "ta": "தெற்கு திசையில் அட்மிரால்டி மற்றும் ஈஷூன் இடையே ரயில் சேவை தடங்கல்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "ADM",
         "SBW",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-01-19T15:23:43.000+08:00",
@@ -39,5 +36,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/557075917772554240",
       "createdAt": "2015-01-19T15:23:43.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

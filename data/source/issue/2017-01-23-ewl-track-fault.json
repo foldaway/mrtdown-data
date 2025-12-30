@@ -6,12 +6,8 @@
     "ms": "Jejak Kerosakan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் தடமறிதல் பிழை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "CLE",
@@ -21,7 +17,8 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2017-01-23T18:34:48.000+08:00",
@@ -91,5 +88,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/823479086357975040",
       "createdAt": "2017-01-23T18:34:48.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

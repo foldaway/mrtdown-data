@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan kereta arah utara lambat kerana sekatan kelajuan",
     "ta": "வேகக் கட்டுப்பாடுகள் காரணமாக வடக்கு நோக்கிய ரயில் சேவை மெதுவாக உள்ளது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -39,7 +35,8 @@
         "ORC",
         "SOM",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2011-12-29T08:53:51.000+08:00",
@@ -61,5 +58,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/152190560579485697",
       "createdAt": "2011-12-29T08:53:51.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

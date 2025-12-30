@@ -5,15 +5,6 @@
     "zh-Hans": "德惠",
     "ta": "டெக் வாய்"
   },
-  "componentMembers": {
-    "BPLRT": [
-      {
-        "code": "BP4",
-        "startedAt": "1999-11-06",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Choa Chu Kang",
   "town_translations": {
     "zh-Hans": "蔡厝港",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.376,
     "longitude": 103.749
+  },
+  "lineMembers": {
+    "BPLRT": [
+      {
+        "code": "BP4",
+        "startedAt": "1999-11-06",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

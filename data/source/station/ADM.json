@@ -5,15 +5,6 @@
     "zh-Hans": "海军部",
     "ta": "அட்மிரல்ட்டி"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS10",
-        "startedAt": "1996-02-10",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Woodlands",
   "town_translations": {
     "zh-Hans": "兀兰",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.444,
     "longitude": 103.7878
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS10",
+        "startedAt": "1996-02-10",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "港脚",
     "ta": "கங்கார்"
   },
-  "componentMembers": {
-    "SKLRT": [
-      {
-        "code": "SE4",
-        "startedAt": "2003-01-18",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Sengkang",
   "town_translations": {
     "zh-Hans": "盛港",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.385517,
     "longitude": 103.895341
+  },
+  "lineMembers": {
+    "SKLRT": [
+      {
+        "code": "SE4",
+        "startedAt": "2003-01-18",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

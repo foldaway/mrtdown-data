@@ -5,15 +5,6 @@
     "zh-Hans": "乌节大道",
     "ta": "ஆர்ச்சர்ட் பொலிவார்ட்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE13",
-        "startedAt": "2022-11-13",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Orchard",
   "town_translations": {
     "zh-Hans": "乌节",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3033,
     "longitude": 103.8334
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE13",
+        "startedAt": "2022-11-13",
+        "structureType": "underground"
+      }
+    ]
   }
 }

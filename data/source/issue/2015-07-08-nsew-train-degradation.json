@@ -6,10 +6,6 @@
     "ms": "Kereta api di laluan NSEW berjalan dalam mod terdegradasi",
     "ta": "NSEW பாதையில் ரயில்கள் குறைக்கப்பட்ட பயன்முறையில் இயங்குகின்றன"
   },
-  "componentIdsAffected": [
-    "NSL",
-    "EWL"
-  ],
   "startAt": "2015-07-08T05:21:19.000+08:00",
   "endAt": "2015-07-08T23:59:59.000+08:00",
   "type": "maintenance",
@@ -31,7 +27,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -60,10 +55,10 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     },
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -95,16 +90,21 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     },
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL",
+    "EWL"
   ]
 }

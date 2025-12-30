@@ -5,15 +5,6 @@
     "zh-Hans": "榜鹅海岸",
     "ta": "பொங்கோல் கோஸ்ட்"
   },
-  "componentMembers": {
-    "NEL": [
-      {
-        "code": "NE18",
-        "startedAt": "2024-12-10",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Punggol",
   "town_translations": {
     "zh-Hans": "榜鹅",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.404,
     "longitude": 103.925
+  },
+  "lineMembers": {
+    "NEL": [
+      {
+        "code": "NE18",
+        "startedAt": "2024-12-10",
+        "structureType": "underground"
+      }
+    ]
   }
 }

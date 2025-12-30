@@ -6,12 +6,8 @@
     "ms": "Gangguan Perkhidmatan NEL",
     "ta": "NEL சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -30,7 +26,8 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
   ],
   "startAt": "2016-02-10T11:01:37.000+08:00",
@@ -52,5 +49,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/697254060928270336",
       "createdAt": "2016-02-10T11:01:37.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

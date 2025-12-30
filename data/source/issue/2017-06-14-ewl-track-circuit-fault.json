@@ -6,9 +6,6 @@
     "ms": "Ralat litar trek menyebabkan kelewatan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் சுற்று தடையில்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2017-06-14T08:13:40.000+08:00",
   "endAt": "2017-06-14T12:55:54.000+08:00",
   "type": "disruption",
@@ -110,7 +107,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "CTH",
@@ -123,7 +119,11 @@
         "COM",
         "BNV",
         "DVR"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

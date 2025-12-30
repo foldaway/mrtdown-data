@@ -6,18 +6,15 @@
     "ms": "Jejak Kesalahan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் தடமறிதல் பிழை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2013-10-09T19:16:01.000+08:00",
@@ -57,5 +54,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/387899243488608257",
       "createdAt": "2013-10-09T19:16:01.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

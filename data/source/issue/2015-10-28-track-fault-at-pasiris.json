@@ -6,17 +6,14 @@
     "ms": "Ralat trek di Pasir Ris menyebabkan gangguan perkhidmatan",
     "ta": "பாசிர் ரிஸில் உள்ள பாதையில் பழுது காரணமாக சேவை தடைப்பட்டது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2015-10-28T14:54:29.000+08:00",
@@ -50,5 +47,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/659261938749194240",
       "createdAt": "2015-10-28T14:54:29.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

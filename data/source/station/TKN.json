@@ -5,15 +5,6 @@
     "zh-Hans": "都康",
     "ta": "துக்காங்"
   },
-  "componentMembers": {
-    "JRL": [
-      {
-        "code": "JS10",
-        "startedAt": "2029-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Boon Lay",
   "town_translations": {
     "zh-Hans": "文礼",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.3196,
     "longitude": 103.6793
+  },
+  "lineMembers": {
+    "JRL": [
+      {
+        "code": "JS10",
+        "startedAt": "2029-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

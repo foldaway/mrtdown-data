@@ -6,17 +6,14 @@
     "ms": "Kerosakan Isyarat di NSL",
     "ta": "NSL இல் சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-05-28T14:56:29.000+08:00",
@@ -56,5 +53,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/868722629103964160",
       "createdAt": "2017-05-28T14:56:29.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

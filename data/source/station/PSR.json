@@ -5,27 +5,6 @@
     "zh-Hans": "巴西立",
     "ta": "பாசிர் ரிஸ்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW1",
-        "startedAt": "1989-12-16",
-        "structureType": "elevated"
-      }
-    ],
-    "CRL": [
-      {
-        "code": "CR5",
-        "startedAt": "2030-12-31",
-        "structureType": "underground"
-      },
-      {
-        "code": "CP1",
-        "startedAt": "2030-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Pasir Ris",
   "town_translations": {
     "zh-Hans": "巴西立",
@@ -57,5 +36,26 @@
   "geo": {
     "latitude": 1.3776,
     "longitude": 103.9467
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW1",
+        "startedAt": "1989-12-16",
+        "structureType": "elevated"
+      }
+    ],
+    "CRL": [
+      {
+        "code": "CR5",
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
+      },
+      {
+        "code": "CP1",
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

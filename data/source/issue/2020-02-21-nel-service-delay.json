@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan NEL disebabkan oleh kerosakan kereta api di HarbourFront",
     "ta": "HarbourFront இல் ரயில் கோளாறு காரணமாக NEL சேவை தடை"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2020-02-21T21:28:49.000+08:00",
   "endAt": "2020-02-21T21:53:45.000+08:00",
   "type": "disruption",
@@ -38,7 +35,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -57,7 +53,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

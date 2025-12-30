@@ -6,9 +6,6 @@
     "ms": "Stesen Novena Ditutup Kerana Insiden",
     "ta": "நொவேனா நிலையம் சம்பவம் காரணமாக மூடப்பட்டது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2023-10-27T17:49:16.000+08:00",
   "endAt": "2023-10-27T19:29:17.000+08:00",
   "type": "disruption",
@@ -65,11 +62,14 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "NOV"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

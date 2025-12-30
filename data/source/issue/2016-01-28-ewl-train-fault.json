@@ -6,9 +6,6 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் ரயில் பழுது காரணமாக தாமதம்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2016-01-28T08:03:49.000+08:00",
   "endAt": "2016-01-28T08:36:04.000+08:00",
   "type": "disruption",
@@ -50,7 +47,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "ALJ",
@@ -69,7 +65,11 @@
         "DVR",
         "CLE",
         "JUR"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

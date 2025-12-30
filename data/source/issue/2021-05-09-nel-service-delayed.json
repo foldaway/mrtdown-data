@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan NEL kerana kerosakan isyarat di Farrer Park",
     "ta": "ஃபேரர் பார்க் சிக்னலிங் கோளாறு காரணமாக NEL சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2021-05-09T07:47:46.000+08:00",
   "endAt": "2021-05-09T08:43:39.000+08:00",
   "type": "disruption",
@@ -44,7 +41,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -63,7 +59,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

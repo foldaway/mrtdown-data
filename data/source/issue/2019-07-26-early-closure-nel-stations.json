@@ -6,9 +6,6 @@
     "ms": "Penutupan awal lima stesen NEL kerana penyelenggaraan",
     "ta": "பராமரிப்பு காரணமாக ஐந்து NEL நிலையங்களின் முன்கூட்டிய மூடல்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2019-07-26T23:00:00.000+08:00",
   "endAt": "2019-07-27T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20190726T230000\nRRULE:FREQ=DAILY;UNTIL=20190727T000000;WKST=MO",
@@ -27,7 +24,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "KVN",
@@ -35,7 +31,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

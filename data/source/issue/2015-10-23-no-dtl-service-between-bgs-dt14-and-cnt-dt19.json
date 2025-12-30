@@ -6,12 +6,8 @@
     "ms": "Tiada perkhidmatan Laluan Downtown antara Bugis DT14 dan Chinatown DT19",
     "ta": "பூகஸ் DT14 மற்றும் சைனாடவுன் DT19 இடையே டவுன்டவுன் லைனில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "BGS",
@@ -20,7 +16,8 @@
         "DTN",
         "TLA",
         "CTN"
-      ]
+      ],
+      "lineId": "DTL"
     }
   ],
   "startAt": "2015-10-23T07:38:28.000+08:00",
@@ -40,5 +37,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/657340270837501953",
       "createdAt": "2015-10-23T07:38:28.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

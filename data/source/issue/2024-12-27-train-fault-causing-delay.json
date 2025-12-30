@@ -6,9 +6,6 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Thomson–East Coast",
     "ta": "தாம்சன்-கிழக்கு கடற்கரை பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் பழுது"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2024-12-27T06:25:51.000+08:00",
   "endAt": "2024-12-27T09:06:43.000+08:00",
   "type": "disruption",
@@ -68,7 +65,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
@@ -98,7 +94,11 @@
         "MTC",
         "SGL",
         "BSR"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

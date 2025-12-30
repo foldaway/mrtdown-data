@@ -6,11 +6,12 @@
     "ms": "Kerosakan Kereta Api di Laluan Thomson–East Coast",
     "ta": "தாம்சன்–கிழக்கு கடற்கரை பாதையில் ரயில் தவறு"
   },
-  "componentIdsAffected": ["TEL"],
   "startAt": "2025-11-18T06:37:00.000+08:00",
   "endAt": "2025-11-18T07:15:00.000+08:00",
   "type": "disruption",
-  "subtypes": ["train.fault"],
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "news.report",
@@ -27,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "CDT",
@@ -42,7 +42,11 @@
         "SHW",
         "MRB",
         "GRB"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

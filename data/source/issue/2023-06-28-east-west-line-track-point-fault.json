@@ -6,9 +6,6 @@
     "ms": "Ralat titik trek menyebabkan kelewatan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் தடப் புள்ளி தவறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2023-06-28T05:59:58.000+08:00",
   "endAt": "2023-06-28T06:31:48.000+08:00",
   "type": "disruption",
@@ -44,7 +41,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -53,7 +49,11 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

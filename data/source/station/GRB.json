@@ -6,15 +6,6 @@
     "ms": "Taman di Pesisiran",
     "ta": "கரையோரப் பூந்தோட்டங்கள்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE22",
-        "startedAt": "2022-11-13",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Marina South",
   "town_translations": {
     "zh-Hans": "滨海南",
@@ -46,5 +37,14 @@
   "geo": {
     "latitude": 1.2818,
     "longitude": 103.8646
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE22",
+        "startedAt": "2022-11-13",
+        "structureType": "underground"
+      }
+    ]
   }
 }

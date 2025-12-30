@@ -6,9 +6,6 @@
     "ms": "Kerosakan trek menyebabkan gangguan perkhidmatan di Laluan Thomson–East Coast",
     "ta": "தாம்சன்-கிழக்கு கடற்கரை பாதையில் சேவை இடையூறுக்கு காரணமான பாதையில் ஏற்பட்ட தவறு"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2024-07-05T11:13:36.000+08:00",
   "endAt": "2024-07-05T11:24:20.000+08:00",
   "type": "disruption",
@@ -31,11 +28,14 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "ORC"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

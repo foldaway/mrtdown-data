@@ -6,18 +6,15 @@
     "ms": "Tiada perkhidmatan kereta api dari Labrador Park ke arah HarbourFront kerana kerosakan isyarat",
     "ta": "சிக்னல் கோளாறு காரணமாக லாப்ரடோர் பார்க் முதல் ஹார்பர்ஃபிரண்ட் வரை ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2015-03-03T07:51:11.000+08:00",
@@ -63,5 +60,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/572544712126570496",
       "createdAt": "2015-03-03T07:51:11.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

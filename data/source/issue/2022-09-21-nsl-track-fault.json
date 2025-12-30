@@ -6,12 +6,8 @@
     "ms": "Jejak Kesalahan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் தடயப் பிழை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YIS",
@@ -21,7 +17,8 @@
         "BSH",
         "BDL",
         "TAP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2022-09-21T06:02:06.000+08:00",
@@ -73,5 +70,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1572345383514443776",
       "createdAt": "2022-09-21T06:02:06.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

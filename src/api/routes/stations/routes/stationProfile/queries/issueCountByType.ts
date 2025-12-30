@@ -14,9 +14,9 @@ export async function issueCountByTypeQuery(stationId: string) {
       i.type,
       COUNT(*)::INTEGER AS count
     FROM issues i
-    JOIN issue_components ic ON i.id = ic.issue_id
-    JOIN component_branch_memberships cbm ON ic.component_id = cbm.component_id
-    WHERE cbm.station_id = $1
+    JOIN issue_lines il ON i.id = il.issue_id
+    JOIN line_branch_memberships bm ON il.line_id = bm.line_id
+    WHERE bm.station_id = $1
     GROUP BY i.type
   `;
 

@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan kereta arah utara dari Ang Mo Kio",
     "ta": "வடக்கு நோக்கிய ரயில் சேவையில் அங்க மோ கியோவிலிருந்து இடையூறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
@@ -28,7 +24,8 @@
         "BGB",
         "BBT",
         "JUR"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-06-12T18:47:19.000+08:00",
@@ -50,5 +47,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/212496294474809344",
       "createdAt": "2012-06-12T18:47:19.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

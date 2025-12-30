@@ -6,9 +6,6 @@
     "ms": "Gangguan Perkhidmatan Laluan Bulat antara Tai Seng dan MacPherson",
     "ta": "சை செங் மற்றும் மேக்பெர்சன் இடையே சர்க்கிள் லைன் சேவை சீர்குலைவு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2018-08-04T18:21:30.000+08:00",
   "endAt": "2018-08-04T19:02:25.000+08:00",
   "type": "disruption",
@@ -43,12 +40,15 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "MPS",
         "TSG"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

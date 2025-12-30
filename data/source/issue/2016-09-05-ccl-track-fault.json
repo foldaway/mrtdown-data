@@ -6,17 +6,14 @@
     "ms": "Jejaki Kerosakan di Laluan Bulat",
     "ta": "வட்டப் பாதையில் தடமறிதல்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "PYL",
         "MPS"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2016-09-05T20:22:46.000+08:00",
@@ -50,5 +47,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/772771954684112896",
       "createdAt": "2016-09-05T20:22:46.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "体育场",
     "ta": "ஸ்டேடியம்"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC6",
-        "startedAt": "2010-04-17",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Kallang",
   "town_translations": {
     "zh-Hans": "加冷",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3024,
     "longitude": 103.8711
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC6",
+        "startedAt": "2010-04-17",
+        "structureType": "underground"
+      }
+    ]
   }
 }

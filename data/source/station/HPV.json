@@ -5,15 +5,6 @@
     "zh-Hans": "虎豹别墅",
     "ta": "ஹா பர் வில்லா"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC25",
-        "startedAt": "2011-10-08",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Queenstown",
   "town_translations": {
     "zh-Hans": "女皇镇",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.2998,
     "longitude": 103.7881
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC25",
+        "startedAt": "2011-10-08",
+        "structureType": "underground"
+      }
+    ]
   }
 }

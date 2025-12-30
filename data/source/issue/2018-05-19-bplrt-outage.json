@@ -6,11 +6,12 @@
     "ms": "Gangguan perkhidmatan di Bukit Panjang LRT",
     "ta": "Bukit Panjang LRT இல் சேவை இடையூறு"
   },
-  "componentIdsAffected": ["BPLRT"],
   "startAt": "2018-05-19T14:17:34.000+08:00",
   "endAt": "2018-05-19T15:52:07.000+08:00",
   "type": "disruption",
-  "subtypes": ["train.fault"],
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.monitoring",
@@ -33,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -49,10 +49,10 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     },
     {
-      "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
         "BKP",
@@ -64,7 +64,11 @@
         "JLP",
         "SNJ",
         "TMJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

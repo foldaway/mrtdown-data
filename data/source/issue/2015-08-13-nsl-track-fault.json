@@ -6,19 +6,16 @@
     "ms": "Jejaki Kerosakan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் தடமறிதல் பிழை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YIS",
         "KTB",
         "YCK",
         "AMK"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-08-13T05:26:43.000+08:00",
@@ -40,5 +37,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/631577577111465984",
       "createdAt": "2015-08-13T05:26:43.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

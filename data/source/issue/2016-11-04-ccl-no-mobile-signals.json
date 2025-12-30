@@ -6,9 +6,6 @@
     "ms": "Pengecualian Sementara isyarat telekomunikasi di Laluan Lingkaran",
     "ta": "வட்டப் பாதையில் டெலிகாம் சிக்னல்களுக்கு தற்காலிக இடைநீக்கம்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2016-11-04T07:04:19.000+08:00",
   "endAt": "2016-11-05T14:35:03.000+08:00",
   "type": "disruption",
@@ -35,7 +32,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -66,10 +62,10 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -99,7 +95,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

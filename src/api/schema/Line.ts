@@ -1,14 +1,8 @@
 import z from 'zod';
 import {
-  ComponentOperatingHours,
-  ComponentTypeSchema,
-} from '../../schema/Component.js';
-
-export const LineTypeSchema = ComponentTypeSchema.meta({
-  ref: 'LineType',
-  description: 'The type of a line.',
-});
-export type LineType = z.infer<typeof LineTypeSchema>;
+  LineOperatingHours,
+  LineTypeSchema,
+} from '../../schema/Line.js';
 
 export const LineSchema = z
   .object({
@@ -18,7 +12,7 @@ export const LineSchema = z
     type: LineTypeSchema,
     color: z.string(),
     startedAt: z.iso.datetime().nullable(),
-    operatingHours: ComponentOperatingHours,
+    operatingHours: LineOperatingHours,
   })
   .meta({
     ref: 'Line',

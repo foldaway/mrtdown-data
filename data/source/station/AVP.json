@@ -5,15 +5,6 @@
     "zh-Hans": "航空园",
     "ta": "ஏவியேஷன் பார்க்"
   },
-  "componentMembers": {
-    "CRL": [
-      {
-        "code": "CR2",
-        "startedAt": "2030-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Changi",
   "town_translations": {
     "zh-Hans": "樟宜",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3664,
     "longitude": 103.9712
+  },
+  "lineMembers": {
+    "CRL": [
+      {
+        "code": "CR2",
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

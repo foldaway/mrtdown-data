@@ -62,9 +62,9 @@ export async function toolStationSearchRun(
     const stationCodes: string[] = [];
     const lineIds: string[] = [];
 
-    for (const membership of stationRow.component_memberships) {
+    for (const membership of stationRow.line_memberships) {
       stationCodes.push(membership.code);
-      lineIds.push(membership.component_id);
+      lineIds.push(membership.line_id);
     }
 
     table.children.push({

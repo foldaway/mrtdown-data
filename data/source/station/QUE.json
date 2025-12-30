@@ -5,15 +5,6 @@
     "zh-Hans": "女皇镇",
     "ta": "குவீன்ஸ்டவுன்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW19",
-        "startedAt": "1988-03-12",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Queenstown",
   "town_translations": {
     "zh-Hans": "女皇镇",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2905,
     "longitude": 103.7993
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW19",
+        "startedAt": "1988-03-12",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

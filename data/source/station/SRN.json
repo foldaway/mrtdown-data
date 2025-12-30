@@ -5,15 +5,6 @@
     "zh-Hans": "实龙岗北",
     "ta": "சிராங்கூன் நார்த்"
   },
-  "componentMembers": {
-    "CRL": [
-      {
-        "code": "CR9",
-        "startedAt": "2030-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Serangoon",
   "town_translations": {
     "zh-Hans": "实龙岗",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3663,
     "longitude": 103.8677
+  },
+  "lineMembers": {
+    "CRL": [
+      {
+        "code": "CR9",
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

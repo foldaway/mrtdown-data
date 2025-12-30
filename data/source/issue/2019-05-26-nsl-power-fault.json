@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan utama di Laluan Utara-Selatan akibat gangguan kuasa diselesaikan.",
     "ta": "மின் கோளாறு காரணமாக வடக்கு-தெற்கு பாதையில் பெரிய சேவை இடையூறு தீர்க்கப்பட்டது."
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2019-05-26T06:39:52.000+08:00",
   "endAt": "2019-05-26T07:23:26.000+08:00",
   "type": "disruption",
@@ -67,7 +64,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "NEW",
@@ -78,7 +74,11 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

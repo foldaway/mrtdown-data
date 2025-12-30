@@ -5,15 +5,6 @@
     "zh-Hans": "兀里",
     "ta": "உட்லீ"
   },
-  "componentMembers": {
-    "NEL": [
-      {
-        "code": "NE11",
-        "startedAt": "2011-06-20",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Toa Payoh",
   "town_translations": {
     "zh-Hans": "大巴窑",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3397,
     "longitude": 103.8704
+  },
+  "lineMembers": {
+    "NEL": [
+      {
+        "code": "NE11",
+        "startedAt": "2011-06-20",
+        "structureType": "underground"
+      }
+    ]
   }
 }

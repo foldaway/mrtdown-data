@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan kereta dari Clementi ke arah Joo Koon",
     "ta": "கிளிமென்டி முதல் ஜூ கூன் வரை ரயில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2012-05-02T10:33:29.000+08:00",
   "endAt": "2012-05-02T11:00:56.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "CLE",
@@ -41,7 +37,11 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

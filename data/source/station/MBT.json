@@ -5,15 +5,6 @@
     "zh-Hans": "蒙巴登",
     "ta": "மவுண்ட்பேட்டன்"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC7",
-        "startedAt": "2010-04-17",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Geylang",
   "town_translations": {
     "zh-Hans": "芽笼",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.303847,
     "longitude": 103.885287
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC7",
+        "startedAt": "2010-04-17",
+        "structureType": "underground"
+      }
+    ]
   }
 }

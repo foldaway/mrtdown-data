@@ -6,9 +6,6 @@
     "ms": "Awal perkhidmatan kereta berakhir di NEL kerana kerja-kerja penyelenggaraan",
     "ta": "பராமரிப்புப் பணிகளால் NEL இல் ஆரம்ப ரயில் சேவைகள் முடிவடைகின்றன"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2019-01-04T23:00:00.000+08:00",
   "endAt": "2019-01-05T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20190104T230000\nRRULE:FREQ=DAILY;UNTIL=20190106T000000;WKST=MO",
@@ -81,7 +78,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "SER",
@@ -90,7 +86,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

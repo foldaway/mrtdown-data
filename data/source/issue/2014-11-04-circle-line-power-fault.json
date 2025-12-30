@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan di Laluan Bulat kerana kerosakan kuasa",
     "ta": "மின்சாரக் கோளாறு காரணமாக வட்டப் பாதையில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "KRG",
@@ -20,7 +16,8 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2014-11-04T16:33:31.000+08:00",
@@ -42,5 +39,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/529552005543378944",
       "createdAt": "2014-11-04T16:33:31.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

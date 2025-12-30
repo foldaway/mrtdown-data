@@ -6,12 +6,8 @@
     "ms": "Gangguan besar di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் பெரிய இடையூறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -39,7 +35,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-11-15T17:05:07.000+08:00",
@@ -84,5 +81,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/930723326971985920",
       "createdAt": "2017-11-15T17:05:07.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

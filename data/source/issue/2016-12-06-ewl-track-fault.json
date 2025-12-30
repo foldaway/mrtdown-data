@@ -6,12 +6,8 @@
     "ms": "Tiada perkhidmatan kereta api antara City Hall & Jurong East kerana kerosakan landasan",
     "ta": "City Hall மற்றும் Jurong East இடையே ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "CTH",
@@ -26,7 +22,8 @@
         "DVR",
         "CLE",
         "JUR"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2016-12-06T20:03:43.000+08:00",
@@ -48,5 +45,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/806106844556967936",
       "createdAt": "2016-12-06T20:03:43.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

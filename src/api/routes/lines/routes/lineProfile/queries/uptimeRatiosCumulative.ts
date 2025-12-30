@@ -13,7 +13,7 @@ interface UptimeRatioRow {
 }
 
 export async function uptimeRatiosCumulativeQuery(
-  componentId: string,
+  lineId: string,
   granularity: Granularity,
   count: number,
 ) {
@@ -62,28 +62,28 @@ export async function uptimeRatiosCumulativeQuery(
         cd.period_name,
         cd.bucket_start,
         cd.day,
-        c.id AS component_id,
+        l.id AS line_id,
         CASE
-          WHEN ph.date IS NOT NULL THEN c.weekend_start
-          WHEN EXTRACT(DOW FROM cd.day) IN (0,6) THEN c.weekend_start
-          ELSE c.weekday_start
+          WHEN ph.date IS NOT NULL THEN l.weekend_start
+          WHEN EXTRACT(DOW FROM cd.day) IN (0,6) THEN l.weekend_start
+          ELSE l.weekday_start
         END AS start_time,
         CASE
-          WHEN ph.date IS NOT NULL THEN c.weekend_end
-          WHEN EXTRACT(DOW FROM cd.day) IN (0,6) THEN c.weekend_end
-          ELSE c.weekday_end
+          WHEN ph.date IS NOT NULL THEN l.weekend_end
+          WHEN EXTRACT(DOW FROM cd.day) IN (0,6) THEN l.weekend_end
+          ELSE l.weekday_end
         END AS end_time
       FROM calendar_days cd
-      CROSS JOIN components c
+      CROSS JOIN lines l
       LEFT JOIN public_holidays ph ON ph.date = cd.day
-      WHERE c.id = $1 AND cd.day >= c.started_at
+      WHERE l.id = $1 AND cd.day >= l.started_at
     ),
 
     service_windows AS (
       SELECT
         period_name,
         bucket_start,
-        component_id,
+        line_id,
         day,
         (day + start_time)::TIMESTAMPTZ AT TIME ZONE 'Asia/Singapore' AS service_start,
         CASE
@@ -116,10 +116,10 @@ export async function uptimeRatiosCumulativeQuery(
         ) AS end_clipped
       FROM issues i
       JOIN issue_intervals iv ON i.id = iv.issue_id
-      JOIN issue_components ic ON ic.issue_id = i.id
-      JOIN service_windows sw ON sw.component_id = ic.component_id
+      JOIN issue_lines ic ON ic.issue_id = i.id
+      JOIN service_windows sw ON sw.line_id = ic.line_id
       JOIN periods p ON p.period_name = sw.period_name
-      WHERE ic.component_id = $1
+      WHERE ic.line_id = $1
         AND i.type IN ('disruption', 'maintenance')
         AND iv.start_at < p.end_time
         AND COALESCE(iv.end_at, p.end_time) > p.start_time
@@ -179,6 +179,6 @@ export async function uptimeRatiosCumulativeQuery(
     LEFT JOIN downtime_summary ds ON ap.period_name = ds.period_name
     ORDER BY CASE WHEN ap.period_name = 'current' THEN 0 ELSE 1 END;
 `.trim();
-  const rows = await connection.runAndReadAll(sql, [componentId]);
+  const rows = await connection.runAndReadAll(sql, [lineId]);
   return rows.getRowObjectsJson() as unknown as UptimeRatioRow[];
 }

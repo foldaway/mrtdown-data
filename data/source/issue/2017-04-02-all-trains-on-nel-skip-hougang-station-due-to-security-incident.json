@@ -6,16 +6,13 @@
     "ms": "Semua kereta di NEL akan melangkau Stesen NE14 Hougang kerana insiden keselamatan",
     "ta": "பாதுகாப்பு சம்பவத்தின் காரணமாக NEL இல் உள்ள அனைத்து ரயில்களும் NE14 ஹௌகாங் நிலையத்தைத் தவிர்க்கும்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HGN"
-      ]
+      ],
+      "lineId": "NEL"
     }
   ],
   "startAt": "2017-04-02T14:56:22.000+08:00",
@@ -55,5 +52,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/848428880339664897",
       "createdAt": "2017-04-02T14:56:22.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

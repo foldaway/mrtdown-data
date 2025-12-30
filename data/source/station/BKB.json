@@ -5,15 +5,6 @@
     "zh-Hans": "武吉布朗",
     "ta": "புக்கிட் பிரவுன்"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC18",
-        "startedAt": "2040-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Novena",
   "town_translations": {
     "zh-Hans": "诺维娜",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.33424,
     "longitude": 103.82035
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC18",
+        "startedAt": "2040-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

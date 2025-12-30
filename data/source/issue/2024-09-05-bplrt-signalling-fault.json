@@ -6,9 +6,6 @@
     "ms": "Rosak isyarat yang menjejaskan perkhidmatan LRT Bukit Panjang",
     "ta": "Bukit Panjang LRT சேவையில் பாதிப்பு சிக்னல் கோளாறு"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2024-09-05T04:55:32.000+08:00",
   "endAt": "2024-09-05T05:13:29.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "BKP",
@@ -54,7 +50,11 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

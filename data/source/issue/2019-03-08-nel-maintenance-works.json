@@ -6,9 +6,6 @@
     "ms": "Kerja penyelenggaraan menjejaskan perkhidmatan NEL",
     "ta": "NEL சேவைகளைப் பாதிக்கும் பராமரிப்புப் பணிகள்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2019-03-08T23:00:00.000+08:00",
   "endAt": "2019-03-09T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20190308T230000\nRRULE:FREQ=DAILY;UNTIL=20190310T000000;WKST=MO",
@@ -33,7 +30,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -41,7 +37,11 @@
         "CTN",
         "CRQ",
         "DBG"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

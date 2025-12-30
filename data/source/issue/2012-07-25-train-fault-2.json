@@ -6,18 +6,15 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan di laluan selatan",
     "ta": "ரயில் பழுது காரணமாக தெற்கு நோக்கி செல்லும் பாதையில் தாமதம்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "BGB",
         "CCK",
         "YWT"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-07-25T12:49:35.000+08:00",
@@ -39,5 +36,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/227988945718362113",
       "createdAt": "2012-07-25T12:49:35.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

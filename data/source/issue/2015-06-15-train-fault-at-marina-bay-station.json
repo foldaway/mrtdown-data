@@ -6,17 +6,14 @@
     "ms": "Gangguan Perkhidmatan Kereta Api di Stesen Marina Bay",
     "ta": "மெரினா பே நிலையத்தில் ரயில் சேவை தடங்கல்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-06-15T11:40:38.000+08:00",
@@ -44,5 +41,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/610290791546621952",
       "createdAt": "2015-06-15T11:40:38.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

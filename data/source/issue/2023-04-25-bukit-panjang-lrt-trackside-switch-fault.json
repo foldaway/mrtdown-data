@@ -6,9 +6,6 @@
     "ms": "Kerosakan suis tepi trek menyebabkan gangguan perkhidmatan di LRT Bukit Panjang",
     "ta": "Bukit Panjang LRT இல் சேவை இடையூறுக்கு காரணமான தடவிளக்கு தவறு"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2023-04-25T18:54:03.000+08:00",
   "endAt": "2023-04-26T00:00:00.000+08:00",
   "type": "disruption",
@@ -25,7 +22,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -41,7 +37,11 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

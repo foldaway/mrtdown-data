@@ -1,6 +1,6 @@
 import type { ChatCompletionTool } from 'openai/resources';
 import { z } from 'zod';
-import { ComponentIdSchema } from '../../../schema/Component.js';
+import { LineIdSchema } from '../../../schema/Line.js';
 import type { Tool } from '../types.js';
 import { gfmToMarkdown } from 'mdast-util-gfm';
 import type { Root, Table } from 'mdast';
@@ -8,7 +8,7 @@ import { toMarkdown } from 'mdast-util-to-markdown';
 import { lineBranchGetAllQuery } from '../queries/lineBranchGetAll.js';
 
 export const ToolLineBranchesGetParametersSchema = z.object({
-  componentId: ComponentIdSchema,
+  lineId: LineIdSchema,
 });
 export type ToolLineBranchesGetParameters = z.infer<
   typeof ToolLineBranchesGetParametersSchema
@@ -28,12 +28,12 @@ export const TOOL_DEFINITION_LINE_BRANCHES_GET: ChatCompletionTool = {
 export async function toolLineBranchesGetRun(
   params: ToolLineBranchesGetParameters,
 ) {
-  const { componentId } = params;
+  const { lineId } = params;
 
-  const lineBranchRows = await lineBranchGetAllQuery(componentId);
+  const lineBranchRows = await lineBranchGetAllQuery(lineId);
 
   console.log(
-    `[toolComponentBranchesGetRun] found ${lineBranchRows.length} results.`,
+    `[toolLineBranchesGetRun] found ${lineBranchRows.length} results.`,
   );
 
   const table: Table = {
@@ -55,12 +55,12 @@ export async function toolLineBranchesGetRun(
     ],
   };
 
-  let componentTitle = '';
+  let lineTitle = '';
 
   for (const lineBranchRow of lineBranchRows) {
     const stationNames = lineBranchRow.station_names.join(', ');
 
-    componentTitle = lineBranchRow.component_title;
+    lineTitle = lineBranchRow.line_title;
 
     table.children.push({
       type: 'tableRow',
@@ -86,7 +86,7 @@ export async function toolLineBranchesGetRun(
         children: [
           {
             type: 'text',
-            value: `Branches for line id=${componentId} title=${componentTitle}`,
+            value: `Branches for line id=${lineId} title=${lineTitle}`,
           },
         ],
       },

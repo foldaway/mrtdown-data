@@ -5,15 +5,6 @@
     "zh-Hans": "红砖",
     "ta": "பிரிக்லேன்ட்"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS3A",
-        "startedAt": "2034-01-01",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Choa Chu Kang",
   "town_translations": {
     "zh-Hans": "蔡厝港",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3857,
     "longitude": 103.7445
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS3A",
+        "startedAt": "2034-01-01",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

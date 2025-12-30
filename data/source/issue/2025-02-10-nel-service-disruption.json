@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan Laluan Timur Laut",
     "ta": "வடகிழக்கு வழித்தடத்தில் சேவை தடை"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2025-02-10T06:23:35.000+08:00",
   "endAt": "2025-02-10T08:46:49.000+08:00",
   "type": "disruption",
@@ -115,7 +112,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -135,7 +131,11 @@
         "SKG",
         "PGL",
         "PGC"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

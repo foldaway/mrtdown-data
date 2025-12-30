@@ -6,12 +6,8 @@
     "ms": "Kelewatan disebabkan oleh kegagalan isyarat di Laluan Bulat",
     "ta": "வட்டப் பாதையில் சமிக்ஞை கோளாறு காரணமாக தாமதம்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -23,10 +19,10 @@
         "MBT",
         "DKT",
         "PYL"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -37,7 +33,8 @@
         "MBT",
         "DKT",
         "PYL"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2023-06-23T20:57:11.000+08:00",
@@ -108,5 +105,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1672227299352264705",
       "createdAt": "2023-06-23T20:57:11.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

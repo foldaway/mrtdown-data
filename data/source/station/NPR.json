@@ -5,15 +5,6 @@
     "zh-Hans": "纳比雅",
     "ta": "நேப்பியர்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE12",
-        "startedAt": "2022-11-13",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Tanglin",
   "town_translations": {
     "zh-Hans": "丹琳",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.313,
     "longitude": 103.815
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE12",
+        "startedAt": "2022-11-13",
+        "structureType": "underground"
+      }
+    ]
   }
 }

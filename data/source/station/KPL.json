@@ -5,15 +5,6 @@
     "zh-Hans": "吉宝",
     "ta": "கெப்பல்"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC30",
-        "startedAt": "2026-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bukit Merah",
   "town_translations": {
     "zh-Hans": "红山",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2641,
     "longitude": 103.8226
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC30",
+        "startedAt": "2026-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

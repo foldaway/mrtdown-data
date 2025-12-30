@@ -6,9 +6,6 @@
     "ms": "Penutupan awal penyelenggaraan stesen Laluan Bulat untuk integrasi Peringkat 6",
     "ta": "நிலை 6 ஒருங்கிணைப்பிற்கான வட்டப் பாதையில் நிலையப் பராமரிப்பு குறித்த முன்கூட்டிய மூடல்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2023-10-15T22:00:00.000+08:00",
   "endAt": "2023-10-16T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20231015T220000\nRRULE:FREQ=WEEKLY;UNTIL=20231106T000000;WKST=MO;BYDAY=SU",
@@ -33,13 +30,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

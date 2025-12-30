@@ -5,22 +5,6 @@
     "zh-Hans": "阿尔柏王园",
     "ta": "கிங் ஆல்பர்ட் பார்க்"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT6",
-        "startedAt": "2015-12-27",
-        "structureType": "underground"
-      }
-    ],
-    "CRL": [
-      {
-        "code": "CR15",
-        "startedAt": "2030-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bukit Timah",
   "town_translations": {
     "zh-Hans": "武吉知马",
@@ -48,5 +32,21 @@
   "geo": {
     "latitude": 1.3335,
     "longitude": 103.7827
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT6",
+        "startedAt": "2015-12-27",
+        "structureType": "underground"
+      }
+    ],
+    "CRL": [
+      {
+        "code": "CR15",
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

@@ -6,9 +6,6 @@
     "ms": "Kerosakan isyarat menyebabkan kelewatan di Laluan Lingkar",
     "ta": "வட்டப் பாதையில் தாமதத்தை ஏற்படுத்தும் சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2017-07-21T22:08:08.000+08:00",
   "endAt": "2017-07-21T22:28:37.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "CDT",
@@ -52,7 +48,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

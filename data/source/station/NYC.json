@@ -5,15 +5,6 @@
     "zh-Hans": "南洋弯",
     "ta": "நன்யாங் க்ரெஸ்ஸன்"
   },
-  "componentMembers": {
-    "JRL": [
-      {
-        "code": "JW4",
-        "startedAt": "2029-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Western Water Catchment",
   "town_translations": {
     "zh-Hans": "西部蓄水区",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3475,
     "longitude": 103.7074
+  },
+  "lineMembers": {
+    "JRL": [
+      {
+        "code": "JW4",
+        "startedAt": "2029-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

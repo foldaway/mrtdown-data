@@ -5,15 +5,6 @@
     "zh-Hans": "苏芒",
     "ta": "சுமாங்"
   },
-  "componentMembers": {
-    "PGLRT": [
-      {
-        "code": "PW6",
-        "startedAt": "2014-06-29",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Punggol",
   "town_translations": {
     "zh-Hans": "榜鹅",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.4035,
     "longitude": 103.9034
+  },
+  "lineMembers": {
+    "PGLRT": [
+      {
+        "code": "PW6",
+        "startedAt": "2014-06-29",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

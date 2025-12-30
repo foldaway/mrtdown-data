@@ -6,9 +6,6 @@
     "ms": "Tiada perkhidmatan kereta api antara Choa Chu Kang dan South View kerana kerosakan kuasa",
     "ta": "மின்சாரக் கோளாறு காரணமாக சாவாச்சுக்காங் மற்றும் சவுத் வியூ இடையே ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2024-03-28T18:51:33.000+08:00",
   "endAt": "2024-03-28T19:28:23.000+08:00",
   "type": "disruption",
@@ -43,12 +40,15 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
         "SHV"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

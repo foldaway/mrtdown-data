@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan kereta arah selatan akibat kerosakan landasan",
     "ta": "தடக் கோளாறு காரணமாக தெற்கு நோக்கிச் செல்லும் ரயில் சேவை தடைபட்டது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "SOM",
@@ -21,7 +17,8 @@
         "MRB",
         "BDL",
         "TAP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-05-17T09:19:51.000+08:00",
@@ -49,5 +46,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/202931402881236992",
       "createdAt": "2012-05-17T09:19:51.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

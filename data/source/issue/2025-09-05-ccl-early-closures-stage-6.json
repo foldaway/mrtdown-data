@@ -6,9 +6,6 @@
     "ms": "Kerja Trek CCL - Tutup Awal Hujung Minggu (Peringkat 6)",
     "ta": "CCL பாதை பணிகள் - வார இறுதி முன்னதாக மூடல் (படிநிலை 6)"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2025-09-05T23:00:00.000+08:00",
   "endAt": "2025-09-06T09:00:00.000+08:00",
   "type": "maintenance",
@@ -159,7 +156,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -189,10 +185,10 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -223,7 +219,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

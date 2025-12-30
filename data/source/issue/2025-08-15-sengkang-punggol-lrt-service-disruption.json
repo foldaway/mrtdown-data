@@ -6,10 +6,6 @@
     "ms": "Gangguan Kuasa Menggangu Perkhidmatan LRT Sengkang-Punggol",
     "ta": "எல்லாவற்றிற்கும் பெற்று விட்டது - செங்காங்கு-புங்கொல் எல்‌ஆர்‌டி சேவை இடைப்பட்டு"
   },
-  "componentIdsAffected": [
-    "SKLRT",
-    "PGLRT"
-  ],
   "startAt": "2025-08-15T09:00:18.000+08:00",
   "endAt": "2025-08-15T12:12:18.000+08:00",
   "type": "disruption",
@@ -74,7 +70,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "SKLRT",
       "branchName": "east",
       "stationIds": [
         "SKG",
@@ -83,10 +78,10 @@
         "BAK",
         "KGK",
         "RNG"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
         "SKG",
@@ -98,10 +93,10 @@
         "LYR",
         "TKG",
         "RNJ"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "PGLRT",
       "branchName": "east",
       "stationIds": [
         "PGL",
@@ -112,10 +107,10 @@
         "KDL",
         "OAS",
         "DAM"
-      ]
+      ],
+      "lineId": "PGLRT"
     },
     {
-      "componentId": "PGLRT",
       "branchName": "west",
       "stationIds": [
         "PGL",
@@ -126,7 +121,12 @@
         "NBG",
         "SMG",
         "STK"
-      ]
+      ],
+      "lineId": "PGLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "SKLRT",
+    "PGLRT"
   ]
 }

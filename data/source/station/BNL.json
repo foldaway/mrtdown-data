@@ -5,22 +5,6 @@
     "zh-Hans": "文礼",
     "ta": "பூன் லே"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW27",
-        "startedAt": "1990-07-06",
-        "structureType": "elevated"
-      }
-    ],
-    "JRL": [
-      {
-        "code": "JS8",
-        "startedAt": "2027-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Jurong West",
   "town_translations": {
     "zh-Hans": "裕廊西",
@@ -52,5 +36,21 @@
   "geo": {
     "latitude": 1.349407,
     "longitude": 103.70534
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW27",
+        "startedAt": "1990-07-06",
+        "structureType": "elevated"
+      }
+    ],
+    "JRL": [
+      {
+        "code": "JS8",
+        "startedAt": "2027-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

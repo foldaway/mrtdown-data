@@ -6,19 +6,16 @@
     "ms": "Gangguan perkhidmatan antara Paya Lebar dan Bedok",
     "ta": "Paya Lebar மற்றும் Bedok இடையே சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BDK",
         "KEM",
         "EUN",
         "PYL"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-06-11T15:48:49.000+08:00",
@@ -40,5 +37,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/212088985072308224",
       "createdAt": "2012-06-11T15:48:49.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

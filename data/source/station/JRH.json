@@ -5,15 +5,6 @@
     "zh-Hans": "裕廊山",
     "ta": "ஜூரோங் ஹில்"
   },
-  "componentMembers": {
-    "JRL": [
-      {
-        "code": "JS11",
-        "startedAt": "2029-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Boon Lay",
   "town_translations": {
     "zh-Hans": "文礼",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3483,
     "longitude": 103.7064
+  },
+  "lineMembers": {
+    "JRL": [
+      {
+        "code": "JS11",
+        "startedAt": "2029-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

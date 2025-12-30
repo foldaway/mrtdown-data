@@ -6,18 +6,15 @@
     "ms": "Kerosakan kereta dilaporkan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் ரயில் பழுது அறிவிக்கப்பட்டது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
         "BBT",
         "BGB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-09-27T09:15:07.000+08:00",
@@ -45,5 +42,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/647942509109219328",
       "createdAt": "2015-09-27T09:15:07.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

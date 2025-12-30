@@ -6,9 +6,6 @@
     "ms": "Gangguan Isyarat Jejaki Menjejaskan Perkhidmatan",
     "ta": "தடக் குறிகு தடுப்பு சேவையை பாதிக்கும்"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2022-04-27T07:31:31.000+08:00",
   "endAt": "2022-04-27T09:09:17.000+08:00",
   "type": "disruption",
@@ -56,7 +53,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
@@ -68,7 +64,11 @@
         "BRH",
         "UTS",
         "CDT"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

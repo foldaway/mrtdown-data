@@ -6,12 +6,8 @@
     "ms": "Kerosakan isyarat di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "SBW",
@@ -20,7 +16,8 @@
         "YCK",
         "AMK",
         "BSH"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-03-28T20:44:11.000+08:00",
@@ -72,5 +69,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/846704469547016192",
       "createdAt": "2017-03-28T20:44:11.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

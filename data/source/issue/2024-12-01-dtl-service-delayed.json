@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan DTL disebabkan oleh kegagalan isyarat",
     "ta": "சிக்னலிங் பிழையால் டி.எல்.டி சேவை சீர்குலைவு"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "startAt": "2024-12-01T06:18:10.000+08:00",
   "endAt": "2024-12-01T06:57:00.000+08:00",
   "type": "disruption",
@@ -32,7 +29,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "BKP",
@@ -40,7 +36,11 @@
         "HVW",
         "BTW",
         "KAP"
-      ]
+      ],
+      "lineId": "DTL"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

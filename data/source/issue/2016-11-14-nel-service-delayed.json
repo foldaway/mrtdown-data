@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan NEL tertunda kerana kerosakan kereta api",
     "ta": "ரயில் கோளாறு காரணமாக NEL சேவை தாமதமானது"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -30,7 +26,8 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
   ],
   "startAt": "2016-11-14T09:34:50.000+08:00",
@@ -65,5 +62,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/797976050617577472",
       "createdAt": "2016-11-14T09:34:50.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

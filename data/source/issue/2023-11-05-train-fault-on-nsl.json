@@ -6,9 +6,6 @@
     "ms": "Gangguan Kereta di Laluan North-South",
     "ta": "வடக்கு-தெற்கு பாதையில் ரயில் பழுது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2023-11-05T12:13:46.000+08:00",
   "endAt": "2023-11-05T12:43:37.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
@@ -58,7 +54,11 @@
         "TAP",
         "NOV",
         "NEW"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan kereta api arah selatan tertangguh dari Novena ke Marina Bay",
     "ta": "நோவினா முதல் மெரினா பே வரை தெற்கு நோக்கிச் செல்லும் ரயில் சேவை தாமதம்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "NOV",
@@ -22,7 +18,8 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-02-28T08:24:50.000+08:00",
@@ -44,5 +41,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/174288916768239617",
       "createdAt": "2012-02-28T08:24:50.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

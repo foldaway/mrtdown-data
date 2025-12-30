@@ -5,15 +5,6 @@
     "zh-Hans": "万国",
     "ta": "புவாங்கோக்"
   },
-  "componentMembers": {
-    "NEL": [
-      {
-        "code": "NE15",
-        "startedAt": "2006-01-15",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Sengkang",
   "town_translations": {
     "zh-Hans": "实龙岗",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3754,
     "longitude": 103.8867
+  },
+  "lineMembers": {
+    "NEL": [
+      {
+        "code": "NE15",
+        "startedAt": "2006-01-15",
+        "structureType": "underground"
+      }
+    ]
   }
 }

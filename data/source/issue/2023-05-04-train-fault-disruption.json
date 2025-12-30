@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan kereta api kerana kerosakan di BPLRT",
     "ta": "BPLRT இல் கோளாறு காரணமாக ரயில் சேவை தடை"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2023-05-04T16:49:36.000+08:00",
   "endAt": "2023-05-04T17:36:40.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -58,7 +54,11 @@
         "TKW",
         "PNX",
         "BKP"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "美华",
     "ta": "மவுண்ட் பிளசண்ட்்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE6",
-        "startedAt": "2021-08-28",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Ang Mo Kio",
   "town_translations": {
     "zh-Hans": "宏茂桥",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3715,
     "longitude": 103.8482
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE6",
+        "startedAt": "2021-08-28",
+        "structureType": "underground"
+      }
+    ]
   }
 }

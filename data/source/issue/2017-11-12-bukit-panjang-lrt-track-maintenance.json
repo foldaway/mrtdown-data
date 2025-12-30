@@ -6,13 +6,14 @@
     "ms": "Waktu mula Bukit Panjang LRT diselaraskan untuk penyelenggaraan landasan",
     "ta": "புக்கிட் பாங் LRT தடப் பராமரிப்புக்கான தொடக்க நேரம் சரிசெய்யப்பட்டது"
   },
-  "componentIdsAffected": ["BPLRT"],
   "startAt": "2017-11-12T05:30:00.000+08:00",
   "endAt": "2017-11-12T07:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20171112T053000\nRRULE:FREQ=WEEKLY;UNTIL=20180101T000000;WKST=MO;BYDAY=SU",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": ["track.work"],
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -23,7 +24,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -39,10 +39,10 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     },
     {
-      "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
         "BKP",
@@ -54,7 +54,11 @@
         "JLP",
         "SNJ",
         "TMJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

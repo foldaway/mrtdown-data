@@ -6,12 +6,8 @@
     "ms": "Masa Perjalanan Lebih Lama di NSL kerana Pengaktifan Butang Kecemasan",
     "ta": "அவசரகால பொத்தான் செயல்படுத்தப்பட்டதால் NSL இல் நீண்ட பயண நேரம்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
@@ -32,7 +28,8 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-09-30T18:03:54.000+08:00",
@@ -60,5 +57,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/252348034166431744",
       "createdAt": "2012-09-30T18:03:54.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

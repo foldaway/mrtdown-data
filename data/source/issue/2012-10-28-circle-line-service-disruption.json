@@ -6,17 +6,14 @@
     "ms": "Gangguan perkhidmatan Laluan Bulat",
     "ta": "வட்டப் பாதை சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "TSG",
         "BLY"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2012-10-28T06:44:31.000+08:00",
@@ -38,5 +35,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/262323923025268736",
       "createdAt": "2012-10-28T06:44:31.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

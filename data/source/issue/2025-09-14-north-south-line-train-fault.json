@@ -6,9 +6,6 @@
     "ms": "Kecacatan Kereta Barisan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு வரிசை இயந்திர மோசம்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2025-09-14T12:02:40.000+08:00",
   "endAt": "2025-09-14T12:21:00.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
@@ -40,7 +36,11 @@
         "TAP",
         "NOV",
         "NEW"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "伦多",
     "ta": "லென்ட்டோர்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE5",
-        "startedAt": "2021-08-28",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Ang Mo Kio",
   "town_translations": {
     "zh-Hans": "宏茂桥",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.397036,
     "longitude": 103.846481
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE5",
+        "startedAt": "2021-08-28",
+        "structureType": "underground"
+      }
+    ]
   }
 }

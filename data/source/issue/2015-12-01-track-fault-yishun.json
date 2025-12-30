@@ -6,17 +6,14 @@
     "ms": "Ralat trek dilaporkan di Yishun",
     "ta": "யிஷுனில் தடப் பிழை புகாரளிக்கப்பட்டது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "SBW",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-12-01T05:37:12.000+08:00",
@@ -38,5 +35,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/671442883816218624",
       "createdAt": "2015-12-01T05:37:12.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

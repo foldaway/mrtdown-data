@@ -5,15 +5,6 @@
     "zh-Hans": "丽园",
     "ta": "மெரிடியன்"
   },
-  "componentMembers": {
-    "PGLRT": [
-      {
-        "code": "PE2",
-        "startedAt": "2005-01-29",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Punggol",
   "town_translations": {
     "zh-Hans": "榜鹅",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3975,
     "longitude": 103.9002
+  },
+  "lineMembers": {
+    "PGLRT": [
+      {
+        "code": "PE2",
+        "startedAt": "2005-01-29",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

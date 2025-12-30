@@ -6,9 +6,6 @@
     "ms": "Kesan Isyarat Trek Dibenarkan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் டிராக் சிக்னலிங் தவறு சரி செய்யப்பட்டது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2018-01-02T05:49:14.000+08:00",
   "endAt": "2018-01-02T09:02:47.000+08:00",
   "type": "disruption",
@@ -62,13 +59,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

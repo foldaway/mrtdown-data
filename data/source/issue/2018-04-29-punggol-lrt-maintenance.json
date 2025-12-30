@@ -6,12 +6,13 @@
     "ms": "Kerja penyelenggaraan di sistem Punggol LRT",
     "ta": "Punggol LRT அமைப்பில் பராமரிப்பு பணிகள்"
   },
-  "componentIdsAffected": ["PGLRT"],
   "startAt": "2018-04-29T00:00:00.000+08:00",
   "endAt": "2018-04-29T07:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": ["track.work"],
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -22,14 +23,34 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "PGLRT",
       "branchName": "west",
-      "stationIds": ["PGL", "SMK", "PGP", "SMD", "NBG", "SMG", "STK"]
+      "stationIds": [
+        "PGL",
+        "SMK",
+        "PGP",
+        "SMD",
+        "NBG",
+        "SMG",
+        "STK"
+      ],
+      "lineId": "PGLRT"
     },
     {
-      "componentId": "PGLRT",
       "branchName": "east",
-      "stationIds": ["PGL", "COV", "MRD", "CRE", "RIV", "KDL", "OAS", "DAM"]
+      "stationIds": [
+        "PGL",
+        "COV",
+        "MRD",
+        "CRE",
+        "RIV",
+        "KDL",
+        "OAS",
+        "DAM"
+      ],
+      "lineId": "PGLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "PGLRT"
   ]
 }

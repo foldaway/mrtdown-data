@@ -6,17 +6,14 @@
     "ms": "Jejak Kerosakan di Laluan Bulat Menyebabkan Kelewatan",
     "ta": "வட்டப் பாதையில் தடமறிதல் தாமதங்களுக்கு வழிவகுக்கிறது"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "PYL",
         "MPS"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2012-12-31T07:32:56.000+08:00",
@@ -45,5 +42,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/285528930193125376",
       "createdAt": "2012-12-31T07:32:56.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

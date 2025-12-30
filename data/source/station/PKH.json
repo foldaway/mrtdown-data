@@ -5,15 +5,6 @@
     "zh-Hans": "秉光山",
     "ta": "பெங் காங் ஹில்"
   },
-  "componentMembers": {
-    "JRL": [
-      {
-        "code": "JW5",
-        "startedAt": "2029-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Western Water Catchment",
   "town_translations": {
     "zh-Hans": "西部集水区",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.3483,
     "longitude": 103.6828
+  },
+  "lineMembers": {
+    "JRL": [
+      {
+        "code": "JW5",
+        "startedAt": "2029-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

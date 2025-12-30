@@ -6,9 +6,6 @@
     "ms": "Ralat kereta utama menjejaskan Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையை பாதிக்கும் முக்கிய ரயில் பிழை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2013-05-27T08:15:07.000+08:00",
   "endAt": "2013-05-27T09:57:12.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -58,7 +54,11 @@
         "DVR",
         "CLE",
         "JUR"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

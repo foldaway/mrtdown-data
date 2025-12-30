@@ -5,15 +5,6 @@
     "zh-Hans": "高文",
     "ta": "கோவன்"
   },
-  "componentMembers": {
-    "NEL": [
-      {
-        "code": "NE13",
-        "startedAt": "2003-06-20",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Hougang",
   "town_translations": {
     "zh-Hans": "后港",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.366,
     "longitude": 103.883
+  },
+  "lineMembers": {
+    "NEL": [
+      {
+        "code": "NE13",
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
+      }
+    ]
   }
 }

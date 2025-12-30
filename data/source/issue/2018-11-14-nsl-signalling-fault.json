@@ -6,9 +6,6 @@
     "ms": "Rosak isyarat di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2018-11-14T05:09:50.000+08:00",
   "endAt": "2018-11-14T06:27:49.000+08:00",
   "type": "disruption",
@@ -55,14 +52,17 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
         "ADM",
         "SBW",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

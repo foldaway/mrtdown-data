@@ -1,11 +1,11 @@
-import { ComponentModel } from '../model/ComponentModel.js';
+import { LineModel } from '../model/LineModel.js';
 
 const REGEX_PHRASE_MATCHES =
   /(additional travel time|regular svc|travel time|additional travell?ing time)/i;
 
-const componentIds = ComponentModel.getAllIds();
+const lineIds = LineModel.getAllIds();
 const wordMatches = new Set(
-  [...componentIds, 'MRT', 'LRT', 'train', 'track', 'line', 'fault'].map(
+  [...lineIds, 'MRT', 'LRT', 'train', 'track', 'line', 'fault'].map(
     (word) => word.toLowerCase(),
   ),
 );

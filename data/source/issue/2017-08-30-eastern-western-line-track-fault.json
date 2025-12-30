@@ -6,9 +6,6 @@
     "ms": "Pengesanan Kesalahan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் தடங்கல்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2017-08-30T08:42:27.000+08:00",
   "endAt": "2017-08-30T12:28:32.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "RDH",
@@ -53,7 +49,11 @@
         "DVR",
         "CLE",
         "JUR"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

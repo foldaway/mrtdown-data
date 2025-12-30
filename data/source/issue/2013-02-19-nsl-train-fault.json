@@ -6,9 +6,6 @@
     "ms": "Gangguan Kereta Api Menyebabkan Kelewatan di Laluan North-South",
     "ta": "வடக்கு-தெற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் ரயில் தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2013-02-19T23:56:58.000+08:00",
   "endAt": "2013-02-20T00:05:05.000+08:00",
   "type": "disruption",
@@ -32,7 +29,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "BSH",
@@ -46,7 +42,11 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

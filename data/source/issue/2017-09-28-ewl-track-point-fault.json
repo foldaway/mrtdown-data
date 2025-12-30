@@ -6,9 +6,6 @@
     "ms": "Ralat Jejari Trek Menyebabkan Kelewatan di Laluan Timur Barat",
     "ta": "தடப் புள்ளி பிழை கிழக்கு மேற்கு பாதையில் தாமதங்களை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2017-09-28T05:53:52.000+08:00",
   "endAt": "2017-09-28T06:47:24.000+08:00",
   "type": "disruption",
@@ -56,14 +53,17 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM",
         "SIM",
         "TNM"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

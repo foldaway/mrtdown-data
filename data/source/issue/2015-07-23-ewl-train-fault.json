@@ -6,12 +6,8 @@
     "ms": "Kerosakan kereta di Laluan Timur Barat menjejaskan masa perjalanan",
     "ta": "கிழக்கு மேற்கு பாதையில் ரயில் பழுது பயண நேரத்தை பாதிக்கிறது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "CLE",
@@ -21,7 +17,8 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2015-07-23T20:41:19.000+08:00",
@@ -50,5 +47,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/624197598191026177",
       "createdAt": "2015-07-23T20:41:19.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "明地迷亚",
     "ta": "பெண்டிமியர்"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT23",
-        "startedAt": "2017-10-21",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Kallang",
   "town_translations": {
     "zh-Hans": "加冷",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.316683,
     "longitude": 103.872768
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT23",
+        "startedAt": "2017-10-21",
+        "structureType": "underground"
+      }
+    ]
   }
 }

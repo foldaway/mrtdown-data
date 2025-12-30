@@ -1,7 +1,7 @@
 import { connect } from '../../../../../../db/connect.js';
 
 interface Row {
-  component_id: string;
+  line_id: string;
 }
 
 export async function lineGetAllQuery() {
@@ -9,11 +9,11 @@ export async function lineGetAllQuery() {
 
   const sql = `
     SELECT
-      c.id AS component_id
-    FROM components c
+      l.id AS line_id
+    FROM lines l
     ORDER BY
-      CASE WHEN c.started_at > NOW() THEN 1 ELSE 0 END ASC,
-      c.id ASC;
+      CASE WHEN l.started_at > NOW() THEN 1 ELSE 0 END ASC,
+      l.id ASC;
   `.trim();
 
   const result = await connection.runAndReadAll(sql);

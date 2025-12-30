@@ -6,18 +6,15 @@
     "ms": "Kerosakan kereta api menyebabkan masa perjalanan tambahan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் கூடுதல் பயண நேரத்தை ஏற்படுத்தும் ரயில் பழுது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-02-03T07:06:36.000+08:00",
@@ -64,5 +61,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/562386632184066048",
       "createdAt": "2015-02-03T07:06:36.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

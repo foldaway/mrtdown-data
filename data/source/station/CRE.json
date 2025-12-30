@@ -5,15 +5,6 @@
     "zh-Hans": "珊瑚",
     "ta": "கோரல் எட்ஜ்"
   },
-  "componentMembers": {
-    "PGLRT": [
-      {
-        "code": "PE3",
-        "startedAt": "2005-01-29",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Punggol",
   "town_translations": {
     "zh-Hans": "榜鹅",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3999,
     "longitude": 103.9155
+  },
+  "lineMembers": {
+    "PGLRT": [
+      {
+        "code": "PE3",
+        "startedAt": "2005-01-29",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

@@ -6,9 +6,6 @@
     "ms": "15 minit tambahan masa perjalanan kereta api kerana gangguan isyarat",
     "ta": "சிக்னல் கோளாறு காரணமாக 15 நிமிடங்கள் கூடுதல் ரயில் பயண நேரம்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2025-03-14T19:03:14.000+08:00",
   "endAt": "2025-03-14T19:29:19.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -68,10 +64,10 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -101,7 +97,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

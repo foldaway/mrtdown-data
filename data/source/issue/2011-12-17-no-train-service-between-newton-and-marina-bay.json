@@ -6,12 +6,8 @@
     "ms": "Tiada perkhidmatan kereta api antara stesen Newton dan Marina Bay",
     "ta": "நியூட்டன் மற்றும் மெரினா பே நிலையங்களுக்கு இடையில் ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "NEW",
@@ -21,7 +17,8 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2011-12-17T08:28:39.000+08:00",
@@ -89,5 +86,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/147835563792285696",
       "createdAt": "2011-12-17T08:28:39.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

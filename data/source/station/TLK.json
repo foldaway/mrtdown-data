@@ -5,15 +5,6 @@
     "zh-Hans": "大士连路",
     "ta": "துவாஸ் லிங்க்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW33",
-        "startedAt": "2017-06-18",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Tuas",
   "town_translations": {
     "zh-Hans": "大士",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3404,
     "longitude": 103.6361
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW33",
+        "startedAt": "2017-06-18",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

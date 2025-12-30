@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan kereta api arah selatan terganggu kerana kerosakan landasan",
     "ta": "தடக் கோளாறு காரணமாக தெற்கு நோக்கிச் செல்லும் ரயில் சேவை பாதிக்கப்பட்டுள்ளது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2012-04-03T08:42:46.000+08:00",
   "endAt": "2012-04-03T10:03:17.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -59,7 +55,11 @@
         "ORC",
         "SOM",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

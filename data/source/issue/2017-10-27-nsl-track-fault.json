@@ -6,9 +6,6 @@
     "ms": "Ralat trek menyebabkan kelewatan",
     "ta": "தடங்களில் ஏற்படும் தவறு தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2017-10-27T05:56:48.000+08:00",
   "endAt": "2017-10-27T06:34:51.000+08:00",
   "type": "disruption",
@@ -38,12 +35,15 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "AMK",
         "BSH"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

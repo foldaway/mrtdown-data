@@ -6,17 +6,14 @@
     "ms": "Tiada perkhidmatan kereta api dari Yew Tee ke Kranji",
     "ta": "Yew Tee முதல் Kranji வரை ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YWT",
         "KRJ"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-02-23T15:06:16.000+08:00",
@@ -122,5 +119,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/569755101188919296",
       "createdAt": "2015-02-23T15:06:16.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

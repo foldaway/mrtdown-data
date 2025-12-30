@@ -6,10 +6,8 @@
     "ms": "Perkhidmatan kereta di BPLRT terjejas akibat kerosakan kereta",
     "ta": "தண்டவாளப் பாதையில் ரயில் பழுது காரணமாக ரயில் சேவைகள் பாதிக்கப்பட்டுள்ளன"
   },
-  "componentIdsAffected": ["BPLRT"],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -25,10 +23,10 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     },
     {
-      "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
         "BKP",
@@ -40,13 +38,16 @@
         "JLP",
         "SNJ",
         "TMJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
   ],
   "startAt": "2017-02-10T15:26:16.000+08:00",
   "endAt": "2017-02-10T15:43:42.000+08:00",
   "type": "disruption",
-  "subtypes": ["train.fault"],
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.update",
@@ -72,5 +73,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/829954620688474112",
       "createdAt": "2017-02-10T15:26:16.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

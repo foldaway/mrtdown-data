@@ -6,9 +6,6 @@
     "ms": "Penghujung awal perkhidmatan di Laluan Timur Laut kerana penyelenggaraan",
     "ta": "பராமரிப்பு காரணமாக வடகிழக்கு பாதையில் ஆரம்ப சேவை முடிவு"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2019-01-11T23:00:00.000+08:00",
   "endAt": "2019-01-12T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20190111T230000\nRRULE:FREQ=DAILY;UNTIL=20190113T000000;WKST=MO",
@@ -105,7 +102,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "SER",
@@ -114,7 +110,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

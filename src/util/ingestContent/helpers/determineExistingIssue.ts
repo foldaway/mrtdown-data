@@ -81,10 +81,10 @@ IRRELEVANT CONTENT:
 - Service hour extensions for festivities (extending operating hours later)
 
 KEY CONTEXT:
-- Rail lines: ${lineGetAllQueryRows.map((line) => `${line.component_id}`).join(', ')}
+- Rail lines: ${lineGetAllQueryRows.map((line) => `${line.line_id}`).join(', ')}
 - Line codes in brackets: [NSL], [BPLRT], etc.
 - Issues typically affect single lines unless explicitly multi-line
-- componentIdsAffected field shows which rail lines are impacted
+- lineIdsAffected field shows which rail lines are impacted
 - Multiple incidents can occur on same line if they're separate events or timeframes
 - Check timestamps carefully - ongoing issues (endAt: null) can receive updates
 

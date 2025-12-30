@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Laluan Timur Laut disebabkan kerja penyelenggaraan",
     "ta": "பராமரிப்புப் பணிகளால் வடகிழக்குக் கோட்டில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2019-03-29T23:00:00.000+08:00",
   "endAt": "2019-03-30T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20190329T230000\nRRULE:FREQ=DAILY;UNTIL=20190331T000000;WKST=MO",
@@ -39,7 +36,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -47,7 +43,11 @@
         "CTN",
         "CRQ",
         "DBG"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

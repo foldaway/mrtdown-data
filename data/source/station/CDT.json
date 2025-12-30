@@ -5,22 +5,6 @@
     "zh-Hans": "加利谷",
     "ta": "கால்டிகாட்"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC17",
-        "startedAt": "2011-10-08",
-        "structureType": "underground"
-      }
-    ],
-    "TEL": [
-      {
-        "code": "TE9",
-        "startedAt": "2021-08-28",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Toa Payoh",
   "town_translations": {
     "zh-Hans": "大巴窑",
@@ -48,5 +32,21 @@
   "geo": {
     "latitude": 1.3408,
     "longitude": 103.8444
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC17",
+        "startedAt": "2011-10-08",
+        "structureType": "underground"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE9",
+        "startedAt": "2021-08-28",
+        "structureType": "underground"
+      }
+    ]
   }
 }

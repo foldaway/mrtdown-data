@@ -6,9 +6,6 @@
     "ms": "Penumpang BPLRT Jatuh ke Landasan - Stesen Bangkit",
     "ta": "BPLRT பயணி தண்டவாளத்தில் விழுந்தார் - பாங்கிட் நிலையம்"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2025-10-27T23:35:00.000+08:00",
   "endAt": "2025-10-27T23:41:00.000+08:00",
   "type": "disruption",
@@ -25,11 +22,14 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "BKT"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

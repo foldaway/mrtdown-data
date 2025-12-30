@@ -6,12 +6,8 @@
     "ms": "Jejak Kesalahan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் தடமறிதல் பிழை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
@@ -29,7 +25,8 @@
         "ORC",
         "SOM",
         "DBG"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2013-05-30T06:52:05.000+08:00",
@@ -87,5 +84,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/339876831828275200",
       "createdAt": "2013-05-30T06:52:05.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

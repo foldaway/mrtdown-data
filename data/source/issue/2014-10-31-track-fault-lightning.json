@@ -6,19 +6,16 @@
     "ms": "Ralat trek menyebabkan kelewatan antara Kranji dan Admiralty",
     "ta": "Kranji மற்றும் Admiralty இடையே தாமதத்தை ஏற்படுத்தும் பாதை தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "KRJ",
         "MSL",
         "WDL",
         "ADM"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2014-10-31T15:54:05.000+08:00",
@@ -41,5 +38,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/528092529913131008",
       "createdAt": "2014-10-31T15:54:05.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

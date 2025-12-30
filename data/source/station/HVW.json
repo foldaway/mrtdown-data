@@ -5,15 +5,6 @@
     "zh-Hans": "山景",
     "ta": "ஹில்வியூ"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT3",
-        "startedAt": "2015-12-27",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bukit Panjang",
   "town_translations": {
     "zh-Hans": "武吉班让",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.37341,
     "longitude": 103.76995
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT3",
+        "startedAt": "2015-12-27",
+        "structureType": "underground"
+      }
+    ]
   }
 }

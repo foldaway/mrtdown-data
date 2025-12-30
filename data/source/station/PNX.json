@@ -5,15 +5,6 @@
     "zh-Hans": "凤凰",
     "ta": "ஃபீனிக்ஸ்"
   },
-  "componentMembers": {
-    "BPLRT": [
-      {
-        "code": "BP5",
-        "startedAt": "1999-11-06",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Choa Chu Kang",
   "town_translations": {
     "zh-Hans": "蔡厝港",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.3775,
     "longitude": 103.7581
+  },
+  "lineMembers": {
+    "BPLRT": [
+      {
+        "code": "BP5",
+        "startedAt": "1999-11-06",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

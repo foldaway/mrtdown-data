@@ -6,9 +6,6 @@
     "ms": "Ralat sistem isyarat menyebabkan kelewatan",
     "ta": "தாமதத்தை ஏற்படுத்தும் சமிக்ஞை அமைப்பு தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2017-10-04T18:01:03.000+08:00",
   "endAt": "2017-10-04T18:24:27.000+08:00",
   "type": "disruption",
@@ -39,14 +36,17 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
         "BBT",
         "BGB",
         "CCK"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

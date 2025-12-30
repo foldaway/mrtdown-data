@@ -6,12 +6,8 @@
     "ms": "Rosak isyarat menyebabkan kelewatan perjalanan kereta di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் ரயில் பயண தாமதத்தை ஏற்படுத்தும் சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "TAP",
@@ -24,7 +20,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-09-15T21:06:51.000+08:00",
@@ -53,5 +50,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/908678498767708160",
       "createdAt": "2017-09-15T21:06:51.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

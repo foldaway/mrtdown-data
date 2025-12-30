@@ -6,17 +6,14 @@
     "ms": "Kerja penyelenggaraan di Laluan Timur Barat dari Tanah Merah ke Simei",
     "ta": "தானா மேரா முதல் சிமேய் வரையிலான கிழக்கு மேற்கு பாதையில் பராமரிப்பு பணிகள்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "SIM",
         "TNM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2013-05-20T00:00:00+08:00",
@@ -33,5 +30,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/335283294864293888",
       "createdAt": "2013-05-17T14:39:01.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

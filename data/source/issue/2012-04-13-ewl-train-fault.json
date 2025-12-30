@@ -6,19 +6,16 @@
     "ms": "Gangguan Kereta Api di Laluan Timur-Barat",
     "ta": "கிழக்கு-மேற்கு பாதையில் ரயில் பழுது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM",
         "SIM",
         "TNM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-04-13T19:33:31.000+08:00",
@@ -46,5 +43,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/190764650080645120",
       "createdAt": "2012-04-13T19:33:31.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

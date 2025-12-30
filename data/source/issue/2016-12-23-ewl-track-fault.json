@@ -6,9 +6,6 @@
     "ms": "Gangguan di Laluan Timur-Barat kerana kerosakan trek",
     "ta": "தடப் பிழை காரணமாக கிழக்கு மேற்கு பாதையில் இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2016-12-23T07:14:24.000+08:00",
   "endAt": "2016-12-23T09:57:53.000+08:00",
   "type": "disruption",
@@ -49,14 +46,17 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TNM",
         "BDK",
         "KEM",
         "EUN"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

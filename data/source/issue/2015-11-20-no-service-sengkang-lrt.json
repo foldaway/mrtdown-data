@@ -6,12 +6,8 @@
     "ms": "Tiada perkhidmatan di Sengkang LRT kerana gangguan isyarat",
     "ta": "சிக்னலிங் பிழை காரணமாக செங்காங் LRT இல் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "SKLRT"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
         "SKG",
@@ -23,10 +19,10 @@
         "LYR",
         "TKG",
         "RNJ"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "SKLRT",
       "branchName": "east",
       "stationIds": [
         "SKG",
@@ -35,7 +31,8 @@
         "BAK",
         "KGK",
         "RNG"
-      ]
+      ],
+      "lineId": "SKLRT"
     }
   ],
   "startAt": "2015-11-20T19:31:31.000+08:00",
@@ -75,5 +72,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/667666576426926080",
       "createdAt": "2015-11-20T19:31:31.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "SKLRT"
   ]
 }

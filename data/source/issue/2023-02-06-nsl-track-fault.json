@@ -6,9 +6,6 @@
     "ms": "Ralat trek menjejaskan Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையை பாதிக்கும் தடக்குறைபாடு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2023-02-06T05:50:55.000+08:00",
   "endAt": "2023-02-06T07:51:00.000+08:00",
   "type": "disruption",
@@ -79,7 +76,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -91,7 +87,11 @@
         "SBW",
         "CBR",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

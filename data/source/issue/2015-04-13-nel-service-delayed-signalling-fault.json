@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan di Laluan Timur Laut",
     "ta": "வடகிழக்கு பாதையில் சேவை தடை"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -30,7 +26,8 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
   ],
   "startAt": "2015-04-13T16:23:45.000+08:00",
@@ -59,5 +56,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/587531608304914432",
       "createdAt": "2015-04-13T16:23:45.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

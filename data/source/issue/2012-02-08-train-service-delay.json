@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan kereta tertunda di Laluan North-South",
     "ta": "வடக்கு-தெற்கு பாதையில் ரயில் சேவை தாமதம்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -39,7 +35,8 @@
         "ORC",
         "SOM",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2012-02-08T07:25:27.000+08:00",
@@ -61,5 +58,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/167026214018621440",
       "createdAt": "2012-02-08T07:25:27.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

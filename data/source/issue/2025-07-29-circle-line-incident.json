@@ -6,11 +6,12 @@
     "ms": "Laporan Mengenai Gangguan di Laluan Lingkaran",
     "ta": "சர்க்கிள் லைனில் இடையூறு குறித்த அறிக்கைகள்"
   },
-  "componentIdsAffected": ["CCL"],
   "startAt": "2025-07-29T08:15:00.000+08:00",
   "endAt": "2025-07-29T09:00:00.000+08:00",
   "type": "disruption",
-  "subtypes": ["train.fault"],
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "general-public.report",
@@ -21,9 +22,29 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
-      "stationIds": ["SER", "LRC", "BSH", "MRM", "CDT", "BTN", "FRR", "HLV", "BNV", "ONH", "KRG", "HPV", "PPJ", "LBD", "TLB", "HBF"]
+      "stationIds": [
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

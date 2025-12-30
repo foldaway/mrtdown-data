@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan kerana kerosakan kereta api di Laluan Timur Laut",
     "ta": "வடகிழக்கு பாதையில் ரயில் கோளாறு காரணமாக சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2013-06-19T18:43:13.000+08:00",
   "endAt": "2013-06-19T20:53:22.000+08:00",
   "type": "disruption",
@@ -44,7 +41,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "WLH",
@@ -54,7 +50,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

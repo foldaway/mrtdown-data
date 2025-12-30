@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan kereta di Thomson–East Coast Line",
     "ta": "தாம்சன்-கிழக்கு கடற்கரை பாதையில் ரயில் சேவை தடங்கல்"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2024-10-01T17:05:19.000+08:00",
   "endAt": "2024-10-01T17:52:53.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
@@ -57,7 +53,11 @@
         "WDS",
         "SPL",
         "LTR"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

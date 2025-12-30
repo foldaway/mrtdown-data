@@ -6,12 +6,8 @@
     "ms": "Kerosakan kereta api menjejaskan Laluan Utara-Selatan",
     "ta": "ரயில் பழுது வடக்கு-தெற்கு பாதையை பாதிக்கிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "NEW",
@@ -19,7 +15,8 @@
         "SOM",
         "DBG",
         "CTH"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2016-02-15T09:20:51.000+08:00",
@@ -47,5 +44,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/699040642136051712",
       "createdAt": "2016-02-15T09:20:51.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

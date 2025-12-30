@@ -6,12 +6,8 @@
     "ms": "Ralat trek mengakibatkan masa perjalanan tambahan",
     "ta": "தடப் பிழை காரணமாக பயண நேரம் அதிகரித்துள்ளது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YIS",
@@ -19,7 +15,8 @@
         "YCK",
         "AMK",
         "BSH"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2016-08-06T08:52:22.000+08:00",
@@ -47,5 +44,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/761726575708561408",
       "createdAt": "2016-08-06T08:52:22.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

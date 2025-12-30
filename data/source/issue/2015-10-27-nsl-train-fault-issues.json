@@ -6,12 +6,8 @@
     "ms": "Kerosakan kereta api menyebabkan masa perjalanan lebih lama di laluan NS",
     "ta": "ரயில் பழுது காரணமாக NS பாதையில் பயண நேரம் அதிகரிப்பு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -40,7 +36,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-10-27T18:14:17.000+08:00",
@@ -74,5 +71,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/658949833181388800",
       "createdAt": "2015-10-27T18:14:17.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -1,5 +1,5 @@
 import z from 'zod';
-import { StationComponentMemberStructureTypeSchema } from '../../schema/Station.js';
+import { StationLineMemberStructureTypeSchema } from '../../schema/Station.js';
 
 export const StationLineMembershipSchema = z
   .object({
@@ -15,7 +15,7 @@ export const StationLineMembershipSchema = z
       .describe(
         'Date when the station was removed from the line, if applicable',
       ),
-    structureType: StationComponentMemberStructureTypeSchema.describe(
+    structureType: StationLineMemberStructureTypeSchema.describe(
       'Structure type of the station',
     ),
     sequenceOrder: z.number().meta({

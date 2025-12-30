@@ -6,9 +6,6 @@
     "ms": "Ralat isyarat menyebabkan kelewatan di EWL",
     "ta": "EWL இல் தாமதத்தை ஏற்படுத்தும் சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2022-02-14T05:58:38.000+08:00",
   "endAt": "2022-02-14T06:15:00.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TNM",
@@ -40,7 +36,11 @@
         "EUN",
         "PYL",
         "ALJ"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

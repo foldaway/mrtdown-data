@@ -6,9 +6,6 @@
     "ms": "Gangguan kereta utama yang mempengaruhi waktu perjalanan Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் பயண நேரத்தை பாதிக்கும் பெரிய ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2024-07-26T09:34:40.000+08:00",
   "endAt": "2024-07-26T10:02:34.000+08:00",
   "type": "disruption",
@@ -44,7 +41,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "NEW",
@@ -55,7 +51,11 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

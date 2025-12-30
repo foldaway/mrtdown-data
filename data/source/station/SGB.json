@@ -5,22 +5,6 @@
     "zh-Hans": "双溪勿洛",
     "ta": "சங்கை பிடோக்"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT37",
-        "startedAt": "2026-12-31",
-        "structureType": "underground"
-      }
-    ],
-    "TEL": [
-      {
-        "code": "TE31",
-        "startedAt": "2026-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bedok",
   "town_translations": {
     "zh-Hans": "贝多克",
@@ -52,5 +36,21 @@
   "geo": {
     "latitude": 1.334994,
     "longitude": 103.93413
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT37",
+        "startedAt": "2026-12-31",
+        "structureType": "underground"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE31",
+        "startedAt": "2026-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

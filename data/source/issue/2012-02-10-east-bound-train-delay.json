@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan kereta api arah timur tertunda ke arah Pasir Ris",
     "ta": "கிழக்கு நோக்கி செல்லும் ரயில் சேவை பாசிர் ரிஸ் நோக்கி தாமதமானது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JKN",
@@ -43,7 +39,8 @@
         "SIM",
         "TAM",
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-02-10T17:29:28.000+08:00",
@@ -65,5 +62,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/167902994627702785",
       "createdAt": "2012-02-10T17:29:28.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

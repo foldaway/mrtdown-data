@@ -6,9 +6,6 @@
     "ms": "Kerosakan trek menyebabkan kelewatan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் தடக் கோளாறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2015-03-03T17:44:01.000+08:00",
   "endAt": "2015-03-03T19:06:24.000+08:00",
   "type": "disruption",
@@ -68,7 +65,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TPG",
@@ -81,7 +77,11 @@
         "CNG",
         "LKS",
         "BNL"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

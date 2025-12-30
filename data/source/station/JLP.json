@@ -5,15 +5,6 @@
     "zh-Hans": "泽拉邦",
     "ta": "ஜெலப்பாங்"
   },
-  "componentMembers": {
-    "BPLRT": [
-      {
-        "code": "BP12",
-        "startedAt": "1999-11-06",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Bukit Panjang",
   "town_translations": {
     "zh-Hans": "武吉班让",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.377482,
     "longitude": 103.772087
+  },
+  "lineMembers": {
+    "BPLRT": [
+      {
+        "code": "BP12",
+        "startedAt": "1999-11-06",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

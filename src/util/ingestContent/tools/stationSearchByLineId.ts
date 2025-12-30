@@ -1,6 +1,6 @@
 import type { ChatCompletionTool } from 'openai/resources';
 import { z } from 'zod';
-import { ComponentIdSchema } from '../../../schema/Component.js';
+import { LineIdSchema } from '../../../schema/Line.js';
 import { gfmToMarkdown } from 'mdast-util-gfm';
 import type { Root, Table } from 'mdast';
 import { toMarkdown } from 'mdast-util-to-markdown';
@@ -13,7 +13,7 @@ import { DateTime } from 'luxon';
 import { stat } from 'node:fs/promises';
 
 export const ToolStationSearchByLineIdParametersSchema = z.object({
-  lineId: ComponentIdSchema,
+  lineId: LineIdSchema,
 });
 export type ToolStationSearchByLineIdParameters = z.infer<
   typeof ToolStationSearchByLineIdParametersSchema
@@ -123,8 +123,8 @@ export async function toolStationSearchByLineIdRun(
           children: [
             {
               type: 'text',
-              value: station.component_memberships
-                .map((c) => c.component_id)
+              value: station.line_memberships
+                .map((c) => c.line_id)
                 .join(', '),
             },
           ],

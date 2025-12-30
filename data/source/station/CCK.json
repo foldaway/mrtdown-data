@@ -5,29 +5,6 @@
     "zh-Hans": "蔡厝港",
     "ta": "சுவா சூ காங்"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS4",
-        "startedAt": "1990-03-10",
-        "structureType": "elevated"
-      }
-    ],
-    "BPLRT": [
-      {
-        "code": "BP1",
-        "startedAt": "1999-11-06",
-        "structureType": "elevated"
-      }
-    ],
-    "JRL": [
-      {
-        "code": "JS1",
-        "startedAt": "2027-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Choa Chu Kang",
   "town_translations": {
     "zh-Hans": "蔡厝港",
@@ -59,5 +36,28 @@
   "geo": {
     "latitude": 1.4002,
     "longitude": 103.7457
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS4",
+        "startedAt": "1990-03-10",
+        "structureType": "elevated"
+      }
+    ],
+    "BPLRT": [
+      {
+        "code": "BP1",
+        "startedAt": "1999-11-06",
+        "structureType": "elevated"
+      }
+    ],
+    "JRL": [
+      {
+        "code": "JS1",
+        "startedAt": "2027-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

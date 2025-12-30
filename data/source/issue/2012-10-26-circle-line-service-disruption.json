@@ -6,7 +6,6 @@
     "ms": "Gangguan perkhidmatan Laluan Bulat",
     "ta": "வட்டப் பாதையில் சேவை இடையூறு"
   },
-  "componentIdsAffected": ["CCL"],
   "startAt": "2012-10-26T00:18:05.000+08:00",
   "endAt": "2012-10-26T01:46:23.000+08:00",
   "type": "disruption",
@@ -33,14 +32,30 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "extension",
-      "stationIds": ["MRB", "BFT", "PMN", "NCH", "SDM"]
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN",
+        "NCH",
+        "SDM"
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "main",
-      "stationIds": ["DBG", "BBS", "EPN", "PMN", "NCH", "SDM"]
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM"
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

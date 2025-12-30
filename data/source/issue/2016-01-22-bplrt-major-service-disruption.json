@@ -6,10 +6,8 @@
     "ms": "Gangguan perkhidmatan utama di Bukit Panjang LRT",
     "ta": "புக்ிட் பாங் LRT இல் பெரிய சேவை இடையூறு"
   },
-  "componentIdsAffected": ["BPLRT"],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -25,10 +23,10 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     },
     {
-      "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
         "BKP",
@@ -40,7 +38,8 @@
         "JLP",
         "SNJ",
         "TMJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
   ],
   "startAt": "2016-01-22T05:54:44.000+08:00",
@@ -66,5 +65,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/690291465289728001",
       "createdAt": "2016-01-22T05:54:44.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

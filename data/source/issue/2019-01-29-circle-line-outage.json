@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Laluan Bulatan kerana kerosakan trek",
     "ta": "தடக் கோளாறு காரணமாக வட்டப் பாதையில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2019-01-29T12:50:13.000+08:00",
   "endAt": "2019-01-29T14:09:48.000+08:00",
   "type": "disruption",
@@ -37,12 +34,15 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

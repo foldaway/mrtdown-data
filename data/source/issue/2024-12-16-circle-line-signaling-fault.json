@@ -6,9 +6,6 @@
     "ms": "Ralat isyarat di Laluan Bulat menyebabkan kelewatan",
     "ta": "வட்டப் பாதையில் சிக்னல் தவறு காரணமாக தாமதம்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2024-12-16T00:36:01.000+08:00",
   "endAt": "2024-12-16T01:25:00.000+08:00",
   "type": "disruption",
@@ -32,7 +29,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "FRR",
@@ -45,7 +41,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

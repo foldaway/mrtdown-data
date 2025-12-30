@@ -6,12 +6,8 @@
     "ms": "Kereta api bergerak lebih perlahan dari Tanjong Pagar kerana kerosakan trek",
     "ta": "தஞ்சோங் பகார் முதல் தண்டவாளக் கோளாறு காரணமாக ரயில்கள் மெதுவாக நகர்கின்றன"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JKN",
@@ -43,7 +39,8 @@
         "SIM",
         "TAM",
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-06-06T20:17:01.000+08:00",
@@ -65,5 +62,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/210344543084744705",
       "createdAt": "2012-06-06T20:17:01.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

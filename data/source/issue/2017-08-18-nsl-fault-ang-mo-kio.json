@@ -6,9 +6,6 @@
     "ms": "Ralat Sistem Isyarat Baharu berhampiran Ang Mo Kio",
     "ta": "Ang Mo Kio அருகே புதிய சிக்னலிங் அமைப்பு தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2017-08-18T06:29:03.000+08:00",
   "endAt": "2017-08-18T09:22:24.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "SBW",
@@ -63,7 +59,11 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

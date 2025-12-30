@@ -14,7 +14,7 @@ interface Row {
 }
 
 export async function issueCountsCumulativeQuery(
-  componentId: string,
+  lineId: string,
   granularity: Granularity,
   count: number,
 ) {
@@ -51,9 +51,9 @@ export async function issueCountsCumulativeQuery(
         ) AS end_clipped
       FROM issues i
       JOIN issue_intervals iv ON i.id = iv.issue_id
-      JOIN issue_components ic ON i.id = ic.issue_id
+      JOIN issue_lines il ON i.id = il.issue_id
       CROSS JOIN bounds bo
-      WHERE ic.component_id = $1
+      WHERE il.line_id = $1
         AND iv.start_at < bo.current_end_time
         AND COALESCE(iv.end_at, bo.current_end_time, NOW() AT TIME ZONE 'Asia/Singapore') > bo.current_start_time
     ),
@@ -68,9 +68,9 @@ export async function issueCountsCumulativeQuery(
         ) AS end_clipped
       FROM issues i
       JOIN issue_intervals iv ON i.id = iv.issue_id
-      JOIN issue_components ic ON i.id = ic.issue_id
+      JOIN issue_lines il ON i.id = il.issue_id
       CROSS JOIN bounds bo
-      WHERE ic.component_id = $1
+      WHERE il.line_id = $1
         AND iv.start_at < bo.prior_end_time
         AND COALESCE(iv.end_at, bo.prior_end_time, NOW() AT TIME ZONE 'Asia/Singapore') > bo.prior_start_time
     ),
@@ -113,6 +113,6 @@ export async function issueCountsCumulativeQuery(
     GROUP BY pit.period
     ORDER BY pit.period
 `.trim();
-  const rows = await connection.runAndReadAll(sql, [componentId]);
+  const rows = await connection.runAndReadAll(sql, [lineId]);
   return rows.getRowObjectsJson() as unknown as Row[];
 }

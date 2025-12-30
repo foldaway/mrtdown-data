@@ -6,9 +6,6 @@
     "ms": "Gangguan kuasa yang menjejaskan Laluan Bulat",
     "ta": "வட்டப் பாதையைப் பாதிக்கும் மின்சாரக் கோளாறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2023-04-18T16:22:36.000+08:00",
   "endAt": "2023-04-18T16:45:05.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "KRG",
@@ -52,7 +48,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

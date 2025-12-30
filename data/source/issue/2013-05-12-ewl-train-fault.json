@@ -6,17 +6,14 @@
     "ms": "Gangguan Kereta Api Mempengaruhi Perkhidmatan Antara Kembangan dan Eunos",
     "ta": "கெம்பாங்கன் மற்றும் யூனோஸ் இடையே சேவையை பாதிக்கும் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "KEM",
         "EUN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2013-05-12T16:48:23.000+08:00",
@@ -44,5 +41,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/333503910176231424",
       "createdAt": "2013-05-12T16:48:23.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

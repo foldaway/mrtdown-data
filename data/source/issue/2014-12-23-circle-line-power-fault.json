@@ -6,9 +6,6 @@
     "ms": "Gangguan kuasa menyebabkan kelewatan di Laluan Lingkaran",
     "ta": "வட்டப் பாதையில் தாமதத்தை ஏற்படுத்தும் மின்சாரக் கோளாறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2014-12-23T09:17:39.000+08:00",
   "endAt": "2014-12-23T09:27:23.000+08:00",
   "type": "disruption",
@@ -50,15 +47,14 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "BFT",
         "MRB"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "SER",
@@ -70,7 +66,11 @@
         "FRR",
         "HLV",
         "BNV"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

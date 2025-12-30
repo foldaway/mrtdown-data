@@ -5,22 +5,6 @@
     "zh-Hans": "莱佛士坊",
     "ta": "ராஃபிள்ஸ் பிளேஸ்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW14",
-        "startedAt": "1987-12-12",
-        "structureType": "underground"
-      }
-    ],
-    "NSL": [
-      {
-        "code": "NS26",
-        "startedAt": "1987-12-12",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Downtown Core",
   "town_translations": {
     "zh-Hans": "中央商务区",
@@ -56,5 +40,21 @@
   "geo": {
     "latitude": 1.2839,
     "longitude": 103.851
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW14",
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
+      }
+    ],
+    "NSL": [
+      {
+        "code": "NS26",
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
+      }
+    ]
   }
 }

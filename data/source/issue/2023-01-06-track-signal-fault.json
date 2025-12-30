@@ -6,9 +6,6 @@
     "ms": "Ralat isyarat trek menyebabkan kereta lebih perlahan di TEL",
     "ta": "TEL இல் மெதுவான ரயில்களை ஏற்படுத்தும் தட சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2023-01-06T05:48:13.000+08:00",
   "endAt": "2023-01-06T07:27:42.000+08:00",
   "type": "disruption",
@@ -86,7 +83,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
@@ -109,7 +105,11 @@
         "SHW",
         "MRB",
         "GRB"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

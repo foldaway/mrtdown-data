@@ -6,17 +6,14 @@
     "ms": "Jalan Kedua Rosak di Laluan Timur-Barat",
     "ta": "கிழக்கு-மேற்கு பாதையில் இரண்டாவது தடப் பிழை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2013-04-12T09:10:33.000+08:00",
@@ -38,5 +35,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/322517060510949376",
       "createdAt": "2013-04-12T09:10:33.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

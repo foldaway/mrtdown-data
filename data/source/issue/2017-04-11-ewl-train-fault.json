@@ -6,9 +6,6 @@
     "ms": "Kesalahan kereta utama menyebabkan kelewatan",
     "ta": "தாமதத்தை ஏற்படுத்தும் பெரிய ரயில் பிழை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2017-04-11T07:44:44.000+08:00",
   "endAt": "2017-04-11T08:21:33.000+08:00",
   "type": "disruption",
@@ -38,7 +35,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "QUE",
@@ -52,7 +48,11 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

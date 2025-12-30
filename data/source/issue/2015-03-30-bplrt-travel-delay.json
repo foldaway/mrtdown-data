@@ -6,10 +6,8 @@
     "ms": "Masa Perjalanan Tambahan di LRT Bukit Panjang",
     "ta": "Bukit Panjang LRT இல் கூடுதல் பயண நேரம்"
   },
-  "componentIdsAffected": ["BPLRT"],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -25,10 +23,10 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     },
     {
-      "componentId": "BPLRT",
       "branchName": "tmj",
       "stationIds": [
         "BKP",
@@ -40,13 +38,16 @@
         "JLP",
         "SNJ",
         "TMJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
   ],
   "startAt": "2015-03-30T19:20:39.000+08:00",
   "endAt": "2015-03-30T20:15:56.000+08:00",
   "type": "disruption",
-  "subtypes": ["train.fault"],
+  "subtypes": [
+    "train.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -66,5 +67,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/582502695572885504",
       "createdAt": "2015-03-30T19:20:39.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

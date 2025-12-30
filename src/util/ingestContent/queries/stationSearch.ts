@@ -1,7 +1,7 @@
 import { connect } from '../../../db/connect.js';
 
-interface ComponentMembership {
-  component_id: string;
+interface LineMembership {
+  line_id: string;
   branch_id: string;
   code: string;
   started_at: string;
@@ -20,7 +20,7 @@ interface Row {
   town_id: string;
   geo_lat: number;
   geo_lon: number;
-  component_memberships: ComponentMembership[];
+  line_memberships: LineMembership[];
 }
 
 export async function stationSearchQuery(names: string[]) {
@@ -40,15 +40,15 @@ export async function stationSearchQuery(names: string[]) {
         list_filter(
           list(
             CASE
-              WHEN cbm.component_id IS NOT NULL THEN
+              WHEN bm.line_id IS NOT NULL THEN
                 json_object(
-                  'component_id', cbm.component_id,
-                  'branch_id', cbm.branch_id,
-                  'code', cbm.code,
-                  'started_at', cbm.started_at,
-                  'ended_at', cbm.ended_at,
-                  'structure_type', cbm.structure_type,
-                  'sequence_order', cbm.sequence_order
+                  'line_id', bm.line_id,
+                  'branch_id', bm.branch_id,
+                  'code', bm.code,
+                  'started_at', bm.started_at,
+                  'ended_at', bm.ended_at,
+                  'structure_type', bm.structure_type,
+                  'sequence_order', bm.sequence_order
                 )
               ELSE NULL
             END
@@ -56,9 +56,9 @@ export async function stationSearchQuery(names: string[]) {
           x -> x IS NOT NULL
         ),
         []
-      ) AS component_memberships
+      ) AS line_memberships
     FROM stations s
-    LEFT JOIN component_branch_memberships cbm ON s.id = cbm.station_id
+    LEFT JOIN line_branch_memberships bm ON s.id = bm.station_id
     WHERE s.name IN (${placeholders})
        OR s.id IN (${placeholders})
     GROUP BY s.id, s.name, s.name_translations, s.town_id, s.geo_lat, s.geo_lon

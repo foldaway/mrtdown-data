@@ -6,19 +6,16 @@
     "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Utara-Selatan",
     "ta": "ரயில் பழுது காரணமாக வடக்கு-தெற்கு பாதையில் தாமதம்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
         "BBT",
         "BGB",
         "CCK"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-03-31T07:12:22.000+08:00",
@@ -41,5 +38,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/847587333285191682",
       "createdAt": "2017-03-31T07:12:22.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

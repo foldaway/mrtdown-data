@@ -6,12 +6,8 @@
     "ms": "Penangguhan di NSL kerana pemeriksaan sistem isyarat",
     "ta": "சிக்னலிங் அமைப்பு சோதனைகள் காரணமாக NSL இல் தாமதங்கள்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YWT",
@@ -21,7 +17,8 @@
         "ADM",
         "SBW",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-06-02T17:53:31.000+08:00",
@@ -74,5 +71,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/870579121016799232",
       "createdAt": "2017-06-02T17:53:31.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

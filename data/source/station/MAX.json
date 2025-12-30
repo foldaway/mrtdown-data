@@ -5,15 +5,6 @@
     "zh-Hans": "麦士威",
     "ta": "மெச்ஸ்வெல்்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE18",
-        "startedAt": "2022-11-13",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Outram",
   "town_translations": {
     "zh-Hans": "欧南",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2804,
     "longitude": 103.8448
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE18",
+        "startedAt": "2022-11-13",
+        "structureType": "underground"
+      }
+    ]
   }
 }

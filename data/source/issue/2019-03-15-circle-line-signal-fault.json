@@ -6,9 +6,6 @@
     "ms": "Gangguan Perkhidmatan Laluan Lingkaran Akibat Kerosakan Isyarat",
     "ta": "சமிக்ஞை தவறு காரணமாக வட்டப் பாதையில் சேவை சீர்குலைவு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2019-03-15T19:30:50.000+08:00",
   "endAt": "2019-03-15T20:43:51.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -58,10 +54,10 @@
         "PMN",
         "NCH",
         "SDM"
-      ]
+      ],
+      "lineId": "CCL"
     },
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
@@ -69,7 +65,11 @@
         "PMN",
         "NCH",
         "SDM"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

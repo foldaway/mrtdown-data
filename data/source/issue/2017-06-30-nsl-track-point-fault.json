@@ -6,12 +6,8 @@
     "ms": "Ralat titik trek menyebabkan kelewatan di NSL",
     "ta": "NSL இல் தாமதத்தை ஏற்படுத்தும் தடப் புள்ளி பிழை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
@@ -21,7 +17,8 @@
         "KTB",
         "YCK",
         "AMK"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-06-30T06:32:28.000+08:00",
@@ -80,5 +77,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/880554590063611904",
       "createdAt": "2017-06-30T06:32:28.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

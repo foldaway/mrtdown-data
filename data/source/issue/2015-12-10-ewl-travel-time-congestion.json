@@ -6,9 +6,6 @@
     "ms": "Perjalanan lebih lama di Laluan Timur Barat kerana kesesakan",
     "ta": "கிழக்கு மேற்கு பாதையில் நெரிசல் காரணமாக நீண்ட பயண நேரங்கள்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2015-12-10T08:00:06.000+08:00",
   "endAt": "2015-12-10T08:11:36.000+08:00",
   "type": "disruption",
@@ -29,7 +26,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -61,7 +57,11 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

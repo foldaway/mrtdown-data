@@ -5,15 +5,6 @@
     "zh-Hans": "事业",
     "ta": "எண்டர்பிரைஸ்"
   },
-  "componentMembers": {
-    "JRL": [
-      {
-        "code": "JS9",
-        "startedAt": "2029-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Jurong West",
   "town_translations": {
     "zh-Hans": "裕廊西",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.349,
     "longitude": 103.686
+  },
+  "lineMembers": {
+    "JRL": [
+      {
+        "code": "JS9",
+        "startedAt": "2029-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

@@ -6,9 +6,6 @@
     "ms": "Pengukuhan Terowong CCL - Seksyen Tanah Lembut Marin",
     "ta": "CCL சுரங்க வலிமையாக்கம் - மென்மையான கடல்கொழும்பு பிரிவுகள்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2026-01-17T00:00:00.000+08:00",
   "endAt": "2026-04-19T23:59:00.000+08:00",
   "type": "maintenance",
@@ -32,13 +29,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "MBT",
         "DKT",
         "PYL"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

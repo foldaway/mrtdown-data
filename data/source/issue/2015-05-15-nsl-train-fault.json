@@ -6,12 +6,8 @@
     "ms": "Gangguan Kereta Api Menyebabkan Kelewatan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் ரயிலில் ஏற்பட்ட கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YIS",
@@ -21,7 +17,8 @@
         "BSH",
         "BDL",
         "TAP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-05-15T16:07:23.000+08:00",
@@ -50,5 +47,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/599123899217891329",
       "createdAt": "2015-05-15T16:07:23.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

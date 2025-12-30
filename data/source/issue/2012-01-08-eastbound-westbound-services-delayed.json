@@ -6,18 +6,15 @@
     "ms": "Perkhidmatan timur dan barat sedikit tertunda antara Boon Lay dan Joo Koon kerana kerosakan landasan.",
     "ta": "Boon Lay மற்றும் Joo Koon இடையே கிழக்கு மற்றும் மேற்குbound சேவைகள் தட கோளாறு காரணமாக சற்று தாமதமாகின்றன."
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-01-08T12:58:35.000+08:00",
@@ -40,5 +37,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/155876027447513090",
       "createdAt": "2012-01-08T12:58:35.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

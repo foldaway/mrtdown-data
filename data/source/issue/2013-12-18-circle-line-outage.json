@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Laluan Lingkar",
     "ta": "வட்டப் பாதையில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2013-12-18T23:42:17.000+08:00",
   "endAt": "2013-12-19T00:54:07.000+08:00",
   "type": "disruption",
@@ -35,7 +32,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "SDM",
@@ -61,7 +57,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

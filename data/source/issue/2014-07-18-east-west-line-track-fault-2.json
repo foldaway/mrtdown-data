@@ -6,19 +6,16 @@
     "ms": "Jejak Kerosakan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் தடமறிதல் பிழை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "CTH",
         "RFP",
         "TPG",
         "OTP"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2014-07-18T13:47:23.000+08:00",
@@ -40,5 +37,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/490009919395868672",
       "createdAt": "2014-07-18T13:47:23.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -13,7 +13,7 @@ interface UptimeRatioRow {
 }
 
 export async function uptimeRatiosQuery(
-  componentId: string,
+  lineId: string,
   granularity: Granularity,
   count: number,
 ) {
@@ -51,27 +51,27 @@ export async function uptimeRatiosQuery(
       SELECT
         cd.bucket_start,
         cd.day,
-        c.id AS component_id,
+        l.id AS line_id,
         CASE
-          WHEN ph.date IS NOT NULL THEN c.weekend_start
-          WHEN EXTRACT(DOW FROM cd.day) IN (0,6) THEN c.weekend_start
-          ELSE c.weekday_start
+          WHEN ph.date IS NOT NULL THEN l.weekend_start
+          WHEN EXTRACT(DOW FROM cd.day) IN (0,6) THEN l.weekend_start
+          ELSE l.weekday_start
         END AS start_time,
         CASE
-          WHEN ph.date IS NOT NULL THEN c.weekend_end
-          WHEN EXTRACT(DOW FROM cd.day) IN (0,6) THEN c.weekend_end
-          ELSE c.weekday_end
+          WHEN ph.date IS NOT NULL THEN l.weekend_end
+          WHEN EXTRACT(DOW FROM cd.day) IN (0,6) THEN l.weekend_end
+          ELSE l.weekday_end
         END AS end_time
       FROM calendar_days cd
-      CROSS JOIN components c
+      CROSS JOIN lines l
       LEFT JOIN public_holidays ph ON ph.date = cd.day
-      WHERE c.id = $1 AND cd.day >= c.started_at
+      WHERE l.id = $1 AND cd.day >= l.started_at
     ),
 
     service_windows AS (
       SELECT
         bucket_start,
-        component_id,
+        line_id,
         day,
         (day + start_time)::TIMESTAMPTZ AT TIME ZONE 'Asia/Singapore' AS service_start,
         CASE
@@ -85,10 +85,10 @@ export async function uptimeRatiosQuery(
     service_totals AS (
       SELECT
         bucket_start,
-        component_id,
+        line_id,
         SUM(EXTRACT(EPOCH FROM (service_end - service_start))) AS total_service_seconds
       FROM service_windows
-      GROUP BY bucket_start, component_id
+      GROUP BY bucket_start, line_id
     ),
 
     intervals_expanded AS (
@@ -105,10 +105,10 @@ export async function uptimeRatiosQuery(
         ) AS end_clipped
       FROM issues i
       JOIN issue_intervals iv ON i.id = iv.issue_id
-      JOIN issue_components ic ON ic.issue_id = i.id
-      JOIN service_windows sw ON sw.component_id = ic.component_id
+      JOIN issue_lines il ON il.issue_id = i.id
+      JOIN service_windows sw ON sw.line_id = il.line_id
       CROSS JOIN bounds b
-      WHERE ic.component_id = $1
+      WHERE il.line_id = $1
         AND i.type IN ('disruption', 'maintenance')
         AND iv.start_at < b.end_time
         AND COALESCE(iv.end_at, b.end_time) > b.start_time
@@ -155,6 +155,6 @@ export async function uptimeRatiosQuery(
     LEFT JOIN downtime_summary ds ON b.bucket_start = ds.bucket_start
     ORDER BY b.bucket_start;
 `.trim();
-  const rows = await connection.runAndReadAll(sql, [componentId]);
+  const rows = await connection.runAndReadAll(sql, [lineId]);
   return rows.getRowObjectsJson() as unknown as UptimeRatioRow[];
 }

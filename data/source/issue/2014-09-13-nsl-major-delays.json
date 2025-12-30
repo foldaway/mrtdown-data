@@ -6,12 +6,8 @@
     "ms": "Kelewatan besar di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் பெரும் தாமதங்கள்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "TAP",
@@ -23,7 +19,8 @@
         "CTH",
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2014-09-13T15:42:58.000+08:00",
@@ -63,5 +60,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/510695116529360896",
       "createdAt": "2014-09-13T15:42:58.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

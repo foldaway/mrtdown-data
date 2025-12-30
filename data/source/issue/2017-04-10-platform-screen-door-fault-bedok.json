@@ -6,12 +6,8 @@
     "ms": "Kerosakan Pintu Skrin Platform di Bedok",
     "ta": "பெடோக் தளத்தின் கதவு திரையில் பழுது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TNM",
@@ -23,7 +19,8 @@
         "KAL",
         "LVR",
         "BGS"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2017-04-10T09:31:45.000+08:00",
@@ -64,5 +61,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/851246290776113152",
       "createdAt": "2017-04-10T09:31:45.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -6,12 +6,8 @@
     "ms": "Tiada perkhidmatan di Sengkang LRT East Loop kerana gangguan bekalan elektrik",
     "ta": "செங்காங் LRT கிழக்கு வளையத்தில் மின்சாரக் கோளாறு காரணமாக சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "SKLRT"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "SKLRT",
       "branchName": "east",
       "stationIds": [
         "SKG",
@@ -20,7 +16,8 @@
         "BAK",
         "KGK",
         "RNG"
-      ]
+      ],
+      "lineId": "SKLRT"
     }
   ],
   "startAt": "2017-02-10T21:11:01.000+08:00",
@@ -54,5 +51,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/830041380491636737",
       "createdAt": "2017-02-10T21:11:01.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "SKLRT"
   ]
 }

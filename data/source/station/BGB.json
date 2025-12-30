@@ -5,15 +5,6 @@
     "zh-Hans": "武吉甘柏",
     "ta": "புக்கிட் கோம்பாக்"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS3",
-        "startedAt": "1990-03-10",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Bukit Batok",
   "town_translations": {
     "zh-Hans": "武吉巴督",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3724,
     "longitude": 103.7491
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS3",
+        "startedAt": "1990-03-10",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

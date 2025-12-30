@@ -6,9 +6,6 @@
     "ms": "Gangguan bekalan kuasa yang menjejaskan perkhidmatan LRT Bukit Panjang",
     "ta": "பவரால் பாதிக்கப்பட்டது புக்கித் பாங்சாங் எல்ஆர்டி சேவைகள்"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2025-07-19T14:52:25.000+08:00",
   "endAt": "2025-07-19T16:24:25.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -53,7 +49,11 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

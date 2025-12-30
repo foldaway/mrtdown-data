@@ -5,15 +5,6 @@
     "zh-Hans": "大成",
     "ta": "தை செங்"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC11",
-        "startedAt": "2010-04-17",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Toa Payoh",
   "town_translations": {
     "zh-Hans": "大巴窑",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3351,
     "longitude": 103.8878
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC11",
+        "startedAt": "2010-04-17",
+        "structureType": "underground"
+      }
+    ]
   }
 }

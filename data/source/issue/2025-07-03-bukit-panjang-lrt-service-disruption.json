@@ -6,9 +6,6 @@
     "ms": "Disruption perkhidmatan Bukit Panjang LRT disebabkan oleh arus elektrik",
     "ta": "சக்தி குறைபாட்டை காரணமாக, புக்கிட் பஞ்சாங்க்கு எலெக்ட்ரிக் மின்சாரத்திற்கான சேவையில் தடையேற்பாடு"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2025-07-03T09:24:25.000+08:00",
   "endAt": "2025-07-03T11:30:25.000+08:00",
   "type": "disruption",
@@ -49,17 +46,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
         "SHV",
         "KTH",
         "TKW"
-      ]
+      ],
+      "lineId": "BPLRT"
     },
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "PNX",
@@ -71,7 +67,11 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

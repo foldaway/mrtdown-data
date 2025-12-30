@@ -5,15 +5,6 @@
     "zh-Hans": "勿洛南",
     "ta": "பிடோக் சவுத்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE30",
-        "startedAt": "2024-01-20",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bedok",
   "town_translations": {
     "zh-Hans": "勿洛",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3205,
     "longitude": 103.922
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE30",
+        "startedAt": "2024-01-20",
+        "structureType": "underground"
+      }
+    ]
   }
 }

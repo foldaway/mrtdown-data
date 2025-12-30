@@ -6,12 +6,8 @@
     "ms": "Ralat Jejaring Utama di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் முக்கிய தடப் பிழை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "ADM",
@@ -19,10 +15,10 @@
         "YIS",
         "KTB",
         "AMK"
-      ]
+      ],
+      "lineId": "NSL"
     },
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -31,7 +27,8 @@
         "CCK",
         "YWT",
         "KRJ"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2014-02-24T07:02:20.000+08:00",
@@ -83,5 +80,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/437724134663925761",
       "createdAt": "2014-02-24T07:02:20.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -6,10 +6,6 @@
     "ms": "Pintu Skrin Platform MRT di Stesen Bawah Tanah Akan Dipulihkan",
     "ta": "மெட்ரோ திடல் ஏற்படுத்தப்படும்"
   },
-  "componentIdsAffected": [
-    "NSL",
-    "EWL"
-  ],
   "startAt": "2026-08-01T00:00:00.000+08:00",
   "endAt": "2026-12-01T00:00:00.000+08:00",
   "type": "infra",
@@ -27,20 +23,24 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "ORC",
         "DBG"
-      ]
+      ],
+      "lineId": "NSL"
     },
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "CTH",
         "RFP"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL",
+    "EWL"
   ]
 }

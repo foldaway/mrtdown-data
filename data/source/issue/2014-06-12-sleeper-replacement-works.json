@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan kerana kerja penggantian лягу",
     "ta": "தூக்கப் பணியாளர்களை மாற்றுவதால் சேவை சீர்குலைவு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YWT",
@@ -20,7 +16,8 @@
         "WDL",
         "ADM",
         "SBW"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2014-06-12T05:20:51.000+08:00",
@@ -52,5 +49,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/476836483257495552",
       "createdAt": "2014-06-12T05:20:51.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

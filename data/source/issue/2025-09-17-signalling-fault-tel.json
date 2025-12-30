@@ -6,9 +6,6 @@
     "ms": "Kecacatan isyarat pada Laluan Thomson–East Coast",
     "ta": "தொம்சன்–எast கோடுப்பாதையில் குறைபாடு"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2025-09-17T07:34:05.000+08:00",
   "endAt": "2025-09-17T08:56:04.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
@@ -79,7 +75,11 @@
         "MTC",
         "SGL",
         "BSR"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

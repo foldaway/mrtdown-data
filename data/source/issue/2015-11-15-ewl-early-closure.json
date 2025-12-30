@@ -6,12 +6,8 @@
     "ms": "Penutupan awal di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் முன்கூட்டியே மூடல்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TNM",
@@ -23,7 +19,8 @@
         "KAL",
         "LVR",
         "BGS"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2015-11-15T23:30:00.000+08:00",
@@ -45,5 +42,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/663564235662688256",
       "createdAt": "2015-11-09T11:50:16.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

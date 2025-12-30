@@ -6,19 +6,16 @@
     "ms": "Tiada perkhidmatan kereta api antara Tanah Merah dan Pasir Ris",
     "ta": "Tanah Merah மற்றும் Pasir Ris இடையே ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM",
         "SIM",
         "TNM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2016-03-22T11:20:41.000+08:00",
@@ -94,5 +91,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/712116761349398529",
       "createdAt": "2016-03-22T11:20:41.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

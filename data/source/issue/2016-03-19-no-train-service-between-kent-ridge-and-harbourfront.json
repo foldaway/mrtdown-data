@@ -6,12 +6,8 @@
     "ms": "Tiada perkhidmatan kereta api antara Kent Ridge dan Harbourfront kerana kegagalan isyarat",
     "ta": "கென்ட் ரிட்ஜ் மற்றும் ஹார்பர்ஃப்ரண்ட் இடையே சமிக்ஞை கோளாறு காரணமாக ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "KRG",
@@ -20,7 +16,8 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2016-03-19T19:54:51.000+08:00",
@@ -66,5 +63,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/711158995105386496",
       "createdAt": "2016-03-19T19:54:51.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Kerja penyelenggaraan Laluan Timur Laut",
     "ta": "வடகிழக்கு கோடு பராமரிப்பு பணிகள்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2019-03-22T23:00:00.000+08:00",
   "endAt": "2019-03-23T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20190322T230000\nRRULE:FREQ=DAILY;UNTIL=20190324T000000;WKST=MO",
@@ -33,7 +30,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -41,7 +37,11 @@
         "CTN",
         "CRQ",
         "DBG"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

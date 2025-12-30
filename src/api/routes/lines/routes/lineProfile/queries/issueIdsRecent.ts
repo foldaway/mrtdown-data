@@ -4,7 +4,7 @@ interface Row {
   issue_id: string;
 }
 
-export async function issueIdsRecentQuery(componentId: string) {
+export async function issueIdsRecentQuery(lineId: string) {
   const connection = await connect();
 
   const sql = `
@@ -12,16 +12,16 @@ export async function issueIdsRecentQuery(componentId: string) {
       i.id as issue_id,
       MIN(iv.start_at) AS earliest_start_at
     FROM issues i
-    JOIN issue_components ic ON i.id = ic.issue_id
+    JOIN issue_lines il ON i.id = il.issue_id
     JOIN issue_intervals iv ON i.id = iv.issue_id
-    WHERE ic.component_id = ?
+    WHERE il.line_id = ?
       AND iv.start_at <= NOW()
     GROUP BY i.id
     ORDER BY earliest_start_at DESC
     LIMIT 5;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql, [componentId]);
+  const result = await connection.runAndReadAll(sql, [lineId]);
   const rows = result.getRowObjectsJson();
 
   return rows as unknown as Row[];

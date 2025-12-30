@@ -6,18 +6,15 @@
     "ms": "Latihan operasi CCL",
     "ta": "CCL செயல்பாட்டுப் பயிற்சி"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
         "BFT",
         "PMN"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2016-01-17T07:00:01.000+08:00",
@@ -38,5 +35,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/688495953850929153",
       "createdAt": "2016-01-17T07:00:01.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

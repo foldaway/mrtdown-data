@@ -1,8 +1,8 @@
 import { z } from 'zod';
 import {
-  type ComponentId,
-  ComponentIdSchema,
-} from '../../../schema/Component.js';
+  type LineId,
+  LineIdSchema,
+} from '../../../schema/Line.js';
 import { assert } from '../../assert.js';
 import { DateTime } from 'luxon';
 import type { IssueStationEntry } from '../../../schema/Issue.js';
@@ -21,19 +21,19 @@ export const LineSectionSchema = z
         first: z.string(),
         last: z.string(),
       }),
-      lineIdHint: ComponentIdSchema.nullable().describe(
+      lineIdHint: LineIdSchema.nullable().describe(
         'Specify the line ID as a hint if confident.',
       ),
     }),
     z.object({
       type: z.literal('entire_line_branch'),
-      lineId: ComponentIdSchema,
+      lineId: LineIdSchema,
       branchId: z.string(),
     }),
     z
       .object({
         type: z.literal('entire_line'),
-        lineId: ComponentIdSchema,
+        lineId: LineIdSchema,
       })
       .meta({
         description:
@@ -45,7 +45,7 @@ export type LineSection = z.infer<typeof LineSectionSchema>;
 
 function getStationCodes(station: StationRow): Set<string> {
   const result = new Set<string>();
-  for (const membership of station.component_memberships) {
+  for (const membership of station.line_memberships) {
     result.add(membership.code);
   }
   return result;
@@ -60,7 +60,7 @@ interface FindLineAndBranchResult {
 async function findLineAndBranch(
   stationFirst: StationRow,
   stationLast: StationRow,
-  lineIdHint: ComponentId | null,
+  lineIdHint: LineId | null,
 ): Promise<FindLineAndBranchResult | null> {
   const stationCodesFirst = getStationCodes(stationFirst);
   const stationCodesLast = getStationCodes(stationLast);
@@ -109,7 +109,7 @@ async function findLineAndBranch(
         const indexLast = stationCodes.indexOf(stationCodeLast);
 
         results.push({
-          lineId: lineRow.component_id,
+          lineId: lineRow.line_id,
           branchId,
           sectionStationCodes: stationCodes.slice(
             Math.min(indexFirst, indexLast),
@@ -151,7 +151,7 @@ export async function computeAffectedStations(
   for (const lineSection of lineSections) {
     switch (lineSection.type) {
       case 'station_range': {
-        const { stationNames, lineIdHint: componentIdHint } = lineSection;
+        const { stationNames, lineIdHint } = lineSection;
         const { first, last } = stationNames;
 
         const stationRowFirst = stationRows.find(
@@ -172,7 +172,7 @@ export async function computeAffectedStations(
         const result = await findLineAndBranch(
           stationRowFirst,
           stationRowLast,
-          componentIdHint,
+          lineIdHint,
         );
 
         if (result == null) {
@@ -196,7 +196,7 @@ export async function computeAffectedStations(
 
         if (stationIds.size > 0) {
           results.push({
-            componentId: result.lineId,
+            lineId: result.lineId,
             branchName: result.branchId,
             stationIds: Array.from(stationIds),
           });
@@ -223,7 +223,7 @@ export async function computeAffectedStations(
 
         for (const [branchId, stationIds] of stationIdsByBranchId.entries()) {
           results.push({
-            componentId: line.component_id,
+            lineId: line.line_id,
             branchName: branchId,
             stationIds,
           });
@@ -241,7 +241,7 @@ export async function computeAffectedStations(
         );
         assert(
           branchMemberships.length > 0,
-          `Could not find branch "${branchId}" in component "${line.component_id}"`,
+          `Could not find branch "${branchId}" in line "${line.line_id}"`,
         );
 
         const stationCodes = branchMemberships.map(
@@ -254,7 +254,7 @@ export async function computeAffectedStations(
           const station = findStationByCode(
             stationRows,
             startAtDateTime,
-            line.component_id,
+            line.line_id,
             stationCode,
           );
 
@@ -265,7 +265,7 @@ export async function computeAffectedStations(
 
         if (stationIds.size > 0) {
           results.push({
-            componentId: line.component_id,
+            lineId: line.line_id,
             branchName: branchId,
             stationIds: Array.from(stationIds),
           });

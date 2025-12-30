@@ -6,9 +6,6 @@
     "ms": "Gangguan besar di Laluan Timur Barat kerana kerosakan landasan",
     "ta": "தடக் கோளாறு காரணமாக கிழக்கு மேற்கு பாதையில் பெரிய இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2018-01-11T06:19:35.000+08:00",
   "endAt": "2018-01-11T06:33:41.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BGS",
@@ -45,7 +41,11 @@
         "RFP",
         "TPG",
         "OTP"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

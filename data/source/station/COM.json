@@ -5,15 +5,6 @@
     "zh-Hans": "联邦",
     "ta": "காமன்வெல்த்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW20",
-        "startedAt": "1988-03-12",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Queenstown",
   "town_translations": {
     "zh-Hans": "女皇镇",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.2994,
     "longitude": 103.7984
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW20",
+        "startedAt": "1988-03-12",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan DTL akibat penutupan landasan",
     "ta": "தட மூடலால் DTL சேவையில் இடையூறு"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "startAt": "2024-05-24T05:12:43.000+08:00",
   "endAt": "2024-05-24T07:26:00.000+08:00",
   "type": "disruption",
@@ -53,7 +50,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "FCN",
@@ -66,7 +62,11 @@
         "UBI",
         "KKB",
         "BDN"
-      ]
+      ],
+      "lineId": "DTL"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

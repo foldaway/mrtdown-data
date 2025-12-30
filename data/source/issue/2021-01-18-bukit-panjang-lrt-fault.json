@@ -6,9 +6,6 @@
     "ms": "Gangguan kereta api menyebabkan kelewatan di LRT Bukit Panjang",
     "ta": "Bukit Panjang LRT இல் தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2021-01-18T11:02:55.000+08:00",
   "endAt": "2021-01-18T12:01:54.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "BKP",
@@ -48,7 +44,11 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

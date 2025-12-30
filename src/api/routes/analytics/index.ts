@@ -37,7 +37,7 @@ analyticsRoute.get(
       timeScaleChartsIssueCount: [],
       timeScaleChartsIssueDuration: [],
       chartTotalIssueCountByLine: {
-        title: 'Total Issue Count by Component',
+        title: 'Total Issue Count by Line',
         data: [],
       },
       chartTotalIssueCountByStation: {
@@ -143,19 +143,19 @@ analyticsRoute.get(
 
     const totalIssueCountRows = await totalIssueCountsByLineQuery();
 
-    const graphTotalIssueCountByComponentId: Record<string, ChartEntry> = {};
+    const graphTotalIssueCountByLineId: Record<string, ChartEntry> = {};
 
     for (const row of totalIssueCountRows) {
-      const entry: ChartEntry = graphTotalIssueCountByComponentId[
-        row.component_id
+      const entry: ChartEntry = graphTotalIssueCountByLineId[
+        row.line_id
       ] ?? {
-        name: row.component_id,
+        name: row.line_id,
         payload: {
-          component_id: row.component_id,
-          component_color: row.component_color,
-          component_title: row.component_title,
-          component_title_translations: JSON.parse(
-            row.component_title_translations,
+          line_id: row.line_id,
+          line_color: row.line_color,
+          line_title: row.line_title,
+          line_title_translations: JSON.parse(
+            row.line_title_translations,
           ),
           disruption: 0,
           infra: 0,
@@ -166,12 +166,12 @@ analyticsRoute.get(
 
       entry.payload[row.issue_type] = row.issue_count;
       entry.payload.totalIssues += row.issue_count;
-      graphTotalIssueCountByComponentId[row.component_id] = entry;
-      entitiesCollector.addLineId(row.component_id);
+      graphTotalIssueCountByLineId[row.line_id] = entry;
+      entitiesCollector.addLineId(row.line_id);
     }
 
     statistics.chartTotalIssueCountByLine.data = Object.values(
-      graphTotalIssueCountByComponentId,
+      graphTotalIssueCountByLineId,
     );
 
     // Longest disruptions

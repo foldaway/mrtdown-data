@@ -6,12 +6,8 @@
     "ms": "Gangguan kereta Laluan Timur Barat menyebabkan kelewatan",
     "ta": "கிழக்கு மேற்கு வழித்தட ரயில் பழுது தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -20,7 +16,8 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2017-07-05T19:02:16.000+08:00",
@@ -49,5 +46,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/882555221771145216",
       "createdAt": "2017-07-05T19:02:16.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

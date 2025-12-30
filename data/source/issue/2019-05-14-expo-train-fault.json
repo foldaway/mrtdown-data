@@ -6,9 +6,6 @@
     "ms": "Kerosakan Kereta Api di Stesen Expo",
     "ta": "எக்ஸ்போ நிலையத்தில் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "startAt": "2019-05-14T18:48:39.000+08:00",
   "endAt": "2019-05-14T19:18:34.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "BDR",
@@ -40,7 +36,11 @@
         "TPE",
         "UPC",
         "XPO"
-      ]
+      ],
+      "lineId": "DTL"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

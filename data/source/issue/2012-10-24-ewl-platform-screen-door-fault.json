@@ -6,17 +6,14 @@
     "ms": "Kerosakan pintu platform menyebabkan kelewatan di EWL",
     "ta": "EWL இல் தாமதத்தை ஏற்படுத்தும் தளத்தின் கதவு தவறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JUR",
         "CNG"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-10-24T18:03:30.000+08:00",
@@ -39,5 +36,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/261045243422593024",
       "createdAt": "2012-10-24T18:03:30.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

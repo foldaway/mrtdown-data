@@ -6,10 +6,6 @@
     "ms": "Kesalahan kuasa sekejap-sekejap di NSEWL",
     "ta": "NSEWL இல் அவ்வப்போது மின்சாரம் தடைபடுதல்"
   },
-  "componentIdsAffected": [
-    "NSL",
-    "EWL"
-  ],
   "startAt": "2017-07-25T07:26:15.000+08:00",
   "endAt": "2017-07-25T11:06:00.000+08:00",
   "type": "disruption",
@@ -87,7 +83,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -116,19 +111,19 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     },
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     },
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -164,7 +159,12 @@
         "TCR",
         "TWR",
         "TLK"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL",
+    "EWL"
   ]
 }

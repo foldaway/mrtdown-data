@@ -6,22 +6,6 @@
     "ms": "Kebun Bunga",
     "ta": "பூ மலை"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC19",
-        "startedAt": "2011-10-08",
-        "structureType": "underground"
-      }
-    ],
-    "DTL": [
-      {
-        "code": "DT9",
-        "startedAt": "2015-12-27",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Tanglin",
   "town_translations": {
     "zh-Hans": "东陵",
@@ -53,5 +37,21 @@
   "geo": {
     "latitude": 1.3139,
     "longitude": 103.8142
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC19",
+        "startedAt": "2011-10-08",
+        "structureType": "underground"
+      }
+    ],
+    "DTL": [
+      {
+        "code": "DT9",
+        "startedAt": "2015-12-27",
+        "structureType": "underground"
+      }
+    ]
   }
 }

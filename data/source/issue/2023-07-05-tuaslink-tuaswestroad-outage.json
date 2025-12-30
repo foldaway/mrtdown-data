@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan utama antara Tuas Link dan Tuas West Road",
     "ta": "Tuas Link மற்றும் Tuas West Road இடையே முக்கிய சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2023-07-05T05:32:16.000+08:00",
   "endAt": "2023-07-05T07:21:08.000+08:00",
   "type": "disruption",
@@ -59,12 +56,15 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TWR",
         "TLK"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

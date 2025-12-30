@@ -5,15 +5,6 @@
     "zh-Hans": "义顺",
     "ta": "யீஷூன்"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS13",
-        "startedAt": "1988-12-20",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Yishun",
   "town_translations": {
     "zh-Hans": "义顺",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.4181,
     "longitude": 103.8404
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS13",
+        "startedAt": "1988-12-20",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

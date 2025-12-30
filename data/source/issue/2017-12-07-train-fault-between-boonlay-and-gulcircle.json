@@ -6,9 +6,6 @@
     "ms": "Gangguan kereta api yang menyebabkan gangguan antara Boon Lay dan Gul Circle",
     "ta": "Boon Lay மற்றும் Gul Circle இடையே இடையூறு ஏற்படுத்தும் ரயில் கோளாறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2017-12-07T05:22:30.000+08:00",
   "endAt": "2017-12-07T06:05:48.000+08:00",
   "type": "disruption",
@@ -37,14 +34,17 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BNL",
         "PNR",
         "JKN",
         "GCL"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -6,9 +6,6 @@
     "ms": "Gangguan Kuasa Utama Menyebabkan Kelewatan",
     "ta": "தாமதத்தை ஏற்படுத்தும் பெரிய மின்சார தவறு"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2024-01-14T08:09:35.000+08:00",
   "endAt": "2024-01-14T08:53:54.000+08:00",
   "type": "disruption",
@@ -50,7 +47,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
@@ -73,7 +69,11 @@
         "SHW",
         "MRB",
         "GRB"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

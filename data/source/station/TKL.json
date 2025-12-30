@@ -5,15 +5,6 @@
     "zh-Hans": "德利",
     "ta": "டெக் லீ"
   },
-  "componentMembers": {
-    "PGLRT": [
-      {
-        "code": "PW2",
-        "startedAt": "2024-08-15",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Punggol",
   "town_translations": {
     "zh-Hans": "榜鹅",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.398751,
     "longitude": 103.895701
+  },
+  "lineMembers": {
+    "PGLRT": [
+      {
+        "code": "PW2",
+        "startedAt": "2024-08-15",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

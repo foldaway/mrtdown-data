@@ -5,15 +5,6 @@
     "zh-Hans": "法嘉",
     "ta": "ஃபஜார்"
   },
-  "componentMembers": {
-    "BPLRT": [
-      {
-        "code": "BP10",
-        "startedAt": "1999-11-06",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Bukit Panjang",
   "town_translations": {
     "zh-Hans": "武吉班让",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3775,
     "longitude": 103.7681
+  },
+  "lineMembers": {
+    "BPLRT": [
+      {
+        "code": "BP10",
+        "startedAt": "1999-11-06",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

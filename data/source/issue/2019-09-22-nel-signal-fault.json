@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan NEL akibat masalah isyarat",
     "ta": "சிக்னலிங் தவறு காரணமாக NEL சேவை தடை"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2019-09-22T06:26:12.000+08:00",
   "endAt": "2019-09-23T00:00:00.000+08:00",
   "type": "disruption",
@@ -32,7 +29,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -51,7 +47,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

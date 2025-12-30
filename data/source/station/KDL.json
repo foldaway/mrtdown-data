@@ -5,15 +5,6 @@
     "zh-Hans": "卡达鲁",
     "ta": "கடலூர்"
   },
-  "componentMembers": {
-    "PGLRT": [
-      {
-        "code": "PE5",
-        "startedAt": "2005-01-29",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Punggol",
   "town_translations": {
     "zh-Hans": "榜鹅",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.4035,
     "longitude": 103.9064
+  },
+  "lineMembers": {
+    "PGLRT": [
+      {
+        "code": "PE5",
+        "startedAt": "2005-01-29",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

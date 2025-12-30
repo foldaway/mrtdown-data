@@ -5,15 +5,6 @@
     "zh-Hans": "波东巴西",
     "ta": "போத்தோங் பாசிர்"
   },
-  "componentMembers": {
-    "NEL": [
-      {
-        "code": "NE10",
-        "startedAt": "2003-06-20",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Toa Payoh",
   "town_translations": {
     "zh-Hans": "大巴窑",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3323,
     "longitude": 103.8646
+  },
+  "lineMembers": {
+    "NEL": [
+      {
+        "code": "NE10",
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
+      }
+    ]
   }
 }

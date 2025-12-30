@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan Laluan Thomson–East Coast",
     "ta": "தாம்சன்-கிழக்கு கடற்கரை பாதையில் சேவை தடங்கல்"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2024-12-29T21:53:40.000+08:00",
   "endAt": "2024-12-29T22:01:01.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
@@ -61,7 +57,11 @@
         "MTC",
         "SGL",
         "BSR"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

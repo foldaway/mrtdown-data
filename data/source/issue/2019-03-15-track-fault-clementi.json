@@ -6,9 +6,6 @@
     "ms": "Ralat trek di Clementi menyebabkan gangguan perkhidmatan kereta api",
     "ta": "Clementi இல் உள்ள பாதை தவறு இரயில் சேவை இடையூறுக்கு காரணமாகிறது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2019-03-15T05:59:08.000+08:00",
   "endAt": "2019-03-15T07:03:36.000+08:00",
   "type": "disruption",
@@ -79,7 +76,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "QUE",
@@ -88,7 +84,11 @@
         "DVR",
         "CLE",
         "JUR"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

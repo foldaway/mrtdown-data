@@ -62,7 +62,7 @@ duckdb -readonly -c "SELECT * FROM issues LIMIT 10" mrtdown.duckdb
 ## Architecture Overview
 
 ### Core Data Models
-- **Components**: MRT/LRT lines (NSL, EWL, CCL, etc.) with service schedules
+- **Lines**: MRT/LRT lines (NSL, EWL, CCL, etc.) with service schedules
 - **Issues**: Disruptions, maintenance, infrastructure problems with time intervals
 - **Stations**: Station information with multi-language support
 - **Time-aware**: All operations handle Singapore timezone (`Asia/Singapore`)

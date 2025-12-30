@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Punggol LRT disebabkan oleh masalah kuasa",
     "ta": "Punggol LRT இல் மின்சாரக் கோளாறு காரணமாக சேவை தடைப்பட்டது"
   },
-  "componentIdsAffected": [
-    "PGLRT"
-  ],
   "startAt": "2016-06-22T17:59:04.000+08:00",
   "endAt": "2016-06-22T18:23:21.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "PGLRT",
       "branchName": "west",
       "stationIds": [
         "SMK",
@@ -45,10 +41,10 @@
         "SMG",
         "STK",
         "PGL"
-      ]
+      ],
+      "lineId": "PGLRT"
     },
     {
-      "componentId": "PGLRT",
       "branchName": "east",
       "stationIds": [
         "DAM",
@@ -59,7 +55,11 @@
         "MRD",
         "COV",
         "PGL"
-      ]
+      ],
+      "lineId": "PGLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "PGLRT"
   ]
 }

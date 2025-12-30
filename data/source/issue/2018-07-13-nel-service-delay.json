@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan NEL tertunda kerana kerosakan kereta api di Outram",
     "ta": "அவுட்ரம் ரயில் பழுது காரணமாக NEL சேவை தாமதமானது"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2018-07-13T08:26:57.000+08:00",
   "endAt": "2018-07-13T08:42:32.000+08:00",
   "type": "disruption",
@@ -32,12 +29,15 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "OTP",
         "HBF"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

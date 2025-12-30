@@ -6,12 +6,8 @@
     "ms": "Tiada perkhidmatan kereta antara Yishun dan Bishan",
     "ta": "Yishun மற்றும் Bishan இடையே ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "YIS",
@@ -19,7 +15,8 @@
         "YCK",
         "AMK",
         "BSH"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2017-04-21T05:07:35.000+08:00",
@@ -59,5 +56,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/855166077310861312",
       "createdAt": "2017-04-21T05:07:35.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -11,7 +11,7 @@ interface BranchMembership {
 }
 
 interface Row {
-  component_id: string;
+  line_id: string;
   branch_memberships: BranchMembership[];
 }
 
@@ -20,28 +20,28 @@ export async function lineGetAllQuery() {
 
   const sql = `
     SELECT
-      c.id AS component_id,
+      l.id AS line_id,
       CASE
-        WHEN COUNT(cbm.station_id) > 0 THEN
+        WHEN COUNT(bm.station_id) > 0 THEN
           LIST(
             STRUCT_PACK(
-              branch_id := cbm.branch_id,
-              station_id := cbm.station_id,
-              code := cbm.code,
-              started_at := cbm.started_at,
-              ended_at := cbm.ended_at,
-              structure_type := cbm.structure_type,
-              sequence_order := cbm.sequence_order
-            ) ORDER BY cbm.branch_id ASC, cbm.sequence_order ASC
+              branch_id := bm.branch_id,
+              station_id := bm.station_id,
+              code := bm.code,
+              started_at := bm.started_at,
+              ended_at := bm.ended_at,
+              structure_type := bm.structure_type,
+              sequence_order := bm.sequence_order
+            ) ORDER BY bm.branch_id ASC, bm.sequence_order ASC
           )
         ELSE []
       END AS branch_memberships
-    FROM components c
-    LEFT JOIN component_branch_memberships cbm ON c.id = cbm.component_id
-    GROUP BY c.id, c.started_at
+    FROM lines l
+    LEFT JOIN line_branch_memberships bm ON l.id = bm.line_id
+    GROUP BY l.id, l.started_at
     ORDER BY
-      CASE WHEN c.started_at > NOW() THEN 1 ELSE 0 END ASC,
-      c.id ASC;
+      CASE WHEN l.started_at > NOW() THEN 1 ELSE 0 END ASC,
+      l.id ASC;
   `.trim();
 
   const result = await connection.runAndReadAll(sql);

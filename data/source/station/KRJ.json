@@ -5,15 +5,6 @@
     "zh-Hans": "克兰芝",
     "ta": "கிராஞ்சி"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS7",
-        "startedAt": "1996-02-10",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Sungei Kadut",
   "town_translations": {
     "zh-Hans": "双溪加株",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.4369,
     "longitude": 103.7434
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS7",
+        "startedAt": "1996-02-10",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

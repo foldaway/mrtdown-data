@@ -5,15 +5,6 @@
     "zh-Hans": "裕华园",
     "ta": "சீனத் தோட்டம்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW25",
-        "startedAt": "1988-11-05",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Jurong East",
   "town_translations": {
     "zh-Hans": "裕廊东",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3357,
     "longitude": 103.7432
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW25",
+        "startedAt": "1988-11-05",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

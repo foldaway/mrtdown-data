@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan kereta di Laluan Bulat",
     "ta": "வட்ட பாதையில் ரயில் சேவை தடங்கல்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2024-12-23T12:46:48.000+08:00",
   "endAt": "2024-12-23T13:19:28.000+08:00",
   "type": "disruption",
@@ -49,7 +46,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "PYL",
@@ -62,7 +58,11 @@
         "MRM",
         "CDT",
         "BTN"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

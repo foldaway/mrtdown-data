@@ -5,29 +5,6 @@
     "zh-Hans": "博览",
     "ta": "எக்ஸ்போ"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "CG1",
-        "startedAt": "2001-01-10",
-        "structureType": "elevated"
-      }
-    ],
-    "DTL": [
-      {
-        "code": "DT35",
-        "startedAt": "2017-10-21",
-        "structureType": "underground"
-      }
-    ],
-    "TEL": [
-      {
-        "code": "TE34",
-        "startedAt": "2035-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Tampines",
   "town_translations": {
     "zh-Hans": "淡滨尼",
@@ -55,5 +32,28 @@
   "geo": {
     "latitude": 1.327042,
     "longitude": 103.958918
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "CG1",
+        "startedAt": "2001-01-10",
+        "structureType": "elevated"
+      }
+    ],
+    "DTL": [
+      {
+        "code": "DT35",
+        "startedAt": "2017-10-21",
+        "structureType": "underground"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE34",
+        "startedAt": "2035-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

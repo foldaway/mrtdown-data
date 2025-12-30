@@ -6,9 +6,6 @@
     "ms": "Kelewatan sedikit dari HBF ke BNV kerana kerosakan kereta api",
     "ta": "ரயில் கோளாறு காரணமாக HBF இலிருந்து BNV வரை தாமதம்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2016-06-16T08:12:28.000+08:00",
   "endAt": "2016-06-16T08:21:00.000+08:00",
   "type": "disruption",
@@ -32,7 +29,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "BNV",
@@ -43,7 +39,11 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

@@ -6,12 +6,8 @@
     "ms": "Tiada perkhidmatan kereta api dari Yew Tee ke Bukit Gombak kerana kerosakan landasan",
     "ta": "Yew Tee முதல் Bukit Gombak வரை ரயில் சேவை இல்லை, தண்டவாளக் கோளாறு காரணமாக"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -22,7 +18,8 @@
         "KRJ",
         "MSL",
         "WDL"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2016-08-30T06:08:57.000+08:00",
@@ -110,5 +107,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/770382760225615872",
       "createdAt": "2016-08-30T06:08:57.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

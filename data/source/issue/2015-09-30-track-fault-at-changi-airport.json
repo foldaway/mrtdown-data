@@ -6,18 +6,15 @@
     "ms": "Kerosakan trek dilaporkan di Lapangan Terbang Changi",
     "ta": "சங்கி விமான நிலையத்தில் தடப் பிழை புகாரளிக்கப்பட்டது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2015-09-30T15:16:14.000+08:00",
@@ -69,5 +66,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/649120553505198080",
       "createdAt": "2015-09-30T15:16:14.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "柏提",
     "ta": "பெட்டீர்"
   },
-  "componentMembers": {
-    "BPLRT": [
-      {
-        "code": "BP7",
-        "startedAt": "1999-11-06",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Bukit Panjang",
   "town_translations": {
     "zh-Hans": "武吉班让",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3753,
     "longitude": 103.7699
+  },
+  "lineMembers": {
+    "BPLRT": [
+      {
+        "code": "BP7",
+        "startedAt": "1999-11-06",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

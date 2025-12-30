@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan di Laluan Timur Laut",
     "ta": "வடகிழக்கு பாதையில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2016-07-29T07:32:22.000+08:00",
   "endAt": "2016-07-29T08:11:00.000+08:00",
   "type": "disruption",
@@ -55,7 +52,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -74,7 +70,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

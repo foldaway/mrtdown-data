@@ -20,7 +20,7 @@ export async function fetchLinesByIds(ids: string[]) {
              weekdays := STRUCT_PACK("start" := weekday_start, "end" := weekday_end),
              weekends := STRUCT_PACK("start" := weekend_start, "end" := weekend_end)
            ) AS operatingHours
-    FROM components
+    FROM lines
     WHERE id IN $1
   `;
   const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
@@ -48,18 +48,18 @@ export async function fetchStationsByIds(ids: string[]) {
       COALESCE(
         (SELECT ARRAY_AGG(
           STRUCT_PACK(
-            lineId := scm2.component_id,
-            branchId := scm2.branch_id,
-            code := scm2.code,
-            startedAt := scm2.started_at,
-            endedAt := scm2.ended_at,
-            structureType := scm2.structure_type,
-            sequenceOrder := scm2.sequence_order
+            lineId := bm2.line_id,
+            branchId := bm2.branch_id,
+            code := bm2.code,
+            startedAt := bm2.started_at,
+            endedAt := bm2.ended_at,
+            structureType := bm2.structure_type,
+            sequenceOrder := bm2.sequence_order
           )
-          ORDER BY CONCAT(scm2.sequence_order, '@', scm2.branch_id)
+          ORDER BY CONCAT(bm2.sequence_order, '@', bm2.branch_id)
         )
-        FROM component_branch_memberships scm2
-        WHERE scm2.station_id = s.id),
+        FROM line_branch_memberships bm2
+        WHERE bm2.station_id = s.id),
         ARRAY[]
       ) AS memberships,
       COALESCE(
@@ -97,29 +97,29 @@ export async function fetchIssuesByIds(ids: string[]) {
           FROM issue_intervals iv2
           WHERE iv2.issue_id = i.id), 0
         ) AS durationSeconds,
-        COALESCE(ARRAY_AGG(DISTINCT ic.component_id) FILTER (WHERE ic.component_id IS NOT NULL), ARRAY[]::TEXT[]) AS lineIds,
+        COALESCE(ARRAY_AGG(DISTINCT il.line_id) FILTER (WHERE il.line_id IS NOT NULL), ARRAY[]::TEXT[]) AS lineIds,
         COALESCE(ARRAY_AGG(DISTINCT iis.subtype) FILTER (WHERE iis.subtype IS NOT NULL), ARRAY[]::TEXT[]) AS subtypes,
         COALESCE(
           (SELECT ARRAY_AGG(
             STRUCT_PACK(
-              lineId := ist_grouped.component_id,
+              lineId := ist_grouped.line_id,
               branchId := ist_grouped.branch_id,
               stationIds := ist_grouped.station_ids
             )
-            ORDER BY ist_grouped.component_id, ist_grouped.branch_id
+            ORDER BY ist_grouped.line_id, ist_grouped.branch_id
           )
           FROM (
             SELECT
-              ist2.component_id,
+              ist2.line_id,
               ist2.branch_id,
-              ARRAY_AGG(ist2.station_id ORDER BY cbm.sequence_order) AS station_ids
+              ARRAY_AGG(ist2.station_id ORDER BY bm.sequence_order) AS station_ids
             FROM issue_stations ist2
-            JOIN component_branch_memberships cbm ON
-              ist2.component_id = cbm.component_id AND
-              ist2.branch_id = cbm.branch_id AND
-              ist2.station_id = cbm.station_id
+            JOIN line_branch_memberships bm ON
+              ist2.line_id = bm.line_id AND
+              ist2.branch_id = bm.branch_id AND
+              ist2.station_id = bm.station_id
             WHERE ist2.issue_id = i.id
-            GROUP BY ist2.component_id, ist2.branch_id
+            GROUP BY ist2.line_id, ist2.branch_id
           ) AS ist_grouped),
           ARRAY[]
         ) AS branchesAffected,
@@ -141,7 +141,7 @@ export async function fetchIssuesByIds(ids: string[]) {
           ARRAY[]
         ) AS intervals
       FROM issues i
-      LEFT JOIN issue_components ic ON i.id = ic.issue_id
+      LEFT JOIN issue_lines il ON i.id = il.issue_id
       LEFT JOIN issue_issue_subtypes iis ON i.id = iis.issue_id
       WHERE i.id IN $1
       GROUP BY i.id, i.title, i.title_translations, i.type

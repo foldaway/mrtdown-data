@@ -6,9 +6,6 @@
     "ms": "Kerja penyelenggaraan menjejaskan perkhidmatan North East Line",
     "ta": "North East Line சேவைகளைப் பாதிக்கும் பராமரிப்புப் பணிகள்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2019-03-15T23:00:00.000+08:00",
   "endAt": "2019-03-16T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20190315T230000\nRRULE:FREQ=DAILY;UNTIL=20190317T000000;WKST=MO",
@@ -45,7 +42,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -53,7 +49,11 @@
         "CTN",
         "CRQ",
         "DBG"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

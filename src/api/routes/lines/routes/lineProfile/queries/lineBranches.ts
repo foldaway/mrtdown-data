@@ -9,7 +9,7 @@ interface Row {
   stationIds: string[];
 }
 
-export async function lineBranchesQuery(componentId: string) {
+export async function lineBranchesQuery(lineId: string) {
   const connection = await connect();
 
   const sql = `
@@ -19,14 +19,14 @@ export async function lineBranchesQuery(componentId: string) {
       b.title_translations,
       b.started_at,
       b.ended_at,
-      LIST(cbm.station_id ORDER BY cbm.sequence_order) AS stationIds
+      LIST(bm.station_id ORDER BY bm.sequence_order) AS stationIds
     FROM branches b
-    INNER JOIN component_branch_memberships cbm ON cbm.component_id = b.component_id AND cbm.branch_id = b.id
-    WHERE b.component_id = $1
+    INNER JOIN line_branch_memberships bm ON bm.line_id = b.line_id AND bm.branch_id = b.id
+    WHERE b.line_id = $1
     GROUP BY b.id, b.title, b.title_translations, b.started_at, b.ended_at
     ORDER BY b.started_at ASC
     `;
 
-  const rows = await connection.runAndReadAll(sql, [componentId]);
+  const rows = await connection.runAndReadAll(sql, [lineId]);
   return rows.getRowObjectsJson() as unknown as Row[];
 }

@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan kereta api disebabkan oleh kerosakan landasan",
     "ta": "தடப் பிழையால் ரயில் சேவை தடைப்பட்டது"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -25,7 +21,8 @@
         "ADM",
         "SBW",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2011-12-22T09:01:42.000+08:00",
@@ -41,5 +38,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/149655820823564288",
       "createdAt": "2011-12-22T09:01:42.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

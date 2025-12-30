@@ -5,15 +5,6 @@
     "zh-Hans": "万吉",
     "ta": "பங்கிட்"
   },
-  "componentMembers": {
-    "BPLRT": [
-      {
-        "code": "BP9",
-        "startedAt": "1999-11-06",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Bukit Panjang",
   "town_translations": {
     "zh-Hans": "武吉班让",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3762,
     "longitude": 103.7684
+  },
+  "lineMembers": {
+    "BPLRT": [
+      {
+        "code": "BP9",
+        "startedAt": "1999-11-06",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

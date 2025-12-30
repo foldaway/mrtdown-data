@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan Laluan Downtown terganggu",
     "ta": "Downtown Line சேவை சீர்குலைந்தது"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "BKP",
@@ -32,7 +28,8 @@
         "DTN",
         "TLA",
         "CTN"
-      ]
+      ],
+      "lineId": "DTL"
     }
   ],
   "startAt": "2016-01-06T08:36:42.000+08:00",
@@ -54,5 +51,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/684534018935668736",
       "createdAt": "2016-01-06T08:36:42.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

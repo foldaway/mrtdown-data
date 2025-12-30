@@ -5,15 +5,6 @@
     "zh-Hans": "花拉路",
     "ta": "ஃபேரர் சாலை"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC20",
-        "startedAt": "2011-10-08",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bukit Timah",
   "town_translations": {
     "zh-Hans": "武吉知马",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.3143,
     "longitude": 103.8142
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC20",
+        "startedAt": "2011-10-08",
+        "structureType": "underground"
+      }
+    ]
   }
 }

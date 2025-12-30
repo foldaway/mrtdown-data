@@ -5,15 +5,6 @@
     "zh-Hans": "卡迪",
     "ta": "காதிப்"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS14",
-        "startedAt": "1988-12-20",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Yishun",
   "town_translations": {
     "zh-Hans": "义顺",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.4162,
     "longitude": 103.8357
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS14",
+        "startedAt": "1988-12-20",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

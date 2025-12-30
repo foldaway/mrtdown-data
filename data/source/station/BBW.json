@@ -5,15 +5,6 @@
     "zh-Hans": "武吉巴督西",
     "ta": "புக்கிட் பாத்தோக் வெஸ்ட்"
   },
-  "componentMembers": {
-    "JRL": [
-      {
-        "code": "JE3",
-        "startedAt": "2028-12-31",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Bukit Batok",
   "town_translations": {
     "zh-Hans": "武吉巴督",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.351616,
     "longitude": 103.749606
+  },
+  "lineMembers": {
+    "JRL": [
+      {
+        "code": "JE3",
+        "startedAt": "2028-12-31",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

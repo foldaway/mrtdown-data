@@ -6,12 +6,8 @@
     "ms": "Gangguan trek menyebabkan kelewatan di Laluan North-South",
     "ta": "டிராக் ஊடுருவல் காரணமாக வடக்கு-தெற்கு பாதையில் தாமதங்கள்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "JUR",
@@ -19,7 +15,8 @@
         "BGB",
         "CCK",
         "YWT"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2015-02-27T21:05:28.000+08:00",
@@ -89,5 +86,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/571295047125053443",
       "createdAt": "2015-02-27T21:05:28.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

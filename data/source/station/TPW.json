@@ -5,15 +5,6 @@
     "zh-Hans": "淡滨尼西",
     "ta": "தெம்பினிஸ் வெஸ்ட்"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT31",
-        "startedAt": "2017-10-21",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Tampines",
   "town_translations": {
     "zh-Hans": "淡滨尼",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3517,
     "longitude": 103.9432
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT31",
+        "startedAt": "2017-10-21",
+        "structureType": "underground"
+      }
+    ]
   }
 }

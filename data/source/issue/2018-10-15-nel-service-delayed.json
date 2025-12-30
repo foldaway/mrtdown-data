@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan Tertangguh di Laluan Timur Laut",
     "ta": "வடகிழக்கு பாதையில் சேவை தாமதம்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2018-10-15T16:08:05.000+08:00",
   "endAt": "2018-10-15T16:53:00Z",
   "type": "disruption",
@@ -56,13 +53,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "FRP",
         "BNK",
         "PTP"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

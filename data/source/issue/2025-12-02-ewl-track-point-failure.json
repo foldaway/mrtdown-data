@@ -6,9 +6,6 @@
     "ms": "EWL Kerosakan Laluan - berhampiran Aljunied",
     "ta": "EWL பாதை தவறு - அல்ஜுனிட் அருகில்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2025-12-02T19:50:00.000+08:00",
   "endAt": "2025-12-02T21:15:00.000+08:00",
   "type": "disruption",
@@ -31,7 +28,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BDK",
@@ -42,7 +38,11 @@
         "KAL",
         "LVR",
         "BGS"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

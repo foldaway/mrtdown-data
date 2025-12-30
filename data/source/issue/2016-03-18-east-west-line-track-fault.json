@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan kerana kerosakan landasan",
     "ta": "தடப் பிழை காரணமாக சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "TNM",
@@ -23,7 +19,8 @@
         "PSR",
         "TAM",
         "SIM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2016-03-18T07:09:02.000+08:00",
@@ -111,5 +108,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/710603882234155009",
       "createdAt": "2016-03-18T07:09:02.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

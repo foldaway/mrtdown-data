@@ -6,9 +6,6 @@
     "ms": "Gangguan Kereta di Laluan Timur Barat menyebabkan kelewatan",
     "ta": "கிழக்கு மேற்கு பாதையில் ரயில் பழுது காரணமாக தாமதங்கள்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2012-12-13T23:05:32.000+08:00",
   "endAt": "2012-12-13T23:32:46.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "RDH",
@@ -46,7 +42,11 @@
         "BNV",
         "DVR",
         "CLE"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

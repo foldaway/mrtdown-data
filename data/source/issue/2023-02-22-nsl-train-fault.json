@@ -6,9 +6,6 @@
     "ms": "Kegagalan kereta menyebabkan kelewatan di Laluan Utara-Selatan",
     "ta": "ரயில் பழுது காரணமாக வடக்கு-தெற்கு பாதையில் தாமதம்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2023-02-22T10:10:23.000+08:00",
   "endAt": "2023-02-22T10:56:03.000+08:00",
   "type": "disruption",
@@ -74,7 +71,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
@@ -85,7 +81,11 @@
         "KTB",
         "YCK",
         "AMK"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

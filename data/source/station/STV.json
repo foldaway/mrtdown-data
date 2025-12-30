@@ -5,22 +5,6 @@
     "zh-Hans": "史蒂芬",
     "ta": "ஸ்டீவன்ஸ்"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT10",
-        "startedAt": "2015-12-27",
-        "structureType": "underground"
-      }
-    ],
-    "TEL": [
-      {
-        "code": "TE11",
-        "startedAt": "2022-11-13",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Tanglin",
   "town_translations": {
     "zh-Hans": "东陵",
@@ -52,5 +36,21 @@
   "geo": {
     "latitude": 1.318328,
     "longitude": 103.820611
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT10",
+        "startedAt": "2015-12-27",
+        "structureType": "underground"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE11",
+        "startedAt": "2022-11-13",
+        "structureType": "underground"
+      }
+    ]
   }
 }

@@ -6,9 +6,6 @@
     "ms": "Kerosakan trek menyebabkan kelewatan di Laluan Bulatan",
     "ta": "வட்டப் பாதையில் தாமதத்தை ஏற்படுத்தும் தடப் பிழை"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2022-06-20T13:34:29.000+08:00",
   "endAt": "2022-06-20T14:20:12.000+08:00",
   "type": "disruption",
@@ -50,13 +47,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "MRB",
         "BFT",
         "PMN"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

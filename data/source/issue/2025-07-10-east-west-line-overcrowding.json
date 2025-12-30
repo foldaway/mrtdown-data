@@ -6,9 +6,6 @@
     "ms": "Laporan Awam Mengenai Kesesakan di Stesen Laluan Timur-Barat",
     "ta": "கிழக்கு-மேற்கு வழித்தட நிலையங்களில் கூட்டம் குறித்த பொதுக் கணக்குகள்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2025-07-10T18:30:00.000+08:00",
   "endAt": "2025-07-10T19:00:00.000+08:00",
   "type": "disruption",
@@ -43,7 +40,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BNL",
@@ -51,7 +47,11 @@
         "CNG",
         "JUR",
         "CLE"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

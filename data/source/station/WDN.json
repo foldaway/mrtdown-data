@@ -5,15 +5,6 @@
     "zh-Hans": "兀兰北",
     "ta": "உட்லண்ட்ஸ் நார்த்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE1",
-        "startedAt": "2020-01-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Woodlands",
   "town_translations": {
     "zh-Hans": "兀兰",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.4402,
     "longitude": 103.7866
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE1",
+        "startedAt": "2020-01-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

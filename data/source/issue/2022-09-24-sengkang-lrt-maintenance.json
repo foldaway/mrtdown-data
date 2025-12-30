@@ -6,9 +6,6 @@
     "ms": "Kerja Penyelenggaraan Sengkang LRT pada 24 & 25 September",
     "ta": "Sengkang LRT பராமரிப்புப் பணிகள் செப்டம்பர் 24 & 25"
   },
-  "componentIdsAffected": [
-    "SKLRT"
-  ],
   "startAt": "2022-09-24T00:00:00.000+08:00",
   "endAt": "2022-09-26T00:00:00.000+08:00",
   "type": "maintenance",
@@ -26,7 +23,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "SKLRT",
       "branchName": "west",
       "stationIds": [
         "SKG",
@@ -38,10 +34,10 @@
         "LYR",
         "TKG",
         "RNJ"
-      ]
+      ],
+      "lineId": "SKLRT"
     },
     {
-      "componentId": "SKLRT",
       "branchName": "east",
       "stationIds": [
         "SKG",
@@ -50,7 +46,11 @@
         "BAK",
         "KGK",
         "RNG"
-      ]
+      ],
+      "lineId": "SKLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "SKLRT"
   ]
 }

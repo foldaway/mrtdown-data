@@ -6,9 +6,6 @@
     "ms": "Penutupan stesen NEL antara HarbourFront dan Dhoby Ghaut",
     "ta": "HarbourFront மற்றும் Dhoby Ghaut இடையே NEL நிலையங்கள் மூடப்பட்டுள்ளன"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2021-04-23T23:00:00.000+08:00",
   "endAt": "2021-04-24T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20210423T230000\nRRULE:FREQ=DAILY;UNTIL=20210425T000000;WKST=MO",
@@ -27,7 +24,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -35,7 +31,11 @@
         "CTN",
         "CRQ",
         "DBG"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

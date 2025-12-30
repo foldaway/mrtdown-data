@@ -5,22 +5,6 @@
     "zh-Hans": "兀兰",
     "ta": "ஊட்லண்ட்ஸ்"
   },
-  "componentMembers": {
-    "NSL": [
-      {
-        "code": "NS9",
-        "startedAt": "1996-02-10",
-        "structureType": "elevated"
-      }
-    ],
-    "TEL": [
-      {
-        "code": "TE2",
-        "startedAt": "2020-01-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Woodlands",
   "town_translations": {
     "zh-Hans": "伍德兰",
@@ -52,5 +36,21 @@
   "geo": {
     "latitude": 1.4424,
     "longitude": 103.785
+  },
+  "lineMembers": {
+    "NSL": [
+      {
+        "code": "NS9",
+        "startedAt": "1996-02-10",
+        "structureType": "elevated"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE2",
+        "startedAt": "2020-01-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

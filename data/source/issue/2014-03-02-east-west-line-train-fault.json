@@ -6,18 +6,15 @@
     "ms": "Kerosakan kereta api menjejaskan masa perjalanan Laluan Timur Barat",
     "ta": "ரயில் பழுது கிழக்கு மேற்கு பாதையில் பயண நேரத்தை பாதிக்கிறது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2014-03-02T20:57:53.000+08:00",
@@ -45,5 +42,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/440108732651806720",
       "createdAt": "2014-03-02T20:57:53.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

@@ -6,18 +6,15 @@
     "ms": "Gangguan perkhidmatan kereta dari Jurong ke Joo Koon",
     "ta": "ஜூரோங் முதல் ஜூ கூன் வரை ரயில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-05-03T09:37:37.000+08:00",
@@ -45,5 +42,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/197862445887401984",
       "createdAt": "2012-05-03T09:37:37.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

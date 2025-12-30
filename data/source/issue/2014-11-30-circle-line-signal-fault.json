@@ -6,12 +6,8 @@
     "ms": "Gangguan isyarat menyebabkan kelewatan di Laluan Lingkaran",
     "ta": "வட்டப் பாதையில் தாமதத்தை ஏற்படுத்தும் சமிக்ஞைக் கோளாறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "ONH",
@@ -21,7 +17,8 @@
         "LBD",
         "TLB",
         "HBF"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2014-11-30T16:47:48.000+08:00",
@@ -49,5 +46,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/538977683477000192",
       "createdAt": "2014-11-30T16:47:48.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

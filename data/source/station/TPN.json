@@ -5,15 +5,6 @@
     "zh-Hans": "淡滨尼北",
     "ta": "தெம்பினிஸ் நார்த்"
   },
-  "componentMembers": {
-    "CRL": [
-      {
-        "code": "CR6",
-        "startedAt": "2030-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Tampines",
   "town_translations": {
     "zh-Hans": "淡滨尼",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3572,
     "longitude": 103.9352
+  },
+  "lineMembers": {
+    "CRL": [
+      {
+        "code": "CR6",
+        "startedAt": "2030-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

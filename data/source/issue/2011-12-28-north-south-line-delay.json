@@ -6,12 +6,8 @@
     "ms": "Perkhidmatan arah Timur ke Pasir Ris sedikit tertunda",
     "ta": "Pasir Ris நோக்கி கிழக்கு திசை சேவை சற்று தாமதமானது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JKN",
@@ -43,7 +39,8 @@
         "SIM",
         "TAM",
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2011-12-28T08:27:14.000+08:00",
@@ -59,5 +56,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/151821473152114689",
       "createdAt": "2011-12-28T08:27:14.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

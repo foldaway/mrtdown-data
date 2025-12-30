@@ -6,12 +6,8 @@
     "ms": "Tiada perkhidmatan kereta api antara Choa Chu Kang & Keat Hong",
     "ta": "Choa Chu Kang & Keat Hong இடையே ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -27,7 +23,8 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
   ],
   "startAt": "2015-02-24T12:18:25.000+08:00",
@@ -77,5 +74,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/570075247140954113",
       "createdAt": "2015-02-24T12:18:25.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

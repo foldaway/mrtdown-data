@@ -6,12 +6,8 @@
     "ms": "Jejak kerosakan di Laluan Timur Barat",
     "ta": "கிழக்கு மேற்கு பாதையில் தவறு கண்டறிதல்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "OTP",
@@ -23,7 +19,8 @@
         "DVR",
         "CLE",
         "JUR"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2013-05-31T22:32:41.000+08:00",
@@ -81,5 +78,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/340475926192214016",
       "createdAt": "2013-05-31T22:32:41.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

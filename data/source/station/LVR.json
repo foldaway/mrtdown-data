@@ -5,15 +5,6 @@
     "zh-Hans": "劳明达",
     "ta": "லவண்டர்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW11",
-        "startedAt": "1989-11-04",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Kallang",
   "town_translations": {
     "zh-Hans": "卡兰",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.3067,
     "longitude": 103.8652
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW11",
+        "startedAt": "1989-11-04",
+        "structureType": "underground"
+      }
+    ]
   }
 }

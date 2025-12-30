@@ -6,9 +6,6 @@
     "ms": "Ralat isyarat di Woodlands North",
     "ta": "வுட்லண்ட்ஸ் நார்த் இல் சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2022-07-06T08:25:19.000+08:00",
   "endAt": "2022-07-06T11:36:38.000+08:00",
   "type": "disruption",
@@ -97,7 +94,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
@@ -109,7 +105,11 @@
         "BRH",
         "UTS",
         "CDT"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

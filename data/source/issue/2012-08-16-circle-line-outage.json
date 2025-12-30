@@ -6,17 +6,14 @@
     "ms": "Gangguan perkhidmatan di Laluan Bulatan",
     "ta": "வட்டப் பாதையில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "extension",
       "stationIds": [
         "BFT",
         "MRB"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2012-08-16T06:05:44.000+08:00",
@@ -74,5 +71,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/235859849894846465",
       "createdAt": "2012-08-16T06:05:44.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

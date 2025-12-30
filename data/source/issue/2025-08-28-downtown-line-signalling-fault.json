@@ -6,9 +6,6 @@
     "ms": "Downtown Line Gangguan Isyarat",
     "ta": "Downtown Line சிக்கலான அளவீடு"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "startAt": "2025-08-28T06:34:13+08:00",
   "endAt": "2025-08-28T08:14:14+08:00",
   "type": "disruption",
@@ -55,7 +52,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "BKP",
@@ -63,7 +59,11 @@
         "HVW",
         "HME",
         "BTW"
-      ]
+      ],
+      "lineId": "DTL"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

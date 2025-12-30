@@ -6,19 +6,16 @@
     "ms": "Gangguan perkhidmatan di Laluan Utara-Selatan kerana kerosakan tren",
     "ta": "தொடர்வண்டி பழுது காரணமாக வடக்கு-தெற்கு பாதையில் சேவை தடை"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
         "ADM",
         "SBW",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2013-08-14T08:37:00.000+08:00",
@@ -40,5 +37,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/367444709230141440",
       "createdAt": "2013-08-14T08:37:00.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

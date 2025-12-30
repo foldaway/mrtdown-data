@@ -6,9 +6,6 @@
     "ms": "Kerosakan pintu tren menyebabkan kelewatan",
     "ta": "ரயில் கதவு கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2014-03-03T08:07:06.000+08:00",
   "endAt": "2014-03-03T08:38:35.000+08:00",
   "type": "disruption",
@@ -38,7 +35,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
@@ -70,7 +66,11 @@
         "BNL",
         "PNR",
         "JKN"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

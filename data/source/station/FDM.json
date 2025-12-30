@@ -6,15 +6,6 @@
     "ms": "Peringatan Pengasas",
     "ta": "தேச நிறுவனர்கள் நினைவிட நிலையம்"
   },
-  "componentMembers": {
-    "CRL": [
-      {
-        "code": "TE22A",
-        "startedAt": "2028-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Marina East",
   "town_translations": {
     "zh-Hans": "滨海东",
@@ -46,5 +37,14 @@
   "geo": {
     "latitude": 1.2823,
     "longitude": 103.8558
+  },
+  "lineMembers": {
+    "CRL": [
+      {
+        "code": "TE22A",
+        "startedAt": "2028-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

@@ -2,15 +2,6 @@
   "id": "DE1",
   "name": "DE1",
   "name_translations": {},
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DE1",
-        "startedAt": "2035-12-31",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Sungei Kadut",
   "town_translations": {
     "zh-Hans": "双溪加株",
@@ -38,5 +29,14 @@
   "geo": {
     "latitude": 1.419,
     "longitude": 103.757
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DE1",
+        "startedAt": "2035-12-31",
+        "structureType": "underground"
+      }
+    ]
   }
 }

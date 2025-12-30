@@ -6,9 +6,6 @@
     "ms": "Gangguan di Laluan Timur-Barat akibat kerosakan noktah trek",
     "ta": "டியோ பாய்ந் கிழக்கு-மேற்கு கோடான்கபுத் கதவான்க இது பணிபுரிகிறது"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2025-08-06T06:36:13.000+08:00",
   "endAt": "2025-08-06T11:30:51.000+08:00",
   "type": "disruption",
@@ -103,7 +100,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "BNV",
@@ -113,7 +109,11 @@
         "CNG",
         "LKS",
         "BNL"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

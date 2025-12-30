@@ -6,17 +6,14 @@
     "ms": "Jejak kerosakan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் தவறு கண்டறிதல்"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "RFP",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2013-04-03T07:25:14.000+08:00",
@@ -38,5 +35,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/319229065724821506",
       "createdAt": "2013-04-03T07:25:14.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

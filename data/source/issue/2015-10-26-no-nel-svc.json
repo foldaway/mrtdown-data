@@ -6,9 +6,6 @@
     "ms": "Tiada Perkhidmatan Laluan Timur Laut kerana Kerosakan Kuasa",
     "ta": "மின்சாரக் கோளாறு காரணமாக வடகிழக்கு ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2015-10-26T05:23:32.000+08:00",
   "endAt": "2015-10-26T07:32:25.000+08:00",
   "type": "disruption",
@@ -109,7 +106,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "HBF",
@@ -128,7 +124,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

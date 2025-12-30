@@ -6,11 +6,12 @@
     "ms": "Gangguan perkhidmatan LRT Punggol kerana kerosakan isyarat",
     "ta": "Punggol LRT சேவை சமிக்ஞை கோளாறு காரணமாக தடைபட்டது"
   },
-  "componentIdsAffected": ["PGLRT"],
   "startAt": "2021-10-17T12:02:25.000+08:00",
   "endAt": "2021-10-17T12:14:08.000+08:00",
   "type": "disruption",
-  "subtypes": ["signal.fault"],
+  "subtypes": [
+    "signal.fault"
+  ],
   "updates": [
     {
       "type": "operator.resolved",
@@ -33,14 +34,34 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "PGLRT",
       "branchName": "west",
-      "stationIds": ["PGL", "SMK", "PGP", "SMD", "NBG", "SMG", "STK"]
+      "stationIds": [
+        "PGL",
+        "SMK",
+        "PGP",
+        "SMD",
+        "NBG",
+        "SMG",
+        "STK"
+      ],
+      "lineId": "PGLRT"
     },
     {
-      "componentId": "PGLRT",
       "branchName": "east",
-      "stationIds": ["PGL", "COV", "MRD", "CRE", "RIV", "KDL", "OAS", "DAM"]
+      "stationIds": [
+        "PGL",
+        "COV",
+        "MRD",
+        "CRE",
+        "RIV",
+        "KDL",
+        "OAS",
+        "DAM"
+      ],
+      "lineId": "PGLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "PGLRT"
   ]
 }

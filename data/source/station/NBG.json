@@ -5,15 +5,6 @@
     "zh-Hans": "尼蒙",
     "ta": "நிபொங்"
   },
-  "componentMembers": {
-    "PGLRT": [
-      {
-        "code": "PW5",
-        "startedAt": "2014-06-29",
-        "structureType": "elevated"
-      }
-    ]
-  },
   "town": "Punggol",
   "town_translations": {
     "zh-Hans": "朋哥尔",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.397245,
     "longitude": 103.911141
+  },
+  "lineMembers": {
+    "PGLRT": [
+      {
+        "code": "PW5",
+        "startedAt": "2014-06-29",
+        "structureType": "elevated"
+      }
+    ]
   }
 }

@@ -5,15 +5,6 @@
     "zh-Hans": "马裕",
     "ta": "மாஜு்"
   },
-  "componentMembers": {
-    "CRL": [
-      {
-        "code": "CR16",
-        "startedAt": "2032-01-01",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bukit Timah",
   "town_translations": {
     "zh-Hans": "武吉知马",
@@ -41,5 +32,14 @@
   "geo": {
     "latitude": 1.3312,
     "longitude": 103.7854
+  },
+  "lineMembers": {
+    "CRL": [
+      {
+        "code": "CR16",
+        "startedAt": "2032-01-01",
+        "structureType": "underground"
+      }
+    ]
   }
 }

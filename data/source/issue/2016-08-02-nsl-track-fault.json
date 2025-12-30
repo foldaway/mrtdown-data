@@ -6,19 +6,16 @@
     "ms": "Ralat trek menyebabkan kelewatan di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் பாதையில் தவறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "WDL",
         "ADM",
         "SBW",
         "YIS"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2016-08-02T08:58:15.000+08:00",
@@ -58,5 +55,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/760278505200324609",
       "createdAt": "2016-08-02T08:58:15.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

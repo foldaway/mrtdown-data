@@ -6,9 +6,6 @@
     "ms": "Gangguan Sinyal di Jalur Thomson–East Coast",
     "ta": "தாம்சன்-கிழக்கு கடற்கரை பாதையில் சமிக்ஞை தவறு"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2023-11-06T17:36:59.000+08:00",
   "endAt": "2023-11-06T18:22:53.000+08:00",
   "type": "disruption",
@@ -55,7 +52,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "ORC",
@@ -66,7 +62,11 @@
         "SHW",
         "MRB",
         "GRB"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

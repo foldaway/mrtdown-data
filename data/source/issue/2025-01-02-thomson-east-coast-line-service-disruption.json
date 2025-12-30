@@ -6,9 +6,6 @@
     "ms": "Gangguan perkhidmatan Laluan Thomson–East Coast",
     "ta": "தாம்சன்-கிழக்கு கடற்கரை வரி சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2025-01-02T19:38:58.000+08:00",
   "endAt": "2025-01-02T20:00:44.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "CDT",
@@ -59,7 +55,11 @@
         "MTC",
         "SGL",
         "BSR"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

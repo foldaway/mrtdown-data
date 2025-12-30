@@ -5,15 +5,6 @@
     "zh-Hans": "加基武吉",
     "ta": "காக்கி புக்கிட்"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT28",
-        "startedAt": "2017-10-21",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bedok",
   "town_translations": {
     "zh-Hans": "勿洛",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.3199,
     "longitude": 103.8928
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT28",
+        "startedAt": "2017-10-21",
+        "structureType": "underground"
+      }
+    ]
   }
 }

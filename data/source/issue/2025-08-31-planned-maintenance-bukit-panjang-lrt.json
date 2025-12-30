@@ -6,9 +6,6 @@
     "ms": "Penyelenggaraan Terancang di LRT Bukit Panjang",
     "ta": "புக்கித் பஞ்சாங் எல்ஆர்டி-ல் திட்டமிடப்பட்ட பராமரிப்பு"
   },
-  "componentIdsAffected": [
-    "BPLRT"
-  ],
   "startAt": "2025-08-31T00:00:00.000+08:00",
   "endAt": "2025-09-01T00:00:00.000+08:00",
   "type": "maintenance",
@@ -26,7 +23,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -42,7 +38,11 @@
         "SGR",
         "JLP",
         "SNJ"
-      ]
+      ],
+      "lineId": "BPLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "BPLRT"
   ]
 }

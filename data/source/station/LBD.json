@@ -5,15 +5,6 @@
     "zh-Hans": "拉柏多公园",
     "ta": "லாப்ரடார் பூங்கா"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC27",
-        "startedAt": "2011-10-08",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bukit Merah",
   "town_translations": {
     "zh-Hans": "武吉美拉",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.2873,
     "longitude": 103.8038
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC27",
+        "startedAt": "2011-10-08",
+        "structureType": "underground"
+      }
+    ]
   }
 }

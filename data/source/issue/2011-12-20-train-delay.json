@@ -6,10 +6,6 @@
     "ms": "Gangguan perkhidmatan kereta api disebabkan trek basah",
     "ta": "ஈரமான தண்டவாளங்களால் ரயில் சேவை தடங்கல்"
   },
-  "componentIdsAffected": [
-    "EWL",
-    "NSL"
-  ],
   "startAt": "2011-12-20T08:37:29.000+08:00",
   "endAt": "2011-12-21T00:00:00.000+08:00",
   "type": "disruption",
@@ -33,7 +29,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -61,10 +56,10 @@
         "ORC",
         "SOM",
         "MRB"
-      ]
+      ],
+      "lineId": "NSL"
     },
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "JKN",
@@ -96,16 +91,21 @@
         "SIM",
         "TAM",
         "PSR"
-      ]
+      ],
+      "lineId": "EWL"
     },
     {
-      "componentId": "EWL",
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
         "XPO",
         "CGA"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL",
+    "NSL"
   ]
 }

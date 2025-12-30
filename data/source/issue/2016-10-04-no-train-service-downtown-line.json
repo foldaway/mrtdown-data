@@ -6,17 +6,14 @@
     "ms": "Tiada perkhidmatan kereta api antara King Albert Park dan Sixth Avenue",
     "ta": "கிங் ஆல்பெர்ட் பார்க் மற்றும் ஆறாவது அவென்யூ இடையே ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "KAP",
         "SAV"
-      ]
+      ],
+      "lineId": "DTL"
     }
   ],
   "startAt": "2016-10-04T07:19:40.000+08:00",
@@ -50,5 +47,8 @@
       "sourceUrl": "https://x.com/SBSTransit_Ltd/status/783084129617256448",
       "createdAt": "2016-10-04T07:19:40.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

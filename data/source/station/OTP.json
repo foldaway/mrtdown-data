@@ -5,29 +5,6 @@
     "zh-Hans": "欧南园",
     "ta": "ஊட்ரம் பார்க்"
   },
-  "componentMembers": {
-    "EWL": [
-      {
-        "code": "EW16",
-        "startedAt": "1987-12-12",
-        "structureType": "underground"
-      }
-    ],
-    "NEL": [
-      {
-        "code": "NE3",
-        "startedAt": "2003-06-20",
-        "structureType": "underground"
-      }
-    ],
-    "TEL": [
-      {
-        "code": "TE17",
-        "startedAt": "2022-11-13",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Outram",
   "town_translations": {
     "zh-Hans": "欧南",
@@ -63,5 +40,28 @@
   "geo": {
     "latitude": 1.2813,
     "longitude": 103.8335
+  },
+  "lineMembers": {
+    "EWL": [
+      {
+        "code": "EW16",
+        "startedAt": "1987-12-12",
+        "structureType": "underground"
+      }
+    ],
+    "NEL": [
+      {
+        "code": "NE3",
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
+      }
+    ],
+    "TEL": [
+      {
+        "code": "TE17",
+        "startedAt": "2022-11-13",
+        "structureType": "underground"
+      }
+    ]
   }
 }

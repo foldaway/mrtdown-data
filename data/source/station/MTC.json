@@ -5,15 +5,6 @@
     "zh-Hans": "马林台",
     "ta": "மரீன் டெரஸ்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE27",
-        "startedAt": "2024-06-23",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Marine Parade",
   "town_translations": {
     "zh-Hans": "马林百列",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3002,
     "longitude": 103.9131
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE27",
+        "startedAt": "2024-06-23",
+        "structureType": "underground"
+      }
+    ]
   }
 }

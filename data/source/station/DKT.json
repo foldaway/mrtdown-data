@@ -5,15 +5,6 @@
     "zh-Hans": "达科达",
     "ta": "டகோட்டா"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC8",
-        "startedAt": "2010-04-17",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Geylang",
   "town_translations": {
     "zh-Hans": "芽笼",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.3112,
     "longitude": 103.8874
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC8",
+        "startedAt": "2010-04-17",
+        "structureType": "underground"
+      }
+    ]
   }
 }

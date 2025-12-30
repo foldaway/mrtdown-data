@@ -6,9 +6,6 @@
     "ms": "Perkhidmatan DTL tertunda kerana kerosakan kereta api",
     "ta": "ரயில் பழுது காரணமாக DTL சேவை தாமதமானது"
   },
-  "componentIdsAffected": [
-    "DTL"
-  ],
   "startAt": "2022-12-23T18:58:22.000+08:00",
   "endAt": "2022-12-23T19:19:00.000+08:00",
   "type": "disruption",
@@ -32,7 +29,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "DTL",
       "branchName": "main",
       "stationIds": [
         "HVW",
@@ -41,7 +37,11 @@
         "SAV",
         "TKK",
         "BTN"
-      ]
+      ],
+      "lineId": "DTL"
     }
+  ],
+  "lineIdsAffected": [
+    "DTL"
   ]
 }

@@ -6,17 +6,14 @@
     "ms": "Gangguan perkhidmatan kereta dari Pasir Ris ke Tampines",
     "ta": "பாசிர் ரிஸ் முதல் டாம்பினஸ் வரை ரயில் சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "PSR",
         "TAM"
-      ]
+      ],
+      "lineId": "EWL"
     }
   ],
   "startAt": "2012-04-26T10:01:05.000+08:00",
@@ -38,5 +35,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/195331634529181696",
       "createdAt": "2012-04-26T10:01:05.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }

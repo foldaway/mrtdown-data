@@ -6,19 +6,16 @@
     "ms": "Tiada perkhidmatan kereta api di Laluan Timur Laut kerana gangguan kuasa",
     "ta": "மின்சாரக் கோளாறு காரணமாக வடகிழக்கு பாதையில் ரயில் சேவை இல்லை"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "OTP",
         "CTN",
         "CRQ",
         "DBG"
-      ]
+      ],
+      "lineId": "NEL"
     }
   ],
   "startAt": "2013-06-04T21:34:49.000+08:00",
@@ -52,5 +49,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/341910914645254144",
       "createdAt": "2013-06-04T21:34:49.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

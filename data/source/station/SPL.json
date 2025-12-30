@@ -5,15 +5,6 @@
     "zh-Hans": "春叶",
     "ta": "ஸ்பிரிங்லீஃவ்"
   },
-  "componentMembers": {
-    "TEL": [
-      {
-        "code": "TE4",
-        "startedAt": "2021-08-28",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Yishun",
   "town_translations": {
     "zh-Hans": "义顺",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.4421,
     "longitude": 103.8186
+  },
+  "lineMembers": {
+    "TEL": [
+      {
+        "code": "TE4",
+        "startedAt": "2021-08-28",
+        "structureType": "underground"
+      }
+    ]
   }
 }

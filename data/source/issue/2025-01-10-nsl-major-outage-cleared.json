@@ -6,12 +6,8 @@
     "ms": "Gangguan perkhidmatan di NSL antara Marina South Pier dan Bishan",
     "ta": "NSL இல் மெரினா சவுத் பியர் மற்றும் பிஷான் இடையே சேவை இடையூறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "BSH",
@@ -26,7 +22,8 @@
         "RFP",
         "MRB",
         "MSP"
-      ]
+      ],
+      "lineId": "NSL"
     }
   ],
   "startAt": "2025-01-10T17:54:03.000+08:00",
@@ -96,5 +93,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/1877655134899184057",
       "createdAt": "2025-01-10T17:54:03.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Station, StationId } from '../schema/Station.js';
-import type { ComponentId } from '../schema/Component.js';
+import type { LineId } from '../schema/Line.js';
 import Fuse from 'fuse.js';
 
 const dirPathIssue = join(import.meta.dirname, '../../data/source/station');
@@ -31,9 +31,9 @@ export const StationModel = {
     return station;
   },
 
-  getByComponentId(componentId: ComponentId): Station[] {
+  getByLineId(lineId: LineId): Station[] {
     const stations = this.getAll();
-    return stations.filter((s) => componentId in s.componentMembers);
+    return stations.filter((s) => lineId in s.lineMembers);
   },
 
   searchByName(names: string[]): Station[] {

@@ -6,9 +6,6 @@
     "ms": "Masa perjalanan kereta ditambah antara Promenade dan Serangoon kerana kerosakan kereta",
     "ta": "ரயில் கோளாறு காரணமாக ப்ரோமனேட் மற்றும் செராங்கூன் இடையே ரயில் பயண நேரம் சேர்க்கப்பட்டுள்ளது"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "startAt": "2025-03-05T16:07:26.000+08:00",
   "endAt": "2025-03-05T17:01:12.000+08:00",
   "type": "disruption",
@@ -55,7 +52,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "PMN",
@@ -68,7 +64,11 @@
         "TSG",
         "BLY",
         "SER"
-      ]
+      ],
+      "lineId": "CCL"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

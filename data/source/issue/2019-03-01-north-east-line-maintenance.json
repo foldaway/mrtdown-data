@@ -6,9 +6,6 @@
     "ms": "Kerja Penyelenggaraan Laluan Timur Laut",
     "ta": "வடகிழக்கு வழி பராமரிப்பு பணிகள்"
   },
-  "componentIdsAffected": [
-    "NEL"
-  ],
   "startAt": "2019-03-01T23:00:00.000+08:00",
   "endAt": "2019-03-02T00:00:00.000+08:00",
   "rrule": "DTSTART;TZID=Asia/Singapore:20190301T230000\nRRULE:FREQ=DAILY;UNTIL=20190303T000000;WKST=MO",
@@ -64,7 +61,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NEL",
       "branchName": "main",
       "stationIds": [
         "SER",
@@ -73,7 +69,11 @@
         "BGK",
         "SKG",
         "PGL"
-      ]
+      ],
+      "lineId": "NEL"
     }
+  ],
+  "lineIdsAffected": [
+    "NEL"
   ]
 }

@@ -6,12 +6,13 @@
     "ms": "Kerja Penyelenggaraan Mendesak Dijalankan Antara Stesen Coral Edge & Riviera",
     "ta": "கிராedge மற்றும் ரிவியரா நிலையங்களுக்கு இடையில் அவசர பராமரிப்புப் பணிகள் மேற்கொள்ளப்பட்டன"
   },
-  "componentIdsAffected": ["PGLRT"],
   "startAt": "2020-01-08T21:00:00.000+08:00",
   "endAt": "2020-01-09T04:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": ["track.work"],
+  "subtypes": [
+    "track.work"
+  ],
   "updates": [
     {
       "type": "planned",
@@ -22,9 +23,15 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "PGLRT",
       "branchName": "east",
-      "stationIds": ["CRE", "RIV"]
+      "stationIds": [
+        "CRE",
+        "RIV"
+      ],
+      "lineId": "PGLRT"
     }
+  ],
+  "lineIdsAffected": [
+    "PGLRT"
   ]
 }

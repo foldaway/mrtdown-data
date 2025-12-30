@@ -5,15 +5,6 @@
     "zh-Hans": "乌美",
     "ta": "உபி"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT27",
-        "startedAt": "2017-10-21",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Geylang",
   "town_translations": {
     "zh-Hans": "芽笼",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.320225,
     "longitude": 103.895572
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT27",
+        "startedAt": "2017-10-21",
+        "structureType": "underground"
+      }
+    ]
   }
 }

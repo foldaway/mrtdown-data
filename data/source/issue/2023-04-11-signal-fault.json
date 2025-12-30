@@ -6,9 +6,6 @@
     "ms": "Gangguan Isyarat Menjejaskan Laluan Thomson–East Coast",
     "ta": "தாம்சன்–கிழக்கு கடற்கரை பாதையை பாதிக்கும் சமிக்ஞை கோளாறு"
   },
-  "componentIdsAffected": [
-    "TEL"
-  ],
   "startAt": "2023-04-11T07:50:17.000+08:00",
   "endAt": "2023-04-11T11:31:32.000+08:00",
   "type": "disruption",
@@ -37,7 +34,6 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "TEL",
       "branchName": "main",
       "stationIds": [
         "WDN",
@@ -60,7 +56,11 @@
         "SHW",
         "MRB",
         "GRB"
-      ]
+      ],
+      "lineId": "TEL"
     }
+  ],
+  "lineIdsAffected": [
+    "TEL"
   ]
 }

@@ -6,12 +6,8 @@
     "ms": "Kerosakan isyarat utama di Laluan Bulat menyebabkan kelewatan",
     "ta": "வட்டப் பாதையில் முக்கிய சமிக்ஞை தவறு காரணமாக தாமதங்கள்"
   },
-  "componentIdsAffected": [
-    "CCL"
-  ],
   "stationIdsAffected": [
     {
-      "componentId": "CCL",
       "branchName": "main",
       "stationIds": [
         "DBG",
@@ -23,7 +19,8 @@
         "MBT",
         "DKT",
         "PYL"
-      ]
+      ],
+      "lineId": "CCL"
     }
   ],
   "startAt": "2014-02-27T07:36:46.000+08:00",
@@ -57,5 +54,8 @@
       "sourceUrl": "https://x.com/SMRT_Singapore/status/438819963613093888",
       "createdAt": "2014-02-27T07:36:46.000+08:00"
     }
+  ],
+  "lineIdsAffected": [
+    "CCL"
   ]
 }

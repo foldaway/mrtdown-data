@@ -5,15 +5,6 @@
     "zh-Hans": "第六道",
     "ta": "சிக்ஸ்த் அவென்யூ"
   },
-  "componentMembers": {
-    "DTL": [
-      {
-        "code": "DT7",
-        "startedAt": "2015-12-27",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Bukit Timah",
   "town_translations": {
     "zh-Hans": "武吉知马",
@@ -37,5 +28,14 @@
   "geo": {
     "latitude": 1.3363,
     "longitude": 103.7865
+  },
+  "lineMembers": {
+    "DTL": [
+      {
+        "code": "DT7",
+        "startedAt": "2015-12-27",
+        "structureType": "underground"
+      }
+    ]
   }
 }

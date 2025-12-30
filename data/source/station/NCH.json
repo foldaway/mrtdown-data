@@ -5,15 +5,6 @@
     "zh-Hans": "尼诰大道",
     "ta": "நிக்கல் நெடுஞ்சாலை"
   },
-  "componentMembers": {
-    "CCL": [
-      {
-        "code": "CC5",
-        "startedAt": "2010-04-17",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Downtown Core",
   "town_translations": {
     "zh-Hans": "市中心",
@@ -45,5 +36,14 @@
   "geo": {
     "latitude": 1.29945,
     "longitude": 103.87389
+  },
+  "lineMembers": {
+    "CCL": [
+      {
+        "code": "CC5",
+        "startedAt": "2010-04-17",
+        "structureType": "underground"
+      }
+    ]
   }
 }

@@ -6,9 +6,6 @@
     "ms": "Gangguan Besar di Laluan Utara-Selatan",
     "ta": "வடக்கு-தெற்கு பாதையில் பெரிய இடையூறு"
   },
-  "componentIdsAffected": [
-    "NSL"
-  ],
   "startAt": "2019-12-16T08:14:52.000+08:00",
   "endAt": "2019-12-16T08:49:45.000+08:00",
   "type": "disruption",
@@ -49,14 +46,17 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "NSL",
       "branchName": "main",
       "stationIds": [
         "BGB",
         "CCK",
         "YWT",
         "KRJ"
-      ]
+      ],
+      "lineId": "NSL"
     }
+  ],
+  "lineIdsAffected": [
+    "NSL"
   ]
 }

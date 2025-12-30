@@ -5,22 +5,6 @@
     "zh-Hans": "小印度",
     "ta": "லிட்டில் இந்தியா"
   },
-  "componentMembers": {
-    "NEL": [
-      {
-        "code": "NE7",
-        "startedAt": "2003-06-20",
-        "structureType": "underground"
-      }
-    ],
-    "DTL": [
-      {
-        "code": "DT12",
-        "startedAt": "2015-12-27",
-        "structureType": "underground"
-      }
-    ]
-  },
   "town": "Rochor",
   "town_translations": {
     "zh-Hans": "罗惹",
@@ -52,5 +36,21 @@
   "geo": {
     "latitude": 1.3079,
     "longitude": 103.8488
+  },
+  "lineMembers": {
+    "NEL": [
+      {
+        "code": "NE7",
+        "startedAt": "2003-06-20",
+        "structureType": "underground"
+      }
+    ],
+    "DTL": [
+      {
+        "code": "DT12",
+        "startedAt": "2015-12-27",
+        "structureType": "underground"
+      }
+    ]
   }
 }

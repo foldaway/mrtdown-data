@@ -6,9 +6,6 @@
     "ms": "Gangguan Perkhidmatan: Kelewatan Kereta Api antara Outram Park dan Raffles Place",
     "ta": "சேவை இடையூறு: அவுட்ரம் பார்க் மற்றும் ராஃபிள்ஸ் பிளேஸ் இடையே ரயில் தாமதங்கள்"
   },
-  "componentIdsAffected": [
-    "EWL"
-  ],
   "startAt": "2012-06-08T07:27:39.000+08:00",
   "endAt": "2012-06-08T07:47:59.000+08:00",
   "type": "disruption",
@@ -31,13 +28,16 @@
   ],
   "stationIdsAffected": [
     {
-      "componentId": "EWL",
       "branchName": "main",
       "stationIds": [
         "RFP",
         "TPG",
         "OTP"
-      ]
+      ],
+      "lineId": "EWL"
     }
+  ],
+  "lineIdsAffected": [
+    "EWL"
   ]
 }
