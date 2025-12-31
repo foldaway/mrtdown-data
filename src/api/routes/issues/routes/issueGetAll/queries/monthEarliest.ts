@@ -1,13 +1,12 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 
 interface Row {
   start_at: string;
 }
 
 export async function monthEarliestQuery() {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT
       start_at
     FROM issue_intervals
@@ -15,7 +14,8 @@ export async function monthEarliestQuery() {
     LIMIT 1;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows;
+    const result = await connection.runAndReadAll(sql);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows;
+  });
 }

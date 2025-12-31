@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 import type { IssueType } from '../../../../../../schema/Issue.js';
 
 interface Row {
@@ -7,9 +7,8 @@ interface Row {
 }
 
 export async function issueCountByTypeQuery(lineId: string) {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT
       i.type,
       COUNT(*) AS count
@@ -19,7 +18,8 @@ export async function issueCountByTypeQuery(lineId: string) {
     GROUP BY i.type
   `;
 
-  const result = await connection.runAndReadAll(sql, [lineId]);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows;
+    const result = await connection.runAndReadAll(sql, [lineId]);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows;
+  });
 }

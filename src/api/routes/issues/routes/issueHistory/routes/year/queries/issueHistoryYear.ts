@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../../../db/connect.js';
 
 interface Row {
   month: string;
@@ -6,9 +6,8 @@ interface Row {
 }
 
 export async function issueHistoryYearQuery(year: string) {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     WITH all_months AS (
       SELECT
         '${year}-' || LPAD(seq::VARCHAR, 2, '0') AS month
@@ -49,7 +48,8 @@ export async function issueHistoryYearQuery(year: string) {
     ORDER BY am.month DESC;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows;
+    const result = await connection.runAndReadAll(sql);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows;
+  });
 }

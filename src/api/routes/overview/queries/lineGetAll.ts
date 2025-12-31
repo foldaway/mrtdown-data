@@ -1,13 +1,12 @@
-import { connect } from '../../../../db/connect.js';
+import { withConnection } from '../../../../db/connect.js';
 
 interface Row {
   line_id: string;
 }
 
 export async function lineGetAllQuery() {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT
       l.id AS line_id
     FROM lines l
@@ -16,7 +15,8 @@ export async function lineGetAllQuery() {
       l.id ASC;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows;
+    const result = await connection.runAndReadAll(sql);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows;
+  });
 }

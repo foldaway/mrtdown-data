@@ -1,4 +1,4 @@
-import { connect } from '../../../../db/connect.js';
+import { withConnection } from '../../../../db/connect.js';
 import type { IssueType } from '../../../../schema/Issue.js';
 
 interface Row {
@@ -29,8 +29,8 @@ interface Row {
 }
 
 export async function lineSummariesQuery(days: number) {
-  const connection = await connect();
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     WITH bounds AS (
       SELECT
         (CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Singapore' - INTERVAL '${days} days') AT TIME ZONE 'Asia/Singapore' AS start_time,
@@ -297,7 +297,8 @@ export async function lineSummariesQuery(days: number) {
     ORDER BY
       CASE WHEN l.started_at > NOW() THEN 1 ELSE 0 END ASC,
       l.id ASC;
-`.trim();
-  const rows = await connection.runAndReadAll(sql);
-  return rows.getRowObjectsJson() as unknown as Row[];
+  `.trim();
+    const rows = await connection.runAndReadAll(sql);
+    return rows.getRowObjectsJson() as unknown as Row[];
+  });
 }

@@ -1,13 +1,12 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 
 interface Row {
   id: string;
 }
 
 export async function stationIdsInterchangesQuery(lineId: string) {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT
       s.id,
       COUNT(DISTINCT bm_all.line_id) as membership_count
@@ -28,11 +27,9 @@ export async function stationIdsInterchangesQuery(lineId: string) {
     ORDER BY membership_count DESC, s.id;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql, [
-    lineId,
-    lineId,
-  ]);
-  const rows = result.getRowObjectsJson();
+    const result = await connection.runAndReadAll(sql, [lineId, lineId]);
+    const rows = result.getRowObjectsJson();
 
-  return rows as unknown as Row[];
+    return rows as unknown as Row[];
+  });
 }

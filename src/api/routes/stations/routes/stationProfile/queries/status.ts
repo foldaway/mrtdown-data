@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 
 interface Row {
   status:
@@ -11,9 +11,8 @@ interface Row {
 }
 
 export async function statusQuery(stationId: string) {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     WITH station_lines AS (
       SELECT DISTINCT 
         l.id as line_id,
@@ -60,7 +59,8 @@ export async function statusQuery(stationId: string) {
       END AS status;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql, [stationId]);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows;
+    const result = await connection.runAndReadAll(sql, [stationId]);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows;
+  });
 }

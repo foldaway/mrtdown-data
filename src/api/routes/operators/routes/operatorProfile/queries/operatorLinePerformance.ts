@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 
 interface Row {
   line_id: string;
@@ -17,8 +17,8 @@ export async function operatorLinePerformanceQuery(
   operatorId: string,
   days: number,
 ) {
-  const connection = await connect();
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     WITH operator_lines AS (
       SELECT DISTINCT lo.line_id
       FROM line_operators lo
@@ -199,7 +199,8 @@ export async function operatorLinePerformanceQuery(
     LEFT JOIN issue_counts ic ON ic.line_id = l.id
     ORDER BY l.id;
   `.trim();
-  const result = await connection.runAndReadAll(sql, [operatorId]);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows;
+    const result = await connection.runAndReadAll(sql, [operatorId]);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows;
+  });
 }

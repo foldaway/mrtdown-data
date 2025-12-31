@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 import type { IssueType } from '../../../../../../schema/Issue.js';
 import type { Granularity } from '../../../../../schema/Granularity.js';
 
@@ -18,8 +18,8 @@ export async function issueCountsCumulativeQuery(
   granularity: Granularity,
   count: number,
 ) {
-  const connection = await connect();
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     WITH bounds AS (
       SELECT
         DATE_TRUNC('${granularity}', (NOW() AT TIME ZONE 'Asia/Singapore') - INTERVAL ${count - 1} ${granularity}) AS current_start_time,
@@ -113,6 +113,7 @@ export async function issueCountsCumulativeQuery(
     GROUP BY pit.period
     ORDER BY pit.period
 `.trim();
-  const rows = await connection.runAndReadAll(sql, [lineId]);
-  return rows.getRowObjectsJson() as unknown as Row[];
+    const rows = await connection.runAndReadAll(sql, [lineId]);
+    return rows.getRowObjectsJson() as unknown as Row[];
+  });
 }

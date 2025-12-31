@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../../../../../db/connect.js';
 import { DateTime } from 'luxon';
 import { assert } from '../../../../../../../../../../util/assert.js';
 
@@ -8,17 +8,16 @@ interface Row {
 }
 
 export async function issueHistoryQuery(year: string, month: string) {
-  const connection = await connect();
+  return await withConnection(async (connection) => {
+    const startDate = DateTime.fromObject({
+      year: Number.parseInt(year, 10),
+      month: Number.parseInt(month, 10),
+      day: 1,
+    });
+    assert(startDate != null);
+    const endDate = startDate.endOf('month');
 
-  const startDate = DateTime.fromObject({
-    year: Number.parseInt(year, 10),
-    month: Number.parseInt(month, 10),
-    day: 1,
-  });
-  assert(startDate != null);
-  const endDate = startDate.endOf('month');
-
-  const sql = `
+    const sql = `
     WITH date_range AS (
       SELECT date_seq
       FROM range('${startDate.toISODate()}'::DATE, '${endDate.toISODate()}'::DATE + INTERVAL '1 day', INTERVAL '1 day') AS t(date_seq)
@@ -56,7 +55,8 @@ export async function issueHistoryQuery(year: string, month: string) {
     ORDER BY aw.week DESC;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows;
+    const result = await connection.runAndReadAll(sql);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows;
+  });
 }

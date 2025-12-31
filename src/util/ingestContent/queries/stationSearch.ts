@@ -1,4 +1,4 @@
-import { connect } from '../../../db/connect.js';
+import { withConnection } from '../../../db/connect.js';
 
 interface LineMembership {
   line_id: string;
@@ -24,11 +24,10 @@ interface Row {
 }
 
 export async function stationSearchQuery(names: string[]) {
-  const connection = await connect();
+  return await withConnection(async (connection) => {
+    const placeholders = names.map((_, i) => `$${i + 1}`).join(', ');
 
-  const placeholders = names.map((_, i) => `$${i + 1}`).join(', ');
-
-  const sql = `
+    const sql = `
     SELECT
       s.id,
       s.name,
@@ -65,7 +64,8 @@ export async function stationSearchQuery(names: string[]) {
     ORDER BY s.name;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql, [...names]);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows;
+    const result = await connection.runAndReadAll(sql, [...names]);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows;
+  });
 }

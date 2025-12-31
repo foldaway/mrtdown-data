@@ -1,4 +1,4 @@
-import { connect } from '../../../db/connect.js';
+import { withConnection } from '../../../db/connect.js';
 
 interface BranchMembership {
   branch_id: string;
@@ -16,9 +16,8 @@ interface Row {
 }
 
 export async function lineGetQuery(lineId: string) {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT
       l.id AS line_id,
       CASE
@@ -45,7 +44,8 @@ export async function lineGetQuery(lineId: string) {
       l.id ASC;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql, [lineId]);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows;
+    const result = await connection.runAndReadAll(sql, [lineId]);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows;
+  });
 }

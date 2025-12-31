@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 
 interface Row {
   operator_id: string;
@@ -7,9 +7,8 @@ interface Row {
 }
 
 export async function operatorProfileQuery(operatorId: string) {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT
       o.id AS operator_id,
       o.founded_at AS founded_at,
@@ -23,7 +22,8 @@ export async function operatorProfileQuery(operatorId: string) {
     WHERE o.id = $1;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql, [operatorId]);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows;
+    const result = await connection.runAndReadAll(sql, [operatorId]);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows;
+  });
 }

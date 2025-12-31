@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 import type { IssueType } from '../../../../../../schema/Issue.js';
 import type { Granularity } from '../../../../../schema/Granularity.js';
 
@@ -13,8 +13,8 @@ export async function operatorIssueCountsQuery(
   granularity: Granularity,
   count: number,
 ) {
-  const connection = await connect();
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     WITH operator_lines AS (
       SELECT DISTINCT lo.line_id
       FROM line_operators lo
@@ -87,6 +87,7 @@ export async function operatorIssueCountsQuery(
     GROUP BY bit.bucket
     ORDER BY bit.bucket;
   `.trim();
-  const rows = await connection.runAndReadAll(sql, [operatorId]);
-  return rows.getRowObjectsJson() as unknown as IssueCountRow[];
+    const rows = await connection.runAndReadAll(sql, [operatorId]);
+    return rows.getRowObjectsJson() as unknown as IssueCountRow[];
+  });
 }

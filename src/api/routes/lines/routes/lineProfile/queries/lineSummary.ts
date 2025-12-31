@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 import type { IssueType } from '../../../../../../schema/Issue.js';
 
 interface Row {
@@ -30,8 +30,8 @@ interface Row {
 }
 
 export async function lineSummaryQuery(lineId: string, days: number) {
-  const connection = await connect();
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     WITH bounds AS (
       SELECT
         (CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Singapore' - INTERVAL '${days} days') AT TIME ZONE 'Asia/Singapore' AS start_time,
@@ -430,6 +430,7 @@ export async function lineSummaryQuery(lineId: string, days: number) {
     WHERE l.id = $1
     GROUP BY l.id, l.started_at, u.uptime_ratio, u.total_service_seconds, u.total_downtime_seconds, u.downtime_breakdown, r.uptime_rank, r.total_lines;
 `.trim();
-  const result = await connection.runAndReadAll(sql, [lineId]);
-  return result.getRowObjectsJson() as unknown as Row[];
+    const result = await connection.runAndReadAll(sql, [lineId]);
+    return result.getRowObjectsJson() as unknown as Row[];
+  });
 }

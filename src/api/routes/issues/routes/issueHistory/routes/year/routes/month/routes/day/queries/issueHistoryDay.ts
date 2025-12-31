@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../../../../../../../db/connect.js';
 import { DateTime } from 'luxon';
 import { assert } from '../../../../../../../../../../../../util/assert.js';
 
@@ -11,17 +11,16 @@ export async function issueHistoryDayQuery(
   month: string,
   day: string,
 ) {
-  const connection = await connect();
+  return await withConnection(async (connection) => {
+    const date = DateTime.fromObject({
+      year: Number.parseInt(year, 10),
+      month: Number.parseInt(month, 10),
+      day: Number.parseInt(day, 10),
+    });
+    assert(date != null);
+    const endDate = date.plus({ days: 1 });
 
-  const date = DateTime.fromObject({
-    year: Number.parseInt(year, 10),
-    month: Number.parseInt(month, 10),
-    day: Number.parseInt(day, 10),
-  });
-  assert(date != null);
-  const endDate = date.plus({ days: 1 });
-
-  const sql = `
+    const sql = `
     SELECT DISTINCT i.id AS issue_id
     FROM issues i
     JOIN issue_intervals ii ON i.id = ii.issue_id
@@ -31,7 +30,8 @@ export async function issueHistoryDayQuery(
     ORDER BY i.id DESC;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows.map((row) => row.issue_id);
+    const result = await connection.runAndReadAll(sql);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows.map((row) => row.issue_id);
+  });
 }

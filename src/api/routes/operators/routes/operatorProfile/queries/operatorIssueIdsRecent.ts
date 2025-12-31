@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 
 interface Row {
   issue_id: string;
@@ -8,9 +8,8 @@ export async function operatorIssueIdsRecentQuery(
   operatorId: string,
   limit = 15,
 ) {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     WITH operator_lines AS (
       SELECT DISTINCT lo.line_id
       FROM line_operators lo
@@ -30,8 +29,9 @@ export async function operatorIssueIdsRecentQuery(
     LIMIT $2;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql, [operatorId, limit]);
-  const rows = result.getRowObjectsJson();
+    const result = await connection.runAndReadAll(sql, [operatorId, limit]);
+    const rows = result.getRowObjectsJson();
 
-  return rows as unknown as Row[];
+    return rows as unknown as Row[];
+  });
 }

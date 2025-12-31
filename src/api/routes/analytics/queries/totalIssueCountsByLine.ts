@@ -1,4 +1,4 @@
-import { connect } from '../../../../db/connect.js';
+import { withConnection } from '../../../../db/connect.js';
 
 interface Row {
   line_id: string;
@@ -10,9 +10,8 @@ interface Row {
 }
 
 export async function totalIssueCountsByLineQuery() {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT
       l.id AS line_id,
       l.title AS line_title,
@@ -27,6 +26,7 @@ export async function totalIssueCountsByLineQuery() {
     ORDER BY l.id, issue_type;
 `.trim();
 
-  const rows = await connection.runAndReadAll(sql);
-  return rows.getRowObjectsJson() as unknown as Row[];
+    const rows = await connection.runAndReadAll(sql);
+    return rows.getRowObjectsJson() as unknown as Row[];
+  });
 }

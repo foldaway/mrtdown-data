@@ -1,13 +1,12 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 
 interface Row {
   operator_id: string;
 }
 
 export async function operatorGetAllQuery() {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT
       o.id AS operator_id
     FROM operators o
@@ -15,7 +14,8 @@ export async function operatorGetAllQuery() {
       o.id ASC;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows;
+    const result = await connection.runAndReadAll(sql);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows;
+  });
 }

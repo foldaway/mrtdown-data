@@ -1,13 +1,12 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 
 interface Row {
   issue_id: string;
 }
 
 export async function issueIdsRecentQuery(lineId: string) {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT
       i.id as issue_id,
       MIN(iv.start_at) AS earliest_start_at
@@ -21,8 +20,9 @@ export async function issueIdsRecentQuery(lineId: string) {
     LIMIT 5;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql, [lineId]);
-  const rows = result.getRowObjectsJson();
+    const result = await connection.runAndReadAll(sql, [lineId]);
+    const rows = result.getRowObjectsJson();
 
-  return rows as unknown as Row[];
+    return rows as unknown as Row[];
+  });
 }

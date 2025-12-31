@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 import type { Granularity } from '../../../../../schema/Granularity.js';
 
 interface UptimeRatioRow {
@@ -17,8 +17,8 @@ export async function operatorUptimeRatiosCumulativeQuery(
   granularity: Granularity,
   count: number,
 ) {
-  const connection = await connect();
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     WITH operator_lines AS (
       SELECT DISTINCT lo.line_id
       FROM line_operators lo
@@ -176,6 +176,7 @@ export async function operatorUptimeRatiosCumulativeQuery(
     LEFT JOIN downtime_summary ds ON ap.period_name = ds.period_name
     ORDER BY CASE WHEN ap.period_name = 'current' THEN 0 ELSE 1 END;
   `.trim();
-  const rows = await connection.runAndReadAll(sql, [operatorId]);
-  return rows.getRowObjectsJson() as unknown as UptimeRatioRow[];
+    const rows = await connection.runAndReadAll(sql, [operatorId]);
+    return rows.getRowObjectsJson() as unknown as UptimeRatioRow[];
+  });
 }

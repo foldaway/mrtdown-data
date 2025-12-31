@@ -1,4 +1,4 @@
-import { connect } from '../../../db/connect.js';
+import { withConnection } from '../../../db/connect.js';
 
 interface Row {
   issue_id: string;
@@ -17,9 +17,8 @@ interface Row {
 }
 
 export async function issueGetQuery(issueId: string) {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT
       i.id AS issue_id,
       i.title,
@@ -48,14 +47,15 @@ export async function issueGetQuery(issueId: string) {
     GROUP BY i.id, i.title, i.type;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql, [issueId]);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
+    const result = await connection.runAndReadAll(sql, [issueId]);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
 
-  // Process the updates to handle empty arrays properly
-  return rows.map((row) => ({
-    ...row,
-    intervals:
-      row.intervals?.filter((interval) => interval.start_at !== null) || [],
-    updates: row.updates?.filter((update) => update.type !== null) || [],
-  }));
+    // Process the updates to handle empty arrays properly
+    return rows.map((row) => ({
+      ...row,
+      intervals:
+        row.intervals?.filter((interval) => interval.start_at !== null) || [],
+      updates: row.updates?.filter((update) => update.type !== null) || [],
+    }));
+  });
 }

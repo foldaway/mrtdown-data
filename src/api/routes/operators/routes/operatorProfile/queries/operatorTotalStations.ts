@@ -1,13 +1,12 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 
 interface Row {
   total_stations: number;
 }
 
 export async function operatorTotalStationsQuery(operatorId: string) {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     WITH operator_lines AS (
       SELECT DISTINCT lo.line_id
       FROM line_operators lo
@@ -21,7 +20,8 @@ export async function operatorTotalStationsQuery(operatorId: string) {
       AND (bm.ended_at IS NULL OR bm.ended_at > CURRENT_DATE)
   `;
 
-  const result = await connection.runAndReadAll(sql, [operatorId]);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows;
+    const result = await connection.runAndReadAll(sql, [operatorId]);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows;
+  });
 }

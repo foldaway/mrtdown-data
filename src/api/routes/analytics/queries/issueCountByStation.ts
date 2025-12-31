@@ -1,4 +1,4 @@
-import { connect } from '../../../../db/connect.js';
+import { withConnection } from '../../../../db/connect.js';
 import type { IssueType } from '../../../../schema/Issue.js';
 
 const LIMIT = 10;
@@ -10,9 +10,8 @@ interface Row {
 }
 
 export async function issueCountByStation() {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     WITH station_counts AS (
       SELECT
         s.id AS station_id,
@@ -34,6 +33,7 @@ export async function issueCountByStation() {
     LIMIT ${LIMIT};
 `;
 
-  const rows = await connection.runAndReadAll(sql);
-  return rows.getRowObjectsJson() as unknown as Row[];
+    const rows = await connection.runAndReadAll(sql);
+    return rows.getRowObjectsJson() as unknown as Row[];
+  });
 }

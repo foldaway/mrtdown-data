@@ -1,6 +1,6 @@
 import { arrayValue } from '@duckdb/node-api';
 import { DateTime } from 'luxon';
-import { connect } from '../../db/connect.js';
+import { withConnection } from '../../db/connect.js';
 import { assert } from '../../util/assert.js';
 import type { Issue } from '../schema/Issue.js';
 import type { Landmark } from '../schema/Landmark.js';
@@ -14,8 +14,8 @@ export async function fetchLinesByIds(ids: string[]) {
   if (ids.length === 0) {
     return []; // No IDs provided, return empty array
   }
-  const connection = await connect();
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT id, title, title_translations AS titleTranslations, type, color, started_at AS startedAt,
            STRUCT_PACK(
              weekdays := STRUCT_PACK("start" := weekday_start, "end" := weekday_end),
@@ -37,36 +37,37 @@ export async function fetchLinesByIds(ids: string[]) {
     FROM lines
     WHERE id IN $1
   `;
-  const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
-  return result.getRowObjectsJson().map((row) => {
-    assert(typeof row.titleTranslations === 'string');
-    assert(Array.isArray(row.operators));
-    return {
-      ...row,
-      titleTranslations: JSON.parse(row.titleTranslations),
-      operators: row.operators.map((op: unknown) => {
-        assert(
-          typeof op === 'object' && op !== null && 'operatorId' in op,
-          'Invalid operator structure',
-        );
-        const operator = op as {
-          operatorId: string;
-          startedAt: string | null;
-          endedAt: string | null;
-        };
-        return {
-          operatorId: operator.operatorId,
-          startedAt:
-            operator.startedAt != null
-              ? DateTime.fromSQL(operator.startedAt).toISO()
-              : null,
-          endedAt:
-            operator.endedAt != null
-              ? DateTime.fromSQL(operator.endedAt).toISO()
-              : null,
-        };
-      }),
-    } as Line;
+    const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
+    return result.getRowObjectsJson().map((row) => {
+      assert(typeof row.titleTranslations === 'string');
+      assert(Array.isArray(row.operators));
+      return {
+        ...row,
+        titleTranslations: JSON.parse(row.titleTranslations),
+        operators: row.operators.map((op: unknown) => {
+          assert(
+            typeof op === 'object' && op !== null && 'operatorId' in op,
+            'Invalid operator structure',
+          );
+          const operator = op as {
+            operatorId: string;
+            startedAt: string | null;
+            endedAt: string | null;
+          };
+          return {
+            operatorId: operator.operatorId,
+            startedAt:
+              operator.startedAt != null
+                ? DateTime.fromSQL(operator.startedAt).toISO()
+                : null,
+            endedAt:
+              operator.endedAt != null
+                ? DateTime.fromSQL(operator.endedAt).toISO()
+                : null,
+          };
+        }),
+      } as Line;
+    });
   });
 }
 
@@ -74,8 +75,8 @@ export async function fetchStationsByIds(ids: string[]) {
   if (ids.length === 0) {
     return []; // No IDs provided, return empty array
   }
-  const connection = await connect();
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT
       s.id,
       s.name,
@@ -108,13 +109,14 @@ export async function fetchStationsByIds(ids: string[]) {
     FROM stations s
     WHERE s.id IN $1
   `;
-  const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
-  return result.getRowObjectsJson().map((row) => {
-    assert(typeof row.nameTranslations === 'string');
-    return {
-      ...row,
-      nameTranslations: JSON.parse(row.nameTranslations),
-    } as Station;
+    const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
+    return result.getRowObjectsJson().map((row) => {
+      assert(typeof row.nameTranslations === 'string');
+      return {
+        ...row,
+        nameTranslations: JSON.parse(row.nameTranslations),
+      } as Station;
+    });
   });
 }
 
@@ -122,8 +124,8 @@ export async function fetchIssuesByIds(ids: string[]) {
   if (ids.length === 0) {
     return []; // No IDs provided, return empty array
   }
-  const connection = await connect();
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
       SELECT
         i.id,
         i.title,
@@ -183,41 +185,43 @@ export async function fetchIssuesByIds(ids: string[]) {
       WHERE i.id IN $1
       GROUP BY i.id, i.title, i.title_translations, i.type
     `;
-  const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
+    const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
 
-  return result.getRowObjectsJson().map((row) => {
-    assert(typeof row.titleTranslations === 'string');
-    assert(Array.isArray(row.intervals));
-    return {
-      ...row,
-      titleTranslations: JSON.parse(row.titleTranslations),
-      intervals: row.intervals.map((interval) => {
-        assert(typeof interval === 'object' && interval !== null);
-        assert(
-          'startAt' in interval &&
-            (interval.startAt == null || typeof interval.startAt === 'string'),
-        );
-        assert(
-          'endAt' in interval &&
-            (interval.endAt == null || typeof interval.endAt === 'string'),
-        );
-        assert('status' in interval && typeof interval.status === 'string');
+    return result.getRowObjectsJson().map((row) => {
+      assert(typeof row.titleTranslations === 'string');
+      assert(Array.isArray(row.intervals));
+      return {
+        ...row,
+        titleTranslations: JSON.parse(row.titleTranslations),
+        intervals: row.intervals.map((interval) => {
+          assert(typeof interval === 'object' && interval !== null);
+          assert(
+            'startAt' in interval &&
+              (interval.startAt == null ||
+                typeof interval.startAt === 'string'),
+          );
+          assert(
+            'endAt' in interval &&
+              (interval.endAt == null || typeof interval.endAt === 'string'),
+          );
+          assert('status' in interval && typeof interval.status === 'string');
 
-        const startAt =
-          interval.startAt != null
-            ? DateTime.fromSQL(interval.startAt).toISO()
-            : null;
-        const endAt =
-          interval.endAt != null
-            ? DateTime.fromSQL(interval.endAt).toISO()
-            : null;
-        return {
-          startAt,
-          endAt,
-          status: interval.status,
-        };
-      }),
-    } as Issue;
+          const startAt =
+            interval.startAt != null
+              ? DateTime.fromSQL(interval.startAt).toISO()
+              : null;
+          const endAt =
+            interval.endAt != null
+              ? DateTime.fromSQL(interval.endAt).toISO()
+              : null;
+          return {
+            startAt,
+            endAt,
+            status: interval.status,
+          };
+        }),
+      } as Issue;
+    });
   });
 }
 
@@ -225,19 +229,20 @@ export async function fetchLandmarksByIds(ids: string[]) {
   if (ids.length === 0) {
     return []; // No IDs provided, return empty array
   }
-  const connection = await connect();
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT id, name, name_translations AS nameTranslations
     FROM landmarks
     WHERE id IN $1
   `;
-  const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
-  return result.getRowObjectsJson().map((row) => {
-    assert(typeof row.nameTranslations === 'string');
-    return {
-      ...row,
-      nameTranslations: JSON.parse(row.nameTranslations),
-    } as Landmark;
+    const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
+    return result.getRowObjectsJson().map((row) => {
+      assert(typeof row.nameTranslations === 'string');
+      return {
+        ...row,
+        nameTranslations: JSON.parse(row.nameTranslations),
+      } as Landmark;
+    });
   });
 }
 
@@ -245,19 +250,20 @@ export async function fetchTownsByIds(ids: string[]) {
   if (ids.length === 0) {
     return []; // No IDs provided, return empty array
   }
-  const connection = await connect();
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT id, name, name_translations AS nameTranslations
     FROM towns
     WHERE id IN $1
   `;
-  const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
-  return result.getRowObjectsJson().map((row) => {
-    assert(typeof row.nameTranslations === 'string');
-    return {
-      ...row,
-      nameTranslations: JSON.parse(row.nameTranslations),
-    } as Town;
+    const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
+    return result.getRowObjectsJson().map((row) => {
+      assert(typeof row.nameTranslations === 'string');
+      return {
+        ...row,
+        nameTranslations: JSON.parse(row.nameTranslations),
+      } as Town;
+    });
   });
 }
 
@@ -265,18 +271,19 @@ export async function fetchOperatorsByIds(ids: string[]) {
   if (ids.length === 0) {
     return []; // No IDs provided, return empty array
   }
-  const connection = await connect();
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT id, name, name_translations AS nameTranslations, founded_at AS foundedAt, url
     FROM operators
     WHERE id IN $1
   `;
-  const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
-  return result.getRowObjectsJson().map((row) => {
-    assert(typeof row.nameTranslations === 'string');
-    return {
-      ...row,
-      nameTranslations: JSON.parse(row.nameTranslations),
-    } as Operator;
+    const result = await connection.runAndReadAll(sql, [arrayValue(ids)]);
+    return result.getRowObjectsJson().map((row) => {
+      assert(typeof row.nameTranslations === 'string');
+      return {
+        ...row,
+        nameTranslations: JSON.parse(row.nameTranslations),
+      } as Operator;
+    });
   });
 }

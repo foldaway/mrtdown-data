@@ -1,4 +1,4 @@
-import { connect } from '../../../db/connect.js';
+import { withConnection } from '../../../db/connect.js';
 
 interface Row {
   issue_id: string;
@@ -15,9 +15,8 @@ interface Row {
 }
 
 export async function issueSearchQuery(dateMin: string, dateMax: string) {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT
       i.id AS issue_id,
       i.title,
@@ -46,19 +45,20 @@ export async function issueSearchQuery(dateMin: string, dateMax: string) {
     ORDER BY ii.start_at DESC, i.id ASC;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql, [
-    dateMin,
-    dateMax, // start_at range check
-    dateMin,
-    dateMax, // end_at range check
-    dateMin,
-    dateMax, // overlapping range check
-  ]);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
+    const result = await connection.runAndReadAll(sql, [
+      dateMin,
+      dateMax, // start_at range check
+      dateMin,
+      dateMax, // end_at range check
+      dateMin,
+      dateMax, // overlapping range check
+    ]);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
 
-  // Process the updates to handle empty arrays properly
-  return rows.map((row) => ({
-    ...row,
-    updates: row.updates?.filter((update) => update.type !== null) || [],
-  }));
+    // Process the updates to handle empty arrays properly
+    return rows.map((row) => ({
+      ...row,
+      updates: row.updates?.filter((update) => update.type !== null) || [],
+    }));
+  });
 }

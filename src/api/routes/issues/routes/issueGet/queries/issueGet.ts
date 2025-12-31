@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 
 interface Row {
   id: string;
@@ -11,9 +11,8 @@ interface Row {
 }
 
 export async function issueGetQuery(issueId: string) {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT
       issues.id,
       ARRAY_AGG(
@@ -30,7 +29,8 @@ export async function issueGetQuery(issueId: string) {
     GROUP BY issues.id;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql, [issueId]);
-  const rows = result.getRowObjectsJson() as unknown as Row[];
-  return rows;
+    const result = await connection.runAndReadAll(sql, [issueId]);
+    const rows = result.getRowObjectsJson() as unknown as Row[];
+    return rows;
+  });
 }

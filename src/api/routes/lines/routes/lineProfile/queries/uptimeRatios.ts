@@ -1,4 +1,4 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 import type { Granularity } from '../../../../../schema/Granularity.js';
 
 interface UptimeRatioRow {
@@ -17,8 +17,8 @@ export async function uptimeRatiosQuery(
   granularity: Granularity,
   count: number,
 ) {
-  const connection = await connect();
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     WITH bounds AS (
       SELECT
         DATE_TRUNC('${granularity}', (NOW() AT TIME ZONE 'Asia/Singapore') - INTERVAL ${count - 1} ${granularity}) AS start_time,
@@ -155,6 +155,7 @@ export async function uptimeRatiosQuery(
     LEFT JOIN downtime_summary ds ON b.bucket_start = ds.bucket_start
     ORDER BY b.bucket_start;
 `.trim();
-  const rows = await connection.runAndReadAll(sql, [lineId]);
-  return rows.getRowObjectsJson() as unknown as UptimeRatioRow[];
+    const rows = await connection.runAndReadAll(sql, [lineId]);
+    return rows.getRowObjectsJson() as unknown as UptimeRatioRow[];
+  });
 }

@@ -1,13 +1,12 @@
-import { connect } from '../../../../../../db/connect.js';
+import { withConnection } from '../../../../../../db/connect.js';
 
 interface Row {
   issue_id: string;
 }
 
 export async function issueNextMaintenanceIdQuery(lineId: string) {
-  const connection = await connect();
-
-  const sql = `
+  return await withConnection(async (connection) => {
+    const sql = `
     SELECT i.id as issue_id
     FROM issues i
     JOIN issue_lines il ON i.id = il.issue_id
@@ -19,7 +18,8 @@ export async function issueNextMaintenanceIdQuery(lineId: string) {
     LIMIT 1;
   `.trim();
 
-  const result = await connection.runAndReadAll(sql, [lineId]);
-  const rows = result.getRowObjectsJson();
-  return rows as unknown as Row[];
+    const result = await connection.runAndReadAll(sql, [lineId]);
+    const rows = result.getRowObjectsJson();
+    return rows as unknown as Row[];
+  });
 }
