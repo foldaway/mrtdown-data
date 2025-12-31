@@ -1,6 +1,8 @@
 import 'dotenv/config';
-import { type DuckDBConnection, DuckDBInstance } from '@duckdb/node-api';
+import { type DuckDBConnection, DuckDBInstanceCache } from '@duckdb/node-api';
 import { assert } from '../util/assert.js';
+
+const cache = new DuckDBInstanceCache();
 
 let connection: DuckDBConnection;
 
@@ -16,7 +18,10 @@ export async function connect(
   assert(DUCKDB_DATABASE_PATH != null, 'DUCKDB_DATABASE_PATH must be set');
 
   if (connection == null) {
-    const instance = await DuckDBInstance.create(DUCKDB_DATABASE_PATH, options);
+    const instance = await cache.getOrCreateInstance(
+      DUCKDB_DATABASE_PATH,
+      options,
+    );
     connection = await instance.connect();
   }
   return connection;
