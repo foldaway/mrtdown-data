@@ -34,6 +34,7 @@
     "@sentry/node": "^10.27.0",
     "dotenv": "^16.4.7",
     "fuse.js": "^7.1.0",
+    "generic-pool": "^3.9.0",
     "hast-util-from-html": "^2.0.3",
     "hast-util-to-mdast": "^10.1.2",
     "hono": "^4.10.3",
