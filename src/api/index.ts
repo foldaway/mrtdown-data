@@ -12,6 +12,7 @@ import { stationsRoute } from './routes/stations/index.js';
 import { metadataRoute } from './routes/metadata/index.js';
 import { HTTPException } from 'hono/http-exception';
 import { operatorsRoute } from './routes/operators/index.js';
+import { logger } from 'hono/logger';
 
 /**
  * The server accepts a comma-separated list of API tokens in the environment variable `API_TOKENS`.
@@ -34,6 +35,8 @@ app.onError((err, c) => {
 const authMiddleware = bearerAuth({
   token: API_TOKENS.split(','),
 });
+
+app.use(logger());
 
 app.use('*', async (c, next) => {
   const path = c.req.path;
