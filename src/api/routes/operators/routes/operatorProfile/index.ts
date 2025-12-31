@@ -112,13 +112,19 @@ operatorProfileRoute.get(
     const linesWithMaintenance = linePerformanceRows.filter(
       (lp) => lp.status === 'ongoing_maintenance',
     );
+    const linesClosedForDay = linePerformanceRows.filter(
+      (lp) => lp.status === 'closed_for_day',
+    );
     const linesAffected: string[] = [];
     let currentOperationalStatus:
       | 'all_operational'
       | 'some_lines_disrupted'
-      | 'some_lines_under_maintenance';
+      | 'some_lines_under_maintenance'
+      | 'all_lines_closed_for_day';
 
-    if (linesWithDisruptions.length > 0) {
+    if (linesClosedForDay.length === linePerformanceRows.length) {
+      currentOperationalStatus = 'all_lines_closed_for_day';
+    } else if (linesWithDisruptions.length > 0) {
       currentOperationalStatus = 'some_lines_disrupted';
       linesAffected.push(...linesWithDisruptions.map((lp) => lp.line_id));
     } else if (linesWithMaintenance.length > 0) {

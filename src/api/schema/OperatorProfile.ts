@@ -35,6 +35,7 @@ export const OperatorProfileSchema = z
         'all_operational',
         'some_lines_disrupted',
         'some_lines_under_maintenance',
+        'all_lines_closed_for_day',
       ])
       .meta({
         description: 'Current operational status across all lines.',
