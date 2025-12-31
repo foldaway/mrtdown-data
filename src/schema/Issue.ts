@@ -39,9 +39,7 @@ const IssueBase = z.object({
       ta: z.string(),
     })
     .describe('Translations of the title field'),
-  lineIdsAffected: z
-    .array(LineIdSchema)
-    .describe('List of lines affected'),
+  lineIdsAffected: z.array(LineIdSchema).describe('List of lines affected'),
   stationIdsAffected: z
     .array(IssueStationEntrySchema)
     .describe('List of stations affected'),
@@ -148,7 +146,7 @@ export type IssueMaintenanceSubtype = z.infer<
 /** [MAINTENANCE] */
 export const IssueMaintenanceSchema = IssueBase.extend({
   type: z.literal(IssueTypeSchema.enum.maintenance),
-  rrule: z.string().optional(),
+  rrule: z.string().nullable(),
   cancelledAt: z
     .string()
     .refine((val) => DateTime.fromISO(val).isValid)
@@ -194,7 +192,7 @@ export type IssueInfraSubtype = z.infer<typeof IssueDisruptionSubtypeSchema>;
 /** [INFRA] */
 export const IssueInfraSchema = IssueBase.extend({
   type: z.literal(IssueTypeSchema.enum.infra),
-  rrule: z.string().optional(),
+  rrule: z.string().nullable(),
   updates: z.array(IssueInfraUpdateSchema),
   subtypes: z.array(IssueInfraSubtypeSchema),
 });

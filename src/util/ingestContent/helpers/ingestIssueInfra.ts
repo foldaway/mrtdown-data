@@ -59,6 +59,7 @@ export async function ingestIssueInfra(
       endAt: null,
       updates: [],
       subtypes: [],
+      rrule: null,
     };
   }
 

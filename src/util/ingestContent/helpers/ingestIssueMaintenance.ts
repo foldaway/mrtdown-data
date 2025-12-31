@@ -61,6 +61,7 @@ export async function ingestIssueMaintenance(
       endAt: null,
       updates: [],
       subtypes: [],
+      rrule: null,
     };
   }
 

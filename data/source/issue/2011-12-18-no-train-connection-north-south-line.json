@@ -128,5 +128,6 @@
   "lineIdsAffected": [
     "NSL",
     "EWL"
-  ]
+  ],
+  "rrule": null
 }
