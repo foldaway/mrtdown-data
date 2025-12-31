@@ -30,8 +30,8 @@ export async function operatorSummaryQuery(operatorId: string, days: number) {
     calendar_days AS (
       SELECT gs::DATE AS day
       FROM generate_series(
-        DATE_TRUNC('day', (SELECT start_time FROM bounds) AT TIME ZONE 'Asia/Singapore'),
-        DATE_TRUNC('day', (SELECT end_time   FROM bounds) AT TIME ZONE 'Asia/Singapore'),
+        DATE_TRUNC('day', (SELECT start_time FROM bounds)),
+        DATE_TRUNC('day', (SELECT end_time   FROM bounds)),
         INTERVAL 1 day
       ) AS t(gs)
     ),
