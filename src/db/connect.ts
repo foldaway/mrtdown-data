@@ -23,6 +23,11 @@ export async function connect(
       options,
     );
     connection = await instance.connect();
+
+    // Temporary debugging
+    await connection.run(
+      `CALL enable_logging(level = 'warn', storage = 'stdout');`,
+    );
   }
   return connection;
 }
