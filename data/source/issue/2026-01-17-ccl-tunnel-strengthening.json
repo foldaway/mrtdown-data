@@ -7,13 +7,19 @@
     "ta": "CCL சுரங்க வலிமையாக்கம் - மென்மையான கடல்கொழும்பு பிரிவுகள்"
   },
   "startAt": "2026-01-17T00:00:00.000+08:00",
-  "endAt": "2026-04-19T23:59:00.000+08:00",
+  "endAt": "2026-04-20T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
     "track.work"
   ],
   "updates": [
+    {
+      "type": "planned",
+      "text": "Shuttle buses will operate during peak hours to ferry passengers to stations not affected by the works.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/train-service-changes-on-circle-line-as-tunnel-strengthening-works-begin-on-jan-17",
+      "createdAt": "2026-01-08T16:30:00.000+08:00"
+    },
     {
       "type": "planned",
       "text": "Underground tunnels serving three stations on the Circle Line will be partially closed early next year for strengthening works to address a phenomenon known as \"tunnel squatting\".",
