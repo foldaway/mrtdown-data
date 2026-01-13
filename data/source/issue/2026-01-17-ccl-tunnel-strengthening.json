@@ -16,6 +16,12 @@
   "updates": [
     {
       "type": "planned",
+      "text": "The scheduled disruption is expected to last from Jan 17 to Apr 19 and will affect about 480,000 commuters daily.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/circle-line-scheduled-closure-jeffrey-siow-shuttle-bus-5854666",
+      "createdAt": "2026-01-13T11:23:38.000+08:00"
+    },
+    {
+      "type": "planned",
       "text": "Shuttle buses will operate during peak hours to ferry passengers to stations not affected by the works.",
       "sourceUrl": "https://www.straitstimes.com/singapore/transport/train-service-changes-on-circle-line-as-tunnel-strengthening-works-begin-on-jan-17",
       "createdAt": "2026-01-08T16:30:00.000+08:00"
