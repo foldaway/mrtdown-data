@@ -1,0 +1,41 @@
+{
+  "id": "2026-01-13-ccl-minor-delay-bishan-buona-vista",
+  "title": "CCL Minor Delay - Bishan to Buona Vista",
+  "title_translations": {
+    "zh-Hans": "CCL 轻微延误 - Bishan 至 Buona Vista",
+    "ms": "CCL Lewat Ringan - Bishan ke Buona Vista",
+    "ta": "CCL சிறு தாமதம் - Bishan முதல் Buona Vista வரை"
+  },
+  "lineIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2026-01-13T19:13:00.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "19:13-CCL-Minor delay affecting train station services between Bishan and Buona Vista stations (both directions). Commuter can continue to use the train service or consider free bus services at affected stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115887505921938069",
+      "createdAt": "2026-01-13T19:16:47.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "lineId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV"
+      ]
+    }
+  ]
+}
