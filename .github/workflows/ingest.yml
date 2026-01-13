@@ -28,7 +28,7 @@ jobs:
           echo "latest-branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
       - name: Get npm cache directory
         id: npm-cache-dir
         shell: bash
