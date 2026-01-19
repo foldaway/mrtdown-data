@@ -20,6 +20,12 @@
   "updates": [
     {
       "type": "planned",
+      "text": "05:30-CCL-Planned train service adjustments from 17 January to 19 April 2026. Circle Line train service headways will be adjusted to facilitate tunnel strengthening works. Commuters should factor in additional travelling times of up to 30 minutes during peak hours, and consider alternative MRT lines and bus services. Please visit go.gov.sg/circle-line-tunnel-works for more information. For crowd status at Serangoon, please visit www.lta.gov.sg/content/ltagov/en/map/train-crowd-status.html",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115918813422814220",
+      "createdAt": "2026-01-19T07:58:42.000+08:00"
+    },
+    {
+      "type": "planned",
       "text": "Shuttle trains between Mountbatten, Dakota and Paya Lebar stations, arrived every 8½ to 9½ minutes.",
       "sourceUrl": "https://www.straitstimes.com/singapore/transport/first-day-of-circle-line-service-adjustments-confusion-among-passengers-timely-staff-guidance",
       "createdAt": "2026-01-17T11:57:00.000+08:00"
