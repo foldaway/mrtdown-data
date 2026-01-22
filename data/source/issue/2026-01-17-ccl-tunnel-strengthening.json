@@ -4,7 +4,7 @@
   "title_translations": {
     "zh-Hans": "环线隧道加固 - 巴耶利巴至蒙特巴顿（软海洋粘土路段）",
     "ms": "Pengukuhan Terowong CCL - Paya Lebar ke Mountbatten (seksyen tanah lembut marin)",
-    "ta": "CCL சுரங்க வலிமையாக்கம் - பாயா லெபார் முதல் மவுண்ட்பாட்டன் வரை (மென்மையான கடல்கொழும்பு பிரிவுகள்)"
+    "ta": "CCL சுரங்க வலிமையாக்கம் - பாயா லெபார் முதல் மவுன்ட்பாட்டன் வரை (மென்மையான கடல்கொழும்பு பிரிவுகள்)"
   },
   "lineIdsAffected": [
     "CCL"
@@ -18,6 +18,18 @@
   ],
   "rrule": null,
   "updates": [
+    {
+      "type": "planned",
+      "text": "05:30-CCL-Planned train service adjustments from 17 January to 19 April 2026. Circle Line train service headways will be adjusted to facilitate tunnel strengthening works. Commuters should factor in additional travelling times of up to 30 minutes during peak hours, and consider alternative MRT lines and bus services. Please visit go.gov.sg/circle-line-tunnel-works for more information. For crowd status at Serangoon, please visit www.lta.gov.sg/content/ltagov/en/map/train-crowd-status.html",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115936414069316012",
+      "createdAt": "2026-01-22T10:34:46.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "For three months, trains will run on a single platform between three CCL stations – Mountbatten, Dakota and Paya Lebar – to allow for tunnel strengthening works.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/circle-line-planned-service-disruption-mrt-stations-crowd-control-5867596",
+      "createdAt": "2026-01-19T12:04:00.000+08:00"
+    },
     {
       "type": "planned",
       "text": "05:30-CCL-Planned train service adjustments from 17 January to 19 April 2026. Circle Line train service headways will be adjusted to facilitate tunnel strengthening works. Commuters should factor in additional travelling times of up to 30 minutes during peak hours, and consider alternative MRT lines and bus services. Please visit go.gov.sg/circle-line-tunnel-works for more information. For crowd status at Serangoon, please visit www.lta.gov.sg/content/ltagov/en/map/train-crowd-status.html",
