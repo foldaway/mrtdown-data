@@ -1,20 +1,35 @@
 {
-  "id": "2025-12-29-bplrt-track-renewal-full-day-closure",
+  "id": "2026-01-25-bplrt-track-renewal-full-day-closure",
   "title": "BPLRT Track Renewal - Full-line Closure",
   "title_translations": {
     "zh-Hans": "BPLRT 轨道更新 - 全线停运",
     "ms": "BPLRT Pembaharuan Rel - Tutup Sepanjang Laluan",
     "ta": "BPLRT பாதை புதுப்பிப்பு - முழு வரிசை நிறுத்தம்"
   },
-  "startAt": "2026-01-25T00:00:00.000+08:00",
-  "endAt": "2026-01-26T00:00:00.000+08:00",
+  "lineIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2026-01-25T05:30:00+08:00",
+  "endAt": "2026-01-25T23:59:00+08:00",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
-    "track.work",
     "system.upgrade"
   ],
+  "rrule": null,
   "updates": [
+    {
+      "type": "planned",
+      "text": "05:30-BPL-Planned Full Day closure on 25 January 2026. Bukit Panjang Light Rail Line train services would be unavailable to facilitate renewal works. Commuters are advised to use existing bus services or LRT Shuttle B service provided.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115953338321744892",
+      "createdAt": "2026-01-25T10:18:50.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "05:30-BPL-Planned Full Day closure on 25 January 2026. Bukit Panjang Light Rail Line train services would be unavailable to facilitate the migration of the Operations Control Centre. Commuters are advised to use existing bus services or LRT Shuttle B service provided.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115953291120306318",
+      "createdAt": "2026-01-25T10:06:50.000+08:00"
+    },
     {
       "type": "planned",
       "text": "The line will undergo a full-day closure for system renewal works.",
@@ -30,6 +45,7 @@
   ],
   "stationIdsAffected": [
     {
+      "lineId": "BPLRT",
       "branchName": "main",
       "stationIds": [
         "CCK",
@@ -46,12 +62,7 @@
         "JLP",
         "SNJ",
         "BKP"
-      ],
-      "lineId": "BPLRT"
+      ]
     }
-  ],
-  "lineIdsAffected": [
-    "BPLRT"
-  ],
-  "rrule": null
+  ]
 }
