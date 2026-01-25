@@ -10,7 +10,7 @@
     "BPLRT"
   ],
   "startAt": "2026-01-25T05:30:00+08:00",
-  "endAt": "2026-01-25T23:59:00+08:00",
+  "endAt": "2026-01-26T00:00:00+08:00",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
