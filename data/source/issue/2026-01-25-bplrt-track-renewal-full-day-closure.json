@@ -63,23 +63,6 @@
         "SNJ",
         "BKP"
       ]
-    },
-    {
-      "lineId": "BPLRT",
-      "branchName": "tmj",
-      "stationIds": [
-        "TMJ",
-        "BKP",
-        "SNJ",
-        "JLP",
-        "SGR",
-        "FJR",
-        "BKT",
-        "PND",
-        "PTR",
-        "BKP",
-        "TMJ"
-      ]
     }
   ]
 }
