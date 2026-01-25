@@ -1,0 +1,67 @@
+{
+  "id": "2026-01-25-bplrt-operations-control-centre-migration",
+  "title": "BPLRT Planned Closure - Operations Control Centre Migration",
+  "title_translations": {
+    "zh-Hans": "BPLRT 计划停运 - 运营控制中心迁移",
+    "ms": "BPLRT Penutupan Dirancang - Pemindahan Pusat Kawalan Operasi",
+    "ta": "BPLRT திட்டமிட்ட நிறுத்தம் - செயற்பாட்டு கட்டுப்பாட்டு மையம் இடமாற்றம்"
+  },
+  "lineIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2026-01-25T05:30:00+08:00",
+  "endAt": "2026-01-25T23:59:00+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "system.upgrade"
+  ],
+  "rrule": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "05:30-BPL-Planned Full Day closure on 25 January 2026. Bukit Panjang Light Rail Line train services would be unavailable to facilitate the migration of the Operations Control Centre. Commuters are advised to use existing bus services or LRT Shuttle B service provided.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115953291120306318",
+      "createdAt": "2026-01-25T10:06:50.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "lineId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "SHV",
+        "KTH",
+        "TKW",
+        "PNX",
+        "BKP",
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ",
+        "BKP"
+      ]
+    },
+    {
+      "lineId": "BPLRT",
+      "branchName": "tmj",
+      "stationIds": [
+        "TMJ",
+        "BKP",
+        "SNJ",
+        "JLP",
+        "SGR",
+        "FJR",
+        "BKT",
+        "PND",
+        "PTR",
+        "BKP",
+        "TMJ"
+      ]
+    }
+  ]
+}
