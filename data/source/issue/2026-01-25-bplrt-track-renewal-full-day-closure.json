@@ -1,10 +1,10 @@
 {
-  "id": "2026-01-25-bplrt-operations-control-centre-migration",
-  "title": "BPLRT System Upgrade - Operations Control Centre Migration",
+  "id": "2026-01-25-bplrt-track-renewal-full-day-closure",
+  "title": "BPLRT Track Renewal - Full-line Closure",
   "title_translations": {
-    "zh-Hans": "BPLRT 系统升级 - 运营控制中心迁移",
-    "ms": "BPLRT Naiktaraf Sistem - Pemindahan Pusat Kawalan Operasi",
-    "ta": "BPLRT சிஸ்டம் மேம்பாடு - செயற்பாட்டு கட்டுப்பாட்டு மையம் இடமாற்றம்"
+    "zh-Hans": "BPLRT 轨道更新 - 全线停运",
+    "ms": "BPLRT Pembaharuan Rel - Tutup Sepanjang Laluan",
+    "ta": "BPLRT பாதை புதுப்பிப்பு - முழு வரிசை நிறுத்தம்"
   },
   "lineIdsAffected": [
     "BPLRT"
@@ -29,6 +29,18 @@
       "text": "05:30-BPL-Planned Full Day closure on 25 January 2026. Bukit Panjang Light Rail Line train services would be unavailable to facilitate the migration of the Operations Control Centre. Commuters are advised to use existing bus services or LRT Shuttle B service provided.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/115953291120306318",
       "createdAt": "2026-01-25T10:06:50.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "The line will undergo a full-day closure for system renewal works.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/bukit-panjang-lrt-bplrt-close-jan-25-sunday-upgrading-renewal-works-jeffrey-siow-lta-smrt-5754041",
+      "createdAt": "2025-12-30T10:26:36.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "Works that would otherwise need 10 nights to complete can be done in one full-day closure, he said.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/scheduled-closures-are-sometimes-necessary-jeffrey-siow-on-jan-25-bukit-panjang-lrt-closure",
+      "createdAt": "2025-12-29T22:26:00.000+08:00"
     }
   ],
   "stationIdsAffected": [
