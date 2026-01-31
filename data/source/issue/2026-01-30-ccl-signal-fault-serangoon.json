@@ -1,0 +1,96 @@
+{
+  "id": "2026-01-30-ccl-signal-fault-serangoon",
+  "title": "CCL Signal Fault - Serangoon (Public Report)",
+  "title_translations": {
+    "zh-Hans": "CCL 信号故障 - 实龙岗（公众报告）",
+    "ms": "CCL Ralat Isyarat - Serangoon (Laporan Awam)",
+    "ta": "CCL சிக்னல் கோளாறு - செராங்கூன் (பொது அறிக்கை)"
+  },
+  "lineIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2026-01-30T09:06:47.000+08:00",
+  "endAt": "2026-01-31T00:00:00.000+08:00",
+  "type": "disruption",
+  "subtypes": [
+    "signal.fault",
+    "delay"
+  ],
+  "updates": [
+    {
+      "type": "general-public.report",
+      "text": "Circle Line: slight delays in both directions due to a signal fault. Serangoon announced; train arrival screens are down and no estimated restoration time was given. Expect heavier crowds and longer waits, especially at interchange stations toward Paya Lebar.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1qqr397/heads_up_circle_line_slightly_delayed_in_both/",
+      "createdAt": "2026-01-30T09:06:47.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "lineId": "CCL",
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    },
+    {
+      "lineId": "CCL",
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ]
+    }
+  ]
+}
