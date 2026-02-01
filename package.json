@@ -39,6 +39,7 @@
     "hast-util-to-mdast": "^10.1.2",
     "hono": "^4.11.4",
     "hono-openapi": "^0.5.0-rc.3",
+    "json-nd": "^1.0.0",
     "luxon": "^3.5.0",
     "mdast-util-gfm": "^3.1.0",
     "mdast-util-to-markdown": "^2.1.2",
