@@ -17,7 +17,7 @@
   "author": "",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.3.14",
     "@types/luxon": "^3.4.2",
     "@types/node": "^22.13.4",
     "tsx": "^4.19.3",
