@@ -1,0 +1,13 @@
+{
+  "id": "2012-06-25-eunos-to-paya-leber-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption due to track fault between Eunos and Paya Lebar",
+    "zh-Hans": "Eunos 和 Paya Lebar 之间因轨道故障导致的服务中断",
+    "ms": "Gangguan perkhidmatan kerana kerosakan landasan antara Eunos dan Paya Lebar",
+    "ta": "Eunos மற்றும் Paya Lebar இடையே உள்ள தடப் பிழையால் சேவை சீர்குலைவு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

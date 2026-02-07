@@ -1,0 +1,28 @@
+{
+  "id": "DKT",
+  "name": {
+    "en-SG": "Dakota",
+    "zh-Hans": "达科达",
+    "ms": null,
+    "ta": "டகோட்டா"
+  },
+  "geo": {
+    "latitude": 1.3112,
+    "longitude": 103.8874
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC8",
+      "startedAt": "2010-04-17",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "geylang-serai-market",
+    "dakota-crescent",
+    "singapore-sports-hub"
+  ],
+  "townId": "geylang"
+}

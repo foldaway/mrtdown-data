@@ -1,0 +1,28 @@
+{
+  "id": "FMW",
+  "name": {
+    "en-SG": "Farmway",
+    "zh-Hans": "法嘉",
+    "ms": null,
+    "ta": "ஃபஜார்"
+  },
+  "geo": {
+    "latitude": 1.3976,
+    "longitude": 103.8881
+  },
+  "stationCodes": [
+    {
+      "lineId": "SKLRT",
+      "code": "SW2",
+      "startedAt": "2007-11-15",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "sengkang-riverside-park",
+    "anchorvale-community-club",
+    "sengkang-sports-centre"
+  ],
+  "townId": "sengkang"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "RIV",
+  "name": {
+    "en-SG": "Riviera",
+    "zh-Hans": "里维拉",
+    "ms": null,
+    "ta": "ரிவியாரா"
+  },
+  "geo": {
+    "latitude": 1.4018,
+    "longitude": 103.9117
+  },
+  "stationCodes": [
+    {
+      "lineId": "PGLRT",
+      "code": "PE4",
+      "startedAt": "2005-01-29",
+      "endedAt": null,
+      "structureType": "elevated"
+    },
+    {
+      "lineId": "CRL",
+      "code": "CP3",
+      "startedAt": "2032-01-01",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "punggol-waterway-park",
+    "punggol-plaza"
+  ],
+  "townId": "punggol"
+}

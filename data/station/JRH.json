@@ -1,0 +1,27 @@
+{
+  "id": "JRH",
+  "name": {
+    "en-SG": "Jurong Hill",
+    "zh-Hans": "裕廊山",
+    "ms": null,
+    "ta": "ஜூரோங் ஹில்"
+  },
+  "geo": {
+    "latitude": 1.3483,
+    "longitude": 103.7064
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JS11",
+      "startedAt": "2029-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "jurong-hill-park",
+    "jurong-bird-park"
+  ],
+  "townId": "boon-lay"
+}

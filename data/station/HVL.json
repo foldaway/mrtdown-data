@@ -1,0 +1,28 @@
+{
+  "id": "HVL",
+  "name": {
+    "en-SG": "Havelock",
+    "zh-Hans": "合乐",
+    "ms": null,
+    "ta": "ஹவ்லாக்"
+  },
+  "geo": {
+    "latitude": 1.2904,
+    "longitude": 103.8397
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE16",
+      "startedAt": "2022-11-13",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-river",
+    "robertson-walk",
+    "furama-riverfront"
+  ],
+  "townId": "bukit-merah"
+}

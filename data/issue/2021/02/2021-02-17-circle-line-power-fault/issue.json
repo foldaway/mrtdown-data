@@ -1,0 +1,13 @@
+{
+  "id": "2021-02-17-circle-line-power-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Power Fault on Circle Line",
+    "zh-Hans": "环线电力故障",
+    "ms": "Gangguan Kuasa di Laluan Bulat",
+    "ta": "வட்டப் பாதையில் மின்சாரம் தடை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

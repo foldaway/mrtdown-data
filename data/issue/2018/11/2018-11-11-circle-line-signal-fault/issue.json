@@ -1,0 +1,13 @@
+{
+  "id": "2018-11-11-circle-line-signal-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signal Fault on Circle Line",
+    "zh-Hans": "环线信号故障",
+    "ms": "Kerosakan Isyarat di Laluan Lingkar",
+    "ta": "வட்டப் பாதையில் சிக்னல் கோளாறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

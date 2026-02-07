@@ -1,0 +1,27 @@
+{
+  "id": "RMB",
+  "name": {
+    "en-SG": "Rumbia",
+    "zh-Hans": "棕美",
+    "ms": null,
+    "ta": "ரூம்பியா"
+  },
+  "geo": {
+    "latitude": 1.37541,
+    "longitude": 103.9033
+  },
+  "stationCodes": [
+    {
+      "lineId": "SKLRT",
+      "code": "SE2",
+      "startedAt": "2003-01-18",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "sengkang-sports-and-recreation-centre",
+    "compass-one"
+  ],
+  "townId": "sengkang"
+}

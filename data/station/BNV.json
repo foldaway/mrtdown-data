@@ -1,0 +1,35 @@
+{
+  "id": "BNV",
+  "name": {
+    "en-SG": "Buona Vista",
+    "zh-Hans": "波那维斯达",
+    "ms": null,
+    "ta": "புவன விஸ்தா"
+  },
+  "geo": {
+    "latitude": 1.2958,
+    "longitude": 103.785
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW21",
+      "startedAt": "1988-03-12",
+      "endedAt": null,
+      "structureType": "elevated"
+    },
+    {
+      "lineId": "CCL",
+      "code": "CC22",
+      "startedAt": "2011-10-08",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "the-star-vista",
+    "one-north",
+    "singapore-science-park"
+  ],
+  "townId": "queenstown"
+}

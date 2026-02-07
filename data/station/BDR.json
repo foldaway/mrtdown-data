@@ -1,0 +1,28 @@
+{
+  "id": "BDR",
+  "name": {
+    "en-SG": "Bedok Reservoir",
+    "zh-Hans": "勿洛蓄水池",
+    "ms": null,
+    "ta": "பிடோக் ரெசவோர்"
+  },
+  "geo": {
+    "latitude": 1.3446,
+    "longitude": 103.9254
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT30",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "bedok-reservoir-park",
+    "bedok-green-secondary-school",
+    "singapore-sports-school"
+  ],
+  "townId": "bedok"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2012-12-13-ewl-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train Fault on East West Line causing delays",
+    "zh-Hans": "东西线列车故障导致延误",
+    "ms": "Gangguan Kereta di Laluan Timur Barat menyebabkan kelewatan",
+    "ta": "கிழக்கு மேற்கு பாதையில் ரயில் பழுது காரணமாக தாமதங்கள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

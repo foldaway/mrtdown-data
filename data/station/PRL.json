@@ -1,0 +1,27 @@
+{
+  "id": "PRL",
+  "name": {
+    "en-SG": "Elias",
+    "zh-Hans": "伊莱雅",
+    "ms": null,
+    "ta": "இலியாஸ்"
+  },
+  "geo": {
+    "latitude": 1.3765,
+    "longitude": 103.9511
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CP2",
+      "startedAt": "2032-01-01",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "pasir-ris-park",
+    "downtown-east"
+  ],
+  "townId": "pasir-ris"
+}

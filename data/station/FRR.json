@@ -1,0 +1,26 @@
+{
+  "id": "FRR",
+  "name": {
+    "en-SG": "Farrer Road",
+    "zh-Hans": "花拉路",
+    "ms": null,
+    "ta": "ஃபேரர் சாலை"
+  },
+  "geo": {
+    "latitude": 1.3143,
+    "longitude": 103.8142
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC20",
+      "startedAt": "2011-10-08",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-botanic-gardens"
+  ],
+  "townId": "bukit-timah"
+}

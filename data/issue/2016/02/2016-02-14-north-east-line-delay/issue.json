@@ -1,0 +1,13 @@
+{
+  "id": "2016-02-14-north-east-line-delay",
+  "type": "disruption",
+  "title": {
+    "en-SG": "North East Line service disruption",
+    "zh-Hans": "东北线服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Timur Laut",
+    "ta": "வடகிழக்கு வழித்தடத்தில் சேவை தடை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

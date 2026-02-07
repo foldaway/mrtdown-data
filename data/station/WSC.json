@@ -1,0 +1,28 @@
+{
+  "id": "WSC",
+  "name": {
+    "en-SG": "West Coast",
+    "zh-Hans": "西海岸",
+    "ms": null,
+    "ta": "வெஸ்ட் கோஸ்ட்"
+  },
+  "geo": {
+    "latitude": 1.2931,
+    "longitude": 103.757
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR18",
+      "startedAt": "2032-01-01",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "west-coast-park",
+    "west-coast-plaza",
+    "national-sailing-centre"
+  ],
+  "townId": "clementi"
+}

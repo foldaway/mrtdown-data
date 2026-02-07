@@ -1,0 +1,13 @@
+{
+  "id": "2023-11-03-delayed-service-start-tel-service-adjustments",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Delayed service start for Thomson-East Coast Line due to Stage 4 works",
+    "zh-Hans": "由于第四阶段工程，东西海岸线服务启动延迟",
+    "ms": "Mula perkhidmatan tertangguh untuk Laluan Thomson-Timur kerana kerja Peringkat 4",
+    "ta": "நிலை 4 பணிகள் காரணமாக தாம்சன்-கிழக்கு கடற்கரை வழித்தடத்திற்கான தாமதமான சேவை தொடக்கம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

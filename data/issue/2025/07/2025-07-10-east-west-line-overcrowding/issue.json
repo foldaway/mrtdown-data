@@ -1,0 +1,13 @@
+{
+  "id": "2025-07-10-east-west-line-overcrowding",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Public Reports of Overcrowding at East-West Line stations",
+    "zh-Hans": "公共关于东西线车站拥挤情况的报告",
+    "ms": "Laporan Awam Mengenai Kesesakan di Stesen Laluan Timur-Barat",
+    "ta": "கிழக்கு-மேற்கு வழித்தட நிலையங்களில் கூட்டம் குறித்த பொதுக் கணக்குகள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

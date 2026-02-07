@@ -1,0 +1,71 @@
+{
+    "id": "SLL_MAIN_S",
+    "name": {
+        "en-SG": "Seletar Line (Southbound)",
+        "zh-Hans": "新柔线（南向）",
+        "ms": "Laluan Seletar (Arah Selatan)",
+        "ta": "செலெட்டா வழி (தெற்கு திசை)"
+    },
+    "lineId": "SLL",
+    "revisions": [
+        {
+            "id": "r_initial",
+            "startAt": "2025-12-31",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "SLA",
+                        "displayCode": "SL1"
+                    },
+                    {
+                        "stationId": "SLT",
+                        "displayCode": "SL2"
+                    },
+                    {
+                        "stationId": "FNV",
+                        "displayCode": "SL3"
+                    },
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "SL4"
+                    },
+                    {
+                        "stationId": "SER",
+                        "displayCode": "SL5"
+                    },
+                    {
+                        "stationId": "UTS",
+                        "displayCode": "SL6"
+                    },
+                    {
+                        "stationId": "BKB",
+                        "displayCode": "SL7"
+                    },
+                    {
+                        "stationId": "BMC",
+                        "displayCode": "SL8"
+                    },
+                    {
+                        "stationId": "GSW",
+                        "displayCode": "SL9"
+                    },
+                    {
+                        "stationId": "HBF",
+                        "displayCode": "SL9"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:30",
+                    "end": "00:00"
+                },
+                "weekends": {
+                    "start": "05:30",
+                    "end": "00:00"
+                }
+            }
+        }
+    ]
+}

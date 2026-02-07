@@ -1,0 +1,13 @@
+{
+  "id": "2016-12-22-ewl-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "East West Line track fault causing delay",
+    "zh-Hans": "东西线轨道故障导致延误",
+    "ms": "Ralat landasan Laluan Timur Barat menyebabkan kelewatan",
+    "ta": "கிழக்கு மேற்கு பாதையில் ஏற்பட்டுள்ள தடங்கல் காரணமாக தாமதம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

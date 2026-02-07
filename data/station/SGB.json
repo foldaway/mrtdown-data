@@ -1,0 +1,35 @@
+{
+  "id": "SGB",
+  "name": {
+    "en-SG": "Sungei Bedok",
+    "zh-Hans": "双溪勿洛",
+    "ms": null,
+    "ta": "சங்கை பிடோக்"
+  },
+  "geo": {
+    "latitude": 1.334994,
+    "longitude": 103.93413
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT37",
+      "startedAt": "2026-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "TEL",
+      "code": "TE31",
+      "startedAt": "2026-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "bedok-reservoir-park",
+    "changi-methodist-church",
+    "bedok-mall"
+  ],
+  "townId": "bedok"
+}

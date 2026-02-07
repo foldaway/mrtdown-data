@@ -1,0 +1,26 @@
+{
+  "id": "TKN",
+  "name": {
+    "en-SG": "Tukang",
+    "zh-Hans": "都康",
+    "ms": null,
+    "ta": "துக்காங்"
+  },
+  "geo": {
+    "latitude": 1.3196,
+    "longitude": 103.6793
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JS10",
+      "startedAt": "2029-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "pioneer-primary-school"
+  ],
+  "townId": "boon-lay"
+}

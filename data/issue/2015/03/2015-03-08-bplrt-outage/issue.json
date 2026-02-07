@@ -1,0 +1,13 @@
+{
+  "id": "2015-03-08-bplrt-outage",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption on Bukit Panjang LRT",
+    "zh-Hans": "隆邦轻轨服务中断",
+    "ms": "Gangguan perkhidmatan di Bukit Panjang LRT",
+    "ta": "புக்ிட் பஞ்சாங் LRT இல் சேவை சீர்குலைவு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "CGL",
+  "name": {
+    "en-SG": "Cheng Lim",
+    "zh-Hans": "振林",
+    "ms": null,
+    "ta": "செங் லிம்"
+  },
+  "geo": {
+    "latitude": 1.3776,
+    "longitude": 103.8957
+  },
+  "stationCodes": [
+    {
+      "lineId": "SKLRT",
+      "code": "SW1",
+      "startedAt": "2013-01-01",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "sengkang-general-hospital",
+    "compass-one",
+    "sengkang-sports-complex"
+  ],
+  "townId": "sengkang"
+}

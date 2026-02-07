@@ -1,0 +1,13 @@
+{
+  "id": "2013-04-02-bplrt-service-outage",
+  "type": "disruption",
+  "title": {
+    "en-SG": "No service at all BPLRT stations due to suspected power fault",
+    "zh-Hans": "由于疑似电力故障，BPLRT所有车站均无服务",
+    "ms": "Tiada perkhidmatan sama sekali di stesen BPLRT kerana disyaki berlaku gangguan bekalan elektrik",
+    "ta": "மின்சாரக் கோளாறு காரணமாக BPLRT நிலையங்களில் எந்த சேவையும் இல்லை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

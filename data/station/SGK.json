@@ -1,0 +1,35 @@
+{
+  "id": "SGK",
+  "name": {
+    "en-SG": "Sungei Kadut",
+    "zh-Hans": "双溪加株",
+    "ms": null,
+    "ta": "சுங்கை காடுத்"
+  },
+  "geo": {
+    "latitude": 1.4192,
+    "longitude": 103.7464
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS6",
+      "startedAt": "2035-01-01",
+      "endedAt": null,
+      "structureType": "elevated"
+    },
+    {
+      "lineId": "DTL",
+      "code": "DE2",
+      "startedAt": "2035-01-01",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "kranji-countryside",
+    "sungei-kadut-industrial-estate",
+    "kranji-war-memorial"
+  ],
+  "townId": "sungei-kadut"
+}

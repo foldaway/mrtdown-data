@@ -1,0 +1,35 @@
+{
+  "id": "LTI",
+  "name": {
+    "en-SG": "Little India",
+    "zh-Hans": "小印度",
+    "ms": null,
+    "ta": "லிட்டில் இந்தியா"
+  },
+  "geo": {
+    "latitude": 1.3079,
+    "longitude": 103.8488
+  },
+  "stationCodes": [
+    {
+      "lineId": "NEL",
+      "code": "NE7",
+      "startedAt": "2003-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "DTL",
+      "code": "DT12",
+      "startedAt": "2015-12-27",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "sri-veeramakaliamman-temple",
+    "little-india-arcade",
+    "tekka-centre"
+  ],
+  "townId": "rochor"
+}

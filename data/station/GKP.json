@@ -1,0 +1,26 @@
+{
+  "id": "GKP",
+  "name": {
+    "en-SG": "Gek Poh",
+    "zh-Hans": "玉宝",
+    "ms": null,
+    "ta": "ஜெக் போ"
+  },
+  "geo": {
+    "latitude": 1.3405,
+    "longitude": 103.7037
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JW1",
+      "startedAt": "2027-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "gek-poh-ville-community-centre"
+  ],
+  "townId": "jurong-west"
+}

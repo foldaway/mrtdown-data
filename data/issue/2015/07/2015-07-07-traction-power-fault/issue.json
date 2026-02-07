@@ -1,0 +1,13 @@
+{
+  "id": "2015-07-07-traction-power-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Traction power fault causing delays",
+    "zh-Hans": "牵引力故障导致延误",
+    "ms": "Kerosakan kuasa tarikan menyebabkan kelewatan",
+    "ta": "தடைசெய்யும் ஆற்றல் பிழை தாமதங்களுக்குக் காரணம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

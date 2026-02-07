@@ -1,0 +1,27 @@
+{
+  "id": "LRC",
+  "name": {
+    "en-SG": "Lorong Chuan",
+    "zh-Hans": "罗弄泉",
+    "ms": null,
+    "ta": "லோரோங் சுவான்"
+  },
+  "geo": {
+    "latitude": 1.353857,
+    "longitude": 103.873364
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC14",
+      "startedAt": "2009-05-28",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "chuan-park",
+    "nanyang-junior-college"
+  ],
+  "townId": "serangoon"
+}

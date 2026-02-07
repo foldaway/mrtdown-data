@@ -1,0 +1,70 @@
+import Fuse from 'fuse.js';
+import { readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import type { LineId } from '../schema/Line.js';
+import type { Station, StationId } from '../schema/Station.js';
+
+const dirPathIssue = join(import.meta.dirname, '../../../legacy/data/station');
+
+export const StationModel = {
+  getAll(): Station[] {
+    const dirFilesIssue = readdirSync(dirPathIssue);
+    const result: Station[] = [];
+
+    for (const fileName of dirFilesIssue) {
+      const filePath = join(dirPathIssue, fileName);
+      const station = JSON.parse(
+        readFileSync(filePath, { encoding: 'utf-8' }),
+      ) as Station;
+      result.push(station);
+    }
+
+    return result;
+  },
+
+  getOne(id: StationId): Station {
+    const fileName = `${id}.json`;
+    const filePath = join(dirPathIssue, fileName);
+    const station = JSON.parse(
+      readFileSync(filePath, { encoding: 'utf-8' }),
+    ) as Station;
+    return station;
+  },
+
+  getByLineId(lineId: LineId): Station[] {
+    const stations = this.getAll();
+    return stations.filter((s) => lineId in s.lineMembers);
+  },
+
+  searchByName(names: string[]): Station[] {
+    const stations = this.getAll();
+    const fuse = new Fuse(stations, {
+      keys: ['name'],
+      includeScore: true,
+      threshold: 0.4,
+    });
+    const results = fuse.search({
+      $or: names.map((name) => {
+        return {
+          name,
+        };
+      }),
+    });
+
+    return results.map((r) => r.item);
+  },
+
+  delete(id: StationId) {
+    const fileName = `${id}.json`;
+    const filePath = join(dirPathIssue, fileName);
+    rmSync(filePath);
+  },
+
+  save(station: Station) {
+    const fileName = `${station.id}.json`;
+    const filePath = join(dirPathIssue, fileName);
+    writeFileSync(filePath, JSON.stringify(station, null, 2), {
+      encoding: 'utf-8',
+    });
+  },
+};

@@ -1,0 +1,27 @@
+{
+  "id": "ALJ",
+  "name": {
+    "en-SG": "Aljunied",
+    "zh-Hans": "阿裕尼",
+    "ms": null,
+    "ta": "அல்ஜூனிட்"
+  },
+  "geo": {
+    "latitude": 1.3164,
+    "longitude": 103.9039
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW9",
+      "startedAt": "1989-11-04",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "geylang-serai-market",
+    "singapore-post-centre"
+  ],
+  "townId": "geylang"
+}

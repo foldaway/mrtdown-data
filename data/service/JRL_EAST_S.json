@@ -1,0 +1,63 @@
+{
+    "id": "JRL_EAST_S",
+    "lineId": "JRL",
+    "name": {
+        "en-SG": "Jurong Region Line (East Branch) - Southbound",
+        "zh-Hans": "裕廊区域线（东部支线） - 南向",
+        "ms": "Laluan Daerah Jurong (Cawangan Timur) - Arah Selatan",
+        "ta": "ஜூரோங் வட்டாரப் பாதை (கிழக்கு கிளை) - தென்னை திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_2028_stage_2",
+            "startAt": "2028-12-31",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "TGH",
+                        "displayCode": "JS3"
+                    },
+                    {
+                        "stationId": "TGP",
+                        "displayCode": "JE1"
+                    },
+                    {
+                        "stationId": "TGK",
+                        "displayCode": "JE2"
+                    },
+                    {
+                        "stationId": "BBW",
+                        "displayCode": "JE3"
+                    },
+                    {
+                        "stationId": "TGN",
+                        "displayCode": "JE4"
+                    },
+                    {
+                        "stationId": "JUR",
+                        "displayCode": "JE5"
+                    },
+                    {
+                        "stationId": "JTH",
+                        "displayCode": "JE6"
+                    },
+                    {
+                        "stationId": "PDR",
+                        "displayCode": "JE7"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:30",
+                    "end": "00:00"
+                },
+                "weekends": {
+                    "start": "05:30",
+                    "end": "00:00"
+                }
+            }
+        }
+    ]
+}
