@@ -2,10 +2,7 @@ import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, extname, join } from 'node:path';
 import type { Line, LineId } from '../schema/Line.js';
 
-const dirPathLine = join(
-  import.meta.dirname,
-  '../../data/source/line',
-);
+const dirPathLine = join(import.meta.dirname, '../../data/source/line');
 
 export const LineModel = {
   getAllIds(): LineId[] {

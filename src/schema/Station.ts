@@ -24,9 +24,7 @@ export const StationLineMemberSchema = z.object({
   endedAt: z.string().date().optional(),
   structureType: StationLineMemberStructureTypeSchema,
 });
-export type StationLineMember = z.infer<
-  typeof StationLineMemberSchema
->;
+export type StationLineMember = z.infer<typeof StationLineMemberSchema>;
 
 export const StationGeoSchema = z.object({
   latitude: z.number(),

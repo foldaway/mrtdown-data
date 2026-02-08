@@ -1,8 +1,5 @@
 import { z } from 'zod';
-import {
-  type LineId,
-  LineIdSchema,
-} from '../../../schema/Line.js';
+import { type LineId, LineIdSchema } from '../../../schema/Line.js';
 import { assert } from '../../assert.js';
 import { DateTime } from 'luxon';
 import type { IssueStationEntry } from '../../../schema/Issue.js';

@@ -39,12 +39,12 @@ issueHistoryYearRoute.get(
 
     const rows = await issueHistoryYearQuery(year);
 
-    const issuesByMonth = rows.map(row => ({
+    const issuesByMonth = rows.map((row) => ({
       month: row.month,
       issueIds: row.issue_ids,
     }));
 
-    const allIssueIds = rows.flatMap(row => row.issue_ids);
+    const allIssueIds = rows.flatMap((row) => row.issue_ids);
     entitiesCollector.addIssueIds(allIssueIds);
 
     const startAt = startDate.toISODate();

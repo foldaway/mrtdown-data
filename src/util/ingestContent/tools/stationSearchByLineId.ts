@@ -123,9 +123,7 @@ export async function toolStationSearchByLineIdRun(
           children: [
             {
               type: 'text',
-              value: station.line_memberships
-                .map((c) => c.line_id)
-                .join(', '),
+              value: station.line_memberships.map((c) => c.line_id).join(', '),
             },
           ],
         },

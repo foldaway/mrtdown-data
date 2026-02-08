@@ -5,8 +5,8 @@ const REGEX_PHRASE_MATCHES =
 
 const lineIds = LineModel.getAllIds();
 const wordMatches = new Set(
-  [...lineIds, 'MRT', 'LRT', 'train', 'track', 'line', 'fault'].map(
-    (word) => word.toLowerCase(),
+  [...lineIds, 'MRT', 'LRT', 'train', 'track', 'line', 'fault'].map((word) =>
+    word.toLowerCase(),
   ),
 );
 
