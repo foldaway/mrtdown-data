@@ -4,7 +4,7 @@
   "title_translations": {
     "zh-Hans": "环线隧道加固 - 巴耶利巴至蒙特巴顿（软海洋粘土路段）",
     "ms": "Pengukuhan Terowong CCL - Paya Lebar ke Mountbatten (seksyen tanah lembut marin)",
-    "ta": "CCL சுரங்க வலிமையாளாக்கம் - பாயா லெபார் முதல் மவுன்ட்பாட்டன் வரை (மென்மையான கடல்கொழும்பு பிரிவுகள்)"
+    "ta": "CCL சுரங்க வலிமையாளாக்கம் - پாயா லெபார் முதல் மவுன்ட்பாட்டன் வரை (மென்மையான கடல்கொழும்பு பிரிவுகள்)"
   },
   "lineIdsAffected": [
     "CCL"
@@ -18,6 +18,12 @@
   ],
   "rrule": null,
   "updates": [
+    {
+      "type": "planned",
+      "text": "There will be no impact on train services or intervals when works move to the second tunnel.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/ccl-tunnel-strengthening-works-nearly-50-complete-on-track-to-finish-by-april-19",
+      "createdAt": "2026-02-10T12:00:00.000+08:00"
+    },
     {
       "type": "planned",
       "text": "The number of marshals and volunteers deployed on the ground will likely be decreased over time as commuters become more familiar with the new routes, says Senior Minister of State for Transport Sun Xueling.",
