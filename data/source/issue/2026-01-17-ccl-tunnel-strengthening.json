@@ -20,6 +20,12 @@
   "updates": [
     {
       "type": "planned",
+      "text": "09:00-CCL-Planned train service adjustments from 17 Jan to 19 April 2026. Circle Line train service headway will be adjusted to facilitate tunnel strengthening works. Commuters should factor in additional travelling time of up to 30 minutes during peak hours. Please use alternative MRT lines and bus services. On the evening of Mon, 16 Feb (eve of CNY), the Circle Line shuttle buses (S38, S37B, S37C) will not run.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116077654825788962",
+      "createdAt": "2026-02-16T09:14:09.000+08:00"
+    },
+    {
+      "type": "planned",
       "text": "There will be no impact on train services or intervals when works move to the second tunnel.",
       "sourceUrl": "https://www.straitstimes.com/singapore/transport/ccl-tunnel-strengthening-works-nearly-50-complete-on-track-to-finish-by-april-19",
       "createdAt": "2026-02-10T12:00:00.000+08:00"
