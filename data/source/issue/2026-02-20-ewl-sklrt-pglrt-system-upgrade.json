@@ -22,6 +22,12 @@
   "updates": [
     {
       "type": "planned",
+      "text": "Sengkang West LRT to run on single loop for 7 months",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/no-mrt-service-between-tanah-merah-expo-from-march-14-17-due-to-upgrading-works",
+      "createdAt": "2026-02-20T12:52:57.000+08:00"
+    },
+    {
+      "type": "planned",
       "text": "The service adjustments will facilitate essential upgrading works, said the Land Transport Authority, SMRT and SBS Transit.",
       "sourceUrl": "https://www.channelnewsasia.com/singapore/lta-mrt-ewl-lrt-sengkang-punggol-train-services-upgrading-5942101",
       "createdAt": "2026-02-20T12:37:52.000+08:00"
@@ -33,60 +39,7 @@
       "branchName": "changi_airport",
       "stationIds": [
         "TNM",
-        "XPO",
-        "CGA"
-      ]
-    },
-    {
-      "lineId": "EWL",
-      "branchName": "main",
-      "stationIds": [
-        "PSR",
-        "TAM",
-        "SIM",
-        "TNM",
-        "BDK",
-        "KEM",
-        "EUN",
-        "PYL",
-        "ALJ",
-        "KAL",
-        "LVR",
-        "BGS",
-        "CTH",
-        "RFP",
-        "TPG",
-        "OTP",
-        "TIB",
-        "RDH",
-        "QUE",
-        "COM",
-        "BNV",
-        "DVR",
-        "CLE",
-        "JUR",
-        "CNG",
-        "LKS",
-        "BNL",
-        "PNR",
-        "JKN",
-        "GCL",
-        "TCR",
-        "TWR",
-        "TLK"
-      ]
-    },
-    {
-      "lineId": "SKLRT",
-      "branchName": "east",
-      "stationIds": [
-        "SKG",
-        "CPV",
-        "RMB",
-        "BAK",
-        "KGK",
-        "RNG",
-        "SKG"
+        "XPO"
       ]
     },
     {
@@ -101,8 +54,7 @@
         "FNV",
         "LYR",
         "TKG",
-        "RNJ",
-        "SKG"
+        "RNJ"
       ]
     },
     {
