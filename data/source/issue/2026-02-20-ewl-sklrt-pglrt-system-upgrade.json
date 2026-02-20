@@ -1,0 +1,139 @@
+{
+  "id": "2026-02-20-ewl-sklrt-pglrt-system-upgrade",
+  "title": "EWL, SKLRT & PGLRT System Upgrade - Service Adjustments",
+  "title_translations": {
+    "zh-Hans": "东西线、盛港轻轨与榜鹅轻轨 系统升级 - 服务调整",
+    "ms": "EWL, SKLRT & PGLRT Naik Taraf Sistem - Penyesuaian Perkhidmatan",
+    "ta": "EWL, SKLRT மற்றும் PGLRT அமைப்பு மேம்பாடு - சேவை மாற்றங்கள்"
+  },
+  "lineIdsAffected": [
+    "EWL",
+    "SKLRT",
+    "PGLRT"
+  ],
+  "startAt": "2026-02-20T12:37:52.000+08:00",
+  "endAt": null,
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "system.upgrade"
+  ],
+  "rrule": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "The service adjustments will facilitate essential upgrading works, said the Land Transport Authority, SMRT and SBS Transit.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/lta-mrt-ewl-lrt-sengkang-punggol-train-services-upgrading-5942101",
+      "createdAt": "2026-02-20T12:37:52.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "lineId": "EWL",
+      "branchName": "changi_airport",
+      "stationIds": [
+        "TNM",
+        "XPO",
+        "CGA"
+      ]
+    },
+    {
+      "lineId": "EWL",
+      "branchName": "main",
+      "stationIds": [
+        "PSR",
+        "TAM",
+        "SIM",
+        "TNM",
+        "BDK",
+        "KEM",
+        "EUN",
+        "PYL",
+        "ALJ",
+        "KAL",
+        "LVR",
+        "BGS",
+        "CTH",
+        "RFP",
+        "TPG",
+        "OTP",
+        "TIB",
+        "RDH",
+        "QUE",
+        "COM",
+        "BNV",
+        "DVR",
+        "CLE",
+        "JUR",
+        "CNG",
+        "LKS",
+        "BNL",
+        "PNR",
+        "JKN",
+        "GCL",
+        "TCR",
+        "TWR",
+        "TLK"
+      ]
+    },
+    {
+      "lineId": "SKLRT",
+      "branchName": "east",
+      "stationIds": [
+        "SKG",
+        "CPV",
+        "RMB",
+        "BAK",
+        "KGK",
+        "RNG",
+        "SKG"
+      ]
+    },
+    {
+      "lineId": "SKLRT",
+      "branchName": "west",
+      "stationIds": [
+        "SKG",
+        "CGL",
+        "FMW",
+        "KPG",
+        "TNG",
+        "FNV",
+        "LYR",
+        "TKG",
+        "RNJ",
+        "SKG"
+      ]
+    },
+    {
+      "lineId": "PGLRT",
+      "branchName": "east",
+      "stationIds": [
+        "PGL",
+        "COV",
+        "MRD",
+        "CRE",
+        "RIV",
+        "KDL",
+        "OAS",
+        "DAM",
+        "PGL"
+      ]
+    },
+    {
+      "lineId": "PGLRT",
+      "branchName": "west",
+      "stationIds": [
+        "PGL",
+        "SMK",
+        "TKL",
+        "PGP",
+        "SMD",
+        "NBG",
+        "SMG",
+        "STK",
+        "PGL"
+      ]
+    }
+  ]
+}
