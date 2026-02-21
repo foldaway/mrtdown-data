@@ -1,0 +1,42 @@
+{
+  "id": "2026-03-14-ewl-depot-disconnection",
+  "title": "EWL Depot Disconnection - Changi Depot",
+  "title_translations": {
+    "zh-Hans": "东西线车厂切断准备 - 樟宜车厂",
+    "ms": "EWL Pemutusan Depot - Changi Depot",
+    "ta": "EWL டீப்போ பிரிக்கைக்கு முன்னேற்பாடு - Changi Depot"
+  },
+  "lineIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2026-03-14T00:00:00.000+08:00",
+  "endAt": "2026-03-18T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [],
+  "rrule": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "Sengkang West LRT to run on single loop for 7 months",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/no-mrt-service-between-tanah-merah-expo-from-march-14-17-due-to-upgrading-works",
+      "createdAt": "2026-02-20T12:52:57.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "The service adjustments will facilitate essential upgrading works, said the Land Transport Authority, SMRT and SBS Transit.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/lta-mrt-ewl-lrt-sengkang-punggol-train-services-upgrading-5942101",
+      "createdAt": "2026-02-20T12:37:52.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "lineId": "EWL",
+      "branchName": "changi_airport",
+      "stationIds": [
+        "TNM",
+        "XPO"
+      ]
+    }
+  ]
+}
