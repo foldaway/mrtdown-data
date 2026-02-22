@@ -22,7 +22,8 @@
     "@types/node": "^22.13.4",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3",
-    "vitest": "^3.0.9"
+    "vitest": "^3.0.9",
+    "vitest-evals": "^0.5.0"
   },
   "dependencies": {
     "@duckdb/node-api": "^1.4.3-r.2",
