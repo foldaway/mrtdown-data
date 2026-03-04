@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@duckdb/node-api": "^1.4.3-r.2",
-    "@hono/node-server": "^1.19.6",
+    "@hono/node-server": "^1.19.10",
     "@hono/standard-validator": "^0.1.4",
     "@hono/zod-validator": "^0.4.3",
     "@scalar/hono-api-reference": "^0.9.13",
