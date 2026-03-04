@@ -1,0 +1,66 @@
+{
+  "id": "2026-03-04-jrl-tengah-station-opening-delay",
+  "title": "JRL Station Opening Delay - Tengah",
+  "title_translations": {
+    "zh-Hans": "JRL 站点开通延迟 - Tengah",
+    "ms": "JRL Kelewatan Pembukaan Stesen - Tengah",
+    "ta": "JRL நிலையத் திறப்பு தாமதம் - டெங்கா"
+  },
+  "lineIdsAffected": [
+    "JRL"
+  ],
+  "startAt": "2026-03-04T17:06:42.000+08:00",
+  "endAt": "2028-06-30T00:00:00+08:00",
+  "type": "infra",
+  "rrule": null,
+  "subtypes": [
+    "station.renovation"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/new-jurong-region-line-station-added-in-tengah-opening-of-line-delayed-to-mid-2028-jeffrey-siow",
+      "createdAt": "2026-03-04T17:06:42.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "lineId": "JRL",
+      "branchName": "east",
+      "stationIds": [
+        "TGH",
+        "TGP",
+        "TGK",
+        "BBW",
+        "TGN",
+        "JUR",
+        "JTH",
+        "PDR"
+      ]
+    },
+    {
+      "lineId": "JRL",
+      "branchName": "main",
+      "stationIds": [
+        "CCK",
+        "CKW",
+        "TGH",
+        "HGK",
+        "CPN",
+        "JRW",
+        "BHJ",
+        "BNL"
+      ]
+    },
+    {
+      "lineId": "JRL",
+      "branchName": "west",
+      "stationIds": [
+        "BHJ",
+        "GKP",
+        "TWS"
+      ]
+    }
+  ]
+}
