@@ -1,0 +1,38 @@
+{
+  "id": "2026-03-14-ewl-shuttle-bus-replacement-tanah-merah-expo",
+  "title": "EWL Shuttle Bus Replacement - Tanah Merah to Expo",
+  "title_translations": {
+    "zh-Hans": "EWL 巴士接驳服务 - 丹那美拉至博览馆",
+    "ms": "EWL Perkhidmatan Bas Pengganti - Tanah Merah ke Expo",
+    "ta": "EWL மாற்று பேருந்து சேவை - Tanah Merah முதல் Expo வரை"
+  },
+  "lineIdsAffected": [
+    "EWL"
+  ],
+  "startAt": "2026-03-14T00:00:00+08:00",
+  "endAt": "2026-03-17T23:59:00+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
+  "rrule": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "The shuttle bus service will charge the same fares as train journeys.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/shuttle-bus-to-ply-between-tanah-merah-expo-mrt-stations-during-march-14-17-service-suspension",
+      "createdAt": "2026-03-10T12:20:00.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "lineId": "EWL",
+      "branchName": "changi_airport",
+      "stationIds": [
+        "TNM",
+        "XPO"
+      ]
+    }
+  ]
+}
