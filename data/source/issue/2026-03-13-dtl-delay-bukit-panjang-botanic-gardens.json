@@ -10,12 +10,18 @@
     "DTL"
   ],
   "startAt": "2026-03-13T09:16:34.000+08:00",
-  "endAt": null,
+  "endAt": "2026-03-13T09:42:00.000+08:00",
   "type": "disruption",
   "subtypes": [
     "delay"
   ],
   "updates": [
+    {
+      "type": "operator.resolved",
+      "text": "Attention commuters: Train service has fully resumed at 0942hrs.",
+      "sourceUrl": "https://twitter.com/SBSTransit_Ltd/status/2032277069779124535",
+      "createdAt": "2026-03-13T10:06:25.000+08:00"
+    },
     {
       "type": "operator.monitoring",
       "text": "09:26-DTL-Minor delay. Train service is progressively resuming between Botanic Gardens and Stevens stations (towards Expo).  Please expect longer travelling time.",
