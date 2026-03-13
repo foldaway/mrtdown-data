@@ -18,6 +18,12 @@
   "updates": [
     {
       "type": "operator.monitoring",
+      "text": "09:26-DTL-Minor delay. Train service is progressively resuming between Botanic Gardens and Stevens stations (towards Expo).  Please expect longer travelling time.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116219363099037968",
+      "createdAt": "2026-03-13T09:52:26.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
       "text": "Attention commuters: Train service progressively returning to normal (both directions).",
       "sourceUrl": "https://twitter.com/SBSTransit_Ltd/status/2032268103900676097",
       "createdAt": "2026-03-13T09:30:48.000+08:00"
