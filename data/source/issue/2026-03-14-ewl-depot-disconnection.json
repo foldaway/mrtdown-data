@@ -13,9 +13,17 @@
   "endAt": "2026-03-18T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
-  "subtypes": [],
+  "subtypes": [
+    "system.upgrade"
+  ],
   "rrule": null,
   "updates": [
+    {
+      "type": "planned",
+      "text": "05:00-EWL-Planned Train Service Adjustment. There will be no train services between Tanah Merah and Expo stations from 14 to 17 Mar 2026. Train service for other parts of EWL remains normal. Commuters travelling between Tanah Merah to Expo stations can take Shuttle Bus Service S8. Commuters travelling between Changi Airport and City, please use the Downtown Line. For more information, please visit go.gov.sg/lta-ewl-serviceadjustment",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116218216329110509",
+      "createdAt": "2026-03-13T05:00:48.000+08:00"
+    },
     {
       "type": "planned",
       "text": "Sengkang West LRT to run on single loop for 7 months",
