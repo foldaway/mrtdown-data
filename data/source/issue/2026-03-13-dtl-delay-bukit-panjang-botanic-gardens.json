@@ -17,6 +17,12 @@
   ],
   "updates": [
     {
+      "type": "operator.monitoring",
+      "text": "09:26-DTL-Minor delay. Train service is progressively resuming between Botanic Gardens and Stevens stations (towards Expo).  Please expect longer travelling time.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116219268726717391",
+      "createdAt": "2026-03-13T09:28:26.000+08:00"
+    },
+    {
       "type": "operator.update",
       "text": "Attention Commuters: Additional travel time of 15 mins is expected between Bukit Panjang and Botanic Gardens (both directions). Commuters can continue to use the train service.",
       "sourceUrl": "https://twitter.com/SBSTransit_Ltd/status/2032264523483398300",
