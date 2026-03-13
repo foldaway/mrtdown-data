@@ -1,0 +1,43 @@
+{
+  "id": "2026-03-13-dtl-delay-bukit-panjang-botanic-gardens",
+  "title": "DTL Delay - Bukit Panjang to Botanic Gardens",
+  "title_translations": {
+    "zh-Hans": "DTL 服务延误 - 武吉班让至植物园",
+    "ms": "DTL Kelewatan Perkhidmatan - Bukit Panjang ke Botanic Gardens",
+    "ta": "DTL சேவை தாமதம் - புக் பிட் பாஞ் முதல் பாட்டானிக் கார்டன்ஸ் வரை"
+  },
+  "lineIdsAffected": [
+    "DTL"
+  ],
+  "startAt": "2026-03-13T09:16:34.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "Attention Commuters: Additional travel time of 15 mins is expected between Bukit Panjang and Botanic Gardens (both directions). Commuters can continue to use the train service.",
+      "sourceUrl": "https://twitter.com/SBSTransit_Ltd/status/2032264523483398300",
+      "createdAt": "2026-03-13T09:16:34.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "lineId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BKP",
+        "CSW",
+        "HVW",
+        "HME",
+        "BTW",
+        "KAP",
+        "SAV",
+        "TKK",
+        "BTN"
+      ]
+    }
+  ]
+}
