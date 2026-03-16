@@ -20,6 +20,12 @@
   "updates": [
     {
       "type": "planned",
+      "text": "09:18-SK-Minor delay. No train services for Sengkang LRT West Inner Loop. Commuters can continue to use the train service on the Sengkang LRT West Outer Loop. Please expect longer travelling time.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116236327792460724",
+      "createdAt": "2026-03-16T09:46:47.000+08:00"
+    },
+    {
+      "type": "planned",
       "text": "Many crowd marshals were on standby at the MRT stations to direct passengers.",
       "sourceUrl": "https://www.straitstimes.com/singapore/transport/unfazed-passengers-orderly-lines-on-first-day-of-no-mrt-service-between-tanah-merah-and-expo",
       "createdAt": "2026-03-14T13:30:00.000+08:00"
