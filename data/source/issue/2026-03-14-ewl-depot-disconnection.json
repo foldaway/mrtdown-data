@@ -1,16 +1,16 @@
 {
   "id": "2026-03-14-ewl-depot-disconnection",
-  "title": "EWL Depot Disconnection - Changi Depot",
+  "title": "EWL System Upgrade - Tanah Merah to Expo (Changi Depot Disconnection)",
   "title_translations": {
-    "zh-Hans": "\u4e1c\u897f\u7ebf\u8f66\u5382\u5207\u65ad\u51c6\u5907 - \u6a1f\u5b9c\u8f66\u5382",
-    "ms": "EWL Pemutusan Depot - Changi Depot",
-    "ta": "EWL \u0b9f\u0bc0\u0baa\u0bcd\u0baa\u0bcb \u0baa\u0bbf\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bc1\u0ba9\u0bcd\u0ba9\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0b9f\u0bc1 - Changi Depot"
+    "zh-Hans": "东西线 系统升级 - Tanah Merah 至 Expo（樟宜车厂切断）",
+    "ms": "EWL Naiktaraf Sistem - Tanah Merah ke Expo (Pemutusan Depot Changi)",
+    "ta": "EWL அமைப்பு மேம்பாடு - Tanah Merah முதல் Expo (Changi டீப்போ பிரிப்பு)"
   },
   "lineIdsAffected": [
     "EWL"
   ],
   "startAt": "2026-03-14T00:00:00.000+08:00",
-  "endAt": "2026-03-18T00:00:00.000+08:00",
+  "endAt": "2026-03-17T00:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
@@ -18,6 +18,18 @@
   ],
   "rrule": null,
   "updates": [
+    {
+      "type": "planned",
+      "text": "",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/lta-ewl-tanah-merah-expo-5996286",
+      "createdAt": "2026-03-16T17:40:00.000+08:00"
+    },
+    {
+      "type": "planned",
+      "text": "LTA said the early resumption was made possible by good weather and the effective coordination of ground teams.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/mrt-service-from-tanah-merah-to-expo-to-resume-a-day-early-on-march-17",
+      "createdAt": "2026-03-16T17:39:49.000+08:00"
+    },
     {
       "type": "planned",
       "text": "Many crowd marshals were on standby at the MRT stations to direct passengers.",
