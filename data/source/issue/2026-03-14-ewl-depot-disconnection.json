@@ -2,9 +2,9 @@
   "id": "2026-03-14-ewl-depot-disconnection",
   "title": "EWL Depot Disconnection - Changi Depot",
   "title_translations": {
-    "zh-Hans": "东西线车厂切断准备 - 樟宜车厂",
+    "zh-Hans": "\u4e1c\u897f\u7ebf\u8f66\u5382\u5207\u65ad\u51c6\u5907 - \u6a1f\u5b9c\u8f66\u5382",
     "ms": "EWL Pemutusan Depot - Changi Depot",
-    "ta": "EWL டீப்போ பிரிக்கைக்கு முன்னேற்பாடு - Changi Depot"
+    "ta": "EWL \u0b9f\u0bc0\u0baa\u0bcd\u0baa\u0bcb \u0baa\u0bbf\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bc1\u0ba9\u0bcd\u0ba9\u0bc7\u0bb1\u0bcd\u0baa\u0bbe\u0b9f\u0bc1 - Changi Depot"
   },
   "lineIdsAffected": [
     "EWL"
@@ -18,12 +18,6 @@
   ],
   "rrule": null,
   "updates": [
-    {
-      "type": "planned",
-      "text": "09:18-SK-Minor delay. No train services for Sengkang LRT West Inner Loop. Commuters can continue to use the train service on the Sengkang LRT West Outer Loop. Please expect longer travelling time.",
-      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116236327792460724",
-      "createdAt": "2026-03-16T09:46:47.000+08:00"
-    },
     {
       "type": "planned",
       "text": "Many crowd marshals were on standby at the MRT stations to direct passengers.",
