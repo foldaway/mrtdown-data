@@ -1,0 +1,54 @@
+{
+  "id": "2026-03-18-nsl-minor-delay-woodlands-yishun",
+  "title": "NSL Minor Delay - Woodlands & Yishun to Marina South Pier",
+  "title_translations": {
+    "zh-Hans": "NSL 轻微延误 - 兀兰及义顺往滨海南码头",
+    "ms": "NSL Kelewatan Kecil - Woodlands & Yishun ke Marina South Pier",
+    "ta": "NSL சிறிய தாமதம் - வுட்லன்ஸ் மற்றும் யிஷூன் → மரினா சவுத் பியர்"
+  },
+  "lineIdsAffected": [
+    "NSL"
+  ],
+  "startAt": "2026-03-18T08:03:00.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "08:03-NSL-Minor delay. Minor delay affecting train services from Woodlands and Yishun stations (towards Marina South Pier). \nCommuter can continue to use the train service or consider free bus services at affected stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116247251995145348",
+      "createdAt": "2026-03-18T08:04:57.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "lineId": "NSL",
+      "branchName": "main",
+      "stationIds": [
+        "WDL",
+        "ADM",
+        "SBW",
+        "CBR",
+        "YIS",
+        "KTB",
+        "YCK",
+        "AMK",
+        "BSH",
+        "BDL",
+        "TAP",
+        "NOV",
+        "NEW",
+        "ORC",
+        "SOM",
+        "DBG",
+        "CTH",
+        "RFP",
+        "MRB",
+        "MSP"
+      ]
+    }
+  ]
+}
