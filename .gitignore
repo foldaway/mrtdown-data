@@ -149,3 +149,5 @@ dist
 .sentryclirc
 
 migrated-legacy-ids.json
+
+.turbo
