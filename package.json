@@ -4,6 +4,9 @@
   "description": "Data repository",
   "type": "module",
   "main": "dist/index.js",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "vitest",
