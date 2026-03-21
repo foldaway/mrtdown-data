@@ -1,20 +1,17 @@
 {
-  "name": "@mrtdown/core",
+  "name": "mrtdown-data",
   "version": "2.0.0-alpha.19",
   "description": "Data repository",
+  "packageManager": "npm@10.9.0",
   "type": "module",
   "main": "dist/index.js",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "build": "tsc",
-    "test": "vitest",
-    "validate": "tsx src/cli/index.ts validate",
-    "create": "tsx src/cli/index.ts create",
-    "cli": "tsx src/cli/index.ts",
-    "ingest:webhook": "tsx src/scripts/ingestViaWebhook.ts",
-    "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts"
+    "cli": "turbo cli",
+    "build": "turbo build",
+    "test": "turbo test"
   },
   "author": "Foldaway <bottleneck.company@gmail.com>",
   "repository": {
@@ -23,22 +20,7 @@
   },
   "license": "UNLICENSED",
   "devDependencies": {
-    "@biomejs/biome": "2.3.14",
-    "@types/luxon": "^3.4.2",
-    "@types/node": "^22.13.4",
-    "tsx": "^4.19.3",
-    "typescript": "^5.8.3",
-    "vitest": "^3.0.9",
-    "vitest-evals": "^0.5.0"
-  },
-  "files": [
-    "dist"
-  ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
+    "@biomejs/biome": "2.3.14"
   },
   "dependencies": {
     "commander": "^14.0.3",
@@ -53,7 +35,6 @@
     "openai": "^5.16.0",
     "rrule-rust": "^2.0.2",
     "turbo": "^2.8.20",
-    "ulid": "^3.0.2",
     "zod": "^4.0.14"
   },
   "overrides": {
