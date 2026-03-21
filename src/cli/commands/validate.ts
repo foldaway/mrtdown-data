@@ -1,4 +1,4 @@
-import { FileStore } from '#repo/common/FileStore.js';
+import { FileStore } from '../../repo/common/FileStore.js';
 import { type ValidationScope, validateAll } from '../../validators/index.js';
 
 export interface ValidateCliOptions {

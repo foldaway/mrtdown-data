@@ -7,11 +7,11 @@ import z from 'zod';
 import {
   estimateOpenAICostFromUsage,
   normalizeOpenAIResponsesUsage,
-} from '#helpers/estimateOpenAICost.js';
-import { openAiClient } from '#llm/client.js';
-import type { MRTDownRepository } from '#repo/MRTDownRepository.js';
-import { type Claim, ClaimSchema } from '#schema/issue/claim.js';
-import { assert } from '#util/assert.js';
+} from '../../../helpers/estimateOpenAICost.js';
+import { openAiClient } from '../../client.js';
+import type { MRTDownRepository } from '../../../repo/MRTDownRepository.js';
+import { type Claim, ClaimSchema } from '../../../schema/issue/claim.js';
+import { assert } from '../../../util/assert.js';
 import type { ToolRegistry } from '../../common/tool.js';
 import { buildSystemPrompt } from './prompt.js';
 import { FindLinesTool } from './tools/FindLinesTool.js';

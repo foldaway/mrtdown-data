@@ -11,8 +11,8 @@ import type {
   PeriodFixed,
   PeriodFrequency,
   PeriodRecurring,
-} from '#schema/issue/period.js';
-import { assert } from '#util/assert.js';
+} from '../schema/issue/period.js';
+import { assert } from '../util/assert.js';
 
 function toFrequency(frequency: PeriodFrequency): Frequency {
   switch (frequency) {

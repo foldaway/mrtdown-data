@@ -1,10 +1,10 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { createInterface } from 'node:readline';
-import type { IssueType } from '#schema/issue/issueType.js';
-import { IssueTypeSchema } from '#schema/issue/issueType.js';
-import { FileWriteStore } from '#write/common/FileWriteStore.js';
-import { MRTDownWriter } from '#write/MRTDownWriter.js';
+import type { IssueType } from '../../schema/issue/issueType.js';
+import { IssueTypeSchema } from '../../schema/issue/issueType.js';
+import { FileWriteStore } from '../../write/common/FileWriteStore.js';
+import { MRTDownWriter } from '../../write/MRTDownWriter.js';
 
 type CreateOptions = {
   dataDir: string;
