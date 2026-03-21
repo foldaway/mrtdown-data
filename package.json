@@ -55,5 +55,8 @@
   },
   "overrides": {
     "zod": "^4.0.14"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
