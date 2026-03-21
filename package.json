@@ -1,6 +1,6 @@
 {
   "name": "@mrtdown/core",
-  "version": "1.0.0",
+  "version": "2.0.0-alpha.19",
   "description": "Data repository",
   "type": "module",
   "main": "dist/api/index.js",
