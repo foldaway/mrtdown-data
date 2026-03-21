@@ -1,12 +1,12 @@
 import { join } from 'node:path';
 import { NdJson } from 'json-nd';
 import z from 'zod';
-import { LandmarkSchema } from '#schema/Landmark.js';
-import { LineSchema } from '#schema/Line.js';
-import { OperatorSchema } from '#schema/Operator.js';
-import { ServiceSchema } from '#schema/Service.js';
-import { StationSchema } from '#schema/Station.js';
-import { TownSchema } from '#schema/Town.js';
+import { LandmarkSchema } from '../schema/Landmark.js';
+import { LineSchema } from '../schema/Line.js';
+import { OperatorSchema } from '../schema/Operator.js';
+import { ServiceSchema } from '../schema/Service.js';
+import { StationSchema } from '../schema/Station.js';
+import { TownSchema } from '../schema/Town.js';
 import {
   DIR_ISSUE,
   DIR_LANDMARK,

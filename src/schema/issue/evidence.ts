@@ -1,5 +1,5 @@
 import z from 'zod';
-import { TranslationsSchema } from '#schema/common.js';
+import { TranslationsSchema } from '../common.js';
 
 export const EvidenceRenderSchema = z.object({
   text: TranslationsSchema,

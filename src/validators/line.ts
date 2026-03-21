@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 import type z from 'zod';
-import { LineSchema } from '#schema/Line.js';
+import { LineSchema } from '../schema/Line.js';
 import { DIR_LINE } from '../constants.js';
 import type { IStore } from '../repo/common/store.js';
 import type { ValidationContext, ValidationError } from './types.js';

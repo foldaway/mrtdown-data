@@ -1,10 +1,10 @@
 import type { Heading, Root } from 'mdast';
 import { gfmToMarkdown } from 'mdast-util-gfm';
 import { toMarkdown } from 'mdast-util-to-markdown';
-import type { IssueBundleState } from '#repo/issue/helpers/deriveCurrentState.js';
-import type { Evidence } from '#schema/issue/evidence.js';
-import type { Period } from '#schema/issue/period.js';
-import type { ServiceScope } from '#schema/issue/serviceScope.js';
+import type { IssueBundleState } from '../../repo/issue/helpers/deriveCurrentState.js';
+import type { Evidence } from '../../schema/issue/evidence.js';
+import type { Period } from '../../schema/issue/period.js';
+import type { ServiceScope } from '../../schema/issue/serviceScope.js';
 
 export type FormatCurrentStateOptions = {
   state: IssueBundleState | null;

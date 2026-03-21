@@ -3,10 +3,10 @@ import { z } from 'zod';
 import {
   estimateOpenAICostFromUsage,
   normalizeOpenAIResponsesUsage,
-} from '#helpers/estimateOpenAICost.js';
-import { openAiClient } from '#llm/client.js';
-import { TranslationsSchema } from '#schema/common.js';
-import { assert } from '#util/assert.js';
+} from '../../../helpers/estimateOpenAICost.js';
+import { openAiClient } from '../../client.js';
+import { TranslationsSchema } from '../../../schema/common.js';
+import { assert } from '../../../util/assert.js';
 
 export async function translate(text: string) {
   console.log('[translate] Translating text:', text);
