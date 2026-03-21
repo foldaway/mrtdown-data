@@ -17,6 +17,10 @@
     "sentry:sourcemaps": "sentry-cli sourcemaps inject ./dist && sentry-cli sourcemaps upload ./dist --release $SENTRY_RELEASE"
   },
   "author": "Foldaway <bottleneck.company@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrtdown/mrtdown-data.git"
+  },
   "license": "UNLICENSED",
   "devDependencies": {
     "@biomejs/biome": "2.3.14",
@@ -26,6 +30,20 @@
     "typescript": "^5.8.3",
     "vitest": "^3.0.9",
     "vitest-evals": "^0.5.0"
+  },
+  "files": [
+    "dist",
+    "!dist/cli",
+    "!dist/legacy",
+    "!dist/llm",
+    "!dist/scripts",
+    "!dist/validators"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
   },
   "dependencies": {
     "@duckdb/node-api": "^1.4.3-r.2",
