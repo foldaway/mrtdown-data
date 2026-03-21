@@ -46,7 +46,6 @@
     }
   },
   "dependencies": {
-    "@hono/zod-validator": "^0.4.3",
     "@scalar/hono-api-reference": "^0.9.13",
     "@sentry/cli": "^2.58.0",
     "@sentry/node": "^10.27.0",
