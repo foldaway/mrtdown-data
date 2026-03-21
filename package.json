@@ -3,7 +3,7 @@
   "version": "2.0.0-alpha.19",
   "description": "Data repository",
   "type": "module",
-  "main": "dist/api/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "test": "vitest",
@@ -11,10 +11,7 @@
     "create": "tsx src/cli/index.ts create",
     "cli": "tsx src/cli/index.ts",
     "ingest:webhook": "tsx src/scripts/ingestViaWebhook.ts",
-    "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts",
-    "db:generate": "tsx src/db/generate/index.ts",
-    "api:dev": "tsx --watch api/index.ts",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject ./dist && sentry-cli sourcemaps upload ./dist --release $SENTRY_RELEASE"
+    "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts"
   },
   "author": "Foldaway <bottleneck.company@gmail.com>",
   "repository": {
