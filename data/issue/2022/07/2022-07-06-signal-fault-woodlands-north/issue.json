@@ -1,0 +1,13 @@
+{
+  "id": "2022-07-06-signal-fault-woodlands-north",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signal fault at Woodlands North",
+    "zh-Hans": "兀兰北信号故障",
+    "ms": "Ralat isyarat di Woodlands North",
+    "ta": "வுட்லண்ட்ஸ் நார்த் இல் சமிக்ஞை தவறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

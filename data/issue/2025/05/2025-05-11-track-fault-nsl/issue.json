@@ -1,0 +1,13 @@
+{
+  "id": "2025-05-11-track-fault-nsl",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Track Fault on the North-South Line",
+    "zh-Hans": "南北线轨道故障",
+    "ms": "Jejak Kesalahan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் பிழை கண்டறிதல்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

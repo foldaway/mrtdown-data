@@ -1,0 +1,27 @@
+{
+  "id": "BSR",
+  "name": {
+    "en-SG": "Bayshore",
+    "zh-Hans": "碧湾",
+    "ms": null,
+    "ta": "பேஷோர்"
+  },
+  "geo": {
+    "latitude": 1.3055,
+    "longitude": 103.9475
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE29",
+      "startedAt": "2024-06-23",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "east-coast-park",
+    "bayshore-park"
+  ],
+  "townId": "bedok"
+}

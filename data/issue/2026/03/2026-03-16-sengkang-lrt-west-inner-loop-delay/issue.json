@@ -1,0 +1,13 @@
+{
+  "id": "2026-03-16-sengkang-lrt-west-inner-loop-delay",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Minor delay on Sengkang LRT West Inner Loop",
+    "zh-Hans": "Sengkang LRT 西环内圈轻微延误",
+    "ms": "Kelewatan kecil di Sengkang LRT Gelung Dalam Barat",
+    "ta": "Sengkாங் LRT மேற்கு உள் வளையத்தில் சிறிய தாமதம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

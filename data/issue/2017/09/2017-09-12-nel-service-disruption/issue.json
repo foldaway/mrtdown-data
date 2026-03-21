@@ -1,0 +1,13 @@
+{
+  "id": "2017-09-12-nel-service-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "North East Line service disruption due to train fault",
+    "zh-Hans": "东北线因列车故障导致服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Timur Laut kerana kerosakan kereta api",
+    "ta": "வடகிழக்கு வழித்தடத்தில் ரயில் பழுது காரணமாக சேவை தடை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

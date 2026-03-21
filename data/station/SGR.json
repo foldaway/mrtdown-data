@@ -1,0 +1,28 @@
+{
+  "id": "SGR",
+  "name": {
+    "en-SG": "Segar",
+    "zh-Hans": "实加",
+    "ms": null,
+    "ta": "செகார்"
+  },
+  "geo": {
+    "latitude": 1.3761,
+    "longitude": 103.7691
+  },
+  "stationCodes": [
+    {
+      "lineId": "BPLRT",
+      "code": "BP11",
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-panjang-mall",
+    "hillion-mall",
+    "chestnut-nature-park"
+  ],
+  "townId": "bukit-panjang"
+}

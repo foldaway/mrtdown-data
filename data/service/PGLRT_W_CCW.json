@@ -1,0 +1,247 @@
+{
+    "id": "PGLRT_W_CCW",
+    "lineId": "PGLRT",
+    "name": {
+        "en-SG": "Punggol LRT (West Branch) - Clockwise",
+        "zh-Hans": "榜鹅轻轨线（西部支线） - 顺时针方向",
+        "ms": "Laluan LRT Punggol (Cawangan Barat) - Arah Jam",
+        "ta": "பொங்கோல் எல்ஆர்டி வரி (மேற்கு கிளை) - காலம் திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_initial",
+            "startAt": "2014-06-29",
+            "endAt": "2016-02-29",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    },
+                    {
+                        "stationId": "NBG",
+                        "displayCode": "PW5"
+                    },
+                    {
+                        "stationId": "SMG",
+                        "displayCode": "PW6"
+                    },
+                    {
+                        "stationId": "STK",
+                        "displayCode": "PW7"
+                    },
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:27",
+                    "end": "00:45"
+                },
+                "weekends": {
+                    "start": "05:47",
+                    "end": "00:45"
+                }
+            }
+        },
+        {
+            "id": "r_2016_sam_kee",
+            "startAt": "2016-02-29",
+            "endAt": "2016-12-29",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    },
+                    {
+                        "stationId": "SMK",
+                        "displayCode": "PW1"
+                    },
+                    {
+                        "stationId": "NBG",
+                        "displayCode": "PW5"
+                    },
+                    {
+                        "stationId": "SMG",
+                        "displayCode": "PW6"
+                    },
+                    {
+                        "stationId": "STK",
+                        "displayCode": "PW7"
+                    },
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:27",
+                    "end": "00:45"
+                },
+                "weekends": {
+                    "start": "05:47",
+                    "end": "00:45"
+                }
+            }
+        },
+        {
+            "id": "r_2016_punggol_point",
+            "startAt": "2016-12-29",
+            "endAt": "2017-03-31",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    },
+                    {
+                        "stationId": "SMK",
+                        "displayCode": "PW1"
+                    },
+                    {
+                        "stationId": "PGP",
+                        "displayCode": "PW3"
+                    },
+                    {
+                        "stationId": "NBG",
+                        "displayCode": "PW5"
+                    },
+                    {
+                        "stationId": "SMG",
+                        "displayCode": "PW6"
+                    },
+                    {
+                        "stationId": "STK",
+                        "displayCode": "PW7"
+                    },
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:27",
+                    "end": "00:45"
+                },
+                "weekends": {
+                    "start": "05:47",
+                    "end": "00:45"
+                }
+            }
+        },
+        {
+            "id": "r_2016_samudera",
+            "startAt": "2017-03-31",
+            "endAt": "2024-08-15",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    },
+                    {
+                        "stationId": "SMK",
+                        "displayCode": "PW1"
+                    },
+                    {
+                        "stationId": "PGP",
+                        "displayCode": "PW3"
+                    },
+                    {
+                        "stationId": "SMD",
+                        "displayCode": "PW4"
+                    },
+                    {
+                        "stationId": "NBG",
+                        "displayCode": "PW5"
+                    },
+                    {
+                        "stationId": "SMG",
+                        "displayCode": "PW6"
+                    },
+                    {
+                        "stationId": "STK",
+                        "displayCode": "PW7"
+                    },
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:27",
+                    "end": "00:45"
+                },
+                "weekends": {
+                    "start": "05:47",
+                    "end": "00:45"
+                }
+            }
+        },
+        {
+            "id": "r_2016_teck_lee",
+            "startAt": "2024-08-15",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    },
+                    {
+                        "stationId": "SMK",
+                        "displayCode": "PW1"
+                    },
+                    {
+                        "stationId": "TKL",
+                        "displayCode": "PW2"
+                    },
+                    {
+                        "stationId": "PGP",
+                        "displayCode": "PW3"
+                    },
+                    {
+                        "stationId": "SMD",
+                        "displayCode": "PW4"
+                    },
+                    {
+                        "stationId": "NBG",
+                        "displayCode": "PW5"
+                    },
+                    {
+                        "stationId": "SMG",
+                        "displayCode": "PW6"
+                    },
+                    {
+                        "stationId": "STK",
+                        "displayCode": "PW7"
+                    },
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:27",
+                    "end": "00:45"
+                },
+                "weekends": {
+                    "start": "05:47",
+                    "end": "00:45"
+                }
+            }
+        }
+    ]
+}

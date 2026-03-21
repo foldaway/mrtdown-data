@@ -1,0 +1,107 @@
+{
+    "id": "BPLRT_B",
+    "lineId": "BPLRT",
+    "name": {
+        "en-SG": "Bukit Panjang LRT - Service B",
+        "zh-Hans": "武吉班让快速铁路（主线） - 服务B",
+        "ms": "Laluan Rapi Transit Bukit Panjang (Layanan Utama) - Perkhidmatan B",
+        "ta": "புக்கிட் பாஞ்சாங் வரிசையாக்க எம்ஆர்டி (முக்கிய சேவை) - சேவை B"
+    },
+    "revisions": [
+        {
+            "id": "r_initial",
+            "startAt": "1999-11-06",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "CCK",
+                        "displayCode": "BP1"
+                    },
+                    {
+                        "stationId": "SHV",
+                        "displayCode": "BP2"
+                    },
+                    {
+                        "stationId": "KTH",
+                        "displayCode": "BP3"
+                    },
+                    {
+                        "stationId": "TKW",
+                        "displayCode": "BP4"
+                    },
+                    {
+                        "stationId": "PNX",
+                        "displayCode": "BP5"
+                    },
+                    {
+                        "stationId": "BKP",
+                        "displayCode": "BP6"
+                    },
+                    {
+                        "stationId": "PTR",
+                        "displayCode": "BP7"
+                    },
+                    {
+                        "stationId": "PND",
+                        "displayCode": "BP8"
+                    },
+                    {
+                        "stationId": "BKT",
+                        "displayCode": "BP9"
+                    },
+                    {
+                        "stationId": "FJR",
+                        "displayCode": "BP10"
+                    },
+                    {
+                        "stationId": "SGR",
+                        "displayCode": "BP11"
+                    },
+                    {
+                        "stationId": "JLP",
+                        "displayCode": "BP12"
+                    },
+                    {
+                        "stationId": "SNJ",
+                        "displayCode": "BP13"
+                    },
+                    {
+                        "stationId": "BKP",
+                        "displayCode": "BP6"
+                    },
+                    {
+                        "stationId": "PNX",
+                        "displayCode": "BP5"
+                    },
+                    {
+                        "stationId": "TKW",
+                        "displayCode": "BP4"
+                    },
+                    {
+                        "stationId": "KTH",
+                        "displayCode": "BP3"
+                    },
+                    {
+                        "stationId": "SHV",
+                        "displayCode": "BP2"
+                    },
+                    {
+                        "stationId": "CCK",
+                        "displayCode": "BP1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "04:59",
+                    "end": "00:55"
+                },
+                "weekends": {
+                    "start": "05:18",
+                    "end": "00:55"
+                }
+            }
+        }
+    ]
+}

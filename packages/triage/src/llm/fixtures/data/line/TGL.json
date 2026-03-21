@@ -1,0 +1,23 @@
+{
+    "id": "TGL",
+    "name": {
+        "en-SG": "Tengah Line",
+        "zh-Hans": "登加地铁线",
+        "ms": "Laluan MRT Tengah",
+        "ta": "தெங்கா எம்ஆர்டி வழி"
+    },
+    "type": "mrt.high",
+    "color": "#009645",
+    "startedAt": "1987-12-12",
+    "serviceIds": [
+        "TGL_MAIN_E",
+        "TGL_MAIN_W"
+    ],
+    "operators": [
+        {
+            "operatorId": "SMRT_TRAINS",
+            "startedAt": "2025-12-31",
+            "endedAt": null
+        }
+    ]
+}

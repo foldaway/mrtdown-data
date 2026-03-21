@@ -1,0 +1,13 @@
+{
+  "id": "2017-09-15-nsl-signalling-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signalling fault causing train travel delay on North-South Line",
+    "zh-Hans": "南北线信号故障导致列车运行延误",
+    "ms": "Rosak isyarat menyebabkan kelewatan perjalanan kereta di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் ரயில் பயண தாமதத்தை ஏற்படுத்தும் சமிக்ஞை தவறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

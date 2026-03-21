@@ -1,0 +1,13 @@
+{
+  "id": "2014-09-13-nsl-major-delays",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Major delays on North-South Line",
+    "zh-Hans": "南北线发生重大延误",
+    "ms": "Kelewatan besar di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் பெரும் தாமதங்கள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

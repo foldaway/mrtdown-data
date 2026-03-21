@@ -1,0 +1,26 @@
+{
+  "id": "HGK",
+  "name": {
+    "en-SG": "Hong Kah",
+    "zh-Hans": "丰加",
+    "ms": null,
+    "ta": "ஹோங் காஹ்"
+  },
+  "geo": {
+    "latitude": 1.3473,
+    "longitude": 103.7062
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JS4",
+      "startedAt": "2027-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "gek-poh-shopping-centre"
+  ],
+  "townId": "tengah"
+}

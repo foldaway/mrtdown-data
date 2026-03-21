@@ -1,0 +1,42 @@
+{
+  "id": "PSR",
+  "name": {
+    "en-SG": "Pasir Ris",
+    "zh-Hans": "巴西立",
+    "ms": null,
+    "ta": "பாசிர் ரிஸ்"
+  },
+  "geo": {
+    "latitude": 1.3776,
+    "longitude": 103.9467
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW1",
+      "startedAt": "1989-12-16",
+      "endedAt": null,
+      "structureType": "elevated"
+    },
+    {
+      "lineId": "CRL",
+      "code": "CR5",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "CRL",
+      "code": "CP1",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "pasir-ris-park",
+    "downtown-east",
+    "wild-wild-wet"
+  ],
+  "townId": "pasir-ris"
+}

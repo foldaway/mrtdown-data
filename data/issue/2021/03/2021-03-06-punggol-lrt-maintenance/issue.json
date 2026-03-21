@@ -1,0 +1,13 @@
+{
+  "id": "2021-03-06-punggol-lrt-maintenance",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Maintenance works on the Punggol LRT system this weekend",
+    "zh-Hans": "本周末榜鹅轻轨系统进行维修工程",
+    "ms": "Kerja penyelenggaraan di sistem LRT Punggol hujung minggu ini",
+    "ta": "புங்கோல் LRT அமைப்பில் இந்த வார இறுதியில் பராமரிப்புப் பணிகள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

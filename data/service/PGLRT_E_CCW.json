@@ -1,0 +1,165 @@
+{
+    "id": "PGLRT_E_CCW",
+    "lineId": "PGLRT",
+    "name": {
+        "en-SG": "Punggol LRT (East Branch) - Clockwise",
+        "zh-Hans": "榜鹅轻轨线（东部支线） - 顺时针方向",
+        "ms": "Laluan LRT Punggol (Cawangan Timur) - Arah Jam",
+        "ta": "பொங்கோல் எல்ஆர்டி வரி (கிழக்கு கிளை) - காலம் திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_initial",
+            "startAt": "2005-01-29",
+            "endAt": "2007-06-15",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    },
+                    {
+                        "stationId": "COV",
+                        "displayCode": "PE1"
+                    },
+                    {
+                        "stationId": "MRD",
+                        "displayCode": "PE2"
+                    },
+                    {
+                        "stationId": "CRE",
+                        "displayCode": "PE3"
+                    },
+                    {
+                        "stationId": "RIV",
+                        "displayCode": "PE4"
+                    },
+                    {
+                        "stationId": "KDL",
+                        "displayCode": "PE5"
+                    },
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:27",
+                    "end": "00:45"
+                },
+                "weekends": {
+                    "start": "05:47",
+                    "end": "00:45"
+                }
+            }
+        },
+        {
+            "id": "r_2007_oasis",
+            "startAt": "2007-06-15",
+            "endAt": "2011-06-20",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    },
+                    {
+                        "stationId": "COV",
+                        "displayCode": "PE1"
+                    },
+                    {
+                        "stationId": "MRD",
+                        "displayCode": "PE2"
+                    },
+                    {
+                        "stationId": "CRE",
+                        "displayCode": "PE3"
+                    },
+                    {
+                        "stationId": "RIV",
+                        "displayCode": "PE4"
+                    },
+                    {
+                        "stationId": "KDL",
+                        "displayCode": "PE5"
+                    },
+                    {
+                        "stationId": "OAS",
+                        "displayCode": "PE6"
+                    },
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:27",
+                    "end": "00:45"
+                },
+                "weekends": {
+                    "start": "05:47",
+                    "end": "00:45"
+                }
+            }
+        },
+        {
+            "id": "r_2011_damai",
+            "startAt": "2011-06-20",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    },
+                    {
+                        "stationId": "COV",
+                        "displayCode": "PE1"
+                    },
+                    {
+                        "stationId": "MRD",
+                        "displayCode": "PE2"
+                    },
+                    {
+                        "stationId": "CRE",
+                        "displayCode": "PE3"
+                    },
+                    {
+                        "stationId": "RIV",
+                        "displayCode": "PE4"
+                    },
+                    {
+                        "stationId": "KDL",
+                        "displayCode": "PE5"
+                    },
+                    {
+                        "stationId": "OAS",
+                        "displayCode": "PE6"
+                    },
+                    {
+                        "stationId": "DAM",
+                        "displayCode": "PE7"
+                    },
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "PTC"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:27",
+                    "end": "00:45"
+                },
+                "weekends": {
+                    "start": "05:47",
+                    "end": "00:45"
+                }
+            }
+        }
+    ]
+}

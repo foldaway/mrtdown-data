@@ -1,0 +1,28 @@
+{
+  "id": "LBD",
+  "name": {
+    "en-SG": "Labrador Park",
+    "zh-Hans": "拉柏多公园",
+    "ms": null,
+    "ta": "லாப்ரடார் பூங்கா"
+  },
+  "geo": {
+    "latitude": 1.2873,
+    "longitude": 103.8038
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC27",
+      "startedAt": "2011-10-08",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "labrador-nature-reserve",
+    "labrador-battery",
+    "labrador-villa"
+  ],
+  "townId": "bukit-merah"
+}

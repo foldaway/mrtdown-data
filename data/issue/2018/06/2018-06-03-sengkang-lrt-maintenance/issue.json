@@ -1,0 +1,13 @@
+{
+  "id": "2018-06-03-sengkang-lrt-maintenance",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Scheduled Sengkang LRT Maintenance Work",
+    "zh-Hans": "定期的盛港轻轨维护工程",
+    "ms": "Kerja Penyelenggaraan Berjadual Sengkang LRT",
+    "ta": "திட்டமிடப்பட்ட செங்காங் LRT பராமரிப்புப் பணி"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

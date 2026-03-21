@@ -1,0 +1,13 @@
+{
+  "id": "2022-09-24-sengkang-lrt-maintenance",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Sengkang LRT Maintenance Works on 24 & 25 September",
+    "zh-Hans": "Sengkang LRT 维修工作于 9 月 24 日和 25 日",
+    "ms": "Kerja Penyelenggaraan Sengkang LRT pada 24 & 25 September",
+    "ta": "Sengkang LRT பராமரிப்புப் பணிகள் செப்டம்பர் 24 & 25"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

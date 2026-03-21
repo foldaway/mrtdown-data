@@ -1,0 +1,37 @@
+{
+  "id": "SKG",
+  "name": {
+    "en-SG": "Sengkang",
+    "zh-Hans": "盛港",
+    "ms": null,
+    "ta": "செங்காங்"
+  },
+  "geo": {
+    "latitude": 1.393736,
+    "longitude": 103.895173
+  },
+  "stationCodes": [
+    {
+      "lineId": "NEL",
+      "code": "NE16",
+      "startedAt": "2003-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "SKLRT",
+      "code": "STC",
+      "startedAt": "2003-01-18",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "sengkang-riverside-park",
+    "compass-one",
+    "seletar-mall",
+    "anchorvale-park",
+    "punggol-waterway-park"
+  ],
+  "townId": "sengkang"
+}

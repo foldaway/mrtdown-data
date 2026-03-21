@@ -1,0 +1,28 @@
+{
+  "id": "NYC",
+  "name": {
+    "en-SG": "Nanyang Crescent",
+    "zh-Hans": "南洋弯",
+    "ms": null,
+    "ta": "நன்யாங் க்ரெஸ்ஸன்"
+  },
+  "geo": {
+    "latitude": 1.3475,
+    "longitude": 103.7074
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JW4",
+      "startedAt": "2029-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "jurong-lake",
+    "jurong-bird-park",
+    "chinese-garden"
+  ],
+  "townId": "western-water-catchment"
+}

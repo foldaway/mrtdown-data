@@ -1,0 +1,42 @@
+{
+  "name": "@mrtdown/cli",
+  "version": "2.0.0-alpha.6",
+  "description": "",
+  "private": true,
+  "homepage": "https://github.com/foldaway/mrtdown-data#readme",
+  "bugs": {
+    "url": "https://github.com/foldaway/mrtdown-data/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/foldaway/mrtdown-data.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Foldaway <bottleneck.company@gmail.com>",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "cli": "node --enable-source-maps ./dist/index.js",
+    "dev": "tsx ./src/index.ts",
+    "start": "node ./dist/index.js",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@mrtdown/core": "^2.0.0-alpha.6",
+    "@mrtdown/fs": "^2.0.0-alpha.6",
+    "@mrtdown/triage": "^2.0.0-alpha.6",
+    "commander": "^14.0.3",
+    "dotenv": "^16.4.7",
+    "json-nd": "^1.0.0",
+    "luxon": "^3.5.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.14",
+    "@types/luxon": "^3.4.2",
+    "@types/node": "^22.13.4",
+    "fuse.js": "^7.1.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "JTH",
+  "name": {
+    "en-SG": "Jurong Town Hall",
+    "zh-Hans": "裕廊镇大会堂",
+    "ms": null,
+    "ta": "ஜுராங் டவுன் ஹால்"
+  },
+  "geo": {
+    "latitude": 1.3343,
+    "longitude": 103.7429
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JE6",
+      "startedAt": "2028-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "jtc-summit",
+    "jurong-regional-library",
+    "jem"
+  ],
+  "townId": "jurong-east"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "KGK",
+  "name": {
+    "en-SG": "Kangkar",
+    "zh-Hans": "港脚",
+    "ms": null,
+    "ta": "கங்கார்"
+  },
+  "geo": {
+    "latitude": 1.385517,
+    "longitude": 103.895341
+  },
+  "stationCodes": [
+    {
+      "lineId": "SKLRT",
+      "code": "SE4",
+      "startedAt": "2003-01-18",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "sengkang-community-hub",
+    "compass-one",
+    "sengkang-riverside-park"
+  ],
+  "townId": "sengkang"
+}

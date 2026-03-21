@@ -1,0 +1,13 @@
+{
+  "id": "2016-01-22-bplrt-major-service-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Major service disruption on Bukit Panjang LRT",
+    "zh-Hans": "武吉班让轻轨发生重大服务中断",
+    "ms": "Gangguan perkhidmatan utama di Bukit Panjang LRT",
+    "ta": "புக்ிட் பாங் LRT இல் பெரிய சேவை இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

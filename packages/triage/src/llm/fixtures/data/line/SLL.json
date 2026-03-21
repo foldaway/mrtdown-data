@@ -1,0 +1,23 @@
+{
+    "id": "SLL",
+    "name": {
+        "en-SG": "Seletar Line",
+        "zh-Hans": "新柔线",
+        "ms": "Laluan Seletar",
+        "ta": "செலெட்டா வழி"
+    },
+    "type": "lrt",
+    "color": "#000000",
+    "startedAt": "2025-12-31",
+    "serviceIds": [
+        "SLL_MAIN_N",
+        "SLL_MAIN_S"
+    ],
+    "operators": [
+        {
+            "operatorId": "SBS",
+            "startedAt": "2025-12-31",
+            "endedAt": null
+        }
+    ]
+}

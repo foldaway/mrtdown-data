@@ -1,0 +1,13 @@
+{
+  "id": "2016-09-20-circle-line-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Circle Line track fault causing delays",
+    "zh-Hans": "环线轨道故障导致延误",
+    "ms": "Celah trek Laluan Bulat menyebabkan kelewatan",
+    "ta": "வட்டப் பாதையில் தண்டவாளக் கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,53 +1,51 @@
 {
   "name": "mrtdown-data",
-  "version": "1.0.0",
+  "version": "2.0.0-alpha.5",
   "description": "Data repository",
+  "packageManager": "npm@10.9.0",
   "type": "module",
-  "main": "dist/api/index.js",
+  "main": "dist/index.js",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "tsc",
-    "postbuild": "npm run db:generate && npm run sentry:sourcemaps",
-    "test": "vitest",
-    "ingest:webhook": "tsx src/scripts/ingestViaWebhook.ts",
-    "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts",
-    "db:generate": "tsx src/db/generate/index.ts",
-    "api:dev": "tsx --watch api/index.ts",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject ./dist && sentry-cli sourcemaps upload ./dist --release $SENTRY_RELEASE"
+    "cli": "turbo cli",
+    "build": "turbo build",
+    "test": "turbo test",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish",
+    "publish-packages": "turbo run build && changeset version && changeset publish"
   },
-  "author": "",
+  "author": "Foldaway <bottleneck.company@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/foldaway/mrtdown-data.git"
+  },
   "license": "UNLICENSED",
   "devDependencies": {
     "@biomejs/biome": "2.3.14",
-    "@types/luxon": "^3.4.2",
-    "@types/node": "^22.13.4",
-    "tsx": "^4.19.3",
-    "typescript": "^5.8.3",
-    "vitest": "^3.0.9"
+    "@changesets/cli": "^2.30.0"
   },
   "dependencies": {
-    "@duckdb/node-api": "^1.4.3-r.2",
-    "@hono/node-server": "^1.19.6",
-    "@hono/standard-validator": "^0.1.4",
-    "@hono/zod-validator": "^0.4.3",
-    "@scalar/hono-api-reference": "^0.9.13",
-    "@sentry/cli": "^2.58.0",
-    "@sentry/node": "^10.27.0",
+    "commander": "^14.0.3",
     "dotenv": "^16.4.7",
     "fuse.js": "^7.1.0",
-    "generic-pool": "^3.9.0",
     "hast-util-from-html": "^2.0.3",
     "hast-util-to-mdast": "^10.1.2",
-    "hono": "^4.11.4",
-    "hono-openapi": "^0.5.0-rc.3",
+    "json-nd": "^1.0.0",
     "luxon": "^3.5.0",
     "mdast-util-gfm": "^3.1.0",
     "mdast-util-to-markdown": "^2.1.2",
     "openai": "^5.16.0",
     "rrule-rust": "^2.0.2",
-    "rss-parser": "^3.13.0",
+    "turbo": "^2.8.20",
     "zod": "^4.0.14"
   },
   "overrides": {
     "zod": "^4.0.14"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,0 +1,27 @@
+{
+  "id": "XLN",
+  "name": {
+    "en-SG": "Xilin",
+    "zh-Hans": "锡林",
+    "ms": null,
+    "ta": "ஸீலின்"
+  },
+  "geo": {
+    "latitude": 1.3341,
+    "longitude": 103.9621
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT36",
+      "startedAt": "2026-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-expo",
+    "changi-business-park"
+  ],
+  "townId": "tampines"
+}

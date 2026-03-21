@@ -1,0 +1,28 @@
+{
+  "id": "TPE",
+  "name": {
+    "en-SG": "Tampines East",
+    "zh-Hans": "淡滨尼东",
+    "ms": null,
+    "ta": "தெம்பினிஸ் ஈஸ்ட்"
+  },
+  "geo": {
+    "latitude": 1.3501,
+    "longitude": 103.9358
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT33",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "tampines-mall",
+    "century-square",
+    "our-tampines-hub"
+  ],
+  "townId": "tampines"
+}

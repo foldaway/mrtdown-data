@@ -1,0 +1,13 @@
+{
+  "id": "2016-01-17-ccl-operational-exercise",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "CCL operational exercise",
+    "zh-Hans": "CCL运行演习",
+    "ms": "Latihan operasi CCL",
+    "ta": "CCL செயல்பாட்டுப் பயிற்சி"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

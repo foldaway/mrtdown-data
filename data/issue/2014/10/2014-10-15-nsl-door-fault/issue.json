@@ -1,0 +1,13 @@
+{
+  "id": "2014-10-15-nsl-door-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Door Fault at Dhoby Ghaut Station",
+    "zh-Hans": "多美歌站出入口门故障",
+    "ms": "Kegagalan Pintu di Stesen Dhoby Ghaut",
+    "ta": "டோபி கவுட் நிலையத்தில் கதவு கோளாறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

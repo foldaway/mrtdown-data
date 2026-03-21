@@ -1,0 +1,28 @@
+{
+  "id": "STK",
+  "name": {
+    "en-SG": "Soo Teck",
+    "zh-Hans": "树德",
+    "ms": null,
+    "ta": "சூ டெக்"
+  },
+  "geo": {
+    "latitude": 1.3992,
+    "longitude": 103.9032
+  },
+  "stationCodes": [
+    {
+      "lineId": "PGLRT",
+      "code": "PW7",
+      "startedAt": "2014-06-29",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "punggol-waterway-park",
+    "punggol-plaza",
+    "waterway-point"
+  ],
+  "townId": "punggol"
+}

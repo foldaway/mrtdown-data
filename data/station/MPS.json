@@ -1,0 +1,34 @@
+{
+  "id": "MPS",
+  "name": {
+    "en-SG": "MacPherson",
+    "zh-Hans": "麦波申",
+    "ms": null,
+    "ta": "மெக்பர்சன்"
+  },
+  "geo": {
+    "latitude": 1.32017,
+    "longitude": 103.88736
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC10",
+      "startedAt": "2010-04-17",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "DTL",
+      "code": "DT26",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "macpherson-mall",
+    "geylang-east-swimming-complex"
+  ],
+  "townId": "geylang"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "NYG",
+  "name": {
+    "en-SG": "Nanyang Gateway",
+    "zh-Hans": "南洋门",
+    "ms": null,
+    "ta": "நன்யாங் கேட்வே"
+  },
+  "geo": {
+    "latitude": 1.3475,
+    "longitude": 103.684
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JW3",
+      "startedAt": "2029-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "nanyang-technological-university"
+  ],
+  "townId": "western-water-catchment"
+}

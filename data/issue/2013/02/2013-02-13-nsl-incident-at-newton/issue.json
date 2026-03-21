@@ -1,0 +1,13 @@
+{
+  "id": "2013-02-13-nsl-incident-at-newton",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption due to incident at Newton station",
+    "zh-Hans": "牛顿站事故导致服务中断",
+    "ms": "Gangguan perkhidmatan disebabkan insiden di stesen Newton",
+    "ta": "நியூட்டன் நிலையத்தில் ஏற்பட்ட சம்பவத்தால் சேவை தடைபட்டது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

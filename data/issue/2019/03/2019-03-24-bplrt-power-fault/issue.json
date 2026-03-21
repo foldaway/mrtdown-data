@@ -1,0 +1,13 @@
+{
+  "id": "2019-03-24-bplrt-power-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service Disruption due to Power Fault on BPLRT",
+    "zh-Hans": "BPLRT因电力故障导致服务中断",
+    "ms": "Gangguan Perkhidmatan kerana Kerosakan Kuasa di BPLRT",
+    "ta": "BPLRT இல் மின்சாரக் கோளாறு காரணமாக சேவை தடை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

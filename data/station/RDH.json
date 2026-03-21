@@ -1,0 +1,27 @@
+{
+  "id": "RDH",
+  "name": {
+    "en-SG": "Redhill",
+    "zh-Hans": "红山",
+    "ms": null,
+    "ta": "ரெட்ஹில்"
+  },
+  "geo": {
+    "latitude": 1.2889,
+    "longitude": 103.8239
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW18",
+      "startedAt": "1988-03-12",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "redhill-market",
+    "queenstown-public-library"
+  ],
+  "townId": "bukit-merah"
+}

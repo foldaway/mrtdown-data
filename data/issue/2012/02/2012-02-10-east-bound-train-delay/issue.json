@@ -1,0 +1,13 @@
+{
+  "id": "2012-02-10-east-bound-train-delay",
+  "type": "disruption",
+  "title": {
+    "en-SG": "East-bound train service delay towards Pasir Ris",
+    "zh-Hans": "东行火车服务延误至巴西立",
+    "ms": "Perkhidmatan kereta api arah timur tertunda ke arah Pasir Ris",
+    "ta": "கிழக்கு நோக்கி செல்லும் ரயில் சேவை பாசிர் ரிஸ் நோக்கி தாமதமானது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

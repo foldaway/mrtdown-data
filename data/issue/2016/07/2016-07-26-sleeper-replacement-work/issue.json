@@ -1,0 +1,13 @@
+{
+  "id": "2016-07-26-sleeper-replacement-work",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train service delay due to sleeper replacement work",
+    "zh-Hans": "因更换枕木工程导致列车服务延误",
+    "ms": "Perkhidmatan kereta api tertunda kerana kerja penggantian rel",
+    "ta": "தூக்க மாற்றுப் பணிகளால் ரயில் சேவை தாமதம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

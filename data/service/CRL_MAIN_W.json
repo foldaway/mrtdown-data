@@ -1,0 +1,170 @@
+{
+    "id": "CRL_MAIN_W",
+    "lineId": "CRL",
+    "name": {
+        "en-SG": "Cross Island Line (Main Branch) - Westbound",
+        "zh-Hans": "跨岛地铁线（主干线） - 往西方向",
+        "ms": "Laluan MRT Rentas Pulau (Cawangan Utama) - Arah Barat",
+        "ta": "குறுக்குத் தீவு ரயில் பாதை (முதன்மை கிளை) - மேற்கு திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_2030_phase_1",
+            "startAt": "2030-12-31",
+            "endAt": "2032-12-31",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "BRH",
+                        "displayCode": "CR13"
+                    },
+                    {
+                        "stationId": "TGE",
+                        "displayCode": "CR12"
+                    },
+                    {
+                        "stationId": "AMK",
+                        "displayCode": "CR11"
+                    },
+                    {
+                        "stationId": "TVK",
+                        "displayCode": "CR10"
+                    },
+                    {
+                        "stationId": "SRN",
+                        "displayCode": "CR9"
+                    },
+                    {
+                        "stationId": "HGN",
+                        "displayCode": "CR8"
+                    },
+                    {
+                        "stationId": "DFU",
+                        "displayCode": "CR7"
+                    },
+                    {
+                        "stationId": "TPN",
+                        "displayCode": "CR6"
+                    },
+                    {
+                        "stationId": "PSR",
+                        "displayCode": "CR5"
+                    },
+                    {
+                        "stationId": "PRE",
+                        "displayCode": "CR4"
+                    },
+                    {
+                        "stationId": "LYG",
+                        "displayCode": "CR3"
+                    },
+                    {
+                        "stationId": "AVP",
+                        "displayCode": "CR2"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:30",
+                    "end": "00:00"
+                },
+                "weekends": {
+                    "start": "05:30",
+                    "end": "00:00"
+                }
+            }
+        },
+        {
+            "id": "r_2032_phase_2",
+            "startAt": "2032-12-31",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "JLD",
+                        "displayCode": "CR19"
+                    },
+                    {
+                        "stationId": "WSC",
+                        "displayCode": "CR18"
+                    },
+                    {
+                        "stationId": "CLE",
+                        "displayCode": "CR17"
+                    },
+                    {
+                        "stationId": "MAJ",
+                        "displayCode": "CR16"
+                    },
+                    {
+                        "stationId": "KAP",
+                        "displayCode": "CR15"
+                    },
+                    {
+                        "stationId": "TFC",
+                        "displayCode": "CR14"
+                    },
+                    {
+                        "stationId": "BRH",
+                        "displayCode": "CR13"
+                    },
+                    {
+                        "stationId": "TGE",
+                        "displayCode": "CR12"
+                    },
+                    {
+                        "stationId": "AMK",
+                        "displayCode": "CR11"
+                    },
+                    {
+                        "stationId": "TVK",
+                        "displayCode": "CR10"
+                    },
+                    {
+                        "stationId": "SRN",
+                        "displayCode": "CR9"
+                    },
+                    {
+                        "stationId": "HGN",
+                        "displayCode": "CR8"
+                    },
+                    {
+                        "stationId": "DFU",
+                        "displayCode": "CR7"
+                    },
+                    {
+                        "stationId": "TPN",
+                        "displayCode": "CR6"
+                    },
+                    {
+                        "stationId": "PSR",
+                        "displayCode": "CR5"
+                    },
+                    {
+                        "stationId": "PRE",
+                        "displayCode": "CR4"
+                    },
+                    {
+                        "stationId": "LYG",
+                        "displayCode": "CR3"
+                    },
+                    {
+                        "stationId": "AVP",
+                        "displayCode": "CR2"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:30",
+                    "end": "00:00"
+                },
+                "weekends": {
+                    "start": "05:30",
+                    "end": "00:00"
+                }
+            }
+        }
+    ]
+}

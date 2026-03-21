@@ -1,0 +1,35 @@
+{
+  "id": "HBF",
+  "name": {
+    "en-SG": "HarbourFront",
+    "zh-Hans": "港湾",
+    "ms": null,
+    "ta": "துறைமுகம்"
+  },
+  "geo": {
+    "latitude": 1.2645,
+    "longitude": 103.8263
+  },
+  "stationCodes": [
+    {
+      "lineId": "NEL",
+      "code": "NE1",
+      "startedAt": "2003-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "CCL",
+      "code": "CC29",
+      "startedAt": "2011-10-08",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "vivocity",
+    "sentosa-gateway",
+    "mount-faber-park"
+  ],
+  "townId": "bukit-merah"
+}

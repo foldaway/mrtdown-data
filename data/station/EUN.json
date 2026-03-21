@@ -1,0 +1,28 @@
+{
+  "id": "EUN",
+  "name": {
+    "en-SG": "Eunos",
+    "zh-Hans": "友诺士",
+    "ms": null,
+    "ta": "யூனுஸ்"
+  },
+  "geo": {
+    "latitude": 1.3192,
+    "longitude": 103.8959
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW7",
+      "startedAt": "1989-11-04",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-post-centre",
+    "paya-lebar-square",
+    "geylang-serai-market"
+  ],
+  "townId": "geylang"
+}

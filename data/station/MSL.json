@@ -1,0 +1,28 @@
+{
+  "id": "MSL",
+  "name": {
+    "en-SG": "Marsiling",
+    "zh-Hans": "马西岭",
+    "ms": null,
+    "ta": "மார்சிலிங்"
+  },
+  "geo": {
+    "latitude": 1.436782,
+    "longitude": 103.773141
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS8",
+      "startedAt": "1996-02-10",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "woodlands-waterfront-park",
+    "marsiling-community-club",
+    "causeway-point"
+  ],
+  "townId": "woodlands"
+}
