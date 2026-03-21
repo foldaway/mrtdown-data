@@ -2,8 +2,8 @@ import type { Table } from 'mdast';
 import { gfmToMarkdown } from 'mdast-util-gfm';
 import { toMarkdown } from 'mdast-util-to-markdown';
 import z from 'zod';
-import { Tool } from '#llm/common/tool.js';
-import type { MRTDownRepository } from '#repo/MRTDownRepository.js';
+import { Tool } from '../../../common/tool.js';
+import type { MRTDownRepository } from '../../../../repo/MRTDownRepository.js';
 
 const FindIssuesToolParametersSchema = z.object({
   query: z.string().describe('Plain text to search for issues.'),

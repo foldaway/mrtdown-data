@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon';
-import { FileStore } from '#repo/common/FileStore.js';
-import { deriveCurrentState } from '#repo/issue/helpers/deriveCurrentState.js';
-import { IssueRepository } from '#repo/issue/IssueRepository.js';
-import type { Period } from '#schema/issue/period.js';
+import { FileStore } from '../../repo/common/FileStore.js';
+import { deriveCurrentState } from '../../repo/issue/helpers/deriveCurrentState.js';
+import { IssueRepository } from '../../repo/issue/IssueRepository.js';
+import type { Period } from '../../schema/issue/period.js';
 import {
   type ResolvePeriodsMode,
   resolvePeriods,

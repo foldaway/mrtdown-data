@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { OperatorSchema } from '#schema/Operator.js';
+import { OperatorSchema } from '../schema/Operator.js';
 import { DIR_OPERATOR } from '../constants.js';
 import type { IStore } from '../repo/common/store.js';
 import type { ValidationError } from './types.js';

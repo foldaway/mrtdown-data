@@ -1,6 +1,6 @@
 import z from 'zod';
-import { deriveCurrentState } from '#repo/issue/helpers/deriveCurrentState.js';
-import type { MRTDownRepository } from '#repo/MRTDownRepository.js';
+import { deriveCurrentState } from '../../../../repo/issue/helpers/deriveCurrentState.js';
+import type { MRTDownRepository } from '../../../../repo/MRTDownRepository.js';
 import { formatCurrentState } from '../../../common/formatCurrentState.js';
 import { Tool } from '../../../common/tool.js';
 

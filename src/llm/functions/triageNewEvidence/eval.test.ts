@@ -3,8 +3,8 @@ import 'dotenv/config';
 import { resolve } from 'node:path';
 import { describe } from 'vitest';
 import { describeEval, StructuredOutputScorer } from 'vitest-evals';
-import { FileStore } from '#repo/common/FileStore.js';
-import { MRTDownRepository } from '#repo/MRTDownRepository.js';
+import { FileStore } from '../../../repo/common/FileStore.js';
+import { MRTDownRepository } from '../../../repo/MRTDownRepository.js';
 import {
   type TriageNewEvidenceParams,
   type TriageNewEvidenceResult,

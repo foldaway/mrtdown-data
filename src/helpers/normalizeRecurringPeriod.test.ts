@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import type { PeriodRecurring } from '#schema/issue/period.js';
+import type { PeriodRecurring } from '../schema/issue/period.js';
 import { normalizeRecurringPeriod } from './normalizeRecurringPeriod.js';
 
 function makeRecurringPeriod(

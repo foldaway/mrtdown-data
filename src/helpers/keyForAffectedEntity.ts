@@ -1,4 +1,4 @@
-import type { AffectedEntity } from '#schema/issue/entity.js';
+import type { AffectedEntity } from '../schema/issue/entity.js';
 
 /**
  * Generate a stable key for an affected entity.

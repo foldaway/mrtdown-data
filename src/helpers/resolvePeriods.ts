@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
-import type { Period, PeriodFixed } from '#schema/issue/period.js';
-import { assert } from '#util/assert.js';
+import type { Period, PeriodFixed } from '../schema/issue/period.js';
+import { assert } from '../util/assert.js';
 import { normalizeRecurringPeriod } from './normalizeRecurringPeriod.js';
 
 const DEFAULTS: ResolvePeriodsOperationalModeConfig = {

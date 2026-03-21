@@ -1,7 +1,7 @@
 import type { ResponseInputItem } from 'openai/resources/responses/responses.mjs';
 import { z } from 'zod';
-import { openAiClient } from '#llm/client.js';
-import { assert } from '#util/assert.js';
+import { openAiClient } from '../../client.js';
+import { assert } from '../../../util/assert.js';
 import { buildSystemPrompt } from './prompt.js';
 
 const ResponseSchema = z.object({

@@ -58,14 +58,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "imports": {
-    "#repo/*": "./src/repo/*",
-    "#schema/*": "./src/schema/*",
-    "#write/*": "./src/write/*",
-    "#helpers/*": "./src/helpers/*",
-    "#util/*": "./src/util/*",
-    "#validators/*": "./src/validators/*",
-    "#llm/*": "./src/llm/*"
   }
 }

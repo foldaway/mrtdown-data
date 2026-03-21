@@ -4,11 +4,11 @@ import type {
   ResponseInputItem,
 } from 'openai/resources/responses/responses.mjs';
 import z from 'zod';
-import { openAiClient } from '#llm/client.js';
-import type { MRTDownRepository } from '#repo/MRTDownRepository.js';
-import { IssueIdSchema } from '#schema/issue/id.js';
-import { IssueTypeSchema } from '#schema/issue/issueType.js';
-import { assert } from '#util/assert.js';
+import { openAiClient } from '../../client.js';
+import type { MRTDownRepository } from '../../../repo/MRTDownRepository.js';
+import { IssueIdSchema } from '../../../schema/issue/id.js';
+import { IssueTypeSchema } from '../../../schema/issue/issueType.js';
+import { assert } from '../../../util/assert.js';
 import type { ToolRegistry } from '../../common/tool.js';
 import { buildSystemPrompt } from './prompt.js';
 import { FindIssuesTool } from './tools/FindIssuesTool.js';

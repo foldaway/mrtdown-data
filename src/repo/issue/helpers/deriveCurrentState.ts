@@ -1,10 +1,10 @@
-import { keyForAffectedEntity } from '#helpers/keyForAffectedEntity.js';
-import type { IssueBundle } from '#schema/issue/bundle.js';
-import type { CauseSubtype } from '#schema/issue/cause.js';
-import type { FacilityEffect } from '#schema/issue/facilityEffect.js';
-import type { Period } from '#schema/issue/period.js';
-import type { ServiceEffect } from '#schema/issue/serviceEffect.js';
-import type { ServiceScope } from '#schema/issue/serviceScope.js';
+import { keyForAffectedEntity } from '../../../helpers/keyForAffectedEntity.js';
+import type { IssueBundle } from '../../../schema/issue/bundle.js';
+import type { CauseSubtype } from '../../../schema/issue/cause.js';
+import type { FacilityEffect } from '../../../schema/issue/facilityEffect.js';
+import type { Period } from '../../../schema/issue/period.js';
+import type { ServiceEffect } from '../../../schema/issue/serviceEffect.js';
+import type { ServiceScope } from '../../../schema/issue/serviceScope.js';
 
 type BasisRef = {
   evidenceId: string;

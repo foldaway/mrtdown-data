@@ -1,10 +1,10 @@
 import { join } from 'node:path';
 import { NdJson } from 'json-nd';
 import z from 'zod';
-import { EvidenceSchema } from '#schema/issue/evidence.js';
-import type { ImpactEvent } from '#schema/issue/impactEvent.js';
-import { ImpactEventSchema } from '#schema/issue/impactEvent.js';
-import { IssueSchema } from '#schema/issue/issue.js';
+import { EvidenceSchema } from '../schema/issue/evidence.js';
+import type { ImpactEvent } from '../schema/issue/impactEvent.js';
+import { ImpactEventSchema } from '../schema/issue/impactEvent.js';
+import { IssueSchema } from '../schema/issue/issue.js';
 import { DIR_ISSUE } from '../constants.js';
 import type { IStore } from '../repo/common/store.js';
 import type { ValidationContext, ValidationError } from './types.js';

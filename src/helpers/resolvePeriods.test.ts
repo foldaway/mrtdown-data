@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import type { Period } from '#schema/issue/period.js';
+import type { Period } from '../schema/issue/period.js';
 import { resolvePeriods } from './resolvePeriods.js';
 
 describe('resolvePeriods', () => {

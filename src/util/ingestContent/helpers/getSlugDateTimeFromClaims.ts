@@ -1,5 +1,5 @@
-import type { Claim } from '#schema/issue/claim.js';
-import { assert } from '#util/assert.js';
+import type { Claim } from '../../../schema/issue/claim.js';
+import { assert } from '../../assert.js';
 
 /**
  * Get the slug date time from the claims.

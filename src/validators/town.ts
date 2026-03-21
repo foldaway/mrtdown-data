@@ -1,6 +1,6 @@
 import { join } from 'node:path';
-import type { IStore } from '#repo/common/store.js';
-import { TownSchema } from '#schema/Town.js';
+import type { IStore } from '../repo/common/store.js';
+import { TownSchema } from '../schema/Town.js';
 import { DIR_TOWN } from '../constants.js';
 import type { ValidationError } from './types.js';
 import { loadJson } from './utils.js';

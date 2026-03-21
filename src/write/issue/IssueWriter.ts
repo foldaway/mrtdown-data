@@ -1,8 +1,8 @@
 import { join } from 'node:path';
 import { NdJson } from 'json-nd';
-import type { Evidence } from '#schema/issue/evidence.js';
-import type { ImpactEvent } from '#schema/issue/impactEvent.js';
-import type { Issue } from '#schema/issue/issue.js';
+import type { Evidence } from '../../schema/issue/evidence.js';
+import type { ImpactEvent } from '../../schema/issue/impactEvent.js';
+import type { Issue } from '../../schema/issue/issue.js';
 import {
   DIR_ISSUE,
   FILE_ISSUE,

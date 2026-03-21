@@ -1,5 +1,5 @@
-import { FileStore } from '#repo/common/FileStore.js';
-import { MRTDownRepository } from '#repo/MRTDownRepository.js';
+import { FileStore } from '../../repo/common/FileStore.js';
+import { MRTDownRepository } from '../../repo/MRTDownRepository.js';
 
 export type ListOptions = {
   dataDir: string;

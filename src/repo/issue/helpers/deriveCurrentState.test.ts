@@ -1,8 +1,8 @@
 import { describe, expect, test } from 'vitest';
-import type { IssueBundle } from '#schema/issue/bundle.js';
-import type { Period } from '#schema/issue/period.js';
-import type { ServiceEffect } from '#schema/issue/serviceEffect.js';
-import type { ServiceScope } from '#schema/issue/serviceScope.js';
+import type { IssueBundle } from '../../../schema/issue/bundle.js';
+import type { Period } from '../../../schema/issue/period.js';
+import type { ServiceEffect } from '../../../schema/issue/serviceEffect.js';
+import type { ServiceScope } from '../../../schema/issue/serviceScope.js';
 import { keyForAffectedEntity } from '../../../helpers/keyForAffectedEntity.js';
 import { deriveCurrentState } from './deriveCurrentState.js';
 
