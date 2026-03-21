@@ -1,5 +1,5 @@
 import z from 'zod';
-import { TranslationsSchema } from '#schema/common.js';
+import { TranslationsSchema } from '../common.js';
 import { IssueIdSchema } from './id.js';
 import { IssueTypeSchema } from './issueType.js';
 

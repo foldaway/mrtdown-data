@@ -1,6 +1,6 @@
 import { basename, dirname, normalize } from 'node:path';
-import type { IStore } from '#repo/common/store.js';
-import type { IWriteStore } from '#write/common/store.js';
+import type { IStore } from '../../repo/common/store.js';
+import type { IWriteStore } from '../../write/common/store.js';
 
 export class MemoryStore implements IStore, IWriteStore {
   private readonly files = new Map<string, string>();

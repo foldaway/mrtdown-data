@@ -3,9 +3,9 @@ import type { Table } from 'mdast';
 import { gfmToMarkdown } from 'mdast-util-gfm';
 import { toMarkdown } from 'mdast-util-to-markdown';
 import z from 'zod';
-import { Tool } from '#llm/common/tool.js';
-import type { MRTDownRepository } from '#repo/MRTDownRepository.js';
-import { assert } from '#util/assert.js';
+import { Tool } from '../../../common/tool.js';
+import type { MRTDownRepository } from '../../../../repo/MRTDownRepository.js';
+import { assert } from '../../../../util/assert.js';
 
 const FindStationsToolParametersSchema = z.object({
   stationNames: z.array(z.string()),
