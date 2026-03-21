@@ -16,7 +16,7 @@
   "author": "Foldaway <bottleneck.company@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mrtdown/mrtdown-data.git"
+    "url": "https://github.com/foldaway/mrtdown-data.git"
   },
   "license": "UNLICENSED",
   "devDependencies": {
