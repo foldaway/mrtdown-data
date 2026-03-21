@@ -2,12 +2,11 @@ name: Publish
 
 on:
   push:
-    tags:
-      - 'v*'
 
 permissions:
   id-token: write # for npm authentication
-  contents: read
+  contents: write
+  pull-requests: write
 
 jobs:
   publish:
@@ -19,15 +18,8 @@ jobs:
           node-version: 24
           registry-url: https://registry.npmjs.org
       - run: npm ci
-      - run: npm run build
-      - name: Publish stable version
-        if: contains(github.ref, 'alpha') == false
-        run: npm publish
+      - uses: changesets/action@v1
+        with:
+          publish: npm run build
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Publish alpha version
-        if: contains(github.ref, 'alpha') == true
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_TAG: alpha
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
