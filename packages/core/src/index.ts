@@ -16,6 +16,7 @@ export * from './schema/issue/serviceEffect.js';
 export * from './schema/issue/serviceScope.js';
 export * from './schema/Landmark.js';
 export * from './schema/Line.js';
+export * from './schema/Manifest.js';
 export * from './schema/Operator.js';
 export * from './schema/Service.js';
 export * from './schema/Station.js';
