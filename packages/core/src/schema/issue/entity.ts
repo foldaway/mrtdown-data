@@ -10,10 +10,19 @@ export const AffectedEntityServiceSchema = z.object({
 });
 export type AffectedEntityService = z.infer<typeof AffectedEntityServiceSchema>;
 
+export const AffectedEntityFacilityKindSchema = z.enum([
+  'lift',
+  'escalator',
+  'screen-door',
+]);
+export type AffectedEntityFacilityKind = z.infer<
+  typeof AffectedEntityFacilityKindSchema
+>;
+
 export const AffectedEntityFacilitySchema = z.object({
   type: z.literal('facility'),
   stationId: z.string(),
-  kind: z.enum(['lift', 'escalator', 'screen-door']),
+  kind: z.literal(AffectedEntityFacilityKindSchema.enum.lift),
 });
 export type AffectedEntityFacility = z.infer<
   typeof AffectedEntityFacilitySchema
