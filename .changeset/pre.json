@@ -8,6 +8,7 @@
     "@mrtdown/triage": "2.0.0-alpha.5"
   },
   "changesets": [
+    "frank-bats-hope",
     "goofy-keys-sin",
     "grumpy-oranges-smoke",
     "odd-tigers-leave",

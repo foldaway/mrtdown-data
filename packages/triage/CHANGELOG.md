@@ -1,5 +1,14 @@
 # @mrtdown/triage
 
+## 2.0.0-alpha.11
+
+### Patch Changes
+
+- 3c3501f: export more types
+- Updated dependencies [3c3501f]
+  - @mrtdown/core@2.0.0-alpha.11
+  - @mrtdown/fs@2.0.0-alpha.11
+
 ## 2.0.0-alpha.10
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.11
+
+### Patch Changes
+
+- 3c3501f: export more types
+
 ## 2.0.0-alpha.10
 
 ### Patch Changes
