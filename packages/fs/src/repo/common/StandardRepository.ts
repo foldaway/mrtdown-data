@@ -1,14 +1,14 @@
 import { join } from 'node:path';
 import type { IStore } from './store.js';
 
-type Item = {
+export type StandardRepositoryItem = {
   id: string;
 };
 
 /**
  * A standard repository for items represented by single JSON files that are stored in a directory.
  */
-export class StandardRepository<T extends Item> {
+export class StandardRepository<T extends StandardRepositoryItem> {
   protected store: IStore;
   protected dirPath: string;
   protected byId = new Map<string, T>();
