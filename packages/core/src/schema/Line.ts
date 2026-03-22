@@ -27,10 +27,13 @@ export const LineOperatingHoursSchema = z.object({
 });
 export type LineOperatingHours = z.infer<typeof LineOperatingHoursSchema>;
 
+export const LineTypeSchema = z.enum(['mrt.high', 'mrt.medium', 'lrt']);
+export type LineType = z.infer<typeof LineTypeSchema>;
+
 export const LineSchema = z.object({
   id: z.string(),
   name: TranslationsSchema,
-  type: z.enum(['mrt.high', 'mrt.medium', 'lrt']),
+  type: LineTypeSchema,
   color: z.string(),
   startedAt: z.iso.date().nullable(),
   serviceIds: z.array(z.string()),
