@@ -1,5 +1,15 @@
 # @mrtdown/cli
 
+## 2.0.0-alpha.9
+
+### Patch Changes
+
+- 51a5eca: introduce separate TranslationsMetaSchema
+- Updated dependencies [51a5eca]
+  - @mrtdown/triage@2.0.0-alpha.9
+  - @mrtdown/core@2.0.0-alpha.9
+  - @mrtdown/fs@2.0.0-alpha.9
+
 ## 2.0.0-alpha.8
 
 ### Patch Changes
