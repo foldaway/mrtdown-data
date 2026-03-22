@@ -1,5 +1,15 @@
 # @mrtdown/cli
 
+## 2.0.0-alpha.7
+
+### Patch Changes
+
+- 558ffa1: fix: introduce separate LineTypeSchema
+- Updated dependencies [558ffa1]
+  - @mrtdown/triage@2.0.0-alpha.7
+  - @mrtdown/core@2.0.0-alpha.7
+  - @mrtdown/fs@2.0.0-alpha.7
+
 ## 2.0.0-alpha.6
 
 ### Patch Changes

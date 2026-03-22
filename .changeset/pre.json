@@ -8,6 +8,7 @@
     "@mrtdown/triage": "2.0.0-alpha.5"
   },
   "changesets": [
+    "goofy-keys-sin",
     "grumpy-oranges-smoke"
   ]
 }
