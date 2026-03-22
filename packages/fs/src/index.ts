@@ -1,5 +1,6 @@
 export * from './constants.js';
 export * from './repo/common/FileStore.js';
+export * from './repo/common/StandardRepository.js';
 export * from './repo/common/store.js';
 export * from './repo/issue/IssueRepository.js';
 export * from './repo/MRTDownRepository.js';

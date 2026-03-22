@@ -33,8 +33,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate manifest
-        run: npm run cli -- -- manifest
+      - name: Generate manifest and Pages index
+        run: |
+          npm run cli -- -- manifest
+          npm run cli -- -- pages-index
 
       - uses: actions/configure-pages@v5
 
