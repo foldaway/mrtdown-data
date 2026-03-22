@@ -14,6 +14,7 @@ import {
   runCreateTown,
 } from './commands/create.js';
 import { runList } from './commands/list.js';
+import { runManifest } from './commands/manifest.js';
 import { runShowIssue } from './commands/show.js';
 import { runValidate } from './commands/validate.js';
 import type { ValidationScope } from './validators/index.js';
@@ -22,7 +23,9 @@ const program = new Command();
 
 program
   .name('mrtdown-cli')
-  .description('CLI for mrtdown-data: create entities and validate data')
+  .description(
+    'CLI for mrtdown-data: create entities, validate data, and tooling',
+  )
   .option(
     '-d, --data-dir <path>',
     'Data directory',
@@ -43,6 +46,19 @@ program
     const code = runValidate({
       dataDir,
       scope: scope?.length ? (scope as ValidationScope[]) : undefined,
+    });
+    process.exit(code);
+  });
+
+program
+  .command('manifest')
+  .description(
+    'Generate a JSON manifest of all entities under the data directory',
+  )
+  .action(() => {
+    const dataDir = program.opts().dataDir;
+    const code = runManifest({
+      dataDir,
     });
     process.exit(code);
   });
