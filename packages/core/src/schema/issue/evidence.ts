@@ -1,6 +1,13 @@
 import z from 'zod';
 import { TranslationsSchema } from '../common.js';
 
+export const EvidenceTypeSchema = z.enum([
+  'official-statement',
+  'public.report',
+  'media.report',
+]);
+export type EvidenceType = z.infer<typeof EvidenceTypeSchema>;
+
 export const EvidenceRenderSchema = z.object({
   text: TranslationsSchema,
   source: z.string(),
@@ -16,7 +23,7 @@ export const EvidenceBaseSchema = z.object({
 export type EvidenceBase = z.infer<typeof EvidenceBaseSchema>;
 
 export const EvidenceOfficialStatementSchema = EvidenceBaseSchema.extend({
-  type: z.literal('official-statement'),
+  type: z.literal(EvidenceTypeSchema.enum['official-statement']),
   sourceUrl: z.string(),
 });
 export type EvidenceOfficialStatement = z.infer<
@@ -24,13 +31,13 @@ export type EvidenceOfficialStatement = z.infer<
 >;
 
 export const EvidencePublicReportSchema = EvidenceBaseSchema.extend({
-  type: z.literal('public.report'),
+  type: z.literal(EvidenceTypeSchema.enum['public.report']),
   sourceUrl: z.string(),
 });
 export type EvidencePublicReport = z.infer<typeof EvidencePublicReportSchema>;
 
 export const EvidenceMediaReportSchema = EvidenceBaseSchema.extend({
-  type: z.literal('media.report'),
+  type: z.literal(EvidenceTypeSchema.enum['media.report']),
   sourceUrl: z.string(),
 });
 export type EvidenceMediaReport = z.infer<typeof EvidenceMediaReportSchema>;

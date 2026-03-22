@@ -1,7 +1,16 @@
-import type { Period, PeriodFixed } from '@mrtdown/core';
 import { DateTime } from 'luxon';
+import z from 'zod';
+import type { Period, PeriodFixed } from '../schema/issue/period.js';
 import { assert } from '../util/assert.js';
 import { normalizeRecurringPeriod } from './normalizeRecurringPeriod.js';
+
+export const ResolvePeriodsModeKindSchema = z.enum([
+  'canonical',
+  'operational',
+]);
+export type ResolvePeriodsModeKind = z.infer<
+  typeof ResolvePeriodsModeKindSchema
+>;
 
 const DEFAULTS: ResolvePeriodsOperationalModeConfig = {
   evidenceStaleAfterMinutes: 120,
@@ -56,9 +65,9 @@ type ResolvePeriodsCrowdSignal = {
 };
 
 export type ResolvePeriodsMode =
-  | { kind: 'canonical' }
+  | { kind: Extract<ResolvePeriodsModeKind, 'canonical'> }
   | {
-      kind: 'operational';
+      kind: Extract<ResolvePeriodsModeKind, 'operational'>;
       /**
        * Timestamp of the most recent evidence supporting an ongoing state
        * for this entity.
@@ -88,8 +97,21 @@ export type ResolvePeriodsMode =
       config?: ResolvePeriodsOperationalModeConfig;
     };
 
-export type ResolvePeriodsEndAtSource = 'fact' | 'inferred' | 'none';
-export type ResolvePeriodsEndAtReason = 'crowd_decay' | 'evidence_timeout';
+export const ResolvePeriodsEndAtSourceSchema = z.enum([
+  'fact',
+  'inferred',
+  'none',
+]);
+export type ResolvePeriodsEndAtSource = z.infer<
+  typeof ResolvePeriodsEndAtSourceSchema
+>;
+export const ResolvePeriodsEndAtReasonSchema = z.enum([
+  'crowd_decay',
+  'evidence_timeout',
+]);
+export type ResolvePeriodsEndAtReason = z.infer<
+  typeof ResolvePeriodsEndAtReasonSchema
+>;
 
 /**
  * Parameters for resolvePeriods().

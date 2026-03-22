@@ -1,10 +1,17 @@
 import z from 'zod';
 
+export const ServiceScopeTypeSchema = z.enum([
+  'service.whole',
+  'service.segment',
+  'service.point',
+]);
+export type ServiceScopeType = z.infer<typeof ServiceScopeTypeSchema>;
+
 /**
  * Service Whole (service)
  */
 export const ServiceScopeWholeSchema = z.object({
-  type: z.literal('service.whole'),
+  type: z.literal(ServiceScopeTypeSchema.enum['service.whole']),
 });
 export type ServiceScopeWhole = z.infer<typeof ServiceScopeWholeSchema>;
 
@@ -14,7 +21,7 @@ export type ServiceScopeWhole = z.infer<typeof ServiceScopeWholeSchema>;
  * This should also be used when representing an entire service.
  */
 export const ServiceScopeSegmentSchema = z.object({
-  type: z.literal('service.segment'),
+  type: z.literal(ServiceScopeTypeSchema.enum['service.segment']),
   fromStationId: z.string(),
   toStationId: z.string(),
 });
@@ -24,7 +31,7 @@ export type ServiceScopeSegment = z.infer<typeof ServiceScopeSegmentSchema>;
  * Service point (station-level)
  */
 export const ServiceScopePointSchema = z.object({
-  type: z.literal('service.point'),
+  type: z.literal(ServiceScopeTypeSchema.enum['service.point']),
   stationId: z.string(),
 });
 export type ServiceScopePoint = z.infer<typeof ServiceScopePointSchema>;
