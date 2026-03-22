@@ -15,6 +15,7 @@ import {
 } from './commands/create.js';
 import { runList } from './commands/list.js';
 import { runManifest } from './commands/manifest.js';
+import { runPagesIndex } from './commands/pagesIndex.js';
 import { runShowIssue } from './commands/show.js';
 import { runValidate } from './commands/validate.js';
 import type { ValidationScope } from './validators/index.js';
@@ -58,6 +59,19 @@ program
   .action(() => {
     const dataDir = program.opts().dataDir;
     const code = runManifest({
+      dataDir,
+    });
+    process.exit(code);
+  });
+
+program
+  .command('pages-index')
+  .description(
+    'Generate index.html for GitHub Pages (static data landing page)',
+  )
+  .action(() => {
+    const dataDir = program.opts().dataDir;
+    const code = runPagesIndex({
       dataDir,
     });
     process.exit(code);
