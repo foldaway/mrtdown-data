@@ -1,5 +1,11 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.10
+
+### Patch Changes
+
+- ca15f1a: move period helpers from triage
+
 ## 2.0.0-alpha.9
 
 ### Patch Changes
