@@ -1,10 +1,10 @@
-import type { Period } from '@mrtdown/core';
-import { FileStore, IssueRepository } from '@mrtdown/fs';
 import {
-  deriveCurrentState,
+  type Period,
   type ResolvePeriodsMode,
   resolvePeriods,
-} from '@mrtdown/triage';
+} from '@mrtdown/core';
+import { FileStore, IssueRepository } from '@mrtdown/fs';
+import { deriveCurrentState } from '@mrtdown/triage';
 import { DateTime } from 'luxon';
 
 export type ShowIssueOptions = {
