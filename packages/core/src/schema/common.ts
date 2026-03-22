@@ -13,6 +13,11 @@ export const TranslationsSchema = z.object({
 });
 export type Translations = z.infer<typeof TranslationsSchema>;
 
+export const TranslationsMetaSchema = z.object({
+  source: z.string(),
+});
+export type TranslationsMeta = z.infer<typeof TranslationsMetaSchema>;
+
 export const OperatingHoursSchema = z.object({
   weekdays: z.object({
     start: z.iso.time(),
