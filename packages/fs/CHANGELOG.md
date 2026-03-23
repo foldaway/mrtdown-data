@@ -1,5 +1,13 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.12
+
+### Patch Changes
+
+- f2cc17d: add Luxon to core dependencies
+- Updated dependencies [f2cc17d]
+  - @mrtdown/core@2.0.0-alpha.12
+
 ## 2.0.0-alpha.11
 
 ### Patch Changes
