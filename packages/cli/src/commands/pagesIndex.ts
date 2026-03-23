@@ -387,6 +387,17 @@ export function runPagesIndex(opts: PagesIndexCliOptions): number {
                   },
                   {
                     type: 'text',
+                    value:
+                      '. The full data directory is also available as a gzipped tarball: ',
+                  },
+                  {
+                    type: 'element',
+                    tagName: 'a',
+                    properties: { href: 'archive.tar.gz' },
+                    children: [{ type: 'text', value: 'archive.tar.gz' }],
+                  },
+                  {
+                    type: 'text',
                     value: '. Lines are listed in alphabetical order by ID.',
                   },
                 ],

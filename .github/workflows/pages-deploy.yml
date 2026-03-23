@@ -38,6 +38,11 @@ jobs:
           npm run cli -- -- manifest
           npm run cli -- -- pages-index
 
+      - name: Create archive of data directory
+        run: |
+          tar -czf archive.tar.gz data
+          mv archive.tar.gz data/
+
       - uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
