@@ -1,5 +1,11 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.13
+
+### Patch Changes
+
+- 9ed8b3a: add default export for core module
+
 ## 2.0.0-alpha.12
 
 ### Patch Changes
