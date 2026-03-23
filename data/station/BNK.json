@@ -1,0 +1,27 @@
+{
+  "id": "BNK",
+  "name": {
+    "en-SG": "Boon Keng",
+    "zh-Hans": "文庆",
+    "ms": null,
+    "ta": "பூன் கெங்"
+  },
+  "geo": {
+    "latitude": 1.31357,
+    "longitude": 103.87436
+  },
+  "stationCodes": [
+    {
+      "lineId": "NEL",
+      "code": "NE9",
+      "startedAt": "2003-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "geylang-serai-market",
+    "sri-sairam-indian-temple"
+  ],
+  "townId": "kallang"
+}

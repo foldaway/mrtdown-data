@@ -1,0 +1,13 @@
+{
+  "id": "2025-08-12-north-east-line-power-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "North East Line Power Fault",
+    "zh-Hans": "北东线电力故障",
+    "ms": "Kecacatan Kuasa North East Line",
+    "ta": "வடக்கும் கிழக்குப் பாதை மின் குறைவு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

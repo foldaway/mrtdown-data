@@ -1,0 +1,28 @@
+{
+  "id": "CPN",
+  "name": {
+    "en-SG": "Corporation",
+    "zh-Hans": "企业",
+    "ms": null,
+    "ta": "கார்ப்பரெஷன்"
+  },
+  "geo": {
+    "latitude": 1.3498,
+    "longitude": 103.7036
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JS5",
+      "startedAt": "2027-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "jurong-lake",
+    "jurong-bird-park",
+    "chinese-garden"
+  ],
+  "townId": "jurong-west"
+}

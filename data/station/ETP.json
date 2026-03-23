@@ -1,0 +1,27 @@
+{
+  "id": "ETP",
+  "name": {
+    "en-SG": "Enterprise",
+    "zh-Hans": "事业",
+    "ms": null,
+    "ta": "எண்டர்பிரைஸ்"
+  },
+  "geo": {
+    "latitude": 1.349,
+    "longitude": 103.686
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JS9",
+      "startedAt": "2029-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "jurong-west-swimming-complex",
+    "jurong-bird-park"
+  ],
+  "townId": "jurong-west"
+}

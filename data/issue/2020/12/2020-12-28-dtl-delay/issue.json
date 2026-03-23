@@ -1,0 +1,13 @@
+{
+  "id": "2020-12-28-dtl-delay",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Delay on Downtown Line",
+    "zh-Hans": "市中心线延误",
+    "ms": "Kelewatan di Laluan Downtown",
+    "ta": "டவுன்டவுன் லைனில் தாமதம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

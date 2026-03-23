@@ -1,0 +1,13 @@
+{
+  "id": "2024-09-05-bplrt-signalling-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signalling fault affecting Bukit Panjang LRT service",
+    "zh-Hans": "信号故障影响武吉班让轻轨服务",
+    "ms": "Rosak isyarat yang menjejaskan perkhidmatan LRT Bukit Panjang",
+    "ta": "Bukit Panjang LRT சேவையில் பாதிப்பு சிக்னல் கோளாறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

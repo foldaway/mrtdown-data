@@ -1,0 +1,13 @@
+{
+  "id": "2025-07-03-bukit-panjang-lrt-service-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Bukit Panjang LRT service disruption due to power fault",
+    "zh-Hans": "由于电力故障，Bukit Panjang LRT服务中断",
+    "ms": "Disruption perkhidmatan Bukit Panjang LRT disebabkan oleh arus elektrik",
+    "ta": "சக்தி குறைபாட்டை காரணமாக, புக்கிட் பஞ்சாங்க்கு எலெக்ட்ரிக் மின்சாரத்திற்கான சேவையில் தடையேற்பாடு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

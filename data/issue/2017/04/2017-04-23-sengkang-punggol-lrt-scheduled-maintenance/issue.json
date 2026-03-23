@@ -1,0 +1,13 @@
+{
+  "id": "2017-04-23-sengkang-punggol-lrt-scheduled-maintenance",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Scheduled Maintenance Works on Sengkang-Punggol LRT",
+    "zh-Hans": "Sengkang-Punggol 轻轨计划维修工程",
+    "ms": "Pekerjaan Penyelenggaraan Berjadual di LRT Sengkang-Punggol",
+    "ta": "Sengkang-Punggol LRT இல் திட்டமிடப்பட்ட பராமரிப்புப் பணிகள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

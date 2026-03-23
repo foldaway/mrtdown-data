@@ -1,0 +1,29 @@
+{
+  "id": "TLA",
+  "name": {
+    "en-SG": "Telok Ayer",
+    "zh-Hans": "直落亚逸",
+    "ms": null,
+    "ta": "தெலுக் ஆயர்"
+  },
+  "geo": {
+    "latitude": 1.2816,
+    "longitude": 103.8486
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT18",
+      "startedAt": "2013-12-22",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "thian-hock-keng-temple",
+    "asia-square",
+    "the-arts-house",
+    "maxwell-food-centre"
+  ],
+  "townId": "outram"
+}

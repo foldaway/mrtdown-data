@@ -1,0 +1,13 @@
+{
+  "id": "2012-11-02-circle-line-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train Fault Affecting Circle Line",
+    "zh-Hans": "列车故障影响环线",
+    "ms": "Gangguan Kereta Api Mempengaruhi Laluan Lingkaran",
+    "ta": "ரயில் கோளாறு வட்டப் பாதையைப் பாதிக்கிறது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "YIS",
+  "name": {
+    "en-SG": "Yishun",
+    "zh-Hans": "义顺",
+    "ms": null,
+    "ta": "யீஷூன்"
+  },
+  "geo": {
+    "latitude": 1.4181,
+    "longitude": 103.8404
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS13",
+      "startedAt": "1988-12-20",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "northpoint-city",
+    "yishun-town-park",
+    "khoo-teck-puat-hospital"
+  ],
+  "townId": "yishun"
+}

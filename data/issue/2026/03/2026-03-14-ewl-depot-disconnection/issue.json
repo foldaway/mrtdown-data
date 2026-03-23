@@ -1,0 +1,13 @@
+{
+  "id": "2026-03-14-ewl-depot-disconnection",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "EWL System Upgrade - Tanah Merah to Expo (Changi Depot Disconnection)",
+    "zh-Hans": "东西线 系统升级 - Tanah Merah 至 Expo（樟宜车厂切断）",
+    "ms": "EWL Naiktaraf Sistem - Tanah Merah ke Expo (Pemutusan Depot Changi)",
+    "ta": "EWL அமைப்பு மேம்பாடு - Tanah Merah முதல் Expo (Changi டீப்போ பிரிப்பு)"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

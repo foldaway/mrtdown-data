@@ -1,0 +1,34 @@
+{
+  "id": "TEL",
+  "name": {
+    "en-SG": "Thomson–East Coast Line",
+    "zh-Hans": "汤申-东海岸地铁线",
+    "ms": "Laluan MRT Thomson-Pantai Timur",
+    "ta": "தாம்சன் - ஈஸ்ட் கோஸ்ட் எம்ஆர்டி வழி"
+  },
+  "type": "mrt.medium",
+  "color": "#9D5B25",
+  "startedAt": "2020-01-31",
+  "endedAt": null,
+  "operatingHours": {
+    "weekdays": {
+      "start": "05:36",
+      "end": "23:30"
+    },
+    "weekends": {
+      "start": "06:05",
+      "end": "23:50"
+    }
+  },
+  "operators": [
+    {
+      "operatorId": "SMRT_TRAINS",
+      "startedAt": "2020-01-31",
+      "endedAt": null
+    }
+  ],
+  "serviceIds": [
+    "TEL_MAIN_N",
+    "TEL_MAIN_S"
+  ]
+}

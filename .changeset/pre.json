@@ -1,0 +1,20 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "@mrtdown/cli": "2.0.0-alpha.5",
+    "@mrtdown/core": "2.0.0-alpha.5",
+    "@mrtdown/fs": "2.0.0-alpha.5",
+    "@mrtdown/triage": "2.0.0-alpha.5"
+  },
+  "changesets": [
+    "frank-bats-hope",
+    "goofy-keys-sin",
+    "grumpy-oranges-smoke",
+    "odd-moose-rescue",
+    "odd-tigers-leave",
+    "ripe-radios-wait",
+    "slimy-rice-admire",
+    "violet-banks-bet"
+  ]
+}

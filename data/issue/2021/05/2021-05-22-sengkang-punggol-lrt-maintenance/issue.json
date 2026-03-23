@@ -1,0 +1,13 @@
+{
+  "id": "2021-05-22-sengkang-punggol-lrt-maintenance",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Scheduled maintenance for Sengkang-Punggol LRT",
+    "zh-Hans": "盛港-榜鹅轻轨的计划维护",
+    "ms": "Penyelenggaraan berjadual untuk LRT Sengkang-Punggol",
+    "ta": "செங்காங்-புங்கோல் LRTக்கான திட்டமிடப்பட்ட பராமரிப்பு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

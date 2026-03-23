@@ -1,0 +1,265 @@
+{
+    "id": "CCL_MAIN_CW",
+    "lineId": "CCL",
+    "name": {
+        "en-SG": "Circle Line (Main Service) - Clockwise",
+        "zh-Hans": "环线（主线） - 顺时针方向",
+        "ms": "Laluan MRT Bulat (Layanan Utama) - Arah Jam",
+        "ta": "வட்டமாக்கி எம்ஆர்டி வழி (முக்கிய சேவை) - காலம் திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_2009_stage_3",
+            "startAt": "2009-05-28",
+            "endAt": "2010-04-17",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "MRM",
+                        "displayCode": "CC16"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "CC15"
+                    },
+                    {
+                        "stationId": "LRC",
+                        "displayCode": "CC14"
+                    },
+                    {
+                        "stationId": "SER",
+                        "displayCode": "CC13"
+                    },
+                    {
+                        "stationId": "BLY",
+                        "displayCode": "CC12"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:16",
+                    "end": "00:40"
+                },
+                "weekends": {
+                    "start": "05:40",
+                    "end": "00:40"
+                }
+            }
+        },
+        {
+            "id": "r_2010_stage_1_2",
+            "startAt": "2010-04-17",
+            "endAt": "2011-10-08",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "MRM",
+                        "displayCode": "CC16"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "CC15"
+                    },
+                    {
+                        "stationId": "LRC",
+                        "displayCode": "CC14"
+                    },
+                    {
+                        "stationId": "SER",
+                        "displayCode": "CC13"
+                    },
+                    {
+                        "stationId": "BLY",
+                        "displayCode": "CC12"
+                    },
+                    {
+                        "stationId": "TSG",
+                        "displayCode": "CC11"
+                    },
+                    {
+                        "stationId": "MPS",
+                        "displayCode": "CC10"
+                    },
+                    {
+                        "stationId": "PYL",
+                        "displayCode": "CC9"
+                    },
+                    {
+                        "stationId": "DKT",
+                        "displayCode": "CC8"
+                    },
+                    {
+                        "stationId": "MBT",
+                        "displayCode": "CC7"
+                    },
+                    {
+                        "stationId": "SDM",
+                        "displayCode": "CC6"
+                    },
+                    {
+                        "stationId": "NCH",
+                        "displayCode": "CC5"
+                    },
+                    {
+                        "stationId": "PMN",
+                        "displayCode": "CC4"
+                    },
+                    {
+                        "stationId": "EPN",
+                        "displayCode": "CC3"
+                    },
+                    {
+                        "stationId": "BBS",
+                        "displayCode": "CC2"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "CC1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:16",
+                    "end": "00:40"
+                },
+                "weekends": {
+                    "start": "05:40",
+                    "end": "00:40"
+                }
+            }
+        },
+        {
+            "id": "r_2011_stage_4_5",
+            "startAt": "2011-10-08",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "HBF",
+                        "displayCode": "CC29"
+                    },
+                    {
+                        "stationId": "TLB",
+                        "displayCode": "CC28"
+                    },
+                    {
+                        "stationId": "LBD",
+                        "displayCode": "CC27"
+                    },
+                    {
+                        "stationId": "PPJ",
+                        "displayCode": "CC26"
+                    },
+                    {
+                        "stationId": "HPV",
+                        "displayCode": "CC25"
+                    },
+                    {
+                        "stationId": "KRG",
+                        "displayCode": "CC24"
+                    },
+                    {
+                        "stationId": "ONH",
+                        "displayCode": "CC23"
+                    },
+                    {
+                        "stationId": "BNV",
+                        "displayCode": "CC22"
+                    },
+                    {
+                        "stationId": "HLV",
+                        "displayCode": "CC21"
+                    },
+                    {
+                        "stationId": "FRR",
+                        "displayCode": "CC20"
+                    },
+                    {
+                        "stationId": "BTN",
+                        "displayCode": "CC19"
+                    },
+                    {
+                        "stationId": "CDT",
+                        "displayCode": "CC17"
+                    },
+                    {
+                        "stationId": "MRM",
+                        "displayCode": "CC16"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "CC15"
+                    },
+                    {
+                        "stationId": "LRC",
+                        "displayCode": "CC14"
+                    },
+                    {
+                        "stationId": "SER",
+                        "displayCode": "CC13"
+                    },
+                    {
+                        "stationId": "BLY",
+                        "displayCode": "CC12"
+                    },
+                    {
+                        "stationId": "TSG",
+                        "displayCode": "CC11"
+                    },
+                    {
+                        "stationId": "MPS",
+                        "displayCode": "CC10"
+                    },
+                    {
+                        "stationId": "PYL",
+                        "displayCode": "CC9"
+                    },
+                    {
+                        "stationId": "DKT",
+                        "displayCode": "CC8"
+                    },
+                    {
+                        "stationId": "MBT",
+                        "displayCode": "CC7"
+                    },
+                    {
+                        "stationId": "SDM",
+                        "displayCode": "CC6"
+                    },
+                    {
+                        "stationId": "NCH",
+                        "displayCode": "CC5"
+                    },
+                    {
+                        "stationId": "PMN",
+                        "displayCode": "CC4"
+                    },
+                    {
+                        "stationId": "EPN",
+                        "displayCode": "CC3"
+                    },
+                    {
+                        "stationId": "BBS",
+                        "displayCode": "CC2"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "CC1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:16",
+                    "end": "00:40"
+                },
+                "weekends": {
+                    "start": "05:40",
+                    "end": "00:40"
+                }
+            }
+        }
+    ]
+}

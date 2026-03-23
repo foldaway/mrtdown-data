@@ -1,0 +1,13 @@
+{
+  "id": "2022-09-13-dtl-service-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Downtown Line service disruption",
+    "zh-Hans": "市线服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Downtown",
+    "ta": "டவுன்டவுன் லைன் சேவை தடங்கல்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

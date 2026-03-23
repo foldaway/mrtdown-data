@@ -1,0 +1,26 @@
+{
+  "id": "PDR",
+  "name": {
+    "en-SG": "Pandan Reservoir",
+    "zh-Hans": "班丹蓄水池",
+    "ms": null,
+    "ta": "பாண்டன் ரெசவோர்"
+  },
+  "geo": {
+    "latitude": 1.3632,
+    "longitude": 103.7357
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JE7",
+      "startedAt": "2028-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "pandan-reservoir"
+  ],
+  "townId": "jurong-east"
+}

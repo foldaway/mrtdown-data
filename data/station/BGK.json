@@ -1,0 +1,27 @@
+{
+  "id": "BGK",
+  "name": {
+    "en-SG": "Buangkok",
+    "zh-Hans": "万国",
+    "ms": null,
+    "ta": "புவாங்கோக்"
+  },
+  "geo": {
+    "latitude": 1.3754,
+    "longitude": 103.8867
+  },
+  "stationCodes": [
+    {
+      "lineId": "NEL",
+      "code": "NE15",
+      "startedAt": "2006-01-15",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "buangkok-park",
+    "compass-one-shopping-mall"
+  ],
+  "townId": "sengkang"
+}

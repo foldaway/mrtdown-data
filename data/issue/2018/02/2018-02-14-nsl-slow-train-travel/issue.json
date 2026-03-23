@@ -1,0 +1,13 @@
+{
+  "id": "2018-02-14-nsl-slow-train-travel",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption on the North-South Line",
+    "zh-Hans": "南北线服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் சேவை தடை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

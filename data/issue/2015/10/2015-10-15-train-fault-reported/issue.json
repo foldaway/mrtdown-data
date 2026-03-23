@@ -1,0 +1,13 @@
+{
+  "id": "2015-10-15-train-fault-reported",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train Fault Reported",
+    "zh-Hans": "列车故障已报告",
+    "ms": "Kerosakan Kereta Api Dilaporkan",
+    "ta": "ரயில் பழுது புகாரளிக்கப்பட்டது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

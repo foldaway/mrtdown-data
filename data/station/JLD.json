@@ -1,0 +1,32 @@
+{
+  "id": "JLD",
+  "name": {
+    "en-SG": "Jurong Lake District",
+    "zh-Hans": "裕廊湖区",
+    "ms": null,
+    "ta": "ஜூரோங் லேக் வட்­டா­ரம்"
+  },
+  "geo": {
+    "latitude": 1.3483,
+    "longitude": 103.7275
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR19",
+      "startedAt": "2032-01-01",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "jurong-lake-gardens",
+    "science-centre-singapore-new-site",
+    "jurong-gateway-precinct",
+    "jem",
+    "westgate",
+    "imm-building",
+    "jden"
+  ],
+  "townId": "jurong-east"
+}

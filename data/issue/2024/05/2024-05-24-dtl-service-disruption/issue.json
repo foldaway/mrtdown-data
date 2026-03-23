@@ -1,0 +1,13 @@
+{
+  "id": "2024-05-24-dtl-service-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "DTL service disruption due to track closure",
+    "zh-Hans": "DTL轨道关闭服务中断",
+    "ms": "Gangguan perkhidmatan DTL akibat penutupan landasan",
+    "ta": "தட மூடலால் DTL சேவையில் இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "RCR",
+  "name": {
+    "en-SG": "Rochor",
+    "zh-Hans": "梧槽",
+    "ms": null,
+    "ta": "ரோச்சோர்"
+  },
+  "geo": {
+    "latitude": 1.3016,
+    "longitude": 103.852
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT13",
+      "startedAt": "2015-12-27",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "lasalle-college-of-the-arts",
+    "tekka-centre"
+  ],
+  "townId": "rochor"
+}

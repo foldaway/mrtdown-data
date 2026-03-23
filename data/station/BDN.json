@@ -1,0 +1,28 @@
+{
+  "id": "BDN",
+  "name": {
+    "en-SG": "Bedok North",
+    "zh-Hans": "勿洛北",
+    "ms": null,
+    "ta": "பிடோக் நார்த்"
+  },
+  "geo": {
+    "latitude": 1.3278,
+    "longitude": 103.9256
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT29",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "bedok-mall",
+    "chai-chee-community-centre",
+    "singapore-expo"
+  ],
+  "townId": "bedok"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "BSH",
+  "name": {
+    "en-SG": "Bishan",
+    "zh-Hans": "碧山",
+    "ms": null,
+    "ta": "பீஷான்"
+  },
+  "geo": {
+    "latitude": 1.3521,
+    "longitude": 103.8481
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS17",
+      "startedAt": "1987-11-07",
+      "endedAt": null,
+      "structureType": "at_grade"
+    },
+    {
+      "lineId": "CCL",
+      "code": "CC15",
+      "startedAt": "2009-05-28",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "bishan-park",
+    "singapore-pools-bishan",
+    "bishan-junction-8"
+  ],
+  "townId": "bishan"
+}

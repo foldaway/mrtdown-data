@@ -1,0 +1,13 @@
+{
+  "id": "2019-11-08-nel-maintenance",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Maintenance works on five NEL stations",
+    "zh-Hans": "五个 NEL 站的维修工程",
+    "ms": "Kerja penyelenggaraan di lima stesen NEL",
+    "ta": "ஐந்து NEL நிலையங்களில் பராமரிப்புப் பணிகள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}
