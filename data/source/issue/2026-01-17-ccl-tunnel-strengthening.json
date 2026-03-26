@@ -20,6 +20,12 @@
   "updates": [
     {
       "type": "planned",
+      "text": "21:00-CCL-Planned train service adjustments from 17 January to 19 April 2026. Circle Line train service headways will be adjusted to facilitate tunnel strengthening works. Commuters should factor in additional travelling times of up to 30 minutes during peak hours, and consider alternative MRT lines and bus services. Please visit go.gov.sg/circle-line-tunnel-works for more information. For crowd status at Serangoon, please visit www.lta.gov.sg/content/ltagov/en/map/train-crowd-status.html",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116294278669022490",
+      "createdAt": "2026-03-26T15:24:27.000+08:00"
+    },
+    {
+      "type": "planned",
       "text": "The final stage of the Circle Line is set to open in the middle of 2026.",
       "sourceUrl": "https://www.straitstimes.com/singapore/transport/ccl-tunnel-work-to-finish-early-shorter-weekend-rail-service-from-april-11-may-17-for-stage-6-tests",
       "createdAt": "2026-03-26T13:00:00.000+08:00"
