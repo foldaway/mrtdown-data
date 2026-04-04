@@ -1,6 +1,8 @@
 import { DateTime } from 'luxon';
 import {
   DateTime as DateTimeRust,
+  DtStart,
+  ExDate,
   Frequency,
   type NWeekday,
   RRule,
@@ -102,11 +104,13 @@ export function normalizeRecurringPeriod(
   const byTimes = toByTimes(period.timeWindow);
 
   const rruleSet = new RRuleSet({
-    dtstart: DateTimeRust.fromObject(startAt.toObject()),
-    tzid: period.timeZone,
+    dtstart: new DtStart(
+      DateTimeRust.fromPlain(startAt.toObject()),
+      period.timeZone,
+    ),
     rrules: [
       new RRule({
-        until: DateTimeRust.fromObject(endAt.toObject()),
+        until: DateTimeRust.fromPlain(endAt.toObject()),
         frequency: toFrequency(period.frequency),
         interval: 1,
         byWeekday: toDaysOfWeek(period.daysOfWeek),
@@ -120,7 +124,10 @@ export function normalizeRecurringPeriod(
         keepLocalTime: true,
       });
       assert(dateTime.isValid, `Invalid ISO datetime: ${date}`);
-      return DateTimeRust.fromObject(dateTime.toObject());
+      return new ExDate(
+        DateTimeRust.fromPlain(dateTime.toObject()),
+        period.timeZone,
+      );
     }),
   });
 
@@ -131,12 +138,13 @@ export function normalizeRecurringPeriod(
   );
 
   for (const dt of rruleSet.all()) {
-    const dtStart = DateTime.fromObject(dt.toObject()).setZone(rruleSet.tzid, {
+    const { utc: _, ...rest } = dt.toPlain();
+    const dtStart = DateTime.fromObject(rest).setZone(period.timeZone, {
       keepLocalTime: true,
     });
     assert(dtStart.isValid);
     const dtEnd = DateTime.fromObject({
-      ...dt.toObject(),
+      ...rest,
       hour: timeWindowEndAt.toObject().hour,
       minute: timeWindowEndAt.toObject().minute,
       second: timeWindowEndAt.toObject().second,
