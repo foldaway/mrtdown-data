@@ -1,5 +1,14 @@
 # @mrtdown/triage
 
+## 2.0.0-alpha.15
+
+### Patch Changes
+
+- d119d13: replace rrule-rust with rrule-temporal
+- Updated dependencies [d119d13]
+  - @mrtdown/core@2.0.0-alpha.15
+  - @mrtdown/fs@2.0.0-alpha.15
+
 ## 2.0.0-alpha.14
 
 ### Patch Changes

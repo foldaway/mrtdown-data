@@ -1,6 +1,6 @@
 {
   "name": "@mrtdown/cli",
-  "version": "2.0.0-alpha.14",
+  "version": "2.0.0-alpha.15",
   "description": "",
   "private": true,
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
@@ -23,9 +23,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@mrtdown/core": "^2.0.0-alpha.14",
-    "@mrtdown/fs": "^2.0.0-alpha.14",
-    "@mrtdown/triage": "^2.0.0-alpha.14",
+    "@mrtdown/core": "^2.0.0-alpha.15",
+    "@mrtdown/fs": "^2.0.0-alpha.15",
+    "@mrtdown/triage": "^2.0.0-alpha.15",
     "commander": "^14.0.3",
     "dotenv": "^16.4.7",
     "json-nd": "^1.0.0",
