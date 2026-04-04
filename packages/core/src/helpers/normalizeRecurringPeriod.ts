@@ -1,14 +1,6 @@
+import { Temporal } from '@js-temporal/polyfill';
 import { DateTime } from 'luxon';
-import {
-  DateTime as DateTimeRust,
-  DtStart,
-  ExDate,
-  Frequency,
-  type NWeekday,
-  RRule,
-  RRuleSet,
-  Weekday,
-} from 'rrule-rust';
+import { type Freq, RRuleTemporal } from 'rrule-temporal';
 import type {
   PeriodFixed,
   PeriodFrequency,
@@ -16,48 +8,46 @@ import type {
 } from '../schema/issue/period.js';
 import { assert } from '../util/assert.js';
 
-function toFrequency(frequency: PeriodFrequency): Frequency {
+function toFrequency(frequency: PeriodFrequency): Freq {
   switch (frequency) {
     case 'daily':
-      return Frequency.Daily;
+      return 'DAILY';
     case 'weekly':
-      return Frequency.Weekly;
+      return 'WEEKLY';
     case 'monthly':
-      return Frequency.Monthly;
+      return 'MONTHLY';
     case 'yearly':
-      return Frequency.Yearly;
+      return 'YEARLY';
     default:
       throw new Error(`Invalid frequency: ${frequency}`);
   }
 }
 
-function toDaysOfWeek(
-  daysOfWeek: PeriodRecurring['daysOfWeek'],
-): readonly (NWeekday | Weekday)[] {
-  const result: (NWeekday | Weekday)[] = [];
+function toDaysOfWeek(daysOfWeek: PeriodRecurring['daysOfWeek']): string[] {
+  const result: string[] = [];
 
   for (const day of daysOfWeek ?? []) {
     switch (day) {
       case 'MO':
-        result.push(Weekday.Monday);
+        result.push('MO');
         break;
       case 'TU':
-        result.push(Weekday.Tuesday);
+        result.push('TU');
         break;
       case 'WE':
-        result.push(Weekday.Wednesday);
+        result.push('WE');
         break;
       case 'TH':
-        result.push(Weekday.Thursday);
+        result.push('TH');
         break;
       case 'FR':
-        result.push(Weekday.Friday);
+        result.push('FR');
         break;
       case 'SA':
-        result.push(Weekday.Saturday);
+        result.push('SA');
         break;
       case 'SU':
-        result.push(Weekday.Sunday);
+        result.push('SU');
         break;
       default:
         throw new Error(`Invalid day of week: ${day}`);
@@ -103,31 +93,30 @@ export function normalizeRecurringPeriod(
 
   const byTimes = toByTimes(period.timeWindow);
 
-  const rruleSet = new RRuleSet({
-    dtstart: new DtStart(
-      DateTimeRust.fromPlain(startAt.toObject()),
-      period.timeZone,
-    ),
-    rrules: [
-      new RRule({
-        until: DateTimeRust.fromPlain(endAt.toObject()),
-        frequency: toFrequency(period.frequency),
-        interval: 1,
-        byWeekday: toDaysOfWeek(period.daysOfWeek),
-        byHour: byTimes.byHour,
-        byMinute: byTimes.byMinute,
-        bySecond: byTimes.bySecond,
-      }),
-    ],
-    exdates: period.excludedDates?.map((date) => {
+  const rruleSet = new RRuleTemporal({
+    dtstart: Temporal.ZonedDateTime.from({
+      ...startAt.toObject(),
+      timeZone: startAt.zoneName,
+    }),
+    until: Temporal.ZonedDateTime.from({
+      ...endAt.toObject(),
+      timeZone: endAt.zoneName,
+    }),
+    freq: toFrequency(period.frequency),
+    interval: 1,
+    byDay: toDaysOfWeek(period.daysOfWeek),
+    byHour: byTimes.byHour,
+    byMinute: byTimes.byMinute,
+    bySecond: byTimes.bySecond,
+    exDate: period.excludedDates?.map((date) => {
       const dateTime = DateTime.fromISO(date).setZone(period.timeZone, {
         keepLocalTime: true,
       });
       assert(dateTime.isValid, `Invalid ISO datetime: ${date}`);
-      return new ExDate(
-        DateTimeRust.fromPlain(dateTime.toObject()),
-        period.timeZone,
-      );
+      return Temporal.ZonedDateTime.from({
+        ...dateTime.toObject(),
+        timeZone: dateTime.zoneName,
+      });
     }),
   });
 
@@ -138,13 +127,21 @@ export function normalizeRecurringPeriod(
   );
 
   for (const dt of rruleSet.all()) {
-    const { utc: _, ...rest } = dt.toPlain();
-    const dtStart = DateTime.fromObject(rest).setZone(period.timeZone, {
+    const dtStart = DateTime.fromObject({
+      day: dt.day,
+      month: dt.month,
+      year: dt.year,
+      hour: dt.hour,
+      minute: dt.minute,
+      second: dt.second,
+    }).setZone(dt.timeZoneId, {
       keepLocalTime: true,
     });
     assert(dtStart.isValid);
     const dtEnd = DateTime.fromObject({
-      ...rest,
+      day: dt.day,
+      month: dt.month,
+      year: dt.year,
       hour: timeWindowEndAt.toObject().hour,
       minute: timeWindowEndAt.toObject().minute,
       second: timeWindowEndAt.toObject().second,
