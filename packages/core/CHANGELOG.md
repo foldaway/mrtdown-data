@@ -1,5 +1,11 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.14
+
+### Patch Changes
+
+- 46a53bb: bump 'rrule-rust' to v3.1.1
+
 ## 2.0.0-alpha.13
 
 ### Patch Changes
