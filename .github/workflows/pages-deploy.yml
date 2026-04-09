@@ -41,8 +41,8 @@ jobs:
       - name: Create archives of data directory
         run: |
           tar -czf archive.tar.gz data
-          mv archive.tar.gz data/
           zip -rq archive.zip data
+          mv archive.tar.gz data/
           mv archive.zip data/
 
       - uses: actions/configure-pages@v5
