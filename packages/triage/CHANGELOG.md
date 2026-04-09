@@ -1,5 +1,14 @@
 # @mrtdown/triage
 
+## 2.0.0-alpha.17
+
+### Patch Changes
+
+- c4e2c5f: bump to test provenance-based publishing
+- Updated dependencies [c4e2c5f]
+  - @mrtdown/core@2.0.0-alpha.17
+  - @mrtdown/fs@2.0.0-alpha.17
+
 ## 2.0.0-alpha.16
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@mrtdown/triage",
-  "version": "2.0.0-alpha.16",
+  "version": "2.0.0-alpha.17",
   "description": "",
   "private": true,
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
@@ -20,8 +20,8 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@mrtdown/core": "^2.0.0-alpha.16",
-    "@mrtdown/fs": "^2.0.0-alpha.16",
+    "@mrtdown/core": "^2.0.0-alpha.17",
+    "@mrtdown/fs": "^2.0.0-alpha.17",
     "dotenv": "^16.4.7",
     "hast-util-from-html": "^2.0.3",
     "hast-util-to-mdast": "^10.1.2",
