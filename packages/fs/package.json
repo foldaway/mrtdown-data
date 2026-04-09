@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@mrtdown/core": "^2.0.0-alpha.18",
+    "fuse.js": "^7.1.0",
     "json-nd": "^1.0.0",
     "luxon": "^3.5.0",
     "ulid": "^3.0.2",
