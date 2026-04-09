@@ -1,5 +1,11 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.16
+
+### Patch Changes
+
+- 7016cb6: release fs package
+
 ## 2.0.0-alpha.15
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @mrtdown/cli
 
+## 2.0.0-alpha.16
+
+### Patch Changes
+
+- 7016cb6: release fs package
+- Updated dependencies [7016cb6]
+  - @mrtdown/triage@2.0.0-alpha.16
+  - @mrtdown/core@2.0.0-alpha.16
+  - @mrtdown/fs@2.0.0-alpha.16
+
 ## 2.0.0-alpha.15
 
 ### Patch Changes
