@@ -38,10 +38,12 @@ jobs:
           npm run cli -- -- manifest
           npm run cli -- -- pages-index
 
-      - name: Create archive of data directory
+      - name: Create archives of data directory
         run: |
           tar -czf archive.tar.gz data
           mv archive.tar.gz data/
+          zip -rq archive.zip data
+          mv archive.zip data/
 
       - uses: actions/configure-pages@v5
 
