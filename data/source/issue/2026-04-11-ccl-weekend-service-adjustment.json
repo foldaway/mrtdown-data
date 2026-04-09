@@ -9,14 +9,14 @@
   "lineIdsAffected": [
     "CCL"
   ],
-  "startAt": "2026-04-11T00:00:00.000+08:00",
-  "endAt": "2026-05-18T00:00:00.000+08:00",
+  "startAt": "2026-04-11T23:00:00.000+08:00",
+  "endAt": "2026-04-12T09:00:00.000+08:00",
   "type": "maintenance",
   "cancelledAt": null,
   "subtypes": [
     "track.work"
   ],
-  "rrule": null,
+  "rrule": "DTSTART;TZID=Asia/Singapore:20260411T230000\nRRULE:FREQ=WEEKLY;UNTIL=20260517T000000;WKST=MO;BYDAY=SA",
   "updates": [
     {
       "type": "planned",
