@@ -1,0 +1,97 @@
+{
+  "id": "2026-04-11-ccl-weekend-service-adjustment",
+  "title": "CCL Weekend Service Adjustment for CCL6 Testing",
+  "title_translations": {
+    "zh-Hans": "环线周末服务调整（CCL6测试）",
+    "ms": "Pelarasan Perkhidmatan Hujung Minggu CCL untuk Ujian CCL6",
+    "ta": "CCL6 சோதனைக்கான CCL வாரஇறுதி சேவை மாற்றம்"
+  },
+  "lineIdsAffected": [
+    "CCL"
+  ],
+  "startAt": "2026-04-11T00:00:00.000+08:00",
+  "endAt": "2026-05-18T00:00:00.000+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "track.work"
+  ],
+  "rrule": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "05:00-CCL-Planned Service Adjustment. From 11 Apr to 17 May 2026, Circle Line train services will end earlier at 11.00pm on Saturday nights and commence later at 9.00am on Sunday mornings. Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116375643416961689",
+      "createdAt": "2026-04-10T00:16:34.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "branchName": "main",
+      "stationIds": [
+        "DBG",
+        "BBS",
+        "EPN",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ],
+      "lineId": "CCL"
+    },
+    {
+      "branchName": "extension",
+      "stationIds": [
+        "MRB",
+        "BFT",
+        "PMN",
+        "NCH",
+        "SDM",
+        "MBT",
+        "DKT",
+        "PYL",
+        "MPS",
+        "TSG",
+        "BLY",
+        "SER",
+        "LRC",
+        "BSH",
+        "MRM",
+        "CDT",
+        "BTN",
+        "FRR",
+        "HLV",
+        "BNV",
+        "ONH",
+        "KRG",
+        "HPV",
+        "PPJ",
+        "LBD",
+        "TLB",
+        "HBF"
+      ],
+      "lineId": "CCL"
+    }
+  ]
+}
