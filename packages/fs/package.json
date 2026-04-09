@@ -1,6 +1,6 @@
 {
   "name": "@mrtdown/fs",
-  "version": "2.0.0-alpha.17",
+  "version": "2.0.0-alpha.18",
   "description": "",
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
   "bugs": {
@@ -29,7 +29,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@mrtdown/core": "^2.0.0-alpha.17",
+    "@mrtdown/core": "^2.0.0-alpha.18",
     "json-nd": "^1.0.0",
     "luxon": "^3.5.0",
     "ulid": "^3.0.2",
