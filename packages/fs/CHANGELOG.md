@@ -1,5 +1,13 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.18
+
+### Patch Changes
+
+- a1fc7db: core: emit compatible zod types for es2022 consumers
+- Updated dependencies [a1fc7db]
+  - @mrtdown/core@2.0.0-alpha.18
+
 ## 2.0.0-alpha.17
 
 ### Patch Changes
