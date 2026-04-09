@@ -1,5 +1,11 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.19
+
+### Patch Changes
+
+- 98538a9: move fuse.js dependency in fs package instead of cli
+
 ## 2.0.0-alpha.18
 
 ### Patch Changes
