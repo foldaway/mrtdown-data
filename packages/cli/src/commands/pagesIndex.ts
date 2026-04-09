@@ -388,13 +388,23 @@ export function runPagesIndex(opts: PagesIndexCliOptions): number {
                   {
                     type: 'text',
                     value:
-                      '. The full data directory is also available as a gzipped tarball: ',
+                      '. The full data directory is also available as ',
                   },
                   {
                     type: 'element',
                     tagName: 'a',
                     properties: { href: 'archive.tar.gz' },
                     children: [{ type: 'text', value: 'archive.tar.gz' }],
+                  },
+                  {
+                    type: 'text',
+                    value: ' (gzipped tarball) or ',
+                  },
+                  {
+                    type: 'element',
+                    tagName: 'a',
+                    properties: { href: 'archive.zip' },
+                    children: [{ type: 'text', value: 'archive.zip' }],
                   },
                   {
                     type: 'text',
