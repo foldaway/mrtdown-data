@@ -20,6 +20,12 @@
   "updates": [
     {
       "type": "planned",
+      "text": "05:00-CCL-Planned Service Adjustment. From 11 Apr to 17 May 2026, Circle Line train services will end earlier at 11.00pm on Saturday nights and commence later at 9.00am on Sunday mornings. Please use alternative MRT lines and bus services.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116375643416961689",
+      "createdAt": "2026-04-10T00:16:34.000+08:00"
+    },
+    {
+      "type": "planned",
       "text": "Circles Line (CCL) MRT service is set to resume normal operation on April 10, but shorter weekend rail service will be in place until May 17.",
       "sourceUrl": "https://www.reddit.com/r/singapore/comments/1sgluij/normal_mrt_service_on_ccl_to_resume_on_april_10/",
       "createdAt": "2026-04-09T18:31:35.000+08:00"
