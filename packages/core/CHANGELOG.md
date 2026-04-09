@@ -1,5 +1,11 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.17
+
+### Patch Changes
+
+- c4e2c5f: bump to test provenance-based publishing
+
 ## 2.0.0-alpha.16
 
 ### Patch Changes
