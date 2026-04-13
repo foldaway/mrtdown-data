@@ -20,6 +20,12 @@
   "updates": [
     {
       "type": "planned",
+      "text": "Train service on the Sengkang West LRT line will operate on a single loop from April 19 to October 18.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/transport/sengkang-punggol-lrt-depot-to-triple-in-size-with-new-test-track-maintenance-building",
+      "createdAt": "2026-04-12T18:00:00.000+08:00"
+    },
+    {
+      "type": "planned",
       "text": "Sengkang West LRT to run on single loop for 7 months",
       "sourceUrl": "https://www.straitstimes.com/singapore/transport/no-mrt-service-between-tanah-merah-expo-from-march-14-17-due-to-upgrading-works",
       "createdAt": "2026-02-20T12:52:57.000+08:00"
