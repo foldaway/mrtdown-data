@@ -103,6 +103,46 @@ export function validateImpactEventRelationships(
   return errors;
 }
 
+/** Ensures closed periods have end strictly after start (fixed + recurring outer bounds). */
+function validateImpactEventPeriodOrdering(
+  event: ImpactEvent,
+  file: string,
+  lineNum: number,
+): ValidationError[] {
+  if (event.type !== 'periods.set') return [];
+
+  const errors: ValidationError[] = [];
+  for (let j = 0; j < event.periods.length; j++) {
+    const period = event.periods[j];
+    const path = `periods[${j}]`;
+
+    if (period.kind === 'fixed') {
+      if (period.endAt == null) continue;
+      const startMs = Date.parse(period.startAt);
+      const endMs = Date.parse(period.endAt);
+      if (!(endMs > startMs)) {
+        errors.push({
+          file,
+          line: lineNum,
+          message: `${path}: fixed period endAt must be after startAt`,
+        });
+      }
+    } else {
+      const startMs = Date.parse(period.startAt);
+      const endMs = Date.parse(period.endAt);
+      if (!(endMs > startMs)) {
+        errors.push({
+          file,
+          line: lineNum,
+          message: `${path}: recurring period endAt must be after startAt`,
+        });
+      }
+    }
+  }
+
+  return errors;
+}
+
 function validateIssueAtPath(
   store: IStore,
   relBase: string,
@@ -169,31 +209,30 @@ function validateIssueAtPath(
       const parsed = NdJson.parse(content);
       for (let i = 0; i < parsed.length; i++) {
         const row = parsed[i];
-        const schemaErrs = validateImpactEventSchema(row);
-        for (const e of schemaErrs) {
-          errors.push({
-            ...e,
-            file: impactPath,
-            line: i + 1,
-          });
+        const impactParsed = ImpactEventSchema.safeParse(row);
+        if (!impactParsed.success) {
+          for (const issue of impactParsed.error.issues) {
+            errors.push({
+              file: impactPath,
+              line: i + 1,
+              message: `${issue.path.length > 0 ? issue.path.join('.') : 'root'}: ${issue.message}`,
+            });
+          }
+          continue;
         }
-        const eventResult = z
-          .object({
-            entity: z.any(),
-            basis: z.any(),
-            serviceScopes: z.any().optional(),
-          })
-          .safeParse(row);
-        if (eventResult.success) {
-          const relErrs = validateImpactEventRelationships(
-            row as ImpactEvent,
+        const event = impactParsed.data;
+        errors.push(
+          ...validateImpactEventPeriodOrdering(event, impactPath, i + 1),
+        );
+        errors.push(
+          ...validateImpactEventRelationships(
+            event,
             evidenceIds,
             impactPath,
             i + 1,
             ctx,
-          );
-          errors.push(...relErrs);
-        }
+          ),
+        );
       }
     }
   } catch {
