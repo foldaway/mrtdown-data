@@ -46,7 +46,9 @@ export class MemoryStore implements IStore, IWriteStore {
     if (children == null) {
       throw new Error(`MemoryStore: Directory not found: ${path}`);
     }
-    return Array.from(children.values()).sort();
+    return Array.from(children.values())
+      .filter((name) => !name.startsWith('.'))
+      .sort();
   }
 
   // --------- IWriteStore ---------
