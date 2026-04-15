@@ -1,5 +1,6 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { visibleDirEntries } from './dirEntries.js';
 import type { IStore } from './store.js';
 
 /**
@@ -19,7 +20,7 @@ export class FileStore implements IStore {
 
   listDir(path: string): string[] {
     const fullPath = join(this.rootDir, path);
-    return readdirSync(fullPath);
+    return visibleDirEntries(readdirSync(fullPath));
   }
 
   exists(path: string): boolean {

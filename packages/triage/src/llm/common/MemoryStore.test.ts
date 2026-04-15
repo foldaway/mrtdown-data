@@ -61,7 +61,7 @@ describe('MemoryStore', () => {
     test('throws for non-existent file', () => {
       const store = new MemoryStore();
       expect(() => store.readText('missing.txt')).toThrow(
-        'MemoryStore: File not found: missing.txt'
+        'MemoryStore: File not found: missing.txt',
       );
     });
 
@@ -107,7 +107,11 @@ describe('MemoryStore', () => {
           'parent/subdir/file.txt': '3',
         },
       });
-      expect(store.listDir('parent')).toEqual(['child1.txt', 'child2.txt', 'subdir']);
+      expect(store.listDir('parent')).toEqual([
+        'child1.txt',
+        'child2.txt',
+        'subdir',
+      ]);
     });
 
     test('returns empty array for empty directory', () => {
@@ -115,10 +119,17 @@ describe('MemoryStore', () => {
       expect(store.listDir('')).toEqual([]);
     });
 
+    test('excludes dot-prefixed entries', () => {
+      const store = new MemoryStore();
+      store.writeText('.DS_Store', '');
+      store.writeText('visible.txt', 'x');
+      expect(store.listDir('')).toEqual(['visible.txt']);
+    });
+
     test('throws for non-existent directory', () => {
       const store = new MemoryStore();
       expect(() => store.listDir('missing')).toThrow(
-        'MemoryStore: Directory not found: missing'
+        'MemoryStore: Directory not found: missing',
       );
     });
   });

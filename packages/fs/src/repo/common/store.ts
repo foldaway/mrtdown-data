@@ -15,7 +15,7 @@ export interface IStore {
    */
   readJson<T>(path: string): T;
   /**
-   * List all files in a directory.
+   * List entries in a directory. Dotfiles and dot-directories are omitted.
    * @param path
    * @returns
    */
