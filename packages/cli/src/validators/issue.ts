@@ -143,6 +143,75 @@ function validateImpactEventPeriodOrdering(
   return errors;
 }
 
+interface ImpactEventLoopState {
+  /** Tracks the last periods.set per entity key (JSON) → { line, periodsJson }. */
+  lastPeriodsSetByEntity: Map<string, { line: number; periodsJson: string }>;
+  /** Tracks seen event fingerprints (ts+type+entity+payload, excl. id/basis) → first line. */
+  seenEventFingerprints: Map<string, number>;
+}
+
+/**
+ * Detects periods.set events that don't change the periods for their entity compared to
+ * the previous periods.set for the same entity (no-op).
+ * Updates state.lastPeriodsSetByEntity as a side-effect.
+ */
+function validateImpactEventNoOpPeriods(
+  event: ImpactEvent,
+  state: ImpactEventLoopState,
+  file: string,
+  lineNum: number,
+): ValidationError[] {
+  if (event.type !== 'periods.set') return [];
+
+  const entityKey = JSON.stringify(event.entity);
+  const periodsJson = JSON.stringify(event.periods);
+  const prev = state.lastPeriodsSetByEntity.get(entityKey);
+
+  state.lastPeriodsSetByEntity.set(entityKey, { line: lineNum, periodsJson });
+
+  if (prev?.periodsJson === periodsJson) {
+    return [
+      {
+        file,
+        line: lineNum,
+        message: `periods.set is identical to line ${prev.line} (no-op)`,
+      },
+    ];
+  }
+
+  return [];
+}
+
+/**
+ * Detects exact duplicate impact events: same ts, type, entity, and payload
+ * but different id/basis (usually from a duplicate evidence entry).
+ * Updates state.seenEventFingerprints as a side-effect.
+ */
+function validateImpactEventNoDuplicate(
+  event: ImpactEvent,
+  state: ImpactEventLoopState,
+  file: string,
+  lineNum: number,
+): ValidationError[] {
+  const { id: _id, basis: _basis, ...rest } = event as Record<string, unknown>;
+  const fingerprint = JSON.stringify(rest);
+
+  const prevLine = state.seenEventFingerprints.get(fingerprint);
+  state.seenEventFingerprints.set(fingerprint, lineNum);
+
+  if (prevLine !== undefined) {
+    return [
+      {
+        file,
+        line: lineNum,
+        message: `duplicate of line ${prevLine} (identical ts, type, entity, and payload)`,
+      },
+    ];
+  }
+
+  return [];
+}
+
 function validateIssueAtPath(
   store: IStore,
   relBase: string,
@@ -207,6 +276,10 @@ function validateIssueAtPath(
     const content = store.readText(impactPath).trim();
     if (content) {
       const parsed = NdJson.parse(content);
+      const loopState: ImpactEventLoopState = {
+        lastPeriodsSetByEntity: new Map(),
+        seenEventFingerprints: new Map(),
+      };
       for (let i = 0; i < parsed.length; i++) {
         const row = parsed[i];
         const impactParsed = ImpactEventSchema.safeParse(row);
@@ -223,6 +296,22 @@ function validateIssueAtPath(
         const event = impactParsed.data;
         errors.push(
           ...validateImpactEventPeriodOrdering(event, impactPath, i + 1),
+        );
+        errors.push(
+          ...validateImpactEventNoOpPeriods(
+            event,
+            loopState,
+            impactPath,
+            i + 1,
+          ),
+        );
+        errors.push(
+          ...validateImpactEventNoDuplicate(
+            event,
+            loopState,
+            impactPath,
+            i + 1,
+          ),
         );
         errors.push(
           ...validateImpactEventRelationships(
