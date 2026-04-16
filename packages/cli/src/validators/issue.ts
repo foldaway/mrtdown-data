@@ -120,7 +120,13 @@ function validateImpactEventPeriodOrdering(
       if (period.endAt == null) continue;
       const startMs = Date.parse(period.startAt);
       const endMs = Date.parse(period.endAt);
-      if (!(endMs > startMs)) {
+      if (endMs === startMs) {
+        errors.push({
+          file,
+          line: lineNum,
+          message: `${path}: fixed period has zero duration (endAt equals startAt)`,
+        });
+      } else if (endMs < startMs) {
         errors.push({
           file,
           line: lineNum,
@@ -130,13 +136,52 @@ function validateImpactEventPeriodOrdering(
     } else {
       const startMs = Date.parse(period.startAt);
       const endMs = Date.parse(period.endAt);
-      if (!(endMs > startMs)) {
+      if (endMs === startMs) {
+        errors.push({
+          file,
+          line: lineNum,
+          message: `${path}: recurring period has zero duration (endAt equals startAt)`,
+        });
+      } else if (endMs < startMs) {
         errors.push({
           file,
           line: lineNum,
           message: `${path}: recurring period endAt must be after startAt`,
         });
       }
+    }
+  }
+
+  return errors;
+}
+
+/**
+ * Ensures fixed open-ended periods (endAt = null) have startAt <= event ts.
+ * A period recorded as ongoing must have already started; if startAt is in the
+ * future relative to ts, evidence will time out before the period begins,
+ * producing a zero-duration operational period.
+ */
+function validateImpactEventOpenEndedPeriodStart(
+  event: ImpactEvent,
+  file: string,
+  lineNum: number,
+): ValidationError[] {
+  if (event.type !== 'periods.set') return [];
+
+  const eventTs = Date.parse(event.ts);
+  const errors: ValidationError[] = [];
+
+  for (let j = 0; j < event.periods.length; j++) {
+    const period = event.periods[j];
+    if (period.kind !== 'fixed' || period.endAt != null) continue;
+
+    const startMs = Date.parse(period.startAt);
+    if (startMs > eventTs) {
+      errors.push({
+        file,
+        line: lineNum,
+        message: `periods[${j}]: open-ended fixed period has startAt (${period.startAt}) after event ts (${event.ts}); set an explicit endAt or wait until the period begins`,
+      });
     }
   }
 
@@ -296,6 +341,9 @@ function validateIssueAtPath(
         const event = impactParsed.data;
         errors.push(
           ...validateImpactEventPeriodOrdering(event, impactPath, i + 1),
+        );
+        errors.push(
+          ...validateImpactEventOpenEndedPeriodStart(event, impactPath, i + 1),
         );
         errors.push(
           ...validateImpactEventNoOpPeriods(
