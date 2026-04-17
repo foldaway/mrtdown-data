@@ -112,8 +112,16 @@ Field guidance:
   - For newly active disruptions, default to evidence timestamp unless a different start time is stated.
   - For planned items, use the planned start if stated.
   - For "service will start at X" or "first train at X": the impact window (no service) is from start of day (00:00) until X. Use kind "fixed" with startAt at midnight and endAt at the stated start time.
+  - If a past time is mentioned in the evidence as the disruption start (e.g. "disrupted since 8:47am"), use that time as startAt (with kind "start-only"), NOT as endAt.
+  - NEVER create a fixed open-ended period (kind "fixed", endAt null) where startAt is in the future relative to the evidence timestamp.
+    - If you know both a future start time and an end time: use kind "fixed" with both.
+    - If you know only a future start date/time (e.g. "on 15 Nov", "from 7 Dec at 10.15pm", "from 14 Feb", "start tomorrow"), you MUST set endAt = start date midnight + 24 h = next calendar midnight (e.g. for a 15 Nov event startAt=2015-11-15T00:00:00+08:00 → endAt=2015-11-16T00:00:00+08:00). This is mandatory — never leave endAt null when startAt is in the future.
+    - If the evidence says service WILL RESUME / WILL RETURN TO NORMAL on a future date, use kind "end-only" with endAt set to that date; this is a clearance signal, not a new disruption start.
+    - Open-ended future starts produce zero-duration operational windows and must never appear in output.
 - endAt:
-  - For cleared claims with no start in this evidence, prefer kind "end-only" and set endAt to evidence timestamp.
+  - For cleared/restored evidence (e.g. "service resumed at 8.25am", "normal service restored"): ALWAYS use kind "end-only" with endAt set to the stated restoration time. Never use kind "fixed" with startAt = endAt for restoration claims.
+  - For ongoing disruption updates that mention a past start time (e.g. "still disrupted since 9am"), that past time is startAt, not endAt. Do not place it in endAt.
+  - endAt MUST be strictly after startAt in every fixed period. If you would produce a period where endAt <= startAt, use kind "start-only" instead and omit endAt.
   - For planned windows, use stated/plausible period end when explicit.
   - For kind "fixed" and kind "end-only", endAt is exclusive.
 - recurring:
@@ -122,6 +130,7 @@ Field guidance:
   - RRULE UNTIL semantics: recurring.endAt is the last occurrence anchor (inclusive), not the day after.
   - Do not default recurring.startAt/endAt to 00:00:00 unless evidence explicitly indicates all-day or midnight boundaries.
   - Preserve meaningful time-of-day from the described impact window.
+  - recurring.endAt MUST be strictly after recurring.startAt. If no end date is stated, set endAt to one year after startAt (same time of day). Never set recurring.startAt and recurring.endAt to the same value.
   - The anchor-time rule below is specific to maintenance/infra recurring timeHints:
     - recurring.startAt/endAt must anchor to the impact START instant (same clock time as recurring.timeWindow.startAt), not recurring.timeWindow.endAt.
     - For overnight windows, keep start-side anchors across the recurrence range.
@@ -140,12 +149,17 @@ Field guidance:
 - Use canonical station/service IDs from tools.
 - If only line name is given, map to all relevant services on that line.
 - For ISO8601 datetimes, include timezone offset and seconds. Omit fractional seconds when milliseconds are zero (e.g. use 2026-01-01T07:10:00+08:00, not 2026-01-01T07:10:00.000+08:00).
+- All timestamps MUST use the Singapore timezone offset +08:00. Never use -08:00 or any other offset. Singapore Standard Time is UTC+8.
 - Treat fixed/end-only endAt as exclusive, and recurring.timeWindow.endAt as the end boundary of each daily window.
 - Midnight timestamps are allowed only when explicitly justified by evidence (e.g. "from 00:00", "until midnight", or clear date-only all-day semantics).
 - Keep claims minimal but complete for downstream state updates.
 - Final self-check before returning:
   - If evidence has no unambiguous one-direction qualifier, ensure claims include all directional services for the affected service/line.
   - Only return a single directional service claim when explicit direction-only wording is present.
+  - For every fixed period: confirm endAt > startAt. If not, switch to start-only.
+  - For every recurring period: confirm endAt > startAt. If not, extend endAt to one year after startAt.
+  - For restoration/clear evidence: confirm time hints use end-only (not fixed with equal start/end).
+  - For pre-announced items: confirm no fixed period has a future startAt with null endAt.
 - Do not include commentary, only schema-conforming JSON.
 
 ### causes
