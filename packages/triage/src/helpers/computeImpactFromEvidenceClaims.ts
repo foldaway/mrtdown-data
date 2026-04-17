@@ -114,7 +114,7 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
         if (claim.timeHints != null) {
           const { newPeriods, hasChanged } = reconcilePeriodsWithTimeHints(
             currentServiceState.periods,
-            claim.timeHints,
+            clampTimeHintsToEvidenceTs(claim.timeHints, eventTs),
           );
           if (hasChanged) {
             currentServiceState.periods = newPeriods;
@@ -202,7 +202,7 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
         if (claim.timeHints != null) {
           const { newPeriods, hasChanged } = reconcilePeriodsWithTimeHints(
             currentFacilityState.periods,
-            claim.timeHints,
+            clampTimeHintsToEvidenceTs(claim.timeHints, eventTs),
           );
           if (hasChanged) {
             currentFacilityState.periods = newPeriods;
@@ -266,71 +266,71 @@ function reconcilePeriodsWithTimeHints(
 ): ReconcilePeriodsWithTimeHintsResults {
   switch (timeHints.kind) {
     case 'fixed': {
+      const newPeriods = [timeHints];
       return {
-        newPeriods: [timeHints],
-        hasChanged: true,
+        newPeriods,
+        hasChanged: !isEqual(newPeriods, currentPeriods),
       };
     }
     case 'recurring': {
+      const newPeriods = [timeHints];
       return {
-        newPeriods: [timeHints],
-        hasChanged: true,
+        newPeriods,
+        hasChanged: !isEqual(newPeriods, currentPeriods),
       };
     }
     case 'start-only': {
+      if (currentPeriods.length === 0) {
+        return {
+          newPeriods: [{ kind: 'fixed', startAt: timeHints.startAt, endAt: null }],
+          hasChanged: true,
+        };
+      }
+      // Only move startAt to an earlier value; never advance it.
       let hasChanged = false;
       const newPeriods: Period[] = [];
-      if (currentPeriods.length === 0) {
-        newPeriods.push({
-          kind: 'fixed',
-          startAt: timeHints.startAt,
-          endAt: null,
-        });
-        hasChanged = true;
-        return { newPeriods, hasChanged };
-      }
       for (const period of currentPeriods) {
         switch (period.kind) {
           case 'fixed': {
-            newPeriods.push({
-              ...period,
-              startAt: timeHints.startAt,
-            });
-            hasChanged = true;
+            if (timeHints.startAt < period.startAt) {
+              newPeriods.push({ ...period, startAt: timeHints.startAt });
+              hasChanged = true;
+            } else {
+              newPeriods.push(period);
+            }
             break;
           }
           case 'recurring': {
-            const newPeriod: Period = {
-              ...period,
-              startAt: timeHints.startAt,
-            };
-            if (newPeriod.timeWindow != null) {
-              const startAt = DateTime.fromISO(timeHints.startAt);
-              assert(startAt.isValid);
-              newPeriod.timeWindow.startAt = startAt.toFormat('HH:mm:ss');
+            if (timeHints.startAt < period.startAt) {
+              const newPeriod: Period = { ...period, startAt: timeHints.startAt };
+              if (newPeriod.timeWindow != null) {
+                const startAt = DateTime.fromISO(timeHints.startAt);
+                assert(startAt.isValid);
+                newPeriod.timeWindow.startAt = startAt.toFormat('HH:mm:ss');
+              }
+              newPeriods.push(newPeriod);
+              hasChanged = true;
+            } else {
+              newPeriods.push(period);
             }
-            newPeriods.push(newPeriod);
-            hasChanged = true;
             break;
           }
         }
       }
-      return {
-        newPeriods,
-        hasChanged,
-      };
+      return { newPeriods, hasChanged };
     }
     case 'end-only': {
-      let hasChanged = false;
       const newPeriods: Period[] = [];
       for (const period of currentPeriods) {
         switch (period.kind) {
           case 'fixed': {
-            newPeriods.push({
-              ...period,
-              endAt: timeHints.endAt,
-            });
-            hasChanged = true;
+            // Only close open-ended periods; never move endAt backwards on an
+            // already-closed period (that would reverse startAt/endAt order).
+            if (period.endAt == null) {
+              newPeriods.push({ ...period, endAt: timeHints.endAt });
+            } else {
+              newPeriods.push(period);
+            }
             break;
           }
           case 'recurring': {
@@ -344,14 +344,13 @@ function reconcilePeriodsWithTimeHints(
               newPeriod.timeWindow.endAt = endAt.toFormat('HH:mm:ss');
             }
             newPeriods.push(newPeriod);
-            hasChanged = true;
             break;
           }
         }
       }
       return {
         newPeriods,
-        hasChanged,
+        hasChanged: !isEqual(newPeriods, currentPeriods),
       };
     }
   }
@@ -364,4 +363,26 @@ function isEqual(a: unknown, b: unknown): boolean {
   } catch (error) {
     return false;
   }
+}
+
+/**
+ * If a `fixed` time hint has an open-ended period (`endAt = null`) whose
+ * `startAt` is in the future relative to the evidence timestamp, clamp
+ * `startAt` to the evidence timestamp.
+ *
+ * Pre-announcement evidence typically states a future start date without a
+ * known end. Letting `startAt > evidenceTs` with `endAt = null` would produce
+ * a zero-duration operational window (resolvePeriods clamps the inferred end
+ * to at least `startAt`). Using the evidence timestamp as the anchor instead
+ * means "this disruption is flagged as of the announcement" — later evidence
+ * with actual schedules will supersede it.
+ */
+function clampTimeHintsToEvidenceTs(
+  hints: ClaimTimeHints,
+  evidenceTs: string,
+): ClaimTimeHints {
+  if (hints.kind === 'fixed' && hints.endAt == null && hints.startAt > evidenceTs) {
+    return { kind: 'fixed', startAt: evidenceTs, endAt: null };
+  }
+  return hints;
 }
