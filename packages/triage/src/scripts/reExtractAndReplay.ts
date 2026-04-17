@@ -34,6 +34,10 @@ import { deriveCurrentState, type IssueBundleState } from '../helpers/deriveCurr
 import { keyForAffectedEntity } from '../helpers/keyForAffectedEntity.js';
 import { reconstructClaimsFromImpactEvents } from '../helpers/reconstructClaimsFromImpactEvents.js';
 import { extractClaimsFromNewEvidence } from '../llm/functions/extractClaimsFromNewEvidence/index.js';
+import {
+  collectReExtractTargets,
+  parseReExtractArgs,
+} from './reExtractAndReplayTargets.js';
 
 /**
  * Adapts the timeHints in a fresh LLM claim to match the current rolling state.
@@ -81,61 +85,26 @@ const DATA_DIR = resolve(import.meta.dirname, '../../../../data');
 const store = new FileStore(DATA_DIR);
 const writeStore = new FileWriteStore(DATA_DIR);
 const repo = new MRTDownRepository({ store });
-
-// ---------------------------------------------------------------------------
-// Phase 1: Collect (issueId, evidenceId) pairs with period violations
-// ---------------------------------------------------------------------------
-
-function hasViolation(event: ImpactEvent): boolean {
-  if (event.type !== 'periods.set') return false;
-  const tsMs = Date.parse(event.ts);
-  for (const period of event.periods) {
-    if (period.kind === 'fixed') {
-      const startMs = Date.parse(period.startAt);
-      if (period.endAt != null) {
-        const endMs = Date.parse(period.endAt);
-        if (endMs <= startMs) return true;
-      } else {
-        if (startMs > tsMs) return true;
-      }
-    } else if (period.kind === 'recurring') {
-      const startMs = Date.parse(period.startAt);
-      const endMs = Date.parse(period.endAt);
-      if (endMs <= startMs) return true;
-    }
-  }
-  return false;
-}
-
-const issueIds = repo.issues.listIds();
-const reExtractTargets = new Map<string, Set<string>>();
-
-for (const issueId of issueIds) {
-  const bundle = repo.issues.get(issueId);
-  if (!bundle) continue;
-
-  for (const event of bundle.impactEvents) {
-    if (!hasViolation(event)) continue;
-    const evidenceId = (event as { basis?: { evidenceId?: string } }).basis
-      ?.evidenceId;
-    if (!evidenceId) continue;
-
-    const set = reExtractTargets.get(issueId) ?? new Set<string>();
-    set.add(evidenceId);
-    reExtractTargets.set(issueId, set);
-  }
-}
+const args = parseReExtractArgs(process.argv.slice(2));
+const reExtractTargets = collectReExtractTargets(repo, args);
 
 const totalEvidenceItems = [...reExtractTargets.values()].reduce(
   (sum, s) => sum + s.size,
   0,
 );
 console.log(
-  `Found ${reExtractTargets.size} issues with violations (${totalEvidenceItems} evidence items to re-extract).\n`,
+  `Found ${reExtractTargets.size} issues for mode "${args.mode}" (${totalEvidenceItems} evidence items to re-extract).\n`,
 );
 
 if (reExtractTargets.size === 0) {
   console.log('Nothing to do.');
+  process.exit(0);
+}
+
+if (args.dryRun) {
+  for (const [issueId, evidenceIds] of reExtractTargets) {
+    console.log(`${issueId}: ${[...evidenceIds].join(', ')}`);
+  }
   process.exit(0);
 }
 
