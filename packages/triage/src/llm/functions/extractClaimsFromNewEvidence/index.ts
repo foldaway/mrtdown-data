@@ -13,6 +13,7 @@ import {
 import { assert } from '../../../util/assert.js';
 import { getOpenAiClient } from '../../client.js';
 import type { ToolRegistry } from '../../common/tool.js';
+import { normalizeClaimsForEvidence } from './normalizeClaimsForEvidence.js';
 import { buildSystemPrompt } from './prompt.js';
 import { FindLinesTool } from './tools/FindLinesTool.js';
 import { FindServicesTool } from './tools/FindServicesTool.js';
@@ -198,5 +199,11 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
 
   assert(response.output_parsed != null, 'Response output parsed is null');
 
-  return response.output_parsed;
+  return {
+    claims: normalizeClaimsForEvidence({
+      claims: response.output_parsed.claims,
+      evidenceText: params.newEvidence.text,
+      evidenceTs: params.newEvidence.ts,
+    }),
+  };
 }
