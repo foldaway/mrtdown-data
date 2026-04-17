@@ -56,6 +56,11 @@ For service entities:
 - If cleared/restored and no ongoing impact remains -> service: null
 - facility must be null
 
+Effect disambiguation:
+- "Longer waits", "headways adjusted", "additional travel time", "single-loop operation", shuttle/train bridging, or similar degraded-but-running service language is NOT "no-service".
+- Use "reduced-service" for degraded planned operations unless the evidence explicitly says trains are suspended, service is closed, or no trains are running.
+- If evidence mentions a future planned suspension in broad terms ("planned", "expected", "first half of 2026") without a concrete service suspension window, do not convert that into a present or fixed future "no-service" claim. Prefer the concrete degraded service claim that is explicitly stated.
+
 For facility entities:
 - Facility unavailable -> facility: { kind: "facility-out-of-service" }
 - Facility degraded/partially available -> facility: { kind: "facility-degraded" }

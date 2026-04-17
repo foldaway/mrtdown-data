@@ -338,6 +338,98 @@ describe('extractClaimsFromNewEvidence', () => {
         {
           input: {
             newEvidence: {
+              ts: '2025-12-05T22:12:16+08:00',
+              text: 'East-West Line (EWL) track testing of newly connected sections is causing longer waits of up to 17 minutes for trains from Bedok and Kembangan. A final service suspension to disconnect the EWL from Changi Depot is planned for the first half of 2026, signaling further disruption.',
+            },
+            repo,
+            toString() {
+              return '[MAINTENANCE] Longer waits should not become no-service';
+            },
+          },
+          expected: {
+            claims: [
+              {
+                entity: {
+                  type: 'service',
+                  serviceId: 'EWL_MAIN_E',
+                },
+                effect: {
+                  service: { kind: 'reduced-service' },
+                  facility: null,
+                },
+                statusSignal: 'open',
+                scopes: {
+                  service: [{ type: 'service.whole' }],
+                },
+                timeHints: {
+                  kind: 'start-only',
+                  startAt: '2025-12-05T22:12:16+08:00',
+                },
+                causes: ['system.upgrade'],
+              },
+              {
+                entity: {
+                  type: 'service',
+                  serviceId: 'EWL_MAIN_W',
+                },
+                effect: {
+                  service: { kind: 'reduced-service' },
+                  facility: null,
+                },
+                statusSignal: 'open',
+                scopes: {
+                  service: [{ type: 'service.whole' }],
+                },
+                timeHints: {
+                  kind: 'start-only',
+                  startAt: '2025-12-05T22:12:16+08:00',
+                },
+                causes: ['system.upgrade'],
+              },
+              {
+                entity: {
+                  type: 'service',
+                  serviceId: 'EWL_CG_E',
+                },
+                effect: {
+                  service: { kind: 'reduced-service' },
+                  facility: null,
+                },
+                statusSignal: 'open',
+                scopes: {
+                  service: [{ type: 'service.whole' }],
+                },
+                timeHints: {
+                  kind: 'start-only',
+                  startAt: '2025-12-05T22:12:16+08:00',
+                },
+                causes: ['system.upgrade'],
+              },
+              {
+                entity: {
+                  type: 'service',
+                  serviceId: 'EWL_CG_W',
+                },
+                effect: {
+                  service: { kind: 'reduced-service' },
+                  facility: null,
+                },
+                statusSignal: 'open',
+                scopes: {
+                  service: [{ type: 'service.whole' }],
+                },
+                timeHints: {
+                  kind: 'start-only',
+                  startAt: '2025-12-05T22:12:16+08:00',
+                },
+                causes: ['system.upgrade'],
+              },
+            ],
+          },
+        },
+        {
+          input: {
+            newEvidence: {
               ts: '2026-01-10T22:00:00+08:00',
               text: 'The Tengah & Seletar Lines train service will start at 10am on 18 Feb. For MRT Shuttle Bus pick-up points, visit http://t.co/fwb2wOqI',
             },
