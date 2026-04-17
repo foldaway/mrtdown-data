@@ -188,11 +188,68 @@ function validateImpactEventOpenEndedPeriodStart(
   return errors;
 }
 
+/**
+ * Detects the "rolling startAt" anti-pattern: consecutive periods.set events for
+ * the same entity with open-ended fixed periods (endAt = null) where startAt
+ * advances. Once a disruption begins, its startAt must remain stable; each update
+ * should only change endAt. The tracked startAt resets whenever a periods.set
+ * closes or clears the period (endAt != null or empty periods array).
+ */
+function validateImpactEventRollingStartAt(
+  event: ImpactEvent,
+  state: ImpactEventLoopState,
+  file: string,
+  lineNum: number,
+): ValidationError[] {
+  if (event.type !== 'periods.set') return [];
+
+  const entityKey = JSON.stringify(event.entity);
+  const errors: ValidationError[] = [];
+
+  // Find the first open-ended fixed period in this event (if any).
+  const openPeriod = event.periods.find(
+    (p) => p.kind === 'fixed' && p.endAt == null,
+  );
+
+  if (!openPeriod) {
+    // Closed or cleared — reset the tracked open-ended start for this entity.
+    state.openEndedStartByEntity.delete(entityKey);
+    return [];
+  }
+
+  const newStartMs = Date.parse((openPeriod as { startAt: string }).startAt);
+  const prev = state.openEndedStartByEntity.get(entityKey);
+
+  if (prev === undefined) {
+    // First open-ended period in this run — record it.
+    state.openEndedStartByEntity.set(entityKey, {
+      startMs: newStartMs,
+      line: lineNum,
+    });
+  } else if (newStartMs > prev.startMs) {
+    errors.push({
+      file,
+      line: lineNum,
+      message: `periods[0]: open-ended fixed period advances startAt from ${new Date(prev.startMs).toISOString()} (line ${prev.line}) — keep startAt stable once a disruption begins`,
+    });
+    // Don't update prev; the violation is relative to the original anchor.
+  }
+  // If newStartMs <= prev.startMs it's fine (period corrected earlier or unchanged).
+
+  return errors;
+}
+
 interface ImpactEventLoopState {
   /** Tracks the last periods.set per entity key (JSON) → { line, periodsJson }. */
   lastPeriodsSetByEntity: Map<string, { line: number; periodsJson: string }>;
   /** Tracks seen event fingerprints (ts+type+entity+payload, excl. id/basis) → first line. */
   seenEventFingerprints: Map<string, number>;
+  /**
+   * For each entity key, the startAt (ms) of the first open-ended fixed period in the
+   * current unbroken run. Reset to null whenever a periods.set closes the period
+   * (endAt != null) or clears it (empty periods array).
+   */
+  openEndedStartByEntity: Map<string, { startMs: number; line: number }>;
 }
 
 /**
@@ -324,6 +381,7 @@ function validateIssueAtPath(
       const loopState: ImpactEventLoopState = {
         lastPeriodsSetByEntity: new Map(),
         seenEventFingerprints: new Map(),
+        openEndedStartByEntity: new Map(),
       };
       for (let i = 0; i < parsed.length; i++) {
         const row = parsed[i];
@@ -344,6 +402,14 @@ function validateIssueAtPath(
         );
         errors.push(
           ...validateImpactEventOpenEndedPeriodStart(event, impactPath, i + 1),
+        );
+        errors.push(
+          ...validateImpactEventRollingStartAt(
+            event,
+            loopState,
+            impactPath,
+            i + 1,
+          ),
         );
         errors.push(
           ...validateImpactEventNoOpPeriods(
