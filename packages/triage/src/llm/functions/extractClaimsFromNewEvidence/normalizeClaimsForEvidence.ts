@@ -1,41 +1,8 @@
 import type { Claim } from '@mrtdown/core';
-
-const CURRENT_DEGRADED_SERVICE_PATTERNS = [
-  /\blonger waits?\b/i,
-  /\bwaits? of up to\b/i,
-  /\bheadways? adjusted\b/i,
-  /\badditional travel time\b/i,
-  /\bsingle[- ]loop operation\b/i,
-  /\breduced frequency\b/i,
-  /\btrains? .* longer intervals\b/i,
-];
-
-const CURRENT_NO_SERVICE_PATTERNS = [
-  /\bno train service\b/i,
-  /\bno trains? (?:are )?running\b/i,
-  /\btrain services? (?:is|are|has been|have been)\s+(?:suspended|closed)\b/i,
-  /\bservice (?:is|are|has been|have been)\s+(?:suspended|closed)\b/i,
-];
-
-const VAGUE_FUTURE_SUSPENSION_PATTERNS = [
-  /\bplanned\b/i,
-  /\bexpected\b/i,
-  /\bfirst half of \d{4}\b/i,
-  /\bsecond half of \d{4}\b/i,
-  /\blater this year\b/i,
-  /\bnext year\b/i,
-];
-
-function evidenceDescribesCurrentDegradedService(text: string): boolean {
-  return (
-    CURRENT_DEGRADED_SERVICE_PATTERNS.some((pattern) => pattern.test(text)) &&
-    !CURRENT_NO_SERVICE_PATTERNS.some((pattern) => pattern.test(text))
-  );
-}
-
-function evidenceMentionsOnlyVagueFutureSuspension(text: string): boolean {
-  return VAGUE_FUTURE_SUSPENSION_PATTERNS.some((pattern) => pattern.test(text));
-}
+import {
+  evidenceDescribesCurrentDegradedService,
+  evidenceMentionsVagueFutureSuspension,
+} from './degradedServiceHeuristics.js';
 
 export function normalizeClaimsForEvidence(params: {
   claims: Claim[];
@@ -47,7 +14,7 @@ export function normalizeClaimsForEvidence(params: {
   }
 
   const evidenceTsMs = Date.parse(params.evidenceTs);
-  const hasVagueFutureSuspension = evidenceMentionsOnlyVagueFutureSuspension(
+  const hasVagueFutureSuspension = evidenceMentionsVagueFutureSuspension(
     params.evidenceText,
   );
 
