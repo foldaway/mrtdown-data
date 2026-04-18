@@ -3,7 +3,7 @@ import type { Issue, IssueId } from '../schema/Issue.js';
 import { readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { DateTime } from 'luxon';
 
-const dirPathIssue = join(import.meta.dirname, '../../data/source/issue');
+const dirPathIssue = join(import.meta.dirname, '../../../legacy/data/issue');
 
 export const IssueModel = {
   getAllIds(): IssueId[] {

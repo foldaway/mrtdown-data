@@ -1,61 +1,40 @@
-import { z } from 'zod';
-import { StationIdSchema } from './StationId.js';
+import z from 'zod';
+import { TranslationsSchema } from './common.js';
 
-export const LineTypeSchema = z.enum(['mrt.high', 'mrt.medium', 'lrt']).meta({
-  ref: 'LineType',
-  description: 'The type of the transit line.',
+/**
+ * Line operator
+ */
+export const LineOperatorSchema = z.object({
+  operatorId: z.string(),
+  startedAt: z.string().nullable(),
+  endedAt: z.string().nullable(),
 });
-export type LineType = z.infer<typeof LineTypeSchema>;
-
-export const LineIdSchema = z
-  .string()
-  .refine((val) => /^[A-Z]{3,10}$/.test(val));
-export type LineId = z.infer<typeof LineIdSchema>;
-
-export const LineBranchSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  title_translations: z.record(z.string(), z.string()),
-  startedAt: z.string().date().nullable(),
-  endedAt: z.string().date().nullable(),
-  stationCodes: z.array(StationIdSchema),
-});
-export type LineBranch = z.infer<typeof LineBranchSchema>;
-
-export const LineOperatingHours = z.object({
-  weekdays: z.object({
-    start: z.iso.time(),
-    end: z.iso.time(),
-  }),
-  weekends: z.object({
-    start: z.iso.time(),
-    end: z.iso.time(),
-  }),
-});
-export type LineOperatingHours = z.infer<typeof LineOperatingHours>;
-
-export const LineOperatorSchema = z
-  .object({
-    operatorId: z.string(),
-    startedAt: z.iso.datetime().nullable(),
-    endedAt: z.iso.datetime().nullable(),
-  })
-  .meta({
-    ref: 'LineOperator',
-    description:
-      'Represents the relationship between a line and an operator, including the period during which the operator managed the line.',
-  });
 export type LineOperator = z.infer<typeof LineOperatorSchema>;
 
+/**
+ * Operating hours for weekday/weekend service windows.
+ * Used by API uptime calculations.
+ */
+export const LineOperatingHoursSchema = z.object({
+  weekdays: z.object({
+    start: z.string(), // HH:mm
+    end: z.string(),
+  }),
+  weekends: z.object({
+    start: z.string(),
+    end: z.string(),
+  }),
+});
+export type LineOperatingHours = z.infer<typeof LineOperatingHoursSchema>;
+
 export const LineSchema = z.object({
-  id: LineIdSchema,
-  title: z.string(),
-  title_translations: z.record(z.string(), z.string()),
-  type: LineTypeSchema,
-  color: z.string().refine((val) => /^#([A-Fa-f0-9]{6})/.test(val)),
-  startedAt: z.string().date(),
-  branches: z.record(z.string(), LineBranchSchema),
-  operatingHours: LineOperatingHours,
+  id: z.string(),
+  name: TranslationsSchema,
+  type: z.enum(['mrt.high', 'mrt.medium', 'lrt']),
+  color: z.string(),
+  startedAt: z.iso.date().nullable(),
+  serviceIds: z.array(z.string()),
   operators: z.array(LineOperatorSchema),
+  operatingHours: LineOperatingHoursSchema.optional(),
 });
 export type Line = z.infer<typeof LineSchema>;

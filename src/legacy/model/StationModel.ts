@@ -1,10 +1,10 @@
+import Fuse from 'fuse.js';
 import { readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { Station, StationId } from '../schema/Station.js';
 import type { LineId } from '../schema/Line.js';
-import Fuse from 'fuse.js';
+import type { Station, StationId } from '../schema/Station.js';
 
-const dirPathIssue = join(import.meta.dirname, '../../data/source/station');
+const dirPathIssue = join(import.meta.dirname, '../../../legacy/data/station');
 
 export const StationModel = {
   getAll(): Station[] {

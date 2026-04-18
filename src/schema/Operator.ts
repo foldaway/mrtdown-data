@@ -1,15 +1,13 @@
 import z from 'zod';
+import { TranslationsSchema } from './common.js';
 
-export const OperatorSchema = z
-  .object({
-    id: z.string(),
-    name: z.string(),
-    nameTranslations: z.record(z.string(), z.string()),
-    foundedAt: z.iso.datetime(),
-    url: z.url().nullable(),
-  })
-  .meta({
-    ref: 'Operator',
-    description: 'The operator of a line.',
-  });
+/**
+ * Operator
+ */
+export const OperatorSchema = z.object({
+  id: z.string(),
+  name: TranslationsSchema,
+  foundedAt: z.iso.date(),
+  url: z.url().nullable(),
+});
 export type Operator = z.infer<typeof OperatorSchema>;
