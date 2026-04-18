@@ -1,2 +1,0 @@
-{"id":"ie_01GDFRNFT0MCXJ36PH0MWHYZ9N","type":"service_scopes.set","ts":"2022-09-21T18:14:32.000+08:00","basis":{"evidenceId":"ev_01GDFRNFT0XP5WGGZ3WQAC0P9H"},"entity":{"type":"service","serviceId":"BPLRT_B"},"serviceScopes":[{"type":"service.whole"}]}
-{"id":"ie_01GDFRNFT0WPXAT9DDWTK5Q94C","type":"causes.set","ts":"2022-09-21T18:14:32.000+08:00","basis":{"evidenceId":"ev_01GDFRNFT0XP5WGGZ3WQAC0P9H"},"entity":{"type":"service","serviceId":"BPLRT_B"},"causes":["track.fault"]}
