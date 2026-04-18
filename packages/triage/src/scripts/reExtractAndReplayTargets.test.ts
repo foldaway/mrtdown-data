@@ -54,6 +54,23 @@ describe('parseReExtractArgs', () => {
       evidenceIds: new Set(['ev-1']),
     });
   });
+
+  test('parses empty-impact mode', () => {
+    expect(
+      parseReExtractArgs([
+        '--mode',
+        'empty-impact',
+        '--issue',
+        'issue-1',
+        '--dry-run',
+      ]),
+    ).toEqual({
+      dryRun: true,
+      mode: 'empty-impact',
+      issueIds: new Set(['issue-1']),
+      evidenceIds: undefined,
+    });
+  });
 });
 
 describe('hasPeriodViolation', () => {
@@ -173,5 +190,55 @@ describe('collectReExtractTargets', () => {
         mode: 'degraded-future-no-service',
       }),
     ).toEqual(new Map());
+  });
+
+  test('collects all evidence for bundles with empty impact', () => {
+    const emptyImpactBundle = makeIssueBundle({
+      issueId: '2026-04-01-empty-impact',
+      evidence: [
+        {
+          id: 'ev-1',
+          ts: '2026-04-01T10:00:00+08:00',
+          text: 'First evidence',
+        },
+        {
+          id: 'ev-2',
+          ts: '2026-04-01T11:00:00+08:00',
+          text: 'Second evidence',
+        },
+      ],
+      impactEvents: [],
+    });
+
+    const populatedBundle = makeIssueBundle({
+      issueId: '2026-04-02-has-impact',
+      evidence: [
+        {
+          id: 'ev-3',
+          ts: '2026-04-02T10:00:00+08:00',
+          text: 'Evidence with impact',
+        },
+      ],
+      impactEvents: [
+        {
+          id: 'ie-1',
+          type: 'service_effects.set',
+          ts: '2026-04-02T10:00:00+08:00',
+          basis: { evidenceId: 'ev-3' },
+          entity: { type: 'service', serviceId: 'EWL_MAIN_E' },
+          effect: { kind: 'delay', duration: 'PT5M' },
+        },
+      ],
+    });
+
+    const repo = makeRepo([emptyImpactBundle, populatedBundle]);
+
+    expect(
+      collectReExtractTargets(repo, {
+        mode: 'empty-impact',
+      }),
+    ).toEqual(
+      new Map([['2026-04-01-empty-impact', new Set(['ev-1', 'ev-2'])]]),
+    );
   });
 });
