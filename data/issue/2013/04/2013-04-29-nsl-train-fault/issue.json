@@ -1,0 +1,13 @@
+{
+  "id": "2013-04-29-nsl-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train fault causing slower speeds on NSL",
+    "zh-Hans": "列车故障导致南北线速度减慢",
+    "ms": "Kerosakan kereta api menyebabkan kelajuan perlahan di NSL",
+    "ta": "ரயில் பழுது NSL இல் மெதுவான வேகத்தை ஏற்படுத்துகிறது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

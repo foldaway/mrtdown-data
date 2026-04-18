@@ -1,0 +1,13 @@
+{
+  "id": "2020-10-14-circle-line-service-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption on Circle Line due to power fault",
+    "zh-Hans": "环线因电力故障导致服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Lingkaran kerana kerosakan kuasa",
+    "ta": "மின்சாரக் கோளாறு காரணமாக வட்டப் பாதையில் சேவை இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

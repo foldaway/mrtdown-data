@@ -1,0 +1,13 @@
+{
+  "id": "2017-06-30-nsl-track-point-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Track point fault causing delays on NSL",
+    "zh-Hans": "轨道点故障导致南北线延误",
+    "ms": "Ralat titik trek menyebabkan kelewatan di NSL",
+    "ta": "NSL இல் தாமதத்தை ஏற்படுத்தும் தடப் புள்ளி பிழை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

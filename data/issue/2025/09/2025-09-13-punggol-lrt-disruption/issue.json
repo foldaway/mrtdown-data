@@ -1,0 +1,13 @@
+{
+  "id": "2025-09-13-punggol-lrt-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Disruption on Punggol LRT due to systems fault",
+    "zh-Hans": "因系统故障而导致Punggol LRT停运",
+    "ms": "Gangguan Punggol LRT disebabkan oleh masalah sistem",
+    "ta": "சிஸ்டம் கோளாறு காரணமாக புங்கோல் எல்.ஆர்.டி. வழித்தடம் சேதம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

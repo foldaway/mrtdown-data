@@ -1,0 +1,28 @@
+{
+  "id": "KAL",
+  "name": {
+    "en-SG": "Kallang",
+    "zh-Hans": "加冷",
+    "ms": null,
+    "ta": "காலாங்"
+  },
+  "geo": {
+    "latitude": 1.3032,
+    "longitude": 103.8725
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW10",
+      "startedAt": "1989-11-04",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "kallang-wave-mall",
+    "singapore-sports-hub",
+    "national-stadium"
+  ],
+  "townId": "kallang"
+}

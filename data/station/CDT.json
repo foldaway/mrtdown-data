@@ -1,0 +1,34 @@
+{
+  "id": "CDT",
+  "name": {
+    "en-SG": "Caldecott",
+    "zh-Hans": "加利谷",
+    "ms": null,
+    "ta": "கால்டிகாட்"
+  },
+  "geo": {
+    "latitude": 1.3408,
+    "longitude": 103.8444
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC17",
+      "startedAt": "2011-10-08",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "TEL",
+      "code": "TE9",
+      "startedAt": "2021-08-28",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-institute-of-technology",
+    "bishan-park"
+  ],
+  "townId": "toa-payoh"
+}

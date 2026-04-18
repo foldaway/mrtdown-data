@@ -1,0 +1,35 @@
+{
+  "id": "HGN",
+  "name": {
+    "en-SG": "Hougang",
+    "zh-Hans": "后港",
+    "ms": null,
+    "ta": "ஹவ்காங்"
+  },
+  "geo": {
+    "latitude": 1.3751,
+    "longitude": 103.8923
+  },
+  "stationCodes": [
+    {
+      "lineId": "NEL",
+      "code": "NE14",
+      "startedAt": "2003-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "CRL",
+      "code": "CR8",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "hougang-mall",
+    "hougang-sports-hall",
+    "the-village-serangoon"
+  ],
+  "townId": "hougang"
+}

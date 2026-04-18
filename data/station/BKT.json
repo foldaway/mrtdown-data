@@ -1,0 +1,27 @@
+{
+  "id": "BKT",
+  "name": {
+    "en-SG": "Bangkit",
+    "zh-Hans": "万吉",
+    "ms": null,
+    "ta": "பங்கிட்"
+  },
+  "geo": {
+    "latitude": 1.3762,
+    "longitude": 103.7684
+  },
+  "stationCodes": [
+    {
+      "lineId": "BPLRT",
+      "code": "BP9",
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-panjang-plaza",
+    "zhenghua-nature-park"
+  ],
+  "townId": "bukit-panjang"
+}

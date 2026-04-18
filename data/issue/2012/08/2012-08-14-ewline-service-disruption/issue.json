@@ -1,0 +1,13 @@
+{
+  "id": "2012-08-14-ewline-service-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "East West Line service disruption",
+    "zh-Hans": "东西线服务中断",
+    "ms": "Gangguan perkhidmatan Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு வழித்தடத்தில் சேவை தடை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

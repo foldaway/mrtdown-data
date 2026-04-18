@@ -1,0 +1,28 @@
+{
+  "id": "KEM",
+  "name": {
+    "en-SG": "Kembangan",
+    "zh-Hans": "景万岸",
+    "ms": null,
+    "ta": "கெம்பாங்கான்"
+  },
+  "geo": {
+    "latitude": 1.320828,
+    "longitude": 103.910153
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW6",
+      "startedAt": "1989-11-04",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "kembangan-plaza",
+    "st-stephens-school",
+    "east-coast-park"
+  ],
+  "townId": "bedok"
+}

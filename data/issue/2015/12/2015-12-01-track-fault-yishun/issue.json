@@ -1,0 +1,13 @@
+{
+  "id": "2015-12-01-track-fault-yishun",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Track fault reported at Yishun",
+    "zh-Hans": "Yishun 轨道故障已报告",
+    "ms": "Ralat trek dilaporkan di Yishun",
+    "ta": "யிஷுனில் தடப் பிழை புகாரளிக்கப்பட்டது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

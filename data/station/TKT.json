@@ -1,0 +1,28 @@
+{
+  "id": "TKT",
+  "name": {
+    "en-SG": "Tanjong Katong",
+    "zh-Hans": "丹戎加东",
+    "ms": null,
+    "ta": "தஞ்சோங் காத்தோங்"
+  },
+  "geo": {
+    "latitude": 1.3041,
+    "longitude": 103.8955
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE25",
+      "startedAt": "2024-06-23",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "katong-shopping-centre",
+    "joo-chiat-complex",
+    "one-km-mall"
+  ],
+  "townId": "marine-parade"
+}

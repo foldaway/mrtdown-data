@@ -1,0 +1,13 @@
+{
+  "id": "2013-08-14-nsl-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption on North-South Line due to train fault",
+    "zh-Hans": "北向南线列车故障导致服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Utara-Selatan kerana kerosakan tren",
+    "ta": "தொடர்வண்டி பழுது காரணமாக வடக்கு-தெற்கு பாதையில் சேவை தடை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

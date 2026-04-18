@@ -1,0 +1,13 @@
+{
+  "id": "2017-04-11-ewl-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Major train fault causing delays",
+    "zh-Hans": "主要列车故障导致延误",
+    "ms": "Kesalahan kereta utama menyebabkan kelewatan",
+    "ta": "தாமதத்தை ஏற்படுத்தும் பெரிய ரயில் பிழை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

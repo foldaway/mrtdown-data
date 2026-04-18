@@ -1,0 +1,28 @@
+{
+  "id": "ADM",
+  "name": {
+    "en-SG": "Admiralty",
+    "zh-Hans": "海军部",
+    "ms": null,
+    "ta": "அட்மிரல்ட்டி"
+  },
+  "geo": {
+    "latitude": 1.444,
+    "longitude": 103.7878
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS10",
+      "startedAt": "1996-02-10",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "woodlands-waterfront-park",
+    "causeway-point",
+    "singapore-american-school"
+  ],
+  "townId": "woodlands"
+}

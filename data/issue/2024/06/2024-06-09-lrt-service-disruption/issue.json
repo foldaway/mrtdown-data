@@ -1,0 +1,13 @@
+{
+  "id": "2024-06-09-lrt-service-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "LRT service disruption due to signalling fault",
+    "zh-Hans": "信号故障导致轻轨服务中断",
+    "ms": "Gangguan perkhidmatan LRT akibat kegagalan isyarat",
+    "ta": "சிக்னல் கோளாறு காரணமாக LRT சேவை சீர்குலைவு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

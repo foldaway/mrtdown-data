@@ -1,0 +1,28 @@
+{
+  "id": "TRH",
+  "name": {
+    "en-SG": "Tanjong Rhu",
+    "zh-Hans": "丹戎禺",
+    "ms": null,
+    "ta": "தஞ்சோங் ரூ"
+  },
+  "geo": {
+    "latitude": 1.3023,
+    "longitude": 103.8732
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE23",
+      "startedAt": "2024-06-23",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-sports-hub",
+    "kallang-wave-mall",
+    "singapore-indoor-stadium"
+  ],
+  "townId": "kallang"
+}

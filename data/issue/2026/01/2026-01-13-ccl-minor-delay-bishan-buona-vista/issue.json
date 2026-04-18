@@ -1,0 +1,13 @@
+{
+  "id": "2026-01-13-ccl-minor-delay-bishan-buona-vista",
+  "type": "disruption",
+  "title": {
+    "en-SG": "CCL Minor Delay - Bishan to Buona Vista",
+    "zh-Hans": "CCL 轻微延误 - Bishan 至 Buona Vista",
+    "ms": "CCL Lewat Ringan - Bishan ke Buona Vista",
+    "ta": "CCL சிறு தாமதம் - Bishan முதல் Buona Vista வரை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

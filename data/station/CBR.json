@@ -1,0 +1,28 @@
+{
+  "id": "CBR",
+  "name": {
+    "en-SG": "Canberra",
+    "zh-Hans": "坎贝拉",
+    "ms": null,
+    "ta": "கான்பரா"
+  },
+  "geo": {
+    "latitude": 1.458603,
+    "longitude": 103.830661
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS12",
+      "startedAt": "2019-11-02",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "canberra-plaza",
+    "sembawang-park",
+    "canberra-secondary-school"
+  ],
+  "townId": "sembawang"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "SGL",
+  "name": {
+    "en-SG": "Siglap",
+    "zh-Hans": "实乞纳",
+    "ms": null,
+    "ta": "சிக்லாப்"
+  },
+  "geo": {
+    "latitude": 1.3037,
+    "longitude": 103.9224
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE28",
+      "startedAt": "2024-06-23",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "east-coast-park",
+    "siglap-village"
+  ],
+  "townId": "bedok"
+}

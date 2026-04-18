@@ -1,0 +1,28 @@
+{
+  "id": "TGP",
+  "name": {
+    "en-SG": "Tengah Plantation",
+    "zh-Hans": "登加种植",
+    "ms": null,
+    "ta": "தெங்கா தோட்டம்"
+  },
+  "geo": {
+    "latitude": 1.3759,
+    "longitude": 103.7299
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JE1",
+      "startedAt": "2028-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "dulwich-college-singapore",
+    "shaw-institute-of-medical-simulation-sims",
+    "tengah-nature-way"
+  ],
+  "townId": "tengah"
+}

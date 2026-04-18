@@ -1,0 +1,26 @@
+{
+  "id": "HPV",
+  "name": {
+    "en-SG": "Haw Par Villa",
+    "zh-Hans": "虎豹别墅",
+    "ms": null,
+    "ta": "ஹா பர் வில்லா"
+  },
+  "geo": {
+    "latitude": 1.2998,
+    "longitude": 103.7881
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC25",
+      "startedAt": "2011-10-08",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "haw-par-villa-theme-park"
+  ],
+  "townId": "queenstown"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "DVR",
+  "name": {
+    "en-SG": "Dover",
+    "zh-Hans": "杜弗",
+    "ms": null,
+    "ta": "டோவெர்"
+  },
+  "geo": {
+    "latitude": 1.3034,
+    "longitude": 103.7865
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW22",
+      "startedAt": "2001-10-18",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-institute-of-management",
+    "dover-court-international-school",
+    "ulu-pandan-park-connector"
+  ],
+  "townId": "queenstown"
+}
