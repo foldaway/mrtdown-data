@@ -1,0 +1,27 @@
+{
+  "id": "YWT",
+  "name": {
+    "en-SG": "Yew Tee",
+    "zh-Hans": "油池",
+    "ms": null,
+    "ta": "இயூ டீ"
+  },
+  "geo": {
+    "latitude": 1.3964,
+    "longitude": 103.7437
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS5",
+      "startedAt": "1996-02-10",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "lot-one-shoppers-mall",
+    "yew-tee-point"
+  ],
+  "townId": "choa-chu-kang"
+}

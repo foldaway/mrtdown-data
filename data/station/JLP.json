@@ -1,0 +1,28 @@
+{
+  "id": "JLP",
+  "name": {
+    "en-SG": "Jelapang",
+    "zh-Hans": "泽拉邦",
+    "ms": null,
+    "ta": "ஜெலப்பாங்"
+  },
+  "geo": {
+    "latitude": 1.377482,
+    "longitude": 103.772087
+  },
+  "stationCodes": [
+    {
+      "lineId": "BPLRT",
+      "code": "BP12",
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-panjang-plaza",
+    "hillion-mall",
+    "zhenghua-park"
+  ],
+  "townId": "bukit-panjang"
+}

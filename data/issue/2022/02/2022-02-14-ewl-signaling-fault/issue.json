@@ -1,0 +1,13 @@
+{
+  "id": "2022-02-14-ewl-signaling-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signaling fault causing delays on EWL",
+    "zh-Hans": "信号故障导致东环线延误",
+    "ms": "Ralat isyarat menyebabkan kelewatan di EWL",
+    "ta": "EWL இல் தாமதத்தை ஏற்படுத்தும் சமிக்ஞை தவறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

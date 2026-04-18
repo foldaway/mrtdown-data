@@ -1,0 +1,13 @@
+{
+  "id": "2021-10-17-punggol-lrt-outage",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Punggol LRT service disruption due to signalling fault",
+    "zh-Hans": "榜鹅轻轨信号故障导致服务中断",
+    "ms": "Gangguan perkhidmatan LRT Punggol kerana kerosakan isyarat",
+    "ta": "Punggol LRT சேவை சமிக்ஞை கோளாறு காரணமாக தடைபட்டது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

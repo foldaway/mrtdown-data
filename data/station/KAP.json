@@ -1,0 +1,34 @@
+{
+  "id": "KAP",
+  "name": {
+    "en-SG": "King Albert Park",
+    "zh-Hans": "阿尔柏王园",
+    "ms": null,
+    "ta": "கிங் ஆல்பர்ட் பார்க்"
+  },
+  "geo": {
+    "latitude": 1.3335,
+    "longitude": 103.7827
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT6",
+      "startedAt": "2015-12-27",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "CRL",
+      "code": "CR15",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "king-albert-park-shopping-centre",
+    "my-mini-golf"
+  ],
+  "townId": "bukit-timah"
+}

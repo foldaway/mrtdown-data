@@ -1,0 +1,27 @@
+{
+  "id": "GRW",
+  "name": {
+    "en-SG": "Great World",
+    "zh-Hans": "大世界",
+    "ms": null,
+    "ta": "கிரேட் வோர்ல்ட்"
+  },
+  "geo": {
+    "latitude": 1.2938,
+    "longitude": 103.8315
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE15",
+      "startedAt": "2022-11-13",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "great-world-city",
+    "singapore-river"
+  ],
+  "townId": "river-valley"
+}

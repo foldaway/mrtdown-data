@@ -1,0 +1,28 @@
+{
+  "id": "SOM",
+  "name": {
+    "en-SG": "Somerset",
+    "zh-Hans": "索美塞",
+    "ms": null,
+    "ta": "சாமர்செட்"
+  },
+  "geo": {
+    "latitude": 1.2993,
+    "longitude": 103.8398
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS23",
+      "startedAt": "1987-12-12",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "orchard-road",
+    "313somerset",
+    "orchard-central"
+  ],
+  "townId": "orchard"
+}

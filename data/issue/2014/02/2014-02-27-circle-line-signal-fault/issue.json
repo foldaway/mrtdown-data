@@ -1,0 +1,13 @@
+{
+  "id": "2014-02-27-circle-line-signal-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Major signal fault on Circle Line causing delays",
+    "zh-Hans": "环线主要信号故障导致延误",
+    "ms": "Kerosakan isyarat utama di Laluan Bulat menyebabkan kelewatan",
+    "ta": "வட்டப் பாதையில் முக்கிய சமிக்ஞை தவறு காரணமாக தாமதங்கள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

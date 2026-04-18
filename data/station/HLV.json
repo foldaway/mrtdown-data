@@ -1,0 +1,28 @@
+{
+  "id": "HLV",
+  "name": {
+    "en-SG": "Holland Village",
+    "zh-Hans": "荷兰村",
+    "ms": null,
+    "ta": "ஹாலந்து வில்லேஜ்"
+  },
+  "geo": {
+    "latitude": 1.3136,
+    "longitude": 103.7903
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC21",
+      "startedAt": "2011-10-08",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "holland-village-market-food-centre",
+    "the-holland-road-shopping-centre",
+    "raffles-holland-v"
+  ],
+  "townId": "bukit-timah"
+}

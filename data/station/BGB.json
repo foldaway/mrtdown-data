@@ -1,0 +1,28 @@
+{
+  "id": "BGB",
+  "name": {
+    "en-SG": "Bukit Gombak",
+    "zh-Hans": "武吉甘柏",
+    "ms": null,
+    "ta": "புக்கிட் கோம்பாக்"
+  },
+  "geo": {
+    "latitude": 1.3724,
+    "longitude": 103.7491
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS3",
+      "startedAt": "1990-03-10",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-batok-town-park",
+    "little-guilin",
+    "singapore-quarry"
+  ],
+  "townId": "bukit-batok"
+}

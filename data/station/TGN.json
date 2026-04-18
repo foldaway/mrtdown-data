@@ -1,0 +1,28 @@
+{
+  "id": "TGN",
+  "name": {
+    "en-SG": "Toh Guan",
+    "zh-Hans": "卓源",
+    "ms": null,
+    "ta": "டோ குவான்"
+  },
+  "geo": {
+    "latitude": 1.3481,
+    "longitude": 103.7465
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JE4",
+      "startedAt": "2028-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "westgate",
+    "jem",
+    "jurong-country-club"
+  ],
+  "townId": "jurong-east"
+}

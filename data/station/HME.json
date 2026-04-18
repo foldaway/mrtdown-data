@@ -1,0 +1,26 @@
+{
+  "id": "HME",
+  "name": {
+    "en-SG": "Hume",
+    "zh-Hans": "谦道",
+    "ms": null,
+    "ta": "ஹியூம்"
+  },
+  "geo": {
+    "latitude": 1.3609,
+    "longitude": 103.7694
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT4",
+      "startedAt": "2025-02-28",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "dairy-farm-nature-park"
+  ],
+  "townId": "bukit-batok"
+}

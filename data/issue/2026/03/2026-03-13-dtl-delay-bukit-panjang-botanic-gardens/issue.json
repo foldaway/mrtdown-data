@@ -1,0 +1,13 @@
+{
+  "id": "2026-03-13-dtl-delay-bukit-panjang-botanic-gardens",
+  "type": "disruption",
+  "title": {
+    "en-SG": "DTL Delay - Bukit Panjang to Botanic Gardens",
+    "zh-Hans": "DTL 服务延误 - 武吉班让至植物园",
+    "ms": "DTL Kelewatan Perkhidmatan - Bukit Panjang ke Botanic Gardens",
+    "ta": "DTL சேவை தாமதம் - புக் பிட் பாஞ் முதல் பாட்டானிக் கார்டன்ஸ் வரை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

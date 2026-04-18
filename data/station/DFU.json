@@ -1,0 +1,27 @@
+{
+  "id": "DFU",
+  "name": {
+    "en-SG": "Defu",
+    "zh-Hans": "德福",
+    "ms": null,
+    "ta": "டெஃபு"
+  },
+  "geo": {
+    "latitude": 1.3712,
+    "longitude": 103.9025
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR7",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "serangoon-eco-garden",
+    "defu-nature-park"
+  ],
+  "townId": "hougang"
+}

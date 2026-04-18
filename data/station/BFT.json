@@ -1,0 +1,35 @@
+{
+  "id": "BFT",
+  "name": {
+    "en-SG": "Bayfront",
+    "zh-Hans": "海湾舫",
+    "ms": null,
+    "ta": "பேஃபிரண்ட்"
+  },
+  "geo": {
+    "latitude": 1.2841,
+    "longitude": 103.8585
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CE1",
+      "startedAt": "2012-01-14",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "DTL",
+      "code": "DT16",
+      "startedAt": "2013-12-22",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "marina-bay-sands",
+    "gardens-by-the-bay",
+    "artscience-museum"
+  ],
+  "townId": "marina-south"
+}

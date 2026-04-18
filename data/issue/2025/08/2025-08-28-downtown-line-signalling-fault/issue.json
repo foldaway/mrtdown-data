@@ -1,0 +1,13 @@
+{
+  "id": "2025-08-28-downtown-line-signalling-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Downtown Line Signalling Fault",
+    "zh-Hans": "Downtown Line信号故障",
+    "ms": "Downtown Line Gangguan Isyarat",
+    "ta": "Downtown Line சிக்கலான அளவீடு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

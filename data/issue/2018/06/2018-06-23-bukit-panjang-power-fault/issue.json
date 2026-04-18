@@ -1,0 +1,13 @@
+{
+  "id": "2018-06-23-bukit-panjang-power-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service Disruption on Bukit Panjang LRT Due to Power Fault",
+    "zh-Hans": "Bukit Panjang LRT 因电力故障导致服务中断",
+    "ms": "Gangguan Perkhidmatan Bukit Panjang LRT Akibat Kerosakan Bekalan Elektrik",
+    "ta": "மின்சாரக் கோளாறு காரணமாக புக்கிட் பாஞ்சாங் LRT இல் சேவை இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

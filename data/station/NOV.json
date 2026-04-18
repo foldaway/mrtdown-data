@@ -1,0 +1,28 @@
+{
+  "id": "NOV",
+  "name": {
+    "en-SG": "Novena",
+    "zh-Hans": "诺维娜",
+    "ms": null,
+    "ta": "நொவீனா"
+  },
+  "geo": {
+    "latitude": 1.3193,
+    "longitude": 103.8483
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS20",
+      "startedAt": "1987-12-12",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "tan-tock-seng-hospital",
+    "velocity-novena-square",
+    "novena-church"
+  ],
+  "townId": "novena"
+}

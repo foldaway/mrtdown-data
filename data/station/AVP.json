@@ -1,0 +1,27 @@
+{
+  "id": "AVP",
+  "name": {
+    "en-SG": "Aviation Park",
+    "zh-Hans": "航空园",
+    "ms": null,
+    "ta": "ஏவியேஷன் பார்க்"
+  },
+  "geo": {
+    "latitude": 1.3664,
+    "longitude": 103.9712
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR2",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "changi-business-park",
+    "changi-airport-terminal-5"
+  ],
+  "townId": "changi"
+}

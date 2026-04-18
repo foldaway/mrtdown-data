@@ -1,0 +1,26 @@
+{
+  "id": "BKB",
+  "name": {
+    "en-SG": "Bukit Brown",
+    "zh-Hans": "武吉布朗",
+    "ms": null,
+    "ta": "புக்கிட் பிரவுன்"
+  },
+  "geo": {
+    "latitude": 1.33424,
+    "longitude": 103.82035
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC18",
+      "startedAt": "2040-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-brown-cemetery"
+  ],
+  "townId": "novena"
+}

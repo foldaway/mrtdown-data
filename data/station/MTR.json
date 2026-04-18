@@ -1,0 +1,27 @@
+{
+  "id": "MTR",
+  "name": {
+    "en-SG": "Mattar",
+    "zh-Hans": "玛达",
+    "ms": null,
+    "ta": "மாத்தார்"
+  },
+  "geo": {
+    "latitude": 1.321937,
+    "longitude": 103.885394
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT25",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "geylang-east-public-library",
+    "macpherson-mall"
+  ],
+  "townId": "geylang"
+}

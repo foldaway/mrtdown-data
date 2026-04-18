@@ -1,0 +1,336 @@
+{
+    "id": "NEL_MAIN_S",
+    "lineId": "NEL",
+    "name": {
+        "en-SG": "North-East Line (Main Service) - Southbound",
+        "zh-Hans": "东北线（主线） - 南向",
+        "ms": "Laluan Negeri-Tengah (Layanan Utama) - Arah Selatan",
+        "ta": "தெற்கு-கிழக்கு எம்ஆர்டி வழி (முக்கிய சேவை) - தெற்கு திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_2003",
+            "startAt": "2003-06-20",
+            "endAt": "2006-01-15",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "NE17"
+                    },
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "NE16"
+                    },
+                    {
+                        "stationId": "HGN",
+                        "displayCode": "NE14"
+                    },
+                    {
+                        "stationId": "KVN",
+                        "displayCode": "NE13"
+                    },
+                    {
+                        "stationId": "SER",
+                        "displayCode": "NE12"
+                    },
+                    {
+                        "stationId": "PTP",
+                        "displayCode": "NE10"
+                    },
+                    {
+                        "stationId": "BNK",
+                        "displayCode": "NE9"
+                    },
+                    {
+                        "stationId": "FRP",
+                        "displayCode": "NE8"
+                    },
+                    {
+                        "stationId": "LTI",
+                        "displayCode": "NE7"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "NE6"
+                    },
+                    {
+                        "stationId": "CRQ",
+                        "displayCode": "NE5"
+                    },
+                    {
+                        "stationId": "CTN",
+                        "displayCode": "NE4"
+                    },
+                    {
+                        "stationId": "OTP",
+                        "displayCode": "NE3"
+                    },
+                    {
+                        "stationId": "HBF",
+                        "displayCode": "NE1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:39",
+                    "end": "23:25"
+                },
+                "weekends": {
+                    "start": "05:55",
+                    "end": "23:45"
+                }
+            }
+        },
+        {
+            "id": "r_2006_buangkok",
+            "startAt": "2006-01-15",
+            "endAt": "2011-06-11",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "NE17"
+                    },
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "NE16"
+                    },
+                    {
+                        "stationId": "BGK",
+                        "displayCode": "NE15"
+                    },
+                    {
+                        "stationId": "HGN",
+                        "displayCode": "NE14"
+                    },
+                    {
+                        "stationId": "KVN",
+                        "displayCode": "NE13"
+                    },
+                    {
+                        "stationId": "SER",
+                        "displayCode": "NE12"
+                    },
+                    {
+                        "stationId": "PTP",
+                        "displayCode": "NE10"
+                    },
+                    {
+                        "stationId": "BNK",
+                        "displayCode": "NE9"
+                    },
+                    {
+                        "stationId": "FRP",
+                        "displayCode": "NE8"
+                    },
+                    {
+                        "stationId": "LTI",
+                        "displayCode": "NE7"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "NE6"
+                    },
+                    {
+                        "stationId": "CRQ",
+                        "displayCode": "NE5"
+                    },
+                    {
+                        "stationId": "CTN",
+                        "displayCode": "NE4"
+                    },
+                    {
+                        "stationId": "OTP",
+                        "displayCode": "NE3"
+                    },
+                    {
+                        "stationId": "HBF",
+                        "displayCode": "NE1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:39",
+                    "end": "23:25"
+                },
+                "weekends": {
+                    "start": "05:55",
+                    "end": "23:45"
+                }
+            }
+        },
+        {
+            "id": "r_2011_woodleigh",
+            "startAt": "2011-06-11",
+            "endAt": "2024-12-10",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "NE17"
+                    },
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "NE16"
+                    },
+                    {
+                        "stationId": "BGK",
+                        "displayCode": "NE15"
+                    },
+                    {
+                        "stationId": "HGN",
+                        "displayCode": "NE14"
+                    },
+                    {
+                        "stationId": "KVN",
+                        "displayCode": "NE13"
+                    },
+                    {
+                        "stationId": "SER",
+                        "displayCode": "NE12"
+                    },
+                    {
+                        "stationId": "WLH",
+                        "displayCode": "NE11"
+                    },
+                    {
+                        "stationId": "PTP",
+                        "displayCode": "NE10"
+                    },
+                    {
+                        "stationId": "BNK",
+                        "displayCode": "NE9"
+                    },
+                    {
+                        "stationId": "FRP",
+                        "displayCode": "NE8"
+                    },
+                    {
+                        "stationId": "LTI",
+                        "displayCode": "NE7"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "NE6"
+                    },
+                    {
+                        "stationId": "CRQ",
+                        "displayCode": "NE5"
+                    },
+                    {
+                        "stationId": "CTN",
+                        "displayCode": "NE4"
+                    },
+                    {
+                        "stationId": "OTP",
+                        "displayCode": "NE3"
+                    },
+                    {
+                        "stationId": "HBF",
+                        "displayCode": "NE1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:39",
+                    "end": "23:25"
+                },
+                "weekends": {
+                    "start": "05:55",
+                    "end": "23:45"
+                }
+            }
+        },
+        {
+            "id": "r_2024_punggol_coast",
+            "startAt": "2024-12-10",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PGC",
+                        "displayCode": "NE18"
+                    },
+                    {
+                        "stationId": "PGL",
+                        "displayCode": "NE17"
+                    },
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "NE16"
+                    },
+                    {
+                        "stationId": "BGK",
+                        "displayCode": "NE15"
+                    },
+                    {
+                        "stationId": "HGN",
+                        "displayCode": "NE14"
+                    },
+                    {
+                        "stationId": "KVN",
+                        "displayCode": "NE13"
+                    },
+                    {
+                        "stationId": "SER",
+                        "displayCode": "NE12"
+                    },
+                    {
+                        "stationId": "WLH",
+                        "displayCode": "NE11"
+                    },
+                    {
+                        "stationId": "PTP",
+                        "displayCode": "NE10"
+                    },
+                    {
+                        "stationId": "BNK",
+                        "displayCode": "NE9"
+                    },
+                    {
+                        "stationId": "FRP",
+                        "displayCode": "NE8"
+                    },
+                    {
+                        "stationId": "LTI",
+                        "displayCode": "NE7"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "NE6"
+                    },
+                    {
+                        "stationId": "CRQ",
+                        "displayCode": "NE5"
+                    },
+                    {
+                        "stationId": "CTN",
+                        "displayCode": "NE4"
+                    },
+                    {
+                        "stationId": "OTP",
+                        "displayCode": "NE3"
+                    },
+                    {
+                        "stationId": "HBF",
+                        "displayCode": "NE1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:39",
+                    "end": "23:25"
+                },
+                "weekends": {
+                    "start": "05:55",
+                    "end": "23:45"
+                }
+            }
+        }
+    ]
+}

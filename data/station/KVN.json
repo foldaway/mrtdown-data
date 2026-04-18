@@ -1,0 +1,27 @@
+{
+  "id": "KVN",
+  "name": {
+    "en-SG": "Kovan",
+    "zh-Hans": "高文",
+    "ms": null,
+    "ta": "கோவன்"
+  },
+  "geo": {
+    "latitude": 1.366,
+    "longitude": 103.883
+  },
+  "stationCodes": [
+    {
+      "lineId": "NEL",
+      "code": "NE13",
+      "startedAt": "2003-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "heartland-mall",
+    "kovan-sports-centre"
+  ],
+  "townId": "hougang"
+}

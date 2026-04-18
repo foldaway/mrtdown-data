@@ -1,0 +1,28 @@
+{
+  "id": "PGC",
+  "name": {
+    "en-SG": "Punggol Coast",
+    "zh-Hans": "榜鹅海岸",
+    "ms": null,
+    "ta": "பொங்கோல் கோஸ்ட்"
+  },
+  "geo": {
+    "latitude": 1.404,
+    "longitude": 103.925
+  },
+  "stationCodes": [
+    {
+      "lineId": "NEL",
+      "code": "NE18",
+      "startedAt": "2024-12-10",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "punggol-point",
+    "coney-island",
+    "punggol-waterway-park"
+  ],
+  "townId": "punggol"
+}

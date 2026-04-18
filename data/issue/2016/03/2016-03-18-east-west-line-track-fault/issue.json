@@ -1,0 +1,13 @@
+{
+  "id": "2016-03-18-east-west-line-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption due to track fault",
+    "zh-Hans": "因轨道故障导致的服务中断",
+    "ms": "Gangguan perkhidmatan kerana kerosakan landasan",
+    "ta": "தடப் பிழை காரணமாக சேவை இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

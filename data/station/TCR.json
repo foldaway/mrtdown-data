@@ -1,0 +1,28 @@
+{
+  "id": "TCR",
+  "name": {
+    "en-SG": "Tuas Crescent",
+    "zh-Hans": "大士弯",
+    "ms": null,
+    "ta": "துவாஸ் கிரசண்ட்"
+  },
+  "geo": {
+    "latitude": 1.2832,
+    "longitude": 103.6231
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW31",
+      "startedAt": "2017-06-18",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-discovery-centre",
+    "tuas-marine-park",
+    "jtc-medtech-hub"
+  ],
+  "townId": "tuas"
+}

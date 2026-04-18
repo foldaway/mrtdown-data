@@ -1,0 +1,13 @@
+{
+  "id": "2024-01-14-power-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Major Power Fault Causing Delays",
+    "zh-Hans": "主要电力故障导致延误",
+    "ms": "Gangguan Kuasa Utama Menyebabkan Kelewatan",
+    "ta": "தாமதத்தை ஏற்படுத்தும் பெரிய மின்சார தவறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

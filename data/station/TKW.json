@@ -1,0 +1,27 @@
+{
+  "id": "TKW",
+  "name": {
+    "en-SG": "Teck Whye",
+    "zh-Hans": "德惠",
+    "ms": null,
+    "ta": "டெக் வாய்"
+  },
+  "geo": {
+    "latitude": 1.376,
+    "longitude": 103.749
+  },
+  "stationCodes": [
+    {
+      "lineId": "BPLRT",
+      "code": "BP4",
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "teck-whye-community-centre",
+    "teck-whye-secondary-school"
+  ],
+  "townId": "choa-chu-kang"
+}

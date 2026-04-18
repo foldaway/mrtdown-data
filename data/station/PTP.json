@@ -1,0 +1,27 @@
+{
+  "id": "PTP",
+  "name": {
+    "en-SG": "Potong Pasir",
+    "zh-Hans": "波东巴西",
+    "ms": null,
+    "ta": "போத்தோங் பாசிர்"
+  },
+  "geo": {
+    "latitude": 1.3323,
+    "longitude": 103.8646
+  },
+  "stationCodes": [
+    {
+      "lineId": "NEL",
+      "code": "NE10",
+      "startedAt": "2003-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "potong-pasir-park",
+    "st-andrews-junior-college"
+  ],
+  "townId": "toa-payoh"
+}

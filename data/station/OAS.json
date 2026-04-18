@@ -1,0 +1,28 @@
+{
+  "id": "OAS",
+  "name": {
+    "en-SG": "Oasis",
+    "zh-Hans": "绿洲",
+    "ms": null,
+    "ta": "ஓய்சிஸ்"
+  },
+  "geo": {
+    "latitude": 1.39888,
+    "longitude": 103.9101
+  },
+  "stationCodes": [
+    {
+      "lineId": "PGLRT",
+      "code": "PE6",
+      "startedAt": "2007-06-15",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "oasis-terraces",
+    "punggol-waterway-park",
+    "waterway-point"
+  ],
+  "townId": "punggol"
+}

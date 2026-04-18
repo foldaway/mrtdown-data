@@ -1,0 +1,28 @@
+{
+  "id": "SMG",
+  "name": {
+    "en-SG": "Sumang",
+    "zh-Hans": "苏芒",
+    "ms": null,
+    "ta": "சுமாங்"
+  },
+  "geo": {
+    "latitude": 1.4035,
+    "longitude": 103.9034
+  },
+  "stationCodes": [
+    {
+      "lineId": "PGLRT",
+      "code": "PW6",
+      "startedAt": "2014-06-29",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "punggol-waterway-park",
+    "punggol-digital-district",
+    "seaside-walk"
+  ],
+  "townId": "punggol"
+}

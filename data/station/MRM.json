@@ -1,0 +1,28 @@
+{
+  "id": "MRM",
+  "name": {
+    "en-SG": "Marymount",
+    "zh-Hans": "玛丽蒙",
+    "ms": null,
+    "ta": "மேரிமவுண்ட்்"
+  },
+  "geo": {
+    "latitude": 1.3403,
+    "longitude": 103.8434
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC16",
+      "startedAt": "2009-05-28",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "bishan-park",
+    "bishan-sports-hall",
+    "marymount-convent-school"
+  ],
+  "townId": "bishan"
+}

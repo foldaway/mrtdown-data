@@ -1,0 +1,34 @@
+{
+  "id": "BRH",
+  "name": {
+    "en-SG": "Bright Hill",
+    "zh-Hans": "光明山",
+    "ms": null,
+    "ta": "பிரைட் ஹில்"
+  },
+  "geo": {
+    "latitude": 1.357569,
+    "longitude": 103.84533
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE7",
+      "startedAt": "2021-08-28",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "CRL",
+      "code": "CR13",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "bishan-park",
+    "bishan-sports-hall"
+  ],
+  "townId": "bishan"
+}

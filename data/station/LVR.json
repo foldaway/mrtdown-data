@@ -1,0 +1,26 @@
+{
+  "id": "LVR",
+  "name": {
+    "en-SG": "Lavender",
+    "zh-Hans": "劳明达",
+    "ms": null,
+    "ta": "லவண்டர்"
+  },
+  "geo": {
+    "latitude": 1.3067,
+    "longitude": 103.8652
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW11",
+      "startedAt": "1989-11-04",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "meyer-mansion"
+  ],
+  "townId": "kallang"
+}

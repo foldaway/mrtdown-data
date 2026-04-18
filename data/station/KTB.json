@@ -1,0 +1,28 @@
+{
+  "id": "KTB",
+  "name": {
+    "en-SG": "Khatib",
+    "zh-Hans": "卡迪",
+    "ms": null,
+    "ta": "காதிப்"
+  },
+  "geo": {
+    "latitude": 1.4162,
+    "longitude": 103.8357
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS14",
+      "startedAt": "1988-12-20",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "orchid-country-club",
+    "yishun-pond-park",
+    "hometeamns-khatib"
+  ],
+  "townId": "yishun"
+}

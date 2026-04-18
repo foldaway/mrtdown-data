@@ -1,0 +1,13 @@
+{
+  "id": "2023-10-01-full-closure-bukit-panjang-lrt",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Full closure of train services on Bukit Panjang LRT",
+    "zh-Hans": "Bukit Panjang LRT 列车服务全面关闭",
+    "ms": "Penutupan penuh perkhidmatan kereta api di Bukit Panjang LRT",
+    "ta": "Bukit Panjang LRT இல் ரயில் சேவைகள் முழுமையாக மூடப்பட்டுள்ளன"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

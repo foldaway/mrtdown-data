@@ -1,0 +1,28 @@
+{
+  "id": "MPR",
+  "name": {
+    "en-SG": "Marine Parade",
+    "zh-Hans": "马林百列",
+    "ms": null,
+    "ta": "மரீன் பரேட்"
+  },
+  "geo": {
+    "latitude": 1.3013,
+    "longitude": 103.9025
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE26",
+      "startedAt": "2024-06-23",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "ecp-park-connector",
+    "marine-parade-food-centre",
+    "kampong-kembangan-community-club"
+  ],
+  "townId": "marine-parade"
+}

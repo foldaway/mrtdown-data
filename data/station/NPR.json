@@ -1,0 +1,28 @@
+{
+  "id": "NPR",
+  "name": {
+    "en-SG": "Napier",
+    "zh-Hans": "纳比雅",
+    "ms": null,
+    "ta": "நேப்பியர்"
+  },
+  "geo": {
+    "latitude": 1.313,
+    "longitude": 103.815
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE12",
+      "startedAt": "2022-11-13",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "royal-thai-embassy",
+    "australian-high-commission",
+    "tanglin-mall"
+  ],
+  "townId": "tanglin"
+}

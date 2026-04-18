@@ -1,0 +1,13 @@
+{
+  "id": "2019-07-26-early-closure-nel-stations",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Early closure of five NEL stations due to maintenance",
+    "zh-Hans": "因维修提前关闭五个 NEL 站",
+    "ms": "Penutupan awal lima stesen NEL kerana penyelenggaraan",
+    "ta": "பராமரிப்பு காரணமாக ஐந்து NEL நிலையங்களின் முன்கூட்டிய மூடல்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

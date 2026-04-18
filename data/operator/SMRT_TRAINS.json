@@ -1,0 +1,11 @@
+{
+  "id": "SMRT_TRAINS",
+  "name": {
+    "en-SG": "SMRT Trains Limited",
+    "zh-Hans": "新加坡地铁有限公司",
+    "ms": "Kereta Api SMRT",
+    "ta": null
+  },
+  "foundedAt": "1987-08-06",
+  "url": "https://www.smrt.com.sg"
+}

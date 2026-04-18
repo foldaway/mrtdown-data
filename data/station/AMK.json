@@ -1,0 +1,35 @@
+{
+  "id": "AMK",
+  "name": {
+    "en-SG": "Ang Mo Kio",
+    "zh-Hans": "宏茂桥",
+    "ms": null,
+    "ta": "அங் மோ கியோ"
+  },
+  "geo": {
+    "latitude": 1.3755,
+    "longitude": 103.8484
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS16",
+      "startedAt": "1987-11-07",
+      "endedAt": null,
+      "structureType": "elevated"
+    },
+    {
+      "lineId": "CRL",
+      "code": "CR11",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "ang-mo-kio-hub",
+    "bishan-ang-mo-kio-park",
+    "yio-chu-kang-stadium"
+  ],
+  "townId": "ang-mo-kio"
+}

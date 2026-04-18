@@ -1,0 +1,27 @@
+{
+  "id": "COV",
+  "name": {
+    "en-SG": "Cove",
+    "zh-Hans": "海湾",
+    "ms": null,
+    "ta": "கோவ்"
+  },
+  "geo": {
+    "latitude": 1.4043,
+    "longitude": 103.9072
+  },
+  "stationCodes": [
+    {
+      "lineId": "PGLRT",
+      "code": "PE1",
+      "startedAt": "2005-01-29",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "punggol-waterway-park",
+    "oasis-terraces"
+  ],
+  "townId": "punggol"
+}

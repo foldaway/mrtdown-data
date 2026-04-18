@@ -1,0 +1,28 @@
+{
+  "id": "DTN",
+  "name": {
+    "en-SG": "Downtown",
+    "zh-Hans": "市中心",
+    "ms": null,
+    "ta": "டௌன்டவுன்"
+  },
+  "geo": {
+    "latitude": 1.2822,
+    "longitude": 103.8587
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT17",
+      "startedAt": "2013-12-22",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "marina-bay-sands",
+    "gardens-by-the-bay",
+    "esplanade-theatres-on-the-bay"
+  ],
+  "townId": "downtown-core"
+}

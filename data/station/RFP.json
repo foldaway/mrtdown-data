@@ -1,0 +1,36 @@
+{
+  "id": "RFP",
+  "name": {
+    "en-SG": "Raffles Place",
+    "zh-Hans": "莱佛士坊",
+    "ms": null,
+    "ta": "ராஃபிள்ஸ் பிளேஸ்"
+  },
+  "geo": {
+    "latitude": 1.2839,
+    "longitude": 103.851
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW14",
+      "startedAt": "1987-12-12",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "NSL",
+      "code": "NS26",
+      "startedAt": "1987-12-12",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "one-raffles-place",
+    "raffles-place-park",
+    "the-esplanade",
+    "singapore-exchange"
+  ],
+  "townId": "downtown-core"
+}

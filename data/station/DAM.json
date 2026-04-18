@@ -1,0 +1,28 @@
+{
+  "id": "DAM",
+  "name": {
+    "en-SG": "Damai",
+    "zh-Hans": "达迈",
+    "ms": null,
+    "ta": "டாமாய்"
+  },
+  "geo": {
+    "latitude": 1.402442,
+    "longitude": 103.91041
+  },
+  "stationCodes": [
+    {
+      "lineId": "PGLRT",
+      "code": "PE7",
+      "startedAt": "2011-06-20",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "punggol-waterway-park",
+    "punggol-plaza",
+    "waterway-point"
+  ],
+  "townId": "punggol"
+}

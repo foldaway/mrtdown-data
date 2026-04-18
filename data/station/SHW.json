@@ -1,0 +1,28 @@
+{
+  "id": "SHW",
+  "name": {
+    "en-SG": "Shenton Way",
+    "zh-Hans": "珊顿道",
+    "ms": null,
+    "ta": "ஷென்ட்டன் வே"
+  },
+  "geo": {
+    "latitude": 1.2797,
+    "longitude": 103.8503
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE19",
+      "startedAt": "2022-11-13",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "marina-bay-financial-centre",
+    "one-raffles-quay",
+    "asia-square"
+  ],
+  "townId": "downtown-core"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "FCN",
+  "name": {
+    "en-SG": "Fort Canning",
+    "zh-Hans": "福康宁",
+    "ms": null,
+    "ta": "ஃபோர்ட் கெனிங்"
+  },
+  "geo": {
+    "latitude": 1.2904,
+    "longitude": 103.848
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT20",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "fort-canning-park",
+    "battlebox",
+    "singapore-national-museum"
+  ],
+  "townId": "museum"
+}

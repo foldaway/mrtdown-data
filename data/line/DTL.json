@@ -1,0 +1,34 @@
+{
+  "id": "DTL",
+  "name": {
+    "en-SG": "Downtown Line",
+    "zh-Hans": "滨海市区地铁线",
+    "ms": "Laluan MRT Pusat Bandar",
+    "ta": "டவுன்டவுன் எம்ஆர்டி வழி"
+  },
+  "type": "mrt.medium",
+  "color": "#005ec4",
+  "startedAt": "2013-11-22",
+  "endedAt": null,
+  "operatingHours": {
+    "weekdays": {
+      "start": "05:36",
+      "end": "23:40"
+    },
+    "weekends": {
+      "start": "06:00",
+      "end": "23:50"
+    }
+  },
+  "operators": [
+    {
+      "operatorId": "SBS",
+      "startedAt": "2013-11-22",
+      "endedAt": null
+    }
+  ],
+  "serviceIds": [
+    "DTL_MAIN_E",
+    "DTL_MAIN_W"
+  ]
+}

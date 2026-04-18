@@ -1,0 +1,324 @@
+{
+    "id": "TEL_MAIN_S",
+    "lineId": "TEL",
+    "name": {
+        "en-SG": "Thomson-East Coast Line (Main Service) - Southbound",
+        "zh-Hans": "汤申-东海岸线（主线） - 南向",
+        "ms": "Laluan Thomson-EC Line (Layanan Utama) - Arah Selatan",
+        "ta": "தோமசன்-கிழக்கு எம்ஆர்டி வழி (முக்கிய சேவை) - தெற்கு திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_2020_stage_1",
+            "startAt": "2020-01-31",
+            "endAt": "2021-08-28",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "WDN",
+                        "displayCode": "TE1"
+                    },
+                    {
+                        "stationId": "WDL",
+                        "displayCode": "TE2"
+                    },
+                    {
+                        "stationId": "WDS",
+                        "displayCode": "TE3"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:36",
+                    "end": "00:42"
+                },
+                "weekends": {
+                    "start": "05:56",
+                    "end": "00:42"
+                }
+            }
+        },
+        {
+            "id": "r_2021_stage_2",
+            "startAt": "2021-08-28",
+            "endAt": "2022-11-13",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "WDN",
+                        "displayCode": "TE1"
+                    },
+                    {
+                        "stationId": "WDL",
+                        "displayCode": "TE2"
+                    },
+                    {
+                        "stationId": "WDS",
+                        "displayCode": "TE3"
+                    },
+                    {
+                        "stationId": "SPL",
+                        "displayCode": "TE4"
+                    },
+                    {
+                        "stationId": "LTR",
+                        "displayCode": "TE5"
+                    },
+                    {
+                        "stationId": "MFL",
+                        "displayCode": "TE6"
+                    },
+                    {
+                        "stationId": "BRH",
+                        "displayCode": "TE7"
+                    },
+                    {
+                        "stationId": "UTS",
+                        "displayCode": "TE8"
+                    },
+                    {
+                        "stationId": "CDT",
+                        "displayCode": "TE9"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:36",
+                    "end": "00:42"
+                },
+                "weekends": {
+                    "start": "05:56",
+                    "end": "00:42"
+                }
+            }
+        },
+        {
+            "id": "r_2022_stage_3",
+            "startAt": "2022-11-13",
+            "endAt": "2024-06-23",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "WDN",
+                        "displayCode": "TE1"
+                    },
+                    {
+                        "stationId": "WDL",
+                        "displayCode": "TE2"
+                    },
+                    {
+                        "stationId": "WDS",
+                        "displayCode": "TE3"
+                    },
+                    {
+                        "stationId": "SPL",
+                        "displayCode": "TE4"
+                    },
+                    {
+                        "stationId": "LTR",
+                        "displayCode": "TE5"
+                    },
+                    {
+                        "stationId": "MFL",
+                        "displayCode": "TE6"
+                    },
+                    {
+                        "stationId": "BRH",
+                        "displayCode": "TE7"
+                    },
+                    {
+                        "stationId": "UTS",
+                        "displayCode": "TE8"
+                    },
+                    {
+                        "stationId": "CDT",
+                        "displayCode": "TE9"
+                    },
+                    {
+                        "stationId": "STV",
+                        "displayCode": "TE11"
+                    },
+                    {
+                        "stationId": "NPR",
+                        "displayCode": "TE12"
+                    },
+                    {
+                        "stationId": "OBV",
+                        "displayCode": "TE13"
+                    },
+                    {
+                        "stationId": "ORC",
+                        "displayCode": "TE14"
+                    },
+                    {
+                        "stationId": "GRW",
+                        "displayCode": "TE15"
+                    },
+                    {
+                        "stationId": "HVL",
+                        "displayCode": "TE16"
+                    },
+                    {
+                        "stationId": "OTP",
+                        "displayCode": "TE17"
+                    },
+                    {
+                        "stationId": "MAX",
+                        "displayCode": "TE18"
+                    },
+                    {
+                        "stationId": "SHW",
+                        "displayCode": "TE19"
+                    },
+                    {
+                        "stationId": "MRB",
+                        "displayCode": "TE20"
+                    },
+                    {
+                        "stationId": "GRB",
+                        "displayCode": "TE22"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:36",
+                    "end": "00:42"
+                },
+                "weekends": {
+                    "start": "05:56",
+                    "end": "00:42"
+                }
+            }
+        },
+        {
+            "id": "r_2024_stage_4",
+            "startAt": "2024-06-23",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "WDN",
+                        "displayCode": "TE1"
+                    },
+                    {
+                        "stationId": "WDL",
+                        "displayCode": "TE2"
+                    },
+                    {
+                        "stationId": "WDS",
+                        "displayCode": "TE3"
+                    },
+                    {
+                        "stationId": "SPL",
+                        "displayCode": "TE4"
+                    },
+                    {
+                        "stationId": "LTR",
+                        "displayCode": "TE5"
+                    },
+                    {
+                        "stationId": "MFL",
+                        "displayCode": "TE6"
+                    },
+                    {
+                        "stationId": "BRH",
+                        "displayCode": "TE7"
+                    },
+                    {
+                        "stationId": "UTS",
+                        "displayCode": "TE8"
+                    },
+                    {
+                        "stationId": "CDT",
+                        "displayCode": "TE9"
+                    },
+                    {
+                        "stationId": "STV",
+                        "displayCode": "TE11"
+                    },
+                    {
+                        "stationId": "NPR",
+                        "displayCode": "TE12"
+                    },
+                    {
+                        "stationId": "OBV",
+                        "displayCode": "TE13"
+                    },
+                    {
+                        "stationId": "ORC",
+                        "displayCode": "TE14"
+                    },
+                    {
+                        "stationId": "GRW",
+                        "displayCode": "TE15"
+                    },
+                    {
+                        "stationId": "HVL",
+                        "displayCode": "TE16"
+                    },
+                    {
+                        "stationId": "OTP",
+                        "displayCode": "TE17"
+                    },
+                    {
+                        "stationId": "MAX",
+                        "displayCode": "TE18"
+                    },
+                    {
+                        "stationId": "SHW",
+                        "displayCode": "TE19"
+                    },
+                    {
+                        "stationId": "MRB",
+                        "displayCode": "TE20"
+                    },
+                    {
+                        "stationId": "GRB",
+                        "displayCode": "TE22"
+                    },
+                    {
+                        "stationId": "TRH",
+                        "displayCode": "TE23"
+                    },
+                    {
+                        "stationId": "KTP",
+                        "displayCode": "TE24"
+                    },
+                    {
+                        "stationId": "TKT",
+                        "displayCode": "TE25"
+                    },
+                    {
+                        "stationId": "MPR",
+                        "displayCode": "TE26"
+                    },
+                    {
+                        "stationId": "MTC",
+                        "displayCode": "TE27"
+                    },
+                    {
+                        "stationId": "SGL",
+                        "displayCode": "TE28"
+                    },
+                    {
+                        "stationId": "BSR",
+                        "displayCode": "TE29"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:36",
+                    "end": "00:42"
+                },
+                "weekends": {
+                    "start": "05:56",
+                    "end": "00:42"
+                }
+            }
+        }
+    ]
+}

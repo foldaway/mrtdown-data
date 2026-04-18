@@ -1,0 +1,28 @@
+{
+  "id": "PGP",
+  "name": {
+    "en-SG": "Punggol Point",
+    "zh-Hans": "榜鹅坊",
+    "ms": null,
+    "ta": "பொங்கோல் பாயிண்ட்"
+  },
+  "geo": {
+    "latitude": 1.4,
+    "longitude": 103.905
+  },
+  "stationCodes": [
+    {
+      "lineId": "PGLRT",
+      "code": "PW3",
+      "startedAt": "2016-12-29",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "punggol-waterfront",
+    "punggol-waterway-park",
+    "punggol-point-park"
+  ],
+  "townId": "punggol"
+}

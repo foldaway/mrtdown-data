@@ -1,0 +1,27 @@
+{
+  "id": "GLB",
+  "name": {
+    "en-SG": "Geylang Bahru",
+    "zh-Hans": "芽笼峇鲁",
+    "ms": null,
+    "ta": "கேலாங் பாரு"
+  },
+  "geo": {
+    "latitude": 1.3151,
+    "longitude": 103.8716
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT24",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "geylang-bahru-market-food-centre",
+    "kallang-riverside-park"
+  ],
+  "townId": "kallang"
+}

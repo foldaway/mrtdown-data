@@ -1,0 +1,27 @@
+{
+  "id": "MPL",
+  "name": {
+    "en-SG": "Mount Pleasant",
+    "zh-Hans": "快乐山",
+    "ms": null,
+    "ta": "மவுண்ட் பிளசண்ட்்"
+  },
+  "geo": {
+    "latitude": 1.3403,
+    "longitude": 103.8347
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE10",
+      "startedAt": "2040-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "macritchie-reservoir",
+    "lornie-road"
+  ],
+  "townId": "novena"
+}

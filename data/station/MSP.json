@@ -1,0 +1,27 @@
+{
+  "id": "MSP",
+  "name": {
+    "en-SG": "Marina South Pier",
+    "zh-Hans": "滨海南码头",
+    "ms": null,
+    "ta": "மரினா சவுத் படகுத்துறை"
+  },
+  "geo": {
+    "latitude": 1.2784,
+    "longitude": 103.8623
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS28",
+      "startedAt": "2014-11-23",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "marina-bay-cruise-centre-singapore",
+    "gardens-by-the-bay"
+  ],
+  "townId": "straits-view"
+}

@@ -1,0 +1,75 @@
+{
+    "id": "BPLRT_C",
+    "lineId": "BPLRT",
+    "name": {
+        "en-SG": "Bukit Panjang LRT - Service C",
+        "zh-Hans": "武吉班让快速铁路（主线） - 服务C",
+        "ms": "Laluan Rapi Transit Bukit Panjang (Layanan Utama) - Perkhidmatan C",
+        "ta": "புக்கிட் பாஞ்சாங் வரிசையாக்க எம்ஆர்டி (முக்கிய சேவை) - சேவை C"
+    },
+    "revisions": [
+        {
+            "id": "r_initial",
+            "startAt": "1999-11-06",
+            "endAt": "2019-01-13",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "TMJ",
+                        "displayCode": "BP14"
+                    },
+                    {
+                        "stationId": "BKP",
+                        "displayCode": "BP6"
+                    },
+                    {
+                        "stationId": "SNJ",
+                        "displayCode": "BP13"
+                    },
+                    {
+                        "stationId": "JLP",
+                        "displayCode": "BP12"
+                    },
+                    {
+                        "stationId": "SGR",
+                        "displayCode": "BP11"
+                    },
+                    {
+                        "stationId": "FJR",
+                        "displayCode": "BP10"
+                    },
+                    {
+                        "stationId": "BKT",
+                        "displayCode": "BP9"
+                    },
+                    {
+                        "stationId": "PND",
+                        "displayCode": "BP8"
+                    },
+                    {
+                        "stationId": "PTR",
+                        "displayCode": "BP7"
+                    },
+                    {
+                        "stationId": "BKP",
+                        "displayCode": "BP6"
+                    },
+                    {
+                        "stationId": "TMJ",
+                        "displayCode": "BP14"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "04:59",
+                    "end": "00:55"
+                },
+                "weekends": {
+                    "start": "05:18",
+                    "end": "00:55"
+                }
+            }
+        }
+    ]
+}

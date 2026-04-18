@@ -1,0 +1,13 @@
+{
+  "id": "2021-06-02-nel-signalling-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signalling fault on North East Line",
+    "zh-Hans": "东北线的信号故障",
+    "ms": "Kerosakan isyarat di Laluan Timur Laut",
+    "ta": "வடகிழக்கு பாதையில் சமிக்ஞை தவறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

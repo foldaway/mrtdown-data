@@ -1,0 +1,40 @@
+{
+  "id": "CTN",
+  "name": {
+    "en-SG": "Chinatown",
+    "zh-Hans": "牛车水",
+    "ms": null,
+    "ta": "சைனாடவுன்"
+  },
+  "geo": {
+    "latitude": 1.2838,
+    "longitude": 103.8439
+  },
+  "stationCodes": [
+    {
+      "lineId": "NEL",
+      "code": "NE4",
+      "startedAt": "2003-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "DTL",
+      "code": "DT19",
+      "startedAt": "2013-12-22",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "chinatown-heritage-centre",
+    "buddha-tooth-relic-temple-and-museum",
+    "thian-hock-keng-temple",
+    "sri-mariamman-temple",
+    "chinatown-point",
+    "peoples-park-complex",
+    "hong-lim-market-food-centre",
+    "chinatown-complex-food-centre"
+  ],
+  "townId": "outram"
+}

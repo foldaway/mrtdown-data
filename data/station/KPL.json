@@ -1,0 +1,28 @@
+{
+  "id": "KPL",
+  "name": {
+    "en-SG": "Keppel",
+    "zh-Hans": "吉宝",
+    "ms": null,
+    "ta": "கெப்பல்"
+  },
+  "geo": {
+    "latitude": 1.2641,
+    "longitude": 103.8226
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC30",
+      "startedAt": "2026-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-cruise-centre",
+    "harbourfront-centre",
+    "sentosa-gateway"
+  ],
+  "townId": "bukit-merah"
+}

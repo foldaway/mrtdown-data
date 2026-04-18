@@ -1,0 +1,28 @@
+{
+  "id": "MAX",
+  "name": {
+    "en-SG": "Maxwell",
+    "zh-Hans": "麦士威",
+    "ms": null,
+    "ta": "மெச்ஸ்வெல்்"
+  },
+  "geo": {
+    "latitude": 1.2804,
+    "longitude": 103.8448
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE18",
+      "startedAt": "2022-11-13",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "maxwell-food-centre",
+    "thian-hock-keng-temple",
+    "the-pinnacleduxton"
+  ],
+  "townId": "outram"
+}

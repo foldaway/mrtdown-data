@@ -1,0 +1,28 @@
+{
+  "id": "KRG",
+  "name": {
+    "en-SG": "Kent Ridge",
+    "zh-Hans": "肯特岗",
+    "ms": null,
+    "ta": "கெண்ட் ரிஜ்"
+  },
+  "geo": {
+    "latitude": 1.2955,
+    "longitude": 103.7853
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC24",
+      "startedAt": "2011-10-08",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "national-university-of-singapore",
+    "kent-ridge-park",
+    "singapore-science-park"
+  ],
+  "townId": "queenstown"
+}

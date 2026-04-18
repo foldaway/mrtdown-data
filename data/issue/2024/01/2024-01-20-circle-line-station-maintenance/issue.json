@@ -1,0 +1,13 @@
+{
+  "id": "2024-01-20-circle-line-station-maintenance",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Circle Line station maintenance for Stage 6 integration",
+    "zh-Hans": "为6期整合进行环线车站维护",
+    "ms": "Penyelenggaraan stesen Circle Line untuk integrasi Peringkat 6",
+    "ta": "வட்டப் பாதையில் நிலை 6 ஒருங்கிணைப்புக்கான நிலையப் பராமரிப்பு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

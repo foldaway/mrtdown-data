@@ -1,0 +1,27 @@
+{
+  "id": "DE1",
+  "name": {
+    "en-SG": "DE1",
+    "zh-Hans": null,
+    "ms": null,
+    "ta": null
+  },
+  "geo": {
+    "latitude": 1.419,
+    "longitude": 103.757
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DE1",
+      "startedAt": "2035-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "sungei-kadut-industrial-estate",
+    "kranji-countryside"
+  ],
+  "townId": "sungei-kadut"
+}

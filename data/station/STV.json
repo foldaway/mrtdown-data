@@ -1,0 +1,35 @@
+{
+  "id": "STV",
+  "name": {
+    "en-SG": "Stevens",
+    "zh-Hans": "史蒂芬",
+    "ms": null,
+    "ta": "ஸ்டீவன்ஸ்"
+  },
+  "geo": {
+    "latitude": 1.318328,
+    "longitude": 103.820611
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT10",
+      "startedAt": "2015-12-27",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "TEL",
+      "code": "TE11",
+      "startedAt": "2022-11-13",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-chinese-girls-school",
+    "anglo-chinese-school-barker-road",
+    "singapore-botanic-gardens"
+  ],
+  "townId": "tanglin"
+}

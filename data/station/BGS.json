@@ -1,0 +1,38 @@
+{
+  "id": "BGS",
+  "name": {
+    "en-SG": "Bugis",
+    "zh-Hans": "武吉士",
+    "ms": null,
+    "ta": "பூகிஸ்"
+  },
+  "geo": {
+    "latitude": 1.30186,
+    "longitude": 103.85388
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW12",
+      "startedAt": "1989-11-04",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "DTL",
+      "code": "DT14",
+      "startedAt": "2013-12-22",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "bugis-junction",
+    "bugis",
+    "bhg-bugis",
+    "national-library",
+    "haji-lane",
+    "kampong-glam"
+  ],
+  "townId": "rochor"
+}

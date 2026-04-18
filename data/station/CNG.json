@@ -1,0 +1,28 @@
+{
+  "id": "CNG",
+  "name": {
+    "en-SG": "Chinese Garden",
+    "zh-Hans": "裕华园",
+    "ms": null,
+    "ta": "சீனத் தோட்டம்"
+  },
+  "geo": {
+    "latitude": 1.3357,
+    "longitude": 103.7432
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW25",
+      "startedAt": "1988-11-05",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "chinese-garden",
+    "japanese-garden",
+    "lakeside-gardens"
+  ],
+  "townId": "jurong-east"
+}

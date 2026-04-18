@@ -1,0 +1,36 @@
+{
+  "id": "CCL",
+  "name": {
+    "en-SG": "Circle Line",
+    "zh-Hans": "环线",
+    "ms": "Laluan MRT Bulat",
+    "ta": "வட்டமாக்கி எம்ஆர்டி வழி"
+  },
+  "type": "mrt.medium",
+  "color": "#fa9e0d",
+  "startedAt": "2009-05-28",
+  "endedAt": null,
+  "operatingHours": {
+    "weekdays": {
+      "start": "05:50",
+      "end": "23:59"
+    },
+    "weekends": {
+      "start": "06:10",
+      "end": "00:05"
+    }
+  },
+  "operators": [
+    {
+      "operatorId": "SMRT_TRAINS",
+      "startedAt": "2009-05-28",
+      "endedAt": null
+    }
+  ],
+  "serviceIds": [
+    "CCL_MAIN_CCW",
+    "CCL_MAIN_CW",
+    "CCL_EXT_CCW",
+    "CCL_EXT_CW"
+  ]
+}

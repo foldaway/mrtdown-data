@@ -1,0 +1,28 @@
+{
+  "id": "JRW",
+  "name": {
+    "en-SG": "Jurong West",
+    "zh-Hans": "裕廊西",
+    "ms": null,
+    "ta": "ஜூரோங் வெஸ்ட்"
+  },
+  "geo": {
+    "latitude": 1.349,
+    "longitude": 103.706
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JS6",
+      "startedAt": "2027-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "corporation-primary-school",
+    "boon-lay-community-centre",
+    "boon-lay-shopping-centre"
+  ],
+  "townId": "jurong-west"
+}

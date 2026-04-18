@@ -1,0 +1,29 @@
+{
+  "id": "MRS",
+  "name": {
+    "en-SG": "Marina South",
+    "zh-Hans": "滨海南",
+    "ms": null,
+    "ta": "மரீனா சவுத்"
+  },
+  "geo": {
+    "latitude": 1.2816,
+    "longitude": 103.86
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE21",
+      "startedAt": "2040-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "marina-bay-sands",
+    "gardens-by-the-bay",
+    "the-shoppes-at-marina-bay-sands",
+    "merlion-park"
+  ],
+  "townId": "straits-view"
+}

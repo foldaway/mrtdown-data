@@ -1,0 +1,35 @@
+{
+  "id": "BNL",
+  "name": {
+    "en-SG": "Boon Lay",
+    "zh-Hans": "文礼",
+    "ms": null,
+    "ta": "பூன் லே"
+  },
+  "geo": {
+    "latitude": 1.349407,
+    "longitude": 103.70534
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW27",
+      "startedAt": "1990-07-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    },
+    {
+      "lineId": "JRL",
+      "code": "JS8",
+      "startedAt": "2027-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "jurong-point",
+    "boon-lay-shopping-centre",
+    "lakeside-garden"
+  ],
+  "townId": "jurong-west"
+}

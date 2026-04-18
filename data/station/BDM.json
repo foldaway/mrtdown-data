@@ -1,0 +1,28 @@
+{
+  "id": "BDM",
+  "name": {
+    "en-SG": "Bendemeer",
+    "zh-Hans": "明地迷亚",
+    "ms": null,
+    "ta": "பெண்டிமியர்"
+  },
+  "geo": {
+    "latitude": 1.316683,
+    "longitude": 103.872768
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT23",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "geylang-serai-market",
+    "singapore-sports-hub",
+    "kallang-wave-mall"
+  ],
+  "townId": "kallang"
+}

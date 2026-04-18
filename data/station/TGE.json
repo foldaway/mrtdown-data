@@ -1,0 +1,27 @@
+{
+  "id": "TGE",
+  "name": {
+    "en-SG": "Teck Ghee",
+    "zh-Hans": "德义",
+    "ms": null,
+    "ta": "டெக் கீ"
+  },
+  "geo": {
+    "latitude": 1.3734,
+    "longitude": 103.8473
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR12",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "ang-mo-kio-town-garden-east",
+    "teck-ghee-community-club"
+  ],
+  "townId": "ang-mo-kio"
+}

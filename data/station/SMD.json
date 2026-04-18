@@ -1,0 +1,28 @@
+{
+  "id": "SMD",
+  "name": {
+    "en-SG": "Samudera",
+    "zh-Hans": "山姆",
+    "ms": null,
+    "ta": "சமுத்திரா"
+  },
+  "geo": {
+    "latitude": 1.4011,
+    "longitude": 103.9034
+  },
+  "stationCodes": [
+    {
+      "lineId": "PGLRT",
+      "code": "PW4",
+      "startedAt": "2017-03-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "punggol-waterway",
+    "punggol-town-hub",
+    "coney-island-park"
+  ],
+  "townId": "punggol"
+}

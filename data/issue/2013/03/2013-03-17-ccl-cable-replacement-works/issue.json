@@ -1,0 +1,13 @@
+{
+  "id": "2013-03-17-ccl-cable-replacement-works",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Cable Replacement Works for Circle Line",
+    "zh-Hans": "环线电缆更换工程",
+    "ms": "Kerja Penggantian Kabel untuk Laluan Lingkar",
+    "ta": "வட்டப் பாதைக்கான கேபிள் மாற்றுப் பணிகள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

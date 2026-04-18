@@ -1,0 +1,26 @@
+{
+  "id": "KTH",
+  "name": {
+    "en-SG": "Keat Hong",
+    "zh-Hans": "吉丰",
+    "ms": null,
+    "ta": "கியட் ஹோங்"
+  },
+  "geo": {
+    "latitude": 1.3931,
+    "longitude": 103.7468
+  },
+  "stationCodes": [
+    {
+      "lineId": "BPLRT",
+      "code": "BP3",
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "keat-hong-shopping-centre"
+  ],
+  "townId": "choa-chu-kang"
+}

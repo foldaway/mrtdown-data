@@ -1,0 +1,13 @@
+{
+  "id": "2025-03-12-tel-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train service disruption on Thomson–East Coast Line",
+    "zh-Hans": "汤申—东海岸线的列车服务中断",
+    "ms": "Gangguan perkhidmatan kereta di Laluan Thomson–East Coast",
+    "ta": "தாம்சன்-கிழக்கு கடற்கரை பாதையில் ரயில் சேவை இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

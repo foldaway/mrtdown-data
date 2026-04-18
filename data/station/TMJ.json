@@ -1,0 +1,27 @@
+{
+  "id": "TMJ",
+  "name": {
+    "en-SG": "Ten Mile Junction",
+    "zh-Hans": "十里广场",
+    "ms": null,
+    "ta": "பத்தாம் கல் சந்திப்பு"
+  },
+  "geo": {
+    "latitude": 1.376,
+    "longitude": 103.768
+  },
+  "stationCodes": [
+    {
+      "lineId": "BPLRT",
+      "code": "BP14",
+      "startedAt": "1999-11-06",
+      "endedAt": "2019-01-13",
+      "structureType": "in_building"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-panjang-plaza",
+    "the-rail-mall"
+  ],
+  "townId": "bukit-panjang"
+}

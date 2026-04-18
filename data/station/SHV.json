@@ -1,0 +1,28 @@
+{
+  "id": "SHV",
+  "name": {
+    "en-SG": "South View",
+    "zh-Hans": "南景",
+    "ms": null,
+    "ta": "சவுத் வியூ"
+  },
+  "geo": {
+    "latitude": 1.3763,
+    "longitude": 103.7689
+  },
+  "stationCodes": [
+    {
+      "lineId": "BPLRT",
+      "code": "BP2",
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-panjang-plaza",
+    "hillion-mall",
+    "zhenghua-nature-park"
+  ],
+  "townId": "bukit-panjang"
+}

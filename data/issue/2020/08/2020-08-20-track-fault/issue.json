@@ -1,0 +1,13 @@
+{
+  "id": "2020-08-20-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Track Fault Causing Delay",
+    "zh-Hans": "追踪导致延误的轨道故障",
+    "ms": "Jejaki Kerosakan Menyebabkan Kelewatan",
+    "ta": "தாமதத்தை ஏற்படுத்தும் தடிக் கோளாறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "HVW",
+  "name": {
+    "en-SG": "Hillview",
+    "zh-Hans": "山景",
+    "ms": null,
+    "ta": "ஹில்வியூ"
+  },
+  "geo": {
+    "latitude": 1.37341,
+    "longitude": 103.76995
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT3",
+      "startedAt": "2015-12-27",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "hillview-park",
+    "greendale-mall",
+    "singapore-quarry"
+  ],
+  "townId": "bukit-panjang"
+}

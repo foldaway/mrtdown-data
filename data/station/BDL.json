@@ -1,0 +1,28 @@
+{
+  "id": "BDL",
+  "name": {
+    "en-SG": "Braddell",
+    "zh-Hans": "布莱德",
+    "ms": null,
+    "ta": "பிரேடல்"
+  },
+  "geo": {
+    "latitude": 1.3402,
+    "longitude": 103.8446
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS18",
+      "startedAt": "1987-11-07",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "macritchie-reservoir",
+    "bishan-ang-mo-kio-park",
+    "bishan-stadium"
+  ],
+  "townId": "toa-payoh"
+}

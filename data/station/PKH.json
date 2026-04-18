@@ -1,0 +1,26 @@
+{
+  "id": "PKH",
+  "name": {
+    "en-SG": "Peng Kang Hill",
+    "zh-Hans": "秉光山",
+    "ms": null,
+    "ta": "பெங் காங் ஹில்"
+  },
+  "geo": {
+    "latitude": 1.3483,
+    "longitude": 103.6828
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JW5",
+      "startedAt": "2029-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "nanyang-technological-university-ntu"
+  ],
+  "townId": "western-water-catchment"
+}

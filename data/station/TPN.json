@@ -1,0 +1,28 @@
+{
+  "id": "TPN",
+  "name": {
+    "en-SG": "Tampines North",
+    "zh-Hans": "淡滨尼北",
+    "ms": null,
+    "ta": "தெம்பினிஸ் நார்த்"
+  },
+  "geo": {
+    "latitude": 1.3572,
+    "longitude": 103.9352
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR6",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "tampines-mall",
+    "century-square",
+    "our-tampines-hub"
+  ],
+  "townId": "tampines"
+}

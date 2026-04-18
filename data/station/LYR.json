@@ -1,0 +1,28 @@
+{
+  "id": "LYR",
+  "name": {
+    "en-SG": "Layar",
+    "zh-Hans": "拉雅",
+    "ms": null,
+    "ta": "லாயார்"
+  },
+  "geo": {
+    "latitude": 1.3776,
+    "longitude": 103.8989
+  },
+  "stationCodes": [
+    {
+      "lineId": "SKLRT",
+      "code": "SW6",
+      "startedAt": "2005-01-29",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "north-vista-secondary-school",
+    "the-rivervale-mall",
+    "sengkang-community-hospital"
+  ],
+  "townId": "sengkang"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "TKL",
+  "name": {
+    "en-SG": "Teck Lee",
+    "zh-Hans": "德利",
+    "ms": null,
+    "ta": "டெக் லீ"
+  },
+  "geo": {
+    "latitude": 1.398751,
+    "longitude": 103.895701
+  },
+  "stationCodes": [
+    {
+      "lineId": "PGLRT",
+      "code": "PW2",
+      "startedAt": "2024-08-15",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "punggol-waterway-park",
+    "waterway-point",
+    "punggol-plaza"
+  ],
+  "townId": "punggol"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "CTH",
+  "name": {
+    "en-SG": "City Hall",
+    "zh-Hans": "政府大厦",
+    "ms": null,
+    "ta": "நகர மண்டபம்"
+  },
+  "geo": {
+    "latitude": 1.2935,
+    "longitude": 103.8519
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW13",
+      "startedAt": "1987-12-12",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "NSL",
+      "code": "NS25",
+      "startedAt": "1987-12-12",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "raffles-city",
+    "national-gallery-singapore",
+    "supreme-court",
+    "st-andrews-cathedral"
+  ],
+  "townId": "downtown-core"
+}

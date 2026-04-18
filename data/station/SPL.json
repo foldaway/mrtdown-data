@@ -1,0 +1,26 @@
+{
+  "id": "SPL",
+  "name": {
+    "en-SG": "Springleaf",
+    "zh-Hans": "春叶",
+    "ms": null,
+    "ta": "ஸ்பிரிங்லீஃவ்"
+  },
+  "geo": {
+    "latitude": 1.4421,
+    "longitude": 103.8186
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE4",
+      "startedAt": "2021-08-28",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "springleaf-garden"
+  ],
+  "townId": "yishun"
+}

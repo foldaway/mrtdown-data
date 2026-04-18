@@ -1,0 +1,28 @@
+{
+  "id": "KRJ",
+  "name": {
+    "en-SG": "Kranji",
+    "zh-Hans": "克兰芝",
+    "ms": null,
+    "ta": "கிராஞ்சி"
+  },
+  "geo": {
+    "latitude": 1.4369,
+    "longitude": 103.7434
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS7",
+      "startedAt": "1996-02-10",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "kranji-farm-resort",
+    "kranji-reservoir-park",
+    "kranji-war-memorial"
+  ],
+  "townId": "sungei-kadut"
+}

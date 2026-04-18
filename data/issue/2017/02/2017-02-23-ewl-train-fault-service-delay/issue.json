@@ -1,0 +1,13 @@
+{
+  "id": "2017-02-23-ewl-train-fault-service-delay",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train service disruption due to fault",
+    "zh-Hans": "列车因故障服务中断",
+    "ms": "Gangguan perkhidmatan kereta api kerana kerosakan",
+    "ta": "தவறு காரணமாக ரயில் சேவை தடைபட்டது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

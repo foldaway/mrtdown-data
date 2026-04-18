@@ -1,0 +1,28 @@
+{
+  "id": "BDS",
+  "name": {
+    "en-SG": "Bedok South",
+    "zh-Hans": "勿洛南",
+    "ms": null,
+    "ta": "பிடோக் சவுத்"
+  },
+  "geo": {
+    "latitude": 1.3205,
+    "longitude": 103.922
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE30",
+      "startedAt": "2024-01-20",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "bedok-mall",
+    "singapore-expo",
+    "east-coast-park"
+  ],
+  "townId": "bedok"
+}

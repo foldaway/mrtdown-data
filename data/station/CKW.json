@@ -1,0 +1,27 @@
+{
+  "id": "CKW",
+  "name": {
+    "en-SG": "Choa Chu Kang West",
+    "zh-Hans": "蔡厝港西",
+    "ms": null,
+    "ta": "சுவா சூ காங் வெஸ்ட்"
+  },
+  "geo": {
+    "latitude": 1.4008,
+    "longitude": 103.7435
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JS2",
+      "startedAt": "2027-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "lot-one-shoppers-mall",
+    "choa-chu-kang-park"
+  ],
+  "townId": "choa-chu-kang"
+}

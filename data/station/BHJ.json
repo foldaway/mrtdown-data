@@ -1,0 +1,28 @@
+{
+  "id": "BHJ",
+  "name": {
+    "en-SG": "Bahar Junction",
+    "zh-Hans": "峇哈路口",
+    "ms": null,
+    "ta": "பஹார் சந்திப்பு"
+  },
+  "geo": {
+    "latitude": 1.3512,
+    "longitude": 103.7199
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JS7",
+      "startedAt": "2027-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "jurong-west-sports-and-recreation-centre",
+    "pioneer-mall",
+    "jurong-point"
+  ],
+  "townId": "jurong-west"
+}

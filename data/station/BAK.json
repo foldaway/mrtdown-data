@@ -1,0 +1,28 @@
+{
+  "id": "BAK",
+  "name": {
+    "en-SG": "Bakau",
+    "zh-Hans": "码高",
+    "ms": null,
+    "ta": "பக்காவ்"
+  },
+  "geo": {
+    "latitude": 1.3981,
+    "longitude": 103.8952
+  },
+  "stationCodes": [
+    {
+      "lineId": "SKLRT",
+      "code": "SE3",
+      "startedAt": "2003-01-18",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "anchorvale-community-club",
+    "sengkang-sports-complex",
+    "sengkang-grand-mall"
+  ],
+  "townId": "sengkang"
+}

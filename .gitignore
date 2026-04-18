@@ -147,3 +147,5 @@ dist
 
 # Sentry Config File
 .sentryclirc
+
+migrated-legacy-ids.json

@@ -1,0 +1,28 @@
+{
+  "id": "BBS",
+  "name": {
+    "en-SG": "Bras Basah",
+    "zh-Hans": "百胜",
+    "ms": null,
+    "ta": "பிராஸ் பாசா"
+  },
+  "geo": {
+    "latitude": 1.2964,
+    "longitude": 103.8505
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC2",
+      "startedAt": "2010-04-17",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "national-museum-of-singapore",
+    "singapore-art-museum",
+    "st-josephs-church"
+  ],
+  "townId": "museum"
+}

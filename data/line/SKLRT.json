@@ -1,0 +1,36 @@
+{
+  "id": "SKLRT",
+  "name": {
+    "en-SG": "Sengkang LRT",
+    "zh-Hans": "盛港轻轨线",
+    "ms": "Laluan LRT Sengkang",
+    "ta": "செங்காங் லைட் ரெயில் வரி"
+  },
+  "type": "lrt",
+  "color": "#748477",
+  "startedAt": "2003-01-18",
+  "endedAt": null,
+  "operatingHours": {
+    "weekdays": {
+      "start": "05:18",
+      "end": "00:37"
+    },
+    "weekends": {
+      "start": "05:38",
+      "end": "00:35"
+    }
+  },
+  "operators": [
+    {
+      "operatorId": "SBS",
+      "startedAt": "2003-01-18",
+      "endedAt": null
+    }
+  ],
+  "serviceIds": [
+    "SKLRT_E_CW",
+    "SKLRT_E_CCW",
+    "SKLRT_W_CW",
+    "SKLRT_W_CCW"
+  ]
+}

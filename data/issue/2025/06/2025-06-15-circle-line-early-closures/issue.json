@@ -1,0 +1,13 @@
+{
+  "id": "2025-06-15-circle-line-early-closures",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Circle Line Early Closures from Sundays to Wednesdays",
+    "zh-Hans": "环线周日和周三提前关闭",
+    "ms": "Penutupan Awal Laluan Bulat dari Ahad hingga Rabu",
+    "ta": "வட்டப் பாதையின் ஞாயிறு முதல் புதன் வரை முன்கூட்டியே மூடல்கள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

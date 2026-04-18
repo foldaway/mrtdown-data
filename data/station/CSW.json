@@ -1,0 +1,28 @@
+{
+  "id": "CSW",
+  "name": {
+    "en-SG": "Cashew",
+    "zh-Hans": "凯秀",
+    "ms": null,
+    "ta": "கேஷ்யூ"
+  },
+  "geo": {
+    "latitude": 1.3742,
+    "longitude": 103.7694
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT2",
+      "startedAt": "2015-12-27",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "cmpbns-hub",
+    "the-rail-corridor-bukit-panjang",
+    "zhenghua-nature-park"
+  ],
+  "townId": "bukit-panjang"
+}

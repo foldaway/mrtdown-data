@@ -1,0 +1,13 @@
+{
+  "id": "2017-12-25-nsl-signalling-fault-yew-tee",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signalling Fault at Yew Tee Station",
+    "zh-Hans": "油池站信号故障",
+    "ms": "Rosak Isyarat di Stesen Yew Tee",
+    "ta": "யேவ் டீ நிலையத்தில் சமிக்ஞை தவறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

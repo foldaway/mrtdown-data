@@ -1,0 +1,28 @@
+{
+  "id": "GRB",
+  "name": {
+    "en-SG": "Gardens by the Bay",
+    "zh-Hans": "滨海湾花园",
+    "ms": "Taman di Pesisiran",
+    "ta": "கரையோரப் பூந்தோட்டங்கள்"
+  },
+  "geo": {
+    "latitude": 1.2818,
+    "longitude": 103.8646
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE22",
+      "startedAt": "2022-11-13",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "supertree-grove",
+    "cloud-forest",
+    "flower-dome"
+  ],
+  "townId": "marina-south"
+}

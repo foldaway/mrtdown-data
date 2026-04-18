@@ -1,0 +1,27 @@
+{
+  "id": "TSG",
+  "name": {
+    "en-SG": "Tai Seng",
+    "zh-Hans": "大成",
+    "ms": null,
+    "ta": "தை செங்"
+  },
+  "geo": {
+    "latitude": 1.3351,
+    "longitude": 103.8878
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC11",
+      "startedAt": "2010-04-17",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "breadtalk-ihq",
+    "spc-tai-seng"
+  ],
+  "townId": "toa-payoh"
+}

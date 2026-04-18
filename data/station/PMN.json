@@ -1,0 +1,35 @@
+{
+  "id": "PMN",
+  "name": {
+    "en-SG": "Promenade",
+    "zh-Hans": "宝门廊",
+    "ms": null,
+    "ta": "புரொமனாட்"
+  },
+  "geo": {
+    "latitude": 1.2904,
+    "longitude": 103.8607
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC4",
+      "startedAt": "2010-04-17",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "DTL",
+      "code": "DT15",
+      "startedAt": "2013-12-22",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "marina-bay-sands",
+    "artscience-museum",
+    "singapore-flyer"
+  ],
+  "townId": "downtown-core"
+}

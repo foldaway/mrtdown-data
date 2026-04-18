@@ -1,0 +1,28 @@
+{
+  "id": "ONH",
+  "name": {
+    "en-SG": "one-north",
+    "zh-Hans": "纬壹",
+    "ms": null,
+    "ta": "ஒன்-நார்த்"
+  },
+  "geo": {
+    "latitude": 1.2959,
+    "longitude": 103.7861
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC23",
+      "startedAt": "2011-10-08",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "fusionopolis",
+    "biopolis",
+    "mediapolis"
+  ],
+  "townId": "queenstown"
+}

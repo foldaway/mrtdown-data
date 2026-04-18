@@ -1,0 +1,28 @@
+{
+  "id": "WLH",
+  "name": {
+    "en-SG": "Woodleigh",
+    "zh-Hans": "兀里",
+    "ms": null,
+    "ta": "உட்லீ"
+  },
+  "geo": {
+    "latitude": 1.3397,
+    "longitude": 103.8704
+  },
+  "stationCodes": [
+    {
+      "lineId": "NEL",
+      "code": "NE11",
+      "startedAt": "2011-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "cedar-girls-secondary-school",
+    "woodleigh-mall",
+    "bidadari-park"
+  ],
+  "townId": "toa-payoh"
+}

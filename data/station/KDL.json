@@ -1,0 +1,28 @@
+{
+  "id": "KDL",
+  "name": {
+    "en-SG": "Kadaloor",
+    "zh-Hans": "卡达鲁",
+    "ms": null,
+    "ta": "கடலூர்"
+  },
+  "geo": {
+    "latitude": 1.4035,
+    "longitude": 103.9064
+  },
+  "stationCodes": [
+    {
+      "lineId": "PGLRT",
+      "code": "PE5",
+      "startedAt": "2005-01-29",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "waterway-point",
+    "punggol-waterway-park",
+    "punggol-town-hub"
+  ],
+  "townId": "punggol"
+}

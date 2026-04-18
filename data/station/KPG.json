@@ -1,0 +1,28 @@
+{
+  "id": "KPG",
+  "name": {
+    "en-SG": "Kupang",
+    "zh-Hans": "古邦",
+    "ms": null,
+    "ta": "கூப்பாங்"
+  },
+  "geo": {
+    "latitude": 1.3962,
+    "longitude": 103.8896
+  },
+  "stationCodes": [
+    {
+      "lineId": "SKLRT",
+      "code": "SW3",
+      "startedAt": "2015-06-27",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "anchorvale-community-club",
+    "sengkang-general-hospital",
+    "sengkang-sports-centre"
+  ],
+  "townId": "sengkang"
+}

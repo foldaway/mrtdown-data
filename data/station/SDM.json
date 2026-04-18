@@ -1,0 +1,28 @@
+{
+  "id": "SDM",
+  "name": {
+    "en-SG": "Stadium",
+    "zh-Hans": "体育场",
+    "ms": null,
+    "ta": "ஸ்டேடியம்"
+  },
+  "geo": {
+    "latitude": 1.3024,
+    "longitude": 103.8711
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC6",
+      "startedAt": "2010-04-17",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-sports-hub",
+    "national-stadium",
+    "kallang-wave-mall"
+  ],
+  "townId": "kallang"
+}

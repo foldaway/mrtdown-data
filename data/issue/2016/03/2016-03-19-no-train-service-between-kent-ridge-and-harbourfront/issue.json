@@ -1,0 +1,13 @@
+{
+  "id": "2016-03-19-no-train-service-between-kent-ridge-and-harbourfront",
+  "type": "disruption",
+  "title": {
+    "en-SG": "No train service between Kent Ridge and Harbourfront due to signal fault",
+    "zh-Hans": "肯特岗至港湾之间因信号故障暂停列车服务",
+    "ms": "Tiada perkhidmatan kereta api antara Kent Ridge dan Harbourfront kerana kegagalan isyarat",
+    "ta": "கென்ட் ரிட்ஜ் மற்றும் ஹார்பர்ஃப்ரண்ட் இடையே சமிக்ஞை கோளாறு காரணமாக ரயில் சேவை இல்லை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

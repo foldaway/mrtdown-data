@@ -1,0 +1,13 @@
+{
+  "id": "2024-12-07-ewl-track-works",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Tracks works on East-West Line",
+    "zh-Hans": "东西线轨道工程",
+    "ms": "Kerja trek di Laluan Timur-Barat",
+    "ta": "கிழக்கு-மேற்கு பாதையில் தடங்கள் வேலை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

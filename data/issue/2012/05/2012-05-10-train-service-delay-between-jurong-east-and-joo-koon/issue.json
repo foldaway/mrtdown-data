@@ -1,0 +1,13 @@
+{
+  "id": "2012-05-10-train-service-delay-between-jurong-east-and-joo-koon",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train service delay between Jurong East and Joo Koon",
+    "zh-Hans": "裕廊东至裕群之间的列车服务延误",
+    "ms": "Perkhidmatan kereta api tertangguh di antara Jurong East dan Joo Koon",
+    "ta": "ஜூரோங் ஈஸ்ட் மற்றும் ஜூ கூன் இடையே ரயில் சேவை தாமதம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

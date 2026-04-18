@@ -1,0 +1,13 @@
+{
+  "id": "2025-07-01-tel-signal-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service Disruption on Thomson–East Coast Line Due to Signal Fault",
+    "zh-Hans": "因为信号故障的汤姆森-东海岸线服务中断",
+    "ms": "Gangguan Perkhidmatan di Lajur Thomson–East Coast kerana Kerosakan Isyarat",
+    "ta": "சிக்னல் பிளவலால் தாம்சோன்-கிழக்கு கடற்கரை ரயிலில் சேவை இடைஞ்சல்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

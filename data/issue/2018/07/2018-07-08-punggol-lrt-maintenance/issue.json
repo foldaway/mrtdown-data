@@ -1,0 +1,13 @@
+{
+  "id": "2018-07-08-punggol-lrt-maintenance",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Maintenance work on Punggol LRT system",
+    "zh-Hans": "榜鹅轻轨系统维修工作",
+    "ms": "Kerja penyelenggaraan di sistem LRT Punggol",
+    "ta": "Punggol LRT அமைப்பில் பராமரிப்பு பணிகள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

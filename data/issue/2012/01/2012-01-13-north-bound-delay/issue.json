@@ -1,0 +1,13 @@
+{
+  "id": "2012-01-13-north-bound-delay",
+  "type": "disruption",
+  "title": {
+    "en-SG": "North-bound service delay due to train fault",
+    "zh-Hans": "火车故障导致北行列车延误",
+    "ms": "Perkhidmatan arah utara tertangguh kerana kerosakan kereta api",
+    "ta": "ரயில் கோளாறு காரணமாக வடக்கு திசை சேவை தாமதம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

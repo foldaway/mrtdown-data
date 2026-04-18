@@ -1,0 +1,27 @@
+{
+  "id": "SIM",
+  "name": {
+    "en-SG": "Simei",
+    "zh-Hans": "四美",
+    "ms": null,
+    "ta": "ஸீமெய்"
+  },
+  "geo": {
+    "latitude": 1.3484,
+    "longitude": 103.9343
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW3",
+      "startedAt": "1989-12-16",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-expo",
+    "changi-city-point"
+  ],
+  "townId": "tampines"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "NBG",
+  "name": {
+    "en-SG": "Nibong",
+    "zh-Hans": "尼蒙",
+    "ms": null,
+    "ta": "நிபொங்"
+  },
+  "geo": {
+    "latitude": 1.397245,
+    "longitude": 103.911141
+  },
+  "stationCodes": [
+    {
+      "lineId": "PGLRT",
+      "code": "PW5",
+      "startedAt": "2014-06-29",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "punggol-waterway-park",
+    "waterway-point",
+    "coney-island"
+  ],
+  "townId": "punggol"
+}

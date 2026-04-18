@@ -1,0 +1,28 @@
+{
+  "id": "LYG",
+  "name": {
+    "en-SG": "Loyang",
+    "zh-Hans": "罗央",
+    "ms": null,
+    "ta": "லோயாங்"
+  },
+  "geo": {
+    "latitude": 1.3631,
+    "longitude": 104.0035
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR3",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "changi-beach-park",
+    "loyang-point",
+    "loyang-tua-pek-kong-temple"
+  ],
+  "townId": "pasir-ris"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "CLE",
+  "name": {
+    "en-SG": "Clementi",
+    "zh-Hans": "金文泰",
+    "ms": null,
+    "ta": "கிளிமெண்டி"
+  },
+  "geo": {
+    "latitude": 1.31625,
+    "longitude": 103.77214
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW23",
+      "startedAt": "1988-03-12",
+      "endedAt": null,
+      "structureType": "elevated"
+    },
+    {
+      "lineId": "CRL",
+      "code": "CR17",
+      "startedAt": "2032-01-01",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-polytechnic",
+    "clementi-mall",
+    "clementi-stadium"
+  ],
+  "townId": "clementi"
+}

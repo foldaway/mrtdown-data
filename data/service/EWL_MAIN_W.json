@@ -1,0 +1,433 @@
+{
+    "id": "EWL_MAIN_W",
+    "lineId": "EWL",
+    "name": {
+        "en-SG": "East-West Line (Main Branch) - Westbound",
+        "zh-Hans": "东西地铁线（主干线） - 往西方向",
+        "ms": "Laluan MRT Timur Barat (Cawangan Utama) - Arah Barat",
+        "ta": "கிழக்கு மேற்கு எம்ஆர்டி வழி (முதன்மை கிளை) - மேற்கு திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_legacy_1987_2009",
+            "startAt": "1987-12-12",
+            "endAt": "2010-01-01",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PSR",
+                        "displayCode": "EW1"
+                    },
+                    {
+                        "stationId": "TAM",
+                        "displayCode": "EW2"
+                    },
+                    {
+                        "stationId": "SIM",
+                        "displayCode": "EW3"
+                    },
+                    {
+                        "stationId": "TNM",
+                        "displayCode": "EW4"
+                    },
+                    {
+                        "stationId": "BDK",
+                        "displayCode": "EW5"
+                    },
+                    {
+                        "stationId": "KEM",
+                        "displayCode": "EW6"
+                    },
+                    {
+                        "stationId": "EUN",
+                        "displayCode": "EW7"
+                    },
+                    {
+                        "stationId": "PYL",
+                        "displayCode": "EW8"
+                    },
+                    {
+                        "stationId": "ALJ",
+                        "displayCode": "EW9"
+                    },
+                    {
+                        "stationId": "KAL",
+                        "displayCode": "EW10"
+                    },
+                    {
+                        "stationId": "LVR",
+                        "displayCode": "EW11"
+                    },
+                    {
+                        "stationId": "BGS",
+                        "displayCode": "EW12"
+                    },
+                    {
+                        "stationId": "CTH",
+                        "displayCode": "EW13"
+                    },
+                    {
+                        "stationId": "RFP",
+                        "displayCode": "EW14"
+                    },
+                    {
+                        "stationId": "TPG",
+                        "displayCode": "EW15"
+                    },
+                    {
+                        "stationId": "OTP",
+                        "displayCode": "EW16"
+                    },
+                    {
+                        "stationId": "TIB",
+                        "displayCode": "EW17"
+                    },
+                    {
+                        "stationId": "RDH",
+                        "displayCode": "EW18"
+                    },
+                    {
+                        "stationId": "QUE",
+                        "displayCode": "EW19"
+                    },
+                    {
+                        "stationId": "COM",
+                        "displayCode": "EW20"
+                    },
+                    {
+                        "stationId": "BNV",
+                        "displayCode": "EW21"
+                    },
+                    {
+                        "stationId": "DVR",
+                        "displayCode": "EW22"
+                    },
+                    {
+                        "stationId": "CLE",
+                        "displayCode": "EW23"
+                    },
+                    {
+                        "stationId": "JUR",
+                        "displayCode": "EW24"
+                    },
+                    {
+                        "stationId": "CNG",
+                        "displayCode": "EW25"
+                    },
+                    {
+                        "stationId": "LKS",
+                        "displayCode": "EW26"
+                    },
+                    {
+                        "stationId": "BNL",
+                        "displayCode": "EW27"
+                    },
+                    {
+                        "stationId": "PNR",
+                        "displayCode": "EW28"
+                    },
+                    {
+                        "stationId": "JKN",
+                        "displayCode": "EW29"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:14",
+                    "end": "00:46"
+                },
+                "weekends": {
+                    "start": "05:42",
+                    "end": "00:46"
+                }
+            }
+        },
+        {
+            "id": "r_2010",
+            "startAt": "2010-01-01",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PSR",
+                        "displayCode": "EW1"
+                    },
+                    {
+                        "stationId": "TAM",
+                        "displayCode": "EW2"
+                    },
+                    {
+                        "stationId": "SIM",
+                        "displayCode": "EW3"
+                    },
+                    {
+                        "stationId": "TNM",
+                        "displayCode": "EW4"
+                    },
+                    {
+                        "stationId": "BDK",
+                        "displayCode": "EW5"
+                    },
+                    {
+                        "stationId": "KEM",
+                        "displayCode": "EW6"
+                    },
+                    {
+                        "stationId": "EUN",
+                        "displayCode": "EW7"
+                    },
+                    {
+                        "stationId": "PYL",
+                        "displayCode": "EW8"
+                    },
+                    {
+                        "stationId": "ALJ",
+                        "displayCode": "EW9"
+                    },
+                    {
+                        "stationId": "KAL",
+                        "displayCode": "EW10"
+                    },
+                    {
+                        "stationId": "LVR",
+                        "displayCode": "EW11"
+                    },
+                    {
+                        "stationId": "BGS",
+                        "displayCode": "EW12"
+                    },
+                    {
+                        "stationId": "CTH",
+                        "displayCode": "EW13"
+                    },
+                    {
+                        "stationId": "RFP",
+                        "displayCode": "EW14"
+                    },
+                    {
+                        "stationId": "TPG",
+                        "displayCode": "EW15"
+                    },
+                    {
+                        "stationId": "OTP",
+                        "displayCode": "EW16"
+                    },
+                    {
+                        "stationId": "TIB",
+                        "displayCode": "EW17"
+                    },
+                    {
+                        "stationId": "RDH",
+                        "displayCode": "EW18"
+                    },
+                    {
+                        "stationId": "QUE",
+                        "displayCode": "EW19"
+                    },
+                    {
+                        "stationId": "COM",
+                        "displayCode": "EW20"
+                    },
+                    {
+                        "stationId": "BNV",
+                        "displayCode": "EW21"
+                    },
+                    {
+                        "stationId": "DVR",
+                        "displayCode": "EW22"
+                    },
+                    {
+                        "stationId": "CLE",
+                        "displayCode": "EW23"
+                    },
+                    {
+                        "stationId": "JUR",
+                        "displayCode": "EW24"
+                    },
+                    {
+                        "stationId": "CNG",
+                        "displayCode": "EW25"
+                    },
+                    {
+                        "stationId": "LKS",
+                        "displayCode": "EW26"
+                    },
+                    {
+                        "stationId": "BNL",
+                        "displayCode": "EW27"
+                    },
+                    {
+                        "stationId": "PNR",
+                        "displayCode": "EW28"
+                    },
+                    {
+                        "stationId": "JKN",
+                        "displayCode": "EW29"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:14",
+                    "end": "00:46"
+                },
+                "weekends": {
+                    "start": "05:42",
+                    "end": "00:46"
+                }
+            }
+        },
+        {
+            "id": "r_2017_tuas_west_extension",
+            "startAt": "2017-06-18",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "PSR",
+                        "displayCode": "EW1"
+                    },
+                    {
+                        "stationId": "TAM",
+                        "displayCode": "EW2"
+                    },
+                    {
+                        "stationId": "SIM",
+                        "displayCode": "EW3"
+                    },
+                    {
+                        "stationId": "TNM",
+                        "displayCode": "EW4"
+                    },
+                    {
+                        "stationId": "BDK",
+                        "displayCode": "EW5"
+                    },
+                    {
+                        "stationId": "KEM",
+                        "displayCode": "EW6"
+                    },
+                    {
+                        "stationId": "EUN",
+                        "displayCode": "EW7"
+                    },
+                    {
+                        "stationId": "PYL",
+                        "displayCode": "EW8"
+                    },
+                    {
+                        "stationId": "ALJ",
+                        "displayCode": "EW9"
+                    },
+                    {
+                        "stationId": "KAL",
+                        "displayCode": "EW10"
+                    },
+                    {
+                        "stationId": "LVR",
+                        "displayCode": "EW11"
+                    },
+                    {
+                        "stationId": "BGS",
+                        "displayCode": "EW12"
+                    },
+                    {
+                        "stationId": "CTH",
+                        "displayCode": "EW13"
+                    },
+                    {
+                        "stationId": "RFP",
+                        "displayCode": "EW14"
+                    },
+                    {
+                        "stationId": "TPG",
+                        "displayCode": "EW15"
+                    },
+                    {
+                        "stationId": "OTP",
+                        "displayCode": "EW16"
+                    },
+                    {
+                        "stationId": "TIB",
+                        "displayCode": "EW17"
+                    },
+                    {
+                        "stationId": "RDH",
+                        "displayCode": "EW18"
+                    },
+                    {
+                        "stationId": "QUE",
+                        "displayCode": "EW19"
+                    },
+                    {
+                        "stationId": "COM",
+                        "displayCode": "EW20"
+                    },
+                    {
+                        "stationId": "BNV",
+                        "displayCode": "EW21"
+                    },
+                    {
+                        "stationId": "DVR",
+                        "displayCode": "EW22"
+                    },
+                    {
+                        "stationId": "CLE",
+                        "displayCode": "EW23"
+                    },
+                    {
+                        "stationId": "JUR",
+                        "displayCode": "EW24"
+                    },
+                    {
+                        "stationId": "CNG",
+                        "displayCode": "EW25"
+                    },
+                    {
+                        "stationId": "LKS",
+                        "displayCode": "EW26"
+                    },
+                    {
+                        "stationId": "BNL",
+                        "displayCode": "EW27"
+                    },
+                    {
+                        "stationId": "PNR",
+                        "displayCode": "EW28"
+                    },
+                    {
+                        "stationId": "JKN",
+                        "displayCode": "EW29"
+                    },
+                    {
+                        "stationId": "GCL",
+                        "displayCode": "EW30"
+                    },
+                    {
+                        "stationId": "TCR",
+                        "displayCode": "EW31"
+                    },
+                    {
+                        "stationId": "TWR",
+                        "displayCode": "EW32"
+                    },
+                    {
+                        "stationId": "TLK",
+                        "displayCode": "EW33"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:14",
+                    "end": "00:46"
+                },
+                "weekends": {
+                    "start": "05:42",
+                    "end": "00:46"
+                }
+            }
+        }
+    ]
+}

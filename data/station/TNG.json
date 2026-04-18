@@ -1,0 +1,28 @@
+{
+  "id": "TNG",
+  "name": {
+    "en-SG": "Thanggam",
+    "zh-Hans": "丹甘",
+    "ms": null,
+    "ta": "தங்கம்"
+  },
+  "geo": {
+    "latitude": 1.39561,
+    "longitude": 103.90127
+  },
+  "stationCodes": [
+    {
+      "lineId": "SKLRT",
+      "code": "SW4",
+      "startedAt": "2005-01-29",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "sengkang-general-hospital",
+    "compass-one",
+    "sengkang-sports-complex"
+  ],
+  "townId": "sengkang"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "GCL",
+  "name": {
+    "en-SG": "Gul Circle",
+    "zh-Hans": "卡尔圈",
+    "ms": null,
+    "ta": "கல் சர்க்கல்"
+  },
+  "geo": {
+    "latitude": 1.3501,
+    "longitude": 103.7364
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW30",
+      "startedAt": "2017-06-18",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "tuas-fire-station",
+    "jtc-space-tuas",
+    "mapletree-pioneer-logistic-hub",
+    "gul-circle-industrial-estate",
+    "pioneer-sector-1",
+    "tuas-mega-port"
+  ],
+  "townId": "pioneer"
+}

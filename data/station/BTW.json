@@ -1,0 +1,27 @@
+{
+  "id": "BTW",
+  "name": {
+    "en-SG": "Beauty World",
+    "zh-Hans": "美世界",
+    "ms": null,
+    "ta": "பியூட்டி வோர்ல்ட்"
+  },
+  "geo": {
+    "latitude": 1.3334,
+    "longitude": 103.7697
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT5",
+      "startedAt": "2015-12-27",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-timah-market-food-centre",
+    "bukit-timah-nature-reserve"
+  ],
+  "townId": "bukit-timah"
+}

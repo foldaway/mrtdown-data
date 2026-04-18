@@ -1,0 +1,41 @@
+{
+  "id": "XPO",
+  "name": {
+    "en-SG": "Expo",
+    "zh-Hans": "博览",
+    "ms": null,
+    "ta": "எக்ஸ்போ"
+  },
+  "geo": {
+    "latitude": 1.327042,
+    "longitude": 103.958918
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "CG1",
+      "startedAt": "2001-01-10",
+      "endedAt": null,
+      "structureType": "elevated"
+    },
+    {
+      "lineId": "DTL",
+      "code": "DT35",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "TEL",
+      "code": "TE34",
+      "startedAt": "2035-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-expo",
+    "changi-city-point"
+  ],
+  "townId": "tampines"
+}

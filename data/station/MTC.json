@@ -1,0 +1,28 @@
+{
+  "id": "MTC",
+  "name": {
+    "en-SG": "Marine Terrace",
+    "zh-Hans": "马林台",
+    "ms": null,
+    "ta": "மரீன் டெரஸ்"
+  },
+  "geo": {
+    "latitude": 1.3002,
+    "longitude": 103.9131
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE27",
+      "startedAt": "2024-06-23",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "east-coast-park",
+    "marine-parade-market",
+    "i12-katong"
+  ],
+  "townId": "marine-parade"
+}

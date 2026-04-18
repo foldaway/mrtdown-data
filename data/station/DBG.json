@@ -1,0 +1,43 @@
+{
+  "id": "DBG",
+  "name": {
+    "en-SG": "Dhoby Ghaut",
+    "zh-Hans": "多美歌",
+    "ms": null,
+    "ta": "டோபி காட்"
+  },
+  "geo": {
+    "latitude": 1.300419,
+    "longitude": 103.849283
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS24",
+      "startedAt": "1987-12-12",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "NEL",
+      "code": "NE6",
+      "startedAt": "2003-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "CCL",
+      "code": "CC1",
+      "startedAt": "2010-04-17",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "dhoby-ghaut-green",
+    "the-cathay",
+    "fort-canning-park",
+    "plaza-singapura"
+  ],
+  "townId": "museum"
+}

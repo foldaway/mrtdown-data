@@ -1,0 +1,13 @@
+{
+  "id": "2026-08-01-mrt-platform-screen-doors-renewal",
+  "type": "infra",
+  "title": {
+    "en-SG": "MRT Platform Screen Doors at Underground Stations to Undergo Renewal",
+    "zh-Hans": "地铁站台屏幕门将进行更新",
+    "ms": "Pintu Skrin Platform MRT di Stesen Bawah Tanah Akan Dipulihkan",
+    "ta": "மெட்ரோ திடல் ஏற்படுத்தப்படும்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "NEW",
+  "name": {
+    "en-SG": "Newton",
+    "zh-Hans": "纽顿",
+    "ms": null,
+    "ta": "நியூட்டன்"
+  },
+  "geo": {
+    "latitude": 1.31229,
+    "longitude": 103.84396
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS21",
+      "startedAt": "1987-12-12",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "DTL",
+      "code": "DT11",
+      "startedAt": "2015-12-27",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "newton-food-centre",
+    "united-square-shopping-mall",
+    "velocitynovena-square"
+  ],
+  "townId": "newton"
+}

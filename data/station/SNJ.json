@@ -1,0 +1,27 @@
+{
+  "id": "SNJ",
+  "name": {
+    "en-SG": "Senja",
+    "zh-Hans": "信佳",
+    "ms": null,
+    "ta": "சென்ஜா"
+  },
+  "geo": {
+    "latitude": 1.386248,
+    "longitude": 103.768456
+  },
+  "stationCodes": [
+    {
+      "lineId": "BPLRT",
+      "code": "BP13",
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-panjang-plaza",
+    "senja-cashew-community-club"
+  ],
+  "townId": "bukit-panjang"
+}

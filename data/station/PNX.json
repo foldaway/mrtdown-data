@@ -1,0 +1,26 @@
+{
+  "id": "PNX",
+  "name": {
+    "en-SG": "Phoenix",
+    "zh-Hans": "凤凰",
+    "ms": null,
+    "ta": "ஃபீனிக்ஸ்"
+  },
+  "geo": {
+    "latitude": 1.3775,
+    "longitude": 103.7581
+  },
+  "stationCodes": [
+    {
+      "lineId": "BPLRT",
+      "code": "BP5",
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "phoenix-heights"
+  ],
+  "townId": "choa-chu-kang"
+}

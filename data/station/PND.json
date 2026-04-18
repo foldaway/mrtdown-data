@@ -1,0 +1,27 @@
+{
+  "id": "PND",
+  "name": {
+    "en-SG": "Pending",
+    "zh-Hans": "秉定",
+    "ms": null,
+    "ta": "பெண்டிங்"
+  },
+  "geo": {
+    "latitude": 1.3766,
+    "longitude": 103.7726
+  },
+  "stationCodes": [
+    {
+      "lineId": "BPLRT",
+      "code": "BP8",
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-panjang-plaza",
+    "hillion-mall"
+  ],
+  "townId": "bukit-panjang"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "BTN",
+  "name": {
+    "en-SG": "Botanic Gardens",
+    "zh-Hans": "植物园",
+    "ms": "Kebun Bunga",
+    "ta": "பூ மலை"
+  },
+  "geo": {
+    "latitude": 1.3139,
+    "longitude": 103.8142
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC19",
+      "startedAt": "2011-10-08",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "DTL",
+      "code": "DT9",
+      "startedAt": "2015-12-27",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-botanic-gardens",
+    "national-orchid-garden",
+    "jacob-ballas-childrens-garden"
+  ],
+  "townId": "tanglin"
+}

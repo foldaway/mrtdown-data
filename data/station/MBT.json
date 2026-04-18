@@ -1,0 +1,28 @@
+{
+  "id": "MBT",
+  "name": {
+    "en-SG": "Mountbatten",
+    "zh-Hans": "蒙巴登",
+    "ms": null,
+    "ta": "மவுண்ட்பேட்டன்"
+  },
+  "geo": {
+    "latitude": 1.303847,
+    "longitude": 103.885287
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC7",
+      "startedAt": "2010-04-17",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "katong-park",
+    "mountbatten-community-club",
+    "parkway-parade"
+  ],
+  "townId": "geylang"
+}

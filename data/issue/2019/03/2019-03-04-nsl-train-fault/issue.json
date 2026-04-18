@@ -1,0 +1,13 @@
+{
+  "id": "2019-03-04-nsl-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption on North-South Line due to train fault",
+    "zh-Hans": "火车故障导致南北线服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Utara-Selatan disebabkan oleh kerosakan kereta api",
+    "ta": "தொடர்வண்டி கோளாறு காரணமாக வடக்கு-தெற்கு பாதையில் சேவை தடை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

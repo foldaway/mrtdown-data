@@ -1,0 +1,26 @@
+{
+  "id": "SAV",
+  "name": {
+    "en-SG": "Sixth Avenue",
+    "zh-Hans": "第六道",
+    "ms": null,
+    "ta": "சிக்ஸ்த் அவென்யூ"
+  },
+  "geo": {
+    "latitude": 1.3363,
+    "longitude": 103.7865
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT7",
+      "startedAt": "2015-12-27",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "nanyang-girls-high-school"
+  ],
+  "townId": "bukit-timah"
+}

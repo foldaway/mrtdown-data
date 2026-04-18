@@ -1,0 +1,28 @@
+{
+  "id": "EPN",
+  "name": {
+    "en-SG": "Esplanade",
+    "zh-Hans": "滨海中心",
+    "ms": null,
+    "ta": "எஸ்பிளனேட்"
+  },
+  "geo": {
+    "latitude": 1.2913,
+    "longitude": 103.8558
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC3",
+      "startedAt": "2010-04-17",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "esplanade-theatres-on-the-bay",
+    "marina-bay-sands",
+    "merlion-park"
+  ],
+  "townId": "downtown-core"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2015-10-09-ewl-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption due to train fault on East West Line",
+    "zh-Hans": "东格兰东线列车故障导致服务中断",
+    "ms": "Gangguan perkhidmatan kerana kerosakan kereta api di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் ரயில் பழுது காரணமாக சேவை இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

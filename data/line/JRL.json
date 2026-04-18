@@ -1,0 +1,35 @@
+{
+  "id": "JRL",
+  "name": {
+    "en-SG": "Jurong Region Line",
+    "zh-Hans": "裕廊区域线",
+    "ms": "Laluan Daerah Jurong",
+    "ta": "ஜூரோங் வட்டாரப் பாதை"
+  },
+  "type": "mrt.medium",
+  "color": "#0099aa",
+  "startedAt": "2027-12-31",
+  "endedAt": null,
+  "operatingHours": {
+    "weekdays": {
+      "start": "05:30",
+      "end": "00:00"
+    },
+    "weekends": {
+      "start": "05:30",
+      "end": "00:00"
+    }
+  },
+  "operators": [
+    {
+      "operatorId": "SOR",
+      "startedAt": null,
+      "endedAt": null
+    }
+  ],
+  "serviceIds": [
+    "JRL_WEST",
+    "JRL_EAST_N",
+    "JRL_EAST_S"
+  ]
+}

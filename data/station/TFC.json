@@ -1,0 +1,28 @@
+{
+  "id": "TFC",
+  "name": {
+    "en-SG": "Turf City",
+    "zh-Hans": "马城",
+    "ms": null,
+    "ta": "டர்ஃப் சிட்­டி­யில்"
+  },
+  "geo": {
+    "latitude": 1.3691,
+    "longitude": 103.7739
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR14",
+      "startedAt": "2032-01-01",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-turf-club",
+    "the-grandstand",
+    "dairy-farm-nature-park"
+  ],
+  "townId": "bukit-timah"
+}

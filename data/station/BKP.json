@@ -1,0 +1,34 @@
+{
+  "id": "BKP",
+  "name": {
+    "en-SG": "Bukit Panjang",
+    "zh-Hans": "武吉班让",
+    "ms": null,
+    "ta": "புக்கிட் பாஞ்சாங்"
+  },
+  "geo": {
+    "latitude": 1.3776,
+    "longitude": 103.7617
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT1",
+      "startedAt": "2015-12-27",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "BPLRT",
+      "code": "BP6",
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-panjang-plaza",
+    "lot-one-shoppers-mall"
+  ],
+  "townId": "bukit-panjang"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "TKK",
+  "name": {
+    "en-SG": "Tan Kah Kee",
+    "zh-Hans": "陈嘉庚",
+    "ms": null,
+    "ta": "டான் கா கீ"
+  },
+  "geo": {
+    "latitude": 1.3301,
+    "longitude": 103.7866
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT8",
+      "startedAt": "2015-12-27",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "national-junior-college",
+    "hwa-chong-institution",
+    "singapore-chinese-girls-school"
+  ],
+  "townId": "bukit-timah"
+}

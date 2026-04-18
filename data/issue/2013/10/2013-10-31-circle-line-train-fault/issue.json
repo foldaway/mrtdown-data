@@ -1,0 +1,13 @@
+{
+  "id": "2013-10-31-circle-line-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train Fault on Circle Line",
+    "zh-Hans": "环线上列车故障",
+    "ms": "Kerosakan Kereta Api di Laluan Lingkaran",
+    "ta": "வட்டப் பாதையில் ரயில் பழுது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

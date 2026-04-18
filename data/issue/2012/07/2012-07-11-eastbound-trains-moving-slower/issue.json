@@ -1,0 +1,13 @@
+{
+  "id": "2012-07-11-eastbound-trains-moving-slower",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Eastbound trains from Tanjong Pagar to City Hall moving slower",
+    "zh-Hans": "从丹戎巴葛到市政府的东行列车速度较慢",
+    "ms": "Kereta api arah timur dari Tanjong Pagar ke City Hall bergerak lebih perlahan",
+    "ta": "Tanjong Pagar முதல் City Hall வரையிலான கிழக்கு நோக்கிய ரயில்கள் மெதுவாக நகர்கின்றன"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

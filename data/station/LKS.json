@@ -1,0 +1,28 @@
+{
+  "id": "LKS",
+  "name": {
+    "en-SG": "Lakeside",
+    "zh-Hans": "湖畔",
+    "ms": null,
+    "ta": "ஏரிக்கரை"
+  },
+  "geo": {
+    "latitude": 1.349119,
+    "longitude": 103.728223
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW26",
+      "startedAt": "1988-11-05",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "jurong-lake-gardens",
+    "chinese-garden",
+    "japanese-garden"
+  ],
+  "townId": "jurong-west"
+}

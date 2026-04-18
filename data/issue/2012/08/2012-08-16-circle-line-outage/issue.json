@@ -1,0 +1,13 @@
+{
+  "id": "2012-08-16-circle-line-outage",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption on Circle Line",
+    "zh-Hans": "环线服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Bulatan",
+    "ta": "வட்டப் பாதையில் சேவை இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

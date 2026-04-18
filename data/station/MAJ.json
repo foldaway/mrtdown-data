@@ -1,0 +1,27 @@
+{
+  "id": "MAJ",
+  "name": {
+    "en-SG": "Maju",
+    "zh-Hans": "马裕",
+    "ms": null,
+    "ta": "மாஜு்"
+  },
+  "geo": {
+    "latitude": 1.3312,
+    "longitude": 103.7854
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR16",
+      "startedAt": "2032-01-01",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "maju-camp",
+    "insead-asia-campus"
+  ],
+  "townId": "bukit-timah"
+}
