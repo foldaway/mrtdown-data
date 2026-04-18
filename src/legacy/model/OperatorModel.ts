@@ -2,7 +2,10 @@ import { join } from 'node:path';
 import { readdirSync, readFileSync } from 'node:fs';
 import type { Operator } from '../schema/Operator.js';
 
-const dirPathOperator = join(import.meta.dirname, '../../data/source/operator');
+const dirPathOperator = join(
+  import.meta.dirname,
+  '../../../legacy/data/operator',
+);
 
 export const OperatorModel = {
   getAll(): Operator[] {
