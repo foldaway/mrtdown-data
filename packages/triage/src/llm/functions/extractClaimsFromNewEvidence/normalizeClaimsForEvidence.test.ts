@@ -214,4 +214,114 @@ describe('normalizeClaimsForEvidence', () => {
       }),
     ).toEqual(claims.slice(0, 2));
   });
+
+  test('synthesizes planned whole-line closure claims from context-resolved evidence', () => {
+    const evidenceText =
+      'Bukit Panjang LRT line will be closed on Aug 31 and Sep 21 for the works, and shuttle buses will be provided at the usual fares.';
+    const evidenceTs = '2025-07-30T19:03:02+08:00';
+
+    const repo = {
+      lines: {
+        list() {
+          return [
+            {
+              id: 'BPLRT',
+              name: { 'en-SG': 'Bukit Panjang LRT' },
+            },
+          ];
+        },
+      },
+      services: {
+        searchByLineId(lineId: string) {
+          if (lineId !== 'BPLRT') {
+            return [];
+          }
+
+          return [
+            {
+              id: 'BPLRT_A',
+              lineId: 'BPLRT',
+              name: { 'en-SG': 'Bukit Panjang LRT - Service A' },
+              revisions: [{ startAt: '1999-11-06', endAt: null }],
+            },
+            {
+              id: 'BPLRT_B',
+              lineId: 'BPLRT',
+              name: { 'en-SG': 'Bukit Panjang LRT - Service B' },
+              revisions: [{ startAt: '1999-11-06', endAt: null }],
+            },
+            {
+              id: 'BPLRT_C',
+              lineId: 'BPLRT',
+              name: { 'en-SG': 'Bukit Panjang LRT - Service C' },
+              revisions: [{ startAt: '1999-11-06', endAt: '2019-01-13' }],
+            },
+          ];
+        },
+      },
+      stations: {
+        list() {
+          return [];
+        },
+      },
+    } as unknown as MRTDownRepository;
+
+    expect(
+      normalizeClaimsForEvidence({
+        claims: [],
+        evidenceText,
+        evidenceTs,
+        repo,
+      }),
+    ).toEqual([
+      {
+        entity: { type: 'service', serviceId: 'BPLRT_A' },
+        effect: { service: { kind: 'no-service' }, facility: null },
+        scopes: { service: [{ type: 'service.whole' }] },
+        statusSignal: 'planned',
+        timeHints: {
+          kind: 'fixed',
+          startAt: '2025-08-31T00:00:00+08:00',
+          endAt: '2025-09-01T00:00:00+08:00',
+        },
+        causes: ['system.upgrade'],
+      },
+      {
+        entity: { type: 'service', serviceId: 'BPLRT_A' },
+        effect: { service: { kind: 'no-service' }, facility: null },
+        scopes: { service: [{ type: 'service.whole' }] },
+        statusSignal: 'planned',
+        timeHints: {
+          kind: 'fixed',
+          startAt: '2025-09-21T00:00:00+08:00',
+          endAt: '2025-09-22T00:00:00+08:00',
+        },
+        causes: ['system.upgrade'],
+      },
+      {
+        entity: { type: 'service', serviceId: 'BPLRT_B' },
+        effect: { service: { kind: 'no-service' }, facility: null },
+        scopes: { service: [{ type: 'service.whole' }] },
+        statusSignal: 'planned',
+        timeHints: {
+          kind: 'fixed',
+          startAt: '2025-08-31T00:00:00+08:00',
+          endAt: '2025-09-01T00:00:00+08:00',
+        },
+        causes: ['system.upgrade'],
+      },
+      {
+        entity: { type: 'service', serviceId: 'BPLRT_B' },
+        effect: { service: { kind: 'no-service' }, facility: null },
+        scopes: { service: [{ type: 'service.whole' }] },
+        statusSignal: 'planned',
+        timeHints: {
+          kind: 'fixed',
+          startAt: '2025-09-21T00:00:00+08:00',
+          endAt: '2025-09-22T00:00:00+08:00',
+        },
+        causes: ['system.upgrade'],
+      },
+    ]);
+  });
 });

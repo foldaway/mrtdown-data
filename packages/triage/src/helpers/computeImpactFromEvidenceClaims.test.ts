@@ -151,7 +151,7 @@ describe('computeImpactFromEvidenceClaims', () => {
     ]);
   });
 
-  test('deduplicates claims by affected entity and keeps the last claim', () => {
+  test('applies multiple claims for the same entity and keeps the last non-period attributes', () => {
     const firstClaim = createServiceClaim({
       effect: {
         service: { kind: 'delay', duration: null },
@@ -190,6 +190,114 @@ describe('computeImpactFromEvidenceClaims', () => {
     expect(result.newImpactEvents[1]).toMatchObject({
       type: 'periods.set',
     });
+  });
+
+  test('retains disjoint fixed periods from multiple claims for the same entity', () => {
+    const claimA = createServiceClaim({
+      effect: {
+        service: { kind: 'no-service' },
+        facility: null,
+      },
+      scopes: {
+        service: [{ type: 'service.whole' }],
+      },
+      statusSignal: 'planned',
+      timeHints: {
+        kind: 'fixed',
+        startAt: '2025-08-31T00:00:00+08:00',
+        endAt: '2025-09-01T00:00:00+08:00',
+      },
+      causes: ['system.upgrade'],
+    });
+    const claimB = createServiceClaim({
+      effect: {
+        service: { kind: 'no-service' },
+        facility: null,
+      },
+      scopes: {
+        service: [{ type: 'service.whole' }],
+      },
+      statusSignal: 'planned',
+      timeHints: {
+        kind: 'fixed',
+        startAt: '2025-09-21T00:00:00+08:00',
+        endAt: '2025-09-22T00:00:00+08:00',
+      },
+      causes: ['system.upgrade'],
+    });
+    const evidenceId = '2025-07-30T19:03:02+08:00';
+
+    const result = computeImpactFromEvidenceClaims({
+      issueBundle: createMockBundle([]),
+      evidenceId,
+      evidenceTs: evidenceId,
+      claims: [claimA, claimB],
+    });
+
+    const serviceKey = keyForAffectedEntity(claimA.entity);
+
+    expect(result.newState.services[serviceKey]).toEqual({
+      effect: { kind: 'no-service' },
+      scopes: [{ type: 'service.whole' }],
+      periods: [
+        {
+          kind: 'fixed',
+          startAt: '2025-08-31T00:00:00+08:00',
+          endAt: '2025-09-01T00:00:00+08:00',
+        },
+        {
+          kind: 'fixed',
+          startAt: '2025-09-21T00:00:00+08:00',
+          endAt: '2025-09-22T00:00:00+08:00',
+        },
+      ],
+      causes: ['system.upgrade'],
+    });
+    expect(result.newImpactEvents).toEqual([
+      {
+        id: 'ie_test_001',
+        type: 'service_effects.set',
+        ts: evidenceId,
+        basis: { evidenceId },
+        entity: claimA.entity,
+        effect: { kind: 'no-service' },
+      },
+      {
+        id: 'ie_test_002',
+        type: 'periods.set',
+        ts: evidenceId,
+        basis: { evidenceId },
+        entity: claimA.entity,
+        periods: [
+          {
+            kind: 'fixed',
+            startAt: '2025-08-31T00:00:00+08:00',
+            endAt: '2025-09-01T00:00:00+08:00',
+          },
+          {
+            kind: 'fixed',
+            startAt: '2025-09-21T00:00:00+08:00',
+            endAt: '2025-09-22T00:00:00+08:00',
+          },
+        ],
+      },
+      {
+        id: 'ie_test_003',
+        type: 'service_scopes.set',
+        ts: evidenceId,
+        basis: { evidenceId },
+        entity: claimA.entity,
+        serviceScopes: [{ type: 'service.whole' }],
+      },
+      {
+        id: 'ie_test_004',
+        type: 'causes.set',
+        ts: evidenceId,
+        basis: { evidenceId },
+        entity: claimA.entity,
+        causes: ['system.upgrade'],
+      },
+    ]);
   });
 
   test('creates service scopes state, provenance, and event', () => {
