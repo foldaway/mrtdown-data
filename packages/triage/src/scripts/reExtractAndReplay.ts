@@ -34,6 +34,7 @@ import { deriveCurrentState, type IssueBundleState } from '../helpers/deriveCurr
 import { keyForAffectedEntity } from '../helpers/keyForAffectedEntity.js';
 import { reconstructClaimsFromImpactEvents } from '../helpers/reconstructClaimsFromImpactEvents.js';
 import { extractClaimsFromNewEvidence } from '../llm/functions/extractClaimsFromNewEvidence/index.js';
+import { normalizeClaimsForEvidence } from '../llm/functions/extractClaimsFromNewEvidence/normalizeClaimsForEvidence.js';
 import {
   collectReExtractTargets,
   parseReExtractArgs,
@@ -186,11 +187,19 @@ for (const [issueId, evidenceIds] of reExtractTargets) {
       const raw = freshClaims.get(ev.id) ?? [];
       claims = adaptClaimsToState(raw, currentState);
     } else {
-      // Fall back to reconstruction from original impact events
+      // Fall back to reconstruction from original impact events, then apply
+      // the same normalization used during live ingestion so that fixes
+      // (e.g. station-mention filtering) apply to historical data.
       const originalEvents = impactByEvidenceId.get(ev.id) ?? [];
       if (originalEvents.length === 0) continue;
 
-      claims = reconstructClaimsFromImpactEvents(originalEvents, currentState);
+      const reconstructed = reconstructClaimsFromImpactEvents(originalEvents, currentState);
+      claims = normalizeClaimsForEvidence({
+        claims: reconstructed,
+        evidenceText: ev.text,
+        evidenceTs: ev.ts,
+        repo,
+      });
     }
 
     if (claims.length === 0) continue;
