@@ -34,7 +34,7 @@ export type IngestContent =
 export type Tool<TParams = any> = {
   name: string;
   description: string;
-  paramSchema: z.ZodSchema<TParams>;
+  paramSchema: z.ZodType<TParams>;
   runner: (param: TParams) => Promise<string>;
 };
 
