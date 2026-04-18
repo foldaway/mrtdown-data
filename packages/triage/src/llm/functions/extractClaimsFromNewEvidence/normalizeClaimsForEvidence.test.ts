@@ -1,4 +1,5 @@
 import type { Claim } from '@mrtdown/core';
+import type { MRTDownRepository } from '@mrtdown/fs';
 import { describe, expect, test } from 'vitest';
 import { normalizeClaimsForEvidence } from './normalizeClaimsForEvidence.js';
 
@@ -99,5 +100,118 @@ describe('normalizeClaimsForEvidence', () => {
         evidenceTs,
       }),
     ).toEqual(claims);
+  });
+
+  test('drops branch services when evidence station mentions only match the main branch', () => {
+    const evidenceText =
+      '[EWL] UPDATE: Passengers travelling towards the city centre, use NSL at Jurong East, Woodlands, Bishan and TEL at Caldecott.';
+    const evidenceTs = '2024-09-25T16:11:05+08:00';
+    const claims: Claim[] = [
+      {
+        entity: { type: 'service', serviceId: 'EWL_MAIN_E' },
+        effect: { service: { kind: 'reduced-service' }, facility: null },
+        scopes: { service: [{ type: 'service.whole' }] },
+        statusSignal: 'open',
+        timeHints: { kind: 'start-only', startAt: evidenceTs },
+        causes: ['power.fault'],
+      },
+      {
+        entity: { type: 'service', serviceId: 'EWL_MAIN_W' },
+        effect: { service: { kind: 'reduced-service' }, facility: null },
+        scopes: { service: [{ type: 'service.whole' }] },
+        statusSignal: 'open',
+        timeHints: { kind: 'start-only', startAt: evidenceTs },
+        causes: ['power.fault'],
+      },
+      {
+        entity: { type: 'service', serviceId: 'EWL_CG_E' },
+        effect: { service: { kind: 'reduced-service' }, facility: null },
+        scopes: { service: [{ type: 'service.whole' }] },
+        statusSignal: 'open',
+        timeHints: { kind: 'start-only', startAt: evidenceTs },
+        causes: ['power.fault'],
+      },
+      {
+        entity: { type: 'service', serviceId: 'EWL_CG_W' },
+        effect: { service: { kind: 'reduced-service' }, facility: null },
+        scopes: { service: [{ type: 'service.whole' }] },
+        statusSignal: 'open',
+        timeHints: { kind: 'start-only', startAt: evidenceTs },
+        causes: ['power.fault'],
+      },
+    ];
+
+    const repo = {
+      services: {
+        get(serviceId: string) {
+          const stationsByServiceId: Record<string, string[]> = {
+            EWL_MAIN_E: ['BNL', 'JUR', 'WDL', 'BSH', 'QUE'],
+            EWL_MAIN_W: ['QUE', 'BSH', 'WDL', 'JUR', 'BNL'],
+            EWL_CG_E: ['TNM', 'XPO', 'CGA'],
+            EWL_CG_W: ['CGA', 'XPO', 'TNM'],
+          };
+          const stationIds = stationsByServiceId[serviceId];
+          return stationIds == null
+            ? null
+            : {
+                id: serviceId,
+                lineId: 'EWL',
+                name: { 'en-SG': serviceId },
+                revisions: [
+                  {
+                    id: 'r1',
+                    startAt: '2010-01-01',
+                    endAt: null,
+                    path: {
+                      stations: stationIds.map((stationId) => ({
+                        stationId,
+                        displayCode: stationId,
+                      })),
+                    },
+                    operatingHours: {
+                      weekdays: { start: '05:00', end: '00:00' },
+                      weekends: { start: '05:00', end: '00:00' },
+                    },
+                  },
+                ],
+              };
+        },
+      },
+      stations: {
+        list() {
+          return [
+            {
+              id: 'JUR',
+              name: { 'en-SG': 'Jurong East' },
+              stationCodes: [],
+            },
+            {
+              id: 'WDL',
+              name: { 'en-SG': 'Woodlands' },
+              stationCodes: [],
+            },
+            {
+              id: 'BSH',
+              name: { 'en-SG': 'Bishan' },
+              stationCodes: [],
+            },
+            {
+              id: 'CDT',
+              name: { 'en-SG': 'Caldecott' },
+              stationCodes: [],
+            },
+          ];
+        },
+      },
+    } as unknown as MRTDownRepository;
+
+    expect(
+      normalizeClaimsForEvidence({
+        claims,
+        evidenceText,
+        evidenceTs,
+        repo,
+      }),
+    ).toEqual(claims.slice(0, 2));
   });
 });

@@ -266,7 +266,7 @@ function reconcilePeriodsWithTimeHints(
 ): ReconcilePeriodsWithTimeHintsResults {
   switch (timeHints.kind) {
     case 'fixed': {
-      const newPeriods = [timeHints];
+      const newPeriods = mergeFixedPeriods(currentPeriods, timeHints);
       return {
         newPeriods,
         hasChanged: !isEqual(newPeriods, currentPeriods),
@@ -354,6 +354,43 @@ function reconcilePeriodsWithTimeHints(
       };
     }
   }
+}
+
+function mergeFixedPeriods(
+  currentPeriods: Period[],
+  nextPeriod: Extract<ClaimTimeHints, { kind: 'fixed' }>,
+): Period[] {
+  if (
+    currentPeriods.length !== 1 ||
+    currentPeriods[0]?.kind !== 'fixed' ||
+    currentPeriods[0].endAt != null &&
+      currentPeriods[0].endAt < nextPeriod.startAt
+  ) {
+    return [nextPeriod];
+  }
+
+  const currentPeriod = currentPeriods[0];
+  const endAt = mergeFixedEndAt(currentPeriod.endAt, nextPeriod.endAt);
+  return [
+    {
+      kind: 'fixed',
+      startAt:
+        currentPeriod.startAt < nextPeriod.startAt
+          ? currentPeriod.startAt
+          : nextPeriod.startAt,
+      endAt,
+    },
+  ];
+}
+
+function mergeFixedEndAt(
+  currentEndAt: string | null,
+  nextEndAt: string | null,
+): string | null {
+  if (currentEndAt == null || nextEndAt == null) {
+    return currentEndAt ?? nextEndAt;
+  }
+  return currentEndAt > nextEndAt ? currentEndAt : nextEndAt;
 }
 
 function isEqual(a: unknown, b: unknown): boolean {
