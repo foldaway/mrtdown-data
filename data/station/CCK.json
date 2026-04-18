@@ -1,0 +1,42 @@
+{
+  "id": "CCK",
+  "name": {
+    "en-SG": "Choa Chu Kang",
+    "zh-Hans": "蔡厝港",
+    "ms": null,
+    "ta": "சுவா சூ காங்"
+  },
+  "geo": {
+    "latitude": 1.4002,
+    "longitude": 103.7457
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS4",
+      "startedAt": "1990-03-10",
+      "endedAt": null,
+      "structureType": "elevated"
+    },
+    {
+      "lineId": "BPLRT",
+      "code": "BP1",
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    },
+    {
+      "lineId": "JRL",
+      "code": "JS1",
+      "startedAt": "2027-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "lot-one-shoppers-mall",
+    "choa-chu-kang-stadium",
+    "the-rainforest"
+  ],
+  "townId": "choa-chu-kang"
+}

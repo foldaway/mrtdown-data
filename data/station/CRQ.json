@@ -1,0 +1,28 @@
+{
+  "id": "CRQ",
+  "name": {
+    "en-SG": "Clarke Quay",
+    "zh-Hans": "克拉码头",
+    "ms": null,
+    "ta": "கிளார்க் கீ"
+  },
+  "geo": {
+    "latitude": 1.2904,
+    "longitude": 103.8462
+  },
+  "stationCodes": [
+    {
+      "lineId": "NEL",
+      "code": "NE5",
+      "startedAt": "2003-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "clarke-quay-central",
+    "fort-canning-park",
+    "robertson-quay"
+  ],
+  "townId": "singapore-river"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2011-12-26-trains-running-slower-due-to-speed-restrictions",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Trains running slower due to speed restrictions",
+    "zh-Hans": "由于限速，火车运行速度较慢",
+    "ms": "Kereta api berjalan lebih perlahan kerana sekatan kelajuan",
+    "ta": "வேகக் கட்டுப்பாடுகள் காரணமாக ரயில்கள் மெதுவாக இயங்குகின்றன"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

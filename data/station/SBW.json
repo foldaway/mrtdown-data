@@ -1,0 +1,28 @@
+{
+  "id": "SBW",
+  "name": {
+    "en-SG": "Sembawang",
+    "zh-Hans": "三巴旺",
+    "ms": null,
+    "ta": "செம்பாவாங்"
+  },
+  "geo": {
+    "latitude": 1.4405,
+    "longitude": 103.8261
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS11",
+      "startedAt": "1996-02-10",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "sembawang-park",
+    "sembawang-shopping-centre",
+    "nexus-international-school-singapore"
+  ],
+  "townId": "sembawang"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "TPW",
+  "name": {
+    "en-SG": "Tampines West",
+    "zh-Hans": "淡滨尼西",
+    "ms": null,
+    "ta": "தெம்பினிஸ் வெஸ்ட்"
+  },
+  "geo": {
+    "latitude": 1.3517,
+    "longitude": 103.9432
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT31",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "tampines-mall",
+    "century-square",
+    "tampines-1"
+  ],
+  "townId": "tampines"
+}

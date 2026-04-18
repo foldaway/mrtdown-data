@@ -1,0 +1,42 @@
+{
+  "id": "MRB",
+  "name": {
+    "en-SG": "Marina Bay",
+    "zh-Hans": "滨海湾",
+    "ms": null,
+    "ta": "மரீனா பே"
+  },
+  "geo": {
+    "latitude": 1.283,
+    "longitude": 103.859
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS27",
+      "startedAt": "1987-12-12",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "TEL",
+      "code": "TE20",
+      "startedAt": "2022-11-13",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "CCL",
+      "code": "CE2",
+      "startedAt": "2012-01-14",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "marina-bay-sands",
+    "gardens-by-the-bay",
+    "esplanade-theatres-on-the-bay"
+  ],
+  "townId": "marina-bay"
+}

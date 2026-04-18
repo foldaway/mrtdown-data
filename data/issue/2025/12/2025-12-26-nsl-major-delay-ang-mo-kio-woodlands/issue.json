@@ -1,0 +1,13 @@
+{
+  "id": "2025-12-26-nsl-major-delay-ang-mo-kio-woodlands",
+  "type": "disruption",
+  "title": {
+    "en-SG": "NSL Major delay - Ang Mo Kio to Woodlands",
+    "zh-Hans": "NSL 大规模延误 - 宏茂桥 至 兀兰",
+    "ms": "NSL Kelewatan Besar - Ang Mo Kio ke Woodlands",
+    "ta": "NSL பெரிய தாமதம் - Ang Mo Kio முதல் Woodlands வரை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

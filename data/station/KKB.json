@@ -1,0 +1,26 @@
+{
+  "id": "KKB",
+  "name": {
+    "en-SG": "Kaki Bukit",
+    "zh-Hans": "加基武吉",
+    "ms": null,
+    "ta": "காக்கி புக்கிட்"
+  },
+  "geo": {
+    "latitude": 1.3199,
+    "longitude": 103.8928
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT28",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "kaki-bukit-shopping-centre"
+  ],
+  "townId": "bedok"
+}

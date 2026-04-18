@@ -1,0 +1,29 @@
+{
+  "id": "PER",
+  "name": {
+    "en-SG": "Prince Edward Road",
+    "zh-Hans": "爱德华太子路",
+    "ms": null,
+    "ta": "பிரின்ஸ் எட்வர்ட் ரோடு"
+  },
+  "geo": {
+    "latitude": 1.2857,
+    "longitude": 103.8442
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC32",
+      "startedAt": "2026-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "hong-lim-park",
+    "central-business-district",
+    "chinatown",
+    "pearls-hill-city-park"
+  ],
+  "townId": "downtown-core"
+}

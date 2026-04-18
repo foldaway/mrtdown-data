@@ -1,0 +1,13 @@
+{
+  "id": "2026-03-18-nsl-minor-delay-woodlands-yishun",
+  "type": "disruption",
+  "title": {
+    "en-SG": "NSL Minor Delay - Woodlands & Yishun to Marina South Pier",
+    "zh-Hans": "NSL 轻微延误 - 兀兰及义顺往滨海南码头",
+    "ms": "NSL Kelewatan Kecil - Woodlands & Yishun ke Marina South Pier",
+    "ta": "NSL சிறிய தாமதம் - வுட்லன்ஸ் மற்றும் யிஷூன் → மரினா சவுத் பியர்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

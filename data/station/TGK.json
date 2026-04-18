@@ -1,0 +1,28 @@
+{
+  "id": "TGK",
+  "name": {
+    "en-SG": "Tengah Park",
+    "zh-Hans": "登加公园",
+    "ms": null,
+    "ta": "தெங்கா பூங்கா"
+  },
+  "geo": {
+    "latitude": 1.3644,
+    "longitude": 103.6844
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JE2",
+      "startedAt": "2028-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "central-observation-tower",
+    "tengah-pond",
+    "tengah-community-hub"
+  ],
+  "townId": "tengah"
+}

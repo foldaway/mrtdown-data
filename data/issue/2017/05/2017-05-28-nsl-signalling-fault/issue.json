@@ -1,0 +1,13 @@
+{
+  "id": "2017-05-28-nsl-signalling-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signalling Fault in NSL",
+    "zh-Hans": "南北线信号故障",
+    "ms": "Kerosakan Isyarat di NSL",
+    "ta": "NSL இல் சமிக்ஞை தவறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "MFL",
+  "name": {
+    "en-SG": "Mayflower",
+    "zh-Hans": "美华",
+    "ms": null,
+    "ta": "மவுண்ட் பிளசண்ட்்"
+  },
+  "geo": {
+    "latitude": 1.3715,
+    "longitude": 103.8482
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE6",
+      "startedAt": "2021-08-28",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "mayflower-primary-school",
+    "bishan-ang-mo-kio-park"
+  ],
+  "townId": "ang-mo-kio"
+}

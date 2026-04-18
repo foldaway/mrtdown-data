@@ -1,0 +1,74 @@
+{
+    "id": "EWL_CG_E",
+    "lineId": "EWL",
+    "name": {
+        "en-SG": "East-West Line (Changi Airport Branch) - Eastbound",
+        "zh-Hans": "东西地铁线（樟宜机场支线） - 往东方向",
+        "ms": "Laluan MRT Timur Barat (Cawangan Lapangan Terbang Changi) - Arah Timur",
+        "ta": "கிழக்கு மேற்கு எம்ஆர்டி வழி (சாங்கி விமான நிலைய கிளை) - கிழக்கு திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_legacy_2002_2009",
+            "startAt": "2002-02-08",
+            "endAt": "2010-01-01",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "TNM",
+                        "displayCode": "CG"
+                    },
+                    {
+                        "stationId": "XPO",
+                        "displayCode": "CG1"
+                    },
+                    {
+                        "stationId": "CGA",
+                        "displayCode": "CG2"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:14",
+                    "end": "00:46"
+                },
+                "weekends": {
+                    "start": "05:42",
+                    "end": "00:46"
+                }
+            }
+        },
+        {
+            "id": "r_2010",
+            "startAt": "2010-01-01",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "TNM",
+                        "displayCode": "CG"
+                    },
+                    {
+                        "stationId": "XPO",
+                        "displayCode": "CG1"
+                    },
+                    {
+                        "stationId": "CGA",
+                        "displayCode": "CG2"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:14",
+                    "end": "00:46"
+                },
+                "weekends": {
+                    "start": "05:42",
+                    "end": "00:46"
+                }
+            }
+        }
+    ]
+}

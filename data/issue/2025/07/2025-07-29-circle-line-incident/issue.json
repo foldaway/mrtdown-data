@@ -1,0 +1,13 @@
+{
+  "id": "2025-07-29-circle-line-incident",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Reports of a Disruption on the Circle Line",
+    "zh-Hans": "关于环线中断的报告",
+    "ms": "Laporan Mengenai Gangguan di Laluan Lingkaran",
+    "ta": "சர்க்கிள் லைனில் இடையூறு குறித்த அறிக்கைகள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

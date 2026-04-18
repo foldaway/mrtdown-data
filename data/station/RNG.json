@@ -1,0 +1,28 @@
+{
+  "id": "RNG",
+  "name": {
+    "en-SG": "Ranggung",
+    "zh-Hans": "兰岗",
+    "ms": null,
+    "ta": "ரங்கோங்"
+  },
+  "geo": {
+    "latitude": 1.3955,
+    "longitude": 103.8955
+  },
+  "stationCodes": [
+    {
+      "lineId": "SKLRT",
+      "code": "SE5",
+      "startedAt": "2003-01-18",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "compass-one",
+    "sengkang-sports-complex",
+    "sengkang-general-hospital"
+  ],
+  "townId": "sengkang"
+}

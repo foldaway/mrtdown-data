@@ -1,0 +1,27 @@
+{
+  "id": "TLK",
+  "name": {
+    "en-SG": "Tuas Link",
+    "zh-Hans": "大士连路",
+    "ms": null,
+    "ta": "துவாஸ் லிங்க்"
+  },
+  "geo": {
+    "latitude": 1.3404,
+    "longitude": 103.6361
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW33",
+      "startedAt": "2017-06-18",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "raffles-marina",
+    "tuas-checkpoint"
+  ],
+  "townId": "tuas"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "TAM",
+  "name": {
+    "en-SG": "Tampines",
+    "zh-Hans": "淡滨尼",
+    "ms": null,
+    "ta": "தெம்பினிஸ்"
+  },
+  "geo": {
+    "latitude": 1.3541,
+    "longitude": 103.9437
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW2",
+      "startedAt": "1989-12-16",
+      "endedAt": null,
+      "structureType": "elevated"
+    },
+    {
+      "lineId": "DTL",
+      "code": "DT32",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "tampines-mall",
+    "century-square",
+    "tampines-1"
+  ],
+  "townId": "tampines"
+}

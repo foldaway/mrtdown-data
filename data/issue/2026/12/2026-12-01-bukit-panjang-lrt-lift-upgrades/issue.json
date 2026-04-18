@@ -1,0 +1,13 @@
+{
+  "id": "2026-12-01-bukit-panjang-lrt-lift-upgrades",
+  "type": "infra",
+  "title": {
+    "en-SG": "Lift Upgrades at Bukit Panjang LRT stations",
+    "zh-Hans": "武吉班让轻轨站电梯升级工程",
+    "ms": "Peningkatan Lif di stesen LRT Bukit Panjang",
+    "ta": "புக்கிட் பாஞ்சாங் லைட் ரெயில் நிலையங்களில் ஏற்றுமதி лиஃப்ட் மேம்படுத்தல்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

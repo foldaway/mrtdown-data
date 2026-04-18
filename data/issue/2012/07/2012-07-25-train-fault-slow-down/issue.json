@@ -1,0 +1,13 @@
+{
+  "id": "2012-07-25-train-fault-slow-down",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train fault causing delays on southbound line",
+    "zh-Hans": "列车故障导致南行列车延误",
+    "ms": "Kereta api rosak menyebabkan kelewatan di laluan selatan",
+    "ta": "தெற்கு நோக்கிச் செல்லும் பாதையில் ரயில் பழுது காரணமாக தாமதம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

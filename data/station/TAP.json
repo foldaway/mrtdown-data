@@ -1,0 +1,27 @@
+{
+  "id": "TAP",
+  "name": {
+    "en-SG": "Toa Payoh",
+    "zh-Hans": "大巴窑",
+    "ms": null,
+    "ta": "தோ பாயோ"
+  },
+  "geo": {
+    "latitude": 1.3324,
+    "longitude": 103.8484
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS19",
+      "startedAt": "1987-11-07",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "toa-payoh-hub",
+    "hdb-toa-payoh-town-centre"
+  ],
+  "townId": "toa-payoh"
+}

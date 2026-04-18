@@ -1,0 +1,13 @@
+{
+  "id": "2016-08-06-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Track fault results in additional travel time",
+    "zh-Hans": "轨道故障导致行程时间增加",
+    "ms": "Ralat trek mengakibatkan masa perjalanan tambahan",
+    "ta": "தடப் பிழை காரணமாக பயண நேரம் அதிகரித்துள்ளது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

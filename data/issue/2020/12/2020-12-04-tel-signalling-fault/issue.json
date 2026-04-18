@@ -1,0 +1,13 @@
+{
+  "id": "2020-12-04-tel-signalling-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signalling fault causing no train service on TEL",
+    "zh-Hans": "信号故障导致 TEL 线路没有火车服务",
+    "ms": "Kerosakan isyarat menyebabkan tiada perkhidmatan kereta api di TEL",
+    "ta": "TEL இல் ரயில் சேவை இல்லாத சமிக்ஞை தவறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

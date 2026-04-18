@@ -1,0 +1,28 @@
+{
+  "id": "TVK",
+  "name": {
+    "en-SG": "Tavistock",
+    "zh-Hans": "达维士笃",
+    "ms": null,
+    "ta": "தெவிஸ்தொக்"
+  },
+  "geo": {
+    "latitude": 1.3645,
+    "longitude": 103.8659
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR10",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "serangoon-gardens-country-club",
+    "chomp-chomp-food-centre",
+    "myvillage-at-serangoon-garden"
+  ],
+  "townId": "serangoon"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2018-01-02-track-signalling-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Track Signalling Fault Resolved on East West Line",
+    "zh-Hans": "东西线轨道信号故障已解决",
+    "ms": "Kesan Isyarat Trek Dibenarkan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் டிராக் சிக்னலிங் தவறு சரி செய்யப்பட்டது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

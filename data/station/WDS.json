@@ -1,0 +1,28 @@
+{
+  "id": "WDS",
+  "name": {
+    "en-SG": "Woodlands South",
+    "zh-Hans": "兀兰南",
+    "ms": null,
+    "ta": "உட்லண்ட்ஸ் சவுத்"
+  },
+  "geo": {
+    "latitude": 1.438,
+    "longitude": 103.786
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE3",
+      "startedAt": "2020-01-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "woodlands-civic-centre",
+    "singapore-zoo",
+    "woodlands-waterfront"
+  ],
+  "townId": "woodlands"
+}

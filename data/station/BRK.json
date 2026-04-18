@@ -1,0 +1,27 @@
+{
+  "id": "BRK",
+  "name": {
+    "en-SG": "Brickland",
+    "zh-Hans": "红砖",
+    "ms": null,
+    "ta": "பிரிக்லேன்ட்"
+  },
+  "geo": {
+    "latitude": 1.3857,
+    "longitude": 103.7445
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS3A",
+      "startedAt": "2034-01-01",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "lot-one-shoppers-mall",
+    "choa-chu-kang-bus-interchange"
+  ],
+  "townId": "choa-chu-kang"
+}

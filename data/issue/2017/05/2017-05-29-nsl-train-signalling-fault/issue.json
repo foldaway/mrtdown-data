@@ -1,0 +1,13 @@
+{
+  "id": "2017-05-29-nsl-train-signalling-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train Signalling Fault on North-South Line",
+    "zh-Hans": "南北线列车信号故障",
+    "ms": "Rosak Isyarat Kereta Api di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் ரயில் சமிக்ஞை கோளாறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

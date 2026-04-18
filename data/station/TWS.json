@@ -1,0 +1,27 @@
+{
+  "id": "TWS",
+  "name": {
+    "en-SG": "Tawas",
+    "zh-Hans": "大华士",
+    "ms": null,
+    "ta": "தாவாஸ்"
+  },
+  "geo": {
+    "latitude": 1.349188,
+    "longitude": 103.705551
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JW2",
+      "startedAt": "2027-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "jurong-innovation-district",
+    "safti-city"
+  ],
+  "townId": "western-water-catchment"
+}

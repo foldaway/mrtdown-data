@@ -1,0 +1,13 @@
+{
+  "id": "2024-12-16-circle-line-signaling-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signaling fault on Circle Line causes delays",
+    "zh-Hans": "环线信号故障导致延误",
+    "ms": "Ralat isyarat di Laluan Bulat menyebabkan kelewatan",
+    "ta": "வட்டப் பாதையில் சிக்னல் தவறு காரணமாக தாமதம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

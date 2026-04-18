@@ -1,0 +1,28 @@
+{
+  "id": "CPV",
+  "name": {
+    "en-SG": "Compassvale",
+    "zh-Hans": "康埔桦",
+    "ms": null,
+    "ta": "கம்பஸ்வேல்"
+  },
+  "geo": {
+    "latitude": 1.3757,
+    "longitude": 103.8955
+  },
+  "stationCodes": [
+    {
+      "lineId": "SKLRT",
+      "code": "SE1",
+      "startedAt": "2003-01-18",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "compass-one",
+    "sengkang-riverside-park",
+    "sengkang-general-hospital"
+  ],
+  "townId": "sengkang"
+}

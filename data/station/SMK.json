@@ -1,0 +1,28 @@
+{
+  "id": "SMK",
+  "name": {
+    "en-SG": "Sam Kee",
+    "zh-Hans": "三记",
+    "ms": null,
+    "ta": "சாம் கீ"
+  },
+  "geo": {
+    "latitude": 1.3981,
+    "longitude": 103.9106
+  },
+  "stationCodes": [
+    {
+      "lineId": "PGLRT",
+      "code": "PW1",
+      "startedAt": "2016-02-29",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "punggol-waterway-park",
+    "punggol-plaza",
+    "waterway-point"
+  ],
+  "townId": "punggol"
+}

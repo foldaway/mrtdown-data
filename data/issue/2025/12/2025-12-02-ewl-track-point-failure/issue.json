@@ -1,0 +1,13 @@
+{
+  "id": "2025-12-02-ewl-track-point-failure",
+  "type": "disruption",
+  "title": {
+    "en-SG": "EWL Track Fault - near Aljunied",
+    "zh-Hans": "EWL 轨道故障 - 亚裕尼附近",
+    "ms": "EWL Kerosakan Laluan - berhampiran Aljunied",
+    "ta": "EWL பாதை தவறு - அல்ஜுனிட் அருகில்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

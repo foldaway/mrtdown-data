@@ -1,0 +1,13 @@
+{
+  "id": "2015-10-23-circle-line-delay-due-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Delay on Circle Line due to train fault",
+    "zh-Hans": "环线因列车故障延误",
+    "ms": "Kelewatan di Laluan Bulat kerana kerosakan tren",
+    "ta": "ரயில் பழுது காரணமாக வட்டப் பாதையில் தாமதம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

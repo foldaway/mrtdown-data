@@ -1,0 +1,13 @@
+{
+  "id": "2017-05-04-nsl-train-signalling-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train signalling fault causing delays",
+    "zh-Hans": "列车信号故障导致延误",
+    "ms": "Ralat isyarat kereta api menyebabkan kelewatan",
+    "ta": "தொடர்வண்டி சமிக்ஞை தவறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

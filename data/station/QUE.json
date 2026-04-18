@@ -1,0 +1,28 @@
+{
+  "id": "QUE",
+  "name": {
+    "en-SG": "Queenstown",
+    "zh-Hans": "女皇镇",
+    "ms": null,
+    "ta": "குவீன்ஸ்டவுன்"
+  },
+  "geo": {
+    "latitude": 1.2905,
+    "longitude": 103.7993
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW19",
+      "startedAt": "1988-03-12",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "queenstown-stadium",
+    "alexandra-hospital",
+    "anchorpoint-shopping-centre"
+  ],
+  "townId": "queenstown"
+}

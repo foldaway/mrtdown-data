@@ -1,0 +1,28 @@
+{
+  "id": "BDK",
+  "name": {
+    "en-SG": "Bedok",
+    "zh-Hans": "勿洛",
+    "ms": null,
+    "ta": "பிடோக்"
+  },
+  "geo": {
+    "latitude": 1.3231,
+    "longitude": 103.9355
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW5",
+      "startedAt": "1989-11-04",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "bedok-mall",
+    "bedok-reservoir-park",
+    "bedok-point"
+  ],
+  "townId": "bedok"
+}

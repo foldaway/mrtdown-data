@@ -1,0 +1,26 @@
+{
+  "id": "UBI",
+  "name": {
+    "en-SG": "Ubi",
+    "zh-Hans": "乌美",
+    "ms": null,
+    "ta": "உபி"
+  },
+  "geo": {
+    "latitude": 1.320225,
+    "longitude": 103.895572
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT27",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "ubi-techpark"
+  ],
+  "townId": "geylang"
+}
