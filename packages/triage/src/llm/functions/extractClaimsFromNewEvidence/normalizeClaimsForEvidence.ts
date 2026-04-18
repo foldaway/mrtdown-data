@@ -12,10 +12,14 @@ export function normalizeClaimsForEvidence(params: {
   evidenceTs: string;
   repo?: MRTDownRepository;
 }): Claim[] {
-  const claims = synthesizeWholeLineClosureClaims({
-    ...params,
-    claims: filterClaimsByMentionedStations(params),
-  });
+  const claims = normalizeDelayClaimsToEvidenceTimestamp(
+    synthesizeWholeLineClosureClaims({
+      ...params,
+      claims: filterClaimsByMentionedStations(params),
+    }),
+    params.evidenceText,
+    params.evidenceTs,
+  );
 
   if (!evidenceDescribesCurrentDegradedService(params.evidenceText)) {
     return claims;
@@ -76,6 +80,65 @@ export function normalizeClaimsForEvidence(params: {
 
     return nextClaim;
   });
+}
+
+function normalizeDelayClaimsToEvidenceTimestamp(
+  claims: Claim[],
+  evidenceText: string,
+  evidenceTs: string,
+): Claim[] {
+  if (evidenceMentionsExplicitPriorStart(evidenceText)) {
+    return claims;
+  }
+
+  const evidenceTsMs = Date.parse(evidenceTs);
+
+  return claims.map((claim) => {
+    const serviceEffect = claim.effect?.service;
+    if (
+      serviceEffect?.kind !== 'delay' ||
+      claim.statusSignal !== 'open' ||
+      claim.timeHints == null
+    ) {
+      return claim;
+    }
+
+    if (
+      claim.timeHints.kind === 'start-only' &&
+      Date.parse(claim.timeHints.startAt) < evidenceTsMs
+    ) {
+      return {
+        ...claim,
+        timeHints: {
+          kind: 'start-only',
+          startAt: evidenceTs,
+        },
+      };
+    }
+
+    if (
+      claim.timeHints.kind === 'fixed' &&
+      Date.parse(claim.timeHints.startAt) < evidenceTsMs
+    ) {
+      return {
+        ...claim,
+        timeHints: {
+          kind: 'start-only',
+          startAt: evidenceTs,
+        },
+      };
+    }
+
+    return claim;
+  });
+}
+
+function evidenceMentionsExplicitPriorStart(text: string): boolean {
+  return (
+    /\bsince\b/i.test(text) ||
+    /\bfrom\s+\d{1,2}(?::|\.)\d{2}\s*(?:am|pm)?\b/i.test(text) ||
+    /\bfrom\s+\d{1,2}\s*(?:am|pm)\b/i.test(text)
+  );
 }
 
 function synthesizeWholeLineClosureClaims(params: {

@@ -1,6 +1,5 @@
-import 'dotenv/config';
-
 import { resolve } from 'node:path';
+import { config as loadDotEnv } from 'dotenv';
 import { FileStore, MRTDownRepository } from '@mrtdown/fs';
 import { describe } from 'vitest';
 import { describeEval, StructuredOutputScorer } from 'vitest-evals';
@@ -9,6 +8,10 @@ import {
   type TriageNewEvidenceResult,
   triageNewEvidence,
 } from './index.js';
+
+loadDotEnv({
+  path: resolve(import.meta.dirname, '../../../../../../.env'),
+});
 
 describe('triageNewEvidence', () => {
   describeEval(
