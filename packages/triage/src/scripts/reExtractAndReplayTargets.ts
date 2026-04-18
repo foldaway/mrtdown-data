@@ -7,7 +7,8 @@ import {
 
 export type ReExtractMode =
   | 'period-violations'
-  | 'degraded-future-no-service';
+  | 'degraded-future-no-service'
+  | 'empty-impact';
 
 export interface ReExtractTargetOptions {
   mode: ReExtractMode;
@@ -37,7 +38,8 @@ export function parseReExtractArgs(argv: string[]): ParsedReExtractArgs {
       const value = argv[index + 1];
       if (
         value !== 'period-violations' &&
-        value !== 'degraded-future-no-service'
+        value !== 'degraded-future-no-service' &&
+        value !== 'empty-impact'
       ) {
         throw new Error(`Unsupported --mode value: ${value ?? '(missing)'}`);
       }
@@ -149,6 +151,14 @@ function collectDegradedFutureNoServiceEvidenceIds(
   return evidenceIds;
 }
 
+function collectEmptyImpactEvidenceIds(bundle: IssueBundle): Set<string> {
+  if (bundle.evidence.length === 0 || bundle.impactEvents.length > 0) {
+    return new Set();
+  }
+
+  return new Set(bundle.evidence.map((evidence) => evidence.id));
+}
+
 export function collectReExtractTargets(
   repo: MRTDownRepository,
   options: ReExtractTargetOptions,
@@ -165,7 +175,9 @@ export function collectReExtractTargets(
     const evidenceIds =
       options.mode === 'degraded-future-no-service'
         ? collectDegradedFutureNoServiceEvidenceIds(bundle)
-        : collectViolationEvidenceIds(bundle);
+        : options.mode === 'empty-impact'
+          ? collectEmptyImpactEvidenceIds(bundle)
+          : collectViolationEvidenceIds(bundle);
 
     if (options.evidenceIds != null) {
       for (const evidenceId of [...evidenceIds]) {
