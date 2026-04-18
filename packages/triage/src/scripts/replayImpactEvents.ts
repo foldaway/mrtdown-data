@@ -31,6 +31,7 @@ import { NdJson } from 'json-nd';
 import { computeImpactFromEvidenceClaims } from '../helpers/computeImpactFromEvidenceClaims.js';
 import { deriveCurrentState } from '../helpers/deriveCurrentState.js';
 import { reconstructClaimsFromImpactEvents } from '../helpers/reconstructClaimsFromImpactEvents.js';
+import { normalizeClaimsForEvidence } from '../llm/functions/extractClaimsFromNewEvidence/normalizeClaimsForEvidence.js';
 
 const DATA_DIR = resolve(import.meta.dirname, '../../../../data');
 
@@ -104,12 +105,20 @@ for (const issueId of issueIds) {
     });
 
     // ------------------------------------------------------------------
-    // Reconstruct claims from original events
+    // Reconstruct claims from original events, then apply the same
+    // post-extraction normalization used during live ingestion so that
+    // fixes (e.g. station-mention filtering) apply to historical data.
     // ------------------------------------------------------------------
-    const claims: Claim[] = reconstructClaimsFromImpactEvents(
+    const reconstructed = reconstructClaimsFromImpactEvents(
       originalEvents,
       currentState,
     );
+    const claims: Claim[] = normalizeClaimsForEvidence({
+      claims: reconstructed,
+      evidenceText: ev.text,
+      evidenceTs: ev.ts,
+      repo,
+    });
 
     // ------------------------------------------------------------------
     // Run computeImpactFromEvidenceClaims against the rolling bundle

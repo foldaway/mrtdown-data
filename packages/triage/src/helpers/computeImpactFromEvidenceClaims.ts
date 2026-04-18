@@ -67,6 +67,14 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
         const currentServiceProvenance =
           currentState.servicesProvenance[key] ?? {};
 
+        // A service must have (or be establishing) a period before effects,
+        // scopes, or causes can be recorded for it. Without a period, the
+        // service is not participating in the issue and any attribute update
+        // would be orphaned.
+        if (currentServiceState.periods.length === 0 && claim.timeHints == null) {
+          continue;
+        }
+
         if (
           claim.effect?.service != null &&
           !isEqual(currentServiceState.effect, claim.effect.service)

@@ -157,11 +157,21 @@ describe('computeImpactFromEvidenceClaims', () => {
         service: { kind: 'delay', duration: null },
         facility: null,
       },
+      timeHints: {
+        kind: 'fixed',
+        startAt: '2025-01-01T11:00:00+08:00',
+        endAt: null,
+      },
     });
     const secondClaim = createServiceClaim({
       effect: {
         service: { kind: 'no-service' },
         facility: null,
+      },
+      timeHints: {
+        kind: 'fixed',
+        startAt: '2025-01-01T11:00:00+08:00',
+        endAt: null,
       },
     });
 
@@ -172,11 +182,13 @@ describe('computeImpactFromEvidenceClaims', () => {
       claims: [firstClaim, secondClaim],
     });
 
-    expect(result.newImpactEvents).toHaveLength(1);
+    expect(result.newImpactEvents).toHaveLength(2);
     expect(result.newImpactEvents[0]).toMatchObject({
-      id: 'ie_test_001',
       type: 'service_effects.set',
       effect: { kind: 'no-service' },
+    });
+    expect(result.newImpactEvents[1]).toMatchObject({
+      type: 'periods.set',
     });
   });
 
@@ -191,6 +203,11 @@ describe('computeImpactFromEvidenceClaims', () => {
             toStationId: 'NS3',
           },
         ],
+      },
+      timeHints: {
+        kind: 'fixed',
+        startAt: '2025-01-02T09:00:00+08:00',
+        endAt: null,
       },
     });
     const evidenceId = '2025-01-02T09:00:00+08:00';
@@ -213,15 +230,24 @@ describe('computeImpactFromEvidenceClaims', () => {
           toStationId: 'NS3',
         },
       ],
-      periods: [],
+      periods: [{ kind: 'fixed', startAt: '2025-01-02T09:00:00+08:00', endAt: null }],
       causes: [],
     });
     expect(result.newState.servicesProvenance[serviceKey]).toEqual({
+      periods: { evidenceId },
       scopes: { evidenceId },
     });
     expect(result.newImpactEvents).toEqual([
       {
         id: 'ie_test_001',
+        type: 'periods.set',
+        ts: evidenceId,
+        basis: { evidenceId },
+        entity: claim.entity,
+        periods: [{ kind: 'fixed', startAt: '2025-01-02T09:00:00+08:00', endAt: null }],
+      },
+      {
+        id: 'ie_test_002',
         type: 'service_scopes.set',
         ts: evidenceId,
         basis: { evidenceId },
@@ -272,6 +298,11 @@ describe('computeImpactFromEvidenceClaims', () => {
   test('emits causes events for service and facility claims', () => {
     const serviceClaim = createServiceClaim({
       causes: ['signal.fault', 'delay'],
+      timeHints: {
+        kind: 'fixed',
+        startAt: '2025-01-10T23:00:00+08:00',
+        endAt: null,
+      },
     });
     const facilityClaim = createFacilityClaim({
       causes: ['elevator.outage'],
@@ -293,6 +324,7 @@ describe('computeImpactFromEvidenceClaims', () => {
       'delay',
     ]);
     expect(result.newState.servicesProvenance[serviceKey]).toEqual({
+      periods: { evidenceId },
       causes: { evidenceId },
     });
     expect(result.newState.facilities[facilityKey].causes).toEqual([
@@ -302,6 +334,7 @@ describe('computeImpactFromEvidenceClaims', () => {
       causes: { evidenceId },
     });
     expect(result.newImpactEvents.map((event) => event.type)).toEqual([
+      'periods.set',
       'causes.set',
       'causes.set',
     ]);
@@ -310,6 +343,14 @@ describe('computeImpactFromEvidenceClaims', () => {
   test('does not emit events when effect, scopes, and causes are unchanged', () => {
     const serviceEntity = { type: 'service' as const, serviceId: 'NSL' };
     const issueBundle = createMockBundle([
+      {
+        id: 'ie_seed_period',
+        type: 'periods.set',
+        entity: serviceEntity,
+        ts: '2025-01-01T09:00:00+08:00',
+        basis: { evidenceId: 'seed_period' },
+        periods: [{ kind: 'fixed', startAt: '2025-01-01T09:00:00+08:00', endAt: null }],
+      },
       {
         id: 'ie_seed_effect',
         type: 'service_effects.set',
@@ -357,6 +398,7 @@ describe('computeImpactFromEvidenceClaims', () => {
 
     const serviceKey = keyForAffectedEntity(serviceEntity);
     expect(result.newState.servicesProvenance[serviceKey]).toEqual({
+      periods: { evidenceId: 'seed_period' },
       effect: { evidenceId: 'seed_effect' },
       scopes: { evidenceId: 'seed_scopes' },
       causes: { evidenceId: 'seed_causes' },
@@ -369,10 +411,20 @@ describe('computeImpactFromEvidenceClaims', () => {
       scopes: {
         service: [{ type: 'service.whole' }],
       },
+      timeHints: {
+        kind: 'fixed',
+        startAt: '2025-01-11T08:00:00+08:00',
+        endAt: null,
+      },
     });
     const secondClaim = createServiceClaim({
       scopes: {
         service: [{ type: 'service.point', stationId: 'NS9' }],
+      },
+      timeHints: {
+        kind: 'fixed',
+        startAt: '2025-01-11T08:00:00+08:00',
+        endAt: null,
       },
     });
     const evidenceId = '2025-01-11T08:00:00+08:00';
@@ -389,11 +441,20 @@ describe('computeImpactFromEvidenceClaims', () => {
       { type: 'service.point', stationId: 'NS9' },
     ]);
     expect(result.newState.servicesProvenance[serviceKey]).toEqual({
+      periods: { evidenceId },
       scopes: { evidenceId },
     });
     expect(result.newImpactEvents).toEqual([
       {
         id: 'ie_test_001',
+        type: 'periods.set',
+        ts: evidenceId,
+        basis: { evidenceId },
+        entity: secondClaim.entity,
+        periods: [{ kind: 'fixed', startAt: '2025-01-11T08:00:00+08:00', endAt: null }],
+      },
+      {
+        id: 'ie_test_002',
         type: 'service_scopes.set',
         ts: evidenceId,
         basis: { evidenceId },
@@ -608,6 +669,68 @@ describe('computeImpactFromEvidenceClaims', () => {
         entity: facilityEntity,
         periods: result.newState.facilities[facilityKey].periods,
       },
+    ]);
+  });
+
+  test('does not emit events for service with no period and no timeHints', () => {
+    const claim = createServiceClaim({
+      effect: {
+        service: { kind: 'delay', duration: null },
+        facility: null,
+      },
+      causes: ['signal.fault'],
+      scopes: { service: [{ type: 'service.whole' }] },
+      // no timeHints — service has never had a period
+    });
+    const evidenceId = '2025-01-01T10:00:00+08:00';
+
+    const result = computeImpactFromEvidenceClaims({
+      issueBundle: createMockBundle([]),
+      evidenceId,
+      evidenceTs: evidenceId,
+      claims: [claim],
+    });
+
+    const serviceKey = keyForAffectedEntity(claim.entity);
+    expect(result.newState.services[serviceKey]).toBeUndefined();
+    expect(result.newImpactEvents).toEqual([]);
+  });
+
+  test('does emit events for service update with no timeHints when period already exists', () => {
+    const serviceEntity = { type: 'service' as const, serviceId: 'NSL' };
+    const issueBundle = createMockBundle([
+      {
+        id: 'ie_seed_period',
+        type: 'periods.set',
+        entity: serviceEntity,
+        ts: '2025-01-01T09:00:00+08:00',
+        basis: { evidenceId: 'seed_period' },
+        periods: [{ kind: 'fixed', startAt: '2025-01-01T09:00:00+08:00', endAt: null }],
+      },
+    ]);
+    const claim = createServiceClaim({
+      entity: serviceEntity,
+      effect: {
+        service: { kind: 'no-service' },
+        facility: null,
+      },
+      causes: ['track.fault'],
+      // no timeHints — period already established by prior evidence
+    });
+    const evidenceId = '2025-01-01T10:00:00+08:00';
+
+    const result = computeImpactFromEvidenceClaims({
+      issueBundle,
+      evidenceId,
+      evidenceTs: evidenceId,
+      claims: [claim],
+    });
+
+    const serviceKey = keyForAffectedEntity(serviceEntity);
+    expect(result.newState.services[serviceKey]).toBeDefined();
+    expect(result.newImpactEvents.map((e) => e.type)).toEqual([
+      'service_effects.set',
+      'causes.set',
     ]);
   });
 
