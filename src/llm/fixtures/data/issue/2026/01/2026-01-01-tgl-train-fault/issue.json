@@ -1,0 +1,13 @@
+{
+    "id": "2026-01-01-tgl-train-fault",
+    "title": {
+        "en-SG": "Tengah Line Train Fault",
+        "zh-Hans": "登加地铁线轨道故障",
+        "ms": "Kerosakan landasan di Tengah Line",
+        "ta": "தெங்கா எம்ஆர்டி வழி தடக் கோளாறு"
+    },
+    "titleMeta": {
+        "source": "@openai/gpt-4-mini"
+    },
+    "type": "disruption"
+}

@@ -1,0 +1,27 @@
+{
+    "id": "QSW",
+    "name": {
+        "en-SG": "Queensway",
+        "zh-Hans": "昆士威",
+        "ms": "Queensway",
+        "ta": "க்வீன்ஸ்வே"
+    },
+    "geo": {
+        "latitude": 1.2905,
+        "longitude": 103.7815
+    },
+    "stationCodes": [
+        {
+            "lineId": "TGL",
+            "code": "TG5",
+            "startedAt": "2025-12-31",
+            "endedAt": null,
+            "structureType": "elevated"
+        }
+    ],
+    "landmarkIds": [
+        "queensway-market-food-centre",
+        "queensway-nature-reserve"
+    ],
+    "townId": "queenstown"
+}

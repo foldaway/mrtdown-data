@@ -1,0 +1,27 @@
+{
+    "id": "TLH",
+    "name": {
+        "en-SG": "Tanglin Halt",
+        "zh-Hans": "丹戎巴葛站",
+        "ms": "Stesen Tanglin",
+        "ta": "டாங்குலின் நிலையம்"
+    },
+    "geo": {
+        "latitude": 1.2905,
+        "longitude": 103.7815
+    },
+    "stationCodes": [
+        {
+            "lineId": "TGL",
+            "code": "TG4",
+            "startedAt": "2025-12-31",
+            "endedAt": null,
+            "structureType": "underground"
+        }
+    ],
+    "landmarkIds": [
+        "tanglin-halt-market-food-centre",
+        "tanglin-halt-nature-reserve"
+    ],
+    "townId": "tanglin"
+}

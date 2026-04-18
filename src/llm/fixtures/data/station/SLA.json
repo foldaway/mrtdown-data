@@ -1,0 +1,26 @@
+{
+    "id": "SLA",
+    "name": {
+        "en-SG": "Seletar Aerospace",
+        "zh-Hans": "新柔航天城",
+        "ms": "Seletar Aerospace",
+        "ta": "செலெட்டா விண்மீன் நகரம்"
+    },
+    "geo": {
+        "latitude": 1.4005,
+        "longitude": 103.8605
+    },
+    "stationCodes": [
+        {
+            "lineId": "SLL",
+            "code": "SL1",
+            "startedAt": "2025-12-31",
+            "endedAt": null,
+            "structureType": "underground"
+        }
+    ],
+    "landmarkIds": [
+        "seletar-aerospace-park"
+    ],
+    "townId": "seletar"
+}

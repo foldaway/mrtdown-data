@@ -1,0 +1,35 @@
+{
+  "id": "UTS",
+  "name": {
+    "en-SG": "Upper Thomson",
+    "zh-Hans": "汤申路上段",
+    "ms": null,
+    "ta": "அப்பர் தாம்சன்"
+  },
+  "geo": {
+    "latitude": 1.3673,
+    "longitude": 103.818
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE8",
+      "startedAt": "2021-08-28",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "SLL",
+      "code": "SL6",
+      "startedAt": "2025-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "macritchie-reservoir",
+    "thomson-nature-park",
+    "singapore-island-country-club"
+  ],
+  "townId": "bishan"
+}

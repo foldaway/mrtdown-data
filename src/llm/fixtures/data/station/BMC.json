@@ -1,0 +1,34 @@
+{
+    "id": "BMC",
+    "name": {
+        "en-SG": "Bukit Merah Central",
+        "zh-Hans": "武吉美拉中心",
+        "ms": "Bukit Merah Central",
+        "ta": "புக்கிட் மெரா மத்திய நிலையம்"
+    },
+    "geo": {
+        "latitude": 1.2905,
+        "longitude": 103.7815
+    },
+    "stationCodes": [
+        {
+            "lineId": "TGL",
+            "code": "TG6",
+            "startedAt": "2025-12-31",
+            "endedAt": null,
+            "structureType": "elevated"
+        },
+        {
+            "lineId": "SLL",
+            "code": "SL8",
+            "startedAt": "2025-12-31",
+            "endedAt": null,
+            "structureType": "underground"
+        }
+    ],
+    "landmarkIds": [
+        "bukit-merah-central-market-food-centre",
+        "bukit-merah-central-nature-reserve"
+    ],
+    "townId": "bukit-merah"
+}

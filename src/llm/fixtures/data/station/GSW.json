@@ -1,0 +1,26 @@
+{
+    "id": "GSW",
+    "name": {
+        "en-SG": "Greater Southern Waterfront",
+        "zh-Hans": "大南方滨水区",
+        "ms": "Greater Southern Waterfront",
+        "ta": "பெரும் தெற்கு நீர்முனை"
+    },
+    "geo": {
+        "latitude": 1.2855,
+        "longitude": 103.8455
+    },
+    "stationCodes": [
+        {
+            "lineId": "SLL",
+            "code": "SL9",
+            "startedAt": "2025-12-31",
+            "endedAt": null,
+            "structureType": "elevated"
+        }
+    ],
+    "landmarkIds": [
+        "greater-southern-waterfront-park"
+    ],
+    "townId": "marina-south"
+}

@@ -1,0 +1,26 @@
+{
+    "id": "SLT",
+    "name": {
+        "en-SG": "Seletar",
+        "zh-Hans": "新柔",
+        "ms": "Seletar",
+        "ta": "செலெட்டா"
+    },
+    "geo": {
+        "latitude": 1.3955,
+        "longitude": 103.8655
+    },
+    "stationCodes": [
+        {
+            "lineId": "SLL",
+            "code": "SL2",
+            "startedAt": "2025-12-31",
+            "endedAt": null,
+            "structureType": "underground"
+        }
+    ],
+    "landmarkIds": [
+        "seletar-mall"
+    ],
+    "townId": "seletar"
+}

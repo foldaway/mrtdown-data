@@ -1,0 +1,67 @@
+{
+    "id": "TGL_MAIN_E",
+    "name": {
+        "en-SG": "Tengah Line (Eastbound)",
+        "zh-Hans": "登加地铁线（东向）",
+        "ms": "Laluan MRT Tengah (Arah Timur)",
+        "ta": "தெங்கா எம்ஆர்டி வழி (கிழக்கு திசை)"
+    },
+    "lineId": "TGL",
+    "revisions": [
+        {
+            "id": "r_initial",
+            "startAt": "2025-12-31",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "TGH",
+                        "displayCode": "TG1"
+                    },
+                    {
+                        "stationId": "BBT",
+                        "displayCode": "TG2"
+                    },
+                    {
+                        "stationId": "BTW",
+                        "displayCode": "TG3"
+                    },
+                    {
+                        "stationId": "TLH",
+                        "displayCode": "TG4"
+                    },
+                    {
+                        "stationId": "QSW",
+                        "displayCode": "TG5"
+                    },
+                    {
+                        "stationId": "BMC",
+                        "displayCode": "TG6"
+                    },
+                    {
+                        "stationId": "BMC",
+                        "displayCode": "TG6"
+                    },
+                    {
+                        "stationId": "TBW",
+                        "displayCode": "TG7"
+                    },
+                    {
+                        "stationId": "OTP",
+                        "displayCode": "TG8"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:30",
+                    "end": "00:00"
+                },
+                "weekends": {
+                    "start": "05:30",
+                    "end": "00:00"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "SER",
+  "name": {
+    "en-SG": "Serangoon",
+    "zh-Hans": "实龙岗",
+    "ms": null,
+    "ta": "சிராங்கூன்"
+  },
+  "geo": {
+    "latitude": 1.3573,
+    "longitude": 103.8676
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC13",
+      "startedAt": "2009-05-28",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "NEL",
+      "code": "NE12",
+      "startedAt": "2003-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "SLL",
+      "code": "SL5",
+      "startedAt": "2025-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "nex-mall",
+    "serangoon-stadium",
+    "serangoon-gardens"
+  ],
+  "townId": "serangoon"
+}

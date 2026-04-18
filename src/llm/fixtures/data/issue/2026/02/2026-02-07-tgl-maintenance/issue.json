@@ -1,0 +1,13 @@
+{
+    "id": "2026-02-01-tgl-maintenance",
+    "title": {
+        "en-SG": "Tengah Line Maintenance",
+        "zh-Hans": "武吉班让线维修",
+        "ms": "Pembaikan Tengah Line",
+        "ta": "டெங்காவி வரம்பு பராமரிப்பு"
+    },
+    "titleMeta": {
+        "source": "@openai/gpt-4-mini"
+    },
+    "type": "maintenance"
+}
