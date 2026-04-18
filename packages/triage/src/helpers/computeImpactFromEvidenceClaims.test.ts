@@ -474,6 +474,68 @@ describe('computeImpactFromEvidenceClaims', () => {
     ]);
   });
 
+  test('merges overlapping fixed periods without advancing the start time', () => {
+    const serviceEntity = { type: 'service' as const, serviceId: 'NSL' };
+    const issueBundle = createMockBundle([
+      {
+        id: 'ie_seed_period',
+        type: 'periods.set',
+        entity: serviceEntity,
+        ts: '2025-01-01T08:00:00+08:00',
+        basis: { evidenceId: 'seed' },
+        periods: [
+          {
+            kind: 'fixed',
+            startAt: '2025-01-01T08:00:00+08:00',
+            endAt: '2025-01-02T00:00:00+08:00',
+          },
+        ],
+      },
+    ]);
+
+    const claim = createServiceClaim({
+      entity: serviceEntity,
+      timeHints: {
+        kind: 'fixed',
+        startAt: '2025-01-01T12:00:00+08:00',
+        endAt: '2025-01-03T00:00:00+08:00',
+      },
+    });
+    const evidenceId = '2025-01-01T12:05:00+08:00';
+
+    const result = computeImpactFromEvidenceClaims({
+      issueBundle,
+      evidenceId,
+      evidenceTs: evidenceId,
+      claims: [claim],
+    });
+
+    const serviceKey = keyForAffectedEntity(serviceEntity);
+    expect(result.newState.services[serviceKey].periods).toEqual([
+      {
+        kind: 'fixed',
+        startAt: '2025-01-01T08:00:00+08:00',
+        endAt: '2025-01-03T00:00:00+08:00',
+      },
+    ]);
+    expect(result.newImpactEvents).toEqual([
+      {
+        id: 'ie_test_001',
+        type: 'periods.set',
+        ts: evidenceId,
+        basis: { evidenceId },
+        entity: serviceEntity,
+        periods: [
+          {
+            kind: 'fixed',
+            startAt: '2025-01-01T08:00:00+08:00',
+            endAt: '2025-01-03T00:00:00+08:00',
+          },
+        ],
+      },
+    ]);
+  });
+
   test('applies end-only hints to facility recurring periods and updates window end', () => {
     const facilityEntity = {
       type: 'facility' as const,
