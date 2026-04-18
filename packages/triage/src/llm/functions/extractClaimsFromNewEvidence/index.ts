@@ -20,7 +20,6 @@ import { FindServicesTool } from './tools/FindServicesTool.js';
 import { FindStationsTool } from './tools/FindStationsTool.js';
 
 const TOOL_CALL_LIMIT = 5;
-
 const ResponseSchema = z.object({
   claims: z.array(ClaimSchema),
 });
@@ -69,7 +68,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
   ];
 
   const systemPrompt = buildSystemPrompt();
-  const model = 'gpt-5-mini';
+  const model = 'gpt-5.4-mini';
 
   let toolCallCount = 0;
 

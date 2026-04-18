@@ -1,6 +1,5 @@
-import 'dotenv/config';
-
 import { resolve } from 'node:path';
+import { config as loadDotEnv } from 'dotenv';
 import { FileStore, MRTDownRepository } from '@mrtdown/fs';
 import { describe } from 'vitest';
 import { describeEval, StructuredOutputScorer } from 'vitest-evals';
@@ -10,6 +9,10 @@ import {
   type ExtractClaimsFromNewEvidenceResult,
   extractClaimsFromNewEvidence,
 } from './index.js';
+
+loadDotEnv({
+  path: resolve(import.meta.dirname, '../../../../../../.env'),
+});
 
 describe('extractClaimsFromNewEvidence', () => {
   describeEval('should extract claims from new disruption evidence', {
@@ -338,8 +341,8 @@ describe('extractClaimsFromNewEvidence', () => {
         {
           input: {
             newEvidence: {
-              ts: '2025-12-05T22:12:16+08:00',
-              text: 'East-West Line (EWL) track testing of newly connected sections is causing longer waits of up to 17 minutes for trains from Bedok and Kembangan. A final service suspension to disconnect the EWL from Changi Depot is planned for the first half of 2026, signaling further disruption.',
+              ts: '2026-01-05T22:12:16+08:00',
+              text: 'Integrated systems testing on the Tengah and Seletar lines is causing longer waits of up to 17 minutes for trains on both lines. A final service suspension to disconnect the shared systems is planned for the first half of 2026, signaling further disruption.',
             },
             repo,
             toString() {
@@ -351,7 +354,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'EWL_MAIN_E',
+                  serviceId: 'TGL_MAIN_E',
                 },
                 effect: {
                   service: { kind: 'reduced-service' },
@@ -363,14 +366,14 @@ describe('extractClaimsFromNewEvidence', () => {
                 },
                 timeHints: {
                   kind: 'start-only',
-                  startAt: '2025-12-05T22:12:16+08:00',
+                  startAt: '2026-01-05T22:12:16+08:00',
                 },
                 causes: ['system.upgrade'],
               },
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'EWL_MAIN_W',
+                  serviceId: 'TGL_MAIN_W',
                 },
                 effect: {
                   service: { kind: 'reduced-service' },
@@ -382,14 +385,14 @@ describe('extractClaimsFromNewEvidence', () => {
                 },
                 timeHints: {
                   kind: 'start-only',
-                  startAt: '2025-12-05T22:12:16+08:00',
+                  startAt: '2026-01-05T22:12:16+08:00',
                 },
                 causes: ['system.upgrade'],
               },
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'EWL_CG_E',
+                  serviceId: 'SLL_MAIN_N',
                 },
                 effect: {
                   service: { kind: 'reduced-service' },
@@ -401,14 +404,14 @@ describe('extractClaimsFromNewEvidence', () => {
                 },
                 timeHints: {
                   kind: 'start-only',
-                  startAt: '2025-12-05T22:12:16+08:00',
+                  startAt: '2026-01-05T22:12:16+08:00',
                 },
                 causes: ['system.upgrade'],
               },
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'EWL_CG_W',
+                  serviceId: 'SLL_MAIN_S',
                 },
                 effect: {
                   service: { kind: 'reduced-service' },
@@ -420,7 +423,7 @@ describe('extractClaimsFromNewEvidence', () => {
                 },
                 timeHints: {
                   kind: 'start-only',
-                  startAt: '2025-12-05T22:12:16+08:00',
+                  startAt: '2026-01-05T22:12:16+08:00',
                 },
                 causes: ['system.upgrade'],
               },

@@ -102,6 +102,76 @@ describe('normalizeClaimsForEvidence', () => {
     ).toEqual(claims);
   });
 
+  test('clamps hallucinated earlier delay start times to the evidence timestamp', () => {
+    const evidenceText =
+      '[TGL] Due to a track fault at Tengah, train services on the Tengah Line are delayed between Bukit Batok and Bukit Merah Central';
+    const evidenceTs = '2026-01-01T07:10:00+08:00';
+    const claims: Claim[] = [
+      {
+        entity: { type: 'service', serviceId: 'TGL_MAIN_E' },
+        effect: { service: { kind: 'delay', duration: null }, facility: null },
+        scopes: {
+          service: [
+            {
+              type: 'service.segment',
+              fromStationId: 'BBT',
+              toStationId: 'BMC',
+            },
+          ],
+        },
+        statusSignal: 'open',
+        timeHints: {
+          kind: 'start-only',
+          startAt: '2025-12-31T15:10:00+08:00',
+        },
+        causes: ['track.fault'],
+      },
+    ];
+
+    expect(
+      normalizeClaimsForEvidence({
+        claims,
+        evidenceText,
+        evidenceTs,
+      }),
+    ).toEqual([
+      {
+        ...claims[0],
+        timeHints: {
+          kind: 'start-only',
+          startAt: evidenceTs,
+        },
+      },
+    ]);
+  });
+
+  test('preserves explicit prior delay starts mentioned in the evidence', () => {
+    const evidenceText =
+      '[TGL] Train services have been delayed since 6.45am due to a track fault at Tengah.';
+    const evidenceTs = '2026-01-01T07:10:00+08:00';
+    const claims: Claim[] = [
+      {
+        entity: { type: 'service', serviceId: 'TGL_MAIN_E' },
+        effect: { service: { kind: 'delay', duration: null }, facility: null },
+        scopes: { service: [{ type: 'service.whole' }] },
+        statusSignal: 'open',
+        timeHints: {
+          kind: 'start-only',
+          startAt: '2026-01-01T06:45:00+08:00',
+        },
+        causes: ['track.fault'],
+      },
+    ];
+
+    expect(
+      normalizeClaimsForEvidence({
+        claims,
+        evidenceText,
+        evidenceTs,
+      }),
+    ).toEqual(claims);
+  });
+
   test('drops branch services when evidence station mentions only match the main branch', () => {
     const evidenceText =
       '[EWL] UPDATE: Passengers travelling towards the city centre, use NSL at Jurong East, Woodlands, Bishan and TEL at Caldecott.';
