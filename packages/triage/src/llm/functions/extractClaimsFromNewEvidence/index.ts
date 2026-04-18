@@ -204,6 +204,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
       claims: response.output_parsed.claims,
       evidenceText: params.newEvidence.text,
       evidenceTs: params.newEvidence.ts,
+      repo: params.repo,
     }),
   };
 }
