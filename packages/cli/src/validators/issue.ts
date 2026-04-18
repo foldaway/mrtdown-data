@@ -347,12 +347,14 @@ function validateIssueAtPath(
   const evidenceIds =
     evidenceIdsFromCtx !== undefined ? evidenceIdsFromCtx : new Set<string>();
   const needToBuildEvidenceIds = evidenceIdsFromCtx === undefined;
+  let evidenceCount = 0;
 
   const evidencePath = join(relBase, 'evidence.ndjson');
   try {
     const content = store.readText(evidencePath).trim();
     if (content) {
       const parsed = NdJson.parse(content);
+      evidenceCount = parsed.length;
       for (let i = 0; i < parsed.length; i++) {
         const row = parsed[i];
         const schemaErrs = validateEvidenceSchema(row);
@@ -374,10 +376,12 @@ function validateIssueAtPath(
   }
 
   const impactPath = join(relBase, 'impact.ndjson');
+  let impactCount = 0;
   try {
     const content = store.readText(impactPath).trim();
     if (content) {
       const parsed = NdJson.parse(content);
+      impactCount = parsed.length;
       const loopState: ImpactEventLoopState = {
         lastPeriodsSetByEntity: new Map(),
         seenEventFingerprints: new Map(),
@@ -440,6 +444,13 @@ function validateIssueAtPath(
     }
   } catch {
     // ignore missing
+  }
+
+  if (evidenceCount > 0 && impactCount === 0) {
+    errors.push({
+      file: impactPath,
+      message: 'issue has evidence but no impact events',
+    });
   }
 
   return errors;
