@@ -1,0 +1,2 @@
+{"id":"ie_01HB87ABER9JH92A3F8S7ZP8RH","type":"service_scopes.set","ts":"2023-09-26T15:47:35.000+08:00","basis":{"evidenceId":"ev_01HB87ABERF6GJXN0V3E165BHZ"},"entity":{"type":"service","serviceId":"DTL_MAIN_E"},"serviceScopes":[{"type":"service.whole"}]}
+{"id":"ie_01HB87ABERDMGDPDCGP0REVN3D","type":"service_scopes.set","ts":"2023-09-26T15:47:35.000+08:00","basis":{"evidenceId":"ev_01HB87ABERF6GJXN0V3E165BHZ"},"entity":{"type":"service","serviceId":"DTL_MAIN_W"},"serviceScopes":[{"type":"service.whole"}]}

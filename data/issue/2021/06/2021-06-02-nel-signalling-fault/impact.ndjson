@@ -1,0 +1,4 @@
+{"id":"ie_01F769W5GRJW50GAFKH5KN59CP","type":"service_scopes.set","ts":"2021-06-02T20:06:23.000+08:00","basis":{"evidenceId":"ev_01F769W5GRBGMATQAMDP3RM6TK"},"entity":{"type":"service","serviceId":"NEL_MAIN_N"},"serviceScopes":[{"type":"service.whole"}]}
+{"id":"ie_01F769W5GRN20NYF9ZP85WSB3B","type":"causes.set","ts":"2021-06-02T20:06:23.000+08:00","basis":{"evidenceId":"ev_01F769W5GRBGMATQAMDP3RM6TK"},"entity":{"type":"service","serviceId":"NEL_MAIN_N"},"causes":["signal.fault"]}
+{"id":"ie_01F769W5GRSSVHV02NSJKQYJKM","type":"service_scopes.set","ts":"2021-06-02T20:06:23.000+08:00","basis":{"evidenceId":"ev_01F769W5GRBGMATQAMDP3RM6TK"},"entity":{"type":"service","serviceId":"NEL_MAIN_S"},"serviceScopes":[{"type":"service.whole"}]}
+{"id":"ie_01F769W5GRYVG746X0B7S9ZPJR","type":"causes.set","ts":"2021-06-02T20:06:23.000+08:00","basis":{"evidenceId":"ev_01F769W5GRBGMATQAMDP3RM6TK"},"entity":{"type":"service","serviceId":"NEL_MAIN_S"},"causes":["signal.fault"]}
