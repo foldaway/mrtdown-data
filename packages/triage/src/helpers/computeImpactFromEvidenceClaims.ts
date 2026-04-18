@@ -51,11 +51,20 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
 
   const currentState = deriveCurrentState(params.issueBundle);
 
-  const claimsKeyedByAffectedEntity: Record<string, Claim> = Object.fromEntries(
-    params.claims.map((claim) => [keyForAffectedEntity(claim.entity), claim]),
-  );
+  const claimsByAffectedEntity = new Map<string, Claim[]>();
+  for (const claim of params.claims) {
+    const key = keyForAffectedEntity(claim.entity);
+    const current = claimsByAffectedEntity.get(key) ?? [];
+    current.push(claim);
+    claimsByAffectedEntity.set(key, current);
+  }
 
-  for (const [key, claim] of Object.entries(claimsKeyedByAffectedEntity)) {
+  for (const [key, claims] of claimsByAffectedEntity) {
+    const claim = claims.at(-1);
+    if (claim == null) {
+      continue;
+    }
+
     switch (claim.entity.type) {
       case 'service': {
         const currentServiceState = currentState.services[key] ?? {
@@ -71,7 +80,10 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
         // scopes, or causes can be recorded for it. Without a period, the
         // service is not participating in the issue and any attribute update
         // would be orphaned.
-        if (currentServiceState.periods.length === 0 && claim.timeHints == null) {
+        if (
+          currentServiceState.periods.length === 0 &&
+          claims.every((candidate) => candidate.timeHints == null)
+        ) {
           continue;
         }
 
@@ -119,25 +131,41 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
           }
         }
 
-        if (claim.timeHints != null) {
-          const { newPeriods, hasChanged } = reconcilePeriodsWithTimeHints(
-            currentServiceState.periods,
-            clampTimeHintsToEvidenceTs(claim.timeHints, eventTs),
-          );
-          if (hasChanged) {
-            currentServiceState.periods = newPeriods;
-            currentServiceProvenance.periods = {
-              evidenceId: params.evidenceId,
+        const reconciledServicePeriods = claims.reduce(
+          (state, candidate) => {
+            if (candidate.timeHints == null) {
+              return state;
+            }
+
+            const { newPeriods, hasChanged } = reconcilePeriodsWithTimeHints(
+              state.periods,
+              clampTimeHintsToEvidenceTs(candidate.timeHints, eventTs),
+            );
+
+            return {
+              periods: newPeriods,
+              hasChanged: state.hasChanged || hasChanged,
             };
-            result.newImpactEvents.push({
-              id: IdGenerator.impactEventId(eventDateTime),
-              type: 'periods.set',
-              ts: eventTs,
-              basis: { evidenceId: params.evidenceId },
-              entity: claim.entity,
-              periods: currentServiceState.periods,
-            });
-          }
+          },
+          {
+            periods: currentServiceState.periods,
+            hasChanged: false,
+          },
+        );
+
+        if (reconciledServicePeriods.hasChanged) {
+          currentServiceState.periods = reconciledServicePeriods.periods;
+          currentServiceProvenance.periods = {
+            evidenceId: params.evidenceId,
+          };
+          result.newImpactEvents.push({
+            id: IdGenerator.impactEventId(eventDateTime),
+            type: 'periods.set',
+            ts: eventTs,
+            basis: { evidenceId: params.evidenceId },
+            entity: claim.entity,
+            periods: currentServiceState.periods,
+          });
         }
 
         if (
@@ -207,25 +235,41 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
           });
         }
 
-        if (claim.timeHints != null) {
-          const { newPeriods, hasChanged } = reconcilePeriodsWithTimeHints(
-            currentFacilityState.periods,
-            clampTimeHintsToEvidenceTs(claim.timeHints, eventTs),
-          );
-          if (hasChanged) {
-            currentFacilityState.periods = newPeriods;
-            currentFacilityProvenance.periods = {
-              evidenceId: params.evidenceId,
+        const reconciledFacilityPeriods = claims.reduce(
+          (state, candidate) => {
+            if (candidate.timeHints == null) {
+              return state;
+            }
+
+            const { newPeriods, hasChanged } = reconcilePeriodsWithTimeHints(
+              state.periods,
+              clampTimeHintsToEvidenceTs(candidate.timeHints, eventTs),
+            );
+
+            return {
+              periods: newPeriods,
+              hasChanged: state.hasChanged || hasChanged,
             };
-            result.newImpactEvents.push({
-              id: IdGenerator.impactEventId(eventDateTime),
-              type: 'periods.set',
-              ts: eventTs,
-              basis: { evidenceId: params.evidenceId },
-              entity: claim.entity,
-              periods: currentFacilityState.periods,
-            });
-          }
+          },
+          {
+            periods: currentFacilityState.periods,
+            hasChanged: false,
+          },
+        );
+
+        if (reconciledFacilityPeriods.hasChanged) {
+          currentFacilityState.periods = reconciledFacilityPeriods.periods;
+          currentFacilityProvenance.periods = {
+            evidenceId: params.evidenceId,
+          };
+          result.newImpactEvents.push({
+            id: IdGenerator.impactEventId(eventDateTime),
+            type: 'periods.set',
+            ts: eventTs,
+            basis: { evidenceId: params.evidenceId },
+            entity: claim.entity,
+            periods: currentFacilityState.periods,
+          });
         }
 
         if (
@@ -288,13 +332,14 @@ function reconcilePeriodsWithTimeHints(
       };
     }
     case 'start-only': {
-      if (currentPeriods.length === 0) {
-        return {
-          newPeriods: [{ kind: 'fixed', startAt: timeHints.startAt, endAt: null }],
-          hasChanged: true,
-        };
-      }
-      // Only move startAt to an earlier value; never advance it.
+        if (currentPeriods.length === 0) {
+          return {
+            newPeriods: [{ kind: 'fixed', startAt: timeHints.startAt, endAt: null }],
+            hasChanged: true,
+          };
+        }
+      // Fixed periods only move earlier, but recurring periods should realign
+      // to the explicit anchor carried by the newest claim.
       let hasChanged = false;
       const newPeriods: Period[] = [];
       for (const period of currentPeriods) {
@@ -309,10 +354,12 @@ function reconcilePeriodsWithTimeHints(
             break;
           }
           case 'recurring': {
-            if (timeHints.startAt < period.startAt) {
+            if (timeHints.startAt !== period.startAt) {
               const newPeriod: Period = { ...period, startAt: timeHints.startAt };
               if (newPeriod.timeWindow != null) {
-                const startAt = DateTime.fromISO(timeHints.startAt);
+                const startAt = DateTime.fromISO(timeHints.startAt, {
+                  setZone: true,
+                });
                 assert(startAt.isValid);
                 newPeriod.timeWindow.startAt = startAt.toFormat('HH:mm:ss');
               }
@@ -347,7 +394,7 @@ function reconcilePeriodsWithTimeHints(
               endAt: timeHints.endAt,
             };
             if (newPeriod.timeWindow != null) {
-              const endAt = DateTime.fromISO(timeHints.endAt);
+              const endAt = DateTime.fromISO(timeHints.endAt, { setZone: true });
               assert(endAt.isValid);
               newPeriod.timeWindow.endAt = endAt.toFormat('HH:mm:ss');
             }
@@ -368,27 +415,37 @@ function mergeFixedPeriods(
   currentPeriods: Period[],
   nextPeriod: Extract<ClaimTimeHints, { kind: 'fixed' }>,
 ): Period[] {
-  if (
-    currentPeriods.length !== 1 ||
-    currentPeriods[0]?.kind !== 'fixed' ||
-    currentPeriods[0].endAt != null &&
-      currentPeriods[0].endAt < nextPeriod.startAt
-  ) {
-    return [nextPeriod];
+  const recurringPeriods = currentPeriods.filter(
+    (period): period is Extract<Period, { kind: 'recurring' }> =>
+      period.kind === 'recurring',
+  );
+  const fixedPeriods = currentPeriods
+    .filter(
+      (period): period is Extract<Period, { kind: 'fixed' }> =>
+        period.kind === 'fixed',
+    )
+    .concat(nextPeriod)
+    .sort((left, right) => left.startAt.localeCompare(right.startAt));
+
+  const mergedFixedPeriods: Extract<Period, { kind: 'fixed' }>[] = [];
+  for (const period of fixedPeriods) {
+    const previous = mergedFixedPeriods.at(-1);
+    if (previous == null) {
+      mergedFixedPeriods.push({ ...period });
+      continue;
+    }
+
+    if (!fixedPeriodsOverlap(previous, period)) {
+      mergedFixedPeriods.push({ ...period });
+      continue;
+    }
+
+    previous.startAt =
+      previous.startAt < period.startAt ? previous.startAt : period.startAt;
+    previous.endAt = mergeFixedEndAt(previous.endAt, period.endAt);
   }
 
-  const currentPeriod = currentPeriods[0];
-  const endAt = mergeFixedEndAt(currentPeriod.endAt, nextPeriod.endAt);
-  return [
-    {
-      kind: 'fixed',
-      startAt:
-        currentPeriod.startAt < nextPeriod.startAt
-          ? currentPeriod.startAt
-          : nextPeriod.startAt,
-      endAt,
-    },
-  ];
+  return [...mergedFixedPeriods, ...recurringPeriods];
 }
 
 function mergeFixedEndAt(
@@ -399,6 +456,16 @@ function mergeFixedEndAt(
     return currentEndAt ?? nextEndAt;
   }
   return currentEndAt > nextEndAt ? currentEndAt : nextEndAt;
+}
+
+function fixedPeriodsOverlap(
+  left: Extract<Period, { kind: 'fixed' }>,
+  right: Extract<Period, { kind: 'fixed' }>,
+): boolean {
+  if (left.endAt == null || right.endAt == null) {
+    return left.startAt <= right.startAt;
+  }
+  return left.endAt >= right.startAt;
 }
 
 function isEqual(a: unknown, b: unknown): boolean {
