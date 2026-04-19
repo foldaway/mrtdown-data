@@ -1,0 +1,268 @@
+{
+  "generatedAt": "2026-04-19T00:11:47.629Z",
+  "dataDir": "/Users/duncanleo/Projects/Foldaway/mrtdown-data/data",
+  "adjacencyMs": 86400000,
+  "clusterCount": 5,
+  "clusters": [
+    {
+      "clusterId": "bukit-panjang-lrt-lift-upgrades:infra:2025-08-01-bukit-panjang-lrt-lift-upgrades",
+      "normalizedSlug": "bukit-panjang-lrt-lift-upgrades",
+      "type": "infra",
+      "canonicalIssueId": "2025-08-01-bukit-panjang-lrt-lift-upgrades",
+      "memberIssueIds": [
+        "2025-08-01-bukit-panjang-lrt-lift-upgrades",
+        "2025-12-01-bukit-panjang-lrt-lift-upgrades",
+        "2026-08-01-bukit-panjang-lrt-lift-upgrades",
+        "2026-12-01-bukit-panjang-lrt-lift-upgrades"
+      ],
+      "memberRanges": [
+        {
+          "issueId": "2025-08-01-bukit-panjang-lrt-lift-upgrades",
+          "startMs": 1753873382000,
+          "endMs": 1753873382000,
+          "source": "evidence-only"
+        },
+        {
+          "issueId": "2025-12-01-bukit-panjang-lrt-lift-upgrades",
+          "startMs": 1753873382000,
+          "endMs": 1753873382000,
+          "source": "evidence-only"
+        },
+        {
+          "issueId": "2026-08-01-bukit-panjang-lrt-lift-upgrades",
+          "startMs": 1753873382000,
+          "endMs": 1753873382000,
+          "source": "evidence-only"
+        },
+        {
+          "issueId": "2026-12-01-bukit-panjang-lrt-lift-upgrades",
+          "startMs": 1753873382000,
+          "endMs": 1753873382000,
+          "source": "evidence-only"
+        }
+      ],
+      "timeOverlapEvidence": [
+        {
+          "a": "2025-08-01-bukit-panjang-lrt-lift-upgrades",
+          "b": "2025-12-01-bukit-panjang-lrt-lift-upgrades",
+          "reason": "overlap"
+        },
+        {
+          "a": "2025-08-01-bukit-panjang-lrt-lift-upgrades",
+          "b": "2026-08-01-bukit-panjang-lrt-lift-upgrades",
+          "reason": "overlap"
+        },
+        {
+          "a": "2025-08-01-bukit-panjang-lrt-lift-upgrades",
+          "b": "2026-12-01-bukit-panjang-lrt-lift-upgrades",
+          "reason": "overlap"
+        },
+        {
+          "a": "2025-12-01-bukit-panjang-lrt-lift-upgrades",
+          "b": "2026-08-01-bukit-panjang-lrt-lift-upgrades",
+          "reason": "overlap"
+        },
+        {
+          "a": "2025-12-01-bukit-panjang-lrt-lift-upgrades",
+          "b": "2026-12-01-bukit-panjang-lrt-lift-upgrades",
+          "reason": "overlap"
+        },
+        {
+          "a": "2026-08-01-bukit-panjang-lrt-lift-upgrades",
+          "b": "2026-12-01-bukit-panjang-lrt-lift-upgrades",
+          "reason": "overlap"
+        }
+      ]
+    },
+    {
+      "clusterId": "mrt-platform-screen-doors-renewal:infra:2025-08-01-mrt-platform-screen-doors-renewal",
+      "normalizedSlug": "mrt-platform-screen-doors-renewal",
+      "type": "infra",
+      "canonicalIssueId": "2025-08-01-mrt-platform-screen-doors-renewal",
+      "memberIssueIds": [
+        "2025-08-01-mrt-platform-screen-doors-renewal",
+        "2025-12-01-mrt-platform-screen-doors-renewal",
+        "2026-04-01-mrt-platform-screen-doors-renewal",
+        "2026-08-01-mrt-platform-screen-doors-renewal",
+        "2026-12-01-mrt-platform-screen-doors-renewal"
+      ],
+      "memberRanges": [
+        {
+          "issueId": "2025-08-01-mrt-platform-screen-doors-renewal",
+          "startMs": 1753678200000,
+          "endMs": 1753678200000,
+          "source": "evidence-only"
+        },
+        {
+          "issueId": "2025-12-01-mrt-platform-screen-doors-renewal",
+          "startMs": 1753678200000,
+          "endMs": 1753678200000,
+          "source": "evidence-only"
+        },
+        {
+          "issueId": "2026-04-01-mrt-platform-screen-doors-renewal",
+          "startMs": 1753678200000,
+          "endMs": 1753678200000,
+          "source": "evidence-only"
+        },
+        {
+          "issueId": "2026-08-01-mrt-platform-screen-doors-renewal",
+          "startMs": 1753678200000,
+          "endMs": 1753678200000,
+          "source": "evidence-only"
+        },
+        {
+          "issueId": "2026-12-01-mrt-platform-screen-doors-renewal",
+          "startMs": 1753678200000,
+          "endMs": 1753678200000,
+          "source": "evidence-only"
+        }
+      ],
+      "timeOverlapEvidence": [
+        {
+          "a": "2025-08-01-mrt-platform-screen-doors-renewal",
+          "b": "2025-12-01-mrt-platform-screen-doors-renewal",
+          "reason": "overlap"
+        },
+        {
+          "a": "2025-08-01-mrt-platform-screen-doors-renewal",
+          "b": "2026-04-01-mrt-platform-screen-doors-renewal",
+          "reason": "overlap"
+        },
+        {
+          "a": "2025-08-01-mrt-platform-screen-doors-renewal",
+          "b": "2026-08-01-mrt-platform-screen-doors-renewal",
+          "reason": "overlap"
+        },
+        {
+          "a": "2025-08-01-mrt-platform-screen-doors-renewal",
+          "b": "2026-12-01-mrt-platform-screen-doors-renewal",
+          "reason": "overlap"
+        },
+        {
+          "a": "2025-12-01-mrt-platform-screen-doors-renewal",
+          "b": "2026-04-01-mrt-platform-screen-doors-renewal",
+          "reason": "overlap"
+        },
+        {
+          "a": "2025-12-01-mrt-platform-screen-doors-renewal",
+          "b": "2026-08-01-mrt-platform-screen-doors-renewal",
+          "reason": "overlap"
+        },
+        {
+          "a": "2025-12-01-mrt-platform-screen-doors-renewal",
+          "b": "2026-12-01-mrt-platform-screen-doors-renewal",
+          "reason": "overlap"
+        },
+        {
+          "a": "2026-04-01-mrt-platform-screen-doors-renewal",
+          "b": "2026-08-01-mrt-platform-screen-doors-renewal",
+          "reason": "overlap"
+        },
+        {
+          "a": "2026-04-01-mrt-platform-screen-doors-renewal",
+          "b": "2026-12-01-mrt-platform-screen-doors-renewal",
+          "reason": "overlap"
+        },
+        {
+          "a": "2026-08-01-mrt-platform-screen-doors-renewal",
+          "b": "2026-12-01-mrt-platform-screen-doors-renewal",
+          "reason": "overlap"
+        }
+      ]
+    },
+    {
+      "clusterId": "nsl-stationary-trial-new-signalling:maintenance:2017-04-03-nsl-stationary-trial-new-signalling",
+      "normalizedSlug": "nsl-stationary-trial-new-signalling",
+      "type": "maintenance",
+      "canonicalIssueId": "2017-04-03-nsl-stationary-trial-new-signalling",
+      "memberIssueIds": [
+        "2017-04-03-nsl-stationary-trial-new-signalling",
+        "2017-04-04-nsl-stationary-trial-new-signalling"
+      ],
+      "memberRanges": [
+        {
+          "issueId": "2017-04-03-nsl-stationary-trial-new-signalling",
+          "startMs": 1491231600000,
+          "endMs": 1491232200000,
+          "source": "impact-periods"
+        },
+        {
+          "issueId": "2017-04-04-nsl-stationary-trial-new-signalling",
+          "startMs": 1491318000000,
+          "endMs": 1491318600000,
+          "source": "impact-periods"
+        }
+      ],
+      "timeOverlapEvidence": [
+        {
+          "a": "2017-04-03-nsl-stationary-trial-new-signalling",
+          "b": "2017-04-04-nsl-stationary-trial-new-signalling",
+          "reason": "adjacent"
+        }
+      ]
+    },
+    {
+      "clusterId": "planned-maintenance-bukit-panjang-lrt:maintenance:2025-08-31-planned-maintenance-bukit-panjang-lrt",
+      "normalizedSlug": "planned-maintenance-bukit-panjang-lrt",
+      "type": "maintenance",
+      "canonicalIssueId": "2025-08-31-planned-maintenance-bukit-panjang-lrt",
+      "memberIssueIds": [
+        "2025-08-31-planned-maintenance-bukit-panjang-lrt",
+        "2025-09-21-planned-maintenance-bukit-panjang-lrt"
+      ],
+      "memberRanges": [
+        {
+          "issueId": "2025-08-31-planned-maintenance-bukit-panjang-lrt",
+          "startMs": 1753873382000,
+          "endMs": 1753873382000,
+          "source": "evidence-only"
+        },
+        {
+          "issueId": "2025-09-21-planned-maintenance-bukit-panjang-lrt",
+          "startMs": 1753873382000,
+          "endMs": 1753873382000,
+          "source": "evidence-only"
+        }
+      ],
+      "timeOverlapEvidence": [
+        {
+          "a": "2025-08-31-planned-maintenance-bukit-panjang-lrt",
+          "b": "2025-09-21-planned-maintenance-bukit-panjang-lrt",
+          "reason": "overlap"
+        }
+      ]
+    },
+    {
+      "clusterId": "sengkang-lrt-maintenance-works:maintenance:2019-06-16-sengkang-lrt-maintenance-works",
+      "normalizedSlug": "sengkang-lrt-maintenance-works",
+      "type": "maintenance",
+      "canonicalIssueId": "2019-06-16-sengkang-lrt-maintenance-works",
+      "memberIssueIds": [
+        "2019-06-16-sengkang-lrt-maintenance-works",
+        "2019-10-04-sengkang-lrt-maintenance-works"
+      ],
+      "memberRanges": [
+        {
+          "issueId": "2019-06-16-sengkang-lrt-maintenance-works",
+          "startMs": 1560614400000,
+          "endMs": 1571500800000,
+          "source": "impact-periods"
+        },
+        {
+          "issueId": "2019-10-04-sengkang-lrt-maintenance-works",
+          "startMs": 1570198500000,
+          "endMs": 1570233600000,
+          "source": "impact-periods"
+        }
+      ],
+      "timeOverlapEvidence": [
+        {
+          "a": "2019-06-16-sengkang-lrt-maintenance-works",
+          "b": "2019-10-04-sengkang-lrt-maintenance-works",
+          "reason": "overlap"
+        }
+      ]
+    }
+  ]
+}
