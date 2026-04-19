@@ -40,6 +40,11 @@ export const OPENAI_MODEL_PRICING: Record<string, OpenAIModelPricing> = {
     cachedInputUsdPer1MTokens: 0.005,
     outputUsdPer1MTokens: 0.4,
   },
+  'gpt-5.4-mini': {
+    inputUsdPer1MTokens: 0.75,
+    cachedInputUsdPer1MTokens: 0.075,
+    outputUsdPer1MTokens: 4.5,
+  },
 };
 
 export function normalizeOpenAIResponsesUsage(
