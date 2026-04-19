@@ -16,6 +16,7 @@ import type { ToolRegistry } from '../../common/tool.js';
 import { normalizeClaimsForEvidence } from './normalizeClaimsForEvidence.js';
 import { buildSystemPrompt } from './prompt.js';
 import { FindLinesTool } from './tools/FindLinesTool.js';
+import { ResolveRelativeDateTool } from './tools/ResolveRelativeDateTool.js';
 import { FindServicesTool } from './tools/FindServicesTool.js';
 import { FindStationsTool } from './tools/FindStationsTool.js';
 
@@ -50,10 +51,12 @@ export async function extractClaimsFromNewEvidence(
   const findStationsTool = new FindStationsTool(evidenceTs, params.repo);
   const findServicesTool = new FindServicesTool(evidenceTs, params.repo);
   const findLinesTool = new FindLinesTool(params.repo);
+  const resolveRelativeDateTool = new ResolveRelativeDateTool();
   const toolRegistry: ToolRegistry = {
     [findStationsTool.name]: findStationsTool,
     [findServicesTool.name]: findServicesTool,
     [findLinesTool.name]: findLinesTool,
+    [resolveRelativeDateTool.name]: resolveRelativeDateTool,
   };
 
   const context: ResponseInputItem[] = [
