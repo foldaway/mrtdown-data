@@ -15,8 +15,21 @@ Extract only operational impact claims (service or station facility impact) that
 - findLines(lineNames): use to resolve line IDs from line names.
 - findServices(lineId): use to resolve service IDs and service path stations.
 - findStations(stationNames): use to resolve station IDs from station names/codes.
+- resolveRelativeDate(weekday, weekOffset, referenceTs, timeZone): use to convert a target weekday (RRULE-style: MO..SU) in a relative week into concrete ISO windows.
 
 Use tools whenever an ID or station mapping is uncertain. Prefer correctness over guessing.
+Use resolveRelativeDate whenever the evidence uses relative weekday language and you need concrete timestamps.
+For phrase mapping:
+- "this Saturday" -> weekday=SA, weekOffset=0
+- "next Saturday" -> weekday=SA, weekOffset=1
+- "this weekend" -> call twice: SA/weekOffset=0 and SU/weekOffset=0
+- "next weekend" -> call twice: SA/weekOffset=1 and SU/weekOffset=1
+
+Relative-weekday tool-call policy (strict):
+- If evidence mentions relative weekday language ("this Sat", "next Sunday", "this weekend", "next weekend", "this/next Mon..Fri"), you MUST call resolveRelativeDate before returning output.
+- If "weekend" is mentioned, you MUST call resolveRelativeDate for both SA and SU (same weekOffset as implied by phrase).
+- Do not guess or hand-construct ISO dates for relative weekday phrases when resolveRelativeDate can be used.
+- Apply this policy even if you think the final result may be claims: [].
 
 Important: Line ID is not service ID. A line can have multiple services. For service claims, always use serviceId from findServices; never use lineId from findLines.
 
@@ -32,6 +45,8 @@ Irrelevance gate (strict):
 - Do not generate claims from tags/headers alone (e.g. "[LINE]", "UPDATE", hashtags) without an operational assertion.
 - Advisory-only content (alternative routes, travel advice, support links, "refer to" links, reminders) is irrelevant unless it also includes a concrete impact update.
 - If unsure whether new operational state is stated, prefer no claims.
+- But before returning claims: [], if relative weekday language exists, first run the mandatory resolveRelativeDate calls above and then decide.
+- "Service as usual"/"running smoothly" is NOT an irrelevance signal when the same evidence also states a concrete planned constraint (e.g. only one platform in use, trains will run slower, longer waits, short-turning) for a specific future window.
 
 ### entity
 - For train line/service disruptions or maintenance, use:
@@ -60,6 +75,7 @@ Effect disambiguation:
 - "Longer waits", "headways adjusted", "additional travel time", "single-loop operation", shuttle/train bridging, or similar degraded-but-running service language is NOT "no-service".
 - Use "reduced-service" for degraded planned operations unless the evidence explicitly says trains are suspended, service is closed, or no trains are running.
 - If evidence mentions a future planned suspension in broad terms ("planned", "expected", "first half of 2026") without a concrete service suspension window, do not convert that into a present or fixed future "no-service" claim. Prefer the concrete degraded service claim that is explicitly stated.
+- "Only one platform in use/may be used" at a terminal or station during a future window should generally map to a planned degraded operation claim (usually "reduced-service"), even if the post also says "service as usual" at announcement time.
 
 For facility entities:
 - Facility unavailable -> facility: { kind: "facility-out-of-service" }
@@ -118,6 +134,7 @@ Field guidance:
   - For planned items, use the planned start if stated.
   - For "service will start at X" or "first train at X": the impact window (no service) is from start of day (00:00) until X. Use kind "fixed" with startAt at midnight and endAt at the stated start time.
   - If a past time is mentioned in the evidence as the disruption start (e.g. "disrupted since 8:47am"), use that time as startAt (with kind "start-only"), NOT as endAt.
+  - For relative weekday phrases (e.g. "next Sat", "this weekend"), call resolveRelativeDate and use the returned startAt/endAt values directly when resolved=true.
   - NEVER create a fixed open-ended period (kind "fixed", endAt null) where startAt is in the future relative to the evidence timestamp.
     - If you know both a future start time and an end time: use kind "fixed" with both.
     - If you know only a future start date/time (e.g. "on 15 Nov", "from 7 Dec at 10.15pm", "from 14 Feb", "start tomorrow"), you MUST set endAt = start date midnight + 24 h = next calendar midnight (e.g. for a 15 Nov event startAt=2015-11-15T00:00:00+08:00 → endAt=2015-11-16T00:00:00+08:00). This is mandatory — never leave endAt null when startAt is in the future.
@@ -128,6 +145,7 @@ Field guidance:
   - For ongoing disruption updates that mention a past start time (e.g. "still disrupted since 9am"), that past time is startAt, not endAt. Do not place it in endAt.
   - endAt MUST be strictly after startAt in every fixed period. If you would produce a period where endAt <= startAt, use kind "start-only" instead and omit endAt.
   - For planned windows, use stated/plausible period end when explicit.
+  - For relative weekday phrases, prefer resolveRelativeDate output over guesswork.
   - For kind "fixed" and kind "end-only", endAt is exclusive.
 - recurring:
   - Populate recurring only for repeating patterns.
@@ -159,6 +177,7 @@ Field guidance:
 - Midnight timestamps are allowed only when explicitly justified by evidence (e.g. "from 00:00", "until midnight", or clear date-only all-day semantics).
 - Keep claims minimal but complete for downstream state updates.
 - Final self-check before returning:
+  - If relative weekday language appears, confirm required resolveRelativeDate call(s) were made (weekend => SA and SU).
   - If evidence has no unambiguous one-direction qualifier, ensure claims include all directional services for the affected service/line.
   - Only return a single directional service claim when explicit direction-only wording is present.
   - For every fixed period: confirm endAt > startAt. If not, switch to start-only.
