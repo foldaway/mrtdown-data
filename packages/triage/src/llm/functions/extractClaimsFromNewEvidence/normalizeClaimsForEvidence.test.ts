@@ -394,4 +394,35 @@ describe('normalizeClaimsForEvidence', () => {
       },
     ]);
   });
+
+  test('adds start-only time hint when service-impact claim is missing time hints', () => {
+    const evidenceText = '[NSL] Train services are delayed due to track fault.';
+    const evidenceTs = '2026-03-01T08:10:00+08:00';
+    const claims: Claim[] = [
+      {
+        entity: { type: 'service', serviceId: 'NSL_MAIN_S' },
+        effect: { service: { kind: 'delay', duration: null }, facility: null },
+        scopes: { service: [{ type: 'service.whole' }] },
+        statusSignal: 'open',
+        timeHints: null,
+        causes: ['track.fault'],
+      },
+    ];
+
+    expect(
+      normalizeClaimsForEvidence({
+        claims,
+        evidenceText,
+        evidenceTs,
+      }),
+    ).toEqual([
+      {
+        ...claims[0],
+        timeHints: {
+          kind: 'start-only',
+          startAt: evidenceTs,
+        },
+      },
+    ]);
+  });
 });

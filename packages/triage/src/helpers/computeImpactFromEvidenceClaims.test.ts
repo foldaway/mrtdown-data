@@ -11,11 +11,14 @@ vi.mock('@mrtdown/fs', () => ({
   },
 }));
 
-function createMockBundle(impactEvents: ImpactEvent[]): IssueBundle {
+function createMockBundle(
+  impactEvents: ImpactEvent[],
+  issueType: IssueBundle['issue']['type'] = 'disruption',
+): IssueBundle {
   return {
     issue: {
       id: '2025-01-01-test-issue',
-      type: 'disruption',
+      type: issueType,
       title: {
         'en-SG': 'Test Issue',
         'zh-Hans': null,
@@ -802,6 +805,43 @@ describe('computeImpactFromEvidenceClaims', () => {
     const serviceKey = keyForAffectedEntity(claim.entity);
     expect(result.newState.services[serviceKey]).toBeUndefined();
     expect(result.newImpactEvents).toEqual([]);
+  });
+
+  test('emits causes for maintenance service claims without periods', () => {
+    const claim = createServiceClaim({
+      causes: ['system.upgrade'],
+      scopes: { service: [{ type: 'service.whole' }] },
+      // no timeHints and no existing periods
+    });
+    const evidenceId = '2025-01-01T10:00:00+08:00';
+
+    const result = computeImpactFromEvidenceClaims({
+      issueBundle: createMockBundle([], 'maintenance'),
+      evidenceId,
+      evidenceTs: evidenceId,
+      claims: [claim],
+    });
+
+    const serviceKey = keyForAffectedEntity(claim.entity);
+    expect(result.newState.services[serviceKey]).toEqual({
+      effect: null,
+      scopes: [],
+      periods: [],
+      causes: ['system.upgrade'],
+    });
+    expect(result.newState.servicesProvenance[serviceKey]).toEqual({
+      causes: { evidenceId },
+    });
+    expect(result.newImpactEvents).toEqual([
+      {
+        id: 'ie_test_001',
+        type: 'causes.set',
+        ts: evidenceId,
+        basis: { evidenceId },
+        entity: claim.entity,
+        causes: ['system.upgrade'],
+      },
+    ]);
   });
 
   test('does emit events for service update with no timeHints when period already exists', () => {
