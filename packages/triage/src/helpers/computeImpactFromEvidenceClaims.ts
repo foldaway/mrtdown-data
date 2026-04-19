@@ -76,18 +76,28 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
         const currentServiceProvenance =
           currentState.servicesProvenance[key] ?? {};
 
-        // A service must have (or be establishing) a period before effects,
-        // scopes, or causes can be recorded for it. Without a period, the
-        // service is not participating in the issue and any attribute update
-        // would be orphaned.
+        // A service usually needs (or must establish) a period before effects
+        // and scopes can be recorded. For maintenance/infra issues, we still
+        // allow metadata-only claims (for example, informational maintenance
+        // updates that explicitly say service is unchanged) to persist causes.
+        const canPersistMetadataWithoutPeriods =
+          params.issueBundle.issue.type !== 'disruption' &&
+          claims.some((candidate) => candidate.causes != null);
+
         if (
           currentServiceState.periods.length === 0 &&
-          claims.every((candidate) => candidate.timeHints == null)
+          claims.every((candidate) => candidate.timeHints == null) &&
+          !canPersistMetadataWithoutPeriods
         ) {
           continue;
         }
 
+        const canEmitServiceAttributes =
+          currentServiceState.periods.length > 0 ||
+          claims.some((candidate) => candidate.timeHints != null);
+
         if (
+          canEmitServiceAttributes &&
           claim.effect?.service != null &&
           !isEqual(currentServiceState.effect, claim.effect.service)
         ) {
@@ -169,6 +179,7 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
         }
 
         if (
+          canEmitServiceAttributes &&
           claim.scopes?.service != null &&
           !isEqual(currentServiceState.scopes, claim.scopes.service)
         ) {
@@ -472,7 +483,7 @@ function isEqual(a: unknown, b: unknown): boolean {
   try {
     deepStrictEqual(a, b);
     return true;
-  } catch (error) {
+  } catch {
     return false;
   }
 }

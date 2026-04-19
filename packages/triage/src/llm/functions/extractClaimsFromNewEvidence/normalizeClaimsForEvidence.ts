@@ -22,7 +22,7 @@ export function normalizeClaimsForEvidence(params: {
   );
 
   if (!evidenceDescribesCurrentDegradedService(params.evidenceText)) {
-    return claims;
+    return ensureServiceImpactClaimsHavePeriodAnchors(claims, params.evidenceTs);
   }
 
   const evidenceTsMs = Date.parse(params.evidenceTs);
@@ -30,7 +30,7 @@ export function normalizeClaimsForEvidence(params: {
     params.evidenceText,
   );
 
-  return claims.map((claim) => {
+  const normalizedClaims = claims.map((claim) => {
     const serviceEffect = claim.effect?.service;
 
     if (
@@ -79,6 +79,39 @@ export function normalizeClaimsForEvidence(params: {
     }
 
     return nextClaim;
+  });
+
+  return ensureServiceImpactClaimsHavePeriodAnchors(
+    normalizedClaims,
+    params.evidenceTs,
+  );
+}
+
+function ensureServiceImpactClaimsHavePeriodAnchors(
+  claims: Claim[],
+  evidenceTs: string,
+): Claim[] {
+  return claims.map((claim) => {
+    if (claim.entity.type !== 'service') {
+      return claim;
+    }
+
+    const serviceEffect = claim.effect?.service;
+    if (
+      serviceEffect == null ||
+      claim.timeHints != null ||
+      claim.statusSignal === 'cleared'
+    ) {
+      return claim;
+    }
+
+    return {
+      ...claim,
+      timeHints: {
+        kind: 'start-only',
+        startAt: evidenceTs,
+      },
+    };
   });
 }
 
