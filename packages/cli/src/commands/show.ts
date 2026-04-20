@@ -166,6 +166,7 @@ export function runShowIssue(opts: ShowIssueOptions): number {
     console.log('Current state — Services');
     console.log('─'.repeat(40));
     for (const [, svc] of Object.entries(resolvedServices)) {
+      const causes = svc.causes ?? [];
       console.log(`  ${svc.serviceId}`);
       console.log(`    effect:  ${formatEffect(svc.effect)}`);
       if (svc.scopes.length > 0) {
@@ -179,8 +180,8 @@ export function runShowIssue(opts: ShowIssueOptions): number {
           );
         }
       }
-      if (svc.causes.length > 0) {
-        console.log(`    causes:  ${svc.causes.join(', ')}`);
+      if (causes.length > 0) {
+        console.log(`    causes:  ${causes.join(', ')}`);
       }
       console.log('');
     }
@@ -190,6 +191,7 @@ export function runShowIssue(opts: ShowIssueOptions): number {
     console.log('Current state — Facilities');
     console.log('─'.repeat(40));
     for (const [, fac] of Object.entries(resolvedFacilities)) {
+      const causes = fac.causes ?? [];
       console.log(`  ${fac.stationId} (${fac.kind})`);
       console.log(`    effect:  ${formatEffect(fac.effect)}`);
       for (const mode of MODES) {
@@ -200,8 +202,8 @@ export function runShowIssue(opts: ShowIssueOptions): number {
           );
         }
       }
-      if (fac.causes.length > 0) {
-        console.log(`    causes:  ${fac.causes.join(', ')}`);
+      if (causes.length > 0) {
+        console.log(`    causes:  ${causes.join(', ')}`);
       }
       console.log('');
     }
