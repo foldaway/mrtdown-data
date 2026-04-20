@@ -13,6 +13,15 @@ import {
   runCreateStation,
   runCreateTown,
 } from './commands/create.js';
+import {
+  runGenerateEvidenceId,
+  runGenerateImpactId,
+  runInspectId,
+} from './commands/id.js';
+import {
+  runIssueReplay,
+  runIssueReextract,
+} from './commands/issue.js';
 import { runList } from './commands/list.js';
 import { runManifest } from './commands/manifest.js';
 import { runPagesIndex } from './commands/pagesIndex.js';
@@ -21,6 +30,8 @@ import { runValidate } from './commands/validate.js';
 import type { ValidationScope } from './validators/index.js';
 
 const program = new Command();
+const collectRepeatedValues = (val: string, prev: string[] | undefined) =>
+  (prev ?? []).concat(val);
 
 program
   .name('mrtdown-cli')
@@ -39,7 +50,7 @@ program
   .option(
     '--scope <scope>',
     'Only validate these entity types (repeatable): town, landmark, operator, station, line, service, issue',
-    (val: string, prev: string[] | undefined) => (prev ?? []).concat(val),
+    collectRepeatedValues,
   )
   .action((opts) => {
     const dataDir = program.opts().dataDir;
@@ -96,6 +107,8 @@ program
   });
 
 const list = program.command('list').description('List entities');
+const issue = program.command('issue').description('Issue maintenance tooling');
+const id = program.command('id').description('Generate or inspect helper IDs');
 
 const listEntities = [
   'issue',
@@ -122,6 +135,97 @@ for (const entity of listEntities) {
       process.exit(code);
     });
 }
+
+issue
+  .command('replay')
+  .description('Replay issue impact events from existing evidence/impact data')
+  .option(
+    '--issue <issue-id>',
+    'Replay only this issue (repeatable)',
+    collectRepeatedValues,
+  )
+  .option('--dry-run', 'Compute replay results without writing')
+  .action((opts) => {
+    const dataDir = program.opts().dataDir;
+    const code = runIssueReplay({
+      dataDir,
+    }, {
+      issueIds: opts.issue,
+      dryRun: opts.dryRun,
+    });
+    process.exit(code);
+  });
+
+issue
+  .command('reextract')
+  .description('Re-extract claims for targeted issue evidence, then replay')
+  .option(
+    '--mode <mode>',
+    'Targeting mode: period-violations, degraded-future-no-service, empty-impact',
+    'period-violations',
+  )
+  .option(
+    '--issue <issue-id>',
+    'Limit to this issue (repeatable)',
+    collectRepeatedValues,
+  )
+  .option(
+    '--evidence <evidence-id>',
+    'Limit to this evidence item (repeatable)',
+    collectRepeatedValues,
+  )
+  .option('--dry-run', 'List targeted evidence without re-extracting')
+  .action(async (opts) => {
+    const dataDir = program.opts().dataDir;
+    const code = await runIssueReextract(
+      { dataDir },
+      {
+        mode: opts.mode,
+        issueIds: opts.issue,
+        evidenceIds: opts.evidence,
+        dryRun: opts.dryRun,
+      },
+    );
+    process.exit(code);
+  });
+
+id
+  .command('evidence')
+  .description('Generate an evidence ID')
+  .option('--ts <iso>', 'Anchor the ID to a specific ISO-8601 timestamp')
+  .option('--json', 'Output JSON metadata instead of the raw ID')
+  .action((opts) => {
+    const code = runGenerateEvidenceId({
+      ts: opts.ts,
+      json: opts.json,
+    });
+    process.exit(code);
+  });
+
+id
+  .command('impact')
+  .description('Generate an impact-event ID')
+  .option('--ts <iso>', 'Anchor the ID to a specific ISO-8601 timestamp')
+  .option('--json', 'Output JSON metadata instead of the raw ID')
+  .action((opts) => {
+    const code = runGenerateImpactId({
+      ts: opts.ts,
+      json: opts.json,
+    });
+    process.exit(code);
+  });
+
+id
+  .command('inspect')
+  .description('Inspect a generated evidence / impact-event ID')
+  .argument('<id>', 'Generated ID to inspect')
+  .option('--json', 'Output JSON')
+  .action((value, opts) => {
+    const code = runInspectId(value, {
+      json: opts.json,
+    });
+    process.exit(code);
+  });
 
 const create = program.command('create').description('Create a new entity');
 

@@ -140,7 +140,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
           break;
         }
         default: {
-          context.push(item);
+          context.push(item as ResponseInputItem);
           break;
         }
       }
