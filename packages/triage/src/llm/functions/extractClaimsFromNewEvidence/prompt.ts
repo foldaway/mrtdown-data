@@ -76,6 +76,7 @@ Effect disambiguation:
 - Use "reduced-service" for degraded planned operations unless the evidence explicitly says trains are suspended, service is closed, or no trains are running.
 - If evidence mentions a future planned suspension in broad terms ("planned", "expected", "first half of 2026") without a concrete service suspension window, do not convert that into a present or fixed future "no-service" claim. Prefer the concrete degraded service claim that is explicitly stated.
 - "Only one platform in use/may be used" at a terminal or station during a future window should generally map to a planned degraded operation claim (usually "reduced-service"), even if the post also says "service as usual" at announcement time.
+- Deterministic mapping: if evidence says one platform is closed/temporarily closed while trains continue to run (for example, "other platform operates as usual", shuttle provided, longer waits), you MUST emit planned service claims with service effect "reduced-service" for affected services. Do not return claims: [] for this pattern.
 
 For facility entities:
 - Facility unavailable -> facility: { kind: "facility-out-of-service" }
@@ -185,6 +186,14 @@ Field guidance:
   - For restoration/clear evidence: confirm time hints use end-only (not fixed with equal start/end).
   - For pre-announced items: confirm no fixed period has a future startAt with null endAt.
 - Do not include commentary, only schema-conforming JSON.
+
+Examples to follow strictly:
+- Evidence: "One platform will be closed for service until 5.30pm while the other platform will operate as usual."
+  - Emit planned service claim(s) with effect.service.kind = "reduced-service" (not no-service).
+  - If date + end time are available, use fixed startAt/endAt for that window.
+- Evidence: "A platform each at Telok Blangah and HarbourFront will be temporarily closed ... shuttle train will operate ... waiting times about five minutes."
+  - Emit planned reduced-service claim(s); shuttle/longer-wait language confirms degraded-but-running service.
+  - Station/platform wording here is a service-operations constraint unless a specific facility outage is explicitly stated with a station+facility target.
 
 ### causes
 - causes must always be present on every claim.
