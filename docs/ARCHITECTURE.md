@@ -1,10 +1,10 @@
 # MRTDown Architecture
 
-This document describes the data model, services, and processing flow for MRTDown, with a focus on evidence-driven issues, deterministic state derivation, and a realtime “crowd reports” plane.
+This document describes the canonical MRTDown data model, deterministic issue state derivation, and the boundary between reviewed history in `mrtdown-data` and runtime state in `mrtdown-site`.
 
-This repo is the canonical record for curated data and append-only logs. Realtime crowd data is served operationally from a separate service, and periodically snapshotted back into this repo (or referenced via manifests) to preserve a canonical history.
+This repo is the canonical record for curated data and append-only logs. Runtime data may live elsewhere, but it should only become canonical here through explicit review. Crowd-sourced reporting remains a follow-up phase and is not required for the current site bring-up.
 
-Last updated: 2026-02-19 (Asia/Singapore)
+Last updated: 2026-04-21 (America/Los_Angeles)
 
 
 ## Goals
@@ -12,8 +12,9 @@ Last updated: 2026-02-19 (Asia/Singapore)
 - Canonical, auditable, append-only history for issues and derived impacts
 - Deterministic “current state” derivation from append-only logs
 - Support multiple issue types: disruption, maintenance, infrastructure (facilities)
-- Separate realtime ingestion/serving from canonical historical record
+- Separate runtime ingestion/serving from canonical historical record
 - Allow under-reporting tolerance: non-official sources can escalate, but de-escalation is stricter
+- Keep the site bring-up unblocked by future crowd-reporting work
 
 
 ## Key Concepts
@@ -28,30 +29,31 @@ Last updated: 2026-02-19 (Asia/Singapore)
 
 ## Repository Structure
 
-This structure is the recommended end-state. During migration, additional legacy folders may exist.
+This repo is the canonical data repo.
 
-- next/
-  - data/
-    - source/
-      - station/
-      - line/
-      - service/
-      - operator/
-    - issues/
-      - YYYY/
-        - MM/
-          - <issue_id>/
-            - issue.json
-            - evidence.ndjson
-            - impact.ndjson
-  - artifacts/
-    - duckdb/
-      - mrtdown.duckdb
-    - exports/
-      - crowd_signals/           (optional derived exports for historical charts)
-- evals/
-  - fixtures/
-  - src/
+- data/
+  - station/
+  - line/
+  - service/
+  - operator/
+  - town/
+  - landmark/
+  - public_holidays.json
+  - issue/
+    - YYYY/
+      - MM/
+        - <issue_id>/
+          - issue.json
+          - evidence.ndjson
+          - impact.ndjson
+- packages/
+  - core/
+  - fs/
+  - cli/
+  - triage/
+- docs/
+
+The mirrored Postgres schema, import pipeline, and runtime-derived facts live in `mrtdown-site`, not here.
 
 
 ## Canonical Data vs Realtime Data
@@ -60,13 +62,14 @@ Canonical (this repo)
 - Static network definitions (stations, lines, services, operators)
 - Curated issues and evidence (official and non-official)
 - Append-only impact logs
-- Snapshots/manifests of crowd signals or raw windows (optional)
+- Optional reviewed snapshots/manifests derived from runtime systems
 
-Realtime (separate service)
-- Public crowd reports ingestion
-- Rolling aggregations and spike detection
-- Realtime serving over REST/SSE/WebSocket
-- Periodic snapshot/manifest generation into canonical storage
+Runtime (`mrtdown-site` / separate service)
+- Canonical import into Postgres
+- Rebuildable fact tables and app-facing read models
+- Future public crowd reports ingestion
+- Future rolling aggregations and spike detection
+- Future live signal serving and promotion workflows
 
 
 ## Data Model Overview
