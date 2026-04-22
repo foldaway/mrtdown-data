@@ -17,7 +17,7 @@ import { assert } from '../assert.js';
 import { getSlugDateTimeFromClaims } from './helpers/getSlugDateTimeFromClaims.js';
 import type { IngestContent } from './types.js';
 
-const DATA_DIR = resolve(import.meta.dirname, '../../../data');
+const DATA_DIR = resolve(import.meta.dirname, '../../../../data');
 
 const store = new FileStore(DATA_DIR);
 const writeStore = new FileWriteStore(DATA_DIR);

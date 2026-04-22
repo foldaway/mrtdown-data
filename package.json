@@ -12,6 +12,7 @@
     "cli": "turbo cli",
     "build": "turbo build",
     "test": "turbo test",
+    "ingest:webhook": "node --enable-source-maps ./packages/triage/dist/scripts/ingestViaWebhook.js",
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "changeset:publish": "changeset publish",
