@@ -1,0 +1,28 @@
+{
+  "id": "BCL",
+  "name": {
+    "en-SG": "Bencoolen",
+    "zh-Hans": "明古连",
+    "ms": null,
+    "ta": "பென்கூலன்"
+  },
+  "geo": {
+    "latitude": 1.3002,
+    "longitude": 103.848
+  },
+  "stationCodes": [
+    {
+      "lineId": "DTL",
+      "code": "DT21",
+      "startedAt": "2017-10-21",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-management-university",
+    "the-cathay",
+    "m-hotel"
+  ],
+  "townId": "rochor"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2024-07-26-nsl-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Major train fault affecting North-South Line travel time",
+    "zh-Hans": "影响南北线行车时间的主要列车故障",
+    "ms": "Gangguan kereta utama yang mempengaruhi waktu perjalanan Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் பயண நேரத்தை பாதிக்கும் பெரிய ரயில் கோளாறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

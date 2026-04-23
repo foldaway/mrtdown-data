@@ -1,0 +1,460 @@
+{
+    "id": "DTL_MAIN_W",
+    "lineId": "DTL",
+    "name": {
+        "en-SG": "Downtown Line (Main Service) - Westbound",
+        "zh-Hans": "市区线（主线） - 西向",
+        "ms": "Laluan DTL (Layanan Utama) - Arah Barat",
+        "ta": "மண்டை வழி (முக்கிய சேவை) - மேற்கு திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_2013_stage_1",
+            "startAt": "2013-12-22",
+            "endAt": "2015-12-27",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "CTN",
+                        "displayCode": "DT19"
+                    },
+                    {
+                        "stationId": "TLA",
+                        "displayCode": "DT18"
+                    },
+                    {
+                        "stationId": "DTN",
+                        "displayCode": "DT17"
+                    },
+                    {
+                        "stationId": "BFT",
+                        "displayCode": "DT16"
+                    },
+                    {
+                        "stationId": "PMN",
+                        "displayCode": "DT15"
+                    },
+                    {
+                        "stationId": "BGS",
+                        "displayCode": "DT14"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:36",
+                    "end": "23:40"
+                },
+                "weekends": {
+                    "start": "06:00",
+                    "end": "23:50"
+                }
+            }
+        },
+        {
+            "id": "r_2015_stage_2",
+            "startAt": "2015-12-27",
+            "endAt": "2017-10-21",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "CTN",
+                        "displayCode": "DT19"
+                    },
+                    {
+                        "stationId": "TLA",
+                        "displayCode": "DT18"
+                    },
+                    {
+                        "stationId": "DTN",
+                        "displayCode": "DT17"
+                    },
+                    {
+                        "stationId": "BFT",
+                        "displayCode": "DT16"
+                    },
+                    {
+                        "stationId": "PMN",
+                        "displayCode": "DT15"
+                    },
+                    {
+                        "stationId": "BGS",
+                        "displayCode": "DT14"
+                    },
+                    {
+                        "stationId": "RCR",
+                        "displayCode": "DT13"
+                    },
+                    {
+                        "stationId": "LTI",
+                        "displayCode": "DT12"
+                    },
+                    {
+                        "stationId": "NEW",
+                        "displayCode": "DT11"
+                    },
+                    {
+                        "stationId": "STV",
+                        "displayCode": "DT10"
+                    },
+                    {
+                        "stationId": "BTN",
+                        "displayCode": "DT9"
+                    },
+                    {
+                        "stationId": "TKK",
+                        "displayCode": "DT8"
+                    },
+                    {
+                        "stationId": "SAV",
+                        "displayCode": "DT7"
+                    },
+                    {
+                        "stationId": "KAP",
+                        "displayCode": "DT6"
+                    },
+                    {
+                        "stationId": "BTW",
+                        "displayCode": "DT5"
+                    },
+                    {
+                        "stationId": "HVW",
+                        "displayCode": "DT3"
+                    },
+                    {
+                        "stationId": "CSW",
+                        "displayCode": "DT2"
+                    },
+                    {
+                        "stationId": "BKP",
+                        "displayCode": "DT1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:36",
+                    "end": "23:40"
+                },
+                "weekends": {
+                    "start": "06:00",
+                    "end": "23:50"
+                }
+            }
+        },
+        {
+            "id": "r_2017_stage_3",
+            "startAt": "2017-10-21",
+            "endAt": "2025-02-28",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "XPO",
+                        "displayCode": "DT35"
+                    },
+                    {
+                        "stationId": "UPC",
+                        "displayCode": "DT34"
+                    },
+                    {
+                        "stationId": "TPE",
+                        "displayCode": "DT33"
+                    },
+                    {
+                        "stationId": "TAM",
+                        "displayCode": "DT32"
+                    },
+                    {
+                        "stationId": "TPW",
+                        "displayCode": "DT31"
+                    },
+                    {
+                        "stationId": "BDR",
+                        "displayCode": "DT30"
+                    },
+                    {
+                        "stationId": "BDN",
+                        "displayCode": "DT29"
+                    },
+                    {
+                        "stationId": "KKB",
+                        "displayCode": "DT28"
+                    },
+                    {
+                        "stationId": "UBI",
+                        "displayCode": "DT27"
+                    },
+                    {
+                        "stationId": "MPS",
+                        "displayCode": "DT26"
+                    },
+                    {
+                        "stationId": "MTR",
+                        "displayCode": "DT25"
+                    },
+                    {
+                        "stationId": "GLB",
+                        "displayCode": "DT24"
+                    },
+                    {
+                        "stationId": "BDM",
+                        "displayCode": "DT23"
+                    },
+                    {
+                        "stationId": "JLB",
+                        "displayCode": "DT22"
+                    },
+                    {
+                        "stationId": "BCL",
+                        "displayCode": "DT21"
+                    },
+                    {
+                        "stationId": "FCN",
+                        "displayCode": "DT20"
+                    },
+                    {
+                        "stationId": "CTN",
+                        "displayCode": "DT19"
+                    },
+                    {
+                        "stationId": "TLA",
+                        "displayCode": "DT18"
+                    },
+                    {
+                        "stationId": "DTN",
+                        "displayCode": "DT17"
+                    },
+                    {
+                        "stationId": "BFT",
+                        "displayCode": "DT16"
+                    },
+                    {
+                        "stationId": "PMN",
+                        "displayCode": "DT15"
+                    },
+                    {
+                        "stationId": "BGS",
+                        "displayCode": "DT14"
+                    },
+                    {
+                        "stationId": "RCR",
+                        "displayCode": "DT13"
+                    },
+                    {
+                        "stationId": "LTI",
+                        "displayCode": "DT12"
+                    },
+                    {
+                        "stationId": "NEW",
+                        "displayCode": "DT11"
+                    },
+                    {
+                        "stationId": "STV",
+                        "displayCode": "DT10"
+                    },
+                    {
+                        "stationId": "BTN",
+                        "displayCode": "DT9"
+                    },
+                    {
+                        "stationId": "TKK",
+                        "displayCode": "DT8"
+                    },
+                    {
+                        "stationId": "SAV",
+                        "displayCode": "DT7"
+                    },
+                    {
+                        "stationId": "KAP",
+                        "displayCode": "DT6"
+                    },
+                    {
+                        "stationId": "BTW",
+                        "displayCode": "DT5"
+                    },
+                    {
+                        "stationId": "HVW",
+                        "displayCode": "DT3"
+                    },
+                    {
+                        "stationId": "CSW",
+                        "displayCode": "DT2"
+                    },
+                    {
+                        "stationId": "BKP",
+                        "displayCode": "DT1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:36",
+                    "end": "23:40"
+                },
+                "weekends": {
+                    "start": "06:00",
+                    "end": "23:50"
+                }
+            }
+        },
+        {
+            "id": "r_2025_hume",
+            "startAt": "2025-02-28",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "XPO",
+                        "displayCode": "DT35"
+                    },
+                    {
+                        "stationId": "UPC",
+                        "displayCode": "DT34"
+                    },
+                    {
+                        "stationId": "TPE",
+                        "displayCode": "DT33"
+                    },
+                    {
+                        "stationId": "TAM",
+                        "displayCode": "DT32"
+                    },
+                    {
+                        "stationId": "TPW",
+                        "displayCode": "DT31"
+                    },
+                    {
+                        "stationId": "BDR",
+                        "displayCode": "DT30"
+                    },
+                    {
+                        "stationId": "BDN",
+                        "displayCode": "DT29"
+                    },
+                    {
+                        "stationId": "KKB",
+                        "displayCode": "DT28"
+                    },
+                    {
+                        "stationId": "UBI",
+                        "displayCode": "DT27"
+                    },
+                    {
+                        "stationId": "MPS",
+                        "displayCode": "DT26"
+                    },
+                    {
+                        "stationId": "MTR",
+                        "displayCode": "DT25"
+                    },
+                    {
+                        "stationId": "GLB",
+                        "displayCode": "DT24"
+                    },
+                    {
+                        "stationId": "BDM",
+                        "displayCode": "DT23"
+                    },
+                    {
+                        "stationId": "JLB",
+                        "displayCode": "DT22"
+                    },
+                    {
+                        "stationId": "BCL",
+                        "displayCode": "DT21"
+                    },
+                    {
+                        "stationId": "FCN",
+                        "displayCode": "DT20"
+                    },
+                    {
+                        "stationId": "CTN",
+                        "displayCode": "DT19"
+                    },
+                    {
+                        "stationId": "TLA",
+                        "displayCode": "DT18"
+                    },
+                    {
+                        "stationId": "DTN",
+                        "displayCode": "DT17"
+                    },
+                    {
+                        "stationId": "BFT",
+                        "displayCode": "DT16"
+                    },
+                    {
+                        "stationId": "PMN",
+                        "displayCode": "DT15"
+                    },
+                    {
+                        "stationId": "BGS",
+                        "displayCode": "DT14"
+                    },
+                    {
+                        "stationId": "RCR",
+                        "displayCode": "DT13"
+                    },
+                    {
+                        "stationId": "LTI",
+                        "displayCode": "DT12"
+                    },
+                    {
+                        "stationId": "NEW",
+                        "displayCode": "DT11"
+                    },
+                    {
+                        "stationId": "STV",
+                        "displayCode": "DT10"
+                    },
+                    {
+                        "stationId": "BTN",
+                        "displayCode": "DT9"
+                    },
+                    {
+                        "stationId": "TKK",
+                        "displayCode": "DT8"
+                    },
+                    {
+                        "stationId": "SAV",
+                        "displayCode": "DT7"
+                    },
+                    {
+                        "stationId": "KAP",
+                        "displayCode": "DT6"
+                    },
+                    {
+                        "stationId": "BTW",
+                        "displayCode": "DT5"
+                    },
+                    {
+                        "stationId": "HME",
+                        "displayCode": "DT4"
+                    },
+                    {
+                        "stationId": "HVW",
+                        "displayCode": "DT3"
+                    },
+                    {
+                        "stationId": "CSW",
+                        "displayCode": "DT2"
+                    },
+                    {
+                        "stationId": "BKP",
+                        "displayCode": "DT1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:36",
+                    "end": "23:40"
+                },
+                "weekends": {
+                    "start": "06:00",
+                    "end": "23:50"
+                }
+            }
+        }
+    ]
+}

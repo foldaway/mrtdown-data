@@ -1,0 +1,28 @@
+{
+  "id": "FRP",
+  "name": {
+    "en-SG": "Farrer Park",
+    "zh-Hans": "花拉公园",
+    "ms": null,
+    "ta": "ஃபேரர் பார்க்"
+  },
+  "geo": {
+    "latitude": 1.3144,
+    "longitude": 103.853
+  },
+  "stationCodes": [
+    {
+      "lineId": "NEL",
+      "code": "NE8",
+      "startedAt": "2003-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "sri-srinivasa-perumal-temple",
+    "city-square-mall",
+    "jalan-besar-stadium"
+  ],
+  "townId": "rochor"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2026-04-19-sklrt-system-upgrade",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "SKLRT System Upgrade - Service Adjustments",
+    "zh-Hans": "盛港轻轨系统升级 - 服务调整",
+    "ms": "SKLRT Naik Taraf Sistem - Penyesuaian Perkhidmatan",
+    "ta": "SKLRT அமைப்பு மேம்பாடு - சேவை மாற்றங்கள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

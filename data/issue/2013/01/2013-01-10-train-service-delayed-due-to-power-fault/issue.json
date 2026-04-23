@@ -1,0 +1,13 @@
+{
+  "id": "2013-01-10-train-service-delayed-due-to-power-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train service delayed due to power fault",
+    "zh-Hans": "火车因电力故障延误",
+    "ms": "Perkhidmatan kereta api tertangguh kerana kerosakan kuasa",
+    "ta": "தொடர்வண்டி சேவை மின்சாரக் கோளாறு காரணமாக தாமதமானது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

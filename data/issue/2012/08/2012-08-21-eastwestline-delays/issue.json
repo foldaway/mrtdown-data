@@ -1,0 +1,13 @@
+{
+  "id": "2012-08-21-eastwestline-delays",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service Disruption on East West Line",
+    "zh-Hans": "东西线服务中断",
+    "ms": "Gangguan Perkhidmatan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் சேவை இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

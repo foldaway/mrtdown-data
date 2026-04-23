@@ -1,0 +1,13 @@
+{
+  "id": "2013-04-29-nsl-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Track fault causing slower speeds on NSL",
+    "zh-Hans": "轨道故障导致南北线（NSL）速度减慢",
+    "ms": "Ralat trek menyebabkan kelajuan perlahan di NSL",
+    "ta": "NSL இல் மெதுவான வேகத்திற்கு காரணமான தடப் பிழை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

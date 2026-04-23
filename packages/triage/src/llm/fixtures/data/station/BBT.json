@@ -1,0 +1,34 @@
+{
+  "id": "BBT",
+  "name": {
+    "en-SG": "Bukit Batok",
+    "zh-Hans": "武吉巴督",
+    "ms": null,
+    "ta": "புக்கிட் பாத்தோக்"
+  },
+  "geo": {
+    "latitude": 1.3505,
+    "longitude": 103.7633
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS2",
+      "startedAt": "1990-03-10",
+      "endedAt": null,
+      "structureType": "elevated"
+    },
+    {
+      "lineId": "TGL",
+      "code": "TG2",
+      "startedAt": "2025-12-31",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-batok-nature-park",
+    "west-mall"
+  ],
+  "townId": "bukit-batok"
+}

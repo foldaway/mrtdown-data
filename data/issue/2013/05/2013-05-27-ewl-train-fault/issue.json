@@ -1,0 +1,13 @@
+{
+  "id": "2013-05-27-ewl-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Major train fault affecting East West Line",
+    "zh-Hans": "主要列车故障影响东西线",
+    "ms": "Ralat kereta utama menjejaskan Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையை பாதிக்கும் முக்கிய ரயில் பிழை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

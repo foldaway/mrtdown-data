@@ -1,0 +1,27 @@
+{
+  "id": "FJR",
+  "name": {
+    "en-SG": "Fajar",
+    "zh-Hans": "法嘉",
+    "ms": null,
+    "ta": "ஃபஜார்"
+  },
+  "geo": {
+    "latitude": 1.3775,
+    "longitude": 103.7681
+  },
+  "stationCodes": [
+    {
+      "lineId": "BPLRT",
+      "code": "BP10",
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-panjang-plaza",
+    "fajar-shopping-centre"
+  ],
+  "townId": "bukit-panjang"
+}

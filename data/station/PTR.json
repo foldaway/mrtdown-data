@@ -1,0 +1,28 @@
+{
+  "id": "PTR",
+  "name": {
+    "en-SG": "Petir",
+    "zh-Hans": "柏提",
+    "ms": null,
+    "ta": "பெட்டீர்"
+  },
+  "geo": {
+    "latitude": 1.3753,
+    "longitude": 103.7699
+  },
+  "stationCodes": [
+    {
+      "lineId": "BPLRT",
+      "code": "BP7",
+      "startedAt": "1999-11-06",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "bukit-panjang-plaza",
+    "lianhua-primary-school",
+    "the-rail-mall"
+  ],
+  "townId": "bukit-panjang"
+}

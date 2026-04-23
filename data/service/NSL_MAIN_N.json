@@ -1,0 +1,484 @@
+{
+    "id": "NSL_MAIN_N",
+    "lineId": "NSL",
+    "name": {
+        "en-SG": "North-South Line (Main Service) - Northbound",
+        "zh-Hans": "南北地铁线（主线） - 往北方向",
+        "ms": "Laluan MRT Utara (Layanan Utama) - Arah Utara",
+        "ta": "தெற்கு மேற்கு எம்ஆர்டி வழி (முக்கிய சேவை) - தெற்கு திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_legacy_1987_2009",
+            "startAt": "1987-11-07",
+            "endAt": "2010-01-01",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "MRB",
+                        "displayCode": "NS27"
+                    },
+                    {
+                        "stationId": "RFP",
+                        "displayCode": "NS26"
+                    },
+                    {
+                        "stationId": "CTH",
+                        "displayCode": "NS25"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "NS24"
+                    },
+                    {
+                        "stationId": "SOM",
+                        "displayCode": "NS23"
+                    },
+                    {
+                        "stationId": "ORC",
+                        "displayCode": "NS22"
+                    },
+                    {
+                        "stationId": "NEW",
+                        "displayCode": "NS21"
+                    },
+                    {
+                        "stationId": "NOV",
+                        "displayCode": "NS20"
+                    },
+                    {
+                        "stationId": "TAP",
+                        "displayCode": "NS19"
+                    },
+                    {
+                        "stationId": "BDL",
+                        "displayCode": "NS18"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "NS17"
+                    },
+                    {
+                        "stationId": "AMK",
+                        "displayCode": "NS16"
+                    },
+                    {
+                        "stationId": "YCK",
+                        "displayCode": "NS15"
+                    },
+                    {
+                        "stationId": "YIS",
+                        "displayCode": "NS13"
+                    },
+                    {
+                        "stationId": "SBW",
+                        "displayCode": "NS11"
+                    },
+                    {
+                        "stationId": "ADM",
+                        "displayCode": "NS10"
+                    },
+                    {
+                        "stationId": "WDL",
+                        "displayCode": "NS9"
+                    },
+                    {
+                        "stationId": "MSL",
+                        "displayCode": "NS8"
+                    },
+                    {
+                        "stationId": "KRJ",
+                        "displayCode": "NS7"
+                    },
+                    {
+                        "stationId": "YWT",
+                        "displayCode": "NS5"
+                    },
+                    {
+                        "stationId": "CCK",
+                        "displayCode": "NS4"
+                    },
+                    {
+                        "stationId": "BGB",
+                        "displayCode": "NS3"
+                    },
+                    {
+                        "stationId": "BBT",
+                        "displayCode": "NS2"
+                    },
+                    {
+                        "stationId": "JUR",
+                        "displayCode": "NS1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:07",
+                    "end": "01:00"
+                },
+                "weekends": {
+                    "start": "05:35",
+                    "end": "01:00"
+                }
+            }
+        },
+        {
+            "id": "r_2010",
+            "startAt": "2010-01-01",
+            "endAt": "2019-11-02",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "MRB",
+                        "displayCode": "NS27"
+                    },
+                    {
+                        "stationId": "RFP",
+                        "displayCode": "NS26"
+                    },
+                    {
+                        "stationId": "CTH",
+                        "displayCode": "NS25"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "NS24"
+                    },
+                    {
+                        "stationId": "SOM",
+                        "displayCode": "NS23"
+                    },
+                    {
+                        "stationId": "ORC",
+                        "displayCode": "NS22"
+                    },
+                    {
+                        "stationId": "NEW",
+                        "displayCode": "NS21"
+                    },
+                    {
+                        "stationId": "NOV",
+                        "displayCode": "NS20"
+                    },
+                    {
+                        "stationId": "TAP",
+                        "displayCode": "NS19"
+                    },
+                    {
+                        "stationId": "BDL",
+                        "displayCode": "NS18"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "NS17"
+                    },
+                    {
+                        "stationId": "AMK",
+                        "displayCode": "NS16"
+                    },
+                    {
+                        "stationId": "YCK",
+                        "displayCode": "NS15"
+                    },
+                    {
+                        "stationId": "YIS",
+                        "displayCode": "NS13"
+                    },
+                    {
+                        "stationId": "SBW",
+                        "displayCode": "NS11"
+                    },
+                    {
+                        "stationId": "ADM",
+                        "displayCode": "NS10"
+                    },
+                    {
+                        "stationId": "WDL",
+                        "displayCode": "NS9"
+                    },
+                    {
+                        "stationId": "MSL",
+                        "displayCode": "NS8"
+                    },
+                    {
+                        "stationId": "KRJ",
+                        "displayCode": "NS7"
+                    },
+                    {
+                        "stationId": "YWT",
+                        "displayCode": "NS5"
+                    },
+                    {
+                        "stationId": "CCK",
+                        "displayCode": "NS4"
+                    },
+                    {
+                        "stationId": "BGB",
+                        "displayCode": "NS3"
+                    },
+                    {
+                        "stationId": "BBT",
+                        "displayCode": "NS2"
+                    },
+                    {
+                        "stationId": "JUR",
+                        "displayCode": "NS1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:07",
+                    "end": "01:00"
+                },
+                "weekends": {
+                    "start": "05:35",
+                    "end": "01:00"
+                }
+            }
+        },
+        {
+            "id": "r_2014_marina_south_pier",
+            "startAt": "2014-11-23",
+            "endAt": "2019-11-02",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "MSP",
+                        "displayCode": "NS28"
+                    },
+                    {
+                        "stationId": "MRB",
+                        "displayCode": "NS27"
+                    },
+                    {
+                        "stationId": "RFP",
+                        "displayCode": "NS26"
+                    },
+                    {
+                        "stationId": "CTH",
+                        "displayCode": "NS25"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "NS24"
+                    },
+                    {
+                        "stationId": "SOM",
+                        "displayCode": "NS23"
+                    },
+                    {
+                        "stationId": "ORC",
+                        "displayCode": "NS22"
+                    },
+                    {
+                        "stationId": "NEW",
+                        "displayCode": "NS21"
+                    },
+                    {
+                        "stationId": "NOV",
+                        "displayCode": "NS20"
+                    },
+                    {
+                        "stationId": "TAP",
+                        "displayCode": "NS19"
+                    },
+                    {
+                        "stationId": "BDL",
+                        "displayCode": "NS18"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "NS17"
+                    },
+                    {
+                        "stationId": "AMK",
+                        "displayCode": "NS16"
+                    },
+                    {
+                        "stationId": "YCK",
+                        "displayCode": "NS15"
+                    },
+                    {
+                        "stationId": "YIS",
+                        "displayCode": "NS13"
+                    },
+                    {
+                        "stationId": "SBW",
+                        "displayCode": "NS11"
+                    },
+                    {
+                        "stationId": "ADM",
+                        "displayCode": "NS10"
+                    },
+                    {
+                        "stationId": "WDL",
+                        "displayCode": "NS9"
+                    },
+                    {
+                        "stationId": "MSL",
+                        "displayCode": "NS8"
+                    },
+                    {
+                        "stationId": "KRJ",
+                        "displayCode": "NS7"
+                    },
+                    {
+                        "stationId": "YWT",
+                        "displayCode": "NS5"
+                    },
+                    {
+                        "stationId": "CCK",
+                        "displayCode": "NS4"
+                    },
+                    {
+                        "stationId": "BGB",
+                        "displayCode": "NS3"
+                    },
+                    {
+                        "stationId": "BBT",
+                        "displayCode": "NS2"
+                    },
+                    {
+                        "stationId": "JUR",
+                        "displayCode": "NS1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:07",
+                    "end": "01:00"
+                },
+                "weekends": {
+                    "start": "05:35",
+                    "end": "01:00"
+                }
+            }
+        },
+        {
+            "id": "r_2019_canberra",
+            "startAt": "2019-11-02",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "MSP",
+                        "displayCode": "NS28"
+                    },
+                    {
+                        "stationId": "MRB",
+                        "displayCode": "NS27"
+                    },
+                    {
+                        "stationId": "RFP",
+                        "displayCode": "NS26"
+                    },
+                    {
+                        "stationId": "CTH",
+                        "displayCode": "NS25"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "NS24"
+                    },
+                    {
+                        "stationId": "SOM",
+                        "displayCode": "NS23"
+                    },
+                    {
+                        "stationId": "ORC",
+                        "displayCode": "NS22"
+                    },
+                    {
+                        "stationId": "NEW",
+                        "displayCode": "NS21"
+                    },
+                    {
+                        "stationId": "NOV",
+                        "displayCode": "NS20"
+                    },
+                    {
+                        "stationId": "TAP",
+                        "displayCode": "NS19"
+                    },
+                    {
+                        "stationId": "BDL",
+                        "displayCode": "NS18"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "NS17"
+                    },
+                    {
+                        "stationId": "AMK",
+                        "displayCode": "NS16"
+                    },
+                    {
+                        "stationId": "YCK",
+                        "displayCode": "NS15"
+                    },
+                    {
+                        "stationId": "YIS",
+                        "displayCode": "NS13"
+                    },
+                    {
+                        "stationId": "CBR",
+                        "displayCode": "NS12"
+                    },
+                    {
+                        "stationId": "SBW",
+                        "displayCode": "NS11"
+                    },
+                    {
+                        "stationId": "ADM",
+                        "displayCode": "NS10"
+                    },
+                    {
+                        "stationId": "WDL",
+                        "displayCode": "NS9"
+                    },
+                    {
+                        "stationId": "MSL",
+                        "displayCode": "NS8"
+                    },
+                    {
+                        "stationId": "KRJ",
+                        "displayCode": "NS7"
+                    },
+                    {
+                        "stationId": "YWT",
+                        "displayCode": "NS5"
+                    },
+                    {
+                        "stationId": "CCK",
+                        "displayCode": "NS4"
+                    },
+                    {
+                        "stationId": "BGB",
+                        "displayCode": "NS3"
+                    },
+                    {
+                        "stationId": "BBT",
+                        "displayCode": "NS2"
+                    },
+                    {
+                        "stationId": "JUR",
+                        "displayCode": "NS1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:07",
+                    "end": "01:00"
+                },
+                "weekends": {
+                    "start": "05:35",
+                    "end": "01:00"
+                }
+            }
+        }
+    ]
+}

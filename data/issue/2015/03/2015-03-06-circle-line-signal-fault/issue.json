@@ -1,0 +1,13 @@
+{
+  "id": "2015-03-06-circle-line-signal-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signal fault causing delays on Circle Line",
+    "zh-Hans": "信号故障导致环线延误",
+    "ms": "Kerosakan isyarat menyebabkan kelewatan di Laluan Bulat",
+    "ta": "சிக்னல் கோளாறு காரணமாக வட்ட பாதையில் தாமதங்கள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

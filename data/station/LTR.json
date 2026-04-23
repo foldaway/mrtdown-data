@@ -1,0 +1,26 @@
+{
+  "id": "LTR",
+  "name": {
+    "en-SG": "Lentor",
+    "zh-Hans": "伦多",
+    "ms": null,
+    "ta": "லென்ட்டோர்"
+  },
+  "geo": {
+    "latitude": 1.397036,
+    "longitude": 103.846481
+  },
+  "stationCodes": [
+    {
+      "lineId": "TEL",
+      "code": "TE5",
+      "startedAt": "2021-08-28",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "lentor-modern"
+  ],
+  "townId": "ang-mo-kio"
+}

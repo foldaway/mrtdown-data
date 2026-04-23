@@ -1,0 +1,28 @@
+{
+  "id": "PRE",
+  "name": {
+    "en-SG": "Pasir Ris East",
+    "zh-Hans": "巴西立东",
+    "ms": null,
+    "ta": "பாசிர் ரிஸ் ஈஸ்ட்"
+  },
+  "geo": {
+    "latitude": 1.3757,
+    "longitude": 103.9478
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR4",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "pasir-ris-park",
+    "downtown-east",
+    "wild-wild-wet"
+  ],
+  "townId": "pasir-ris"
+}

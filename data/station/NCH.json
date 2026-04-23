@@ -1,0 +1,28 @@
+{
+  "id": "NCH",
+  "name": {
+    "en-SG": "Nicoll Highway",
+    "zh-Hans": "尼诰大道",
+    "ms": null,
+    "ta": "நிக்கல் நெடுஞ்சாலை"
+  },
+  "geo": {
+    "latitude": 1.29945,
+    "longitude": 103.87389
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC5",
+      "startedAt": "2010-04-17",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-indoor-stadium",
+    "kallang-wave-mall",
+    "national-stadium"
+  ],
+  "townId": "downtown-core"
+}

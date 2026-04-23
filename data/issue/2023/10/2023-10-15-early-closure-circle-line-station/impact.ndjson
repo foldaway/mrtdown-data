@@ -1,0 +1,2 @@
+{"id":"ie_01HBZB8FN0JC1M02BGZFJSD05H","type":"facility_effects.set","ts":"2023-10-05T15:19:00.000+08:00","basis":{"evidenceId":"ev_01HBZB8FN03GXD8NVP24YZ4B54"},"entity":{"type":"facility","stationId":"TLB","kind":"screen-door"},"effect":{"kind":"facility-out-of-service"}}
+{"id":"ie_01HBZB8FN01CYDPWQKSRY87WXS","type":"facility_effects.set","ts":"2023-10-05T15:19:00.000+08:00","basis":{"evidenceId":"ev_01HBZB8FN03GXD8NVP24YZ4B54"},"entity":{"type":"facility","stationId":"HBF","kind":"screen-door"},"effect":{"kind":"facility-out-of-service"}}

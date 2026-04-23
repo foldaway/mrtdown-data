@@ -1,0 +1,28 @@
+{
+  "id": "FDM",
+  "name": {
+    "en-SG": "Founders' Memorial",
+    "zh-Hans": "建国先贤纪念园",
+    "ms": "Peringatan Pengasas",
+    "ta": "தேச நிறுவனர்கள் நினைவிட நிலையம்"
+  },
+  "geo": {
+    "latitude": 1.2823,
+    "longitude": 103.8558
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "TE22A",
+      "startedAt": "2028-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "marina-bay-sands",
+    "the-esplanade",
+    "gardens-by-the-bay"
+  ],
+  "townId": "marina-east"
+}

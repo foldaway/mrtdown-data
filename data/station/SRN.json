@@ -1,0 +1,28 @@
+{
+  "id": "SRN",
+  "name": {
+    "en-SG": "Serangoon North",
+    "zh-Hans": "实龙岗北",
+    "ms": null,
+    "ta": "சிராங்கூன் நார்த்"
+  },
+  "geo": {
+    "latitude": 1.3663,
+    "longitude": 103.8677
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR9",
+      "startedAt": "2030-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "serangoon-gardens-country-club",
+    "chomp-chomp-food-centre",
+    "bowen-secondary-school"
+  ],
+  "townId": "serangoon"
+}

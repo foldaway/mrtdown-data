@@ -1,0 +1,13 @@
+{
+  "id": "2013-05-24-estimate-20-mins-additional-travelling-time",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train fault causing travel delays",
+    "zh-Hans": "列车故障导致行程延误",
+    "ms": "Ralat kereta api menyebabkan kelewatan perjalanan",
+    "ta": "ரயில் பிழை பயண தாமதங்களுக்கு காரணமாகிறது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

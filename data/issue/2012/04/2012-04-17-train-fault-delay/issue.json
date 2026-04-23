@@ -1,0 +1,13 @@
+{
+  "id": "2012-04-17-train-fault-delay",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train Fault Causing Delays",
+    "zh-Hans": "火车故障导致延误",
+    "ms": "Gangguan Kereta Api Menyebabkan Kelewatan",
+    "ta": "தாமதத்தை ஏற்படுத்தும் ரயில் கோளாறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

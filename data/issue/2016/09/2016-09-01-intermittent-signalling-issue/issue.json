@@ -1,0 +1,13 @@
+{
+  "id": "2016-09-01-intermittent-signalling-issue",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Intermittent signalling issue on the Circle Line",
+    "zh-Hans": "环线上间歇性信号问题",
+    "ms": "Masalah isyarat sekejap-sekejap di Laluan Bulat",
+    "ta": "வட்ட பாதையில் இடைப்பட்ட சமிக்ஞை பிரச்சனை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

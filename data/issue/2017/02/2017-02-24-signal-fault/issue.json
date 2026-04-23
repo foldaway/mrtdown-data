@@ -1,0 +1,13 @@
+{
+  "id": "2017-02-24-signal-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption due to signal fault on Circle Line",
+    "zh-Hans": "环线信号故障导致服务中断",
+    "ms": "Gangguan perkhidmatan kerana kerosakan isyarat di Laluan Bulat",
+    "ta": "வட்டப் பாதையில் சிக்னல் கோளாறு காரணமாக சேவை இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

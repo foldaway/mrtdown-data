@@ -1,0 +1,43 @@
+{
+  "id": "OTP",
+  "name": {
+    "en-SG": "Outram Park",
+    "zh-Hans": "欧南园",
+    "ms": null,
+    "ta": "ஊட்ரம் பார்க்"
+  },
+  "geo": {
+    "latitude": 1.2813,
+    "longitude": 103.8335
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW16",
+      "startedAt": "1987-12-12",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "NEL",
+      "code": "NE3",
+      "startedAt": "2003-06-20",
+      "endedAt": null,
+      "structureType": "underground"
+    },
+    {
+      "lineId": "TEL",
+      "code": "TE17",
+      "startedAt": "2022-11-13",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "singapore-general-hospital",
+    "maxwell-food-centre",
+    "chinatown",
+    "sri-mariamman-temple"
+  ],
+  "townId": "outram"
+}

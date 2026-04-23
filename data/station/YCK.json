@@ -1,0 +1,27 @@
+{
+  "id": "YCK",
+  "name": {
+    "en-SG": "Yio Chu Kang",
+    "zh-Hans": "杨厝港",
+    "ms": null,
+    "ta": "இயோ சூ காங்"
+  },
+  "geo": {
+    "latitude": 1.379,
+    "longitude": 103.847
+  },
+  "stationCodes": [
+    {
+      "lineId": "NSL",
+      "code": "NS15",
+      "startedAt": "1987-11-07",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "yio-chu-kang-stadium",
+    "singapore-american-school"
+  ],
+  "townId": "ang-mo-kio"
+}

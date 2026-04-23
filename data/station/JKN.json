@@ -1,0 +1,28 @@
+{
+  "id": "JKN",
+  "name": {
+    "en-SG": "Joo Koon",
+    "zh-Hans": "裕群",
+    "ms": null,
+    "ta": "ஜூ கூன்"
+  },
+  "geo": {
+    "latitude": 1.34254,
+    "longitude": 103.67185
+  },
+  "stationCodes": [
+    {
+      "lineId": "EWL",
+      "code": "EW29",
+      "startedAt": "2009-02-28",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "jurong-eco-garden",
+    "joo-koon-circle",
+    "dhl-supply-chain"
+  ],
+  "townId": "pioneer"
+}

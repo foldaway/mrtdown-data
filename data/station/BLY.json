@@ -1,0 +1,27 @@
+{
+  "id": "BLY",
+  "name": {
+    "en-SG": "Bartley",
+    "zh-Hans": "巴特礼",
+    "ms": null,
+    "ta": "பார்ட்லி"
+  },
+  "geo": {
+    "latitude": 1.3608,
+    "longitude": 103.8879
+  },
+  "stationCodes": [
+    {
+      "lineId": "CCL",
+      "code": "CC12",
+      "startedAt": "2009-05-28",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "nexus-international-school",
+    "bartley-secondary-school"
+  ],
+  "townId": "toa-payoh"
+}
