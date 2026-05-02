@@ -18,6 +18,18 @@
   "updates": [
     {
       "type": "operator.update",
+      "text": "07:18-TEL-Minor delay affecting train station services between Woodlands North and Bayshore stations (both directions). Commuters can continue to use the train service or consider free bus services between Caldecott and Orchard stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507592530750056",
+      "createdAt": "2026-05-03T07:32:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "07:22-TEL-Minor delay affecting train station services between Woodlands North and Bayshore stations (both directions). Commuters can continue to use the train service or consider free bus services between Caldecott and Orchard stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507584744840086",
+      "createdAt": "2026-05-03T07:30:59.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "07:18-TEL-Minor delay affecting train station services between Woodlands North and Bayshore stations (both directions). Commuters can continue to use the train service or consider free bus services at affected stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507561070214133",
       "createdAt": "2026-05-03T07:24:58.000+08:00"
