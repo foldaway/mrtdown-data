@@ -1,0 +1,105 @@
+{
+  "id": "2026-05-22-tel-dtl-weekend-service-adjustments",
+  "title": "TEL & DTL Engineering Works - Weekend Service Adjustments",
+  "title_translations": {
+    "zh-Hans": "汤申—东海岸线与市区线工程作业 - 周五及周六服务调整",
+    "ms": "TEL & DTL Kerja Kejuruteraan - Penyesuaian Perkhidmatan Jumaat & Sabtu",
+    "ta": "TEL மற்றும் DTL பொறியியல் பணி - வெள்ளி மற்றும் சனி சேவை மாற்றங்கள்"
+  },
+  "lineIdsAffected": [
+    "TEL",
+    "DTL"
+  ],
+  "startAt": "2026-05-22T00:00:00+08:00",
+  "endAt": "2026-09-05T23:59:59+08:00",
+  "type": "maintenance",
+  "cancelledAt": null,
+  "subtypes": [
+    "system.upgrade"
+  ],
+  "rrule": null,
+  "updates": [
+    {
+      "type": "planned",
+      "text": "TEL services will be adjusted from May 22 to Jul 4 on Fridays and Saturdays, while DTL services will be affected from Jul 10 to Sep 5.",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/mrt-train-service-adjustments-tel-dtl-rail-expansion-works-lta-6085701",
+      "createdAt": "2026-04-28T14:24:01.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "lineId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "WDN",
+        "WDL",
+        "WDS",
+        "SPL",
+        "LTR",
+        "MFL",
+        "BRH",
+        "UTS",
+        "CDT",
+        "STV",
+        "NPR",
+        "OBV",
+        "ORC",
+        "GRW",
+        "HVL",
+        "OTP",
+        "MAX",
+        "SHW",
+        "MRB",
+        "GRB",
+        "TRH",
+        "KTP",
+        "TKT",
+        "MPR",
+        "MTC",
+        "SGL",
+        "BSR"
+      ]
+    },
+    {
+      "lineId": "DTL",
+      "branchName": "main",
+      "stationIds": [
+        "BKP",
+        "CSW",
+        "HVW",
+        "HME",
+        "BTW",
+        "KAP",
+        "SAV",
+        "TKK",
+        "BTN",
+        "STV",
+        "NEW",
+        "LTI",
+        "RCR",
+        "BGS",
+        "PMN",
+        "BFT",
+        "DTN",
+        "TLA",
+        "CTN",
+        "FCN",
+        "BCL",
+        "JLB",
+        "BDM",
+        "GLB",
+        "MTR",
+        "MPS",
+        "UBI",
+        "KKB",
+        "BDN",
+        "BDR",
+        "TPW",
+        "TAM",
+        "TPE",
+        "UPC",
+        "XPO"
+      ]
+    }
+  ]
+}
