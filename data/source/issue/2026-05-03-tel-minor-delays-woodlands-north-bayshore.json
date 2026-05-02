@@ -1,0 +1,61 @@
+{
+  "id": "2026-05-03-tel-minor-delays-woodlands-north-bayshore",
+  "title": "TEL Minor Delays - Woodlands North to Bayshore",
+  "title_translations": {
+    "zh-Hans": "TEL 轻微延误 - Woodlands North 至 Bayshore",
+    "ms": "TEL Kelewatan Kecil - Woodlands North ke Bayshore",
+    "ta": "TEL சிறிய தாமதம் - Woodlands North முதல் Bayshore வரை"
+  },
+  "lineIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2026-05-03T07:18:00.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "07:18-TEL-Minor delay affecting train station services between Woodlands North and Bayshore stations (both directions). Commuters can continue to use the train service or consider free bus services at affected stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507561070214133",
+      "createdAt": "2026-05-03T07:24:58.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "lineId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "WDN",
+        "WDL",
+        "WDS",
+        "SPL",
+        "LTR",
+        "MFL",
+        "BRH",
+        "UTS",
+        "CDT",
+        "STV",
+        "NPR",
+        "OBV",
+        "ORC",
+        "GRW",
+        "HVL",
+        "OTP",
+        "MAX",
+        "SHW",
+        "MRB",
+        "GRB",
+        "TRH",
+        "KTP",
+        "TKT",
+        "MPR",
+        "MTC",
+        "SGL",
+        "BSR"
+      ]
+    }
+  ]
+}
