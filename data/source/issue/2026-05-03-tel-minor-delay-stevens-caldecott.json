@@ -1,0 +1,36 @@
+{
+  "id": "2026-05-03-tel-minor-delay-stevens-caldecott",
+  "title": "TEL Minor Delay - Stevens to Caldecott",
+  "title_translations": {
+    "zh-Hans": "TEL 小幅延误 - Stevens 至 Caldecott",
+    "ms": "TEL Kelewatan Kecil - Stevens ke Caldecott",
+    "ta": "TEL சிறிய தாமதம் - Stevens முதல் Caldecott வரை"
+  },
+  "lineIdsAffected": [
+    "TEL"
+  ],
+  "startAt": "2026-05-03T05:53:00+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "05:53-TEL-Minor delay affecting train station services between Stevens and Caldecott stations (both directions). Commuters can continue to use the train service.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507419513433970",
+      "createdAt": "2026-05-03T06:48:58.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "lineId": "TEL",
+      "branchName": "main",
+      "stationIds": [
+        "CDT",
+        "STV"
+      ]
+    }
+  ]
+}
