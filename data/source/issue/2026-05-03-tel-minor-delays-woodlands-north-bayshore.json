@@ -1,6 +1,6 @@
 {
   "id": "2026-05-03-tel-minor-delays-woodlands-north-bayshore",
-  "title": "TEL Minor Delays - Woodlands North to Bayshore",
+  "title": "TEL Delay - Woodlands North to Bayshore",
   "title_translations": {
     "zh-Hans": "TEL 轻微延误 - Woodlands North 至 Bayshore",
     "ms": "TEL Kelewatan Kecil - Woodlands North ke Bayshore",
@@ -16,6 +16,18 @@
     "delay"
   ],
   "updates": [
+    {
+      "type": "operator.update",
+      "text": "07:18-TEL-Major delay. No train services between Caldecott and Orchard stations (both directions). Commuters can take alternative MRT lines or free bus services between Caldecott and Marina Bay stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507655452360893",
+      "createdAt": "2026-05-03T07:48:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "07:29-TEL-Major delay. No train services between Caldecott and Orchard stations (both directions). Commuters can take alternative MRT lines or free bus services between Caldecott and Marina Bay stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507647589999659",
+      "createdAt": "2026-05-03T07:46:58.000+08:00"
+    },
     {
       "type": "operator.update",
       "text": "07:18-TEL-Minor delay affecting train station services between Woodlands North and Bayshore stations (both directions). Commuters can continue to use the train service or consider free bus services between Caldecott and Orchard stations.",
