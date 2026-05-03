@@ -4,7 +4,7 @@
   "title_translations": {
     "zh-Hans": "TEL 严重延误 - Caldecott 至 Orchard",
     "ms": "TEL Kelewatan Besar - Caldecott ke Orchard",
-    "ta": "TEL பெரிய தாமதம் - Caldecott முதல் Orchard வரை"
+    "ta": "TEL பெரிய தாமதம் - Caldecott இருந்து Orchard வரை"
   },
   "lineIdsAffected": [
     "TEL"
@@ -18,27 +18,33 @@
   "updates": [
     {
       "type": "operator.update",
-      "text": "05:53-TEL-Minor delay affecting train station services between Stevens and Caldecott stations (both directions). Commuters can continue to use the train service.",
-      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507419513433970",
-      "createdAt": "2026-05-03T06:48:58.000+08:00"
+      "text": "08:14-TEL-Major delay. No train services between Woodlands North and Bayshore stations (both directions). Commuters may take alternative MRT lines or free bus services between Caldecott and Marina Bay stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507812729596790",
+      "createdAt": "2026-05-03T08:28:58.000+08:00"
+    },
+    {
+      "type": "news.report",
+      "text": "",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/no-mrt-services-between-caldecott-and-orchard-stations-thomson-east-coast-line-smrt-6096566",
+      "createdAt": "2026-05-03T08:16:22.000+08:00"
+    },
+    {
+      "type": "general-public.report",
+      "text": "TEL major delay: No train services between Caldecott and Orchard stations in both directions since 7:18am today. Commuters can use alternative MRT lines or free bus services between Caldecott and Marina Bay.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1t25wqm/tel_has_another_major_delay_no_services_between/",
+      "createdAt": "2026-05-03T08:01:54.000+08:00"
+    },
+    {
+      "type": "news.report",
+      "text": "SMRT advised commuters to take alternative MRT lines, or switch to free bus services.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/no-mrt-service-between-caldecott-and-orchard-stations-on-thomson-east-coast-line-smrt",
+      "createdAt": "2026-05-03T07:59:55.000+08:00"
     },
     {
       "type": "operator.update",
-      "text": "07:18-TEL-Minor delay affecting train station services between Woodlands North and Bayshore stations (both directions). Commuters can continue to use the train service or consider free bus services at affected stations.",
-      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507561070214133",
-      "createdAt": "2026-05-03T07:24:58.000+08:00"
-    },
-    {
-      "type": "operator.update",
-      "text": "07:22-TEL-Minor delay affecting train station services between Woodlands North and Bayshore stations (both directions). Commuters can continue to use the train service or consider free bus services between Caldecott and Orchard stations.",
-      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507584744840086",
-      "createdAt": "2026-05-03T07:30:59.000+08:00"
-    },
-    {
-      "type": "operator.update",
-      "text": "07:18-TEL-Minor delay affecting train station services between Woodlands North and Bayshore stations (both directions). Commuters can continue to use the train service or consider free bus services between Caldecott and Orchard stations.",
-      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507592530750056",
-      "createdAt": "2026-05-03T07:32:58.000+08:00"
+      "text": "07:18-TEL-Major delay. No train services between Caldecott and Orchard stations (both directions). Commuters can take alternative MRT lines or free bus services between Caldecott and Marina Bay stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507655452360893",
+      "createdAt": "2026-05-03T07:48:58.000+08:00"
     },
     {
       "type": "operator.update",
@@ -48,21 +54,27 @@
     },
     {
       "type": "operator.update",
-      "text": "07:18-TEL-Major delay. No train services between Caldecott and Orchard stations (both directions). Commuters can take alternative MRT lines or free bus services between Caldecott and Marina Bay stations.",
-      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507655452360893",
-      "createdAt": "2026-05-03T07:48:58.000+08:00"
+      "text": "07:18-TEL-Minor delay affecting train station services between Woodlands North and Bayshore stations (both directions). Commuters can continue to use the train service or consider free bus services between Caldecott and Orchard stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507592530750056",
+      "createdAt": "2026-05-03T07:32:58.000+08:00"
     },
     {
-      "type": "news.report",
-      "text": "SMRT advised commuters to take alternative MRT lines, or switch to free bus services.",
-      "sourceUrl": "https://www.straitstimes.com/singapore/no-mrt-service-between-caldecott-and-orchard-stations-on-thomson-east-coast-line-smrt",
-      "createdAt": "2026-05-03T07:59:55.000+08:00"
+      "type": "operator.update",
+      "text": "07:22-TEL-Minor delay affecting train station services between Woodlands North and Bayshore stations (both directions). Commuters can continue to use the train service or consider free bus services between Caldecott and Orchard stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507584744840086",
+      "createdAt": "2026-05-03T07:30:59.000+08:00"
     },
     {
-      "type": "general-public.report",
-      "text": "TEL major delay: No train services between Caldecott and Orchard stations in both directions since 7:18am today. Commuters can use alternative MRT lines or free bus services between Caldecott and Marina Bay.",
-      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1t25wqm/tel_has_another_major_delay_no_services_between/",
-      "createdAt": "2026-05-03T08:01:54.000+08:00"
+      "type": "operator.update",
+      "text": "07:18-TEL-Minor delay affecting train station services between Woodlands North and Bayshore stations (both directions). Commuters can continue to use the train service or consider free bus services at affected stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507561070214133",
+      "createdAt": "2026-05-03T07:24:58.000+08:00"
+    },
+    {
+      "type": "operator.update",
+      "text": "05:53-TEL-Minor delay affecting train station services between Stevens and Caldecott stations (both directions). Commuters can continue to use the train service.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507419513433970",
+      "createdAt": "2026-05-03T06:48:58.000+08:00"
     }
   ],
   "stationIdsAffected": [
