@@ -82,11 +82,35 @@
       "lineId": "TEL",
       "branchName": "main",
       "stationIds": [
+        "WDN",
+        "WDL",
+        "WDS",
+        "SPL",
+        "LTR",
+        "MFL",
+        "BRH",
+        "UTS",
         "CDT",
+        "MPL",
         "STV",
         "NPR",
         "OBV",
-        "ORC"
+        "ORC",
+        "GRW",
+        "HVL",
+        "OTP",
+        "MAX",
+        "SHW",
+        "MRB",
+        "MRS",
+        "GRB",
+        "TRH",
+        "KTP",
+        "TKT",
+        "MPR",
+        "MTC",
+        "SGL",
+        "BSR"
       ]
     }
   ]
