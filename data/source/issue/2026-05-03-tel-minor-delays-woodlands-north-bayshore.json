@@ -1,10 +1,10 @@
 {
   "id": "2026-05-03-tel-minor-delays-woodlands-north-bayshore",
-  "title": "TEL Delay - Woodlands North to Bayshore",
+  "title": "TEL Major Delay - Caldecott to Orchard",
   "title_translations": {
-    "zh-Hans": "TEL 轻微延误 - Woodlands North 至 Bayshore",
-    "ms": "TEL Kelewatan Kecil - Woodlands North ke Bayshore",
-    "ta": "TEL சிறிய தாமதம் - Woodlands North முதல் Bayshore வரை"
+    "zh-Hans": "TEL 严重延误 - Caldecott 至 Orchard",
+    "ms": "TEL Kelewatan Besar - Caldecott ke Orchard",
+    "ta": "TEL பெரிய தாமதம் - Caldecott முதல் Orchard வரை"
   },
   "lineIdsAffected": [
     "TEL"
@@ -16,6 +16,12 @@
     "delay"
   ],
   "updates": [
+    {
+      "type": "general-public.report",
+      "text": "TEL major delay: No train services between Caldecott and Orchard stations in both directions since 7:18am today. Commuters can use alternative MRT lines or free bus services between Caldecott and Marina Bay.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1t25wqm/tel_has_another_major_delay_no_services_between/",
+      "createdAt": "2026-05-03T08:01:54.000+08:00"
+    },
     {
       "type": "news.report",
       "text": "SMRT advised commuters to take alternative MRT lines, or switch to free bus services.",
@@ -58,33 +64,11 @@
       "lineId": "TEL",
       "branchName": "main",
       "stationIds": [
-        "WDN",
-        "WDL",
-        "WDS",
-        "SPL",
-        "LTR",
-        "MFL",
-        "BRH",
-        "UTS",
         "CDT",
         "STV",
         "NPR",
         "OBV",
-        "ORC",
-        "GRW",
-        "HVL",
-        "OTP",
-        "MAX",
-        "SHW",
-        "MRB",
-        "GRB",
-        "TRH",
-        "KTP",
-        "TKT",
-        "MPR",
-        "MTC",
-        "SGL",
-        "BSR"
+        "ORC"
       ]
     }
   ]
