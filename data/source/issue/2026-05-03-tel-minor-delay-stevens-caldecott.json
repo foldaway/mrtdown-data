@@ -9,13 +9,19 @@
   "lineIdsAffected": [
     "TEL"
   ],
-  "startAt": "2026-05-03T05:53:00+08:00",
+  "startAt": "2026-05-03T07:18:00+08:00",
   "endAt": null,
   "type": "disruption",
   "subtypes": [
     "delay"
   ],
   "updates": [
+    {
+      "type": "operator.update",
+      "text": "08:14-TEL-Major delay. No train services between Woodlands North and Bayshore stations (both directions). Commuters may take alternative MRT lines or free bus services between Caldecott and Marina Bay stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507812729596790",
+      "createdAt": "2026-05-03T08:28:58.000+08:00"
+    },
     {
       "type": "news.report",
       "text": "",
