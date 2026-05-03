@@ -17,6 +17,12 @@
   ],
   "updates": [
     {
+      "type": "operator.monitoring",
+      "text": "08:48-TEL-Major delay. No train services between Caldecott and Orchard stations (both directions). Train services progressively resuming from Woodlands North to Caldecott stations and Orchard to Bayshore stations. Commuters can take alternative MRT lines or free bus services between Woodlands North and Marina Bay stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507922840757558",
+      "createdAt": "2026-05-03T08:56:58.000+08:00"
+    },
+    {
       "type": "operator.update",
       "text": "08:14-TEL-Major delay. No train services between Woodlands North and Bayshore stations (both directions). Commuters may take alternative MRT lines or free bus services between Caldecott and Marina Bay stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507812729596790",
@@ -82,11 +88,33 @@
       "lineId": "TEL",
       "branchName": "main",
       "stationIds": [
+        "WDN",
+        "WDL",
+        "WDS",
+        "SPL",
+        "LTR",
+        "MFL",
+        "BRH",
+        "UTS",
         "CDT",
         "STV",
         "NPR",
         "OBV",
-        "ORC"
+        "ORC",
+        "GRW",
+        "HVL",
+        "OTP",
+        "MAX",
+        "SHW",
+        "MRB",
+        "GRB",
+        "TRH",
+        "KTP",
+        "TKT",
+        "MPR",
+        "MTC",
+        "SGL",
+        "BSR"
       ]
     }
   ]
