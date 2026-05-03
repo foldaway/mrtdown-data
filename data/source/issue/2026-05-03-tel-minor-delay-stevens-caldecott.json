@@ -18,6 +18,12 @@
   "updates": [
     {
       "type": "operator.monitoring",
+      "text": "10:48-TEL-Minor delay. Train services have resumed between Caldecott and Orchard stations but trains will be travelling slower till the end of train service. Commuters can continue to use the train service or consider free bus services for this sector.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116508662075447883",
+      "createdAt": "2026-05-03T12:04:58.000+08:00"
+    },
+    {
+      "type": "operator.monitoring",
       "text": "10:48-TEL-Minor delay. Train services have resumed between Caldecott and Orchard stations but trains will be travelling slower. Commuters can continue to use the train service or consider free bus services for this sector.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116508402555806211",
       "createdAt": "2026-05-03T10:58:58.000+08:00"
