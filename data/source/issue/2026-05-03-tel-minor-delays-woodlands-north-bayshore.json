@@ -17,6 +17,12 @@
   ],
   "updates": [
     {
+      "type": "news.report",
+      "text": "SMRT advised commuters to take alternative MRT lines, or switch to free bus services.",
+      "sourceUrl": "https://www.straitstimes.com/singapore/no-mrt-service-between-caldecott-and-orchard-stations-on-thomson-east-coast-line-smrt",
+      "createdAt": "2026-05-03T07:59:55.000+08:00"
+    },
+    {
       "type": "operator.update",
       "text": "07:18-TEL-Major delay. No train services between Caldecott and Orchard stations (both directions). Commuters can take alternative MRT lines or free bus services between Caldecott and Marina Bay stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116507655452360893",
