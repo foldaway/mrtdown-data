@@ -50,8 +50,8 @@ jobs:
       - name: Build fixture static data
         run: |
           mkdir -p pages-dist/fixtures
-          cp -R data/. pages-dist/fixtures/
           cp -R fixtures/data/. pages-dist/fixtures/
+          mkdir -p pages-dist/fixtures/landmark pages-dist/fixtures/operator pages-dist/fixtures/town
           npm run cli -- -- --data-dir "$GITHUB_WORKSPACE/pages-dist/fixtures" manifest
           npm run cli -- -- --data-dir "$GITHUB_WORKSPACE/pages-dist/fixtures" pages-index
 
