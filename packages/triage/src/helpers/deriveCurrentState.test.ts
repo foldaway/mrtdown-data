@@ -67,7 +67,7 @@ describe('deriveCurrentState', () => {
     const result = deriveCurrentState(bundle);
 
     expect(result.services[nslKey]).toMatchObject({
-      id: 'NSL',
+      serviceId: 'NSL',
       effect,
       scopes: [],
       periods: [],
@@ -108,7 +108,7 @@ describe('deriveCurrentState', () => {
     const result = deriveCurrentState(bundle);
 
     expect(result.services[nslKey]).toMatchObject({
-      id: 'NSL',
+      serviceId: 'NSL',
       effect: null,
       scopes: [],
       periods,
@@ -136,7 +136,7 @@ describe('deriveCurrentState', () => {
     const result = deriveCurrentState(bundle);
 
     expect(result.services[nslKey]).toMatchObject({
-      id: 'NSL',
+      serviceId: 'NSL',
       effect: null,
       scopes: [],
       periods: [],
@@ -176,7 +176,7 @@ describe('deriveCurrentState', () => {
     const result = deriveCurrentState(bundle);
 
     expect(result.services[nslKey]).toMatchObject({
-      id: 'NSL',
+      serviceId: 'NSL',
       effect: null,
       scopes: serviceScopes,
       periods: [],
@@ -486,9 +486,9 @@ describe('deriveCurrentState', () => {
       kind: 'delay',
       duration: null,
     });
-    expect(result.services[nslKeyLocal]).toMatchObject({ id: 'NSL' });
+    expect(result.services[nslKeyLocal]).toMatchObject({ serviceId: 'NSL' });
     expect(result.services[ewlKey].effect).toEqual({ kind: 'no-service' });
-    expect(result.services[ewlKey]).toMatchObject({ id: 'EWL' });
+    expect(result.services[ewlKey]).toMatchObject({ serviceId: 'EWL' });
     expect(result.impactEventIds).toEqual(['ie_test_002']);
   });
 
