@@ -1,6 +1,14 @@
 import z from 'zod';
 import { TranslationsSchema } from './common.js';
 
+export const StationStructureTypeSchema = z.enum([
+  'elevated',
+  'underground',
+  'at_grade',
+  'in_building',
+]);
+export type StationStructureType = z.infer<typeof StationStructureTypeSchema>;
+
 export const StationSchema = z.object({
   id: z.string(),
   name: TranslationsSchema,
@@ -14,12 +22,7 @@ export const StationSchema = z.object({
       code: z.string(),
       startedAt: z.string(),
       endedAt: z.string().nullable(),
-      structureType: z.enum([
-        'elevated',
-        'underground',
-        'at_grade',
-        'in_building',
-      ]),
+      structureType: StationStructureTypeSchema,
     }),
   ),
   landmarkIds: z.array(z.string()),
