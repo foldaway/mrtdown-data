@@ -80,10 +80,15 @@ program
   .description(
     'Generate index.html for GitHub Pages (static data landing page)',
   )
-  .action(() => {
+  .option(
+    '--include-fixture-export',
+    'Include links to the deployed fixture export',
+  )
+  .action((opts) => {
     const dataDir = program.opts().dataDir;
     const code = runPagesIndex({
       dataDir,
+      includeFixtureExport: opts.includeFixtureExport,
     });
     process.exit(code);
   });

@@ -38,7 +38,7 @@ jobs:
           mkdir -p pages-dist
           cp -R data/. pages-dist/
           npm run cli -- -- --data-dir "$GITHUB_WORKSPACE/pages-dist" manifest
-          npm run cli -- -- --data-dir "$GITHUB_WORKSPACE/pages-dist" pages-index
+          npm run cli -- -- --data-dir "$GITHUB_WORKSPACE/pages-dist" pages-index --include-fixture-export
 
       - name: Create production archives
         run: |

@@ -19,6 +19,128 @@ import { toHtml } from 'hast-util-to-html';
 
 export interface PagesIndexCliOptions {
   dataDir: string;
+  includeFixtureExport?: boolean;
+}
+
+function buildDeveloperFilesSection(includeFixtureExport: boolean): Element[] {
+  return [
+    {
+      type: 'element',
+      tagName: 'h2',
+      properties: {},
+      children: [{ type: 'text', value: 'Developer files' }],
+    },
+    {
+      type: 'element',
+      tagName: 'p',
+      properties: {},
+      children: [
+        {
+          type: 'text',
+          value:
+            'Machine-readable exports are available for integrations, local development, and tests.',
+        },
+      ],
+    },
+    {
+      type: 'element',
+      tagName: 'ul',
+      properties: {},
+      children: [
+        {
+          type: 'element',
+          tagName: 'li',
+          properties: {},
+          children: [
+            {
+              type: 'element',
+              tagName: 'a',
+              properties: { href: 'manifest.json' },
+              children: [{ type: 'text', value: 'manifest.json' }],
+            },
+            { type: 'text', value: ' - checksums for this data export.' },
+          ],
+        },
+        {
+          type: 'element',
+          tagName: 'li',
+          properties: {},
+          children: [
+            {
+              type: 'element',
+              tagName: 'a',
+              properties: { href: 'archive.tar.gz' },
+              children: [{ type: 'text', value: 'archive.tar.gz' }],
+            },
+            { type: 'text', value: ' - full export as a gzipped tarball.' },
+          ],
+        },
+        {
+          type: 'element',
+          tagName: 'li',
+          properties: {},
+          children: [
+            {
+              type: 'element',
+              tagName: 'a',
+              properties: { href: 'archive.zip' },
+              children: [{ type: 'text', value: 'archive.zip' }],
+            },
+            { type: 'text', value: ' - full export as a ZIP archive.' },
+          ],
+        },
+        ...(includeFixtureExport
+          ? [
+              {
+                type: 'element',
+                tagName: 'li',
+                properties: {},
+                children: [
+                  {
+                    type: 'element',
+                    tagName: 'a',
+                    properties: { href: 'fixtures/' },
+                    children: [{ type: 'text', value: 'fixtures/' }],
+                  },
+                  {
+                    type: 'text',
+                    value:
+                      ' - partial fixture export for tests, demos, and local development. Files: ',
+                  },
+                  {
+                    type: 'element',
+                    tagName: 'a',
+                    properties: { href: 'fixtures/manifest.json' },
+                    children: [
+                      { type: 'text', value: 'fixtures/manifest.json' },
+                    ],
+                  },
+                  { type: 'text', value: ', ' },
+                  {
+                    type: 'element',
+                    tagName: 'a',
+                    properties: { href: 'fixtures/archive.tar.gz' },
+                    children: [
+                      { type: 'text', value: 'fixtures/archive.tar.gz' },
+                    ],
+                  },
+                  { type: 'text', value: ', ' },
+                  {
+                    type: 'element',
+                    tagName: 'a',
+                    properties: { href: 'fixtures/archive.zip' },
+                    children: [
+                      { type: 'text', value: 'fixtures/archive.zip' },
+                    ],
+                  },
+                  { type: 'text', value: '.' },
+                ],
+              } satisfies Element,
+            ]
+          : []),
+      ],
+    },
+  ];
 }
 
 function buildTableForStandardRepository<T extends StandardRepositoryItem>(
@@ -418,6 +540,7 @@ export function runPagesIndex(opts: PagesIndexCliOptions): number {
                 properties: { href: 'https://github.com/mrtdown/mrtdown-data' },
                 children: [{ type: 'text', value: 'GitHub repository' }],
               },
+              ...buildDeveloperFilesSection(opts.includeFixtureExport ?? false),
               ...linesTable,
               ...townsTable,
               ...landmarksTable,
