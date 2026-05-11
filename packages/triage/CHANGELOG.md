@@ -1,5 +1,14 @@
 # @mrtdown/triage
 
+## 2.0.0-alpha.21
+
+### Patch Changes
+
+- 7ebfa36: standardize evidence/facility effect enums
+- Updated dependencies [7ebfa36]
+  - @mrtdown/core@2.0.0-alpha.21
+  - @mrtdown/fs@2.0.0-alpha.21
+
 ## 2.0.0-alpha.20
 
 ### Patch Changes
