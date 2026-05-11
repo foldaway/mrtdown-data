@@ -17,7 +17,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "vitest"
+    "test": "vitest --run",
+    "test:eval": "vitest --run --config vitest.eval.config.ts"
   },
   "dependencies": {
     "@mrtdown/core": "^2.0.0-alpha.20",

@@ -26,7 +26,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "vitest"
+    "test": "vitest --run"
   },
   "dependencies": {
     "luxon": "^3.5.0",

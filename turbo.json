@@ -12,8 +12,14 @@
                 "^build"
             ],
             "outputs": [
-                "packages/*/dist/**"
+                "dist/**"
             ]
+        },
+        "test": {
+            "dependsOn": [
+                "build"
+            ],
+            "outputs": []
         },
         "dev": {
             "persistent": true,
