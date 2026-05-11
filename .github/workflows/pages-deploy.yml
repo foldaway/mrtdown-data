@@ -33,24 +33,41 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate manifest and Pages index
+      - name: Build production static data
         run: |
-          npm run cli -- -- manifest
-          npm run cli -- -- pages-index
+          mkdir -p pages-dist
+          cp -R data/. pages-dist/
+          npm run cli -- -- --data-dir "$GITHUB_WORKSPACE/pages-dist" manifest
+          npm run cli -- -- --data-dir "$GITHUB_WORKSPACE/pages-dist" pages-index
 
-      - name: Create archives of data directory
+      - name: Create production archives
         run: |
-          tar -czf archive.tar.gz data
-          zip -rq archive.zip data
-          mv archive.tar.gz data/
-          mv archive.zip data/
+          mkdir -p archive-root
+          cp -R pages-dist archive-root/data
+          tar -czf pages-dist/archive.tar.gz -C archive-root data
+          (cd archive-root && zip -rq "$GITHUB_WORKSPACE/pages-dist/archive.zip" data)
+
+      - name: Build fixture static data
+        run: |
+          mkdir -p pages-dist/fixtures
+          cp -R data/. pages-dist/fixtures/
+          cp -R fixtures/data/. pages-dist/fixtures/
+          npm run cli -- -- --data-dir "$GITHUB_WORKSPACE/pages-dist/fixtures" manifest
+          npm run cli -- -- --data-dir "$GITHUB_WORKSPACE/pages-dist/fixtures" pages-index
+
+      - name: Create fixture archives
+        run: |
+          mkdir -p fixture-archive-root
+          cp -R pages-dist/fixtures fixture-archive-root/data
+          tar -czf pages-dist/fixtures/archive.tar.gz -C fixture-archive-root data
+          (cd fixture-archive-root && zip -rq "$GITHUB_WORKSPACE/pages-dist/fixtures/archive.zip" data)
 
       - uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: data
+          path: pages-dist
 
   deploy:
     environment:
