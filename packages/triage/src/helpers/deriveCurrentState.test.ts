@@ -506,7 +506,7 @@ describe('deriveCurrentState', () => {
         type: 'facility_effects.set',
         entity: facilityEntity,
         ts: '2025-01-01T10:00:00Z',
-        effect: { kind: 'facility-out-of-service' },
+        effect: { kind: 'out-of-service' },
         basis: { evidenceId: 'evidence-1' },
       },
       {
@@ -530,7 +530,7 @@ describe('deriveCurrentState', () => {
     expect(result.facilities[facilityKey]).toMatchObject({
       stationId: 'JUR',
       kind: 'lift',
-      effect: { kind: 'facility-out-of-service' },
+      effect: { kind: 'out-of-service' },
       periods: [
         {
           kind: 'fixed',

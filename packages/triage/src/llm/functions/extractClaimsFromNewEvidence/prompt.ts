@@ -79,8 +79,8 @@ Effect disambiguation:
 - Deterministic mapping: if evidence says one platform is closed/temporarily closed while trains continue to run (for example, "other platform operates as usual", shuttle provided, longer waits), you MUST emit planned service claims with service effect "reduced-service" for affected services. Do not return claims: [] for this pattern.
 
 For facility entities:
-- Facility unavailable -> facility: { kind: "facility-out-of-service" }
-- Facility degraded/partially available -> facility: { kind: "facility-degraded" }
+- Facility unavailable -> facility: { kind: "out-of-service" }
+- Facility degraded/partially available -> facility: { kind: "degraded" }
 - service must be null
 
 ### scopes.service
