@@ -22,7 +22,7 @@ export interface PagesIndexCliOptions {
   includeFixtureExport?: boolean;
 }
 
-function buildDeveloperFilesSection(includeFixtureExport: boolean): Element[] {
+function buildDeveloperFilesSection(): Element[] {
   return [
     {
       type: 'element',
@@ -38,7 +38,7 @@ function buildDeveloperFilesSection(includeFixtureExport: boolean): Element[] {
         {
           type: 'text',
           value:
-            'Machine-readable exports are available for integrations, local development, and tests.',
+            'A partial fixture export is available for tests, demos, and local development.',
         },
       ],
     },
@@ -55,10 +55,10 @@ function buildDeveloperFilesSection(includeFixtureExport: boolean): Element[] {
             {
               type: 'element',
               tagName: 'a',
-              properties: { href: 'manifest.json' },
-              children: [{ type: 'text', value: 'manifest.json' }],
+              properties: { href: 'fixtures/' },
+              children: [{ type: 'text', value: 'fixtures/' }],
             },
-            { type: 'text', value: ' - checksums for this data export.' },
+            { type: 'text', value: ' - fixture data index.' },
           ],
         },
         {
@@ -69,10 +69,10 @@ function buildDeveloperFilesSection(includeFixtureExport: boolean): Element[] {
             {
               type: 'element',
               tagName: 'a',
-              properties: { href: 'archive.tar.gz' },
-              children: [{ type: 'text', value: 'archive.tar.gz' }],
+              properties: { href: 'fixtures/manifest.json' },
+              children: [{ type: 'text', value: 'fixtures/manifest.json' }],
             },
-            { type: 'text', value: ' - full export as a gzipped tarball.' },
+            { type: 'text', value: ' - checksums for the fixture export.' },
           ],
         },
         {
@@ -83,61 +83,29 @@ function buildDeveloperFilesSection(includeFixtureExport: boolean): Element[] {
             {
               type: 'element',
               tagName: 'a',
-              properties: { href: 'archive.zip' },
-              children: [{ type: 'text', value: 'archive.zip' }],
+              properties: { href: 'fixtures/archive.tar.gz' },
+              children: [{ type: 'text', value: 'fixtures/archive.tar.gz' }],
             },
-            { type: 'text', value: ' - full export as a ZIP archive.' },
+            {
+              type: 'text',
+              value: ' - fixture export as a gzipped tarball.',
+            },
           ],
         },
-        ...(includeFixtureExport
-          ? [
-              {
-                type: 'element',
-                tagName: 'li',
-                properties: {},
-                children: [
-                  {
-                    type: 'element',
-                    tagName: 'a',
-                    properties: { href: 'fixtures/' },
-                    children: [{ type: 'text', value: 'fixtures/' }],
-                  },
-                  {
-                    type: 'text',
-                    value:
-                      ' - partial fixture export for tests, demos, and local development. Files: ',
-                  },
-                  {
-                    type: 'element',
-                    tagName: 'a',
-                    properties: { href: 'fixtures/manifest.json' },
-                    children: [
-                      { type: 'text', value: 'fixtures/manifest.json' },
-                    ],
-                  },
-                  { type: 'text', value: ', ' },
-                  {
-                    type: 'element',
-                    tagName: 'a',
-                    properties: { href: 'fixtures/archive.tar.gz' },
-                    children: [
-                      { type: 'text', value: 'fixtures/archive.tar.gz' },
-                    ],
-                  },
-                  { type: 'text', value: ', ' },
-                  {
-                    type: 'element',
-                    tagName: 'a',
-                    properties: { href: 'fixtures/archive.zip' },
-                    children: [
-                      { type: 'text', value: 'fixtures/archive.zip' },
-                    ],
-                  },
-                  { type: 'text', value: '.' },
-                ],
-              } satisfies Element,
-            ]
-          : []),
+        {
+          type: 'element',
+          tagName: 'li',
+          properties: {},
+          children: [
+            {
+              type: 'element',
+              tagName: 'a',
+              properties: { href: 'fixtures/archive.zip' },
+              children: [{ type: 'text', value: 'fixtures/archive.zip' }],
+            },
+            { type: 'text', value: ' - fixture export as a ZIP archive.' },
+          ],
+        },
       ],
     },
   ];
@@ -540,7 +508,7 @@ export function runPagesIndex(opts: PagesIndexCliOptions): number {
                 properties: { href: 'https://github.com/mrtdown/mrtdown-data' },
                 children: [{ type: 'text', value: 'GitHub repository' }],
               },
-              ...buildDeveloperFilesSection(opts.includeFixtureExport ?? false),
+              ...(opts.includeFixtureExport ? buildDeveloperFilesSection() : []),
               ...linesTable,
               ...townsTable,
               ...landmarksTable,
