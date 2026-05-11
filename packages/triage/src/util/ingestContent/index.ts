@@ -179,19 +179,19 @@ function getText(content: IngestContent) {
  * Maps IngestContent source type to the corresponding Evidence type for provenance tracking.
  *
  * @param content - The content to classify.
- * @returns The evidence type: official-statement (Reddit), media.report (news), or public.report (social).
+ * @returns The evidence type: statement.official (Reddit), report.media (news), or report.public (social).
  */
 function getEvidenceType(content: IngestContent) {
   switch (content.source) {
     case 'reddit': {
-      return 'official-statement';
+      return 'statement.official';
     }
     case 'news-website': {
-      return 'media.report';
+      return 'report.media';
     }
     case 'twitter':
     case 'mastodon': {
-      return 'public.report';
+      return 'report.public';
     }
   }
 }

@@ -2,9 +2,9 @@ import z from 'zod';
 import { TranslationsSchema } from '../common.js';
 
 export const EvidenceTypeSchema = z.enum([
-  'official-statement',
-  'public.report',
-  'media.report',
+  'statement.official',
+  'report.public',
+  'report.media',
 ]);
 export type EvidenceType = z.infer<typeof EvidenceTypeSchema>;
 
@@ -23,7 +23,7 @@ export const EvidenceBaseSchema = z.object({
 export type EvidenceBase = z.infer<typeof EvidenceBaseSchema>;
 
 export const EvidenceOfficialStatementSchema = EvidenceBaseSchema.extend({
-  type: z.literal(EvidenceTypeSchema.enum['official-statement']),
+  type: z.literal(EvidenceTypeSchema.enum['statement.official']),
   sourceUrl: z.string(),
 });
 export type EvidenceOfficialStatement = z.infer<
@@ -31,13 +31,13 @@ export type EvidenceOfficialStatement = z.infer<
 >;
 
 export const EvidencePublicReportSchema = EvidenceBaseSchema.extend({
-  type: z.literal(EvidenceTypeSchema.enum['public.report']),
+  type: z.literal(EvidenceTypeSchema.enum['report.public']),
   sourceUrl: z.string(),
 });
 export type EvidencePublicReport = z.infer<typeof EvidencePublicReportSchema>;
 
 export const EvidenceMediaReportSchema = EvidenceBaseSchema.extend({
-  type: z.literal(EvidenceTypeSchema.enum['media.report']),
+  type: z.literal(EvidenceTypeSchema.enum['report.media']),
   sourceUrl: z.string(),
 });
 export type EvidenceMediaReport = z.infer<typeof EvidenceMediaReportSchema>;

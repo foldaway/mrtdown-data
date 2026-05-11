@@ -44,7 +44,7 @@ test('validateIssue flags issues with evidence but zero impact events', () => {
     new Map([
       [
         `${relBase}/evidence.ndjson`,
-        '{"id":"ev_1","ts":"2025-07-30T19:03:02.000+08:00","type":"official-statement","text":"Bukit Panjang LRT line will be closed on Aug 31.","sourceUrl":"https://example.com","render":null}\n',
+        '{"id":"ev_1","ts":"2025-07-30T19:03:02.000+08:00","type":"statement.official","text":"Bukit Panjang LRT line will be closed on Aug 31.","sourceUrl":"https://example.com","render":null}\n',
       ],
       [`${relBase}/impact.ndjson`, ''],
     ]),

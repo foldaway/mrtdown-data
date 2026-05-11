@@ -15,7 +15,7 @@ function makeIssueBundle(params: {
     issue: { id: params.issueId } as IssueBundle['issue'],
     evidence: params.evidence.map((evidence) => ({
       ...evidence,
-      type: 'official-statement',
+      type: 'statement.official',
     })) as IssueBundle['evidence'],
     impactEvents: params.impactEvents,
     path: `data/issue/${params.issueId}`,
