@@ -13,15 +13,18 @@ loadDotEnv({
   path: resolve(import.meta.dirname, '../../../../../../.env'),
 });
 
+const FIXTURE_DATA_DIR = resolve(
+  import.meta.dirname,
+  '../../../../../../fixtures/data',
+);
+
 describe('triageNewEvidence', () => {
   describeEval(
     'should triage the new evidence into an existing issue or a new issue',
     {
       // @ts-expect-error input is a string in the vitest-evals library
       async data() {
-        const store = new FileStore(
-          resolve(import.meta.dirname, '../../fixtures/data'),
-        );
+        const store = new FileStore(FIXTURE_DATA_DIR);
         const repo = new MRTDownRepository({ store });
 
         return [
@@ -89,9 +92,7 @@ describe('triageNewEvidence', () => {
                 text: '[SLL] Due to a track fault at Seletar, train services on the Seletar Line are delayed between Seletar Aerospace and Bukit Merah Central',
               },
               repo: new MRTDownRepository({
-                store: new FileStore(
-                  resolve(import.meta.dirname, '../fixtures/data'),
-                ),
+                store: new FileStore(FIXTURE_DATA_DIR),
               }),
               // This is used by vitest-evals as the test name, as the library expects `input` to be a string.
               toString() {

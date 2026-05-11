@@ -14,13 +14,16 @@ loadDotEnv({
   path: resolve(import.meta.dirname, '../../../../../../.env'),
 });
 
+const FIXTURE_DATA_DIR = resolve(
+  import.meta.dirname,
+  '../../../../../../fixtures/data',
+);
+
 describe('extractClaimsFromNewEvidence', () => {
   describeEval('should extract claims from new disruption evidence', {
     // @ts-expect-error input is a string in the vitest-evals library
     async data() {
-      const store = new FileStore(
-        resolve(import.meta.dirname, '../../fixtures/data'),
-      );
+      const store = new FileStore(FIXTURE_DATA_DIR);
       const repo = new MRTDownRepository({ store });
       const issueBundle = repo.issues.get('2026-01-01-tgl-train-fault');
       assert(issueBundle != null, 'Issue bundle not found');
@@ -186,9 +189,7 @@ describe('extractClaimsFromNewEvidence', () => {
   describeEval('should compute the impact of new maintenance evidence', {
     // @ts-expect-error input is a string in the vitest-evals library
     async data() {
-      const store = new FileStore(
-        resolve(import.meta.dirname, '../../fixtures/data'),
-      );
+      const store = new FileStore(FIXTURE_DATA_DIR);
       const repo = new MRTDownRepository({ store });
 
       return [
