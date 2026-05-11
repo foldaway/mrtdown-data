@@ -1,5 +1,14 @@
 # @mrtdown/triage
 
+## 2.0.0-alpha.22
+
+### Patch Changes
+
+- 4bcf7cb: introduce StationStructureTypeSchema
+- Updated dependencies [4bcf7cb]
+  - @mrtdown/core@2.0.0-alpha.22
+  - @mrtdown/fs@2.0.0-alpha.22
+
 ## 2.0.0-alpha.21
 
 ### Patch Changes
