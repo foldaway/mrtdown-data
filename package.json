@@ -10,7 +10,7 @@
     "check": "npm run lint && npm run check:boundaries && npm run check:docs",
     "check:boundaries": "node scripts/check-package-boundaries.mjs",
     "check:docs": "node scripts/check-docs-links.mjs",
-    "lint": "biome check AGENTS.md CLAUDE.md README.md biome.json package.json scripts",
+    "lint": "biome check AGENTS.md CLAUDE.md README.md docs .github/copilot-instructions.md biome.json package.json scripts",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "ingest:webhook": "tsx src/scripts/ingestViaWebhook.ts",
