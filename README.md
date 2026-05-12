@@ -36,6 +36,8 @@ npx biome check
 npm run check              # Fast deterministic harness checks
 npm run check:docs         # Verify repo-relative documentation links
 npm run check:boundaries   # Enforce package import boundaries when packages exist
+npm run build:core         # Build the new @mrtdown/core package
+npm run test:core          # Run @mrtdown/core deterministic tests
 ```
 
 See `AGENTS.md` for the short agent map and `docs/DATA_OVERHAUL_SPLIT.md` for
