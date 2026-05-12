@@ -82,13 +82,13 @@ export function normalizeRecurringPeriod(
 ): PeriodFixed[] {
   const fixedPeriods: PeriodFixed[] = [];
 
-  const startAt = DateTime.fromISO(period.startAt).setZone(period.timeZone, {
-    keepLocalTime: true,
-  });
+  const startAt = DateTime.fromISO(period.startAt, { setZone: true }).setZone(
+    period.timeZone,
+  );
   assert(startAt.isValid, `Invalid ISO datetime: ${period.startAt}`);
-  const endAt = DateTime.fromISO(period.endAt).setZone(period.timeZone, {
-    keepLocalTime: true,
-  });
+  const endAt = DateTime.fromISO(period.endAt, { setZone: true }).setZone(
+    period.timeZone,
+  );
   assert(endAt.isValid, `Invalid ISO datetime: ${period.endAt}`);
 
   const byTimes = toByTimes(period.timeWindow);
