@@ -1,0 +1,26 @@
+{
+  "id": "promenade",
+  "name": {
+    "en-SG": "Promenade",
+    "zh-Hans": null,
+    "ms": null,
+    "ta": null
+  },
+  "geo": {
+    "latitude": 1.293997,
+    "longitude": 103.86035
+  },
+  "stationCodes": [
+    {
+      "lineId": "ccl",
+      "code": "CC4",
+      "startedAt": "2010-04-16T16:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "millenia-walk"
+  ],
+  "townId": "downtown-core"
+}

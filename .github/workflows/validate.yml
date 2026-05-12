@@ -47,8 +47,13 @@ jobs:
       - run: npm run check
       - run: npm run typecheck
       - run: npm run build:core
+      - run: npm run build:fs
+      - run: npm run build:cli
+      - run: npm run data:validate
       - run: npm run db:generate
         env:
           DUCKDB_DATABASE_PATH: mrtdown.duckdb
       - run: npm test -- --run
       - run: npm run test:core
+      - run: npm run test:fs
+      - run: npm run test:cli

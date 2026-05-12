@@ -1,0 +1,35 @@
+{
+  "id": "ccl-main",
+  "name": {
+    "en-SG": "Circle Line",
+    "zh-Hans": null,
+    "ms": null,
+    "ta": null
+  },
+  "lineId": "ccl",
+  "revisions": [
+    {
+      "id": "ccl-main-2010",
+      "startAt": "2010-04-17",
+      "endAt": null,
+      "path": {
+        "stations": [
+          {
+            "stationId": "promenade",
+            "displayCode": "CC4"
+          }
+        ]
+      },
+      "operatingHours": {
+        "weekdays": {
+          "start": "05:30:00",
+          "end": "00:30:00"
+        },
+        "weekends": {
+          "start": "05:30:00",
+          "end": "00:30:00"
+        }
+      }
+    }
+  ]
+}
