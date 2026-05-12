@@ -31,6 +31,16 @@ npx biome check
 
 ## Development Commands
 
+### Agent Harness
+```bash
+npm run check              # Fast deterministic harness checks
+npm run check:docs         # Verify repo-relative documentation links
+npm run check:boundaries   # Enforce package import boundaries when packages exist
+```
+
+See `AGENTS.md` for the short agent map and `docs/DATA_OVERHAUL_SPLIT.md` for
+the planned data-overhaul split.
+
 ### Database Operations
 ```bash
 npm run build              # Compile TypeScript (auto-runs db:generate)

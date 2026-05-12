@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+Start with `AGENTS.md`. It is the maintained short map for agents. This file is
+kept only as a Claude-compatible entry point and should not grow into a second
+source of truth.
+
 ## Project Overview
 
 This is **mrtdown-data**, a data repository and API system that tracks Singapore's MRT (Mass Rapid Transit) service disruptions, maintenance, and infrastructure issues. It functions as a comprehensive status monitoring system for Singapore's public transportation.
@@ -11,6 +15,9 @@ This is **mrtdown-data**, a data repository and API system that tracks Singapore
 ## Development Commands
 
 ```bash
+# Harness checks
+npm run check              # Fast deterministic agent-harness checks
+
 # Database and build
 npm run build              # Compile TypeScript (auto-runs db:generate)
 npm run db:generate        # Generate DuckDB database from source data
