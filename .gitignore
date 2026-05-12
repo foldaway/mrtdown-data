@@ -147,3 +147,9 @@ dist
 
 # Sentry Config File
 .sentryclirc
+
+# Local caches and migration scratch files
+.turbo
+migrated-legacy-ids.json
+data/manifest.json
+data/index.html

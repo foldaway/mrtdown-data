@@ -1,14 +1,21 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "vcs": {
-    "enabled": false,
+    "enabled": true,
     "clientKind": "git",
-    "useIgnoreFile": false
+    "useIgnoreFile": true
   },
   "files": {
-    "ignoreUnknown": false,
+    "ignoreUnknown": true,
     "includes": [
-      "**"
+      "**",
+      "!**/.turbo",
+      "!**/dist",
+      "!**/node_modules",
+      "!**/*.duckdb",
+      "!data/manifest.json",
+      "!data/index.html",
+      "!migrated-legacy-ids.json"
     ]
   },
   "formatter": {

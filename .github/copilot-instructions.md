@@ -2,6 +2,9 @@
 
 **Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.**
 
+Also read `AGENTS.md`. It is the maintained short map for agents and points to
+the current data-overhaul split plan.
+
 ## Project Overview
 
 mrtdown-data is a comprehensive data repository and API system that tracks Singapore's MRT (Mass Rapid Transit) service disruptions, maintenance, and infrastructure issues. It functions as a status monitoring system for Singapore's public transportation network.
@@ -28,6 +31,11 @@ npm run build                  # ~6.4 seconds - NEVER CANCEL. Set timeout to 300
 **Run tests:**
 ```bash
 npm test                       # ~1.3 seconds - very fast
+```
+
+**Run harness checks:**
+```bash
+npm run check                  # Fast deterministic docs/boundary checks
 ```
 
 **Lint and format code:**

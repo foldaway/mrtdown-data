@@ -1,0 +1,50 @@
+name: Validate
+
+on:
+  pull_request:
+    paths:
+      - 'AGENTS.md'
+      - 'CLAUDE.md'
+      - 'README.md'
+      - '.github/**'
+      - 'api/**'
+      - 'data/**'
+      - 'docs/**'
+      - 'package*.json'
+      - 'scripts/**'
+      - 'src/**'
+      - 'tsconfig.json'
+      - 'biome.json'
+  push:
+    branches:
+      - main
+    paths:
+      - 'AGENTS.md'
+      - 'CLAUDE.md'
+      - 'README.md'
+      - '.github/**'
+      - 'api/**'
+      - 'data/**'
+      - 'docs/**'
+      - 'package*.json'
+      - 'scripts/**'
+      - 'src/**'
+      - 'tsconfig.json'
+      - 'biome.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run typecheck
+      - run: npm run db:generate
+        env:
+          DUCKDB_DATABASE_PATH: mrtdown.duckdb
+      - run: npm test -- --run
