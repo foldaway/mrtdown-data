@@ -145,6 +145,8 @@ export function normalizeRecurringPeriod(
       hour: timeWindowEndAt.toObject().hour,
       minute: timeWindowEndAt.toObject().minute,
       second: timeWindowEndAt.toObject().second,
+    }).setZone(dt.timeZoneId, {
+      keepLocalTime: true,
     });
     assert(dtEnd.isValid);
     fixedPeriods.push({
