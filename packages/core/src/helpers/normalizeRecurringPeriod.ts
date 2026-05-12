@@ -138,7 +138,7 @@ export function normalizeRecurringPeriod(
       keepLocalTime: true,
     });
     assert(dtStart.isValid);
-    const dtEnd = DateTime.fromObject({
+    let dtEnd = DateTime.fromObject({
       day: dt.day,
       month: dt.month,
       year: dt.year,
@@ -149,6 +149,9 @@ export function normalizeRecurringPeriod(
       keepLocalTime: true,
     });
     assert(dtEnd.isValid);
+    if (dtEnd.toMillis() <= dtStart.toMillis()) {
+      dtEnd = dtEnd.plus({ days: 1 });
+    }
     fixedPeriods.push({
       kind: 'fixed',
       startAt: dtStart.toISO(),

@@ -3,7 +3,7 @@ import { z } from 'zod';
 /**
  * Translations
  *
- * `en` is mandatory.
+ * `en-SG` is mandatory.
  */
 export const TranslationsSchema = z.object({
   'en-SG': z.string(),

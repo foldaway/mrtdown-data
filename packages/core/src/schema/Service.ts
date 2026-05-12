@@ -6,6 +6,9 @@ export const ServiceRevisionSchema = z.object({
   startAt: z.string(),
   endAt: z.string().nullable(),
   path: z.object({
+    /**
+     * The station IDs in the order they are visited by the service.
+     */
     stations: z.array(
       z.object({
         stationId: z.string(),
@@ -20,9 +23,6 @@ export type ServiceRevision = z.infer<typeof ServiceRevisionSchema>;
 export const ServiceSchema = z.object({
   id: z.string(),
   name: TranslationsSchema,
-  /**
-   * The station IDs in the order they are visited by the service.
-   */
   lineId: z.string(),
   revisions: z.array(ServiceRevisionSchema),
 });

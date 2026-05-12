@@ -6,8 +6,8 @@ import { TranslationsSchema } from './common.js';
  */
 export const LineOperatorSchema = z.object({
   operatorId: z.string(),
-  startedAt: z.string().nullable(),
-  endedAt: z.string().nullable(),
+  startedAt: z.iso.date().nullable(),
+  endedAt: z.iso.date().nullable(),
 });
 export type LineOperator = z.infer<typeof LineOperatorSchema>;
 
@@ -17,12 +17,12 @@ export type LineOperator = z.infer<typeof LineOperatorSchema>;
  */
 export const LineOperatingHoursSchema = z.object({
   weekdays: z.object({
-    start: z.string(), // HH:mm
-    end: z.string(),
+    start: z.iso.time(),
+    end: z.iso.time(),
   }),
   weekends: z.object({
-    start: z.string(),
-    end: z.string(),
+    start: z.iso.time(),
+    end: z.iso.time(),
   }),
 });
 export type LineOperatingHours = z.infer<typeof LineOperatingHoursSchema>;

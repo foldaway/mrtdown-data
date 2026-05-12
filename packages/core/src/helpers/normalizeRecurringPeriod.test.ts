@@ -91,6 +91,27 @@ describe('normalizeRecurringPeriod', () => {
     ]);
   });
 
+  test('normalizes overnight windows across midnight', () => {
+    const period = makeRecurringPeriod({
+      startAt: '2025-01-01T00:00:00+08:00',
+      endAt: '2025-01-01T23:59:59+08:00',
+      timeWindow: {
+        startAt: '23:00:00',
+        endAt: '01:00:00',
+      },
+    });
+
+    const fixed = normalizeRecurringPeriod(period);
+
+    expect(fixed).toEqual([
+      {
+        kind: 'fixed',
+        startAt: '2025-01-01T23:00:00.000+08:00',
+        endAt: '2025-01-02T01:00:00.000+08:00',
+      },
+    ]);
+  });
+
   test('returns start and end timestamps in Singapore timezone', () => {
     const period = makeRecurringPeriod({
       startAt: '2025-01-01T00:00:00Z',

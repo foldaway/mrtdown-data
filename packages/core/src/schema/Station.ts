@@ -13,15 +13,15 @@ export const StationSchema = z.object({
   id: z.string(),
   name: TranslationsSchema,
   geo: z.object({
-    latitude: z.number(),
-    longitude: z.number(),
+    latitude: z.number().gte(-90).lte(90),
+    longitude: z.number().gte(-180).lte(180),
   }),
   stationCodes: z.array(
     z.object({
       lineId: z.string(),
       code: z.string(),
-      startedAt: z.string(),
-      endedAt: z.string().nullable(),
+      startedAt: z.iso.datetime(),
+      endedAt: z.iso.datetime().nullable(),
       structureType: StationStructureTypeSchema,
     }),
   ),
