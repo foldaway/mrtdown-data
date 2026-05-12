@@ -32,6 +32,7 @@ RUN apt-get update -qq && \
 
 # Install node modules
 COPY package-lock.json package.json ./
+COPY packages/core/package.json ./packages/core/package.json
 RUN npm ci --include=dev
 
 # Copy application code
