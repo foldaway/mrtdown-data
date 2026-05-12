@@ -5,7 +5,8 @@ in `docs/` and link to them from here.
 
 ## Current State
 
-`main` is still the legacy MRTDown data API repository:
+This stacked branch is still mostly the legacy MRTDown data API repository, with
+the first target package added:
 
 - `src/api/` contains Hono routes and response schemas.
 - `src/db/` generates and reads the DuckDB database.
@@ -14,6 +15,8 @@ in `docs/` and link to them from here.
 - `src/util/ingestContent/` and `src/scripts/` handle ingestion and maintenance
   utilities.
 - `data/source/` is the legacy source-data layout.
+- `packages/core` contains the new package/data architecture's shared schemas
+  and pure period helpers. It is not wired into the legacy runtime yet.
 
 The data-overhaul work is being split into smaller PRs. Follow
 `docs/DATA_OVERHAUL_SPLIT.md` before moving package, data, workflow, or deploy

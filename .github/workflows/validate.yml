@@ -11,6 +11,7 @@ on:
       - 'data/**'
       - 'docs/**'
       - 'package*.json'
+      - 'packages/**'
       - 'scripts/**'
       - 'src/**'
       - 'tsconfig.json'
@@ -27,6 +28,7 @@ on:
       - 'data/**'
       - 'docs/**'
       - 'package*.json'
+      - 'packages/**'
       - 'scripts/**'
       - 'src/**'
       - 'tsconfig.json'
@@ -44,7 +46,9 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run typecheck
+      - run: npm run build:core
       - run: npm run db:generate
         env:
           DUCKDB_DATABASE_PATH: mrtdown.duckdb
       - run: npm test -- --run
+      - run: npm run test:core

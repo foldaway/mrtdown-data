@@ -20,7 +20,14 @@ if (!existsSync(packagesRoot)) {
 
 const files = execFileSync(
   'git',
-  ['ls-files', 'packages/*/src/**/*.ts', 'packages/*/src/*.ts'],
+  [
+    'ls-files',
+    '--cached',
+    '--others',
+    '--exclude-standard',
+    'packages/*/src/**/*.ts',
+    'packages/*/src/*.ts',
+  ],
   {
     cwd: repoRoot,
     encoding: 'utf8',

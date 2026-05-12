@@ -4,14 +4,19 @@
   "description": "Data repository",
   "type": "module",
   "main": "dist/api/index.js",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "tsc",
     "postbuild": "npm run db:generate && npm run sentry:sourcemaps",
     "check": "npm run lint && npm run check:boundaries && npm run check:docs",
     "check:boundaries": "node scripts/check-package-boundaries.mjs",
     "check:docs": "node scripts/check-docs-links.mjs",
-    "lint": "biome check AGENTS.md CLAUDE.md README.md docs .github/copilot-instructions.md biome.json package.json scripts",
+    "lint": "biome check AGENTS.md CLAUDE.md README.md docs .github/copilot-instructions.md biome.json package.json packages/core scripts",
     "typecheck": "tsc --noEmit",
+    "build:core": "npm --workspace @mrtdown/core run build",
+    "test:core": "npm --workspace @mrtdown/core run test",
     "test": "vitest",
     "ingest:webhook": "tsx src/scripts/ingestViaWebhook.ts",
     "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts",
