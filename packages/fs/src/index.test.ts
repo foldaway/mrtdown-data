@@ -1,15 +1,19 @@
-import { mkdtemp, readFile } from 'node:fs/promises';
+import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { EvidenceSchema } from '@mrtdown/core';
 import { describe, expect, it } from 'vitest';
 import {
   buildIssueId,
   buildManifest,
   createIssueBundle,
+  issuePathFromId,
   listEntityIds,
   readIssueBundle,
+  readNdjsonFile,
   renderPagesIndex,
+  toDataPath,
   validateDataRoot,
 } from './index.js';
 
@@ -82,5 +86,31 @@ describe('@mrtdown/fs', () => {
         'utf8',
       ),
     ).resolves.toBe('');
+  });
+
+  it('normalizes data paths consistently', () => {
+    expect(toDataPath(String.raw`station\\promenade.json`)).toBe(
+      'station/promenade.json',
+    );
+    expect(toDataPath('issue/2024/01/../02//test')).toBe('issue/2024/02/test');
+  });
+
+  it('reports invalid issue id format clearly', () => {
+    expect(() => issuePathFromId(fixtureDataDir, 'missing-month')).toThrow(
+      'expected format: YYYY-MM-DD-<slug>',
+    );
+  });
+
+  it('reports NDJSON parse failures with physical line numbers', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const path = join(dataDir, 'records.ndjson');
+    await writeFile(
+      path,
+      '{"id":"ev_1","type":"report.public","ts":"2026-05-12T00:00:00+08:00","text":"ok","render":null,"sourceUrl":"https://example.com"}\n\nnot-json\n',
+    );
+
+    await expect(readNdjsonFile(path, EvidenceSchema)).rejects.toThrow(
+      `Invalid NDJSON in ${path} at line 3`,
+    );
   });
 });

@@ -16,15 +16,9 @@ export type ValidationResult = {
 };
 
 function emptyChecked(): Record<ValidationScope, number> {
-  return {
-    landmark: 0,
-    line: 0,
-    operator: 0,
-    service: 0,
-    station: 0,
-    town: 0,
-    issue: 0,
-  };
+  return Object.fromEntries(
+    [...entityCollections, issueDirectory].map((scope) => [scope, 0]),
+  ) as Record<ValidationScope, number>;
 }
 
 function formatError(error: unknown): string {

@@ -24,10 +24,27 @@ export async function readNdjsonFile<T>(
   schema: z.ZodType<T>,
 ): Promise<T[]> {
   const text = await readFile(path, 'utf8');
-  return text
-    .split('\n')
-    .filter((line) => line.trim().length > 0)
-    .map((line) => schema.parse(JSON.parse(line) as unknown));
+  const values: T[] = [];
+
+  for (const [index, line] of text.split('\n').entries()) {
+    if (line.trim().length === 0) {
+      continue;
+    }
+
+    try {
+      values.push(schema.parse(JSON.parse(line) as unknown));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      throw new Error(
+        `Invalid NDJSON in ${path} at line ${index + 1}: ${message}`,
+        {
+          cause: error,
+        },
+      );
+    }
+  }
+
+  return values;
 }
 
 export async function writeNdjsonFile(

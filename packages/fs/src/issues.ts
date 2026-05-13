@@ -34,10 +34,13 @@ export type NewIssueInput = {
 };
 
 export function issuePathFromId(dataDir: string, id: string): string {
-  const [year, month] = id.split('-');
-  if (!year || !month) {
-    throw new Error(`Invalid issue id: ${id}`);
+  const match = /^(\d{4})-(\d{2})-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*$/.exec(id);
+  if (!match) {
+    throw new Error(
+      `Invalid issue id: ${id} (expected format: YYYY-MM-DD-<slug>, e.g. 2024-01-15-circle-line-delay)`,
+    );
   }
+  const [, year, month] = match;
   return join(dataDir, issueDirectory, year, month, id);
 }
 
