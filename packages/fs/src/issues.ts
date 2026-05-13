@@ -76,8 +76,12 @@ export async function readIssueBundle(
   id: string,
 ): Promise<IssueBundle> {
   const issueDir = issuePathFromId(dataDir, id);
+  const issue = await readJsonFile(join(issueDir, issueFileName), IssueSchema);
+  if (issue.id !== id) {
+    throw new Error(`Issue id mismatch: folder ${id} contains ${issue.id}`);
+  }
   const bundle = {
-    issue: await readJsonFile(join(issueDir, issueFileName), IssueSchema),
+    issue,
     evidence: await readNdjsonFile(
       join(issueDir, evidenceFileName),
       EvidenceSchema,

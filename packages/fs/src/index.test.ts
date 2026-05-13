@@ -1,4 +1,4 @@
-import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -123,6 +123,42 @@ describe('@mrtdown/fs', () => {
   it('reports invalid issue id format clearly', () => {
     expect(() => issuePathFromId(fixtureDataDir, 'missing-month')).toThrow(
       'expected format: YYYY-MM-DD-<slug>',
+    );
+  });
+
+  it('rejects issue folders with mismatched issue ids', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const issueDir = join(
+      dataDir,
+      'issue',
+      '2026',
+      '02',
+      '2026-02-07-tgl-maintenance',
+    );
+    await mkdir(issueDir, { recursive: true });
+    await writeFile(
+      join(issueDir, 'issue.json'),
+      `${JSON.stringify({
+        id: '2026-02-01-tgl-maintenance',
+        type: 'maintenance',
+        title: {
+          'en-SG': 'Tengah Line Maintenance',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        titleMeta: {
+          source: 'test',
+        },
+      })}\n`,
+    );
+    await writeFile(join(issueDir, 'evidence.ndjson'), '');
+    await writeFile(join(issueDir, 'impact.ndjson'), '');
+
+    await expect(
+      readIssueBundle(dataDir, '2026-02-07-tgl-maintenance'),
+    ).rejects.toThrow(
+      'Issue id mismatch: folder 2026-02-07-tgl-maintenance contains 2026-02-01-tgl-maintenance',
     );
   });
 
