@@ -37,9 +37,6 @@ export async function readNdjsonFile<T>(
       const message = error instanceof Error ? error.message : String(error);
       throw new Error(
         `Invalid NDJSON in ${path} at line ${index + 1}: ${message}`,
-        {
-          cause: error,
-        },
       );
     }
   }
