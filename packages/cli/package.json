@@ -29,6 +29,7 @@
   ],
   "scripts": {
     "build": "tsc",
+    "postbuild": "node scripts/ensure-shebang.mjs",
     "test": "npm --workspace @mrtdown/core run build && npm --workspace @mrtdown/fs run build && vitest --run"
   },
   "dependencies": {
