@@ -31,8 +31,8 @@ describe('@mrtdown/cli', () => {
     expect(code).toBe(0);
     expect(stderr).toEqual([]);
     expect(JSON.parse(stdout[0] as string)).toMatchObject({
-      issue: 1,
-      station: 1,
+      issue: 2,
+      station: 17,
     });
   });
 
@@ -41,17 +41,17 @@ describe('@mrtdown/cli', () => {
     await expect(
       runCli(['--data-dir', fixtureDataDir, 'list', 'issue'], list.io),
     ).resolves.toBe(0);
-    expect(list.stdout).toEqual(['2024-01-15-circle-line-delay']);
+    expect((list.stdout[0] as string).split('\n')).toEqual([
+      '2026-01-01-tgl-train-fault',
+      '2026-02-07-tgl-maintenance',
+    ]);
 
     const show = createIo();
     await expect(
-      runCli(
-        ['--data-dir', fixtureDataDir, 'show', 'station', 'promenade'],
-        show.io,
-      ),
+      runCli(['--data-dir', fixtureDataDir, 'show', 'station', 'GSW'], show.io),
     ).resolves.toBe(0);
     expect(JSON.parse(show.stdout[0] as string).value.name['en-SG']).toBe(
-      'Promenade',
+      'Greater Southern Waterfront',
     );
   });
 
@@ -88,17 +88,17 @@ describe('@mrtdown/cli', () => {
         '--data-dir',
         dataDir,
         'create',
-        'town',
+        'station',
         '--file',
-        resolve(fixtureDataDir, 'town/downtown-core.json'),
+        resolve(fixtureDataDir, 'station/GSW.json'),
       ],
       io,
     );
 
     expect(code).toBe(0);
-    expect(stdout).toEqual(['town/downtown-core.json']);
+    expect(stdout).toEqual(['station/GSW.json']);
     await expect(
-      readFile(resolve(dataDir, 'town/downtown-core.json'), 'utf8'),
-    ).resolves.toContain('Downtown Core');
+      readFile(resolve(dataDir, 'station/GSW.json'), 'utf8'),
+    ).resolves.toContain('Greater Southern Waterfront');
   });
 });

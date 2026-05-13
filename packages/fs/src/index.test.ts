@@ -24,18 +24,19 @@ const fixtureDataDir = resolve(
 
 describe('@mrtdown/fs', () => {
   it('reads target-layout fixtures through core schemas', async () => {
-    await expect(listEntityIds(fixtureDataDir, 'station')).resolves.toEqual([
-      'promenade',
+    await expect(listEntityIds(fixtureDataDir, 'line')).resolves.toEqual([
+      'SLL',
+      'TGL',
     ]);
 
     const bundle = await readIssueBundle(
       fixtureDataDir,
-      '2024-01-15-circle-line-delay',
+      '2026-01-01-tgl-train-fault',
     );
 
-    expect(bundle.issue.title['en-SG']).toBe('Circle Line delay');
+    expect(bundle.issue.title['en-SG']).toBe('Tengah Line Train Fault');
     expect(bundle.evidence).toHaveLength(1);
-    expect(bundle.impactEvents).toHaveLength(1);
+    expect(bundle.impactEvents).toHaveLength(8);
   });
 
   it('validates fixtures and builds a manifest', async () => {
@@ -43,13 +44,13 @@ describe('@mrtdown/fs', () => {
     expect(result).toMatchObject({
       ok: true,
       checked: {
-        issue: 1,
-        landmark: 1,
-        line: 1,
-        operator: 1,
-        service: 1,
-        station: 1,
-        town: 1,
+        issue: 2,
+        landmark: 0,
+        line: 2,
+        operator: 0,
+        service: 4,
+        station: 17,
+        town: 0,
       },
     });
 
@@ -57,8 +58,8 @@ describe('@mrtdown/fs', () => {
       fixtureDataDir,
       '2026-01-01T00:00:00Z',
     );
-    expect(manifest.stations).toEqual({
-      promenade: 'station/promenade.json',
+    expect(manifest.lines).toMatchObject({
+      TGL: 'line/TGL.json',
     });
     expect(renderPagesIndex(manifest)).toContain('MRTDown data');
   });
