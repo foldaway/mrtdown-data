@@ -1,5 +1,5 @@
 import { access, mkdir, readdir } from 'node:fs/promises';
-import { join, relative } from 'node:path';
+import { dirname, join, relative } from 'node:path';
 import {
   type Evidence,
   EvidenceSchema,
@@ -136,12 +136,17 @@ export async function createIssueBundle(
   impactEvents: readonly ImpactEvent[] = [],
 ): Promise<IssueBundle> {
   const issue = buildIssue(input);
-  if (await issueExists(dataDir, issue.id)) {
-    throw new Error(`Issue already exists: ${issue.id}`);
+  const issueDir = issuePathFromId(dataDir, issue.id);
+  await mkdir(dirname(issueDir), { recursive: true });
+  try {
+    await mkdir(issueDir);
+  } catch (error) {
+    if (error instanceof Error && 'code' in error && error.code === 'EEXIST') {
+      throw new Error(`Issue already exists: ${issue.id}`);
+    }
+    throw error;
   }
 
-  const issueDir = issuePathFromId(dataDir, issue.id);
-  await mkdir(issueDir, { recursive: true });
   await writeJsonFile(join(issueDir, issueFileName), issue);
   await writeNdjsonFile(join(issueDir, evidenceFileName), evidence);
   await writeNdjsonFile(join(issueDir, impactFileName), impactEvents);

@@ -88,6 +88,30 @@ describe('@mrtdown/fs', () => {
     ).resolves.toBe('');
   });
 
+  it('claims issue folders atomically', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const id = buildIssueId('2026-05-12', 'Duplicate Signal Fault');
+    const input = {
+      id,
+      title: 'Duplicate Signal Fault',
+    };
+
+    const results = await Promise.allSettled([
+      createIssueBundle(dataDir, input),
+      createIssueBundle(dataDir, input),
+    ]);
+
+    expect(
+      results.filter((result) => result.status === 'fulfilled'),
+    ).toHaveLength(1);
+    expect(
+      results.filter((result) => result.status === 'rejected'),
+    ).toHaveLength(1);
+    await expect(createIssueBundle(dataDir, input)).rejects.toThrow(
+      `Issue already exists: ${id}`,
+    );
+  });
+
   it('normalizes data paths consistently', () => {
     expect(toDataPath(String.raw`station\\promenade.json`)).toBe(
       'station/promenade.json',
