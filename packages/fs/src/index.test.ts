@@ -15,6 +15,7 @@ import {
   renderPagesIndex,
   toDataPath,
   validateDataRoot,
+  writeUnknownEntity,
 } from './index.js';
 
 const fixtureDataDir = resolve(
@@ -111,6 +112,20 @@ describe('@mrtdown/fs', () => {
     await expect(createIssueBundle(dataDir, input)).rejects.toThrow(
       `Issue already exists: ${id}`,
     );
+  });
+
+  it('rejects entity ids that cannot be used as safe filenames', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const station = JSON.parse(
+      await readFile(join(fixtureDataDir, 'station/GSW.json'), 'utf8'),
+    ) as Record<string, unknown>;
+
+    await expect(
+      writeUnknownEntity(dataDir, 'station', {
+        ...station,
+        id: '../escaped',
+      }),
+    ).rejects.toThrow('Invalid entity id: ../escaped');
   });
 
   it('normalizes data paths consistently', () => {

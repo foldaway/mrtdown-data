@@ -49,11 +49,22 @@ export type EntityRecord<K extends EntityCollection = EntityCollection> = {
   value: EntityByCollection[K];
 };
 
+function assertSafeEntityId(id: string): void {
+  if (/^[A-Za-z0-9][A-Za-z0-9_-]*$/.test(id)) {
+    return;
+  }
+
+  throw new Error(
+    `Invalid entity id: ${id} (expected letters, digits, underscores, or hyphens)`,
+  );
+}
+
 export function entityPath(
   dataDir: string,
   collection: EntityCollection,
   id: string,
 ): string {
+  assertSafeEntityId(id);
   return join(dataDir, entityCollectionDirectories[collection], `${id}.json`);
 }
 
