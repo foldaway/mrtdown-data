@@ -1,4 +1,4 @@
-import { mkdtemp, readFile } from 'node:fs/promises';
+import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -99,6 +99,27 @@ describe('@mrtdown/cli', () => {
     expect(stdout).toEqual(['station/GSW.json']);
     await expect(
       readFile(resolve(dataDir, 'station/GSW.json'), 'utf8'),
+    ).resolves.toContain('Greater Southern Waterfront');
+  });
+
+  it('resolves create --file relative to the provided cwd', async () => {
+    const cwd = await mkdtemp(join(tmpdir(), 'mrtdown-cli-cwd-'));
+    await writeFile(
+      join(cwd, 'GSW.json'),
+      await readFile(resolve(fixtureDataDir, 'station/GSW.json'), 'utf8'),
+    );
+    const { io, stdout } = createIo();
+
+    const code = await runCli(
+      ['--data-dir', 'data', 'create', 'station', '--file', 'GSW.json'],
+      io,
+      cwd,
+    );
+
+    expect(code).toBe(0);
+    expect(stdout).toEqual(['station/GSW.json']);
+    await expect(
+      readFile(resolve(cwd, 'data/station/GSW.json'), 'utf8'),
     ).resolves.toContain('Greater Southern Waterfront');
   });
 });

@@ -30,6 +30,7 @@ const defaultIo: CliIO = {
 };
 
 type GlobalOptions = {
+  cwd: string;
   dataDir: string;
 };
 
@@ -70,6 +71,7 @@ function parseArgs(argv: readonly string[], cwd: string): ParsedArgs {
 
   return {
     globals: {
+      cwd,
       dataDir,
     },
     command,
@@ -213,7 +215,9 @@ async function runCreate(
     throw new Error('Issue records must be created with create issue');
   }
   const file = readOption(args, '--file', { required: true }) as string;
-  const json: unknown = JSON.parse(await readFile(resolve(file), 'utf8'));
+  const json: unknown = JSON.parse(
+    await readFile(resolve(globals.cwd, file), 'utf8'),
+  );
   io.stdout(await writeUnknownEntity(globals.dataDir, collection, json));
   return 0;
 }
