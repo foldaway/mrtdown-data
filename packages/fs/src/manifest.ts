@@ -7,7 +7,7 @@ import {
   issueDirectory,
 } from './constants.js';
 import { listEntityIds } from './entities.js';
-import { listIssueIds } from './issues.js';
+import { issueDatePathPartsFromId, listIssueIds } from './issues.js';
 import { toDataPath } from './paths.js';
 
 function collectionManifestKey(
@@ -59,7 +59,7 @@ export async function buildManifest(
   }
 
   for (const id of await listIssueIds(dataDir)) {
-    const [year, month] = id.split('-');
+    const { year, month } = issueDatePathPartsFromId(id);
     manifest.issues[id] = toDataPath(
       join(issueDirectory, year, month, id, 'issue.json'),
     );

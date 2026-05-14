@@ -65,6 +65,17 @@ describe('@mrtdown/fs', () => {
     expect(renderPagesIndex(manifest)).toContain('MRTDown data');
   });
 
+  it('reports malformed issue directories clearly while building manifests', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await mkdir(join(dataDir, 'issue', '2026', '05', 'foo'), {
+      recursive: true,
+    });
+
+    await expect(buildManifest(dataDir)).rejects.toThrow(
+      'Invalid issue id: foo (expected format: YYYY-MM-DD-<slug>',
+    );
+  });
+
   it('creates append-only issue folders', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     const id = buildIssueId('2026-05-12', 'Signal Fault at Test Station');
@@ -88,6 +99,21 @@ describe('@mrtdown/fs', () => {
         'utf8',
       ),
     ).resolves.toBe('');
+  });
+
+  it('rejects issue ids with impossible calendar dates', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+
+    expect(() => buildIssueId('2026-99-99', 'Invalid Signal Fault')).toThrow(
+      'Issue id date must be a real calendar date',
+    );
+
+    await expect(
+      createIssueBundle(dataDir, {
+        id: '2026-99-99-invalid-signal-fault',
+        title: 'Invalid Signal Fault',
+      }),
+    ).rejects.toThrow('Issue id date must be a real calendar date');
   });
 
   it('claims issue folders atomically', async () => {

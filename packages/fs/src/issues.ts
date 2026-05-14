@@ -8,6 +8,8 @@ import {
   type Issue,
   type IssueBundle,
   IssueBundleSchema,
+  IssueIdPattern,
+  IssueIdSchema,
   IssueSchema,
   type IssueType,
   IssueTypeSchema,
@@ -33,14 +35,30 @@ export type NewIssueInput = {
   titleSource?: string;
 };
 
-export function issuePathFromId(dataDir: string, id: string): string {
-  const match = /^(\d{4})-(\d{2})-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*$/.exec(id);
+export function issueDatePathPartsFromId(id: string): {
+  year: string;
+  month: string;
+} {
+  const match = IssueIdPattern.exec(id);
   if (!match) {
     throw new Error(
       `Invalid issue id: ${id} (expected format: YYYY-MM-DD-<slug>, e.g. 2024-01-15-circle-line-delay)`,
     );
   }
+
+  const result = IssueIdSchema.safeParse(id);
+  if (!result.success) {
+    throw new Error(
+      `Invalid issue id: ${id} (${result.error.issues[0]?.message ?? 'invalid issue id'})`,
+    );
+  }
+
   const [, year, month] = match;
+  return { year, month };
+}
+
+export function issuePathFromId(dataDir: string, id: string): string {
+  const { year, month } = issueDatePathPartsFromId(id);
   return join(dataDir, issueDirectory, year, month, id);
 }
 
