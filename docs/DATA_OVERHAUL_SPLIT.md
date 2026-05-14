@@ -4,6 +4,12 @@ PR #177 is the backup/source branch for this migration. Do not keep expanding
 that branch. Split it into small PRs that can be reviewed and validated
 independently.
 
+Each split PR should start by extracting the relevant implementation from PR
+#177, then adapting only what is necessary for the current branch. Do not
+recreate target-package behavior from scratch when the backup/source branch
+already contains it; doing so makes it easy to miss supporting surfaces that the
+large PR introduced across package boundaries.
+
 ## Goals
 
 - Make `mrtdown-data` the canonical reviewed data repository for MRTDown.
