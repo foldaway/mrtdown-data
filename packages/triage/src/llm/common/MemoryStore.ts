@@ -104,9 +104,25 @@ export class MemoryStore implements IStore, IWriteStore {
 
   delete(path: string): void {
     const p = this.toStorePath(path);
+    const parent = dirname(p) === '.' ? '' : dirname(p);
+    const child = basename(p);
+
     this.files.delete(p);
-    this.dirs.delete(p);
-    this.dirs.delete(path);
+
+    if (this.dirs.has(p)) {
+      for (const filePath of [...this.files.keys()]) {
+        if (filePath.startsWith(`${p}/`)) {
+          this.files.delete(filePath);
+        }
+      }
+      for (const dirPath of [...this.dirs.keys()]) {
+        if (dirPath === p || dirPath.startsWith(`${p}/`)) {
+          this.dirs.delete(dirPath);
+        }
+      }
+    }
+
+    this.dirs.get(parent)?.delete(child);
   }
 
   // Debug helpers

@@ -50,7 +50,7 @@ export function parseReExtractArgs(argv: string[]): ParsedReExtractArgs {
 
     if (arg === '--issue') {
       const value = argv[index + 1];
-      if (value == null) {
+      if (value == null || value.startsWith('-')) {
         throw new Error('Missing value for --issue');
       }
       issueIds.add(value);
@@ -60,7 +60,7 @@ export function parseReExtractArgs(argv: string[]): ParsedReExtractArgs {
 
     if (arg === '--evidence') {
       const value = argv[index + 1];
-      if (value == null) {
+      if (value == null || value.startsWith('-')) {
         throw new Error('Missing value for --evidence');
       }
       evidenceIds.add(value);

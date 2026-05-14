@@ -1,35 +1,50 @@
-import type { z } from 'zod';
+import { z } from 'zod';
 
-export type IngestContentTwitter = {
-  source: 'twitter' | 'mastodon';
-  accountName: string;
-  text: string;
-  url: string;
-  createdAt: string;
-};
+export const IngestContentTwitterSchema = z.object({
+  source: z.union([z.literal('twitter'), z.literal('mastodon')]),
+  accountName: z.string(),
+  text: z.string(),
+  url: z.string(),
+  createdAt: z.string(),
+});
 
-export type IngestContentReddit = {
-  source: 'reddit';
-  subreddit: string;
-  title: string;
-  selftext: string;
-  url: string;
-  createdAt: string;
-  thumbnailUrl: string | null;
-};
+export type IngestContentTwitter = z.infer<typeof IngestContentTwitterSchema>;
 
-export type IngestContentNewsArticle = {
-  source: 'news-website';
-  title: string;
-  summary: string;
-  url: string;
-  createdAt: string;
-};
+export const IngestContentRedditSchema = z.object({
+  source: z.literal('reddit'),
+  subreddit: z.string(),
+  title: z.string(),
+  selftext: z.string(),
+  url: z.string(),
+  createdAt: z.string(),
+  thumbnailUrl: z.string().nullable(),
+});
 
-export type IngestContent =
-  | IngestContentTwitter
-  | IngestContentReddit
-  | IngestContentNewsArticle;
+export type IngestContentReddit = z.infer<typeof IngestContentRedditSchema>;
+
+export const IngestContentNewsArticleSchema = z.object({
+  source: z.literal('news-website'),
+  title: z.string(),
+  summary: z.string(),
+  url: z.string(),
+  createdAt: z.string(),
+});
+
+export type IngestContentNewsArticle = z.infer<
+  typeof IngestContentNewsArticleSchema
+>;
+
+export const IngestContentSchema = z.union([
+  IngestContentTwitterSchema,
+  IngestContentRedditSchema,
+  IngestContentNewsArticleSchema,
+]);
+
+export type IngestContent = z.infer<typeof IngestContentSchema>;
+
+export const IngestMessageSchema = z.object({
+  content: z.array(IngestContentSchema),
+});
 
 export type Tool<TParams = unknown> = {
   name: string;

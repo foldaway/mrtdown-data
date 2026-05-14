@@ -9,7 +9,6 @@ import { assert } from '../../../util/assert.js';
 import { getOpenAiClient } from '../../client.js';
 
 export async function translate(text: string) {
-  console.log('[translate] Translating text:', text);
   const model = 'gpt-5-nano';
 
   const context: ResponseInputItem[] = [{ role: 'user', content: text }];

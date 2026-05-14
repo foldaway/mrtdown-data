@@ -3,7 +3,14 @@ import { replayImpactEvents } from '../maintenance/replayImpactEvents.js';
 
 const DATA_DIR = resolve(import.meta.dirname, '../../../../data');
 
-const summary = replayImpactEvents({ dataDir: DATA_DIR });
+let summary: ReturnType<typeof replayImpactEvents>;
+
+try {
+  summary = replayImpactEvents({ dataDir: DATA_DIR });
+} catch (error) {
+  console.error('[replayImpactEvents] Failed:', error);
+  process.exit(1);
+}
 
 console.log(`Replayed impact events for ${summary.issuesProcessed} issues.`);
 for (const result of summary.results) {

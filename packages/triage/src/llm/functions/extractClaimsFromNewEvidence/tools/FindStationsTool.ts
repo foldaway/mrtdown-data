@@ -75,11 +75,13 @@ export class FindStationsTool extends Tool<FindStationsToolParameters> {
         const startedAt = DateTime.fromISO(membership.startedAt);
         assert(startedAt.isValid, `Invalid date: ${membership.startedAt}`);
         if (startedAt > this.evidenceTs) return false;
-        if (
-          membership.endedAt != null &&
-          DateTime.fromISO(membership.endedAt) < this.evidenceTs
-        )
-          return false;
+
+        if (membership.endedAt != null) {
+          const endedAt = DateTime.fromISO(membership.endedAt);
+          assert(endedAt.isValid, `Invalid date: ${membership.endedAt}`);
+          if (endedAt <= this.evidenceTs) return false;
+        }
+
         return true;
       });
 

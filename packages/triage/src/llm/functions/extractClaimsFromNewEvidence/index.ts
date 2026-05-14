@@ -71,7 +71,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
   ];
 
   const systemPrompt = buildSystemPrompt();
-  const model = 'gpt-5.4-mini';
+  const model = 'gpt-5-mini';
 
   let toolCallCount = 0;
 
@@ -122,6 +122,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
             name: item.name,
             arguments: item.arguments,
           });
+          toolCallCount++;
 
           if (toolCallCount > TOOL_CALL_LIMIT) {
             context.push({
@@ -132,6 +133,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
             console.log(
               'Forced short-circuit, returning error message in tool call result.',
             );
+            continue;
           }
 
           if (item.name in toolRegistry) {
@@ -154,17 +156,36 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
               continue;
             }
 
-            // Call the tool's run function
-            const result = await tool.runner(params);
+            let result: string;
+
+            try {
+              result = await tool.runner(params);
+            } catch (e) {
+              console.error(
+                `[extractClaimsFromNewEvidence] Error running tool "${item.name}":`,
+                e,
+              );
+              context.push({
+                type: 'function_call_output',
+                call_id: item.call_id,
+                output: `Tool "${item.name}" failed. Please continue without it or try a different call.`,
+              });
+              continue;
+            }
 
             context.push({
               type: 'function_call_output',
               call_id: item.call_id,
               output: result,
             });
+          } else {
+            context.push({
+              type: 'function_call_output',
+              call_id: item.call_id,
+              output: `Unknown tool "${item.name}". Please use one of the available tools.`,
+            });
           }
 
-          toolCallCount++;
           break;
         }
         default: {

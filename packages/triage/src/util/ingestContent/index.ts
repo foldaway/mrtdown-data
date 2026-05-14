@@ -24,6 +24,18 @@ const writeStore = new FileWriteStore(DATA_DIR);
 const repo = new MRTDownRepository({ store });
 const writer = new MRTDownWriter({ store: writeStore });
 
+async function runLlmStep<T>(
+  label: string,
+  operation: () => Promise<T>,
+): Promise<T | null> {
+  try {
+    return await operation();
+  } catch (error) {
+    console.error(`[ingestContent] ${label} failed:`, error);
+    return null;
+  }
+}
+
 /**
  * Ingests content from social media, news, or other sources into the MRTDown issue system.
  *
@@ -46,13 +58,18 @@ export async function ingestContent(content: IngestContent) {
   console.log('[ingestContent]', content);
 
   // --- Triage: existing issue, new issue, or irrelevant ---
-  const triageResult = await triageNewEvidence({
-    newEvidence: {
-      ts: content.createdAt,
-      text: getText(content),
-    },
-    repo,
-  });
+  const triageResult = await runLlmStep('triageNewEvidence', () =>
+    triageNewEvidence({
+      newEvidence: {
+        ts: content.createdAt,
+        text: getText(content),
+      },
+      repo,
+    }),
+  );
+  if (triageResult == null) {
+    return null;
+  }
   console.log('[ingestContent.triageNewEvidence]', triageResult);
 
   if (triageResult.result.kind === 'irrelevant-content') {
@@ -61,13 +78,19 @@ export async function ingestContent(content: IngestContent) {
   }
 
   // --- Extract structured claims (lines, stations, periods, effects) ---
-  const { claims } = await extractClaimsFromNewEvidence({
-    newEvidence: {
-      ts: content.createdAt,
-      text: getText(content),
-    },
-    repo,
-  });
+  const extractResult = await runLlmStep('extractClaimsFromNewEvidence', () =>
+    extractClaimsFromNewEvidence({
+      newEvidence: {
+        ts: content.createdAt,
+        text: getText(content),
+      },
+      repo,
+    }),
+  );
+  if (extractResult == null) {
+    return null;
+  }
+  const { claims } = extractResult;
   console.log('[ingestContent.extractClaimsFromNewEvidence]', claims);
 
   // --- Resolve issue bundle: fetch existing or create new ---
@@ -89,12 +112,23 @@ export async function ingestContent(content: IngestContent) {
       );
       assert(slugDateTime.isValid, `Invalid date: ${content.createdAt}`);
 
-      const { title, slug } = await generateIssueTitleAndSlug({
-        text: getText(content),
-      });
+      const titleAndSlug = await runLlmStep('generateIssueTitleAndSlug', () =>
+        generateIssueTitleAndSlug({
+          text: getText(content),
+        }),
+      );
+      if (titleAndSlug == null) {
+        return null;
+      }
+      const { title, slug } = titleAndSlug;
       console.log('[ingestContent.generateSlug]', slug);
 
-      const translatedTitles = await translate(title);
+      const translatedTitles = await runLlmStep('translateIssueTitle', () =>
+        translate(title),
+      );
+      if (translatedTitles == null) {
+        return null;
+      }
 
       const issueId = `${slugDateTime.toFormat('yyyy-MM-dd')}-${slug}`;
 
@@ -106,7 +140,15 @@ export async function ingestContent(content: IngestContent) {
           source: '@openai/gpt-5-nano',
         },
       };
-      writer.issues.create(issue);
+      try {
+        writer.issues.create(issue);
+      } catch (error) {
+        console.error(
+          `[ingestContent] Failed to create issue ${issue.id}:`,
+          error,
+        );
+        throw error;
+      }
 
       issueBundle = {
         issue,
@@ -122,6 +164,13 @@ export async function ingestContent(content: IngestContent) {
   const contentDateTime = DateTime.fromISO(content.createdAt);
   assert(contentDateTime.isValid, `Invalid date: ${content.createdAt}`);
 
+  const translatedEvidenceText = await runLlmStep('translateEvidenceText', () =>
+    translate(getText(content)),
+  );
+  if (translatedEvidenceText == null) {
+    return null;
+  }
+
   const evidence: Evidence = {
     id: IdGenerator.evidenceId(contentDateTime),
     ts: contentDateTime.toISO({ includeOffset: true }),
@@ -129,7 +178,7 @@ export async function ingestContent(content: IngestContent) {
     text: getText(content),
     sourceUrl: content.url,
     render: {
-      text: await translate(getText(content)),
+      text: translatedEvidenceText,
       source: '@openai/gpt-5-nano',
     },
   };
@@ -146,9 +195,17 @@ export async function ingestContent(content: IngestContent) {
   });
 
   // --- Persist to disk ---
-  writer.issues.appendEvidence(issueBundle.issue.id, evidence);
-  for (const impact of newImpactEvents) {
-    writer.issues.appendImpact(issueBundle.issue.id, impact);
+  try {
+    writer.issues.appendEvidence(issueBundle.issue.id, evidence);
+    for (const impact of newImpactEvents) {
+      writer.issues.appendImpact(issueBundle.issue.id, impact);
+    }
+  } catch (error) {
+    console.error(
+      `[ingestContent] Failed to persist evidence for issue ${issueBundle.issue.id}:`,
+      error,
+    );
+    throw error;
   }
 
   return null;

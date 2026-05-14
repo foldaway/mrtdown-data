@@ -6,13 +6,20 @@ import { parseReExtractArgs } from './reExtractAndReplayTargets.js';
 const DATA_DIR = resolve(import.meta.dirname, '../../../../data');
 const args = parseReExtractArgs(process.argv.slice(2));
 
-const summary = await reExtractAndReplay({
-  dataDir: DATA_DIR,
-  mode: args.mode,
-  issueIds: args.issueIds,
-  evidenceIds: args.evidenceIds,
-  dryRun: args.dryRun,
-});
+let summary: Awaited<ReturnType<typeof reExtractAndReplay>>;
+
+try {
+  summary = await reExtractAndReplay({
+    dataDir: DATA_DIR,
+    mode: args.mode,
+    issueIds: args.issueIds,
+    evidenceIds: args.evidenceIds,
+    dryRun: args.dryRun,
+  });
+} catch (error) {
+  console.error('[reExtractAndReplay] Failed:', error);
+  process.exit(1);
+}
 
 console.log(
   `Found ${summary.totalTargetIssues} issues for mode "${summary.mode}" (${summary.totalTargetEvidenceItems} evidence items).`,

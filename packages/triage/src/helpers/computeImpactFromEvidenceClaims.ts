@@ -1,7 +1,6 @@
 import { deepStrictEqual } from 'node:assert';
 import type {
   Claim,
-  ClaimStatusSignal,
   ClaimTimeHints,
   ImpactEvent,
   IssueBundle,
@@ -113,32 +112,6 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
             entity: claim.entity,
             effect: claim.effect.service,
           });
-        }
-
-        switch (params.issueBundle.issue.type) {
-          case 'disruption': {
-            const isCleared = currentServiceState.periods.every(
-              (period) => period.kind === 'fixed' && period.endAt != null,
-            );
-
-            let currentStatus: ClaimStatusSignal = 'open';
-
-            if (isCleared) {
-              currentStatus = 'cleared';
-            }
-
-            if (currentStatus !== claim.statusSignal) {
-              switch (claim.statusSignal) {
-                case 'open': {
-                  break;
-                }
-                case 'cleared': {
-                  break;
-                }
-              }
-            }
-            break;
-          }
         }
 
         const reconciledServicePeriods = claims.reduce(

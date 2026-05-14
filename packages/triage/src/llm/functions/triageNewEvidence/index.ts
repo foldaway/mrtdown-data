@@ -16,7 +16,7 @@ import { GetIssueTool } from './tools/GetIssueTool.js';
 const TOOL_CALL_LIMIT = 5;
 
 const ResponseSchema = z.object({
-  result: z.discriminatedUnion('type', [
+  result: z.discriminatedUnion('kind', [
     z.object({
       kind: z.literal('part-of-existing-issue'),
       issueId: IssueIdSchema,
@@ -110,6 +110,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
             name: item.name,
             arguments: item.arguments,
           });
+          toolCallCount++;
 
           if (toolCallCount > TOOL_CALL_LIMIT) {
             context.push({
@@ -120,23 +121,59 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
             console.log(
               'Forced short-circuit, returning error message in tool call result.',
             );
+            continue;
           }
 
           if (item.name in toolRegistry) {
             const tool = toolRegistry[item.name];
 
-            const params = tool.parseParams(JSON.parse(item.arguments));
-            // Call the tool's run function
-            const result = await tool.runner(params);
+            let params: unknown;
+
+            try {
+              params = tool.parseParams(JSON.parse(item.arguments));
+            } catch (e) {
+              console.error(
+                `[triageNewEvidence] Error parsing parameters for tool "${item.name}" with arguments "${item.arguments}":`,
+                e,
+              );
+              context.push({
+                type: 'function_call_output',
+                call_id: item.call_id,
+                output: `Invalid parameters for tool "${item.name}". Please try again.`,
+              });
+              continue;
+            }
+
+            let result: string;
+
+            try {
+              result = await tool.runner(params);
+            } catch (e) {
+              console.error(
+                `[triageNewEvidence] Error running tool "${item.name}":`,
+                e,
+              );
+              context.push({
+                type: 'function_call_output',
+                call_id: item.call_id,
+                output: `Tool "${item.name}" failed. Please continue without it or try a different call.`,
+              });
+              continue;
+            }
 
             context.push({
               type: 'function_call_output',
               call_id: item.call_id,
               output: result,
             });
+          } else {
+            context.push({
+              type: 'function_call_output',
+              call_id: item.call_id,
+              output: `Unknown tool "${item.name}". Please use one of the available tools.`,
+            });
           }
 
-          toolCallCount++;
           break;
         }
         default: {

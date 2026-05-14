@@ -212,7 +212,26 @@ describe('MemoryStore', () => {
       const store = new MemoryStore({ files: { 'dir/file.txt': 'hi' } });
       store.delete('dir');
       expect(store.exists('dir')).toBe(false);
+      expect(store.exists('dir/file.txt')).toBe(false);
+      expect(store.listDir('')).toEqual([]);
       expect(() => store.listDir('dir')).toThrow();
+    });
+
+    test('removes nested directories and parent entries recursively', () => {
+      const store = new MemoryStore({
+        files: {
+          'dir/nested/file.txt': 'hi',
+          'dir/other.txt': 'bye',
+          'sibling.txt': 'ok',
+        },
+      });
+
+      store.delete('dir/nested');
+
+      expect(store.exists('dir/nested')).toBe(false);
+      expect(store.exists('dir/nested/file.txt')).toBe(false);
+      expect(store.listDir('dir')).toEqual(['other.txt']);
+      expect(store.listDir('')).toEqual(['dir', 'sibling.txt']);
     });
 
     test('removes both normalized and original path', () => {

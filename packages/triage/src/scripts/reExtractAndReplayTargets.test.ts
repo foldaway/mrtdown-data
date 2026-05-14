@@ -71,6 +71,15 @@ describe('parseReExtractArgs', () => {
       evidenceIds: undefined,
     });
   });
+
+  test('rejects flags as issue and evidence values', () => {
+    expect(() => parseReExtractArgs(['--issue', '--dry-run'])).toThrow(
+      'Missing value for --issue',
+    );
+    expect(() => parseReExtractArgs(['--evidence', '--dry-run'])).toThrow(
+      'Missing value for --evidence',
+    );
+  });
 });
 
 describe('hasPeriodViolation', () => {
