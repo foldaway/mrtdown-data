@@ -17,6 +17,7 @@ on:
       - 'tsconfig.json'
       - 'turbo.json'
       - 'biome.json'
+      - 'vitest.config.ts'
   push:
     branches:
       - main
@@ -35,6 +36,7 @@ on:
       - 'tsconfig.json'
       - 'turbo.json'
       - 'biome.json'
+      - 'vitest.config.ts'
 
 jobs:
   validate:
@@ -53,5 +55,5 @@ jobs:
       - run: npm run db:generate
         env:
           DUCKDB_DATABASE_PATH: mrtdown.duckdb
-      - run: npm test -- --run
+      - run: npm test
       - run: npm run test:packages
