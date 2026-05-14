@@ -27,6 +27,7 @@ swap_size_mb = 512
 
 [env]
   DUCKDB_DATABASE_PATH = 'mrtdown.duckdb'
+  MRTDOWN_LEGACY_API_ENTRYPOINT = 'true'
   SENTRY_ENVIRONMENT = 'production'
   NODE_OPTIONS = '--enable-source-maps'
 

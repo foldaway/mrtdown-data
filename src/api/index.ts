@@ -1,8 +1,11 @@
 import { Hono } from 'hono';
 import * as Sentry from '@sentry/node';
+import { serve } from '@hono/node-server';
 import { bearerAuth } from 'hono/bearer-auth';
 import { openAPIRouteHandler } from 'hono-openapi';
 import { Scalar } from '@scalar/hono-api-reference';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { analyticsRoute } from './routes/analytics/index.js';
 import { assert } from '../util/assert.js';
 import { linesRoute } from './routes/lines/index.js';
@@ -94,5 +97,32 @@ app.get(
     url: '/openapi.json',
   }),
 );
+
+if (
+  process.env.MRTDOWN_LEGACY_API_ENTRYPOINT === 'true' &&
+  process.argv[1] != null &&
+  import.meta.url === pathToFileURL(resolve(process.argv[1])).href
+) {
+  const { SENTRY_DSN, SENTRY_ENVIRONMENT, SENTRY_RELEASE } = process.env;
+
+  Sentry.init({
+    dsn: SENTRY_DSN,
+    release: SENTRY_RELEASE,
+    environment: SENTRY_ENVIRONMENT,
+  });
+
+  const port = Number.parseInt(process.env.PORT ?? '4000', 10);
+  assert(Number.isInteger(port) && port > 0, 'PORT must be a positive integer');
+
+  serve(
+    {
+      ...app,
+      port,
+    },
+    (info) => {
+      console.log(`Listening on http://localhost:${info.port}`);
+    },
+  );
+}
 
 export default app;
