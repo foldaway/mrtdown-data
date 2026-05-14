@@ -19,6 +19,7 @@ the first target packages added:
   and pure period helpers.
 - `packages/fs` contains file-backed repositories and writers for the target
   data layout.
+- `packages/triage` contains LLM-assisted evidence triage and replay utilities.
 - `packages/cli` contains the command-line entry point for validating,
   inspecting, creating, and generating target-layout data artifacts.
 - `fixtures/data` contains a small deterministic target-layout data set for
@@ -52,11 +53,16 @@ For the current legacy app:
 - `npm run build:packages`: build all target packages with Turborepo.
 - `npm run build:core`: compile the target `@mrtdown/core` package.
 - `npm run build:fs`: compile the target `@mrtdown/fs` package.
+- `npm run build:triage`: compile the target `@mrtdown/triage` package.
 - `npm run build:cli`: compile the target `@mrtdown/cli` package.
 - `npm test`: run deterministic tests.
 - `npm run test:packages`: run all target package tests with Turborepo.
 - `npm run test:core`: run `@mrtdown/core` deterministic tests.
 - `npm run test:fs`: run `@mrtdown/fs` deterministic tests.
+- `npm run test:triage`: run `@mrtdown/triage` deterministic tests.
+- `npm run test:eval`: run model-dependent `@mrtdown/triage` evals. This is
+  paid and must be run intentionally with the package's documented environment
+  variables.
 - `npm run test:cli`: run `@mrtdown/cli` deterministic tests.
 - `npm run data:validate`: validate `fixtures/data` with the target CLI.
 - `npm run check`: run harness checks that should stay fast and deterministic.

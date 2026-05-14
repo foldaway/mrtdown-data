@@ -39,10 +39,13 @@ npm run check:boundaries   # Enforce package import boundaries when packages exi
 npm run build:packages     # Build target packages with Turborepo
 npm run build:core         # Build the new @mrtdown/core package
 npm run build:fs           # Build the new @mrtdown/fs package
+npm run build:triage       # Build the new @mrtdown/triage package
 npm run build:cli          # Build the new @mrtdown/cli package
 npm run test:packages      # Run target package tests with Turborepo
 npm run test:core          # Run @mrtdown/core deterministic tests
 npm run test:fs            # Run @mrtdown/fs deterministic tests
+npm run test:triage        # Run @mrtdown/triage deterministic tests
+npm run test:eval          # Run paid/model-dependent @mrtdown/triage evals
 npm run test:cli           # Run @mrtdown/cli deterministic tests
 npm run data:validate      # Validate fixtures/data with @mrtdown/cli
 npm run pages:build        # Build the GitHub Pages static data artifact
