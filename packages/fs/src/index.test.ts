@@ -1,4 +1,4 @@
-import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import { access, mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,6 +8,8 @@ import {
   buildIssueId,
   buildManifest,
   createIssueBundle,
+  FileStore,
+  FileWriteStore,
   issuePathFromId,
   listEntityIds,
   readIssueBundle,
@@ -17,6 +19,7 @@ import {
   validateDataRoot,
   writeUnknownEntity,
 } from './index.js';
+import { StandardWriter } from './write/common/StandardWriter.js';
 
 const fixtureDataDir = resolve(
   dirname(fileURLToPath(import.meta.url)),
@@ -413,6 +416,40 @@ describe('@mrtdown/fs', () => {
         id: '../escaped',
       }),
     ).rejects.toThrow('Invalid entity id: ../escaped');
+  });
+
+  it('rejects standard writer ids that cannot be used as safe filenames', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new StandardWriter<{ id: string }>(
+      new FileWriteStore(dataDir),
+      'station',
+    );
+
+    expect(() => writer.create({ id: '../escaped' })).toThrow(
+      'Invalid item id: ../escaped',
+    );
+  });
+
+  it('deletes directories recursively in the write store', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const store = new FileWriteStore(dataDir);
+
+    store.ensureDir('issue/test/nested');
+    store.writeText('issue/test/nested/file.txt', 'ok');
+    store.delete('issue/test');
+
+    await expect(access(join(dataDir, 'issue/test'))).rejects.toThrow();
+    expect(() => store.delete('issue/test')).not.toThrow();
+  });
+
+  it('adds path context to JSON parse failures', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await writeFile(join(dataDir, 'bad.json'), '{');
+    const store = new FileStore(dataDir);
+
+    expect(() => store.readJson('bad.json')).toThrow(
+      'Invalid JSON in bad.json:',
+    );
   });
 
   it('normalizes data paths consistently', () => {

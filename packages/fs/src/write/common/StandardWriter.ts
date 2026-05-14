@@ -5,6 +5,8 @@ type Item = {
   id: string;
 };
 
+const SAFE_ITEM_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9_-]*$/;
+
 /**
  * A standard writer for items represented by single JSON files that are stored in a directory.
  */
@@ -15,6 +17,10 @@ export class StandardWriter<T extends Item> {
   ) {}
 
   create(item: T): void {
+    if (!SAFE_ITEM_ID_PATTERN.test(item.id)) {
+      throw new Error(`Invalid item id: ${item.id}`);
+    }
+
     this.store.ensureDir(this.dirPath);
     this.store.writeJson(join(this.dirPath, `${item.id}.json`), item);
   }

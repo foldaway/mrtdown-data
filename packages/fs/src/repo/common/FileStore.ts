@@ -15,7 +15,16 @@ export class FileStore implements IStore {
   }
 
   readJson<T>(path: string): T {
-    return JSON.parse(this.readText(path));
+    try {
+      return JSON.parse(this.readText(path));
+    } catch (error) {
+      if (error instanceof SyntaxError) {
+        throw new Error(`Invalid JSON in ${path}: ${error.message}`, {
+          cause: error,
+        });
+      }
+      throw error;
+    }
   }
 
   listDir(path: string): string[] {

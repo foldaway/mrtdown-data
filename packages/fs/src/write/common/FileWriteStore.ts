@@ -29,6 +29,6 @@ export class FileWriteStore implements IWriteStore {
 
   delete(path: string): void {
     const fullPath = join(this.rootDir, path);
-    rmSync(fullPath);
+    rmSync(fullPath, { recursive: true, force: true });
   }
 }

@@ -21,7 +21,7 @@ export interface IStore {
    */
   listDir(path: string): string[];
   /**
-   * Check if a file exists.
+   * Check if a file or directory exists.
    * @param path
    * @returns
    */
