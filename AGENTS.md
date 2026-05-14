@@ -6,7 +6,7 @@ in `docs/` and link to them from here.
 ## Current State
 
 This stacked branch is still mostly the legacy MRTDown data API repository, with
-the first target package added:
+the first target packages added:
 
 - `src/api/` contains Hono routes and response schemas.
 - `src/db/` generates and reads the DuckDB database.
@@ -16,7 +16,13 @@ the first target package added:
   utilities.
 - `data/source/` is the legacy source-data layout.
 - `packages/core` contains the new package/data architecture's shared schemas
-  and pure period helpers. It is not wired into the legacy runtime yet.
+  and pure period helpers.
+- `packages/fs` contains file-backed repositories and writers for the target
+  data layout.
+- `packages/cli` contains the command-line entry point for validating,
+  inspecting, creating, and generating target-layout data artifacts.
+- `fixtures/data` contains a small deterministic target-layout data set for
+  package and CLI tests.
 
 The data-overhaul work is being split into smaller PRs. Follow
 `docs/DATA_OVERHAUL_SPLIT.md` before moving package, data, workflow, or deploy
@@ -43,7 +49,14 @@ For the current legacy app:
 
 - `npm ci`: install dependencies from the lockfile.
 - `npm run build`: compile TypeScript and run the legacy postbuild pipeline.
+- `npm run build:core`: compile the target `@mrtdown/core` package.
+- `npm run build:fs`: compile the target `@mrtdown/fs` package.
+- `npm run build:cli`: compile the target `@mrtdown/cli` package.
 - `npm test`: run deterministic tests.
+- `npm run test:core`: run `@mrtdown/core` deterministic tests.
+- `npm run test:fs`: run `@mrtdown/fs` deterministic tests.
+- `npm run test:cli`: run `@mrtdown/cli` deterministic tests.
+- `npm run data:validate`: validate `fixtures/data` with the target CLI.
 - `npm run check`: run harness checks that should stay fast and deterministic.
 - `npm run check:boundaries`: enforce package import boundaries when packages
   exist.
