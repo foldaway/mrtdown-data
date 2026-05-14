@@ -28,6 +28,14 @@ independently.
    - Add fixtures and commands for validate, list, show, create, id, manifest,
      and pages-index.
 
+Step 3.5: Turborepo package task harness
+
+- Add Turborepo for dependency-aware package build and test orchestration.
+- Keep the legacy production build, Docker/Fly.io surfaces, generated data,
+  publishing, and runtime removal out of this PR.
+- Preserve the existing root command names so production stabilization patches
+  continue to run the same entry points.
+
 4. Triage package
    - Add `packages/triage` with deterministic tests.
    - Document `test:eval`, required environment variables, model dependency,
@@ -59,7 +67,9 @@ Every PR should run the fastest applicable subset:
 
 - `npm run check`
 - `npm run build`
+- `npm run build:packages`
 - `npm test`
+- `npm run test:packages`
 - target CLI validation once the CLI exists
 
 When packages exist, `npm run check:boundaries` enforces the intended dependency

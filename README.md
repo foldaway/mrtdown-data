@@ -36,9 +36,11 @@ npx biome check
 npm run check              # Fast deterministic harness checks
 npm run check:docs         # Verify repo-relative documentation links
 npm run check:boundaries   # Enforce package import boundaries when packages exist
+npm run build:packages     # Build target packages with Turborepo
 npm run build:core         # Build the new @mrtdown/core package
 npm run build:fs           # Build the new @mrtdown/fs package
 npm run build:cli          # Build the new @mrtdown/cli package
+npm run test:packages      # Run target package tests with Turborepo
 npm run test:core          # Run @mrtdown/core deterministic tests
 npm run test:fs            # Run @mrtdown/fs deterministic tests
 npm run test:cli           # Run @mrtdown/cli deterministic tests
