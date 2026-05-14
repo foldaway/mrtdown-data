@@ -49,10 +49,12 @@ For the current legacy app:
 
 - `npm ci`: install dependencies from the lockfile.
 - `npm run build`: compile TypeScript and run the legacy postbuild pipeline.
+- `npm run build:packages`: build all target packages with Turborepo.
 - `npm run build:core`: compile the target `@mrtdown/core` package.
 - `npm run build:fs`: compile the target `@mrtdown/fs` package.
 - `npm run build:cli`: compile the target `@mrtdown/cli` package.
 - `npm test`: run deterministic tests.
+- `npm run test:packages`: run all target package tests with Turborepo.
 - `npm run test:core`: run `@mrtdown/core` deterministic tests.
 - `npm run test:fs`: run `@mrtdown/fs` deterministic tests.
 - `npm run test:cli`: run `@mrtdown/cli` deterministic tests.
