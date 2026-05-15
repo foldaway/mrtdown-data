@@ -12,27 +12,6 @@
   },
   "stationCodes": [
     {
-      "lineId": "EWL",
-      "code": "EW16",
-      "startedAt": "1987-12-12T00:00:00Z",
-      "endedAt": null,
-      "structureType": "underground"
-    },
-    {
-      "lineId": "NEL",
-      "code": "NE3",
-      "startedAt": "2003-06-20T00:00:00Z",
-      "endedAt": null,
-      "structureType": "underground"
-    },
-    {
-      "lineId": "TEL",
-      "code": "TE17",
-      "startedAt": "2022-11-13T00:00:00Z",
-      "endedAt": null,
-      "structureType": "underground"
-    },
-    {
       "lineId": "TGL",
       "code": "TG8",
       "startedAt": "2025-12-31T00:00:00Z",

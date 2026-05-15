@@ -12,13 +12,6 @@
   },
   "stationCodes": [
     {
-      "lineId": "CCL",
-      "code": "CC18",
-      "startedAt": "2040-12-31T00:00:00Z",
-      "endedAt": null,
-      "structureType": "underground"
-    },
-    {
       "lineId": "SLL",
       "code": "SL7",
       "startedAt": "2025-12-31T00:00:00Z",

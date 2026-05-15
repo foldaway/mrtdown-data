@@ -12,13 +12,6 @@
   },
   "stationCodes": [
     {
-      "lineId": "JRL",
-      "code": "JS3",
-      "startedAt": "2027-12-31T00:00:00Z",
-      "endedAt": null,
-      "structureType": "elevated"
-    },
-    {
       "lineId": "TGL",
       "code": "TGL1",
       "startedAt": "2025-12-31T00:00:00Z",

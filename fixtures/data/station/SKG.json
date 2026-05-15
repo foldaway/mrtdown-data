@@ -12,20 +12,6 @@
   },
   "stationCodes": [
     {
-      "lineId": "NEL",
-      "code": "NE16",
-      "startedAt": "2003-06-20T00:00:00Z",
-      "endedAt": null,
-      "structureType": "underground"
-    },
-    {
-      "lineId": "SKLRT",
-      "code": "STC",
-      "startedAt": "2003-01-18T00:00:00Z",
-      "endedAt": null,
-      "structureType": "elevated"
-    },
-    {
       "lineId": "SLL",
       "code": "SL4",
       "startedAt": "2025-12-31T00:00:00Z",

@@ -12,13 +12,6 @@
   },
   "stationCodes": [
     {
-      "lineId": "DTL",
-      "code": "DT5",
-      "startedAt": "2015-12-27T00:00:00Z",
-      "endedAt": null,
-      "structureType": "underground"
-    },
-    {
       "lineId": "TGL",
       "code": "TG3",
       "startedAt": "2025-12-31T00:00:00Z",
