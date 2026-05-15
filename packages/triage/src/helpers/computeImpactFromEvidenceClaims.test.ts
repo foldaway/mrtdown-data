@@ -88,6 +88,58 @@ describe('computeImpactFromEvidenceClaims', () => {
     });
   });
 
+  test('returns the derived current state when no new claims are provided', () => {
+    const serviceEntity = { type: 'service' as const, serviceId: 'NSL' };
+    const issueBundle = createMockBundle([
+      {
+        id: 'ie_seed_period',
+        type: 'periods.set',
+        entity: serviceEntity,
+        ts: '2025-01-01T09:00:00+08:00',
+        basis: { evidenceId: 'seed_period' },
+        periods: [
+          {
+            kind: 'fixed',
+            startAt: '2025-01-01T09:00:00+08:00',
+            endAt: null,
+          },
+        ],
+      },
+      {
+        id: 'ie_seed_effect',
+        type: 'service_effects.set',
+        entity: serviceEntity,
+        ts: '2025-01-01T09:01:00+08:00',
+        basis: { evidenceId: 'seed_effect' },
+        effect: { kind: 'delay', duration: null },
+      },
+    ]);
+
+    const result = computeImpactFromEvidenceClaims({
+      issueBundle,
+      evidenceId: '2025-01-01T10:00:00+08:00',
+      evidenceTs: '2025-01-01T10:00:00+08:00',
+      claims: [],
+    });
+
+    const serviceKey = keyForAffectedEntity(serviceEntity);
+    expect(result.newState.services[serviceKey]).toMatchObject({
+      effect: { kind: 'delay', duration: null },
+      periods: [
+        {
+          kind: 'fixed',
+          startAt: '2025-01-01T09:00:00+08:00',
+          endAt: null,
+        },
+      ],
+    });
+    expect(result.newState.impactEventIds).toEqual([
+      'ie_seed_effect',
+      'ie_seed_period',
+    ]);
+    expect(result.newImpactEvents).toEqual([]);
+  });
+
   test('creates service effect and periods events for fixed time hints', () => {
     const claim = createServiceClaim({
       effect: {
@@ -193,6 +245,34 @@ describe('computeImpactFromEvidenceClaims', () => {
     expect(result.newImpactEvents[1]).toMatchObject({
       type: 'periods.set',
     });
+  });
+
+  test('merges grouped claims by latest non-null field', () => {
+    const effectClaim = createServiceClaim({
+      effect: {
+        service: { kind: 'delay', duration: null },
+        facility: null,
+      },
+    });
+    const timeHintClaim = createServiceClaim({
+      timeHints: {
+        kind: 'fixed',
+        startAt: '2025-01-01T11:00:00+08:00',
+        endAt: null,
+      },
+    });
+
+    const result = computeImpactFromEvidenceClaims({
+      issueBundle: createMockBundle([]),
+      evidenceId: '2025-01-01T11:00:00+08:00',
+      evidenceTs: '2025-01-01T11:00:00+08:00',
+      claims: [effectClaim, timeHintClaim],
+    });
+
+    expect(result.newImpactEvents.map((event) => event.type)).toEqual([
+      'service_effects.set',
+      'periods.set',
+    ]);
   });
 
   test('retains disjoint fixed periods from multiple claims for the same entity', () => {
@@ -712,6 +792,62 @@ describe('computeImpactFromEvidenceClaims', () => {
             endAt: '2025-01-03T00:00:00+08:00',
           },
         ],
+      },
+    ]);
+  });
+
+  test('keeps open fixed periods open and does not merge across real gaps', () => {
+    const serviceEntity = { type: 'service' as const, serviceId: 'NSL' };
+    const issueBundle = createMockBundle([
+      {
+        id: 'ie_seed_period',
+        type: 'periods.set',
+        entity: serviceEntity,
+        ts: '2025-01-01T08:00:00+08:00',
+        basis: { evidenceId: 'seed' },
+        periods: [
+          {
+            kind: 'fixed',
+            startAt: '2025-01-01T10:00:00+08:00',
+            endAt: '2025-01-01T11:00:00+08:00',
+          },
+          {
+            kind: 'fixed',
+            startAt: '2025-01-01T12:00:00+08:00',
+            endAt: null,
+          },
+        ],
+      },
+    ]);
+
+    const claim = createServiceClaim({
+      entity: serviceEntity,
+      timeHints: {
+        kind: 'fixed',
+        startAt: '2025-01-01T12:30:00+08:00',
+        endAt: '2025-01-01T13:00:00+08:00',
+      },
+    });
+    const evidenceId = '2025-01-01T12:35:00+08:00';
+
+    const result = computeImpactFromEvidenceClaims({
+      issueBundle,
+      evidenceId,
+      evidenceTs: evidenceId,
+      claims: [claim],
+    });
+
+    const serviceKey = keyForAffectedEntity(serviceEntity);
+    expect(result.newState.services[serviceKey].periods).toEqual([
+      {
+        kind: 'fixed',
+        startAt: '2025-01-01T10:00:00+08:00',
+        endAt: '2025-01-01T11:00:00+08:00',
+      },
+      {
+        kind: 'fixed',
+        startAt: '2025-01-01T12:00:00+08:00',
+        endAt: null,
       },
     ]);
   });

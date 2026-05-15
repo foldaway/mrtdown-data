@@ -137,6 +137,7 @@ export function deriveCurrentState(bundle: IssueBundle): IssueBundleState {
           kind: impactEvent.entity.kind,
           effect: null,
           periods: [],
+          causes: [],
         };
 
         const currentProvenance = facilitiesProvenance[key] ?? {};

@@ -33,22 +33,15 @@ type Result = {
  * @returns The result.
  */
 export function computeImpactFromEvidenceClaims(params: Params): Result {
+  const currentState = deriveCurrentState(params.issueBundle);
   const result: Result = {
-    newState: {
-      services: {},
-      servicesProvenance: {},
-      facilities: {},
-      facilitiesProvenance: {},
-      impactEventIds: [],
-    },
+    newState: cloneIssueBundleState(currentState),
     newImpactEvents: [],
   };
 
   const eventTs = params.evidenceTs;
   const eventDateTime = DateTime.fromISO(eventTs);
   assert(eventDateTime.isValid, `Invalid date: ${eventTs}`);
-
-  const currentState = deriveCurrentState(params.issueBundle);
 
   const claimsByAffectedEntity = new Map<string, Claim[]>();
   for (const claim of params.claims) {
@@ -59,21 +52,21 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
   }
 
   for (const [key, claims] of claimsByAffectedEntity) {
-    const claim = claims.at(-1);
+    const claim = mergeClaims(claims);
     if (claim == null) {
       continue;
     }
 
     switch (claim.entity.type) {
       case 'service': {
-        const currentServiceState = currentState.services[key] ?? {
+        const currentServiceState = result.newState.services[key] ?? {
           effect: null,
           scopes: [],
           periods: [],
           causes: [],
         };
         const currentServiceProvenance =
-          currentState.servicesProvenance[key] ?? {};
+          result.newState.servicesProvenance[key] ?? {};
 
         // A service usually needs (or must establish) a period before effects
         // and scopes can be recorded. For maintenance/infra issues, we still
@@ -104,7 +97,7 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
           currentServiceProvenance.effect = {
             evidenceId: params.evidenceId,
           };
-          result.newImpactEvents.push({
+          addImpactEvent(result, {
             id: IdGenerator.impactEventId(eventDateTime),
             type: 'service_effects.set',
             ts: eventTs,
@@ -141,7 +134,7 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
           currentServiceProvenance.periods = {
             evidenceId: params.evidenceId,
           };
-          result.newImpactEvents.push({
+          addImpactEvent(result, {
             id: IdGenerator.impactEventId(eventDateTime),
             type: 'periods.set',
             ts: eventTs,
@@ -160,7 +153,7 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
           currentServiceProvenance.scopes = {
             evidenceId: params.evidenceId,
           };
-          result.newImpactEvents.push({
+          addImpactEvent(result, {
             id: IdGenerator.impactEventId(eventDateTime),
             type: 'service_scopes.set',
             ts: eventTs,
@@ -178,7 +171,7 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
           currentServiceProvenance.causes = {
             evidenceId: params.evidenceId,
           };
-          result.newImpactEvents.push({
+          addImpactEvent(result, {
             id: IdGenerator.impactEventId(eventDateTime),
             type: 'causes.set',
             ts: eventTs,
@@ -194,12 +187,13 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
         break;
       }
       case 'facility': {
-        const currentFacilityState = currentState.facilities[key] ?? {
+        const currentFacilityState = result.newState.facilities[key] ?? {
           effect: null,
           periods: [],
+          causes: [],
         };
         const currentFacilityProvenance =
-          currentState.facilitiesProvenance[key] ?? {};
+          result.newState.facilitiesProvenance[key] ?? {};
 
         if (
           claim.effect?.facility != null &&
@@ -209,7 +203,7 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
           currentFacilityProvenance.effect = {
             evidenceId: params.evidenceId,
           };
-          result.newImpactEvents.push({
+          addImpactEvent(result, {
             id: IdGenerator.impactEventId(eventDateTime),
             type: 'facility_effects.set',
             ts: eventTs,
@@ -246,7 +240,7 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
           currentFacilityProvenance.periods = {
             evidenceId: params.evidenceId,
           };
-          result.newImpactEvents.push({
+          addImpactEvent(result, {
             id: IdGenerator.impactEventId(eventDateTime),
             type: 'periods.set',
             ts: eventTs,
@@ -264,7 +258,7 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
           currentFacilityProvenance.causes = {
             evidenceId: params.evidenceId,
           };
-          result.newImpactEvents.push({
+          addImpactEvent(result, {
             id: IdGenerator.impactEventId(eventDateTime),
             type: 'causes.set',
             ts: eventTs,
@@ -283,6 +277,87 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
   }
 
   return result;
+}
+
+function cloneIssueBundleState(state: IssueBundleState): IssueBundleState {
+  return {
+    services: Object.fromEntries(
+      Object.entries(state.services).map(([key, value]) => [
+        key,
+        {
+          ...value,
+          scopes: [...value.scopes],
+          periods: value.periods.map((period) => ({ ...period })),
+          causes: [...value.causes],
+        },
+      ]),
+    ),
+    servicesProvenance: Object.fromEntries(
+      Object.entries(state.servicesProvenance).map(([key, value]) => [
+        key,
+        { ...value },
+      ]),
+    ),
+    facilities: Object.fromEntries(
+      Object.entries(state.facilities).map(([key, value]) => [
+        key,
+        {
+          ...value,
+          periods: value.periods.map((period) => ({ ...period })),
+          causes: [...(value.causes ?? [])],
+        },
+      ]),
+    ),
+    facilitiesProvenance: Object.fromEntries(
+      Object.entries(state.facilitiesProvenance).map(([key, value]) => [
+        key,
+        { ...value },
+      ]),
+    ),
+    impactEventIds: [...state.impactEventIds],
+  };
+}
+
+function addImpactEvent(result: Result, event: ImpactEvent): void {
+  result.newImpactEvents.push(event);
+  result.newState.impactEventIds.push(event.id);
+}
+
+function mergeClaims(claims: Claim[]): Claim | null {
+  const [firstClaim, ...remainingClaims] = claims;
+  if (firstClaim == null) {
+    return null;
+  }
+
+  return remainingClaims.reduce<Claim>(
+    (merged, claim) => ({
+      entity: claim.entity,
+      effect: mergeClaimEffect(merged.effect, claim.effect),
+      scopes: {
+        service: claim.scopes.service ?? merged.scopes.service,
+      },
+      statusSignal: claim.statusSignal ?? merged.statusSignal,
+      timeHints: claim.timeHints ?? merged.timeHints,
+      causes: claim.causes ?? merged.causes,
+    }),
+    firstClaim,
+  );
+}
+
+function mergeClaimEffect(
+  current: Claim['effect'],
+  next: Claim['effect'],
+): Claim['effect'] {
+  if (next == null) {
+    return current;
+  }
+  if (current == null) {
+    return next;
+  }
+  return {
+    service: next.service ?? current.service,
+    facility: next.facility ?? current.facility,
+  };
 }
 
 type ReconcilePeriodsWithTimeHintsResults = {
@@ -444,7 +519,7 @@ function mergeFixedEndAt(
   nextEndAt: string | null,
 ): string | null {
   if (currentEndAt == null || nextEndAt == null) {
-    return currentEndAt ?? nextEndAt;
+    return null;
   }
   return currentEndAt > nextEndAt ? currentEndAt : nextEndAt;
 }
@@ -453,8 +528,8 @@ function fixedPeriodsOverlap(
   left: Extract<Period, { kind: 'fixed' }>,
   right: Extract<Period, { kind: 'fixed' }>,
 ): boolean {
-  if (left.endAt == null || right.endAt == null) {
-    return left.startAt <= right.startAt;
+  if (left.endAt == null) {
+    return true;
   }
   return left.endAt >= right.startAt;
 }
