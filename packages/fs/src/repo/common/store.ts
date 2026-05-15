@@ -1,29 +1,27 @@
 /**
- * A store for reading and writing files.
+ * A store for reading target-layout data files.
  */
 export interface IStore {
   /**
-   * Read a text file.
-   * @param path
-   * @returns
+   * Read a UTF-8 text file at a repository-relative path.
+   * @throws When the path cannot be read as a file.
    */
   readText(path: string): string;
+
   /**
-   * Read a JSON file.
-   * @param path
-   * @returns
+   * Read and parse a JSON file at a repository-relative path.
+   * @throws When the path cannot be read as a file or contains invalid JSON.
    */
   readJson<T>(path: string): T;
+
   /**
    * List entries in a directory. Dotfiles and dot-directories are omitted.
-   * @param path
-   * @returns
+   * @throws When the path cannot be read as a directory.
    */
   listDir(path: string): string[];
+
   /**
    * Check if a file or directory exists.
-   * @param path
-   * @returns
    */
   exists(path: string): boolean;
 }
