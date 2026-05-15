@@ -40,6 +40,10 @@ export class IssueWriter {
     );
   }
 
+  delete(issueId: string): void {
+    this.store.delete?.(this.getIssueDir(issueId));
+  }
+
   private getIssueDir(issueId: string): string {
     const tsMatch = /^(\d{4})-(\d{2})-(\d{2})/.exec(issueId);
     if (!tsMatch) {

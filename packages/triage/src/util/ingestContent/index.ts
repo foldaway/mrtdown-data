@@ -95,6 +95,7 @@ export async function ingestContent(content: IngestContent) {
 
   // --- Resolve issue bundle: fetch existing or create new ---
   let issueBundle: IssueBundle;
+  let shouldCreateIssue = false;
 
   switch (triageResult.result.kind) {
     case 'part-of-existing-issue': {
@@ -140,15 +141,6 @@ export async function ingestContent(content: IngestContent) {
           source: '@openai/gpt-5-nano',
         },
       };
-      try {
-        writer.issues.create(issue);
-      } catch (error) {
-        console.error(
-          `[ingestContent] Failed to create issue ${issue.id}:`,
-          error,
-        );
-        throw error;
-      }
 
       issueBundle = {
         issue,
@@ -156,6 +148,7 @@ export async function ingestContent(content: IngestContent) {
         impactEvents: [],
         path: DATA_DIR,
       };
+      shouldCreateIssue = true;
       break;
     }
   }
@@ -196,11 +189,24 @@ export async function ingestContent(content: IngestContent) {
 
   // --- Persist to disk ---
   try {
+    if (shouldCreateIssue) {
+      writer.issues.create(issueBundle.issue);
+    }
     writer.issues.appendEvidence(issueBundle.issue.id, evidence);
     for (const impact of newImpactEvents) {
       writer.issues.appendImpact(issueBundle.issue.id, impact);
     }
   } catch (error) {
+    if (shouldCreateIssue) {
+      try {
+        writer.issues.delete(issueBundle.issue.id);
+      } catch (cleanupError) {
+        console.error(
+          `[ingestContent] Failed to roll back issue ${issueBundle.issue.id}:`,
+          cleanupError,
+        );
+      }
+    }
     console.error(
       `[ingestContent] Failed to persist evidence for issue ${issueBundle.issue.id}:`,
       error,
