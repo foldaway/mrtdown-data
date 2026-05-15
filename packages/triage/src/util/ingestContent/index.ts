@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import type { Evidence, Issue, IssueBundle } from '@mrtdown/core';
+import type { Evidence, EvidenceType, Issue, IssueBundle } from '@mrtdown/core';
 import {
   FileStore,
   FileWriteStore,
@@ -17,14 +17,18 @@ import { assert } from '../assert.js';
 import { getSlugDateTimeFromClaims } from './helpers/getSlugDateTimeFromClaims.js';
 import type { IngestContent } from './types.js';
 
-const DATA_DIR = resolve(import.meta.dirname, '../../../../../data');
+const DEFAULT_DATA_DIR = resolve(import.meta.dirname, '../../../../../data');
 
-function createRepository(): MRTDownRepository {
-  return new MRTDownRepository({ store: new FileStore(DATA_DIR) });
+export interface IngestContentOptions {
+  dataDir?: string;
 }
 
-function createWriter(): MRTDownWriter {
-  return new MRTDownWriter({ store: new FileWriteStore(DATA_DIR) });
+function createRepository(dataDir: string): MRTDownRepository {
+  return new MRTDownRepository({ store: new FileStore(dataDir) });
+}
+
+function createWriter(dataDir: string): MRTDownWriter {
+  return new MRTDownWriter({ store: new FileWriteStore(dataDir) });
 }
 
 async function runLlmStep<T>(
@@ -49,7 +53,10 @@ async function runLlmStep<T>(
  * @param content - The content to ingest (Reddit post, news article, or Twitter/Mastodon post).
  * @returns `null` when content is irrelevant or after successful ingestion.
  */
-export async function ingestContent(content: IngestContent) {
+export async function ingestContent(
+  content: IngestContent,
+  { dataDir = DEFAULT_DATA_DIR }: IngestContentOptions = {},
+) {
   // --- Normalise input ---
   // HACK: Force `createdAt` to be Asia/Singapore timezone
   const createdAt = DateTime.fromISO(content.createdAt)
@@ -57,18 +64,22 @@ export async function ingestContent(content: IngestContent) {
     .toISO();
   assert(createdAt != null, 'Expected valid createdAt');
 
-  content.createdAt = createdAt;
-  console.log('[ingestContent]', content);
+  const normalizedContent: IngestContent = {
+    ...content,
+    createdAt,
+  };
+  const text = getText(normalizedContent);
+  console.log('[ingestContent]', normalizedContent);
 
-  const repo = createRepository();
-  const writer = createWriter();
+  const repo = createRepository(dataDir);
+  const writer = createWriter(dataDir);
 
   // --- Triage: existing issue, new issue, or irrelevant ---
   const triageResult = await runLlmStep('triageNewEvidence', () =>
     triageNewEvidence({
       newEvidence: {
-        ts: content.createdAt,
-        text: getText(content),
+        ts: normalizedContent.createdAt,
+        text,
       },
       repo,
     }),
@@ -87,8 +98,8 @@ export async function ingestContent(content: IngestContent) {
   const extractResult = await runLlmStep('extractClaimsFromNewEvidence', () =>
     extractClaimsFromNewEvidence({
       newEvidence: {
-        ts: content.createdAt,
-        text: getText(content),
+        ts: normalizedContent.createdAt,
+        text,
       },
       repo,
     }),
@@ -115,13 +126,16 @@ export async function ingestContent(content: IngestContent) {
     case 'part-of-new-issue': {
       // Create issue: derive date from claims, generate title/slug, translate, persist
       const slugDateTime = DateTime.fromISO(
-        getSlugDateTimeFromClaims(claims) ?? content.createdAt,
+        getSlugDateTimeFromClaims(claims) ?? normalizedContent.createdAt,
       );
-      assert(slugDateTime.isValid, `Invalid date: ${content.createdAt}`);
+      assert(
+        slugDateTime.isValid,
+        `Invalid date: ${normalizedContent.createdAt}`,
+      );
 
       const titleAndSlug = await runLlmStep('generateIssueTitleAndSlug', () =>
         generateIssueTitleAndSlug({
-          text: getText(content),
+          text,
         }),
       );
       if (titleAndSlug == null) {
@@ -152,7 +166,7 @@ export async function ingestContent(content: IngestContent) {
         issue,
         evidence: [],
         impactEvents: [],
-        path: DATA_DIR,
+        path: dataDir,
       };
       shouldCreateIssue = true;
       break;
@@ -160,11 +174,14 @@ export async function ingestContent(content: IngestContent) {
   }
 
   // --- Build evidence record ---
-  const contentDateTime = DateTime.fromISO(content.createdAt);
-  assert(contentDateTime.isValid, `Invalid date: ${content.createdAt}`);
+  const contentDateTime = DateTime.fromISO(normalizedContent.createdAt);
+  assert(
+    contentDateTime.isValid,
+    `Invalid date: ${normalizedContent.createdAt}`,
+  );
 
   const translatedEvidenceText = await runLlmStep('translateEvidenceText', () =>
-    translate(getText(content)),
+    translate(text),
   );
   if (translatedEvidenceText == null) {
     return null;
@@ -173,9 +190,9 @@ export async function ingestContent(content: IngestContent) {
   const evidence: Evidence = {
     id: IdGenerator.evidenceId(contentDateTime),
     ts: contentDateTime.toISO({ includeOffset: true }),
-    type: getEvidenceType(content),
-    text: getText(content),
-    sourceUrl: content.url,
+    type: getEvidenceType(normalizedContent),
+    text,
+    sourceUrl: normalizedContent.url,
     render: {
       text: translatedEvidenceText,
       source: '@openai/gpt-5-nano',
@@ -230,7 +247,7 @@ export async function ingestContent(content: IngestContent) {
  * @param content - The content to extract text from.
  * @returns The text body (selftext for Reddit, summary for news, text for social).
  */
-function getText(content: IngestContent) {
+function getText(content: IngestContent): string {
   switch (content.source) {
     case 'reddit': {
       return content.selftext;
@@ -242,6 +259,12 @@ function getText(content: IngestContent) {
     case 'mastodon': {
       return content.text;
     }
+    default: {
+      const exhaustive: never = content;
+      throw new Error(
+        `Unhandled content source: ${JSON.stringify(exhaustive)}`,
+      );
+    }
   }
 }
 
@@ -251,7 +274,7 @@ function getText(content: IngestContent) {
  * @param content - The content to classify.
  * @returns The evidence type: report.public for social sources, or report.media for news.
  */
-function getEvidenceType(content: IngestContent) {
+function getEvidenceType(content: IngestContent): EvidenceType {
   switch (content.source) {
     case 'reddit': {
       return 'report.public';
@@ -262,6 +285,12 @@ function getEvidenceType(content: IngestContent) {
     case 'twitter':
     case 'mastodon': {
       return 'report.public';
+    }
+    default: {
+      const exhaustive: never = content;
+      throw new Error(
+        `Unhandled content source: ${JSON.stringify(exhaustive)}`,
+      );
     }
   }
 }
