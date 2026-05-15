@@ -523,6 +523,14 @@ describe('deriveCurrentState', () => {
         ],
         basis: { evidenceId: 'evidence-2' },
       },
+      {
+        id: 'ie_test_003',
+        type: 'causes.set',
+        entity: facilityEntity,
+        ts: '2025-01-01T10:00:00Z',
+        causes: ['elevator.outage'],
+        basis: { evidenceId: 'evidence-3' },
+      },
     ]);
 
     const result = deriveCurrentState(bundle);
@@ -538,11 +546,17 @@ describe('deriveCurrentState', () => {
           endAt: '2025-01-01T12:00:00+08:00',
         },
       ],
+      causes: ['elevator.outage'],
     });
     expect(result.facilitiesProvenance[facilityKey]).toEqual({
       effect: { evidenceId: 'evidence-1' },
       periods: { evidenceId: 'evidence-2' },
+      causes: { evidenceId: 'evidence-3' },
     });
-    expect(result.impactEventIds).toEqual(['ie_test_002', 'ie_test_001']);
+    expect(result.impactEventIds).toEqual([
+      'ie_test_002',
+      'ie_test_003',
+      'ie_test_001',
+    ]);
   });
 });

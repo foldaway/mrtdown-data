@@ -159,6 +159,14 @@ export function deriveCurrentState(bundle: IssueBundle): IssueBundleState {
             impactEventIds.periods = impactEvent.id;
             break;
           }
+          case 'causes.set': {
+            currentState.causes = impactEvent.causes;
+            currentProvenance.causes = {
+              evidenceId: impactEvent.basis.evidenceId,
+            };
+            impactEventIds.causes = impactEvent.id;
+            break;
+          }
         }
 
         facilities[key] = currentState;
