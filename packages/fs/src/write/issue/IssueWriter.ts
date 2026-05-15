@@ -65,32 +65,49 @@ export class IssueWriter {
   }
 
   delete(issueId: string): void {
-    this.store.delete?.(this.getIssueDir(issueId));
+    this.store.delete(this.getIssueDir(issueId));
   }
 
   private getIssueDir(issueId: string): string {
-    const tsMatch = /^(\d{4})-(\d{2})-(\d{2})(?:-([A-Za-z0-9._-]+))?$/.exec(
-      issueId,
-    );
-    const slug = tsMatch?.[4];
-    if (!tsMatch || /[\\/]/.test(issueId) || slug?.includes('..')) {
+    const tsMatch = /^(\d{4})-(\d{2})-(\d{2})(?:-(.+))?$/.exec(issueId);
+    if (!tsMatch) {
       throw new Error(`Invalid issue ID: ${issueId}`);
     }
-    const [_, year, month] = tsMatch;
-    return join(DIR_ISSUE, year, month, issueId);
+
+    const [, year, month, day, slug] = tsMatch;
+    if (
+      slug != null &&
+      (!/^[A-Za-z0-9._-]+$/.test(slug) ||
+        slug.includes('..') ||
+        /[\\/]/.test(slug))
+    ) {
+      throw new Error(`Invalid issue ID: ${issueId}`);
+    }
+
+    const safeIssueId =
+      slug == null
+        ? `${year}-${month}-${day}`
+        : `${year}-${month}-${day}-${slug}`;
+    return join(DIR_ISSUE, year, month, safeIssueId);
   }
 
   private readOptionalText(path: string): string | null {
     try {
       return this.store.readText(path);
-    } catch {
-      return null;
+    } catch (error) {
+      if (
+        error instanceof Error &&
+        (error as NodeJS.ErrnoException).code === 'ENOENT'
+      ) {
+        return null;
+      }
+      throw error;
     }
   }
 
   private restoreText(path: string, text: string | null): void {
     if (text == null) {
-      this.store.delete?.(path);
+      this.store.delete(path);
       return;
     }
     this.store.writeText(path, text);

@@ -41,6 +41,19 @@ class FailingSecondImpactStore extends FileWriteStore {
   }
 }
 
+class FailingReadStore extends FileWriteStore {
+  override readText(path: string): string {
+    if (path.endsWith('evidence.ndjson')) {
+      const error = new Error(
+        'Simulated read failure',
+      ) as NodeJS.ErrnoException;
+      error.code = 'EIO';
+      throw error;
+    }
+    return super.readText(path);
+  }
+}
+
 describe('@mrtdown/fs', () => {
   it('reads target-layout fixtures through core schemas', async () => {
     await expect(listEntityIds(fixtureDataDir, 'line')).resolves.toEqual([
@@ -527,6 +540,49 @@ describe('@mrtdown/fs', () => {
     await expect(
       readFile(
         join(dataDir, 'issue/2025/01/2025-01-15-test-issue/impact.ndjson'),
+        'utf8',
+      ),
+    ).resolves.toBe('');
+  });
+
+  it('does not treat read failures as missing rollback snapshots', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new MRTDownWriter({
+      store: new FailingReadStore(dataDir),
+    });
+    const issueId = '2025-01-15-test-issue';
+    writer.issues.create({
+      id: issueId,
+      type: 'disruption',
+      title: {
+        'en-SG': 'Test issue',
+        'zh-Hans': null,
+        ms: null,
+        ta: null,
+      },
+      titleMeta: {
+        source: 'test',
+      },
+    });
+
+    expect(() =>
+      writer.issues.appendEvidenceAndImpacts(
+        issueId,
+        {
+          id: 'ev_1',
+          ts: '2025-01-15T10:00:00+08:00',
+          type: 'report.public',
+          sourceUrl: 'https://example.com',
+          text: 'Test evidence',
+          render: null,
+        },
+        [],
+      ),
+    ).toThrow('Simulated read failure');
+
+    await expect(
+      readFile(
+        join(dataDir, 'issue/2025/01/2025-01-15-test-issue/evidence.ndjson'),
         'utf8',
       ),
     ).resolves.toBe('');
