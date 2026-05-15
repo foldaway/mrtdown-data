@@ -1,5 +1,11 @@
 export interface IWriteStore {
   /**
+   * Read a text file.
+   * @param path
+   * @returns
+   */
+  readText(path: string): string;
+  /**
    * Write a text file.
    * @param path
    * @param text

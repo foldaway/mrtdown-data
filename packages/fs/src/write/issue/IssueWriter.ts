@@ -40,16 +40,59 @@ export class IssueWriter {
     );
   }
 
+  appendEvidenceAndImpacts(
+    issueId: string,
+    evidence: Evidence,
+    impacts: readonly ImpactEvent[],
+  ): void {
+    const issueDir = this.getIssueDir(issueId);
+    const evidencePath = join(issueDir, FILE_ISSUE_EVIDENCE);
+    const impactPath = join(issueDir, FILE_ISSUE_IMPACT);
+    const evidenceBefore = this.readOptionalText(evidencePath);
+    const impactBefore = this.readOptionalText(impactPath);
+
+    try {
+      this.store.ensureDir(issueDir);
+      this.store.appendText(evidencePath, `${NdJson.stringify([evidence])}\n`);
+      for (const impact of impacts) {
+        this.store.appendText(impactPath, `${NdJson.stringify([impact])}\n`);
+      }
+    } catch (error) {
+      this.restoreText(evidencePath, evidenceBefore);
+      this.restoreText(impactPath, impactBefore);
+      throw error;
+    }
+  }
+
   delete(issueId: string): void {
     this.store.delete?.(this.getIssueDir(issueId));
   }
 
   private getIssueDir(issueId: string): string {
-    const tsMatch = /^(\d{4})-(\d{2})-(\d{2})/.exec(issueId);
-    if (!tsMatch) {
+    const tsMatch = /^(\d{4})-(\d{2})-(\d{2})(?:-([A-Za-z0-9._-]+))?$/.exec(
+      issueId,
+    );
+    const slug = tsMatch?.[4];
+    if (!tsMatch || /[\\/]/.test(issueId) || slug?.includes('..')) {
       throw new Error(`Invalid issue ID: ${issueId}`);
     }
     const [_, year, month] = tsMatch;
     return join(DIR_ISSUE, year, month, issueId);
+  }
+
+  private readOptionalText(path: string): string | null {
+    try {
+      return this.store.readText(path);
+    } catch {
+      return null;
+    }
+  }
+
+  private restoreText(path: string, text: string | null): void {
+    if (text == null) {
+      this.store.delete?.(path);
+      return;
+    }
+    this.store.writeText(path, text);
   }
 }

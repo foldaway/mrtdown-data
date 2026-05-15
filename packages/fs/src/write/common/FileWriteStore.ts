@@ -1,4 +1,10 @@
-import { appendFileSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import {
+  appendFileSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import { join } from 'node:path';
 import type { IWriteStore } from './store.js';
 
@@ -7,6 +13,11 @@ import type { IWriteStore } from './store.js';
  */
 export class FileWriteStore implements IWriteStore {
   constructor(private readonly rootDir: string) {}
+
+  readText(path: string): string {
+    const fullPath = join(this.rootDir, path);
+    return readFileSync(fullPath, { encoding: 'utf-8' });
+  }
 
   writeText(path: string, text: string): void {
     const fullPath = join(this.rootDir, path);

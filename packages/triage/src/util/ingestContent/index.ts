@@ -192,10 +192,11 @@ export async function ingestContent(content: IngestContent) {
     if (shouldCreateIssue) {
       writer.issues.create(issueBundle.issue);
     }
-    writer.issues.appendEvidence(issueBundle.issue.id, evidence);
-    for (const impact of newImpactEvents) {
-      writer.issues.appendImpact(issueBundle.issue.id, impact);
-    }
+    writer.issues.appendEvidenceAndImpacts(
+      issueBundle.issue.id,
+      evidence,
+      newImpactEvents,
+    );
   } catch (error) {
     if (shouldCreateIssue) {
       try {

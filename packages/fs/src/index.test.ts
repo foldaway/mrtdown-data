@@ -12,6 +12,7 @@ import {
   FileWriteStore,
   issuePathFromId,
   listEntityIds,
+  MRTDownWriter,
   readIssueBundle,
   readNdjsonFile,
   renderPagesIndex,
@@ -25,6 +26,20 @@ const fixtureDataDir = resolve(
   dirname(fileURLToPath(import.meta.url)),
   '../../../fixtures/data',
 );
+
+class FailingSecondImpactStore extends FileWriteStore {
+  private impactAppendCount = 0;
+
+  override appendText(path: string, text: string): void {
+    if (path.endsWith('impact.ndjson')) {
+      this.impactAppendCount += 1;
+      if (this.impactAppendCount === 2) {
+        throw new Error('Simulated impact write failure');
+      }
+    }
+    super.appendText(path, text);
+  }
+}
 
 describe('@mrtdown/fs', () => {
   it('reads target-layout fixtures through core schemas', async () => {
@@ -428,6 +443,93 @@ describe('@mrtdown/fs', () => {
     expect(() => writer.create({ id: '../escaped' })).toThrow(
       'Invalid item id: ../escaped',
     );
+  });
+
+  it('rejects issue writer ids that cannot be used as safe directory names', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new MRTDownWriter({ store: new FileWriteStore(dataDir) });
+
+    expect(() =>
+      writer.issues.create({
+        id: '2025-01-15-../../etc',
+        type: 'disruption',
+        title: {
+          'en-SG': 'Bad ID',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        titleMeta: {
+          source: 'test',
+        },
+      }),
+    ).toThrow('Invalid issue ID: 2025-01-15-../../etc');
+  });
+
+  it('rolls back issue evidence and impact batch appends on failure', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new MRTDownWriter({
+      store: new FailingSecondImpactStore(dataDir),
+    });
+    const issueId = '2025-01-15-test-issue';
+    writer.issues.create({
+      id: issueId,
+      type: 'disruption',
+      title: {
+        'en-SG': 'Test issue',
+        'zh-Hans': null,
+        ms: null,
+        ta: null,
+      },
+      titleMeta: {
+        source: 'test',
+      },
+    });
+
+    expect(() =>
+      writer.issues.appendEvidenceAndImpacts(
+        issueId,
+        {
+          id: 'ev_1',
+          ts: '2025-01-15T10:00:00+08:00',
+          type: 'report.public',
+          sourceUrl: 'https://example.com',
+          text: 'Test evidence',
+          render: null,
+        },
+        [
+          {
+            id: 'ie_1',
+            type: 'causes.set',
+            entity: { type: 'service', serviceId: 'NSL' },
+            ts: '2025-01-15T10:00:00+08:00',
+            causes: ['signal.fault'],
+            basis: { evidenceId: 'ev_1' },
+          },
+          {
+            id: 'ie_2',
+            type: 'causes.set',
+            entity: { type: 'service', serviceId: 'NSL' },
+            ts: '2025-01-15T10:01:00+08:00',
+            causes: ['track.fault'],
+            basis: { evidenceId: 'ev_1' },
+          },
+        ],
+      ),
+    ).toThrow('Simulated impact write failure');
+
+    await expect(
+      readFile(
+        join(dataDir, 'issue/2025/01/2025-01-15-test-issue/evidence.ndjson'),
+        'utf8',
+      ),
+    ).resolves.toBe('');
+    await expect(
+      readFile(
+        join(dataDir, 'issue/2025/01/2025-01-15-test-issue/impact.ndjson'),
+        'utf8',
+      ),
+    ).resolves.toBe('');
   });
 
   it('deletes directories recursively in the write store', async () => {
