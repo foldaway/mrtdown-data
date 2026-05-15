@@ -65,6 +65,63 @@ describe('@mrtdown/fs', () => {
     expect(renderPagesIndex(manifest)).toContain('MRTDown data');
   });
 
+  it('rejects fixture line references that are missing from fixture lines', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await mkdir(join(dataDir, 'service'), { recursive: true });
+    await mkdir(join(dataDir, 'station'), { recursive: true });
+    await writeFile(
+      join(dataDir, 'service/NSL_TEST.json'),
+      `${JSON.stringify({
+        id: 'NSL_TEST',
+        name: {
+          'en-SG': 'North South Line Test Service',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        lineId: 'NSL',
+        revisions: [],
+      })}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'station/TEST.json'),
+      `${JSON.stringify({
+        id: 'TEST',
+        name: {
+          'en-SG': 'Test Station',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        geo: {
+          latitude: 1.3,
+          longitude: 103.8,
+        },
+        stationCodes: [
+          {
+            lineId: 'NSL',
+            code: 'NS0',
+            startedAt: '2026-01-01T00:00:00Z',
+            endedAt: null,
+            structureType: 'underground',
+          },
+        ],
+        landmarkIds: [],
+        townId: 'test-town',
+      })}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        'service/NSL_TEST.json: lineId NSL does not exist in line/',
+        'station/TEST.json: stationCodes.0.lineId NSL does not exist in line/',
+      ]),
+    );
+  });
+
   it('reports malformed issue directories clearly while building manifests', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await mkdir(join(dataDir, 'issue', '2026', '05', 'foo'), {
