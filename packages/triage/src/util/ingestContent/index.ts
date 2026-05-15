@@ -19,10 +19,13 @@ import type { IngestContent } from './types.js';
 
 const DATA_DIR = resolve(import.meta.dirname, '../../../../../data');
 
-const store = new FileStore(DATA_DIR);
-const writeStore = new FileWriteStore(DATA_DIR);
-const repo = new MRTDownRepository({ store });
-const writer = new MRTDownWriter({ store: writeStore });
+function createRepository(): MRTDownRepository {
+  return new MRTDownRepository({ store: new FileStore(DATA_DIR) });
+}
+
+function createWriter(): MRTDownWriter {
+  return new MRTDownWriter({ store: new FileWriteStore(DATA_DIR) });
+}
 
 async function runLlmStep<T>(
   label: string,
@@ -56,6 +59,9 @@ export async function ingestContent(content: IngestContent) {
 
   content.createdAt = createdAt;
   console.log('[ingestContent]', content);
+
+  const repo = createRepository();
+  const writer = createWriter();
 
   // --- Triage: existing issue, new issue, or irrelevant ---
   const triageResult = await runLlmStep('triageNewEvidence', () =>
