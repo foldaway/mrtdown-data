@@ -76,6 +76,8 @@ the repository shape.
 - Keep generated data and hand-authored code in separate PRs whenever practical.
 - If documentation and code disagree, fix the documentation or narrow the PR
   before adding more implementation.
+- Use Conventional Commits style for commit messages and PR titles, for example
+  `feat: add Pages artifact publishing foundation`.
 - Do not merge temporary branch names, one-off deploy triggers, or local
   generated artifacts.
 

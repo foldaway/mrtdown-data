@@ -45,10 +45,29 @@ npm run test:core          # Run @mrtdown/core deterministic tests
 npm run test:fs            # Run @mrtdown/fs deterministic tests
 npm run test:cli           # Run @mrtdown/cli deterministic tests
 npm run data:validate      # Validate fixtures/data with @mrtdown/cli
+npm run pages:build        # Build the GitHub Pages static data artifact
 ```
 
 See `AGENTS.md` for the short agent map and `docs/DATA_OVERHAUL_SPLIT.md` for
 the planned data-overhaul split.
+
+### Static Pages Export
+
+`npm run pages:build` writes a GitHub Pages artifact to `pages-dist/`. This
+split branch publishes only `fixtures/data` under `fixtures/` so downstream
+consumers can integrate against the static contract before the canonical `data/`
+migration lands.
+
+Preview branches and pull requests build the same bundle in CI and upload it as
+a one-day artifact. Only `main` deploys the bundle to GitHub Pages.
+
+The artifact publishes a root `index.html` that links to the fixture export:
+
+- `fixtures/index.html`
+- `fixtures/manifest.json`
+- `fixtures/archive.tar.gz`
+- `fixtures/archive.zip`
+- the fixture target-layout data files used to build the fixture manifest
 
 ### Database Operations
 ```bash
