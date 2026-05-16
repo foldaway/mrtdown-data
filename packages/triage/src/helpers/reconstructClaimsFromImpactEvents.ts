@@ -50,52 +50,28 @@ export function reconstructClaimsFromImpactEvents(
 
     const entity = (anyEvent as { entity: AffectedEntity }).entity;
 
-    let timeHints: ClaimTimeHints | null = null;
+    let reconstructedTimeHints: ClaimTimeHints[] = [];
 
     if (
       periodsEvent?.type === 'periods.set' &&
       periodsEvent.periods.length > 0
     ) {
-      const newPeriod = periodsEvent.periods[0] as Period;
+      const currentEntityPeriods: Period[] =
+        entity.type === 'service'
+          ? (currentState.services[entityKey]?.periods ?? [])
+          : (currentState.facilities[entityKey]?.periods ?? []);
 
-      if (newPeriod.kind === 'recurring') {
-        timeHints = newPeriod;
-      } else {
-        const currentEntityPeriods: Period[] =
-          entity.type === 'service'
-            ? (currentState.services[entityKey]?.periods ?? [])
-            : (currentState.facilities[entityKey]?.periods ?? []);
+      const currentOpenPeriod = currentEntityPeriods.find(
+        (p): p is Period & { kind: 'fixed'; endAt: null } =>
+          p.kind === 'fixed' && p.endAt == null,
+      );
 
-        const currentOpenPeriod = currentEntityPeriods.find(
-          (p): p is Period & { kind: 'fixed'; endAt: null } =>
-            p.kind === 'fixed' && p.endAt == null,
-        );
-
-        if (newPeriod.endAt == null) {
-          if (currentOpenPeriod) {
-            timeHints = { kind: 'start-only', startAt: newPeriod.startAt };
-          } else {
-            timeHints = {
-              kind: 'fixed',
-              startAt: newPeriod.startAt,
-              endAt: null,
-            };
-          }
-        } else {
-          if (currentOpenPeriod) {
-            timeHints = { kind: 'end-only', endAt: newPeriod.endAt };
-          } else {
-            timeHints = {
-              kind: 'fixed',
-              startAt: newPeriod.startAt,
-              endAt: newPeriod.endAt,
-            };
-          }
-        }
-      }
+      reconstructedTimeHints = periodsEvent.periods.map((period) =>
+        reconstructTimeHintsForPeriod(period, currentOpenPeriod),
+      );
     }
 
-    const claim: Claim = {
+    const baseClaim: Omit<Claim, 'timeHints'> = {
       entity,
       effect:
         effectsEvent?.type === 'service_effects.set'
@@ -108,12 +84,57 @@ export function reconstructClaimsFromImpactEvents(
           ? { service: scopesEvent.serviceScopes }
           : { service: null },
       statusSignal: null,
-      timeHints,
       causes: causesEvent?.type === 'causes.set' ? causesEvent.causes : null,
     };
 
-    claims.push(claim);
+    if (reconstructedTimeHints.length === 0) {
+      claims.push({
+        ...baseClaim,
+        timeHints: null,
+      });
+      continue;
+    }
+
+    for (const timeHints of reconstructedTimeHints) {
+      claims.push({
+        ...baseClaim,
+        timeHints,
+      });
+    }
   }
 
   return claims;
+}
+
+function reconstructTimeHintsForPeriod(
+  period: Period,
+  currentOpenPeriod: (Period & { kind: 'fixed'; endAt: null }) | undefined,
+): ClaimTimeHints {
+  if (period.kind === 'recurring') {
+    return period;
+  }
+
+  const updatesCurrentOpenPeriod =
+    currentOpenPeriod != null && period.startAt === currentOpenPeriod.startAt;
+
+  if (period.endAt == null) {
+    if (updatesCurrentOpenPeriod) {
+      return { kind: 'start-only', startAt: period.startAt };
+    }
+    return {
+      kind: 'fixed',
+      startAt: period.startAt,
+      endAt: null,
+    };
+  }
+
+  if (updatesCurrentOpenPeriod) {
+    return { kind: 'end-only', endAt: period.endAt };
+  }
+
+  return {
+    kind: 'fixed',
+    startAt: period.startAt,
+    endAt: period.endAt,
+  };
 }
