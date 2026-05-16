@@ -19,5 +19,15 @@
       "startedAt": "2025-12-31",
       "endedAt": null
     }
-  ]
+  ],
+  "operatingHours": {
+    "weekdays": {
+      "start": "05:30",
+      "end": "00:00"
+    },
+    "weekends": {
+      "start": "05:30",
+      "end": "00:00"
+    }
+  }
 }
