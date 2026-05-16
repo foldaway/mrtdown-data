@@ -91,6 +91,11 @@ function assertOutputPath(dataDir, outDir) {
   }
 }
 
+function assertArtifactPaths(options) {
+  assertOutputPath(options.dataDir, options.outDir);
+  assertOutputPath(options.dataDir, resolve(options.outDir, 'fixtures'));
+}
+
 async function buildDataExport(sourceDataDir, exportDir, fsPackage) {
   assertOutputPath(sourceDataDir, exportDir);
 
@@ -123,6 +128,7 @@ async function main() {
     console.log(usage().trimEnd());
     return;
   }
+  assertArtifactPaths(options);
 
   const fsPackage = await loadFsPackage();
 
