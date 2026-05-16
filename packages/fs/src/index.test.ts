@@ -122,6 +122,129 @@ describe('@mrtdown/fs', () => {
       expect.arrayContaining([
         'service/NSL_TEST.json: lineId NSL does not exist in line/',
         'station/TEST.json: stationCodes.0.lineId NSL does not exist in line/',
+        'station/TEST.json: townId test-town does not exist in town/',
+      ]),
+    );
+  });
+
+  it('rejects dangling static and issue relationships', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await mkdir(join(dataDir, 'line'), { recursive: true });
+    await mkdir(join(dataDir, 'station'), { recursive: true });
+    await mkdir(join(dataDir, 'issue/2026/01/2026-01-01-test-issue'), {
+      recursive: true,
+    });
+    await writeFile(
+      join(dataDir, 'line/NSL.json'),
+      `${JSON.stringify({
+        id: 'NSL',
+        name: {
+          'en-SG': 'North South Line',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        type: 'mrt.high',
+        color: '#d42e12',
+        startedAt: '1987-11-07',
+        serviceIds: ['NSL_MAIN'],
+        operators: [
+          {
+            operatorId: 'SMRT_TRAINS',
+            startedAt: '1987-11-07',
+            endedAt: null,
+          },
+        ],
+      })}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'station/TEST.json'),
+      `${JSON.stringify({
+        id: 'TEST',
+        name: {
+          'en-SG': 'Test Station',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        geo: {
+          latitude: 1.3,
+          longitude: 103.8,
+        },
+        stationCodes: [
+          {
+            lineId: 'NSL',
+            code: 'NS0',
+            startedAt: '2026-01-01T00:00:00Z',
+            endedAt: null,
+            structureType: 'underground',
+          },
+        ],
+        landmarkIds: ['test-landmark'],
+        townId: 'test-town',
+      })}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'issue/2026/01/2026-01-01-test-issue/issue.json'),
+      `${JSON.stringify({
+        id: '2026-01-01-test-issue',
+        type: 'disruption',
+        title: {
+          'en-SG': 'Test Issue',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        titleMeta: {
+          source: 'test',
+        },
+      })}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'issue/2026/01/2026-01-01-test-issue/evidence.ndjson'),
+      `${JSON.stringify({
+        id: 'ev_1',
+        ts: '2026-01-01T07:00:00+08:00',
+        type: 'statement.official',
+        sourceUrl: 'https://example.com',
+        text: 'Test issue',
+        render: null,
+      })}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'issue/2026/01/2026-01-01-test-issue/impact.ndjson'),
+      `${JSON.stringify({
+        id: 'ie_1',
+        type: 'service_scopes.set',
+        entity: {
+          type: 'service',
+          serviceId: 'NSL_MAIN',
+        },
+        ts: '2026-01-01T07:00:00+08:00',
+        serviceScopes: [
+          {
+            type: 'service.point',
+            stationId: 'MISSING',
+          },
+        ],
+        basis: {
+          evidenceId: 'ev_missing',
+        },
+      })}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        'line/NSL.json: operators.0.operatorId SMRT_TRAINS does not exist in operator/',
+        'line/NSL.json: serviceIds.0 NSL_MAIN does not exist in service/',
+        'station/TEST.json: townId test-town does not exist in town/',
+        'station/TEST.json: landmarkIds.0 test-landmark does not exist in landmark/',
+        'issue/2026/01/2026-01-01-test-issue/impact.ndjson:1: basis.evidenceId ev_missing does not exist in evidence.ndjson',
+        'issue/2026/01/2026-01-01-test-issue/impact.ndjson:1: entity.serviceId NSL_MAIN does not exist in service/',
+        'issue/2026/01/2026-01-01-test-issue/impact.ndjson:1: serviceScopes.0.stationId MISSING does not exist in station/',
       ]),
     );
   });

@@ -1,7 +1,9 @@
+import type { IssueBundle } from '@mrtdown/core';
 import type { z } from 'zod';
 import {
   type EntityCollection,
   entityCollections,
+  impactFileName,
   issueDirectory,
 } from './constants.js';
 import { type EntityRecord, listEntities } from './entities.js';
@@ -37,49 +39,221 @@ function shouldValidateScope(
   return scopes.includes(scope);
 }
 
-async function loadLineIds(
+type ValidationRecords = Partial<{
+  landmark: EntityRecord<'landmark'>[];
+  line: EntityRecord<'line'>[];
+  operator: EntityRecord<'operator'>[];
+  service: EntityRecord<'service'>[];
+  station: EntityRecord<'station'>[];
+  town: EntityRecord<'town'>[];
+  issue: IssueBundle[];
+}>;
+
+async function loadEntityRecords<K extends EntityCollection>(
   dataDir: string,
-  loadedLines: EntityRecord<'line'>[] | undefined,
-): Promise<Set<string>> {
-  const lines = loadedLines ?? (await listEntities(dataDir, 'line'));
-  return new Set(lines.map((line) => line.value.id));
+  records: ValidationRecords,
+  collection: K,
+): Promise<EntityRecord<K>[]> {
+  const loadedRecords = records[collection] as EntityRecord<K>[] | undefined;
+  if (loadedRecords) {
+    return loadedRecords;
+  }
+
+  const nextRecords = await listEntities(dataDir, collection);
+  (records as Record<string, unknown>)[collection] = nextRecords;
+  return nextRecords;
 }
 
-async function validateLineReferences(
+async function loadEntityIds<K extends EntityCollection>(
   dataDir: string,
-  scopes: readonly ValidationScope[],
-  records: Partial<{
-    line: EntityRecord<'line'>[];
-    service: EntityRecord<'service'>[];
-    station: EntityRecord<'station'>[];
-  }>,
+  records: ValidationRecords,
+  collection: K,
+): Promise<Set<string>> {
+  const loadedRecords = await loadEntityRecords(dataDir, records, collection);
+  return new Set(loadedRecords.map((record) => record.value.id));
+}
+
+async function loadIssueRecords(
+  dataDir: string,
+  records: ValidationRecords,
+): Promise<IssueBundle[]> {
+  if (!records.issue) {
+    records.issue = await listIssueBundles(dataDir);
+  }
+  return records.issue;
+}
+
+async function validateStationReferences(
+  dataDir: string,
+  shouldValidate: boolean,
+  records: ValidationRecords,
 ): Promise<string[]> {
-  if (
-    !shouldValidateScope(scopes, 'service') &&
-    !shouldValidateScope(scopes, 'station')
-  ) {
+  if (!shouldValidate) {
     return [];
   }
 
-  const lineIds = await loadLineIds(dataDir, records.line);
+  const lineIds = await loadEntityIds(dataDir, records, 'line');
+  const landmarkIds = await loadEntityIds(dataDir, records, 'landmark');
+  const townIds = await loadEntityIds(dataDir, records, 'town');
   const errors: string[] = [];
 
-  if (shouldValidateScope(scopes, 'service')) {
-    for (const service of records.service ?? []) {
-      if (!lineIds.has(service.value.lineId)) {
+  for (const station of await loadEntityRecords(dataDir, records, 'station')) {
+    if (!townIds.has(station.value.townId)) {
+      errors.push(
+        `${station.path}: townId ${station.value.townId} does not exist in town/`,
+      );
+    }
+
+    for (const [index, landmarkId] of station.value.landmarkIds.entries()) {
+      if (!landmarkIds.has(landmarkId)) {
         errors.push(
-          `${service.path}: lineId ${service.value.lineId} does not exist in line/`,
+          `${station.path}: landmarkIds.${index} ${landmarkId} does not exist in landmark/`,
+        );
+      }
+    }
+
+    for (const [index, stationCode] of station.value.stationCodes.entries()) {
+      if (!lineIds.has(stationCode.lineId)) {
+        errors.push(
+          `${station.path}: stationCodes.${index}.lineId ${stationCode.lineId} does not exist in line/`,
         );
       }
     }
   }
 
-  if (shouldValidateScope(scopes, 'station')) {
-    for (const station of records.station ?? []) {
-      for (const [index, stationCode] of station.value.stationCodes.entries()) {
-        if (!lineIds.has(stationCode.lineId)) {
+  return errors;
+}
+
+async function validateLineReferences(
+  dataDir: string,
+  shouldValidate: boolean,
+  records: ValidationRecords,
+): Promise<string[]> {
+  if (!shouldValidate) {
+    return [];
+  }
+
+  const operatorIds = await loadEntityIds(dataDir, records, 'operator');
+  const serviceIds = await loadEntityIds(dataDir, records, 'service');
+  const errors: string[] = [];
+
+  for (const line of await loadEntityRecords(dataDir, records, 'line')) {
+    for (const [index, operator] of line.value.operators.entries()) {
+      if (!operatorIds.has(operator.operatorId)) {
+        errors.push(
+          `${line.path}: operators.${index}.operatorId ${operator.operatorId} does not exist in operator/`,
+        );
+      }
+    }
+
+    for (const [index, serviceId] of line.value.serviceIds.entries()) {
+      if (!serviceIds.has(serviceId)) {
+        errors.push(
+          `${line.path}: serviceIds.${index} ${serviceId} does not exist in service/`,
+        );
+      }
+    }
+  }
+
+  return errors;
+}
+
+async function validateServiceReferences(
+  dataDir: string,
+  shouldValidate: boolean,
+  records: ValidationRecords,
+): Promise<string[]> {
+  if (!shouldValidate) {
+    return [];
+  }
+
+  const lineIds = await loadEntityIds(dataDir, records, 'line');
+  const stationIds = await loadEntityIds(dataDir, records, 'station');
+  const errors: string[] = [];
+
+  for (const service of await loadEntityRecords(dataDir, records, 'service')) {
+    if (!lineIds.has(service.value.lineId)) {
+      errors.push(
+        `${service.path}: lineId ${service.value.lineId} does not exist in line/`,
+      );
+    }
+
+    for (const [revisionIndex, revision] of service.value.revisions.entries()) {
+      for (const [stationIndex, station] of revision.path.stations.entries()) {
+        if (!stationIds.has(station.stationId)) {
           errors.push(
-            `${station.path}: stationCodes.${index}.lineId ${stationCode.lineId} does not exist in line/`,
+            `${service.path}: revisions.${revisionIndex}.path.stations.${stationIndex}.stationId ${station.stationId} does not exist in station/`,
+          );
+        }
+      }
+    }
+  }
+
+  return errors;
+}
+
+async function validateIssueReferences(
+  dataDir: string,
+  shouldValidate: boolean,
+  records: ValidationRecords,
+): Promise<string[]> {
+  if (!shouldValidate) {
+    return [];
+  }
+
+  const serviceIds = await loadEntityIds(dataDir, records, 'service');
+  const stationIds = await loadEntityIds(dataDir, records, 'station');
+  const errors: string[] = [];
+
+  for (const bundle of await loadIssueRecords(dataDir, records)) {
+    const evidenceIds = new Set(bundle.evidence.map((evidence) => evidence.id));
+    const impactPath = `${bundle.path}/${impactFileName}`;
+
+    for (const [eventIndex, event] of bundle.impactEvents.entries()) {
+      const linePrefix = `${impactPath}:${eventIndex + 1}`;
+
+      if (!evidenceIds.has(event.basis.evidenceId)) {
+        errors.push(
+          `${linePrefix}: basis.evidenceId ${event.basis.evidenceId} does not exist in evidence.ndjson`,
+        );
+      }
+
+      if (event.entity.type === 'service') {
+        if (!serviceIds.has(event.entity.serviceId)) {
+          errors.push(
+            `${linePrefix}: entity.serviceId ${event.entity.serviceId} does not exist in service/`,
+          );
+        }
+      } else if (!stationIds.has(event.entity.stationId)) {
+        errors.push(
+          `${linePrefix}: entity.stationId ${event.entity.stationId} does not exist in station/`,
+        );
+      }
+
+      if (event.type !== 'service_scopes.set') {
+        continue;
+      }
+
+      for (const [scopeIndex, scope] of event.serviceScopes.entries()) {
+        if (scope.type === 'service.segment') {
+          if (!stationIds.has(scope.fromStationId)) {
+            errors.push(
+              `${linePrefix}: serviceScopes.${scopeIndex}.fromStationId ${scope.fromStationId} does not exist in station/`,
+            );
+          }
+          if (!stationIds.has(scope.toStationId)) {
+            errors.push(
+              `${linePrefix}: serviceScopes.${scopeIndex}.toStationId ${scope.toStationId} does not exist in station/`,
+            );
+          }
+        }
+
+        if (
+          scope.type === 'service.point' &&
+          !stationIds.has(scope.stationId)
+        ) {
+          errors.push(
+            `${linePrefix}: serviceScopes.${scopeIndex}.stationId ${scope.stationId} does not exist in station/`,
           );
         }
       }
@@ -95,42 +269,17 @@ export async function validateDataRoot(
 ): Promise<ValidationResult> {
   const checked = emptyChecked();
   const errors: string[] = [];
-  const records: Partial<{
-    line: EntityRecord<'line'>[];
-    service: EntityRecord<'service'>[];
-    station: EntityRecord<'station'>[];
-  }> = {};
+  const records: ValidationRecords = {};
 
   for (const scope of scopes) {
     try {
       if (scope === 'issue') {
-        const bundles = await listIssueBundles(dataDir);
+        const bundles = await loadIssueRecords(dataDir, records);
         checked.issue = bundles.length;
         continue;
       }
 
-      if (scope === 'line') {
-        const scopeRecords = await listEntities(dataDir, 'line');
-        checked.line = scopeRecords.length;
-        records.line = scopeRecords;
-        continue;
-      }
-
-      if (scope === 'service') {
-        const scopeRecords = await listEntities(dataDir, 'service');
-        checked.service = scopeRecords.length;
-        records.service = scopeRecords;
-        continue;
-      }
-
-      if (scope === 'station') {
-        const scopeRecords = await listEntities(dataDir, 'station');
-        checked.station = scopeRecords.length;
-        records.station = scopeRecords;
-        continue;
-      }
-
-      const scopeRecords = await listEntities(dataDir, scope);
+      const scopeRecords = await loadEntityRecords(dataDir, records, scope);
       checked[scope] = scopeRecords.length;
     } catch (error) {
       errors.push(`${scope}: ${formatError(error)}`);
@@ -138,9 +287,36 @@ export async function validateDataRoot(
   }
 
   try {
-    errors.push(...(await validateLineReferences(dataDir, scopes, records)));
+    errors.push(
+      ...(await validateStationReferences(
+        dataDir,
+        shouldValidateScope(scopes, 'station'),
+        records,
+      )),
+    );
+    errors.push(
+      ...(await validateLineReferences(
+        dataDir,
+        shouldValidateScope(scopes, 'line'),
+        records,
+      )),
+    );
+    errors.push(
+      ...(await validateServiceReferences(
+        dataDir,
+        shouldValidateScope(scopes, 'service'),
+        records,
+      )),
+    );
+    errors.push(
+      ...(await validateIssueReferences(
+        dataDir,
+        shouldValidateScope(scopes, 'issue'),
+        records,
+      )),
+    );
   } catch (error) {
-    errors.push(`line: ${formatError(error)}`);
+    errors.push(`references: ${formatError(error)}`);
   }
 
   return {
