@@ -20,7 +20,7 @@ export const IdGenerator = {
    * @returns
    */
   evidenceId(ts?: DateTime) {
-    return `ev_${ulid(ts?.toMillis?.() ?? undefined)}`;
+    return `ev_${ulid(timestampMillis(ts))}`;
   },
 
   /**
@@ -29,7 +29,7 @@ export const IdGenerator = {
    * @returns
    */
   impactEventId(ts?: DateTime) {
-    return `ie_${ulid(ts?.toMillis?.() ?? undefined)}`;
+    return `ie_${ulid(timestampMillis(ts))}`;
   },
 
   /**
@@ -54,3 +54,13 @@ export const IdGenerator = {
     };
   },
 };
+
+function timestampMillis(ts?: DateTime): number | undefined {
+  if (ts == null) {
+    return undefined;
+  }
+  if (!ts.isValid) {
+    throw new Error(`Invalid timestamp for generated ID: ${ts.invalidReason}`);
+  }
+  return ts.toMillis();
+}

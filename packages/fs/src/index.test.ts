@@ -3,6 +3,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { EvidenceSchema } from '@mrtdown/core';
+import { DateTime } from 'luxon';
 import { describe, expect, it } from 'vitest';
 import {
   buildIssueId,
@@ -10,6 +11,7 @@ import {
   createIssueBundle,
   FileStore,
   FileWriteStore,
+  IdGenerator,
   issuePathFromId,
   listEntityIds,
   MRTDownWriter,
@@ -756,6 +758,17 @@ describe('@mrtdown/fs', () => {
         'utf8',
       ),
     ).resolves.toBe('');
+  });
+
+  it('rejects invalid timestamps when generating IDs', () => {
+    const invalidTimestamp = DateTime.fromISO('not-a-date');
+
+    expect(() => IdGenerator.evidenceId(invalidTimestamp)).toThrow(
+      'Invalid timestamp for generated ID',
+    );
+    expect(() => IdGenerator.impactEventId(invalidTimestamp)).toThrow(
+      'Invalid timestamp for generated ID',
+    );
   });
 
   it('deletes directories recursively in the write store', async () => {
