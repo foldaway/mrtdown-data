@@ -136,7 +136,7 @@ async function buildDataExport(sourceDataDir, exportDir, fsPackage) {
   );
   await writeFile(
     resolve(exportDir, 'index.html'),
-    fsPackage.renderPagesIndex(manifest),
+    fsPackage.renderPagesIndex(manifest, { includeArchiveLinks: true }),
   );
   await createArchives(exportDir);
 }

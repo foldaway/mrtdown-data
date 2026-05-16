@@ -1,5 +1,9 @@
 import type { Manifest } from '@mrtdown/core';
 
+export type PagesIndexOptions = {
+  includeArchiveLinks?: boolean;
+};
+
 const escapeHtml = (value: string): string =>
   value
     .replace(/&/g, '&amp;')
@@ -7,7 +11,10 @@ const escapeHtml = (value: string): string =>
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 
-export function renderPagesIndex(manifest: Manifest): string {
+export function renderPagesIndex(
+  manifest: Manifest,
+  options: PagesIndexOptions = {},
+): string {
   const counts = [
     ['Lines', Object.keys(manifest.lines).length],
     ['Stations', Object.keys(manifest.stations).length],
@@ -24,6 +31,11 @@ export function renderPagesIndex(manifest: Manifest): string {
         `<tr><th scope="row">${escapeHtml(String(label))}</th><td>${count}</td></tr>`,
     )
     .join('');
+  const archiveLinks = options.includeArchiveLinks
+    ? `
+        <li><a href="archive.tar.gz">archive.tar.gz</a></li>
+        <li><a href="archive.zip">archive.zip</a></li>`
+    : '';
 
   return `<!doctype html>
 <html lang="en">
@@ -39,8 +51,7 @@ export function renderPagesIndex(manifest: Manifest): string {
       <p>Generated at <time datetime="${escapeHtml(manifest.generatedAt)}">${escapeHtml(manifest.generatedAt)}</time>.</p>
       <ul>
         <li><a href="manifest.json">manifest.json</a></li>
-        <li><a href="archive.tar.gz">archive.tar.gz</a></li>
-        <li><a href="archive.zip">archive.zip</a></li>
+        ${archiveLinks}
       </ul>
       <table>
         <tbody>

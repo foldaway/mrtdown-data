@@ -63,6 +63,10 @@ describe('@mrtdown/fs', () => {
       TGL: 'line/TGL.json',
     });
     expect(renderPagesIndex(manifest)).toContain('MRTDown data');
+    expect(renderPagesIndex(manifest)).not.toContain('archive.tar.gz');
+    expect(renderPagesIndex(manifest, { includeArchiveLinks: true })).toContain(
+      'archive.tar.gz',
+    );
   });
 
   it('rejects fixture line references that are missing from fixture lines', async () => {
