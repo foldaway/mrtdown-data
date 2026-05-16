@@ -92,24 +92,58 @@ function assertOutputPath(dataDir, outDir) {
 }
 
 function renderRootIndex() {
+  const generatedAt = new Date();
+
   return `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MRTDown data</title>
+    <title>mrtdown-data</title>
+    <style>
+:root { font-family: system-ui, sans-serif; line-height: 1.5; }
+body { max-width: 40rem; margin: 2rem auto; padding: 0 1rem; color: #111; }
+h1 { font-size: 1.5rem; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { text-align: left; padding: 0.35rem 0.5rem; border-bottom: 1px solid #ddd; }
+th { font-weight: 600; width: 40%; }
+footer { margin-top: 2rem; font-size: 0.875rem; color: #555; }
+a { color: #0b57d0; }
+    </style>
   </head>
   <body>
-    <main>
-      <h1>MRTDown data</h1>
-      <p>This split branch publishes only the deterministic fixture export. The canonical data export will be added after the target-layout data migration lands.</p>
-      <ul>
-        <li><a href="fixtures/">fixtures/</a></li>
-        <li><a href="fixtures/manifest.json">fixtures/manifest.json</a></li>
-        <li><a href="fixtures/archive.tar.gz">fixtures/archive.tar.gz</a></li>
-        <li><a href="fixtures/archive.zip">fixtures/archive.zip</a></li>
-      </ul>
-    </main>
+    <h1>mrtdown-data</h1>
+    <p>This split branch publishes only the deterministic fixture export. The canonical data export will be added after the target-layout data migration lands.</p>
+    <p>The fixture data index is available as <a href="fixtures/">fixtures/</a>. Its machine-readable manifest is published as <a href="fixtures/manifest.json">fixtures/manifest.json</a>. The fixture directory is also available as <a href="fixtures/archive.tar.gz">fixtures/archive.tar.gz</a> (gzipped tarball) or <a href="fixtures/archive.zip">fixtures/archive.zip</a>.</p>
+    <a href="https://github.com/foldaway/mrtdown-data">GitHub repository</a>
+    <h2>Developer files</h2>
+    <table>
+      <tbody>
+        <tr>
+          <th>File</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><a href="fixtures/">fixtures/</a></td>
+          <td>Fixture data index.</td>
+        </tr>
+        <tr>
+          <td><a href="fixtures/manifest.json">fixtures/manifest.json</a></td>
+          <td>Fixture export manifest.</td>
+        </tr>
+        <tr>
+          <td><a href="fixtures/archive.tar.gz">fixtures/archive.tar.gz</a></td>
+          <td>Fixture export as a gzipped tarball.</td>
+        </tr>
+        <tr>
+          <td><a href="fixtures/archive.zip">fixtures/archive.zip</a></td>
+          <td>Fixture export as a ZIP archive.</td>
+        </tr>
+      </tbody>
+    </table>
+    <footer>
+      Generated at <time datetime="${generatedAt.toISOString()}">${generatedAt.toUTCString()}</time> (UTC) on ${process.platform}/${process.arch}
+    </footer>
   </body>
 </html>
 `;

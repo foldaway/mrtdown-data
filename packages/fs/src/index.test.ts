@@ -62,7 +62,7 @@ describe('@mrtdown/fs', () => {
     expect(manifest.lines).toMatchObject({
       TGL: 'line/TGL.json',
     });
-    expect(renderPagesIndex(manifest)).toContain('MRTDown data');
+    expect(renderPagesIndex(manifest)).toContain('mrtdown-data');
     expect(renderPagesIndex(manifest)).not.toContain('archive.tar.gz');
     expect(renderPagesIndex(manifest, { includeArchiveLinks: true })).toContain(
       'archive.tar.gz',
