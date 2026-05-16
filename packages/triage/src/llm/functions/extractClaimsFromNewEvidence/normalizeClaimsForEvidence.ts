@@ -392,16 +392,15 @@ function getActiveServiceStationIds(
   evidenceTs: string,
 ): string[] {
   const evidenceTsMs = Date.parse(evidenceTs);
-  const revision =
-    [...service.revisions].reverse().find((candidate) => {
-      const startedAtMs = Date.parse(candidate.startAt);
-      const endedAtMs =
-        candidate.endAt == null ? null : Date.parse(candidate.endAt);
-      return (
-        startedAtMs <= evidenceTsMs &&
-        (endedAtMs == null || endedAtMs > evidenceTsMs)
-      );
-    }) ?? service.revisions.at(-1);
+  const revision = [...service.revisions].reverse().find((candidate) => {
+    const startedAtMs = Date.parse(candidate.startAt);
+    const endedAtMs =
+      candidate.endAt == null ? null : Date.parse(candidate.endAt);
+    return (
+      startedAtMs <= evidenceTsMs &&
+      (endedAtMs == null || endedAtMs > evidenceTsMs)
+    );
+  });
 
   return revision?.path.stations.map((station) => station.stationId) ?? [];
 }

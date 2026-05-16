@@ -285,6 +285,87 @@ describe('normalizeClaimsForEvidence', () => {
     ).toEqual(claims.slice(0, 2));
   });
 
+  test('does not match services without an active revision at evidence timestamp', () => {
+    const evidenceText = '[TGL] Train services are delayed at Jurong East.';
+    const evidenceTs = '2026-01-01T07:10:00+08:00';
+    const claims: Claim[] = [
+      {
+        entity: { type: 'service', serviceId: 'TGL_ACTIVE' },
+        effect: { service: { kind: 'delay', duration: null }, facility: null },
+        scopes: { service: [{ type: 'service.whole' }] },
+        statusSignal: 'open',
+        timeHints: { kind: 'start-only', startAt: evidenceTs },
+        causes: ['track.fault'],
+      },
+      {
+        entity: { type: 'service', serviceId: 'TGL_INACTIVE' },
+        effect: { service: { kind: 'delay', duration: null }, facility: null },
+        scopes: { service: [{ type: 'service.whole' }] },
+        statusSignal: 'open',
+        timeHints: { kind: 'start-only', startAt: evidenceTs },
+        causes: ['track.fault'],
+      },
+    ];
+
+    const repo = {
+      services: {
+        get(serviceId: string) {
+          const revisionsByServiceId: Record<string, unknown[]> = {
+            TGL_ACTIVE: [
+              {
+                id: 'active',
+                startAt: '2025-01-01',
+                endAt: null,
+                path: {
+                  stations: [{ stationId: 'JUR', displayCode: 'JUR' }],
+                },
+              },
+            ],
+            TGL_INACTIVE: [
+              {
+                id: 'inactive',
+                startAt: '2020-01-01',
+                endAt: '2021-01-01',
+                path: {
+                  stations: [{ stationId: 'JUR', displayCode: 'JUR' }],
+                },
+              },
+            ],
+          };
+          const revisions = revisionsByServiceId[serviceId];
+          return revisions == null
+            ? null
+            : {
+                id: serviceId,
+                lineId: 'TGL',
+                name: { 'en-SG': serviceId },
+                revisions,
+              };
+        },
+      },
+      stations: {
+        list() {
+          return [
+            {
+              id: 'JUR',
+              name: { 'en-SG': 'Jurong East' },
+              stationCodes: [],
+            },
+          ];
+        },
+      },
+    } as unknown as MRTDownRepository;
+
+    expect(
+      normalizeClaimsForEvidence({
+        claims,
+        evidenceText,
+        evidenceTs,
+        repo,
+      }),
+    ).toEqual([claims[0]]);
+  });
+
   test('synthesizes planned whole-line closure claims from context-resolved evidence', () => {
     const evidenceText =
       'Bukit Panjang LRT line will be closed on Aug 31 and Sep 21 for the works, and shuttle buses will be provided at the usual fares.';

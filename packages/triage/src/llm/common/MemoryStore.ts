@@ -104,6 +104,10 @@ export class MemoryStore implements IStore, IWriteStore {
 
   delete(path: string): void {
     const p = this.toStorePath(path);
+    if (p === '') {
+      throw new Error('MemoryStore: Cannot delete root directory');
+    }
+
     const parent = dirname(p) === '.' ? '' : dirname(p);
     const child = basename(p);
 

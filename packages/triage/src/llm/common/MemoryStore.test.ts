@@ -239,6 +239,14 @@ describe('MemoryStore', () => {
       store.delete('./foo.txt');
       expect(store.exists('foo.txt')).toBe(false);
     });
+
+    test('rejects root deletion', () => {
+      const store = new MemoryStore({ files: { 'foo.txt': 'hi' } });
+      expect(() => store.delete('')).toThrow(
+        'MemoryStore: Cannot delete root directory',
+      );
+      expect(store.exists('foo.txt')).toBe(true);
+    });
   });
 
   describe('dumpFiles', () => {
