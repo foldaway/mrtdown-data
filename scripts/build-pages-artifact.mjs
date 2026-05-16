@@ -91,6 +91,56 @@ function assertOutputPath(dataDir, outDir) {
   }
 }
 
+function renderRootIndex() {
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MRTDown data</title>
+  </head>
+  <body>
+    <main>
+      <h1>MRTDown data</h1>
+      <p>This split branch publishes only the deterministic fixture export. The canonical data export will be added after the target-layout data migration lands.</p>
+      <ul>
+        <li><a href="fixtures/">fixtures/</a></li>
+        <li><a href="fixtures/manifest.json">fixtures/manifest.json</a></li>
+        <li><a href="fixtures/archive.tar.gz">fixtures/archive.tar.gz</a></li>
+        <li><a href="fixtures/archive.zip">fixtures/archive.zip</a></li>
+      </ul>
+    </main>
+  </body>
+</html>
+`;
+}
+
+async function buildDataExport(sourceDataDir, exportDir, fsPackage) {
+  assertOutputPath(sourceDataDir, exportDir);
+
+  const validation = await fsPackage.validateDataRoot(sourceDataDir);
+  if (!validation.ok) {
+    throw new Error(validation.errors.join('\n'));
+  }
+
+  await mkdir(exportDir, { recursive: true });
+  await cp(sourceDataDir, exportDir, {
+    recursive: true,
+    filter: (source) => !/\/(?:manifest\.json|index\.html)$/.test(source),
+  });
+
+  const manifest = await fsPackage.buildManifest(exportDir);
+  await writeFile(
+    resolve(exportDir, 'manifest.json'),
+    `${JSON.stringify(manifest, null, 2)}\n`,
+  );
+  await writeFile(
+    resolve(exportDir, 'index.html'),
+    fsPackage.renderPagesIndex(manifest),
+  );
+  await createArchives(exportDir);
+}
+
 async function main() {
   const options = parseArgs(process.argv.slice(2));
   if (options.help) {
@@ -98,33 +148,17 @@ async function main() {
     return;
   }
 
-  assertOutputPath(options.dataDir, options.outDir);
-
-  const { buildManifest, renderPagesIndex, validateDataRoot } =
-    await loadFsPackage();
-  const validation = await validateDataRoot(options.dataDir);
-  if (!validation.ok) {
-    throw new Error(validation.errors.join('\n'));
-  }
+  const fsPackage = await loadFsPackage();
 
   await rm(options.outDir, { recursive: true, force: true });
   await mkdir(options.outDir, { recursive: true });
-  await cp(options.dataDir, options.outDir, {
-    recursive: true,
-    filter: (source) => !/\/(?:manifest\.json|index\.html)$/.test(source),
-  });
-
-  const manifest = await buildManifest(options.outDir);
-  await writeFile(
-    resolve(options.outDir, 'manifest.json'),
-    `${JSON.stringify(manifest, null, 2)}\n`,
-  );
-  await writeFile(
-    resolve(options.outDir, 'index.html'),
-    renderPagesIndex(manifest),
-  );
   await writeFile(resolve(options.outDir, '.nojekyll'), '');
-  await createArchives(options.outDir);
+  await writeFile(resolve(options.outDir, 'index.html'), renderRootIndex());
+  await buildDataExport(
+    options.dataDir,
+    resolve(options.outDir, 'fixtures'),
+    fsPackage,
+  );
 
   console.log(`Built Pages artifact at ${options.outDir}`);
 }

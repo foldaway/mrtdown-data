@@ -53,20 +53,21 @@ the planned data-overhaul split.
 
 ### Static Pages Export
 
-`npm run pages:build` writes a GitHub Pages artifact to `pages-dist/`. The early
-split export uses `fixtures/data` so downstream consumers can integrate against
-the static contract before the canonical `data/` migration lands.
+`npm run pages:build` writes a GitHub Pages artifact to `pages-dist/`. This
+split branch publishes only `fixtures/data` under `fixtures/` so downstream
+consumers can integrate against the static contract before the canonical `data/`
+migration lands.
 
 Preview branches and pull requests build the same bundle in CI and upload it as
 a one-day artifact. Only `main` deploys the bundle to GitHub Pages.
 
-The artifact publishes:
+The artifact publishes a root `index.html` that links to the fixture export:
 
-- `manifest.json`
-- `index.html`
-- `archive.tar.gz`
-- `archive.zip`
-- the target-layout data files used to build the manifest
+- `fixtures/index.html`
+- `fixtures/manifest.json`
+- `fixtures/archive.tar.gz`
+- `fixtures/archive.zip`
+- the fixture target-layout data files used to build the fixture manifest
 
 ### Database Operations
 ```bash
