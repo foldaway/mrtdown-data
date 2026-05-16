@@ -36,28 +36,36 @@ Step 3.5: Turborepo package task harness
 - Preserve the existing root command names so production stabilization patches
   continue to run the same entry points.
 
-4. Triage package
+4. GitHub Pages publishing foundation
+   - Add GitHub Pages static data artifact generation and deployment before
+     triage so `mrtdown-site` can begin consuming published data.
+   - Use the existing target CLI manifest and pages-index behavior as the
+     publication boundary.
+   - Keep this PR limited to Pages workflow wiring, artifact generation, and
+     docs for the published contract.
+   - Do not add Changesets/npm package publishing in this PR.
+
+5. Triage package
    - Add `packages/triage` with deterministic tests.
    - Document `test:eval`, required environment variables, model dependency,
      and expected cost before running paid/model-dependent evals.
 
-5. Static canonical data
+6. Static canonical data
    - Migrate `station`, `line`, `service`, `operator`, `town`, and `landmark`
      data into the target `data/` layout.
    - Validate with CLI tooling from earlier PRs.
 
-6. Issue dataset migration
+7. Issue dataset migration
    - Migrate `data/issue/YYYY/MM/<issue_id>/`.
    - Keep replay/repair reports with the PR so reviewers can inspect the
      generator behavior instead of reading every generated file.
 
-7. Runtime removal and deploy cleanup
+8. Runtime removal and deploy cleanup
    - Remove old Hono/API/DuckDB runtime files from this repo.
    - Remove or move `Dockerfile`, `fly.toml`, and Fly deploy workflow surfaces
      once the serving target exists in `mrtdown-site`.
 
-8. Pages and package publishing
-   - Add GitHub Pages static data artifact generation.
+9. Package publishing
    - Add Changesets/npm publishing only after package APIs and branch triggers
      are reviewed.
 
