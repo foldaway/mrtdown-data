@@ -25,6 +25,7 @@
     "test:fs": "turbo run test --filter=@mrtdown/fs",
     "test:cli": "turbo run test --filter=@mrtdown/cli",
     "data:validate": "npm run build:cli && node packages/cli/dist/index.js --data-dir fixtures/data validate",
+    "pages:build": "npm run build:fs && node scripts/build-pages-artifact.mjs",
     "test": "vitest",
     "ingest:webhook": "tsx src/scripts/ingestViaWebhook.ts",
     "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts",
