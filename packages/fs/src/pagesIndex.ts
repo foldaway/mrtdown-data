@@ -6,6 +6,10 @@ export type PagesIndexOptions = {
   includeArchiveLinks?: boolean;
 };
 
+export type PagesRootIndexOptions = {
+  generatedAt?: Date;
+};
+
 type Child = Element['children'][number];
 
 function text(value: string): Child {
@@ -33,6 +37,51 @@ function code(value: string): Element {
   return element('pre', [text(value)]);
 }
 
+function buildDocument(
+  bodyChildren: Child[],
+  options: { includeCodeStyle?: boolean } = {},
+): Root {
+  const codeStyle = options.includeCodeStyle
+    ? 'pre { word-break: break-word; white-space: pre-wrap; display: inline; background-color: #f0f0f0; padding: 0.125rem 0.25rem; border-radius: 0.25rem; }'
+    : '';
+
+  return {
+    type: 'root',
+    children: [
+      { type: 'doctype' },
+      element(
+        'html',
+        [
+          element('head', [
+            element('meta', [], { charset: 'utf-8' }),
+            element('meta', [], {
+              name: 'viewport',
+              content: 'width=device-width, initial-scale=1',
+            }),
+            element('title', [text('mrtdown-data')]),
+            element('style', [
+              text(
+                `
+:root { font-family: system-ui, sans-serif; line-height: 1.5; }
+body { max-width: 40rem; margin: 2rem auto; padding: 0 1rem; color: #111; }
+h1 { font-size: 1.5rem; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { text-align: left; padding: 0.35rem 0.5rem; border-bottom: 1px solid #ddd; }
+th { font-weight: 600; width: 40%; }
+${codeStyle}
+footer { margin-top: 2rem; font-size: 0.875rem; color: #555; }
+a { color: #0b57d0; }`.trim(),
+              ),
+            ]),
+          ]),
+          element('body', bodyChildren),
+        ],
+        { lang: 'en' },
+      ),
+    ],
+  };
+}
+
 function buildExportLinks(options: PagesIndexOptions): Element {
   const children: Child[] = [
     text(
@@ -56,6 +105,19 @@ function buildExportLinks(options: PagesIndexOptions): Element {
   return element('p', children);
 }
 
+function buildFooter(
+  generatedAt: Date,
+  datetime = generatedAt.toISOString(),
+): Element {
+  return element('footer', [
+    text('Generated at '),
+    element('time', [text(generatedAt.toUTCString())], {
+      datetime,
+    }),
+    text(` (UTC) on ${process.platform}/${process.arch}`),
+  ]);
+}
+
 function buildTable(title: string, records: Record<string, string>): Element[] {
   const rows = Object.entries(records).map(([id, path]) =>
     element('tr', [element('td', [code(id)]), element('td', [link(path)])]),
@@ -75,6 +137,62 @@ function buildTable(title: string, records: Record<string, string>): Element[] {
   ];
 }
 
+function buildFileRow(href: string, description: string): Element {
+  return element('tr', [
+    element('td', [link(href)]),
+    element('td', [text(description)]),
+  ]);
+}
+
+export function renderPagesRootIndex(
+  options: PagesRootIndexOptions = {},
+): string {
+  const generatedAt = options.generatedAt ?? new Date();
+
+  return toHtml(
+    buildDocument([
+      element('h1', [text('mrtdown-data')]),
+      element('p', [
+        text(
+          'This split branch publishes only the deterministic fixture export. The canonical data export will be added after the target-layout data migration lands.',
+        ),
+      ]),
+      element('p', [
+        text('The fixture data index is available as '),
+        link('fixtures/'),
+        text('. Its machine-readable manifest is published as '),
+        link('fixtures/manifest.json'),
+        text('. The fixture directory is also available as '),
+        link('fixtures/archive.tar.gz'),
+        text(' (gzipped tarball) or '),
+        link('fixtures/archive.zip'),
+        text('.'),
+      ]),
+      link('https://github.com/foldaway/mrtdown-data', 'GitHub repository'),
+      element('h2', [text('Developer files')]),
+      element('table', [
+        element('tbody', [
+          element('tr', [
+            element('th', [text('File')]),
+            element('th', [text('Description')]),
+          ]),
+          buildFileRow('fixtures/', 'Fixture data index.'),
+          buildFileRow('fixtures/manifest.json', 'Fixture export manifest.'),
+          buildFileRow(
+            'fixtures/archive.tar.gz',
+            'Fixture export as a gzipped tarball.',
+          ),
+          buildFileRow(
+            'fixtures/archive.zip',
+            'Fixture export as a ZIP archive.',
+          ),
+        ]),
+      ]),
+      buildFooter(generatedAt),
+    ]),
+  );
+}
+
 export function renderPagesIndex(
   manifest: Manifest,
   options: PagesIndexOptions = {},
@@ -92,56 +210,17 @@ export function renderPagesIndex(
     buildTable(title, records),
   );
   const generatedAt = new Date(manifest.generatedAt);
-  const root: Root = {
-    type: 'root',
-    children: [
-      { type: 'doctype' },
-      element(
-        'html',
-        [
-          element('head', [
-            element('meta', [], { charset: 'utf-8' }),
-            element('meta', [], {
-              name: 'viewport',
-              content: 'width=device-width, initial-scale=1',
-            }),
-            element('title', [text('mrtdown-data')]),
-            element('style', [
-              text(
-                `
-:root { font-family: system-ui, sans-serif; line-height: 1.5; }
-body { max-width: 40rem; margin: 2rem auto; padding: 0 1rem; color: #111; }
-h1 { font-size: 1.5rem; }
-table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
-th, td { text-align: left; padding: 0.35rem 0.5rem; border-bottom: 1px solid #ddd; }
-th { font-weight: 600; width: 40%; }
-pre { word-break: break-word; white-space: pre-wrap; display: inline; background-color: #f0f0f0; padding: 0.125rem 0.25rem; border-radius: 0.25rem; }
-footer { margin-top: 2rem; font-size: 0.875rem; color: #555; }
-a { color: #0b57d0; }`.trim(),
-              ),
-            ]),
-          ]),
-          element('body', [
-            element('h1', [text('mrtdown-data')]),
-            buildExportLinks(options),
-            link(
-              'https://github.com/foldaway/mrtdown-data',
-              'GitHub repository',
-            ),
-            ...tables,
-            element('footer', [
-              text('Generated at '),
-              element('time', [text(generatedAt.toUTCString())], {
-                datetime: manifest.generatedAt,
-              }),
-              text(` (UTC) on ${process.platform}/${process.arch}`),
-            ]),
-          ]),
-        ],
-        { lang: 'en' },
-      ),
-    ],
-  };
 
-  return toHtml(root);
+  return toHtml(
+    buildDocument(
+      [
+        element('h1', [text('mrtdown-data')]),
+        buildExportLinks(options),
+        link('https://github.com/foldaway/mrtdown-data', 'GitHub repository'),
+        ...tables,
+        buildFooter(generatedAt, manifest.generatedAt),
+      ],
+      { includeCodeStyle: true },
+    ),
+  );
 }
