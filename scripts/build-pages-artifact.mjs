@@ -1,11 +1,13 @@
 import { execFile } from 'node:child_process';
 import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { dirname, isAbsolute, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const execFileAsync = promisify(execFile);
+const generatedArchivePattern = /[\\/]archive\.(?:tar\.gz|zip)$/;
+const generatedIndexPattern = /[\\/](?:manifest\.json|index\.html)$/;
 
 function usage() {
   return `Usage:
@@ -65,7 +67,7 @@ async function createArchives(outDir) {
   await mkdir(archiveRoot, { recursive: true });
   await cp(outDir, resolve(archiveRoot, 'data'), {
     recursive: true,
-    filter: (source) => !/\/archive\.(?:tar\.gz|zip)$/.test(source),
+    filter: (source) => !generatedArchivePattern.test(source),
   });
 
   await execFileAsync('tar', [
@@ -81,11 +83,16 @@ async function createArchives(outDir) {
   await rm(archiveRoot, { recursive: true, force: true });
 }
 
+function isSubpath(parent, candidate) {
+  const path = relative(parent, candidate);
+  return path !== '' && !path.startsWith('..') && !isAbsolute(path);
+}
+
 function assertOutputPath(dataDir, outDir) {
   if (
     outDir === dataDir ||
-    dataDir.startsWith(`${outDir}/`) ||
-    outDir.startsWith(`${dataDir}/`)
+    isSubpath(outDir, dataDir) ||
+    isSubpath(dataDir, outDir)
   ) {
     throw new Error('--out-dir must not overlap the data root');
   }
@@ -107,7 +114,7 @@ async function buildDataExport(sourceDataDir, exportDir, fsPackage) {
   await mkdir(exportDir, { recursive: true });
   await cp(sourceDataDir, exportDir, {
     recursive: true,
-    filter: (source) => !/\/(?:manifest\.json|index\.html)$/.test(source),
+    filter: (source) => !generatedIndexPattern.test(source),
   });
 
   const manifest = await fsPackage.buildManifest(exportDir);
