@@ -46,12 +46,12 @@ describe('@mrtdown/fs', () => {
       ok: true,
       checked: {
         issue: 2,
-        landmark: 0,
+        landmark: 36,
         line: 2,
-        operator: 0,
+        operator: 2,
         service: 4,
         station: 17,
-        town: 0,
+        town: 14,
       },
     });
 
