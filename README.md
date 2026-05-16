@@ -57,6 +57,9 @@ the planned data-overhaul split.
 split export uses `fixtures/data` so downstream consumers can integrate against
 the static contract before the canonical `data/` migration lands.
 
+Preview branches and pull requests build the same bundle in CI and upload it as
+a one-day artifact. Only `main` deploys the bundle to GitHub Pages.
+
 The artifact publishes:
 
 - `manifest.json`
