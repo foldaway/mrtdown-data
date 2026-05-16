@@ -12,29 +12,13 @@ export type PagesRootIndexOptions = {
 
 type Child = Element['children'][number];
 
-function text(value: string): Child {
-  return { type: 'text', value };
-}
-
-function element(
-  tagName: string,
-  children: Child[] = [],
-  properties: Element['properties'] = {},
-): Element {
+function linkElement(href: string, label = href): Element {
   return {
     type: 'element',
-    tagName,
-    properties,
-    children,
+    tagName: 'a',
+    properties: { href },
+    children: [{ type: 'text', value: label }],
   };
-}
-
-function link(href: string, label = href): Element {
-  return element('a', [text(label)], { href });
-}
-
-function code(value: string): Element {
-  return element('pre', [text(value)]);
 }
 
 function buildDocument(
@@ -49,19 +33,45 @@ function buildDocument(
     type: 'root',
     children: [
       { type: 'doctype' },
-      element(
-        'html',
-        [
-          element('head', [
-            element('meta', [], { charset: 'utf-8' }),
-            element('meta', [], {
-              name: 'viewport',
-              content: 'width=device-width, initial-scale=1',
-            }),
-            element('title', [text('mrtdown-data')]),
-            element('style', [
-              text(
-                `
+      {
+        type: 'element',
+        tagName: 'html',
+        properties: { lang: 'en' },
+        children: [
+          {
+            type: 'element',
+            tagName: 'head',
+            properties: {},
+            children: [
+              {
+                type: 'element',
+                tagName: 'meta',
+                properties: { charset: 'utf-8' },
+                children: [],
+              },
+              {
+                type: 'element',
+                tagName: 'meta',
+                properties: {
+                  name: 'viewport',
+                  content: 'width=device-width, initial-scale=1',
+                },
+                children: [],
+              },
+              {
+                type: 'element',
+                tagName: 'title',
+                properties: {},
+                children: [{ type: 'text', value: 'mrtdown-data' }],
+              },
+              {
+                type: 'element',
+                tagName: 'style',
+                properties: {},
+                children: [
+                  {
+                    type: 'text',
+                    value: `
 :root { font-family: system-ui, sans-serif; line-height: 1.5; }
 body { max-width: 40rem; margin: 2rem auto; padding: 0 1rem; color: #111; }
 h1 { font-size: 1.5rem; }
@@ -71,77 +81,175 @@ th { font-weight: 600; width: 40%; }
 ${codeStyle}
 footer { margin-top: 2rem; font-size: 0.875rem; color: #555; }
 a { color: #0b57d0; }`.trim(),
-              ),
-            ]),
-          ]),
-          element('body', bodyChildren),
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: 'element',
+            tagName: 'body',
+            properties: {},
+            children: bodyChildren,
+          },
         ],
-        { lang: 'en' },
-      ),
+      },
     ],
   };
 }
 
 function buildExportLinks(options: PagesIndexOptions): Element {
   const children: Child[] = [
-    text(
-      'Static data index for Singapore MRT/LRT status and history. The machine-readable manifest is published as ',
-    ),
-    link('manifest.json'),
-    text('.'),
+    {
+      type: 'text',
+      value:
+        'Static data index for Singapore MRT/LRT status and history. The machine-readable manifest is published as ',
+    },
+    linkElement('manifest.json'),
+    { type: 'text', value: '.' },
   ];
 
   if (options.includeArchiveLinks) {
     children.push(
-      text(' The full data directory is also available as '),
-      link('archive.tar.gz'),
-      text(' (gzipped tarball) or '),
-      link('archive.zip'),
-      text('.'),
+      { type: 'text', value: ' The full data directory is also available as ' },
+      linkElement('archive.tar.gz'),
+      { type: 'text', value: ' (gzipped tarball) or ' },
+      linkElement('archive.zip'),
+      { type: 'text', value: '.' },
     );
   }
 
-  children.push(text(' Records are listed in alphabetical order by ID.'));
-  return element('p', children);
+  children.push({
+    type: 'text',
+    value: ' Records are listed in alphabetical order by ID.',
+  });
+
+  return {
+    type: 'element',
+    tagName: 'p',
+    properties: {},
+    children,
+  };
 }
 
 function buildFooter(
   generatedAt: Date,
   datetime = generatedAt.toISOString(),
 ): Element {
-  return element('footer', [
-    text('Generated at '),
-    element('time', [text(generatedAt.toUTCString())], {
-      datetime,
-    }),
-    text(` (UTC) on ${process.platform}/${process.arch}`),
-  ]);
+  return {
+    type: 'element',
+    tagName: 'footer',
+    properties: {},
+    children: [
+      { type: 'text', value: 'Generated at ' },
+      {
+        type: 'element',
+        tagName: 'time',
+        properties: { datetime },
+        children: [{ type: 'text', value: generatedAt.toUTCString() }],
+      },
+      {
+        type: 'text',
+        value: ` (UTC) on ${process.platform}/${process.arch}`,
+      },
+    ],
+  };
 }
 
 function buildTable(title: string, records: Record<string, string>): Element[] {
-  const rows = Object.entries(records).map(([id, path]) =>
-    element('tr', [element('td', [code(id)]), element('td', [link(path)])]),
-  );
+  const rows = Object.entries(records).map(([id, path]) => {
+    return {
+      type: 'element',
+      tagName: 'tr',
+      properties: {},
+      children: [
+        {
+          type: 'element',
+          tagName: 'td',
+          properties: {},
+          children: [
+            {
+              type: 'element',
+              tagName: 'pre',
+              properties: {},
+              children: [{ type: 'text', value: id }],
+            },
+          ],
+        },
+        {
+          type: 'element',
+          tagName: 'td',
+          properties: {},
+          children: [linkElement(path)],
+        },
+      ],
+    } satisfies Element;
+  });
 
   return [
-    element('h2', [text(title)]),
-    element('table', [
-      element('tbody', [
-        element('tr', [
-          element('th', [text('ID')]),
-          element('th', [text('Link')]),
-        ]),
-        ...rows,
-      ]),
-    ]),
+    {
+      type: 'element',
+      tagName: 'h2',
+      properties: {},
+      children: [{ type: 'text', value: title }],
+    },
+    {
+      type: 'element',
+      tagName: 'table',
+      properties: {},
+      children: [
+        {
+          type: 'element',
+          tagName: 'tbody',
+          properties: {},
+          children: [
+            {
+              type: 'element',
+              tagName: 'tr',
+              properties: {},
+              children: [
+                {
+                  type: 'element',
+                  tagName: 'th',
+                  properties: {},
+                  children: [{ type: 'text', value: 'ID' }],
+                },
+                {
+                  type: 'element',
+                  tagName: 'th',
+                  properties: {},
+                  children: [{ type: 'text', value: 'Link' }],
+                },
+              ],
+            },
+            ...rows,
+          ],
+        },
+      ],
+    },
   ];
 }
 
 function buildFileRow(href: string, description: string): Element {
-  return element('tr', [
-    element('td', [link(href)]),
-    element('td', [text(description)]),
-  ]);
+  return {
+    type: 'element',
+    tagName: 'tr',
+    properties: {},
+    children: [
+      {
+        type: 'element',
+        tagName: 'td',
+        properties: {},
+        children: [linkElement(href)],
+      },
+      {
+        type: 'element',
+        tagName: 'td',
+        properties: {},
+        children: [{ type: 'text', value: description }],
+      },
+    ],
+  };
 }
 
 export function renderPagesRootIndex(
@@ -151,43 +259,102 @@ export function renderPagesRootIndex(
 
   return toHtml(
     buildDocument([
-      element('h1', [text('mrtdown-data')]),
-      element('p', [
-        text(
-          'This split branch publishes only the deterministic fixture export. The canonical data export will be added after the target-layout data migration lands.',
-        ),
-      ]),
-      element('p', [
-        text('The fixture data index is available as '),
-        link('fixtures/'),
-        text('. Its machine-readable manifest is published as '),
-        link('fixtures/manifest.json'),
-        text('. The fixture directory is also available as '),
-        link('fixtures/archive.tar.gz'),
-        text(' (gzipped tarball) or '),
-        link('fixtures/archive.zip'),
-        text('.'),
-      ]),
-      link('https://github.com/foldaway/mrtdown-data', 'GitHub repository'),
-      element('h2', [text('Developer files')]),
-      element('table', [
-        element('tbody', [
-          element('tr', [
-            element('th', [text('File')]),
-            element('th', [text('Description')]),
-          ]),
-          buildFileRow('fixtures/', 'Fixture data index.'),
-          buildFileRow('fixtures/manifest.json', 'Fixture export manifest.'),
-          buildFileRow(
-            'fixtures/archive.tar.gz',
-            'Fixture export as a gzipped tarball.',
-          ),
-          buildFileRow(
-            'fixtures/archive.zip',
-            'Fixture export as a ZIP archive.',
-          ),
-        ]),
-      ]),
+      {
+        type: 'element',
+        tagName: 'h1',
+        properties: {},
+        children: [{ type: 'text', value: 'mrtdown-data' }],
+      },
+      {
+        type: 'element',
+        tagName: 'p',
+        properties: {},
+        children: [
+          {
+            type: 'text',
+            value:
+              'This split branch publishes only the deterministic fixture export. The canonical data export will be added after the target-layout data migration lands.',
+          },
+        ],
+      },
+      {
+        type: 'element',
+        tagName: 'p',
+        properties: {},
+        children: [
+          { type: 'text', value: 'The fixture data index is available as ' },
+          linkElement('fixtures/'),
+          {
+            type: 'text',
+            value: '. Its machine-readable manifest is published as ',
+          },
+          linkElement('fixtures/manifest.json'),
+          {
+            type: 'text',
+            value: '. The fixture directory is also available as ',
+          },
+          linkElement('fixtures/archive.tar.gz'),
+          { type: 'text', value: ' (gzipped tarball) or ' },
+          linkElement('fixtures/archive.zip'),
+          { type: 'text', value: '.' },
+        ],
+      },
+      linkElement(
+        'https://github.com/foldaway/mrtdown-data',
+        'GitHub repository',
+      ),
+      {
+        type: 'element',
+        tagName: 'h2',
+        properties: {},
+        children: [{ type: 'text', value: 'Developer files' }],
+      },
+      {
+        type: 'element',
+        tagName: 'table',
+        properties: {},
+        children: [
+          {
+            type: 'element',
+            tagName: 'tbody',
+            properties: {},
+            children: [
+              {
+                type: 'element',
+                tagName: 'tr',
+                properties: {},
+                children: [
+                  {
+                    type: 'element',
+                    tagName: 'th',
+                    properties: {},
+                    children: [{ type: 'text', value: 'File' }],
+                  },
+                  {
+                    type: 'element',
+                    tagName: 'th',
+                    properties: {},
+                    children: [{ type: 'text', value: 'Description' }],
+                  },
+                ],
+              },
+              buildFileRow('fixtures/', 'Fixture data index.'),
+              buildFileRow(
+                'fixtures/manifest.json',
+                'Fixture export manifest.',
+              ),
+              buildFileRow(
+                'fixtures/archive.tar.gz',
+                'Fixture export as a gzipped tarball.',
+              ),
+              buildFileRow(
+                'fixtures/archive.zip',
+                'Fixture export as a ZIP archive.',
+              ),
+            ],
+          },
+        ],
+      },
       buildFooter(generatedAt),
     ]),
   );
@@ -214,9 +381,17 @@ export function renderPagesIndex(
   return toHtml(
     buildDocument(
       [
-        element('h1', [text('mrtdown-data')]),
+        {
+          type: 'element',
+          tagName: 'h1',
+          properties: {},
+          children: [{ type: 'text', value: 'mrtdown-data' }],
+        },
         buildExportLinks(options),
-        link('https://github.com/foldaway/mrtdown-data', 'GitHub repository'),
+        linkElement(
+          'https://github.com/foldaway/mrtdown-data',
+          'GitHub repository',
+        ),
         ...tables,
         buildFooter(generatedAt, manifest.generatedAt),
       ],
