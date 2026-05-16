@@ -18,24 +18,31 @@ export class IssueWriter {
 
   create(issue: Issue): void {
     const issueDir = this.getIssueDir(issue.id);
+    const issuePath = join(issueDir, FILE_ISSUE);
+    if (this.readOptionalText(issuePath) != null) {
+      throw new Error(`Issue already exists: ${issue.id}`);
+    }
+
     this.store.ensureDir(issueDir);
-    this.store.writeJson(join(issueDir, FILE_ISSUE), issue);
+    this.store.writeJson(issuePath, issue);
     this.store.writeText(join(issueDir, FILE_ISSUE_EVIDENCE), '');
     this.store.writeText(join(issueDir, FILE_ISSUE_IMPACT), '');
   }
 
   appendEvidence(issueId: string, evidence: Evidence): void {
-    this.store.ensureDir(this.getIssueDir(issueId));
+    const issueDir = this.getIssueDir(issueId);
+    this.assertIssueExists(issueDir, issueId);
     this.store.appendText(
-      join(this.getIssueDir(issueId), FILE_ISSUE_EVIDENCE),
+      join(issueDir, FILE_ISSUE_EVIDENCE),
       `${NdJson.stringify([evidence])}\n`,
     );
   }
 
   appendImpact(issueId: string, impact: ImpactEvent): void {
-    this.store.ensureDir(this.getIssueDir(issueId));
+    const issueDir = this.getIssueDir(issueId);
+    this.assertIssueExists(issueDir, issueId);
     this.store.appendText(
-      join(this.getIssueDir(issueId), FILE_ISSUE_IMPACT),
+      join(issueDir, FILE_ISSUE_IMPACT),
       `${NdJson.stringify([impact])}\n`,
     );
   }
@@ -46,13 +53,13 @@ export class IssueWriter {
     impacts: readonly ImpactEvent[],
   ): void {
     const issueDir = this.getIssueDir(issueId);
+    this.assertIssueExists(issueDir, issueId);
     const evidencePath = join(issueDir, FILE_ISSUE_EVIDENCE);
     const impactPath = join(issueDir, FILE_ISSUE_IMPACT);
     const evidenceBefore = this.readOptionalText(evidencePath);
     const impactBefore = this.readOptionalText(impactPath);
 
     try {
-      this.store.ensureDir(issueDir);
       this.store.appendText(evidencePath, `${NdJson.stringify([evidence])}\n`);
       for (const impact of impacts) {
         this.store.appendText(impactPath, `${NdJson.stringify([impact])}\n`);
@@ -89,6 +96,12 @@ export class IssueWriter {
         ? `${year}-${month}-${day}`
         : `${year}-${month}-${day}-${slug}`;
     return join(DIR_ISSUE, year, month, safeIssueId);
+  }
+
+  private assertIssueExists(issueDir: string, issueId: string): void {
+    if (this.readOptionalText(join(issueDir, FILE_ISSUE)) == null) {
+      throw new Error(`Issue does not exist: ${issueId}`);
+    }
   }
 
   private readOptionalText(path: string): string | null {

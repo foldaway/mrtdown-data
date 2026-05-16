@@ -16,6 +16,7 @@ import {
   readIssueBundle,
   readNdjsonFile,
   renderPagesIndex,
+  StandardRepository,
   toDataPath,
   validateDataRoot,
   writeUnknownEntity,
@@ -51,6 +52,24 @@ class FailingReadStore extends FileWriteStore {
       throw error;
     }
     return super.readText(path);
+  }
+}
+
+type TestRepositoryItem = {
+  id: string;
+  value: string;
+};
+
+class TestRepository extends StandardRepository<TestRepositoryItem> {
+  protected override parseItem(json: unknown): TestRepositoryItem {
+    const item = json as Partial<TestRepositoryItem>;
+    if (typeof item.id !== 'string' || typeof item.value !== 'string') {
+      throw new Error('Invalid test item');
+    }
+    return {
+      id: item.id,
+      value: item.value,
+    };
   }
 }
 
@@ -477,6 +496,80 @@ describe('@mrtdown/fs', () => {
         },
       }),
     ).toThrow('Invalid issue ID: 2025-01-15-../../etc');
+  });
+
+  it('rejects duplicate ids while loading standard repositories', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await mkdir(join(dataDir, 'items'), { recursive: true });
+    await writeFile(
+      join(dataDir, 'items', 'one.json'),
+      JSON.stringify({ id: 'duplicate', value: 'first' }),
+    );
+    await writeFile(
+      join(dataDir, 'items', 'two.json'),
+      JSON.stringify({ id: 'duplicate', value: 'second' }),
+    );
+
+    const repo = new TestRepository(new FileStore(dataDir), 'items');
+
+    expect(() => repo.list()).toThrow(
+      "Duplicate id 'duplicate' while loading items/two.json",
+    );
+  });
+
+  it('does not clobber existing issue files on create', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new MRTDownWriter({ store: new FileWriteStore(dataDir) });
+    const issue = {
+      id: '2025-01-15-test-issue',
+      type: 'disruption' as const,
+      title: {
+        'en-SG': 'Test issue',
+        'zh-Hans': null,
+        ms: null,
+        ta: null,
+      },
+      titleMeta: {
+        source: 'test',
+      },
+    };
+
+    writer.issues.create(issue);
+    writer.issues.appendEvidence(issue.id, {
+      id: 'ev_1',
+      ts: '2025-01-15T10:00:00+08:00',
+      type: 'report.public',
+      sourceUrl: 'https://example.com',
+      text: 'Test evidence',
+      render: null,
+    });
+
+    expect(() => writer.issues.create(issue)).toThrow(
+      'Issue already exists: 2025-01-15-test-issue',
+    );
+    await expect(
+      readFile(
+        join(dataDir, 'issue/2025/01/2025-01-15-test-issue/evidence.ndjson'),
+        'utf8',
+      ),
+    ).resolves.toContain('ev_1');
+  });
+
+  it('rejects appends for missing issues without creating orphan folders', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new MRTDownWriter({ store: new FileWriteStore(dataDir) });
+
+    expect(() =>
+      writer.issues.appendEvidence('2025-01-15-missing-issue', {
+        id: 'ev_1',
+        ts: '2025-01-15T10:00:00+08:00',
+        type: 'report.public',
+        sourceUrl: 'https://example.com',
+        text: 'Test evidence',
+        render: null,
+      }),
+    ).toThrow('Issue does not exist: 2025-01-15-missing-issue');
+    await expect(access(join(dataDir, 'issue'))).rejects.toThrow();
   });
 
   it('rolls back issue evidence and impact batch appends on failure', async () => {

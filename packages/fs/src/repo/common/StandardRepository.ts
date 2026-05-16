@@ -37,6 +37,11 @@ export class StandardRepository<T extends StandardRepositoryItem> {
       const json = this.store.readJson(filePath);
       try {
         const item = this.parseItem(json);
+        if (this.byId.has(item.id)) {
+          throw new Error(
+            `Duplicate id '${item.id}' while loading ${filePath}`,
+          );
+        }
         this.byId.set(item.id, item);
       } catch (error) {
         console.error(`Error parsing ${filePath}: ${error}`);
