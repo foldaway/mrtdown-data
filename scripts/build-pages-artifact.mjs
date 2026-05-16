@@ -3,6 +3,7 @@ import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
+import { toHtml } from 'hast-util-to-html';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const execFileAsync = promisify(execFile);
@@ -93,14 +94,37 @@ function assertOutputPath(dataDir, outDir) {
 
 function renderRootIndex() {
   const generatedAt = new Date();
+  const text = (value) => ({ type: 'text', value });
+  const element = (tagName, children = [], properties = {}) => ({
+    type: 'element',
+    tagName,
+    properties,
+    children,
+  });
+  const link = (href, label = href) => element('a', [text(label)], { href });
+  const fileRow = (href, description) =>
+    element('tr', [
+      element('td', [link(href)]),
+      element('td', [text(description)]),
+    ]);
 
-  return `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mrtdown-data</title>
-    <style>
+  return toHtml({
+    type: 'root',
+    children: [
+      { type: 'doctype' },
+      element(
+        'html',
+        [
+          element('head', [
+            element('meta', [], { charset: 'utf-8' }),
+            element('meta', [], {
+              name: 'viewport',
+              content: 'width=device-width, initial-scale=1',
+            }),
+            element('title', [text('mrtdown-data')]),
+            element('style', [
+              text(
+                `
 :root { font-family: system-ui, sans-serif; line-height: 1.5; }
 body { max-width: 40rem; margin: 2rem auto; padding: 0 1rem; color: #111; }
 h1 { font-size: 1.5rem; }
@@ -108,45 +132,64 @@ table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
 th, td { text-align: left; padding: 0.35rem 0.5rem; border-bottom: 1px solid #ddd; }
 th { font-weight: 600; width: 40%; }
 footer { margin-top: 2rem; font-size: 0.875rem; color: #555; }
-a { color: #0b57d0; }
-    </style>
-  </head>
-  <body>
-    <h1>mrtdown-data</h1>
-    <p>This split branch publishes only the deterministic fixture export. The canonical data export will be added after the target-layout data migration lands.</p>
-    <p>The fixture data index is available as <a href="fixtures/">fixtures/</a>. Its machine-readable manifest is published as <a href="fixtures/manifest.json">fixtures/manifest.json</a>. The fixture directory is also available as <a href="fixtures/archive.tar.gz">fixtures/archive.tar.gz</a> (gzipped tarball) or <a href="fixtures/archive.zip">fixtures/archive.zip</a>.</p>
-    <a href="https://github.com/foldaway/mrtdown-data">GitHub repository</a>
-    <h2>Developer files</h2>
-    <table>
-      <tbody>
-        <tr>
-          <th>File</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td><a href="fixtures/">fixtures/</a></td>
-          <td>Fixture data index.</td>
-        </tr>
-        <tr>
-          <td><a href="fixtures/manifest.json">fixtures/manifest.json</a></td>
-          <td>Fixture export manifest.</td>
-        </tr>
-        <tr>
-          <td><a href="fixtures/archive.tar.gz">fixtures/archive.tar.gz</a></td>
-          <td>Fixture export as a gzipped tarball.</td>
-        </tr>
-        <tr>
-          <td><a href="fixtures/archive.zip">fixtures/archive.zip</a></td>
-          <td>Fixture export as a ZIP archive.</td>
-        </tr>
-      </tbody>
-    </table>
-    <footer>
-      Generated at <time datetime="${generatedAt.toISOString()}">${generatedAt.toUTCString()}</time> (UTC) on ${process.platform}/${process.arch}
-    </footer>
-  </body>
-</html>
-`;
+a { color: #0b57d0; }`.trim(),
+              ),
+            ]),
+          ]),
+          element('body', [
+            element('h1', [text('mrtdown-data')]),
+            element('p', [
+              text(
+                'This split branch publishes only the deterministic fixture export. The canonical data export will be added after the target-layout data migration lands.',
+              ),
+            ]),
+            element('p', [
+              text('The fixture data index is available as '),
+              link('fixtures/'),
+              text('. Its machine-readable manifest is published as '),
+              link('fixtures/manifest.json'),
+              text('. The fixture directory is also available as '),
+              link('fixtures/archive.tar.gz'),
+              text(' (gzipped tarball) or '),
+              link('fixtures/archive.zip'),
+              text('.'),
+            ]),
+            link(
+              'https://github.com/foldaway/mrtdown-data',
+              'GitHub repository',
+            ),
+            element('h2', [text('Developer files')]),
+            element('table', [
+              element('tbody', [
+                element('tr', [
+                  element('th', [text('File')]),
+                  element('th', [text('Description')]),
+                ]),
+                fileRow('fixtures/', 'Fixture data index.'),
+                fileRow('fixtures/manifest.json', 'Fixture export manifest.'),
+                fileRow(
+                  'fixtures/archive.tar.gz',
+                  'Fixture export as a gzipped tarball.',
+                ),
+                fileRow(
+                  'fixtures/archive.zip',
+                  'Fixture export as a ZIP archive.',
+                ),
+              ]),
+            ]),
+            element('footer', [
+              text('Generated at '),
+              element('time', [text(generatedAt.toUTCString())], {
+                datetime: generatedAt.toISOString(),
+              }),
+              text(` (UTC) on ${process.platform}/${process.arch}`),
+            ]),
+          ]),
+        ],
+        { lang: 'en' },
+      ),
+    ],
+  });
 }
 
 async function buildDataExport(sourceDataDir, exportDir, fsPackage) {

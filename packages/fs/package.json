@@ -29,7 +29,8 @@
     "test": "npm --workspace @mrtdown/core run build && vitest --run"
   },
   "dependencies": {
-    "@mrtdown/core": "2.0.0-alpha.22"
+    "@mrtdown/core": "2.0.0-alpha.22",
+    "hast-util-to-html": "^9.0.5"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.14",
