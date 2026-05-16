@@ -3,6 +3,7 @@ import type { z } from 'zod';
 import {
   type EntityCollection,
   entityCollections,
+  evidenceFileName,
   impactFileName,
   issueDirectory,
 } from './constants.js';
@@ -48,6 +49,8 @@ type ValidationRecords = Partial<{
   town: EntityRecord<'town'>[];
   issue: IssueBundle[];
 }>;
+
+const generatedEvidenceIdPattern = /^ev_[0-9A-HJKMNP-TV-Z]{26}$/;
 
 async function loadEntityRecords<K extends EntityCollection>(
   dataDir: string,
@@ -204,13 +207,42 @@ async function validateIssueReferences(
   const serviceIds = await loadEntityIds(dataDir, records, 'service');
   const stationIds = await loadEntityIds(dataDir, records, 'station');
   const errors: string[] = [];
+  const seenEvidenceIds = new Map<string, string>();
+  const seenImpactEventIds = new Map<string, string>();
 
   for (const bundle of await loadIssueRecords(dataDir, records)) {
     const evidenceIds = new Set(bundle.evidence.map((evidence) => evidence.id));
+    const evidencePath = `${bundle.path}/${evidenceFileName}`;
     const impactPath = `${bundle.path}/${impactFileName}`;
+
+    for (const [evidenceIndex, evidence] of bundle.evidence.entries()) {
+      const location = `${evidencePath}:${evidenceIndex + 1}`;
+      if (!generatedEvidenceIdPattern.test(evidence.id)) {
+        errors.push(
+          `${location}: evidence id ${evidence.id} is not an ev_<ULID>`,
+        );
+      }
+
+      const previousLocation = seenEvidenceIds.get(evidence.id);
+      if (previousLocation) {
+        errors.push(
+          `${location}: evidence id ${evidence.id} is duplicated (first seen at ${previousLocation})`,
+        );
+      } else {
+        seenEvidenceIds.set(evidence.id, location);
+      }
+    }
 
     for (const [eventIndex, event] of bundle.impactEvents.entries()) {
       const linePrefix = `${impactPath}:${eventIndex + 1}`;
+      const previousLocation = seenImpactEventIds.get(event.id);
+      if (previousLocation) {
+        errors.push(
+          `${linePrefix}: impact event id ${event.id} is duplicated (first seen at ${previousLocation})`,
+        );
+      } else {
+        seenImpactEventIds.set(event.id, linePrefix);
+      }
 
       if (!evidenceIds.has(event.basis.evidenceId)) {
         errors.push(

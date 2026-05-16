@@ -249,6 +249,83 @@ describe('@mrtdown/fs', () => {
     );
   });
 
+  it('rejects duplicate issue row ids across issue folders', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const issueIds = [
+      '2026-01-01-first-test-issue',
+      '2026-01-02-second-test-issue',
+    ];
+
+    for (const issueId of issueIds) {
+      const issueDir = join(
+        dataDir,
+        'issue',
+        '2026',
+        issueId.slice(5, 7),
+        issueId,
+      );
+      await mkdir(issueDir, { recursive: true });
+      await writeFile(
+        join(issueDir, 'issue.json'),
+        `${JSON.stringify({
+          id: issueId,
+          type: 'disruption',
+          title: {
+            'en-SG': 'Test Issue',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          titleMeta: {
+            source: 'test',
+          },
+        })}\n`,
+      );
+      await writeFile(
+        join(issueDir, 'evidence.ndjson'),
+        `${JSON.stringify({
+          id: 'ev_duplicate',
+          ts: '2026-01-01T07:00:00+08:00',
+          type: 'statement.official',
+          sourceUrl: 'https://example.com',
+          text: 'Test issue',
+          render: null,
+        })}\n`,
+      );
+      await writeFile(
+        join(issueDir, 'impact.ndjson'),
+        `${JSON.stringify({
+          id: 'ie_duplicate',
+          type: 'service_effects.set',
+          entity: {
+            type: 'service',
+            serviceId: 'TEST_SERVICE',
+          },
+          ts: '2026-01-01T07:00:00+08:00',
+          effect: {
+            kind: 'delay',
+            duration: null,
+          },
+          basis: {
+            evidenceId: 'ev_duplicate',
+          },
+        })}\n`,
+      );
+    }
+
+    const result = await validateDataRoot(dataDir, ['issue']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        'issue/2026/01/2026-01-01-first-test-issue/evidence.ndjson:1: evidence id ev_duplicate is not an ev_<ULID>',
+        'issue/2026/01/2026-01-01-first-test-issue/impact.ndjson:1: entity.serviceId TEST_SERVICE does not exist in service/',
+        'issue/2026/01/2026-01-02-second-test-issue/evidence.ndjson:1: evidence id ev_duplicate is duplicated (first seen at issue/2026/01/2026-01-01-first-test-issue/evidence.ndjson:1)',
+        'issue/2026/01/2026-01-02-second-test-issue/impact.ndjson:1: impact event id ie_duplicate is duplicated (first seen at issue/2026/01/2026-01-01-first-test-issue/impact.ndjson:1)',
+      ]),
+    );
+  });
+
   it('reports malformed issue directories clearly while building manifests', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await mkdir(join(dataDir, 'issue', '2026', '05', 'foo'), {
