@@ -6,7 +6,15 @@ import { buildSystemPrompt } from './prompt.js';
 
 const ResponseSchema = z.object({
   title: z.string(),
-  slug: z.string(),
+  slug: z
+    .string()
+    .regex(
+      /^[a-z0-9][a-z0-9._-]*$/,
+      'Slug must contain only lowercase letters, numbers, dots, underscores, and hyphens',
+    )
+    .refine((slug) => !slug.includes('..'), {
+      message: 'Slug must not contain consecutive dots',
+    }),
 });
 
 export type GenerateIssueTitleAndSlugParams = {

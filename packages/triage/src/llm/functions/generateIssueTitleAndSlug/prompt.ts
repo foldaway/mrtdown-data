@@ -15,6 +15,8 @@ You are an AI assistant helping to process MRT/LRT incident data for Singapore's
 - Slug will be prefixed with YYYY-MM-DD by the system (e.g., "2024-01-15-nsl-signalling-fault")
 - Generate only the descriptive part (no date)
 - Rules: lowercase, hyphen-separated, no spaces, valid URL slug
+- Use only lowercase letters, numbers, dots, underscores, and hyphens
+- Do not include path separators or consecutive dots
 - Keep slugs concise but descriptive enough to distinguish similar issues
 - Include key identifiers: line, issue type, location or cause when relevant
 - Examples: "nsl-signalling-fault", "circle-line-track-fault-holland-village-caldecott", "faulty-cable-led-to-circle-line-disruption"

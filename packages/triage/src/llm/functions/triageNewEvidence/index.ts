@@ -66,6 +66,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
   ];
 
   let toolCallCount = 0;
+  let reachedToolCallLimit = false;
 
   let response: ParsedResponse<z.infer<typeof ResponseSchema>>;
   do {
@@ -121,7 +122,8 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
             console.log(
               'Forced short-circuit, returning error message in tool call result.',
             );
-            continue;
+            reachedToolCallLimit = true;
+            break;
           }
 
           if (item.name in toolRegistry) {
@@ -181,8 +183,19 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
           break;
         }
       }
+
+      if (reachedToolCallLimit) {
+        break;
+      }
     }
-  } while (response.output.some((item) => item.type === 'function_call'));
+  } while (
+    !reachedToolCallLimit &&
+    response.output.some((item) => item.type === 'function_call')
+  );
+
+  if (reachedToolCallLimit) {
+    throw new Error(`Exceeded tool call limit of ${TOOL_CALL_LIMIT}`);
+  }
 
   assert(response.output_parsed != null, 'Response output parsed is null');
 

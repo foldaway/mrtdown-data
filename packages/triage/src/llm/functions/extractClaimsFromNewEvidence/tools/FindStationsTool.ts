@@ -39,8 +39,6 @@ export class FindStationsTool extends Tool<FindStationsToolParameters> {
   }
 
   public async runner(params: FindStationsToolParameters): Promise<string> {
-    console.log('[findStations] Calling tool with parameters:', params);
-
     const stations = this.repo.stations.searchByName(params.stationNames);
 
     const table: Table = {
@@ -129,7 +127,6 @@ export class FindStationsTool extends Tool<FindStationsToolParameters> {
     const output = toMarkdown(table, {
       extensions: [gfmToMarkdown()],
     });
-    console.log(`[findStations] Response output:\n${output}`);
 
     return output;
   }
