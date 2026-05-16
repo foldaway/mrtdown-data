@@ -55,6 +55,30 @@ class FailingReadStore extends FileWriteStore {
   }
 }
 
+class FailingRollbackStore extends FailingSecondImpactStore {
+  private failRestore = false;
+  impactRestoreAttempted = false;
+
+  override appendText(path: string, text: string): void {
+    try {
+      super.appendText(path, text);
+    } catch (error) {
+      this.failRestore = true;
+      throw error;
+    }
+  }
+
+  override writeText(path: string, text: string): void {
+    if (this.failRestore && path.endsWith('evidence.ndjson')) {
+      throw new Error('Simulated evidence rollback failure');
+    }
+    if (this.failRestore && path.endsWith('impact.ndjson')) {
+      this.impactRestoreAttempted = true;
+    }
+    super.writeText(path, text);
+  }
+}
+
 type TestRepositoryItem = {
   id: string;
   value: string;
@@ -636,6 +660,59 @@ describe('@mrtdown/fs', () => {
         'utf8',
       ),
     ).resolves.toBe('');
+  });
+
+  it('attempts all rollback steps and reports incomplete rollback', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const store = new FailingRollbackStore(dataDir);
+    const writer = new MRTDownWriter({ store });
+    const issueId = '2025-01-15-test-issue';
+    writer.issues.create({
+      id: issueId,
+      type: 'disruption',
+      title: {
+        'en-SG': 'Test issue',
+        'zh-Hans': null,
+        ms: null,
+        ta: null,
+      },
+      titleMeta: {
+        source: 'test',
+      },
+    });
+
+    expect(() =>
+      writer.issues.appendEvidenceAndImpacts(
+        issueId,
+        {
+          id: 'ev_1',
+          ts: '2025-01-15T10:00:00+08:00',
+          type: 'report.public',
+          sourceUrl: 'https://example.com',
+          text: 'Test evidence',
+          render: null,
+        },
+        [
+          {
+            id: 'ie_1',
+            type: 'causes.set',
+            entity: { type: 'service', serviceId: 'NSL' },
+            ts: '2025-01-15T10:00:00+08:00',
+            causes: ['signal.fault'],
+            basis: { evidenceId: 'ev_1' },
+          },
+          {
+            id: 'ie_2',
+            type: 'causes.set',
+            entity: { type: 'service', serviceId: 'NSL' },
+            ts: '2025-01-15T10:01:00+08:00',
+            causes: ['track.fault'],
+            basis: { evidenceId: 'ev_1' },
+          },
+        ],
+      ),
+    ).toThrow('appendEvidenceAndImpacts failed and rollback was incomplete');
+    expect(store.impactRestoreAttempted).toBe(true);
   });
 
   it('does not treat read failures as missing rollback snapshots', async () => {

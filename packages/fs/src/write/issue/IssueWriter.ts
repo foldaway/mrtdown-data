@@ -65,8 +65,23 @@ export class IssueWriter {
         this.store.appendText(impactPath, `${NdJson.stringify([impact])}\n`);
       }
     } catch (error) {
-      this.restoreText(evidencePath, evidenceBefore);
-      this.restoreText(impactPath, impactBefore);
+      const rollbackErrors: unknown[] = [];
+      try {
+        this.restoreText(evidencePath, evidenceBefore);
+      } catch (rollbackError) {
+        rollbackErrors.push(rollbackError);
+      }
+      try {
+        this.restoreText(impactPath, impactBefore);
+      } catch (rollbackError) {
+        rollbackErrors.push(rollbackError);
+      }
+      if (rollbackErrors.length > 0) {
+        throw new AggregateError(
+          [error, ...rollbackErrors],
+          'appendEvidenceAndImpacts failed and rollback was incomplete',
+        );
+      }
       throw error;
     }
   }
