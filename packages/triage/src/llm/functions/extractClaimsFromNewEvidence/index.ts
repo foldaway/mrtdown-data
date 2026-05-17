@@ -83,7 +83,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
       instructions: systemPrompt,
       input: context,
       reasoning: {
-        effort: 'none',
+        effort: 'minimal',
       },
       text: {
         format: {
