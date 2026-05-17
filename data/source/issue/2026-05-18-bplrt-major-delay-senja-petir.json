@@ -17,6 +17,12 @@
   ],
   "updates": [
     {
+      "type": "general-public.report",
+      "text": "Major delays on the Bukit Panjang LRT between Senja and Bukit Panjang in both directions, causing disruption on that segment.",
+      "sourceUrl": "https://www.reddit.com/r/singapore/comments/1tg4i5k/major_delay_on_bukit_panjang_lrt_between_senja/",
+      "createdAt": "2026-05-18T06:52:25.000+08:00"
+    },
+    {
       "type": "news.report",
       "text": "Commuters are urged to consider bus services available.",
       "sourceUrl": "https://www.straitstimes.com/singapore/no-train-services-on-bukit-panjang-lrt-between-senja-and-petir",
