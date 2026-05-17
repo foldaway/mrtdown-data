@@ -72,6 +72,21 @@ export class MemoryStore implements IStore, IWriteStore {
     this.addChild(parent, basename(p));
   }
 
+  createDir(path: string): void {
+    const p = this.toStorePath(path);
+    if (this.dirs.has(p) || this.files.has(p)) {
+      throwErrno(`MemoryStore: Path already exists: ${path}`, 'EEXIST');
+    }
+
+    const parent = dirname(p) === '.' ? '' : dirname(p);
+    if (!this.dirs.has(parent)) {
+      throwErrno(`MemoryStore: Parent directory not found: ${path}`, 'ENOENT');
+    }
+
+    this.dirs.set(p, new Set());
+    this.addChild(parent, basename(p));
+  }
+
   private addChild(dir: string, child: string): void {
     const d = this.toStorePath(dir);
     const set = this.dirs.get(d);
@@ -137,4 +152,10 @@ export class MemoryStore implements IStore, IWriteStore {
     }
     return result;
   }
+}
+
+function throwErrno(message: string, code: string): never {
+  const error = new Error(message) as NodeJS.ErrnoException;
+  error.code = code;
+  throw error;
 }

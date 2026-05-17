@@ -154,6 +154,34 @@ describe('MemoryStore', () => {
     });
   });
 
+  describe('createDir', () => {
+    test('creates one directory when its parent exists', () => {
+      const store = new MemoryStore();
+
+      store.createDir('x');
+
+      expect(store.exists('x')).toBe(true);
+      expect(store.listDir('')).toEqual(['x']);
+    });
+
+    test('fails when the directory already exists', () => {
+      const store = new MemoryStore();
+      store.createDir('x');
+
+      expect(() => store.createDir('x')).toThrow(
+        'MemoryStore: Path already exists: x',
+      );
+    });
+
+    test('fails when the parent directory is missing', () => {
+      const store = new MemoryStore();
+
+      expect(() => store.createDir('x/y')).toThrow(
+        'MemoryStore: Parent directory not found: x/y',
+      );
+    });
+  });
+
   describe('writeText', () => {
     test('writes file and creates parent directories', () => {
       const store = new MemoryStore();
