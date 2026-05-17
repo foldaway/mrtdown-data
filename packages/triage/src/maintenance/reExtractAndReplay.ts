@@ -21,6 +21,7 @@ import {
   collectReExtractTargets,
   type ReExtractMode,
 } from '../scripts/reExtractAndReplayTargets.js';
+import { compareEvidenceByInstant } from './evidenceSort.js';
 
 export interface ReExtractAndReplayOptions {
   dataDir: string;
@@ -181,9 +182,7 @@ export async function reExtractAndReplay(
       }
     }
 
-    const sortedEvidence = [...evidence].sort((a, b) =>
-      a.ts < b.ts ? -1 : a.ts > b.ts ? 1 : 0,
-    );
+    const sortedEvidence = [...evidence].sort(compareEvidenceByInstant);
 
     const rollingBundle: IssueBundle = {
       issue,

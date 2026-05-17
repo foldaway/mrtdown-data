@@ -6,6 +6,7 @@ import { computeImpactFromEvidenceClaims } from '../helpers/computeImpactFromEvi
 import { deriveCurrentState } from '../helpers/deriveCurrentState.js';
 import { reconstructClaimsFromImpactEvents } from '../helpers/reconstructClaimsFromImpactEvents.js';
 import { normalizeClaimsForEvidence } from '../llm/functions/extractClaimsFromNewEvidence/normalizeClaimsForEvidence.js';
+import { compareEvidenceByInstant } from './evidenceSort.js';
 
 export interface ReplayImpactEventsOptions {
   dataDir: string;
@@ -67,9 +68,7 @@ export function replayImpactEvents(
       impactByEvidenceId.set(evidenceId, current);
     }
 
-    const sortedEvidence = [...evidence].sort((a, b) =>
-      a.ts < b.ts ? -1 : a.ts > b.ts ? 1 : 0,
-    );
+    const sortedEvidence = [...evidence].sort(compareEvidenceByInstant);
 
     const rollingBundle: IssueBundle = {
       issue,
