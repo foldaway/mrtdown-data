@@ -22,6 +22,7 @@ import {
   StandardRepository,
   toDataPath,
   validateDataRoot,
+  visibleDirEntries,
   writeUnknownEntity,
 } from './index.js';
 import { StandardWriter } from './write/common/StandardWriter.js';
@@ -802,6 +803,12 @@ describe('@mrtdown/fs', () => {
     expect(() => store.readJson('bad.json')).toThrow(
       'Invalid JSON in bad.json:',
     );
+  });
+
+  it('returns sorted visible directory entries', () => {
+    expect(
+      visibleDirEntries(['station.json', '.DS_Store', 'line.json', 'issue']),
+    ).toEqual(['issue', 'line.json', 'station.json']);
   });
 
   it('normalizes data paths consistently', () => {
