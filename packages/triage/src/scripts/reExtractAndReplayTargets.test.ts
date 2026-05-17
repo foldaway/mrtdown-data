@@ -201,6 +201,72 @@ describe('collectReExtractTargets', () => {
     ).toEqual(new Map());
   });
 
+  test('preserves future-period matches across later period events', () => {
+    const bundle = makeIssueBundle({
+      issueId: '2025-12-05-ewl-track-testing-depot-disconnection',
+      evidence: [
+        {
+          id: 'ev-bad',
+          ts: '2025-12-05T22:12:16+08:00',
+          text: 'East-West Line trains have longer waits of up to 17 minutes. A service suspension is planned for the first half of 2026.',
+        },
+      ],
+      impactEvents: [
+        {
+          id: 'ie-1',
+          type: 'service_effects.set',
+          ts: '2025-12-05T22:12:16+08:00',
+          basis: { evidenceId: 'ev-bad' },
+          entity: { type: 'service', serviceId: 'EWL_MAIN_E' },
+          effect: { kind: 'no-service' },
+        },
+        {
+          id: 'ie-2',
+          type: 'periods.set',
+          ts: '2025-12-05T22:12:16+08:00',
+          basis: { evidenceId: 'ev-bad' },
+          entity: { type: 'service', serviceId: 'EWL_MAIN_E' },
+          periods: [
+            {
+              kind: 'fixed',
+              startAt: '2026-01-01T00:00:00+08:00',
+              endAt: '2026-07-01T00:00:00+08:00',
+            },
+          ],
+        },
+        {
+          id: 'ie-3',
+          type: 'periods.set',
+          ts: '2025-12-05T22:12:16+08:00',
+          basis: { evidenceId: 'ev-bad' },
+          entity: { type: 'service', serviceId: 'EWL_MAIN_E' },
+          periods: [
+            {
+              kind: 'fixed',
+              startAt: '2025-12-05T22:12:16+08:00',
+              endAt: '2025-12-06T00:00:00+08:00',
+            },
+          ],
+        },
+      ],
+    });
+
+    const repo = makeRepo([bundle]);
+
+    expect(
+      collectReExtractTargets(repo, {
+        mode: 'degraded-future-no-service',
+      }),
+    ).toEqual(
+      new Map([
+        [
+          '2025-12-05-ewl-track-testing-depot-disconnection',
+          new Set(['ev-bad']),
+        ],
+      ]),
+    );
+  });
+
   test('collects all evidence for bundles with empty impact', () => {
     const emptyImpactBundle = makeIssueBundle({
       issueId: '2026-04-01-empty-impact',

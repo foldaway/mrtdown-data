@@ -72,12 +72,14 @@ export function impactEventsMatchFutureNoServiceMisclassification(params: {
     }
 
     if (event.type === 'periods.set') {
-      current.hasFutureFixedPeriod = event.periods.some(
-        (period) =>
-          period.kind === 'fixed' &&
-          Date.parse(period.startAt) > evidenceTsMs &&
-          period.endAt != null,
-      );
+      current.hasFutureFixedPeriod =
+        current.hasFutureFixedPeriod ||
+        event.periods.some(
+          (period) =>
+            period.kind === 'fixed' &&
+            Date.parse(period.startAt) > evidenceTsMs &&
+            period.endAt != null,
+        );
     }
 
     entityState.set(entityKey, current);
