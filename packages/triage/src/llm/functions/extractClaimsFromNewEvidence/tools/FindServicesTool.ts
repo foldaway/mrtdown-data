@@ -16,7 +16,7 @@ type FindServicesToolParameters = z.infer<
 
 export class FindServicesTool extends Tool<FindServicesToolParameters> {
   public name = 'findServices';
-  public description = 'Find services by name';
+  public description = 'Find services by line ID';
   private readonly evidenceTs: DateTime;
   private readonly repo: MRTDownRepository;
 
