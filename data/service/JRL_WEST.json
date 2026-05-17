@@ -1,0 +1,258 @@
+{
+    "id": "JRL_WEST",
+    "lineId": "JRL",
+    "name": {
+        "en-SG": "Jurong Region Line (West Branch)",
+        "zh-Hans": "裕廊区域线（西部支线）",
+        "ms": "Laluan Daerah Jurong (Cawangan Barat)",
+        "ta": "ஜூரோங் வட்டாரப் பாதை (மேற்கு கிளை)"
+    },
+    "revisions": [
+        {
+            "id": "r_2027_stage_1",
+            "startAt": "2027-12-31",
+            "endAt": "2029-12-31",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "CCK",
+                        "displayCode": "JS1"
+                    },
+                    {
+                        "stationId": "CKW",
+                        "displayCode": "JS2"
+                    },
+                    {
+                        "stationId": "TGH",
+                        "displayCode": "JS3"
+                    },
+                    {
+                        "stationId": "HGK",
+                        "displayCode": "JS4"
+                    },
+                    {
+                        "stationId": "CPN",
+                        "displayCode": "JS5"
+                    },
+                    {
+                        "stationId": "JRW",
+                        "displayCode": "JS6"
+                    },
+                    {
+                        "stationId": "BHJ",
+                        "displayCode": "JS7"
+                    },
+                    {
+                        "stationId": "BNL",
+                        "displayCode": "JS8"
+                    },
+                    {
+                        "stationId": "BHJ",
+                        "displayCode": "JS7"
+                    },
+                    {
+                        "stationId": "GKP",
+                        "displayCode": "JW1"
+                    },
+                    {
+                        "stationId": "TWS",
+                        "displayCode": "JW2"
+                    },
+                    {
+                        "stationId": "GKP",
+                        "displayCode": "JW1"
+                    },
+                    {
+                        "stationId": "BHJ",
+                        "displayCode": "JS7"
+                    },
+                    {
+                        "stationId": "JRW",
+                        "displayCode": "JS6"
+                    },
+                    {
+                        "stationId": "CPN",
+                        "displayCode": "JS5"
+                    },
+                    {
+                        "stationId": "HGK",
+                        "displayCode": "JS4"
+                    },
+                    {
+                        "stationId": "TGH",
+                        "displayCode": "JS3"
+                    },
+                    {
+                        "stationId": "CKW",
+                        "displayCode": ""
+                    },
+                    {
+                        "stationId": "CCK",
+                        "displayCode": "JS1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:30",
+                    "end": "00:00"
+                },
+                "weekends": {
+                    "start": "05:30",
+                    "end": "00:00"
+                }
+            }
+        },
+        {
+            "id": "r_2029_stage_3",
+            "startAt": "2029-12-31",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "CCK",
+                        "displayCode": "JS1"
+                    },
+                    {
+                        "stationId": "CKW",
+                        "displayCode": "JS2"
+                    },
+                    {
+                        "stationId": "TGH",
+                        "displayCode": "JS3"
+                    },
+                    {
+                        "stationId": "HGK",
+                        "displayCode": "JS4"
+                    },
+                    {
+                        "stationId": "CPN",
+                        "displayCode": "JS5"
+                    },
+                    {
+                        "stationId": "JRW",
+                        "displayCode": "JS6"
+                    },
+                    {
+                        "stationId": "BHJ",
+                        "displayCode": "JS7"
+                    },
+                    {
+                        "stationId": "BNL",
+                        "displayCode": "JS8"
+                    },
+                    {
+                        "stationId": "ETP",
+                        "displayCode": "JS9"
+                    },
+                    {
+                        "stationId": "TKN",
+                        "displayCode": "JS10"
+                    },
+                    {
+                        "stationId": "JRH",
+                        "displayCode": "JS11"
+                    },
+                    {
+                        "stationId": "JRP",
+                        "displayCode": "JS12"
+                    },
+                    {
+                        "stationId": "JRH",
+                        "displayCode": "JS11"
+                    },
+                    {
+                        "stationId": "TKN",
+                        "displayCode": "JS10"
+                    },
+                    {
+                        "stationId": "ETP",
+                        "displayCode": "JS9"
+                    },
+                    {
+                        "stationId": "BNL",
+                        "displayCode": "JS8"
+                    },
+                    {
+                        "stationId": "BHJ",
+                        "displayCode": "JS7"
+                    },
+                    {
+                        "stationId": "GKP",
+                        "displayCode": "JW1"
+                    },
+                    {
+                        "stationId": "TWS",
+                        "displayCode": "JW2"
+                    },
+                    {
+                        "stationId": "NYG",
+                        "displayCode": "JW3"
+                    },
+                    {
+                        "stationId": "NYC",
+                        "displayCode": "JW4"
+                    },
+                    {
+                        "stationId": "PKH",
+                        "displayCode": "JW5"
+                    },
+                    {
+                        "stationId": "NYC",
+                        "displayCode": "JW4"
+                    },
+                    {
+                        "stationId": "NYG",
+                        "displayCode": "JW3"
+                    },
+                    {
+                        "stationId": "TWS",
+                        "displayCode": "JW2"
+                    },
+                    {
+                        "stationId": "GKP",
+                        "displayCode": "JW1"
+                    },
+                    {
+                        "stationId": "BHJ",
+                        "displayCode": "JS7"
+                    },
+                    {
+                        "stationId": "JRW",
+                        "displayCode": "JS6"
+                    },
+                    {
+                        "stationId": "CPN",
+                        "displayCode": "JS5"
+                    },
+                    {
+                        "stationId": "HGK",
+                        "displayCode": "JS4"
+                    },
+                    {
+                        "stationId": "TGH",
+                        "displayCode": "JS3"
+                    },
+                    {
+                        "stationId": "CKW",
+                        "displayCode": "JS2"
+                    },
+                    {
+                        "stationId": "CCK",
+                        "displayCode": "JS1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:30",
+                    "end": "00:00"
+                },
+                "weekends": {
+                    "start": "05:30",
+                    "end": "00:00"
+                }
+            }
+        }
+    ]
+}

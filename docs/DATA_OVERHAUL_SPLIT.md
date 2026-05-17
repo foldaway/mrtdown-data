@@ -66,6 +66,16 @@ Step 3.5: Turborepo package task harness
    - Keep replay/repair reports with the PR so reviewers can inspect the
      generator behavior instead of reading every generated file.
 
+Step 7.5: Legacy source-data removal
+
+- Remove `data/source/` only after the static canonical data and issue dataset
+  have both been migrated into the target layout and validated.
+- Keep this PR limited to deleting legacy source-data files and updating
+  documentation or checks that still reference `data/source/`.
+- Do not combine this with runtime/API/DuckDB cleanup unless the diff is
+  trivially small; reviewers should be able to verify data completeness without
+  also reviewing serving-code removal.
+
 8. Runtime removal and deploy cleanup
    - Remove old Hono/API/DuckDB runtime files from this repo.
    - Remove or move `Dockerfile`, `fly.toml`, and Fly deploy workflow surfaces

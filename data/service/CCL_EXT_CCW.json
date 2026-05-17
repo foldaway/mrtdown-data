@@ -1,0 +1,246 @@
+{
+    "id": "CCL_EXT_CCW",
+    "lineId": "CCL",
+    "name": {
+        "en-SG": "Circle Line (Extension Service) - Counter-Clockwise",
+        "zh-Hans": "环线（延伸线） - 逆时针方向",
+        "ms": "Laluan MRT Bulat (Cawangan Pengembangan) - Arah Lawan Jam",
+        "ta": "வட்டமாக்கி எம்ஆர்டி வழி (நெடுவரிசை) - எதிர் காலம் திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_legacy_2010_2012",
+            "startAt": "2010-04-17",
+            "endAt": "2012-01-14",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "MRB",
+                        "displayCode": "CE2"
+                    },
+                    {
+                        "stationId": "BFT",
+                        "displayCode": "CE1"
+                    },
+                    {
+                        "stationId": "PMN",
+                        "displayCode": "CC4"
+                    },
+                    {
+                        "stationId": "NCH",
+                        "displayCode": "CC5"
+                    },
+                    {
+                        "stationId": "SDM",
+                        "displayCode": "CC6"
+                    },
+                    {
+                        "stationId": "MBT",
+                        "displayCode": "CC7"
+                    },
+                    {
+                        "stationId": "DKT",
+                        "displayCode": "CC8"
+                    },
+                    {
+                        "stationId": "PYL",
+                        "displayCode": "CC9"
+                    },
+                    {
+                        "stationId": "MPS",
+                        "displayCode": "CC10"
+                    },
+                    {
+                        "stationId": "TSG",
+                        "displayCode": "CC11"
+                    },
+                    {
+                        "stationId": "BLY",
+                        "displayCode": "CC12"
+                    },
+                    {
+                        "stationId": "SER",
+                        "displayCode": "CC13"
+                    },
+                    {
+                        "stationId": "LRC",
+                        "displayCode": "CC14"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "CC15"
+                    },
+                    {
+                        "stationId": "MRM",
+                        "displayCode": "CC16"
+                    },
+                    {
+                        "stationId": "CDT",
+                        "displayCode": "CC17"
+                    },
+                    {
+                        "stationId": "BTN",
+                        "displayCode": "CC19"
+                    },
+                    {
+                        "stationId": "FRR",
+                        "displayCode": "CC20"
+                    },
+                    {
+                        "stationId": "HLV",
+                        "displayCode": "CC21"
+                    },
+                    {
+                        "stationId": "BNV",
+                        "displayCode": "CC22"
+                    },
+                    {
+                        "stationId": "ONH",
+                        "displayCode": "CC23"
+                    },
+                    {
+                        "stationId": "KRG",
+                        "displayCode": "CC24"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:16",
+                    "end": "00:40"
+                },
+                "weekends": {
+                    "start": "05:40",
+                    "end": "00:40"
+                }
+            }
+        },
+        {
+            "id": "r_2011_extension",
+            "startAt": "2012-01-14",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "MRB",
+                        "displayCode": "CE2"
+                    },
+                    {
+                        "stationId": "BFT",
+                        "displayCode": "CE1"
+                    },
+                    {
+                        "stationId": "PMN",
+                        "displayCode": "CC4"
+                    },
+                    {
+                        "stationId": "NCH",
+                        "displayCode": "CC5"
+                    },
+                    {
+                        "stationId": "SDM",
+                        "displayCode": "CC6"
+                    },
+                    {
+                        "stationId": "MBT",
+                        "displayCode": "CC7"
+                    },
+                    {
+                        "stationId": "DKT",
+                        "displayCode": "CC8"
+                    },
+                    {
+                        "stationId": "PYL",
+                        "displayCode": "CC9"
+                    },
+                    {
+                        "stationId": "MPS",
+                        "displayCode": "CC10"
+                    },
+                    {
+                        "stationId": "TSG",
+                        "displayCode": "CC11"
+                    },
+                    {
+                        "stationId": "BLY",
+                        "displayCode": "CC12"
+                    },
+                    {
+                        "stationId": "SER",
+                        "displayCode": "CC13"
+                    },
+                    {
+                        "stationId": "LRC",
+                        "displayCode": "CC14"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "CC15"
+                    },
+                    {
+                        "stationId": "MRM",
+                        "displayCode": "CC16"
+                    },
+                    {
+                        "stationId": "CDT",
+                        "displayCode": "CC17"
+                    },
+                    {
+                        "stationId": "BTN",
+                        "displayCode": "CC19"
+                    },
+                    {
+                        "stationId": "FRR",
+                        "displayCode": "CC20"
+                    },
+                    {
+                        "stationId": "HLV",
+                        "displayCode": "CC21"
+                    },
+                    {
+                        "stationId": "BNV",
+                        "displayCode": "CC22"
+                    },
+                    {
+                        "stationId": "ONH",
+                        "displayCode": "CC23"
+                    },
+                    {
+                        "stationId": "KRG",
+                        "displayCode": "CC24"
+                    },
+                    {
+                        "stationId": "HPV",
+                        "displayCode": "CC25"
+                    },
+                    {
+                        "stationId": "PPJ",
+                        "displayCode": "CC26"
+                    },
+                    {
+                        "stationId": "LBD",
+                        "displayCode": "CC27"
+                    },
+                    {
+                        "stationId": "TLB",
+                        "displayCode": "CC28"
+                    },
+                    {
+                        "stationId": "HBF",
+                        "displayCode": "CC29"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:16",
+                    "end": "00:40"
+                },
+                "weekends": {
+                    "start": "05:40",
+                    "end": "00:40"
+                }
+            }
+        }
+    ]
+}
