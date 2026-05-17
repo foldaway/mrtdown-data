@@ -34,6 +34,12 @@ export interface IWriteStore {
   ensureDir(path: string): void;
 
   /**
+   * Create a directory, failing if it already exists.
+   * @param path
+   */
+  createDir(path: string): void;
+
+  /**
    * Delete a file or directory. Implementations should be idempotent.
    * @param path
    */

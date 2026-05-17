@@ -83,6 +83,19 @@ class FailingRollbackStore extends FailingSecondImpactStore {
   }
 }
 
+class StaleIssueJsonReadStore extends FileWriteStore {
+  override readText(path: string): string {
+    if (path.endsWith('issue.json')) {
+      const error = new Error(
+        'Simulated stale issue read',
+      ) as NodeJS.ErrnoException;
+      error.code = 'ENOENT';
+      throw error;
+    }
+    return super.readText(path);
+  }
+}
+
 type TestRepositoryItem = {
   id: string;
   value: string;
@@ -599,6 +612,48 @@ describe('@mrtdown/fs', () => {
     });
 
     expect(() => writer.issues.create(issue)).toThrow(
+      'Issue already exists: 2025-01-15-test-issue',
+    );
+    await expect(
+      readFile(
+        join(dataDir, 'issue/2025/01/2025-01-15-test-issue/evidence.ndjson'),
+        'utf8',
+      ),
+    ).resolves.toContain('ev_1');
+  });
+
+  it('claims issue directories before initializing files', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const issueId = '2025-01-15-test-issue';
+    const issue = {
+      id: issueId,
+      type: 'disruption' as const,
+      title: {
+        'en-SG': 'Test issue',
+        'zh-Hans': null,
+        ms: null,
+        ta: null,
+      },
+      titleMeta: {
+        source: 'test',
+      },
+    };
+
+    const writer = new MRTDownWriter({ store: new FileWriteStore(dataDir) });
+    writer.issues.create(issue);
+    writer.issues.appendEvidence(issueId, {
+      id: 'ev_1',
+      ts: '2025-01-15T10:00:00+08:00',
+      type: 'report.public',
+      sourceUrl: 'https://example.com',
+      text: 'Test evidence',
+      render: null,
+    });
+
+    const racingWriter = new MRTDownWriter({
+      store: new StaleIssueJsonReadStore(dataDir),
+    });
+    expect(() => racingWriter.issues.create(issue)).toThrow(
       'Issue already exists: 2025-01-15-test-issue',
     );
     await expect(

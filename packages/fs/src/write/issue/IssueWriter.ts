@@ -1,4 +1,4 @@
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import type { Evidence, ImpactEvent, Issue } from '@mrtdown/core';
 import { NdJson } from 'json-nd';
 import { DateTime } from 'luxon';
@@ -20,14 +20,27 @@ export class IssueWriter {
   create(issue: Issue): void {
     const issueDir = this.getIssueDir(issue.id);
     const issuePath = join(issueDir, FILE_ISSUE);
-    if (this.readOptionalText(issuePath) != null) {
-      throw new Error(`Issue already exists: ${issue.id}`);
+    this.store.ensureDir(dirname(issueDir));
+    try {
+      this.store.createDir(issueDir);
+    } catch (error) {
+      if (
+        error instanceof Error &&
+        (error as NodeJS.ErrnoException).code === 'EEXIST'
+      ) {
+        throw new Error(`Issue already exists: ${issue.id}`, { cause: error });
+      }
+      throw error;
     }
 
-    this.store.ensureDir(issueDir);
-    this.store.writeJson(issuePath, issue);
-    this.store.writeText(join(issueDir, FILE_ISSUE_EVIDENCE), '');
-    this.store.writeText(join(issueDir, FILE_ISSUE_IMPACT), '');
+    try {
+      this.store.writeText(join(issueDir, FILE_ISSUE_EVIDENCE), '');
+      this.store.writeText(join(issueDir, FILE_ISSUE_IMPACT), '');
+      this.store.writeJson(issuePath, issue);
+    } catch (error) {
+      this.store.delete(issueDir);
+      throw error;
+    }
   }
 
   appendEvidence(issueId: string, evidence: Evidence): void {

@@ -38,6 +38,11 @@ export class FileWriteStore implements IWriteStore {
     mkdirSync(fullPath, { recursive: true });
   }
 
+  createDir(path: string): void {
+    const fullPath = join(this.rootDir, path);
+    mkdirSync(fullPath);
+  }
+
   delete(path: string): void {
     const fullPath = join(this.rootDir, path);
     rmSync(fullPath, { recursive: true, force: true });
