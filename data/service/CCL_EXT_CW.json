@@ -93,14 +93,6 @@
                     {
                         "stationId": "PMN",
                         "displayCode": "CC4"
-                    },
-                    {
-                        "stationId": "BFT",
-                        "displayCode": "CE1"
-                    },
-                    {
-                        "stationId": "MRB",
-                        "displayCode": "CE2"
                     }
                 ]
             },

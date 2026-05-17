@@ -340,6 +340,102 @@ describe('@mrtdown/fs', () => {
     );
   });
 
+  it('rejects service revisions outside station code active windows', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await mkdir(join(dataDir, 'line'), { recursive: true });
+    await mkdir(join(dataDir, 'service'), { recursive: true });
+    await mkdir(join(dataDir, 'station'), { recursive: true });
+    await writeFile(
+      join(dataDir, 'line/NSL.json'),
+      `${JSON.stringify({
+        id: 'NSL',
+        name: {
+          'en-SG': 'North South Line',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        type: 'mrt.high',
+        color: '#d42e12',
+        startedAt: '1987-11-07',
+        serviceIds: ['NSL_MAIN_S'],
+        operators: [],
+      })}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'station/MSP.json'),
+      `${JSON.stringify({
+        id: 'MSP',
+        name: {
+          'en-SG': 'Marina South Pier',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        geo: {
+          latitude: 1.2713,
+          longitude: 103.8629,
+        },
+        stationCodes: [
+          {
+            lineId: 'NSL',
+            code: 'NS28',
+            startedAt: '2014-11-23T00:00:00Z',
+            endedAt: null,
+            structureType: 'underground',
+          },
+        ],
+        landmarkIds: [],
+        townId: 'marina-south',
+      })}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'service/NSL_MAIN_S.json'),
+      `${JSON.stringify({
+        id: 'NSL_MAIN_S',
+        name: {
+          'en-SG': 'North South Line Southbound',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        lineId: 'NSL',
+        revisions: [
+          {
+            id: 'r_2014_marina_south_pier',
+            startAt: '2010-01-01',
+            endAt: '2014-11-23',
+            path: {
+              stations: [
+                {
+                  stationId: 'MSP',
+                  displayCode: 'NS28',
+                },
+              ],
+            },
+            operatingHours: {
+              weekdays: {
+                start: '05:07',
+                end: '01:00',
+              },
+              weekends: {
+                start: '05:35',
+                end: '01:00',
+              },
+            },
+          },
+        ],
+      })}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir, ['service']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual([
+      'service/NSL_MAIN_S.json: revisions.0.path.stations.0.displayCode NS28 for station MSP is outside the station code active window',
+    ]);
+  });
+
   it('rejects duplicate issue row ids across issue folders', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     const issueIds = [

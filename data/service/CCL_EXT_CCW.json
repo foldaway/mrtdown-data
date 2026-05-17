@@ -15,14 +15,6 @@
             "path": {
                 "stations": [
                     {
-                        "stationId": "MRB",
-                        "displayCode": "CE2"
-                    },
-                    {
-                        "stationId": "BFT",
-                        "displayCode": "CE1"
-                    },
-                    {
                         "stationId": "PMN",
                         "displayCode": "CC4"
                     },
