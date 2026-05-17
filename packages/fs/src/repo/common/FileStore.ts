@@ -1,5 +1,5 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { isAbsolute, relative, resolve, sep } from 'node:path';
 import { visibleDirEntries } from './dirEntries.js';
 import type { IStore } from './store.js';
 
@@ -7,10 +7,14 @@ import type { IStore } from './store.js';
  * A store for reading and writing files.
  */
 export class FileStore implements IStore {
-  constructor(private readonly rootDir: string) {}
+  private readonly rootDir: string;
+
+  constructor(rootDir: string) {
+    this.rootDir = resolve(rootDir);
+  }
 
   readText(path: string): string {
-    const fullPath = join(this.rootDir, path);
+    const fullPath = this.resolvePath(path);
     return readFileSync(fullPath, { encoding: 'utf-8' });
   }
 
@@ -28,12 +32,25 @@ export class FileStore implements IStore {
   }
 
   listDir(path: string): string[] {
-    const fullPath = join(this.rootDir, path);
+    const fullPath = this.resolvePath(path);
     return visibleDirEntries(readdirSync(fullPath));
   }
 
   exists(path: string): boolean {
-    const fullPath = join(this.rootDir, path);
+    const fullPath = this.resolvePath(path);
     return existsSync(fullPath);
+  }
+
+  private resolvePath(path: string): string {
+    const fullPath = resolve(this.rootDir, path);
+    const relativePath = relative(this.rootDir, fullPath);
+    if (
+      relativePath === '..' ||
+      relativePath.startsWith(`..${sep}`) ||
+      isAbsolute(relativePath)
+    ) {
+      throw new Error(`Path escapes store root: ${path}`);
+    }
+    return fullPath;
   }
 }

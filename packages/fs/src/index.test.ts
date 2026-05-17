@@ -805,6 +805,24 @@ describe('@mrtdown/fs', () => {
     );
   });
 
+  it('rejects file store paths that escape the data root', async () => {
+    const parentDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-parent-'));
+    const dataDir = join(parentDir, 'data');
+    await mkdir(dataDir);
+    await writeFile(join(parentDir, 'outside.txt'), 'outside');
+    await writeFile(join(dataDir, '..inside.txt'), 'inside');
+    const store = new FileStore(dataDir);
+
+    expect(store.readText('..inside.txt')).toBe('inside');
+    expect(() => store.readText('../outside.txt')).toThrow(
+      'Path escapes store root: ../outside.txt',
+    );
+    expect(() => store.listDir('..')).toThrow('Path escapes store root: ..');
+    expect(() => store.exists('../outside.txt')).toThrow(
+      'Path escapes store root: ../outside.txt',
+    );
+  });
+
   it('returns sorted visible directory entries', () => {
     expect(
       visibleDirEntries(['station.json', '.DS_Store', 'line.json', 'issue']),
