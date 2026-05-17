@@ -894,6 +894,31 @@ describe('@mrtdown/fs', () => {
     );
   });
 
+  it('rejects write store paths that escape the data root', async () => {
+    const parentDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-parent-'));
+    const dataDir = join(parentDir, 'data');
+    await mkdir(dataDir);
+    await writeFile(join(parentDir, 'outside.txt'), 'outside');
+    const store = new FileWriteStore(dataDir);
+
+    expect(() => store.writeText('../outside.txt', 'changed')).toThrow(
+      'Path escapes store root: ../outside.txt',
+    );
+    expect(() => store.appendText('../outside.txt', 'changed')).toThrow(
+      'Path escapes store root: ../outside.txt',
+    );
+    expect(() => store.ensureDir('..')).toThrow('Path escapes store root: ..');
+    expect(() => store.createDir('../created')).toThrow(
+      'Path escapes store root: ../created',
+    );
+    expect(() => store.delete('../outside.txt')).toThrow(
+      'Path escapes store root: ../outside.txt',
+    );
+    await expect(
+      readFile(join(parentDir, 'outside.txt'), 'utf8'),
+    ).resolves.toBe('outside');
+  });
+
   it('returns sorted visible directory entries', () => {
     expect(
       visibleDirEntries(['station.json', '.DS_Store', 'line.json', 'issue']),
