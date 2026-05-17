@@ -1,27 +1,118 @@
-import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import { access, mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { EvidenceSchema } from '@mrtdown/core';
+import { DateTime } from 'luxon';
 import { describe, expect, it } from 'vitest';
 import {
   buildIssueId,
   buildManifest,
   createIssueBundle,
+  FileStore,
+  FileWriteStore,
+  IdGenerator,
   issuePathFromId,
   listEntityIds,
+  MRTDownRepository,
+  MRTDownWriter,
   readIssueBundle,
   readNdjsonFile,
   renderPagesIndex,
+  StandardRepository,
   toDataPath,
   validateDataRoot,
+  visibleDirEntries,
   writeUnknownEntity,
 } from './index.js';
+import { StandardWriter } from './write/common/StandardWriter.js';
 
 const fixtureDataDir = resolve(
   dirname(fileURLToPath(import.meta.url)),
   '../../../fixtures/data',
 );
+
+class FailingSecondImpactStore extends FileWriteStore {
+  private impactAppendCount = 0;
+
+  override appendText(path: string, text: string): void {
+    if (path.endsWith('impact.ndjson')) {
+      this.impactAppendCount += 1;
+      if (this.impactAppendCount === 2) {
+        throw new Error('Simulated impact write failure');
+      }
+    }
+    super.appendText(path, text);
+  }
+}
+
+class FailingReadStore extends FileWriteStore {
+  override readText(path: string): string {
+    if (path.endsWith('evidence.ndjson')) {
+      const error = new Error(
+        'Simulated read failure',
+      ) as NodeJS.ErrnoException;
+      error.code = 'EIO';
+      throw error;
+    }
+    return super.readText(path);
+  }
+}
+
+class FailingRollbackStore extends FailingSecondImpactStore {
+  private failRestore = false;
+  impactRestoreAttempted = false;
+
+  override appendText(path: string, text: string): void {
+    try {
+      super.appendText(path, text);
+    } catch (error) {
+      this.failRestore = true;
+      throw error;
+    }
+  }
+
+  override writeText(path: string, text: string): void {
+    if (this.failRestore && path.endsWith('evidence.ndjson')) {
+      throw new Error('Simulated evidence rollback failure');
+    }
+    if (this.failRestore && path.endsWith('impact.ndjson')) {
+      this.impactRestoreAttempted = true;
+    }
+    super.writeText(path, text);
+  }
+}
+
+class StaleIssueJsonReadStore extends FileWriteStore {
+  override readText(path: string): string {
+    if (path.endsWith('issue.json')) {
+      const error = new Error(
+        'Simulated stale issue read',
+      ) as NodeJS.ErrnoException;
+      error.code = 'ENOENT';
+      throw error;
+    }
+    return super.readText(path);
+  }
+}
+
+type TestRepositoryItem = {
+  id: string;
+  value: string;
+};
+
+class TestRepository extends StandardRepository<TestRepositoryItem> {
+  protected override parseItem(json: unknown): TestRepositoryItem {
+    const item = json as Partial<TestRepositoryItem>;
+    if (typeof item.id !== 'string' || typeof item.value !== 'string') {
+      throw new Error('Invalid test item');
+    }
+    return {
+      id: item.id,
+      value: item.value,
+    };
+  }
+}
 
 describe('@mrtdown/fs', () => {
   it('reads target-layout fixtures through core schemas', async () => {
@@ -326,6 +417,50 @@ describe('@mrtdown/fs', () => {
     );
   });
 
+  it('treats a missing issue root as an empty repository', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const repo = new MRTDownRepository({ store: new FileStore(dataDir) });
+
+    expect(repo.issues.listIds()).toEqual([]);
+    expect(repo.issues.list()).toEqual([]);
+    expect(repo.issues.get('2026-01-01-missing')).toBeNull();
+    expect(repo.issues.searchByQuery('missing')).toEqual([]);
+  });
+
+  it('rejects duplicate issue ids while building the issue index', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const issueId = '2026-01-01-duplicate-issue';
+
+    for (const month of ['01', '02']) {
+      const issueDir = join(dataDir, 'issue', '2026', month, issueId);
+      await mkdir(issueDir, { recursive: true });
+      await writeFile(
+        join(issueDir, 'issue.json'),
+        `${JSON.stringify({
+          id: issueId,
+          type: 'disruption',
+          title: {
+            'en-SG': 'Duplicate Issue',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          titleMeta: {
+            source: 'test',
+          },
+        })}\n`,
+      );
+      await writeFile(join(issueDir, 'evidence.ndjson'), '');
+      await writeFile(join(issueDir, 'impact.ndjson'), '');
+    }
+
+    const repo = new MRTDownRepository({ store: new FileStore(dataDir) });
+
+    expect(() => repo.issues.listIds()).toThrow(
+      "Duplicate issue id '2026-01-01-duplicate-issue' while indexing issue/2026/02/2026-01-01-duplicate-issue (first seen at issue/2026/01/2026-01-01-duplicate-issue)",
+    );
+  });
+
   it('reports malformed issue directories clearly while building manifests', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await mkdir(join(dataDir, 'issue', '2026', '05', 'foo'), {
@@ -364,6 +499,7 @@ describe('@mrtdown/fs', () => {
 
   it('rejects issue ids with impossible calendar dates', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new MRTDownWriter({ store: new FileWriteStore(dataDir) });
 
     expect(() => buildIssueId('2026-99-99', 'Invalid Signal Fault')).toThrow(
       'Issue id date must be a real calendar date',
@@ -375,6 +511,21 @@ describe('@mrtdown/fs', () => {
         title: 'Invalid Signal Fault',
       }),
     ).rejects.toThrow('Issue id date must be a real calendar date');
+    expect(() =>
+      writer.issues.create({
+        id: '2026-99-99-invalid-signal-fault',
+        type: 'disruption',
+        title: {
+          'en-SG': 'Invalid Signal Fault',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        titleMeta: {
+          source: 'test',
+        },
+      }),
+    ).toThrow('Invalid issue ID: 2026-99-99-invalid-signal-fault');
   });
 
   it('claims issue folders atomically', async () => {
@@ -413,6 +564,416 @@ describe('@mrtdown/fs', () => {
         id: '../escaped',
       }),
     ).rejects.toThrow('Invalid entity id: ../escaped');
+  });
+
+  it('rejects standard writer ids that cannot be used as safe filenames', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new StandardWriter<{ id: string }>(
+      new FileWriteStore(dataDir),
+      'station',
+    );
+
+    expect(() => writer.create({ id: '../escaped' })).toThrow(
+      'Invalid item id: ../escaped',
+    );
+  });
+
+  it('rejects duplicate standard writer ids without clobbering files', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new StandardWriter<TestRepositoryItem>(
+      new FileWriteStore(dataDir),
+      'items',
+    );
+
+    writer.create({ id: 'duplicate', value: 'first' });
+
+    expect(() => writer.create({ id: 'duplicate', value: 'second' })).toThrow(
+      'Item already exists: duplicate',
+    );
+    await expect(
+      readFile(join(dataDir, 'items/duplicate.json'), 'utf8'),
+    ).resolves.toContain('"value": "first"');
+  });
+
+  it('rejects issue writer ids that cannot be used as safe directory names', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new MRTDownWriter({ store: new FileWriteStore(dataDir) });
+
+    expect(() =>
+      writer.issues.create({
+        id: '2025-01-15-../../etc',
+        type: 'disruption',
+        title: {
+          'en-SG': 'Bad ID',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        titleMeta: {
+          source: 'test',
+        },
+      }),
+    ).toThrow('Invalid issue ID: 2025-01-15-../../etc');
+  });
+
+  it('rejects duplicate ids while loading standard repositories', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await mkdir(join(dataDir, 'items'), { recursive: true });
+    await writeFile(
+      join(dataDir, 'items', 'one.json'),
+      JSON.stringify({ id: 'duplicate', value: 'first' }),
+    );
+    await writeFile(
+      join(dataDir, 'items', 'two.json'),
+      JSON.stringify({ id: 'duplicate', value: 'second' }),
+    );
+
+    const repo = new TestRepository(new FileStore(dataDir), 'items');
+
+    expect(() => repo.list()).toThrow(
+      "Duplicate id 'duplicate' while loading items/two.json",
+    );
+  });
+
+  it('does not clobber existing issue files on create', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new MRTDownWriter({ store: new FileWriteStore(dataDir) });
+    const issue = {
+      id: '2025-01-15-test-issue',
+      type: 'disruption' as const,
+      title: {
+        'en-SG': 'Test issue',
+        'zh-Hans': null,
+        ms: null,
+        ta: null,
+      },
+      titleMeta: {
+        source: 'test',
+      },
+    };
+
+    writer.issues.create(issue);
+    writer.issues.appendEvidence(issue.id, {
+      id: 'ev_1',
+      ts: '2025-01-15T10:00:00+08:00',
+      type: 'report.public',
+      sourceUrl: 'https://example.com',
+      text: 'Test evidence',
+      render: null,
+    });
+
+    expect(() => writer.issues.create(issue)).toThrow(
+      'Issue already exists: 2025-01-15-test-issue',
+    );
+    await expect(
+      readFile(
+        join(dataDir, 'issue/2025/01/2025-01-15-test-issue/evidence.ndjson'),
+        'utf8',
+      ),
+    ).resolves.toContain('ev_1');
+  });
+
+  it('claims issue directories before initializing files', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const issueId = '2025-01-15-test-issue';
+    const issue = {
+      id: issueId,
+      type: 'disruption' as const,
+      title: {
+        'en-SG': 'Test issue',
+        'zh-Hans': null,
+        ms: null,
+        ta: null,
+      },
+      titleMeta: {
+        source: 'test',
+      },
+    };
+
+    const writer = new MRTDownWriter({ store: new FileWriteStore(dataDir) });
+    writer.issues.create(issue);
+    writer.issues.appendEvidence(issueId, {
+      id: 'ev_1',
+      ts: '2025-01-15T10:00:00+08:00',
+      type: 'report.public',
+      sourceUrl: 'https://example.com',
+      text: 'Test evidence',
+      render: null,
+    });
+
+    const racingWriter = new MRTDownWriter({
+      store: new StaleIssueJsonReadStore(dataDir),
+    });
+    expect(() => racingWriter.issues.create(issue)).toThrow(
+      'Issue already exists: 2025-01-15-test-issue',
+    );
+    await expect(
+      readFile(
+        join(dataDir, 'issue/2025/01/2025-01-15-test-issue/evidence.ndjson'),
+        'utf8',
+      ),
+    ).resolves.toContain('ev_1');
+  });
+
+  it('rejects appends for missing issues without creating orphan folders', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new MRTDownWriter({ store: new FileWriteStore(dataDir) });
+
+    expect(() =>
+      writer.issues.appendEvidence('2025-01-15-missing-issue', {
+        id: 'ev_1',
+        ts: '2025-01-15T10:00:00+08:00',
+        type: 'report.public',
+        sourceUrl: 'https://example.com',
+        text: 'Test evidence',
+        render: null,
+      }),
+    ).toThrow('Issue does not exist: 2025-01-15-missing-issue');
+    await expect(access(join(dataDir, 'issue'))).rejects.toThrow();
+  });
+
+  it('rolls back issue evidence and impact batch appends on failure', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new MRTDownWriter({
+      store: new FailingSecondImpactStore(dataDir),
+    });
+    const issueId = '2025-01-15-test-issue';
+    writer.issues.create({
+      id: issueId,
+      type: 'disruption',
+      title: {
+        'en-SG': 'Test issue',
+        'zh-Hans': null,
+        ms: null,
+        ta: null,
+      },
+      titleMeta: {
+        source: 'test',
+      },
+    });
+
+    expect(() =>
+      writer.issues.appendEvidenceAndImpacts(
+        issueId,
+        {
+          id: 'ev_1',
+          ts: '2025-01-15T10:00:00+08:00',
+          type: 'report.public',
+          sourceUrl: 'https://example.com',
+          text: 'Test evidence',
+          render: null,
+        },
+        [
+          {
+            id: 'ie_1',
+            type: 'causes.set',
+            entity: { type: 'service', serviceId: 'NSL' },
+            ts: '2025-01-15T10:00:00+08:00',
+            causes: ['signal.fault'],
+            basis: { evidenceId: 'ev_1' },
+          },
+          {
+            id: 'ie_2',
+            type: 'causes.set',
+            entity: { type: 'service', serviceId: 'NSL' },
+            ts: '2025-01-15T10:01:00+08:00',
+            causes: ['track.fault'],
+            basis: { evidenceId: 'ev_1' },
+          },
+        ],
+      ),
+    ).toThrow('Simulated impact write failure');
+
+    await expect(
+      readFile(
+        join(dataDir, 'issue/2025/01/2025-01-15-test-issue/evidence.ndjson'),
+        'utf8',
+      ),
+    ).resolves.toBe('');
+    await expect(
+      readFile(
+        join(dataDir, 'issue/2025/01/2025-01-15-test-issue/impact.ndjson'),
+        'utf8',
+      ),
+    ).resolves.toBe('');
+  });
+
+  it('attempts all rollback steps and reports incomplete rollback', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const store = new FailingRollbackStore(dataDir);
+    const writer = new MRTDownWriter({ store });
+    const issueId = '2025-01-15-test-issue';
+    writer.issues.create({
+      id: issueId,
+      type: 'disruption',
+      title: {
+        'en-SG': 'Test issue',
+        'zh-Hans': null,
+        ms: null,
+        ta: null,
+      },
+      titleMeta: {
+        source: 'test',
+      },
+    });
+
+    expect(() =>
+      writer.issues.appendEvidenceAndImpacts(
+        issueId,
+        {
+          id: 'ev_1',
+          ts: '2025-01-15T10:00:00+08:00',
+          type: 'report.public',
+          sourceUrl: 'https://example.com',
+          text: 'Test evidence',
+          render: null,
+        },
+        [
+          {
+            id: 'ie_1',
+            type: 'causes.set',
+            entity: { type: 'service', serviceId: 'NSL' },
+            ts: '2025-01-15T10:00:00+08:00',
+            causes: ['signal.fault'],
+            basis: { evidenceId: 'ev_1' },
+          },
+          {
+            id: 'ie_2',
+            type: 'causes.set',
+            entity: { type: 'service', serviceId: 'NSL' },
+            ts: '2025-01-15T10:01:00+08:00',
+            causes: ['track.fault'],
+            basis: { evidenceId: 'ev_1' },
+          },
+        ],
+      ),
+    ).toThrow('appendEvidenceAndImpacts failed and rollback was incomplete');
+    expect(store.impactRestoreAttempted).toBe(true);
+  });
+
+  it('does not treat read failures as missing rollback snapshots', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new MRTDownWriter({
+      store: new FailingReadStore(dataDir),
+    });
+    const issueId = '2025-01-15-test-issue';
+    writer.issues.create({
+      id: issueId,
+      type: 'disruption',
+      title: {
+        'en-SG': 'Test issue',
+        'zh-Hans': null,
+        ms: null,
+        ta: null,
+      },
+      titleMeta: {
+        source: 'test',
+      },
+    });
+
+    expect(() =>
+      writer.issues.appendEvidenceAndImpacts(
+        issueId,
+        {
+          id: 'ev_1',
+          ts: '2025-01-15T10:00:00+08:00',
+          type: 'report.public',
+          sourceUrl: 'https://example.com',
+          text: 'Test evidence',
+          render: null,
+        },
+        [],
+      ),
+    ).toThrow('Simulated read failure');
+
+    await expect(
+      readFile(
+        join(dataDir, 'issue/2025/01/2025-01-15-test-issue/evidence.ndjson'),
+        'utf8',
+      ),
+    ).resolves.toBe('');
+  });
+
+  it('rejects invalid timestamps when generating IDs', () => {
+    const invalidTimestamp = DateTime.fromISO('not-a-date');
+
+    expect(() => IdGenerator.evidenceId(invalidTimestamp)).toThrow(
+      'Invalid timestamp for generated ID',
+    );
+    expect(() => IdGenerator.impactEventId(invalidTimestamp)).toThrow(
+      'Invalid timestamp for generated ID',
+    );
+  });
+
+  it('deletes directories recursively in the write store', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const store = new FileWriteStore(dataDir);
+
+    store.ensureDir('issue/test/nested');
+    store.writeText('issue/test/nested/file.txt', 'ok');
+    store.delete('issue/test');
+
+    await expect(access(join(dataDir, 'issue/test'))).rejects.toThrow();
+    expect(() => store.delete('issue/test')).not.toThrow();
+  });
+
+  it('adds path context to JSON parse failures', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await writeFile(join(dataDir, 'bad.json'), '{');
+    const store = new FileStore(dataDir);
+
+    expect(() => store.readJson('bad.json')).toThrow(
+      'Invalid JSON in bad.json:',
+    );
+  });
+
+  it('rejects file store paths that escape the data root', async () => {
+    const parentDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-parent-'));
+    const dataDir = join(parentDir, 'data');
+    await mkdir(dataDir);
+    await writeFile(join(parentDir, 'outside.txt'), 'outside');
+    await writeFile(join(dataDir, '..inside.txt'), 'inside');
+    const store = new FileStore(dataDir);
+
+    expect(store.readText('..inside.txt')).toBe('inside');
+    expect(() => store.readText('../outside.txt')).toThrow(
+      'Path escapes store root: ../outside.txt',
+    );
+    expect(() => store.listDir('..')).toThrow('Path escapes store root: ..');
+    expect(() => store.exists('../outside.txt')).toThrow(
+      'Path escapes store root: ../outside.txt',
+    );
+  });
+
+  it('rejects write store paths that escape the data root', async () => {
+    const parentDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-parent-'));
+    const dataDir = join(parentDir, 'data');
+    await mkdir(dataDir);
+    await writeFile(join(parentDir, 'outside.txt'), 'outside');
+    const store = new FileWriteStore(dataDir);
+
+    expect(() => store.writeText('../outside.txt', 'changed')).toThrow(
+      'Path escapes store root: ../outside.txt',
+    );
+    expect(() => store.appendText('../outside.txt', 'changed')).toThrow(
+      'Path escapes store root: ../outside.txt',
+    );
+    expect(() => store.ensureDir('..')).toThrow('Path escapes store root: ..');
+    expect(() => store.createDir('../created')).toThrow(
+      'Path escapes store root: ../created',
+    );
+    expect(() => store.delete('../outside.txt')).toThrow(
+      'Path escapes store root: ../outside.txt',
+    );
+    await expect(
+      readFile(join(parentDir, 'outside.txt'), 'utf8'),
+    ).resolves.toBe('outside');
+  });
+
+  it('returns sorted visible directory entries', () => {
+    expect(
+      visibleDirEntries(['station.json', '.DS_Store', 'line.json', 'issue']),
+    ).toEqual(['issue', 'line.json', 'station.json']);
   });
 
   it('normalizes data paths consistently', () => {
