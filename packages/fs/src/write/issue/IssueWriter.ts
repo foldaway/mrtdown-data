@@ -1,6 +1,7 @@
 import { join } from 'node:path';
 import type { Evidence, ImpactEvent, Issue } from '@mrtdown/core';
 import { NdJson } from 'json-nd';
+import { DateTime } from 'luxon';
 import {
   DIR_ISSUE,
   FILE_ISSUE,
@@ -97,6 +98,18 @@ export class IssueWriter {
     }
 
     const [, year, month, day, slug] = tsMatch;
+    const date = DateTime.fromObject(
+      {
+        year: Number(year),
+        month: Number(month),
+        day: Number(day),
+      },
+      { zone: 'UTC' },
+    );
+    if (!date.isValid) {
+      throw new Error(`Invalid issue ID: ${issueId}`);
+    }
+
     if (
       slug != null &&
       (!/^[A-Za-z0-9._-]+$/.test(slug) ||

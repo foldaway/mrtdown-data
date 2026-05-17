@@ -452,6 +452,7 @@ describe('@mrtdown/fs', () => {
 
   it('rejects issue ids with impossible calendar dates', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new MRTDownWriter({ store: new FileWriteStore(dataDir) });
 
     expect(() => buildIssueId('2026-99-99', 'Invalid Signal Fault')).toThrow(
       'Issue id date must be a real calendar date',
@@ -463,6 +464,21 @@ describe('@mrtdown/fs', () => {
         title: 'Invalid Signal Fault',
       }),
     ).rejects.toThrow('Issue id date must be a real calendar date');
+    expect(() =>
+      writer.issues.create({
+        id: '2026-99-99-invalid-signal-fault',
+        type: 'disruption',
+        title: {
+          'en-SG': 'Invalid Signal Fault',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        titleMeta: {
+          source: 'test',
+        },
+      }),
+    ).toThrow('Invalid issue ID: 2026-99-99-invalid-signal-fault');
   });
 
   it('claims issue folders atomically', async () => {
