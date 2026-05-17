@@ -57,9 +57,16 @@ export class IssueRepository {
         }
         const issues = this.store.listDir(join(DIR_ISSUE, year, month));
         for (const issueId of issues) {
+          const path = join(DIR_ISSUE, year, month, issueId);
+          const existing = this.byId.get(issueId);
+          if (existing != null) {
+            throw new Error(
+              `Duplicate issue id '${issueId}' while indexing ${path} (first seen at ${existing.path})`,
+            );
+          }
           this.byId.set(issueId, {
             issueId: issueId,
-            path: join(DIR_ISSUE, year, month, issueId),
+            path,
             year: Number(year),
             month: Number(month),
           });

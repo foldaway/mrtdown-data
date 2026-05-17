@@ -427,6 +427,40 @@ describe('@mrtdown/fs', () => {
     expect(repo.issues.searchByQuery('missing')).toEqual([]);
   });
 
+  it('rejects duplicate issue ids while building the issue index', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const issueId = '2026-01-01-duplicate-issue';
+
+    for (const month of ['01', '02']) {
+      const issueDir = join(dataDir, 'issue', '2026', month, issueId);
+      await mkdir(issueDir, { recursive: true });
+      await writeFile(
+        join(issueDir, 'issue.json'),
+        `${JSON.stringify({
+          id: issueId,
+          type: 'disruption',
+          title: {
+            'en-SG': 'Duplicate Issue',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          titleMeta: {
+            source: 'test',
+          },
+        })}\n`,
+      );
+      await writeFile(join(issueDir, 'evidence.ndjson'), '');
+      await writeFile(join(issueDir, 'impact.ndjson'), '');
+    }
+
+    const repo = new MRTDownRepository({ store: new FileStore(dataDir) });
+
+    expect(() => repo.issues.listIds()).toThrow(
+      "Duplicate issue id '2026-01-01-duplicate-issue' while indexing issue/2026/02/2026-01-01-duplicate-issue (first seen at issue/2026/01/2026-01-01-duplicate-issue)",
+    );
+  });
+
   it('reports malformed issue directories clearly while building manifests', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await mkdir(join(dataDir, 'issue', '2026', '05', 'foo'), {
