@@ -13,9 +13,16 @@
   "endAt": null,
   "type": "disruption",
   "subtypes": [
-    "delay"
+    "delay",
+    "passenger.incident"
   ],
   "updates": [
+    {
+      "type": "news.report",
+      "text": "",
+      "sourceUrl": "https://www.channelnewsasia.com/singapore/bukit-panjang-lrt-down-senjar-petir-track-intrusion-smrt-6127311",
+      "createdAt": "2026-05-18T07:11:00.000+08:00"
+    },
     {
       "type": "general-public.report",
       "text": "Major delays on the Bukit Panjang LRT between Senja and Bukit Panjang in both directions, causing disruption on that segment.",
