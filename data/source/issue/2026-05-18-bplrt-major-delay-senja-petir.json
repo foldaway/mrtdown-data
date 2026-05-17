@@ -1,0 +1,41 @@
+{
+  "id": "2026-05-18-bplrt-major-delay-senja-petir",
+  "title": "BPLRT Major Delay - Senja to Petir",
+  "title_translations": {
+    "zh-Hans": "BPLRT 大幅延误 - Senja 至 Petir",
+    "ms": "BPLRT Lewat Besar - Senja ke Petir",
+    "ta": "BPLRT பெரும் தாமதம் - Senja முதல் Petir வரை"
+  },
+  "lineIdsAffected": [
+    "BPLRT"
+  ],
+  "startAt": "2026-05-18T06:00:00.000+08:00",
+  "endAt": null,
+  "type": "disruption",
+  "subtypes": [
+    "delay"
+  ],
+  "updates": [
+    {
+      "type": "operator.update",
+      "text": "06:00-BP-Major delay. No train services between Senja and Petir stations (both directions). Services between Choa Chu Kang and Bukit Panjang are still available.\nPlease use free bus services at affected stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116592180884880506",
+      "createdAt": "2026-05-18T06:04:54.000+08:00"
+    }
+  ],
+  "stationIdsAffected": [
+    {
+      "lineId": "BPLRT",
+      "branchName": "main",
+      "stationIds": [
+        "PTR",
+        "PND",
+        "BKT",
+        "FJR",
+        "SGR",
+        "JLP",
+        "SNJ"
+      ]
+    }
+  ]
+}
