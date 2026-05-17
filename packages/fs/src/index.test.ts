@@ -14,6 +14,7 @@ import {
   IdGenerator,
   issuePathFromId,
   listEntityIds,
+  MRTDownRepository,
   MRTDownWriter,
   readIssueBundle,
   readNdjsonFile,
@@ -400,6 +401,16 @@ describe('@mrtdown/fs', () => {
         'issue/2026/01/2026-01-02-second-test-issue/impact.ndjson:1: impact event id ie_duplicate is duplicated (first seen at issue/2026/01/2026-01-01-first-test-issue/impact.ndjson:1)',
       ]),
     );
+  });
+
+  it('treats a missing issue root as an empty repository', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const repo = new MRTDownRepository({ store: new FileStore(dataDir) });
+
+    expect(repo.issues.listIds()).toEqual([]);
+    expect(repo.issues.list()).toEqual([]);
+    expect(repo.issues.get('2026-01-01-missing')).toBeNull();
+    expect(repo.issues.searchByQuery('missing')).toEqual([]);
   });
 
   it('reports malformed issue directories clearly while building manifests', async () => {

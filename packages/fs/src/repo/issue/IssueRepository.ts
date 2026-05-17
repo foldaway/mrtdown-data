@@ -40,6 +40,11 @@ export class IssueRepository {
       return;
     }
 
+    if (!this.store.exists(DIR_ISSUE)) {
+      this.indexed = true;
+      return;
+    }
+
     const years = this.store.listDir(DIR_ISSUE);
     for (const year of years) {
       if (!/^\d{4}$/.test(year)) {
