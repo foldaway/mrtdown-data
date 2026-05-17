@@ -22,6 +22,17 @@ export class StandardWriter<T extends Item> {
     }
 
     this.store.ensureDir(this.dirPath);
-    this.store.writeJson(join(this.dirPath, `${item.id}.json`), item);
+    const itemPath = join(this.dirPath, `${item.id}.json`);
+    try {
+      this.store.createJson(itemPath, item);
+    } catch (error) {
+      if (
+        error instanceof Error &&
+        (error as NodeJS.ErrnoException).code === 'EEXIST'
+      ) {
+        throw new Error(`Item already exists: ${item.id}`, { cause: error });
+      }
+      throw error;
+    }
   }
 }

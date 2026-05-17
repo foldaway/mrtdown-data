@@ -109,6 +109,14 @@ export class MemoryStore implements IStore, IWriteStore {
     this.writeText(path, JSON.stringify(json));
   }
 
+  createJson(path: string, json: unknown): void {
+    const p = this.toStorePath(path);
+    if (this.files.has(p) || this.dirs.has(p)) {
+      throwErrno(`MemoryStore: Path already exists: ${path}`, 'EEXIST');
+    }
+    this.writeJson(path, json);
+  }
+
   appendText(path: string, text: string): void {
     const p = this.toStorePath(path);
     this.ensureDir(dirname(p));

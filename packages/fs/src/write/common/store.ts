@@ -21,6 +21,13 @@ export interface IWriteStore {
   writeJson(path: string, json: unknown): void;
 
   /**
+   * Create a JSON file, failing if it already exists.
+   * @param path
+   * @param json
+   */
+  createJson(path: string, json: unknown): void;
+
+  /**
    * Append text to a file.
    * @param path
    * @param text

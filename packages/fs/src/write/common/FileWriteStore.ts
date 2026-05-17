@@ -32,6 +32,11 @@ export class FileWriteStore implements IWriteStore {
     this.writeText(path, JSON.stringify(json, null, 2));
   }
 
+  createJson(path: string, json: unknown): void {
+    const fullPath = this.resolvePath(path);
+    writeFileSync(fullPath, JSON.stringify(json, null, 2), { flag: 'wx' });
+  }
+
   appendText(path: string, text: string): void {
     const fullPath = this.resolvePath(path);
     appendFileSync(fullPath, text);

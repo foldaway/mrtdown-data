@@ -207,6 +207,25 @@ describe('MemoryStore', () => {
     });
   });
 
+  describe('createJson', () => {
+    test('creates JSON when path is missing', () => {
+      const store = new MemoryStore();
+
+      store.createJson('data.json', { ok: true });
+
+      expect(store.readJson('data.json')).toEqual({ ok: true });
+    });
+
+    test('fails when path already exists', () => {
+      const store = new MemoryStore({ files: { 'data.json': '{}' } });
+
+      expect(() => store.createJson('data.json', { ok: true })).toThrow(
+        'MemoryStore: Path already exists: data.json',
+      );
+      expect(store.readText('data.json')).toBe('{}');
+    });
+  });
+
   describe('appendText', () => {
     test('creates new file when path does not exist', () => {
       const store = new MemoryStore();

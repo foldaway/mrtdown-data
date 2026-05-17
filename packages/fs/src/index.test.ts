@@ -544,6 +544,23 @@ describe('@mrtdown/fs', () => {
     );
   });
 
+  it('rejects duplicate standard writer ids without clobbering files', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const writer = new StandardWriter<TestRepositoryItem>(
+      new FileWriteStore(dataDir),
+      'items',
+    );
+
+    writer.create({ id: 'duplicate', value: 'first' });
+
+    expect(() => writer.create({ id: 'duplicate', value: 'second' })).toThrow(
+      'Item already exists: duplicate',
+    );
+    await expect(
+      readFile(join(dataDir, 'items/duplicate.json'), 'utf8'),
+    ).resolves.toContain('"value": "first"');
+  });
+
   it('rejects issue writer ids that cannot be used as safe directory names', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     const writer = new MRTDownWriter({ store: new FileWriteStore(dataDir) });
