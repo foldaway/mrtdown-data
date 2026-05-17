@@ -240,8 +240,8 @@
         },
         {
             "id": "r_2014_marina_south_pier",
-            "startAt": "2010-01-01",
-            "endAt": "2014-11-23",
+            "startAt": "2014-11-23",
+            "endAt": "2019-11-02",
             "path": {
                 "stations": [
                     {
