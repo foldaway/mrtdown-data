@@ -14,7 +14,8 @@ the first target packages added:
   calculations.
 - `src/util/ingestContent/` and `src/scripts/` handle ingestion and maintenance
   utilities.
-- `data/source/` is the legacy source-data layout.
+- `data/{station,line,service,operator,town,landmark,issue}` contains the
+  canonical target-layout data.
 - `packages/core` contains the new package/data architecture's shared schemas
   and pure period helpers.
 - `packages/fs` contains file-backed repositories and writers for the target
@@ -49,7 +50,9 @@ The target architecture is a package/data repository:
 For the current legacy app:
 
 - `npm ci`: install dependencies from the lockfile.
-- `npm run build`: compile TypeScript and run the legacy postbuild pipeline.
+- `npm run typecheck`: compile-check TypeScript without running the legacy
+  DuckDB postbuild pipeline.
+- `npm run build`: legacy production build path pending runtime cleanup.
 - `npm run build:packages`: build all target packages with Turborepo.
 - `npm run build:core`: compile the target `@mrtdown/core` package.
 - `npm run build:fs`: compile the target `@mrtdown/fs` package.
@@ -64,7 +67,8 @@ For the current legacy app:
   paid and must be run intentionally with the package's documented environment
   variables.
 - `npm run test:cli`: run `@mrtdown/cli` deterministic tests.
-- `npm run data:validate`: validate `fixtures/data` with the target CLI.
+- `npm run data:validate`: validate canonical `data` with the target CLI.
+- `npm run fixtures:validate`: validate `fixtures/data` with the target CLI.
 - `npm run check`: run harness checks that should stay fast and deterministic.
 - `npm run check:boundaries`: enforce package import boundaries when packages
   exist.
@@ -91,5 +95,7 @@ the repository shape.
 
 - `README.md`: current legacy app overview and commands.
 - `docs/DATA_OVERHAUL_SPLIT.md`: planned split sequence for the data overhaul.
+- `docs/LEGACY_SOURCE_DATA_REMOVAL.md`: Step 7.5 source-data removal report.
+- `docs/PRODUCTION_DEPLOY_FREEZE.md`: temporary Fly deploy freeze note.
 - `CLAUDE.md`: Claude-specific compatibility entry point.
 - `.github/copilot-instructions.md`: Copilot compatibility entry point.
