@@ -66,10 +66,25 @@ Step 3.5: Turborepo package task harness
    - Keep replay/repair reports with the PR so reviewers can inspect the
      generator behavior instead of reading every generated file.
 
+Step 7.25: Canonical Pages activation
+
+- Switch the GitHub Pages artifact from fixture-only publication to canonical
+  `data/` at the artifact root, while keeping `fixtures/data` under
+  `fixtures/` for tests and examples.
+- Trigger Pages preview/deploy workflows on canonical `data/**` changes.
+- Keep `data/source/` in the repository for this PR so the legacy production
+  path remains available until the canonical Pages artifact has landed and
+  deployed from `main`.
+- Filter legacy `data/source/` out of the Pages artifact while it still exists
+  in the repo.
+- Do not combine this with source-data deletion, runtime/API/DuckDB cleanup, or
+  Fly deploy removal.
+
 Step 7.5: Legacy source-data removal
 
 - Remove `data/source/` only after the static canonical data and issue dataset
-  have both been migrated into the target layout and validated.
+  have both been migrated into the target layout, validated, and published via
+  the canonical Pages artifact from `main`.
 - Keep this PR limited to deleting legacy source-data files and updating
   documentation or checks that still reference `data/source/`.
 - Do not combine this with runtime/API/DuckDB cleanup unless the diff is
