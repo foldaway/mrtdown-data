@@ -1,0 +1,13 @@
+{
+  "id": "2022-12-25-thomson-east-coast-line-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train services affected due to train fault between Caldecott and Gardens by the Bay",
+    "zh-Hans": "加德纳地铁站至体育城地铁站之间因列车故障影响列车服务",
+    "ms": "Perkhidmatan kereta api terjejas disebabkan oleh kerosakan kereta api antara Caldecott dan Gardens by the Bay",
+    "ta": "கல்கோட் மற்றும் கார்டன்ஸ் பை தி பே இடையே ரயில் பழுது காரணமாக ரயில் சேவைகள் பாதிக்கப்பட்டுள்ளன"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2017-03-31-nsl-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train fault causing delays on North-South Line",
+    "zh-Hans": "列车故障导致南北线延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Utara-Selatan",
+    "ta": "ரயில் பழுது காரணமாக வடக்கு-தெற்கு பாதையில் தாமதம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

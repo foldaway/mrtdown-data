@@ -1,0 +1,13 @@
+{
+  "id": "2025-09-01-circle-line-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Circle Line Disruption between Marina Bay and Promenade Stations",
+    "zh-Hans": "环线中断，马里娜湾与海湾舫站之间",
+    "ms": "Gangguan Jalur Bulatan antara Stesen Marina Bay dan Promenade",
+    "ta": "மரீனா பே மற்றும் ப்ரோமனேட்ஸ் நிலையங்கள் இடையிலான சுழல் கோடு இழப்பு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2019-05-14-expo-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train Fault at Expo Station",
+    "zh-Hans": "樟宜机场站发生列车故障",
+    "ms": "Kerosakan Kereta Api di Stesen Expo",
+    "ta": "எக்ஸ்போ நிலையத்தில் ரயில் கோளாறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

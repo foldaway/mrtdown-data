@@ -1,0 +1,13 @@
+{
+  "id": "2012-07-05-northbound-trains-moving-slower",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Northbound Train Speeds Reduced",
+    "zh-Hans": "北向列车速度降低",
+    "ms": "Kelajuan Kereta Api Arah Utara Dikurangkan",
+    "ta": "வடக்கு நோக்கிய ரயில் வேகம் குறைக்கப்பட்டது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

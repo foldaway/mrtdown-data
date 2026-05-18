@@ -1,0 +1,13 @@
+{
+  "id": "2016-03-03-circle-line-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Major train fault causing delays on Circle Line",
+    "zh-Hans": "环线主要列车故障导致延误",
+    "ms": "Rosak kereta api utama menyebabkan kelewatan di Laluan Bulatan",
+    "ta": "வட்டப் பாதையில் தாமதத்தை ஏற்படுத்தும் முக்கிய ரயில் பழுது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

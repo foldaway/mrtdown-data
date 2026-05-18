@@ -1,0 +1,13 @@
+{
+  "id": "2025-07-15-dtl-service-delayed",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Downtown Line service delayed due to signalling fault",
+    "zh-Hans": "由于信号故障，市区线服务延误",
+    "ms": "Perkhidmatan Laluan Pusat ditangguhkan akibat masalah isyarat",
+    "ta": "சிட்டி ரயில் சேவை சிக்னல் குறைபாடு காரணமாக தாமதமாகியுள்ளது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2012-02-08-train-service-delay",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train service delay on North-South Line",
+    "zh-Hans": "南北线列车服务延误",
+    "ms": "Perkhidmatan kereta tertunda di Laluan North-South",
+    "ta": "வடக்கு-தெற்கு பாதையில் ரயில் சேவை தாமதம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2025-08-06-east-west-line-disruption-due-to-track-point-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "East-West Line disruption due to track point fault",
+    "zh-Hans": "东西线因道岔故障而中断",
+    "ms": "Gangguan di Laluan Timur-Barat akibat kerosakan noktah trek",
+    "ta": "டியோ பாய்ந் கிழக்கு-மேற்கு கோடான்கபுத் கதவான்க இது பணிபுரிகிறது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

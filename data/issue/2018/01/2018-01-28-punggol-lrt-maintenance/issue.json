@@ -1,0 +1,13 @@
+{
+  "id": "2018-01-28-punggol-lrt-maintenance",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Punggol LRT maintenance works scheduled",
+    "zh-Hans": "盛港轻轨维修工程已安排",
+    "ms": "Kerja penyelenggaraan Punggol LRT dijadualkan",
+    "ta": "Punggol LRT பராமரிப்பு பணிகள் திட்டமிடப்பட்டுள்ளது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

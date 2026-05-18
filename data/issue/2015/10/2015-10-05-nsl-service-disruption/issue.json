@@ -1,0 +1,13 @@
+{
+  "id": "2015-10-05-nsl-service-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "NSL service disruption",
+    "zh-Hans": "NSL 服务中断",
+    "ms": "Gangguan perkhidmatan NSL",
+    "ta": "NSL சேவை இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

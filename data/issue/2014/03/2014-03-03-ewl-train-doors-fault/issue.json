@@ -1,0 +1,13 @@
+{
+  "id": "2014-03-03-ewl-train-doors-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train doors fault causing delays",
+    "zh-Hans": "列车门故障导致延误",
+    "ms": "Kerosakan pintu tren menyebabkan kelewatan",
+    "ta": "ரயில் கதவு கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

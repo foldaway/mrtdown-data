@@ -1,0 +1,13 @@
+{
+  "id": "2021-12-09-bukit-panjang-lrt-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train Fault at Bukit Panjang LRT",
+    "zh-Hans": "Bukit Panjang LRT 列车故障",
+    "ms": "Kerosakan Kereta Api di Bukit Panjang LRT",
+    "ta": "Bukit Panjang LRT இல் ரயில் கோளாறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

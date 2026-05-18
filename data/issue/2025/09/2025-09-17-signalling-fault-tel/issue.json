@@ -1,0 +1,13 @@
+{
+  "id": "2025-09-17-signalling-fault-tel",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signalling Fault on Thomson–East Coast Line",
+    "zh-Hans": "信号故障于汤姆逊–东海岸线",
+    "ms": "Kecacatan isyarat pada Laluan Thomson–East Coast",
+    "ta": "தொம்சன்–எast கோடுப்பாதையில் குறைபாடு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

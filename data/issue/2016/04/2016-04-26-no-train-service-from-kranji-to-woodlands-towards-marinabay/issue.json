@@ -1,0 +1,13 @@
+{
+  "id": "2016-04-26-no-train-service-from-kranji-to-woodlands-towards-marinabay",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Major service disruption on North-South Line",
+    "zh-Hans": "南北线主要服务中断",
+    "ms": "Gangguan perkhidmatan utama di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் பெரும் சேவை இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

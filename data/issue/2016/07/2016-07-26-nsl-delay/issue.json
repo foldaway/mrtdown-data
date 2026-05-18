@@ -1,0 +1,13 @@
+{
+  "id": "2016-07-26-nsl-delay",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption on North-South Line",
+    "zh-Hans": "南北线服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் சேவை தடை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

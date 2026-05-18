@@ -1,0 +1,13 @@
+{
+  "id": "2017-04-06-nsl-stationary-signalling-trial",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "North-South Line trains stationary for signalling system trial",
+    "zh-Hans": "南北线列车因信号系统试运行而停运",
+    "ms": "Kereta Api Laluan Utara-Selatan Pegun Akibat Ujian Sistem Isyarat",
+    "ta": "வடக்கு-தெற்கு வழித்தட ரயில்கள் சிக்னலிங் அமைப்பு சோதனைக்காக நிலையாக உள்ளன"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2026-05-18-bplrt-major-delay-senja-petir",
+  "type": "disruption",
+  "title": {
+    "en-SG": "BPLRT Major Delay - Senja to Petir",
+    "zh-Hans": "BPLRT 大幅延误 - Senja 至 Petir",
+    "ms": "BPLRT Lewat Besar - Senja ke Petir",
+    "ta": "BPLRT பெரும் தாமதம் - Senja முதல் Petir வரை"
+  },
+  "titleMeta": {
+    "source": "data/source migration"
+  }
+}

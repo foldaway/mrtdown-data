@@ -1,0 +1,13 @@
+{
+  "id": "2020-08-02-planned-maintenance-works-on-punggol-lrt",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Planned maintenance works on Punggol LRT",
+    "zh-Hans": "隆戈 LRT 计划维护工作",
+    "ms": "Kerja penyelenggaraan terancang di Punggol LRT",
+    "ta": "Punggol LRT இல் திட்டமிடப்பட்ட பராமரிப்புப் பணிகள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

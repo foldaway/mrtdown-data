@@ -1,0 +1,13 @@
+{
+  "id": "2016-12-14-ewl-signalling-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signalling fault causing travel time increase",
+    "zh-Hans": "信号故障导致旅行时间增加",
+    "ms": "Ralat isyarat menyebabkan peningkatan masa perjalanan",
+    "ta": "சிக்னலிங் பிழை பயண நேரத்தை அதிகரிக்கும்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2019-07-06-bplrt-power-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Power fault affecting Bukit Panjang LRT service",
+    "zh-Hans": "Bukit Panjang LRT服务受电力故障影响",
+    "ms": "Gangguan kuasa menjejaskan perkhidmatan LRT Bukit Panjang",
+    "ta": "Bukit Panjang LRT சேவையில் மின்சாரம் தடைப்பட்டுள்ளது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

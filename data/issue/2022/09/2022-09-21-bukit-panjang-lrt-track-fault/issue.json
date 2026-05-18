@@ -1,0 +1,13 @@
+{
+  "id": "2022-09-21-bukit-panjang-lrt-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Track Fault at Bukit Panjang LRT",
+    "zh-Hans": "Bukit Panjang LRT 故障追踪",
+    "ms": "Jejak Kerosakan di Bukit Panjang LRT",
+    "ta": "Bukit Panjang LRT இல் தடமறிதல்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

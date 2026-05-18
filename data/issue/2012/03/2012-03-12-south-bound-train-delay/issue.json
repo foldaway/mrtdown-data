@@ -1,0 +1,13 @@
+{
+  "id": "2012-03-12-south-bound-train-delay",
+  "type": "disruption",
+  "title": {
+    "en-SG": "South-bound train service from Bukit Gombak to Woodlands disrupted",
+    "zh-Hans": "Bukit Gombak 至 Woodlands 的南行列车服务中断",
+    "ms": "Perkhidmatan kereta api arah selatan dari Bukit Gombak ke Woodlands terganggu",
+    "ta": "Bukit Gombak முதல் Woodlands வரை தெற்கு நோக்கி செல்லும் ரயில் சேவைக்கு இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2021-12-25-ewl-signalling-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Signalling fault causing train delays",
+    "zh-Hans": "信号故障导致列车延误",
+    "ms": "Gangguan isyarat menyebabkan kelewatan kereta",
+    "ta": "ரயில் தாமதத்தை ஏற்படுத்தும் சமிக்ஞை தவறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

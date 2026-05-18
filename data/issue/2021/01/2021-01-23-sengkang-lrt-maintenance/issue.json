@@ -1,0 +1,13 @@
+{
+  "id": "2021-01-23-sengkang-lrt-maintenance",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Scheduled Maintenance on Sengkang LRT System",
+    "zh-Hans": "Sengkang LRT系统计划维护",
+    "ms": "Penyelenggaraan Berjadual di Sistem LRT Sengkang",
+    "ta": "செங்காங் LRT அமைப்பில் திட்டமிடப்பட்ட பராமரிப்பு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2025-10-27-bplrt-passenger-fell-onto-track",
+  "type": "disruption",
+  "title": {
+    "en-SG": "BPLRT Passenger Fell onto Tracks - Bangkit Station",
+    "zh-Hans": "BPLRT 乘客坠入轨道 - 邦吉站",
+    "ms": "Penumpang BPLRT Jatuh ke Landasan - Stesen Bangkit",
+    "ta": "BPLRT பயணி தண்டவாளத்தில் விழுந்தார் - பாங்கிட் நிலையம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

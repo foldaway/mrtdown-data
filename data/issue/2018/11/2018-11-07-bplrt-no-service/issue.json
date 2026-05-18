@@ -1,0 +1,13 @@
+{
+  "id": "2018-11-07-bplrt-no-service",
+  "type": "disruption",
+  "title": {
+    "en-SG": "No service on Bukit Panjang LRT due to power fault",
+    "zh-Hans": "由于电力故障，武吉班让轻轨列车暂停服务",
+    "ms": "Tiada perkhidmatan di Bukit Panjang LRT akibat gangguan bekalan elektrik",
+    "ta": " Bukit Panjang LRT இல் மின்சாரம் தடைபட்டதால் சேவை இல்லை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

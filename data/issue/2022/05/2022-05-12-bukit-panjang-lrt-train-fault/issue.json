@@ -1,0 +1,13 @@
+{
+  "id": "2022-05-12-bukit-panjang-lrt-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train Fault on Bukit Panjang LRT",
+    "zh-Hans": "武吉班让轻轨列车故障",
+    "ms": "Kerosakan Kereta Api di LRT Bukit Panjang",
+    "ta": "புக்ிட் பாஞ்சாங் LRT இல் ரயில் பழுது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

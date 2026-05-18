@@ -1,0 +1,13 @@
+{
+  "id": "2011-12-24-service-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Wet Weather Causing Train Service Slower Across Affected Lines",
+    "zh-Hans": "潮湿天气导致受影响线路的火车服务变慢",
+    "ms": "Cuaca Basah Menyebabkan Perkhidmatan Kereta Api Lebih Perlahan Merentasi Laluan yang Terjejas",
+    "ta": "பாதிக்கப்பட்ட கோடுகளில் ரயில் சேவை மெதுவாக ஈரப்பதமான வானிலை காரணமாகிறது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

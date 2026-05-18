@@ -1,0 +1,13 @@
+{
+  "id": "2016-02-16-east-west-line-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Track fault causing delays on the East West Line",
+    "zh-Hans": "轨道故障导致东西线延误",
+    "ms": "Ralat trek menyebabkan kelewatan di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் தடப் பிழை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

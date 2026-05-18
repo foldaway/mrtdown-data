@@ -1,0 +1,13 @@
+{
+  "id": "2023-04-18-circle-line-power-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Power fault affecting Circle Line",
+    "zh-Hans": "电力故障影响环线",
+    "ms": "Gangguan kuasa yang menjejaskan Laluan Bulat",
+    "ta": "வட்டப் பாதையைப் பாதிக்கும் மின்சாரக் கோளாறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

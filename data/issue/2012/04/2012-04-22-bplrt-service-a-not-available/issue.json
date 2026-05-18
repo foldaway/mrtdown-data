@@ -1,0 +1,13 @@
+{
+  "id": "2012-04-22-bplrt-service-a-not-available",
+  "type": "disruption",
+  "title": {
+    "en-SG": "BPLRT service disruption",
+    "zh-Hans": "BPLRT服务中断",
+    "ms": "Gangguan perkhidmatan BPLRT",
+    "ta": "BPLRT சேவை இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

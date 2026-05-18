@@ -1,0 +1,13 @@
+{
+  "id": "2024-04-29-circle-line-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Major Delays on Circle Line Due to Train Fault",
+    "zh-Hans": "火车故障导致环线 major 延误",
+    "ms": "Kelewatan Besar di Laluan Bulat Akibat Kerosakan Kereta Api",
+    "ta": "ரயில் கோளாறு காரணமாக வட்டப் பாதையில் பெரும் தாமதங்கள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

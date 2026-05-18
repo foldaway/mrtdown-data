@@ -1,0 +1,13 @@
+{
+  "id": "2017-09-11-circle-line-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train fault causing delays on Circle Line",
+    "zh-Hans": "列车故障导致环线延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan di Laluan Bulatan",
+    "ta": "வட்டப் பாதையில் ரயிலின் கோளாறு தாமதத்தை ஏற்படுத்துகிறது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

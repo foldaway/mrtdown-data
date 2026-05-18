@@ -1,0 +1,13 @@
+{
+  "id": "2017-10-15-downtown-line-service-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train service disruption between Bukit Panjang and Beauty World Stations",
+    "zh-Hans": "Bukit Panjang 和 Beauty World 站之间的火车服务中断",
+    "ms": "Gangguan perkhidmatan kereta antara Bukit Panjang dan Beauty World Stations",
+    "ta": "Bukit Panjang மற்றும் Beauty World நிலையங்களுக்கு இடையே ரயில் சேவை சீர்குலைவு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

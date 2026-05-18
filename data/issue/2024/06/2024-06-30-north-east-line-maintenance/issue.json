@@ -1,0 +1,13 @@
+{
+  "id": "2024-06-30-north-east-line-maintenance",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Service Hour Adjustments for integration of Punggol Coast station",
+    "zh-Hans": "为榜鹅海岸站整合调整服务时间",
+    "ms": "Penyesuaian Waktu Perkhidmatan untuk integrasi Stesen Punggol Coast",
+    "ta": "பகூங்கோல் கோஸ்ட் நிலையத்தின் ஒருங்கிணைப்புக்கான சேவை நேர மாற்றங்கள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

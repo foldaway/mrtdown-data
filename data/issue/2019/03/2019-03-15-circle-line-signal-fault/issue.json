@@ -1,0 +1,13 @@
+{
+  "id": "2019-03-15-circle-line-signal-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service Disruption on Circle Line Due to Signal Fault",
+    "zh-Hans": "信号故障导致环线服务中断",
+    "ms": "Gangguan Perkhidmatan Laluan Lingkaran Akibat Kerosakan Isyarat",
+    "ta": "சமிக்ஞை தவறு காரணமாக வட்டப் பாதையில் சேவை சீர்குலைவு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

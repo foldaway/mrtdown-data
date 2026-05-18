@@ -1,0 +1,13 @@
+{
+  "id": "2023-02-02-train-fault-slower-service",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train fault causing slower service from Woodlands North to Caldecott",
+    "zh-Hans": "列车故障导致兀兰北至加利谷服务变慢",
+    "ms": "Kesalahan kereta menyebabkan perkhidmatan perlahan dari Woodlands North ke Caldecott",
+    "ta": "மரங்கள் வடக்கு முதல் கல்கோட் வரை மெதுவான சேவையை ஏற்படுத்தும் ரயில் கோளாறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2014-12-11-train-fault-at-joo-koon",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train Fault at Joo Koon",
+    "zh-Hans": "裕廊镇站列车故障",
+    "ms": "Jalan Kereta Api Rosak di Joo Koon",
+    "ta": "ஜூ கோன் நிலையத்தில் ரயில் கோளாறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

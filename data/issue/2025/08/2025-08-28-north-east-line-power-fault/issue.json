@@ -1,0 +1,13 @@
+{
+  "id": "2025-08-28-north-east-line-power-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "North East Line - Power Fault",
+    "zh-Hans": "东北线 - 电力故障",
+    "ms": "North East Line - Kerosakan Kuasa",
+    "ta": "North East Line - மின்சாரம் பிழை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}
