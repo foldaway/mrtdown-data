@@ -10,13 +10,19 @@
     "BPLRT"
   ],
   "startAt": "2026-05-18T06:00:00.000+08:00",
-  "endAt": null,
+  "endAt": "2026-05-18T10:13:09.895+08:00",
   "type": "disruption",
   "subtypes": [
     "delay",
     "passenger.incident"
   ],
   "updates": [
+    {
+      "type": "operator.monitoring",
+      "text": "BPLRT: Train service has resumed between #Senja and #Bukit Panjang Stations  (both directions). Commuters can continue to use the free bus services #Senja and #Bukit Panjang Stations.",
+      "sourceUrl": "https://x.com/SMRT_Singapore/status/2056196363076108391",
+      "createdAt": "2026-05-18T10:13:09.895+08:00"
+    },
     {
       "type": "operator.update",
       "text": "06:00-BP-Major delay. No train services between Senja and Bukit Panjang stations (both directions). Services between Choa Chu Kang and Bukit Panjang are still available. Please use free bus services at affected stations.",
