@@ -19,8 +19,9 @@ This is **mrtdown-data**, a data repository and API system that tracks Singapore
 npm run check              # Fast deterministic agent-harness checks
 
 # Database and build
-npm run build              # Compile TypeScript (auto-runs db:generate)
-npm run db:generate        # Generate DuckDB database from source data
+npm run typecheck          # Compile-check TypeScript without legacy postbuild
+npm run build              # Legacy production build path pending runtime cleanup
+npm run db:generate        # Legacy DuckDB generator pending runtime cleanup
 npm test                   # Run Vitest tests
 npx biome check            # Lint and format code
 
@@ -52,8 +53,8 @@ All endpoints require Bearer token authentication except `/docs`.
 
 ### Database Architecture
 - **Single DuckDB file** (`mrtdown.duckdb`) with normalized relational schema
-- **Source data**: JSON files in `/data/source/` (lines, issues)
-- **Generated data**: API-ready queries from DuckDB
+- **Canonical data**: target-layout files in `/data/{station,line,service,operator,town,landmark,issue}`
+- **Legacy runtime**: DuckDB/API cleanup is a later data-overhaul split
 - **Complex analytics**: Extensive use of CTEs for uptime calculations
 
 ## Key Patterns
@@ -89,14 +90,14 @@ All endpoints require Bearer token authentication except `/docs`.
 
 ## Data Flow
 
-1. **Source data** (JSON) → **Database generation** → **API endpoints**
+1. **Canonical data** → **Target CLI validation/static artifacts** → **Downstream consumers**
 2. **Webhook ingestion** for real-time updates
 3. **Complex analytical queries** for uptime metrics and status determination
 4. **Multi-language content** served based on client preferences
 
 ## Development Notes
 
-- Database regeneration required when source data changes
+- Target CLI validation required when canonical data changes
 - API responses include related entities for client efficiency
 - Consistent error handling and logging throughout
 - Performance optimized for read-heavy analytical workloads

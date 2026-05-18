@@ -21,11 +21,12 @@ mrtdown-data is a comprehensive data repository and API system that tracks Singa
 
 ### Essential Commands (All Validated)
 
-**Bootstrap and build the repository:**
+**Bootstrap and build the target packages:**
 ```bash
 npm install                    # ~8 seconds
-export DUCKDB_DATABASE_PATH="./mrtdown.duckdb"
-npm run build                  # ~6.4 seconds - NEVER CANCEL. Set timeout to 300+ seconds.
+npm run build:packages
+npm run data:validate
+npm run fixtures:validate
 ```
 
 **Run tests:**
@@ -53,15 +54,14 @@ npm run api:dev               # Starts on port 4000 - NEVER CANCEL during develo
 
 **Data processing:**
 ```bash
-export DUCKDB_DATABASE_PATH="./mrtdown.duckdb"
-npm run generate-products     # ~4.7 seconds - generates API-ready JSON files
-npm run db:generate           # Regenerates DuckDB database (auto-runs after build)
+npm run pages:build           # Builds the static Pages data artifact
+npm run db:generate           # Legacy DuckDB generator pending runtime cleanup
 ```
 
 ### Critical Timeout Settings
-- **npm run build**: MINIMUM 300 seconds timeout (includes TypeScript compilation + database generation)
+- **npm run build:packages**: 300 seconds timeout
 - **npm test**: 60 seconds timeout
-- **npm run generate-products**: 180 seconds timeout
+- **npm run pages:build**: 180 seconds timeout
 - **npx biome check**: 60 seconds timeout
 
 ## Validation
@@ -69,12 +69,10 @@ npm run db:generate           # Regenerates DuckDB database (auto-runs after bui
 ### Manual Validation Requirements
 **Always run these validation scenarios after making changes:**
 
-1. **Database Generation Test:**
+1. **Canonical Data Validation Test:**
    ```bash
-   export DUCKDB_DATABASE_PATH="./mrtdown.duckdb"
-   npm run build
-   # Verify mrtdown.duckdb file is created (should be ~15MB)
-   ls -la mrtdown.duckdb
+   npm run data:validate
+   npm run fixtures:validate
    ```
 
 2. **API Server Test:**
@@ -91,10 +89,10 @@ npm run db:generate           # Regenerates DuckDB database (auto-runs after bui
 3. **Complete End-to-End Test:**
    ```bash
    npm install
-   export DUCKDB_DATABASE_PATH="./mrtdown.duckdb"
-   npm run build
+   npm run build:packages
+   npm run data:validate
    npm test
-   npm run generate-products
+   npm run pages:build
    export API_TOKENS="test-token"
    npm run api:dev &
    sleep 5
@@ -106,8 +104,8 @@ Always run before committing:
 ```bash
 npm test                      # Must pass
 npx biome check              # Will show formatting issues - this is expected
-export DUCKDB_DATABASE_PATH="./mrtdown.duckdb"
-npm run build                # Must succeed without errors
+npm run build:packages       # Must succeed without errors
+npm run data:validate        # Must validate canonical data
 ```
 
 ## Common Issues and Solutions
@@ -134,8 +132,13 @@ npm run build                # Must succeed without errors
 │   ├── model/                # Data models
 │   └── schema/               # Zod validation schemas
 ├── data/
-│   ├── source/               # Raw JSON data files
-│   └── product/              # Generated API-ready JSON
+│   ├── station/              # Canonical static station entities
+│   ├── line/                 # Canonical line entities
+│   ├── service/              # Canonical service entities
+│   ├── operator/             # Canonical operator entities
+│   ├── town/                 # Canonical town entities
+│   ├── landmark/             # Canonical landmark entities
+│   └── issue/                # Canonical issue bundles
 ├── dist/                     # Built TypeScript (gitignored)
 ├── mrtdown.duckdb           # Generated database (gitignored)
 └── .github/workflows/        # CI/CD pipelines
@@ -145,8 +148,8 @@ npm run build                # Must succeed without errors
 
 ### Database Architecture
 - **Single DuckDB file** (`mrtdown.duckdb`) with normalized relational schema  
-- **Source data**: JSON files in `/data/source/` (lines, issues)
-- **Generated products**: API-ready JSON in `/data/product/`
+- **Canonical data**: target-layout files in `/data/{station,line,service,operator,town,landmark,issue}`
+- **Legacy runtime**: DuckDB/API cleanup is a later data-overhaul split
 - **Complex analytics**: Extensive use of CTEs for uptime calculations
 
 ### Core Data Models
@@ -173,10 +176,12 @@ All endpoints in `/src/api/routes/` require Bearer token authentication except `
 
 2. **For new features:**
    ```bash
-   npm run build                # Ensure clean build
+   npm run build:packages       # Ensure target packages build
+   npm run data:validate        # Validate canonical data
    npm test                    # Verify existing tests pass
    # Make your changes
-   npm run build               # NEVER CANCEL - wait for completion
+   npm run build:packages      # NEVER CANCEL - wait for completion
+   npm run data:validate
    npm test                    # Verify tests still pass
    npm run api:dev             # Test API functionality
    ```
@@ -184,7 +189,8 @@ All endpoints in `/src/api/routes/` require Bearer token authentication except `
 3. **Before committing:**
    ```bash
    npm test                    # Must pass
-   npm run build               # Must complete successfully
+   npm run build:packages      # Must complete successfully
+   npm run data:validate       # Must validate canonical data
    npx biome check             # Check for issues (many formatting warnings are normal)
    ```
 
