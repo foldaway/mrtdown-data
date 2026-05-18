@@ -9,7 +9,11 @@ export function keyForAffectedEntity(affectedEntity: AffectedEntity): string {
   switch (affectedEntity.type) {
     case 'service':
       return `service:${affectedEntity.serviceId}`;
-    case 'facility':
+    case 'facility': {
+      if (affectedEntity.lineId != null) {
+        return `facility:${affectedEntity.stationId}:${affectedEntity.lineId}:${affectedEntity.kind}`;
+      }
       return `facility:${affectedEntity.stationId}:${affectedEntity.kind}`;
+    }
   }
 }

@@ -53,7 +53,8 @@ Irrelevance gate (strict):
   - { type: "service", serviceId }
   - serviceId must come from findServices (not lineId from findLines). Search for a valid service via findServices; do not make up a service ID.
 - For station facility faults (lift/escalator/screen-door), use:
-  - { type: "facility", stationId, kind }
+  - { type: "facility", stationId, lineId, kind }
+  - lineId should be the affected line/platform when the facility is line-specific, such as platform screen doors or platform-level facilities at interchange stations. Use null or omit lineId only when the facility impact is station-wide or the line cannot be determined.
 
 ### statusSignal
 - "open": active disruption/degradation now.

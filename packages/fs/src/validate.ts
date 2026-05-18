@@ -266,6 +266,7 @@ async function validateIssueReferences(
 
   const serviceIds = await loadEntityIds(dataDir, records, 'service');
   const stationIds = await loadEntityIds(dataDir, records, 'station');
+  const lineIds = await loadEntityIds(dataDir, records, 'line');
   const errors: string[] = [];
   const seenEvidenceIds = new Map<string, string>();
   const seenImpactEventIds = new Map<string, string>();
@@ -319,6 +320,13 @@ async function validateIssueReferences(
       } else if (!stationIds.has(event.entity.stationId)) {
         errors.push(
           `${linePrefix}: entity.stationId ${event.entity.stationId} does not exist in station/`,
+        );
+      } else if (
+        event.entity.lineId != null &&
+        !lineIds.has(event.entity.lineId)
+      ) {
+        errors.push(
+          `${linePrefix}: entity.lineId ${event.entity.lineId} does not exist in line/`,
         );
       }
 

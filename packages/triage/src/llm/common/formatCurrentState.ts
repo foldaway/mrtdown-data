@@ -106,6 +106,7 @@ export function formatCurrentState(
         ...formatFacilitySection(
           key,
           fac.stationId,
+          fac.lineId,
           fac.kind,
           fac.effect,
           fac.periods,
@@ -336,6 +337,7 @@ function formatServiceSection(
 function formatFacilitySection(
   key: string,
   stationId: string,
+  lineId: string | null | undefined,
   kind: string,
   effect: { kind: string } | null,
   periods: Period[],
@@ -353,6 +355,8 @@ function formatFacilitySection(
     children: [
       { type: 'text', value: 'Station: ' },
       { type: 'inlineCode', value: stationId },
+      { type: 'text', value: ', Line: ' },
+      { type: 'inlineCode', value: lineId ?? 'null' },
       { type: 'text', value: ', Kind: ' },
       { type: 'inlineCode', value: kind },
     ],

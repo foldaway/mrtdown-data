@@ -324,6 +324,22 @@ describe('@mrtdown/fs', () => {
         basis: {
           evidenceId: 'ev_missing',
         },
+      })}\n${JSON.stringify({
+        id: 'ie_2',
+        type: 'facility_effects.set',
+        entity: {
+          type: 'facility',
+          stationId: 'TEST',
+          lineId: 'MISSING',
+          kind: 'screen-door',
+        },
+        ts: '2026-01-01T07:00:00+08:00',
+        effect: {
+          kind: 'degraded',
+        },
+        basis: {
+          evidenceId: 'ev_1',
+        },
       })}\n`,
     );
 
@@ -339,6 +355,7 @@ describe('@mrtdown/fs', () => {
         'issue/2026/01/2026-01-01-test-issue/impact.ndjson:1: basis.evidenceId ev_missing does not exist in evidence.ndjson',
         'issue/2026/01/2026-01-01-test-issue/impact.ndjson:1: entity.serviceId NSL_MAIN does not exist in service/',
         'issue/2026/01/2026-01-01-test-issue/impact.ndjson:1: serviceScopes.0.stationId MISSING does not exist in station/',
+        'issue/2026/01/2026-01-01-test-issue/impact.ndjson:2: entity.lineId MISSING does not exist in line/',
       ]),
     );
   });

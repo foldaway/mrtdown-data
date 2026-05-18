@@ -188,6 +188,9 @@ export function computeImpactFromEvidenceClaims(params: Params): Result {
       }
       case 'facility': {
         const currentFacilityState = result.newState.facilities[key] ?? {
+          stationId: claim.entity.stationId,
+          lineId: claim.entity.lineId ?? null,
+          kind: claim.entity.kind,
           effect: null,
           periods: [],
           causes: [],

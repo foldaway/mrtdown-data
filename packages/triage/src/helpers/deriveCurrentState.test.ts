@@ -559,4 +559,57 @@ describe('deriveCurrentState', () => {
       'ie_test_001',
     ]);
   });
+
+  test('keeps line-specific facility impacts separate', () => {
+    const nslFacilityEntity = {
+      type: 'facility' as const,
+      stationId: 'CTH',
+      lineId: 'NSL',
+      kind: 'screen-door' as const,
+    };
+    const ewlFacilityEntity = {
+      type: 'facility' as const,
+      stationId: 'CTH',
+      lineId: 'EWL',
+      kind: 'screen-door' as const,
+    };
+
+    const bundle = createMockBundle([
+      {
+        id: 'ie_test_001',
+        type: 'facility_effects.set',
+        entity: nslFacilityEntity,
+        ts: '2025-01-01T10:00:00Z',
+        effect: { kind: 'out-of-service' },
+        basis: { evidenceId: 'evidence-1' },
+      },
+      {
+        id: 'ie_test_002',
+        type: 'facility_effects.set',
+        entity: ewlFacilityEntity,
+        ts: '2025-01-01T10:05:00Z',
+        effect: { kind: 'degraded' },
+        basis: { evidenceId: 'evidence-2' },
+      },
+    ]);
+
+    const result = deriveCurrentState(bundle);
+
+    expect(
+      result.facilities[keyForAffectedEntity(nslFacilityEntity)],
+    ).toMatchObject({
+      stationId: 'CTH',
+      lineId: 'NSL',
+      kind: 'screen-door',
+      effect: { kind: 'out-of-service' },
+    });
+    expect(
+      result.facilities[keyForAffectedEntity(ewlFacilityEntity)],
+    ).toMatchObject({
+      stationId: 'CTH',
+      lineId: 'EWL',
+      kind: 'screen-door',
+      effect: { kind: 'degraded' },
+    });
+  });
 });

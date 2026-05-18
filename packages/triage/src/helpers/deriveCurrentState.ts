@@ -35,6 +35,7 @@ type FacilityProvenance = {
 
 type FacilityState = {
   stationId: string;
+  lineId?: string | null;
   kind: 'lift' | 'escalator' | 'screen-door';
   effect: FacilityEffect | null;
   periods: Period[];
@@ -134,6 +135,7 @@ export function deriveCurrentState(bundle: IssueBundle): IssueBundleState {
       case 'facility': {
         const currentState = facilities[key] ?? {
           stationId: impactEvent.entity.stationId,
+          lineId: impactEvent.entity.lineId ?? null,
           kind: impactEvent.entity.kind,
           effect: null,
           periods: [],
