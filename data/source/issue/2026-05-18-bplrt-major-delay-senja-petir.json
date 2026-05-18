@@ -19,6 +19,12 @@
   "updates": [
     {
       "type": "operator.update",
+      "text": "06:00-BP-Major delay. No train services between Senja and Bukit Panjang stations (both directions). Services between Choa Chu Kang and Bukit Panjang are still available. Please use free bus services at affected stations.",
+      "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116592574103114471",
+      "createdAt": "2026-05-18T07:44:54.000+08:00"
+    },
+    {
+      "type": "operator.update",
       "text": "06:00-BP-Major delay. No train services between Senja and Petir stations (both directions). Services between Choa Chu Kang and Bukit Panjang are still available.\nPlease use free bus services at affected stations.",
       "sourceUrl": "https://mastodon.social/@ltatrainservicealerts/116592534785512014",
       "createdAt": "2026-05-18T07:34:54.000+08:00"
