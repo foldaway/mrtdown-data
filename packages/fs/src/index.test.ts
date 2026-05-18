@@ -158,6 +158,9 @@ describe('@mrtdown/fs', () => {
     expect(renderPagesIndex(manifest, { includeArchiveLinks: true })).toContain(
       'archive.tar.gz',
     );
+    expect(
+      renderPagesIndex(manifest, { includeFixtureExportLinks: true }),
+    ).toContain('fixtures/');
   });
 
   it('rejects fixture line references that are missing from fixture lines', async () => {
