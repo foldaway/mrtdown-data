@@ -210,7 +210,7 @@ async function validateServiceReferences(
         if (
           matchingStationCodes.length > 0 &&
           !matchingStationCodes.some((stationCode) =>
-            stationCodeOverlapsRevision(
+            stationCodeContainsRevision(
               stationCode.startedAt,
               stationCode.endedAt,
               revision.startAt,
@@ -237,7 +237,7 @@ function timestampForValidation(value: string): number {
   return timestamp;
 }
 
-function stationCodeOverlapsRevision(
+function stationCodeContainsRevision(
   stationCodeStartedAt: string,
   stationCodeEndedAt: string | null,
   revisionStartAt: string,
@@ -252,7 +252,7 @@ function stationCodeOverlapsRevision(
     ? timestampForValidation(revisionEndAt)
     : Number.POSITIVE_INFINITY;
 
-  return revisionStart < stationCodeEnd && stationCodeStart < revisionEnd;
+  return stationCodeStart <= revisionStart && revisionEnd <= stationCodeEnd;
 }
 
 async function validateIssueReferences(

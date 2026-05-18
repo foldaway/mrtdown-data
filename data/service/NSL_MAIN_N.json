@@ -9,8 +9,363 @@
     },
     "revisions": [
         {
-            "id": "r_legacy_1987_2009",
+            "id": "r_1987_initial_yio_chu_kang_segment",
             "startAt": "1987-11-07",
+            "endAt": "1987-12-12",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "TAP",
+                        "displayCode": "NS19"
+                    },
+                    {
+                        "stationId": "BDL",
+                        "displayCode": "NS18"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "NS17"
+                    },
+                    {
+                        "stationId": "AMK",
+                        "displayCode": "NS16"
+                    },
+                    {
+                        "stationId": "YCK",
+                        "displayCode": "NS15"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:07",
+                    "end": "01:00"
+                },
+                "weekends": {
+                    "start": "05:35",
+                    "end": "01:00"
+                }
+            }
+        },
+        {
+            "id": "r_1987_marina_bay_extension",
+            "startAt": "1987-12-12",
+            "endAt": "1988-11-05",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "MRB",
+                        "displayCode": "NS27"
+                    },
+                    {
+                        "stationId": "RFP",
+                        "displayCode": "NS26"
+                    },
+                    {
+                        "stationId": "CTH",
+                        "displayCode": "NS25"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "NS24"
+                    },
+                    {
+                        "stationId": "SOM",
+                        "displayCode": "NS23"
+                    },
+                    {
+                        "stationId": "ORC",
+                        "displayCode": "NS22"
+                    },
+                    {
+                        "stationId": "NEW",
+                        "displayCode": "NS21"
+                    },
+                    {
+                        "stationId": "NOV",
+                        "displayCode": "NS20"
+                    },
+                    {
+                        "stationId": "TAP",
+                        "displayCode": "NS19"
+                    },
+                    {
+                        "stationId": "BDL",
+                        "displayCode": "NS18"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "NS17"
+                    },
+                    {
+                        "stationId": "AMK",
+                        "displayCode": "NS16"
+                    },
+                    {
+                        "stationId": "YCK",
+                        "displayCode": "NS15"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:07",
+                    "end": "01:00"
+                },
+                "weekends": {
+                    "start": "05:35",
+                    "end": "01:00"
+                }
+            }
+        },
+        {
+            "id": "r_1988_jurong_east_extension",
+            "startAt": "1988-11-05",
+            "endAt": "1988-12-20",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "MRB",
+                        "displayCode": "NS27"
+                    },
+                    {
+                        "stationId": "RFP",
+                        "displayCode": "NS26"
+                    },
+                    {
+                        "stationId": "CTH",
+                        "displayCode": "NS25"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "NS24"
+                    },
+                    {
+                        "stationId": "SOM",
+                        "displayCode": "NS23"
+                    },
+                    {
+                        "stationId": "ORC",
+                        "displayCode": "NS22"
+                    },
+                    {
+                        "stationId": "NEW",
+                        "displayCode": "NS21"
+                    },
+                    {
+                        "stationId": "NOV",
+                        "displayCode": "NS20"
+                    },
+                    {
+                        "stationId": "TAP",
+                        "displayCode": "NS19"
+                    },
+                    {
+                        "stationId": "BDL",
+                        "displayCode": "NS18"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "NS17"
+                    },
+                    {
+                        "stationId": "AMK",
+                        "displayCode": "NS16"
+                    },
+                    {
+                        "stationId": "YCK",
+                        "displayCode": "NS15"
+                    },
+                    {
+                        "stationId": "JUR",
+                        "displayCode": "NS1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:07",
+                    "end": "01:00"
+                },
+                "weekends": {
+                    "start": "05:35",
+                    "end": "01:00"
+                }
+            }
+        },
+        {
+            "id": "r_1988_yishun_extension",
+            "startAt": "1988-12-20",
+            "endAt": "1990-03-10",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "MRB",
+                        "displayCode": "NS27"
+                    },
+                    {
+                        "stationId": "RFP",
+                        "displayCode": "NS26"
+                    },
+                    {
+                        "stationId": "CTH",
+                        "displayCode": "NS25"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "NS24"
+                    },
+                    {
+                        "stationId": "SOM",
+                        "displayCode": "NS23"
+                    },
+                    {
+                        "stationId": "ORC",
+                        "displayCode": "NS22"
+                    },
+                    {
+                        "stationId": "NEW",
+                        "displayCode": "NS21"
+                    },
+                    {
+                        "stationId": "NOV",
+                        "displayCode": "NS20"
+                    },
+                    {
+                        "stationId": "TAP",
+                        "displayCode": "NS19"
+                    },
+                    {
+                        "stationId": "BDL",
+                        "displayCode": "NS18"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "NS17"
+                    },
+                    {
+                        "stationId": "AMK",
+                        "displayCode": "NS16"
+                    },
+                    {
+                        "stationId": "YCK",
+                        "displayCode": "NS15"
+                    },
+                    {
+                        "stationId": "YIS",
+                        "displayCode": "NS13"
+                    },
+                    {
+                        "stationId": "JUR",
+                        "displayCode": "NS1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:07",
+                    "end": "01:00"
+                },
+                "weekends": {
+                    "start": "05:35",
+                    "end": "01:00"
+                }
+            }
+        },
+        {
+            "id": "r_1990_choa_chu_kang_branch",
+            "startAt": "1990-03-10",
+            "endAt": "1996-02-10",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "MRB",
+                        "displayCode": "NS27"
+                    },
+                    {
+                        "stationId": "RFP",
+                        "displayCode": "NS26"
+                    },
+                    {
+                        "stationId": "CTH",
+                        "displayCode": "NS25"
+                    },
+                    {
+                        "stationId": "DBG",
+                        "displayCode": "NS24"
+                    },
+                    {
+                        "stationId": "SOM",
+                        "displayCode": "NS23"
+                    },
+                    {
+                        "stationId": "ORC",
+                        "displayCode": "NS22"
+                    },
+                    {
+                        "stationId": "NEW",
+                        "displayCode": "NS21"
+                    },
+                    {
+                        "stationId": "NOV",
+                        "displayCode": "NS20"
+                    },
+                    {
+                        "stationId": "TAP",
+                        "displayCode": "NS19"
+                    },
+                    {
+                        "stationId": "BDL",
+                        "displayCode": "NS18"
+                    },
+                    {
+                        "stationId": "BSH",
+                        "displayCode": "NS17"
+                    },
+                    {
+                        "stationId": "AMK",
+                        "displayCode": "NS16"
+                    },
+                    {
+                        "stationId": "YCK",
+                        "displayCode": "NS15"
+                    },
+                    {
+                        "stationId": "YIS",
+                        "displayCode": "NS13"
+                    },
+                    {
+                        "stationId": "CCK",
+                        "displayCode": "NS4"
+                    },
+                    {
+                        "stationId": "BGB",
+                        "displayCode": "NS3"
+                    },
+                    {
+                        "stationId": "BBT",
+                        "displayCode": "NS2"
+                    },
+                    {
+                        "stationId": "JUR",
+                        "displayCode": "NS1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:07",
+                    "end": "01:00"
+                },
+                "weekends": {
+                    "start": "05:35",
+                    "end": "01:00"
+                }
+            }
+        },
+        {
+            "id": "r_1996_woodlands_extension",
+            "startAt": "1996-02-10",
             "endAt": "2010-01-01",
             "path": {
                 "stations": [
@@ -126,7 +481,7 @@
         {
             "id": "r_2010",
             "startAt": "2010-01-01",
-            "endAt": "2019-11-02",
+            "endAt": "2014-11-23",
             "path": {
                 "stations": [
                     {

@@ -28,6 +28,8 @@
   ],
   "serviceIds": [
     "EWL_MAIN_E",
-    "EWL_MAIN_W"
+    "EWL_MAIN_W",
+    "EWL_CG_E",
+    "EWL_CG_W"
   ]
 }

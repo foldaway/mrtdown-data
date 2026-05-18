@@ -86,7 +86,7 @@
         {
             "id": "r_2006_buangkok",
             "startAt": "2006-01-15",
-            "endAt": "2011-06-11",
+            "endAt": "2011-06-20",
             "path": {
                 "stations": [
                     {
@@ -164,7 +164,7 @@
         },
         {
             "id": "r_2011_woodleigh",
-            "startAt": "2011-06-11",
+            "startAt": "2011-06-20",
             "endAt": "2024-12-10",
             "path": {
                 "stations": [

@@ -404,7 +404,7 @@ describe('@mrtdown/fs', () => {
           {
             id: 'r_2014_marina_south_pier',
             startAt: '2010-01-01',
-            endAt: '2014-11-23',
+            endAt: null,
             path: {
               stations: [
                 {
