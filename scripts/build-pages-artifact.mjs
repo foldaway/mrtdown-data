@@ -108,7 +108,8 @@ function assertArtifactPaths(options) {
 
 function isExcludedDataSourcePath(sourceDataDir, source) {
   const relativeSource = relative(sourceDataDir, source);
-  return relativeSource === 'source' || relativeSource.startsWith('source/');
+  const [firstSegment] = relativeSource.split(/[\\/]/);
+  return firstSegment === 'source';
 }
 
 async function buildDataExport(
