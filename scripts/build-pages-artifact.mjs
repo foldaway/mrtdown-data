@@ -14,14 +14,15 @@ function usage() {
   node scripts/build-pages-artifact.mjs [--data-dir <path>] [--out-dir <path>]
 
 Defaults:
-  --data-dir fixtures/data
+  --data-dir data
   --out-dir pages-dist
 `;
 }
 
 function parseArgs(argv) {
   const options = {
-    dataDir: resolve(repoRoot, 'fixtures/data'),
+    dataDir: resolve(repoRoot, 'data'),
+    fixtureDataDir: resolve(repoRoot, 'fixtures/data'),
     outDir: resolve(repoRoot, 'pages-dist'),
   };
   const args = [...argv];
@@ -100,10 +101,22 @@ function assertOutputPath(dataDir, outDir) {
 
 function assertArtifactPaths(options) {
   assertOutputPath(options.dataDir, options.outDir);
+  assertOutputPath(options.fixtureDataDir, options.outDir);
   assertOutputPath(options.dataDir, resolve(options.outDir, 'fixtures'));
+  assertOutputPath(options.fixtureDataDir, resolve(options.outDir, 'fixtures'));
 }
 
-async function buildDataExport(sourceDataDir, exportDir, fsPackage) {
+function isExcludedDataSourcePath(sourceDataDir, source) {
+  const relativeSource = relative(sourceDataDir, source);
+  return relativeSource === 'source' || relativeSource.startsWith('source/');
+}
+
+async function buildDataExport(
+  sourceDataDir,
+  exportDir,
+  fsPackage,
+  options = {},
+) {
   assertOutputPath(sourceDataDir, exportDir);
 
   const validation = await fsPackage.validateDataRoot(sourceDataDir);
@@ -114,7 +127,9 @@ async function buildDataExport(sourceDataDir, exportDir, fsPackage) {
   await mkdir(exportDir, { recursive: true });
   await cp(sourceDataDir, exportDir, {
     recursive: true,
-    filter: (source) => !generatedIndexPattern.test(source),
+    filter: (source) =>
+      !generatedIndexPattern.test(source) &&
+      !isExcludedDataSourcePath(sourceDataDir, source),
   });
 
   const manifest = await fsPackage.buildManifest(exportDir);
@@ -124,7 +139,10 @@ async function buildDataExport(sourceDataDir, exportDir, fsPackage) {
   );
   await writeFile(
     resolve(exportDir, 'index.html'),
-    fsPackage.renderPagesIndex(manifest, { includeArchiveLinks: true }),
+    fsPackage.renderPagesIndex(manifest, {
+      includeArchiveLinks: true,
+      includeFixtureExportLinks: options.includeFixtureExportLinks ?? false,
+    }),
   );
   await createArchives(exportDir);
 }
@@ -142,12 +160,11 @@ async function main() {
   await rm(options.outDir, { recursive: true, force: true });
   await mkdir(options.outDir, { recursive: true });
   await writeFile(resolve(options.outDir, '.nojekyll'), '');
-  await writeFile(
-    resolve(options.outDir, 'index.html'),
-    fsPackage.renderPagesRootIndex(),
-  );
+  await buildDataExport(options.dataDir, options.outDir, fsPackage, {
+    includeFixtureExportLinks: true,
+  });
   await buildDataExport(
-    options.dataDir,
+    options.fixtureDataDir,
     resolve(options.outDir, 'fixtures'),
     fsPackage,
   );

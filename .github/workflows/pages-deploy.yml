@@ -9,6 +9,7 @@ on:
       - main
     paths:
       - '.github/workflows/pages-deploy.yml'
+      - 'data/**'
       - 'fixtures/data/**'
       - 'package*.json'
       - 'packages/**'

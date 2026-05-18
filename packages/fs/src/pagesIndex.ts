@@ -4,6 +4,7 @@ import { toHtml } from 'hast-util-to-html';
 
 export type PagesIndexOptions = {
   includeArchiveLinks?: boolean;
+  includeFixtureExportLinks?: boolean;
 };
 
 export type PagesRootIndexOptions = {
@@ -115,6 +116,17 @@ function buildExportLinks(options: PagesIndexOptions): Element {
       linkElement('archive.tar.gz'),
       { type: 'text', value: ' (gzipped tarball) or ' },
       linkElement('archive.zip'),
+      { type: 'text', value: '.' },
+    );
+  }
+
+  if (options.includeFixtureExportLinks) {
+    children.push(
+      {
+        type: 'text',
+        value: ' The deterministic fixture export is published at ',
+      },
+      linkElement('fixtures/'),
       { type: 'text', value: '.' },
     );
   }
@@ -273,7 +285,7 @@ export function renderPagesRootIndex(
           {
             type: 'text',
             value:
-              'This split branch publishes only the deterministic fixture export. The canonical data export will be added after the target-layout data migration lands.',
+              'Static canonical target-layout data for Singapore MRT/LRT status and history is published at this root. A deterministic fixture export is also available for package and CLI examples.',
           },
         ],
       },
@@ -282,20 +294,23 @@ export function renderPagesRootIndex(
         tagName: 'p',
         properties: {},
         children: [
-          { type: 'text', value: 'The fixture data index is available as ' },
-          linkElement('fixtures/'),
           {
             type: 'text',
-            value: '. Its machine-readable manifest is published as ',
+            value: 'The canonical machine-readable manifest is ',
           },
-          linkElement('fixtures/manifest.json'),
+          linkElement('manifest.json'),
           {
             type: 'text',
-            value: '. The fixture directory is also available as ',
+            value: '. The full canonical data directory is also available as ',
           },
-          linkElement('fixtures/archive.tar.gz'),
+          linkElement('archive.tar.gz'),
           { type: 'text', value: ' (gzipped tarball) or ' },
-          linkElement('fixtures/archive.zip'),
+          linkElement('archive.zip'),
+          {
+            type: 'text',
+            value: '. The fixture data index remains available as ',
+          },
+          linkElement('fixtures/'),
           { type: 'text', value: '.' },
         ],
       },
@@ -338,6 +353,12 @@ export function renderPagesRootIndex(
                   },
                 ],
               },
+              buildFileRow('manifest.json', 'Canonical export manifest.'),
+              buildFileRow(
+                'archive.tar.gz',
+                'Canonical export as a gzipped tarball.',
+              ),
+              buildFileRow('archive.zip', 'Canonical export as a ZIP archive.'),
               buildFileRow('fixtures/', 'Fixture data index.'),
               buildFileRow(
                 'fixtures/manifest.json',

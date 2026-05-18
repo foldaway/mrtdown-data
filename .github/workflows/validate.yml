@@ -52,6 +52,7 @@ jobs:
       - run: npm run build:packages
       - run: npm run typecheck
       - run: npm run data:validate
+      - run: npm run fixtures:validate
       - run: npm run db:generate
         env:
           DUCKDB_DATABASE_PATH: mrtdown.duckdb
