@@ -1,0 +1,13 @@
+{
+  "id": "2014-05-27-circle-line-power-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Power Fault on Circle Line",
+    "zh-Hans": "环线电力故障",
+    "ms": "Gangguan Kuasa di Laluan Bulat",
+    "ta": "வட்ட பாதையில் மின் தடையுற்றது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

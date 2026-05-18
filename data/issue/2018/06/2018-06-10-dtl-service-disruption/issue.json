@@ -1,0 +1,13 @@
+{
+  "id": "2018-06-10-dtl-service-disruption",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption on the Downtown Line",
+    "zh-Hans": " downtown线发生服务中断",
+    "ms": "Gangguan perkhidmatan di Laluan Downtown",
+    "ta": "டவுன்டவுன் பாதையில் சேவை இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

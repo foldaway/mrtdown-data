@@ -1,0 +1,13 @@
+{
+  "id": "2016-09-20-circle-line-track-fault-2",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Second Circle Line track fault causing delays",
+    "zh-Hans": "环线第二轨道故障导致延误",
+    "ms": "Ralat landasan Laluan Bulatan Kedua menyebabkan kelewatan",
+    "ta": "இரண்டாவது வட்டப் பாதையில் ஏற்பட்ட தடப்பிறழ்வு தாமதத்தை ஏற்படுத்துகிறது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

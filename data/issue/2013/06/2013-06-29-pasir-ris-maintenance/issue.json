@@ -1,0 +1,13 @@
+{
+  "id": "2013-06-29-pasir-ris-maintenance",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Maintenance work affecting Pasir Ris terminal station",
+    "zh-Hans": "维护工作影响巴西立站终点站",
+    "ms": "Kerja penyelenggaraan menjejaskan stesen terminal Pasir Ris",
+    "ta": "பசிர் ரிஸ் டெர்மினல் நிலையத்தில் பராமரிப்புப் பணிகள் பாதிப்பை ஏற்படுத்துகின்றன"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

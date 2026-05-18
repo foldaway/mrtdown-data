@@ -1,0 +1,13 @@
+{
+  "id": "2026-04-11-ccl-weekend-service-adjustment",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "CCL Weekend Service Adjustment for CCL6 Testing",
+    "zh-Hans": "环线周末服务调整（CCL6测试）",
+    "ms": "Pelarasan Perkhidmatan Hujung Minggu CCL untuk Ujian CCL6",
+    "ta": "CCL6 சோதனைக்கான CCL வாரஇறுதி சேவை மாற்றம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

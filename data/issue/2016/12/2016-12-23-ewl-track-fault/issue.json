@@ -1,0 +1,13 @@
+{
+  "id": "2016-12-23-ewl-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Disruption on East West Line due to track fault",
+    "zh-Hans": "东西线因轨道故障而中断",
+    "ms": "Gangguan di Laluan Timur-Barat kerana kerosakan trek",
+    "ta": "தடப் பிழை காரணமாக கிழக்கு மேற்கு பாதையில் இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

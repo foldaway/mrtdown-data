@@ -1,0 +1,13 @@
+{
+  "id": "2012-03-16-trains-slow-between-admiralty-and-kranji",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Trains experiencing delays between Admiralty and Kranji",
+    "zh-Hans": "Admiralty 和 Kranji 之间的火车延误",
+    "ms": "Kereta api mengalami kelewatan antara Admiralty dan Kranji",
+    "ta": "Admiralty மற்றும் Kranji இடையே ரயில்கள் தாமதமாகின்றன"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

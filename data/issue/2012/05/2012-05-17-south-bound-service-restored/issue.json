@@ -1,0 +1,13 @@
+{
+  "id": "2012-05-17-south-bound-service-restored",
+  "type": "disruption",
+  "title": {
+    "en-SG": "South-bound train service disruption due to track fault",
+    "zh-Hans": "南行列车服务因轨道故障而中断",
+    "ms": "Gangguan perkhidmatan kereta arah selatan akibat kerosakan landasan",
+    "ta": "தடக் கோளாறு காரணமாக தெற்கு நோக்கிச் செல்லும் ரயில் சேவை தடைபட்டது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

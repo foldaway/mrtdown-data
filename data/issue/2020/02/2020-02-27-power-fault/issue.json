@@ -1,0 +1,13 @@
+{
+  "id": "2020-02-27-power-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Service disruption due to power fault",
+    "zh-Hans": "因电力故障导致的服务中断",
+    "ms": "Gangguan perkhidmatan akibat kerosakan kuasa",
+    "ta": "மின் தடங்கல் காரணமாக சேவை தடை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

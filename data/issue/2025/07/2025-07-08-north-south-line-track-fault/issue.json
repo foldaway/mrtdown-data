@@ -1,0 +1,13 @@
+{
+  "id": "2025-07-08-north-south-line-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Track Fault on North-South Line",
+    "zh-Hans": "南北线轨道故障",
+    "ms": "Kerosakan Trek pada Laluan Utara-Selatan",
+    "ta": "வடக்கே தெற்கே நெடி பிழை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

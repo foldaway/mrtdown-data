@@ -1,0 +1,13 @@
+{
+  "id": "2022-09-21-nsl-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Track Fault on North-South Line",
+    "zh-Hans": "南北线轨道故障",
+    "ms": "Jejak Kesalahan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் தடயப் பிழை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

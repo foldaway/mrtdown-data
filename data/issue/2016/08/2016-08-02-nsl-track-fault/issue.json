@@ -1,0 +1,13 @@
+{
+  "id": "2016-08-02-nsl-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Track fault causing delays on North-South Line",
+    "zh-Hans": "轨道故障导致南北线延误",
+    "ms": "Ralat trek menyebabkan kelewatan di Laluan Utara-Selatan",
+    "ta": "வடக்கு-தெற்கு பாதையில் தாமதத்தை ஏற்படுத்தும் பாதையில் தவறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2017-04-30-nel-service-delayed-due-to-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "NEL service delayed due to train fault",
+    "zh-Hans": "由于火车故障，东北线服务延误",
+    "ms": "Perkhidmatan NEL tertunda kerana kerosakan kereta api",
+    "ta": "ரயில் பழுதின் காரணமாக NEL சேவை தாமதமானது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2014-07-23-nsl-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train fault causing delays",
+    "zh-Hans": "列车故障导致延误",
+    "ms": "Kerosakan kereta api menyebabkan kelewatan",
+    "ta": "ரயில் பழுது தாமதத்தை ஏற்படுத்துகிறது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

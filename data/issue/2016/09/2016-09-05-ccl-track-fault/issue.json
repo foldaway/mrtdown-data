@@ -1,0 +1,13 @@
+{
+  "id": "2016-09-05-ccl-track-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Track Fault on Circle Line",
+    "zh-Hans": "追踪环线的故障",
+    "ms": "Jejaki Kerosakan di Laluan Bulat",
+    "ta": "வட்டப் பாதையில் தடமறிதல்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

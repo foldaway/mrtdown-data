@@ -1,0 +1,13 @@
+{
+  "id": "2026-01-30-ccl-signal-fault-serangoon",
+  "type": "disruption",
+  "title": {
+    "en-SG": "CCL Signal Fault - Serangoon (Public Report)",
+    "zh-Hans": "CCL 信号故障 - 实龙岗（公众报告）",
+    "ms": "CCL Ralat Isyarat - Serangoon (Laporan Awam)",
+    "ta": "CCL சிக்னல் கோளாறு - செராங்கூன் (பொது அறிக்கை)"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

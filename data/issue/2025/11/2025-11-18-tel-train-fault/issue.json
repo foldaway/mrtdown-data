@@ -1,0 +1,13 @@
+{
+  "id": "2025-11-18-tel-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train Fault on Thomson–East Coast Line",
+    "zh-Hans": "汤申–东海岸线列车故障",
+    "ms": "Kerosakan Kereta Api di Laluan Thomson–East Coast",
+    "ta": "தாம்சன்–கிழக்கு கடற்கரை பாதையில் ரயில் தவறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-mini"
+  }
+}

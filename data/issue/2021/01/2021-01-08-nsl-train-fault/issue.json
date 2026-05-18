@@ -1,0 +1,13 @@
+{
+  "id": "2021-01-08-nsl-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train fault causing delays",
+    "zh-Hans": "列车故障导致延误",
+    "ms": "Kegagalan kereta menyebabkan kelewatan",
+    "ta": "தாமதத்தை ஏற்படுத்தும் ரயில் தவறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2019-06-16-sengkang-lrt-maintenance-works",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Sengkang LRT service disruption due to urgent maintenance works",
+    "zh-Hans": "盛港轻轨因紧急维修工程而服务中断",
+    "ms": "Gangguan perkhidmatan Sengkang LRT akibat kerja penyelenggaraan mendesak",
+    "ta": "Sengkang LRT சேவையில் அவசர பராமரிப்புப் பணிகளால் இடையூறு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

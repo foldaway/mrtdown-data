@@ -1,0 +1,13 @@
+{
+  "id": "2012-11-01-nsl-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train fault at North-South Line",
+    "zh-Hans": "南北线列车故障",
+    "ms": "Gangguan kereta di Laluan North-South",
+    "ta": "வடக்கு-தெற்கு பாதையில் ரயில் பழுது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

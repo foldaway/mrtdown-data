@@ -1,0 +1,13 @@
+{
+  "id": "2012-07-19-eastbound-train-service-slow",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Eastbound train service moving slower due to train fault",
+    "zh-Hans": "东行列车因列车故障运行速度较慢",
+    "ms": "Perkhidmatan kereta api arah timur bergerak lebih perlahan kerana kerosakan kereta api",
+    "ta": "கிழக்கு நோக்கிச் செல்லும் ரயில் சேவை ரயில் கோளாறு காரணமாக மெதுவாக நகர்கிறது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

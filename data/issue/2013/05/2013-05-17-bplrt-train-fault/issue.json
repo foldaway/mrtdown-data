@@ -1,0 +1,13 @@
+{
+  "id": "2013-05-17-bplrt-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train fault causing delays between Bukit Panjang and Choa Chu Kang",
+    "zh-Hans": "列车故障导致武吉班让和蔡厝港之间延误",
+    "ms": "Kereta api rosak menyebabkan kelewatan antara Bukit Panjang dan Choa Chu Kang",
+    "ta": "Bukit Panjang மற்றும் Choa Chu Kang இடையே தாமதத்தை ஏற்படுத்தும் ரயில் பழுது"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

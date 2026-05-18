@@ -1,0 +1,13 @@
+{
+  "id": "2024-11-08-nel-full-service-resumed",
+  "type": "disruption",
+  "title": {
+    "en-SG": "NEL service disruption due to track fault at Harbour Front",
+    "zh-Hans": "海港坊地铁轨道故障导致东北线服务中断",
+    "ms": "Gangguan perkhidmatan NEL kerana kerosakan landasan di Harbour Front",
+    "ta": "ஹார்பர் ஃபிரண்ட் ரயில் பாதையில் ஏற்பட்ட கோளாறு காரணமாக NEL சேவை சீர்குலைவு"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

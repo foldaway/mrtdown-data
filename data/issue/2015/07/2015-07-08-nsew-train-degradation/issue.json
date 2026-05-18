@@ -1,0 +1,13 @@
+{
+  "id": "2015-07-08-nsew-train-degradation",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Trains on the NSEW line running at degraded mode",
+    "zh-Hans": "NSEW 线列车运行在降级模式",
+    "ms": "Kereta api di laluan NSEW berjalan dalam mod terdegradasi",
+    "ta": "NSEW பாதையில் ரயில்கள் குறைக்கப்பட்ட பயன்முறையில் இயங்குகின்றன"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}

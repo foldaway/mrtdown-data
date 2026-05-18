@@ -1,0 +1,13 @@
+{
+  "id": "2013-06-25-east-west-line-train-fault",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Train Delay on East West Line",
+    "zh-Hans": "东西线列车延误",
+    "ms": "Kelewatan Kereta Api di Laluan Timur Barat",
+    "ta": "கிழக்கு மேற்கு பாதையில் ரயில் தாமதம்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-4-mini"
+  }
+}
