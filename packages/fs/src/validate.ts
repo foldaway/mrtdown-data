@@ -171,7 +171,10 @@ async function validateServiceReferences(
   }
 
   const lineIds = await loadEntityIds(dataDir, records, 'line');
-  const stationIds = await loadEntityIds(dataDir, records, 'station');
+  const stationRecords = await loadEntityRecords(dataDir, records, 'station');
+  const stationById = new Map(
+    stationRecords.map((station) => [station.value.id, station]),
+  );
   const errors: string[] = [];
 
   for (const service of await loadEntityRecords(dataDir, records, 'service')) {
@@ -183,9 +186,40 @@ async function validateServiceReferences(
 
     for (const [revisionIndex, revision] of service.value.revisions.entries()) {
       for (const [stationIndex, station] of revision.path.stations.entries()) {
-        if (!stationIds.has(station.stationId)) {
+        const stationRecord = stationById.get(station.stationId);
+        if (!stationRecord) {
           errors.push(
             `${service.path}: revisions.${revisionIndex}.path.stations.${stationIndex}.stationId ${station.stationId} does not exist in station/`,
+          );
+          continue;
+        }
+
+        const matchingStationCodes = stationRecord.value.stationCodes.filter(
+          (stationCode) =>
+            stationCode.lineId === service.value.lineId &&
+            stationCode.code === station.displayCode,
+        );
+
+        if (station.displayCode !== '' && matchingStationCodes.length === 0) {
+          errors.push(
+            `${service.path}: revisions.${revisionIndex}.path.stations.${stationIndex}.displayCode ${station.displayCode} does not match a station code for ${station.stationId} on line ${service.value.lineId}`,
+          );
+          continue;
+        }
+
+        if (
+          matchingStationCodes.length > 0 &&
+          !matchingStationCodes.some((stationCode) =>
+            stationCodeContainsRevision(
+              stationCode.startedAt,
+              stationCode.endedAt,
+              revision.startAt,
+              revision.endAt,
+            ),
+          )
+        ) {
+          errors.push(
+            `${service.path}: revisions.${revisionIndex}.path.stations.${stationIndex}.displayCode ${station.displayCode} for station ${station.stationId} is outside the station code active window`,
           );
         }
       }
@@ -193,6 +227,32 @@ async function validateServiceReferences(
   }
 
   return errors;
+}
+
+function timestampForValidation(value: string): number {
+  const timestamp = Date.parse(value);
+  if (Number.isNaN(timestamp)) {
+    throw new Error(`Invalid timestamp for validation: ${value}`);
+  }
+  return timestamp;
+}
+
+function stationCodeContainsRevision(
+  stationCodeStartedAt: string,
+  stationCodeEndedAt: string | null,
+  revisionStartAt: string,
+  revisionEndAt: string | null,
+): boolean {
+  const stationCodeStart = timestampForValidation(stationCodeStartedAt);
+  const revisionStart = timestampForValidation(revisionStartAt);
+  const stationCodeEnd = stationCodeEndedAt
+    ? timestampForValidation(stationCodeEndedAt)
+    : Number.POSITIVE_INFINITY;
+  const revisionEnd = revisionEndAt
+    ? timestampForValidation(revisionEndAt)
+    : Number.POSITIVE_INFINITY;
+
+  return stationCodeStart <= revisionStart && revisionEnd <= stationCodeEnd;
 }
 
 async function validateIssueReferences(

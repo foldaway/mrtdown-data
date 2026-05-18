@@ -1,0 +1,59 @@
+{
+    "id": "SKLRT_E_CW",
+    "lineId": "SKLRT",
+    "name": {
+        "en-SG": "Sengkang LRT (East Loop) - Clockwise",
+        "zh-Hans": "盛港轻轨线（东部环线） - 顺时针方向",
+        "ms": "Laluan LRT Sengkang (Laluan Pusingan Timur) - Arah Jam",
+        "ta": "செங்காங் லைட் ரெயில் வரி (கிழக்கு புரோக்கி) - காலம் திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_initial",
+            "startAt": "2003-01-18",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "STC"
+                    },
+                    {
+                        "stationId": "CPV",
+                        "displayCode": "SE1"
+                    },
+                    {
+                        "stationId": "RMB",
+                        "displayCode": "SE2"
+                    },
+                    {
+                        "stationId": "BAK",
+                        "displayCode": "SE3"
+                    },
+                    {
+                        "stationId": "KGK",
+                        "displayCode": "SE4"
+                    },
+                    {
+                        "stationId": "RNG",
+                        "displayCode": "SE5"
+                    },
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "STC"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:18",
+                    "end": "00:37"
+                },
+                "weekends": {
+                    "start": "05:38",
+                    "end": "00:35"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,224 @@
+{
+    "id": "SKLRT_W_CW",
+    "lineId": "SKLRT",
+    "name": {
+        "en-SG": "Sengkang LRT (West Loop) - Clockwise",
+        "zh-Hans": "盛港轻轨线（西部环线） - 顺时针方向",
+        "ms": "Laluan LRT Sengkang (Laluan Pusingan Barat) - Arah Jam",
+        "ta": "செங்காங் லைட் ரெயில் வரி (மேற்கு புரோக்கி) - காலம் திசை"
+    },
+    "revisions": [
+        {
+            "id": "r_initial",
+            "startAt": "2005-01-29",
+            "endAt": "2007-11-15",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "STC"
+                    },
+                    {
+                        "stationId": "RNJ",
+                        "displayCode": "SW8"
+                    },
+                    {
+                        "stationId": "TKG",
+                        "displayCode": "SW7"
+                    },
+                    {
+                        "stationId": "LYR",
+                        "displayCode": "SW6"
+                    },
+                    {
+                        "stationId": "FNV",
+                        "displayCode": "SW5"
+                    },
+                    {
+                        "stationId": "TNG",
+                        "displayCode": "SW4"
+                    },
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "STC"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:18",
+                    "end": "00:37"
+                },
+                "weekends": {
+                    "start": "05:38",
+                    "end": "00:35"
+                }
+            }
+        },
+        {
+            "id": "r_2007_farmway",
+            "startAt": "2007-11-15",
+            "endAt": "2013-01-01",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "STC"
+                    },
+                    {
+                        "stationId": "RNJ",
+                        "displayCode": "SW8"
+                    },
+                    {
+                        "stationId": "TKG",
+                        "displayCode": "SW7"
+                    },
+                    {
+                        "stationId": "LYR",
+                        "displayCode": "SW6"
+                    },
+                    {
+                        "stationId": "FNV",
+                        "displayCode": "SW5"
+                    },
+                    {
+                        "stationId": "TNG",
+                        "displayCode": "SW4"
+                    },
+                    {
+                        "stationId": "FMW",
+                        "displayCode": "SW2"
+                    },
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "STC"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:18",
+                    "end": "00:37"
+                },
+                "weekends": {
+                    "start": "05:38",
+                    "end": "00:35"
+                }
+            }
+        },
+        {
+            "id": "r_2013_cheng_lim",
+            "startAt": "2013-01-01",
+            "endAt": "2015-06-27",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "STC"
+                    },
+                    {
+                        "stationId": "RNJ",
+                        "displayCode": "SW8"
+                    },
+                    {
+                        "stationId": "TKG",
+                        "displayCode": "SW7"
+                    },
+                    {
+                        "stationId": "LYR",
+                        "displayCode": "SW6"
+                    },
+                    {
+                        "stationId": "FNV",
+                        "displayCode": "SW5"
+                    },
+                    {
+                        "stationId": "TNG",
+                        "displayCode": "SW4"
+                    },
+                    {
+                        "stationId": "FMW",
+                        "displayCode": "SW2"
+                    },
+                    {
+                        "stationId": "CGL",
+                        "displayCode": "SW1"
+                    },
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "STC"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:18",
+                    "end": "00:37"
+                },
+                "weekends": {
+                    "start": "05:38",
+                    "end": "00:35"
+                }
+            }
+        },
+        {
+            "id": "r_2015_kupang",
+            "startAt": "2015-06-27",
+            "endAt": null,
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "STC"
+                    },
+                    {
+                        "stationId": "RNJ",
+                        "displayCode": "SW8"
+                    },
+                    {
+                        "stationId": "TKG",
+                        "displayCode": "SW7"
+                    },
+                    {
+                        "stationId": "LYR",
+                        "displayCode": "SW6"
+                    },
+                    {
+                        "stationId": "FNV",
+                        "displayCode": "SW5"
+                    },
+                    {
+                        "stationId": "TNG",
+                        "displayCode": "SW4"
+                    },
+                    {
+                        "stationId": "KPG",
+                        "displayCode": "SW3"
+                    },
+                    {
+                        "stationId": "FMW",
+                        "displayCode": "SW2"
+                    },
+                    {
+                        "stationId": "CGL",
+                        "displayCode": "SW1"
+                    },
+                    {
+                        "stationId": "SKG",
+                        "displayCode": "STC"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:18",
+                    "end": "00:37"
+                },
+                "weekends": {
+                    "start": "05:38",
+                    "end": "00:35"
+                }
+            }
+        }
+    ]
+}
