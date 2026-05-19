@@ -2,6 +2,7 @@
   "name": "@mrtdown/cli",
   "version": "2.0.0-alpha.22",
   "description": "Command-line tools for MRTDown data",
+  "private": true,
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
   "bugs": {
     "url": "https://github.com/foldaway/mrtdown-data/issues"
