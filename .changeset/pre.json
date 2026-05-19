@@ -1,0 +1,11 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "@mrtdown/cli": "2.0.0-alpha.22",
+    "@mrtdown/core": "2.0.0-alpha.22",
+    "@mrtdown/fs": "2.0.0-alpha.22",
+    "@mrtdown/triage": "2.0.0-alpha.22"
+  },
+  "changesets": []
+}

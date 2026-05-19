@@ -42,6 +42,17 @@ Step 3.5: Turborepo package task harness
 - Preserve the existing root command names so production stabilization patches
   continue to run the same entry points.
 
+Step 3.75: Package publishing
+
+- Add Changesets/npm publishing after package build and test orchestration is in
+  place, so reviewed package API changes can be published from `main`.
+- Keep this PR limited to release tooling, package metadata needed for npm, and
+  CI workflow wiring for package publication.
+- Do not combine this with GitHub Pages artifact publishing, target data
+  migration, or runtime/deploy cleanup.
+- Land this before package API changes that downstream consumers need quickly,
+  including `lineId` contract changes.
+
 4. GitHub Pages publishing foundation
    - Add GitHub Pages static data artifact generation and deployment before
      triage so `mrtdown-site` can begin consuming published data.
@@ -49,7 +60,7 @@ Step 3.5: Turborepo package task harness
      publication boundary.
    - Keep this PR limited to Pages workflow wiring, artifact generation, and
      docs for the published contract.
-   - Do not add Changesets/npm package publishing in this PR.
+   - Do not add or change Changesets/npm package publishing in this PR.
 
 5. Triage package
    - Add `packages/triage` with deterministic tests.
@@ -95,10 +106,6 @@ Step 7.5: Legacy source-data removal
    - Remove old Hono/API/DuckDB runtime files from this repo.
    - Remove or move `Dockerfile`, `fly.toml`, and Fly deploy workflow surfaces
      once the serving target exists in `mrtdown-site`.
-
-9. Package publishing
-   - Add Changesets/npm publishing only after package APIs and branch triggers
-     are reviewed.
 
 ## Mechanical Checks
 
