@@ -1,4 +1,11 @@
-import { access, mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import {
+  access,
+  cp,
+  mkdir,
+  mkdtemp,
+  readFile,
+  writeFile,
+} from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -150,9 +157,7 @@ describe('@mrtdown/fs', () => {
       fixtureDataDir,
       '2026-01-01T00:00:00Z',
     );
-    expect(manifest.lines).toMatchObject({
-      TGL: 'line/TGL.json',
-    });
+    expect(manifest.lines.TGL).toMatch(/^[0-9a-f]{64}$/);
     expect(renderPagesIndex(manifest)).toContain('mrtdown-data');
     expect(renderPagesIndex(manifest)).not.toContain('archive.tar.gz');
     expect(renderPagesIndex(manifest, { includeArchiveLinks: true })).toContain(
@@ -161,6 +166,27 @@ describe('@mrtdown/fs', () => {
     expect(
       renderPagesIndex(manifest, { includeFixtureExportLinks: true }),
     ).toContain('fixtures/');
+  });
+
+  it('includes issue impact events in manifest hashes', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+
+    const issueId = '2026-01-01-tgl-train-fault';
+    const before = await buildManifest(dataDir, '2026-01-01T00:00:00Z');
+    const impactPath = join(
+      dataDir,
+      'issue/2026/01/2026-01-01-tgl-train-fault/impact.ndjson',
+    );
+    const impactText = await readFile(impactPath, 'utf8');
+    const [firstImpactLine] = impactText.trimEnd().split('\n');
+    await writeFile(impactPath, `${impactText}${firstImpactLine}\n`);
+
+    const after = await buildManifest(dataDir, '2026-01-01T00:00:00Z');
+
+    expect(before.issues[issueId]).toMatch(/^[0-9a-f]{64}$/);
+    expect(after.issues[issueId]).toMatch(/^[0-9a-f]{64}$/);
+    expect(after.issues[issueId]).not.toBe(before.issues[issueId]);
   });
 
   it('rejects fixture line references that are missing from fixture lines', async () => {

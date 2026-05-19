@@ -1,14 +1,12 @@
-import { join, relative } from 'node:path';
+import { createHash } from 'node:crypto';
 import { type Manifest, ManifestSchema } from '@mrtdown/core';
-import {
-  type EntityCollection,
-  entityCollectionDirectories,
-  entityCollections,
-  issueDirectory,
-} from './constants.js';
-import { listEntityIds } from './entities.js';
-import { issueDatePathPartsFromId, listIssueIds } from './issues.js';
-import { toDataPath } from './paths.js';
+import { type EntityCollection, entityCollections } from './constants.js';
+import { listEntities } from './entities.js';
+import { listIssueBundles } from './issues.js';
+
+function sha256(value: unknown): string {
+  return createHash('sha256').update(JSON.stringify(value)).digest('hex');
+}
 
 function collectionManifestKey(
   collection: EntityCollection,
@@ -47,22 +45,14 @@ export async function buildManifest(
 
   for (const collection of entityCollections) {
     const key = collectionManifestKey(collection);
-    const ids = await listEntityIds(dataDir, collection);
-    for (const id of ids) {
-      manifest[key][id] = toDataPath(
-        relative(
-          dataDir,
-          join(dataDir, entityCollectionDirectories[collection], `${id}.json`),
-        ),
-      );
+    const records = await listEntities(dataDir, collection);
+    for (const record of records) {
+      manifest[key][record.id] = sha256(record.value);
     }
   }
 
-  for (const id of await listIssueIds(dataDir)) {
-    const { year, month } = issueDatePathPartsFromId(id);
-    manifest.issues[id] = toDataPath(
-      join(issueDirectory, year, month, id, 'issue.json'),
-    );
+  for (const bundle of await listIssueBundles(dataDir)) {
+    manifest.issues[bundle.issue.id] = sha256(bundle);
   }
 
   return ManifestSchema.parse(manifest);

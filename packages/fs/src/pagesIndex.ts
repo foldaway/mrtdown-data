@@ -168,8 +168,19 @@ function buildFooter(
   };
 }
 
-function buildTable(title: string, records: Record<string, string>): Element[] {
-  const rows = Object.entries(records).map(([id, path]) => {
+function issuePathFromManifestId(id: string): string {
+  const [year, month] = id.split('-');
+  return `issue/${year}/${month}/${id}/issue.json`;
+}
+
+function buildTable(
+  title: string,
+  records: Record<string, string>,
+  pathForId: (id: string) => string,
+): Element[] {
+  const rows = Object.keys(records).map((id) => {
+    const path = pathForId(id);
+
     return {
       type: 'element',
       tagName: 'tr',
@@ -386,16 +397,16 @@ export function renderPagesIndex(
   options: PagesIndexOptions = {},
 ): string {
   const sections = [
-    ['Lines', manifest.lines],
-    ['Towns', manifest.towns],
-    ['Landmarks', manifest.landmarks],
-    ['Operators', manifest.operators],
-    ['Services', manifest.services],
-    ['Stations', manifest.stations],
-    ['Issues', manifest.issues],
-  ] satisfies Array<[string, Record<string, string>]>;
-  const tables = sections.flatMap(([title, records]) =>
-    buildTable(title, records),
+    ['Lines', manifest.lines, (id: string) => `line/${id}.json`],
+    ['Towns', manifest.towns, (id: string) => `town/${id}.json`],
+    ['Landmarks', manifest.landmarks, (id: string) => `landmark/${id}.json`],
+    ['Operators', manifest.operators, (id: string) => `operator/${id}.json`],
+    ['Services', manifest.services, (id: string) => `service/${id}.json`],
+    ['Stations', manifest.stations, (id: string) => `station/${id}.json`],
+    ['Issues', manifest.issues, issuePathFromManifestId],
+  ] satisfies Array<[string, Record<string, string>, (id: string) => string]>;
+  const tables = sections.flatMap(([title, records, pathForId]) =>
+    buildTable(title, records, pathForId),
   );
   const generatedAt = new Date(manifest.generatedAt);
 
