@@ -7,5 +7,7 @@
     "@mrtdown/fs": "2.0.0-alpha.22",
     "@mrtdown/triage": "2.0.0-alpha.22"
   },
-  "changesets": []
+  "changesets": [
+    "red-tips-heal"
+  ]
 }
