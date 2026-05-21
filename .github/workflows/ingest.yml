@@ -29,30 +29,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Get npm cache directory
-        id: npm-cache-dir
-        shell: bash
-        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-      - uses: actions/cache@v4
-        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
-        with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - run: npm install
-      - run: npm run build
-        env:
-          DUCKDB_DATABASE_PATH: mrtdown.duckdb
-          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_RELEASE: production
+          cache: npm
+      - run: npm ci
       - run: npm run ingest:webhook
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           MESSAGE: ${{ toJSON(github.event.client_payload) }}
-          DUCKDB_DATABASE_PATH: mrtdown.duckdb
+      - run: npm run data:validate
       - name: Check for changes
         id: make-changes
         run: |-
@@ -85,7 +68,7 @@ jobs:
           git add -A
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          git commit -m "chore(data): Automated changes"
+          git commit -m "chore(data): automated changes"
           git push origin $BRANCH_NAME
       - name: Create Pull Request
         if: steps.make-changes.outputs.has_changes == 'true' && steps.brancher.outputs.latest-branch == 'main'
@@ -94,7 +77,6 @@ jobs:
           script: |
             const branchName = '${{ steps.target-branch.outputs.branch-name }}';
 
-            // Create PR using GitHub API
             const { data: pullRequest } = await github.rest.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,

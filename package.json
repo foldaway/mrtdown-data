@@ -35,7 +35,7 @@
     "release:version": "changeset version",
     "release:publish": "npm run build:packages && changeset publish",
     "test": "vitest --run",
-    "ingest:webhook": "tsx src/scripts/ingestViaWebhook.ts",
+    "ingest:webhook": "npm run build:triage && node packages/triage/dist/scripts/ingestViaWebhook.js",
     "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts",
     "db:generate": "tsx src/db/generate/index.ts",
     "api:dev": "tsx --watch api/index.ts",

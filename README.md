@@ -97,7 +97,7 @@ npm run api:dev            # Start dev server on port 4000
 
 ### Data Processing
 ```bash
-npm run ingest:webhook     # Process incoming webhook data
+npm run ingest:webhook     # Process incoming webhook data with @mrtdown/triage
 ```
 
 ### Testing & Quality
