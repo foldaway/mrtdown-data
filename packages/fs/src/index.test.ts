@@ -147,7 +147,7 @@ describe('@mrtdown/fs', () => {
         landmark: 36,
         line: 2,
         operator: 2,
-        service: 4,
+        service: 5,
         station: 17,
         town: 14,
       },
