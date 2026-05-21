@@ -49,7 +49,7 @@ function createServiceClaim(overrides: Partial<Claim> = {}): Claim {
 
 function createFacilityClaim(overrides: Partial<Claim> = {}): Claim {
   return {
-    entity: { type: 'facility', stationId: 'NS1', kind: 'lift' },
+    entity: { type: 'facility', stationId: 'NS1', lineId: null, kind: 'lift' },
     effect: null,
     scopes: { service: null },
     statusSignal: null,
@@ -856,6 +856,7 @@ describe('computeImpactFromEvidenceClaims', () => {
     const facilityEntity = {
       type: 'facility' as const,
       stationId: 'NS1',
+      lineId: null,
       kind: 'lift' as const,
     };
     const issueBundle = createMockBundle([

@@ -496,6 +496,7 @@ describe('deriveCurrentState', () => {
     const facilityEntity = {
       type: 'facility' as const,
       stationId: 'JUR',
+      lineId: null,
       kind: 'lift' as const,
     };
     const facilityKey = keyForAffectedEntity(facilityEntity);

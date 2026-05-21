@@ -22,7 +22,7 @@ export type AffectedEntityFacilityKind = z.infer<
 export const AffectedEntityFacilitySchema = z.object({
   type: z.literal('facility'),
   stationId: z.string(),
-  lineId: z.string().nullable().optional(),
+  lineId: z.string().nullable(),
   kind: AffectedEntityFacilityKindSchema,
 });
 export type AffectedEntityFacility = z.infer<
