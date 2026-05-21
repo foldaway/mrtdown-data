@@ -1,8 +1,8 @@
 # mrtdown-data
 
-Canonical target-layout data and package tooling for MRTDown. This repository
-stores reviewed Singapore rail entities and issue records, validates them with
-the target CLI, and publishes a static GitHub Pages data artifact.
+Canonical data and package tooling for MRTDown. This repository stores reviewed
+Singapore rail entities and issue records, validates them with the MRTDown CLI,
+and publishes a static GitHub Pages data artifact.
 
 Runtime serving now belongs outside this repository. The legacy Hono API,
 DuckDB generator, Dockerfile, and Fly deploy config have been removed as part of
@@ -25,7 +25,7 @@ the data-overhaul split.
 # Install dependencies
 npm install
 
-# Build target packages and validate canonical data
+# Build workspace packages and validate canonical data
 npm run build:packages
 npm run data:validate
 
@@ -44,14 +44,14 @@ npx biome check
 npm run check              # Fast deterministic harness checks
 npm run check:docs         # Verify repo-relative documentation links
 npm run check:boundaries   # Enforce package import boundaries when packages exist
-npm run build              # Build target packages with Turborepo
-npm run build:packages     # Build target packages with Turborepo
+npm run build              # Build workspace packages with Turborepo
+npm run build:packages     # Build workspace packages with Turborepo
 npm run build:core         # Build @mrtdown/core
 npm run build:fs           # Build @mrtdown/fs
 npm run build:triage       # Build @mrtdown/triage
 npm run build:cli          # Build @mrtdown/cli
-npm run typecheck          # Compile-check target packages
-npm run test:packages      # Run target package tests with Turborepo
+npm run typecheck          # Compile-check workspace packages
+npm run test:packages      # Run package tests with Turborepo
 npm run test:core          # Run @mrtdown/core deterministic tests
 npm run test:fs            # Run @mrtdown/fs deterministic tests
 npm run test:triage        # Run @mrtdown/triage deterministic tests
@@ -70,8 +70,8 @@ cleanup report.
 ### Static Pages Export
 
 `npm run pages:build` writes a GitHub Pages artifact to `pages-dist/`. This
-publishes canonical target-layout `data/` at the artifact root and keeps
-`fixtures/data` available under `fixtures/` for tests and examples.
+publishes canonical `data/` at the artifact root and keeps `fixtures/data`
+available under `fixtures/` for tests and examples.
 
 Preview branches and pull requests build the same bundle in CI and upload it as
 a one-day artifact. Only `main` deploys the bundle to GitHub Pages.
@@ -91,7 +91,7 @@ It also includes the deterministic fixture export:
 - `fixtures/manifest.json`
 - `fixtures/archive.tar.gz`
 - `fixtures/archive.zip`
-- the fixture target-layout data files used to build the fixture manifest
+- the fixture data files used to build the fixture manifest
 
 ### Data Processing
 
@@ -119,7 +119,7 @@ npx biome check            # Lint and format code
 ### Data Flow
 
 1. **Canonical data** (`/data/{station,line,service,operator,town,landmark,issue}`)
-2. **Target CLI validation and static artifact generation**
+2. **CLI validation and static artifact generation**
 3. **Published Pages artifact** for downstream consumers
 
 ## Key Features
@@ -132,7 +132,7 @@ npx biome check            # Lint and format code
 - **Time-zone aware**: All operations use Singapore timezone
 - **Service hours logic**: Different schedules for weekdays, weekends, and
   holidays
-- **Webhook integration**: Target-layout evidence ingestion through
+- **Webhook integration**: Canonical data evidence ingestion through
   `@mrtdown/triage`
 
 ## Issue Data Structure
@@ -145,7 +145,7 @@ npx biome check            # Lint and format code
 
 ## Development Notes
 
-- Target CLI validation is required when canonical data changes.
+- CLI validation is required when canonical data changes.
 - Keep generated `pages-dist/`, package `dist/`, and local migration scratch
   files out of commits unless a PR explicitly changes artifact policy.
 - Keep generated data and hand-authored code in separate PRs whenever practical.
