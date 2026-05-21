@@ -16,10 +16,11 @@ A comprehensive data repository and API system that tracks Singapore's MRT (Mass
 # Install dependencies
 npm install
 
-# Build and generate database
-npm run build
+# Build target packages and validate canonical data
+npm run build:packages
+npm run data:validate
 
-# Start development API server
+# Start legacy development API server
 npm run api:dev  # Runs on port 4000
 
 # Run tests
@@ -53,7 +54,8 @@ npm run pages:build        # Build the GitHub Pages static data artifact
 ```
 
 See `AGENTS.md` for the short agent map and `docs/DATA_OVERHAUL_SPLIT.md` for
-the planned data-overhaul split.
+the planned data-overhaul split. Fly production deploys are temporarily frozen
+during the transition; see `docs/PRODUCTION_DEPLOY_FREEZE.md`.
 
 ### Static Pages Export
 
@@ -81,10 +83,11 @@ It also includes the deterministic fixture export:
 - `fixtures/archive.zip`
 - the fixture target-layout data files used to build the fixture manifest
 
-### Database Operations
+### Legacy Database Operations
 ```bash
-npm run build              # Compile TypeScript (auto-runs db:generate)
-npm run db:generate        # Generate DuckDB database from source data
+npm run typecheck          # Compile-check TypeScript without legacy postbuild
+npm run build              # Legacy production build path pending runtime cleanup
+npm run db:generate        # Legacy DuckDB generator pending runtime cleanup
 ```
 
 ### API Development
@@ -94,7 +97,7 @@ npm run api:dev            # Start dev server on port 4000
 
 ### Data Processing
 ```bash
-npm run ingest:webhook     # Process incoming webhook data
+npm run ingest:webhook     # Process incoming webhook data with @mrtdown/triage
 ```
 
 ### Testing & Quality
@@ -128,9 +131,9 @@ Located in `/src/api/routes/`:
 All endpoints require Bearer token authentication except `/docs`.
 
 ### Data Flow
-1. **Source data** (JSON files in `/data/source/`)
-2. **Database generation** (DuckDB with complex analytics)
-3. **API endpoints** (Real-time queries with multi-language support)
+1. **Canonical data** (`/data/{station,line,service,operator,town,landmark,issue}`)
+2. **Target CLI validation and static artifact generation**
+3. **Legacy API endpoints** (pending runtime cleanup in the overhaul split)
 
 ## Key Features
 
@@ -150,7 +153,7 @@ All endpoints require Bearer token authentication except `/docs`.
 
 ## Development Notes
 
-- Database regeneration required when source data changes
+- Target CLI validation required when canonical data changes
 - API responses include related entities for client efficiency
 - Performance optimized for read-heavy analytical workloads
 - Extensive use of CTEs for complex uptime calculations

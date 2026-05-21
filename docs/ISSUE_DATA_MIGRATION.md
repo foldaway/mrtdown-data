@@ -6,7 +6,9 @@ This report covers the Step 7 split from `docs/DATA_OVERHAUL_SPLIT.md`.
 
 - Migrated legacy `data/source/issue/*.json` records into the target
   `data/issue/YYYY/MM/<issue_id>/` layout.
-- Kept `data/source/` in place. Legacy source-data removal belongs to Step 7.5.
+- Removed `data/source/` in the follow-up Step 7.5 split after validating that
+  target issue coverage matched the legacy source set. See
+  `docs/LEGACY_SOURCE_DATA_REMOVAL.md`.
 - Did not change runtime, API, DuckDB, deploy, or package publishing surfaces.
 
 ## Source Coverage
