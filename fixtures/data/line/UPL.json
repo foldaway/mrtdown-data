@@ -1,0 +1,32 @@
+{
+  "id": "UPL",
+  "name": {
+    "en-SG": "Upperline",
+    "zh-Hans": "上环线",
+    "ms": "Laluan Upperline",
+    "ta": "அப்பர்லைன் வழி"
+  },
+  "type": "mrt.high",
+  "color": "#6f2dbd",
+  "startedAt": "2027-06-01",
+  "serviceIds": [
+    "UPL_MAIN"
+  ],
+  "operators": [
+    {
+      "operatorId": "SMRT_TRAINS",
+      "startedAt": "2027-06-01",
+      "endedAt": null
+    }
+  ],
+  "operatingHours": {
+    "weekdays": {
+      "start": "05:30",
+      "end": "00:00"
+    },
+    "weekends": {
+      "start": "05:30",
+      "end": "00:00"
+    }
+  }
+}

@@ -126,6 +126,7 @@ describe('@mrtdown/fs', () => {
     await expect(listEntityIds(fixtureDataDir, 'line')).resolves.toEqual([
       'SLL',
       'TGL',
+      'UPL',
     ]);
 
     const bundle = await readIssueBundle(
@@ -145,10 +146,10 @@ describe('@mrtdown/fs', () => {
       checked: {
         issue: 2,
         landmark: 36,
-        line: 2,
+        line: 3,
         operator: 2,
-        service: 5,
-        station: 17,
+        service: 6,
+        station: 18,
         town: 14,
       },
     });
