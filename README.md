@@ -1,12 +1,21 @@
 # mrtdown-data
 
-A comprehensive data repository and API system that tracks Singapore's MRT (Mass Rapid Transit) service disruptions, maintenance, and infrastructure issues. Functions as a status monitoring system for Singapore's public transportation network.
+Canonical data and package tooling for MRTDown. This repository stores reviewed
+Singapore rail entities and issue records, validates them with the MRTDown CLI,
+and publishes a static GitHub Pages data artifact.
+
+Runtime serving now belongs outside this repository. The legacy Hono API,
+DuckDB generator, Dockerfile, and Fly deploy config have been removed as part of
+the data-overhaul split.
 
 ## Tech Stack
 
-- **Backend**: Node.js + TypeScript, Hono API framework
-- **Database**: DuckDB with normalized relational schema
-- **Validation**: Zod schemas with OpenAPI integration
+- **Data packages**: TypeScript workspaces under `packages/*`
+- **Validation**: Zod schemas in `@mrtdown/core`
+- **Storage tooling**: file-backed repositories and writers in `@mrtdown/fs`
+- **Triage tooling**: LLM-assisted evidence processing in `@mrtdown/triage`
+- **CLI**: validation, inspection, creation, and artifact helpers in
+  `@mrtdown/cli`
 - **Testing**: Vitest
 - **Linting**: Biome
 
@@ -16,12 +25,9 @@ A comprehensive data repository and API system that tracks Singapore's MRT (Mass
 # Install dependencies
 npm install
 
-# Build target packages and validate canonical data
+# Build workspace packages and validate canonical data
 npm run build:packages
 npm run data:validate
-
-# Start legacy development API server
-npm run api:dev  # Runs on port 4000
 
 # Run tests
 npm test
@@ -33,16 +39,19 @@ npx biome check
 ## Development Commands
 
 ### Agent Harness
+
 ```bash
 npm run check              # Fast deterministic harness checks
 npm run check:docs         # Verify repo-relative documentation links
 npm run check:boundaries   # Enforce package import boundaries when packages exist
-npm run build:packages     # Build target packages with Turborepo
-npm run build:core         # Build the new @mrtdown/core package
-npm run build:fs           # Build the new @mrtdown/fs package
-npm run build:triage       # Build the new @mrtdown/triage package
-npm run build:cli          # Build the new @mrtdown/cli package
-npm run test:packages      # Run target package tests with Turborepo
+npm run build              # Build workspace packages with Turborepo
+npm run build:packages     # Build workspace packages with Turborepo
+npm run build:core         # Build @mrtdown/core
+npm run build:fs           # Build @mrtdown/fs
+npm run build:triage       # Build @mrtdown/triage
+npm run build:cli          # Build @mrtdown/cli
+npm run typecheck          # Compile-check workspace packages
+npm run test:packages      # Run package tests with Turborepo
 npm run test:core          # Run @mrtdown/core deterministic tests
 npm run test:fs            # Run @mrtdown/fs deterministic tests
 npm run test:triage        # Run @mrtdown/triage deterministic tests
@@ -54,14 +63,15 @@ npm run pages:build        # Build the GitHub Pages static data artifact
 ```
 
 See `AGENTS.md` for the short agent map and `docs/DATA_OVERHAUL_SPLIT.md` for
-the planned data-overhaul split. Fly production deploys are temporarily frozen
-during the transition; see `docs/PRODUCTION_DEPLOY_FREEZE.md`.
+the planned data-overhaul split. See
+`docs/RUNTIME_REMOVAL_DEPLOY_CLEANUP.md` for the Step 8 runtime and deploy
+cleanup report.
 
 ### Static Pages Export
 
 `npm run pages:build` writes a GitHub Pages artifact to `pages-dist/`. This
-publishes canonical target-layout `data/` at the artifact root and keeps
-`fixtures/data` available under `fixtures/` for tests and examples.
+publishes canonical `data/` at the artifact root and keeps `fixtures/data`
+available under `fixtures/` for tests and examples.
 
 Preview branches and pull requests build the same bundle in CI and upload it as
 a one-day artifact. Only `main` deploys the bundle to GitHub Pages.
@@ -81,80 +91,62 @@ It also includes the deterministic fixture export:
 - `fixtures/manifest.json`
 - `fixtures/archive.tar.gz`
 - `fixtures/archive.zip`
-- the fixture target-layout data files used to build the fixture manifest
-
-### Legacy Database Operations
-```bash
-npm run typecheck          # Compile-check TypeScript without legacy postbuild
-npm run build              # Legacy production build path pending runtime cleanup
-npm run db:generate        # Legacy DuckDB generator pending runtime cleanup
-```
-
-### API Development
-```bash
-npm run api:dev            # Start dev server on port 4000
-```
+- the fixture data files used to build the fixture manifest
 
 ### Data Processing
+
 ```bash
 npm run ingest:webhook     # Process incoming webhook data with @mrtdown/triage
 ```
 
-### Testing & Quality
+### Testing and Quality
+
 ```bash
 npm test                   # Run Vitest tests
 npx biome check            # Lint and format code
 ```
 
-### Database Queries
-```bash
-# Query the database (use -readonly when API server is running)
-duckdb -readonly -c "SELECT * FROM issues LIMIT 10" mrtdown.duckdb
-```
-
 ## Architecture Overview
 
 ### Core Data Models
+
 - **Lines**: MRT/LRT lines (NSL, EWL, CCL, etc.) with service schedules
-- **Issues**: Disruptions, maintenance, infrastructure problems with time intervals
+- **Issues**: Disruptions, maintenance, infrastructure problems with time
+  intervals
 - **Stations**: Station information with multi-language support
 - **Time-aware**: All operations handle Singapore timezone (`Asia/Singapore`)
 
-### API Structure
-Located in `/src/api/routes/`:
-- **Overview**: System-wide status and line summaries
-- **Lines**: Individual line profiles with detailed uptime metrics
-- **Issues**: Issue details and historical data
-- **Stations**: Station-specific information
-- **Analytics**: Statistical analysis endpoints
-
-All endpoints require Bearer token authentication except `/docs`.
-
 ### Data Flow
+
 1. **Canonical data** (`/data/{station,line,service,operator,town,landmark,issue}`)
-2. **Target CLI validation and static artifact generation**
-3. **Legacy API endpoints** (pending runtime cleanup in the overhaul split)
+2. **CLI validation and static artifact generation**
+3. **Published Pages artifact** for downstream consumers
 
 ## Key Features
 
-- **Real-time Status Monitoring**: Track MRT line disruptions and maintenance
-- **Historical Analytics**: Complex uptime calculations and service metrics
-- **Multi-language Support**: Content available in 4 languages
-- **Time-zone Aware**: All operations in Singapore timezone
-- **Service Hours Logic**: Different schedules for weekdays/weekends/holidays
-- **Webhook Integration**: Real-time data ingestion capabilities
+- **Canonical rail data**: Track MRT line disruptions and maintenance in a
+  reviewed file layout
+- **Static publishing**: Generate deterministic Pages artifacts for downstream
+  consumers
+- **Multi-language support**: Content available in 4 languages
+- **Time-zone aware**: All operations use Singapore timezone
+- **Service hours logic**: Different schedules for weekdays, weekends, and
+  holidays
+- **Webhook integration**: Canonical data evidence ingestion through
+  `@mrtdown/triage`
 
 ## Issue Data Structure
 
-- **File naming**: `YYYY-MM-DD-descriptive-slug.json`
+- **Directory layout**: `data/issue/YYYY/MM/<issue_id>/`
+- **Bundle files**: `issue.json`, `evidence.ndjson`, and `impact.ndjson`
 - **Types**: `disruption`, `maintenance`, `infra`
 - **Time intervals**: Start/end timestamps with timezone awareness
 - **Multi-language**: All titles have 4-language translations
 
 ## Development Notes
 
-- Target CLI validation required when canonical data changes
-- API responses include related entities for client efficiency
-- Performance optimized for read-heavy analytical workloads
-- Extensive use of CTEs for complex uptime calculations
-- Proper handling of ongoing issues (end_at = NULL)
+- CLI validation is required when canonical data changes.
+- Keep generated `pages-dist/`, package `dist/`, and local migration scratch
+  files out of commits unless a PR explicitly changes artifact policy.
+- Keep generated data and hand-authored code in separate PRs whenever practical.
+- Properly represent ongoing issues with open-ended periods.
