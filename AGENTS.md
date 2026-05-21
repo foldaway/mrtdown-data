@@ -5,19 +5,13 @@ in `docs/` and link to them from here.
 
 ## Current State
 
-This stacked branch is still mostly the legacy MRTDown data API repository, with
-the first target packages added:
+This repository is the canonical target-layout MRTDown data repository. The
+legacy runtime, API, DuckDB generator, and Fly deploy surfaces have been removed
+from this repo.
 
-- `src/api/` contains Hono routes and response schemas.
-- `src/db/` generates and reads the DuckDB database.
-- `src/schema/`, `src/model/`, and `src/helpers/` contain shared runtime types and
-  calculations.
-- `src/util/ingestContent/` and `src/scripts/` handle ingestion and maintenance
-  utilities.
 - `data/{station,line,service,operator,town,landmark,issue}` contains the
   canonical target-layout data.
-- `packages/core` contains the new package/data architecture's shared schemas
-  and pure period helpers.
+- `packages/core` contains shared schemas and pure period helpers.
 - `packages/fs` contains file-backed repositories and writers for the target
   data layout.
 - `packages/triage` contains LLM-assisted evidence triage and replay utilities.
@@ -47,12 +41,9 @@ The target architecture is a package/data repository:
 
 ## Commands
 
-For the current legacy app:
-
 - `npm ci`: install dependencies from the lockfile.
-- `npm run typecheck`: compile-check TypeScript without running the legacy
-  DuckDB postbuild pipeline.
-- `npm run build`: legacy production build path pending runtime cleanup.
+- `npm run typecheck`: compile-check target packages.
+- `npm run build`: build all target packages with Turborepo.
 - `npm run build:packages`: build all target packages with Turborepo.
 - `npm run build:core`: compile the target `@mrtdown/core` package.
 - `npm run build:fs`: compile the target `@mrtdown/fs` package.
@@ -69,6 +60,9 @@ For the current legacy app:
 - `npm run test:cli`: run `@mrtdown/cli` deterministic tests.
 - `npm run data:validate`: validate canonical `data` with the target CLI.
 - `npm run fixtures:validate`: validate `fixtures/data` with the target CLI.
+- `npm run pages:build`: build the static GitHub Pages data artifact.
+- `npm run ingest:webhook`: process incoming webhook evidence with
+  `@mrtdown/triage`.
 - `npm run check`: run harness checks that should stay fast and deterministic.
 - `npm run check:boundaries`: enforce package import boundaries when packages
   exist.
@@ -93,9 +87,10 @@ the repository shape.
 
 ## Deeper Docs
 
-- `README.md`: current legacy app overview and commands.
+- `README.md`: repository overview and commands.
 - `docs/DATA_OVERHAUL_SPLIT.md`: planned split sequence for the data overhaul.
 - `docs/LEGACY_SOURCE_DATA_REMOVAL.md`: Step 7.5 source-data removal report.
-- `docs/PRODUCTION_DEPLOY_FREEZE.md`: temporary Fly deploy freeze note.
+- `docs/RUNTIME_REMOVAL_DEPLOY_CLEANUP.md`: Step 8 runtime and deploy cleanup
+  report.
 - `CLAUDE.md`: Claude-specific compatibility entry point.
 - `.github/copilot-instructions.md`: Copilot compatibility entry point.
