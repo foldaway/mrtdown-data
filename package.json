@@ -5,18 +5,16 @@
   "description": "Data repository",
   "packageManager": "npm@11.11.0",
   "type": "module",
-  "main": "dist/api/index.js",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "build": "tsc",
-    "postbuild": "npm run db:generate && npm run sentry:sourcemaps",
+    "build": "npm run build:packages",
     "check": "npm run lint && npm run check:boundaries && npm run check:docs",
     "check:boundaries": "node scripts/check-package-boundaries.mjs",
     "check:docs": "node scripts/check-docs-links.mjs",
     "lint": "biome check AGENTS.md CLAUDE.md README.md docs fixtures .changeset .github/copilot-instructions.md biome.json package.json turbo.json vitest.config.ts packages scripts",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "npm run build:packages",
     "build:packages": "turbo run build --filter=@mrtdown/*",
     "build:core": "turbo run build --filter=@mrtdown/core",
     "build:fs": "turbo run build --filter=@mrtdown/fs",
@@ -35,11 +33,7 @@
     "release:version": "changeset version",
     "release:publish": "npm run build:packages && changeset publish",
     "test": "vitest --run",
-    "ingest:webhook": "npm run build:triage && node packages/triage/dist/scripts/ingestViaWebhook.js",
-    "check-rss-feeds": "tsx src/scripts/checkRssFeeds.ts",
-    "db:generate": "tsx src/db/generate/index.ts",
-    "api:dev": "tsx --watch api/index.ts",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject ./dist && sentry-cli sourcemaps upload ./dist --release $SENTRY_RELEASE"
+    "ingest:webhook": "npm run build:triage && node packages/triage/dist/scripts/ingestViaWebhook.js"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -52,29 +46,6 @@
     "turbo": "^2.8.20",
     "typescript": "^5.8.3",
     "vitest": "^3.0.9"
-  },
-  "dependencies": {
-    "@duckdb/node-api": "^1.4.3-r.2",
-    "@hono/node-server": "^1.19.6",
-    "@hono/standard-validator": "^0.1.4",
-    "@hono/zod-validator": "^0.4.3",
-    "@scalar/hono-api-reference": "^0.9.13",
-    "@sentry/cli": "^2.58.0",
-    "@sentry/node": "^10.27.0",
-    "dotenv": "^16.4.7",
-    "fuse.js": "^7.1.0",
-    "generic-pool": "^3.9.0",
-    "hast-util-from-html": "^2.0.3",
-    "hast-util-to-mdast": "^10.1.2",
-    "hono": "^4.11.4",
-    "hono-openapi": "^0.5.0-rc.3",
-    "luxon": "^3.5.0",
-    "mdast-util-gfm": "^3.1.0",
-    "mdast-util-to-markdown": "^2.1.2",
-    "openai": "^5.16.0",
-    "rrule-rust": "^2.0.2",
-    "rss-parser": "^3.13.0",
-    "zod": "^4.0.14"
   },
   "overrides": {
     "zod": "^4.0.14"
