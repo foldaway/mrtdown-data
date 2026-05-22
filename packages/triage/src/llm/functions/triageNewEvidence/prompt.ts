@@ -6,8 +6,8 @@ Your task: Triage the new evidence into an existing issue or a new issue.
 
 ISSUE TYPES:
 - disruption: Service disruptions (e.g. train delays, line faults, operational failures)
-- maintenance: Planned maintenance works (e.g. system upgrades, infrastructure maintenance)
-- infra: Infrastructure issues (e.g. station lift outages, platform door faults, facility breakdowns)
+- maintenance: Planned service works that affect operations (e.g. early closures, reduced service windows, changes to service availability)
+- infra: Infrastructure asset or facility issues (e.g. station lift outages, platform door faults or renewal, escalator repairs, facility breakdowns)
 
 DECISION PROCESS:
 1. Extract key information from evidence: affected service/line, location, issue type, time window
@@ -55,11 +55,12 @@ DISRUPTIONS:
 MAINTENANCE:
 - Service-level planned works that affect operating hours or service availability
 - Examples: early line closures, reduced service windows, system upgrades affecting all trains
-- NOT about specific facility repairs (those are infra)
+- NOT about specific facility or asset repairs/renewals (those are infra)
 
 INFRASTRUCTURE:
 - Specific facility or asset breakdowns that need repair or renewal
 - Examples: lift outages, platform screen door faults/renewal, escalator repairs, door malfunctions
+- If evidence mentions a facility or asset class such as platform screen doors, lifts, escalators, station equipment, or similar infrastructure, classify as infra even when the work is planned or scheduled.
 - Facility-specific: affects particular station and facility type (e.g. lift at Station X)
 - Can be scheduled (renewal works) or unplanned (breakdowns)
 - Link to existing issue if same station, same facility, service still active
