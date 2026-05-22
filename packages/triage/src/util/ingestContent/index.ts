@@ -14,6 +14,7 @@ import { generateIssueTitleAndSlug } from '../../llm/functions/generateIssueTitl
 import { translate } from '../../llm/functions/translate/index.js';
 import { triageNewEvidence } from '../../llm/functions/triageNewEvidence/index.js';
 import { assert } from '../assert.js';
+import { formatContentTextForIngest } from './helpers/formatContentTextForIngest.js';
 import { getSlugDateTimeFromClaims } from './helpers/getSlugDateTimeFromClaims.js';
 import type { IngestContent } from './types.js';
 
@@ -68,7 +69,7 @@ export async function ingestContent(
     ...content,
     createdAt,
   };
-  const text = getText(normalizedContent);
+  const text = formatContentTextForIngest(normalizedContent);
   console.log('[ingestContent]', normalizedContent);
 
   const repo = createRepository(dataDir);
@@ -239,33 +240,6 @@ export async function ingestContent(
   }
 
   return null;
-}
-
-/**
- * Extracts the primary text content from an IngestContent item based on its source type.
- *
- * @param content - The content to extract text from.
- * @returns The text body (selftext for Reddit, summary for news, text for social).
- */
-function getText(content: IngestContent): string {
-  switch (content.source) {
-    case 'reddit': {
-      return content.selftext;
-    }
-    case 'news-website': {
-      return content.summary;
-    }
-    case 'twitter':
-    case 'mastodon': {
-      return content.text;
-    }
-    default: {
-      const exhaustive: never = content;
-      throw new Error(
-        `Unhandled content source: ${JSON.stringify(exhaustive)}`,
-      );
-    }
-  }
 }
 
 /**

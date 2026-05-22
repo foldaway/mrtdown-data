@@ -25,6 +25,7 @@
     "test:fs": "turbo run test --filter=@mrtdown/fs",
     "test:triage": "turbo run test --filter=@mrtdown/triage",
     "test:eval": "npm --workspace @mrtdown/triage run test:eval",
+    "test:eval:changed": "node scripts/run-changed-llm-evals.mjs",
     "test:cli": "turbo run test --filter=@mrtdown/cli",
     "data:validate": "npm run build:cli && node packages/cli/dist/index.js --data-dir data validate",
     "fixtures:validate": "npm run build:cli && node packages/cli/dist/index.js --data-dir fixtures/data validate",

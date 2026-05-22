@@ -1,0 +1,59 @@
+name: LLM Evals
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/llm-evals.yml'
+      - 'package*.json'
+      - 'packages/triage/src/llm/functions/**'
+      - 'scripts/run-changed-llm-evals.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  changed-function-evals:
+    runs-on: ubuntu-latest
+    env:
+      CAN_RUN_EVALS: ${{ github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository }}
+    steps:
+      - name: Skip fork pull request
+        if: ${{ env.CAN_RUN_EVALS != 'true' }}
+        run: echo "Skipping LLM evals for fork pull request because repository secrets are unavailable."
+
+      - uses: actions/checkout@v4
+        if: ${{ env.CAN_RUN_EVALS == 'true' && github.event_name == 'pull_request' }}
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - uses: actions/checkout@v4
+        if: ${{ env.CAN_RUN_EVALS == 'true' && github.event_name == 'workflow_dispatch' }}
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        if: ${{ env.CAN_RUN_EVALS == 'true' }}
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+        if: ${{ env.CAN_RUN_EVALS == 'true' }}
+
+      - run: npm run build:packages
+        if: ${{ env.CAN_RUN_EVALS == 'true' }}
+
+      - name: Run changed LLM function evals
+        if: ${{ env.CAN_RUN_EVALS == 'true' && github.event_name == 'pull_request' }}
+        run: node scripts/run-changed-llm-evals.mjs "origin/${BASE_REF}...HEAD"
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Run changed LLM function evals
+        if: ${{ env.CAN_RUN_EVALS == 'true' && github.event_name == 'workflow_dispatch' }}
+        run: node scripts/run-changed-llm-evals.mjs "origin/main...HEAD"
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

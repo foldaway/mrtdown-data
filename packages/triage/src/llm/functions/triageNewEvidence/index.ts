@@ -10,10 +10,11 @@ import { assert } from '../../../util/assert.js';
 import { getOpenAiClient } from '../../client.js';
 import type { ToolRegistry } from '../../common/tool.js';
 import { buildSystemPrompt } from './prompt.js';
+import { FindIssuesByDateRangeTool } from './tools/FindIssuesByDateRangeTool.js';
 import { FindIssuesTool } from './tools/FindIssuesTool.js';
 import { GetIssueTool } from './tools/GetIssueTool.js';
 
-const TOOL_CALL_LIMIT = 5;
+const TOOL_CALL_LIMIT = 8;
 
 const ResponseSchema = z.object({
   result: z.discriminatedUnion('kind', [
@@ -46,9 +47,11 @@ export async function triageNewEvidence(params: TriageNewEvidenceParams) {
   assert(evidenceTs.isValid, `Invalid date: ${params.newEvidence.ts}`);
 
   const findIssuesTool = new FindIssuesTool(params.repo);
+  const findIssuesByDateRangeTool = new FindIssuesByDateRangeTool(params.repo);
   const getIssueTool = new GetIssueTool(params.repo);
   const toolRegistry: ToolRegistry = {
     [findIssuesTool.name]: findIssuesTool,
+    [findIssuesByDateRangeTool.name]: findIssuesByDateRangeTool,
     [getIssueTool.name]: getIssueTool,
   };
 
