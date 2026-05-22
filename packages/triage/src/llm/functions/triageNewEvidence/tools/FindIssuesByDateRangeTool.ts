@@ -1,4 +1,10 @@
-import type { IssueBundle, Period, ServiceScope } from '@mrtdown/core';
+import {
+  type IssueBundle,
+  normalizeRecurringPeriod,
+  type Period,
+  type PeriodFixed,
+  type ServiceScope,
+} from '@mrtdown/core';
 import type { MRTDownRepository } from '@mrtdown/fs';
 import { DateTime, Interval } from 'luxon';
 import type { Table } from 'mdast';
@@ -189,6 +195,17 @@ function issueDateOverlapsWindow(issueId: string, window: Interval): boolean {
 }
 
 function periodOverlapsWindow(period: Period, window: Interval): boolean {
+  if (period.kind === 'recurring') {
+    return recurringPeriodOverlapsWindow(period, window);
+  }
+
+  return fixedPeriodOverlapsWindow(period, window);
+}
+
+function fixedPeriodOverlapsWindow(
+  period: PeriodFixed,
+  window: Interval,
+): boolean {
   const start = DateTime.fromISO(period.startAt, { setZone: true });
   const end = DateTime.fromISO(period.endAt ?? window.end?.toISO() ?? '', {
     setZone: true,
@@ -199,6 +216,26 @@ function periodOverlapsWindow(period: Period, window: Interval): boolean {
   }
 
   return window.overlaps(inclusiveInterval(start, end));
+}
+
+function recurringPeriodOverlapsWindow(
+  period: Extract<Period, { kind: 'recurring' }>,
+  window: Interval,
+): boolean {
+  const start = DateTime.fromISO(period.startAt, { setZone: true });
+  const end = DateTime.fromISO(period.endAt, { setZone: true });
+
+  if (
+    !start.isValid ||
+    !end.isValid ||
+    !window.overlaps(inclusiveInterval(start, end))
+  ) {
+    return false;
+  }
+
+  return normalizeRecurringPeriod(period).some((fixedPeriod) =>
+    fixedPeriodOverlapsWindow(fixedPeriod, window),
+  );
 }
 
 function dateTimeOverlapsWindow(dateTime: DateTime, window: Interval): boolean {

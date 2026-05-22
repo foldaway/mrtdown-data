@@ -42,6 +42,28 @@ describe('FindIssuesByDateRangeTool', () => {
     expect(output).toContain('2026-01-01T07:00:00+08:00');
   });
 
+  test('matches recurring periods only during scheduled occurrences', async () => {
+    const repo = new MRTDownRepository({
+      store: new FileStore(FIXTURE_DATA_DIR),
+    });
+    const tool = new FindIssuesByDateRangeTool(repo);
+
+    const scheduledOutput = await tool.runner({
+      startAt: '2027-08-22T09:00:00+08:00',
+      endAt: '2027-08-22T09:00:00+08:00',
+    });
+    const betweenOccurrencesOutput = await tool.runner({
+      startAt: '2027-08-25T09:00:00+08:00',
+      endAt: '2027-08-25T09:00:00+08:00',
+    });
+
+    expect(scheduledOutput).toContain('2027-08-21-btl-weekend-late-openings');
+    expect(scheduledOutput).toContain('active period');
+    expect(betweenOccurrencesOutput).not.toContain(
+      '2027-08-21-btl-weekend-late-openings',
+    );
+  });
+
   test('reports when no issues overlap the date range', async () => {
     const repo = new MRTDownRepository({
       store: new FileStore(FIXTURE_DATA_DIR),
