@@ -428,6 +428,25 @@ describe('extractClaimsFromNewEvidence', () => {
                 },
                 causes: ['system.upgrade'],
               },
+              {
+                entity: {
+                  type: 'service',
+                  serviceId: 'ERL_EAST_COAST_C',
+                },
+                effect: {
+                  service: { kind: 'reduced-service' },
+                  facility: null,
+                },
+                statusSignal: 'open',
+                scopes: {
+                  service: [{ type: 'service.whole' }],
+                },
+                timeHints: {
+                  kind: 'start-only',
+                  startAt: '2026-01-05T22:12:16+08:00',
+                },
+                causes: ['system.upgrade'],
+              },
             ],
           },
         },
@@ -509,6 +528,26 @@ describe('extractClaimsFromNewEvidence', () => {
                 entity: {
                   type: 'service',
                   serviceId: 'ERL_MAIN_CCW',
+                },
+                effect: {
+                  service: { kind: 'service-hours-adjustment' },
+                  facility: null,
+                },
+                scopes: {
+                  service: [{ type: 'service.whole' }],
+                },
+                timeHints: {
+                  kind: 'fixed',
+                  startAt: '2026-02-18T00:00:00+08:00',
+                  endAt: '2026-02-18T10:00:00+08:00',
+                },
+                statusSignal: 'planned',
+                causes: null,
+              },
+              {
+                entity: {
+                  type: 'service',
+                  serviceId: 'ERL_EAST_COAST_C',
                 },
                 effect: {
                   service: { kind: 'service-hours-adjustment' },
