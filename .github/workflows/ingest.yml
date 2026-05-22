@@ -7,9 +7,8 @@ on:
     inputs:
       payload:
         description: "JSON payload forwarded to ingest:webhook as MESSAGE"
-        required: false
+        required: true
         type: string
-        default: "{}"
 
 concurrency:
   group: ingestion
