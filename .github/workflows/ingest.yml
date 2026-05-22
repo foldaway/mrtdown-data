@@ -3,12 +3,18 @@ name: Ingest Content via Webhook
 on:
   repository_dispatch:
     types: [ingest]
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: "JSON payload forwarded to ingest:webhook as MESSAGE"
+        required: true
+        type: string
 
 concurrency:
   group: ingestion
 
 jobs:
-  checkRss:
+  ingestWebhook:
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v4
@@ -31,10 +37,28 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Build ingest payload
+        id: ingest-payload
+        env:
+          DISPATCH_PAYLOAD: ${{ toJSON(github.event.client_payload) }}
+          MANUAL_PAYLOAD: ${{ inputs.payload }}
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            PAYLOAD="$MANUAL_PAYLOAD"
+          else
+            PAYLOAD="$DISPATCH_PAYLOAD"
+          fi
+
+          echo "$PAYLOAD" | jq -e . >/dev/null
+          {
+            echo 'message<<EOF'
+            echo "$PAYLOAD"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
       - run: npm run ingest:webhook
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          MESSAGE: ${{ toJSON(github.event.client_payload) }}
+          MESSAGE: ${{ steps.ingest-payload.outputs.message }}
       - run: npm run data:validate
       - name: Check for changes
         id: make-changes
