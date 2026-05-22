@@ -47,8 +47,9 @@ jobs:
 
       - name: Run changed LLM function evals
         if: ${{ env.CAN_RUN_EVALS == 'true' && github.event_name == 'pull_request' }}
-        run: node scripts/run-changed-llm-evals.mjs "origin/${{ github.base_ref }}...HEAD"
+        run: node scripts/run-changed-llm-evals.mjs "origin/${BASE_REF}...HEAD"
         env:
+          BASE_REF: ${{ github.base_ref }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Run changed LLM function evals
