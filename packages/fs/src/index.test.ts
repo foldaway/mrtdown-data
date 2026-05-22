@@ -124,17 +124,17 @@ class TestRepository extends StandardRepository<TestRepositoryItem> {
 describe('@mrtdown/fs', () => {
   it('reads target-layout fixtures through core schemas', async () => {
     await expect(listEntityIds(fixtureDataDir, 'line')).resolves.toEqual([
-      'SLL',
-      'TGL',
+      'BTL',
+      'ERL',
       'UPL',
     ]);
 
     const bundle = await readIssueBundle(
       fixtureDataDir,
-      '2026-01-01-tgl-train-fault',
+      '2026-01-01-btl-train-fault',
     );
 
-    expect(bundle.issue.title['en-SG']).toBe('Tengah Line Train Fault');
+    expect(bundle.issue.title['en-SG']).toBe('Bukit Timah Line Train Fault');
     expect(bundle.evidence).toHaveLength(1);
     expect(bundle.impactEvents).toHaveLength(8);
   });
@@ -145,12 +145,12 @@ describe('@mrtdown/fs', () => {
       ok: true,
       checked: {
         issue: 2,
-        landmark: 36,
+        landmark: 30,
         line: 3,
         operator: 2,
         service: 6,
-        station: 18,
-        town: 14,
+        station: 44,
+        town: 22,
       },
     });
 
@@ -158,7 +158,7 @@ describe('@mrtdown/fs', () => {
       fixtureDataDir,
       '2026-01-01T00:00:00Z',
     );
-    expect(manifest.lines.TGL).toMatch(/^[0-9a-f]{64}$/);
+    expect(manifest.lines.BTL).toMatch(/^[0-9a-f]{64}$/);
     expect(renderPagesIndex(manifest)).toContain('mrtdown-data');
     expect(renderPagesIndex(manifest)).not.toContain('archive.tar.gz');
     expect(renderPagesIndex(manifest, { includeArchiveLinks: true })).toContain(
@@ -173,11 +173,11 @@ describe('@mrtdown/fs', () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await cp(fixtureDataDir, dataDir, { recursive: true });
 
-    const issueId = '2026-01-01-tgl-train-fault';
+    const issueId = '2026-01-01-btl-train-fault';
     const before = await buildManifest(dataDir, '2026-01-01T00:00:00Z');
     const impactPath = join(
       dataDir,
-      'issue/2026/01/2026-01-01-tgl-train-fault/impact.ndjson',
+      'issue/2026/01/2026-01-01-btl-train-fault/impact.ndjson',
     );
     const impactText = await readFile(impactPath, 'utf8');
     const [firstImpactLine] = impactText.trimEnd().split('\n');
@@ -698,7 +698,7 @@ describe('@mrtdown/fs', () => {
   it('rejects entity ids that cannot be used as safe filenames', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     const station = JSON.parse(
-      await readFile(join(fixtureDataDir, 'station/GSW.json'), 'utf8'),
+      await readFile(join(fixtureDataDir, 'station/BKP.json'), 'utf8'),
     ) as Record<string, unknown>;
 
     await expect(
@@ -1139,16 +1139,16 @@ describe('@mrtdown/fs', () => {
       'issue',
       '2026',
       '02',
-      '2026-02-07-tgl-maintenance',
+      '2026-02-07-btl-maintenance',
     );
     await mkdir(issueDir, { recursive: true });
     await writeFile(
       join(issueDir, 'issue.json'),
       `${JSON.stringify({
-        id: '2026-02-01-tgl-maintenance',
+        id: '2026-02-01-btl-maintenance',
         type: 'maintenance',
         title: {
-          'en-SG': 'Tengah Line Maintenance',
+          'en-SG': 'Bukit Timah Line Maintenance',
           'zh-Hans': null,
           ms: null,
           ta: null,
@@ -1162,9 +1162,9 @@ describe('@mrtdown/fs', () => {
     await writeFile(join(issueDir, 'impact.ndjson'), '');
 
     await expect(
-      readIssueBundle(dataDir, '2026-02-07-tgl-maintenance'),
+      readIssueBundle(dataDir, '2026-02-07-btl-maintenance'),
     ).rejects.toThrow(
-      'Issue id mismatch: folder 2026-02-07-tgl-maintenance contains 2026-02-01-tgl-maintenance',
+      'Issue id mismatch: folder 2026-02-07-btl-maintenance contains 2026-02-01-btl-maintenance',
     );
   });
 

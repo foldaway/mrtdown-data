@@ -104,18 +104,18 @@ describe('normalizeClaimsForEvidence', () => {
 
   test('clamps hallucinated earlier delay start times to the evidence timestamp', () => {
     const evidenceText =
-      '[TGL] Due to a track fault at Tengah, train services on the Tengah Line are delayed between Bukit Batok and Bukit Merah Central';
+      '[BTL] Due to a track fault at Beauty World, train services on the Bukit Timah Line are delayed between Bukit Panjang and King Albert Park';
     const evidenceTs = '2026-01-01T07:10:00+08:00';
     const claims: Claim[] = [
       {
-        entity: { type: 'service', serviceId: 'TGL_MAIN_E' },
+        entity: { type: 'service', serviceId: 'BTL_MAIN_E' },
         effect: { service: { kind: 'delay', duration: null }, facility: null },
         scopes: {
           service: [
             {
               type: 'service.segment',
-              fromStationId: 'BBT',
-              toStationId: 'BMC',
+              fromStationId: 'BKP',
+              toStationId: 'KAP',
             },
           ],
         },
@@ -147,11 +147,11 @@ describe('normalizeClaimsForEvidence', () => {
 
   test('preserves explicit prior delay starts mentioned in the evidence', () => {
     const evidenceText =
-      '[TGL] Train services have been delayed since 6.45am due to a track fault at Tengah.';
+      '[BTL] Train services have been delayed since 6.45am due to a track fault at Beauty World.';
     const evidenceTs = '2026-01-01T07:10:00+08:00';
     const claims: Claim[] = [
       {
-        entity: { type: 'service', serviceId: 'TGL_MAIN_E' },
+        entity: { type: 'service', serviceId: 'BTL_MAIN_E' },
         effect: { service: { kind: 'delay', duration: null }, facility: null },
         scopes: { service: [{ type: 'service.whole' }] },
         statusSignal: 'open',
@@ -286,11 +286,11 @@ describe('normalizeClaimsForEvidence', () => {
   });
 
   test('does not match services without an active revision at evidence timestamp', () => {
-    const evidenceText = '[TGL] Train services are delayed at Jurong East.';
+    const evidenceText = '[BTL] Train services are delayed at Jurong East.';
     const evidenceTs = '2026-01-01T07:10:00+08:00';
     const claims: Claim[] = [
       {
-        entity: { type: 'service', serviceId: 'TGL_ACTIVE' },
+        entity: { type: 'service', serviceId: 'BTL_ACTIVE' },
         effect: { service: { kind: 'delay', duration: null }, facility: null },
         scopes: { service: [{ type: 'service.whole' }] },
         statusSignal: 'open',
@@ -298,7 +298,7 @@ describe('normalizeClaimsForEvidence', () => {
         causes: ['track.fault'],
       },
       {
-        entity: { type: 'service', serviceId: 'TGL_INACTIVE' },
+        entity: { type: 'service', serviceId: 'BTL_INACTIVE' },
         effect: { service: { kind: 'delay', duration: null }, facility: null },
         scopes: { service: [{ type: 'service.whole' }] },
         statusSignal: 'open',
@@ -311,7 +311,7 @@ describe('normalizeClaimsForEvidence', () => {
       services: {
         get(serviceId: string) {
           const revisionsByServiceId: Record<string, unknown[]> = {
-            TGL_ACTIVE: [
+            BTL_ACTIVE: [
               {
                 id: 'active',
                 startAt: '2025-01-01',
@@ -321,7 +321,7 @@ describe('normalizeClaimsForEvidence', () => {
                 },
               },
             ],
-            TGL_INACTIVE: [
+            BTL_INACTIVE: [
               {
                 id: 'inactive',
                 startAt: '2020-01-01',
@@ -337,7 +337,7 @@ describe('normalizeClaimsForEvidence', () => {
             ? null
             : {
                 id: serviceId,
-                lineId: 'TGL',
+                lineId: 'BTL',
                 name: { 'en-SG': serviceId },
                 revisions,
               };

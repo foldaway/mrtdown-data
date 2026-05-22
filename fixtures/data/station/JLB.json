@@ -1,0 +1,24 @@
+{
+  "id": "JLB",
+  "name": {
+    "en-SG": "Jalan Besar",
+    "zh-Hans": "惹兰勿刹",
+    "ms": null,
+    "ta": "ஜாலான் புசார்"
+  },
+  "geo": {
+    "latitude": 1.3082,
+    "longitude": 103.8512
+  },
+  "stationCodes": [
+    {
+      "lineId": "ERL",
+      "code": "ER14",
+      "startedAt": "2025-12-31T00:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [],
+  "townId": "rochor"
+}

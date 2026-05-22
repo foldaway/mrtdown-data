@@ -1,0 +1,13 @@
+{
+  "id": "2026-02-07-btl-maintenance",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Bukit Timah Line Maintenance",
+    "zh-Hans": "武吉知马线维修",
+    "ms": "Penyenggaraan Laluan Bukit Timah",
+    "ta": "புக்கிட் திமா வழி பராமரிப்பு"
+  },
+  "titleMeta": {
+    "source": "test"
+  }
+}

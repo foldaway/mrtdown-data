@@ -1,0 +1,24 @@
+{
+  "id": "BFT",
+  "name": {
+    "en-SG": "Bayfront",
+    "zh-Hans": "海湾舫",
+    "ms": null,
+    "ta": "பேஃபிரண்ட்"
+  },
+  "geo": {
+    "latitude": 1.2841,
+    "longitude": 103.8585
+  },
+  "stationCodes": [
+    {
+      "lineId": "ERL",
+      "code": "ER19",
+      "startedAt": "2025-12-31T00:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [],
+  "townId": "marina-south"
+}

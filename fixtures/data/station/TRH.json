@@ -1,0 +1,24 @@
+{
+  "id": "TRH",
+  "name": {
+    "en-SG": "Tanjong Rhu",
+    "zh-Hans": "丹戎禺",
+    "ms": null,
+    "ta": "தஞ்சோங் ரூ"
+  },
+  "geo": {
+    "latitude": 1.3023,
+    "longitude": 103.8732
+  },
+  "stationCodes": [
+    {
+      "lineId": "ERL",
+      "code": "ER22",
+      "startedAt": "2025-12-31T00:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [],
+  "townId": "kallang"
+}

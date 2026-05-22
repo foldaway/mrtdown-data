@@ -1,0 +1,83 @@
+{
+  "id": "BTL_MAIN_E",
+  "name": {
+    "en-SG": "Bukit Timah Line (Eastbound)",
+    "zh-Hans": "武吉知马线（东向）",
+    "ms": "Laluan Bukit Timah (Arah Timur)",
+    "ta": "புக்கிட் திமா வழி (கிழக்கு திசை)"
+  },
+  "lineId": "BTL",
+  "revisions": [
+    {
+      "id": "r_initial",
+      "startAt": "2025-12-31",
+      "endAt": null,
+      "path": {
+        "stations": [
+          {
+            "stationId": "BKP",
+            "displayCode": "BT1"
+          },
+          {
+            "stationId": "CSW",
+            "displayCode": "BT2"
+          },
+          {
+            "stationId": "HVW",
+            "displayCode": "BT3"
+          },
+          {
+            "stationId": "HME",
+            "displayCode": "BT4"
+          },
+          {
+            "stationId": "BTW",
+            "displayCode": "BT5"
+          },
+          {
+            "stationId": "KAP",
+            "displayCode": "BT6"
+          },
+          {
+            "stationId": "SAV",
+            "displayCode": "BT7"
+          },
+          {
+            "stationId": "TKK",
+            "displayCode": "BT8"
+          },
+          {
+            "stationId": "BTN",
+            "displayCode": "BT9"
+          },
+          {
+            "stationId": "STV",
+            "displayCode": "BT10"
+          },
+          {
+            "stationId": "NEW",
+            "displayCode": "BT11"
+          },
+          {
+            "stationId": "LTI",
+            "displayCode": "BT12"
+          },
+          {
+            "stationId": "RCR",
+            "displayCode": "BT13"
+          }
+        ]
+      },
+      "operatingHours": {
+        "weekdays": {
+          "start": "05:30",
+          "end": "00:00"
+        },
+        "weekends": {
+          "start": "05:30",
+          "end": "00:00"
+        }
+      }
+    }
+  ]
+}

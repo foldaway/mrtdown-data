@@ -1,0 +1,24 @@
+{
+  "id": "DTN",
+  "name": {
+    "en-SG": "Downtown",
+    "zh-Hans": "市中心",
+    "ms": null,
+    "ta": "டௌன்டவுன்"
+  },
+  "geo": {
+    "latitude": 1.2822,
+    "longitude": 103.8587
+  },
+  "stationCodes": [
+    {
+      "lineId": "ERL",
+      "code": "ER18",
+      "startedAt": "2025-12-31T00:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [],
+  "townId": "downtown-core"
+}

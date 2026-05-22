@@ -1,0 +1,24 @@
+{
+  "id": "KKB",
+  "name": {
+    "en-SG": "Kaki Bukit",
+    "zh-Hans": "加基武吉",
+    "ms": null,
+    "ta": "காக்கி புக்கிட்"
+  },
+  "geo": {
+    "latitude": 1.3199,
+    "longitude": 103.8928
+  },
+  "stationCodes": [
+    {
+      "lineId": "ERL",
+      "code": "ER8",
+      "startedAt": "2025-12-31T00:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [],
+  "townId": "bedok"
+}

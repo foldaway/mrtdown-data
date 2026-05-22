@@ -1,0 +1,24 @@
+{
+  "id": "TAM",
+  "name": {
+    "en-SG": "Tampines",
+    "zh-Hans": "淡滨尼",
+    "ms": null,
+    "ta": "தெம்பினிஸ்"
+  },
+  "geo": {
+    "latitude": 1.3541,
+    "longitude": 103.9437
+  },
+  "stationCodes": [
+    {
+      "lineId": "ERL",
+      "code": "ER4",
+      "startedAt": "2025-12-31T00:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [],
+  "townId": "tampines"
+}

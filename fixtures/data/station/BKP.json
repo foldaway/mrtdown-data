@@ -1,24 +1,24 @@
 {
-  "id": "BTW",
+  "id": "BKP",
   "name": {
-    "en-SG": "Beauty World",
-    "zh-Hans": "美世界",
+    "en-SG": "Bukit Panjang",
+    "zh-Hans": "武吉班让",
     "ms": null,
-    "ta": "பியூட்டி வோர்ல்ட்"
+    "ta": "புக்கிட் பாஞ்சாங்"
   },
   "geo": {
-    "latitude": 1.3334,
-    "longitude": 103.7697
+    "latitude": 1.3776,
+    "longitude": 103.7617
   },
   "stationCodes": [
     {
       "lineId": "BTL",
-      "code": "BT5",
+      "code": "BT1",
       "startedAt": "2025-12-31T00:00:00Z",
       "endedAt": null,
       "structureType": "underground"
     }
   ],
   "landmarkIds": [],
-  "townId": "bukit-timah"
+  "townId": "bukit-panjang"
 }

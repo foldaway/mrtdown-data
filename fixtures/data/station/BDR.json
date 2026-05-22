@@ -1,0 +1,24 @@
+{
+  "id": "BDR",
+  "name": {
+    "en-SG": "Bedok Reservoir",
+    "zh-Hans": "勿洛蓄水池",
+    "ms": null,
+    "ta": "பிடோக் ரெசவோர்"
+  },
+  "geo": {
+    "latitude": 1.3446,
+    "longitude": 103.9254
+  },
+  "stationCodes": [
+    {
+      "lineId": "ERL",
+      "code": "ER6",
+      "startedAt": "2025-12-31T00:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [],
+  "townId": "bedok"
+}

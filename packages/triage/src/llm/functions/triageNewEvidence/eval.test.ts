@@ -32,7 +32,7 @@ describe('triageNewEvidence', () => {
             input: {
               newEvidence: {
                 ts: '2026-01-01T07:10:00+08:00',
-                text: '[TGL] Due to a track fault at Tengah, train services on the Tengah Line are delayed between Bukit Batok and Bukit Merah Central',
+                text: '[BTL] Due to a track fault at Beauty World, train services on the Bukit Timah Line are delayed between Bukit Panjang and King Albert Park',
               },
               repo,
               // This is used by vitest-evals as the test name, as the library expects `input` to be a string.
@@ -43,7 +43,7 @@ describe('triageNewEvidence', () => {
             expected: {
               result: {
                 kind: 'part-of-existing-issue',
-                issueId: '2026-01-01-tgl-train-fault',
+                issueId: '2026-01-01-btl-train-fault',
               },
             },
           },
@@ -51,7 +51,7 @@ describe('triageNewEvidence', () => {
             input: {
               newEvidence: {
                 ts: '2026-01-01T07:10:00+08:00',
-                text: '[TGL] Due to a track fault at Tengah, train services on the Tengah Line are delayed between Bukit Merah Central and Outram Park',
+                text: '[BTL] Due to a track fault at Beauty World, train services on the Bukit Timah Line are delayed between King Albert Park and Rochor',
               },
               repo,
               // This is used by vitest-evals as the test name, as the library expects `input` to be a string.
@@ -70,7 +70,7 @@ describe('triageNewEvidence', () => {
             input: {
               newEvidence: {
                 ts: '2026-01-01T07:10:00+08:00',
-                text: '[TGL] Due to maintenance works, services on the Tengah Line will end earlier at 11pm tonight.',
+                text: '[BTL] Due to maintenance works, services on the Bukit Timah Line will end earlier at 11pm tonight.',
               },
               repo,
               // This is used by vitest-evals as the test name, as the library expects `input` to be a string.
@@ -89,7 +89,7 @@ describe('triageNewEvidence', () => {
             input: {
               newEvidence: {
                 ts: '2026-03-01T07:10:00+08:00',
-                text: '[SLL] Due to a track fault at Seletar, train services on the Seletar Line are delayed between Seletar Aerospace and Bukit Merah Central',
+                text: '[ERL] Due to a track fault at MacPherson, train services on the Eastern Region Line are delayed between Expo and MacPherson',
               },
               repo: new MRTDownRepository({
                 store: new FileStore(FIXTURE_DATA_DIR),
@@ -110,7 +110,7 @@ describe('triageNewEvidence', () => {
             input: {
               newEvidence: {
                 ts: '2026-03-01T07:10:00+08:00',
-                text: '[SLL] MRT Platform screen doors at Seletar Line stations will undergo renewal works from 1st March to 31st March 2026.',
+                text: '[ERL] MRT Platform screen doors at Eastern Region Line stations will undergo renewal works from 1st March to 31st March 2026.',
               },
               repo,
               // This is used by vitest-evals as the test name, as the library expects `input` to be a string.

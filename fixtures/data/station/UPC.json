@@ -1,0 +1,24 @@
+{
+  "id": "UPC",
+  "name": {
+    "en-SG": "Upper Changi",
+    "zh-Hans": "樟宜上段",
+    "ms": null,
+    "ta": "அப்பர் சாங்கி"
+  },
+  "geo": {
+    "latitude": 1.354705,
+    "longitude": 103.962096
+  },
+  "stationCodes": [
+    {
+      "lineId": "ERL",
+      "code": "ER2",
+      "startedAt": "2025-12-31T00:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [],
+  "townId": "tampines"
+}

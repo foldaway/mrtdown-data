@@ -1,0 +1,34 @@
+{
+  "id": "ERL",
+  "name": {
+    "en-SG": "Eastern Region Line",
+    "zh-Hans": "东区线",
+    "ms": "Laluan Wilayah Timur",
+    "ta": "கிழக்கு வட்டார வழி"
+  },
+  "type": "mrt.medium",
+  "color": "#9D5B25",
+  "startedAt": null,
+  "serviceIds": [
+    "ERL_MAIN_CW",
+    "ERL_MAIN_CCW",
+    "ERL_EAST_COAST_C"
+  ],
+  "operators": [
+    {
+      "operatorId": "SMRT_TRAINS",
+      "startedAt": null,
+      "endedAt": null
+    }
+  ],
+  "operatingHours": {
+    "weekdays": {
+      "start": "05:30",
+      "end": "00:00"
+    },
+    "weekends": {
+      "start": "05:30",
+      "end": "00:00"
+    }
+  }
+}

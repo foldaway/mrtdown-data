@@ -32,7 +32,7 @@ describe('@mrtdown/cli', () => {
     expect(stderr).toEqual([]);
     expect(JSON.parse(stdout[0] as string)).toMatchObject({
       issue: 2,
-      station: 18,
+      station: 44,
     });
   });
 
@@ -42,16 +42,16 @@ describe('@mrtdown/cli', () => {
       runCli(['--data-dir', fixtureDataDir, 'list', 'issue'], list.io),
     ).resolves.toBe(0);
     expect((list.stdout[0] as string).split('\n')).toEqual([
-      '2026-01-01-tgl-train-fault',
-      '2026-02-07-tgl-maintenance',
+      '2026-01-01-btl-train-fault',
+      '2026-02-07-btl-maintenance',
     ]);
 
     const show = createIo();
     await expect(
-      runCli(['--data-dir', fixtureDataDir, 'show', 'station', 'GSW'], show.io),
+      runCli(['--data-dir', fixtureDataDir, 'show', 'station', 'BKP'], show.io),
     ).resolves.toBe(0);
     expect(JSON.parse(show.stdout[0] as string).value.name['en-SG']).toBe(
-      'Greater Southern Waterfront',
+      'Bukit Panjang',
     );
   });
 
@@ -90,36 +90,36 @@ describe('@mrtdown/cli', () => {
         'create',
         'station',
         '--file',
-        resolve(fixtureDataDir, 'station/GSW.json'),
+        resolve(fixtureDataDir, 'station/BKP.json'),
       ],
       io,
     );
 
     expect(code).toBe(0);
-    expect(stdout).toEqual(['station/GSW.json']);
+    expect(stdout).toEqual(['station/BKP.json']);
     await expect(
-      readFile(resolve(dataDir, 'station/GSW.json'), 'utf8'),
-    ).resolves.toContain('Greater Southern Waterfront');
+      readFile(resolve(dataDir, 'station/BKP.json'), 'utf8'),
+    ).resolves.toContain('Bukit Panjang');
   });
 
   it('resolves create --file relative to the provided cwd', async () => {
     const cwd = await mkdtemp(join(tmpdir(), 'mrtdown-cli-cwd-'));
     await writeFile(
-      join(cwd, 'GSW.json'),
-      await readFile(resolve(fixtureDataDir, 'station/GSW.json'), 'utf8'),
+      join(cwd, 'BKP.json'),
+      await readFile(resolve(fixtureDataDir, 'station/BKP.json'), 'utf8'),
     );
     const { io, stdout } = createIo();
 
     const code = await runCli(
-      ['--data-dir', 'data', 'create', 'station', '--file', 'GSW.json'],
+      ['--data-dir', 'data', 'create', 'station', '--file', 'BKP.json'],
       io,
       cwd,
     );
 
     expect(code).toBe(0);
-    expect(stdout).toEqual(['station/GSW.json']);
+    expect(stdout).toEqual(['station/BKP.json']);
     await expect(
-      readFile(resolve(cwd, 'data/station/GSW.json'), 'utf8'),
-    ).resolves.toContain('Greater Southern Waterfront');
+      readFile(resolve(cwd, 'data/station/BKP.json'), 'utf8'),
+    ).resolves.toContain('Bukit Panjang');
   });
 });

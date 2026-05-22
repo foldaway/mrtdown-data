@@ -1,0 +1,24 @@
+{
+  "id": "BDN",
+  "name": {
+    "en-SG": "Bedok North",
+    "zh-Hans": "勿洛北",
+    "ms": null,
+    "ta": "பிடோக் நார்த்"
+  },
+  "geo": {
+    "latitude": 1.3278,
+    "longitude": 103.9256
+  },
+  "stationCodes": [
+    {
+      "lineId": "ERL",
+      "code": "ER7",
+      "startedAt": "2025-12-31T00:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [],
+  "townId": "bedok"
+}
