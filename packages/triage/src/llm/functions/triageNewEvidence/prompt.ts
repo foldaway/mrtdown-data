@@ -28,6 +28,8 @@ CLASSIFICATION RULES:
 
 Part of Existing Issue:
 - Evidence must match the service/line AND have geographic overlap (stations or segments)
+- For disruptions, geographic overlap means the existing issue already covers every station/segment named by the new evidence
+- Sharing only one endpoint station with an existing segment is NOT geographic overlap
 - Temporal proximity matters: evidence should occur during or immediately adjacent to the issue's period
 - Multiple separate incidents on the same service are separate issues (not continuous scope expansion)
 
@@ -47,9 +49,12 @@ SPECIFIC GUIDANCE BY ISSUE TYPE:
 DISRUPTIONS:
 - Location specificity is CRITICAL - different stations or segments are separate incidents
 - Same service line alone is NOT sufficient for matching
+- Same station mention alone is NOT sufficient for matching
 - Must have EXACT geographic overlap: if evidence mentions a different station pair, a wider segment, or a segment extending beyond an existing issue's scope, it's a new issue
+- Return part-of-existing-issue only when the existing issue covers the entire disruption segment in the new evidence
 - Examples: "fault between A and B" overlaps with existing issue only if existing covers A-B segment
 - A fault "between B and C" on the same line is a different incident, even if it shares one endpoint station
+- A fault "between A and C" is a different incident from an existing issue "between A and B" because the new evidence extends beyond the existing scope
 - Example: existing issue "between Bukit Panjang and King Albert Park" does NOT match new evidence "between King Albert Park and Rochor"; return a new disruption issue.
 
 MAINTENANCE:
