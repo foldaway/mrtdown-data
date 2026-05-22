@@ -1,0 +1,24 @@
+{
+  "id": "FCN",
+  "name": {
+    "en-SG": "Fort Canning",
+    "zh-Hans": "福康宁",
+    "ms": null,
+    "ta": "ஃபோர்ட் கெனிங்"
+  },
+  "geo": {
+    "latitude": 1.2904,
+    "longitude": 103.848
+  },
+  "stationCodes": [
+    {
+      "lineId": "ERL",
+      "code": "ER16",
+      "startedAt": "2025-12-31T00:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [],
+  "townId": "museum"
+}

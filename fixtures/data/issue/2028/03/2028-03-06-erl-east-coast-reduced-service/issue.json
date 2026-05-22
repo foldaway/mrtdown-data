@@ -1,0 +1,13 @@
+{
+  "id": "2028-03-06-erl-east-coast-reduced-service",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Eastern Region Line East Coast Reduced Service",
+    "zh-Hans": "东区线东海岸段减少服务",
+    "ms": "Perkhidmatan berkurangan Laluan Wilayah Timur di Pantai Timur",
+    "ta": "கிழக்கு வட்டார வழி கிழக்கு கடற்கரை குறைந்த சேவை"
+  },
+  "titleMeta": {
+    "source": "test"
+  }
+}

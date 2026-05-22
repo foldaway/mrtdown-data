@@ -1,0 +1,33 @@
+{
+  "id": "BTL",
+  "name": {
+    "en-SG": "Bukit Timah Line",
+    "zh-Hans": "武吉知马线",
+    "ms": "Laluan Bukit Timah",
+    "ta": "புக்கிட் திமா வழி"
+  },
+  "type": "mrt.medium",
+  "color": "#005EC4",
+  "startedAt": null,
+  "serviceIds": [
+    "BTL_MAIN_E",
+    "BTL_MAIN_W"
+  ],
+  "operators": [
+    {
+      "operatorId": "SBS",
+      "startedAt": null,
+      "endedAt": null
+    }
+  ],
+  "operatingHours": {
+    "weekdays": {
+      "start": "05:30",
+      "end": "00:00"
+    },
+    "weekends": {
+      "start": "05:30",
+      "end": "00:00"
+    }
+  }
+}

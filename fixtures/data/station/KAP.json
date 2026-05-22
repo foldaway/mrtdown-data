@@ -1,0 +1,24 @@
+{
+  "id": "KAP",
+  "name": {
+    "en-SG": "King Albert Park",
+    "zh-Hans": "阿尔柏王园",
+    "ms": null,
+    "ta": "கிங் ஆல்பர்ட் பார்க்"
+  },
+  "geo": {
+    "latitude": 1.3335,
+    "longitude": 103.7827
+  },
+  "stationCodes": [
+    {
+      "lineId": "BTL",
+      "code": "BT6",
+      "startedAt": "2025-12-31T00:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [],
+  "townId": "bukit-timah"
+}

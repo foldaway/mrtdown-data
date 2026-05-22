@@ -1,0 +1,24 @@
+{
+  "id": "BCL",
+  "name": {
+    "en-SG": "Bencoolen",
+    "zh-Hans": "明古连",
+    "ms": null,
+    "ta": "பென்கூலன்"
+  },
+  "geo": {
+    "latitude": 1.3002,
+    "longitude": 103.848
+  },
+  "stationCodes": [
+    {
+      "lineId": "ERL",
+      "code": "ER15",
+      "startedAt": "2025-12-31T00:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [],
+  "townId": "rochor"
+}

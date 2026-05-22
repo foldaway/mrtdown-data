@@ -1,0 +1,24 @@
+{
+  "id": "NEW",
+  "name": {
+    "en-SG": "Newton",
+    "zh-Hans": "纽顿",
+    "ms": null,
+    "ta": "நியூட்டன்"
+  },
+  "geo": {
+    "latitude": 1.31229,
+    "longitude": 103.84396
+  },
+  "stationCodes": [
+    {
+      "lineId": "BTL",
+      "code": "BT11",
+      "startedAt": "2025-12-31T00:00:00Z",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [],
+  "townId": "newton"
+}
