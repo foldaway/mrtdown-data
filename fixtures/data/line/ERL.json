@@ -8,7 +8,7 @@
   },
   "type": "mrt.medium",
   "color": "#9D5B25",
-  "startedAt": null,
+  "startedAt": "2025-12-31",
   "serviceIds": [
     "ERL_MAIN_CW",
     "ERL_MAIN_CCW",
@@ -17,7 +17,7 @@
   "operators": [
     {
       "operatorId": "SMRT_TRAINS",
-      "startedAt": null,
+      "startedAt": "2025-12-31",
       "endedAt": null
     }
   ],
