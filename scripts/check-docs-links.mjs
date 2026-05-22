@@ -1,14 +1,34 @@
-import { existsSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, statSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 
 const repoRoot = resolve(import.meta.dirname, '..');
-const docs = [
+const entryDocs = [
   'AGENTS.md',
   'README.md',
   'CLAUDE.md',
   '.github/copilot-instructions.md',
-  'docs/DATA_OVERHAUL_SPLIT.md',
 ];
+
+function collectMarkdownDocs(dir, prefix = '') {
+  const docs = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const relativePath = prefix ? `${prefix}/${entry.name}` : entry.name;
+    const absolutePath = resolve(dir, entry.name);
+
+    if (entry.isDirectory()) {
+      docs.push(...collectMarkdownDocs(absolutePath, relativePath));
+      continue;
+    }
+
+    if (entry.isFile() && entry.name.endsWith('.md')) {
+      docs.push(`docs/${relativePath}`);
+    }
+  }
+
+  return docs;
+}
+
+const docs = [...entryDocs, ...collectMarkdownDocs(resolve(repoRoot, 'docs'))];
 
 const linkPattern = /\[[^\]]+\]\(([^)]+)\)/g;
 const errors = [];

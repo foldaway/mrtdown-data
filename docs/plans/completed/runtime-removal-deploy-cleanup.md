@@ -1,6 +1,7 @@
 # Runtime Removal and Deploy Cleanup
 
-This report covers the Step 8 split from `docs/DATA_OVERHAUL_SPLIT.md`.
+This report covers the Step 8 split from
+`docs/plans/active/data-overhaul-split.md`.
 
 ## Scope
 

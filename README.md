@@ -62,10 +62,9 @@ npm run fixtures:validate  # Validate fixtures/data with @mrtdown/cli
 npm run pages:build        # Build the GitHub Pages static data artifact
 ```
 
-See `AGENTS.md` for the short agent map and `docs/DATA_OVERHAUL_SPLIT.md` for
-the planned data-overhaul split. See
-`docs/RUNTIME_REMOVAL_DEPLOY_CLEANUP.md` for the Step 8 runtime and deploy
-cleanup report.
+See `AGENTS.md` for the short agent map and `docs/plans/README.md` for active
+plans, completed reports, and durable tech debt. The planned data-overhaul
+split lives in `docs/plans/active/data-overhaul-split.md`.
 
 ### Static Pages Export
 

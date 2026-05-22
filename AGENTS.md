@@ -21,8 +21,8 @@ from this repo.
   package and CLI tests.
 
 The data-overhaul work is being split into smaller PRs. Follow
-`docs/DATA_OVERHAUL_SPLIT.md` before moving package, data, workflow, or deploy
-surface between branches.
+`docs/plans/active/data-overhaul-split.md` before moving package, data,
+workflow, or deploy surface between branches.
 
 ## Target Layout
 
@@ -88,9 +88,13 @@ the repository shape.
 ## Deeper Docs
 
 - `README.md`: repository overview and commands.
-- `docs/DATA_OVERHAUL_SPLIT.md`: planned split sequence for the data overhaul.
-- `docs/LEGACY_SOURCE_DATA_REMOVAL.md`: Step 7.5 source-data removal report.
-- `docs/RUNTIME_REMOVAL_DEPLOY_CLEANUP.md`: Step 8 runtime and deploy cleanup
-  report.
+- `docs/plans/README.md`: active plans, completed reports, and durable tech
+  debt.
+- `docs/plans/active/data-overhaul-split.md`: planned split sequence for the
+  data overhaul.
+- `docs/plans/completed/legacy-source-data-removal.md`: Step 7.5 source-data
+  removal report.
+- `docs/plans/completed/runtime-removal-deploy-cleanup.md`: Step 8 runtime and
+  deploy cleanup report.
 - `CLAUDE.md`: Claude-specific compatibility entry point.
 - `.github/copilot-instructions.md`: Copilot compatibility entry point.

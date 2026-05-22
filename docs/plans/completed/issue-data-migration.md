@@ -1,6 +1,7 @@
 # Issue Data Migration Report
 
-This report covers the Step 7 split from `docs/DATA_OVERHAUL_SPLIT.md`.
+This report covers the Step 7 split from
+`docs/plans/active/data-overhaul-split.md`.
 
 ## Scope
 
@@ -8,7 +9,7 @@ This report covers the Step 7 split from `docs/DATA_OVERHAUL_SPLIT.md`.
   `data/issue/YYYY/MM/<issue_id>/` layout.
 - Removed `data/source/` in the follow-up Step 7.5 split after validating that
   target issue coverage matched the legacy source set. See
-  `docs/LEGACY_SOURCE_DATA_REMOVAL.md`.
+  `docs/plans/completed/legacy-source-data-removal.md`.
 - Did not change runtime, API, DuckDB, deploy, or package publishing surfaces.
 
 ## Source Coverage
