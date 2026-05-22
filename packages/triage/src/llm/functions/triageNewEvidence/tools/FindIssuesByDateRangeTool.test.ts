@@ -26,6 +26,22 @@ describe('FindIssuesByDateRangeTool', () => {
     expect(output).not.toContain('2027-01-15-erl-signal-fault');
   });
 
+  test('treats an exact end datetime as part of the search window', async () => {
+    const repo = new MRTDownRepository({
+      store: new FileStore(FIXTURE_DATA_DIR),
+    });
+    const tool = new FindIssuesByDateRangeTool(repo);
+
+    const output = await tool.runner({
+      startAt: '2026-01-01T07:00:00+08:00',
+      endAt: '2026-01-01T07:00:00+08:00',
+    });
+
+    expect(output).toContain('2026-01-01-btl-train-fault');
+    expect(output).toContain('evidence timestamp');
+    expect(output).toContain('2026-01-01T07:00:00+08:00');
+  });
+
   test('reports when no issues overlap the date range', async () => {
     const repo = new MRTDownRepository({
       store: new FileStore(FIXTURE_DATA_DIR),

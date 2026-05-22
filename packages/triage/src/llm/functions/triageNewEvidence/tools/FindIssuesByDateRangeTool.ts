@@ -120,7 +120,7 @@ function parseSearchWindow(params: FindIssuesByDateRangeToolParameters) {
     );
   }
 
-  return Interval.fromDateTimes(start, end);
+  return inclusiveInterval(start, end);
 }
 
 function parseBoundary(value: string, boundary: 'start' | 'end'): DateTime {
@@ -184,7 +184,7 @@ function issueDateOverlapsWindow(issueId: string, window: Interval): boolean {
   }
 
   return window.overlaps(
-    Interval.fromDateTimes(issueDate.startOf('day'), issueDate.endOf('day')),
+    inclusiveInterval(issueDate.startOf('day'), issueDate.endOf('day')),
   );
 }
 
@@ -198,11 +198,15 @@ function periodOverlapsWindow(period: Period, window: Interval): boolean {
     return false;
   }
 
-  return window.overlaps(Interval.fromDateTimes(start, end));
+  return window.overlaps(inclusiveInterval(start, end));
 }
 
 function dateTimeOverlapsWindow(dateTime: DateTime, window: Interval): boolean {
   return dateTime.isValid && window.contains(dateTime);
+}
+
+function inclusiveInterval(start: DateTime, end: DateTime): Interval {
+  return Interval.fromDateTimes(start, end.plus({ milliseconds: 1 }));
 }
 
 function formatMatchingEvidence(bundle: IssueBundle, window: Interval): string {
