@@ -144,7 +144,7 @@ describe('@mrtdown/fs', () => {
     expect(result).toMatchObject({
       ok: true,
       checked: {
-        issue: 2,
+        issue: 6,
         landmark: 30,
         line: 3,
         operator: 2,

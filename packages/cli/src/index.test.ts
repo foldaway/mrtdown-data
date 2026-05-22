@@ -31,7 +31,7 @@ describe('@mrtdown/cli', () => {
     expect(code).toBe(0);
     expect(stderr).toEqual([]);
     expect(JSON.parse(stdout[0] as string)).toMatchObject({
-      issue: 2,
+      issue: 6,
       station: 44,
     });
   });
@@ -44,6 +44,10 @@ describe('@mrtdown/cli', () => {
     expect((list.stdout[0] as string).split('\n')).toEqual([
       '2026-01-01-btl-train-fault',
       '2026-02-07-btl-maintenance',
+      '2026-05-20-btl-platform-screen-door-renewal',
+      '2027-01-15-erl-signal-fault',
+      '2027-08-21-btl-weekend-late-openings',
+      '2028-03-06-erl-east-coast-reduced-service',
     ]);
 
     const show = createIo();
