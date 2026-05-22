@@ -3,6 +3,7 @@ import { existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 const repoRoot = resolve(import.meta.dirname, '..');
+const triageWorkspacePrefix = 'packages/triage/';
 const functionPathPattern = /^packages\/triage\/src\/llm\/functions\/([^/]+)\//;
 
 const args = process.argv.slice(2);
@@ -47,6 +48,9 @@ for (const evalFile of evalFiles) {
 }
 
 for (const evalFile of evalFiles) {
+  const workspaceEvalFile = evalFile.startsWith(triageWorkspacePrefix)
+    ? evalFile.slice(triageWorkspacePrefix.length)
+    : evalFile;
   const command = [
     'npm',
     '--workspace',
@@ -54,7 +58,7 @@ for (const evalFile of evalFiles) {
     'run',
     'test:eval',
     '--',
-    evalFile,
+    workspaceEvalFile,
   ];
   console.log(`\n$ ${command.join(' ')}`);
 
