@@ -32,7 +32,7 @@ describe('@mrtdown/cli', () => {
     expect(stderr).toEqual([]);
     expect(JSON.parse(stdout[0] as string)).toMatchObject({
       issue: 2,
-      station: 17,
+      station: 18,
     });
   });
 
