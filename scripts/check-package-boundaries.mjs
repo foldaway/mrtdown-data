@@ -8,8 +8,9 @@ const packagesRoot = join(repoRoot, 'packages');
 
 const allowed = {
   core: new Set([]),
+  'ingest-contracts': new Set([]),
   fs: new Set(['core']),
-  triage: new Set(['core', 'fs']),
+  triage: new Set(['core', 'fs', 'ingest-contracts']),
   cli: new Set(['core', 'fs', 'triage']),
 };
 

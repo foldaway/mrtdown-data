@@ -12,6 +12,8 @@ the data-overhaul split.
 
 - **Data packages**: TypeScript workspaces under `packages/*`
 - **Validation**: Zod schemas in `@mrtdown/core`
+- **Ingest contracts**: shared webhook payload schemas in
+  `@mrtdown/ingest-contracts`
 - **Storage tooling**: file-backed repositories and writers in `@mrtdown/fs`
 - **Triage tooling**: LLM-assisted evidence processing in `@mrtdown/triage`
 - **CLI**: validation, inspection, creation, and artifact helpers in
@@ -47,12 +49,14 @@ npm run check:boundaries   # Enforce package import boundaries when packages exi
 npm run build              # Build workspace packages with Turborepo
 npm run build:packages     # Build workspace packages with Turborepo
 npm run build:core         # Build @mrtdown/core
+npm run build:ingest-contracts # Build @mrtdown/ingest-contracts
 npm run build:fs           # Build @mrtdown/fs
 npm run build:triage       # Build @mrtdown/triage
 npm run build:cli          # Build @mrtdown/cli
 npm run typecheck          # Compile-check workspace packages
 npm run test:packages      # Run package tests with Turborepo
 npm run test:core          # Run @mrtdown/core deterministic tests
+npm run test:ingest-contracts # Run @mrtdown/ingest-contracts deterministic tests
 npm run test:fs            # Run @mrtdown/fs deterministic tests
 npm run test:triage        # Run @mrtdown/triage deterministic tests
 npm run test:eval          # Run paid/model-dependent @mrtdown/triage evals
@@ -95,7 +99,7 @@ It also includes the deterministic fixture export:
 ### Data Processing
 
 ```bash
-npm run ingest:webhook     # Process incoming webhook data with @mrtdown/triage
+npm run ingest:webhook     # Process @mrtdown/ingest-contracts payloads with @mrtdown/triage
 ```
 
 ### Testing and Quality
@@ -132,7 +136,7 @@ npx biome check            # Lint and format code
 - **Service hours logic**: Different schedules for weekdays, weekends, and
   holidays
 - **Webhook integration**: Canonical data evidence ingestion through
-  `@mrtdown/triage`
+  `@mrtdown/triage`, using `@mrtdown/ingest-contracts` for the payload contract
 
 ## Issue Data Structure
 

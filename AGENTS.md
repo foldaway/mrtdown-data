@@ -12,6 +12,8 @@ from this repo.
 - `data/{station,line,service,operator,town,landmark,issue}` contains the
   canonical target-layout data.
 - `packages/core` contains shared schemas and pure period helpers.
+- `packages/ingest-contracts` contains the published webhook payload schemas
+  shared by external evidence producers and the triage ingester.
 - `packages/fs` contains file-backed repositories and writers for the target
   data layout.
 - `packages/triage` contains LLM-assisted evidence triage and replay utilities.
@@ -29,9 +31,11 @@ workflow, or deploy surface between branches.
 The target architecture is a package/data repository:
 
 - `packages/core`: schemas, shared period helpers, and state helpers.
+- `packages/ingest-contracts`: external ingest webhook payload schemas and
+  inferred TypeScript types.
 - `packages/fs`: file-backed repositories and writers. It depends on `core`.
 - `packages/triage`: LLM-assisted evidence triage and replay utilities. It may
-  depend on `core` and `fs`.
+  depend on `core`, `fs`, and `ingest-contracts`.
 - `packages/cli`: command-line entry point that wires packages together.
 - `data/{station,line,service,operator,town,landmark}`: canonical static
   entities.
@@ -46,12 +50,16 @@ The target architecture is a package/data repository:
 - `npm run build`: build all target packages with Turborepo.
 - `npm run build:packages`: build all target packages with Turborepo.
 - `npm run build:core`: compile the target `@mrtdown/core` package.
+- `npm run build:ingest-contracts`: compile the target
+  `@mrtdown/ingest-contracts` package.
 - `npm run build:fs`: compile the target `@mrtdown/fs` package.
 - `npm run build:triage`: compile the target `@mrtdown/triage` package.
 - `npm run build:cli`: compile the target `@mrtdown/cli` package.
 - `npm test`: run deterministic tests.
 - `npm run test:packages`: run all target package tests with Turborepo.
 - `npm run test:core`: run `@mrtdown/core` deterministic tests.
+- `npm run test:ingest-contracts`: run `@mrtdown/ingest-contracts`
+  deterministic tests.
 - `npm run test:fs`: run `@mrtdown/fs` deterministic tests.
 - `npm run test:triage`: run `@mrtdown/triage` deterministic tests.
 - `npm run test:eval`: run model-dependent `@mrtdown/triage` evals. This is
