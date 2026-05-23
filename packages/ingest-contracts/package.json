@@ -1,8 +1,7 @@
 {
-  "name": "@mrtdown/triage",
+  "name": "@mrtdown/ingest-contracts",
   "version": "2.0.0-alpha.23",
-  "description": "Evidence triage and replay utilities for MRTDown data",
-  "private": true,
+  "description": "Shared ingest payload schemas for MRTDown evidence ingestion",
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
   "bugs": {
     "url": "https://github.com/foldaway/mrtdown-data/issues"
@@ -22,30 +21,23 @@
       "default": "./dist/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "scripts": {
     "build": "tsc",
-    "test": "vitest --run",
-    "test:eval": "vitest --run --config vitest.eval.config.ts"
+    "test": "vitest --run"
   },
   "dependencies": {
-    "@mrtdown/core": "2.0.0-alpha.23",
-    "@mrtdown/fs": "2.0.0-alpha.23",
-    "@mrtdown/ingest-contracts": "2.0.0-alpha.23",
-    "dotenv": "^16.4.7",
-    "hast-util-from-html": "^2.0.3",
-    "hast-util-to-mdast": "^10.1.2",
-    "luxon": "^3.5.0",
-    "mdast-util-gfm": "^3.1.0",
-    "mdast-util-to-markdown": "^2.1.2",
-    "openai": "^6.34.0",
     "zod": "^4.0.14"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.14",
-    "@types/luxon": "^3.4.2",
-    "@types/node": "^22.13.4",
     "typescript": "^5.8.3",
-    "vitest": "^3.0.9",
-    "vitest-evals": "^0.5.0"
+    "vitest": "^3.0.9"
   }
 }

@@ -8,6 +8,8 @@ plan.
 
 - [Data overhaul split](active/data-overhaul-split.md): planned split sequence
   for the data overhaul.
+- [Ingest contracts package](active/ingest-contracts-package.md): shared
+  webhook payload contract for external evidence producers.
 
 ## Completed
 

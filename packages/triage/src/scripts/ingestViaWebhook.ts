@@ -1,14 +1,16 @@
-import type { z } from 'zod';
+import {
+  type IngestPayload,
+  IngestPayloadSchema,
+} from '@mrtdown/ingest-contracts';
 import { assert } from '../util/assert.js';
 import { ingestContent } from '../util/ingestContent/index.js';
-import { IngestMessageSchema } from '../util/ingestContent/types.js';
 
 const { MESSAGE } = process.env;
 assert(MESSAGE != null, 'Expected MESSAGE env var');
 
-let message: z.infer<typeof IngestMessageSchema>;
+let message: IngestPayload;
 try {
-  message = IngestMessageSchema.parse(JSON.parse(MESSAGE));
+  message = IngestPayloadSchema.parse(JSON.parse(MESSAGE));
 } catch (error) {
   console.error('[ingestViaWebhook] Invalid MESSAGE payload:', error);
   process.exit(1);
