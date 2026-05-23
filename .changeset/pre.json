@@ -5,9 +5,11 @@
     "@mrtdown/cli": "2.0.0-alpha.22",
     "@mrtdown/core": "2.0.0-alpha.22",
     "@mrtdown/fs": "2.0.0-alpha.22",
-    "@mrtdown/triage": "2.0.0-alpha.22"
+    "@mrtdown/triage": "2.0.0-alpha.22",
+    "@mrtdown/ingest-contracts": "2.0.0-alpha.23"
   },
   "changesets": [
-    "red-tips-heal"
+    "red-tips-heal",
+    "tame-cycles-smile"
   ]
 }
