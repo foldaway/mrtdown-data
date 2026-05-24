@@ -14,6 +14,27 @@ export function formatContentTextForIngest(content: IngestContent): string {
         ['Summary', content.summary],
       ]);
     }
+    case 'crowd-report': {
+      return formatFields([
+        ['Report', content.text],
+        ['Observed at', content.observedAt],
+        ['Accepted at', content.createdAt],
+        ['Lines', content.lineIds?.join(', ')],
+        ['Stations', content.stationIds?.join(', ')],
+        ['Direction', content.directionText],
+        ['Effect', content.effect],
+        [
+          'Delay minutes',
+          content.delayMinutes == null
+            ? undefined
+            : String(content.delayMinutes),
+        ],
+        [
+          'Report count',
+          content.reportCount == null ? undefined : String(content.reportCount),
+        ],
+      ]);
+    }
     case 'twitter':
     case 'mastodon': {
       return content.text;
@@ -27,10 +48,12 @@ export function formatContentTextForIngest(content: IngestContent): string {
   }
 }
 
-function formatFields(fields: [label: string, value: string][]): string {
+function formatFields(
+  fields: [label: string, value: string | undefined][],
+): string {
   return fields
     .map(([label, value]) => {
-      const trimmed = value.trim();
+      const trimmed = value?.trim() ?? '';
       return trimmed.length > 0 ? `${label}: ${trimmed}` : null;
     })
     .filter((value): value is string => value != null)

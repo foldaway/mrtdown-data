@@ -198,6 +198,8 @@ Exit criteria:
 ## Progress Log
 
 - 2026-05-24: Drafted paired canonical ingest plan for crowdsourced reports.
+- 2026-05-24: Added the `crowd-report` ingest contract, deterministic contract
+  tests, triage text formatting, and public-report evidence type mapping.
 
 ## Decision Log
 

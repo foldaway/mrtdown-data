@@ -34,10 +34,43 @@ export type IngestContentNewsArticle = z.infer<
   typeof IngestContentNewsArticleSchema
 >;
 
+export const IngestContentCrowdReportSchema = z
+  .object({
+    source: z.literal('crowd-report'),
+    reportId: z.string().min(1),
+    text: z.string().min(1),
+    createdAt: z.string(),
+    observedAt: z.string(),
+    lineIds: z.array(z.string().min(1)).optional(),
+    stationIds: z.array(z.string().min(1)).optional(),
+    directionText: z.string().optional(),
+    effect: z
+      .enum(['delay', 'no-service', 'crowding', 'skipped-stop', 'unknown'])
+      .optional(),
+    delayMinutes: z.number().int().nonnegative().optional(),
+    reportCount: z.number().int().positive().optional(),
+    url: z.string().min(1),
+  })
+  .strict()
+  .refine(
+    (content) =>
+      (content.lineIds != null && content.lineIds.length > 0) ||
+      (content.stationIds != null && content.stationIds.length > 0),
+    {
+      message: 'Expected at least one lineIds or stationIds entry',
+      path: ['lineIds'],
+    },
+  );
+
+export type IngestContentCrowdReport = z.infer<
+  typeof IngestContentCrowdReportSchema
+>;
+
 export const IngestContentSchema = z.union([
   IngestContentTwitterSchema,
   IngestContentRedditSchema,
   IngestContentNewsArticleSchema,
+  IngestContentCrowdReportSchema,
 ]);
 
 export type IngestContent = z.infer<typeof IngestContentSchema>;
