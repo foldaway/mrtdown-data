@@ -1,0 +1,13 @@
+{
+  "id": "2026-05-24-smrt-pest-control-rat-sighting-train",
+  "type": "infra",
+  "title": {
+    "en-SG": "SMRT pest control measures after rat spotted on train",
+    "zh-Hans": "SMRT 对火车上发现老鼠后的灭鼠措施",
+    "ms": "Langkah kawalan perosak SMRT selepas tikus ditemui pada tren",
+    "ta": "ஸ்எம்ஆర్்டி தண்டவாளத்தில் எறும்பு கண்டதும் பூச்சிக்காட்ட நடவடிக்கைகள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-nano"
+  }
+}
