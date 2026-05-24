@@ -1,5 +1,12 @@
 # @mrtdown/ingest-contracts
 
+## 2.0.0-alpha.25
+
+### Minor Changes
+
+- 2d31470: Add the crowd-report ingest content contract and map accepted crowd reports to
+  public report evidence during triage ingestion.
+
 ## 2.0.0-alpha.24
 
 ### Minor Changes

@@ -1,5 +1,14 @@
 # @mrtdown/triage
 
+## 2.0.0-alpha.25
+
+### Patch Changes
+
+- 2d31470: Add the crowd-report ingest content contract and map accepted crowd reports to
+  public report evidence during triage ingestion.
+- Updated dependencies [2d31470]
+  - @mrtdown/ingest-contracts@2.0.0-alpha.25
+
 ## 2.0.0-alpha.24
 
 ### Patch Changes
