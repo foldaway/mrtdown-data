@@ -1,7 +1,22 @@
 import { describe, expect, test } from 'vitest';
-import { IngestPayloadSchema } from './index.js';
+import {
+  IngestContentCrowdReportEffectSchema,
+  IngestContentCrowdReportEffects,
+  IngestContentCrowdReportSource,
+  IngestPayloadSchema,
+} from './index.js';
 
 describe('IngestPayloadSchema', () => {
+  test('exports crowd report constants', () => {
+    expect(IngestContentCrowdReportSource).toBe('crowd-report');
+    expect(IngestContentCrowdReportEffectSchema.options).toEqual([
+      ...IngestContentCrowdReportEffects,
+    ]);
+    expect(IngestContentCrowdReportEffectSchema.parse('crowding')).toBe(
+      'crowding',
+    );
+  });
+
   test('accepts supported ingest content sources', () => {
     expect(() =>
       IngestPayloadSchema.parse({

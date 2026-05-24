@@ -52,6 +52,11 @@ const payload: IngestPayload = IngestPayloadSchema.parse({
 });
 ```
 
+`IngestContentCrowdReportEffectSchema`,
+`IngestContentCrowdReportEffects`, and
+`IngestContentCrowdReportSource` are exported for producers that need to share
+the crowd-report source and effect values.
+
 Contract rules:
 
 - `reportId` must be stable and non-PII.

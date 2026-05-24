@@ -34,9 +34,28 @@ export type IngestContentNewsArticle = z.infer<
   typeof IngestContentNewsArticleSchema
 >;
 
+export const IngestContentCrowdReportSource = 'crowd-report';
+export type IngestContentCrowdReportSource =
+  typeof IngestContentCrowdReportSource;
+
+export const IngestContentCrowdReportEffects = [
+  'delay',
+  'no-service',
+  'crowding',
+  'skipped-stop',
+  'unknown',
+] as const;
+
+export const IngestContentCrowdReportEffectSchema = z.enum(
+  IngestContentCrowdReportEffects,
+);
+export type IngestContentCrowdReportEffect = z.infer<
+  typeof IngestContentCrowdReportEffectSchema
+>;
+
 export const IngestContentCrowdReportSchema = z
   .object({
-    source: z.literal('crowd-report'),
+    source: z.literal(IngestContentCrowdReportSource),
     reportId: z.string().min(1),
     text: z.string().min(1),
     createdAt: z.string(),
@@ -44,9 +63,7 @@ export const IngestContentCrowdReportSchema = z
     lineIds: z.array(z.string().min(1)).optional(),
     stationIds: z.array(z.string().min(1)).optional(),
     directionText: z.string().optional(),
-    effect: z
-      .enum(['delay', 'no-service', 'crowding', 'skipped-stop', 'unknown'])
-      .optional(),
+    effect: IngestContentCrowdReportEffectSchema.optional(),
     delayMinutes: z.number().int().nonnegative().optional(),
     reportCount: z.number().int().positive().optional(),
     url: z.string().min(1),
