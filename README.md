@@ -1,92 +1,62 @@
 # mrtdown-data
 
-Canonical data and package tooling for MRTDown. This repository stores reviewed
-Singapore rail entities and issue records, validates them with the MRTDown CLI,
-and publishes a static GitHub Pages data artifact.
+Canonical MRTDown data for Singapore rail entities, issue records, and the
+package tooling that validates and publishes them.
 
-Runtime serving now belongs outside this repository. The legacy Hono API,
-DuckDB generator, Dockerfile, and Fly deploy config have been removed as part of
-the data-overhaul split.
-
-## Tech Stack
-
-- **Data packages**: TypeScript workspaces under `packages/*`
-- **Validation**: Zod schemas in `@mrtdown/core`
-- **Ingest contracts**: shared webhook payload schemas in
-  `@mrtdown/ingest-contracts`
-- **Storage tooling**: file-backed repositories and writers in `@mrtdown/fs`
-- **Triage tooling**: LLM-assisted evidence processing in `@mrtdown/triage`
-- **CLI**: validation, inspection, creation, and artifact helpers in
-  `@mrtdown/cli`
-- **Testing**: Vitest
-- **Linting**: Biome
+This repository is the source of truth for reviewed data. It does not serve the
+runtime API; downstream apps consume the generated static GitHub Pages artifact.
 
 ## Quick Start
 
 ```bash
-# Install dependencies
-npm install
-
-# Build workspace packages and validate canonical data
+npm ci
 npm run build:packages
 npm run data:validate
-
-# Run tests
 npm test
-
-# Lint and format
-npx biome check
 ```
 
-## Development Commands
-
-### Agent Harness
+For linting and formatting checks:
 
 ```bash
-npm run check              # Fast deterministic harness checks
-npm run check:docs         # Verify repo-relative documentation links
-npm run check:boundaries   # Enforce package import boundaries when packages exist
-npm run build              # Build workspace packages with Turborepo
-npm run build:packages     # Build workspace packages with Turborepo
-npm run build:core         # Build @mrtdown/core
-npm run build:ingest-contracts # Build @mrtdown/ingest-contracts
-npm run build:fs           # Build @mrtdown/fs
-npm run build:triage       # Build @mrtdown/triage
-npm run build:cli          # Build @mrtdown/cli
+npm run lint
+```
+
+## Repository Layout
+
+- `data/station`, `data/line`, `data/service`, `data/operator`, `data/town`,
+  and `data/landmark`: canonical static entities.
+- `data/issue/YYYY/MM/<issue_id>/`: canonical issue bundles.
+- `fixtures/data`: small deterministic data set for tests and examples.
+- `packages/core`: shared schemas, period helpers, and state helpers.
+- `packages/ingest-contracts`: webhook payload schemas shared with external
+  evidence producers.
+- `packages/fs`: file-backed repositories, validation, manifest, and Pages
+  export helpers.
+- `packages/triage`: LLM-assisted evidence triage and replay utilities.
+- `packages/cli`: command-line entry point for validating, inspecting, and
+  creating target-layout data.
+- `docs/plans`: active plans, completed migration reports, and durable tech
+  debt.
+
+## Common Commands
+
+```bash
+npm run build:packages     # Build all workspace packages
 npm run typecheck          # Compile-check workspace packages
-npm run test:packages      # Run package tests with Turborepo
-npm run test:core          # Run @mrtdown/core deterministic tests
-npm run test:ingest-contracts # Run @mrtdown/ingest-contracts deterministic tests
-npm run test:fs            # Run @mrtdown/fs deterministic tests
-npm run test:triage        # Run @mrtdown/triage deterministic tests
-npm run test:eval          # Run paid/model-dependent @mrtdown/triage evals
-npm run test:cli           # Run @mrtdown/cli deterministic tests
-npm run data:validate      # Validate canonical data with @mrtdown/cli
-npm run fixtures:validate  # Validate fixtures/data with @mrtdown/cli
+npm test                   # Run deterministic Vitest tests
+npm run lint               # Run Biome checks
+npm run check              # Run lint, boundary checks, and docs link checks
+npm run data:validate      # Validate canonical data
+npm run fixtures:validate  # Validate fixtures/data
 npm run pages:build        # Build the GitHub Pages static data artifact
 ```
 
-See `AGENTS.md` for the short agent map and `docs/plans/README.md` for active
-plans, completed reports, and durable tech debt. The completed data-overhaul
-split lives in `docs/plans/completed/data-overhaul-split.md`.
+Package-specific build and test commands are available in `package.json` when a
+change only touches one package.
 
-### Static Pages Export
+## Static Pages Export
 
-`npm run pages:build` writes a GitHub Pages artifact to `pages-dist/`. This
-publishes canonical `data/` at the artifact root and keeps `fixtures/data`
-available under `fixtures/` for tests and examples.
-
-Preview branches and pull requests build the same bundle in CI and upload it as
-a one-day artifact. Only `main` deploys the bundle to GitHub Pages.
-
-After a successful `main` Pages deployment, CI triggers the `mrtdown-site`
-internal pull endpoint so the site can import the newly published archive. The
-deploy workflow expects these repository secrets:
-
-- `MRTDOWN_SITE_PULL_URL`: the full `mrtdown-site`
-  `/internal/api/tasks/pull` URL.
-- `MRTDOWN_SITE_INTERNAL_API_TOKEN`: a bearer token present in the site's
-  `INTERNAL_API_TOKENS`.
+`npm run pages:build` writes the static artifact to `pages-dist/`.
 
 The artifact publishes the canonical export at the root:
 
@@ -97,7 +67,7 @@ The artifact publishes the canonical export at the root:
 - `station/`, `line/`, `service/`, `operator/`, `town/`, `landmark/`, and
   `issue/`
 
-It also includes the deterministic fixture export:
+It also includes the deterministic fixture export under `fixtures/`:
 
 - `fixtures/index.html`
 - `fixtures/manifest.json`
@@ -105,60 +75,72 @@ It also includes the deterministic fixture export:
 - `fixtures/archive.zip`
 - the fixture data files used to build the fixture manifest
 
-### Data Processing
+Preview branches and pull requests build the same bundle in CI and upload it as
+a short-lived artifact. Only `main` deploys the bundle to GitHub Pages.
 
-```bash
-npm run ingest:webhook     # Process @mrtdown/ingest-contracts payloads with @mrtdown/triage
+After a successful `main` Pages deployment, CI triggers the `mrtdown-site`
+internal pull endpoint so the site can import the newly published archive. The
+deploy workflow expects these repository secrets:
+
+- `MRTDOWN_SITE_PULL_URL`: the full `mrtdown-site`
+  `/internal/api/tasks/pull` URL.
+- `MRTDOWN_SITE_INTERNAL_API_TOKEN`: a bearer token present in the site's
+  `INTERNAL_API_TOKENS`.
+
+## Data Model
+
+### Static Entities
+
+Static data records describe rail lines, services, stations, operators, towns,
+and landmarks. Records are JSON files validated by the schemas in
+`@mrtdown/core`.
+
+### Issues
+
+Issue records live in date-partitioned bundles:
+
+```text
+data/issue/YYYY/MM/<issue_id>/
+  issue.json
+  evidence.ndjson
+  impact.ndjson
 ```
 
-### Testing and Quality
+- `issue.json` stores the issue identity, type, and translated title.
+- `evidence.ndjson` stores source evidence used to understand the issue.
+- `impact.ndjson` stores append-only impact events derived from evidence.
+
+Supported issue types are `disruption`, `maintenance`, and `infra`.
+
+Use open-ended periods for ongoing issues. CLI validation is required whenever
+canonical data changes.
+
+## Evidence Ingest
+
+Webhook evidence payloads use the shared schemas in `@mrtdown/ingest-contracts`
+and can be processed through `@mrtdown/triage`:
 
 ```bash
-npm test                   # Run Vitest tests
-npx biome check            # Lint and format code
+npm run ingest:webhook
 ```
 
-## Architecture Overview
+Model-dependent triage evals are intentionally separate from the deterministic
+test suite:
 
-### Core Data Models
+```bash
+npm run test:eval
+```
 
-- **Lines**: MRT/LRT lines (NSL, EWL, CCL, etc.) with service schedules
-- **Issues**: Disruptions, maintenance, infrastructure problems with time
-  intervals
-- **Stations**: Station information with multi-language support
-- **Time-aware**: All operations handle Singapore timezone (`Asia/Singapore`)
+Run evals only when the package's documented environment variables are set and
+the paid model calls are intentional.
 
-### Data Flow
+## Contributing Notes
 
-1. **Canonical data** (`/data/{station,line,service,operator,town,landmark,issue}`)
-2. **CLI validation and static artifact generation**
-3. **Published Pages artifact** for downstream consumers
-
-## Key Features
-
-- **Canonical rail data**: Track MRT line disruptions and maintenance in a
-  reviewed file layout
-- **Static publishing**: Generate deterministic Pages artifacts for downstream
-  consumers
-- **Multi-language support**: Content available in 4 languages
-- **Time-zone aware**: All operations use Singapore timezone
-- **Service hours logic**: Different schedules for weekdays, weekends, and
-  holidays
-- **Webhook integration**: Canonical data evidence ingestion through
-  `@mrtdown/triage`, using `@mrtdown/ingest-contracts` for the payload contract
-
-## Issue Data Structure
-
-- **Directory layout**: `data/issue/YYYY/MM/<issue_id>/`
-- **Bundle files**: `issue.json`, `evidence.ndjson`, and `impact.ndjson`
-- **Types**: `disruption`, `maintenance`, `infra`
-- **Time intervals**: Start/end timestamps with timezone awareness
-- **Multi-language**: All titles have 4-language translations
-
-## Development Notes
-
-- CLI validation is required when canonical data changes.
 - Keep generated `pages-dist/`, package `dist/`, and local migration scratch
-  files out of commits unless a PR explicitly changes artifact policy.
-- Keep generated data and hand-authored code in separate PRs whenever practical.
-- Properly represent ongoing issues with open-ended periods.
+  files out of commits unless a change explicitly updates artifact policy.
+- Keep generated data and hand-authored code in separate pull requests whenever
+  practical.
+- If documentation and code disagree, update the documentation in the same
+  change.
+
+Agent-specific repository guidance lives in `AGENTS.md`.
