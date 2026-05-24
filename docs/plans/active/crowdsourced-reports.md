@@ -64,7 +64,7 @@ Candidate content shape:
   effect?: 'delay' | 'no-service' | 'crowding' | 'skipped-stop' | 'unknown',
   delayMinutes?: number,
   reportCount?: number,
-  sourceUrl?: string
+  url: string
 }
 ```
 
@@ -75,8 +75,11 @@ Contract rules:
 - `createdAt` is when the site accepted the report or cluster for dispatch.
 - `observedAt` is when the reporter observed the condition.
 - `text` is the natural-language evidence passed to triage.
-- `sourceUrl` is optional. Use a stable internal or public moderation URL only
-  if it is safe to publish in canonical evidence.
+- `lineIds` and `stationIds` may contain one or more affected entities. At
+  least one line or station should be present.
+- `url` is required because canonical evidence stores a `sourceUrl`. Use a
+  stable, non-PII public report URL or moderation URL that is safe to publish in
+  canonical evidence.
 - Personal details, IP addresses, user-agent strings, contact fields,
   moderation notes, abuse scores, and Turnstile tokens must remain site-local.
 
@@ -105,7 +108,10 @@ Exit criteria:
 - Teach `formatContentTextForIngest` to produce a concise, structured evidence
   prompt from crowd-report fields.
 - Map `crowd-report` to canonical `EvidenceTypeSchema.enum['report.public']`.
-- Add deterministic tests for formatting and evidence type mapping.
+- Persist the crowd-report `url` through the existing evidence `sourceUrl`
+  field.
+- Add deterministic tests for formatting, evidence type mapping, and source URL
+  propagation.
 
 Exit criteria:
 
