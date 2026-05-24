@@ -79,6 +79,15 @@ available under `fixtures/` for tests and examples.
 Preview branches and pull requests build the same bundle in CI and upload it as
 a one-day artifact. Only `main` deploys the bundle to GitHub Pages.
 
+After a successful `main` Pages deployment, CI triggers the `mrtdown-site`
+internal pull endpoint so the site can import the newly published archive. The
+deploy workflow expects these repository secrets:
+
+- `MRTDOWN_SITE_PULL_URL`: the full `mrtdown-site`
+  `/internal/api/tasks/pull` URL.
+- `MRTDOWN_SITE_INTERNAL_API_TOKEN`: a bearer token present in the site's
+  `INTERNAL_API_TOKENS`.
+
 The artifact publishes the canonical export at the root:
 
 - `index.html`
