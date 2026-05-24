@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import type { Evidence, EvidenceType, Issue, IssueBundle } from '@mrtdown/core';
+import type { Evidence, Issue, IssueBundle } from '@mrtdown/core';
 import {
   FileStore,
   FileWriteStore,
@@ -15,6 +15,7 @@ import { translate } from '../../llm/functions/translate/index.js';
 import { triageNewEvidence } from '../../llm/functions/triageNewEvidence/index.js';
 import { assert } from '../assert.js';
 import { formatContentTextForIngest } from './helpers/formatContentTextForIngest.js';
+import { getEvidenceProvenanceForIngestContent } from './helpers/getEvidenceProvenanceForIngestContent.js';
 import { getSlugDateTimeFromClaims } from './helpers/getSlugDateTimeFromClaims.js';
 import type { IngestContent } from './types.js';
 
@@ -187,13 +188,15 @@ export async function ingestContent(
   if (translatedEvidenceText == null) {
     return null;
   }
+  const evidenceProvenance =
+    getEvidenceProvenanceForIngestContent(normalizedContent);
 
   const evidence: Evidence = {
     id: IdGenerator.evidenceId(contentDateTime),
     ts: contentDateTime.toISO({ includeOffset: true }),
-    type: getEvidenceType(normalizedContent),
+    type: evidenceProvenance.type,
     text,
-    sourceUrl: normalizedContent.url,
+    sourceUrl: evidenceProvenance.sourceUrl,
     render: {
       text: translatedEvidenceText,
       source: '@openai/gpt-5-nano',
@@ -240,31 +243,4 @@ export async function ingestContent(
   }
 
   return null;
-}
-
-/**
- * Maps IngestContent source type to the corresponding Evidence type for provenance tracking.
- *
- * @param content - The content to classify.
- * @returns The evidence type: report.public for social sources, or report.media for news.
- */
-function getEvidenceType(content: IngestContent): EvidenceType {
-  switch (content.source) {
-    case 'reddit': {
-      return 'report.public';
-    }
-    case 'news-website': {
-      return 'report.media';
-    }
-    case 'twitter':
-    case 'mastodon': {
-      return 'report.public';
-    }
-    default: {
-      const exhaustive: never = content;
-      throw new Error(
-        `Unhandled content source: ${JSON.stringify(exhaustive)}`,
-      );
-    }
-  }
 }

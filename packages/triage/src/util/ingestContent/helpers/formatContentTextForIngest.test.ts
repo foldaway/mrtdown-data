@@ -43,4 +43,35 @@ describe('formatContentTextForIngest', () => {
       'Title: Major delay on Bukit Panjang LRT\n\nBody: No service between Senja and Petir.',
     );
   });
+
+  test('formats accepted crowd reports as structured evidence', () => {
+    expect(
+      formatContentTextForIngest({
+        source: 'crowd-report',
+        reportId: 'accepted-20260523-0903-btl-001',
+        text: 'Several commuters report 15 minute delays on the BTL.',
+        createdAt: '2026-05-23T09:04:00+08:00',
+        observedAt: '2026-05-23T09:03:00+08:00',
+        lineIds: ['BTL'],
+        stationIds: ['BCL'],
+        directionText: 'towards Expo',
+        effect: 'delay',
+        delayMinutes: 15,
+        reportCount: 4,
+        url: 'https://example.com/crowd-reports/accepted-20260523-0903-btl-001',
+      }),
+    ).toBe(
+      [
+        'Report: Several commuters report 15 minute delays on the BTL.',
+        'Observed at: 2026-05-23T09:03:00+08:00',
+        'Accepted at: 2026-05-23T09:04:00+08:00',
+        'Lines: BTL',
+        'Stations: BCL',
+        'Direction: towards Expo',
+        'Effect: delay',
+        'Delay minutes: 15',
+        'Report count: 4',
+      ].join('\n\n'),
+    );
+  });
 });
