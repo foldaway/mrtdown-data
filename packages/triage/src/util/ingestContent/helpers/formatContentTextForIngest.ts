@@ -12,6 +12,8 @@ export function formatContentTextForIngest(content: IngestContent): string {
       return formatFields([
         ['Title', content.title],
         ['Summary', content.summary],
+        ['Article text', content.articleText],
+        ['Article text source', content.articleTextSource],
       ]);
     }
     case 'crowd-report': {

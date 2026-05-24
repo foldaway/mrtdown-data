@@ -22,12 +22,29 @@ export const IngestContentRedditSchema = z.object({
 
 export type IngestContentReddit = z.infer<typeof IngestContentRedditSchema>;
 
+export const IngestContentNewsArticleTextSources = [
+  'publisher',
+  'archive',
+  'metadata',
+] as const;
+
+export const IngestContentNewsArticleTextSourceSchema = z.enum(
+  IngestContentNewsArticleTextSources,
+);
+
+export type IngestContentNewsArticleTextSource = z.infer<
+  typeof IngestContentNewsArticleTextSourceSchema
+>;
+
 export const IngestContentNewsArticleSchema = z.object({
   source: z.literal('news-website'),
   title: z.string(),
   summary: z.string(),
   url: z.string(),
   createdAt: z.string(),
+  articleText: z.string().min(1).optional(),
+  articleTextSource: IngestContentNewsArticleTextSourceSchema.optional(),
+  articleTextFetchedAt: z.string().optional(),
 });
 
 export type IngestContentNewsArticle = z.infer<

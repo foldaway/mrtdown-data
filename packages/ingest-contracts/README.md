@@ -20,10 +20,23 @@ const payload: IngestPayload = IngestPayloadSchema.parse({
       summary: 'Trains are delayed due to a track fault.',
       url: 'https://example.com/report',
       createdAt: '2026-05-23T09:00:00+08:00',
+      articleText:
+        'The operator said commuters should expect an additional 20 minutes of travel time.',
+      articleTextSource: 'publisher',
+      articleTextFetchedAt: '2026-05-23T09:01:00.000Z',
     },
   ],
 });
 ```
+
+## News Articles
+
+News website payloads may include optional article enrichment fields from
+crawler-side extraction:
+
+- `articleText` is extracted article body text, or a compact metadata fallback.
+- `articleTextSource` is `publisher`, `archive`, or `metadata`.
+- `articleTextFetchedAt` is when the article text was fetched or derived.
 
 ## Crowd Reports
 
