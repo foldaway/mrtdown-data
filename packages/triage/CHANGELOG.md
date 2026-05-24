@@ -1,5 +1,14 @@
 # @mrtdown/triage
 
+## 2.0.0-alpha.27
+
+### Patch Changes
+
+- 926f23a: Add optional enriched news article text fields to the ingest contract and use
+  them during triage formatting.
+- Updated dependencies [926f23a]
+  - @mrtdown/ingest-contracts@2.0.0-alpha.27
+
 ## 2.0.0-alpha.26
 
 ### Patch Changes
