@@ -28,6 +28,29 @@ describe('formatContentTextForIngest', () => {
     ).toBe('Title: Bukit Panjang LRT service resumes after track intrusion');
   });
 
+  test('includes enriched news article text when present', () => {
+    expect(
+      formatContentTextForIngest({
+        source: 'news-website',
+        title: 'Train service delayed',
+        summary: 'Services are delayed due to a track fault.',
+        url: 'https://example.com/article',
+        createdAt: '2026-05-22T14:07:24+08:00',
+        articleText:
+          'Services are delayed due to a track fault. The operator said commuters should add 20 minutes of travel time.',
+        articleTextSource: 'publisher',
+        articleTextFetchedAt: '2026-05-22T06:08:00.000Z',
+      }),
+    ).toBe(
+      [
+        'Title: Train service delayed',
+        'Summary: Services are delayed due to a track fault.',
+        'Article text: Services are delayed due to a track fault. The operator said commuters should add 20 minutes of travel time.',
+        'Article text source: publisher',
+      ].join('\n\n'),
+    );
+  });
+
   test('keeps reddit titles alongside body text', () => {
     expect(
       formatContentTextForIngest({

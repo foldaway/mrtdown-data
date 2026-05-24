@@ -3,6 +3,8 @@ import {
   IngestContentCrowdReportEffectSchema,
   IngestContentCrowdReportEffects,
   IngestContentCrowdReportSource,
+  IngestContentNewsArticleTextSourceSchema,
+  IngestContentNewsArticleTextSources,
   IngestPayloadSchema,
 } from './index.js';
 
@@ -14,6 +16,15 @@ describe('IngestPayloadSchema', () => {
     ]);
     expect(IngestContentCrowdReportEffectSchema.parse('crowding')).toBe(
       'crowding',
+    );
+  });
+
+  test('exports news article text source constants', () => {
+    expect(IngestContentNewsArticleTextSourceSchema.options).toEqual([
+      ...IngestContentNewsArticleTextSources,
+    ]);
+    expect(IngestContentNewsArticleTextSourceSchema.parse('publisher')).toBe(
+      'publisher',
     );
   });
 
@@ -43,6 +54,10 @@ describe('IngestPayloadSchema', () => {
             summary: 'Services are delayed due to a track fault.',
             url: 'https://example.com/news/1',
             createdAt: '2026-05-23T09:02:00+08:00',
+            articleText:
+              'Services are delayed due to a track fault. The operator said commuters should add 20 minutes of travel time.',
+            articleTextSource: 'publisher',
+            articleTextFetchedAt: '2026-05-23T09:03:00.000Z',
           },
           {
             source: 'crowd-report',
@@ -60,6 +75,26 @@ describe('IngestPayloadSchema', () => {
         ],
       }),
     ).not.toThrow();
+  });
+
+  test('rejects unknown news article text sources', () => {
+    expect(() =>
+      IngestPayloadSchema.parse({
+        content: [
+          {
+            source: 'news-website',
+            title: 'Train service delayed',
+            summary: 'Services are delayed due to a track fault.',
+            url: 'https://example.com/news/1',
+            createdAt: '2026-05-23T09:02:00+08:00',
+            articleText:
+              'Services are delayed due to a track fault. The operator said commuters should add 20 minutes of travel time.',
+            articleTextSource: 'scraper',
+            articleTextFetchedAt: '2026-05-23T09:03:00.000Z',
+          },
+        ],
+      }),
+    ).toThrow();
   });
 
   test('accepts crowd reports with optional cluster fields', () => {
