@@ -1,5 +1,12 @@
 # @mrtdown/ingest-contracts
 
+## 2.0.0-alpha.26
+
+### Minor Changes
+
+- 4f1e62a: Export crowd-report source and effect constants from the ingest contracts
+  package.
+
 ## 2.0.0-alpha.25
 
 ### Minor Changes
