@@ -159,8 +159,11 @@ describe('@mrtdown/fs', () => {
       '2026-01-01T00:00:00Z',
     );
     expect(manifest.lines.BTL).toMatch(/^[0-9a-f]{64}$/);
-    expect(renderPagesIndex(manifest)).toContain('mrtdown-data');
-    expect(renderPagesIndex(manifest)).not.toContain('archive.tar.gz');
+    const pagesIndex = renderPagesIndex(manifest);
+    expect(pagesIndex).toContain('mrtdown-data');
+    expect(pagesIndex).toContain('href="#lines"');
+    expect(pagesIndex).toContain('<h2 id="exports">Exports</h2>');
+    expect(pagesIndex).not.toContain('archive.tar.gz');
     expect(renderPagesIndex(manifest, { includeArchiveLinks: true })).toContain(
       'archive.tar.gz',
     );
