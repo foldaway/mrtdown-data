@@ -9,6 +9,7 @@
     "@mrtdown/ingest-contracts": "2.0.0-alpha.23"
   },
   "changesets": [
+    "bright-crowds-share",
     "calm-crowds-report",
     "red-tips-heal",
     "tame-cycles-smile"
