@@ -28,6 +28,8 @@ visual exceptions.
   `mrtdown-site`.
 - Preserve arbitrary hand-authored geometry without requiring auto-layout.
 - Use complete version snapshots as the canonical storage contract.
+- Support reviewed schematic edit submissions from trusted authoring clients,
+  such as a protected `mrtdown-site` map designer.
 
 ## Non-Goals
 
@@ -36,6 +38,8 @@ visual exceptions.
 - This plan does not require an `extends` or delta system for canonical storage.
 - This plan does not require deterministic schematic auto-layout from station
   and service topology.
+- This plan does not allow runtime consumers to mutate canonical schematic data
+  directly without review.
 - This plan does not require removing existing `mrtdown-site` map snapshots
   before the canonical schema and publication path are proven.
 
@@ -48,6 +52,7 @@ This repository should own:
 - segment geometry, including raw SVG paths where needed;
 - interchange node composition;
 - semantic style hints and layer order;
+- branch/PR validation for submitted schematic map edits;
 - validation that map references match canonical line, station, service, and
   station-code data.
 
@@ -57,6 +62,7 @@ Consumers such as `mrtdown-site` should own:
 - current disruption and focused-line overlays;
 - station links, tooltips, localized labels, zoom controls, and timeline UI;
 - route-level loading, caching, bundle strategy, and visual QA.
+- any visual map designer/editor UI used to author schematic changes.
 
 ## Canonical Shape
 
@@ -132,7 +138,32 @@ Exit criteria:
 - New full snapshots can be started from an existing version without making
   `extends` part of the canonical file format.
 
-### Phase 4: Seed Initial Map Version
+### Phase 4: Designer Submission Contract
+
+Define how trusted authoring clients submit schematic map edits back to this
+repository. The first expected client is a protected `mrtdown-site` map designer
+that uses the site renderer for visual editing and preview.
+
+- Define an edit bundle or branch layout that contains complete updated map
+  snapshot files plus metadata about the source version and intended target
+  version.
+- Validate submitted files with the same canonical schema and reference checks
+  used for hand-authored changes.
+- Create or document a workflow that turns designer output into a reviewed
+  branch and draft pull request.
+- Include semantic diff output in the PR review path: moved stations, changed
+  paths, changed labels, changed layers, and changed references.
+- Keep all submissions review-gated; do not accept direct canonical writes from
+  `mrtdown-site`.
+
+Exit criteria:
+
+- A trusted designer can submit a schematic map edit that becomes a normal
+  reviewable `mrtdown-data` PR.
+- Designer-originated changes are indistinguishable from hand-authored changes
+  after validation and review.
+
+### Phase 5: Seed Initial Map Version
 
 - Extract one current `mrtdown-site` system map snapshot into canonical
   schematic data.
@@ -146,7 +177,7 @@ Exit criteria:
 - At least one system map version is canonical in this repository and usable by
   `mrtdown-site` for renderer parity work.
 
-### Phase 5: Publish In Archive
+### Phase 6: Publish In Archive
 
 - Include schematic map manifest and version files in the published Pages/archive
   artifact.
@@ -160,7 +191,7 @@ Exit criteria:
 - `mrtdown-site` can pull the data through its existing canonical archive
   workflow.
 
-### Phase 6: Migrate Remaining Versions
+### Phase 7: Migrate Remaining Versions
 
 - Add the remaining current timeline versions as complete canonical snapshots.
 - Validate each version independently.
@@ -179,6 +210,8 @@ Exit criteria:
 
 - 2026-05-24: Created cross-repo plan from the `mrtdown-site` dynamic system map
   investigation and planning discussion.
+- 2026-05-24: Added reviewed designer-submission path for trusted visual editing
+  clients such as a protected `mrtdown-site` map designer.
 
 ## Decision Log
 
@@ -188,6 +221,8 @@ Exit criteria:
   bends and curves are preserved.
 - 2026-05-24: Keep rendering and interactive behavior out of canonical data;
   consumers own presentation and UI behavior.
+- 2026-05-24: Accept designer-originated schematic edits only through normal
+  branch, validation, and PR review paths.
 
 ## Validation
 
@@ -196,3 +231,6 @@ Exit criteria:
 - Run `npm run test`.
 - Run `npm run data:validate` once schematic data is part of canonical data.
 - Run `npm run pages:build` before relying on archive publication.
+- For designer-originated changes, verify submitted map files pass the same
+  validation as hand-authored changes and include semantic diff output for
+  reviewers.
