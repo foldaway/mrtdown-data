@@ -22,9 +22,9 @@ from this repo.
 - `fixtures/data` contains a small deterministic target-layout data set for
   package and CLI tests.
 
-The data-overhaul work is being split into smaller PRs. Follow
-`docs/plans/active/data-overhaul-split.md` before moving package, data,
-workflow, or deploy surface between branches.
+The data-overhaul split sequence is complete. Keep
+`docs/plans/completed/data-overhaul-split.md` as historical context when
+changing package, data, workflow, or deploy surfaces.
 
 ## Target Layout
 
@@ -98,8 +98,10 @@ the repository shape.
 - `README.md`: repository overview and commands.
 - `docs/plans/README.md`: active plans, completed reports, and durable tech
   debt.
-- `docs/plans/active/data-overhaul-split.md`: planned split sequence for the
-  data overhaul.
+- `docs/plans/completed/data-overhaul-split.md`: completed split sequence for
+  the data overhaul.
+- `docs/plans/completed/ingest-contracts-package.md`: completed ingest
+  contracts package plan.
 - `docs/plans/completed/legacy-source-data-removal.md`: Step 7.5 source-data
   removal report.
 - `docs/plans/completed/runtime-removal-deploy-cleanup.md`: Step 8 runtime and

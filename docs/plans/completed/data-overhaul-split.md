@@ -1,5 +1,8 @@
 # Data Overhaul Split Plan
 
+Status: completed. This document is retained as the historical split sequence
+for the package/data repository migration.
+
 PR #177 is the backup/source branch for this migration. Do not keep expanding
 that branch. Split it into small PRs that can be reviewed and validated
 independently.

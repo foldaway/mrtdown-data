@@ -19,7 +19,7 @@ Paired site-side plan:
 
 Related references:
 
-- `docs/plans/active/ingest-contracts-package.md`
+- `docs/plans/completed/ingest-contracts-package.md`
 - `packages/ingest-contracts/README.md`
 - `packages/triage/README.md`
 - `.github/workflows/ingest.yml`

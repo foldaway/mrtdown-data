@@ -1,7 +1,7 @@
 # Issue Data Migration Report
 
 This report covers the Step 7 split from
-`docs/plans/active/data-overhaul-split.md`.
+`docs/plans/completed/data-overhaul-split.md`.
 
 ## Scope
 

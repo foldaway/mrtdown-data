@@ -67,8 +67,8 @@ npm run pages:build        # Build the GitHub Pages static data artifact
 ```
 
 See `AGENTS.md` for the short agent map and `docs/plans/README.md` for active
-plans, completed reports, and durable tech debt. The planned data-overhaul
-split lives in `docs/plans/active/data-overhaul-split.md`.
+plans, completed reports, and durable tech debt. The completed data-overhaul
+split lives in `docs/plans/completed/data-overhaul-split.md`.
 
 ### Static Pages Export
 

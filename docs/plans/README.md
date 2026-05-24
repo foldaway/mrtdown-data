@@ -6,15 +6,15 @@ plan.
 
 ## Active
 
-- [Data overhaul split](active/data-overhaul-split.md): planned split sequence
-  for the data overhaul.
 - [Crowdsourced reports canonical ingest](active/crowdsourced-reports.md):
   public report payload contract and canonical evidence ingestion plan.
-- [Ingest contracts package](active/ingest-contracts-package.md): shared
-  webhook payload contract for external evidence producers.
 
 ## Completed
 
+- [Data overhaul split](completed/data-overhaul-split.md): historical split
+  sequence for the package/data repository migration.
+- [Ingest contracts package](completed/ingest-contracts-package.md): shared
+  webhook payload contract for external evidence producers.
 - [Issue data migration](completed/issue-data-migration.md): Step 7 issue data
   migration report.
 - [Legacy source data removal](completed/legacy-source-data-removal.md): Step

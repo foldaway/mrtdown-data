@@ -1,5 +1,8 @@
 # Ingest Contracts Package
 
+Status: completed. The package exists as `@mrtdown/ingest-contracts`, exports
+the shared payload schemas, and is consumed by `@mrtdown/triage`.
+
 ## Goal
 
 Publish the ingest webhook payload contract independently from
