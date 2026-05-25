@@ -97,7 +97,6 @@ export function replayImpactEvents(
       );
       const claims: Claim[] = normalizeClaimsForEvidence({
         claims: reconstructed,
-        evidenceText: item.text,
         evidenceTs: item.ts,
         repo,
       });

@@ -4,480 +4,7 @@ import { describe, expect, test } from 'vitest';
 import { normalizeClaimsForEvidence } from './normalizeClaimsForEvidence.js';
 
 describe('normalizeClaimsForEvidence', () => {
-  test('downgrades vague future suspension claims when evidence describes current longer waits', () => {
-    const evidenceText =
-      'East-West Line (EWL) track testing of newly connected sections is causing longer waits of up to 17 minutes for trains from Bedok and Kembangan. A final service suspension to disconnect the EWL from Changi Depot is planned for the first half of 2026, signaling further disruption.';
-    const evidenceTs = '2025-12-05T22:12:16+08:00';
-    const claims: Claim[] = [
-      {
-        entity: {
-          type: 'service',
-          serviceId: 'EWL_MAIN_E',
-        },
-        effect: {
-          service: { kind: 'no-service' },
-          facility: null,
-        },
-        scopes: {
-          service: [{ type: 'service.whole' }],
-        },
-        statusSignal: 'planned',
-        timeHints: {
-          kind: 'fixed',
-          startAt: '2026-01-01T00:00:00+08:00',
-          endAt: '2026-07-01T00:00:00+08:00',
-        },
-        causes: ['system.upgrade'],
-      },
-    ];
-
-    expect(
-      normalizeClaimsForEvidence({
-        claims,
-        evidenceText,
-        evidenceTs,
-      }),
-    ).toEqual([
-      {
-        entity: {
-          type: 'service',
-          serviceId: 'EWL_MAIN_E',
-        },
-        effect: {
-          service: { kind: 'reduced-service' },
-          facility: null,
-        },
-        scopes: {
-          service: [{ type: 'service.whole' }],
-        },
-        statusSignal: 'open',
-        timeHints: {
-          kind: 'start-only',
-          startAt: evidenceTs,
-        },
-        causes: ['system.upgrade'],
-      },
-    ]);
-  });
-
-  test('does not rewrite explicit no-service closure evidence', () => {
-    const evidenceText =
-      'Train service is suspended between Jurong East and Clementi from 10pm to end of service for track works.';
-    const evidenceTs = '2026-01-01T22:00:00+08:00';
-    const claims: Claim[] = [
-      {
-        entity: {
-          type: 'service',
-          serviceId: 'EWL_MAIN_E',
-        },
-        effect: {
-          service: { kind: 'no-service' },
-          facility: null,
-        },
-        scopes: {
-          service: [
-            {
-              type: 'service.segment',
-              fromStationId: 'JUR',
-              toStationId: 'CLE',
-            },
-          ],
-        },
-        statusSignal: 'planned',
-        timeHints: {
-          kind: 'fixed',
-          startAt: evidenceTs,
-          endAt: '2026-01-02T00:00:00+08:00',
-        },
-        causes: ['track.work'],
-      },
-    ];
-
-    expect(
-      normalizeClaimsForEvidence({
-        claims,
-        evidenceText,
-        evidenceTs,
-      }),
-    ).toEqual(claims);
-  });
-
-  test('clamps hallucinated earlier delay start times to the evidence timestamp', () => {
-    const evidenceText =
-      '[BTL] Due to a track fault at Beauty World, train services on the Bukit Timah Line are delayed between Bukit Panjang and King Albert Park';
-    const evidenceTs = '2026-01-01T07:10:00+08:00';
-    const claims: Claim[] = [
-      {
-        entity: { type: 'service', serviceId: 'BTL_MAIN_E' },
-        effect: { service: { kind: 'delay', duration: null }, facility: null },
-        scopes: {
-          service: [
-            {
-              type: 'service.segment',
-              fromStationId: 'BKP',
-              toStationId: 'KAP',
-            },
-          ],
-        },
-        statusSignal: 'open',
-        timeHints: {
-          kind: 'start-only',
-          startAt: '2025-12-31T15:10:00+08:00',
-        },
-        causes: ['track.fault'],
-      },
-    ];
-
-    expect(
-      normalizeClaimsForEvidence({
-        claims,
-        evidenceText,
-        evidenceTs,
-      }),
-    ).toEqual([
-      {
-        ...claims[0],
-        timeHints: {
-          kind: 'start-only',
-          startAt: evidenceTs,
-        },
-      },
-    ]);
-  });
-
-  test('preserves explicit prior delay starts mentioned in the evidence', () => {
-    const evidenceText =
-      '[BTL] Train services have been delayed since 6.45am due to a track fault at Beauty World.';
-    const evidenceTs = '2026-01-01T07:10:00+08:00';
-    const claims: Claim[] = [
-      {
-        entity: { type: 'service', serviceId: 'BTL_MAIN_E' },
-        effect: { service: { kind: 'delay', duration: null }, facility: null },
-        scopes: { service: [{ type: 'service.whole' }] },
-        statusSignal: 'open',
-        timeHints: {
-          kind: 'start-only',
-          startAt: '2026-01-01T06:45:00+08:00',
-        },
-        causes: ['track.fault'],
-      },
-    ];
-
-    expect(
-      normalizeClaimsForEvidence({
-        claims,
-        evidenceText,
-        evidenceTs,
-      }),
-    ).toEqual(claims);
-  });
-
-  test('drops branch services when evidence station mentions only match the main branch', () => {
-    const evidenceText =
-      '[EWL] UPDATE: Passengers travelling towards the city centre, use NSL at Jurong East, Woodlands, Bishan and TEL at Caldecott.';
-    const evidenceTs = '2024-09-25T16:11:05+08:00';
-    const claims: Claim[] = [
-      {
-        entity: { type: 'service', serviceId: 'EWL_MAIN_E' },
-        effect: { service: { kind: 'reduced-service' }, facility: null },
-        scopes: { service: [{ type: 'service.whole' }] },
-        statusSignal: 'open',
-        timeHints: { kind: 'start-only', startAt: evidenceTs },
-        causes: ['power.fault'],
-      },
-      {
-        entity: { type: 'service', serviceId: 'EWL_MAIN_W' },
-        effect: { service: { kind: 'reduced-service' }, facility: null },
-        scopes: { service: [{ type: 'service.whole' }] },
-        statusSignal: 'open',
-        timeHints: { kind: 'start-only', startAt: evidenceTs },
-        causes: ['power.fault'],
-      },
-      {
-        entity: { type: 'service', serviceId: 'EWL_CG_E' },
-        effect: { service: { kind: 'reduced-service' }, facility: null },
-        scopes: { service: [{ type: 'service.whole' }] },
-        statusSignal: 'open',
-        timeHints: { kind: 'start-only', startAt: evidenceTs },
-        causes: ['power.fault'],
-      },
-      {
-        entity: { type: 'service', serviceId: 'EWL_CG_W' },
-        effect: { service: { kind: 'reduced-service' }, facility: null },
-        scopes: { service: [{ type: 'service.whole' }] },
-        statusSignal: 'open',
-        timeHints: { kind: 'start-only', startAt: evidenceTs },
-        causes: ['power.fault'],
-      },
-    ];
-
-    const repo = {
-      services: {
-        get(serviceId: string) {
-          const stationsByServiceId: Record<string, string[]> = {
-            EWL_MAIN_E: ['BNL', 'JUR', 'WDL', 'BSH', 'QUE'],
-            EWL_MAIN_W: ['QUE', 'BSH', 'WDL', 'JUR', 'BNL'],
-            EWL_CG_E: ['TNM', 'XPO', 'CGA'],
-            EWL_CG_W: ['CGA', 'XPO', 'TNM'],
-          };
-          const stationIds = stationsByServiceId[serviceId];
-          return stationIds == null
-            ? null
-            : {
-                id: serviceId,
-                lineId: 'EWL',
-                name: { 'en-SG': serviceId },
-                revisions: [
-                  {
-                    id: 'r1',
-                    startAt: '2010-01-01',
-                    endAt: null,
-                    path: {
-                      stations: stationIds.map((stationId) => ({
-                        stationId,
-                        displayCode: stationId,
-                      })),
-                    },
-                    operatingHours: {
-                      weekdays: { start: '05:00', end: '00:00' },
-                      weekends: { start: '05:00', end: '00:00' },
-                    },
-                  },
-                ],
-              };
-        },
-      },
-      stations: {
-        list() {
-          return [
-            {
-              id: 'JUR',
-              name: { 'en-SG': 'Jurong East' },
-              stationCodes: [],
-            },
-            {
-              id: 'WDL',
-              name: { 'en-SG': 'Woodlands' },
-              stationCodes: [],
-            },
-            {
-              id: 'BSH',
-              name: { 'en-SG': 'Bishan' },
-              stationCodes: [],
-            },
-            {
-              id: 'CDT',
-              name: { 'en-SG': 'Caldecott' },
-              stationCodes: [],
-            },
-          ];
-        },
-      },
-    } as unknown as MRTDownRepository;
-
-    expect(
-      normalizeClaimsForEvidence({
-        claims,
-        evidenceText,
-        evidenceTs,
-        repo,
-      }),
-    ).toEqual(claims.slice(0, 2));
-  });
-
-  test('does not match services without an active revision at evidence timestamp', () => {
-    const evidenceText = '[BTL] Train services are delayed at Jurong East.';
-    const evidenceTs = '2026-01-01T07:10:00+08:00';
-    const claims: Claim[] = [
-      {
-        entity: { type: 'service', serviceId: 'BTL_ACTIVE' },
-        effect: { service: { kind: 'delay', duration: null }, facility: null },
-        scopes: { service: [{ type: 'service.whole' }] },
-        statusSignal: 'open',
-        timeHints: { kind: 'start-only', startAt: evidenceTs },
-        causes: ['track.fault'],
-      },
-      {
-        entity: { type: 'service', serviceId: 'BTL_INACTIVE' },
-        effect: { service: { kind: 'delay', duration: null }, facility: null },
-        scopes: { service: [{ type: 'service.whole' }] },
-        statusSignal: 'open',
-        timeHints: { kind: 'start-only', startAt: evidenceTs },
-        causes: ['track.fault'],
-      },
-    ];
-
-    const repo = {
-      services: {
-        get(serviceId: string) {
-          const revisionsByServiceId: Record<string, unknown[]> = {
-            BTL_ACTIVE: [
-              {
-                id: 'active',
-                startAt: '2025-01-01',
-                endAt: null,
-                path: {
-                  stations: [{ stationId: 'JUR', displayCode: 'JUR' }],
-                },
-              },
-            ],
-            BTL_INACTIVE: [
-              {
-                id: 'inactive',
-                startAt: '2020-01-01',
-                endAt: '2021-01-01',
-                path: {
-                  stations: [{ stationId: 'JUR', displayCode: 'JUR' }],
-                },
-              },
-            ],
-          };
-          const revisions = revisionsByServiceId[serviceId];
-          return revisions == null
-            ? null
-            : {
-                id: serviceId,
-                lineId: 'BTL',
-                name: { 'en-SG': serviceId },
-                revisions,
-              };
-        },
-      },
-      stations: {
-        list() {
-          return [
-            {
-              id: 'JUR',
-              name: { 'en-SG': 'Jurong East' },
-              stationCodes: [],
-            },
-          ];
-        },
-      },
-    } as unknown as MRTDownRepository;
-
-    expect(
-      normalizeClaimsForEvidence({
-        claims,
-        evidenceText,
-        evidenceTs,
-        repo,
-      }),
-    ).toEqual([claims[0]]);
-  });
-
-  test('synthesizes planned whole-line closure claims from context-resolved evidence', () => {
-    const evidenceText =
-      'Bukit Panjang LRT line will be closed on Aug 31 and Sep 21 for the works, and shuttle buses will be provided at the usual fares.';
-    const evidenceTs = '2025-07-30T19:03:02+08:00';
-
-    const repo = {
-      lines: {
-        list() {
-          return [
-            {
-              id: 'BPLRT',
-              name: { 'en-SG': 'Bukit Panjang LRT' },
-            },
-          ];
-        },
-      },
-      services: {
-        searchByLineId(lineId: string) {
-          if (lineId !== 'BPLRT') {
-            return [];
-          }
-
-          return [
-            {
-              id: 'BPLRT_A',
-              lineId: 'BPLRT',
-              name: { 'en-SG': 'Bukit Panjang LRT - Service A' },
-              revisions: [{ startAt: '1999-11-06', endAt: null }],
-            },
-            {
-              id: 'BPLRT_B',
-              lineId: 'BPLRT',
-              name: { 'en-SG': 'Bukit Panjang LRT - Service B' },
-              revisions: [{ startAt: '1999-11-06', endAt: null }],
-            },
-            {
-              id: 'BPLRT_C',
-              lineId: 'BPLRT',
-              name: { 'en-SG': 'Bukit Panjang LRT - Service C' },
-              revisions: [{ startAt: '1999-11-06', endAt: '2019-01-13' }],
-            },
-          ];
-        },
-      },
-      stations: {
-        list() {
-          return [];
-        },
-      },
-    } as unknown as MRTDownRepository;
-
-    expect(
-      normalizeClaimsForEvidence({
-        claims: [],
-        evidenceText,
-        evidenceTs,
-        repo,
-      }),
-    ).toEqual([
-      {
-        entity: { type: 'service', serviceId: 'BPLRT_A' },
-        effect: { service: { kind: 'no-service' }, facility: null },
-        scopes: { service: [{ type: 'service.whole' }] },
-        statusSignal: 'planned',
-        timeHints: {
-          kind: 'fixed',
-          startAt: '2025-08-31T00:00:00+08:00',
-          endAt: '2025-09-01T00:00:00+08:00',
-        },
-        causes: ['system.upgrade'],
-      },
-      {
-        entity: { type: 'service', serviceId: 'BPLRT_A' },
-        effect: { service: { kind: 'no-service' }, facility: null },
-        scopes: { service: [{ type: 'service.whole' }] },
-        statusSignal: 'planned',
-        timeHints: {
-          kind: 'fixed',
-          startAt: '2025-09-21T00:00:00+08:00',
-          endAt: '2025-09-22T00:00:00+08:00',
-        },
-        causes: ['system.upgrade'],
-      },
-      {
-        entity: { type: 'service', serviceId: 'BPLRT_B' },
-        effect: { service: { kind: 'no-service' }, facility: null },
-        scopes: { service: [{ type: 'service.whole' }] },
-        statusSignal: 'planned',
-        timeHints: {
-          kind: 'fixed',
-          startAt: '2025-08-31T00:00:00+08:00',
-          endAt: '2025-09-01T00:00:00+08:00',
-        },
-        causes: ['system.upgrade'],
-      },
-      {
-        entity: { type: 'service', serviceId: 'BPLRT_B' },
-        effect: { service: { kind: 'no-service' }, facility: null },
-        scopes: { service: [{ type: 'service.whole' }] },
-        statusSignal: 'planned',
-        timeHints: {
-          kind: 'fixed',
-          startAt: '2025-09-21T00:00:00+08:00',
-          endAt: '2025-09-22T00:00:00+08:00',
-        },
-        causes: ['system.upgrade'],
-      },
-    ]);
-  });
-
   test('adds start-only time hint when service-impact claim is missing time hints', () => {
-    const evidenceText = '[NSL] Train services are delayed due to track fault.';
     const evidenceTs = '2026-03-01T08:10:00+08:00';
     const claims: Claim[] = [
       {
@@ -493,7 +20,6 @@ describe('normalizeClaimsForEvidence', () => {
     expect(
       normalizeClaimsForEvidence({
         claims,
-        evidenceText,
         evidenceTs,
       }),
     ).toEqual([
@@ -506,4 +32,248 @@ describe('normalizeClaimsForEvidence', () => {
       },
     ]);
   });
+
+  test('normalizes nullable claim fields', () => {
+    const evidenceTs = '2026-01-01T08:10:00+08:00';
+    const claims: Claim[] = [
+      {
+        entity: { type: 'service', serviceId: 'BTL_MAIN_E' },
+        effect: null,
+        scopes: { service: [{ type: 'service.whole' }] },
+        statusSignal: 'cleared',
+        timeHints: { kind: 'end-only', endAt: evidenceTs },
+        causes: [],
+      } as unknown as Claim,
+    ];
+
+    expect(
+      normalizeClaimsForEvidence({
+        claims,
+        evidenceTs,
+      }),
+    ).toEqual([
+      {
+        ...claims[0],
+        effect: { service: null, facility: null },
+        causes: null,
+      },
+    ]);
+  });
+
+  test('deduplicates whole-line degraded-service claims and fills active sibling services', () => {
+    const evidenceTs = '2026-01-05T22:12:16+08:00';
+    const baseClaim = {
+      effect: { service: { kind: 'reduced-service' } },
+      scopes: { service: [{ type: 'service.whole' }] },
+      statusSignal: 'open',
+      timeHints: { kind: 'start-only', startAt: evidenceTs },
+      causes: ['system.upgrade'],
+    };
+    const claims = [
+      {
+        ...baseClaim,
+        entity: { type: 'service', serviceId: 'BTL_MAIN_E' },
+      },
+      {
+        ...baseClaim,
+        entity: { type: 'service', serviceId: 'BTL_MAIN_E' },
+        effect: { service: { kind: 'reduced-service' }, facility: null },
+      },
+      {
+        ...baseClaim,
+        entity: { type: 'service', serviceId: 'BTL_MAIN_W' },
+      },
+      {
+        ...baseClaim,
+        entity: { type: 'service', serviceId: 'ERL_MAIN_CW' },
+      },
+      {
+        ...baseClaim,
+        entity: { type: 'service', serviceId: 'ERL_MAIN_CCW' },
+        effect: { service: { kind: 'reduced-service' }, facility: null },
+      },
+    ] as unknown as Claim[];
+
+    const repo = buildServiceRepo({
+      BTL_MAIN_E: 'BTL',
+      BTL_MAIN_W: 'BTL',
+      ERL_MAIN_CW: 'ERL',
+      ERL_MAIN_CCW: 'ERL',
+      ERL_EAST_COAST_C: 'ERL',
+    });
+
+    expect(
+      normalizeClaimsForEvidence({
+        claims,
+        evidenceTs,
+        repo,
+      }),
+    ).toEqual(
+      [
+        'BTL_MAIN_E',
+        'BTL_MAIN_W',
+        'ERL_MAIN_CW',
+        'ERL_MAIN_CCW',
+        'ERL_EAST_COAST_C',
+      ].map((serviceId) => ({
+        ...baseClaim,
+        entity: { type: 'service', serviceId },
+        effect: { service: { kind: 'reduced-service' }, facility: null },
+      })),
+    );
+  });
+
+  test('deduplicates semantically identical claims with different key order', () => {
+    const evidenceTs = '2026-01-01T07:10:00+08:00';
+    const claim: Claim = {
+      entity: { type: 'service', serviceId: 'BTL_MAIN_E' },
+      effect: { service: { kind: 'delay', duration: null }, facility: null },
+      scopes: { service: [{ type: 'service.whole' }] },
+      statusSignal: 'open',
+      timeHints: { kind: 'start-only', startAt: evidenceTs },
+      causes: null,
+    };
+    const sameClaimWithDifferentKeyOrder = {
+      causes: null,
+      timeHints: { startAt: evidenceTs, kind: 'start-only' },
+      statusSignal: 'open',
+      scopes: { service: [{ type: 'service.whole' }] },
+      effect: { facility: null, service: { duration: null, kind: 'delay' } },
+      entity: { serviceId: 'BTL_MAIN_E', type: 'service' },
+    } as unknown as Claim;
+
+    expect(
+      normalizeClaimsForEvidence({
+        claims: [claim, sameClaimWithDifferentKeyOrder],
+        evidenceTs,
+      }),
+    ).toEqual([claim]);
+  });
+
+  test('does not fill sibling services for single-service whole claims', () => {
+    const evidenceTs = '2026-01-01T07:10:00+08:00';
+    const claim: Claim = {
+      entity: { type: 'service', serviceId: 'BTL_MAIN_E' },
+      effect: { service: { kind: 'delay', duration: null }, facility: null },
+      scopes: { service: [{ type: 'service.whole' }] },
+      statusSignal: 'open',
+      timeHints: { kind: 'start-only', startAt: evidenceTs },
+      causes: null,
+    };
+
+    expect(
+      normalizeClaimsForEvidence({
+        claims: [claim],
+        evidenceTs,
+        repo: buildServiceRepo({
+          BTL_MAIN_E: 'BTL',
+          BTL_MAIN_W: 'BTL',
+        }),
+      }),
+    ).toEqual([claim]);
+  });
+
+  test('does not fill sibling services from duplicate single-service claims', () => {
+    const evidenceTs = '2026-01-01T07:10:00+08:00';
+    const claim: Claim = {
+      entity: { type: 'service', serviceId: 'BTL_MAIN_E' },
+      effect: { service: { kind: 'delay', duration: null }, facility: null },
+      scopes: { service: [{ type: 'service.whole' }] },
+      statusSignal: 'open',
+      timeHints: { kind: 'start-only', startAt: evidenceTs },
+      causes: null,
+    };
+
+    expect(
+      normalizeClaimsForEvidence({
+        claims: [claim, claim],
+        evidenceTs,
+        repo: buildServiceRepo({
+          BTL_MAIN_E: 'BTL',
+          BTL_MAIN_W: 'BTL',
+        }),
+      }),
+    ).toEqual([claim]);
+  });
+
+  test('does not fill sibling services from inactive service claims', () => {
+    const evidenceTs = '2026-01-01T07:10:00+08:00';
+    const baseClaim = {
+      effect: { service: { kind: 'delay', duration: null }, facility: null },
+      scopes: { service: [{ type: 'service.whole' }] },
+      statusSignal: 'open',
+      timeHints: { kind: 'start-only', startAt: evidenceTs },
+      causes: null,
+    };
+    const claims = [
+      {
+        ...baseClaim,
+        entity: { type: 'service', serviceId: 'BTL_MAIN_E' },
+      },
+      {
+        ...baseClaim,
+        entity: { type: 'service', serviceId: 'BTL_OLD_E' },
+      },
+    ] as unknown as Claim[];
+
+    expect(
+      normalizeClaimsForEvidence({
+        claims,
+        evidenceTs,
+        repo: buildServiceRepo({
+          BTL_MAIN_E: 'BTL',
+          BTL_MAIN_W: 'BTL',
+          BTL_OLD_E: {
+            lineId: 'BTL',
+            startAt: '2025-01-01',
+            endAt: '2025-12-31',
+          },
+        }),
+      }),
+    ).toEqual(claims);
+  });
 });
+
+type ServiceFixture =
+  | string
+  | {
+      lineId: string;
+      startAt: string;
+      endAt: string | null;
+    };
+
+function buildServiceRepo(
+  serviceFixtureById: Record<string, ServiceFixture>,
+): MRTDownRepository {
+  return {
+    services: {
+      get(serviceId: string) {
+        const fixture = serviceFixtureById[serviceId];
+        if (fixture == null) {
+          return null;
+        }
+        const revision =
+          typeof fixture === 'string'
+            ? { lineId: fixture, startAt: '2025-12-31', endAt: null }
+            : fixture;
+
+        return revision.lineId == null
+          ? null
+          : {
+              id: serviceId,
+              lineId: revision.lineId,
+              name: { 'en-SG': serviceId },
+              revisions: [{ startAt: revision.startAt, endAt: revision.endAt }],
+            };
+      },
+      searchByLineId(lineId: string) {
+        return Object.keys(serviceFixtureById)
+          .map((serviceId) => this.get(serviceId))
+          .filter(
+            (service): service is NonNullable<typeof service> =>
+              service != null && service.lineId === lineId,
+          );
+      },
+    },
+  } as unknown as MRTDownRepository;
+}
