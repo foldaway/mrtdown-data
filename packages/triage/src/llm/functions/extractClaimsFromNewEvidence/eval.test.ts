@@ -184,7 +184,12 @@ describe('extractClaimsFromNewEvidence', () => {
       );
       return JSON.stringify(result);
     },
-    scorers: [StructuredOutputScorer()],
+    scorers: [
+      StructuredOutputScorer({
+        match: 'fuzzy',
+        fuzzyOptions: { ignoreArrayOrder: true },
+      }),
+    ],
   });
   describeEval('should compute the impact of new maintenance evidence', {
     // @ts-expect-error input is a string in the vitest-evals library

@@ -83,7 +83,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
       instructions: systemPrompt,
       input: context,
       reasoning: {
-        effort: 'minimal',
+        effort: 'low',
       },
       text: {
         format: {
@@ -237,7 +237,6 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
   return {
     claims: normalizeClaimsForEvidence({
       claims: response.output_parsed.claims,
-      evidenceText: params.newEvidence.text,
       evidenceTs: params.newEvidence.ts,
       repo: params.repo,
     }),

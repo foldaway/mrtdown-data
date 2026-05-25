@@ -72,6 +72,14 @@ For service entities:
 - If cleared/restored and no ongoing impact remains -> service: null
 - facility must be null
 
+Service-hours adjustment impact-window rule (strict):
+- Always encode the restricted/no-service window, not the service-running window.
+- If evidence says train service "will start at X", "starts at X", "start later at X", or "first train at X" on a date, this means no service before X.
+- For that pattern, use kind "fixed" with startAt at 00:00:00 on that date and endAt at X on that same date.
+- Do NOT encode X to end-of-day or X to next midnight for "will start at X"; that is the service-running window and is incorrect.
+- Example: "train service will start at 10am on 18 Feb" -> timeHints { kind: "fixed", startAt: "2026-02-18T00:00:00+08:00", endAt: "2026-02-18T10:00:00+08:00" }.
+- Example: "services will start later at 6.30am and end at 9pm daily from 1 to 8 February 2026" -> the impact window is 21:00:00 to 06:30:00, not 06:30:00 to 21:00:00.
+
 Effect disambiguation:
 - "Longer waits", "headways adjusted", "additional travel time", "single-loop operation", shuttle/train bridging, or similar degraded-but-running service language is NOT "no-service".
 - Use "reduced-service" for degraded planned operations unless the evidence explicitly says trains are suspended, service is closed, or no trains are running.
@@ -105,6 +113,7 @@ Direction handling:
 - Mentions of one segment pair (or one station pair) do not imply one-direction impact by themselves.
 - When direction is not explicitly limited, emit claims for each directional service on the affected line/service.
 - For segment scopes, preserve path direction per service (reverse endpoints for reverse direction service).
+- For service-hours adjustments on a segment, wording like "from A to B will start later/end earlier" is segment geometry, not direction-only wording. Unless the evidence also says "towards", "only", or another unambiguous one-direction qualifier, emit both directional services and reverse the segment endpoints for the reverse service.
 
 ### timeHints
 Best effort from evidence. Use null when unknown.
@@ -182,6 +191,7 @@ Field guidance:
   - If relative weekday language appears, confirm required resolveRelativeDate call(s) were made (weekend => SA and SU).
   - If evidence has no unambiguous one-direction qualifier, ensure claims include all directional services for the affected service/line.
   - Only return a single directional service claim when explicit direction-only wording is present.
+  - For "service will start at X" or "start later at X" service-hours adjustments, confirm the fixed impact window ends at X and starts at 00:00 on the same date. Reject X-to-midnight windows.
   - For every fixed period: confirm endAt > startAt. If not, switch to start-only.
   - For every recurring period: confirm endAt > startAt. If not, extend endAt to one year after startAt.
   - For restoration/clear evidence: confirm time hints use end-only (not fixed with equal start/end).

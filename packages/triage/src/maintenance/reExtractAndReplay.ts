@@ -217,7 +217,6 @@ export async function reExtractAndReplay(
         );
         claims = normalizeClaimsForEvidence({
           claims: reconstructed,
-          evidenceText: item.text,
           evidenceTs: item.ts,
           repo,
         });
