@@ -8,8 +8,8 @@ plan.
 
 - [Crowdsourced reports canonical ingest](active/crowdsourced-reports.md):
   public report payload contract and canonical evidence ingestion plan.
-- [Schematic system map data](active/schematic-system-map.md): canonical
-  schematic map data schema, authoring, validation, and publication.
+- [Schematic system map generation](active/schematic-system-map.md): canonical
+  schematic map generator, rule schema, validation, and publication.
 
 ## Completed
 
