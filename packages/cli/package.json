@@ -31,7 +31,7 @@
   "scripts": {
     "build": "tsc",
     "postbuild": "node scripts/ensure-shebang.mjs",
-    "test": "npm --workspace @mrtdown/core run build && npm --workspace @mrtdown/fs run build && vitest --run"
+    "test": "FIXTURE_ROOT=$(mktemp -d) && export MRTDOWN_FIXTURE_DATA_DIR=\"$FIXTURE_ROOT/data\" MRTDOWN_FIXTURE_META_PATH=\"$FIXTURE_ROOT/meta.json\" && node ../../scripts/generate-fixtures.mjs --data-dir \"$MRTDOWN_FIXTURE_DATA_DIR\" --meta-path \"$MRTDOWN_FIXTURE_META_PATH\" && npm --workspace @mrtdown/core run build && npm --workspace @mrtdown/fs run build && vitest --run"
   },
   "dependencies": {
     "@mrtdown/core": "2.0.0-alpha.23",
