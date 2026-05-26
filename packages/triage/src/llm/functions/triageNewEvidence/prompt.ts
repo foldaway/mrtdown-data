@@ -26,6 +26,16 @@ TOOL USE GUIDANCE:
 
 CLASSIFICATION RULES:
 
+Domain Gate:
+- This repository tracks Singapore MRT/LRT rail operations and station
+  facilities only.
+- Bus-only incidents, bus route diversions, bus stop incidents, road traffic,
+  and private vehicle breakdowns are irrelevant unless the evidence explicitly
+  states an impact on MRT/LRT train service, LRT service, or an MRT/LRT station
+  facility.
+- Do not create issues for bus service numbers, bus stops, or road locations
+  by themselves.
+
 Part of Existing Issue:
 - Evidence must match the service/line AND have geographic overlap (stations or segments)
 - For disruptions, geographic overlap means the existing issue already covers every station/segment named by the new evidence

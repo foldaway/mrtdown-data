@@ -143,6 +143,24 @@ describe('triageNewEvidence', () => {
               },
             },
           },
+          {
+            input: {
+              newEvidence: {
+                ts: '2026-05-26T14:48:44+08:00',
+                text: '14:23-Due to vehicle breakdown along Sims Avenue East, at the junction with Chai Chee Drive after bus stop BS 83081, bus service 26 is diverted.',
+              },
+              repo,
+              // This is used by vitest-evals as the test name, as the library expects `input` to be a string.
+              toString() {
+                return 'Irrelevant bus-only service diversion';
+              },
+            },
+            expected: {
+              result: {
+                kind: 'irrelevant-content',
+              },
+            },
+          },
         ] satisfies {
           input: TriageNewEvidenceParams & { toString(): string };
           expected: TriageNewEvidenceResult;
