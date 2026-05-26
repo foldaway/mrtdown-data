@@ -60,9 +60,11 @@ For `2025-04-01`, canonical service revisions derive:
 - 206 undirected adjacent station segments.
 
 Compared with the `2025-04` site map, the operational graph accounts for most
-station-to-station ids without storing a hand-authored segment list. The map has
-184 station ids and 213 station-to-station ids, so generator coverage needs two
-separate concepts:
+station-to-station ids without storing a hand-authored segment list. The `214`
+line segments in the summary include one non-station-to-station geometry id,
+`line_loop`; excluding that leaves 213 station-to-station ids. The map has 184
+station ids and those 213 station-to-station ids, so generator coverage needs
+two separate concepts:
 
 - **Operational graph coverage**, derived from service revisions and station
   codes at the target timestamp.

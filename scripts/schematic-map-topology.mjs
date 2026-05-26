@@ -61,6 +61,12 @@ function parseArgs(argv) {
     throw new Error('--at is required');
   }
 
+  if (Boolean(options.inventory) !== Boolean(options.effectiveDate)) {
+    throw new Error(
+      '--inventory and --effective-date must be provided together',
+    );
+  }
+
   return options;
 }
 
@@ -86,6 +92,16 @@ function timestamp(value) {
     : /^\d{4}-\d{2}-\d{2}$/.test(value)
       ? `${value}T00:00:00+08:00`
       : value;
+
+  if (
+    /^\d{4}-\d{2}-\d{2}T/.test(normalized) &&
+    !/(Z|[+-]\d{2}:\d{2})$/i.test(normalized)
+  ) {
+    throw new Error(
+      `Invalid timestamp: ${value}. Include an explicit timezone offset, such as Z or +08:00.`,
+    );
+  }
+
   const parsed = Date.parse(normalized);
   if (Number.isNaN(parsed)) {
     throw new Error(`Invalid timestamp: ${value}`);
