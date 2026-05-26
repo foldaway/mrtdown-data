@@ -112,6 +112,13 @@ export async function ingestContent(
   const { claims } = extractResult;
   console.log('[ingestContent.extractClaimsFromNewEvidence]', claims);
 
+  if (triageResult.result.kind === 'part-of-new-issue' && claims.length === 0) {
+    console.log(
+      '[ingestContent] No impact claims extracted for new issue; skipping persistence.',
+    );
+    return null;
+  }
+
   // --- Resolve issue bundle: fetch existing or create new ---
   let issueBundle: IssueBundle;
   let shouldCreateIssue = false;
