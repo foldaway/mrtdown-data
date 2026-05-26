@@ -30,8 +30,8 @@ vi.mock('../../llm/functions/triageNewEvidence/index.js', () => ({
 }));
 
 const FIXTURE_DATA_DIR = resolve(
-  import.meta.dirname,
-  '../../../../../fixtures/data',
+  process.env.MRTDOWN_FIXTURE_DATA_DIR ??
+    resolve(import.meta.dirname, '../../../../../fixtures/generated/data'),
 );
 
 describe('ingestContent', () => {
