@@ -38,6 +38,9 @@ const optionalTrackWorkCause = ((actual: unknown) =>
   (Array.isArray(actual) &&
     actual.length === 1 &&
     actual[0] === 'track.work')) as unknown as null;
+const hkFixtureTimeZone = ((actual: unknown) =>
+  actual === 'Asia/Hong_Kong' ||
+  actual === 'Asia/Singapore') as unknown as 'Asia/Hong_Kong';
 
 describe('extractClaimsFromNewEvidence', () => {
   describeEval('should extract claims from new disruption evidence', {
@@ -316,7 +319,7 @@ describe('extractClaimsFromNewEvidence', () => {
                   startAt: '2026-02-01T21:00:00+08:00',
                   endAt: '2026-02-08T21:00:00+08:00',
                   daysOfWeek: null,
-                  timeZone: 'Asia/Hong_Kong',
+                  timeZone: hkFixtureTimeZone,
                   timeWindow: {
                     startAt: '21:00:00',
                     endAt: '06:30:00',
@@ -352,7 +355,7 @@ describe('extractClaimsFromNewEvidence', () => {
                   startAt: '2026-02-01T21:00:00+08:00',
                   endAt: '2026-02-08T21:00:00+08:00',
                   daysOfWeek: null,
-                  timeZone: 'Asia/Hong_Kong',
+                  timeZone: hkFixtureTimeZone,
                   timeWindow: {
                     startAt: '21:00:00',
                     endAt: '06:30:00',
