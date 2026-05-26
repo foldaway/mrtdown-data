@@ -316,7 +316,7 @@ describe('extractClaimsFromNewEvidence', () => {
                   startAt: '2026-02-01T21:00:00+08:00',
                   endAt: '2026-02-08T21:00:00+08:00',
                   daysOfWeek: null,
-                  timeZone: 'Asia/Singapore',
+                  timeZone: 'Asia/Hong_Kong',
                   timeWindow: {
                     startAt: '21:00:00',
                     endAt: '06:30:00',
@@ -352,7 +352,7 @@ describe('extractClaimsFromNewEvidence', () => {
                   startAt: '2026-02-01T21:00:00+08:00',
                   endAt: '2026-02-08T21:00:00+08:00',
                   daysOfWeek: null,
-                  timeZone: 'Asia/Singapore',
+                  timeZone: 'Asia/Hong_Kong',
                   timeWindow: {
                     startAt: '21:00:00',
                     endAt: '06:30:00',
