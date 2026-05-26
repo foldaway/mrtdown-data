@@ -15,6 +15,12 @@ export const PeriodFrequencySchema = z.enum([
 ]);
 export type PeriodFrequency = z.infer<typeof PeriodFrequencySchema>;
 
+export const PeriodTimeZoneSchema = z.enum([
+  'Asia/Singapore',
+  'Asia/Hong_Kong',
+]);
+export type PeriodTimeZone = z.infer<typeof PeriodTimeZoneSchema>;
+
 export const PeriodRecurringSchema = z.object({
   kind: z.literal('recurring'),
   frequency: PeriodFrequencySchema,
@@ -27,7 +33,7 @@ export const PeriodRecurringSchema = z.object({
     startAt: z.iso.time(),
     endAt: z.iso.time(),
   }),
-  timeZone: z.literal('Asia/Singapore'),
+  timeZone: PeriodTimeZoneSchema,
   excludedDates: z.array(z.iso.date()).nullable(),
 });
 export type PeriodRecurring = z.infer<typeof PeriodRecurringSchema>;

@@ -24,8 +24,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "FIXTURE_ROOT=$(mktemp -d) && export MRTDOWN_FIXTURE_DATA_DIR=\"$FIXTURE_ROOT/data\" MRTDOWN_FIXTURE_META_PATH=\"$FIXTURE_ROOT/meta.json\" && node ../../scripts/generate-fixtures.mjs --data-dir \"$MRTDOWN_FIXTURE_DATA_DIR\" --meta-path \"$MRTDOWN_FIXTURE_META_PATH\" && vitest --run",
-    "test:eval": "FIXTURE_ROOT=$(mktemp -d) && export MRTDOWN_FIXTURE_DATA_DIR=\"$FIXTURE_ROOT/data\" MRTDOWN_FIXTURE_META_PATH=\"$FIXTURE_ROOT/meta.json\" && node ../../scripts/generate-fixtures.mjs --data-dir \"$MRTDOWN_FIXTURE_DATA_DIR\" --meta-path \"$MRTDOWN_FIXTURE_META_PATH\" && vitest --run --config vitest.eval.config.ts"
+    "test": "node ../../scripts/run-fixture-command.mjs -- npm exec -- vitest --run",
+    "test:eval": "node ../../scripts/run-fixture-command.mjs -- npm exec -- vitest --run --config vitest.eval.config.ts"
   },
   "dependencies": {
     "@mrtdown/core": "2.0.0-alpha.23",

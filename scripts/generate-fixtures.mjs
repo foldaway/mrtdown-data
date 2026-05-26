@@ -8,7 +8,7 @@ const defaultGeneratedRoot = resolve(repoRoot, 'fixtures/generated');
 const defaultDataDir = resolve(defaultGeneratedRoot, 'data');
 const defaultMetaPath = resolve(defaultGeneratedRoot, 'meta.json');
 const localeKeys = ['en-SG', 'zh-Hans', 'ms', 'ta'];
-const hkTimeZone = 'Asia/Singapore';
+const hkTimeZone = 'Asia/Hong_Kong';
 
 function translations(name) {
   return Object.fromEntries(
@@ -63,13 +63,19 @@ function isPathWithin(parent, child) {
   );
 }
 
-function assertSafeOutputPath(path, label) {
-  if (
-    isPathWithin(repoRoot, path) &&
-    !isPathWithin(defaultGeneratedRoot, path)
-  ) {
+function assertGeneratedOutputPath(path, label) {
+  if (!isPathWithin(defaultGeneratedRoot, path)) {
     throw new Error(
-      `${label} must be under fixtures/generated or outside the repository: ${path}`,
+      `${label} must be under fixtures/generated so fixture cleanup stays sandboxed: ${path}`,
+    );
+  }
+}
+
+function assertSafeDataDir(dataDir) {
+  assertGeneratedOutputPath(dataDir, 'dataDir');
+  if (dataDir === defaultGeneratedRoot) {
+    throw new Error(
+      `dataDir must be a child of fixtures/generated, not the generated root itself: ${dataDir}`,
     );
   }
 }
@@ -967,8 +973,8 @@ function buildIssues(anchorDate) {
 export async function generateFixtures(options = {}) {
   const dataDir = options.dataDir ?? defaultDataDir;
   const metaPath = options.metaPath ?? defaultMetaPath;
-  assertSafeOutputPath(dataDir, 'dataDir');
-  assertSafeOutputPath(metaPath, 'metaPath');
+  assertSafeDataDir(dataDir);
+  assertGeneratedOutputPath(metaPath, 'metaPath');
 
   const anchorDate = getFixtureDate(
     options.now ?? process.env.MRTDOWN_FIXTURE_NOW,
@@ -1015,6 +1021,8 @@ function usage() {
 Defaults:
   --data-dir fixtures/generated/data
   --meta-path fixtures/generated/meta.json
+
+Custom output paths must stay under fixtures/generated.
 `;
 }
 

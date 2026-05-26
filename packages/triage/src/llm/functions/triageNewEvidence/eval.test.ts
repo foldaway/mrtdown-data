@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { FileStore, MRTDownRepository } from '@mrtdown/fs';
 import { config as loadDotEnv } from 'dotenv';
+import { DateTime } from 'luxon';
 import { describe } from 'vitest';
 import { describeEval, StructuredOutputScorer } from 'vitest-evals';
 import {
@@ -33,6 +34,21 @@ const FIXTURE_META = JSON.parse(
   };
 };
 
+function addSecondsToIsoTimestamp(timestamp: string, seconds: number) {
+  const isoTimestamp = DateTime.fromISO(timestamp, { setZone: true })
+    .plus({ seconds })
+    .toISO({ suppressMilliseconds: true });
+  if (isoTimestamp == null) {
+    throw new Error(`Could not format timestamp: ${timestamp}`);
+  }
+  return isoTimestamp;
+}
+
+const TRAIN_FAULT_FOLLOW_UP_TS = addSecondsToIsoTimestamp(
+  FIXTURE_META.issues.trainFault.timestamp,
+  10,
+);
+
 describe('triageNewEvidence', () => {
   describeEval(
     'should triage the new evidence into an existing issue or a new issue',
@@ -46,10 +62,7 @@ describe('triageNewEvidence', () => {
           {
             input: {
               newEvidence: {
-                ts: FIXTURE_META.issues.trainFault.timestamp.replace(
-                  ':00+08:00',
-                  ':10+08:00',
-                ),
+                ts: TRAIN_FAULT_FOLLOW_UP_TS,
                 text: '[ISL] Due to a track fault at HKU, train services on the Island Line are delayed between Kennedy Town and Admiralty',
               },
               repo,
@@ -68,10 +81,7 @@ describe('triageNewEvidence', () => {
           {
             input: {
               newEvidence: {
-                ts: FIXTURE_META.issues.trainFault.timestamp.replace(
-                  ':00+08:00',
-                  ':10+08:00',
-                ),
+                ts: TRAIN_FAULT_FOLLOW_UP_TS,
                 text: '[ISL] Due to a track fault at HKU, train services on the Island Line are delayed between Admiralty and Causeway Bay',
               },
               repo,
@@ -90,10 +100,7 @@ describe('triageNewEvidence', () => {
           {
             input: {
               newEvidence: {
-                ts: FIXTURE_META.issues.trainFault.timestamp.replace(
-                  ':00+08:00',
-                  ':10+08:00',
-                ),
+                ts: TRAIN_FAULT_FOLLOW_UP_TS,
                 text: '[ISL] Due to maintenance works, services on the Island Line will end earlier at 11pm tonight.',
               },
               repo,
