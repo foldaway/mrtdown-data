@@ -37,6 +37,8 @@ of the map.
   station ordering, interchange constraints, and reusable design rules.
 - Preserve explicit escape hatches for reviewed one-off visual exceptions.
 - Use complete generated version snapshots as the published storage contract.
+- Keep generated version snapshots out of source control by default; publish
+  them from deterministic generator output instead.
 - Support reviewed schematic edit submissions from trusted authoring clients,
   such as a protected `mrtdown-site` map designer.
 
@@ -89,9 +91,10 @@ inputs and rule configuration should also be versioned so any published snapshot
 can be regenerated deterministically.
 
 The canonical source of truth is the generator implementation plus its rule and
-constraint inputs. Generated snapshots are committed and published artifacts, not
-the authoring source. Validation should be able to regenerate the snapshots and
-fail when committed generated output is stale.
+constraint inputs. Generated snapshots are published artifacts, not committed
+authoring source. Validation should generate snapshots from source inputs and
+fail when the generated output is invalid, nondeterministic, or inconsistent
+with canonical references.
 
 Coordinates in this plan have four classes:
 
@@ -137,6 +140,12 @@ data/schematic-map/system/generator/engine/lta-system-map-2011.json
 data/schematic-map/system/generator/constraint/2012-01.json
 data/schematic-map/system/generator/constraint/2017-11.json
 data/schematic-map/system/manifest.json
+```
+
+Published archive output should expose generated complete snapshots, but these
+version files are not source-controlled by default:
+
+```text
 data/schematic-map/system/version/2012-01.json
 data/schematic-map/system/version/2017-11.json
 data/schematic-map/system/version/2019-12.json
@@ -241,15 +250,16 @@ Exit criteria:
 - The generated output is close enough to the current `2025-04` `mrtdown-site`
   hard-coded map for renderer parity work.
 - Any copied or fixed coordinates are documented as constraints or exceptions.
-- Snapshot validation fails if generated output is stale.
+- Snapshot validation fails if generated output is invalid, nondeterministic, or
+  inconsistent with canonical references.
 - Structural validation covers ids, station coverage, service-edge coverage,
-  duplicate ids, missing labels, and generated snapshot freshness before visual
-  pixel comparison is required.
+  duplicate ids, and missing labels before visual pixel comparison is required.
 
 ### Phase 4: Repository And CLI Support
 
 - Add file-backed schematic map repositories in `packages/fs`.
-- Add writer support for generated snapshots and constraint authoring.
+- Add writer support for published generated snapshots and source-controlled
+  constraint authoring.
 - Add CLI generation and validation for schematic map files.
 - Add CLI inspection helpers for listing versions, selecting the map version
   effective at a given date, and reporting hard-coded coordinate counts by
@@ -293,8 +303,8 @@ repository. The first expected client is a protected `mrtdown-site` map designer
 that uses the site renderer for visual editing and preview.
 
 - Define an edit bundle or branch layout that contains updated generator
-  constraints, regenerated complete map snapshot files, and metadata about the
-  source version and intended target version.
+  constraints, generator validation output or semantic diffs, and metadata about
+  the source version and intended target version.
 - Validate submitted files with the same canonical schema and reference checks
   used for hand-authored changes.
 - Create or document a workflow that turns designer output into a reviewed
@@ -345,17 +355,16 @@ Exit criteria:
 
 ### Phase 9: Migrate Remaining Versions
 
-- Add the remaining current timeline versions as generated complete canonical
-  snapshots.
+- Add generator source coverage for the remaining current timeline versions.
 - Validate each version independently.
 - Use semantic and visual review where practical.
-- Keep generated output or imported artifacts separate from generator source
-  changes.
+- Keep generated archive output or imported artifacts out of source control
+  unless a specific review requires committing a fixture.
 
 Exit criteria:
 
-- All existing `mrtdown-site` fixed system map timeline versions exist as
-  generated canonical schematic map data.
+- All existing `mrtdown-site` fixed system map timeline versions can be
+  generated as canonical schematic map data.
 - The data contract is stable enough for `mrtdown-site` to remove hard-coded
   map snapshots after its renderer migration is complete.
 - The amount of per-version hard-coded coordinate data is small, explained, and
@@ -370,6 +379,13 @@ Exit criteria:
 - 2026-05-25: Reframed the plan around a canonical generator that references
   current `mrtdown-site` hard-coded maps as baselines while minimizing copied
   coordinates.
+- 2026-05-26: Added the Phase 1 rule-discovery handoff to
+  `docs/schematic-map-reference-inventory.md`, covering renderer invariants,
+  initial line-family rules, coordinate classes, and unresolved coverage review
+  items for the `2025-04` baseline.
+- 2026-05-27: Clarified that generated schematic snapshots are publication
+  artifacts produced by the generator, not source-controlled data files by
+  default.
 
 ## Decision Log
 
@@ -377,6 +393,8 @@ Exit criteria:
   can reflow substantially when new lines are introduced.
 - 2026-05-24: Keep raw SVG path geometry available so artistically driven line
   bends and curves are preserved.
+- 2026-05-27: Prefer structured generated geometry from the first schema draft;
+  raw SVG path geometry is only a reviewed last-resort exception.
 - 2026-05-24: Keep rendering and interactive behavior out of canonical data;
   consumers own presentation and UI behavior.
 - 2026-05-24: Accept designer-originated schematic edits only through normal
@@ -387,8 +405,10 @@ Exit criteria:
 - 2026-05-25: Current hard-coded `mrtdown-site` maps are approved reference
   material for inventory, parity, and exception discovery.
 - 2026-05-25: The generator implementation plus rule and constraint inputs are
-  canonical; generated snapshots are committed and published artifacts that must
-  be reproducible.
+  canonical.
+- 2026-05-27: Generated snapshots are published artifacts produced by the
+  deterministic generator, not committed source files by default. This
+  supersedes the earlier assumption that generated snapshots would be committed.
 - 2026-05-25: Coordinate review distinguishes generated coordinates, reusable
   constraints, explained exceptions, and generated artifact coordinates.
 - 2026-05-25: Use `2025-04` as the first generated baseline.
