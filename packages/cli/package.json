@@ -1,6 +1,6 @@
 {
   "name": "@mrtdown/cli",
-  "version": "2.0.0-alpha.23",
+  "version": "2.0.0-alpha.24",
   "description": "Command-line tools for MRTDown data",
   "private": true,
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
@@ -34,8 +34,8 @@
     "test": "node ../../scripts/run-fixture-command.mjs --build @mrtdown/core --build @mrtdown/fs -- npm exec -- vitest --run"
   },
   "dependencies": {
-    "@mrtdown/core": "2.0.0-alpha.23",
-    "@mrtdown/fs": "2.0.0-alpha.23"
+    "@mrtdown/core": "2.0.0-alpha.24",
+    "@mrtdown/fs": "2.0.0-alpha.24"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.14",
