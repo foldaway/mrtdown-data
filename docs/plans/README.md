@@ -8,6 +8,9 @@ plan.
 
 - [Crowdsourced reports canonical ingest](active/crowdsourced-reports.md):
   public report payload contract and canonical evidence ingestion plan.
+- [GTFS static and realtime support](active/gtfs-static-realtime.md):
+  deterministic GTFS Static export, Pages publication, and GTFS Realtime
+  evidence ingest boundaries.
 - [Schematic system map generation](active/schematic-system-map.md): canonical
   schematic map generator, rule schema, validation, and publication.
 
