@@ -26,7 +26,8 @@ npm run lint
 - `data/station`, `data/line`, `data/service`, `data/operator`, `data/town`,
   and `data/landmark`: canonical static entities.
 - `data/issue/YYYY/MM/<issue_id>/`: canonical issue bundles.
-- `fixtures/data`: small deterministic data set for tests and examples.
+- `fixtures/generated/data`: on-demand generated fixture data for tests and
+  examples.
 - `packages/core`: shared schemas, period helpers, and state helpers.
 - `packages/ingest-contracts`: webhook payload schemas shared with external
   evidence producers.
@@ -47,7 +48,7 @@ npm test                   # Run deterministic Vitest tests
 npm run lint               # Run Biome checks
 npm run check              # Run lint, boundary checks, and docs link checks
 npm run data:validate      # Validate canonical data
-npm run fixtures:validate  # Validate fixtures/data
+npm run fixtures:validate  # Generate and validate fixture data
 npm run pages:build        # Build the GitHub Pages static data artifact
 ```
 

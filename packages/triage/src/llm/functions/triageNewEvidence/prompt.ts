@@ -55,7 +55,7 @@ DISRUPTIONS:
 - Examples: "fault between A and B" overlaps with existing issue only if existing covers A-B segment
 - A fault "between B and C" on the same line is a different incident, even if it shares one endpoint station
 - A fault "between A and C" is a different incident from an existing issue "between A and B" because the new evidence extends beyond the existing scope
-- Example: existing issue "between Bukit Panjang and King Albert Park" does NOT match new evidence "between King Albert Park and Rochor"; return a new disruption issue.
+- Example: existing issue "between Kennedy Town and Admiralty" does NOT match new evidence "between Admiralty and Causeway Bay"; return a new disruption issue.
 
 MAINTENANCE:
 - Service-level planned works that affect operating hours or service availability

@@ -11,6 +11,7 @@
     /* Language and Environment */
     "target": "es2022" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     "lib": [
+      "ES2021.String",
       "ESNext.Collection",
       "ES2022.Intl",
       "ES2023.Array"

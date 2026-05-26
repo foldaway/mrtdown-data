@@ -19,8 +19,7 @@ from this repo.
 - `packages/triage` contains LLM-assisted evidence triage and replay utilities.
 - `packages/cli` contains the command-line entry point for validating,
   inspecting, creating, and generating target-layout data artifacts.
-- `fixtures/data` contains a small deterministic target-layout data set for
-  package and CLI tests.
+- `fixtures/generated/data` is generated on demand for package and CLI tests.
 
 The data-overhaul split sequence is complete. Keep
 `docs/plans/completed/data-overhaul-split.md` as historical context when
@@ -41,7 +40,8 @@ The target architecture is a package/data repository:
   entities.
 - `data/issue/YYYY/MM/<issue_id>/`: append-only issue records with
   `issue.json`, `evidence.ndjson`, and `impact.ndjson`.
-- `fixtures/data`: small deterministic data set for tests and examples.
+- `fixtures/generated/data`: on-demand generated fixture data for tests and
+  examples.
 
 ## Commands
 
@@ -67,7 +67,8 @@ The target architecture is a package/data repository:
   variables.
 - `npm run test:cli`: run `@mrtdown/cli` deterministic tests.
 - `npm run data:validate`: validate canonical `data` with the target CLI.
-- `npm run fixtures:validate`: validate `fixtures/data` with the target CLI.
+- `npm run fixtures:validate`: generate and validate fixture data with the
+  target CLI.
 - `npm run pages:build`: build the static GitHub Pages data artifact.
 - `npm run ingest:webhook`: process incoming webhook evidence with
   `@mrtdown/triage`.

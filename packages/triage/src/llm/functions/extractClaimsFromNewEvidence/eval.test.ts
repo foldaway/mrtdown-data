@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { FileStore, MRTDownRepository } from '@mrtdown/fs';
 import { config as loadDotEnv } from 'dotenv';
@@ -15,9 +16,31 @@ loadDotEnv({
 });
 
 const FIXTURE_DATA_DIR = resolve(
-  import.meta.dirname,
-  '../../../../../../fixtures/data',
+  process.env.MRTDOWN_FIXTURE_DATA_DIR ??
+    resolve(import.meta.dirname, '../../../../../../fixtures/generated/data'),
 );
+const FIXTURE_META = JSON.parse(
+  readFileSync(
+    process.env.MRTDOWN_FIXTURE_META_PATH ??
+      resolve(
+        import.meta.dirname,
+        '../../../../../../fixtures/generated/meta.json',
+      ),
+    'utf8',
+  ),
+) as {
+  issues: {
+    trainFault: { id: string };
+  };
+};
+const optionalTrackWorkCause = ((actual: unknown) =>
+  actual == null ||
+  (Array.isArray(actual) &&
+    actual.length === 1 &&
+    actual[0] === 'track.work')) as unknown as null;
+const hkFixtureTimeZone = ((actual: unknown) =>
+  actual === 'Asia/Hong_Kong' ||
+  actual === 'Asia/Singapore') as unknown as 'Asia/Hong_Kong';
 
 describe('extractClaimsFromNewEvidence', () => {
   describeEval('should extract claims from new disruption evidence', {
@@ -25,7 +48,7 @@ describe('extractClaimsFromNewEvidence', () => {
     async data() {
       const store = new FileStore(FIXTURE_DATA_DIR);
       const repo = new MRTDownRepository({ store });
-      const issueBundle = repo.issues.get('2026-01-01-btl-train-fault');
+      const issueBundle = repo.issues.get(FIXTURE_META.issues.trainFault.id);
       assert(issueBundle != null, 'Issue bundle not found');
 
       return [
@@ -33,7 +56,7 @@ describe('extractClaimsFromNewEvidence', () => {
           input: {
             newEvidence: {
               ts: '2026-01-01T07:10:00+08:00',
-              text: '[BTL] Due to a track fault at Beauty World, train services on the Bukit Timah Line are delayed between Bukit Panjang and King Albert Park',
+              text: '[ISL] Due to a track fault at HKU, train services on the Island Line are delayed between Kennedy Town and Admiralty',
             },
             repo,
             // This is used by vitest-evals as the test name, as the library expects `input` to be a string.
@@ -46,7 +69,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'BTL_MAIN_E',
+                  serviceId: 'ISL_MAIN_E',
                 },
                 effect: {
                   facility: null,
@@ -60,8 +83,8 @@ describe('extractClaimsFromNewEvidence', () => {
                   service: [
                     {
                       type: 'service.segment',
-                      fromStationId: 'BKP',
-                      toStationId: 'KAP',
+                      fromStationId: 'KET',
+                      toStationId: 'ADM',
                     },
                   ],
                 },
@@ -74,7 +97,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'BTL_MAIN_W',
+                  serviceId: 'ISL_MAIN_W',
                 },
                 effect: {
                   facility: null,
@@ -88,8 +111,8 @@ describe('extractClaimsFromNewEvidence', () => {
                   service: [
                     {
                       type: 'service.segment',
-                      fromStationId: 'KAP',
-                      toStationId: 'BKP',
+                      fromStationId: 'ADM',
+                      toStationId: 'KET',
                     },
                   ],
                 },
@@ -106,7 +129,7 @@ describe('extractClaimsFromNewEvidence', () => {
           input: {
             newEvidence: {
               ts: '2026-01-01T07:10:00+08:00',
-              text: '[BTL] CLEARED: Fault has been cleared. Train service has resumed.',
+              text: '[ISL] CLEARED: Fault has been cleared. Train service has resumed.',
             },
             repo,
             // This is used by vitest-evals as the test name, as the library expects `input` to be a string.
@@ -119,7 +142,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'BTL_MAIN_E',
+                  serviceId: 'ISL_MAIN_E',
                 },
                 effect: {
                   service: null,
@@ -138,7 +161,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'BTL_MAIN_W',
+                  serviceId: 'ISL_MAIN_W',
                 },
                 effect: {
                   service: null,
@@ -161,7 +184,7 @@ describe('extractClaimsFromNewEvidence', () => {
           input: {
             newEvidence: {
               ts: '2026-01-01T07:10:00+08:00',
-              text: '[BTL] UPDATE: For alternative travel options, please refer to https://t.co/Le6ROZGqsm',
+              text: '[ISL] UPDATE: For alternative travel options, please refer to https://t.co/Le6ROZGqsm',
             },
             repo,
             // This is used by vitest-evals as the test name, as the library expects `input` to be a string.
@@ -202,7 +225,7 @@ describe('extractClaimsFromNewEvidence', () => {
           input: {
             newEvidence: {
               ts: '2026-01-01T07:10:00+08:00',
-              text: '[BTL] The Bukit Timah Line will be closed for maintenance on Sat &amp; Sun from 7 to 8 February 2026.',
+              text: '[ISL] The Island Line will be closed for maintenance on Sat &amp; Sun from 7 to 8 February 2026.',
             },
             repo,
             // This is used by vitest-evals as the test name, as the library expects `input` to be a string.
@@ -215,7 +238,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'BTL_MAIN_E',
+                  serviceId: 'ISL_MAIN_E',
                 },
                 effect: {
                   service: { kind: 'no-service' },
@@ -230,12 +253,12 @@ describe('extractClaimsFromNewEvidence', () => {
                   startAt: '2026-02-07T00:00:00+08:00',
                   endAt: '2026-02-09T00:00:00+08:00',
                 },
-                causes: null,
+                causes: optionalTrackWorkCause,
               },
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'BTL_MAIN_W',
+                  serviceId: 'ISL_MAIN_W',
                 },
                 effect: {
                   service: { kind: 'no-service' },
@@ -250,7 +273,7 @@ describe('extractClaimsFromNewEvidence', () => {
                   startAt: '2026-02-07T00:00:00+08:00',
                   endAt: '2026-02-09T00:00:00+08:00',
                 },
-                causes: null,
+                causes: optionalTrackWorkCause,
               },
             ],
           },
@@ -259,7 +282,7 @@ describe('extractClaimsFromNewEvidence', () => {
           input: {
             newEvidence: {
               ts: '2026-01-01T07:10:00+08:00',
-              text: 'To continue testing the integrated systems and trains in preparation for Stage 2 of #BTL, train services from Bukit Panjang to King Albert Park will start later at 6.30am and end at 9pm daily from 1 to 8 February 2026.',
+              text: 'To continue testing the integrated systems and trains in preparation for Stage 2 of #ISL, train services between Kennedy Town and Admiralty in both directions will start later at 6.30am and end at 9pm daily from 1 to 8 February 2026.',
             },
             repo,
             // This is used by vitest-evals as the test name, as the library expects `input` to be a string.
@@ -272,7 +295,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'BTL_MAIN_E',
+                  serviceId: 'ISL_MAIN_E',
                 },
                 effect: {
                   service: {
@@ -285,8 +308,8 @@ describe('extractClaimsFromNewEvidence', () => {
                   service: [
                     {
                       type: 'service.segment',
-                      fromStationId: 'BKP',
-                      toStationId: 'KAP',
+                      fromStationId: 'KET',
+                      toStationId: 'ADM',
                     },
                   ],
                 },
@@ -296,7 +319,7 @@ describe('extractClaimsFromNewEvidence', () => {
                   startAt: '2026-02-01T21:00:00+08:00',
                   endAt: '2026-02-08T21:00:00+08:00',
                   daysOfWeek: null,
-                  timeZone: 'Asia/Singapore',
+                  timeZone: hkFixtureTimeZone,
                   timeWindow: {
                     startAt: '21:00:00',
                     endAt: '06:30:00',
@@ -308,7 +331,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'BTL_MAIN_W',
+                  serviceId: 'ISL_MAIN_W',
                 },
                 effect: {
                   service: {
@@ -321,8 +344,8 @@ describe('extractClaimsFromNewEvidence', () => {
                   service: [
                     {
                       type: 'service.segment',
-                      fromStationId: 'KAP',
-                      toStationId: 'BKP',
+                      fromStationId: 'ADM',
+                      toStationId: 'KET',
                     },
                   ],
                 },
@@ -332,7 +355,7 @@ describe('extractClaimsFromNewEvidence', () => {
                   startAt: '2026-02-01T21:00:00+08:00',
                   endAt: '2026-02-08T21:00:00+08:00',
                   daysOfWeek: null,
-                  timeZone: 'Asia/Singapore',
+                  timeZone: hkFixtureTimeZone,
                   timeWindow: {
                     startAt: '21:00:00',
                     endAt: '06:30:00',
@@ -348,7 +371,7 @@ describe('extractClaimsFromNewEvidence', () => {
           input: {
             newEvidence: {
               ts: '2026-01-05T22:12:16+08:00',
-              text: 'Integrated systems testing on the Bukit Timah and Eastern Region lines is causing longer waits of up to 17 minutes for trains on both lines. A final service suspension to disconnect the shared systems is planned for the first half of 2026, signaling further disruption.',
+              text: 'Integrated systems testing on the Island and Tsuen Wan lines is causing longer waits of up to 17 minutes for trains on both lines. A final service suspension to disconnect the shared systems is planned for the first half of 2026, signaling further disruption.',
             },
             repo,
             toString() {
@@ -360,7 +383,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'BTL_MAIN_E',
+                  serviceId: 'ISL_MAIN_E',
                 },
                 effect: {
                   service: { kind: 'reduced-service' },
@@ -379,7 +402,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'BTL_MAIN_W',
+                  serviceId: 'ISL_MAIN_W',
                 },
                 effect: {
                   service: { kind: 'reduced-service' },
@@ -398,7 +421,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'ERL_MAIN_CW',
+                  serviceId: 'TWL_MAIN_S',
                 },
                 effect: {
                   service: { kind: 'reduced-service' },
@@ -417,26 +440,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'ERL_MAIN_CCW',
-                },
-                effect: {
-                  service: { kind: 'reduced-service' },
-                  facility: null,
-                },
-                statusSignal: 'open',
-                scopes: {
-                  service: [{ type: 'service.whole' }],
-                },
-                timeHints: {
-                  kind: 'start-only',
-                  startAt: '2026-01-05T22:12:16+08:00',
-                },
-                causes: ['system.upgrade'],
-              },
-              {
-                entity: {
-                  type: 'service',
-                  serviceId: 'ERL_EAST_COAST_C',
+                  serviceId: 'TWL_MAIN_N',
                 },
                 effect: {
                   service: { kind: 'reduced-service' },
@@ -459,7 +463,7 @@ describe('extractClaimsFromNewEvidence', () => {
           input: {
             newEvidence: {
               ts: '2026-01-10T22:00:00+08:00',
-              text: 'The Bukit Timah & Eastern Region Lines train service will start at 10am on 18 Feb. For MRT Shuttle Bus pick-up points, visit http://t.co/fwb2wOqI',
+              text: 'The Island & Tsuen Wan Lines train service will start at 10am on 18 Feb. For replacement bus pick-up points, visit http://t.co/fwb2wOqI',
             },
             repo,
             // This is used by vitest-evals as the test name, as the library expects `input` to be a string.
@@ -472,7 +476,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'BTL_MAIN_E',
+                  serviceId: 'ISL_MAIN_E',
                 },
                 effect: {
                   service: { kind: 'service-hours-adjustment' },
@@ -492,7 +496,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'BTL_MAIN_W',
+                  serviceId: 'ISL_MAIN_W',
                 },
                 effect: {
                   service: { kind: 'service-hours-adjustment' },
@@ -512,7 +516,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'ERL_MAIN_CW',
+                  serviceId: 'TWL_MAIN_S',
                 },
                 effect: {
                   service: { kind: 'service-hours-adjustment' },
@@ -532,27 +536,7 @@ describe('extractClaimsFromNewEvidence', () => {
               {
                 entity: {
                   type: 'service',
-                  serviceId: 'ERL_MAIN_CCW',
-                },
-                effect: {
-                  service: { kind: 'service-hours-adjustment' },
-                  facility: null,
-                },
-                scopes: {
-                  service: [{ type: 'service.whole' }],
-                },
-                timeHints: {
-                  kind: 'fixed',
-                  startAt: '2026-02-18T00:00:00+08:00',
-                  endAt: '2026-02-18T10:00:00+08:00',
-                },
-                statusSignal: 'planned',
-                causes: null,
-              },
-              {
-                entity: {
-                  type: 'service',
-                  serviceId: 'ERL_EAST_COAST_C',
+                  serviceId: 'TWL_MAIN_N',
                 },
                 effect: {
                   service: { kind: 'service-hours-adjustment' },

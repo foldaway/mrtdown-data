@@ -3,6 +3,7 @@ import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { dirname, isAbsolute, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
+import { generateFixtures } from './generate-fixtures.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const execFileAsync = promisify(execFile);
@@ -22,7 +23,7 @@ Defaults:
 function parseArgs(argv) {
   const options = {
     dataDir: resolve(repoRoot, 'data'),
-    fixtureDataDir: resolve(repoRoot, 'fixtures/data'),
+    fixtureDataDir: resolve(repoRoot, 'fixtures/generated/data'),
     outDir: resolve(repoRoot, 'pages-dist'),
   };
   const args = [...argv];
@@ -154,6 +155,7 @@ async function main() {
     console.log(usage().trimEnd());
     return;
   }
+  await generateFixtures({ dataDir: options.fixtureDataDir });
   assertArtifactPaths(options);
 
   const fsPackage = await loadFsPackage();

@@ -30,7 +30,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "npm --workspace @mrtdown/core run build && vitest --run"
+    "test": "node ../../scripts/run-fixture-command.mjs --build @mrtdown/core -- npm exec -- vitest --run"
   },
   "dependencies": {
     "@mrtdown/core": "2.0.0-alpha.23",

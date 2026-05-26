@@ -24,8 +24,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "vitest --run",
-    "test:eval": "vitest --run --config vitest.eval.config.ts"
+    "test": "node ../../scripts/run-fixture-command.mjs -- npm exec -- vitest --run",
+    "test:eval": "node ../../scripts/run-fixture-command.mjs -- npm exec -- vitest --run --config vitest.eval.config.ts"
   },
   "dependencies": {
     "@mrtdown/core": "2.0.0-alpha.23",
