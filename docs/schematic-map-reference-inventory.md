@@ -43,8 +43,10 @@ root group id, and top-level layer order.
 - Current renderer interaction ids are stable enough to preserve as generated
   snapshot ids: `line_*` for line groups and segments, `label_*` for station
   labels, and `node_*` for station nodes.
-- The generated snapshot schema should treat raw SVG path geometry as an escape
-  hatch. The `2025-04` reference includes 128 path-backed geometry ids.
+- The generated snapshot schema should prefer structured geometry. Raw SVG path
+  geometry remains a last-resort escape hatch for reviewed exceptions; the
+  `2025-04` reference includes 128 path-backed geometry ids that should not be
+  treated as the preferred baseline representation.
 - `2030-12` and `2032-12` each infer one more station id from line segments than
   from labels/nodes. That discrepancy should be reviewed before those future
   snapshots become canonical.
@@ -74,8 +76,87 @@ two separate concepts:
 The comparison found these review items:
 
 - `BDS`, `SGB`, and `XLN` appear in the `2025-04` map but are not operational
-  at that timestamp in canonical data; they should be represented as displayed
-  non-operational schematic coverage, not operational service graph coverage.
+  at that timestamp in canonical data. Omit non-operational displayed coverage
+  from the initial generator pass unless renderer parity requires it.
 - Segment ids should be generated from adjacent service path pairs. The
   published snapshot still needs stable ids and generated geometry, but the
   authoring inputs do not need to store every station-to-station segment.
+
+## Phase 1 Rule Discovery Handoff
+
+The first generator target is `2025-04`, with the `lta-system-map-2011` layout
+engine id from the active plan. These rules are inferred from the committed
+reference inventory and canonical service paths, not from a formal LTA design
+specification.
+
+### Renderer Contract Invariants
+
+- Keep map-frame dimensions version-scoped. Versions through `2025-04` use
+  `0 0 3140 2400`; versions from `2027-12` onward use `0 0 3596 2400`.
+- Preserve current interaction ids in generated snapshots: `line_*` for line
+  groups and station-to-station segments, `label_*` for station labels, and
+  `node_*` for station nodes.
+- Preserve layer ordering as explicit snapshot data. The `2025-04` baseline
+  uses `u/c`, `lines`, `labels`, then `nodes`.
+- Prefer structured generated geometry over raw SVG paths. The `2025-04`
+  baseline has 128 path-backed geometry ids, but Phase 2 should model structured
+  geometry first and keep raw paths only as explained last-resort exceptions.
+
+### Line-Family Rules For The Initial Engine
+
+- **Trunk corridors (`NSL`, `EWL`, `NEL`, `DTL`, `TEL`)** should be generated
+  from active bidirectional service paths, with one rendered station-to-station
+  segment per adjacent canonical station pair. Non-operational displayed
+  extensions can be omitted from the initial pass if that keeps the baseline
+  generator simpler.
+- **Branches and spurs** should stay attached to their service-path junctions
+  rather than becoming separate author-authored segment lists. The initial
+  branch cases are the `EWL` Changi branch from `TNM` to `CGA` via `XPO`, the
+  `CCL` extension services between `MRB` and `HBF`, and future/under-construction
+  displayed extensions.
+- **Orbital and loop lines (`CCL`, `BPLRT`, `PGLRT`, `SKLRT`)** need explicit
+  loop handling because adjacent service pairs alone do not encode the visual
+  treatment of the loop closure, branch spacing, or direction symmetry. The
+  `2025-04` map includes one non-station-to-station geometry id, `line_loop`.
+- **LRT systems** should be represented as compact local loop sublayouts
+  anchored to their MRT interchange stations: `BPLRT` at `CCK`, `PGLRT` at
+  `PGL`, and `SKLRT` at `SKG`. Their clockwise/counter-clockwise service paths
+  should collapse to the same displayed undirected segment ids.
+- **Interchanges** should be generated as composed station nodes, not a single
+  generic marker, because consumers need line-specific node parts for focused
+  line and disruption overlay behavior.
+- **Labels** should be generated as station-scoped layout hints rather than
+  localized text. Canonical station names remain outside schematic data.
+- **Construction and future display state** should eventually be represented
+  separately from operational topology, but it is not required for the initial
+  `2025-04` generator pass if non-operational displayed coverage is omitted.
+
+### Known Phase 1 Exceptions And Review Items
+
+- `BDS`, `SGB`, and `XLN` appear in the current `2025-04` schematic comparison
+  gap. They can be omitted from the first generator baseline. If a later parity
+  pass needs them, model them as displayed non-operational schematic coverage
+  rather than operational topology.
+- The previous `yck:yis` comparison mismatch is resolved after rebasing onto the
+  latest service-path data; no operational segment keys remain outside the
+  `2025-04` map inventory.
+- `2030-12` and `2032-12` infer one more station id from line segments than
+  from labels/nodes. Defer those future snapshots until the initial `2025-04`
+  schema and generator path can flag unmatched references.
+- The initial coordinate classification should use:
+  - `generated` for service-path-derived segment endpoints, station ordering,
+    and default label sides;
+  - `constraint` for map frame anchors, line corridor ordering, interchange
+    spacing, branch separation, and LRT loop anchors;
+  - `exception` for last-resort raw path geometry or fixed station/segment
+    placement that carries a written reason;
+  - `artifact` for coordinates emitted by generated snapshots.
+
+### Phase 2 Handoff
+
+The Phase 2 schema draft should start with enough structure to represent the
+`2025-04` reference without copying TSX: version metadata, frame, layer order,
+line groups, station nodes, labels, structured segment geometry, optional
+last-resort raw path exceptions, and coordinate class metadata for constraints
+and exceptions. Displayed non-operational coverage can wait until the first
+baseline needs it.
