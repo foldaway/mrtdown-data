@@ -55,9 +55,9 @@ For `2025-04-01`, canonical service revisions derive:
 
 - 9 operational lines.
 - 26 active service revisions.
-- 180 stations from active service paths.
-- 182 stations from active station codes.
-- 206 undirected adjacent station segments.
+- 181 stations from active service paths.
+- 181 stations from active station codes.
+- 207 undirected adjacent station segments.
 
 Compared with the `2025-04` site map, the operational graph accounts for most
 station-to-station ids without storing a hand-authored segment list. The `214`
@@ -71,13 +71,10 @@ two separate concepts:
 - **Displayed schematic coverage**, which may include under-construction or
   future stations and their visual connector geometry.
 
-The first comparison found these review items:
+The comparison found these review items:
 
-- `BDS` and `KTB` have active station codes on `2025-04-01` but are not present
-  in active service paths, so service path data should be reviewed before using
-  it as the sole source of station coverage.
-- `SGB` and `XLN` appear in the `2025-04` map but are not operational at that
-  timestamp in canonical data; they should be represented as displayed
+- `BDS`, `SGB`, and `XLN` appear in the `2025-04` map but are not operational
+  at that timestamp in canonical data; they should be represented as displayed
   non-operational schematic coverage, not operational service graph coverage.
 - Segment ids should be generated from adjacent service path pairs. The
   published snapshot still needs stable ids and generated geometry, but the
