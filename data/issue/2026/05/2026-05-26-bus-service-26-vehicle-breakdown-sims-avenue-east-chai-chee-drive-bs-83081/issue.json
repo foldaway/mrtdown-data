@@ -1,0 +1,13 @@
+{
+  "id": "2026-05-26-bus-service-26-vehicle-breakdown-sims-avenue-east-chai-chee-drive-bs-83081",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Bus Service 26 Vehicle breakdown - Sims Avenue East at junction with Chai Chee Drive after BS 83081",
+    "zh-Hans": "公车26路服务车辆故障 - Sims Avenue East 在与 Chai Chee Drive 的路口，BS 83081 之后",
+    "ms": "Perkhidmatan bas 26 Kerosakan kenderaan - Sims Avenue East pada persimpangan dengan Chai Chee Drive selepas BS 83081",
+    "ta": "பஸ்வர் சேவை 26 வாகனப் பாதிப்பு - Sims Avenue East மற்றும் Chai Chee Drive ஒழுங்கு தரிசனத்திற்கு பிறகு BS 83081"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-nano"
+  }
+}
