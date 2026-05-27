@@ -241,16 +241,27 @@ export type SchematicMapStationNodePart = z.infer<
  * Station marker geometry in a snapshot. Station names stay in canonical
  * station data rather than schematic map data.
  */
-export const SchematicMapStationNodeSchema = z.object({
-  id: z.string(),
-  stationId: z.string(),
-  displayStatus: SchematicMapDisplayStatusSchema,
-  layerId: z.string(),
-  center: SchematicMapPointSchema,
-  lineIds: z.array(z.string()).min(1),
-  parts: z.array(SchematicMapStationNodePartSchema).min(1),
-  coordinateMetadata: SchematicMapCoordinateMetadataSchema,
-});
+export const SchematicMapStationNodeSchema = z
+  .object({
+    id: z.string(),
+    stationId: z.string(),
+    displayStatus: SchematicMapDisplayStatusSchema,
+    displayReason: z.string().min(1).optional(),
+    layerId: z.string(),
+    center: SchematicMapPointSchema,
+    lineIds: z.array(z.string()).min(1),
+    parts: z.array(SchematicMapStationNodePartSchema).min(1),
+    coordinateMetadata: SchematicMapCoordinateMetadataSchema,
+  })
+  .superRefine((node, context) => {
+    if (node.displayStatus === 'display_only' && !node.displayReason) {
+      context.addIssue({
+        code: 'custom',
+        message: 'displayReason is required when displayStatus is display_only',
+        path: ['displayReason'],
+      });
+    }
+  });
 export type SchematicMapStationNode = z.infer<
   typeof SchematicMapStationNodeSchema
 >;
@@ -274,35 +285,103 @@ export type SchematicMapLabelSide = z.infer<typeof SchematicMapLabelSideSchema>;
 /**
  * Label placement data. It stores layout hints only, not localized text.
  */
-export const SchematicMapLabelSchema = z.object({
-  id: z.string(),
-  stationId: z.string(),
-  displayStatus: SchematicMapDisplayStatusSchema,
-  layerId: z.string(),
-  anchor: SchematicMapPointSchema,
-  side: SchematicMapLabelSideSchema,
-  rotationDegrees: z.number().optional(),
-  leaderLine: SchematicMapPolylineGeometrySchema.optional(),
-  coordinateMetadata: SchematicMapCoordinateMetadataSchema,
-});
+export const SchematicMapLabelSchema = z
+  .object({
+    id: z.string(),
+    stationId: z.string(),
+    displayStatus: SchematicMapDisplayStatusSchema,
+    displayReason: z.string().min(1).optional(),
+    layerId: z.string(),
+    anchor: SchematicMapPointSchema,
+    side: SchematicMapLabelSideSchema,
+    rotationDegrees: z.number().optional(),
+    leaderLine: SchematicMapPolylineGeometrySchema.optional(),
+    coordinateMetadata: SchematicMapCoordinateMetadataSchema,
+  })
+  .superRefine((label, context) => {
+    if (label.displayStatus === 'display_only' && !label.displayReason) {
+      context.addIssue({
+        code: 'custom',
+        message: 'displayReason is required when displayStatus is display_only',
+        path: ['displayReason'],
+      });
+    }
+  });
 export type SchematicMapLabel = z.infer<typeof SchematicMapLabelSchema>;
 
 /**
  * Complete published schematic map snapshot for one effective date.
  */
-export const SchematicMapVersionSnapshotSchema = z.object({
-  schemaVersion: SchematicMapSchemaVersionSchema,
-  mapId: z.literal('system'),
-  effectiveDate: SchematicMapEffectiveDateSchema,
-  layoutEngineId: SchematicMapLayoutEngineIdSchema,
-  generatedAt: z.iso.datetime(),
-  frame: SchematicMapFrameSchema,
-  layers: z.array(SchematicMapLayerSchema).min(1),
-  lineGroups: z.array(SchematicMapLineGroupSchema),
-  segments: z.array(SchematicMapSegmentSchema),
-  stationNodes: z.array(SchematicMapStationNodeSchema),
-  labels: z.array(SchematicMapLabelSchema),
-});
+export const SchematicMapVersionSnapshotSchema = z
+  .object({
+    schemaVersion: SchematicMapSchemaVersionSchema,
+    mapId: z.literal('system'),
+    effectiveDate: SchematicMapEffectiveDateSchema,
+    layoutEngineId: SchematicMapLayoutEngineIdSchema,
+    generatedAt: z.iso.datetime(),
+    frame: SchematicMapFrameSchema,
+    layers: z.array(SchematicMapLayerSchema).min(1),
+    lineGroups: z.array(SchematicMapLineGroupSchema),
+    segments: z.array(SchematicMapSegmentSchema),
+    stationNodes: z.array(SchematicMapStationNodeSchema),
+    labels: z.array(SchematicMapLabelSchema),
+  })
+  .superRefine((snapshot, context) => {
+    const layerIds = new Set(snapshot.layers.map((layer) => layer.id));
+    const segmentIds = new Set(snapshot.segments.map((segment) => segment.id));
+    const layerReferences: Array<{
+      layerId: string;
+      path: Array<string | number>;
+    }> = [];
+
+    snapshot.lineGroups.forEach((lineGroup, index) => {
+      layerReferences.push({
+        layerId: lineGroup.layerId,
+        path: ['lineGroups', index, 'layerId'],
+      });
+
+      lineGroup.segmentIds.forEach((segmentId, segmentIndex) => {
+        if (!segmentIds.has(segmentId)) {
+          context.addIssue({
+            code: 'custom',
+            message: `Unknown segment id: ${segmentId}`,
+            path: ['lineGroups', index, 'segmentIds', segmentIndex],
+          });
+        }
+      });
+    });
+
+    snapshot.segments.forEach((segment, index) => {
+      layerReferences.push({
+        layerId: segment.layerId,
+        path: ['segments', index, 'layerId'],
+      });
+    });
+
+    snapshot.stationNodes.forEach((node, index) => {
+      layerReferences.push({
+        layerId: node.layerId,
+        path: ['stationNodes', index, 'layerId'],
+      });
+    });
+
+    snapshot.labels.forEach((label, index) => {
+      layerReferences.push({
+        layerId: label.layerId,
+        path: ['labels', index, 'layerId'],
+      });
+    });
+
+    for (const reference of layerReferences) {
+      if (!layerIds.has(reference.layerId)) {
+        context.addIssue({
+          code: 'custom',
+          message: `Unknown layer id: ${reference.layerId}`,
+          path: reference.path,
+        });
+      }
+    }
+  });
 export type SchematicMapVersionSnapshot = z.infer<
   typeof SchematicMapVersionSnapshotSchema
 >;

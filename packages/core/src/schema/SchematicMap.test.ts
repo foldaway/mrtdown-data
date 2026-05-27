@@ -3,10 +3,59 @@ import {
   SchematicMapConstraintSetSchema,
   SchematicMapEffectiveDateSchema,
   SchematicMapGeometrySchema,
+  SchematicMapLabelSchema,
   SchematicMapRuleSetSchema,
+  SchematicMapStationNodeSchema,
   SchematicMapTopologyReferenceSchema,
   SchematicMapVersionSnapshotSchema,
 } from './SchematicMap.js';
+
+function minimalSnapshot() {
+  return {
+    schemaVersion: 1,
+    mapId: 'system',
+    effectiveDate: '2025-04',
+    layoutEngineId: 'lta-system-map-2011',
+    generatedAt: '2026-05-27T00:00:00.000Z',
+    frame: { x: 0, y: 0, width: 3140, height: 2400 },
+    layers: [{ id: 'lines', role: 'line' }],
+    lineGroups: [
+      {
+        id: 'line_NSL',
+        lineId: 'NSL',
+        displayStatus: 'operational',
+        layerId: 'lines',
+        segmentIds: ['line_amk:bsh'],
+      },
+    ],
+    segments: [
+      {
+        id: 'line_amk:bsh',
+        lineId: 'NSL',
+        displayStatus: 'operational',
+        layerId: 'lines',
+        topology: {
+          type: 'station_pair',
+          fromStationId: 'AMK',
+          toStationId: 'BSH',
+        },
+        geometry: {
+          type: 'polyline',
+          points: [
+            { x: 1170, y: 550 },
+            { x: 1250, y: 630 },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'trunk-octilinear',
+          },
+        },
+      },
+    ],
+    stationNodes: [],
+    labels: [],
+  };
+}
 
 describe('SchematicMapVersionSnapshotSchema', () => {
   it('accepts a renderer-neutral system map slice without label text', () => {
@@ -178,6 +227,80 @@ describe('SchematicMapVersionSnapshotSchema', () => {
         },
       }),
     ).toThrow();
+  });
+
+  it('requires display-only station nodes and labels to explain why they are shown', () => {
+    const node = {
+      id: 'node_bds',
+      stationId: 'BDS',
+      displayStatus: 'display_only',
+      layerId: 'nodes',
+      center: { x: 100, y: 100 },
+      lineIds: ['TEL'],
+      parts: [
+        {
+          id: 'node_bds_tel',
+          lineId: 'TEL',
+          shape: {
+            type: 'circle',
+            center: { x: 100, y: 100 },
+            radius: 11,
+          },
+          coordinateMetadata: {
+            coordinateClass: 'artifact',
+            generatedFrom: 'node_bds',
+          },
+        },
+      ],
+      coordinateMetadata: {
+        coordinateClass: 'constraint',
+        constraintId: 'anchor_bds',
+      },
+    };
+    const label = {
+      id: 'label_bds',
+      stationId: 'BDS',
+      displayStatus: 'display_only',
+      layerId: 'labels',
+      anchor: { x: 120, y: 90 },
+      side: 'top_right',
+      coordinateMetadata: {
+        coordinateClass: 'generated',
+        ruleId: 'default-label',
+      },
+    };
+
+    expect(() => SchematicMapStationNodeSchema.parse(node)).toThrow(
+      /displayReason/,
+    );
+    expect(() => SchematicMapLabelSchema.parse(label)).toThrow(/displayReason/);
+    expect(
+      SchematicMapStationNodeSchema.parse({
+        ...node,
+        displayReason: 'Shown before operational service for renderer parity.',
+      }),
+    ).toMatchObject({ displayReason: expect.any(String) });
+    expect(
+      SchematicMapLabelSchema.parse({
+        ...label,
+        displayReason: 'Shown before operational service for renderer parity.',
+      }),
+    ).toMatchObject({ displayReason: expect.any(String) });
+  });
+
+  it('rejects snapshots with unknown internal layer or segment references', () => {
+    const missingLayer = minimalSnapshot();
+    missingLayer.segments[0].layerId = 'line';
+
+    const missingSegment = minimalSnapshot();
+    missingSegment.lineGroups[0].segmentIds = ['line_missing'];
+
+    expect(() => SchematicMapVersionSnapshotSchema.parse(missingLayer)).toThrow(
+      /Unknown layer id/,
+    );
+    expect(() =>
+      SchematicMapVersionSnapshotSchema.parse(missingSegment),
+    ).toThrow(/Unknown segment id/);
   });
 });
 
