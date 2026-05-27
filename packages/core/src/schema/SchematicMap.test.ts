@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   SchematicMapConstraintSetSchema,
+  SchematicMapEffectiveDateSchema,
   SchematicMapGeometrySchema,
   SchematicMapRuleSetSchema,
   SchematicMapTopologyReferenceSchema,
@@ -177,6 +178,16 @@ describe('SchematicMapVersionSnapshotSchema', () => {
         },
       }),
     ).toThrow();
+  });
+});
+
+describe('SchematicMapEffectiveDateSchema', () => {
+  it('rejects impossible month values', () => {
+    expect(SchematicMapEffectiveDateSchema.parse('2025-01')).toBe('2025-01');
+    expect(SchematicMapEffectiveDateSchema.parse('2025-12')).toBe('2025-12');
+    expect(() => SchematicMapEffectiveDateSchema.parse('2025-00')).toThrow();
+    expect(() => SchematicMapEffectiveDateSchema.parse('2025-13')).toThrow();
+    expect(() => SchematicMapEffectiveDateSchema.parse('2025-99')).toThrow();
   });
 });
 

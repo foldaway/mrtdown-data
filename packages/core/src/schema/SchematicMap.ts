@@ -13,7 +13,7 @@ export type SchematicMapSchemaVersion = z.infer<
  */
 export const SchematicMapEffectiveDateSchema = z
   .string()
-  .regex(/^\d{4}-\d{2}$/);
+  .regex(/^\d{4}-(0[1-9]|1[0-2])$/);
 export type SchematicMapEffectiveDate = z.infer<
   typeof SchematicMapEffectiveDateSchema
 >;
