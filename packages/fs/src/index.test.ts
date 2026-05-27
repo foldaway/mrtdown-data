@@ -1507,6 +1507,49 @@ describe('@mrtdown/fs', () => {
     expect(result.ok).toBe(true);
   });
 
+  it('allows future-display interchange constraints before station codes start', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+
+    const stationPath = join(dataDir, 'station/KET.json');
+    const station = JSON.parse(await readFile(stationPath, 'utf8')) as {
+      stationCodes: unknown[];
+    };
+    station.stationCodes.push({
+      lineId: 'TWL',
+      code: 'TWL99',
+      startedAt: '2025-05-01T00:00:00Z',
+      endedAt: null,
+      structureType: 'underground',
+    });
+    await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL', 'TWL'],
+    });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'future_interchange',
+          type: 'interchange_hint',
+          stationId: 'KET',
+          lineIds: ['ISL', 'TWL'],
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(true);
+  });
+
   it('allows non-operational station-pair segments before service edges open', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await cp(fixtureDataDir, dataDir, { recursive: true });

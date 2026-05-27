@@ -676,6 +676,7 @@ async function validateSchematicMapReferences(
             constraint.stationId,
             lineId,
             constraintSet.value.effectiveDate,
+            { requireActive: false },
           );
         });
       }
