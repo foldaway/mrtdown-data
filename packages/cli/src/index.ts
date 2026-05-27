@@ -36,6 +36,8 @@ import {
   writeSchematicMapVersionSnapshot,
   writeUnknownEntity,
 } from '@mrtdown/fs';
+import type { Element, ElementContent, Root } from 'hast';
+import { toHtml } from 'hast-util-to-html';
 
 export type CliIO = {
   stdout: (text: string) => void;
@@ -256,18 +258,6 @@ function countConstraintTypes(
   );
 }
 
-function xmlEscape(value: string): string {
-  return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;');
-}
-
-function pointAttrs(point: { x: number; y: number }): string {
-  return `x="${point.x}" y="${point.y}"`;
-}
-
 function renderGeometry(
   geometry: SchematicMapVersionSnapshot['segments'][number]['geometry'],
 ): string {
@@ -286,6 +276,30 @@ function textAnchorForSide(side: string): string {
     return 'start';
   }
   return 'middle';
+}
+
+function svgElement(
+  tagName: string,
+  properties: Element['properties'] = {},
+  children: ElementContent[] = [],
+): Element {
+  return {
+    type: 'element',
+    tagName,
+    properties,
+    children,
+  };
+}
+
+function svgText(value: string): ElementContent {
+  return {
+    type: 'text',
+    value,
+  };
+}
+
+function svgTitle(value: string): Element {
+  return svgElement('title', {}, [svgText(value)]);
 }
 
 async function renderSchematicMapPreviewSvg(
@@ -308,100 +322,154 @@ async function renderSchematicMapPreviewSvg(
     }),
   ]);
 
-  const layerContent = snapshot.layers.map((layer) => {
+  const layerContent = snapshot.layers.map<Element>((layer) => {
     const segments = snapshot.segments
       .filter((segment) => segment.layerId === layer.id)
-      .map((segment) => {
+      .map<Element>((segment) => {
         const color = lineColors.get(segment.lineId) ?? '#555555';
         if (segment.geometry.type === 'polyline') {
-          return `<polyline id="${xmlEscape(segment.id)}" points="${renderGeometry(
-            segment.geometry,
-          )}" class="line-segment" stroke="${color}"><title>${xmlEscape(
-            `${segment.lineId} ${segment.id}`,
-          )}</title></polyline>`;
+          return svgElement(
+            'polyline',
+            {
+              id: segment.id,
+              points: renderGeometry(segment.geometry),
+              className: ['line-segment'],
+              stroke: color,
+            },
+            [svgTitle(`${segment.lineId} ${segment.id}`)],
+          );
         }
 
-        return `<path id="${xmlEscape(segment.id)}" d="${renderGeometry(
-          segment.geometry,
-        )}" class="line-segment" stroke="${color}"><title>${xmlEscape(
-          `${segment.lineId} ${segment.id}`,
-        )}</title></path>`;
-      })
-      .join('\n');
+        return svgElement(
+          'path',
+          {
+            id: segment.id,
+            d: renderGeometry(segment.geometry),
+            className: ['line-segment'],
+            stroke: color,
+          },
+          [svgTitle(`${segment.lineId} ${segment.id}`)],
+        );
+      });
 
     const nodes = snapshot.stationNodes
       .filter((node) => node.layerId === layer.id)
       .flatMap((node) =>
         node.parts.map((part) => {
           const color = lineColors.get(part.lineId) ?? '#555555';
-          const title = xmlEscape(
-            `${stationNames.get(node.stationId) ?? node.stationId} (${part.lineId})`,
-          );
+          const title = `${stationNames.get(node.stationId) ?? node.stationId} (${part.lineId})`;
 
           if (part.shape.type === 'pill') {
-            return `<rect id="${xmlEscape(part.id)}" x="${
-              part.shape.center.x - part.shape.width / 2
-            }" y="${part.shape.center.y - part.shape.height / 2}" width="${
-              part.shape.width
-            }" height="${part.shape.height}" rx="${
-              part.shape.radius
-            }" class="station-node" stroke="${color}"><title>${title}</title></rect>`;
+            return svgElement(
+              'rect',
+              {
+                id: part.id,
+                x: part.shape.center.x - part.shape.width / 2,
+                y: part.shape.center.y - part.shape.height / 2,
+                width: part.shape.width,
+                height: part.shape.height,
+                rx: part.shape.radius,
+                className: ['station-node'],
+                stroke: color,
+              },
+              [svgTitle(title)],
+            );
           }
 
-          return `<circle id="${xmlEscape(part.id)}" cx="${
-            part.shape.center.x
-          }" cy="${part.shape.center.y}" r="${
-            part.shape.radius
-          }" class="station-node" stroke="${color}"><title>${title}</title></circle>`;
+          return svgElement(
+            'circle',
+            {
+              id: part.id,
+              cx: part.shape.center.x,
+              cy: part.shape.center.y,
+              r: part.shape.radius,
+              className: ['station-node'],
+              stroke: color,
+            },
+            [svgTitle(title)],
+          );
         }),
-      )
-      .join('\n');
+      );
 
     const labels = snapshot.labels
       .filter((label) => label.layerId === layer.id)
-      .map(
-        (label) =>
-          `<text id="${xmlEscape(label.id)}" ${pointAttrs(
-            label.anchor,
-          )} class="station-label" text-anchor="${textAnchorForSide(
-            label.side,
-          )}">${xmlEscape(stationNames.get(label.stationId) ?? label.stationId)}</text>`,
-      )
-      .join('\n');
+      .map((label) =>
+        svgElement(
+          'text',
+          {
+            id: label.id,
+            x: label.anchor.x,
+            y: label.anchor.y,
+            className: ['station-label'],
+            textAnchor: textAnchorForSide(label.side),
+          },
+          [svgText(stationNames.get(label.stationId) ?? label.stationId)],
+        ),
+      );
 
     const stationCodeLabels = snapshot.stationCodeLabels
       .filter((label) => label.layerId === layer.id)
-      .map(
-        (label) =>
-          `<text id="${xmlEscape(label.id)}" ${pointAttrs(
-            label.anchor,
-          )} class="station-code" text-anchor="${textAnchorForSide(
-            label.side,
-          )}">${xmlEscape(label.id)}</text>`,
-      )
-      .join('\n');
+      .map((label) =>
+        svgElement(
+          'text',
+          {
+            id: label.id,
+            x: label.anchor.x,
+            y: label.anchor.y,
+            className: ['station-code'],
+            textAnchor: textAnchorForSide(label.side),
+          },
+          [svgText(label.id)],
+        ),
+      );
 
-    return `<g id="${xmlEscape(layer.id)}" data-role="${xmlEscape(layer.role)}">
-${segments}
-${nodes}
-${labels}
-${stationCodeLabels}
-</g>`;
+    return svgElement(
+      'g',
+      {
+        id: layer.id,
+        dataRole: layer.role,
+      },
+      [...segments, ...nodes, ...labels, ...stationCodeLabels],
+    );
   });
 
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="${snapshot.frame.x} ${snapshot.frame.y} ${snapshot.frame.width} ${snapshot.frame.height}" width="${snapshot.frame.width}" height="${snapshot.frame.height}" role="img" aria-label="MRTDown schematic map preview ${snapshot.effectiveDate}">
-<style>
+  const root: Root = {
+    type: 'root',
+    children: [
+      svgElement(
+        'svg',
+        {
+          xmlns: 'http://www.w3.org/2000/svg',
+          viewBox: `${snapshot.frame.x} ${snapshot.frame.y} ${snapshot.frame.width} ${snapshot.frame.height}`,
+          width: snapshot.frame.width,
+          height: snapshot.frame.height,
+          role: 'img',
+          ariaLabel: `MRTDown schematic map preview ${snapshot.effectiveDate}`,
+        },
+        [
+          svgElement('style', {}, [
+            svgText(`
   svg { background: #f7f6f2; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
   .line-segment { fill: none; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
   .station-node { fill: #ffffff; stroke-width: 4; }
   .station-label { fill: #1f2933; font-size: 20px; font-weight: 650; dominant-baseline: middle; }
   .station-code { fill: #4b5563; font-size: 13px; font-weight: 700; dominant-baseline: middle; }
-</style>
-<rect x="${snapshot.frame.x}" y="${snapshot.frame.y}" width="${snapshot.frame.width}" height="${snapshot.frame.height}" fill="#f7f6f2"/>
-${layerContent.join('\n')}
-</svg>
-`;
+`),
+          ]),
+          svgElement('rect', {
+            x: snapshot.frame.x,
+            y: snapshot.frame.y,
+            width: snapshot.frame.width,
+            height: snapshot.frame.height,
+            fill: '#f7f6f2',
+          }),
+          ...layerContent,
+        ],
+      ),
+    ],
+  };
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n${toHtml(root)}\n`;
 }
 
 async function readOptionalSchematicMapManifest(
