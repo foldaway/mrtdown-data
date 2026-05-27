@@ -198,13 +198,19 @@ Exit criteria:
 
 ### Phase 2: Schema Draft
 
+Start with a narrow schema before attempting layout generation. The first pass
+should define the renderer-neutral data contract for published snapshots plus
+minimal generator rule and constraint inputs. Do not include frontend-specific
+implementation details, localized label text, generated source-controlled
+version files, or layout algorithm behavior in this phase. Avoid raw SVG path
+geometry support until a later generator or parity pass proves it is necessary.
+
 - Add core schemas for generator rule configuration, per-version constraints,
   generated schematic map manifests, and generated version snapshots.
 - Include a layout engine id, starting with `lta-system-map-2011`.
 - Represent common geometry with structured primitives: points, polylines,
   cubic curves, labels, and node parts.
-- Include escape hatches for raw SVG path data, fixed anchors, and explicit
-  layer ordering.
+- Include escape hatches for fixed anchors and explicit layer ordering.
 - Include stable semantic ids for line groups, station nodes, station labels,
   and station-to-station segments.
 - Keep label text out of the schematic data where canonical station names
@@ -386,6 +392,9 @@ Exit criteria:
 - 2026-05-27: Clarified that generated schematic snapshots are publication
   artifacts produced by the generator, not source-controlled data files by
   default.
+- 2026-05-27: Began Phase 2 with a narrow `packages/core` schema draft for
+  renderer-neutral snapshots, manifests, rule sets, and first-pass constraints;
+  raw SVG path geometry remains unsupported until proven necessary.
 
 ## Decision Log
 

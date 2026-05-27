@@ -18,6 +18,7 @@ export * from './schema/Landmark.js';
 export * from './schema/Line.js';
 export * from './schema/Manifest.js';
 export * from './schema/Operator.js';
+export * from './schema/SchematicMap.js';
 export * from './schema/Service.js';
 export * from './schema/Station.js';
 export * from './schema/Town.js';
