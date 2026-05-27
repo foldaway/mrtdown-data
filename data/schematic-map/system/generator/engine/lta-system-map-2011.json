@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "mapId": "system",
+  "layoutEngineId": "lta-system-map-2011",
+  "lineOrder": [
+    "NSL",
+    "EWL",
+    "NEL",
+    "CCL",
+    "DTL",
+    "TEL",
+    "BPLRT",
+    "SKLRT",
+    "PGLRT",
+    "JRL",
+    "CRL"
+  ]
+}

@@ -441,4 +441,79 @@ describe('@mrtdown/cli', () => {
       },
     });
   });
+
+  it('generates and writes schematic map snapshots through the CLI', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL', 'TKL', 'TWL'],
+    });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2026-05',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'frame_2026_05',
+          type: 'map_frame',
+          frame: { x: 0, y: 0, width: 1200, height: 600 },
+        },
+      ],
+    });
+    const { io, stdout } = createIo();
+
+    await expect(
+      runCli(
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'generate',
+          '2026-05',
+          '--generated-at',
+          '2026-05-27T00:00:00.000Z',
+          '--write',
+        ],
+        io,
+      ),
+    ).resolves.toBe(0);
+    expect(JSON.parse(stdout[0] as string)).toEqual({
+      snapshot: 'schematic-map/system/version/2026-05.json',
+      manifest: 'schematic-map/system/manifest.json',
+    });
+
+    const validate = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'validate', '--scope', 'schematic-map'],
+        validate.io,
+      ),
+    ).resolves.toBe(0);
+    expect(JSON.parse(validate.stdout[0] as string)['schematic-map']).toBe(4);
+
+    const previewPath = join(dataDir, 'preview.svg');
+    const preview = createIo();
+    await expect(
+      runCli(
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'preview',
+          '2026-05',
+          '--out',
+          previewPath,
+        ],
+        preview.io,
+      ),
+    ).resolves.toBe(0);
+    expect(preview.stdout).toEqual([previewPath]);
+    await expect(readFile(previewPath, 'utf8')).resolves.toContain(
+      'Kennedy Town',
+    );
+  });
 });

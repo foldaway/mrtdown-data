@@ -19,6 +19,7 @@ import {
   createIssueBundle,
   FileStore,
   FileWriteStore,
+  generateSchematicMapVersionSnapshot,
   IdGenerator,
   issuePathFromId,
   listEntityIds,
@@ -393,6 +394,101 @@ describe('@mrtdown/fs', () => {
     ).resolves.toMatchObject({
       path: schematicSystemMapVersionSnapshotPath('2025-04'),
       value: { effectiveDate: '2025-04' },
+    });
+  });
+
+  it('generates a deterministic schematic map snapshot from active services', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL', 'TKL', 'TWL'],
+    });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2026-05',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'frame_2026_05',
+          type: 'map_frame',
+          frame: { x: 0, y: 0, width: 1200, height: 600 },
+        },
+        {
+          id: 'anchor_ket',
+          type: 'station_anchor',
+          stationId: 'KET',
+          point: { x: 100, y: 100 },
+        },
+        {
+          id: 'label_ket',
+          type: 'label_hint',
+          stationId: 'KET',
+          side: 'left',
+          offset: { x: -30, y: 0 },
+        },
+      ],
+    });
+
+    const snapshot = await generateSchematicMapVersionSnapshot(dataDir, {
+      effectiveDate: '2026-05',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+    });
+
+    expect(snapshot.lineGroups.map((lineGroup) => lineGroup.lineId)).toEqual([
+      'ISL',
+      'TKL',
+      'TWL',
+    ]);
+    expect(snapshot.segments).toContainEqual(
+      expect.objectContaining({
+        id: 'line_hku:ket',
+        lineId: 'ISL',
+        topology: {
+          type: 'station_pair',
+          fromStationId: 'KET',
+          toStationId: 'HKU',
+        },
+      }),
+    );
+    expect(
+      snapshot.stationNodes.find((node) => node.stationId === 'KET'),
+    ).toMatchObject({
+      center: { x: 100, y: 100 },
+      coordinateMetadata: {
+        coordinateClass: 'constraint',
+        constraintId: 'anchor_ket',
+      },
+    });
+    expect(
+      snapshot.labels.find((label) => label.stationId === 'KET'),
+    ).toMatchObject({
+      anchor: { x: 70, y: 100 },
+      coordinateMetadata: {
+        coordinateClass: 'constraint',
+        constraintId: 'label_ket',
+      },
+    });
+
+    await writeSchematicMapVersionSnapshot(dataDir, snapshot);
+    await writeSchematicMapManifest(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      versions: [
+        {
+          effectiveDate: '2026-05',
+          path: 'version/2026-05.json',
+          layoutEngineId: 'lta-system-map-2011',
+        },
+      ],
+    });
+    await expect(
+      validateDataRoot(dataDir, ['schematic-map']),
+    ).resolves.toMatchObject({
+      ok: true,
     });
   });
 

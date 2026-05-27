@@ -404,6 +404,15 @@ Exit criteria:
 - 2026-05-27: Extended Phase 4 CLI inspection with manifest version selection
   for a target date plus generated snapshot coordinate-class and constraint-type
   counts for schematic map review.
+- 2026-05-27: Began Phase 3 generator foundation with deterministic topology
+  snapshot generation from active service revisions, initial source-controlled
+  `lta-system-map-2011` rule configuration, a `2025-04` map-frame constraint,
+  and `schematic-map generate` CLI support for writing generated snapshots and
+  updating the schematic map manifest.
+- 2026-05-27: Added a lightweight `schematic-map preview` SVG renderer so
+  generated snapshots can be inspected locally before `mrtdown-site` has a
+  full data-driven renderer. This is review tooling, not the canonical public
+  renderer.
 
 ## Decision Log
 
