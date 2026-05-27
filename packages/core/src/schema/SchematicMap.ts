@@ -237,7 +237,19 @@ export const SchematicMapSegmentSchema = z
     topology: SchematicMapTopologyReferenceSchema,
     geometry: SchematicMapGeometrySchema,
   })
-  .superRefine(requireDisplayReasonForDisplayOnly);
+  .superRefine(requireDisplayReasonForDisplayOnly)
+  .superRefine((segment, context) => {
+    if (
+      segment.displayStatus === 'operational' &&
+      segment.topology.type === 'display_only'
+    ) {
+      context.addIssue({
+        code: 'custom',
+        message: 'display_only topology cannot be marked operational',
+        path: ['topology'],
+      });
+    }
+  });
 export type SchematicMapSegment = z.infer<typeof SchematicMapSegmentSchema>;
 
 /**
@@ -291,7 +303,20 @@ export const SchematicMapStationNodeSchema = z
     parts: z.array(SchematicMapStationNodePartSchema).min(1),
     coordinateMetadata: SchematicMapCoordinateMetadataSchema,
   })
-  .superRefine(requireDisplayReasonForDisplayOnly);
+  .superRefine(requireDisplayReasonForDisplayOnly)
+  .superRefine((node, context) => {
+    const lineIds = new Set(node.lineIds);
+
+    node.parts.forEach((part, index) => {
+      if (!lineIds.has(part.lineId)) {
+        context.addIssue({
+          code: 'custom',
+          message: `Node part ${part.id} belongs to ${part.lineId}, which is not listed on the parent node`,
+          path: ['parts', index, 'lineId'],
+        });
+      }
+    });
+  });
 export type SchematicMapStationNode = z.infer<
   typeof SchematicMapStationNodeSchema
 >;
@@ -471,11 +496,28 @@ export type SchematicMapManifestVersion = z.infer<
 /**
  * Published manifest that lets consumers select a snapshot by effective date.
  */
-export const SchematicMapManifestSchema = z.object({
-  schemaVersion: SchematicMapSchemaVersionSchema,
-  mapId: z.literal('system'),
-  versions: z.array(SchematicMapManifestVersionSchema),
-});
+export const SchematicMapManifestSchema = z
+  .object({
+    schemaVersion: SchematicMapSchemaVersionSchema,
+    mapId: z.literal('system'),
+    versions: z.array(SchematicMapManifestVersionSchema),
+  })
+  .superRefine((manifest, context) => {
+    const effectiveDates = new Set<string>();
+
+    manifest.versions.forEach((version, index) => {
+      if (effectiveDates.has(version.effectiveDate)) {
+        context.addIssue({
+          code: 'custom',
+          message: `Duplicate schematic map effective date: ${version.effectiveDate}`,
+          path: ['versions', index, 'effectiveDate'],
+        });
+        return;
+      }
+
+      effectiveDates.add(version.effectiveDate);
+    });
+  });
 export type SchematicMapManifest = z.infer<typeof SchematicMapManifestSchema>;
 
 /**

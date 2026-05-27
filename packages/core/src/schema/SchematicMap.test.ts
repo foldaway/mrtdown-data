@@ -4,6 +4,7 @@ import {
   SchematicMapEffectiveDateSchema,
   SchematicMapGeometrySchema,
   SchematicMapLabelSchema,
+  SchematicMapManifestSchema,
   SchematicMapRuleSetSchema,
   SchematicMapSegmentSchema,
   SchematicMapStationNodeSchema,
@@ -256,6 +257,33 @@ describe('SchematicMapVersionSnapshotSchema', () => {
     });
   });
 
+  it('rejects operational segments with display-only topology', () => {
+    expect(() =>
+      SchematicMapSegmentSchema.parse({
+        id: 'line_bds:spr',
+        lineId: 'TEL',
+        displayStatus: 'operational',
+        layerId: 'lines',
+        topology: {
+          type: 'display_only',
+          stationIds: ['BDS', 'SPR'],
+          reason: 'Shown before operational service for renderer parity.',
+        },
+        geometry: {
+          type: 'polyline',
+          points: [
+            { x: 100, y: 100 },
+            { x: 140, y: 100 },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'constraint',
+            constraintId: 'display-only-segment',
+          },
+        },
+      }),
+    ).toThrow(/cannot be marked operational/);
+  });
+
   it('does not support raw SVG path geometry in the narrow schema', () => {
     expect(() =>
       SchematicMapGeometrySchema.parse({
@@ -326,6 +354,40 @@ describe('SchematicMapVersionSnapshotSchema', () => {
         displayReason: 'Shown before operational service for renderer parity.',
       }),
     ).toMatchObject({ displayReason: expect.any(String) });
+  });
+
+  it('rejects station node parts that are not listed on the parent node', () => {
+    const node = {
+      id: 'node_bsh',
+      stationId: 'BSH',
+      displayStatus: 'operational',
+      layerId: 'nodes',
+      center: { x: 100, y: 100 },
+      lineIds: ['NSL', 'CCL'],
+      parts: [
+        {
+          id: 'node_bsh_ewl',
+          lineId: 'EWL',
+          shape: {
+            type: 'circle',
+            center: { x: 100, y: 100 },
+            radius: 11,
+          },
+          coordinateMetadata: {
+            coordinateClass: 'artifact',
+            generatedFrom: 'node_bsh',
+          },
+        },
+      ],
+      coordinateMetadata: {
+        coordinateClass: 'constraint',
+        constraintId: 'anchor_bsh',
+      },
+    };
+
+    expect(() => SchematicMapStationNodeSchema.parse(node)).toThrow(
+      /not listed on the parent node/,
+    );
   });
 
   it('requires display-only segments to explain why they are shown', () => {
@@ -416,6 +478,29 @@ describe('SchematicMapEffectiveDateSchema', () => {
     expect(() => SchematicMapEffectiveDateSchema.parse('2025-00')).toThrow();
     expect(() => SchematicMapEffectiveDateSchema.parse('2025-13')).toThrow();
     expect(() => SchematicMapEffectiveDateSchema.parse('2025-99')).toThrow();
+  });
+});
+
+describe('SchematicMapManifestSchema', () => {
+  it('rejects duplicate effective dates', () => {
+    expect(() =>
+      SchematicMapManifestSchema.parse({
+        schemaVersion: 1,
+        mapId: 'system',
+        versions: [
+          {
+            effectiveDate: '2025-04',
+            path: 'version/2025-04.json',
+            layoutEngineId: 'lta-system-map-2011',
+          },
+          {
+            effectiveDate: '2025-04',
+            path: 'version/2025-04-copy.json',
+            layoutEngineId: 'lta-system-map-2011',
+          },
+        ],
+      }),
+    ).toThrow(/Duplicate schematic map effective date/);
   });
 });
 
