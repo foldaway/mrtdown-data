@@ -390,6 +390,40 @@ describe('SchematicMapVersionSnapshotSchema', () => {
     );
   });
 
+  it('rejects station nodes that omit parts for listed parent lines', () => {
+    const node = {
+      id: 'node_bsh',
+      stationId: 'BSH',
+      displayStatus: 'operational',
+      layerId: 'nodes',
+      center: { x: 100, y: 100 },
+      lineIds: ['NSL', 'CCL'],
+      parts: [
+        {
+          id: 'node_bsh_nsl',
+          lineId: 'NSL',
+          shape: {
+            type: 'circle',
+            center: { x: 100, y: 100 },
+            radius: 11,
+          },
+          coordinateMetadata: {
+            coordinateClass: 'artifact',
+            generatedFrom: 'node_bsh',
+          },
+        },
+      ],
+      coordinateMetadata: {
+        coordinateClass: 'constraint',
+        constraintId: 'anchor_bsh',
+      },
+    };
+
+    expect(() => SchematicMapStationNodeSchema.parse(node)).toThrow(
+      /has no matching node part/,
+    );
+  });
+
   it('requires display-only segments to explain why they are shown', () => {
     const segment = {
       id: 'line_bds:spr',
@@ -467,6 +501,15 @@ describe('SchematicMapVersionSnapshotSchema', () => {
 
     expect(() => SchematicMapVersionSnapshotSchema.parse(snapshot)).toThrow(
       /belongs to EWL, not NSL/,
+    );
+  });
+
+  it('rejects line groups that reference segments with another display status', () => {
+    const snapshot = minimalSnapshot();
+    snapshot.segments[0].displayStatus = 'planned';
+
+    expect(() => SchematicMapVersionSnapshotSchema.parse(snapshot)).toThrow(
+      /has displayStatus planned, not operational/,
     );
   });
 });

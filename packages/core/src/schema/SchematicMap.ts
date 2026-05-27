@@ -306,6 +306,7 @@ export const SchematicMapStationNodeSchema = z
   .superRefine(requireDisplayReasonForDisplayOnly)
   .superRefine((node, context) => {
     const lineIds = new Set(node.lineIds);
+    const partLineIds = new Set(node.parts.map((part) => part.lineId));
 
     node.parts.forEach((part, index) => {
       if (!lineIds.has(part.lineId)) {
@@ -313,6 +314,16 @@ export const SchematicMapStationNodeSchema = z
           code: 'custom',
           message: `Node part ${part.id} belongs to ${part.lineId}, which is not listed on the parent node`,
           path: ['parts', index, 'lineId'],
+        });
+      }
+    });
+
+    node.lineIds.forEach((lineId, index) => {
+      if (!partLineIds.has(lineId)) {
+        context.addIssue({
+          code: 'custom',
+          message: `Node line ${lineId} has no matching node part`,
+          path: ['lineIds', index],
         });
       }
     });
@@ -440,6 +451,14 @@ export const SchematicMapVersionSnapshotSchema = z
           context.addIssue({
             code: 'custom',
             message: `Segment ${segmentId} belongs to ${segment.lineId}, not ${lineGroup.lineId}`,
+            path: ['lineGroups', index, 'segmentIds', segmentIndex],
+          });
+        }
+
+        if (segment.displayStatus !== lineGroup.displayStatus) {
+          context.addIssue({
+            code: 'custom',
+            message: `Segment ${segmentId} has displayStatus ${segment.displayStatus}, not ${lineGroup.displayStatus}`,
             path: ['lineGroups', index, 'segmentIds', segmentIndex],
           });
         }
