@@ -453,9 +453,7 @@ export const SchematicMapVersionSnapshotSchema = z
     addDuplicateIdIssues('stationCodeLabels', snapshot.stationCodeLabels);
 
     const layerIds = new Set(snapshot.layers.map((layer) => layer.id));
-    const stationNodeIds = new Set(
-      snapshot.stationNodes.map((node) => node.stationId),
-    );
+    const stationNodeByStationId = new Map<string, SchematicMapStationNode>();
     const segmentsById = new Map<string, SchematicMapSegment>();
     const groupedSegmentIds = new Set<string>();
     const layerReferences: Array<{
@@ -468,6 +466,23 @@ export const SchematicMapVersionSnapshotSchema = z
         segmentsById.set(segment.id, segment);
       }
     }
+
+    snapshot.stationNodes.forEach((node, index) => {
+      if (stationNodeByStationId.has(node.stationId)) {
+        context.addIssue({
+          code: 'custom',
+          message: `Duplicate station node stationId: ${node.stationId}`,
+          path: ['stationNodes', index, 'stationId'],
+        });
+      } else {
+        stationNodeByStationId.set(node.stationId, node);
+      }
+
+      layerReferences.push({
+        layerId: node.layerId,
+        path: ['stationNodes', index, 'layerId'],
+      });
+    });
 
     snapshot.lineGroups.forEach((lineGroup, index) => {
       layerReferences.push({
@@ -527,13 +542,24 @@ export const SchematicMapVersionSnapshotSchema = z
           path: ['segments', index, 'id'],
         });
       }
-    });
 
-    snapshot.stationNodes.forEach((node, index) => {
-      layerReferences.push({
-        layerId: node.layerId,
-        path: ['stationNodes', index, 'layerId'],
-      });
+      if (segment.topology.type === 'station_pair') {
+        if (!stationNodeByStationId.has(segment.topology.fromStationId)) {
+          context.addIssue({
+            code: 'custom',
+            message: `Segment ${segment.id} references station ${segment.topology.fromStationId} without a station node`,
+            path: ['segments', index, 'topology', 'fromStationId'],
+          });
+        }
+
+        if (!stationNodeByStationId.has(segment.topology.toStationId)) {
+          context.addIssue({
+            code: 'custom',
+            message: `Segment ${segment.id} references station ${segment.topology.toStationId} without a station node`,
+            path: ['segments', index, 'topology', 'toStationId'],
+          });
+        }
+      }
     });
 
     snapshot.labels.forEach((label, index) => {
@@ -542,11 +568,19 @@ export const SchematicMapVersionSnapshotSchema = z
         path: ['labels', index, 'layerId'],
       });
 
-      if (!stationNodeIds.has(label.stationId)) {
+      const stationNode = stationNodeByStationId.get(label.stationId);
+
+      if (!stationNode) {
         context.addIssue({
           code: 'custom',
           message: `Label ${label.id} references station ${label.stationId} without a station node`,
           path: ['labels', index, 'stationId'],
+        });
+      } else if (label.displayStatus !== stationNode.displayStatus) {
+        context.addIssue({
+          code: 'custom',
+          message: `Label ${label.id} has displayStatus ${label.displayStatus}, not ${stationNode.displayStatus}`,
+          path: ['labels', index, 'displayStatus'],
         });
       }
     });
@@ -557,12 +591,30 @@ export const SchematicMapVersionSnapshotSchema = z
         path: ['stationCodeLabels', index, 'layerId'],
       });
 
-      if (!stationNodeIds.has(label.stationId)) {
+      const stationNode = stationNodeByStationId.get(label.stationId);
+
+      if (!stationNode) {
         context.addIssue({
           code: 'custom',
           message: `Station code label ${label.id} references station ${label.stationId} without a station node`,
           path: ['stationCodeLabels', index, 'stationId'],
         });
+      } else {
+        if (label.displayStatus !== stationNode.displayStatus) {
+          context.addIssue({
+            code: 'custom',
+            message: `Station code label ${label.id} has displayStatus ${label.displayStatus}, not ${stationNode.displayStatus}`,
+            path: ['stationCodeLabels', index, 'displayStatus'],
+          });
+        }
+
+        if (!stationNode.lineIds.includes(label.lineId)) {
+          context.addIssue({
+            code: 'custom',
+            message: `Station code label ${label.id} references line ${label.lineId}, which is not listed on station ${label.stationId}`,
+            path: ['stationCodeLabels', index, 'lineId'],
+          });
+        }
       }
     });
 

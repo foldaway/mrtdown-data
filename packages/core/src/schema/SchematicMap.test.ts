@@ -54,7 +54,62 @@ function minimalSnapshot() {
         },
       },
     ],
-    stationNodes: [] as Array<Record<string, unknown>>,
+    stationNodes: [
+      {
+        id: 'node_amk',
+        stationId: 'AMK',
+        displayStatus: 'operational',
+        layerId: 'lines',
+        center: { x: 1170, y: 550 },
+        lineIds: ['NSL'],
+        parts: [
+          {
+            id: 'node_amk_nsl',
+            lineId: 'NSL',
+            shape: {
+              type: 'circle',
+              center: { x: 1170, y: 550 },
+              radius: 11,
+            },
+            coordinateMetadata: {
+              coordinateClass: 'artifact',
+              generatedFrom: 'node_amk',
+            },
+          },
+        ],
+        coordinateMetadata: {
+          coordinateClass: 'constraint',
+          constraintId: 'anchor_amk',
+        },
+      },
+      {
+        id: 'node_bsh',
+        stationId: 'BSH',
+        displayStatus: 'operational',
+        layerId: 'lines',
+        center: { x: 1250, y: 630 },
+        lineIds: ['NSL'],
+        parts: [
+          {
+            id: 'node_bsh_nsl',
+            lineId: 'NSL',
+            shape: {
+              type: 'circle',
+              center: { x: 1250, y: 630 },
+              radius: 11,
+            },
+            coordinateMetadata: {
+              coordinateClass: 'artifact',
+              generatedFrom: 'node_bsh',
+            },
+          },
+        ],
+        coordinateMetadata: {
+          coordinateClass: 'constraint',
+          constraintId: 'anchor_bsh',
+        },
+      },
+    ] as Array<Record<string, unknown>>,
     labels: [] as Array<Record<string, unknown>>,
     stationCodeLabels: [] as Array<Record<string, unknown>>,
   };
@@ -148,6 +203,33 @@ describe('SchematicMapVersionSnapshotSchema', () => {
       ],
       stationNodes: [
         {
+          id: 'node_amk',
+          stationId: 'AMK',
+          displayStatus: 'operational',
+          layerId: 'nodes',
+          center: { x: 1170, y: 550 },
+          lineIds: ['NSL'],
+          coordinateMetadata: {
+            coordinateClass: 'constraint',
+            constraintId: 'anchor_amk',
+          },
+          parts: [
+            {
+              id: 'node_amk_nsl',
+              lineId: 'NSL',
+              shape: {
+                type: 'circle',
+                center: { x: 1170, y: 550 },
+                radius: 11,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_amk',
+              },
+            },
+          ],
+        },
+        {
           id: 'node_bsh',
           stationId: 'BSH',
           displayStatus: 'operational',
@@ -183,6 +265,33 @@ describe('SchematicMapVersionSnapshotSchema', () => {
               coordinateMetadata: {
                 coordinateClass: 'artifact',
                 generatedFrom: 'node_bsh',
+              },
+            },
+          ],
+        },
+        {
+          id: 'node_lrc',
+          stationId: 'LRC',
+          displayStatus: 'operational',
+          layerId: 'nodes',
+          center: { x: 1450, y: 720 },
+          lineIds: ['CCL'],
+          coordinateMetadata: {
+            coordinateClass: 'constraint',
+            constraintId: 'anchor_lrc',
+          },
+          parts: [
+            {
+              id: 'node_lrc_ccl',
+              lineId: 'CCL',
+              shape: {
+                type: 'circle',
+                center: { x: 1450, y: 720 },
+                radius: 11,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_lrc',
               },
             },
           ],
@@ -571,6 +680,41 @@ describe('SchematicMapVersionSnapshotSchema', () => {
     ).toThrow(/Duplicate stationCodeLabels id/);
   });
 
+  it('rejects duplicate station node station ids', () => {
+    const snapshot = minimalSnapshot();
+    snapshot.stationNodes.push({
+      id: 'node_bsh_copy',
+      stationId: 'BSH',
+      displayStatus: 'operational',
+      layerId: 'lines',
+      center: { x: 1260, y: 630 },
+      lineIds: ['NSL'],
+      parts: [
+        {
+          id: 'node_bsh_copy_nsl',
+          lineId: 'NSL',
+          shape: {
+            type: 'circle',
+            center: { x: 1260, y: 630 },
+            radius: 11,
+          },
+          coordinateMetadata: {
+            coordinateClass: 'artifact',
+            generatedFrom: 'node_bsh_copy',
+          },
+        },
+      ],
+      coordinateMetadata: {
+        coordinateClass: 'constraint',
+        constraintId: 'anchor_bsh_copy',
+      },
+    });
+
+    expect(() => SchematicMapVersionSnapshotSchema.parse(snapshot)).toThrow(
+      /Duplicate station node stationId/,
+    );
+  });
+
   it('rejects line groups that reference segments from another line', () => {
     const snapshot = minimalSnapshot();
     snapshot.segments[0].lineId = 'EWL';
@@ -603,6 +747,19 @@ describe('SchematicMapVersionSnapshotSchema', () => {
 
     expect(() => SchematicMapVersionSnapshotSchema.parse(snapshot)).toThrow(
       /is not included in a line group/,
+    );
+  });
+
+  it('rejects station-pair segment endpoints without station nodes', () => {
+    const snapshot = minimalSnapshot();
+    snapshot.segments[0].topology = {
+      type: 'station_pair',
+      fromStationId: 'AMK',
+      toStationId: 'BSHH',
+    };
+
+    expect(() => SchematicMapVersionSnapshotSchema.parse(snapshot)).toThrow(
+      /references station BSHH without a station node/,
     );
   });
 
@@ -692,7 +849,7 @@ describe('SchematicMapVersionSnapshotSchema', () => {
     const orphanStationCode = minimalSnapshot();
     orphanStationCode.stationCodeLabels.push({
       id: 'NS 17',
-      stationId: 'BSH',
+      stationId: 'BSHH',
       lineId: 'NSL',
       displayStatus: 'operational',
       layerId: 'lines',
@@ -710,6 +867,65 @@ describe('SchematicMapVersionSnapshotSchema', () => {
     expect(() =>
       SchematicMapVersionSnapshotSchema.parse(orphanStationCode),
     ).toThrow(/without a station node/);
+  });
+
+  it('rejects labels with statuses that differ from their station node', () => {
+    const stationNameLabel = minimalSnapshot();
+    stationNameLabel.labels.push({
+      id: 'label_bsh',
+      stationId: 'BSH',
+      displayStatus: 'planned',
+      layerId: 'lines',
+      anchor: { x: 100, y: 100 },
+      side: 'right',
+      coordinateMetadata: {
+        coordinateClass: 'generated',
+        ruleId: 'default-label',
+      },
+    });
+
+    const stationCodeLabel = minimalSnapshot();
+    stationCodeLabel.stationCodeLabels.push({
+      id: 'NS 17',
+      stationId: 'BSH',
+      lineId: 'NSL',
+      displayStatus: 'planned',
+      layerId: 'lines',
+      anchor: { x: 100, y: 100 },
+      side: 'left',
+      coordinateMetadata: {
+        coordinateClass: 'generated',
+        ruleId: 'station-code-label',
+      },
+    });
+
+    expect(() =>
+      SchematicMapVersionSnapshotSchema.parse(stationNameLabel),
+    ).toThrow(/has displayStatus planned, not operational/);
+    expect(() =>
+      SchematicMapVersionSnapshotSchema.parse(stationCodeLabel),
+    ).toThrow(/has displayStatus planned, not operational/);
+  });
+
+  it('rejects station-code labels for lines absent from their station node', () => {
+    const snapshot = minimalSnapshot();
+    snapshot.stationCodeLabels.push({
+      id: 'CC 15',
+      stationId: 'BSH',
+      lineId: 'CCL',
+      displayStatus: 'operational',
+      layerId: 'lines',
+      anchor: { x: 100, y: 100 },
+      side: 'left',
+      coordinateMetadata: {
+        coordinateClass: 'generated',
+        ruleId: 'station-code-label',
+      },
+    });
+
+    expect(() => SchematicMapVersionSnapshotSchema.parse(snapshot)).toThrow(
+      /line CCL, which is not listed on station BSH/,
+    );
   });
 });
 
