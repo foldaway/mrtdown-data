@@ -19,6 +19,7 @@ import {
   createIssueBundle,
   FileStore,
   FileWriteStore,
+  generateSchematicMapPublishedArtifacts,
   generateSchematicMapVersionSnapshot,
   IdGenerator,
   issuePathFromId,
@@ -489,6 +490,63 @@ describe('@mrtdown/fs', () => {
           layoutEngineId: 'lta-system-map-2011',
         },
       ],
+    });
+    await expect(
+      validateDataRoot(dataDir, ['schematic-map']),
+    ).resolves.toMatchObject({
+      ok: true,
+    });
+  });
+
+  it('generates published schematic map artifacts from constraint versions', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL', 'TKL', 'TWL'],
+    });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2026-05',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'frame_2026_05',
+          type: 'map_frame',
+          frame: { x: 0, y: 0, width: 1200, height: 600 },
+        },
+      ],
+    });
+
+    await expect(
+      generateSchematicMapPublishedArtifacts(dataDir, {
+        generatedAt: '2026-05-27T00:00:00.000Z',
+      }),
+    ).resolves.toEqual({
+      manifest: 'schematic-map/system/manifest.json',
+      snapshots: ['schematic-map/system/version/2026-05.json'],
+    });
+    await expect(readSchematicMapManifest(dataDir)).resolves.toMatchObject({
+      value: {
+        versions: [
+          {
+            effectiveDate: '2026-05',
+            path: 'version/2026-05.json',
+            layoutEngineId: 'lta-system-map-2011',
+          },
+        ],
+      },
+    });
+    await expect(
+      readSchematicMapVersionSnapshot(dataDir, '2026-05'),
+    ).resolves.toMatchObject({
+      value: {
+        effectiveDate: '2026-05',
+        generatedAt: '2026-05-27T00:00:00.000Z',
+      },
     });
     await expect(
       validateDataRoot(dataDir, ['schematic-map']),

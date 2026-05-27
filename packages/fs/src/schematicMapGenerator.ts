@@ -7,6 +7,7 @@ import {
   type SchematicMapLabelSide,
   type SchematicMapLayoutEngineId,
   SchematicMapLayoutEngineIdSchema,
+  type SchematicMapManifestVersion,
   type SchematicMapPoint,
   type SchematicMapRuleSet,
   type SchematicMapSegment,
@@ -19,14 +20,26 @@ import {
 } from '@mrtdown/core';
 import { listEntities } from './entities.js';
 import {
+  listSchematicMapConstraintSetEffectiveDates,
   readSchematicMapConstraintSet,
   readSchematicMapRuleSet,
+  writeSchematicMapManifest,
+  writeSchematicMapVersionSnapshot,
 } from './schematicMaps.js';
 
 export type GenerateSchematicMapVersionSnapshotOptions = {
   effectiveDate: SchematicMapEffectiveDate;
   layoutEngineId?: SchematicMapLayoutEngineId;
   generatedAt?: string;
+};
+
+export type GenerateSchematicMapPublishedArtifactsOptions = {
+  generatedAt?: string;
+};
+
+export type GenerateSchematicMapPublishedArtifactsResult = {
+  manifest: string | null;
+  snapshots: string[];
 };
 
 type ActiveTopology = {
@@ -856,4 +869,48 @@ export async function generateSchematicMapVersionSnapshot(
     labels,
     stationCodeLabels,
   });
+}
+
+export async function generateSchematicMapPublishedArtifacts(
+  dataDir: string,
+  options: GenerateSchematicMapPublishedArtifactsOptions = {},
+): Promise<GenerateSchematicMapPublishedArtifactsResult> {
+  const effectiveDates =
+    await listSchematicMapConstraintSetEffectiveDates(dataDir);
+  if (effectiveDates.length === 0) {
+    return {
+      manifest: null,
+      snapshots: [],
+    };
+  }
+
+  const generatedAt = options.generatedAt ?? new Date().toISOString();
+  const snapshots: string[] = [];
+  const versions: SchematicMapManifestVersion[] = [];
+
+  for (const effectiveDate of effectiveDates) {
+    const snapshot = await generateSchematicMapVersionSnapshot(dataDir, {
+      effectiveDate,
+      generatedAt,
+    });
+    snapshots.push(await writeSchematicMapVersionSnapshot(dataDir, snapshot));
+    versions.push({
+      effectiveDate: snapshot.effectiveDate,
+      path: `version/${snapshot.effectiveDate}.json`,
+      layoutEngineId: snapshot.layoutEngineId,
+    });
+  }
+
+  const manifest = await writeSchematicMapManifest(dataDir, {
+    schemaVersion: 1,
+    mapId: 'system',
+    versions: versions.sort((a, b) =>
+      a.effectiveDate.localeCompare(b.effectiveDate),
+    ),
+  });
+
+  return {
+    manifest,
+    snapshots,
+  };
 }
