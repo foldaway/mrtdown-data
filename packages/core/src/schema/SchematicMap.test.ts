@@ -215,6 +215,12 @@ describe('SchematicMapVersionSnapshotSchema', () => {
     const result = SchematicMapTopologyReferenceSchema.parse(topology);
 
     expect(result).toEqual(topology);
+    expect(() =>
+      SchematicMapTopologyReferenceSchema.parse({
+        type: 'display_only',
+        stationIds: ['BDS'],
+      }),
+    ).toThrow(/reason/i);
   });
 
   it('allows operational support geometry that is not a station pair', () => {

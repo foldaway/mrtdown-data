@@ -43,6 +43,34 @@ export type SchematicMapDisplayStatus = z.infer<
   typeof SchematicMapDisplayStatusSchema
 >;
 
+type DisplayOnlyReasonValue = {
+  displayStatus: SchematicMapDisplayStatus;
+  displayReason?: string;
+};
+
+type DisplayOnlyReasonContext = {
+  addIssue: (issue: {
+    code: 'custom';
+    message: string;
+    path: string[];
+  }) => void;
+};
+
+function requireDisplayReasonForDisplayOnly(
+  value: DisplayOnlyReasonValue,
+  context: DisplayOnlyReasonContext,
+): void {
+  if (value.displayStatus !== 'display_only' || value.displayReason) {
+    return;
+  }
+
+  context.addIssue({
+    code: 'custom',
+    message: 'displayReason is required when displayStatus is display_only',
+    path: ['displayReason'],
+  });
+}
+
 /**
  * Explains where coordinates came from. Generated snapshots may contain
  * artifact coordinates, but source inputs should prefer reusable rules and
@@ -209,15 +237,7 @@ export const SchematicMapSegmentSchema = z
     topology: SchematicMapTopologyReferenceSchema,
     geometry: SchematicMapGeometrySchema,
   })
-  .superRefine((segment, context) => {
-    if (segment.displayStatus === 'display_only' && !segment.displayReason) {
-      context.addIssue({
-        code: 'custom',
-        message: 'displayReason is required when displayStatus is display_only',
-        path: ['displayReason'],
-      });
-    }
-  });
+  .superRefine(requireDisplayReasonForDisplayOnly);
 export type SchematicMapSegment = z.infer<typeof SchematicMapSegmentSchema>;
 
 /**
@@ -271,15 +291,7 @@ export const SchematicMapStationNodeSchema = z
     parts: z.array(SchematicMapStationNodePartSchema).min(1),
     coordinateMetadata: SchematicMapCoordinateMetadataSchema,
   })
-  .superRefine((node, context) => {
-    if (node.displayStatus === 'display_only' && !node.displayReason) {
-      context.addIssue({
-        code: 'custom',
-        message: 'displayReason is required when displayStatus is display_only',
-        path: ['displayReason'],
-      });
-    }
-  });
+  .superRefine(requireDisplayReasonForDisplayOnly);
 export type SchematicMapStationNode = z.infer<
   typeof SchematicMapStationNodeSchema
 >;
@@ -316,15 +328,7 @@ export const SchematicMapLabelSchema = z
     leaderLine: SchematicMapPolylineGeometrySchema.optional(),
     coordinateMetadata: SchematicMapCoordinateMetadataSchema,
   })
-  .superRefine((label, context) => {
-    if (label.displayStatus === 'display_only' && !label.displayReason) {
-      context.addIssue({
-        code: 'custom',
-        message: 'displayReason is required when displayStatus is display_only',
-        path: ['displayReason'],
-      });
-    }
-  });
+  .superRefine(requireDisplayReasonForDisplayOnly);
 export type SchematicMapLabel = z.infer<typeof SchematicMapLabelSchema>;
 
 /**

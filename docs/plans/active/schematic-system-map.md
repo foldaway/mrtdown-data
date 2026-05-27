@@ -210,8 +210,7 @@ geometry support until a later generator or parity pass proves it is necessary.
 - Include a layout engine id, starting with `lta-system-map-2011`.
 - Represent common geometry with structured primitives: points, polylines,
   cubic curves, labels, and node parts.
-- Include escape hatches for raw SVG path data, fixed anchors, and explicit
-  layer ordering.
+- Include escape hatches for fixed anchors and explicit layer ordering.
 - Include stable semantic ids for line groups, station nodes, station labels,
   and station-to-station segments.
 - Keep label text out of the schematic data where canonical station names
