@@ -192,14 +192,25 @@ export type SchematicMapLineGroup = z.infer<typeof SchematicMapLineGroupSchema>;
 /**
  * One rendered line segment in a generated snapshot.
  */
-export const SchematicMapSegmentSchema = z.object({
-  id: z.string(),
-  lineId: z.string(),
-  displayStatus: SchematicMapDisplayStatusSchema,
-  layerId: z.string(),
-  topology: SchematicMapTopologyReferenceSchema,
-  geometry: SchematicMapGeometrySchema,
-});
+export const SchematicMapSegmentSchema = z
+  .object({
+    id: z.string(),
+    lineId: z.string(),
+    displayStatus: SchematicMapDisplayStatusSchema,
+    displayReason: z.string().min(1).optional(),
+    layerId: z.string(),
+    topology: SchematicMapTopologyReferenceSchema,
+    geometry: SchematicMapGeometrySchema,
+  })
+  .superRefine((segment, context) => {
+    if (segment.displayStatus === 'display_only' && !segment.displayReason) {
+      context.addIssue({
+        code: 'custom',
+        message: 'displayReason is required when displayStatus is display_only',
+        path: ['displayReason'],
+      });
+    }
+  });
 export type SchematicMapSegment = z.infer<typeof SchematicMapSegmentSchema>;
 
 /**

@@ -5,6 +5,7 @@ import {
   SchematicMapGeometrySchema,
   SchematicMapLabelSchema,
   SchematicMapRuleSetSchema,
+  SchematicMapSegmentSchema,
   SchematicMapStationNodeSchema,
   SchematicMapTopologyReferenceSchema,
   SchematicMapVersionSnapshotSchema,
@@ -283,6 +284,41 @@ describe('SchematicMapVersionSnapshotSchema', () => {
     expect(
       SchematicMapLabelSchema.parse({
         ...label,
+        displayReason: 'Shown before operational service for renderer parity.',
+      }),
+    ).toMatchObject({ displayReason: expect.any(String) });
+  });
+
+  it('requires display-only segments to explain why they are shown', () => {
+    const segment = {
+      id: 'line_bds:spr',
+      lineId: 'TEL',
+      displayStatus: 'display_only',
+      layerId: 'lines',
+      topology: {
+        type: 'station_pair',
+        fromStationId: 'BDS',
+        toStationId: 'SPR',
+      },
+      geometry: {
+        type: 'polyline',
+        points: [
+          { x: 100, y: 100 },
+          { x: 140, y: 100 },
+        ],
+        coordinateMetadata: {
+          coordinateClass: 'constraint',
+          constraintId: 'display-only-segment',
+        },
+      },
+    };
+
+    expect(() => SchematicMapSegmentSchema.parse(segment)).toThrow(
+      /displayReason/,
+    );
+    expect(
+      SchematicMapSegmentSchema.parse({
+        ...segment,
         displayReason: 'Shown before operational service for renderer parity.',
       }),
     ).toMatchObject({ displayReason: expect.any(String) });
