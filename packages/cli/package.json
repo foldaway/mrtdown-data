@@ -35,10 +35,12 @@
   },
   "dependencies": {
     "@mrtdown/core": "2.0.0-alpha.24",
-    "@mrtdown/fs": "2.0.0-alpha.24"
+    "@mrtdown/fs": "2.0.0-alpha.24",
+    "hast-util-to-html": "^9.0.5"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.14",
+    "@types/hast": "^3.0.4",
     "@types/node": "^22.13.4",
     "typescript": "^5.8.3",
     "vitest": "^3.0.9"

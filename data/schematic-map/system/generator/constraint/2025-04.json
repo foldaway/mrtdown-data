@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "mapId": "system",
+  "effectiveDate": "2025-04",
+  "layoutEngineId": "lta-system-map-2011",
+  "constraints": [
+    {
+      "id": "frame_2025_04",
+      "type": "map_frame",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 3140,
+        "height": 2400
+      },
+      "reason": "Matches the established current mrtdown-site map frame for the 2025-04 baseline."
+    }
+  ]
+}

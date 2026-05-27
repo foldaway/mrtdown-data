@@ -8,6 +8,7 @@ import {
   type SchematicMapCoordinateMetadata,
   SchematicMapEffectiveDateSchema,
   SchematicMapLayoutEngineIdSchema,
+  type SchematicMapManifest,
   type SchematicMapManifestVersion,
   type SchematicMapVersionSnapshot,
 } from '@mrtdown/core';
@@ -17,6 +18,7 @@ import {
   createIssueBundle,
   type EntityCollection,
   entityCollections,
+  generateSchematicMapVersionSnapshot,
   listEntityIds,
   listIssueIds,
   listSchematicMapConstraintSetEffectiveDates,
@@ -30,8 +32,12 @@ import {
   renderPagesIndex,
   type ValidationScope,
   validateDataRoot,
+  writeSchematicMapManifest,
+  writeSchematicMapVersionSnapshot,
   writeUnknownEntity,
 } from '@mrtdown/fs';
+import type { Element, ElementContent, Root } from 'hast';
+import { toHtml } from 'hast-util-to-html';
 
 export type CliIO = {
   stdout: (text: string) => void;
@@ -61,6 +67,8 @@ const usage = `Usage:
   mrtdown [--data-dir <path>] schematic-map show <manifest|rules|constraint|version> [id]
   mrtdown [--data-dir <path>] schematic-map select <YYYY-MM|YYYY-MM-DD>
   mrtdown [--data-dir <path>] schematic-map stats <YYYY-MM>
+  mrtdown [--data-dir <path>] schematic-map generate <YYYY-MM> [--generated-at <timestamp>] [--write]
+  mrtdown [--data-dir <path>] schematic-map preview <YYYY-MM> [--out <path>]
   mrtdown [--data-dir <path>] create issue --date <YYYY-MM-DD> --title <title> [--slug <slug>] [--type <type>] [--source <source>]
   mrtdown [--data-dir <path>] create <station|line|service|operator|town|landmark> --file <path>
   mrtdown id issue --date <YYYY-MM-DD> --title <title>
@@ -250,6 +258,256 @@ function countConstraintTypes(
   );
 }
 
+function renderGeometry(
+  geometry: SchematicMapVersionSnapshot['segments'][number]['geometry'],
+): string {
+  if (geometry.type === 'polyline') {
+    return geometry.points.map((point) => `${point.x},${point.y}`).join(' ');
+  }
+
+  return `M ${geometry.start.x},${geometry.start.y} C ${geometry.control1.x},${geometry.control1.y} ${geometry.control2.x},${geometry.control2.y} ${geometry.end.x},${geometry.end.y}`;
+}
+
+function textAnchorForSide(side: string): string {
+  if (side.endsWith('left') || side === 'left') {
+    return 'end';
+  }
+  if (side.endsWith('right') || side === 'right') {
+    return 'start';
+  }
+  return 'middle';
+}
+
+function svgElement(
+  tagName: string,
+  properties: Element['properties'] = {},
+  children: ElementContent[] = [],
+): Element {
+  return {
+    type: 'element',
+    tagName,
+    properties,
+    children,
+  };
+}
+
+function svgText(value: string): ElementContent {
+  return {
+    type: 'text',
+    value,
+  };
+}
+
+function svgTitle(value: string): Element {
+  return svgElement('title', {}, [svgText(value)]);
+}
+
+async function renderSchematicMapPreviewSvg(
+  dataDir: string,
+  snapshot: SchematicMapVersionSnapshot,
+): Promise<string> {
+  const stationNames = new Map<string, string>();
+  const lineColors = new Map<string, string>();
+  await Promise.all([
+    ...snapshot.stationNodes.map(async (node) => {
+      const station = await readEntity(dataDir, 'station', node.stationId);
+      stationNames.set(
+        node.stationId,
+        station.value.name['en-SG'] ?? node.stationId,
+      );
+    }),
+    ...snapshot.lineGroups.map(async (lineGroup) => {
+      const line = await readEntity(dataDir, 'line', lineGroup.lineId);
+      lineColors.set(lineGroup.lineId, line.value.color);
+    }),
+  ]);
+
+  const layerContent = snapshot.layers.map<Element>((layer) => {
+    const segments = snapshot.segments
+      .filter((segment) => segment.layerId === layer.id)
+      .map<Element>((segment) => {
+        const color = lineColors.get(segment.lineId) ?? '#555555';
+        if (segment.geometry.type === 'polyline') {
+          return svgElement(
+            'polyline',
+            {
+              id: segment.id,
+              points: renderGeometry(segment.geometry),
+              className: ['line-segment'],
+              stroke: color,
+            },
+            [svgTitle(`${segment.lineId} ${segment.id}`)],
+          );
+        }
+
+        return svgElement(
+          'path',
+          {
+            id: segment.id,
+            d: renderGeometry(segment.geometry),
+            className: ['line-segment'],
+            stroke: color,
+          },
+          [svgTitle(`${segment.lineId} ${segment.id}`)],
+        );
+      });
+
+    const nodes = snapshot.stationNodes
+      .filter((node) => node.layerId === layer.id)
+      .flatMap((node) =>
+        node.parts.map((part) => {
+          const color = lineColors.get(part.lineId) ?? '#555555';
+          const title = `${stationNames.get(node.stationId) ?? node.stationId} (${part.lineId})`;
+
+          if (part.shape.type === 'pill') {
+            return svgElement(
+              'rect',
+              {
+                id: part.id,
+                x: part.shape.center.x - part.shape.width / 2,
+                y: part.shape.center.y - part.shape.height / 2,
+                width: part.shape.width,
+                height: part.shape.height,
+                rx: part.shape.radius,
+                className: ['station-node'],
+                stroke: color,
+              },
+              [svgTitle(title)],
+            );
+          }
+
+          return svgElement(
+            'circle',
+            {
+              id: part.id,
+              cx: part.shape.center.x,
+              cy: part.shape.center.y,
+              r: part.shape.radius,
+              className: ['station-node'],
+              stroke: color,
+            },
+            [svgTitle(title)],
+          );
+        }),
+      );
+
+    const labels = snapshot.labels
+      .filter((label) => label.layerId === layer.id)
+      .map((label) =>
+        svgElement(
+          'text',
+          {
+            id: label.id,
+            x: label.anchor.x,
+            y: label.anchor.y,
+            className: ['station-label'],
+            textAnchor: textAnchorForSide(label.side),
+          },
+          [svgText(stationNames.get(label.stationId) ?? label.stationId)],
+        ),
+      );
+
+    const stationCodeLabels = snapshot.stationCodeLabels
+      .filter((label) => label.layerId === layer.id)
+      .map((label) =>
+        svgElement(
+          'text',
+          {
+            id: label.id,
+            x: label.anchor.x,
+            y: label.anchor.y,
+            className: ['station-code'],
+            textAnchor: textAnchorForSide(label.side),
+          },
+          [svgText(label.id)],
+        ),
+      );
+
+    return svgElement(
+      'g',
+      {
+        id: layer.id,
+        dataRole: layer.role,
+      },
+      [...segments, ...nodes, ...labels, ...stationCodeLabels],
+    );
+  });
+
+  const root: Root = {
+    type: 'root',
+    children: [
+      svgElement(
+        'svg',
+        {
+          xmlns: 'http://www.w3.org/2000/svg',
+          viewBox: `${snapshot.frame.x} ${snapshot.frame.y} ${snapshot.frame.width} ${snapshot.frame.height}`,
+          width: snapshot.frame.width,
+          height: snapshot.frame.height,
+          role: 'img',
+          ariaLabel: `MRTDown schematic map preview ${snapshot.effectiveDate}`,
+        },
+        [
+          svgElement('style', {}, [
+            svgText(`
+  svg { background: #f7f6f2; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .line-segment { fill: none; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+  .station-node { fill: #ffffff; stroke-width: 4; }
+  .station-label { fill: #1f2933; font-size: 20px; font-weight: 650; dominant-baseline: middle; }
+  .station-code { fill: #4b5563; font-size: 13px; font-weight: 700; dominant-baseline: middle; }
+`),
+          ]),
+          svgElement('rect', {
+            x: snapshot.frame.x,
+            y: snapshot.frame.y,
+            width: snapshot.frame.width,
+            height: snapshot.frame.height,
+            fill: '#f7f6f2',
+          }),
+          ...layerContent,
+        ],
+      ),
+    ],
+  };
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n${toHtml(root)}\n`;
+}
+
+async function readOptionalSchematicMapManifest(
+  dataDir: string,
+): Promise<SchematicMapManifest | undefined> {
+  try {
+    return (await readSchematicMapManifest(dataDir)).value;
+  } catch (error) {
+    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
+      return undefined;
+    }
+    throw error;
+  }
+}
+
+async function updateSchematicMapManifest(
+  dataDir: string,
+  snapshot: SchematicMapVersionSnapshot,
+): Promise<string> {
+  const existing = await readOptionalSchematicMapManifest(dataDir);
+  const versions = [
+    ...(existing?.versions.filter(
+      (version) => version.effectiveDate !== snapshot.effectiveDate,
+    ) ?? []),
+    {
+      effectiveDate: snapshot.effectiveDate,
+      path: `version/${snapshot.effectiveDate}.json`,
+      layoutEngineId: snapshot.layoutEngineId,
+    },
+  ].sort((a, b) => a.effectiveDate.localeCompare(b.effectiveDate));
+
+  return writeSchematicMapManifest(dataDir, {
+    schemaVersion: 1,
+    mapId: 'system',
+    versions,
+  });
+}
+
 async function writeTextFile(path: string, text: string): Promise<void> {
   await mkdir(dirname(path), { recursive: true });
   await writeFile(path, text);
@@ -433,7 +691,71 @@ async function runSchematicMap(
     return 0;
   }
 
-  throw new Error('schematic-map requires list, show, select, or stats');
+  if (action === 'generate') {
+    const id = args.shift();
+    if (!id) {
+      throw new Error('schematic-map generate requires YYYY-MM');
+    }
+
+    const generatedAt = readOption(args, '--generated-at');
+    const shouldWrite = hasFlag(args, '--write');
+    const snapshot = await generateSchematicMapVersionSnapshot(
+      globals.dataDir,
+      {
+        effectiveDate: SchematicMapEffectiveDateSchema.parse(id),
+        generatedAt,
+      },
+    );
+
+    if (shouldWrite) {
+      const snapshotPath = await writeSchematicMapVersionSnapshot(
+        globals.dataDir,
+        snapshot,
+      );
+      const manifestPath = await updateSchematicMapManifest(
+        globals.dataDir,
+        snapshot,
+      );
+      io.stdout(
+        JSON.stringify({ snapshot: snapshotPath, manifest: manifestPath }),
+      );
+      return 0;
+    }
+
+    io.stdout(JSON.stringify(snapshot, null, 2));
+    return 0;
+  }
+
+  if (action === 'preview') {
+    const id = args.shift();
+    if (!id) {
+      throw new Error('schematic-map preview requires YYYY-MM');
+    }
+
+    const out = readOption(args, '--out');
+    const snapshot = await readSchematicMapVersionSnapshot(
+      globals.dataDir,
+      SchematicMapEffectiveDateSchema.parse(id),
+    );
+    const svg = await renderSchematicMapPreviewSvg(
+      globals.dataDir,
+      snapshot.value,
+    );
+
+    if (out) {
+      const outPath = resolve(globals.cwd, out);
+      await writeTextFile(outPath, svg);
+      io.stdout(outPath);
+      return 0;
+    }
+
+    io.stdout(svg.trimEnd());
+    return 0;
+  }
+
+  throw new Error(
+    'schematic-map requires list, show, select, stats, generate, or preview',
+  );
 }
 
 async function runCreate(
