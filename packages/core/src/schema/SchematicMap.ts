@@ -349,12 +349,49 @@ export const SchematicMapVersionSnapshotSchema = z
     labels: z.array(SchematicMapLabelSchema),
   })
   .superRefine((snapshot, context) => {
+    const addDuplicateIdIssues = (
+      collectionName:
+        | 'layers'
+        | 'lineGroups'
+        | 'segments'
+        | 'stationNodes'
+        | 'labels',
+      entries: Array<{ id: string }>,
+    ) => {
+      const seenIds = new Set<string>();
+
+      entries.forEach((entry, index) => {
+        if (seenIds.has(entry.id)) {
+          context.addIssue({
+            code: 'custom',
+            message: `Duplicate ${collectionName} id: ${entry.id}`,
+            path: [collectionName, index, 'id'],
+          });
+          return;
+        }
+
+        seenIds.add(entry.id);
+      });
+    };
+
+    addDuplicateIdIssues('layers', snapshot.layers);
+    addDuplicateIdIssues('lineGroups', snapshot.lineGroups);
+    addDuplicateIdIssues('segments', snapshot.segments);
+    addDuplicateIdIssues('stationNodes', snapshot.stationNodes);
+    addDuplicateIdIssues('labels', snapshot.labels);
+
     const layerIds = new Set(snapshot.layers.map((layer) => layer.id));
-    const segmentIds = new Set(snapshot.segments.map((segment) => segment.id));
+    const segmentsById = new Map<string, SchematicMapSegment>();
     const layerReferences: Array<{
       layerId: string;
       path: Array<string | number>;
     }> = [];
+
+    for (const segment of snapshot.segments) {
+      if (!segmentsById.has(segment.id)) {
+        segmentsById.set(segment.id, segment);
+      }
+    }
 
     snapshot.lineGroups.forEach((lineGroup, index) => {
       layerReferences.push({
@@ -363,10 +400,21 @@ export const SchematicMapVersionSnapshotSchema = z
       });
 
       lineGroup.segmentIds.forEach((segmentId, segmentIndex) => {
-        if (!segmentIds.has(segmentId)) {
+        const segment = segmentsById.get(segmentId);
+
+        if (!segment) {
           context.addIssue({
             code: 'custom',
             message: `Unknown segment id: ${segmentId}`,
+            path: ['lineGroups', index, 'segmentIds', segmentIndex],
+          });
+          return;
+        }
+
+        if (segment.lineId !== lineGroup.lineId) {
+          context.addIssue({
+            code: 'custom',
+            message: `Segment ${segmentId} belongs to ${segment.lineId}, not ${lineGroup.lineId}`,
             path: ['lineGroups', index, 'segmentIds', segmentIndex],
           });
         }

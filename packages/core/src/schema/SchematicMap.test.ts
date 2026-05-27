@@ -377,6 +377,36 @@ describe('SchematicMapVersionSnapshotSchema', () => {
       SchematicMapVersionSnapshotSchema.parse(missingSegment),
     ).toThrow(/Unknown segment id/);
   });
+
+  it('rejects snapshots with duplicate stable ids', () => {
+    const duplicateLayer = minimalSnapshot();
+    duplicateLayer.layers.push({ id: 'lines', role: 'line' });
+
+    const duplicateSegment = minimalSnapshot();
+    duplicateSegment.segments.push({ ...duplicateSegment.segments[0] });
+
+    const duplicateLineGroup = minimalSnapshot();
+    duplicateLineGroup.lineGroups.push({ ...duplicateLineGroup.lineGroups[0] });
+
+    expect(() =>
+      SchematicMapVersionSnapshotSchema.parse(duplicateLayer),
+    ).toThrow(/Duplicate layers id/);
+    expect(() =>
+      SchematicMapVersionSnapshotSchema.parse(duplicateSegment),
+    ).toThrow(/Duplicate segments id/);
+    expect(() =>
+      SchematicMapVersionSnapshotSchema.parse(duplicateLineGroup),
+    ).toThrow(/Duplicate lineGroups id/);
+  });
+
+  it('rejects line groups that reference segments from another line', () => {
+    const snapshot = minimalSnapshot();
+    snapshot.segments[0].lineId = 'EWL';
+
+    expect(() => SchematicMapVersionSnapshotSchema.parse(snapshot)).toThrow(
+      /belongs to EWL, not NSL/,
+    );
+  });
 });
 
 describe('SchematicMapEffectiveDateSchema', () => {
