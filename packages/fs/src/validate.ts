@@ -314,6 +314,10 @@ function stationCodeContainsRevision(
   return stationCodeStart <= revisionStart && revisionEnd <= stationCodeEnd;
 }
 
+function stationPairKey(fromStationId: string, toStationId: string): string {
+  return [fromStationId, toStationId].sort().join(':');
+}
+
 async function validateIssueReferences(
   dataDir: string,
   shouldValidate: boolean,
@@ -437,8 +441,27 @@ async function validateSchematicMapReferences(
     stationRecords.map((station) => [station.value.id, station]),
   );
   const stationIds = new Set(stationById.keys());
+  const serviceRecords = await loadEntityRecords(dataDir, records, 'service');
+  const serviceEdgesByLineId = new Map<string, Set<string>>();
   const schematicMap = await loadSchematicMapRecords(dataDir, records);
   const errors: string[] = [];
+
+  for (const service of serviceRecords) {
+    let serviceEdges = serviceEdgesByLineId.get(service.value.lineId);
+    if (!serviceEdges) {
+      serviceEdges = new Set();
+      serviceEdgesByLineId.set(service.value.lineId, serviceEdges);
+    }
+
+    for (const revision of service.value.revisions) {
+      const stations = revision.path.stations.map(
+        (station) => station.stationId,
+      );
+      for (let index = 0; index < stations.length - 1; index += 1) {
+        serviceEdges.add(stationPairKey(stations[index], stations[index + 1]));
+      }
+    }
+  }
 
   const requireLineId = (path: string, lineId: string) => {
     if (!lineIds.has(lineId)) {
@@ -518,6 +541,11 @@ async function validateSchematicMapReferences(
         requireStationId(`${prefix}.stationId`, constraint.stationId);
         constraint.lineIds.forEach((lineId, lineIndex) => {
           requireLineId(`${prefix}.lineIds.${lineIndex}`, lineId);
+          requireStationLineId(
+            `${prefix}.lineIds.${lineIndex}`,
+            constraint.stationId,
+            lineId,
+          );
         });
       }
     }
@@ -579,10 +607,32 @@ async function validateSchematicMapReferences(
           `${prefix}.topology.fromStationId`,
           segment.topology.fromStationId,
         );
+        requireStationLineId(
+          `${prefix}.topology.fromStationId`,
+          segment.topology.fromStationId,
+          segment.lineId,
+        );
         requireStationId(
           `${prefix}.topology.toStationId`,
           segment.topology.toStationId,
         );
+        requireStationLineId(
+          `${prefix}.topology.toStationId`,
+          segment.topology.toStationId,
+          segment.lineId,
+        );
+
+        const serviceEdges = serviceEdgesByLineId.get(segment.lineId);
+        const segmentPairKey = stationPairKey(
+          segment.topology.fromStationId,
+          segment.topology.toStationId,
+        );
+
+        if (!serviceEdges?.has(segmentPairKey)) {
+          errors.push(
+            `${prefix}.topology ${segment.topology.fromStationId}:${segment.topology.toStationId} is not an adjacent service edge for line ${segment.lineId}`,
+          );
+        }
       } else if (segment.topology.stationIds) {
         segment.topology.stationIds.forEach((stationId, stationIndex) => {
           requireStationId(

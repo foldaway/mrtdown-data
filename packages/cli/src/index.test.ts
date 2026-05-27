@@ -87,19 +87,19 @@ async function seedSchematicMap(dataDir: string): Promise<void> {
         lineId: 'ISL',
         displayStatus: 'operational',
         layerId: 'lines',
-        segmentIds: ['line_ket:adm'],
+        segmentIds: ['line_ket:hku'],
       },
     ],
     segments: [
       {
-        id: 'line_ket:adm',
+        id: 'line_ket:hku',
         lineId: 'ISL',
         displayStatus: 'operational',
         layerId: 'lines',
         topology: {
           type: 'station_pair',
           fromStationId: 'KET',
-          toStationId: 'ADM',
+          toStationId: 'HKU',
         },
         geometry: {
           type: 'polyline',
@@ -143,15 +143,15 @@ async function seedSchematicMap(dataDir: string): Promise<void> {
         },
       },
       {
-        id: 'node_adm',
-        stationId: 'ADM',
+        id: 'node_hku',
+        stationId: 'HKU',
         displayStatus: 'operational',
         layerId: 'lines',
         center: { x: 200, y: 100 },
         lineIds: ['ISL'],
         parts: [
           {
-            id: 'node_adm_isl',
+            id: 'node_hku_isl',
             lineId: 'ISL',
             shape: {
               type: 'circle',
@@ -160,7 +160,7 @@ async function seedSchematicMap(dataDir: string): Promise<void> {
             },
             coordinateMetadata: {
               coordinateClass: 'artifact',
-              generatedFrom: 'node_adm',
+              generatedFrom: 'node_hku',
             },
           },
         ],
