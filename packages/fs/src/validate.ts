@@ -528,21 +528,32 @@ async function validateSchematicMapReferences(
     stationId: string,
     lineId: string,
     effectiveDate: string,
+    options: { requireActive: boolean } = { requireActive: true },
   ) => {
     const station = stationById.get(stationId);
     if (!station) {
       return;
     }
 
+    const matchingCodes = station.value.stationCodes.filter(
+      (code) => code.lineId === lineId,
+    );
+
+    if (matchingCodes.length === 0) {
+      errors.push(
+        `${path} ${lineId} is not a station code line for station ${stationId}`,
+      );
+      return;
+    }
+
     if (
-      !station.value.stationCodes.some(
-        (code) =>
-          code.lineId === lineId &&
-          intervalContainsEffectiveDate(
-            code.startedAt,
-            code.endedAt,
-            effectiveDate,
-          ),
+      options.requireActive &&
+      !matchingCodes.some((code) =>
+        intervalContainsEffectiveDate(
+          code.startedAt,
+          code.endedAt,
+          effectiveDate,
+        ),
       )
     ) {
       errors.push(
@@ -655,6 +666,8 @@ async function validateSchematicMapReferences(
     validSnapshotEffectiveDates.add(snapshot.value.effectiveDate);
   }
 
+  const manifestEffectiveDates = new Set<string>();
+
   if (schematicMap.manifest) {
     for (const [
       index,
@@ -662,6 +675,7 @@ async function validateSchematicMapReferences(
     ] of schematicMap.manifest.value.versions.entries()) {
       const prefix = `${schematicMap.manifest.path}: versions.${index}`;
       const expectedMapRelativePath = `version/${version.effectiveDate}.json`;
+      manifestEffectiveDates.add(version.effectiveDate);
       referencedLayoutEngineIds.push({
         id: version.layoutEngineId,
         path: `${prefix}.layoutEngineId`,
@@ -678,6 +692,14 @@ async function validateSchematicMapReferences(
           `${prefix}.effectiveDate ${version.effectiveDate} does not have a generated snapshot`,
         );
       }
+    }
+  }
+
+  for (const snapshot of schematicMap.versionSnapshots) {
+    if (!manifestEffectiveDates.has(snapshot.value.effectiveDate)) {
+      errors.push(
+        `${snapshot.path}: effectiveDate ${snapshot.value.effectiveDate} is not listed in schematic map manifest`,
+      );
     }
   }
 
@@ -711,6 +733,7 @@ async function validateSchematicMapReferences(
           segment.topology.fromStationId,
           segment.lineId,
           snapshot.value.effectiveDate,
+          { requireActive: segment.displayStatus === 'operational' },
         );
         requireStationId(
           `${prefix}.topology.toStationId`,
@@ -721,6 +744,7 @@ async function validateSchematicMapReferences(
           segment.topology.toStationId,
           segment.lineId,
           snapshot.value.effectiveDate,
+          { requireActive: segment.displayStatus === 'operational' },
         );
 
         const serviceEdges = serviceEdgesForLineAtEffectiveDate(
@@ -732,7 +756,10 @@ async function validateSchematicMapReferences(
           segment.topology.toStationId,
         );
 
-        if (!serviceEdges?.has(segmentPairKey)) {
+        if (
+          segment.displayStatus === 'operational' &&
+          !serviceEdges?.has(segmentPairKey)
+        ) {
           errors.push(
             `${prefix}.topology ${segment.topology.fromStationId}:${segment.topology.toStationId} is not an adjacent service edge for line ${segment.lineId}`,
           );
@@ -757,6 +784,7 @@ async function validateSchematicMapReferences(
           node.stationId,
           lineId,
           snapshot.value.effectiveDate,
+          { requireActive: node.displayStatus === 'operational' },
         );
       });
       node.parts.forEach((part, partIndex) => {
@@ -766,6 +794,7 @@ async function validateSchematicMapReferences(
           node.stationId,
           part.lineId,
           snapshot.value.effectiveDate,
+          { requireActive: node.displayStatus === 'operational' },
         );
       });
     });
@@ -786,6 +815,7 @@ async function validateSchematicMapReferences(
         label.stationId,
         label.lineId,
         snapshot.value.effectiveDate,
+        { requireActive: label.displayStatus === 'operational' },
       );
     });
   }
