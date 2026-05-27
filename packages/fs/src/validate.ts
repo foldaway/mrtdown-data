@@ -23,6 +23,7 @@ import {
   readSchematicMapManifest,
   type SchematicMapRecord,
   schematicSystemMapConstraintSetPath,
+  schematicSystemMapRuleSetPath,
   schematicSystemMapVersionSnapshotPath,
 } from './schematicMaps.js';
 
@@ -431,7 +432,11 @@ async function validateSchematicMapReferences(
   }
 
   const lineIds = await loadEntityIds(dataDir, records, 'line');
-  const stationIds = await loadEntityIds(dataDir, records, 'station');
+  const stationRecords = await loadEntityRecords(dataDir, records, 'station');
+  const stationById = new Map(
+    stationRecords.map((station) => [station.value.id, station]),
+  );
+  const stationIds = new Set(stationById.keys());
   const schematicMap = await loadSchematicMapRecords(dataDir, records);
   const errors: string[] = [];
 
@@ -447,7 +452,34 @@ async function validateSchematicMapReferences(
     }
   };
 
+  const requireStationLineId = (
+    path: string,
+    stationId: string,
+    lineId: string,
+  ) => {
+    const station = stationById.get(stationId);
+    if (!station) {
+      return;
+    }
+
+    if (!station.value.stationCodes.some((code) => code.lineId === lineId)) {
+      errors.push(
+        `${path} ${lineId} is not a station code line for station ${stationId}`,
+      );
+    }
+  };
+
   for (const ruleSet of schematicMap.ruleSets) {
+    const expectedPath = schematicSystemMapRuleSetPath(
+      ruleSet.value.layoutEngineId,
+    );
+
+    if (ruleSet.path !== expectedPath) {
+      errors.push(
+        `${ruleSet.path}: layoutEngineId ${ruleSet.value.layoutEngineId} does not match ${expectedPath}`,
+      );
+    }
+
     ruleSet.value.lineOrder.forEach((lineId, index) => {
       requireLineId(`${ruleSet.path}: lineOrder.${index}`, lineId);
     });
@@ -514,15 +546,9 @@ async function validateSchematicMapReferences(
       version,
     ] of schematicMap.manifest.value.versions.entries()) {
       const prefix = `${schematicMap.manifest.path}: versions.${index}`;
-      const expectedDataPath = schematicSystemMapVersionSnapshotPath(
-        version.effectiveDate,
-      );
       const expectedMapRelativePath = `version/${version.effectiveDate}.json`;
 
-      if (
-        version.path !== expectedDataPath &&
-        version.path !== expectedMapRelativePath
-      ) {
+      if (version.path !== expectedMapRelativePath) {
         errors.push(
           `${prefix}.path ${version.path} does not match ${expectedMapRelativePath}`,
         );
@@ -572,9 +598,19 @@ async function validateSchematicMapReferences(
       requireStationId(`${prefix}.stationId`, node.stationId);
       node.lineIds.forEach((lineId, lineIndex) => {
         requireLineId(`${prefix}.lineIds.${lineIndex}`, lineId);
+        requireStationLineId(
+          `${prefix}.lineIds.${lineIndex}`,
+          node.stationId,
+          lineId,
+        );
       });
       node.parts.forEach((part, partIndex) => {
         requireLineId(`${prefix}.parts.${partIndex}.lineId`, part.lineId);
+        requireStationLineId(
+          `${prefix}.parts.${partIndex}.lineId`,
+          node.stationId,
+          part.lineId,
+        );
       });
     });
 
@@ -589,6 +625,7 @@ async function validateSchematicMapReferences(
       const prefix = `${snapshot.path}: stationCodeLabels.${index}`;
       requireStationId(`${prefix}.stationId`, label.stationId);
       requireLineId(`${prefix}.lineId`, label.lineId);
+      requireStationLineId(`${prefix}.lineId`, label.stationId, label.lineId);
     });
   }
 

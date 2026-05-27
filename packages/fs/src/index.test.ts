@@ -436,7 +436,7 @@ describe('@mrtdown/fs', () => {
           schemaVersion: 1,
           mapId: 'system',
           layoutEngineId: 'lta-system-map-2011',
-          lineOrder: ['NOPE'],
+          lineOrder: ['ISL', 'NOPE'],
         },
         null,
         2,
@@ -447,7 +447,10 @@ describe('@mrtdown/fs', () => {
 
     expect(result.ok).toBe(false);
     expect(result.errors).toContain(
-      'schematic-map/system/generator/engine/extra.json: lineOrder.0 NOPE does not exist in line/',
+      'schematic-map/system/generator/engine/extra.json: layoutEngineId lta-system-map-2011 does not match schematic-map/system/generator/engine/lta-system-map-2011.json',
+    );
+    expect(result.errors).toContain(
+      'schematic-map/system/generator/engine/extra.json: lineOrder.1 NOPE does not exist in line/',
     );
   });
 
@@ -531,6 +534,114 @@ describe('@mrtdown/fs', () => {
     );
     expect(result.errors).toContain(
       'schematic-map/system/manifest.json: versions.0.effectiveDate 2025-05 does not have a generated snapshot',
+    );
+  });
+
+  it('rejects schematic map manifest paths that are not manifest-relative', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [],
+      segments: [],
+      stationNodes: [],
+      labels: [],
+      stationCodeLabels: [],
+    });
+    await writeSchematicMapManifest(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      versions: [
+        {
+          effectiveDate: '2025-04',
+          path: 'schematic-map/system/version/2025-04.json',
+          layoutEngineId: 'lta-system-map-2011',
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/manifest.json: versions.0.path schematic-map/system/version/2025-04.json does not match version/2025-04.json',
+    );
+  });
+
+  it('rejects schematic map station nodes on unrelated lines', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [],
+      segments: [],
+      stationNodes: [
+        {
+          id: 'node_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 100, y: 100 },
+          lineIds: ['TWL'],
+          parts: [
+            {
+              id: 'node_ket_twl',
+              lineId: 'TWL',
+              shape: {
+                type: 'circle',
+                center: { x: 100, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_ket',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+      ],
+      labels: [],
+      stationCodeLabels: [
+        {
+          id: 'code_ket_twl',
+          stationId: 'KET',
+          lineId: 'TWL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          anchor: { x: 100, y: 120 },
+          side: 'bottom',
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-label',
+          },
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/version/2025-04.json: stationNodes.0.lineIds.0 TWL is not a station code line for station KET',
+    );
+    expect(result.errors).toContain(
+      'schematic-map/system/version/2025-04.json: stationCodeLabels.0.lineId TWL is not a station code line for station KET',
     );
   });
 
