@@ -307,8 +307,19 @@ export const SchematicMapStationNodeSchema = z
   .superRefine((node, context) => {
     const lineIds = new Set(node.lineIds);
     const partLineIds = new Set(node.parts.map((part) => part.lineId));
+    const partIds = new Set<string>();
 
     node.parts.forEach((part, index) => {
+      if (partIds.has(part.id)) {
+        context.addIssue({
+          code: 'custom',
+          message: `Duplicate station node part id: ${part.id}`,
+          path: ['parts', index, 'id'],
+        });
+      }
+
+      partIds.add(part.id);
+
       if (!lineIds.has(part.lineId)) {
         context.addIssue({
           code: 'custom',
@@ -368,6 +379,28 @@ export const SchematicMapLabelSchema = z
 export type SchematicMapLabel = z.infer<typeof SchematicMapLabelSchema>;
 
 /**
+ * Station-code badge placement data. It stores code layout records only; code
+ * text still comes from canonical station data.
+ */
+export const SchematicMapStationCodeLabelSchema = z
+  .object({
+    id: z.string(),
+    stationId: z.string(),
+    lineId: z.string(),
+    displayStatus: SchematicMapDisplayStatusSchema,
+    displayReason: z.string().min(1).optional(),
+    layerId: z.string(),
+    anchor: SchematicMapPointSchema,
+    side: SchematicMapLabelSideSchema,
+    rotationDegrees: z.number().optional(),
+    coordinateMetadata: SchematicMapCoordinateMetadataSchema,
+  })
+  .superRefine(requireDisplayReasonForDisplayOnly);
+export type SchematicMapStationCodeLabel = z.infer<
+  typeof SchematicMapStationCodeLabelSchema
+>;
+
+/**
  * Complete published schematic map snapshot for one effective date.
  */
 export const SchematicMapVersionSnapshotSchema = z
@@ -383,6 +416,7 @@ export const SchematicMapVersionSnapshotSchema = z
     segments: z.array(SchematicMapSegmentSchema),
     stationNodes: z.array(SchematicMapStationNodeSchema),
     labels: z.array(SchematicMapLabelSchema),
+    stationCodeLabels: z.array(SchematicMapStationCodeLabelSchema),
   })
   .superRefine((snapshot, context) => {
     const addDuplicateIdIssues = (
@@ -391,7 +425,8 @@ export const SchematicMapVersionSnapshotSchema = z
         | 'lineGroups'
         | 'segments'
         | 'stationNodes'
-        | 'labels',
+        | 'labels'
+        | 'stationCodeLabels',
       entries: Array<{ id: string }>,
     ) => {
       const seenIds = new Set<string>();
@@ -415,8 +450,12 @@ export const SchematicMapVersionSnapshotSchema = z
     addDuplicateIdIssues('segments', snapshot.segments);
     addDuplicateIdIssues('stationNodes', snapshot.stationNodes);
     addDuplicateIdIssues('labels', snapshot.labels);
+    addDuplicateIdIssues('stationCodeLabels', snapshot.stationCodeLabels);
 
     const layerIds = new Set(snapshot.layers.map((layer) => layer.id));
+    const stationNodeIds = new Set(
+      snapshot.stationNodes.map((node) => node.stationId),
+    );
     const segmentsById = new Map<string, SchematicMapSegment>();
     const groupedSegmentIds = new Set<string>();
     const layerReferences: Array<{
@@ -437,6 +476,14 @@ export const SchematicMapVersionSnapshotSchema = z
       });
 
       lineGroup.segmentIds.forEach((segmentId, segmentIndex) => {
+        if (groupedSegmentIds.has(segmentId)) {
+          context.addIssue({
+            code: 'custom',
+            message: `Segment ${segmentId} is listed in multiple line group positions`,
+            path: ['lineGroups', index, 'segmentIds', segmentIndex],
+          });
+        }
+
         groupedSegmentIds.add(segmentId);
         const segment = segmentsById.get(segmentId);
 
@@ -494,6 +541,29 @@ export const SchematicMapVersionSnapshotSchema = z
         layerId: label.layerId,
         path: ['labels', index, 'layerId'],
       });
+
+      if (!stationNodeIds.has(label.stationId)) {
+        context.addIssue({
+          code: 'custom',
+          message: `Label ${label.id} references station ${label.stationId} without a station node`,
+          path: ['labels', index, 'stationId'],
+        });
+      }
+    });
+
+    snapshot.stationCodeLabels.forEach((label, index) => {
+      layerReferences.push({
+        layerId: label.layerId,
+        path: ['stationCodeLabels', index, 'layerId'],
+      });
+
+      if (!stationNodeIds.has(label.stationId)) {
+        context.addIssue({
+          code: 'custom',
+          message: `Station code label ${label.id} references station ${label.stationId} without a station node`,
+          path: ['stationCodeLabels', index, 'stationId'],
+        });
+      }
     });
 
     for (const reference of layerReferences) {

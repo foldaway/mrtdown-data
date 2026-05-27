@@ -54,8 +54,9 @@ function minimalSnapshot() {
         },
       },
     ],
-    stationNodes: [],
-    labels: [],
+    stationNodes: [] as Array<Record<string, unknown>>,
+    labels: [] as Array<Record<string, unknown>>,
+    stationCodeLabels: [] as Array<Record<string, unknown>>,
   };
 }
 
@@ -198,6 +199,21 @@ describe('SchematicMapVersionSnapshotSchema', () => {
           coordinateMetadata: {
             coordinateClass: 'generated',
             ruleId: 'default-interchange-label',
+          },
+        },
+      ],
+      stationCodeLabels: [
+        {
+          id: 'NS 17',
+          stationId: 'BSH',
+          lineId: 'NSL',
+          displayStatus: 'operational',
+          layerId: 'labels',
+          anchor: { x: 1235, y: 610 },
+          side: 'left',
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'default-station-code-label',
           },
         },
       ],
@@ -484,6 +500,63 @@ describe('SchematicMapVersionSnapshotSchema', () => {
     const duplicateLineGroup = minimalSnapshot();
     duplicateLineGroup.lineGroups.push({ ...duplicateLineGroup.lineGroups[0] });
 
+    const duplicateStationCodeLabel = minimalSnapshot();
+    duplicateStationCodeLabel.stationNodes.push({
+      id: 'node_bsh',
+      stationId: 'BSH',
+      displayStatus: 'operational',
+      layerId: 'lines',
+      center: { x: 100, y: 100 },
+      lineIds: ['NSL'],
+      parts: [
+        {
+          id: 'node_bsh_nsl',
+          lineId: 'NSL',
+          shape: {
+            type: 'circle',
+            center: { x: 100, y: 100 },
+            radius: 11,
+          },
+          coordinateMetadata: {
+            coordinateClass: 'artifact',
+            generatedFrom: 'node_bsh',
+          },
+        },
+      ],
+      coordinateMetadata: {
+        coordinateClass: 'constraint',
+        constraintId: 'anchor_bsh',
+      },
+    });
+    duplicateStationCodeLabel.stationCodeLabels.push(
+      {
+        id: 'NS 17',
+        stationId: 'BSH',
+        lineId: 'NSL',
+        displayStatus: 'operational',
+        layerId: 'lines',
+        anchor: { x: 100, y: 100 },
+        side: 'left',
+        coordinateMetadata: {
+          coordinateClass: 'generated',
+          ruleId: 'station-code-label',
+        },
+      },
+      {
+        id: 'NS 17',
+        stationId: 'BSH',
+        lineId: 'NSL',
+        displayStatus: 'operational',
+        layerId: 'lines',
+        anchor: { x: 120, y: 100 },
+        side: 'right',
+        coordinateMetadata: {
+          coordinateClass: 'generated',
+          ruleId: 'station-code-label',
+        },
+      },
+    );
+
     expect(() =>
       SchematicMapVersionSnapshotSchema.parse(duplicateLayer),
     ).toThrow(/Duplicate layers id/);
@@ -493,6 +566,9 @@ describe('SchematicMapVersionSnapshotSchema', () => {
     expect(() =>
       SchematicMapVersionSnapshotSchema.parse(duplicateLineGroup),
     ).toThrow(/Duplicate lineGroups id/);
+    expect(() =>
+      SchematicMapVersionSnapshotSchema.parse(duplicateStationCodeLabel),
+    ).toThrow(/Duplicate stationCodeLabels id/);
   });
 
   it('rejects line groups that reference segments from another line', () => {
@@ -528,6 +604,112 @@ describe('SchematicMapVersionSnapshotSchema', () => {
     expect(() => SchematicMapVersionSnapshotSchema.parse(snapshot)).toThrow(
       /is not included in a line group/,
     );
+  });
+
+  it('rejects segment ids repeated in line group membership', () => {
+    const repeatedWithinGroup = minimalSnapshot();
+    repeatedWithinGroup.lineGroups[0].segmentIds = [
+      'line_amk:bsh',
+      'line_amk:bsh',
+    ];
+
+    const repeatedAcrossGroups = minimalSnapshot();
+    repeatedAcrossGroups.lineGroups.push({
+      ...repeatedAcrossGroups.lineGroups[0],
+      id: 'line_NSL_copy',
+    });
+
+    expect(() =>
+      SchematicMapVersionSnapshotSchema.parse(repeatedWithinGroup),
+    ).toThrow(/listed in multiple line group positions/);
+    expect(() =>
+      SchematicMapVersionSnapshotSchema.parse(repeatedAcrossGroups),
+    ).toThrow(/listed in multiple line group positions/);
+  });
+
+  it('rejects duplicate station node part ids', () => {
+    const node = {
+      id: 'node_bsh',
+      stationId: 'BSH',
+      displayStatus: 'operational',
+      layerId: 'nodes',
+      center: { x: 100, y: 100 },
+      lineIds: ['NSL'],
+      parts: [
+        {
+          id: 'node_bsh_nsl',
+          lineId: 'NSL',
+          shape: {
+            type: 'circle',
+            center: { x: 100, y: 100 },
+            radius: 11,
+          },
+          coordinateMetadata: {
+            coordinateClass: 'artifact',
+            generatedFrom: 'node_bsh',
+          },
+        },
+        {
+          id: 'node_bsh_nsl',
+          lineId: 'NSL',
+          shape: {
+            type: 'circle',
+            center: { x: 110, y: 100 },
+            radius: 11,
+          },
+          coordinateMetadata: {
+            coordinateClass: 'artifact',
+            generatedFrom: 'node_bsh',
+          },
+        },
+      ],
+      coordinateMetadata: {
+        coordinateClass: 'constraint',
+        constraintId: 'anchor_bsh',
+      },
+    };
+
+    expect(() => SchematicMapStationNodeSchema.parse(node)).toThrow(
+      /Duplicate station node part id/,
+    );
+  });
+
+  it('rejects labels and station-code labels without station nodes', () => {
+    const orphanLabel = minimalSnapshot();
+    orphanLabel.labels.push({
+      id: 'label_bshh',
+      stationId: 'BSHH',
+      displayStatus: 'operational',
+      layerId: 'lines',
+      anchor: { x: 100, y: 100 },
+      side: 'right',
+      coordinateMetadata: {
+        coordinateClass: 'generated',
+        ruleId: 'default-label',
+      },
+    });
+
+    const orphanStationCode = minimalSnapshot();
+    orphanStationCode.stationCodeLabels.push({
+      id: 'NS 17',
+      stationId: 'BSH',
+      lineId: 'NSL',
+      displayStatus: 'operational',
+      layerId: 'lines',
+      anchor: { x: 100, y: 100 },
+      side: 'left',
+      coordinateMetadata: {
+        coordinateClass: 'generated',
+        ruleId: 'station-code-label',
+      },
+    });
+
+    expect(() => SchematicMapVersionSnapshotSchema.parse(orphanLabel)).toThrow(
+      /without a station node/,
+    );
+    expect(() =>
+      SchematicMapVersionSnapshotSchema.parse(orphanStationCode),
+    ).toThrow(/without a station node/);
   });
 });
 
