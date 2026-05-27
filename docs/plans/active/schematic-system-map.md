@@ -398,6 +398,9 @@ Exit criteria:
 - 2026-05-27: Added `packages/fs` schematic map path helpers, typed
   read/write functions, and repository/writer facades for generator rule sets,
   per-version constraints, manifests, and generated snapshot artifacts.
+- 2026-05-27: Began Phase 4 CLI and validation integration with
+  `schematic-map` validation scope plus CLI inspection for schematic
+  constraints, generated versions, manifests, and rule sets.
 
 ## Decision Log
 

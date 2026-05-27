@@ -1,4 +1,11 @@
-import type { IssueBundle } from '@mrtdown/core';
+import type {
+  IssueBundle,
+  SchematicMapConstraintSet,
+  SchematicMapCoordinateMetadata,
+  SchematicMapManifest,
+  SchematicMapRuleSet,
+  SchematicMapVersionSnapshot,
+} from '@mrtdown/core';
 import type { z } from 'zod';
 import {
   type EntityCollection,
@@ -6,11 +13,22 @@ import {
   evidenceFileName,
   impactFileName,
   issueDirectory,
+  schematicMapDirectory,
 } from './constants.js';
 import { type EntityRecord, listEntities } from './entities.js';
 import { listIssueBundles } from './issues.js';
+import {
+  listSchematicMapConstraintSets,
+  listSchematicMapRuleSets,
+  listSchematicMapVersionSnapshots,
+  readSchematicMapManifest,
+  type SchematicMapRecord,
+  schematicSystemMapConstraintSetPath,
+  schematicSystemMapRuleSetPath,
+  schematicSystemMapVersionSnapshotPath,
+} from './schematicMaps.js';
 
-export type ValidationScope = EntityCollection | 'issue';
+export type ValidationScope = EntityCollection | 'issue' | 'schematic-map';
 
 export type ValidationResult = {
   ok: boolean;
@@ -20,7 +38,9 @@ export type ValidationResult = {
 
 function emptyChecked(): Record<ValidationScope, number> {
   return Object.fromEntries(
-    [...entityCollections, issueDirectory].map((scope) => [scope, 0]),
+    [...entityCollections, issueDirectory, schematicMapDirectory].map(
+      (scope) => [scope, 0],
+    ),
   ) as Record<ValidationScope, number>;
 }
 
@@ -48,7 +68,15 @@ type ValidationRecords = Partial<{
   station: EntityRecord<'station'>[];
   town: EntityRecord<'town'>[];
   issue: IssueBundle[];
+  schematicMap: SchematicMapValidationRecords;
 }>;
+
+type SchematicMapValidationRecords = {
+  manifest: SchematicMapRecord<SchematicMapManifest> | null;
+  ruleSets: SchematicMapRecord<SchematicMapRuleSet>[];
+  constraintSets: SchematicMapRecord<SchematicMapConstraintSet>[];
+  versionSnapshots: SchematicMapRecord<SchematicMapVersionSnapshot>[];
+};
 
 const generatedEvidenceIdPattern = /^ev_[0-9A-HJKMNP-TV-Z]{26}$/;
 
@@ -84,6 +112,38 @@ async function loadIssueRecords(
     records.issue = await listIssueBundles(dataDir);
   }
   return records.issue;
+}
+
+async function readOptionalSchematicMapRecord<T>(
+  read: () => Promise<SchematicMapRecord<T>>,
+): Promise<SchematicMapRecord<T> | null> {
+  try {
+    return await read();
+  } catch (error) {
+    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
+      return null;
+    }
+    throw error;
+  }
+}
+
+async function loadSchematicMapRecords(
+  dataDir: string,
+  records: ValidationRecords,
+): Promise<SchematicMapValidationRecords> {
+  if (records.schematicMap) {
+    return records.schematicMap;
+  }
+
+  records.schematicMap = {
+    manifest: await readOptionalSchematicMapRecord(() =>
+      readSchematicMapManifest(dataDir),
+    ),
+    ruleSets: await listSchematicMapRuleSets(dataDir),
+    constraintSets: await listSchematicMapConstraintSets(dataDir),
+    versionSnapshots: await listSchematicMapVersionSnapshots(dataDir),
+  };
+  return records.schematicMap;
 }
 
 async function validateStationReferences(
@@ -255,6 +315,42 @@ function stationCodeContainsRevision(
   return stationCodeStart <= revisionStart && revisionEnd <= stationCodeEnd;
 }
 
+function stationPairKey(fromStationId: string, toStationId: string): string {
+  return [fromStationId, toStationId].sort().join(':');
+}
+
+function effectiveMonthIntervalForValidation(effectiveDate: string): {
+  start: number;
+  end: number;
+} {
+  const [year, month] = effectiveDate.split('-').map(Number);
+  if (!year || !month) {
+    throw new Error(`Invalid effective date for validation: ${effectiveDate}`);
+  }
+
+  return {
+    start: Date.UTC(year, month - 1, 1),
+    end: Date.UTC(year, month, 1),
+  };
+}
+
+function intervalContainsEffectiveDate(
+  startedAt: string,
+  endedAt: string | null,
+  effectiveDate: string,
+): boolean {
+  const effectiveMonth = effectiveMonthIntervalForValidation(effectiveDate);
+  const startedAtTimestamp = timestampForValidation(startedAt);
+  const endedAtTimestamp = endedAt
+    ? timestampForValidation(endedAt)
+    : Number.POSITIVE_INFINITY;
+
+  return (
+    startedAtTimestamp < effectiveMonth.end &&
+    effectiveMonth.start < endedAtTimestamp
+  );
+}
+
 async function validateIssueReferences(
   dataDir: string,
   shouldValidate: boolean,
@@ -363,9 +459,467 @@ async function validateIssueReferences(
   return errors;
 }
 
+async function validateSchematicMapReferences(
+  dataDir: string,
+  shouldValidate: boolean,
+  records: ValidationRecords,
+): Promise<string[]> {
+  if (!shouldValidate) {
+    return [];
+  }
+
+  const lineIds = await loadEntityIds(dataDir, records, 'line');
+  const stationRecords = await loadEntityRecords(dataDir, records, 'station');
+  const stationById = new Map(
+    stationRecords.map((station) => [station.value.id, station]),
+  );
+  const stationIds = new Set(stationById.keys());
+  const serviceRecords = await loadEntityRecords(dataDir, records, 'service');
+  const serviceEdgesByLineAndEffectiveDate = new Map<string, Set<string>>();
+  const schematicMap = await loadSchematicMapRecords(dataDir, records);
+  const constraintIdsByEffectiveDate = new Map<string, Set<string>>();
+  const errors: string[] = [];
+
+  const serviceEdgesForLineAtEffectiveDate = (
+    lineId: string,
+    effectiveDate: string,
+  ): Set<string> => {
+    const cacheKey = `${lineId}:${effectiveDate}`;
+    const cached = serviceEdgesByLineAndEffectiveDate.get(cacheKey);
+    if (cached) {
+      return cached;
+    }
+
+    const serviceEdges = new Set<string>();
+
+    for (const service of serviceRecords) {
+      if (service.value.lineId !== lineId) {
+        continue;
+      }
+
+      for (const revision of service.value.revisions) {
+        if (
+          !intervalContainsEffectiveDate(
+            revision.startAt,
+            revision.endAt,
+            effectiveDate,
+          )
+        ) {
+          continue;
+        }
+
+        const stations = revision.path.stations.map(
+          (station) => station.stationId,
+        );
+        for (let index = 0; index < stations.length - 1; index += 1) {
+          serviceEdges.add(
+            stationPairKey(stations[index], stations[index + 1]),
+          );
+        }
+      }
+    }
+
+    serviceEdgesByLineAndEffectiveDate.set(cacheKey, serviceEdges);
+    return serviceEdges;
+  };
+
+  const requireLineId = (path: string, lineId: string) => {
+    if (!lineIds.has(lineId)) {
+      errors.push(`${path} ${lineId} does not exist in line/`);
+    }
+  };
+
+  const requireStationId = (path: string, stationId: string) => {
+    if (!stationIds.has(stationId)) {
+      errors.push(`${path} ${stationId} does not exist in station/`);
+    }
+  };
+
+  const requireStationLineId = (
+    path: string,
+    stationId: string,
+    lineId: string,
+    effectiveDate: string,
+    options: { requireActive: boolean } = { requireActive: true },
+  ) => {
+    const station = stationById.get(stationId);
+    if (!station) {
+      return;
+    }
+
+    const matchingCodes = station.value.stationCodes.filter(
+      (code) => code.lineId === lineId,
+    );
+
+    if (matchingCodes.length === 0) {
+      errors.push(
+        `${path} ${lineId} is not a station code line for station ${stationId}`,
+      );
+      return;
+    }
+
+    if (
+      options.requireActive &&
+      !matchingCodes.some((code) =>
+        intervalContainsEffectiveDate(
+          code.startedAt,
+          code.endedAt,
+          effectiveDate,
+        ),
+      )
+    ) {
+      errors.push(
+        `${path} ${lineId} is not an active station code line for station ${stationId} at ${effectiveDate}`,
+      );
+    }
+  };
+
+  const requireKnownConstraintCoordinateMetadata = (
+    path: string,
+    coordinateMetadata: SchematicMapCoordinateMetadata | undefined,
+    effectiveDate: string,
+  ) => {
+    if (coordinateMetadata?.coordinateClass !== 'constraint') {
+      return;
+    }
+
+    const constraintIds = constraintIdsByEffectiveDate.get(effectiveDate);
+    if (!constraintIds?.has(coordinateMetadata.constraintId)) {
+      errors.push(
+        `${path}.constraintId ${coordinateMetadata.constraintId} does not exist in schematic map constraints for ${effectiveDate}`,
+      );
+    }
+  };
+
+  const availableLayoutEngineIds = new Set<string>();
+  const referencedLayoutEngineIds: Array<{ id: string; path: string }> = [];
+
+  for (const ruleSet of schematicMap.ruleSets) {
+    const expectedPath = schematicSystemMapRuleSetPath(
+      ruleSet.value.layoutEngineId,
+    );
+
+    if (ruleSet.path === expectedPath) {
+      availableLayoutEngineIds.add(ruleSet.value.layoutEngineId);
+    } else {
+      errors.push(
+        `${ruleSet.path}: layoutEngineId ${ruleSet.value.layoutEngineId} does not match ${expectedPath}`,
+      );
+    }
+
+    ruleSet.value.lineOrder.forEach((lineId, index) => {
+      requireLineId(`${ruleSet.path}: lineOrder.${index}`, lineId);
+    });
+  }
+
+  for (const constraintSet of schematicMap.constraintSets) {
+    referencedLayoutEngineIds.push({
+      id: constraintSet.value.layoutEngineId,
+      path: `${constraintSet.path}: layoutEngineId`,
+    });
+
+    const expectedPath = schematicSystemMapConstraintSetPath(
+      constraintSet.value.effectiveDate,
+    );
+
+    if (constraintSet.path !== expectedPath) {
+      errors.push(
+        `${constraintSet.path}: effectiveDate ${constraintSet.value.effectiveDate} does not match ${expectedPath}`,
+      );
+    }
+
+    constraintIdsByEffectiveDate.set(
+      constraintSet.value.effectiveDate,
+      new Set(
+        constraintSet.value.constraints.map((constraint) => constraint.id),
+      ),
+    );
+
+    for (const [
+      index,
+      constraint,
+    ] of constraintSet.value.constraints.entries()) {
+      const prefix = `${constraintSet.path}: constraints.${index}`;
+
+      if (constraint.type === 'station_anchor') {
+        requireStationId(`${prefix}.stationId`, constraint.stationId);
+      } else if (constraint.type === 'segment_route_hint') {
+        requireLineId(`${prefix}.lineId`, constraint.lineId);
+        requireStationId(`${prefix}.fromStationId`, constraint.fromStationId);
+        requireStationLineId(
+          `${prefix}.fromStationId`,
+          constraint.fromStationId,
+          constraint.lineId,
+          constraintSet.value.effectiveDate,
+          { requireActive: false },
+        );
+        requireStationId(`${prefix}.toStationId`, constraint.toStationId);
+        requireStationLineId(
+          `${prefix}.toStationId`,
+          constraint.toStationId,
+          constraint.lineId,
+          constraintSet.value.effectiveDate,
+          { requireActive: false },
+        );
+      } else if (constraint.type === 'line_order') {
+        constraint.lineIds.forEach((lineId, lineIndex) => {
+          requireLineId(`${prefix}.lineIds.${lineIndex}`, lineId);
+        });
+      } else if (constraint.type === 'label_hint') {
+        requireStationId(`${prefix}.stationId`, constraint.stationId);
+      } else if (constraint.type === 'interchange_hint') {
+        requireStationId(`${prefix}.stationId`, constraint.stationId);
+        constraint.lineIds.forEach((lineId, lineIndex) => {
+          requireLineId(`${prefix}.lineIds.${lineIndex}`, lineId);
+          requireStationLineId(
+            `${prefix}.lineIds.${lineIndex}`,
+            constraint.stationId,
+            lineId,
+            constraintSet.value.effectiveDate,
+            { requireActive: false },
+          );
+        });
+      }
+    }
+  }
+
+  const validSnapshotEffectiveDates = new Set<string>();
+  const snapshotLayoutEngineIds = new Map<string, string>();
+
+  for (const snapshot of schematicMap.versionSnapshots) {
+    referencedLayoutEngineIds.push({
+      id: snapshot.value.layoutEngineId,
+      path: `${snapshot.path}: layoutEngineId`,
+    });
+
+    const expectedPath = schematicSystemMapVersionSnapshotPath(
+      snapshot.value.effectiveDate,
+    );
+
+    if (snapshot.path !== expectedPath) {
+      errors.push(
+        `${snapshot.path}: effectiveDate ${snapshot.value.effectiveDate} does not match ${expectedPath}`,
+      );
+      continue;
+    }
+
+    validSnapshotEffectiveDates.add(snapshot.value.effectiveDate);
+    snapshotLayoutEngineIds.set(
+      snapshot.value.effectiveDate,
+      snapshot.value.layoutEngineId,
+    );
+  }
+
+  const manifestEffectiveDates = new Set<string>();
+
+  if (schematicMap.manifest) {
+    for (const [
+      index,
+      version,
+    ] of schematicMap.manifest.value.versions.entries()) {
+      const prefix = `${schematicMap.manifest.path}: versions.${index}`;
+      const expectedMapRelativePath = `version/${version.effectiveDate}.json`;
+      manifestEffectiveDates.add(version.effectiveDate);
+      referencedLayoutEngineIds.push({
+        id: version.layoutEngineId,
+        path: `${prefix}.layoutEngineId`,
+      });
+
+      if (version.path !== expectedMapRelativePath) {
+        errors.push(
+          `${prefix}.path ${version.path} does not match ${expectedMapRelativePath}`,
+        );
+      }
+
+      if (!validSnapshotEffectiveDates.has(version.effectiveDate)) {
+        errors.push(
+          `${prefix}.effectiveDate ${version.effectiveDate} does not have a generated snapshot`,
+        );
+      }
+
+      const snapshotLayoutEngineId = snapshotLayoutEngineIds.get(
+        version.effectiveDate,
+      );
+      if (
+        snapshotLayoutEngineId &&
+        snapshotLayoutEngineId !== version.layoutEngineId
+      ) {
+        errors.push(
+          `${prefix}.layoutEngineId ${version.layoutEngineId} does not match version/${version.effectiveDate}.json (${snapshotLayoutEngineId})`,
+        );
+      }
+    }
+  }
+
+  for (const snapshot of schematicMap.versionSnapshots) {
+    if (!manifestEffectiveDates.has(snapshot.value.effectiveDate)) {
+      errors.push(
+        `${snapshot.path}: effectiveDate ${snapshot.value.effectiveDate} is not listed in schematic map manifest`,
+      );
+    }
+  }
+
+  for (const reference of referencedLayoutEngineIds) {
+    if (!availableLayoutEngineIds.has(reference.id)) {
+      errors.push(
+        `${reference.path} ${reference.id} does not have a schematic map rule set`,
+      );
+    }
+  }
+
+  for (const snapshot of schematicMap.versionSnapshots) {
+    requireKnownConstraintCoordinateMetadata(
+      `${snapshot.path}: frame.coordinateMetadata`,
+      snapshot.value.frame.coordinateMetadata,
+      snapshot.value.effectiveDate,
+    );
+
+    snapshot.value.lineGroups.forEach((lineGroup, index) => {
+      requireLineId(
+        `${snapshot.path}: lineGroups.${index}.lineId`,
+        lineGroup.lineId,
+      );
+    });
+
+    snapshot.value.segments.forEach((segment, index) => {
+      const prefix = `${snapshot.path}: segments.${index}`;
+      requireLineId(`${prefix}.lineId`, segment.lineId);
+      requireKnownConstraintCoordinateMetadata(
+        `${prefix}.geometry.coordinateMetadata`,
+        segment.geometry.coordinateMetadata,
+        snapshot.value.effectiveDate,
+      );
+
+      if (segment.topology.type === 'station_pair') {
+        requireStationId(
+          `${prefix}.topology.fromStationId`,
+          segment.topology.fromStationId,
+        );
+        requireStationLineId(
+          `${prefix}.topology.fromStationId`,
+          segment.topology.fromStationId,
+          segment.lineId,
+          snapshot.value.effectiveDate,
+          { requireActive: segment.displayStatus === 'operational' },
+        );
+        requireStationId(
+          `${prefix}.topology.toStationId`,
+          segment.topology.toStationId,
+        );
+        requireStationLineId(
+          `${prefix}.topology.toStationId`,
+          segment.topology.toStationId,
+          segment.lineId,
+          snapshot.value.effectiveDate,
+          { requireActive: segment.displayStatus === 'operational' },
+        );
+
+        const serviceEdges = serviceEdgesForLineAtEffectiveDate(
+          segment.lineId,
+          snapshot.value.effectiveDate,
+        );
+        const segmentPairKey = stationPairKey(
+          segment.topology.fromStationId,
+          segment.topology.toStationId,
+        );
+
+        if (
+          segment.displayStatus === 'operational' &&
+          !serviceEdges?.has(segmentPairKey)
+        ) {
+          errors.push(
+            `${prefix}.topology ${segment.topology.fromStationId}:${segment.topology.toStationId} is not an adjacent service edge for line ${segment.lineId}`,
+          );
+        }
+      } else if (segment.topology.stationIds) {
+        segment.topology.stationIds.forEach((stationId, stationIndex) => {
+          requireStationId(
+            `${prefix}.topology.stationIds.${stationIndex}`,
+            stationId,
+          );
+        });
+      }
+    });
+
+    snapshot.value.stationNodes.forEach((node, index) => {
+      const prefix = `${snapshot.path}: stationNodes.${index}`;
+      requireStationId(`${prefix}.stationId`, node.stationId);
+      node.lineIds.forEach((lineId, lineIndex) => {
+        requireLineId(`${prefix}.lineIds.${lineIndex}`, lineId);
+        requireStationLineId(
+          `${prefix}.lineIds.${lineIndex}`,
+          node.stationId,
+          lineId,
+          snapshot.value.effectiveDate,
+          { requireActive: node.displayStatus === 'operational' },
+        );
+      });
+      node.parts.forEach((part, partIndex) => {
+        requireLineId(`${prefix}.parts.${partIndex}.lineId`, part.lineId);
+        requireStationLineId(
+          `${prefix}.parts.${partIndex}.lineId`,
+          node.stationId,
+          part.lineId,
+          snapshot.value.effectiveDate,
+          { requireActive: node.displayStatus === 'operational' },
+        );
+        requireKnownConstraintCoordinateMetadata(
+          `${prefix}.parts.${partIndex}.coordinateMetadata`,
+          part.coordinateMetadata,
+          snapshot.value.effectiveDate,
+        );
+      });
+      requireKnownConstraintCoordinateMetadata(
+        `${prefix}.coordinateMetadata`,
+        node.coordinateMetadata,
+        snapshot.value.effectiveDate,
+      );
+    });
+
+    snapshot.value.labels.forEach((label, index) => {
+      const prefix = `${snapshot.path}: labels.${index}`;
+      requireStationId(`${prefix}.stationId`, label.stationId);
+      requireKnownConstraintCoordinateMetadata(
+        `${prefix}.leaderLine.coordinateMetadata`,
+        label.leaderLine?.coordinateMetadata,
+        snapshot.value.effectiveDate,
+      );
+      requireKnownConstraintCoordinateMetadata(
+        `${prefix}.coordinateMetadata`,
+        label.coordinateMetadata,
+        snapshot.value.effectiveDate,
+      );
+    });
+
+    snapshot.value.stationCodeLabels.forEach((label, index) => {
+      const prefix = `${snapshot.path}: stationCodeLabels.${index}`;
+      requireStationId(`${prefix}.stationId`, label.stationId);
+      requireLineId(`${prefix}.lineId`, label.lineId);
+      requireStationLineId(
+        `${prefix}.lineId`,
+        label.stationId,
+        label.lineId,
+        snapshot.value.effectiveDate,
+        { requireActive: label.displayStatus === 'operational' },
+      );
+      requireKnownConstraintCoordinateMetadata(
+        `${prefix}.coordinateMetadata`,
+        label.coordinateMetadata,
+        snapshot.value.effectiveDate,
+      );
+    });
+  }
+
+  return errors;
+}
+
 export async function validateDataRoot(
   dataDir: string,
-  scopes: readonly ValidationScope[] = [...entityCollections, issueDirectory],
+  scopes: readonly ValidationScope[] = [
+    ...entityCollections,
+    issueDirectory,
+    schematicMapDirectory,
+  ],
 ): Promise<ValidationResult> {
   const checked = emptyChecked();
   const errors: string[] = [];
@@ -376,6 +930,16 @@ export async function validateDataRoot(
       if (scope === 'issue') {
         const bundles = await loadIssueRecords(dataDir, records);
         checked.issue = bundles.length;
+        continue;
+      }
+
+      if (scope === 'schematic-map') {
+        const schematicMap = await loadSchematicMapRecords(dataDir, records);
+        checked['schematic-map'] =
+          (schematicMap.manifest ? 1 : 0) +
+          schematicMap.ruleSets.length +
+          schematicMap.constraintSets.length +
+          schematicMap.versionSnapshots.length;
         continue;
       }
 
@@ -412,6 +976,13 @@ export async function validateDataRoot(
       ...(await validateIssueReferences(
         dataDir,
         shouldValidateScope(scopes, 'issue'),
+        records,
+      )),
+    );
+    errors.push(
+      ...(await validateSchematicMapReferences(
+        dataDir,
+        shouldValidateScope(scopes, 'schematic-map'),
         records,
       )),
     );

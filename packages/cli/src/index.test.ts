@@ -1,8 +1,14 @@
 import { readFileSync } from 'node:fs';
-import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import { cp, mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  writeSchematicMapConstraintSet,
+  writeSchematicMapManifest,
+  writeSchematicMapRuleSet,
+  writeSchematicMapVersionSnapshot,
+} from '@mrtdown/fs';
 import { describe, expect, it } from 'vitest';
 import { runCli } from './index.js';
 
@@ -39,6 +45,158 @@ function createIo() {
     stdout,
     stderr,
   };
+}
+
+async function seedSchematicMap(dataDir: string): Promise<void> {
+  await writeSchematicMapRuleSet(dataDir, {
+    schemaVersion: 1,
+    mapId: 'system',
+    layoutEngineId: 'lta-system-map-2011',
+    lineOrder: ['ISL'],
+  });
+  await writeSchematicMapConstraintSet(dataDir, {
+    schemaVersion: 1,
+    mapId: 'system',
+    effectiveDate: '2025-04',
+    layoutEngineId: 'lta-system-map-2011',
+    constraints: [
+      {
+        id: 'frame_2025_04',
+        type: 'map_frame',
+        frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      },
+      {
+        id: 'anchor_ket',
+        type: 'station_anchor',
+        stationId: 'KET',
+        point: { x: 100, y: 100 },
+      },
+    ],
+  });
+  await writeSchematicMapVersionSnapshot(dataDir, {
+    schemaVersion: 1,
+    mapId: 'system',
+    effectiveDate: '2025-04',
+    layoutEngineId: 'lta-system-map-2011',
+    generatedAt: '2026-05-27T00:00:00.000Z',
+    frame: { x: 0, y: 0, width: 3140, height: 2400 },
+    layers: [{ id: 'lines', role: 'line' }],
+    lineGroups: [
+      {
+        id: 'line_ISL',
+        lineId: 'ISL',
+        displayStatus: 'operational',
+        layerId: 'lines',
+        segmentIds: ['line_ket:hku'],
+      },
+    ],
+    segments: [
+      {
+        id: 'line_ket:hku',
+        lineId: 'ISL',
+        displayStatus: 'operational',
+        layerId: 'lines',
+        topology: {
+          type: 'station_pair',
+          fromStationId: 'KET',
+          toStationId: 'HKU',
+        },
+        geometry: {
+          type: 'polyline',
+          points: [
+            { x: 100, y: 100 },
+            { x: 200, y: 100 },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+      },
+    ],
+    stationNodes: [
+      {
+        id: 'node_ket',
+        stationId: 'KET',
+        displayStatus: 'operational',
+        layerId: 'lines',
+        center: { x: 100, y: 100 },
+        lineIds: ['ISL'],
+        parts: [
+          {
+            id: 'node_ket_isl',
+            lineId: 'ISL',
+            shape: {
+              type: 'circle',
+              center: { x: 100, y: 100 },
+              radius: 8,
+            },
+            coordinateMetadata: {
+              coordinateClass: 'artifact',
+              generatedFrom: 'node_ket',
+            },
+          },
+        ],
+        coordinateMetadata: {
+          coordinateClass: 'constraint',
+          constraintId: 'anchor_ket',
+        },
+      },
+      {
+        id: 'node_hku',
+        stationId: 'HKU',
+        displayStatus: 'operational',
+        layerId: 'lines',
+        center: { x: 200, y: 100 },
+        lineIds: ['ISL'],
+        parts: [
+          {
+            id: 'node_hku_isl',
+            lineId: 'ISL',
+            shape: {
+              type: 'circle',
+              center: { x: 200, y: 100 },
+              radius: 8,
+            },
+            coordinateMetadata: {
+              coordinateClass: 'artifact',
+              generatedFrom: 'node_hku',
+            },
+          },
+        ],
+        coordinateMetadata: {
+          coordinateClass: 'generated',
+          ruleId: 'fixture-line',
+        },
+      },
+    ],
+    labels: [
+      {
+        id: 'label_ket',
+        stationId: 'KET',
+        displayStatus: 'operational',
+        layerId: 'lines',
+        anchor: { x: 100, y: 84 },
+        side: 'top',
+        coordinateMetadata: {
+          coordinateClass: 'generated',
+          ruleId: 'fixture-label',
+        },
+      },
+    ],
+    stationCodeLabels: [],
+  });
+  await writeSchematicMapManifest(dataDir, {
+    schemaVersion: 1,
+    mapId: 'system',
+    versions: [
+      {
+        effectiveDate: '2025-04',
+        path: 'version/2025-04.json',
+        layoutEngineId: 'lta-system-map-2011',
+      },
+    ],
+  });
 }
 
 describe('@mrtdown/cli', () => {
@@ -154,5 +312,47 @@ describe('@mrtdown/cli', () => {
     await expect(
       readFile(resolve(cwd, `data/station/${stationFilename}`), 'utf8'),
     ).resolves.toContain(fixtureMeta.stations.primary.name);
+  });
+
+  it('validates and inspects schematic map files', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await seedSchematicMap(dataDir);
+
+    const validate = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'validate', '--scope', 'schematic-map'],
+        validate.io,
+      ),
+    ).resolves.toBe(0);
+    expect(JSON.parse(validate.stdout[0] as string)['schematic-map']).toBe(4);
+
+    const list = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'schematic-map', 'list', 'version'],
+        list.io,
+      ),
+    ).resolves.toBe(0);
+    expect(list.stdout).toEqual(['2025-04']);
+
+    const show = createIo();
+    await expect(
+      runCli(
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'show',
+          'constraint',
+          '2025-04',
+        ],
+        show.io,
+      ),
+    ).resolves.toBe(0);
+    expect(JSON.parse(show.stdout[0] as string).value.constraints).toHaveLength(
+      2,
+    );
   });
 });

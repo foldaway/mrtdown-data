@@ -42,6 +42,7 @@ import {
   visibleDirEntries,
   writeSchematicMapConstraintSet,
   writeSchematicMapManifest,
+  writeSchematicMapRuleSet,
   writeSchematicMapVersionSnapshot,
   writeUnknownEntity,
 } from './index.js';
@@ -393,6 +394,1519 @@ describe('@mrtdown/fs', () => {
       path: schematicSystemMapVersionSnapshotPath('2025-04'),
       value: { effectiveDate: '2025-04' },
     });
+  });
+
+  it('rejects schematic map references that are missing from canonical data', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'missing_station_anchor',
+          type: 'station_anchor',
+          stationId: 'NOPE',
+          point: { x: 100, y: 100 },
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/generator/constraint/2025-04.json: constraints.0.stationId NOPE does not exist in station/',
+    );
+  });
+
+  it('validates every schematic map rule set file', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const ruleSetPath = join(
+      dataDir,
+      'schematic-map/system/generator/engine/extra.json',
+    );
+    await mkdir(dirname(ruleSetPath), { recursive: true });
+    await writeFile(
+      ruleSetPath,
+      `${JSON.stringify(
+        {
+          schemaVersion: 1,
+          mapId: 'system',
+          layoutEngineId: 'lta-system-map-2011',
+          lineOrder: ['ISL', 'NOPE'],
+        },
+        null,
+        2,
+      )}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/generator/engine/extra.json: layoutEngineId lta-system-map-2011 does not match schematic-map/system/generator/engine/lta-system-map-2011.json',
+    );
+    expect(result.errors).toContain(
+      'schematic-map/system/generator/engine/extra.json: lineOrder.1 NOPE does not exist in line/',
+    );
+  });
+
+  it('rejects schematic map constraint files with mismatched effective dates', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const constraintPath = join(
+      dataDir,
+      schematicSystemMapConstraintSetPath('2025-04'),
+    );
+    await mkdir(dirname(constraintPath), { recursive: true });
+    await writeFile(
+      constraintPath,
+      `${JSON.stringify(
+        {
+          schemaVersion: 1,
+          mapId: 'system',
+          effectiveDate: '2025-05',
+          layoutEngineId: 'lta-system-map-2011',
+          constraints: [],
+        },
+        null,
+        2,
+      )}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/generator/constraint/2025-04.json: effectiveDate 2025-05 does not match schematic-map/system/generator/constraint/2025-05.json',
+    );
+  });
+
+  it('rejects schematic map snapshots that satisfy a manifest from the wrong file path', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const snapshotPath = join(
+      dataDir,
+      schematicSystemMapVersionSnapshotPath('2025-04'),
+    );
+    await mkdir(dirname(snapshotPath), { recursive: true });
+    await writeFile(
+      snapshotPath,
+      `${JSON.stringify(
+        {
+          schemaVersion: 1,
+          mapId: 'system',
+          effectiveDate: '2025-05',
+          layoutEngineId: 'lta-system-map-2011',
+          generatedAt: '2026-05-27T00:00:00.000Z',
+          frame: { x: 0, y: 0, width: 3140, height: 2400 },
+          layers: [{ id: 'lines', role: 'line' }],
+          lineGroups: [],
+          segments: [],
+          stationNodes: [],
+          labels: [],
+          stationCodeLabels: [],
+        },
+        null,
+        2,
+      )}\n`,
+    );
+    await writeSchematicMapManifest(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      versions: [
+        {
+          effectiveDate: '2025-05',
+          path: 'version/2025-05.json',
+          layoutEngineId: 'lta-system-map-2011',
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/version/2025-04.json: effectiveDate 2025-05 does not match schematic-map/system/version/2025-05.json',
+    );
+    expect(result.errors).toContain(
+      'schematic-map/system/manifest.json: versions.0.effectiveDate 2025-05 does not have a generated snapshot',
+    );
+  });
+
+  it('rejects schematic map manifest paths that are not manifest-relative', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [],
+      segments: [],
+      stationNodes: [
+        {
+          id: 'node_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 100, y: 100 },
+          lineIds: ['TWL'],
+          parts: [
+            {
+              id: 'node_ket_twl',
+              lineId: 'TWL',
+              shape: {
+                type: 'circle',
+                center: { x: 100, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_ket',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+        {
+          id: 'node_hku',
+          stationId: 'HKU',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 200, y: 100 },
+          lineIds: ['TWL'],
+          parts: [
+            {
+              id: 'node_hku_twl',
+              lineId: 'TWL',
+              shape: {
+                type: 'circle',
+                center: { x: 200, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_hku',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+      ],
+      labels: [],
+      stationCodeLabels: [],
+    });
+    await writeSchematicMapManifest(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      versions: [
+        {
+          effectiveDate: '2025-04',
+          path: 'schematic-map/system/version/2025-04.json',
+          layoutEngineId: 'lta-system-map-2011',
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/manifest.json: versions.0.path schematic-map/system/version/2025-04.json does not match version/2025-04.json',
+    );
+  });
+
+  it('rejects schematic map station nodes on unrelated lines', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [],
+      segments: [],
+      stationNodes: [
+        {
+          id: 'node_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 100, y: 100 },
+          lineIds: ['TWL'],
+          parts: [
+            {
+              id: 'node_ket_twl',
+              lineId: 'TWL',
+              shape: {
+                type: 'circle',
+                center: { x: 100, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_ket',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+      ],
+      labels: [],
+      stationCodeLabels: [
+        {
+          id: 'code_ket_twl',
+          stationId: 'KET',
+          lineId: 'TWL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          anchor: { x: 100, y: 120 },
+          side: 'bottom',
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-label',
+          },
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/version/2025-04.json: stationNodes.0.lineIds.0 TWL is not a station code line for station KET',
+    );
+    expect(result.errors).toContain(
+      'schematic-map/system/version/2025-04.json: stationCodeLabels.0.lineId TWL is not a station code line for station KET',
+    );
+  });
+
+  it('rejects schematic map interchange hints on unrelated station lines', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'interchange_ket_twl',
+          type: 'interchange_hint',
+          stationId: 'KET',
+          lineIds: ['ISL', 'TWL'],
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/generator/constraint/2025-04.json: constraints.0.lineIds.1 TWL is not a station code line for station KET',
+    );
+  });
+
+  it('rejects schematic map route hints on unrelated station lines', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['TWL'],
+    });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'route_hint_ket_hku',
+          type: 'segment_route_hint',
+          lineId: 'TWL',
+          fromStationId: 'KET',
+          toStationId: 'HKU',
+          via: [{ x: 100, y: 100 }],
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/generator/constraint/2025-04.json: constraints.0.fromStationId TWL is not a station code line for station KET',
+    );
+  });
+
+  it('rejects schematic map station-pair segments on unrelated lines', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [
+        {
+          id: 'line_TWL',
+          lineId: 'TWL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          segmentIds: ['line_ket:hku'],
+        },
+      ],
+      segments: [
+        {
+          id: 'line_ket:hku',
+          lineId: 'TWL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          topology: {
+            type: 'station_pair',
+            fromStationId: 'KET',
+            toStationId: 'HKU',
+          },
+          geometry: {
+            type: 'polyline',
+            points: [
+              { x: 100, y: 100 },
+              { x: 200, y: 100 },
+            ],
+            coordinateMetadata: {
+              coordinateClass: 'generated',
+              ruleId: 'fixture-line',
+            },
+          },
+        },
+      ],
+      stationNodes: [
+        {
+          id: 'node_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 100, y: 100 },
+          lineIds: ['TWL'],
+          parts: [
+            {
+              id: 'node_ket_twl',
+              lineId: 'TWL',
+              shape: {
+                type: 'circle',
+                center: { x: 100, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_ket',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+        {
+          id: 'node_hku',
+          stationId: 'HKU',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 200, y: 100 },
+          lineIds: ['TWL'],
+          parts: [
+            {
+              id: 'node_hku_twl',
+              lineId: 'TWL',
+              shape: {
+                type: 'circle',
+                center: { x: 200, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_hku',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+      ],
+      labels: [],
+      stationCodeLabels: [],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/version/2025-04.json: segments.0.topology.fromStationId TWL is not a station code line for station KET',
+    );
+  });
+
+  it('rejects schematic map station-pair segments without adjacent service edges', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [
+        {
+          id: 'line_ISL',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          segmentIds: ['line_ket:adm'],
+        },
+      ],
+      segments: [
+        {
+          id: 'line_ket:adm',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          topology: {
+            type: 'station_pair',
+            fromStationId: 'KET',
+            toStationId: 'ADM',
+          },
+          geometry: {
+            type: 'polyline',
+            points: [
+              { x: 100, y: 100 },
+              { x: 200, y: 100 },
+            ],
+            coordinateMetadata: {
+              coordinateClass: 'generated',
+              ruleId: 'fixture-line',
+            },
+          },
+        },
+      ],
+      stationNodes: [
+        {
+          id: 'node_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 100, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_ket_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 100, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_ket',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+        {
+          id: 'node_adm',
+          stationId: 'ADM',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 200, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_adm_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 200, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_adm',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+      ],
+      labels: [],
+      stationCodeLabels: [],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/version/2025-04.json: segments.0.topology KET:ADM is not an adjacent service edge for line ISL',
+    );
+  });
+
+  it('rejects schematic map references without matching layout engine rules', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/generator/constraint/2025-04.json: layoutEngineId lta-system-map-2011 does not have a schematic map rule set',
+    );
+  });
+
+  it('rejects schematic map station lines outside station code active windows', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const stationPath = join(dataDir, 'station/KET.json');
+    const station = JSON.parse(await readFile(stationPath, 'utf8')) as {
+      stationCodes: unknown[];
+    };
+    station.stationCodes.push({
+      lineId: 'TWL',
+      code: 'TWL99',
+      startedAt: '2025-05-01T00:00:00Z',
+      endedAt: null,
+      structureType: 'underground',
+    });
+    await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['TWL'],
+    });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [],
+      segments: [],
+      stationNodes: [
+        {
+          id: 'node_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 100, y: 100 },
+          lineIds: ['TWL'],
+          parts: [
+            {
+              id: 'node_ket_twl',
+              lineId: 'TWL',
+              shape: {
+                type: 'circle',
+                center: { x: 100, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_ket',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+      ],
+      labels: [],
+      stationCodeLabels: [],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/version/2025-04.json: stationNodes.0.lineIds.0 TWL is not an active station code line for station KET at 2025-04',
+    );
+  });
+
+  it('allows schematic map active checks within the effective month', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+
+    for (const stationId of ['KET', 'HKU']) {
+      const stationPath = join(dataDir, `station/${stationId}.json`);
+      const station = JSON.parse(await readFile(stationPath, 'utf8')) as {
+        stationCodes: Array<{ lineId: string; startedAt: string }>;
+      };
+      const islandLineCode = station.stationCodes.find(
+        (code) => code.lineId === 'ISL',
+      );
+      if (!islandLineCode) {
+        throw new Error(`Missing fixture ISL code for ${stationId}`);
+      }
+      islandLineCode.startedAt = '2025-04-30T00:00:00Z';
+      await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+    }
+
+    const servicePath = join(dataDir, 'service/ISL_MAIN_E.json');
+    const service = JSON.parse(await readFile(servicePath, 'utf8')) as {
+      revisions: Array<{ startAt: string }>;
+    };
+    service.revisions[0].startAt = '2025-04-30';
+    await writeFile(servicePath, `${JSON.stringify(service, null, 2)}\n`);
+
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL'],
+    });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [
+        {
+          id: 'line_ISL',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          segmentIds: ['line_ket:hku'],
+        },
+      ],
+      segments: [
+        {
+          id: 'line_ket:hku',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          topology: {
+            type: 'station_pair',
+            fromStationId: 'KET',
+            toStationId: 'HKU',
+          },
+          geometry: {
+            type: 'polyline',
+            points: [
+              { x: 100, y: 100 },
+              { x: 200, y: 100 },
+            ],
+            coordinateMetadata: {
+              coordinateClass: 'generated',
+              ruleId: 'fixture-line',
+            },
+          },
+        },
+      ],
+      stationNodes: [
+        {
+          id: 'node_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 100, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_ket_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 100, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'generated',
+                ruleId: 'fixture-node',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-node',
+          },
+        },
+        {
+          id: 'node_hku',
+          stationId: 'HKU',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 200, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_hku_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 200, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'generated',
+                ruleId: 'fixture-node',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-node',
+          },
+        },
+      ],
+      labels: [],
+      stationCodeLabels: [],
+    });
+    await writeSchematicMapManifest(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      versions: [
+        {
+          effectiveDate: '2025-04',
+          path: 'version/2025-04.json',
+          layoutEngineId: 'lta-system-map-2011',
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(true);
+  });
+
+  it('rejects schematic map station-pair edges from future service revisions', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const servicePath = join(dataDir, 'service/ISL_MAIN_E.json');
+    const service = JSON.parse(await readFile(servicePath, 'utf8')) as {
+      revisions: Array<{
+        id: string;
+        startAt: string;
+        endAt: string | null;
+        path: { stations: Array<{ stationId: string; displayCode: string }> };
+        operatingHours: unknown;
+      }>;
+    };
+    service.revisions.push({
+      ...service.revisions[0],
+      id: 'r_future_direct',
+      startAt: '2025-05-01',
+      endAt: null,
+      path: {
+        stations: [
+          { stationId: 'KET', displayCode: 'ISL1' },
+          { stationId: 'ADM', displayCode: 'ISL6' },
+        ],
+      },
+    });
+    await writeFile(servicePath, `${JSON.stringify(service, null, 2)}\n`);
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL'],
+    });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [
+        {
+          id: 'line_ISL',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          segmentIds: ['line_ket:adm'],
+        },
+      ],
+      segments: [
+        {
+          id: 'line_ket:adm',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          topology: {
+            type: 'station_pair',
+            fromStationId: 'KET',
+            toStationId: 'ADM',
+          },
+          geometry: {
+            type: 'polyline',
+            points: [
+              { x: 100, y: 100 },
+              { x: 200, y: 100 },
+            ],
+            coordinateMetadata: {
+              coordinateClass: 'generated',
+              ruleId: 'fixture-line',
+            },
+          },
+        },
+      ],
+      stationNodes: [
+        {
+          id: 'node_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 100, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_ket_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 100, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_ket',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+        {
+          id: 'node_adm',
+          stationId: 'ADM',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 200, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_adm_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 200, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_adm',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+      ],
+      labels: [],
+      stationCodeLabels: [],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/version/2025-04.json: segments.0.topology KET:ADM is not an adjacent service edge for line ISL',
+    );
+  });
+
+  it('allows non-operational schematic station coverage before station codes start', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const stationPath = join(dataDir, 'station/KET.json');
+    const station = JSON.parse(await readFile(stationPath, 'utf8')) as {
+      stationCodes: unknown[];
+    };
+    station.stationCodes.push({
+      lineId: 'TWL',
+      code: 'TWL99',
+      startedAt: '2025-05-01T00:00:00Z',
+      endedAt: null,
+      structureType: 'underground',
+    });
+    await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['TWL'],
+    });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [],
+      segments: [],
+      stationNodes: [
+        {
+          id: 'node_ket',
+          stationId: 'KET',
+          displayStatus: 'planned',
+          layerId: 'lines',
+          center: { x: 100, y: 100 },
+          lineIds: ['TWL'],
+          parts: [
+            {
+              id: 'node_ket_twl',
+              lineId: 'TWL',
+              shape: {
+                type: 'circle',
+                center: { x: 100, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_ket',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+      ],
+      labels: [],
+      stationCodeLabels: [
+        {
+          id: 'code_ket_twl',
+          stationId: 'KET',
+          lineId: 'TWL',
+          displayStatus: 'planned',
+          layerId: 'lines',
+          anchor: { x: 100, y: 120 },
+          side: 'bottom',
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-label',
+          },
+        },
+      ],
+    });
+    await writeSchematicMapManifest(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      versions: [
+        {
+          effectiveDate: '2025-04',
+          path: 'version/2025-04.json',
+          layoutEngineId: 'lta-system-map-2011',
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(true);
+  });
+
+  it('allows future-display route constraints before station codes start', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+
+    for (const stationId of ['KET', 'ADM']) {
+      const stationPath = join(dataDir, `station/${stationId}.json`);
+      const station = JSON.parse(await readFile(stationPath, 'utf8')) as {
+        stationCodes: unknown[];
+      };
+      station.stationCodes.push({
+        lineId: 'TWL',
+        code: `${stationId}99`,
+        startedAt: '2025-05-01T00:00:00Z',
+        endedAt: null,
+        structureType: 'underground',
+      });
+      await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+    }
+
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['TWL'],
+    });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'future_twl_route',
+          type: 'segment_route_hint',
+          lineId: 'TWL',
+          fromStationId: 'KET',
+          toStationId: 'ADM',
+          via: [{ x: 100, y: 100 }],
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(true);
+  });
+
+  it('allows future-display interchange constraints before station codes start', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+
+    const stationPath = join(dataDir, 'station/KET.json');
+    const station = JSON.parse(await readFile(stationPath, 'utf8')) as {
+      stationCodes: unknown[];
+    };
+    station.stationCodes.push({
+      lineId: 'TWL',
+      code: 'TWL99',
+      startedAt: '2025-05-01T00:00:00Z',
+      endedAt: null,
+      structureType: 'underground',
+    });
+    await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL', 'TWL'],
+    });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'future_interchange',
+          type: 'interchange_hint',
+          stationId: 'KET',
+          lineIds: ['ISL', 'TWL'],
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(true);
+  });
+
+  it('allows non-operational station-pair segments before service edges open', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL'],
+    });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [
+        {
+          id: 'line_ISL',
+          lineId: 'ISL',
+          displayStatus: 'planned',
+          layerId: 'lines',
+          segmentIds: ['line_ket:adm'],
+        },
+      ],
+      segments: [
+        {
+          id: 'line_ket:adm',
+          lineId: 'ISL',
+          displayStatus: 'planned',
+          layerId: 'lines',
+          topology: {
+            type: 'station_pair',
+            fromStationId: 'KET',
+            toStationId: 'ADM',
+          },
+          geometry: {
+            type: 'polyline',
+            points: [
+              { x: 100, y: 100 },
+              { x: 200, y: 100 },
+            ],
+            coordinateMetadata: {
+              coordinateClass: 'generated',
+              ruleId: 'fixture-line',
+            },
+          },
+        },
+      ],
+      stationNodes: [
+        {
+          id: 'node_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 100, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_ket_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 100, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_ket',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+        {
+          id: 'node_adm',
+          stationId: 'ADM',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 200, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_adm_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 200, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_adm',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-line',
+          },
+        },
+      ],
+      labels: [],
+      stationCodeLabels: [],
+    });
+    await writeSchematicMapManifest(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      versions: [
+        {
+          effectiveDate: '2025-04',
+          path: 'version/2025-04.json',
+          layoutEngineId: 'lta-system-map-2011',
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(true);
+  });
+
+  it('rejects schematic map snapshots omitted from the manifest', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL'],
+    });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [],
+      segments: [],
+      stationNodes: [],
+      labels: [],
+      stationCodeLabels: [],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/version/2025-04.json: effectiveDate 2025-04 is not listed in schematic map manifest',
+    );
+  });
+
+  it('rejects schematic map snapshot constraint metadata without matching constraints', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL'],
+    });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'known_anchor',
+          type: 'station_anchor',
+          stationId: 'KET',
+          point: { x: 100, y: 100 },
+        },
+      ],
+    });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: {
+        x: 0,
+        y: 0,
+        width: 3140,
+        height: 2400,
+        coordinateMetadata: {
+          coordinateClass: 'constraint',
+          constraintId: 'missing_frame',
+        },
+      },
+      layers: [
+        { id: 'lines', role: 'line' },
+        { id: 'labels', role: 'label' },
+      ],
+      lineGroups: [
+        {
+          id: 'line_ISL',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          segmentIds: ['line_ket:hku'],
+        },
+      ],
+      segments: [
+        {
+          id: 'line_ket:hku',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          topology: {
+            type: 'station_pair',
+            fromStationId: 'KET',
+            toStationId: 'HKU',
+          },
+          geometry: {
+            type: 'polyline',
+            points: [
+              { x: 100, y: 100 },
+              { x: 200, y: 100 },
+            ],
+            coordinateMetadata: {
+              coordinateClass: 'constraint',
+              constraintId: 'missing_segment',
+            },
+          },
+        },
+      ],
+      stationNodes: [
+        {
+          id: 'node_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 100, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_ket_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 100, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'constraint',
+                constraintId: 'missing_part',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'constraint',
+            constraintId: 'missing_node',
+          },
+        },
+        {
+          id: 'node_hku',
+          stationId: 'HKU',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 200, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_hku_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 200, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'generated',
+                ruleId: 'fixture-node',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-node',
+          },
+        },
+      ],
+      labels: [
+        {
+          id: 'label_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'labels',
+          anchor: { x: 100, y: 80 },
+          side: 'top',
+          leaderLine: {
+            type: 'polyline',
+            points: [
+              { x: 100, y: 90 },
+              { x: 100, y: 100 },
+            ],
+            coordinateMetadata: {
+              coordinateClass: 'constraint',
+              constraintId: 'missing_leader',
+            },
+          },
+          coordinateMetadata: {
+            coordinateClass: 'constraint',
+            constraintId: 'missing_label',
+          },
+        },
+      ],
+      stationCodeLabels: [
+        {
+          id: 'code_ket_isl',
+          stationId: 'KET',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'labels',
+          anchor: { x: 100, y: 120 },
+          side: 'bottom',
+          coordinateMetadata: {
+            coordinateClass: 'constraint',
+            constraintId: 'missing_code',
+          },
+        },
+      ],
+    });
+    await writeSchematicMapManifest(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      versions: [
+        {
+          effectiveDate: '2025-04',
+          path: 'version/2025-04.json',
+          layoutEngineId: 'lta-system-map-2011',
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        'schematic-map/system/version/2025-04.json: frame.coordinateMetadata.constraintId missing_frame does not exist in schematic map constraints for 2025-04',
+        'schematic-map/system/version/2025-04.json: segments.0.geometry.coordinateMetadata.constraintId missing_segment does not exist in schematic map constraints for 2025-04',
+        'schematic-map/system/version/2025-04.json: stationNodes.0.parts.0.coordinateMetadata.constraintId missing_part does not exist in schematic map constraints for 2025-04',
+        'schematic-map/system/version/2025-04.json: stationNodes.0.coordinateMetadata.constraintId missing_node does not exist in schematic map constraints for 2025-04',
+        'schematic-map/system/version/2025-04.json: labels.0.leaderLine.coordinateMetadata.constraintId missing_leader does not exist in schematic map constraints for 2025-04',
+        'schematic-map/system/version/2025-04.json: labels.0.coordinateMetadata.constraintId missing_label does not exist in schematic map constraints for 2025-04',
+        'schematic-map/system/version/2025-04.json: stationCodeLabels.0.coordinateMetadata.constraintId missing_code does not exist in schematic map constraints for 2025-04',
+      ]),
+    );
   });
 
   it('includes issue impact events in manifest hashes', async () => {
