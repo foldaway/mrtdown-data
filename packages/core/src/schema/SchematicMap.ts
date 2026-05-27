@@ -418,6 +418,7 @@ export const SchematicMapVersionSnapshotSchema = z
 
     const layerIds = new Set(snapshot.layers.map((layer) => layer.id));
     const segmentsById = new Map<string, SchematicMapSegment>();
+    const groupedSegmentIds = new Set<string>();
     const layerReferences: Array<{
       layerId: string;
       path: Array<string | number>;
@@ -436,6 +437,7 @@ export const SchematicMapVersionSnapshotSchema = z
       });
 
       lineGroup.segmentIds.forEach((segmentId, segmentIndex) => {
+        groupedSegmentIds.add(segmentId);
         const segment = segmentsById.get(segmentId);
 
         if (!segment) {
@@ -470,6 +472,14 @@ export const SchematicMapVersionSnapshotSchema = z
         layerId: segment.layerId,
         path: ['segments', index, 'layerId'],
       });
+
+      if (!groupedSegmentIds.has(segment.id)) {
+        context.addIssue({
+          code: 'custom',
+          message: `Segment ${segment.id} is not included in a line group`,
+          path: ['segments', index, 'id'],
+        });
+      }
     });
 
     snapshot.stationNodes.forEach((node, index) => {
@@ -593,13 +603,30 @@ export type SchematicMapConstraint = z.infer<
 /**
  * Version-scoped constraints used by the generator for one effective date.
  */
-export const SchematicMapConstraintSetSchema = z.object({
-  schemaVersion: SchematicMapSchemaVersionSchema,
-  mapId: z.literal('system'),
-  effectiveDate: SchematicMapEffectiveDateSchema,
-  layoutEngineId: SchematicMapLayoutEngineIdSchema,
-  constraints: z.array(SchematicMapConstraintSchema),
-});
+export const SchematicMapConstraintSetSchema = z
+  .object({
+    schemaVersion: SchematicMapSchemaVersionSchema,
+    mapId: z.literal('system'),
+    effectiveDate: SchematicMapEffectiveDateSchema,
+    layoutEngineId: SchematicMapLayoutEngineIdSchema,
+    constraints: z.array(SchematicMapConstraintSchema),
+  })
+  .superRefine((constraintSet, context) => {
+    const constraintIds = new Set<string>();
+
+    constraintSet.constraints.forEach((constraint, index) => {
+      if (constraintIds.has(constraint.id)) {
+        context.addIssue({
+          code: 'custom',
+          message: `Duplicate schematic map constraint id: ${constraint.id}`,
+          path: ['constraints', index, 'id'],
+        });
+        return;
+      }
+
+      constraintIds.add(constraint.id);
+    });
+  });
 export type SchematicMapConstraintSet = z.infer<
   typeof SchematicMapConstraintSetSchema
 >;

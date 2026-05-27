@@ -512,6 +512,23 @@ describe('SchematicMapVersionSnapshotSchema', () => {
       /has displayStatus planned, not operational/,
     );
   });
+
+  it('rejects segments that are omitted from line groups', () => {
+    const snapshot = minimalSnapshot();
+    snapshot.segments.push({
+      ...snapshot.segments[0],
+      id: 'line_bsh:nov',
+      topology: {
+        type: 'station_pair',
+        fromStationId: 'BSH',
+        toStationId: 'NOV',
+      },
+    });
+
+    expect(() => SchematicMapVersionSnapshotSchema.parse(snapshot)).toThrow(
+      /is not included in a line group/,
+    );
+  });
 });
 
 describe('SchematicMapEffectiveDateSchema', () => {
@@ -593,5 +610,30 @@ describe('schematic map generator input schemas', () => {
         expect.objectContaining({ type: 'station_anchor' }),
       ]),
     });
+  });
+
+  it('rejects duplicate constraint ids', () => {
+    expect(() =>
+      SchematicMapConstraintSetSchema.parse({
+        schemaVersion: 1,
+        mapId: 'system',
+        effectiveDate: '2025-04',
+        layoutEngineId: 'lta-system-map-2011',
+        constraints: [
+          {
+            id: 'anchor_bsh',
+            type: 'station_anchor',
+            stationId: 'BSH',
+            point: { x: 1250, y: 630 },
+          },
+          {
+            id: 'anchor_bsh',
+            type: 'label_hint',
+            stationId: 'BSH',
+            side: 'top_right',
+          },
+        ],
+      }),
+    ).toThrow(/Duplicate schematic map constraint id/);
   });
 });
