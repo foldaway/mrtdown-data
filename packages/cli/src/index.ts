@@ -256,30 +256,12 @@ function countConstraintTypes(
   );
 }
 
-const linePreviewColors: Record<string, string> = {
-  BPLRT: '#748477',
-  CCL: '#fa9e0d',
-  CRL: '#97c616',
-  DTL: '#005ec4',
-  EWL: '#009645',
-  JRL: '#0099aa',
-  NEL: '#9900aa',
-  NSL: '#d42e12',
-  PGLRT: '#748477',
-  SKLRT: '#748477',
-  TEL: '#9d5b25',
-};
-
 function xmlEscape(value: string): string {
   return value
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;');
-}
-
-function previewColorForLine(lineId: string): string {
-  return linePreviewColors[lineId] ?? '#555555';
 }
 
 function pointAttrs(point: { x: number; y: number }): string {
@@ -311,21 +293,26 @@ async function renderSchematicMapPreviewSvg(
   snapshot: SchematicMapVersionSnapshot,
 ): Promise<string> {
   const stationNames = new Map<string, string>();
-  await Promise.all(
-    snapshot.stationNodes.map(async (node) => {
+  const lineColors = new Map<string, string>();
+  await Promise.all([
+    ...snapshot.stationNodes.map(async (node) => {
       const station = await readEntity(dataDir, 'station', node.stationId);
       stationNames.set(
         node.stationId,
         station.value.name['en-SG'] ?? node.stationId,
       );
     }),
-  );
+    ...snapshot.lineGroups.map(async (lineGroup) => {
+      const line = await readEntity(dataDir, 'line', lineGroup.lineId);
+      lineColors.set(lineGroup.lineId, line.value.color);
+    }),
+  ]);
 
   const layerContent = snapshot.layers.map((layer) => {
     const segments = snapshot.segments
       .filter((segment) => segment.layerId === layer.id)
       .map((segment) => {
-        const color = previewColorForLine(segment.lineId);
+        const color = lineColors.get(segment.lineId) ?? '#555555';
         if (segment.geometry.type === 'polyline') {
           return `<polyline id="${xmlEscape(segment.id)}" points="${renderGeometry(
             segment.geometry,
@@ -346,7 +333,7 @@ async function renderSchematicMapPreviewSvg(
       .filter((node) => node.layerId === layer.id)
       .flatMap((node) =>
         node.parts.map((part) => {
-          const color = previewColorForLine(part.lineId);
+          const color = lineColors.get(part.lineId) ?? '#555555';
           const title = xmlEscape(
             `${stationNames.get(node.stationId) ?? node.stationId} (${part.lineId})`,
           );
