@@ -113,6 +113,15 @@ function isExcludedDataSourcePath(sourceDataDir, source) {
   return firstSegment === 'source';
 }
 
+function isGeneratedSchematicMapArtifactPath(sourceDataDir, source) {
+  const relativeSource = relative(sourceDataDir, source);
+  const pathSegments = relativeSource.split(/[\\/]/);
+  return (
+    pathSegments.join('/') === 'schematic-map/system/manifest.json' ||
+    pathSegments.slice(0, 3).join('/') === 'schematic-map/system/version'
+  );
+}
+
 async function buildDataExport(
   sourceDataDir,
   exportDir,
@@ -121,18 +130,20 @@ async function buildDataExport(
 ) {
   assertOutputPath(sourceDataDir, exportDir);
 
-  const validation = await fsPackage.validateDataRoot(sourceDataDir);
-  if (!validation.ok) {
-    throw new Error(validation.errors.join('\n'));
-  }
-
   await mkdir(exportDir, { recursive: true });
   await cp(sourceDataDir, exportDir, {
     recursive: true,
     filter: (source) =>
       !generatedIndexPattern.test(source) &&
-      !isExcludedDataSourcePath(sourceDataDir, source),
+      !isExcludedDataSourcePath(sourceDataDir, source) &&
+      !isGeneratedSchematicMapArtifactPath(sourceDataDir, source),
   });
+
+  await fsPackage.generateSchematicMapPublishedArtifacts(exportDir);
+  const validation = await fsPackage.validateDataRoot(exportDir);
+  if (!validation.ok) {
+    throw new Error(validation.errors.join('\n'));
+  }
 
   const manifest = await fsPackage.buildManifest(exportDir);
   await writeFile(

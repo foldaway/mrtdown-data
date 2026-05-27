@@ -413,6 +413,10 @@ Exit criteria:
   generated snapshots can be inspected locally before `mrtdown-site` has a
   full data-driven renderer. This is review tooling, not the canonical public
   renderer.
+- 2026-05-27: Added archive publication foundation by generating schematic map
+  manifests and version snapshots inside `pages:build` from tracked generator
+  constraints, without treating generated version files as source-controlled
+  canonical data.
 
 ## Decision Log
 
