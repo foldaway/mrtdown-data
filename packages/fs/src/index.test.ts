@@ -421,6 +421,119 @@ describe('@mrtdown/fs', () => {
     );
   });
 
+  it('validates every schematic map rule set file', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const ruleSetPath = join(
+      dataDir,
+      'schematic-map/system/generator/engine/extra.json',
+    );
+    await mkdir(dirname(ruleSetPath), { recursive: true });
+    await writeFile(
+      ruleSetPath,
+      `${JSON.stringify(
+        {
+          schemaVersion: 1,
+          mapId: 'system',
+          layoutEngineId: 'lta-system-map-2011',
+          lineOrder: ['NOPE'],
+        },
+        null,
+        2,
+      )}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/generator/engine/extra.json: lineOrder.0 NOPE does not exist in line/',
+    );
+  });
+
+  it('rejects schematic map constraint files with mismatched effective dates', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const constraintPath = join(
+      dataDir,
+      schematicSystemMapConstraintSetPath('2025-04'),
+    );
+    await mkdir(dirname(constraintPath), { recursive: true });
+    await writeFile(
+      constraintPath,
+      `${JSON.stringify(
+        {
+          schemaVersion: 1,
+          mapId: 'system',
+          effectiveDate: '2025-05',
+          layoutEngineId: 'lta-system-map-2011',
+          constraints: [],
+        },
+        null,
+        2,
+      )}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/generator/constraint/2025-04.json: effectiveDate 2025-05 does not match schematic-map/system/generator/constraint/2025-05.json',
+    );
+  });
+
+  it('rejects schematic map snapshots that satisfy a manifest from the wrong file path', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const snapshotPath = join(
+      dataDir,
+      schematicSystemMapVersionSnapshotPath('2025-04'),
+    );
+    await mkdir(dirname(snapshotPath), { recursive: true });
+    await writeFile(
+      snapshotPath,
+      `${JSON.stringify(
+        {
+          schemaVersion: 1,
+          mapId: 'system',
+          effectiveDate: '2025-05',
+          layoutEngineId: 'lta-system-map-2011',
+          generatedAt: '2026-05-27T00:00:00.000Z',
+          frame: { x: 0, y: 0, width: 3140, height: 2400 },
+          layers: [{ id: 'lines', role: 'line' }],
+          lineGroups: [],
+          segments: [],
+          stationNodes: [],
+          labels: [],
+          stationCodeLabels: [],
+        },
+        null,
+        2,
+      )}\n`,
+    );
+    await writeSchematicMapManifest(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      versions: [
+        {
+          effectiveDate: '2025-05',
+          path: 'version/2025-05.json',
+          layoutEngineId: 'lta-system-map-2011',
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/version/2025-04.json: effectiveDate 2025-05 does not match schematic-map/system/version/2025-05.json',
+    );
+    expect(result.errors).toContain(
+      'schematic-map/system/manifest.json: versions.0.effectiveDate 2025-05 does not have a generated snapshot',
+    );
+  });
+
   it('includes issue impact events in manifest hashes', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await cp(fixtureDataDir, dataDir, { recursive: true });

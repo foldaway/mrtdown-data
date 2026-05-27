@@ -18,10 +18,11 @@ import { type EntityRecord, listEntities } from './entities.js';
 import { listIssueBundles } from './issues.js';
 import {
   listSchematicMapConstraintSets,
+  listSchematicMapRuleSets,
   listSchematicMapVersionSnapshots,
   readSchematicMapManifest,
-  readSchematicMapRuleSet,
   type SchematicMapRecord,
+  schematicSystemMapConstraintSetPath,
   schematicSystemMapVersionSnapshotPath,
 } from './schematicMaps.js';
 
@@ -70,7 +71,7 @@ type ValidationRecords = Partial<{
 
 type SchematicMapValidationRecords = {
   manifest: SchematicMapRecord<SchematicMapManifest> | null;
-  ruleSet: SchematicMapRecord<SchematicMapRuleSet> | null;
+  ruleSets: SchematicMapRecord<SchematicMapRuleSet>[];
   constraintSets: SchematicMapRecord<SchematicMapConstraintSet>[];
   versionSnapshots: SchematicMapRecord<SchematicMapVersionSnapshot>[];
 };
@@ -136,9 +137,7 @@ async function loadSchematicMapRecords(
     manifest: await readOptionalSchematicMapRecord(() =>
       readSchematicMapManifest(dataDir),
     ),
-    ruleSet: await readOptionalSchematicMapRecord(() =>
-      readSchematicMapRuleSet(dataDir),
-    ),
+    ruleSets: await listSchematicMapRuleSets(dataDir),
     constraintSets: await listSchematicMapConstraintSets(dataDir),
     versionSnapshots: await listSchematicMapVersionSnapshots(dataDir),
   };
@@ -448,16 +447,23 @@ async function validateSchematicMapReferences(
     }
   };
 
-  if (schematicMap.ruleSet) {
-    schematicMap.ruleSet.value.lineOrder.forEach((lineId, index) => {
-      requireLineId(
-        `${schematicMap.ruleSet?.path}: lineOrder.${index}`,
-        lineId,
-      );
+  for (const ruleSet of schematicMap.ruleSets) {
+    ruleSet.value.lineOrder.forEach((lineId, index) => {
+      requireLineId(`${ruleSet.path}: lineOrder.${index}`, lineId);
     });
   }
 
   for (const constraintSet of schematicMap.constraintSets) {
+    const expectedPath = schematicSystemMapConstraintSetPath(
+      constraintSet.value.effectiveDate,
+    );
+
+    if (constraintSet.path !== expectedPath) {
+      errors.push(
+        `${constraintSet.path}: effectiveDate ${constraintSet.value.effectiveDate} does not match ${expectedPath}`,
+      );
+    }
+
     for (const [
       index,
       constraint,
@@ -485,11 +491,22 @@ async function validateSchematicMapReferences(
     }
   }
 
-  const snapshotEffectiveDates = new Set(
-    schematicMap.versionSnapshots.map(
-      (snapshot) => snapshot.value.effectiveDate,
-    ),
-  );
+  const validSnapshotEffectiveDates = new Set<string>();
+
+  for (const snapshot of schematicMap.versionSnapshots) {
+    const expectedPath = schematicSystemMapVersionSnapshotPath(
+      snapshot.value.effectiveDate,
+    );
+
+    if (snapshot.path !== expectedPath) {
+      errors.push(
+        `${snapshot.path}: effectiveDate ${snapshot.value.effectiveDate} does not match ${expectedPath}`,
+      );
+      continue;
+    }
+
+    validSnapshotEffectiveDates.add(snapshot.value.effectiveDate);
+  }
 
   if (schematicMap.manifest) {
     for (const [
@@ -511,7 +528,7 @@ async function validateSchematicMapReferences(
         );
       }
 
-      if (!snapshotEffectiveDates.has(version.effectiveDate)) {
+      if (!validSnapshotEffectiveDates.has(version.effectiveDate)) {
         errors.push(
           `${prefix}.effectiveDate ${version.effectiveDate} does not have a generated snapshot`,
         );
@@ -602,7 +619,7 @@ export async function validateDataRoot(
         const schematicMap = await loadSchematicMapRecords(dataDir, records);
         checked['schematic-map'] =
           (schematicMap.manifest ? 1 : 0) +
-          (schematicMap.ruleSet ? 1 : 0) +
+          schematicMap.ruleSets.length +
           schematicMap.constraintSets.length +
           schematicMap.versionSnapshots.length;
         continue;

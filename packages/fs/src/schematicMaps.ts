@@ -144,6 +144,27 @@ export async function readSchematicMapRuleSet(
   );
 }
 
+export async function listSchematicMapRuleSets(
+  dataDir: string,
+): Promise<SchematicMapRecord<SchematicMapRuleSet>[]> {
+  const dir = join(
+    dataDir,
+    schematicSystemMapRootPath(),
+    DIR_SCHEMATIC_MAP_GENERATOR,
+    DIR_SCHEMATIC_MAP_ENGINE,
+  );
+  const files = await listJsonFiles(dir);
+  return Promise.all(
+    files.map(async (file) =>
+      schematicMapRecord(
+        dataDir,
+        file,
+        await readJsonFile(file, SchematicMapRuleSetSchema),
+      ),
+    ),
+  );
+}
+
 export async function writeSchematicMapRuleSet(
   dataDir: string,
   ruleSet: SchematicMapRuleSet,
