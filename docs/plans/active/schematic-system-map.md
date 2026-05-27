@@ -401,6 +401,9 @@ Exit criteria:
 - 2026-05-27: Began Phase 4 CLI and validation integration with
   `schematic-map` validation scope plus CLI inspection for schematic
   constraints, generated versions, manifests, and rule sets.
+- 2026-05-27: Extended Phase 4 CLI inspection with manifest version selection
+  for a target date plus generated snapshot coordinate-class and constraint-type
+  counts for schematic map review.
 
 ## Decision Log
 

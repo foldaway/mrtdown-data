@@ -4,8 +4,12 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   IssueTypeSchema,
+  type SchematicMapConstraint,
+  type SchematicMapCoordinateMetadata,
   SchematicMapEffectiveDateSchema,
   SchematicMapLayoutEngineIdSchema,
+  type SchematicMapManifestVersion,
+  type SchematicMapVersionSnapshot,
 } from '@mrtdown/core';
 import {
   buildIssueId,
@@ -55,6 +59,8 @@ const usage = `Usage:
   mrtdown [--data-dir <path>] show <station|line|service|operator|town|landmark|issue> <id>
   mrtdown [--data-dir <path>] schematic-map list <constraint|version>
   mrtdown [--data-dir <path>] schematic-map show <manifest|rules|constraint|version> [id]
+  mrtdown [--data-dir <path>] schematic-map select <YYYY-MM|YYYY-MM-DD>
+  mrtdown [--data-dir <path>] schematic-map stats <YYYY-MM>
   mrtdown [--data-dir <path>] create issue --date <YYYY-MM-DD> --title <title> [--slug <slug>] [--type <type>] [--source <source>]
   mrtdown [--data-dir <path>] create <station|line|service|operator|town|landmark> --file <path>
   mrtdown id issue --date <YYYY-MM-DD> --title <title>
@@ -121,6 +127,18 @@ function hasFlag(args: string[], name: string): boolean {
   return true;
 }
 
+function effectiveDateFromDate(value: string): string {
+  if (/^\d{4}-(0[1-9]|1[0-2])$/.test(value)) {
+    return value;
+  }
+
+  if (/^\d{4}-(0[1-9]|1[0-2])-\d{2}$/.test(value)) {
+    return value.slice(0, 7);
+  }
+
+  throw new Error(`Expected YYYY-MM or YYYY-MM-DD, got: ${value}`);
+}
+
 function parseCollection(value: string): EntityCollection | 'issue' {
   if (
     value === 'issue' ||
@@ -136,6 +154,100 @@ function parseValidationScope(value: string): ValidationScope {
     return value;
   }
   return parseCollection(value);
+}
+
+function selectSchematicMapVersion(
+  versions: SchematicMapManifestVersion[],
+  at: string,
+): SchematicMapManifestVersion | undefined {
+  const effectiveDate = effectiveDateFromDate(at);
+  return [...versions]
+    .sort((a, b) => b.effectiveDate.localeCompare(a.effectiveDate))
+    .find((version) => version.effectiveDate <= effectiveDate);
+}
+
+type CoordinateClassCounts = Record<
+  SchematicMapCoordinateMetadata['coordinateClass'],
+  number
+>;
+
+type ConstraintTypeCounts = Record<SchematicMapConstraint['type'], number>;
+
+function createCoordinateClassCounts(): CoordinateClassCounts {
+  return {
+    artifact: 0,
+    constraint: 0,
+    exception: 0,
+    generated: 0,
+  };
+}
+
+function incrementCoordinateClass(
+  counts: CoordinateClassCounts,
+  coordinateMetadata: SchematicMapCoordinateMetadata | undefined,
+  by = 1,
+): void {
+  if (!coordinateMetadata) {
+    return;
+  }
+
+  counts[coordinateMetadata.coordinateClass] += by;
+}
+
+function countSchematicMapSnapshotCoordinates(
+  snapshot: SchematicMapVersionSnapshot,
+): CoordinateClassCounts {
+  const counts = createCoordinateClassCounts();
+  incrementCoordinateClass(counts, snapshot.frame.coordinateMetadata);
+
+  for (const segment of snapshot.segments) {
+    incrementCoordinateClass(
+      counts,
+      segment.geometry.coordinateMetadata,
+      segment.geometry.type === 'polyline' ? segment.geometry.points.length : 4,
+    );
+  }
+
+  for (const node of snapshot.stationNodes) {
+    incrementCoordinateClass(counts, node.coordinateMetadata);
+    for (const part of node.parts) {
+      incrementCoordinateClass(counts, part.coordinateMetadata);
+    }
+  }
+
+  for (const label of snapshot.labels) {
+    incrementCoordinateClass(counts, label.coordinateMetadata);
+    incrementCoordinateClass(
+      counts,
+      label.leaderLine?.coordinateMetadata,
+      label.leaderLine?.points.length ?? 1,
+    );
+  }
+
+  for (const label of snapshot.stationCodeLabels) {
+    incrementCoordinateClass(counts, label.coordinateMetadata);
+  }
+
+  return counts;
+}
+
+function countConstraintTypes(
+  constraints: SchematicMapConstraint[],
+): ConstraintTypeCounts {
+  return constraints.reduce<ConstraintTypeCounts>(
+    (counts, constraint) => {
+      counts[constraint.type] += 1;
+      return counts;
+    },
+    {
+      interchange_hint: 0,
+      label_hint: 0,
+      line_order: 0,
+      map_frame: 0,
+      segment_route_hint: 0,
+      station_anchor: 0,
+    },
+  );
 }
 
 async function writeTextFile(path: string, text: string): Promise<void> {
@@ -261,7 +373,67 @@ async function runSchematicMap(
     return 0;
   }
 
-  throw new Error('schematic-map requires list or show');
+  if (action === 'select') {
+    const at = args.shift();
+    if (!at) {
+      throw new Error('schematic-map select requires YYYY-MM or YYYY-MM-DD');
+    }
+
+    const manifest = await readSchematicMapManifest(globals.dataDir);
+    const version = selectSchematicMapVersion(manifest.value.versions, at);
+    if (!version) {
+      throw new Error(`No schematic map version effective at ${at}`);
+    }
+
+    io.stdout(JSON.stringify(version, null, 2));
+    return 0;
+  }
+
+  if (action === 'stats') {
+    const id = args.shift();
+    if (!id) {
+      throw new Error('schematic-map stats requires YYYY-MM');
+    }
+
+    const effectiveDate = SchematicMapEffectiveDateSchema.parse(id);
+    const [snapshot, constraintEffectiveDates] = await Promise.all([
+      readSchematicMapVersionSnapshot(globals.dataDir, effectiveDate),
+      listSchematicMapConstraintSetEffectiveDates(globals.dataDir),
+    ]);
+    const constraintSet = constraintEffectiveDates.includes(effectiveDate)
+      ? await readSchematicMapConstraintSet(globals.dataDir, effectiveDate)
+      : undefined;
+    const coordinateClasses = countSchematicMapSnapshotCoordinates(
+      snapshot.value,
+    );
+    const constraintTypes = countConstraintTypes(
+      constraintSet?.value.constraints ?? [],
+    );
+
+    io.stdout(
+      JSON.stringify(
+        {
+          effectiveDate,
+          coordinates: {
+            total: Object.values(coordinateClasses).reduce(
+              (sum, value) => sum + value,
+              0,
+            ),
+            byClass: coordinateClasses,
+          },
+          constraints: {
+            total: constraintSet?.value.constraints.length ?? 0,
+            byType: constraintTypes,
+          },
+        },
+        null,
+        2,
+      ),
+    );
+    return 0;
+  }
+
+  throw new Error('schematic-map requires list, show, select, or stats');
 }
 
 async function runCreate(

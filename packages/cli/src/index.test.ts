@@ -47,32 +47,40 @@ function createIo() {
   };
 }
 
-async function seedSchematicMap(dataDir: string): Promise<void> {
+async function seedSchematicMap(
+  dataDir: string,
+  options: { writeConstraintSet?: boolean } = {},
+): Promise<void> {
+  const writeConstraintSet = options.writeConstraintSet ?? true;
   await writeSchematicMapRuleSet(dataDir, {
     schemaVersion: 1,
     mapId: 'system',
     layoutEngineId: 'lta-system-map-2011',
     lineOrder: ['ISL'],
   });
-  await writeSchematicMapConstraintSet(dataDir, {
-    schemaVersion: 1,
-    mapId: 'system',
-    effectiveDate: '2025-04',
-    layoutEngineId: 'lta-system-map-2011',
-    constraints: [
-      {
-        id: 'frame_2025_04',
-        type: 'map_frame',
-        frame: { x: 0, y: 0, width: 3140, height: 2400 },
-      },
-      {
-        id: 'anchor_ket',
-        type: 'station_anchor',
-        stationId: 'KET',
-        point: { x: 100, y: 100 },
-      },
-    ],
-  });
+
+  if (writeConstraintSet) {
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'frame_2025_04',
+          type: 'map_frame',
+          frame: { x: 0, y: 0, width: 3140, height: 2400 },
+        },
+        {
+          id: 'anchor_ket',
+          type: 'station_anchor',
+          stationId: 'KET',
+          point: { x: 100, y: 100 },
+        },
+      ],
+    });
+  }
+
   await writeSchematicMapVersionSnapshot(dataDir, {
     schemaVersion: 1,
     mapId: 'system',
@@ -138,8 +146,15 @@ async function seedSchematicMap(dataDir: string): Promise<void> {
           },
         ],
         coordinateMetadata: {
-          coordinateClass: 'constraint',
-          constraintId: 'anchor_ket',
+          ...(writeConstraintSet
+            ? {
+                coordinateClass: 'constraint' as const,
+                constraintId: 'anchor_ket',
+              }
+            : {
+                coordinateClass: 'generated' as const,
+                ruleId: 'fixture-node',
+              }),
         },
       },
       {
@@ -166,7 +181,7 @@ async function seedSchematicMap(dataDir: string): Promise<void> {
         ],
         coordinateMetadata: {
           coordinateClass: 'generated',
-          ruleId: 'fixture-line',
+          ruleId: 'fixture-node',
         },
       },
     ],
@@ -354,5 +369,76 @@ describe('@mrtdown/cli', () => {
     expect(JSON.parse(show.stdout[0] as string).value.constraints).toHaveLength(
       2,
     );
+
+    const select = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'schematic-map', 'select', '2025-04-15'],
+        select.io,
+      ),
+    ).resolves.toBe(0);
+    expect(JSON.parse(select.stdout[0] as string)).toEqual({
+      effectiveDate: '2025-04',
+      path: 'version/2025-04.json',
+      layoutEngineId: 'lta-system-map-2011',
+    });
+
+    const stats = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'schematic-map', 'stats', '2025-04'],
+        stats.io,
+      ),
+    ).resolves.toBe(0);
+    expect(JSON.parse(stats.stdout[0] as string)).toEqual({
+      effectiveDate: '2025-04',
+      coordinates: {
+        total: 7,
+        byClass: {
+          artifact: 2,
+          constraint: 1,
+          exception: 0,
+          generated: 4,
+        },
+      },
+      constraints: {
+        total: 2,
+        byType: {
+          interchange_hint: 0,
+          label_hint: 0,
+          line_order: 0,
+          map_frame: 1,
+          segment_route_hint: 0,
+          station_anchor: 1,
+        },
+      },
+    });
+  });
+
+  it('reports schematic map stats without a constraint set', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await seedSchematicMap(dataDir, { writeConstraintSet: false });
+
+    const validate = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'validate', '--scope', 'schematic-map'],
+        validate.io,
+      ),
+    ).resolves.toBe(0);
+
+    const stats = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'schematic-map', 'stats', '2025-04'],
+        stats.io,
+      ),
+    ).resolves.toBe(0);
+    expect(JSON.parse(stats.stdout[0] as string)).toMatchObject({
+      constraints: {
+        total: 0,
+      },
+    });
   });
 });
