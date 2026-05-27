@@ -155,8 +155,9 @@ export const SchematicMapLayerSchema = z.object({
 export type SchematicMapLayer = z.infer<typeof SchematicMapLayerSchema>;
 
 /**
- * Link from schematic geometry back to canonical topology, or an explicit
- * display-only item with a written reason.
+ * Link from schematic geometry back to canonical topology, operational
+ * schematic support geometry, or an explicit display-only item with a written
+ * reason.
  */
 export const SchematicMapTopologyReferenceSchema = z.discriminatedUnion(
   'type',
@@ -165,6 +166,12 @@ export const SchematicMapTopologyReferenceSchema = z.discriminatedUnion(
       type: z.literal('station_pair'),
       fromStationId: z.string(),
       toStationId: z.string(),
+    }),
+    z.object({
+      type: z.literal('support'),
+      supportType: z.enum(['loop', 'connector', 'other']),
+      stationIds: z.array(z.string()).optional(),
+      reason: z.string().min(1),
     }),
     z.object({
       type: z.literal('display_only'),

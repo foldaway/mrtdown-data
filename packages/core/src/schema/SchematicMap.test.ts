@@ -217,6 +217,39 @@ describe('SchematicMapVersionSnapshotSchema', () => {
     expect(result).toEqual(topology);
   });
 
+  it('allows operational support geometry that is not a station pair', () => {
+    expect(
+      SchematicMapSegmentSchema.parse({
+        id: 'line_loop',
+        lineId: 'CCL',
+        displayStatus: 'operational',
+        layerId: 'lines',
+        topology: {
+          type: 'support',
+          supportType: 'loop',
+          reason:
+            'Represents operational loop geometry that is not a station-to-station segment.',
+        },
+        geometry: {
+          type: 'polyline',
+          points: [
+            { x: 100, y: 100 },
+            { x: 120, y: 120 },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'loop-support',
+          },
+        },
+      }),
+    ).toMatchObject({
+      topology: {
+        type: 'support',
+        supportType: 'loop',
+      },
+    });
+  });
+
   it('does not support raw SVG path geometry in the narrow schema', () => {
     expect(() =>
       SchematicMapGeometrySchema.parse({
