@@ -645,6 +645,7 @@ async function validateSchematicMapReferences(
   }
 
   const validSnapshotEffectiveDates = new Set<string>();
+  const snapshotLayoutEngineIds = new Map<string, string>();
 
   for (const snapshot of schematicMap.versionSnapshots) {
     referencedLayoutEngineIds.push({
@@ -664,6 +665,10 @@ async function validateSchematicMapReferences(
     }
 
     validSnapshotEffectiveDates.add(snapshot.value.effectiveDate);
+    snapshotLayoutEngineIds.set(
+      snapshot.value.effectiveDate,
+      snapshot.value.layoutEngineId,
+    );
   }
 
   const manifestEffectiveDates = new Set<string>();
@@ -690,6 +695,18 @@ async function validateSchematicMapReferences(
       if (!validSnapshotEffectiveDates.has(version.effectiveDate)) {
         errors.push(
           `${prefix}.effectiveDate ${version.effectiveDate} does not have a generated snapshot`,
+        );
+      }
+
+      const snapshotLayoutEngineId = snapshotLayoutEngineIds.get(
+        version.effectiveDate,
+      );
+      if (
+        snapshotLayoutEngineId &&
+        snapshotLayoutEngineId !== version.layoutEngineId
+      ) {
+        errors.push(
+          `${prefix}.layoutEngineId ${version.layoutEngineId} does not match version/${version.effectiveDate}.json (${snapshotLayoutEngineId})`,
         );
       }
     }
