@@ -1,6 +1,7 @@
 import type {
   IssueBundle,
   SchematicMapConstraintSet,
+  SchematicMapCoordinateMetadata,
   SchematicMapManifest,
   SchematicMapRuleSet,
   SchematicMapVersionSnapshot,
@@ -318,8 +319,19 @@ function stationPairKey(fromStationId: string, toStationId: string): string {
   return [fromStationId, toStationId].sort().join(':');
 }
 
-function effectiveDateTimestampForValidation(effectiveDate: string): number {
-  return timestampForValidation(`${effectiveDate}-01T00:00:00Z`);
+function effectiveMonthIntervalForValidation(effectiveDate: string): {
+  start: number;
+  end: number;
+} {
+  const [year, month] = effectiveDate.split('-').map(Number);
+  if (!year || !month) {
+    throw new Error(`Invalid effective date for validation: ${effectiveDate}`);
+  }
+
+  return {
+    start: Date.UTC(year, month - 1, 1),
+    end: Date.UTC(year, month, 1),
+  };
 }
 
 function intervalContainsEffectiveDate(
@@ -327,16 +339,15 @@ function intervalContainsEffectiveDate(
   endedAt: string | null,
   effectiveDate: string,
 ): boolean {
-  const effectiveDateTimestamp =
-    effectiveDateTimestampForValidation(effectiveDate);
+  const effectiveMonth = effectiveMonthIntervalForValidation(effectiveDate);
   const startedAtTimestamp = timestampForValidation(startedAt);
   const endedAtTimestamp = endedAt
     ? timestampForValidation(endedAt)
     : Number.POSITIVE_INFINITY;
 
   return (
-    startedAtTimestamp <= effectiveDateTimestamp &&
-    effectiveDateTimestamp < endedAtTimestamp
+    startedAtTimestamp < effectiveMonth.end &&
+    effectiveMonth.start < endedAtTimestamp
   );
 }
 
@@ -466,6 +477,7 @@ async function validateSchematicMapReferences(
   const serviceRecords = await loadEntityRecords(dataDir, records, 'service');
   const serviceEdgesByLineAndEffectiveDate = new Map<string, Set<string>>();
   const schematicMap = await loadSchematicMapRecords(dataDir, records);
+  const constraintIdsByEffectiveDate = new Map<string, Set<string>>();
   const errors: string[] = [];
 
   const serviceEdgesForLineAtEffectiveDate = (
@@ -562,6 +574,23 @@ async function validateSchematicMapReferences(
     }
   };
 
+  const requireKnownConstraintCoordinateMetadata = (
+    path: string,
+    coordinateMetadata: SchematicMapCoordinateMetadata | undefined,
+    effectiveDate: string,
+  ) => {
+    if (coordinateMetadata?.coordinateClass !== 'constraint') {
+      return;
+    }
+
+    const constraintIds = constraintIdsByEffectiveDate.get(effectiveDate);
+    if (!constraintIds?.has(coordinateMetadata.constraintId)) {
+      errors.push(
+        `${path}.constraintId ${coordinateMetadata.constraintId} does not exist in schematic map constraints for ${effectiveDate}`,
+      );
+    }
+  };
+
   const availableLayoutEngineIds = new Set<string>();
   const referencedLayoutEngineIds: Array<{ id: string; path: string }> = [];
 
@@ -599,6 +628,13 @@ async function validateSchematicMapReferences(
       );
     }
 
+    constraintIdsByEffectiveDate.set(
+      constraintSet.value.effectiveDate,
+      new Set(
+        constraintSet.value.constraints.map((constraint) => constraint.id),
+      ),
+    );
+
     for (const [
       index,
       constraint,
@@ -615,6 +651,7 @@ async function validateSchematicMapReferences(
           constraint.fromStationId,
           constraint.lineId,
           constraintSet.value.effectiveDate,
+          { requireActive: false },
         );
         requireStationId(`${prefix}.toStationId`, constraint.toStationId);
         requireStationLineId(
@@ -622,6 +659,7 @@ async function validateSchematicMapReferences(
           constraint.toStationId,
           constraint.lineId,
           constraintSet.value.effectiveDate,
+          { requireActive: false },
         );
       } else if (constraint.type === 'line_order') {
         constraint.lineIds.forEach((lineId, lineIndex) => {
@@ -729,6 +767,12 @@ async function validateSchematicMapReferences(
   }
 
   for (const snapshot of schematicMap.versionSnapshots) {
+    requireKnownConstraintCoordinateMetadata(
+      `${snapshot.path}: frame.coordinateMetadata`,
+      snapshot.value.frame.coordinateMetadata,
+      snapshot.value.effectiveDate,
+    );
+
     snapshot.value.lineGroups.forEach((lineGroup, index) => {
       requireLineId(
         `${snapshot.path}: lineGroups.${index}.lineId`,
@@ -739,6 +783,11 @@ async function validateSchematicMapReferences(
     snapshot.value.segments.forEach((segment, index) => {
       const prefix = `${snapshot.path}: segments.${index}`;
       requireLineId(`${prefix}.lineId`, segment.lineId);
+      requireKnownConstraintCoordinateMetadata(
+        `${prefix}.geometry.coordinateMetadata`,
+        segment.geometry.coordinateMetadata,
+        snapshot.value.effectiveDate,
+      );
 
       if (segment.topology.type === 'station_pair') {
         requireStationId(
@@ -813,13 +862,31 @@ async function validateSchematicMapReferences(
           snapshot.value.effectiveDate,
           { requireActive: node.displayStatus === 'operational' },
         );
+        requireKnownConstraintCoordinateMetadata(
+          `${prefix}.parts.${partIndex}.coordinateMetadata`,
+          part.coordinateMetadata,
+          snapshot.value.effectiveDate,
+        );
       });
+      requireKnownConstraintCoordinateMetadata(
+        `${prefix}.coordinateMetadata`,
+        node.coordinateMetadata,
+        snapshot.value.effectiveDate,
+      );
     });
 
     snapshot.value.labels.forEach((label, index) => {
-      requireStationId(
-        `${snapshot.path}: labels.${index}.stationId`,
-        label.stationId,
+      const prefix = `${snapshot.path}: labels.${index}`;
+      requireStationId(`${prefix}.stationId`, label.stationId);
+      requireKnownConstraintCoordinateMetadata(
+        `${prefix}.leaderLine.coordinateMetadata`,
+        label.leaderLine?.coordinateMetadata,
+        snapshot.value.effectiveDate,
+      );
+      requireKnownConstraintCoordinateMetadata(
+        `${prefix}.coordinateMetadata`,
+        label.coordinateMetadata,
+        snapshot.value.effectiveDate,
       );
     });
 
@@ -833,6 +900,11 @@ async function validateSchematicMapReferences(
         label.lineId,
         snapshot.value.effectiveDate,
         { requireActive: label.displayStatus === 'operational' },
+      );
+      requireKnownConstraintCoordinateMetadata(
+        `${prefix}.coordinateMetadata`,
+        label.coordinateMetadata,
+        snapshot.value.effectiveDate,
       );
     });
   }

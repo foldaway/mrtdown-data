@@ -1076,6 +1076,155 @@ describe('@mrtdown/fs', () => {
     );
   });
 
+  it('allows schematic map active checks within the effective month', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+
+    for (const stationId of ['KET', 'HKU']) {
+      const stationPath = join(dataDir, `station/${stationId}.json`);
+      const station = JSON.parse(await readFile(stationPath, 'utf8')) as {
+        stationCodes: Array<{ lineId: string; startedAt: string }>;
+      };
+      const islandLineCode = station.stationCodes.find(
+        (code) => code.lineId === 'ISL',
+      );
+      if (!islandLineCode) {
+        throw new Error(`Missing fixture ISL code for ${stationId}`);
+      }
+      islandLineCode.startedAt = '2025-04-30T00:00:00Z';
+      await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+    }
+
+    const servicePath = join(dataDir, 'service/ISL_MAIN_E.json');
+    const service = JSON.parse(await readFile(servicePath, 'utf8')) as {
+      revisions: Array<{ startAt: string }>;
+    };
+    service.revisions[0].startAt = '2025-04-30';
+    await writeFile(servicePath, `${JSON.stringify(service, null, 2)}\n`);
+
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL'],
+    });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [
+        {
+          id: 'line_ISL',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          segmentIds: ['line_ket:hku'],
+        },
+      ],
+      segments: [
+        {
+          id: 'line_ket:hku',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          topology: {
+            type: 'station_pair',
+            fromStationId: 'KET',
+            toStationId: 'HKU',
+          },
+          geometry: {
+            type: 'polyline',
+            points: [
+              { x: 100, y: 100 },
+              { x: 200, y: 100 },
+            ],
+            coordinateMetadata: {
+              coordinateClass: 'generated',
+              ruleId: 'fixture-line',
+            },
+          },
+        },
+      ],
+      stationNodes: [
+        {
+          id: 'node_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 100, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_ket_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 100, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'generated',
+                ruleId: 'fixture-node',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-node',
+          },
+        },
+        {
+          id: 'node_hku',
+          stationId: 'HKU',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 200, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_hku_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 200, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'generated',
+                ruleId: 'fixture-node',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-node',
+          },
+        },
+      ],
+      labels: [],
+      stationCodeLabels: [],
+    });
+    await writeSchematicMapManifest(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      versions: [
+        {
+          effectiveDate: '2025-04',
+          path: 'version/2025-04.json',
+          layoutEngineId: 'lta-system-map-2011',
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(true);
+  });
+
   it('rejects schematic map station-pair edges from future service revisions', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await cp(fixtureDataDir, dataDir, { recursive: true });
@@ -1311,6 +1460,53 @@ describe('@mrtdown/fs', () => {
     expect(result.ok).toBe(true);
   });
 
+  it('allows future-display route constraints before station codes start', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+
+    for (const stationId of ['KET', 'ADM']) {
+      const stationPath = join(dataDir, `station/${stationId}.json`);
+      const station = JSON.parse(await readFile(stationPath, 'utf8')) as {
+        stationCodes: unknown[];
+      };
+      station.stationCodes.push({
+        lineId: 'TWL',
+        code: `${stationId}99`,
+        startedAt: '2025-05-01T00:00:00Z',
+        endedAt: null,
+        structureType: 'underground',
+      });
+      await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+    }
+
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['TWL'],
+    });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'future_twl_route',
+          type: 'segment_route_hint',
+          lineId: 'TWL',
+          fromStationId: 'KET',
+          toStationId: 'ADM',
+          via: [{ x: 100, y: 100 }],
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(true);
+  });
+
   it('allows non-operational station-pair segments before service edges open', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await cp(fixtureDataDir, dataDir, { recursive: true });
@@ -1466,6 +1662,207 @@ describe('@mrtdown/fs', () => {
     expect(result.ok).toBe(false);
     expect(result.errors).toContain(
       'schematic-map/system/version/2025-04.json: effectiveDate 2025-04 is not listed in schematic map manifest',
+    );
+  });
+
+  it('rejects schematic map snapshot constraint metadata without matching constraints', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL'],
+    });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'known_anchor',
+          type: 'station_anchor',
+          stationId: 'KET',
+          point: { x: 100, y: 100 },
+        },
+      ],
+    });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: {
+        x: 0,
+        y: 0,
+        width: 3140,
+        height: 2400,
+        coordinateMetadata: {
+          coordinateClass: 'constraint',
+          constraintId: 'missing_frame',
+        },
+      },
+      layers: [
+        { id: 'lines', role: 'line' },
+        { id: 'labels', role: 'label' },
+      ],
+      lineGroups: [
+        {
+          id: 'line_ISL',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          segmentIds: ['line_ket:hku'],
+        },
+      ],
+      segments: [
+        {
+          id: 'line_ket:hku',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          topology: {
+            type: 'station_pair',
+            fromStationId: 'KET',
+            toStationId: 'HKU',
+          },
+          geometry: {
+            type: 'polyline',
+            points: [
+              { x: 100, y: 100 },
+              { x: 200, y: 100 },
+            ],
+            coordinateMetadata: {
+              coordinateClass: 'constraint',
+              constraintId: 'missing_segment',
+            },
+          },
+        },
+      ],
+      stationNodes: [
+        {
+          id: 'node_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 100, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_ket_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 100, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'constraint',
+                constraintId: 'missing_part',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'constraint',
+            constraintId: 'missing_node',
+          },
+        },
+        {
+          id: 'node_hku',
+          stationId: 'HKU',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 200, y: 100 },
+          lineIds: ['ISL'],
+          parts: [
+            {
+              id: 'node_hku_isl',
+              lineId: 'ISL',
+              shape: {
+                type: 'circle',
+                center: { x: 200, y: 100 },
+                radius: 8,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'generated',
+                ruleId: 'fixture-node',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-node',
+          },
+        },
+      ],
+      labels: [
+        {
+          id: 'label_ket',
+          stationId: 'KET',
+          displayStatus: 'operational',
+          layerId: 'labels',
+          anchor: { x: 100, y: 80 },
+          side: 'top',
+          leaderLine: {
+            type: 'polyline',
+            points: [
+              { x: 100, y: 90 },
+              { x: 100, y: 100 },
+            ],
+            coordinateMetadata: {
+              coordinateClass: 'constraint',
+              constraintId: 'missing_leader',
+            },
+          },
+          coordinateMetadata: {
+            coordinateClass: 'constraint',
+            constraintId: 'missing_label',
+          },
+        },
+      ],
+      stationCodeLabels: [
+        {
+          id: 'code_ket_isl',
+          stationId: 'KET',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'labels',
+          anchor: { x: 100, y: 120 },
+          side: 'bottom',
+          coordinateMetadata: {
+            coordinateClass: 'constraint',
+            constraintId: 'missing_code',
+          },
+        },
+      ],
+    });
+    await writeSchematicMapManifest(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      versions: [
+        {
+          effectiveDate: '2025-04',
+          path: 'version/2025-04.json',
+          layoutEngineId: 'lta-system-map-2011',
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        'schematic-map/system/version/2025-04.json: frame.coordinateMetadata.constraintId missing_frame does not exist in schematic map constraints for 2025-04',
+        'schematic-map/system/version/2025-04.json: segments.0.geometry.coordinateMetadata.constraintId missing_segment does not exist in schematic map constraints for 2025-04',
+        'schematic-map/system/version/2025-04.json: stationNodes.0.parts.0.coordinateMetadata.constraintId missing_part does not exist in schematic map constraints for 2025-04',
+        'schematic-map/system/version/2025-04.json: stationNodes.0.coordinateMetadata.constraintId missing_node does not exist in schematic map constraints for 2025-04',
+        'schematic-map/system/version/2025-04.json: labels.0.leaderLine.coordinateMetadata.constraintId missing_leader does not exist in schematic map constraints for 2025-04',
+        'schematic-map/system/version/2025-04.json: labels.0.coordinateMetadata.constraintId missing_label does not exist in schematic map constraints for 2025-04',
+        'schematic-map/system/version/2025-04.json: stationCodeLabels.0.coordinateMetadata.constraintId missing_code does not exist in schematic map constraints for 2025-04',
+      ]),
     );
   });
 
