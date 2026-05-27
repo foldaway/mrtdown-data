@@ -22,15 +22,27 @@ import {
   IdGenerator,
   issuePathFromId,
   listEntityIds,
+  listSchematicMapConstraintSetEffectiveDates,
+  listSchematicMapVersionSnapshotEffectiveDates,
   MRTDownRepository,
   MRTDownWriter,
   readIssueBundle,
   readNdjsonFile,
+  readSchematicMapManifest,
+  readSchematicMapRuleSet,
+  readSchematicMapVersionSnapshot,
   renderPagesIndex,
   StandardRepository,
+  schematicSystemMapConstraintSetPath,
+  schematicSystemMapManifestPath,
+  schematicSystemMapRuleSetPath,
+  schematicSystemMapVersionSnapshotPath,
   toDataPath,
   validateDataRoot,
   visibleDirEntries,
+  writeSchematicMapConstraintSet,
+  writeSchematicMapManifest,
+  writeSchematicMapVersionSnapshot,
   writeUnknownEntity,
 } from './index.js';
 import { StandardWriter } from './write/common/StandardWriter.js';
@@ -188,6 +200,199 @@ describe('@mrtdown/fs', () => {
     expect(
       renderPagesIndex(manifest, { includeFixtureExportLinks: true }),
     ).toContain('fixtures/');
+  });
+
+  it('reads and writes schematic map generator files and generated snapshots', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const ruleSet = {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['NSL', 'EWL', 'CCL'],
+    } as const;
+    const constraintSet = {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'frame_2025_04',
+          type: 'map_frame',
+          frame: { x: 0, y: 0, width: 3140, height: 2400 },
+        },
+        {
+          id: 'anchor_amk',
+          type: 'station_anchor',
+          stationId: 'AMK',
+          point: { x: 1170, y: 550 },
+        },
+      ],
+    } as const;
+    const snapshot = {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+      frame: { x: 0, y: 0, width: 3140, height: 2400 },
+      layers: [{ id: 'lines', role: 'line' }],
+      lineGroups: [
+        {
+          id: 'line_NSL',
+          lineId: 'NSL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          segmentIds: ['line_amk:bsh'],
+        },
+      ],
+      segments: [
+        {
+          id: 'line_amk:bsh',
+          lineId: 'NSL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          topology: {
+            type: 'station_pair',
+            fromStationId: 'AMK',
+            toStationId: 'BSH',
+          },
+          geometry: {
+            type: 'polyline',
+            points: [
+              { x: 1170, y: 550 },
+              { x: 1250, y: 630 },
+            ],
+            coordinateMetadata: {
+              coordinateClass: 'generated',
+              ruleId: 'trunk-octilinear',
+            },
+          },
+        },
+      ],
+      stationNodes: [
+        {
+          id: 'node_amk',
+          stationId: 'AMK',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 1170, y: 550 },
+          lineIds: ['NSL'],
+          parts: [
+            {
+              id: 'node_amk_nsl',
+              lineId: 'NSL',
+              shape: {
+                type: 'circle',
+                center: { x: 1170, y: 550 },
+                radius: 11,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_amk',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'constraint',
+            constraintId: 'anchor_amk',
+          },
+        },
+        {
+          id: 'node_bsh',
+          stationId: 'BSH',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          center: { x: 1250, y: 630 },
+          lineIds: ['NSL'],
+          parts: [
+            {
+              id: 'node_bsh_nsl',
+              lineId: 'NSL',
+              shape: {
+                type: 'circle',
+                center: { x: 1250, y: 630 },
+                radius: 11,
+              },
+              coordinateMetadata: {
+                coordinateClass: 'artifact',
+                generatedFrom: 'node_bsh',
+              },
+            },
+          ],
+          coordinateMetadata: {
+            coordinateClass: 'constraint',
+            constraintId: 'anchor_bsh',
+          },
+        },
+      ],
+      labels: [],
+      stationCodeLabels: [],
+    } as const;
+    const manifest = {
+      schemaVersion: 1,
+      mapId: 'system',
+      versions: [
+        {
+          effectiveDate: '2025-04',
+          path: 'version/2025-04.json',
+          layoutEngineId: 'lta-system-map-2011',
+        },
+      ],
+    } as const;
+
+    await expect(
+      listSchematicMapConstraintSetEffectiveDates(dataDir),
+    ).resolves.toEqual([]);
+    await expect(
+      listSchematicMapVersionSnapshotEffectiveDates(dataDir),
+    ).resolves.toEqual([]);
+
+    const writer = new MRTDownWriter({ store: new FileWriteStore(dataDir) });
+    writer.schematicMaps.writeRuleSet(ruleSet);
+    await expect(
+      writeSchematicMapConstraintSet(dataDir, constraintSet),
+    ).resolves.toBe(schematicSystemMapConstraintSetPath('2025-04'));
+    await expect(
+      writeSchematicMapVersionSnapshot(dataDir, snapshot),
+    ).resolves.toBe(schematicSystemMapVersionSnapshotPath('2025-04'));
+    await expect(writeSchematicMapManifest(dataDir, manifest)).resolves.toBe(
+      schematicSystemMapManifestPath(),
+    );
+
+    const repo = new MRTDownRepository({ store: new FileStore(dataDir) });
+    expect(repo.schematicMaps.getRuleSet()?.lineOrder).toEqual([
+      'NSL',
+      'EWL',
+      'CCL',
+    ]);
+    expect(repo.schematicMaps.listConstraintSetEffectiveDates()).toEqual([
+      '2025-04',
+    ]);
+    expect(
+      repo.schematicMaps.getConstraintSet('2025-04')?.constraints,
+    ).toHaveLength(2);
+    expect(repo.schematicMaps.listVersionSnapshotEffectiveDates()).toEqual([
+      '2025-04',
+    ]);
+    expect(
+      repo.schematicMaps.getVersionSnapshot('2025-04')?.segments,
+    ).toHaveLength(1);
+
+    await expect(readSchematicMapRuleSet(dataDir)).resolves.toMatchObject({
+      path: schematicSystemMapRuleSetPath('lta-system-map-2011'),
+      value: { lineOrder: ['NSL', 'EWL', 'CCL'] },
+    });
+    await expect(readSchematicMapManifest(dataDir)).resolves.toMatchObject({
+      path: schematicSystemMapManifestPath(),
+      value: manifest,
+    });
+    await expect(
+      readSchematicMapVersionSnapshot(dataDir, '2025-04'),
+    ).resolves.toMatchObject({
+      path: schematicSystemMapVersionSnapshotPath('2025-04'),
+      value: { effectiveDate: '2025-04' },
+    });
   });
 
   it('includes issue impact events in manifest hashes', async () => {
