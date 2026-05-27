@@ -318,6 +318,28 @@ function stationPairKey(fromStationId: string, toStationId: string): string {
   return [fromStationId, toStationId].sort().join(':');
 }
 
+function effectiveDateTimestampForValidation(effectiveDate: string): number {
+  return timestampForValidation(`${effectiveDate}-01T00:00:00Z`);
+}
+
+function intervalContainsEffectiveDate(
+  startedAt: string,
+  endedAt: string | null,
+  effectiveDate: string,
+): boolean {
+  const effectiveDateTimestamp =
+    effectiveDateTimestampForValidation(effectiveDate);
+  const startedAtTimestamp = timestampForValidation(startedAt);
+  const endedAtTimestamp = endedAt
+    ? timestampForValidation(endedAt)
+    : Number.POSITIVE_INFINITY;
+
+  return (
+    startedAtTimestamp <= effectiveDateTimestamp &&
+    effectiveDateTimestamp < endedAtTimestamp
+  );
+}
+
 async function validateIssueReferences(
   dataDir: string,
   shouldValidate: boolean,
@@ -442,26 +464,52 @@ async function validateSchematicMapReferences(
   );
   const stationIds = new Set(stationById.keys());
   const serviceRecords = await loadEntityRecords(dataDir, records, 'service');
-  const serviceEdgesByLineId = new Map<string, Set<string>>();
+  const serviceEdgesByLineAndEffectiveDate = new Map<string, Set<string>>();
   const schematicMap = await loadSchematicMapRecords(dataDir, records);
   const errors: string[] = [];
 
-  for (const service of serviceRecords) {
-    let serviceEdges = serviceEdgesByLineId.get(service.value.lineId);
-    if (!serviceEdges) {
-      serviceEdges = new Set();
-      serviceEdgesByLineId.set(service.value.lineId, serviceEdges);
+  const serviceEdgesForLineAtEffectiveDate = (
+    lineId: string,
+    effectiveDate: string,
+  ): Set<string> => {
+    const cacheKey = `${lineId}:${effectiveDate}`;
+    const cached = serviceEdgesByLineAndEffectiveDate.get(cacheKey);
+    if (cached) {
+      return cached;
     }
 
-    for (const revision of service.value.revisions) {
-      const stations = revision.path.stations.map(
-        (station) => station.stationId,
-      );
-      for (let index = 0; index < stations.length - 1; index += 1) {
-        serviceEdges.add(stationPairKey(stations[index], stations[index + 1]));
+    const serviceEdges = new Set<string>();
+
+    for (const service of serviceRecords) {
+      if (service.value.lineId !== lineId) {
+        continue;
+      }
+
+      for (const revision of service.value.revisions) {
+        if (
+          !intervalContainsEffectiveDate(
+            revision.startAt,
+            revision.endAt,
+            effectiveDate,
+          )
+        ) {
+          continue;
+        }
+
+        const stations = revision.path.stations.map(
+          (station) => station.stationId,
+        );
+        for (let index = 0; index < stations.length - 1; index += 1) {
+          serviceEdges.add(
+            stationPairKey(stations[index], stations[index + 1]),
+          );
+        }
       }
     }
-  }
+
+    serviceEdgesByLineAndEffectiveDate.set(cacheKey, serviceEdges);
+    return serviceEdges;
+  };
 
   const requireLineId = (path: string, lineId: string) => {
     if (!lineIds.has(lineId)) {
@@ -479,25 +527,41 @@ async function validateSchematicMapReferences(
     path: string,
     stationId: string,
     lineId: string,
+    effectiveDate: string,
   ) => {
     const station = stationById.get(stationId);
     if (!station) {
       return;
     }
 
-    if (!station.value.stationCodes.some((code) => code.lineId === lineId)) {
+    if (
+      !station.value.stationCodes.some(
+        (code) =>
+          code.lineId === lineId &&
+          intervalContainsEffectiveDate(
+            code.startedAt,
+            code.endedAt,
+            effectiveDate,
+          ),
+      )
+    ) {
       errors.push(
-        `${path} ${lineId} is not a station code line for station ${stationId}`,
+        `${path} ${lineId} is not an active station code line for station ${stationId} at ${effectiveDate}`,
       );
     }
   };
+
+  const availableLayoutEngineIds = new Set<string>();
+  const referencedLayoutEngineIds: Array<{ id: string; path: string }> = [];
 
   for (const ruleSet of schematicMap.ruleSets) {
     const expectedPath = schematicSystemMapRuleSetPath(
       ruleSet.value.layoutEngineId,
     );
 
-    if (ruleSet.path !== expectedPath) {
+    if (ruleSet.path === expectedPath) {
+      availableLayoutEngineIds.add(ruleSet.value.layoutEngineId);
+    } else {
       errors.push(
         `${ruleSet.path}: layoutEngineId ${ruleSet.value.layoutEngineId} does not match ${expectedPath}`,
       );
@@ -509,6 +573,11 @@ async function validateSchematicMapReferences(
   }
 
   for (const constraintSet of schematicMap.constraintSets) {
+    referencedLayoutEngineIds.push({
+      id: constraintSet.value.layoutEngineId,
+      path: `${constraintSet.path}: layoutEngineId`,
+    });
+
     const expectedPath = schematicSystemMapConstraintSetPath(
       constraintSet.value.effectiveDate,
     );
@@ -530,7 +599,19 @@ async function validateSchematicMapReferences(
       } else if (constraint.type === 'segment_route_hint') {
         requireLineId(`${prefix}.lineId`, constraint.lineId);
         requireStationId(`${prefix}.fromStationId`, constraint.fromStationId);
+        requireStationLineId(
+          `${prefix}.fromStationId`,
+          constraint.fromStationId,
+          constraint.lineId,
+          constraintSet.value.effectiveDate,
+        );
         requireStationId(`${prefix}.toStationId`, constraint.toStationId);
+        requireStationLineId(
+          `${prefix}.toStationId`,
+          constraint.toStationId,
+          constraint.lineId,
+          constraintSet.value.effectiveDate,
+        );
       } else if (constraint.type === 'line_order') {
         constraint.lineIds.forEach((lineId, lineIndex) => {
           requireLineId(`${prefix}.lineIds.${lineIndex}`, lineId);
@@ -545,6 +626,7 @@ async function validateSchematicMapReferences(
             `${prefix}.lineIds.${lineIndex}`,
             constraint.stationId,
             lineId,
+            constraintSet.value.effectiveDate,
           );
         });
       }
@@ -554,6 +636,11 @@ async function validateSchematicMapReferences(
   const validSnapshotEffectiveDates = new Set<string>();
 
   for (const snapshot of schematicMap.versionSnapshots) {
+    referencedLayoutEngineIds.push({
+      id: snapshot.value.layoutEngineId,
+      path: `${snapshot.path}: layoutEngineId`,
+    });
+
     const expectedPath = schematicSystemMapVersionSnapshotPath(
       snapshot.value.effectiveDate,
     );
@@ -575,6 +662,10 @@ async function validateSchematicMapReferences(
     ] of schematicMap.manifest.value.versions.entries()) {
       const prefix = `${schematicMap.manifest.path}: versions.${index}`;
       const expectedMapRelativePath = `version/${version.effectiveDate}.json`;
+      referencedLayoutEngineIds.push({
+        id: version.layoutEngineId,
+        path: `${prefix}.layoutEngineId`,
+      });
 
       if (version.path !== expectedMapRelativePath) {
         errors.push(
@@ -587,6 +678,14 @@ async function validateSchematicMapReferences(
           `${prefix}.effectiveDate ${version.effectiveDate} does not have a generated snapshot`,
         );
       }
+    }
+  }
+
+  for (const reference of referencedLayoutEngineIds) {
+    if (!availableLayoutEngineIds.has(reference.id)) {
+      errors.push(
+        `${reference.path} ${reference.id} does not have a schematic map rule set`,
+      );
     }
   }
 
@@ -611,6 +710,7 @@ async function validateSchematicMapReferences(
           `${prefix}.topology.fromStationId`,
           segment.topology.fromStationId,
           segment.lineId,
+          snapshot.value.effectiveDate,
         );
         requireStationId(
           `${prefix}.topology.toStationId`,
@@ -620,9 +720,13 @@ async function validateSchematicMapReferences(
           `${prefix}.topology.toStationId`,
           segment.topology.toStationId,
           segment.lineId,
+          snapshot.value.effectiveDate,
         );
 
-        const serviceEdges = serviceEdgesByLineId.get(segment.lineId);
+        const serviceEdges = serviceEdgesForLineAtEffectiveDate(
+          segment.lineId,
+          snapshot.value.effectiveDate,
+        );
         const segmentPairKey = stationPairKey(
           segment.topology.fromStationId,
           segment.topology.toStationId,
@@ -652,6 +756,7 @@ async function validateSchematicMapReferences(
           `${prefix}.lineIds.${lineIndex}`,
           node.stationId,
           lineId,
+          snapshot.value.effectiveDate,
         );
       });
       node.parts.forEach((part, partIndex) => {
@@ -660,6 +765,7 @@ async function validateSchematicMapReferences(
           `${prefix}.parts.${partIndex}.lineId`,
           node.stationId,
           part.lineId,
+          snapshot.value.effectiveDate,
         );
       });
     });
@@ -675,7 +781,12 @@ async function validateSchematicMapReferences(
       const prefix = `${snapshot.path}: stationCodeLabels.${index}`;
       requireStationId(`${prefix}.stationId`, label.stationId);
       requireLineId(`${prefix}.lineId`, label.lineId);
-      requireStationLineId(`${prefix}.lineId`, label.stationId, label.lineId);
+      requireStationLineId(
+        `${prefix}.lineId`,
+        label.stationId,
+        label.lineId,
+        snapshot.value.effectiveDate,
+      );
     });
   }
 
