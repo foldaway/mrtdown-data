@@ -395,6 +395,9 @@ Exit criteria:
 - 2026-05-27: Began Phase 2 with a narrow `packages/core` schema draft for
   renderer-neutral snapshots, manifests, rule sets, and first-pass constraints;
   raw SVG path geometry remains unsupported until proven necessary.
+- 2026-05-27: Added `packages/fs` schematic map path helpers, typed
+  read/write functions, and repository/writer facades for generator rule sets,
+  per-version constraints, manifests, and generated snapshot artifacts.
 
 ## Decision Log
 

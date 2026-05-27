@@ -3,6 +3,7 @@ import { IssueRepository } from './issue/IssueRepository.js';
 import { LandmarkRepository } from './landmark/LandmarkRepository.js';
 import { LineRepository } from './line/LineRepository.js';
 import { OperatorRepository } from './operator/OperatorRepository.js';
+import { SchematicMapRepository } from './schematicMap/SchematicMapRepository.js';
 import { ServiceRepository } from './service/ServiceRepository.js';
 import { StationRepository } from './station/StationRepository.js';
 import { TownRepository } from './town/TownRepository.js';
@@ -21,6 +22,7 @@ export class MRTDownRepository {
   readonly operators: OperatorRepository;
   readonly services: ServiceRepository;
   readonly issues: IssueRepository;
+  readonly schematicMaps: SchematicMapRepository;
 
   constructor(options: MRTDownRepositoryOptions) {
     this.store = options.store;
@@ -31,5 +33,6 @@ export class MRTDownRepository {
     this.operators = new OperatorRepository(this.store);
     this.services = new ServiceRepository(this.store);
     this.issues = new IssueRepository(this.store);
+    this.schematicMaps = new SchematicMapRepository(this.store);
   }
 }

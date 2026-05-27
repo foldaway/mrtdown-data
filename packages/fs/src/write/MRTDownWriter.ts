@@ -17,6 +17,7 @@ import {
 import { StandardWriter } from './common/StandardWriter.js';
 import type { IWriteStore } from './common/store.js';
 import { IssueWriter } from './issue/IssueWriter.js';
+import { SchematicMapWriter } from './schematicMap/SchematicMapWriter.js';
 
 type MRTDownWriterParams = {
   store: IWriteStore;
@@ -34,6 +35,7 @@ export class MRTDownWriter {
   readonly services: StandardWriter<Service>;
   readonly landmarks: StandardWriter<Landmark>;
   readonly towns: StandardWriter<Town>;
+  readonly schematicMaps: SchematicMapWriter;
 
   constructor(params: MRTDownWriterParams) {
     this.store = params.store;
@@ -44,5 +46,6 @@ export class MRTDownWriter {
     this.services = new StandardWriter(this.store, DIR_SERVICE);
     this.landmarks = new StandardWriter(this.store, DIR_LANDMARK);
     this.towns = new StandardWriter(this.store, DIR_TOWN);
+    this.schematicMaps = new SchematicMapWriter(this.store);
   }
 }
