@@ -395,6 +395,32 @@ describe('@mrtdown/fs', () => {
     });
   });
 
+  it('rejects schematic map references that are missing from canonical data', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-04',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'missing_station_anchor',
+          type: 'station_anchor',
+          stationId: 'NOPE',
+          point: { x: 100, y: 100 },
+        },
+      ],
+    });
+
+    const result = await validateDataRoot(dataDir, ['schematic-map']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      'schematic-map/system/generator/constraint/2025-04.json: constraints.0.stationId NOPE does not exist in station/',
+    );
+  });
+
   it('includes issue impact events in manifest hashes', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await cp(fixtureDataDir, dataDir, { recursive: true });

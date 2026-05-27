@@ -2,7 +2,11 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { IssueTypeSchema } from '@mrtdown/core';
+import {
+  IssueTypeSchema,
+  SchematicMapEffectiveDateSchema,
+  SchematicMapLayoutEngineIdSchema,
+} from '@mrtdown/core';
 import {
   buildIssueId,
   buildManifest,
@@ -11,8 +15,14 @@ import {
   entityCollections,
   listEntityIds,
   listIssueIds,
+  listSchematicMapConstraintSetEffectiveDates,
+  listSchematicMapVersionSnapshotEffectiveDates,
   readEntity,
   readIssueBundle,
+  readSchematicMapConstraintSet,
+  readSchematicMapManifest,
+  readSchematicMapRuleSet,
+  readSchematicMapVersionSnapshot,
   renderPagesIndex,
   type ValidationScope,
   validateDataRoot,
@@ -43,6 +53,8 @@ const usage = `Usage:
   mrtdown [--data-dir <path>] validate [--scope <scope>]
   mrtdown [--data-dir <path>] list <station|line|service|operator|town|landmark|issue>
   mrtdown [--data-dir <path>] show <station|line|service|operator|town|landmark|issue> <id>
+  mrtdown [--data-dir <path>] schematic-map list <constraint|version>
+  mrtdown [--data-dir <path>] schematic-map show <manifest|rules|constraint|version> [id]
   mrtdown [--data-dir <path>] create issue --date <YYYY-MM-DD> --title <title> [--slug <slug>] [--type <type>] [--source <source>]
   mrtdown [--data-dir <path>] create <station|line|service|operator|town|landmark> --file <path>
   mrtdown id issue --date <YYYY-MM-DD> --title <title>
@@ -119,6 +131,13 @@ function parseCollection(value: string): EntityCollection | 'issue' {
   throw new Error(`Unknown collection: ${value}`);
 }
 
+function parseValidationScope(value: string): ValidationScope {
+  if (value === 'schematic-map') {
+    return value;
+  }
+  return parseCollection(value);
+}
+
 async function writeTextFile(path: string, text: string): Promise<void> {
   await mkdir(dirname(path), { recursive: true });
   await writeFile(path, text);
@@ -135,7 +154,7 @@ async function runValidate(
     scope;
     scope = readOption(args, '--scope')
   ) {
-    scopes.push(parseCollection(scope) as ValidationScope);
+    scopes.push(parseValidationScope(scope));
   }
 
   const result = await validateDataRoot(
@@ -183,6 +202,66 @@ async function runShow(
       : await readEntity(globals.dataDir, collection, id);
   io.stdout(JSON.stringify(value, null, 2));
   return 0;
+}
+
+async function runSchematicMap(
+  args: string[],
+  globals: GlobalOptions,
+  io: CliIO,
+): Promise<number> {
+  const action = args.shift();
+
+  if (action === 'list') {
+    const kind = args.shift();
+    const values =
+      kind === 'constraint'
+        ? await listSchematicMapConstraintSetEffectiveDates(globals.dataDir)
+        : kind === 'version'
+          ? await listSchematicMapVersionSnapshotEffectiveDates(globals.dataDir)
+          : undefined;
+
+    if (!values) {
+      throw new Error('schematic-map list requires constraint or version');
+    }
+
+    io.stdout(values.join('\n'));
+    return 0;
+  }
+
+  if (action === 'show') {
+    const kind = args.shift();
+    const id = args.shift();
+    const value =
+      kind === 'manifest'
+        ? await readSchematicMapManifest(globals.dataDir)
+        : kind === 'rules'
+          ? await readSchematicMapRuleSet(
+              globals.dataDir,
+              id ? SchematicMapLayoutEngineIdSchema.parse(id) : undefined,
+            )
+          : kind === 'constraint' && id
+            ? await readSchematicMapConstraintSet(
+                globals.dataDir,
+                SchematicMapEffectiveDateSchema.parse(id),
+              )
+            : kind === 'version' && id
+              ? await readSchematicMapVersionSnapshot(
+                  globals.dataDir,
+                  SchematicMapEffectiveDateSchema.parse(id),
+                )
+              : undefined;
+
+    if (!value) {
+      throw new Error(
+        'schematic-map show requires manifest, rules, constraint <YYYY-MM>, or version <YYYY-MM>',
+      );
+    }
+
+    io.stdout(JSON.stringify(value, null, 2));
+    return 0;
+  }
+
+  throw new Error('schematic-map requires list or show');
 }
 
 async function runCreate(
@@ -286,6 +365,8 @@ export async function runCli(
         return await runList(command, globals, io);
       case 'show':
         return await runShow(command, globals, io);
+      case 'schematic-map':
+        return await runSchematicMap(command, globals, io);
       case 'create':
         return await runCreate(command, globals, io);
       case 'id':

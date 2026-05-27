@@ -1,4 +1,10 @@
-import type { IssueBundle } from '@mrtdown/core';
+import type {
+  IssueBundle,
+  SchematicMapConstraintSet,
+  SchematicMapManifest,
+  SchematicMapRuleSet,
+  SchematicMapVersionSnapshot,
+} from '@mrtdown/core';
 import type { z } from 'zod';
 import {
   type EntityCollection,
@@ -6,11 +12,20 @@ import {
   evidenceFileName,
   impactFileName,
   issueDirectory,
+  schematicMapDirectory,
 } from './constants.js';
 import { type EntityRecord, listEntities } from './entities.js';
 import { listIssueBundles } from './issues.js';
+import {
+  listSchematicMapConstraintSets,
+  listSchematicMapVersionSnapshots,
+  readSchematicMapManifest,
+  readSchematicMapRuleSet,
+  type SchematicMapRecord,
+  schematicSystemMapVersionSnapshotPath,
+} from './schematicMaps.js';
 
-export type ValidationScope = EntityCollection | 'issue';
+export type ValidationScope = EntityCollection | 'issue' | 'schematic-map';
 
 export type ValidationResult = {
   ok: boolean;
@@ -20,7 +35,9 @@ export type ValidationResult = {
 
 function emptyChecked(): Record<ValidationScope, number> {
   return Object.fromEntries(
-    [...entityCollections, issueDirectory].map((scope) => [scope, 0]),
+    [...entityCollections, issueDirectory, schematicMapDirectory].map(
+      (scope) => [scope, 0],
+    ),
   ) as Record<ValidationScope, number>;
 }
 
@@ -48,7 +65,15 @@ type ValidationRecords = Partial<{
   station: EntityRecord<'station'>[];
   town: EntityRecord<'town'>[];
   issue: IssueBundle[];
+  schematicMap: SchematicMapValidationRecords;
 }>;
+
+type SchematicMapValidationRecords = {
+  manifest: SchematicMapRecord<SchematicMapManifest> | null;
+  ruleSet: SchematicMapRecord<SchematicMapRuleSet> | null;
+  constraintSets: SchematicMapRecord<SchematicMapConstraintSet>[];
+  versionSnapshots: SchematicMapRecord<SchematicMapVersionSnapshot>[];
+};
 
 const generatedEvidenceIdPattern = /^ev_[0-9A-HJKMNP-TV-Z]{26}$/;
 
@@ -84,6 +109,40 @@ async function loadIssueRecords(
     records.issue = await listIssueBundles(dataDir);
   }
   return records.issue;
+}
+
+async function readOptionalSchematicMapRecord<T>(
+  read: () => Promise<SchematicMapRecord<T>>,
+): Promise<SchematicMapRecord<T> | null> {
+  try {
+    return await read();
+  } catch (error) {
+    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
+      return null;
+    }
+    throw error;
+  }
+}
+
+async function loadSchematicMapRecords(
+  dataDir: string,
+  records: ValidationRecords,
+): Promise<SchematicMapValidationRecords> {
+  if (records.schematicMap) {
+    return records.schematicMap;
+  }
+
+  records.schematicMap = {
+    manifest: await readOptionalSchematicMapRecord(() =>
+      readSchematicMapManifest(dataDir),
+    ),
+    ruleSet: await readOptionalSchematicMapRecord(() =>
+      readSchematicMapRuleSet(dataDir),
+    ),
+    constraintSets: await listSchematicMapConstraintSets(dataDir),
+    versionSnapshots: await listSchematicMapVersionSnapshots(dataDir),
+  };
+  return records.schematicMap;
 }
 
 async function validateStationReferences(
@@ -363,9 +422,169 @@ async function validateIssueReferences(
   return errors;
 }
 
+async function validateSchematicMapReferences(
+  dataDir: string,
+  shouldValidate: boolean,
+  records: ValidationRecords,
+): Promise<string[]> {
+  if (!shouldValidate) {
+    return [];
+  }
+
+  const lineIds = await loadEntityIds(dataDir, records, 'line');
+  const stationIds = await loadEntityIds(dataDir, records, 'station');
+  const schematicMap = await loadSchematicMapRecords(dataDir, records);
+  const errors: string[] = [];
+
+  const requireLineId = (path: string, lineId: string) => {
+    if (!lineIds.has(lineId)) {
+      errors.push(`${path} ${lineId} does not exist in line/`);
+    }
+  };
+
+  const requireStationId = (path: string, stationId: string) => {
+    if (!stationIds.has(stationId)) {
+      errors.push(`${path} ${stationId} does not exist in station/`);
+    }
+  };
+
+  if (schematicMap.ruleSet) {
+    schematicMap.ruleSet.value.lineOrder.forEach((lineId, index) => {
+      requireLineId(
+        `${schematicMap.ruleSet?.path}: lineOrder.${index}`,
+        lineId,
+      );
+    });
+  }
+
+  for (const constraintSet of schematicMap.constraintSets) {
+    for (const [
+      index,
+      constraint,
+    ] of constraintSet.value.constraints.entries()) {
+      const prefix = `${constraintSet.path}: constraints.${index}`;
+
+      if (constraint.type === 'station_anchor') {
+        requireStationId(`${prefix}.stationId`, constraint.stationId);
+      } else if (constraint.type === 'segment_route_hint') {
+        requireLineId(`${prefix}.lineId`, constraint.lineId);
+        requireStationId(`${prefix}.fromStationId`, constraint.fromStationId);
+        requireStationId(`${prefix}.toStationId`, constraint.toStationId);
+      } else if (constraint.type === 'line_order') {
+        constraint.lineIds.forEach((lineId, lineIndex) => {
+          requireLineId(`${prefix}.lineIds.${lineIndex}`, lineId);
+        });
+      } else if (constraint.type === 'label_hint') {
+        requireStationId(`${prefix}.stationId`, constraint.stationId);
+      } else if (constraint.type === 'interchange_hint') {
+        requireStationId(`${prefix}.stationId`, constraint.stationId);
+        constraint.lineIds.forEach((lineId, lineIndex) => {
+          requireLineId(`${prefix}.lineIds.${lineIndex}`, lineId);
+        });
+      }
+    }
+  }
+
+  const snapshotEffectiveDates = new Set(
+    schematicMap.versionSnapshots.map(
+      (snapshot) => snapshot.value.effectiveDate,
+    ),
+  );
+
+  if (schematicMap.manifest) {
+    for (const [
+      index,
+      version,
+    ] of schematicMap.manifest.value.versions.entries()) {
+      const prefix = `${schematicMap.manifest.path}: versions.${index}`;
+      const expectedDataPath = schematicSystemMapVersionSnapshotPath(
+        version.effectiveDate,
+      );
+      const expectedMapRelativePath = `version/${version.effectiveDate}.json`;
+
+      if (
+        version.path !== expectedDataPath &&
+        version.path !== expectedMapRelativePath
+      ) {
+        errors.push(
+          `${prefix}.path ${version.path} does not match ${expectedMapRelativePath}`,
+        );
+      }
+
+      if (!snapshotEffectiveDates.has(version.effectiveDate)) {
+        errors.push(
+          `${prefix}.effectiveDate ${version.effectiveDate} does not have a generated snapshot`,
+        );
+      }
+    }
+  }
+
+  for (const snapshot of schematicMap.versionSnapshots) {
+    snapshot.value.lineGroups.forEach((lineGroup, index) => {
+      requireLineId(
+        `${snapshot.path}: lineGroups.${index}.lineId`,
+        lineGroup.lineId,
+      );
+    });
+
+    snapshot.value.segments.forEach((segment, index) => {
+      const prefix = `${snapshot.path}: segments.${index}`;
+      requireLineId(`${prefix}.lineId`, segment.lineId);
+
+      if (segment.topology.type === 'station_pair') {
+        requireStationId(
+          `${prefix}.topology.fromStationId`,
+          segment.topology.fromStationId,
+        );
+        requireStationId(
+          `${prefix}.topology.toStationId`,
+          segment.topology.toStationId,
+        );
+      } else if (segment.topology.stationIds) {
+        segment.topology.stationIds.forEach((stationId, stationIndex) => {
+          requireStationId(
+            `${prefix}.topology.stationIds.${stationIndex}`,
+            stationId,
+          );
+        });
+      }
+    });
+
+    snapshot.value.stationNodes.forEach((node, index) => {
+      const prefix = `${snapshot.path}: stationNodes.${index}`;
+      requireStationId(`${prefix}.stationId`, node.stationId);
+      node.lineIds.forEach((lineId, lineIndex) => {
+        requireLineId(`${prefix}.lineIds.${lineIndex}`, lineId);
+      });
+      node.parts.forEach((part, partIndex) => {
+        requireLineId(`${prefix}.parts.${partIndex}.lineId`, part.lineId);
+      });
+    });
+
+    snapshot.value.labels.forEach((label, index) => {
+      requireStationId(
+        `${snapshot.path}: labels.${index}.stationId`,
+        label.stationId,
+      );
+    });
+
+    snapshot.value.stationCodeLabels.forEach((label, index) => {
+      const prefix = `${snapshot.path}: stationCodeLabels.${index}`;
+      requireStationId(`${prefix}.stationId`, label.stationId);
+      requireLineId(`${prefix}.lineId`, label.lineId);
+    });
+  }
+
+  return errors;
+}
+
 export async function validateDataRoot(
   dataDir: string,
-  scopes: readonly ValidationScope[] = [...entityCollections, issueDirectory],
+  scopes: readonly ValidationScope[] = [
+    ...entityCollections,
+    issueDirectory,
+    schematicMapDirectory,
+  ],
 ): Promise<ValidationResult> {
   const checked = emptyChecked();
   const errors: string[] = [];
@@ -376,6 +595,16 @@ export async function validateDataRoot(
       if (scope === 'issue') {
         const bundles = await loadIssueRecords(dataDir, records);
         checked.issue = bundles.length;
+        continue;
+      }
+
+      if (scope === 'schematic-map') {
+        const schematicMap = await loadSchematicMapRecords(dataDir, records);
+        checked['schematic-map'] =
+          (schematicMap.manifest ? 1 : 0) +
+          (schematicMap.ruleSet ? 1 : 0) +
+          schematicMap.constraintSets.length +
+          schematicMap.versionSnapshots.length;
         continue;
       }
 
@@ -412,6 +641,13 @@ export async function validateDataRoot(
       ...(await validateIssueReferences(
         dataDir,
         shouldValidateScope(scopes, 'issue'),
+        records,
+      )),
+    );
+    errors.push(
+      ...(await validateSchematicMapReferences(
+        dataDir,
+        shouldValidateScope(scopes, 'schematic-map'),
         records,
       )),
     );
