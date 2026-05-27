@@ -63,9 +63,17 @@ function effectiveMonthInterval(effectiveDate: SchematicMapEffectiveDate): {
   end: number;
 } {
   const [year, month] = effectiveDate.split('-').map(Number);
+  const endYear = month === 12 ? year + 1 : year;
+  const endMonth = month === 12 ? 1 : month + 1;
+  const formatMonth = (value: number) => value.toString().padStart(2, '0');
+
   return {
-    start: Date.UTC(year, month - 1, 1),
-    end: Date.UTC(year, month, 1),
+    start: timestampForSchematicMapGenerator(
+      `${year}-${formatMonth(month)}-01`,
+    ),
+    end: timestampForSchematicMapGenerator(
+      `${endYear}-${formatMonth(endMonth)}-01`,
+    ),
   };
 }
 
@@ -117,10 +125,186 @@ function lineIdPart(lineId: string): string {
   return lineId.toLowerCase();
 }
 
-function appendUnique(values: string[], value: string): void {
-  if (!values.includes(value)) {
-    values.push(value);
+function compareStationPaths(
+  a: readonly string[],
+  b: readonly string[],
+): number {
+  return a.join('\0').localeCompare(b.join('\0'));
+}
+
+function buildAdjacency(
+  segments: Map<string, { fromStationId: string; toStationId: string }>,
+): Map<string, Set<string>> {
+  const adjacency = new Map<string, Set<string>>();
+  const add = (from: string, to: string) => {
+    const neighbors = adjacency.get(from) ?? new Set<string>();
+    neighbors.add(to);
+    adjacency.set(from, neighbors);
+  };
+
+  for (const segment of segments.values()) {
+    add(segment.fromStationId, segment.toStationId);
+    add(segment.toStationId, segment.fromStationId);
   }
+
+  return adjacency;
+}
+
+function shortestStationPath(
+  adjacency: Map<string, Set<string>>,
+  start: string,
+  end: string,
+): string[] | undefined {
+  const queue = [start];
+  const previous = new Map<string, string | null>([[start, null]]);
+
+  for (let index = 0; index < queue.length; index += 1) {
+    const stationId = queue[index];
+    if (stationId === end) {
+      break;
+    }
+
+    const neighbors = [...(adjacency.get(stationId) ?? [])].sort((a, b) =>
+      a.localeCompare(b),
+    );
+    for (const neighbor of neighbors) {
+      if (previous.has(neighbor)) {
+        continue;
+      }
+      previous.set(neighbor, stationId);
+      queue.push(neighbor);
+    }
+  }
+
+  if (!previous.has(end)) {
+    return undefined;
+  }
+
+  const path: string[] = [];
+  for (
+    let stationId: string | null = end;
+    stationId != null;
+    stationId = previous.get(stationId) ?? null
+  ) {
+    path.unshift(stationId);
+  }
+
+  return path;
+}
+
+function longestStationPath(
+  adjacency: Map<string, Set<string>>,
+  candidates: readonly string[],
+): string[] {
+  const sortedCandidates = [...candidates].sort((a, b) => a.localeCompare(b));
+  let bestPath: string[] = [];
+
+  for (
+    let startIndex = 0;
+    startIndex < sortedCandidates.length;
+    startIndex += 1
+  ) {
+    for (
+      let endIndex = startIndex + 1;
+      endIndex < sortedCandidates.length;
+      endIndex += 1
+    ) {
+      const path = shortestStationPath(
+        adjacency,
+        sortedCandidates[startIndex],
+        sortedCandidates[endIndex],
+      );
+      if (!path) {
+        continue;
+      }
+
+      if (
+        path.length > bestPath.length ||
+        (path.length === bestPath.length &&
+          compareStationPaths(path, bestPath) < 0)
+      ) {
+        bestPath = path;
+      }
+    }
+  }
+
+  return bestPath.length > 0 ? bestPath : sortedCandidates.slice(0, 1);
+}
+
+function appendBranchStations(
+  stationId: string,
+  adjacency: Map<string, Set<string>>,
+  seen: Set<string>,
+  output: string[],
+): void {
+  const neighbors = [...(adjacency.get(stationId) ?? [])].sort((a, b) =>
+    a.localeCompare(b),
+  );
+
+  for (const neighbor of neighbors) {
+    if (seen.has(neighbor)) {
+      continue;
+    }
+
+    seen.add(neighbor);
+    output.push(neighbor);
+    appendBranchStations(neighbor, adjacency, seen, output);
+  }
+}
+
+function deriveLineStationOrder(
+  segments: Map<string, { fromStationId: string; toStationId: string }>,
+  referencePaths: readonly string[][],
+): string[] {
+  const adjacency = buildAdjacency(segments);
+  const stationIds = [...adjacency.keys()].sort((a, b) => a.localeCompare(b));
+  if (stationIds.length <= 1) {
+    return stationIds;
+  }
+
+  const terminals = stationIds.filter(
+    (stationId) => (adjacency.get(stationId)?.size ?? 0) <= 1,
+  );
+  const trunk = longestStationPath(
+    adjacency,
+    terminals.length >= 2 ? terminals : stationIds,
+  );
+  const orientedTrunk = orientStationPath(trunk, referencePaths);
+  const seen = new Set(orientedTrunk);
+  const ordered = [...orientedTrunk];
+
+  for (const stationId of orientedTrunk) {
+    appendBranchStations(stationId, adjacency, seen, ordered);
+  }
+
+  return ordered;
+}
+
+function orientStationPath(
+  path: readonly string[],
+  referencePaths: readonly string[][],
+): string[] {
+  if (path.length <= 1) {
+    return [...path];
+  }
+
+  const firstStationId = path[0];
+  const lastStationId = path[path.length - 1];
+  const sortedReferencePaths = [...referencePaths].sort(
+    (a, b) => b.length - a.length,
+  );
+
+  for (const referencePath of sortedReferencePaths) {
+    const firstIndex = referencePath.indexOf(firstStationId);
+    const lastIndex = referencePath.indexOf(lastStationId);
+    if (firstIndex === -1 || lastIndex === -1) {
+      continue;
+    }
+
+    return firstIndex <= lastIndex ? [...path] : [...path].reverse();
+  }
+
+  return [...path];
 }
 
 function compareByPreferredOrder(order: readonly string[]) {
@@ -211,6 +395,7 @@ function buildActiveTopology(
     string,
     Map<string, { fromStationId: string; toStationId: string }>
   >();
+  const lineRevisionPaths = new Map<string, string[][]>();
   const stationLineIds = new Map<string, Set<string>>();
 
   for (const service of services) {
@@ -226,17 +411,17 @@ function buildActiveTopology(
       }
 
       lineIds.add(service.lineId);
-      const stationsForLine = lineStations.get(service.lineId) ?? [];
-      lineStations.set(service.lineId, stationsForLine);
       const segmentsForLine = lineSegments.get(service.lineId) ?? new Map();
       lineSegments.set(service.lineId, segmentsForLine);
 
       const stationIds = revision.path.stations.map(
         (station) => station.stationId,
       );
+      const revisionPathsForLine = lineRevisionPaths.get(service.lineId) ?? [];
+      revisionPathsForLine.push(stationIds);
+      lineRevisionPaths.set(service.lineId, revisionPathsForLine);
 
       for (const stationId of stationIds) {
-        appendUnique(stationsForLine, stationId);
         const lineIdsForStation = stationLineIds.get(stationId) ?? new Set();
         lineIdsForStation.add(service.lineId);
         stationLineIds.set(stationId, lineIdsForStation);
@@ -251,6 +436,13 @@ function buildActiveTopology(
         }
       }
     }
+  }
+
+  for (const [lineId, segments] of lineSegments) {
+    lineStations.set(
+      lineId,
+      deriveLineStationOrder(segments, lineRevisionPaths.get(lineId) ?? []),
+    );
   }
 
   return {
@@ -534,7 +726,7 @@ export async function generateSchematicMapVersionSnapshot(
     }
 
     return {
-      id: `line_${lineId}`,
+      id: `line_${lineIdPart(lineId)}`,
       lineId,
       displayStatus: 'operational' as const,
       layerId: 'lines',

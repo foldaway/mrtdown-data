@@ -443,6 +443,11 @@ describe('@mrtdown/fs', () => {
       'TKL',
       'TWL',
     ]);
+    expect(snapshot.lineGroups.map((lineGroup) => lineGroup.id)).toEqual([
+      'line_isl',
+      'line_tkl',
+      'line_twl',
+    ]);
     expect(snapshot.segments).toContainEqual(
       expect.objectContaining({
         id: 'line_hku:ket',
@@ -490,6 +495,82 @@ describe('@mrtdown/fs', () => {
     ).resolves.toMatchObject({
       ok: true,
     });
+  });
+
+  it('uses Singapore month boundaries when selecting active schematic services', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL'],
+    });
+
+    const snapshot = await generateSchematicMapVersionSnapshot(dataDir, {
+      effectiveDate: '1979-09',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+    });
+
+    expect(snapshot.lineGroups).toEqual([]);
+    expect(snapshot.stationNodes).toEqual([]);
+  });
+
+  it('derives line station order from line topology instead of service file order', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeSchematicMapRuleSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      layoutEngineId: 'lta-system-map-2011',
+      lineOrder: ['ISL'],
+    });
+    await writeFile(
+      join(dataDir, 'service/AAA_BRANCH.json'),
+      `${JSON.stringify(
+        {
+          id: 'AAA_BRANCH',
+          name: {
+            'en-SG': 'Fixture branch',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          lineId: 'ISL',
+          revisions: [
+            {
+              id: 'r_initial',
+              startAt: '1979-10-01',
+              endAt: null,
+              path: {
+                stations: [
+                  { stationId: 'ADM', displayCode: 'ISL6' },
+                  { stationId: 'TST', displayCode: '' },
+                ],
+              },
+              operatingHours: {
+                weekdays: { start: '05:30', end: '00:30' },
+                weekends: { start: '05:30', end: '00:30' },
+              },
+            },
+          ],
+        },
+        null,
+        2,
+      )}\n`,
+    );
+
+    const snapshot = await generateSchematicMapVersionSnapshot(dataDir, {
+      effectiveDate: '2026-05',
+      generatedAt: '2026-05-27T00:00:00.000Z',
+    });
+
+    const stationX = new Map(
+      snapshot.stationNodes.map((node) => [node.stationId, node.center.x]),
+    );
+    expect(stationX.get('KET')).toBe(80);
+    expect(stationX.get('ADM')).toBeGreaterThan(stationX.get('KET') ?? 0);
+    expect(stationX.get('TST')).toBeGreaterThan(stationX.get('ADM') ?? 0);
   });
 
   it('rejects schematic map references that are missing from canonical data', async () => {
