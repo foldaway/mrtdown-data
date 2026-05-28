@@ -13,6 +13,10 @@ plan.
   evidence ingest boundaries.
 - [Schematic system map generation](active/schematic-system-map.md): canonical
   schematic map generator, rule schema, validation, and publication.
+- [Station first and last train data](active/station-first-last-train-data.md):
+  embedded station timing data keyed by full scheduled service patterns.
+- [Station layout data](active/station-layout-data.md): embedded current-state
+  station layout, platform, door-anchor, and transfer path data.
 
 ## Completed
 
