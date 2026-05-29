@@ -579,6 +579,7 @@ describe('@mrtdown/cli', () => {
         added: [],
         removed: [],
         geometryChanged: [],
+        geometryMetadataChanged: ['line_ket:hku'],
         topologyChanged: [],
         metadataChanged: ['line_ket:hku'],
       },

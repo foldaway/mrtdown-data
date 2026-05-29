@@ -210,6 +210,7 @@ type SchematicMapSemanticDiff = {
   };
   segments: IdDiff & {
     geometryChanged: string[];
+    geometryMetadataChanged: string[];
     topologyChanged: string[];
     metadataChanged: string[];
   };
@@ -500,6 +501,11 @@ function diffSchematicMapSnapshots(
             )
         );
       }),
+      geometryMetadataChanged: segmentIds.shared.filter(
+        (id) =>
+          stableJson(fromSegments.get(id)?.geometry.coordinateMetadata) !==
+          stableJson(toSegments.get(id)?.geometry.coordinateMetadata),
+      ),
       topologyChanged: segmentIds.shared.filter((id) => {
         const fromSegment = fromSegments.get(id);
         const toSegment = toSegments.get(id);
