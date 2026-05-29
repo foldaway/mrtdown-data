@@ -30,6 +30,10 @@
     "CCL_MAIN_CCW",
     "CCL_MAIN_CW",
     "CCL_EXT_CCW",
-    "CCL_EXT_CW"
+    "CCL_EXT_CW",
+    "CCL_LOOP_CCW",
+    "CCL_LOOP_CW",
+    "CCL_BRANCH_CCW",
+    "CCL_BRANCH_CW"
   ]
 }

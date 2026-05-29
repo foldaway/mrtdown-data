@@ -1,26 +1,42 @@
 {
-    "id": "CCL_EXT_CCW",
+    "id": "CCL_LOOP_CCW",
     "lineId": "CCL",
     "name": {
-        "en-SG": "Circle Line (Extension Service) - Counter-Clockwise",
-        "zh-Hans": "环线（延伸线） - 逆时针方向",
-        "ms": "Laluan MRT Bulat (Cawangan Pengembangan) - Arah Lawan Jam",
-        "ta": "வட்டமாக்கி எம்ஆர்டி வழி (நெடுவரிசை) - எதிர் காலம் திசை"
+        "en-SG": "Circle Line (Loop Service) - Anticlockwise",
+        "zh-Hans": "环线（环状服务） - 逆时针方向",
+        "ms": "Laluan MRT Bulat (Perkhidmatan Gelung) - Arah Lawan Jam",
+        "ta": "வட்டமாக்கி எம்ஆர்டி வழி (சுற்று சேவை) - எதிர் கடிகார திசை"
     },
     "revisions": [
         {
-            "id": "r_2012_extension",
-            "startAt": "2012-01-14",
-            "endAt": "2026-07-12",
+            "id": "r_2026_stage_6",
+            "startAt": "2026-07-12",
+            "endAt": null,
             "path": {
                 "stations": [
                     {
+                        "stationId": "HBF",
+                        "displayCode": "CC29"
+                    },
+                    {
+                        "stationId": "KPL",
+                        "displayCode": "CC30"
+                    },
+                    {
+                        "stationId": "CTM",
+                        "displayCode": "CC31"
+                    },
+                    {
+                        "stationId": "PER",
+                        "displayCode": "CC32"
+                    },
+                    {
                         "stationId": "MRB",
-                        "displayCode": "CE2"
+                        "displayCode": "CC33"
                     },
                     {
                         "stationId": "BFT",
-                        "displayCode": "CE1"
+                        "displayCode": "CC34"
                     },
                     {
                         "stationId": "PMN",

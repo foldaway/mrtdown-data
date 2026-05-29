@@ -29,6 +29,13 @@
       "lineId": "CCL",
       "code": "CE2",
       "startedAt": "2012-01-14T00:00:00Z",
+      "endedAt": "2026-07-12T00:00:00Z",
+      "structureType": "underground"
+    },
+    {
+      "lineId": "CCL",
+      "code": "CC33",
+      "startedAt": "2026-07-12T00:00:00Z",
       "endedAt": null,
       "structureType": "underground"
     }
