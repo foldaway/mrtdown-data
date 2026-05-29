@@ -67,6 +67,7 @@ const usage = `Usage:
   mrtdown [--data-dir <path>] schematic-map show <manifest|rules|constraint|version> [id]
   mrtdown [--data-dir <path>] schematic-map select <YYYY-MM|YYYY-MM-DD>
   mrtdown [--data-dir <path>] schematic-map stats <YYYY-MM>
+  mrtdown [--data-dir <path>] schematic-map diff <from YYYY-MM> <to YYYY-MM>
   mrtdown [--data-dir <path>] schematic-map generate <YYYY-MM> [--generated-at <timestamp>] [--write]
   mrtdown [--data-dir <path>] schematic-map preview <YYYY-MM> [--out <path>]
   mrtdown [--data-dir <path>] create issue --date <YYYY-MM-DD> --title <title> [--slug <slug>] [--type <type>] [--source <source>]
@@ -181,6 +182,58 @@ type CoordinateClassCounts = Record<
 
 type ConstraintTypeCounts = Record<SchematicMapConstraint['type'], number>;
 
+type IdDiff = {
+  added: string[];
+  removed: string[];
+};
+
+type SchematicMapSemanticDiff = {
+  from: string;
+  to: string;
+  frame: {
+    changed: boolean;
+  };
+  layers: {
+    changed: boolean;
+    from: string[];
+    to: string[];
+  };
+  lineGroups: IdDiff & {
+    changed: string[];
+  };
+  stations: IdDiff & {
+    idChanged: string[];
+    moved: string[];
+    lineMembershipChanged: string[];
+    partsChanged: string[];
+    metadataChanged: string[];
+  };
+  segments: IdDiff & {
+    geometryChanged: string[];
+    geometryMetadataChanged: string[];
+    topologyChanged: string[];
+    metadataChanged: string[];
+  };
+  labels: IdDiff & {
+    moved: string[];
+    sideChanged: string[];
+    stationChanged: string[];
+    leaderLineChanged: string[];
+    metadataChanged: string[];
+  };
+  stationCodeLabels: IdDiff & {
+    moved: string[];
+    sideChanged: string[];
+    stationChanged: string[];
+    metadataChanged: string[];
+  };
+  coordinates: {
+    from: CoordinateClassCounts;
+    to: CoordinateClassCounts;
+    delta: CoordinateClassCounts;
+  };
+};
+
 function createCoordinateClassCounts(): CoordinateClassCounts {
   return {
     artifact: 0,
@@ -256,6 +309,325 @@ function countConstraintTypes(
       station_anchor: 0,
     },
   );
+}
+
+function mapById<T extends { id: string }>(
+  items: readonly T[],
+): Map<string, T> {
+  return new Map(items.map((item) => [item.id, item]));
+}
+
+function sortedIds(values: Iterable<string>): string[] {
+  return [...values].sort((a, b) => a.localeCompare(b));
+}
+
+function diffIds(
+  fromIds: Iterable<string>,
+  toIds: Iterable<string>,
+): IdDiff & { shared: string[] } {
+  const fromSet = new Set(fromIds);
+  const toSet = new Set(toIds);
+
+  return {
+    added: sortedIds([...toSet].filter((id) => !fromSet.has(id))),
+    removed: sortedIds([...fromSet].filter((id) => !toSet.has(id))),
+    shared: sortedIds([...fromSet].filter((id) => toSet.has(id))),
+  };
+}
+
+function stableJson(value: unknown): string {
+  return JSON.stringify(value);
+}
+
+function samePoint(
+  from: { x: number; y: number },
+  to: { x: number; y: number },
+): boolean {
+  return from.x === to.x && from.y === to.y;
+}
+
+function coordinateClassDelta(
+  from: CoordinateClassCounts,
+  to: CoordinateClassCounts,
+): CoordinateClassCounts {
+  return {
+    artifact: to.artifact - from.artifact,
+    constraint: to.constraint - from.constraint,
+    exception: to.exception - from.exception,
+    generated: to.generated - from.generated,
+  };
+}
+
+function visibleSegmentGeometry(
+  geometry: SchematicMapVersionSnapshot['segments'][number]['geometry'],
+): unknown {
+  if (geometry.type === 'polyline') {
+    return {
+      type: geometry.type,
+      points: geometry.points,
+    };
+  }
+
+  return {
+    type: geometry.type,
+    start: geometry.start,
+    control1: geometry.control1,
+    control2: geometry.control2,
+    end: geometry.end,
+  };
+}
+
+function diffSchematicMapSnapshots(
+  from: SchematicMapVersionSnapshot,
+  to: SchematicMapVersionSnapshot,
+): SchematicMapSemanticDiff {
+  const fromLineGroups = mapById(from.lineGroups);
+  const toLineGroups = mapById(to.lineGroups);
+  const lineGroupIds = diffIds(fromLineGroups.keys(), toLineGroups.keys());
+
+  const fromStations = new Map(
+    from.stationNodes.map((node) => [node.stationId, node]),
+  );
+  const toStations = new Map(
+    to.stationNodes.map((node) => [node.stationId, node]),
+  );
+  const stationIds = diffIds(fromStations.keys(), toStations.keys());
+
+  const fromSegments = mapById(from.segments);
+  const toSegments = mapById(to.segments);
+  const segmentIds = diffIds(fromSegments.keys(), toSegments.keys());
+
+  const fromLabels = mapById(from.labels);
+  const toLabels = mapById(to.labels);
+  const labelIds = diffIds(fromLabels.keys(), toLabels.keys());
+
+  const fromStationCodeLabels = mapById(from.stationCodeLabels);
+  const toStationCodeLabels = mapById(to.stationCodeLabels);
+  const stationCodeLabelIds = diffIds(
+    fromStationCodeLabels.keys(),
+    toStationCodeLabels.keys(),
+  );
+
+  const fromCoordinateCounts = countSchematicMapSnapshotCoordinates(from);
+  const toCoordinateCounts = countSchematicMapSnapshotCoordinates(to);
+
+  return {
+    from: from.effectiveDate,
+    to: to.effectiveDate,
+    frame: {
+      changed: stableJson(from.frame) !== stableJson(to.frame),
+    },
+    layers: {
+      changed: stableJson(from.layers) !== stableJson(to.layers),
+      from: from.layers.map((layer) => layer.id),
+      to: to.layers.map((layer) => layer.id),
+    },
+    lineGroups: {
+      added: lineGroupIds.added,
+      removed: lineGroupIds.removed,
+      changed: lineGroupIds.shared.filter(
+        (id) =>
+          stableJson(fromLineGroups.get(id)) !==
+          stableJson(toLineGroups.get(id)),
+      ),
+    },
+    stations: {
+      added: stationIds.added,
+      removed: stationIds.removed,
+      idChanged: stationIds.shared.filter(
+        (stationId) =>
+          fromStations.get(stationId)?.id !== toStations.get(stationId)?.id,
+      ),
+      moved: stationIds.shared.filter((stationId) => {
+        const fromNode = fromStations.get(stationId);
+        const toNode = toStations.get(stationId);
+        return Boolean(
+          fromNode && toNode && !samePoint(fromNode.center, toNode.center),
+        );
+      }),
+      lineMembershipChanged: stationIds.shared.filter((stationId) => {
+        const fromNode = fromStations.get(stationId);
+        const toNode = toStations.get(stationId);
+        return (
+          Boolean(fromNode && toNode) &&
+          stableJson(fromNode?.lineIds) !== stableJson(toNode?.lineIds)
+        );
+      }),
+      partsChanged: stationIds.shared.filter((stationId) => {
+        const fromNode = fromStations.get(stationId);
+        const toNode = toStations.get(stationId);
+        return (
+          Boolean(fromNode && toNode) &&
+          stableJson(fromNode?.parts) !== stableJson(toNode?.parts)
+        );
+      }),
+      metadataChanged: stationIds.shared.filter((stationId) => {
+        const fromNode = fromStations.get(stationId);
+        const toNode = toStations.get(stationId);
+        return (
+          Boolean(fromNode && toNode) &&
+          stableJson({
+            displayStatus: fromNode?.displayStatus,
+            displayReason: fromNode?.displayReason,
+            layerId: fromNode?.layerId,
+            coordinateMetadata: fromNode?.coordinateMetadata,
+          }) !==
+            stableJson({
+              displayStatus: toNode?.displayStatus,
+              displayReason: toNode?.displayReason,
+              layerId: toNode?.layerId,
+              coordinateMetadata: toNode?.coordinateMetadata,
+            })
+        );
+      }),
+    },
+    segments: {
+      added: segmentIds.added,
+      removed: segmentIds.removed,
+      geometryChanged: segmentIds.shared.filter((id) => {
+        const fromSegment = fromSegments.get(id);
+        const toSegment = toSegments.get(id);
+        return (
+          Boolean(fromSegment && toSegment) &&
+          stableJson(
+            fromSegment
+              ? visibleSegmentGeometry(fromSegment.geometry)
+              : undefined,
+          ) !==
+            stableJson(
+              toSegment
+                ? visibleSegmentGeometry(toSegment.geometry)
+                : undefined,
+            )
+        );
+      }),
+      geometryMetadataChanged: segmentIds.shared.filter(
+        (id) =>
+          stableJson(fromSegments.get(id)?.geometry.coordinateMetadata) !==
+          stableJson(toSegments.get(id)?.geometry.coordinateMetadata),
+      ),
+      topologyChanged: segmentIds.shared.filter((id) => {
+        const fromSegment = fromSegments.get(id);
+        const toSegment = toSegments.get(id);
+        return (
+          Boolean(fromSegment && toSegment) &&
+          stableJson(fromSegment?.topology) !== stableJson(toSegment?.topology)
+        );
+      }),
+      metadataChanged: segmentIds.shared.filter((id) => {
+        const fromSegment = fromSegments.get(id);
+        const toSegment = toSegments.get(id);
+        return (
+          Boolean(fromSegment && toSegment) &&
+          stableJson({
+            lineId: fromSegment?.lineId,
+            displayStatus: fromSegment?.displayStatus,
+            displayReason: fromSegment?.displayReason,
+            layerId: fromSegment?.layerId,
+          }) !==
+            stableJson({
+              lineId: toSegment?.lineId,
+              displayStatus: toSegment?.displayStatus,
+              displayReason: toSegment?.displayReason,
+              layerId: toSegment?.layerId,
+            })
+        );
+      }),
+    },
+    labels: {
+      added: labelIds.added,
+      removed: labelIds.removed,
+      moved: labelIds.shared.filter((id) => {
+        const fromLabel = fromLabels.get(id);
+        const toLabel = toLabels.get(id);
+        return Boolean(
+          fromLabel && toLabel && !samePoint(fromLabel.anchor, toLabel.anchor),
+        );
+      }),
+      sideChanged: labelIds.shared.filter(
+        (id) => fromLabels.get(id)?.side !== toLabels.get(id)?.side,
+      ),
+      stationChanged: labelIds.shared.filter(
+        (id) => fromLabels.get(id)?.stationId !== toLabels.get(id)?.stationId,
+      ),
+      leaderLineChanged: labelIds.shared.filter(
+        (id) =>
+          stableJson(fromLabels.get(id)?.leaderLine) !==
+          stableJson(toLabels.get(id)?.leaderLine),
+      ),
+      metadataChanged: labelIds.shared.filter((id) => {
+        const fromLabel = fromLabels.get(id);
+        const toLabel = toLabels.get(id);
+        return (
+          Boolean(fromLabel && toLabel) &&
+          stableJson({
+            displayStatus: fromLabel?.displayStatus,
+            displayReason: fromLabel?.displayReason,
+            layerId: fromLabel?.layerId,
+            rotationDegrees: fromLabel?.rotationDegrees,
+            coordinateMetadata: fromLabel?.coordinateMetadata,
+          }) !==
+            stableJson({
+              displayStatus: toLabel?.displayStatus,
+              displayReason: toLabel?.displayReason,
+              layerId: toLabel?.layerId,
+              rotationDegrees: toLabel?.rotationDegrees,
+              coordinateMetadata: toLabel?.coordinateMetadata,
+            })
+        );
+      }),
+    },
+    stationCodeLabels: {
+      added: stationCodeLabelIds.added,
+      removed: stationCodeLabelIds.removed,
+      moved: stationCodeLabelIds.shared.filter((id) => {
+        const fromLabel = fromStationCodeLabels.get(id);
+        const toLabel = toStationCodeLabels.get(id);
+        return Boolean(
+          fromLabel && toLabel && !samePoint(fromLabel.anchor, toLabel.anchor),
+        );
+      }),
+      sideChanged: stationCodeLabelIds.shared.filter(
+        (id) =>
+          fromStationCodeLabels.get(id)?.side !==
+          toStationCodeLabels.get(id)?.side,
+      ),
+      stationChanged: stationCodeLabelIds.shared.filter((id) => {
+        const fromLabel = fromStationCodeLabels.get(id);
+        const toLabel = toStationCodeLabels.get(id);
+        return (
+          fromLabel?.stationId !== toLabel?.stationId ||
+          fromLabel?.lineId !== toLabel?.lineId
+        );
+      }),
+      metadataChanged: stationCodeLabelIds.shared.filter((id) => {
+        const fromLabel = fromStationCodeLabels.get(id);
+        const toLabel = toStationCodeLabels.get(id);
+        return (
+          Boolean(fromLabel && toLabel) &&
+          stableJson({
+            displayStatus: fromLabel?.displayStatus,
+            displayReason: fromLabel?.displayReason,
+            layerId: fromLabel?.layerId,
+            rotationDegrees: fromLabel?.rotationDegrees,
+            coordinateMetadata: fromLabel?.coordinateMetadata,
+          }) !==
+            stableJson({
+              displayStatus: toLabel?.displayStatus,
+              displayReason: toLabel?.displayReason,
+              layerId: toLabel?.layerId,
+              rotationDegrees: toLabel?.rotationDegrees,
+              coordinateMetadata: toLabel?.coordinateMetadata,
+            })
+        );
+      }),
+    },
+    coordinates: {
+      from: fromCoordinateCounts,
+      to: toCoordinateCounts,
+      delta: coordinateClassDelta(fromCoordinateCounts, toCoordinateCounts),
+    },
+  };
 }
 
 function renderGeometry(
@@ -691,6 +1063,36 @@ async function runSchematicMap(
     return 0;
   }
 
+  if (action === 'diff') {
+    const fromId = args.shift();
+    const toId = args.shift();
+    if (!fromId || !toId) {
+      throw new Error(
+        'schematic-map diff requires from YYYY-MM and to YYYY-MM',
+      );
+    }
+
+    const [fromSnapshot, toSnapshot] = await Promise.all([
+      readSchematicMapVersionSnapshot(
+        globals.dataDir,
+        SchematicMapEffectiveDateSchema.parse(fromId),
+      ),
+      readSchematicMapVersionSnapshot(
+        globals.dataDir,
+        SchematicMapEffectiveDateSchema.parse(toId),
+      ),
+    ]);
+
+    io.stdout(
+      JSON.stringify(
+        diffSchematicMapSnapshots(fromSnapshot.value, toSnapshot.value),
+        null,
+        2,
+      ),
+    );
+    return 0;
+  }
+
   if (action === 'generate') {
     const id = args.shift();
     if (!id) {
@@ -754,7 +1156,7 @@ async function runSchematicMap(
   }
 
   throw new Error(
-    'schematic-map requires list, show, select, stats, generate, or preview',
+    'schematic-map requires list, show, select, stats, diff, generate, or preview',
   );
 }
 

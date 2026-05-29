@@ -417,6 +417,9 @@ Exit criteria:
   manifests and version snapshots inside `pages:build` from tracked generator
   constraints, without treating generated version files as source-controlled
   canonical data.
+- 2026-05-28: Began Phase 5 review tooling with `schematic-map diff` for
+  semantic snapshot comparison across layers, line groups, stations, segments,
+  labels, station-code labels, and coordinate-class deltas.
 
 ## Decision Log
 
