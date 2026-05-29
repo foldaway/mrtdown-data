@@ -155,3 +155,6 @@ data/manifest.json
 data/index.html
 pages-dist
 fixtures/generated
+preview.svg
+data/schematic-map/system/manifest.json
+data/schematic-map/system/version/

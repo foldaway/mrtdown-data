@@ -452,6 +452,24 @@ describe('@mrtdown/cli', () => {
     ).value;
     await writeSchematicMapVersionSnapshot(dataDir, {
       ...baseSnapshot,
+      stationCodeLabels: [
+        {
+          id: 'IS1',
+          stationId: 'KET',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          anchor: { x: 100, y: 116 },
+          side: 'bottom',
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-station-code-label',
+          },
+        },
+      ],
+    });
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      ...baseSnapshot,
       effectiveDate: '2025-05',
       generatedAt: '2026-05-28T00:00:00.000Z',
       segments: baseSnapshot.segments.map((segment) =>
@@ -460,10 +478,10 @@ describe('@mrtdown/cli', () => {
               ...segment,
               geometry: {
                 ...segment.geometry,
-                points: [
-                  { x: 120, y: 120 },
-                  { x: 220, y: 120 },
-                ],
+                coordinateMetadata: {
+                  coordinateClass: 'constraint',
+                  constraintId: 'anchor_ket',
+                },
               },
             }
           : segment,
@@ -473,6 +491,13 @@ describe('@mrtdown/cli', () => {
           ? {
               ...node,
               center: { x: 120, y: 120 },
+              parts: node.parts.map((part) => ({
+                ...part,
+                shape: {
+                  ...part.shape,
+                  radius: part.shape.type === 'circle' ? 10 : part.shape.radius,
+                },
+              })),
             }
           : node,
       ),
@@ -482,6 +507,18 @@ describe('@mrtdown/cli', () => {
             ? {
                 ...label,
                 anchor: { x: 120, y: 104 },
+                rotationDegrees: 45,
+                leaderLine: {
+                  type: 'polyline',
+                  points: [
+                    { x: 110, y: 100 },
+                    { x: 120, y: 104 },
+                  ],
+                  coordinateMetadata: {
+                    coordinateClass: 'generated',
+                    ruleId: 'fixture-label-leader',
+                  },
+                },
               }
             : label,
         ),
@@ -495,6 +532,22 @@ describe('@mrtdown/cli', () => {
           coordinateMetadata: {
             coordinateClass: 'generated',
             ruleId: 'fixture-label',
+          },
+        },
+      ],
+      stationCodeLabels: [
+        {
+          id: 'IS1',
+          stationId: 'KET',
+          lineId: 'ISL',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          anchor: { x: 100, y: 116 },
+          side: 'top',
+          rotationDegrees: 45,
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-station-code-label',
           },
         },
       ],
@@ -516,11 +569,13 @@ describe('@mrtdown/cli', () => {
         removed: [],
         moved: ['KET'],
         lineMembershipChanged: [],
+        partsChanged: ['KET'],
+        metadataChanged: [],
       },
       segments: {
         added: [],
         removed: [],
-        geometryChanged: ['line_ket:hku'],
+        geometryChanged: [],
         topologyChanged: [],
         metadataChanged: [],
       },
@@ -530,11 +585,21 @@ describe('@mrtdown/cli', () => {
         moved: ['label_ket'],
         sideChanged: [],
         stationChanged: [],
+        leaderLineChanged: ['label_ket'],
+        metadataChanged: ['label_ket'],
+      },
+      stationCodeLabels: {
+        added: [],
+        removed: [],
+        moved: [],
+        sideChanged: ['IS1'],
+        stationChanged: [],
+        metadataChanged: ['IS1'],
       },
       coordinates: {
         delta: {
           artifact: 0,
-          constraint: 0,
+          constraint: 2,
           exception: 0,
           generated: 1,
         },

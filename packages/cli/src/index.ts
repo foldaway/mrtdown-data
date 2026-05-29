@@ -204,6 +204,8 @@ type SchematicMapSemanticDiff = {
   stations: IdDiff & {
     moved: string[];
     lineMembershipChanged: string[];
+    partsChanged: string[];
+    metadataChanged: string[];
   };
   segments: IdDiff & {
     geometryChanged: string[];
@@ -214,10 +216,14 @@ type SchematicMapSemanticDiff = {
     moved: string[];
     sideChanged: string[];
     stationChanged: string[];
+    leaderLineChanged: string[];
+    metadataChanged: string[];
   };
   stationCodeLabels: IdDiff & {
     moved: string[];
+    sideChanged: string[];
     stationChanged: string[];
+    metadataChanged: string[];
   };
   coordinates: {
     from: CoordinateClassCounts;
@@ -350,6 +356,25 @@ function coordinateClassDelta(
   };
 }
 
+function visibleSegmentGeometry(
+  geometry: SchematicMapVersionSnapshot['segments'][number]['geometry'],
+): unknown {
+  if (geometry.type === 'polyline') {
+    return {
+      type: geometry.type,
+      points: geometry.points,
+    };
+  }
+
+  return {
+    type: geometry.type,
+    start: geometry.start,
+    control1: geometry.control1,
+    control2: geometry.control2,
+    end: geometry.end,
+  };
+}
+
 function diffSchematicMapSnapshots(
   from: SchematicMapVersionSnapshot,
   to: SchematicMapVersionSnapshot,
@@ -422,6 +447,33 @@ function diffSchematicMapSnapshots(
           stableJson(fromNode?.lineIds) !== stableJson(toNode?.lineIds)
         );
       }),
+      partsChanged: stationIds.shared.filter((stationId) => {
+        const fromNode = fromStations.get(stationId);
+        const toNode = toStations.get(stationId);
+        return (
+          Boolean(fromNode && toNode) &&
+          stableJson(fromNode?.parts) !== stableJson(toNode?.parts)
+        );
+      }),
+      metadataChanged: stationIds.shared.filter((stationId) => {
+        const fromNode = fromStations.get(stationId);
+        const toNode = toStations.get(stationId);
+        return (
+          Boolean(fromNode && toNode) &&
+          stableJson({
+            displayStatus: fromNode?.displayStatus,
+            displayReason: fromNode?.displayReason,
+            layerId: fromNode?.layerId,
+            coordinateMetadata: fromNode?.coordinateMetadata,
+          }) !==
+            stableJson({
+              displayStatus: toNode?.displayStatus,
+              displayReason: toNode?.displayReason,
+              layerId: toNode?.layerId,
+              coordinateMetadata: toNode?.coordinateMetadata,
+            })
+        );
+      }),
     },
     segments: {
       added: segmentIds.added,
@@ -431,7 +483,16 @@ function diffSchematicMapSnapshots(
         const toSegment = toSegments.get(id);
         return (
           Boolean(fromSegment && toSegment) &&
-          stableJson(fromSegment?.geometry) !== stableJson(toSegment?.geometry)
+          stableJson(
+            fromSegment
+              ? visibleSegmentGeometry(fromSegment.geometry)
+              : undefined,
+          ) !==
+            stableJson(
+              toSegment
+                ? visibleSegmentGeometry(toSegment.geometry)
+                : undefined,
+            )
         );
       }),
       topologyChanged: segmentIds.shared.filter((id) => {
@@ -476,6 +537,32 @@ function diffSchematicMapSnapshots(
       stationChanged: labelIds.shared.filter(
         (id) => fromLabels.get(id)?.stationId !== toLabels.get(id)?.stationId,
       ),
+      leaderLineChanged: labelIds.shared.filter(
+        (id) =>
+          stableJson(fromLabels.get(id)?.leaderLine) !==
+          stableJson(toLabels.get(id)?.leaderLine),
+      ),
+      metadataChanged: labelIds.shared.filter((id) => {
+        const fromLabel = fromLabels.get(id);
+        const toLabel = toLabels.get(id);
+        return (
+          Boolean(fromLabel && toLabel) &&
+          stableJson({
+            displayStatus: fromLabel?.displayStatus,
+            displayReason: fromLabel?.displayReason,
+            layerId: fromLabel?.layerId,
+            rotationDegrees: fromLabel?.rotationDegrees,
+            coordinateMetadata: fromLabel?.coordinateMetadata,
+          }) !==
+            stableJson({
+              displayStatus: toLabel?.displayStatus,
+              displayReason: toLabel?.displayReason,
+              layerId: toLabel?.layerId,
+              rotationDegrees: toLabel?.rotationDegrees,
+              coordinateMetadata: toLabel?.coordinateMetadata,
+            })
+        );
+      }),
     },
     stationCodeLabels: {
       added: stationCodeLabelIds.added,
@@ -487,12 +574,38 @@ function diffSchematicMapSnapshots(
           fromLabel && toLabel && !samePoint(fromLabel.anchor, toLabel.anchor),
         );
       }),
+      sideChanged: stationCodeLabelIds.shared.filter(
+        (id) =>
+          fromStationCodeLabels.get(id)?.side !==
+          toStationCodeLabels.get(id)?.side,
+      ),
       stationChanged: stationCodeLabelIds.shared.filter((id) => {
         const fromLabel = fromStationCodeLabels.get(id);
         const toLabel = toStationCodeLabels.get(id);
         return (
           fromLabel?.stationId !== toLabel?.stationId ||
           fromLabel?.lineId !== toLabel?.lineId
+        );
+      }),
+      metadataChanged: stationCodeLabelIds.shared.filter((id) => {
+        const fromLabel = fromStationCodeLabels.get(id);
+        const toLabel = toStationCodeLabels.get(id);
+        return (
+          Boolean(fromLabel && toLabel) &&
+          stableJson({
+            displayStatus: fromLabel?.displayStatus,
+            displayReason: fromLabel?.displayReason,
+            layerId: fromLabel?.layerId,
+            rotationDegrees: fromLabel?.rotationDegrees,
+            coordinateMetadata: fromLabel?.coordinateMetadata,
+          }) !==
+            stableJson({
+              displayStatus: toLabel?.displayStatus,
+              displayReason: toLabel?.displayReason,
+              layerId: toLabel?.layerId,
+              rotationDegrees: toLabel?.rotationDegrees,
+              coordinateMetadata: toLabel?.coordinateMetadata,
+            })
         );
       }),
     },
