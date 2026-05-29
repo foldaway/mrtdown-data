@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
+  readSchematicMapVersionSnapshot,
   writeSchematicMapConstraintSet,
   writeSchematicMapManifest,
   writeSchematicMapRuleSet,
@@ -438,6 +439,105 @@ describe('@mrtdown/cli', () => {
     expect(JSON.parse(stats.stdout[0] as string)).toMatchObject({
       constraints: {
         total: 0,
+      },
+    });
+  });
+
+  it('reports semantic schematic map diffs for reviewers', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await seedSchematicMap(dataDir);
+    const baseSnapshot = (
+      await readSchematicMapVersionSnapshot(dataDir, '2025-04')
+    ).value;
+    await writeSchematicMapVersionSnapshot(dataDir, {
+      ...baseSnapshot,
+      effectiveDate: '2025-05',
+      generatedAt: '2026-05-28T00:00:00.000Z',
+      segments: baseSnapshot.segments.map((segment) =>
+        segment.id === 'line_ket:hku'
+          ? {
+              ...segment,
+              geometry: {
+                ...segment.geometry,
+                points: [
+                  { x: 120, y: 120 },
+                  { x: 220, y: 120 },
+                ],
+              },
+            }
+          : segment,
+      ),
+      stationNodes: baseSnapshot.stationNodes.map((node) =>
+        node.stationId === 'KET'
+          ? {
+              ...node,
+              center: { x: 120, y: 120 },
+            }
+          : node,
+      ),
+      labels: [
+        ...baseSnapshot.labels.map((label) =>
+          label.id === 'label_ket'
+            ? {
+                ...label,
+                anchor: { x: 120, y: 104 },
+              }
+            : label,
+        ),
+        {
+          id: 'label_hku',
+          stationId: 'HKU',
+          displayStatus: 'operational',
+          layerId: 'lines',
+          anchor: { x: 200, y: 84 },
+          side: 'top',
+          coordinateMetadata: {
+            coordinateClass: 'generated',
+            ruleId: 'fixture-label',
+          },
+        },
+      ],
+    });
+
+    const diff = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'schematic-map', 'diff', '2025-04', '2025-05'],
+        diff.io,
+      ),
+    ).resolves.toBe(0);
+
+    expect(JSON.parse(diff.stdout[0] as string)).toMatchObject({
+      from: '2025-04',
+      to: '2025-05',
+      stations: {
+        added: [],
+        removed: [],
+        moved: ['KET'],
+        lineMembershipChanged: [],
+      },
+      segments: {
+        added: [],
+        removed: [],
+        geometryChanged: ['line_ket:hku'],
+        topologyChanged: [],
+        metadataChanged: [],
+      },
+      labels: {
+        added: ['label_hku'],
+        removed: [],
+        moved: ['label_ket'],
+        sideChanged: [],
+        stationChanged: [],
+      },
+      coordinates: {
+        delta: {
+          artifact: 0,
+          constraint: 0,
+          exception: 0,
+          generated: 1,
+        },
       },
     });
   });

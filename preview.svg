@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3140 2400" width="3140" height="2400" role="img" aria-label="MRTDown schematic map preview 2025-04">
+<style>
+  svg { background: #f7f6f2; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .line-segment { fill: none; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+  .station-node { fill: #ffffff; stroke-width: 4; }
+  .station-label { fill: #1f2933; font-size: 20px; font-weight: 650; dominant-baseline: middle; }
+  .station-code { fill: #4b5563; font-size: 13px; font-weight: 700; dominant-baseline: middle; }
+</style>
+<rect x="0" y="0" width="3140" height="2400" fill="#f7f6f2"/>
+<g id="lines" data-role="line">
+<polyline id="line_adm:sbw" points="2028.4615384615383,120 2143.076923076923,120" class="line-segment" stroke="#d42e12"><title>NSL line_adm:sbw</title></polyline>
+<polyline id="line_adm:wdl" points="2143.076923076923,120 2257.6923076923076,120" class="line-segment" stroke="#d42e12"><title>NSL line_adm:wdl</title></polyline>
+<polyline id="line_amk:bsh" points="1340.7692307692307,120 1455.3846153846152,120" class="line-segment" stroke="#d42e12"><title>NSL line_amk:bsh</title></polyline>
+<polyline id="line_amk:yck" points="1455.3846153846152,120 1570,120" class="line-segment" stroke="#d42e12"><title>NSL line_amk:yck</title></polyline>
+<polyline id="line_bbt:bgb" points="2830.7692307692305,120 2945.3846153846152,120" class="line-segment" stroke="#d42e12"><title>NSL line_bbt:bgb</title></polyline>
+<polyline id="line_bbt:jur" points="2945.3846153846152,120 3060,120" class="line-segment" stroke="#d42e12"><title>NSL line_bbt:jur</title></polyline>
+<polyline id="line_bdl:bsh" points="1226.1538461538462,120 1340.7692307692307,120" class="line-segment" stroke="#d42e12"><title>NSL line_bdl:bsh</title></polyline>
+<polyline id="line_bdl:tap" points="1111.5384615384614,120 1226.1538461538462,120" class="line-segment" stroke="#d42e12"><title>NSL line_bdl:tap</title></polyline>
+<polyline id="line_bgb:cck" points="2716.153846153846,120 2830.7692307692305,120" class="line-segment" stroke="#d42e12"><title>NSL line_bgb:cck</title></polyline>
+<polyline id="line_cbr:sbw" points="1913.8461538461538,120 2028.4615384615383,120" class="line-segment" stroke="#d42e12"><title>NSL line_cbr:sbw</title></polyline>
+<polyline id="line_cbr:yis" points="1799.2307692307693,120 1913.8461538461538,120" class="line-segment" stroke="#d42e12"><title>NSL line_cbr:yis</title></polyline>
+<polyline id="line_cck:ywt" points="2601.5384615384614,120 2716.153846153846,120" class="line-segment" stroke="#d42e12"><title>NSL line_cck:ywt</title></polyline>
+<polyline id="line_cth:dbg" points="423.8461538461538,120 538.4615384615385,120" class="line-segment" stroke="#d42e12"><title>NSL line_cth:dbg</title></polyline>
+<polyline id="line_cth:rfp_nsl" points="309.2307692307692,120 423.8461538461538,120" class="line-segment" stroke="#d42e12"><title>NSL line_cth:rfp_nsl</title></polyline>
+<polyline id="line_dbg:som" points="538.4615384615385,120 653.0769230769231,120" class="line-segment" stroke="#d42e12"><title>NSL line_dbg:som</title></polyline>
+<polyline id="line_krj:msl" points="2372.3076923076924,120 2486.9230769230767,120" class="line-segment" stroke="#d42e12"><title>NSL line_krj:msl</title></polyline>
+<polyline id="line_krj:ywt" points="2486.9230769230767,120 2601.5384615384614,120" class="line-segment" stroke="#d42e12"><title>NSL line_krj:ywt</title></polyline>
+<polyline id="line_ktb:yck" points="1570,120 1684.6153846153845,120" class="line-segment" stroke="#d42e12"><title>NSL line_ktb:yck</title></polyline>
+<polyline id="line_ktb:yis" points="1684.6153846153845,120 1799.2307692307693,120" class="line-segment" stroke="#d42e12"><title>NSL line_ktb:yis</title></polyline>
+<polyline id="line_mrb:msp" points="80,120 194.6153846153846,120" class="line-segment" stroke="#d42e12"><title>NSL line_mrb:msp</title></polyline>
+<polyline id="line_mrb:rfp" points="194.6153846153846,120 309.2307692307692,120" class="line-segment" stroke="#d42e12"><title>NSL line_mrb:rfp</title></polyline>
+<polyline id="line_msl:wdl" points="2257.6923076923076,120 2372.3076923076924,120" class="line-segment" stroke="#d42e12"><title>NSL line_msl:wdl</title></polyline>
+<polyline id="line_new:nov" points="882.3076923076923,120 996.9230769230769,120" class="line-segment" stroke="#d42e12"><title>NSL line_new:nov</title></polyline>
+<polyline id="line_new:orc" points="767.6923076923076,120 882.3076923076923,120" class="line-segment" stroke="#d42e12"><title>NSL line_new:orc</title></polyline>
+<polyline id="line_nov:tap" points="996.9230769230769,120 1111.5384615384614,120" class="line-segment" stroke="#d42e12"><title>NSL line_nov:tap</title></polyline>
+<polyline id="line_orc:som" points="653.0769230769231,120 767.6923076923076,120" class="line-segment" stroke="#d42e12"><title>NSL line_orc:som</title></polyline>
+<polyline id="line_alj:kal" points="2358.8235294117644,260 2446.470588235294,260" class="line-segment" stroke="#009645"><title>EWL line_alj:kal</title></polyline>
+<polyline id="line_alj:pyl" points="2446.470588235294,260 2534.1176470588234,260" class="line-segment" stroke="#009645"><title>EWL line_alj:pyl</title></polyline>
+<polyline id="line_bdk:kem" points="2709.411764705882,260 2797.0588235294117,260" class="line-segment" stroke="#009645"><title>EWL line_bdk:kem</title></polyline>
+<polyline id="line_bdk:tnm" points="2797.0588235294117,260 80,260" class="line-segment" stroke="#009645"><title>EWL line_bdk:tnm</title></polyline>
+<polyline id="line_bgs:cth" points="423.8461538461538,120 2183.529411764706,260" class="line-segment" stroke="#009645"><title>EWL line_bgs:cth</title></polyline>
+<polyline id="line_bgs:lvr" points="2183.529411764706,260 2271.176470588235,260" class="line-segment" stroke="#009645"><title>EWL line_bgs:lvr</title></polyline>
+<polyline id="line_bnl:lks" points="868.8235294117646,260 956.470588235294,260" class="line-segment" stroke="#009645"><title>EWL line_bnl:lks</title></polyline>
+<polyline id="line_bnl:pnr" points="781.1764705882352,260 868.8235294117646,260" class="line-segment" stroke="#009645"><title>EWL line_bnl:pnr</title></polyline>
+<polyline id="line_bnv:com" points="1394.705882352941,260 1482.3529411764705,260" class="line-segment" stroke="#009645"><title>EWL line_bnv:com</title></polyline>
+<polyline id="line_bnv:dvr" points="1307.0588235294117,260 1394.705882352941,260" class="line-segment" stroke="#009645"><title>EWL line_bnv:dvr</title></polyline>
+<polyline id="line_cga:xpo" points="167.6470588235294,260 255.2941176470588,260" class="line-segment" stroke="#009645"><title>EWL line_cga:xpo</title></polyline>
+<polyline id="line_cle:dvr" points="1219.4117647058822,260 1307.0588235294117,260" class="line-segment" stroke="#009645"><title>EWL line_cle:dvr</title></polyline>
+<polyline id="line_cle:jur" points="3060,120 1219.4117647058822,260" class="line-segment" stroke="#009645"><title>EWL line_cle:jur</title></polyline>
+<polyline id="line_cng:jur" points="1044.1176470588234,260 3060,120" class="line-segment" stroke="#009645"><title>EWL line_cng:jur</title></polyline>
+<polyline id="line_cng:lks" points="956.470588235294,260 1044.1176470588234,260" class="line-segment" stroke="#009645"><title>EWL line_cng:lks</title></polyline>
+<polyline id="line_com:que" points="1482.3529411764705,260 1570,260" class="line-segment" stroke="#009645"><title>EWL line_com:que</title></polyline>
+<polyline id="line_cth:rfp_ewl" points="309.2307692307692,120 423.8461538461538,120" class="line-segment" stroke="#009645"><title>EWL line_cth:rfp_ewl</title></polyline>
+<polyline id="line_eun:kem" points="2621.7647058823527,260 2709.411764705882,260" class="line-segment" stroke="#009645"><title>EWL line_eun:kem</title></polyline>
+<polyline id="line_eun:pyl" points="2534.1176470588234,260 2621.7647058823527,260" class="line-segment" stroke="#009645"><title>EWL line_eun:pyl</title></polyline>
+<polyline id="line_gcl:jkn" points="605.8823529411765,260 693.5294117647059,260" class="line-segment" stroke="#009645"><title>EWL line_gcl:jkn</title></polyline>
+<polyline id="line_gcl:tcr" points="518.2352941176471,260 605.8823529411765,260" class="line-segment" stroke="#009645"><title>EWL line_gcl:tcr</title></polyline>
+<polyline id="line_jkn:pnr" points="693.5294117647059,260 781.1764705882352,260" class="line-segment" stroke="#009645"><title>EWL line_jkn:pnr</title></polyline>
+<polyline id="line_kal:lvr" points="2271.176470588235,260 2358.8235294117644,260" class="line-segment" stroke="#009645"><title>EWL line_kal:lvr</title></polyline>
+<polyline id="line_otp:tib" points="1745.2941176470588,260 1832.941176470588,260" class="line-segment" stroke="#009645"><title>EWL line_otp:tib</title></polyline>
+<polyline id="line_otp:tpg" points="1832.941176470588,260 1920.5882352941176,260" class="line-segment" stroke="#009645"><title>EWL line_otp:tpg</title></polyline>
+<polyline id="line_psr:tam" points="2972.3529411764703,260 3060,260" class="line-segment" stroke="#009645"><title>EWL line_psr:tam</title></polyline>
+<polyline id="line_que:rdh" points="1570,260 1657.6470588235293,260" class="line-segment" stroke="#009645"><title>EWL line_que:rdh</title></polyline>
+<polyline id="line_rdh:tib" points="1657.6470588235293,260 1745.2941176470588,260" class="line-segment" stroke="#009645"><title>EWL line_rdh:tib</title></polyline>
+<polyline id="line_rfp:tpg" points="1920.5882352941176,260 309.2307692307692,120" class="line-segment" stroke="#009645"><title>EWL line_rfp:tpg</title></polyline>
+<polyline id="line_sim:tam" points="2884.705882352941,260 2972.3529411764703,260" class="line-segment" stroke="#009645"><title>EWL line_sim:tam</title></polyline>
+<polyline id="line_sim:tnm" points="80,260 2884.705882352941,260" class="line-segment" stroke="#009645"><title>EWL line_sim:tnm</title></polyline>
+<polyline id="line_tcr:twr" points="430.5882352941176,260 518.2352941176471,260" class="line-segment" stroke="#009645"><title>EWL line_tcr:twr</title></polyline>
+<polyline id="line_tlk:twr" points="342.94117647058823,260 430.5882352941176,260" class="line-segment" stroke="#009645"><title>EWL line_tlk:twr</title></polyline>
+<polyline id="line_tnm:xpo" points="80,260 167.6470588235294,260" class="line-segment" stroke="#009645"><title>EWL line_tnm:xpo</title></polyline>
+<polyline id="line_bgk:hgn" points="2315,400 2501.25,400" class="line-segment" stroke="#9900aa"><title>NEL line_bgk:hgn</title></polyline>
+<polyline id="line_bgk:skg" points="2501.25,400 2687.5,400" class="line-segment" stroke="#9900aa"><title>NEL line_bgk:skg</title></polyline>
+<polyline id="line_bnk:frp" points="1197.5,400 1383.75,400" class="line-segment" stroke="#9900aa"><title>NEL line_bnk:frp</title></polyline>
+<polyline id="line_bnk:ptp" points="1383.75,400 1570,400" class="line-segment" stroke="#9900aa"><title>NEL line_bnk:ptp</title></polyline>
+<polyline id="line_crq:ctn" points="452.5,400 638.75,400" class="line-segment" stroke="#9900aa"><title>NEL line_crq:ctn</title></polyline>
+<polyline id="line_crq:dbg" points="638.75,400 538.4615384615385,120" class="line-segment" stroke="#9900aa"><title>NEL line_crq:dbg</title></polyline>
+<polyline id="line_ctn:otp" points="1832.941176470588,260 452.5,400" class="line-segment" stroke="#9900aa"><title>NEL line_ctn:otp</title></polyline>
+<polyline id="line_dbg:lti" points="538.4615384615385,120 1011.25,400" class="line-segment" stroke="#9900aa"><title>NEL line_dbg:lti</title></polyline>
+<polyline id="line_frp:lti" points="1011.25,400 1197.5,400" class="line-segment" stroke="#9900aa"><title>NEL line_frp:lti</title></polyline>
+<polyline id="line_hbf:otp" points="80,400 1832.941176470588,260" class="line-segment" stroke="#9900aa"><title>NEL line_hbf:otp</title></polyline>
+<polyline id="line_hgn:kvn" points="2128.75,400 2315,400" class="line-segment" stroke="#9900aa"><title>NEL line_hgn:kvn</title></polyline>
+<polyline id="line_kvn:ser" points="1942.5,400 2128.75,400" class="line-segment" stroke="#9900aa"><title>NEL line_kvn:ser</title></polyline>
+<polyline id="line_pgc:pgl" points="2873.75,400 3060,400" class="line-segment" stroke="#9900aa"><title>NEL line_pgc:pgl</title></polyline>
+<polyline id="line_pgl:skg" points="2687.5,400 2873.75,400" class="line-segment" stroke="#9900aa"><title>NEL line_pgl:skg</title></polyline>
+<polyline id="line_ptp:wlh" points="1570,400 1756.25,400" class="line-segment" stroke="#9900aa"><title>NEL line_ptp:wlh</title></polyline>
+<polyline id="line_ser:wlh" points="1756.25,400 1942.5,400" class="line-segment" stroke="#9900aa"><title>NEL line_ser:wlh</title></polyline>
+<polyline id="line_bbs:dbg" points="538.4615384615385,120 2957.241379310345,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_bbs:dbg</title></polyline>
+<polyline id="line_bbs:epn" points="2957.241379310345,540 3060,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_bbs:epn</title></polyline>
+<polyline id="line_bft:mrb" points="194.6153846153846,120 182.75862068965517,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_bft:mrb</title></polyline>
+<polyline id="line_bft:pmn_ccl" points="182.75862068965517,540 285.51724137931035,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_bft:pmn_ccl</title></polyline>
+<polyline id="line_bly:ser" points="1107.5862068965516,540 1942.5,400" class="line-segment" stroke="#fa9e0d"><title>CCL line_bly:ser</title></polyline>
+<polyline id="line_bly:tsg" points="1004.8275862068965,540 1107.5862068965516,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_bly:tsg</title></polyline>
+<polyline id="line_bnv:hlv" points="1929.655172413793,540 1394.705882352941,260" class="line-segment" stroke="#fa9e0d"><title>CCL line_bnv:hlv</title></polyline>
+<polyline id="line_bnv:onh" points="1394.705882352941,260 2135.1724137931033,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_bnv:onh</title></polyline>
+<polyline id="line_bsh:lrc" points="1313.103448275862,540 1340.7692307692307,120" class="line-segment" stroke="#fa9e0d"><title>CCL line_bsh:lrc</title></polyline>
+<polyline id="line_bsh:mrm" points="1340.7692307692307,120 1518.6206896551726,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_bsh:mrm</title></polyline>
+<polyline id="line_btn:cdt" points="1621.3793103448277,540 1724.1379310344828,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_btn:cdt</title></polyline>
+<polyline id="line_btn:frr" points="1724.1379310344828,540 1826.896551724138,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_btn:frr</title></polyline>
+<polyline id="line_cdt:mrm" points="1518.6206896551726,540 1621.3793103448277,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_cdt:mrm</title></polyline>
+<polyline id="line_dkt:mbt" points="593.7931034482758,540 696.551724137931,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_dkt:mbt</title></polyline>
+<polyline id="line_dkt:pyl" points="696.551724137931,540 2534.1176470588234,260" class="line-segment" stroke="#fa9e0d"><title>CCL line_dkt:pyl</title></polyline>
+<polyline id="line_epn:pmn" points="3060,540 285.51724137931035,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_epn:pmn</title></polyline>
+<polyline id="line_frr:hlv" points="1826.896551724138,540 1929.655172413793,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_frr:hlv</title></polyline>
+<polyline id="line_hbf:tlb" points="2648.9655172413795,540 80,400" class="line-segment" stroke="#fa9e0d"><title>CCL line_hbf:tlb</title></polyline>
+<polyline id="line_hpv:krg" points="2237.9310344827586,540 2340.689655172414,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_hpv:krg</title></polyline>
+<polyline id="line_hpv:ppj" points="2340.689655172414,540 2443.448275862069,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_hpv:ppj</title></polyline>
+<polyline id="line_krg:onh" points="2135.1724137931033,540 2237.9310344827586,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_krg:onh</title></polyline>
+<polyline id="line_lbd:ppj" points="2443.448275862069,540 2546.206896551724,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_lbd:ppj</title></polyline>
+<polyline id="line_lbd:tlb" points="2546.206896551724,540 2648.9655172413795,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_lbd:tlb</title></polyline>
+<polyline id="line_lrc:ser" points="1942.5,400 1313.103448275862,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_lrc:ser</title></polyline>
+<polyline id="line_mbt:sdm" points="491.0344827586207,540 593.7931034482758,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_mbt:sdm</title></polyline>
+<polyline id="line_mps:pyl" points="2534.1176470588234,260 902.0689655172414,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_mps:pyl</title></polyline>
+<polyline id="line_mps:tsg" points="902.0689655172414,540 1004.8275862068965,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_mps:tsg</title></polyline>
+<polyline id="line_nch:pmn" points="285.51724137931035,540 388.2758620689655,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_nch:pmn</title></polyline>
+<polyline id="line_nch:sdm" points="388.2758620689655,540 491.0344827586207,540" class="line-segment" stroke="#fa9e0d"><title>CCL line_nch:sdm</title></polyline>
+<polyline id="line_bcl:fcn" points="1745.2941176470588,680 1832.941176470588,680" class="line-segment" stroke="#005ec4"><title>DTL line_bcl:fcn</title></polyline>
+<polyline id="line_bcl:jlb" points="1832.941176470588,680 1920.5882352941176,680" class="line-segment" stroke="#005ec4"><title>DTL line_bcl:jlb</title></polyline>
+<polyline id="line_bdm:glb" points="2008.2352941176468,680 2095.8823529411766,680" class="line-segment" stroke="#005ec4"><title>DTL line_bdm:glb</title></polyline>
+<polyline id="line_bdm:jlb" points="1920.5882352941176,680 2008.2352941176468,680" class="line-segment" stroke="#005ec4"><title>DTL line_bdm:jlb</title></polyline>
+<polyline id="line_bdn:bdr" points="2534.1176470588234,680 2621.7647058823527,680" class="line-segment" stroke="#005ec4"><title>DTL line_bdn:bdr</title></polyline>
+<polyline id="line_bdn:kkb" points="2446.470588235294,680 2534.1176470588234,680" class="line-segment" stroke="#005ec4"><title>DTL line_bdn:kkb</title></polyline>
+<polyline id="line_bdr:tpw" points="2621.7647058823527,680 2709.411764705882,680" class="line-segment" stroke="#005ec4"><title>DTL line_bdr:tpw</title></polyline>
+<polyline id="line_bft:dtn" points="182.75862068965517,540 1482.3529411764705,680" class="line-segment" stroke="#005ec4"><title>DTL line_bft:dtn</title></polyline>
+<polyline id="line_bft:pmn_dtl" points="285.51724137931035,540 182.75862068965517,540" class="line-segment" stroke="#005ec4"><title>DTL line_bft:pmn_dtl</title></polyline>
+<polyline id="line_bgs:pmn" points="2183.529411764706,260 285.51724137931035,540" class="line-segment" stroke="#005ec4"><title>DTL line_bgs:pmn</title></polyline>
+<polyline id="line_bgs:rcr" points="1131.764705882353,680 2183.529411764706,260" class="line-segment" stroke="#005ec4"><title>DTL line_bgs:rcr</title></polyline>
+<polyline id="line_bkp:csw" points="80,680 167.6470588235294,680" class="line-segment" stroke="#005ec4"><title>DTL line_bkp:csw</title></polyline>
+<polyline id="line_btn:stv" points="1724.1379310344828,540 868.8235294117646,680" class="line-segment" stroke="#005ec4"><title>DTL line_btn:stv</title></polyline>
+<polyline id="line_btn:tkk" points="693.5294117647059,680 1724.1379310344828,540" class="line-segment" stroke="#005ec4"><title>DTL line_btn:tkk</title></polyline>
+<polyline id="line_btw:hme" points="342.94117647058823,680 430.5882352941176,680" class="line-segment" stroke="#005ec4"><title>DTL line_btw:hme</title></polyline>
+<polyline id="line_btw:kap" points="430.5882352941176,680 518.2352941176471,680" class="line-segment" stroke="#005ec4"><title>DTL line_btw:kap</title></polyline>
+<polyline id="line_csw:hvw" points="167.6470588235294,680 255.2941176470588,680" class="line-segment" stroke="#005ec4"><title>DTL line_csw:hvw</title></polyline>
+<polyline id="line_ctn:fcn" points="452.5,400 1745.2941176470588,680" class="line-segment" stroke="#005ec4"><title>DTL line_ctn:fcn</title></polyline>
+<polyline id="line_ctn:tla" points="1570,680 452.5,400" class="line-segment" stroke="#005ec4"><title>DTL line_ctn:tla</title></polyline>
+<polyline id="line_dtn:tla" points="1482.3529411764705,680 1570,680" class="line-segment" stroke="#005ec4"><title>DTL line_dtn:tla</title></polyline>
+<polyline id="line_glb:mtr" points="2095.8823529411766,680 2183.529411764706,680" class="line-segment" stroke="#005ec4"><title>DTL line_glb:mtr</title></polyline>
+<polyline id="line_hme:hvw" points="255.2941176470588,680 342.94117647058823,680" class="line-segment" stroke="#005ec4"><title>DTL line_hme:hvw</title></polyline>
+<polyline id="line_kap:sav" points="518.2352941176471,680 605.8823529411765,680" class="line-segment" stroke="#005ec4"><title>DTL line_kap:sav</title></polyline>
+<polyline id="line_kkb:ubi" points="2358.8235294117644,680 2446.470588235294,680" class="line-segment" stroke="#005ec4"><title>DTL line_kkb:ubi</title></polyline>
+<polyline id="line_lti:new" points="882.3076923076923,120 1011.25,400" class="line-segment" stroke="#005ec4"><title>DTL line_lti:new</title></polyline>
+<polyline id="line_lti:rcr" points="1011.25,400 1131.764705882353,680" class="line-segment" stroke="#005ec4"><title>DTL line_lti:rcr</title></polyline>
+<polyline id="line_mps:mtr" points="2183.529411764706,680 902.0689655172414,540" class="line-segment" stroke="#005ec4"><title>DTL line_mps:mtr</title></polyline>
+<polyline id="line_mps:ubi" points="902.0689655172414,540 2358.8235294117644,680" class="line-segment" stroke="#005ec4"><title>DTL line_mps:ubi</title></polyline>
+<polyline id="line_new:stv" points="868.8235294117646,680 882.3076923076923,120" class="line-segment" stroke="#005ec4"><title>DTL line_new:stv</title></polyline>
+<polyline id="line_sav:tkk" points="605.8823529411765,680 693.5294117647059,680" class="line-segment" stroke="#005ec4"><title>DTL line_sav:tkk</title></polyline>
+<polyline id="line_tam:tpe" points="2972.3529411764703,260 2884.705882352941,680" class="line-segment" stroke="#005ec4"><title>DTL line_tam:tpe</title></polyline>
+<polyline id="line_tam:tpw" points="2709.411764705882,680 2972.3529411764703,260" class="line-segment" stroke="#005ec4"><title>DTL line_tam:tpw</title></polyline>
+<polyline id="line_tpe:upc" points="2884.705882352941,680 2972.3529411764703,680" class="line-segment" stroke="#005ec4"><title>DTL line_tpe:upc</title></polyline>
+<polyline id="line_upc:xpo" points="2972.3529411764703,680 167.6470588235294,260" class="line-segment" stroke="#005ec4"><title>DTL line_upc:xpo</title></polyline>
+<polyline id="line_brh:mfl" points="2372.3076923076924,820 2486.9230769230767,820" class="line-segment" stroke="#9d5b25"><title>TEL line_brh:mfl</title></polyline>
+<polyline id="line_brh:uts" points="2257.6923076923076,820 2372.3076923076924,820" class="line-segment" stroke="#9d5b25"><title>TEL line_brh:uts</title></polyline>
+<polyline id="line_bsr:sgl" points="80,820 194.6153846153846,820" class="line-segment" stroke="#9d5b25"><title>TEL line_bsr:sgl</title></polyline>
+<polyline id="line_cdt:stv" points="868.8235294117646,680 1621.3793103448277,540" class="line-segment" stroke="#9d5b25"><title>TEL line_cdt:stv</title></polyline>
+<polyline id="line_cdt:uts" points="1621.3793103448277,540 2257.6923076923076,820" class="line-segment" stroke="#9d5b25"><title>TEL line_cdt:uts</title></polyline>
+<polyline id="line_grb:mrb" points="882.3076923076923,820 194.6153846153846,120" class="line-segment" stroke="#9d5b25"><title>TEL line_grb:mrb</title></polyline>
+<polyline id="line_grb:trh" points="767.6923076923076,820 882.3076923076923,820" class="line-segment" stroke="#9d5b25"><title>TEL line_grb:trh</title></polyline>
+<polyline id="line_grw:hvl" points="1455.3846153846152,820 1570,820" class="line-segment" stroke="#9d5b25"><title>TEL line_grw:hvl</title></polyline>
+<polyline id="line_grw:orc" points="1570,820 767.6923076923076,120" class="line-segment" stroke="#9d5b25"><title>TEL line_grw:orc</title></polyline>
+<polyline id="line_hvl:otp" points="1832.941176470588,260 1455.3846153846152,820" class="line-segment" stroke="#9d5b25"><title>TEL line_hvl:otp</title></polyline>
+<polyline id="line_ktp:tkt" points="538.4615384615385,820 653.0769230769231,820" class="line-segment" stroke="#9d5b25"><title>TEL line_ktp:tkt</title></polyline>
+<polyline id="line_ktp:trh" points="653.0769230769231,820 767.6923076923076,820" class="line-segment" stroke="#9d5b25"><title>TEL line_ktp:trh</title></polyline>
+<polyline id="line_ltr:mfl" points="2486.9230769230767,820 2601.5384615384614,820" class="line-segment" stroke="#9d5b25"><title>TEL line_ltr:mfl</title></polyline>
+<polyline id="line_ltr:spl" points="2601.5384615384614,820 2716.153846153846,820" class="line-segment" stroke="#9d5b25"><title>TEL line_ltr:spl</title></polyline>
+<polyline id="line_max:otp" points="1226.1538461538462,820 1832.941176470588,260" class="line-segment" stroke="#9d5b25"><title>TEL line_max:otp</title></polyline>
+<polyline id="line_max:shw" points="1111.5384615384614,820 1226.1538461538462,820" class="line-segment" stroke="#9d5b25"><title>TEL line_max:shw</title></polyline>
+<polyline id="line_mpr:mtc" points="309.2307692307692,820 423.8461538461538,820" class="line-segment" stroke="#9d5b25"><title>TEL line_mpr:mtc</title></polyline>
+<polyline id="line_mpr:tkt" points="423.8461538461538,820 538.4615384615385,820" class="line-segment" stroke="#9d5b25"><title>TEL line_mpr:tkt</title></polyline>
+<polyline id="line_mrb:shw" points="194.6153846153846,120 1111.5384615384614,820" class="line-segment" stroke="#9d5b25"><title>TEL line_mrb:shw</title></polyline>
+<polyline id="line_mtc:sgl" points="194.6153846153846,820 309.2307692307692,820" class="line-segment" stroke="#9d5b25"><title>TEL line_mtc:sgl</title></polyline>
+<polyline id="line_npr:obv" points="1799.2307692307693,820 1913.8461538461538,820" class="line-segment" stroke="#9d5b25"><title>TEL line_npr:obv</title></polyline>
+<polyline id="line_npr:stv" points="1913.8461538461538,820 868.8235294117646,680" class="line-segment" stroke="#9d5b25"><title>TEL line_npr:stv</title></polyline>
+<polyline id="line_obv:orc" points="767.6923076923076,120 1799.2307692307693,820" class="line-segment" stroke="#9d5b25"><title>TEL line_obv:orc</title></polyline>
+<polyline id="line_spl:wds" points="2716.153846153846,820 2830.7692307692305,820" class="line-segment" stroke="#9d5b25"><title>TEL line_spl:wds</title></polyline>
+<polyline id="line_wdl:wdn" points="2257.6923076923076,120 3060,820" class="line-segment" stroke="#9d5b25"><title>TEL line_wdl:wdn</title></polyline>
+<polyline id="line_wdl:wds" points="2830.7692307692305,820 2257.6923076923076,120" class="line-segment" stroke="#9d5b25"><title>TEL line_wdl:wds</title></polyline>
+<polyline id="line_bkp:pnx" points="1073.3333333333335,960 80,680" class="line-segment" stroke="#748477"><title>BPLRT line_bkp:pnx</title></polyline>
+<polyline id="line_bkp:ptr" points="3060,960 80,680" class="line-segment" stroke="#748477"><title>BPLRT line_bkp:ptr</title></polyline>
+<polyline id="line_bkp:snj" points="80,680 1570,960" class="line-segment" stroke="#748477"><title>BPLRT line_bkp:snj</title></polyline>
+<polyline id="line_bkt:fjr" points="2315,960 2563.3333333333335,960" class="line-segment" stroke="#748477"><title>BPLRT line_bkt:fjr</title></polyline>
+<polyline id="line_bkt:pnd" points="2563.3333333333335,960 2811.666666666667,960" class="line-segment" stroke="#748477"><title>BPLRT line_bkt:pnd</title></polyline>
+<polyline id="line_cck:shv" points="2716.153846153846,120 328.33333333333337,960" class="line-segment" stroke="#748477"><title>BPLRT line_cck:shv</title></polyline>
+<polyline id="line_fjr:sgr" points="2066.666666666667,960 2315,960" class="line-segment" stroke="#748477"><title>BPLRT line_fjr:sgr</title></polyline>
+<polyline id="line_jlp:sgr" points="1818.3333333333335,960 2066.666666666667,960" class="line-segment" stroke="#748477"><title>BPLRT line_jlp:sgr</title></polyline>
+<polyline id="line_jlp:snj" points="1570,960 1818.3333333333335,960" class="line-segment" stroke="#748477"><title>BPLRT line_jlp:snj</title></polyline>
+<polyline id="line_kth:shv" points="328.33333333333337,960 576.6666666666667,960" class="line-segment" stroke="#748477"><title>BPLRT line_kth:shv</title></polyline>
+<polyline id="line_kth:tkw" points="576.6666666666667,960 825,960" class="line-segment" stroke="#748477"><title>BPLRT line_kth:tkw</title></polyline>
+<polyline id="line_pnd:ptr" points="2811.666666666667,960 3060,960" class="line-segment" stroke="#748477"><title>BPLRT line_pnd:ptr</title></polyline>
+<polyline id="line_pnx:tkw" points="825,960 1073.3333333333335,960" class="line-segment" stroke="#748477"><title>BPLRT line_pnx:tkw</title></polyline>
+<polyline id="line_bak:kgk" points="538.4615384615385,1100 767.6923076923076,1100" class="line-segment" stroke="#748477"><title>SKLRT line_bak:kgk</title></polyline>
+<polyline id="line_bak:rmb" points="767.6923076923076,1100 996.9230769230769,1100" class="line-segment" stroke="#748477"><title>SKLRT line_bak:rmb</title></polyline>
+<polyline id="line_cgl:fmw" points="1455.3846153846152,1100 1684.6153846153845,1100" class="line-segment" stroke="#748477"><title>SKLRT line_cgl:fmw</title></polyline>
+<polyline id="line_cgl:skg" points="2687.5,400 1455.3846153846152,1100" class="line-segment" stroke="#748477"><title>SKLRT line_cgl:skg</title></polyline>
+<polyline id="line_cpv:rmb" points="996.9230769230769,1100 1226.1538461538462,1100" class="line-segment" stroke="#748477"><title>SKLRT line_cpv:rmb</title></polyline>
+<polyline id="line_cpv:skg" points="1226.1538461538462,1100 2687.5,400" class="line-segment" stroke="#748477"><title>SKLRT line_cpv:skg</title></polyline>
+<polyline id="line_fmw:kpg" points="1684.6153846153845,1100 1913.8461538461538,1100" class="line-segment" stroke="#748477"><title>SKLRT line_fmw:kpg</title></polyline>
+<polyline id="line_fnv:lyr" points="2372.3076923076924,1100 2601.5384615384614,1100" class="line-segment" stroke="#748477"><title>SKLRT line_fnv:lyr</title></polyline>
+<polyline id="line_fnv:tng" points="2143.076923076923,1100 2372.3076923076924,1100" class="line-segment" stroke="#748477"><title>SKLRT line_fnv:tng</title></polyline>
+<polyline id="line_kgk:rng" points="309.2307692307692,1100 538.4615384615385,1100" class="line-segment" stroke="#748477"><title>SKLRT line_kgk:rng</title></polyline>
+<polyline id="line_kpg:tng" points="1913.8461538461538,1100 2143.076923076923,1100" class="line-segment" stroke="#748477"><title>SKLRT line_kpg:tng</title></polyline>
+<polyline id="line_lyr:tkg" points="2601.5384615384614,1100 2830.7692307692305,1100" class="line-segment" stroke="#748477"><title>SKLRT line_lyr:tkg</title></polyline>
+<polyline id="line_rng:skg" points="2687.5,400 309.2307692307692,1100" class="line-segment" stroke="#748477"><title>SKLRT line_rng:skg</title></polyline>
+<polyline id="line_rnj:skg" points="3060,1100 2687.5,400" class="line-segment" stroke="#748477"><title>SKLRT line_rnj:skg</title></polyline>
+<polyline id="line_rnj:tkg" points="2830.7692307692305,1100 3060,1100" class="line-segment" stroke="#748477"><title>SKLRT line_rnj:tkg</title></polyline>
+<polyline id="line_cov:mrd" points="292.8571428571429,1240 505.7142857142857,1240" class="line-segment" stroke="#748477"><title>PGLRT line_cov:mrd</title></polyline>
+<polyline id="line_cov:pgl" points="2873.75,400 292.8571428571429,1240" class="line-segment" stroke="#748477"><title>PGLRT line_cov:pgl</title></polyline>
+<polyline id="line_cre:mrd" points="505.7142857142857,1240 718.5714285714286,1240" class="line-segment" stroke="#748477"><title>PGLRT line_cre:mrd</title></polyline>
+<polyline id="line_cre:riv" points="718.5714285714286,1240 931.4285714285714,1240" class="line-segment" stroke="#748477"><title>PGLRT line_cre:riv</title></polyline>
+<polyline id="line_dam:oas" points="1357.142857142857,1240 1570,1240" class="line-segment" stroke="#748477"><title>PGLRT line_dam:oas</title></polyline>
+<polyline id="line_dam:pgl" points="1570,1240 2873.75,400" class="line-segment" stroke="#748477"><title>PGLRT line_dam:pgl</title></polyline>
+<polyline id="line_kdl:oas" points="1144.2857142857142,1240 1357.142857142857,1240" class="line-segment" stroke="#748477"><title>PGLRT line_kdl:oas</title></polyline>
+<polyline id="line_kdl:riv" points="931.4285714285714,1240 1144.2857142857142,1240" class="line-segment" stroke="#748477"><title>PGLRT line_kdl:riv</title></polyline>
+<polyline id="line_nbg:smd" points="2421.4285714285716,1240 2634.285714285714,1240" class="line-segment" stroke="#748477"><title>PGLRT line_nbg:smd</title></polyline>
+<polyline id="line_nbg:smg" points="2634.285714285714,1240 2847.1428571428573,1240" class="line-segment" stroke="#748477"><title>PGLRT line_nbg:smg</title></polyline>
+<polyline id="line_pgl:smk" points="2873.75,400 1782.857142857143,1240" class="line-segment" stroke="#748477"><title>PGLRT line_pgl:smk</title></polyline>
+<polyline id="line_pgl:stk" points="3060,1240 2873.75,400" class="line-segment" stroke="#748477"><title>PGLRT line_pgl:stk</title></polyline>
+<polyline id="line_pgp:smd" points="2208.5714285714284,1240 2421.4285714285716,1240" class="line-segment" stroke="#748477"><title>PGLRT line_pgp:smd</title></polyline>
+<polyline id="line_pgp:tkl" points="1995.7142857142858,1240 2208.5714285714284,1240" class="line-segment" stroke="#748477"><title>PGLRT line_pgp:tkl</title></polyline>
+<polyline id="line_smg:stk" points="2847.1428571428573,1240 3060,1240" class="line-segment" stroke="#748477"><title>PGLRT line_smg:stk</title></polyline>
+<polyline id="line_smk:tkl" points="1782.857142857143,1240 1995.7142857142858,1240" class="line-segment" stroke="#748477"><title>PGLRT line_smk:tkl</title></polyline>
+
+
+
+</g>
+<g id="nodes" data-role="node">
+
+<circle id="node_adm_nsl" cx="2143.076923076923" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Admiralty (NSL)</title></circle>
+<circle id="node_alj_ewl" cx="2446.470588235294" cy="260" r="7" class="station-node" stroke="#009645"><title>Aljunied (EWL)</title></circle>
+<circle id="node_amk_nsl" cx="1455.3846153846152" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Ang Mo Kio (NSL)</title></circle>
+<circle id="node_bak_sklrt" cx="767.6923076923076" cy="1100" r="7" class="station-node" stroke="#748477"><title>Bakau (SKLRT)</title></circle>
+<circle id="node_bbs_ccl" cx="2957.241379310345" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Bras Basah (CCL)</title></circle>
+<circle id="node_bbt_nsl" cx="2945.3846153846152" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Bukit Batok (NSL)</title></circle>
+<circle id="node_bcl_dtl" cx="1832.941176470588" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Bencoolen (DTL)</title></circle>
+<circle id="node_bdk_ewl" cx="2797.0588235294117" cy="260" r="7" class="station-node" stroke="#009645"><title>Bedok (EWL)</title></circle>
+<circle id="node_bdl_nsl" cx="1226.1538461538462" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Braddell (NSL)</title></circle>
+<circle id="node_bdm_dtl" cx="2008.2352941176468" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Bendemeer (DTL)</title></circle>
+<circle id="node_bdn_dtl" cx="2534.1176470588234" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Bedok North (DTL)</title></circle>
+<circle id="node_bdr_dtl" cx="2621.7647058823527" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Bedok Reservoir (DTL)</title></circle>
+<circle id="node_bft_ccl" cx="178.25862068965517" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Bayfront (CCL)</title></circle>
+<circle id="node_bft_dtl" cx="187.25862068965517" cy="540" r="7" class="station-node" stroke="#005ec4"><title>Bayfront (DTL)</title></circle>
+<circle id="node_bgb_nsl" cx="2830.7692307692305" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Bukit Gombak (NSL)</title></circle>
+<circle id="node_bgk_nel" cx="2501.25" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Buangkok (NEL)</title></circle>
+<circle id="node_bgs_ewl" cx="2179.029411764706" cy="260" r="7" class="station-node" stroke="#009645"><title>Bugis (EWL)</title></circle>
+<circle id="node_bgs_dtl" cx="2188.029411764706" cy="260" r="7" class="station-node" stroke="#005ec4"><title>Bugis (DTL)</title></circle>
+<circle id="node_bkp_dtl" cx="75.5" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Bukit Panjang (DTL)</title></circle>
+<circle id="node_bkp_bplrt" cx="84.5" cy="680" r="7" class="station-node" stroke="#748477"><title>Bukit Panjang (BPLRT)</title></circle>
+<circle id="node_bkt_bplrt" cx="2563.3333333333335" cy="960" r="7" class="station-node" stroke="#748477"><title>Bangkit (BPLRT)</title></circle>
+<circle id="node_bly_ccl" cx="1107.5862068965516" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Bartley (CCL)</title></circle>
+<circle id="node_bnk_nel" cx="1383.75" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Boon Keng (NEL)</title></circle>
+<circle id="node_bnl_ewl" cx="868.8235294117646" cy="260" r="7" class="station-node" stroke="#009645"><title>Boon Lay (EWL)</title></circle>
+<circle id="node_bnv_ewl" cx="1390.205882352941" cy="260" r="7" class="station-node" stroke="#009645"><title>Buona Vista (EWL)</title></circle>
+<circle id="node_bnv_ccl" cx="1399.205882352941" cy="260" r="7" class="station-node" stroke="#fa9e0d"><title>Buona Vista (CCL)</title></circle>
+<circle id="node_brh_tel" cx="2372.3076923076924" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Bright Hill (TEL)</title></circle>
+<circle id="node_bsh_nsl" cx="1336.2692307692307" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Bishan (NSL)</title></circle>
+<circle id="node_bsh_ccl" cx="1345.2692307692307" cy="120" r="7" class="station-node" stroke="#fa9e0d"><title>Bishan (CCL)</title></circle>
+<circle id="node_bsr_tel" cx="80" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Bayshore (TEL)</title></circle>
+<circle id="node_btn_ccl" cx="1719.6379310344828" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Botanic Gardens (CCL)</title></circle>
+<circle id="node_btn_dtl" cx="1728.6379310344828" cy="540" r="7" class="station-node" stroke="#005ec4"><title>Botanic Gardens (DTL)</title></circle>
+<circle id="node_btw_dtl" cx="430.5882352941176" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Beauty World (DTL)</title></circle>
+<circle id="node_cbr_nsl" cx="1913.8461538461538" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Canberra (NSL)</title></circle>
+<circle id="node_cck_nsl" cx="2711.653846153846" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Choa Chu Kang (NSL)</title></circle>
+<circle id="node_cck_bplrt" cx="2720.653846153846" cy="120" r="7" class="station-node" stroke="#748477"><title>Choa Chu Kang (BPLRT)</title></circle>
+<circle id="node_cdt_ccl" cx="1616.8793103448277" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Caldecott (CCL)</title></circle>
+<circle id="node_cdt_tel" cx="1625.8793103448277" cy="540" r="7" class="station-node" stroke="#9d5b25"><title>Caldecott (TEL)</title></circle>
+<circle id="node_cga_ewl" cx="255.2941176470588" cy="260" r="7" class="station-node" stroke="#009645"><title>Changi Airport (EWL)</title></circle>
+<circle id="node_cgl_sklrt" cx="1455.3846153846152" cy="1100" r="7" class="station-node" stroke="#748477"><title>Cheng Lim (SKLRT)</title></circle>
+<circle id="node_cle_ewl" cx="1219.4117647058822" cy="260" r="7" class="station-node" stroke="#009645"><title>Clementi (EWL)</title></circle>
+<circle id="node_cng_ewl" cx="1044.1176470588234" cy="260" r="7" class="station-node" stroke="#009645"><title>Chinese Garden (EWL)</title></circle>
+<circle id="node_com_ewl" cx="1482.3529411764705" cy="260" r="7" class="station-node" stroke="#009645"><title>Commonwealth (EWL)</title></circle>
+<circle id="node_cov_pglrt" cx="292.8571428571429" cy="1240" r="7" class="station-node" stroke="#748477"><title>Cove (PGLRT)</title></circle>
+<circle id="node_cpv_sklrt" cx="1226.1538461538462" cy="1100" r="7" class="station-node" stroke="#748477"><title>Compassvale (SKLRT)</title></circle>
+<circle id="node_cre_pglrt" cx="718.5714285714286" cy="1240" r="7" class="station-node" stroke="#748477"><title>Coral Edge (PGLRT)</title></circle>
+<circle id="node_crq_nel" cx="638.75" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Clarke Quay (NEL)</title></circle>
+<circle id="node_csw_dtl" cx="167.6470588235294" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Cashew (DTL)</title></circle>
+<circle id="node_cth_nsl" cx="419.3461538461538" cy="120" r="7" class="station-node" stroke="#d42e12"><title>City Hall (NSL)</title></circle>
+<circle id="node_cth_ewl" cx="428.3461538461538" cy="120" r="7" class="station-node" stroke="#009645"><title>City Hall (EWL)</title></circle>
+<circle id="node_ctn_nel" cx="448" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Chinatown (NEL)</title></circle>
+<circle id="node_ctn_dtl" cx="457" cy="400" r="7" class="station-node" stroke="#005ec4"><title>Chinatown (DTL)</title></circle>
+<circle id="node_dam_pglrt" cx="1570" cy="1240" r="7" class="station-node" stroke="#748477"><title>Damai (PGLRT)</title></circle>
+<circle id="node_dbg_nsl" cx="529.4615384615385" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Dhoby Ghaut (NSL)</title></circle>
+<circle id="node_dbg_nel" cx="538.4615384615385" cy="120" r="7" class="station-node" stroke="#9900aa"><title>Dhoby Ghaut (NEL)</title></circle>
+<circle id="node_dbg_ccl" cx="547.4615384615385" cy="120" r="7" class="station-node" stroke="#fa9e0d"><title>Dhoby Ghaut (CCL)</title></circle>
+<circle id="node_dkt_ccl" cx="696.551724137931" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Dakota (CCL)</title></circle>
+<circle id="node_dtn_dtl" cx="1482.3529411764705" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Downtown (DTL)</title></circle>
+<circle id="node_dvr_ewl" cx="1307.0588235294117" cy="260" r="7" class="station-node" stroke="#009645"><title>Dover (EWL)</title></circle>
+<circle id="node_epn_ccl" cx="3060" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Esplanade (CCL)</title></circle>
+<circle id="node_eun_ewl" cx="2621.7647058823527" cy="260" r="7" class="station-node" stroke="#009645"><title>Eunos (EWL)</title></circle>
+<circle id="node_fcn_dtl" cx="1745.2941176470588" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Fort Canning (DTL)</title></circle>
+<circle id="node_fjr_bplrt" cx="2315" cy="960" r="7" class="station-node" stroke="#748477"><title>Fajar (BPLRT)</title></circle>
+<circle id="node_fmw_sklrt" cx="1684.6153846153845" cy="1100" r="7" class="station-node" stroke="#748477"><title>Farmway (SKLRT)</title></circle>
+<circle id="node_fnv_sklrt" cx="2372.3076923076924" cy="1100" r="7" class="station-node" stroke="#748477"><title>Fernvale (SKLRT)</title></circle>
+<circle id="node_frp_nel" cx="1197.5" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Farrer Park (NEL)</title></circle>
+<circle id="node_frr_ccl" cx="1826.896551724138" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Farrer Road (CCL)</title></circle>
+<circle id="node_gcl_ewl" cx="605.8823529411765" cy="260" r="7" class="station-node" stroke="#009645"><title>Gul Circle (EWL)</title></circle>
+<circle id="node_glb_dtl" cx="2095.8823529411766" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Geylang Bahru (DTL)</title></circle>
+<circle id="node_grb_tel" cx="882.3076923076923" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Gardens by the Bay (TEL)</title></circle>
+<circle id="node_grw_tel" cx="1570" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Great World (TEL)</title></circle>
+<circle id="node_hbf_nel" cx="75.5" cy="400" r="7" class="station-node" stroke="#9900aa"><title>HarbourFront (NEL)</title></circle>
+<circle id="node_hbf_ccl" cx="84.5" cy="400" r="7" class="station-node" stroke="#fa9e0d"><title>HarbourFront (CCL)</title></circle>
+<circle id="node_hgn_nel" cx="2315" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Hougang (NEL)</title></circle>
+<circle id="node_hlv_ccl" cx="1929.655172413793" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Holland Village (CCL)</title></circle>
+<circle id="node_hme_dtl" cx="342.94117647058823" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Hume (DTL)</title></circle>
+<circle id="node_hpv_ccl" cx="2340.689655172414" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Haw Par Villa (CCL)</title></circle>
+<circle id="node_hvl_tel" cx="1455.3846153846152" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Havelock (TEL)</title></circle>
+<circle id="node_hvw_dtl" cx="255.2941176470588" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Hillview (DTL)</title></circle>
+<circle id="node_jkn_ewl" cx="693.5294117647059" cy="260" r="7" class="station-node" stroke="#009645"><title>Joo Koon (EWL)</title></circle>
+<circle id="node_jlb_dtl" cx="1920.5882352941176" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Jalan Besar (DTL)</title></circle>
+<circle id="node_jlp_bplrt" cx="1818.3333333333335" cy="960" r="7" class="station-node" stroke="#748477"><title>Jelapang (BPLRT)</title></circle>
+<circle id="node_jur_nsl" cx="3055.5" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Jurong East (NSL)</title></circle>
+<circle id="node_jur_ewl" cx="3064.5" cy="120" r="7" class="station-node" stroke="#009645"><title>Jurong East (EWL)</title></circle>
+<circle id="node_kal_ewl" cx="2358.8235294117644" cy="260" r="7" class="station-node" stroke="#009645"><title>Kallang (EWL)</title></circle>
+<circle id="node_kap_dtl" cx="518.2352941176471" cy="680" r="7" class="station-node" stroke="#005ec4"><title>King Albert Park (DTL)</title></circle>
+<circle id="node_kdl_pglrt" cx="1144.2857142857142" cy="1240" r="7" class="station-node" stroke="#748477"><title>Kadaloor (PGLRT)</title></circle>
+<circle id="node_kem_ewl" cx="2709.411764705882" cy="260" r="7" class="station-node" stroke="#009645"><title>Kembangan (EWL)</title></circle>
+<circle id="node_kgk_sklrt" cx="538.4615384615385" cy="1100" r="7" class="station-node" stroke="#748477"><title>Kangkar (SKLRT)</title></circle>
+<circle id="node_kkb_dtl" cx="2446.470588235294" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Kaki Bukit (DTL)</title></circle>
+<circle id="node_kpg_sklrt" cx="1913.8461538461538" cy="1100" r="7" class="station-node" stroke="#748477"><title>Kupang (SKLRT)</title></circle>
+<circle id="node_krg_ccl" cx="2237.9310344827586" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Kent Ridge (CCL)</title></circle>
+<circle id="node_krj_nsl" cx="2486.9230769230767" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Kranji (NSL)</title></circle>
+<circle id="node_ktb_nsl" cx="1684.6153846153845" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Khatib (NSL)</title></circle>
+<circle id="node_kth_bplrt" cx="576.6666666666667" cy="960" r="7" class="station-node" stroke="#748477"><title>Keat Hong (BPLRT)</title></circle>
+<circle id="node_ktp_tel" cx="653.0769230769231" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Katong Park (TEL)</title></circle>
+<circle id="node_kvn_nel" cx="2128.75" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Kovan (NEL)</title></circle>
+<circle id="node_lbd_ccl" cx="2546.206896551724" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Labrador Park (CCL)</title></circle>
+<circle id="node_lks_ewl" cx="956.470588235294" cy="260" r="7" class="station-node" stroke="#009645"><title>Lakeside (EWL)</title></circle>
+<circle id="node_lrc_ccl" cx="1313.103448275862" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Lorong Chuan (CCL)</title></circle>
+<circle id="node_lti_nel" cx="1006.75" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Little India (NEL)</title></circle>
+<circle id="node_lti_dtl" cx="1015.75" cy="400" r="7" class="station-node" stroke="#005ec4"><title>Little India (DTL)</title></circle>
+<circle id="node_ltr_tel" cx="2601.5384615384614" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Lentor (TEL)</title></circle>
+<circle id="node_lvr_ewl" cx="2271.176470588235" cy="260" r="7" class="station-node" stroke="#009645"><title>Lavender (EWL)</title></circle>
+<circle id="node_lyr_sklrt" cx="2601.5384615384614" cy="1100" r="7" class="station-node" stroke="#748477"><title>Layar (SKLRT)</title></circle>
+<circle id="node_max_tel" cx="1226.1538461538462" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Maxwell (TEL)</title></circle>
+<circle id="node_mbt_ccl" cx="593.7931034482758" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Mountbatten (CCL)</title></circle>
+<circle id="node_mfl_tel" cx="2486.9230769230767" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Mayflower (TEL)</title></circle>
+<circle id="node_mpr_tel" cx="423.8461538461538" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Marine Parade (TEL)</title></circle>
+<circle id="node_mps_ccl" cx="897.5689655172414" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>MacPherson (CCL)</title></circle>
+<circle id="node_mps_dtl" cx="906.5689655172414" cy="540" r="7" class="station-node" stroke="#005ec4"><title>MacPherson (DTL)</title></circle>
+<circle id="node_mrb_nsl" cx="185.6153846153846" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Marina Bay (NSL)</title></circle>
+<circle id="node_mrb_ccl" cx="194.6153846153846" cy="120" r="7" class="station-node" stroke="#fa9e0d"><title>Marina Bay (CCL)</title></circle>
+<circle id="node_mrb_tel" cx="203.6153846153846" cy="120" r="7" class="station-node" stroke="#9d5b25"><title>Marina Bay (TEL)</title></circle>
+<circle id="node_mrd_pglrt" cx="505.7142857142857" cy="1240" r="7" class="station-node" stroke="#748477"><title>Meridian (PGLRT)</title></circle>
+<circle id="node_mrm_ccl" cx="1518.6206896551726" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Marymount (CCL)</title></circle>
+<circle id="node_msl_nsl" cx="2372.3076923076924" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Marsiling (NSL)</title></circle>
+<circle id="node_msp_nsl" cx="80" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Marina South Pier (NSL)</title></circle>
+<circle id="node_mtc_tel" cx="309.2307692307692" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Marine Terrace (TEL)</title></circle>
+<circle id="node_mtr_dtl" cx="2183.529411764706" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Mattar (DTL)</title></circle>
+<circle id="node_nbg_pglrt" cx="2634.285714285714" cy="1240" r="7" class="station-node" stroke="#748477"><title>Nibong (PGLRT)</title></circle>
+<circle id="node_nch_ccl" cx="388.2758620689655" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Nicoll Highway (CCL)</title></circle>
+<circle id="node_new_nsl" cx="877.8076923076923" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Newton (NSL)</title></circle>
+<circle id="node_new_dtl" cx="886.8076923076923" cy="120" r="7" class="station-node" stroke="#005ec4"><title>Newton (DTL)</title></circle>
+<circle id="node_nov_nsl" cx="996.9230769230769" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Novena (NSL)</title></circle>
+<circle id="node_npr_tel" cx="1913.8461538461538" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Napier (TEL)</title></circle>
+<circle id="node_oas_pglrt" cx="1357.142857142857" cy="1240" r="7" class="station-node" stroke="#748477"><title>Oasis (PGLRT)</title></circle>
+<circle id="node_obv_tel" cx="1799.2307692307693" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Orchard Boulevard (TEL)</title></circle>
+<circle id="node_onh_ccl" cx="2135.1724137931033" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>one-north (CCL)</title></circle>
+<circle id="node_orc_nsl" cx="763.1923076923076" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Orchard (NSL)</title></circle>
+<circle id="node_orc_tel" cx="772.1923076923076" cy="120" r="7" class="station-node" stroke="#9d5b25"><title>Orchard (TEL)</title></circle>
+<circle id="node_otp_ewl" cx="1823.941176470588" cy="260" r="7" class="station-node" stroke="#009645"><title>Outram Park (EWL)</title></circle>
+<circle id="node_otp_nel" cx="1832.941176470588" cy="260" r="7" class="station-node" stroke="#9900aa"><title>Outram Park (NEL)</title></circle>
+<circle id="node_otp_tel" cx="1841.941176470588" cy="260" r="7" class="station-node" stroke="#9d5b25"><title>Outram Park (TEL)</title></circle>
+<circle id="node_pgc_nel" cx="3060" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Punggol Coast (NEL)</title></circle>
+<circle id="node_pgl_nel" cx="2869.25" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Punggol (NEL)</title></circle>
+<circle id="node_pgl_pglrt" cx="2878.25" cy="400" r="7" class="station-node" stroke="#748477"><title>Punggol (PGLRT)</title></circle>
+<circle id="node_pgp_pglrt" cx="2208.5714285714284" cy="1240" r="7" class="station-node" stroke="#748477"><title>Punggol Point (PGLRT)</title></circle>
+<circle id="node_pmn_ccl" cx="281.01724137931035" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Promenade (CCL)</title></circle>
+<circle id="node_pmn_dtl" cx="290.01724137931035" cy="540" r="7" class="station-node" stroke="#005ec4"><title>Promenade (DTL)</title></circle>
+<circle id="node_pnd_bplrt" cx="2811.666666666667" cy="960" r="7" class="station-node" stroke="#748477"><title>Pending (BPLRT)</title></circle>
+<circle id="node_pnr_ewl" cx="781.1764705882352" cy="260" r="7" class="station-node" stroke="#009645"><title>Pioneer (EWL)</title></circle>
+<circle id="node_pnx_bplrt" cx="1073.3333333333335" cy="960" r="7" class="station-node" stroke="#748477"><title>Phoenix (BPLRT)</title></circle>
+<circle id="node_ppj_ccl" cx="2443.448275862069" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Pasir Panjang (CCL)</title></circle>
+<circle id="node_psr_ewl" cx="3060" cy="260" r="7" class="station-node" stroke="#009645"><title>Pasir Ris (EWL)</title></circle>
+<circle id="node_ptp_nel" cx="1570" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Potong Pasir (NEL)</title></circle>
+<circle id="node_ptr_bplrt" cx="3060" cy="960" r="7" class="station-node" stroke="#748477"><title>Petir (BPLRT)</title></circle>
+<circle id="node_pyl_ewl" cx="2529.6176470588234" cy="260" r="7" class="station-node" stroke="#009645"><title>Paya Lebar (EWL)</title></circle>
+<circle id="node_pyl_ccl" cx="2538.6176470588234" cy="260" r="7" class="station-node" stroke="#fa9e0d"><title>Paya Lebar (CCL)</title></circle>
+<circle id="node_que_ewl" cx="1570" cy="260" r="7" class="station-node" stroke="#009645"><title>Queenstown (EWL)</title></circle>
+<circle id="node_rcr_dtl" cx="1131.764705882353" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Rochor (DTL)</title></circle>
+<circle id="node_rdh_ewl" cx="1657.6470588235293" cy="260" r="7" class="station-node" stroke="#009645"><title>Redhill (EWL)</title></circle>
+<circle id="node_rfp_nsl" cx="304.7307692307692" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Raffles Place (NSL)</title></circle>
+<circle id="node_rfp_ewl" cx="313.7307692307692" cy="120" r="7" class="station-node" stroke="#009645"><title>Raffles Place (EWL)</title></circle>
+<circle id="node_riv_pglrt" cx="931.4285714285714" cy="1240" r="7" class="station-node" stroke="#748477"><title>Riviera (PGLRT)</title></circle>
+<circle id="node_rmb_sklrt" cx="996.9230769230769" cy="1100" r="7" class="station-node" stroke="#748477"><title>Rumbia (SKLRT)</title></circle>
+<circle id="node_rng_sklrt" cx="309.2307692307692" cy="1100" r="7" class="station-node" stroke="#748477"><title>Ranggung (SKLRT)</title></circle>
+<circle id="node_rnj_sklrt" cx="3060" cy="1100" r="7" class="station-node" stroke="#748477"><title>Renjong (SKLRT)</title></circle>
+<circle id="node_sav_dtl" cx="605.8823529411765" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Sixth Avenue (DTL)</title></circle>
+<circle id="node_sbw_nsl" cx="2028.4615384615383" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Sembawang (NSL)</title></circle>
+<circle id="node_sdm_ccl" cx="491.0344827586207" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Stadium (CCL)</title></circle>
+<circle id="node_ser_nel" cx="1938" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Serangoon (NEL)</title></circle>
+<circle id="node_ser_ccl" cx="1947" cy="400" r="7" class="station-node" stroke="#fa9e0d"><title>Serangoon (CCL)</title></circle>
+<circle id="node_sgl_tel" cx="194.6153846153846" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Siglap (TEL)</title></circle>
+<circle id="node_sgr_bplrt" cx="2066.666666666667" cy="960" r="7" class="station-node" stroke="#748477"><title>Segar (BPLRT)</title></circle>
+<circle id="node_shv_bplrt" cx="328.33333333333337" cy="960" r="7" class="station-node" stroke="#748477"><title>South View (BPLRT)</title></circle>
+<circle id="node_shw_tel" cx="1111.5384615384614" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Shenton Way (TEL)</title></circle>
+<circle id="node_sim_ewl" cx="2884.705882352941" cy="260" r="7" class="station-node" stroke="#009645"><title>Simei (EWL)</title></circle>
+<circle id="node_skg_nel" cx="2683" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Sengkang (NEL)</title></circle>
+<circle id="node_skg_sklrt" cx="2692" cy="400" r="7" class="station-node" stroke="#748477"><title>Sengkang (SKLRT)</title></circle>
+<circle id="node_smd_pglrt" cx="2421.4285714285716" cy="1240" r="7" class="station-node" stroke="#748477"><title>Samudera (PGLRT)</title></circle>
+<circle id="node_smg_pglrt" cx="2847.1428571428573" cy="1240" r="7" class="station-node" stroke="#748477"><title>Sumang (PGLRT)</title></circle>
+<circle id="node_smk_pglrt" cx="1782.857142857143" cy="1240" r="7" class="station-node" stroke="#748477"><title>Sam Kee (PGLRT)</title></circle>
+<circle id="node_snj_bplrt" cx="1570" cy="960" r="7" class="station-node" stroke="#748477"><title>Senja (BPLRT)</title></circle>
+<circle id="node_som_nsl" cx="653.0769230769231" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Somerset (NSL)</title></circle>
+<circle id="node_spl_tel" cx="2716.153846153846" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Springleaf (TEL)</title></circle>
+<circle id="node_stk_pglrt" cx="3060" cy="1240" r="7" class="station-node" stroke="#748477"><title>Soo Teck (PGLRT)</title></circle>
+<circle id="node_stv_dtl" cx="864.3235294117646" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Stevens (DTL)</title></circle>
+<circle id="node_stv_tel" cx="873.3235294117646" cy="680" r="7" class="station-node" stroke="#9d5b25"><title>Stevens (TEL)</title></circle>
+<circle id="node_tam_ewl" cx="2967.8529411764703" cy="260" r="7" class="station-node" stroke="#009645"><title>Tampines (EWL)</title></circle>
+<circle id="node_tam_dtl" cx="2976.8529411764703" cy="260" r="7" class="station-node" stroke="#005ec4"><title>Tampines (DTL)</title></circle>
+<circle id="node_tap_nsl" cx="1111.5384615384614" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Toa Payoh (NSL)</title></circle>
+<circle id="node_tcr_ewl" cx="518.2352941176471" cy="260" r="7" class="station-node" stroke="#009645"><title>Tuas Crescent (EWL)</title></circle>
+<circle id="node_tib_ewl" cx="1745.2941176470588" cy="260" r="7" class="station-node" stroke="#009645"><title>Tiong Bahru (EWL)</title></circle>
+<circle id="node_tkg_sklrt" cx="2830.7692307692305" cy="1100" r="7" class="station-node" stroke="#748477"><title>Tongkang (SKLRT)</title></circle>
+<circle id="node_tkk_dtl" cx="693.5294117647059" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Tan Kah Kee (DTL)</title></circle>
+<circle id="node_tkl_pglrt" cx="1995.7142857142858" cy="1240" r="7" class="station-node" stroke="#748477"><title>Teck Lee (PGLRT)</title></circle>
+<circle id="node_tkt_tel" cx="538.4615384615385" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Tanjong Katong (TEL)</title></circle>
+<circle id="node_tkw_bplrt" cx="825" cy="960" r="7" class="station-node" stroke="#748477"><title>Teck Whye (BPLRT)</title></circle>
+<circle id="node_tla_dtl" cx="1570" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Telok Ayer (DTL)</title></circle>
+<circle id="node_tlb_ccl" cx="2648.9655172413795" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Telok Blangah (CCL)</title></circle>
+<circle id="node_tlk_ewl" cx="342.94117647058823" cy="260" r="7" class="station-node" stroke="#009645"><title>Tuas Link (EWL)</title></circle>
+<circle id="node_tng_sklrt" cx="2143.076923076923" cy="1100" r="7" class="station-node" stroke="#748477"><title>Thanggam (SKLRT)</title></circle>
+<circle id="node_tnm_ewl" cx="80" cy="260" r="7" class="station-node" stroke="#009645"><title>Tanah Merah (EWL)</title></circle>
+<circle id="node_tpe_dtl" cx="2884.705882352941" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Tampines East (DTL)</title></circle>
+<circle id="node_tpg_ewl" cx="1920.5882352941176" cy="260" r="7" class="station-node" stroke="#009645"><title>Tanjong Pagar (EWL)</title></circle>
+<circle id="node_tpw_dtl" cx="2709.411764705882" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Tampines West (DTL)</title></circle>
+<circle id="node_trh_tel" cx="767.6923076923076" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Tanjong Rhu (TEL)</title></circle>
+<circle id="node_tsg_ccl" cx="1004.8275862068965" cy="540" r="7" class="station-node" stroke="#fa9e0d"><title>Tai Seng (CCL)</title></circle>
+<circle id="node_twr_ewl" cx="430.5882352941176" cy="260" r="7" class="station-node" stroke="#009645"><title>Tuas West Road (EWL)</title></circle>
+<circle id="node_ubi_dtl" cx="2358.8235294117644" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Ubi (DTL)</title></circle>
+<circle id="node_upc_dtl" cx="2972.3529411764703" cy="680" r="7" class="station-node" stroke="#005ec4"><title>Upper Changi (DTL)</title></circle>
+<circle id="node_uts_tel" cx="2257.6923076923076" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Upper Thomson (TEL)</title></circle>
+<circle id="node_wdl_nsl" cx="2253.1923076923076" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Woodlands (NSL)</title></circle>
+<circle id="node_wdl_tel" cx="2262.1923076923076" cy="120" r="7" class="station-node" stroke="#9d5b25"><title>Woodlands (TEL)</title></circle>
+<circle id="node_wdn_tel" cx="3060" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Woodlands North (TEL)</title></circle>
+<circle id="node_wds_tel" cx="2830.7692307692305" cy="820" r="7" class="station-node" stroke="#9d5b25"><title>Woodlands South (TEL)</title></circle>
+<circle id="node_wlh_nel" cx="1756.25" cy="400" r="7" class="station-node" stroke="#9900aa"><title>Woodleigh (NEL)</title></circle>
+<circle id="node_xpo_ewl" cx="163.1470588235294" cy="260" r="7" class="station-node" stroke="#009645"><title>Expo (EWL)</title></circle>
+<circle id="node_xpo_dtl" cx="172.1470588235294" cy="260" r="7" class="station-node" stroke="#005ec4"><title>Expo (DTL)</title></circle>
+<circle id="node_yck_nsl" cx="1570" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Yio Chu Kang (NSL)</title></circle>
+<circle id="node_yis_nsl" cx="1799.2307692307693" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Yishun (NSL)</title></circle>
+<circle id="node_ywt_nsl" cx="2601.5384615384614" cy="120" r="7" class="station-node" stroke="#d42e12"><title>Yew Tee (NSL)</title></circle>
+
+
+</g>
+<g id="labels" data-role="label">
+
+
+<text id="label_adm" x="2143.076923076923" y="96" class="station-label" text-anchor="middle">Admiralty</text>
+<text id="label_alj" x="2446.470588235294" y="236" class="station-label" text-anchor="middle">Aljunied</text>
+<text id="label_amk" x="1455.3846153846152" y="96" class="station-label" text-anchor="middle">Ang Mo Kio</text>
+<text id="label_bak" x="767.6923076923076" y="1076" class="station-label" text-anchor="middle">Bakau</text>
+<text id="label_bbs" x="2957.241379310345" y="516" class="station-label" text-anchor="middle">Bras Basah</text>
+<text id="label_bbt" x="2945.3846153846152" y="96" class="station-label" text-anchor="middle">Bukit Batok</text>
+<text id="label_bcl" x="1832.941176470588" y="656" class="station-label" text-anchor="middle">Bencoolen</text>
+<text id="label_bdk" x="2797.0588235294117" y="236" class="station-label" text-anchor="middle">Bedok</text>
+<text id="label_bdl" x="1226.1538461538462" y="96" class="station-label" text-anchor="middle">Braddell</text>
+<text id="label_bdm" x="2008.2352941176468" y="656" class="station-label" text-anchor="middle">Bendemeer</text>
+<text id="label_bdn" x="2534.1176470588234" y="656" class="station-label" text-anchor="middle">Bedok North</text>
+<text id="label_bdr" x="2621.7647058823527" y="656" class="station-label" text-anchor="middle">Bedok Reservoir</text>
+<text id="label_bft" x="182.75862068965517" y="516" class="station-label" text-anchor="middle">Bayfront</text>
+<text id="label_bgb" x="2830.7692307692305" y="96" class="station-label" text-anchor="middle">Bukit Gombak</text>
+<text id="label_bgk" x="2501.25" y="376" class="station-label" text-anchor="middle">Buangkok</text>
+<text id="label_bgs" x="2183.529411764706" y="236" class="station-label" text-anchor="middle">Bugis</text>
+<text id="label_bkp" x="80" y="656" class="station-label" text-anchor="middle">Bukit Panjang</text>
+<text id="label_bkt" x="2563.3333333333335" y="936" class="station-label" text-anchor="middle">Bangkit</text>
+<text id="label_bly" x="1107.5862068965516" y="516" class="station-label" text-anchor="middle">Bartley</text>
+<text id="label_bnk" x="1383.75" y="376" class="station-label" text-anchor="middle">Boon Keng</text>
+<text id="label_bnl" x="868.8235294117646" y="236" class="station-label" text-anchor="middle">Boon Lay</text>
+<text id="label_bnv" x="1394.705882352941" y="236" class="station-label" text-anchor="middle">Buona Vista</text>
+<text id="label_brh" x="2372.3076923076924" y="796" class="station-label" text-anchor="middle">Bright Hill</text>
+<text id="label_bsh" x="1340.7692307692307" y="96" class="station-label" text-anchor="middle">Bishan</text>
+<text id="label_bsr" x="80" y="796" class="station-label" text-anchor="middle">Bayshore</text>
+<text id="label_btn" x="1724.1379310344828" y="516" class="station-label" text-anchor="middle">Botanic Gardens</text>
+<text id="label_btw" x="430.5882352941176" y="656" class="station-label" text-anchor="middle">Beauty World</text>
+<text id="label_cbr" x="1913.8461538461538" y="96" class="station-label" text-anchor="middle">Canberra</text>
+<text id="label_cck" x="2716.153846153846" y="96" class="station-label" text-anchor="middle">Choa Chu Kang</text>
+<text id="label_cdt" x="1621.3793103448277" y="516" class="station-label" text-anchor="middle">Caldecott</text>
+<text id="label_cga" x="255.2941176470588" y="236" class="station-label" text-anchor="middle">Changi Airport</text>
+<text id="label_cgl" x="1455.3846153846152" y="1076" class="station-label" text-anchor="middle">Cheng Lim</text>
+<text id="label_cle" x="1219.4117647058822" y="236" class="station-label" text-anchor="middle">Clementi</text>
+<text id="label_cng" x="1044.1176470588234" y="236" class="station-label" text-anchor="middle">Chinese Garden</text>
+<text id="label_com" x="1482.3529411764705" y="236" class="station-label" text-anchor="middle">Commonwealth</text>
+<text id="label_cov" x="292.8571428571429" y="1216" class="station-label" text-anchor="middle">Cove</text>
+<text id="label_cpv" x="1226.1538461538462" y="1076" class="station-label" text-anchor="middle">Compassvale</text>
+<text id="label_cre" x="718.5714285714286" y="1216" class="station-label" text-anchor="middle">Coral Edge</text>
+<text id="label_crq" x="638.75" y="376" class="station-label" text-anchor="middle">Clarke Quay</text>
+<text id="label_csw" x="167.6470588235294" y="656" class="station-label" text-anchor="middle">Cashew</text>
+<text id="label_cth" x="423.8461538461538" y="96" class="station-label" text-anchor="middle">City Hall</text>
+<text id="label_ctn" x="452.5" y="376" class="station-label" text-anchor="middle">Chinatown</text>
+<text id="label_dam" x="1570" y="1216" class="station-label" text-anchor="middle">Damai</text>
+<text id="label_dbg" x="538.4615384615385" y="96" class="station-label" text-anchor="middle">Dhoby Ghaut</text>
+<text id="label_dkt" x="696.551724137931" y="516" class="station-label" text-anchor="middle">Dakota</text>
+<text id="label_dtn" x="1482.3529411764705" y="656" class="station-label" text-anchor="middle">Downtown</text>
+<text id="label_dvr" x="1307.0588235294117" y="236" class="station-label" text-anchor="middle">Dover</text>
+<text id="label_epn" x="3060" y="516" class="station-label" text-anchor="middle">Esplanade</text>
+<text id="label_eun" x="2621.7647058823527" y="236" class="station-label" text-anchor="middle">Eunos</text>
+<text id="label_fcn" x="1745.2941176470588" y="656" class="station-label" text-anchor="middle">Fort Canning</text>
+<text id="label_fjr" x="2315" y="936" class="station-label" text-anchor="middle">Fajar</text>
+<text id="label_fmw" x="1684.6153846153845" y="1076" class="station-label" text-anchor="middle">Farmway</text>
+<text id="label_fnv" x="2372.3076923076924" y="1076" class="station-label" text-anchor="middle">Fernvale</text>
+<text id="label_frp" x="1197.5" y="376" class="station-label" text-anchor="middle">Farrer Park</text>
+<text id="label_frr" x="1826.896551724138" y="516" class="station-label" text-anchor="middle">Farrer Road</text>
+<text id="label_gcl" x="605.8823529411765" y="236" class="station-label" text-anchor="middle">Gul Circle</text>
+<text id="label_glb" x="2095.8823529411766" y="656" class="station-label" text-anchor="middle">Geylang Bahru</text>
+<text id="label_grb" x="882.3076923076923" y="796" class="station-label" text-anchor="middle">Gardens by the Bay</text>
+<text id="label_grw" x="1570" y="796" class="station-label" text-anchor="middle">Great World</text>
+<text id="label_hbf" x="80" y="376" class="station-label" text-anchor="middle">HarbourFront</text>
+<text id="label_hgn" x="2315" y="376" class="station-label" text-anchor="middle">Hougang</text>
+<text id="label_hlv" x="1929.655172413793" y="516" class="station-label" text-anchor="middle">Holland Village</text>
+<text id="label_hme" x="342.94117647058823" y="656" class="station-label" text-anchor="middle">Hume</text>
+<text id="label_hpv" x="2340.689655172414" y="516" class="station-label" text-anchor="middle">Haw Par Villa</text>
+<text id="label_hvl" x="1455.3846153846152" y="796" class="station-label" text-anchor="middle">Havelock</text>
+<text id="label_hvw" x="255.2941176470588" y="656" class="station-label" text-anchor="middle">Hillview</text>
+<text id="label_jkn" x="693.5294117647059" y="236" class="station-label" text-anchor="middle">Joo Koon</text>
+<text id="label_jlb" x="1920.5882352941176" y="656" class="station-label" text-anchor="middle">Jalan Besar</text>
+<text id="label_jlp" x="1818.3333333333335" y="936" class="station-label" text-anchor="middle">Jelapang</text>
+<text id="label_jur" x="3060" y="96" class="station-label" text-anchor="middle">Jurong East</text>
+<text id="label_kal" x="2358.8235294117644" y="236" class="station-label" text-anchor="middle">Kallang</text>
+<text id="label_kap" x="518.2352941176471" y="656" class="station-label" text-anchor="middle">King Albert Park</text>
+<text id="label_kdl" x="1144.2857142857142" y="1216" class="station-label" text-anchor="middle">Kadaloor</text>
+<text id="label_kem" x="2709.411764705882" y="236" class="station-label" text-anchor="middle">Kembangan</text>
+<text id="label_kgk" x="538.4615384615385" y="1076" class="station-label" text-anchor="middle">Kangkar</text>
+<text id="label_kkb" x="2446.470588235294" y="656" class="station-label" text-anchor="middle">Kaki Bukit</text>
+<text id="label_kpg" x="1913.8461538461538" y="1076" class="station-label" text-anchor="middle">Kupang</text>
+<text id="label_krg" x="2237.9310344827586" y="516" class="station-label" text-anchor="middle">Kent Ridge</text>
+<text id="label_krj" x="2486.9230769230767" y="96" class="station-label" text-anchor="middle">Kranji</text>
+<text id="label_ktb" x="1684.6153846153845" y="96" class="station-label" text-anchor="middle">Khatib</text>
+<text id="label_kth" x="576.6666666666667" y="936" class="station-label" text-anchor="middle">Keat Hong</text>
+<text id="label_ktp" x="653.0769230769231" y="796" class="station-label" text-anchor="middle">Katong Park</text>
+<text id="label_kvn" x="2128.75" y="376" class="station-label" text-anchor="middle">Kovan</text>
+<text id="label_lbd" x="2546.206896551724" y="516" class="station-label" text-anchor="middle">Labrador Park</text>
+<text id="label_lks" x="956.470588235294" y="236" class="station-label" text-anchor="middle">Lakeside</text>
+<text id="label_lrc" x="1313.103448275862" y="516" class="station-label" text-anchor="middle">Lorong Chuan</text>
+<text id="label_lti" x="1011.25" y="376" class="station-label" text-anchor="middle">Little India</text>
+<text id="label_ltr" x="2601.5384615384614" y="796" class="station-label" text-anchor="middle">Lentor</text>
+<text id="label_lvr" x="2271.176470588235" y="236" class="station-label" text-anchor="middle">Lavender</text>
+<text id="label_lyr" x="2601.5384615384614" y="1076" class="station-label" text-anchor="middle">Layar</text>
+<text id="label_max" x="1226.1538461538462" y="796" class="station-label" text-anchor="middle">Maxwell</text>
+<text id="label_mbt" x="593.7931034482758" y="516" class="station-label" text-anchor="middle">Mountbatten</text>
+<text id="label_mfl" x="2486.9230769230767" y="796" class="station-label" text-anchor="middle">Mayflower</text>
+<text id="label_mpr" x="423.8461538461538" y="796" class="station-label" text-anchor="middle">Marine Parade</text>
+<text id="label_mps" x="902.0689655172414" y="516" class="station-label" text-anchor="middle">MacPherson</text>
+<text id="label_mrb" x="194.6153846153846" y="96" class="station-label" text-anchor="middle">Marina Bay</text>
+<text id="label_mrd" x="505.7142857142857" y="1216" class="station-label" text-anchor="middle">Meridian</text>
+<text id="label_mrm" x="1518.6206896551726" y="516" class="station-label" text-anchor="middle">Marymount</text>
+<text id="label_msl" x="2372.3076923076924" y="96" class="station-label" text-anchor="middle">Marsiling</text>
+<text id="label_msp" x="80" y="96" class="station-label" text-anchor="middle">Marina South Pier</text>
+<text id="label_mtc" x="309.2307692307692" y="796" class="station-label" text-anchor="middle">Marine Terrace</text>
+<text id="label_mtr" x="2183.529411764706" y="656" class="station-label" text-anchor="middle">Mattar</text>
+<text id="label_nbg" x="2634.285714285714" y="1216" class="station-label" text-anchor="middle">Nibong</text>
+<text id="label_nch" x="388.2758620689655" y="516" class="station-label" text-anchor="middle">Nicoll Highway</text>
+<text id="label_new" x="882.3076923076923" y="96" class="station-label" text-anchor="middle">Newton</text>
+<text id="label_nov" x="996.9230769230769" y="96" class="station-label" text-anchor="middle">Novena</text>
+<text id="label_npr" x="1913.8461538461538" y="796" class="station-label" text-anchor="middle">Napier</text>
+<text id="label_oas" x="1357.142857142857" y="1216" class="station-label" text-anchor="middle">Oasis</text>
+<text id="label_obv" x="1799.2307692307693" y="796" class="station-label" text-anchor="middle">Orchard Boulevard</text>
+<text id="label_onh" x="2135.1724137931033" y="516" class="station-label" text-anchor="middle">one-north</text>
+<text id="label_orc" x="767.6923076923076" y="96" class="station-label" text-anchor="middle">Orchard</text>
+<text id="label_otp" x="1832.941176470588" y="236" class="station-label" text-anchor="middle">Outram Park</text>
+<text id="label_pgc" x="3060" y="376" class="station-label" text-anchor="middle">Punggol Coast</text>
+<text id="label_pgl" x="2873.75" y="376" class="station-label" text-anchor="middle">Punggol</text>
+<text id="label_pgp" x="2208.5714285714284" y="1216" class="station-label" text-anchor="middle">Punggol Point</text>
+<text id="label_pmn" x="285.51724137931035" y="516" class="station-label" text-anchor="middle">Promenade</text>
+<text id="label_pnd" x="2811.666666666667" y="936" class="station-label" text-anchor="middle">Pending</text>
+<text id="label_pnr" x="781.1764705882352" y="236" class="station-label" text-anchor="middle">Pioneer</text>
+<text id="label_pnx" x="1073.3333333333335" y="936" class="station-label" text-anchor="middle">Phoenix</text>
+<text id="label_ppj" x="2443.448275862069" y="516" class="station-label" text-anchor="middle">Pasir Panjang</text>
+<text id="label_psr" x="3060" y="236" class="station-label" text-anchor="middle">Pasir Ris</text>
+<text id="label_ptp" x="1570" y="376" class="station-label" text-anchor="middle">Potong Pasir</text>
+<text id="label_ptr" x="3060" y="936" class="station-label" text-anchor="middle">Petir</text>
+<text id="label_pyl" x="2534.1176470588234" y="236" class="station-label" text-anchor="middle">Paya Lebar</text>
+<text id="label_que" x="1570" y="236" class="station-label" text-anchor="middle">Queenstown</text>
+<text id="label_rcr" x="1131.764705882353" y="656" class="station-label" text-anchor="middle">Rochor</text>
+<text id="label_rdh" x="1657.6470588235293" y="236" class="station-label" text-anchor="middle">Redhill</text>
+<text id="label_rfp" x="309.2307692307692" y="96" class="station-label" text-anchor="middle">Raffles Place</text>
+<text id="label_riv" x="931.4285714285714" y="1216" class="station-label" text-anchor="middle">Riviera</text>
+<text id="label_rmb" x="996.9230769230769" y="1076" class="station-label" text-anchor="middle">Rumbia</text>
+<text id="label_rng" x="309.2307692307692" y="1076" class="station-label" text-anchor="middle">Ranggung</text>
+<text id="label_rnj" x="3060" y="1076" class="station-label" text-anchor="middle">Renjong</text>
+<text id="label_sav" x="605.8823529411765" y="656" class="station-label" text-anchor="middle">Sixth Avenue</text>
+<text id="label_sbw" x="2028.4615384615383" y="96" class="station-label" text-anchor="middle">Sembawang</text>
+<text id="label_sdm" x="491.0344827586207" y="516" class="station-label" text-anchor="middle">Stadium</text>
+<text id="label_ser" x="1942.5" y="376" class="station-label" text-anchor="middle">Serangoon</text>
+<text id="label_sgl" x="194.6153846153846" y="796" class="station-label" text-anchor="middle">Siglap</text>
+<text id="label_sgr" x="2066.666666666667" y="936" class="station-label" text-anchor="middle">Segar</text>
+<text id="label_shv" x="328.33333333333337" y="936" class="station-label" text-anchor="middle">South View</text>
+<text id="label_shw" x="1111.5384615384614" y="796" class="station-label" text-anchor="middle">Shenton Way</text>
+<text id="label_sim" x="2884.705882352941" y="236" class="station-label" text-anchor="middle">Simei</text>
+<text id="label_skg" x="2687.5" y="376" class="station-label" text-anchor="middle">Sengkang</text>
+<text id="label_smd" x="2421.4285714285716" y="1216" class="station-label" text-anchor="middle">Samudera</text>
+<text id="label_smg" x="2847.1428571428573" y="1216" class="station-label" text-anchor="middle">Sumang</text>
+<text id="label_smk" x="1782.857142857143" y="1216" class="station-label" text-anchor="middle">Sam Kee</text>
+<text id="label_snj" x="1570" y="936" class="station-label" text-anchor="middle">Senja</text>
+<text id="label_som" x="653.0769230769231" y="96" class="station-label" text-anchor="middle">Somerset</text>
+<text id="label_spl" x="2716.153846153846" y="796" class="station-label" text-anchor="middle">Springleaf</text>
+<text id="label_stk" x="3060" y="1216" class="station-label" text-anchor="middle">Soo Teck</text>
+<text id="label_stv" x="868.8235294117646" y="656" class="station-label" text-anchor="middle">Stevens</text>
+<text id="label_tam" x="2972.3529411764703" y="236" class="station-label" text-anchor="middle">Tampines</text>
+<text id="label_tap" x="1111.5384615384614" y="96" class="station-label" text-anchor="middle">Toa Payoh</text>
+<text id="label_tcr" x="518.2352941176471" y="236" class="station-label" text-anchor="middle">Tuas Crescent</text>
+<text id="label_tib" x="1745.2941176470588" y="236" class="station-label" text-anchor="middle">Tiong Bahru</text>
+<text id="label_tkg" x="2830.7692307692305" y="1076" class="station-label" text-anchor="middle">Tongkang</text>
+<text id="label_tkk" x="693.5294117647059" y="656" class="station-label" text-anchor="middle">Tan Kah Kee</text>
+<text id="label_tkl" x="1995.7142857142858" y="1216" class="station-label" text-anchor="middle">Teck Lee</text>
+<text id="label_tkt" x="538.4615384615385" y="796" class="station-label" text-anchor="middle">Tanjong Katong</text>
+<text id="label_tkw" x="825" y="936" class="station-label" text-anchor="middle">Teck Whye</text>
+<text id="label_tla" x="1570" y="656" class="station-label" text-anchor="middle">Telok Ayer</text>
+<text id="label_tlb" x="2648.9655172413795" y="516" class="station-label" text-anchor="middle">Telok Blangah</text>
+<text id="label_tlk" x="342.94117647058823" y="236" class="station-label" text-anchor="middle">Tuas Link</text>
+<text id="label_tng" x="2143.076923076923" y="1076" class="station-label" text-anchor="middle">Thanggam</text>
+<text id="label_tnm" x="80" y="236" class="station-label" text-anchor="middle">Tanah Merah</text>
+<text id="label_tpe" x="2884.705882352941" y="656" class="station-label" text-anchor="middle">Tampines East</text>
+<text id="label_tpg" x="1920.5882352941176" y="236" class="station-label" text-anchor="middle">Tanjong Pagar</text>
+<text id="label_tpw" x="2709.411764705882" y="656" class="station-label" text-anchor="middle">Tampines West</text>
+<text id="label_trh" x="767.6923076923076" y="796" class="station-label" text-anchor="middle">Tanjong Rhu</text>
+<text id="label_tsg" x="1004.8275862068965" y="516" class="station-label" text-anchor="middle">Tai Seng</text>
+<text id="label_twr" x="430.5882352941176" y="236" class="station-label" text-anchor="middle">Tuas West Road</text>
+<text id="label_ubi" x="2358.8235294117644" y="656" class="station-label" text-anchor="middle">Ubi</text>
+<text id="label_upc" x="2972.3529411764703" y="656" class="station-label" text-anchor="middle">Upper Changi</text>
+<text id="label_uts" x="2257.6923076923076" y="796" class="station-label" text-anchor="middle">Upper Thomson</text>
+<text id="label_wdl" x="2257.6923076923076" y="96" class="station-label" text-anchor="middle">Woodlands</text>
+<text id="label_wdn" x="3060" y="796" class="station-label" text-anchor="middle">Woodlands North</text>
+<text id="label_wds" x="2830.7692307692305" y="796" class="station-label" text-anchor="middle">Woodlands South</text>
+<text id="label_wlh" x="1756.25" y="376" class="station-label" text-anchor="middle">Woodleigh</text>
+<text id="label_xpo" x="167.6470588235294" y="236" class="station-label" text-anchor="middle">Expo</text>
+<text id="label_yck" x="1570" y="96" class="station-label" text-anchor="middle">Yio Chu Kang</text>
+<text id="label_yis" x="1799.2307692307693" y="96" class="station-label" text-anchor="middle">Yishun</text>
+<text id="label_ywt" x="2601.5384615384614" y="96" class="station-label" text-anchor="middle">Yew Tee</text>
+<text id="NS10" x="2143.076923076923" y="138" class="station-code" text-anchor="middle">NS10</text>
+<text id="EW9" x="2446.470588235294" y="278" class="station-code" text-anchor="middle">EW9</text>
+<text id="NS16" x="1455.3846153846152" y="138" class="station-code" text-anchor="middle">NS16</text>
+<text id="SE3" x="767.6923076923076" y="1118" class="station-code" text-anchor="middle">SE3</text>
+<text id="CC2" x="2957.241379310345" y="558" class="station-code" text-anchor="middle">CC2</text>
+<text id="NS2" x="2945.3846153846152" y="138" class="station-code" text-anchor="middle">NS2</text>
+<text id="DT21" x="1832.941176470588" y="698" class="station-code" text-anchor="middle">DT21</text>
+<text id="EW5" x="2797.0588235294117" y="278" class="station-code" text-anchor="middle">EW5</text>
+<text id="NS18" x="1226.1538461538462" y="138" class="station-code" text-anchor="middle">NS18</text>
+<text id="DT23" x="2008.2352941176468" y="698" class="station-code" text-anchor="middle">DT23</text>
+<text id="DT29" x="2534.1176470588234" y="698" class="station-code" text-anchor="middle">DT29</text>
+<text id="DT30" x="2621.7647058823527" y="698" class="station-code" text-anchor="middle">DT30</text>
+<text id="CE1" x="182.75862068965517" y="558" class="station-code" text-anchor="middle">CE1</text>
+<text id="DT16" x="200.75862068965517" y="558" class="station-code" text-anchor="middle">DT16</text>
+<text id="NS3" x="2830.7692307692305" y="138" class="station-code" text-anchor="middle">NS3</text>
+<text id="NE15" x="2501.25" y="418" class="station-code" text-anchor="middle">NE15</text>
+<text id="EW12" x="2183.529411764706" y="278" class="station-code" text-anchor="middle">EW12</text>
+<text id="DT14" x="2201.529411764706" y="278" class="station-code" text-anchor="middle">DT14</text>
+<text id="DT1" x="80" y="698" class="station-code" text-anchor="middle">DT1</text>
+<text id="BP6" x="98" y="698" class="station-code" text-anchor="middle">BP6</text>
+<text id="BP9" x="2563.3333333333335" y="978" class="station-code" text-anchor="middle">BP9</text>
+<text id="CC12" x="1107.5862068965516" y="558" class="station-code" text-anchor="middle">CC12</text>
+<text id="NE9" x="1383.75" y="418" class="station-code" text-anchor="middle">NE9</text>
+<text id="EW27" x="868.8235294117646" y="278" class="station-code" text-anchor="middle">EW27</text>
+<text id="EW21" x="1394.705882352941" y="278" class="station-code" text-anchor="middle">EW21</text>
+<text id="CC22" x="1412.705882352941" y="278" class="station-code" text-anchor="middle">CC22</text>
+<text id="TE7" x="2372.3076923076924" y="838" class="station-code" text-anchor="middle">TE7</text>
+<text id="NS17" x="1340.7692307692307" y="138" class="station-code" text-anchor="middle">NS17</text>
+<text id="CC15" x="1358.7692307692307" y="138" class="station-code" text-anchor="middle">CC15</text>
+<text id="TE29" x="80" y="838" class="station-code" text-anchor="middle">TE29</text>
+<text id="CC19" x="1724.1379310344828" y="558" class="station-code" text-anchor="middle">CC19</text>
+<text id="DT9" x="1742.1379310344828" y="558" class="station-code" text-anchor="middle">DT9</text>
+<text id="DT5" x="430.5882352941176" y="698" class="station-code" text-anchor="middle">DT5</text>
+<text id="NS12" x="1913.8461538461538" y="138" class="station-code" text-anchor="middle">NS12</text>
+<text id="NS4" x="2716.153846153846" y="138" class="station-code" text-anchor="middle">NS4</text>
+<text id="BP1" x="2734.153846153846" y="138" class="station-code" text-anchor="middle">BP1</text>
+<text id="CC17" x="1621.3793103448277" y="558" class="station-code" text-anchor="middle">CC17</text>
+<text id="TE9" x="1639.3793103448277" y="558" class="station-code" text-anchor="middle">TE9</text>
+<text id="CG2" x="255.2941176470588" y="278" class="station-code" text-anchor="middle">CG2</text>
+<text id="SW1" x="1455.3846153846152" y="1118" class="station-code" text-anchor="middle">SW1</text>
+<text id="EW23" x="1219.4117647058822" y="278" class="station-code" text-anchor="middle">EW23</text>
+<text id="EW25" x="1044.1176470588234" y="278" class="station-code" text-anchor="middle">EW25</text>
+<text id="EW20" x="1482.3529411764705" y="278" class="station-code" text-anchor="middle">EW20</text>
+<text id="PE1" x="292.8571428571429" y="1258" class="station-code" text-anchor="middle">PE1</text>
+<text id="SE1" x="1226.1538461538462" y="1118" class="station-code" text-anchor="middle">SE1</text>
+<text id="PE3" x="718.5714285714286" y="1258" class="station-code" text-anchor="middle">PE3</text>
+<text id="NE5" x="638.75" y="418" class="station-code" text-anchor="middle">NE5</text>
+<text id="DT2" x="167.6470588235294" y="698" class="station-code" text-anchor="middle">DT2</text>
+<text id="NS25" x="423.8461538461538" y="138" class="station-code" text-anchor="middle">NS25</text>
+<text id="EW13" x="441.8461538461538" y="138" class="station-code" text-anchor="middle">EW13</text>
+<text id="NE4" x="452.5" y="418" class="station-code" text-anchor="middle">NE4</text>
+<text id="DT19" x="470.5" y="418" class="station-code" text-anchor="middle">DT19</text>
+<text id="PE7" x="1570" y="1258" class="station-code" text-anchor="middle">PE7</text>
+<text id="NS24" x="538.4615384615385" y="138" class="station-code" text-anchor="middle">NS24</text>
+<text id="NE6" x="556.4615384615385" y="138" class="station-code" text-anchor="middle">NE6</text>
+<text id="CC1" x="574.4615384615385" y="138" class="station-code" text-anchor="middle">CC1</text>
+<text id="CC8" x="696.551724137931" y="558" class="station-code" text-anchor="middle">CC8</text>
+<text id="DT17" x="1482.3529411764705" y="698" class="station-code" text-anchor="middle">DT17</text>
+<text id="EW22" x="1307.0588235294117" y="278" class="station-code" text-anchor="middle">EW22</text>
+<text id="CC3" x="3060" y="558" class="station-code" text-anchor="middle">CC3</text>
+<text id="EW7" x="2621.7647058823527" y="278" class="station-code" text-anchor="middle">EW7</text>
+<text id="DT20" x="1745.2941176470588" y="698" class="station-code" text-anchor="middle">DT20</text>
+<text id="BP10" x="2315" y="978" class="station-code" text-anchor="middle">BP10</text>
+<text id="SW2" x="1684.6153846153845" y="1118" class="station-code" text-anchor="middle">SW2</text>
+<text id="SW5" x="2372.3076923076924" y="1118" class="station-code" text-anchor="middle">SW5</text>
+<text id="NE8" x="1197.5" y="418" class="station-code" text-anchor="middle">NE8</text>
+<text id="CC20" x="1826.896551724138" y="558" class="station-code" text-anchor="middle">CC20</text>
+<text id="EW30" x="605.8823529411765" y="278" class="station-code" text-anchor="middle">EW30</text>
+<text id="DT24" x="2095.8823529411766" y="698" class="station-code" text-anchor="middle">DT24</text>
+<text id="TE22" x="882.3076923076923" y="838" class="station-code" text-anchor="middle">TE22</text>
+<text id="TE15" x="1570" y="838" class="station-code" text-anchor="middle">TE15</text>
+<text id="NE1" x="80" y="418" class="station-code" text-anchor="middle">NE1</text>
+<text id="CC29" x="98" y="418" class="station-code" text-anchor="middle">CC29</text>
+<text id="NE14" x="2315" y="418" class="station-code" text-anchor="middle">NE14</text>
+<text id="CC21" x="1929.655172413793" y="558" class="station-code" text-anchor="middle">CC21</text>
+<text id="DT4" x="342.94117647058823" y="698" class="station-code" text-anchor="middle">DT4</text>
+<text id="CC25" x="2340.689655172414" y="558" class="station-code" text-anchor="middle">CC25</text>
+<text id="TE16" x="1455.3846153846152" y="838" class="station-code" text-anchor="middle">TE16</text>
+<text id="DT3" x="255.2941176470588" y="698" class="station-code" text-anchor="middle">DT3</text>
+<text id="EW29" x="693.5294117647059" y="278" class="station-code" text-anchor="middle">EW29</text>
+<text id="DT22" x="1920.5882352941176" y="698" class="station-code" text-anchor="middle">DT22</text>
+<text id="BP12" x="1818.3333333333335" y="978" class="station-code" text-anchor="middle">BP12</text>
+<text id="NS1" x="3060" y="138" class="station-code" text-anchor="middle">NS1</text>
+<text id="EW24" x="3078" y="138" class="station-code" text-anchor="middle">EW24</text>
+<text id="EW10" x="2358.8235294117644" y="278" class="station-code" text-anchor="middle">EW10</text>
+<text id="DT6" x="518.2352941176471" y="698" class="station-code" text-anchor="middle">DT6</text>
+<text id="PE5" x="1144.2857142857142" y="1258" class="station-code" text-anchor="middle">PE5</text>
+<text id="EW6" x="2709.411764705882" y="278" class="station-code" text-anchor="middle">EW6</text>
+<text id="SE4" x="538.4615384615385" y="1118" class="station-code" text-anchor="middle">SE4</text>
+<text id="DT28" x="2446.470588235294" y="698" class="station-code" text-anchor="middle">DT28</text>
+<text id="SW3" x="1913.8461538461538" y="1118" class="station-code" text-anchor="middle">SW3</text>
+<text id="CC24" x="2237.9310344827586" y="558" class="station-code" text-anchor="middle">CC24</text>
+<text id="NS7" x="2486.9230769230767" y="138" class="station-code" text-anchor="middle">NS7</text>
+<text id="NS14" x="1684.6153846153845" y="138" class="station-code" text-anchor="middle">NS14</text>
+<text id="BP3" x="576.6666666666667" y="978" class="station-code" text-anchor="middle">BP3</text>
+<text id="TE24" x="653.0769230769231" y="838" class="station-code" text-anchor="middle">TE24</text>
+<text id="NE13" x="2128.75" y="418" class="station-code" text-anchor="middle">NE13</text>
+<text id="CC27" x="2546.206896551724" y="558" class="station-code" text-anchor="middle">CC27</text>
+<text id="EW26" x="956.470588235294" y="278" class="station-code" text-anchor="middle">EW26</text>
+<text id="CC14" x="1313.103448275862" y="558" class="station-code" text-anchor="middle">CC14</text>
+<text id="NE7" x="1011.25" y="418" class="station-code" text-anchor="middle">NE7</text>
+<text id="DT12" x="1029.25" y="418" class="station-code" text-anchor="middle">DT12</text>
+<text id="TE5" x="2601.5384615384614" y="838" class="station-code" text-anchor="middle">TE5</text>
+<text id="EW11" x="2271.176470588235" y="278" class="station-code" text-anchor="middle">EW11</text>
+<text id="SW6" x="2601.5384615384614" y="1118" class="station-code" text-anchor="middle">SW6</text>
+<text id="TE18" x="1226.1538461538462" y="838" class="station-code" text-anchor="middle">TE18</text>
+<text id="CC7" x="593.7931034482758" y="558" class="station-code" text-anchor="middle">CC7</text>
+<text id="TE6" x="2486.9230769230767" y="838" class="station-code" text-anchor="middle">TE6</text>
+<text id="TE26" x="423.8461538461538" y="838" class="station-code" text-anchor="middle">TE26</text>
+<text id="CC10" x="902.0689655172414" y="558" class="station-code" text-anchor="middle">CC10</text>
+<text id="DT26" x="920.0689655172414" y="558" class="station-code" text-anchor="middle">DT26</text>
+<text id="NS27" x="194.6153846153846" y="138" class="station-code" text-anchor="middle">NS27</text>
+<text id="CE2" x="212.6153846153846" y="138" class="station-code" text-anchor="middle">CE2</text>
+<text id="TE20" x="230.6153846153846" y="138" class="station-code" text-anchor="middle">TE20</text>
+<text id="PE2" x="505.7142857142857" y="1258" class="station-code" text-anchor="middle">PE2</text>
+<text id="CC16" x="1518.6206896551726" y="558" class="station-code" text-anchor="middle">CC16</text>
+<text id="NS8" x="2372.3076923076924" y="138" class="station-code" text-anchor="middle">NS8</text>
+<text id="NS28" x="80" y="138" class="station-code" text-anchor="middle">NS28</text>
+<text id="TE27" x="309.2307692307692" y="838" class="station-code" text-anchor="middle">TE27</text>
+<text id="DT25" x="2183.529411764706" y="698" class="station-code" text-anchor="middle">DT25</text>
+<text id="PW5" x="2634.285714285714" y="1258" class="station-code" text-anchor="middle">PW5</text>
+<text id="CC5" x="388.2758620689655" y="558" class="station-code" text-anchor="middle">CC5</text>
+<text id="NS21" x="882.3076923076923" y="138" class="station-code" text-anchor="middle">NS21</text>
+<text id="DT11" x="900.3076923076923" y="138" class="station-code" text-anchor="middle">DT11</text>
+<text id="NS20" x="996.9230769230769" y="138" class="station-code" text-anchor="middle">NS20</text>
+<text id="TE12" x="1913.8461538461538" y="838" class="station-code" text-anchor="middle">TE12</text>
+<text id="PE6" x="1357.142857142857" y="1258" class="station-code" text-anchor="middle">PE6</text>
+<text id="TE13" x="1799.2307692307693" y="838" class="station-code" text-anchor="middle">TE13</text>
+<text id="CC23" x="2135.1724137931033" y="558" class="station-code" text-anchor="middle">CC23</text>
+<text id="NS22" x="767.6923076923076" y="138" class="station-code" text-anchor="middle">NS22</text>
+<text id="TE14" x="785.6923076923076" y="138" class="station-code" text-anchor="middle">TE14</text>
+<text id="EW16" x="1832.941176470588" y="278" class="station-code" text-anchor="middle">EW16</text>
+<text id="NE3" x="1850.941176470588" y="278" class="station-code" text-anchor="middle">NE3</text>
+<text id="TE17" x="1868.941176470588" y="278" class="station-code" text-anchor="middle">TE17</text>
+<text id="NE18" x="3060" y="418" class="station-code" text-anchor="middle">NE18</text>
+<text id="NE17" x="2873.75" y="418" class="station-code" text-anchor="middle">NE17</text>
+<text id="PTC" x="2891.75" y="418" class="station-code" text-anchor="middle">PTC</text>
+<text id="PW3" x="2208.5714285714284" y="1258" class="station-code" text-anchor="middle">PW3</text>
+<text id="CC4" x="285.51724137931035" y="558" class="station-code" text-anchor="middle">CC4</text>
+<text id="DT15" x="303.51724137931035" y="558" class="station-code" text-anchor="middle">DT15</text>
+<text id="BP8" x="2811.666666666667" y="978" class="station-code" text-anchor="middle">BP8</text>
+<text id="EW28" x="781.1764705882352" y="278" class="station-code" text-anchor="middle">EW28</text>
+<text id="BP5" x="1073.3333333333335" y="978" class="station-code" text-anchor="middle">BP5</text>
+<text id="CC26" x="2443.448275862069" y="558" class="station-code" text-anchor="middle">CC26</text>
+<text id="EW1" x="3060" y="278" class="station-code" text-anchor="middle">EW1</text>
+<text id="NE10" x="1570" y="418" class="station-code" text-anchor="middle">NE10</text>
+<text id="BP7" x="3060" y="978" class="station-code" text-anchor="middle">BP7</text>
+<text id="EW8" x="2534.1176470588234" y="278" class="station-code" text-anchor="middle">EW8</text>
+<text id="CC9" x="2552.1176470588234" y="278" class="station-code" text-anchor="middle">CC9</text>
+<text id="EW19" x="1570" y="278" class="station-code" text-anchor="middle">EW19</text>
+<text id="DT13" x="1131.764705882353" y="698" class="station-code" text-anchor="middle">DT13</text>
+<text id="EW18" x="1657.6470588235293" y="278" class="station-code" text-anchor="middle">EW18</text>
+<text id="NS26" x="309.2307692307692" y="138" class="station-code" text-anchor="middle">NS26</text>
+<text id="EW14" x="327.2307692307692" y="138" class="station-code" text-anchor="middle">EW14</text>
+<text id="PE4" x="931.4285714285714" y="1258" class="station-code" text-anchor="middle">PE4</text>
+<text id="SE2" x="996.9230769230769" y="1118" class="station-code" text-anchor="middle">SE2</text>
+<text id="SE5" x="309.2307692307692" y="1118" class="station-code" text-anchor="middle">SE5</text>
+<text id="SW8" x="3060" y="1118" class="station-code" text-anchor="middle">SW8</text>
+<text id="DT7" x="605.8823529411765" y="698" class="station-code" text-anchor="middle">DT7</text>
+<text id="NS11" x="2028.4615384615383" y="138" class="station-code" text-anchor="middle">NS11</text>
+<text id="CC6" x="491.0344827586207" y="558" class="station-code" text-anchor="middle">CC6</text>
+<text id="NE12" x="1942.5" y="418" class="station-code" text-anchor="middle">NE12</text>
+<text id="CC13" x="1960.5" y="418" class="station-code" text-anchor="middle">CC13</text>
+<text id="TE28" x="194.6153846153846" y="838" class="station-code" text-anchor="middle">TE28</text>
+<text id="BP11" x="2066.666666666667" y="978" class="station-code" text-anchor="middle">BP11</text>
+<text id="BP2" x="328.33333333333337" y="978" class="station-code" text-anchor="middle">BP2</text>
+<text id="TE19" x="1111.5384615384614" y="838" class="station-code" text-anchor="middle">TE19</text>
+<text id="EW3" x="2884.705882352941" y="278" class="station-code" text-anchor="middle">EW3</text>
+<text id="NE16" x="2687.5" y="418" class="station-code" text-anchor="middle">NE16</text>
+<text id="STC" x="2705.5" y="418" class="station-code" text-anchor="middle">STC</text>
+<text id="PW4" x="2421.4285714285716" y="1258" class="station-code" text-anchor="middle">PW4</text>
+<text id="PW6" x="2847.1428571428573" y="1258" class="station-code" text-anchor="middle">PW6</text>
+<text id="PW1" x="1782.857142857143" y="1258" class="station-code" text-anchor="middle">PW1</text>
+<text id="BP13" x="1570" y="978" class="station-code" text-anchor="middle">BP13</text>
+<text id="NS23" x="653.0769230769231" y="138" class="station-code" text-anchor="middle">NS23</text>
+<text id="TE4" x="2716.153846153846" y="838" class="station-code" text-anchor="middle">TE4</text>
+<text id="PW7" x="3060" y="1258" class="station-code" text-anchor="middle">PW7</text>
+<text id="DT10" x="868.8235294117646" y="698" class="station-code" text-anchor="middle">DT10</text>
+<text id="TE11" x="886.8235294117646" y="698" class="station-code" text-anchor="middle">TE11</text>
+<text id="EW2" x="2972.3529411764703" y="278" class="station-code" text-anchor="middle">EW2</text>
+<text id="DT32" x="2990.3529411764703" y="278" class="station-code" text-anchor="middle">DT32</text>
+<text id="NS19" x="1111.5384615384614" y="138" class="station-code" text-anchor="middle">NS19</text>
+<text id="EW31" x="518.2352941176471" y="278" class="station-code" text-anchor="middle">EW31</text>
+<text id="EW17" x="1745.2941176470588" y="278" class="station-code" text-anchor="middle">EW17</text>
+<text id="SW7" x="2830.7692307692305" y="1118" class="station-code" text-anchor="middle">SW7</text>
+<text id="DT8" x="693.5294117647059" y="698" class="station-code" text-anchor="middle">DT8</text>
+<text id="PW2" x="1995.7142857142858" y="1258" class="station-code" text-anchor="middle">PW2</text>
+<text id="TE25" x="538.4615384615385" y="838" class="station-code" text-anchor="middle">TE25</text>
+<text id="BP4" x="825" y="978" class="station-code" text-anchor="middle">BP4</text>
+<text id="DT18" x="1570" y="698" class="station-code" text-anchor="middle">DT18</text>
+<text id="CC28" x="2648.9655172413795" y="558" class="station-code" text-anchor="middle">CC28</text>
+<text id="EW33" x="342.94117647058823" y="278" class="station-code" text-anchor="middle">EW33</text>
+<text id="SW4" x="2143.076923076923" y="1118" class="station-code" text-anchor="middle">SW4</text>
+<text id="EW4" x="80" y="278" class="station-code" text-anchor="middle">EW4</text>
+<text id="DT33" x="2884.705882352941" y="698" class="station-code" text-anchor="middle">DT33</text>
+<text id="EW15" x="1920.5882352941176" y="278" class="station-code" text-anchor="middle">EW15</text>
+<text id="DT31" x="2709.411764705882" y="698" class="station-code" text-anchor="middle">DT31</text>
+<text id="TE23" x="767.6923076923076" y="838" class="station-code" text-anchor="middle">TE23</text>
+<text id="CC11" x="1004.8275862068965" y="558" class="station-code" text-anchor="middle">CC11</text>
+<text id="EW32" x="430.5882352941176" y="278" class="station-code" text-anchor="middle">EW32</text>
+<text id="DT27" x="2358.8235294117644" y="698" class="station-code" text-anchor="middle">DT27</text>
+<text id="DT34" x="2972.3529411764703" y="698" class="station-code" text-anchor="middle">DT34</text>
+<text id="TE8" x="2257.6923076923076" y="838" class="station-code" text-anchor="middle">TE8</text>
+<text id="NS9" x="2257.6923076923076" y="138" class="station-code" text-anchor="middle">NS9</text>
+<text id="TE2" x="2275.6923076923076" y="138" class="station-code" text-anchor="middle">TE2</text>
+<text id="TE1" x="3060" y="838" class="station-code" text-anchor="middle">TE1</text>
+<text id="TE3" x="2830.7692307692305" y="838" class="station-code" text-anchor="middle">TE3</text>
+<text id="NE11" x="1756.25" y="418" class="station-code" text-anchor="middle">NE11</text>
+<text id="CG1" x="167.6470588235294" y="278" class="station-code" text-anchor="middle">CG1</text>
+<text id="DT35" x="185.6470588235294" y="278" class="station-code" text-anchor="middle">DT35</text>
+<text id="NS15" x="1570" y="138" class="station-code" text-anchor="middle">NS15</text>
+<text id="NS13" x="1799.2307692307693" y="138" class="station-code" text-anchor="middle">NS13</text>
+<text id="NS5" x="2601.5384615384614" y="138" class="station-code" text-anchor="middle">NS5</text>
+</g>
+</svg>
