@@ -1,0 +1,26 @@
+{
+  "id": "JS2A",
+  "name": {
+    "en-SG": "JS2A",
+    "zh-Hans": null,
+    "ms": null,
+    "ta": null
+  },
+  "geo": {
+    "latitude": 1.37272,
+    "longitude": 103.735046
+  },
+  "stationCodes": [
+    {
+      "lineId": "JRL",
+      "code": "JS2A",
+      "startedAt": "2035-01-01T00:00:00Z",
+      "endedAt": null,
+      "structureType": "elevated"
+    }
+  ],
+  "landmarkIds": [
+    "tengah-forest-town"
+  ],
+  "townId": "tengah"
+}
