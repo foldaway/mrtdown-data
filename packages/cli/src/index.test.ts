@@ -476,6 +476,7 @@ describe('@mrtdown/cli', () => {
         segment.id === 'line_ket:hku'
           ? {
               ...segment,
+              displayReason: 'Fixture display reason changed.',
               geometry: {
                 ...segment.geometry,
                 coordinateMetadata: {
@@ -490,6 +491,7 @@ describe('@mrtdown/cli', () => {
         node.stationId === 'KET'
           ? {
               ...node,
+              id: 'node_ket_updated',
               center: { x: 120, y: 120 },
               parts: node.parts.map((part) => ({
                 ...part,
@@ -567,6 +569,7 @@ describe('@mrtdown/cli', () => {
       stations: {
         added: [],
         removed: [],
+        idChanged: ['KET'],
         moved: ['KET'],
         lineMembershipChanged: [],
         partsChanged: ['KET'],
@@ -577,7 +580,7 @@ describe('@mrtdown/cli', () => {
         removed: [],
         geometryChanged: [],
         topologyChanged: [],
-        metadataChanged: [],
+        metadataChanged: ['line_ket:hku'],
       },
       labels: {
         added: ['label_hku'],

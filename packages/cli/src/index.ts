@@ -202,6 +202,7 @@ type SchematicMapSemanticDiff = {
     changed: string[];
   };
   stations: IdDiff & {
+    idChanged: string[];
     moved: string[];
     lineMembershipChanged: string[];
     partsChanged: string[];
@@ -432,6 +433,10 @@ function diffSchematicMapSnapshots(
     stations: {
       added: stationIds.added,
       removed: stationIds.removed,
+      idChanged: stationIds.shared.filter(
+        (stationId) =>
+          fromStations.get(stationId)?.id !== toStations.get(stationId)?.id,
+      ),
       moved: stationIds.shared.filter((stationId) => {
         const fromNode = fromStations.get(stationId);
         const toNode = toStations.get(stationId);
@@ -511,11 +516,13 @@ function diffSchematicMapSnapshots(
           stableJson({
             lineId: fromSegment?.lineId,
             displayStatus: fromSegment?.displayStatus,
+            displayReason: fromSegment?.displayReason,
             layerId: fromSegment?.layerId,
           }) !==
             stableJson({
               lineId: toSegment?.lineId,
               displayStatus: toSegment?.displayStatus,
+              displayReason: toSegment?.displayReason,
               layerId: toSegment?.layerId,
             })
         );
