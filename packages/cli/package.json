@@ -31,7 +31,7 @@
   "scripts": {
     "build": "tsc",
     "postbuild": "node scripts/ensure-shebang.mjs",
-    "test": "node ../../scripts/run-fixture-command.mjs --build @mrtdown/core --build @mrtdown/fs --build @mrtdown/triage -- npm exec -- vitest --run"
+    "test": "node ../../scripts/run-fixture-command.mjs --build @mrtdown/core --build @mrtdown/fs --build @mrtdown/ingest-contracts --build @mrtdown/triage -- npm exec -- vitest --run"
   },
   "dependencies": {
     "@mrtdown/core": "2.0.0-alpha.24",
