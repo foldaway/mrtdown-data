@@ -2342,6 +2342,22 @@ describe('@mrtdown/fs', () => {
         basis: {
           evidenceId: 'ev_1',
         },
+      })}\n${JSON.stringify({
+        id: 'ie_3',
+        type: 'service_scopes.set',
+        entity: {
+          type: 'service',
+          serviceId: 'NSL_MAIN',
+        },
+        ts: '2026-01-01T07:00:00+08:00',
+        serviceScopes: [
+          {
+            type: 'service.whole',
+          },
+        ],
+        basis: {
+          evidenceId: 'ev_1',
+        },
       })}\n`,
     );
 
@@ -2358,6 +2374,7 @@ describe('@mrtdown/fs', () => {
         'issue/2026/01/2026-01-01-test-issue/impact.ndjson:1: entity.serviceId NSL_MAIN does not exist in service/',
         'issue/2026/01/2026-01-01-test-issue/impact.ndjson:1: serviceScopes.0.stationId MISSING does not exist in station/',
         'issue/2026/01/2026-01-01-test-issue/impact.ndjson:2: entity.lineId MISSING does not exist in line/',
+        'issue/2026/01/2026-01-01-test-issue/impact.ndjson:3: service_scopes.set for service NSL_MAIN has the same ts as issue/2026/01/2026-01-01-test-issue/impact.ndjson:1; setter events for the same entity and type need distinct timestamps',
       ]),
     );
   });

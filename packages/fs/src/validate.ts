@@ -1,4 +1,5 @@
 import type {
+  ImpactEvent,
   IssueBundle,
   SchematicMapConstraintSet,
   SchematicMapCoordinateMetadata,
@@ -79,6 +80,21 @@ type SchematicMapValidationRecords = {
 };
 
 const generatedEvidenceIdPattern = /^ev_[0-9A-HJKMNP-TV-Z]{26}$/;
+
+function describeImpactEventEntity(entity: ImpactEvent['entity']): string {
+  switch (entity.type) {
+    case 'service':
+      return `service ${entity.serviceId}`;
+    case 'facility':
+      return `facility ${entity.stationId}/${entity.lineId ?? '*'}/${entity.kind}`;
+  }
+}
+
+function impactEventSetterKey(event: ImpactEvent): string {
+  return [event.type, describeImpactEventEntity(event.entity), event.ts].join(
+    '|',
+  );
+}
 
 async function loadEntityRecords<K extends EntityCollection>(
   dataDir: string,
@@ -371,6 +387,7 @@ async function validateIssueReferences(
     const evidenceIds = new Set(bundle.evidence.map((evidence) => evidence.id));
     const evidencePath = `${bundle.path}/${evidenceFileName}`;
     const impactPath = `${bundle.path}/${impactFileName}`;
+    const seenImpactEventSetters = new Map<string, string>();
 
     for (const [evidenceIndex, evidence] of bundle.evidence.entries()) {
       const location = `${evidencePath}:${evidenceIndex + 1}`;
@@ -399,6 +416,16 @@ async function validateIssueReferences(
         );
       } else {
         seenImpactEventIds.set(event.id, linePrefix);
+      }
+
+      const setterKey = impactEventSetterKey(event);
+      const previousSetterLocation = seenImpactEventSetters.get(setterKey);
+      if (previousSetterLocation) {
+        errors.push(
+          `${linePrefix}: ${event.type} for ${describeImpactEventEntity(event.entity)} has the same ts as ${previousSetterLocation}; setter events for the same entity and type need distinct timestamps`,
+        );
+      } else {
+        seenImpactEventSetters.set(setterKey, linePrefix);
       }
 
       if (!evidenceIds.has(event.basis.evidenceId)) {
