@@ -1,0 +1,13 @@
+{
+  "id": "2026-07-10-dtl-weekend-service-adjustments",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "DTL Engineering Works - Weekend Service Adjustments",
+    "zh-Hans": "市区线工程作业 - 周末服务调整",
+    "ms": "Kerja Kejuruteraan DTL - Penyesuaian Perkhidmatan Hujung Minggu",
+    "ta": "DTL பொறியியல் பணி - வார இறுதி சேவை மாற்றங்கள்"
+  },
+  "titleMeta": {
+    "source": "@openai/codex-5.3-medium"
+  }
+}
