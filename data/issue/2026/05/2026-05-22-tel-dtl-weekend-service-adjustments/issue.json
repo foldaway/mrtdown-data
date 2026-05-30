@@ -2,10 +2,10 @@
   "id": "2026-05-22-tel-dtl-weekend-service-adjustments",
   "type": "maintenance",
   "title": {
-    "en-SG": "TEL & DTL Engineering Works - Weekend Service Adjustments",
-    "zh-Hans": "汤申—东海岸线与市区线工程作业 - 周五及周六服务调整",
-    "ms": "TEL & DTL Kerja Kejuruteraan - Penyesuaian Perkhidmatan Jumaat & Sabtu",
-    "ta": "TEL மற்றும் DTL பொறியியல் பணி - வெள்ளி மற்றும் சனி சேவை மாற்றங்கள்"
+    "en-SG": "TEL Engineering Works - Weekend Service Adjustments",
+    "zh-Hans": "汤申—东海岸线工程作业 - 周末服务调整",
+    "ms": "Kerja Kejuruteraan TEL - Penyesuaian Perkhidmatan Hujung Minggu",
+    "ta": "TEL பொறியியல் பணி - வார இறுதி சேவை மாற்றங்கள்"
   },
   "titleMeta": {
     "source": "@openai/gpt-5-mini"
