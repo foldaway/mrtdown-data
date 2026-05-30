@@ -20,6 +20,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
+    },
+    "./helpers/deriveCurrentState": {
+      "types": "./dist/helpers/deriveCurrentState.d.ts",
+      "import": "./dist/helpers/deriveCurrentState.js",
+      "default": "./dist/helpers/deriveCurrentState.js"
     }
   },
   "scripts": {

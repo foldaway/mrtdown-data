@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
+  createIssueBundle,
   readSchematicMapVersionSnapshot,
   writeSchematicMapConstraintSet,
   writeSchematicMapManifest,
@@ -274,6 +275,64 @@ describe('@mrtdown/cli', () => {
     expect(stdout).toEqual([
       'issue/2026/05/2026-05-12-signal-fault-at-test-station',
     ]);
+  });
+
+  it('displays an issue current derived state', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
+    const issueId = '2026-05-12-signal-fault-at-test-station';
+    await createIssueBundle(
+      dataDir,
+      {
+        id: issueId,
+        title: 'Signal fault at Test Station',
+      },
+      [],
+      [
+        {
+          id: 'impact-001',
+          type: 'service_effects.set',
+          ts: '2026-05-12T08:00:00+08:00',
+          entity: {
+            type: 'service',
+            serviceId: 'ISL_MAIN',
+          },
+          effect: {
+            kind: 'delay',
+            duration: 'PT10M',
+          },
+          basis: {
+            evidenceId: 'evidence-001',
+          },
+        },
+      ],
+    );
+    const { io, stdout } = createIo();
+
+    const code = await runCli(
+      ['--data-dir', dataDir, 'issue', 'state', issueId],
+      io,
+    );
+
+    expect(code).toBe(0);
+    expect(JSON.parse(stdout[0] as string)).toMatchObject({
+      services: {
+        'service:ISL_MAIN': {
+          serviceId: 'ISL_MAIN',
+          effect: {
+            kind: 'delay',
+            duration: 'PT10M',
+          },
+        },
+      },
+      servicesProvenance: {
+        'service:ISL_MAIN': {
+          effect: {
+            evidenceId: 'evidence-001',
+          },
+        },
+      },
+      impactEventIds: ['impact-001'],
+    });
   });
 
   it('creates static entities from JSON files', async () => {
