@@ -277,6 +277,27 @@ describe('@mrtdown/cli', () => {
     ]);
   });
 
+  it('prints issue ids with explicit slugs', async () => {
+    const { io, stdout } = createIo();
+
+    const code = await runCli(
+      [
+        'id',
+        'issue',
+        '--date',
+        '2026-05-12',
+        '--title',
+        'Signal fault at Test Station',
+        '--slug',
+        'custom-signal-fault',
+      ],
+      io,
+    );
+
+    expect(code).toBe(0);
+    expect(stdout).toEqual(['2026-05-12-custom-signal-fault']);
+  });
+
   it('displays an issue current derived state', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
     const issueId = '2026-05-12-signal-fault-at-test-station';
@@ -442,6 +463,17 @@ describe('@mrtdown/cli', () => {
       path: 'version/2025-04.json',
       layoutEngineId: 'lta-system-map-2011',
     });
+
+    const invalidSelect = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'schematic-map', 'select', '2025-04-31'],
+        invalidSelect.io,
+      ),
+    ).resolves.toBe(1);
+    expect(invalidSelect.stderr).toEqual([
+      'Expected YYYY-MM or YYYY-MM-DD, got: 2025-04-31',
+    ]);
 
     const stats = createIo();
     await expect(

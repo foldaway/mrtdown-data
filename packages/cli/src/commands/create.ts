@@ -53,6 +53,7 @@ export async function runId(args: string[], io: CliIO): Promise<number> {
   }
   const date = readOption(args, '--date', { required: true }) as string;
   const title = readOption(args, '--title', { required: true }) as string;
-  io.stdout(buildIssueId(date, title));
+  const slug = readOption(args, '--slug');
+  io.stdout(buildIssueId(date, slug ?? title));
   return 0;
 }

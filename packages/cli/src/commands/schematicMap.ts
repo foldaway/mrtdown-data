@@ -31,8 +31,21 @@ function effectiveDateFromDate(value: string): string {
     return value;
   }
 
-  if (/^\d{4}-(0[1-9]|1[0-2])-\d{2}$/.test(value)) {
-    return value.slice(0, 7);
+  const dateMatch = /^(\d{4})-(0[1-9]|1[0-2])-(\d{2})$/.exec(value);
+  if (dateMatch) {
+    const [, yearText, monthText, dayText] = dateMatch;
+    const year = Number(yearText);
+    const month = Number(monthText);
+    const day = Number(dayText);
+    const date = new Date(Date.UTC(year, month - 1, day));
+
+    if (
+      date.getUTCFullYear() === year &&
+      date.getUTCMonth() === month - 1 &&
+      date.getUTCDate() === day
+    ) {
+      return value.slice(0, 7);
+    }
   }
 
   throw new Error(`Expected YYYY-MM or YYYY-MM-DD, got: ${value}`);
