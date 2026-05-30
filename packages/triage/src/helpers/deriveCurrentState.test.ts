@@ -288,8 +288,8 @@ describe('deriveCurrentState', () => {
     );
     expect(result.impactEventIds).toEqual([
       'ie_test_001',
-      'ie_test_003',
       'ie_test_002',
+      'ie_test_003',
     ]);
   });
 
@@ -401,8 +401,8 @@ describe('deriveCurrentState', () => {
     expect(result.services[nslKey].scopes).toEqual([]);
     expect(result.impactEventIds).toEqual([
       'ie_test_001',
-      'ie_test_003',
       'ie_test_002',
+      'ie_test_003',
     ]);
   });
 
@@ -489,7 +489,7 @@ describe('deriveCurrentState', () => {
     expect(result.services[nslKeyLocal]).toMatchObject({ serviceId: 'NSL' });
     expect(result.services[ewlKey].effect).toEqual({ kind: 'no-service' });
     expect(result.services[ewlKey]).toMatchObject({ serviceId: 'EWL' });
-    expect(result.impactEventIds).toEqual(['ie_test_002']);
+    expect(result.impactEventIds).toEqual(['ie_test_001', 'ie_test_002']);
   });
 
   test('handles facility impacts', () => {
@@ -555,9 +555,9 @@ describe('deriveCurrentState', () => {
       causes: { evidenceId: 'evidence-3' },
     });
     expect(result.impactEventIds).toEqual([
+      'ie_test_001',
       'ie_test_002',
       'ie_test_003',
-      'ie_test_001',
     ]);
   });
 

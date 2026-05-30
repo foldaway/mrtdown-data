@@ -63,19 +63,18 @@ export function deriveCurrentState(bundle: IssueBundle): IssueBundleState {
   const servicesProvenance: Record<string, ServiceProvenance> = {};
   const facilities: Record<string, FacilityState> = {};
   const facilitiesProvenance: Record<string, FacilityProvenance> = {};
-  const impactEventIds: {
-    serviceEffect: string | null;
-    serviceScopes: string | null;
-    periods: string | null;
-    causes: string | null;
-    facilityEffect: string | null;
-  } = {
-    serviceEffect: null,
-    serviceScopes: null,
-    periods: null,
-    causes: null,
-    facilityEffect: null,
-  };
+  const activeImpactEventIds = new Map<string, string>();
+  const impactEventIds = new Set<string>();
+
+  function trackImpactEventId(stateKey: string, eventId: string): void {
+    const previousId = activeImpactEventIds.get(stateKey);
+    if (previousId != null) {
+      impactEventIds.delete(previousId);
+    }
+
+    activeImpactEventIds.set(stateKey, eventId);
+    impactEventIds.add(eventId);
+  }
 
   for (const impactEvent of bundle.impactEvents) {
     const key = keyForAffectedEntity(impactEvent.entity);
@@ -98,7 +97,7 @@ export function deriveCurrentState(bundle: IssueBundle): IssueBundleState {
             currentProvenance.effect = {
               evidenceId: impactEvent.basis.evidenceId,
             };
-            impactEventIds.serviceEffect = impactEvent.id;
+            trackImpactEventId(`${key}:serviceEffect`, impactEvent.id);
             break;
           }
           case 'periods.set': {
@@ -106,7 +105,7 @@ export function deriveCurrentState(bundle: IssueBundle): IssueBundleState {
             currentProvenance.periods = {
               evidenceId: impactEvent.basis.evidenceId,
             };
-            impactEventIds.periods = impactEvent.id;
+            trackImpactEventId(`${key}:periods`, impactEvent.id);
             break;
           }
           case 'service_scopes.set': {
@@ -114,7 +113,7 @@ export function deriveCurrentState(bundle: IssueBundle): IssueBundleState {
             currentProvenance.scopes = {
               evidenceId: impactEvent.basis.evidenceId,
             };
-            impactEventIds.serviceScopes = impactEvent.id;
+            trackImpactEventId(`${key}:serviceScopes`, impactEvent.id);
             break;
           }
           case 'causes.set': {
@@ -122,7 +121,7 @@ export function deriveCurrentState(bundle: IssueBundle): IssueBundleState {
             currentProvenance.causes = {
               evidenceId: impactEvent.basis.evidenceId,
             };
-            impactEventIds.causes = impactEvent.id;
+            trackImpactEventId(`${key}:causes`, impactEvent.id);
             break;
           }
         }
@@ -150,7 +149,7 @@ export function deriveCurrentState(bundle: IssueBundle): IssueBundleState {
             currentProvenance.effect = {
               evidenceId: impactEvent.basis.evidenceId,
             };
-            impactEventIds.facilityEffect = impactEvent.id;
+            trackImpactEventId(`${key}:facilityEffect`, impactEvent.id);
             break;
           }
           case 'periods.set': {
@@ -158,7 +157,7 @@ export function deriveCurrentState(bundle: IssueBundle): IssueBundleState {
             currentProvenance.periods = {
               evidenceId: impactEvent.basis.evidenceId,
             };
-            impactEventIds.periods = impactEvent.id;
+            trackImpactEventId(`${key}:periods`, impactEvent.id);
             break;
           }
           case 'causes.set': {
@@ -166,7 +165,7 @@ export function deriveCurrentState(bundle: IssueBundle): IssueBundleState {
             currentProvenance.causes = {
               evidenceId: impactEvent.basis.evidenceId,
             };
-            impactEventIds.causes = impactEvent.id;
+            trackImpactEventId(`${key}:causes`, impactEvent.id);
             break;
           }
         }
@@ -188,8 +187,6 @@ export function deriveCurrentState(bundle: IssueBundle): IssueBundleState {
     servicesProvenance,
     facilities,
     facilitiesProvenance,
-    impactEventIds: Object.values(impactEventIds).filter(
-      (id): id is string => id !== null,
-    ),
+    impactEventIds: [...impactEventIds],
   };
 }

@@ -134,8 +134,8 @@ describe('computeImpactFromEvidenceClaims', () => {
       ],
     });
     expect(result.newState.impactEventIds).toEqual([
-      'ie_seed_effect',
       'ie_seed_period',
+      'ie_seed_effect',
     ]);
     expect(result.newImpactEvents).toEqual([]);
   });
