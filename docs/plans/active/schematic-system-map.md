@@ -420,6 +420,10 @@ Exit criteria:
 - 2026-05-28: Began Phase 5 review tooling with `schematic-map diff` for
   semantic snapshot comparison across layers, line groups, stations, segments,
   labels, station-code labels, and coordinate-class deltas.
+- 2026-05-30: Extended Phase 5 review tooling with
+  `schematic-map generator-diff` for comparing source generator inputs across
+  two constraint effective dates, including rule-set identity, line-order
+  changes, added/removed/changed constraints, and constraint-type deltas.
 
 ## Decision Log
 

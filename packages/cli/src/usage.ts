@@ -8,6 +8,7 @@ export const usage = `Usage:
   mrtdown [--data-dir <path>] schematic-map select <YYYY-MM|YYYY-MM-DD>
   mrtdown [--data-dir <path>] schematic-map stats <YYYY-MM>
   mrtdown [--data-dir <path>] schematic-map diff <from YYYY-MM> <to YYYY-MM>
+  mrtdown [--data-dir <path>] schematic-map generator-diff <from YYYY-MM> <to YYYY-MM>
   mrtdown [--data-dir <path>] schematic-map generate <YYYY-MM> [--generated-at <timestamp>] [--write]
   mrtdown [--data-dir <path>] schematic-map preview <YYYY-MM> [--out <path>]
   mrtdown [--data-dir <path>] create issue --date <YYYY-MM-DD> --title <title> [--slug <slug>] [--type <type>] [--source <source>]
