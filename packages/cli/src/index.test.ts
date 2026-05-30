@@ -725,6 +725,11 @@ describe('@mrtdown/cli', () => {
           side: 'bottom',
         },
         {
+          id: 'line_order_2025_05',
+          type: 'line_order',
+          lineIds: ['TKL', 'ISL'],
+        },
+        {
           id: 'segment_ket_hku',
           type: 'segment_route_hint',
           lineId: 'ISL',
@@ -760,12 +765,12 @@ describe('@mrtdown/cli', () => {
       },
       rules: {
         changed: false,
-        lineOrderChanged: false,
+        lineOrderChanged: true,
         fromLineOrder: ['ISL'],
-        toLineOrder: ['ISL'],
+        toLineOrder: ['TKL', 'ISL'],
       },
       constraints: {
-        added: ['label_ket', 'segment_ket_hku'],
+        added: ['label_ket', 'line_order_2025_05', 'segment_ket_hku'],
         removed: ['anchor_ket'],
         changed: ['frame_2025_04'],
         byType: {
@@ -780,7 +785,7 @@ describe('@mrtdown/cli', () => {
           to: {
             interchange_hint: 0,
             label_hint: 1,
-            line_order: 0,
+            line_order: 1,
             map_frame: 1,
             segment_route_hint: 1,
             station_anchor: 0,
@@ -788,7 +793,7 @@ describe('@mrtdown/cli', () => {
           delta: {
             interchange_hint: 0,
             label_hint: 1,
-            line_order: 0,
+            line_order: 1,
             map_frame: 0,
             segment_route_hint: 1,
             station_anchor: -1,

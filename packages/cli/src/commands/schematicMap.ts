@@ -237,6 +237,21 @@ function constraintTypeDelta(
   };
 }
 
+function effectiveLineOrderFromInputs(
+  ruleSet: SchematicMapRuleSet,
+  constraintSet: SchematicMapConstraintSet,
+): string[] {
+  let lineOrder: string[] | undefined;
+
+  for (const constraint of constraintSet.constraints) {
+    if (constraint.type === 'line_order') {
+      lineOrder = constraint.lineIds;
+    }
+  }
+
+  return lineOrder ?? ruleSet.lineOrder;
+}
+
 function mapById<T extends { id: string }>(
   items: readonly T[],
 ): Map<string, T> {
@@ -571,6 +586,11 @@ function diffSchematicMapGeneratorInputs(
   const toConstraintTypeCounts = countConstraintTypes(
     toConstraintSet.constraints,
   );
+  const fromLineOrder = effectiveLineOrderFromInputs(
+    fromRuleSet,
+    fromConstraintSet,
+  );
+  const toLineOrder = effectiveLineOrderFromInputs(toRuleSet, toConstraintSet);
 
   return {
     from: fromConstraintSet.effectiveDate,
@@ -583,10 +603,9 @@ function diffSchematicMapGeneratorInputs(
     },
     rules: {
       changed: stableJson(fromRuleSet) !== stableJson(toRuleSet),
-      lineOrderChanged:
-        stableJson(fromRuleSet.lineOrder) !== stableJson(toRuleSet.lineOrder),
-      fromLineOrder: fromRuleSet.lineOrder,
-      toLineOrder: toRuleSet.lineOrder,
+      lineOrderChanged: stableJson(fromLineOrder) !== stableJson(toLineOrder),
+      fromLineOrder,
+      toLineOrder,
     },
     constraints: {
       added: constraintIds.added,
