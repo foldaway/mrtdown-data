@@ -702,6 +702,102 @@ describe('@mrtdown/cli', () => {
     });
   });
 
+  it('reports schematic map generator input diffs for reviewers', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await seedSchematicMap(dataDir);
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-05',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'frame_2025_04',
+          type: 'map_frame',
+          frame: { x: 0, y: 0, width: 3596, height: 2400 },
+          reason: 'Fixture frame changed.',
+        },
+        {
+          id: 'label_ket',
+          type: 'label_hint',
+          stationId: 'KET',
+          side: 'bottom',
+        },
+        {
+          id: 'segment_ket_hku',
+          type: 'segment_route_hint',
+          lineId: 'ISL',
+          fromStationId: 'KET',
+          toStationId: 'HKU',
+          via: [{ x: 150, y: 140 }],
+        },
+      ],
+    });
+
+    const diff = createIo();
+    await expect(
+      runCli(
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'generator-diff',
+          '2025-04',
+          '2025-05',
+        ],
+        diff.io,
+      ),
+    ).resolves.toBe(0);
+
+    expect(JSON.parse(diff.stdout[0] as string)).toEqual({
+      from: '2025-04',
+      to: '2025-05',
+      layoutEngine: {
+        changed: false,
+        from: 'lta-system-map-2011',
+        to: 'lta-system-map-2011',
+      },
+      rules: {
+        changed: false,
+        lineOrderChanged: false,
+        fromLineOrder: ['ISL'],
+        toLineOrder: ['ISL'],
+      },
+      constraints: {
+        added: ['label_ket', 'segment_ket_hku'],
+        removed: ['anchor_ket'],
+        changed: ['frame_2025_04'],
+        byType: {
+          from: {
+            interchange_hint: 0,
+            label_hint: 0,
+            line_order: 0,
+            map_frame: 1,
+            segment_route_hint: 0,
+            station_anchor: 1,
+          },
+          to: {
+            interchange_hint: 0,
+            label_hint: 1,
+            line_order: 0,
+            map_frame: 1,
+            segment_route_hint: 1,
+            station_anchor: 0,
+          },
+          delta: {
+            interchange_hint: 0,
+            label_hint: 1,
+            line_order: 0,
+            map_frame: 0,
+            segment_route_hint: 1,
+            station_anchor: -1,
+          },
+        },
+      },
+    });
+  });
+
   it('generates and writes schematic map snapshots through the CLI', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
     await cp(fixtureDataDir, dataDir, { recursive: true });

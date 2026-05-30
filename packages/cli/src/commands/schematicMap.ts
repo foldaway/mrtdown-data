@@ -1,11 +1,13 @@
 import { resolve } from 'node:path';
 import {
   type SchematicMapConstraint,
+  type SchematicMapConstraintSet,
   type SchematicMapCoordinateMetadata,
   SchematicMapEffectiveDateSchema,
   SchematicMapLayoutEngineIdSchema,
   type SchematicMapManifest,
   type SchematicMapManifestVersion,
+  type SchematicMapRuleSet,
   type SchematicMapVersionSnapshot,
 } from '@mrtdown/core';
 import {
@@ -120,6 +122,30 @@ type SchematicMapSemanticDiff = {
   };
 };
 
+type SchematicMapGeneratorDiff = {
+  from: string;
+  to: string;
+  layoutEngine: {
+    changed: boolean;
+    from: string;
+    to: string;
+  };
+  rules: {
+    changed: boolean;
+    lineOrderChanged: boolean;
+    fromLineOrder: string[];
+    toLineOrder: string[];
+  };
+  constraints: IdDiff & {
+    changed: string[];
+    byType: {
+      from: ConstraintTypeCounts;
+      to: ConstraintTypeCounts;
+      delta: ConstraintTypeCounts;
+    };
+  };
+};
+
 function createCoordinateClassCounts(): CoordinateClassCounts {
   return {
     artifact: 0,
@@ -195,6 +221,20 @@ function countConstraintTypes(
       station_anchor: 0,
     },
   );
+}
+
+function constraintTypeDelta(
+  from: ConstraintTypeCounts,
+  to: ConstraintTypeCounts,
+): ConstraintTypeCounts {
+  return {
+    interchange_hint: to.interchange_hint - from.interchange_hint,
+    label_hint: to.label_hint - from.label_hint,
+    line_order: to.line_order - from.line_order,
+    map_frame: to.map_frame - from.map_frame,
+    segment_route_hint: to.segment_route_hint - from.segment_route_hint,
+    station_anchor: to.station_anchor - from.station_anchor,
+  };
 }
 
 function mapById<T extends { id: string }>(
@@ -512,6 +552,58 @@ function diffSchematicMapSnapshots(
       from: fromCoordinateCounts,
       to: toCoordinateCounts,
       delta: coordinateClassDelta(fromCoordinateCounts, toCoordinateCounts),
+    },
+  };
+}
+
+function diffSchematicMapGeneratorInputs(
+  fromConstraintSet: SchematicMapConstraintSet,
+  toConstraintSet: SchematicMapConstraintSet,
+  fromRuleSet: SchematicMapRuleSet,
+  toRuleSet: SchematicMapRuleSet,
+): SchematicMapGeneratorDiff {
+  const fromConstraints = mapById(fromConstraintSet.constraints);
+  const toConstraints = mapById(toConstraintSet.constraints);
+  const constraintIds = diffIds(fromConstraints.keys(), toConstraints.keys());
+  const fromConstraintTypeCounts = countConstraintTypes(
+    fromConstraintSet.constraints,
+  );
+  const toConstraintTypeCounts = countConstraintTypes(
+    toConstraintSet.constraints,
+  );
+
+  return {
+    from: fromConstraintSet.effectiveDate,
+    to: toConstraintSet.effectiveDate,
+    layoutEngine: {
+      changed:
+        fromConstraintSet.layoutEngineId !== toConstraintSet.layoutEngineId,
+      from: fromConstraintSet.layoutEngineId,
+      to: toConstraintSet.layoutEngineId,
+    },
+    rules: {
+      changed: stableJson(fromRuleSet) !== stableJson(toRuleSet),
+      lineOrderChanged:
+        stableJson(fromRuleSet.lineOrder) !== stableJson(toRuleSet.lineOrder),
+      fromLineOrder: fromRuleSet.lineOrder,
+      toLineOrder: toRuleSet.lineOrder,
+    },
+    constraints: {
+      added: constraintIds.added,
+      removed: constraintIds.removed,
+      changed: constraintIds.shared.filter(
+        (id) =>
+          stableJson(fromConstraints.get(id)) !==
+          stableJson(toConstraints.get(id)),
+      ),
+      byType: {
+        from: fromConstraintTypeCounts,
+        to: toConstraintTypeCounts,
+        delta: constraintTypeDelta(
+          fromConstraintTypeCounts,
+          toConstraintTypeCounts,
+        ),
+      },
     },
   };
 }
@@ -913,6 +1005,51 @@ export async function runSchematicMap(
     return 0;
   }
 
+  if (action === 'generator-diff') {
+    const fromId = args.shift();
+    const toId = args.shift();
+    if (!fromId || !toId) {
+      throw new Error(
+        'schematic-map generator-diff requires from YYYY-MM and to YYYY-MM',
+      );
+    }
+
+    const [fromConstraintSet, toConstraintSet] = await Promise.all([
+      readSchematicMapConstraintSet(
+        globals.dataDir,
+        SchematicMapEffectiveDateSchema.parse(fromId),
+      ),
+      readSchematicMapConstraintSet(
+        globals.dataDir,
+        SchematicMapEffectiveDateSchema.parse(toId),
+      ),
+    ]);
+    const [fromRuleSet, toRuleSet] = await Promise.all([
+      readSchematicMapRuleSet(
+        globals.dataDir,
+        fromConstraintSet.value.layoutEngineId,
+      ),
+      readSchematicMapRuleSet(
+        globals.dataDir,
+        toConstraintSet.value.layoutEngineId,
+      ),
+    ]);
+
+    io.stdout(
+      JSON.stringify(
+        diffSchematicMapGeneratorInputs(
+          fromConstraintSet.value,
+          toConstraintSet.value,
+          fromRuleSet.value,
+          toRuleSet.value,
+        ),
+        null,
+        2,
+      ),
+    );
+    return 0;
+  }
+
   if (action === 'generate') {
     const id = args.shift();
     if (!id) {
@@ -976,6 +1113,6 @@ export async function runSchematicMap(
   }
 
   throw new Error(
-    'schematic-map requires list, show, select, stats, diff, generate, or preview',
+    'schematic-map requires list, show, select, stats, diff, generator-diff, generate, or preview',
   );
 }
