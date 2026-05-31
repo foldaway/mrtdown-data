@@ -803,6 +803,95 @@ describe('@mrtdown/cli', () => {
     });
   });
 
+  it('copies schematic map constraints forward for a new version', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await seedSchematicMap(dataDir);
+
+    const preview = createIo();
+    await expect(
+      runCli(
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'copy-constraints',
+          '2025-04',
+          '2025-06',
+        ],
+        preview.io,
+      ),
+    ).resolves.toBe(0);
+    expect(JSON.parse(preview.stdout[0] as string)).toMatchObject({
+      effectiveDate: '2025-06',
+      constraints: [
+        {
+          id: 'frame_2025_06',
+          type: 'map_frame',
+        },
+        {
+          id: 'anchor_ket',
+          type: 'station_anchor',
+        },
+      ],
+    });
+
+    const listBeforeWrite = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'schematic-map', 'list', 'constraint'],
+        listBeforeWrite.io,
+      ),
+    ).resolves.toBe(0);
+    expect(listBeforeWrite.stdout).toEqual(['2025-04']);
+
+    const write = createIo();
+    await expect(
+      runCli(
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'copy-constraints',
+          '2025-04',
+          '2025-06',
+          '--write',
+        ],
+        write.io,
+      ),
+    ).resolves.toBe(0);
+    expect(JSON.parse(write.stdout[0] as string)).toEqual({
+      constraint: 'schematic-map/system/generator/constraint/2025-06.json',
+    });
+
+    const overwrite = createIo();
+    await expect(
+      runCli(
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'copy-constraints',
+          '2025-04',
+          '2025-06',
+          '--write',
+        ],
+        overwrite.io,
+      ),
+    ).resolves.toBe(1);
+    expect(overwrite.stderr).toEqual([
+      'Schematic map constraint set already exists for 2025-06; pass --force to overwrite',
+    ]);
+
+    const validate = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'validate', '--scope', 'schematic-map'],
+        validate.io,
+      ),
+    ).resolves.toBe(0);
+  });
+
   it('generates and writes schematic map snapshots through the CLI', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
     await cp(fixtureDataDir, dataDir, { recursive: true });

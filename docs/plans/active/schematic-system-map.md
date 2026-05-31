@@ -424,6 +424,10 @@ Exit criteria:
   `schematic-map generator-diff` for comparing source generator inputs across
   two constraint effective dates, including rule-set identity, line-order
   changes, added/removed/changed constraints, and constraint-type deltas.
+- 2026-05-31: Added Phase 5 copy-forward authoring support with
+  `schematic-map copy-constraints`, allowing reviewers to preview or write a
+  new effective-date constraint set from an existing one while keeping generated
+  snapshots artifact-only.
 
 ## Decision Log
 
