@@ -21,6 +21,7 @@ import {
   readSchematicMapRuleSet,
   readSchematicMapVersionSnapshot,
   schematicSystemMapConstraintSetPath,
+  validateDataRoot,
   writeSchematicMapConstraintSet,
   writeSchematicMapManifest,
   writeSchematicMapVersionSnapshot,
@@ -1086,6 +1087,15 @@ async function validateSchematicMapDesignerSubmission(
     );
   }
 
+  const canonicalValidation = await validateDataRoot(dataDir, [
+    'schematic-map',
+  ]);
+  if (!canonicalValidation.ok) {
+    throw new Error(
+      `Schematic map validation failed:\n${canonicalValidation.errors.join('\n')}`,
+    );
+  }
+
   const [sourceRuleSet, targetRuleSet, sourceSnapshot, targetSnapshot] =
     await Promise.all([
       readSchematicMapRuleSet(
@@ -1121,6 +1131,7 @@ async function validateSchematicMapDesignerSubmission(
       total: targetConstraintSet.value.constraints.length,
       byType: countConstraintTypes(targetConstraintSet.value.constraints),
     },
+    validation: canonicalValidation.checked,
     generatedSnapshot: {
       effectiveDate: targetSnapshot.effectiveDate,
       stations: targetSnapshot.stationNodes.length,

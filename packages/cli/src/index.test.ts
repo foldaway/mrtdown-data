@@ -973,6 +973,9 @@ describe('@mrtdown/cli', () => {
           map_frame: 1,
         },
       },
+      validation: {
+        'schematic-map': 5,
+      },
       generatorDiff: {
         from: '2025-04',
         to: '2025-06',
@@ -1021,6 +1024,66 @@ describe('@mrtdown/cli', () => {
     ).resolves.toBe(1);
     expect(invalid.stderr).toEqual([
       'submission.files.constraint must be schematic-map/system/generator/constraint/2025-06.json',
+    ]);
+
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-07',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'frame_2025_07',
+          type: 'map_frame',
+          frame: { x: 0, y: 0, width: 1200, height: 600 },
+        },
+        {
+          id: 'label_nope',
+          type: 'label_hint',
+          stationId: 'NOPE',
+          side: 'bottom',
+        },
+      ],
+    });
+    const invalidReferenceBundlePath = join(
+      dataDir,
+      'invalid-reference-submission.json',
+    );
+    await writeFile(
+      invalidReferenceBundlePath,
+      JSON.stringify({
+        schemaVersion: 1,
+        type: 'schematic-map-designer-submission',
+        mapId: 'system',
+        sourceEffectiveDate: '2025-04',
+        targetEffectiveDate: '2025-07',
+        layoutEngineId: 'lta-system-map-2011',
+        source: { tool: 'mrtdown-site-map-designer' },
+        summary: 'Invalid reference fixture.',
+        files: {
+          constraint: 'schematic-map/system/generator/constraint/2025-07.json',
+        },
+      }),
+    );
+    const invalidReference = createIo();
+    await expect(
+      runCli(
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'validate-submission',
+          '--file',
+          invalidReferenceBundlePath,
+        ],
+        invalidReference.io,
+      ),
+    ).resolves.toBe(1);
+    expect(invalidReference.stderr).toEqual([
+      [
+        'Schematic map validation failed:',
+        'schematic-map/system/generator/constraint/2025-07.json: constraints.1.stationId NOPE does not exist in station/',
+      ].join('\n'),
     ]);
   });
 
