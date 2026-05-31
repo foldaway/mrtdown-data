@@ -2379,6 +2379,81 @@ describe('@mrtdown/fs', () => {
     );
   });
 
+  it('rejects invalid station first and last train relationships', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeFile(
+      join(dataDir, 'station/KET.json'),
+      `${JSON.stringify(
+        {
+          id: 'KET',
+          name: {
+            'en-SG': 'Kennedy Town',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          geo: {
+            latitude: 22.2813,
+            longitude: 114.1286,
+          },
+          stationCodes: [
+            {
+              lineId: 'ISL',
+              code: 'ISL1',
+              startedAt: '1979-10-01T00:00:00Z',
+              endedAt: null,
+              structureType: 'underground',
+            },
+          ],
+          landmarkIds: [],
+          townId: 'central-western',
+          firstLastTrain: {
+            entries: [
+              {
+                serviceId: 'ISL_MAIN_E',
+                calendar: 'weekday',
+                firstTrain: '06:00',
+                lastTrain: '00:50',
+              },
+              {
+                serviceId: 'ISL_MAIN_E',
+                calendar: 'weekday',
+                firstTrain: '06:05',
+                lastTrain: null,
+              },
+              {
+                serviceId: 'MISSING',
+                calendar: 'weekday',
+                firstTrain: null,
+                lastTrain: '00:30',
+              },
+              {
+                serviceId: 'TWL_MAIN_N',
+                calendar: 'weekday',
+                firstTrain: null,
+                lastTrain: '00:35',
+              },
+            ],
+          },
+        },
+        null,
+        2,
+      )}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir, ['station']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        'station/KET.json: firstLastTrain.entries.1 duplicates serviceId/calendar ISL_MAIN_E:weekday (first seen at firstLastTrain.entries.0)',
+        'station/KET.json: firstLastTrain.entries.2.serviceId MISSING does not exist in service/',
+        'station/KET.json: firstLastTrain.entries.3.serviceId TWL_MAIN_N does not include station KET in its current service path',
+      ]),
+    );
+  });
+
   it('rejects service revisions outside station code active windows', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await mkdir(join(dataDir, 'line'), { recursive: true });

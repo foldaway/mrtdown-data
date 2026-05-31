@@ -173,6 +173,10 @@ async function validateStationReferences(
 
   const lineIds = await loadEntityIds(dataDir, records, 'line');
   const landmarkIds = await loadEntityIds(dataDir, records, 'landmark');
+  const serviceRecords = await loadEntityRecords(dataDir, records, 'service');
+  const serviceById = new Map(
+    serviceRecords.map((service) => [service.value.id, service]),
+  );
   const townIds = await loadEntityIds(dataDir, records, 'town');
   const errors: string[] = [];
 
@@ -195,6 +199,50 @@ async function validateStationReferences(
       if (!lineIds.has(stationCode.lineId)) {
         errors.push(
           `${station.path}: stationCodes.${index}.lineId ${stationCode.lineId} does not exist in line/`,
+        );
+      }
+    }
+
+    const seenFirstLastTrainEntries = new Map<string, number>();
+    for (const [index, entry] of (
+      station.value.firstLastTrain?.entries ?? []
+    ).entries()) {
+      const key = `${entry.serviceId}:${entry.calendar}`;
+      const previousIndex = seenFirstLastTrainEntries.get(key);
+      if (previousIndex != null) {
+        errors.push(
+          `${station.path}: firstLastTrain.entries.${index} duplicates serviceId/calendar ${key} (first seen at firstLastTrain.entries.${previousIndex})`,
+        );
+      } else {
+        seenFirstLastTrainEntries.set(key, index);
+      }
+
+      const service = serviceById.get(entry.serviceId);
+      if (!service) {
+        errors.push(
+          `${station.path}: firstLastTrain.entries.${index}.serviceId ${entry.serviceId} does not exist in service/`,
+        );
+        continue;
+      }
+
+      const currentRevisions = service.value.revisions.filter(
+        (revision) => revision.endAt === null,
+      );
+      const revisionsToValidate =
+        currentRevisions.length > 0
+          ? currentRevisions
+          : service.value.revisions;
+      const stationIds = new Set(
+        revisionsToValidate.flatMap((revision) =>
+          revision.path.stations.map(
+            (serviceStation) => serviceStation.stationId,
+          ),
+        ),
+      );
+
+      if (!stationIds.has(station.value.id)) {
+        errors.push(
+          `${station.path}: firstLastTrain.entries.${index}.serviceId ${entry.serviceId} does not include station ${station.value.id} in its current service path`,
         );
       }
     }
