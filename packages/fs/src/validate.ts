@@ -179,6 +179,7 @@ async function validateStationReferences(
   );
   const townIds = await loadEntityIds(dataDir, records, 'town');
   const errors: string[] = [];
+  const validationTimestamp = Date.now();
 
   for (const station of await loadEntityRecords(dataDir, records, 'station')) {
     if (!townIds.has(station.value.townId)) {
@@ -225,8 +226,8 @@ async function validateStationReferences(
         continue;
       }
 
-      const currentRevisions = service.value.revisions.filter(
-        (revision) => revision.endAt === null,
+      const currentRevisions = service.value.revisions.filter((revision) =>
+        revisionContainsTimestamp(revision, validationTimestamp),
       );
       if (currentRevisions.length === 0) {
         errors.push(
@@ -235,23 +236,35 @@ async function validateStationReferences(
         continue;
       }
 
-      const stationIds = new Set(
-        currentRevisions.flatMap((revision) =>
+      for (const revision of currentRevisions) {
+        const stationIds = new Set(
           revision.path.stations.map(
             (serviceStation) => serviceStation.stationId,
           ),
-        ),
-      );
-
-      if (!stationIds.has(station.value.id)) {
-        errors.push(
-          `${station.path}: firstLastTrain.entries.${index}.serviceId ${entry.serviceId} does not include station ${station.value.id} in its current service path`,
         );
+
+        if (!stationIds.has(station.value.id)) {
+          errors.push(
+            `${station.path}: firstLastTrain.entries.${index}.serviceId ${entry.serviceId} revision ${revision.id} does not include station ${station.value.id} in its current service path`,
+          );
+        }
       }
     }
   }
 
   return errors;
+}
+
+function revisionContainsTimestamp(
+  revision: { startAt: string; endAt: string | null },
+  timestamp: number,
+): boolean {
+  const start = timestampForValidation(revision.startAt);
+  const end = revision.endAt
+    ? timestampForValidation(revision.endAt)
+    : Number.POSITIVE_INFINITY;
+
+  return start <= timestamp && timestamp < end;
 }
 
 async function validateLineReferences(
