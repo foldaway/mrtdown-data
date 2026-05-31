@@ -19,6 +19,7 @@ import {
   readSchematicMapManifest,
   readSchematicMapRuleSet,
   readSchematicMapVersionSnapshot,
+  writeSchematicMapConstraintSet,
   writeSchematicMapManifest,
   writeSchematicMapVersionSnapshot,
 } from '@mrtdown/fs';
@@ -145,6 +146,41 @@ type SchematicMapGeneratorDiff = {
     };
   };
 };
+
+function effectiveDateIdPart(effectiveDate: string): string {
+  return effectiveDate.replace('-', '_');
+}
+
+function copyConstraintIdForEffectiveDate(
+  id: string,
+  fromEffectiveDate: string,
+  toEffectiveDate: string,
+): string {
+  return id
+    .replaceAll(fromEffectiveDate, toEffectiveDate)
+    .replaceAll(
+      effectiveDateIdPart(fromEffectiveDate),
+      effectiveDateIdPart(toEffectiveDate),
+    );
+}
+
+function copySchematicMapConstraintSet(
+  constraintSet: SchematicMapConstraintSet,
+  toEffectiveDate: string,
+): SchematicMapConstraintSet {
+  return {
+    ...constraintSet,
+    effectiveDate: SchematicMapEffectiveDateSchema.parse(toEffectiveDate),
+    constraints: constraintSet.constraints.map((constraint) => ({
+      ...constraint,
+      id: copyConstraintIdForEffectiveDate(
+        constraint.id,
+        constraintSet.effectiveDate,
+        toEffectiveDate,
+      ),
+    })),
+  };
+}
 
 function createCoordinateClassCounts(): CoordinateClassCounts {
   return {
@@ -1069,6 +1105,50 @@ export async function runSchematicMap(
     return 0;
   }
 
+  if (action === 'copy-constraints') {
+    const fromId = args.shift();
+    const toId = args.shift();
+    if (!fromId || !toId) {
+      throw new Error(
+        'schematic-map copy-constraints requires from YYYY-MM and to YYYY-MM',
+      );
+    }
+
+    const fromEffectiveDate = SchematicMapEffectiveDateSchema.parse(fromId);
+    const toEffectiveDate = SchematicMapEffectiveDateSchema.parse(toId);
+    const shouldWrite = hasFlag(args, '--write');
+    const shouldForce = hasFlag(args, '--force');
+
+    const fromConstraintSet = await readSchematicMapConstraintSet(
+      globals.dataDir,
+      fromEffectiveDate,
+    );
+    const copiedConstraintSet = copySchematicMapConstraintSet(
+      fromConstraintSet.value,
+      toEffectiveDate,
+    );
+
+    if (shouldWrite) {
+      const existingEffectiveDates =
+        await listSchematicMapConstraintSetEffectiveDates(globals.dataDir);
+      if (existingEffectiveDates.includes(toEffectiveDate) && !shouldForce) {
+        throw new Error(
+          `Schematic map constraint set already exists for ${toEffectiveDate}; pass --force to overwrite`,
+        );
+      }
+
+      const path = await writeSchematicMapConstraintSet(
+        globals.dataDir,
+        copiedConstraintSet,
+      );
+      io.stdout(JSON.stringify({ constraint: path }));
+      return 0;
+    }
+
+    io.stdout(JSON.stringify(copiedConstraintSet, null, 2));
+    return 0;
+  }
+
   if (action === 'generate') {
     const id = args.shift();
     if (!id) {
@@ -1132,6 +1212,6 @@ export async function runSchematicMap(
   }
 
   throw new Error(
-    'schematic-map requires list, show, select, stats, diff, generator-diff, generate, or preview',
+    'schematic-map requires list, show, select, stats, diff, generator-diff, copy-constraints, generate, or preview',
   );
 }
