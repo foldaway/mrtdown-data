@@ -228,12 +228,15 @@ async function validateStationReferences(
       const currentRevisions = service.value.revisions.filter(
         (revision) => revision.endAt === null,
       );
-      const revisionsToValidate =
-        currentRevisions.length > 0
-          ? currentRevisions
-          : service.value.revisions;
+      if (currentRevisions.length === 0) {
+        errors.push(
+          `${station.path}: firstLastTrain.entries.${index}.serviceId ${entry.serviceId} does not have a current service revision`,
+        );
+        continue;
+      }
+
       const stationIds = new Set(
-        revisionsToValidate.flatMap((revision) =>
+        currentRevisions.flatMap((revision) =>
           revision.path.stations.map(
             (serviceStation) => serviceStation.stationId,
           ),

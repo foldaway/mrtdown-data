@@ -2434,8 +2434,56 @@ describe('@mrtdown/fs', () => {
                 firstTrain: null,
                 lastTrain: '00:35',
               },
+              {
+                serviceId: 'ISL_ENDED',
+                calendar: 'weekday',
+                firstTrain: '06:10',
+                lastTrain: null,
+              },
             ],
           },
+        },
+        null,
+        2,
+      )}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'service/ISL_ENDED.json'),
+      `${JSON.stringify(
+        {
+          id: 'ISL_ENDED',
+          name: {
+            'en-SG': 'Island Line Ended',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          lineId: 'ISL',
+          revisions: [
+            {
+              id: 'r_initial',
+              startAt: '1979-10-01',
+              endAt: '1980-01-01',
+              path: {
+                stations: [
+                  {
+                    stationId: 'KET',
+                    displayCode: 'ISL1',
+                  },
+                ],
+              },
+              operatingHours: {
+                weekdays: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+                weekends: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+              },
+            },
+          ],
         },
         null,
         2,
@@ -2450,6 +2498,7 @@ describe('@mrtdown/fs', () => {
         'station/KET.json: firstLastTrain.entries.1 duplicates serviceId/calendar ISL_MAIN_E:weekday (first seen at firstLastTrain.entries.0)',
         'station/KET.json: firstLastTrain.entries.2.serviceId MISSING does not exist in service/',
         'station/KET.json: firstLastTrain.entries.3.serviceId TWL_MAIN_N does not include station KET in its current service path',
+        'station/KET.json: firstLastTrain.entries.4.serviceId ISL_ENDED does not have a current service revision',
       ]),
     );
   });
