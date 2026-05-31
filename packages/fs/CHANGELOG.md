@@ -1,5 +1,13 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.25
+
+### Patch Changes
+
+- a4475de: Add station first/last train schemas and validate timing service references.
+- Updated dependencies [a4475de]
+  - @mrtdown/core@2.0.0-alpha.25
+
 ## 2.0.0-alpha.24
 
 ### Patch Changes
