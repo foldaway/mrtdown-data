@@ -2379,6 +2379,255 @@ describe('@mrtdown/fs', () => {
     );
   });
 
+  it('rejects invalid station first and last train relationships', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeFile(
+      join(dataDir, 'station/KET.json'),
+      `${JSON.stringify(
+        {
+          id: 'KET',
+          name: {
+            'en-SG': 'Kennedy Town',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          geo: {
+            latitude: 22.2813,
+            longitude: 114.1286,
+          },
+          stationCodes: [
+            {
+              lineId: 'ISL',
+              code: 'ISL1',
+              startedAt: '1979-10-01T00:00:00Z',
+              endedAt: null,
+              structureType: 'underground',
+            },
+          ],
+          landmarkIds: [],
+          townId: 'central-western',
+          firstLastTrain: {
+            entries: [
+              {
+                serviceId: 'ISL_MAIN_E',
+                calendar: 'weekday',
+                firstTrain: '06:00',
+                lastTrain: '00:50',
+              },
+              {
+                serviceId: 'ISL_MAIN_E',
+                calendar: 'weekday',
+                firstTrain: '06:05',
+                lastTrain: null,
+              },
+              {
+                serviceId: 'MISSING',
+                calendar: 'weekday',
+                firstTrain: null,
+                lastTrain: '00:30',
+              },
+              {
+                serviceId: 'TWL_MAIN_N',
+                calendar: 'weekday',
+                firstTrain: null,
+                lastTrain: '00:35',
+              },
+              {
+                serviceId: 'ISL_ENDED',
+                calendar: 'weekday',
+                firstTrain: '06:10',
+                lastTrain: null,
+              },
+              {
+                serviceId: 'ISL_FUTURE_ENDED',
+                calendar: 'daily',
+                firstTrain: '06:15',
+                lastTrain: null,
+              },
+              {
+                serviceId: 'ISL_MULTI_CURRENT',
+                calendar: 'sunday_public_holiday',
+                firstTrain: null,
+                lastTrain: '00:45',
+              },
+            ],
+          },
+        },
+        null,
+        2,
+      )}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'service/ISL_ENDED.json'),
+      `${JSON.stringify(
+        {
+          id: 'ISL_ENDED',
+          name: {
+            'en-SG': 'Island Line Ended',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          lineId: 'ISL',
+          revisions: [
+            {
+              id: 'r_initial',
+              startAt: '1979-10-01',
+              endAt: '1980-01-01',
+              path: {
+                stations: [
+                  {
+                    stationId: 'KET',
+                    displayCode: 'ISL1',
+                  },
+                ],
+              },
+              operatingHours: {
+                weekdays: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+                weekends: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+              },
+            },
+          ],
+        },
+        null,
+        2,
+      )}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'service/ISL_FUTURE_ENDED.json'),
+      `${JSON.stringify(
+        {
+          id: 'ISL_FUTURE_ENDED',
+          name: {
+            'en-SG': 'Island Line Future Ended',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          lineId: 'ISL',
+          revisions: [
+            {
+              id: 'r_current',
+              startAt: '1979-10-01',
+              endAt: '2999-01-01',
+              path: {
+                stations: [
+                  {
+                    stationId: 'KET',
+                    displayCode: 'ISL1',
+                  },
+                ],
+              },
+              operatingHours: {
+                weekdays: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+                weekends: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+              },
+            },
+          ],
+        },
+        null,
+        2,
+      )}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'service/ISL_MULTI_CURRENT.json'),
+      `${JSON.stringify(
+        {
+          id: 'ISL_MULTI_CURRENT',
+          name: {
+            'en-SG': 'Island Line Multiple Current',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          lineId: 'ISL',
+          revisions: [
+            {
+              id: 'r_ket',
+              startAt: '1979-10-01',
+              endAt: null,
+              path: {
+                stations: [
+                  {
+                    stationId: 'KET',
+                    displayCode: 'ISL1',
+                  },
+                ],
+              },
+              operatingHours: {
+                weekdays: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+                weekends: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+              },
+            },
+            {
+              id: 'r_hku',
+              startAt: '1979-10-01',
+              endAt: null,
+              path: {
+                stations: [
+                  {
+                    stationId: 'HKU',
+                    displayCode: 'ISL2',
+                  },
+                ],
+              },
+              operatingHours: {
+                weekdays: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+                weekends: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+              },
+            },
+          ],
+        },
+        null,
+        2,
+      )}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir, ['station']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        'station/KET.json: firstLastTrain.entries.1 duplicates serviceId/calendar ISL_MAIN_E:weekday (first seen at firstLastTrain.entries.0)',
+        'station/KET.json: firstLastTrain.entries.2.serviceId MISSING does not exist in service/',
+        'station/KET.json: firstLastTrain.entries.3.serviceId TWL_MAIN_N revision r_initial does not include station KET in its current service path',
+        'station/KET.json: firstLastTrain.entries.4.serviceId ISL_ENDED does not have a current service revision',
+        'station/KET.json: firstLastTrain.entries.6.serviceId ISL_MULTI_CURRENT revision r_hku does not include station KET in its current service path',
+      ]),
+    );
+    expect(result.errors).not.toEqual(
+      expect.arrayContaining([
+        'station/KET.json: firstLastTrain.entries.5.serviceId ISL_FUTURE_ENDED does not have a current service revision',
+      ]),
+    );
+  });
+
   it('rejects service revisions outside station code active windows', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await mkdir(join(dataDir, 'line'), { recursive: true });

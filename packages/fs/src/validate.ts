@@ -173,8 +173,13 @@ async function validateStationReferences(
 
   const lineIds = await loadEntityIds(dataDir, records, 'line');
   const landmarkIds = await loadEntityIds(dataDir, records, 'landmark');
+  const serviceRecords = await loadEntityRecords(dataDir, records, 'service');
+  const serviceById = new Map(
+    serviceRecords.map((service) => [service.value.id, service]),
+  );
   const townIds = await loadEntityIds(dataDir, records, 'town');
   const errors: string[] = [];
+  const validationTimestamp = Date.now();
 
   for (const station of await loadEntityRecords(dataDir, records, 'station')) {
     if (!townIds.has(station.value.townId)) {
@@ -198,9 +203,68 @@ async function validateStationReferences(
         );
       }
     }
+
+    const seenFirstLastTrainEntries = new Map<string, number>();
+    for (const [index, entry] of (
+      station.value.firstLastTrain?.entries ?? []
+    ).entries()) {
+      const key = `${entry.serviceId}:${entry.calendar}`;
+      const previousIndex = seenFirstLastTrainEntries.get(key);
+      if (previousIndex != null) {
+        errors.push(
+          `${station.path}: firstLastTrain.entries.${index} duplicates serviceId/calendar ${key} (first seen at firstLastTrain.entries.${previousIndex})`,
+        );
+      } else {
+        seenFirstLastTrainEntries.set(key, index);
+      }
+
+      const service = serviceById.get(entry.serviceId);
+      if (!service) {
+        errors.push(
+          `${station.path}: firstLastTrain.entries.${index}.serviceId ${entry.serviceId} does not exist in service/`,
+        );
+        continue;
+      }
+
+      const currentRevisions = service.value.revisions.filter((revision) =>
+        revisionContainsTimestamp(revision, validationTimestamp),
+      );
+      if (currentRevisions.length === 0) {
+        errors.push(
+          `${station.path}: firstLastTrain.entries.${index}.serviceId ${entry.serviceId} does not have a current service revision`,
+        );
+        continue;
+      }
+
+      for (const revision of currentRevisions) {
+        const stationIds = new Set(
+          revision.path.stations.map(
+            (serviceStation) => serviceStation.stationId,
+          ),
+        );
+
+        if (!stationIds.has(station.value.id)) {
+          errors.push(
+            `${station.path}: firstLastTrain.entries.${index}.serviceId ${entry.serviceId} revision ${revision.id} does not include station ${station.value.id} in its current service path`,
+          );
+        }
+      }
+    }
   }
 
   return errors;
+}
+
+function revisionContainsTimestamp(
+  revision: { startAt: string; endAt: string | null },
+  timestamp: number,
+): boolean {
+  const start = timestampForValidation(revision.startAt);
+  const end = revision.endAt
+    ? timestampForValidation(revision.endAt)
+    : Number.POSITIVE_INFINITY;
+
+  return start <= timestamp && timestamp < end;
 }
 
 async function validateLineReferences(
