@@ -892,6 +892,138 @@ describe('@mrtdown/cli', () => {
     ).resolves.toBe(0);
   });
 
+  it('validates schematic map designer submission bundles', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await seedSchematicMap(dataDir);
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-06',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'frame_2025_06',
+          type: 'map_frame',
+          frame: { x: 0, y: 0, width: 1200, height: 600 },
+          reason: 'Fixture designer submission frame.',
+        },
+        {
+          id: 'label_ket',
+          type: 'label_hint',
+          stationId: 'KET',
+          side: 'bottom',
+        },
+      ],
+    });
+    const bundlePath = join(dataDir, 'submission.json');
+    await writeFile(
+      bundlePath,
+      JSON.stringify(
+        {
+          schemaVersion: 1,
+          type: 'schematic-map-designer-submission',
+          mapId: 'system',
+          sourceEffectiveDate: '2025-04',
+          targetEffectiveDate: '2025-06',
+          layoutEngineId: 'lta-system-map-2011',
+          source: {
+            tool: 'mrtdown-site-map-designer',
+          },
+          summary: 'Move fixture label below Kennedy Town.',
+          files: {
+            constraint:
+              'schematic-map/system/generator/constraint/2025-06.json',
+            semanticDiff: 'artifacts/schematic-map/2025-04..2025-06.json',
+            generatorDiff:
+              'artifacts/schematic-map/2025-04..2025-06.generator.json',
+            preview: 'artifacts/schematic-map/2025-06.svg',
+          },
+          notes: ['Fixture review note.'],
+        },
+        null,
+        2,
+      ),
+    );
+
+    const validate = createIo();
+    await expect(
+      runCli(
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'validate-submission',
+          '--file',
+          bundlePath,
+        ],
+        validate.io,
+      ),
+    ).resolves.toBe(0);
+    expect(JSON.parse(validate.stdout[0] as string)).toMatchObject({
+      type: 'schematic-map-designer-submission',
+      sourceEffectiveDate: '2025-04',
+      targetEffectiveDate: '2025-06',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: {
+        path: 'schematic-map/system/generator/constraint/2025-06.json',
+        total: 2,
+        byType: {
+          label_hint: 1,
+          map_frame: 1,
+        },
+      },
+      generatorDiff: {
+        from: '2025-04',
+        to: '2025-06',
+        constraints: {
+          added: ['frame_2025_06', 'label_ket'],
+          removed: ['anchor_ket', 'frame_2025_04'],
+        },
+      },
+      semanticDiff: {
+        from: '2025-04',
+        to: '2025-06',
+      },
+      notes: ['Fixture review note.'],
+    });
+
+    const invalidBundlePath = join(dataDir, 'invalid-submission.json');
+    await writeFile(
+      invalidBundlePath,
+      JSON.stringify({
+        schemaVersion: 1,
+        type: 'schematic-map-designer-submission',
+        mapId: 'system',
+        sourceEffectiveDate: '2025-04',
+        targetEffectiveDate: '2025-06',
+        layoutEngineId: 'lta-system-map-2011',
+        source: { tool: 'mrtdown-site-map-designer' },
+        summary: 'Invalid path fixture.',
+        files: {
+          constraint: 'schematic-map/system/generator/constraint/wrong.json',
+        },
+      }),
+    );
+    const invalid = createIo();
+    await expect(
+      runCli(
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'validate-submission',
+          '--file',
+          invalidBundlePath,
+        ],
+        invalid.io,
+      ),
+    ).resolves.toBe(1);
+    expect(invalid.stderr).toEqual([
+      'submission.files.constraint must be schematic-map/system/generator/constraint/2025-06.json',
+    ]);
+  });
+
   it('generates and writes schematic map snapshots through the CLI', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
     await cp(fixtureDataDir, dataDir, { recursive: true });

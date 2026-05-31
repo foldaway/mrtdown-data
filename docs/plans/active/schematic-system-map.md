@@ -308,6 +308,9 @@ Define how trusted authoring clients submit schematic map edits back to this
 repository. The first expected client is a protected `mrtdown-site` map designer
 that uses the site renderer for visual editing and preview.
 
+Submission bundle details are documented in
+`docs/schematic-map-designer-submissions.md`.
+
 - Define an edit bundle or branch layout that contains updated generator
   constraints, generator validation output or semantic diffs, and metadata about
   the source version and intended target version.
@@ -428,6 +431,11 @@ Exit criteria:
   `schematic-map copy-constraints`, allowing reviewers to preview or write a
   new effective-date constraint set from an existing one while keeping generated
   snapshots artifact-only.
+- 2026-05-31: Began Phase 6 designer submission support with
+  `docs/schematic-map-designer-submissions.md` and
+  `schematic-map validate-submission`, so trusted designer output can be
+  validated against canonical constraints and reviewer-facing diffs before PR
+  review.
 
 ## Decision Log
 
