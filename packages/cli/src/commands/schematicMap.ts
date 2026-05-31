@@ -1,3 +1,4 @@
+import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import {
   type SchematicMapConstraint,
@@ -19,6 +20,8 @@ import {
   readSchematicMapManifest,
   readSchematicMapRuleSet,
   readSchematicMapVersionSnapshot,
+  schematicSystemMapConstraintSetPath,
+  validateDataRoot,
   writeSchematicMapConstraintSet,
   writeSchematicMapManifest,
   writeSchematicMapVersionSnapshot,
@@ -147,6 +150,27 @@ type SchematicMapGeneratorDiff = {
   };
 };
 
+type SchematicMapDesignerSubmissionBundle = {
+  schemaVersion: 1;
+  type: 'schematic-map-designer-submission';
+  mapId: 'system';
+  sourceEffectiveDate: string;
+  targetEffectiveDate: string;
+  layoutEngineId: string;
+  source: {
+    tool: string;
+    url?: string;
+  };
+  summary: string;
+  files: {
+    constraint: string;
+    semanticDiff?: string;
+    generatorDiff?: string;
+    preview?: string;
+  };
+  notes?: string[];
+};
+
 function effectiveDateIdPart(effectiveDate: string): string {
   return effectiveDate.replace('-', '_');
 }
@@ -257,6 +281,114 @@ function countConstraintTypes(
       station_anchor: 0,
     },
   );
+}
+
+function assertRecord(value: unknown, path: string): Record<string, unknown> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new Error(`${path} must be an object`);
+  }
+  return value as Record<string, unknown>;
+}
+
+function requiredString(
+  record: Record<string, unknown>,
+  key: string,
+  path: string,
+): string {
+  const value = record[key];
+  if (typeof value !== 'string' || value.trim() === '') {
+    throw new Error(`${path}.${key} must be a non-empty string`);
+  }
+  return value;
+}
+
+function optionalString(
+  record: Record<string, unknown>,
+  key: string,
+  path: string,
+): string | undefined {
+  const value = record[key];
+  if (value === undefined) {
+    return undefined;
+  }
+  if (typeof value !== 'string' || value.trim() === '') {
+    throw new Error(`${path}.${key} must be a non-empty string when present`);
+  }
+  return value;
+}
+
+function optionalStringArray(
+  record: Record<string, unknown>,
+  key: string,
+  path: string,
+): string[] | undefined {
+  const value = record[key];
+  if (value === undefined) {
+    return undefined;
+  }
+  if (
+    !Array.isArray(value) ||
+    value.some((item) => typeof item !== 'string' || item.trim() === '')
+  ) {
+    throw new Error(`${path}.${key} must be an array of non-empty strings`);
+  }
+  return value;
+}
+
+function parseSchematicMapDesignerSubmissionBundle(
+  value: unknown,
+): SchematicMapDesignerSubmissionBundle {
+  const root = assertRecord(value, 'submission');
+  if (root.schemaVersion !== 1) {
+    throw new Error('submission.schemaVersion must be 1');
+  }
+  if (root.type !== 'schematic-map-designer-submission') {
+    throw new Error(
+      'submission.type must be schematic-map-designer-submission',
+    );
+  }
+  if (root.mapId !== 'system') {
+    throw new Error('submission.mapId must be system');
+  }
+
+  const source = assertRecord(root.source, 'submission.source');
+  const files = assertRecord(root.files, 'submission.files');
+  const sourceEffectiveDate = SchematicMapEffectiveDateSchema.parse(
+    requiredString(root, 'sourceEffectiveDate', 'submission'),
+  );
+  const targetEffectiveDate = SchematicMapEffectiveDateSchema.parse(
+    requiredString(root, 'targetEffectiveDate', 'submission'),
+  );
+  const layoutEngineId = SchematicMapLayoutEngineIdSchema.parse(
+    requiredString(root, 'layoutEngineId', 'submission'),
+  );
+
+  if (sourceEffectiveDate === targetEffectiveDate) {
+    throw new Error(
+      'submission.sourceEffectiveDate and submission.targetEffectiveDate must differ',
+    );
+  }
+
+  return {
+    schemaVersion: 1,
+    type: 'schematic-map-designer-submission',
+    mapId: 'system',
+    sourceEffectiveDate,
+    targetEffectiveDate,
+    layoutEngineId,
+    source: {
+      tool: requiredString(source, 'tool', 'submission.source'),
+      url: optionalString(source, 'url', 'submission.source'),
+    },
+    summary: requiredString(root, 'summary', 'submission'),
+    files: {
+      constraint: requiredString(files, 'constraint', 'submission.files'),
+      semanticDiff: optionalString(files, 'semanticDiff', 'submission.files'),
+      generatorDiff: optionalString(files, 'generatorDiff', 'submission.files'),
+      preview: optionalString(files, 'preview', 'submission.files'),
+    },
+    notes: optionalStringArray(root, 'notes', 'submission'),
+  };
 }
 
 function constraintTypeDelta(
@@ -913,6 +1045,118 @@ async function updateSchematicMapManifest(
   });
 }
 
+async function validateSchematicMapDesignerSubmission(
+  dataDir: string,
+  bundlePath: string,
+): Promise<unknown> {
+  const bundle = parseSchematicMapDesignerSubmissionBundle(
+    JSON.parse(await readFile(bundlePath, 'utf8')),
+  );
+  const expectedConstraintPath = schematicSystemMapConstraintSetPath(
+    bundle.targetEffectiveDate,
+  );
+
+  if (bundle.files.constraint !== expectedConstraintPath) {
+    throw new Error(
+      `submission.files.constraint must be ${expectedConstraintPath}`,
+    );
+  }
+
+  const [sourceConstraintSet, targetConstraintSet] = await Promise.all([
+    readSchematicMapConstraintSet(
+      dataDir,
+      SchematicMapEffectiveDateSchema.parse(bundle.sourceEffectiveDate),
+    ),
+    readSchematicMapConstraintSet(
+      dataDir,
+      SchematicMapEffectiveDateSchema.parse(bundle.targetEffectiveDate),
+    ),
+  ]);
+
+  if (targetConstraintSet.value.layoutEngineId !== bundle.layoutEngineId) {
+    throw new Error(
+      `submission.layoutEngineId ${bundle.layoutEngineId} does not match target constraint layoutEngineId ${targetConstraintSet.value.layoutEngineId}`,
+    );
+  }
+  if (
+    targetConstraintSet.path !== bundle.files.constraint ||
+    targetConstraintSet.value.effectiveDate !== bundle.targetEffectiveDate
+  ) {
+    throw new Error(
+      `Target constraint set must be written at ${expectedConstraintPath} for ${bundle.targetEffectiveDate}`,
+    );
+  }
+
+  const canonicalValidation = await validateDataRoot(dataDir, [
+    'schematic-map',
+  ]);
+  if (!canonicalValidation.ok) {
+    throw new Error(
+      `Schematic map validation failed:\n${canonicalValidation.errors.join('\n')}`,
+    );
+  }
+
+  const [sourceRuleSet, targetRuleSet, sourceSnapshot, targetSnapshot] =
+    await Promise.all([
+      readSchematicMapRuleSet(
+        dataDir,
+        sourceConstraintSet.value.layoutEngineId,
+      ),
+      readSchematicMapRuleSet(
+        dataDir,
+        targetConstraintSet.value.layoutEngineId,
+      ),
+      generateSchematicMapVersionSnapshot(dataDir, {
+        effectiveDate: sourceConstraintSet.value.effectiveDate,
+        generatedAt: '1970-01-01T00:00:00.000Z',
+      }),
+      generateSchematicMapVersionSnapshot(dataDir, {
+        effectiveDate: targetConstraintSet.value.effectiveDate,
+        generatedAt: '1970-01-01T00:00:00.000Z',
+      }),
+    ]);
+  const coordinateClasses =
+    countSchematicMapSnapshotCoordinates(targetSnapshot);
+
+  return {
+    type: bundle.type,
+    source: bundle.source,
+    summary: bundle.summary,
+    sourceEffectiveDate: bundle.sourceEffectiveDate,
+    targetEffectiveDate: bundle.targetEffectiveDate,
+    layoutEngineId: bundle.layoutEngineId,
+    files: bundle.files,
+    constraints: {
+      path: targetConstraintSet.path,
+      total: targetConstraintSet.value.constraints.length,
+      byType: countConstraintTypes(targetConstraintSet.value.constraints),
+    },
+    validation: canonicalValidation.checked,
+    generatedSnapshot: {
+      effectiveDate: targetSnapshot.effectiveDate,
+      stations: targetSnapshot.stationNodes.length,
+      segments: targetSnapshot.segments.length,
+      labels: targetSnapshot.labels.length,
+      stationCodeLabels: targetSnapshot.stationCodeLabels.length,
+      coordinates: {
+        total: Object.values(coordinateClasses).reduce(
+          (sum, value) => sum + value,
+          0,
+        ),
+        byClass: coordinateClasses,
+      },
+    },
+    generatorDiff: diffSchematicMapGeneratorInputs(
+      sourceConstraintSet.value,
+      targetConstraintSet.value,
+      sourceRuleSet.value,
+      targetRuleSet.value,
+    ),
+    semanticDiff: diffSchematicMapSnapshots(sourceSnapshot, targetSnapshot),
+    notes: bundle.notes ?? [],
+  };
+}
+
 export async function runSchematicMap(
   args: string[],
   globals: GlobalOptions,
@@ -1149,6 +1393,20 @@ export async function runSchematicMap(
     return 0;
   }
 
+  if (action === 'validate-submission') {
+    const file = readOption(args, '--file', { required: true });
+    if (!file) {
+      throw new Error('--file is required');
+    }
+    const result = await validateSchematicMapDesignerSubmission(
+      globals.dataDir,
+      resolve(globals.cwd, file),
+    );
+
+    io.stdout(JSON.stringify(result, null, 2));
+    return 0;
+  }
+
   if (action === 'generate') {
     const id = args.shift();
     if (!id) {
@@ -1212,6 +1470,6 @@ export async function runSchematicMap(
   }
 
   throw new Error(
-    'schematic-map requires list, show, select, stats, diff, generator-diff, copy-constraints, generate, or preview',
+    'schematic-map requires list, show, select, stats, diff, generator-diff, copy-constraints, validate-submission, generate, or preview',
   );
 }
