@@ -34,6 +34,23 @@
   "firstLastTrain": {
     "services": [
       {
+        "serviceId": "CCL_MAIN_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:28",
+            "lastTrain": "23:23"
+          },
+          "saturday": {
+            "firstTrain": "05:28",
+            "lastTrain": "23:23"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:52",
+            "lastTrain": "23:23"
+          }
+        }
+      },
+      {
         "serviceId": "CCL_MAIN_CW",
         "times": {
           "weekday": {
@@ -72,15 +89,15 @@
         "times": {
           "weekday": {
             "firstTrain": "05:48",
-            "lastTrain": "23:58"
+            "lastTrain": "23:52"
           },
           "saturday": {
             "firstTrain": "05:48",
-            "lastTrain": "23:58"
+            "lastTrain": "23:52"
           },
           "sunday_public_holiday": {
             "firstTrain": "06:08",
-            "lastTrain": "23:58"
+            "lastTrain": "23:52"
           }
         }
       }
@@ -95,8 +112,7 @@
         "label": "A",
         "lineId": "CCL",
         "serviceIds": [
-          "CCL_MAIN_CCW",
-          "CCL_EXT_CCW"
+          "CCL_MAIN_CCW"
         ],
         "accessPoints": []
       },
@@ -105,14 +121,13 @@
         "label": "B",
         "lineId": "CCL",
         "serviceIds": [
-          "CCL_MAIN_CW",
-          "CCL_EXT_CW"
+          "CCL_MAIN_CW"
         ],
         "accessPoints": []
       },
       {
-        "id": "TCDT_B",
-        "label": "B",
+        "id": "TCDT_D",
+        "label": "D",
         "lineId": "TEL",
         "serviceIds": [
           "TEL_MAIN_N"
@@ -120,8 +135,8 @@
         "accessPoints": []
       },
       {
-        "id": "TCDT_A",
-        "label": "A",
+        "id": "TCDT_C",
+        "label": "C",
         "lineId": "TEL",
         "serviceIds": [
           "TEL_MAIN_S"

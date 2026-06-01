@@ -162,8 +162,8 @@ Calendar categories should be data categories first. Any mapping to GTFS
 The first narrow seeds are intentionally hand-reviewed station records rather
 than outputs from a reusable operator ingest script:
 
-- `CDT` seeds one SMRT-operated interchange slice, including CCL/TEL platform
-  relationship validation.
+- `CDT` seeds one SMRT-operated CCL/TEL platform relationship slice at an
+  interchange station, including current pre-CCL6 CCL main-service timings.
 - `LTI` seeds one SBS Transit-operated interchange slice from the public SBS
   Transit first/last train page, covering both NEL and DTL timing table shapes.
 

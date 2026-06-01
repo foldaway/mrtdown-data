@@ -378,9 +378,10 @@ Exit criteria:
 
 ### Phase 4: Seed Real Data
 
-- Seed `CDT` first as a narrow platform-to-service mapping slice because its
-  reviewed platform direction data maps cleanly to current CCL and TEL service
-  patterns.
+- Seed `CDT` first as a narrow CCL/TEL platform-to-service mapping slice
+  because its reviewed platform direction data maps cleanly to current service
+  patterns. The CCL rows use the current pre-CCL6 service catalog until the CCL6
+  service revisions are added.
 - Keep `OTP` as a later complete-layout candidate because it covers three
   lines, multiple platform levels, door-anchored access points, and multiple
   transfer path classifications.
