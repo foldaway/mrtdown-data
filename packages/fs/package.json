@@ -46,6 +46,6 @@
     "@types/luxon": "^3.4.2",
     "@types/node": "^22.13.4",
     "typescript": "^5.8.3",
-    "vitest": "^3.0.9"
+    "vitest": "^4.1.8"
   }
 }
