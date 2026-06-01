@@ -100,6 +100,20 @@ Rules:
 - Preserve `geo` as the authoritative station point; exit-specific coordinates
   belong in `layout.exits`.
 
+## Source Policy
+
+Seed station layout data from official operator or agency sources wherever
+available, such as LTA, SMRT, SBS Transit, operator station pages, official
+wayfinding maps, OneMap, or station signage reviewed directly. Transport
+enthusiast sites, wiki pages, blogs, and route guides can be used as
+non-authoritative cross-checks, but they should not be the source of record for
+canonical layout facts.
+
+When an official source does not expose a needed layout detail, leave that
+field absent until it can be reviewed from an official source or direct
+observation. Do not fill canonical layout fields solely from enthusiast
+secondary sources.
+
 ## Station Record Shape
 
 Add an optional `layout` object to `StationSchema`:

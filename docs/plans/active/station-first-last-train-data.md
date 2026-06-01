@@ -157,6 +157,19 @@ Start with these recurring special categories:
 Calendar categories should be data categories first. Any mapping to GTFS
 `calendar.txt` or `calendar_dates.txt` can happen in generator metadata later.
 
+## Source Policy
+
+Seed first/last train timings from official operator or agency sources, such as
+SMRT, SBS Transit, LTA, or published operator station pages. Transport
+enthusiast sites, wiki pages, blogs, and route guides can be useful for manual
+sanity checks, but they should not be the authoritative source for canonical
+timing values.
+
+When official sources disagree or expose different levels of detail, prefer the
+source that directly represents the operator-published passenger timing table.
+Do not add reusable ingestion scripts for undocumented operator APIs unless a
+later plan explicitly accepts that maintenance risk.
+
 ## Seeded Data Notes
 
 The first narrow seeds are intentionally hand-reviewed station records rather
