@@ -296,24 +296,28 @@ function buildStaticEntities() {
       'central-western',
       [],
       {
-        entries: [
+        services: [
           {
             serviceId: 'ISL_MAIN_E',
-            calendar: 'weekday',
-            firstTrain: '06:00',
-            lastTrain: '00:50',
-          },
-          {
-            serviceId: 'ISL_MAIN_E',
-            calendar: 'saturday',
-            firstTrain: '06:05',
-            lastTrain: null,
+            times: {
+              weekday: {
+                firstTrain: '06:00',
+                lastTrain: '00:50',
+              },
+              saturday: {
+                firstTrain: '06:05',
+                lastTrain: null,
+              },
+            },
           },
           {
             serviceId: 'ISL_MAIN_W',
-            calendar: 'weekday',
-            firstTrain: null,
-            lastTrain: '00:35',
+            times: {
+              weekday: {
+                firstTrain: null,
+                lastTrain: '00:35',
+              },
+            },
           },
         ],
       },

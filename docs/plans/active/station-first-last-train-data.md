@@ -74,18 +74,46 @@ Add an optional `firstLastTrain` object to `StationSchema`:
 ```json
 {
   "firstLastTrain": {
-    "entries": [
+    "services": [
       {
         "serviceId": "TEL_MAIN_N",
-        "calendar": "weekday",
-        "firstTrain": "06:07",
-        "lastTrain": "00:07"
+        "times": {
+          "weekday": {
+            "firstTrain": "06:07",
+            "lastTrain": "00:07"
+          },
+          "saturday": {
+            "firstTrain": "06:07",
+            "lastTrain": "00:07"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:27",
+            "lastTrain": "00:07"
+          }
+        },
+        "specialTimes": {
+          "eve_public_holiday": {
+            "firstTrain": null,
+            "lastTrain": "00:35"
+          }
+        }
       },
       {
         "serviceId": "TEL_MAIN_N_TO_ORC",
-        "calendar": "weekday",
-        "firstTrain": null,
-        "lastTrain": "00:25"
+        "times": {
+          "weekday": {
+            "firstTrain": null,
+            "lastTrain": "00:25"
+          },
+          "saturday": {
+            "firstTrain": null,
+            "lastTrain": "00:25"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": null,
+            "lastTrain": "00:25"
+          }
+        }
       }
     ]
   }
@@ -95,8 +123,13 @@ Add an optional `firstLastTrain` object to `StationSchema`:
 Rules:
 
 - `serviceId` is required.
-- `calendar` is required.
-- `firstTrain` and `lastTrain` are nullable, but at least one must be present.
+- `times` is keyed by normal calendar category.
+- `specialTimes` is keyed by recurring special calendar category.
+- Timing values always use the same shape:
+  `{ "firstTrain": "HH:mm" | null, "lastTrain": "HH:mm" | null }`.
+- At least one of `times` or `specialTimes` must be present for each service.
+- In every timing value, `firstTrain` and `lastTrain` are nullable, but at
+  least one must be non-null.
 - Times are local operating-day times in Singapore time. Values after midnight
   should use the displayed clock time, such as `00:25`, unless GTFS generation
   later needs a derived service-day offset.
@@ -111,15 +144,28 @@ Start with the categories used by published operator tables:
 - `weekday_saturday`
 - `daily`
 
-Add more categories only when a published table requires them. Candidate future
-categories:
+Add more normal categories only when a published table requires them. Candidate
+future categories:
 
-- `friday_saturday_eve_public_holiday`
 - `school_holiday`
 - `special`
 
+Start with these recurring special categories:
+
+- `eve_public_holiday`
+
 Calendar categories should be data categories first. Any mapping to GTFS
 `calendar.txt` or `calendar_dates.txt` can happen in generator metadata later.
+
+## Seeded Data Notes
+
+The first narrow seeds are intentionally hand-reviewed station records rather
+than outputs from a reusable operator ingest script:
+
+- `CDT` seeds one SMRT-operated interchange slice, including CCL/TEL platform
+  relationship validation.
+- `LTI` seeds one SBS Transit-operated interchange slice from the public SBS
+  Transit first/last train page, covering both NEL and DTL timing table shapes.
 
 ## Platform Relationship
 
@@ -132,9 +178,12 @@ This keeps timing rows simple:
 ```json
 {
   "serviceId": "TEL_MAIN_N",
-  "calendar": "weekday",
-  "firstTrain": "06:07",
-  "lastTrain": "00:07"
+  "times": {
+    "weekday": {
+      "firstTrain": "06:07",
+      "lastTrain": "00:07"
+    }
+  }
 }
 ```
 
@@ -159,7 +208,7 @@ Add validation that catches:
 - timing rows where the station is not in the referenced service path;
 - rows with both `firstTrain` and `lastTrain` set to `null`;
 - invalid local time values;
-- duplicate rows for the same `serviceId` and `calendar`;
+- duplicate rows for the same `serviceId`;
 - timing rows whose `serviceId` is not present on any station layout platform
   when layout data exists;
 - stations with no `firstLastTrain` continuing to validate.

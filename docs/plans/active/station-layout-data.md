@@ -378,7 +378,10 @@ Exit criteria:
 
 ### Phase 4: Seed Real Data
 
-- Seed one reviewed station first, preferably `OTP`, because it covers three
+- Seed `CDT` first as a narrow platform-to-service mapping slice because its
+  reviewed platform direction data maps cleanly to current CCL and TEL service
+  patterns.
+- Keep `OTP` as a later complete-layout candidate because it covers three
   lines, multiple platform levels, door-anchored access points, and multiple
   transfer path classifications.
 - Include reviewed station-root discovery metadata in the first station PR
@@ -386,6 +389,8 @@ Exit criteria:
 - Include public exits for the first station if reviewed exit labels and
   coordinates are available.
 - Keep the first data PR small enough for manual review.
+- The initial seed can start with platform-to-service mappings before levels,
+  exits, or access points when only platform direction data is reviewed.
 
 Exit criteria:
 

@@ -31,5 +31,77 @@
     "little-india-arcade",
     "tekka-centre"
   ],
-  "townId": "rochor"
+  "townId": "rochor",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:07"
+          },
+          "saturday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:07"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:16",
+            "lastTrain": "00:07"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:04",
+            "lastTrain": "23:50"
+          },
+          "saturday": {
+            "firstTrain": "06:04",
+            "lastTrain": "23:50"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:24",
+            "lastTrain": "23:50"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:53",
+            "lastTrain": "23:58"
+          },
+          "saturday": {
+            "firstTrain": "05:53",
+            "lastTrain": "23:58"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:13",
+            "lastTrain": "23:58"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:06",
+            "lastTrain": "00:26"
+          },
+          "saturday": {
+            "firstTrain": "06:06",
+            "lastTrain": "00:26"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:30",
+            "lastTrain": "00:26"
+          }
+        }
+      }
+    ]
+  }
 }
