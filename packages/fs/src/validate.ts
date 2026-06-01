@@ -352,6 +352,31 @@ async function validateStationReferences(
             errors.push(
               `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} belongs to line ${service.value.lineId}, not ${platform.lineId}`,
             );
+            continue;
+          }
+
+          const currentRevisions = service.value.revisions.filter((revision) =>
+            revisionContainsTimestamp(revision, validationTimestamp),
+          );
+          if (currentRevisions.length === 0) {
+            errors.push(
+              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not have a current service revision`,
+            );
+            continue;
+          }
+
+          for (const revision of currentRevisions) {
+            const stationIds = new Set(
+              revision.path.stations.map(
+                (serviceStation) => serviceStation.stationId,
+              ),
+            );
+
+            if (!stationIds.has(station.value.id)) {
+              errors.push(
+                `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} revision ${revision.id} does not include station ${station.value.id} in its current service path`,
+              );
+            }
           }
         }
       }

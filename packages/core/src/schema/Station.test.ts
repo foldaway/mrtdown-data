@@ -194,4 +194,29 @@ describe('StationSchema', () => {
       }),
     ).not.toThrow();
   });
+
+  it('rejects layout platforms without service ids', () => {
+    const result = StationSchema.safeParse({
+      ...minimalStation(),
+      layout: {
+        levels: [],
+        exits: [],
+        platforms: [
+          {
+            id: 'KET_ISL_A',
+            label: 'A',
+            lineId: 'ISL',
+            serviceIds: [],
+            accessPoints: [],
+          },
+        ],
+        transferPaths: [],
+      },
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues[0]?.path.join('.')).toBe(
+      'layout.platforms.0.serviceIds',
+    );
+  });
 });

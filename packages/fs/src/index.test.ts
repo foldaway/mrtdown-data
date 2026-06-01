@@ -2750,7 +2750,7 @@ describe('@mrtdown/fs', () => {
                 id: 'KET_TWL_A',
                 label: 'A',
                 lineId: 'ISL',
-                serviceIds: ['TWL_MAIN_N'],
+                serviceIds: ['TWL_MAIN_N', 'ISL_SKIP_KET'],
                 accessPoints: [
                   {
                     id: 'KET_AP_DUP',
@@ -2785,6 +2785,48 @@ describe('@mrtdown/fs', () => {
         2,
       )}\n`,
     );
+    await writeFile(
+      join(dataDir, 'service/ISL_SKIP_KET.json'),
+      `${JSON.stringify(
+        {
+          id: 'ISL_SKIP_KET',
+          name: {
+            'en-SG': 'Island Line Skip Kennedy Town',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          lineId: 'ISL',
+          revisions: [
+            {
+              id: 'r_current',
+              startAt: '1979-10-01',
+              endAt: null,
+              path: {
+                stations: [
+                  {
+                    stationId: 'HKU',
+                    displayCode: 'ISL2',
+                  },
+                ],
+              },
+              operatingHours: {
+                weekdays: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+                weekends: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+              },
+            },
+          ],
+        },
+        null,
+        2,
+      )}\n`,
+    );
 
     const result = await validateDataRoot(dataDir, ['station']);
 
@@ -2799,6 +2841,7 @@ describe('@mrtdown/fs', () => {
         'station/KET.json: layout.platforms.0.levelId MISSING does not exist in layout.levels',
         'station/KET.json: layout.platforms.0.serviceIds.0 MISSING_SERVICE does not exist in service/',
         'station/KET.json: layout.platforms.1.serviceIds.0 TWL_MAIN_N belongs to line TWL, not ISL',
+        'station/KET.json: layout.platforms.1.serviceIds.1 ISL_SKIP_KET revision r_current does not include station KET in its current service path',
         'station/KET.json: layout.platforms.0.accessPoints.0.connectsToLevelId MISSING does not exist in layout.levels',
         'station/KET.json: layout.platforms.0.accessPoints.0.nearestDoor 25 is outside doorCount 24',
         'station/KET.json: layout.transferPaths.0.from platform MISSING_PLATFORM does not exist in layout',

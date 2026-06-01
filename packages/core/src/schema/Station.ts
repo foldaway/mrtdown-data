@@ -178,7 +178,7 @@ export const StationLayoutPlatformSchema = z.object({
   label: z.string(),
   lineId: z.string(),
   levelId: z.string().optional(),
-  serviceIds: z.array(z.string()),
+  serviceIds: z.array(z.string()).nonempty(),
   doorCount: z.number().int().positive().optional(),
   accessPoints: z.array(StationLayoutAccessPointSchema),
 });
