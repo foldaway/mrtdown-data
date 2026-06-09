@@ -29,29 +29,39 @@ function minimalStation() {
 }
 
 describe('StationSchema', () => {
-  it('accepts first and last train entries with nullable halves', () => {
+  it('accepts first and last train services with nullable halves', () => {
     expect(() =>
       StationSchema.parse({
         ...minimalStation(),
         firstLastTrain: {
-          entries: [
+          services: [
             {
               serviceId: 'ISL_MAIN_E',
-              calendar: 'weekday',
-              firstTrain: '06:00',
-              lastTrain: '00:50',
-            },
-            {
-              serviceId: 'ISL_MAIN_E',
-              calendar: 'saturday',
-              firstTrain: '06:05',
-              lastTrain: null,
+              times: {
+                weekday: {
+                  firstTrain: '06:00',
+                  lastTrain: '00:50',
+                },
+                saturday: {
+                  firstTrain: '06:05',
+                  lastTrain: null,
+                },
+              },
+              specialTimes: {
+                eve_public_holiday: {
+                  firstTrain: null,
+                  lastTrain: '01:05',
+                },
+              },
             },
             {
               serviceId: 'ISL_MAIN_W',
-              calendar: 'weekday',
-              firstTrain: null,
-              lastTrain: '00:35',
+              times: {
+                weekday: {
+                  firstTrain: null,
+                  lastTrain: '00:35',
+                },
+              },
             },
           ],
         },
@@ -63,12 +73,15 @@ describe('StationSchema', () => {
     const result = StationSchema.safeParse({
       ...minimalStation(),
       firstLastTrain: {
-        entries: [
+        services: [
           {
             serviceId: 'ISL_MAIN_E',
-            calendar: 'weekday',
-            firstTrain: null,
-            lastTrain: null,
+            times: {
+              weekday: {
+                firstTrain: null,
+                lastTrain: null,
+              },
+            },
           },
         ],
       },
@@ -84,12 +97,21 @@ describe('StationSchema', () => {
     const result = StationSchema.safeParse({
       ...minimalStation(),
       firstLastTrain: {
-        entries: [
+        services: [
           {
             serviceId: 'ISL_MAIN_E',
-            calendar: 'holiday',
-            firstTrain: '25:00',
-            lastTrain: '00:50',
+            times: {
+              holiday: {
+                firstTrain: '25:00',
+                lastTrain: '00:50',
+              },
+            },
+            specialTimes: {
+              school_holiday: {
+                firstTrain: null,
+                lastTrain: '00:55',
+              },
+            },
           },
         ],
       },
@@ -98,9 +120,103 @@ describe('StationSchema', () => {
     expect(result.success).toBe(false);
     expect(result.error?.issues.map((issue) => issue.path.join('.'))).toEqual(
       expect.arrayContaining([
-        'firstLastTrain.entries.0.calendar',
-        'firstLastTrain.entries.0.firstTrain',
+        'firstLastTrain.services.0.times.holiday',
+        'firstLastTrain.services.0.specialTimes.school_holiday',
       ]),
+    );
+  });
+
+  it('accepts station layout data', () => {
+    expect(() =>
+      StationSchema.parse({
+        ...minimalStation(),
+        layout: {
+          levels: [
+            {
+              id: 'B2',
+              index: -2,
+              name: {
+                'en-SG': 'Platforms',
+                'zh-Hans': null,
+                ms: null,
+                ta: null,
+              },
+            },
+          ],
+          exits: [
+            {
+              id: 'KET_EXIT_A',
+              label: 'A',
+              levelId: 'B2',
+              paidArea: false,
+            },
+          ],
+          platforms: [
+            {
+              id: 'KET_ISL_A',
+              label: 'A',
+              lineId: 'ISL',
+              levelId: 'B2',
+              serviceIds: ['ISL_MAIN_E'],
+              doorCount: 24,
+              accessPoints: [
+                {
+                  id: 'KET_ISL_A_ESC_01',
+                  kind: 'escalator',
+                  nearestDoor: '12',
+                  position: 'middle',
+                  connectsToLevelId: 'B2',
+                  direction: 'up',
+                },
+              ],
+            },
+          ],
+          transferPaths: [
+            {
+              id: 'KET_TRANSFER',
+              from: {
+                kind: 'platform',
+                id: 'KET_ISL_A',
+              },
+              to: {
+                kind: 'level',
+                id: 'B2',
+              },
+              paidArea: true,
+              modes: ['walk', 'escalator'],
+              levelChange: 0,
+              classification: 'short',
+              estimatedTraversalSeconds: null,
+              distanceMeters: null,
+            },
+          ],
+        },
+      }),
+    ).not.toThrow();
+  });
+
+  it('rejects layout platforms without service ids', () => {
+    const result = StationSchema.safeParse({
+      ...minimalStation(),
+      layout: {
+        levels: [],
+        exits: [],
+        platforms: [
+          {
+            id: 'KET_ISL_A',
+            label: 'A',
+            lineId: 'ISL',
+            serviceIds: [],
+            accessPoints: [],
+          },
+        ],
+        transferPaths: [],
+      },
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues[0]?.path.join('.')).toBe(
+      'layout.platforms.0.serviceIds',
     );
   });
 });

@@ -100,6 +100,20 @@ Rules:
 - Preserve `geo` as the authoritative station point; exit-specific coordinates
   belong in `layout.exits`.
 
+## Source Policy
+
+Seed station layout data from official operator or agency sources wherever
+available, such as LTA, SMRT, SBS Transit, operator station pages, official
+wayfinding maps, OneMap, or station signage reviewed directly. Transport
+enthusiast sites, wiki pages, blogs, and route guides can be used as
+non-authoritative cross-checks, but they should not be the source of record for
+canonical layout facts.
+
+When an official source does not expose a needed layout detail, leave that
+field absent until it can be reviewed from an official source or direct
+observation. Do not fill canonical layout fields solely from enthusiast
+secondary sources.
+
 ## Station Record Shape
 
 Add an optional `layout` object to `StationSchema`:
@@ -378,7 +392,11 @@ Exit criteria:
 
 ### Phase 4: Seed Real Data
 
-- Seed one reviewed station first, preferably `OTP`, because it covers three
+- Seed `CDT` first as a narrow CCL/TEL platform-to-service mapping slice
+  because its reviewed platform direction data maps cleanly to current service
+  patterns. The CCL rows use the current pre-CCL6 service catalog until the CCL6
+  service revisions are added.
+- Keep `OTP` as a later complete-layout candidate because it covers three
   lines, multiple platform levels, door-anchored access points, and multiple
   transfer path classifications.
 - Include reviewed station-root discovery metadata in the first station PR
@@ -386,6 +404,8 @@ Exit criteria:
 - Include public exits for the first station if reviewed exit labels and
   coordinates are available.
 - Keep the first data PR small enough for manual review.
+- The initial seed can start with platform-to-service mappings before levels,
+  exits, or access points when only platform direction data is reviewed.
 
 Exit criteria:
 

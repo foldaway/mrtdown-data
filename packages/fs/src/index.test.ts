@@ -2409,48 +2409,69 @@ describe('@mrtdown/fs', () => {
           landmarkIds: [],
           townId: 'central-western',
           firstLastTrain: {
-            entries: [
+            services: [
               {
                 serviceId: 'ISL_MAIN_E',
-                calendar: 'weekday',
-                firstTrain: '06:00',
-                lastTrain: '00:50',
+                times: {
+                  weekday: {
+                    firstTrain: '06:00',
+                    lastTrain: '00:50',
+                  },
+                },
               },
               {
                 serviceId: 'ISL_MAIN_E',
-                calendar: 'weekday',
-                firstTrain: '06:05',
-                lastTrain: null,
+                times: {
+                  saturday: {
+                    firstTrain: '06:05',
+                    lastTrain: null,
+                  },
+                },
               },
               {
                 serviceId: 'MISSING',
-                calendar: 'weekday',
-                firstTrain: null,
-                lastTrain: '00:30',
+                times: {
+                  weekday: {
+                    firstTrain: null,
+                    lastTrain: '00:30',
+                  },
+                },
               },
               {
                 serviceId: 'TWL_MAIN_N',
-                calendar: 'weekday',
-                firstTrain: null,
-                lastTrain: '00:35',
+                times: {
+                  weekday: {
+                    firstTrain: null,
+                    lastTrain: '00:35',
+                  },
+                },
               },
               {
                 serviceId: 'ISL_ENDED',
-                calendar: 'weekday',
-                firstTrain: '06:10',
-                lastTrain: null,
+                times: {
+                  weekday: {
+                    firstTrain: '06:10',
+                    lastTrain: null,
+                  },
+                },
               },
               {
                 serviceId: 'ISL_FUTURE_ENDED',
-                calendar: 'daily',
-                firstTrain: '06:15',
-                lastTrain: null,
+                times: {
+                  daily: {
+                    firstTrain: '06:15',
+                    lastTrain: null,
+                  },
+                },
               },
               {
                 serviceId: 'ISL_MULTI_CURRENT',
-                calendar: 'sunday_public_holiday',
-                firstTrain: null,
-                lastTrain: '00:45',
+                times: {
+                  sunday_public_holiday: {
+                    firstTrain: null,
+                    lastTrain: '00:45',
+                  },
+                },
               },
             ],
           },
@@ -2614,16 +2635,218 @@ describe('@mrtdown/fs', () => {
     expect(result.ok).toBe(false);
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        'station/KET.json: firstLastTrain.entries.1 duplicates serviceId/calendar ISL_MAIN_E:weekday (first seen at firstLastTrain.entries.0)',
-        'station/KET.json: firstLastTrain.entries.2.serviceId MISSING does not exist in service/',
-        'station/KET.json: firstLastTrain.entries.3.serviceId TWL_MAIN_N revision r_initial does not include station KET in its current service path',
-        'station/KET.json: firstLastTrain.entries.4.serviceId ISL_ENDED does not have a current service revision',
-        'station/KET.json: firstLastTrain.entries.6.serviceId ISL_MULTI_CURRENT revision r_hku does not include station KET in its current service path',
+        'station/KET.json: firstLastTrain.services.1.serviceId ISL_MAIN_E duplicates firstLastTrain.services.0.serviceId',
+        'station/KET.json: firstLastTrain.services.2.serviceId MISSING does not exist in service/',
+        'station/KET.json: firstLastTrain.services.3.serviceId TWL_MAIN_N revision r_initial does not include station KET in its current service path',
+        'station/KET.json: firstLastTrain.services.4.serviceId ISL_ENDED does not have a current service revision',
+        'station/KET.json: firstLastTrain.services.6.serviceId ISL_MULTI_CURRENT revision r_hku does not include station KET in its current service path',
       ]),
     );
     expect(result.errors).not.toEqual(
       expect.arrayContaining([
-        'station/KET.json: firstLastTrain.entries.5.serviceId ISL_FUTURE_ENDED does not have a current service revision',
+        'station/KET.json: firstLastTrain.services.5.serviceId ISL_FUTURE_ENDED does not have a current service revision',
+      ]),
+    );
+  });
+
+  it('rejects invalid station layout relationships', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await writeFile(
+      join(dataDir, 'station/KET.json'),
+      `${JSON.stringify(
+        {
+          id: 'KET',
+          name: {
+            'en-SG': 'Kennedy Town',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          geo: {
+            latitude: 22.2813,
+            longitude: 114.1286,
+          },
+          stationCodes: [
+            {
+              lineId: 'ISL',
+              code: 'ISL1',
+              startedAt: '1979-10-01T00:00:00Z',
+              endedAt: null,
+              structureType: 'underground',
+            },
+          ],
+          landmarkIds: [],
+          townId: 'central-western',
+          firstLastTrain: {
+            services: [
+              {
+                serviceId: 'ISL_MAIN_E',
+                times: {
+                  weekday: {
+                    firstTrain: '06:00',
+                    lastTrain: '00:50',
+                  },
+                },
+              },
+            ],
+          },
+          layout: {
+            levels: [
+              {
+                id: 'B2',
+                index: -2,
+                name: {
+                  'en-SG': 'Platforms',
+                  'zh-Hans': null,
+                  ms: null,
+                  ta: null,
+                },
+              },
+              {
+                id: 'B2',
+                index: -2,
+                name: {
+                  'en-SG': 'Duplicate platforms',
+                  'zh-Hans': null,
+                  ms: null,
+                  ta: null,
+                },
+              },
+            ],
+            exits: [
+              {
+                id: 'KET_EXIT_A',
+                label: 'A',
+                levelId: 'MISSING',
+                nearbyLandmarkIds: ['missing-landmark'],
+                paidArea: false,
+              },
+              {
+                id: 'KET_EXIT_B',
+                label: 'a',
+                paidArea: false,
+              },
+            ],
+            platforms: [
+              {
+                id: 'KET_ISL_A',
+                label: 'A',
+                lineId: 'ISL',
+                levelId: 'MISSING',
+                serviceIds: ['MISSING_SERVICE'],
+                doorCount: 24,
+                accessPoints: [
+                  {
+                    id: 'KET_AP_DUP',
+                    kind: 'escalator',
+                    nearestDoor: '25',
+                    position: 'middle',
+                    connectsToLevelId: 'MISSING',
+                  },
+                ],
+              },
+              {
+                id: 'KET_TWL_A',
+                label: 'A',
+                lineId: 'ISL',
+                serviceIds: ['TWL_MAIN_N', 'ISL_SKIP_KET'],
+                accessPoints: [
+                  {
+                    id: 'KET_AP_DUP',
+                    kind: 'stairs',
+                    position: 'front',
+                  },
+                ],
+              },
+            ],
+            transferPaths: [
+              {
+                id: 'KET_TRANSFER',
+                from: {
+                  kind: 'platform',
+                  id: 'MISSING_PLATFORM',
+                },
+                to: {
+                  kind: 'access_point',
+                  id: 'MISSING_ACCESS_POINT',
+                },
+                paidArea: true,
+                modes: ['walk'],
+                levelChange: null,
+                classification: 'unknown',
+                estimatedTraversalSeconds: null,
+                distanceMeters: null,
+              },
+            ],
+          },
+        },
+        null,
+        2,
+      )}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'service/ISL_SKIP_KET.json'),
+      `${JSON.stringify(
+        {
+          id: 'ISL_SKIP_KET',
+          name: {
+            'en-SG': 'Island Line Skip Kennedy Town',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          lineId: 'ISL',
+          revisions: [
+            {
+              id: 'r_current',
+              startAt: '1979-10-01',
+              endAt: null,
+              path: {
+                stations: [
+                  {
+                    stationId: 'HKU',
+                    displayCode: 'ISL2',
+                  },
+                ],
+              },
+              operatingHours: {
+                weekdays: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+                weekends: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+              },
+            },
+          ],
+        },
+        null,
+        2,
+      )}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir, ['station']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        'station/KET.json: layout.levels.1 duplicates B2 (first seen at layout.levels.0)',
+        'station/KET.json: layout.exits.label.1 duplicates a (first seen at layout.exits.label.0)',
+        'station/KET.json: layout.platforms.1.accessPoints.0.id KET_AP_DUP duplicates another access point id in layout',
+        'station/KET.json: layout.exits.0.levelId MISSING does not exist in layout.levels',
+        'station/KET.json: layout.exits.0.nearbyLandmarkIds.0 missing-landmark does not exist in landmark/',
+        'station/KET.json: layout.platforms.0.levelId MISSING does not exist in layout.levels',
+        'station/KET.json: layout.platforms.0.serviceIds.0 MISSING_SERVICE does not exist in service/',
+        'station/KET.json: layout.platforms.1.serviceIds.0 TWL_MAIN_N belongs to line TWL, not ISL',
+        'station/KET.json: layout.platforms.1.serviceIds.1 ISL_SKIP_KET revision r_current does not include station KET in its current service path',
+        'station/KET.json: layout.platforms.0.accessPoints.0.connectsToLevelId MISSING does not exist in layout.levels',
+        'station/KET.json: layout.platforms.0.accessPoints.0.nearestDoor 25 is outside doorCount 24',
+        'station/KET.json: layout.transferPaths.0.from platform MISSING_PLATFORM does not exist in layout',
+        'station/KET.json: layout.transferPaths.0.to access_point MISSING_ACCESS_POINT does not exist in layout',
+        'station/KET.json: firstLastTrain.services.0.serviceId ISL_MAIN_E is not served by any layout platform',
       ]),
     );
   });

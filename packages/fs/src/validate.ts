@@ -96,6 +96,26 @@ function impactEventSetterKey(event: ImpactEvent): string {
   );
 }
 
+function validateDuplicateValue(
+  errors: string[],
+  path: string,
+  label: string,
+  values: Iterable<[number, string]>,
+): void {
+  const seen = new Map<string, number>();
+
+  for (const [index, value] of values) {
+    const previousIndex = seen.get(value);
+    if (previousIndex != null) {
+      errors.push(
+        `${path}: ${label}.${index} duplicates ${value} (first seen at ${label}.${previousIndex})`,
+      );
+    } else {
+      seen.set(value, index);
+    }
+  }
+}
+
 async function loadEntityRecords<K extends EntityCollection>(
   dataDir: string,
   records: ValidationRecords,
@@ -204,24 +224,212 @@ async function validateStationReferences(
       }
     }
 
-    const seenFirstLastTrainEntries = new Map<string, number>();
-    for (const [index, entry] of (
-      station.value.firstLastTrain?.entries ?? []
-    ).entries()) {
-      const key = `${entry.serviceId}:${entry.calendar}`;
-      const previousIndex = seenFirstLastTrainEntries.get(key);
-      if (previousIndex != null) {
-        errors.push(
-          `${station.path}: firstLastTrain.entries.${index} duplicates serviceId/calendar ${key} (first seen at firstLastTrain.entries.${previousIndex})`,
-        );
-      } else {
-        seenFirstLastTrainEntries.set(key, index);
+    const layoutPlatformServiceIds = new Set<string>();
+    const layout = station.value.layout;
+    if (layout) {
+      validateDuplicateValue(
+        errors,
+        station.path,
+        'layout.levels',
+        layout.levels.map((level, index) => [index, level.id]),
+      );
+      validateDuplicateValue(
+        errors,
+        station.path,
+        'layout.exits',
+        layout.exits.map((exit, index) => [index, exit.id]),
+      );
+      validateDuplicateValue(
+        errors,
+        station.path,
+        'layout.exits.label',
+        layout.exits.map((exit, index) => [
+          index,
+          exit.label.trim().toLowerCase(),
+        ]),
+      );
+      validateDuplicateValue(
+        errors,
+        station.path,
+        'layout.platforms',
+        layout.platforms.map((platform, index) => [index, platform.id]),
+      );
+      validateDuplicateValue(
+        errors,
+        station.path,
+        'layout.transferPaths',
+        layout.transferPaths.map((transferPath, index) => [
+          index,
+          transferPath.id,
+        ]),
+      );
+
+      const layoutLevelIds = new Set(layout.levels.map((level) => level.id));
+      const layoutPlatformIds = new Set(
+        layout.platforms.map((platform) => platform.id),
+      );
+      const layoutAccessPointIds = new Set<string>();
+
+      for (const [platformIndex, platform] of layout.platforms.entries()) {
+        for (const [
+          accessPointIndex,
+          accessPoint,
+        ] of platform.accessPoints.entries()) {
+          const previousSize = layoutAccessPointIds.size;
+          layoutAccessPointIds.add(accessPoint.id);
+          if (layoutAccessPointIds.size === previousSize) {
+            errors.push(
+              `${station.path}: layout.platforms.${platformIndex}.accessPoints.${accessPointIndex}.id ${accessPoint.id} duplicates another access point id in layout`,
+            );
+          }
+
+          if (
+            accessPoint.connectsToLevelId &&
+            !layoutLevelIds.has(accessPoint.connectsToLevelId)
+          ) {
+            errors.push(
+              `${station.path}: layout.platforms.${platformIndex}.accessPoints.${accessPointIndex}.connectsToLevelId ${accessPoint.connectsToLevelId} does not exist in layout.levels`,
+            );
+          }
+
+          const numericDoor = accessPoint.nearestDoor
+            ? Number(accessPoint.nearestDoor)
+            : Number.NaN;
+          if (
+            platform.doorCount != null &&
+            Number.isInteger(numericDoor) &&
+            (numericDoor < 1 || numericDoor > platform.doorCount)
+          ) {
+            errors.push(
+              `${station.path}: layout.platforms.${platformIndex}.accessPoints.${accessPointIndex}.nearestDoor ${accessPoint.nearestDoor} is outside doorCount ${platform.doorCount}`,
+            );
+          }
+        }
       }
 
-      const service = serviceById.get(entry.serviceId);
+      for (const [exitIndex, exit] of layout.exits.entries()) {
+        if (exit.levelId && !layoutLevelIds.has(exit.levelId)) {
+          errors.push(
+            `${station.path}: layout.exits.${exitIndex}.levelId ${exit.levelId} does not exist in layout.levels`,
+          );
+        }
+
+        for (const [landmarkIndex, landmarkId] of (
+          exit.nearbyLandmarkIds ?? []
+        ).entries()) {
+          if (!landmarkIds.has(landmarkId)) {
+            errors.push(
+              `${station.path}: layout.exits.${exitIndex}.nearbyLandmarkIds.${landmarkIndex} ${landmarkId} does not exist in landmark/`,
+            );
+          }
+        }
+      }
+
+      for (const [platformIndex, platform] of layout.platforms.entries()) {
+        if (!lineIds.has(platform.lineId)) {
+          errors.push(
+            `${station.path}: layout.platforms.${platformIndex}.lineId ${platform.lineId} does not exist in line/`,
+          );
+        }
+
+        if (platform.levelId && !layoutLevelIds.has(platform.levelId)) {
+          errors.push(
+            `${station.path}: layout.platforms.${platformIndex}.levelId ${platform.levelId} does not exist in layout.levels`,
+          );
+        }
+
+        for (const [serviceIndex, serviceId] of platform.serviceIds.entries()) {
+          layoutPlatformServiceIds.add(serviceId);
+          const service = serviceById.get(serviceId);
+          if (!service) {
+            errors.push(
+              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not exist in service/`,
+            );
+            continue;
+          }
+
+          if (service.value.lineId !== platform.lineId) {
+            errors.push(
+              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} belongs to line ${service.value.lineId}, not ${platform.lineId}`,
+            );
+            continue;
+          }
+
+          const currentRevisions = service.value.revisions.filter((revision) =>
+            revisionContainsTimestamp(revision, validationTimestamp),
+          );
+          if (currentRevisions.length === 0) {
+            errors.push(
+              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not have a current service revision`,
+            );
+            continue;
+          }
+
+          for (const revision of currentRevisions) {
+            const stationIds = new Set(
+              revision.path.stations.map(
+                (serviceStation) => serviceStation.stationId,
+              ),
+            );
+
+            if (!stationIds.has(station.value.id)) {
+              errors.push(
+                `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} revision ${revision.id} does not include station ${station.value.id} in its current service path`,
+              );
+            }
+          }
+        }
+      }
+
+      for (const [
+        transferPathIndex,
+        transferPath,
+      ] of layout.transferPaths.entries()) {
+        for (const [endpointName, endpoint] of [
+          ['from', transferPath.from],
+          ['to', transferPath.to],
+        ] as const) {
+          const endpointExists =
+            (endpoint.kind === 'level' && layoutLevelIds.has(endpoint.id)) ||
+            (endpoint.kind === 'platform' &&
+              layoutPlatformIds.has(endpoint.id)) ||
+            (endpoint.kind === 'access_point' &&
+              layoutAccessPointIds.has(endpoint.id));
+
+          if (!endpointExists) {
+            errors.push(
+              `${station.path}: layout.transferPaths.${transferPathIndex}.${endpointName} ${endpoint.kind} ${endpoint.id} does not exist in layout`,
+            );
+          }
+        }
+      }
+    }
+
+    const seenFirstLastTrainServices = new Map<string, number>();
+    for (const [index, serviceTiming] of (
+      station.value.firstLastTrain?.services ?? []
+    ).entries()) {
+      const previousIndex = seenFirstLastTrainServices.get(
+        serviceTiming.serviceId,
+      );
+      if (previousIndex != null) {
+        errors.push(
+          `${station.path}: firstLastTrain.services.${index}.serviceId ${serviceTiming.serviceId} duplicates firstLastTrain.services.${previousIndex}.serviceId`,
+        );
+      } else {
+        seenFirstLastTrainServices.set(serviceTiming.serviceId, index);
+      }
+
+      if (layout && !layoutPlatformServiceIds.has(serviceTiming.serviceId)) {
+        errors.push(
+          `${station.path}: firstLastTrain.services.${index}.serviceId ${serviceTiming.serviceId} is not served by any layout platform`,
+        );
+      }
+
+      const service = serviceById.get(serviceTiming.serviceId);
       if (!service) {
         errors.push(
-          `${station.path}: firstLastTrain.entries.${index}.serviceId ${entry.serviceId} does not exist in service/`,
+          `${station.path}: firstLastTrain.services.${index}.serviceId ${serviceTiming.serviceId} does not exist in service/`,
         );
         continue;
       }
@@ -231,7 +439,7 @@ async function validateStationReferences(
       );
       if (currentRevisions.length === 0) {
         errors.push(
-          `${station.path}: firstLastTrain.entries.${index}.serviceId ${entry.serviceId} does not have a current service revision`,
+          `${station.path}: firstLastTrain.services.${index}.serviceId ${serviceTiming.serviceId} does not have a current service revision`,
         );
         continue;
       }
@@ -245,7 +453,7 @@ async function validateStationReferences(
 
         if (!stationIds.has(station.value.id)) {
           errors.push(
-            `${station.path}: firstLastTrain.entries.${index}.serviceId ${entry.serviceId} revision ${revision.id} does not include station ${station.value.id} in its current service path`,
+            `${station.path}: firstLastTrain.services.${index}.serviceId ${serviceTiming.serviceId} revision ${revision.id} does not include station ${station.value.id} in its current service path`,
           );
         }
       }
