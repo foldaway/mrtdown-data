@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-10-ccl-opening-keppel-prince-edward-road-cantonment",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "CCL Opening - Keppel, Prince Edward Road and Cantonment stations",
+    "zh-Hans": "CCL 开幕 - Keppel、Prince Edward Road 与 Cantonment 站",
+    "ms": "Pembukaan CCL - stesen Keppel, Prince Edward Road dan Cantonment",
+    "ta": "CCL திறப்பு - Keppel, Prince Edward Road மற்றும் Cantonment நிலையங்கள்"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-nano"
+  }
+}
