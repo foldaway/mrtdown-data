@@ -82,6 +82,7 @@ jobs:
           fi
 
           curl --fail-with-body --show-error --silent \
+            --user-agent "mrtdown-data-pages-deploy/1.0" \
             --request POST \
             --header "Accept: application/json" \
             --header "Authorization: Bearer ${MRTDOWN_SITE_INTERNAL_API_TOKEN}" \
