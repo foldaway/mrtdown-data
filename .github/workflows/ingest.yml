@@ -32,7 +32,7 @@ jobs:
           echo "Latest updated branch: $BRANCH_NAME"
           git checkout $BRANCH_NAME
           echo "latest-branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 24
           cache: npm
