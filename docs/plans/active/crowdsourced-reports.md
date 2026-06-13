@@ -202,6 +202,9 @@ Exit criteria:
   tests, triage text formatting, and public-report evidence type mapping.
 - 2026-06-13: Added a checked-in crowd-report ingest fixture for manual
   workflow dispatch and deterministic contract validation.
+- 2026-06-13: Added deterministic `ingestContent` coverage proving the checked-in
+  crowd-report fixture can create canonical `report.public` evidence and impact
+  events without a special persistence path.
 
 ## Decision Log
 
