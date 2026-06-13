@@ -277,6 +277,10 @@ function sortUnique(values: Iterable<string>): string[] {
   return [...new Set(values)].sort((a, b) => a.localeCompare(b));
 }
 
+function normalizeInventoryPath(path: string): string {
+  return path.replaceAll('\\', '/');
+}
+
 function lineSegmentStations(id: string): string[] {
   const match = /^line_([a-z0-9]+):([a-z0-9]+)$/.exec(id);
   if (!match) {
@@ -297,7 +301,7 @@ function stationCodeLabelMatches(
     return true;
   }
 
-  const prefix = /^([A-Z]+)(?:\s|$)/.exec(id)?.[1];
+  const prefix = /^([A-Z]+)\s+\d/.exec(id)?.[1];
   return matcher.prefixes.has(prefix ?? '');
 }
 
@@ -376,8 +380,11 @@ function summarizeMapTsxTags(
         if (tagName === 'g') {
           lineGroupIds.push(id);
         } else {
-          lineSegmentIds.push(id);
-          stationIds.push(...lineSegmentStations(id));
+          const segmentStationIds = lineSegmentStations(id);
+          if (segmentStationIds.length > 0) {
+            lineSegmentIds.push(id);
+            stationIds.push(...segmentStationIds);
+          }
         }
       } else if (id.startsWith('label_')) {
         stationLabelIds.push(id);
@@ -451,7 +458,7 @@ async function readMapTsxFile(
   return {
     effectiveDate: componentEffectiveDate(componentName),
     componentName,
-    sourcePath: relative(siteDir, path),
+    sourcePath: normalizeInventoryPath(relative(siteDir, path)),
     viewBox: source.match(/viewBox="([^"]+)"/)?.[1] ?? null,
     rootGroupId: source.match(/<g\s+id="(System Map \([^)]+\))"/)?.[1] ?? null,
     lineCount: source.split('\n').length - (source.endsWith('\n') ? 1 : 0),
@@ -479,7 +486,7 @@ async function buildSchematicMapReferenceInventory(
 
   return {
     generatedAt: new Date(0).toISOString(),
-    sourceRepositoryPath: relative(cwd, siteDir) || '.',
+    sourceRepositoryPath: normalizeInventoryPath(relative(cwd, siteDir)) || '.',
     mapComponentDir: schematicMapComponentDir,
     maps,
     firstTarget: maps.find((map) => map.effectiveDate === '2025-04'),
