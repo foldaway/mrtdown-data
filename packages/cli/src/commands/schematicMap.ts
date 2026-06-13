@@ -13,6 +13,7 @@ import {
 } from '@mrtdown/core';
 import {
   generateSchematicMapVersionSnapshot,
+  listEntities,
   listSchematicMapConstraintSetEffectiveDates,
   listSchematicMapVersionSnapshotEffectiveDates,
   readEntity,
@@ -279,8 +280,25 @@ function lineSegmentStations(id: string): string[] {
   return [match[1].toUpperCase(), match[2].toUpperCase()];
 }
 
+function stationCodeLabelPrefix(id: string): string | undefined {
+  return /^([A-Z]+)\s/.exec(id)?.[1];
+}
+
+async function stationCodePrefixes(dataDir: string): Promise<Set<string>> {
+  const stationRecords = await listEntities(dataDir, 'station');
+  return new Set(
+    stationRecords.flatMap((station) =>
+      station.value.stationCodes.flatMap((stationCode) => {
+        const prefix = /^([A-Z]+)/.exec(stationCode.code)?.[1];
+        return prefix ? [prefix] : [];
+      }),
+    ),
+  );
+}
+
 function summarizeMapTsxTags(
   source: string,
+  stationCodePrefixes: ReadonlySet<string>,
 ): Omit<
   SchematicMapReferenceInventoryMap,
   | 'componentName'
@@ -342,9 +360,7 @@ function summarizeMapTsxTags(
       } else if (id.startsWith('node_')) {
         stationNodeIds.push(id);
         stationIds.push(id.slice('node_'.length).toUpperCase());
-      } else if (
-        /^(BP|CC|CE|CG|DT|EW|JS|JW|JE|NE|NS|PE|PW|SE|SW|TE)\s/.test(id)
-      ) {
+      } else if (stationCodePrefixes.has(stationCodeLabelPrefix(id) ?? '')) {
         stationCodeIds.push(id);
       }
 
@@ -399,6 +415,7 @@ function summarizeMapTsxTags(
 async function readMapTsxFile(
   path: string,
   siteDir: string,
+  stationCodePrefixes: ReadonlySet<string>,
 ): Promise<SchematicMapReferenceInventoryMap> {
   const source = await readFile(path, 'utf8');
   const componentName = path.match(/(Map[A-Za-z0-9]+)\.tsx$/)?.[1];
@@ -413,21 +430,25 @@ async function readMapTsxFile(
     viewBox: source.match(/viewBox="([^"]+)"/)?.[1] ?? null,
     rootGroupId: source.match(/<g\s+id="(System Map \([^)]+\))"/)?.[1] ?? null,
     lineCount: source.split('\n').length - (source.endsWith('\n') ? 1 : 0),
-    ...summarizeMapTsxTags(source),
+    ...summarizeMapTsxTags(source, stationCodePrefixes),
   };
 }
 
 async function buildSchematicMapReferenceInventory(
   cwd: string,
+  dataDir: string,
   siteDir: string,
 ): Promise<SchematicMapReferenceInventory> {
   const mapDir = join(siteDir, schematicMapComponentDir);
-  const entries = await readdir(mapDir, { withFileTypes: true });
+  const [entries, codePrefixes] = await Promise.all([
+    readdir(mapDir, { withFileTypes: true }),
+    stationCodePrefixes(dataDir),
+  ]);
   const files = entries
     .filter((entry) => /^Map[A-Za-z0-9]+\.tsx$/.test(entry.name))
     .map((entry) => join(mapDir, entry.name));
   const maps = await Promise.all(
-    files.map((file) => readMapTsxFile(file, siteDir)),
+    files.map((file) => readMapTsxFile(file, siteDir, codePrefixes)),
   );
   maps.sort((a, b) => a.effectiveDate.localeCompare(b.effectiveDate));
 
@@ -1680,6 +1701,7 @@ export async function runSchematicMap(
     const write = readOption(args, '--write');
     const inventory = await buildSchematicMapReferenceInventory(
       globals.cwd,
+      globals.dataDir,
       siteDir,
     );
     const json = `${JSON.stringify(inventory, null, 2)}\n`;

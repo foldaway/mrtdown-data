@@ -535,6 +535,33 @@ describe('@mrtdown/cli', () => {
   });
 
   it('inventories reference schematic map TSX snapshots', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const fixtureStationPath = join(dataDir, 'station', 'KET.json');
+    const fixtureStation = JSON.parse(
+      await readFile(fixtureStationPath, 'utf8'),
+    );
+    fixtureStation.stationCodes.push(
+      {
+        lineId: 'CRL',
+        code: 'CR6',
+        startedAt: '2030-01-01T00:00:00Z',
+        endedAt: null,
+        structureType: 'underground',
+      },
+      {
+        lineId: 'CRL',
+        code: 'CP1',
+        startedAt: '2030-01-01T00:00:00Z',
+        endedAt: null,
+        structureType: 'underground',
+      },
+    );
+    await writeFile(
+      fixtureStationPath,
+      `${JSON.stringify(fixtureStation, null, 2)}\n`,
+    );
+
     const siteDir = await mkdtemp(join(tmpdir(), 'mrtdown-site-'));
     const mapDir = join(
       siteDir,
@@ -558,7 +585,9 @@ describe('@mrtdown/cli', () => {
         '        </g>',
         '        <g id="labels">',
         '          <text id="label_ket">Kennedy Town</text>',
-        '          <text id="EW 1">EW1</text>',
+        '          <text id="ISL 1">ISL1</text>',
+        '          <text id="CR 6">CR6</text>',
+        '          <text id="CP 1">CP1</text>',
         '        </g>',
         '        <g id="nodes">',
         '          <circle id="node_hku" />',
@@ -583,7 +612,14 @@ describe('@mrtdown/cli', () => {
     const inventory = createIo();
     await expect(
       runCli(
-        ['schematic-map', 'inventory', '--site-dir', siteDir],
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'inventory',
+          '--site-dir',
+          siteDir,
+        ],
         inventory.io,
       ),
     ).resolves.toBe(0);
@@ -602,23 +638,23 @@ describe('@mrtdown/cli', () => {
           sourcePath: 'app/components/StationMap/components/MapApr2025.tsx',
           viewBox: '0 0 3140 2400',
           rootGroupId: 'System Map (2025)',
-          lineCount: 20,
+          lineCount: 22,
           counts: {
             lineGroups: 1,
             lineSegments: 1,
             stationLabels: 1,
             stationNodes: 1,
-            stationCodes: 1,
+            stationCodes: 3,
             stationIds: 2,
             rawPathGeometry: 1,
-            textElementsWithIds: 2,
+            textElementsWithIds: 4,
           },
           layerOrder: ['lines', 'labels', 'nodes'],
           lineGroupIds: ['line_isl'],
           lineSegmentIds: ['line_ket:hku'],
           stationLabelIds: ['label_ket'],
           stationNodeIds: ['node_hku'],
-          stationCodeIds: ['EW 1'],
+          stationCodeIds: ['CP 1', 'CR 6', 'ISL 1'],
           stationIds: ['HKU', 'KET'],
           rawGeometryIds: ['line_ket:hku'],
         },
@@ -634,6 +670,8 @@ describe('@mrtdown/cli', () => {
     await expect(
       runCli(
         [
+          '--data-dir',
+          dataDir,
           'schematic-map',
           'inventory',
           '--site-dir',
