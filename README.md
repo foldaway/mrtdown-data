@@ -125,6 +125,10 @@ and can be processed through `@mrtdown/triage`:
 npm run ingest:webhook
 ```
 
+Set `MESSAGE` to an `IngestPayload` JSON string before running the command.
+`fixtures/ingest/crowd-report.json` is a valid crowd-report sample for manual
+workflow dispatch testing.
+
 Model-dependent triage evals are intentionally separate from the deterministic
 test suite:
 

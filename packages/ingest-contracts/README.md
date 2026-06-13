@@ -82,3 +82,7 @@ Contract rules:
 - Site-local metadata is rejected. Keep submitter identities, IP addresses,
   user-agent strings, contact fields, moderation notes, abuse scores, and
   challenge tokens out of this payload.
+
+The checked-in sample at `fixtures/ingest/crowd-report.json` is valid against
+`IngestPayloadSchema` and can be pasted into the ingest workflow's manual
+`payload` input for an end-to-end dispatch trial.

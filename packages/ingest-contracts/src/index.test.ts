@@ -1,3 +1,5 @@
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import {
   IngestContentCrowdReportEffectSchema,
@@ -7,6 +9,11 @@ import {
   IngestContentNewsArticleTextSources,
   IngestPayloadSchema,
 } from './index.js';
+
+const CROWD_REPORT_FIXTURE = resolve(
+  import.meta.dirname,
+  '../../../fixtures/ingest/crowd-report.json',
+);
 
 describe('IngestPayloadSchema', () => {
   test('exports crowd report constants', () => {
@@ -116,6 +123,12 @@ describe('IngestPayloadSchema', () => {
         ],
       }),
     ).not.toThrow();
+  });
+
+  test('accepts the checked-in crowd report workflow fixture', async () => {
+    const fixture = JSON.parse(await readFile(CROWD_REPORT_FIXTURE, 'utf8'));
+
+    expect(IngestPayloadSchema.parse(fixture)).toEqual(fixture);
   });
 
   test('rejects crowd reports without affected lines or stations', () => {
