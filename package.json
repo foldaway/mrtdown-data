@@ -48,10 +48,10 @@
     "@types/luxon": "^3.4.2",
     "@types/node": "^22.13.4",
     "luxon": "^3.5.0",
-    "tsx": "^4.19.3",
+    "tsx": "^4.22.4",
     "turbo": "^2.8.20",
     "typescript": "^5.8.3",
-    "vitest": "^3.0.9"
+    "vitest": "^4.1.8"
   },
   "overrides": {
     "zod": "^4.0.14"
