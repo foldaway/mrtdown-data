@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { cp, mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import { cp, mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -532,6 +532,122 @@ describe('@mrtdown/cli', () => {
         total: 0,
       },
     });
+  });
+
+  it('inventories reference schematic map TSX snapshots', async () => {
+    const siteDir = await mkdtemp(join(tmpdir(), 'mrtdown-site-'));
+    const mapDir = join(
+      siteDir,
+      'app',
+      'components',
+      'StationMap',
+      'components',
+    );
+    await mkdir(mapDir, { recursive: true });
+    await writeFile(
+      join(mapDir, 'MapApr2025.tsx'),
+      [
+        'export function MapApr2025() {',
+        '  return (',
+        '    <svg viewBox="0 0 3140 2400">',
+        '      <g id="System Map (2025)">',
+        '        <g id="lines">',
+        '          <g id="line_isl">',
+        '            <path id="line_ket:hku" d="M 0 0 L 10 10" />',
+        '          </g>',
+        '        </g>',
+        '        <g id="labels">',
+        '          <text id="label_ket">Kennedy Town</text>',
+        '          <text id="EW 1">EW1</text>',
+        '        </g>',
+        '        <g id="nodes">',
+        '          <circle id="node_hku" />',
+        '        </g>',
+        '      </g>',
+        '    </svg>',
+        '  );',
+        '}',
+        '',
+      ].join('\n'),
+    );
+    await writeFile(
+      join(mapDir, 'MapJan2012.tsx'),
+      [
+        'export function MapJan2012() {',
+        '  return <svg viewBox="0 0 3140 2400"><g id="System Map (2012)" /></svg>;',
+        '}',
+        '',
+      ].join('\n'),
+    );
+
+    const inventory = createIo();
+    await expect(
+      runCli(
+        ['schematic-map', 'inventory', '--site-dir', siteDir],
+        inventory.io,
+      ),
+    ).resolves.toBe(0);
+    const parsed = JSON.parse(inventory.stdout[0] as string);
+    expect(parsed).toMatchObject({
+      generatedAt: '1970-01-01T00:00:00.000Z',
+      mapComponentDir: 'app/components/StationMap/components',
+      maps: [
+        {
+          effectiveDate: '2012-01',
+          componentName: 'MapJan2012',
+        },
+        {
+          effectiveDate: '2025-04',
+          componentName: 'MapApr2025',
+          sourcePath: 'app/components/StationMap/components/MapApr2025.tsx',
+          viewBox: '0 0 3140 2400',
+          rootGroupId: 'System Map (2025)',
+          lineCount: 20,
+          counts: {
+            lineGroups: 1,
+            lineSegments: 1,
+            stationLabels: 1,
+            stationNodes: 1,
+            stationCodes: 1,
+            stationIds: 2,
+            rawPathGeometry: 1,
+            textElementsWithIds: 2,
+          },
+          layerOrder: ['lines', 'labels', 'nodes'],
+          lineGroupIds: ['line_isl'],
+          lineSegmentIds: ['line_ket:hku'],
+          stationLabelIds: ['label_ket'],
+          stationNodeIds: ['node_hku'],
+          stationCodeIds: ['EW 1'],
+          stationIds: ['HKU', 'KET'],
+          rawGeometryIds: ['line_ket:hku'],
+        },
+      ],
+      firstTarget: {
+        effectiveDate: '2025-04',
+        componentName: 'MapApr2025',
+      },
+    });
+
+    const outPath = join(siteDir, 'inventory.json');
+    const write = createIo();
+    await expect(
+      runCli(
+        [
+          'schematic-map',
+          'inventory',
+          '--site-dir',
+          siteDir,
+          '--write',
+          outPath,
+        ],
+        write.io,
+      ),
+    ).resolves.toBe(0);
+    expect(write.stdout).toEqual([outPath]);
+    await expect(readFile(outPath, 'utf8')).resolves.toContain(
+      '"componentName": "MapApr2025"',
+    );
   });
 
   it('reports semantic schematic map diffs for reviewers', async () => {

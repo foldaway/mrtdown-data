@@ -1,5 +1,5 @@
-import { readFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { readdir, readFile } from 'node:fs/promises';
+import { join, relative, resolve } from 'node:path';
 import {
   type SchematicMapConstraint,
   type SchematicMapConstraintSet,
@@ -171,8 +171,273 @@ type SchematicMapDesignerSubmissionBundle = {
   notes?: string[];
 };
 
+type SchematicMapReferenceInventory = {
+  generatedAt: string;
+  sourceRepositoryPath: string;
+  mapComponentDir: string;
+  maps: SchematicMapReferenceInventoryMap[];
+  firstTarget?: SchematicMapReferenceInventoryMap;
+};
+
+type SchematicMapReferenceInventoryMap = {
+  effectiveDate: string;
+  componentName: string;
+  sourcePath: string;
+  viewBox: string | null;
+  rootGroupId: string | null;
+  lineCount: number;
+  counts: {
+    ids: number;
+    uniqueIds: number;
+    duplicateIds: number;
+    tags: Record<string, number>;
+    lineGroups: number;
+    lineSegments: number;
+    stationLabels: number;
+    stationNodes: number;
+    stationCodes: number;
+    stationIds: number;
+    rawPathGeometry: number;
+    textElementsWithIds: number;
+  };
+  layerOrder: string[];
+  lineGroupIds: string[];
+  lineSegmentIds: string[];
+  stationLabelIds: string[];
+  stationNodeIds: string[];
+  stationCodeIds: string[];
+  stationIds: string[];
+  rawGeometryIds: string[];
+};
+
+const schematicMapMonthByName = new Map([
+  ['Jan', '01'],
+  ['Feb', '02'],
+  ['Mar', '03'],
+  ['Apr', '04'],
+  ['May', '05'],
+  ['Jun', '06'],
+  ['Jul', '07'],
+  ['Aug', '08'],
+  ['Sep', '09'],
+  ['Oct', '10'],
+  ['Nov', '11'],
+  ['Dec', '12'],
+]);
+const schematicMapComponentDir = join(
+  'app',
+  'components',
+  'StationMap',
+  'components',
+);
+
 function effectiveDateIdPart(effectiveDate: string): string {
   return effectiveDate.replace('-', '_');
+}
+
+function componentEffectiveDate(componentName: string): string {
+  const match = /^Map([A-Z][a-z]{2})(\d{4})$/.exec(componentName);
+  if (!match) {
+    throw new Error(`Cannot derive effective date from ${componentName}`);
+  }
+
+  const [, monthName, year] = match;
+  const month = schematicMapMonthByName.get(monthName);
+  if (!month) {
+    throw new Error(`Unknown map month in ${componentName}`);
+  }
+
+  return `${year}-${month}`;
+}
+
+function parseTsxAttributes(source: string): Record<string, string> {
+  const attrs: Record<string, string> = {};
+  for (const match of source.matchAll(
+    /([A-Za-z_:][\w:.-]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|\{([^}]*)\})/g,
+  )) {
+    const [, name, doubleQuoted, singleQuoted, expression] = match;
+    attrs[name] = doubleQuoted ?? singleQuoted ?? expression ?? '';
+  }
+  return attrs;
+}
+
+function findRootGroup(
+  stack: Array<{ tagName: string; id?: string }>,
+): { tagName: string; id?: string } | undefined {
+  return stack.find((entry) => entry.id?.startsWith('System Map '));
+}
+
+function sortUnique(values: Iterable<string>): string[] {
+  return [...new Set(values)].sort((a, b) => a.localeCompare(b));
+}
+
+function lineSegmentStations(id: string): string[] {
+  const match = /^line_([a-z0-9]+):([a-z0-9]+)$/.exec(id);
+  if (!match) {
+    return [];
+  }
+  return [match[1].toUpperCase(), match[2].toUpperCase()];
+}
+
+function summarizeMapTsxTags(
+  source: string,
+): Omit<
+  SchematicMapReferenceInventoryMap,
+  | 'componentName'
+  | 'effectiveDate'
+  | 'sourcePath'
+  | 'viewBox'
+  | 'rootGroupId'
+  | 'lineCount'
+> {
+  const stack: Array<{ tagName: string; id?: string }> = [];
+  const ids: string[] = [];
+  const tagCounts = new Map<string, number>();
+  const layerOrder: string[] = [];
+  const lineSegmentIds: string[] = [];
+  const lineGroupIds: string[] = [];
+  const stationLabelIds: string[] = [];
+  const stationNodeIds: string[] = [];
+  const stationCodeIds: string[] = [];
+  const stationIds: string[] = [];
+  const rawGeometryIds: string[] = [];
+  const textIds: string[] = [];
+  let rootGroupDepth: number | undefined;
+
+  const tagPattern = /<\/?([A-Za-z][\w:.]*)\b([^<>]*?)(\/?)>/gs;
+  for (const match of source.matchAll(tagPattern)) {
+    const [tagSource, tagName, attrSource, selfClosing] = match;
+    if (tagName === 'SVGSVGElement') {
+      continue;
+    }
+
+    if (tagSource.startsWith('</')) {
+      while (stack.length > 0) {
+        const popped = stack.pop();
+        if (popped?.tagName === tagName) {
+          break;
+        }
+      }
+      continue;
+    }
+
+    const attrs = parseTsxAttributes(attrSource);
+    const id = attrs.id;
+    const rootGroup = findRootGroup(stack);
+    tagCounts.set(tagName, (tagCounts.get(tagName) ?? 0) + 1);
+
+    if (id) {
+      ids.push(id);
+
+      if (id.startsWith('line_')) {
+        if (tagName === 'g') {
+          lineGroupIds.push(id);
+        } else {
+          lineSegmentIds.push(id);
+          stationIds.push(...lineSegmentStations(id));
+        }
+      } else if (id.startsWith('label_')) {
+        stationLabelIds.push(id);
+        stationIds.push(id.slice('label_'.length).toUpperCase());
+      } else if (id.startsWith('node_')) {
+        stationNodeIds.push(id);
+        stationIds.push(id.slice('node_'.length).toUpperCase());
+      } else if (
+        /^(BP|CC|CE|CG|DT|EW|JS|JW|JE|NE|NS|PE|PW|SE|SW|TE)\s/.test(id)
+      ) {
+        stationCodeIds.push(id);
+      }
+
+      if (tagName === 'path' && attrs.d) {
+        rawGeometryIds.push(id);
+      }
+
+      if (tagName === 'text') {
+        textIds.push(id);
+      }
+
+      if (rootGroup && stack.length === rootGroupDepth) {
+        layerOrder.push(id);
+      }
+    }
+
+    if (id?.startsWith('System Map ')) {
+      rootGroupDepth = stack.length + 1;
+    }
+
+    if (!selfClosing && !tagSource.endsWith('/>')) {
+      stack.push({ tagName, id });
+    }
+  }
+
+  return {
+    counts: {
+      ids: ids.length,
+      uniqueIds: new Set(ids).size,
+      duplicateIds: ids.length - new Set(ids).size,
+      tags: Object.fromEntries([...tagCounts.entries()].sort()),
+      lineGroups: new Set(lineGroupIds).size,
+      lineSegments: new Set(lineSegmentIds).size,
+      stationLabels: new Set(stationLabelIds).size,
+      stationNodes: new Set(stationNodeIds).size,
+      stationCodes: new Set(stationCodeIds).size,
+      stationIds: new Set(stationIds).size,
+      rawPathGeometry: new Set(rawGeometryIds).size,
+      textElementsWithIds: new Set(textIds).size,
+    },
+    layerOrder,
+    lineGroupIds: sortUnique(lineGroupIds),
+    lineSegmentIds: sortUnique(lineSegmentIds),
+    stationLabelIds: sortUnique(stationLabelIds),
+    stationNodeIds: sortUnique(stationNodeIds),
+    stationCodeIds: sortUnique(stationCodeIds),
+    stationIds: sortUnique(stationIds),
+    rawGeometryIds: sortUnique(rawGeometryIds),
+  };
+}
+
+async function readMapTsxFile(
+  path: string,
+  siteDir: string,
+): Promise<SchematicMapReferenceInventoryMap> {
+  const source = await readFile(path, 'utf8');
+  const componentName = path.match(/(Map[A-Za-z0-9]+)\.tsx$/)?.[1];
+  if (!componentName) {
+    throw new Error(`Cannot derive component name from ${path}`);
+  }
+
+  return {
+    effectiveDate: componentEffectiveDate(componentName),
+    componentName,
+    sourcePath: relative(siteDir, path),
+    viewBox: source.match(/viewBox="([^"]+)"/)?.[1] ?? null,
+    rootGroupId: source.match(/<g\s+id="(System Map \([^)]+\))"/)?.[1] ?? null,
+    lineCount: source.split('\n').length - (source.endsWith('\n') ? 1 : 0),
+    ...summarizeMapTsxTags(source),
+  };
+}
+
+async function buildSchematicMapReferenceInventory(
+  cwd: string,
+  siteDir: string,
+): Promise<SchematicMapReferenceInventory> {
+  const mapDir = join(siteDir, schematicMapComponentDir);
+  const entries = await readdir(mapDir, { withFileTypes: true });
+  const files = entries
+    .filter((entry) => /^Map[A-Za-z0-9]+\.tsx$/.test(entry.name))
+    .map((entry) => join(mapDir, entry.name));
+  const maps = await Promise.all(
+    files.map((file) => readMapTsxFile(file, siteDir)),
+  );
+  maps.sort((a, b) => a.effectiveDate.localeCompare(b.effectiveDate));
+
+  return {
+    generatedAt: new Date(0).toISOString(),
+    sourceRepositoryPath: relative(cwd, siteDir) || '.',
+    mapComponentDir: schematicMapComponentDir,
+    maps,
+    firstTarget: maps.find((map) => map.effectiveDate === '2025-04'),
+  };
 }
 
 function copyConstraintIdForEffectiveDate(
@@ -1407,6 +1672,29 @@ export async function runSchematicMap(
     return 0;
   }
 
+  if (action === 'inventory') {
+    const siteDir = resolve(
+      globals.cwd,
+      readOption(args, '--site-dir') ?? '../mrtdown-site',
+    );
+    const write = readOption(args, '--write');
+    const inventory = await buildSchematicMapReferenceInventory(
+      globals.cwd,
+      siteDir,
+    );
+    const json = `${JSON.stringify(inventory, null, 2)}\n`;
+
+    if (write) {
+      const outPath = resolve(globals.cwd, write);
+      await writeTextFile(outPath, json);
+      io.stdout(outPath);
+      return 0;
+    }
+
+    io.stdout(json.trimEnd());
+    return 0;
+  }
+
   if (action === 'generate') {
     const id = args.shift();
     if (!id) {
@@ -1470,6 +1758,6 @@ export async function runSchematicMap(
   }
 
   throw new Error(
-    'schematic-map requires list, show, select, stats, diff, generator-diff, copy-constraints, validate-submission, generate, or preview',
+    'schematic-map requires list, show, select, stats, diff, generator-diff, copy-constraints, validate-submission, inventory, generate, or preview',
   );
 }
