@@ -2678,6 +2678,7 @@ describe('@mrtdown/fs', () => {
           ],
           landmarkIds: [],
           townId: 'central-western',
+          aliases: ['Kennedy Town MRT', ' kennedy   town mrt '],
           firstLastTrain: {
             services: [
               {
@@ -2834,6 +2835,7 @@ describe('@mrtdown/fs', () => {
     expect(result.errors).toEqual(
       expect.arrayContaining([
         'station/KET.json: layout.levels.1 duplicates B2 (first seen at layout.levels.0)',
+        'station/KET.json: aliases.1 duplicates kennedy town mrt (first seen at aliases.0)',
         'station/KET.json: layout.exits.label.1 duplicates a (first seen at layout.exits.label.0)',
         'station/KET.json: layout.platforms.1.accessPoints.0.id KET_AP_DUP duplicates another access point id in layout',
         'station/KET.json: layout.exits.0.levelId MISSING does not exist in layout.levels',

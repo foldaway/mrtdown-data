@@ -116,6 +116,10 @@ function validateDuplicateValue(
   }
 }
 
+function normalizeStationAlias(alias: string): string {
+  return alias.trim().replace(/\s+/g, ' ').toLowerCase();
+}
+
 async function loadEntityRecords<K extends EntityCollection>(
   dataDir: string,
   records: ValidationRecords,
@@ -223,6 +227,16 @@ async function validateStationReferences(
         );
       }
     }
+
+    validateDuplicateValue(
+      errors,
+      station.path,
+      'aliases',
+      (station.value.aliases ?? []).map((alias, index) => [
+        index,
+        normalizeStationAlias(alias),
+      ]),
+    );
 
     const layoutPlatformServiceIds = new Set<string>();
     const layout = station.value.layout;

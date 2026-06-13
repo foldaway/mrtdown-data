@@ -215,6 +215,17 @@ export const StationLayoutSchema = z.object({
 });
 export type StationLayout = z.infer<typeof StationLayoutSchema>;
 
+export const StationAddressSchema = z.object({
+  streetAddress: z.string().optional(),
+  postalCode: z.string().optional(),
+  addressLocality: z.string().optional(),
+  addressCountry: z
+    .string()
+    .regex(/^[A-Z]{2}$/, 'Expected an ISO 3166-1 alpha-2 country code')
+    .optional(),
+});
+export type StationAddress = z.infer<typeof StationAddressSchema>;
+
 export const StationStructureTypeSchema = z.enum([
   'elevated',
   'underground',
@@ -241,6 +252,8 @@ export const StationSchema = z.object({
   ),
   landmarkIds: z.array(z.string()),
   townId: z.string(),
+  address: StationAddressSchema.optional(),
+  aliases: z.array(z.string().min(1)).optional(),
   firstLastTrain: StationFirstLastTrainSchema.optional(),
   layout: StationLayoutSchema.optional(),
 });

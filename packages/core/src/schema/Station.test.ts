@@ -29,6 +29,35 @@ function minimalStation() {
 }
 
 describe('StationSchema', () => {
+  it('accepts station discovery metadata', () => {
+    expect(() =>
+      StationSchema.parse({
+        ...minimalStation(),
+        address: {
+          streetAddress: '20 Tampines Central 1',
+          postalCode: '529538',
+          addressLocality: 'Singapore',
+          addressCountry: 'SG',
+        },
+        aliases: ['Tampines MRT', 'Tampines MRT Station', 'EW2', 'DT32'],
+      }),
+    ).not.toThrow();
+  });
+
+  it('rejects invalid station discovery metadata', () => {
+    const result = StationSchema.safeParse({
+      ...minimalStation(),
+      address: {
+        addressCountry: 'Singapore',
+      },
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues.map((issue) => issue.path.join('.'))).toEqual(
+      expect.arrayContaining(['address.addressCountry']),
+    );
+  });
+
   it('accepts first and last train services with nullable halves', () => {
     expect(() =>
       StationSchema.parse({
