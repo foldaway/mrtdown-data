@@ -173,8 +173,8 @@ Exit criteria:
 - Keep `.github/workflows/ingest.yml` as the canonical automation entrypoint.
 - Ensure accepted crowd-report payloads can be processed through
   `npm run ingest:webhook`, `npm run data:validate`, and automated PR creation.
-- Consider adding a lightweight workflow fixture or dry-run example for manual
-  dispatch testing.
+- Keep `fixtures/ingest/crowd-report.json` valid as the lightweight manual
+  dispatch fixture for workflow and producer testing.
 
 Exit criteria:
 
@@ -200,6 +200,8 @@ Exit criteria:
 - 2026-05-24: Drafted paired canonical ingest plan for crowdsourced reports.
 - 2026-05-24: Added the `crowd-report` ingest contract, deterministic contract
   tests, triage text formatting, and public-report evidence type mapping.
+- 2026-06-13: Added a checked-in crowd-report ingest fixture for manual
+  workflow dispatch and deterministic contract validation.
 
 ## Decision Log
 

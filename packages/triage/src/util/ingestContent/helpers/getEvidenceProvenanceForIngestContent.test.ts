@@ -6,17 +6,17 @@ describe('getEvidenceProvenanceForIngestContent', () => {
     expect(
       getEvidenceProvenanceForIngestContent({
         source: 'crowd-report',
-        reportId: 'accepted-20260523-0903-btl-001',
-        text: 'Several commuters report 15 minute delays on the BTL.',
+        reportId: 'accepted-20260523-0903-dtl-001',
+        text: 'Several commuters report 15 minute delays on the DTL.',
         createdAt: '2026-05-23T09:04:00+08:00',
         observedAt: '2026-05-23T09:03:00+08:00',
-        lineIds: ['BTL'],
-        url: 'https://example.com/crowd-reports/accepted-20260523-0903-btl-001',
+        lineIds: ['DTL'],
+        url: 'https://example.com/crowd-reports/accepted-20260523-0903-dtl-001',
       }),
     ).toEqual({
       type: 'report.public',
       sourceUrl:
-        'https://example.com/crowd-reports/accepted-20260523-0903-btl-001',
+        'https://example.com/crowd-reports/accepted-20260523-0903-dtl-001',
     });
   });
 

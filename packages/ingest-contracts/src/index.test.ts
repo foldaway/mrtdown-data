@@ -1,3 +1,5 @@
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import {
   IngestContentCrowdReportEffectSchema,
@@ -7,6 +9,11 @@ import {
   IngestContentNewsArticleTextSources,
   IngestPayloadSchema,
 } from './index.js';
+
+const CROWD_REPORT_FIXTURE = resolve(
+  import.meta.dirname,
+  '../../../fixtures/ingest/crowd-report.json',
+);
 
 describe('IngestPayloadSchema', () => {
   test('exports crowd report constants', () => {
@@ -61,16 +68,16 @@ describe('IngestPayloadSchema', () => {
           },
           {
             source: 'crowd-report',
-            reportId: 'accepted-20260523-0903-btl-001',
+            reportId: 'accepted-20260523-0903-dtl-001',
             text: 'Trains are skipping Bencoolen after a station announcement.',
             createdAt: '2026-05-23T09:04:00+08:00',
             observedAt: '2026-05-23T09:03:00+08:00',
-            lineIds: ['BTL'],
+            lineIds: ['DTL'],
             stationIds: ['BCL'],
             directionText: 'towards Expo',
             effect: 'skipped-stop',
             reportCount: 2,
-            url: 'https://example.com/crowd-reports/accepted-20260523-0903-btl-001',
+            url: 'https://example.com/crowd-reports/accepted-20260523-0903-dtl-001',
           },
         ],
       }),
@@ -103,19 +110,25 @@ describe('IngestPayloadSchema', () => {
         content: [
           {
             source: 'crowd-report',
-            reportId: 'accepted-20260523-0903-btl-001',
-            text: 'Several commuters report 15 minute delays on the BTL.',
+            reportId: 'accepted-20260523-0903-dtl-001',
+            text: 'Several commuters report 15 minute delays on the DTL.',
             createdAt: '2026-05-23T09:04:00+08:00',
             observedAt: '2026-05-23T09:03:00+08:00',
-            lineIds: ['BTL'],
+            lineIds: ['DTL'],
             effect: 'delay',
             delayMinutes: 15,
             reportCount: 4,
-            url: 'https://example.com/crowd-reports/accepted-20260523-0903-btl-001',
+            url: 'https://example.com/crowd-reports/accepted-20260523-0903-dtl-001',
           },
         ],
       }),
     ).not.toThrow();
+  });
+
+  test('accepts the checked-in crowd report workflow fixture', async () => {
+    const fixture = JSON.parse(await readFile(CROWD_REPORT_FIXTURE, 'utf8'));
+
+    expect(IngestPayloadSchema.parse(fixture)).toEqual(fixture);
   });
 
   test('rejects crowd reports without affected lines or stations', () => {
@@ -124,11 +137,11 @@ describe('IngestPayloadSchema', () => {
         content: [
           {
             source: 'crowd-report',
-            reportId: 'accepted-20260523-0903-btl-001',
+            reportId: 'accepted-20260523-0903-dtl-001',
             text: 'Several commuters report delays.',
             createdAt: '2026-05-23T09:04:00+08:00',
             observedAt: '2026-05-23T09:03:00+08:00',
-            url: 'https://example.com/crowd-reports/accepted-20260523-0903-btl-001',
+            url: 'https://example.com/crowd-reports/accepted-20260523-0903-dtl-001',
           },
         ],
       }),
@@ -141,12 +154,12 @@ describe('IngestPayloadSchema', () => {
         content: [
           {
             source: 'crowd-report',
-            reportId: 'accepted-20260523-0903-btl-001',
+            reportId: 'accepted-20260523-0903-dtl-001',
             text: 'Several commuters report delays.',
             createdAt: '2026-05-23T09:04:00+08:00',
             observedAt: '2026-05-23T09:03:00+08:00',
-            lineIds: ['BTL'],
-            url: 'https://example.com/crowd-reports/accepted-20260523-0903-btl-001',
+            lineIds: ['DTL'],
+            url: 'https://example.com/crowd-reports/accepted-20260523-0903-dtl-001',
             submitterEmail: 'commuter@example.com',
           },
         ],

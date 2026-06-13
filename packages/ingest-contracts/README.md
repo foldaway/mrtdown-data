@@ -49,17 +49,17 @@ const payload: IngestPayload = IngestPayloadSchema.parse({
   content: [
     {
       source: 'crowd-report',
-      reportId: 'accepted-20260523-0903-btl-001',
-      text: 'Several commuters report 15 minute delays on the BTL.',
+      reportId: 'accepted-20260523-0903-dtl-001',
+      text: 'Several commuters report 15 minute delays on the DTL.',
       createdAt: '2026-05-23T09:04:00+08:00',
       observedAt: '2026-05-23T09:03:00+08:00',
-      lineIds: ['BTL'],
+      lineIds: ['DTL'],
       stationIds: ['BCL'],
       directionText: 'towards Expo',
       effect: 'delay',
       delayMinutes: 15,
       reportCount: 4,
-      url: 'https://example.com/crowd-reports/accepted-20260523-0903-btl-001',
+      url: 'https://example.com/crowd-reports/accepted-20260523-0903-dtl-001',
     },
   ],
 });
@@ -82,3 +82,7 @@ Contract rules:
 - Site-local metadata is rejected. Keep submitter identities, IP addresses,
   user-agent strings, contact fields, moderation notes, abuse scores, and
   challenge tokens out of this payload.
+
+The checked-in sample at `fixtures/ingest/crowd-report.json` is valid against
+`IngestPayloadSchema` and can be pasted into the ingest workflow's manual
+`payload` input for an end-to-end dispatch trial.

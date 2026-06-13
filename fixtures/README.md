@@ -8,3 +8,6 @@ Fixture issue dates are relative to the current Singapore date when generated,
 which keeps the sample disruption and planned-work records recent while
 preserving stable IDs for the duration of a test run. Tests that need exact IDs
 or dates should read `fixtures/generated/meta.json`.
+
+Hand-authored ingest payload examples live under `fixtures/ingest`. They are
+not generated and should remain valid against `@mrtdown/ingest-contracts`.
