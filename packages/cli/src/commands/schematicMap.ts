@@ -1,5 +1,5 @@
 import { readdir, readFile } from 'node:fs/promises';
-import { join, relative, resolve } from 'node:path';
+import { join, posix, relative, resolve } from 'node:path';
 import {
   type SchematicMapConstraint,
   type SchematicMapConstraintSet,
@@ -230,12 +230,13 @@ const schematicMapMonthByName = new Map([
   ['Nov', '11'],
   ['Dec', '12'],
 ]);
-const schematicMapComponentDir = join(
+const schematicMapComponentDirParts = [
   'app',
   'components',
   'StationMap',
   'components',
-);
+];
+const schematicMapComponentDir = posix.join(...schematicMapComponentDirParts);
 
 function effectiveDateIdPart(effectiveDate: string): string {
   return effectiveDate.replace('-', '_');
@@ -471,7 +472,7 @@ async function buildSchematicMapReferenceInventory(
   dataDir: string,
   siteDir: string,
 ): Promise<SchematicMapReferenceInventory> {
-  const mapDir = join(siteDir, schematicMapComponentDir);
+  const mapDir = join(siteDir, ...schematicMapComponentDirParts);
   const [entries, codeMatcher] = await Promise.all([
     readdir(mapDir, { withFileTypes: true }),
     stationCodeLabelMatcher(dataDir),
