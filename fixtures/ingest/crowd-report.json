@@ -2,12 +2,12 @@
   "content": [
     {
       "source": "crowd-report",
-      "reportId": "accepted-20260523-0903-btl-001",
-      "text": "Several commuters report 15 minute delays on the BTL.",
+      "reportId": "accepted-20260523-0903-dtl-001",
+      "text": "Several commuters report 15 minute delays on the DTL.",
       "createdAt": "2026-05-23T09:04:00+08:00",
       "observedAt": "2026-05-23T09:03:00+08:00",
       "lineIds": [
-        "BTL"
+        "DTL"
       ],
       "stationIds": [
         "BCL"
@@ -16,7 +16,7 @@
       "effect": "delay",
       "delayMinutes": 15,
       "reportCount": 4,
-      "url": "https://example.com/crowd-reports/accepted-20260523-0903-btl-001"
+      "url": "https://example.com/crowd-reports/accepted-20260523-0903-dtl-001"
     }
   ]
 }
