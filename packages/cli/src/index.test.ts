@@ -567,6 +567,17 @@ describe('@mrtdown/cli', () => {
       },
     });
 
+    const missingSourceStats = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'schematic-map', 'stats', '2025-06'],
+        missingSourceStats.io,
+      ),
+    ).resolves.toBe(1);
+    expect(missingSourceStats.stderr).toEqual([
+      'No schematic map version snapshot or constraint set exists for 2025-06',
+    ]);
+
     const previewPath = join(dataDir, 'preview.svg');
     const preview = createIo();
     await expect(

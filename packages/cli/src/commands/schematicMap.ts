@@ -1361,6 +1361,17 @@ async function readOrGenerateSchematicMapVersionSnapshot(
     }
   }
 
+  try {
+    await readSchematicMapConstraintSet(dataDir, parsedEffectiveDate);
+  } catch (error) {
+    if (!isMissingFileError(error)) {
+      throw error;
+    }
+    throw new Error(
+      `No schematic map version snapshot or constraint set exists for ${parsedEffectiveDate}`,
+    );
+  }
+
   return generateSchematicMapVersionSnapshot(dataDir, {
     effectiveDate: parsedEffectiveDate,
     generatedAt: '1970-01-01T00:00:00.000Z',
