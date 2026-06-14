@@ -1341,6 +1341,32 @@ async function readOptionalSchematicMapManifest(
   }
 }
 
+function isMissingFileError(error: unknown): boolean {
+  return error instanceof Error && 'code' in error && error.code === 'ENOENT';
+}
+
+async function readOrGenerateSchematicMapVersionSnapshot(
+  dataDir: string,
+  effectiveDate: string,
+): Promise<SchematicMapVersionSnapshot> {
+  const parsedEffectiveDate =
+    SchematicMapEffectiveDateSchema.parse(effectiveDate);
+
+  try {
+    return (await readSchematicMapVersionSnapshot(dataDir, parsedEffectiveDate))
+      .value;
+  } catch (error) {
+    if (!isMissingFileError(error)) {
+      throw error;
+    }
+  }
+
+  return generateSchematicMapVersionSnapshot(dataDir, {
+    effectiveDate: parsedEffectiveDate,
+    generatedAt: '1970-01-01T00:00:00.000Z',
+  });
+}
+
 async function updateSchematicMapManifest(
   dataDir: string,
   snapshot: SchematicMapVersionSnapshot,
@@ -1555,17 +1581,15 @@ export async function runSchematicMap(
       throw new Error('schematic-map stats requires YYYY-MM');
     }
 
-    const effectiveDate = SchematicMapEffectiveDateSchema.parse(id);
     const [snapshot, constraintEffectiveDates] = await Promise.all([
-      readSchematicMapVersionSnapshot(globals.dataDir, effectiveDate),
+      readOrGenerateSchematicMapVersionSnapshot(globals.dataDir, id),
       listSchematicMapConstraintSetEffectiveDates(globals.dataDir),
     ]);
+    const effectiveDate = SchematicMapEffectiveDateSchema.parse(id);
     const constraintSet = constraintEffectiveDates.includes(effectiveDate)
       ? await readSchematicMapConstraintSet(globals.dataDir, effectiveDate)
       : undefined;
-    const coordinateClasses = countSchematicMapSnapshotCoordinates(
-      snapshot.value,
-    );
+    const coordinateClasses = countSchematicMapSnapshotCoordinates(snapshot);
     const constraintTypes = countConstraintTypes(
       constraintSet?.value.constraints ?? [],
     );
@@ -1603,19 +1627,13 @@ export async function runSchematicMap(
     }
 
     const [fromSnapshot, toSnapshot] = await Promise.all([
-      readSchematicMapVersionSnapshot(
-        globals.dataDir,
-        SchematicMapEffectiveDateSchema.parse(fromId),
-      ),
-      readSchematicMapVersionSnapshot(
-        globals.dataDir,
-        SchematicMapEffectiveDateSchema.parse(toId),
-      ),
+      readOrGenerateSchematicMapVersionSnapshot(globals.dataDir, fromId),
+      readOrGenerateSchematicMapVersionSnapshot(globals.dataDir, toId),
     ]);
 
     io.stdout(
       JSON.stringify(
-        diffSchematicMapSnapshots(fromSnapshot.value, toSnapshot.value),
+        diffSchematicMapSnapshots(fromSnapshot, toSnapshot),
         null,
         2,
       ),
@@ -1792,14 +1810,11 @@ export async function runSchematicMap(
     }
 
     const out = readOption(args, '--out');
-    const snapshot = await readSchematicMapVersionSnapshot(
+    const snapshot = await readOrGenerateSchematicMapVersionSnapshot(
       globals.dataDir,
-      SchematicMapEffectiveDateSchema.parse(id),
+      id,
     );
-    const svg = await renderSchematicMapPreviewSvg(
-      globals.dataDir,
-      snapshot.value,
-    );
+    const svg = await renderSchematicMapPreviewSvg(globals.dataDir, snapshot);
 
     if (out) {
       const outPath = resolve(globals.cwd, out);
