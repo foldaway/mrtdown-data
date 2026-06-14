@@ -1,5 +1,13 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.26
+
+### Patch Changes
+
+- 42acc62: Add station discovery metadata schemas and validate duplicate aliases.
+- Updated dependencies [42acc62]
+  - @mrtdown/core@2.0.0-alpha.26
+
 ## 2.0.0-alpha.25
 
 ### Patch Changes
