@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { cp, mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import { cp, mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -532,6 +532,201 @@ describe('@mrtdown/cli', () => {
         total: 0,
       },
     });
+  });
+
+  it('inventories reference schematic map TSX snapshots', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const fixtureStationPath = join(dataDir, 'station', 'KET.json');
+    const fixtureStation = JSON.parse(
+      await readFile(fixtureStationPath, 'utf8'),
+    );
+    fixtureStation.stationCodes.push(
+      {
+        lineId: 'CRL',
+        code: 'CR6',
+        startedAt: '2030-01-01T00:00:00Z',
+        endedAt: null,
+        structureType: 'underground',
+      },
+      {
+        lineId: 'CRL',
+        code: 'CP1',
+        startedAt: '2030-01-01T00:00:00Z',
+        endedAt: null,
+        structureType: 'underground',
+      },
+      {
+        lineId: 'EWL',
+        code: 'CG',
+        startedAt: '2030-01-01T00:00:00Z',
+        endedAt: null,
+        structureType: 'underground',
+      },
+      {
+        lineId: 'PGLRT',
+        code: 'PTC',
+        startedAt: '2030-01-01T00:00:00Z',
+        endedAt: null,
+        structureType: 'at_grade',
+      },
+      {
+        lineId: 'SKLRT',
+        code: 'STC',
+        startedAt: '2030-01-01T00:00:00Z',
+        endedAt: null,
+        structureType: 'at_grade',
+      },
+      {
+        lineId: 'NSL',
+        code: 'NS1',
+        startedAt: '2030-01-01T00:00:00Z',
+        endedAt: null,
+        structureType: 'underground',
+      },
+      {
+        lineId: 'EWL',
+        code: 'EW1',
+        startedAt: '2030-01-01T00:00:00Z',
+        endedAt: null,
+        structureType: 'underground',
+      },
+    );
+    await writeFile(
+      fixtureStationPath,
+      `${JSON.stringify(fixtureStation, null, 2)}\n`,
+    );
+
+    const siteDir = await mkdtemp(join(tmpdir(), 'mrtdown-site-'));
+    const mapDir = join(
+      siteDir,
+      'app',
+      'components',
+      'StationMap',
+      'components',
+    );
+    await mkdir(mapDir, { recursive: true });
+    await writeFile(
+      join(mapDir, 'MapApr2025.tsx'),
+      [
+        'export function MapApr2025() {',
+        '  return (',
+        '    <svg viewBox="0 0 3140 2400">',
+        '      <g id="System Map (2025)">',
+        '        <g id="lines">',
+        '          <g id="line_isl">',
+        '            <path id="line_ket:hku" d="M 0 0 L 10 10" />',
+        '            <path id="line_loop" d="M 10 10 A 20 20 0 1 1 30 30" />',
+        '          </g>',
+        '        </g>',
+        '        <g id="labels">',
+        '          <text id="label_ket">Kennedy Town</text>',
+        '          <text id="ISL 1">ISL1</text>',
+        '          <text id="CR 6">CR6</text>',
+        '          <text id="CP 1">CP1</text>',
+        '          <text id="CG">CG</text>',
+        '          <text id="PTC">PTC</text>',
+        '          <text id="STC">STC</text>',
+        '          <text id="NS">North South label</text>',
+        '          <text id="EW">East West label</text>',
+        '        </g>',
+        '        <g id="nodes">',
+        '          <circle id="node_hku" />',
+        '        </g>',
+        '      </g>',
+        '    </svg>',
+        '  );',
+        '}',
+        '',
+      ].join('\n'),
+    );
+    await writeFile(
+      join(mapDir, 'MapJan2012.tsx'),
+      [
+        'export function MapJan2012() {',
+        '  return <svg viewBox="0 0 3140 2400"><g id="System Map (2012)" /></svg>;',
+        '}',
+        '',
+      ].join('\n'),
+    );
+
+    const inventory = createIo();
+    await expect(
+      runCli(
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'inventory',
+          '--site-dir',
+          siteDir,
+        ],
+        inventory.io,
+      ),
+    ).resolves.toBe(0);
+    const parsed = JSON.parse(inventory.stdout[0] as string);
+    expect(parsed).toMatchObject({
+      generatedAt: '1970-01-01T00:00:00.000Z',
+      mapComponentDir: 'app/components/StationMap/components',
+      maps: [
+        {
+          effectiveDate: '2012-01',
+          componentName: 'MapJan2012',
+        },
+        {
+          effectiveDate: '2025-04',
+          componentName: 'MapApr2025',
+          sourcePath: 'app/components/StationMap/components/MapApr2025.tsx',
+          viewBox: '0 0 3140 2400',
+          rootGroupId: 'System Map (2025)',
+          lineCount: 28,
+          counts: {
+            lineGroups: 1,
+            lineSegments: 1,
+            stationLabels: 1,
+            stationNodes: 1,
+            stationCodes: 6,
+            stationIds: 2,
+            rawPathGeometry: 2,
+            textElementsWithIds: 9,
+          },
+          layerOrder: ['lines', 'labels', 'nodes'],
+          lineGroupIds: ['line_isl'],
+          lineSegmentIds: ['line_ket:hku'],
+          stationLabelIds: ['label_ket'],
+          stationNodeIds: ['node_hku'],
+          stationCodeIds: ['CG', 'CP 1', 'CR 6', 'ISL 1', 'PTC', 'STC'],
+          stationIds: ['HKU', 'KET'],
+          rawGeometryIds: ['line_ket:hku', 'line_loop'],
+        },
+      ],
+      firstTarget: {
+        effectiveDate: '2025-04',
+        componentName: 'MapApr2025',
+      },
+    });
+
+    const outPath = join(siteDir, 'inventory.json');
+    const write = createIo();
+    await expect(
+      runCli(
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'inventory',
+          '--site-dir',
+          siteDir,
+          '--write',
+          outPath,
+        ],
+        write.io,
+      ),
+    ).resolves.toBe(0);
+    expect(write.stdout).toEqual([outPath]);
+    await expect(readFile(outPath, 'utf8')).resolves.toContain(
+      '"componentName": "MapApr2025"',
+    );
   });
 
   it('reports semantic schematic map diffs for reviewers', async () => {
