@@ -51,9 +51,10 @@ function createIo() {
 
 async function seedSchematicMap(
   dataDir: string,
-  options: { writeConstraintSet?: boolean } = {},
+  options: { writeConstraintSet?: boolean; writeSnapshot?: boolean } = {},
 ): Promise<void> {
   const writeConstraintSet = options.writeConstraintSet ?? true;
+  const writeSnapshot = options.writeSnapshot ?? true;
   await writeSchematicMapRuleSet(dataDir, {
     schemaVersion: 1,
     mapId: 'system',
@@ -81,6 +82,10 @@ async function seedSchematicMap(
         },
       ],
     });
+  }
+
+  if (!writeSnapshot) {
+    return;
   }
 
   await writeSchematicMapVersionSnapshot(dataDir, {
@@ -530,6 +535,102 @@ describe('@mrtdown/cli', () => {
     expect(JSON.parse(stats.stdout[0] as string)).toMatchObject({
       constraints: {
         total: 0,
+      },
+    });
+  });
+
+  it('inspects schematic map generator inputs without committed snapshots', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-cli-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    await seedSchematicMap(dataDir, { writeSnapshot: false });
+
+    const validate = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'validate', '--scope', 'schematic-map'],
+        validate.io,
+      ),
+    ).resolves.toBe(0);
+    expect(JSON.parse(validate.stdout[0] as string)['schematic-map']).toBe(2);
+
+    const stats = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'schematic-map', 'stats', '2025-04'],
+        stats.io,
+      ),
+    ).resolves.toBe(0);
+    expect(JSON.parse(stats.stdout[0] as string)).toMatchObject({
+      effectiveDate: '2025-04',
+      constraints: {
+        total: 2,
+      },
+    });
+
+    const missingSourceStats = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'schematic-map', 'stats', '2025-06'],
+        missingSourceStats.io,
+      ),
+    ).resolves.toBe(1);
+    expect(missingSourceStats.stderr).toEqual([
+      'No schematic map version snapshot or constraint set exists for 2025-06',
+    ]);
+
+    const previewPath = join(dataDir, 'preview.svg');
+    const preview = createIo();
+    await expect(
+      runCli(
+        [
+          '--data-dir',
+          dataDir,
+          'schematic-map',
+          'preview',
+          '2025-04',
+          '--out',
+          previewPath,
+        ],
+        preview.io,
+      ),
+    ).resolves.toBe(0);
+    expect(preview.stdout).toEqual([previewPath]);
+    await expect(readFile(previewPath, 'utf8')).resolves.toContain(
+      'Kennedy Town',
+    );
+
+    await writeSchematicMapConstraintSet(dataDir, {
+      schemaVersion: 1,
+      mapId: 'system',
+      effectiveDate: '2025-05',
+      layoutEngineId: 'lta-system-map-2011',
+      constraints: [
+        {
+          id: 'frame_2025_05',
+          type: 'map_frame',
+          frame: { x: 0, y: 0, width: 3140, height: 2400 },
+        },
+        {
+          id: 'anchor_ket_2025_05',
+          type: 'station_anchor',
+          stationId: 'KET',
+          point: { x: 120, y: 120 },
+        },
+      ],
+    });
+
+    const diff = createIo();
+    await expect(
+      runCli(
+        ['--data-dir', dataDir, 'schematic-map', 'diff', '2025-04', '2025-05'],
+        diff.io,
+      ),
+    ).resolves.toBe(0);
+    expect(JSON.parse(diff.stdout[0] as string)).toMatchObject({
+      from: '2025-04',
+      to: '2025-05',
+      stations: {
+        moved: ['KET'],
       },
     });
   });
