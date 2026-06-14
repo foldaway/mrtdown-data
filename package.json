@@ -34,7 +34,7 @@
     "fixtures:validate": "npm run fixtures:generate && npm run build:cli && node packages/cli/dist/index.js --data-dir fixtures/generated/data validate",
     "pages:build": "npm run fixtures:generate && npm run build:fs && node scripts/build-pages-artifact.mjs",
     "changeset": "changeset",
-    "release:version": "changeset version",
+    "release:version": "changeset version && npm install --package-lock-only --ignore-scripts",
     "release:publish": "npm run build:packages && changeset publish",
     "pretest": "npm run fixtures:generate",
     "test": "vitest --run",
