@@ -215,16 +215,23 @@ export const StationLayoutSchema = z.object({
 });
 export type StationLayout = z.infer<typeof StationLayoutSchema>;
 
+export const StationAddressCountrySchema = z.enum(['HK', 'SG']);
+export type StationAddressCountry = z.infer<typeof StationAddressCountrySchema>;
+
 export const StationAddressSchema = z.object({
   streetAddress: z.string().optional(),
   postalCode: z.string().optional(),
   addressLocality: z.string().optional(),
-  addressCountry: z
-    .string()
-    .regex(/^[A-Z]{2}$/, 'Expected an ISO 3166-1 alpha-2 country code')
-    .optional(),
+  addressCountry: StationAddressCountrySchema.optional(),
 });
 export type StationAddress = z.infer<typeof StationAddressSchema>;
+
+export const StationAliasSchema = z
+  .string()
+  .refine((alias) => alias.trim().length > 0, {
+    message: 'Expected a non-empty alias after trimming',
+  });
+export type StationAlias = z.infer<typeof StationAliasSchema>;
 
 export const StationStructureTypeSchema = z.enum([
   'elevated',
@@ -253,7 +260,7 @@ export const StationSchema = z.object({
   landmarkIds: z.array(z.string()),
   townId: z.string(),
   address: StationAddressSchema.optional(),
-  aliases: z.array(z.string().min(1)).optional(),
+  aliases: z.array(StationAliasSchema).optional(),
   firstLastTrain: StationFirstLastTrainSchema.optional(),
   layout: StationLayoutSchema.optional(),
 });

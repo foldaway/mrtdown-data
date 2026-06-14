@@ -48,13 +48,14 @@ describe('StationSchema', () => {
     const result = StationSchema.safeParse({
       ...minimalStation(),
       address: {
-        addressCountry: 'Singapore',
+        addressCountry: 'ZZ',
       },
+      aliases: ['   '],
     });
 
     expect(result.success).toBe(false);
     expect(result.error?.issues.map((issue) => issue.path.join('.'))).toEqual(
-      expect.arrayContaining(['address.addressCountry']),
+      expect.arrayContaining(['address.addressCountry', 'aliases.0']),
     );
   });
 
