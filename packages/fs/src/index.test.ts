@@ -2828,6 +2828,38 @@ describe('@mrtdown/fs', () => {
         2,
       )}\n`,
     );
+    await writeFile(
+      join(dataDir, 'station/WAC.json'),
+      `${JSON.stringify(
+        {
+          id: 'WAC',
+          name: {
+            'en-SG': 'Wan Chai',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          geo: {
+            latitude: 22.2839,
+            longitude: 114.1354,
+          },
+          stationCodes: [
+            {
+              lineId: 'ISL',
+              code: 'ISL7',
+              startedAt: '1979-10-01T00:00:00Z',
+              endedAt: null,
+              structureType: 'underground',
+            },
+          ],
+          landmarkIds: [],
+          townId: 'central-western',
+          aliases: ['kennedy town mrt'],
+        },
+        null,
+        2,
+      )}\n`,
+    );
 
     const result = await validateDataRoot(dataDir, ['station']);
 
@@ -2836,6 +2868,7 @@ describe('@mrtdown/fs', () => {
       expect.arrayContaining([
         'station/KET.json: layout.levels.1 duplicates B2 (first seen at layout.levels.0)',
         'station/KET.json: aliases.1 duplicates kennedy town mrt (first seen at aliases.0)',
+        'station/WAC.json: aliases.0 duplicates kennedy town mrt from station/KET.json:aliases.0',
         'station/KET.json: layout.exits.label.1 duplicates a (first seen at layout.exits.label.0)',
         'station/KET.json: layout.platforms.1.accessPoints.0.id KET_AP_DUP duplicates another access point id in layout',
         'station/KET.json: layout.exits.0.levelId MISSING does not exist in layout.levels',

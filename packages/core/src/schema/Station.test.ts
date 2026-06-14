@@ -42,6 +42,14 @@ describe('StationSchema', () => {
         aliases: ['Tampines MRT', 'Tampines MRT Station', 'EW2', 'DT32'],
       }),
     ).not.toThrow();
+    expect(() =>
+      StationSchema.parse({
+        ...minimalStation(),
+        address: {
+          addressCountry: 'US',
+        },
+      }),
+    ).not.toThrow();
   });
 
   it('rejects invalid station discovery metadata', () => {

@@ -38,8 +38,7 @@ Related references:
   and useful landmark or road associations.
 - Record interchange and transfer paths between platforms or access points.
 - Add station-root discovery metadata that helps downstream consumers identify
-  and describe stations: addresses, aliases, external references, and reviewed
-  source identifiers.
+  and describe stations: addresses and aliases.
 - Keep the shape compatible with later GTFS `stops.txt`, `levels.txt`,
   `pathways.txt`, and `transfers.txt` generation.
 - Add deterministic validation for references and common authoring mistakes.
@@ -323,7 +322,6 @@ Add validation that catches:
   station;
 - duplicate exit ids and duplicate public exit labels within a station;
 - station address country values that are not valid ISO country codes;
-- malformed external URLs and unsupported external ref keys;
 - duplicate station aliases after case-insensitive normalization;
 - exit `levelId` values that do not exist in `layout.levels`;
 - exit `nearbyLandmarkIds` values that do not exist;
@@ -372,8 +370,7 @@ Exit criteria:
   - a same-platform or cross-platform interchange;
   - a complex interchange with multiple levels and access-point anchored
     transfer paths;
-  - a station with multiple exits, address metadata, aliases, and external
-    refs.
+  - a station with multiple exits, address metadata, and aliases.
 
 Exit criteria:
 

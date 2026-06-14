@@ -204,6 +204,7 @@ async function validateStationReferences(
   const townIds = await loadEntityIds(dataDir, records, 'town');
   const errors: string[] = [];
   const validationTimestamp = Date.now();
+  const seenStationAliases = new Map<string, { path: string; index: number }>();
 
   for (const station of await loadEntityRecords(dataDir, records, 'station')) {
     if (!townIds.has(station.value.townId)) {
@@ -237,6 +238,21 @@ async function validateStationReferences(
         normalizeStationAlias(alias),
       ]),
     );
+
+    for (const [index, alias] of (station.value.aliases ?? []).entries()) {
+      const normalizedAlias = normalizeStationAlias(alias);
+      const previous = seenStationAliases.get(normalizedAlias);
+      if (previous && previous.path !== station.path) {
+        errors.push(
+          `${station.path}: aliases.${index} duplicates ${normalizedAlias} from ${previous.path}:aliases.${previous.index}`,
+        );
+      } else if (!previous) {
+        seenStationAliases.set(normalizedAlias, {
+          path: station.path,
+          index,
+        });
+      }
+    }
 
     const layoutPlatformServiceIds = new Set<string>();
     const layout = station.value.layout;
