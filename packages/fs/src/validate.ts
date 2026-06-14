@@ -116,6 +116,10 @@ function validateDuplicateValue(
   }
 }
 
+function normalizeStationAlias(alias: string): string {
+  return alias.trim().replace(/\s+/g, ' ').toLowerCase();
+}
+
 async function loadEntityRecords<K extends EntityCollection>(
   dataDir: string,
   records: ValidationRecords,
@@ -200,6 +204,7 @@ async function validateStationReferences(
   const townIds = await loadEntityIds(dataDir, records, 'town');
   const errors: string[] = [];
   const validationTimestamp = Date.now();
+  const seenStationAliases = new Map<string, { path: string; index: number }>();
 
   for (const station of await loadEntityRecords(dataDir, records, 'station')) {
     if (!townIds.has(station.value.townId)) {
@@ -221,6 +226,31 @@ async function validateStationReferences(
         errors.push(
           `${station.path}: stationCodes.${index}.lineId ${stationCode.lineId} does not exist in line/`,
         );
+      }
+    }
+
+    validateDuplicateValue(
+      errors,
+      station.path,
+      'aliases',
+      (station.value.aliases ?? []).map((alias, index) => [
+        index,
+        normalizeStationAlias(alias),
+      ]),
+    );
+
+    for (const [index, alias] of (station.value.aliases ?? []).entries()) {
+      const normalizedAlias = normalizeStationAlias(alias);
+      const previous = seenStationAliases.get(normalizedAlias);
+      if (previous && previous.path !== station.path) {
+        errors.push(
+          `${station.path}: aliases.${index} duplicates ${normalizedAlias} from ${previous.path}:aliases.${previous.index}`,
+        );
+      } else if (!previous) {
+        seenStationAliases.set(normalizedAlias, {
+          path: station.path,
+          index,
+        });
       }
     }
 

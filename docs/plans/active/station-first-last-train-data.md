@@ -167,8 +167,9 @@ timing values.
 
 When official sources disagree or expose different levels of detail, prefer the
 source that directly represents the operator-published passenger timing table.
-Do not add reusable ingestion scripts for undocumented operator APIs unless a
-later plan explicitly accepts that maintenance risk.
+Keep the first implementation hand-reviewed from published passenger-facing
+sources. Add reusable import tooling only after a later plan defines a stable
+public source contract and its maintenance expectations.
 
 ## Seeded Data Notes
 

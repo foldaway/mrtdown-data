@@ -38,8 +38,7 @@ Related references:
   and useful landmark or road associations.
 - Record interchange and transfer paths between platforms or access points.
 - Add station-root discovery metadata that helps downstream consumers identify
-  and describe stations: addresses, aliases, external references, and reviewed
-  source identifiers.
+  and describe stations: addresses and aliases.
 - Keep the shape compatible with later GTFS `stops.txt`, `levels.txt`,
   `pathways.txt`, and `transfers.txt` generation.
 - Add deterministic validation for references and common authoring mistakes.
@@ -70,12 +69,7 @@ station root next to `geo`, `stationCodes`, `landmarkIds`, and `townId`.
     "addressLocality": "Singapore",
     "addressCountry": "SG"
   },
-  "aliases": ["Tampines MRT", "Tampines MRT Station", "EW2", "DT32"],
-  "externalRefs": {
-    "officialUrl": "https://...",
-    "oneMapSearchValue": "TAMPINES MRT STATION",
-    "wikidataId": "Q..."
-  }
+  "aliases": ["Tampines MRT", "Tampines MRT Station", "EW2", "DT32"]
 }
 ```
 
@@ -86,16 +80,11 @@ Initial fields:
   reliable source coverage may vary.
 - `aliases`: reviewed alternate names, search variants, station-code phrases,
   and common public names that should not be inferred from templates alone.
-- `externalRefs`: stable external identifiers and URLs for entity
-  disambiguation. Candidate refs include official LTA pages, OneMap search
-  values or ids, Wikidata ids, and Wikipedia URLs where reliable.
 
 Rules:
 
 - Do not duplicate generated aliases that every consumer can safely derive,
   unless the phrase is a real public search form worth preserving.
-- Keep external refs factual and stable. Do not store crawler-only links,
-  campaign links, or transient map-search URLs.
 - Use `address.addressCountry = "SG"` for Singapore station addresses.
 - Preserve `geo` as the authoritative station point; exit-specific coordinates
   belong in `layout.exits`.
@@ -333,7 +322,6 @@ Add validation that catches:
   station;
 - duplicate exit ids and duplicate public exit labels within a station;
 - station address country values that are not valid ISO country codes;
-- malformed external URLs and unsupported external ref keys;
 - duplicate station aliases after case-insensitive normalization;
 - exit `levelId` values that do not exist in `layout.levels`;
 - exit `nearbyLandmarkIds` values that do not exist;
@@ -353,7 +341,7 @@ Add validation that catches:
 ### Phase 1: Schema
 
 - Add layout schemas to `packages/core/src/schema/Station.ts`.
-- Add station-root schemas for `address`, `aliases`, and `externalRefs`.
+- Add station-root schemas for `address` and `aliases`.
 - Keep all new station fields optional to avoid a full-network migration.
 - Export inferred TypeScript types from the core package.
 
@@ -361,14 +349,13 @@ Exit criteria:
 
 - Existing station JSON validates unchanged.
 - New fixture station records can exercise levels, platforms, access points,
-  exits, transfer paths, address metadata, aliases, and external refs.
+  exits, transfer paths, address metadata, and aliases.
 
 ### Phase 2: Repository Validation
 
 - Add layout reference validation in `packages/fs/src/validate.ts`.
 - Add tests for missing references, duplicate ids, duplicate aliases,
-  unsupported external refs, malformed URLs, service-line mismatches, and
-  numeric door bounds.
+  service-line mismatches, and numeric door bounds.
 - Keep validation deterministic and offline.
 
 Exit criteria:
@@ -383,8 +370,7 @@ Exit criteria:
   - a same-platform or cross-platform interchange;
   - a complex interchange with multiple levels and access-point anchored
     transfer paths;
-  - a station with multiple exits, address metadata, aliases, and external
-    refs.
+  - a station with multiple exits, address metadata, and aliases.
 
 Exit criteria:
 
@@ -400,7 +386,7 @@ Exit criteria:
   lines, multiple platform levels, door-anchored access points, and multiple
   transfer path classifications.
 - Include reviewed station-root discovery metadata in the first station PR
-  where reliable: address, aliases, and external refs.
+  where reliable: address and aliases.
 - Include public exits for the first station if reviewed exit labels and
   coordinates are available.
 - Keep the first data PR small enough for manual review.
