@@ -1,6 +1,6 @@
 {
   "name": "@mrtdown/ingest-contracts",
-  "version": "2.0.0-alpha.27",
+  "version": "2.0.0-alpha.28",
   "description": "Shared ingest payload schemas for MRTDown evidence ingestion",
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
   "bugs": {
