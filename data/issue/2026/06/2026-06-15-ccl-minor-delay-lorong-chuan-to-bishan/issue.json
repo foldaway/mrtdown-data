@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-15-ccl-minor-delay-lorong-chuan-to-bishan",
+  "type": "disruption",
+  "title": {
+    "en-SG": "CCL Minor Delay - Lorong Chuan to Bishan (both directions)",
+    "zh-Hans": "CCL 小幅延误 - Lorong Chuan 至 Bishan（双向）",
+    "ms": "Kelewatan Kecil CCL - Lorong Chuan ke Bishan (kedua-dua arah)",
+    "ta": "CCL சிறிய தாம்தம் - Lorong Chuan இருந்து Bishan வரை (இரு திசைகளும்)"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5-nano"
+  }
+}
