@@ -44,7 +44,8 @@ Model dependency:
 
 - `extractClaimsFromNewEvidence` uses `gpt-5-mini`.
 - `triageNewEvidence` uses `gpt-5-mini`.
-- title/slug generation and translation use `gpt-5-nano`.
+- title/slug generation uses `gpt-5-nano`.
+- translation uses `gpt-5.4-nano`.
 
 Expected cost before running the checked-in eval set: less than USD 1 with the
 current short fixtures. Revisit this estimate in the same PR when adding or

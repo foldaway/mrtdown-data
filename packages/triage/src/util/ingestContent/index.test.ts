@@ -132,6 +132,9 @@ describe('ingestContent', () => {
       title: {
         'en-SG': 'Downtown Line delay near Beauty World',
       },
+      titleMeta: {
+        source: '@openai/gpt-5.4-nano',
+      },
     });
     expect(bundle.evidence).toHaveLength(1);
     expect(bundle.evidence[0]).toMatchObject({
@@ -149,6 +152,9 @@ describe('ingestContent', () => {
         'Delay minutes: 15',
         'Report count: 4',
       ].join('\n\n'),
+      render: {
+        source: '@openai/gpt-5.4-nano',
+      },
     });
     expect(bundle.impactEvents).toEqual(
       expect.arrayContaining([

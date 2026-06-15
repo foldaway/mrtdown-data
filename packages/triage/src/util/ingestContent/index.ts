@@ -12,6 +12,7 @@ import { computeImpactFromEvidenceClaims } from '../../helpers/computeImpactFrom
 import { extractClaimsFromNewEvidence } from '../../llm/functions/extractClaimsFromNewEvidence/index.js';
 import { generateIssueTitleAndSlug } from '../../llm/functions/generateIssueTitleAndSlug/index.js';
 import { translate } from '../../llm/functions/translate/index.js';
+import { TRANSLATE_MODEL_SOURCE } from '../../llm/functions/translate/model.js';
 import { triageNewEvidence } from '../../llm/functions/triageNewEvidence/index.js';
 import { assert } from '../assert.js';
 import { formatContentTextForIngest } from './helpers/formatContentTextForIngest.js';
@@ -167,7 +168,7 @@ export async function ingestContent(
         type: triageResult.result.issueType,
         title: translatedTitles,
         titleMeta: {
-          source: '@openai/gpt-5-nano',
+          source: TRANSLATE_MODEL_SOURCE,
         },
       };
 
@@ -206,7 +207,7 @@ export async function ingestContent(
     sourceUrl: evidenceProvenance.sourceUrl,
     render: {
       text: translatedEvidenceText,
-      source: '@openai/gpt-5-nano',
+      source: TRANSLATE_MODEL_SOURCE,
     },
   };
 

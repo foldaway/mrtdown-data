@@ -7,9 +7,10 @@ import {
 import { assert } from '../../../util/assert.js';
 import { getOpenAiClient } from '../../client.js';
 import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
+import { TRANSLATE_MODEL } from './model.js';
 
 export async function translate(text: string) {
-  const model = 'gpt-5-nano';
+  const model = TRANSLATE_MODEL;
 
   const context: ResponseInputItem[] = [{ role: 'user', content: text }];
 
@@ -24,7 +25,9 @@ export async function translate(text: string) {
 - Tamil
 
 These translations relate to transit disruption/maintenance/infrastructure issues and can contain names of lines and/or stations.
-Keep the names in English as much as possible, do not provide any translations for them.
+Line names, station names, service IDs, station codes, operator names, road names, and bus stop IDs are proper nouns.
+Copy those proper nouns exactly as written in the source text into every locale.
+Do not translate, transliterate, localize, shorten, or abbreviate those proper nouns.
 `.trim(),
     text: {
       format: {
@@ -35,7 +38,7 @@ Keep the names in English as much as possible, do not provide any translations f
       },
     },
     reasoning: {
-      effort: 'minimal',
+      effort: 'low',
       summary: 'concise',
     },
     store: false,
@@ -63,7 +66,8 @@ Keep the names in English as much as possible, do not provide any translations f
     console.log('[translate] Usage is unavailable');
   }
 
-  assert(response.output_parsed != null, 'Response output parsed is null');
+  const parsed = response.output_parsed;
+  assert(parsed != null, 'Response output parsed is null');
 
-  return response.output_parsed;
+  return parsed;
 }
