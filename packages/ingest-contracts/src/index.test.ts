@@ -104,7 +104,7 @@ describe('IngestPayloadSchema', () => {
     ).toThrow();
   });
 
-  test('accepts crowd reports with optional cluster fields', () => {
+  test('accepts crowd reports with cluster fields', () => {
     expect(() =>
       IngestPayloadSchema.parse({
         content: [
@@ -141,6 +141,25 @@ describe('IngestPayloadSchema', () => {
             text: 'Several commuters report delays.',
             createdAt: '2026-05-23T09:04:00+08:00',
             observedAt: '2026-05-23T09:03:00+08:00',
+            reportCount: 1,
+            url: 'https://example.com/crowd-reports/accepted-20260523-0903-dtl-001',
+          },
+        ],
+      }),
+    ).toThrow();
+  });
+
+  test('rejects crowd reports without a report count', () => {
+    expect(() =>
+      IngestPayloadSchema.parse({
+        content: [
+          {
+            source: 'crowd-report',
+            reportId: 'accepted-20260523-0903-dtl-001',
+            text: 'Several commuters report delays.',
+            createdAt: '2026-05-23T09:04:00+08:00',
+            observedAt: '2026-05-23T09:03:00+08:00',
+            lineIds: ['DTL'],
             url: 'https://example.com/crowd-reports/accepted-20260523-0903-dtl-001',
           },
         ],
@@ -159,6 +178,7 @@ describe('IngestPayloadSchema', () => {
             createdAt: '2026-05-23T09:04:00+08:00',
             observedAt: '2026-05-23T09:03:00+08:00',
             lineIds: ['DTL'],
+            reportCount: 1,
             url: 'https://example.com/crowd-reports/accepted-20260523-0903-dtl-001',
             submitterEmail: 'commuter@example.com',
           },

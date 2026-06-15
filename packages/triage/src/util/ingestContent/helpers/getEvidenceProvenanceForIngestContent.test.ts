@@ -11,6 +11,7 @@ describe('getEvidenceProvenanceForIngestContent', () => {
         createdAt: '2026-05-23T09:04:00+08:00',
         observedAt: '2026-05-23T09:03:00+08:00',
         lineIds: ['DTL'],
+        reportCount: 1,
         url: 'https://example.com/crowd-reports/accepted-20260523-0903-dtl-001',
       }),
     ).toEqual({

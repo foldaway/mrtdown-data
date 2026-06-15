@@ -113,7 +113,7 @@ Candidate content shape:
   directionText?: string,
   effect?: 'delay' | 'no-service' | 'crowding' | 'skipped-stop' | 'unknown',
   delayMinutes?: number,
-  reportCount?: number,
+  reportCount: number,
   url: string
 }
 ```
@@ -127,6 +127,8 @@ Contract rules:
 - `text` is the natural-language evidence passed to triage.
 - `lineIds` and `stationIds` may contain one or more affected entities. At
   least one line or station should be present.
+- `reportCount` is required; use `1` for a single accepted report and a larger
+  count for an accepted cluster.
 - `url` is required because canonical evidence stores a `sourceUrl`. Use a
   stable, non-PII public report URL or moderation URL that is safe to publish in
   canonical evidence.
@@ -184,10 +186,13 @@ Exit criteria:
 
 ### Phase 4: Confidence And Replay Support
 
-- Decide whether `reportCount` or cluster metadata should be stored only in
-  evidence text or represented as contract fields.
-- Add eval fixtures only if the current prompt cannot reliably distinguish
-  irrelevant reports, existing issues, and new issues.
+- Keep `reportCount` as a required contract field and render it into canonical
+  evidence text. Use `1` for a single accepted report, and do not add a separate
+  canonical confidence field for crowd reports unless review discovers a
+  consumer that needs structured confidence.
+- Add eval fixtures only if deterministic tests or manual replay show that the
+  current prompt cannot reliably distinguish irrelevant reports, existing
+  issues, and new issues.
 - Update `packages/triage/README.md` cost expectations when expanding evals.
 
 Exit criteria:
@@ -205,6 +210,9 @@ Exit criteria:
 - 2026-06-13: Added deterministic `ingestContent` coverage proving the checked-in
   crowd-report fixture can create canonical `report.public` evidence and impact
   events without a special persistence path.
+- 2026-06-15: Documented single-report and cluster handling in
+  `packages/triage/README.md`; `reportCount` is a required contract field
+  rendered into evidence text, not a separate canonical confidence field.
 
 ## Decision Log
 
@@ -212,6 +220,10 @@ Exit criteria:
   only accepted reports enter this repo as canonical public evidence.
 - 2026-05-24: Use the existing ingest contract and triage package instead of
   adding a separate crowd-report writer to canonical data.
+- 2026-06-15: Store crowd-report confidence and clustering context in evidence
+  text using the accepted payload fields (`reportCount`, `effect`,
+  `delayMinutes`, and `text`) rather than adding new canonical issue or evidence
+  state.
 
 ## Validation
 

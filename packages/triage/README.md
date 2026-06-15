@@ -12,6 +12,25 @@ npm run build:triage
 npm run test:triage
 ```
 
+## Crowd Reports
+
+Crowd reports enter triage through the shared
+`@mrtdown/ingest-contracts` `crowd-report` content type. The site or another
+producer must moderate reports before dispatching them here; this package does
+not store submitter identity, abuse signals, queue state, or moderation notes.
+
+Triage formats accepted reports into structured evidence text, maps them to
+canonical `report.public` evidence, and stores the payload `url` as
+`sourceUrl`. Single reports and accepted clusters use the same path. Producers
+must set `reportCount` to `1` for a single accepted report, or to the accepted
+cluster size for clustered reports. Confidence stays in the evidence text
+through `reportCount`, `effect`, `delayMinutes`, and the producer-supplied
+natural-language `text`; there is no separate canonical confidence field for
+crowd reports.
+
+Use `fixtures/ingest/crowd-report.json` as the lightweight manual fixture for
+`workflow_dispatch` or local `MESSAGE` testing.
+
 ## Paid Eval
 
 `test:eval` is reserved for model-dependent triage evaluation. It must not run
