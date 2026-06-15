@@ -82,7 +82,7 @@ export const IngestContentCrowdReportSchema = z
     directionText: z.string().optional(),
     effect: IngestContentCrowdReportEffectSchema.optional(),
     delayMinutes: z.number().int().nonnegative().optional(),
-    reportCount: z.number().int().positive().optional(),
+    reportCount: z.number().int().positive(),
     url: z.string().min(1),
   })
   .strict()

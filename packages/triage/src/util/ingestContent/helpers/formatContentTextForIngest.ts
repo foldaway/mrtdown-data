@@ -31,10 +31,7 @@ export function formatContentTextForIngest(content: IngestContent): string {
             ? undefined
             : String(content.delayMinutes),
         ],
-        [
-          'Report count',
-          content.reportCount == null ? undefined : String(content.reportCount),
-        ],
+        ['Report count', String(content.reportCount)],
       ]);
     }
     case 'twitter':

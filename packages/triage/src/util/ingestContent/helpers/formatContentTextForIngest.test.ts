@@ -97,4 +97,31 @@ describe('formatContentTextForIngest', () => {
       ].join('\n\n'),
     );
   });
+
+  test('formats single crowd reports with report count one', () => {
+    expect(
+      formatContentTextForIngest({
+        source: 'crowd-report',
+        reportId: 'accepted-20260523-0910-ewl-001',
+        text: 'Train held at Outram Park for several minutes.',
+        createdAt: '2026-05-23T09:11:00+08:00',
+        observedAt: '2026-05-23T09:10:00+08:00',
+        lineIds: ['EWL'],
+        stationIds: ['OTP'],
+        effect: 'unknown',
+        reportCount: 1,
+        url: 'https://example.com/crowd-reports/accepted-20260523-0910-ewl-001',
+      }),
+    ).toBe(
+      [
+        'Report: Train held at Outram Park for several minutes.',
+        'Observed at: 2026-05-23T09:10:00+08:00',
+        'Accepted at: 2026-05-23T09:11:00+08:00',
+        'Lines: EWL',
+        'Stations: OTP',
+        'Effect: unknown',
+        'Report count: 1',
+      ].join('\n\n'),
+    );
+  });
 });

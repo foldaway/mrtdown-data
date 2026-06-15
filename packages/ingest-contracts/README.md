@@ -78,6 +78,8 @@ Contract rules:
 - `observedAt` is when the condition was observed.
 - `text` is the natural-language evidence passed to triage.
 - At least one `lineIds` or `stationIds` entry is required.
+- `reportCount` is required; use `1` for a single accepted report and a larger
+  count for an accepted cluster.
 - `url` is required because canonical evidence stores a public `sourceUrl`.
 - Site-local metadata is rejected. Keep submitter identities, IP addresses,
   user-agent strings, contact fields, moderation notes, abuse scores, and
