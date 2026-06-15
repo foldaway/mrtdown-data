@@ -2,6 +2,7 @@ import type { ResponseInputItem } from 'openai/resources/responses/responses.mjs
 import { z } from 'zod';
 import { assert } from '../../../util/assert.js';
 import { getOpenAiClient } from '../../client.js';
+import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
 import { buildSystemPrompt } from './prompt.js';
 
 export const ResponseSchema = z.object({
@@ -46,7 +47,7 @@ Text: ${params.text}
         type: 'json_schema',
         name: 'Response',
         strict: true,
-        schema: z.toJSONSchema(ResponseSchema),
+        schema: toOpenAiJsonSchema(ResponseSchema),
       },
     },
   });

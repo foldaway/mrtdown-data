@@ -36,12 +36,12 @@ function createWriter(dataDir: string): MRTDownWriter {
 async function runLlmStep<T>(
   label: string,
   operation: () => Promise<T>,
-): Promise<T | null> {
+): Promise<T> {
   try {
     return await operation();
   } catch (error) {
     console.error(`[ingestContent] ${label} failed:`, error);
-    return null;
+    throw error;
   }
 }
 

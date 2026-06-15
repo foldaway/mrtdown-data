@@ -1,12 +1,12 @@
 import { TranslationsSchema } from '@mrtdown/core';
 import type { ResponseInputItem } from 'openai/resources/responses/responses.js';
-import { z } from 'zod';
 import {
   estimateOpenAICostFromUsage,
   normalizeOpenAIResponsesUsage,
 } from '../../../helpers/estimateOpenAICost.js';
 import { assert } from '../../../util/assert.js';
 import { getOpenAiClient } from '../../client.js';
+import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
 
 export async function translate(text: string) {
   const model = 'gpt-5-nano';
@@ -31,7 +31,7 @@ Keep the names in English as much as possible, do not provide any translations f
         type: 'json_schema',
         name: 'Translation',
         strict: true,
-        schema: z.toJSONSchema(TranslationsSchema),
+        schema: toOpenAiJsonSchema(TranslationsSchema),
       },
     },
     reasoning: {

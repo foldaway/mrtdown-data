@@ -8,6 +8,7 @@ import type {
 import z from 'zod';
 import { assert } from '../../../util/assert.js';
 import { getOpenAiClient } from '../../client.js';
+import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
 import type { ToolRegistry } from '../../common/tool.js';
 import { buildSystemPrompt } from './prompt.js';
 import { FindIssuesByDateRangeTool } from './tools/FindIssuesByDateRangeTool.js';
@@ -82,7 +83,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
           type: 'json_schema',
           name: 'Response',
           strict: true,
-          schema: z.toJSONSchema(ResponseSchema),
+          schema: toOpenAiJsonSchema(ResponseSchema),
         },
       },
       tools: Object.values(toolRegistry).map((tool) => {

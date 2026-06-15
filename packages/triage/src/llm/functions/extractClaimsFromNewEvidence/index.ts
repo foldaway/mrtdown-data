@@ -12,6 +12,7 @@ import {
 } from '../../../helpers/estimateOpenAICost.js';
 import { assert } from '../../../util/assert.js';
 import { getOpenAiClient } from '../../client.js';
+import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
 import type { ToolRegistry } from '../../common/tool.js';
 import { normalizeClaimsForEvidence } from './normalizeClaimsForEvidence.js';
 import { buildSystemPrompt } from './prompt.js';
@@ -90,7 +91,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
           type: 'json_schema',
           name: 'Response',
           strict: true,
-          schema: z.toJSONSchema(ResponseSchema),
+          schema: toOpenAiJsonSchema(ResponseSchema),
         },
       },
       tools: Object.values(toolRegistry).map((tool) => {
