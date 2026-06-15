@@ -1,5 +1,12 @@
 # @mrtdown/ingest-contracts
 
+## 2.0.0-alpha.28
+
+### Major Changes
+
+- 2e271e4: Require crowd-report payloads to include `reportCount` so single accepted
+  reports and accepted report clusters share a consistent contract shape.
+
 ## 2.0.0-alpha.27
 
 ### Minor Changes
