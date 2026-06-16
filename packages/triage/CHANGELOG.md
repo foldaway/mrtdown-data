@@ -1,5 +1,12 @@
 # @mrtdown/triage
 
+## 2.0.0-alpha.32
+
+### Patch Changes
+
+- Updated dependencies [cd9c01e]
+  - @mrtdown/ingest-contracts@2.0.0-alpha.29
+
 ## 2.0.0-alpha.31
 
 ### Patch Changes
