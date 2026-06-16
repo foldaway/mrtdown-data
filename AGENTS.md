@@ -90,7 +90,8 @@ the repository shape.
 - If documentation and code disagree, fix the documentation or narrow the PR
   before adding more implementation.
 - Use Conventional Commits style for commit messages and PR titles, for example
-  `feat: add Pages artifact publishing foundation`.
+  `feat: add Pages artifact publishing foundation`. Do not add tool or agent
+  prefixes such as `[codex]` to PR titles.
 - Do not merge temporary branch names, one-off deploy triggers, or local
   generated artifacts.
 
