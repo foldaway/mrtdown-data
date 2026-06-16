@@ -1,5 +1,9 @@
 # Crowdsourced Reports Canonical Ingest Plan
 
+Status: completed. The shared ingest contract, triage formatting, canonical
+`report.public` evidence mapping, checked-in manual fixture, workflow path, and
+deterministic validation coverage are in place.
+
 ## Context
 
 `mrtdown-data` is the canonical reviewed data repository. It owns target-layout
@@ -218,6 +222,10 @@ Exit criteria:
 - 2026-06-16: Hardened the crowd-report contract to require offset-bearing ISO
   datetimes, reject reports observed after producer acceptance, and require
   HTTP(S) source URLs.
+- 2026-06-17: Verified the completed canonical ingest path with
+  `npm run build:ingest-contracts`, `npm run test:ingest-contracts`,
+  `npm run build:triage`, `npm run test:triage`, `npm run data:validate`, and
+  `npm run check`.
 
 ## Decision Log
 
