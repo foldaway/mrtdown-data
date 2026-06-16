@@ -6,8 +6,6 @@ plan.
 
 ## Active
 
-- [Crowdsourced reports canonical ingest](active/crowdsourced-reports.md):
-  public report payload contract and canonical evidence ingestion plan.
 - [GTFS static and realtime support](active/gtfs-static-realtime.md):
   deterministic GTFS Static export, Pages publication, and GTFS Realtime
   evidence ingest boundaries.
@@ -20,6 +18,8 @@ plan.
 
 ## Completed
 
+- [Crowdsourced reports canonical ingest](completed/crowdsourced-reports.md):
+  public report payload contract and canonical evidence ingestion path.
 - [Data overhaul split](completed/data-overhaul-split.md): historical split
   sequence for the package/data repository migration.
 - [Ingest contracts package](completed/ingest-contracts-package.md): shared
