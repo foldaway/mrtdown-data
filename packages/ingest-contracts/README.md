@@ -73,14 +73,16 @@ the crowd-report source and effect values.
 Contract rules:
 
 - `reportId` must be stable and non-PII.
-- `createdAt` is when the producer accepted the report or cluster for
-  dispatch.
-- `observedAt` is when the condition was observed.
+- `createdAt` is an ISO 8601 datetime with timezone offset for when the
+  producer accepted the report or cluster for dispatch.
+- `observedAt` is an ISO 8601 datetime with timezone offset for when the
+  condition was observed. It must not be later than `createdAt`.
 - `text` is the natural-language evidence passed to triage.
 - At least one `lineIds` or `stationIds` entry is required.
 - `reportCount` is required; use `1` for a single accepted report and a larger
   count for an accepted cluster.
 - `url` is required because canonical evidence stores a public `sourceUrl`.
+  It must be an HTTP(S) URL.
 - Site-local metadata is rejected. Keep submitter identities, IP addresses,
   user-agent strings, contact fields, moderation notes, abuse scores, and
   challenge tokens out of this payload.

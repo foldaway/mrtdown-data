@@ -122,16 +122,18 @@ Contract rules:
 
 - `reportId` must be stable and non-PII. Site-local database IDs are acceptable
   if they cannot reveal user identity.
-- `createdAt` is when the site accepted the report or cluster for dispatch.
-- `observedAt` is when the reporter observed the condition.
+- `createdAt` is an ISO 8601 datetime with timezone offset for when the site
+  accepted the report or cluster for dispatch.
+- `observedAt` is an ISO 8601 datetime with timezone offset for when the
+  reporter observed the condition. It must not be later than `createdAt`.
 - `text` is the natural-language evidence passed to triage.
 - `lineIds` and `stationIds` may contain one or more affected entities. At
   least one line or station should be present.
 - `reportCount` is required; use `1` for a single accepted report and a larger
   count for an accepted cluster.
 - `url` is required because canonical evidence stores a `sourceUrl`. Use a
-  stable, non-PII public report URL or moderation URL that is safe to publish in
-  canonical evidence.
+  stable, non-PII HTTP(S) public report URL or moderation URL that is safe to
+  publish in canonical evidence.
 - Personal details, IP addresses, user-agent strings, contact fields,
   moderation notes, abuse scores, and Turnstile tokens must remain site-local.
 
@@ -213,6 +215,9 @@ Exit criteria:
 - 2026-06-15: Documented single-report and cluster handling in
   `packages/triage/README.md`; `reportCount` is a required contract field
   rendered into evidence text, not a separate canonical confidence field.
+- 2026-06-16: Hardened the crowd-report contract to require offset-bearing ISO
+  datetimes, reject reports observed after producer acceptance, and require
+  HTTP(S) source URLs.
 
 ## Decision Log
 

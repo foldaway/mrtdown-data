@@ -70,20 +70,32 @@ export type IngestContentCrowdReportEffect = z.infer<
   typeof IngestContentCrowdReportEffectSchema
 >;
 
+const IngestContentCrowdReportTimestampSchema = z.iso.datetime({
+  offset: true,
+});
+
+const IngestContentCrowdReportUrlSchema = z.url().refine(
+  (value) => {
+    const { protocol } = new URL(value);
+    return protocol === 'http:' || protocol === 'https:';
+  },
+  { message: 'Expected an HTTP(S) URL' },
+);
+
 export const IngestContentCrowdReportSchema = z
   .object({
     source: z.literal(IngestContentCrowdReportSource),
     reportId: z.string().min(1),
     text: z.string().min(1),
-    createdAt: z.string(),
-    observedAt: z.string(),
+    createdAt: IngestContentCrowdReportTimestampSchema,
+    observedAt: IngestContentCrowdReportTimestampSchema,
     lineIds: z.array(z.string().min(1)).optional(),
     stationIds: z.array(z.string().min(1)).optional(),
     directionText: z.string().optional(),
     effect: IngestContentCrowdReportEffectSchema.optional(),
     delayMinutes: z.number().int().nonnegative().optional(),
     reportCount: z.number().int().positive(),
-    url: z.string().min(1),
+    url: IngestContentCrowdReportUrlSchema,
   })
   .strict()
   .refine(
@@ -93,6 +105,14 @@ export const IngestContentCrowdReportSchema = z
     {
       message: 'Expected at least one lineIds or stationIds entry',
       path: ['lineIds'],
+    },
+  )
+  .refine(
+    (content) =>
+      Date.parse(content.observedAt) <= Date.parse(content.createdAt),
+    {
+      message: 'Expected observedAt to be before or equal to createdAt',
+      path: ['observedAt'],
     },
   );
 
