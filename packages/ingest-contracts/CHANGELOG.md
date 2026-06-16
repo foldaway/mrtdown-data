@@ -1,5 +1,12 @@
 # @mrtdown/ingest-contracts
 
+## 2.0.0-alpha.29
+
+### Major Changes
+
+- cd9c01e: Require crowd-report timestamps to include timezone offsets, reject reports
+  observed after producer acceptance, and require HTTP(S) source URLs.
+
 ## 2.0.0-alpha.28
 
 ### Major Changes

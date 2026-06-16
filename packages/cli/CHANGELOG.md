@@ -1,5 +1,11 @@
 # @mrtdown/cli
 
+## 2.0.0-alpha.28
+
+### Patch Changes
+
+- @mrtdown/triage@2.0.0-alpha.32
+
 ## 2.0.0-alpha.27
 
 ### Patch Changes
