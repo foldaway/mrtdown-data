@@ -76,8 +76,12 @@ const IngestContentCrowdReportTimestampSchema = z.iso.datetime({
 
 const IngestContentCrowdReportUrlSchema = z.url().refine(
   (value) => {
-    const { protocol } = new URL(value);
-    return protocol === 'http:' || protocol === 'https:';
+    try {
+      const { protocol } = new URL(value);
+      return protocol === 'http:' || protocol === 'https:';
+    } catch {
+      return false;
+    }
   },
   { message: 'Expected an HTTP(S) URL' },
 );

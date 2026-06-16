@@ -224,6 +224,41 @@ describe('IngestPayloadSchema', () => {
     ).toThrow();
   });
 
+  test('returns validation failure for malformed crowd report URLs', () => {
+    expect(() =>
+      IngestPayloadSchema.safeParse({
+        content: [
+          {
+            source: 'crowd-report',
+            reportId: 'accepted-20260523-0903-dtl-001',
+            text: 'Several commuters report delays.',
+            createdAt: '2026-05-23T09:04:00+08:00',
+            observedAt: '2026-05-23T09:03:00+08:00',
+            lineIds: ['DTL'],
+            reportCount: 1,
+            url: 'not a url',
+          },
+        ],
+      }),
+    ).not.toThrow();
+    expect(
+      IngestPayloadSchema.safeParse({
+        content: [
+          {
+            source: 'crowd-report',
+            reportId: 'accepted-20260523-0903-dtl-001',
+            text: 'Several commuters report delays.',
+            createdAt: '2026-05-23T09:04:00+08:00',
+            observedAt: '2026-05-23T09:03:00+08:00',
+            lineIds: ['DTL'],
+            reportCount: 1,
+            url: 'not a url',
+          },
+        ],
+      }).success,
+    ).toBe(false);
+  });
+
   test('rejects site-local crowd report metadata', () => {
     expect(() =>
       IngestPayloadSchema.parse({
