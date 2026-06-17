@@ -3,7 +3,11 @@ import { resolve } from 'node:path';
 import { FileStore, MRTDownRepository } from '@mrtdown/fs';
 import { config as loadDotEnv } from 'dotenv';
 import { describe } from 'vitest';
-import { describeEval, StructuredOutputScorer } from 'vitest-evals';
+import {
+  createHarness,
+  describeEval,
+  StructuredOutputJudge,
+} from 'vitest-evals';
 import { assert } from '../../../util/assert.js';
 import {
   type ExtractClaimsFromNewEvidenceParams,
@@ -42,16 +46,37 @@ const hkFixtureTimeZone = ((actual: unknown) =>
   actual === 'Asia/Hong_Kong' ||
   actual === 'Asia/Singapore') as unknown as 'Asia/Hong_Kong';
 
+const extractClaimsHarness = createHarness<
+  ExtractClaimsFromNewEvidenceParams,
+  string,
+  { expected: ExtractClaimsFromNewEvidenceResult }
+>({
+  name: 'extractClaimsFromNewEvidence',
+  async run({ input }) {
+    const result = await extractClaimsFromNewEvidence(input);
+    return { output: JSON.stringify(result) };
+  },
+});
+
+const fuzzyStructuredOutputJudge = StructuredOutputJudge({
+  match: 'fuzzy',
+  fuzzyOptions: { ignoreArrayOrder: true },
+});
+
 describe('extractClaimsFromNewEvidence', () => {
-  describeEval('should extract claims from new disruption evidence', {
-    // @ts-expect-error input is a string in the vitest-evals library
-    async data() {
+  describeEval(
+    'should extract claims from new disruption evidence',
+    {
+      harness: extractClaimsHarness,
+      judges: [fuzzyStructuredOutputJudge],
+    },
+    (it) => {
       const store = new FileStore(FIXTURE_DATA_DIR);
       const repo = new MRTDownRepository({ store });
       const issueBundle = repo.issues.get(FIXTURE_META.issues.trainFault.id);
       assert(issueBundle != null, 'Issue bundle not found');
 
-      return [
+      const cases = [
         {
           input: {
             newEvidence: {
@@ -200,27 +225,29 @@ describe('extractClaimsFromNewEvidence', () => {
         input: ExtractClaimsFromNewEvidenceParams & { toString(): string };
         expected: ExtractClaimsFromNewEvidenceResult;
       }[];
+
+      it.for(
+        cases.map(({ input, expected }) => ({
+          name: input.toString(),
+          input,
+          expected,
+        })),
+      )('$name', async ({ input, expected }, { run }) => {
+        await run(input, { metadata: { expected } });
+      });
     },
-    async task(input) {
-      const result = await extractClaimsFromNewEvidence(
-        input as unknown as ExtractClaimsFromNewEvidenceParams,
-      );
-      return JSON.stringify(result);
+  );
+  describeEval(
+    'should compute the impact of new maintenance evidence',
+    {
+      harness: extractClaimsHarness,
+      judges: [fuzzyStructuredOutputJudge],
     },
-    scorers: [
-      StructuredOutputScorer({
-        match: 'fuzzy',
-        fuzzyOptions: { ignoreArrayOrder: true },
-      }),
-    ],
-  });
-  describeEval('should compute the impact of new maintenance evidence', {
-    // @ts-expect-error input is a string in the vitest-evals library
-    async data() {
+    (it) => {
       const store = new FileStore(FIXTURE_DATA_DIR);
       const repo = new MRTDownRepository({ store });
 
-      return [
+      const cases = [
         {
           input: {
             newEvidence: {
@@ -560,18 +587,16 @@ describe('extractClaimsFromNewEvidence', () => {
         input: ExtractClaimsFromNewEvidenceParams & { toString(): string };
         expected: ExtractClaimsFromNewEvidenceResult;
       }[];
+
+      it.for(
+        cases.map(({ input, expected }) => ({
+          name: input.toString(),
+          input,
+          expected,
+        })),
+      )('$name', async ({ input, expected }, { run }) => {
+        await run(input, { metadata: { expected } });
+      });
     },
-    async task(input) {
-      const result = await extractClaimsFromNewEvidence(
-        input as unknown as ExtractClaimsFromNewEvidenceParams,
-      );
-      return JSON.stringify(result);
-    },
-    scorers: [
-      StructuredOutputScorer({
-        match: 'fuzzy',
-        fuzzyOptions: { ignoreArrayOrder: true },
-      }),
-    ],
-  });
+  );
 });
