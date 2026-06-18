@@ -51,6 +51,6 @@
     "@types/node": "24.13.2",
     "typescript": "^5.8.3",
     "vitest": "^4.1.8",
-    "vitest-evals": "^0.5.0"
+    "vitest-evals": "^0.12.0"
   }
 }

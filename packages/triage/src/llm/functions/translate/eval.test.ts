@@ -2,7 +2,7 @@ import { resolve } from 'node:path';
 import { type Translations, TranslationsSchema } from '@mrtdown/core';
 import { config as loadDotEnv } from 'dotenv';
 import { describe } from 'vitest';
-import { type BaseScorerOptions, describeEval } from 'vitest-evals';
+import { createHarness, createJudge, describeEval } from 'vitest-evals';
 import { translate } from './index.js';
 
 loadDotEnv({
@@ -13,7 +13,7 @@ type TranslateEvalExpected = {
   englishIncludes: string[];
 };
 
-type TranslateEvalScorerOptions = BaseScorerOptions & {
+type TranslateEvalMetadata = {
   expected: TranslateEvalExpected;
 };
 
@@ -36,7 +36,10 @@ function includesAll(haystack: string, needles: string[]) {
 const TranslateQualityScorer = ({
   expected,
   output,
-}: TranslateEvalScorerOptions) => {
+}: {
+  expected: TranslateEvalExpected;
+  output: string;
+}) => {
   const parsed = parseTranslations(output);
   if (typeof parsed === 'string') {
     return {
@@ -101,17 +104,38 @@ const TranslateQualityScorer = ({
   };
 };
 
+const translateHarness = createHarness<string, string, TranslateEvalMetadata>({
+  name: 'translate',
+  async run({ input }) {
+    const result = await translate(input);
+    return { output: JSON.stringify(result) };
+  },
+});
+
+const TranslateQualityJudge = createJudge(
+  'TranslateQualityJudge',
+  ({ metadata, output }) =>
+    TranslateQualityScorer({ expected: metadata.expected, output }),
+);
+
 describe('translate', () => {
-  describeEval('should translate transit issue text into render locales', {
-    async data() {
-      return [
+  describeEval(
+    'should translate transit issue text into render locales',
+    {
+      harness: translateHarness,
+      judges: [TranslateQualityJudge],
+    },
+    (it) => {
+      it.for([
         {
+          name: 'Island Line delay near Admiralty',
           input: 'Island Line delay near Admiralty',
           expected: {
             englishIncludes: ['Island Line', 'delay', 'Admiralty'],
           },
         },
         {
+          name: 'Island Line track fault',
           input:
             '[ISL] Due to a track fault at HKU, train services on the Island Line are delayed between Kennedy Town and Admiralty.',
           expected: {
@@ -119,6 +143,7 @@ describe('translate', () => {
           },
         },
         {
+          name: 'Platform screen door renewal works',
           input:
             'Platform screen doors at Tsuen Wan Line stations will undergo renewal works from 1 March to 31 March 2026.',
           expected: {
@@ -130,14 +155,12 @@ describe('translate', () => {
           },
         },
       ] satisfies {
+        name: string;
         input: string;
         expected: TranslateEvalExpected;
-      }[];
+      }[])('$name', async ({ input, expected }, { run }) => {
+        await run(input, { metadata: { expected } });
+      });
     },
-    async task(input) {
-      const result = await translate(input);
-      return JSON.stringify(result);
-    },
-    scorers: [TranslateQualityScorer],
-  });
+  );
 });
