@@ -48,13 +48,13 @@ const hkFixtureTimeZone = ((actual: unknown) =>
 
 const extractClaimsHarness = createHarness<
   ExtractClaimsFromNewEvidenceParams,
-  string,
+  ExtractClaimsFromNewEvidenceResult,
   { expected: ExtractClaimsFromNewEvidenceResult }
 >({
   name: 'extractClaimsFromNewEvidence',
   async run({ input }) {
     const result = await extractClaimsFromNewEvidence(input);
-    return { output: JSON.stringify(result) };
+    return { output: result };
   },
 });
 

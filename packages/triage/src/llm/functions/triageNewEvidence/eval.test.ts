@@ -55,13 +55,13 @@ const TRAIN_FAULT_FOLLOW_UP_TS = addSecondsToIsoTimestamp(
 
 const triageNewEvidenceHarness = createHarness<
   TriageNewEvidenceParams,
-  string,
+  TriageNewEvidenceResult,
   { expected: TriageNewEvidenceResult }
 >({
   name: 'triageNewEvidence',
   async run({ input }) {
     const result = await triageNewEvidence(input);
-    return { output: JSON.stringify(result) };
+    return { output: result };
   },
 });
 
