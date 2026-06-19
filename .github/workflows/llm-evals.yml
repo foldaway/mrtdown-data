@@ -6,7 +6,6 @@ on:
       - '.github/workflows/llm-evals.yml'
       - 'package*.json'
       - 'packages/triage/src/llm/functions/**'
-      - 'scripts/run-changed-llm-evals.mjs'
   workflow_dispatch:
 
 permissions:
@@ -47,13 +46,13 @@ jobs:
 
       - name: Run changed LLM function evals
         if: ${{ env.CAN_RUN_EVALS == 'true' && github.event_name == 'pull_request' }}
-        run: node scripts/run-changed-llm-evals.mjs "origin/${BASE_REF}...HEAD"
+        run: npm run test:eval:changed -- "origin/${BASE_REF}"
         env:
           BASE_REF: ${{ github.base_ref }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Run changed LLM function evals
         if: ${{ env.CAN_RUN_EVALS == 'true' && github.event_name == 'workflow_dispatch' }}
-        run: node scripts/run-changed-llm-evals.mjs "origin/main...HEAD"
+        run: npm run test:eval:changed -- origin/main
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
