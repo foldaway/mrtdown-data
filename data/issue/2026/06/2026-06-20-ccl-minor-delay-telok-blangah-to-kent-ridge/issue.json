@@ -1,0 +1,13 @@
+{
+  "id": "2026-06-20-ccl-minor-delay-telok-blangah-to-kent-ridge",
+  "type": "disruption",
+  "title": {
+    "en-SG": "CCL Minor Delay - Telok Blangah to Kent Ridge (both directions)",
+    "zh-Hans": "CCL轻微延误——从特洛布兰雅到肯特岗（双向）",
+    "ms": "Kelewatan Minor CCL - Telok Blangah ke Kent Ridge (dua arah)",
+    "ta": "CCL சிறிய தாமதம் - தெலொக் ப்லாங்கா முதல் கென்ட் ரிட்ஜ் வரை (இரு திசைகளிலும்)"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5.4-nano"
+  }
+}
