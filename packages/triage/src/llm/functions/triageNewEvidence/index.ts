@@ -85,6 +85,9 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
       model,
       input: context,
       instructions: systemPrompt,
+      reasoning: {
+        effort: 'low',
+      },
       text: {
         format: {
           type: 'json_schema',

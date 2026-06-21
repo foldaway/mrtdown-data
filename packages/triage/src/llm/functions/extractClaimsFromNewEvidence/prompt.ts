@@ -184,6 +184,7 @@ Field guidance:
 - If only line name is given, map to all relevant services on that line.
 - For ISO8601 datetimes, include timezone offset and seconds. Omit fractional seconds when milliseconds are zero (e.g. use 2026-01-01T07:10:00+08:00, not 2026-01-01T07:10:00.000+08:00).
 - All timestamps MUST use the Singapore timezone offset +08:00. Never use -08:00 or any other offset. Singapore Standard Time is UTC+8.
+- Do not convert the evidence timestamp to UTC. When defaulting a current open/cleared update to the evidence timestamp, copy that timestamp exactly with its original +08:00 wall-clock time and offset unless the evidence states another local time.
 - Treat fixed/end-only endAt as exclusive, and recurring.timeWindow.endAt as the end boundary of each daily window.
 - Midnight timestamps are allowed only when explicitly justified by evidence (e.g. "from 00:00", "until midnight", or clear date-only all-day semantics).
 - Keep claims minimal but complete for downstream state updates.
