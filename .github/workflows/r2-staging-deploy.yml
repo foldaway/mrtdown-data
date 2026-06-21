@@ -105,15 +105,51 @@ jobs:
             path="$1"
             expected_cache_control="$2"
             url="${R2_PUBLIC_BASE_URL%/}/${path}"
+            headers_file="$(mktemp)"
 
-            curl --fail-with-body --show-error --silent --head "$url" \
-              | grep -i -F "cache-control: ${expected_cache_control}"
+            status="$(
+              curl --location --show-error --silent \
+                --output /dev/null \
+                --dump-header "$headers_file" \
+                --write-out "%{http_code}" \
+                --head \
+                "$url"
+            )"
+            cache_control="$(
+              grep -i '^cache-control:' "$headers_file" \
+                | tr -d '\r' \
+                | tail -n 1 \
+                || true
+            )"
+            if [[ -z "$cache_control" ]]; then
+              cache_control="<missing>"
+            fi
+
+            echo "Smoke check: ${path}"
+            echo "URL: ${url}"
+            echo "HTTP status: ${status}"
+            echo "Expected Cache-Control: ${expected_cache_control}"
+            echo "Observed ${cache_control}"
+
+            if [[ "$status" != "200" ]]; then
+              echo "::error::Smoke check failed for ${path}: expected HTTP 200, got ${status}"
+              cat "$headers_file"
+              exit 1
+            fi
+
+            if [[ "${cache_control,,}" != "cache-control: ${expected_cache_control}" ]]; then
+              echo "::error::Smoke check failed for ${path}: unexpected Cache-Control"
+              cat "$headers_file"
+              exit 1
+            fi
           }
 
+          echo "Smoke check: manifest.json JSON"
           curl --fail-with-body --show-error --silent \
             "${R2_PUBLIC_BASE_URL%/}/manifest.json" \
             | node -e "JSON.parse(require('node:fs').readFileSync(0, 'utf8'))"
 
+          echo "Smoke check: fixtures/manifest.json JSON"
           curl --fail-with-body --show-error --silent \
             "${R2_PUBLIC_BASE_URL%/}/fixtures/manifest.json" \
             | node -e "JSON.parse(require('node:fs').readFileSync(0, 'utf8'))"
