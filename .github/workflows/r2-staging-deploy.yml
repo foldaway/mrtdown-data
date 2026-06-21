@@ -60,7 +60,8 @@ jobs:
           aws configure set default.s3.max_concurrent_requests 64
           aws configure set default.s3.max_queue_size 10000
 
-          aws s3 sync pages-dist "s3://${R2_BUCKET}" \
+          aws s3 cp pages-dist "s3://${R2_BUCKET}" \
+            --recursive \
             --endpoint-url "$endpoint_url" \
             --region auto \
             --cache-control "public, max-age=300" \
