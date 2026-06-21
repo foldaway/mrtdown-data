@@ -234,8 +234,8 @@ write credentials, and GitHub Actions environments/secrets are provisioned.
 
 ### Phase 2: Staging Publish
 
-Status: in progress. The manual staging workflow is added; manual staging
-publication and downstream import verification remain.
+Status: complete. The manual staging workflow is added and staging publication
+has been verified.
 
 - Add the staging workflow.
 - Run staging publication manually.
@@ -244,6 +244,10 @@ publication and downstream import verification remain.
   environment exists.
 
 ### Phase 3: Dual Publish
+
+Status: in progress. The manual production workflow is added; production
+publication, comparison against GitHub Pages, and repeated deployment validation
+remain.
 
 - Add production R2 publication while GitHub Pages stays active.
 - Publish both targets from `main`.

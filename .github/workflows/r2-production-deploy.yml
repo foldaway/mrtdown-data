@@ -1,6 +1,6 @@
-# Publish the generated static data artifact to the Cloudflare R2 staging bucket.
+# Publish the generated static data artifact to the Cloudflare R2 production bucket.
 
-name: Deploy R2 Staging
+name: Deploy R2 Production
 
 on:
   workflow_dispatch:
@@ -9,13 +9,13 @@ permissions:
   contents: read
 
 concurrency:
-  group: r2-staging
+  group: r2-production
   cancel-in-progress: false
 
 jobs:
   deploy:
     environment:
-      name: staging
+      name: production
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -37,7 +37,7 @@ jobs:
           test -f pages-dist/archive.tar.gz
           test -f pages-dist/archive.zip
 
-      - name: Deploy staging artifact to R2
+      - name: Deploy production artifact to R2
         env:
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
           R2_BUCKET: ${{ secrets.R2_BUCKET }}
@@ -122,7 +122,7 @@ jobs:
           verify_object_cache_control "archive.zip" "public, max-age=300"
           verify_object_cache_control "fixtures/manifest.json" "public, max-age=60"
 
-      - name: Smoke test staging artifact
+      - name: Smoke test production artifact
         env:
           R2_PUBLIC_BASE_URL: ${{ secrets.R2_PUBLIC_BASE_URL }}
         run: |
@@ -185,18 +185,18 @@ jobs:
           smoke_check "archive.zip"
           smoke_check "fixtures/manifest.json"
 
-      - name: Trigger staging mrtdown-site pull workflow
+      - name: Trigger production mrtdown-site pull workflow
         env:
           MRTDOWN_SITE_PULL_URL: ${{ secrets.MRTDOWN_SITE_PULL_URL }}
           MRTDOWN_SITE_INTERNAL_API_TOKEN: ${{ secrets.MRTDOWN_SITE_INTERNAL_API_TOKEN }}
         run: |
           if [[ -z "$MRTDOWN_SITE_PULL_URL" || -z "$MRTDOWN_SITE_INTERNAL_API_TOKEN" ]]; then
-            echo "Staging site pull secrets are not configured; skipping."
+            echo "Production site pull secrets are not configured; skipping."
             exit 0
           fi
 
           curl --fail-with-body --show-error --silent \
-            --user-agent "mrtdown-data-r2-staging-deploy/1.0" \
+            --user-agent "mrtdown-data-r2-production-deploy/1.0" \
             --request POST \
             --header "Accept: application/json" \
             --header "Authorization: Bearer ${MRTDOWN_SITE_INTERNAL_API_TOKEN}" \
