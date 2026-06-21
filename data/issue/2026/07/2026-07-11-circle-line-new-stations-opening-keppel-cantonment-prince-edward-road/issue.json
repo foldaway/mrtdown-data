@@ -1,0 +1,13 @@
+{
+  "id": "2026-07-11-circle-line-new-stations-opening-keppel-cantonment-prince-edward-road",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Circle Line - New Stations Opening - Keppel, Cantonment and Prince Edward Road",
+    "zh-Hans": "环线 - 新车站开通 - Keppel、Cantonment 和 Prince Edward Road",
+    "ms": "Gelanggang (Circle Line) - Pembukaan Stesen Baharu - Keppel, Cantonment dan Prince Edward Road",
+    "ta": "சர்க்கிள் லைன் - புதிய நிலையங்கள் திறப்பு - Keppel, Cantonment மற்றும் Prince Edward Road"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5.4-nano"
+  }
+}
