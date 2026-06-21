@@ -110,6 +110,8 @@ jobs:
           upload_short_cache_file "manifest.json" "application/json; charset=utf-8"
           upload_short_cache_file "fixtures/index.html" "text/html; charset=utf-8"
           upload_short_cache_file "fixtures/manifest.json" "application/json; charset=utf-8"
+          upload_default_cache_file "archive.tar.gz" "application/gzip"
+          upload_default_cache_file "fixtures/archive.tar.gz" "application/gzip"
 
           while IFS= read -r -d '' file; do
             upload_default_cache_file "${file#pages-dist/}" "application/x-ndjson; charset=utf-8"
