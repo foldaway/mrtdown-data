@@ -1,5 +1,10 @@
 import type { ResponseInputItem } from 'openai/resources/responses/responses.mjs';
 import { z } from 'zod';
+import {
+  logOpenAIUsageCostSummary,
+  normalizeOpenAIResponsesUsage,
+  OpenAIUsageCostTracker,
+} from '../../../helpers/estimateOpenAICost.js';
 import { assert } from '../../../util/assert.js';
 import { getOpenAiClient } from '../../client.js';
 import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
@@ -28,6 +33,8 @@ export async function generateIssueTitleAndSlug(
   params: GenerateIssueTitleAndSlugParams,
 ): Promise<GenerateIssueTitleAndSlugResult> {
   const systemPrompt = buildSystemPrompt();
+  const model = 'gpt-5.4-nano';
+  const usageCostTracker = new OpenAIUsageCostTracker();
 
   const context: ResponseInputItem[] = [
     {
@@ -39,7 +46,7 @@ Text: ${params.text}
   ];
 
   const response = await getOpenAiClient().responses.parse({
-    model: 'gpt-5-nano',
+    model,
     input: context,
     instructions: systemPrompt,
     text: {
@@ -50,6 +57,13 @@ Text: ${params.text}
         schema: toOpenAiJsonSchema(ResponseSchema),
       },
     },
+  });
+
+  const usage = normalizeOpenAIResponsesUsage(response.usage);
+  usageCostTracker.add({ model, usage });
+  logOpenAIUsageCostSummary({
+    label: 'generateIssueTitleAndSlug',
+    summary: usageCostTracker.summary(),
   });
 
   assert(response.output_parsed != null, 'Response output parsed is null');

@@ -6,6 +6,11 @@ import type {
   ResponseInputItem,
 } from 'openai/resources/responses/responses.mjs';
 import z from 'zod';
+import {
+  logOpenAIUsageCostSummary,
+  normalizeOpenAIResponsesUsage,
+  OpenAIUsageCostTracker,
+} from '../../../helpers/estimateOpenAICost.js';
 import { assert } from '../../../util/assert.js';
 import { getOpenAiClient } from '../../client.js';
 import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
@@ -71,11 +76,13 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
 
   let toolCallCount = 0;
   let reachedToolCallLimit = false;
+  const model = 'gpt-5.4-mini';
+  const usageCostTracker = new OpenAIUsageCostTracker();
 
   let response: ParsedResponse<z.infer<typeof ResponseSchema>>;
   do {
     response = await getOpenAiClient().responses.parse({
-      model: 'gpt-5-mini',
+      model,
       input: context,
       instructions: systemPrompt,
       text: {
@@ -192,10 +199,18 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
         break;
       }
     }
+
+    const usage = normalizeOpenAIResponsesUsage(response.usage);
+    usageCostTracker.add({ model, usage });
   } while (
     !reachedToolCallLimit &&
     response.output.some((item) => item.type === 'function_call')
   );
+
+  logOpenAIUsageCostSummary({
+    label: 'triageNewEvidence',
+    summary: usageCostTracker.summary(),
+  });
 
   if (reachedToolCallLimit) {
     throw new Error(`Exceeded tool call limit of ${TOOL_CALL_LIMIT}`);

@@ -7,8 +7,9 @@ import type {
 } from 'openai/resources/responses/responses.js';
 import z from 'zod';
 import {
-  estimateOpenAICostFromUsage,
+  logOpenAIUsageCostSummary,
   normalizeOpenAIResponsesUsage,
+  OpenAIUsageCostTracker,
 } from '../../../helpers/estimateOpenAICost.js';
 import { assert } from '../../../util/assert.js';
 import { getOpenAiClient } from '../../client.js';
@@ -72,7 +73,8 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
   ];
 
   const systemPrompt = buildSystemPrompt();
-  const model = 'gpt-5-mini';
+  const model = 'gpt-5.4-mini';
+  const usageCostTracker = new OpenAIUsageCostTracker();
 
   let toolCallCount = 0;
   let reachedToolCallLimit = false;
@@ -203,31 +205,16 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
     }
 
     const usage = normalizeOpenAIResponsesUsage(response.usage);
-    const estimate = estimateOpenAICostFromUsage({ model, usage });
-    if (usage != null) {
-      console.log('[extractClaimsFromNewEvidence] Usage:', {
-        inputTokens: usage.inputTokens,
-        cachedInputTokens: usage.cachedInputTokens,
-        outputTokens: usage.outputTokens,
-        totalTokens: usage.totalTokens,
-      });
-      if (estimate != null) {
-        console.log(
-          '[extractClaimsFromNewEvidence] Estimated cost (USD):',
-          estimate.estimatedCostUsd.toFixed(8),
-        );
-      } else {
-        console.log(
-          `[extractClaimsFromNewEvidence] No pricing configured for model "${model}".`,
-        );
-      }
-    } else {
-      console.log('[extractClaimsFromNewEvidence] Usage is unavailable');
-    }
+    usageCostTracker.add({ model, usage });
   } while (
     !reachedToolCallLimit &&
     response.output.some((item) => item.type === 'function_call')
   );
+
+  logOpenAIUsageCostSummary({
+    label: 'extractClaimsFromNewEvidence',
+    summary: usageCostTracker.summary(),
+  });
 
   if (reachedToolCallLimit) {
     throw new Error(`Exceeded tool call limit of ${TOOL_CALL_LIMIT}`);

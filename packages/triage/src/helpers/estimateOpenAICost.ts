@@ -35,16 +35,29 @@ export type OpenAIModelPricing = {
   outputUsdPer1MTokens: number;
 };
 
+export type OpenAIUsageCostSummary = {
+  usage: OpenAITokenUsage | null;
+  estimatedCostUsd: number | null;
+  modelsWithoutPricing: string[];
+};
+
 export const OPENAI_MODEL_PRICING: Record<string, OpenAIModelPricing> = {
-  'gpt-5-mini': {
-    inputUsdPer1MTokens: 0.25,
-    cachedInputUsdPer1MTokens: 0.025,
-    outputUsdPer1MTokens: 2,
+  'gpt-5.4': {
+    inputUsdPer1MTokens: 2.5,
+    cachedInputUsdPer1MTokens: 0.25,
+    outputUsdPer1MTokens: 15,
   },
-  'gpt-5-nano': {
-    inputUsdPer1MTokens: 0.05,
-    cachedInputUsdPer1MTokens: 0.005,
-    outputUsdPer1MTokens: 0.4,
+  'gpt-5.4-mini': {
+    inputUsdPer1MTokens: 0.75,
+    cachedInputUsdPer1MTokens: 0.075,
+    outputUsdPer1MTokens: 4.5,
+  },
+  // Public pricing lists GPT-5.4 and GPT-5.4 mini; keep nano at the same
+  // mini-to-nano ratio used by this package's previous GPT-5 pricing.
+  'gpt-5.4-nano': {
+    inputUsdPer1MTokens: 0.15,
+    cachedInputUsdPer1MTokens: 0.015,
+    outputUsdPer1MTokens: 0.9,
   },
 };
 
@@ -113,4 +126,86 @@ export function estimateOpenAICostFromUsage({
     usage,
     pricing,
   };
+}
+
+export function sumOpenAITokenUsage(
+  left: OpenAITokenUsage | null,
+  right: OpenAITokenUsage | null,
+): OpenAITokenUsage | null {
+  if (left == null) {
+    return right;
+  }
+  if (right == null) {
+    return left;
+  }
+
+  return {
+    inputTokens: left.inputTokens + right.inputTokens,
+    cachedInputTokens: left.cachedInputTokens + right.cachedInputTokens,
+    outputTokens: left.outputTokens + right.outputTokens,
+    totalTokens: left.totalTokens + right.totalTokens,
+  };
+}
+
+export class OpenAIUsageCostTracker {
+  private usage: OpenAITokenUsage | null = null;
+  private estimatedCostUsd = 0;
+  private readonly modelsWithoutPricing = new Set<string>();
+
+  add({ model, usage }: { model: string; usage: OpenAITokenUsage | null }) {
+    if (usage == null) {
+      return;
+    }
+
+    this.usage = sumOpenAITokenUsage(this.usage, usage);
+
+    const estimate = estimateOpenAICostFromUsage({ model, usage });
+    if (estimate == null) {
+      this.modelsWithoutPricing.add(model);
+      return;
+    }
+
+    this.estimatedCostUsd += estimate.estimatedCostUsd;
+  }
+
+  summary(): OpenAIUsageCostSummary {
+    return {
+      usage: this.usage,
+      estimatedCostUsd:
+        this.modelsWithoutPricing.size === 0 ? this.estimatedCostUsd : null,
+      modelsWithoutPricing: [...this.modelsWithoutPricing].sort(),
+    };
+  }
+}
+
+export function logOpenAIUsageCostSummary({
+  label,
+  summary,
+}: {
+  label: string;
+  summary: OpenAIUsageCostSummary;
+}) {
+  if (summary.usage == null) {
+    console.log(`[${label}] Usage is unavailable`);
+    return;
+  }
+
+  console.log(`[${label}] Total usage:`, {
+    inputTokens: summary.usage.inputTokens,
+    cachedInputTokens: summary.usage.cachedInputTokens,
+    outputTokens: summary.usage.outputTokens,
+    totalTokens: summary.usage.totalTokens,
+  });
+
+  if (summary.estimatedCostUsd != null) {
+    console.log(
+      `[${label}] Total estimated cost (USD):`,
+      summary.estimatedCostUsd.toFixed(8),
+    );
+    return;
+  }
+
+  console.log(
+    `[${label}] No pricing configured for model(s): ${summary.modelsWithoutPricing.join(', ')}`,
+  );
 }
