@@ -173,7 +173,7 @@ Field guidance:
     - kind: "recurring"
     - frequency: daily | weekly | monthly | yearly
     - startAt, endAt as ISO8601 datetimes with offset
-    - daysOfWeek: [MO..SU] or null
+    - daysOfWeek: [MO..SU] or null. For daily recurrence, use daysOfWeek: null; do not list all seven weekdays.
     - timeZone: "Asia/Singapore"
     - timeWindow: { startAt: "HH:MM:SS", endAt: "HH:MM:SS" }
     - excludedDates: null unless explicitly stated

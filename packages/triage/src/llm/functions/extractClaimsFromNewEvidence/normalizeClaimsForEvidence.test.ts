@@ -60,6 +60,48 @@ describe('normalizeClaimsForEvidence', () => {
     ]);
   });
 
+  test('normalizes daily recurring hints that list every day', () => {
+    const evidenceTs = '2026-01-01T08:10:00+08:00';
+    const claim: Claim = {
+      entity: { type: 'service', serviceId: 'BTL_MAIN_E' },
+      effect: {
+        service: { kind: 'service-hours-adjustment' },
+        facility: null,
+      },
+      scopes: { service: [{ type: 'service.whole' }] },
+      statusSignal: 'planned',
+      timeHints: {
+        kind: 'recurring',
+        frequency: 'daily',
+        startAt: '2026-02-01T21:00:00+08:00',
+        endAt: '2026-02-08T21:00:00+08:00',
+        daysOfWeek: ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'],
+        timeWindow: {
+          startAt: '21:00:00',
+          endAt: '06:30:00',
+        },
+        timeZone: 'Asia/Singapore',
+        excludedDates: null,
+      },
+      causes: null,
+    };
+
+    expect(
+      normalizeClaimsForEvidence({
+        claims: [claim],
+        evidenceTs,
+      }),
+    ).toEqual([
+      {
+        ...claim,
+        timeHints: {
+          ...claim.timeHints,
+          daysOfWeek: null,
+        },
+      },
+    ]);
+  });
+
   test('deduplicates whole-line degraded-service claims and fills active sibling services', () => {
     const evidenceTs = '2026-01-05T22:12:16+08:00';
     const baseClaim = {
