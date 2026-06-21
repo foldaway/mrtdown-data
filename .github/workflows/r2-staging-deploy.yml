@@ -3,6 +3,9 @@
 name: Deploy R2 Staging
 
 on:
+  push:
+    branches:
+      - codex/add-r2-staging-deploy
   workflow_dispatch:
 
 permissions:
