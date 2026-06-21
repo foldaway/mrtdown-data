@@ -123,25 +123,17 @@ cannot drift accidentally.
 
 ## Secrets And Configuration
 
-Add repository or environment secrets for R2 publication.
+Use GitHub Actions environments for R2 publication secrets. Configure separate
+`staging` and `production` environments, with each environment defining the same
+R2 secret names for its own bucket and credentials.
 
-Shared:
+R2 environment secrets:
 
 - `R2_ACCOUNT_ID`
-
-Staging:
-
-- `R2_STAGING_BUCKET`
-- `R2_STAGING_ACCESS_KEY_ID`
-- `R2_STAGING_SECRET_ACCESS_KEY`
-- `R2_STAGING_PUBLIC_BASE_URL`
-
-Production:
-
-- `R2_PRODUCTION_BUCKET`
-- `R2_PRODUCTION_ACCESS_KEY_ID`
-- `R2_PRODUCTION_SECRET_ACCESS_KEY`
-- `R2_PRODUCTION_PUBLIC_BASE_URL`
+- `R2_BUCKET`
+- `R2_ACCESS_KEY_ID`
+- `R2_SECRET_ACCESS_KEY`
+- `R2_PUBLIC_BASE_URL`
 
 Existing site pull secrets may stay environment-specific:
 
@@ -207,7 +199,7 @@ Required steps:
 - install dependencies;
 - run `npm run pages:build`;
 - deploy `pages-dist/` to the staging bucket;
-- smoke test `R2_STAGING_PUBLIC_BASE_URL`;
+- smoke test `R2_PUBLIC_BASE_URL` from the staging environment;
 - trigger the staging `mrtdown-site` pull endpoint if that environment exists.
 
 ### Production
@@ -228,12 +220,15 @@ Required steps:
 
 - reuse or rebuild the same artifact from the same commit;
 - deploy to the production bucket;
-- smoke test `R2_PRODUCTION_PUBLIC_BASE_URL`;
+- smoke test `R2_PUBLIC_BASE_URL` from the production environment;
 - trigger the production `mrtdown-site` pull endpoint.
 
 ## Rollout Phases
 
 ### Phase 1: Plan And Provision
+
+Status: complete. Staging and production R2 buckets, custom domains, bucket
+write credentials, and GitHub Actions environments/secrets are provisioned.
 
 - Create the staging and production R2 buckets.
 - Attach custom domains.
