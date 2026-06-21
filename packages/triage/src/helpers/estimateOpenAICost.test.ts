@@ -30,7 +30,7 @@ describe('estimateOpenAICostFromUsage', () => {
       },
     });
 
-    expect(estimate?.estimatedCostUsd).toBeCloseTo(0.0019365);
+    expect(estimate?.estimatedCostUsd).toBeCloseTo(0.002682);
   });
 });
 

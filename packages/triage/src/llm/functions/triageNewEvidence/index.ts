@@ -49,7 +49,9 @@ export type TriageNewEvidenceParams = {
 export type TriageNewEvidenceResult = z.infer<typeof ResponseSchema>;
 
 export async function triageNewEvidence(params: TriageNewEvidenceParams) {
-  const evidenceTs = DateTime.fromISO(params.newEvidence.ts);
+  const evidenceTs = DateTime.fromISO(params.newEvidence.ts, {
+    setZone: true,
+  });
   assert(evidenceTs.isValid, `Invalid date: ${params.newEvidence.ts}`);
 
   const findIssuesTool = new FindIssuesTool(params.repo);
@@ -69,7 +71,7 @@ export async function triageNewEvidence(params: TriageNewEvidenceParams) {
       content: `
 Evidence: ${params.newEvidence.text}
 
-Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
+Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true })}
 `.trim(),
     },
   ];

@@ -52,12 +52,10 @@ export const OPENAI_MODEL_PRICING: Record<string, OpenAIModelPricing> = {
     cachedInputUsdPer1MTokens: 0.075,
     outputUsdPer1MTokens: 4.5,
   },
-  // Public pricing lists GPT-5.4 and GPT-5.4 mini; keep nano at the same
-  // mini-to-nano ratio used by this package's previous GPT-5 pricing.
   'gpt-5.4-nano': {
-    inputUsdPer1MTokens: 0.15,
-    cachedInputUsdPer1MTokens: 0.015,
-    outputUsdPer1MTokens: 0.9,
+    inputUsdPer1MTokens: 0.2,
+    cachedInputUsdPer1MTokens: 0.02,
+    outputUsdPer1MTokens: 1.25,
   },
 };
 

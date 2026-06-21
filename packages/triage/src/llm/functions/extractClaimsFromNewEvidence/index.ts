@@ -47,7 +47,9 @@ export type ExtractClaimsFromNewEvidenceResult = {
 export async function extractClaimsFromNewEvidence(
   params: ExtractClaimsFromNewEvidenceParams,
 ): Promise<ExtractClaimsFromNewEvidenceResult> {
-  const evidenceTs = DateTime.fromISO(params.newEvidence.ts);
+  const evidenceTs = DateTime.fromISO(params.newEvidence.ts, {
+    setZone: true,
+  });
   assert(evidenceTs.isValid, `Invalid date: ${params.newEvidence.ts}`);
 
   const findStationsTool = new FindStationsTool(evidenceTs, params.repo);
@@ -67,7 +69,7 @@ export async function extractClaimsFromNewEvidence(
       content: `
 Evidence: ${params.newEvidence.text}
 
-Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
+Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true })}
 `.trim(),
     },
   ];
