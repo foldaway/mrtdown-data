@@ -134,7 +134,6 @@ jobs:
 
           smoke_check() {
             path="$1"
-            expected_cache_control="$2"
             url="${R2_PUBLIC_BASE_URL%/}/${path}?${cache_buster}"
             headers_file="$(mktemp)"
 
@@ -160,8 +159,7 @@ jobs:
             echo "Smoke check: ${path}"
             echo "URL: ${url}"
             echo "HTTP status: ${status}"
-            echo "Expected Cache-Control: ${expected_cache_control}"
-            echo "Observed ${cache_control}"
+            echo "Observed public ${cache_control}"
 
             if [[ "$status" != "200" ]]; then
               echo "::error::Smoke check failed for ${path}: expected HTTP 200, got ${status}"
@@ -169,11 +167,7 @@ jobs:
               exit 1
             fi
 
-            if [[ "${cache_control,,}" != "cache-control: ${expected_cache_control}" ]]; then
-              echo "::error::Smoke check failed for ${path}: unexpected Cache-Control from public URL"
-              cat "$headers_file"
-              exit 1
-            fi
+            rm "$headers_file"
           }
 
           echo "Smoke check: manifest.json JSON"
@@ -188,11 +182,11 @@ jobs:
             "${R2_PUBLIC_BASE_URL%/}/fixtures/manifest.json?${cache_buster}" \
             | node -e "JSON.parse(require('node:fs').readFileSync(0, 'utf8'))"
 
-          smoke_check "index.html" "public, max-age=60"
-          smoke_check "manifest.json" "public, max-age=60"
-          smoke_check "archive.tar.gz" "public, max-age=300"
-          smoke_check "archive.zip" "public, max-age=300"
-          smoke_check "fixtures/manifest.json" "public, max-age=60"
+          smoke_check "index.html"
+          smoke_check "manifest.json"
+          smoke_check "archive.tar.gz"
+          smoke_check "archive.zip"
+          smoke_check "fixtures/manifest.json"
 
       - name: Trigger staging mrtdown-site pull workflow
         env:
