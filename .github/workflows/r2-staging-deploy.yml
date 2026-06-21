@@ -96,20 +96,51 @@ jobs:
           byte_count="$(find pages-dist -type f -exec stat -c%s {} + | awk '{ total += $1 } END { print total + 0 }')"
           echo "Uploaded ${file_count} files (${byte_count} bytes) to R2 bucket ${R2_BUCKET}."
 
+          verify_object_cache_control() {
+            key="$1"
+            expected_cache_control="$2"
+            observed_cache_control="$(
+              aws s3api head-object \
+                --bucket "$R2_BUCKET" \
+                --key "$key" \
+                --endpoint-url "$endpoint_url" \
+                --region auto \
+                --query CacheControl \
+                --output text
+            )"
+
+            echo "R2 metadata check: ${key}"
+            echo "Expected Cache-Control: ${expected_cache_control}"
+            echo "Observed Cache-Control: ${observed_cache_control}"
+
+            if [[ "$observed_cache_control" != "$expected_cache_control" ]]; then
+              echo "::error::R2 metadata check failed for ${key}: unexpected Cache-Control"
+              exit 1
+            fi
+          }
+
+          verify_object_cache_control "index.html" "public, max-age=60"
+          verify_object_cache_control "manifest.json" "public, max-age=60"
+          verify_object_cache_control "archive.tar.gz" "public, max-age=300"
+          verify_object_cache_control "archive.zip" "public, max-age=300"
+          verify_object_cache_control "fixtures/manifest.json" "public, max-age=60"
+
       - name: Smoke test staging artifact
         env:
           R2_PUBLIC_BASE_URL: ${{ secrets.R2_PUBLIC_BASE_URL }}
         run: |
           set -euo pipefail
+          cache_buster="smoke-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
 
           smoke_check() {
             path="$1"
             expected_cache_control="$2"
-            url="${R2_PUBLIC_BASE_URL%/}/${path}"
+            url="${R2_PUBLIC_BASE_URL%/}/${path}?${cache_buster}"
             headers_file="$(mktemp)"
 
             status="$(
               curl --location --show-error --silent \
+                --header "Cache-Control: no-cache" \
                 --output /dev/null \
                 --dump-header "$headers_file" \
                 --write-out "%{http_code}" \
@@ -139,7 +170,7 @@ jobs:
             fi
 
             if [[ "${cache_control,,}" != "cache-control: ${expected_cache_control}" ]]; then
-              echo "::error::Smoke check failed for ${path}: unexpected Cache-Control"
+              echo "::error::Smoke check failed for ${path}: unexpected Cache-Control from public URL"
               cat "$headers_file"
               exit 1
             fi
@@ -147,12 +178,14 @@ jobs:
 
           echo "Smoke check: manifest.json JSON"
           curl --fail-with-body --show-error --silent \
-            "${R2_PUBLIC_BASE_URL%/}/manifest.json" \
+            --header "Cache-Control: no-cache" \
+            "${R2_PUBLIC_BASE_URL%/}/manifest.json?${cache_buster}" \
             | node -e "JSON.parse(require('node:fs').readFileSync(0, 'utf8'))"
 
           echo "Smoke check: fixtures/manifest.json JSON"
           curl --fail-with-body --show-error --silent \
-            "${R2_PUBLIC_BASE_URL%/}/fixtures/manifest.json" \
+            --header "Cache-Control: no-cache" \
+            "${R2_PUBLIC_BASE_URL%/}/fixtures/manifest.json?${cache_buster}" \
             | node -e "JSON.parse(require('node:fs').readFileSync(0, 'utf8'))"
 
           smoke_check "index.html" "public, max-age=60"
