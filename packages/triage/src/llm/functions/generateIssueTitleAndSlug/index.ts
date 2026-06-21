@@ -6,7 +6,7 @@ import {
   OpenAIUsageCostTracker,
 } from '../../../helpers/estimateOpenAICost.js';
 import { assert } from '../../../util/assert.js';
-import { getOpenAiClient } from '../../client.js';
+import { getOpenAiClient, runOpenAIRequestWithRetry } from '../../client.js';
 import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
 import { buildSystemPrompt } from './prompt.js';
 
@@ -45,19 +45,25 @@ Text: ${params.text}
     },
   ];
 
-  const response = await getOpenAiClient().responses.parse({
-    model,
-    input: context,
-    instructions: systemPrompt,
-    text: {
-      format: {
-        type: 'json_schema',
-        name: 'Response',
-        strict: true,
-        schema: toOpenAiJsonSchema(ResponseSchema),
-      },
+  const response = await runOpenAIRequestWithRetry(
+    () =>
+      getOpenAiClient().responses.parse({
+        model,
+        input: context,
+        instructions: systemPrompt,
+        text: {
+          format: {
+            type: 'json_schema',
+            name: 'Response',
+            strict: true,
+            schema: toOpenAiJsonSchema(ResponseSchema),
+          },
+        },
+      }),
+    {
+      label: 'generateIssueTitleAndSlug',
     },
-  });
+  );
 
   const usage = normalizeOpenAIResponsesUsage(response.usage);
   usageCostTracker.add({ model, usage });
