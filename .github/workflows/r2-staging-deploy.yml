@@ -52,52 +52,47 @@ jobs:
 
           endpoint_url="https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com"
 
-          content_type() {
-            case "$1" in
-              *.tar.gz) echo "application/gzip" ;;
-              *.html) echo "text/html; charset=utf-8" ;;
-              *.json) echo "application/json; charset=utf-8" ;;
-              *.ndjson) echo "application/x-ndjson; charset=utf-8" ;;
-              *.zip) echo "application/zip" ;;
-              *.svg) echo "image/svg+xml" ;;
-              *.txt) echo "text/plain; charset=utf-8" ;;
-              *) echo "application/octet-stream" ;;
-            esac
-          }
-
-          cache_control() {
-            case "$1" in
-              index.html|fixtures/index.html|manifest.json|fixtures/manifest.json)
-                echo "public, max-age=60"
-                ;;
-              *)
-                echo "public, max-age=300"
-                ;;
-            esac
-          }
-
           export AWS_ACCESS_KEY_ID="$R2_ACCESS_KEY_ID"
           export AWS_SECRET_ACCESS_KEY="$R2_SECRET_ACCESS_KEY"
           export AWS_DEFAULT_REGION="auto"
           export AWS_EC2_METADATA_DISABLED="true"
 
-          file_count=0
-          byte_count=0
+          aws configure set default.s3.max_concurrent_requests 64
+          aws configure set default.s3.max_queue_size 10000
 
-          while IFS= read -r -d '' file; do
-            key="${file#pages-dist/}"
-            file_count=$((file_count + 1))
-            byte_count=$((byte_count + $(stat -c%s "$file")))
+          aws s3 sync pages-dist "s3://${R2_BUCKET}" \
+            --endpoint-url "$endpoint_url" \
+            --region auto \
+            --cache-control "public, max-age=300" \
+            --only-show-errors \
+            --no-progress
+
+          upload_short_cache_file() {
+            key="$1"
+            content_type="$2"
+            file="pages-dist/${key}"
+
+            if [[ ! -f "$file" ]]; then
+              echo "::error::Expected artifact file is missing: ${file}"
+              exit 1
+            fi
 
             aws s3 cp "$file" "s3://${R2_BUCKET}/${key}" \
               --endpoint-url "$endpoint_url" \
               --region auto \
-              --cache-control "$(cache_control "$key")" \
-              --content-type "$(content_type "$key")" \
+              --cache-control "public, max-age=60" \
+              --content-type "$content_type" \
               --only-show-errors \
               --no-progress
-          done < <(find pages-dist -type f -print0 | sort -z)
+          }
 
+          upload_short_cache_file "index.html" "text/html; charset=utf-8"
+          upload_short_cache_file "manifest.json" "application/json; charset=utf-8"
+          upload_short_cache_file "fixtures/index.html" "text/html; charset=utf-8"
+          upload_short_cache_file "fixtures/manifest.json" "application/json; charset=utf-8"
+
+          file_count="$(find pages-dist -type f | wc -l | tr -d ' ')"
+          byte_count="$(find pages-dist -type f -exec stat -c%s {} + | awk '{ total += $1 } END { print total + 0 }')"
           echo "Uploaded ${file_count} files (${byte_count} bytes) to R2 bucket ${R2_BUCKET}."
 
       - name: Smoke test staging artifact
