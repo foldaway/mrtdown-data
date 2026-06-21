@@ -145,28 +145,24 @@ requires explicit approval after staging passes.
 
 ## Deployment Script
 
-Add a repo-owned R2 deploy script instead of depending entirely on opaque sync
-behavior.
+Use explicit AWS CLI commands in GitHub Actions instead of maintaining a custom
+R2 upload script during the initial staging rollout.
 
-The script should:
+The workflow should:
 
 - require an explicit source directory, bucket, account id, credentials, and
   public base URL;
 - refuse to run if the source directory is missing `manifest.json`,
   `archive.tar.gz`, or `archive.zip`;
 - walk the generated artifact directory deterministically;
-- upload files through R2's S3-compatible API;
+- upload files through R2's S3-compatible API using AWS CLI;
 - infer and set `Content-Type`;
 - set `Cache-Control` from the centralized cache policy;
-- optionally compare local and remote object metadata to avoid unnecessary
-  writes;
-- delete stale remote objects only when an explicit `--delete-stale` flag is
-  set;
 - print a compact deployment summary;
 - run smoke checks against the public base URL after upload.
 
-The first version can be intentionally simple. Stale-object deletion can be
-added after the upload and smoke-test path is proven.
+The first version can be intentionally simple. A shared script can be added later
+if staging and production workflows start duplicating too much logic.
 
 ## Workflow Shape
 
@@ -238,7 +234,9 @@ write credentials, and GitHub Actions environments/secrets are provisioned.
 
 ### Phase 2: Staging Publish
 
-- Add the R2 deploy script.
+Status: in progress. The manual staging workflow is added; manual staging
+publication and downstream import verification remain.
+
 - Add the staging workflow.
 - Run staging publication manually.
 - Verify public access, cache headers, archive downloads, and manifest content.

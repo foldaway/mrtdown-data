@@ -49,13 +49,13 @@ npm run lint               # Run Biome checks
 npm run check              # Run lint, boundary checks, and docs link checks
 npm run data:validate      # Validate canonical data
 npm run fixtures:validate  # Generate and validate fixture data
-npm run pages:build        # Build the GitHub Pages static data artifact
+npm run pages:build        # Build the static data artifact
 ```
 
 Package-specific build and test commands are available in `package.json` when a
 change only touches one package.
 
-## Static Pages Export
+## Static Data Export
 
 `npm run pages:build` writes the static artifact to `pages-dist/`.
 
@@ -77,7 +77,9 @@ It also includes the deterministic fixture export under `fixtures/`:
 - the fixture data files used to build the fixture manifest
 
 Preview branches and pull requests build the same bundle in CI and upload it as
-a short-lived artifact. Only `main` deploys the bundle to GitHub Pages.
+a short-lived artifact. During the R2 migration, `main` continues to deploy the
+bundle to GitHub Pages and the manual R2 staging workflow can publish the same
+artifact to Cloudflare R2.
 
 After a successful `main` Pages deployment, CI triggers the `mrtdown-site`
 internal pull endpoint so the site can import the newly published archive. The

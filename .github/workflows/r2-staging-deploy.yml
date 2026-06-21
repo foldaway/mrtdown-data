@@ -1,0 +1,144 @@
+# Publish the generated static data artifact to the Cloudflare R2 staging bucket.
+
+name: Deploy R2 Staging
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: r2-staging
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: staging
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static data artifact
+        run: npm run pages:build
+
+      - name: Validate static data artifact
+        run: |
+          test -f pages-dist/manifest.json
+          test -f pages-dist/archive.tar.gz
+          test -f pages-dist/archive.zip
+
+      - name: Deploy staging artifact to R2
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_PUBLIC_BASE_URL: ${{ secrets.R2_PUBLIC_BASE_URL }}
+        run: |
+          set -euo pipefail
+
+          endpoint_url="https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com"
+
+          content_type() {
+            case "$1" in
+              *.tar.gz) echo "application/gzip" ;;
+              *.html) echo "text/html; charset=utf-8" ;;
+              *.json) echo "application/json; charset=utf-8" ;;
+              *.ndjson) echo "application/x-ndjson; charset=utf-8" ;;
+              *.zip) echo "application/zip" ;;
+              *.svg) echo "image/svg+xml" ;;
+              *.txt) echo "text/plain; charset=utf-8" ;;
+              *) echo "application/octet-stream" ;;
+            esac
+          }
+
+          cache_control() {
+            case "$1" in
+              index.html|fixtures/index.html|manifest.json|fixtures/manifest.json)
+                echo "public, max-age=60"
+                ;;
+              *)
+                echo "public, max-age=300"
+                ;;
+            esac
+          }
+
+          export AWS_ACCESS_KEY_ID="$R2_ACCESS_KEY_ID"
+          export AWS_SECRET_ACCESS_KEY="$R2_SECRET_ACCESS_KEY"
+          export AWS_DEFAULT_REGION="auto"
+          export AWS_EC2_METADATA_DISABLED="true"
+
+          file_count=0
+          byte_count=0
+
+          while IFS= read -r -d '' file; do
+            key="${file#pages-dist/}"
+            file_count=$((file_count + 1))
+            byte_count=$((byte_count + $(stat -c%s "$file")))
+
+            aws s3 cp "$file" "s3://${R2_BUCKET}/${key}" \
+              --endpoint-url "$endpoint_url" \
+              --region auto \
+              --cache-control "$(cache_control "$key")" \
+              --content-type "$(content_type "$key")" \
+              --only-show-errors \
+              --no-progress
+          done < <(find pages-dist -type f -print0 | sort -z)
+
+          echo "Uploaded ${file_count} files (${byte_count} bytes) to R2 bucket ${R2_BUCKET}."
+
+      - name: Smoke test staging artifact
+        env:
+          R2_PUBLIC_BASE_URL: ${{ secrets.R2_PUBLIC_BASE_URL }}
+        run: |
+          set -euo pipefail
+
+          smoke_check() {
+            path="$1"
+            expected_cache_control="$2"
+            url="${R2_PUBLIC_BASE_URL%/}/${path}"
+
+            curl --fail-with-body --show-error --silent --head "$url" \
+              | grep -i -F "cache-control: ${expected_cache_control}"
+          }
+
+          curl --fail-with-body --show-error --silent \
+            "${R2_PUBLIC_BASE_URL%/}/manifest.json" \
+            | node -e "JSON.parse(require('node:fs').readFileSync(0, 'utf8'))"
+
+          curl --fail-with-body --show-error --silent \
+            "${R2_PUBLIC_BASE_URL%/}/fixtures/manifest.json" \
+            | node -e "JSON.parse(require('node:fs').readFileSync(0, 'utf8'))"
+
+          smoke_check "index.html" "public, max-age=60"
+          smoke_check "manifest.json" "public, max-age=60"
+          smoke_check "archive.tar.gz" "public, max-age=300"
+          smoke_check "archive.zip" "public, max-age=300"
+          smoke_check "fixtures/manifest.json" "public, max-age=60"
+
+      - name: Trigger staging mrtdown-site pull workflow
+        env:
+          MRTDOWN_SITE_PULL_URL: ${{ secrets.MRTDOWN_SITE_PULL_URL }}
+          MRTDOWN_SITE_INTERNAL_API_TOKEN: ${{ secrets.MRTDOWN_SITE_INTERNAL_API_TOKEN }}
+        run: |
+          if [[ -z "$MRTDOWN_SITE_PULL_URL" || -z "$MRTDOWN_SITE_INTERNAL_API_TOKEN" ]]; then
+            echo "Staging site pull secrets are not configured; skipping."
+            exit 0
+          fi
+
+          curl --fail-with-body --show-error --silent \
+            --user-agent "mrtdown-data-r2-staging-deploy/1.0" \
+            --request POST \
+            --header "Accept: application/json" \
+            --header "Authorization: Bearer ${MRTDOWN_SITE_INTERNAL_API_TOKEN}" \
+            "$MRTDOWN_SITE_PULL_URL"
