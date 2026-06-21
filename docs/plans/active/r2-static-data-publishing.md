@@ -183,7 +183,8 @@ Add an R2 staging deploy workflow.
 
 Initial trigger:
 
-- `workflow_dispatch`
+- push to `main`
+- `workflow_dispatch`, guarded to `main`
 
 Follow-up trigger after confidence:
 
@@ -205,12 +206,12 @@ production environment job.
 
 Initial trigger:
 
-- manual approval after staging succeeds
+- push to `production`
+- `workflow_dispatch`, guarded to `production`
 
-Longer-term trigger:
-
-- push to `main`, with production protected by GitHub Environment rules if
-  useful
+The `production` branch should be promoted from reviewed commits that have
+already published successfully to staging from `main`. Keep the production
+GitHub Environment protected if manual approval remains useful.
 
 Required steps:
 

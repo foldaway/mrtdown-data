@@ -3,6 +3,9 @@
 name: Deploy R2 Production
 
 on:
+  push:
+    branches:
+      - production
   workflow_dispatch:
 
 permissions:
@@ -14,13 +17,16 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.ref == 'refs/heads/production'
     environment:
       name: production
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
         with:
           node-version: 24
           cache: npm
@@ -56,6 +62,8 @@ jobs:
 
           aws configure set default.s3.max_concurrent_requests 64
           aws configure set default.s3.max_queue_size 10000
+          aws configure set default.cli_connect_timeout 60
+          aws configure set default.cli_read_timeout 60
 
           aws s3 cp pages-dist "s3://${R2_BUCKET}" \
             --recursive \
@@ -84,10 +92,28 @@ jobs:
               --no-progress
           }
 
+          upload_default_cache_file() {
+            key="$1"
+            content_type="$2"
+            file="pages-dist/${key}"
+
+            aws s3 cp "$file" "s3://${R2_BUCKET}/${key}" \
+              --endpoint-url "$endpoint_url" \
+              --region auto \
+              --cache-control "public, max-age=300" \
+              --content-type "$content_type" \
+              --only-show-errors \
+              --no-progress
+          }
+
           upload_short_cache_file "index.html" "text/html; charset=utf-8"
           upload_short_cache_file "manifest.json" "application/json; charset=utf-8"
           upload_short_cache_file "fixtures/index.html" "text/html; charset=utf-8"
           upload_short_cache_file "fixtures/manifest.json" "application/json; charset=utf-8"
+
+          while IFS= read -r -d '' file; do
+            upload_default_cache_file "${file#pages-dist/}" "application/x-ndjson; charset=utf-8"
+          done < <(find pages-dist -type f -name '*.ndjson' -print0 | sort -z)
 
           file_count="$(find pages-dist -type f | wc -l | tr -d ' ')"
           byte_count="$(find pages-dist -type f -exec stat -c%s {} + | awk '{ total += $1 } END { print total + 0 }')"
@@ -136,6 +162,8 @@ jobs:
 
             status="$(
               curl --location --show-error --silent \
+                --connect-timeout 10 \
+                --max-time 60 \
                 --header "Cache-Control: no-cache" \
                 --output /dev/null \
                 --dump-header "$headers_file" \
@@ -169,12 +197,16 @@ jobs:
 
           echo "Smoke check: manifest.json JSON"
           curl --fail-with-body --show-error --silent \
+            --connect-timeout 10 \
+            --max-time 60 \
             --header "Cache-Control: no-cache" \
             "${R2_PUBLIC_BASE_URL%/}/manifest.json?${cache_buster}" \
             | node -e "JSON.parse(require('node:fs').readFileSync(0, 'utf8'))"
 
           echo "Smoke check: fixtures/manifest.json JSON"
           curl --fail-with-body --show-error --silent \
+            --connect-timeout 10 \
+            --max-time 60 \
             --header "Cache-Control: no-cache" \
             "${R2_PUBLIC_BASE_URL%/}/fixtures/manifest.json?${cache_buster}" \
             | node -e "JSON.parse(require('node:fs').readFileSync(0, 'utf8'))"
@@ -191,11 +223,13 @@ jobs:
           MRTDOWN_SITE_INTERNAL_API_TOKEN: ${{ secrets.MRTDOWN_SITE_INTERNAL_API_TOKEN }}
         run: |
           if [[ -z "$MRTDOWN_SITE_PULL_URL" || -z "$MRTDOWN_SITE_INTERNAL_API_TOKEN" ]]; then
-            echo "Production site pull secrets are not configured; skipping."
-            exit 0
+            echo "::error::Production site pull secrets are required."
+            exit 1
           fi
 
           curl --fail-with-body --show-error --silent \
+            --connect-timeout 10 \
+            --max-time 60 \
             --user-agent "mrtdown-data-r2-production-deploy/1.0" \
             --request POST \
             --header "Accept: application/json" \
