@@ -9,6 +9,8 @@ plan.
 - [GTFS static and realtime support](active/gtfs-static-realtime.md):
   deterministic GTFS Static export, Pages publication, and GTFS Realtime
   evidence ingest boundaries.
+- [R2 static data publishing](active/r2-static-data-publishing.md): staging and
+  production Cloudflare R2 publication for the generated static data artifact.
 - [Schematic system map generation](active/schematic-system-map.md): canonical
   schematic map generator, rule schema, validation, and publication.
 - [Station first and last train data](active/station-first-last-train-data.md):
