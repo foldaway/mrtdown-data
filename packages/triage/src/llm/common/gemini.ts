@@ -5,11 +5,10 @@ import type {
   GenerateContentConfig,
   GenerateContentResponse,
 } from '@google/genai';
-import { FunctionCallingConfigMode } from '@google/genai';
+import { FunctionCallingConfigMode, ThinkingLevel } from '@google/genai';
 import { type ZodType, z } from 'zod';
 import { assert } from '../../util/assert.js';
 import type { ToolRegistry } from './tool.js';
-import { ThinkingLevel } from '@google/genai';
 
 type JsonObject = { [key: string]: unknown };
 
