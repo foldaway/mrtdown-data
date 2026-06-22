@@ -11,6 +11,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: llm-evals
+  cancel-in-progress: false
+
 jobs:
   changed-function-evals:
     runs-on: ubuntu-latest
