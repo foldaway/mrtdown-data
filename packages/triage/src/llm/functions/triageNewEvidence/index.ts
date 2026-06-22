@@ -1,20 +1,25 @@
+import type { GenerateContentResponse } from '@google/genai';
+import { type Content, createUserContent } from '@google/genai';
 import { IssueIdSchema, IssueTypeSchema } from '@mrtdown/core';
 import type { MRTDownRepository } from '@mrtdown/fs';
 import { DateTime } from 'luxon';
-import type {
-  ParsedResponse,
-  ResponseInputItem,
-} from 'openai/resources/responses/responses.mjs';
 import z from 'zod';
 import {
-  logOpenAIUsageCostSummary,
-  normalizeOpenAIResponsesUsage,
-  OpenAIUsageCostTracker,
-} from '../../../helpers/estimateOpenAICost.js';
+  GeminiUsageTracker,
+  logGeminiUsageSummary,
+  normalizeGeminiUsage,
+} from '../../../helpers/geminiUsage.js';
 import { assert } from '../../../util/assert.js';
-import { getOpenAiClient } from '../../client.js';
-import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
+import { getGeminiClient } from '../../client.js';
+import {
+  buildGeminiJsonConfig,
+  getGeminiFunctionCalls,
+  getGeminiModelContent,
+  parseGeminiJsonResponse,
+  toGeminiFunctionResponseContent,
+} from '../../common/gemini.js';
 import type { ToolRegistry } from '../../common/tool.js';
+import { GEMINI_TRIAGE_MODEL } from '../../models.js';
 import { buildSystemPrompt } from './prompt.js';
 import { FindIssuesByDateRangeTool } from './tools/FindIssuesByDateRangeTool.js';
 import { FindIssuesTool } from './tools/FindIssuesTool.js';
@@ -65,163 +70,127 @@ export async function triageNewEvidence(params: TriageNewEvidenceParams) {
 
   const systemPrompt = buildSystemPrompt();
 
-  const context: ResponseInputItem[] = [
-    {
-      role: 'user',
-      content: `
+  const context: Content[] = [
+    createUserContent(
+      `
 Evidence: ${params.newEvidence.text}
 
 Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true })}
 `.trim(),
-    },
+    ),
   ];
 
   let toolCallCount = 0;
   let reachedToolCallLimit = false;
-  const model = 'gpt-5.4-mini';
-  const usageCostTracker = new OpenAIUsageCostTracker();
+  const model = GEMINI_TRIAGE_MODEL;
+  const usageTracker = new GeminiUsageTracker();
 
-  let response: ParsedResponse<z.infer<typeof ResponseSchema>>;
+  let response: GenerateContentResponse;
   do {
-    response = await getOpenAiClient().responses.parse({
+    response = await getGeminiClient().models.generateContent({
       model,
-      input: context,
-      instructions: systemPrompt,
-      reasoning: {
-        effort: 'low',
-      },
-      text: {
-        format: {
-          type: 'json_schema',
-          name: 'Response',
-          strict: true,
-          schema: toOpenAiJsonSchema(ResponseSchema),
-        },
-      },
-      tools: Object.values(toolRegistry).map((tool) => {
-        return {
-          type: 'function',
-          name: tool.name,
-          description: tool.description,
-          parameters: tool.paramsSchema,
-          strict: true,
-        };
+      contents: context,
+      config: buildGeminiJsonConfig({
+        systemPrompt,
+        responseSchema: ResponseSchema,
+        toolRegistry,
       }),
-      // Don't persist conversation with OpenAI, but include reasoning content to
-      // continue the thread with the same reasoning.
-      store: false,
-      include: ['reasoning.encrypted_content'],
     });
 
-    for (const item of response.output) {
-      switch (item.type) {
-        case 'function_call': {
-          /**
-           * Prevent the `parsed_arguments` field from being included
-           * https://github.com/openai/openai-python/issues/2374
-           */
-          context.push({
-            type: 'function_call',
-            id: item.id,
-            call_id: item.call_id,
-            name: item.name,
-            arguments: item.arguments,
-          });
-          toolCallCount++;
+    const modelContent = getGeminiModelContent(response);
+    if (modelContent != null) {
+      context.push(modelContent);
+    }
 
-          if (toolCallCount > TOOL_CALL_LIMIT) {
-            context.push({
-              type: 'function_call_output',
-              call_id: item.call_id,
-              output: 'Ran out of tool calls. Stop Calling.',
-            });
-            console.log(
-              'Forced short-circuit, returning error message in tool call result.',
-            );
-            reachedToolCallLimit = true;
-            break;
-          }
+    const functionCalls = getGeminiFunctionCalls(response);
+    for (const functionCall of functionCalls) {
+      assert(
+        functionCall.name != null && functionCall.name.trim() !== '',
+        'Gemini function call name is missing',
+      );
 
-          if (item.name in toolRegistry) {
-            const tool = toolRegistry[item.name];
+      toolCallCount++;
 
-            let params: unknown;
-
-            try {
-              params = tool.parseParams(JSON.parse(item.arguments));
-            } catch (e) {
-              console.error(
-                `[triageNewEvidence] Error parsing parameters for tool "${item.name}" with arguments "${item.arguments}":`,
-                e,
-              );
-              context.push({
-                type: 'function_call_output',
-                call_id: item.call_id,
-                output: `Invalid parameters for tool "${item.name}". Please try again.`,
-              });
-              continue;
-            }
-
-            let result: string;
-
-            try {
-              result = await tool.runner(params);
-            } catch (e) {
-              console.error(
-                `[triageNewEvidence] Error running tool "${item.name}":`,
-                e,
-              );
-              context.push({
-                type: 'function_call_output',
-                call_id: item.call_id,
-                output: `Tool "${item.name}" failed. Please continue without it or try a different call.`,
-              });
-              continue;
-            }
-
-            context.push({
-              type: 'function_call_output',
-              call_id: item.call_id,
-              output: result,
-            });
-          } else {
-            context.push({
-              type: 'function_call_output',
-              call_id: item.call_id,
-              output: `Unknown tool "${item.name}". Please use one of the available tools.`,
-            });
-          }
-
-          break;
-        }
-        default: {
-          context.push(item as ResponseInputItem);
-          break;
-        }
+      if (toolCallCount > TOOL_CALL_LIMIT) {
+        context.push(
+          toGeminiFunctionResponseContent({
+            functionCall,
+            output: 'Ran out of tool calls. Stop calling.',
+          }),
+        );
+        console.log(
+          'Forced short-circuit, returning error message in tool call result.',
+        );
+        reachedToolCallLimit = true;
+        break;
       }
 
-      if (reachedToolCallLimit) {
-        break;
+      if (functionCall.name in toolRegistry) {
+        const tool = toolRegistry[functionCall.name];
+
+        let parsedParams: unknown;
+
+        try {
+          parsedParams = tool.parseParams(functionCall.args ?? {});
+        } catch (e) {
+          console.error(
+            `[triageNewEvidence] Error parsing parameters for tool "${functionCall.name}" with arguments "${JSON.stringify(functionCall.args ?? {})}":`,
+            e,
+          );
+          context.push(
+            toGeminiFunctionResponseContent({
+              functionCall,
+              output: `Invalid parameters for tool "${functionCall.name}". Please try again.`,
+            }),
+          );
+          continue;
+        }
+
+        let result: string;
+
+        try {
+          result = await tool.runner(parsedParams);
+        } catch (e) {
+          console.error(
+            `[triageNewEvidence] Error running tool "${functionCall.name}":`,
+            e,
+          );
+          context.push(
+            toGeminiFunctionResponseContent({
+              functionCall,
+              output: `Tool "${functionCall.name}" failed. Please continue without it or try a different call.`,
+            }),
+          );
+          continue;
+        }
+
+        context.push(
+          toGeminiFunctionResponseContent({ functionCall, output: result }),
+        );
+      } else {
+        context.push(
+          toGeminiFunctionResponseContent({
+            functionCall,
+            output: `Unknown tool "${functionCall.name}". Please use one of the available tools.`,
+          }),
+        );
       }
     }
 
-    const usage = normalizeOpenAIResponsesUsage(response.usage);
-    usageCostTracker.add({ model, usage });
+    usageTracker.add(normalizeGeminiUsage(response.usageMetadata));
   } while (
     !reachedToolCallLimit &&
-    response.output.some((item) => item.type === 'function_call')
+    getGeminiFunctionCalls(response).length > 0
   );
 
-  logOpenAIUsageCostSummary({
+  logGeminiUsageSummary({
     label: 'triageNewEvidence',
-    summary: usageCostTracker.summary(),
+    summary: usageTracker.summary(),
   });
 
   if (reachedToolCallLimit) {
     throw new Error(`Exceeded tool call limit of ${TOOL_CALL_LIMIT}`);
   }
 
-  assert(response.output_parsed != null, 'Response output parsed is null');
-
-  return response.output_parsed;
+  return parseGeminiJsonResponse(response, ResponseSchema);
 }

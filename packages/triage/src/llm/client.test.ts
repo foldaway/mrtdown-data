@@ -1,30 +1,31 @@
+import { GoogleGenAI } from '@google/genai';
 import { afterEach, describe, expect, it } from 'vitest';
-import { getOpenAiClient } from './client.js';
+import { getGeminiClient } from './client.js';
 
-const originalApiKey = process.env.OPENAI_API_KEY;
+const originalApiKey = process.env.GEMINI_API_KEY;
 
 afterEach(() => {
   if (originalApiKey == null) {
-    delete process.env.OPENAI_API_KEY;
+    delete process.env.GEMINI_API_KEY;
   } else {
-    process.env.OPENAI_API_KEY = originalApiKey;
+    process.env.GEMINI_API_KEY = originalApiKey;
   }
 });
 
-describe('getOpenAiClient', () => {
-  it('requires an OpenAI API key', () => {
-    delete process.env.OPENAI_API_KEY;
+describe('getGeminiClient', () => {
+  it('requires a Gemini API key', () => {
+    delete process.env.GEMINI_API_KEY;
 
-    expect(() => getOpenAiClient()).toThrow(
-      'OPENAI_API_KEY must be set before creating OpenAI client',
+    expect(() => getGeminiClient()).toThrow(
+      'GEMINI_API_KEY must be set before creating Gemini client',
     );
   });
 
-  it('disables OpenAI SDK request retries', () => {
-    process.env.OPENAI_API_KEY = 'test-key';
+  it('creates a Gemini SDK client', () => {
+    process.env.GEMINI_API_KEY = 'test-key';
 
-    const client = getOpenAiClient();
+    const client = getGeminiClient();
 
-    expect(client.maxRetries).toBe(0);
+    expect(client).toBeInstanceOf(GoogleGenAI);
   });
 });

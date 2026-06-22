@@ -38,14 +38,14 @@ implicitly through `npm test`, `npm run test:packages`, or CI harness commands.
 
 Required environment variables:
 
-- `OPENAI_API_KEY`: OpenAI API key used by eval cases.
+- `GEMINI_API_KEY`: Gemini API key used by eval cases.
 
 Model dependency:
 
-- `extractClaimsFromNewEvidence` uses `gpt-5.4-mini`.
-- `triageNewEvidence` uses `gpt-5.4-mini`.
-- title/slug generation uses `gpt-5.4-nano`.
-- translation uses `gpt-5.4-nano`.
+- `extractClaimsFromNewEvidence` uses `gemini-3-flash-preview`.
+- `triageNewEvidence` uses `gemini-3-flash-preview`.
+- title/slug generation uses `gemini-3.1-flash-lite`.
+- translation uses `gemini-3.1-flash-lite`.
 
 Expected cost before running the checked-in eval set: less than USD 1 with the
 current short fixtures. Revisit this estimate in the same PR when adding or

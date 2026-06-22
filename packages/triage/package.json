@@ -33,6 +33,7 @@
     "test:eval": "node ../../scripts/run-fixture-command.mjs -- npm exec -- vitest --run --config vitest.eval.config.ts"
   },
   "dependencies": {
+    "@google/genai": "^2.8.0",
     "@mrtdown/core": "2.0.0-alpha.26",
     "@mrtdown/fs": "2.0.0-alpha.26",
     "@mrtdown/ingest-contracts": "2.0.0-alpha.29",
@@ -42,7 +43,6 @@
     "luxon": "^3.7.2",
     "mdast-util-gfm": "^3.1.0",
     "mdast-util-to-markdown": "^2.1.2",
-    "openai": "^6.42.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {

@@ -1,13 +1,15 @@
-import type { ResponseInputItem } from 'openai/resources/responses/responses.mjs';
 import { z } from 'zod';
 import {
-  logOpenAIUsageCostSummary,
-  normalizeOpenAIResponsesUsage,
-  OpenAIUsageCostTracker,
-} from '../../../helpers/estimateOpenAICost.js';
-import { assert } from '../../../util/assert.js';
-import { getOpenAiClient } from '../../client.js';
-import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
+  GeminiUsageTracker,
+  logGeminiUsageSummary,
+  normalizeGeminiUsage,
+} from '../../../helpers/geminiUsage.js';
+import { getGeminiClient } from '../../client.js';
+import {
+  buildGeminiJsonConfig,
+  parseGeminiJsonResponse,
+} from '../../common/gemini.js';
+import { GEMINI_FAST_MODEL } from '../../models.js';
 import { buildSystemPrompt } from './prompt.js';
 
 export const ResponseSchema = z.object({
@@ -33,41 +35,25 @@ export async function generateIssueTitleAndSlug(
   params: GenerateIssueTitleAndSlugParams,
 ): Promise<GenerateIssueTitleAndSlugResult> {
   const systemPrompt = buildSystemPrompt();
-  const model = 'gpt-5.4-nano';
-  const usageCostTracker = new OpenAIUsageCostTracker();
+  const model = GEMINI_FAST_MODEL;
+  const usageTracker = new GeminiUsageTracker();
 
-  const context: ResponseInputItem[] = [
-    {
-      role: 'user',
-      content: `
+  const response = await getGeminiClient().models.generateContent({
+    model,
+    contents: `
 Text: ${params.text}
 `.trim(),
-    },
-  ];
-
-  const response = await getOpenAiClient().responses.parse({
-    model,
-    input: context,
-    instructions: systemPrompt,
-    text: {
-      format: {
-        type: 'json_schema',
-        name: 'Response',
-        strict: true,
-        schema: toOpenAiJsonSchema(ResponseSchema),
-      },
-    },
-    store: false,
+    config: buildGeminiJsonConfig({
+      systemPrompt,
+      responseSchema: ResponseSchema,
+    }),
   });
 
-  const usage = normalizeOpenAIResponsesUsage(response.usage);
-  usageCostTracker.add({ model, usage });
-  logOpenAIUsageCostSummary({
+  usageTracker.add(normalizeGeminiUsage(response.usageMetadata));
+  logGeminiUsageSummary({
     label: 'generateIssueTitleAndSlug',
-    summary: usageCostTracker.summary(),
+    summary: usageTracker.summary(),
   });
 
-  assert(response.output_parsed != null, 'Response output parsed is null');
-
-  return response.output_parsed;
+  return parseGeminiJsonResponse(response, ResponseSchema);
 }

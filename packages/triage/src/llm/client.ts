@@ -1,13 +1,10 @@
-import OpenAI from 'openai';
+import { GoogleGenAI } from '@google/genai';
 
-export function getOpenAiClient() {
-  const apiKey = process.env.OPENAI_API_KEY;
+export function getGeminiClient() {
+  const apiKey = process.env.GEMINI_API_KEY;
   if (apiKey == null || apiKey.trim() === '') {
-    throw new Error('OPENAI_API_KEY must be set before creating OpenAI client');
+    throw new Error('GEMINI_API_KEY must be set before creating Gemini client');
   }
 
-  return new OpenAI({
-    apiKey,
-    maxRetries: 0,
-  });
+  return new GoogleGenAI({ apiKey });
 }

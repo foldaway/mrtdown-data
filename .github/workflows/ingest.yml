@@ -57,7 +57,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
       - run: npm run ingest:webhook
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           MESSAGE: ${{ steps.ingest-payload.outputs.message }}
       - run: npm run data:validate
       - name: Check for changes

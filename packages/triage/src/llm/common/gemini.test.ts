@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import { toOpenAiJsonSchema } from './jsonSchema.js';
+import { toGeminiJsonSchema } from './gemini.js';
 
 function findSchemaKey(value: unknown, key: string): boolean {
   if (Array.isArray(value)) {
@@ -17,8 +17,8 @@ function findSchemaKey(value: unknown, key: string): boolean {
   );
 }
 
-describe('toOpenAiJsonSchema', () => {
-  it('rewrites Zod discriminated-union oneOf entries to anyOf', () => {
+describe('toGeminiJsonSchema', () => {
+  it('rewrites Zod discriminated-union oneOf entries to Gemini-supported anyOf', () => {
     const schema = z.object({
       result: z.discriminatedUnion('kind', [
         z.object({ kind: z.literal('existing'), id: z.string() }),
@@ -26,7 +26,7 @@ describe('toOpenAiJsonSchema', () => {
       ]),
     });
 
-    const jsonSchema = toOpenAiJsonSchema(schema);
+    const jsonSchema = toGeminiJsonSchema(schema);
 
     expect(findSchemaKey(jsonSchema, 'oneOf')).toBe(false);
     expect(findSchemaKey(jsonSchema, 'anyOf')).toBe(true);
