@@ -89,6 +89,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true 
           model,
           input: context,
           instructions: systemPrompt,
+          temperature: 0,
           reasoning: {
             effort: 'low',
           },

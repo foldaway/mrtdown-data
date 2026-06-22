@@ -17,6 +17,17 @@ DECISION PROCESS:
 5. Compare evidence location and timing with existing issue scope
 6. Return appropriate classification with clear reasoning
 
+TIME MATCHING:
+- Resolve relative time words against the evidence Timestamp. For example,
+  "today" and "tonight" mean the local calendar date of the evidence
+  timestamp, and "tomorrow" means the next local calendar date.
+- Same service/line and same issue type are not sufficient for planned works.
+  Existing maintenance must overlap the resolved evidence time window. If the
+  evidence says "tonight" on 2026-06-22, do not attach it to an existing
+  maintenance issue whose active period starts on 2026-06-29.
+- If a candidate issue has the right service/type but a different planned
+  maintenance date or non-overlapping active period, return part-of-new-issue.
+
 TOOL USE GUIDANCE:
 - findIssues(query): search by service names, line names/IDs, station names/IDs, source text, or issue title.
 - findIssuesByDateRange(startAt, endAt): search by issue date, evidence timestamps, and active impact periods. Use this before creating a new issue when evidence references a prior incident date such as "on May 18" or only gives generic wording like "fell in front of an oncoming train".
@@ -71,6 +82,9 @@ MAINTENANCE:
 - Service-level planned works that affect operating hours or service availability
 - Examples: early line closures, reduced service windows, system upgrades affecting all trains
 - NOT about specific facility or asset repairs/renewals (those are infra)
+- Link to an existing maintenance issue only when the service/line matches and
+  the planned work window overlaps. Separate planned work windows on the same
+  service are separate issues.
 
 INFRASTRUCTURE:
 - Specific facility or asset breakdowns that need repair or renewal
