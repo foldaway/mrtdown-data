@@ -48,7 +48,12 @@ for (const file of files) {
     continue;
   }
 
-  const text = readFileSync(join(repoRoot, file), 'utf8');
+  const filePath = join(repoRoot, file);
+  if (!existsSync(filePath)) {
+    continue;
+  }
+
+  const text = readFileSync(filePath, 'utf8');
   for (const match of text.matchAll(importPattern)) {
     const specifier = match[1];
     const dependency = specifier.match(/^@mrtdown\/([^/]+)/)?.[1];
