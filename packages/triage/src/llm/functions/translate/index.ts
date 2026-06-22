@@ -6,7 +6,7 @@ import {
   OpenAIUsageCostTracker,
 } from '../../../helpers/estimateOpenAICost.js';
 import { assert } from '../../../util/assert.js';
-import { getOpenAiClient, runOpenAIRequestWithRetry } from '../../client.js';
+import { getOpenAiClient } from '../../client.js';
 import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
 import { TRANSLATE_MODEL } from './model.js';
 
@@ -16,13 +16,11 @@ export async function translate(text: string) {
 
   const context: ResponseInputItem[] = [{ role: 'user', content: text }];
 
-  const response = await runOpenAIRequestWithRetry(
-    () =>
-      getOpenAiClient().responses.parse({
-        model,
-        input: context,
-        instructions:
-          `You are a helpful assistant that translates text to the following languages:
+  const response = await getOpenAiClient().responses.parse({
+    model,
+    input: context,
+    instructions:
+      `You are a helpful assistant that translates text to the following languages:
 - English
 - Chinese (Simplified)
 - Malay
@@ -33,25 +31,21 @@ Line names, station names, service IDs, station codes, operator names, road name
 Copy those proper nouns exactly as written in the source text into every locale.
 Do not translate, transliterate, localize, shorten, or abbreviate those proper nouns.
 `.trim(),
-        text: {
-          format: {
-            type: 'json_schema',
-            name: 'Translation',
-            strict: true,
-            schema: toOpenAiJsonSchema(TranslationsSchema),
-          },
-        },
-        reasoning: {
-          effort: 'low',
-          summary: 'concise',
-        },
-        store: false,
-        include: ['reasoning.encrypted_content'],
-      }),
-    {
-      label: 'translate',
+    text: {
+      format: {
+        type: 'json_schema',
+        name: 'Translation',
+        strict: true,
+        schema: toOpenAiJsonSchema(TranslationsSchema),
+      },
     },
-  );
+    reasoning: {
+      effort: 'low',
+      summary: 'concise',
+    },
+    store: false,
+    include: ['reasoning.encrypted_content'],
+  });
 
   const usage = normalizeOpenAIResponsesUsage(response.usage);
   usageCostTracker.add({ model, usage });

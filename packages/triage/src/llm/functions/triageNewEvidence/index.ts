@@ -12,7 +12,7 @@ import {
   OpenAIUsageCostTracker,
 } from '../../../helpers/estimateOpenAICost.js';
 import { assert } from '../../../util/assert.js';
-import { getOpenAiClient, runOpenAIRequestWithRetry } from '../../client.js';
+import { getOpenAiClient } from '../../client.js';
 import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
 import type { ToolRegistry } from '../../common/tool.js';
 import { buildSystemPrompt } from './prompt.js';
@@ -83,41 +83,35 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true 
 
   let response: ParsedResponse<z.infer<typeof ResponseSchema>>;
   do {
-    response = await runOpenAIRequestWithRetry(
-      () =>
-        getOpenAiClient().responses.parse({
-          model,
-          input: context,
-          instructions: systemPrompt,
-          reasoning: {
-            effort: 'low',
-          },
-          text: {
-            format: {
-              type: 'json_schema',
-              name: 'Response',
-              strict: true,
-              schema: toOpenAiJsonSchema(ResponseSchema),
-            },
-          },
-          tools: Object.values(toolRegistry).map((tool) => {
-            return {
-              type: 'function',
-              name: tool.name,
-              description: tool.description,
-              parameters: tool.paramsSchema,
-              strict: true,
-            };
-          }),
-          // Don't persist conversation with OpenAI, but include reasoning content to
-          // continue the thread with the same reasoning.
-          store: false,
-          include: ['reasoning.encrypted_content'],
-        }),
-      {
-        label: 'triageNewEvidence',
+    response = await getOpenAiClient().responses.parse({
+      model,
+      input: context,
+      instructions: systemPrompt,
+      reasoning: {
+        effort: 'low',
       },
-    );
+      text: {
+        format: {
+          type: 'json_schema',
+          name: 'Response',
+          strict: true,
+          schema: toOpenAiJsonSchema(ResponseSchema),
+        },
+      },
+      tools: Object.values(toolRegistry).map((tool) => {
+        return {
+          type: 'function',
+          name: tool.name,
+          description: tool.description,
+          parameters: tool.paramsSchema,
+          strict: true,
+        };
+      }),
+      // Don't persist conversation with OpenAI, but include reasoning content to
+      // continue the thread with the same reasoning.
+      store: false,
+      include: ['reasoning.encrypted_content'],
+    });
 
     for (const item of response.output) {
       switch (item.type) {
