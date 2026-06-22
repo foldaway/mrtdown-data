@@ -40,7 +40,7 @@
     "hast-util-to-html": "^9.0.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.14",
+    "@biomejs/biome": "2.5.0",
     "@types/hast": "^3.0.4",
     "@types/node": "24.13.2",
     "typescript": "^5.8.3",
