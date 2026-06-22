@@ -1,6 +1,8 @@
 import type { Claim, Service } from '@mrtdown/core';
 import type { MRTDownRepository } from '@mrtdown/fs';
 
+const DAYS_OF_WEEK = ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'] as const;
+
 export function normalizeClaimsForEvidence(params: {
   claims: Claim[];
   evidenceTs: string;
@@ -31,11 +33,31 @@ function normalizeClaimFields(claims: Claim[]): Claim[] {
       service: claim.effect?.service ?? null,
       facility: claim.effect?.facility ?? null,
     };
+    const timeHints = normalizeTimeHints(claim.timeHints);
 
-    return causes === claim.causes && effect === claim.effect
+    return causes === claim.causes &&
+      effect === claim.effect &&
+      timeHints === claim.timeHints
       ? claim
-      : { ...claim, effect, causes };
+      : { ...claim, effect, timeHints, causes };
   });
+}
+
+function normalizeTimeHints(claim: Claim['timeHints']): Claim['timeHints'] {
+  if (
+    claim?.kind !== 'recurring' ||
+    claim.frequency !== 'daily' ||
+    claim.daysOfWeek == null
+  ) {
+    return claim;
+  }
+
+  const uniqueDaysOfWeek = new Set(claim.daysOfWeek);
+  const coversEveryDay =
+    uniqueDaysOfWeek.size === 7 &&
+    DAYS_OF_WEEK.every((day) => uniqueDaysOfWeek.has(day));
+
+  return coversEveryDay ? { ...claim, daysOfWeek: null } : claim;
 }
 
 function ensureServiceImpactClaimsHavePeriodAnchors(

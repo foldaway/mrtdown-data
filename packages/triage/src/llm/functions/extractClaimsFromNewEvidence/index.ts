@@ -7,11 +7,12 @@ import type {
 } from 'openai/resources/responses/responses.js';
 import z from 'zod';
 import {
-  estimateOpenAICostFromUsage,
+  logOpenAIUsageCostSummary,
   normalizeOpenAIResponsesUsage,
+  OpenAIUsageCostTracker,
 } from '../../../helpers/estimateOpenAICost.js';
 import { assert } from '../../../util/assert.js';
-import { getOpenAiClient } from '../../client.js';
+import { getOpenAiClient, runOpenAIRequestWithRetry } from '../../client.js';
 import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
 import type { ToolRegistry } from '../../common/tool.js';
 import { normalizeClaimsForEvidence } from './normalizeClaimsForEvidence.js';
@@ -46,7 +47,9 @@ export type ExtractClaimsFromNewEvidenceResult = {
 export async function extractClaimsFromNewEvidence(
   params: ExtractClaimsFromNewEvidenceParams,
 ): Promise<ExtractClaimsFromNewEvidenceResult> {
-  const evidenceTs = DateTime.fromISO(params.newEvidence.ts);
+  const evidenceTs = DateTime.fromISO(params.newEvidence.ts, {
+    setZone: true,
+  });
   assert(evidenceTs.isValid, `Invalid date: ${params.newEvidence.ts}`);
 
   const findStationsTool = new FindStationsTool(evidenceTs, params.repo);
@@ -66,49 +69,56 @@ export async function extractClaimsFromNewEvidence(
       content: `
 Evidence: ${params.newEvidence.text}
 
-Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
+Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true })}
 `.trim(),
     },
   ];
 
   const systemPrompt = buildSystemPrompt();
-  const model = 'gpt-5-mini';
+  const model = 'gpt-5.4-mini';
+  const usageCostTracker = new OpenAIUsageCostTracker();
 
   let toolCallCount = 0;
   let reachedToolCallLimit = false;
 
   let response: ParsedResponse<z.infer<typeof ResponseSchema>>;
   do {
-    response = await getOpenAiClient().responses.parse({
-      model,
-      instructions: systemPrompt,
-      input: context,
-      reasoning: {
-        effort: 'low',
-      },
-      text: {
-        format: {
-          type: 'json_schema',
-          name: 'Response',
-          strict: true,
-          schema: toOpenAiJsonSchema(ResponseSchema),
-        },
-      },
-      tools: Object.values(toolRegistry).map((tool) => {
-        return {
-          type: 'function',
-          name: tool.name,
-          description: tool.description,
-          parameters: tool.paramsSchema,
-          strict: true,
-        };
-      }),
+    response = await runOpenAIRequestWithRetry(
+      () =>
+        getOpenAiClient().responses.parse({
+          model,
+          instructions: systemPrompt,
+          input: context,
+          reasoning: {
+            effort: 'low',
+          },
+          text: {
+            format: {
+              type: 'json_schema',
+              name: 'Response',
+              strict: true,
+              schema: toOpenAiJsonSchema(ResponseSchema),
+            },
+          },
+          tools: Object.values(toolRegistry).map((tool) => {
+            return {
+              type: 'function',
+              name: tool.name,
+              description: tool.description,
+              parameters: tool.paramsSchema,
+              strict: true,
+            };
+          }),
 
-      // Don't persist conversation with OpenAI, but include reasoning content to
-      // continue the thread with the same reasoning.
-      store: false,
-      include: ['reasoning.encrypted_content'],
-    });
+          // Don't persist conversation with OpenAI, but include reasoning content to
+          // continue the thread with the same reasoning.
+          store: false,
+          include: ['reasoning.encrypted_content'],
+        }),
+      {
+        label: 'extractClaimsFromNewEvidence',
+      },
+    );
 
     for (const item of response.output) {
       switch (item.type) {
@@ -203,31 +213,16 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
     }
 
     const usage = normalizeOpenAIResponsesUsage(response.usage);
-    const estimate = estimateOpenAICostFromUsage({ model, usage });
-    if (usage != null) {
-      console.log('[extractClaimsFromNewEvidence] Usage:', {
-        inputTokens: usage.inputTokens,
-        cachedInputTokens: usage.cachedInputTokens,
-        outputTokens: usage.outputTokens,
-        totalTokens: usage.totalTokens,
-      });
-      if (estimate != null) {
-        console.log(
-          '[extractClaimsFromNewEvidence] Estimated cost (USD):',
-          estimate.estimatedCostUsd.toFixed(8),
-        );
-      } else {
-        console.log(
-          `[extractClaimsFromNewEvidence] No pricing configured for model "${model}".`,
-        );
-      }
-    } else {
-      console.log('[extractClaimsFromNewEvidence] Usage is unavailable');
-    }
+    usageCostTracker.add({ model, usage });
   } while (
     !reachedToolCallLimit &&
     response.output.some((item) => item.type === 'function_call')
   );
+
+  logOpenAIUsageCostSummary({
+    label: 'extractClaimsFromNewEvidence',
+    summary: usageCostTracker.summary(),
+  });
 
   if (reachedToolCallLimit) {
     throw new Error(`Exceeded tool call limit of ${TOOL_CALL_LIMIT}`);

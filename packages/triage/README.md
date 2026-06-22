@@ -42,9 +42,9 @@ Required environment variables:
 
 Model dependency:
 
-- `extractClaimsFromNewEvidence` uses `gpt-5-mini`.
-- `triageNewEvidence` uses `gpt-5-mini`.
-- title/slug generation uses `gpt-5-nano`.
+- `extractClaimsFromNewEvidence` uses `gpt-5.4-mini`.
+- `triageNewEvidence` uses `gpt-5.4-mini`.
+- title/slug generation uses `gpt-5.4-nano`.
 - translation uses `gpt-5.4-nano`.
 
 Expected cost before running the checked-in eval set: less than USD 1 with the

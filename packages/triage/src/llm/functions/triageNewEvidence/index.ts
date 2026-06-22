@@ -6,8 +6,13 @@ import type {
   ResponseInputItem,
 } from 'openai/resources/responses/responses.mjs';
 import z from 'zod';
+import {
+  logOpenAIUsageCostSummary,
+  normalizeOpenAIResponsesUsage,
+  OpenAIUsageCostTracker,
+} from '../../../helpers/estimateOpenAICost.js';
 import { assert } from '../../../util/assert.js';
-import { getOpenAiClient } from '../../client.js';
+import { getOpenAiClient, runOpenAIRequestWithRetry } from '../../client.js';
 import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
 import type { ToolRegistry } from '../../common/tool.js';
 import { buildSystemPrompt } from './prompt.js';
@@ -44,7 +49,9 @@ export type TriageNewEvidenceParams = {
 export type TriageNewEvidenceResult = z.infer<typeof ResponseSchema>;
 
 export async function triageNewEvidence(params: TriageNewEvidenceParams) {
-  const evidenceTs = DateTime.fromISO(params.newEvidence.ts);
+  const evidenceTs = DateTime.fromISO(params.newEvidence.ts, {
+    setZone: true,
+  });
   assert(evidenceTs.isValid, `Invalid date: ${params.newEvidence.ts}`);
 
   const findIssuesTool = new FindIssuesTool(params.repo);
@@ -64,42 +71,53 @@ export async function triageNewEvidence(params: TriageNewEvidenceParams) {
       content: `
 Evidence: ${params.newEvidence.text}
 
-Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
+Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true })}
 `.trim(),
     },
   ];
 
   let toolCallCount = 0;
   let reachedToolCallLimit = false;
+  const model = 'gpt-5.4-mini';
+  const usageCostTracker = new OpenAIUsageCostTracker();
 
   let response: ParsedResponse<z.infer<typeof ResponseSchema>>;
   do {
-    response = await getOpenAiClient().responses.parse({
-      model: 'gpt-5-mini',
-      input: context,
-      instructions: systemPrompt,
-      text: {
-        format: {
-          type: 'json_schema',
-          name: 'Response',
-          strict: true,
-          schema: toOpenAiJsonSchema(ResponseSchema),
-        },
+    response = await runOpenAIRequestWithRetry(
+      () =>
+        getOpenAiClient().responses.parse({
+          model,
+          input: context,
+          instructions: systemPrompt,
+          reasoning: {
+            effort: 'low',
+          },
+          text: {
+            format: {
+              type: 'json_schema',
+              name: 'Response',
+              strict: true,
+              schema: toOpenAiJsonSchema(ResponseSchema),
+            },
+          },
+          tools: Object.values(toolRegistry).map((tool) => {
+            return {
+              type: 'function',
+              name: tool.name,
+              description: tool.description,
+              parameters: tool.paramsSchema,
+              strict: true,
+            };
+          }),
+          // Don't persist conversation with OpenAI, but include reasoning content to
+          // continue the thread with the same reasoning.
+          store: false,
+          include: ['reasoning.encrypted_content'],
+        }),
+      {
+        label: 'triageNewEvidence',
       },
-      tools: Object.values(toolRegistry).map((tool) => {
-        return {
-          type: 'function',
-          name: tool.name,
-          description: tool.description,
-          parameters: tool.paramsSchema,
-          strict: true,
-        };
-      }),
-      // Don't persist conversation with OpenAI, but include reasoning content to
-      // continue the thread with the same reasoning.
-      store: false,
-      include: ['reasoning.encrypted_content'],
-    });
+    );
 
     for (const item of response.output) {
       switch (item.type) {
@@ -192,10 +210,18 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true })}
         break;
       }
     }
+
+    const usage = normalizeOpenAIResponsesUsage(response.usage);
+    usageCostTracker.add({ model, usage });
   } while (
     !reachedToolCallLimit &&
     response.output.some((item) => item.type === 'function_call')
   );
+
+  logOpenAIUsageCostSummary({
+    label: 'triageNewEvidence',
+    summary: usageCostTracker.summary(),
+  });
 
   if (reachedToolCallLimit) {
     throw new Error(`Exceeded tool call limit of ${TOOL_CALL_LIMIT}`);
