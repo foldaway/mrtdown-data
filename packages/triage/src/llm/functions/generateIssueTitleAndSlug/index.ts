@@ -59,6 +59,7 @@ Text: ${params.text}
             schema: toOpenAiJsonSchema(ResponseSchema),
           },
         },
+        store: false,
       }),
     {
       label: 'generateIssueTitleAndSlug',
