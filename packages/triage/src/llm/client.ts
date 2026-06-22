@@ -4,6 +4,7 @@ export type OpenAIRetryOptions = {
   label: string;
   maxAttempts?: number;
   initialDelayMs?: number;
+  maxDelayMs?: number;
   sleep?: (ms: number) => Promise<void>;
 };
 
@@ -22,8 +23,9 @@ export async function runOpenAIRequestWithRetry<T>(
   request: () => Promise<T>,
   {
     label,
-    maxAttempts = 4,
-    initialDelayMs = 500,
+    maxAttempts = 6,
+    initialDelayMs = 1_000,
+    maxDelayMs = 30_000,
     sleep = sleepMs,
   }: OpenAIRetryOptions,
 ): Promise<T> {
@@ -37,7 +39,9 @@ export async function runOpenAIRequestWithRetry<T>(
         throw error;
       }
 
-      const delayMs = initialDelayMs * 2 ** (attempt - 1);
+      const delayMs =
+        getRetryAfterDelayMs(error, maxDelayMs) ??
+        Math.min(maxDelayMs, initialDelayMs * 2 ** (attempt - 1));
       console.warn(
         `${label}: OpenAI request failed with a retryable error; retrying attempt ${attempt + 1}/${maxAttempts} in ${delayMs}ms.`,
       );
@@ -82,6 +86,72 @@ function getStringProperty(value: object, key: string): string | null {
 
   const property = value[key as keyof typeof value];
   return typeof property === 'string' ? property : null;
+}
+
+function getRetryAfterDelayMs(
+  error: unknown,
+  maxDelayMs: number,
+): number | null {
+  if (error == null || typeof error !== 'object' || !('headers' in error)) {
+    return null;
+  }
+
+  const headers = error.headers;
+  const retryAfterMs = parseNumericHeader(
+    getHeaderValue(headers, 'retry-after-ms'),
+  );
+  if (retryAfterMs != null) {
+    return Math.min(maxDelayMs, retryAfterMs);
+  }
+
+  const retryAfter = getHeaderValue(headers, 'retry-after');
+  if (retryAfter == null) {
+    return null;
+  }
+
+  const retryAfterSeconds = Number(retryAfter);
+  if (Number.isFinite(retryAfterSeconds) && retryAfterSeconds >= 0) {
+    return Math.min(maxDelayMs, retryAfterSeconds * 1_000);
+  }
+
+  const retryAfterDate = Date.parse(retryAfter);
+  if (Number.isNaN(retryAfterDate)) {
+    return null;
+  }
+
+  return Math.min(maxDelayMs, Math.max(0, retryAfterDate - Date.now()));
+}
+
+function getHeaderValue(headers: unknown, key: string): string | null {
+  if (headers == null || typeof headers !== 'object') {
+    return null;
+  }
+
+  if ('get' in headers && typeof headers.get === 'function') {
+    const value = headers.get(key);
+    return typeof value === 'string' ? value : null;
+  }
+
+  for (const [headerKey, headerValue] of Object.entries(headers)) {
+    if (headerKey.toLowerCase() !== key) {
+      continue;
+    }
+
+    if (typeof headerValue === 'string') {
+      return headerValue;
+    }
+  }
+
+  return null;
+}
+
+function parseNumericHeader(value: string | null): number | null {
+  if (value == null) {
+    return null;
+  }
+
+  const parsed = Number(value);
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : null;
 }
 
 function sleepMs(ms: number): Promise<void> {

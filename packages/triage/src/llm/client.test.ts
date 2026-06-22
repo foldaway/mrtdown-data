@@ -37,6 +37,53 @@ describe('runOpenAIRequestWithRetry', () => {
     warnSpy.mockRestore();
   });
 
+  it('uses retry-after-ms headers when available', async () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const request = vi
+      .fn<() => Promise<string>>()
+      .mockRejectedValueOnce({
+        status: 429,
+        headers: { 'retry-after-ms': '123' },
+      })
+      .mockResolvedValueOnce('ok');
+    const sleep = vi.fn<() => Promise<void>>().mockResolvedValue(undefined);
+
+    await expect(
+      runOpenAIRequestWithRetry(request, {
+        label: 'testRequest',
+        sleep,
+      }),
+    ).resolves.toBe('ok');
+
+    expect(sleep).toHaveBeenCalledWith(123);
+    warnSpy.mockRestore();
+  });
+
+  it('caps exponential retry delays', async () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const request = vi
+      .fn<() => Promise<string>>()
+      .mockRejectedValueOnce({ status: 500 })
+      .mockRejectedValueOnce({ status: 500 })
+      .mockRejectedValueOnce({ status: 500 })
+      .mockResolvedValueOnce('ok');
+    const sleep = vi.fn<() => Promise<void>>().mockResolvedValue(undefined);
+
+    await expect(
+      runOpenAIRequestWithRetry(request, {
+        label: 'testRequest',
+        initialDelayMs: 500,
+        maxDelayMs: 750,
+        sleep,
+      }),
+    ).resolves.toBe('ok');
+
+    expect(sleep).toHaveBeenNthCalledWith(1, 500);
+    expect(sleep).toHaveBeenNthCalledWith(2, 750);
+    expect(sleep).toHaveBeenNthCalledWith(3, 750);
+    warnSpy.mockRestore();
+  });
+
   it('does not retry non-retryable failures', async () => {
     const request = vi.fn<() => Promise<string>>().mockRejectedValue({
       status: 400,
