@@ -15,7 +15,6 @@ import {
   buildGeminiJsonConfig,
   getGeminiFunctionCalls,
   getGeminiModelContent,
-  parseGeminiJsonResponse,
   toGeminiFunctionResponseContent,
 } from '../../common/gemini.js';
 import type { ToolRegistry } from '../../common/tool.js';
@@ -183,14 +182,82 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true 
     getGeminiFunctionCalls(response).length > 0
   );
 
+  if (reachedToolCallLimit) {
+    response = await getGeminiClient().models.generateContent({
+      model,
+      contents: context,
+      config: buildGeminiJsonConfig({
+        systemPrompt: `${systemPrompt}
+
+Tool-call budget is exhausted. Do not call more tools. Return the best schema-conforming final triage JSON using only the evidence and tool results already provided.`,
+        responseSchema: ResponseSchema,
+      }),
+    });
+    usageTracker.add(normalizeGeminiUsage(response.usageMetadata));
+  }
+
   logGeminiUsageSummary({
     label: 'triageNewEvidence',
     summary: usageTracker.summary(),
   });
 
-  if (reachedToolCallLimit) {
-    throw new Error(`Exceeded tool call limit of ${TOOL_CALL_LIMIT}`);
+  return parseTriageResponse(response);
+}
+
+function parseTriageResponse(response: GenerateContentResponse) {
+  const text = response.text;
+  assert(text != null && text.trim() !== '', 'Gemini response text is empty');
+
+  let parsedJson: unknown;
+  try {
+    parsedJson = JSON.parse(text);
+  } catch (error) {
+    throw new Error(
+      `Gemini response text is not valid JSON: ${
+        error instanceof Error ? error.message : String(error)
+      }`,
+    );
   }
 
-  return parseGeminiJsonResponse(response, ResponseSchema);
+  return ResponseSchema.parse(normalizeTriageResponse(parsedJson));
+}
+
+function normalizeTriageResponse(value: unknown): unknown {
+  if (value == null || typeof value !== 'object') {
+    return value;
+  }
+
+  const result = (value as { result?: unknown }).result;
+  if (result == null || typeof result !== 'object') {
+    return value;
+  }
+
+  const kind = (result as { kind?: unknown }).kind;
+  if (typeof kind !== 'string') {
+    return value;
+  }
+
+  const normalizedKind =
+    {
+      existing: 'part-of-existing-issue',
+      existing_issue: 'part-of-existing-issue',
+      'existing-issue': 'part-of-existing-issue',
+      new: 'part-of-new-issue',
+      new_issue: 'part-of-new-issue',
+      'new-issue': 'part-of-new-issue',
+      irrelevant: 'irrelevant-content',
+      irrelevant_content: 'irrelevant-content',
+    }[kind] ?? kind;
+
+  if (normalizedKind === kind) {
+    return value;
+  }
+
+  return {
+    ...value,
+    result: {
+      ...result,
+      kind: normalizedKind,
+    },
+  };
 }

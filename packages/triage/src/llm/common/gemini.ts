@@ -26,6 +26,12 @@ export function buildGeminiJsonConfig({
 
   return {
     systemInstruction: systemPrompt,
+    httpOptions: {
+      timeout: 25_000,
+      retryOptions: {
+        attempts: 1,
+      },
+    },
     responseMimeType: 'application/json',
     responseJsonSchema: toGeminiJsonSchema(responseSchema),
     thinkingConfig: {

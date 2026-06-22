@@ -27,7 +27,7 @@ import { FindServicesTool } from './tools/FindServicesTool.js';
 import { FindStationsTool } from './tools/FindStationsTool.js';
 import { ResolveRelativeDateTool } from './tools/ResolveRelativeDateTool.js';
 
-const TOOL_CALL_LIMIT = 5;
+const TOOL_CALL_LIMIT = 8;
 const ResponseSchema = z.object({
   claims: z.array(ClaimSchema),
 });
@@ -183,14 +183,24 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true 
     getGeminiFunctionCalls(response).length > 0
   );
 
+  if (reachedToolCallLimit) {
+    response = await getGeminiClient().models.generateContent({
+      model,
+      contents: context,
+      config: buildGeminiJsonConfig({
+        systemPrompt: `${systemPrompt}
+
+Tool-call budget is exhausted. Do not call more tools. Return the best schema-conforming final claim JSON using only the evidence and tool results already provided.`,
+        responseSchema: ResponseSchema,
+      }),
+    });
+    usageTracker.add(normalizeGeminiUsage(response.usageMetadata));
+  }
+
   logGeminiUsageSummary({
     label: 'extractClaimsFromNewEvidence',
     summary: usageTracker.summary(),
   });
-
-  if (reachedToolCallLimit) {
-    throw new Error(`Exceeded tool call limit of ${TOOL_CALL_LIMIT}`);
-  }
 
   const parsed = parseGeminiJsonResponse(response, ResponseSchema);
 
