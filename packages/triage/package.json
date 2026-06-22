@@ -39,7 +39,7 @@
     "dotenv": "^16.4.7",
     "hast-util-from-html": "^2.0.3",
     "hast-util-to-mdast": "^10.1.2",
-    "luxon": "^3.5.0",
+    "luxon": "^3.7.2",
     "mdast-util-gfm": "^3.1.0",
     "mdast-util-to-markdown": "^2.1.2",
     "openai": "^6.34.0",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.14",
-    "@types/luxon": "^3.4.2",
+    "@types/luxon": "^3.7.1",
     "@types/node": "24.13.2",
     "typescript": "^5.8.3",
     "vitest": "^4.1.8",
