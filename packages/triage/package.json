@@ -46,7 +46,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.14",
+    "@biomejs/biome": "2.5.0",
     "@types/luxon": "^3.7.1",
     "@types/node": "24.13.2",
     "typescript": "^5.8.3",
