@@ -54,10 +54,10 @@ jobs:
         run: npm run test:eval:changed -- "origin/${BASE_REF}"
         env:
           BASE_REF: ${{ github.base_ref }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       - name: Run changed LLM function evals
         if: ${{ env.CAN_RUN_EVALS == 'true' && github.event_name == 'workflow_dispatch' }}
         run: npm run test:eval:changed -- origin/main
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}

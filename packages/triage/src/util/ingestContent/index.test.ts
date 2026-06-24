@@ -133,7 +133,7 @@ describe('ingestContent', () => {
         'en-SG': 'Downtown Line delay near Beauty World',
       },
       titleMeta: {
-        source: '@openai/gpt-5.4-nano',
+        source: '@google/gemini-3.1-flash-lite',
       },
     });
     expect(bundle.evidence).toHaveLength(1);
@@ -153,7 +153,7 @@ describe('ingestContent', () => {
         'Report count: 4',
       ].join('\n\n'),
       render: {
-        source: '@openai/gpt-5.4-nano',
+        source: '@google/gemini-3.1-flash-lite',
       },
     });
     expect(bundle.impactEvents).toEqual(

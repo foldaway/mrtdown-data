@@ -19,6 +19,9 @@ Extract only operational impact claims (service or station facility impact) that
 
 Use tools whenever an ID or station mapping is uncertain. Prefer correctness over guessing.
 Use resolveRelativeDate whenever the evidence uses relative weekday language and you need concrete timestamps.
+Do not use resolveRelativeDate for explicit calendar dates or date ranges that
+already name the day/month/year, even when weekday names are present (for
+example, "Sat & Sun from 7 to 8 February 2026" is explicit, not relative).
 For phrase mapping:
 - "this Saturday" -> weekday=SA, weekOffset=0
 - "next Saturday" -> weekday=SA, weekOffset=1
@@ -28,6 +31,10 @@ For phrase mapping:
 Relative-weekday tool-call policy (strict):
 - If evidence mentions relative weekday language ("this Sat", "next Sunday", "this weekend", "next weekend", "this/next Mon..Fri"), you MUST call resolveRelativeDate before returning output.
 - If "weekend" is mentioned, you MUST call resolveRelativeDate for both SA and SU (same weekOffset as implied by phrase).
+- Bare weekday names with explicit calendar dates are not relative weekday
+  language. Do not call resolveRelativeDate for explicit dates such as
+  "Saturday 7 February 2026", "Sat & Sun from 7 to 8 February 2026", or
+  "on 18 Feb".
 - Do not guess or hand-construct ISO dates for relative weekday phrases when resolveRelativeDate can be used.
 - Apply this policy even if you think the final result may be claims: [].
 
@@ -81,8 +88,14 @@ Service-hours adjustment impact-window rule (strict):
 - Example: "services will start later at 6.30am and end at 9pm daily from 1 to 8 February 2026" -> the impact window is 21:00:00 to 06:30:00, not 06:30:00 to 21:00:00.
 
 Effect disambiguation:
-- "Longer waits", "headways adjusted", "additional travel time", "single-loop operation", shuttle/train bridging, or similar degraded-but-running service language is NOT "no-service".
+- "Longer waits", "waits of up to N minutes", "headways adjusted",
+  "additional travel time", "single-loop operation", shuttle/train bridging, or
+  similar degraded-but-running service language is NOT "no-service".
 - Use "reduced-service" for degraded planned operations unless the evidence explicitly says trains are suspended, service is closed, or no trains are running.
+- For planned maintenance/testing/integrated-systems evidence, "waits of up to
+  N minutes" or "longer waits of up to N minutes" means reduced-service. Do not
+  encode N as service.kind = "delay" duration; the number describes the
+  degraded frequency/headway, not an incident delay duration.
 - If evidence mentions a future planned suspension in broad terms ("planned", "expected", "first half of 2026") without a concrete service suspension window, do not convert that into a present or fixed future "no-service" claim. Prefer the concrete degraded service claim that is explicitly stated.
 - "Only one platform in use/may be used" at a terminal or station during a future window should generally map to a planned degraded operation claim (usually "reduced-service"), even if the post also says "service as usual" at announcement time.
 - Deterministic mapping: if evidence says one platform is closed/temporarily closed while trains continue to run (for example, "other platform operates as usual", shuttle provided, longer waits), you MUST emit planned service claims with service effect "reduced-service" for affected services. Do not return claims: [] for this pattern.
@@ -192,6 +205,8 @@ Field guidance:
   - If relative weekday language appears, confirm required resolveRelativeDate call(s) were made (weekend => SA and SU).
   - If evidence has no unambiguous one-direction qualifier, ensure claims include all directional services for the affected service/line.
   - Only return a single directional service claim when explicit direction-only wording is present.
+  - For planned testing/maintenance that says "longer waits" or "waits of up
+    to N minutes", confirm service effect is reduced-service, not delay.
   - For "service will start at X" or "start later at X" service-hours adjustments, confirm the fixed impact window ends at X and starts at 00:00 on the same date. Reject X-to-midnight windows.
   - For every fixed period: confirm endAt > startAt. If not, switch to start-only.
   - For every recurring period: confirm endAt > startAt. If not, extend endAt to one year after startAt.

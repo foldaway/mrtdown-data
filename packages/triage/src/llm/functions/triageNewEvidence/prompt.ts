@@ -33,6 +33,11 @@ TOOL USE GUIDANCE:
 - findIssuesByDateRange(startAt, endAt): search by issue date, evidence timestamps, and active impact periods. Use this before creating a new issue when evidence references a prior incident date such as "on May 18" or only gives generic wording like "fell in front of an oncoming train".
 - getIssue(issueId): inspect full evidence and current impact state for a candidate.
 - Once findIssues returns a plausible candidate, call getIssue for that candidate. Do not spend more than two findIssues calls on the same evidence before inspecting a candidate.
+- Do not call getIssue for the same issue ID more than once. After inspecting a
+  candidate, immediately decide whether it overlaps. If the inspected issue has
+  a different disruption segment, wider/narrower unmatched scope, different
+  station pair, or non-overlapping maintenance window, return part-of-new-issue
+  without re-inspecting the same issue.
 - For follow-up news articles about investigations, deaths, causes, incident response, safety measures, lawsuits, or later official comments, search around the incident date and attach to the existing operational issue when the event matches.
 
 CLASSIFICATION RULES:
@@ -77,6 +82,9 @@ DISRUPTIONS:
 - A fault "between B and C" on the same line is a different incident, even if it shares one endpoint station
 - A fault "between A and C" is a different incident from an existing issue "between A and B" because the new evidence extends beyond the existing scope
 - Example: existing issue "between Kennedy Town and Admiralty" does NOT match new evidence "between Admiralty and Causeway Bay"; return a new disruption issue.
+- For the example above, after inspecting the Kennedy Town-Admiralty issue once,
+  return part-of-new-issue immediately. Do not call getIssue again for the same
+  non-overlapping issue.
 
 MAINTENANCE:
 - Service-level planned works that affect operating hours or service availability
