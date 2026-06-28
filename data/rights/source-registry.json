@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "rights": [
+    {
+      "id": "CC-BY-4.0",
+      "label": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "category": "mrtdown-authored",
+      "summary": "MRTDown-authored canonical data, curation, normalization, and generated export metadata."
+    },
+    {
+      "id": "Singapore-Open-Data-Licence-1.0",
+      "label": "Singapore Open Data Licence version 1.0",
+      "url": "https://data.gov.sg/open-data-licence",
+      "category": "sg-open-data",
+      "summary": "Singapore government open data source material; upstream notice must be preserved."
+    },
+    {
+      "id": "LicenseRef-X-Content",
+      "label": "X/Twitter source content",
+      "url": null,
+      "category": "platform-post",
+      "summary": "Post content and platform material are not licensed by MRTDown."
+    },
+    {
+      "id": "LicenseRef-Reddit-Content",
+      "label": "Reddit source content",
+      "url": null,
+      "category": "platform-post",
+      "summary": "Post and comment content is not licensed by MRTDown."
+    },
+    {
+      "id": "LicenseRef-Mastodon-Content",
+      "label": "Mastodon source content",
+      "url": null,
+      "category": "platform-post",
+      "summary": "Post content and instance-hosted material are not licensed by MRTDown."
+    },
+    {
+      "id": "LicenseRef-Facebook-Content",
+      "label": "Facebook source content",
+      "url": null,
+      "category": "platform-post",
+      "summary": "Post content and platform material are not licensed by MRTDown."
+    },
+    {
+      "id": "LicenseRef-Publisher-All-Rights-Reserved",
+      "label": "Publisher source content",
+      "url": null,
+      "category": "news-publication",
+      "summary": "Publisher article text, media, and site material are not licensed by MRTDown."
+    },
+    {
+      "id": "LicenseRef-Generic-Web-All-Rights-Reserved",
+      "label": "Generic web source content",
+      "url": null,
+      "category": "generic-web",
+      "summary": "Linked web source content is not licensed by MRTDown."
+    },
+    {
+      "id": "LicenseRef-Direct-Crowd-Report-Inbound-Terms",
+      "label": "Direct crowd report inbound terms",
+      "url": null,
+      "category": "crowd-report",
+      "summary": "Direct report text requires explicit inbound submitter terms before public reuse."
+    },
+    {
+      "id": "LicenseRef-Unknown-Third-Party",
+      "label": "Unknown third-party content",
+      "url": null,
+      "category": "unknown-third-party",
+      "summary": "Temporary classification for unresolved source rights."
+    }
+  ],
+  "rules": [
+    {
+      "id": "x-post",
+      "label": "X/Twitter posts",
+      "match": {
+        "sourceUrlHost": ["x.com", "twitter.com"]
+      },
+      "category": "platform-post",
+      "contentRights": "LicenseRef-X-Content",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "third-party-content-not-licensed-by-mrtdown",
+      "attributionTemplate": "{sourceUrl}",
+      "publicExportAllowed": true
+    },
+    {
+      "id": "reddit-post",
+      "label": "Reddit posts and comments",
+      "match": {
+        "sourceUrlHost": ["reddit.com", "www.reddit.com"]
+      },
+      "category": "platform-post",
+      "contentRights": "LicenseRef-Reddit-Content",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "third-party-content-not-licensed-by-mrtdown",
+      "attributionTemplate": "{sourceUrl}",
+      "publicExportAllowed": true
+    },
+    {
+      "id": "mastodon-post",
+      "label": "Mastodon posts",
+      "match": {
+        "sourceUrlHost": ["mastodon.social"]
+      },
+      "category": "platform-post",
+      "contentRights": "LicenseRef-Mastodon-Content",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "third-party-content-not-licensed-by-mrtdown",
+      "attributionTemplate": "{sourceUrl}",
+      "publicExportAllowed": true
+    },
+    {
+      "id": "facebook-post",
+      "label": "Facebook posts",
+      "match": {
+        "sourceUrlHost": ["facebook.com", "www.facebook.com"]
+      },
+      "category": "platform-post",
+      "contentRights": "LicenseRef-Facebook-Content",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "third-party-content-not-licensed-by-mrtdown",
+      "attributionTemplate": "{sourceUrl}",
+      "publicExportAllowed": true
+    },
+    {
+      "id": "lta-datamall",
+      "label": "LTA DataMall",
+      "match": {
+        "sourceUrlHost": ["datamall.lta.gov.sg"]
+      },
+      "category": "sg-open-data",
+      "contentRights": "Singapore-Open-Data-Licence-1.0",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "preserve-upstream-open-data-notice",
+      "attributionTemplate": "Contains information from LTA DataMall accessed via {sourceUrl}, made available under the Singapore Open Data Licence version 1.0.",
+      "publicExportAllowed": true
+    },
+    {
+      "id": "lta-website",
+      "label": "LTA website publications",
+      "match": {
+        "sourceUrlHost": ["lta.gov.sg", "www.lta.gov.sg"]
+      },
+      "category": "generic-web",
+      "contentRights": "LicenseRef-Generic-Web-All-Rights-Reserved",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "third-party-content-not-licensed-by-mrtdown",
+      "attributionTemplate": "{sourceUrl}",
+      "publicExportAllowed": true
+    },
+    {
+      "id": "cna-article",
+      "label": "CNA/Mediacorp articles",
+      "match": {
+        "sourceUrlHost": ["channelnewsasia.com", "www.channelnewsasia.com"]
+      },
+      "category": "news-publication",
+      "contentRights": "LicenseRef-Publisher-All-Rights-Reserved",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "third-party-content-not-licensed-by-mrtdown",
+      "attributionTemplate": "{sourceUrl}",
+      "publicExportAllowed": true
+    },
+    {
+      "id": "straits-times-article",
+      "label": "Straits Times/SPH articles",
+      "match": {
+        "sourceUrlHost": ["straitstimes.com", "www.straitstimes.com"]
+      },
+      "category": "news-publication",
+      "contentRights": "LicenseRef-Publisher-All-Rights-Reserved",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "third-party-content-not-licensed-by-mrtdown",
+      "attributionTemplate": "{sourceUrl}",
+      "publicExportAllowed": true
+    },
+    {
+      "id": "web-archive-snapshot",
+      "label": "Web Archive snapshots",
+      "match": {
+        "sourceUrlHost": ["web.archive.org"],
+        "sourceUrlPathPrefix": ["/web/"]
+      },
+      "category": "generic-web",
+      "contentRights": "LicenseRef-Generic-Web-All-Rights-Reserved",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "third-party-content-not-licensed-by-mrtdown",
+      "attributionTemplate": "Archived source snapshot at {sourceUrl}; upstream source rights apply.",
+      "publicExportAllowed": true
+    },
+    {
+      "id": "direct-crowd-report",
+      "label": "Direct crowd reports",
+      "match": {
+        "sourceUrlHost": ["reports.mrtdown.sg"],
+        "evidenceType": ["report.public"]
+      },
+      "category": "crowd-report",
+      "contentRights": "LicenseRef-Direct-Crowd-Report-Inbound-Terms",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "direct-crowd-report-inbound-terms-required",
+      "attributionTemplate": "Direct MRTDown crowd report {sourceUrl}",
+      "publicExportAllowed": false
+    },
+    {
+      "id": "fixture-example",
+      "label": "Fixture example sources",
+      "match": {
+        "sourceUrlHost": ["example.com"]
+      },
+      "category": "mrtdown-authored",
+      "contentRights": "CC-BY-4.0",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "mrtdown-authored-public-data",
+      "attributionTemplate": "MRTDown fixture source {sourceUrl}",
+      "publicExportAllowed": true
+    }
+  ]
+}

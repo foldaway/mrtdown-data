@@ -13,6 +13,7 @@ export * from './repo/common/store.js';
 export * from './repo/issue/IssueRepository.js';
 export * from './repo/MRTDownRepository.js';
 export * from './repo/schematicMap/SchematicMapRepository.js';
+export * from './rights.js';
 export * from './schematicMapGenerator.js';
 export * from './schematicMaps.js';
 export * from './validate.js';
