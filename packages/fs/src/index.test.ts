@@ -195,7 +195,9 @@ describe('@mrtdown/fs', () => {
       fixtureDataDir,
       '2026-01-01T00:00:00Z',
     );
+    expect(manifest.manifestVersion).toBe(2);
     expect(manifest.lines.ISL).toMatch(/^[0-9a-f]{64}$/);
+    expect(manifest.rights.licenseData).toMatch(/^[0-9a-f]{64}$/);
     expect(manifest.rights.sourceRegistry).toMatch(/^[0-9a-f]{64}$/);
     const pagesIndex = renderPagesIndex(manifest);
     expect(pagesIndex).toContain('mrtdown-data');
@@ -2297,6 +2299,23 @@ describe('@mrtdown/fs', () => {
     expect(before.rights.sourceRegistry).toMatch(/^[0-9a-f]{64}$/);
     expect(after.rights.sourceRegistry).toMatch(/^[0-9a-f]{64}$/);
     expect(after.rights.sourceRegistry).not.toBe(before.rights.sourceRegistry);
+  });
+
+  it('includes data license content in manifest hashes', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+
+    const before = await buildManifest(dataDir, '2026-01-01T00:00:00Z');
+    await writeFile(
+      join(dataDir, 'LICENSE-DATA.md'),
+      '# Updated fixture data license\n',
+    );
+
+    const after = await buildManifest(dataDir, '2026-01-01T00:00:00Z');
+
+    expect(before.rights.licenseData).toMatch(/^[0-9a-f]{64}$/);
+    expect(after.rights.licenseData).toMatch(/^[0-9a-f]{64}$/);
+    expect(after.rights.licenseData).not.toBe(before.rights.licenseData);
   });
 
   it('rejects fixture line references that are missing from fixture lines', async () => {

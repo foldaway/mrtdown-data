@@ -146,6 +146,10 @@ async function buildDataExport(
     throw new Error(validation.errors.join('\n'));
   }
 
+  await cp(
+    resolve(repoRoot, 'LICENSE-DATA.md'),
+    resolve(exportDir, 'LICENSE-DATA.md'),
+  );
   const manifest = await fsPackage.buildManifest(exportDir);
   await writeFile(
     resolve(exportDir, 'manifest.json'),
@@ -157,10 +161,6 @@ async function buildDataExport(
       includeArchiveLinks: true,
       includeFixtureExportLinks: options.includeFixtureExportLinks ?? false,
     }),
-  );
-  await cp(
-    resolve(repoRoot, 'LICENSE-DATA.md'),
-    resolve(exportDir, 'LICENSE-DATA.md'),
   );
   await createArchives(exportDir);
 }

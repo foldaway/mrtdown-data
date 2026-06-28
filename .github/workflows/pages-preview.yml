@@ -6,6 +6,7 @@ on:
   pull_request:
     paths:
       - '.github/workflows/pages-preview.yml'
+      - 'LICENSE-DATA.md'
       - 'data/**'
       - 'fixtures/data/**'
       - 'package*.json'
@@ -17,6 +18,7 @@ on:
       - main
     paths:
       - '.github/workflows/pages-preview.yml'
+      - 'LICENSE-DATA.md'
       - 'data/**'
       - 'fixtures/data/**'
       - 'package*.json'

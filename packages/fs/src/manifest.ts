@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import {
   type Manifest,
@@ -17,6 +18,17 @@ import { readJsonFile } from './json.js';
 
 function sha256(value: unknown): string {
   return createHash('sha256').update(JSON.stringify(value)).digest('hex');
+}
+
+async function readOptionalText(path: string): Promise<string> {
+  try {
+    return await readFile(path, 'utf8');
+  } catch (error) {
+    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
+      return '';
+    }
+    throw error;
+  }
 }
 
 function collectionManifestKey(
@@ -46,7 +58,7 @@ export async function buildManifest(
   generatedAt = new Date().toISOString(),
 ): Promise<Manifest> {
   const manifest: Manifest = {
-    manifestVersion: 1,
+    manifestVersion: 2,
     generatedAt,
     lines: {},
     stations: {},
@@ -56,6 +68,7 @@ export async function buildManifest(
     services: {},
     issues: {},
     rights: {
+      licenseData: '',
       sourceRegistry: '',
     },
   };
@@ -76,6 +89,8 @@ export async function buildManifest(
     join(dataDir, rightsDirectory, sourceRegistryFileName),
     SourceRegistrySchema,
   );
+  const licenseData = await readOptionalText(join(dataDir, 'LICENSE-DATA.md'));
+  manifest.rights.licenseData = sha256(licenseData);
   manifest.rights.sourceRegistry = sha256(sourceRegistry);
 
   return ManifestSchema.parse(manifest);

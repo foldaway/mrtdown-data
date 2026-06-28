@@ -11,6 +11,7 @@ export const ManifestSchema = z.object({
   services: z.record(z.string(), z.string()),
   issues: z.record(z.string(), z.string()),
   rights: z.object({
+    licenseData: z.string(),
     sourceRegistry: z.string(),
   }),
 });
