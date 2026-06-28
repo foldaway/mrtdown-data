@@ -65,8 +65,8 @@ function rule(
 }
 
 describe('source registry rule matching', () => {
-  it('resolves current evidence rows through the canonical source registry', () => {
-    const sourceRegistry = SourceRegistrySchema.parse(
+  it('resolves current evidence rows through their source registries', () => {
+    const canonicalSourceRegistry = SourceRegistrySchema.parse(
       JSON.parse(
         readFileSync(
           join(repoRoot, 'data/rights/source-registry.json'),
@@ -74,15 +74,25 @@ describe('source registry rule matching', () => {
         ),
       ) as unknown,
     );
+    const fixtureSourceRegistry = SourceRegistrySchema.parse(
+      JSON.parse(
+        readFileSync(
+          join(repoRoot, 'fixtures/generated/data/rights/source-registry.json'),
+          'utf8',
+        ),
+      ) as unknown,
+    );
     const evidenceFiles = [
-      ...globSync('data/issue/*/*/*/evidence.ndjson', { cwd: repoRoot }),
+      ...globSync('data/issue/*/*/*/evidence.ndjson', { cwd: repoRoot }).map(
+        (path) => ({ path, sourceRegistry: canonicalSourceRegistry }),
+      ),
       ...globSync('fixtures/generated/data/issue/*/*/*/evidence.ndjson', {
         cwd: repoRoot,
-      }),
+      }).map((path) => ({ path, sourceRegistry: fixtureSourceRegistry })),
     ];
     const unresolved: string[] = [];
 
-    for (const evidenceFile of evidenceFiles) {
+    for (const { path: evidenceFile, sourceRegistry } of evidenceFiles) {
       const text = readFileSync(join(repoRoot, evidenceFile), 'utf8');
       for (const [index, line] of text.split('\n').entries()) {
         if (line.trim().length === 0) {

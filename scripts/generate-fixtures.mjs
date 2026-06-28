@@ -106,6 +106,19 @@ async function writeSourceRegistry(dataDir) {
       'utf8',
     ),
   );
+  sourceRegistry.rules.push({
+    id: 'fixture-example',
+    label: 'Fixture example sources',
+    match: {
+      sourceUrlHost: ['example.com'],
+    },
+    category: 'mrtdown-authored',
+    contentRights: 'CC-BY-4.0',
+    mrtdownRights: 'CC-BY-4.0',
+    policy: 'mrtdown-authored-public-data',
+    attributionTemplate: 'MRTDown fixture source {sourceUrl}',
+    publicExportAllowed: true,
+  });
   await writeJson(
     resolve(dataDir, 'rights', 'source-registry.json'),
     sourceRegistry,

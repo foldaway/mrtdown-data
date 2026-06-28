@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import {
   type Manifest,
   ManifestSchema,
@@ -28,6 +28,22 @@ async function readOptionalText(path: string): Promise<string> {
       return '';
     }
     throw error;
+  }
+}
+
+async function readNearestDataLicense(dataDir: string): Promise<string> {
+  let currentDir = dataDir;
+  while (true) {
+    const text = await readOptionalText(join(currentDir, 'LICENSE-DATA.md'));
+    if (text !== '') {
+      return text;
+    }
+
+    const parentDir = dirname(currentDir);
+    if (parentDir === currentDir) {
+      return '';
+    }
+    currentDir = parentDir;
   }
 }
 
@@ -89,7 +105,7 @@ export async function buildManifest(
     join(dataDir, rightsDirectory, sourceRegistryFileName),
     SourceRegistrySchema,
   );
-  const licenseData = await readOptionalText(join(dataDir, 'LICENSE-DATA.md'));
+  const licenseData = await readNearestDataLicense(dataDir);
   manifest.rights.licenseData = sha256(licenseData);
   manifest.rights.sourceRegistry = sha256(sourceRegistry);
 

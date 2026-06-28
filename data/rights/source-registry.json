@@ -249,19 +249,6 @@
       "policy": "direct-crowd-report-inbound-terms-required",
       "attributionTemplate": "Direct MRTDown crowd report {sourceUrl}",
       "publicExportAllowed": false
-    },
-    {
-      "id": "fixture-example",
-      "label": "Fixture example sources",
-      "match": {
-        "sourceUrlHost": ["example.com"]
-      },
-      "category": "mrtdown-authored",
-      "contentRights": "CC-BY-4.0",
-      "mrtdownRights": "CC-BY-4.0",
-      "policy": "mrtdown-authored-public-data",
-      "attributionTemplate": "MRTDown fixture source {sourceUrl}",
-      "publicExportAllowed": true
     }
   ]
 }

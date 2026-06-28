@@ -319,6 +319,38 @@ describe('@mrtdown/fs', () => {
     ).resolves.toMatchObject({ ok: true });
   });
 
+  it('redacts evidence with inconclusive source rights from public exports', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const [bundle] = await listIssueBundles(dataDir);
+    expect(bundle).toBeDefined();
+    const evidencePath = join(dataDir, bundle.path, 'evidence.ndjson');
+    const [evidence, ...remainingEvidence] = bundle.evidence;
+    expect(evidence).toBeDefined();
+    const unresolvedEvidence = EvidenceSchema.parse({
+      ...evidence,
+      sourceUrl: 'https://unregistered.example.net/source/1',
+    });
+    await writeNdjsonFile(evidencePath, [
+      unresolvedEvidence,
+      ...remainingEvidence,
+    ]);
+
+    await expect(redactNonPublicEvidenceForExport(dataDir)).resolves.toEqual({
+      redactedEvidenceCount: 1,
+    });
+    await expect(readNdjsonFile(evidencePath, EvidenceSchema)).resolves.toEqual(
+      [
+        {
+          ...unresolvedEvidence,
+          text: nonPublicEvidenceRedactedText,
+          render: null,
+        },
+        ...remainingEvidence,
+      ],
+    );
+  });
+
   it('reads and writes schematic map generator files and generated snapshots', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     const ruleSet = {

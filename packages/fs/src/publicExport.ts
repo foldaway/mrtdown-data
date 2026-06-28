@@ -29,7 +29,7 @@ export async function redactNonPublicEvidenceForExport(
     let bundleRedactedEvidenceCount = 0;
     const publicEvidence = bundle.evidence.map((evidence) => {
       const result = resolveSourceRegistryRule(sourceRegistry, evidence);
-      if (!result.ok || result.rule.publicExportAllowed) {
+      if (result.ok && result.rule.publicExportAllowed) {
         return evidence;
       }
 
