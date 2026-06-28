@@ -24,6 +24,7 @@ import {
 import { type EntityRecord, listEntities } from './entities.js';
 import { listIssueBundles } from './issues.js';
 import { readJsonFile } from './json.js';
+import { resolveSourceRegistryRule } from './rights.js';
 import {
   listSchematicMapConstraintSets,
   listSchematicMapRuleSets,
@@ -815,6 +816,43 @@ async function validateIssueReferences(
   return errors;
 }
 
+async function validateEvidenceRights(
+  dataDir: string,
+  shouldValidate: boolean,
+  records: ValidationRecords,
+): Promise<string[]> {
+  if (!shouldValidate) {
+    return [];
+  }
+
+  const sourceRegistry = await loadSourceRegistry(dataDir, records);
+  const errors: string[] = [];
+
+  for (const bundle of await loadIssueRecords(dataDir, records)) {
+    const evidencePath = `${bundle.path}/${evidenceFileName}`;
+
+    for (const [evidenceIndex, evidence] of bundle.evidence.entries()) {
+      const location = `${evidencePath}:${evidenceIndex + 1}`;
+      const result = resolveSourceRegistryRule(sourceRegistry, evidence);
+
+      if (!result.ok) {
+        errors.push(
+          `${location}: evidence source rights ${result.reason} for ${evidence.sourceUrl}`,
+        );
+        continue;
+      }
+
+      if (!result.rule.publicExportAllowed) {
+        errors.push(
+          `${location}: source rule ${result.rule.id} is not allowed in public exports`,
+        );
+      }
+    }
+  }
+
+  return errors;
+}
+
 async function validateSchematicMapReferences(
   dataDir: string,
   shouldValidate: boolean,
@@ -1339,6 +1377,14 @@ export async function validateDataRoot(
       ...(await validateIssueReferences(
         dataDir,
         shouldValidateScope(scopes, 'issue'),
+        records,
+      )),
+    );
+    errors.push(
+      ...(await validateEvidenceRights(
+        dataDir,
+        shouldValidateScope(scopes, 'issue') &&
+          shouldValidateScope(scopes, 'rights'),
         records,
       )),
     );

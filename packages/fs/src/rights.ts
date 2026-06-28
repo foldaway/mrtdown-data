@@ -46,7 +46,7 @@ function parseArchiveOriginalSourceUrl(sourceUrl: URL | null): URL | null {
     return new URL(match[1]);
   } catch {
     try {
-      return new URL(decodeURI(match[1]));
+      return new URL(decodeURIComponent(match[1]));
     } catch {
       return null;
     }

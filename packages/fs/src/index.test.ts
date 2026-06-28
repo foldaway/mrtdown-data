@@ -24,6 +24,7 @@ import {
   IdGenerator,
   issuePathFromId,
   listEntityIds,
+  listIssueBundles,
   listSchematicMapConstraintSetEffectiveDates,
   listSchematicMapVersionSnapshotEffectiveDates,
   MRTDownRepository,
@@ -243,6 +244,58 @@ describe('@mrtdown/fs', () => {
     expect(result.ok).toBe(false);
     expect(result.errors).toEqual([
       'rights: rules.0.contentRights: Unknown rights id LicenseRef-Missing',
+    ]);
+  });
+
+  it('requires issue evidence to resolve to a source registry rule', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const [bundle] = await listIssueBundles(dataDir);
+    expect(bundle).toBeDefined();
+    const evidencePath = join(dataDir, bundle.path, 'evidence.ndjson');
+    const evidence = EvidenceSchema.parse(
+      JSON.parse(await readFile(evidencePath, 'utf8')) as unknown,
+    );
+    await writeFile(
+      evidencePath,
+      `${JSON.stringify({
+        ...evidence,
+        sourceUrl: 'https://unregistered.example.net/source/1',
+      })}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir, ['issue', 'rights']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual([
+      `${bundle.path}/evidence.ndjson:1: evidence source rights no-match for https://unregistered.example.net/source/1`,
+    ]);
+  });
+
+  it('rejects evidence resolved to a non-exportable source rule', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const [bundle] = await listIssueBundles(dataDir);
+    expect(bundle).toBeDefined();
+    const evidencePath = join(dataDir, bundle.path, 'evidence.ndjson');
+    const evidence = EvidenceSchema.parse(
+      JSON.parse(await readFile(evidencePath, 'utf8')) as unknown,
+    );
+    await writeFile(
+      evidencePath,
+      `${JSON.stringify({
+        ...evidence,
+        type: 'report.public',
+        sourceUrl:
+          'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+      })}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir, ['issue', 'rights']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual([
+      `${bundle.path}/evidence.ndjson:1: source rule direct-crowd-report is not allowed in public exports`,
     ]);
   });
 

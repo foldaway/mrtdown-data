@@ -181,6 +181,35 @@ describe('source registry rule matching', () => {
     });
   });
 
+  it('matches encoded archived publisher URLs by original host', () => {
+    const sourceRegistry = registry([
+      rule('web-archive-snapshot', {
+        sourceUrlHost: ['web.archive.org'],
+        sourceUrlPathPrefix: ['/web/'],
+      }),
+      rule(
+        'web-archive-cna-article',
+        {
+          sourceUrlHost: ['web.archive.org'],
+          sourceUrlOriginalHost: ['www.channelnewsasia.com'],
+        },
+        20,
+      ),
+    ]);
+
+    expect(
+      resolveSourceRegistryRule(
+        sourceRegistry,
+        evidence(
+          'https://web.archive.org/web/20240408192544/https%3A%2F%2Fwww.channelnewsasia.com%2Fsingapore%2Fexample-3823096',
+        ),
+      ),
+    ).toMatchObject({
+      ok: true,
+      rule: { id: 'web-archive-cna-article' },
+    });
+  });
+
   it('resolves to the highest-priority matching rule', () => {
     const result = resolveSourceRegistryRule(
       registry([
