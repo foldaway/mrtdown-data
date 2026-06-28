@@ -178,6 +178,51 @@
       "publicExportAllowed": true
     },
     {
+      "id": "web-archive-cna-article",
+      "label": "Archived CNA/Mediacorp articles",
+      "match": {
+        "sourceUrlHost": ["web.archive.org"],
+        "sourceUrlOriginalHost": ["channelnewsasia.com", "www.channelnewsasia.com"]
+      },
+      "priority": 20,
+      "category": "news-publication",
+      "contentRights": "LicenseRef-Publisher-All-Rights-Reserved",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "third-party-content-not-licensed-by-mrtdown",
+      "attributionTemplate": "Archived CNA/Mediacorp source snapshot at {sourceUrl}; upstream publisher rights apply.",
+      "publicExportAllowed": true
+    },
+    {
+      "id": "web-archive-straits-times-article",
+      "label": "Archived Straits Times/SPH articles",
+      "match": {
+        "sourceUrlHost": ["web.archive.org"],
+        "sourceUrlOriginalHost": ["straitstimes.com", "www.straitstimes.com"]
+      },
+      "priority": 20,
+      "category": "news-publication",
+      "contentRights": "LicenseRef-Publisher-All-Rights-Reserved",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "third-party-content-not-licensed-by-mrtdown",
+      "attributionTemplate": "Archived Straits Times/SPH source snapshot at {sourceUrl}; upstream publisher rights apply.",
+      "publicExportAllowed": true
+    },
+    {
+      "id": "web-archive-today-article",
+      "label": "Archived TODAY articles",
+      "match": {
+        "sourceUrlHost": ["web.archive.org"],
+        "sourceUrlOriginalHost": ["todayonline.com", "www.todayonline.com"]
+      },
+      "priority": 20,
+      "category": "news-publication",
+      "contentRights": "LicenseRef-Publisher-All-Rights-Reserved",
+      "mrtdownRights": "CC-BY-4.0",
+      "policy": "third-party-content-not-licensed-by-mrtdown",
+      "attributionTemplate": "Archived TODAY source snapshot at {sourceUrl}; upstream publisher rights apply.",
+      "publicExportAllowed": true
+    },
+    {
       "id": "web-archive-snapshot",
       "label": "Web Archive snapshots",
       "match": {

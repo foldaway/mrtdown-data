@@ -140,7 +140,7 @@ describe('ingestContent', () => {
     expect(bundle.evidence[0]).toMatchObject({
       type: 'report.public',
       sourceUrl:
-        'https://example.com/crowd-reports/accepted-20260523-0903-dtl-001',
+        'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
       text: [
         'Report: Several commuters report 15 minute delays on the DTL.',
         'Observed at: 2026-05-23T09:03:00+08:00',

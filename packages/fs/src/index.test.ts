@@ -205,6 +205,47 @@ describe('@mrtdown/fs', () => {
     ).toContain('fixtures/');
   });
 
+  it('validates the source registry through the data root validator', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+
+    await writeFile(
+      join(dataDir, 'rights/source-registry.json'),
+      `${JSON.stringify({
+        schemaVersion: 1,
+        rights: [
+          {
+            id: 'CC-BY-4.0',
+            label: 'Creative Commons Attribution 4.0 International',
+            url: 'https://creativecommons.org/licenses/by/4.0/',
+            category: 'mrtdown-authored',
+            summary: 'MRTDown-authored reusable data.',
+          },
+        ],
+        rules: [
+          {
+            id: 'broken',
+            label: 'Broken rule',
+            match: { sourceUrlHost: ['example.com'] },
+            category: 'generic-web',
+            contentRights: 'LicenseRef-Missing',
+            mrtdownRights: 'CC-BY-4.0',
+            policy: 'third-party-content-not-licensed-by-mrtdown',
+            attributionTemplate: '{sourceUrl}',
+            publicExportAllowed: true,
+          },
+        ],
+      })}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir, ['rights']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual([
+      'rights: rules.0.contentRights: Unknown rights id LicenseRef-Missing',
+    ]);
+  });
+
   it('reads and writes schematic map generator files and generated snapshots', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     const ruleSet = {

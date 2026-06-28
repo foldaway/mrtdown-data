@@ -36,17 +36,19 @@ export type RightsDefinition = z.infer<typeof RightsDefinitionSchema>;
 export const SourceRegistryRuleMatchSchema = z
   .object({
     sourceUrlHost: z.array(z.string().min(1)).min(1).optional(),
+    sourceUrlOriginalHost: z.array(z.string().min(1)).min(1).optional(),
     sourceUrlPathPrefix: z.array(z.string().min(1)).min(1).optional(),
     evidenceType: z.array(EvidenceTypeSchema).min(1).optional(),
   })
   .refine(
     (match) =>
       match.sourceUrlHost != null ||
+      match.sourceUrlOriginalHost != null ||
       match.sourceUrlPathPrefix != null ||
       match.evidenceType != null,
     {
       message:
-        'At least one of sourceUrlHost, sourceUrlPathPrefix, or evidenceType is required',
+        'At least one of sourceUrlHost, sourceUrlOriginalHost, sourceUrlPathPrefix, or evidenceType is required',
     },
   );
 export type SourceRegistryRuleMatch = z.infer<

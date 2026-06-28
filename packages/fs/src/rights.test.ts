@@ -120,6 +120,67 @@ describe('source registry rule matching', () => {
     ).toEqual(['x-status']);
   });
 
+  it('matches source hosts without treating URL ports as part of the host', () => {
+    expect(
+      matchingSourceRegistryRules(
+        registry([rule('x', { sourceUrlHost: ['x.com'] })]),
+        evidence(
+          'https://x.com:8443/SMRT_Singapore/status/2056196363076108391',
+        ),
+      ).map((matchedRule) => matchedRule.id),
+    ).toEqual(['x']);
+  });
+
+  it('can match evidence-type-only rules without a valid source URL', () => {
+    const typedEvidence = {
+      ...evidence('not a url'),
+      type: 'report.public',
+    } satisfies Evidence;
+
+    expect(
+      resolveSourceRegistryRule(
+        registry([rule('public-report', { evidenceType: ['report.public'] })]),
+        typedEvidence,
+      ),
+    ).toMatchObject({
+      ok: true,
+      rule: { id: 'public-report' },
+    });
+  });
+
+  it('matches archived publisher URLs by original host before archive fallback', () => {
+    const sourceRegistry = registry([
+      rule('web-archive-snapshot', {
+        sourceUrlHost: ['web.archive.org'],
+        sourceUrlPathPrefix: ['/web/'],
+      }),
+      rule(
+        'web-archive-cna-article',
+        {
+          sourceUrlHost: ['web.archive.org'],
+          sourceUrlOriginalHost: ['www.channelnewsasia.com'],
+        },
+        20,
+      ),
+    ]);
+
+    expect(
+      resolveSourceRegistryRule(
+        sourceRegistry,
+        evidence(
+          'https://web.archive.org/web/20240408192544/https://www.channelnewsasia.com/singapore/example-3823096',
+        ),
+      ),
+    ).toMatchObject({
+      ok: true,
+      rule: { id: 'web-archive-cna-article' },
+      matchingRules: [
+        { id: 'web-archive-cna-article' },
+        { id: 'web-archive-snapshot' },
+      ],
+    });
+  });
+
   it('resolves to the highest-priority matching rule', () => {
     const result = resolveSourceRegistryRule(
       registry([

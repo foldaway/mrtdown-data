@@ -32,35 +32,66 @@ function parseEvidenceSourceUrl(evidence: Evidence): URL | null {
   }
 }
 
+function parseArchiveOriginalSourceUrl(sourceUrl: URL | null): URL | null {
+  if (sourceUrl?.hostname !== 'web.archive.org') {
+    return null;
+  }
+
+  const match = /^\/web\/[^/]+\/(.+)$/.exec(sourceUrl.pathname);
+  if (!match) {
+    return null;
+  }
+
+  try {
+    return new URL(match[1]);
+  } catch {
+    try {
+      return new URL(decodeURI(match[1]));
+    } catch {
+      return null;
+    }
+  }
+}
+
 export function sourceRegistryRuleMatchesEvidence(
   rule: SourceRegistryRule,
   evidence: Evidence,
 ): boolean {
   const sourceUrl = parseEvidenceSourceUrl(evidence);
-  if (!sourceUrl) {
+  const archiveOriginalSourceUrl = parseArchiveOriginalSourceUrl(sourceUrl);
+
+  const match = rule.match;
+  if (match.evidenceType && !match.evidenceType.includes(evidence.type)) {
     return false;
   }
 
-  const match = rule.match;
   if (
     match.sourceUrlHost &&
-    !match.sourceUrlHost
-      .map((host) => normalizeHost(host))
-      .includes(normalizeHost(sourceUrl.host))
+    (!sourceUrl ||
+      !match.sourceUrlHost
+        .map((host) => normalizeHost(host))
+        .includes(normalizeHost(sourceUrl.hostname)))
+  ) {
+    return false;
+  }
+
+  if (
+    match.sourceUrlOriginalHost &&
+    (!archiveOriginalSourceUrl ||
+      !match.sourceUrlOriginalHost
+        .map((host) => normalizeHost(host))
+        .includes(normalizeHost(archiveOriginalSourceUrl.hostname)))
   ) {
     return false;
   }
 
   if (
     match.sourceUrlPathPrefix &&
-    !match.sourceUrlPathPrefix
-      .map((prefix) => normalizePathPrefix(prefix))
-      .some((prefix) => sourceUrl.pathname.startsWith(prefix))
+    (!sourceUrl ||
+      !match.sourceUrlPathPrefix
+        .map((prefix) => normalizePathPrefix(prefix))
+        .some((prefix) => sourceUrl.pathname.startsWith(prefix)))
   ) {
-    return false;
-  }
-
-  if (match.evidenceType && !match.evidenceType.includes(evidence.type)) {
     return false;
   }
 
@@ -84,16 +115,16 @@ export function resolveSourceRegistryRule(
   evidence: Evidence,
 ): SourceRegistryRuleResolution {
   const sourceUrl = parseEvidenceSourceUrl(evidence);
-  if (!sourceUrl) {
-    return {
-      ok: false,
-      reason: 'invalid-source-url',
-      matchingRules: [],
-    };
-  }
-
   const matchingRules = matchingSourceRegistryRules(registry, evidence);
   if (matchingRules.length === 0) {
+    if (!sourceUrl) {
+      return {
+        ok: false,
+        reason: 'invalid-source-url',
+        matchingRules,
+      };
+    }
+
     return {
       ok: false,
       reason: 'no-match',

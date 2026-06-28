@@ -19,6 +19,7 @@ export const entityCollectionDirectories: Record<EntityCollection, string> = {
 };
 
 export const issueDirectory = 'issue';
+export const rightsDirectory = 'rights';
 export const schematicMapDirectory = 'schematic-map';
 export const schematicSystemMapDirectory = 'system';
 export const schematicMapGeneratorDirectory = 'generator';
@@ -28,9 +29,11 @@ export const schematicMapVersionDirectory = 'version';
 export const issueFileName = 'issue.json';
 export const evidenceFileName = 'evidence.ndjson';
 export const impactFileName = 'impact.ndjson';
+export const sourceRegistryFileName = 'source-registry.json';
 export const schematicMapManifestFileName = 'manifest.json';
 
 export const DIR_ISSUE = issueDirectory;
+export const DIR_RIGHTS = rightsDirectory;
 export const DIR_SCHEMATIC_MAP = schematicMapDirectory;
 export const DIR_SCHEMATIC_SYSTEM_MAP = schematicSystemMapDirectory;
 export const DIR_SCHEMATIC_MAP_GENERATOR = schematicMapGeneratorDirectory;
@@ -47,4 +50,5 @@ export const DIR_TOWN = entityCollectionDirectories.town;
 export const FILE_ISSUE = issueFileName;
 export const FILE_ISSUE_EVIDENCE = evidenceFileName;
 export const FILE_ISSUE_IMPACT = impactFileName;
+export const FILE_SOURCE_REGISTRY = sourceRegistryFileName;
 export const FILE_SCHEMATIC_MAP_MANIFEST = schematicMapManifestFileName;

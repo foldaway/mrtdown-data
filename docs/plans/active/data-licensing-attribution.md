@@ -151,6 +151,8 @@ Start with these recurring categories:
   articles.
 - `crowd-report`: reports submitted directly to MRTDown under explicit inbound
   terms.
+- `generic-web`: linked web pages and archived snapshots that are not covered
+  by a more specific open-data, platform, publisher, or crowd-report rule.
 - `unknown-third-party`: temporary classification that should fail publication
   until resolved or explicitly suppressed from public export.
 

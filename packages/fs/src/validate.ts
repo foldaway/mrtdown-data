@@ -1,3 +1,4 @@
+import { resolve } from 'node:path';
 import type {
   ImpactEvent,
   IssueBundle,
@@ -6,7 +7,9 @@ import type {
   SchematicMapManifest,
   SchematicMapRuleSet,
   SchematicMapVersionSnapshot,
+  SourceRegistry,
 } from '@mrtdown/core';
+import { SourceRegistrySchema } from '@mrtdown/core';
 import type { z } from 'zod';
 import {
   type EntityCollection,
@@ -14,10 +17,13 @@ import {
   evidenceFileName,
   impactFileName,
   issueDirectory,
+  rightsDirectory,
   schematicMapDirectory,
+  sourceRegistryFileName,
 } from './constants.js';
 import { type EntityRecord, listEntities } from './entities.js';
 import { listIssueBundles } from './issues.js';
+import { readJsonFile } from './json.js';
 import {
   listSchematicMapConstraintSets,
   listSchematicMapRuleSets,
@@ -29,7 +35,11 @@ import {
   schematicSystemMapVersionSnapshotPath,
 } from './schematicMaps.js';
 
-export type ValidationScope = EntityCollection | 'issue' | 'schematic-map';
+export type ValidationScope =
+  | EntityCollection
+  | 'issue'
+  | 'rights'
+  | 'schematic-map';
 
 export type ValidationResult = {
   ok: boolean;
@@ -39,9 +49,12 @@ export type ValidationResult = {
 
 function emptyChecked(): Record<ValidationScope, number> {
   return Object.fromEntries(
-    [...entityCollections, issueDirectory, schematicMapDirectory].map(
-      (scope) => [scope, 0],
-    ),
+    [
+      ...entityCollections,
+      issueDirectory,
+      rightsDirectory,
+      schematicMapDirectory,
+    ].map((scope) => [scope, 0]),
   ) as Record<ValidationScope, number>;
 }
 
@@ -69,6 +82,7 @@ type ValidationRecords = Partial<{
   station: EntityRecord<'station'>[];
   town: EntityRecord<'town'>[];
   issue: IssueBundle[];
+  rights: SourceRegistry;
   schematicMap: SchematicMapValidationRecords;
 }>;
 
@@ -152,6 +166,19 @@ async function loadIssueRecords(
     records.issue = await listIssueBundles(dataDir);
   }
   return records.issue;
+}
+
+async function loadSourceRegistry(
+  dataDir: string,
+  records: ValidationRecords,
+): Promise<SourceRegistry> {
+  if (!records.rights) {
+    records.rights = await readJsonFile(
+      resolve(dataDir, rightsDirectory, sourceRegistryFileName),
+      SourceRegistrySchema,
+    );
+  }
+  return records.rights;
 }
 
 async function readOptionalSchematicMapRecord<T>(
@@ -1247,6 +1274,7 @@ export async function validateDataRoot(
   scopes: readonly ValidationScope[] = [
     ...entityCollections,
     issueDirectory,
+    rightsDirectory,
     schematicMapDirectory,
   ],
 ): Promise<ValidationResult> {
@@ -1259,6 +1287,12 @@ export async function validateDataRoot(
       if (scope === 'issue') {
         const bundles = await loadIssueRecords(dataDir, records);
         checked.issue = bundles.length;
+        continue;
+      }
+
+      if (scope === 'rights') {
+        await loadSourceRegistry(dataDir, records);
+        checked.rights = 1;
         continue;
       }
 
