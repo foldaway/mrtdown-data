@@ -140,6 +140,7 @@ async function buildDataExport(
   });
 
   await fsPackage.generateSchematicMapPublishedArtifacts(exportDir);
+  await fsPackage.redactNonPublicEvidenceForExport(exportDir);
   const validation = await fsPackage.validateDataRoot(exportDir);
   if (!validation.ok) {
     throw new Error(validation.errors.join('\n'));
@@ -156,6 +157,10 @@ async function buildDataExport(
       includeArchiveLinks: true,
       includeFixtureExportLinks: options.includeFixtureExportLinks ?? false,
     }),
+  );
+  await cp(
+    resolve(repoRoot, 'LICENSE-DATA.md'),
+    resolve(exportDir, 'LICENSE-DATA.md'),
   );
   await createArchives(exportDir);
 }

@@ -362,6 +362,10 @@ function buildExportRows(options: PagesIndexOptions): FileLinkRow[] {
       href: 'manifest.json',
       description: 'Machine-readable export manifest.',
     },
+    {
+      href: 'LICENSE-DATA.md',
+      description: 'Data license and third-party material notice.',
+    },
   ];
 
   if (options.includeArchiveLinks) {
@@ -414,6 +418,11 @@ export function renderPagesRootIndex(
       ...buildFilesTable('Developer files', 'developer-files', [
         { href: 'manifest.json', description: 'Canonical export manifest.' },
         {
+          href: 'LICENSE-DATA.md',
+          description:
+            'Canonical data license and third-party material notice.',
+        },
+        {
           href: 'archive.tar.gz',
           description: 'Canonical export as a gzipped tarball.',
         },
@@ -425,6 +434,10 @@ export function renderPagesRootIndex(
         {
           href: 'fixtures/manifest.json',
           description: 'Fixture export manifest.',
+        },
+        {
+          href: 'fixtures/LICENSE-DATA.md',
+          description: 'Fixture data license and third-party material notice.',
         },
         {
           href: 'fixtures/archive.tar.gz',

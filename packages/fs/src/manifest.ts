@@ -1,8 +1,19 @@
 import { createHash } from 'node:crypto';
-import { type Manifest, ManifestSchema } from '@mrtdown/core';
-import { type EntityCollection, entityCollections } from './constants.js';
+import { join } from 'node:path';
+import {
+  type Manifest,
+  ManifestSchema,
+  SourceRegistrySchema,
+} from '@mrtdown/core';
+import {
+  type EntityCollection,
+  entityCollections,
+  rightsDirectory,
+  sourceRegistryFileName,
+} from './constants.js';
 import { listEntities } from './entities.js';
 import { listIssueBundles } from './issues.js';
+import { readJsonFile } from './json.js';
 
 function sha256(value: unknown): string {
   return createHash('sha256').update(JSON.stringify(value)).digest('hex');
@@ -10,7 +21,10 @@ function sha256(value: unknown): string {
 
 function collectionManifestKey(
   collection: EntityCollection,
-): Exclude<keyof Manifest, 'generatedAt' | 'issues' | 'manifestVersion'> {
+): Exclude<
+  keyof Manifest,
+  'generatedAt' | 'issues' | 'manifestVersion' | 'rights'
+> {
   switch (collection) {
     case 'landmark':
       return 'landmarks';
@@ -41,6 +55,9 @@ export async function buildManifest(
     operators: {},
     services: {},
     issues: {},
+    rights: {
+      sourceRegistry: '',
+    },
   };
 
   for (const collection of entityCollections) {
@@ -54,6 +71,12 @@ export async function buildManifest(
   for (const bundle of await listIssueBundles(dataDir)) {
     manifest.issues[bundle.issue.id] = sha256(bundle);
   }
+
+  const sourceRegistry = await readJsonFile(
+    join(dataDir, rightsDirectory, sourceRegistryFileName),
+    SourceRegistrySchema,
+  );
+  manifest.rights.sourceRegistry = sha256(sourceRegistry);
 
   return ManifestSchema.parse(manifest);
 }

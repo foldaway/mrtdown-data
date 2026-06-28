@@ -10,5 +10,8 @@ export const ManifestSchema = z.object({
   operators: z.record(z.string(), z.string()),
   services: z.record(z.string(), z.string()),
   issues: z.record(z.string(), z.string()),
+  rights: z.object({
+    sourceRegistry: z.string(),
+  }),
 });
 export type Manifest = z.infer<typeof ManifestSchema>;

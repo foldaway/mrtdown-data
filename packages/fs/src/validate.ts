@@ -839,13 +839,6 @@ async function validateEvidenceRights(
         errors.push(
           `${location}: evidence source rights ${result.reason} for ${evidence.sourceUrl}`,
         );
-        continue;
-      }
-
-      if (!result.rule.publicExportAllowed) {
-        errors.push(
-          `${location}: source rule ${result.rule.id} is not allowed in public exports`,
-        );
       }
     }
   }

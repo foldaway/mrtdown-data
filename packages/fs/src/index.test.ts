@@ -29,11 +29,13 @@ import {
   listSchematicMapVersionSnapshotEffectiveDates,
   MRTDownRepository,
   MRTDownWriter,
+  nonPublicEvidenceRedactedText,
   readIssueBundle,
   readNdjsonFile,
   readSchematicMapManifest,
   readSchematicMapRuleSet,
   readSchematicMapVersionSnapshot,
+  redactNonPublicEvidenceForExport,
   renderPagesIndex,
   StandardRepository,
   schematicSystemMapConstraintSetPath,
@@ -43,6 +45,7 @@ import {
   toDataPath,
   validateDataRoot,
   visibleDirEntries,
+  writeNdjsonFile,
   writeSchematicMapConstraintSet,
   writeSchematicMapManifest,
   writeSchematicMapRuleSet,
@@ -193,10 +196,12 @@ describe('@mrtdown/fs', () => {
       '2026-01-01T00:00:00Z',
     );
     expect(manifest.lines.ISL).toMatch(/^[0-9a-f]{64}$/);
+    expect(manifest.rights.sourceRegistry).toMatch(/^[0-9a-f]{64}$/);
     const pagesIndex = renderPagesIndex(manifest);
     expect(pagesIndex).toContain('mrtdown-data');
     expect(pagesIndex).toContain('href="#lines"');
     expect(pagesIndex).toContain('<h2 id="exports">Exports</h2>');
+    expect(pagesIndex).toContain('LICENSE-DATA.md');
     expect(pagesIndex).not.toContain('archive.tar.gz');
     expect(renderPagesIndex(manifest, { includeArchiveLinks: true })).toContain(
       'archive.tar.gz',
@@ -253,16 +258,15 @@ describe('@mrtdown/fs', () => {
     const [bundle] = await listIssueBundles(dataDir);
     expect(bundle).toBeDefined();
     const evidencePath = join(dataDir, bundle.path, 'evidence.ndjson');
-    const evidence = EvidenceSchema.parse(
-      JSON.parse(await readFile(evidencePath, 'utf8')) as unknown,
-    );
-    await writeFile(
-      evidencePath,
-      `${JSON.stringify({
+    const [evidence, ...remainingEvidence] = bundle.evidence;
+    expect(evidence).toBeDefined();
+    await writeNdjsonFile(evidencePath, [
+      EvidenceSchema.parse({
         ...evidence,
         sourceUrl: 'https://unregistered.example.net/source/1',
-      })}\n`,
-    );
+      }),
+      ...remainingEvidence,
+    ]);
 
     const result = await validateDataRoot(dataDir, ['issue', 'rights']);
 
@@ -272,31 +276,45 @@ describe('@mrtdown/fs', () => {
     ]);
   });
 
-  it('rejects evidence resolved to a non-exportable source rule', async () => {
+  it('redacts non-exportable source evidence from public exports', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await cp(fixtureDataDir, dataDir, { recursive: true });
     const [bundle] = await listIssueBundles(dataDir);
     expect(bundle).toBeDefined();
     const evidencePath = join(dataDir, bundle.path, 'evidence.ndjson');
-    const evidence = EvidenceSchema.parse(
-      JSON.parse(await readFile(evidencePath, 'utf8')) as unknown,
-    );
-    await writeFile(
-      evidencePath,
-      `${JSON.stringify({
-        ...evidence,
-        type: 'report.public',
-        sourceUrl:
-          'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
-      })}\n`,
-    );
-
-    const result = await validateDataRoot(dataDir, ['issue', 'rights']);
-
-    expect(result.ok).toBe(false);
-    expect(result.errors).toEqual([
-      `${bundle.path}/evidence.ndjson:1: source rule direct-crowd-report is not allowed in public exports`,
+    const [evidence, ...remainingEvidence] = bundle.evidence;
+    expect(evidence).toBeDefined();
+    const nonPublicEvidence = EvidenceSchema.parse({
+      ...evidence,
+      type: 'report.public',
+      sourceUrl:
+        'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+    });
+    await writeNdjsonFile(evidencePath, [
+      nonPublicEvidence,
+      ...remainingEvidence,
     ]);
+
+    await expect(
+      validateDataRoot(dataDir, ['issue', 'rights']),
+    ).resolves.toMatchObject({ ok: true });
+
+    await expect(redactNonPublicEvidenceForExport(dataDir)).resolves.toEqual({
+      redactedEvidenceCount: 1,
+    });
+    await expect(readNdjsonFile(evidencePath, EvidenceSchema)).resolves.toEqual(
+      [
+        {
+          ...nonPublicEvidence,
+          text: nonPublicEvidenceRedactedText,
+          render: null,
+        },
+        ...remainingEvidence,
+      ],
+    );
+    await expect(
+      validateDataRoot(dataDir, ['issue', 'rights']),
+    ).resolves.toMatchObject({ ok: true });
   });
 
   it('reads and writes schematic map generator files and generated snapshots', async () => {
@@ -2257,6 +2275,28 @@ describe('@mrtdown/fs', () => {
     expect(before.issues[issueId]).toMatch(/^[0-9a-f]{64}$/);
     expect(after.issues[issueId]).toMatch(/^[0-9a-f]{64}$/);
     expect(after.issues[issueId]).not.toBe(before.issues[issueId]);
+  });
+
+  it('includes source registry content in manifest hashes', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+
+    const before = await buildManifest(dataDir, '2026-01-01T00:00:00Z');
+    const sourceRegistryPath = join(dataDir, 'rights/source-registry.json');
+    const sourceRegistry = JSON.parse(
+      await readFile(sourceRegistryPath, 'utf8'),
+    ) as { rules: Array<{ label: string }> };
+    sourceRegistry.rules[0].label = `${sourceRegistry.rules[0].label} updated`;
+    await writeFile(
+      sourceRegistryPath,
+      `${JSON.stringify(sourceRegistry, null, 2)}\n`,
+    );
+
+    const after = await buildManifest(dataDir, '2026-01-01T00:00:00Z');
+
+    expect(before.rights.sourceRegistry).toMatch(/^[0-9a-f]{64}$/);
+    expect(after.rights.sourceRegistry).toMatch(/^[0-9a-f]{64}$/);
+    expect(after.rights.sourceRegistry).not.toBe(before.rights.sourceRegistry);
   });
 
   it('rejects fixture line references that are missing from fixture lines', async () => {
