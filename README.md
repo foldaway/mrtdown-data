@@ -26,6 +26,8 @@ npm run lint
 - `data/station`, `data/line`, `data/service`, `data/operator`, `data/town`,
   and `data/landmark`: canonical static entities.
 - `data/issue/YYYY/MM/<issue_id>/`: canonical issue bundles.
+- `data/rights/source-registry.json`: source rights and attribution rules used
+  for evidence classification.
 - `fixtures/generated/data`: on-demand generated fixture data for tests and
   examples.
 - `packages/core`: shared schemas, period helpers, and state helpers.
@@ -115,6 +117,18 @@ Supported issue types are `disruption`, `maintenance`, and `infra`.
 
 Use open-ended periods for ongoing issues. CLI validation is required whenever
 canonical data changes.
+
+## Data Licensing
+
+MRTDown-authored canonical data and generated data exports are covered by
+`CC-BY-4.0` as described in `LICENSE-DATA.md`. Package source code remains
+separately marked as `UNLICENSED`.
+
+Evidence may contain or link to third-party posts, articles, source text,
+government source material, or direct report text. Those upstream materials are
+not licensed by MRTDown. Recurring evidence source classes are recorded in
+`data/rights/source-registry.json` so generated attribution artifacts can
+preserve source-specific notices.
 
 ## Evidence Ingest
 

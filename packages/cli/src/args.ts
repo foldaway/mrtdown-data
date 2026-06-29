@@ -76,7 +76,7 @@ export function parseCollection(value: string): EntityCollection | 'issue' {
 }
 
 export function parseValidationScope(value: string): ValidationScope {
-  if (value === 'schematic-map') {
+  if (value === 'rights' || value === 'schematic-map') {
     return value;
   }
   return parseCollection(value);

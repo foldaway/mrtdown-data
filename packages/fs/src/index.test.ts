@@ -24,15 +24,18 @@ import {
   IdGenerator,
   issuePathFromId,
   listEntityIds,
+  listIssueBundles,
   listSchematicMapConstraintSetEffectiveDates,
   listSchematicMapVersionSnapshotEffectiveDates,
   MRTDownRepository,
   MRTDownWriter,
+  nonPublicEvidenceRedactedText,
   readIssueBundle,
   readNdjsonFile,
   readSchematicMapManifest,
   readSchematicMapRuleSet,
   readSchematicMapVersionSnapshot,
+  redactNonPublicEvidenceForExport,
   renderPagesIndex,
   StandardRepository,
   schematicSystemMapConstraintSetPath,
@@ -42,6 +45,7 @@ import {
   toDataPath,
   validateDataRoot,
   visibleDirEntries,
+  writeNdjsonFile,
   writeSchematicMapConstraintSet,
   writeSchematicMapManifest,
   writeSchematicMapRuleSet,
@@ -191,11 +195,15 @@ describe('@mrtdown/fs', () => {
       fixtureDataDir,
       '2026-01-01T00:00:00Z',
     );
+    expect(manifest.manifestVersion).toBe(2);
     expect(manifest.lines.ISL).toMatch(/^[0-9a-f]{64}$/);
+    expect(manifest.rights.licenseData).toMatch(/^[0-9a-f]{64}$/);
+    expect(manifest.rights.sourceRegistry).toMatch(/^[0-9a-f]{64}$/);
     const pagesIndex = renderPagesIndex(manifest);
     expect(pagesIndex).toContain('mrtdown-data');
     expect(pagesIndex).toContain('href="#lines"');
     expect(pagesIndex).toContain('<h2 id="exports">Exports</h2>');
+    expect(pagesIndex).toContain('LICENSE-DATA.md');
     expect(pagesIndex).not.toContain('archive.tar.gz');
     expect(renderPagesIndex(manifest, { includeArchiveLinks: true })).toContain(
       'archive.tar.gz',
@@ -203,6 +211,144 @@ describe('@mrtdown/fs', () => {
     expect(
       renderPagesIndex(manifest, { includeFixtureExportLinks: true }),
     ).toContain('fixtures/');
+  });
+
+  it('validates the source registry through the data root validator', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+
+    await writeFile(
+      join(dataDir, 'rights/source-registry.json'),
+      `${JSON.stringify({
+        schemaVersion: 1,
+        rights: [
+          {
+            id: 'CC-BY-4.0',
+            label: 'Creative Commons Attribution 4.0 International',
+            url: 'https://creativecommons.org/licenses/by/4.0/',
+            category: 'mrtdown-authored',
+            summary: 'MRTDown-authored reusable data.',
+          },
+        ],
+        rules: [
+          {
+            id: 'broken',
+            label: 'Broken rule',
+            match: { sourceUrlHost: ['example.com'] },
+            category: 'generic-web',
+            contentRights: 'LicenseRef-Missing',
+            mrtdownRights: 'CC-BY-4.0',
+            policy: 'third-party-content-not-licensed-by-mrtdown',
+            attributionTemplate: '{sourceUrl}',
+            publicExportAllowed: true,
+          },
+        ],
+      })}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir, ['rights']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual([
+      'rights: rules.0.contentRights: Unknown rights id LicenseRef-Missing',
+    ]);
+  });
+
+  it('requires issue evidence to resolve to a source registry rule', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const [bundle] = await listIssueBundles(dataDir);
+    expect(bundle).toBeDefined();
+    const evidencePath = join(dataDir, bundle.path, 'evidence.ndjson');
+    const [evidence, ...remainingEvidence] = bundle.evidence;
+    expect(evidence).toBeDefined();
+    await writeNdjsonFile(evidencePath, [
+      EvidenceSchema.parse({
+        ...evidence,
+        sourceUrl: 'https://unregistered.example.net/source/1',
+      }),
+      ...remainingEvidence,
+    ]);
+
+    const result = await validateDataRoot(dataDir, ['issue', 'rights']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual([
+      `${bundle.path}/evidence.ndjson:1: evidence source rights no-match for https://unregistered.example.net/source/1`,
+    ]);
+  });
+
+  it('redacts non-exportable source evidence from public exports', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const [bundle] = await listIssueBundles(dataDir);
+    expect(bundle).toBeDefined();
+    const evidencePath = join(dataDir, bundle.path, 'evidence.ndjson');
+    const [evidence, ...remainingEvidence] = bundle.evidence;
+    expect(evidence).toBeDefined();
+    const nonPublicEvidence = EvidenceSchema.parse({
+      ...evidence,
+      type: 'report.public',
+      sourceUrl:
+        'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+    });
+    await writeNdjsonFile(evidencePath, [
+      nonPublicEvidence,
+      ...remainingEvidence,
+    ]);
+
+    await expect(
+      validateDataRoot(dataDir, ['issue', 'rights']),
+    ).resolves.toMatchObject({ ok: true });
+
+    await expect(redactNonPublicEvidenceForExport(dataDir)).resolves.toEqual({
+      redactedEvidenceCount: 1,
+    });
+    await expect(readNdjsonFile(evidencePath, EvidenceSchema)).resolves.toEqual(
+      [
+        {
+          ...nonPublicEvidence,
+          text: nonPublicEvidenceRedactedText,
+          render: null,
+        },
+        ...remainingEvidence,
+      ],
+    );
+    await expect(
+      validateDataRoot(dataDir, ['issue', 'rights']),
+    ).resolves.toMatchObject({ ok: true });
+  });
+
+  it('redacts evidence with inconclusive source rights from public exports', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const [bundle] = await listIssueBundles(dataDir);
+    expect(bundle).toBeDefined();
+    const evidencePath = join(dataDir, bundle.path, 'evidence.ndjson');
+    const [evidence, ...remainingEvidence] = bundle.evidence;
+    expect(evidence).toBeDefined();
+    const unresolvedEvidence = EvidenceSchema.parse({
+      ...evidence,
+      sourceUrl: 'https://unregistered.example.net/source/1',
+    });
+    await writeNdjsonFile(evidencePath, [
+      unresolvedEvidence,
+      ...remainingEvidence,
+    ]);
+
+    await expect(redactNonPublicEvidenceForExport(dataDir)).resolves.toEqual({
+      redactedEvidenceCount: 1,
+    });
+    await expect(readNdjsonFile(evidencePath, EvidenceSchema)).resolves.toEqual(
+      [
+        {
+          ...unresolvedEvidence,
+          text: nonPublicEvidenceRedactedText,
+          render: null,
+        },
+        ...remainingEvidence,
+      ],
+    );
   });
 
   it('reads and writes schematic map generator files and generated snapshots', async () => {
@@ -2163,6 +2309,45 @@ describe('@mrtdown/fs', () => {
     expect(before.issues[issueId]).toMatch(/^[0-9a-f]{64}$/);
     expect(after.issues[issueId]).toMatch(/^[0-9a-f]{64}$/);
     expect(after.issues[issueId]).not.toBe(before.issues[issueId]);
+  });
+
+  it('includes source registry content in manifest hashes', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+
+    const before = await buildManifest(dataDir, '2026-01-01T00:00:00Z');
+    const sourceRegistryPath = join(dataDir, 'rights/source-registry.json');
+    const sourceRegistry = JSON.parse(
+      await readFile(sourceRegistryPath, 'utf8'),
+    ) as { rules: Array<{ label: string }> };
+    sourceRegistry.rules[0].label = `${sourceRegistry.rules[0].label} updated`;
+    await writeFile(
+      sourceRegistryPath,
+      `${JSON.stringify(sourceRegistry, null, 2)}\n`,
+    );
+
+    const after = await buildManifest(dataDir, '2026-01-01T00:00:00Z');
+
+    expect(before.rights.sourceRegistry).toMatch(/^[0-9a-f]{64}$/);
+    expect(after.rights.sourceRegistry).toMatch(/^[0-9a-f]{64}$/);
+    expect(after.rights.sourceRegistry).not.toBe(before.rights.sourceRegistry);
+  });
+
+  it('includes data license content in manifest hashes', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+
+    const before = await buildManifest(dataDir, '2026-01-01T00:00:00Z');
+    await writeFile(
+      join(dataDir, 'LICENSE-DATA.md'),
+      '# Updated fixture data license\n',
+    );
+
+    const after = await buildManifest(dataDir, '2026-01-01T00:00:00Z');
+
+    expect(before.rights.licenseData).toMatch(/^[0-9a-f]{64}$/);
+    expect(after.rights.licenseData).toMatch(/^[0-9a-f]{64}$/);
+    expect(after.rights.licenseData).not.toBe(before.rights.licenseData);
   });
 
   it('rejects fixture line references that are missing from fixture lines', async () => {

@@ -1,4 +1,4 @@
-import { mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, isAbsolute, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { DateTime } from 'luxon';
@@ -97,6 +97,32 @@ async function writeEntitySet(dataDir, type, values) {
   for (const value of values) {
     await writeJson(resolve(dataDir, type, `${value.id}.json`), value);
   }
+}
+
+async function writeSourceRegistry(dataDir) {
+  const sourceRegistry = JSON.parse(
+    await readFile(
+      resolve(repoRoot, 'data/rights/source-registry.json'),
+      'utf8',
+    ),
+  );
+  sourceRegistry.rules.push({
+    id: 'fixture-example',
+    label: 'Fixture example sources',
+    match: {
+      sourceUrlHost: ['example.com'],
+    },
+    category: 'mrtdown-authored',
+    contentRights: 'CC-BY-4.0',
+    mrtdownRights: 'CC-BY-4.0',
+    policy: 'mrtdown-authored-public-data',
+    attributionTemplate: 'MRTDown fixture source {sourceUrl}',
+    publicExportAllowed: true,
+  });
+  await writeJson(
+    resolve(dataDir, 'rights', 'source-registry.json'),
+    sourceRegistry,
+  );
 }
 
 function service(id, name, lineId, stations) {
@@ -1103,6 +1129,7 @@ export async function generateFixtures(options = {}) {
   await writeEntitySet(dataDir, 'landmark', staticEntities.landmarks);
   await writeEntitySet(dataDir, 'station', staticEntities.stations);
   await writeEntitySet(dataDir, 'service', staticEntities.services);
+  await writeSourceRegistry(dataDir);
 
   for (const item of issues) {
     await writeIssue(dataDir, item.issue, item.evidence, item.impact);
@@ -1116,6 +1143,7 @@ export async function generateFixtures(options = {}) {
       landmark: staticEntities.landmarks.length,
       line: staticEntities.lines.length,
       operator: staticEntities.operators.length,
+      rights: 1,
       service: staticEntities.services.length,
       station: staticEntities.stations.length,
       town: staticEntities.towns.length,

@@ -9,6 +9,9 @@ plan.
 - [GTFS static and realtime support](active/gtfs-static-realtime.md):
   deterministic GTFS Static export, Pages publication, and GTFS Realtime
   evidence ingest boundaries.
+- [Data licensing and attribution](active/data-licensing-attribution.md):
+  source registry, evidence rights classification, and generated attribution
+  artifacts for data publication.
 - [Schematic system map generation](active/schematic-system-map.md): canonical
   schematic map generator, rule schema, validation, and publication.
 - [Station first and last train data](active/station-first-last-train-data.md):

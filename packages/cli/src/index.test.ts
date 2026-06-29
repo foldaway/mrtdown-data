@@ -231,6 +231,18 @@ describe('@mrtdown/cli', () => {
     expect(JSON.parse(stdout[0] as string)).toMatchObject(fixtureMeta.counts);
   });
 
+  it('validates scoped rights data', async () => {
+    const { io, stdout, stderr } = createIo();
+    const code = await runCli(
+      ['--data-dir', fixtureDataDir, 'validate', '--scope', 'rights'],
+      io,
+    );
+
+    expect(code).toBe(0);
+    expect(stderr).toEqual([]);
+    expect(JSON.parse(stdout[0] as string)).toMatchObject({ rights: 1 });
+  });
+
   it('lists and shows records', async () => {
     const list = createIo();
     await expect(
