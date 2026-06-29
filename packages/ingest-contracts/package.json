@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/foldaway/mrtdown-data.git"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "Foldaway <bottleneck.company@gmail.com>",
   "type": "module",
   "main": "dist/index.js",

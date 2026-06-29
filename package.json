@@ -41,7 +41,7 @@
     "ingest:webhook": "npm run build:triage && node packages/triage/dist/scripts/ingestViaWebhook.js"
   },
   "author": "",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "2.5.0",
     "@changesets/cli": "^2.31.0",

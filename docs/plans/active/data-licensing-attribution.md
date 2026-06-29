@@ -57,8 +57,7 @@ Use separate licensing layers:
 
 - MRTDown-authored data: Creative Commons Attribution 4.0 International
   (`CC-BY-4.0`).
-- Package source code: keep separate from data licensing, either unlicensed or
-  under a software license chosen by the project.
+- Package source code: keep separate from data licensing under the MIT License.
 - Third-party source text and linked material: not licensed by MRTDown.
 - Government open data mirrored or derived from Singapore open data sources:
   preserve the upstream Singapore Open Data Licence notice while licensing only
@@ -258,8 +257,7 @@ Validation should warn, not fail, when:
 ### Phase 1: Policy And Registry
 
 - Add top-level data licensing text and third-party carve-outs.
-- Decide whether package source code remains `UNLICENSED` or receives a
-  separate software license.
+- Keep package source code under its separate MIT software license.
 - Add durable definitions for MRTDown-authored data, third-party source text,
   upstream open data, and generated artifacts.
 - Document the preferred attribution format for downstream consumers.

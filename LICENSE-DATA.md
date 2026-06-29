@@ -31,5 +31,5 @@ metadata under `CC-BY-4.0`.
 ## Source Code
 
 This data license does not apply to package source code, scripts, or tooling.
-Package and repository code remains separately marked as `UNLICENSED` unless a
-future software license file says otherwise.
+Package source code, scripts, tooling, and associated documentation are
+licensed separately under the MIT License as described in `LICENSE-CODE.md`.

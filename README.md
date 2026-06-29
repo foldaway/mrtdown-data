@@ -121,8 +121,9 @@ canonical data changes.
 ## Data Licensing
 
 MRTDown-authored canonical data and generated data exports are covered by
-`CC-BY-4.0` as described in `LICENSE-DATA.md`. Package source code remains
-separately marked as `UNLICENSED`.
+`CC-BY-4.0` as described in `LICENSE-DATA.md`. Package source code, scripts,
+tooling, and associated documentation are licensed under the MIT License as
+described in `LICENSE-CODE.md`.
 
 Evidence may contain or link to third-party posts, articles, source text,
 government source material, or direct report text. Those upstream materials are
