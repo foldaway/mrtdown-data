@@ -1,6 +1,6 @@
 {
   "name": "@mrtdown/triage",
-  "version": "2.0.0-alpha.32",
+  "version": "2.0.0-alpha.33",
   "description": "Evidence triage and replay utilities for MRTDown data",
   "private": true,
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
@@ -33,9 +33,9 @@
     "test:eval": "node ../../scripts/run-fixture-command.mjs -- npm exec -- vitest --run --config vitest.eval.config.ts"
   },
   "dependencies": {
-    "@mrtdown/core": "2.0.0-alpha.26",
-    "@mrtdown/fs": "2.0.0-alpha.26",
-    "@mrtdown/ingest-contracts": "2.0.0-alpha.29",
+    "@mrtdown/core": "2.0.0-alpha.27",
+    "@mrtdown/fs": "2.0.0-alpha.27",
+    "@mrtdown/ingest-contracts": "2.0.0-alpha.30",
     "dotenv": "^16.4.7",
     "hast-util-from-html": "^2.0.3",
     "hast-util-to-mdast": "^10.1.2",
