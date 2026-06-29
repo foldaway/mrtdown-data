@@ -10,6 +10,13 @@ import {
 } from './rights.js';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
+const fixtureDataDir = resolve(
+  process.env.MRTDOWN_FIXTURE_DATA_DIR ??
+    resolve(
+      dirname(fileURLToPath(import.meta.url)),
+      '../../../fixtures/generated/data',
+    ),
+);
 
 function evidence(sourceUrl: string): Evidence {
   return {
@@ -77,23 +84,31 @@ describe('source registry rule matching', () => {
     const fixtureSourceRegistry = SourceRegistrySchema.parse(
       JSON.parse(
         readFileSync(
-          join(repoRoot, 'fixtures/generated/data/rights/source-registry.json'),
+          join(fixtureDataDir, 'rights/source-registry.json'),
           'utf8',
         ),
       ) as unknown,
     );
     const evidenceFiles = [
       ...globSync('data/issue/*/*/*/evidence.ndjson', { cwd: repoRoot }).map(
-        (path) => ({ path, sourceRegistry: canonicalSourceRegistry }),
+        (path) => ({
+          path: join(repoRoot, path),
+          label: path,
+          sourceRegistry: canonicalSourceRegistry,
+        }),
       ),
-      ...globSync('fixtures/generated/data/issue/*/*/*/evidence.ndjson', {
-        cwd: repoRoot,
-      }).map((path) => ({ path, sourceRegistry: fixtureSourceRegistry })),
+      ...globSync('issue/*/*/*/evidence.ndjson', {
+        cwd: fixtureDataDir,
+      }).map((path) => ({
+        path: join(fixtureDataDir, path),
+        label: `fixtures/generated/data/${path}`,
+        sourceRegistry: fixtureSourceRegistry,
+      })),
     ];
     const unresolved: string[] = [];
 
-    for (const { path: evidenceFile, sourceRegistry } of evidenceFiles) {
-      const text = readFileSync(join(repoRoot, evidenceFile), 'utf8');
+    for (const { path: evidenceFile, label, sourceRegistry } of evidenceFiles) {
+      const text = readFileSync(evidenceFile, 'utf8');
       for (const [index, line] of text.split('\n').entries()) {
         if (line.trim().length === 0) {
           continue;
@@ -103,7 +118,7 @@ describe('source registry rule matching', () => {
         const result = resolveSourceRegistryRule(sourceRegistry, row);
         if (!result.ok) {
           unresolved.push(
-            `${evidenceFile}:${index + 1} ${result.reason} ${row.sourceUrl}`,
+            `${label}:${index + 1} ${result.reason} ${row.sourceUrl}`,
           );
         }
       }
