@@ -1,5 +1,17 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.27
+
+### Patch Changes
+
+- c7ffe21: Add rights source registry schemas, validation, attribution export support, and
+  public export evidence redaction.
+
+  Restrict crowd-report ingest source URLs to the `reports.mrtdown.sg` host.
+
+- Updated dependencies [c7ffe21]
+  - @mrtdown/core@2.0.0-alpha.27
+
 ## 2.0.0-alpha.26
 
 ### Patch Changes

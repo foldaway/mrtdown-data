@@ -1,5 +1,14 @@
 # @mrtdown/ingest-contracts
 
+## 2.0.0-alpha.30
+
+### Major Changes
+
+- c7ffe21: Add rights source registry schemas, validation, attribution export support, and
+  public export evidence redaction.
+
+  Restrict crowd-report ingest source URLs to the `reports.mrtdown.sg` host.
+
 ## 2.0.0-alpha.29
 
 ### Major Changes
