@@ -26,13 +26,13 @@ jobs:
         if: ${{ env.CAN_RUN_EVALS != 'true' }}
         run: echo "Skipping LLM evals for fork pull request because repository secrets are unavailable."
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         if: ${{ env.CAN_RUN_EVALS == 'true' && github.event_name == 'pull_request' }}
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         if: ${{ env.CAN_RUN_EVALS == 'true' && github.event_name == 'workflow_dispatch' }}
         with:
           fetch-depth: 0
