@@ -43,7 +43,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@biomejs/biome": "2.5.0",
+    "@biomejs/biome": "2.5.1",
     "@changesets/cli": "^2.31.0",
     "@types/luxon": "^3.7.1",
     "@types/node": "24.13.2",
