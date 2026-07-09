@@ -2359,7 +2359,7 @@ describe('@mrtdown/fs', () => {
       `${JSON.stringify({
         id: 'NSL_TEST',
         name: {
-          'en-SG': 'North South Line Test Service',
+          'en-SG': 'Test Service',
           'zh-Hans': null,
           ms: null,
           ta: null,
@@ -2671,7 +2671,7 @@ describe('@mrtdown/fs', () => {
         {
           id: 'ISL_ENDED',
           name: {
-            'en-SG': 'Island Line Ended',
+            'en-SG': 'Ended Service',
             'zh-Hans': null,
             ms: null,
             ta: null,
@@ -2713,7 +2713,7 @@ describe('@mrtdown/fs', () => {
         {
           id: 'ISL_FUTURE_ENDED',
           name: {
-            'en-SG': 'Island Line Future Ended',
+            'en-SG': 'Future Ended Service',
             'zh-Hans': null,
             ms: null,
             ta: null,
@@ -2755,7 +2755,7 @@ describe('@mrtdown/fs', () => {
         {
           id: 'ISL_MULTI_CURRENT',
           name: {
-            'en-SG': 'Island Line Multiple Current',
+            'en-SG': 'Multiple Current Service',
             'zh-Hans': null,
             ms: null,
             ta: null,
@@ -2977,7 +2977,7 @@ describe('@mrtdown/fs', () => {
         {
           id: 'ISL_SKIP_KET',
           name: {
-            'en-SG': 'Island Line Skip Kennedy Town',
+            'en-SG': 'Skip Kennedy Town Service',
             'zh-Hans': null,
             ms: null,
             ta: null,
@@ -3125,7 +3125,7 @@ describe('@mrtdown/fs', () => {
       `${JSON.stringify({
         id: 'NSL_MAIN_S',
         name: {
-          'en-SG': 'North South Line Southbound',
+          'en-SG': 'Main Service - Southbound',
           'zh-Hans': null,
           ms: null,
           ta: null,

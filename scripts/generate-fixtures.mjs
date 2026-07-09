@@ -711,37 +711,37 @@ function buildStaticEntities() {
   const services = [
     service(
       'ISL_MAIN_E',
-      'Island Line (Eastbound)',
+      'Main Service - Eastbound',
       'ISL',
       serviceStations(islandEast, 'ISL'),
     ),
     service(
       'ISL_MAIN_W',
-      'Island Line (Westbound)',
+      'Main Service - Westbound',
       'ISL',
       serviceStations([...islandEast].reverse(), 'ISL'),
     ),
     service(
       'TWL_MAIN_S',
-      'Tsuen Wan Line (Southbound)',
+      'Main Service - Southbound',
       'TWL',
       serviceStations(tsuenWanSouth, 'TWL'),
     ),
     service(
       'TWL_MAIN_N',
-      'Tsuen Wan Line (Northbound)',
+      'Main Service - Northbound',
       'TWL',
       serviceStations([...tsuenWanSouth].reverse(), 'TWL'),
     ),
     service(
       'TKL_MAIN_N',
-      'Tseung Kwan O Line (Northbound)',
+      'Main Service - Northbound',
       'TKL',
       serviceStations(tseungKwanONorth, 'TKL'),
     ),
     service(
       'TKL_MAIN_S',
-      'Tseung Kwan O Line (Southbound)',
+      'Main Service - Southbound',
       'TKL',
       serviceStations([...tseungKwanONorth].reverse(), 'TKL'),
     ),
