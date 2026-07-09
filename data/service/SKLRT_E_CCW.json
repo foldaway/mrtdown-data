@@ -2,10 +2,10 @@
     "id": "SKLRT_E_CCW",
     "lineId": "SKLRT",
     "name": {
-        "en-SG": "Sengkang LRT (East Loop) - Counter-Clockwise",
-        "zh-Hans": "盛港轻轨线（东部环线） - 逆时针方向",
-        "ms": "Laluan LRT Sengkang (Laluan Pusingan Timur) - Arah Lawan Jam",
-        "ta": "செங்காங் லைட் ரெயில் வரி (கிழக்கு புரோக்கி) - எதிர் காலம் திசை"
+        "en-SG": "East Loop - Counter-Clockwise",
+        "zh-Hans": "东部环线 - 逆时针方向",
+        "ms": "Laluan Pusingan Timur - Arah Lawan Jam",
+        "ta": "கிழக்கு புரோக்கி - எதிர் காலம் திசை"
     },
     "revisions": [
         {

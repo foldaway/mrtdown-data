@@ -2,10 +2,10 @@
     "id": "EWL_MAIN_W",
     "lineId": "EWL",
     "name": {
-        "en-SG": "East-West Line (Main Branch) - Westbound",
-        "zh-Hans": "东西地铁线（主干线） - 往西方向",
-        "ms": "Laluan MRT Timur Barat (Cawangan Utama) - Arah Barat",
-        "ta": "கிழக்கு மேற்கு எம்ஆர்டி வழி (முதன்மை கிளை) - மேற்கு திசை"
+        "en-SG": "Main Branch - Westbound",
+        "zh-Hans": "主干线 - 往西方向",
+        "ms": "Cawangan Utama - Arah Barat",
+        "ta": "முதன்மை கிளை - மேற்கு திசை"
     },
     "revisions": [
         {

@@ -2,10 +2,10 @@
     "id": "BPLRT_A",
     "lineId": "BPLRT",
     "name": {
-        "en-SG": "Bukit Panjang LRT - Service A",
-        "zh-Hans": "武吉班让快速铁路（主线） - 服务A",
-        "ms": "Laluan Rapi Transit Bukit Panjang (Layanan Utama) - Perkhidmatan A",
-        "ta": "புக்கிட் பாஞ்சாங் வரிசையாக்க எம்ஆர்டி (முக்கிய சேவை) - சேவை A"
+        "en-SG": "Service A",
+        "zh-Hans": "主线 - 服务A",
+        "ms": "Layanan Utama - Perkhidmatan A",
+        "ta": "முக்கிய சேவை - சேவை A"
     },
     "revisions": [
         {

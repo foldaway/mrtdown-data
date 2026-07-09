@@ -2,10 +2,10 @@
     "id": "PGLRT_E_CW",
     "lineId": "PGLRT",
     "name": {
-        "en-SG": "Punggol LRT (East Branch) - Clockwise",
-        "zh-Hans": "榜鹅轻轨线（东部支线） - 顺时针方向",
-        "ms": "Laluan LRT Punggol (Cawangan Timur) - Arah Jam",
-        "ta": "பொங்கோல் எல்ஆர்டி வரி (கிழக்கு கிளை) - காலம் திசை"
+        "en-SG": "East Branch - Clockwise",
+        "zh-Hans": "东部支线 - 顺时针方向",
+        "ms": "Cawangan Timur - Arah Jam",
+        "ta": "கிழக்கு கிளை - காலம் திசை"
     },
     "revisions": [
         {

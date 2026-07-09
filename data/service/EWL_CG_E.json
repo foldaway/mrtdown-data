@@ -2,10 +2,10 @@
     "id": "EWL_CG_E",
     "lineId": "EWL",
     "name": {
-        "en-SG": "East-West Line (Changi Airport Branch) - Eastbound",
-        "zh-Hans": "东西地铁线（樟宜机场支线） - 往东方向",
-        "ms": "Laluan MRT Timur Barat (Cawangan Lapangan Terbang Changi) - Arah Timur",
-        "ta": "கிழக்கு மேற்கு எம்ஆர்டி வழி (சாங்கி விமான நிலைய கிளை) - கிழக்கு திசை"
+        "en-SG": "Changi Airport Branch - Eastbound",
+        "zh-Hans": "樟宜机场支线 - 往东方向",
+        "ms": "Cawangan Lapangan Terbang Changi - Arah Timur",
+        "ta": "சாங்கி விமான நிலைய கிளை - கிழக்கு திசை"
     },
     "revisions": [
         {

@@ -2,10 +2,10 @@
     "id": "JRL_WEST",
     "lineId": "JRL",
     "name": {
-        "en-SG": "Jurong Region Line (West Branch)",
-        "zh-Hans": "裕廊区域线（西部支线）",
-        "ms": "Laluan Daerah Jurong (Cawangan Barat)",
-        "ta": "ஜூரோங் வட்டாரப் பாதை (மேற்கு கிளை)"
+        "en-SG": "West Branch",
+        "zh-Hans": "西部支线",
+        "ms": "Cawangan Barat",
+        "ta": "மேற்கு கிளை"
     },
     "revisions": [
         {

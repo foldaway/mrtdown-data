@@ -2,10 +2,10 @@
     "id": "DTL_MAIN_W",
     "lineId": "DTL",
     "name": {
-        "en-SG": "Downtown Line (Main Service) - Westbound",
-        "zh-Hans": "市区线（主线） - 西向",
-        "ms": "Laluan DTL (Layanan Utama) - Arah Barat",
-        "ta": "மண்டை வழி (முக்கிய சேவை) - மேற்கு திசை"
+        "en-SG": "Main Service - Westbound",
+        "zh-Hans": "主线 - 西向",
+        "ms": "Layanan Utama - Arah Barat",
+        "ta": "முக்கிய சேவை - மேற்கு திசை"
     },
     "revisions": [
         {

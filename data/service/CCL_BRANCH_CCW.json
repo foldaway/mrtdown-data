@@ -2,10 +2,10 @@
     "id": "CCL_BRANCH_CCW",
     "lineId": "CCL",
     "name": {
-        "en-SG": "Circle Line (Dhoby Ghaut Branch) - Anticlockwise",
-        "zh-Hans": "环线（多美歌支线） - 逆时针方向",
-        "ms": "Laluan MRT Bulat (Cawangan Dhoby Ghaut) - Arah Lawan Jam",
-        "ta": "வட்டமாக்கி எம்ஆர்டி வழி (டோபி காட் கிளை) - எதிர் கடிகார திசை"
+        "en-SG": "Dhoby Ghaut Branch - Anticlockwise",
+        "zh-Hans": "多美歌支线 - 逆时针方向",
+        "ms": "Cawangan Dhoby Ghaut - Arah Lawan Jam",
+        "ta": "டோபி காட் கிளை - எதிர் கடிகார திசை"
     },
     "revisions": [
         {

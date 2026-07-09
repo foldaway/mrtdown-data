@@ -2,10 +2,10 @@
     "id": "CRL_EXT_N",
     "lineId": "CRL",
     "name": {
-        "en-SG": "Cross Island Line (Punggol Extension Line) - Northbound",
-        "zh-Hans": "跨岛地铁线（榜鹅延长线） - 北向",
-        "ms": "Laluan MRT Rentas Pulau (Laluan Sambungan Punggol) - Arah Utara",
-        "ta": "குறுக்குத் தீவு ரயில் பாதை (பொங்கோல் நீட்டிப்பு வழித்தடம்) - வடக்கு திசை"
+        "en-SG": "Punggol Extension Line - Northbound",
+        "zh-Hans": "榜鹅延长线 - 北向",
+        "ms": "Laluan Sambungan Punggol - Arah Utara",
+        "ta": "பொங்கோல் நீட்டிப்பு வழித்தடம் - வடக்கு திசை"
     },
     "revisions": [
         {

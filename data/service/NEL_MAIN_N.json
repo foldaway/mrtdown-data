@@ -2,10 +2,10 @@
     "id": "NEL_MAIN_N",
     "lineId": "NEL",
     "name": {
-        "en-SG": "North-East Line (Main Service) - Northbound",
-        "zh-Hans": "东北线（主线） - 北向",
-        "ms": "Laluan Negeri-Tengah (Layanan Utama) - Arah Utara",
-        "ta": "தெற்கு-கிழக்கு எம்ஆர்டி வழி (முக்கிய சேவை) - வடக்கு திசை"
+        "en-SG": "Main Service - Northbound",
+        "zh-Hans": "主线 - 北向",
+        "ms": "Layanan Utama - Arah Utara",
+        "ta": "முக்கிய சேவை - வடக்கு திசை"
     },
     "revisions": [
         {

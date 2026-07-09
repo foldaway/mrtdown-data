@@ -2,10 +2,10 @@
     "id": "NSL_MAIN_S",
     "lineId": "NSL",
     "name": {
-        "en-SG": "North-South Line (Main Service) - Southbound",
-        "zh-Hans": "南北地铁线（主线） - 往南方向",
-        "ms": "Laluan MRT Selatan (Layanan Utama) - Arah Selatan",
-        "ta": "வடக்கு மேற்கு எம்ஆர்டி வழி (முக்கிய சேவை) - வடக்கு திசை"
+        "en-SG": "Main Service - Southbound",
+        "zh-Hans": "主线 - 往南方向",
+        "ms": "Layanan Utama - Arah Selatan",
+        "ta": "முக்கிய சேவை - வடக்கு திசை"
     },
     "revisions": [
         {

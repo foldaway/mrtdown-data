@@ -2,10 +2,10 @@
     "id": "CCL_MAIN_CCW",
     "lineId": "CCL",
     "name": {
-        "en-SG": "Circle Line (Main Service) - Counter-Clockwise",
-        "zh-Hans": "环线（主线） - 逆时针方向",
-        "ms": "Laluan MRT Bulat (Layanan Utama) - Arah Lawan Jam",
-        "ta": "வட்டமாக்கி எம்ஆர்டி வழி (முக்கிய சேவை) - எதிர் காலம் திசை"
+        "en-SG": "Main Service - Counter-Clockwise",
+        "zh-Hans": "主线 - 逆时针方向",
+        "ms": "Layanan Utama - Arah Lawan Jam",
+        "ta": "முக்கிய சேவை - எதிர் காலம் திசை"
     },
     "revisions": [
         {

@@ -2,10 +2,10 @@
     "id": "CCL_LOOP_CW",
     "lineId": "CCL",
     "name": {
-        "en-SG": "Circle Line (Loop Service) - Clockwise",
-        "zh-Hans": "环线（环状服务） - 顺时针方向",
-        "ms": "Laluan MRT Bulat (Perkhidmatan Gelung) - Arah Jam",
-        "ta": "வட்டமாக்கி எம்ஆர்டி வழி (சுற்று சேவை) - கடிகார திசை"
+        "en-SG": "Loop Service - Clockwise",
+        "zh-Hans": "环状服务 - 顺时针方向",
+        "ms": "Perkhidmatan Gelung - Arah Jam",
+        "ta": "சுற்று சேவை - கடிகார திசை"
     },
     "revisions": [
         {

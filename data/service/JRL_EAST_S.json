@@ -2,10 +2,10 @@
     "id": "JRL_EAST_S",
     "lineId": "JRL",
     "name": {
-        "en-SG": "Jurong Region Line (East Branch) - Southbound",
-        "zh-Hans": "裕廊区域线（东部支线） - 南向",
-        "ms": "Laluan Daerah Jurong (Cawangan Timur) - Arah Selatan",
-        "ta": "ஜூரோங் வட்டாரப் பாதை (கிழக்கு கிளை) - தென்னை திசை"
+        "en-SG": "East Branch - Southbound",
+        "zh-Hans": "东部支线 - 南向",
+        "ms": "Cawangan Timur - Arah Selatan",
+        "ta": "கிழக்கு கிளை - தென்னை திசை"
     },
     "revisions": [
         {

@@ -2,10 +2,10 @@
     "id": "TEL_MAIN_N",
     "lineId": "TEL",
     "name": {
-        "en-SG": "Thomson-East Coast Line (Main Service) - Northbound",
-        "zh-Hans": "汤申-东海岸线（主线） - 北向",
-        "ms": "Laluan Thomson-EC Line (Layanan Utama) - Arah Utara",
-        "ta": "தோமசன்-கிழக்கு எம்ஆர்டி வழி (முக்கிய சேவை) - வட திசை"
+        "en-SG": "Main Service - Northbound",
+        "zh-Hans": "主线 - 北向",
+        "ms": "Layanan Utama - Arah Utara",
+        "ta": "முக்கிய சேவை - வட திசை"
     },
     "revisions": [
         {

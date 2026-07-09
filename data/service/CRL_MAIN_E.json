@@ -2,10 +2,10 @@
     "id": "CRL_MAIN_E",
     "lineId": "CRL",
     "name": {
-        "en-SG": "Cross Island Line (Main Branch) - Eastbound",
-        "zh-Hans": "跨岛地铁线（主干线） - 往东方向",
-        "ms": "Laluan MRT Rentas Pulau (Cawangan Utama) - Arah Timur",
-        "ta": "குறுக்குத் தீவு ரயில் பாதை (முதன்மை கிளை) - கிழக்கு திசை"
+        "en-SG": "Main Branch - Eastbound",
+        "zh-Hans": "主干线 - 往东方向",
+        "ms": "Cawangan Utama - Arah Timur",
+        "ta": "முதன்மை கிளை - கிழக்கு திசை"
     },
     "revisions": [
         {
