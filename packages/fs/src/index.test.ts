@@ -2822,14 +2822,14 @@ describe('@mrtdown/fs', () => {
       expect.arrayContaining([
         'station/KET.json: firstLastTrain.services.1.serviceId ISL_MAIN_E duplicates firstLastTrain.services.0.serviceId',
         'station/KET.json: firstLastTrain.services.2.serviceId MISSING does not exist in service/',
-        'station/KET.json: firstLastTrain.services.3.serviceId TWL_MAIN_N revision r_initial does not include station KET in its current service path',
-        'station/KET.json: firstLastTrain.services.4.serviceId ISL_ENDED does not have a current service revision',
-        'station/KET.json: firstLastTrain.services.6.serviceId ISL_MULTI_CURRENT revision r_hku does not include station KET in its current service path',
+        'station/KET.json: firstLastTrain.services.3.serviceId TWL_MAIN_N does not include station KET in any service revision',
       ]),
     );
     expect(result.errors).not.toEqual(
       expect.arrayContaining([
+        'station/KET.json: firstLastTrain.services.4.serviceId ISL_ENDED does not have a current service revision',
         'station/KET.json: firstLastTrain.services.5.serviceId ISL_FUTURE_ENDED does not have a current service revision',
+        'station/KET.json: firstLastTrain.services.6.serviceId ISL_MULTI_CURRENT revision r_hku does not include station KET in its current service path',
       ]),
     );
   });
@@ -3061,7 +3061,7 @@ describe('@mrtdown/fs', () => {
         'station/KET.json: layout.platforms.0.levelId MISSING does not exist in layout.levels',
         'station/KET.json: layout.platforms.0.serviceIds.0 MISSING_SERVICE does not exist in service/',
         'station/KET.json: layout.platforms.1.serviceIds.0 TWL_MAIN_N belongs to line TWL, not ISL',
-        'station/KET.json: layout.platforms.1.serviceIds.1 ISL_SKIP_KET revision r_current does not include station KET in its current service path',
+        'station/KET.json: layout.platforms.1.serviceIds.1 ISL_SKIP_KET does not include station KET in any service revision',
         'station/KET.json: layout.platforms.0.accessPoints.0.connectsToLevelId MISSING does not exist in layout.levels',
         'station/KET.json: layout.platforms.0.accessPoints.0.nearestDoor 25 is outside doorCount 24',
         'station/KET.json: layout.transferPaths.0.from platform MISSING_PLATFORM does not exist in layout',

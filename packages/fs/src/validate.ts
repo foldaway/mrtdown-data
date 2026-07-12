@@ -231,7 +231,6 @@ async function validateStationReferences(
   );
   const townIds = await loadEntityIds(dataDir, records, 'town');
   const errors: string[] = [];
-  const validationTimestamp = Date.now();
   const seenStationAliases = new Map<string, { path: string; index: number }>();
 
   for (const station of await loadEntityRecords(dataDir, records, 'station')) {
@@ -413,28 +412,10 @@ async function validateStationReferences(
             continue;
           }
 
-          const currentRevisions = service.value.revisions.filter((revision) =>
-            revisionContainsTimestamp(revision, validationTimestamp),
-          );
-          if (currentRevisions.length === 0) {
+          if (!serviceIncludesStation(service.value, station.value.id)) {
             errors.push(
-              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not have a current service revision`,
+              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not include station ${station.value.id} in any service revision`,
             );
-            continue;
-          }
-
-          for (const revision of currentRevisions) {
-            const stationIds = new Set(
-              revision.path.stations.map(
-                (serviceStation) => serviceStation.stationId,
-              ),
-            );
-
-            if (!stationIds.has(station.value.id)) {
-              errors.push(
-                `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} revision ${revision.id} does not include station ${station.value.id} in its current service path`,
-              );
-            }
           }
         }
       }
@@ -492,28 +473,10 @@ async function validateStationReferences(
         continue;
       }
 
-      const currentRevisions = service.value.revisions.filter((revision) =>
-        revisionContainsTimestamp(revision, validationTimestamp),
-      );
-      if (currentRevisions.length === 0) {
+      if (!serviceIncludesStation(service.value, station.value.id)) {
         errors.push(
-          `${station.path}: firstLastTrain.services.${index}.serviceId ${serviceTiming.serviceId} does not have a current service revision`,
+          `${station.path}: firstLastTrain.services.${index}.serviceId ${serviceTiming.serviceId} does not include station ${station.value.id} in any service revision`,
         );
-        continue;
-      }
-
-      for (const revision of currentRevisions) {
-        const stationIds = new Set(
-          revision.path.stations.map(
-            (serviceStation) => serviceStation.stationId,
-          ),
-        );
-
-        if (!stationIds.has(station.value.id)) {
-          errors.push(
-            `${station.path}: firstLastTrain.services.${index}.serviceId ${serviceTiming.serviceId} revision ${revision.id} does not include station ${station.value.id} in its current service path`,
-          );
-        }
       }
     }
   }
@@ -521,16 +484,15 @@ async function validateStationReferences(
   return errors;
 }
 
-function revisionContainsTimestamp(
-  revision: { startAt: string; endAt: string | null },
-  timestamp: number,
+function serviceIncludesStation(
+  service: {
+    revisions: Array<{ path: { stations: Array<{ stationId: string }> } }>;
+  },
+  stationId: string,
 ): boolean {
-  const start = timestampForValidation(revision.startAt);
-  const end = revision.endAt
-    ? timestampForValidation(revision.endAt)
-    : Number.POSITIVE_INFINITY;
-
-  return start <= timestamp && timestamp < end;
+  return service.revisions.some((revision) =>
+    revision.path.stations.some((station) => station.stationId === stationId),
+  );
 }
 
 async function validateLineReferences(
@@ -649,9 +611,8 @@ function stationCodeContainsRevision(
   revisionStartAt: string,
   revisionEndAt: string | null,
 ): boolean {
-  const stationCodeStart = singaporeDateTimestampForValidation(
-    stationCodeStartedAt,
-  );
+  const stationCodeStart =
+    singaporeDateTimestampForValidation(stationCodeStartedAt);
   const revisionStart = singaporeDateTimestampForValidation(revisionStartAt);
   const stationCodeEnd = stationCodeEndedAt
     ? singaporeDateTimestampForValidation(stationCodeEndedAt)
