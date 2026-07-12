@@ -89,9 +89,14 @@ the repository shape.
 - Keep generated data and hand-authored code in separate PRs whenever practical.
 - If documentation and code disagree, fix the documentation or narrow the PR
   before adding more implementation.
+- Keep commits focused on one concern. Separate schema or behavior changes from
+  bulk canonical-data migrations so each commit can be reviewed and reverted
+  independently.
 - Use Conventional Commits style for commit messages and PR titles, for example
   `feat: add Pages artifact publishing foundation`. Do not add tool or agent
   prefixes such as `[codex]` to PR titles.
+- Add a `Co-Authored-By: Name <email>` trailer when a commit includes a
+  co-author's contributions.
 - Do not merge temporary branch names, one-off deploy triggers, or local
   generated artifacts.
 
