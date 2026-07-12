@@ -253,8 +253,8 @@ export const StationSchema = z.object({
     z.object({
       lineId: z.string(),
       code: z.string(),
-      startedAt: z.iso.datetime(),
-      endedAt: z.iso.datetime().nullable(),
+      startedAt: z.iso.date(),
+      endedAt: z.iso.date().nullable(),
       structureType: StationStructureTypeSchema,
     }),
   ),

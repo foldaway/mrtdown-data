@@ -649,16 +649,23 @@ function stationCodeContainsRevision(
   revisionStartAt: string,
   revisionEndAt: string | null,
 ): boolean {
-  const stationCodeStart = timestampForValidation(stationCodeStartedAt);
-  const revisionStart = timestampForValidation(revisionStartAt);
+  const stationCodeStart = singaporeDateTimestampForValidation(
+    stationCodeStartedAt,
+  );
+  const revisionStart = singaporeDateTimestampForValidation(revisionStartAt);
   const stationCodeEnd = stationCodeEndedAt
-    ? timestampForValidation(stationCodeEndedAt)
+    ? singaporeDateTimestampForValidation(stationCodeEndedAt)
     : Number.POSITIVE_INFINITY;
   const revisionEnd = revisionEndAt
-    ? timestampForValidation(revisionEndAt)
+    ? singaporeDateTimestampForValidation(revisionEndAt)
     : Number.POSITIVE_INFINITY;
 
   return stationCodeStart <= revisionStart && revisionEnd <= stationCodeEnd;
+}
+
+function singaporeDateTimestampForValidation(value: string): number {
+  // Station-code and service-revision dates are implicitly Asia/Singapore.
+  return timestampForValidation(`${value}T00:00:00+08:00`);
 }
 
 function stationPairKey(fromStationId: string, toStationId: string): string {
@@ -674,9 +681,16 @@ function effectiveMonthIntervalForValidation(effectiveDate: string): {
     throw new Error(`Invalid effective date for validation: ${effectiveDate}`);
   }
 
+  const nextYear = month === 12 ? year + 1 : year;
+  const nextMonth = month === 12 ? 1 : month + 1;
+
   return {
-    start: Date.UTC(year, month - 1, 1),
-    end: Date.UTC(year, month, 1),
+    start: singaporeDateTimestampForValidation(
+      `${year}-${String(month).padStart(2, '0')}-01`,
+    ),
+    end: singaporeDateTimestampForValidation(
+      `${nextYear}-${String(nextMonth).padStart(2, '0')}-01`,
+    ),
   };
 }
 
@@ -686,9 +700,9 @@ function intervalContainsEffectiveDate(
   effectiveDate: string,
 ): boolean {
   const effectiveMonth = effectiveMonthIntervalForValidation(effectiveDate);
-  const startedAtTimestamp = timestampForValidation(startedAt);
+  const startedAtTimestamp = singaporeDateTimestampForValidation(startedAt);
   const endedAtTimestamp = endedAt
-    ? timestampForValidation(endedAt)
+    ? singaporeDateTimestampForValidation(endedAt)
     : Number.POSITIVE_INFINITY;
 
   return (

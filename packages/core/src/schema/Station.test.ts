@@ -18,7 +18,7 @@ function minimalStation() {
       {
         lineId: 'ISL',
         code: 'ISL1',
-        startedAt: '1979-10-01T00:00:00Z',
+        startedAt: '1979-10-01',
         endedAt: null,
         structureType: 'underground',
       },
@@ -29,6 +29,13 @@ function minimalStation() {
 }
 
 describe('StationSchema', () => {
+  it('requires date-only station code boundaries', () => {
+    const station = minimalStation();
+    station.stationCodes[0].startedAt = '1979-10-01T00:00:00+08:00';
+
+    expect(StationSchema.safeParse(station).success).toBe(false);
+  });
+
   it('accepts station discovery metadata', () => {
     expect(() =>
       StationSchema.parse({

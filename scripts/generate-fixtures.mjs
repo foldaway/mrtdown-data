@@ -166,7 +166,7 @@ function station(
       ({ lineId, code, structureType = 'underground' }) => ({
         lineId,
         code,
-        startedAt: '1979-10-01T00:00:00Z',
+        startedAt: '1979-10-01',
         endedAt: null,
         structureType,
       }),

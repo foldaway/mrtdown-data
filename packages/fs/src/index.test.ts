@@ -1395,7 +1395,7 @@ describe('@mrtdown/fs', () => {
     station.stationCodes.push({
       lineId: 'TWL',
       code: 'TWL99',
-      startedAt: '2025-05-01T00:00:00Z',
+      startedAt: '2025-05-01',
       endedAt: null,
       structureType: 'underground',
     });
@@ -1472,7 +1472,7 @@ describe('@mrtdown/fs', () => {
       if (!islandLineCode) {
         throw new Error(`Missing fixture ISL code for ${stationId}`);
       }
-      islandLineCode.startedAt = '2025-04-30T00:00:00Z';
+      islandLineCode.startedAt = '2025-04-30';
       await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
     }
 
@@ -1757,7 +1757,7 @@ describe('@mrtdown/fs', () => {
     station.stationCodes.push({
       lineId: 'TWL',
       code: 'TWL99',
-      startedAt: '2025-05-01T00:00:00Z',
+      startedAt: '2025-05-01',
       endedAt: null,
       structureType: 'underground',
     });
@@ -1853,7 +1853,7 @@ describe('@mrtdown/fs', () => {
       station.stationCodes.push({
         lineId: 'TWL',
         code: `${stationId}99`,
-        startedAt: '2025-05-01T00:00:00Z',
+        startedAt: '2025-05-01',
         endedAt: null,
         structureType: 'underground',
       });
@@ -1899,7 +1899,7 @@ describe('@mrtdown/fs', () => {
     station.stationCodes.push({
       lineId: 'TWL',
       code: 'TWL99',
-      startedAt: '2025-05-01T00:00:00Z',
+      startedAt: '2025-05-01',
       endedAt: null,
       structureType: 'underground',
     });
@@ -2386,7 +2386,7 @@ describe('@mrtdown/fs', () => {
           {
             lineId: 'NSL',
             code: 'NS0',
-            startedAt: '2026-01-01T00:00:00Z',
+            startedAt: '2026-01-01',
             endedAt: null,
             structureType: 'underground',
           },
@@ -2456,7 +2456,7 @@ describe('@mrtdown/fs', () => {
           {
             lineId: 'NSL',
             code: 'NS0',
-            startedAt: '2026-01-01T00:00:00Z',
+            startedAt: '2026-01-01',
             endedAt: null,
             structureType: 'underground',
           },
@@ -2586,7 +2586,7 @@ describe('@mrtdown/fs', () => {
             {
               lineId: 'ISL',
               code: 'ISL1',
-              startedAt: '1979-10-01T00:00:00Z',
+              startedAt: '1979-10-01',
               endedAt: null,
               structureType: 'underground',
             },
@@ -2856,7 +2856,7 @@ describe('@mrtdown/fs', () => {
             {
               lineId: 'ISL',
               code: 'ISL1',
-              startedAt: '1979-10-01T00:00:00Z',
+              startedAt: '1979-10-01',
               endedAt: null,
               structureType: 'underground',
             },
@@ -3032,7 +3032,7 @@ describe('@mrtdown/fs', () => {
             {
               lineId: 'ISL',
               code: 'ISL7',
-              startedAt: '1979-10-01T00:00:00Z',
+              startedAt: '1979-10-01',
               endedAt: null,
               structureType: 'underground',
             },
@@ -3111,7 +3111,7 @@ describe('@mrtdown/fs', () => {
           {
             lineId: 'NSL',
             code: 'NS28',
-            startedAt: '2014-11-23T00:00:00Z',
+            startedAt: '2014-11-23',
             endedAt: null,
             structureType: 'underground',
           },
