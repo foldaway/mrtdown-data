@@ -59,7 +59,7 @@ const payload: IngestPayload = IngestPayloadSchema.parse({
       effect: 'delay',
       delayMinutes: 15,
       reportCount: 4,
-      url: 'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+      url: 'https://www.mrtdown.org/crowd-reports/accepted-20260523-0903-dtl-001',
     },
   ],
 });
@@ -82,8 +82,8 @@ Contract rules:
 - `reportCount` is required; use `1` for a single accepted report and a larger
   count for an accepted cluster.
 - `url` is required because canonical evidence stores a public `sourceUrl`.
-  It must be an HTTP(S) `reports.mrtdown.sg` URL so canonical evidence resolves
-  to the direct crowd-report rights rule.
+  It must be an HTTP(S) URL, but it is not tied to a particular deployment
+  hostname.
 - Site-local metadata is rejected. Keep submitter identities, IP addresses,
   user-agent strings, contact fields, moderation notes, abuse scores, and
   challenge tokens out of this payload.

@@ -240,7 +240,7 @@
       "id": "direct-crowd-report",
       "label": "Direct crowd reports",
       "match": {
-        "sourceUrlHost": ["reports.mrtdown.sg"],
+        "sourceUrlHost": ["www.mrtdown.org"],
         "evidenceType": ["report.public"]
       },
       "category": "crowd-report",

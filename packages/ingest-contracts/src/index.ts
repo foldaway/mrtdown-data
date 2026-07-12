@@ -77,16 +77,13 @@ const IngestContentCrowdReportTimestampSchema = z.iso.datetime({
 const IngestContentCrowdReportUrlSchema = z.url().refine(
   (value) => {
     try {
-      const { hostname, protocol } = new URL(value);
-      return (
-        (protocol === 'http:' || protocol === 'https:') &&
-        hostname === 'reports.mrtdown.sg'
-      );
+      const { protocol } = new URL(value);
+      return protocol === 'http:' || protocol === 'https:';
     } catch {
       return false;
     }
   },
-  { message: 'Expected an HTTP(S) reports.mrtdown.sg URL' },
+  { message: 'Expected an HTTP(S) URL' },
 );
 
 export const IngestContentCrowdReportSchema = z

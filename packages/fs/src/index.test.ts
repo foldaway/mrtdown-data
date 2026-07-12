@@ -290,7 +290,7 @@ describe('@mrtdown/fs', () => {
       ...evidence,
       type: 'report.public',
       sourceUrl:
-        'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+        'https://www.mrtdown.org/crowd-reports/accepted-20260523-0903-dtl-001',
     });
     await writeNdjsonFile(evidencePath, [
       nonPublicEvidence,

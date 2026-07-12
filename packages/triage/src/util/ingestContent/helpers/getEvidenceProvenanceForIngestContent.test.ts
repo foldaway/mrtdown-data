@@ -12,12 +12,12 @@ describe('getEvidenceProvenanceForIngestContent', () => {
         observedAt: '2026-05-23T09:03:00+08:00',
         lineIds: ['DTL'],
         reportCount: 1,
-        url: 'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+        url: 'https://www.mrtdown.org/crowd-reports/accepted-20260523-0903-dtl-001',
       }),
     ).toEqual({
       type: 'report.public',
       sourceUrl:
-        'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+        'https://www.mrtdown.org/crowd-reports/accepted-20260523-0903-dtl-001',
     });
   });
 

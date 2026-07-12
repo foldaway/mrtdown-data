@@ -81,7 +81,7 @@ describe('formatContentTextForIngest', () => {
         effect: 'delay',
         delayMinutes: 15,
         reportCount: 4,
-        url: 'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+        url: 'https://www.mrtdown.org/crowd-reports/accepted-20260523-0903-dtl-001',
       }),
     ).toBe(
       [
@@ -110,7 +110,7 @@ describe('formatContentTextForIngest', () => {
         stationIds: ['OTP'],
         effect: 'unknown',
         reportCount: 1,
-        url: 'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0910-ewl-001',
+        url: 'https://www.mrtdown.org/crowd-reports/accepted-20260523-0910-ewl-001',
       }),
     ).toBe(
       [

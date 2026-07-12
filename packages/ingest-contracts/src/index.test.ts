@@ -77,7 +77,7 @@ describe('IngestPayloadSchema', () => {
             directionText: 'towards Expo',
             effect: 'skipped-stop',
             reportCount: 2,
-            url: 'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+            url: 'https://www.mrtdown.org/crowd-reports/accepted-20260523-0903-dtl-001',
           },
         ],
       }),
@@ -118,7 +118,7 @@ describe('IngestPayloadSchema', () => {
             effect: 'delay',
             delayMinutes: 15,
             reportCount: 4,
-            url: 'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+            url: 'https://www.mrtdown.org/crowd-reports/accepted-20260523-0903-dtl-001',
           },
         ],
       }),
@@ -142,7 +142,7 @@ describe('IngestPayloadSchema', () => {
             createdAt: '2026-05-23T09:04:00+08:00',
             observedAt: '2026-05-23T09:03:00+08:00',
             reportCount: 1,
-            url: 'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+            url: 'https://www.mrtdown.org/crowd-reports/accepted-20260523-0903-dtl-001',
           },
         ],
       }),
@@ -160,7 +160,7 @@ describe('IngestPayloadSchema', () => {
             createdAt: '2026-05-23T09:04:00+08:00',
             observedAt: '2026-05-23T09:03:00+08:00',
             lineIds: ['DTL'],
-            url: 'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+            url: 'https://www.mrtdown.org/crowd-reports/accepted-20260523-0903-dtl-001',
           },
         ],
       }),
@@ -179,7 +179,7 @@ describe('IngestPayloadSchema', () => {
             observedAt: '2026-05-23T09:03:00',
             lineIds: ['DTL'],
             reportCount: 1,
-            url: 'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+            url: 'https://www.mrtdown.org/crowd-reports/accepted-20260523-0903-dtl-001',
           },
         ],
       }),
@@ -198,7 +198,7 @@ describe('IngestPayloadSchema', () => {
             observedAt: '2026-05-23T09:05:00+08:00',
             lineIds: ['DTL'],
             reportCount: 1,
-            url: 'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+            url: 'https://www.mrtdown.org/crowd-reports/accepted-20260523-0903-dtl-001',
           },
         ],
       }),
@@ -224,8 +224,8 @@ describe('IngestPayloadSchema', () => {
     ).toThrow();
   });
 
-  test('rejects crowd reports outside the MRTDown reports host', () => {
-    expect(() =>
+  test('accepts crowd reports from another HTTP(S) host', () => {
+    expect(
       IngestPayloadSchema.parse({
         content: [
           {
@@ -240,7 +240,13 @@ describe('IngestPayloadSchema', () => {
           },
         ],
       }),
-    ).toThrow();
+    ).toMatchObject({
+      content: [
+        {
+          url: 'https://example.com/crowd-reports/accepted-20260523-0903-dtl-001',
+        },
+      ],
+    });
   });
 
   test('returns validation failure for malformed crowd report URLs', () => {
@@ -290,7 +296,7 @@ describe('IngestPayloadSchema', () => {
             observedAt: '2026-05-23T09:03:00+08:00',
             lineIds: ['DTL'],
             reportCount: 1,
-            url: 'https://reports.mrtdown.sg/crowd-reports/accepted-20260523-0903-dtl-001',
+            url: 'https://www.mrtdown.org/crowd-reports/accepted-20260523-0903-dtl-001',
             submitterEmail: 'commuter@example.com',
           },
         ],
