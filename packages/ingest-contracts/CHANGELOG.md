@@ -1,5 +1,12 @@
 # @mrtdown/ingest-contracts
 
+## 2.0.0-alpha.31
+
+### Patch Changes
+
+- 30676f2: Allow crowd-report ingest source URLs from any HTTP(S) host while retaining
+  host-based rights classification.
+
 ## 2.0.0-alpha.30
 
 ### Major Changes

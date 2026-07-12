@@ -1,6 +1,6 @@
 {
   "name": "@mrtdown/triage",
-  "version": "2.0.0-alpha.34",
+  "version": "2.0.0-alpha.35",
   "description": "Evidence triage and replay utilities for MRTDown data",
   "private": true,
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
@@ -35,7 +35,7 @@
   "dependencies": {
     "@mrtdown/core": "2.0.0-alpha.28",
     "@mrtdown/fs": "2.0.0-alpha.28",
-    "@mrtdown/ingest-contracts": "2.0.0-alpha.30",
+    "@mrtdown/ingest-contracts": "2.0.0-alpha.31",
     "dotenv": "^16.4.7",
     "hast-util-from-html": "^2.0.3",
     "hast-util-to-mdast": "^10.1.2",
