@@ -14,21 +14,21 @@
     {
       "lineId": "EWL",
       "code": "EW1",
-      "startedAt": "1989-12-16T00:00:00Z",
+      "startedAt": "1989-12-16",
       "endedAt": null,
       "structureType": "elevated"
     },
     {
       "lineId": "CRL",
       "code": "CR5",
-      "startedAt": "2030-12-31T00:00:00Z",
+      "startedAt": "2030-12-31",
       "endedAt": null,
       "structureType": "underground"
     },
     {
       "lineId": "CRL",
       "code": "CP1",
-      "startedAt": "2030-12-31T00:00:00Z",
+      "startedAt": "2030-12-31",
       "endedAt": null,
       "structureType": "underground"
     }

@@ -14,7 +14,7 @@
     {
       "lineId": "CRL",
       "code": "CP2",
-      "startedAt": "2032-01-01T00:00:00Z",
+      "startedAt": "2032-01-01",
       "endedAt": null,
       "structureType": "underground"
     }

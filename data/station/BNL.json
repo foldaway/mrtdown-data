@@ -14,14 +14,14 @@
     {
       "lineId": "EWL",
       "code": "EW27",
-      "startedAt": "1990-07-06T00:00:00Z",
+      "startedAt": "1990-07-06",
       "endedAt": null,
       "structureType": "elevated"
     },
     {
       "lineId": "JRL",
       "code": "JS8",
-      "startedAt": "2028-06-30T00:00:00Z",
+      "startedAt": "2028-06-30",
       "endedAt": null,
       "structureType": "elevated"
     }

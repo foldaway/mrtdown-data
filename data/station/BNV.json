@@ -14,14 +14,14 @@
     {
       "lineId": "EWL",
       "code": "EW21",
-      "startedAt": "1988-03-12T00:00:00Z",
+      "startedAt": "1988-03-12",
       "endedAt": null,
       "structureType": "elevated"
     },
     {
       "lineId": "CCL",
       "code": "CC22",
-      "startedAt": "2011-10-08T00:00:00Z",
+      "startedAt": "2011-10-08",
       "endedAt": null,
       "structureType": "underground"
     }

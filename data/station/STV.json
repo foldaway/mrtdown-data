@@ -14,14 +14,14 @@
     {
       "lineId": "DTL",
       "code": "DT10",
-      "startedAt": "2015-12-27T00:00:00Z",
+      "startedAt": "2015-12-27",
       "endedAt": null,
       "structureType": "underground"
     },
     {
       "lineId": "TEL",
       "code": "TE11",
-      "startedAt": "2022-11-13T00:00:00Z",
+      "startedAt": "2022-11-13",
       "endedAt": null,
       "structureType": "underground"
     }

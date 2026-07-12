@@ -14,14 +14,14 @@
     {
       "lineId": "JRL",
       "code": "JS12",
-      "startedAt": "2029-12-31T00:00:00Z",
+      "startedAt": "2029-12-31",
       "endedAt": null,
       "structureType": "elevated"
     },
     {
       "lineId": "CRL",
       "code": "CR21",
-      "startedAt": "2030-12-31T00:00:00Z",
+      "startedAt": "2030-12-31",
       "endedAt": null,
       "structureType": "underground"
     }

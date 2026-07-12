@@ -14,7 +14,7 @@
     {
       "lineId": "TEL",
       "code": "TE10",
-      "startedAt": "2040-12-31T00:00:00Z",
+      "startedAt": "2040-12-31",
       "endedAt": null,
       "structureType": "underground"
     }

@@ -14,14 +14,14 @@
     {
       "lineId": "CCL",
       "code": "CC13",
-      "startedAt": "2009-05-28T00:00:00Z",
+      "startedAt": "2009-05-28",
       "endedAt": null,
       "structureType": "underground"
     },
     {
       "lineId": "NEL",
       "code": "NE12",
-      "startedAt": "2003-06-20T00:00:00Z",
+      "startedAt": "2003-06-20",
       "endedAt": null,
       "structureType": "underground"
     }

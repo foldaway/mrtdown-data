@@ -14,21 +14,21 @@
     {
       "lineId": "CCL",
       "code": "CE1",
-      "startedAt": "2012-01-14T00:00:00Z",
-      "endedAt": "2026-07-12T00:00:00Z",
+      "startedAt": "2012-01-14",
+      "endedAt": "2026-07-12",
       "structureType": "underground"
     },
     {
       "lineId": "CCL",
       "code": "CC34",
-      "startedAt": "2026-07-12T00:00:00Z",
+      "startedAt": "2026-07-12",
       "endedAt": null,
       "structureType": "underground"
     },
     {
       "lineId": "DTL",
       "code": "DT16",
-      "startedAt": "2013-12-22T00:00:00Z",
+      "startedAt": "2013-12-22",
       "endedAt": null,
       "structureType": "underground"
     }

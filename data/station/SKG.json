@@ -14,14 +14,14 @@
     {
       "lineId": "NEL",
       "code": "NE16",
-      "startedAt": "2003-06-20T00:00:00Z",
+      "startedAt": "2003-06-20",
       "endedAt": null,
       "structureType": "underground"
     },
     {
       "lineId": "SKLRT",
       "code": "STC",
-      "startedAt": "2003-01-18T00:00:00Z",
+      "startedAt": "2003-01-18",
       "endedAt": null,
       "structureType": "elevated"
     }

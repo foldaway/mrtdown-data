@@ -14,14 +14,14 @@
     {
       "lineId": "NSL",
       "code": "NS6",
-      "startedAt": "2035-01-01T00:00:00Z",
+      "startedAt": "2035-01-01",
       "endedAt": null,
       "structureType": "elevated"
     },
     {
       "lineId": "DTL",
       "code": "DE2",
-      "startedAt": "2035-01-01T00:00:00Z",
+      "startedAt": "2035-01-01",
       "endedAt": null,
       "structureType": "underground"
     }

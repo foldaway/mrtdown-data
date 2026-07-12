@@ -14,7 +14,7 @@
     {
       "lineId": "NSL",
       "code": "NS3A",
-      "startedAt": "2034-01-01T00:00:00Z",
+      "startedAt": "2034-01-01",
       "endedAt": null,
       "structureType": "elevated"
     }

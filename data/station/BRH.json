@@ -14,14 +14,14 @@
     {
       "lineId": "TEL",
       "code": "TE7",
-      "startedAt": "2021-08-28T00:00:00Z",
+      "startedAt": "2021-08-28",
       "endedAt": null,
       "structureType": "underground"
     },
     {
       "lineId": "CRL",
       "code": "CR13",
-      "startedAt": "2030-12-31T00:00:00Z",
+      "startedAt": "2030-12-31",
       "endedAt": null,
       "structureType": "underground"
     }

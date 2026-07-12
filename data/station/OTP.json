@@ -14,21 +14,21 @@
     {
       "lineId": "EWL",
       "code": "EW16",
-      "startedAt": "1987-12-12T00:00:00Z",
+      "startedAt": "1987-12-12",
       "endedAt": null,
       "structureType": "underground"
     },
     {
       "lineId": "NEL",
       "code": "NE3",
-      "startedAt": "2003-06-20T00:00:00Z",
+      "startedAt": "2003-06-20",
       "endedAt": null,
       "structureType": "underground"
     },
     {
       "lineId": "TEL",
       "code": "TE17",
-      "startedAt": "2022-11-13T00:00:00Z",
+      "startedAt": "2022-11-13",
       "endedAt": null,
       "structureType": "underground"
     }

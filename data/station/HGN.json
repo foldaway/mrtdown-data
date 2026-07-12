@@ -14,14 +14,14 @@
     {
       "lineId": "NEL",
       "code": "NE14",
-      "startedAt": "2003-06-20T00:00:00Z",
+      "startedAt": "2003-06-20",
       "endedAt": null,
       "structureType": "underground"
     },
     {
       "lineId": "CRL",
       "code": "CR8",
-      "startedAt": "2030-12-31T00:00:00Z",
+      "startedAt": "2030-12-31",
       "endedAt": null,
       "structureType": "underground"
     }
