@@ -1,5 +1,15 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.28
+
+### Major Changes
+
+- 556bd8a: Require station code period boundaries to use date-only values and interpret
+  them in the Singapore time zone during validation.
+
+  Make station service-reference validation deterministic by checking all service
+  revisions instead of selecting revisions based on the current time.
+
 ## 2.0.0-alpha.27
 
 ### Patch Changes
