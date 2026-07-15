@@ -88,11 +88,67 @@ Candidate follow-up tables:
 
 - `shapes.txt`, once geometry expectations are settled;
 - `transfers.txt`, once interchange and transfer rules are represented clearly;
-- `frequencies.txt`, if deterministic trip times are not the right model for
-  headway-based LRT or future high-frequency service representation.
+- `frequencies.txt`, using the estimated-frequency model once reviewed relative
+  stop times are available.
 
 Generated files should be treated as artifacts. The source of truth remains the
 canonical JSON data plus generator code and any reviewed GTFS mapping metadata.
+
+### Frequency Estimation Decision
+
+Canonical service revisions may store source-backed estimated headway ranges,
+including a deterministic representative value and calendar-specific override
+periods. Generator code combines those inputs with each station's canonical
+first and last train times to produce non-overlapping station-level windows.
+This preserves short starters and distinct weekday, Saturday, and
+Sunday/public-holiday bounds that a service-wide operating window cannot
+represent. A deterministic enumerator expands each window using intervals
+distributed as evenly as possible around the representative headway. This
+keeps frequency-window boundaries and the canonical last train aligned without
+adding an implausibly short final gap. Interior estimates are quantized to 30
+seconds, the smallest unit needed for the 150-second peak midpoint, rather than
+implying arbitrary second-level precision. Internal window ends are exclusive,
+while canonical first and last trains are retained and labelled as source
+anchors. Every interior departure is explicitly labelled as a frequency
+estimate. The generated schedules are artifacts and do not belong under
+`data/`.
+
+The initial profiles cover the current NEL, DTL, EWL main, NSL, and TEL service
+revisions using
+[LTA's system-wide rail guidance](https://www.lta.gov.sg/content/ltagov/en/getting_around/public_transport/rail_network.html):
+two to three minutes during the 07:00–09:00 peak and five to seven minutes
+otherwise. Because LTA does not specify the applicable days, the profiles treat
+the peak window as weekday-only and record that modelling assumption in the
+source description. The representative values are the range midpoints, 150 and
+360 seconds. These are explicitly estimates, not exact departures; a GTFS
+export should therefore map them to `frequencies.txt` with `exact_times=0`.
+
+CCL is deferred until its current service ids align with canonical station
+timings. The EWL airport shuttle and SKLRT/PGLRT services are deferred because
+their current service paths do not yet have complete directional station
+timings. BPLRT needs a separate loop-specific frequency assumption, and future
+CRL/JRL services do not yet have operating timings.
+
+Station-level windows are not directly `frequencies.txt` rows. A GTFS export
+must first group compatible windows into full-length and short-start trip
+patterns. These profiles do not invent that grouping or `stop_times.txt`;
+relative stop times still require reviewed segment runtime and dwell-time
+inputs.
+
+### Geometry And Stop Offset Estimation
+
+[LTA DataMall's geospatial datasets](https://datamall.lta.gov.sg/content/datamall/en/static-data.html)
+include rail infrastructure as ESRI shapefiles. Ordered station coordinates can
+label otherwise unlabelled linework by snapping each service path to nearby
+geometry. The resulting along-track distance is suitable for `shapes.txt`,
+distance metadata, and anomaly checks.
+
+Distance alone is not a sufficient timing model. Curves, acceleration,
+deceleration, dwell time, and minute-rounded source timings cause materially
+different effective speeds between adjacent stations. Stop offsets should be
+anchored to observed first/last-train chains where possible. Geometry may fill
+or flag gaps only through an explicit, calibrated estimation method whose
+assumptions and provenance are retained.
 
 ## GTFS Id Policy
 
@@ -117,10 +173,11 @@ generated counters, or file ordering into public ids.
 - Record missing source data, including agency timezone/language, route type,
   stop wheelchair/accessibility details, platform granularity, service
   calendars, and schedule/headway assumptions.
-- Decide whether the first feed represents planned canonical topology only or a
-  timetable-like approximation derived from operating windows.
+- Use source-backed frequency estimates for the initial timetable-like
+  approximation bounded by station first/last train times.
 - Document whether LRT loop services should use `stop_times.txt` trips,
-  `frequencies.txt`, or both.
+  `frequencies.txt`, or both; the MRT frequency profiles do not settle the LRT
+  representation.
 - Decide the initial feed path in the Pages artifact, such as
   `gtfs/static.zip`.
 
@@ -154,7 +211,8 @@ Exit criteria:
   or command orchestration.
 - Generate CSV tables with stable row ordering and reproducible zip output.
 - Generate `agency.txt`, `stops.txt`, `routes.txt`, `trips.txt`,
-  `stop_times.txt`, calendar data, and `feed_info.txt`.
+  `stop_times.txt`, calendar data, `feed_info.txt`, and `frequencies.txt` for
+  services with estimated frequency profiles.
 - Add CLI commands to generate, inspect, and validate GTFS output.
 - Add tests that compare generated fixture output against committed snapshots
   or normalized table rows.

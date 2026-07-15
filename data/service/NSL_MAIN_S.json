@@ -857,6 +857,31 @@
                     "start": "05:35",
                     "end": "23:58"
                 }
+            },
+            "estimatedFrequency": {
+                "source": {
+                    "url": "https://www.lta.gov.sg/content/ltagov/en/getting_around/public_transport/rail_network.html",
+                    "description": "LTA system-wide train frequency guidance; 07:00-09:00 peak applied to weekdays for estimation",
+                    "retrievedAt": "2026-07-16"
+                },
+                "defaultHeadway": {
+                    "minSeconds": 300,
+                    "maxSeconds": 420,
+                    "representativeSeconds": 360
+                },
+                "periods": [
+                    {
+                        "id": "weekday_morning_peak",
+                        "dayType": "weekdays",
+                        "start": "07:00",
+                        "end": "09:00",
+                        "headway": {
+                            "minSeconds": 120,
+                            "maxSeconds": 180,
+                            "representativeSeconds": 150
+                        }
+                    }
+                ]
             }
         }
     ]
