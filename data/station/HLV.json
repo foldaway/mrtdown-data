@@ -28,7 +28,7 @@
   "firstLastTrain": {
     "services": [
       {
-        "serviceId": "CCL_MAIN_CCW",
+        "serviceId": "CCL_BRANCH_CCW",
         "times": {
           "weekday": {
             "firstTrain": "05:37",
@@ -45,7 +45,7 @@
         }
       },
       {
-        "serviceId": "CCL_MAIN_CW",
+        "serviceId": "CCL_BRANCH_CW",
         "times": {
           "weekday": {
             "firstTrain": "05:40",

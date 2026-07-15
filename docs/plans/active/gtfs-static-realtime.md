@@ -123,10 +123,12 @@ source description. The representative values are the range midpoints, 150 and
 360 seconds. These are explicitly estimates, not exact departures; a GTFS
 export should therefore map them to `frequencies.txt` with `exact_times=0`.
 
-CCL is deferred until its current service ids align with canonical station
-timings. The EWL airport shuttle and SKLRT/PGLRT services are deferred because
-their current service paths do not yet have complete directional station
-timings. BPLRT needs a separate loop-specific frequency assumption, and future
+CCL station timings now use the Stage 6 branch and loop service ids, but the
+current paths still lack complete directional timing coverage: branch services
+resolve 27 of 31 path positions and loop services resolve 4 of 31. The new
+CC30–CC32 stations also need sourced first/last-train times. The EWL airport
+shuttle and SKLRT/PGLRT services are similarly deferred for incomplete timing
+coverage. BPLRT needs a separate loop-specific frequency assumption, and future
 CRL/JRL services do not yet have operating timings.
 
 Station-level windows are not directly `frequencies.txt` rows. A GTFS export
