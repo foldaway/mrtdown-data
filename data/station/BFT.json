@@ -38,5 +38,77 @@
     "gardens-by-the-bay",
     "artscience-museum"
   ],
-  "townId": "marina-south"
+  "townId": "marina-south",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "CCL_EXT_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:02",
+            "lastTrain": "23:57"
+          },
+          "saturday": {
+            "firstTrain": "06:02",
+            "lastTrain": "23:57"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:26",
+            "lastTrain": "23:57"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_EXT_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:17",
+            "lastTrain": "23:51"
+          },
+          "saturday": {
+            "firstTrain": "06:17",
+            "lastTrain": "23:51"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:37",
+            "lastTrain": "23:51"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:02",
+            "lastTrain": "00:05"
+          },
+          "saturday": {
+            "firstTrain": "06:02",
+            "lastTrain": "00:05"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:22",
+            "lastTrain": "00:05"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:15",
+            "lastTrain": "00:18"
+          },
+          "saturday": {
+            "firstTrain": "06:15",
+            "lastTrain": "00:18"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:33",
+            "lastTrain": "00:18"
+          }
+        }
+      }
+    ]
+  }
 }

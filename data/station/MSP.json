@@ -23,5 +23,26 @@
     "marina-bay-cruise-centre-singapore",
     "gardens-by-the-bay"
   ],
-  "townId": "straits-view"
+  "townId": "straits-view",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:10",
+            "lastTrain": "23:48"
+          },
+          "saturday": {
+            "firstTrain": "06:10",
+            "lastTrain": "23:48"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:38",
+            "lastTrain": "23:48"
+          }
+        }
+      }
+    ]
+  }
 }

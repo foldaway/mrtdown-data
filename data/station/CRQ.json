@@ -24,5 +24,43 @@
     "fort-canning-park",
     "robertson-quay"
   ],
-  "townId": "singapore-river"
+  "townId": "singapore-river",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:51",
+            "lastTrain": "00:02"
+          },
+          "saturday": {
+            "firstTrain": "05:51",
+            "lastTrain": "00:02"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:11",
+            "lastTrain": "00:02"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:08",
+            "lastTrain": "23:55"
+          },
+          "saturday": {
+            "firstTrain": "06:08",
+            "lastTrain": "23:55"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:28",
+            "lastTrain": "23:55"
+          }
+        }
+      }
+    ]
+  }
 }

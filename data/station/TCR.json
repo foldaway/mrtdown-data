@@ -24,5 +24,43 @@
     "tuas-marine-park",
     "jtc-medtech-hub"
   ],
-  "townId": "tuas"
+  "townId": "tuas",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:32",
+            "lastTrain": "00:44"
+          },
+          "saturday": {
+            "firstTrain": "05:32",
+            "lastTrain": "00:44"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:02",
+            "lastTrain": "00:44"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:23",
+            "lastTrain": "23:23"
+          },
+          "saturday": {
+            "firstTrain": "05:23",
+            "lastTrain": "23:23"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:53",
+            "lastTrain": "23:23"
+          }
+        }
+      }
+    ]
+  }
 }

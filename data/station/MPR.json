@@ -24,5 +24,43 @@
     "marine-parade-food-centre",
     "kampong-kembangan-community-club"
   ],
-  "townId": "marine-parade"
+  "townId": "marine-parade",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:58",
+            "lastTrain": "23:48"
+          },
+          "saturday": {
+            "firstTrain": "05:58",
+            "lastTrain": "23:48"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:18",
+            "lastTrain": "23:48"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:07",
+            "lastTrain": "00:27"
+          },
+          "saturday": {
+            "firstTrain": "06:07",
+            "lastTrain": "00:27"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:27",
+            "lastTrain": "00:27"
+          }
+        }
+      }
+    ]
+  }
 }

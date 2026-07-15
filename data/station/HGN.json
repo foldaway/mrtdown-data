@@ -31,5 +31,43 @@
     "hougang-sports-hall",
     "the-village-serangoon"
   ],
-  "townId": "hougang"
+  "townId": "hougang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:11",
+            "lastTrain": "00:23"
+          },
+          "saturday": {
+            "firstTrain": "06:11",
+            "lastTrain": "00:23"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:31",
+            "lastTrain": "00:23"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:49",
+            "lastTrain": "23:35"
+          },
+          "saturday": {
+            "firstTrain": "05:49",
+            "lastTrain": "23:35"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:09",
+            "lastTrain": "23:35"
+          }
+        }
+      }
+    ]
+  }
 }

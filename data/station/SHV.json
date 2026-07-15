@@ -24,5 +24,43 @@
     "hillion-mall",
     "zhenghua-nature-park"
   ],
-  "townId": "bukit-panjang"
+  "townId": "bukit-panjang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "BPLRT_B",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:11",
+            "lastTrain": "23:36"
+          },
+          "saturday": {
+            "firstTrain": "05:11",
+            "lastTrain": "23:36"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:30",
+            "lastTrain": "23:36"
+          }
+        }
+      },
+      {
+        "serviceId": "BPLRT_A",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:14",
+            "lastTrain": "23:31"
+          },
+          "saturday": {
+            "firstTrain": "05:14",
+            "lastTrain": "23:31"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:33",
+            "lastTrain": "23:31"
+          }
+        }
+      }
+    ]
+  }
 }

@@ -37,5 +37,43 @@
     "tanah-merah-ferry-terminal",
     "singapore-expo"
   ],
-  "townId": "bedok"
+  "townId": "bedok",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:16",
+            "lastTrain": "00:33"
+          },
+          "saturday": {
+            "firstTrain": "05:16",
+            "lastTrain": "00:33"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:42",
+            "lastTrain": "00:33"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:37",
+            "lastTrain": "23:33"
+          },
+          "saturday": {
+            "firstTrain": "05:37",
+            "lastTrain": "23:33"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:03",
+            "lastTrain": "23:33"
+          }
+        }
+      }
+    ]
+  }
 }

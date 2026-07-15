@@ -23,5 +23,43 @@
     "bukit-timah-market-food-centre",
     "bukit-timah-nature-reserve"
   ],
-  "townId": "bukit-timah"
+  "townId": "bukit-timah",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:37",
+            "lastTrain": "23:42"
+          },
+          "saturday": {
+            "firstTrain": "05:37",
+            "lastTrain": "23:42"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:57",
+            "lastTrain": "23:42"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:08",
+            "lastTrain": "00:40"
+          },
+          "saturday": {
+            "firstTrain": "06:08",
+            "lastTrain": "00:40"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:29",
+            "lastTrain": "00:40"
+          }
+        }
+      }
+    ]
+  }
 }

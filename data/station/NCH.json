@@ -24,5 +24,77 @@
     "kallang-wave-mall",
     "national-stadium"
   ],
-  "townId": "downtown-core"
+  "townId": "downtown-core",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "CCL_MAIN_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:45",
+            "lastTrain": "22:56"
+          },
+          "saturday": {
+            "firstTrain": "05:45",
+            "lastTrain": "22:56"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:12",
+            "lastTrain": "22:56"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_EXT_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:07",
+            "lastTrain": "00:01"
+          },
+          "saturday": {
+            "firstTrain": "06:07",
+            "lastTrain": "00:01"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:30",
+            "lastTrain": "00:01"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_EXT_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:12",
+            "lastTrain": "23:46"
+          },
+          "saturday": {
+            "firstTrain": "06:12",
+            "lastTrain": "23:46"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:33",
+            "lastTrain": "23:46"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:48",
+            "lastTrain": "23:57"
+          },
+          "saturday": {
+            "firstTrain": "05:48",
+            "lastTrain": "23:57"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:15",
+            "lastTrain": "23:57"
+          }
+        }
+      }
+    ]
+  }
 }

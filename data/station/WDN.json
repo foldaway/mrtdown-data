@@ -24,5 +24,26 @@
     "causeway-point",
     "singapore-customs"
   ],
-  "townId": "woodlands"
+  "townId": "woodlands",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:36",
+            "lastTrain": "23:30"
+          },
+          "saturday": {
+            "firstTrain": "05:36",
+            "lastTrain": "23:30"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:56",
+            "lastTrain": "23:30"
+          }
+        }
+      }
+    ]
+  }
 }

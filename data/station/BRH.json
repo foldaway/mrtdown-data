@@ -30,5 +30,43 @@
     "bishan-park",
     "bishan-sports-hall"
   ],
-  "townId": "bishan"
+  "townId": "bishan",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:57",
+            "lastTrain": "00:28"
+          },
+          "saturday": {
+            "firstTrain": "05:57",
+            "lastTrain": "00:28"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:17",
+            "lastTrain": "00:28"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:45",
+            "lastTrain": "23:47"
+          },
+          "saturday": {
+            "firstTrain": "05:45",
+            "lastTrain": "23:47"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:05",
+            "lastTrain": "23:47"
+          }
+        }
+      }
+    ]
+  }
 }

@@ -31,5 +31,77 @@
     "woodlands-civic-centre",
     "woodlands-waterfront-park"
   ],
-  "townId": "woodlands"
+  "townId": "woodlands",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:38",
+            "lastTrain": "00:40"
+          },
+          "saturday": {
+            "firstTrain": "05:38",
+            "lastTrain": "00:40"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:01",
+            "lastTrain": "00:40"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:27",
+            "lastTrain": "23:08"
+          },
+          "saturday": {
+            "firstTrain": "05:27",
+            "lastTrain": "23:08"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:43",
+            "lastTrain": "23:08"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:39",
+            "lastTrain": "00:42"
+          },
+          "saturday": {
+            "firstTrain": "05:39",
+            "lastTrain": "00:42"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:59",
+            "lastTrain": "00:42"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:38",
+            "lastTrain": "23:33"
+          },
+          "saturday": {
+            "firstTrain": "05:38",
+            "lastTrain": "23:33"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:58",
+            "lastTrain": "23:33"
+          }
+        }
+      }
+    ]
+  }
 }

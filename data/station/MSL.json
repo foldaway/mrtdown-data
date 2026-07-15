@@ -24,5 +24,43 @@
     "marsiling-community-club",
     "causeway-point"
   ],
-  "townId": "woodlands"
+  "townId": "woodlands",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:40",
+            "lastTrain": "00:43"
+          },
+          "saturday": {
+            "firstTrain": "05:40",
+            "lastTrain": "00:43"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:03",
+            "lastTrain": "00:43"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:24",
+            "lastTrain": "23:06"
+          },
+          "saturday": {
+            "firstTrain": "05:24",
+            "lastTrain": "23:06"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:40",
+            "lastTrain": "23:06"
+          }
+        }
+      }
+    ]
+  }
 }

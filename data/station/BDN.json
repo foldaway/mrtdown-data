@@ -24,5 +24,43 @@
     "chai-chee-community-centre",
     "singapore-expo"
   ],
-  "townId": "bedok"
+  "townId": "bedok",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:09",
+            "lastTrain": "00:29"
+          },
+          "saturday": {
+            "firstTrain": "06:09",
+            "lastTrain": "00:29"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:29",
+            "lastTrain": "00:29"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:50",
+            "lastTrain": "23:54"
+          },
+          "saturday": {
+            "firstTrain": "05:50",
+            "lastTrain": "23:54"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:08",
+            "lastTrain": "23:54"
+          }
+        }
+      }
+    ]
+  }
 }

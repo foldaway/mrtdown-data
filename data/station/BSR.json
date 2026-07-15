@@ -23,5 +23,26 @@
     "east-coast-park",
     "bayshore-park"
   ],
-  "townId": "bedok"
+  "townId": "bedok",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:56",
+            "lastTrain": "23:42"
+          },
+          "saturday": {
+            "firstTrain": "05:56",
+            "lastTrain": "23:42"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:16",
+            "lastTrain": "23:42"
+          }
+        }
+      }
+    ]
+  }
 }

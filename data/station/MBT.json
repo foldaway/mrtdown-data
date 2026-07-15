@@ -24,5 +24,43 @@
     "mountbatten-community-club",
     "parkway-parade"
   ],
-  "townId": "geylang"
+  "townId": "geylang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "CCL_MAIN_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:35",
+            "lastTrain": "23:00"
+          },
+          "saturday": {
+            "firstTrain": "05:35",
+            "lastTrain": "23:00"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:03",
+            "lastTrain": "23:00"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:44",
+            "lastTrain": "23:53"
+          },
+          "saturday": {
+            "firstTrain": "05:44",
+            "lastTrain": "23:53"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:11",
+            "lastTrain": "23:53"
+          }
+        }
+      }
+    ]
+  }
 }

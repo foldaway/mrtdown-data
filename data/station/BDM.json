@@ -24,5 +24,43 @@
     "singapore-sports-hub",
     "kallang-wave-mall"
   ],
-  "townId": "kallang"
+  "townId": "kallang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:15",
+            "lastTrain": "00:17"
+          },
+          "saturday": {
+            "firstTrain": "06:15",
+            "lastTrain": "00:17"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:35",
+            "lastTrain": "00:17"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:02",
+            "lastTrain": "00:06"
+          },
+          "saturday": {
+            "firstTrain": "06:02",
+            "lastTrain": "00:06"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:20",
+            "lastTrain": "00:06"
+          }
+        }
+      }
+    ]
+  }
 }

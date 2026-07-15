@@ -24,5 +24,43 @@
     "century-square",
     "our-tampines-hub"
   ],
-  "townId": "tampines"
+  "townId": "tampines",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:18",
+            "lastTrain": "00:38"
+          },
+          "saturday": {
+            "firstTrain": "06:18",
+            "lastTrain": "00:38"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:38",
+            "lastTrain": "00:38"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:41",
+            "lastTrain": "23:45"
+          },
+          "saturday": {
+            "firstTrain": "05:41",
+            "lastTrain": "23:45"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:59",
+            "lastTrain": "23:45"
+          }
+        }
+      }
+    ]
+  }
 }

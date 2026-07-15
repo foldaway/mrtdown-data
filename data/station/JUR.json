@@ -38,5 +38,60 @@
     "westgate",
     "jurong-regional-library"
   ],
-  "townId": "jurong-east"
+  "townId": "jurong-east",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:14",
+            "lastTrain": "00:25"
+          },
+          "saturday": {
+            "firstTrain": "05:14",
+            "lastTrain": "00:25"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:44",
+            "lastTrain": "00:25"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:42",
+            "lastTrain": "23:42"
+          },
+          "saturday": {
+            "firstTrain": "05:42",
+            "lastTrain": "23:42"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:12",
+            "lastTrain": "23:42"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:16",
+            "lastTrain": "22:46"
+          },
+          "saturday": {
+            "firstTrain": "05:16",
+            "lastTrain": "22:46"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:35",
+            "lastTrain": "22:46"
+          }
+        }
+      }
+    ]
+  }
 }

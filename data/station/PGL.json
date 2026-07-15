@@ -38,5 +38,43 @@
     "punggol-point",
     "punggol-marina-country-club"
   ],
-  "townId": "punggol"
+  "townId": "punggol",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:36",
+            "lastTrain": "00:30"
+          },
+          "saturday": {
+            "firstTrain": "05:36",
+            "lastTrain": "00:30"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:30"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:42",
+            "lastTrain": "23:28"
+          },
+          "saturday": {
+            "firstTrain": "05:42",
+            "lastTrain": "23:28"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:02",
+            "lastTrain": "23:28"
+          }
+        }
+      }
+    ]
+  }
 }

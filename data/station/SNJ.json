@@ -23,5 +23,43 @@
     "bukit-panjang-plaza",
     "senja-cashew-community-club"
   ],
-  "townId": "bukit-panjang"
+  "townId": "bukit-panjang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "BPLRT_B",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:15",
+            "lastTrain": "23:48"
+          },
+          "saturday": {
+            "firstTrain": "05:15",
+            "lastTrain": "23:48"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:33",
+            "lastTrain": "23:48"
+          }
+        }
+      },
+      {
+        "serviceId": "BPLRT_A",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:00",
+            "lastTrain": "23:19"
+          },
+          "saturday": {
+            "firstTrain": "05:00",
+            "lastTrain": "23:19"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:19",
+            "lastTrain": "23:19"
+          }
+        }
+      }
+    ]
+  }
 }

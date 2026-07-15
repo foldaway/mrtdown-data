@@ -23,5 +23,43 @@
     "bukit-batok-nature-park",
     "west-mall"
   ],
-  "townId": "bukit-batok"
+  "townId": "bukit-batok",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:45",
+            "lastTrain": "01:00"
+          },
+          "saturday": {
+            "firstTrain": "05:45",
+            "lastTrain": "01:00"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:08",
+            "lastTrain": "01:00"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:19",
+            "lastTrain": "22:49"
+          },
+          "saturday": {
+            "firstTrain": "05:19",
+            "lastTrain": "22:49"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:38",
+            "lastTrain": "22:49"
+          }
+        }
+      }
+    ]
+  }
 }

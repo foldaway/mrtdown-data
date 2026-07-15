@@ -24,5 +24,43 @@
     "bishan-ang-mo-kio-park",
     "bishan-stadium"
   ],
-  "townId": "toa-payoh"
+  "townId": "toa-payoh",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:06",
+            "lastTrain": "00:12"
+          },
+          "saturday": {
+            "firstTrain": "06:21",
+            "lastTrain": "00:12"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:27",
+            "lastTrain": "00:12"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:39",
+            "lastTrain": "23:36"
+          },
+          "saturday": {
+            "firstTrain": "05:39",
+            "lastTrain": "23:36"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:04",
+            "lastTrain": "23:36"
+          }
+        }
+      }
+    ]
+  }
 }

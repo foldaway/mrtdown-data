@@ -31,5 +31,43 @@
     "sentosa-gateway",
     "mount-faber-park"
   ],
-  "townId": "bukit-merah"
+  "townId": "bukit-merah",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "CCL_MAIN_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:30",
+            "lastTrain": "23:03"
+          },
+          "saturday": {
+            "firstTrain": "05:30",
+            "lastTrain": "23:03"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:51",
+            "lastTrain": "23:03"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:47",
+            "lastTrain": "23:55"
+          },
+          "saturday": {
+            "firstTrain": "05:47",
+            "lastTrain": "23:55"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:07",
+            "lastTrain": "23:55"
+          }
+        }
+      }
+    ]
+  }
 }

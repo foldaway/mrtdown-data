@@ -24,5 +24,43 @@
     "camden-medical-centre",
     "hotel-jen-singapore-tanglin-by-shangri-la"
   ],
-  "townId": "orchard"
+  "townId": "orchard",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:01"
+          },
+          "saturday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:01"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:16",
+            "lastTrain": "00:01"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:54",
+            "lastTrain": "00:14"
+          },
+          "saturday": {
+            "firstTrain": "05:54",
+            "lastTrain": "00:14"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:14",
+            "lastTrain": "00:14"
+          }
+        }
+      }
+    ]
+  }
 }

@@ -24,5 +24,43 @@
     "sembawang-park",
     "canberra-secondary-school"
   ],
-  "townId": "sembawang"
+  "townId": "sembawang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:35",
+            "lastTrain": "23:17"
+          },
+          "saturday": {
+            "firstTrain": "05:35",
+            "lastTrain": "23:17"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:51",
+            "lastTrain": "23:17"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:29",
+            "lastTrain": "00:31"
+          },
+          "saturday": {
+            "firstTrain": "05:29",
+            "lastTrain": "00:31"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:52",
+            "lastTrain": "00:31"
+          }
+        }
+      }
+    ]
+  }
 }

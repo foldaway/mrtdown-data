@@ -24,5 +24,43 @@
     "kallang-wave-mall",
     "singapore-indoor-stadium"
   ],
-  "townId": "kallang"
+  "townId": "kallang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:04",
+            "lastTrain": "23:55"
+          },
+          "saturday": {
+            "firstTrain": "06:04",
+            "lastTrain": "23:55"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:24",
+            "lastTrain": "23:55"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:00",
+            "lastTrain": "00:21"
+          },
+          "saturday": {
+            "firstTrain": "06:00",
+            "lastTrain": "00:21"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:20",
+            "lastTrain": "00:21"
+          }
+        }
+      }
+    ]
+  }
 }

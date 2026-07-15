@@ -23,5 +23,43 @@
     "geylang-bahru-market-food-centre",
     "kallang-riverside-park"
   ],
-  "townId": "kallang"
+  "townId": "kallang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:59",
+            "lastTrain": "00:19"
+          },
+          "saturday": {
+            "firstTrain": "05:59",
+            "lastTrain": "00:19"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:19",
+            "lastTrain": "00:19"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:00",
+            "lastTrain": "00:04"
+          },
+          "saturday": {
+            "firstTrain": "06:00",
+            "lastTrain": "00:04"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:18",
+            "lastTrain": "00:04"
+          }
+        }
+      }
+    ]
+  }
 }

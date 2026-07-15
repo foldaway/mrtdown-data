@@ -24,5 +24,43 @@
     "thomson-nature-park",
     "singapore-island-country-club"
   ],
-  "townId": "bishan"
+  "townId": "bishan",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:54",
+            "lastTrain": "00:26"
+          },
+          "saturday": {
+            "firstTrain": "05:54",
+            "lastTrain": "00:26"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:14",
+            "lastTrain": "00:26"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:48",
+            "lastTrain": "23:49"
+          },
+          "saturday": {
+            "firstTrain": "05:48",
+            "lastTrain": "23:49"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:08",
+            "lastTrain": "23:49"
+          }
+        }
+      }
+    ]
+  }
 }

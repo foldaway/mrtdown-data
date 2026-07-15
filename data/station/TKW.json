@@ -23,5 +23,43 @@
     "teck-whye-community-centre",
     "teck-whye-secondary-school"
   ],
-  "townId": "choa-chu-kang"
+  "townId": "choa-chu-kang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "BPLRT_B",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:08",
+            "lastTrain": "23:33"
+          },
+          "saturday": {
+            "firstTrain": "05:08",
+            "lastTrain": "23:33"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:27",
+            "lastTrain": "23:33"
+          }
+        }
+      },
+      {
+        "serviceId": "BPLRT_A",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:17",
+            "lastTrain": "23:34"
+          },
+          "saturday": {
+            "firstTrain": "05:17",
+            "lastTrain": "23:34"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:36",
+            "lastTrain": "23:34"
+          }
+        }
+      }
+    ]
+  }
 }

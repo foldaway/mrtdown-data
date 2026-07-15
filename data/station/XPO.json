@@ -37,5 +37,60 @@
     "singapore-expo",
     "changi-city-point"
   ],
-  "townId": "tampines"
+  "townId": "tampines",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_CG_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:36",
+            "lastTrain": "00:11"
+          },
+          "saturday": {
+            "firstTrain": "05:36",
+            "lastTrain": "00:11"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:04",
+            "lastTrain": "00:11"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_CG_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:23",
+            "lastTrain": "23:53"
+          },
+          "saturday": {
+            "firstTrain": "05:23",
+            "lastTrain": "23:53"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:50",
+            "lastTrain": "23:53"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:36",
+            "lastTrain": "23:40"
+          },
+          "saturday": {
+            "firstTrain": "05:36",
+            "lastTrain": "23:40"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:54",
+            "lastTrain": "23:40"
+          }
+        }
+      }
+    ]
+  }
 }

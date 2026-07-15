@@ -24,5 +24,43 @@
     "bedok-reservoir-park",
     "bedok-point"
   ],
-  "townId": "bedok"
+  "townId": "bedok",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:40",
+            "lastTrain": "23:36"
+          },
+          "saturday": {
+            "firstTrain": "05:40",
+            "lastTrain": "23:36"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:06",
+            "lastTrain": "23:36"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:19",
+            "lastTrain": "00:30"
+          },
+          "saturday": {
+            "firstTrain": "06:19",
+            "lastTrain": "00:30"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:47",
+            "lastTrain": "00:30"
+          }
+        }
+      }
+    ]
+  }
 }

@@ -24,5 +24,43 @@
     "joo-chiat-complex",
     "one-km-mall"
   ],
-  "townId": "marine-parade"
+  "townId": "marine-parade",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:00",
+            "lastTrain": "23:50"
+          },
+          "saturday": {
+            "firstTrain": "06:00",
+            "lastTrain": "23:50"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:20",
+            "lastTrain": "23:50"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:05",
+            "lastTrain": "00:25"
+          },
+          "saturday": {
+            "firstTrain": "06:05",
+            "lastTrain": "00:25"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:25",
+            "lastTrain": "00:25"
+          }
+        }
+      }
+    ]
+  }
 }

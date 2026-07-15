@@ -24,5 +24,43 @@
     "mustafa-centre",
     "little-india-arcade"
   ],
-  "townId": "rochor"
+  "townId": "rochor",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:13",
+            "lastTrain": "00:15"
+          },
+          "saturday": {
+            "firstTrain": "06:13",
+            "lastTrain": "00:15"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:33",
+            "lastTrain": "00:15"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:04",
+            "lastTrain": "00:08"
+          },
+          "saturday": {
+            "firstTrain": "06:04",
+            "lastTrain": "00:08"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:22",
+            "lastTrain": "00:08"
+          }
+        }
+      }
+    ]
+  }
 }

@@ -22,5 +22,43 @@
   "landmarkIds": [
     "springleaf-garden"
   ],
-  "townId": "yishun"
+  "townId": "yishun",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:04",
+            "lastTrain": "00:35"
+          },
+          "saturday": {
+            "firstTrain": "06:04",
+            "lastTrain": "00:35"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:24",
+            "lastTrain": "00:35"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:38",
+            "lastTrain": "23:39"
+          },
+          "saturday": {
+            "firstTrain": "05:38",
+            "lastTrain": "23:39"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:58",
+            "lastTrain": "23:39"
+          }
+        }
+      }
+    ]
+  }
 }

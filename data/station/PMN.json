@@ -31,5 +31,111 @@
     "artscience-museum",
     "singapore-flyer"
   ],
-  "townId": "downtown-core"
+  "townId": "downtown-core",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "CCL_MAIN_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:43",
+            "lastTrain": "22:54"
+          },
+          "saturday": {
+            "firstTrain": "05:43",
+            "lastTrain": "22:54"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:10",
+            "lastTrain": "22:54"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_EXT_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:05",
+            "lastTrain": "23:59"
+          },
+          "saturday": {
+            "firstTrain": "06:05",
+            "lastTrain": "23:59"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:28",
+            "lastTrain": "23:59"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:50",
+            "lastTrain": "23:59"
+          },
+          "saturday": {
+            "firstTrain": "05:50",
+            "lastTrain": "23:59"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:17",
+            "lastTrain": "23:59"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_EXT_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:15",
+            "lastTrain": "23:48"
+          },
+          "saturday": {
+            "firstTrain": "06:15",
+            "lastTrain": "23:48"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:35",
+            "lastTrain": "23:48"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:00",
+            "lastTrain": "00:03"
+          },
+          "saturday": {
+            "firstTrain": "06:00",
+            "lastTrain": "00:03"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:20",
+            "lastTrain": "00:03"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:17",
+            "lastTrain": "00:20"
+          },
+          "saturday": {
+            "firstTrain": "06:17",
+            "lastTrain": "00:20"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:35",
+            "lastTrain": "00:20"
+          }
+        }
+      }
+    ]
+  }
 }

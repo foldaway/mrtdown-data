@@ -23,5 +23,43 @@
     "changi-business-park",
     "singapore-expo"
   ],
-  "townId": "tampines"
+  "townId": "tampines",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:21",
+            "lastTrain": "00:41"
+          },
+          "saturday": {
+            "firstTrain": "06:21",
+            "lastTrain": "00:41"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:41",
+            "lastTrain": "00:41"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:38",
+            "lastTrain": "23:41"
+          },
+          "saturday": {
+            "firstTrain": "05:38",
+            "lastTrain": "23:41"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:56",
+            "lastTrain": "23:41"
+          }
+        }
+      }
+    ]
+  }
 }

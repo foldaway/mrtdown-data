@@ -30,5 +30,77 @@
     "macpherson-mall",
     "geylang-east-swimming-complex"
   ],
-  "townId": "geylang"
+  "townId": "geylang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "CCL_MAIN_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:42",
+            "lastTrain": "23:06"
+          },
+          "saturday": {
+            "firstTrain": "05:42",
+            "lastTrain": "23:06"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:09",
+            "lastTrain": "23:06"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:37",
+            "lastTrain": "23:46"
+          },
+          "saturday": {
+            "firstTrain": "05:37",
+            "lastTrain": "23:46"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:04",
+            "lastTrain": "23:46"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:03",
+            "lastTrain": "00:24"
+          },
+          "saturday": {
+            "firstTrain": "06:03",
+            "lastTrain": "00:24"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:23",
+            "lastTrain": "00:24"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:00"
+          },
+          "saturday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:00"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:14",
+            "lastTrain": "00:00"
+          }
+        }
+      }
+    ]
+  }
 }

@@ -24,5 +24,43 @@
     "hillion-mall",
     "chestnut-nature-park"
   ],
-  "townId": "bukit-panjang"
+  "townId": "bukit-panjang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "BPLRT_B",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:12",
+            "lastTrain": "23:45"
+          },
+          "saturday": {
+            "firstTrain": "05:12",
+            "lastTrain": "23:45"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:30",
+            "lastTrain": "23:45"
+          }
+        }
+      },
+      {
+        "serviceId": "BPLRT_A",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:03",
+            "lastTrain": "23:22"
+          },
+          "saturday": {
+            "firstTrain": "05:03",
+            "lastTrain": "23:22"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:22",
+            "lastTrain": "23:22"
+          }
+        }
+      }
+    ]
+  }
 }

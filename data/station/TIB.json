@@ -24,5 +24,43 @@
     "tiong-bahru-plaza",
     "tiong-bahru-heritage-trail"
   ],
-  "townId": "bukit-merah"
+  "townId": "bukit-merah",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:07",
+            "lastTrain": "00:05"
+          },
+          "saturday": {
+            "firstTrain": "06:07",
+            "lastTrain": "00:05"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:33",
+            "lastTrain": "00:05"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:52",
+            "lastTrain": "00:00"
+          },
+          "saturday": {
+            "firstTrain": "05:52",
+            "lastTrain": "00:00"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:20",
+            "lastTrain": "00:00"
+          }
+        }
+      }
+    ]
+  }
 }

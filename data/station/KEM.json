@@ -24,5 +24,43 @@
     "st-stephens-school",
     "east-coast-park"
   ],
-  "townId": "bedok"
+  "townId": "bedok",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:43",
+            "lastTrain": "23:39"
+          },
+          "saturday": {
+            "firstTrain": "05:43",
+            "lastTrain": "23:39"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:09",
+            "lastTrain": "23:39"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:16",
+            "lastTrain": "00:27"
+          },
+          "saturday": {
+            "firstTrain": "06:16",
+            "lastTrain": "00:27"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:44",
+            "lastTrain": "00:27"
+          }
+        }
+      }
+    ]
+  }
 }

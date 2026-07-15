@@ -24,5 +24,43 @@
     "australian-high-commission",
     "tanglin-mall"
   ],
-  "townId": "tanglin"
+  "townId": "tanglin",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:54",
+            "lastTrain": "23:59"
+          },
+          "saturday": {
+            "firstTrain": "05:54",
+            "lastTrain": "23:59"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:14",
+            "lastTrain": "23:59"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:16"
+          },
+          "saturday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:16"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:16",
+            "lastTrain": "00:16"
+          }
+        }
+      }
+    ]
+  }
 }

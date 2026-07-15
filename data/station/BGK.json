@@ -23,5 +23,43 @@
     "buangkok-park",
     "compass-one-shopping-mall"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:13",
+            "lastTrain": "00:25"
+          },
+          "saturday": {
+            "firstTrain": "06:13",
+            "lastTrain": "00:25"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:33",
+            "lastTrain": "00:25"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:46",
+            "lastTrain": "23:32"
+          },
+          "saturday": {
+            "firstTrain": "05:46",
+            "lastTrain": "23:32"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:06",
+            "lastTrain": "23:32"
+          }
+        }
+      }
+    ]
+  }
 }

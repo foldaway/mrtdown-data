@@ -31,5 +31,77 @@
     "united-square-shopping-mall",
     "velocity-novena-square"
   ],
-  "townId": "newton"
+  "townId": "newton",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:59",
+            "lastTrain": "00:04"
+          },
+          "saturday": {
+            "firstTrain": "06:13",
+            "lastTrain": "00:04"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:20",
+            "lastTrain": "00:04"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:46",
+            "lastTrain": "23:44"
+          },
+          "saturday": {
+            "firstTrain": "05:46",
+            "lastTrain": "23:44"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:11",
+            "lastTrain": "23:44"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:51",
+            "lastTrain": "23:55"
+          },
+          "saturday": {
+            "firstTrain": "05:51",
+            "lastTrain": "23:55"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:11",
+            "lastTrain": "23:55"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:28"
+          },
+          "saturday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:28"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:16",
+            "lastTrain": "00:28"
+          }
+        }
+      }
+    ]
+  }
 }

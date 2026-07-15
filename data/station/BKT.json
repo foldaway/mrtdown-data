@@ -23,5 +23,43 @@
     "bukit-panjang-plaza",
     "zhenghua-nature-park"
   ],
-  "townId": "bukit-panjang"
+  "townId": "bukit-panjang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "BPLRT_B",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:09",
+            "lastTrain": "23:41"
+          },
+          "saturday": {
+            "firstTrain": "05:09",
+            "lastTrain": "23:41"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:27",
+            "lastTrain": "23:41"
+          }
+        }
+      },
+      {
+        "serviceId": "BPLRT_A",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:06",
+            "lastTrain": "23:26"
+          },
+          "saturday": {
+            "firstTrain": "05:06",
+            "lastTrain": "23:26"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:25",
+            "lastTrain": "23:26"
+          }
+        }
+      }
+    ]
+  }
 }

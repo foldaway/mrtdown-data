@@ -24,5 +24,26 @@
     "coney-island",
     "punggol-waterway-park"
   ],
-  "townId": "punggol"
+  "townId": "punggol",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:39",
+            "lastTrain": "23:25"
+          },
+          "saturday": {
+            "firstTrain": "05:39",
+            "lastTrain": "23:25"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:59",
+            "lastTrain": "23:25"
+          }
+        }
+      }
+    ]
+  }
 }

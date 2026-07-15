@@ -23,5 +23,43 @@
     "yio-chu-kang-stadium",
     "singapore-american-school"
   ],
-  "townId": "ang-mo-kio"
+  "townId": "ang-mo-kio",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:19",
+            "lastTrain": "00:20"
+          },
+          "saturday": {
+            "firstTrain": "05:19",
+            "lastTrain": "00:20"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:42",
+            "lastTrain": "00:20"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:31",
+            "lastTrain": "23:31"
+          },
+          "saturday": {
+            "firstTrain": "05:28",
+            "lastTrain": "23:31"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:02",
+            "lastTrain": "23:31"
+          }
+        }
+      }
+    ]
+  }
 }

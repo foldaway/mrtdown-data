@@ -32,5 +32,77 @@
     "the-esplanade",
     "singapore-exchange"
   ],
-  "townId": "downtown-core"
+  "townId": "downtown-core",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:03",
+            "lastTrain": "23:53"
+          },
+          "saturday": {
+            "firstTrain": "06:03",
+            "lastTrain": "23:53"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:28",
+            "lastTrain": "23:53"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:59",
+            "lastTrain": "00:08"
+          },
+          "saturday": {
+            "firstTrain": "05:59",
+            "lastTrain": "00:08"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:27",
+            "lastTrain": "00:08"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:00",
+            "lastTrain": "23:58"
+          },
+          "saturday": {
+            "firstTrain": "06:00",
+            "lastTrain": "23:58"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:26",
+            "lastTrain": "23:58"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:56",
+            "lastTrain": "23:55"
+          },
+          "saturday": {
+            "firstTrain": "05:56",
+            "lastTrain": "23:55"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:21",
+            "lastTrain": "23:55"
+          }
+        }
+      }
+    ]
+  }
 }

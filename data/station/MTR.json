@@ -23,5 +23,43 @@
     "geylang-east-public-library",
     "macpherson-mall"
   ],
-  "townId": "geylang"
+  "townId": "geylang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:01",
+            "lastTrain": "00:22"
+          },
+          "saturday": {
+            "firstTrain": "06:01",
+            "lastTrain": "00:22"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:21",
+            "lastTrain": "00:22"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:58",
+            "lastTrain": "00:02"
+          },
+          "saturday": {
+            "firstTrain": "05:58",
+            "lastTrain": "00:02"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:16",
+            "lastTrain": "00:02"
+          }
+        }
+      }
+    ]
+  }
 }

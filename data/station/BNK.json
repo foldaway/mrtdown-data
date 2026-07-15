@@ -23,5 +23,43 @@
     "geylang-serai-market",
     "sri-sairam-indian-temple"
   ],
-  "townId": "kallang"
+  "townId": "kallang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:59",
+            "lastTrain": "00:11"
+          },
+          "saturday": {
+            "firstTrain": "05:59",
+            "lastTrain": "00:11"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:19",
+            "lastTrain": "00:11"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:00",
+            "lastTrain": "23:46"
+          },
+          "saturday": {
+            "firstTrain": "06:00",
+            "lastTrain": "23:46"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:20",
+            "lastTrain": "23:46"
+          }
+        }
+      }
+    ]
+  }
 }

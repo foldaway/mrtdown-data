@@ -23,5 +23,43 @@
     "potong-pasir-park",
     "st-andrews-junior-college"
   ],
-  "townId": "toa-payoh"
+  "townId": "toa-payoh",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:02",
+            "lastTrain": "00:13"
+          },
+          "saturday": {
+            "firstTrain": "06:02",
+            "lastTrain": "00:13"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:22",
+            "lastTrain": "00:13"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:58",
+            "lastTrain": "23:44"
+          },
+          "saturday": {
+            "firstTrain": "05:58",
+            "lastTrain": "23:44"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:18",
+            "lastTrain": "23:44"
+          }
+        }
+      }
+    ]
+  }
 }

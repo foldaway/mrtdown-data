@@ -23,5 +23,43 @@
     "raffles-marina",
     "tuas-checkpoint"
   ],
-  "townId": "tuas"
+  "townId": "tuas",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:35",
+            "lastTrain": "00:46"
+          },
+          "saturday": {
+            "firstTrain": "05:35",
+            "lastTrain": "00:46"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:05",
+            "lastTrain": "00:46"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:21",
+            "lastTrain": "23:22"
+          },
+          "saturday": {
+            "firstTrain": "05:21",
+            "lastTrain": "23:22"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:51",
+            "lastTrain": "23:22"
+          }
+        }
+      }
+    ]
+  }
 }

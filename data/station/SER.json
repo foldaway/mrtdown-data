@@ -31,5 +31,77 @@
     "serangoon-stadium",
     "serangoon-gardens"
   ],
-  "townId": "serangoon"
+  "townId": "serangoon",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "CCL_MAIN_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:18",
+            "lastTrain": "23:13"
+          },
+          "saturday": {
+            "firstTrain": "05:18",
+            "lastTrain": "23:13"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:42",
+            "lastTrain": "23:13"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:44",
+            "lastTrain": "23:40"
+          },
+          "saturday": {
+            "firstTrain": "05:44",
+            "lastTrain": "23:40"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:11",
+            "lastTrain": "23:40"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:06",
+            "lastTrain": "00:17"
+          },
+          "saturday": {
+            "firstTrain": "06:06",
+            "lastTrain": "00:17"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:26",
+            "lastTrain": "00:17"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:54",
+            "lastTrain": "23:40"
+          },
+          "saturday": {
+            "firstTrain": "05:54",
+            "lastTrain": "23:40"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:14",
+            "lastTrain": "23:40"
+          }
+        }
+      }
+    ]
+  }
 }

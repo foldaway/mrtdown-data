@@ -38,5 +38,26 @@
     "downtown-east",
     "wild-wild-wet"
   ],
-  "townId": "pasir-ris"
+  "townId": "pasir-ris",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:28",
+            "lastTrain": "23:23"
+          },
+          "saturday": {
+            "firstTrain": "05:28",
+            "lastTrain": "23:23"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:54",
+            "lastTrain": "23:23"
+          }
+        }
+      }
+    ]
+  }
 }

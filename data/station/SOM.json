@@ -24,5 +24,43 @@
     "313somerset",
     "orchard-central"
   ],
-  "townId": "orchard"
+  "townId": "orchard",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:09",
+            "lastTrain": "23:59"
+          },
+          "saturday": {
+            "firstTrain": "06:09",
+            "lastTrain": "23:59"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:34",
+            "lastTrain": "23:59"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:50",
+            "lastTrain": "23:48"
+          },
+          "saturday": {
+            "firstTrain": "05:50",
+            "lastTrain": "23:48"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:15",
+            "lastTrain": "23:48"
+          }
+        }
+      }
+    ]
+  }
 }

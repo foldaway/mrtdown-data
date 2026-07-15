@@ -24,5 +24,43 @@
     "bedok-green-secondary-school",
     "singapore-sports-school"
   ],
-  "townId": "bedok"
+  "townId": "bedok",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:11",
+            "lastTrain": "00:31"
+          },
+          "saturday": {
+            "firstTrain": "06:11",
+            "lastTrain": "00:31"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:31",
+            "lastTrain": "00:31"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:48",
+            "lastTrain": "23:51"
+          },
+          "saturday": {
+            "firstTrain": "05:48",
+            "lastTrain": "23:51"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:06",
+            "lastTrain": "23:51"
+          }
+        }
+      }
+    ]
+  }
 }

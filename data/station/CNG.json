@@ -24,5 +24,43 @@
     "japanese-garden",
     "lakeside-gardens"
   ],
-  "townId": "jurong-east"
+  "townId": "jurong-east",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:16",
+            "lastTrain": "00:27"
+          },
+          "saturday": {
+            "firstTrain": "05:16",
+            "lastTrain": "00:27"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:46",
+            "lastTrain": "00:27"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:39",
+            "lastTrain": "23:39"
+          },
+          "saturday": {
+            "firstTrain": "05:39",
+            "lastTrain": "23:39"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:09",
+            "lastTrain": "23:39"
+          }
+        }
+      }
+    ]
+  }
 }

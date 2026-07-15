@@ -39,5 +39,111 @@
     "chinatown",
     "sri-mariamman-temple"
   ],
-  "townId": "outram"
+  "townId": "outram",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:04",
+            "lastTrain": "00:02"
+          },
+          "saturday": {
+            "firstTrain": "06:04",
+            "lastTrain": "00:02"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:30",
+            "lastTrain": "00:02"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:54",
+            "lastTrain": "00:03"
+          },
+          "saturday": {
+            "firstTrain": "05:54",
+            "lastTrain": "00:03"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:22",
+            "lastTrain": "00:03"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:09"
+          },
+          "saturday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:09"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:16",
+            "lastTrain": "00:09"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:07",
+            "lastTrain": "00:07"
+          },
+          "saturday": {
+            "firstTrain": "06:07",
+            "lastTrain": "00:07"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:27",
+            "lastTrain": "00:07"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:48",
+            "lastTrain": "23:59"
+          },
+          "saturday": {
+            "firstTrain": "05:48",
+            "lastTrain": "23:59"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:08",
+            "lastTrain": "23:59"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:12",
+            "lastTrain": "23:58"
+          },
+          "saturday": {
+            "firstTrain": "06:12",
+            "lastTrain": "23:58"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:32",
+            "lastTrain": "23:58"
+          }
+        }
+      }
+    ]
+  }
 }

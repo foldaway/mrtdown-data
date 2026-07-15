@@ -23,5 +23,43 @@
     "bukit-panjang-plaza",
     "fajar-shopping-centre"
   ],
-  "townId": "bukit-panjang"
+  "townId": "bukit-panjang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "BPLRT_B",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:11",
+            "lastTrain": "23:43"
+          },
+          "saturday": {
+            "firstTrain": "05:11",
+            "lastTrain": "23:43"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:29",
+            "lastTrain": "23:43"
+          }
+        }
+      },
+      {
+        "serviceId": "BPLRT_A",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:04",
+            "lastTrain": "23:24"
+          },
+          "saturday": {
+            "firstTrain": "05:04",
+            "lastTrain": "23:24"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:23",
+            "lastTrain": "23:24"
+          }
+        }
+      }
+    ]
+  }
 }

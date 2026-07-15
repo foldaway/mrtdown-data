@@ -25,5 +25,43 @@
     "the-arts-house",
     "maxwell-food-centre"
   ],
-  "townId": "outram"
+  "townId": "outram",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:06",
+            "lastTrain": "00:08"
+          },
+          "saturday": {
+            "firstTrain": "06:06",
+            "lastTrain": "00:08"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:26",
+            "lastTrain": "00:08"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:11",
+            "lastTrain": "00:15"
+          },
+          "saturday": {
+            "firstTrain": "06:11",
+            "lastTrain": "00:15"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:29",
+            "lastTrain": "00:15"
+          }
+        }
+      }
+    ]
+  }
 }

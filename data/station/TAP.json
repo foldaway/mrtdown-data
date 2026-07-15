@@ -23,5 +23,43 @@
     "toa-payoh-hub",
     "hdb-toa-payoh-town-centre"
   ],
-  "townId": "toa-payoh"
+  "townId": "toa-payoh",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:04",
+            "lastTrain": "00:09"
+          },
+          "saturday": {
+            "firstTrain": "06:18",
+            "lastTrain": "00:09"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:25",
+            "lastTrain": "00:09"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:41",
+            "lastTrain": "23:39"
+          },
+          "saturday": {
+            "firstTrain": "05:41",
+            "lastTrain": "23:39"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:06",
+            "lastTrain": "23:39"
+          }
+        }
+      }
+    ]
+  }
 }

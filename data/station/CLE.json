@@ -31,5 +31,43 @@
     "clementi-mall",
     "clementi-stadium"
   ],
-  "townId": "clementi"
+  "townId": "clementi",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:21",
+            "lastTrain": "00:20"
+          },
+          "saturday": {
+            "firstTrain": "06:21",
+            "lastTrain": "00:20"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:47",
+            "lastTrain": "00:20"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:38",
+            "lastTrain": "23:46"
+          },
+          "saturday": {
+            "firstTrain": "05:38",
+            "lastTrain": "23:46"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:06",
+            "lastTrain": "23:46"
+          }
+        }
+      }
+    ]
+  }
 }

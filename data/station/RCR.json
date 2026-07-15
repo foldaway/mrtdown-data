@@ -23,5 +23,43 @@
     "lasalle-college-of-the-arts",
     "tekka-centre"
   ],
-  "townId": "rochor"
+  "townId": "rochor",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:55",
+            "lastTrain": "23:59"
+          },
+          "saturday": {
+            "firstTrain": "05:55",
+            "lastTrain": "23:59"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:15",
+            "lastTrain": "23:59"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:05",
+            "lastTrain": "00:24"
+          },
+          "saturday": {
+            "firstTrain": "06:05",
+            "lastTrain": "00:24"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:34",
+            "lastTrain": "00:24"
+          }
+        }
+      }
+    ]
+  }
 }

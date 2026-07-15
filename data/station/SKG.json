@@ -33,5 +33,43 @@
     "anchorvale-park",
     "punggol-waterway-park"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:33",
+            "lastTrain": "00:27"
+          },
+          "saturday": {
+            "firstTrain": "05:33",
+            "lastTrain": "00:27"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:53",
+            "lastTrain": "00:27"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:44",
+            "lastTrain": "23:30"
+          },
+          "saturday": {
+            "firstTrain": "05:44",
+            "lastTrain": "23:30"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:04",
+            "lastTrain": "23:30"
+          }
+        }
+      }
+    ]
+  }
 }

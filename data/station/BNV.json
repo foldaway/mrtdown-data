@@ -31,5 +31,77 @@
     "one-north",
     "singapore-science-park"
   ],
-  "townId": "queenstown"
+  "townId": "queenstown",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:16",
+            "lastTrain": "00:15"
+          },
+          "saturday": {
+            "firstTrain": "06:16",
+            "lastTrain": "00:15"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:42",
+            "lastTrain": "00:15"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:43",
+            "lastTrain": "23:51"
+          },
+          "saturday": {
+            "firstTrain": "05:43",
+            "lastTrain": "23:51"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:11",
+            "lastTrain": "23:51"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:39",
+            "lastTrain": "23:19"
+          },
+          "saturday": {
+            "firstTrain": "05:39",
+            "lastTrain": "23:19"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:00",
+            "lastTrain": "23:19"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:39",
+            "lastTrain": "23:34"
+          },
+          "saturday": {
+            "firstTrain": "05:39",
+            "lastTrain": "23:34"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:03",
+            "lastTrain": "23:34"
+          }
+        }
+      }
+    ]
+  }
 }

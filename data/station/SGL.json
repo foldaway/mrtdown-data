@@ -23,5 +23,43 @@
     "east-coast-park",
     "siglap-village"
   ],
-  "townId": "bedok"
+  "townId": "bedok",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:58",
+            "lastTrain": "23:44"
+          },
+          "saturday": {
+            "firstTrain": "05:58",
+            "lastTrain": "23:44"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:18",
+            "lastTrain": "23:44"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:05",
+            "lastTrain": "00:31"
+          },
+          "saturday": {
+            "firstTrain": "06:05",
+            "lastTrain": "00:31"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:25",
+            "lastTrain": "00:31"
+          }
+        }
+      }
+    ]
+  }
 }

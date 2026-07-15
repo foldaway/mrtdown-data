@@ -23,5 +23,43 @@
     "queenstown-public-library",
     "queensway-shopping-centre"
   ],
-  "townId": "queenstown"
+  "townId": "queenstown",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:14",
+            "lastTrain": "00:12"
+          },
+          "saturday": {
+            "firstTrain": "06:14",
+            "lastTrain": "00:12"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:40",
+            "lastTrain": "00:12"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:45",
+            "lastTrain": "23:53"
+          },
+          "saturday": {
+            "firstTrain": "05:45",
+            "lastTrain": "23:53"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:13",
+            "lastTrain": "23:53"
+          }
+        }
+      }
+    ]
+  }
 }

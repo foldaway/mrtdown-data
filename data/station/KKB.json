@@ -22,5 +22,43 @@
   "landmarkIds": [
     "kaki-bukit-shopping-centre"
   ],
-  "townId": "bedok"
+  "townId": "bedok",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:07",
+            "lastTrain": "00:27"
+          },
+          "saturday": {
+            "firstTrain": "06:07",
+            "lastTrain": "00:27"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:27",
+            "lastTrain": "00:27"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:52",
+            "lastTrain": "23:56"
+          },
+          "saturday": {
+            "firstTrain": "05:52",
+            "lastTrain": "23:56"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:10",
+            "lastTrain": "23:56"
+          }
+        }
+      }
+    ]
+  }
 }

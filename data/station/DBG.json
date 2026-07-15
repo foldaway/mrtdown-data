@@ -39,5 +39,94 @@
     "fort-canning-park",
     "plaza-singapura"
   ],
-  "townId": "museum"
+  "townId": "museum",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:07",
+            "lastTrain": "23:57"
+          },
+          "saturday": {
+            "firstTrain": "06:07",
+            "lastTrain": "23:57"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:32",
+            "lastTrain": "23:57"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:37",
+            "lastTrain": "22:48"
+          },
+          "saturday": {
+            "firstTrain": "05:37",
+            "lastTrain": "22:48"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:05",
+            "lastTrain": "22:48"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:52",
+            "lastTrain": "23:51"
+          },
+          "saturday": {
+            "firstTrain": "05:52",
+            "lastTrain": "23:51"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:17",
+            "lastTrain": "23:51"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:53",
+            "lastTrain": "00:05"
+          },
+          "saturday": {
+            "firstTrain": "05:53",
+            "lastTrain": "00:05"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:13",
+            "lastTrain": "00:05"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:06",
+            "lastTrain": "23:52"
+          },
+          "saturday": {
+            "firstTrain": "06:06",
+            "lastTrain": "23:52"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:26",
+            "lastTrain": "23:52"
+          }
+        }
+      }
+    ]
+  }
 }

@@ -23,5 +23,43 @@
     "geylang-serai-market",
     "singapore-post-centre"
   ],
-  "townId": "geylang"
+  "townId": "geylang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:49",
+            "lastTrain": "23:46"
+          },
+          "saturday": {
+            "firstTrain": "05:49",
+            "lastTrain": "23:46"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:15",
+            "lastTrain": "23:46"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:10",
+            "lastTrain": "00:20"
+          },
+          "saturday": {
+            "firstTrain": "06:10",
+            "lastTrain": "00:20"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:38",
+            "lastTrain": "00:20"
+          }
+        }
+      }
+    ]
+  }
 }

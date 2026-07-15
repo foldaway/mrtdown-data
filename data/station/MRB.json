@@ -45,5 +45,94 @@
     "gardens-by-the-bay",
     "esplanade-theatres-on-the-bay"
   ],
-  "townId": "marina-bay"
+  "townId": "marina-bay",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:01",
+            "lastTrain": "23:50"
+          },
+          "saturday": {
+            "firstTrain": "06:01",
+            "lastTrain": "23:50"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:26",
+            "lastTrain": "23:50"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_EXT_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:59",
+            "lastTrain": "23:55"
+          },
+          "saturday": {
+            "firstTrain": "05:59",
+            "lastTrain": "23:55"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:24",
+            "lastTrain": "23:55"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:05",
+            "lastTrain": "23:58"
+          },
+          "saturday": {
+            "firstTrain": "06:05",
+            "lastTrain": "23:58"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:32",
+            "lastTrain": "23:58"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:01",
+            "lastTrain": "00:14"
+          },
+          "saturday": {
+            "firstTrain": "06:01",
+            "lastTrain": "00:14"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:21",
+            "lastTrain": "00:14"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:02",
+            "lastTrain": "00:02"
+          },
+          "saturday": {
+            "firstTrain": "06:02",
+            "lastTrain": "00:02"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:22",
+            "lastTrain": "00:02"
+          }
+        }
+      }
+    ]
+  }
 }

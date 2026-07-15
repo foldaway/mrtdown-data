@@ -36,5 +36,77 @@
     "hong-lim-market-food-centre",
     "chinatown-complex-food-centre"
   ],
-  "townId": "outram"
+  "townId": "outram",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:49",
+            "lastTrain": "00:01"
+          },
+          "saturday": {
+            "firstTrain": "05:49",
+            "lastTrain": "00:01"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:09",
+            "lastTrain": "00:01"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:10",
+            "lastTrain": "23:56"
+          },
+          "saturday": {
+            "firstTrain": "06:10",
+            "lastTrain": "23:56"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:30",
+            "lastTrain": "23:56"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:08",
+            "lastTrain": "00:10"
+          },
+          "saturday": {
+            "firstTrain": "06:08",
+            "lastTrain": "00:10"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:28",
+            "lastTrain": "00:10"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:10",
+            "lastTrain": "00:14"
+          },
+          "saturday": {
+            "firstTrain": "06:10",
+            "lastTrain": "00:14"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:28",
+            "lastTrain": "00:14"
+          }
+        }
+      }
+    ]
+  }
 }

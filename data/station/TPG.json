@@ -24,5 +24,43 @@
     "sri-mariamman-temple",
     "duxton-hill"
   ],
-  "townId": "downtown-core"
+  "townId": "downtown-core",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:02",
+            "lastTrain": "00:00"
+          },
+          "saturday": {
+            "firstTrain": "06:02",
+            "lastTrain": "00:00"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:28",
+            "lastTrain": "00:00"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:05"
+          },
+          "saturday": {
+            "firstTrain": "05:56",
+            "lastTrain": "00:05"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:24",
+            "lastTrain": "00:05"
+          }
+        }
+      }
+    ]
+  }
 }

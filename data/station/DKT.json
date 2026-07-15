@@ -24,5 +24,43 @@
     "dakota-crescent",
     "singapore-sports-hub"
   ],
-  "townId": "geylang"
+  "townId": "geylang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "CCL_MAIN_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:37",
+            "lastTrain": "23:01"
+          },
+          "saturday": {
+            "firstTrain": "05:37",
+            "lastTrain": "23:01"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:04",
+            "lastTrain": "23:01"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:42",
+            "lastTrain": "23:51"
+          },
+          "saturday": {
+            "firstTrain": "05:42",
+            "lastTrain": "23:51"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:09",
+            "lastTrain": "23:51"
+          }
+        }
+      }
+    ]
+  }
 }

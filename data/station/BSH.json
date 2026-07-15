@@ -31,5 +31,77 @@
     "singapore-pools-bishan",
     "bishan-junction-8"
   ],
-  "townId": "bishan"
+  "townId": "bishan",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:08",
+            "lastTrain": "00:14"
+          },
+          "saturday": {
+            "firstTrain": "06:23",
+            "lastTrain": "00:14"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:29",
+            "lastTrain": "00:14"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:40",
+            "lastTrain": "23:35"
+          },
+          "saturday": {
+            "firstTrain": "05:40",
+            "lastTrain": "23:35"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:07",
+            "lastTrain": "23:35"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:23",
+            "lastTrain": "23:18"
+          },
+          "saturday": {
+            "firstTrain": "05:23",
+            "lastTrain": "23:18"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:47",
+            "lastTrain": "23:18"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:37",
+            "lastTrain": "23:34"
+          },
+          "saturday": {
+            "firstTrain": "05:37",
+            "lastTrain": "23:34"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:02",
+            "lastTrain": "23:34"
+          }
+        }
+      }
+    ]
+  }
 }

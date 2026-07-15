@@ -24,5 +24,43 @@
     "causeway-point",
     "singapore-american-school"
   ],
-  "townId": "woodlands"
+  "townId": "woodlands",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:35",
+            "lastTrain": "00:37"
+          },
+          "saturday": {
+            "firstTrain": "05:35",
+            "lastTrain": "00:37"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:58",
+            "lastTrain": "00:37"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:29",
+            "lastTrain": "23:11"
+          },
+          "saturday": {
+            "firstTrain": "05:29",
+            "lastTrain": "23:11"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:45",
+            "lastTrain": "23:11"
+          }
+        }
+      }
+    ]
+  }
 }

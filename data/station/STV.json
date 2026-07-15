@@ -31,5 +31,77 @@
     "anglo-chinese-school-barker-road",
     "singapore-botanic-gardens"
   ],
-  "townId": "tanglin"
+  "townId": "tanglin",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:59",
+            "lastTrain": "00:19"
+          },
+          "saturday": {
+            "firstTrain": "05:59",
+            "lastTrain": "00:19"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:19",
+            "lastTrain": "00:19"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:51",
+            "lastTrain": "23:56"
+          },
+          "saturday": {
+            "firstTrain": "05:51",
+            "lastTrain": "23:56"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:11",
+            "lastTrain": "23:56"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:48",
+            "lastTrain": "23:53"
+          },
+          "saturday": {
+            "firstTrain": "05:48",
+            "lastTrain": "23:53"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:08",
+            "lastTrain": "23:53"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:58",
+            "lastTrain": "00:30"
+          },
+          "saturday": {
+            "firstTrain": "05:58",
+            "lastTrain": "00:30"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:18",
+            "lastTrain": "00:30"
+          }
+        }
+      }
+    ]
+  }
 }

@@ -24,5 +24,43 @@
     "lianhua-primary-school",
     "the-rail-mall"
   ],
-  "townId": "bukit-panjang"
+  "townId": "bukit-panjang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "BPLRT_B",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:06",
+            "lastTrain": "23:38"
+          },
+          "saturday": {
+            "firstTrain": "05:06",
+            "lastTrain": "23:38"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:25",
+            "lastTrain": "23:38"
+          }
+        }
+      },
+      {
+        "serviceId": "BPLRT_A",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:09",
+            "lastTrain": "23:29"
+          },
+          "saturday": {
+            "firstTrain": "05:09",
+            "lastTrain": "23:29"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:28",
+            "lastTrain": "23:29"
+          }
+        }
+      }
+    ]
+  }
 }

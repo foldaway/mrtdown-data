@@ -24,5 +24,43 @@
     "chinese-garden",
     "japanese-garden"
   ],
-  "townId": "jurong-west"
+  "townId": "jurong-west",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:18",
+            "lastTrain": "00:29"
+          },
+          "saturday": {
+            "firstTrain": "05:18",
+            "lastTrain": "00:29"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:48",
+            "lastTrain": "00:29"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:37",
+            "lastTrain": "23:37"
+          },
+          "saturday": {
+            "firstTrain": "05:37",
+            "lastTrain": "23:37"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:07",
+            "lastTrain": "23:37"
+          }
+        }
+      }
+    ]
+  }
 }

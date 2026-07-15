@@ -30,5 +30,43 @@
     "king-albert-park-shopping-centre",
     "my-mini-golf"
   ],
-  "townId": "bukit-timah"
+  "townId": "bukit-timah",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:39",
+            "lastTrain": "23:44"
+          },
+          "saturday": {
+            "firstTrain": "05:39",
+            "lastTrain": "23:44"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:59",
+            "lastTrain": "23:44"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:06",
+            "lastTrain": "00:38"
+          },
+          "saturday": {
+            "firstTrain": "06:06",
+            "lastTrain": "00:38"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:27",
+            "lastTrain": "00:38"
+          }
+        }
+      }
+    ]
+  }
 }

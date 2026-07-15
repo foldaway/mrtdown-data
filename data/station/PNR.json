@@ -24,5 +24,43 @@
     "jtc-aviation-one",
     "singapore-discovery-centre"
   ],
-  "townId": "jurong-west"
+  "townId": "jurong-west",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:23",
+            "lastTrain": "00:35"
+          },
+          "saturday": {
+            "firstTrain": "05:23",
+            "lastTrain": "00:35"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:53",
+            "lastTrain": "00:35"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:34",
+            "lastTrain": "23:36"
+          },
+          "saturday": {
+            "firstTrain": "05:34",
+            "lastTrain": "23:36"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:04",
+            "lastTrain": "23:36"
+          }
+        }
+      }
+    ]
+  }
 }

@@ -24,5 +24,43 @@
     "greendale-mall",
     "singapore-quarry"
   ],
-  "townId": "bukit-panjang"
+  "townId": "bukit-panjang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:34",
+            "lastTrain": "23:38"
+          },
+          "saturday": {
+            "firstTrain": "05:34",
+            "lastTrain": "23:38"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:54",
+            "lastTrain": "23:38"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:13",
+            "lastTrain": "00:45"
+          },
+          "saturday": {
+            "firstTrain": "06:13",
+            "lastTrain": "00:45"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:33",
+            "lastTrain": "00:45"
+          }
+        }
+      }
+    ]
+  }
 }

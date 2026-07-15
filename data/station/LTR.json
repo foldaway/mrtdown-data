@@ -22,5 +22,43 @@
   "landmarkIds": [
     "lentor-modern"
   ],
-  "townId": "ang-mo-kio"
+  "townId": "ang-mo-kio",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:01",
+            "lastTrain": "00:32"
+          },
+          "saturday": {
+            "firstTrain": "06:01",
+            "lastTrain": "00:32"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:21",
+            "lastTrain": "00:32"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:41",
+            "lastTrain": "23:42"
+          },
+          "saturday": {
+            "firstTrain": "05:41",
+            "lastTrain": "23:42"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:01",
+            "lastTrain": "23:42"
+          }
+        }
+      }
+    ]
+  }
 }

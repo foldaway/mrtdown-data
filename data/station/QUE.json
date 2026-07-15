@@ -24,5 +24,43 @@
     "alexandra-hospital",
     "anchorpoint-shopping-centre"
   ],
-  "townId": "queenstown"
+  "townId": "queenstown",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:12",
+            "lastTrain": "00:10"
+          },
+          "saturday": {
+            "firstTrain": "06:12",
+            "lastTrain": "00:10"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:38",
+            "lastTrain": "00:10"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:47",
+            "lastTrain": "23:57"
+          },
+          "saturday": {
+            "firstTrain": "05:47",
+            "lastTrain": "23:57"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:15",
+            "lastTrain": "23:57"
+          }
+        }
+      }
+    ]
+  }
 }

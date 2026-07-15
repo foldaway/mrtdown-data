@@ -23,5 +23,43 @@
     "heartland-mall",
     "kovan-sports-centre"
   ],
-  "townId": "hougang"
+  "townId": "hougang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:08",
+            "lastTrain": "00:20"
+          },
+          "saturday": {
+            "firstTrain": "06:08",
+            "lastTrain": "00:20"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:28",
+            "lastTrain": "00:20"
+          }
+        }
+      },
+      {
+        "serviceId": "NEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:51",
+            "lastTrain": "23:37"
+          },
+          "saturday": {
+            "firstTrain": "05:51",
+            "lastTrain": "23:37"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:11",
+            "lastTrain": "23:37"
+          }
+        }
+      }
+    ]
+  }
 }

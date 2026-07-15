@@ -31,5 +31,77 @@
     "ion-orchard",
     "takashimaya-shopping-centre"
   ],
-  "townId": "orchard"
+  "townId": "orchard",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:11",
+            "lastTrain": "00:02"
+          },
+          "saturday": {
+            "firstTrain": "06:11",
+            "lastTrain": "00:02"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:36",
+            "lastTrain": "00:02"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:48",
+            "lastTrain": "23:46"
+          },
+          "saturday": {
+            "firstTrain": "05:48",
+            "lastTrain": "23:46"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:13",
+            "lastTrain": "23:46"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:55",
+            "lastTrain": "00:03"
+          },
+          "saturday": {
+            "firstTrain": "05:55",
+            "lastTrain": "00:03"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:15",
+            "lastTrain": "00:03"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:52",
+            "lastTrain": "00:13"
+          },
+          "saturday": {
+            "firstTrain": "05:52",
+            "lastTrain": "00:13"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:12",
+            "lastTrain": "00:13"
+          }
+        }
+      }
+    ]
+  }
 }

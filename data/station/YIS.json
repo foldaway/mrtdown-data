@@ -24,5 +24,43 @@
     "yishun-town-park",
     "khoo-teck-puat-hospital"
   ],
-  "townId": "yishun"
+  "townId": "yishun",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:27",
+            "lastTrain": "00:28"
+          },
+          "saturday": {
+            "firstTrain": "05:27",
+            "lastTrain": "00:28"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:50",
+            "lastTrain": "00:28"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:24",
+            "lastTrain": "23:20"
+          },
+          "saturday": {
+            "firstTrain": "05:24",
+            "lastTrain": "23:20"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:54",
+            "lastTrain": "23:20"
+          }
+        }
+      }
+    ]
+  }
 }

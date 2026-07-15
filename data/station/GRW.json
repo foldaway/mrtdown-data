@@ -23,5 +23,43 @@
     "great-world-city",
     "singapore-river"
   ],
-  "townId": "river-valley"
+  "townId": "river-valley",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "TEL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:57",
+            "lastTrain": "00:05"
+          },
+          "saturday": {
+            "firstTrain": "05:57",
+            "lastTrain": "00:05"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:17",
+            "lastTrain": "00:05"
+          }
+        }
+      },
+      {
+        "serviceId": "TEL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:10",
+            "lastTrain": "00:10"
+          },
+          "saturday": {
+            "firstTrain": "06:10",
+            "lastTrain": "00:10"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:30",
+            "lastTrain": "00:10"
+          }
+        }
+      }
+    ]
+  }
 }

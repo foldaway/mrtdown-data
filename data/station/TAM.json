@@ -31,5 +31,77 @@
     "century-square",
     "tampines-1"
   ],
-  "townId": "tampines"
+  "townId": "tampines",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:31",
+            "lastTrain": "23:26"
+          },
+          "saturday": {
+            "firstTrain": "05:31",
+            "lastTrain": "23:26"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:57",
+            "lastTrain": "23:26"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:21",
+            "lastTrain": "00:37"
+          },
+          "saturday": {
+            "firstTrain": "05:21",
+            "lastTrain": "00:37"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:47",
+            "lastTrain": "00:37"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:16",
+            "lastTrain": "00:36"
+          },
+          "saturday": {
+            "firstTrain": "06:16",
+            "lastTrain": "00:36"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:36",
+            "lastTrain": "00:36"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:43",
+            "lastTrain": "23:47"
+          },
+          "saturday": {
+            "firstTrain": "05:43",
+            "lastTrain": "23:47"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:01",
+            "lastTrain": "23:47"
+          }
+        }
+      }
+    ]
+  }
 }

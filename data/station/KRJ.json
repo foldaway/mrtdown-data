@@ -24,5 +24,43 @@
     "kranji-reservoir-park",
     "kranji-war-memorial"
   ],
-  "townId": "sungei-kadut"
+  "townId": "sungei-kadut",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:43",
+            "lastTrain": "00:50"
+          },
+          "saturday": {
+            "firstTrain": "05:43",
+            "lastTrain": "00:50"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:06",
+            "lastTrain": "00:50"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:22",
+            "lastTrain": "23:03"
+          },
+          "saturday": {
+            "firstTrain": "05:22",
+            "lastTrain": "23:03"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:38",
+            "lastTrain": "23:03"
+          }
+        }
+      }
+    ]
+  }
 }

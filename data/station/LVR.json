@@ -22,5 +22,43 @@
   "landmarkIds": [
     "meyer-mansion"
   ],
-  "townId": "kallang"
+  "townId": "kallang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:54",
+            "lastTrain": "23:50"
+          },
+          "saturday": {
+            "firstTrain": "05:54",
+            "lastTrain": "23:50"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:20",
+            "lastTrain": "23:50"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:05",
+            "lastTrain": "00:15"
+          },
+          "saturday": {
+            "firstTrain": "06:05",
+            "lastTrain": "00:15"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:33",
+            "lastTrain": "00:15"
+          }
+        }
+      }
+    ]
+  }
 }

@@ -23,5 +23,43 @@
     "pasir-panjang-wholesale-centre",
     "mapletree-business-city"
   ],
-  "townId": "queenstown"
+  "townId": "queenstown",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "CCL_MAIN_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:40",
+            "lastTrain": "23:42"
+          },
+          "saturday": {
+            "firstTrain": "05:40",
+            "lastTrain": "23:42"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:04",
+            "lastTrain": "23:42"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:30",
+            "lastTrain": "23:10"
+          },
+          "saturday": {
+            "firstTrain": "05:30",
+            "lastTrain": "23:10"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:51",
+            "lastTrain": "23:10"
+          }
+        }
+      }
+    ]
+  }
 }

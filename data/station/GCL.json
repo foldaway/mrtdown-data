@@ -27,5 +27,43 @@
     "pioneer-sector-1",
     "tuas-mega-port"
   ],
-  "townId": "pioneer"
+  "townId": "pioneer",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:30",
+            "lastTrain": "00:41"
+          },
+          "saturday": {
+            "firstTrain": "05:30",
+            "lastTrain": "00:41"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:00",
+            "lastTrain": "00:41"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:26",
+            "lastTrain": "23:26"
+          },
+          "saturday": {
+            "firstTrain": "05:26",
+            "lastTrain": "23:26"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:56",
+            "lastTrain": "23:26"
+          }
+        }
+      }
+    ]
+  }
 }

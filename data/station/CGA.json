@@ -31,5 +31,26 @@
     "jewel-changi-airport",
     "changi-beach"
   ],
-  "townId": "changi"
+  "townId": "changi",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_CG_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:31",
+            "lastTrain": "00:06"
+          },
+          "saturday": {
+            "firstTrain": "05:31",
+            "lastTrain": "00:06"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:59",
+            "lastTrain": "00:06"
+          }
+        }
+      }
+    ]
+  }
 }

@@ -22,5 +22,43 @@
   "landmarkIds": [
     "haw-par-villa-theme-park"
   ],
-  "townId": "queenstown"
+  "townId": "queenstown",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "CCL_MAIN_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:38",
+            "lastTrain": "23:40"
+          },
+          "saturday": {
+            "firstTrain": "05:38",
+            "lastTrain": "23:40"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:02",
+            "lastTrain": "23:40"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:32",
+            "lastTrain": "23:12"
+          },
+          "saturday": {
+            "firstTrain": "05:32",
+            "lastTrain": "23:12"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:53",
+            "lastTrain": "23:12"
+          }
+        }
+      }
+    ]
+  }
 }

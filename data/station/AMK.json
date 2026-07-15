@@ -31,5 +31,43 @@
     "bishan-ang-mo-kio-park",
     "yio-chu-kang-stadium"
   ],
-  "townId": "ang-mo-kio"
+  "townId": "ang-mo-kio",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:17",
+            "lastTrain": "00:18"
+          },
+          "saturday": {
+            "firstTrain": "05:17",
+            "lastTrain": "00:18"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:40",
+            "lastTrain": "00:18"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:34",
+            "lastTrain": "23:31"
+          },
+          "saturday": {
+            "firstTrain": "05:34",
+            "lastTrain": "23:31"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:05",
+            "lastTrain": "23:31"
+          }
+        }
+      }
+    ]
+  }
 }

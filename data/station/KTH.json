@@ -22,5 +22,43 @@
   "landmarkIds": [
     "keat-hong-shopping-centre"
   ],
-  "townId": "choa-chu-kang"
+  "townId": "choa-chu-kang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "BPLRT_B",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:09",
+            "lastTrain": "23:34"
+          },
+          "saturday": {
+            "firstTrain": "05:09",
+            "lastTrain": "23:34"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:28",
+            "lastTrain": "23:34"
+          }
+        }
+      },
+      {
+        "serviceId": "BPLRT_A",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:16",
+            "lastTrain": "23:33"
+          },
+          "saturday": {
+            "firstTrain": "05:16",
+            "lastTrain": "23:33"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:35",
+            "lastTrain": "23:33"
+          }
+        }
+      }
+    ]
+  }
 }

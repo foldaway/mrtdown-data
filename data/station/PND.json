@@ -23,5 +23,43 @@
     "bukit-panjang-plaza",
     "hillion-mall"
   ],
-  "townId": "bukit-panjang"
+  "townId": "bukit-panjang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "BPLRT_B",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:08",
+            "lastTrain": "23:40"
+          },
+          "saturday": {
+            "firstTrain": "05:08",
+            "lastTrain": "23:40"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:26",
+            "lastTrain": "23:40"
+          }
+        }
+      },
+      {
+        "serviceId": "BPLRT_A",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:07",
+            "lastTrain": "23:27"
+          },
+          "saturday": {
+            "firstTrain": "05:07",
+            "lastTrain": "23:27"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:26",
+            "lastTrain": "23:27"
+          }
+        }
+      }
+    ]
+  }
 }

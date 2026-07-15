@@ -23,5 +23,43 @@
     "redhill-market",
     "queenstown-public-library"
   ],
-  "townId": "bukit-merah"
+  "townId": "bukit-merah",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:09",
+            "lastTrain": "00:08"
+          },
+          "saturday": {
+            "firstTrain": "06:09",
+            "lastTrain": "00:08"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:35",
+            "lastTrain": "00:08"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:49",
+            "lastTrain": "23:58"
+          },
+          "saturday": {
+            "firstTrain": "05:49",
+            "lastTrain": "23:58"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:17",
+            "lastTrain": "23:58"
+          }
+        }
+      }
+    ]
+  }
 }

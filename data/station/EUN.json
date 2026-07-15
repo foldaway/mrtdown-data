@@ -24,5 +24,43 @@
     "paya-lebar-square",
     "geylang-serai-market"
   ],
-  "townId": "geylang"
+  "townId": "geylang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:45",
+            "lastTrain": "23:41"
+          },
+          "saturday": {
+            "firstTrain": "05:45",
+            "lastTrain": "23:41"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:11",
+            "lastTrain": "23:41"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:14",
+            "lastTrain": "00:25"
+          },
+          "saturday": {
+            "firstTrain": "06:14",
+            "lastTrain": "00:25"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:42",
+            "lastTrain": "00:25"
+          }
+        }
+      }
+    ]
+  }
 }

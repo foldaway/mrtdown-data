@@ -89,15 +89,15 @@
         "times": {
           "weekday": {
             "firstTrain": "05:48",
-            "lastTrain": "23:52"
+            "lastTrain": "23:58"
           },
           "saturday": {
             "firstTrain": "05:48",
-            "lastTrain": "23:52"
+            "lastTrain": "23:58"
           },
           "sunday_public_holiday": {
             "firstTrain": "06:08",
-            "lastTrain": "23:52"
+            "lastTrain": "23:58"
           }
         }
       }

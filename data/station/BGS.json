@@ -34,5 +34,77 @@
     "haji-lane",
     "kampong-glam"
   ],
-  "townId": "rochor"
+  "townId": "rochor",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:56",
+            "lastTrain": "23:53"
+          },
+          "saturday": {
+            "firstTrain": "05:56",
+            "lastTrain": "23:53"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:22",
+            "lastTrain": "23:53"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:03",
+            "lastTrain": "00:13"
+          },
+          "saturday": {
+            "firstTrain": "06:03",
+            "lastTrain": "00:13"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:31",
+            "lastTrain": "00:13"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:57",
+            "lastTrain": "00:01"
+          },
+          "saturday": {
+            "firstTrain": "05:57",
+            "lastTrain": "00:01"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:17",
+            "lastTrain": "00:01"
+          }
+        }
+      },
+      {
+        "serviceId": "DTL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:03",
+            "lastTrain": "00:22"
+          },
+          "saturday": {
+            "firstTrain": "06:03",
+            "lastTrain": "00:22"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:32",
+            "lastTrain": "00:22"
+          }
+        }
+      }
+    ]
+  }
 }

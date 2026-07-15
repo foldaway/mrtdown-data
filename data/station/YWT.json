@@ -23,5 +23,43 @@
     "lot-one-shoppers-mall",
     "yew-tee-point"
   ],
-  "townId": "choa-chu-kang"
+  "townId": "choa-chu-kang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:37",
+            "lastTrain": "00:46"
+          },
+          "saturday": {
+            "firstTrain": "05:37",
+            "lastTrain": "00:46"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:00",
+            "lastTrain": "00:46"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:27",
+            "lastTrain": "22:58"
+          },
+          "saturday": {
+            "firstTrain": "05:27",
+            "lastTrain": "22:58"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:46",
+            "lastTrain": "22:58"
+          }
+        }
+      }
+    ]
+  }
 }

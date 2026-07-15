@@ -38,5 +38,77 @@
     "choa-chu-kang-stadium",
     "the-rainforest"
   ],
-  "townId": "choa-chu-kang"
+  "townId": "choa-chu-kang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:39",
+            "lastTrain": "00:53"
+          },
+          "saturday": {
+            "firstTrain": "05:39",
+            "lastTrain": "00:53"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:02",
+            "lastTrain": "00:53"
+          }
+        }
+      },
+      {
+        "serviceId": "BPLRT_B",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:13",
+            "lastTrain": "00:55"
+          },
+          "saturday": {
+            "firstTrain": "05:13",
+            "lastTrain": "00:55"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:32",
+            "lastTrain": "00:55"
+          }
+        }
+      },
+      {
+        "serviceId": "BPLRT_A",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:13",
+            "lastTrain": "00:55"
+          },
+          "saturday": {
+            "firstTrain": "05:13",
+            "lastTrain": "00:55"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:32",
+            "lastTrain": "00:55"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:25",
+            "lastTrain": "22:56"
+          },
+          "saturday": {
+            "firstTrain": "05:25",
+            "lastTrain": "22:56"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:44",
+            "lastTrain": "22:56"
+          }
+        }
+      }
+    ]
+  }
 }

@@ -22,5 +22,43 @@
   "landmarkIds": [
     "phoenix-heights"
   ],
-  "townId": "choa-chu-kang"
+  "townId": "choa-chu-kang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "BPLRT_B",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:07",
+            "lastTrain": "23:32"
+          },
+          "saturday": {
+            "firstTrain": "05:07",
+            "lastTrain": "23:32"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:26",
+            "lastTrain": "23:32"
+          }
+        }
+      },
+      {
+        "serviceId": "BPLRT_A",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:18",
+            "lastTrain": "23:35"
+          },
+          "saturday": {
+            "firstTrain": "05:18",
+            "lastTrain": "23:35"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:37",
+            "lastTrain": "23:35"
+          }
+        }
+      }
+    ]
+  }
 }

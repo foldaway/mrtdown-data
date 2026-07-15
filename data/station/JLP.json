@@ -24,5 +24,43 @@
     "hillion-mall",
     "zhenghua-park"
   ],
-  "townId": "bukit-panjang"
+  "townId": "bukit-panjang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "BPLRT_B",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:14",
+            "lastTrain": "23:47"
+          },
+          "saturday": {
+            "firstTrain": "05:14",
+            "lastTrain": "23:47"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:32",
+            "lastTrain": "23:47"
+          }
+        }
+      },
+      {
+        "serviceId": "BPLRT_A",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:01",
+            "lastTrain": "23:20"
+          },
+          "saturday": {
+            "firstTrain": "05:01",
+            "lastTrain": "23:20"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:20",
+            "lastTrain": "23:20"
+          }
+        }
+      }
+    ]
+  }
 }

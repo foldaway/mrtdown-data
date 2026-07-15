@@ -24,5 +24,43 @@
     "sembawang-shopping-centre",
     "nexus-international-school-singapore"
   ],
-  "townId": "sembawang"
+  "townId": "sembawang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:32",
+            "lastTrain": "00:34"
+          },
+          "saturday": {
+            "firstTrain": "05:32",
+            "lastTrain": "00:34"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:55",
+            "lastTrain": "00:34"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:33",
+            "lastTrain": "23:14"
+          },
+          "saturday": {
+            "firstTrain": "05:33",
+            "lastTrain": "23:14"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:49",
+            "lastTrain": "23:14"
+          }
+        }
+      }
+    ]
+  }
 }

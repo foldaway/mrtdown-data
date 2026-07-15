@@ -24,5 +24,43 @@
     "yishun-pond-park",
     "hometeamns-khatib"
   ],
-  "townId": "yishun"
+  "townId": "yishun",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:24",
+            "lastTrain": "00:26"
+          },
+          "saturday": {
+            "firstTrain": "05:24",
+            "lastTrain": "00:26"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:47",
+            "lastTrain": "00:26"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:26",
+            "lastTrain": "23:22"
+          },
+          "saturday": {
+            "firstTrain": "05:26",
+            "lastTrain": "23:22"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:57",
+            "lastTrain": "23:22"
+          }
+        }
+      }
+    ]
+  }
 }

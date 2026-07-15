@@ -31,5 +31,77 @@
     "paya-lebar-square",
     "geylang-serai-market"
   ],
-  "townId": "geylang"
+  "townId": "geylang",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "EWL_MAIN_W",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:47",
+            "lastTrain": "23:43"
+          },
+          "saturday": {
+            "firstTrain": "05:47",
+            "lastTrain": "23:43"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:13",
+            "lastTrain": "23:43"
+          }
+        }
+      },
+      {
+        "serviceId": "EWL_MAIN_E",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:12",
+            "lastTrain": "00:22"
+          },
+          "saturday": {
+            "firstTrain": "06:12",
+            "lastTrain": "00:22"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:39",
+            "lastTrain": "00:22"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:40",
+            "lastTrain": "23:49"
+          },
+          "saturday": {
+            "firstTrain": "05:40",
+            "lastTrain": "23:49"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:07",
+            "lastTrain": "23:49"
+          }
+        }
+      },
+      {
+        "serviceId": "CCL_MAIN_CCW",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:40",
+            "lastTrain": "23:04"
+          },
+          "saturday": {
+            "firstTrain": "05:40",
+            "lastTrain": "23:04"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:07",
+            "lastTrain": "23:04"
+          }
+        }
+      }
+    ]
+  }
 }

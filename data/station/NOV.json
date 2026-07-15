@@ -24,5 +24,43 @@
     "velocity-novena-square",
     "novena-church"
   ],
-  "townId": "novena"
+  "townId": "novena",
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "NSL_MAIN_N",
+        "times": {
+          "weekday": {
+            "firstTrain": "06:01",
+            "lastTrain": "00:07"
+          },
+          "saturday": {
+            "firstTrain": "06:16",
+            "lastTrain": "00:07"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:22",
+            "lastTrain": "00:07"
+          }
+        }
+      },
+      {
+        "serviceId": "NSL_MAIN_S",
+        "times": {
+          "weekday": {
+            "firstTrain": "05:44",
+            "lastTrain": "23:41"
+          },
+          "saturday": {
+            "firstTrain": "05:44",
+            "lastTrain": "23:41"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "06:08",
+            "lastTrain": "23:41"
+          }
+        }
+      }
+    ]
+  }
 }
