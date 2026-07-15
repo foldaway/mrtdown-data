@@ -94,11 +94,11 @@
             },
             "operatingHours": {
                 "weekdays": {
-                    "start": "04:59",
+                    "start": "05:05",
                     "end": "00:55"
                 },
                 "weekends": {
-                    "start": "05:18",
+                    "start": "05:24",
                     "end": "00:55"
                 }
             }

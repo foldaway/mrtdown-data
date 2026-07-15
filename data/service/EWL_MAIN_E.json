@@ -1061,12 +1061,12 @@
             },
             "operatingHours": {
                 "weekdays": {
-                    "start": "05:14",
-                    "end": "00:46"
+                    "start": "05:16",
+                    "end": "00:37"
                 },
                 "weekends": {
                     "start": "05:42",
-                    "end": "00:46"
+                    "end": "00:37"
                 }
             }
         }

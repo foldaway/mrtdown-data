@@ -234,12 +234,12 @@
             },
             "operatingHours": {
                 "weekdays": {
-                    "start": "05:27",
-                    "end": "00:45"
+                    "start": "05:18",
+                    "end": "00:40"
                 },
                 "weekends": {
-                    "start": "05:47",
-                    "end": "00:45"
+                    "start": "05:38",
+                    "end": "00:40"
                 }
             }
         }

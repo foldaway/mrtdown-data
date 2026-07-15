@@ -323,12 +323,12 @@
             },
             "operatingHours": {
                 "weekdays": {
-                    "start": "05:39",
-                    "end": "23:25"
+                    "start": "05:33",
+                    "end": "00:30"
                 },
                 "weekends": {
-                    "start": "05:55",
-                    "end": "23:45"
+                    "start": "05:53",
+                    "end": "00:30"
                 }
             }
         }
