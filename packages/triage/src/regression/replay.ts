@@ -378,10 +378,14 @@ function normalizedEvidenceForCase(regressionCase: RegressionCase): {
     .setZone('Asia/Singapore')
     .toISO();
   assert(createdAt != null, 'Expected valid createdAt');
+  const normalizedContent = {
+    ...regressionCase.input.content,
+    createdAt,
+  };
 
   return {
     ts: createdAt,
-    text: formatContentTextForIngest(regressionCase.input.content),
+    text: formatContentTextForIngest(normalizedContent),
   };
 }
 

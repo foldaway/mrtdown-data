@@ -215,4 +215,43 @@ describe('regression replay', () => {
       await rm(dataDir, { recursive: true, force: true });
     }
   });
+
+  test('formats ingest-content replay text after timezone normalization', async () => {
+    const triage = vi.fn().mockResolvedValue({
+      result: { kind: 'irrelevant-content' },
+    });
+    const regressionCase: RegressionCase = {
+      ...ignoreCase,
+      input: {
+        kind: 'ingest-content',
+        content: {
+          source: 'crowd-report',
+          reportId: 'accepted-20260523-0903-dtl-001',
+          text: 'Several commuters report delays on the DTL.',
+          createdAt: '2026-05-23T01:04:00Z',
+          observedAt: '2026-05-23T01:03:00Z',
+          reportCount: 4,
+          url: 'https://www.mrtdown.org/crowd-reports/accepted-20260523-0903-dtl-001',
+        },
+      },
+    };
+
+    await replayRegressionCase(regressionCase, {
+      dataDir: FIXTURE_DATA_DIR,
+      dependencies: {
+        extractClaimsFromNewEvidence: vi.fn(),
+        triageNewEvidence: triage,
+      },
+    });
+
+    expect(triage).toHaveBeenCalledWith({
+      newEvidence: {
+        ts: '2026-05-23T09:04:00.000+08:00',
+        text: expect.stringContaining(
+          'Accepted at: 2026-05-23T09:04:00.000+08:00',
+        ),
+      },
+      repo: expect.anything(),
+    });
+  });
 });
