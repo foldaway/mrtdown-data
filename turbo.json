@@ -15,7 +15,8 @@
       ],
       "inputs": [
         "$TURBO_DEFAULT$",
-        "$TURBO_ROOT$/fixtures/ingest/*.json"
+        "$TURBO_ROOT$/fixtures/ingest/*.json",
+        "$TURBO_ROOT$/fixtures/triage-regressions/*.json"
       ],
       "outputs": []
     }
