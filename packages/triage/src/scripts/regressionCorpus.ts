@@ -4,6 +4,7 @@ import {
   loadRegressionCorpus,
 } from '../regression/corpus.js';
 import { replayRegressionCase } from '../regression/replay.js';
+import { withConsoleLogRedirectedToStderr } from './consoleOutput.js';
 import { parseRegressionCorpusArgs } from './regressionCorpusArgs.js';
 
 const usage = `
@@ -57,10 +58,16 @@ if (args.replay) {
   console.error(
     `[triage:regressions] Replaying ${cases.length} case(s) with paid model calls.`,
   );
-  const reports = [];
-  for (const regressionCase of cases) {
-    reports.push(await replayRegressionCase(regressionCase));
-  }
+  const runReplays = async () => {
+    const reports = [];
+    for (const regressionCase of cases) {
+      reports.push(await replayRegressionCase(regressionCase));
+    }
+    return reports;
+  };
+  const reports = args.json
+    ? await withConsoleLogRedirectedToStderr(runReplays)
+    : await runReplays();
 
   if (args.json) {
     console.log(JSON.stringify(reports, null, 2));
