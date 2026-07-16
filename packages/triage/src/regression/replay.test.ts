@@ -1,5 +1,6 @@
-import { access } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { FileStore, MRTDownRepository } from '@mrtdown/fs';
 import { describe, expect, test, vi } from 'vitest';
 import type { RegressionCase } from './case.js';
 import {
@@ -158,6 +159,31 @@ describe('regression replay', () => {
       expect(materialized.dataDir).not.toBe(
         resolve(import.meta.dirname, '../../../../data'),
       );
+    } finally {
+      await materialized.cleanup();
+    }
+  });
+
+  test('normalizes legacy station-code timestamps in historical data', async () => {
+    const materialized = await materializeDataAtRevision(
+      '065b569402de01e80935e7474351ae7991fb5622',
+    );
+
+    try {
+      const adm = JSON.parse(
+        await readFile(
+          resolve(materialized.dataDir, 'station/ADM.json'),
+          'utf8',
+        ),
+      ) as {
+        stationCodes: Array<{ startedAt: string }>;
+      };
+      expect(adm.stationCodes[0]?.startedAt).toBe('1996-02-10');
+
+      const repo = new MRTDownRepository({
+        store: new FileStore(materialized.dataDir),
+      });
+      expect(repo.stations.list()).toHaveLength(231);
     } finally {
       await materialized.cleanup();
     }

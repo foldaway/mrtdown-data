@@ -1,5 +1,5 @@
 import { execFile } from 'node:child_process';
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { promisify } from 'node:util';
@@ -146,6 +146,7 @@ export async function materializeDataAtRevision(
       'data',
     ]);
     await execFileAsync('tar', ['-xf', archivePath, '-C', root]);
+    await normalizeLegacyStationCodeDates(join(root, 'data'));
   } catch (error) {
     await rm(root, { force: true, recursive: true });
     throw error;
@@ -157,6 +158,52 @@ export async function materializeDataAtRevision(
       await rm(root, { force: true, recursive: true });
     },
   };
+}
+
+async function normalizeLegacyStationCodeDates(dataDir: string): Promise<void> {
+  const stationDir = join(dataDir, 'station');
+
+  for (const fileName of await readdir(stationDir)) {
+    if (!fileName.endsWith('.json')) {
+      continue;
+    }
+
+    const filePath = join(stationDir, fileName);
+    const station = JSON.parse(await readFile(filePath, 'utf8')) as {
+      stationCodes?: Array<{
+        endedAt?: unknown;
+        startedAt?: unknown;
+      }>;
+    };
+    let changed = false;
+
+    for (const stationCode of station.stationCodes ?? []) {
+      const startedAt = normalizeLegacyMidnightUtcDate(stationCode.startedAt);
+      if (startedAt !== stationCode.startedAt) {
+        stationCode.startedAt = startedAt;
+        changed = true;
+      }
+
+      const endedAt = normalizeLegacyMidnightUtcDate(stationCode.endedAt);
+      if (endedAt !== stationCode.endedAt) {
+        stationCode.endedAt = endedAt;
+        changed = true;
+      }
+    }
+
+    if (changed) {
+      await writeFile(filePath, `${JSON.stringify(station, null, 2)}\n`);
+    }
+  }
+}
+
+function normalizeLegacyMidnightUtcDate(value: unknown): unknown {
+  if (typeof value !== 'string') {
+    return value;
+  }
+
+  const match = /^(\d{4}-\d{2}-\d{2})T00:00:00(?:\.000)?Z$/.exec(value);
+  return match?.[1] ?? value;
 }
 
 export function evaluateRegressionResult(
