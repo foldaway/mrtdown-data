@@ -94,13 +94,28 @@ For facility entities:
 - service must be null
 
 ### scopes.service
-- For full line/service statements ("train service resumed", "line closed"), use:
+- Scope is the geographic extent asserted by this evidence item. It is not the
+  full route merely because the evidence names a line or service.
+- Use service.whole only when the evidence explicitly asserts whole-service
+  coverage, for example "entire line", "all stations", "system-wide", or
+  "no train service on the Circle Line".
+- For explicit full line/service statements, use:
   - [{ type: "service.whole" }]
 - For "between A and B", use service.segment with station IDs:
   - { type: "service.segment", fromStationId, toStationId }
 - For station-specific service impact at one station, use:
   - { type: "service.point", stationId }
-- For service entities, scopes.service should generally be non-null.
+- If the evidence contains no geographic assertion, set scopes.service to null.
+  This includes generic headlines, follow-up updates, and clearance messages
+  that name a line but do not say the whole line is affected.
+- Do not infer service.whole from phrases such as "train services affected",
+  "minor delay on the Circle Line", "fault cleared", or "service resumed".
+- Do not reconstruct or guess a segment that is absent from the evidence.
+  Downstream state handling can preserve a previously established scope.
+- Example: "Circle Line train services affected by minor delay on 15 Jun
+  evening" -> scopes.service: null.
+- Example: "[ISL] CLEARED: Fault has been cleared. Train service has resumed."
+  -> scopes.service: null.
 - service.segment is directional: fromStationId -> toStationId is an ordered path, not an unordered pair.
 - Validate segment orientation against the specific service path returned by findServices.
 - For bidirectional output, create one claim per directional service and set segment endpoints to match each service direction (reverse endpoints for reverse direction service).

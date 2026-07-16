@@ -174,7 +174,7 @@ describe('extractClaimsFromNewEvidence', () => {
                   facility: null,
                 },
                 scopes: {
-                  service: [{ type: 'service.whole' }],
+                  service: null,
                 },
                 statusSignal: 'cleared',
                 timeHints: {
@@ -194,7 +194,7 @@ describe('extractClaimsFromNewEvidence', () => {
                 },
                 statusSignal: 'cleared',
                 scopes: {
-                  service: [{ type: 'service.whole' }],
+                  service: null,
                 },
                 timeHints: {
                   kind: 'end-only',
