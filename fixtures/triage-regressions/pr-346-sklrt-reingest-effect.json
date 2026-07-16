@@ -87,6 +87,16 @@
             "kind": "no-service"
           }
         }
+      },
+      {
+        "kind": "claim",
+        "presence": "forbidden",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "SKLRT_W_CW"
+          }
+        }
       }
     ]
   },
