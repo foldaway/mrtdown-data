@@ -1,4 +1,4 @@
-import { mkdtempSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
@@ -130,11 +130,15 @@ describe('regression corpus', () => {
       rationale: 'Test fixture.',
     };
 
-    writeFileSync(join(corpusDir, 'a.json'), JSON.stringify(fixture));
-    writeFileSync(join(corpusDir, 'b.json'), JSON.stringify(fixture));
+    try {
+      writeFileSync(join(corpusDir, 'a.json'), JSON.stringify(fixture));
+      writeFileSync(join(corpusDir, 'b.json'), JSON.stringify(fixture));
 
-    expect(() => loadRegressionCorpus(corpusDir)).toThrow(
-      'Duplicate regression case id: duplicate-case',
-    );
+      expect(() => loadRegressionCorpus(corpusDir)).toThrow(
+        'Duplicate regression case id: duplicate-case',
+      );
+    } finally {
+      rmSync(corpusDir, { recursive: true, force: true });
+    }
   });
 });
