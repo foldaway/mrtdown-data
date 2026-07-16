@@ -369,6 +369,52 @@ describe('enumerateEstimatedStationDepartures', () => {
     ]);
   });
 
+  test('rejects a window shorter than its minimum headway', () => {
+    const schedule = generateEstimatedStationFrequencySchedule({
+      serviceId: 'NEL_MAIN_N',
+      revision: {
+        ...revision,
+        path: { stations: [{ stationId: 'HBF', displayCode: 'NE1' }] },
+      },
+      station: station('HBF', {
+        saturday: { firstTrain: '06:00', lastTrain: '06:02' },
+      }),
+      calendar: 'saturday',
+    });
+
+    expect(() => enumerateEstimatedStationDepartures(schedule)).toThrow(
+      'Estimated frequency window 06:00:00-06:02:00 cannot satisfy its 300-420 second headway range',
+    );
+  });
+
+  test('selects another interval count when quantization invalidates the ideal', () => {
+    const schedule = generateEstimatedStationFrequencySchedule({
+      serviceId: 'NEL_MAIN_N',
+      revision: {
+        path: { stations: [{ stationId: 'HBF', displayCode: 'NE1' }] },
+        estimatedFrequency: {
+          ...estimatedFrequency,
+          defaultHeadway: {
+            minSeconds: 190,
+            maxSeconds: 310,
+            representativeSeconds: 200,
+          },
+          periods: [],
+        },
+      },
+      station: station('HBF', {
+        saturday: { firstTrain: '06:00', lastTrain: '06:10' },
+      }),
+      calendar: 'saturday',
+    });
+
+    expect(enumerateEstimatedStationDepartures(schedule)).toMatchObject([
+      { time: '06:00:00', basis: 'first_train' },
+      { time: '06:05:00', basis: 'frequency_estimate' },
+      { time: '06:10:00', basis: 'last_train' },
+    ]);
+  });
+
   test('uses service-day times after midnight', () => {
     const schedule = generateEstimatedStationFrequencySchedule({
       serviceId: 'NEL_MAIN_N',

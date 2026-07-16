@@ -393,26 +393,53 @@ function estimatedDepartureSeconds(
   const maximumIntervalCount = Math.floor(
     duration / window.headwayRangeSeconds.min,
   );
-  const intervalCount =
+  const candidateIntervalCounts =
     maximumIntervalCount >= minimumIntervalCount
-      ? Math.min(
-          Math.max(idealIntervalCount, minimumIntervalCount),
-          maximumIntervalCount,
+      ? Array.from(
+          {
+            length: maximumIntervalCount - minimumIntervalCount + 1,
+          },
+          (_, index) => minimumIntervalCount + index,
+        ).sort(
+          (first, second) =>
+            Math.abs(first - idealIntervalCount) -
+              Math.abs(second - idealIntervalCount) || first - second,
         )
-      : idealIntervalCount;
-  const departureCount = includeEnd ? intervalCount + 1 : intervalCount;
+      : [];
 
-  return Array.from({ length: departureCount }, (_, index) => {
-    if (index === intervalCount) {
-      return window.endSeconds;
+  for (const intervalCount of candidateIntervalCounts) {
+    const offsets = Array.from({ length: intervalCount + 1 }, (_, index) => {
+      if (index === intervalCount) {
+        return duration;
+      }
+
+      const unquantizedOffset = (duration * index) / intervalCount;
+      return (
+        Math.round(unquantizedOffset / ESTIMATED_DEPARTURE_QUANTUM_SECONDS) *
+        ESTIMATED_DEPARTURE_QUANTUM_SECONDS
+      );
+    });
+    const gapsAreValid = offsets.slice(0, -1).every((offset, index) => {
+      const nextOffset = offsets[index + 1];
+      if (nextOffset === undefined) {
+        return false;
+      }
+
+      const gap = nextOffset - offset;
+      return (
+        gap >= window.headwayRangeSeconds.min &&
+        gap <= window.headwayRangeSeconds.max
+      );
+    });
+    if (gapsAreValid) {
+      const emittedOffsets = includeEnd ? offsets : offsets.slice(0, -1);
+      return emittedOffsets.map((offset) => window.startSeconds + offset);
     }
+  }
 
-    const unquantizedOffset = (duration * index) / intervalCount;
-    const offset =
-      Math.round(unquantizedOffset / ESTIMATED_DEPARTURE_QUANTUM_SECONDS) *
-      ESTIMATED_DEPARTURE_QUANTUM_SECONDS;
-    return window.startSeconds + offset;
-  });
+  throw new Error(
+    `Estimated frequency window ${window.startTime}-${window.endTime} cannot satisfy its ${window.headwayRangeSeconds.min}-${window.headwayRangeSeconds.max} second headway range after ${ESTIMATED_DEPARTURE_QUANTUM_SECONDS}-second quantization`,
+  );
 }
 
 /**
