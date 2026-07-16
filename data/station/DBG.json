@@ -60,7 +60,7 @@
         }
       },
       {
-        "serviceId": "CCL_MAIN_CCW",
+        "serviceId": "CCL_BRANCH_CCW",
         "times": {
           "weekday": {
             "firstTrain": "05:37",

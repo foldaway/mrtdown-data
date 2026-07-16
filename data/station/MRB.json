@@ -66,7 +66,7 @@
         }
       },
       {
-        "serviceId": "CCL_EXT_CCW",
+        "serviceId": "CCL_LOOP_CCW",
         "times": {
           "weekday": {
             "firstTrain": "05:59",

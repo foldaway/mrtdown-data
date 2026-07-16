@@ -34,7 +34,7 @@
   "firstLastTrain": {
     "services": [
       {
-        "serviceId": "CCL_MAIN_CCW",
+        "serviceId": "CCL_BRANCH_CCW",
         "times": {
           "weekday": {
             "firstTrain": "05:28",
@@ -51,7 +51,7 @@
         }
       },
       {
-        "serviceId": "CCL_MAIN_CW",
+        "serviceId": "CCL_BRANCH_CW",
         "times": {
           "weekday": {
             "firstTrain": "05:34",
@@ -112,7 +112,8 @@
         "label": "A",
         "lineId": "CCL",
         "serviceIds": [
-          "CCL_MAIN_CCW"
+          "CCL_BRANCH_CCW",
+          "CCL_LOOP_CCW"
         ],
         "accessPoints": []
       },
@@ -121,7 +122,8 @@
         "label": "B",
         "lineId": "CCL",
         "serviceIds": [
-          "CCL_MAIN_CW"
+          "CCL_BRANCH_CW",
+          "CCL_LOOP_CW"
         ],
         "accessPoints": []
       },
