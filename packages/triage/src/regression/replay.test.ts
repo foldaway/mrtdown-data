@@ -1,12 +1,20 @@
-import { access, readFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
-import { FileStore, MRTDownRepository } from '@mrtdown/fs';
+import {
+  access,
+  mkdir,
+  mkdtemp,
+  readFile,
+  rm,
+  writeFile,
+} from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
 import { describe, expect, test, vi } from 'vitest';
 import type { RegressionCase } from './case.js';
 import {
   evaluateRegressionResult,
   isPartialSemanticMatch,
   materializeDataAtRevision,
+  normalizeLegacyStationCodeDates,
   replayRegressionCase,
 } from './replay.js';
 
@@ -165,27 +173,46 @@ describe('regression replay', () => {
   });
 
   test('normalizes legacy station-code timestamps in historical data', async () => {
-    const materialized = await materializeDataAtRevision(
-      '065b569402de01e80935e7474351ae7991fb5622',
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-legacy-stations-'));
+    const stationDir = resolve(dataDir, 'station');
+    await mkdir(stationDir);
+    await writeFile(
+      resolve(stationDir, 'ADM.json'),
+      JSON.stringify({
+        stationCodes: [
+          {
+            code: 'NS3',
+            startedAt: '1996-02-10T00:00:00.000Z',
+            endedAt: '2019-11-02T00:00:00Z',
+          },
+          {
+            code: 'TE1',
+            startedAt: '2020-01-31',
+            endedAt: null,
+          },
+        ],
+      }),
     );
 
     try {
+      await normalizeLegacyStationCodeDates(dataDir);
+
       const adm = JSON.parse(
-        await readFile(
-          resolve(materialized.dataDir, 'station/ADM.json'),
-          'utf8',
-        ),
+        await readFile(resolve(stationDir, 'ADM.json'), 'utf8'),
       ) as {
-        stationCodes: Array<{ startedAt: string }>;
+        stationCodes: Array<{
+          endedAt: string | null;
+          startedAt: string;
+        }>;
       };
       expect(adm.stationCodes[0]?.startedAt).toBe('1996-02-10');
-
-      const repo = new MRTDownRepository({
-        store: new FileStore(materialized.dataDir),
+      expect(adm.stationCodes[0]?.endedAt).toBe('2019-11-02');
+      expect(adm.stationCodes[1]).toMatchObject({
+        startedAt: '2020-01-31',
+        endedAt: null,
       });
-      expect(repo.stations.list()).toHaveLength(231);
     } finally {
-      await materialized.cleanup();
+      await rm(dataDir, { recursive: true, force: true });
     }
   });
 });

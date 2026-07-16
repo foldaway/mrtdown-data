@@ -160,7 +160,9 @@ export async function materializeDataAtRevision(
   };
 }
 
-async function normalizeLegacyStationCodeDates(dataDir: string): Promise<void> {
+export async function normalizeLegacyStationCodeDates(
+  dataDir: string,
+): Promise<void> {
   const stationDir = join(dataDir, 'station');
 
   for (const fileName of await readdir(stationDir)) {
