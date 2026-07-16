@@ -15,10 +15,16 @@ an inspectable rejection record.
 `automated-*` branch, validates the resulting data, and opens one accumulating
 pull request for review.
 
-That review step is still catching material errors:
+That review step is still catching material errors, but manual edits are not
+automatically semantic ground truth:
 
 - [PR #301](https://github.com/foldaway/mrtdown-data/pull/301) was manually
-  corrected from `no-service` to `reduced-service`.
+  changed from `no-service` to `reduced-service`. A later service-model review
+  found the generated result was correct: the closed inner and available outer
+  loops are separate services.
+- Sengkang and Punggol LRT service display names now use the operator's
+  Inner/Outer Loop terminology while retaining the stable clockwise and
+  counter-clockwise service IDs.
 - [PR #319](https://github.com/foldaway/mrtdown-data/pull/319) removed
   `service.whole` scope setters emitted by a generic clearance update.
 - [PR #316](https://github.com/foldaway/mrtdown-data/pull/316) needed a
