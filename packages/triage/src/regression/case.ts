@@ -50,7 +50,7 @@ const IngestContentInputSchema = z.object({
 const ModelEvidenceInputSchema = z.object({
   kind: z.literal('model-evidence'),
   evidence: z.object({
-    ts: z.string(),
+    ts: z.iso.datetime({ offset: true }),
     text: z.string().min(1),
   }),
 });
@@ -103,6 +103,18 @@ const RegressionResultSchema = z.object({
   assertions: z.array(RegressionAssertionSchema).default([]),
 });
 
+const ExpectedRegressionResultSchema = RegressionResultSchema.superRefine(
+  (result, context) => {
+    if (result.outcome.kind === 'create' && result.outcome.issueId != null) {
+      context.addIssue({
+        code: 'custom',
+        message: 'Expected create outcomes cannot specify issueId',
+        path: ['outcome', 'issueId'],
+      });
+    }
+  },
+);
+
 export const RegressionCaseSchema = z.object({
   id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   title: z.string().min(1),
@@ -111,7 +123,7 @@ export const RegressionCaseSchema = z.object({
   source: RegressionSourceSchema,
   input: RegressionInputSchema,
   observed: RegressionResultSchema,
-  expected: RegressionResultSchema,
+  expected: ExpectedRegressionResultSchema,
   rationale: z.string().min(1),
 });
 
