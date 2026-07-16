@@ -20,6 +20,7 @@ describe('regression corpus', () => {
       expect.arrayContaining([
         expect.objectContaining({
           id: 'pr-301-sklrt-single-loop-effect',
+          role: 'positive-control',
           labels: expect.arrayContaining(['effect']),
         }),
         expect.objectContaining({
@@ -29,6 +30,42 @@ describe('regression corpus', () => {
         expect.objectContaining({
           id: 'pr-343-dtl-recurring-period-positive-control',
           role: 'positive-control',
+        }),
+      ]),
+    );
+  });
+
+  test('models the closed SKLRT loop separately from the unaffected loop', () => {
+    const [regressionCase] = filterRegressionCases(loadRegressionCorpus(), {
+      caseId: 'pr-301-sklrt-single-loop-effect',
+    });
+
+    expect(regressionCase.expected.assertions).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          kind: 'claim',
+          presence: 'required',
+          match: expect.objectContaining({
+            entity: {
+              type: 'service',
+              serviceId: 'SKLRT_W_CCW',
+            },
+            effect: {
+              service: {
+                kind: 'no-service',
+              },
+            },
+          }),
+        }),
+        expect.objectContaining({
+          kind: 'claim',
+          presence: 'forbidden',
+          match: {
+            entity: {
+              type: 'service',
+              serviceId: 'SKLRT_W_CW',
+            },
+          },
         }),
       ]),
     );

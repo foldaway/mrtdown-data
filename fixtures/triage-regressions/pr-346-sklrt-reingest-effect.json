@@ -1,7 +1,7 @@
 {
   "id": "pr-346-sklrt-reingest-effect",
-  "title": "Repeated single-loop alert must not regress the corrected effect",
-  "role": "regression",
+  "title": "Repeated single-loop alert restores service-level no-service",
+  "role": "positive-control",
   "labels": [
     "effect",
     "state-transition"
@@ -40,6 +40,16 @@
             "kind": "no-service"
           }
         }
+      },
+      {
+        "kind": "claim",
+        "presence": "forbidden",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "SKLRT_W_CW"
+          }
+        }
       }
     ]
   },
@@ -59,14 +69,14 @@
           },
           "effect": {
             "service": {
-              "kind": "reduced-service"
+              "kind": "no-service"
             }
           }
         }
       },
       {
         "kind": "impact-event",
-        "presence": "forbidden",
+        "presence": "required",
         "match": {
           "type": "service_effects.set",
           "entity": {
@@ -80,5 +90,5 @@
       }
     ]
   },
-  "rationale": "The same operational pattern corrected in PR #301 was re-ingested and changed canonical state back to no-service. Repeated evidence must preserve the reduced-service interpretation."
+  "rationale": "The repeated alert correctly restores no-service for the closed SKLRT_W_CCW service after PR #301 had manually changed it to reduced-service. SKLRT_W_CW remains a separate unaffected service."
 }

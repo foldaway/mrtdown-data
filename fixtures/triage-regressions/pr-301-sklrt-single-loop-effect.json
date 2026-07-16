@@ -1,7 +1,7 @@
 {
   "id": "pr-301-sklrt-single-loop-effect",
-  "title": "Single-loop operation must remain reduced service",
-  "role": "regression",
+  "title": "Closed inner-loop service is no-service while the outer loop remains normal",
+  "role": "positive-control",
   "labels": [
     "effect"
   ],
@@ -58,7 +58,7 @@
           },
           "effect": {
             "service": {
-              "kind": "reduced-service"
+              "kind": "no-service"
             }
           }
         }
@@ -69,16 +69,11 @@
         "match": {
           "entity": {
             "type": "service",
-            "serviceId": "SKLRT_W_CCW"
-          },
-          "effect": {
-            "service": {
-              "kind": "no-service"
-            }
+            "serviceId": "SKLRT_W_CW"
           }
         }
       }
     ]
   },
-  "rationale": "The inner loop is unavailable, but the outer loop and supporting transport remain available. Review changed the generated no-service effect to reduced-service."
+  "rationale": "SKLRT_W_CCW and SKLRT_W_CW are separate services. The inner-loop service is closed and therefore has no service; the available outer-loop service remains normal and should receive no effect claim. The manual reduced-service correction in PR #301 was semantically incorrect."
 }
