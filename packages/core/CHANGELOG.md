@@ -1,5 +1,11 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.29
+
+### Patch Changes
+
+- 949f110: Add source-backed service frequency profiles, station-level frequency windows, and enumerated estimated departures.
+
 ## 2.0.0-alpha.28
 
 ### Major Changes

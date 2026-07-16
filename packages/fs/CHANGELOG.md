@@ -1,5 +1,12 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.29
+
+### Patch Changes
+
+- Updated dependencies [949f110]
+  - @mrtdown/core@2.0.0-alpha.29
+
 ## 2.0.0-alpha.28
 
 ### Patch Changes

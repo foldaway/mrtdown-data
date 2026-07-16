@@ -1,6 +1,6 @@
 {
   "name": "@mrtdown/fs",
-  "version": "2.0.0-alpha.28",
+  "version": "2.0.0-alpha.29",
   "description": "File-backed repositories and writers for MRTDown data",
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
   "bugs": {
@@ -33,7 +33,7 @@
     "test": "node ../../scripts/run-fixture-command.mjs --build @mrtdown/core -- npm exec -- vitest --run"
   },
   "dependencies": {
-    "@mrtdown/core": "2.0.0-alpha.28",
+    "@mrtdown/core": "2.0.0-alpha.29",
     "fuse.js": "^7.1.0",
     "hast-util-to-html": "^9.0.5",
     "json-nd": "^1.0.0",
