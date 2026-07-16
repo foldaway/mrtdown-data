@@ -10,7 +10,33 @@ provider.
 ```bash
 npm run build:triage
 npm run test:triage
+npm run triage:regressions -- --list
 ```
+
+## Historical Regression Corpus
+
+`fixtures/triage-regressions` contains checked-in cases derived from corrected,
+rejected, and successful ingestion pull requests. Each case records its source
+revision, normalized input, observed outcome, accepted semantic outcome, and
+failure-taxonomy labels.
+
+The corpus command is deterministic and read-only. It does not call a model or
+write to canonical `data/`.
+
+```bash
+npm run triage:regressions -- --list
+npm run triage:regressions -- --case pr-346-sklrt-reingest-effect
+npm run triage:regressions -- --label relevance --json
+OPENAI_API_KEY=... npm run triage:regressions -- \
+  --case pr-346-sklrt-reingest-effect --replay
+```
+
+`--replay` is explicit because it makes paid model calls. It materializes the
+recorded base revision into a temporary data root, runs current issue triage,
+claim extraction, normalization, and impact computation, compares the result
+with the semantic expectation, and deletes the temporary data afterward.
+Title generation, translation, persistence, and workflow replay remain separate
+future work.
 
 ## Crowd Reports
 

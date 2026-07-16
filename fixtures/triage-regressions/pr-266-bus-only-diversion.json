@@ -1,0 +1,38 @@
+{
+  "id": "pr-266-bus-only-diversion",
+  "title": "Bus-only diversion is outside the rail issue domain",
+  "role": "regression",
+  "labels": [
+    "relevance"
+  ],
+  "source": {
+    "kind": "pull-request",
+    "number": 266,
+    "url": "https://github.com/foldaway/mrtdown-data/pull/266",
+    "baseRevision": "8cd47722bc3ab487ab8649ea4b4afa494c97e3e2",
+    "candidateRevision": "25774404547219260fc283f6b95b24859fb0cfdc",
+    "resolutionRevision": null
+  },
+  "input": {
+    "kind": "model-evidence",
+    "evidence": {
+      "ts": "2026-05-26T06:48:44.000+00:00",
+      "text": "14:23-Due to vehicle breakdown along Sims Avenue East, at the junction with Chai Chee Drive after bus stop BS 83081, bus service 26 is diverted."
+    }
+  },
+  "observed": {
+    "outcome": {
+      "kind": "create",
+      "issueType": "disruption",
+      "issueId": "2026-05-26-bus-service-26-vehicle-breakdown-sims-avenue-east-chai-chee-drive-bs-83081"
+    },
+    "assertions": []
+  },
+  "expected": {
+    "outcome": {
+      "kind": "ignore"
+    },
+    "assertions": []
+  },
+  "rationale": "The evidence describes a bus route diversion and has no MRT, LRT, rail service, or station-facility impact."
+}

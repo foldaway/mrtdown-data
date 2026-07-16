@@ -30,6 +30,8 @@ npm run lint
   for evidence classification.
 - `fixtures/generated/data`: on-demand generated fixture data for tests and
   examples.
+- `fixtures/triage-regressions`: checked-in historical ingestion cases and
+  semantic expectations.
 - `packages/core`: shared schemas, period helpers, and state helpers.
 - `packages/ingest-contracts`: webhook payload schemas shared with external
   evidence producers.
@@ -51,6 +53,7 @@ npm run lint               # Run Biome checks
 npm run check              # Run lint, boundary checks, and docs link checks
 npm run data:validate      # Validate canonical data
 npm run fixtures:validate  # Generate and validate fixture data
+npm run triage:regressions -- --list  # List historical ingestion cases
 npm run pages:build        # Build the GitHub Pages static data artifact
 ```
 
@@ -153,6 +156,19 @@ npm run test:eval
 
 Run evals only when the package's documented environment variables are set and
 the paid model calls are intentional.
+
+Historical corrected, rejected, and successful ingestion outcomes are captured
+as a deterministic regression corpus:
+
+```bash
+npm run triage:regressions -- --list
+npm run triage:regressions -- --case pr-346-sklrt-reingest-effect
+```
+
+The corpus command validates and inspects cases without calling a model or
+writing canonical data. Adding `--replay` makes explicit paid model calls and
+runs semantic replay against a temporary copy of the recorded base revision;
+canonical `data/` remains untouched.
 
 ## Contributing Notes
 

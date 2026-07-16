@@ -154,6 +154,19 @@ serialization differences.
 Add a command that lists the corpus and can replay one case or a filtered group
 without writing to canonical `data/`.
 
+Implementation status:
+
+- the checked-in case schema and initial historical corpus are present;
+- deterministic list, case-filter, and taxonomy-label-filter commands are
+  available through `npm run triage:regressions`;
+- the command validates and inspects cases without model calls or canonical
+  writes;
+- explicit `--replay` runs paid issue triage, claim extraction, normalization,
+  and impact computation against a temporary copy of the recorded base
+  revision;
+- title generation, translation, persistence, repeated stability runs, and
+  workflow replay remain Phase 2 work.
+
 ## Phase 2: Add Full-Pipeline Historical Replay
 
 The existing replay tools operate after issue triage and mostly reconstruct

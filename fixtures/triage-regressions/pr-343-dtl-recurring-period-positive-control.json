@@ -1,0 +1,88 @@
+{
+  "id": "pr-343-dtl-recurring-period-positive-control",
+  "title": "DTL overnight service adjustment uses Friday start anchors",
+  "role": "positive-control",
+  "labels": [
+    "period"
+  ],
+  "source": {
+    "kind": "pull-request",
+    "number": 343,
+    "url": "https://github.com/foldaway/mrtdown-data/pull/343",
+    "baseRevision": "7c4fa7d3beb856eacc38d9b4060f7c0111ce161e",
+    "candidateRevision": "440ad9e33314890a70d054d94bc5a192bd4e65ff",
+    "resolutionRevision": "aa2d1e776fccf34201394b100747a6aad98e7418"
+  },
+  "input": {
+    "kind": "model-evidence",
+    "evidence": {
+      "ts": "2026-07-09T12:00:44.000+00:00",
+      "text": "[LTA EMERGENCY ALERT]\n23:30-DTL-Planned Service Adjustments. From 10 Jul to 5 Sep 2026, Downtown Line services will end at 11.30pm on Friday nights and commence at 8.30am on Saturday mornings. Please use alternative MRT lines and bus services."
+    }
+  },
+  "observed": {
+    "outcome": {
+      "kind": "update",
+      "issueId": "2026-07-10-dtl-weekend-service-adjustments"
+    },
+    "assertions": [
+      {
+        "kind": "impact-event",
+        "presence": "required",
+        "match": {
+          "type": "periods.set",
+          "periods": [
+            {
+              "kind": "recurring",
+              "frequency": "weekly",
+              "startAt": "2026-07-10T23:30:00+08:00",
+              "endAt": "2026-09-04T23:30:00+08:00",
+              "daysOfWeek": [
+                "FR"
+              ],
+              "timeWindow": {
+                "startAt": "23:30:00",
+                "endAt": "08:30:00"
+              },
+              "timeZone": "Asia/Singapore",
+              "excludedDates": null
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "expected": {
+    "outcome": {
+      "kind": "update",
+      "issueId": "2026-07-10-dtl-weekend-service-adjustments"
+    },
+    "assertions": [
+      {
+        "kind": "impact-event",
+        "presence": "required",
+        "match": {
+          "type": "periods.set",
+          "periods": [
+            {
+              "kind": "recurring",
+              "frequency": "weekly",
+              "startAt": "2026-07-10T23:30:00+08:00",
+              "endAt": "2026-09-04T23:30:00+08:00",
+              "daysOfWeek": [
+                "FR"
+              ],
+              "timeWindow": {
+                "startAt": "23:30:00",
+                "endAt": "08:30:00"
+              },
+              "timeZone": "Asia/Singapore",
+              "excludedDates": null
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "rationale": "The restricted window begins on Friday at 23:30 and ends Saturday at 08:30. Recurrence anchors use the impact start instant, with the last occurrence beginning Friday 4 September."
+}
