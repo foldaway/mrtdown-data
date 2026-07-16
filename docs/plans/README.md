@@ -6,6 +6,9 @@ plan.
 
 ## Active
 
+- [Direct-to-main ingestion reliability](active/direct-main-ingestion.md):
+  historical replay, semantic guards, canonical issue audits, shadow mode, and
+  staged removal of the automated ingestion PR queue.
 - [GTFS static and realtime support](active/gtfs-static-realtime.md):
   deterministic GTFS Static export, Pages publication, and GTFS Realtime
   evidence ingest boundaries.
