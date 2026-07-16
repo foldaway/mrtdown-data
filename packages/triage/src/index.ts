@@ -5,4 +5,7 @@ export * from './llm/functions/translate/index.js';
 export * from './llm/functions/triageNewEvidence/index.js';
 export * from './maintenance/reExtractAndReplay.js';
 export * from './maintenance/replayImpactEvents.js';
+export * from './regression/case.js';
+export * from './regression/corpus.js';
+export * from './regression/replay.js';
 export * from './scripts/reExtractAndReplayTargets.js';

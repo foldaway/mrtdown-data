@@ -2,10 +2,10 @@
     "id": "PGLRT_E_CCW",
     "lineId": "PGLRT",
     "name": {
-        "en-SG": "East Branch - Counter-Clockwise",
-        "zh-Hans": "东部支线 - 逆时针方向",
-        "ms": "Cawangan Timur - Arah Lawan Jam",
-        "ta": "கிழக்கு கிளை - எதிர் காலம் திசை"
+        "en-SG": "East Loop (Inner)",
+        "zh-Hans": "东部环线（内环）",
+        "ms": "Laluan Pusingan Timur (Dalaman)",
+        "ta": "கிழக்கு சுற்று (உள்)"
     },
     "revisions": [
         {

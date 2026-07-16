@@ -1,0 +1,38 @@
+{
+  "id": "pr-263-pest-control-news",
+  "title": "General pest-control news has no canonical operational impact",
+  "role": "regression",
+  "labels": [
+    "relevance"
+  ],
+  "source": {
+    "kind": "pull-request",
+    "number": 263,
+    "url": "https://github.com/foldaway/mrtdown-data/pull/263",
+    "baseRevision": "b02a4d3bd60fefc3de9e57f272f794b336f98028",
+    "candidateRevision": "a88c73b181327c2da410e95e275b212ccf46dc5b",
+    "resolutionRevision": null
+  },
+  "input": {
+    "kind": "model-evidence",
+    "evidence": {
+      "ts": "2026-05-25T03:31:19.000+00:00",
+      "text": "Title: SMRT to step up pest control measures at stations and depots after rat spotted on train\n\nArticle text: SMRT will step up pest control measures at stations and depots after a rat was spotted on a train."
+    }
+  },
+  "observed": {
+    "outcome": {
+      "kind": "create",
+      "issueType": "infra",
+      "issueId": "2026-05-25-smrt-pest-control-measures-rat-spotted-train-stations-depots"
+    },
+    "assertions": []
+  },
+  "expected": {
+    "outcome": {
+      "kind": "ignore"
+    },
+    "assertions": []
+  },
+  "rationale": "The article describes operator housekeeping and does not state an outage, degradation, service restriction, or affected station facility."
+}

@@ -1,0 +1,65 @@
+{
+  "id": "pr-319-generic-update-scope-expansion",
+  "title": "Generic follow-up news must not widen a segment to the whole line",
+  "role": "regression",
+  "labels": [
+    "scope",
+    "state-transition"
+  ],
+  "source": {
+    "kind": "pull-request",
+    "number": 319,
+    "url": "https://github.com/foldaway/mrtdown-data/pull/319",
+    "baseRevision": "0b3cb52fb33490c6354853445f435dca08af1ba5",
+    "candidateRevision": "b11c62c30152867eb81c3b0289680d03688f4454",
+    "resolutionRevision": "7af918ac577c74ab30f325686300e1e241a3c509"
+  },
+  "input": {
+    "kind": "model-evidence",
+    "evidence": {
+      "ts": "2026-06-16T04:43:19.000+00:00",
+      "text": "Title: Circle Line train services affected by ‘minor delay’ on 15 Jun evening."
+    }
+  },
+  "observed": {
+    "outcome": {
+      "kind": "update",
+      "issueId": "2026-06-15-ccl-minor-delay-lorong-chuan-to-bishan"
+    },
+    "assertions": [
+      {
+        "kind": "impact-event",
+        "presence": "required",
+        "match": {
+          "type": "service_scopes.set",
+          "serviceScopes": [
+            {
+              "type": "service.whole"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "expected": {
+    "outcome": {
+      "kind": "update",
+      "issueId": "2026-06-15-ccl-minor-delay-lorong-chuan-to-bishan"
+    },
+    "assertions": [
+      {
+        "kind": "impact-event",
+        "presence": "forbidden",
+        "match": {
+          "type": "service_scopes.set",
+          "serviceScopes": [
+            {
+              "type": "service.whole"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "rationale": "The evidence contains no new geographic claim. Review removed four service.whole setters that overwrote the previously extracted Lorong Chuan–Bishan segment."
+}

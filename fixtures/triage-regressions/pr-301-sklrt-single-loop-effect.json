@@ -1,0 +1,79 @@
+{
+  "id": "pr-301-sklrt-single-loop-effect",
+  "title": "Closed inner-loop service is no-service while the outer loop remains normal",
+  "role": "positive-control",
+  "labels": [
+    "effect"
+  ],
+  "source": {
+    "kind": "pull-request",
+    "number": 301,
+    "url": "https://github.com/foldaway/mrtdown-data/pull/301",
+    "baseRevision": "065b569402de01e80935e7474351ae7991fb5622",
+    "candidateRevision": "4cb1782f5e857f7e3c5fe935334234279059415d",
+    "resolutionRevision": "2b2af21f46670be290115e617a0b2458e8573a31"
+  },
+  "input": {
+    "kind": "model-evidence",
+    "evidence": {
+      "ts": "2026-06-12T08:56:29.000+00:00",
+      "text": "05:00-SK-Planned Service Adjustment. From 19 Apr to 18 Oct 2026, the Sengkang West LRT Inner Loop (i.e. direction of STC Sengkang towards SW1 Cheng Lim) will be closed. Commuters can continue to use the Sengkang West LRT Outer Loop (i.e. direction of STC Sengkang towards SW8 Renjong), peak-hours shuttle bus services, or regular bus services."
+    }
+  },
+  "observed": {
+    "outcome": {
+      "kind": "update",
+      "issueId": "2026-04-19-sklrt-system-upgrade"
+    },
+    "assertions": [
+      {
+        "kind": "impact-event",
+        "presence": "required",
+        "match": {
+          "type": "service_effects.set",
+          "entity": {
+            "type": "service",
+            "serviceId": "SKLRT_W_CCW"
+          },
+          "effect": {
+            "kind": "no-service"
+          }
+        }
+      }
+    ]
+  },
+  "expected": {
+    "outcome": {
+      "kind": "update",
+      "issueId": "2026-04-19-sklrt-system-upgrade"
+    },
+    "assertions": [
+      {
+        "kind": "claim",
+        "presence": "required",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "SKLRT_W_CCW"
+          },
+          "effect": {
+            "service": {
+              "kind": "no-service"
+            }
+          }
+        }
+      },
+      {
+        "kind": "claim",
+        "presence": "forbidden",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "SKLRT_W_CW"
+          }
+        }
+      }
+    ]
+  },
+  "rationale": "SKLRT_W_CCW and SKLRT_W_CW are separate services. The inner-loop service is closed and therefore has no service; the available outer-loop service remains normal and should receive no effect claim. The manual reduced-service correction in PR #301 was semantically incorrect."
+}

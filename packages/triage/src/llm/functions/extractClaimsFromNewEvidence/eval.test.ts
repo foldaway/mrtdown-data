@@ -174,7 +174,7 @@ describe('extractClaimsFromNewEvidence', () => {
                   facility: null,
                 },
                 scopes: {
-                  service: [{ type: 'service.whole' }],
+                  service: null,
                 },
                 statusSignal: 'cleared',
                 timeHints: {
@@ -194,7 +194,7 @@ describe('extractClaimsFromNewEvidence', () => {
                 },
                 statusSignal: 'cleared',
                 scopes: {
-                  service: [{ type: 'service.whole' }],
+                  service: null,
                 },
                 timeHints: {
                   kind: 'end-only',
@@ -398,7 +398,7 @@ describe('extractClaimsFromNewEvidence', () => {
           input: {
             newEvidence: {
               ts: '2026-01-05T22:12:16+08:00',
-              text: 'Integrated systems testing on the Island and Tsuen Wan lines is causing longer waits of up to 17 minutes for trains on both lines. A final service suspension to disconnect the shared systems is planned for the first half of 2026, signaling further disruption.',
+              text: 'During integrated systems testing, trains are operating at reduced frequency across the full Island and Tsuen Wan lines, causing longer waits of up to 17 minutes. A separate final service suspension to disconnect the shared systems is planned for the first half of 2026.',
             },
             repo,
             toString() {

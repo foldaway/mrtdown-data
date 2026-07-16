@@ -1,0 +1,55 @@
+{
+  "id": "pr-331-ccl-station-opening-news",
+  "title": "Permanent station opening news is not temporary maintenance",
+  "role": "regression",
+  "labels": [
+    "relevance",
+    "issue-triage",
+    "period"
+  ],
+  "source": {
+    "kind": "pull-request",
+    "number": 331,
+    "url": "https://github.com/foldaway/mrtdown-data/pull/331",
+    "baseRevision": "1d50cca074679efe3d16d8e233e5d4e0acd033ca",
+    "candidateRevision": "0de8625dd8bd8aa4f52cf5b3fb854452191019e4",
+    "resolutionRevision": null
+  },
+  "input": {
+    "kind": "model-evidence",
+    "evidence": {
+      "ts": "2026-06-21T07:15:00.000+00:00",
+      "text": "Title: Faster rides, lower fares for commuters when new Circle Line stations open on July 12\n\nSummary: Keppel, Cantonment and Prince Edward Road stations will complete the Circle Line loop."
+    }
+  },
+  "observed": {
+    "outcome": {
+      "kind": "create",
+      "issueType": "maintenance",
+      "issueId": "2026-07-11-circle-line-new-stations-opening-keppel-cantonment-prince-edward-road"
+    },
+    "assertions": [
+      {
+        "kind": "impact-event",
+        "presence": "required",
+        "match": {
+          "type": "periods.set",
+          "periods": [
+            {
+              "kind": "fixed",
+              "startAt": "2026-07-12T00:00:00+08:00",
+              "endAt": "2026-07-13T00:00:00+08:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "expected": {
+    "outcome": {
+      "kind": "ignore"
+    },
+    "assertions": []
+  },
+  "rationale": "Opening permanent stations changes static network data but does not create a one-day operational maintenance impact."
+}

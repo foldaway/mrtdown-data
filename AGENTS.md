@@ -20,6 +20,8 @@ from this repo.
 - `packages/cli` contains the command-line entry point for validating,
   inspecting, creating, and generating target-layout data artifacts.
 - `fixtures/generated/data` is generated on demand for package and CLI tests.
+- `fixtures/triage-regressions` contains checked-in historical ingestion
+  outcomes for deterministic corpus inspection and isolated semantic replay.
 
 The data-overhaul split sequence is complete. Keep
 `docs/plans/completed/data-overhaul-split.md` as historical context when
@@ -42,6 +44,8 @@ The target architecture is a package/data repository:
   `issue.json`, `evidence.ndjson`, and `impact.ndjson`.
 - `fixtures/generated/data`: on-demand generated fixture data for tests and
   examples.
+- `fixtures/triage-regressions`: checked-in historical ingestion cases and
+  semantic expectations.
 
 ## Commands
 
@@ -72,6 +76,11 @@ The target architecture is a package/data repository:
 - `npm run pages:build`: build the static GitHub Pages data artifact.
 - `npm run ingest:webhook`: process incoming webhook evidence with
   `@mrtdown/triage`.
+- `npm run triage:regressions -- --list`: validate and list the historical
+  ingestion regression corpus without model calls or canonical writes.
+- `npm run triage:regressions -- --case <id> --replay`: run paid semantic
+  replay against a temporary copy of the recorded base revision. Requires
+  `OPENAI_API_KEY`.
 - `npm run check`: run harness checks that should stay fast and deterministic.
 - `npm run check:boundaries`: enforce package import boundaries when packages
   exist.

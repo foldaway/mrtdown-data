@@ -81,11 +81,12 @@ Service-hours adjustment impact-window rule (strict):
 - Example: "services will start later at 6.30am and end at 9pm daily from 1 to 8 February 2026" -> the impact window is 21:00:00 to 06:30:00, not 06:30:00 to 21:00:00.
 
 Effect disambiguation:
-- "Longer waits", "headways adjusted", "additional travel time", "single-loop operation", shuttle/train bridging, or similar degraded-but-running service language is NOT "no-service".
+- "Longer waits", "headways adjusted", "additional travel time", reduced frequency, shuttle-train operation, or similar degraded-but-running rail service language is NOT "no-service".
 - Use "reduced-service" for degraded planned operations unless the evidence explicitly says trains are suspended, service is closed, or no trains are running.
 - If evidence mentions a future planned suspension in broad terms ("planned", "expected", "first half of 2026") without a concrete service suspension window, do not convert that into a present or fixed future "no-service" claim. Prefer the concrete degraded service claim that is explicitly stated.
 - "Only one platform in use/may be used" at a terminal or station during a future window should generally map to a planned degraded operation claim (usually "reduced-service"), even if the post also says "service as usual" at announcement time.
 - Deterministic mapping: if evidence says one platform is closed/temporarily closed while trains continue to run (for example, "other platform operates as usual", shuttle provided, longer waits), you MUST emit planned service claims with service effect "reduced-service" for affected services. Do not return claims: [] for this pattern.
+- Treat separately modeled LRT loops as separate services. If one loop is closed, use "no-service" for that loop service and emit no effect claim for the unaffected loop. Do not collapse the two services into a line-level "reduced-service" claim.
 
 For facility entities:
 - Facility unavailable -> facility: { kind: "out-of-service" }
@@ -93,13 +94,28 @@ For facility entities:
 - service must be null
 
 ### scopes.service
-- For full line/service statements ("train service resumed", "line closed"), use:
+- Scope is the geographic extent asserted by this evidence item. It is not the
+  full route merely because the evidence names a line or service.
+- Use service.whole only when the evidence explicitly asserts whole-service
+  coverage, for example "entire line", "all stations", "system-wide", or
+  "no train service on the Circle Line".
+- For explicit full line/service statements, use:
   - [{ type: "service.whole" }]
 - For "between A and B", use service.segment with station IDs:
   - { type: "service.segment", fromStationId, toStationId }
 - For station-specific service impact at one station, use:
   - { type: "service.point", stationId }
-- For service entities, scopes.service should generally be non-null.
+- If the evidence contains no geographic assertion, set scopes.service to null.
+  This includes generic headlines, follow-up updates, and clearance messages
+  that name a line but do not say the whole line is affected.
+- Do not infer service.whole from phrases such as "train services affected",
+  "minor delay on the Circle Line", "fault cleared", or "service resumed".
+- Do not reconstruct or guess a segment that is absent from the evidence.
+  Downstream state handling can preserve a previously established scope.
+- Example: "Circle Line train services affected by minor delay on 15 Jun
+  evening" -> scopes.service: null.
+- Example: "[ISL] CLEARED: Fault has been cleared. Train service has resumed."
+  -> scopes.service: null.
 - service.segment is directional: fromStationId -> toStationId is an ordered path, not an unordered pair.
 - Validate segment orientation against the specific service path returned by findServices.
 - For bidirectional output, create one claim per directional service and set segment endpoints to match each service direction (reverse endpoints for reverse direction service).

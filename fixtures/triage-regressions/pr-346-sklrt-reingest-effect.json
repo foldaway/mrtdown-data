@@ -1,0 +1,104 @@
+{
+  "id": "pr-346-sklrt-reingest-effect",
+  "title": "Repeated single-loop alert restores service-level no-service",
+  "role": "positive-control",
+  "labels": [
+    "effect",
+    "state-transition"
+  ],
+  "source": {
+    "kind": "pull-request",
+    "number": 346,
+    "url": "https://github.com/foldaway/mrtdown-data/pull/346",
+    "baseRevision": "eac6c978926e86927e9e18d43a2ccceefd5c4f13",
+    "candidateRevision": "a7ec894a6247b5ca3ee0f52aa591618e72f1ea93",
+    "resolutionRevision": null
+  },
+  "input": {
+    "kind": "model-evidence",
+    "evidence": {
+      "ts": "2026-07-14T00:00:55.000+00:00",
+      "text": "[LTA EMERGENCY ALERT]\n05:00-SK-Planned Service Adjustment. From 19 Apr to 18 Oct 2026, the Sengkang West LRT Inner Loop (i.e. direction of STC Sengkang towards SW1 Cheng Lim) will be closed. Commuters can continue to use the Sengkang West LRT Outer Loop (i.e. direction of STC Sengkang towards SW8 Renjong), peak-hours shuttle bus services, or regular bus services."
+    }
+  },
+  "observed": {
+    "outcome": {
+      "kind": "update",
+      "issueId": "2026-04-19-sklrt-system-upgrade"
+    },
+    "assertions": [
+      {
+        "kind": "impact-event",
+        "presence": "required",
+        "match": {
+          "type": "service_effects.set",
+          "entity": {
+            "type": "service",
+            "serviceId": "SKLRT_W_CCW"
+          },
+          "effect": {
+            "kind": "no-service"
+          }
+        }
+      },
+      {
+        "kind": "claim",
+        "presence": "forbidden",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "SKLRT_W_CW"
+          }
+        }
+      }
+    ]
+  },
+  "expected": {
+    "outcome": {
+      "kind": "update",
+      "issueId": "2026-04-19-sklrt-system-upgrade"
+    },
+    "assertions": [
+      {
+        "kind": "claim",
+        "presence": "required",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "SKLRT_W_CCW"
+          },
+          "effect": {
+            "service": {
+              "kind": "no-service"
+            }
+          }
+        }
+      },
+      {
+        "kind": "impact-event",
+        "presence": "required",
+        "match": {
+          "type": "service_effects.set",
+          "entity": {
+            "type": "service",
+            "serviceId": "SKLRT_W_CCW"
+          },
+          "effect": {
+            "kind": "no-service"
+          }
+        }
+      },
+      {
+        "kind": "claim",
+        "presence": "forbidden",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "SKLRT_W_CW"
+          }
+        }
+      }
+    ]
+  },
+  "rationale": "The repeated alert correctly restores no-service for the closed SKLRT_W_CCW service after PR #301 had manually changed it to reduced-service. SKLRT_W_CW remains a separate unaffected service."
+}
