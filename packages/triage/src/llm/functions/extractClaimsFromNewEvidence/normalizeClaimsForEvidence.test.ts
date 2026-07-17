@@ -238,11 +238,19 @@ describe('normalizeClaimsForEvidence', () => {
     ).toEqual([claim]);
   });
 
-  test('does not fill sibling services from inactive service claims', () => {
+  test('drops claims for services that are inactive at the evidence timestamp', () => {
     const evidenceTs = '2026-01-01T07:10:00+08:00';
     const baseClaim = {
-      effect: { service: { kind: 'delay', duration: null }, facility: null },
-      scopes: { service: [{ type: 'service.whole' }] },
+      effect: { service: { kind: 'no-service' }, facility: null },
+      scopes: {
+        service: [
+          {
+            type: 'service.segment',
+            fromStationId: 'PTR',
+            toStationId: 'SNJ',
+          },
+        ],
+      },
       statusSignal: 'open',
       timeHints: { kind: 'start-only', startAt: evidenceTs },
       causes: null,
@@ -250,11 +258,15 @@ describe('normalizeClaimsForEvidence', () => {
     const claims = [
       {
         ...baseClaim,
-        entity: { type: 'service', serviceId: 'BTL_MAIN_E' },
+        entity: { type: 'service', serviceId: 'BPLRT_A' },
       },
       {
         ...baseClaim,
-        entity: { type: 'service', serviceId: 'BTL_OLD_E' },
+        entity: { type: 'service', serviceId: 'BPLRT_B' },
+      },
+      {
+        ...baseClaim,
+        entity: { type: 'service', serviceId: 'BPLRT_C' },
       },
     ] as unknown as Claim[];
 
@@ -263,16 +275,16 @@ describe('normalizeClaimsForEvidence', () => {
         claims,
         evidenceTs,
         repo: buildServiceRepo({
-          BTL_MAIN_E: 'BTL',
-          BTL_MAIN_W: 'BTL',
-          BTL_OLD_E: {
-            lineId: 'BTL',
-            startAt: '2025-01-01',
-            endAt: '2025-12-31',
+          BPLRT_A: 'BPLRT',
+          BPLRT_B: 'BPLRT',
+          BPLRT_C: {
+            lineId: 'BPLRT',
+            startAt: '1999-11-06',
+            endAt: '2019-01-13',
           },
         }),
       }),
-    ).toEqual(claims);
+    ).toEqual(claims.slice(0, 2));
   });
 });
 

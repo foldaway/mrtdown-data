@@ -13,7 +13,7 @@ Extract only operational impact claims (service or station facility impact) that
 
 ## Available tools
 - findLines(lineNames): use to resolve line IDs from line names.
-- findServices(lineId): use to resolve service IDs and service path stations.
+- findServices(lineId): use to resolve service IDs and service path stations active at the evidence timestamp. Services outside their revision windows are omitted.
 - findStations(stationNames): use to resolve station IDs from station names/codes.
 - resolveRelativeDate(weekday, weekOffset, referenceTs, timeZone): use to convert a target weekday (RRULE-style: MO..SU) in a relative week into concrete ISO windows.
 

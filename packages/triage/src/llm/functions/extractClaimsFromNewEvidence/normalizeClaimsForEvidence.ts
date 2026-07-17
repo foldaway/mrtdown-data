@@ -9,8 +9,13 @@ export function normalizeClaimsForEvidence(params: {
   repo?: MRTDownRepository;
 }): Claim[] {
   const fieldNormalizedClaims = normalizeClaimFields(params.claims);
-  const completedClaims = synthesizeWholeLineSiblingServiceClaims({
+  const activeServiceClaims = filterInactiveServiceClaims({
     claims: fieldNormalizedClaims,
+    evidenceTs: params.evidenceTs,
+    repo: params.repo,
+  });
+  const completedClaims = synthesizeWholeLineSiblingServiceClaims({
+    claims: activeServiceClaims,
     evidenceTs: params.evidenceTs,
     repo: params.repo,
   });
@@ -23,6 +28,25 @@ export function normalizeClaimsForEvidence(params: {
       ),
     ),
   );
+}
+
+function filterInactiveServiceClaims(params: {
+  claims: Claim[];
+  evidenceTs: string;
+  repo?: MRTDownRepository;
+}): Claim[] {
+  if (params.repo == null || typeof params.repo.services.get !== 'function') {
+    return params.claims;
+  }
+
+  return params.claims.filter((claim) => {
+    if (claim.entity.type !== 'service') {
+      return true;
+    }
+
+    const service = params.repo?.services.get(claim.entity.serviceId);
+    return service == null || isServiceActiveAt(service, params.evidenceTs);
+  });
 }
 
 function normalizeClaimFields(claims: Claim[]): Claim[] {
@@ -192,14 +216,20 @@ function isServiceClaim(
 function isServiceActiveAt(service: Service, evidenceTs: string): boolean {
   const evidenceTsMs = Date.parse(evidenceTs);
   return service.revisions.some((revision) => {
-    const startedAtMs = Date.parse(revision.startAt);
+    const startedAtMs = singaporeServiceDateTimestamp(revision.startAt);
     const endedAtMs =
-      revision.endAt == null ? null : Date.parse(revision.endAt);
+      revision.endAt == null
+        ? null
+        : singaporeServiceDateTimestamp(revision.endAt);
     return (
       startedAtMs <= evidenceTsMs &&
       (endedAtMs == null || endedAtMs > evidenceTsMs)
     );
   });
+}
+
+function singaporeServiceDateTimestamp(value: string): number {
+  return Date.parse(`${value}T00:00:00+08:00`);
 }
 
 function dedupeClaims(claims: Claim[]): Claim[] {
