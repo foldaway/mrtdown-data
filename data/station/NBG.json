@@ -24,5 +24,24 @@
     "waterway-point",
     "coney-island"
   ],
-  "townId": "punggol"
+  "townId": "punggol",
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "NBG_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "NBG_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      }
+    ],
+    "platforms": [],
+    "transferPaths": []
+  }
 }

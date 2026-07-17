@@ -23,5 +23,24 @@
     "punggol-waterway-park",
     "oasis-terraces"
   ],
-  "townId": "punggol"
+  "townId": "punggol",
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "COV_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "COV_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      }
+    ],
+    "platforms": [],
+    "transferPaths": []
+  }
 }

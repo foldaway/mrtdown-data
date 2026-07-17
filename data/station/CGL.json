@@ -24,5 +24,24 @@
     "compass-one",
     "sengkang-sports-complex"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "CGL_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "CGL_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      }
+    ],
+    "platforms": [],
+    "transferPaths": []
+  }
 }

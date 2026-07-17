@@ -24,5 +24,32 @@
     "sengkang-general-hospital",
     "sengkang-sports-centre"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "KPG_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      },
+      {
+        "id": "KPG_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      }
+    ],
+    "platforms": [],
+    "transferPaths": []
+  }
 }

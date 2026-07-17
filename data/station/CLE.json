@@ -69,5 +69,60 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "CLE_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Commonwealth Avenue West"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "CLE_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Commonwealth Avenue West"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "CLE_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Commonwealth Avenue West"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "CLE_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Commonwealth Avenue West"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      }
+    ],
+    "platforms": [],
+    "transferPaths": []
   }
 }

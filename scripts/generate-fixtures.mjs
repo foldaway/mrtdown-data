@@ -370,6 +370,7 @@ function buildStaticEntities() {
             {
               id: 'KET_EXIT_A',
               label: 'A',
+              lastUpdated: '2026-07-18',
               levelId: 'B2',
               roadNames: ['Rock Hill Street'],
               paidArea: false,
@@ -414,10 +415,12 @@ function buildStaticEntities() {
               from: {
                 kind: 'platform',
                 id: 'KET_ISL_E',
+                lastUpdated: '2026-07-18',
               },
               to: {
                 kind: 'platform',
                 id: 'KET_ISL_W',
+                lastUpdated: '2026-07-18',
               },
               paidArea: true,
               modes: ['walk'],

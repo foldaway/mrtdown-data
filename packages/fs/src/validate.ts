@@ -459,7 +459,11 @@ async function validateStationReferences(
         seenFirstLastTrainServices.set(serviceTiming.serviceId, index);
       }
 
-      if (layout && !layoutPlatformServiceIds.has(serviceTiming.serviceId)) {
+      if (
+        layout &&
+        layout.platforms.length > 0 &&
+        !layoutPlatformServiceIds.has(serviceTiming.serviceId)
+      ) {
         errors.push(
           `${station.path}: firstLastTrain.services.${index}.serviceId ${serviceTiming.serviceId} is not served by any layout platform`,
         );

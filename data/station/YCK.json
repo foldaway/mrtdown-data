@@ -61,5 +61,39 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "YCK_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "YCK_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "YCK_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      }
+    ],
+    "platforms": [],
+    "transferPaths": []
   }
 }

@@ -192,6 +192,7 @@ describe('StationSchema', () => {
             {
               id: 'KET_EXIT_A',
               label: 'A',
+              lastUpdated: '2026-07-18',
               levelId: 'B2',
               paidArea: false,
             },
@@ -222,10 +223,12 @@ describe('StationSchema', () => {
               from: {
                 kind: 'platform',
                 id: 'KET_ISL_A',
+                lastUpdated: '2026-07-18',
               },
               to: {
                 kind: 'level',
                 id: 'B2',
+                lastUpdated: '2026-07-18',
               },
               paidArea: true,
               modes: ['walk', 'escalator'],

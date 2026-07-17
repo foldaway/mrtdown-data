@@ -24,5 +24,24 @@
     "punggol-plaza",
     "waterway-point"
   ],
-  "townId": "punggol"
+  "townId": "punggol",
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "SMK_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "SMK_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      }
+    ],
+    "platforms": [],
+    "transferPaths": []
+  }
 }

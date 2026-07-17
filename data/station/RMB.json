@@ -23,5 +23,30 @@
     "sengkang-sports-and-recreation-centre",
     "compass-one"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "RMB_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "RMB_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      }
+    ],
+    "platforms": [],
+    "transferPaths": []
+  }
 }

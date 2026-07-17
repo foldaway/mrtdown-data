@@ -2904,6 +2904,7 @@ describe('@mrtdown/fs', () => {
               {
                 id: 'KET_EXIT_A',
                 label: 'A',
+                lastUpdated: '2026-07-18',
                 levelId: 'MISSING',
                 nearbyLandmarkIds: ['missing-landmark'],
                 paidArea: false,
@@ -2911,6 +2912,7 @@ describe('@mrtdown/fs', () => {
               {
                 id: 'KET_EXIT_B',
                 label: 'a',
+                lastUpdated: '2026-07-18',
                 paidArea: false,
               },
             ],
@@ -2952,10 +2954,12 @@ describe('@mrtdown/fs', () => {
                 from: {
                   kind: 'platform',
                   id: 'MISSING_PLATFORM',
+                  lastUpdated: '2026-07-18',
                 },
                 to: {
                   kind: 'access_point',
                   id: 'MISSING_ACCESS_POINT',
+                  lastUpdated: '2026-07-18',
                 },
                 paidArea: true,
                 modes: ['walk'],
@@ -3069,6 +3073,37 @@ describe('@mrtdown/fs', () => {
         'station/KET.json: firstLastTrain.services.0.serviceId ISL_MAIN_E is not served by any layout platform',
       ]),
     );
+  });
+
+  it('allows exit-only station layouts with first/last train data', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const stationPath = join(dataDir, 'station/KET.json');
+    const station = JSON.parse(await readFile(stationPath, 'utf8'));
+    station.layout = {
+      levels: [],
+      exits: [
+        {
+          id: 'KET_EXIT_A',
+          label: 'A',
+          lastUpdated: '2026-07-18',
+          roadNames: ['Rock Hill Street'],
+          paidArea: false,
+          accessibility: {
+            stepFree: true,
+          },
+        },
+      ],
+      platforms: [],
+      transferPaths: [],
+    };
+    await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+
+    const result = await validateDataRoot(dataDir, ['station']);
+
+    expect(result.ok).toBe(true);
+    expect(result.errors).toEqual([]);
+    expect(result.checked.station).toBe(fixtureMeta.counts.station);
   });
 
   it('rejects service revisions outside station code active windows', async () => {

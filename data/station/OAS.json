@@ -24,5 +24,24 @@
     "punggol-waterway-park",
     "waterway-point"
   ],
-  "townId": "punggol"
+  "townId": "punggol",
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "OAS_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "OAS_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      }
+    ],
+    "platforms": [],
+    "transferPaths": []
+  }
 }

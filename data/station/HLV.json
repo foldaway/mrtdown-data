@@ -62,5 +62,36 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "HLV_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "HLV_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false
+      },
+      {
+        "id": "HLV_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      }
+    ],
+    "platforms": [],
+    "transferPaths": []
   }
 }

@@ -24,5 +24,30 @@
     "compass-one",
     "anchorvale-community-club"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "RNJ_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "RNJ_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      }
+    ],
+    "platforms": [],
+    "transferPaths": []
+  }
 }

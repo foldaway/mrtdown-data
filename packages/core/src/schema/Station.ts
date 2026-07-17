@@ -143,6 +143,7 @@ export type StationLayoutLevel = z.infer<typeof StationLayoutLevelSchema>;
 export const StationLayoutExitSchema = z.object({
   id: z.string(),
   label: z.string(),
+  lastUpdated: z.iso.date(),
   levelId: z.string().optional(),
   geo: z
     .object({
@@ -188,6 +189,7 @@ export type StationLayoutPlatform = z.infer<typeof StationLayoutPlatformSchema>;
 export const StationLayoutTransferEndpointSchema = z.object({
   kind: StationLayoutTransferEndpointKindSchema,
   id: z.string(),
+  lastUpdated: z.iso.date(),
 });
 export type StationLayoutTransferEndpoint = z.infer<
   typeof StationLayoutTransferEndpointSchema
