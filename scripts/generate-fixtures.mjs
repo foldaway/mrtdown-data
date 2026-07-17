@@ -363,6 +363,7 @@ function buildStaticEntities() {
             {
               id: 'B2',
               index: -2,
+              lastUpdated: '2026-07-18',
               name: translations('Platforms'),
             },
           ],
@@ -384,6 +385,7 @@ function buildStaticEntities() {
             {
               id: 'KET_ISL_E',
               label: '1',
+              lastUpdated: '2026-07-18',
               lineId: 'ISL',
               levelId: 'B2',
               serviceIds: ['ISL_MAIN_E'],
@@ -392,6 +394,7 @@ function buildStaticEntities() {
                 {
                   id: 'KET_ISL_E_LIFT_01',
                   kind: 'lift',
+                  lastUpdated: '2026-07-18',
                   nearestDoor: '12',
                   position: 'middle',
                   connectsToLevelId: 'B2',
@@ -402,6 +405,7 @@ function buildStaticEntities() {
             {
               id: 'KET_ISL_W',
               label: '2',
+              lastUpdated: '2026-07-18',
               lineId: 'ISL',
               levelId: 'B2',
               serviceIds: ['ISL_MAIN_W'],
@@ -412,6 +416,7 @@ function buildStaticEntities() {
           transferPaths: [
             {
               id: 'KET_ISL_CROSS_PLATFORM',
+              lastUpdated: '2026-07-18',
               from: {
                 kind: 'platform',
                 id: 'KET_ISL_E',

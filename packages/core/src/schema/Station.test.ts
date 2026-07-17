@@ -180,6 +180,7 @@ describe('StationSchema', () => {
             {
               id: 'B2',
               index: -2,
+              lastUpdated: '2026-07-18',
               name: {
                 'en-SG': 'Platforms',
                 'zh-Hans': null,
@@ -201,6 +202,7 @@ describe('StationSchema', () => {
             {
               id: 'KET_ISL_A',
               label: 'A',
+              lastUpdated: '2026-07-18',
               lineId: 'ISL',
               levelId: 'B2',
               serviceIds: ['ISL_MAIN_E'],
@@ -209,6 +211,7 @@ describe('StationSchema', () => {
                 {
                   id: 'KET_ISL_A_ESC_01',
                   kind: 'escalator',
+                  lastUpdated: '2026-07-18',
                   nearestDoor: '12',
                   position: 'middle',
                   connectsToLevelId: 'B2',
@@ -220,6 +223,7 @@ describe('StationSchema', () => {
           transferPaths: [
             {
               id: 'KET_TRANSFER',
+              lastUpdated: '2026-07-18',
               from: {
                 kind: 'platform',
                 id: 'KET_ISL_A',
@@ -253,6 +257,7 @@ describe('StationSchema', () => {
           {
             id: 'KET_ISL_A',
             label: 'A',
+            lastUpdated: '2026-07-18',
             lineId: 'ISL',
             serviceIds: [],
             accessPoints: [],

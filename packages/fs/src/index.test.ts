@@ -2882,6 +2882,7 @@ describe('@mrtdown/fs', () => {
               {
                 id: 'B2',
                 index: -2,
+                lastUpdated: '2026-07-18',
                 name: {
                   'en-SG': 'Platforms',
                   'zh-Hans': null,
@@ -2892,6 +2893,7 @@ describe('@mrtdown/fs', () => {
               {
                 id: 'B2',
                 index: -2,
+                lastUpdated: '2026-07-18',
                 name: {
                   'en-SG': 'Duplicate platforms',
                   'zh-Hans': null,
@@ -2920,6 +2922,7 @@ describe('@mrtdown/fs', () => {
               {
                 id: 'KET_ISL_A',
                 label: 'A',
+                lastUpdated: '2026-07-18',
                 lineId: 'ISL',
                 levelId: 'MISSING',
                 serviceIds: ['MISSING_SERVICE'],
@@ -2928,6 +2931,7 @@ describe('@mrtdown/fs', () => {
                   {
                     id: 'KET_AP_DUP',
                     kind: 'escalator',
+                    lastUpdated: '2026-07-18',
                     nearestDoor: '25',
                     position: 'middle',
                     connectsToLevelId: 'MISSING',
@@ -2937,12 +2941,14 @@ describe('@mrtdown/fs', () => {
               {
                 id: 'KET_TWL_A',
                 label: 'A',
+                lastUpdated: '2026-07-18',
                 lineId: 'ISL',
                 serviceIds: ['TWL_MAIN_N', 'ISL_SKIP_KET'],
                 accessPoints: [
                   {
                     id: 'KET_AP_DUP',
                     kind: 'stairs',
+                    lastUpdated: '2026-07-18',
                     position: 'front',
                   },
                 ],
@@ -2951,6 +2957,7 @@ describe('@mrtdown/fs', () => {
             transferPaths: [
               {
                 id: 'KET_TRANSFER',
+                lastUpdated: '2026-07-18',
                 from: {
                   kind: 'platform',
                   id: 'MISSING_PLATFORM',

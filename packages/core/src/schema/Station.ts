@@ -137,6 +137,7 @@ export const StationLayoutLevelSchema = z.object({
   id: z.string(),
   index: z.number().int(),
   name: TranslationsSchema,
+  lastUpdated: z.iso.date(),
 });
 export type StationLayoutLevel = z.infer<typeof StationLayoutLevelSchema>;
 
@@ -166,6 +167,7 @@ export type StationLayoutExit = z.infer<typeof StationLayoutExitSchema>;
 export const StationLayoutAccessPointSchema = z.object({
   id: z.string(),
   kind: StationLayoutAccessPointKindSchema,
+  lastUpdated: z.iso.date(),
   nearestDoor: z.string().optional(),
   position: StationLayoutAccessPointPositionSchema,
   connectsToLevelId: z.string().optional(),
@@ -178,6 +180,7 @@ export type StationLayoutAccessPoint = z.infer<
 export const StationLayoutPlatformSchema = z.object({
   id: z.string(),
   label: z.string(),
+  lastUpdated: z.iso.date(),
   lineId: z.string(),
   levelId: z.string().optional(),
   serviceIds: z.array(z.string()).nonempty(),
@@ -197,6 +200,7 @@ export type StationLayoutTransferEndpoint = z.infer<
 
 export const StationLayoutTransferPathSchema = z.object({
   id: z.string(),
+  lastUpdated: z.iso.date(),
   from: StationLayoutTransferEndpointSchema,
   to: StationLayoutTransferEndpointSchema,
   paidArea: z.boolean(),
