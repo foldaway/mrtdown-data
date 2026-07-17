@@ -110,6 +110,47 @@ describe('regression corpus', () => {
     );
   });
 
+  test('excludes BPLRT services that ended before the evidence date', () => {
+    const [regressionCase] = filterRegressionCases(loadRegressionCorpus(), {
+      caseId: 'pr-230-bplrt-inactive-service-selection',
+    });
+
+    expect(regressionCase.expected.assertions).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          kind: 'claim',
+          presence: 'required',
+          match: expect.objectContaining({
+            entity: {
+              type: 'service',
+              serviceId: 'BPLRT_A',
+            },
+          }),
+        }),
+        expect.objectContaining({
+          kind: 'claim',
+          presence: 'required',
+          match: expect.objectContaining({
+            entity: {
+              type: 'service',
+              serviceId: 'BPLRT_B',
+            },
+          }),
+        }),
+        {
+          kind: 'claim',
+          presence: 'forbidden',
+          match: {
+            entity: {
+              type: 'service',
+              serviceId: 'BPLRT_C',
+            },
+          },
+        },
+      ]),
+    );
+  });
+
   test('filters by id and label', () => {
     const cases = loadRegressionCorpus();
 

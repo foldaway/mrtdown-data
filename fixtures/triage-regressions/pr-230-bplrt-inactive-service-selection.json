@@ -1,0 +1,127 @@
+{
+  "id": "pr-230-bplrt-inactive-service-selection",
+  "title": "A service closed in 2019 is not selected for a 2026 BPLRT disruption",
+  "role": "regression",
+  "labels": [
+    "entity-selection"
+  ],
+  "source": {
+    "kind": "pull-request",
+    "number": 230,
+    "url": "https://github.com/foldaway/mrtdown-data/pull/230",
+    "baseRevision": "0a6bfccc51359d035bdb23ed89c2cf3376c1c53c",
+    "candidateRevision": "bd2e80910614eaa28c1c35fc2e4814aba9b63a58",
+    "resolutionRevision": null
+  },
+  "input": {
+    "kind": "model-evidence",
+    "evidence": {
+      "ts": "2026-05-18T06:04:54.000+08:00",
+      "text": "06:00-BP-Major delay. No train services between Senja and Petir stations (both directions). Services between Choa Chu Kang and Bukit Panjang are still available.\nPlease use free bus services at affected stations."
+    }
+  },
+  "observed": {
+    "outcome": {
+      "kind": "create",
+      "issueType": "disruption",
+      "issueId": "2026-05-18-bplrt-major-delay-senja-petir"
+    },
+    "assertions": [
+      {
+        "kind": "impact-event",
+        "presence": "required",
+        "match": {
+          "type": "service_scopes.set",
+          "entity": {
+            "type": "service",
+            "serviceId": "BPLRT_C"
+          },
+          "serviceScopes": [
+            {
+              "type": "service.segment",
+              "fromStationId": "PTR",
+              "toStationId": "SNJ"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "expected": {
+    "outcome": {
+      "kind": "create",
+      "issueType": "disruption"
+    },
+    "assertions": [
+      {
+        "kind": "claim",
+        "presence": "required",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "BPLRT_A"
+          },
+          "effect": {
+            "service": {
+              "kind": "no-service"
+            }
+          },
+          "scopes": {
+            "service": [
+              {
+                "type": "service.segment",
+                "fromStationId": "SNJ",
+                "toStationId": "PTR"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "kind": "claim",
+        "presence": "required",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "BPLRT_B"
+          },
+          "effect": {
+            "service": {
+              "kind": "no-service"
+            }
+          },
+          "scopes": {
+            "service": [
+              {
+                "type": "service.segment",
+                "fromStationId": "PTR",
+                "toStationId": "SNJ"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "kind": "claim",
+        "presence": "forbidden",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "BPLRT_C"
+          }
+        }
+      },
+      {
+        "kind": "impact-event",
+        "presence": "forbidden",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "BPLRT_C"
+          }
+        }
+      }
+    ]
+  },
+  "rationale": "BPLRT_C ended on 13 January 2019 and was not an active service when this disruption occurred on 18 May 2026. The Senja-to-Petir outage in both directions applies to the active BPLRT_A and BPLRT_B services only; historical path overlap must not make BPLRT_C an affected entity."
+}
