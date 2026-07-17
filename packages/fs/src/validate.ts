@@ -681,7 +681,10 @@ async function validateIssueReferences(
     return [];
   }
 
-  const serviceIds = await loadEntityIds(dataDir, records, 'service');
+  const services = await loadEntityRecords(dataDir, records, 'service');
+  const servicesById = new Map(
+    services.map((service) => [service.value.id, service.value]),
+  );
   const stationIds = await loadEntityIds(dataDir, records, 'station');
   const lineIds = await loadEntityIds(dataDir, records, 'line');
   const errors: string[] = [];
@@ -740,10 +743,27 @@ async function validateIssueReferences(
       }
 
       if (event.entity.type === 'service') {
-        if (!serviceIds.has(event.entity.serviceId)) {
+        const service = servicesById.get(event.entity.serviceId);
+        if (service == null) {
           errors.push(
             `${linePrefix}: entity.serviceId ${event.entity.serviceId} does not exist in service/`,
           );
+        } else if (event.type === 'periods.set') {
+          for (const [periodIndex, period] of event.periods.entries()) {
+            if (
+              !service.revisions.some((revision) =>
+                serviceRevisionContainsTimestamp(
+                  revision.startAt,
+                  revision.endAt,
+                  period.startAt,
+                ),
+              )
+            ) {
+              errors.push(
+                `${linePrefix}: periods.${periodIndex}.startAt ${period.startAt} is outside service ${event.entity.serviceId} revision windows`,
+              );
+            }
+          }
         }
       } else if (!stationIds.has(event.entity.stationId)) {
         errors.push(
@@ -789,6 +809,20 @@ async function validateIssueReferences(
   }
 
   return errors;
+}
+
+function serviceRevisionContainsTimestamp(
+  revisionStartAt: string,
+  revisionEndAt: string | null,
+  timestamp: string,
+): boolean {
+  const revisionStart = singaporeDateTimestampForValidation(revisionStartAt);
+  const revisionEnd = revisionEndAt
+    ? singaporeDateTimestampForValidation(revisionEndAt)
+    : Number.POSITIVE_INFINITY;
+  const instant = timestampForValidation(timestamp);
+
+  return revisionStart <= instant && instant < revisionEnd;
 }
 
 async function validateEvidenceRights(

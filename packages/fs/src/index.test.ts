@@ -2564,6 +2564,90 @@ describe('@mrtdown/fs', () => {
     );
   });
 
+  it('rejects impact periods outside the affected service revision windows', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    const issueDir = join(dataDir, 'issue/2026/05/2026-05-18-inactive-service');
+    await mkdir(join(dataDir, 'line'), { recursive: true });
+    await mkdir(join(dataDir, 'service'), { recursive: true });
+    await mkdir(join(dataDir, 'station'), { recursive: true });
+    await mkdir(issueDir, { recursive: true });
+
+    await writeFile(
+      join(dataDir, 'service/BPLRT_C.json'),
+      `${JSON.stringify({
+        id: 'BPLRT_C',
+        lineId: 'BPLRT',
+        name: {
+          'en-SG': 'Service C',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        revisions: [
+          {
+            id: 'r_initial',
+            startAt: '1999-11-06',
+            endAt: '2019-01-13',
+            path: { stations: [] },
+            operatingHours: {
+              weekdays: { start: '05:00', end: '00:55' },
+              weekends: { start: '05:00', end: '00:55' },
+            },
+          },
+        ],
+      })}\n`,
+    );
+    await writeFile(
+      join(issueDir, 'issue.json'),
+      `${JSON.stringify({
+        id: '2026-05-18-inactive-service',
+        type: 'disruption',
+        title: {
+          'en-SG': 'Inactive service',
+          'zh-Hans': null,
+          ms: null,
+          ta: null,
+        },
+        titleMeta: { source: 'test' },
+      })}\n`,
+    );
+    await writeFile(
+      join(issueDir, 'evidence.ndjson'),
+      `${JSON.stringify({
+        id: 'ev_01KRVZH0VG36QDFPGRFKYQYCVH',
+        ts: '2026-05-18T06:04:54.000+08:00',
+        type: 'statement.official',
+        sourceUrl: 'https://example.com',
+        text: 'No train services between Senja and Petir.',
+        render: null,
+      })}\n`,
+    );
+    await writeFile(
+      join(issueDir, 'impact.ndjson'),
+      `${JSON.stringify({
+        id: 'ie_01KRVZH0VGMWPBWWHDWE01V0RG',
+        type: 'periods.set',
+        ts: '2026-05-18T06:04:54.000+08:00',
+        basis: { evidenceId: 'ev_01KRVZH0VG36QDFPGRFKYQYCVH' },
+        entity: { type: 'service', serviceId: 'BPLRT_C' },
+        periods: [
+          {
+            kind: 'fixed',
+            startAt: '2026-05-18T06:00:00+08:00',
+            endAt: '2026-05-18T10:13:09.895+08:00',
+          },
+        ],
+      })}\n`,
+    );
+
+    const result = await validateDataRoot(dataDir, ['issue']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors.join('\n')).toContain(
+      'issue/2026/05/2026-05-18-inactive-service/impact.ndjson:1: periods.0.startAt 2026-05-18T06:00:00+08:00 is outside service BPLRT_C revision windows',
+    );
+  });
+
   it('rejects invalid station first and last train relationships', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await cp(fixtureDataDir, dataDir, { recursive: true });
