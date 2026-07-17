@@ -24,5 +24,36 @@
     "public-transport-security-command",
     "cantonment-police-complex"
   ],
-  "townId": "outram"
+  "townId": "outram",
+  "layout": {
+    "levels": [],
+    "exits": [],
+    "platforms": [
+      {
+        "id": "CTM_CCL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CCW",
+          "CCL_LOOP_CCW"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "CTM_CCL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CW",
+          "CCL_LOOP_CW"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
+  }
 }

@@ -61,5 +61,34 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [],
+    "platforms": [
+      {
+        "id": "SGL_TEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_S"
+        ],
+        "doorCount": 20,
+        "accessPoints": []
+      },
+      {
+        "id": "SGL_TEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_N"
+        ],
+        "doorCount": 20,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }
