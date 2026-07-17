@@ -162,7 +162,52 @@
         }
       }
     ],
-    "platforms": [],
+    "platforms": [
+      {
+        "id": "WDL_NSL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_N"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "WDL_NSL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_S"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "WDL_TEL_C",
+        "label": "C",
+        "lastUpdated": "2026-07-18",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_S"
+        ],
+        "doorCount": 20,
+        "accessPoints": []
+      },
+      {
+        "id": "WDL_TEL_D",
+        "label": "D",
+        "lastUpdated": "2026-07-18",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_N"
+        ],
+        "doorCount": 20,
+        "accessPoints": []
+      }
+    ],
     "transferPaths": []
   }
 }

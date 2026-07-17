@@ -150,7 +150,52 @@
         "paidArea": false
       }
     ],
-    "platforms": [],
+    "platforms": [
+      {
+        "id": "STV_DTL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_W"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "STV_DTL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_E"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "STV_TEL_C",
+        "label": "C",
+        "lastUpdated": "2026-07-18",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_S"
+        ],
+        "doorCount": 20,
+        "accessPoints": []
+      },
+      {
+        "id": "STV_TEL_D",
+        "label": "D",
+        "lastUpdated": "2026-07-18",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_N"
+        ],
+        "doorCount": 20,
+        "accessPoints": []
+      }
+    ],
     "transferPaths": []
   }
 }
