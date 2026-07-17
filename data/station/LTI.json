@@ -206,6 +206,95 @@
         "accessPoints": []
       }
     ],
-    "transferPaths": []
+    "transferPaths": [
+      {
+        "id": "LTI_XFER_NEL_A_DTL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "LTI_NEL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "LTI_DTL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "LTI_XFER_NEL_A_DTL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "LTI_NEL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "LTI_DTL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "LTI_XFER_NEL_B_DTL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "LTI_NEL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "LTI_DTL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "LTI_XFER_NEL_B_DTL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "LTI_NEL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "LTI_DTL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      }
+    ]
   }
 }

@@ -163,6 +163,95 @@
         "accessPoints": []
       }
     ],
-    "transferPaths": []
+    "transferPaths": [
+      {
+        "id": "PGL_XFER_NEL_A_PGLRT_1",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "PGL_NEL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "PGL_PGLRT_1",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "PGL_XFER_NEL_A_PGLRT_2",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "PGL_NEL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "PGL_PGLRT_2",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "PGL_XFER_NEL_B_PGLRT_1",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "PGL_NEL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "PGL_PGLRT_1",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "PGL_XFER_NEL_B_PGLRT_2",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "PGL_NEL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "PGL_PGLRT_2",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      }
+    ]
   }
 }

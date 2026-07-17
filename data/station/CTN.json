@@ -203,6 +203,95 @@
         "accessPoints": []
       }
     ],
-    "transferPaths": []
+    "transferPaths": [
+      {
+        "id": "CTN_XFER_NEL_A_DTL_C",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "CTN_NEL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CTN_DTL_C",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "CTN_XFER_NEL_A_DTL_D",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "CTN_NEL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CTN_DTL_D",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "CTN_XFER_NEL_B_DTL_C",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "CTN_NEL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CTN_DTL_C",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "CTN_XFER_NEL_B_DTL_D",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "CTN_NEL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CTN_DTL_D",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      }
+    ]
   }
 }

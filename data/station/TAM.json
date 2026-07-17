@@ -196,6 +196,95 @@
         "accessPoints": []
       }
     ],
-    "transferPaths": []
+    "transferPaths": [
+      {
+        "id": "TAM_XFER_EWL_A_DTL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "TAM_EWL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "TAM_DTL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": false,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "out_of_station",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "TAM_XFER_EWL_A_DTL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "TAM_EWL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "TAM_DTL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": false,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "out_of_station",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "TAM_XFER_EWL_B_DTL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "TAM_EWL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "TAM_DTL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": false,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "out_of_station",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "TAM_XFER_EWL_B_DTL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "TAM_EWL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "TAM_DTL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": false,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "out_of_station",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      }
+    ]
   }
 }

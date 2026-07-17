@@ -183,6 +183,95 @@
         "accessPoints": []
       }
     ],
-    "transferPaths": []
+    "transferPaths": [
+      {
+        "id": "NEW_XFER_NSL_A_DTL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "NEW_NSL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "NEW_DTL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": false,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "out_of_station",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "NEW_XFER_NSL_A_DTL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "NEW_NSL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "NEW_DTL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": false,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "out_of_station",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "NEW_XFER_NSL_B_DTL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "NEW_NSL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "NEW_DTL_A",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": false,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "out_of_station",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "NEW_XFER_NSL_B_DTL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "NEW_NSL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "NEW_DTL_B",
+          "lastUpdated": "2026-07-18"
+        },
+        "paidArea": false,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "out_of_station",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      }
+    ]
   }
 }
