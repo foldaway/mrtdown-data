@@ -1,0 +1,145 @@
+{
+  "id": "commit-757e6b-ewl-fault-location-scope",
+  "title": "Whole-line eastbound delay scope is distinct from the fault location",
+  "role": "regression",
+  "labels": [
+    "entity-selection",
+    "scope",
+    "state-transition"
+  ],
+  "source": {
+    "kind": "commit",
+    "url": "https://github.com/foldaway/mrtdown-data/commit/757e6b24f91fa32dda075e2871399a294702f385",
+    "baseRevision": "93b35ce10a1201a001253e3a2b8e6b4b472074ed",
+    "candidateRevision": "757e6b24f91fa32dda075e2871399a294702f385",
+    "resolutionRevision": null
+  },
+  "replayRevision": "ee651bb05c21d5c615f32fb8814959ba32c2fd1a",
+  "input": {
+    "kind": "model-evidence",
+    "evidence": {
+      "ts": "2012-11-02T21:41:57.000+08:00",
+      "text": "[EWL]:Longer travelling time expected along EW line in the direction towards PasirRis due to track fault between #RafflesPlace and #CityHall"
+    }
+  },
+  "observed": {
+    "outcome": {
+      "kind": "update",
+      "issueId": "2012-11-02-east-west-line-obstruction"
+    },
+    "assertions": [
+      {
+        "kind": "impact-event",
+        "presence": "required",
+        "match": {
+          "type": "service_effects.set",
+          "entity": {
+            "type": "service",
+            "serviceId": "EWL_MAIN_E"
+          },
+          "effect": {
+            "kind": "delay",
+            "duration": null
+          }
+        }
+      },
+      {
+        "kind": "impact-event",
+        "presence": "forbidden",
+        "match": {
+          "type": "service_scopes.set",
+          "entity": {
+            "type": "service",
+            "serviceId": "EWL_MAIN_E"
+          },
+          "serviceScopes": [
+            {
+              "type": "service.whole"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "expected": {
+    "outcome": {
+      "kind": "update",
+      "issueId": "2012-11-02-east-west-line-obstruction"
+    },
+    "assertions": [
+      {
+        "kind": "claim",
+        "presence": "required",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "EWL_MAIN_E"
+          },
+          "effect": {
+            "service": {
+              "kind": "delay",
+              "duration": null
+            }
+          },
+          "scopes": {
+            "service": [
+              {
+                "type": "service.whole"
+              }
+            ]
+          },
+          "statusSignal": "open",
+          "causes": [
+            "track.fault"
+          ]
+        }
+      },
+      {
+        "kind": "impact-event",
+        "presence": "required",
+        "match": {
+          "type": "service_scopes.set",
+          "entity": {
+            "type": "service",
+            "serviceId": "EWL_MAIN_E"
+          },
+          "serviceScopes": [
+            {
+              "type": "service.whole"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "claim",
+        "presence": "forbidden",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "EWL_MAIN_E"
+          },
+          "scopes": {
+            "service": [
+              {
+                "type": "service.segment",
+                "fromStationId": "RFP",
+                "toStationId": "CTH"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "kind": "claim",
+        "presence": "forbidden",
+        "match": {
+          "entity": {
+            "type": "service",
+            "serviceId": "EWL_MAIN_W"
+          }
+        }
+      }
+    ]
+  },
+  "rationale": "The follow-up asserts longer travelling time along the East-West Line towards Pasir Ris, so the operational impact covers the whole EWL_MAIN_E service. The phrase between Raffles Place and City Hall locates the track fault; it does not limit the delay scope to that segment. Reprocessing preserved the earlier RFP-to-CTH segment because it emitted no replacement service_scopes.set event."
+}

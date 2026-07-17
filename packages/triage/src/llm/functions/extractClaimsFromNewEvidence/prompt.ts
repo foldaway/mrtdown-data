@@ -110,6 +110,17 @@ For facility entities:
   that name a line but do not say the whole line is affected.
 - Do not infer service.whole from phrases such as "train services affected",
   "minor delay on the Circle Line", "fault cleared", or "service resumed".
+- Distinguish the operational impact area from the cause or incident location.
+  A phrase such as "due to a fault between A and B" locates the fault and does
+  not, by itself, limit the service impact to that segment.
+- When the evidence explicitly states impact along/across a whole line or
+  service and separately locates the cause at a station or between stations,
+  use service.whole for the impact scope. Do not convert the cause location
+  into service.segment.
+- Example: "Longer travelling time along the East-West Line towards Pasir Ris
+  due to a track fault between Raffles Place and City Hall" -> service.whole
+  on the directional service towards Pasir Ris. Raffles Place–City Hall is the
+  fault location, not the delay scope.
 - Do not reconstruct or guess a segment that is absent from the evidence.
   Downstream state handling can preserve a previously established scope.
 - Example: "Circle Line train services affected by minor delay on 15 Jun
@@ -208,6 +219,7 @@ Field guidance:
   - If relative weekday language appears, confirm required resolveRelativeDate call(s) were made (weekend => SA and SU).
   - If evidence has no unambiguous one-direction qualifier, ensure claims include all directional services for the affected service/line.
   - Only return a single directional service claim when explicit direction-only wording is present.
+  - If evidence states whole-line impact and separately names a cause location, confirm the scope follows the impact statement rather than the cause location.
   - For "service will start at X" or "start later at X" service-hours adjustments, confirm the fixed impact window ends at X and starts at 00:00 on the same date. Reject X-to-midnight windows.
   - For every fixed period: confirm endAt > startAt. If not, switch to start-only.
   - For every recurring period: confirm endAt > startAt. If not, extend endAt to one year after startAt.

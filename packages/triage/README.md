@@ -35,6 +35,9 @@ OPENAI_API_KEY=... npm run triage:regressions -- \
 recorded base revision into a temporary data root, runs current issue triage,
 claim extraction, normalization, and impact computation, compares the result
 with the semantic expectation, and deletes the temporary data afterward.
+Cases whose historical base predates the current reader schemas may specify a
+later `replayRevision` that preserves the observed bad state while keeping the
+original source revisions as provenance.
 Title generation, translation, persistence, and workflow replay remain separate
 future work.
 

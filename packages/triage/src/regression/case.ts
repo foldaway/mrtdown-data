@@ -121,6 +121,7 @@ export const RegressionCaseSchema = z.object({
   role: z.enum(['regression', 'positive-control']),
   labels: z.array(RegressionFailureLabelSchema).min(1),
   source: RegressionSourceSchema,
+  replayRevision: GitRevisionSchema.optional(),
   input: RegressionInputSchema,
   observed: RegressionResultSchema,
   expected: ExpectedRegressionResultSchema,

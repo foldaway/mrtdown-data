@@ -66,6 +66,7 @@ export interface RegressionReplayReport {
   caseId: string;
   mismatches: string[];
   passed: boolean;
+  replayRevision: string;
 }
 
 export interface MaterializedDataRoot {
@@ -78,14 +79,13 @@ export async function replayRegressionCase(
   options: RegressionReplayOptions = {},
 ): Promise<RegressionReplayReport> {
   let materialized: MaterializedDataRoot | undefined;
+  const replayRevision =
+    regressionCase.replayRevision ?? regressionCase.source.baseRevision;
 
   try {
     materialized =
       options.dataDir == null
-        ? await materializeDataAtRevision(
-            regressionCase.source.baseRevision,
-            options.repoRoot,
-          )
+        ? await materializeDataAtRevision(replayRevision, options.repoRoot)
         : undefined;
     const dataDir = options.dataDir ?? materialized?.dataDir;
     assert(dataDir != null, 'Expected replay data directory.');
@@ -103,6 +103,7 @@ export async function replayRegressionCase(
       caseId: regressionCase.id,
       mismatches,
       passed: mismatches.length === 0,
+      replayRevision,
     };
   } catch (error) {
     const actual: RegressionReplayActual = {
@@ -122,6 +123,7 @@ export async function replayRegressionCase(
       caseId: regressionCase.id,
       mismatches,
       passed: mismatches.length === 0,
+      replayRevision,
     };
   } finally {
     await materialized?.cleanup();

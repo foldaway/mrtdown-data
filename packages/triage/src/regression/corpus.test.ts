@@ -31,6 +31,45 @@ describe('regression corpus', () => {
           id: 'pr-343-dtl-recurring-period-positive-control',
           role: 'positive-control',
         }),
+        expect.objectContaining({
+          id: 'commit-757e6b-ewl-fault-location-scope',
+          role: 'regression',
+          labels: expect.arrayContaining(['scope', 'state-transition']),
+        }),
+      ]),
+    );
+  });
+
+  test('separates the EWL fault location from the whole-service delay scope', () => {
+    const [regressionCase] = filterRegressionCases(loadRegressionCorpus(), {
+      caseId: 'commit-757e6b-ewl-fault-location-scope',
+    });
+
+    expect(regressionCase.expected.assertions).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          kind: 'claim',
+          presence: 'required',
+          match: expect.objectContaining({
+            entity: {
+              type: 'service',
+              serviceId: 'EWL_MAIN_E',
+            },
+            scopes: {
+              service: [{ type: 'service.whole' }],
+            },
+          }),
+        }),
+        expect.objectContaining({
+          kind: 'claim',
+          presence: 'forbidden',
+          match: {
+            entity: {
+              type: 'service',
+              serviceId: 'EWL_MAIN_W',
+            },
+          },
+        }),
       ]),
     );
   });
