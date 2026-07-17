@@ -5,12 +5,13 @@ import { parseReExtractArgs } from './reExtractAndReplayTargets.js';
 
 const DATA_DIR = resolve(import.meta.dirname, '../../../../data');
 const args = parseReExtractArgs(process.argv.slice(2));
+const dataDir = args.dataDir == null ? DATA_DIR : resolve(args.dataDir);
 
 let summary: Awaited<ReturnType<typeof reExtractAndReplay>>;
 
 try {
   summary = await reExtractAndReplay({
-    dataDir: DATA_DIR,
+    dataDir,
     mode: args.mode,
     issueIds: args.issueIds,
     evidenceIds: args.evidenceIds,

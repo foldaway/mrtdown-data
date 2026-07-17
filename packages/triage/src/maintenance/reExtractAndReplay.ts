@@ -1,4 +1,5 @@
 import { join, resolve } from 'node:path';
+import { isDeepStrictEqual } from 'node:util';
 import type {
   Claim,
   ClaimTimeHints,
@@ -48,6 +49,27 @@ export interface ReExtractAndReplaySummary {
   totalAfter: number;
   extractErrors: number;
   results: ReExtractAndReplayIssueResult[];
+}
+
+export function preserveExistingImpactEventIds(
+  replayedEvents: ImpactEvent[],
+  originalEvents: ImpactEvent[],
+): ImpactEvent[] {
+  const unmatchedOriginalEvents = [...originalEvents];
+
+  return replayedEvents.map((replayedEvent) => {
+    const replayedWithoutId = { ...replayedEvent, id: undefined };
+    const matchingIndex = unmatchedOriginalEvents.findIndex((originalEvent) =>
+      isDeepStrictEqual({ ...originalEvent, id: undefined }, replayedWithoutId),
+    );
+
+    if (matchingIndex === -1) {
+      return replayedEvent;
+    }
+
+    const [matchingEvent] = unmatchedOriginalEvents.splice(matchingIndex, 1);
+    return { ...replayedEvent, id: matchingEvent.id } as ImpactEvent;
+  });
 }
 
 /**
@@ -241,6 +263,10 @@ export async function reExtractAndReplay(
       ];
     }
 
+    const reconciledImpactEvents = preserveExistingImpactEventIds(
+      newImpactEvents,
+      impactEvents,
+    );
     const issuePath = repo.issues.getPath(issueId);
     if (issuePath == null) {
       continue;
@@ -248,13 +274,13 @@ export async function reExtractAndReplay(
 
     const impactRelPath = join(issuePath, 'impact.ndjson');
     const content =
-      newImpactEvents.length > 0
-        ? `${newImpactEvents.map((event) => NdJson.stringify([event])).join('\n')}\n`
+      reconciledImpactEvents.length > 0
+        ? `${reconciledImpactEvents.map((event) => NdJson.stringify([event])).join('\n')}\n`
         : '';
     writeStore.writeText(impactRelPath, content);
 
     const before = impactEvents.length;
-    const after = newImpactEvents.length;
+    const after = reconciledImpactEvents.length;
     totalBefore += before;
     totalAfter += after;
     results.push({

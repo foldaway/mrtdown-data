@@ -30,6 +30,7 @@
   "scripts": {
     "build": "tsc",
     "regressions": "node dist/scripts/regressionCorpus.js",
+    "reextract": "node dist/scripts/reExtractAndReplay.js",
     "test": "node ../../scripts/run-fixture-command.mjs -- npm exec -- vitest --run",
     "test:eval": "node ../../scripts/run-fixture-command.mjs -- npm exec -- vitest --run --config vitest.eval.config.ts"
   },

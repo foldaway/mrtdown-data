@@ -41,6 +41,27 @@ original source revisions as provenance.
 Title generation, translation, persistence, and workflow replay remain separate
 future work.
 
+## Targeted canonical repair
+
+Use explicit mode to re-extract named evidence and replay its issue impact
+stream. Both `--issue` and `--evidence` are required so a repair cannot expand
+silently to unrelated canonical records. Add `--dry-run` to inspect target
+selection without model calls or writes:
+
+```sh
+npm run triage:reextract -- \
+  --mode explicit \
+  --issue 2012-11-02-east-west-line-obstruction \
+  --evidence ev_017B0NPK48TF94BFD4XXRTVE47 \
+  --dry-run
+```
+
+For a paid candidate replay, copy `data/` to a temporary directory, pass its
+path with `--data-dir`, and omit `--dry-run`. The replay rewrites only selected
+issue impact streams and preserves IDs for semantically unchanged events.
+Omitting `--data-dir` writes to canonical `data/`, so validate and inspect the
+candidate diff first.
+
 ## Crowd Reports
 
 Crowd reports enter triage through the shared

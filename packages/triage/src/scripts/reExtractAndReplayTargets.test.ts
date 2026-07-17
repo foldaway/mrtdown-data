@@ -72,6 +72,37 @@ describe('parseReExtractArgs', () => {
     });
   });
 
+  test('parses guarded explicit targets and a candidate data directory', () => {
+    expect(
+      parseReExtractArgs([
+        '--mode',
+        'explicit',
+        '--issue',
+        'issue-1',
+        '--evidence',
+        'ev-1',
+        '--data-dir',
+        '/tmp/candidate-data',
+        '--dry-run',
+      ]),
+    ).toEqual({
+      dataDir: '/tmp/candidate-data',
+      dryRun: true,
+      mode: 'explicit',
+      issueIds: new Set(['issue-1']),
+      evidenceIds: new Set(['ev-1']),
+    });
+  });
+
+  test('requires both issue and evidence filters in explicit mode', () => {
+    expect(() => parseReExtractArgs(['--mode', 'explicit'])).toThrow(
+      'Explicit mode requires at least one --issue',
+    );
+    expect(() =>
+      parseReExtractArgs(['--mode', 'explicit', '--issue', 'issue-1']),
+    ).toThrow('Explicit mode requires at least one --evidence');
+  });
+
   test('rejects flags as issue and evidence values', () => {
     expect(() => parseReExtractArgs(['--issue', '--dry-run'])).toThrow(
       'Missing value for --issue',
@@ -104,6 +135,25 @@ describe('hasPeriodViolation', () => {
 });
 
 describe('collectReExtractTargets', () => {
+  test('selects only explicitly named evidence within explicitly named issues', () => {
+    const bundle = makeIssueBundle({
+      issueId: 'issue-1',
+      evidence: [
+        { id: 'ev-1', ts: '2026-01-01T10:00:00+08:00', text: 'First' },
+        { id: 'ev-2', ts: '2026-01-01T11:00:00+08:00', text: 'Second' },
+      ],
+      impactEvents: [],
+    });
+
+    expect(
+      collectReExtractTargets(makeRepo([bundle]), {
+        mode: 'explicit',
+        issueIds: new Set(['issue-1']),
+        evidenceIds: new Set(['ev-2']),
+      }),
+    ).toEqual(new Map([['issue-1', new Set(['ev-2'])]]));
+  });
+
   test('finds degraded-service evidence misclassified as future no-service', () => {
     const bundle = makeIssueBundle({
       issueId: '2025-12-05-ewl-track-testing-depot-disconnection',

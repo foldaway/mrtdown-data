@@ -8,7 +8,8 @@ import {
 export type ReExtractMode =
   | 'period-violations'
   | 'degraded-future-no-service'
-  | 'empty-impact';
+  | 'empty-impact'
+  | 'explicit';
 
 export interface ReExtractTargetOptions {
   mode: ReExtractMode;
@@ -17,6 +18,7 @@ export interface ReExtractTargetOptions {
 }
 
 export interface ParsedReExtractArgs extends ReExtractTargetOptions {
+  dataDir?: string;
   dryRun: boolean;
 }
 
@@ -24,6 +26,7 @@ export function parseReExtractArgs(argv: string[]): ParsedReExtractArgs {
   const issueIds = new Set<string>();
   const evidenceIds = new Set<string>();
   let mode: ReExtractMode = 'period-violations';
+  let dataDir: string | undefined;
   let dryRun = false;
 
   for (let index = 0; index < argv.length; index++) {
@@ -39,11 +42,22 @@ export function parseReExtractArgs(argv: string[]): ParsedReExtractArgs {
       if (
         value !== 'period-violations' &&
         value !== 'degraded-future-no-service' &&
-        value !== 'empty-impact'
+        value !== 'empty-impact' &&
+        value !== 'explicit'
       ) {
         throw new Error(`Unsupported --mode value: ${value ?? '(missing)'}`);
       }
       mode = value;
+      index++;
+      continue;
+    }
+
+    if (arg === '--data-dir') {
+      const value = argv[index + 1];
+      if (value == null || value.startsWith('-')) {
+        throw new Error('Missing value for --data-dir');
+      }
+      dataDir = value;
       index++;
       continue;
     }
@@ -71,8 +85,18 @@ export function parseReExtractArgs(argv: string[]): ParsedReExtractArgs {
     throw new Error(`Unknown argument: ${arg}`);
   }
 
+  if (mode === 'explicit') {
+    if (issueIds.size === 0) {
+      throw new Error('Explicit mode requires at least one --issue');
+    }
+    if (evidenceIds.size === 0) {
+      throw new Error('Explicit mode requires at least one --evidence');
+    }
+  }
+
   return {
     mode,
+    ...(dataDir == null ? {} : { dataDir }),
     dryRun,
     issueIds: issueIds.size > 0 ? issueIds : undefined,
     evidenceIds: evidenceIds.size > 0 ? evidenceIds : undefined,
@@ -173,11 +197,17 @@ export function collectReExtractTargets(
     if (!bundle) continue;
 
     const evidenceIds =
-      options.mode === 'degraded-future-no-service'
-        ? collectDegradedFutureNoServiceEvidenceIds(bundle)
-        : options.mode === 'empty-impact'
-          ? collectEmptyImpactEvidenceIds(bundle)
-          : collectViolationEvidenceIds(bundle);
+      options.mode === 'explicit'
+        ? new Set(
+            bundle.evidence
+              .filter((evidence) => options.evidenceIds?.has(evidence.id))
+              .map((evidence) => evidence.id),
+          )
+        : options.mode === 'degraded-future-no-service'
+          ? collectDegradedFutureNoServiceEvidenceIds(bundle)
+          : options.mode === 'empty-impact'
+            ? collectEmptyImpactEvidenceIds(bundle)
+            : collectViolationEvidenceIds(bundle);
 
     if (options.evidenceIds != null) {
       for (const evidenceId of [...evidenceIds]) {
