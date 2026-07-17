@@ -47,7 +47,28 @@
         }
       }
     ],
-    "platforms": [],
+    "platforms": [
+      {
+        "id": "KGK_SKLRT_1",
+        "label": "1",
+        "lastUpdated": "2026-07-18",
+        "lineId": "SKLRT",
+        "serviceIds": [
+          "SKLRT_E_CW"
+        ],
+        "accessPoints": []
+      },
+      {
+        "id": "KGK_SKLRT_2",
+        "label": "2",
+        "lastUpdated": "2026-07-18",
+        "lineId": "SKLRT",
+        "serviceIds": [
+          "SKLRT_E_CCW"
+        ],
+        "accessPoints": []
+      }
+    ],
     "transferPaths": []
   }
 }
