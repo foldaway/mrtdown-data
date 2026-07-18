@@ -4,5 +4,5 @@
 ---
 
 Require provenance dates on durable station layout records, add temporary exit
-closure and alighting-only platform statuses, and keep transfer endpoints as
+closure and non-boardable platform statuses, and keep transfer endpoints as
 lightweight references.

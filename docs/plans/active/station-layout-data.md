@@ -203,7 +203,8 @@ Rules:
 Platforms represent public boarding areas. They should reference full scheduled
 service patterns through `serviceIds`. A terminal platform used only to unload
 arriving passengers remains part of the layout with `boardingStatus` set to
-`alighting_only`.
+`alighting_only`. A platform that exists physically but is unavailable for
+ordinary passenger service uses `not_in_service`.
 
 ```json
 {
@@ -222,8 +223,10 @@ Rules:
 - Use `serviceIds`, not `towardsStationId`. The service path is the source of
   truth for direction, stopping pattern, and terminal.
 - Use an array because platforms can host multiple scheduled patterns.
-- `serviceIds` must not be empty unless `boardingStatus` is `alighting_only`.
-  Alighting-only platforms do not advertise an arriving service as boardable.
+- `serviceIds` must be non-empty for ordinary boarding platforms and empty when
+  `boardingStatus` is `alighting_only` or `not_in_service`. Non-boardable
+  platforms do not advertise arriving, occasional, or inactive services as
+  boardable.
 - `doorCount` is preferred over enumerating every door when doors have no
   individual metadata.
 - Keep `lineId` for simple validation and authoring, even though it can be

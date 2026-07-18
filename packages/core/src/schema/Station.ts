@@ -187,6 +187,7 @@ export type StationLayoutAccessPoint = z.infer<
 
 export const StationLayoutPlatformBoardingStatusSchema = z.enum([
   'alighting_only',
+  'not_in_service',
 ]);
 export type StationLayoutPlatformBoardingStatus = z.infer<
   typeof StationLayoutPlatformBoardingStatusSchema
@@ -205,14 +206,19 @@ export const StationLayoutPlatformSchema = z
     accessPoints: z.array(StationLayoutAccessPointSchema),
   })
   .superRefine((platform, context) => {
-    if (
-      platform.serviceIds.length === 0 &&
-      platform.boardingStatus !== 'alighting_only'
-    ) {
+    if (platform.serviceIds.length === 0 && !platform.boardingStatus) {
       context.addIssue({
         code: 'custom',
         message:
-          'serviceIds must not be empty unless the platform is alighting-only',
+          'serviceIds must not be empty unless the platform is non-boardable',
+        path: ['serviceIds'],
+      });
+    }
+
+    if (platform.serviceIds.length > 0 && platform.boardingStatus) {
+      context.addIssue({
+        code: 'custom',
+        message: 'non-boardable platforms must not advertise serviceIds',
         path: ['serviceIds'],
       });
     }

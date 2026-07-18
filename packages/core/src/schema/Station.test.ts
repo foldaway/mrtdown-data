@@ -320,4 +320,31 @@ describe('StationSchema', () => {
       }),
     ).not.toThrow();
   });
+
+  it('rejects service ids on non-boardable platforms', () => {
+    const result = StationSchema.safeParse({
+      ...minimalStation(),
+      layout: {
+        levels: [],
+        exits: [],
+        platforms: [
+          {
+            id: 'KET_ISL_A',
+            label: 'A',
+            lastUpdated: '2026-07-18',
+            boardingStatus: 'alighting_only',
+            lineId: 'ISL',
+            serviceIds: ['ISL_MAIN_E'],
+            accessPoints: [],
+          },
+        ],
+        transferPaths: [],
+      },
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues[0]?.path.join('.')).toBe(
+      'layout.platforms.0.serviceIds',
+    );
+  });
 });

@@ -36,7 +36,6 @@
         "lastUpdated": "2026-07-18",
         "lineId": "CCL",
         "serviceIds": [
-          "CCL_BRANCH_CCW",
           "CCL_LOOP_CCW"
         ],
         "doorCount": 12,
