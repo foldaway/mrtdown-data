@@ -195,13 +195,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "BNV_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "BNV_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "BNV_CCL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "BNV_CCL_A"
         },
         "paidArea": true,
         "modes": [
@@ -217,13 +215,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "BNV_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "BNV_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "BNV_CCL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "BNV_CCL_B"
         },
         "paidArea": true,
         "modes": [
@@ -239,13 +235,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "BNV_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "BNV_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "BNV_CCL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "BNV_CCL_A"
         },
         "paidArea": true,
         "modes": [
@@ -261,13 +255,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "BNV_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "BNV_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "BNV_CCL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "BNV_CCL_B"
         },
         "paidArea": true,
         "modes": [

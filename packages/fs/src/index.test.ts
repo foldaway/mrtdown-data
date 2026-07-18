@@ -2961,12 +2961,10 @@ describe('@mrtdown/fs', () => {
                 from: {
                   kind: 'platform',
                   id: 'MISSING_PLATFORM',
-                  lastUpdated: '2026-07-18',
                 },
                 to: {
                   kind: 'access_point',
                   id: 'MISSING_ACCESS_POINT',
-                  lastUpdated: '2026-07-18',
                 },
                 paidArea: true,
                 modes: ['walk'],

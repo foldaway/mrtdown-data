@@ -231,13 +231,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "PYL_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "PYL_CCL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_CCL_A"
         },
         "paidArea": true,
         "modes": [
@@ -253,13 +251,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "PYL_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "PYL_CCL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_CCL_C"
         },
         "paidArea": true,
         "modes": [
@@ -275,13 +271,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "PYL_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "PYL_CCL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_CCL_D"
         },
         "paidArea": true,
         "modes": [
@@ -297,13 +291,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "PYL_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "PYL_CCL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_CCL_B"
         },
         "paidArea": true,
         "modes": [
@@ -319,13 +311,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "PYL_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "PYL_CCL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_CCL_A"
         },
         "paidArea": true,
         "modes": [
@@ -341,13 +331,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "PYL_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "PYL_CCL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_CCL_C"
         },
         "paidArea": true,
         "modes": [
@@ -363,13 +351,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "PYL_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "PYL_CCL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_CCL_D"
         },
         "paidArea": true,
         "modes": [
@@ -385,13 +371,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "PYL_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "PYL_CCL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "PYL_CCL_B"
         },
         "paidArea": true,
         "modes": [

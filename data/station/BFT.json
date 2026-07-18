@@ -216,13 +216,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "BFT_DTL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "BFT_DTL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "BFT_CCL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "BFT_CCL_B"
         },
         "paidArea": true,
         "modes": [
@@ -238,13 +236,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "BFT_DTL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "BFT_DTL_C"
         },
         "to": {
           "kind": "platform",
-          "id": "BFT_CCL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "BFT_CCL_D"
         },
         "paidArea": true,
         "modes": [
@@ -260,13 +256,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "BFT_DTL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "BFT_DTL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "BFT_CCL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "BFT_CCL_D"
         },
         "paidArea": true,
         "modes": [
@@ -282,13 +276,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "BFT_CCL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "BFT_CCL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "BFT_DTL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "BFT_DTL_C"
         },
         "paidArea": true,
         "modes": [

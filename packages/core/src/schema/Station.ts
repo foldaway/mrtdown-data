@@ -185,22 +185,43 @@ export type StationLayoutAccessPoint = z.infer<
   typeof StationLayoutAccessPointSchema
 >;
 
-export const StationLayoutPlatformSchema = z.object({
-  id: z.string(),
-  label: z.string(),
-  lastUpdated: z.iso.date(),
-  lineId: z.string(),
-  levelId: z.string().optional(),
-  serviceIds: z.array(z.string()).nonempty(),
-  doorCount: z.number().int().positive().optional(),
-  accessPoints: z.array(StationLayoutAccessPointSchema),
-});
+export const StationLayoutPlatformBoardingStatusSchema = z.enum([
+  'alighting_only',
+]);
+export type StationLayoutPlatformBoardingStatus = z.infer<
+  typeof StationLayoutPlatformBoardingStatusSchema
+>;
+
+export const StationLayoutPlatformSchema = z
+  .object({
+    id: z.string(),
+    label: z.string(),
+    lastUpdated: z.iso.date(),
+    boardingStatus: StationLayoutPlatformBoardingStatusSchema.optional(),
+    lineId: z.string(),
+    levelId: z.string().optional(),
+    serviceIds: z.array(z.string()),
+    doorCount: z.number().int().positive().optional(),
+    accessPoints: z.array(StationLayoutAccessPointSchema),
+  })
+  .superRefine((platform, context) => {
+    if (
+      platform.serviceIds.length === 0 &&
+      platform.boardingStatus !== 'alighting_only'
+    ) {
+      context.addIssue({
+        code: 'custom',
+        message:
+          'serviceIds must not be empty unless the platform is alighting-only',
+        path: ['serviceIds'],
+      });
+    }
+  });
 export type StationLayoutPlatform = z.infer<typeof StationLayoutPlatformSchema>;
 
 export const StationLayoutTransferEndpointSchema = z.object({
   kind: StationLayoutTransferEndpointKindSchema,
   id: z.string(),
-  lastUpdated: z.iso.date(),
 });
 export type StationLayoutTransferEndpoint = z.infer<
   typeof StationLayoutTransferEndpointSchema

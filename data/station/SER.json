@@ -226,13 +226,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "SER_NEL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "SER_NEL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "SER_CCL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "SER_CCL_A"
         },
         "paidArea": true,
         "modes": [
@@ -248,13 +246,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "SER_NEL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "SER_NEL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "SER_CCL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "SER_CCL_B"
         },
         "paidArea": true,
         "modes": [
@@ -270,13 +266,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "SER_NEL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "SER_NEL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "SER_CCL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "SER_CCL_A"
         },
         "paidArea": true,
         "modes": [
@@ -292,13 +286,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "SER_NEL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "SER_NEL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "SER_CCL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "SER_CCL_B"
         },
         "paidArea": true,
         "modes": [

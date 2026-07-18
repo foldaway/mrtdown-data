@@ -239,13 +239,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "RFP_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "RFP_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "RFP_NSL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "RFP_NSL_B"
         },
         "paidArea": true,
         "modes": [
@@ -261,13 +259,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "RFP_EWL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "RFP_EWL_C"
         },
         "to": {
           "kind": "platform",
-          "id": "RFP_NSL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "RFP_NSL_D"
         },
         "paidArea": true,
         "modes": [
@@ -283,13 +279,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "RFP_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "RFP_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "RFP_NSL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "RFP_NSL_D"
         },
         "paidArea": true,
         "modes": [
@@ -305,13 +299,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "RFP_NSL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "RFP_NSL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "RFP_EWL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "RFP_EWL_C"
         },
         "paidArea": true,
         "modes": [

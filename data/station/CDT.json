@@ -209,13 +209,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "CCDT_A",
-          "lastUpdated": "2026-07-18"
+          "id": "CCDT_A"
         },
         "to": {
           "kind": "platform",
-          "id": "TCDT_D",
-          "lastUpdated": "2026-07-18"
+          "id": "TCDT_D"
         },
         "paidArea": true,
         "modes": [
@@ -231,13 +229,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "CCDT_A",
-          "lastUpdated": "2026-07-18"
+          "id": "CCDT_A"
         },
         "to": {
           "kind": "platform",
-          "id": "TCDT_C",
-          "lastUpdated": "2026-07-18"
+          "id": "TCDT_C"
         },
         "paidArea": true,
         "modes": [
@@ -253,13 +249,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "CCDT_B",
-          "lastUpdated": "2026-07-18"
+          "id": "CCDT_B"
         },
         "to": {
           "kind": "platform",
-          "id": "TCDT_D",
-          "lastUpdated": "2026-07-18"
+          "id": "TCDT_D"
         },
         "paidArea": true,
         "modes": [
@@ -275,13 +269,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "CCDT_B",
-          "lastUpdated": "2026-07-18"
+          "id": "CCDT_B"
         },
         "to": {
           "kind": "platform",
-          "id": "TCDT_C",
-          "lastUpdated": "2026-07-18"
+          "id": "TCDT_C"
         },
         "paidArea": true,
         "modes": [

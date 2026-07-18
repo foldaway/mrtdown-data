@@ -208,13 +208,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "JUR_NSL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_NSL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "JUR_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_EWL_B"
         },
         "paidArea": true,
         "modes": [
@@ -230,13 +228,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "JUR_EWL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_EWL_C"
         },
         "to": {
           "kind": "platform",
-          "id": "JUR_NSL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_NSL_D"
         },
         "paidArea": true,
         "modes": [
@@ -252,13 +248,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "JUR_NSL_E",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_NSL_E"
         },
         "to": {
           "kind": "platform",
-          "id": "JUR_EWL_F",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_EWL_F"
         },
         "paidArea": true,
         "modes": [
@@ -274,13 +268,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "JUR_NSL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_NSL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "JUR_EWL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_EWL_C"
         },
         "paidArea": true,
         "modes": [
@@ -296,13 +288,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "JUR_NSL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_NSL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "JUR_EWL_F",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_EWL_F"
         },
         "paidArea": true,
         "modes": [
@@ -318,13 +308,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "JUR_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "JUR_NSL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_NSL_D"
         },
         "paidArea": true,
         "modes": [
@@ -340,13 +328,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "JUR_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "JUR_NSL_E",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_NSL_E"
         },
         "paidArea": true,
         "modes": [
@@ -362,13 +348,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "JUR_EWL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_EWL_C"
         },
         "to": {
           "kind": "platform",
-          "id": "JUR_NSL_E",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_NSL_E"
         },
         "paidArea": true,
         "modes": [
@@ -384,13 +368,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "JUR_NSL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_NSL_D"
         },
         "to": {
           "kind": "platform",
-          "id": "JUR_EWL_F",
-          "lastUpdated": "2026-07-18"
+          "id": "JUR_EWL_F"
         },
         "paidArea": true,
         "modes": [

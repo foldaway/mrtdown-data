@@ -89,10 +89,9 @@
         "id": "MSP_NSL_B",
         "label": "B",
         "lastUpdated": "2026-07-18",
+        "boardingStatus": "alighting_only",
         "lineId": "NSL",
-        "serviceIds": [
-          "NSL_MAIN_S"
-        ],
+        "serviceIds": [],
         "doorCount": 24,
         "accessPoints": []
       }

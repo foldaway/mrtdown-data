@@ -228,12 +228,10 @@ describe('StationSchema', () => {
               from: {
                 kind: 'platform',
                 id: 'KET_ISL_A',
-                lastUpdated: '2026-07-18',
               },
               to: {
                 kind: 'level',
                 id: 'B2',
-                lastUpdated: '2026-07-18',
               },
               paidArea: true,
               modes: ['walk', 'escalator'],
@@ -297,5 +295,29 @@ describe('StationSchema', () => {
     expect(result.error?.issues[0]?.path.join('.')).toBe(
       'layout.platforms.0.serviceIds',
     );
+  });
+
+  it('accepts alighting-only platforms without service ids', () => {
+    expect(() =>
+      StationSchema.parse({
+        ...minimalStation(),
+        layout: {
+          levels: [],
+          exits: [],
+          platforms: [
+            {
+              id: 'KET_ISL_A',
+              label: 'A',
+              lastUpdated: '2026-07-18',
+              boardingStatus: 'alighting_only',
+              lineId: 'ISL',
+              serviceIds: [],
+              accessPoints: [],
+            },
+          ],
+          transferPaths: [],
+        },
+      }),
+    ).not.toThrow();
   });
 });

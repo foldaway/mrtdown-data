@@ -201,7 +201,9 @@ Rules:
 ## Platforms
 
 Platforms represent public boarding areas. They should reference full scheduled
-service patterns through `serviceIds`.
+service patterns through `serviceIds`. A terminal platform used only to unload
+arriving passengers remains part of the layout with `boardingStatus` set to
+`alighting_only`.
 
 ```json
 {
@@ -220,6 +222,8 @@ Rules:
 - Use `serviceIds`, not `towardsStationId`. The service path is the source of
   truth for direction, stopping pattern, and terminal.
 - Use an array because platforms can host multiple scheduled patterns.
+- `serviceIds` must not be empty unless `boardingStatus` is `alighting_only`.
+  Alighting-only platforms do not advertise an arriving service as boardable.
 - `doorCount` is preferred over enumerating every door when doors have no
   individual metadata.
 - Keep `lineId` for simple validation and authoring, even though it can be
@@ -319,6 +323,9 @@ Initial `classification` values:
 
 The classification is intentionally coarse. It is useful for routing and user
 interfaces without pretending that all stations have measured distance data.
+Transfer endpoint objects are lightweight references and therefore contain only
+`kind` and `id`; provenance belongs to the transfer path and referenced layout
+record rather than being duplicated on each reference.
 
 ## Validation
 

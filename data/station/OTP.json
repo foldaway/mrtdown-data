@@ -284,13 +284,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "OTP_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "OTP_NEL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_NEL_C"
         },
         "paidArea": true,
         "modes": [
@@ -306,13 +304,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "OTP_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "OTP_NEL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_NEL_D"
         },
         "paidArea": true,
         "modes": [
@@ -328,13 +324,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "OTP_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "OTP_TEL_E",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_TEL_E"
         },
         "paidArea": true,
         "modes": [
@@ -350,13 +344,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "OTP_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "OTP_TEL_F",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_TEL_F"
         },
         "paidArea": true,
         "modes": [
@@ -372,13 +364,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "OTP_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "OTP_NEL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_NEL_C"
         },
         "paidArea": true,
         "modes": [
@@ -394,13 +384,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "OTP_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "OTP_NEL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_NEL_D"
         },
         "paidArea": true,
         "modes": [
@@ -416,13 +404,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "OTP_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "OTP_TEL_E",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_TEL_E"
         },
         "paidArea": true,
         "modes": [
@@ -438,13 +424,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "OTP_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "OTP_TEL_F",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_TEL_F"
         },
         "paidArea": true,
         "modes": [
@@ -460,13 +444,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "OTP_NEL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_NEL_C"
         },
         "to": {
           "kind": "platform",
-          "id": "OTP_TEL_E",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_TEL_E"
         },
         "paidArea": true,
         "modes": [
@@ -482,13 +464,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "OTP_NEL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_NEL_C"
         },
         "to": {
           "kind": "platform",
-          "id": "OTP_TEL_F",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_TEL_F"
         },
         "paidArea": true,
         "modes": [
@@ -504,13 +484,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "OTP_NEL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_NEL_D"
         },
         "to": {
           "kind": "platform",
-          "id": "OTP_TEL_E",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_TEL_E"
         },
         "paidArea": true,
         "modes": [
@@ -526,13 +504,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "OTP_NEL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_NEL_D"
         },
         "to": {
           "kind": "platform",
-          "id": "OTP_TEL_F",
-          "lastUpdated": "2026-07-18"
+          "id": "OTP_TEL_F"
         },
         "paidArea": true,
         "modes": [

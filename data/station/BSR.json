@@ -99,10 +99,9 @@
         "id": "BSR_TEL_A",
         "label": "A",
         "lastUpdated": "2026-07-18",
+        "boardingStatus": "alighting_only",
         "lineId": "TEL",
-        "serviceIds": [
-          "TEL_MAIN_S"
-        ],
+        "serviceIds": [],
         "doorCount": 20,
         "accessPoints": []
       },

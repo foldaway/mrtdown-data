@@ -3,5 +3,6 @@
 "@mrtdown/fs": patch
 ---
 
-Require provenance dates on station layout records and add temporary exit
-closure status so consumers can avoid unavailable station access points.
+Require provenance dates on durable station layout records, add temporary exit
+closure and alighting-only platform statuses, and keep transfer endpoints as
+lightweight references.

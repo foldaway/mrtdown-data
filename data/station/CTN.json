@@ -209,13 +209,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "CTN_NEL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "CTN_NEL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "CTN_DTL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "CTN_DTL_C"
         },
         "paidArea": true,
         "modes": [
@@ -231,13 +229,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "CTN_NEL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "CTN_NEL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "CTN_DTL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "CTN_DTL_D"
         },
         "paidArea": true,
         "modes": [
@@ -253,13 +249,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "CTN_NEL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "CTN_NEL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "CTN_DTL_C",
-          "lastUpdated": "2026-07-18"
+          "id": "CTN_DTL_C"
         },
         "paidArea": true,
         "modes": [
@@ -275,13 +269,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "CTN_NEL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "CTN_NEL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "CTN_DTL_D",
-          "lastUpdated": "2026-07-18"
+          "id": "CTN_DTL_D"
         },
         "paidArea": true,
         "modes": [

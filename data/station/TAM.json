@@ -202,13 +202,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "TAM_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "TAM_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "TAM_DTL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "TAM_DTL_A"
         },
         "paidArea": false,
         "modes": [
@@ -224,13 +222,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "TAM_EWL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "TAM_EWL_A"
         },
         "to": {
           "kind": "platform",
-          "id": "TAM_DTL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "TAM_DTL_B"
         },
         "paidArea": false,
         "modes": [
@@ -246,13 +242,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "TAM_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "TAM_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "TAM_DTL_A",
-          "lastUpdated": "2026-07-18"
+          "id": "TAM_DTL_A"
         },
         "paidArea": false,
         "modes": [
@@ -268,13 +262,11 @@
         "lastUpdated": "2026-07-18",
         "from": {
           "kind": "platform",
-          "id": "TAM_EWL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "TAM_EWL_B"
         },
         "to": {
           "kind": "platform",
-          "id": "TAM_DTL_B",
-          "lastUpdated": "2026-07-18"
+          "id": "TAM_DTL_B"
         },
         "paidArea": false,
         "modes": [
