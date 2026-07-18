@@ -225,26 +225,6 @@
         "distanceMeters": null
       },
       {
-        "id": "XPO_XFER_EWL_A_DTL_D",
-        "lastUpdated": "2026-07-18",
-        "from": {
-          "kind": "platform",
-          "id": "XPO_EWL_A"
-        },
-        "to": {
-          "kind": "platform",
-          "id": "XPO_DTL_D"
-        },
-        "paidArea": true,
-        "modes": [
-          "walk"
-        ],
-        "levelChange": null,
-        "classification": "unknown",
-        "estimatedTraversalSeconds": null,
-        "distanceMeters": null
-      },
-      {
         "id": "XPO_XFER_EWL_B_DTL_C",
         "lastUpdated": "2026-07-18",
         "from": {
@@ -254,26 +234,6 @@
         "to": {
           "kind": "platform",
           "id": "XPO_DTL_C"
-        },
-        "paidArea": true,
-        "modes": [
-          "walk"
-        ],
-        "levelChange": null,
-        "classification": "unknown",
-        "estimatedTraversalSeconds": null,
-        "distanceMeters": null
-      },
-      {
-        "id": "XPO_XFER_EWL_B_DTL_D",
-        "lastUpdated": "2026-07-18",
-        "from": {
-          "kind": "platform",
-          "id": "XPO_EWL_B"
-        },
-        "to": {
-          "kind": "platform",
-          "id": "XPO_DTL_D"
         },
         "paidArea": true,
         "modes": [

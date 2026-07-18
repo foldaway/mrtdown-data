@@ -75,6 +75,10 @@
           "BPLRT_A",
           "BPLRT_B"
         ],
+        "serviceStopOccurrences": {
+          "BPLRT_A": 1,
+          "BPLRT_B": 1
+        },
         "accessPoints": []
       },
       {
@@ -86,6 +90,10 @@
           "BPLRT_A",
           "BPLRT_B"
         ],
+        "serviceStopOccurrences": {
+          "BPLRT_A": 0,
+          "BPLRT_B": 0
+        },
         "accessPoints": []
       }
     ],

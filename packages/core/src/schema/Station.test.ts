@@ -347,4 +347,33 @@ describe('StationSchema', () => {
       'layout.platforms.0.serviceIds',
     );
   });
+
+  it('rejects stop occurrences for services not served by the platform', () => {
+    const result = StationSchema.safeParse({
+      ...minimalStation(),
+      layout: {
+        levels: [],
+        exits: [],
+        platforms: [
+          {
+            id: 'KET_ISL_A',
+            label: 'A',
+            lastUpdated: '2026-07-18',
+            lineId: 'ISL',
+            serviceIds: ['ISL_MAIN_E'],
+            serviceStopOccurrences: {
+              ISL_MAIN_W: 1,
+            },
+            accessPoints: [],
+          },
+        ],
+        transferPaths: [],
+      },
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues[0]?.path.join('.')).toBe(
+      'layout.platforms.0.serviceStopOccurrences.ISL_MAIN_W',
+    );
+  });
 });

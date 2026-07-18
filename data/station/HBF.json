@@ -148,6 +148,9 @@
           "CCL_BRANCH_CCW",
           "CCL_LOOP_CCW"
         ],
+        "serviceStopOccurrences": {
+          "CCL_LOOP_CCW": 0
+        },
         "doorCount": 12,
         "accessPoints": []
       },
@@ -160,6 +163,9 @@
           "CCL_BRANCH_CW",
           "CCL_LOOP_CW"
         ],
+        "serviceStopOccurrences": {
+          "CCL_LOOP_CW": 0
+        },
         "doorCount": 12,
         "accessPoints": []
       }

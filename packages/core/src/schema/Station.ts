@@ -202,6 +202,9 @@ export const StationLayoutPlatformSchema = z
     lineId: z.string(),
     levelId: z.string().optional(),
     serviceIds: z.array(z.string()),
+    serviceStopOccurrences: z
+      .record(z.string(), z.number().int().nonnegative())
+      .optional(),
     doorCount: z.number().int().positive().optional(),
     accessPoints: z.array(StationLayoutAccessPointSchema),
   })
@@ -221,6 +224,18 @@ export const StationLayoutPlatformSchema = z
         message: 'non-boardable platforms must not advertise serviceIds',
         path: ['serviceIds'],
       });
+    }
+
+    for (const serviceId of Object.keys(
+      platform.serviceStopOccurrences ?? {},
+    )) {
+      if (!platform.serviceIds.includes(serviceId)) {
+        context.addIssue({
+          code: 'custom',
+          message: 'service stop occurrences must reference a serviceId',
+          path: ['serviceStopOccurrences', serviceId],
+        });
+      }
     }
   });
 export type StationLayoutPlatform = z.infer<typeof StationLayoutPlatformSchema>;

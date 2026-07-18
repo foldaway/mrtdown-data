@@ -138,6 +138,10 @@
           "SKLRT_E_CCW",
           "SKLRT_W_CW"
         ],
+        "serviceStopOccurrences": {
+          "SKLRT_E_CCW": 0,
+          "SKLRT_W_CW": 0
+        },
         "accessPoints": []
       },
       {
@@ -149,6 +153,10 @@
           "SKLRT_E_CW",
           "SKLRT_W_CCW"
         ],
+        "serviceStopOccurrences": {
+          "SKLRT_E_CW": 0,
+          "SKLRT_W_CCW": 0
+        },
         "accessPoints": []
       }
     ],

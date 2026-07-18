@@ -412,10 +412,44 @@ async function validateStationReferences(
             continue;
           }
 
-          if (!serviceIncludesStation(service.value, station.value.id)) {
+          const openRevisions = service.value.revisions.filter(
+            (revision) => revision.endAt === null,
+          );
+          if (openRevisions.length === 0) {
             errors.push(
-              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not include station ${station.value.id} in any service revision`,
+              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not have an open service revision`,
             );
+            continue;
+          }
+
+          for (const revision of openRevisions) {
+            const stationOccurrenceCount = revision.path.stations.filter(
+              (serviceStation) => serviceStation.stationId === station.value.id,
+            ).length;
+            if (stationOccurrenceCount === 0) {
+              errors.push(
+                `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} revision ${revision.id} does not include station ${station.value.id} in its open service path`,
+              );
+              continue;
+            }
+
+            const selectedOccurrence =
+              platform.serviceStopOccurrences?.[serviceId];
+            if (
+              stationOccurrenceCount > 1 &&
+              selectedOccurrence === undefined
+            ) {
+              errors.push(
+                `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} visits station ${station.value.id} ${stationOccurrenceCount} times in open revision ${revision.id}; serviceStopOccurrences.${serviceId} is required`,
+              );
+            } else if (
+              selectedOccurrence !== undefined &&
+              selectedOccurrence >= stationOccurrenceCount
+            ) {
+              errors.push(
+                `${station.path}: layout.platforms.${platformIndex}.serviceStopOccurrences.${serviceId} ${selectedOccurrence} is outside ${stationOccurrenceCount} station occurrences in open revision ${revision.id}`,
+              );
+            }
           }
         }
       }

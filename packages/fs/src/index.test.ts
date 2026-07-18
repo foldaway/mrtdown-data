@@ -2943,7 +2943,7 @@ describe('@mrtdown/fs', () => {
                 label: 'A',
                 lastUpdated: '2026-07-18',
                 lineId: 'ISL',
-                serviceIds: ['TWL_MAIN_N', 'ISL_SKIP_KET'],
+                serviceIds: ['TWL_MAIN_N', 'ISL_SKIP_KET', 'ISL_REPEAT_KET'],
                 accessPoints: [
                   {
                     id: 'KET_AP_DUP',
@@ -2994,14 +2994,87 @@ describe('@mrtdown/fs', () => {
           lineId: 'ISL',
           revisions: [
             {
-              id: 'r_current',
+              id: 'r_historical',
               startAt: '1979-10-01',
+              endAt: '1980-01-01',
+              path: {
+                stations: [
+                  {
+                    stationId: 'KET',
+                    displayCode: 'ISL1',
+                  },
+                ],
+              },
+              operatingHours: {
+                weekdays: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+                weekends: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+              },
+            },
+            {
+              id: 'r_current',
+              startAt: '1980-01-01',
               endAt: null,
               path: {
                 stations: [
                   {
                     stationId: 'HKU',
                     displayCode: 'ISL2',
+                  },
+                ],
+              },
+              operatingHours: {
+                weekdays: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+                weekends: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+              },
+            },
+          ],
+        },
+        null,
+        2,
+      )}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'service/ISL_REPEAT_KET.json'),
+      `${JSON.stringify(
+        {
+          id: 'ISL_REPEAT_KET',
+          name: {
+            'en-SG': 'Kennedy Town Loop Service',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          lineId: 'ISL',
+          revisions: [
+            {
+              id: 'r_current',
+              startAt: '1979-10-01',
+              endAt: null,
+              path: {
+                stations: [
+                  {
+                    stationId: 'KET',
+                    displayCode: 'ISL1',
+                  },
+                  {
+                    stationId: 'HKU',
+                    displayCode: 'ISL2',
+                  },
+                  {
+                    stationId: 'KET',
+                    displayCode: 'ISL1',
                   },
                 ],
               },
@@ -3070,7 +3143,8 @@ describe('@mrtdown/fs', () => {
         'station/KET.json: layout.platforms.0.levelId MISSING does not exist in layout.levels',
         'station/KET.json: layout.platforms.0.serviceIds.0 MISSING_SERVICE does not exist in service/',
         'station/KET.json: layout.platforms.1.serviceIds.0 TWL_MAIN_N belongs to line TWL, not ISL',
-        'station/KET.json: layout.platforms.1.serviceIds.1 ISL_SKIP_KET does not include station KET in any service revision',
+        'station/KET.json: layout.platforms.1.serviceIds.1 ISL_SKIP_KET revision r_current does not include station KET in its open service path',
+        'station/KET.json: layout.platforms.1.serviceIds.2 ISL_REPEAT_KET visits station KET 2 times in open revision r_current; serviceStopOccurrences.ISL_REPEAT_KET is required',
         'station/KET.json: layout.platforms.0.accessPoints.0.connectsToLevelId MISSING does not exist in layout.levels',
         'station/KET.json: layout.platforms.0.accessPoints.0.nearestDoor 25 is outside doorCount 24',
         'station/KET.json: layout.transferPaths.0.from platform MISSING_PLATFORM does not exist in layout',

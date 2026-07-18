@@ -151,6 +151,32 @@
         "paidArea": false
       },
       {
+        "id": "MRB_EXIT_3",
+        "label": "3",
+        "lastUpdated": "2026-07-18",
+        "roadNames": [
+          "Bayfront Avenue",
+          "Park Street"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "MRB_EXIT_4",
+        "label": "4",
+        "lastUpdated": "2026-07-18",
+        "roadNames": [
+          "Sheares Avenue"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      },
+      {
         "id": "MRB_EXIT_5",
         "label": "5",
         "lastUpdated": "2026-07-18",

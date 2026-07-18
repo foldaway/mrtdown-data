@@ -149,6 +149,10 @@
           "PGLRT_W_CW",
           "PGLRT_E_CCW"
         ],
+        "serviceStopOccurrences": {
+          "PGLRT_W_CW": 0,
+          "PGLRT_E_CCW": 0
+        },
         "accessPoints": []
       },
       {
@@ -160,6 +164,10 @@
           "PGLRT_W_CCW",
           "PGLRT_E_CW"
         ],
+        "serviceStopOccurrences": {
+          "PGLRT_W_CCW": 0,
+          "PGLRT_E_CW": 0
+        },
         "accessPoints": []
       }
     ],

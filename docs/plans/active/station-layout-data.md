@@ -223,6 +223,10 @@ Rules:
 - Use `serviceIds`, not `towardsStationId`. The service path is the source of
   truth for direction, stopping pattern, and terminal.
 - Use an array because platforms can host multiple scheduled patterns.
+- `serviceStopOccurrences` optionally maps a service id to the zero-based
+  occurrence of this station in the current service path. It is required when
+  a loop service visits the station more than once, so consumers can derive the
+  correct next stop for each platform.
 - `serviceIds` must be non-empty for ordinary boarding platforms and empty when
   `boardingStatus` is `alighting_only` or `not_in_service`. Non-boardable
   platforms do not advertise arriving, occasional, or inactive services as
@@ -344,6 +348,8 @@ Add validation that catches:
 - platform `lineId` values that do not exist;
 - platform `levelId` values that do not exist in `layout.levels`;
 - platform `serviceIds` values that do not exist;
+- platform services that omit or exceed a required repeated-stop occurrence in
+  an open service revision;
 - services whose `lineId` differs from the platform `lineId`;
 - transfer endpoints that do not reference an existing level, platform, or
   access point;
