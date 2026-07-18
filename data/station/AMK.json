@@ -112,7 +112,8 @@
       {
         "id": "AMK_EXIT_D",
         "label": "D",
-        "lastUpdated": "2026-07-16",
+        "lastUpdated": "2026-07-18",
+        "operationalStatus": "temporarily_closed",
         "roadNames": [
           "Ang Mo Kio Avenue 8"
         ],

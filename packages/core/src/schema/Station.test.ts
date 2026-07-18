@@ -194,6 +194,7 @@ describe('StationSchema', () => {
               id: 'KET_EXIT_A',
               label: 'A',
               lastUpdated: '2026-07-18',
+              operationalStatus: 'temporarily_closed',
               levelId: 'B2',
               paidArea: false,
             },
@@ -245,6 +246,31 @@ describe('StationSchema', () => {
         },
       }),
     ).not.toThrow();
+  });
+
+  it('rejects unknown station exit operational statuses', () => {
+    const result = StationSchema.safeParse({
+      ...minimalStation(),
+      layout: {
+        levels: [],
+        exits: [
+          {
+            id: 'KET_EXIT_A',
+            label: 'A',
+            lastUpdated: '2026-07-18',
+            operationalStatus: 'permanently_closed',
+            paidArea: false,
+          },
+        ],
+        platforms: [],
+        transferPaths: [],
+      },
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues[0]?.path.join('.')).toBe(
+      'layout.exits.0.operationalStatus',
+    );
   });
 
   it('rejects layout platforms without service ids', () => {

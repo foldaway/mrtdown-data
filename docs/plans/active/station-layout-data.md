@@ -52,7 +52,8 @@ Related references:
 - This plan does not attempt detailed CAD geometry or public wayfinding map
   rendering.
 - This plan does not model temporary works, temporary platform closures, or
-  incident-specific access restrictions as static station layout.
+  incident-specific access restrictions as static station layout, except for
+  the current operational status of a durable public exit.
 - This plan does not add hand-authored page titles or meta descriptions. The
   site should continue deriving them from canonical station facts.
 
@@ -176,6 +177,9 @@ Initial fields:
 
 - `id`: station-local id.
 - `label`: public exit label such as `A`, `B`, `1`, or `Exit A`.
+- `operationalStatus`: optional exceptional current state. Absence means the
+  exit is open; `temporarily_closed` preserves the exit identity while keeping
+  wayfinding consumers from routing passengers through it.
 - `levelId`: optional reference to `layout.levels`.
 - `geo`: optional exit coordinate when a reviewed source provides it.
 - `nearbyLandmarkIds`: optional references to existing landmark records.
@@ -190,7 +194,9 @@ Rules:
 - Use `nearbyLandmarkIds` for landmarks already modeled in
   `data/landmark`; use `roadNames` for roads that are not landmarks.
 - Keep exit labels as strings because public labels are not always numeric.
-- Do not model temporary construction diversions as static exits.
+- Keep durable exits in the layout while they are temporarily closed and mark
+  them with `operationalStatus`; do not model temporary construction diversion
+  routes as static exits.
 
 ## Platforms
 

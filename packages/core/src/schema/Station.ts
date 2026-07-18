@@ -141,10 +141,18 @@ export const StationLayoutLevelSchema = z.object({
 });
 export type StationLayoutLevel = z.infer<typeof StationLayoutLevelSchema>;
 
+export const StationLayoutExitOperationalStatusSchema = z.enum([
+  'temporarily_closed',
+]);
+export type StationLayoutExitOperationalStatus = z.infer<
+  typeof StationLayoutExitOperationalStatusSchema
+>;
+
 export const StationLayoutExitSchema = z.object({
   id: z.string(),
   label: z.string(),
   lastUpdated: z.iso.date(),
+  operationalStatus: StationLayoutExitOperationalStatusSchema.optional(),
   levelId: z.string().optional(),
   geo: z
     .object({

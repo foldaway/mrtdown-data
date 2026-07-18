@@ -136,6 +136,7 @@
         "id": "CCK_EXIT_D",
         "label": "D",
         "lastUpdated": "2026-07-18",
+        "operationalStatus": "temporarily_closed",
         "paidArea": false
       },
       {
