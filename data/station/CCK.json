@@ -298,6 +298,86 @@
         "classification": "unknown",
         "estimatedTraversalSeconds": null,
         "distanceMeters": null
+      },
+      {
+        "id": "CCK_XFER_BPLRT_3_NSL_A",
+        "lastUpdated": "2026-07-19",
+        "from": {
+          "kind": "platform",
+          "id": "CCK_BPLRT_3"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CCK_NSL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "CCK_XFER_BPLRT_3_NSL_B",
+        "lastUpdated": "2026-07-19",
+        "from": {
+          "kind": "platform",
+          "id": "CCK_BPLRT_3"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CCK_NSL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "CCK_XFER_BPLRT_4_NSL_A",
+        "lastUpdated": "2026-07-19",
+        "from": {
+          "kind": "platform",
+          "id": "CCK_BPLRT_4"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CCK_NSL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "CCK_XFER_BPLRT_4_NSL_B",
+        "lastUpdated": "2026-07-19",
+        "from": {
+          "kind": "platform",
+          "id": "CCK_BPLRT_4"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CCK_NSL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
       }
     ]
   }

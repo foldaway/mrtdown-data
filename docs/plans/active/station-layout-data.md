@@ -281,6 +281,10 @@ Rules:
 ## Transfer Paths
 
 Transfer paths describe public movement between platforms or access points.
+They are bidirectional: `from` and `to` provide a stable ordering for the two
+endpoints and do not restrict traversal direction. Store one record per known
+physical path rather than duplicating it in reverse. Direction-specific paths
+can be introduced later if the schema gains explicit directionality metadata.
 
 ```json
 {

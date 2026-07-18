@@ -194,15 +194,37 @@
         "distanceMeters": null
       },
       {
-        "id": "TNM_XFER_EWL_D_A",
+        "id": "TNM_XFER_EWL_F_D",
         "lastUpdated": "2026-07-19",
         "from": {
           "kind": "platform",
-          "id": "TNM_EWL_D"
+          "id": "TNM_EWL_F"
         },
         "to": {
           "kind": "platform",
-          "id": "TNM_EWL_A"
+          "id": "TNM_EWL_D"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk",
+          "escalator",
+          "lift"
+        ],
+        "levelChange": 0,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "TNM_XFER_EWL_F_E",
+        "lastUpdated": "2026-07-19",
+        "from": {
+          "kind": "platform",
+          "id": "TNM_EWL_F"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "TNM_EWL_E"
         },
         "paidArea": true,
         "modes": [
