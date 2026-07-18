@@ -204,7 +204,7 @@
       {
         "id": "DBG_CCL_A",
         "label": "A",
-        "lastUpdated": "2026-07-18",
+        "lastUpdated": "2026-07-19",
         "lineId": "CCL",
         "serviceIds": [
           "CCL_BRANCH_CCW"
@@ -215,11 +215,10 @@
       {
         "id": "DBG_CCL_B",
         "label": "B",
-        "lastUpdated": "2026-07-18",
+        "lastUpdated": "2026-07-19",
+        "boardingStatus": "alighting_only",
         "lineId": "CCL",
-        "serviceIds": [
-          "CCL_BRANCH_CCW"
-        ],
+        "serviceIds": [],
         "doorCount": 12,
         "accessPoints": []
       },

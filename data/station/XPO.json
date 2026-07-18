@@ -243,6 +243,46 @@
         "classification": "unknown",
         "estimatedTraversalSeconds": null,
         "distanceMeters": null
+      },
+      {
+        "id": "XPO_XFER_DTL_D_EWL_A",
+        "lastUpdated": "2026-07-19",
+        "from": {
+          "kind": "platform",
+          "id": "XPO_DTL_D"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "XPO_EWL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "XPO_XFER_DTL_D_EWL_B",
+        "lastUpdated": "2026-07-19",
+        "from": {
+          "kind": "platform",
+          "id": "XPO_DTL_D"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "XPO_EWL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
       }
     ]
   }
