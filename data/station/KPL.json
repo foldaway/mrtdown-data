@@ -27,7 +27,20 @@
   "townId": "bukit-merah",
   "layout": {
     "levels": [],
-    "exits": [],
+    "exits": [
+      {
+        "id": "KPL_EXIT_2",
+        "label": "2",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      },
+      {
+        "id": "KPL_EXIT_3",
+        "label": "3",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      }
+    ],
     "platforms": [
       {
         "id": "KPL_CCL_A",
