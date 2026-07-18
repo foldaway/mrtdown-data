@@ -7,12 +7,14 @@ import { Tool } from '../../../common/tool.js';
 
 const FindLinesToolParametersSchema = z.object({
   lineNames: z.array(z.string()),
+  listAll: z.boolean(),
 });
 type FindLinesToolParameters = z.infer<typeof FindLinesToolParametersSchema>;
 
 export class FindLinesTool extends Tool<FindLinesToolParameters> {
   public name = 'findLines';
-  public description = 'Find lines by name';
+  public description =
+    'Find lines by name, or list all lines when evidence explicitly says all lines';
   private readonly repo: MRTDownRepository;
 
   constructor(repo: MRTDownRepository) {
@@ -31,7 +33,9 @@ export class FindLinesTool extends Tool<FindLinesToolParameters> {
   public async runner(params: FindLinesToolParameters): Promise<string> {
     console.log('[findLines] Calling tool with parameters:', params);
 
-    const lines = this.repo.lines.searchByName(params.lineNames);
+    const lines = params.listAll
+      ? this.repo.lines.list()
+      : this.repo.lines.searchByName(params.lineNames);
 
     const table: Table = {
       type: 'table',

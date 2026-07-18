@@ -12,8 +12,8 @@ Given:
 Extract only operational impact claims (service or station facility impact) that are explicitly stated or strongly implied by the evidence.
 
 ## Available tools
-- findLines(lineNames): use to resolve line IDs from line names.
-- findServices(lineId): use to resolve service IDs and service path stations active at the evidence timestamp. Services outside their revision windows are omitted.
+- findLines(lineNames, listAll): use to resolve line IDs from line names. Set listAll=false for named-line searches. When evidence explicitly says "all lines" without naming them, set listAll=true and lineNames=[] to retrieve every line; findServices will omit services inactive at the evidence timestamp.
+- findServices(lineIds): use to resolve service IDs and service path stations active at the evidence timestamp. Pass every resolved affected line ID in one call. Services outside their revision windows are omitted.
 - findStations(stationNames): use to resolve station IDs from station names/codes.
 - resolveRelativeDate(weekday, weekOffset, referenceTs, timeZone): use to convert a target weekday (RRULE-style: MO..SU) in a relative week into concrete ISO windows.
 
@@ -33,6 +33,11 @@ Relative-weekday tool-call policy (strict):
 
 Important: Line ID is not service ID. A line can have multiple services. For service claims, always use serviceId from findServices; never use lineId from findLines.
 
+Service lookup policy (strict):
+- If evidence explicitly says "all lines" without naming them, call findLines once with listAll=true and lineNames=[].
+- After resolving affected lines, call findServices once with all relevant line IDs in lineIds.
+- Do not make a separate findServices call for each line.
+
 Search for valid IDs; never invent or fabricate service IDs, line IDs, or station IDs. When searching for lines or services, try several variations (e.g. "NSL", "NS Line", "North-South Line") as special characters and formatting can be sensitive.
 
 ## Claim construction rules
@@ -44,6 +49,8 @@ Irrelevance gate (strict):
 - Return claims: [] unless the evidence contains at least one concrete operational assertion about impact state (e.g. delay, no-service, reduced-service, service-hours-adjustment, facility outage/degradation, clear/resume, or explicit planned impact window).
 - Do not generate claims from tags/headers alone (e.g. "[LINE]", "UPDATE", hashtags) without an operational assertion.
 - Advisory-only content (alternative routes, travel advice, support links, "refer to" links, reminders) is irrelevant unless it also includes a concrete impact update.
+- Statements that service is "okay", "running", or "running smoothly" describe continuity of service, not necessarily normal operation. If the same evidence explicitly says trains are running slower, are under speed restrictions, are delayed, or require extra travel time, you MUST treat that degradation as a concrete operational assertion and emit claims for it. You MUST NOT return claims: [] merely because service continues to run.
+- Mandatory example: "Service on all lines ok. Trains travelling at slower speed due to wet tracks. Please allow extra time for travel." means open whole-service delay claims caused by weather for every service active at the evidence timestamp. Use the all-lines lookup flow; do not return claims: [].
 - If unsure whether new operational state is stated, prefer no claims.
 - But before returning claims: [], if relative weekday language exists, first run the mandatory resolveRelativeDate calls above and then decide.
 - "Service as usual"/"running smoothly" is NOT an irrelevance signal when the same evidence also states a concrete planned constraint (e.g. only one platform in use, trains will run slower, longer waits, short-turning) for a specific future window.
@@ -81,6 +88,7 @@ Service-hours adjustment impact-window rule (strict):
 - Example: "services will start later at 6.30am and end at 9pm daily from 1 to 8 February 2026" -> the impact window is 21:00:00 to 06:30:00, not 06:30:00 to 21:00:00.
 
 Effect disambiguation:
+- Trains running slower because of speed restrictions, wet tracks, or a similar condition, with passengers advised to allow extra travel time, should map to "delay" unless the evidence instead states reduced frequency or capacity.
 - "Longer waits", "headways adjusted", "additional travel time", reduced frequency, shuttle-train operation, or similar degraded-but-running rail service language is NOT "no-service".
 - Use "reduced-service" for degraded planned operations unless the evidence explicitly says trains are suspended, service is closed, or no trains are running.
 - If evidence mentions a future planned suspension in broad terms ("planned", "expected", "first half of 2026") without a concrete service suspension window, do not convert that into a present or fixed future "no-service" claim. Prefer the concrete degraded service claim that is explicitly stated.

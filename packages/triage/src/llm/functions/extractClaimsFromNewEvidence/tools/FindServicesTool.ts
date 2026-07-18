@@ -8,7 +8,7 @@ import { assert } from '../../../../util/assert.js';
 import { Tool } from '../../../common/tool.js';
 
 const FindServicesToolParametersSchema = z.object({
-  lineId: z.string(),
+  lineIds: z.array(z.string()).min(1),
 });
 type FindServicesToolParameters = z.infer<
   typeof FindServicesToolParametersSchema
@@ -17,7 +17,7 @@ type FindServicesToolParameters = z.infer<
 export class FindServicesTool extends Tool<FindServicesToolParameters> {
   public name = 'findServices';
   public description =
-    'Find services active at the evidence timestamp by line ID';
+    'Find services active at the evidence timestamp for one or more line IDs in a single call';
   private readonly evidenceTs: DateTime;
   private readonly repo: MRTDownRepository;
 
@@ -38,7 +38,9 @@ export class FindServicesTool extends Tool<FindServicesToolParameters> {
   public async runner(params: FindServicesToolParameters): Promise<string> {
     console.log('[findServices] Calling tool with parameters:', params);
 
-    const services = this.repo.services.searchByLineId(params.lineId);
+    const services = [...new Set(params.lineIds)].flatMap((lineId) =>
+      this.repo.services.searchByLineId(lineId),
+    );
 
     const table: Table = {
       type: 'table',
