@@ -170,6 +170,51 @@
         "accessPoints": []
       }
     ],
-    "transferPaths": []
+    "transferPaths": [
+      {
+        "id": "TNM_XFER_EWL_A_D",
+        "lastUpdated": "2026-07-19",
+        "from": {
+          "kind": "platform",
+          "id": "TNM_EWL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "TNM_EWL_D"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk",
+          "escalator",
+          "lift"
+        ],
+        "levelChange": 0,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "TNM_XFER_EWL_D_A",
+        "lastUpdated": "2026-07-19",
+        "from": {
+          "kind": "platform",
+          "id": "TNM_EWL_D"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "TNM_EWL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk",
+          "escalator",
+          "lift"
+        ],
+        "levelChange": 0,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      }
+    ]
   }
 }
