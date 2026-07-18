@@ -63,7 +63,14 @@
   },
   "layout": {
     "levels": [],
-    "exits": [],
+    "exits": [
+      {
+        "id": "PNX_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      }
+    ],
     "platforms": [
       {
         "id": "PNX_BPLRT_1",

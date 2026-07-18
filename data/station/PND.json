@@ -64,7 +64,14 @@
   },
   "layout": {
     "levels": [],
-    "exits": [],
+    "exits": [
+      {
+        "id": "PND_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      }
+    ],
     "platforms": [
       {
         "id": "PND_BPLRT_1",

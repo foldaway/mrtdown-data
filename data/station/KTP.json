@@ -65,7 +65,20 @@
   },
   "layout": {
     "levels": [],
-    "exits": [],
+    "exits": [
+      {
+        "id": "KTP_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      },
+      {
+        "id": "KTP_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      }
+    ],
     "platforms": [
       {
         "id": "KTP_TEL_A",

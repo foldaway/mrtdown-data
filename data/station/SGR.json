@@ -65,7 +65,14 @@
   },
   "layout": {
     "levels": [],
-    "exits": [],
+    "exits": [
+      {
+        "id": "SGR_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      }
+    ],
     "platforms": [
       {
         "id": "SGR_BPLRT_1",

@@ -65,7 +65,26 @@
   },
   "layout": {
     "levels": [],
-    "exits": [],
+    "exits": [
+      {
+        "id": "TKT_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      },
+      {
+        "id": "TKT_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      },
+      {
+        "id": "TKT_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      }
+    ],
     "platforms": [
       {
         "id": "TKT_TEL_A",

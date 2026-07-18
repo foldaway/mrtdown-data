@@ -64,7 +64,32 @@
   },
   "layout": {
     "levels": [],
-    "exits": [],
+    "exits": [
+      {
+        "id": "SGL_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      },
+      {
+        "id": "SGL_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      },
+      {
+        "id": "SGL_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      },
+      {
+        "id": "SGL_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      }
+    ],
     "platforms": [
       {
         "id": "SGL_TEL_A",
