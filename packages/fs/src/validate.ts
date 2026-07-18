@@ -412,23 +412,26 @@ async function validateStationReferences(
             continue;
           }
 
-          const openRevisions = service.value.revisions.filter(
-            (revision) => revision.endAt === null,
+          const activeRevisions = service.value.revisions.filter(
+            (revision) =>
+              revision.startAt <= platform.lastUpdated &&
+              (revision.endAt === null ||
+                platform.lastUpdated < revision.endAt),
           );
-          if (openRevisions.length === 0) {
+          if (activeRevisions.length === 0) {
             errors.push(
-              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not have an open service revision`,
+              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not have a service revision active on ${platform.lastUpdated}`,
             );
             continue;
           }
 
-          for (const revision of openRevisions) {
+          for (const revision of activeRevisions) {
             const stationOccurrenceCount = revision.path.stations.filter(
               (serviceStation) => serviceStation.stationId === station.value.id,
             ).length;
             if (stationOccurrenceCount === 0) {
               errors.push(
-                `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} revision ${revision.id} does not include station ${station.value.id} in its open service path`,
+                `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} revision ${revision.id} does not include station ${station.value.id} in its active service path`,
               );
               continue;
             }
@@ -440,14 +443,14 @@ async function validateStationReferences(
               selectedOccurrence === undefined
             ) {
               errors.push(
-                `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} visits station ${station.value.id} ${stationOccurrenceCount} times in open revision ${revision.id}; serviceStopOccurrences.${serviceId} is required`,
+                `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} visits station ${station.value.id} ${stationOccurrenceCount} times in active revision ${revision.id}; serviceStopOccurrences.${serviceId} is required`,
               );
             } else if (
               selectedOccurrence !== undefined &&
               selectedOccurrence >= stationOccurrenceCount
             ) {
               errors.push(
-                `${station.path}: layout.platforms.${platformIndex}.serviceStopOccurrences.${serviceId} ${selectedOccurrence} is outside ${stationOccurrenceCount} station occurrences in open revision ${revision.id}`,
+                `${station.path}: layout.platforms.${platformIndex}.serviceStopOccurrences.${serviceId} ${selectedOccurrence} is outside ${stationOccurrenceCount} station occurrences in active revision ${revision.id}`,
               );
             }
           }
