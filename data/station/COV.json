@@ -23,5 +23,30 @@
     "punggol-waterway-park",
     "oasis-terraces"
   ],
-  "townId": "punggol"
+  "townId": "punggol",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21426,
+        "sourceChecksum": "C06D10E6EBF83EA6",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3991243935090023,
+          "longitude": 103.90592873577582
+        }
+      },
+      {
+        "sourceObjectId": 21598,
+        "sourceChecksum": "8007BDF5105E0800",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3993026566088154,
+          "longitude": 103.90617601360019
+        }
+      }
+    ]
+  }
 }

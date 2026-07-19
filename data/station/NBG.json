@@ -24,5 +24,30 @@
     "waterway-point",
     "coney-island"
   ],
-  "townId": "punggol"
+  "townId": "punggol",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21652,
+        "sourceChecksum": "853F2A40C64D662F",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4117727733571026,
+          "longitude": 103.90007380805265
+        }
+      },
+      {
+        "sourceObjectId": 21653,
+        "sourceChecksum": "BDB536DD4D5059E3",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4119103237022979,
+          "longitude": 103.90053155420699
+        }
+      }
+    ]
+  }
 }

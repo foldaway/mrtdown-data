@@ -24,5 +24,30 @@
     "compass-one",
     "anchorvale-community-club"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21712,
+        "sourceChecksum": "35048F84F3D858BC",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3866979558885189,
+          "longitude": 103.89040916173235
+        }
+      },
+      {
+        "sourceObjectId": 21713,
+        "sourceChecksum": "B0178F7E6DD16A1A",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.386814144215554,
+          "longitude": 103.89043819212365
+        }
+      }
+    ]
+  }
 }

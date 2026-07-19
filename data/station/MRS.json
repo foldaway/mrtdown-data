@@ -25,5 +25,50 @@
     "the-shoppes-at-marina-bay-sands",
     "merlion-park"
   ],
-  "townId": "straits-view"
+  "townId": "straits-view",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21568,
+        "sourceChecksum": "20846F5C306F5CFE",
+        "label": "1",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.2735748044859307,
+          "longitude": 103.8615038787278
+        }
+      },
+      {
+        "sourceObjectId": 21569,
+        "sourceChecksum": "AC98AC5E6E4A2440",
+        "label": "2",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.2738599495197072,
+          "longitude": 103.86177721011121
+        }
+      },
+      {
+        "sourceObjectId": 21570,
+        "sourceChecksum": "0D8225B43A9DB12A",
+        "label": "3",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.273135205086787,
+          "longitude": 103.86289430462864
+        }
+      },
+      {
+        "sourceObjectId": 21571,
+        "sourceChecksum": "465066CFAE562319",
+        "label": "4",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.2755114146116426,
+          "longitude": 103.86266850887442
+        }
+      }
+    ]
+  }
 }

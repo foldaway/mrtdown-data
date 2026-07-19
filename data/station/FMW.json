@@ -24,5 +24,30 @@
     "anchorvale-community-club",
     "sengkang-sports-centre"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21319,
+        "sourceChecksum": "B5FE598CC9473CDE",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3972003445750807,
+          "longitude": 103.88940744788181
+        }
+      },
+      {
+        "sourceObjectId": 21320,
+        "sourceChecksum": "C66585DE1453A1EF",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3971334775058415,
+          "longitude": 103.88911501684758
+        }
+      }
+    ]
+  }
 }

@@ -23,5 +23,30 @@
     "sengkang-sports-and-recreation-centre",
     "compass-one"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21720,
+        "sourceChecksum": "19F50D0B45ED2625",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3913404864174224,
+          "longitude": 103.9060187916516
+        }
+      },
+      {
+        "sourceObjectId": 21721,
+        "sourceChecksum": "24270D468CB0C551",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3914142417871276,
+          "longitude": 103.90610581936582
+        }
+      }
+    ]
+  }
 }

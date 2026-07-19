@@ -24,5 +24,30 @@
     "sengkang-general-hospital",
     "sengkang-sports-centre"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21711,
+        "sourceChecksum": "DB46A51FA82F6865",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3891801609980827,
+          "longitude": 103.88596211411945
+        }
+      },
+      {
+        "sourceObjectId": 21710,
+        "sourceChecksum": "F83D29999DC4CC0E",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3893790079485524,
+          "longitude": 103.88608435738307
+        }
+      }
+    ]
+  }
 }

@@ -24,5 +24,30 @@
     "punggol-town-hub",
     "coney-island-park"
   ],
-  "townId": "punggol"
+  "townId": "punggol",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21585,
+        "sourceChecksum": "5773D3B5DB9A561F",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4158653604828477,
+          "longitude": 103.90191150962721
+        }
+      },
+      {
+        "sourceObjectId": 21586,
+        "sourceChecksum": "4D74C24533C50685",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.41590585709171,
+          "longitude": 103.90236156011096
+        }
+      }
+    ]
+  }
 }

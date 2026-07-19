@@ -24,5 +24,20 @@
     "compass-one",
     "fernvale-point"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21600,
+        "sourceChecksum": "92D152D45E445F84",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3921582676260966,
+          "longitude": 103.87626165389224
+        }
+      }
+    ]
+  }
 }

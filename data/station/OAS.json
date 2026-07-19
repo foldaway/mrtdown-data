@@ -24,5 +24,30 @@
     "punggol-waterway-park",
     "waterway-point"
   ],
-  "townId": "punggol"
+  "townId": "punggol",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21422,
+        "sourceChecksum": "0BEB37C242EBF30C",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4025071314475719,
+          "longitude": 103.91264613306079
+        }
+      },
+      {
+        "sourceObjectId": 21592,
+        "sourceChecksum": "9B8770AEDF254A19",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4021037193748016,
+          "longitude": 103.91275457379543
+        }
+      }
+    ]
+  }
 }

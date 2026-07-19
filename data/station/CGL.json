@@ -24,5 +24,30 @@
     "compass-one",
     "sengkang-sports-complex"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21611,
+        "sourceChecksum": "FC07F81DEF01BAAF",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3963732182354105,
+          "longitude": 103.89368487427694
+        }
+      },
+      {
+        "sourceObjectId": 21414,
+        "sourceChecksum": "1BE9F4E72D049751",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3961869711232995,
+          "longitude": 103.89392033157345
+        }
+      }
+    ]
+  }
 }

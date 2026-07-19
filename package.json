@@ -14,6 +14,7 @@
     "check:boundaries": "node scripts/check-package-boundaries.mjs",
     "check:docs": "node scripts/check-docs-links.mjs",
     "lint": "biome check AGENTS.md CLAUDE.md README.md docs fixtures .changeset .github/copilot-instructions.md biome.json package.json turbo.json vitest.config.ts packages scripts",
+    "data:import:lta-station-exits": "node scripts/import-lta-station-exits.mjs",
     "fixtures:generate": "node scripts/generate-fixtures.mjs",
     "typecheck": "npm run build:packages",
     "build:packages": "turbo run build --filter=@mrtdown/*",

@@ -232,6 +232,7 @@ async function validateStationReferences(
   const townIds = await loadEntityIds(dataDir, records, 'town');
   const errors: string[] = [];
   const seenStationAliases = new Map<string, { path: string; index: number }>();
+  const seenLayoutSourceObjectIds = new Map<number, string>();
 
   for (const station of await loadEntityRecords(dataDir, records, 'station')) {
     if (!townIds.has(station.value.townId)) {
@@ -281,165 +282,25 @@ async function validateStationReferences(
       }
     }
 
-    const layoutPlatformServiceIds = new Set<string>();
     const layout = station.value.layout;
     if (layout) {
       validateDuplicateValue(
         errors,
         station.path,
-        'layout.levels',
-        layout.levels.map((level, index) => [index, level.id]),
+        'layout.exits.sourceObjectId',
+        layout.exits.map((exit, index) => [index, String(exit.sourceObjectId)]),
       );
-      validateDuplicateValue(
-        errors,
-        station.path,
-        'layout.exits',
-        layout.exits.map((exit, index) => [index, exit.id]),
-      );
-      validateDuplicateValue(
-        errors,
-        station.path,
-        'layout.exits.label',
-        layout.exits.map((exit, index) => [
-          index,
-          exit.label.trim().toLowerCase(),
-        ]),
-      );
-      validateDuplicateValue(
-        errors,
-        station.path,
-        'layout.platforms',
-        layout.platforms.map((platform, index) => [index, platform.id]),
-      );
-      validateDuplicateValue(
-        errors,
-        station.path,
-        'layout.transferPaths',
-        layout.transferPaths.map((transferPath, index) => [
-          index,
-          transferPath.id,
-        ]),
-      );
-
-      const layoutLevelIds = new Set(layout.levels.map((level) => level.id));
-      const layoutPlatformIds = new Set(
-        layout.platforms.map((platform) => platform.id),
-      );
-      const layoutAccessPointIds = new Set<string>();
-
-      for (const [platformIndex, platform] of layout.platforms.entries()) {
-        for (const [
-          accessPointIndex,
-          accessPoint,
-        ] of platform.accessPoints.entries()) {
-          const previousSize = layoutAccessPointIds.size;
-          layoutAccessPointIds.add(accessPoint.id);
-          if (layoutAccessPointIds.size === previousSize) {
-            errors.push(
-              `${station.path}: layout.platforms.${platformIndex}.accessPoints.${accessPointIndex}.id ${accessPoint.id} duplicates another access point id in layout`,
-            );
-          }
-
-          if (
-            accessPoint.connectsToLevelId &&
-            !layoutLevelIds.has(accessPoint.connectsToLevelId)
-          ) {
-            errors.push(
-              `${station.path}: layout.platforms.${platformIndex}.accessPoints.${accessPointIndex}.connectsToLevelId ${accessPoint.connectsToLevelId} does not exist in layout.levels`,
-            );
-          }
-
-          const numericDoor = accessPoint.nearestDoor
-            ? Number(accessPoint.nearestDoor)
-            : Number.NaN;
-          if (
-            platform.doorCount != null &&
-            Number.isInteger(numericDoor) &&
-            (numericDoor < 1 || numericDoor > platform.doorCount)
-          ) {
-            errors.push(
-              `${station.path}: layout.platforms.${platformIndex}.accessPoints.${accessPointIndex}.nearestDoor ${accessPoint.nearestDoor} is outside doorCount ${platform.doorCount}`,
-            );
-          }
-        }
-      }
 
       for (const [exitIndex, exit] of layout.exits.entries()) {
-        if (exit.levelId && !layoutLevelIds.has(exit.levelId)) {
+        const previousStationPath = seenLayoutSourceObjectIds.get(
+          exit.sourceObjectId,
+        );
+        if (previousStationPath && previousStationPath !== station.path) {
           errors.push(
-            `${station.path}: layout.exits.${exitIndex}.levelId ${exit.levelId} does not exist in layout.levels`,
+            `${station.path}: layout.exits.${exitIndex}.sourceObjectId ${exit.sourceObjectId} is already used by ${previousStationPath}`,
           );
-        }
-
-        for (const [landmarkIndex, landmarkId] of (
-          exit.nearbyLandmarkIds ?? []
-        ).entries()) {
-          if (!landmarkIds.has(landmarkId)) {
-            errors.push(
-              `${station.path}: layout.exits.${exitIndex}.nearbyLandmarkIds.${landmarkIndex} ${landmarkId} does not exist in landmark/`,
-            );
-          }
-        }
-      }
-
-      for (const [platformIndex, platform] of layout.platforms.entries()) {
-        if (!lineIds.has(platform.lineId)) {
-          errors.push(
-            `${station.path}: layout.platforms.${platformIndex}.lineId ${platform.lineId} does not exist in line/`,
-          );
-        }
-
-        if (platform.levelId && !layoutLevelIds.has(platform.levelId)) {
-          errors.push(
-            `${station.path}: layout.platforms.${platformIndex}.levelId ${platform.levelId} does not exist in layout.levels`,
-          );
-        }
-
-        for (const [serviceIndex, serviceId] of platform.serviceIds.entries()) {
-          layoutPlatformServiceIds.add(serviceId);
-          const service = serviceById.get(serviceId);
-          if (!service) {
-            errors.push(
-              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not exist in service/`,
-            );
-            continue;
-          }
-
-          if (service.value.lineId !== platform.lineId) {
-            errors.push(
-              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} belongs to line ${service.value.lineId}, not ${platform.lineId}`,
-            );
-            continue;
-          }
-
-          if (!serviceIncludesStation(service.value, station.value.id)) {
-            errors.push(
-              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not include station ${station.value.id} in any service revision`,
-            );
-          }
-        }
-      }
-
-      for (const [
-        transferPathIndex,
-        transferPath,
-      ] of layout.transferPaths.entries()) {
-        for (const [endpointName, endpoint] of [
-          ['from', transferPath.from],
-          ['to', transferPath.to],
-        ] as const) {
-          const endpointExists =
-            (endpoint.kind === 'level' && layoutLevelIds.has(endpoint.id)) ||
-            (endpoint.kind === 'platform' &&
-              layoutPlatformIds.has(endpoint.id)) ||
-            (endpoint.kind === 'access_point' &&
-              layoutAccessPointIds.has(endpoint.id));
-
-          if (!endpointExists) {
-            errors.push(
-              `${station.path}: layout.transferPaths.${transferPathIndex}.${endpointName} ${endpoint.kind} ${endpoint.id} does not exist in layout`,
-            );
-          }
+        } else if (!previousStationPath) {
+          seenLayoutSourceObjectIds.set(exit.sourceObjectId, station.path);
         }
       }
     }
@@ -457,12 +318,6 @@ async function validateStationReferences(
         );
       } else {
         seenFirstLastTrainServices.set(serviceTiming.serviceId, index);
-      }
-
-      if (layout && !layoutPlatformServiceIds.has(serviceTiming.serviceId)) {
-        errors.push(
-          `${station.path}: firstLastTrain.services.${index}.serviceId ${serviceTiming.serviceId} is not served by any layout platform`,
-        );
       }
 
       const service = serviceById.get(serviceTiming.serviceId);

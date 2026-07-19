@@ -62,5 +62,100 @@
         }
       }
     ]
+  },
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21612,
+        "sourceChecksum": "360853AB3FB5F8E8",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.312326909037027,
+          "longitude": 103.85477274737836
+        }
+      },
+      {
+        "sourceObjectId": 21482,
+        "sourceChecksum": "4A1DAEFD59468463",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.313543965975699,
+          "longitude": 103.85476376775568
+        }
+      },
+      {
+        "sourceObjectId": 21666,
+        "sourceChecksum": "6551D0EB84199FBF",
+        "label": "C",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.311910678691349,
+          "longitude": 103.85326682482192
+        }
+      },
+      {
+        "sourceObjectId": 21665,
+        "sourceChecksum": "173209DA7F23FABE",
+        "label": "D",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3124536063930647,
+          "longitude": 103.85297463523698
+        }
+      },
+      {
+        "sourceObjectId": 21483,
+        "sourceChecksum": "6F1834F3D5171B51",
+        "label": "E",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3118835372381634,
+          "longitude": 103.85265097067983
+        }
+      },
+      {
+        "sourceObjectId": 21484,
+        "sourceChecksum": "F1BDA4510E572B33",
+        "label": "F",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3114220464813349,
+          "longitude": 103.85319939114183
+        }
+      },
+      {
+        "sourceObjectId": 21613,
+        "sourceChecksum": "E130D0857A648E60",
+        "label": "G",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3122590364129927,
+          "longitude": 103.85550098237228
+        }
+      },
+      {
+        "sourceObjectId": 21615,
+        "sourceChecksum": "54174A49E0822F8A",
+        "label": "H",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3118835080609075,
+          "longitude": 103.8560988521155
+        }
+      },
+      {
+        "sourceObjectId": 21614,
+        "sourceChecksum": "29BDA63F18A13487",
+        "label": "I",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.311765877296202,
+          "longitude": 103.85580665725489
+        }
+      }
+    ]
   }
 }

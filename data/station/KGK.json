@@ -24,5 +24,30 @@
     "compass-one",
     "sengkang-riverside-park"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21716,
+        "sourceChecksum": "8F3E5F0D6E718156",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3840745028734758,
+          "longitude": 103.90214755814063
+        }
+      },
+      {
+        "sourceObjectId": 21717,
+        "sourceChecksum": "09AD446CDB37F542",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3837652031672463,
+          "longitude": 103.90227636802918
+        }
+      }
+    ]
+  }
 }

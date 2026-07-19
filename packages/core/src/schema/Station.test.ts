@@ -176,63 +176,17 @@ describe('StationSchema', () => {
       StationSchema.parse({
         ...minimalStation(),
         layout: {
-          levels: [
-            {
-              id: 'B2',
-              index: -2,
-              name: {
-                'en-SG': 'Platforms',
-                'zh-Hans': null,
-                ms: null,
-                ta: null,
-              },
-            },
-          ],
+          sourceId: 'lta-mrt-station-exit-geojson',
           exits: [
             {
-              id: 'KET_EXIT_A',
+              sourceObjectId: 21404,
+              sourceChecksum: '122980157DCB57C6',
               label: 'A',
-              levelId: 'B2',
-              paidArea: false,
-            },
-          ],
-          platforms: [
-            {
-              id: 'KET_ISL_A',
-              label: 'A',
-              lineId: 'ISL',
-              levelId: 'B2',
-              serviceIds: ['ISL_MAIN_E'],
-              doorCount: 24,
-              accessPoints: [
-                {
-                  id: 'KET_ISL_A_ESC_01',
-                  kind: 'escalator',
-                  nearestDoor: '12',
-                  position: 'middle',
-                  connectsToLevelId: 'B2',
-                  direction: 'up',
-                },
-              ],
-            },
-          ],
-          transferPaths: [
-            {
-              id: 'KET_TRANSFER',
-              from: {
-                kind: 'platform',
-                id: 'KET_ISL_A',
+              lastUpdated: '2025-12-02',
+              geo: {
+                latitude: 1.3987872483653485,
+                longitude: 103.81800341495403,
               },
-              to: {
-                kind: 'level',
-                id: 'B2',
-              },
-              paidArea: true,
-              modes: ['walk', 'escalator'],
-              levelChange: 0,
-              classification: 'short',
-              estimatedTraversalSeconds: null,
-              distanceMeters: null,
             },
           ],
         },
@@ -240,28 +194,52 @@ describe('StationSchema', () => {
     ).not.toThrow();
   });
 
-  it('rejects layout platforms without service ids', () => {
+  it('rejects unsupported station layout fields', () => {
     const result = StationSchema.safeParse({
       ...minimalStation(),
       layout: {
-        levels: [],
-        exits: [],
-        platforms: [
+        sourceId: 'lta-mrt-station-exit-geojson',
+        exits: [
           {
-            id: 'KET_ISL_A',
+            sourceObjectId: 21404,
+            sourceChecksum: '122980157DCB57C6',
             label: 'A',
-            lineId: 'ISL',
-            serviceIds: [],
-            accessPoints: [],
+            lastUpdated: '2025-12-02',
+            geo: {
+              latitude: 1.3987872483653485,
+              longitude: 103.81800341495403,
+            },
+            roadNames: ['Unsupported Road'],
           },
         ],
-        transferPaths: [],
       },
     });
 
     expect(result.success).toBe(false);
-    expect(result.error?.issues[0]?.path.join('.')).toBe(
-      'layout.platforms.0.serviceIds',
-    );
+    expect(result.error?.issues[0]?.path.join('.')).toBe('layout.exits.0');
+  });
+
+  it('rejects station layouts from unregistered sources', () => {
+    const result = StationSchema.safeParse({
+      ...minimalStation(),
+      layout: {
+        sourceId: 'smrt-journey',
+        exits: [
+          {
+            sourceObjectId: 21404,
+            sourceChecksum: '122980157DCB57C6',
+            label: 'A',
+            lastUpdated: '2025-12-02',
+            geo: {
+              latitude: 1.3987872483653485,
+              longitude: 103.81800341495403,
+            },
+          },
+        ],
+      },
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues[0]?.path.join('.')).toBe('layout.sourceId');
   });
 });

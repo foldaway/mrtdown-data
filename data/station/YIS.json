@@ -62,5 +62,60 @@
         }
       }
     ]
+  },
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21494,
+        "sourceChecksum": "4D6714260A96395A",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.429397167315948,
+          "longitude": 103.83478360318439
+        }
+      },
+      {
+        "sourceObjectId": 21351,
+        "sourceChecksum": "C2D55B079B8AA456",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4296362919100813,
+          "longitude": 103.83486553346143
+        }
+      },
+      {
+        "sourceObjectId": 21322,
+        "sourceChecksum": "6A53878C399EA119",
+        "label": "C",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4291168143137056,
+          "longitude": 103.8350908427129
+        }
+      },
+      {
+        "sourceObjectId": 21495,
+        "sourceChecksum": "7CCB5AAD7A692ED6",
+        "label": "D",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4291065074428853,
+          "longitude": 103.83486348521703
+        }
+      },
+      {
+        "sourceObjectId": 21352,
+        "sourceChecksum": "C551A20E6E342A65",
+        "label": "E",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4296655971646168,
+          "longitude": 103.83564365493329
+        }
+      }
+    ]
   }
 }

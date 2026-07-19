@@ -23,5 +23,30 @@
     "coral-edge-community-centre",
     "punggol-waterway-park"
   ],
-  "townId": "punggol"
+  "townId": "punggol",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21597,
+        "sourceChecksum": "D4CB376FFBED3D8A",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3936846522216244,
+          "longitude": 103.91265223396981
+        }
+      },
+      {
+        "sourceObjectId": 21596,
+        "sourceChecksum": "E7718F39AA487D8B",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3939708071108299,
+          "longitude": 103.91270874436744
+        }
+      }
+    ]
+  }
 }

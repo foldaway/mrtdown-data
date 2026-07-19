@@ -24,5 +24,30 @@
     "sengkang-sports-complex",
     "sengkang-grand-mall"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21718,
+        "sourceChecksum": "8A3C1E7317417FD2",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3881853854521522,
+          "longitude": 103.9054456307135
+        }
+      },
+      {
+        "sourceObjectId": 21719,
+        "sourceChecksum": "FD691A27B9222ACC",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3878407992569977,
+          "longitude": 103.90548212404298
+        }
+      }
+    ]
+  }
 }

@@ -181,38 +181,12 @@ than outputs from a reusable operator ingest script:
 - `LTI` seeds one SBS Transit-operated interchange slice from the public SBS
   Transit first/last train page, covering both NEL and DTL timing table shapes.
 
-## Platform Relationship
+## Layout Relationship
 
-When a station also has `layout.platforms`, first/last train validation should
-check whether each timing `serviceId` is served by at least one platform in the
-same station.
-
-This keeps timing rows simple:
-
-```json
-{
-  "serviceId": "TEL_MAIN_N",
-  "times": {
-    "weekday": {
-      "firstTrain": "06:07",
-      "lastTrain": "00:07"
-    }
-  }
-}
-```
-
-The platform can be derived from:
-
-```json
-{
-  "id": "OTP_TEL_E",
-  "serviceIds": ["TEL_MAIN_N"]
-}
-```
-
-If later data proves that the same service uses different platforms by time of
-day, the exception should be represented in the service catalog or a narrowly
-scoped timing-platform override, not added prematurely.
+The LTA station-exit dataset contains no platform or service-assignment data.
+First/last train timings therefore have no cross-validation relationship with
+`station.layout`; their service references are validated against the service
+catalog and station path instead.
 
 ## Validation
 
@@ -223,8 +197,6 @@ Add validation that catches:
 - rows with both `firstTrain` and `lastTrain` set to `null`;
 - invalid local time values;
 - duplicate rows for the same `serviceId`;
-- timing rows whose `serviceId` is not present on any station layout platform
-  when layout data exists;
 - stations with no `firstLastTrain` continuing to validate.
 
 ## Phases
@@ -257,9 +229,8 @@ Exit criteria:
 
 - Add timing validation in `packages/fs/src/validate.ts`.
 - Validate service existence and station membership.
-- Add cross-validation with `layout.platforms[].serviceIds` when layout exists.
-- Add deterministic tests for invalid references, invalid time rows, duplicate
-  rows, and missing platform coverage.
+- Add deterministic tests for invalid references, invalid time rows, and
+  duplicate rows.
 
 Exit criteria:
 

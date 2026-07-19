@@ -24,5 +24,30 @@
     "punggol-digital-district",
     "seaside-walk"
   ],
-  "townId": "punggol"
+  "townId": "punggol",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21572,
+        "sourceChecksum": "DE121A01C547F972",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4083684310204716,
+          "longitude": 103.89833568007762
+        }
+      },
+      {
+        "sourceObjectId": 21573,
+        "sourceChecksum": "5B2417A2FAFF4D06",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4084879018383736,
+          "longitude": 103.8987571239555
+        }
+      }
+    ]
+  }
 }

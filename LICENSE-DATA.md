@@ -28,6 +28,18 @@ upstream Singapore Open Data Licence notices continue to apply to the upstream
 material. MRTDown licenses only its own curation, normalization, and derived
 metadata under `CC-BY-4.0`.
 
+### LTA MRT Station Exit
+
+Station `layout` records contain information from the Land Transport
+Authority's [LTA MRT Station Exit (GEOJSON) dataset](https://data.gov.sg/datasets/d_b39d3a0871985372d7e1637193335da5/view),
+accessed on 19 July 2026 from data.gov.sg. The upstream material is made
+available under the [Singapore Open Data Licence v1.0](https://data.gov.sg/open-data-licence).
+
+The upstream exit features remain subject to that licence. MRTDown's
+`CC-BY-4.0` licence applies only to MRTDown-authored selection, normalization,
+arrangement, and metadata; MRTDown claims no exclusive rights in the underlying
+facts. No operator-site station-layout material is included in these records.
+
 ## Source Code
 
 This data license does not apply to package source code, scripts, or tooling.

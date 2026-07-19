@@ -2918,7 +2918,7 @@ describe('@mrtdown/fs', () => {
     );
   });
 
-  it('rejects invalid station layout relationships', async () => {
+  it('rejects legacy mixed-source station layout fields', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await cp(fixtureDataDir, dataDir, { recursive: true });
     await writeFile(
@@ -2966,6 +2966,7 @@ describe('@mrtdown/fs', () => {
               {
                 id: 'B2',
                 index: -2,
+                lastUpdated: '2026-07-18',
                 name: {
                   'en-SG': 'Platforms',
                   'zh-Hans': null,
@@ -2976,6 +2977,7 @@ describe('@mrtdown/fs', () => {
               {
                 id: 'B2',
                 index: -2,
+                lastUpdated: '2026-07-18',
                 name: {
                   'en-SG': 'Duplicate platforms',
                   'zh-Hans': null,
@@ -2988,6 +2990,7 @@ describe('@mrtdown/fs', () => {
               {
                 id: 'KET_EXIT_A',
                 label: 'A',
+                lastUpdated: '2026-07-18',
                 levelId: 'MISSING',
                 nearbyLandmarkIds: ['missing-landmark'],
                 paidArea: false,
@@ -2995,6 +2998,7 @@ describe('@mrtdown/fs', () => {
               {
                 id: 'KET_EXIT_B',
                 label: 'a',
+                lastUpdated: '2026-07-18',
                 paidArea: false,
               },
             ],
@@ -3002,6 +3006,7 @@ describe('@mrtdown/fs', () => {
               {
                 id: 'KET_ISL_A',
                 label: 'A',
+                lastUpdated: '2026-07-18',
                 lineId: 'ISL',
                 levelId: 'MISSING',
                 serviceIds: ['MISSING_SERVICE'],
@@ -3010,6 +3015,7 @@ describe('@mrtdown/fs', () => {
                   {
                     id: 'KET_AP_DUP',
                     kind: 'escalator',
+                    lastUpdated: '2026-07-18',
                     nearestDoor: '25',
                     position: 'middle',
                     connectsToLevelId: 'MISSING',
@@ -3019,12 +3025,14 @@ describe('@mrtdown/fs', () => {
               {
                 id: 'KET_TWL_A',
                 label: 'A',
+                lastUpdated: '2026-07-18',
                 lineId: 'ISL',
-                serviceIds: ['TWL_MAIN_N', 'ISL_SKIP_KET'],
+                serviceIds: ['TWL_MAIN_N', 'ISL_SKIP_KET', 'ISL_REPEAT_KET'],
                 accessPoints: [
                   {
                     id: 'KET_AP_DUP',
                     kind: 'stairs',
+                    lastUpdated: '2026-07-18',
                     position: 'front',
                   },
                 ],
@@ -3033,6 +3041,7 @@ describe('@mrtdown/fs', () => {
             transferPaths: [
               {
                 id: 'KET_TRANSFER',
+                lastUpdated: '2026-07-18',
                 from: {
                   kind: 'platform',
                   id: 'MISSING_PLATFORM',
@@ -3069,14 +3078,87 @@ describe('@mrtdown/fs', () => {
           lineId: 'ISL',
           revisions: [
             {
-              id: 'r_current',
+              id: 'r_historical',
               startAt: '1979-10-01',
+              endAt: '1980-01-01',
+              path: {
+                stations: [
+                  {
+                    stationId: 'KET',
+                    displayCode: 'ISL1',
+                  },
+                ],
+              },
+              operatingHours: {
+                weekdays: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+                weekends: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+              },
+            },
+            {
+              id: 'r_current',
+              startAt: '1980-01-01',
               endAt: null,
               path: {
                 stations: [
                   {
                     stationId: 'HKU',
                     displayCode: 'ISL2',
+                  },
+                ],
+              },
+              operatingHours: {
+                weekdays: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+                weekends: {
+                  start: '05:30',
+                  end: '00:30',
+                },
+              },
+            },
+          ],
+        },
+        null,
+        2,
+      )}\n`,
+    );
+    await writeFile(
+      join(dataDir, 'service/ISL_REPEAT_KET.json'),
+      `${JSON.stringify(
+        {
+          id: 'ISL_REPEAT_KET',
+          name: {
+            'en-SG': 'Kennedy Town Loop Service',
+            'zh-Hans': null,
+            ms: null,
+            ta: null,
+          },
+          lineId: 'ISL',
+          revisions: [
+            {
+              id: 'r_current',
+              startAt: '1979-10-01',
+              endAt: null,
+              path: {
+                stations: [
+                  {
+                    stationId: 'KET',
+                    displayCode: 'ISL1',
+                  },
+                  {
+                    stationId: 'HKU',
+                    displayCode: 'ISL2',
+                  },
+                  {
+                    stationId: 'KET',
+                    displayCode: 'ISL1',
                   },
                 ],
               },
@@ -3133,25 +3215,89 @@ describe('@mrtdown/fs', () => {
     const result = await validateDataRoot(dataDir, ['station']);
 
     expect(result.ok).toBe(false);
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        'station/KET.json: layout.levels.1 duplicates B2 (first seen at layout.levels.0)',
-        'station/KET.json: aliases.1 duplicates kennedy town mrt (first seen at aliases.0)',
-        'station/WAC.json: aliases.0 duplicates kennedy town mrt from station/KET.json:aliases.0',
-        'station/KET.json: layout.exits.label.1 duplicates a (first seen at layout.exits.label.0)',
-        'station/KET.json: layout.platforms.1.accessPoints.0.id KET_AP_DUP duplicates another access point id in layout',
-        'station/KET.json: layout.exits.0.levelId MISSING does not exist in layout.levels',
-        'station/KET.json: layout.exits.0.nearbyLandmarkIds.0 missing-landmark does not exist in landmark/',
-        'station/KET.json: layout.platforms.0.levelId MISSING does not exist in layout.levels',
-        'station/KET.json: layout.platforms.0.serviceIds.0 MISSING_SERVICE does not exist in service/',
-        'station/KET.json: layout.platforms.1.serviceIds.0 TWL_MAIN_N belongs to line TWL, not ISL',
-        'station/KET.json: layout.platforms.1.serviceIds.1 ISL_SKIP_KET does not include station KET in any service revision',
-        'station/KET.json: layout.platforms.0.accessPoints.0.connectsToLevelId MISSING does not exist in layout.levels',
-        'station/KET.json: layout.platforms.0.accessPoints.0.nearestDoor 25 is outside doorCount 24',
-        'station/KET.json: layout.transferPaths.0.from platform MISSING_PLATFORM does not exist in layout',
-        'station/KET.json: layout.transferPaths.0.to access_point MISSING_ACCESS_POINT does not exist in layout',
-        'station/KET.json: firstLastTrain.services.0.serviceId ISL_MAIN_E is not served by any layout platform',
-      ]),
+    expect(result.errors.join('\n')).toContain(
+      'layout.sourceId: Invalid input: expected "lta-mrt-station-exit-geojson"',
+    );
+    expect(result.errors.join('\n')).toContain(
+      'layout: Unrecognized keys: "levels", "platforms", "transferPaths"',
+    );
+  });
+
+  it('accepts a service revision with a scheduled future end', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const servicePath = join(dataDir, 'service/ISL_MAIN_E.json');
+    const service = JSON.parse(await readFile(servicePath, 'utf8'));
+    service.revisions[0].endAt = '2026-08-01';
+    await writeFile(servicePath, `${JSON.stringify(service, null, 2)}\n`);
+
+    const result = await validateDataRoot(dataDir, ['station']);
+
+    expect(result.ok).toBe(true);
+    expect(result.errors).toEqual([]);
+  });
+
+  it('allows LTA exit layouts with first/last train data', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const stationPath = join(dataDir, 'station/KET.json');
+    const station = JSON.parse(await readFile(stationPath, 'utf8'));
+    station.layout = {
+      sourceId: 'lta-mrt-station-exit-geojson',
+      exits: [
+        {
+          sourceObjectId: 21404,
+          sourceChecksum: '122980157DCB57C6',
+          label: 'A',
+          lastUpdated: '2025-12-02',
+          geo: {
+            latitude: 22.2813,
+            longitude: 114.1286,
+          },
+        },
+      ],
+    };
+    await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+
+    const result = await validateDataRoot(dataDir, ['station']);
+
+    expect(result.ok).toBe(true);
+    expect(result.errors).toEqual([]);
+    expect(result.checked.station).toBe(fixtureMeta.counts.station);
+  });
+
+  it('rejects reused LTA exit object IDs across stations', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    for (const [stationId, label] of [
+      ['HKU', 'A'],
+      ['KET', 'B'],
+    ]) {
+      const stationPath = join(dataDir, `station/${stationId}.json`);
+      const station = JSON.parse(await readFile(stationPath, 'utf8'));
+      station.layout = {
+        sourceId: 'lta-mrt-station-exit-geojson',
+        exits: [
+          {
+            sourceObjectId: 21404,
+            sourceChecksum: '122980157DCB57C6',
+            label,
+            lastUpdated: '2025-12-02',
+            geo: {
+              latitude: 22.2813,
+              longitude: 114.1286,
+            },
+          },
+        ],
+      };
+      await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+    }
+
+    const result = await validateDataRoot(dataDir, ['station']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors.join('\n')).toContain(
+      'sourceObjectId 21404 is already used by station/HKU.json',
     );
   });
 

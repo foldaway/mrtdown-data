@@ -24,5 +24,50 @@
     "public-transport-security-command",
     "cantonment-police-complex"
   ],
-  "townId": "outram"
+  "townId": "outram",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21293,
+        "sourceChecksum": "29DEC3AF51750915",
+        "label": "1",
+        "lastUpdated": "2026-07-17",
+        "geo": {
+          "latitude": 1.2721320701886019,
+          "longitude": 103.83570263425636
+        }
+      },
+      {
+        "sourceObjectId": 21294,
+        "sourceChecksum": "923423CA323CE8C5",
+        "label": "2",
+        "lastUpdated": "2026-07-17",
+        "geo": {
+          "latitude": 1.2737364875563113,
+          "longitude": 103.83599830791842
+        }
+      },
+      {
+        "sourceObjectId": 21295,
+        "sourceChecksum": "3C225DAA35A12F32",
+        "label": "3",
+        "lastUpdated": "2026-07-17",
+        "geo": {
+          "latitude": 1.2736397754772506,
+          "longitude": 103.83849204384164
+        }
+      },
+      {
+        "sourceObjectId": 21296,
+        "sourceChecksum": "2F8956F99BF1322B",
+        "label": "4",
+        "lastUpdated": "2026-07-17",
+        "geo": {
+          "latitude": 1.2726821629250715,
+          "longitude": 103.8377136424707
+        }
+      }
+    ]
+  }
 }

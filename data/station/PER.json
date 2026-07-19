@@ -25,5 +25,30 @@
     "chinatown",
     "pearls-hill-city-park"
   ],
-  "townId": "downtown-core"
+  "townId": "downtown-core",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21291,
+        "sourceChecksum": "FA3D633C1200E44F",
+        "label": "1",
+        "lastUpdated": "2026-07-17",
+        "geo": {
+          "latitude": 1.27303384497102,
+          "longitude": 103.84557526142366
+        }
+      },
+      {
+        "sourceObjectId": 21292,
+        "sourceChecksum": "E3D56E16104A59E7",
+        "label": "2",
+        "lastUpdated": "2026-07-17",
+        "geo": {
+          "latitude": 1.273435421768412,
+          "longitude": 103.84686122154847
+        }
+      }
+    ]
+  }
 }

@@ -103,5 +103,80 @@
         }
       }
     ]
+  },
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21317,
+        "sourceChecksum": "5CB3F601FBDF6CC4",
+        "label": "1",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4366968752462377,
+          "longitude": 103.78573562446458
+        }
+      },
+      {
+        "sourceObjectId": 21314,
+        "sourceChecksum": "A981B455F405BCC2",
+        "label": "2",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.436673114687528,
+          "longitude": 103.7865080837622
+        }
+      },
+      {
+        "sourceObjectId": 21315,
+        "sourceChecksum": "ABE9AA34AD7D1F14",
+        "label": "3",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4372433670398619,
+          "longitude": 103.78710822541109
+        }
+      },
+      {
+        "sourceObjectId": 21316,
+        "sourceChecksum": "D82504FE62821345",
+        "label": "4",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4375403735797483,
+          "longitude": 103.78800546566868
+        }
+      },
+      {
+        "sourceObjectId": 21398,
+        "sourceChecksum": "372C516598D98235",
+        "label": "5",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4358439359358868,
+          "longitude": 103.78896432811273
+        }
+      },
+      {
+        "sourceObjectId": 21318,
+        "sourceChecksum": "F7F55451430108C4",
+        "label": "6",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4348151751388867,
+          "longitude": 103.78908910975163
+        }
+      },
+      {
+        "sourceObjectId": 21399,
+        "sourceChecksum": "AD7053030CB8BF9F",
+        "label": "7",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.4344955258377818,
+          "longitude": 103.78797676882189
+        }
+      }
+    ]
   }
 }

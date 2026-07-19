@@ -24,5 +24,30 @@
     "the-rivervale-mall",
     "sengkang-community-hospital"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21321,
+        "sourceChecksum": "213B4B13C275292B",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3920261721317324,
+          "longitude": 103.88015973051905
+        }
+      },
+      {
+        "sourceObjectId": 21121,
+        "sourceChecksum": "F757F13626617675",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3921445374146684,
+          "longitude": 103.88014279914344
+        }
+      }
+    ]
+  }
 }

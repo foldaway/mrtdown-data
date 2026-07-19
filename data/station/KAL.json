@@ -62,5 +62,30 @@
         }
       }
     ]
+  },
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21478,
+        "sourceChecksum": "C4FA9AF262FF43C1",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3115404829755273,
+          "longitude": 103.87173056416847
+        }
+      },
+      {
+        "sourceObjectId": 21477,
+        "sourceChecksum": "6CF9B446E7CA4054",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.311781770543804,
+          "longitude": 103.87158707586144
+        }
+      }
+    ]
   }
 }

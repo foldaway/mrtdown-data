@@ -24,5 +24,30 @@
     "sengkang-riverside-park",
     "sengkang-general-hospital"
   ],
-  "townId": "sengkang"
+  "townId": "sengkang",
+  "layout": {
+    "sourceId": "lta-mrt-station-exit-geojson",
+    "exits": [
+      {
+        "sourceObjectId": 21648,
+        "sourceChecksum": "7A6540195C75D6C2",
+        "label": "A",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.3943275215100395,
+          "longitude": 103.90061646960031
+        }
+      },
+      {
+        "sourceObjectId": 21649,
+        "sourceChecksum": "5E01800475DDF5ED",
+        "label": "B",
+        "lastUpdated": "2025-12-02",
+        "geo": {
+          "latitude": 1.394534172299889,
+          "longitude": 103.90070659755264
+        }
+      }
+    ]
+  }
 }
