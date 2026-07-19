@@ -60,5 +60,47 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "HME_EXIT_1",
+        "label": "1",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "HME_EXIT_2",
+        "label": "2",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      }
+    ],
+    "platforms": [
+      {
+        "id": "HME_DTL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_W"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "HME_DTL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_E"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

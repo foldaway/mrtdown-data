@@ -412,10 +412,47 @@ async function validateStationReferences(
             continue;
           }
 
-          if (!serviceIncludesStation(service.value, station.value.id)) {
+          const activeRevisions = service.value.revisions.filter(
+            (revision) =>
+              revision.startAt <= platform.lastUpdated &&
+              (revision.endAt === null ||
+                platform.lastUpdated < revision.endAt),
+          );
+          if (activeRevisions.length === 0) {
             errors.push(
-              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not include station ${station.value.id} in any service revision`,
+              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not have a service revision active on ${platform.lastUpdated}`,
             );
+            continue;
+          }
+
+          for (const revision of activeRevisions) {
+            const stationOccurrenceCount = revision.path.stations.filter(
+              (serviceStation) => serviceStation.stationId === station.value.id,
+            ).length;
+            if (stationOccurrenceCount === 0) {
+              errors.push(
+                `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} revision ${revision.id} does not include station ${station.value.id} in its active service path`,
+              );
+              continue;
+            }
+
+            const selectedOccurrence =
+              platform.serviceStopOccurrences?.[serviceId];
+            if (
+              stationOccurrenceCount > 1 &&
+              selectedOccurrence === undefined
+            ) {
+              errors.push(
+                `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} visits station ${station.value.id} ${stationOccurrenceCount} times in active revision ${revision.id}; serviceStopOccurrences.${serviceId} is required`,
+              );
+            } else if (
+              selectedOccurrence !== undefined &&
+              selectedOccurrence >= stationOccurrenceCount
+            ) {
+              errors.push(
+                `${station.path}: layout.platforms.${platformIndex}.serviceStopOccurrences.${serviceId} ${selectedOccurrence} is outside ${stationOccurrenceCount} station occurrences in active revision ${revision.id}`,
+              );
+            }
           }
         }
       }
@@ -459,7 +496,11 @@ async function validateStationReferences(
         seenFirstLastTrainServices.set(serviceTiming.serviceId, index);
       }
 
-      if (layout && !layoutPlatformServiceIds.has(serviceTiming.serviceId)) {
+      if (
+        layout &&
+        layout.platforms.length > 0 &&
+        !layoutPlatformServiceIds.has(serviceTiming.serviceId)
+      ) {
         errors.push(
           `${station.path}: firstLastTrain.services.${index}.serviceId ${serviceTiming.serviceId} is not served by any layout platform`,
         );

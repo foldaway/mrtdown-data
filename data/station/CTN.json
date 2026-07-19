@@ -108,5 +108,182 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "CTN_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "CTN_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      },
+      {
+        "id": "CTN_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "CTN_EXIT_E",
+        "label": "E",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "CTN_EXIT_F",
+        "label": "F",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      },
+      {
+        "id": "CTN_EXIT_G",
+        "label": "G",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      }
+    ],
+    "platforms": [
+      {
+        "id": "CTN_NEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_S"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "CTN_NEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_N"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "CTN_DTL_C",
+        "label": "C",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_W"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "CTN_DTL_D",
+        "label": "D",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_E"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": [
+      {
+        "id": "CTN_XFER_NEL_A_DTL_C",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "CTN_NEL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CTN_DTL_C"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "CTN_XFER_NEL_A_DTL_D",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "CTN_NEL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CTN_DTL_D"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "CTN_XFER_NEL_B_DTL_C",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "CTN_NEL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CTN_DTL_C"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "CTN_XFER_NEL_B_DTL_D",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "CTN_NEL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CTN_DTL_D"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      }
+    ]
   }
 }

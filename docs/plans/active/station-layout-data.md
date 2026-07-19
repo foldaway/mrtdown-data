@@ -52,7 +52,8 @@ Related references:
 - This plan does not attempt detailed CAD geometry or public wayfinding map
   rendering.
 - This plan does not model temporary works, temporary platform closures, or
-  incident-specific access restrictions as static station layout.
+  incident-specific access restrictions as static station layout, except for
+  the current operational status of a durable public exit.
 - This plan does not add hand-authored page titles or meta descriptions. The
   site should continue deriving them from canonical station facts.
 
@@ -122,6 +123,11 @@ Layout data is current state. If a station changes, update the embedded layout
 to the new current state in the same way the canonical station record is
 updated.
 
+Every level, exit, platform, access point, and transfer path requires a
+`lastUpdated` date in `YYYY-MM-DD` form. It records when that individual layout
+fact was last verified against its source; update it when the fact is reviewed
+or changed, rather than whenever the containing station file is edited.
+
 ## Levels
 
 Levels identify station floors for platforms and access points.
@@ -129,6 +135,7 @@ Levels identify station floors for platforms and access points.
 ```json
 {
   "id": "B2",
+  "lastUpdated": "2026-07-19",
   "index": -2,
   "name": {
     "en-SG": "EWL and TEL platforms",
@@ -157,6 +164,7 @@ access routing are part of the passenger-facing station layout.
 {
   "id": "TAM_EXIT_A",
   "label": "A",
+  "lastUpdated": "2026-07-19",
   "levelId": "L1",
   "geo": {
     "latitude": 1.35395,
@@ -176,6 +184,9 @@ Initial fields:
 
 - `id`: station-local id.
 - `label`: public exit label such as `A`, `B`, `1`, or `Exit A`.
+- `operationalStatus`: optional exceptional current state. Absence means the
+  exit is open; `temporarily_closed` preserves the exit identity while keeping
+  wayfinding consumers from routing passengers through it.
 - `levelId`: optional reference to `layout.levels`.
 - `geo`: optional exit coordinate when a reviewed source provides it.
 - `nearbyLandmarkIds`: optional references to existing landmark records.
@@ -190,17 +201,23 @@ Rules:
 - Use `nearbyLandmarkIds` for landmarks already modeled in
   `data/landmark`; use `roadNames` for roads that are not landmarks.
 - Keep exit labels as strings because public labels are not always numeric.
-- Do not model temporary construction diversions as static exits.
+- Keep durable exits in the layout while they are temporarily closed and mark
+  them with `operationalStatus`; do not model temporary construction diversion
+  routes as static exits.
 
 ## Platforms
 
 Platforms represent public boarding areas. They should reference full scheduled
-service patterns through `serviceIds`.
+service patterns through `serviceIds`. A terminal platform used only to unload
+arriving passengers remains part of the layout with `boardingStatus` set to
+`alighting_only`. A platform that exists physically but is unavailable for
+ordinary passenger service uses `not_in_service`.
 
 ```json
 {
   "id": "OTP_EWL_A",
   "label": "A",
+  "lastUpdated": "2026-07-19",
   "lineId": "EWL",
   "levelId": "B2",
   "serviceIds": ["EWL_MAIN_E"],
@@ -214,6 +231,14 @@ Rules:
 - Use `serviceIds`, not `towardsStationId`. The service path is the source of
   truth for direction, stopping pattern, and terminal.
 - Use an array because platforms can host multiple scheduled patterns.
+- `serviceStopOccurrences` optionally maps a service id to the zero-based
+  occurrence of this station in the current service path. It is required when
+  a loop service visits the station more than once, so consumers can derive the
+  correct next stop for each platform.
+- `serviceIds` must be non-empty for ordinary boarding platforms and empty when
+  `boardingStatus` is `alighting_only` or `not_in_service`. Non-boardable
+  platforms do not advertise arriving, occasional, or inactive services as
+  boardable.
 - `doorCount` is preferred over enumerating every door when doors have no
   individual metadata.
 - Keep `lineId` for simple validation and authoring, even though it can be
@@ -228,6 +253,7 @@ wayfinding. They are anchored to doors when possible.
 {
   "id": "OTP_EWL_A_ESC_01",
   "kind": "escalator",
+  "lastUpdated": "2026-07-19",
   "nearestDoor": "12",
   "position": "middle",
   "connectsToLevelId": "B1",
@@ -264,10 +290,15 @@ Rules:
 ## Transfer Paths
 
 Transfer paths describe public movement between platforms or access points.
+They are bidirectional: `from` and `to` provide a stable ordering for the two
+endpoints and do not restrict traversal direction. Store one record per known
+physical path rather than duplicating it in reverse. Direction-specific paths
+can be introduced later if the schema gains explicit directionality metadata.
 
 ```json
 {
   "id": "OTP_EWL_TEL_PAID_LINK",
+  "lastUpdated": "2026-07-19",
   "from": {
     "kind": "platform",
     "id": "OTP_EWL_A"
@@ -313,6 +344,9 @@ Initial `classification` values:
 
 The classification is intentionally coarse. It is useful for routing and user
 interfaces without pretending that all stations have measured distance data.
+Transfer endpoint objects are lightweight references and therefore contain only
+`kind` and `id`; provenance belongs to the transfer path and referenced layout
+record rather than being duplicated on each reference.
 
 ## Validation
 
@@ -328,6 +362,8 @@ Add validation that catches:
 - platform `lineId` values that do not exist;
 - platform `levelId` values that do not exist in `layout.levels`;
 - platform `serviceIds` values that do not exist;
+- platform services that omit or exceed a required repeated-stop occurrence in
+  an open service revision;
 - services whose `lineId` differs from the platform `lineId`;
 - transfer endpoints that do not reference an existing level, platform, or
   access point;

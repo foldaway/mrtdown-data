@@ -61,5 +61,59 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "TWR_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Pioneer Road"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "TWR_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Pioneer Road"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "id": "TWR_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_E"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "TWR_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_W"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

@@ -60,5 +60,59 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "LVR_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Kallang Road"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "LVR_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Kallang Road"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "id": "LVR_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_E"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "LVR_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_W"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

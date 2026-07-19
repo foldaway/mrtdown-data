@@ -62,5 +62,71 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "BDK_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "New Upper Changi Road"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "BDK_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "New Upper Changi Road"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "BDK_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "New Upper Changi Road"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "id": "BDK_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_E"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "BDK_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_W"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

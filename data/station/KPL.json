@@ -24,5 +24,49 @@
     "harbourfront-centre",
     "sentosa-gateway"
   ],
-  "townId": "bukit-merah"
+  "townId": "bukit-merah",
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "KPL_EXIT_2",
+        "label": "2",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      },
+      {
+        "id": "KPL_EXIT_3",
+        "label": "3",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      }
+    ],
+    "platforms": [
+      {
+        "id": "KPL_CCL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CCW",
+          "CCL_LOOP_CCW"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "KPL_CCL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CW",
+          "CCL_LOOP_CW"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
+  }
 }

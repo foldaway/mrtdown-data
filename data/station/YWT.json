@@ -61,5 +61,80 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "YWT_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Choa Chu Kang Drive"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "YWT_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Choa Chu Kang Drive"
+        ],
+        "paidArea": false
+      },
+      {
+        "id": "YWT_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Choa Chu Kang Drive"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "YWT_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Choa Chu Kang Drive"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "id": "YWT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_N"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "YWT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_S"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

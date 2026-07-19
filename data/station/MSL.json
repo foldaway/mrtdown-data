@@ -62,5 +62,80 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "MSL_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Woodlands Avenue 3"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "MSL_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Woodlands Avenue 3"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "MSL_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Woodlands Avenue 3"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "MSL_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Woodlands Avenue 3"
+        ],
+        "paidArea": false
+      }
+    ],
+    "platforms": [
+      {
+        "id": "MSL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_N"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "MSL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_S"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

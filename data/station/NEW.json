@@ -103,5 +103,167 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "NEW_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      },
+      {
+        "id": "NEW_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "lift": true
+        }
+      },
+      {
+        "id": "NEW_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "id": "NEW_NSL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_N"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "NEW_NSL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_S"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "NEW_DTL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_W"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "NEW_DTL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_E"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": [
+      {
+        "id": "NEW_XFER_NSL_A_DTL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "NEW_NSL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "NEW_DTL_A"
+        },
+        "paidArea": false,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "out_of_station",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "NEW_XFER_NSL_A_DTL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "NEW_NSL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "NEW_DTL_B"
+        },
+        "paidArea": false,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "out_of_station",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "NEW_XFER_NSL_B_DTL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "NEW_NSL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "NEW_DTL_A"
+        },
+        "paidArea": false,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "out_of_station",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "NEW_XFER_NSL_B_DTL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "NEW_NSL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "NEW_DTL_B"
+        },
+        "paidArea": false,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "out_of_station",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      }
+    ]
   }
 }

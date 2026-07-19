@@ -104,5 +104,168 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "CTH_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "CTH_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "CTH_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "CTH_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      }
+    ],
+    "platforms": [
+      {
+        "id": "CTH_NSL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_N"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "CTH_EWL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_W"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "CTH_NSL_C",
+        "label": "C",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_S"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "CTH_EWL_D",
+        "label": "D",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_E"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": [
+      {
+        "id": "CTH_XFER_A_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "CTH_NSL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CTH_EWL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": 0,
+        "classification": "same_platform",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "CTH_XFER_C_D",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "CTH_NSL_C"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CTH_EWL_D"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": 0,
+        "classification": "same_platform",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "CTH_XFER_NSL_A_EWL_D",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "CTH_NSL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CTH_EWL_D"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "CTH_XFER_EWL_B_NSL_C",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "CTH_EWL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "CTH_NSL_C"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      }
+    ]
   }
 }

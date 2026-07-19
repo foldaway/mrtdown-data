@@ -62,5 +62,77 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "BBS_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      },
+      {
+        "id": "BBS_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "BBS_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "BBS_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      },
+      {
+        "id": "BBS_EXIT_E",
+        "label": "E",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      },
+      {
+        "id": "BBS_EXIT_F",
+        "label": "F",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      }
+    ],
+    "platforms": [
+      {
+        "id": "CBBS_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CCW"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "CBBS_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CW"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

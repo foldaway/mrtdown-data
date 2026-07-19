@@ -60,5 +60,55 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "UBI_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      },
+      {
+        "id": "UBI_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "id": "UBI_DTL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_W"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "UBI_DTL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_E"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

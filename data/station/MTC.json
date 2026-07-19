@@ -62,5 +62,71 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "MTC_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      },
+      {
+        "id": "MTC_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      },
+      {
+        "id": "MTC_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      },
+      {
+        "id": "MTC_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      },
+      {
+        "id": "MTC_EXIT_E",
+        "label": "E",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      },
+      {
+        "id": "MTC_EXIT_F",
+        "label": "F",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      }
+    ],
+    "platforms": [
+      {
+        "id": "MTC_TEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_S"
+        ],
+        "doorCount": 20,
+        "accessPoints": []
+      },
+      {
+        "id": "MTC_TEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_N"
+        ],
+        "doorCount": 20,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

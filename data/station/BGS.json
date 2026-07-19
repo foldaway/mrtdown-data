@@ -106,5 +106,183 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "BGS_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      },
+      {
+        "id": "BGS_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "BGS_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      },
+      {
+        "id": "BGS_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "BGS_EXIT_E",
+        "label": "E",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "BGS_EXIT_F",
+        "label": "F",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      }
+    ],
+    "platforms": [
+      {
+        "id": "BGS_EWL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_E"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "BGS_EWL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_W"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "BGS_DTL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_W"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "BGS_DTL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_E"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": [
+      {
+        "id": "BGS_XFER_EWL_A_DTL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "BGS_EWL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "BGS_DTL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "BGS_XFER_EWL_A_DTL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "BGS_EWL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "BGS_DTL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "BGS_XFER_EWL_B_DTL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "BGS_EWL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "BGS_DTL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "BGS_XFER_EWL_B_DTL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "BGS_EWL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "BGS_DTL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      }
+    ]
   }
 }

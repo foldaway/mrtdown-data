@@ -60,5 +60,71 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "SPL_EXIT_1",
+        "label": "1",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Upper Thomson Road"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "SPL_EXIT_2",
+        "label": "2",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Upper Thomson Road"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "SPL_EXIT_3",
+        "label": "3",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Upper Thomson Road"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "id": "TSPL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_S"
+        ],
+        "doorCount": 20,
+        "accessPoints": []
+      },
+      {
+        "id": "TSPL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_N"
+        ],
+        "doorCount": 20,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

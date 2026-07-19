@@ -103,5 +103,159 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "BTN_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "BTN_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "id": "BTN_CCL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CCW",
+          "CCL_LOOP_CCW"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "BTN_CCL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CW",
+          "CCL_LOOP_CW"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "BTN_DTL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_W"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "BTN_DTL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_E"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": [
+      {
+        "id": "BTN_XFER_CCL_A_DTL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "BTN_CCL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "BTN_DTL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "BTN_XFER_CCL_A_DTL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "BTN_CCL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "BTN_DTL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "BTN_XFER_CCL_B_DTL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "BTN_CCL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "BTN_DTL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "BTN_XFER_CCL_B_DTL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "BTN_CCL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "BTN_DTL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      }
+    ]
   }
 }

@@ -61,5 +61,55 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "BGK_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      },
+      {
+        "id": "BGK_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "id": "BGK_NEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_S"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "BGK_NEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_N"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

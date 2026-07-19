@@ -92,5 +92,198 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "XPO_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      },
+      {
+        "id": "XPO_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "XPO_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      },
+      {
+        "id": "XPO_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      },
+      {
+        "id": "XPO_EXIT_E",
+        "label": "E",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true,
+          "lift": true
+        }
+      },
+      {
+        "id": "XPO_EXIT_F",
+        "label": "F",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "XPO_EXIT_G",
+        "label": "G",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      }
+    ],
+    "platforms": [
+      {
+        "id": "XPO_EWL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_CG_E"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "XPO_EWL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_CG_W"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "XPO_DTL_C",
+        "label": "C",
+        "lastUpdated": "2026-07-18",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_W"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "XPO_DTL_D",
+        "label": "D",
+        "lastUpdated": "2026-07-18",
+        "boardingStatus": "alighting_only",
+        "lineId": "DTL",
+        "serviceIds": [],
+        "doorCount": 12,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": [
+      {
+        "id": "XPO_XFER_EWL_A_DTL_C",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "XPO_EWL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "XPO_DTL_C"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "XPO_XFER_EWL_B_DTL_C",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "XPO_EWL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "XPO_DTL_C"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "XPO_XFER_DTL_D_EWL_A",
+        "lastUpdated": "2026-07-19",
+        "from": {
+          "kind": "platform",
+          "id": "XPO_DTL_D"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "XPO_EWL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "XPO_XFER_DTL_D_EWL_B",
+        "lastUpdated": "2026-07-19",
+        "from": {
+          "kind": "platform",
+          "id": "XPO_DTL_D"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "XPO_EWL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      }
+    ]
   }
 }

@@ -60,5 +60,61 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "FRR_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Farrer Road"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "FRR_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-16",
+        "roadNames": [
+          "Farrer Road"
+        ],
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "id": "CFRR_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CCW",
+          "CCL_LOOP_CCW"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "CFRR_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CW",
+          "CCL_LOOP_CW"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

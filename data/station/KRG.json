@@ -62,5 +62,70 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "KRG_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "KRG_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false
+      },
+      {
+        "id": "KRG_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      },
+      {
+        "id": "KRG_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false,
+        "accessibility": {
+          "stepFree": true
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "id": "CKRG_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CCW",
+          "CCL_LOOP_CCW"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "CKRG_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CW",
+          "CCL_LOOP_CW"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

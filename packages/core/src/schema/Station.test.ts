@@ -180,6 +180,7 @@ describe('StationSchema', () => {
             {
               id: 'B2',
               index: -2,
+              lastUpdated: '2026-07-18',
               name: {
                 'en-SG': 'Platforms',
                 'zh-Hans': null,
@@ -192,6 +193,8 @@ describe('StationSchema', () => {
             {
               id: 'KET_EXIT_A',
               label: 'A',
+              lastUpdated: '2026-07-18',
+              operationalStatus: 'temporarily_closed',
               levelId: 'B2',
               paidArea: false,
             },
@@ -200,6 +203,7 @@ describe('StationSchema', () => {
             {
               id: 'KET_ISL_A',
               label: 'A',
+              lastUpdated: '2026-07-18',
               lineId: 'ISL',
               levelId: 'B2',
               serviceIds: ['ISL_MAIN_E'],
@@ -208,6 +212,7 @@ describe('StationSchema', () => {
                 {
                   id: 'KET_ISL_A_ESC_01',
                   kind: 'escalator',
+                  lastUpdated: '2026-07-18',
                   nearestDoor: '12',
                   position: 'middle',
                   connectsToLevelId: 'B2',
@@ -219,6 +224,7 @@ describe('StationSchema', () => {
           transferPaths: [
             {
               id: 'KET_TRANSFER',
+              lastUpdated: '2026-07-18',
               from: {
                 kind: 'platform',
                 id: 'KET_ISL_A',
@@ -240,6 +246,31 @@ describe('StationSchema', () => {
     ).not.toThrow();
   });
 
+  it('rejects unknown station exit operational statuses', () => {
+    const result = StationSchema.safeParse({
+      ...minimalStation(),
+      layout: {
+        levels: [],
+        exits: [
+          {
+            id: 'KET_EXIT_A',
+            label: 'A',
+            lastUpdated: '2026-07-18',
+            operationalStatus: 'permanently_closed',
+            paidArea: false,
+          },
+        ],
+        platforms: [],
+        transferPaths: [],
+      },
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues[0]?.path.join('.')).toBe(
+      'layout.exits.0.operationalStatus',
+    );
+  });
+
   it('rejects layout platforms without service ids', () => {
     const result = StationSchema.safeParse({
       ...minimalStation(),
@@ -250,6 +281,7 @@ describe('StationSchema', () => {
           {
             id: 'KET_ISL_A',
             label: 'A',
+            lastUpdated: '2026-07-18',
             lineId: 'ISL',
             serviceIds: [],
             accessPoints: [],
@@ -262,6 +294,86 @@ describe('StationSchema', () => {
     expect(result.success).toBe(false);
     expect(result.error?.issues[0]?.path.join('.')).toBe(
       'layout.platforms.0.serviceIds',
+    );
+  });
+
+  it('accepts alighting-only platforms without service ids', () => {
+    expect(() =>
+      StationSchema.parse({
+        ...minimalStation(),
+        layout: {
+          levels: [],
+          exits: [],
+          platforms: [
+            {
+              id: 'KET_ISL_A',
+              label: 'A',
+              lastUpdated: '2026-07-18',
+              boardingStatus: 'alighting_only',
+              lineId: 'ISL',
+              serviceIds: [],
+              accessPoints: [],
+            },
+          ],
+          transferPaths: [],
+        },
+      }),
+    ).not.toThrow();
+  });
+
+  it('rejects service ids on non-boardable platforms', () => {
+    const result = StationSchema.safeParse({
+      ...minimalStation(),
+      layout: {
+        levels: [],
+        exits: [],
+        platforms: [
+          {
+            id: 'KET_ISL_A',
+            label: 'A',
+            lastUpdated: '2026-07-18',
+            boardingStatus: 'alighting_only',
+            lineId: 'ISL',
+            serviceIds: ['ISL_MAIN_E'],
+            accessPoints: [],
+          },
+        ],
+        transferPaths: [],
+      },
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues[0]?.path.join('.')).toBe(
+      'layout.platforms.0.serviceIds',
+    );
+  });
+
+  it('rejects stop occurrences for services not served by the platform', () => {
+    const result = StationSchema.safeParse({
+      ...minimalStation(),
+      layout: {
+        levels: [],
+        exits: [],
+        platforms: [
+          {
+            id: 'KET_ISL_A',
+            label: 'A',
+            lastUpdated: '2026-07-18',
+            lineId: 'ISL',
+            serviceIds: ['ISL_MAIN_E'],
+            serviceStopOccurrences: {
+              ISL_MAIN_W: 1,
+            },
+            accessPoints: [],
+          },
+        ],
+        transferPaths: [],
+      },
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues[0]?.path.join('.')).toBe(
+      'layout.platforms.0.serviceStopOccurrences.ISL_MAIN_W',
     );
   });
 });

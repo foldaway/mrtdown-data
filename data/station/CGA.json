@@ -52,5 +52,53 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "CGA_EXIT_TERMINAL_2",
+        "label": "Terminal 2",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      },
+      {
+        "id": "CGA_EXIT_TERMINAL_2_3",
+        "label": "Terminal 2/3",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      },
+      {
+        "id": "CGA_EXIT_TERMINAL_3",
+        "label": "Terminal 3",
+        "lastUpdated": "2026-07-18",
+        "paidArea": false
+      }
+    ],
+    "platforms": [
+      {
+        "id": "CGA_EWL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_CG_W"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "CGA_EWL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_CG_W"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

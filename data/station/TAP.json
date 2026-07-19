@@ -61,5 +61,59 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "TAP_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false
+      },
+      {
+        "id": "TAP_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false
+      },
+      {
+        "id": "TAP_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false
+      },
+      {
+        "id": "TAP_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-16",
+        "paidArea": false
+      }
+    ],
+    "platforms": [
+      {
+        "id": "TAP_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_N"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "TAP_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_S"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

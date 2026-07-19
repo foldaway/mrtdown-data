@@ -128,5 +128,364 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "DBG_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "DBG_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "DBG_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "DBG_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "DBG_EXIT_E",
+        "label": "E",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "DBG_EXIT_F",
+        "label": "F",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false
+      },
+      {
+        "id": "DBG_EXIT_G",
+        "label": "G",
+        "lastUpdated": "2026-07-17",
+        "paidArea": false,
+        "accessibility": {
+          "lift": true
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "id": "DBG_NSL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_N"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "DBG_NSL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_S"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "DBG_CCL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-19",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CCW"
+        ],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "DBG_CCL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-19",
+        "boardingStatus": "alighting_only",
+        "lineId": "CCL",
+        "serviceIds": [],
+        "doorCount": 12,
+        "accessPoints": []
+      },
+      {
+        "id": "DBG_NEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_S"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      },
+      {
+        "id": "DBG_NEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_N"
+        ],
+        "doorCount": 24,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": [
+      {
+        "id": "DBG_XFER_NSL_A_CCL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "DBG_NSL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "DBG_CCL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "DBG_XFER_NSL_A_CCL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "DBG_NSL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "DBG_CCL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "DBG_XFER_NSL_A_NEL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "DBG_NSL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "DBG_NEL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "DBG_XFER_NSL_A_NEL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "DBG_NSL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "DBG_NEL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "DBG_XFER_NSL_B_CCL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "DBG_NSL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "DBG_CCL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "DBG_XFER_NSL_B_CCL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "DBG_NSL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "DBG_CCL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "DBG_XFER_NSL_B_NEL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "DBG_NSL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "DBG_NEL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "DBG_XFER_NSL_B_NEL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "DBG_NSL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "DBG_NEL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "DBG_XFER_CCL_A_NEL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "DBG_CCL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "DBG_NEL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "DBG_XFER_CCL_A_NEL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "DBG_CCL_A"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "DBG_NEL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "DBG_XFER_CCL_B_NEL_A",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "DBG_CCL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "DBG_NEL_A"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      },
+      {
+        "id": "DBG_XFER_CCL_B_NEL_B",
+        "lastUpdated": "2026-07-18",
+        "from": {
+          "kind": "platform",
+          "id": "DBG_CCL_B"
+        },
+        "to": {
+          "kind": "platform",
+          "id": "DBG_NEL_B"
+        },
+        "paidArea": true,
+        "modes": [
+          "walk"
+        ],
+        "levelChange": null,
+        "classification": "unknown",
+        "estimatedTraversalSeconds": null,
+        "distanceMeters": null
+      }
+    ]
   }
 }

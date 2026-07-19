@@ -137,12 +137,22 @@ export const StationLayoutLevelSchema = z.object({
   id: z.string(),
   index: z.number().int(),
   name: TranslationsSchema,
+  lastUpdated: z.iso.date(),
 });
 export type StationLayoutLevel = z.infer<typeof StationLayoutLevelSchema>;
+
+export const StationLayoutExitOperationalStatusSchema = z.enum([
+  'temporarily_closed',
+]);
+export type StationLayoutExitOperationalStatus = z.infer<
+  typeof StationLayoutExitOperationalStatusSchema
+>;
 
 export const StationLayoutExitSchema = z.object({
   id: z.string(),
   label: z.string(),
+  lastUpdated: z.iso.date(),
+  operationalStatus: StationLayoutExitOperationalStatusSchema.optional(),
   levelId: z.string().optional(),
   geo: z
     .object({
@@ -165,6 +175,7 @@ export type StationLayoutExit = z.infer<typeof StationLayoutExitSchema>;
 export const StationLayoutAccessPointSchema = z.object({
   id: z.string(),
   kind: StationLayoutAccessPointKindSchema,
+  lastUpdated: z.iso.date(),
   nearestDoor: z.string().optional(),
   position: StationLayoutAccessPointPositionSchema,
   connectsToLevelId: z.string().optional(),
@@ -174,15 +185,59 @@ export type StationLayoutAccessPoint = z.infer<
   typeof StationLayoutAccessPointSchema
 >;
 
-export const StationLayoutPlatformSchema = z.object({
-  id: z.string(),
-  label: z.string(),
-  lineId: z.string(),
-  levelId: z.string().optional(),
-  serviceIds: z.array(z.string()).nonempty(),
-  doorCount: z.number().int().positive().optional(),
-  accessPoints: z.array(StationLayoutAccessPointSchema),
-});
+export const StationLayoutPlatformBoardingStatusSchema = z.enum([
+  'alighting_only',
+  'not_in_service',
+]);
+export type StationLayoutPlatformBoardingStatus = z.infer<
+  typeof StationLayoutPlatformBoardingStatusSchema
+>;
+
+export const StationLayoutPlatformSchema = z
+  .object({
+    id: z.string(),
+    label: z.string(),
+    lastUpdated: z.iso.date(),
+    boardingStatus: StationLayoutPlatformBoardingStatusSchema.optional(),
+    lineId: z.string(),
+    levelId: z.string().optional(),
+    serviceIds: z.array(z.string()),
+    serviceStopOccurrences: z
+      .record(z.string(), z.number().int().nonnegative())
+      .optional(),
+    doorCount: z.number().int().positive().optional(),
+    accessPoints: z.array(StationLayoutAccessPointSchema),
+  })
+  .superRefine((platform, context) => {
+    if (platform.serviceIds.length === 0 && !platform.boardingStatus) {
+      context.addIssue({
+        code: 'custom',
+        message:
+          'serviceIds must not be empty unless the platform is non-boardable',
+        path: ['serviceIds'],
+      });
+    }
+
+    if (platform.serviceIds.length > 0 && platform.boardingStatus) {
+      context.addIssue({
+        code: 'custom',
+        message: 'non-boardable platforms must not advertise serviceIds',
+        path: ['serviceIds'],
+      });
+    }
+
+    for (const serviceId of Object.keys(
+      platform.serviceStopOccurrences ?? {},
+    )) {
+      if (!platform.serviceIds.includes(serviceId)) {
+        context.addIssue({
+          code: 'custom',
+          message: 'service stop occurrences must reference a serviceId',
+          path: ['serviceStopOccurrences', serviceId],
+        });
+      }
+    }
+  });
 export type StationLayoutPlatform = z.infer<typeof StationLayoutPlatformSchema>;
 
 export const StationLayoutTransferEndpointSchema = z.object({
@@ -195,6 +250,7 @@ export type StationLayoutTransferEndpoint = z.infer<
 
 export const StationLayoutTransferPathSchema = z.object({
   id: z.string(),
+  lastUpdated: z.iso.date(),
   from: StationLayoutTransferEndpointSchema,
   to: StationLayoutTransferEndpointSchema,
   paidArea: z.boolean(),

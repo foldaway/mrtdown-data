@@ -62,5 +62,82 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "MPR_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-19",
+        "roadNames": [
+          "Marine Parade Road"
+        ],
+        "paidArea": false
+      },
+      {
+        "id": "MPR_EXIT_B",
+        "label": "B",
+        "lastUpdated": "2026-07-19",
+        "roadNames": [
+          "Marine Parade Road"
+        ],
+        "paidArea": false
+      },
+      {
+        "id": "MPR_EXIT_C",
+        "label": "C",
+        "lastUpdated": "2026-07-19",
+        "roadNames": [
+          "Joo Chiat Road",
+          "Marine Parade Road"
+        ],
+        "paidArea": false
+      },
+      {
+        "id": "MPR_EXIT_D",
+        "label": "D",
+        "lastUpdated": "2026-07-19",
+        "roadNames": [
+          "Marine Parade Road"
+        ],
+        "paidArea": false
+      },
+      {
+        "id": "MPR_EXIT_E",
+        "label": "E",
+        "lastUpdated": "2026-07-19",
+        "roadNames": [
+          "Marine Parade Road",
+          "Still Road South"
+        ],
+        "paidArea": false
+      }
+    ],
+    "platforms": [
+      {
+        "id": "MPR_TEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-18",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_S"
+        ],
+        "doorCount": 20,
+        "accessPoints": []
+      },
+      {
+        "id": "MPR_TEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-18",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_N"
+        ],
+        "doorCount": 20,
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }

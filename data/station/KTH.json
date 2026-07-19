@@ -60,5 +60,49 @@
         }
       }
     ]
+  },
+  "layout": {
+    "levels": [],
+    "exits": [
+      {
+        "id": "KTH_EXIT_A",
+        "label": "A",
+        "lastUpdated": "2026-07-19",
+        "paidArea": false
+      }
+    ],
+    "platforms": [
+      {
+        "id": "KTH_BPLRT_1",
+        "label": "1",
+        "lastUpdated": "2026-07-18",
+        "lineId": "BPLRT",
+        "serviceIds": [
+          "BPLRT_A",
+          "BPLRT_B"
+        ],
+        "serviceStopOccurrences": {
+          "BPLRT_A": 1,
+          "BPLRT_B": 1
+        },
+        "accessPoints": []
+      },
+      {
+        "id": "KTH_BPLRT_2",
+        "label": "2",
+        "lastUpdated": "2026-07-18",
+        "lineId": "BPLRT",
+        "serviceIds": [
+          "BPLRT_A",
+          "BPLRT_B"
+        ],
+        "serviceStopOccurrences": {
+          "BPLRT_A": 0,
+          "BPLRT_B": 0
+        },
+        "accessPoints": []
+      }
+    ],
+    "transferPaths": []
   }
 }
