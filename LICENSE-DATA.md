@@ -1,4 +1,4 @@
-# MRTDown Data License
+MRTDown Data License
 
 Unless a file or generated notice says otherwise, MRTDown-authored canonical
 data and generated data exports in this repository are licensed under the
