@@ -73,6 +73,9 @@ The target architecture is a package/data repository:
 - `npm run data:validate`: validate canonical `data` with the target CLI.
 - `npm run data:import:lta-station-exits -- <geojson>`: replace station layouts
   with the supplied LTA MRT Station Exit GeoJSON dataset.
+- `npm run data:platforms:infer -- [--apply] [--write <report>]`: report or
+  conservatively apply same-line platform label inference from reviewed
+  observations.
 - `npm run fixtures:validate`: generate and validate fixture data with the
   target CLI.
 - `npm run pages:build`: build the static GitHub Pages data artifact.

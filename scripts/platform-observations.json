@@ -1,0 +1,86 @@
+[
+  {
+    "stationId": "BNV",
+    "lineId": "EWL",
+    "platformLabel": "A",
+    "towardsStationId": "PSR",
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "BNV",
+    "lineId": "EWL",
+    "platformLabel": "B",
+    "towardsStationId": "TLK",
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "BNV",
+    "lineId": "CCL",
+    "platformLabel": "A",
+    "towardsStationId": "ONH",
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "BNV",
+    "lineId": "CCL",
+    "platformLabel": "B",
+    "towardsStationId": "HLV",
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "CRQ",
+    "lineId": "NEL",
+    "platformLabel": "A",
+    "towardsStationId": "HBF",
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "CRQ",
+    "lineId": "NEL",
+    "platformLabel": "B",
+    "towardsStationId": "PGC",
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "BGS",
+    "lineId": "DTL",
+    "platformLabel": "A",
+    "towardsStationId": "BKP",
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "BGS",
+    "lineId": "DTL",
+    "platformLabel": "B",
+    "towardsStationId": "XPO",
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "WDS",
+    "lineId": "TEL",
+    "platformLabel": "A",
+    "towardsStationId": "BSR",
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "WDS",
+    "lineId": "TEL",
+    "platformLabel": "B",
+    "towardsStationId": "WDN",
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "SOM",
+    "lineId": "NSL",
+    "platformLabel": "A",
+    "towardsStationId": "JUR",
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "SOM",
+    "lineId": "NSL",
+    "platformLabel": "B",
+    "towardsStationId": "MRB",
+    "observedAt": "2026-07-20"
+  }
+]

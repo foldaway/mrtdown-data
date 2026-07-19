@@ -262,6 +262,34 @@ describe('StationSchema', () => {
     ).not.toThrow();
   });
 
+  it('accepts platform data inferred from an observed same-line platform', () => {
+    expect(() =>
+      StationSchema.parse({
+        ...minimalStation(),
+        layout: {
+          platforms: [
+            {
+              id: 'KET_ISL_1',
+              label: '1',
+              lastUpdated: '2026-07-20',
+              lineId: 'ISL',
+              serviceIds: ['ISL_MAIN_E'],
+              inference: {
+                method: 'same-line-platform-label',
+                basis: [
+                  {
+                    stationId: 'HKU',
+                    platformId: 'HKU_ISL_1',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      }),
+    ).not.toThrow();
+  });
+
   it('requires a date-only platform update date', () => {
     const result = StationSchema.safeParse({
       ...minimalStation(),

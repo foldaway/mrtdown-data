@@ -93,6 +93,33 @@ export type StationLayoutPlatformBoardingStatus = z.infer<
   typeof StationLayoutPlatformBoardingStatusSchema
 >;
 
+export const StationLayoutPlatformInferenceMethodSchema = z.literal(
+  'same-line-platform-label',
+);
+export type StationLayoutPlatformInferenceMethod = z.infer<
+  typeof StationLayoutPlatformInferenceMethodSchema
+>;
+
+export const StationLayoutPlatformInferenceBasisSchema = z
+  .object({
+    stationId: z.string().min(1),
+    platformId: z.string().min(1),
+  })
+  .strict();
+export type StationLayoutPlatformInferenceBasis = z.infer<
+  typeof StationLayoutPlatformInferenceBasisSchema
+>;
+
+export const StationLayoutPlatformInferenceSchema = z
+  .object({
+    method: StationLayoutPlatformInferenceMethodSchema,
+    basis: z.array(StationLayoutPlatformInferenceBasisSchema).min(1),
+  })
+  .strict();
+export type StationLayoutPlatformInference = z.infer<
+  typeof StationLayoutPlatformInferenceSchema
+>;
+
 export const StationLayoutPlatformSchema = z
   .object({
     id: z.string().min(1),
@@ -101,6 +128,7 @@ export const StationLayoutPlatformSchema = z
     lineId: z.string().min(1),
     serviceIds: z.array(z.string().min(1)).min(1).optional(),
     boardingStatus: StationLayoutPlatformBoardingStatusSchema.optional(),
+    inference: StationLayoutPlatformInferenceSchema.optional(),
   })
   .strict()
   .superRefine((platform, context) => {

@@ -230,11 +230,15 @@ async function validateStationReferences(
     serviceRecords.map((service) => [service.value.id, service]),
   );
   const townIds = await loadEntityIds(dataDir, records, 'town');
+  const stationRecords = await loadEntityRecords(dataDir, records, 'station');
+  const stationById = new Map(
+    stationRecords.map((station) => [station.value.id, station]),
+  );
   const errors: string[] = [];
   const seenStationAliases = new Map<string, { path: string; index: number }>();
   const seenLayoutSourceObjectIds = new Map<number, string>();
 
-  for (const station of await loadEntityRecords(dataDir, records, 'station')) {
+  for (const station of stationRecords) {
     if (!townIds.has(station.value.townId)) {
       errors.push(
         `${station.path}: townId ${station.value.townId} does not exist in town/`,
@@ -336,6 +340,79 @@ async function validateStationReferences(
             serviceId,
           ]),
         );
+
+        const inference = platform.inference;
+        if (inference) {
+          const supportedServiceIds = new Set<string>();
+          validateDuplicateValue(
+            errors,
+            station.path,
+            `layout.platforms.${platformIndex}.inference.basis`,
+            inference.basis.map((basis, index) => [
+              index,
+              `${basis.stationId}/${basis.platformId}`,
+            ]),
+          );
+
+          for (const [basisIndex, basis] of inference.basis.entries()) {
+            const basisPath = `layout.platforms.${platformIndex}.inference.basis.${basisIndex}`;
+            if (basis.stationId === station.value.id) {
+              errors.push(
+                `${station.path}: ${basisPath} must reference a platform at another station`,
+              );
+              continue;
+            }
+
+            const basisStation = stationById.get(basis.stationId);
+            if (!basisStation) {
+              errors.push(
+                `${station.path}: ${basisPath}.stationId ${basis.stationId} does not exist in station/`,
+              );
+              continue;
+            }
+            const basisPlatform = basisStation.value.layout?.platforms?.find(
+              (candidate) => candidate.id === basis.platformId,
+            );
+            if (!basisPlatform) {
+              errors.push(
+                `${station.path}: ${basisPath}.platformId ${basis.platformId} does not exist at station ${basis.stationId}`,
+              );
+              continue;
+            }
+            if (basisPlatform.inference) {
+              errors.push(
+                `${station.path}: ${basisPath} must reference a directly observed platform`,
+              );
+            }
+            if (basisPlatform.lineId !== platform.lineId) {
+              errors.push(
+                `${station.path}: ${basisPath} uses line ${basisPlatform.lineId}, not ${platform.lineId}`,
+              );
+            }
+            if (basisPlatform.label !== platform.label) {
+              errors.push(
+                `${station.path}: ${basisPath} uses label ${basisPlatform.label}, not ${platform.label}`,
+              );
+            }
+            if (platform.lastUpdated < basisPlatform.lastUpdated) {
+              errors.push(
+                `${station.path}: ${basisPath} was reviewed after inferred platform ${platform.id}`,
+              );
+            }
+
+            for (const serviceId of basisPlatform.serviceIds ?? []) {
+              supportedServiceIds.add(serviceId);
+            }
+          }
+
+          for (const serviceId of platform.serviceIds ?? []) {
+            if (!supportedServiceIds.has(serviceId)) {
+              errors.push(
+                `${station.path}: layout.platforms.${platformIndex}.inference does not support service ${serviceId}`,
+              );
+            }
+          }
+        }
 
         for (const [serviceIndex, serviceId] of (
           platform.serviceIds ?? []

@@ -40,18 +40,20 @@ The upstream exit features remain subject to that licence. MRTDown's
 arrangement, and metadata; MRTDown claims no exclusive rights in the underlying
 facts. No operator-site station-layout material is included in these records.
 
-## Independently Observed Platform Facts
+## Observed and Inferred Platform Facts
 
 Station `layout.platforms` records, when present, contain factual platform
 information independently contributed from personal observation, personal
-recollection, or both. MRTDown-authored selection, normalization, arrangement,
+recollection, or by recorded same-line inference rooted in directly observed
+canonical platforms. MRTDown-authored selection, normalization, arrangement,
 and metadata are licensed under `CC-BY-4.0`; MRTDown claims no exclusive rights
 in the underlying facts.
 
 Personal observation or recollection is the repository's default source policy
 for platform records and is not repeated as per-record metadata. The
-`lastUpdated` field records the latest canonical review date, while Git history
-preserves contribution and review context.
+`inference` field records canonical basis platforms when that default does not
+apply. The `lastUpdated` field records the latest canonical review date, while
+Git history preserves contribution and review context.
 
 Photographs, Google Maps, Google Street View, Google-hosted user photos,
 proprietary operator maps, and website material are not permitted canonical

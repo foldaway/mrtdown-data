@@ -15,6 +15,7 @@
     "check:docs": "node scripts/check-docs-links.mjs",
     "lint": "biome check AGENTS.md CLAUDE.md README.md docs fixtures .changeset .github/copilot-instructions.md biome.json package.json turbo.json vitest.config.ts packages scripts",
     "data:import:lta-station-exits": "node scripts/import-lta-station-exits.mjs",
+    "data:platforms:infer": "node scripts/infer-station-platforms.mjs",
     "fixtures:generate": "node scripts/generate-fixtures.mjs",
     "typecheck": "npm run build:packages",
     "build:packages": "turbo run build --filter=@mrtdown/*",

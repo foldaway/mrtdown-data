@@ -27,7 +27,7 @@ npm run lint
   and `data/landmark`: canonical static entities.
 - the `layout` property in `data/station/*.json`: station exits imported
   exclusively from LTA's MRT Station Exit GeoJSON dataset and optional
-  independently observed platform facts.
+  observed or same-line-inferred platform facts.
 - `data/issue/YYYY/MM/<issue_id>/`: canonical issue bundles.
 - `data/rights/source-registry.json`: source rights and attribution rules used
   for evidence classification.
@@ -56,6 +56,7 @@ npm run lint               # Run Biome checks
 npm run check              # Run lint, boundary checks, and docs link checks
 npm run data:validate      # Validate canonical data
 npm run data:import:lta-station-exits -- /path/to/exits.geojson
+npm run data:platforms:infer -- --write /tmp/platform-inference.json
 npm run fixtures:validate  # Generate and validate fixture data
 npm run triage:regressions -- --list  # List historical ingestion cases
 npm run pages:build        # Build the GitHub Pages static data artifact
@@ -133,9 +134,10 @@ tooling, and associated documentation are licensed under the MIT License as
 described in `LICENSE-CODE.md`.
 
 Station layout exit records contain LTA data under the Singapore Open Data
-Licence v1.0. Independently observed platform records are MRTDown-authored
-factual data under `CC-BY-4.0`. The source policy and attribution notice are in
-`docs/plans/active/station-layout-data.md` and `LICENSE-DATA.md`.
+Licence v1.0. Observed and provenance-linked inferred platform records are
+MRTDown-authored factual data under `CC-BY-4.0`. The source policy and
+attribution notice are in `docs/plans/active/station-layout-data.md` and
+`LICENSE-DATA.md`.
 
 Evidence may contain or link to third-party posts, articles, source text,
 government source material, or direct report text. Those upstream materials are

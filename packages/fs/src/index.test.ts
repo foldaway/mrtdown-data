@@ -3344,6 +3344,61 @@ describe('@mrtdown/fs', () => {
     );
   });
 
+  it('validates inferred platform provenance', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const basisStationPath = join(dataDir, 'station/HKU.json');
+    const basisStation = JSON.parse(await readFile(basisStationPath, 'utf8'));
+    basisStation.layout = {
+      platforms: [
+        {
+          id: 'HKU_ISL_A',
+          label: 'A',
+          lastUpdated: '2026-07-20',
+          lineId: 'ISL',
+          serviceIds: ['ISL_MAIN_E'],
+        },
+      ],
+    };
+    await writeFile(
+      basisStationPath,
+      `${JSON.stringify(basisStation, null, 2)}\n`,
+    );
+
+    const stationPath = join(dataDir, 'station/KET.json');
+    const station = JSON.parse(await readFile(stationPath, 'utf8'));
+    station.layout = {
+      platforms: [
+        {
+          id: 'KET_ISL_A',
+          label: 'A',
+          lastUpdated: '2026-07-20',
+          lineId: 'ISL',
+          serviceIds: ['ISL_MAIN_E'],
+          inference: {
+            method: 'same-line-platform-label',
+            basis: [{ stationId: 'HKU', platformId: 'HKU_ISL_A' }],
+          },
+        },
+      ],
+    };
+    await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+
+    expect((await validateDataRoot(dataDir, ['station'])).ok).toBe(true);
+
+    station.layout.platforms[0].label = 'B';
+    station.layout.platforms[0].serviceIds = ['ISL_MAIN_W'];
+    await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+
+    const result = await validateDataRoot(dataDir, ['station']);
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        'station/KET.json: layout.platforms.0.inference.basis.0 uses label A, not B',
+        'station/KET.json: layout.platforms.0.inference does not support service ISL_MAIN_W',
+      ]),
+    );
+  });
+
   it('rejects service revisions outside station code active windows', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await mkdir(join(dataDir, 'line'), { recursive: true });

@@ -7,7 +7,8 @@ Canonical `station.layout` data has two distinct source boundaries:
 - `exits` come exclusively from the Land Transport Authority's **LTA MRT
   Station Exit (GEOJSON)** dataset; and
 - `platforms` are MRTDown-authored factual records supported by independent
-  personal observation or recollection.
+  personal observation or recollection, or by a recorded same-line platform
+  label inference rooted in directly observed canonical platforms.
 
 The LTA exit source provides exit identity, label, coordinates, checksum, and
 source update date. It does not provide platforms. The platform schema is
@@ -108,12 +109,47 @@ The importer:
 - produces deterministic ordering and formatting, so rerunning the same source
   is idempotent.
 
-## Platform Source Policy
+## Platform Provenance Policy
 
 Personal observation or personal recollection is the unwritten default source
-for every platform record. The canonical JSON does not repeat that default or
-store per-record evidence, contributor, confidence, or source metadata. Git
-history preserves authorship and review context.
+for a platform record without `inference`. The canonical JSON does not repeat
+that default or store contributor or confidence metadata. Git history preserves
+authorship and review context.
+
+An inferred platform must include:
+
+```json
+{
+  "inference": {
+    "method": "same-line-platform-label",
+    "basis": [
+      {
+        "stationId": "SOM",
+        "platformId": "SOM_NSL_A"
+      }
+    ]
+  }
+}
+```
+
+Every basis must identify a directly observed canonical platform at another
+station with the same line and public label. Inference may not be chained. Each
+inferred scheduled service must also appear on at least one basis platform.
+This records the reasoning without treating a service direction as the
+platform's permanent identity: `serviceIds` remain a dated assignment hosted by
+the independently identified platform.
+
+Same-line inference is limited to ordinary through-stations. Interchanges,
+termini, branch junctions, repeated loop stops, conflicting observations, and
+other structurally ambiguous stations require direct review. The temporary
+inference tool must leave those cases unapplied by default.
+
+Run a dry report or apply the eligible subset with:
+
+```bash
+npm run data:platforms:infer -- --write /tmp/platform-inference.json
+npm run data:platforms:infer -- --apply --write /tmp/platform-inference.json
+```
 
 `lastUpdated` is the exact `YYYY-MM-DD` date when the complete platform record
 was last reviewed and accepted as the current canonical fact. Updating any
@@ -123,11 +159,13 @@ A contributor's own photograph may be retained privately as corroboration for
 their personal observation, but photographs are not a canonical evidence kind
 and no photograph attribution or licence metadata is stored in station data.
 External photos, Google Maps, Google Street View, Google-hosted user photos,
-operator maps, agency websites, and community databases must not be used to
-derive or verify platform fields. Photo-backed evidence can be reconsidered
-later if actual coverage needs justify a separate rights model.
+operator maps, agency websites, and community databases may be used to test the
+general inference hypothesis but are not canonical provenance and must not be
+referenced from platform records.
 
 Repository validation additionally requires unique station-local platform
 IDs, valid line and service references, a platform line assigned to the
 station, and platform services belonging to that line and serving the station
-in a revision active on `lastUpdated`.
+in a revision active on `lastUpdated`. Inference bases must exist, belong to the
+same line and label, predate or match the inferred review date, be directly
+observed, and support every inferred service assignment.
