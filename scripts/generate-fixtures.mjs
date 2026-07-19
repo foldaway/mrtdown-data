@@ -420,12 +420,10 @@ function buildStaticEntities() {
               from: {
                 kind: 'platform',
                 id: 'KET_ISL_E',
-                lastUpdated: '2026-07-18',
               },
               to: {
                 kind: 'platform',
                 id: 'KET_ISL_W',
-                lastUpdated: '2026-07-18',
               },
               paidArea: true,
               modes: ['walk'],

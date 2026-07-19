@@ -123,6 +123,11 @@ Layout data is current state. If a station changes, update the embedded layout
 to the new current state in the same way the canonical station record is
 updated.
 
+Every level, exit, platform, access point, and transfer path requires a
+`lastUpdated` date in `YYYY-MM-DD` form. It records when that individual layout
+fact was last verified against its source; update it when the fact is reviewed
+or changed, rather than whenever the containing station file is edited.
+
 ## Levels
 
 Levels identify station floors for platforms and access points.
@@ -130,6 +135,7 @@ Levels identify station floors for platforms and access points.
 ```json
 {
   "id": "B2",
+  "lastUpdated": "2026-07-19",
   "index": -2,
   "name": {
     "en-SG": "EWL and TEL platforms",
@@ -158,6 +164,7 @@ access routing are part of the passenger-facing station layout.
 {
   "id": "TAM_EXIT_A",
   "label": "A",
+  "lastUpdated": "2026-07-19",
   "levelId": "L1",
   "geo": {
     "latitude": 1.35395,
@@ -210,6 +217,7 @@ ordinary passenger service uses `not_in_service`.
 {
   "id": "OTP_EWL_A",
   "label": "A",
+  "lastUpdated": "2026-07-19",
   "lineId": "EWL",
   "levelId": "B2",
   "serviceIds": ["EWL_MAIN_E"],
@@ -245,6 +253,7 @@ wayfinding. They are anchored to doors when possible.
 {
   "id": "OTP_EWL_A_ESC_01",
   "kind": "escalator",
+  "lastUpdated": "2026-07-19",
   "nearestDoor": "12",
   "position": "middle",
   "connectsToLevelId": "B1",
@@ -289,6 +298,7 @@ can be introduced later if the schema gains explicit directionality metadata.
 ```json
 {
   "id": "OTP_EWL_TEL_PAID_LINK",
+  "lastUpdated": "2026-07-19",
   "from": {
     "kind": "platform",
     "id": "OTP_EWL_A"
