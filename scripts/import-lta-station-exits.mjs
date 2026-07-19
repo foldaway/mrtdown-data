@@ -144,14 +144,21 @@ let stationsWithLayouts = 0;
 let changedFiles = 0;
 for (const station of stations) {
   const exits = exitsByStationId.get(station.value.id);
+  const platforms = station.value.layout?.platforms;
   if (exits) {
     exits.sort(
       (left, right) =>
         collator.compare(left.label, right.label) ||
         left.sourceObjectId - right.sourceObjectId,
     );
-    station.value.layout = { sourceId: SOURCE_ID, exits };
+    station.value.layout = {
+      sourceId: SOURCE_ID,
+      exits,
+      ...(platforms ? { platforms } : {}),
+    };
     stationsWithLayouts += 1;
+  } else if (platforms) {
+    station.value.layout = { platforms };
   } else {
     delete station.value.layout;
   }

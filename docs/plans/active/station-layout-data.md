@@ -1,23 +1,30 @@
-# LTA Station Exit Layout Data
+# Station Layout Data
 
 ## Scope
 
-Canonical `station.layout` data comes exclusively from the Land Transport
-Authority's **LTA MRT Station Exit (GEOJSON)** dataset. The layout model mirrors
-only fields supported by that source: exit identity, label, coordinates,
-checksum, and source update date.
+Canonical `station.layout` data has two distinct source boundaries:
 
-The source does not provide levels, platforms, transfer paths, road names,
-nearby landmarks, paid-area status, accessibility details, temporary closure
-status, or passenger-flow guidance. Those fields must not be added to
-`station.layout` from operator websites, maps, community sources, or manual
-inference.
+- `exits` come exclusively from the Land Transport Authority's **LTA MRT
+  Station Exit (GEOJSON)** dataset; and
+- `platforms` are MRTDown-authored factual records supported by independent
+  personal observation or recollection.
 
-Stations with no feature in the LTA dataset have no `layout` property. A layout
-is not evidence that a station is currently open; the dataset also includes
-some future or unopened stations.
+The LTA exit source provides exit identity, label, coordinates, checksum, and
+source update date. It does not provide platforms. The platform schema is
+deliberately narrower than the earlier mixed-source layout model: it supports
+only a station-local ID, public label, last-reviewed date, line, and optional
+scheduled services or non-boardable status.
 
-## Source and Licence
+Levels, transfer paths, road names, nearby landmarks, paid-area status,
+accessibility details, door counts, access points, and passenger-flow guidance
+remain out of scope. They must not be copied from operator websites, maps,
+Google Maps, Google Street View, community databases, or unlicensed photos.
+
+A station may have exits, platforms, or both. A layout is not evidence that a
+station is currently open; the LTA dataset also includes some future or
+unopened stations.
+
+## LTA Exit Source and Licence
 
 - Dataset: [LTA MRT Station Exit (GEOJSON)](https://data.gov.sg/datasets/d_b39d3a0871985372d7e1637193335da5/view)
 - Dataset ID: `d_b39d3a0871985372d7e1637193335da5`
@@ -26,8 +33,11 @@ some future or unopened stations.
 - Canonical source ID: `lta-mrt-station-exit-geojson`
 
 The current canonical import was retrieved on 19 July 2026. See
-`LICENSE-DATA.md` for the repository's attribution notice and the boundary
-between upstream LTA material and MRTDown's normalization.
+`LICENSE-DATA.md` for the attribution notice and the boundary between upstream
+LTA material and MRTDown's normalization.
+
+`layout.sourceId` applies only to `layout.exits`. Platform records do not
+inherit the LTA source or licence.
 
 ## Canonical Shape
 
@@ -46,10 +56,24 @@ between upstream LTA material and MRTDown's normalization.
           "longitude": 103.81800341495403
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "YIS_NSL_1",
+        "label": "1",
+        "lastUpdated": "2026-07-19",
+        "lineId": "NSL",
+        "serviceIds": ["NSL_MAIN_S"]
+      }
     ]
   }
 }
 ```
+
+`sourceId` and `exits` must appear together. Either `exits` or `platforms`
+must be present. Empty placeholder arrays are not valid.
+
+## Exit Import
 
 The importer maps source fields as follows:
 
@@ -64,8 +88,6 @@ The importer maps source fields as follows:
 Exit labels are not unique in the upstream dataset, so duplicate labels within
 a station are valid. `sourceObjectId` must be unique across the repository.
 
-## Import Workflow
-
 Download the GeoJSON file from the dataset page, then run:
 
 ```bash
@@ -77,13 +99,35 @@ The importer:
 
 - matches source features to canonical stations by English name or station
   code;
-- replaces every source-backed layout instead of merging with existing layout
-  content;
-- removes `layout` from stations absent from the source;
+- replaces the LTA-backed exit fields while preserving independently sourced
+  platforms;
+- removes `sourceId` and `exits` from stations absent from the source, and
+  removes `layout` only when no platforms remain;
 - fails when a source feature cannot be matched, an object ID is duplicated,
   or the number of written exits differs from the number of source features;
 - produces deterministic ordering and formatting, so rerunning the same source
   is idempotent.
 
-Any future layout expansion must first be present in this same LTA dataset and
-must preserve its applicable upstream licence notice.
+## Platform Source Policy
+
+Personal observation or personal recollection is the unwritten default source
+for every platform record. The canonical JSON does not repeat that default or
+store per-record evidence, contributor, confidence, or source metadata. Git
+history preserves authorship and review context.
+
+`lastUpdated` is the exact `YYYY-MM-DD` date when the complete platform record
+was last reviewed and accepted as the current canonical fact. Updating any
+platform field requires reviewing the whole record and advancing that date.
+
+A contributor's own photograph may be retained privately as corroboration for
+their personal observation, but photographs are not a canonical evidence kind
+and no photograph attribution or licence metadata is stored in station data.
+External photos, Google Maps, Google Street View, Google-hosted user photos,
+operator maps, agency websites, and community databases must not be used to
+derive or verify platform fields. Photo-backed evidence can be reconsidered
+later if actual coverage needs justify a separate rights model.
+
+Repository validation additionally requires unique station-local platform
+IDs, valid line and service references, a platform line assigned to the
+station, and platform services belonging to that line and serving the station
+in a revision active on `lastUpdated`.

@@ -26,7 +26,8 @@ npm run lint
 - `data/station`, `data/line`, `data/service`, `data/operator`, `data/town`,
   and `data/landmark`: canonical static entities.
 - the `layout` property in `data/station/*.json`: station exits imported
-  exclusively from LTA's MRT Station Exit GeoJSON dataset.
+  exclusively from LTA's MRT Station Exit GeoJSON dataset and optional
+  independently observed platform facts.
 - `data/issue/YYYY/MM/<issue_id>/`: canonical issue bundles.
 - `data/rights/source-registry.json`: source rights and attribution rules used
   for evidence classification.
@@ -131,9 +132,10 @@ MRTDown-authored canonical data and generated data exports are covered by
 tooling, and associated documentation are licensed under the MIT License as
 described in `LICENSE-CODE.md`.
 
-Station layout records contain LTA station-exit data under the Singapore Open
-Data Licence v1.0. The dataset-specific source and attribution notice is in
-`LICENSE-DATA.md`.
+Station layout exit records contain LTA data under the Singapore Open Data
+Licence v1.0. Independently observed platform records are MRTDown-authored
+factual data under `CC-BY-4.0`. The source policy and attribution notice are in
+`docs/plans/active/station-layout-data.md` and `LICENSE-DATA.md`.
 
 Evidence may contain or link to third-party posts, articles, source text,
 government source material, or direct report text. Those upstream materials are

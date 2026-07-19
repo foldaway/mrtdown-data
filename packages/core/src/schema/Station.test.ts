@@ -242,4 +242,48 @@ describe('StationSchema', () => {
     expect(result.success).toBe(false);
     expect(result.error?.issues[0]?.path.join('.')).toBe('layout.sourceId');
   });
+
+  it('accepts independently observed platform data without LTA exits', () => {
+    expect(() =>
+      StationSchema.parse({
+        ...minimalStation(),
+        layout: {
+          platforms: [
+            {
+              id: 'KET_ISL_1',
+              label: '1',
+              lastUpdated: '2026-07-19',
+              lineId: 'ISL',
+              serviceIds: ['ISL_MAIN_E'],
+            },
+          ],
+        },
+      }),
+    ).not.toThrow();
+  });
+
+  it('requires a date-only platform update date', () => {
+    const result = StationSchema.safeParse({
+      ...minimalStation(),
+      layout: {
+        platforms: [
+          {
+            id: 'KET_ISL_1',
+            label: '1',
+            lastUpdated: '2026-07-19T00:00:00+08:00',
+            lineId: 'ISL',
+            serviceIds: ['ISL_MAIN_E'],
+          },
+        ],
+      },
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues[0]?.path).toEqual([
+      'layout',
+      'platforms',
+      0,
+      'lastUpdated',
+    ]);
+  });
 });

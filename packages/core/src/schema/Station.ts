@@ -83,12 +83,58 @@ export const StationLayoutSourceIdSchema = z.literal(
 );
 export type StationLayoutSourceId = z.infer<typeof StationLayoutSourceIdSchema>;
 
+export const StationLayoutPlatformBoardingStatusSchema = z.enum([
+  'alighting_only',
+  'not_in_service',
+]);
+export type StationLayoutPlatformBoardingStatus = z.infer<
+  typeof StationLayoutPlatformBoardingStatusSchema
+>;
+
+export const StationLayoutPlatformSchema = z
+  .object({
+    id: z.string().min(1),
+    label: z.string().min(1),
+    lastUpdated: z.iso.date(),
+    lineId: z.string().min(1),
+    serviceIds: z.array(z.string().min(1)).min(1).optional(),
+    boardingStatus: StationLayoutPlatformBoardingStatusSchema.optional(),
+  })
+  .strict()
+  .superRefine((platform, context) => {
+    if (platform.serviceIds && platform.boardingStatus) {
+      context.addIssue({
+        code: 'custom',
+        message: 'non-boardable platforms must not advertise serviceIds',
+        path: ['serviceIds'],
+      });
+    }
+  });
+export type StationLayoutPlatform = z.infer<typeof StationLayoutPlatformSchema>;
+
 export const StationLayoutSchema = z
   .object({
-    sourceId: StationLayoutSourceIdSchema,
-    exits: z.array(StationLayoutExitSchema).min(1),
+    sourceId: StationLayoutSourceIdSchema.optional(),
+    exits: z.array(StationLayoutExitSchema).min(1).optional(),
+    platforms: z.array(StationLayoutPlatformSchema).min(1).optional(),
   })
-  .strict();
+  .strict()
+  .superRefine((layout, context) => {
+    if ((layout.sourceId == null) !== (layout.exits == null)) {
+      context.addIssue({
+        code: 'custom',
+        message: 'sourceId and exits must be provided together',
+        path: layout.sourceId == null ? ['sourceId'] : ['exits'],
+      });
+    }
+
+    if (layout.exits == null && layout.platforms == null) {
+      context.addIssue({
+        code: 'custom',
+        message: 'at least one of exits or platforms must be provided',
+      });
+    }
+  });
 export type StationLayout = z.infer<typeof StationLayoutSchema>;
 
 export const StationAddressCountrySchema = IsoCountryCodeSchema;

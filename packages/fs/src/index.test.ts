@@ -3216,10 +3216,7 @@ describe('@mrtdown/fs', () => {
 
     expect(result.ok).toBe(false);
     expect(result.errors.join('\n')).toContain(
-      'layout.sourceId: Invalid input: expected "lta-mrt-station-exit-geojson"',
-    );
-    expect(result.errors.join('\n')).toContain(
-      'layout: Unrecognized keys: "levels", "platforms", "transferPaths"',
+      'layout: Unrecognized keys: "levels", "transferPaths"',
     );
   });
 
@@ -3298,6 +3295,52 @@ describe('@mrtdown/fs', () => {
     expect(result.ok).toBe(false);
     expect(result.errors.join('\n')).toContain(
       'sourceObjectId 21404 is already used by station/HKU.json',
+    );
+  });
+
+  it('validates independently observed platform references', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const stationPath = join(dataDir, 'station/KET.json');
+    const station = JSON.parse(await readFile(stationPath, 'utf8'));
+    station.layout = {
+      platforms: [
+        {
+          id: 'KET_PLATFORM_1',
+          label: '1',
+          lastUpdated: '2026-07-19',
+          lineId: 'ISL',
+          serviceIds: ['ISL_MAIN_E', 'ISL_MAIN_E'],
+        },
+        {
+          id: 'KET_PLATFORM_1',
+          label: '2',
+          lastUpdated: '2026-07-19',
+          lineId: 'TWL',
+          serviceIds: ['TWL_MAIN_N'],
+        },
+        {
+          id: 'KET_PLATFORM_3',
+          label: '3',
+          lastUpdated: '2026-07-19',
+          lineId: 'ISL',
+          serviceIds: ['MISSING'],
+        },
+      ],
+    };
+    await writeFile(stationPath, `${JSON.stringify(station, null, 2)}\n`);
+
+    const result = await validateDataRoot(dataDir, ['station']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        'station/KET.json: layout.platforms.1 duplicates KET_PLATFORM_1 (first seen at layout.platforms.0)',
+        'station/KET.json: layout.platforms.0.serviceIds.1 duplicates ISL_MAIN_E (first seen at layout.platforms.0.serviceIds.0)',
+        'station/KET.json: layout.platforms.1.lineId TWL is not assigned to station KET',
+        'station/KET.json: layout.platforms.1.serviceIds.0 TWL_MAIN_N revision r_initial does not include station KET in its active service path',
+        'station/KET.json: layout.platforms.2.serviceIds.0 MISSING does not exist in service/',
+      ]),
     );
   });
 

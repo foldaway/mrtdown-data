@@ -284,14 +284,15 @@ async function validateStationReferences(
 
     const layout = station.value.layout;
     if (layout) {
+      const exits = layout.exits ?? [];
       validateDuplicateValue(
         errors,
         station.path,
         'layout.exits.sourceObjectId',
-        layout.exits.map((exit, index) => [index, String(exit.sourceObjectId)]),
+        exits.map((exit, index) => [index, String(exit.sourceObjectId)]),
       );
 
-      for (const [exitIndex, exit] of layout.exits.entries()) {
+      for (const [exitIndex, exit] of exits.entries()) {
         const previousStationPath = seenLayoutSourceObjectIds.get(
           exit.sourceObjectId,
         );
@@ -301,6 +302,84 @@ async function validateStationReferences(
           );
         } else if (!previousStationPath) {
           seenLayoutSourceObjectIds.set(exit.sourceObjectId, station.path);
+        }
+      }
+
+      const platforms = layout.platforms ?? [];
+      validateDuplicateValue(
+        errors,
+        station.path,
+        'layout.platforms',
+        platforms.map((platform, index) => [index, platform.id]),
+      );
+
+      const stationLineIds = new Set(
+        station.value.stationCodes.map((stationCode) => stationCode.lineId),
+      );
+      for (const [platformIndex, platform] of platforms.entries()) {
+        if (!lineIds.has(platform.lineId)) {
+          errors.push(
+            `${station.path}: layout.platforms.${platformIndex}.lineId ${platform.lineId} does not exist in line/`,
+          );
+        } else if (!stationLineIds.has(platform.lineId)) {
+          errors.push(
+            `${station.path}: layout.platforms.${platformIndex}.lineId ${platform.lineId} is not assigned to station ${station.value.id}`,
+          );
+        }
+
+        validateDuplicateValue(
+          errors,
+          station.path,
+          `layout.platforms.${platformIndex}.serviceIds`,
+          (platform.serviceIds ?? []).map((serviceId, index) => [
+            index,
+            serviceId,
+          ]),
+        );
+
+        for (const [serviceIndex, serviceId] of (
+          platform.serviceIds ?? []
+        ).entries()) {
+          const service = serviceById.get(serviceId);
+          if (!service) {
+            errors.push(
+              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not exist in service/`,
+            );
+            continue;
+          }
+
+          if (service.value.lineId !== platform.lineId) {
+            errors.push(
+              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} belongs to line ${service.value.lineId}, not ${platform.lineId}`,
+            );
+            continue;
+          }
+
+          const activeRevisions = service.value.revisions.filter(
+            (revision) =>
+              revision.startAt <= platform.lastUpdated &&
+              (revision.endAt === null ||
+                platform.lastUpdated < revision.endAt),
+          );
+          if (activeRevisions.length === 0) {
+            errors.push(
+              `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} does not have a service revision active on ${platform.lastUpdated}`,
+            );
+            continue;
+          }
+
+          for (const revision of activeRevisions) {
+            if (
+              !revision.path.stations.some(
+                (serviceStation) =>
+                  serviceStation.stationId === station.value.id,
+              )
+            ) {
+              errors.push(
+                `${station.path}: layout.platforms.${platformIndex}.serviceIds.${serviceIndex} ${serviceId} revision ${revision.id} does not include station ${station.value.id} in its active service path`,
+              );
+            }
+          }
         }
       }
     }
