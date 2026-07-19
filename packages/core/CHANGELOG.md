@@ -1,5 +1,13 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.30
+
+### Major Changes
+
+- 40aafb4: Replace mixed-source station layouts with exit features imported exclusively
+  from the LTA MRT Station Exit GeoJSON dataset, including source object IDs,
+  checksums, coordinates, and source update dates.
+
 ## 2.0.0-alpha.29
 
 ### Patch Changes
