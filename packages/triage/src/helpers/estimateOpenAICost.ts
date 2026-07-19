@@ -5,6 +5,7 @@ type ResponsesUsageLike =
       total_tokens: number;
       input_tokens_details?: {
         cached_tokens?: number;
+        cache_write_tokens?: number;
       } | null;
     }
   | null
@@ -17,6 +18,7 @@ type ChatCompletionUsageLike =
       total_tokens: number;
       prompt_tokens_details?: {
         cached_tokens?: number;
+        cache_write_tokens?: number;
       } | null;
     }
   | null
@@ -25,6 +27,7 @@ type ChatCompletionUsageLike =
 export type OpenAITokenUsage = {
   inputTokens: number;
   cachedInputTokens: number;
+  cacheWriteTokens: number;
   outputTokens: number;
   totalTokens: number;
 };
@@ -32,6 +35,7 @@ export type OpenAITokenUsage = {
 export type OpenAIModelPricing = {
   inputUsdPer1MTokens: number;
   cachedInputUsdPer1MTokens: number;
+  cacheWriteUsdPer1MTokens?: number;
   outputUsdPer1MTokens: number;
 };
 
@@ -42,6 +46,12 @@ export type OpenAIUsageCostSummary = {
 };
 
 export const OPENAI_MODEL_PRICING: Record<string, OpenAIModelPricing> = {
+  'gpt-5.6-luna': {
+    inputUsdPer1MTokens: 1,
+    cachedInputUsdPer1MTokens: 0.1,
+    cacheWriteUsdPer1MTokens: 1.25,
+    outputUsdPer1MTokens: 6,
+  },
   'gpt-5.4': {
     inputUsdPer1MTokens: 2.5,
     cachedInputUsdPer1MTokens: 0.25,
@@ -69,6 +79,7 @@ export function normalizeOpenAIResponsesUsage(
   return {
     inputTokens: usage.input_tokens,
     cachedInputTokens: usage.input_tokens_details?.cached_tokens ?? 0,
+    cacheWriteTokens: usage.input_tokens_details?.cache_write_tokens ?? 0,
     outputTokens: usage.output_tokens,
     totalTokens: usage.total_tokens,
   };
@@ -84,6 +95,7 @@ export function normalizeOpenAIChatCompletionUsage(
   return {
     inputTokens: usage.prompt_tokens,
     cachedInputTokens: usage.prompt_tokens_details?.cached_tokens ?? 0,
+    cacheWriteTokens: usage.prompt_tokens_details?.cache_write_tokens ?? 0,
     outputTokens: usage.completion_tokens,
     totalTokens: usage.total_tokens,
   };
@@ -108,8 +120,12 @@ export function estimateOpenAICostFromUsage({
   }
 
   const cachedInputTokens = Math.max(usage.cachedInputTokens, 0);
+  const cacheWriteTokens = Math.max(usage.cacheWriteTokens, 0);
+  if (cacheWriteTokens > 0 && pricing.cacheWriteUsdPer1MTokens == null) {
+    return null;
+  }
   const uncachedInputTokens = Math.max(
-    usage.inputTokens - cachedInputTokens,
+    usage.inputTokens - cachedInputTokens - cacheWriteTokens,
     0,
   );
   const outputTokens = Math.max(usage.outputTokens, 0);
@@ -117,6 +133,7 @@ export function estimateOpenAICostFromUsage({
   const estimatedCostUsd =
     (uncachedInputTokens / 1_000_000) * pricing.inputUsdPer1MTokens +
     (cachedInputTokens / 1_000_000) * pricing.cachedInputUsdPer1MTokens +
+    (cacheWriteTokens / 1_000_000) * (pricing.cacheWriteUsdPer1MTokens ?? 0) +
     (outputTokens / 1_000_000) * pricing.outputUsdPer1MTokens;
 
   return {
@@ -140,6 +157,7 @@ export function sumOpenAITokenUsage(
   return {
     inputTokens: left.inputTokens + right.inputTokens,
     cachedInputTokens: left.cachedInputTokens + right.cachedInputTokens,
+    cacheWriteTokens: left.cacheWriteTokens + right.cacheWriteTokens,
     outputTokens: left.outputTokens + right.outputTokens,
     totalTokens: left.totalTokens + right.totalTokens,
   };
@@ -191,6 +209,7 @@ export function logOpenAIUsageCostSummary({
   console.log(`[${label}] Total usage:`, {
     inputTokens: summary.usage.inputTokens,
     cachedInputTokens: summary.usage.cachedInputTokens,
+    cacheWriteTokens: summary.usage.cacheWriteTokens,
     outputTokens: summary.usage.outputTokens,
     totalTokens: summary.usage.totalTokens,
   });

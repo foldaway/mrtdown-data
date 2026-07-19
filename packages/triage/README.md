@@ -92,8 +92,8 @@ Required environment variables:
 
 Model dependency:
 
-- `extractClaimsFromNewEvidence` uses `gpt-5.4-mini`.
-- `triageNewEvidence` uses `gpt-5.4-mini`.
+- `extractClaimsFromNewEvidence` uses `gpt-5.6-luna`.
+- `triageNewEvidence` uses `gpt-5.6-luna`.
 - title/slug generation uses `gpt-5.4-nano`.
 - translation uses `gpt-5.4-nano`.
 
