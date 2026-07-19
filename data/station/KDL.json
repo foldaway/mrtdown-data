@@ -26,7 +26,7 @@
   ],
   "townId": "punggol",
   "layout": {
-    "sourceId": "lta-mrt-station-exit-geojson",
+    "exitSourceId": "lta-mrt-station-exit-geojson",
     "exits": [
       {
         "sourceObjectId": 21423,

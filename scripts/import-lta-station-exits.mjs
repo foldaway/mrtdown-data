@@ -152,7 +152,7 @@ for (const station of stations) {
         left.sourceObjectId - right.sourceObjectId,
     );
     station.value.layout = {
-      sourceId: SOURCE_ID,
+      exitSourceId: SOURCE_ID,
       exits,
       ...(platforms ? { platforms } : {}),
     };

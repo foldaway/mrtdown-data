@@ -176,7 +176,7 @@ describe('StationSchema', () => {
       StationSchema.parse({
         ...minimalStation(),
         layout: {
-          sourceId: 'lta-mrt-station-exit-geojson',
+          exitSourceId: 'lta-mrt-station-exit-geojson',
           exits: [
             {
               sourceObjectId: 21404,
@@ -198,7 +198,7 @@ describe('StationSchema', () => {
     const result = StationSchema.safeParse({
       ...minimalStation(),
       layout: {
-        sourceId: 'lta-mrt-station-exit-geojson',
+        exitSourceId: 'lta-mrt-station-exit-geojson',
         exits: [
           {
             sourceObjectId: 21404,
@@ -223,7 +223,7 @@ describe('StationSchema', () => {
     const result = StationSchema.safeParse({
       ...minimalStation(),
       layout: {
-        sourceId: 'smrt-journey',
+        exitSourceId: 'smrt-journey',
         exits: [
           {
             sourceObjectId: 21404,
@@ -240,7 +240,7 @@ describe('StationSchema', () => {
     });
 
     expect(result.success).toBe(false);
-    expect(result.error?.issues[0]?.path.join('.')).toBe('layout.sourceId');
+    expect(result.error?.issues[0]?.path.join('.')).toBe('layout.exitSourceId');
   });
 
   it('accepts independently observed platform data without LTA exits', () => {

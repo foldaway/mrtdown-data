@@ -78,10 +78,12 @@ export const StationLayoutExitSchema = z
   .strict();
 export type StationLayoutExit = z.infer<typeof StationLayoutExitSchema>;
 
-export const StationLayoutSourceIdSchema = z.literal(
+export const StationLayoutExitSourceIdSchema = z.literal(
   'lta-mrt-station-exit-geojson',
 );
-export type StationLayoutSourceId = z.infer<typeof StationLayoutSourceIdSchema>;
+export type StationLayoutExitSourceId = z.infer<
+  typeof StationLayoutExitSourceIdSchema
+>;
 
 export const StationLayoutPlatformBoardingStatusSchema = z.enum([
   'alighting_only',
@@ -114,17 +116,17 @@ export type StationLayoutPlatform = z.infer<typeof StationLayoutPlatformSchema>;
 
 export const StationLayoutSchema = z
   .object({
-    sourceId: StationLayoutSourceIdSchema.optional(),
+    exitSourceId: StationLayoutExitSourceIdSchema.optional(),
     exits: z.array(StationLayoutExitSchema).min(1).optional(),
     platforms: z.array(StationLayoutPlatformSchema).min(1).optional(),
   })
   .strict()
   .superRefine((layout, context) => {
-    if ((layout.sourceId == null) !== (layout.exits == null)) {
+    if ((layout.exitSourceId == null) !== (layout.exits == null)) {
       context.addIssue({
         code: 'custom',
-        message: 'sourceId and exits must be provided together',
-        path: layout.sourceId == null ? ['sourceId'] : ['exits'],
+        message: 'exitSourceId and exits must be provided together',
+        path: layout.exitSourceId == null ? ['exitSourceId'] : ['exits'],
       });
     }
 

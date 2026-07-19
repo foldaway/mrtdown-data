@@ -3240,7 +3240,7 @@ describe('@mrtdown/fs', () => {
     const stationPath = join(dataDir, 'station/KET.json');
     const station = JSON.parse(await readFile(stationPath, 'utf8'));
     station.layout = {
-      sourceId: 'lta-mrt-station-exit-geojson',
+      exitSourceId: 'lta-mrt-station-exit-geojson',
       exits: [
         {
           sourceObjectId: 21404,
@@ -3273,7 +3273,7 @@ describe('@mrtdown/fs', () => {
       const stationPath = join(dataDir, `station/${stationId}.json`);
       const station = JSON.parse(await readFile(stationPath, 'utf8'));
       station.layout = {
-        sourceId: 'lta-mrt-station-exit-geojson',
+        exitSourceId: 'lta-mrt-station-exit-geojson',
         exits: [
           {
             sourceObjectId: 21404,

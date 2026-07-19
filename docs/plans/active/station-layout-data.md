@@ -36,7 +36,7 @@ The current canonical import was retrieved on 19 July 2026. See
 `LICENSE-DATA.md` for the attribution notice and the boundary between upstream
 LTA material and MRTDown's normalization.
 
-`layout.sourceId` applies only to `layout.exits`. Platform records do not
+`layout.exitSourceId` applies only to `layout.exits`. Platform records do not
 inherit the LTA source or licence.
 
 ## Canonical Shape
@@ -44,7 +44,7 @@ inherit the LTA source or licence.
 ```json
 {
   "layout": {
-    "sourceId": "lta-mrt-station-exit-geojson",
+    "exitSourceId": "lta-mrt-station-exit-geojson",
     "exits": [
       {
         "sourceObjectId": 21404,
@@ -70,7 +70,7 @@ inherit the LTA source or licence.
 }
 ```
 
-`sourceId` and `exits` must appear together. Either `exits` or `platforms`
+`exitSourceId` and `exits` must appear together. Either `exits` or `platforms`
 must be present. Empty placeholder arrays are not valid.
 
 ## Exit Import
@@ -101,7 +101,7 @@ The importer:
   code;
 - replaces the LTA-backed exit fields while preserving independently sourced
   platforms;
-- removes `sourceId` and `exits` from stations absent from the source, and
+- removes `exitSourceId` and `exits` from stations absent from the source, and
   removes `layout` only when no platforms remain;
 - fails when a source feature cannot be matched, an object ID is duplicated,
   or the number of written exits differs from the number of source features;
