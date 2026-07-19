@@ -37,7 +37,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v6.4.0
         if: ${{ env.CAN_RUN_EVALS == 'true' }}
         with:
           node-version: 24
