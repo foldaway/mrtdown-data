@@ -95,6 +95,44 @@
           "longitude": 103.88545057800044
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "KVN_NEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-20",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_S"
+        ],
+        "inference": {
+          "method": "same-line-platform-label",
+          "basis": [
+            {
+              "stationId": "CRQ",
+              "platformId": "CRQ_NEL_A"
+            }
+          ]
+        }
+      },
+      {
+        "id": "KVN_NEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-20",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_N"
+        ],
+        "inference": {
+          "method": "same-line-platform-label",
+          "basis": [
+            {
+              "stationId": "CRQ",
+              "platformId": "CRQ_NEL_B"
+            }
+          ]
+        }
+      }
     ]
   }
 }

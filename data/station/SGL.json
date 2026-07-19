@@ -105,6 +105,44 @@
           "longitude": 103.9312910608542
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "SGL_TEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-20",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_S"
+        ],
+        "inference": {
+          "method": "same-line-platform-label",
+          "basis": [
+            {
+              "stationId": "WDS",
+              "platformId": "WDS_TEL_A"
+            }
+          ]
+        }
+      },
+      {
+        "id": "SGL_TEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-20",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_N"
+        ],
+        "inference": {
+          "method": "same-line-platform-label",
+          "basis": [
+            {
+              "stationId": "WDS",
+              "platformId": "WDS_TEL_B"
+            }
+          ]
+        }
+      }
     ]
   }
 }

@@ -126,6 +126,26 @@
           "longitude": 103.84659390916543
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "CRQ_NEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-20",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_S"
+        ]
+      },
+      {
+        "id": "CRQ_NEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-20",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_N"
+        ]
+      }
     ]
   }
 }

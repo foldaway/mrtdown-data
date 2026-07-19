@@ -147,6 +147,46 @@
           "longitude": 103.79093006515394
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "BNV_EWL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-20",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_E"
+        ]
+      },
+      {
+        "id": "BNV_EWL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-20",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_W"
+        ]
+      },
+      {
+        "id": "BNV_CCL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-20",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CCW",
+          "CCL_LOOP_CCW"
+        ]
+      },
+      {
+        "id": "BNV_CCL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-20",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CW",
+          "CCL_LOOP_CW"
+        ]
+      }
     ]
   }
 }

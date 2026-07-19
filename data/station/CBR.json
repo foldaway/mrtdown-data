@@ -116,6 +116,44 @@
           "longitude": 103.83011623317348
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "CBR_NSL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-20",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_N"
+        ],
+        "inference": {
+          "method": "same-line-platform-label",
+          "basis": [
+            {
+              "stationId": "SOM",
+              "platformId": "SOM_NSL_A"
+            }
+          ]
+        }
+      },
+      {
+        "id": "CBR_NSL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-20",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_S"
+        ],
+        "inference": {
+          "method": "same-line-platform-label",
+          "basis": [
+            {
+              "stationId": "SOM",
+              "platformId": "SOM_NSL_B"
+            }
+          ]
+        }
+      }
     ]
   }
 }

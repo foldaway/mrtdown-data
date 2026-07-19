@@ -96,6 +96,44 @@
           "longitude": 103.72171282700319
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "LKS_EWL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-20",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_E"
+        ],
+        "inference": {
+          "method": "same-line-platform-label",
+          "basis": [
+            {
+              "stationId": "BNV",
+              "platformId": "BNV_EWL_A"
+            }
+          ]
+        }
+      },
+      {
+        "id": "LKS_EWL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-20",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_W"
+        ],
+        "inference": {
+          "method": "same-line-platform-label",
+          "basis": [
+            {
+              "stationId": "BNV",
+              "platformId": "BNV_EWL_B"
+            }
+          ]
+        }
+      }
     ]
   }
 }
