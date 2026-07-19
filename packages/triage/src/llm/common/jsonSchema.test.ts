@@ -31,4 +31,27 @@ describe('toOpenAiJsonSchema', () => {
     expect(findSchemaKey(jsonSchema, 'oneOf')).toBe(false);
     expect(findSchemaKey(jsonSchema, 'anyOf')).toBe(true);
   });
+
+  it('removes unsupported lookaround patterns but preserves other constraints', () => {
+    const schema = z.object({
+      duration: z.iso.duration(),
+      slug: z.string().regex(/^[a-z]+$/),
+    });
+
+    const jsonSchema = toOpenAiJsonSchema(schema);
+    const properties = jsonSchema.properties as Record<
+      string,
+      Record<string, unknown>
+    >;
+
+    expect(properties.duration).toMatchObject({
+      type: 'string',
+      format: 'duration',
+    });
+    expect(properties.duration).not.toHaveProperty('pattern');
+    expect(properties.slug).toMatchObject({
+      type: 'string',
+      pattern: '^[a-z]+$',
+    });
+  });
 });

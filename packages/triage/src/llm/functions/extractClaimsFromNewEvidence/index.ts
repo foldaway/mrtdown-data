@@ -75,7 +75,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true 
   ];
 
   const systemPrompt = buildSystemPrompt();
-  const model = 'gpt-5.4-mini';
+  const model = 'gpt-5.6-luna';
   const usageCostTracker = new OpenAIUsageCostTracker();
 
   let toolCallCount = 0;
@@ -229,10 +229,11 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true 
   }
 
   assert(response.output_parsed != null, 'Response output parsed is null');
+  const parsedResponse = ResponseSchema.parse(response.output_parsed);
 
   return {
     claims: normalizeClaimsForEvidence({
-      claims: response.output_parsed.claims,
+      claims: parsedResponse.claims,
       evidenceTs: params.newEvidence.ts,
       repo: params.repo,
     }),
