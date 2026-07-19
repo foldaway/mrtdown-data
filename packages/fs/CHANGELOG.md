@@ -1,5 +1,17 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.30
+
+### Patch Changes
+
+- d497288: Require provenance dates on durable station layout records, add temporary exit
+  closure and non-boardable platform statuses, disambiguate repeated service
+  stops, validate platform mappings against service revisions active on each
+  platform's provenance date, and keep transfer endpoints as lightweight
+  references.
+- Updated dependencies [d497288]
+  - @mrtdown/core@2.0.0-alpha.30
+
 ## 2.0.0-alpha.29
 
 ### Patch Changes
