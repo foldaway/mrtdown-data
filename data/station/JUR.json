@@ -137,6 +137,65 @@
           "longitude": 103.74229819330705
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "JUR_NSL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_N",
+          "NSL_MAIN_S"
+        ]
+      },
+      {
+        "id": "JUR_NSL_D",
+        "label": "D",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_N",
+          "NSL_MAIN_S"
+        ]
+      },
+      {
+        "id": "JUR_NSL_E",
+        "label": "E",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_N",
+          "NSL_MAIN_S"
+        ]
+      },
+      {
+        "id": "JUR_EWL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_E"
+        ]
+      },
+      {
+        "id": "JUR_EWL_C",
+        "label": "C",
+        "lastUpdated": "2026-07-21",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_E"
+        ]
+      },
+      {
+        "id": "JUR_EWL_F",
+        "label": "F",
+        "lastUpdated": "2026-07-21",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_W"
+        ]
+      }
     ]
   }
 }

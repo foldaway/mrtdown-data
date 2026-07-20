@@ -68,6 +68,26 @@
           "longitude": 103.86357966976392
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "MSP_NSL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_N"
+        ]
+      },
+      {
+        "id": "MSP_NSL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NSL",
+        "serviceIds": [
+          "NSL_MAIN_S"
+        ]
+      }
     ]
   }
 }

@@ -49,6 +49,28 @@
           "longitude": 103.84686122154847
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "PER_CCL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CCW",
+          "CCL_LOOP_CCW"
+        ]
+      },
+      {
+        "id": "PER_CCL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CW",
+          "CCL_LOOP_CW"
+        ]
+      }
     ]
   }
 }

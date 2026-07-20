@@ -69,6 +69,28 @@
           "longitude": 103.91068131895568
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "PGC_NEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_N",
+          "NEL_MAIN_S"
+        ]
+      },
+      {
+        "id": "PGC_NEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_N",
+          "NEL_MAIN_S"
+        ]
+      }
     ]
   }
 }

@@ -133,6 +133,48 @@
           "longitude": 103.82158029169962
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "HBF_NEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_N",
+          "NEL_MAIN_S"
+        ]
+      },
+      {
+        "id": "HBF_NEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_N",
+          "NEL_MAIN_S"
+        ]
+      },
+      {
+        "id": "HBF_CCL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CCW",
+          "CCL_LOOP_CCW"
+        ]
+      },
+      {
+        "id": "HBF_CCL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CW",
+          "CCL_LOOP_CW"
+        ]
+      }
     ]
   }
 }

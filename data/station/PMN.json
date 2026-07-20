@@ -171,6 +171,46 @@
           "longitude": 103.86023648411177
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "PMN_CCL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CCW",
+          "CCL_LOOP_CCW"
+        ]
+      },
+      {
+        "id": "PMN_CCL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CW",
+          "CCL_LOOP_CW"
+        ]
+      },
+      {
+        "id": "PMN_DTL_C",
+        "label": "C",
+        "lastUpdated": "2026-07-21",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_W"
+        ]
+      },
+      {
+        "id": "PMN_DTL_D",
+        "label": "D",
+        "lastUpdated": "2026-07-21",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_E"
+        ]
+      }
     ]
   }
 }

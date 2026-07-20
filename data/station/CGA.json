@@ -76,6 +76,28 @@
           "longitude": 103.98730457979791
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "CGA_EWL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_CG_E",
+          "EWL_CG_W"
+        ]
+      },
+      {
+        "id": "CGA_EWL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_CG_E",
+          "EWL_CG_W"
+        ]
+      }
     ]
   }
 }

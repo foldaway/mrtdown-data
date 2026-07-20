@@ -177,6 +177,44 @@
           "longitude": 103.94272349669535
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "TAM_EWL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_E"
+        ]
+      },
+      {
+        "id": "TAM_EWL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_W"
+        ]
+      },
+      {
+        "id": "TAM_DTL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_W"
+        ]
+      },
+      {
+        "id": "TAM_DTL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_E"
+        ]
+      }
     ]
   }
 }

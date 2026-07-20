@@ -229,6 +229,62 @@
           "longitude": 103.83811712967395
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "OTP_EWL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_E"
+        ]
+      },
+      {
+        "id": "OTP_EWL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "EWL",
+        "serviceIds": [
+          "EWL_MAIN_W"
+        ]
+      },
+      {
+        "id": "OTP_NEL_C",
+        "label": "C",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_S"
+        ]
+      },
+      {
+        "id": "OTP_NEL_D",
+        "label": "D",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_N"
+        ]
+      },
+      {
+        "id": "OTP_TEL_E",
+        "label": "E",
+        "lastUpdated": "2026-07-21",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_S"
+        ]
+      },
+      {
+        "id": "OTP_TEL_F",
+        "label": "F",
+        "lastUpdated": "2026-07-21",
+        "lineId": "TEL",
+        "serviceIds": [
+          "TEL_MAIN_N"
+        ]
+      }
     ]
   }
 }

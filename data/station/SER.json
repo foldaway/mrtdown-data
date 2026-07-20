@@ -187,6 +187,46 @@
           "longitude": 103.873546495734
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "SER_NEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_S"
+        ]
+      },
+      {
+        "id": "SER_NEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_N"
+        ]
+      },
+      {
+        "id": "SER_CCL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CCW",
+          "CCL_LOOP_CCW"
+        ]
+      },
+      {
+        "id": "SER_CCL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "CCL",
+        "serviceIds": [
+          "CCL_BRANCH_CW",
+          "CCL_LOOP_CW"
+        ]
+      }
     ]
   }
 }

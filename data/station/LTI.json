@@ -167,6 +167,44 @@
           "longitude": 103.84830439913581
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "LTI_NEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_S"
+        ]
+      },
+      {
+        "id": "LTI_NEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_N"
+        ]
+      },
+      {
+        "id": "LTI_DTL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_W"
+        ]
+      },
+      {
+        "id": "LTI_DTL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "DTL",
+        "serviceIds": [
+          "DTL_MAIN_E"
+        ]
+      }
     ]
   }
 }

@@ -115,6 +115,50 @@
           "longitude": 103.89570545661016
         }
       }
+    ],
+    "platforms": [
+      {
+        "id": "SKG_SKLRT_1",
+        "label": "1",
+        "lastUpdated": "2026-07-21",
+        "lineId": "SKLRT",
+        "serviceIds": [
+          "SKLRT_E_CCW",
+          "SKLRT_E_CW",
+          "SKLRT_W_CCW",
+          "SKLRT_W_CW"
+        ]
+      },
+      {
+        "id": "SKG_SKLRT_2",
+        "label": "2",
+        "lastUpdated": "2026-07-21",
+        "lineId": "SKLRT",
+        "serviceIds": [
+          "SKLRT_E_CCW",
+          "SKLRT_E_CW",
+          "SKLRT_W_CCW",
+          "SKLRT_W_CW"
+        ]
+      },
+      {
+        "id": "SKG_NEL_A",
+        "label": "A",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_S"
+        ]
+      },
+      {
+        "id": "SKG_NEL_B",
+        "label": "B",
+        "lastUpdated": "2026-07-21",
+        "lineId": "NEL",
+        "serviceIds": [
+          "NEL_MAIN_N"
+        ]
+      }
     ]
   }
 }
