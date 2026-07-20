@@ -82,5 +82,110 @@
     "platformLabel": "B",
     "towardsStationId": "MRB",
     "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "SNJ",
+    "lineId": "BPLRT",
+    "platformLabel": "2",
+    "towardsStationId": "CCK",
+    "serviceIds": [
+      "BPLRT_A"
+    ],
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "PTR",
+    "lineId": "BPLRT",
+    "platformLabel": "1",
+    "serviceIds": [
+      "BPLRT_B"
+    ],
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "CGL",
+    "lineId": "SKLRT",
+    "platformLabel": "2",
+    "towardsStationId": "FMW",
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "COV",
+    "lineId": "PGLRT",
+    "platformLabel": "1",
+    "towardsStationId": "PGL",
+    "serviceIds": [
+      "PGLRT_E_CW"
+    ],
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "COV",
+    "lineId": "PGLRT",
+    "platformLabel": "2",
+    "serviceIds": [
+      "PGLRT_E_CCW"
+    ],
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "NBG",
+    "lineId": "PGLRT",
+    "platformLabel": "2",
+    "towardsStationId": "SMG",
+    "serviceIds": [
+      "PGLRT_W_CCW"
+    ],
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "BAK",
+    "lineId": "SKLRT",
+    "platformLabel": "1",
+    "towardsStationId": "KGK",
+    "serviceIds": [
+      "SKLRT_E_CW"
+    ],
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "CGL",
+    "lineId": "SKLRT",
+    "platformLabel": "1",
+    "towardsStationId": "SKG",
+    "serviceIds": [
+      "SKLRT_W_CW"
+    ],
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "RMB",
+    "lineId": "SKLRT",
+    "platformLabel": "2",
+    "towardsStationId": "CPV",
+    "serviceIds": [
+      "SKLRT_E_CCW"
+    ],
+    "observedAt": "2026-07-20"
+  },
+  {
+    "stationId": "PGP",
+    "lineId": "PGLRT",
+    "platformLabel": "1",
+    "towardsStationId": "TKL",
+    "serviceIds": [
+      "PGLRT_W_CW"
+    ],
+    "observedAt": "2026-07-21"
+  },
+  {
+    "stationId": "PGP",
+    "lineId": "PGLRT",
+    "platformLabel": "2",
+    "towardsStationId": "SMD",
+    "serviceIds": [
+      "PGLRT_W_CCW"
+    ],
+    "observedAt": "2026-07-21"
   }
 ]
