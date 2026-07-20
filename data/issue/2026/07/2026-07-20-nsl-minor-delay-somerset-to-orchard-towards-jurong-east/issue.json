@@ -1,0 +1,13 @@
+{
+  "id": "2026-07-20-nsl-minor-delay-somerset-to-orchard-towards-jurong-east",
+  "type": "disruption",
+  "title": {
+    "en-SG": "NSL Minor Delay - Somerset to Orchard (towards Jurong East)",
+    "zh-Hans": "NSL 轻微延误 - Somerset 到 Orchard（往 Jurong East 方向）",
+    "ms": "NSL Kelewatan Kecil - Somerset ke Orchard (ke arah Jurong East)",
+    "ta": "NSL சிறிய தாமதம் - Somerset முதல் Orchard (Jurong East நோக்கி)"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5.4-nano"
+  }
+}
