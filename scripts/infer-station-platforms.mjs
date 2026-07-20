@@ -158,10 +158,6 @@ function platformKey(stationId, lineId, label) {
   return [stationId, lineId, label].join('|');
 }
 
-function stationLineKey(stationId, lineId) {
-  return [stationId, lineId].join('|');
-}
-
 function pushPlatform(platformsByStationId, stationId, platform) {
   const platforms = platformsByStationId.get(stationId) ?? [];
   if (platforms.some((candidate) => candidate.id === platform.id)) {
@@ -183,15 +179,38 @@ if (!Array.isArray(observations) || observations.length === 0) {
 }
 
 for (const [index, observation] of observations.entries()) {
-  for (const field of [
-    'stationId',
-    'lineId',
-    'platformLabel',
-    'towardsStationId',
-  ]) {
+  for (const field of ['stationId', 'lineId', 'platformLabel']) {
     if (typeof observation[field] !== 'string' || !observation[field]) {
       throw new Error(`observations.${index}.${field} must be a string`);
     }
+  }
+  const hasTowardsStation = observation.towardsStationId !== undefined;
+  if (
+    hasTowardsStation &&
+    (typeof observation.towardsStationId !== 'string' ||
+      !observation.towardsStationId)
+  ) {
+    throw new Error(
+      `observations.${index}.towardsStationId must be a non-empty string`,
+    );
+  }
+  const hasServiceIds = observation.serviceIds !== undefined;
+  if (
+    hasServiceIds &&
+    (!Array.isArray(observation.serviceIds) ||
+      observation.serviceIds.length === 0 ||
+      observation.serviceIds.some(
+        (serviceId) => typeof serviceId !== 'string' || !serviceId,
+      ))
+  ) {
+    throw new Error(
+      `observations.${index}.serviceIds must be a non-empty string array`,
+    );
+  }
+  if (!hasTowardsStation && !hasServiceIds) {
+    throw new Error(
+      `observations.${index} must specify towardsStationId or serviceIds`,
+    );
   }
   assertDate(observation.observedAt, `observations.${index}.observedAt`);
 }
@@ -214,25 +233,87 @@ const activeServices = services.flatMap((service) => {
   const revision = activeRevision(service, asOf);
   return revision ? [{ value: service, revision }] : [];
 });
+const activeServiceById = new Map(
+  activeServices.map((service) => [service.value.id, service]),
+);
 
 const mappingByServiceId = new Map();
 const resolvedObservations = observations.map((observation) => {
+  if (observation.observedAt > asOf) {
+    throw new Error(
+      `${observation.stationId} observation date ${observation.observedAt} ` +
+        `is after the ${asOf} service snapshot`,
+    );
+  }
   if (!lineById.has(observation.lineId)) {
     throw new Error(`Unknown line: ${observation.lineId}`);
   }
   if (!stationById.has(observation.stationId)) {
     throw new Error(`Unknown station: ${observation.stationId}`);
   }
-  if (!stationById.has(observation.towardsStationId)) {
+  if (
+    observation.towardsStationId &&
+    !stationById.has(observation.towardsStationId)
+  ) {
     throw new Error(`Unknown towards station: ${observation.towardsStationId}`);
   }
 
-  const serviceIds = downstreamServiceIds({
-    activeServices,
-    lineId: observation.lineId,
-    stationId: observation.stationId,
-    towardsStationId: observation.towardsStationId,
-  });
+  const downstreamMatches = observation.towardsStationId
+    ? downstreamServiceIds({
+        activeServices,
+        lineId: observation.lineId,
+        stationId: observation.stationId,
+        towardsStationId: observation.towardsStationId,
+      })
+    : [];
+  const serviceIds = observation.serviceIds
+    ? [...new Set(observation.serviceIds)]
+    : downstreamMatches;
+
+  for (const serviceId of serviceIds) {
+    const service = activeServiceById.get(serviceId);
+    if (!service) {
+      throw new Error(`Unknown or inactive service on ${asOf}: ${serviceId}`);
+    }
+    const observedRevision = activeRevision(
+      service.value,
+      observation.observedAt,
+    );
+    if (!observedRevision) {
+      throw new Error(
+        `${serviceId} was inactive on observation date ${observation.observedAt}`,
+      );
+    }
+    if (observedRevision !== service.revision) {
+      throw new Error(
+        `${serviceId} changed revision between observation date ` +
+          `${observation.observedAt} and service snapshot ${asOf}`,
+      );
+    }
+    if (service.value.lineId !== observation.lineId) {
+      throw new Error(
+        `${serviceId} belongs to ${service.value.lineId}, not ${observation.lineId}`,
+      );
+    }
+    if (
+      !service.revision.path.stations.some(
+        (stop) => stop.stationId === observation.stationId,
+      )
+    ) {
+      throw new Error(
+        `${serviceId} does not serve ${observation.stationId} on ${asOf}`,
+      );
+    }
+    if (
+      observation.towardsStationId &&
+      !downstreamMatches.includes(serviceId)
+    ) {
+      throw new Error(
+        `${serviceId} does not travel from ${observation.stationId} towards ` +
+          `${observation.towardsStationId} on ${asOf}`,
+      );
+    }
+  }
   if (serviceIds.length === 0) {
     throw new Error(
       `No active ${observation.lineId} service travels from ` +
@@ -277,12 +358,6 @@ for (const observation of resolvedObservations) {
     serviceIds: [...observation.serviceIds],
   });
 }
-const observedStationLineKeys = new Set(
-  resolvedObservations.map((observation) =>
-    stationLineKey(observation.stationId, observation.lineId),
-  ),
-);
-
 const observedLineIds = new Set(
   observations.map((observation) => observation.lineId),
 );
@@ -382,26 +457,34 @@ const lineReports = lines
         riskFlags.push('multiple_service_patterns');
       }
 
+      const proposedPlatforms = [...serviceIdsByLabel]
+        .sort(([left], [right]) => left.localeCompare(right))
+        .map(([label, serviceIds]) => ({
+          id: platformId(station.id, line.id, label),
+          label,
+          lineId: line.id,
+          serviceIds,
+        }));
+      const observedPlatformCount = proposedPlatforms.filter((platform) =>
+        observedPlatformsByKey.has(
+          platformKey(station.id, line.id, platform.label),
+        ),
+      ).length;
+
       candidates.push({
         stationId: station.id,
         stationName: station.name['en-SG'],
         lineId: line.id,
         riskFlags,
-        proposedPlatforms: [...serviceIdsByLabel]
-          .sort(([left], [right]) => left.localeCompare(right))
-          .map(([label, serviceIds]) => ({
-            id: platformId(station.id, line.id, label),
-            label,
-            lineId: line.id,
-            serviceIds,
-          })),
-        applicationStatus: observedStationLineKeys.has(
-          stationLineKey(station.id, line.id),
-        )
-          ? 'direct_observation'
-          : riskFlags.includes('interchange')
-            ? 'review_only'
-            : 'eligible_inference',
+        proposedPlatforms,
+        applicationStatus:
+          observedPlatformCount === proposedPlatforms.length
+            ? 'direct_observation'
+            : riskFlags.includes('interchange')
+              ? 'review_only'
+              : observedPlatformCount > 0
+                ? 'mixed_observation_inference'
+                : 'eligible_inference',
       });
     }
 
@@ -428,16 +511,32 @@ for (const observation of resolvedObservations) {
 
 for (const lineReport of lineReports) {
   for (const candidate of lineReport.candidates) {
-    if (candidate.applicationStatus !== 'eligible_inference') {
+    if (candidate.applicationStatus === 'review_only') {
       continue;
     }
 
     for (const proposedPlatform of candidate.proposedPlatforms) {
+      if (
+        observedPlatformsByKey.has(
+          platformKey(
+            candidate.stationId,
+            proposedPlatform.lineId,
+            proposedPlatform.label,
+          ),
+        )
+      ) {
+        continue;
+      }
+
       const basis = new Map();
+      let inferenceLastUpdated;
       for (const serviceId of proposedPlatform.serviceIds) {
         const mapping = mappingByServiceId.get(serviceId);
         for (const observation of mapping.observations) {
-          if (observation.platformLabel !== proposedPlatform.label) {
+          if (
+            observation.stationId === candidate.stationId ||
+            observation.platformLabel !== proposedPlatform.label
+          ) {
             continue;
           }
           const basisPlatformId = platformId(
@@ -449,13 +548,22 @@ for (const lineReport of lineReports) {
             stationId: observation.stationId,
             platformId: basisPlatformId,
           });
+          if (
+            inferenceLastUpdated === undefined ||
+            inferenceLastUpdated < observation.observedAt
+          ) {
+            inferenceLastUpdated = observation.observedAt;
+          }
         }
+      }
+      if (basis.size === 0) {
+        continue;
       }
 
       pushPlatform(canonicalPlatformsByStationId, candidate.stationId, {
         id: proposedPlatform.id,
         label: proposedPlatform.label,
-        lastUpdated: asOf,
+        lastUpdated: inferenceLastUpdated,
         lineId: proposedPlatform.lineId,
         serviceIds: proposedPlatform.serviceIds,
         inference: {
@@ -470,14 +578,6 @@ for (const lineReport of lineReports) {
 let appliedStationCount = 0;
 let appliedPlatformCount = 0;
 if (options.apply) {
-  for (const observation of resolvedObservations) {
-    if (observation.observedAt !== asOf) {
-      throw new Error(
-        '--apply requires every observation date to match the service snapshot date',
-      );
-    }
-  }
-
   const lineOrder = new Map(
     [...lines]
       .sort(
