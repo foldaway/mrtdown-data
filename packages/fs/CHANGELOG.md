@@ -1,5 +1,19 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.31
+
+### Patch Changes
+
+- e9f6d69: Add a narrow platform schema for independently observed facts with a canonical
+  review date and validation against station lines and active service revisions.
+- 31f80c7: Allow station platform records to identify directly observed same-line
+  platforms as inference bases, and validate those references and service
+  assignments across canonical station data.
+- Updated dependencies [6906afc]
+- Updated dependencies [e9f6d69]
+- Updated dependencies [31f80c7]
+  - @mrtdown/core@2.0.0-alpha.31
+
 ## 2.0.0-alpha.30
 
 ### Patch Changes

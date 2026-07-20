@@ -1,5 +1,20 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.31
+
+### Major Changes
+
+- 6906afc: Rename station layout `sourceId` to `exitSourceId` so the LTA licence boundary
+  applies explicitly to exit data.
+- e9f6d69: Add a narrow platform schema for independently observed facts with a canonical
+  review date and validation against station lines and active service revisions.
+
+### Minor Changes
+
+- 31f80c7: Allow station platform records to identify directly observed same-line
+  platforms as inference bases, and validate those references and service
+  assignments across canonical station data.
+
 ## 2.0.0-alpha.30
 
 ### Major Changes

@@ -11,8 +11,11 @@
   "changesets": [
     "bright-crowds-share",
     "calm-crowds-report",
+    "clear-exit-sources",
     "closed-exits-update",
     "free-crowd-report-hosts",
+    "neat-platforms-observe",
+    "platform-inference-provenance",
     "quick-trains-estimate",
     "red-tips-heal",
     "required-reports-count",
