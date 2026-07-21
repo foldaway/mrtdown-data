@@ -1,5 +1,14 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.32
+
+### Patch Changes
+
+- 18a6dca: Add required line-level platform door counts and train-car formations, with
+  explicit `null` door counts for LRT lines that have no platform doors or gates.
+- Updated dependencies [18a6dca]
+  - @mrtdown/core@2.0.0-alpha.32
+
 ## 2.0.0-alpha.31
 
 ### Patch Changes
