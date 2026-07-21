@@ -1,5 +1,12 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.32
+
+### Major Changes
+
+- 18a6dca: Add required line-level platform door counts and train-car formations, with
+  explicit `null` door counts for LRT lines that have no platform doors or gates.
+
 ## 2.0.0-alpha.31
 
 ### Major Changes

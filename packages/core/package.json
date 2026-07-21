@@ -1,6 +1,6 @@
 {
   "name": "@mrtdown/core",
-  "version": "2.0.0-alpha.31",
+  "version": "2.0.0-alpha.32",
   "description": "Shared schemas and period helpers for MRTDown data",
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
   "bugs": {
