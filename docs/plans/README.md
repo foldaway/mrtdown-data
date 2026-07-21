@@ -20,7 +20,7 @@ plan.
 - [Station first and last train data](active/station-first-last-train-data.md):
   embedded station timing data keyed by full scheduled service patterns.
 - [Station layout data](active/station-layout-data.md): embedded current-state
-  station layout, platform, door-anchor, and transfer path data.
+  station layout and platform data.
 
 ## Completed
 

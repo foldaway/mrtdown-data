@@ -17,9 +17,16 @@ only a station-local ID, public label, last-reviewed date, line, and optional
 scheduled services or non-boardable status.
 
 Levels, transfer paths, road names, nearby landmarks, paid-area status,
-accessibility details, door counts, access points, and passenger-flow guidance
-remain out of scope. They must not be copied from operator websites, maps,
-Google Maps, Google Street View, community databases, or unlicensed photos.
+accessibility details, station-local door counts, access points, and
+passenger-flow guidance remain out of scope. They must not be copied from
+operator websites, maps, Google Maps, Google Street View, community databases,
+or unlicensed photos. The line-level `platformDoorCount` is maintained on each
+line instead: it is the count of passenger door positions per platform edge,
+or `null` for LRT lines that have no platform doors or gates.
+
+Each line also records `trainCarCounts`: its configured passenger train
+formation lengths in cars. MRT lines have one count; LRT lines may list both
+one- and two-car formations.
 
 A station may have exits, platforms, or both. A layout is not evidence that a
 station is currently open; the LTA dataset also includes some future or

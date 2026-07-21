@@ -250,6 +250,8 @@ function buildStaticEntities() {
       type: 'mrt.high',
       color: '#007DC5',
       startedAt: '1985-05-31',
+      platformDoorCount: 24,
+      trainCarCounts: [8],
       serviceIds: ['ISL_MAIN_E', 'ISL_MAIN_W'],
       operators: [
         { operatorId: 'MTRC', startedAt: '1985-05-31', endedAt: null },
@@ -265,6 +267,8 @@ function buildStaticEntities() {
       type: 'mrt.high',
       color: '#E2231A',
       startedAt: '1982-05-10',
+      platformDoorCount: 24,
+      trainCarCounts: [8],
       serviceIds: ['TWL_MAIN_N', 'TWL_MAIN_S'],
       operators: [
         { operatorId: 'MTRC', startedAt: '1982-05-10', endedAt: null },
@@ -280,6 +284,8 @@ function buildStaticEntities() {
       type: 'mrt.high',
       color: '#7D499D',
       startedAt: '2002-08-18',
+      platformDoorCount: 24,
+      trainCarCounts: [8],
       serviceIds: ['TKL_MAIN_N', 'TKL_MAIN_S'],
       operators: [
         { operatorId: 'MTRC', startedAt: '2002-08-18', endedAt: null },

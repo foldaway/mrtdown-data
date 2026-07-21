@@ -9,6 +9,11 @@
   "type": "lrt",
   "color": "#748477",
   "startedAt": "2003-01-18",
+  "platformDoorCount": null,
+  "trainCarCounts": [
+    1,
+    2
+  ],
   "operatingHours": {
     "weekdays": {
       "start": "05:18",

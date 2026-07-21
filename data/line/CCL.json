@@ -9,6 +9,10 @@
   "type": "mrt.medium",
   "color": "#fa9e0d",
   "startedAt": "2009-05-28",
+  "platformDoorCount": 12,
+  "trainCarCounts": [
+    3
+  ],
   "operatingHours": {
     "weekdays": {
       "start": "05:50",

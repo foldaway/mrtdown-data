@@ -2428,6 +2428,8 @@ describe('@mrtdown/fs', () => {
         type: 'mrt.high',
         color: '#d42e12',
         startedAt: '1987-11-07',
+        platformDoorCount: 24,
+        trainCarCounts: [6],
         serviceIds: ['NSL_MAIN'],
         operators: [
           {
@@ -3417,6 +3419,8 @@ describe('@mrtdown/fs', () => {
         type: 'mrt.high',
         color: '#d42e12',
         startedAt: '1987-11-07',
+        platformDoorCount: 24,
+        trainCarCounts: [6],
         serviceIds: ['NSL_MAIN_S'],
         operators: [],
       })}\n`,
