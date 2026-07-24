@@ -1,5 +1,12 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.33
+
+### Minor Changes
+
+- 5cfae07: Add three frequency-based next-station arrival estimates based on published
+  representative headways and sourced first and last train anchors.
+
 ## 2.0.0-alpha.32
 
 ### Major Changes
