@@ -57,6 +57,27 @@ export type EstimatedStationDeparture = {
   sourcePeriodId: string | null;
 };
 
+/**
+ * A single frequency-based estimate for one of the next trains at a station.
+ *
+ * This is a planning estimate, not a realtime prediction: published frequency
+ * guidance cannot reveal a train's current position within its headway.
+ */
+export type EstimatedStationArrival = {
+  queriedAtTime: string;
+  queriedAtSeconds: number;
+  position: number;
+  estimatedTime: string;
+  estimatedSeconds: number;
+  headwaySeconds: number;
+  headwayRangeSeconds: {
+    min: number;
+    max: number;
+  };
+  sourcePeriodId: string | null;
+  basis: 'first_train' | 'frequency_estimate' | 'last_train';
+};
+
 type StationInput = Pick<Station, 'id' | 'firstLastTrain'>;
 
 type ClippedPeriod = {
@@ -486,4 +507,154 @@ export function enumerateEstimatedStationDepartures(
   return [...departureBySeconds.values()].sort(
     (first, second) => first.seconds - second.seconds,
   );
+}
+
+function estimatedArrivalAt(
+  queriedAtSeconds: number,
+  estimatedSeconds: number,
+  window: EstimatedFrequencyWindow,
+  position: number,
+  basis: 'first_train' | 'last_train',
+): EstimatedStationArrival {
+  return {
+    queriedAtTime: formatTime(queriedAtSeconds),
+    queriedAtSeconds,
+    position,
+    estimatedTime: formatTime(estimatedSeconds),
+    estimatedSeconds,
+    headwaySeconds: window.headwaySeconds,
+    headwayRangeSeconds: { ...window.headwayRangeSeconds },
+    sourcePeriodId: window.sourcePeriodId,
+    basis,
+  };
+}
+
+/**
+ * Estimates the next trains using published representative headways.
+ *
+ * `atTime` is a service-day time, so callers should use values such as
+ * `24:10:00` after midnight. Before the first train, the sourced first-train
+ * time is returned as an exact anchor. During service, the first estimate uses
+ * half the representative headway (the mean wait for a uniformly unknown
+ * phase); subsequent estimates are spaced by the applicable representative
+ * headway. The sourced last train remains an exact anchor. After the last
+ * train, there are no estimates for this service day.
+ */
+export function estimateNextStationArrivals(
+  schedule: EstimatedStationFrequencySchedule,
+  atTime: string,
+  count = 3,
+): EstimatedStationArrival[] {
+  if (!Number.isInteger(count) || count <= 0) {
+    throw new Error(
+      `Arrival estimate count must be a positive integer: ${count}`,
+    );
+  }
+
+  const firstWindow = schedule.windows[0];
+  const lastWindow = schedule.windows.at(-1);
+  if (!firstWindow || !lastWindow) {
+    return [];
+  }
+
+  const queriedAtSeconds = parseTime(atTime);
+  if (queriedAtSeconds > lastWindow.endSeconds) {
+    return [];
+  }
+
+  const estimates: EstimatedStationArrival[] = [];
+  let previousEstimateSeconds: number | null = null;
+
+  if (queriedAtSeconds < firstWindow.startSeconds) {
+    estimates.push(
+      estimatedArrivalAt(
+        queriedAtSeconds,
+        firstWindow.startSeconds,
+        firstWindow,
+        1,
+        'first_train',
+      ),
+    );
+    previousEstimateSeconds = firstWindow.startSeconds;
+  } else if (queriedAtSeconds === lastWindow.endSeconds) {
+    return [
+      estimatedArrivalAt(
+        queriedAtSeconds,
+        lastWindow.endSeconds,
+        lastWindow,
+        1,
+        'last_train',
+      ),
+    ];
+  } else {
+    const window = schedule.windows.find(
+      (candidate) =>
+        candidate.startSeconds <= queriedAtSeconds &&
+        queriedAtSeconds < candidate.endSeconds,
+    );
+    if (!window) {
+      throw new Error(`No frequency window contains ${atTime}`);
+    }
+
+    const estimatedSeconds = Math.min(
+      lastWindow.endSeconds,
+      queriedAtSeconds + Math.round(window.headwaySeconds / 2),
+    );
+    estimates.push({
+      queriedAtTime: formatTime(queriedAtSeconds),
+      queriedAtSeconds,
+      position: 1,
+      estimatedTime: formatTime(estimatedSeconds),
+      estimatedSeconds,
+      headwaySeconds: window.headwaySeconds,
+      headwayRangeSeconds: { ...window.headwayRangeSeconds },
+      sourcePeriodId: window.sourcePeriodId,
+      basis:
+        estimatedSeconds === lastWindow.endSeconds
+          ? 'last_train'
+          : 'frequency_estimate',
+    });
+    previousEstimateSeconds = estimatedSeconds;
+  }
+
+  while (estimates.length < count && previousEstimateSeconds != null) {
+    const currentEstimateSeconds = previousEstimateSeconds;
+    if (currentEstimateSeconds >= lastWindow.endSeconds) {
+      break;
+    }
+
+    const window = schedule.windows.find(
+      (candidate) =>
+        candidate.startSeconds <= currentEstimateSeconds &&
+        currentEstimateSeconds < candidate.endSeconds,
+    );
+    if (!window) {
+      throw new Error(
+        `No frequency window contains ${formatTime(currentEstimateSeconds)}`,
+      );
+    }
+
+    const estimatedSeconds = Math.min(
+      lastWindow.endSeconds,
+      currentEstimateSeconds + window.headwaySeconds,
+    );
+    const position = estimates.length + 1;
+    estimates.push({
+      queriedAtTime: formatTime(queriedAtSeconds),
+      queriedAtSeconds,
+      position,
+      estimatedTime: formatTime(estimatedSeconds),
+      estimatedSeconds,
+      headwaySeconds: window.headwaySeconds,
+      headwayRangeSeconds: { ...window.headwayRangeSeconds },
+      sourcePeriodId: window.sourcePeriodId,
+      basis:
+        estimatedSeconds === lastWindow.endSeconds
+          ? 'last_train'
+          : 'frequency_estimate',
+    });
+    previousEstimateSeconds = estimatedSeconds;
+  }
+
+  return estimates;
 }

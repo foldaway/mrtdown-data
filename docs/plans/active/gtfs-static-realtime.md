@@ -137,6 +137,15 @@ patterns. These profiles do not invent that grouping or `stop_times.txt`;
 relative stop times still require reviewed segment runtime and dwell-time
 inputs.
 
+For user-facing next-train estimates, consumers should not use the enumerated
+departure artifacts as if they were live predictions: frequency guidance does
+not reveal a train's phase within a headway. Core therefore returns three
+single, clearly labelled frequency-based arrival estimates. During service the
+first estimate uses half the representative headway and the following two use
+the applicable representative headway. The sourced first and last trains remain
+exact anchors. These are planning estimates, not realtime predictions, while
+no train-position feed is available.
+
 ### Geometry And Stop Offset Estimation
 
 [LTA DataMall's geospatial datasets](https://datamall.lta.gov.sg/content/datamall/en/static-data.html)

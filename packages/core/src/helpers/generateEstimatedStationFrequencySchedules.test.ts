@@ -7,6 +7,7 @@ import {
 import type { Station } from '../schema/Station.js';
 import {
   enumerateEstimatedStationDepartures,
+  estimateNextStationArrivals,
   generateEstimatedServiceStationFrequencySchedules,
   generateEstimatedStationFrequencySchedule,
 } from './generateEstimatedStationFrequencySchedules.js';
@@ -66,6 +67,63 @@ const harbourFront = station('HBF', {
   weekday: { firstTrain: '05:47', lastTrain: '23:55' },
   saturday: { firstTrain: '05:47', lastTrain: '23:55' },
   sunday_public_holiday: { firstTrain: '06:07', lastTrain: '23:55' },
+});
+
+describe('estimateNextStationArrivals', () => {
+  const schedule = generateEstimatedStationFrequencySchedule({
+    serviceId: 'NEL_MAIN_N',
+    revision,
+    station: sengkang,
+    calendar: 'weekday',
+  });
+
+  test('returns three point estimates, starting with the sourced first train', () => {
+    expect(estimateNextStationArrivals(schedule, '05:20:00')).toMatchObject([
+      { position: 1, estimatedTime: '05:33:00', basis: 'first_train' },
+      {
+        position: 2,
+        estimatedTime: '05:39:00',
+        basis: 'frequency_estimate',
+      },
+      {
+        position: 3,
+        estimatedTime: '05:45:00',
+        basis: 'frequency_estimate',
+      },
+    ]);
+  });
+
+  test('uses representative headways for three point estimates during service', () => {
+    expect(estimateNextStationArrivals(schedule, '07:10:00')).toMatchObject([
+      { position: 1, estimatedTime: '07:11:15' },
+      { position: 2, estimatedTime: '07:13:45' },
+      { position: 3, estimatedTime: '07:16:15' },
+    ]);
+  });
+
+  test('uses the sourced last train as the final point estimate', () => {
+    expect(estimateNextStationArrivals(schedule, '24:25:00')).toMatchObject([
+      { position: 1, estimatedTime: '24:27:00', basis: 'last_train' },
+    ]);
+    expect(estimateNextStationArrivals(schedule, '24:27:00')).toMatchObject([
+      { position: 1, estimatedTime: '24:27:00', basis: 'last_train' },
+    ]);
+  });
+
+  test('returns no estimates after the last train or without timing data', () => {
+    expect(estimateNextStationArrivals(schedule, '24:28:00')).toEqual([]);
+    expect(
+      estimateNextStationArrivals(
+        generateEstimatedStationFrequencySchedule({
+          serviceId: 'NEL_MAIN_N',
+          revision,
+          station: station('PGC'),
+          calendar: 'weekday',
+        }),
+        '12:00:00',
+      ),
+    ).toEqual([]);
+  });
 });
 
 const sengkang = station('SKG', {
