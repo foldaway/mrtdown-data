@@ -1,5 +1,12 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.33
+
+### Patch Changes
+
+- Updated dependencies [5cfae07]
+  - @mrtdown/core@2.0.0-alpha.33
+
 ## 2.0.0-alpha.32
 
 ### Patch Changes
