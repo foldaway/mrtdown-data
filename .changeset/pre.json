@@ -14,6 +14,7 @@
     "clear-exit-sources",
     "closed-exits-update",
     "free-crowd-report-hosts",
+    "fresh-crowd-arrivals",
     "neat-platforms-observe",
     "platform-inference-provenance",
     "quick-trains-estimate",
