@@ -70,6 +70,8 @@ The target architecture is a package/data repository:
   paid and must be run intentionally with the package's documented environment
   variables.
 - `npm run test:cli`: run `@mrtdown/cli` deterministic tests.
+- `npm run lint`: run Biome formatting and lint checks across repository source
+  and documentation.
 - `npm run data:validate`: validate canonical `data` with the target CLI.
 - `npm run data:import:lta-station-exits -- <geojson>`: replace station layouts
   with the supplied LTA MRT Station Exit GeoJSON dataset.
@@ -106,6 +108,8 @@ the repository shape.
 - Keep commits focused on one concern. Separate schema or behavior changes from
   bulk canonical-data migrations so each commit can be reviewed and reverted
   independently.
+- Before creating a commit, run `npm run lint` and the relevant deterministic
+  tests. Do not commit a change that has not passed both checks.
 - Use Conventional Commits style for commit messages and PR titles, for example
   `feat: add Pages artifact publishing foundation`. Do not add tool or agent
   prefixes such as `[codex]` to PR titles.
