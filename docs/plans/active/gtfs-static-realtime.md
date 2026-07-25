@@ -146,6 +146,14 @@ the applicable representative headway. The sourced first and last trains remain
 exact anchors. These are planning estimates, not realtime predictions, while
 no train-position feed is available.
 
+Consumers may optionally overlay fresh, station/service/direction-scoped
+commuter reports on the first arrival. A single fresh, uncontradicted report is
+the best available estimate and is labelled as a high-confidence `crowd_report`;
+reports predicting nearby arrivals are medianed. Materially conflicting reports
+favour the newest report and lower its confidence, while following arrivals
+continue from the frequency model. Report scoping and trust or moderation remain
+the caller's responsibility.
+
 ### Geometry And Stop Offset Estimation
 
 [LTA DataMall's geospatial datasets](https://datamall.lta.gov.sg/content/datamall/en/static-data.html)

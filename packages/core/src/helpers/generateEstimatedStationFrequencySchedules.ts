@@ -75,7 +75,28 @@ export type EstimatedStationArrival = {
     max: number;
   };
   sourcePeriodId: string | null;
-  basis: 'first_train' | 'frequency_estimate' | 'last_train';
+  basis: 'first_train' | 'frequency_estimate' | 'crowd_report' | 'last_train';
+  confidence: 'high' | 'medium' | 'low';
+  crowdReportIds?: string[];
+  crowdReportsDisagree?: boolean;
+};
+
+/**
+ * A location-, service-, and direction-scoped commuter report. Callers must
+ * scope reports before passing them to the estimator; core does not infer
+ * whether a report applies to this station or platform.
+ */
+export type CrowdArrivalReport = {
+  id: string;
+  reportedAtTime: string;
+  minutesToArrival: number;
+};
+
+export type EstimateNextStationArrivalsOptions = {
+  count?: number;
+  crowdReports?: readonly CrowdArrivalReport[];
+  crowdReportFreshnessSeconds?: number;
+  crowdReportAgreementSeconds?: number;
 };
 
 type StationInput = Pick<Station, 'id' | 'firstLastTrain'>;
@@ -85,6 +106,21 @@ type ClippedPeriod = {
   endSeconds: number;
   period: EstimatedFrequencyPeriod;
 };
+
+type CrowdArrivalCandidate = {
+  id: string;
+  reportedAtSeconds: number;
+  estimatedSeconds: number;
+};
+
+type CrowdArrivalSelection = {
+  estimatedSeconds: number;
+  reportIds: string[];
+  reportsDisagree: boolean;
+};
+
+const DEFAULT_CROWD_REPORT_FRESHNESS_SECONDS = 180;
+const DEFAULT_CROWD_REPORT_AGREEMENT_SECONDS = 90;
 
 const calendarConfig: Record<
   EstimatedStationScheduleCalendar,
@@ -526,6 +562,90 @@ function estimatedArrivalAt(
     headwayRangeSeconds: { ...window.headwayRangeSeconds },
     sourcePeriodId: window.sourcePeriodId,
     basis,
+    confidence: 'high',
+  };
+}
+
+function resolveCrowdArrival(
+  reports: readonly CrowdArrivalReport[] | undefined,
+  queriedAtSeconds: number,
+  lastTrainSeconds: number,
+  freshnessSeconds: number,
+  agreementSeconds: number,
+): CrowdArrivalSelection | null {
+  if (!reports || reports.length === 0) {
+    return null;
+  }
+
+  const candidateById = new Map<string, CrowdArrivalCandidate>();
+  for (const report of reports) {
+    if (
+      !Number.isFinite(report.minutesToArrival) ||
+      report.minutesToArrival < 0
+    ) {
+      continue;
+    }
+
+    let reportedAtSeconds: number;
+    try {
+      reportedAtSeconds = parseTime(report.reportedAtTime);
+    } catch {
+      continue;
+    }
+
+    const estimatedSeconds =
+      reportedAtSeconds + Math.round(report.minutesToArrival * 60);
+    if (
+      reportedAtSeconds > queriedAtSeconds ||
+      queriedAtSeconds - reportedAtSeconds > freshnessSeconds ||
+      estimatedSeconds < queriedAtSeconds ||
+      estimatedSeconds >= lastTrainSeconds
+    ) {
+      continue;
+    }
+
+    const candidate = {
+      id: report.id,
+      reportedAtSeconds,
+      estimatedSeconds,
+    };
+    const existing = candidateById.get(report.id);
+    if (!existing || existing.reportedAtSeconds < reportedAtSeconds) {
+      candidateById.set(report.id, candidate);
+    }
+  }
+
+  const candidates = [...candidateById.values()].sort(
+    (first, second) => second.reportedAtSeconds - first.reportedAtSeconds,
+  );
+  const newest = candidates[0];
+  if (!newest) {
+    return null;
+  }
+
+  const agreeingCandidates = candidates.filter(
+    (candidate) =>
+      Math.abs(candidate.estimatedSeconds - newest.estimatedSeconds) <=
+      agreementSeconds,
+  );
+  const sortedEstimates = agreeingCandidates
+    .map((candidate) => candidate.estimatedSeconds)
+    .sort((first, second) => first - second);
+  const middle = Math.floor(sortedEstimates.length / 2);
+  const middleEstimate = sortedEstimates[middle];
+  if (middleEstimate == null) {
+    return null;
+  }
+  const previousEstimate = sortedEstimates[middle - 1];
+  const estimatedSeconds =
+    sortedEstimates.length % 2 === 0 && previousEstimate != null
+      ? Math.round((previousEstimate + middleEstimate) / 2)
+      : middleEstimate;
+
+  return {
+    estimatedSeconds,
+    reportIds: agreeingCandidates.map((candidate) => candidate.id),
+    reportsDisagree: agreeingCandidates.length !== candidates.length,
   };
 }
 
@@ -537,17 +657,50 @@ function estimatedArrivalAt(
  * time is returned as an exact anchor. During service, the first estimate uses
  * half the representative headway (the mean wait for a uniformly unknown
  * phase); subsequent estimates are spaced by the applicable representative
- * headway. The sourced last train remains an exact anchor. After the last
- * train, there are no estimates for this service day.
+ * headway. A fresh, scoped commuter report can instead supply the first
+ * arrival. Agreeing reports are medianed; conflicting reports favour the
+ * newest report and lower the resulting confidence. The sourced first and last
+ * trains remain exact anchors. After the last train, there are no estimates
+ * for this service day.
  */
 export function estimateNextStationArrivals(
   schedule: EstimatedStationFrequencySchedule,
   atTime: string,
-  count = 3,
+  count?: number,
+): EstimatedStationArrival[];
+export function estimateNextStationArrivals(
+  schedule: EstimatedStationFrequencySchedule,
+  atTime: string,
+  options?: EstimateNextStationArrivalsOptions,
+): EstimatedStationArrival[];
+export function estimateNextStationArrivals(
+  schedule: EstimatedStationFrequencySchedule,
+  atTime: string,
+  countOrOptions: number | EstimateNextStationArrivalsOptions = 3,
 ): EstimatedStationArrival[] {
+  const options = typeof countOrOptions === 'number' ? {} : countOrOptions;
+  const count =
+    typeof countOrOptions === 'number' ? countOrOptions : (options.count ?? 3);
   if (!Number.isInteger(count) || count <= 0) {
     throw new Error(
       `Arrival estimate count must be a positive integer: ${count}`,
+    );
+  }
+
+  const freshnessSeconds =
+    options.crowdReportFreshnessSeconds ??
+    DEFAULT_CROWD_REPORT_FRESHNESS_SECONDS;
+  const agreementSeconds =
+    options.crowdReportAgreementSeconds ??
+    DEFAULT_CROWD_REPORT_AGREEMENT_SECONDS;
+  if (!Number.isInteger(freshnessSeconds) || freshnessSeconds <= 0) {
+    throw new Error(
+      `Crowd report freshness must be a positive integer: ${freshnessSeconds}`,
+    );
+  }
+  if (!Number.isInteger(agreementSeconds) || agreementSeconds < 0) {
+    throw new Error(
+      `Crowd report agreement threshold must be a non-negative integer: ${agreementSeconds}`,
     );
   }
 
@@ -596,23 +749,51 @@ export function estimateNextStationArrivals(
       throw new Error(`No frequency window contains ${atTime}`);
     }
 
-    const estimatedSeconds = Math.min(
+    const crowdArrival = resolveCrowdArrival(
+      options.crowdReports,
+      queriedAtSeconds,
       lastWindow.endSeconds,
-      queriedAtSeconds + Math.round(window.headwaySeconds / 2),
+      freshnessSeconds,
+      agreementSeconds,
     );
+    const estimatedSeconds = crowdArrival
+      ? crowdArrival.estimatedSeconds
+      : Math.min(
+          lastWindow.endSeconds,
+          queriedAtSeconds + Math.round(window.headwaySeconds / 2),
+        );
+    const estimateWindow = crowdArrival
+      ? (schedule.windows.find(
+          (candidate) =>
+            candidate.startSeconds <= estimatedSeconds &&
+            estimatedSeconds < candidate.endSeconds,
+        ) ?? window)
+      : window;
     estimates.push({
       queriedAtTime: formatTime(queriedAtSeconds),
       queriedAtSeconds,
       position: 1,
       estimatedTime: formatTime(estimatedSeconds),
       estimatedSeconds,
-      headwaySeconds: window.headwaySeconds,
-      headwayRangeSeconds: { ...window.headwayRangeSeconds },
-      sourcePeriodId: window.sourcePeriodId,
-      basis:
-        estimatedSeconds === lastWindow.endSeconds
+      headwaySeconds: estimateWindow.headwaySeconds,
+      headwayRangeSeconds: { ...estimateWindow.headwayRangeSeconds },
+      sourcePeriodId: estimateWindow.sourcePeriodId,
+      basis: crowdArrival
+        ? 'crowd_report'
+        : estimatedSeconds === lastWindow.endSeconds
           ? 'last_train'
           : 'frequency_estimate',
+      confidence: crowdArrival
+        ? crowdArrival.reportsDisagree
+          ? 'medium'
+          : 'high'
+        : 'low',
+      ...(crowdArrival
+        ? {
+            crowdReportIds: crowdArrival.reportIds,
+            crowdReportsDisagree: crowdArrival.reportsDisagree,
+          }
+        : {}),
     });
     previousEstimateSeconds = estimatedSeconds;
   }
@@ -652,6 +833,7 @@ export function estimateNextStationArrivals(
         estimatedSeconds === lastWindow.endSeconds
           ? 'last_train'
           : 'frequency_estimate',
+      confidence: estimatedSeconds === lastWindow.endSeconds ? 'high' : 'low',
     });
     previousEstimateSeconds = estimatedSeconds;
   }

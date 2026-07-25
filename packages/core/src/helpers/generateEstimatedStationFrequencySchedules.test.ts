@@ -101,6 +101,108 @@ describe('estimateNextStationArrivals', () => {
     ]);
   });
 
+  test('uses one fresh commuter report for the first arrival', () => {
+    expect(
+      estimateNextStationArrivals(schedule, '07:10:00', {
+        crowdReports: [
+          {
+            id: 'report-1',
+            reportedAtTime: '07:09:00',
+            minutesToArrival: 3,
+          },
+        ],
+      }),
+    ).toMatchObject([
+      {
+        position: 1,
+        estimatedTime: '07:12:00',
+        basis: 'crowd_report',
+        confidence: 'high',
+        crowdReportIds: ['report-1'],
+        crowdReportsDisagree: false,
+      },
+      { position: 2, estimatedTime: '07:14:30', basis: 'frequency_estimate' },
+      { position: 3, estimatedTime: '07:17:00', basis: 'frequency_estimate' },
+    ]);
+  });
+
+  test('uses the median for agreeing commuter reports', () => {
+    expect(
+      estimateNextStationArrivals(schedule, '07:10:00', {
+        count: 1,
+        crowdReports: [
+          {
+            id: 'report-1',
+            reportedAtTime: '07:09:00',
+            minutesToArrival: 3,
+          },
+          {
+            id: 'report-2',
+            reportedAtTime: '07:10:00',
+            minutesToArrival: 3,
+          },
+        ],
+      }),
+    ).toMatchObject([
+      {
+        estimatedTime: '07:12:30',
+        basis: 'crowd_report',
+        confidence: 'high',
+        crowdReportIds: ['report-2', 'report-1'],
+        crowdReportsDisagree: false,
+      },
+    ]);
+  });
+
+  test('prefers the newest conflicting commuter report and lowers confidence', () => {
+    expect(
+      estimateNextStationArrivals(schedule, '07:10:00', {
+        count: 1,
+        crowdReports: [
+          {
+            id: 'older-report',
+            reportedAtTime: '07:09:00',
+            minutesToArrival: 2,
+          },
+          {
+            id: 'newer-report',
+            reportedAtTime: '07:10:00',
+            minutesToArrival: 5,
+          },
+        ],
+      }),
+    ).toMatchObject([
+      {
+        estimatedTime: '07:15:00',
+        basis: 'crowd_report',
+        confidence: 'medium',
+        crowdReportIds: ['newer-report'],
+        crowdReportsDisagree: true,
+      },
+    ]);
+  });
+
+  test('ignores stale commuter reports', () => {
+    expect(
+      estimateNextStationArrivals(schedule, '07:10:00', {
+        count: 1,
+        crowdReports: [
+          {
+            id: 'stale-report',
+            reportedAtTime: '07:06:00',
+            minutesToArrival: 10,
+          },
+        ],
+      }),
+    ).toMatchObject([
+      {
+        estimatedTime: '07:11:15',
+        basis: 'frequency_estimate',
+        confidence: 'low',
+      },
+    ]);
+  });
+
   test('uses the sourced last train as the final point estimate', () => {
     expect(estimateNextStationArrivals(schedule, '24:25:00')).toMatchObject([
       { position: 1, estimatedTime: '24:27:00', basis: 'last_train' },
