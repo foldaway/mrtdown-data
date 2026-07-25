@@ -1,5 +1,12 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.34
+
+### Minor Changes
+
+- 1830b9a: Allow next-station arrival estimates to use fresh, scoped commuter reports,
+  including confidence and conflicting-report metadata.
+
 ## 2.0.0-alpha.33
 
 ### Minor Changes
