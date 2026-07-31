@@ -1,0 +1,26 @@
+{
+  "id": "CR20",
+  "name": {
+    "en-SG": "CR20",
+    "zh-Hans": null,
+    "ms": null,
+    "ta": null
+  },
+  "geo": {
+    "latitude": 1.3209,
+    "longitude": 103.7262
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR20",
+      "startedAt": "2039-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "jurong-lake-gardens"
+  ],
+  "townId": "jurong-west"
+}

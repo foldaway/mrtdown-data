@@ -1,0 +1,26 @@
+{
+  "id": "CR22",
+  "name": {
+    "en-SG": "CR22",
+    "zh-Hans": null,
+    "ms": null,
+    "ta": null
+  },
+  "geo": {
+    "latitude": 1.3127,
+    "longitude": 103.6748
+  },
+  "stationCodes": [
+    {
+      "lineId": "CRL",
+      "code": "CR22",
+      "startedAt": "2039-12-31",
+      "endedAt": null,
+      "structureType": "underground"
+    }
+  ],
+  "landmarkIds": [
+    "gul-circle-industrial-estate"
+  ],
+  "townId": "pioneer"
+}
