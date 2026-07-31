@@ -278,6 +278,21 @@ describe('@mrtdown/fs', () => {
     ]);
   });
 
+  it('requires evidence-backed issues to contain an interval impact event', async () => {
+    const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
+    await cp(fixtureDataDir, dataDir, { recursive: true });
+    const [bundle] = await listIssueBundles(dataDir);
+    expect(bundle).toBeDefined();
+    await writeFile(join(dataDir, bundle.path, 'impact.ndjson'), '');
+
+    const result = await validateDataRoot(dataDir, ['issue']);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      `${bundle.path}/impact.ndjson: evidence-backed issues require at least one periods.set impact event`,
+    );
+  });
+
   it('redacts non-exportable source evidence from public exports', async () => {
     const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-fs-'));
     await cp(fixtureDataDir, dataDir, { recursive: true });

@@ -708,6 +708,15 @@ async function validateIssueReferences(
     const impactPath = `${bundle.path}/${impactFileName}`;
     const seenImpactEventSetters = new Map<string, string>();
 
+    if (
+      bundle.evidence.length > 0 &&
+      !bundle.impactEvents.some((event) => event.type === 'periods.set')
+    ) {
+      errors.push(
+        `${impactPath}: evidence-backed issues require at least one periods.set impact event`,
+      );
+    }
+
     for (const [evidenceIndex, evidence] of bundle.evidence.entries()) {
       const location = `${evidencePath}:${evidenceIndex + 1}`;
       if (!generatedEvidenceIdPattern.test(evidence.id)) {
