@@ -2,10 +2,10 @@
   "id": "2023-10-15-early-closure-circle-line-station",
   "type": "maintenance",
   "title": {
-    "en-SG": "Early closure on Circle Line station maintenance for Stage 6 integration",
-    "zh-Hans": "环线车站维护以进行第6阶段集成提前关闭",
-    "ms": "Penutupan awal penyelenggaraan stesen Laluan Bulat untuk integrasi Peringkat 6",
-    "ta": "நிலை 6 ஒருங்கிணைப்பிற்கான வட்டப் பாதையில் நிலையப் பராமரிப்பு குறித்த முன்கூட்டிய மூடல்"
+    "en-SG": "Early Circle Line closure for Automatic Train Supervision testing",
+    "zh-Hans": "为测试自动列车监控系统而提前关闭环线",
+    "ms": "Penutupan awal Laluan Circle untuk ujian Sistem Penyeliaan Automatik Kereta Api",
+    "ta": "தானியங்கி ரயில் மேற்பார்வை அமைப்பு சோதனைக்காக வட்டப் பாதை முன்கூட்டியே மூடல்"
   },
   "titleMeta": {
     "source": "@openai/gpt-4-mini"
