@@ -2,10 +2,10 @@
   "id": "2025-12-08-ccl-delay-harbourfront-paya-lebar",
   "type": "disruption",
   "title": {
-    "en-SG": "CCL Delay - HarbourFront to Paya Lebar (Public Report)",
-    "zh-Hans": "CCL 延误 - HarbourFront 至 Paya Lebar（公众报告）",
-    "ms": "Kelewatan CCL - HarbourFront ke Paya Lebar (Laporan Awam)",
-    "ta": "CCL தாமதம் - HarbourFront முதல் Paya Lebar வரை (பொது அறிக்கை)"
+    "en-SG": "Circle Line delay from HarbourFront towards Kent Ridge (public report)",
+    "zh-Hans": "环线从港湾站往肯特岗方向延误（公众报告）",
+    "ms": "Kelewatan Laluan Circle dari HarbourFront ke arah Kent Ridge (laporan awam)",
+    "ta": "ஹார்பர்ஃப்ரண்டில் இருந்து கென்ட் ரிட்ஜ் நோக்கி வட்டப் பாதை தாமதம் (பொது அறிக்கை)"
   },
   "titleMeta": {
     "source": "@openai/gpt-5-mini"

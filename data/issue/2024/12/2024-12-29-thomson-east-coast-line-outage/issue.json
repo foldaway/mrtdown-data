@@ -2,10 +2,10 @@
   "id": "2024-12-29-thomson-east-coast-line-outage",
   "type": "disruption",
   "title": {
-    "en-SG": "Thomson–East Coast Line service disruption",
-    "zh-Hans": "汤姆森东海岸线服务中断",
-    "ms": "Gangguan perkhidmatan Laluan Thomson–East Coast",
-    "ta": "தாம்சன்-கிழக்கு கடற்கரை பாதையில் சேவை தடங்கல்"
+    "en-SG": "Thomson–East Coast Line delay due to train fault",
+    "zh-Hans": "列车故障导致汤姆森－东海岸线延误",
+    "ms": "Kelewatan Laluan Thomson–East Coast akibat kerosakan tren",
+    "ta": "ரயில் கோளாறு காரணமாக தாம்சன்-கிழக்கு கடற்கரை பாதையில் தாமதம்"
   },
   "titleMeta": {
     "source": "@openai/gpt-4-mini"
