@@ -33,6 +33,24 @@ export type StationFirstLastTrainTime = z.infer<
   typeof StationFirstLastTrainTimeSchema
 >;
 
+export const StationFirstLastTrainInferenceSchema = z
+  .object({
+    method: z.literal('loop_runtime_extrapolation'),
+    anchorStationId: z.string().min(1),
+    observedDirectionServiceId: z.string().min(1),
+    loopDurationSeconds: z.number().int().positive(),
+    reverseDirectionAssumedParallel: z.boolean(),
+    source: z.object({
+      url: z.url(),
+      description: z.string().min(1),
+      retrievedAt: z.iso.date(),
+    }),
+  })
+  .strict();
+export type StationFirstLastTrainInference = z.infer<
+  typeof StationFirstLastTrainInferenceSchema
+>;
+
 export const StationFirstLastTrainServiceSchema = z
   .object({
     serviceId: z.string(),
@@ -48,6 +66,7 @@ export const StationFirstLastTrainServiceSchema = z
         StationFirstLastTrainTimeSchema,
       )
       .optional(),
+    inference: StationFirstLastTrainInferenceSchema.optional(),
   })
   .refine(
     (service) =>

@@ -353,6 +353,59 @@ describe('generateEstimatedStationFrequencySchedule', () => {
     ).toBe('daily');
   });
 
+  test('marks loop-runtime-derived timing anchors as medium confidence', () => {
+    const derived = {
+      id: 'HBF',
+      firstLastTrain: {
+        services: [
+          {
+            serviceId: 'NEL_MAIN_N',
+            times: {
+              weekday_saturday: {
+                firstTrain: '05:30',
+                lastTrain: '23:30',
+              },
+              sunday_public_holiday: {
+                firstTrain: '05:50',
+                lastTrain: '23:30',
+              },
+            },
+            inference: {
+              method: 'loop_runtime_extrapolation',
+              anchorStationId: 'HBF',
+              observedDirectionServiceId: 'NEL_MAIN_N',
+              loopDurationSeconds: 900,
+              reverseDirectionAssumedParallel: false,
+              source: {
+                url: 'https://www.lta.gov.sg/example',
+                description: 'Observed loop runtime',
+                retrievedAt: '2026-08-05',
+              },
+            },
+          },
+        ],
+      },
+    } satisfies Pick<Station, 'id' | 'firstLastTrain'>;
+    const schedule = generateEstimatedStationFrequencySchedule({
+      serviceId: 'NEL_MAIN_N',
+      revision,
+      station: derived,
+      calendar: 'weekday',
+    });
+
+    expect(schedule).toMatchObject({
+      timingBasis: 'derived',
+      timingInference: {
+        method: 'loop_runtime_extrapolation',
+        loopDurationSeconds: 900,
+      },
+    });
+    expect(estimateNextStationArrivals(schedule, '05:20:00')[0]).toMatchObject({
+      basis: 'first_train',
+      confidence: 'medium',
+    });
+  });
+
   test('retains path stations without direction-specific timing', () => {
     const schedule = generateEstimatedStationFrequencySchedule({
       serviceId: 'NEL_MAIN_N',

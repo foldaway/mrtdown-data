@@ -86,5 +86,59 @@
         }
       }
     ]
+  },
+  "firstLastTrain": {
+    "services": [
+      {
+        "serviceId": "PGLRT_E_CW",
+        "times": {
+          "weekday_saturday": {
+            "firstTrain": "05:30",
+            "lastTrain": "00:48"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:50",
+            "lastTrain": "00:48"
+          }
+        },
+        "inference": {
+          "method": "loop_runtime_extrapolation",
+          "anchorStationId": "PGL",
+          "observedDirectionServiceId": "PGLRT_E_CW",
+          "loopDurationSeconds": 936,
+          "reverseDirectionAssumedParallel": false,
+          "source": {
+            "url": "https://www.sbstransit.com.sg/first-train-last-train",
+            "description": "SBS Transit loop-origin first/last timings, extrapolated using MRTDown maintainer video-traced station offsets; reverse direction assumes parallel tracks.",
+            "retrievedAt": "2026-08-05"
+          }
+        }
+      },
+      {
+        "serviceId": "PGLRT_E_CCW",
+        "times": {
+          "weekday_saturday": {
+            "firstTrain": "05:24",
+            "lastTrain": "00:42"
+          },
+          "sunday_public_holiday": {
+            "firstTrain": "05:44",
+            "lastTrain": "00:42"
+          }
+        },
+        "inference": {
+          "method": "loop_runtime_extrapolation",
+          "anchorStationId": "PGL",
+          "observedDirectionServiceId": "PGLRT_E_CW",
+          "loopDurationSeconds": 936,
+          "reverseDirectionAssumedParallel": true,
+          "source": {
+            "url": "https://www.sbstransit.com.sg/first-train-last-train",
+            "description": "SBS Transit loop-origin first/last timings, extrapolated using MRTDown maintainer video-traced station offsets; reverse direction assumes parallel tracks.",
+            "retrievedAt": "2026-08-05"
+          }
+        }
+      }
+    ]
   }
 }

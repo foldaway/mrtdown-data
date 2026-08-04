@@ -113,8 +113,8 @@ anchors. Every interior departure is explicitly labelled as a frequency
 estimate. The generated schedules are artifacts and do not belong under
 `data/`.
 
-The initial profiles cover the current NEL, DTL, EWL main, NSL, and TEL service
-revisions using
+The current profiles cover the NEL, DTL, EWL main, NSL, TEL, PGLRT, and SKLRT
+service revisions using
 [LTA's system-wide rail guidance](https://www.lta.gov.sg/content/ltagov/en/getting_around/public_transport/rail_network.html):
 two to three minutes during the 07:00–09:00 peak and five to seven minutes
 otherwise. Because LTA does not specify the applicable days, the profiles treat
@@ -123,13 +123,16 @@ source description. The representative values are the range midpoints, 150 and
 360 seconds. These are explicitly estimates, not exact departures; a GTFS
 export should therefore map them to `frequencies.txt` with `exact_times=0`.
 
-CCL station timings now use the Stage 6 branch and loop service ids, but the
-current paths still lack complete directional timing coverage: branch services
-resolve 27 of 31 path positions and loop services resolve 4 of 31. The new
-CC30–CC32 stations also need sourced first/last-train times. The EWL airport
-shuttle and SKLRT/PGLRT services are similarly deferred for incomplete timing
-coverage. BPLRT needs a separate loop-specific frequency assumption, and future
-CRL/JRL services do not yet have operating timings.
+PGLRT and SKLRT station timing anchors are calibrated estimates: SBS Transit
+loop-origin first/last times are combined with MRTDown-maintainer video-traced
+loop runtimes and stop offsets. The timing records retain
+`loop_runtime_extrapolation` provenance; reverse directions explicitly assume
+parallel tracks and their first/last anchors are exposed with medium rather than
+high confidence. They must be replaced when detailed current operator timings
+become available. CCL station timings still lack complete directional coverage,
+the EWL airport shuttle is deferred, BPLRT needs a separate loop-specific
+frequency assumption, and future CRL/JRL services do not yet have operating
+timings.
 
 Station-level windows are not directly `frequencies.txt` rows. A GTFS export
 must first group compatible windows into full-length and short-start trip

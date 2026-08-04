@@ -8,6 +8,7 @@ import type {
 import type {
   Station,
   StationFirstLastTrainCalendar,
+  StationFirstLastTrainInference,
   StationFirstLastTrainTime,
 } from '../schema/Station.js';
 
@@ -40,6 +41,8 @@ export type EstimatedStationFrequencySchedule = {
   stopSequence: number;
   calendar: EstimatedStationScheduleCalendar;
   sourceCalendar: StationFirstLastTrainCalendar | null;
+  timingBasis: 'source' | 'derived' | null;
+  timingInference: StationFirstLastTrainInference | null;
   firstTrainTime: string | null;
   lastTrainTime: string | null;
   windows: EstimatedFrequencyWindow[];
@@ -285,6 +288,7 @@ function resolveTiming(
 ): {
   sourceCalendar: StationFirstLastTrainCalendar;
   timing: StationFirstLastTrainTime;
+  inference: StationFirstLastTrainInference | null;
 } | null {
   const serviceTiming = station.firstLastTrain?.services.find(
     (candidate) => candidate.serviceId === serviceId,
@@ -296,7 +300,11 @@ function resolveTiming(
   for (const sourceCalendar of calendarConfig[calendar].sourceCalendars) {
     const timing = serviceTiming.times[sourceCalendar];
     if (timing) {
-      return { sourceCalendar, timing };
+      return {
+        sourceCalendar,
+        timing,
+        inference: serviceTiming.inference ?? null,
+      };
     }
   }
 
@@ -341,6 +349,8 @@ function generateEstimatedStationFrequencyScheduleAtStop({
     stopSequence: stopIndex + 1,
     calendar,
     sourceCalendar: resolved?.sourceCalendar ?? null,
+    timingBasis: resolved ? (resolved.inference ? 'derived' : 'source') : null,
+    timingInference: resolved?.inference ?? null,
     firstTrainTime: resolved?.timing.firstTrain ?? null,
     lastTrainTime: resolved?.timing.lastTrain ?? null,
     windows: resolved
@@ -551,6 +561,7 @@ function estimatedArrivalAt(
   window: EstimatedFrequencyWindow,
   position: number,
   basis: 'first_train' | 'last_train',
+  confidence: 'high' | 'medium',
 ): EstimatedStationArrival {
   return {
     queriedAtTime: formatTime(queriedAtSeconds),
@@ -562,7 +573,7 @@ function estimatedArrivalAt(
     headwayRangeSeconds: { ...window.headwayRangeSeconds },
     sourcePeriodId: window.sourcePeriodId,
     basis,
-    confidence: 'high',
+    confidence,
   };
 }
 
@@ -717,6 +728,8 @@ export function estimateNextStationArrivals(
 
   const estimates: EstimatedStationArrival[] = [];
   let previousEstimateSeconds: number | null = null;
+  const anchorConfidence =
+    schedule.timingBasis === 'derived' ? 'medium' : 'high';
 
   if (queriedAtSeconds < firstWindow.startSeconds) {
     estimates.push(
@@ -726,6 +739,7 @@ export function estimateNextStationArrivals(
         firstWindow,
         1,
         'first_train',
+        anchorConfidence,
       ),
     );
     previousEstimateSeconds = firstWindow.startSeconds;
@@ -737,6 +751,7 @@ export function estimateNextStationArrivals(
         lastWindow,
         1,
         'last_train',
+        anchorConfidence,
       ),
     ];
   } else {
@@ -787,7 +802,9 @@ export function estimateNextStationArrivals(
         ? crowdArrival.reportsDisagree
           ? 'medium'
           : 'high'
-        : 'low',
+        : estimatedSeconds === lastWindow.endSeconds
+          ? anchorConfidence
+          : 'low',
       ...(crowdArrival
         ? {
             crowdReportIds: crowdArrival.reportIds,
@@ -833,7 +850,8 @@ export function estimateNextStationArrivals(
         estimatedSeconds === lastWindow.endSeconds
           ? 'last_train'
           : 'frequency_estimate',
-      confidence: estimatedSeconds === lastWindow.endSeconds ? 'high' : 'low',
+      confidence:
+        estimatedSeconds === lastWindow.endSeconds ? anchorConfidence : 'low',
     });
     previousEstimateSeconds = estimatedSeconds;
   }
