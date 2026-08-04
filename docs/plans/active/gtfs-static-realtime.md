@@ -113,8 +113,8 @@ anchors. Every interior departure is explicitly labelled as a frequency
 estimate. The generated schedules are artifacts and do not belong under
 `data/`.
 
-The current profiles cover the NEL, DTL, EWL main, NSL, TEL, PGLRT, and SKLRT
-service revisions using
+The current profiles cover the NEL, DTL, EWL main, NSL, TEL, BPLRT, PGLRT, and
+SKLRT service revisions using
 [LTA's system-wide rail guidance](https://www.lta.gov.sg/content/ltagov/en/getting_around/public_transport/rail_network.html):
 two to three minutes during the 07:00–09:00 peak and five to seven minutes
 otherwise. Because LTA does not specify the applicable days, the profiles treat
@@ -129,9 +129,11 @@ loop runtimes and stop offsets. The timing records retain
 `loop_runtime_extrapolation` provenance; reverse directions explicitly assume
 parallel tracks and their first/last anchors are exposed with medium rather than
 high confidence. They must be replaced when detailed current operator timings
-become available. CCL station timings still lack complete directional coverage,
-the EWL airport shuttle is deferred, BPLRT needs a separate loop-specific
-frequency assumption, and future CRL/JRL services do not yet have operating
+become available. BPLRT has complete source-backed station first/last times
+for both active loop directions, so it uses the same LTA frequency profile and
+retains its repeated interchange stop in full-service schedule generation. CCL
+station timings still lack complete directional coverage, the EWL airport
+shuttle is deferred, and future CRL/JRL services do not yet have operating
 timings.
 
 Station-level windows are not directly `frequencies.txt` rows. A GTFS export
