@@ -238,21 +238,35 @@ discriminated union rather than mislabelling realtime data as the existing
 `EstimatedStationArrival` type. Its estimate variant should wrap the existing
 first-train, frequency, crowd-report, and last-train result unchanged. Its
 realtime variants should represent both a `trip_update_prediction` with a
-predicted time and a `trip_update_suppression` for a cancelled trip or skipped
-stop. Both should carry the provider entity id, matched trip-instance identity,
-static snapshot hash, provider feed timestamp when present, `retrieved_at`, and
-source attribution needed to audit the result.
+predicted time and a `trip_update_suppression` for a cancelled or deleted trip
+or a skipped stop. Both should carry the provider entity id, matched
+trip-instance identity, resolved stop occurrence when applicable, static
+snapshot hash, optional
+`FeedHeader.timestamp`, required `TripUpdate.timestamp`, `retrieved_at`, and
+source attribution needed to audit the result. Keep the entity timestamp
+separate from feed generation and retrieval timestamps.
+
+The Phase 1 audit must set and record a reviewed
+`maxTripUpdateAgeSeconds` no greater than twice the measured provider update
+cadence before live trip updates can be enabled. Evaluate each entity's age
+from `TripUpdate.timestamp`; a recently generated or retrieved feed must not
+refresh an older entity. If that timestamp is absent, invalid, or older than
+the configured maximum, the entity is ineligible for prediction or suppression
+and the normal crowd-report or frequency fallback applies.
 
 Precedence is evaluated independently for each station, service, direction,
-and arrival candidate: use a fresh mapped prediction when present; suppress the
-affected candidate when a fresh mapped update says the trip is `CANCELED` or
-the stop is `SKIPPED`; otherwise retain an eligible fresh crowd-report result;
-otherwise use the frequency estimate. `NO_DATA` explicitly permits that
-fallback because it supplies no realtime prediction. A stale, unmatched,
-ambiguous, or only partially covering realtime feed must not suppress the
-lower-priority result for an uncovered scope or candidate. Before service,
-preserve the existing exact `first_train` result; at the exact final anchor,
-preserve `last_train`; after the final service window, return no estimate.
+and arrival candidate. First apply a fresh mapped trip-level `CANCELED` or
+`DELETED` relationship before inspecting any `StopTimeUpdate`; neither a stop
+prediction nor a lower-priority fallback may override that suppression. Next
+apply a fresh mapped stop-level `SKIPPED` suppression before considering a
+prediction. For a remaining candidate, use a fresh mapped prediction when
+present; otherwise retain an eligible fresh crowd-report result; otherwise use
+the frequency estimate. `NO_DATA` explicitly permits that fallback because it
+supplies no realtime prediction. A stale, unmatched, ambiguous, or only
+partially covering realtime feed must not suppress the lower-priority result
+for an uncovered scope or candidate. Before service, preserve the existing
+exact `first_train` result; at the exact final anchor, preserve `last_train`;
+after the final service window, return no estimate.
 
 Consumers may optionally overlay fresh, station/service/direction-scoped
 commuter reports on the first arrival. A single fresh, uncontradicted report is
@@ -419,40 +433,67 @@ Exit criteria:
 
 ### Phase 5: GTFS Realtime Contract Boundary
 
-- Define which GTFS Realtime message types are in scope:
-  `ServiceAlert`, `TripUpdate`, and `VehiclePosition`.
+- Limit the initial message scope to `ServiceAlert` and `TripUpdate`.
+  `VehiclePosition` remains deferred until a provider source, retained fixture,
+  canonical or runtime use case, validation path, and exit criterion are all
+  documented.
 - Start with `ServiceAlert` because it maps most directly to canonical issue
   evidence and impact.
 - Capture fixture snapshots from both LTA realtime endpoints before defining
-  canonical contracts. Prove exact static joins for schedule-backed realtime
-  entities. Explicitly reject and retain `ADDED` and `UNSCHEDULED` trip fixtures
-  as unsupported by the initial contract because they have no required static
-  trip join; add support later only with a reviewed route, direction, stop
-  sequence, service-date, and canonical-service scoping design.
+  canonical contracts. Pin parsing and relationship behavior to
+  [GTFS Realtime 2.0 proto revision `a14a8912`](https://github.com/google/transit/blob/a14a8912d653b9225b0b1f70930d19a066371e61/gtfs-realtime/proto/gtfs-realtime.proto)
+  and require an explicit plan review before adopting a different revision.
+- Apply this complete `TripDescriptor.ScheduleRelationship` policy:
+  - `SCHEDULED`: require a unique static trip-instance match and allow fresh
+    predictions.
+  - `ADDED`: reject and retain as deprecated; do not guess whether the producer
+    intended `DUPLICATED` or `NEW`.
+  - `UNSCHEDULED`: support only when the static trip uses `frequencies.txt`
+    with `exact_times=0`, `start_date` and `start_time` establish the instance,
+    and every associated stop update is also `UNSCHEDULED`.
+  - `CANCELED`: require a unique schedule-backed match and emit trip-level
+    suppression before processing stop updates.
+  - `REPLACEMENT`: reject and retain as unsupported and experimental until a
+    complete replacement-trip scoping design is reviewed.
+  - `DUPLICATED`: reject and retain as unsupported and experimental until
+    `TripProperties` and the new instance identity are modelled.
+  - `DELETED`: require a unique schedule-backed match and suppress the trip
+    without presenting it as a rider-visible cancellation; retain its
+    experimental status in provenance.
+  - `NEW`: reject and retain as unsupported and experimental because it has no
+    static trip to reconcile.
 - For each realtime entity, validate every populated `TripDescriptor` and
   `EntitySelector` field conjunctively against the exact audited static
   snapshot hash. This includes populated `agency_id`, `route_id`, `route_type`,
-  `trip_id`, `stop_id`, `direction_id`, `start_date`, `start_time`, and
-  `schedule_relationship` fields. Derive trip-instance identity at match time;
-  `start_date` and `start_time` participate in frequency-based identity.
+  `trip_id`, `stop_id`, `direction_id`, `start_date`, and `start_time` fields.
+  Derive trip-instance identity at match time; `start_date` and `start_time`
+  participate in frequency-based identity. Process `schedule_relationship`
+  separately as realtime state, and ignore it when matching a
+  `TripDescriptor` nested in an `EntitySelector`.
 - Require a unique match when a `TripDescriptor` identifies one trip instance.
   For a broad service-alert `EntitySelector`, expand all canonical entities
-  satisfying its populated fields as the intended affected scope. Reject and
-  retain zero-match selectors and unmatched or ambiguous singular trip
-  descriptors, together with their snapshot hash and rejection reason, instead
-  of attaching them to a trip-pattern mapping.
-- For each `StopTimeUpdate`, validate `stop_sequence` and `stop_id` together
-  against the matched static trip. Require `stop_sequence` when a trip visits
-  the same stop more than once, reject a missing or inconsistent occurrence as
-  ambiguous, and carry both fields as the stop-occurrence identity in prediction
-  and suppression results.
+  satisfying its populated fields as the intended affected scope. Reject an
+  empty selector rather than treating it as network-wide. Retain empty or
+  zero-match selectors and unmatched or ambiguous singular trip descriptors,
+  together with their snapshot hash and rejection reason, instead of attaching
+  them to a trip-pattern mapping.
+- Require each `StopTimeUpdate` to populate `stop_sequence`, `stop_id`, or both.
+  Resolve either field against the matched static trip and cross-check them when
+  both are present. Require `stop_sequence` when the trip visits the same
+  `stop_id` more than once; reject a missing or inconsistent occurrence as
+  ambiguous. Carry the resolved `stop_sequence` and `stop_id` as the
+  stop-occurrence identity in prediction and suppression results.
+- If `StopTimeProperties.assigned_stop_id` is present, require `stop_sequence`,
+  resolve the scheduled occurrence from that sequence, and retain the assigned
+  stop separately rather than treating it as the static `stop_id`.
 - Define and fixture-test the runtime-facing arrival union: preserve the
   existing `EstimatedStationArrival` result as its estimate variant, add a
   `trip_update_prediction` variant with predicted time, and add a
-  `trip_update_suppression` variant for cancelled trips and skipped stops. Test
-  that `CANCELED` and `SKIPPED` suppress the affected candidate while `NO_DATA`
-  permits fallback; retain auditable provider, feed, and static-snapshot
-  provenance for both realtime result variants.
+  `trip_update_suppression` variant for `CANCELED`, `DELETED`, and `SKIPPED`.
+  Test trip-level suppression before stop predictions, stop-level suppression
+  before fallback, and that `NO_DATA` permits fallback. Retain auditable entity,
+  feed, retrieval, and static-snapshot provenance for both realtime result
+  variants.
 - Extend the `lta-datamall` rule in `data/rights/source-registry.json` to match
   `datamall2.mytransport.sg` as well as the documentation host, and add
   deterministic rights/ingest fixtures proving that a truthful API
@@ -467,6 +508,9 @@ Exit criteria:
 Exit criteria:
 
 - GTFS Realtime support has a documented source-of-truth boundary.
+- The supported GTFS Realtime revision, exact `maxTripUpdateAgeSeconds`, and
+  disposition of every `TripDescriptor.ScheduleRelationship` value are
+  documented and fixture-tested.
 - A trusted `ServiceAlert` payload can be validated without importing triage
   internals.
 - Unsupported live-only realtime data is rejected or ignored deliberately.
