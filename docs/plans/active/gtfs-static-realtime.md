@@ -236,10 +236,13 @@ back explicitly rather than silently presenting estimates as live predictions.
 The external runtime should expose one runtime-facing arrival contract as a
 discriminated union rather than mislabelling realtime data as the existing
 `EstimatedStationArrival` type. Its estimate variant should wrap the existing
-first-train, frequency, crowd-report, and last-train result unchanged. Its
-realtime variants should represent both a `trip_update_prediction` with a
-predicted time and a `trip_update_suppression` for a cancelled or deleted trip
-or a skipped stop. Both should carry the provider entity id, matched
+first-train, frequency, crowd-report, and last-train result unchanged. Add a
+`scheduled_arrival` variant for an exact stop time from the selected LTA static
+snapshot; it must carry the scheduled time, trip-instance and stop-occurrence
+identity, snapshot hash, and source timestamps. Realtime variants should
+represent both a `trip_update_prediction` with a predicted time and a
+`trip_update_suppression` for a cancelled or deleted trip or a skipped stop.
+Both realtime variants should carry the provider entity id, matched
 trip-instance identity, resolved stop occurrence when applicable, static
 snapshot hash, optional
 `FeedHeader.timestamp`, required `TripUpdate.timestamp`, `retrieved_at`, and
@@ -252,7 +255,7 @@ cadence before live trip updates can be enabled. Evaluate each entity's age
 from `TripUpdate.timestamp`; a recently generated or retrieved feed must not
 refresh an older entity. If that timestamp is absent, invalid, or older than
 the configured maximum, the entity is ineligible for prediction or suppression
-and the normal crowd-report or frequency fallback applies.
+and the normal crowd-report, static-schedule, or frequency fallback applies.
 
 Precedence is evaluated independently for each station, service, direction,
 and arrival candidate. First apply a fresh mapped trip-level `CANCELED` or
@@ -261,12 +264,14 @@ prediction nor a lower-priority fallback may override that suppression. Next
 apply a fresh mapped stop-level `SKIPPED` suppression before considering a
 prediction. For a remaining candidate, use a fresh mapped prediction when
 present; otherwise retain an eligible fresh crowd-report result; otherwise use
-the frequency estimate. `NO_DATA` explicitly permits that fallback because it
-supplies no realtime prediction. A stale, unmatched, ambiguous, or only
-partially covering realtime feed must not suppress the lower-priority result
-for an uncovered scope or candidate. Before service, preserve the existing
-exact `first_train` result; at the exact final anchor, preserve `last_train`;
-after the final service window, return no estimate.
+the exact `scheduled_arrival` from the selected static snapshot. Use a
+frequency estimate only when the static audit records a coverage gap for that
+scope. `NO_DATA` explicitly permits that fallback because it supplies no
+realtime prediction. A stale, unmatched, ambiguous, or only partially covering
+realtime feed must not suppress the lower-priority result for an uncovered
+scope or candidate. Before service, preserve the existing exact `first_train`
+result; at the exact final anchor, preserve `last_train`; after the final
+service window, return no estimate.
 
 Consumers may optionally overlay fresh, station/service/direction-scoped
 commuter reports on the first arrival. A single fresh, uncontradicted report is
@@ -443,6 +448,16 @@ Exit criteria:
   canonical contracts. Pin parsing and relationship behavior to
   [GTFS Realtime 2.0 proto revision `a14a8912`](https://github.com/google/transit/blob/a14a8912d653b9225b0b1f70930d19a066371e61/gtfs-realtime/proto/gtfs-realtime.proto)
   and require an explicit plan review before adopting a different revision.
+- Retain multiple audited static snapshots with their hash, retrieval time,
+  optional `feed_info.feed_version`, and an explicit compatibility interval.
+  Select the snapshot for each realtime feed before matching any entity:
+  - when `FeedHeader.feed_version` is present, require an exact retained
+    `feed_info.feed_version` match;
+  - when it is absent, bracket the realtime retrieval with schedule captures
+    and proceed only if the before/after schedule hashes are identical;
+  - otherwise quarantine the realtime fixture until the new schedule is
+    retained, audited, and mapped. Never interpret a new or reused id against a
+    merely time-adjacent older snapshot.
 - Apply this complete `TripDescriptor.ScheduleRelationship` policy:
   - `SCHEDULED`: require a unique static trip-instance match and allow fresh
     predictions.
@@ -488,20 +503,27 @@ Exit criteria:
   stop separately rather than treating it as the static `stop_id`.
 - Define and fixture-test the runtime-facing arrival union: preserve the
   existing `EstimatedStationArrival` result as its estimate variant, add a
+  `scheduled_arrival` variant with static trip/occurrence identity, add a
   `trip_update_prediction` variant with predicted time, and add a
   `trip_update_suppression` variant for `CANCELED`, `DELETED`, and `SKIPPED`.
   Test trip-level suppression before stop predictions, stop-level suppression
-  before fallback, and that `NO_DATA` permits fallback. Retain auditable entity,
-  feed, retrieval, and static-snapshot provenance for both realtime result
-  variants.
+  before fallback, and that `NO_DATA` falls back through crowd reports and the
+  exact static schedule before frequency estimates. Retain auditable entity,
+  feed, retrieval, and selected-static-snapshot provenance for each result.
 - Extend the `lta-datamall` rule in `data/rights/source-registry.json` to match
   `datamall2.mytransport.sg` as well as the documentation host, and add
   deterministic rights/ingest fixtures proving that a truthful API
   `sourceUrl` validates with the expected LTA attribution.
 - Add ingest-contract schemas for trusted GTFS Realtime observations only if
   they need to enter canonical history.
-- Preserve provider entity ids, GTFS ids, timestamps, effect/cause fields, and
-  source URL or source feed metadata.
+- Add an optional discriminated `sourceMetadata` field to the core evidence
+  schema. Its GTFS service-alert variant must preserve the provider, endpoint,
+  entity id, normalized payload digest, selected static snapshot hash, GTFS ids,
+  optional feed version and feed timestamp, `retrieved_at`, effect/cause, and
+  truthful source URL. Thread it through ingest provenance construction,
+  file-backed evidence writes and reads, validation, public export, and replay
+  so `evidence.ndjson` remains the canonical record rather than adding a new
+  issue-bundle sidecar.
 - Decide whether raw protobuf payloads are stored, summarized, or omitted from
   canonical data.
 
@@ -511,12 +533,22 @@ Exit criteria:
 - The supported GTFS Realtime revision, exact `maxTripUpdateAgeSeconds`, and
   disposition of every `TripDescriptor.ScheduleRelationship` value are
   documented and fixture-tested.
+- Every accepted realtime fixture records the selected compatible static
+  snapshot hash; ambiguous schedule-version selection is quarantined.
 - A trusted `ServiceAlert` payload can be validated without importing triage
   internals.
 - Unsupported live-only realtime data is rejected or ignored deliberately.
 
 ### Phase 6: Realtime Evidence Triage
 
+- Before any model call, compute a service-alert deduplication key from the
+  provider, feed type, entity id, and a digest of normalized semantic entity
+  content. Exclude retrieval time and `FeedHeader.timestamp` so an unchanged
+  repeated entity keeps the same key. The external producer must durably skip
+  keys it has already submitted, including irrelevant outcomes; the triage
+  ingester must independently skip keys already present in canonical evidence
+  metadata before calling the model. A changed semantic digest for the same
+  entity is a new version and may proceed.
 - Teach `packages/triage` to format trusted GTFS Realtime service alerts as
   evidence text.
 - Map GTFS Realtime alert effects and causes to existing issue, service effect,
@@ -524,7 +556,9 @@ Exit criteria:
 - Persist accepted alerts as ordinary canonical evidence rather than a separate
   issue model.
 - Add deterministic tests for alert formatting, provenance, time handling, and
-  canonical evidence type mapping.
+  canonical evidence type mapping. Cover repeated identical snapshots, changed
+  versions of the same entity, producer retry/reset behavior, and provenance
+  round-trips through file-backed persistence and replay.
 - Add paid eval fixtures only if service-alert phrasing introduces ambiguity
   that deterministic tests cannot cover.
 
@@ -532,6 +566,8 @@ Exit criteria:
 
 - A GTFS Realtime service alert can create or update a canonical issue through
   the existing ingest path.
+- Repeating an unchanged provider entity performs no model calls and appends no
+  evidence or impact events, while a semantic entity change is processed once.
 - Generated impact events remain compatible with current validation and replay
   utilities.
 - Paid model evals remain opt-in.
