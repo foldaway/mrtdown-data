@@ -332,11 +332,14 @@ Exit criteria:
 
 ### Phase 2: Core Schemas And Mapping Metadata
 
-- Add reviewed mappings from LTA agency, route, stop, service, and static trip
-  or trip-pattern ids to canonical MRTDown ids. Version each mapping against
-  the exact static snapshot hash. Preserve unmatched and ambiguous ids for
-  review instead of guessing. Realtime trip instances are derived later from
-  each `TripDescriptor`; they are not static mapping records.
+- Add reviewed mappings from LTA agency, route, stop, and static trip or
+  stop-pattern ids to canonical MRTDown operators, lines, stations, and
+  services. Treat provider `service_id` as calendar metadata, not as the id of
+  a canonical MRTDown `Service`; retain its relationship to each mapped trip
+  pattern and its operating dates. Version each mapping against the exact
+  static snapshot hash. Preserve unmatched and ambiguous ids for review instead
+  of guessing. Realtime trip instances are derived later from each
+  `TripDescriptor`; they are not static mapping records.
 - Add core schemas for GTFS export metadata if canonical data needs fields that
   do not belong in existing line, service, station, or operator records.
 - If and only if Phase 1 selects an MRTDown-derived feed, add typed helpers for
@@ -380,22 +383,25 @@ Exit criteria:
 
 - If Phase 1 selects mirroring, publish the retained, validated LTA snapshot
   only when the licence permits redistribution, with provenance and
-  attribution metadata; do not generate a synthetic timetable. Add a CI
-  handoff available to both preview and main workflows that downloads the
-  immutable snapshot by archive id, verifies its configured hash algorithm and
-  digest before use, and never exposes store credentials or temporary URLs in
-  the artifact or logs. If that handoff cannot be made available, mirroring is
-  not a viable outcome.
+  attribution metadata plus the reviewed id mappings, coverage report, and
+  validation results; do not generate a synthetic timetable. Add a CI handoff
+  available to both preview and main workflows that downloads the immutable
+  snapshot by archive id, verifies its configured hash algorithm and digest
+  before use, and never exposes store credentials or temporary URLs in the
+  artifact or logs. If that handoff cannot be made available, mirroring is not
+  a viable outcome.
 - If Phase 1 selects reconciliation-only publication, include only mappings,
   coverage, and validation reports in `npm run pages:build`; do not publish a
   GTFS archive.
 - If Phase 1 selects an MRTDown-derived feed, include the generated static GTFS
   feed in `npm run pages:build`.
 - Add manifest metadata that advertises the artifact path, build publication
-  timestamp, source snapshot hash, source repository revision, and applicable
-  schema, generator, or report version. Treat the build timestamp as
-  intentionally variable metadata; exclude the enclosing Pages manifest and
-  archive timestamp from byte-for-byte payload parity checks.
+  timestamp, source `retrieved_at`, optional provider publication timestamp,
+  source snapshot hash, source repository revision, and applicable schema,
+  generator, or report version. Keep source timestamps distinct from build time
+  so a republished snapshot cannot appear newly retrieved. Treat the build
+  timestamp as intentionally variable metadata; exclude the enclosing Pages
+  manifest and archive timestamp from byte-for-byte payload parity checks.
 - Keep generated GTFS artifacts out of hand-authored data unless the repository
   deliberately commits generated outputs for review.
 - Update README and package docs with the supported feed path and regeneration
@@ -417,9 +423,12 @@ Exit criteria:
   `ServiceAlert`, `TripUpdate`, and `VehiclePosition`.
 - Start with `ServiceAlert` because it maps most directly to canonical issue
   evidence and impact.
-- Capture fixture snapshots from both LTA realtime endpoints and prove that
-  their ids join to the audited static snapshot before defining canonical
-  contracts.
+- Capture fixture snapshots from both LTA realtime endpoints before defining
+  canonical contracts. Prove exact static joins for schedule-backed realtime
+  entities. Explicitly reject and retain `ADDED` and `UNSCHEDULED` trip fixtures
+  as unsupported by the initial contract because they have no required static
+  trip join; add support later only with a reviewed route, direction, stop
+  sequence, service-date, and canonical-service scoping design.
 - For each realtime entity, validate every populated `TripDescriptor` and
   `EntitySelector` field conjunctively against the exact audited static
   snapshot hash. This includes populated `agency_id`, `route_id`, `route_type`,
@@ -432,6 +441,11 @@ Exit criteria:
   retain zero-match selectors and unmatched or ambiguous singular trip
   descriptors, together with their snapshot hash and rejection reason, instead
   of attaching them to a trip-pattern mapping.
+- For each `StopTimeUpdate`, validate `stop_sequence` and `stop_id` together
+  against the matched static trip. Require `stop_sequence` when a trip visits
+  the same stop more than once, reject a missing or inconsistent occurrence as
+  ambiguous, and carry both fields as the stop-occurrence identity in prediction
+  and suppression results.
 - Define and fixture-test the runtime-facing arrival union: preserve the
   existing `EstimatedStationArrival` result as its estimate variant, add a
   `trip_update_prediction` variant with predicted time, and add a
