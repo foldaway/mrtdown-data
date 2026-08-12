@@ -46,10 +46,11 @@ As of 2026-08-12, DataMall exposes three authenticated dataset-link endpoints:
 Requests go to
 `https://datamall2.mytransport.sg/ltaodataservice/<endpoint>` and require a
 DataMall `AccountKey` header. The JSON response is a dataset-link envelope with
-a publication timestamp and a temporary pre-signed download URL. Consumers
-must fetch the linked object promptly rather than persisting the URL. Account
-keys and provider-specific download/retry behavior belong in an external
-producer, not this repository or its CI.
+an optional provider publication timestamp and a temporary pre-signed download
+URL. Consumers must fetch the linked object promptly rather than persisting the
+URL and must use their required `retrieved_at` value when the provider omits a
+timestamp. Account keys and provider-specific download/retry behavior belong in
+an external producer, not this repository or its CI.
 
 The external producer's durable snapshot handoff must record `retrieved_at`, a
 provider-supplied publication timestamp only when one is present, the hash
@@ -232,14 +233,23 @@ updates should supersede them for live consumer displays after freshness, id
 mapping, and coverage have been verified; stale or unmapped updates must fall
 back explicitly rather than silently presenting estimates as live predictions.
 
-The external runtime should convert fresh, uniquely mapped LTA `TripUpdate`
-entries into the existing arrival-result contract rather than expose a second
-live-result shape. Precedence is evaluated independently for each station,
-service, direction, and arrival candidate: use a fresh mapped trip update when
-present; otherwise retain an eligible fresh crowd-report result; otherwise use
-the frequency estimate. A stale, unmatched, ambiguous, or only partially
-covering realtime feed must not suppress the lower-priority result for an
-uncovered scope or candidate. Outside the service window, return no estimate.
+The external runtime should expose one runtime-facing arrival contract as a
+discriminated union rather than mislabelling realtime data as the existing
+`EstimatedStationArrival` type. Its estimate variant should wrap the existing
+first-train, frequency, crowd-report, and last-train result unchanged. Its
+`trip_update` variant should carry the predicted time plus the provider entity
+id, matched trip-instance identity, static snapshot hash, provider feed
+timestamp when present, `retrieved_at`, and source attribution needed to audit
+the prediction.
+
+Precedence is evaluated independently for each station, service, direction,
+and arrival candidate: use a fresh mapped trip update when present; otherwise
+retain an eligible fresh crowd-report result; otherwise use the frequency
+estimate. A stale, unmatched, ambiguous, or only partially covering realtime
+feed must not suppress the lower-priority result for an uncovered scope or
+candidate. Before service, preserve the existing exact `first_train` result;
+at the exact final anchor, preserve `last_train`; after the final service
+window, return no estimate.
 
 Consumers may optionally overlay fresh, station/service/direction-scoped
 commuter reports on the first arrival. A single fresh, uncontradicted report is
@@ -368,9 +378,11 @@ Exit criteria:
   GTFS archive.
 - If Phase 1 selects an MRTDown-derived feed, include the generated static GTFS
   feed in `npm run pages:build`.
-- Add manifest metadata that advertises the artifact path, publication
+- Add manifest metadata that advertises the artifact path, build publication
   timestamp, source snapshot hash, source repository revision, and applicable
-  schema, generator, or report version.
+  schema, generator, or report version. Treat the build timestamp as
+  intentionally variable metadata; exclude the enclosing Pages manifest and
+  archive timestamp from byte-for-byte payload parity checks.
 - Keep generated GTFS artifacts out of hand-authored data unless the repository
   deliberately commits generated outputs for review.
 - Update README and package docs with the supported feed path and regeneration
@@ -378,8 +390,10 @@ Exit criteria:
 
 Exit criteria:
 
-- Preview and main Pages builds publish the same deterministic artifact for the
-  selected outcome.
+- Given the same source revision and snapshot hash, preview and main Pages
+  builds publish byte-identical GTFS feed or reconciliation-report payloads for
+  the selected outcome. The enclosing Pages manifest may have a different
+  build publication timestamp.
 - Downstream consumers can discover the selected feed or reconciliation report
   through the archive/index metadata.
 - CI catches stale or invalid output for the selected outcome.
@@ -402,6 +416,10 @@ Exit criteria:
 - Accept only a unique trip-instance or selector match. Reject and retain
   unmatched or ambiguous fixtures, their snapshot hash, and the rejection
   reason for review instead of attaching them to a trip-pattern mapping.
+- Define and fixture-test the runtime-facing arrival union: preserve the
+  existing `EstimatedStationArrival` result as its estimate variant, and add a
+  `trip_update` variant with predicted time and auditable provider, feed, and
+  static-snapshot provenance.
 - Add ingest-contract schemas for trusted GTFS Realtime observations only if
   they need to enter canonical history.
 - Preserve provider entity ids, GTFS ids, timestamps, effect/cause fields, and
