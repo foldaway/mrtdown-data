@@ -237,19 +237,22 @@ The external runtime should expose one runtime-facing arrival contract as a
 discriminated union rather than mislabelling realtime data as the existing
 `EstimatedStationArrival` type. Its estimate variant should wrap the existing
 first-train, frequency, crowd-report, and last-train result unchanged. Its
-`trip_update` variant should carry the predicted time plus the provider entity
-id, matched trip-instance identity, static snapshot hash, provider feed
-timestamp when present, `retrieved_at`, and source attribution needed to audit
-the prediction.
+realtime variants should represent both a `trip_update_prediction` with a
+predicted time and a `trip_update_suppression` for a cancelled trip or skipped
+stop. Both should carry the provider entity id, matched trip-instance identity,
+static snapshot hash, provider feed timestamp when present, `retrieved_at`, and
+source attribution needed to audit the result.
 
 Precedence is evaluated independently for each station, service, direction,
-and arrival candidate: use a fresh mapped trip update when present; otherwise
-retain an eligible fresh crowd-report result; otherwise use the frequency
-estimate. A stale, unmatched, ambiguous, or only partially covering realtime
-feed must not suppress the lower-priority result for an uncovered scope or
-candidate. Before service, preserve the existing exact `first_train` result;
-at the exact final anchor, preserve `last_train`; after the final service
-window, return no estimate.
+and arrival candidate: use a fresh mapped prediction when present; suppress the
+affected candidate when a fresh mapped update says the trip is `CANCELED` or
+the stop is `SKIPPED`; otherwise retain an eligible fresh crowd-report result;
+otherwise use the frequency estimate. `NO_DATA` explicitly permits that
+fallback because it supplies no realtime prediction. A stale, unmatched,
+ambiguous, or only partially covering realtime feed must not suppress the
+lower-priority result for an uncovered scope or candidate. Before service,
+preserve the existing exact `first_train` result; at the exact final anchor,
+preserve `last_train`; after the final service window, return no estimate.
 
 Consumers may optionally overlay fresh, station/service/direction-scoped
 commuter reports on the first arrival. A single fresh, uncontradicted report is
@@ -329,13 +332,15 @@ Exit criteria:
 
 ### Phase 2: Core Schemas And Mapping Metadata
 
-- Add reviewed mappings from LTA agency, route, stop, service, trip-pattern,
-  and trip-instance ids to canonical MRTDown ids. Version each mapping against
+- Add reviewed mappings from LTA agency, route, stop, service, and static trip
+  or trip-pattern ids to canonical MRTDown ids. Version each mapping against
   the exact static snapshot hash. Preserve unmatched and ambiguous ids for
-  review instead of guessing.
+  review instead of guessing. Realtime trip instances are derived later from
+  each `TripDescriptor`; they are not static mapping records.
 - Add core schemas for GTFS export metadata if canonical data needs fields that
   do not belong in existing line, service, station, or operator records.
-- Add typed helpers for MRTDown-to-GTFS id generation.
+- If and only if Phase 1 selects an MRTDown-derived feed, add typed helpers for
+  outbound MRTDown-to-GTFS id generation.
 - Add validation rules for duplicate ids, missing references, unsupported
   service paths, and inconsistent operating windows.
 - Add fixtures that cover MRT, LRT loop, interchange, future station, and
@@ -344,7 +349,10 @@ Exit criteria:
 Exit criteria:
 
 - GTFS mapping metadata is schema-validated with deterministic tests.
-- Existing canonical records can be converted to stable GTFS ids.
+- Provider static ids can be reconciled to canonical records for every
+  publication outcome.
+- If an MRTDown-derived feed is selected, its in-scope canonical records can be
+  converted to stable outbound GTFS ids.
 - Validation fails on broken references before writing feed files.
 
 ### Phase 3: Static Generator (MRTDown-Derived Outcome Only)
@@ -372,7 +380,12 @@ Exit criteria:
 
 - If Phase 1 selects mirroring, publish the retained, validated LTA snapshot
   only when the licence permits redistribution, with provenance and
-  attribution metadata; do not generate a synthetic timetable.
+  attribution metadata; do not generate a synthetic timetable. Add a CI
+  handoff available to both preview and main workflows that downloads the
+  immutable snapshot by archive id, verifies its configured hash algorithm and
+  digest before use, and never exposes store credentials or temporary URLs in
+  the artifact or logs. If that handoff cannot be made available, mirroring is
+  not a viable outcome.
 - If Phase 1 selects reconciliation-only publication, include only mappings,
   coverage, and validation reports in `npm run pages:build`; do not publish a
   GTFS archive.
@@ -411,15 +424,25 @@ Exit criteria:
   `EntitySelector` field conjunctively against the exact audited static
   snapshot hash. This includes populated `agency_id`, `route_id`, `route_type`,
   `trip_id`, `stop_id`, `direction_id`, `start_date`, `start_time`, and
-  `schedule_relationship` fields; `start_date` and `start_time` participate in
-  frequency-based trip-instance identity.
-- Accept only a unique trip-instance or selector match. Reject and retain
-  unmatched or ambiguous fixtures, their snapshot hash, and the rejection
-  reason for review instead of attaching them to a trip-pattern mapping.
+  `schedule_relationship` fields. Derive trip-instance identity at match time;
+  `start_date` and `start_time` participate in frequency-based identity.
+- Require a unique match when a `TripDescriptor` identifies one trip instance.
+  For a broad service-alert `EntitySelector`, expand all canonical entities
+  satisfying its populated fields as the intended affected scope. Reject and
+  retain zero-match selectors and unmatched or ambiguous singular trip
+  descriptors, together with their snapshot hash and rejection reason, instead
+  of attaching them to a trip-pattern mapping.
 - Define and fixture-test the runtime-facing arrival union: preserve the
-  existing `EstimatedStationArrival` result as its estimate variant, and add a
-  `trip_update` variant with predicted time and auditable provider, feed, and
-  static-snapshot provenance.
+  existing `EstimatedStationArrival` result as its estimate variant, add a
+  `trip_update_prediction` variant with predicted time, and add a
+  `trip_update_suppression` variant for cancelled trips and skipped stops. Test
+  that `CANCELED` and `SKIPPED` suppress the affected candidate while `NO_DATA`
+  permits fallback; retain auditable provider, feed, and static-snapshot
+  provenance for both realtime result variants.
+- Extend the `lta-datamall` rule in `data/rights/source-registry.json` to match
+  `datamall2.mytransport.sg` as well as the documentation host, and add
+  deterministic rights/ingest fixtures proving that a truthful API
+  `sourceUrl` validates with the expected LTA attribution.
 - Add ingest-contract schemas for trusted GTFS Realtime observations only if
   they need to enter canonical history.
 - Preserve provider entity ids, GTFS ids, timestamps, effect/cause fields, and
