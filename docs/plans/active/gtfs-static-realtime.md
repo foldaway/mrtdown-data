@@ -7,6 +7,13 @@ for "Support GTFS Static/Realtime". The issue has no body or comments, so this
 plan turns that title into an implementation path that fits the current
 `mrtdown-data` repository shape.
 
+LTA DataMall now publishes first-party train feeds in both GTFS Schedule and
+GTFS Realtime formats. This removes the largest uncertainty behind the original
+plan: MRTDown no longer needs to invent a public timetable before it can work
+with GTFS. The official feeds should be treated as upstream observations to
+inspect, reconcile, and preserve with provenance—not as a replacement for the
+reviewed canonical model.
+
 `mrtdown-data` is a canonical reviewed data repository. It owns rail entities,
 service topology, issue evidence, impact events, shared schemas, file-backed
 repositories, ingest contracts, and static Pages/archive publication. It does
@@ -24,14 +31,54 @@ Related references:
 - `packages/core/src/schema/Service.ts`
 - `packages/fs/src/manifest.ts`
 - `scripts/build-pages-artifact.mjs`
+- [LTA DataMall API User Guide](https://datamall.lta.gov.sg/content/dam/datamall/datasets/LTA_DataMall_API_User_Guide.pdf)
+
+## LTA Feed Investigation
+
+As of 2026-08-12, DataMall exposes three authenticated dataset-link endpoints:
+
+| Dataset | Endpoint | Returned download |
+| --- | --- | --- |
+| Train schedule | `GTFSScheduleTrain` | GTFS Schedule zip archive |
+| Train trip updates | `GTFSRealtimeTrainTripUpdates` | GTFS Realtime Protocol Buffer |
+| Train service alerts | `GTFSRealTimeTrainServiceAlerts` | GTFS Realtime Protocol Buffer |
+
+Requests go to
+`https://datamall2.mytransport.sg/ltaodataservice/<endpoint>` and require a
+DataMall `AccountKey` header. The JSON response is a dataset-link envelope with
+a publication timestamp and a temporary pre-signed download URL. Consumers
+must fetch the linked object promptly rather than persisting the URL. Account
+keys and provider-specific download/retry behavior belong in an external
+producer, not this repository or its CI.
+
+The schedule endpoint is the authoritative candidate source for exact trips,
+stop times, calendars, and provider GTFS ids. The trip-update feed is the
+authoritative candidate for live departure changes. The service-alert feed is
+the best fit for MRTDown's existing issue evidence path. Before implementation,
+capture representative feed snapshots under the applicable data licence and
+audit their actual files, ids, coverage, update cadence, and referential
+integrity. The endpoint contract alone is not enough to assume that every MRT,
+LRT, platform, calendar exception, or disruption is represented.
+
+This changes the plan in three important ways:
+
+1. ingest and validate an LTA static snapshot before designing an MRTDown GTFS
+   exporter;
+2. build an explicit, versioned mapping between LTA GTFS ids and canonical
+   MRTDown ids instead of assuming MRTDown ids should become public GTFS ids;
+3. use canonical frequency estimates only as a documented fallback or
+   comparison dataset where the official schedule has a demonstrated gap.
 
 ## Goals
 
-- Generate a valid GTFS Static feed from canonical line, station, operator, and
-  service data.
+- Import, validate, and reconcile LTA's official GTFS Schedule feed against
+  canonical line, station, operator, and service data.
+- Decide from a measured feed audit whether publication should mirror the LTA
+  feed, publish an MRTDown-derived feed, or publish only reconciliation data.
 - Keep GTFS ids stable, deterministic, documented, and traceable back to
   canonical MRTDown ids.
-- Publish the static feed through the existing Pages/archive artifact.
+- If the audit justifies an MRTDown feed, publish it through the existing
+  Pages/archive artifact without obscuring its relationship to LTA's feed.
 - Add validation that catches stale generated GTFS output and broken references.
 - Define the GTFS Realtime ownership boundary before adding live-feed behavior.
 - Support GTFS Realtime service-alert ingestion as canonical evidence when an
@@ -53,9 +100,11 @@ Related references:
 
 This repository should own:
 
-- canonical MRTDown-to-GTFS id mapping;
-- GTFS Static generation from reviewed canonical data;
-- generated static feed validation and publication;
+- versioned LTA-GTFS-to-MRTDown id mapping;
+- deterministic GTFS snapshot inspection and reconciliation;
+- GTFS Static generation from reviewed canonical data only where it adds a
+  demonstrated capability beyond the official feed;
+- validation and publication of any justified MRTDown static feed;
 - schemas for any GTFS-specific source metadata kept in canonical data;
 - ingest contracts for trusted GTFS Realtime observations that should become
   canonical evidence;
@@ -64,6 +113,8 @@ This repository should own:
 
 Runtime systems or external producers should own:
 
+- DataMall account keys and authenticated dataset-link requests;
+- prompt download and durable snapshotting of temporary pre-signed URLs;
 - live GTFS Realtime polling;
 - freshness, retry, and backoff policy;
 - feed credentials and provider-specific transport details;
@@ -72,6 +123,15 @@ Runtime systems or external producers should own:
 - operational alerts that are not accepted into canonical history.
 
 ## Static Feed Shape
+
+The first deliverable should be an offline inspector for a captured LTA GTFS
+Schedule snapshot, not a parallel synthetic feed. It should inventory tables,
+validate references, summarize calendar and rail/LRT coverage, and propose id
+matches without writing canonical data. A reviewed import can then retain
+source timestamps, snapshot hashes, provider ids, and explicit match decisions.
+
+Only after that audit should MRTDown decide whether it needs to generate and
+publish its own feed. If it does, the following target shape still applies.
 
 The first generated GTFS Static feed should prioritize the tables needed for a
 useful rail network feed:
@@ -148,8 +208,10 @@ not reveal a train's phase within a headway. Core therefore returns three
 single, clearly labelled frequency-based arrival estimates. During service the
 first estimate uses half the representative headway and the following two use
 the applicable representative headway. The sourced first and last trains remain
-exact anchors. These are planning estimates, not realtime predictions, while
-no train-position feed is available.
+exact anchors. These are planning estimates, not realtime predictions. LTA trip
+updates should supersede them for live consumer displays after freshness, id
+mapping, and coverage have been verified; stale or unmapped updates must fall
+back explicitly rather than silently presenting estimates as live predictions.
 
 Consumers may optionally overlay fresh, station/service/direction-scoped
 commuter reports on the first arrival. A single fresh, uncontradicted report is
@@ -192,6 +254,13 @@ generated counters, or file ordering into public ids.
 
 ### Phase 1: Reference Inventory And Gap Analysis
 
+- Obtain a licensed snapshot from `GTFSScheduleTrain`, record its response
+  timestamp and archive hash, and keep credentials and expiring URLs out of
+  repository data.
+- Inspect its table inventory, feed metadata, calendars, routes, stops,
+  platforms, trips, stop times, shapes, transfers, and frequency rows.
+- Measure MRT/LRT/operator coverage and validate internal GTFS references with
+  an independent validator.
 - Inventory the current canonical station, line, service, and operator fields
   against required GTFS Static fields.
 - Record missing source data, including agency timezone/language, route type,
@@ -207,6 +276,8 @@ generated counters, or file ordering into public ids.
 
 Exit criteria:
 
+- A dated LTA snapshot audit records actual feed coverage and validation
+  results without committing the upstream archive.
 - Required GTFS fields are mapped to canonical fields or listed as explicit
   new data requirements.
 - The first feed scope is small enough to validate deterministically.
@@ -214,6 +285,9 @@ Exit criteria:
 
 ### Phase 2: Core Schemas And Mapping Metadata
 
+- Add reviewed mappings from LTA agency, route, stop, service, and trip-pattern
+  ids to canonical MRTDown ids. Preserve unmatched and ambiguous ids for review
+  instead of guessing.
 - Add core schemas for GTFS export metadata if canonical data needs fields that
   do not belong in existing line, service, station, or operator records.
 - Add typed helpers for MRTDown-to-GTFS id generation.
@@ -269,6 +343,9 @@ Exit criteria:
   `ServiceAlert`, `TripUpdate`, and `VehiclePosition`.
 - Start with `ServiceAlert` because it maps most directly to canonical issue
   evidence and impact.
+- Capture fixture snapshots from both LTA realtime endpoints and prove that
+  their ids join to the audited static snapshot before defining canonical
+  contracts.
 - Add ingest-contract schemas for trusted GTFS Realtime observations only if
   they need to enter canonical history.
 - Preserve provider entity ids, GTFS ids, timestamps, effect/cause fields, and
@@ -322,10 +399,17 @@ Exit criteria:
 
 ## Open Questions
 
-- What is the authoritative schedule source for trip times, and is it
-  reviewable enough to commit or regenerate deterministically?
+- What are the official schedule feed's actual MRT/LRT, platform, calendar,
+  short-working-trip, and future-service coverage and validation results?
+- How often are the static and realtime objects updated, how long do their
+  links remain usable, and what freshness threshold should consumers enforce?
+- Which LTA ids are stable across feed releases, and which require a separate
+  durable MRTDown mapping key?
+- Does the applicable licence allow MRTDown to retain regression fixtures and
+  redistribute an unchanged or derived feed, with what attribution?
 - Should the first GTFS Static feed model Singapore rail as schedule-based
-  trips, frequency-based service windows, or a hybrid?
+  trips from LTA, use frequency-based fallbacks, or avoid republishing a second
+  feed entirely?
 - Are platform-level stops required for the first consumer, or are
   station-level stops sufficient?
 - Should `shapes.txt` be derived from station coordinates, schematic map data,
@@ -338,6 +422,8 @@ Exit criteria:
 ## Progress Log
 
 - 2026-05-27: Created initial active plan from GitHub issue #157.
+- 2026-08-12: Investigated LTA's new train GTFS endpoints and revised the plan
+  to begin with official-feed capture, validation, and canonical reconciliation.
 
 ## Decision Log
 
@@ -349,6 +435,12 @@ Exit criteria:
   to existing canonical issue/evidence/impact records.
 - 2026-05-27: Do not add vehicle positions or trip updates to canonical history
   until there is a durable reviewed-data use case.
+- 2026-08-12: Treat `GTFSScheduleTrain` as the authoritative candidate schedule
+  source and canonical frequency schedules as explicit fallbacks pending a
+  snapshot audit.
+- 2026-08-12: Keep DataMall credentials, temporary download URLs, polling, and
+  freshness policy in an external producer; retain only reviewed provenance,
+  mappings, fixtures permitted by the licence, and canonical outcomes here.
 
 ## Validation
 
