@@ -151,11 +151,12 @@ sequence context. Do not assume names alone are unique or stable. Treat LTA
 Derive service-pattern matches from the ordered stop sequence, route,
 direction, and applicable calendar, then review ambiguous or unmatched cases.
 
-Mappings must record both the static snapshot manifest and the exact canonical
-repository commit used for reconciliation. A new snapshot may reuse provider
-ids with changed content, and canonical topology may change while the same
-snapshot is reused, so reports must compare normalized records and identify
-both input revisions.
+Mappings must record the static snapshot manifest, the exact canonical
+repository commit, and a canonical data-manifest content fingerprint used for
+reconciliation. The fingerprint covers the manifest's canonical record hashes
+but excludes `generatedAt`. A new snapshot may reuse provider ids with changed
+content, and canonical topology may change while the same snapshot is reused,
+so reports must compare normalized records and identify both input revisions.
 
 ### Static publication role
 
@@ -171,10 +172,16 @@ The scheduled-arrivals artifact contains:
   version, feed range, and `Asia/Singapore` timezone;
 - LTA calendars and exceptions without expanding every service date;
 - canonical station, line, service, platform, and destination identities;
-- scheduled arrival and departure times, preserving GTFS times beyond 24:00;
-  and
+- scheduled arrival and departure times, preserving GTFS times beyond 24:00,
+  plus each stop occurrence's GTFS pickup and drop-off behavior; and
 - provider route, trip, stop, stop-sequence, and calendar identities needed to
   reconcile later Trip Updates.
+
+The supplied `stop_times.txt` does not include `pickup_type` or
+`drop_off_type`, so this snapshot uses the GTFS defaults. The inspector and
+artifact schema must nevertheless preserve those columns when later snapshots
+provide them; they are occurrence-level rules and cannot be inferred from a
+canonical platform's general boarding status.
 
 Publish it as a generated, versioned Pages/archive artifact with its own
 manifest hash. It is derived from LTA data and must carry the applicable
@@ -296,8 +303,8 @@ Exit criteria:
 ### Phase 2: Add reviewed static reconciliation
 
 - Define a small versioned mapping artifact for agencies, routes, stops, and
-  trip patterns, keyed to the source manifest and exact canonical repository
-  commit.
+  trip patterns, keyed to the source manifest, exact canonical repository
+  commit, and canonical data-manifest content fingerprint.
 - Propose station matches from codes and parent relationships, but require
   review for ambiguity and unmatched records.
 - Compare ordered provider trip patterns with canonical service revisions.
@@ -322,6 +329,12 @@ Exit criteria:
   publishing data derived from the downloaded schedule.
 - Consume only the locally materialized schedule and handoff record supplied by
   the authorized acquisition step, and verify their manifest before generation.
+- Require the reviewed mapping's recorded canonical data-manifest content
+  fingerprint to match the manifest generated for the concurrently published
+  canonical archive. Validate every generated station, line, service, platform,
+  and destination reference against that archive; refuse publication on a
+  manifest or reference mismatch. Preserve the recorded repository commit for
+  audit.
 - Define and schema-validate the compact calendar and scheduled-departure
   records described above.
 - Generate them only from reviewed mappings; unresolved provider records appear
@@ -337,6 +350,9 @@ Exit criteria:
   produces byte-identical records.
 - Every published departure retains enough provider identity to join a future
   Trip Update to one trip and stop occurrence.
+- Pickup and drop-off restrictions round-trip for every stop occurrence;
+  fixtures cover restricted boarding/alighting at terminals and short workings
+  even though the supplied snapshot uses the default behavior.
 - The artifact is clearly labelled as an LTA-derived schedule snapshot, not a
   live feed or an independently observed MRTDown timetable.
 - Publication does not proceed until its licence and attribution treatment is
@@ -357,14 +373,21 @@ Exit criteria:
   and UI. Document and test how the existing crowd-report overlay is displayed
   before allowing it to replace a scheduled time.
 
-The selected schedule is the artifact referenced by the latest successfully
-validated and atomically imported `mrtdown-data` manifest. A newer successful
-import supersedes every prior artifact. A missing artifact, hash mismatch, or
-schema failure rejects the new import and leaves the last successfully imported
-artifact selected. That selected artifact is eligible for a request only when
-the Singapore service date falls within its declared feed range and the
-requested scope has complete reviewed mapping coverage. There is no separate
-capture-age threshold for static schedules: feed-range validity and manifest
+Each artifact records a source-order timestamp: the provider publication
+timestamp when present, otherwise `retrieved_at`, while preserving both fields
+separately. The selected schedule is the artifact referenced by the latest
+successfully validated and atomically imported `mrtdown-data` manifest, but an
+import may replace the current selection only when its source-order timestamp
+is later. An equal timestamp with a different snapshot digest is ambiguous and
+is rejected. Selecting an older snapshot requires an explicit, audited rollback
+override naming both digests and does not rewrite their source timestamps.
+
+A missing artifact, hash mismatch, schema failure, canonical-reference failure,
+or rejected rollback leaves the last successfully imported artifact selected.
+That selected artifact is eligible for a request only when the Singapore
+service date falls within its declared feed range and the requested scope has
+complete reviewed mapping coverage. There is no separate capture-age threshold
+for static schedules: source ordering, feed-range validity, and manifest
 selection are authoritative unless measured publication behavior later
 justifies one. If no selected artifact is eligible, use the documented
 frequency fallback for a covered canonical service or return no result.
@@ -375,9 +398,11 @@ Exit criteria:
   LTA snapshot using MRTDown station and service ids.
 - Platform, destination, service-day, calendar-exception, and after-midnight
   fixtures produce the expected departures.
-- Fixtures cover a newer manifest superseding an older one, a missing or
-  hash-invalid new artifact retaining the last successful import, an expired
-  feed range, incomplete mapping coverage, frequency fallback, and no result.
+- Fixtures cover a newer source snapshot superseding an older one, accidental
+  rollback rejection, an explicit audited rollback, equal-timestamp digest
+  conflict, a missing or hash-invalid new artifact retaining the last successful
+  import, canonical-reference mismatch, an expired feed range, incomplete
+  mapping coverage, frequency fallback, and no result.
 
 ### Phase 5: Prove service-alert ingestion
 
