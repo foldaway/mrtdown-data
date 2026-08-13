@@ -152,9 +152,12 @@ Derive service-pattern matches from the ordered stop sequence, route,
 direction, and applicable calendar, then review ambiguous or unmatched cases.
 
 Mappings must record the static snapshot manifest, the exact canonical
-repository commit, and a canonical data-manifest content fingerprint used for
-reconciliation. The fingerprint covers the manifest's canonical record hashes
-but excludes `generatedAt`. A new snapshot may reuse provider ids with changed
+repository commit, and a schedule-topology fingerprint used for reconciliation.
+Compute that fingerprint deterministically from `manifestVersion` and the
+sorted `operators`, `lines`, `stations`, and `services` record-hash maps. Station
+hashes cover embedded platform data. Exclude `generatedAt`, issues, towns,
+landmarks, and rights metadata so unrelated canonical changes do not invalidate
+a reviewed schedule mapping. A new snapshot may reuse provider ids with changed
 content, and canonical topology may change while the same snapshot is reused,
 so reports must compare normalized records and identify both input revisions.
 
@@ -168,8 +171,9 @@ do not rename or reshape canonical entities merely to mirror provider ids.
 
 The scheduled-arrivals artifact contains:
 
-- the LTA snapshot manifest, exact canonical repository commit, mapping
-  version, feed range, and `Asia/Singapore` timezone;
+- the LTA snapshot manifest, exact canonical repository commit,
+  schedule-topology fingerprint, mapping version, monotonically increasing
+  artifact correction revision, feed range, and `Asia/Singapore` timezone;
 - LTA calendars and exceptions without expanding every service date;
 - canonical station, line, service, platform, and destination identities;
 - scheduled arrival and departure times, preserving GTFS times beyond 24:00,
@@ -304,7 +308,7 @@ Exit criteria:
 
 - Define a small versioned mapping artifact for agencies, routes, stops, and
   trip patterns, keyed to the source manifest, exact canonical repository
-  commit, and canonical data-manifest content fingerprint.
+  commit, and schedule-topology fingerprint.
 - Propose station matches from codes and parent relationships, but require
   review for ambiguity and unmatched records.
 - Compare ordered provider trip patterns with canonical service revisions.
@@ -329,12 +333,12 @@ Exit criteria:
   publishing data derived from the downloaded schedule.
 - Consume only the locally materialized schedule and handoff record supplied by
   the authorized acquisition step, and verify their manifest before generation.
-- Require the reviewed mapping's recorded canonical data-manifest content
-  fingerprint to match the manifest generated for the concurrently published
-  canonical archive. Validate every generated station, line, service, platform,
-  and destination reference against that archive; refuse publication on a
-  manifest or reference mismatch. Preserve the recorded repository commit for
-  audit.
+- Require the reviewed mapping's recorded schedule-topology fingerprint to
+  match the fingerprint generated for the concurrently published canonical
+  archive. Validate every generated station, line, service, platform, and
+  destination reference against that archive; refuse publication on a
+  fingerprint or reference mismatch. Preserve the recorded repository commit
+  for audit.
 - Define and schema-validate the compact calendar and scheduled-departure
   records described above.
 - Generate them only from reviewed mappings; unresolved provider records appear
@@ -373,23 +377,38 @@ Exit criteria:
   and UI. Document and test how the existing crowd-report overlay is displayed
   before allowing it to replace a scheduled time.
 
-Each artifact records a source-order timestamp: the provider publication
-timestamp when present, otherwise `retrieved_at`, while preserving both fields
-separately. The selected schedule is the artifact referenced by the latest
-successfully validated and atomically imported `mrtdown-data` manifest, but an
-import may replace the current selection only when its source-order timestamp
-is later. An equal timestamp with a different snapshot digest is ambiguous and
-is rejected. Selecting an older snapshot requires an explicit, audited rollback
-override naming both digests and does not rewrite their source timestamps.
+Each artifact records the provider publication timestamp when present,
+`retrieved_at`, and the trusted import time separately. Validate both source
+timestamps against import time with a maximum future skew of 300 seconds. Use a
+valid provider timestamp as the source-order timestamp, otherwise use a valid
+`retrieved_at`; quarantine the artifact from selection if neither is valid.
+Preserve invalid source values and their rejection reason for audit so a bad
+clock cannot pin selection ahead of later correct captures.
+
+Retain every successfully validated and atomically imported artifact version.
+For each Singapore service date and requested station/service/direction scope,
+first filter to artifacts whose feed range covers the date, whose reviewed
+mapping completely covers the scope, and whose schedule-topology fingerprint
+matches the currently installed canonical data. Select the eligible artifact
+with the latest source-order timestamp. A newer ineligible artifact does not
+hide an older eligible one. Equal source timestamps with different snapshot
+digests are ambiguous and are quarantined from automatic selection.
+
+For the same source timestamp and snapshot digest, a reviewed correction may
+replace an earlier mapping or generator result by incrementing the artifact's
+integer `correctionRevision`. Accept only a strictly larger revision after full
+schema, provenance, topology, and reference validation. A different artifact
+hash at the same revision is a conflict and is rejected. Selecting an older
+source snapshot requires an explicit, audited rollback override scoped to a
+service-date range and canonical request scope, naming both digests; it changes
+selection only and does not rewrite source timestamps or correction revisions.
 
 A missing artifact, hash mismatch, schema failure, canonical-reference failure,
-or rejected rollback leaves the last successfully imported artifact selected.
-That selected artifact is eligible for a request only when the Singapore
-service date falls within its declared feed range and the requested scope has
-complete reviewed mapping coverage. There is no separate capture-age threshold
-for static schedules: source ordering, feed-range validity, and manifest
-selection are authoritative unless measured publication behavior later
-justifies one. If no selected artifact is eligible, use the documented
+invalid source timestamps, revision conflict, or rejected rollback cannot enter
+the eligible version set. There is no separate capture-age threshold for static
+schedules: validated source ordering, feed-range validity, topology identity,
+and scope coverage are authoritative unless measured publication behavior later
+justifies one. If no artifact is eligible for the request, use the documented
 frequency fallback for a covered canonical service or return no result.
 
 Exit criteria:
@@ -398,11 +417,13 @@ Exit criteria:
   LTA snapshot using MRTDown station and service ids.
 - Platform, destination, service-day, calendar-exception, and after-midnight
   fixtures produce the expected departures.
-- Fixtures cover a newer source snapshot superseding an older one, accidental
-  rollback rejection, an explicit audited rollback, equal-timestamp digest
-  conflict, a missing or hash-invalid new artifact retaining the last successful
-  import, canonical-reference mismatch, an expired feed range, incomplete
-  mapping coverage, frequency fallback, and no result.
+- Fixtures cover valid and future-skewed source timestamps, a newer source
+  snapshot, a future-dated snapshot that is not yet date-eligible, per-scope
+  fallback to an older eligible snapshot, same-source correction revision and
+  revision conflict, accidental rollback rejection, an explicitly scoped
+  audited rollback, equal-timestamp digest conflict, a missing or hash-invalid
+  artifact, canonical-reference or topology mismatch, an expired feed range,
+  incomplete mapping coverage, frequency fallback, and no result.
 
 ### Phase 5: Prove service-alert ingestion
 
