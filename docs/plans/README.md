@@ -10,8 +10,8 @@ plan.
   historical replay, semantic guards, canonical issue audits, shadow mode, and
   staged removal of the automated ingestion PR queue.
 - [GTFS static and realtime support](active/gtfs-static-realtime.md):
-  observed LTA file audit, static schedule reconciliation, service-alert
-  evidence proof, and a non-empty capture gate for trip-update design.
+  observed LTA file audit, canonical reconciliation, a scheduled-arrivals
+  artifact for `mrtdown-site`, service-alert evidence, and trip-update capture.
 - [Data licensing and attribution](active/data-licensing-attribution.md):
   source registry, evidence rights classification, and generated attribution
   artifacts for data publication.

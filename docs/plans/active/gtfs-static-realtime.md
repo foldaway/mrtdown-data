@@ -159,15 +159,33 @@ both input revisions.
 
 ### Static publication role
 
-Choose between two initial outcomes after confirming the applicable LTA terms:
+Use a hybrid model: keep canonical MRTDown identity and topology, map the LTA
+schedule back to those entities, and publish a compact scheduled-arrivals
+artifact for consumers such as `mrtdown-site`. Apply source-backed corrections
+to canonical data when reconciliation reveals a genuine canonical error, but
+do not rename or reshape canonical entities merely to mirror provider ids.
 
-1. redistribute the validated LTA schedule unchanged, with its provenance and
-   attribution; or
-2. publish only MRTDown reconciliation metadata and validation results.
+The scheduled-arrivals artifact contains:
 
-An MRTDown-derived synthetic GTFS feed is not an initial outcome. Reconsider it
-only if a later audit identifies a concrete consumer requirement or schedule
-gap that cannot be met by the official feed.
+- the LTA snapshot manifest, exact canonical repository commit, mapping
+  version, feed range, and `Asia/Singapore` timezone;
+- LTA calendars and exceptions without expanding every service date;
+- canonical station, line, service, platform, and destination identities;
+- scheduled arrival and departure times, preserving GTFS times beyond 24:00;
+  and
+- provider route, trip, stop, stop-sequence, and calendar identities needed to
+  reconcile later Trip Updates.
+
+Publish it as a generated, versioned Pages/archive artifact with its own
+manifest hash. It is derived from LTA data and must carry the applicable
+attribution and licence notice. Confirm that the LTA terms permit this derived
+publication before releasing it publicly. Unchanged-feed redistribution may be
+added separately if useful and permitted, but it is not required for the first
+consumer.
+
+An MRTDown frequency-derived GTFS feed is not an initial outcome. Reconsider it
+only if a later audit identifies a concrete schedule gap that neither the LTA
+feed nor the scheduled-arrivals artifact can meet.
 
 ### Service alerts role
 
@@ -219,7 +237,7 @@ This repository owns:
 - deterministic offline inspection of supplied GTFS files;
 - versioned LTA-to-MRTDown mappings and reconciliation reports;
 - validation of references, coverage, and mapping drift;
-- any licensed static artifacts published through Pages/archive output;
+- generation and licensed publication of the scheduled-arrivals artifact;
 - the trusted service-alert ingest contract and canonical provenance; and
 - deterministic fixtures derived or retained under the applicable licence.
 
@@ -285,24 +303,55 @@ Exit criteria:
 - Re-running the same snapshot against the same canonical repository commit
   produces byte-identical mappings and reports.
 
-### Phase 3: Decide static publication
+### Phase 3: Generate the scheduled-arrivals artifact
 
 - Confirm the licence and attribution requirements for retaining fixtures and
-  redistributing the downloaded schedule.
-- Choose unchanged-feed redistribution or reconciliation-only publication.
-- If redistribution is allowed, preserve the LTA files unchanged and publish
-  their manifest, validation result, source timestamps, and attribution in the
-  existing Pages/archive artifact.
-- If redistribution is not selected, publish only mappings and reports that
-  are permitted by the licence.
+  publishing data derived from the downloaded schedule.
+- Define and schema-validate the compact calendar and scheduled-departure
+  records described above.
+- Generate them only from reviewed mappings; unresolved provider records appear
+  in the reconciliation report and cannot be silently omitted.
+- Include the generated artifact and its hash in the Pages/archive output with
+  source provenance, coverage summary, and attribution.
+- Keep the generated artifact outside canonical `data/`; canonical entities and
+  reviewed mapping inputs remain the sources of MRTDown identity.
 
 Exit criteria:
 
-- The published artifact is unambiguously official LTA data or MRTDown
-  reconciliation metadata; it is never presented as a live feed.
-- Rebuilding from the same input is deterministic.
+- Rebuilding from the same LTA snapshot, canonical commit, and mapping version
+  produces byte-identical records.
+- Every published departure retains enough provider identity to join a future
+  Trip Update to one trip and stop occurrence.
+- The artifact is clearly labelled as an LTA-derived schedule snapshot, not a
+  live feed or an independently observed MRTDown timetable.
+- Publication does not proceed until its licence and attribution treatment is
+  recorded.
 
-### Phase 4: Prove service-alert ingestion
+### Phase 4: Consume scheduled arrivals in `mrtdown-site`
+
+- Extend the existing archive pull pipeline to import the artifact by manifest
+  hash without replacing canonical station, line, or service tables.
+- Select the applicable LTA calendar and service day in Singapore time,
+  including after-midnight times greater than 24:00.
+- Adapt scheduled records to the existing station-arrivals read model, grouped
+  by canonical station, line, service, destination, and platform.
+- Use exact scheduled departures where mapping coverage exists. Fall back to
+  the current frequency estimates only for a recorded coverage gap; do not mix
+  an approximate estimate into a covered schedule as though it were LTA data.
+- Preserve an explicit departure basis and snapshot provenance through the API
+  and UI. Document and test how the existing crowd-report overlay is displayed
+  before allowing it to replace a scheduled time.
+
+Exit criteria:
+
+- A station page can return the next scheduled departures from the supplied
+  LTA snapshot using MRTDown station and service ids.
+- Platform, destination, service-day, calendar-exception, and after-midnight
+  fixtures produce the expected departures.
+- Unmapped or stale/out-of-range snapshot data degrades explicitly to the
+  existing frequency behavior or no result.
+
+### Phase 5: Prove service-alert ingestion
 
 - Add a trusted ingest-contract fixture representing the two supplied alerts,
   subject to the confirmed fixture-retention terms.
@@ -325,7 +374,7 @@ Exit criteria:
 - The ingest path preserves provider periods and prose without conflating
   their dates.
 
-### Phase 5: Observe trip updates before designing runtime behavior
+### Phase 6: Observe trip updates before designing runtime behavior
 
 - Record the empty supplied capture as a valid zero-entity fixture.
 - Collect multiple non-empty captures paired with the exact static schedule
@@ -344,8 +393,8 @@ Exit criteria:
 
 ## Open Questions
 
-- What LTA terms apply specifically to retaining and redistributing these
-  downloaded train files?
+- What LTA terms apply specifically to retaining the downloaded train files and
+  publishing a mapped scheduled-arrivals artifact?
 - How stable are route, stop, trip, and calendar ids across schedule releases?
 - Does LTA publish a schedule version or timestamp outside `feed_info.txt` that
   should identify the static snapshot?
@@ -353,8 +402,8 @@ Exit criteria:
   entities change or disappear across consecutive complete alert snapshots?
 - When and under what operating conditions does the trip-update file contain
   entities?
-- Which runtime consumer will use live trip updates once a non-empty corpus is
-  available?
+- Should fresh crowd reports replace one scheduled departure, or remain a
+  separate community estimate alongside the LTA schedule?
 
 ## Progress Log
 
@@ -365,6 +414,9 @@ Exit criteria:
   Replaced speculative synthetic-timetable and trip-update runtime design with
   measured static reconciliation, a narrow alert-ingest proof, and a non-empty
   trip-update capture gate.
+- 2026-08-14: Selected a concrete first consumer: map the LTA schedule to
+  canonical MRTDown identities, publish a scheduled-arrivals artifact, and use
+  it as `mrtdown-site`'s exact schedule baseline.
 
 ## Decision Log
 
@@ -374,6 +426,9 @@ Exit criteria:
   MRTDown frequency-derived feed in the initial scope.
 - Keep provider ids separate from canonical MRTDown ids through versioned
   mappings.
+- Publish a compact LTA-derived scheduled-arrivals artifact keyed by canonical
+  MRTDown identities, while retaining provider trip and stop identities for
+  later realtime joins.
 - Start canonical realtime work with service alerts because the supplied sample
   maps to the existing evidence model.
 - Defer trip-update runtime semantics until non-empty provider captures exist.
