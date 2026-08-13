@@ -194,7 +194,7 @@ first contract should cover only fields observed in the supplied sample plus
 the required GTFS Realtime envelope:
 
 - feed version, incrementality, optional feed timestamp, and retrieval time;
-- entity id and selected static snapshot manifest;
+- entity id, selected static snapshot manifest, and mapping version;
 - all populated selectors;
 - all active periods, preserving open bounds;
 - cause, effect, translations, and rider-facing URL; and
@@ -206,10 +206,13 @@ through the versioned static reconciliation; unmatched selectors are retained
 for diagnosis and are not guessed.
 
 For the first proof, process complete `FULL_DATASET` snapshots idempotently by
-provider, feed type, entity id, and normalized semantic payload digest. Do not
-design disappearance-as-resolution behavior until at least two ordered
-captures demonstrate the provider's entity lifecycle. Do not accept
-`DIFFERENTIAL` feeds until an actual sample and ordering contract are audited.
+provider, feed type, selected static snapshot manifest, mapping version, entity
+id, and normalized semantic payload digest. A snapshot or mapping-version
+change therefore causes reprocessing against the new reconciliation rather than
+reusing an earlier canonical match. Do not design disappearance-as-resolution
+behavior until at least two ordered captures demonstrate the provider's entity
+lifecycle. Do not accept `DIFFERENTIAL` feeds until an actual sample and
+ordering contract are audited.
 
 ### Trip updates role
 
@@ -257,6 +260,14 @@ required even when a realtime file has no entities because its header does not
 identify the originating dataset. The handoff never records the account key or
 temporary URL.
 
+Before artifact generation, an authorized acquisition step must materialize the
+exact schedule snapshot and its handoff record in the build workspace. The
+offline generator accepts those local paths, verifies the recorded digest, and
+refuses to build when either input is missing or mismatched. The Pages build
+does not download LTA data; the acquisition system passes the verified input as
+a retained licensed file or a protected pre-build artifact according to the
+confirmed terms.
+
 ## Phases
 
 ### Phase 1: Make the snapshot audit reproducible
@@ -298,8 +309,10 @@ Exit criteria:
 Exit criteria:
 
 - Every observed agency and route has a reviewed canonical disposition.
-- Every observed station parent and trip pattern is matched, intentionally
-  ignored, or listed as unresolved.
+- Every observed provider stop referenced by `stop_times.txt`, including
+  station parents and platform children, and every trip pattern is matched,
+  intentionally ignored, or listed as unresolved. Any unresolved agency,
+  route, referenced stop, platform, or trip pattern blocks Phase 3 generation.
 - Re-running the same snapshot against the same canonical repository commit
   produces byte-identical mappings and reports.
 
@@ -307,6 +320,8 @@ Exit criteria:
 
 - Confirm the licence and attribution requirements for retaining fixtures and
   publishing data derived from the downloaded schedule.
+- Consume only the locally materialized schedule and handoff record supplied by
+  the authorized acquisition step, and verify their manifest before generation.
 - Define and schema-validate the compact calendar and scheduled-departure
   records described above.
 - Generate them only from reviewed mappings; unresolved provider records appear
@@ -342,14 +357,27 @@ Exit criteria:
   and UI. Document and test how the existing crowd-report overlay is displayed
   before allowing it to replace a scheduled time.
 
+The selected schedule is the artifact referenced by the latest successfully
+validated and atomically imported `mrtdown-data` manifest. A newer successful
+import supersedes every prior artifact. A missing artifact, hash mismatch, or
+schema failure rejects the new import and leaves the last successfully imported
+artifact selected. That selected artifact is eligible for a request only when
+the Singapore service date falls within its declared feed range and the
+requested scope has complete reviewed mapping coverage. There is no separate
+capture-age threshold for static schedules: feed-range validity and manifest
+selection are authoritative unless measured publication behavior later
+justifies one. If no selected artifact is eligible, use the documented
+frequency fallback for a covered canonical service or return no result.
+
 Exit criteria:
 
 - A station page can return the next scheduled departures from the supplied
   LTA snapshot using MRTDown station and service ids.
 - Platform, destination, service-day, calendar-exception, and after-midnight
   fixtures produce the expected departures.
-- Unmapped or stale/out-of-range snapshot data degrades explicitly to the
-  existing frequency behavior or no result.
+- Fixtures cover a newer manifest superseding an older one, a missing or
+  hash-invalid new artifact retaining the last successful import, an expired
+  feed range, incomplete mapping coverage, frequency fallback, and no result.
 
 ### Phase 5: Prove service-alert ingestion
 
