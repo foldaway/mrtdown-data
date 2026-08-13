@@ -451,8 +451,8 @@ Exit criteria:
 - Retain multiple audited static snapshots with their hash, retrieval time,
   optional `feed_info.feed_version`, and an explicit compatibility interval.
   Select the snapshot for each realtime feed before matching any entity:
-  - when `FeedHeader.feed_version` is present, require an exact retained
-    `feed_info.feed_version` match;
+  - when `FeedHeader.feed_version` (field 4 in the pinned proto revision) is
+    present, require an exact retained `feed_info.feed_version` match;
   - when it is absent, bracket the realtime retrieval with schedule captures
     and proceed only if the before/after schedule hashes are identical;
   - otherwise quarantine the realtime fixture until the new schedule is
@@ -541,14 +541,33 @@ Exit criteria:
 
 ### Phase 6: Realtime Evidence Triage
 
+- Accept `ServiceAlert` lifecycle input only from `FULL_DATASET` feeds in the
+  initial contract. Quarantine `DIFFERENTIAL` feeds because their behavior is
+  unspecified by the pinned proto revision; add support only after defining and
+  fixture-testing ordered entity replacement and `FeedEntity.is_deleted`
+  semantics.
+- The external producer must keep a durable active-entity ledger keyed by
+  provider and feed type. Advance it only after a complete feed is downloaded,
+  parsed, validated, and accepted for processing. For each entity, store a
+  lifecycle epoch, latest semantic digest, and triage disposition. After a
+  successful `FULL_DATASET` snapshot, treat every previously active entity
+  absent from the complete entity set as removed; an outage, partial parse, or
+  rejected snapshot must not imply removal.
 - Before any model call, compute a service-alert deduplication key from the
-  provider, feed type, entity id, and a digest of normalized semantic entity
-  content. Exclude retrieval time and `FeedHeader.timestamp` so an unchanged
-  repeated entity keeps the same key. The external producer must durably skip
-  keys it has already submitted, including irrelevant outcomes; the triage
-  ingester must independently skip keys already present in canonical evidence
-  metadata before calling the model. A changed semantic digest for the same
-  entity is a new version and may proceed.
+  provider, feed type, entity id, lifecycle epoch, and a digest of normalized
+  semantic entity content. Exclude retrieval time and `FeedHeader.timestamp` so
+  an unchanged repeated entity in the same lifecycle keeps the same key. The
+  external producer must durably skip keys it has already submitted, including
+  irrelevant outcomes; the triage ingester must independently skip keys already
+  present in canonical evidence metadata before calling the model. A changed
+  semantic digest for the same active entity is a new version and may proceed.
+- When an accepted canonical alert is removed, bypass model triage and append a
+  deterministic resolution/tombstone evidence record referencing its provider,
+  entity id, lifecycle epoch, prior evidence id, removal-detecting feed
+  timestamp, and retrieval time; generate the corresponding canonical impact
+  resolution through the normal writer transaction. A removed irrelevant entity
+  updates only the producer ledger. Close the lifecycle after removal so an
+  identical later reappearance receives a new epoch and is processed again.
 - Teach `packages/triage` to format trusted GTFS Realtime service alerts as
   evidence text.
 - Map GTFS Realtime alert effects and causes to existing issue, service effect,
@@ -557,8 +576,10 @@ Exit criteria:
   issue model.
 - Add deterministic tests for alert formatting, provenance, time handling, and
   canonical evidence type mapping. Cover repeated identical snapshots, changed
-  versions of the same entity, producer retry/reset behavior, and provenance
-  round-trips through file-backed persistence and replay.
+  versions of the same entity, disappearance from a complete feed, failed or
+  partial feeds that must not cause removal, identical reappearance in a new
+  lifecycle, rejected differential feeds, producer retry/reset behavior, and
+  provenance round-trips through file-backed persistence and replay.
 - Add paid eval fixtures only if service-alert phrasing introduces ambiguity
   that deterministic tests cannot cover.
 
@@ -568,6 +589,9 @@ Exit criteria:
   the existing ingest path.
 - Repeating an unchanged provider entity performs no model calls and appends no
   evidence or impact events, while a semantic entity change is processed once.
+- Removal of an accepted entity appends exactly one resolution record and closes
+  its canonical impact; an identical later reappearance is processed as a new
+  lifecycle.
 - Generated impact events remain compatible with current validation and replay
   utilities.
 - Paid model evals remain opt-in.
