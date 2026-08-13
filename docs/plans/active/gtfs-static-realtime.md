@@ -151,9 +151,11 @@ sequence context. Do not assume names alone are unique or stable. Treat LTA
 Derive service-pattern matches from the ordered stop sequence, route,
 direction, and applicable calendar, then review ambiguous or unmatched cases.
 
-Mappings must be versioned against the static snapshot manifest. A new
-snapshot may reuse provider ids with changed content, so reconciliation reports
-must compare both ids and normalized records.
+Mappings must record both the static snapshot manifest and the exact canonical
+repository commit used for reconciliation. A new snapshot may reuse provider
+ids with changed content, and canonical topology may change while the same
+snapshot is reused, so reports must compare normalized records and identify
+both input revisions.
 
 ### Static publication role
 
@@ -229,9 +231,13 @@ An external producer or runtime owns:
 - live trip-update matching and consumer serving; and
 - alert polling and ordered delivery to the canonical ingester.
 
-The producer handoff records `retrieved_at`, any provider publication
-timestamp, the file manifest or digest, an immutable archive reference, and
-licence attribution. It never records the account key or temporary URL.
+The producer handoff records the LTA dataset or endpoint identity, a
+discriminated feed kind (`schedule`, `trip_updates`, or `service_alerts`),
+`retrieved_at`, any provider publication timestamp, the file manifest or
+digest, an immutable archive reference, and licence attribution. Feed kind is
+required even when a realtime file has no entities because its header does not
+identify the originating dataset. The handoff never records the account key or
+temporary URL.
 
 ## Phases
 
@@ -244,21 +250,25 @@ licence attribution. It never records the account key or temporary URL.
   station/platform/entrance counts, calendar range, trip-pattern counts, and
   realtime entity counts.
 - Run the inspector against the supplied captures and store the report. Retain
-  the upstream files only where the licence and repository-size policy permit;
-  otherwise keep their full hashes and immutable external archive reference.
+  a local copy only where the licence and repository-size policy permit;
+  otherwise keep the full hashes and an immutable archive reference from which
+  an authorized maintainer can retrieve and hash-verify the exact input.
 - Run an independent GTFS validator against the schedule and record findings
   separately from MRTDown reconciliation warnings.
 
 Exit criteria:
 
-- Another maintainer can reproduce the recorded audit from the identified
-  files without credentials or network access.
+- Given authorized access to either the retained local copy or immutable
+  archive, another maintainer can obtain and hash-verify the identified input,
+  then reproduce the recorded audit offline. The inspector itself requires no
+  credentials or network access after input acquisition.
 - Structural GTFS errors and MRTDown mapping gaps are reported separately.
 
 ### Phase 2: Add reviewed static reconciliation
 
 - Define a small versioned mapping artifact for agencies, routes, stops, and
-  trip patterns, keyed to the source manifest.
+  trip patterns, keyed to the source manifest and exact canonical repository
+  commit.
 - Propose station matches from codes and parent relationships, but require
   review for ambiguity and unmatched records.
 - Compare ordered provider trip patterns with canonical service revisions.
@@ -272,7 +282,8 @@ Exit criteria:
 - Every observed agency and route has a reviewed canonical disposition.
 - Every observed station parent and trip pattern is matched, intentionally
   ignored, or listed as unresolved.
-- Re-running the same snapshot produces byte-identical mappings and reports.
+- Re-running the same snapshot against the same canonical repository commit
+  produces byte-identical mappings and reports.
 
 ### Phase 3: Decide static publication
 
