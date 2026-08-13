@@ -251,11 +251,15 @@ separate from feed generation and retrieval timestamps.
 
 The Phase 1 audit must set and record a reviewed
 `maxTripUpdateAgeSeconds` no greater than twice the measured provider update
-cadence before live trip updates can be enabled. Evaluate each entity's age
-from `TripUpdate.timestamp`; a recently generated or retrieved feed must not
-refresh an older entity. If that timestamp is absent, invalid, or older than
-the configured maximum, the entity is ineligible for prediction or suppression
-and the normal crowd-report, static-schedule, or frequency fallback applies.
+cadence and an exact `maxTripUpdateFutureSkewSeconds` before live trip updates
+can be enabled. Compare `TripUpdate.timestamp` with `retrieved_at`: reject it as
+invalid when it is later than `retrieved_at + maxTripUpdateFutureSkewSeconds`,
+and treat it as stale when its age at retrieval exceeds
+`maxTripUpdateAgeSeconds`. A recently generated or retrieved feed must not
+refresh an older entity, and a future-dated provider clock error must not keep a
+suppression eligible. If the timestamp is absent, invalid, or stale, the entity
+is ineligible for prediction or suppression and the normal crowd-report,
+static-schedule, or frequency fallback applies.
 
 Precedence is evaluated independently for each station, service, direction,
 and arrival candidate. First apply a fresh mapped trip-level `CANCELED` or
@@ -501,6 +505,17 @@ Exit criteria:
 - If `StopTimeProperties.assigned_stop_id` is present, require `stop_sequence`,
   resolve the scheduled occurrence from that sequence, and retain the assigned
   stop separately rather than treating it as the static `stop_id`.
+- Normalize every supported `StopTimeEvent` to an absolute prediction before
+  constructing the runtime result. When `time` is present, it takes precedence.
+  When only `delay` is present, add it to the corresponding arrival or departure
+  time from the selected static trip occurrence. Derive an effective delay from
+  an absolute time when propagation needs one. Apply the trip-level delay until
+  a stop update supplies a more specific value, and carry each effective
+  arrival/departure delay across subsequent omitted stop occurrences until the
+  next applicable stop update changes it. Stop propagation at a trip or stop
+  suppression and treat `NO_DATA` as unavailable realtime data rather than a
+  zero delay. Reject an event that has neither a resolvable absolute time nor a
+  delay against a selected scheduled occurrence.
 - Define and fixture-test the runtime-facing arrival union: preserve the
   existing `EstimatedStationArrival` result as its estimate variant, add a
   `scheduled_arrival` variant with static trip/occurrence identity, add a
@@ -508,8 +523,10 @@ Exit criteria:
   `trip_update_suppression` variant for `CANCELED`, `DELETED`, and `SKIPPED`.
   Test trip-level suppression before stop predictions, stop-level suppression
   before fallback, and that `NO_DATA` falls back through crowd reports and the
-  exact static schedule before frequency estimates. Retain auditable entity,
-  feed, retrieval, and selected-static-snapshot provenance for each result.
+  exact static schedule before frequency estimates. Cover absolute-time,
+  delay-only, trip-delay, and propagated-delay fixtures. Retain auditable
+  entity, feed, retrieval, and selected-static-snapshot provenance for each
+  result.
 - Extend the `lta-datamall` rule in `data/rights/source-registry.json` to match
   `datamall2.mytransport.sg` as well as the documentation host, and add
   deterministic rights/ingest fixtures proving that a truthful API
@@ -517,10 +534,13 @@ Exit criteria:
 - Add ingest-contract schemas for trusted GTFS Realtime observations only if
   they need to enter canonical history.
 - Add an optional discriminated `sourceMetadata` field to the core evidence
-  schema. Its GTFS service-alert variant must preserve the provider, endpoint,
-  entity id, normalized payload digest, selected static snapshot hash, GTFS ids,
+  schema. Its GTFS service-alert variants must share a metadata version,
+  provider, endpoint, entity id, lifecycle epoch, normalized payload digest,
+  versioned complete deduplication key, selected static snapshot hash, GTFS ids,
   optional feed version and feed timestamp, `retrieved_at`, effect/cause, and
-  truthful source URL. Thread it through ingest provenance construction,
+  truthful source URL. The active-alert variant records the accepted semantic
+  version; the removal variant additionally records its prior evidence id and
+  removal-detection time. Thread both through ingest provenance construction,
   file-backed evidence writes and reads, validation, public export, and replay
   so `evidence.ndjson` remains the canonical record rather than adding a new
   issue-bundle sidecar.
@@ -531,8 +551,9 @@ Exit criteria:
 
 - GTFS Realtime support has a documented source-of-truth boundary.
 - The supported GTFS Realtime revision, exact `maxTripUpdateAgeSeconds`, and
-  disposition of every `TripDescriptor.ScheduleRelationship` value are
-  documented and fixture-tested.
+  exact `maxTripUpdateFutureSkewSeconds`, plus the disposition of every
+  `TripDescriptor.ScheduleRelationship` value, are documented and
+  fixture-tested.
 - Every accepted realtime fixture records the selected compatible static
   snapshot hash; ambiguous schedule-version selection is quarantined.
 - A trusted `ServiceAlert` payload can be validated without importing triage
@@ -549,25 +570,43 @@ Exit criteria:
 - The external producer must keep a durable active-entity ledger keyed by
   provider and feed type. Advance it only after a complete feed is downloaded,
   parsed, validated, and accepted for processing. For each entity, store a
-  lifecycle epoch, latest semantic digest, and triage disposition. After a
-  successful `FULL_DATASET` snapshot, treat every previously active entity
-  absent from the complete entity set as removed; an outage, partial parse, or
-  rejected snapshot must not imply removal.
+  lifecycle epoch, latest semantic digest, and delivery state; the producer
+  does not need to know the triage disposition. After a successful
+  `FULL_DATASET` snapshot, treat every previously active entity absent from the
+  complete entity set as removed; an outage, partial parse, or rejected
+  snapshot must not imply removal.
 - Before any model call, compute a service-alert deduplication key from the
   provider, feed type, entity id, lifecycle epoch, and a digest of normalized
   semantic entity content. Exclude retrieval time and `FeedHeader.timestamp` so
   an unchanged repeated entity in the same lifecycle keeps the same key. The
   external producer must durably skip keys it has already submitted, including
-  irrelevant outcomes; the triage ingester must independently skip keys already
-  present in canonical evidence metadata before calling the model. A changed
-  semantic digest for the same active entity is a new version and may proceed.
-- When an accepted canonical alert is removed, bypass model triage and append a
-  deterministic resolution/tombstone evidence record referencing its provider,
-  entity id, lifecycle epoch, prior evidence id, removal-detecting feed
-  timestamp, and retrieval time; generate the corresponding canonical impact
-  resolution through the normal writer transaction. A removed irrelevant entity
-  updates only the producer ledger. Close the lifecycle after removal so an
-  identical later reappearance receives a new epoch and is processed again.
+  irrelevant outcomes once acknowledged; the triage ingester must independently
+  skip keys already present in canonical evidence metadata or its durable
+  processing ledger before calling the model. A changed semantic digest for the
+  same active entity is a new version and may proceed.
+- Add an ingester-owned durable processing ledger keyed by the versioned complete
+  deduplication key. Store a discriminated disposition of `persisted` (with issue
+  and evidence ids) or `irrelevant`. Record `persisted` only after the canonical
+  writer transaction succeeds; make accepted-ledger recovery reconcile from the
+  evidence metadata after a crash. Persist `irrelevant` before acknowledging the
+  submission so retries do not repeat model calls.
+- Replace the fire-and-forget `null` result with a versioned ingest
+  acknowledgement containing the deduplication key, lifecycle epoch,
+  disposition, and persisted ids when applicable. `ingestViaWebhook` must emit
+  or publish these acknowledgements through a durable result channel that the
+  producer can retry and look up by key. Correctness of removal processing rests
+  on the ingester ledger, not on the producer having received an earlier
+  acknowledgement.
+- The producer sends a removal notification for every entity it removes, keyed
+  by provider, entity id, and lifecycle epoch. The ingester consults its
+  disposition ledger: for `persisted`, bypass model triage and append a
+  deterministic resolution/tombstone evidence record referencing the prior
+  evidence id; for `irrelevant`, close the ledger entry without canonical
+  writes. Preserve optional `FeedHeader.timestamp` separately and use required
+  `retrieved_at` as the removal-detection time when the header timestamp is
+  absent. Generate any canonical impact resolution through the normal writer
+  transaction, then close the lifecycle so an identical later reappearance
+  receives a new epoch and is processed again.
 - Teach `packages/triage` to format trusted GTFS Realtime service alerts as
   evidence text.
 - Map GTFS Realtime alert effects and causes to existing issue, service effect,
@@ -579,7 +618,9 @@ Exit criteria:
   versions of the same entity, disappearance from a complete feed, failed or
   partial feeds that must not cause removal, identical reappearance in a new
   lifecycle, rejected differential feeds, producer retry/reset behavior, and
-  provenance round-trips through file-backed persistence and replay.
+  missing feed timestamps, future-skewed trip-update timestamps, acknowledgement
+  retry/lookup, crash recovery between canonical persistence and ledger update,
+  and provenance round-trips through file-backed persistence and replay.
 - Add paid eval fixtures only if service-alert phrasing introduces ambiguity
   that deterministic tests cannot cover.
 
