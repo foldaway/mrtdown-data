@@ -153,13 +153,25 @@ direction, and applicable calendar, then review ambiguous or unmatched cases.
 
 Mappings must record the static snapshot manifest, the exact canonical
 repository commit, and a schedule-topology fingerprint used for reconciliation.
-Compute that fingerprint deterministically from `manifestVersion` and the
-sorted `operators`, `lines`, `stations`, and `services` record-hash maps. Station
-hashes cover embedded platform data. Exclude `generatedAt`, issues, towns,
-landmarks, and rights metadata so unrelated canonical changes do not invalidate
-a reviewed schedule mapping. A new snapshot may reuse provider ids with changed
-content, and canonical topology may change while the same snapshot is reused,
-so reports must compare normalized records and identify both input revisions.
+Compute that fingerprint from a versioned normalized projection rather than the
+full-record hashes in `manifest.json`:
+
+- operators: `id`;
+- lines: `id`, `type`, `serviceIds`, and operator ids with their effective
+  dates;
+- stations: `id`, station-code line/code/effective-date tuples, and platform
+  `id`, `label`, `lineId`, `serviceIds`, and `boardingStatus`; and
+- services: `id`, `lineId`, and revision ids/effective dates with each ordered
+  station id and display code.
+
+Sort records and unordered identifier arrays before hashing, while preserving
+service-path order. Exclude names, colors, addresses, geography, exits, aliases,
+first/last-train data, frequency estimates, operating hours, source metadata,
+issues, towns, landmarks, rights metadata, and `generatedAt`. Increment the
+fingerprint projection version when reconciliation begins to depend on another
+field. A new snapshot may reuse provider ids with changed content, and
+canonical topology may change while the same snapshot is reused, so reports
+must compare normalized records and identify both input revisions.
 
 ### Static publication role
 
@@ -295,6 +307,11 @@ confirmed terms.
   an authorized maintainer can retrieve and hash-verify the exact input.
 - Run an independent GTFS validator against the schedule and record findings
   separately from MRTDown reconciliation warnings.
+- Check in a validator lock record naming the validator implementation, exact
+  version and executable or container digest, configuration, and complete
+  invocation. Record the lock digest with each report and run only that pinned
+  configuration for reproducible audit results; upgrades produce a separately
+  identified report rather than rewriting prior findings.
 
 Exit criteria:
 
@@ -302,7 +319,8 @@ Exit criteria:
   archive, another maintainer can obtain and hash-verify the identified input,
   then reproduce the recorded audit offline. The inspector itself requires no
   credentials or network access after input acquisition.
-- Structural GTFS errors and MRTDown mapping gaps are reported separately.
+- Structural GTFS errors and MRTDown mapping gaps are reported separately, and
+  the structural result is reproducible with the recorded validator lock.
 
 ### Phase 2: Add reviewed static reconciliation
 
@@ -391,8 +409,11 @@ first filter to artifacts whose feed range covers the date, whose reviewed
 mapping completely covers the scope, and whose schedule-topology fingerprint
 matches the currently installed canonical data. Select the eligible artifact
 with the latest source-order timestamp. A newer ineligible artifact does not
-hide an older eligible one. Equal source timestamps with different snapshot
-digests are ambiguous and are quarantined from automatic selection.
+hide an older eligible one. When a newcomer has the same source timestamp but a
+different snapshot digest, quarantine only the newcomer. Keep the previously
+selected last-known-good artifact eligible for each affected date and scope; if
+there is no incumbent, select neither digest automatically. Replacing the
+incumbent requires an audited conflict resolution naming both digests.
 
 For the same source timestamp and snapshot digest, a reviewed correction may
 replace an earlier mapping or generator result by incrementing the artifact's
@@ -421,9 +442,10 @@ Exit criteria:
   snapshot, a future-dated snapshot that is not yet date-eligible, per-scope
   fallback to an older eligible snapshot, same-source correction revision and
   revision conflict, accidental rollback rejection, an explicitly scoped
-  audited rollback, equal-timestamp digest conflict, a missing or hash-invalid
-  artifact, canonical-reference or topology mismatch, an expired feed range,
-  incomplete mapping coverage, frequency fallback, and no result.
+  audited rollback, equal-timestamp digest conflict with and without a
+  last-known-good incumbent, audited conflict resolution, a missing or
+  hash-invalid artifact, canonical-reference or topology mismatch, an expired
+  feed range, incomplete mapping coverage, frequency fallback, and no result.
 
 ### Phase 5: Prove service-alert ingestion
 
