@@ -189,15 +189,17 @@ The scheduled-arrivals artifact contains:
 - LTA calendars and exceptions without expanding every service date;
 - canonical station, line, service, platform, and destination identities;
 - scheduled arrival and departure times, preserving GTFS times beyond 24:00,
-  plus each stop occurrence's GTFS pickup and drop-off behavior; and
+  plus each stop occurrence's GTFS pickup, drop-off, and `timepoint` precision
+  behavior; and
 - provider route, trip, stop, stop-sequence, and calendar identities needed to
   reconcile later Trip Updates.
 
 The supplied `stop_times.txt` does not include `pickup_type` or
-`drop_off_type`, so this snapshot uses the GTFS defaults. The inspector and
-artifact schema must nevertheless preserve those columns when later snapshots
-provide them; they are occurrence-level rules and cannot be inferred from a
-canonical platform's general boarding status.
+`drop_off_type`, or `timepoint`, so this snapshot uses the GTFS defaults. The
+inspector and artifact schema must nevertheless preserve those columns when
+later snapshots provide them; they are occurrence-level rules and cannot be
+inferred from a canonical platform's general boarding status or from the time
+value alone.
 
 Publish it as a generated, versioned Pages/archive artifact with its own
 manifest hash. It is derived from LTA data and must carry the applicable
@@ -228,14 +230,17 @@ The original fields remain in provenance. Route and agency selectors must map
 through the versioned static reconciliation; unmatched selectors are retained
 for diagnosis and are not guessed.
 
-For the first proof, process complete `FULL_DATASET` snapshots idempotently by
+Use two separate idempotency identities. The processing/remap key contains the
 provider, feed type, selected static snapshot manifest, mapping version, entity
-id, and normalized semantic payload digest. A snapshot or mapping-version
-change therefore causes reprocessing against the new reconciliation rather than
-reusing an earlier canonical match. Do not design disappearance-as-resolution
-behavior until at least two ordered captures demonstrate the provider's entity
-lifecycle. Do not accept `DIFFERENTIAL` feeds until an actual sample and
-ordering contract are audited.
+id, and normalized source-payload digest, so a reconciliation change reruns
+selector matching. After mapping, compute a canonical-write key from provider,
+feed type, entity id, and a digest of the normalized alert semantics plus mapped
+canonical scope. If remapping produces the same canonical-write key, record the
+processing result as a reference to the existing evidence and append no evidence
+or impact events. Append an update only when the mapped canonical semantics
+change. Do not design disappearance-as-resolution behavior until at least two
+ordered captures demonstrate the provider's entity lifecycle. Do not accept
+`DIFFERENTIAL` feeds until an actual sample and ordering contract are audited.
 
 ### Trip updates role
 
@@ -386,66 +391,86 @@ Exit criteria:
   hash without replacing canonical station, line, or service tables.
 - Select the applicable LTA calendar and service day in Singapore time,
   including after-midnight times greater than 24:00.
+- For a post-midnight query, build absolute departure instants independently
+  from the previous service date's `24:xx`-or-later trips and the current service
+  date's `00:xx` trips. Apply each date's own calendar exceptions and artifact
+  selection, then merge and sort the eligible departures before choosing the
+  next results.
 - Adapt scheduled records to the existing station-arrivals read model, grouped
   by canonical station, line, service, destination, and platform.
-- Use exact scheduled departures where mapping coverage exists. Fall back to
-  the current frequency estimates only for a recorded coverage gap; do not mix
-  an approximate estimate into a covered schedule as though it were LTA data.
+- Use scheduled departures where mapping coverage exists. Preserve
+  `timepoint=1` or its GTFS default as an exact scheduled time and label
+  `timepoint=0` as an approximate scheduled time through the API and UI. Fall
+  back to the current frequency estimates only for a recorded coverage gap; do
+  not relabel either kind of LTA scheduled time as a frequency estimate.
 - Preserve an explicit departure basis and snapshot provenance through the API
   and UI. Document and test how the existing crowd-report overlay is displayed
   before allowing it to replace a scheduled time.
 
-Each artifact records the provider publication timestamp when present,
-`retrieved_at`, and the trusted import time separately. Validate both source
-timestamps against import time with a maximum future skew of 300 seconds. Use a
-valid provider timestamp as the source-order timestamp, otherwise use a valid
-`retrieved_at`; quarantine the artifact from selection if neither is valid.
-Preserve invalid source values and their rejection reason for audit so a bad
-clock cannot pin selection ahead of later correct captures.
+Each artifact records provider publication/version metadata when present,
+`retrieved_at`, and the trusted import time separately. Validate timestamps
+against import time with a maximum future skew of 300 seconds, but never use
+`retrieved_at` to order source versions: it proves acquisition time, not content
+recency. Automatically order different snapshot digests only with a validated
+provider publication timestamp or provider version whose monotonic semantics
+are documented. Preserve invalid or non-orderable values and their reason.
+
+When no authoritative provider ordering exists, a reviewed lineage decision
+must name the predecessor and successor digests before a different digest can
+become eligible. The first audited snapshot may establish the baseline; later
+unordered digests remain quarantined while the last-known-good baseline stays
+eligible. Retrieval of an older retained archive can therefore never promote it
+as a newer schedule merely because it was downloaded later.
 
 Retain every successfully validated and atomically imported artifact version.
 For each Singapore service date and requested station/service/direction scope,
 first filter to artifacts whose feed range covers the date, whose reviewed
 mapping completely covers the scope, and whose schedule-topology fingerprint
 matches the currently installed canonical data. Select the eligible artifact
-with the latest source-order timestamp. A newer ineligible artifact does not
-hide an older eligible one. When a newcomer has the same source timestamp but a
-different snapshot digest, quarantine only the newcomer. Keep the previously
-selected last-known-good artifact eligible for each affected date and scope; if
-there is no incumbent, select neither digest automatically. Replacing the
-incumbent requires an audited conflict resolution naming both digests.
+latest in the validated provider or reviewed lineage. A newer ineligible
+artifact does not hide an older eligible one. When a newcomer has the same
+provider version but a different snapshot digest, quarantine only the newcomer.
+Keep the previously selected last-known-good artifact eligible for each affected
+date and scope; if there is no incumbent, select neither digest automatically.
+Replacing the incumbent requires an audited conflict resolution naming both
+digests.
 
-For the same source timestamp and snapshot digest, a reviewed correction may
-replace an earlier mapping or generator result by incrementing the artifact's
-integer `correctionRevision`. Accept only a strictly larger revision after full
-schema, provenance, topology, and reference validation. A different artifact
-hash at the same revision is a conflict and is rejected. Selecting an older
-source snapshot requires an explicit, audited rollback override scoped to a
-service-date range and canonical request scope, naming both digests; it changes
-selection only and does not rewrite source timestamps or correction revisions.
+For the same provider-lineage identity and snapshot digest, a reviewed
+correction may replace an earlier mapping or generator result by incrementing
+the artifact's integer `correctionRevision`. Accept only a strictly larger
+revision after full schema, provenance, topology, and reference validation. A
+different artifact hash at the same revision is a conflict and is rejected.
+Selecting an older source snapshot requires an explicit, audited rollback
+override scoped to a service-date range and canonical request scope, naming both
+digests; it changes selection only and does not rewrite provider metadata or
+correction revisions.
 
 A missing artifact, hash mismatch, schema failure, canonical-reference failure,
-invalid source timestamps, revision conflict, or rejected rollback cannot enter
-the eligible version set. There is no separate capture-age threshold for static
-schedules: validated source ordering, feed-range validity, topology identity,
-and scope coverage are authoritative unless measured publication behavior later
-justifies one. If no artifact is eligible for the request, use the documented
-frequency fallback for a covered canonical service or return no result.
+invalid source metadata, unresolved lineage, revision conflict, or rejected
+rollback cannot enter the eligible version set. There is no separate capture-age
+threshold for static schedules: validated source lineage, feed-range validity,
+topology identity, and scope coverage are authoritative unless measured
+publication behavior later justifies one. If no artifact is eligible for the
+request, use the documented frequency fallback for a covered canonical service
+or return no result.
 
 Exit criteria:
 
 - A station page can return the next scheduled departures from the supplied
   LTA snapshot using MRTDown station and service ids.
 - Platform, destination, service-day, calendar-exception, and after-midnight
-  fixtures produce the expected departures.
-- Fixtures cover valid and future-skewed source timestamps, a newer source
-  snapshot, a future-dated snapshot that is not yet date-eligible, per-scope
-  fallback to an older eligible snapshot, same-source correction revision and
-  revision conflict, accidental rollback rejection, an explicitly scoped
-  audited rollback, equal-timestamp digest conflict with and without a
-  last-known-good incumbent, audited conflict resolution, a missing or
-  hash-invalid artifact, canonical-reference or topology mismatch, an expired
-  feed range, incomplete mapping coverage, frequency fallback, and no result.
+  fixtures produce the expected departures, including merged previous/current
+  service dates and exact/default/approximate `timepoint` behavior.
+- Fixtures cover valid and future-skewed provider timestamps, retrieval order
+  differing from provider lineage, a baseline and reviewed successor without
+  provider version metadata, an unresolved lineage, a newer source snapshot, a
+  future-dated snapshot that is not yet date-eligible, per-scope fallback to an
+  older eligible snapshot, same-source correction revision and revision
+  conflict, accidental rollback rejection, an explicitly scoped audited
+  rollback, equal-version digest conflict with and without a last-known-good
+  incumbent, audited conflict resolution, a missing or hash-invalid artifact,
+  canonical-reference or topology mismatch, an expired feed range, incomplete
+  mapping coverage, frequency fallback, and no result.
 
 ### Phase 5: Prove service-alert ingestion
 
@@ -460,6 +485,9 @@ Exit criteria:
 - Persist accepted alerts as ordinary evidence with versioned GTFS source
   metadata; keep raw protobuf retention a separate licence/storage decision.
 - Prove identical complete snapshots do not create duplicate evidence.
+- Prove a snapshot or mapping refresh reruns selector reconciliation but appends
+  no canonical write when the mapped alert semantics are unchanged, and appends
+  one update when the mapped canonical scope changes.
 
 Exit criteria:
 
@@ -469,6 +497,8 @@ Exit criteria:
   calls or canonical writes.
 - The ingest path preserves provider periods and prose without conflating
   their dates.
+- Processing/remap and canonical-write idempotency keys have independent,
+  deterministic fixture coverage.
 
 ### Phase 6: Observe trip updates before designing runtime behavior
 
