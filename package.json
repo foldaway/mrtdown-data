@@ -54,7 +54,7 @@
     "luxon": "^3.7.2",
     "tsx": "^4.22.4",
     "turbo": "^2.8.20",
-    "typescript": "^5.8.3",
+    "typescript": "^6.0.3",
     "vitest": "^4.1.8"
   },
   "overrides": {
