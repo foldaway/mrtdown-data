@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.0",
-    "@types/luxon": "^3.7.1",
+    "@types/luxon": "^3.7.2",
     "@types/node": "24.13.2",
     "typescript": "^5.8.3",
     "vitest": "^4.1.8"
