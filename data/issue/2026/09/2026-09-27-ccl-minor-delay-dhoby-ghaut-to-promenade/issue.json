@@ -1,0 +1,13 @@
+{
+  "id": "2026-09-27-ccl-minor-delay-dhoby-ghaut-to-promenade",
+  "type": "disruption",
+  "title": {
+    "en-SG": "Circle Line Minor Delay - Dhoby Ghaut to Promenade",
+    "zh-Hans": "环线轻微延误 - 士硼峪港至滨海湾",
+    "ms": "Kelewatan Ringan Laluan Bulatan - Dhoby Ghaut ke Promenade",
+    "ta": "சுற்றுவழி ரயில் சிறிய தாமதம் - Dhoby Ghaut முதல் Promenade வரை"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5.4-nano"
+  }
+}
