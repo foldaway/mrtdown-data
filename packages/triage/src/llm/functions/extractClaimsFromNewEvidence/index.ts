@@ -239,9 +239,13 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true 
     `Response output parsed is null (responseId=${response.id}, status=${response.status}, error=${response.error?.code ?? 'none'}, incompleteReason=${response.incomplete_details?.reason ?? 'none'}); see OpenAI response diagnostics above`,
   );
 
+  // The API schema omits the duration regex for compatibility. Enforce the
+  // full canonical schema before normalization or persistence.
+  const parsed = ResponseSchema.parse(response.output_parsed);
+
   return {
     claims: normalizeClaimsForEvidence({
-      claims: response.output_parsed.claims,
+      claims: parsed.claims,
       evidenceTs: params.newEvidence.ts,
       repo: params.repo,
     }),
