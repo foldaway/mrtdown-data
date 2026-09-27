@@ -1,0 +1,13 @@
+{
+  "id": "2026-09-19-bukit-panjang-lrt-full-day-shutdown-renewal-works-sept-20-sept-27",
+  "type": "maintenance",
+  "title": {
+    "en-SG": "Bukit Panjang LRT Full-day Shutdown - Renewal Works (Sept 20 & Sept 27)",
+    "zh-Hans": "武吉班让轻轨（LRT）全天停运——更新工程（9月20日及9月27日）",
+    "ms": "Penutupan Sepenuh Hari LRT Bukit Panjang - Kerja Penyelenggaraan (20 Sept & 27 Sept)",
+    "ta": "புக்கிட் பஞ்சாங் LRT முழுநாள் நிறுத்தம் - புதுப்பிப்பு பணிகள் (செப் 20 & செப் 27)"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5.4-nano"
+  }
+}
