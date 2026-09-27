@@ -78,7 +78,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true 
 
   let toolCallCount = 0;
   let reachedToolCallLimit = false;
-  const model = 'gpt-5.4-mini';
+  const model = 'gpt-6-luna';
   const usageCostTracker = new OpenAIUsageCostTracker();
 
   let response: ParsedResponse<z.infer<typeof ResponseSchema>>;

@@ -33,7 +33,7 @@ export async function generateIssueTitleAndSlug(
   params: GenerateIssueTitleAndSlugParams,
 ): Promise<GenerateIssueTitleAndSlugResult> {
   const systemPrompt = buildSystemPrompt();
-  const model = 'gpt-5.4-nano';
+  const model = 'gpt-6-luna';
   const usageCostTracker = new OpenAIUsageCostTracker();
 
   const context: ResponseInputItem[] = [

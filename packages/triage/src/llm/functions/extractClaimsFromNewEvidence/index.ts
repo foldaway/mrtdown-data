@@ -76,7 +76,7 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true 
   ];
 
   const systemPrompt = buildSystemPrompt();
-  const model = 'gpt-5.4-mini';
+  const model = 'gpt-6-luna';
   const usageCostTracker = new OpenAIUsageCostTracker();
 
   let toolCallCount = 0;

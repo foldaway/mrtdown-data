@@ -92,11 +92,11 @@ Required environment variables:
 
 Model dependency:
 
-- `extractClaimsFromNewEvidence` uses `gpt-5.4-mini`.
-- `triageNewEvidence` uses `gpt-5.4-mini`.
-- title/slug generation uses `gpt-5.4-nano`.
-- translation uses `gpt-5.4-nano`.
+- `extractClaimsFromNewEvidence` uses `gpt-6-luna`.
+- `triageNewEvidence` uses `gpt-6-luna`.
+- title/slug generation uses `gpt-6-luna`.
+- translation uses `gpt-6-luna`.
 
-Expected cost before running the checked-in eval set: less than USD 1 with the
-current short fixtures. Revisit this estimate in the same PR when adding or
-expanding eval cases.
+These evals make paid API calls. The local cost estimator does not yet have
+GPT-6 Luna pricing, so its calls log token usage without a dollar estimate.
+Check current API pricing before running or expanding the eval set.
