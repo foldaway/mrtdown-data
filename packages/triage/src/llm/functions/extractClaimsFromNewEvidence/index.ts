@@ -14,6 +14,7 @@ import {
 import { assert } from '../../../util/assert.js';
 import { getOpenAiClient, runOpenAIRequestWithRetry } from '../../client.js';
 import { toOpenAiJsonSchema } from '../../common/jsonSchema.js';
+import { getResponseDiagnostics } from '../../common/responseDiagnostics.js';
 import type { ToolRegistry } from '../../common/tool.js';
 import { normalizeClaimsForEvidence } from './normalizeClaimsForEvidence.js';
 import { buildSystemPrompt } from './prompt.js';
@@ -118,6 +119,11 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true 
       {
         label: 'extractClaimsFromNewEvidence',
       },
+    );
+
+    console.log(
+      '[extractClaimsFromNewEvidence] OpenAI response:',
+      JSON.stringify(getResponseDiagnostics(response)),
     );
 
     for (const item of response.output) {
@@ -228,7 +234,10 @@ Timestamp: ${evidenceTs.toISO({ includeOffset: true, suppressMilliseconds: true 
     throw new Error(`Exceeded tool call limit of ${TOOL_CALL_LIMIT}`);
   }
 
-  assert(response.output_parsed != null, 'Response output parsed is null');
+  assert(
+    response.output_parsed != null,
+    `Response output parsed is null (responseId=${response.id}, status=${response.status}, error=${response.error?.code ?? 'none'}, incompleteReason=${response.incomplete_details?.reason ?? 'none'}); see OpenAI response diagnostics above`,
+  );
 
   return {
     claims: normalizeClaimsForEvidence({
