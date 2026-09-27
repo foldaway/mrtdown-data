@@ -113,8 +113,10 @@ the repository shape.
 - Use Conventional Commits style for commit messages and PR titles, for example
   `feat: add Pages artifact publishing foundation`. Do not add tool or agent
   prefixes such as `[codex]` to PR titles.
-- Add a `Co-Authored-By: Name <email>` trailer when a commit includes a
-  co-author's contributions.
+- Every commit an agent creates or amends must include a
+  `Co-Authored-By: Name <email>` trailer for that agent's own identity (for
+  example, `Co-Authored-By: Codex <noreply@openai.com>` for Codex). Preserve
+  existing co-author trailers and add trailers for any other contributors.
 - Do not merge temporary branch names, one-off deploy triggers, or local
   generated artifacts.
 
