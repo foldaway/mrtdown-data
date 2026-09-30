@@ -1,0 +1,13 @@
+{
+  "id": "2026-09-29-dtl-minor-delays-fort-canning-to-bencoolen-towards-bukit-panjang",
+  "type": "disruption",
+  "title": {
+    "en-SG": "DTL Minor Delays - Fort Canning to Bencoolen (Towards Bukit Panjang)",
+    "zh-Hans": "DTL轻微延误——从Fort Canning到Bencoolen（前往Bukit Panjang方向）",
+    "ms": "DTL Kelewatan Ringan - Fort Canning ke Bencoolen (Ke arah Bukit Panjang)",
+    "ta": "DTL சிறிய தாமதங்கள் - Fort Canning இருந்து Bencoolen வரை (Bukit Panjang நோக்கி)"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-5.4-nano"
+  }
+}
