@@ -14,6 +14,7 @@ concurrency:
   group: ingestion
 
 permissions:
+  actions: write
   contents: write
   pull-requests: write
 
@@ -82,6 +83,15 @@ jobs:
             echo "Working directory is clean"
             echo "has_changes=false" >> $GITHUB_OUTPUT
           fi
+      - name: Validate automated changes before merging
+        if: steps.make-changes.outputs.has_changes == 'true'
+        run: |
+          npm run check
+          npm run build:packages
+          npm run fixtures:validate
+          npm test
+          npm run test:packages
+          npm run pages:build
       - name: Target branch
         if: steps.make-changes.outputs.has_changes == 'true'
         id: target-branch
@@ -94,6 +104,7 @@ jobs:
 
       - name: Push changes
         if: steps.make-changes.outputs.has_changes == 'true'
+        id: push-changes
         run: |-
           BRANCH_NAME="${{ steps.target-branch.outputs.branch-name }}"
           if [[ "${{ steps.brancher.outputs.latest-branch }}" = "main" ]]; then
@@ -106,9 +117,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git commit -m "chore(data): automated changes"
           git push origin $BRANCH_NAME
+          echo "head-sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - name: Create Pull Request
         if: steps.make-changes.outputs.has_changes == 'true' && steps.brancher.outputs.latest-branch == 'main'
-        id: create-pull-request
         uses: actions/github-script@v9
         with:
           script: |
@@ -117,22 +128,28 @@ jobs:
             const { data: pullRequest } = await github.rest.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: `[Automated] Update Data`,
+              title: `chore(data): automated ingest`,
               body: `
-              # Automated Data
+              # Automated data
 
-              This PR was automatically created by the scheduled GitHub Action workflow.
+              This PR was created by the ingest workflow after data validation and deterministic checks passed.
               `,
               head: branchName,
               base: 'main'
             });
 
             console.log(`Pull Request created: ${pullRequest.html_url}`);
-            core.setOutput('url', pullRequest.html_url);
 
-      - name: Enable pull request auto-merge
-        if: steps.create-pull-request.outcome == 'success'
+      - name: Merge validated pull request
+        if: steps.make-changes.outputs.has_changes == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          PR_URL: ${{ steps.create-pull-request.outputs.url }}
-        run: gh pr merge "$PR_URL" --auto --squash
+          BRANCH_NAME: ${{ steps.target-branch.outputs.branch-name }}
+          HEAD_SHA: ${{ steps.push-changes.outputs.head-sha }}
+        run: gh pr merge "$BRANCH_NAME" --repo "$GITHUB_REPOSITORY" --squash --match-head-commit "$HEAD_SHA"
+      - name: Deploy merged data to Pages
+        if: steps.make-changes.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        # Merges performed with GITHUB_TOKEN do not trigger push workflows.
+        run: gh workflow run pages-deploy.yml --ref main
