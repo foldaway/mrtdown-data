@@ -50,7 +50,7 @@ jobs:
 
       - name: Create version PR or publish packages
         id: changesets
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
           version: npm run release:version
           publish: npm run release:publish
