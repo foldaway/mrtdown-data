@@ -1,367 +1,575 @@
-# GTFS Static And Realtime Support Plan
+# LTA GTFS Schedule And Realtime Reconciliation Plan
 
 ## Context
 
 GitHub issue [#157](https://github.com/foldaway/mrtdown-data/issues/157) asks
-for "Support GTFS Static/Realtime". The issue has no body or comments, so this
-plan turns that title into an implementation path that fits the current
-`mrtdown-data` repository shape.
+for GTFS Static and Realtime support. LTA now supplies first-party train data as
+downloaded files:
 
-`mrtdown-data` is a canonical reviewed data repository. It owns rail entities,
-service topology, issue evidence, impact events, shared schemas, file-backed
-repositories, ingest contracts, and static Pages/archive publication. It does
-not run a low-latency runtime API. GTFS static support can be generated and
-published from this repo. GTFS Realtime support needs clearer boundaries:
-schemas, id mapping, validation, and canonical issue/evidence integration can
-live here, while live polling, alert fanout, freshness guarantees, and consumer
-serving should remain in runtime systems or external producers.
+- a GTFS Schedule archive;
+- a GTFS Realtime Trip Updates protobuf; and
+- a GTFS Realtime Service Alerts protobuf.
+
+The supplied 2026-08-13 captures remove the need to design this work from the
+endpoint documentation alone. The schedule is already a detailed timetable,
+the alert feed contains useful canonical-evidence candidates, and the trip
+update capture contains no entities. This plan therefore starts with offline
+file inspection and reconciliation. It does not start with a synthetic
+timetable generator or a live realtime runtime.
+
+`mrtdown-data` remains the reviewed data and schema repository. It can own
+snapshot inspection, stable mappings, validation, canonical alert evidence,
+and static archive outputs. Account keys, temporary download URLs, polling,
+freshness guarantees, and live consumer serving belong in an external producer
+or runtime.
 
 Related references:
 
 - `README.md`
+- `docs/plans/active/data-licensing-attribution.md`
 - `docs/plans/completed/data-overhaul-split.md`
 - `packages/core/src/schema/Station.ts`
 - `packages/core/src/schema/Service.ts`
 - `packages/fs/src/manifest.ts`
 - `scripts/build-pages-artifact.mjs`
 
-## Goals
+## Observed 2026-08-13 Captures
 
-- Generate a valid GTFS Static feed from canonical line, station, operator, and
-  service data.
-- Keep GTFS ids stable, deterministic, documented, and traceable back to
-  canonical MRTDown ids.
-- Publish the static feed through the existing Pages/archive artifact.
-- Add validation that catches stale generated GTFS output and broken references.
-- Define the GTFS Realtime ownership boundary before adding live-feed behavior.
-- Support GTFS Realtime service-alert ingestion as canonical evidence when an
-  external producer submits reviewed or trusted realtime observations.
-- Keep deterministic tests separate from any live feed, network, or model calls.
+This is a structural audit of the supplied files, not a claim about every LTA
+publication or the live endpoints' cadence.
 
-## Non-Goals
+### GTFS Schedule
 
-- This plan does not make `mrtdown-data` a low-latency realtime feed server.
-- This plan does not poll third-party live feeds from CI.
-- This plan does not require canonical data to mirror every optional GTFS field
-  before a useful feed can be published.
-- This plan does not replace the existing issue/evidence/impact model with
-  GTFS Realtime entities.
-- This plan does not assume GTFS Realtime vehicle positions are canonical issue
-  evidence unless a later phase proves a durable use case.
+`feed_info.txt` identifies LTA as the publisher, version `0.1`, with a feed
+range of 2025-01-01 through 2026-12-31. The archive contains:
+
+| Table | Data rows |
+| --- | ---: |
+| `agency.txt` | 3 |
+| `calendar.txt` | 11 |
+| `calendar_dates.txt` | 3 |
+| `feed_info.txt` | 1 |
+| `routes.txt` | 19 |
+| `stops.txt` | 1,211 |
+| `trips.txt` | 17,576 |
+| `stop_times.txt` | 333,262 |
+
+It does not contain `frequencies.txt`, `shapes.txt`, or `transfers.txt`.
+
+The supplied data has 186 station rows, 434 platform/stop rows, and 591
+entrance/exit rows. Every platform/stop and entrance/exit parent reference
+resolves. Every trip references a known route and calendar, every stop time
+references a known trip and stop, and stop sequences increase within each
+trip. No duplicate route, stop, or trip ids were found by the initial audit.
+
+The schedule includes exact trips beyond midnight, short workings, CCL starter
+patterns, the EWL airport shuttle, BPLRT loops, and distinct PGLRT and SKLRT
+loop patterns. Calendar variants encode the supplied DTL, TEL, and SKLRT
+service adjustments. These observations make a frequency-derived MRTDown
+timetable unnecessary for the first implementation.
+
+The unzipped snapshot is identified by this per-file SHA-256 manifest:
+
+```text
+agency.txt          4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39
+calendar.txt        96b3e06ca532195c11e71909f3d6c55f33437b5a10615b64742557f0b3ce972d
+calendar_dates.txt  fa171ae723add6992f250a1d3aada44799d5456dbcdb9e66f2a68b6256f46ab7
+feed_info.txt       a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199
+routes.txt          1e3a56c2d8974d431b7a811ff452f5ccc62d253d4dc6f0bf9e70d44d125f8c6c
+stop_times.txt      80a5ea7bae8c9311515e494ee0f21e0735c4f43dede2e7f518ff6a42a7a8169d
+stops.txt           5b61242c71b3274d3c218519582c3f255fb61ffb42548a4c51394c2a136dfe73
+trips.txt           9a0ba496df57fa0ca13a43690e827d7119c655c0223849cbff80fc6f38be2e54
+```
+
+### GTFS Realtime Service Alerts
+
+The supplied `gtfs_realtime.pb` has SHA-256
+`63f054a690fa6d0358487af32572d68141cb091683ab193586e55d4638915e02`.
+It is a GTFS Realtime 2.0 `FULL_DATASET` generated at
+2026-08-13T08:58:04Z and contains two alert entities:
+
+- `alert_0` selects SBST route `SK`, reports `MAINTENANCE` with
+  `MODIFIED_SERVICE`, and has a bounded active period. Its text describes the
+  temporary Sengkang West LRT Inner Loop closure.
+- `alert_1` selects SBST route `DTL`, reports `MAINTENANCE` with
+  `MODIFIED_SERVICE`, and has an open-ended active period. Its header is only
+  whitespace, while its description supplies the useful DTL adjustment text
+  and a human-readable end date.
+
+The first alert links to `www.lta.gov.sg`, which the current rights registry
+recognizes. The second links to `go.gov.sg`, which the registry does not yet
+recognize. The API transport URL and the alert's rider-facing information URL
+must remain separate provenance fields.
+
+The sample shows that provider `active_period` is a feed visibility/applicability
+range, not necessarily the same range described in prose. Preserve the
+provider range and source text independently; do not infer or overwrite one
+from the other before triage.
+
+### GTFS Realtime Trip Updates
+
+The supplied `gtfs_trip_update.pb` has SHA-256
+`198dbfb4d4a9cdb537d83862b940e93f549a3f3d9d7f26d5f12952537709e597`.
+It is a GTFS Realtime 2.0 `FULL_DATASET` generated at
+2026-08-13T09:12:00Z and contains no entities.
+
+This proves only that this capture was empty. It does not prove that the LTA
+feed is always empty, nor does it provide enough evidence to design trip
+matching, delay propagation, cancellation, freshness, or caching behavior.
+Those details are deferred until non-empty captures exist.
+
+## Reconciliation Decisions
+
+### Static schedule role
+
+Treat the LTA schedule as the candidate source for exact scheduled trips,
+calendars, platforms, and stop times. Keep canonical MRTDown entities as the
+reviewed identity and topology model. Reconcile the two; do not import provider
+ids as canonical ids and do not generate an approximate timetable in parallel.
+
+The initial route mapping is many-to-one:
+
+| LTA route ids | MRTDown line id |
+| --- | --- |
+| `NSL` | `NSL` |
+| `EWL`, `EWL_CGL` | `EWL` |
+| `NEL` | `NEL` |
+| all `CCL_*` routes | `CCL` |
+| `DTL` | `DTL` |
+| `TEL` | `TEL` |
+| `BP` | `BPLRT` |
+| `SK` | `SKLRT` |
+| `PG` | `PGLRT` |
+
+CRL and JRL are canonical future lines and are absent from this capture.
+Provider agencies `SMRT` and `SBST` map explicitly to canonical operators
+`SMRT_TRAINS` and `SBS`.
+
+Map station parents and platform children using reviewed station codes and
+sequence context. Do not assume names alone are unique or stable. Treat LTA
+`service_id` as calendar identity, not as a canonical MRTDown service id.
+Derive service-pattern matches from the ordered stop sequence, route,
+direction, and applicable calendar, then review ambiguous or unmatched cases.
+
+Mappings must record the static snapshot manifest, the exact canonical
+repository commit, and a schedule-topology fingerprint used for reconciliation.
+Compute that fingerprint from a versioned normalized projection rather than the
+full-record hashes in `manifest.json`:
+
+- operators: `id`;
+- lines: `id`, `type`, `serviceIds`, and operator ids with their effective
+  dates;
+- stations: `id`, station-code line/code/effective-date tuples, and platform
+  `id`, `label`, `lineId`, `serviceIds`, and `boardingStatus`; and
+- services: `id`, `lineId`, and revision ids/effective dates with each ordered
+  station id and display code.
+
+Sort records and unordered identifier arrays before hashing, while preserving
+service-path order. Exclude names, colors, addresses, geography, exits, aliases,
+first/last-train data, frequency estimates, operating hours, source metadata,
+issues, towns, landmarks, rights metadata, and `generatedAt`. Increment the
+fingerprint projection version when reconciliation begins to depend on another
+field. A new snapshot may reuse provider ids with changed content, and
+canonical topology may change while the same snapshot is reused, so reports
+must compare normalized records and identify both input revisions.
+
+### Static publication role
+
+Use a hybrid model: keep canonical MRTDown identity and topology, map the LTA
+schedule back to those entities, and publish a compact scheduled-arrivals
+artifact for consumers such as `mrtdown-site`. Apply source-backed corrections
+to canonical data when reconciliation reveals a genuine canonical error, but
+do not rename or reshape canonical entities merely to mirror provider ids.
+
+The scheduled-arrivals artifact contains:
+
+- the LTA snapshot manifest, exact canonical repository commit,
+  schedule-topology fingerprint, mapping version, monotonically increasing
+  artifact correction revision, feed range, and `Asia/Singapore` timezone;
+- LTA calendars and exceptions without expanding every service date;
+- canonical station, line, service, platform, and destination identities;
+- scheduled arrival and departure times, preserving GTFS times beyond 24:00,
+  plus each stop occurrence's GTFS pickup, drop-off, and `timepoint` precision
+  behavior; and
+- provider route, trip, stop, stop-sequence, and calendar identities needed to
+  reconcile later Trip Updates.
+
+The supplied `stop_times.txt` does not include `pickup_type` or
+`drop_off_type`, or `timepoint`, so this snapshot uses the GTFS defaults. The
+inspector and artifact schema must nevertheless preserve those columns when
+later snapshots provide them; they are occurrence-level rules and cannot be
+inferred from a canonical platform's general boarding status or from the time
+value alone.
+
+Publish it as a generated, versioned Pages/archive artifact with its own
+manifest hash. It is derived from LTA data and must carry the applicable
+attribution and licence notice. Confirm that the LTA terms permit this derived
+publication before releasing it publicly. Unchanged-feed redistribution may be
+added separately if useful and permitted, but it is not required for the first
+consumer.
+
+An MRTDown frequency-derived GTFS feed is not an initial outcome. Reconsider it
+only if a later audit identifies a concrete schedule gap that neither the LTA
+feed nor the scheduled-arrivals artifact can meet.
+
+### Service alerts role
+
+Service alerts are candidates for the existing issue/evidence/impact path. The
+first contract should cover only fields observed in the supplied sample plus
+the required GTFS Realtime envelope:
+
+- feed version, incrementality, optional feed timestamp, and retrieval time;
+- entity id, selected static snapshot manifest, and mapping version;
+- all populated selectors;
+- all active periods, preserving open bounds;
+- cause, effect, translations, and rider-facing URL; and
+- the exact normalized source text used by triage.
+
+Whitespace-only headers fall back to the description for evidence formatting.
+The original fields remain in provenance. Route and agency selectors must map
+through the versioned static reconciliation; unmatched selectors are retained
+for diagnosis and are not guessed.
+
+Use two separate idempotency identities. The processing/remap key contains the
+provider, feed type, selected static snapshot manifest, mapping version, entity
+id, and normalized source-payload digest, so a reconciliation change reruns
+selector matching. After mapping, compute a canonical-write key from provider,
+feed type, entity id, and a digest of the normalized alert semantics plus mapped
+canonical scope. If remapping produces the same canonical-write key, record the
+processing result as a reference to the existing evidence and append no evidence
+or impact events. Append an update only when the mapped canonical semantics
+change. Do not design disappearance-as-resolution behavior until at least two
+ordered captures demonstrate the provider's entity lifecycle. Do not accept
+`DIFFERENTIAL` feeds until an actual sample and ordering contract are audited.
+
+### Trip updates role
+
+Trip updates remain a runtime concern, not canonical historical evidence. The
+only repository work before a non-empty sample is:
+
+- validate the GTFS Realtime envelope;
+- record capture and selected-static-snapshot provenance; and
+- report entity counts and timestamps without treating an empty feed as an
+  error.
+
+Collect non-empty captures during normal service and a disruption or planned
+adjustment. Once those exist, write a separate implementation plan from the
+observed combinations of trip descriptors, stop-time updates, schedule
+relationships, timestamps, and static-feed references. That later plan owns
+freshness, precedence, suppression, and cache semantics.
+
+Vehicle positions are out of scope unless LTA publishes them and a consumer
+need is identified.
 
 ## Ownership Boundary
 
-This repository should own:
+This repository owns:
 
-- canonical MRTDown-to-GTFS id mapping;
-- GTFS Static generation from reviewed canonical data;
-- generated static feed validation and publication;
-- schemas for any GTFS-specific source metadata kept in canonical data;
-- ingest contracts for trusted GTFS Realtime observations that should become
-  canonical evidence;
-- replayable conversion from GTFS Realtime service alerts to issue evidence and
-  impact events.
+- deterministic offline inspection of supplied GTFS files;
+- versioned LTA-to-MRTDown mappings and reconciliation reports;
+- validation of references, coverage, and mapping drift;
+- generation and licensed publication of the scheduled-arrivals artifact;
+- the trusted service-alert ingest contract and canonical provenance; and
+- deterministic fixtures derived or retained under the applicable licence.
 
-Runtime systems or external producers should own:
+An external producer or runtime owns:
 
-- live GTFS Realtime polling;
-- freshness, retry, and backoff policy;
-- feed credentials and provider-specific transport details;
-- low-latency public feed serving;
-- realtime vehicle-position fanout and trip-update caching;
-- operational alerts that are not accepted into canonical history.
+- DataMall account keys and authenticated dataset-link requests;
+- prompt download and durable storage of temporary linked files;
+- retrieval cadence, retries, and freshness monitoring;
+- live trip-update matching and consumer serving; and
+- alert polling and ordered delivery to the canonical ingester.
 
-## Static Feed Shape
+The producer handoff records the LTA dataset or endpoint identity, a
+discriminated feed kind (`schedule`, `trip_updates`, or `service_alerts`),
+`retrieved_at`, any provider publication timestamp, the file manifest or
+digest, an immutable archive reference, and licence attribution. Feed kind is
+required even when a realtime file has no entities because its header does not
+identify the originating dataset. The handoff never records the account key or
+temporary URL.
 
-The first generated GTFS Static feed should prioritize the tables needed for a
-useful rail network feed:
-
-- `agency.txt`
-- `stops.txt`
-- `routes.txt`
-- `trips.txt`
-- `stop_times.txt`
-- `calendar.txt` or `calendar_dates.txt`
-- `feed_info.txt`
-
-Candidate follow-up tables:
-
-- `shapes.txt`, once geometry expectations are settled;
-- `transfers.txt`, once interchange and transfer rules are represented clearly;
-- `frequencies.txt`, using the estimated-frequency model once reviewed relative
-  stop times are available.
-
-Generated files should be treated as artifacts. The source of truth remains the
-canonical JSON data plus generator code and any reviewed GTFS mapping metadata.
-
-### Frequency Estimation Decision
-
-Canonical service revisions may store source-backed estimated headway ranges,
-including a deterministic representative value and calendar-specific override
-periods. Generator code combines those inputs with each station's canonical
-first and last train times to produce non-overlapping station-level windows.
-This preserves short starters and distinct weekday, Saturday, and
-Sunday/public-holiday bounds that a service-wide operating window cannot
-represent. A deterministic enumerator expands each window using intervals
-distributed as evenly as possible around the representative headway. This
-keeps frequency-window boundaries and the canonical last train aligned without
-adding an implausibly short final gap. Interior estimates are quantized to 30
-seconds, the smallest unit needed for the 150-second peak midpoint, rather than
-implying arbitrary second-level precision. Internal window ends are exclusive,
-while canonical first and last trains are retained and labelled as source
-anchors. Every interior departure is explicitly labelled as a frequency
-estimate. The generated schedules are artifacts and do not belong under
-`data/`.
-
-The current profiles cover the NEL, DTL, EWL main, NSL, TEL, BPLRT, PGLRT, and
-SKLRT service revisions using
-[LTA's system-wide rail guidance](https://www.lta.gov.sg/content/ltagov/en/getting_around/public_transport/rail_network.html):
-two to three minutes during the 07:00–09:00 peak and five to seven minutes
-otherwise. Because LTA does not specify the applicable days, the profiles treat
-the peak window as weekday-only and record that modelling assumption in the
-source description. The representative values are the range midpoints, 150 and
-360 seconds. These are explicitly estimates, not exact departures; a GTFS
-export should therefore map them to `frequencies.txt` with `exact_times=0`.
-
-PGLRT and SKLRT station timing anchors are calibrated estimates: SBS Transit
-loop-origin first/last times are combined with MRTDown-maintainer video-traced
-loop runtimes and stop offsets. The timing records retain
-`loop_runtime_extrapolation` provenance; reverse directions explicitly assume
-parallel tracks and their first/last anchors are exposed with medium rather than
-high confidence. They must be replaced when detailed current operator timings
-become available. BPLRT has complete source-backed station first/last times
-for both active loop directions, so it uses the same LTA frequency profile and
-retains its repeated interchange stop in full-service schedule generation. CCL
-station timings still lack complete directional coverage, the EWL airport
-shuttle is deferred, and future CRL/JRL services do not yet have operating
-timings.
-
-Station-level windows are not directly `frequencies.txt` rows. A GTFS export
-must first group compatible windows into full-length and short-start trip
-patterns. These profiles do not invent that grouping or `stop_times.txt`;
-relative stop times still require reviewed segment runtime and dwell-time
-inputs.
-
-For user-facing next-train estimates, consumers should not use the enumerated
-departure artifacts as if they were live predictions: frequency guidance does
-not reveal a train's phase within a headway. Core therefore returns three
-single, clearly labelled frequency-based arrival estimates. During service the
-first estimate uses half the representative headway and the following two use
-the applicable representative headway. The sourced first and last trains remain
-exact anchors. These are planning estimates, not realtime predictions, while
-no train-position feed is available.
-
-Consumers may optionally overlay fresh, station/service/direction-scoped
-commuter reports on the first arrival. A single fresh, uncontradicted report is
-the best available estimate and is labelled as a high-confidence `crowd_report`;
-reports predicting nearby arrivals are medianed. Materially conflicting reports
-favour the newest report and lower its confidence, while following arrivals
-continue from the frequency model. Report scoping and trust or moderation remain
-the caller's responsibility.
-
-### Geometry And Stop Offset Estimation
-
-[LTA DataMall's geospatial datasets](https://datamall.lta.gov.sg/content/datamall/en/static-data.html)
-include rail infrastructure as ESRI shapefiles. Ordered station coordinates can
-label otherwise unlabelled linework by snapping each service path to nearby
-geometry. The resulting along-track distance is suitable for `shapes.txt`,
-distance metadata, and anomaly checks.
-
-Distance alone is not a sufficient timing model. Curves, acceleration,
-deceleration, dwell time, and minute-rounded source timings cause materially
-different effective speeds between adjacent stations. Stop offsets should be
-anchored to observed first/last-train chains where possible. Geometry may fill
-or flag gaps only through an explicit, calibrated estimation method whose
-assumptions and provenance are retained.
-
-## GTFS Id Policy
-
-GTFS ids should be stable and human-inspectable:
-
-- `agency_id`: canonical operator id, such as `SMRT_TRAINS`.
-- `route_id`: canonical line id, such as `NSL`.
-- `stop_id`: canonical station id for station-level stops, such as `JUR`.
-- `trip_id`: deterministic service revision, direction, and schedule identity.
-- `service_id`: deterministic calendar or operating-window identity.
-
-If GTFS needs platform-level stop ids later, introduce explicit child stops
-without changing existing station-level stop ids. Do not encode transient dates,
-generated counters, or file ordering into public ids.
+Before artifact generation, an authorized acquisition step must materialize the
+exact schedule snapshot and its handoff record in the build workspace. The
+offline generator accepts those local paths, verifies the recorded digest, and
+refuses to build when either input is missing or mismatched. The Pages build
+does not download LTA data; the acquisition system passes the verified input as
+a retained licensed file or a protected pre-build artifact according to the
+confirmed terms.
 
 ## Phases
 
-### Phase 1: Reference Inventory And Gap Analysis
+### Phase 1: Make the snapshot audit reproducible
 
-- Inventory the current canonical station, line, service, and operator fields
-  against required GTFS Static fields.
-- Record missing source data, including agency timezone/language, route type,
-  stop wheelchair/accessibility details, platform granularity, service
-  calendars, and schedule/headway assumptions.
-- Use source-backed frequency estimates for the initial timetable-like
-  approximation bounded by station first/last train times.
-- Document whether LRT loop services should use `stop_times.txt` trips,
-  `frequencies.txt`, or both; the MRT frequency profiles do not settle the LRT
-  representation.
-- Decide the initial feed path in the Pages artifact, such as
-  `gtfs/static.zip`.
-
-Exit criteria:
-
-- Required GTFS fields are mapped to canonical fields or listed as explicit
-  new data requirements.
-- The first feed scope is small enough to validate deterministically.
-- Open data gaps are documented before generator work starts.
-
-### Phase 2: Core Schemas And Mapping Metadata
-
-- Add core schemas for GTFS export metadata if canonical data needs fields that
-  do not belong in existing line, service, station, or operator records.
-- Add typed helpers for MRTDown-to-GTFS id generation.
-- Add validation rules for duplicate ids, missing references, unsupported
-  service paths, and inconsistent operating windows.
-- Add fixtures that cover MRT, LRT loop, interchange, future station, and
-  closed/revised service cases.
+- Add an offline inspector that accepts an unpacked schedule directory or
+  downloaded protobuf file; it must not perform network requests.
+- Emit a deterministic manifest and a concise JSON report covering feed
+  metadata, table counts, reference integrity, route/operator coverage,
+  station/platform/entrance counts, calendar range, trip-pattern counts, and
+  realtime entity counts.
+- Run the inspector against the supplied captures and store the report. Retain
+  a local copy only where the licence and repository-size policy permit;
+  otherwise keep the full hashes and an immutable archive reference from which
+  an authorized maintainer can retrieve and hash-verify the exact input.
+- Run an independent GTFS validator against the schedule and record findings
+  separately from MRTDown reconciliation warnings.
+- Check in a validator lock record naming the validator implementation, exact
+  version and executable or container digest, configuration, and complete
+  invocation. Record the lock digest with each report and run only that pinned
+  configuration for reproducible audit results; upgrades produce a separately
+  identified report rather than rewriting prior findings.
 
 Exit criteria:
 
-- GTFS mapping metadata is schema-validated with deterministic tests.
-- Existing canonical records can be converted to stable GTFS ids.
-- Validation fails on broken references before writing feed files.
+- Given authorized access to either the retained local copy or immutable
+  archive, another maintainer can obtain and hash-verify the identified input,
+  then reproduce the recorded audit offline. The inspector itself requires no
+  credentials or network access after input acquisition.
+- Structural GTFS errors and MRTDown mapping gaps are reported separately, and
+  the structural result is reproducible with the recorded validator lock.
 
-### Phase 3: Static Generator
+### Phase 2: Add reviewed static reconciliation
 
-- Add a deterministic GTFS Static generator, likely under `packages/fs` or
-  `packages/cli` depending on whether the output is considered repository I/O
-  or command orchestration.
-- Generate CSV tables with stable row ordering and reproducible zip output.
-- Generate `agency.txt`, `stops.txt`, `routes.txt`, `trips.txt`,
-  `stop_times.txt`, calendar data, `feed_info.txt`, and `frequencies.txt` for
-  services with estimated frequency profiles.
-- Add CLI commands to generate, inspect, and validate GTFS output.
-- Add tests that compare generated fixture output against committed snapshots
-  or normalized table rows.
-
-Exit criteria:
-
-- A fixture feed can be generated without network access.
-- The generated feed is deterministic across repeated runs.
-- The CLI can explain which canonical record produced each major GTFS id.
-
-### Phase 4: Static Publication
-
-- Include the generated static GTFS feed in `npm run pages:build`.
-- Add manifest metadata that advertises the feed path, generated timestamp,
-  source repository revision, and schema/generator version.
-- Keep generated GTFS artifacts out of hand-authored data unless the repository
-  deliberately commits generated outputs for review.
-- Update README and package docs with the supported feed path and regeneration
-  commands.
+- Define a small versioned mapping artifact for agencies, routes, stops, and
+  trip patterns, keyed to the source manifest, exact canonical repository
+  commit, and schedule-topology fingerprint.
+- Propose station matches from codes and parent relationships, but require
+  review for ambiguity and unmatched records.
+- Compare ordered provider trip patterns with canonical service revisions.
+- Report future canonical entities absent from the schedule without treating
+  them as provider errors.
+- Add drift tests using a second schedule capture before claiming provider id
+  stability.
 
 Exit criteria:
 
-- Preview and main Pages builds publish the same deterministic static GTFS feed.
-- Downstream consumers can discover the feed through the archive/index metadata.
-- CI catches stale or invalid generated feed output.
+- Every observed agency and route has a reviewed canonical disposition.
+- Every observed provider stop referenced by `stop_times.txt`, including
+  station parents and platform children, and every trip pattern is matched,
+  intentionally ignored, or listed as unresolved. Any unresolved agency,
+  route, referenced stop, platform, or trip pattern blocks Phase 3 generation.
+- Re-running the same snapshot against the same canonical repository commit
+  produces byte-identical mappings and reports.
 
-### Phase 5: GTFS Realtime Contract Boundary
+### Phase 3: Generate the scheduled-arrivals artifact
 
-- Define which GTFS Realtime message types are in scope:
-  `ServiceAlert`, `TripUpdate`, and `VehiclePosition`.
-- Start with `ServiceAlert` because it maps most directly to canonical issue
-  evidence and impact.
-- Add ingest-contract schemas for trusted GTFS Realtime observations only if
-  they need to enter canonical history.
-- Preserve provider entity ids, GTFS ids, timestamps, effect/cause fields, and
-  source URL or source feed metadata.
-- Decide whether raw protobuf payloads are stored, summarized, or omitted from
-  canonical data.
-
-Exit criteria:
-
-- GTFS Realtime support has a documented source-of-truth boundary.
-- A trusted `ServiceAlert` payload can be validated without importing triage
-  internals.
-- Unsupported live-only realtime data is rejected or ignored deliberately.
-
-### Phase 6: Realtime Evidence Triage
-
-- Teach `packages/triage` to format trusted GTFS Realtime service alerts as
-  evidence text.
-- Map GTFS Realtime alert effects and causes to existing issue, service effect,
-  and facility effect concepts where possible.
-- Persist accepted alerts as ordinary canonical evidence rather than a separate
-  issue model.
-- Add deterministic tests for alert formatting, provenance, time handling, and
-  canonical evidence type mapping.
-- Add paid eval fixtures only if service-alert phrasing introduces ambiguity
-  that deterministic tests cannot cover.
+- Confirm the licence and attribution requirements for retaining fixtures and
+  publishing data derived from the downloaded schedule.
+- Consume only the locally materialized schedule and handoff record supplied by
+  the authorized acquisition step, and verify their manifest before generation.
+- Require the reviewed mapping's recorded schedule-topology fingerprint to
+  match the fingerprint generated for the concurrently published canonical
+  archive. Validate every generated station, line, service, platform, and
+  destination reference against that archive; refuse publication on a
+  fingerprint or reference mismatch. Preserve the recorded repository commit
+  for audit.
+- Define and schema-validate the compact calendar and scheduled-departure
+  records described above.
+- Generate them only from reviewed mappings; unresolved provider records appear
+  in the reconciliation report and cannot be silently omitted.
+- Include the generated artifact and its hash in the Pages/archive output with
+  source provenance, coverage summary, and attribution.
+- Keep the generated artifact outside canonical `data/`; canonical entities and
+  reviewed mapping inputs remain the sources of MRTDown identity.
 
 Exit criteria:
 
-- A GTFS Realtime service alert can create or update a canonical issue through
-  the existing ingest path.
-- Generated impact events remain compatible with current validation and replay
-  utilities.
-- Paid model evals remain opt-in.
+- Rebuilding from the same LTA snapshot, canonical commit, and mapping version
+  produces byte-identical records.
+- Every published departure retains enough provider identity to join a future
+  Trip Update to one trip and stop occurrence.
+- Pickup and drop-off restrictions round-trip for every stop occurrence;
+  fixtures cover restricted boarding/alighting at terminals and short workings
+  even though the supplied snapshot uses the default behavior.
+- The artifact is clearly labelled as an LTA-derived schedule snapshot, not a
+  live feed or an independently observed MRTDown timetable.
+- Publication does not proceed until its licence and attribution treatment is
+  recorded.
 
-### Phase 7: Realtime Publication Decisions
+### Phase 4: Consume scheduled arrivals in `mrtdown-site`
 
-- Decide whether this repository should publish any realtime-derived artifacts
-  in the static archive, such as normalized historical alert snapshots.
-- If publishing snapshots, mark them as archival and not live.
-- Keep live feed serving in `mrtdown-site` or a dedicated runtime service if a
-  consumer needs freshness guarantees.
-- Document consumer behavior for stale alerts, duplicate entity ids, cancelled
-  alerts, and source-feed outages.
+- Extend the existing archive pull pipeline to import the artifact by manifest
+  hash without replacing canonical station, line, or service tables.
+- Select the applicable LTA calendar and service day in Singapore time,
+  including after-midnight times greater than 24:00.
+- For a post-midnight query, build absolute departure instants independently
+  from the previous service date's `24:xx`-or-later trips and the current service
+  date's `00:xx` trips. Apply each date's own calendar exceptions and artifact
+  selection, then merge and sort the eligible departures before choosing the
+  next results.
+- Adapt scheduled records to the existing station-arrivals read model, grouped
+  by canonical station, line, service, destination, and platform.
+- Use scheduled departures where mapping coverage exists. Preserve
+  `timepoint=1` or its GTFS default as an exact scheduled time and label
+  `timepoint=0` as an approximate scheduled time through the API and UI. Fall
+  back to the current frequency estimates only for a recorded coverage gap; do
+  not relabel either kind of LTA scheduled time as a frequency estimate.
+- Preserve an explicit departure basis and snapshot provenance through the API
+  and UI. Document and test how the existing crowd-report overlay is displayed
+  before allowing it to replace a scheduled time.
+
+Each artifact records provider publication/version metadata when present,
+`retrieved_at`, and the trusted import time separately. Validate timestamps
+against import time with a maximum future skew of 300 seconds, but never use
+`retrieved_at` to order source versions: it proves acquisition time, not content
+recency. Automatically order different snapshot digests only with a validated
+provider publication timestamp or provider version whose monotonic semantics
+are documented. Preserve invalid or non-orderable values and their reason.
+
+When no authoritative provider ordering exists, a reviewed lineage decision
+must name the predecessor and successor digests before a different digest can
+become eligible. The first audited snapshot may establish the baseline; later
+unordered digests remain quarantined while the last-known-good baseline stays
+eligible. Retrieval of an older retained archive can therefore never promote it
+as a newer schedule merely because it was downloaded later.
+
+Retain every successfully validated and atomically imported artifact version.
+For each Singapore service date and requested station/service/direction scope,
+first filter to artifacts whose feed range covers the date, whose reviewed
+mapping completely covers the scope, and whose schedule-topology fingerprint
+matches the currently installed canonical data. Select the eligible artifact
+latest in the validated provider or reviewed lineage. A newer ineligible
+artifact does not hide an older eligible one. When a newcomer has the same
+provider version but a different snapshot digest, quarantine only the newcomer.
+Keep the previously selected last-known-good artifact eligible for each affected
+date and scope; if there is no incumbent, select neither digest automatically.
+Replacing the incumbent requires an audited conflict resolution naming both
+digests.
+
+For the same provider-lineage identity and snapshot digest, a reviewed
+correction may replace an earlier mapping or generator result by incrementing
+the artifact's integer `correctionRevision`. Accept only a strictly larger
+revision after full schema, provenance, topology, and reference validation. A
+different artifact hash at the same revision is a conflict and is rejected.
+Selecting an older source snapshot requires an explicit, audited rollback
+override scoped to a service-date range and canonical request scope, naming both
+digests; it changes selection only and does not rewrite provider metadata or
+correction revisions.
+
+A missing artifact, hash mismatch, schema failure, canonical-reference failure,
+invalid source metadata, unresolved lineage, revision conflict, or rejected
+rollback cannot enter the eligible version set. There is no separate capture-age
+threshold for static schedules: validated source lineage, feed-range validity,
+topology identity, and scope coverage are authoritative unless measured
+publication behavior later justifies one. If no artifact is eligible for the
+request, use the documented frequency fallback for a covered canonical service
+or return no result.
 
 Exit criteria:
 
-- There is no ambiguity between static GTFS artifacts, canonical historical
-  evidence, and live realtime feed serving.
-- Consumers know which repository or service to use for each need.
+- A station page can return the next scheduled departures from the supplied
+  LTA snapshot using MRTDown station and service ids.
+- Platform, destination, service-day, calendar-exception, and after-midnight
+  fixtures produce the expected departures, including merged previous/current
+  service dates and exact/default/approximate `timepoint` behavior.
+- Fixtures cover valid and future-skewed provider timestamps, retrieval order
+  differing from provider lineage, a baseline and reviewed successor without
+  provider version metadata, an unresolved lineage, a newer source snapshot, a
+  future-dated snapshot that is not yet date-eligible, per-scope fallback to an
+  older eligible snapshot, same-source correction revision and revision
+  conflict, accidental rollback rejection, an explicitly scoped audited
+  rollback, equal-version digest conflict with and without a last-known-good
+  incumbent, audited conflict resolution, a missing or hash-invalid artifact,
+  canonical-reference or topology mismatch, an expired feed range, incomplete
+  mapping coverage, frequency fallback, and no result.
+
+### Phase 5: Prove service-alert ingestion
+
+- Add a trusted ingest-contract fixture representing the two supplied alerts,
+  subject to the confirmed fixture-retention terms.
+- Map the observed agency and route selectors through the selected static
+  reconciliation.
+- Format whitespace-only headers, descriptions, URLs, causes, effects, and
+  open/bounded active periods deterministically.
+- Extend the rights registry or resolve its URL policy for `go.gov.sg` before
+  a canonical evidence record uses that URL.
+- Persist accepted alerts as ordinary evidence with versioned GTFS source
+  metadata; keep raw protobuf retention a separate licence/storage decision.
+- Prove identical complete snapshots do not create duplicate evidence.
+- Prove a snapshot or mapping refresh reruns selector reconciliation but appends
+  no canonical write when the mapped alert semantics are unchanged, and appends
+  one update when the mapped canonical scope changes.
+
+Exit criteria:
+
+- Both observed alert shapes validate and produce deterministic normalized
+  candidates.
+- Unmatched selectors and unclassified source URLs fail safely without model
+  calls or canonical writes.
+- The ingest path preserves provider periods and prose without conflating
+  their dates.
+- Processing/remap and canonical-write idempotency keys have independent,
+  deterministic fixture coverage.
+
+### Phase 6: Observe trip updates before designing runtime behavior
+
+- Record the empty supplied capture as a valid zero-entity fixture.
+- Collect multiple non-empty captures paired with the exact static schedule
+  version used by LTA at that time.
+- Measure update cadence and enumerate the fields and enum values LTA actually
+  emits.
+- Open a focused implementation plan for live trip updates only after this
+  corpus exists.
+
+Exit criteria:
+
+- At least one normal-service and one changed-service non-empty capture can be
+  reconciled to an identified static snapshot.
+- Freshness, matching, cancellation, and fallback rules are based on observed
+  provider behavior rather than hypothetical GTFS Realtime combinations.
 
 ## Open Questions
 
-- What is the authoritative schedule source for trip times, and is it
-  reviewable enough to commit or regenerate deterministically?
-- Should the first GTFS Static feed model Singapore rail as schedule-based
-  trips, frequency-based service windows, or a hybrid?
-- Are platform-level stops required for the first consumer, or are
-  station-level stops sufficient?
-- Should `shapes.txt` be derived from station coordinates, schematic map data,
-  or omitted until a reviewed geometry source exists?
-- Which external producer, if any, will submit trusted GTFS Realtime
-  `ServiceAlert` payloads?
-- Should realtime source payloads be stored verbatim, normalized, or only
-  summarized into canonical evidence?
+- What LTA terms apply specifically to retaining the downloaded train files and
+  publishing a mapped scheduled-arrivals artifact?
+- How stable are route, stop, trip, and calendar ids across schedule releases?
+- Does LTA publish a schedule version or timestamp outside `feed_info.txt` that
+  should identify the static snapshot?
+- Is the open-ended DTL alert period intentional provider behavior, and how do
+  entities change or disappear across consecutive complete alert snapshots?
+- When and under what operating conditions does the trip-update file contain
+  entities?
+- Should fresh crowd reports replace one scheduled departure, or remain a
+  separate community estimate alongside the LTA schedule?
 
 ## Progress Log
 
-- 2026-05-27: Created initial active plan from GitHub issue #157.
+- 2026-05-27: Created the initial plan from issue #157.
+- 2026-08-12: Reoriented the plan around LTA's documented train GTFS download
+  endpoints and an external credentialed producer.
+- 2026-08-13: Audited supplied schedule, service-alert, and trip-update files.
+  Replaced speculative synthetic-timetable and trip-update runtime design with
+  measured static reconciliation, a narrow alert-ingest proof, and a non-empty
+  trip-update capture gate.
+- 2026-08-14: Selected a concrete first consumer: map the LTA schedule to
+  canonical MRTDown identities, publish a scheduled-arrivals artifact, and use
+  it as `mrtdown-site`'s exact schedule baseline.
 
 ## Decision Log
 
-- 2026-05-27: Treat GTFS Static as a generated Pages/archive artifact owned by
-  this repository.
-- 2026-05-27: Keep live GTFS Realtime polling and low-latency serving outside
-  this repository.
-- 2026-05-27: Start realtime support with service-alert ingest because it maps
-  to existing canonical issue/evidence/impact records.
-- 2026-05-27: Do not add vehicle positions or trip updates to canonical history
-  until there is a durable reviewed-data use case.
+- Keep authenticated download, polling, and live serving outside this
+  repository.
+- Use LTA's exact schedule as the candidate timetable source; do not build an
+  MRTDown frequency-derived feed in the initial scope.
+- Keep provider ids separate from canonical MRTDown ids through versioned
+  mappings.
+- Publish a compact LTA-derived scheduled-arrivals artifact keyed by canonical
+  MRTDown identities, while retaining provider trip and stop identities for
+  later realtime joins.
+- Start canonical realtime work with service alerts because the supplied sample
+  maps to the existing evidence model.
+- Defer trip-update runtime semantics until non-empty provider captures exist.
+- Keep vehicle positions out of scope.
 
 ## Validation
 
-- `npm run build:core`
-- `npm run test:core`
-- `npm run build:fs`
-- `npm run test:fs`
-- `npm run build:cli`
-- `npm run test:cli`
-- `npm run build:ingest-contracts` once realtime ingest contracts are added.
-- `npm run test:ingest-contracts` once realtime ingest contracts are added.
-- `npm run build:triage` once realtime alert triage is added.
-- `npm run test:triage` once realtime alert triage is added.
+Implementation phases must keep these deterministic checks truthful:
+
+- `npm run lint`
+- `npm run typecheck`
+- `npm test`
 - `npm run data:validate`
-- `npm run pages:build`
+- `npm run pages:build` when publication changes
 - `npm run check`
+
+Live downloads and paid model evals are never part of the deterministic check
+suite.
