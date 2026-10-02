@@ -52,7 +52,7 @@
     "@types/luxon": "^3.7.1",
     "@types/node": "24.13.2",
     "typescript": "^5.8.3",
-    "vitest": "^4.1.8",
+    "vitest": "^4.1.11",
     "vitest-evals": "^0.12.0"
   }
 }
