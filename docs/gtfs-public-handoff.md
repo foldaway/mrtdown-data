@@ -49,8 +49,8 @@ Published alerts/trip updates do not dispatch to the schedule workflow.
 
 ## Provisioning
 
-Create **`mrtdown-gtfs-public`** as an R2 Standard bucket. Attach a custom domain,
-for example **`snapshots.mrtdown.org`**, using bucket Settings → Custom Domains.
+Create **`mrtdown-public-snapshots`** as an R2 Standard bucket. Attach a custom domain,
+for example **`sources.mrtdown.org`**, using bucket Settings → Custom Domains.
 Keep `r2.dev` access disabled; the production URL is the custom domain. No R2 API
 credentials are required by `mrtdown-data` for this handoff.
 
@@ -59,7 +59,7 @@ exists and the domain is active:
 
 1. Set the GitHub Actions repository variable `GTFS_SNAPSHOT_BASE_URL` in
    `foldaway/mrtdown-data` to the HTTPS origin, e.g.
-   `https://snapshots.mrtdown.org` (no path/query).
+   `https://sources.mrtdown.org` (no path/query).
 2. Land `.github/workflows/gtfs-capture.yml` on the default branch before enabling
    notifications; repository dispatch workflows run from the default branch.
 3. Enable `GTFS_PUBLICATION_ENABLED` in crawler production and deploy deliberately.
@@ -91,7 +91,7 @@ For a local smoke test after publication:
 
 ```sh
 npm run build:cli
-GTFS_SNAPSHOT_BASE_URL=https://snapshots.mrtdown.org \
+GTFS_SNAPSHOT_BASE_URL=https://sources.mrtdown.org \
 GTFS_CAPTURE_KEY=captures/schedule/<sha256>.json \
 GTFS_INPUT_DIR=/tmp/new-gtfs-input \
 node scripts/acquire-gtfs-capture.mjs
