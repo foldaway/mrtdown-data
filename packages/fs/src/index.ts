@@ -1,5 +1,6 @@
 export * from './constants.js';
 export * from './entities.js';
+export * from './gtfs/index.js';
 export * from './id.js';
 export * from './issues.js';
 export * from './json.js';

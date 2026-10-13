@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { parseArgs } from './args.js';
 import { runCreate, runId } from './commands/create.js';
 import { runList, runShow, runValidate } from './commands/data.js';
+import { runGtfs } from './commands/gtfs.js';
 import { runIssue } from './commands/issue.js';
 import { runManifest, runPagesIndex } from './commands/manifest.js';
 import { runSchematicMap } from './commands/schematicMap.js';
@@ -26,6 +27,8 @@ export async function runCli(
     const verb = command.shift();
 
     switch (verb) {
+      case 'gtfs':
+        return await runGtfs(command, globals, io);
       case 'validate':
         return await runValidate(command, globals, io);
       case 'list':
