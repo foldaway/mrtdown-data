@@ -44,6 +44,6 @@
     "@types/hast": "^3.0.4",
     "@types/node": "24.13.2",
     "typescript": "^5.8.3",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.11"
   }
 }
