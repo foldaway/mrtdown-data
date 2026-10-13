@@ -272,6 +272,10 @@ This repository owns:
 - the trusted service-alert ingest contract and canonical provenance; and
 - deterministic fixtures derived or retained under the applicable licence.
 
+`mrtdown-data-crawler` is the external acquisition producer. Its DataMall
+pipeline retains originals and capture records in private R2; deployment is
+separate from this repository.
+
 An external producer or runtime owns:
 
 - DataMall account keys and authenticated dataset-link requests;
@@ -512,8 +516,9 @@ Exit criteria:
 
 Exit criteria:
 
-- At least one normal-service and one changed-service non-empty capture can be
-  reconciled to an identified static snapshot.
+- Multiple non-empty disruption captures can be reconciled to an identified
+  static snapshot. Record normal-service behavior as observed, including empty
+  captures; the disruption-focused API does not promise normal-service entities.
 - Freshness, matching, cancellation, and fallback rules are based on observed
   provider behavior rather than hypothetical GTFS Realtime combinations.
 
@@ -526,12 +531,19 @@ Exit criteria:
   should identify the static snapshot?
 - Is the open-ended DTL alert period intentional provider behavior, and how do
   entities change or disappear across consecutive complete alert snapshots?
-- When and under what operating conditions does the trip-update file contain
-  entities?
+- What useful trip-update entities does LTA emit during disruptions? API guide
+  v6.10 describes this feed as disruption-focused; normal-service nonempty
+  captures may not be available.
 - Should fresh crowd reports replace one scheduled departure, or remain a
   separate community estimate alongside the LTA schedule?
 
 ## Progress Log
+
+- 2026-10-12: Added local capture/hash verification, ZIP/CSV and realtime
+  inspection, and a versioned schedule-topology fingerprint. See
+  [local inspection](../../gtfs-local-inspection.md). Synthetic tests pass
+  independently of provider acquisition; historical capture audit, unpacked
+  input and pinned independent validation remain open. Phase 1 is not complete.
 
 - 2026-05-27: Created the initial plan from issue #157.
 - 2026-08-12: Reoriented the plan around LTA's documented train GTFS download

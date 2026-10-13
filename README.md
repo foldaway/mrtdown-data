@@ -191,3 +191,6 @@ canonical `data/` remains untouched.
   change.
 
 Agent-specific repository guidance lives in `AGENTS.md`.
+
+GTFS snapshot inspection is available locally; see
+[local GTFS inspection](docs/gtfs-local-inspection.md).
