@@ -1,0 +1,44 @@
+name: Inspect public GTFS schedule capture
+
+on:
+  repository_dispatch:
+    types: [gtfs_capture]
+  workflow_dispatch:
+    inputs:
+      capture_key:
+        description: Content-addressed schedule capture key
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build:cli
+      - name: Acquire referenced snapshot
+        env:
+          GTFS_SNAPSHOT_BASE_URL: ${{ vars.GTFS_SNAPSHOT_BASE_URL }}
+          GTFS_CAPTURE_KEY: ${{ github.event.client_payload.capture_key || inputs.capture_key }}
+          GTFS_INPUT_DIR: ${{ runner.temp }}/gtfs-input
+        run: node scripts/acquire-gtfs-capture.mjs
+      - name: Inspect verified local snapshot
+        run: >-
+          node packages/cli/dist/index.js gtfs inspect
+          --file "$RUNNER_TEMP/gtfs-input/schedule.zip"
+          --capture "$RUNNER_TEMP/gtfs-input/capture.json"
+          --write "$RUNNER_TEMP/gtfs-report.json"
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: gtfs-inspection-${{ github.run_id }}
+          path: ${{ runner.temp }}/gtfs-report.json
+          if-no-files-found: ignore

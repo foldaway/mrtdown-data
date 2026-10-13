@@ -14,7 +14,7 @@ export const CaptureSchema = z
     byte_length: z.number().int().positive(),
     archive_ref: z.string().min(1),
     attribution: z.string().min(1),
-    rights_status: z.literal('pending_review'),
+    rights_status: z.enum(['pending_review', 'redistribution_permitted']),
     licence_reference: z.url(),
   })
   .strict();
