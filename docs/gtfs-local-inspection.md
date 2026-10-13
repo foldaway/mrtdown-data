@@ -26,7 +26,8 @@ resolves the archive reference or fetches a URL.
 ## Checks and reports
 
 Capture schema v1 matches the crawler: kind, source endpoint, retrieval time,
-byte count, SHA-256, archive reference, attribution and pending rights review.
+byte count, SHA-256, archive reference, attribution and publication rights status.
+Both original pending-review and public redistribution-permitted records validate.
 File bytes must match both count and digest before parsing. Source endpoint must
 match the declared kind. Capture metadata is preserved as supplied; inspection
 does not grant publication rights.
@@ -68,3 +69,6 @@ Unpacked-directory input, pinned independent validation, reviewed mappings,
 second-capture drift checks, scheduled-arrivals generation/publication and alert
 writes remain future phases. No network calls, model calls or canonical writes
 are performed by these commands.
+
+See [public snapshot handoff](gtfs-public-handoff.md) for the separate acquisition
+step and GitHub schedule-inspection workflow.

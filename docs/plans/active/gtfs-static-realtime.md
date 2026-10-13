@@ -539,6 +539,11 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-12: Added opt-in public GTFS snapshot handoff from the crawler,
+  hash-verified acquisition and a read-only schedule inspection workflow.
+  See [public handoff](../../gtfs-public-handoff.md). No canonical mappings
+  or publication of derived arrivals are enabled by this workflow.
+
 - 2026-10-12: Added local capture/hash verification, ZIP/CSV and realtime
   inspection, and a versioned schedule-topology fingerprint. See
   [local inspection](../../gtfs-local-inspection.md). Synthetic tests pass
