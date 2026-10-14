@@ -1,5 +1,14 @@
 # @mrtdown/cli
 
+## 2.0.0-alpha.38
+
+### Patch Changes
+
+- Updated dependencies [9d75a31]
+- Updated dependencies [9d75a31]
+  - @mrtdown/fs@2.0.0-alpha.35
+  - @mrtdown/triage@2.0.0-alpha.42
+
 ## 2.0.0-alpha.37
 
 ### Patch Changes

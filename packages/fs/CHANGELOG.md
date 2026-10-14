@@ -1,5 +1,15 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.35
+
+### Minor Changes
+
+- 9d75a31: Add offline GTFS capture verification and inspection, plus a versioned canonical schedule-topology fingerprint for future reviewed reconciliation.
+
+### Patch Changes
+
+- 9d75a31: Accept explicitly attributed public GTFS capture records alongside original private records.
+
 ## 2.0.0-alpha.34
 
 ### Patch Changes

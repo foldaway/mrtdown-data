@@ -1,6 +1,6 @@
 {
   "name": "@mrtdown/fs",
-  "version": "2.0.0-alpha.34",
+  "version": "2.0.0-alpha.35",
   "description": "File-backed repositories and writers for MRTDown data",
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
   "bugs": {
