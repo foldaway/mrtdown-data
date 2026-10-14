@@ -6,7 +6,7 @@ import GtfsRealtime from 'gtfs-realtime-bindings';
 import { describe, expect, it } from 'vitest';
 import { hashBytes } from './capture.js';
 import { inspectGtfsCapture } from './inspect.js';
-import { auditSchedule, readSchedule } from './schedule.js';
+import { auditSchedule, gtfsTimeSeconds, readSchedule } from './schedule.js';
 
 function scheduleFixture(overrides: Record<string, string> = {}) {
   const tables = {
@@ -183,4 +183,33 @@ describe('offline GTFS inspection', () => {
     ).rejects.toThrow('unexpected entity');
     await expect(inspect(new Uint8Array(), 'trip_updates')).rejects.toThrow();
   });
+});
+
+// GTFS Time accepts H:MM:SS as well as HH:MM:SS, including hours after midnight.
+it.each([
+  ['6:21:30', 22890],
+  ['06:21:30', 22890],
+  ['0:00:00', 0],
+  ['24:10:00', 87000],
+])('parses valid GTFS time %s', (value, seconds) => {
+  expect(gtfsTimeSeconds(value)).toBe(seconds);
+});
+
+it.each([
+  '6:60:00',
+  '6:21:60',
+  '6:1:30',
+  '-1:00:00',
+])('rejects invalid GTFS time %s', (value) => {
+  expect(gtfsTimeSeconds(value)).toBeNull();
+});
+
+it('audits single-digit-hour arrival and departure times without false errors', () => {
+  const { tables } = readSchedule(
+    scheduleFixture({
+      'stop_times.txt':
+        'trip_id,arrival_time,departure_time,stop_id,stop_sequence\nT,6:21:30,6:21:30,P,1\nT,6:23:10,6:23:10,P,2\n',
+    }),
+  );
+  expect(auditSchedule(tables).structuralErrors).toEqual([]);
 });
