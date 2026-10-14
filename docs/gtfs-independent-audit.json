@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "inputSha256": "e459a22be6c99a3728ee97770c02c4edbaee6c9293e48017e8ec28139962fa19",
+  "inputBytes": 2991884,
+  "validatorLockSha256": "79f0c2893f0cd5264e4a23c302331de69b405d651913467616d9b394f5251b16",
+  "validatorVersion": "8.0.1",
+  "dateForValidation": "2026-10-14",
+  "systemErrors": 0,
+  "notices": [
+    {
+      "code": "duplicate_route_name",
+      "severity": "WARNING",
+      "totalNotices": 103
+    },
+    {
+      "code": "feed_valid_beyond_total_service_window",
+      "severity": "INFO",
+      "totalNotices": 1
+    },
+    {
+      "code": "missing_feed_contact_email_and_url",
+      "severity": "WARNING",
+      "totalNotices": 1
+    },
+    {
+      "code": "mixed_case_recommended_field",
+      "severity": "WARNING",
+      "totalNotices": 13
+    }
+  ]
+}

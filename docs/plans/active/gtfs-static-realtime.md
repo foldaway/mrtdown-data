@@ -273,7 +273,7 @@ This repository owns:
 - deterministic fixtures derived or retained under the applicable licence.
 
 `mrtdown-data-crawler` is the external acquisition producer. Its DataMall
-pipeline retains originals and capture records in private R2; deployment is
+pipeline retains originals and capture records in private Tigris; deployment is
 separate from this repository.
 
 An external producer or runtime owns:
@@ -538,6 +538,19 @@ Exit criteria:
   separate community estimate alongside the LTA schedule?
 
 ## Progress Log
+
+- 2026-10-14: Added MobilityData validator 8.0.1 with a SHA-256 executable
+  lock, fixed SG/date/thread/update-check configuration and separate CI findings.
+  Audited public schedule `e459a22be6c99a3728ee97770c02c4edbaee6c9293e48017e8ec28139962fa19`
+  (2,991,884 bytes): 113 routes, 1,211 stops, 19,150 trips, 349,768 stop times.
+  Both validators found zero errors; independent warnings/information are recorded
+  in [local inspection](../../gtfs-local-inspection.md). Historical August audit
+  and unpacked-directory inspector support remain open, so Phase 1 is incomplete.
+  Reviewed mappings and a second-capture drift audit remain required.
+- 2026-10-14: Acquisition now runs on Fly.io with signed QStash schedules and
+  separate private/public Tigris buckets. Public handoff succeeded in receiver
+  run 38525057872 after PR #370 fixed valid single-digit-hour parsing. Recent
+  realtime captures do not yet establish useful nonempty trip-update behavior.
 
 - 2026-10-12: Added opt-in public GTFS snapshot handoff from the crawler,
   hash-verified acquisition and a read-only schedule inspection workflow.
