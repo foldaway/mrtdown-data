@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { strToU8, zipSync } from 'fflate';
 import GtfsRealtime from 'gtfs-realtime-bindings';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { hashBytes } from './capture.js';
 import { inspectGtfsCapture } from './inspect.js';
 import { auditSchedule, gtfsTimeSeconds, readSchedule } from './schedule.js';
@@ -26,6 +26,7 @@ function scheduleFixture(overrides: Record<string, string> = {}) {
     Object.fromEntries(
       Object.entries(tables).map(([name, text]) => [name, strToU8(text)]),
     ),
+    { mtime: new Date(2000, 0, 1, 0, 0, 0) },
   );
 }
 
@@ -69,6 +70,17 @@ async function inspect(
 }
 
 describe('offline GTFS inspection', () => {
+  it('builds identical fixture archives across wall-clock changes', () => {
+    vi.useFakeTimers();
+    try {
+      vi.setSystemTime(new Date('2026-10-14T12:00:00Z'));
+      const first = scheduleFixture();
+      vi.setSystemTime(new Date('2026-10-15T12:00:10Z'));
+      expect(scheduleFixture()).toEqual(first);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
   it('produces deterministic schedule reports preserving quoted CSV and repeated stop occurrences', async () => {
     const first = await inspect(scheduleFixture(), 'schedule');
     expect(first).toEqual(await inspect(scheduleFixture(), 'schedule'));
