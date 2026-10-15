@@ -119,13 +119,51 @@ for (const entry of report.entries) {
 }
 const fullCoverageCandidates = (pattern) =>
   pattern.candidates.filter(
-    (candidate) =>
-      candidate.fullDateCoverage &&
-      !candidate.platformConflicts.length &&
-      !candidate.boardingConflicts.length,
+    (candidate) => candidate.fullPlatformDiagnosticCoverage,
   );
+const summarizeScopes = (patterns) =>
+  Object.fromEntries(
+    ['dateScopes', 'platformDiagnosticScopes'].map((key) => [
+      key,
+      {
+        completeUniquePatterns: patterns.filter(
+          (pattern) =>
+            pattern[key].activeDateCount > 0 &&
+            !pattern[key].uncoveredDateCount &&
+            !pattern[key].ambiguousDateCount,
+        ).length,
+        patternsWithUncoveredDates: patterns.filter(
+          (pattern) => pattern[key].uncoveredDateCount > 0,
+        ).length,
+        patternsWithAmbiguousDates: patterns.filter(
+          (pattern) => pattern[key].ambiguousDateCount > 0,
+        ).length,
+        activePatternDates: patterns.reduce(
+          (total, pattern) => total + pattern[key].activeDateCount,
+          0,
+        ),
+        uniquePatternDates: patterns.reduce(
+          (total, pattern) => total + pattern[key].uniqueDateCount,
+          0,
+        ),
+        ambiguousPatternDates: patterns.reduce(
+          (total, pattern) => total + pattern[key].ambiguousDateCount,
+          0,
+        ),
+        uncoveredPatternDates: patterns.reduce(
+          (total, pattern) => total + pattern[key].uncoveredDateCount,
+          0,
+        ),
+      },
+    ]),
+  );
+const wholePatternDateGaps = evidence.patterns.filter(
+  (pattern) =>
+    pattern.candidates.length &&
+    !pattern.candidates.some((candidate) => candidate.fullDateCoverage),
+);
 const summary = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   identity,
   currentCaptureSha256: capture.sha256,
   historicalManifestSha256: historical.input.manifestSha256,
@@ -166,6 +204,14 @@ const summary = {
       (pattern) => fullCoverageCandidates(pattern).length > 1,
     ).length,
   },
+  platformDiagnosticBasis: evidence.platformDiagnosticBasis,
+  scopedEvidence: {
+    allPatterns: summarizeScopes(evidence.patterns),
+    wholePatternDateGaps: {
+      patternCount: wholePatternDateGaps.length,
+      ...summarizeScopes(wholePatternDateGaps),
+    },
+  },
   driftTables: drift.tables,
   generationEligible: false,
 };
@@ -179,6 +225,7 @@ console.log(
     {
       output: resolve(output),
       patternEvidence: summary.patternEvidence,
+      scopedEvidence: summary.scopedEvidence,
       generationEligible: false,
     },
     null,
