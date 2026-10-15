@@ -432,6 +432,30 @@ describe('GTFS reconciliation evidence and pairwise drift', () => {
       ),
     ).toBe(JSON.stringify(original));
   });
+  it('preserves distinct stop sequence identities beyond the safe integer limit', () => {
+    const { tables } = fixture();
+    const previous = tables['stop_times.txt']?.[1];
+    if (!previous) throw new Error('missing fixture');
+    previous.stop_sequence = '9007199254740992';
+    const next = structuredClone(tables);
+    const changed = next['stop_times.txt']?.[1];
+    if (!changed) throw new Error('missing fixture');
+    changed.stop_sequence = '09007199254740993';
+    const manifest = { 'stop_times.txt': 'a'.repeat(64) };
+    const drift = compareScheduleSnapshots(
+      { tables, manifest },
+      { tables: next, manifest },
+    ).tables.find((table) => table.name === 'stop_times.txt');
+    expect(drift).toMatchObject({
+      unchanged: 1,
+      shared: 1,
+      added: 1,
+      removed: 1,
+    });
+    expect(drift?.normalizedBeforeSha256).not.toBe(
+      drift?.normalizedAfterSha256,
+    );
+  });
   it('distinguishes retained IDs with changed semantics from unchanged normalized records', () => {
     const { tables } = fixture();
     const next = structuredClone(tables);
