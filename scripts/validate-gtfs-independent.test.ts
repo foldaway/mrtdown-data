@@ -10,7 +10,7 @@ afterEach(() => {
     rmSync(directory, { recursive: true, force: true });
   }
 });
-test('rejects an untrusted executable before launching Java or creating output', () => {
+test('rejects an untrusted executable before launching Java and preserves preflight provenance', () => {
   const directory = mkdtempSync(join(tmpdir(), 'gtfs-lock-'));
   directories.push(directory);
   const jar = join(directory, 'wrong.jar');
@@ -30,6 +30,14 @@ test('rejects an untrusted executable before launching Java or creating output',
   expect(result.stderr).toContain(
     'Validator JAR SHA-256 does not match the lock',
   );
+  const provenance = JSON.parse(
+    readFileSync(join(directory, 'output', 'invocation.json'), 'utf8'),
+  );
+  expect(provenance.stage).toBe('jar-preflight');
+  expect(provenance.executionError).toContain('SHA-256 does not match');
+  expect(provenance.observedJarSha256).toMatch(/^[a-f0-9]{64}$/);
+  expect(provenance.invocation).toBeNull();
+  expect(provenance.exitCode).toBeNull();
 });
 test('lock fixes the validation date and disables network update checks', () => {
   const lock = JSON.parse(
