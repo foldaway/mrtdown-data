@@ -1,0 +1,509 @@
+{
+  "schemaVersion": 2,
+  "identity": {
+    "sourceManifest": {
+      "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+      "calendar.txt": "bddb06a1aebe70f984f1dd3576c80ae1a72a76f58b4cd68a6af245368a72a605",
+      "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+      "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+      "routes.txt": "d81b7bb5ce975ca9ca1120dd730db79d70f908cf560533c295fcea67133bb77c",
+      "stop_times.txt": "b6d5289d1b2300531fc627fe1bd6c9b7507a1e57c9ff69358cb7a9ee93991395",
+      "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+      "trips.txt": "f72aaf61d79c25260966bfcc793802b2f8971f6c9ce5edb925b907a34b1df36f"
+    },
+    "canonicalCommit": "bad418205203dceac0002ebd0369f20c824b1538",
+    "topology": {
+      "projectionVersion": 1,
+      "sha256": "e376c280fbd6292ed6fe03e7fa81541ad0b0b8c76a09f916f1e3898aac240ec1"
+    }
+  },
+  "currentCaptureSha256": "e459a22be6c99a3728ee97770c02c4edbaee6c9293e48017e8ec28139962fa19",
+  "historicalManifestSha256": "90a03e5123afea10a1ea403b6a24d161f52ddf1c17bb9c4464cd8c6e020baa87",
+  "digests": {
+    "proposals.json": "62da551e57df258a1a00da3720d65c9859841723444cd7913d69aab8dc70817d",
+    "evidence.json": "c7c2c1561eba72ab0ec999a49b3ea386f97c41ba666a001b9923b9ecb7048715",
+    "drift.json": "499c2f2f1c3a7f471e2c0e9907a4c4b5b1559ba6a6c493b57bf0b9732ed53822"
+  },
+  "proposalCounts": {
+    "agency:unresolved": 1,
+    "agency:proposed": 2,
+    "pattern:proposed": 222,
+    "pattern:ambiguous": 161,
+    "pattern:unresolved": 5,
+    "route:proposed": 113,
+    "stop:proposed": 613,
+    "stop:ambiguous": 7
+  },
+  "approval": "Agent-proposed evidence only; no human-reviewed mapping decisions",
+  "agencyEvidence": [
+    {
+      "providerId": "LTA",
+      "referencedRouteCount": 0,
+      "suggestedDisposition": "ignore unused publisher only after review"
+    },
+    {
+      "providerId": "SBST",
+      "referencedRouteCount": 12,
+      "suggestedDisposition": "review operator alias"
+    },
+    {
+      "providerId": "SMRT",
+      "referencedRouteCount": 101,
+      "suggestedDisposition": "review operator alias"
+    }
+  ],
+  "ambiguousStops": [
+    {
+      "kind": "stop",
+      "providerId": "CG2_A",
+      "sourceRecordSha256": "b9633ebe9718cb273a420549cb9cd1ae265633580236324fd9c57d34c887708e",
+      "status": "ambiguous",
+      "candidates": [
+        {
+          "kind": "platform",
+          "id": "CGA_EWL_A",
+          "stationId": "CGA"
+        },
+        {
+          "kind": "platform",
+          "id": "CGA_EWL_B",
+          "stationId": "CGA"
+        }
+      ],
+      "reason": "Parent/code-consistent station and explicit platform label/line; grouped labels remain ambiguous."
+    },
+    {
+      "kind": "stop",
+      "providerId": "CG2_B",
+      "sourceRecordSha256": "0d3c8964c304a296fd7e2c2ec34004f6d9cd34e51800b87c4d868a951ecb96d5",
+      "status": "ambiguous",
+      "candidates": [
+        {
+          "kind": "platform",
+          "id": "CGA_EWL_A",
+          "stationId": "CGA"
+        },
+        {
+          "kind": "platform",
+          "id": "CGA_EWL_B",
+          "stationId": "CGA"
+        }
+      ],
+      "reason": "Parent/code-consistent station and explicit platform label/line; grouped labels remain ambiguous."
+    },
+    {
+      "kind": "stop",
+      "providerId": "CG_A",
+      "sourceRecordSha256": "14bca83f7de4e5e3884cea505441bf7a1d59b8a7b0f23c166215006df7049ab0",
+      "status": "ambiguous",
+      "candidates": [
+        {
+          "kind": "platform",
+          "id": "TNM_EWL_D",
+          "stationId": "TNM"
+        },
+        {
+          "kind": "platform",
+          "id": "TNM_EWL_E",
+          "stationId": "TNM"
+        }
+      ],
+      "reason": "Parent/code-consistent station and explicit platform label/line; grouped labels remain ambiguous."
+    },
+    {
+      "kind": "stop",
+      "providerId": "CG_B",
+      "sourceRecordSha256": "df99c6f78ff98840a87d51451bb752f00802cd13637a0ac9417b673c338637c8",
+      "status": "ambiguous",
+      "candidates": [
+        {
+          "kind": "platform",
+          "id": "TNM_EWL_D",
+          "stationId": "TNM"
+        },
+        {
+          "kind": "platform",
+          "id": "TNM_EWL_E",
+          "stationId": "TNM"
+        }
+      ],
+      "reason": "Parent/code-consistent station and explicit platform label/line; grouped labels remain ambiguous."
+    },
+    {
+      "kind": "stop",
+      "providerId": "EW24_A",
+      "sourceRecordSha256": "58728b14c5551ade9de41a0b470089c82f6014df92c2180fc5ac358e892abcab",
+      "status": "ambiguous",
+      "candidates": [
+        {
+          "kind": "platform",
+          "id": "JUR_EWL_B",
+          "stationId": "JUR"
+        },
+        {
+          "kind": "platform",
+          "id": "JUR_EWL_C",
+          "stationId": "JUR"
+        }
+      ],
+      "reason": "Parent/code-consistent station and explicit platform label/line; grouped labels remain ambiguous."
+    },
+    {
+      "kind": "stop",
+      "providerId": "NS1_A",
+      "sourceRecordSha256": "a2b4d903e43f859668d81497e24c79f5612fc962cf0496db5b8b3eb44406999d",
+      "status": "ambiguous",
+      "candidates": [
+        {
+          "kind": "platform",
+          "id": "JUR_NSL_A",
+          "stationId": "JUR"
+        },
+        {
+          "kind": "platform",
+          "id": "JUR_NSL_D",
+          "stationId": "JUR"
+        },
+        {
+          "kind": "platform",
+          "id": "JUR_NSL_E",
+          "stationId": "JUR"
+        }
+      ],
+      "reason": "Parent/code-consistent station and explicit platform label/line; grouped labels remain ambiguous."
+    },
+    {
+      "kind": "stop",
+      "providerId": "NS1_B",
+      "sourceRecordSha256": "1e85cbd7960eb5cdfba553fefbf11651f4d1667676c4414d6377dcd6279eca55",
+      "status": "ambiguous",
+      "candidates": [
+        {
+          "kind": "platform",
+          "id": "JUR_NSL_A",
+          "stationId": "JUR"
+        },
+        {
+          "kind": "platform",
+          "id": "JUR_NSL_D",
+          "stationId": "JUR"
+        },
+        {
+          "kind": "platform",
+          "id": "JUR_NSL_E",
+          "stationId": "JUR"
+        }
+      ],
+      "reason": "Parent/code-consistent station and explicit platform label/line; grouped labels remain ambiguous."
+    }
+  ],
+  "patternEvidence": {
+    "total": 388,
+    "noSequenceCandidate": 5,
+    "unresolvedPatternIds": [
+      "63ebed8183bc66609a130a29023c4d4fc832369a8e7405333b06dd28cb38770f",
+      "ca38177593d5ce418035d20b1c1bcb818985f20d6805c385e7b01918094c8329",
+      "eb2f75d6eba919e320a8d7fe748f45a9fb3bcad44d4ef11feff664822803f5c7",
+      "6e84f2113f0968bd922fbe5f70f3fd7236feee54f421dc20e4116e3d46c90410",
+      "07c0933b39e35a27d221c62f785c2dbe3764559d995155b92eb166cfddfd2740"
+    ],
+    "sequenceCandidatesButNoFullDateCoverage": 119,
+    "fullDateCoverageButPlatformConflict": 22,
+    "noFullDateAndPlatformCandidate": 146,
+    "oneFullDateAndPlatformCandidate": 242,
+    "multipleFullDateAndPlatformCandidates": 0
+  },
+  "platformDiagnosticBasis": "Current undated canonical platform restrictions; absence of explicit conflict is not historical permission or reviewed allocation",
+  "scopedEvidence": {
+    "allPatterns": {
+      "dateScopes": {
+        "completeUniquePatterns": 290,
+        "patternsWithUncoveredDates": 81,
+        "patternsWithAmbiguousDates": 30,
+        "activePatternDates": 48391,
+        "uniquePatternDates": 40022,
+        "ambiguousPatternDates": 2526,
+        "uncoveredPatternDates": 5843
+      },
+      "platformDiagnosticScopes": {
+        "completeUniquePatterns": 242,
+        "patternsWithUncoveredDates": 146,
+        "patternsWithAmbiguousDates": 6,
+        "activePatternDates": 48391,
+        "uniquePatternDates": 32005,
+        "ambiguousPatternDates": 347,
+        "uncoveredPatternDates": 16039
+      }
+    },
+    "wholePatternDateGaps": {
+      "patternCount": 119,
+      "dateScopes": {
+        "completeUniquePatterns": 26,
+        "patternsWithUncoveredDates": 76,
+        "patternsWithAmbiguousDates": 30,
+        "activePatternDates": 14757,
+        "uniquePatternDates": 6857,
+        "ambiguousPatternDates": 2526,
+        "uncoveredPatternDates": 5374
+      },
+      "platformDiagnosticScopes": {
+        "completeUniquePatterns": 0,
+        "patternsWithUncoveredDates": 119,
+        "patternsWithAmbiguousDates": 6,
+        "activePatternDates": 14757,
+        "uniquePatternDates": 1656,
+        "ambiguousPatternDates": 347,
+        "uncoveredPatternDates": 12754
+      }
+    }
+  },
+  "driftTables": [
+    {
+      "name": "agency.txt",
+      "identityColumns": [
+        "agency_id"
+      ],
+      "beforeCount": 3,
+      "afterCount": 3,
+      "shared": 3,
+      "unchanged": 3,
+      "changed": 0,
+      "added": 0,
+      "removed": 0,
+      "fieldChanges": {},
+      "normalizedBeforeSha256": "0d5a017ee48604543a1c6134abc86fb6729889c232fbee70c8746972c57a2d12",
+      "normalizedAfterSha256": "0d5a017ee48604543a1c6134abc86fb6729889c232fbee70c8746972c57a2d12",
+      "changeSetSha256": "f8700730d4d8f747ac5ce273bcc6d6ca0dabf339d43ef439e97a75e370f72f35",
+      "changedExamples": []
+    },
+    {
+      "name": "calendar.txt",
+      "identityColumns": [
+        "service_id"
+      ],
+      "beforeCount": 11,
+      "afterCount": 3,
+      "shared": 3,
+      "unchanged": 3,
+      "changed": 0,
+      "added": 0,
+      "removed": 8,
+      "fieldChanges": {},
+      "normalizedBeforeSha256": "c59e70ec1faab534ef174fddc089edfb5d9909c36df2450256fe6712dfe4a37f",
+      "normalizedAfterSha256": "dedf54c1508ea1a38b3d9b3a5d489790aa72e856bd13f1fc2df5fa4f7a9ce957",
+      "changeSetSha256": "26f9566c7034432e816f0b477b10efce931798b9ff9382c445335bdb54588cc4",
+      "changedExamples": []
+    },
+    {
+      "name": "calendar_dates.txt",
+      "identityColumns": [
+        "service_id",
+        "date"
+      ],
+      "beforeCount": 3,
+      "afterCount": 0,
+      "shared": 0,
+      "unchanged": 0,
+      "changed": 0,
+      "added": 0,
+      "removed": 3,
+      "fieldChanges": {},
+      "normalizedBeforeSha256": "56dca93bf88964ba297cf19236c558bb793489dbfd4287149fbfee14ef0fff4f",
+      "normalizedAfterSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "changeSetSha256": "95ee79274f47f5b934397fcbbecf1c6171ce7be23c86e5f75420243096e8a3ea",
+      "changedExamples": []
+    },
+    {
+      "name": "feed_info.txt",
+      "identityColumns": null,
+      "beforeCount": 1,
+      "afterCount": 1,
+      "shared": 1,
+      "unchanged": 1,
+      "changed": 0,
+      "added": 0,
+      "removed": 0,
+      "fieldChanges": {},
+      "normalizedBeforeSha256": "ced9bdb3831ec1c7fef98d8ed8885622f104549f71f6ce40486356660fd904ec",
+      "normalizedAfterSha256": "ced9bdb3831ec1c7fef98d8ed8885622f104549f71f6ce40486356660fd904ec",
+      "changeSetSha256": "f8700730d4d8f747ac5ce273bcc6d6ca0dabf339d43ef439e97a75e370f72f35",
+      "changedExamples": []
+    },
+    {
+      "name": "routes.txt",
+      "identityColumns": [
+        "route_id"
+      ],
+      "beforeCount": 19,
+      "afterCount": 113,
+      "shared": 3,
+      "unchanged": 3,
+      "changed": 0,
+      "added": 110,
+      "removed": 16,
+      "fieldChanges": {},
+      "normalizedBeforeSha256": "c872c12e4eb2de208c3fe7c470d581c9dbf63f6a104887a1fd02f90924f960fd",
+      "normalizedAfterSha256": "099ef6fe31217928f23e4f5c31c0a2765da410b478e5a5c572d21e1686117af2",
+      "changeSetSha256": "e729b2ef9459590ffdb36291a6bedc43f8321dedbe26c7c5ed89a73dfe0e65f2",
+      "changedExamples": []
+    },
+    {
+      "name": "stop_times.txt",
+      "identityColumns": [
+        "trip_id",
+        "stop_sequence"
+      ],
+      "beforeCount": 333262,
+      "afterCount": 349768,
+      "shared": 76744,
+      "unchanged": 76744,
+      "changed": 0,
+      "added": 273024,
+      "removed": 256518,
+      "fieldChanges": {},
+      "normalizedBeforeSha256": "7f8fad4e83343b55a13163ef681d219c102faab39fa065dd06585836ddbfefd7",
+      "normalizedAfterSha256": "33c753d420a762757edb226877aed54c9fb47617a489e51913bfbecc6a5bb61b",
+      "changeSetSha256": "b81a9f9c7443d9b88569ad615a9d60b6a40d65db6bed8f15191780f6fdaa95ac",
+      "changedExamples": []
+    },
+    {
+      "name": "stops.txt",
+      "identityColumns": [
+        "stop_id"
+      ],
+      "beforeCount": 1211,
+      "afterCount": 1211,
+      "shared": 1211,
+      "unchanged": 1209,
+      "changed": 2,
+      "added": 0,
+      "removed": 0,
+      "fieldChanges": {
+        "platform_code": 2
+      },
+      "normalizedBeforeSha256": "fbd7ce7d50c2670d6a44754dae4177c8df7f8d8e072ade14f05abe7f4dff46ee",
+      "normalizedAfterSha256": "1ea4f97b8a1cd4d0e8da9817eb4f058aa019ae9650c79584a9684e74c306e5de",
+      "changeSetSha256": "3addc62a60f75bea02ec8a3698fec183b8ccd2ed642e432ffce0b911594d86f1",
+      "changedExamples": [
+        {
+          "key": [
+            "CG1_A"
+          ],
+          "fields": [
+            "platform_code"
+          ]
+        },
+        {
+          "key": [
+            "CG1_B"
+          ],
+          "fields": [
+            "platform_code"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "trips.txt",
+      "identityColumns": [
+        "trip_id"
+      ],
+      "beforeCount": 17576,
+      "afterCount": 19150,
+      "shared": 7292,
+      "unchanged": 6455,
+      "changed": 837,
+      "added": 11858,
+      "removed": 10284,
+      "fieldChanges": {
+        "service_id": 837
+      },
+      "normalizedBeforeSha256": "1c8f1fba94fa3397a2a9fd3852fa430452143e7e6f94be3631fe0fb8fd75597e",
+      "normalizedAfterSha256": "371bba82281904d04df23ef362c317f2efe355f1473b92c1006354d84bdf5b15",
+      "changeSetSha256": "1603344f0efb1a68e7de198924a02c2a8d1f9edc296ab73c7271e420411eefaa",
+      "changedExamples": [
+        {
+          "key": [
+            "SKLRT_WI_PH_1"
+          ],
+          "fields": [
+            "service_id"
+          ]
+        },
+        {
+          "key": [
+            "SKLRT_WI_PH_10"
+          ],
+          "fields": [
+            "service_id"
+          ]
+        },
+        {
+          "key": [
+            "SKLRT_WI_PH_100"
+          ],
+          "fields": [
+            "service_id"
+          ]
+        },
+        {
+          "key": [
+            "SKLRT_WI_PH_101"
+          ],
+          "fields": [
+            "service_id"
+          ]
+        },
+        {
+          "key": [
+            "SKLRT_WI_PH_102"
+          ],
+          "fields": [
+            "service_id"
+          ]
+        },
+        {
+          "key": [
+            "SKLRT_WI_PH_103"
+          ],
+          "fields": [
+            "service_id"
+          ]
+        },
+        {
+          "key": [
+            "SKLRT_WI_PH_104"
+          ],
+          "fields": [
+            "service_id"
+          ]
+        },
+        {
+          "key": [
+            "SKLRT_WI_PH_105"
+          ],
+          "fields": [
+            "service_id"
+          ]
+        },
+        {
+          "key": [
+            "SKLRT_WI_PH_106"
+          ],
+          "fields": [
+            "service_id"
+          ]
+        },
+        {
+          "key": [
+            "SKLRT_WI_PH_107"
+          ],
+          "fields": [
+            "service_id"
+          ]
+        }
+      ]
+    }
+  ],
+  "generationEligible": false
+}
