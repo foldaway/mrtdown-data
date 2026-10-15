@@ -1,5 +1,6 @@
 export const usage = `Usage:
   mrtdown gtfs inspect --file <ZIP|protobuf> --capture <JSON> [--write <report.json>]
+  mrtdown gtfs inspect --directory <schedule-dir> --manifest <table-hashes.json> [--write <report.json>]
   mrtdown [--data-dir <path>] gtfs topology [--write <fingerprint.json>]
   mrtdown [--data-dir <path>] validate [--scope <scope>]
   mrtdown [--data-dir <path>] list <station|line|service|operator|town|landmark|issue>

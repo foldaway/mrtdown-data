@@ -2,6 +2,7 @@ import { resolve } from 'node:path';
 import {
   buildScheduleTopologyFingerprint,
   inspectGtfsCapture,
+  inspectGtfsDirectory,
 } from '@mrtdown/fs';
 import { readOption } from '../args.js';
 import type { CliIO, GlobalOptions } from '../types.js';
@@ -17,14 +18,26 @@ export async function runGtfs(
   let report: unknown;
   let exitCode = 0;
   if (command === 'inspect') {
-    const file = readOption(args, '--file', { required: true });
-    const handoff = readOption(args, '--capture', { required: true });
+    const directory = readOption(args, '--directory');
+    const manifest = readOption(args, '--manifest', { required: !!directory });
+    const file = readOption(args, '--file', { required: !directory });
+    const handoff = readOption(args, '--capture', { required: !directory });
+    if ((directory && (file || handoff)) || (!directory && manifest)) {
+      throw new Error(
+        'Use --directory with --manifest or --file with --capture',
+      );
+    }
     if (args.length)
       throw new Error(`Unexpected GTFS arguments: ${args.join(' ')}`);
-    const result = await inspectGtfsCapture(
-      resolve(globals.cwd, file ?? ''),
-      resolve(globals.cwd, handoff ?? ''),
-    );
+    const result = directory
+      ? await inspectGtfsDirectory(
+          resolve(globals.cwd, directory),
+          resolve(globals.cwd, manifest ?? ''),
+        )
+      : await inspectGtfsCapture(
+          resolve(globals.cwd, file ?? ''),
+          resolve(globals.cwd, handoff ?? ''),
+        );
     report = result;
     if (result.schedule?.structuralErrors.length) exitCode = 1;
   } else if (command === 'topology') {
