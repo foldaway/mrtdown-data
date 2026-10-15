@@ -548,6 +548,15 @@ Exit criteria:
   Phase 1's audit/tooling criteria are met using retained local copies. The
   original ZIP/receipt and a remote immutable archive remain unavailable; exact
   table/protobuf hashes and reproduction instructions are retained instead.
+- 2026-10-14: Added deterministic Phase 2 proposal and review schemas, verified
+  capture reconciliation and a complete-review gate. The current public capture
+  yields 1,124 unreviewed entries: seven ambiguous stops, 148 ambiguous patterns,
+  32 unresolved patterns and one unresolved publisher agency. All proposals
+  remain unreviewed; generation is blocked. See
+  [reconciliation](../../gtfs-reconciliation.md). Human-reviewed dispositions,
+  calendar/direction/platform semantics and a distinct-capture drift comparison
+  remain open; Phase 2 is not complete.
+
 - 2026-10-14: Added MobilityData validator 8.0.1 with a SHA-256 executable
   lock, fixed SG/date/thread/update-check configuration and separate CI findings.
   Audited public schedule `e459a22be6c99a3728ee97770c02c4edbaee6c9293e48017e8ec28139962fa19`
