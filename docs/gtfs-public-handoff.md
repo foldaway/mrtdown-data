@@ -2,7 +2,7 @@
 
 ## Architecture
 
-`mrtdown-data-crawler` downloads original files into private R2. Its opt-in
+`mrtdown-data-crawler` downloads original files into private Tigris. Its opt-in
 publication step copies only the three known LTA GTFS datasets into a separate
 public bucket, with a licence-linked attribution page and immutable capture
 records. All future non-GTFS datasets remain private unless explicitly supported.
@@ -40,7 +40,7 @@ Only schedule hashes trigger GitHub `repository_dispatch` event `gtfs_capture`:
 }
 ```
 
-The crawler records notification state only in private R2. Failed notifications
+The crawler records notification state only in private Tigris. Failed notifications
 remain pending and are retried on subsequent enabled DataMall polling runs.
 A bounded batch of 20 avoids unbounded catch-up. Successful hashes are not
 notified again. A crash after dispatch can cause duplicate delivery; the receiver
@@ -49,27 +49,17 @@ Published alerts/trip updates do not dispatch to the schedule workflow.
 
 ## Provisioning
 
-Create **`mrtdown-public-snapshots`** as an R2 Standard bucket. Attach a custom domain,
-for example **`sources.mrtdown.org`**, using bucket Settings → Custom Domains.
-Keep `r2.dev` access disabled; the production URL is the custom domain. No R2 API
-credentials are required by `mrtdown-data` for this handoff.
+The producer runs a Hono Node service on Fly.io at `https://crawler.mrtdown.org`.
+GitHub Actions deploys it and manages signed QStash jobs: evidence and realtime
+captures every five minutes, and schedule acquisition daily at 20:00 UTC
+(04:00 Singapore). Only health is public. Private and public Tigris buckets
+have independently configured S3 endpoints, regions, names and credentials.
+Public objects are served at `https://sources.mrtdown.org`; Cloudflare execution
+and builds are disabled.
 
-The crawler config declares `GTFS_PUBLIC` in both environments. After the bucket
-exists and the domain is active:
-
-1. Set the GitHub Actions repository variable `GTFS_SNAPSHOT_BASE_URL` in
-   `foldaway/mrtdown-data` to the HTTPS origin, e.g.
-   `https://sources.mrtdown.org` (no path/query).
-2. Land `.github/workflows/gtfs-capture.yml` on the default branch before enabling
-   notifications; repository dispatch workflows run from the default branch.
-3. Enable `GTFS_PUBLICATION_ENABLED` in crawler production and deploy deliberately.
-4. Confirm `/index.html` and an original blob/capture pair are accessible.
-5. Enable `GTFS_NOTIFICATION_ENABLED` and deploy. Reuse the existing crawler
-   `GITHUB_ACCESS_TOKEN` with repository-dispatch permission for `mrtdown-data`.
-   Confirm its presence/permission in the crawler; no extra secret is invented.
-
-Everything is implemented locally; none of these resources, repository variables,
-pushes or deployments are performed by this change.
+The receiver repository variable `GTFS_SNAPSHOT_BASE_URL` names that trusted
+origin. Schedule publication and repository dispatch are enabled. The first
+verified handoff succeeded in [receiver run 38525057872](https://github.com/foldaway/mrtdown-data/actions/runs/38525057872).
 
 ## Receiver
 

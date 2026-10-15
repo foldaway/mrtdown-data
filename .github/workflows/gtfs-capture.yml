@@ -25,12 +25,29 @@ jobs:
       - run: npm ci
       - run: npm run build:cli
       - name: Acquire referenced snapshot
+        id: acquire
         env:
           GTFS_SNAPSHOT_BASE_URL: ${{ vars.GTFS_SNAPSHOT_BASE_URL }}
           GTFS_CAPTURE_KEY: ${{ github.event.client_payload.capture_key || inputs.capture_key }}
           GTFS_INPUT_DIR: ${{ runner.temp }}/gtfs-input
         run: node scripts/acquire-gtfs-capture.mjs
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Acquire pinned independent validator
+        run: |
+          url=$(node -p "JSON.parse(require('fs').readFileSync('scripts/gtfs-validator-lock.json')).url")
+          curl --fail --location --max-time 120 "$url" -o "$RUNNER_TEMP/gtfs-validator.jar"
+      - name: Independently validate verified snapshot
+        if: ${{ !cancelled() && steps.acquire.outcome == 'success' }}
+        run: >-
+          node scripts/validate-gtfs-independent.mjs
+          "$RUNNER_TEMP/gtfs-validator.jar"
+          "$RUNNER_TEMP/gtfs-input/schedule.zip"
+          "$RUNNER_TEMP/gtfs-independent"
       - name: Inspect verified local snapshot
+        if: ${{ !cancelled() && steps.acquire.outcome == 'success' }}
         run: >-
           node packages/cli/dist/index.js gtfs inspect
           --file "$RUNNER_TEMP/gtfs-input/schedule.zip"
@@ -40,5 +57,7 @@ jobs:
         if: always()
         with:
           name: gtfs-inspection-${{ github.run_id }}
-          path: ${{ runner.temp }}/gtfs-report.json
+          path: |
+            ${{ runner.temp }}/gtfs-report.json
+            ${{ runner.temp }}/gtfs-independent/
           if-no-files-found: ignore
