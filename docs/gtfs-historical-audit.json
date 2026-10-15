@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-10-14",
+  "source": "Supplied 2026-08-13 files, matched against plan SHA-256 records",
+  "schedule": {
+    "input": {
+      "kind": "schedule_directory",
+      "manifestSha256": "90a03e5123afea10a1ea403b6a24d161f52ddf1c17bb9c4464cd8c6e020baa87",
+      "byteLength": 17485616
+    },
+    "tableManifest": "gtfs-historical-schedule-manifest.json",
+    "tableCounts": {
+      "agency.txt": 3,
+      "calendar.txt": 11,
+      "calendar_dates.txt": 3,
+      "feed_info.txt": 1,
+      "routes.txt": 19,
+      "stop_times.txt": 333262,
+      "stops.txt": 1211,
+      "trips.txt": 17576
+    },
+    "stopCounts": {
+      "stations": 186,
+      "platforms": 434,
+      "entrances": 591
+    },
+    "patternCount": 116,
+    "structuralErrors": [],
+    "reportSha256": "1b912b9e8a475aad94c0f5bd9e5a913ccec97b2a327430a5560a2755e00cb5d5",
+    "independent": {
+      "repack": {
+        "schemaVersion": 1,
+        "sourceManifestSha256": "90a03e5123afea10a1ea403b6a24d161f52ddf1c17bb9c4464cd8c6e020baa87",
+        "sha256": "f9ed36a59d3d1fa6a729ded63119afdbaf52899d24f818e2bf4e9b7ada922fdb",
+        "byteLength": 2381717,
+        "compression": "fflate ZIP level 9, nominal ZIP mtime 2000-01-01 00:00:00"
+      },
+      "validatorLockSha256": "79f0c2893f0cd5264e4a23c302331de69b405d651913467616d9b394f5251b16",
+      "validatorVersion": "8.0.1",
+      "dateForValidation": "2026-10-14",
+      "systemErrors": 0,
+      "notices": [
+        {
+          "code": "big_gap_in_service",
+          "severity": "INFO",
+          "totalNotices": 1,
+          "sampleNotices": [
+            {
+              "serviceId": "SERVICE_WE",
+              "gapStartDate": "2025-11-10",
+              "gapEndDate": "2026-01-03",
+              "gapDurationDays": 53
+            }
+          ]
+        },
+        {
+          "code": "duplicate_route_name",
+          "severity": "WARNING",
+          "totalNotices": 9,
+          "sampleNotices": [
+            {
+              "csvRowNumber1": 6,
+              "routeId1": "CCL_DBG_SDM",
+              "csvRowNumber2": 7,
+              "routeId2": "CCL_DBG_PER",
+              "routeShortName": "CC",
+              "routeLongName": "Circle Line",
+              "routeTypeValue": 1,
+              "agencyId": "SMRT"
+            },
+            {
+              "csvRowNumber1": 6,
+              "routeId1": "CCL_DBG_SDM",
+              "csvRowNumber2": 8,
+              "routeId2": "CCL_LOOP",
+              "routeShortName": "CC",
+              "routeLongName": "Circle Line",
+              "routeTypeValue": 1,
+              "agencyId": "SMRT"
+            },
+            {
+              "csvRowNumber1": 6,
+              "routeId1": "CCL_DBG_SDM",
+              "csvRowNumber2": 9,
+              "routeId2": "CCL_MBT_PMN_1ST_TRAIN",
+              "routeShortName": "CC",
+              "routeLongName": "Circle Line",
+              "routeTypeValue": 1,
+              "agencyId": "SMRT"
+            },
+            {
+              "csvRowNumber1": 6,
+              "routeId1": "CCL_DBG_SDM",
+              "csvRowNumber2": 10,
+              "routeId2": "CCL_BLY_PMN_1ST_TRAIN",
+              "routeShortName": "CC",
+              "routeLongName": "Circle Line",
+              "routeTypeValue": 1,
+              "agencyId": "SMRT"
+            },
+            {
+              "csvRowNumber1": 6,
+              "routeId1": "CCL_DBG_SDM",
+              "csvRowNumber2": 11,
+              "routeId2": "CCL_KRG_PMN_1ST_TRAIN",
+              "routeShortName": "CC",
+              "routeLongName": "Circle Line",
+              "routeTypeValue": 1,
+              "agencyId": "SMRT"
+            },
+            {
+              "csvRowNumber1": 6,
+              "routeId1": "CCL_DBG_SDM",
+              "csvRowNumber2": 12,
+              "routeId2": "CCL_HBF_PMN_1ST_TRAIN",
+              "routeShortName": "CC",
+              "routeLongName": "Circle Line",
+              "routeTypeValue": 1,
+              "agencyId": "SMRT"
+            },
+            {
+              "csvRowNumber1": 6,
+              "routeId1": "CCL_DBG_SDM",
+              "csvRowNumber2": 13,
+              "routeId2": "CCL_PPJ_PMN_1ST_TRAIN",
+              "routeShortName": "CC",
+              "routeLongName": "Circle Line",
+              "routeTypeValue": 1,
+              "agencyId": "SMRT"
+            },
+            {
+              "csvRowNumber1": 6,
+              "routeId1": "CCL_DBG_SDM",
+              "csvRowNumber2": 14,
+              "routeId2": "CCL_CDT_PMN_1ST_TRAIN",
+              "routeShortName": "CC",
+              "routeLongName": "Circle Line",
+              "routeTypeValue": 1,
+              "agencyId": "SMRT"
+            },
+            {
+              "csvRowNumber1": 6,
+              "routeId1": "CCL_DBG_SDM",
+              "csvRowNumber2": 15,
+              "routeId2": "CCL_TSG_PMN_1ST_TRAIN",
+              "routeShortName": "CC",
+              "routeLongName": "Circle Line",
+              "routeTypeValue": 1,
+              "agencyId": "SMRT"
+            }
+          ]
+        },
+        {
+          "code": "fast_travel_between_consecutive_stops",
+          "severity": "WARNING",
+          "totalNotices": 1,
+          "sampleNotices": [
+            {
+              "tripCsvRowNumber": 17515,
+              "tripId": "CCL_Anticlockwise_PH_MBT_PMN_1st_6",
+              "routeId": "CCL_MBT_PMN_1ST_TRAIN",
+              "speedKph": 193.85287739877302,
+              "distanceKm": 3.23088128997955,
+              "csvRowNumber1": 332101,
+              "stopSequence1": 11,
+              "stopId1": "CC17_A",
+              "stopName1": "Caldecott",
+              "departureTime1": "06:47:50",
+              "csvRowNumber2": 332102,
+              "stopSequence2": 12,
+              "stopId2": "CC19_A",
+              "stopName2": "Botanic Gardens",
+              "arrivalTime2": "06:48:50"
+            }
+          ]
+        },
+        {
+          "code": "feed_valid_beyond_total_service_window",
+          "severity": "INFO",
+          "totalNotices": 1,
+          "sampleNotices": [
+            {
+              "feedStartDate": "2025-01-01",
+              "feedEndDate": "2026-12-31",
+              "serviceWindowStartDate": "2025-11-10",
+              "serviceWindowEndDate": "2026-12-31"
+            }
+          ]
+        },
+        {
+          "code": "missing_feed_contact_email_and_url",
+          "severity": "WARNING",
+          "totalNotices": 1,
+          "sampleNotices": [
+            {
+              "csvRowNumber": 2
+            }
+          ]
+        },
+        {
+          "code": "mixed_case_recommended_field",
+          "severity": "WARNING",
+          "totalNotices": 3,
+          "sampleNotices": [
+            {
+              "filename": "stops.txt",
+              "fieldName": "stop_name",
+              "fieldValue": "one-north",
+              "csvRowNumber": 594
+            },
+            {
+              "filename": "stops.txt",
+              "fieldName": "stop_name",
+              "fieldValue": "one-north",
+              "csvRowNumber": 595
+            },
+            {
+              "filename": "stops.txt",
+              "fieldName": "stop_name",
+              "fieldValue": "one-north",
+              "csvRowNumber": 596
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "realtime": [
+    {
+      "input": {
+        "kind": "service_alerts",
+        "sha256": "63f054a690fa6d0358487af32572d68141cb091683ab193586e55d4638915e02",
+        "byteLength": 809
+      },
+      "version": "2.0",
+      "incrementality": "FULL_DATASET",
+      "providerTimestampSeconds": "1786611484",
+      "entityCount": 2,
+      "reportSha256": "78305f2ada40fc57d9e98082dd09736ae9c762bc9cef87979120c3378cb96d2f"
+    },
+    {
+      "input": {
+        "kind": "trip_updates",
+        "sha256": "198dbfb4d4a9cdb537d83862b940e93f549a3f3d9d7f26d5f12952537709e597",
+        "byteLength": 15
+      },
+      "version": "2.0",
+      "incrementality": "FULL_DATASET",
+      "providerTimestampSeconds": "1786612320",
+      "entityCount": 0,
+      "reportSha256": "4d437fcdb75b59de120554ef47271a0ed73926aa692490fb3648c6349ace5fb5"
+    }
+  ]
+}

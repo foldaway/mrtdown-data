@@ -1,0 +1,10 @@
+{
+  "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+  "calendar.txt": "96b3e06ca532195c11e71909f3d6c55f33437b5a10615b64742557f0b3ce972d",
+  "calendar_dates.txt": "fa171ae723add6992f250a1d3aada44799d5456dbcdb9e66f2a68b6256f46ab7",
+  "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+  "routes.txt": "1e3a56c2d8974d431b7a811ff452f5ccc62d253d4dc6f0bf9e70d44d125f8c6c",
+  "stop_times.txt": "80a5ea7bae8c9311515e494ee0f21e0735c4f43dede2e7f518ff6a42a7a8169d",
+  "stops.txt": "5b61242c71b3274d3c218519582c3f255fb61ffb42548a4c51394c2a136dfe73",
+  "trips.txt": "9a0ba496df57fa0ca13a43690e827d7119c655c0223849cbff80fc6f38be2e54"
+}

@@ -15,6 +15,10 @@ node packages/cli/dist/index.js gtfs inspect \
 node packages/cli/dist/index.js gtfs inspect \
   --file /absolute/path/gtfs_realtime.pb \
   --capture /absolute/path/alert-capture.json
+node packages/cli/dist/index.js gtfs inspect \
+  --directory /absolute/path/gtfs_schedule \
+  --manifest docs/gtfs-historical-schedule-manifest.json \
+  --write /tmp/historical-schedule-report.json
 node packages/cli/dist/index.js --data-dir data gtfs topology
 ```
 
@@ -32,8 +36,15 @@ File bytes must match both count and digest before parsing. Source endpoint must
 match the declared kind. Capture metadata is preserved as supplied; inspection
 does not grant publication rights.
 
-Schedule input is a ZIP containing root-level GTFS CSV tables, with a 256 MiB
-expanded limit. Reports include per-file hashes, counts, feed metadata,
+Schedule input is a ZIP or an unpacked directory containing root-level GTFS CSV
+tables, with a 256 MiB expanded limit. Directory input requires `--manifest`:
+a JSON object mapping every table filename to its previously recorded SHA-256.
+The directory must contain exactly that file set; symlinks, subdirectories and
+non-table filenames are rejected. Hash verification precedes CSV parsing. Directory
+reports record the total byte length and SHA-256 of the sorted compact JSON table
+manifest as `input.manifestSha256`, independently of the manifest file's whitespace.
+They do not invent a ZIP digest or crawler capture receipt. Both inputs use the
+same CSV parser and structural audit. Reports include per-file hashes, counts, feed metadata,
 calendars/exceptions, station/platform/entrance counts and normalized trip
 patterns. Built-in checks cover required tables/columns, duplicate primary IDs,
 parent/route/calendar/trip/stop references, stop sequences, basic calendar values,
@@ -64,10 +75,9 @@ and full-record manifest; future reviewed mappings must record all three.
 ## Current implementation boundary
 
 Synthetic tests exercise the pipeline without retaining licensed LTA fixtures.
-The historical August captures have not been run through this implementation yet.
-Unpacked-directory inspector input, reviewed mappings,
-second-capture drift checks, scheduled-arrivals generation/publication and alert
-writes remain future phases. No network calls, model calls or canonical writes
+The historical August captures have been hash-verified and audited as documented
+below. Reviewed mappings, second-capture drift checks, scheduled-arrivals
+generation/publication and alert writes remain gated future work. No network calls, model calls or canonical writes
 are performed by these commands.
 
 See [public snapshot handoff](gtfs-public-handoff.md) for the separate acquisition
@@ -117,3 +127,67 @@ in the plan is historical guidance and needs fresh review against these 113 rout
 The aggregate audit and lock digest are recorded in `docs/gtfs-independent-audit.json`.
 Full generated reports remain outside Git; their immutable input is the public
 capture/blob pair recorded in the handoff documentation.
+
+
+## Historical August audit
+
+On 2026-10-14, the eight tables in `/Users/duncanleo/Downloads/gtfs_schedule`
+and the files `/Users/duncanleo/Downloads/gtfs_realtime.pb` and
+`/Users/duncanleo/Downloads/gtfs_trip_update.pb` matched **every exact SHA-256**
+recorded in the plan for the supplied 2026-08-13 captures. These are retained
+local copies, not crawler acquisitions: the original ZIP, download receipt,
+retrieval timestamp and immutable remote archive reference are unavailable.
+Do not substitute the October public capture or fabricate that metadata.
+An authorized maintainer needs these exact local files or another copy matching
+[the table manifest](gtfs-historical-schedule-manifest.json) and protobuf hashes
+in [the aggregate audit](gtfs-historical-audit.json).
+
+Reproduce the full built-in reports offline in a fresh directory:
+
+```sh
+npm run build:fs
+node scripts/audit-gtfs-historical.mjs \
+  /absolute/path/gtfs_schedule \
+  /absolute/path/gtfs_realtime.pb \
+  /absolute/path/gtfs_trip_update.pb \
+  /tmp/new-historical-audit
+node scripts/validate-gtfs-independent.mjs \
+  /absolute/path/gtfs-validator-8.0.1-cli.jar \
+  /tmp/new-historical-audit/schedule-repacked.zip \
+  /tmp/new-historical-independent
+```
+
+The script verifies the recorded inputs, preserves table bytes, and creates an
+audit-only ZIP using the lockfile-installed `fflate`, level 9 and nominal ZIP
+mtime 2000-01-01 00:00:00. Its digest is
+`f9ed36a59d3d1fa6a729ded63119afdbaf52899d24f818e2bf4e9b7ada922fdb`
+(2,381,717 bytes); this identifies the reproducible repack, **not the original
+LTA archive**. The aggregate stores normalized manifest identity, full built-in
+report digests, and the separate independent validator lock and findings.
+Full reports and repack remain outside Git; no capture rights are inferred by
+this script. The installed validator and Java 17 are acquired separately.
+
+The schedule audit reproduced 19 routes, 1,211 stops, 17,576 trips, 333,262 stop
+times, 116 normalized trip patterns and zero built-in structural errors.
+MobilityData 8.0.1 with the existing fixed 2026-10-14 configuration found zero
+ERROR notices and zero system errors:
+
+| Code | Severity | Count |
+| --- | --- | ---: |
+| duplicate_route_name | WARNING | 9 |
+| fast_travel_between_consecutive_stops | WARNING | 1 |
+| missing_feed_contact_email_and_url | WARNING | 1 |
+| mixed_case_recommended_field | WARNING | 3 |
+| big_gap_in_service | INFO | 1 |
+| feed_valid_beyond_total_service_window | INFO | 1 |
+
+The fast-travel finding identifies trip `CCL_Anticlockwise_PH_MBT_PMN_1st_6`,
+Caldecott `CC17_A` to Botanic Gardens `CC19_A`, scheduled 06:47:50–06:48:50.
+It remains a source-quality finding for reconciliation; neither validator silently
+corrects it. The service-gap notice concerns `SERVICE_WE`, 2025-11-10 through
+2026-01-03. Full notice samples are retained in the aggregate audit.
+
+Both protobufs decode as valid GTFS 2.0 `FULL_DATASET`: service alerts contain
+two entities with timestamp `1786611484`, and trip updates contain zero entities
+with timestamp `1786612320`. This reproduces the historical observations without
+claiming current runtime behavior or reviewed alert selector mappings.

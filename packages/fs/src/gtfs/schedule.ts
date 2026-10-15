@@ -50,6 +50,10 @@ export function readSchedule(bytes: Uint8Array) {
       return true;
     },
   });
+  return readScheduleFiles(files);
+}
+
+export function readScheduleFiles(files: Record<string, Uint8Array>) {
   const tables: ScheduleTables = {};
   const manifest: Record<string, string> = {};
   for (const name of Object.keys(files).sort()) {
