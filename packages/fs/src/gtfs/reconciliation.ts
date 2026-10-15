@@ -31,7 +31,7 @@ const targetSchema = z
     id: z.string().min(1),
     stationId: z.string().min(1).optional(),
     revisionId: z.string().min(1).optional(),
-    match: z.enum(['exact', 'contiguousSegment']).optional(),
+    match: z.enum(['exact', 'contiguousSegment', 'cyclicSegment']).optional(),
   })
   .strict();
 export type ReconciliationTarget = z.infer<typeof targetSchema>;
@@ -258,13 +258,31 @@ export function proposeScheduleReconciliation(
               start + sequence.length <= path.length &&
               sequence.every((id, offset) => id === path[start + offset]),
           );
-          if (matches)
+          // Only an explicitly closed canonical path permits rotation. Preserve
+          // repeated occurrences and permit at most the canonical single circuit.
+          const cyclic =
+            !matches &&
+            path.length > 2 &&
+            path[0] === path.at(-1) &&
+            sequence.length <= path.length &&
+            path
+              .slice(0, -1)
+              .some((_, start) =>
+                sequence.every(
+                  (id, offset) =>
+                    id === path[(start + offset) % (path.length - 1)],
+                ),
+              );
+          if (matches || cyclic)
             candidates.push({
               kind: 'serviceRevision',
               id: service.id,
               revisionId: revision.id,
-              match:
-                sequence.length === path.length ? 'exact' : 'contiguousSegment',
+              match: cyclic
+                ? 'cyclicSegment'
+                : sequence.length === path.length
+                  ? 'exact'
+                  : 'contiguousSegment',
             });
         }
     entries.push(
@@ -273,7 +291,7 @@ export function proposeScheduleReconciliation(
         pattern.id,
         pattern,
         candidates,
-        'Ordered station sequence including repeated stops; exact or contiguous service-revision path. Calendar/revision validity, direction and platform service scope require review.',
+        'Ordered station sequence including repeated stops; exact, contiguous or single-circuit cyclic service-revision path. Calendar/revision validity, direction and platform service scope require review.',
       ),
     );
   }
