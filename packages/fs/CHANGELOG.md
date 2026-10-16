@@ -1,5 +1,13 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.36
+
+### Minor Changes
+
+- d034d6b: Add GTFS reconciliation evidence for calendar, revision and platform scope, bounded
+  cyclic path proposals, and normalized snapshot drift comparisons. Proposals remain
+  unreviewed and cannot enable arrivals generation.
+
 ## 2.0.0-alpha.35
 
 ### Minor Changes
