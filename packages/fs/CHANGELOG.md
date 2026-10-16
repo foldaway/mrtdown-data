@@ -1,5 +1,16 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.37
+
+### Minor Changes
+
+- c4bfeb0: Add deterministic service-date candidate partitions and version-2 reconciliation
+  evidence that preserves uncovered and ambiguous dates across revision boundaries.
+  Keep current platform diagnostics separate from temporal coverage and review approval.
+- 4e48047: Add a separate version-2 scoped mapping draft, deterministic proposal creator and
+  review evaluator with exact shared date sets, complete coverage checks and explicit
+  unresolved/excluded scope. Drafts cannot approve mappings or enable generation.
+
 ## 2.0.0-alpha.36
 
 ### Minor Changes
