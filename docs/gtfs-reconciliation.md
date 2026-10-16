@@ -257,7 +257,8 @@ Each pattern has two independent partitions:
 
 - `dateScopes` intersects the source's actual active calendar dates with each
   sequence candidate's canonical revision and station-code validity at every
-  ordered stop occurrence. Different sides of a July boundary can retain
+  ordered stop occurrence. Station identity follows the same code, stop-ID and
+  parent consistency rules as proposals, independently of platform label matching. Different sides of a July boundary can retain
   different candidates. A later revision never fills a date before its start.
 - `platformDiagnosticScopes` adds the **current, undated** canonical platform
   service/boarding restrictions. Validity and those diagnostics must hold on

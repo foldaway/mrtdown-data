@@ -459,6 +459,30 @@ describe('GTFS reconciliation evidence and pairwise drift', () => {
       candidates: [],
     });
   });
+  it.each([
+    'missing stop code',
+    'unknown platform label',
+  ])('retains station temporal coverage with %s and unresolved platform allocation', (scenario) => {
+    const { tables, topology, identity } = fixture();
+    const stop = tables['stops.txt']?.find((row) => row.stop_id === 'P');
+    if (!stop) throw new Error('missing fixture');
+    if (scenario === 'missing stop code') delete stop.stop_code;
+    else stop.platform_code = 'UNKNOWN';
+    const evidence = buildReconciliationEvidence(tables, identity, topology);
+    const pattern = evidence.patterns[0];
+    expect(pattern?.candidates[0]?.occurrences[0]?.platforms).toEqual([]);
+    expect(pattern?.dateScopes).toMatchObject({
+      uniqueDateCount: 365,
+      uncoveredDateCount: 0,
+      generationEligible: false,
+    });
+    expect(pattern?.platformDiagnosticScopes).toMatchObject({
+      uniqueDateCount: 0,
+      uncoveredDateCount: 365,
+      generationEligible: false,
+    });
+    expect(evidence.generationEligible).toBe(false);
+  });
   it('evaluates pickup restrictions at each ordered occurrence rather than across the whole trip', () => {
     const { tables, topology, identity } = fixture();
     const platform = topology.stations[0]?.platforms[0];

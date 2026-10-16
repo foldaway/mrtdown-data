@@ -2,6 +2,7 @@ import z from 'zod';
 import { hashBytes } from './capture.js';
 import { compareStrings } from './order.js';
 import { auditSchedule, type ScheduleTables } from './schedule.js';
+import { resolveStationCandidates } from './stationMatch.js';
 import type { scheduleTopologyProjection } from './topology.js';
 
 type Topology = ReturnType<typeof scheduleTopologyProjection>;
@@ -178,10 +179,6 @@ export function proposeScheduleReconciliation(
       parent = stops.get(parent)?.parent_station;
     }
   }
-  const codeStations = (code: string) =>
-    topology.stations.filter((station) =>
-      station.stationCodes.some((item) => item.code === code),
-    );
   const stopStations = new Map<string, string[]>();
   for (const id of [...referenced].sort()) {
     const row = stops.get(id);
@@ -189,16 +186,11 @@ export function proposeScheduleReconciliation(
     const parent = row.parent_station
       ? stops.get(row.parent_station)
       : undefined;
-    const direct = codeStations(row.stop_code || id);
-    const parents = parent
-      ? codeStations(parent.stop_code || parent.stop_id || '')
-      : [];
-    const stations = direct.length
-      ? direct.filter(
-          (station) =>
-            !parent || parents.some((candidate) => candidate.id === station.id),
-        )
-      : parents;
+    const stations = resolveStationCandidates(
+      row,
+      parent,
+      topology.stations,
+    ).map(({ station }) => station);
     stopStations.set(
       id,
       stations.map((station) => station.id),

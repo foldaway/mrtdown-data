@@ -8,6 +8,7 @@ import {
   partitionScopedCandidates,
   type ScopedCandidate,
 } from './scopedCandidates.js';
+import { resolveStationCandidates } from './stationMatch.js';
 import type { scheduleTopologyProjection } from './topology.js';
 
 type Topology = ReturnType<typeof scheduleTopologyProjection>;
@@ -142,7 +143,26 @@ export function buildReconciliationEvidence(
       const occurrences = pattern.stopIds.map((stopId, index) => {
         const row = required(stops.get(stopId));
         const matches = required(entries.get(`stop:${stopId}`)).candidates;
-        const codeDates = new Set<string>();
+        const parent = row.parent_station
+          ? stops.get(row.parent_station)
+          : undefined;
+        const stationMatches = resolveStationCandidates(
+          row,
+          parent,
+          topology.stations,
+        );
+        const codeDates = new Set(
+          revisionDates.filter((date) =>
+            stationMatches.some(({ station, supportingCode }) =>
+              station.stationCodes.some(
+                (code) =>
+                  code.code === supportingCode &&
+                  code.lineId === service.lineId &&
+                  effective(date, code.startedAt, code.endedAt),
+              ),
+            ),
+          ),
+        );
         const diagnosticDates = new Set<string>();
         const restrictions = required(occurrenceRestrictions[index]);
         const platforms = matches
@@ -164,7 +184,6 @@ export function buildReconciliationEvidence(
                   effective(date, code.startedAt, code.endedAt),
               ),
             );
-            for (const date of validDates) codeDates.add(date);
             // These platform constraints have no historical effective dates.
             // Keep validity and scope/boarding checks on this same option.
             const serviceScope = platform.serviceIds.length
