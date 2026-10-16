@@ -539,6 +539,16 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-15: Added a separate version-2 scoped mapping draft/review contract
+  and a concrete NEL pilot: 69 proposed decisions cover one agency, three
+  routes, 17 station parents, 34 platform stops and 14 patterns (1,683 trip
+  records; 1,564 pattern-date pairs). The full draft retains all 1,055 other
+  records as unresolved; the checked-in pilot is explicitly incomplete globally.
+  No exclusions or approvals are generated, and source/calendar/lineage and
+  publication gates remain separate. See the
+  [scoped review contract](../../gtfs-scoped-review.md) and
+  [NEL mapping table](../../gtfs-nel-pilot-mappings.md). Phase 2 is not complete.
+
 - 2026-10-14: Added service-date candidate partitions to distinguish unique,
   ambiguous and uncovered active dates across revision boundaries. For the
   119 CCL whole-pattern date gaps, 26 now have one temporal candidate on every

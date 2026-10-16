@@ -1,0 +1,1244 @@
+{
+  "schemaVersion": 2,
+  "documentKind": "gtfs-scoped-mapping-draft",
+  "identity": {
+    "sourceManifest": {
+      "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+      "calendar.txt": "bddb06a1aebe70f984f1dd3576c80ae1a72a76f58b4cd68a6af245368a72a605",
+      "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+      "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+      "routes.txt": "d81b7bb5ce975ca9ca1120dd730db79d70f908cf560533c295fcea67133bb77c",
+      "stop_times.txt": "b6d5289d1b2300531fc627fe1bd6c9b7507a1e57c9ff69358cb7a9ee93991395",
+      "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+      "trips.txt": "f72aaf61d79c25260966bfcc793802b2f8971f6c9ce5edb925b907a34b1df36f"
+    },
+    "canonicalCommit": "d034d6babef4ea5bcac256d26c47dcd802bb39ba",
+    "topology": {
+      "projectionVersion": 1,
+      "sha256": "e376c280fbd6292ed6fe03e7fa81541ad0b0b8c76a09f916f1e3898aac240ec1"
+    }
+  },
+  "preparedBy": "MRTDown deterministic scoped-review proposal tool",
+  "pilotLineIds": [
+    "NEL"
+  ],
+  "dateSets": [
+    {
+      "id": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "serviceDates": [
+        "2026-01-03",
+        "2026-01-10",
+        "2026-01-17",
+        "2026-01-24",
+        "2026-01-31",
+        "2026-02-07",
+        "2026-02-14",
+        "2026-02-21",
+        "2026-02-28",
+        "2026-03-07",
+        "2026-03-14",
+        "2026-03-21",
+        "2026-03-28",
+        "2026-04-04",
+        "2026-04-11",
+        "2026-04-18",
+        "2026-04-25",
+        "2026-05-02",
+        "2026-05-09",
+        "2026-05-16",
+        "2026-05-23",
+        "2026-05-30",
+        "2026-06-06",
+        "2026-06-13",
+        "2026-06-20",
+        "2026-06-27",
+        "2026-07-04",
+        "2026-07-11",
+        "2026-07-18",
+        "2026-07-25",
+        "2026-08-01",
+        "2026-08-08",
+        "2026-08-15",
+        "2026-08-22",
+        "2026-08-29",
+        "2026-09-05",
+        "2026-09-12",
+        "2026-09-19",
+        "2026-09-26",
+        "2026-10-03",
+        "2026-10-10",
+        "2026-10-17",
+        "2026-10-24",
+        "2026-10-31",
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28",
+        "2026-12-05",
+        "2026-12-12",
+        "2026-12-19",
+        "2026-12-26"
+      ]
+    },
+    {
+      "id": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "serviceDates": [
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-05",
+        "2026-01-06",
+        "2026-01-07",
+        "2026-01-08",
+        "2026-01-09",
+        "2026-01-12",
+        "2026-01-13",
+        "2026-01-14",
+        "2026-01-15",
+        "2026-01-16",
+        "2026-01-19",
+        "2026-01-20",
+        "2026-01-21",
+        "2026-01-22",
+        "2026-01-23",
+        "2026-01-26",
+        "2026-01-27",
+        "2026-01-28",
+        "2026-01-29",
+        "2026-01-30",
+        "2026-02-02",
+        "2026-02-03",
+        "2026-02-04",
+        "2026-02-05",
+        "2026-02-06",
+        "2026-02-09",
+        "2026-02-10",
+        "2026-02-11",
+        "2026-02-12",
+        "2026-02-13",
+        "2026-02-16",
+        "2026-02-17",
+        "2026-02-18",
+        "2026-02-19",
+        "2026-02-20",
+        "2026-02-23",
+        "2026-02-24",
+        "2026-02-25",
+        "2026-02-26",
+        "2026-02-27",
+        "2026-03-02",
+        "2026-03-03",
+        "2026-03-04",
+        "2026-03-05",
+        "2026-03-06",
+        "2026-03-09",
+        "2026-03-10",
+        "2026-03-11",
+        "2026-03-12",
+        "2026-03-13",
+        "2026-03-16",
+        "2026-03-17",
+        "2026-03-18",
+        "2026-03-19",
+        "2026-03-20",
+        "2026-03-23",
+        "2026-03-24",
+        "2026-03-25",
+        "2026-03-26",
+        "2026-03-27",
+        "2026-03-30",
+        "2026-03-31",
+        "2026-04-01",
+        "2026-04-02",
+        "2026-04-03",
+        "2026-04-06",
+        "2026-04-07",
+        "2026-04-08",
+        "2026-04-09",
+        "2026-04-10",
+        "2026-04-13",
+        "2026-04-14",
+        "2026-04-15",
+        "2026-04-16",
+        "2026-04-17",
+        "2026-04-20",
+        "2026-04-21",
+        "2026-04-22",
+        "2026-04-23",
+        "2026-04-24",
+        "2026-04-27",
+        "2026-04-28",
+        "2026-04-29",
+        "2026-04-30",
+        "2026-05-01",
+        "2026-05-04",
+        "2026-05-05",
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-25",
+        "2026-05-26",
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-06-01",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-04",
+        "2026-06-05",
+        "2026-06-08",
+        "2026-06-09",
+        "2026-06-10",
+        "2026-06-11",
+        "2026-06-12",
+        "2026-06-15",
+        "2026-06-16",
+        "2026-06-17",
+        "2026-06-18",
+        "2026-06-19",
+        "2026-06-22",
+        "2026-06-23",
+        "2026-06-24",
+        "2026-06-25",
+        "2026-06-26",
+        "2026-06-29",
+        "2026-06-30",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-06",
+        "2026-07-07",
+        "2026-07-08",
+        "2026-07-09",
+        "2026-07-10",
+        "2026-07-13",
+        "2026-07-14",
+        "2026-07-15",
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-20",
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29",
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-03",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25",
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-30",
+        "2026-12-01",
+        "2026-12-02",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-07",
+        "2026-12-08",
+        "2026-12-09",
+        "2026-12-10",
+        "2026-12-11",
+        "2026-12-14",
+        "2026-12-15",
+        "2026-12-16",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-21",
+        "2026-12-22",
+        "2026-12-23",
+        "2026-12-24",
+        "2026-12-25",
+        "2026-12-28",
+        "2026-12-29",
+        "2026-12-30",
+        "2026-12-31"
+      ]
+    },
+    {
+      "id": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "serviceDates": [
+        "2026-01-04",
+        "2026-01-11",
+        "2026-01-18",
+        "2026-01-25",
+        "2026-02-01",
+        "2026-02-08",
+        "2026-02-15",
+        "2026-02-22",
+        "2026-03-01",
+        "2026-03-08",
+        "2026-03-15",
+        "2026-03-22",
+        "2026-03-29",
+        "2026-04-05",
+        "2026-04-12",
+        "2026-04-19",
+        "2026-04-26",
+        "2026-05-03",
+        "2026-05-10",
+        "2026-05-17",
+        "2026-05-24",
+        "2026-05-31",
+        "2026-06-07",
+        "2026-06-14",
+        "2026-06-21",
+        "2026-06-28",
+        "2026-07-05",
+        "2026-07-12",
+        "2026-07-19",
+        "2026-07-26",
+        "2026-08-02",
+        "2026-08-09",
+        "2026-08-16",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-09-06",
+        "2026-09-13",
+        "2026-09-20",
+        "2026-09-27",
+        "2026-10-04",
+        "2026-10-11",
+        "2026-10-18",
+        "2026-10-25",
+        "2026-11-01",
+        "2026-11-08",
+        "2026-11-15",
+        "2026-11-22",
+        "2026-11-29",
+        "2026-12-06",
+        "2026-12-13",
+        "2026-12-20",
+        "2026-12-27"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "providerId": "SBST",
+      "sourceRecordSha256": "e71e98f4769386c4e15b714cf53f49f959a3de7c1130c19d36047c8b375494ae",
+      "reason": "Provider agency SBST has the explicit canonical alias SBS; selected pilot routes reference it. Proposal pending repository review.",
+      "target": {
+        "kind": "operator",
+        "id": "SBS"
+      },
+      "kind": "agency",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "0fcf6780e7f96ce7fe3b4160b3bdf9b13b316c087b6c86b095ec2a7b995ac641",
+      "sourceRecordSha256": "4eabbe9be7b05f4d3d9f2bef8a59c6b498ff4bec100388211ff34b0522d40fb0",
+      "reason": "Ordered source path NE3_B to NE18_B (16 occurrences) is a contiguousSegment match of NEL_MAIN_N/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_N",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "1379aba99195322ee0a44e69ca45f75067da1cd7f1b5d74ee58cfb862f8d7bb1",
+      "sourceRecordSha256": "c8064f493ef1055a2bb668ba32fa9c0a01895d3c46af8767942354d1dffcb8e0",
+      "reason": "Ordered source path NE16_B to NE18_B (3 occurrences) is a contiguousSegment match of NEL_MAIN_N/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_N",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "23dcd9e8ddef806dd497df67d7b6270ac30f32d0c88187aa1c37186f42246472",
+      "sourceRecordSha256": "f7e291a75f03ebded77518b9ebe8ec1e530855e7cf5a9d77294902efd1474a1f",
+      "reason": "Ordered source path NE18_A to NE1_A (17 occurrences) is a exact match of NEL_MAIN_S/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_S",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "34158b095cb19b2f3aae5670168dfe01bb0dec862a48e50088089373b4fc79d1",
+      "sourceRecordSha256": "aebcde08f28e4b2f758f2e74b5f2a5bec65f875827feb5d3408fc2bccc13d120",
+      "reason": "Ordered source path NE1_B to NE18_B (17 occurrences) is a exact match of NEL_MAIN_N/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_N",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "51fa21346d3818af3526915539f9893b03e7213c3ffac4066a10ec6e85754a95",
+      "sourceRecordSha256": "b1e92d970e34ac1a833f23264b932a6a640a45ee9a1cb4ecc085ccedd039b5d1",
+      "reason": "Ordered source path NE18_A to NE1_A (17 occurrences) is a exact match of NEL_MAIN_S/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_S",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "56bb3839f6f45314637c8f1e3eee1fe2501d822cdf1176235484630dce3c9602",
+      "sourceRecordSha256": "b0ebb9ece8ecba0f7d52086e620a07091f9e8ace3a38c1bff853aa16b619a88c",
+      "reason": "Ordered source path NE18_A to NE16_A (3 occurrences) is a contiguousSegment match of NEL_MAIN_S/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_S",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "7cd7a11ba29f067a0c532b952c0bd0265fe2a42701506eb0e3d9a39d8d25d7cd",
+      "sourceRecordSha256": "45fc7288565ed1557d022f4d938a375f4d0eb2a5b7e537c72fe1a80fce65c0d6",
+      "reason": "Ordered source path NE16_B to NE18_B (3 occurrences) is a contiguousSegment match of NEL_MAIN_N/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_N",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "830d799be5f183eafe5d9ad6856491145745e68315447595fe60a3be6dc3d534",
+      "sourceRecordSha256": "df98a32a85fd23af9172ff9081766d47d4710020d6c24ab03f28e573a07a0ffa",
+      "reason": "Ordered source path NE16_B to NE18_B (3 occurrences) is a contiguousSegment match of NEL_MAIN_N/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_N",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "c8d32c4c6a58c94ded432c119fe3c12f0242901682f73b427ffe6a442cff22da",
+      "sourceRecordSha256": "cfdd44ab908e5f234e4a028d766f5edc846839b470199737ca6d205f74124d9e",
+      "reason": "Ordered source path NE18_A to NE1_A (17 occurrences) is a exact match of NEL_MAIN_S/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_S",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "d13e865f1ec19ba9f0d62ecc08efeb224da9d8347dee03ebee8fcfffb1a6ca06",
+      "sourceRecordSha256": "f5ebb332eaf7b714557a0d9ba07fe0d3096b8066c35dede21f3038bba94ad453",
+      "reason": "Ordered source path NE1_B to NE18_B (17 occurrences) is a exact match of NEL_MAIN_N/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_N",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "e009886bdd67a8e4646ecbaa690797617694ffca4fd106cca037004a5be80aea",
+      "sourceRecordSha256": "bba030fc0e3bfc90fdebbcdb8194365b82abfad171031dfc42df0d28866b4c24",
+      "reason": "Ordered source path NE1_B to NE18_B (17 occurrences) is a exact match of NEL_MAIN_N/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_N",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "e391c2f1c96565903c975c97aad5a081e2fd255857e00262b9226f744fb5e075",
+      "sourceRecordSha256": "2aefadccfcb0f705de8f4041533cc3639e3f10b93ae52fada07afffb8acde52e",
+      "reason": "Ordered source path NE3_B to NE18_B (16 occurrences) is a contiguousSegment match of NEL_MAIN_N/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_N",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "e9d1bc3bb237fe04090d4333c6275adc8e2e838c3a451b95d912d6ad4f6b7567",
+      "sourceRecordSha256": "4ccbc97504a85881891b2e31455d4bbe910b7913cdc87437ccb5c77b7b141759",
+      "reason": "Ordered source path NE3_B to NE18_B (16 occurrences) is a contiguousSegment match of NEL_MAIN_N/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_N",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "fe06007fb37e46782ff475f710174428af16687f9d2bd6e624e4bf412180e0ca",
+      "sourceRecordSha256": "e7fe6ea41012ca81cc641a4001941070b91eb2d351defbbcf87b0634ccc2d62e",
+      "reason": "Ordered source path NE18_A to NE16_A (3 occurrences) is a contiguousSegment match of NEL_MAIN_S/r_2024_punggol_coast on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NEL_MAIN_S",
+        "revisionId": "r_2024_punggol_coast",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NEL_NE16_NE18",
+      "sourceRecordSha256": "a4765ed14feb4b14313074d16d1354ec0a35adaaa87a2e22c2f9d03bfb448750",
+      "reason": "Provider route NEL_NE16_NE18 has the explicit canonical line family NEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NEL_NE1_NE18",
+      "sourceRecordSha256": "6f121f553d6208fc5ea2a7ddc85429901d290c2d597fa40c4362805145c752da",
+      "reason": "Provider route NEL_NE1_NE18 has the explicit canonical line family NEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NEL_NE3_NE18",
+      "sourceRecordSha256": "8f01205e14fb18fed0e6f0da1b4ce03b88629267d6d09310e2dd37db38c3f20c",
+      "reason": "Provider route NEL_NE3_NE18 has the explicit canonical line family NEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC13",
+      "sourceRecordSha256": "163e94488c8459fbcf9c4e9ad2d581a8849a1a19a77e52abadda65d11e71583b",
+      "reason": "Source station code CC13 identifies canonical station SER. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SER"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC29",
+      "sourceRecordSha256": "49c582d0997f783330112e4c4ae1d2265b8618a22d2e88394727fe689bc9bb2a",
+      "reason": "Source station code CC29 identifies canonical station HBF. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "HBF"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT12",
+      "sourceRecordSha256": "cdf43bd2c62ce239f95de43ae278957306b1f8c7d46a7c3909a17ff25553f6c2",
+      "reason": "Source station code DT12 identifies canonical station LTI. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "LTI"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT19",
+      "sourceRecordSha256": "dd14e2724e30d459e5c1f3cd58d0ecb56c62ec62ee3bbbebc1bae3c080502112",
+      "reason": "Source station code DT19 identifies canonical station CTN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW16",
+      "sourceRecordSha256": "78eeb4dff6cfee5758de5600ba7a58307d04f91b574b5da9c58d6cb8f869f1f7",
+      "reason": "Source station code EW16 identifies canonical station OTP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "OTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE10",
+      "sourceRecordSha256": "4ee7f34fd9d972830cd2c01f8ac6565624cb658463e3992ef85df315f9ece1ab",
+      "reason": "Source station code NE10 identifies canonical station PTP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE10_A",
+      "sourceRecordSha256": "4badb3593512872052777640a2ad33e0f2bb41c5843d8521ffd573ae167ccf52",
+      "reason": "Explicit source platform label A with code NE10 and parent NE10 identifies PTP_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PTP_NEL_A",
+        "stationId": "PTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE10_B",
+      "sourceRecordSha256": "5bbd19393b41a329b38f94b82fb67c60847119b93e5395a655c41eb984f37216",
+      "reason": "Explicit source platform label B with code NE10 and parent NE10 identifies PTP_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PTP_NEL_B",
+        "stationId": "PTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE11",
+      "sourceRecordSha256": "77e8d46e3c485ec8fd7efcb6fcccaebdcc830321bded738fe70ce11bd7ded076",
+      "reason": "Source station code NE11 identifies canonical station WLH. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "WLH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE11_A",
+      "sourceRecordSha256": "2287e5f45ed6329ffcacbb69cbbbc4bf8da22d3cc3aad8585aff1a0716d8be38",
+      "reason": "Explicit source platform label A with code NE11 and parent NE11 identifies WLH_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "WLH_NEL_A",
+        "stationId": "WLH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE11_B",
+      "sourceRecordSha256": "926d214e1730c3fd9989c0082b241de7fba2bedad8da7267205ed07823d770ba",
+      "reason": "Explicit source platform label B with code NE11 and parent NE11 identifies WLH_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "WLH_NEL_B",
+        "stationId": "WLH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE12_A",
+      "sourceRecordSha256": "3c295ae8bc489baa1ddbb18c76c261c29ec68ba23ba909e86d389a6272680c91",
+      "reason": "Explicit source platform label A with code NE12 and parent CC13 identifies SER_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SER_NEL_A",
+        "stationId": "SER"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE12_B",
+      "sourceRecordSha256": "1952f1b720d6f35c436da0099e5c4a7752d0a2afa591a784e3ff454ba9cd691f",
+      "reason": "Explicit source platform label B with code NE12 and parent CC13 identifies SER_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SER_NEL_B",
+        "stationId": "SER"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE13",
+      "sourceRecordSha256": "8223c22296a0133f34483a274245571831fea9999ea640a7dc29b35fa39b131e",
+      "reason": "Source station code NE13 identifies canonical station KVN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KVN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE13_A",
+      "sourceRecordSha256": "85fa26273c1937acce4b4fb61b82ca633d0abfa044f02837e9d12bd356fb06a7",
+      "reason": "Explicit source platform label A with code NE13 and parent NE13 identifies KVN_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KVN_NEL_A",
+        "stationId": "KVN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE13_B",
+      "sourceRecordSha256": "52fcfb6c3b78ba28b975fd1b9609067892aee14d1f49655db6aafc5bf28e4161",
+      "reason": "Explicit source platform label B with code NE13 and parent NE13 identifies KVN_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KVN_NEL_B",
+        "stationId": "KVN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE14",
+      "sourceRecordSha256": "ecce4d9d35504ffd8f35e645ec3ef6a59e4f4fcaf1dca64bc8274d724630e980",
+      "reason": "Source station code NE14 identifies canonical station HGN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "HGN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE14_A",
+      "sourceRecordSha256": "8ab3b6912d9c687edd0f7c5fcbe71078c1f750c0efa06d5e4ae5209901889e44",
+      "reason": "Explicit source platform label A with code NE14 and parent NE14 identifies HGN_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HGN_NEL_A",
+        "stationId": "HGN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE14_B",
+      "sourceRecordSha256": "91f5f5ad25207adaf89f77960978f84dae5add4a577581a869b0a693361faaed",
+      "reason": "Explicit source platform label B with code NE14 and parent NE14 identifies HGN_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HGN_NEL_B",
+        "stationId": "HGN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE15",
+      "sourceRecordSha256": "0ecc5aa330636d1d3bb34515b85f94f87384744b0f32573f55b8f3da8b6c4197",
+      "reason": "Source station code NE15 identifies canonical station BGK. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BGK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE15_A",
+      "sourceRecordSha256": "749778a1f75eaa5cf2469c063f40d53c7daaf9feec1182b3337e046e8fabb02e",
+      "reason": "Explicit source platform label A with code NE15 and parent NE15 identifies BGK_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BGK_NEL_A",
+        "stationId": "BGK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE15_B",
+      "sourceRecordSha256": "dcc81821fcb9f0b146ee5b347812daa0116c1e46e58f950e5171ddbd621b7404",
+      "reason": "Explicit source platform label B with code NE15 and parent NE15 identifies BGK_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BGK_NEL_B",
+        "stationId": "BGK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE16",
+      "sourceRecordSha256": "b5a002ef3e8d6404c2a6731e3bdbc1e9d5e809ea13b1ceec44b575da7e3c645b",
+      "reason": "Source station code NE16 identifies canonical station SKG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SKG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE16_A",
+      "sourceRecordSha256": "ef2f74793148141f5f14e002226700c4e8a0db72433d509b4ad7e010d25af51d",
+      "reason": "Explicit source platform label A with code NE16 and parent NE16 identifies SKG_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SKG_NEL_A",
+        "stationId": "SKG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE16_B",
+      "sourceRecordSha256": "d6c47115835bc18e91d48eda48843cf7fd5341f81df9257599f4b793653a0058",
+      "reason": "Explicit source platform label B with code NE16 and parent NE16 identifies SKG_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SKG_NEL_B",
+        "stationId": "SKG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE17",
+      "sourceRecordSha256": "d9603a82f7544df7c5bae0f29feec5e7d078bbb93ef799236874286b2fab62a3",
+      "reason": "Source station code NE17 identifies canonical station PGL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PGL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE17_A",
+      "sourceRecordSha256": "9091f916542f9d6ce91cdaa4393482b160d01995ed1fc7e1dc29eade64464fe8",
+      "reason": "Explicit source platform label A with code NE17 and parent NE17 identifies PGL_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PGL_NEL_A",
+        "stationId": "PGL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE17_B",
+      "sourceRecordSha256": "32c6bc45ad8a28a7f1f83ae9e1a844e95228958e7956ed934c212967501f483c",
+      "reason": "Explicit source platform label B with code NE17 and parent NE17 identifies PGL_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PGL_NEL_B",
+        "stationId": "PGL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE18",
+      "sourceRecordSha256": "c22b3f57aeeb3baf57d80e704ed50a45c8038b8fbd090606a3fec43b004926bd",
+      "reason": "Source station code NE18 identifies canonical station PGC. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PGC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE18_A",
+      "sourceRecordSha256": "ba4048f7d8337619d22c91e7392ac17891c50b8640c882afcce8598408241f56",
+      "reason": "Explicit source platform label A with code NE18 and parent NE18 identifies PGC_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PGC_NEL_A",
+        "stationId": "PGC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE18_B",
+      "sourceRecordSha256": "ae112d47144bb7953df6854be5d1f9e431ee18da362faecd7612f2e3a354a685",
+      "reason": "Explicit source platform label B with code NE18 and parent NE18 identifies PGC_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PGC_NEL_B",
+        "stationId": "PGC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE1_A",
+      "sourceRecordSha256": "1a0032fe7bcb7f4d13366fd516091a02e34043766e8204583fb95d0e63b06f47",
+      "reason": "Explicit source platform label A with code NE1 and parent CC29 identifies HBF_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HBF_NEL_A",
+        "stationId": "HBF"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE1_B",
+      "sourceRecordSha256": "2bbf97591e301fd9c56b89967b796765611d9f80014c321c2d1a7eb94385539f",
+      "reason": "Explicit source platform label B with code NE1 and parent CC29 identifies HBF_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HBF_NEL_B",
+        "stationId": "HBF"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE3_A",
+      "sourceRecordSha256": "eaf77fe08fce83f778472bb77ec4e5fec515a970e81149d39a098c371f23ee6a",
+      "reason": "Explicit source platform label C with code NE3 and parent EW16 identifies OTP_NEL_C. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "OTP_NEL_C",
+        "stationId": "OTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE3_B",
+      "sourceRecordSha256": "d4a6d75edbb615bc27a02c65524e532bc0e296cf8a7284eeb356367efab0ed76",
+      "reason": "Explicit source platform label D with code NE3 and parent EW16 identifies OTP_NEL_D. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "OTP_NEL_D",
+        "stationId": "OTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE4_A",
+      "sourceRecordSha256": "5f0518118f1c3ab6d896737e41d7b9a0cd02086347fa7ccd6bb065647e388655",
+      "reason": "Explicit source platform label A with code NE4 and parent DT19 identifies CTN_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CTN_NEL_A",
+        "stationId": "CTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE4_B",
+      "sourceRecordSha256": "20ce45d2fad4b4ccbf9faf114bbdc3c638ca6051198cb816ef260a7fe7a5c596",
+      "reason": "Explicit source platform label B with code NE4 and parent DT19 identifies CTN_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CTN_NEL_B",
+        "stationId": "CTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE5",
+      "sourceRecordSha256": "e2dcca4d31079888449f95faadc493e302858aae6cdbd67a699884f2cb45ae63",
+      "reason": "Source station code NE5 identifies canonical station CRQ. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CRQ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE5_A",
+      "sourceRecordSha256": "b8c4bcf76cc2f5e757b4f724b6060cfa5721d538cfe8dff03996b10880fddd19",
+      "reason": "Explicit source platform label A with code NE5 and parent NE5 identifies CRQ_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CRQ_NEL_A",
+        "stationId": "CRQ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE5_B",
+      "sourceRecordSha256": "718a4b404479d74ed2a76a7fc5b79792ad5116337efdad8b06530b8a4263cd1d",
+      "reason": "Explicit source platform label B with code NE5 and parent NE5 identifies CRQ_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CRQ_NEL_B",
+        "stationId": "CRQ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE6_A",
+      "sourceRecordSha256": "9fe4b0da038bad7ed137e5c3a39f1f0f006c4b0d0df6457b3c03e309937bf203",
+      "reason": "Explicit source platform label A with code NE6 and parent NS24 identifies DBG_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DBG_NEL_A",
+        "stationId": "DBG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE6_B",
+      "sourceRecordSha256": "9fe39811730c3bfce55d94e90fe4574669da30d4e9f509ec32305225ced613c1",
+      "reason": "Explicit source platform label B with code NE6 and parent NS24 identifies DBG_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DBG_NEL_B",
+        "stationId": "DBG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE7_A",
+      "sourceRecordSha256": "18038575107692619f6fbddc7a2a8b88084bd761887350c7cd8c82205e98b2bb",
+      "reason": "Explicit source platform label A with code NE7 and parent DT12 identifies LTI_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LTI_NEL_A",
+        "stationId": "LTI"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE7_B",
+      "sourceRecordSha256": "b667712e6f19ee130633b3a8290a4bead98e123d02e0f5fd45ea1c108e63c621",
+      "reason": "Explicit source platform label B with code NE7 and parent DT12 identifies LTI_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LTI_NEL_B",
+        "stationId": "LTI"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE8",
+      "sourceRecordSha256": "4b96e13012d6108dcd1e53e475828178c8637c2a9de6e515e33d6a81621e0e02",
+      "reason": "Source station code NE8 identifies canonical station FRP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "FRP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE8_A",
+      "sourceRecordSha256": "51f0e0919664df8b5d7f2faf3b8753d6539da0c371b4253ba629a4f410b3d88c",
+      "reason": "Explicit source platform label A with code NE8 and parent NE8 identifies FRP_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "FRP_NEL_A",
+        "stationId": "FRP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE8_B",
+      "sourceRecordSha256": "4d072d0967d1353ff92adf47dfeff9f5acafebdef72cab5955ad83e2b309ca49",
+      "reason": "Explicit source platform label B with code NE8 and parent NE8 identifies FRP_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "FRP_NEL_B",
+        "stationId": "FRP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE9",
+      "sourceRecordSha256": "c674f0e155acc796e038999ea66ef6e6fb0dbe1c3d933fc9636483934fb46a30",
+      "reason": "Source station code NE9 identifies canonical station BNK. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BNK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE9_A",
+      "sourceRecordSha256": "5058596537e66fa4e94c89cd8bc51320dc7122be2d49203f7ee4f5099019df5b",
+      "reason": "Explicit source platform label A with code NE9 and parent NE9 identifies BNK_NEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BNK_NEL_A",
+        "stationId": "BNK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE9_B",
+      "sourceRecordSha256": "607bab7982fed5b11135ed0b7fd037f5cca745e3bbd2bd9a7dc109dc9fdfcd81",
+      "reason": "Explicit source platform label B with code NE9 and parent NE9 identifies BNK_NEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BNK_NEL_B",
+        "stationId": "BNK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS24",
+      "sourceRecordSha256": "fa8ea7ba5116bc654891ef12c29d3481b96116d92c92e1076417afc283ea5059",
+      "reason": "Source station code NS24 identifies canonical station DBG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "DBG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    }
+  ]
+}
