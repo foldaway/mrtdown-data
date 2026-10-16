@@ -539,6 +539,19 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-15: Extended the concrete mapping pilot to DTL: 129 proposed
+  decisions cover seven declared routes, 35 station parents, 70 platform stops
+  and 16 patterns (1,511 trip records; 1,877 pattern-date pairs). Two route
+  declarations have no trips in the capture. Independently checked the platform
+  labels and ordered paths, and reproduced both pilots deterministically.
+  The draft runner now accepts multiple pilot lines and deduplicates their
+  shared dependencies: NEL/DTL together propose 195 matches, leaving 929 entries
+  unresolved without automatic exclusions or approval. See the
+  [DTL mapping table](../../gtfs-dtl-pilot-mappings.md) and
+  [cumulative review scope](../../gtfs-scoped-review.md#dtl-and-cumulative-pilot-scope).
+  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
+  complete and generation stays blocked.
+
 - 2026-10-15: Added a separate version-2 scoped mapping draft/review contract
   and a concrete NEL pilot: 69 proposed decisions cover one agency, three
   routes, 17 station parents, 34 platform stops and 14 patterns (1,683 trip

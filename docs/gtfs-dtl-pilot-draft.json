@@ -1,0 +1,1946 @@
+{
+  "schemaVersion": 2,
+  "documentKind": "gtfs-scoped-mapping-draft",
+  "identity": {
+    "sourceManifest": {
+      "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+      "calendar.txt": "bddb06a1aebe70f984f1dd3576c80ae1a72a76f58b4cd68a6af245368a72a605",
+      "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+      "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+      "routes.txt": "d81b7bb5ce975ca9ca1120dd730db79d70f908cf560533c295fcea67133bb77c",
+      "stop_times.txt": "b6d5289d1b2300531fc627fe1bd6c9b7507a1e57c9ff69358cb7a9ee93991395",
+      "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+      "trips.txt": "f72aaf61d79c25260966bfcc793802b2f8971f6c9ce5edb925b907a34b1df36f"
+    },
+    "canonicalCommit": "d034d6babef4ea5bcac256d26c47dcd802bb39ba",
+    "topology": {
+      "projectionVersion": 1,
+      "sha256": "e376c280fbd6292ed6fe03e7fa81541ad0b0b8c76a09f916f1e3898aac240ec1"
+    }
+  },
+  "preparedBy": "MRTDown deterministic scoped-review proposal tool",
+  "pilotLineIds": [
+    "DTL"
+  ],
+  "dateSets": [
+    {
+      "id": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "serviceDates": [
+        "2026-01-03",
+        "2026-01-10",
+        "2026-01-17",
+        "2026-01-24",
+        "2026-01-31",
+        "2026-02-07",
+        "2026-02-14",
+        "2026-02-21",
+        "2026-02-28",
+        "2026-03-07",
+        "2026-03-14",
+        "2026-03-21",
+        "2026-03-28",
+        "2026-04-04",
+        "2026-04-11",
+        "2026-04-18",
+        "2026-04-25",
+        "2026-05-02",
+        "2026-05-09",
+        "2026-05-16",
+        "2026-05-23",
+        "2026-05-30",
+        "2026-06-06",
+        "2026-06-13",
+        "2026-06-20",
+        "2026-06-27",
+        "2026-07-04",
+        "2026-07-11",
+        "2026-07-18",
+        "2026-07-25",
+        "2026-08-01",
+        "2026-08-08",
+        "2026-08-15",
+        "2026-08-22",
+        "2026-08-29",
+        "2026-09-05",
+        "2026-09-12",
+        "2026-09-19",
+        "2026-09-26",
+        "2026-10-03",
+        "2026-10-10",
+        "2026-10-17",
+        "2026-10-24",
+        "2026-10-31",
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28",
+        "2026-12-05",
+        "2026-12-12",
+        "2026-12-19",
+        "2026-12-26"
+      ]
+    },
+    {
+      "id": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "serviceDates": [
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-05",
+        "2026-01-06",
+        "2026-01-07",
+        "2026-01-08",
+        "2026-01-09",
+        "2026-01-12",
+        "2026-01-13",
+        "2026-01-14",
+        "2026-01-15",
+        "2026-01-16",
+        "2026-01-19",
+        "2026-01-20",
+        "2026-01-21",
+        "2026-01-22",
+        "2026-01-23",
+        "2026-01-26",
+        "2026-01-27",
+        "2026-01-28",
+        "2026-01-29",
+        "2026-01-30",
+        "2026-02-02",
+        "2026-02-03",
+        "2026-02-04",
+        "2026-02-05",
+        "2026-02-06",
+        "2026-02-09",
+        "2026-02-10",
+        "2026-02-11",
+        "2026-02-12",
+        "2026-02-13",
+        "2026-02-16",
+        "2026-02-17",
+        "2026-02-18",
+        "2026-02-19",
+        "2026-02-20",
+        "2026-02-23",
+        "2026-02-24",
+        "2026-02-25",
+        "2026-02-26",
+        "2026-02-27",
+        "2026-03-02",
+        "2026-03-03",
+        "2026-03-04",
+        "2026-03-05",
+        "2026-03-06",
+        "2026-03-09",
+        "2026-03-10",
+        "2026-03-11",
+        "2026-03-12",
+        "2026-03-13",
+        "2026-03-16",
+        "2026-03-17",
+        "2026-03-18",
+        "2026-03-19",
+        "2026-03-20",
+        "2026-03-23",
+        "2026-03-24",
+        "2026-03-25",
+        "2026-03-26",
+        "2026-03-27",
+        "2026-03-30",
+        "2026-03-31",
+        "2026-04-01",
+        "2026-04-02",
+        "2026-04-03",
+        "2026-04-06",
+        "2026-04-07",
+        "2026-04-08",
+        "2026-04-09",
+        "2026-04-10",
+        "2026-04-13",
+        "2026-04-14",
+        "2026-04-15",
+        "2026-04-16",
+        "2026-04-17",
+        "2026-04-20",
+        "2026-04-21",
+        "2026-04-22",
+        "2026-04-23",
+        "2026-04-24",
+        "2026-04-27",
+        "2026-04-28",
+        "2026-04-29",
+        "2026-04-30",
+        "2026-05-01",
+        "2026-05-04",
+        "2026-05-05",
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-25",
+        "2026-05-26",
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-06-01",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-04",
+        "2026-06-05",
+        "2026-06-08",
+        "2026-06-09",
+        "2026-06-10",
+        "2026-06-11",
+        "2026-06-12",
+        "2026-06-15",
+        "2026-06-16",
+        "2026-06-17",
+        "2026-06-18",
+        "2026-06-19",
+        "2026-06-22",
+        "2026-06-23",
+        "2026-06-24",
+        "2026-06-25",
+        "2026-06-26",
+        "2026-06-29",
+        "2026-06-30",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-06",
+        "2026-07-07",
+        "2026-07-08",
+        "2026-07-09",
+        "2026-07-10",
+        "2026-07-13",
+        "2026-07-14",
+        "2026-07-15",
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-20",
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29",
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-03",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25",
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-30",
+        "2026-12-01",
+        "2026-12-02",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-07",
+        "2026-12-08",
+        "2026-12-09",
+        "2026-12-10",
+        "2026-12-11",
+        "2026-12-14",
+        "2026-12-15",
+        "2026-12-16",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-21",
+        "2026-12-22",
+        "2026-12-23",
+        "2026-12-24",
+        "2026-12-25",
+        "2026-12-28",
+        "2026-12-29",
+        "2026-12-30",
+        "2026-12-31"
+      ]
+    },
+    {
+      "id": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "serviceDates": [
+        "2026-01-04",
+        "2026-01-11",
+        "2026-01-18",
+        "2026-01-25",
+        "2026-02-01",
+        "2026-02-08",
+        "2026-02-15",
+        "2026-02-22",
+        "2026-03-01",
+        "2026-03-08",
+        "2026-03-15",
+        "2026-03-22",
+        "2026-03-29",
+        "2026-04-05",
+        "2026-04-12",
+        "2026-04-19",
+        "2026-04-26",
+        "2026-05-03",
+        "2026-05-10",
+        "2026-05-17",
+        "2026-05-24",
+        "2026-05-31",
+        "2026-06-07",
+        "2026-06-14",
+        "2026-06-21",
+        "2026-06-28",
+        "2026-07-05",
+        "2026-07-12",
+        "2026-07-19",
+        "2026-07-26",
+        "2026-08-02",
+        "2026-08-09",
+        "2026-08-16",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-09-06",
+        "2026-09-13",
+        "2026-09-20",
+        "2026-09-27",
+        "2026-10-04",
+        "2026-10-11",
+        "2026-10-18",
+        "2026-10-25",
+        "2026-11-01",
+        "2026-11-08",
+        "2026-11-15",
+        "2026-11-22",
+        "2026-11-29",
+        "2026-12-06",
+        "2026-12-13",
+        "2026-12-20",
+        "2026-12-27"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "providerId": "SBST",
+      "sourceRecordSha256": "e71e98f4769386c4e15b714cf53f49f959a3de7c1130c19d36047c8b375494ae",
+      "reason": "Provider agency SBST has the explicit canonical alias SBS; selected pilot routes reference it. Proposal pending repository review.",
+      "target": {
+        "kind": "operator",
+        "id": "SBS"
+      },
+      "kind": "agency",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "0d9ec3d7344d8379db5f8403da1c13fec7d4731918916eeac9f310a0da094c49",
+      "sourceRecordSha256": "dd6ec1753e97be2a4ca58733a26810767bcff971bd77518c9b766262c4e41917",
+      "reason": "Ordered source path DT11_A to DT1_A (11 occurrences) is a contiguousSegment match of DTL_MAIN_W/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_W",
+        "revisionId": "r_2025_hume",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "2730ea2d57ded026448d76fb11dd4d573626746322e1866ce114f52d4a0c3882",
+      "sourceRecordSha256": "e4be611574bef2c24159bbc7045aa3c4af32ebfdffb9506ed5b98412774d80c8",
+      "reason": "Ordered source path DT35_A to DT1_A (35 occurrences) is a exact match of DTL_MAIN_W/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_W",
+        "revisionId": "r_2025_hume",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "2a656c669cc8bb38898f3c07c48f2702f92d6932f1dd8e4c890e29778dc59887",
+      "sourceRecordSha256": "9093491392515219d9313ea4286215a8e5d40fa4e0b569de4ea63290cf89a718",
+      "reason": "Ordered source path DT1_B to DT35_B (35 occurrences) is a exact match of DTL_MAIN_E/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_E",
+        "revisionId": "r_2025_hume",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "3c4ab8fa1f53f8a54722df3c7f10442552c63a5fa8c48513d8275e6272232d8a",
+      "sourceRecordSha256": "9c6c27a60f8f2564bcbf478fa58537461c932c187e5adbc18a77cb08cdcb6ee7",
+      "reason": "Ordered source path DT14_A to DT1_A (14 occurrences) is a contiguousSegment match of DTL_MAIN_W/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_W",
+        "revisionId": "r_2025_hume",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "436a6c4e9ecdb53196feb8d41e53b60ebdc9b2e8c1885d02171c09298e246977",
+      "sourceRecordSha256": "0ab2f88a6c52533bbbb196c1b8c69d6217ce388bd3118cab9ef36a0a55c5c422",
+      "reason": "Ordered source path DT11_A to DT1_A (11 occurrences) is a contiguousSegment match of DTL_MAIN_W/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_W",
+        "revisionId": "r_2025_hume",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "58ccdff26dd4075197c965b31e9010acf9a80ad9bfc1e65f334b90eab685c324",
+      "sourceRecordSha256": "0bc6459777cd6a041219af9dd9a7bf488d32e5e3cc21eac0396960f454409cc2",
+      "reason": "Ordered source path DT1_B to DT35_B (35 occurrences) is a exact match of DTL_MAIN_E/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_E",
+        "revisionId": "r_2025_hume",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "6c7dcbf214e916fcf95410628073b868edc65a744166ab370a65f9e27e816e94",
+      "sourceRecordSha256": "3055e14f83201a761d3e4c0e5ff24215b0c79bed3c41a1aff309c2ef65a40b4b",
+      "reason": "Ordered source path DT11_A to DT1_A (11 occurrences) is a contiguousSegment match of DTL_MAIN_W/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_W",
+        "revisionId": "r_2025_hume",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "819011230e969a777609cc7ba44005e8dfef558c0fb34ad6f6193ccdfde0e4cb",
+      "sourceRecordSha256": "5f00741ecaa62c86240862ba431d4f33015c46e548b9a051b50b56af28246073",
+      "reason": "Ordered source path DT1_B to DT35_B (35 occurrences) is a exact match of DTL_MAIN_E/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_E",
+        "revisionId": "r_2025_hume",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "a0d6dd9517e3417be760d97b317d8b131f6885ec115365b39034b17c3743924c",
+      "sourceRecordSha256": "de4707c898d91b99969891a23078d6b119b1ca5c0e3fc29a740d838818cb152a",
+      "reason": "Ordered source path DT14_A to DT1_A (14 occurrences) is a contiguousSegment match of DTL_MAIN_W/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_W",
+        "revisionId": "r_2025_hume",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "a8ab1aff4f83749d796c53a555d2428e611658d9e5d97cd63e5c220423d3688a",
+      "sourceRecordSha256": "5cabfd666a659bd6d50557418b755ff21ae9b2a22f07042c46a5bafe905d898e",
+      "reason": "Ordered source path DT24_B to DT35_B (12 occurrences) is a contiguousSegment match of DTL_MAIN_E/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_E",
+        "revisionId": "r_2025_hume",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "aedfde6c773b747e26fefad8d2b003df8a7d71d1c3eebf226dead1228a2f4782",
+      "sourceRecordSha256": "19b6f9a43eada755d8ed9dbb6224d88e2e7ffd533a1d2cb8530578729349d518",
+      "reason": "Ordered source path DT14_A to DT1_A (14 occurrences) is a contiguousSegment match of DTL_MAIN_W/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_W",
+        "revisionId": "r_2025_hume",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b9560cec21e17b91ddcfded4cd26fedd22dc5c8215fe1f49d2258c5437342ac5",
+      "sourceRecordSha256": "0a5239ebafa4022cb054e2a6ab453d0f2e9f495ee0435f49b2d2f6758e3f22fb",
+      "reason": "Ordered source path DT24_B to DT35_B (12 occurrences) is a contiguousSegment match of DTL_MAIN_E/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_E",
+        "revisionId": "r_2025_hume",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "bb7d1871e412d43c5994c2349de26541cfc3d38b8691f635104b1f9cd6cdcd07",
+      "sourceRecordSha256": "79374528bddd5547701762bebb5cb1ef6d1affd31972a2403b905e4cd4fc6edb",
+      "reason": "Ordered source path DT35_A to DT1_A (35 occurrences) is a exact match of DTL_MAIN_W/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_W",
+        "revisionId": "r_2025_hume",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "c40d05495efc745ff956988ca2111a41c3716be8c603c24605b021b4c7b9450d",
+      "sourceRecordSha256": "728d60065bf6ed76a32041015e20517bcc472910b1c196dc9122099e5862dc76",
+      "reason": "Ordered source path DT12_A to DT1_A (12 occurrences) is a contiguousSegment match of DTL_MAIN_W/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_W",
+        "revisionId": "r_2025_hume",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "c82aa47755cccd7c543100996795668d0fc20ee7bb45c8a63668361a0e69e4d5",
+      "sourceRecordSha256": "1e7f25066b84b22c422fa295350c637d97b1723622bd3a1b2be6369ccf81ef45",
+      "reason": "Ordered source path DT24_B to DT35_B (12 occurrences) is a contiguousSegment match of DTL_MAIN_E/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_E",
+        "revisionId": "r_2025_hume",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "f42671c99e08de39802bebd185b091df77affedff538064e7df24ac44ff54dd0",
+      "sourceRecordSha256": "7c787b3010aac79b09ca74606f63e2923e1ecf4589dd07895f9b04ec2edc2f64",
+      "reason": "Ordered source path DT35_A to DT1_A (35 occurrences) is a exact match of DTL_MAIN_W/r_2025_hume on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "DTL_MAIN_W",
+        "revisionId": "r_2025_hume",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DTL_DT19_DT35",
+      "sourceRecordSha256": "d77fd369bf806023cad6b778a81ab42e2309dc71035883ce3fed571baa25bbd1",
+      "reason": "Provider route DTL_DT19_DT35 has the explicit canonical line family DTL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "DTL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DTL_DT1_DT11",
+      "sourceRecordSha256": "29c31cd1708032166e89d7660d2de8817da198691c09eac988d719f623fe9b2a",
+      "reason": "Provider route DTL_DT1_DT11 has the explicit canonical line family DTL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "DTL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DTL_DT1_DT12",
+      "sourceRecordSha256": "6a4095ab4b92e6412b25a23179b7ef667ad5f4e6e04d947640f21af3383b473c",
+      "reason": "Provider route DTL_DT1_DT12 has the explicit canonical line family DTL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "DTL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DTL_DT1_DT14",
+      "sourceRecordSha256": "637fb8aa67e570aec5286285d90c788c40797fa39ca123756fae12a54c0542e6",
+      "reason": "Provider route DTL_DT1_DT14 has the explicit canonical line family DTL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "DTL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DTL_DT1_DT19",
+      "sourceRecordSha256": "0611b96be6f2b5a48895332b6d13b5bba50ae5e4d29ac183057c85c427b0c4ff",
+      "reason": "Provider route DTL_DT1_DT19 has the explicit canonical line family DTL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "DTL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DTL_DT1_DT35",
+      "sourceRecordSha256": "7b29b21bfcb45cb460be31b55fb291e2fb3fecbf7e98098fdeedff14ea03d1da",
+      "reason": "Provider route DTL_DT1_DT35 has the explicit canonical line family DTL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "DTL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DTL_DT24_DT35",
+      "sourceRecordSha256": "d0e7c67d3e218f8748d991b8cb8de811bc896a84eeb66fef6a3cef9eaef25885",
+      "reason": "Provider route DTL_DT24_DT35 has the explicit canonical line family DTL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "DTL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC10",
+      "sourceRecordSha256": "a834e267eaae061a0279e9dc955b52305626aa8fea3b67ae6ae887f02b93ed1e",
+      "reason": "Source station code CC10 identifies canonical station MPS. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MPS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC19",
+      "sourceRecordSha256": "6ce4093842a0d9537cde8fbcec9a07674f1997d5d5a082a47017a3c58b7cd986",
+      "reason": "Source station code CC19 identifies canonical station BTN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC34",
+      "sourceRecordSha256": "0c9dceb8baa63d8cd1e5d11f180e3fc1303e933e92fc16bfcbffa7a5b13a0f01",
+      "reason": "Source station code CC34 identifies canonical station BFT. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BFT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC4",
+      "sourceRecordSha256": "031242631532764ea2025b690a79b43d23bbdbd6061fe148d8b9a3d795208b7b",
+      "reason": "Source station code CC4 identifies canonical station PMN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PMN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CG1",
+      "sourceRecordSha256": "b454eb2701f332ee48290302dfb0646eb30e16196ba690b68b43a6e423f73576",
+      "reason": "Source station code CG1 identifies canonical station XPO. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "XPO"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT10",
+      "sourceRecordSha256": "ef33d032cbbc77819a2f9a80a40180cf16b94f8d8a8dffd1794c12d05965523e",
+      "reason": "Source station code DT10 identifies canonical station STV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "STV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT10_A",
+      "sourceRecordSha256": "4f5fb60d6641442b99f9583d4fed67e3f712490bf4873c0d66213c3cf1da320b",
+      "reason": "Explicit source platform label A with code DT10 and parent DT10 identifies STV_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "STV_DTL_A",
+        "stationId": "STV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT10_B",
+      "sourceRecordSha256": "4ad031c2ddfba55711c581efdb0dc556133aa4636a3f6884b7609f2e6613ac0a",
+      "reason": "Explicit source platform label B with code DT10 and parent DT10 identifies STV_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "STV_DTL_B",
+        "stationId": "STV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT11",
+      "sourceRecordSha256": "3fcbee6b0b06b9c6c96e3567530cc5443655e4af7474b6a538eb203f589bdd5e",
+      "reason": "Source station code DT11 identifies canonical station NEW. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "NEW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT11_A",
+      "sourceRecordSha256": "22b9404169e4857ba8326fb2238a02461c4de4aa392b26f3f41a2f32403d5426",
+      "reason": "Explicit source platform label A with code DT11 and parent DT11 identifies NEW_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "NEW_DTL_A",
+        "stationId": "NEW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT11_B",
+      "sourceRecordSha256": "a95c67b44a8681e30ae428d4e277ff5f64b3cbc53e5a12a6cac5db579b3afdb9",
+      "reason": "Explicit source platform label B with code DT11 and parent DT11 identifies NEW_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "NEW_DTL_B",
+        "stationId": "NEW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT12",
+      "sourceRecordSha256": "cdf43bd2c62ce239f95de43ae278957306b1f8c7d46a7c3909a17ff25553f6c2",
+      "reason": "Source station code DT12 identifies canonical station LTI. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "LTI"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT12_A",
+      "sourceRecordSha256": "e36c301a3159111316c2d915f2eacdc2f8d7f84d5fc5ac54e697883be206c53a",
+      "reason": "Explicit source platform label A with code DT12 and parent DT12 identifies LTI_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LTI_DTL_A",
+        "stationId": "LTI"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT12_B",
+      "sourceRecordSha256": "48d9b44021491c53ee12b53ea9213d85911cc8aac51975e9f57a5e4beffc7f7d",
+      "reason": "Explicit source platform label B with code DT12 and parent DT12 identifies LTI_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LTI_DTL_B",
+        "stationId": "LTI"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT13",
+      "sourceRecordSha256": "2521664134f8764f227ce6b7b0949bb026849d9bd8cc4778197611ea386bc86b",
+      "reason": "Source station code DT13 identifies canonical station RCR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "RCR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT13_A",
+      "sourceRecordSha256": "9821d6408676f2abca7705bf8554fb374bb5af7c9da608f69fa2820e7d7b1516",
+      "reason": "Explicit source platform label A with code DT13 and parent DT13 identifies RCR_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RCR_DTL_A",
+        "stationId": "RCR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT13_B",
+      "sourceRecordSha256": "67c3e4d9579a6e7890086bf094c78ffc98060fe31f9d2a7654306508de4b5c50",
+      "reason": "Explicit source platform label B with code DT13 and parent DT13 identifies RCR_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RCR_DTL_B",
+        "stationId": "RCR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT14",
+      "sourceRecordSha256": "b19f450486ca17d9ebdfae9391784fa1f841b509d2b4900fb8a2ecf69ec65550",
+      "reason": "Source station code DT14 identifies canonical station BGS. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BGS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT14_A",
+      "sourceRecordSha256": "5846b5628accce8b64d7e80e0d820ca900b8da9af68dffa0e50299b2f33110fd",
+      "reason": "Explicit source platform label A with code DT14 and parent DT14 identifies BGS_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BGS_DTL_A",
+        "stationId": "BGS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT14_B",
+      "sourceRecordSha256": "3c7ceb09e151b04159dc130ce9c167c238d9c521fa76901bb8ac2941688157de",
+      "reason": "Explicit source platform label B with code DT14 and parent DT14 identifies BGS_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BGS_DTL_B",
+        "stationId": "BGS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT15_A",
+      "sourceRecordSha256": "d6a2e02f40b5e19741a02440598ab56621d73e24dbdbcb3cbccea5c2f1cd33b4",
+      "reason": "Explicit source platform label C with code DT15 and parent CC4 identifies PMN_DTL_C. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PMN_DTL_C",
+        "stationId": "PMN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT15_B",
+      "sourceRecordSha256": "bee3f9885ab799e46178c983a25695d3cf65e6474c9d624b7baedb62e1fd8fbc",
+      "reason": "Explicit source platform label D with code DT15 and parent CC4 identifies PMN_DTL_D. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PMN_DTL_D",
+        "stationId": "PMN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT16_A",
+      "sourceRecordSha256": "71382345072de7dd8ba1c3c1cccf83dc113365730273f4ca3595e1dea2cceb55",
+      "reason": "Explicit source platform label C with code DT16 and parent CC34 identifies BFT_DTL_C. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BFT_DTL_C",
+        "stationId": "BFT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT16_B",
+      "sourceRecordSha256": "e458512918393af395eccb3557dd8374a5a83bf23f1413e23217e0c30fa15f57",
+      "reason": "Explicit source platform label A with code DT16 and parent CC34 identifies BFT_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BFT_DTL_A",
+        "stationId": "BFT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT17",
+      "sourceRecordSha256": "9c9de5fe56396a2efd1d7299c7500bc2ed0a9978472fabbeae61167878f35e38",
+      "reason": "Source station code DT17 identifies canonical station DTN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "DTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT17_A",
+      "sourceRecordSha256": "a11159264d4bb8c301d0d4ab23d2751fcadacf2246eb51e1b045af9025441d9e",
+      "reason": "Explicit source platform label A with code DT17 and parent DT17 identifies DTN_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DTN_DTL_A",
+        "stationId": "DTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT17_B",
+      "sourceRecordSha256": "d7a9285b6a0177aea7cb9127c10271db80a9f032fa59bc793ef992a8d4058ba1",
+      "reason": "Explicit source platform label B with code DT17 and parent DT17 identifies DTN_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DTN_DTL_B",
+        "stationId": "DTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT18",
+      "sourceRecordSha256": "c3519e32774ef946a512cd3957348ca7a741da8791a66162ef52a90fad367fd2",
+      "reason": "Source station code DT18 identifies canonical station TLA. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TLA"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT18_A",
+      "sourceRecordSha256": "a9a888d05b8a3532102fac009003b3ba0e785d9cc491c8e35fe3816c52183c4e",
+      "reason": "Explicit source platform label A with code DT18 and parent DT18 identifies TLA_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TLA_DTL_A",
+        "stationId": "TLA"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT18_B",
+      "sourceRecordSha256": "9f62b7d9355fcff52a6d00ff107765c28d8b003ade2ceff82526a9713782c9e9",
+      "reason": "Explicit source platform label B with code DT18 and parent DT18 identifies TLA_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TLA_DTL_B",
+        "stationId": "TLA"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT19",
+      "sourceRecordSha256": "dd14e2724e30d459e5c1f3cd58d0ecb56c62ec62ee3bbbebc1bae3c080502112",
+      "reason": "Source station code DT19 identifies canonical station CTN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT19_A",
+      "sourceRecordSha256": "d67826ac7ccd0533c4b7b5a94f2e208b012564f39f28e4c195f5ea25ada8d02c",
+      "reason": "Explicit source platform label C with code DT19 and parent DT19 identifies CTN_DTL_C. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CTN_DTL_C",
+        "stationId": "CTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT19_B",
+      "sourceRecordSha256": "986bf3a953638dec0f081f25c741bfa3ec42df740fde3ca71cdf47004a6af638",
+      "reason": "Explicit source platform label D with code DT19 and parent DT19 identifies CTN_DTL_D. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CTN_DTL_D",
+        "stationId": "CTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT1",
+      "sourceRecordSha256": "bfddc1502628522cbcf1a68d10dc691c1ed4d83760d60b34b2538830d2c2d5a9",
+      "reason": "Source station code DT1 identifies canonical station BKP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BKP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT1_A",
+      "sourceRecordSha256": "9cdbd481a38c311179e3b4dc2f12e505189cb0e82899d10fb1415e1a30f905bc",
+      "reason": "Explicit source platform label A with code DT1 and parent DT1 identifies BKP_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BKP_DTL_A",
+        "stationId": "BKP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT1_B",
+      "sourceRecordSha256": "7cd84e868182dd4956fbd044650dc0353f630936abbae41f80b0e5796647d4b0",
+      "reason": "Explicit source platform label B with code DT1 and parent DT1 identifies BKP_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BKP_DTL_B",
+        "stationId": "BKP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT20",
+      "sourceRecordSha256": "3981c18eb9f844fd786434cfbcc188324cfcc1d03c85ea349b6c64df72fe6b21",
+      "reason": "Source station code DT20 identifies canonical station FCN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "FCN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT20_A",
+      "sourceRecordSha256": "6b47e468470b9b39e298dbea74ed230e21749efa343b9a73b8d62915dfad0d2f",
+      "reason": "Explicit source platform label A with code DT20 and parent DT20 identifies FCN_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "FCN_DTL_A",
+        "stationId": "FCN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT20_B",
+      "sourceRecordSha256": "41ebecd6904437a5ff61d53ac105964eafa80b2d29df1ca9cadc4107ae45436f",
+      "reason": "Explicit source platform label B with code DT20 and parent DT20 identifies FCN_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "FCN_DTL_B",
+        "stationId": "FCN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT21",
+      "sourceRecordSha256": "2a4404cd496114ffd7f86f48274c919a60ca8bae490049cd27b6d0b046471a13",
+      "reason": "Source station code DT21 identifies canonical station BCL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BCL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT21_A",
+      "sourceRecordSha256": "3e116b30fcbfad63de8e7b0db73e914758833496fba79533efc6304d77be8d95",
+      "reason": "Explicit source platform label A with code DT21 and parent DT21 identifies BCL_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BCL_DTL_A",
+        "stationId": "BCL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT21_B",
+      "sourceRecordSha256": "1cb386e40e27b394a98a509dbf5f93c8eaf4fac4e4883314c102eb9843cbff65",
+      "reason": "Explicit source platform label B with code DT21 and parent DT21 identifies BCL_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BCL_DTL_B",
+        "stationId": "BCL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT22",
+      "sourceRecordSha256": "57b3ca3dfd74b2fe6a94bac754cf3ec45d3d1ccc98174ff8084cd52a7a277e48",
+      "reason": "Source station code DT22 identifies canonical station JLB. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "JLB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT22_A",
+      "sourceRecordSha256": "fa2c4494c26f3d44fb4464ef12d3a7ddc3477feba3058bcdd61330c3fa6c4221",
+      "reason": "Explicit source platform label A with code DT22 and parent DT22 identifies JLB_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "JLB_DTL_A",
+        "stationId": "JLB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT22_B",
+      "sourceRecordSha256": "699f15d1b23ff06b164b809e7872c817db5b4d7494be30de955deea088ef61fc",
+      "reason": "Explicit source platform label B with code DT22 and parent DT22 identifies JLB_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "JLB_DTL_B",
+        "stationId": "JLB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT23",
+      "sourceRecordSha256": "218008f3c1f35c8a8f06be8a0339d95e31eb16bb272c20911aa7f1345bb73bf3",
+      "reason": "Source station code DT23 identifies canonical station BDM. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BDM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT23_A",
+      "sourceRecordSha256": "c94865ce518d592cbdc272d03cda4b86227b393606db2ac58b8bd2422121c1db",
+      "reason": "Explicit source platform label A with code DT23 and parent DT23 identifies BDM_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BDM_DTL_A",
+        "stationId": "BDM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT23_B",
+      "sourceRecordSha256": "389696268bf2e8f6a7cd5f0991ceb7e7e6ea8168d8c5d815bb5ceb3f8595edfb",
+      "reason": "Explicit source platform label B with code DT23 and parent DT23 identifies BDM_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BDM_DTL_B",
+        "stationId": "BDM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT24",
+      "sourceRecordSha256": "6640900ae460036dba1c87593a78123eff6ea4a768005081e2b8b41c411ecd04",
+      "reason": "Source station code DT24 identifies canonical station GLB. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "GLB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT24_A",
+      "sourceRecordSha256": "0ee345e1dacfe5ad4bc3cfd6508a256e80e9499e6d06d3fae91d817a36a721d8",
+      "reason": "Explicit source platform label A with code DT24 and parent DT24 identifies GLB_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "GLB_DTL_A",
+        "stationId": "GLB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT24_B",
+      "sourceRecordSha256": "feaa27e68acd3e054ba84392e78c3902663683ff3ddfeb8b8334c241ea696621",
+      "reason": "Explicit source platform label B with code DT24 and parent DT24 identifies GLB_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "GLB_DTL_B",
+        "stationId": "GLB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT25",
+      "sourceRecordSha256": "4d748f63bd3c95ee2e7d3dc8e837453c86e873a7f70997cde9d7c2412fabe63d",
+      "reason": "Source station code DT25 identifies canonical station MTR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MTR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT25_A",
+      "sourceRecordSha256": "7eb86534bf332e889fa472f7c1c017ab799b64bdadb5728fbd1db66033f391cd",
+      "reason": "Explicit source platform label A with code DT25 and parent DT25 identifies MTR_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MTR_DTL_A",
+        "stationId": "MTR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT25_B",
+      "sourceRecordSha256": "360e36d33eb799d10b277f0b56ab2420f4484c9c059a332731e03466d24d44e9",
+      "reason": "Explicit source platform label B with code DT25 and parent DT25 identifies MTR_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MTR_DTL_B",
+        "stationId": "MTR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT26_A",
+      "sourceRecordSha256": "6068219af9963a44277921cc15792136954a9c5060d74cc2b5bbbeb23415e467",
+      "reason": "Explicit source platform label C with code DT26 and parent CC10 identifies MPS_DTL_C. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MPS_DTL_C",
+        "stationId": "MPS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT26_B",
+      "sourceRecordSha256": "37c87e9259ba7fd4089de722e3ab70c10abc72dd9a6ea610a77faae2923cb9c9",
+      "reason": "Explicit source platform label D with code DT26 and parent CC10 identifies MPS_DTL_D. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MPS_DTL_D",
+        "stationId": "MPS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT27",
+      "sourceRecordSha256": "70daafe4515ae0c4cfb9fa649cffbd51a9afeee1de3bbbc51fd0380d4865497b",
+      "reason": "Source station code DT27 identifies canonical station UBI. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "UBI"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT27_A",
+      "sourceRecordSha256": "64669e9ba31522b5cadcca03249da065ac38fb3f3c5e2303a5f37d27f8a656ec",
+      "reason": "Explicit source platform label A with code DT27 and parent DT27 identifies UBI_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "UBI_DTL_A",
+        "stationId": "UBI"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT27_B",
+      "sourceRecordSha256": "975982356fb22c0f23f018bd15dbaefa1c281cfa073a2aaed2c0e39891dfd552",
+      "reason": "Explicit source platform label B with code DT27 and parent DT27 identifies UBI_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "UBI_DTL_B",
+        "stationId": "UBI"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT28",
+      "sourceRecordSha256": "43cb29b50a0fc6e2c0dbc38e05f44068f458f4eba84f5c716c31c644684a0394",
+      "reason": "Source station code DT28 identifies canonical station KKB. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KKB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT28_A",
+      "sourceRecordSha256": "5ed566264e9f01eb83bd065454020a35982b10df48eb1fa37fc1d552b370fe24",
+      "reason": "Explicit source platform label A with code DT28 and parent DT28 identifies KKB_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KKB_DTL_A",
+        "stationId": "KKB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT28_B",
+      "sourceRecordSha256": "0b0dc6e3742e903fbdfb05845c8b40ced53a5c29c7e20c765c3fc35c7fdb0c6b",
+      "reason": "Explicit source platform label B with code DT28 and parent DT28 identifies KKB_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KKB_DTL_B",
+        "stationId": "KKB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT29",
+      "sourceRecordSha256": "6b5956e20cf466cc3636eb422595bf5835f7151a65d95a4a37aa777ea5aff658",
+      "reason": "Source station code DT29 identifies canonical station BDN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BDN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT29_A",
+      "sourceRecordSha256": "772132979ed1d0b391c4e6807f0ed35dd947614795d3cc3d722ce0a50bec3321",
+      "reason": "Explicit source platform label A with code DT29 and parent DT29 identifies BDN_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BDN_DTL_A",
+        "stationId": "BDN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT29_B",
+      "sourceRecordSha256": "9cb9856c6a9828fee59edeb4eb4bfae28eeef99760aa9bc7ef62bc509da096c4",
+      "reason": "Explicit source platform label B with code DT29 and parent DT29 identifies BDN_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BDN_DTL_B",
+        "stationId": "BDN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT2",
+      "sourceRecordSha256": "37952c382d9223a5167c05dbafa3a729b49fcaca891972880edd50498b7d8b14",
+      "reason": "Source station code DT2 identifies canonical station CSW. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CSW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT2_A",
+      "sourceRecordSha256": "78af43c3f6310c9b2707f217cb49f9ed11c3384a6714a4fcd8a620e26b77033c",
+      "reason": "Explicit source platform label A with code DT2 and parent DT2 identifies CSW_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CSW_DTL_A",
+        "stationId": "CSW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT2_B",
+      "sourceRecordSha256": "9bb0aa5abf80dc08ed922a081203d3f16115b008e78e77ca9db498452cad054d",
+      "reason": "Explicit source platform label B with code DT2 and parent DT2 identifies CSW_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CSW_DTL_B",
+        "stationId": "CSW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT30",
+      "sourceRecordSha256": "355a20d6fe2ddd411fc029bdb328dae45734f55e54ff86e62819e38caf19db9a",
+      "reason": "Source station code DT30 identifies canonical station BDR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BDR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT30_A",
+      "sourceRecordSha256": "04bbad87e56cd2c86b333261cc12940f3586d79168c76e6c0c7c2b4b73e9fcfc",
+      "reason": "Explicit source platform label A with code DT30 and parent DT30 identifies BDR_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BDR_DTL_A",
+        "stationId": "BDR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT30_B",
+      "sourceRecordSha256": "97928088fd9f3b6cc03479dd4b5e1abd9be7f0f0adca027cc05115b1844fbc0f",
+      "reason": "Explicit source platform label B with code DT30 and parent DT30 identifies BDR_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BDR_DTL_B",
+        "stationId": "BDR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT31",
+      "sourceRecordSha256": "668d5b09eadbb834cd08918bc4f471f0b1a20d4c662bdbc12253558b801db18b",
+      "reason": "Source station code DT31 identifies canonical station TPW. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TPW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT31_A",
+      "sourceRecordSha256": "54e94ded220e071fe018420f7dbd116662f9a971c3e4c2111cca1dab48f17ffd",
+      "reason": "Explicit source platform label A with code DT31 and parent DT31 identifies TPW_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TPW_DTL_A",
+        "stationId": "TPW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT31_B",
+      "sourceRecordSha256": "9917682ee4c01c5472ce63e214c7b0d297a856fee289ed9450394f982d3cf2cd",
+      "reason": "Explicit source platform label B with code DT31 and parent DT31 identifies TPW_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TPW_DTL_B",
+        "stationId": "TPW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT32",
+      "sourceRecordSha256": "8f9becf3b510ccfd3ee732fc3d04c5d62daeec4305f9434cd890046eead58a90",
+      "reason": "Source station code DT32 identifies canonical station TAM. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TAM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT32_A",
+      "sourceRecordSha256": "18193ac4bf1de3f78ad9976f99f9e4a2a403d578b8ff52eab9aceb4701970d18",
+      "reason": "Explicit source platform label A with code DT32 and parent DT32 identifies TAM_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TAM_DTL_A",
+        "stationId": "TAM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT32_B",
+      "sourceRecordSha256": "2d44a6a1d436b1976a405e6a342a9f74315a1b1afa55ea75920f40aa0adb34bc",
+      "reason": "Explicit source platform label B with code DT32 and parent DT32 identifies TAM_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TAM_DTL_B",
+        "stationId": "TAM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT33",
+      "sourceRecordSha256": "3cf04e718fa4f35fcac2f5ff1f42ffe0e1aba59940118dfa5713f1587f1f2708",
+      "reason": "Source station code DT33 identifies canonical station TPE. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TPE"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT33_A",
+      "sourceRecordSha256": "bf6f69e4952c4f654f9dc9d86f4bbbcd9c8d6dfa59a13321a7a412925a332213",
+      "reason": "Explicit source platform label A with code DT33 and parent DT33 identifies TPE_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TPE_DTL_A",
+        "stationId": "TPE"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT33_B",
+      "sourceRecordSha256": "cc4ed3cba79fcb631f646c3513ac03466cb3af44d4ebb91339c40d8b36591308",
+      "reason": "Explicit source platform label B with code DT33 and parent DT33 identifies TPE_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TPE_DTL_B",
+        "stationId": "TPE"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT34",
+      "sourceRecordSha256": "64262468bc42e1e8c2fb838ab3c7ca3dbf43e8e520b61069f20a6cf6556771d8",
+      "reason": "Source station code DT34 identifies canonical station UPC. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "UPC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT34_A",
+      "sourceRecordSha256": "d1315a69339dc38d14a9d96e6ac8715df3aad03c37d6d612cd8cf59ce9a05077",
+      "reason": "Explicit source platform label A with code DT34 and parent DT34 identifies UPC_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "UPC_DTL_A",
+        "stationId": "UPC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT34_B",
+      "sourceRecordSha256": "718ac1cc537a312ad0d561775e86eb2f5ea62477dc4366dc7f5d12fce3abec08",
+      "reason": "Explicit source platform label B with code DT34 and parent DT34 identifies UPC_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "UPC_DTL_B",
+        "stationId": "UPC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT35_A",
+      "sourceRecordSha256": "4d8e84345611b4f37508781059bf23d43a4781ccefc5f90813d059b64fbf22ef",
+      "reason": "Explicit source platform label C with code DT35 and parent CG1 identifies XPO_DTL_C. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "XPO_DTL_C",
+        "stationId": "XPO"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT35_B",
+      "sourceRecordSha256": "96f53ba6ccd9f4310d79815d9392fbfb858691d6be5ca74433435a20b532f7f9",
+      "reason": "Explicit source platform label D with code DT35 and parent CG1 identifies XPO_DTL_D. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "XPO_DTL_D",
+        "stationId": "XPO"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT3",
+      "sourceRecordSha256": "f1153ccd71462e542a6741675f3a0b121eadf49467f6d87fc8e07f8ae3244b7c",
+      "reason": "Source station code DT3 identifies canonical station HVW. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "HVW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT3_A",
+      "sourceRecordSha256": "8a1b77c02b0837fb6f8cd1aa429f00bde243622cb981ae02ec840706bfd6bab4",
+      "reason": "Explicit source platform label A with code DT3 and parent DT3 identifies HVW_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HVW_DTL_A",
+        "stationId": "HVW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT3_B",
+      "sourceRecordSha256": "17dd0f12f50aa5937c4a1ac6507350c60d37a1f8e14bc7b2d0500f2cfa563ff3",
+      "reason": "Explicit source platform label B with code DT3 and parent DT3 identifies HVW_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HVW_DTL_B",
+        "stationId": "HVW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT4",
+      "sourceRecordSha256": "80830eb1aefcd9c8adeb35ad5327318863b961dad1c3c9b09ac1f5497fac403c",
+      "reason": "Source station code DT4 identifies canonical station HME. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "HME"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT4_A",
+      "sourceRecordSha256": "e36c4a2772d9c29fb5e83b788f410a84880de5019121ac68fecec667222accb0",
+      "reason": "Explicit source platform label A with code DT4 and parent DT4 identifies HME_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HME_DTL_A",
+        "stationId": "HME"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT4_B",
+      "sourceRecordSha256": "a34f98e6439af27e7ef1a5904111d4c4f3d60632f9676d5a447cf4e10ffa2095",
+      "reason": "Explicit source platform label B with code DT4 and parent DT4 identifies HME_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HME_DTL_B",
+        "stationId": "HME"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT5",
+      "sourceRecordSha256": "3a3d6aa84f5a9ce4d31313dadaa10298b591f1418e20ae58145b9acfbb7355aa",
+      "reason": "Source station code DT5 identifies canonical station BTW. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BTW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT5_A",
+      "sourceRecordSha256": "55ca4df618eb3b6628801d79c7bd6eeba0723410ebbeb90719506369f11687b2",
+      "reason": "Explicit source platform label A with code DT5 and parent DT5 identifies BTW_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BTW_DTL_A",
+        "stationId": "BTW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT5_B",
+      "sourceRecordSha256": "81923fee98581e0636bbf20812d79dfff61e41dcbe0d21b5cd2fa46a947794df",
+      "reason": "Explicit source platform label B with code DT5 and parent DT5 identifies BTW_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BTW_DTL_B",
+        "stationId": "BTW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT6",
+      "sourceRecordSha256": "358cc882b8c8c1393fc728f32400742ac72eacfacf761ea9831342d9ec4453d3",
+      "reason": "Source station code DT6 identifies canonical station KAP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KAP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT6_A",
+      "sourceRecordSha256": "92b93a3e5ddbb64e24131551baf253ed77e30aa816bcf150034aaa98b8b118af",
+      "reason": "Explicit source platform label A with code DT6 and parent DT6 identifies KAP_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KAP_DTL_A",
+        "stationId": "KAP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT6_B",
+      "sourceRecordSha256": "d2694bcaaee1d3b852cebb8db5ff88b74e5f71c80cce46558d749c516a01332b",
+      "reason": "Explicit source platform label B with code DT6 and parent DT6 identifies KAP_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KAP_DTL_B",
+        "stationId": "KAP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT7",
+      "sourceRecordSha256": "e8caf4f56bb5c8329712aa52e14bcfa8b967da9b8c33267243d095d7afe1ade9",
+      "reason": "Source station code DT7 identifies canonical station SAV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SAV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT7_A",
+      "sourceRecordSha256": "13e969b7ad833d1de8e71a4ad25ac487d716f7af590584d9d49523bde8523a87",
+      "reason": "Explicit source platform label A with code DT7 and parent DT7 identifies SAV_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SAV_DTL_A",
+        "stationId": "SAV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT7_B",
+      "sourceRecordSha256": "110790ed953fccdd3df0294d02e159d4dfcc1e47abfbf0433ac9f385b049be13",
+      "reason": "Explicit source platform label B with code DT7 and parent DT7 identifies SAV_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SAV_DTL_B",
+        "stationId": "SAV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT8",
+      "sourceRecordSha256": "d005a481b1bbcbd9498331657662c9cc068da03198b83251fcb71ab83252d587",
+      "reason": "Source station code DT8 identifies canonical station TKK. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TKK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT8_A",
+      "sourceRecordSha256": "b4e2993eeaa1b389130218b921a0f61839fb3515dc952f5c28b234a3d3377d16",
+      "reason": "Explicit source platform label A with code DT8 and parent DT8 identifies TKK_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TKK_DTL_A",
+        "stationId": "TKK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT8_B",
+      "sourceRecordSha256": "a8087d31df0672cb3ab024ac15a57d6e73bcf1287a3f22e667f0b4607e961dae",
+      "reason": "Explicit source platform label B with code DT8 and parent DT8 identifies TKK_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TKK_DTL_B",
+        "stationId": "TKK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT9_A",
+      "sourceRecordSha256": "591f7a86d6641ffe56a35a80df84620e4b1b20932968555c06ba8c04262cd4bf",
+      "reason": "Explicit source platform label A with code DT9 and parent CC19 identifies BTN_DTL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BTN_DTL_A",
+        "stationId": "BTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT9_B",
+      "sourceRecordSha256": "5af0d9f9fa169c591f6dae484fcfa982adec0a01fad44df084ff343cb816f422",
+      "reason": "Explicit source platform label B with code DT9 and parent CC19 identifies BTN_DTL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BTN_DTL_B",
+        "stationId": "BTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    }
+  ]
+}

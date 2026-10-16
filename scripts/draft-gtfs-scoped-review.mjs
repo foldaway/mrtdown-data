@@ -15,12 +15,12 @@ import {
   scopedReviewDraftSha256,
 } from '../packages/fs/dist/index.js';
 
-const [file, captureFile, pilotLineId, output, ...extra] =
+const [file, captureFile, pilotLineList, output, ...extra] =
   process.argv.slice(2);
 if (
   !file ||
   !captureFile ||
-  !pilotLineId ||
+  !pilotLineList ||
   !output ||
   (extra.length &&
     (extra.length !== 2 ||
@@ -28,8 +28,11 @@ if (
       !/^[a-f0-9]{40}$/.test(extra[1] ?? '')))
 )
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id> <new-output-directory> [--canonical-commit <full-sha>]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>]',
   );
+const pilotLineIds = pilotLineList.split(',').map((id) => id.trim());
+if (pilotLineIds.some((id) => !id))
+  throw new Error('Pilot line IDs must not be empty');
 const cwd = resolve(import.meta.dirname, '..');
 const dirty = execFileSync(
   'git',
@@ -75,7 +78,7 @@ const identity = {
 };
 const context = { tables, identity, topology };
 const full = createScopedReconciliationDraft(context, {
-  pilotLineIds: [pilotLineId],
+  pilotLineIds,
   preparedBy: 'MRTDown deterministic scoped-review proposal tool',
 });
 const selected = full.decisions.filter(
