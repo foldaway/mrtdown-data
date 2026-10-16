@@ -230,3 +230,70 @@ The comparison's before/after labels name the supplied August and October captur
 they do not establish an authoritative source lineage or approve October as its
 successor. A separate reviewed lineage decision remains necessary. Two captures
 also do not establish future ID stability, even for the 1,211 retained stop IDs.
+
+## Service-date candidate scopes
+
+The audit command now emits evidence and aggregate **version 2**, adding exact
+service-date partitions. The proposal and mapping-review schemas remain version 1
+and unchanged. The earlier [version-1 aggregate](gtfs-reconciliation-audit.json)
+is preserved; its report digests can be reproduced with implementation commit
+`b5b6a5470535ffdd2e6b27bf115fb8794b017d10` and its recorded canonical commit.
+The [scoped aggregate](gtfs-scoped-reconciliation-audit.json) records version-2
+report digests for the same verified inputs and canonical data. Full exact date
+lists remain in external `evidence.json`, not the checked-in aggregate.
+
+`partitionScopedCandidates(activeServiceDates, candidates)` accepts each target
+and its exact candidate dates. It partitions ordered active dates whenever the
+complete candidate set changes. Every scope retains all targets, authoritative
+`serviceDates`, inclusive `startDate` and exclusive `endDateExclusive`. Bounds
+are only an envelope: weekend gaps or removed service dates inside that envelope
+must never be interpreted as service. Scope status `unique` means exactly one
+candidate, `ambiguous` retains every overlapping candidate, and `gap` retains
+an active date with no target. The module rejects invalid/duplicate dates,
+out-of-calendar candidate dates and duplicate target identities. Reordering input
+dates, candidates or target properties produces byte-identical output.
+
+Each pattern has two independent partitions:
+
+- `dateScopes` intersects the source's actual active calendar dates with each
+  sequence candidate's canonical revision and station-code validity at every
+  ordered stop occurrence. Station identity follows the same code, stop-ID and
+  parent consistency rules as proposals, independently of platform label matching. Different sides of a July boundary can retain
+  different candidates. A later revision never fills a date before its start.
+- `platformDiagnosticScopes` adds the **current, undated** canonical platform
+  service/boarding restrictions. Validity and those diagnostics must hold on
+  the same platform option at each occurrence; satisfying each condition via
+  a different alternative is insufficient. This is a diagnostic lens, not
+  evidence of historical platform assignments or permission. Unspecified scope
+  and terminal arrival semantics still require review.
+
+Both partitions always record `generationEligible: false`. They do not resolve
+physical platform allocation, approve a mapping or act as a scoped review
+artifact. Grouped GTFS platform labels may intentionally represent alternative
+platforms; a future reviewed contract may need a platform set or unknown
+allocation rather than choosing one physical platform. The current mapping
+contract does not express that, so its existing generation gate remains closed.
+See the [mapping disagreement queue](gtfs-mapping-disagreements.md) for source
+traces and the limits of the available operator evidence.
+
+For the 119 CCL patterns lacking one whole-pattern date-valid target:
+
+| Temporal evidence after partitioning | Patterns |
+| --- | ---: |
+| Exactly one candidate on every active date | 26 |
+| At least one active date with no candidate | 76 |
+| At least one active date with multiple candidates | 30 |
+
+The gap and ambiguity categories overlap. Their 14,757 pattern-date pairs divide
+into 6,857 unique, 2,526 ambiguous and 5,374 uncovered pairs. These count calendar
+dates for normalized patterns, not trips or distinct system-wide dates. Across
+all 388 patterns, 290 have unique temporal coverage throughout, 81 retain a gap
+and 30 retain ambiguity. This explains some apparent whole-pattern ambiguity
+without masking pre-opening loop gaps or choosing between overlapping services.
+
+Current platform diagnostics do not validate historical operation: all 119 CCL
+cases still have dates without a candidate under that separate diagnostic lens.
+Retain those observations without assuming today's restrictions applied before
+July. Human review, a contract capable of recording date-scoped decisions,
+physical-platform allocation, source lineage and all other generation gates
+remain required before scheduled arrivals can be generated.

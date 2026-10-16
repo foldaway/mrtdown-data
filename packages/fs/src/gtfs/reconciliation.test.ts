@@ -375,6 +375,10 @@ describe('GTFS reconciliation evidence and pairwise drift', () => {
       revisionDateCount: 181,
       fullDateCoverage: false,
     });
+    expect(evidence.patterns[0]?.dateScopes).toMatchObject({
+      uniqueDateCount: 181,
+      uncoveredDateCount: 184,
+    });
     expect(evidence.generationEligible).toBe(false);
     expect(
       evidence.agencies.find((agency) => agency.providerId === 'LTA')
@@ -394,6 +398,128 @@ describe('GTFS reconciliation evidence and pairwise drift', () => {
     expect(candidate?.fullDateCoverage).toBe(false);
     expect(candidate?.platformConflicts).toEqual([0]);
     expect(candidate?.occurrences[0]?.platforms[0]?.validDateCount).toBe(334);
+    const pattern = buildReconciliationEvidence(tables, identity, topology)
+      .patterns[0];
+    expect(pattern?.dateScopes).toMatchObject({
+      uniqueDateCount: 334,
+      uncoveredDateCount: 31,
+    });
+    expect(pattern?.platformDiagnosticScopes).toMatchObject({
+      uniqueDateCount: 0,
+      uncoveredDateCount: 365,
+    });
+  });
+  it('keeps both sides of a revision boundary and does not fill a station-code validity gap', () => {
+    const { tables, topology, identity } = fixture();
+    const service = topology.services[0];
+    const initial = service?.revisions[0];
+    const code = topology.stations[0]?.stationCodes[0];
+    if (!service || !initial || !code) throw new Error('missing fixture');
+    initial.endAt = '2026-07-12';
+    service.revisions.push({
+      ...initial,
+      id: 'R2',
+      startAt: '2026-07-12',
+      endAt: null,
+    });
+    identity.topology.sha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
+    const pattern = buildReconciliationEvidence(tables, identity, topology)
+      .patterns[0];
+    expect(
+      pattern?.candidates.every((candidate) => !candidate.fullDateCoverage),
+    ).toBe(true);
+    expect(pattern?.dateScopes).toMatchObject({
+      uniqueDateCount: 365,
+      uncoveredDateCount: 0,
+      ambiguousDateCount: 0,
+      generationEligible: false,
+    });
+    expect(
+      pattern?.dateScopes.scopes.map((scope) => ({
+        start: scope.startDate,
+        end: scope.endDateExclusive,
+        revision: scope.candidates[0]?.revisionId,
+      })),
+    ).toEqual([
+      { start: '2026-01-01', end: '2026-07-12', revision: 'R' },
+      { start: '2026-07-12', end: '2027-01-01', revision: 'R2' },
+    ]);
+    code.startedAt = '2026-02-01';
+    identity.topology.sha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
+    const gapped = buildReconciliationEvidence(tables, identity, topology)
+      .patterns[0];
+    expect(gapped?.dateScopes).toMatchObject({
+      uniqueDateCount: 334,
+      uncoveredDateCount: 31,
+    });
+    expect(gapped?.dateScopes.scopes[0]).toMatchObject({
+      status: 'gap',
+      startDate: '2026-01-01',
+      endDateExclusive: '2026-02-01',
+      candidates: [],
+    });
+  });
+  it.each([
+    'missing stop code',
+    'unknown platform label',
+  ])('retains station temporal coverage with %s and unresolved platform allocation', (scenario) => {
+    const { tables, topology, identity } = fixture();
+    const stop = tables['stops.txt']?.find((row) => row.stop_id === 'P');
+    if (!stop) throw new Error('missing fixture');
+    if (scenario === 'missing stop code') delete stop.stop_code;
+    else stop.platform_code = 'UNKNOWN';
+    const evidence = buildReconciliationEvidence(tables, identity, topology);
+    const pattern = evidence.patterns[0];
+    expect(pattern?.candidates[0]?.occurrences[0]?.platforms).toEqual([]);
+    expect(pattern?.dateScopes).toMatchObject({
+      uniqueDateCount: 365,
+      uncoveredDateCount: 0,
+      generationEligible: false,
+    });
+    expect(pattern?.platformDiagnosticScopes).toMatchObject({
+      uniqueDateCount: 0,
+      uncoveredDateCount: 365,
+      generationEligible: false,
+    });
+    expect(evidence.generationEligible).toBe(false);
+  });
+  it('uses a resolved interchange station when its source parent has another line code', () => {
+    const { tables, topology, identity } = fixture();
+    const parent = tables['stops.txt']?.find((row) => row.stop_id === 'S');
+    const stop = tables['stops.txt']?.find((row) => row.stop_id === 'P');
+    const station = topology.stations[0];
+    const primaryCode = station?.stationCodes[0];
+    const line = topology.lines[0];
+    if (!parent || !stop || !station || !primaryCode || !line)
+      throw new Error('missing fixture');
+    parent.stop_code = 'EW1';
+    delete stop.stop_code;
+    topology.lines.push({
+      id: 'EWL',
+      type: line.type,
+      serviceIds: [],
+      operators: [],
+    });
+    station.stationCodes.push({
+      lineId: 'EWL',
+      code: 'EW1',
+      startedAt: '2000-01-01',
+      endedAt: null,
+    });
+    identity.topology.sha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
+    const pattern = buildReconciliationEvidence(tables, identity, topology)
+      .patterns[0];
+    expect(pattern?.dateScopes).toMatchObject({
+      uniqueDateCount: 365,
+      uncoveredDateCount: 0,
+    });
+    expect(pattern?.platformDiagnosticScopes.uncoveredDateCount).toBe(365);
+    primaryCode.endedAt = '2026-07-01';
+    identity.topology.sha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
+    expect(
+      buildReconciliationEvidence(tables, identity, topology).patterns[0]
+        ?.dateScopes,
+    ).toMatchObject({ uniqueDateCount: 181, uncoveredDateCount: 184 });
   });
   it('evaluates pickup restrictions at each ordered occurrence rather than across the whole trip', () => {
     const { tables, topology, identity } = fixture();
@@ -470,6 +596,42 @@ describe('GTFS reconciliation evidence and pairwise drift', () => {
         { tables: next, manifest },
       ),
     ).toThrow('Structurally invalid');
+  });
+  it('requires one platform option to satisfy both current scope and boarding diagnostics', () => {
+    const { tables, topology, identity } = fixture();
+    const station = topology.stations[0];
+    const platform = station?.platforms[0];
+    const row = tables['stops.txt']?.find((row) => row.stop_id === 'P');
+    if (!station || !platform || !row) throw new Error('missing fixture');
+    row.platform_code = 'A / X';
+    platform.serviceIds = ['OTHER'];
+    station.platforms.push({
+      ...platform,
+      id: 'alighting-only',
+      label: 'X',
+      serviceIds: [],
+      boardingStatus: 'alighting_only',
+    });
+    identity.topology.sha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
+    const pattern = buildReconciliationEvidence(tables, identity, topology)
+      .patterns[0];
+    // An excluded boardable option cannot clear the eligible option's
+    // boarding conflict or enable the date-scoped platform diagnostic.
+    expect(pattern?.candidates[0]).toMatchObject({
+      platformConflicts: [],
+      boardingConflicts: [0],
+      fullDateCoverage: true,
+      fullPlatformDiagnosticCoverage: false,
+    });
+    expect(pattern?.dateScopes).toMatchObject({
+      uniqueDateCount: 365,
+      uncoveredDateCount: 0,
+    });
+    expect(pattern?.platformDiagnosticScopes).toMatchObject({
+      uniqueDateCount: 0,
+      uncoveredDateCount: 365,
+    });
+    expect(pattern?.platformDiagnosticScopes.generationEligible).toBe(false);
   });
   it('keeps evidence byte deterministic when row and field order changes', () => {
     const { tables, topology, identity } = fixture();

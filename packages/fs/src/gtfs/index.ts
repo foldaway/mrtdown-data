@@ -5,4 +5,5 @@ export * from './inspect.js';
 export * from './reconcileCapture.js';
 export * from './reconciliation.js';
 export * from './reconciliationEvidence.js';
+export * from './scopedCandidates.js';
 export * from './topology.js';

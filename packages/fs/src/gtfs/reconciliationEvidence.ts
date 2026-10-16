@@ -4,6 +4,11 @@ import {
   type ReconciliationIdentity,
 } from './reconciliation.js';
 import { auditSchedule, type ScheduleTables } from './schedule.js';
+import {
+  partitionScopedCandidates,
+  type ScopedCandidate,
+} from './scopedCandidates.js';
+import { resolveStationCandidates } from './stationMatch.js';
 import type { scheduleTopologyProjection } from './topology.js';
 
 type Topology = ReturnType<typeof scheduleTopologyProjection>;
@@ -121,6 +126,8 @@ export function buildReconciliationEvidence(
         pattern.tripIds.map((id) => required(stopTimes.get(id)?.[index])),
       ),
     );
+    const dateCandidates: ScopedCandidate[] = [];
+    const platformDiagnosticCandidates: ScopedCandidate[] = [];
     const candidates = entry.candidates.map((target) => {
       const service = required(
         topology.services.find((service) => service.id === target.id),
@@ -131,9 +138,38 @@ export function buildReconciliationEvidence(
       const revisionDates = activeDates.filter((date) =>
         effective(date, revision.startAt, revision.endAt),
       );
+      const occurrenceDates: Set<string>[] = [];
+      const occurrenceDiagnosticDates: Set<string>[] = [];
       const occurrences = pattern.stopIds.map((stopId, index) => {
         const row = required(stops.get(stopId));
         const matches = required(entries.get(`stop:${stopId}`)).candidates;
+        const parent = row.parent_station
+          ? stops.get(row.parent_station)
+          : undefined;
+        const stationMatches = resolveStationCandidates(
+          row,
+          parent,
+          topology.stations,
+        );
+        const codeDates = new Set(
+          revisionDates.filter((date) =>
+            stationMatches.some(
+              ({ station, supportingCode }) =>
+                station.stationCodes.some(
+                  (code) =>
+                    code.code === supportingCode &&
+                    effective(date, code.startedAt, code.endedAt),
+                ) &&
+                station.stationCodes.some(
+                  (code) =>
+                    code.lineId === service.lineId &&
+                    effective(date, code.startedAt, code.endedAt),
+                ),
+            ),
+          ),
+        );
+        const diagnosticDates = new Set<string>();
+        const restrictions = required(occurrenceRestrictions[index]);
         const platforms = matches
           .filter((match) => match.kind === 'platform')
           .map((match) => {
@@ -153,21 +189,33 @@ export function buildReconciliationEvidence(
                   effective(date, code.startedAt, code.endedAt),
               ),
             );
+            // These platform constraints have no historical effective dates.
+            // Keep validity and scope/boarding checks on this same option.
+            const serviceScope = platform.serviceIds.length
+              ? platform.serviceIds.includes(service.id)
+                ? ('listed' as const)
+                : ('excluded' as const)
+              : ('unspecified' as const);
+            const boardingConflict =
+              platform.boardingStatus === 'not_in_service' ||
+              (platform.boardingStatus === 'alighting_only' &&
+                index < pattern.stopIds.length - 1 &&
+                restrictions.some((restriction) => restriction.pickup !== '1'));
+            if (serviceScope !== 'excluded' && !boardingConflict)
+              for (const date of validDates) diagnosticDates.add(date);
             return {
               platformId: platform.id,
-              serviceScope: platform.serviceIds.length
-                ? platform.serviceIds.includes(service.id)
-                  ? ('listed' as const)
-                  : ('excluded' as const)
-                : ('unspecified' as const),
+              serviceScope,
               boardingStatus: platform.boardingStatus,
               validDateCount: validDates.length,
             };
           });
+        occurrenceDates.push(codeDates);
+        occurrenceDiagnosticDates.push(diagnosticDates);
         return {
           index,
           stopId,
-          pickupDropOff: required(occurrenceRestrictions[index]),
+          pickupDropOff: restrictions,
           platforms,
         };
       });
@@ -200,14 +248,21 @@ export function buildReconciliationEvidence(
             ),
         )
         .map((occurrence) => occurrence.index);
+      const eligibleServiceDates = revisionDates.filter((date) =>
+        occurrenceDates.every((dates) => dates.has(date)),
+      );
+      const scopedCandidate = { target, serviceDates: eligibleServiceDates };
+      dateCandidates.push(scopedCandidate);
+      const diagnosticServiceDates = revisionDates.filter((date) =>
+        occurrenceDiagnosticDates.every((dates) => dates.has(date)),
+      );
+      platformDiagnosticCandidates.push({
+        target,
+        serviceDates: diagnosticServiceDates,
+      });
       const fullDateCoverage =
         activeDates.length > 0 &&
-        revisionDates.length === activeDates.length &&
-        occurrences.every((occurrence) =>
-          occurrence.platforms.some(
-            (platform) => platform.validDateCount === activeDates.length,
-          ),
-        );
+        eligibleServiceDates.length === activeDates.length;
       return {
         target,
         revisionPeriod: {
@@ -216,6 +271,10 @@ export function buildReconciliationEvidence(
         },
         revisionDateCount: revisionDates.length,
         fullDateCoverage,
+        platformDiagnosticDateCount: diagnosticServiceDates.length,
+        fullPlatformDiagnosticCoverage:
+          activeDates.length > 0 &&
+          diagnosticServiceDates.length === activeDates.length,
         platformConflicts,
         boardingConflicts,
         occurrences,
@@ -236,13 +295,20 @@ export function buildReconciliationEvidence(
       },
       pickupDropOff: restrictions,
       candidates,
+      dateScopes: partitionScopedCandidates(activeDates, dateCandidates),
+      platformDiagnosticScopes: partitionScopedCandidates(
+        activeDates,
+        platformDiagnosticCandidates,
+      ),
     };
   });
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     identity: report.identity,
     generationEligible: false as const,
     approval: 'agent-proposed; human review required',
+    platformDiagnosticBasis:
+      'Current undated canonical platform restrictions; absence of explicit conflict is not historical permission or reviewed allocation',
     agencies: audit.agencies.map((agency) => ({
       providerId: agency.agency_id,
       referencedRouteIds: audit.routes

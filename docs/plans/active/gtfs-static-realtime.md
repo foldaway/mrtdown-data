@@ -539,6 +539,17 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-14: Added service-date candidate partitions to distinguish unique,
+  ambiguous and uncovered active dates across revision boundaries. For the
+  119 CCL whole-pattern date gaps, 26 now have one temporal candidate on every
+  active date; 76 retain uncovered dates and 30 have overlapping candidates
+  (the latter categories overlap). Platform checks use the same candidate
+  option for date validity and current restrictions, but do not establish
+  historical platform assignments. Reports remain unapproved and generation
+  remains blocked. See [mapping disagreements](../../gtfs-mapping-disagreements.md)
+  for the exact unmatched trips and scoped operator-source investigation;
+  neither source records nor canonical topology have been silently repaired.
+
 - 2026-10-14: Added bounded closed-loop matching, active-calendar/revision/code
   and per-occurrence platform evidence, and a normalized August–October drift
   audit. Sequence-unmatched patterns fall from 32 to five. Of 388 patterns, 242
