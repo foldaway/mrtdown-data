@@ -483,6 +483,44 @@ describe('GTFS reconciliation evidence and pairwise drift', () => {
     });
     expect(evidence.generationEligible).toBe(false);
   });
+  it('uses a resolved interchange station when its source parent has another line code', () => {
+    const { tables, topology, identity } = fixture();
+    const parent = tables['stops.txt']?.find((row) => row.stop_id === 'S');
+    const stop = tables['stops.txt']?.find((row) => row.stop_id === 'P');
+    const station = topology.stations[0];
+    const primaryCode = station?.stationCodes[0];
+    const line = topology.lines[0];
+    if (!parent || !stop || !station || !primaryCode || !line)
+      throw new Error('missing fixture');
+    parent.stop_code = 'EW1';
+    delete stop.stop_code;
+    topology.lines.push({
+      id: 'EWL',
+      type: line.type,
+      serviceIds: [],
+      operators: [],
+    });
+    station.stationCodes.push({
+      lineId: 'EWL',
+      code: 'EW1',
+      startedAt: '2000-01-01',
+      endedAt: null,
+    });
+    identity.topology.sha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
+    const pattern = buildReconciliationEvidence(tables, identity, topology)
+      .patterns[0];
+    expect(pattern?.dateScopes).toMatchObject({
+      uniqueDateCount: 365,
+      uncoveredDateCount: 0,
+    });
+    expect(pattern?.platformDiagnosticScopes.uncoveredDateCount).toBe(365);
+    primaryCode.endedAt = '2026-07-01';
+    identity.topology.sha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
+    expect(
+      buildReconciliationEvidence(tables, identity, topology).patterns[0]
+        ?.dateScopes,
+    ).toMatchObject({ uniqueDateCount: 181, uncoveredDateCount: 184 });
+  });
   it('evaluates pickup restrictions at each ordered occurrence rather than across the whole trip', () => {
     const { tables, topology, identity } = fixture();
     const platform = topology.stations[0]?.platforms[0];

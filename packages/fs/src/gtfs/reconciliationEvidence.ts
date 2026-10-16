@@ -153,13 +153,18 @@ export function buildReconciliationEvidence(
         );
         const codeDates = new Set(
           revisionDates.filter((date) =>
-            stationMatches.some(({ station, supportingCode }) =>
-              station.stationCodes.some(
-                (code) =>
-                  code.code === supportingCode &&
-                  code.lineId === service.lineId &&
-                  effective(date, code.startedAt, code.endedAt),
-              ),
+            stationMatches.some(
+              ({ station, supportingCode }) =>
+                station.stationCodes.some(
+                  (code) =>
+                    code.code === supportingCode &&
+                    effective(date, code.startedAt, code.endedAt),
+                ) &&
+                station.stationCodes.some(
+                  (code) =>
+                    code.lineId === service.lineId &&
+                    effective(date, code.startedAt, code.endedAt),
+                ),
             ),
           ),
         );
