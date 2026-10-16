@@ -539,6 +539,19 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-14: Added bounded closed-loop matching, active-calendar/revision/code
+  and per-occurrence platform evidence, and a normalized August–October drift
+  audit. Sequence-unmatched patterns fall from 32 to five. Of 388 patterns, 242
+  have one candidate covering all active dates without explicit platform scope
+  conflicts, 119 CCL patterns require date-scoped reconciliation and 22 need
+  platform/terminal review. Seven grouped platforms remain ambiguous; the unused
+  LTA publisher can be proposed for an explicit ignore disposition. All evidence
+  remains agent-proposed, without human approval; generation stays blocked.
+  The two captures reuse Expo stop IDs with swapped platform labels, change 837
+  retained trip calendars, and retain version `0.1` despite extensive route-ID
+  churn. Pairwise drift is now measured, not a future stability or lineage claim.
+  See [reconciliation evidence](../../gtfs-reconciliation.md#calendar-platform-and-drift-evidence).
+
 - 2026-10-14: Added hash-verified unpacked-directory inspection using the shared
   ZIP/CSV audit. Located all original August tables and protobufs and matched
   every recorded hash. Reproduced zero structural errors, two alerts and empty
@@ -553,18 +566,18 @@ Exit criteria:
   yields 1,124 unreviewed entries: seven ambiguous stops, 148 ambiguous patterns,
   32 unresolved patterns and one unresolved publisher agency. All proposals
   remain unreviewed; generation is blocked. See
-  [reconciliation](../../gtfs-reconciliation.md). Human-reviewed dispositions,
-  calendar/direction/platform semantics and a distinct-capture drift comparison
-  remain open; Phase 2 is not complete.
+  [reconciliation](../../gtfs-reconciliation.md). At this point human-reviewed dispositions, calendar/direction/platform
+  semantics and a distinct-capture drift comparison remained open. The later
+  evidence audit above completes the drift comparison; Phase 2 is not complete.
 
 - 2026-10-14: Added MobilityData validator 8.0.1 with a SHA-256 executable
   lock, fixed SG/date/thread/update-check configuration and separate CI findings.
   Audited public schedule `e459a22be6c99a3728ee97770c02c4edbaee6c9293e48017e8ec28139962fa19`
   (2,991,884 bytes): 113 routes, 1,211 stops, 19,150 trips, 349,768 stop times.
   Both validators found zero errors; independent warnings/information are recorded
-  in [local inspection](../../gtfs-local-inspection.md). Historical August audit
-  and unpacked-directory inspector support remain open, so Phase 1 is incomplete.
-  Reviewed mappings and a second-capture drift audit remain required.
+  in [local inspection](../../gtfs-local-inspection.md). This initial pass left the historical August audit and unpacked-directory
+  support open; the subsequent Phase 1 audit above completed them. Reviewed
+  mappings remain required, with pairwise drift now recorded above.
 - 2026-10-14: Acquisition now runs on Fly.io with signed QStash schedules and
   separate private/public Tigris buckets. Public handoff succeeded in receiver
   run 38525057872 after PR #370 fixed valid single-digit-hour parsing. Recent

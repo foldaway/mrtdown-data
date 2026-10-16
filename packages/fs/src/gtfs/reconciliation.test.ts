@@ -1,10 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { hashBytes } from './capture.js';
+import { compareScheduleSnapshots } from './drift.js';
 import {
   checkReconciliationReview,
   proposeScheduleReconciliation,
   type ReconciliationIdentity,
 } from './reconciliation.js';
+import {
+  activeServiceDates,
+  buildReconciliationEvidence,
+} from './reconciliationEvidence.js';
 import type { ScheduleTables } from './schedule.js';
 import type { scheduleTopologyProjection } from './topology.js';
 
@@ -155,6 +160,47 @@ function reviewed() {
 }
 
 describe('GTFS reconciliation proposals and review gate', () => {
+  it('matches a rotated single circuit only for an explicitly closed canonical path', () => {
+    const { tables, topology, identity } = fixture();
+    const revision = topology.services[0]?.revisions[0];
+    if (!revision) throw new Error('missing fixture');
+    revision.stations.push({ stationId: 'S', displayCode: 'NS1' });
+    const rows = tables['stop_times.txt'];
+    if (!rows?.[0] || !rows[1]) throw new Error('missing fixture');
+    rows[0].stop_id = 'Q';
+    rows[1].stop_id = 'P';
+    rows.push({
+      ...rows[1],
+      stop_id: 'Q',
+      stop_sequence: '3',
+      arrival_time: '08:04:00',
+      departure_time: '08:04:00',
+    });
+    identity.topology.sha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
+    expect(
+      proposeScheduleReconciliation(tables, identity, topology).entries.find(
+        (entry) => entry.kind === 'pattern',
+      )?.candidates,
+    ).toEqual([
+      {
+        kind: 'serviceRevision',
+        id: 'SVC',
+        revisionId: 'R',
+        match: 'cyclicSegment',
+      },
+    ]);
+    rows.push({
+      ...rows[1],
+      stop_sequence: '4',
+      arrival_time: '08:06:00',
+      departure_time: '08:06:00',
+    });
+    expect(
+      proposeScheduleReconciliation(tables, identity, topology).entries.find(
+        (entry) => entry.kind === 'pattern',
+      )?.status,
+    ).toBe('unresolved');
+  });
   it('proposes aliases, parent-inclusive platform coverage, and exact ordered service matches without approval', () => {
     const report = proposal();
     expect(report.generationEligible).toBe(false);
@@ -279,5 +325,223 @@ describe('GTFS reconciliation proposals and review gate', () => {
     expect(result.errors.join('\n')).toContain('changed record');
     expect(result.errors.join('\n')).toContain('Duplicate review');
     expect(result.errors.join('\n')).toContain('Unrecognized match');
+  });
+});
+
+describe('GTFS reconciliation evidence and pairwise drift', () => {
+  it('applies exceptions to inclusive calendars in UTC, including exception-only calendars', () => {
+    const { tables } = fixture();
+    tables['calendar.txt'] = [
+      {
+        service_id: 'C',
+        start_date: '20260101',
+        end_date: '20260103',
+        thursday: '1',
+        friday: '1',
+        saturday: '1',
+      },
+    ];
+    tables['calendar_dates.txt'] = [
+      { service_id: 'C', date: '20260101', exception_type: '2' },
+      { service_id: 'C', date: '20260104', exception_type: '1' },
+    ];
+    expect(activeServiceDates(tables, 'C')).toEqual([
+      '2026-01-02',
+      '2026-01-03',
+      '2026-01-04',
+    ]);
+    delete tables['calendar.txt'];
+    expect(activeServiceDates(tables, 'C')).toEqual(['2026-01-04']);
+    expect(() =>
+      activeServiceDates(
+        {
+          'calendar_dates.txt': [
+            { service_id: 'C', date: '20260230', exception_type: '1' },
+          ],
+        },
+        'C',
+      ),
+    ).toThrow('Invalid service date');
+  });
+  it('reports partial revision coverage instead of approving a matching sequence', () => {
+    const { tables, topology, identity } = fixture();
+    const revision = topology.services[0]?.revisions[0];
+    if (!revision) throw new Error('missing fixture');
+    revision.endAt = '2026-07-01';
+    identity.topology.sha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
+    const evidence = buildReconciliationEvidence(tables, identity, topology);
+    expect(evidence.patterns[0]?.activeDates.count).toBe(365);
+    expect(evidence.patterns[0]?.candidates[0]).toMatchObject({
+      revisionDateCount: 181,
+      fullDateCoverage: false,
+    });
+    expect(evidence.generationEligible).toBe(false);
+    expect(
+      evidence.agencies.find((agency) => agency.providerId === 'LTA')
+        ?.referencedRouteIds,
+    ).toEqual([]);
+  });
+  it('checks station-code effective dates and service platform exclusions independently', () => {
+    const { tables, topology, identity } = fixture();
+    const code = topology.stations[0]?.stationCodes[0];
+    const platform = topology.stations[0]?.platforms[0];
+    if (!code || !platform) throw new Error('missing fixture');
+    code.startedAt = '2026-02-01';
+    platform.serviceIds = ['OTHER'];
+    identity.topology.sha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
+    const candidate = buildReconciliationEvidence(tables, identity, topology)
+      .patterns[0]?.candidates[0];
+    expect(candidate?.fullDateCoverage).toBe(false);
+    expect(candidate?.platformConflicts).toEqual([0]);
+    expect(candidate?.occurrences[0]?.platforms[0]?.validDateCount).toBe(334);
+  });
+  it('evaluates pickup restrictions at each ordered occurrence rather than across the whole trip', () => {
+    const { tables, topology, identity } = fixture();
+    const platform = topology.stations[0]?.platforms[0];
+    const first = tables['stop_times.txt']?.[0];
+    if (!platform || !first) throw new Error('missing fixture');
+    platform.serviceIds = [];
+    platform.boardingStatus = 'alighting_only';
+    identity.topology.sha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
+    expect(
+      buildReconciliationEvidence(tables, identity, topology).patterns[0]
+        ?.candidates[0]?.boardingConflicts,
+    ).toEqual([0]);
+    first.pickup_type = '1';
+    expect(
+      buildReconciliationEvidence(tables, identity, topology).patterns[0]
+        ?.candidates[0]?.boardingConflicts,
+    ).toEqual([]);
+  });
+  it('does not use a service-excluded platform to bypass boarding restrictions', () => {
+    const { tables, topology, identity } = fixture();
+    const station = topology.stations[0];
+    const platform = station?.platforms[0];
+    const row = tables['stops.txt']?.find((row) => row.stop_id === 'P');
+    if (!station || !platform || !row) throw new Error('missing fixture');
+    platform.boardingStatus = 'alighting_only';
+    row.platform_code = 'A / X';
+    station.platforms.push({
+      ...platform,
+      id: 'excluded',
+      label: 'X',
+      serviceIds: ['OTHER'],
+      boardingStatus: null,
+    });
+    identity.topology.sha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
+    const evidence = buildReconciliationEvidence(tables, identity, topology);
+    expect(evidence.patterns[0]?.candidates[0]).toMatchObject({
+      platformConflicts: [],
+      boardingConflicts: [0],
+    });
+    expect(evidence.generationEligible).toBe(false);
+  });
+  it('audits and compares consecutive large sequences in the same trip without rounding', () => {
+    const { tables, topology, identity } = fixture();
+    const rows = tables['stop_times.txt'];
+    if (!rows?.[0] || !rows[1]) throw new Error('missing fixture');
+    rows[0].stop_sequence = '9007199254740992';
+    rows[1].stop_sequence = '9007199254740993';
+    rows.reverse();
+    const evidence = buildReconciliationEvidence(tables, identity, topology);
+    expect(evidence.patterns[0]?.stopIds).toEqual(['P', 'Q']);
+    const next = structuredClone(tables);
+    const occurrence = next['stop_times.txt']?.find(
+      (row) => row.stop_id === 'Q',
+    );
+    if (!occurrence) throw new Error('missing fixture');
+    occurrence.stop_sequence = '9007199254740994';
+    const manifest = { 'stop_times.txt': 'a'.repeat(64) };
+    expect(
+      compareScheduleSnapshots(
+        { tables, manifest },
+        { tables: next, manifest },
+      ).tables.find((table) => table.name === 'stop_times.txt'),
+    ).toMatchObject({
+      shared: 1,
+      unchanged: 1,
+      added: 1,
+      removed: 1,
+    });
+    occurrence.stop_sequence = '09007199254740992';
+    expect(() =>
+      compareScheduleSnapshots(
+        { tables, manifest },
+        { tables: next, manifest },
+      ),
+    ).toThrow('Structurally invalid');
+  });
+  it('keeps evidence byte deterministic when row and field order changes', () => {
+    const { tables, topology, identity } = fixture();
+    const original = buildReconciliationEvidence(tables, identity, topology);
+    const reordered = Object.fromEntries(
+      Object.entries(tables)
+        .reverse()
+        .map(([name, rows]) => [
+          name,
+          rows
+            .toReversed()
+            .map((row) => Object.fromEntries(Object.entries(row).reverse())),
+        ]),
+    );
+    expect(
+      JSON.stringify(
+        buildReconciliationEvidence(reordered, identity, topology),
+      ),
+    ).toBe(JSON.stringify(original));
+  });
+  it('preserves distinct stop sequence identities beyond the safe integer limit', () => {
+    const { tables } = fixture();
+    const previous = tables['stop_times.txt']?.[1];
+    if (!previous) throw new Error('missing fixture');
+    previous.stop_sequence = '9007199254740992';
+    const next = structuredClone(tables);
+    const changed = next['stop_times.txt']?.[1];
+    if (!changed) throw new Error('missing fixture');
+    changed.stop_sequence = '09007199254740993';
+    const manifest = { 'stop_times.txt': 'a'.repeat(64) };
+    const drift = compareScheduleSnapshots(
+      { tables, manifest },
+      { tables: next, manifest },
+    ).tables.find((table) => table.name === 'stop_times.txt');
+    expect(drift).toMatchObject({
+      unchanged: 1,
+      shared: 1,
+      added: 1,
+      removed: 1,
+    });
+    expect(drift?.normalizedBeforeSha256).not.toBe(
+      drift?.normalizedAfterSha256,
+    );
+  });
+  it('distinguishes retained IDs with changed semantics from unchanged normalized records', () => {
+    const { tables } = fixture();
+    const next = structuredClone(tables);
+    const calendar = next['calendar.txt']?.[0];
+    const trip = next['trips.txt']?.[0];
+    const stop = next['stops.txt']?.[1];
+    if (!calendar || !trip || !stop) throw new Error('missing fixture');
+    next['calendar.txt']?.push({ ...calendar, service_id: 'C2' });
+    trip.service_id = 'C2';
+    stop.platform_code = 'B';
+    for (const row of next['stop_times.txt'] ?? []) {
+      row.arrival_time = row.arrival_time?.replace(/^08:/, '8:') ?? '';
+      row.departure_time = row.departure_time?.replace(/^08:/, '8:') ?? '';
+      row.stop_sequence = `0${row.stop_sequence}`;
+    }
+    const before = { tables, manifest: { 'stops.txt': 'a'.repeat(64) } };
+    const after = { tables: next, manifest: { 'stops.txt': 'b'.repeat(64) } };
+    const drift = compareScheduleSnapshots(before, after);
+    expect(
+      drift.tables.find((table) => table.name === 'trips.txt'),
+    ).toMatchObject({ shared: 1, changed: 1, fieldChanges: { service_id: 1 } });
+    expect(
+      drift.tables.find((table) => table.name === 'stops.txt'),
+    ).toMatchObject({ changed: 1, fieldChanges: { platform_code: 1 } });
+    expect(
+      drift.tables.find((table) => table.name === 'stop_times.txt'),
+    ).toMatchObject({ unchanged: 2, changed: 0, added: 0, removed: 0 });
+    for (const rows of Object.values(next)) rows.reverse();
+    expect(compareScheduleSnapshots(before, after)).toEqual(drift);
   });
 });

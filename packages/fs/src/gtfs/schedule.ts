@@ -1,7 +1,11 @@
 import { parse } from 'csv-parse/sync';
 import { unzipSync } from 'fflate';
 import { hashBytes } from './capture.js';
-import { compareStrings } from './order.js';
+import {
+  compareStopSequences,
+  compareStrings,
+  normalizeDecimalString,
+} from './order.js';
 
 export type CsvRow = Record<string, string>;
 export type ScheduleTables = Record<string, CsvRow[]>;
@@ -226,17 +230,23 @@ export function auditSchedule(tables: ScheduleTables) {
     }
   >();
   for (const [id, trip] of trips) {
-    const ordered = (occurrences.get(id) ?? []).sort(
-      (a, b) => Number(a.stop_sequence) - Number(b.stop_sequence),
+    const ordered = (occurrences.get(id) ?? []).sort((a, b) =>
+      compareStopSequences(a.stop_sequence ?? '', b.stop_sequence ?? ''),
     );
     if (!ordered.length) errors.push(`trip ${id}: no stop times`);
-    let previousSequence = -1;
+    let previousSequence: string | null = null;
     let previousDeparture = -1;
     for (const row of ordered) {
-      const sequence = Number(row.stop_sequence);
-      if (sequence <= previousSequence)
-        errors.push(`trip ${id}: duplicate stop sequence ${sequence}`);
-      previousSequence = sequence;
+      const sequence = row.stop_sequence ?? '';
+      if (/^\d+$/.test(sequence)) {
+        const normalized = normalizeDecimalString(sequence);
+        if (
+          previousSequence !== null &&
+          compareStopSequences(normalized, previousSequence) <= 0
+        )
+          errors.push(`trip ${id}: duplicate stop sequence ${normalized}`);
+        previousSequence = normalized;
+      }
       const arrival = gtfsTimeSeconds(row.arrival_time ?? '');
       const departure = gtfsTimeSeconds(row.departure_time ?? '');
       if (arrival !== null && arrival < previousDeparture)
