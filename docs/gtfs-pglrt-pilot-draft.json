@@ -1,0 +1,1138 @@
+{
+  "schemaVersion": 2,
+  "documentKind": "gtfs-scoped-mapping-draft",
+  "identity": {
+    "sourceManifest": {
+      "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+      "calendar.txt": "bddb06a1aebe70f984f1dd3576c80ae1a72a76f58b4cd68a6af245368a72a605",
+      "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+      "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+      "routes.txt": "d81b7bb5ce975ca9ca1120dd730db79d70f908cf560533c295fcea67133bb77c",
+      "stop_times.txt": "b6d5289d1b2300531fc627fe1bd6c9b7507a1e57c9ff69358cb7a9ee93991395",
+      "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+      "trips.txt": "f72aaf61d79c25260966bfcc793802b2f8971f6c9ce5edb925b907a34b1df36f"
+    },
+    "canonicalCommit": "d034d6babef4ea5bcac256d26c47dcd802bb39ba",
+    "topology": {
+      "projectionVersion": 1,
+      "sha256": "e376c280fbd6292ed6fe03e7fa81541ad0b0b8c76a09f916f1e3898aac240ec1"
+    }
+  },
+  "preparedBy": "MRTDown deterministic scoped-review proposal tool",
+  "pilotLineIds": [
+    "PGLRT"
+  ],
+  "dateSets": [
+    {
+      "id": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "serviceDates": [
+        "2026-01-03",
+        "2026-01-10",
+        "2026-01-17",
+        "2026-01-24",
+        "2026-01-31",
+        "2026-02-07",
+        "2026-02-14",
+        "2026-02-21",
+        "2026-02-28",
+        "2026-03-07",
+        "2026-03-14",
+        "2026-03-21",
+        "2026-03-28",
+        "2026-04-04",
+        "2026-04-11",
+        "2026-04-18",
+        "2026-04-25",
+        "2026-05-02",
+        "2026-05-09",
+        "2026-05-16",
+        "2026-05-23",
+        "2026-05-30",
+        "2026-06-06",
+        "2026-06-13",
+        "2026-06-20",
+        "2026-06-27",
+        "2026-07-04",
+        "2026-07-11",
+        "2026-07-18",
+        "2026-07-25",
+        "2026-08-01",
+        "2026-08-08",
+        "2026-08-15",
+        "2026-08-22",
+        "2026-08-29",
+        "2026-09-05",
+        "2026-09-12",
+        "2026-09-19",
+        "2026-09-26",
+        "2026-10-03",
+        "2026-10-10",
+        "2026-10-17",
+        "2026-10-24",
+        "2026-10-31",
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28",
+        "2026-12-05",
+        "2026-12-12",
+        "2026-12-19",
+        "2026-12-26"
+      ]
+    },
+    {
+      "id": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "serviceDates": [
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-05",
+        "2026-01-06",
+        "2026-01-07",
+        "2026-01-08",
+        "2026-01-09",
+        "2026-01-12",
+        "2026-01-13",
+        "2026-01-14",
+        "2026-01-15",
+        "2026-01-16",
+        "2026-01-19",
+        "2026-01-20",
+        "2026-01-21",
+        "2026-01-22",
+        "2026-01-23",
+        "2026-01-26",
+        "2026-01-27",
+        "2026-01-28",
+        "2026-01-29",
+        "2026-01-30",
+        "2026-02-02",
+        "2026-02-03",
+        "2026-02-04",
+        "2026-02-05",
+        "2026-02-06",
+        "2026-02-09",
+        "2026-02-10",
+        "2026-02-11",
+        "2026-02-12",
+        "2026-02-13",
+        "2026-02-16",
+        "2026-02-17",
+        "2026-02-18",
+        "2026-02-19",
+        "2026-02-20",
+        "2026-02-23",
+        "2026-02-24",
+        "2026-02-25",
+        "2026-02-26",
+        "2026-02-27",
+        "2026-03-02",
+        "2026-03-03",
+        "2026-03-04",
+        "2026-03-05",
+        "2026-03-06",
+        "2026-03-09",
+        "2026-03-10",
+        "2026-03-11",
+        "2026-03-12",
+        "2026-03-13",
+        "2026-03-16",
+        "2026-03-17",
+        "2026-03-18",
+        "2026-03-19",
+        "2026-03-20",
+        "2026-03-23",
+        "2026-03-24",
+        "2026-03-25",
+        "2026-03-26",
+        "2026-03-27",
+        "2026-03-30",
+        "2026-03-31",
+        "2026-04-01",
+        "2026-04-02",
+        "2026-04-03",
+        "2026-04-06",
+        "2026-04-07",
+        "2026-04-08",
+        "2026-04-09",
+        "2026-04-10",
+        "2026-04-13",
+        "2026-04-14",
+        "2026-04-15",
+        "2026-04-16",
+        "2026-04-17",
+        "2026-04-20",
+        "2026-04-21",
+        "2026-04-22",
+        "2026-04-23",
+        "2026-04-24",
+        "2026-04-27",
+        "2026-04-28",
+        "2026-04-29",
+        "2026-04-30",
+        "2026-05-01",
+        "2026-05-04",
+        "2026-05-05",
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-25",
+        "2026-05-26",
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-06-01",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-04",
+        "2026-06-05",
+        "2026-06-08",
+        "2026-06-09",
+        "2026-06-10",
+        "2026-06-11",
+        "2026-06-12",
+        "2026-06-15",
+        "2026-06-16",
+        "2026-06-17",
+        "2026-06-18",
+        "2026-06-19",
+        "2026-06-22",
+        "2026-06-23",
+        "2026-06-24",
+        "2026-06-25",
+        "2026-06-26",
+        "2026-06-29",
+        "2026-06-30",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-06",
+        "2026-07-07",
+        "2026-07-08",
+        "2026-07-09",
+        "2026-07-10",
+        "2026-07-13",
+        "2026-07-14",
+        "2026-07-15",
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-20",
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29",
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-03",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25",
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-30",
+        "2026-12-01",
+        "2026-12-02",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-07",
+        "2026-12-08",
+        "2026-12-09",
+        "2026-12-10",
+        "2026-12-11",
+        "2026-12-14",
+        "2026-12-15",
+        "2026-12-16",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-21",
+        "2026-12-22",
+        "2026-12-23",
+        "2026-12-24",
+        "2026-12-25",
+        "2026-12-28",
+        "2026-12-29",
+        "2026-12-30",
+        "2026-12-31"
+      ]
+    },
+    {
+      "id": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "serviceDates": [
+        "2026-01-04",
+        "2026-01-11",
+        "2026-01-18",
+        "2026-01-25",
+        "2026-02-01",
+        "2026-02-08",
+        "2026-02-15",
+        "2026-02-22",
+        "2026-03-01",
+        "2026-03-08",
+        "2026-03-15",
+        "2026-03-22",
+        "2026-03-29",
+        "2026-04-05",
+        "2026-04-12",
+        "2026-04-19",
+        "2026-04-26",
+        "2026-05-03",
+        "2026-05-10",
+        "2026-05-17",
+        "2026-05-24",
+        "2026-05-31",
+        "2026-06-07",
+        "2026-06-14",
+        "2026-06-21",
+        "2026-06-28",
+        "2026-07-05",
+        "2026-07-12",
+        "2026-07-19",
+        "2026-07-26",
+        "2026-08-02",
+        "2026-08-09",
+        "2026-08-16",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-09-06",
+        "2026-09-13",
+        "2026-09-20",
+        "2026-09-27",
+        "2026-10-04",
+        "2026-10-11",
+        "2026-10-18",
+        "2026-10-25",
+        "2026-11-01",
+        "2026-11-08",
+        "2026-11-15",
+        "2026-11-22",
+        "2026-11-29",
+        "2026-12-06",
+        "2026-12-13",
+        "2026-12-20",
+        "2026-12-27"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "providerId": "SBST",
+      "sourceRecordSha256": "e71e98f4769386c4e15b714cf53f49f959a3de7c1130c19d36047c8b375494ae",
+      "reason": "Provider agency SBST has the explicit canonical alias SBS; selected pilot routes reference it. Proposal pending repository review.",
+      "target": {
+        "kind": "operator",
+        "id": "SBS"
+      },
+      "kind": "agency",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "054a6add0baa0d0fcbe7b465bd01b44000dafb005ff411a14140df4173d6462f",
+      "sourceRecordSha256": "35f4b52b393ea5abcb9bd52c5df9e45bb083eeefe23f323faf7200009d188e7d",
+      "reason": "Ordered source path PTC_A to PTC_A (9 occurrences) is a exact match of PGLRT_E_CW/r_2011_damai on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "PGLRT_E_CW",
+        "revisionId": "r_2011_damai",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "2d5ed96fc4179fa5dfc57bf6c51ffc7fa7d663f8f12bbfc353a099db045e8f71",
+      "sourceRecordSha256": "5a36b0b46271b15e76f8f76e11fc4da525768128c96ed654e345002ddc6a3fc6",
+      "reason": "Ordered source path PTC_A to PTC_A (9 occurrences) is a exact match of PGLRT_W_CCW/r_2016_teck_lee on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "PGLRT_W_CCW",
+        "revisionId": "r_2016_teck_lee",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "361cc5ed6743686da2c40ffd786ed451a486f2131c4d7edaeef2cad1f85c5f0c",
+      "sourceRecordSha256": "994f41d45e3a162c612df6709f4104ad35295e98bbd2eeb7c18d93384ae70d84",
+      "reason": "Ordered source path PTC_B to PTC_B (9 occurrences) is a exact match of PGLRT_W_CW/r_2016_teck_lee on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "PGLRT_W_CW",
+        "revisionId": "r_2016_teck_lee",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "3858ce9cb8d9b0979292950dfa6c5814d23be1d072ce04808b926653ab4925dd",
+      "sourceRecordSha256": "08bc70f7dc2385a4e6b10f83cea162c498901d56a430716f1254e59c758632cb",
+      "reason": "Ordered source path PTC_B to PTC_B (9 occurrences) is a exact match of PGLRT_W_CW/r_2016_teck_lee on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "PGLRT_W_CW",
+        "revisionId": "r_2016_teck_lee",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "4249148c8f7537a59023983a395043c33ed927ad2339124e0454cf6e9bfdfa28",
+      "sourceRecordSha256": "86006105f1ece01de5c00d68bdc1abc92c691d29f0ffda331211aa79fb779dd0",
+      "reason": "Ordered source path PTC_A to PTC_A (9 occurrences) is a exact match of PGLRT_W_CCW/r_2016_teck_lee on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "PGLRT_W_CCW",
+        "revisionId": "r_2016_teck_lee",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "43b341efc633c4f84ce75434ad5b56d49ef5c8059cd5970633cb45c7ebbdf94b",
+      "sourceRecordSha256": "74c4fa4d5766a4c9c7b638fd8aead777d9f17cb6c8b68c4b847a43f6b0a100e3",
+      "reason": "Ordered source path PTC_B to PTC_B (9 occurrences) is a exact match of PGLRT_E_CCW/r_2011_damai on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "PGLRT_E_CCW",
+        "revisionId": "r_2011_damai",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "72f2c0b3f9ab2744fdec7447b3b456a7c1023beef6f0ad22b68d1063bdad08c7",
+      "sourceRecordSha256": "b5dff81a6ec798b78ad875d7be58280acaeb7efc6faa70707345fa0f221d7f78",
+      "reason": "Ordered source path PTC_B to PTC_B (9 occurrences) is a exact match of PGLRT_E_CCW/r_2011_damai on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "PGLRT_E_CCW",
+        "revisionId": "r_2011_damai",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "751580b9d3e0bbf249b6c91d12c05e4002153929b09a12d78b1edb34fdbe1231",
+      "sourceRecordSha256": "b1dd970d944a65c4eea8e115d8ad657bb7f41cfbc31e8eb6d07ede4c58a45af7",
+      "reason": "Ordered source path PTC_B to PTC_B (9 occurrences) is a exact match of PGLRT_W_CW/r_2016_teck_lee on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "PGLRT_W_CW",
+        "revisionId": "r_2016_teck_lee",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "7ac5a3156dd8eeab7f2a646eae1b879e56bf0275f9fe273ed429eb2614430f0b",
+      "sourceRecordSha256": "97587f2b8cfd19b2ec1032916e820fcc1e0ed7daf4f2a53a04efc758a7410c0e",
+      "reason": "Ordered source path PTC_A to PTC_A (9 occurrences) is a exact match of PGLRT_W_CCW/r_2016_teck_lee on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "PGLRT_W_CCW",
+        "revisionId": "r_2016_teck_lee",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "946acfcc266a2f18c40cf46343521a6b849c1bf9848fc81e139d8324d6efeee5",
+      "sourceRecordSha256": "236307cbb8ac064c92387885e7a7b171b77583ddda20c7cd09abfe8c6cb7ae4d",
+      "reason": "Ordered source path PTC_A to PTC_A (9 occurrences) is a exact match of PGLRT_E_CW/r_2011_damai on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "PGLRT_E_CW",
+        "revisionId": "r_2011_damai",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "e0123e526fd6966cef5eaeb18f3c55711014e1820e11b9148a4ec391be69ec8f",
+      "sourceRecordSha256": "ded10fc80f03813fda2469ff77e5667f21d5364be4f5743d2ea8f3a37c41df31",
+      "reason": "Ordered source path PTC_A to PTC_A (9 occurrences) is a exact match of PGLRT_E_CW/r_2011_damai on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "PGLRT_E_CW",
+        "revisionId": "r_2011_damai",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "f51a3ccedb3c6781b97577013828c3c46a482478ba04fd29c7e0a0f5a2339dcd",
+      "sourceRecordSha256": "62aee8fae867c8154e3b691ebededa004962c713711170eab93db42b5078e440",
+      "reason": "Ordered source path PTC_A to PTC_A (9 occurrences) is a exact match of PGLRT_E_CW/r_2011_damai on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "PGLRT_E_CW",
+        "revisionId": "r_2011_damai",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "fef57a7ba3fd16de7474fa6bcffc66263b6818d13f4da9fcee8a64c26c0c6ca8",
+      "sourceRecordSha256": "076410580734177bb12af85a73bd83dad7b43f107e65321ecd8ebbe6da658fdb",
+      "reason": "Ordered source path PTC_B to PTC_B (9 occurrences) is a exact match of PGLRT_E_CCW/r_2011_damai on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "PGLRT_E_CCW",
+        "revisionId": "r_2011_damai",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PG",
+      "sourceRecordSha256": "3fc43734ba200f3a6dab700c696c53f183e1e19f8b765ad30753b58f779e45e1",
+      "reason": "Provider route PG has the explicit canonical line family PGLRT. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "PGLRT"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE17",
+      "sourceRecordSha256": "d9603a82f7544df7c5bae0f29feec5e7d078bbb93ef799236874286b2fab62a3",
+      "reason": "Source station code NE17 identifies canonical station PGL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PGL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE1",
+      "sourceRecordSha256": "5855182105856b0cd7e86cb8fefa12675e005a0fbbc4fcc7bfc4c7b49da619e0",
+      "reason": "Source station code PE1 identifies canonical station COV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "COV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE1_A",
+      "sourceRecordSha256": "904dd20b73785d4df8d6b9820f771642edf0f72e23bd4051817eb0e46361813f",
+      "reason": "Explicit source platform label 2 with code PE1 and parent PE1 identifies COV_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "COV_PGLRT_2",
+        "stationId": "COV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE1_B",
+      "sourceRecordSha256": "293d6cc05fde5b6b8be9776e5132645743a3c1f3450d06cb7349a9bea7b6bb7a",
+      "reason": "Explicit source platform label 1 with code PE1 and parent PE1 identifies COV_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "COV_PGLRT_1",
+        "stationId": "COV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE2",
+      "sourceRecordSha256": "d4acb2c46594f2429e971e7c45c67283cd69aaeb8e934e7d34bfa56c0a33d17a",
+      "reason": "Source station code PE2 identifies canonical station MRD. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MRD"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE2_A",
+      "sourceRecordSha256": "c746ad51543ad307cde7b524bc145c6bf6b2c8e76bec4efc4ae1d90d4e58196d",
+      "reason": "Explicit source platform label 2 with code PE2 and parent PE2 identifies MRD_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MRD_PGLRT_2",
+        "stationId": "MRD"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE2_B",
+      "sourceRecordSha256": "c3673936515e134dc292b34078371a89be7d65b45dc563191e52ac841fc4b3b8",
+      "reason": "Explicit source platform label 1 with code PE2 and parent PE2 identifies MRD_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MRD_PGLRT_1",
+        "stationId": "MRD"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE3",
+      "sourceRecordSha256": "810c75baaa6ecba72a90e16fa23eb388f82ceebc7f54167f5374c3b8afe4afe5",
+      "reason": "Source station code PE3 identifies canonical station CRE. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CRE"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE3_A",
+      "sourceRecordSha256": "e080dcf4101dc7e5de005e8bf72d0668eb0f45c4a058310108bde1b57c3d4222",
+      "reason": "Explicit source platform label 2 with code PE3 and parent PE3 identifies CRE_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CRE_PGLRT_2",
+        "stationId": "CRE"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE3_B",
+      "sourceRecordSha256": "ced8a65f07283dbadebccd26c578b5ed3d8e7240bd242df35eefcf140c261bf7",
+      "reason": "Explicit source platform label 1 with code PE3 and parent PE3 identifies CRE_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CRE_PGLRT_1",
+        "stationId": "CRE"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE4",
+      "sourceRecordSha256": "f534d702c00f1c393b542e0b4d1f47c35338dbfbcb450581d07e06b76be6b12a",
+      "reason": "Source station code PE4 identifies canonical station RIV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "RIV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE4_A",
+      "sourceRecordSha256": "db4119cc8dccefa9218810ec480be429e8d70c2a3a4296805a304acca53230b7",
+      "reason": "Explicit source platform label 2 with code PE4 and parent PE4 identifies RIV_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RIV_PGLRT_2",
+        "stationId": "RIV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE4_B",
+      "sourceRecordSha256": "c3c7d896eff649b6dacda46a03d4be885c5bca7921883ae827d4ea80d037b1d4",
+      "reason": "Explicit source platform label 1 with code PE4 and parent PE4 identifies RIV_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RIV_PGLRT_1",
+        "stationId": "RIV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE5",
+      "sourceRecordSha256": "272b2602be4506224374ac7cb0443ea824a8658fbfd91a4bfe716050ba15c71f",
+      "reason": "Source station code PE5 identifies canonical station KDL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KDL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE5_A",
+      "sourceRecordSha256": "619fbea8f5afed90408104aaa45b8668c696c9c83ad0d60ed4fd80efc4d4fc69",
+      "reason": "Explicit source platform label 2 with code PE5 and parent PE5 identifies KDL_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KDL_PGLRT_2",
+        "stationId": "KDL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE5_B",
+      "sourceRecordSha256": "6635e550fa3016e99c3894f78b9aa09f5ce6a7403c56ff3d731cc1eadefb329a",
+      "reason": "Explicit source platform label 1 with code PE5 and parent PE5 identifies KDL_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KDL_PGLRT_1",
+        "stationId": "KDL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE6",
+      "sourceRecordSha256": "da9dcf4a24c88f470770719fd0b58f12253ebb89ab948a6e85b9797da1066701",
+      "reason": "Source station code PE6 identifies canonical station OAS. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "OAS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE6_A",
+      "sourceRecordSha256": "eddff6759150f93cdd1d5328dba744127557ee848aa07f4540ff331216551690",
+      "reason": "Explicit source platform label 2 with code PE6 and parent PE6 identifies OAS_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "OAS_PGLRT_2",
+        "stationId": "OAS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE6_B",
+      "sourceRecordSha256": "5cd3dcf3bfff7ae7ab6e641c601b02f285b0e456ccd76d83a095a069888669e6",
+      "reason": "Explicit source platform label 1 with code PE6 and parent PE6 identifies OAS_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "OAS_PGLRT_1",
+        "stationId": "OAS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE7",
+      "sourceRecordSha256": "94eaee7160d41772640f42c4e1cf91e95d33421d38631acf6d1332da58f0e1fe",
+      "reason": "Source station code PE7 identifies canonical station DAM. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "DAM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE7_A",
+      "sourceRecordSha256": "f1c9792c06f55ac746d362d35422625bdca6c107210956342b37b96432f2a795",
+      "reason": "Explicit source platform label 2 with code PE7 and parent PE7 identifies DAM_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DAM_PGLRT_2",
+        "stationId": "DAM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PE7_B",
+      "sourceRecordSha256": "9a06b522835425453c1eb6e70c1b8158e4483a56c9ee49a0e8e3a5d1c11410b5",
+      "reason": "Explicit source platform label 1 with code PE7 and parent PE7 identifies DAM_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DAM_PGLRT_1",
+        "stationId": "DAM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PTC_A",
+      "sourceRecordSha256": "1509aea98d178fff8a98b71e18aa87c91b7a0fa57531e7d2578dbdd8504e986f",
+      "reason": "Explicit source platform label 2 with code PTC and parent NE17 identifies PGL_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PGL_PGLRT_2",
+        "stationId": "PGL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PTC_B",
+      "sourceRecordSha256": "839b0682158b5c9dbec5b3968cd40c2b63ead77edd1d26c3603a53c3c0df7965",
+      "reason": "Explicit source platform label 1 with code PTC and parent NE17 identifies PGL_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PGL_PGLRT_1",
+        "stationId": "PGL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW1",
+      "sourceRecordSha256": "9ac24bfa10595595e613112b8744d1028eb1450d66bb94a2b29080d8d112ebc4",
+      "reason": "Source station code PW1 identifies canonical station SMK. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SMK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW1_A",
+      "sourceRecordSha256": "d07b196ce315401a19f9e872d12718906e5fffa8effc323deff8f519196da31f",
+      "reason": "Explicit source platform label 2 with code PW1 and parent PW1 identifies SMK_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SMK_PGLRT_2",
+        "stationId": "SMK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW1_B",
+      "sourceRecordSha256": "c1f8df78b95fb847554172b90bdd63b411c43331edc7fb991c5b7d2432057869",
+      "reason": "Explicit source platform label 1 with code PW1 and parent PW1 identifies SMK_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SMK_PGLRT_1",
+        "stationId": "SMK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW2",
+      "sourceRecordSha256": "931747ddab557276e896e843ff340c87ffae1b96aa01989fd8f73d205f4c9a0a",
+      "reason": "Source station code PW2 identifies canonical station TKL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TKL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW2_A",
+      "sourceRecordSha256": "47d4b481c2a268fe54b22d600dca33a7639d3586fdb4022b9963fd05a528cf44",
+      "reason": "Explicit source platform label 2 with code PW2 and parent PW2 identifies TKL_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TKL_PGLRT_2",
+        "stationId": "TKL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW2_B",
+      "sourceRecordSha256": "ae119c4011036dc08e97fb43eeb5a2869dc415ccee17a45722879c2bf6284faf",
+      "reason": "Explicit source platform label 1 with code PW2 and parent PW2 identifies TKL_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TKL_PGLRT_1",
+        "stationId": "TKL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW3",
+      "sourceRecordSha256": "e46c81670eb347bf895ddb26e919fb3b691d020a708b2ff0084120d2cef581e1",
+      "reason": "Source station code PW3 identifies canonical station PGP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PGP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW3_A",
+      "sourceRecordSha256": "a732c89979532e2553835ea9e238153dc0bd8deb98318e8fbb4a4d376ad18591",
+      "reason": "Explicit source platform label 2 with code PW3 and parent PW3 identifies PGP_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PGP_PGLRT_2",
+        "stationId": "PGP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW3_B",
+      "sourceRecordSha256": "613164a1f332217471d710cc1826a253ffede6293bb6ed5c1a8e73eb2cb7076a",
+      "reason": "Explicit source platform label 1 with code PW3 and parent PW3 identifies PGP_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PGP_PGLRT_1",
+        "stationId": "PGP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW4",
+      "sourceRecordSha256": "ea5afa7a8318ee3c78a57fb3775ac85cd020ccab1cee7ca6d0a6c346e2ed6aaf",
+      "reason": "Source station code PW4 identifies canonical station SMD. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SMD"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW4_A",
+      "sourceRecordSha256": "f9cf38ebac5064abb24211e6067979a2c2727bc4527d046a9a1d6ac77177924f",
+      "reason": "Explicit source platform label 2 with code PW4 and parent PW4 identifies SMD_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SMD_PGLRT_2",
+        "stationId": "SMD"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW4_B",
+      "sourceRecordSha256": "3eb81eff1e78c64ffa7b00334274eb74aba140dd050713c4314eabe65776a3fb",
+      "reason": "Explicit source platform label 1 with code PW4 and parent PW4 identifies SMD_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SMD_PGLRT_1",
+        "stationId": "SMD"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW5",
+      "sourceRecordSha256": "e03496e0aef00c420fdf7b987ec7c4188b07d1591481559c6817e4120c665a26",
+      "reason": "Source station code PW5 identifies canonical station NBG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "NBG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW5_A",
+      "sourceRecordSha256": "7fc90116045e7a3323473daacb88c3b59e2b5ecb75fdc48fa5769c3486583dce",
+      "reason": "Explicit source platform label 2 with code PW5 and parent PW5 identifies NBG_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "NBG_PGLRT_2",
+        "stationId": "NBG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW5_B",
+      "sourceRecordSha256": "4a3e3a3418f1102e12052f2db293e594fb5845e8371fef0267079279f9450b90",
+      "reason": "Explicit source platform label 1 with code PW5 and parent PW5 identifies NBG_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "NBG_PGLRT_1",
+        "stationId": "NBG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW6",
+      "sourceRecordSha256": "0bbb73ebf6e5aa8945068b7bdfb05dbb82bbd8cb9a678b49b2ea7db9337dbb74",
+      "reason": "Source station code PW6 identifies canonical station SMG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SMG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW6_A",
+      "sourceRecordSha256": "5192bbddd75b07ee254c94fb02715d9aa7804b25c5c274a3548d7354efbdd5ec",
+      "reason": "Explicit source platform label 2 with code PW6 and parent PW6 identifies SMG_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SMG_PGLRT_2",
+        "stationId": "SMG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW6_B",
+      "sourceRecordSha256": "aa3f479887dfcb3c258ab47b187ed2bc98aa35405377983e2b9c8224259cdfc9",
+      "reason": "Explicit source platform label 1 with code PW6 and parent PW6 identifies SMG_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SMG_PGLRT_1",
+        "stationId": "SMG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW7",
+      "sourceRecordSha256": "9c16af0577bfceb43bbcd3affea2bfde935eabbf8ede544967c60ff7d09df88b",
+      "reason": "Source station code PW7 identifies canonical station STK. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "STK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW7_A",
+      "sourceRecordSha256": "91acb2349ddd272a02dc2f3b32c5b0d7d9549e695c4ebaf1a6ee9d23c684fb6c",
+      "reason": "Explicit source platform label 2 with code PW7 and parent PW7 identifies STK_PGLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "STK_PGLRT_2",
+        "stationId": "STK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "PW7_B",
+      "sourceRecordSha256": "96360d391f823e89429e2e4e4ab101042aba1bc027d4c14bebec7d3547613128",
+      "reason": "Explicit source platform label 1 with code PW7 and parent PW7 identifies STK_PGLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "STK_PGLRT_1",
+        "stationId": "STK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    }
+  ]
+}
