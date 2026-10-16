@@ -413,6 +413,64 @@ describe('GTFS reconciliation evidence and pairwise drift', () => {
         ?.candidates[0]?.boardingConflicts,
     ).toEqual([]);
   });
+  it('does not use a service-excluded platform to bypass boarding restrictions', () => {
+    const { tables, topology, identity } = fixture();
+    const station = topology.stations[0];
+    const platform = station?.platforms[0];
+    const row = tables['stops.txt']?.find((row) => row.stop_id === 'P');
+    if (!station || !platform || !row) throw new Error('missing fixture');
+    platform.boardingStatus = 'alighting_only';
+    row.platform_code = 'A / X';
+    station.platforms.push({
+      ...platform,
+      id: 'excluded',
+      label: 'X',
+      serviceIds: ['OTHER'],
+      boardingStatus: null,
+    });
+    identity.topology.sha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
+    const evidence = buildReconciliationEvidence(tables, identity, topology);
+    expect(evidence.patterns[0]?.candidates[0]).toMatchObject({
+      platformConflicts: [],
+      boardingConflicts: [0],
+    });
+    expect(evidence.generationEligible).toBe(false);
+  });
+  it('audits and compares consecutive large sequences in the same trip without rounding', () => {
+    const { tables, topology, identity } = fixture();
+    const rows = tables['stop_times.txt'];
+    if (!rows?.[0] || !rows[1]) throw new Error('missing fixture');
+    rows[0].stop_sequence = '9007199254740992';
+    rows[1].stop_sequence = '9007199254740993';
+    rows.reverse();
+    const evidence = buildReconciliationEvidence(tables, identity, topology);
+    expect(evidence.patterns[0]?.stopIds).toEqual(['P', 'Q']);
+    const next = structuredClone(tables);
+    const occurrence = next['stop_times.txt']?.find(
+      (row) => row.stop_id === 'Q',
+    );
+    if (!occurrence) throw new Error('missing fixture');
+    occurrence.stop_sequence = '9007199254740994';
+    const manifest = { 'stop_times.txt': 'a'.repeat(64) };
+    expect(
+      compareScheduleSnapshots(
+        { tables, manifest },
+        { tables: next, manifest },
+      ).tables.find((table) => table.name === 'stop_times.txt'),
+    ).toMatchObject({
+      shared: 1,
+      unchanged: 1,
+      added: 1,
+      removed: 1,
+    });
+    occurrence.stop_sequence = '09007199254740992';
+    expect(() =>
+      compareScheduleSnapshots(
+        { tables, manifest },
+        { tables: next, manifest },
+      ),
+    ).toThrow('Structurally invalid');
+  });
   it('keeps evidence byte deterministic when row and field order changes', () => {
     const { tables, topology, identity } = fixture();
     const original = buildReconciliationEvidence(tables, identity, topology);

@@ -1,5 +1,5 @@
 import { hashBytes } from './capture.js';
-import { compareStrings } from './order.js';
+import { compareStrings, normalizeDecimalString } from './order.js';
 import { auditSchedule, type ScheduleTables } from './schedule.js';
 
 const identityColumns: Record<string, string[]> = {
@@ -21,7 +21,7 @@ function normalizeRow(row: Record<string, string>) {
       .map(([column, value]) => {
         // Formatting-only equivalence, never infer calendar, route or stop identity.
         if (column === 'stop_sequence' && /^\d+$/.test(value))
-          return [column, value.replace(/^0+(?=\d)/, '')];
+          return [column, normalizeDecimalString(value)];
         if (
           ['arrival_time', 'departure_time'].includes(column) &&
           /^\d+:\d{2}:\d{2}$/.test(value)

@@ -1,4 +1,4 @@
-import { compareStrings } from './order.js';
+import { compareStopSequences, compareStrings } from './order.js';
 import {
   proposeScheduleReconciliation,
   type ReconciliationIdentity,
@@ -107,7 +107,9 @@ export function buildReconciliationEvidence(
     stopTimes.set(row.trip_id ?? '', rows);
   }
   for (const rows of stopTimes.values())
-    rows.sort((a, b) => Number(a.stop_sequence) - Number(b.stop_sequence));
+    rows.sort((a, b) =>
+      compareStopSequences(a.stop_sequence ?? '', b.stop_sequence ?? ''),
+    );
   const patterns = audit.patterns.map((pattern) => {
     const entry = required(entries.get(`pattern:${pattern.id}`));
     const activeDates = required(dates.get(pattern.calendarId));
@@ -183,12 +185,16 @@ export function buildReconciliationEvidence(
         .filter(
           (occurrence) =>
             occurrence.index < pattern.stopIds.length - 1 &&
-            occurrence.platforms.length > 0 &&
-            occurrence.platforms.every(
-              (platform) =>
-                platform.boardingStatus === 'alighting_only' ||
-                platform.boardingStatus === 'not_in_service',
+            occurrence.platforms.some(
+              (platform) => platform.serviceScope !== 'excluded',
             ) &&
+            occurrence.platforms
+              .filter((platform) => platform.serviceScope !== 'excluded')
+              .every(
+                (platform) =>
+                  platform.boardingStatus === 'alighting_only' ||
+                  platform.boardingStatus === 'not_in_service',
+              ) &&
             occurrence.pickupDropOff.some(
               (restriction) => restriction.pickup !== '1',
             ),
