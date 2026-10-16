@@ -1,6 +1,6 @@
 {
   "name": "@mrtdown/cli",
-  "version": "2.0.0-alpha.38",
+  "version": "2.0.0-alpha.39",
   "description": "Command-line tools for MRTDown data",
   "private": true,
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
@@ -35,8 +35,8 @@
   },
   "dependencies": {
     "@mrtdown/core": "2.0.0-alpha.34",
-    "@mrtdown/fs": "2.0.0-alpha.35",
-    "@mrtdown/triage": "2.0.0-alpha.42",
+    "@mrtdown/fs": "2.0.0-alpha.36",
+    "@mrtdown/triage": "2.0.0-alpha.43",
     "hast-util-to-html": "^9.0.5"
   },
   "devDependencies": {

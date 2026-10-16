@@ -20,6 +20,7 @@
     "platform-inference-provenance",
     "public-gtfs-capture",
     "quick-trains-estimate",
+    "quiet-gtfs-reconciliation",
     "red-tips-heal",
     "required-reports-count",
     "rights-source-registry",
