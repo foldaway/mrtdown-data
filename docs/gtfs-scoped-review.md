@@ -1,8 +1,8 @@
 # Scoped GTFS mapping draft and review contract
 
 The version-2 draft turns verified reconciliation candidates into concrete,
-reviewable mapping proposals. Its first pilot is NEL. Neither the checked-in
-pilot nor the full generated draft is approved or eligible for generation.
+reviewable mapping proposals. The checked-in pilots cover NEL and DTL. Neither
+the pilots nor the full generated draft is approved or eligible for generation.
 Proposal and review schemas version 1 remain unchanged.
 
 ## Reproduce the NEL pilot
@@ -18,6 +18,8 @@ node scripts/draft-gtfs-scoped-review.mjs \
   --canonical-commit d034d6babef4ea5bcac256d26c47dcd802bb39ba
 ```
 
+The pilot argument also accepts comma-separated line IDs, such as `NEL,DTL`.
+Order and repeated IDs do not change the result; empty and unknown IDs fail.
 The optional full commit defaults to HEAD. The runner rejects dirty canonical
 records and verifies that the selected commit's complete `data` tree matches the
 checkout. It verifies the schedule receipt, source endpoint, SHA-256 and byte
@@ -161,3 +163,39 @@ The pilot subset validates its claims but has readiness `incomplete`: 1,055 othe
 entries and 46,827 outside-pilot pattern dates are absent. Both are unapproved,
 both report `mappingReviewEligible: false`, and generation stays blocked. The
 pilot is a concrete proposal for normal repository review, not completed Phase 2.
+
+## DTL and cumulative pilot scope
+
+The [DTL mapping table](gtfs-dtl-pilot-mappings.md),
+[draft](gtfs-dtl-pilot-draft.json) and
+[summary](gtfs-dtl-pilot-review-summary.json) extend the same review process to
+Downtown Line. Reproduce them with the command above using `DTL` as the pilot
+argument. Its 129 proposed decisions cover one agency, seven declared routes,
+35 station parents, 70 platform stops and 16 patterns: 1,511 trip records and
+1,877 pattern-date pairs. Two declared routes have no trips in this capture;
+matching their line identities does not establish service on those routes.
+
+To accumulate the pilots, regenerate from their common verified inputs rather
+than concatenate independently generated documents:
+
+```sh
+node scripts/draft-gtfs-scoped-review.mjs \
+  /absolute/path/schedule.zip /absolute/path/capture.json NEL,DTL \
+  /tmp/new-nel-dtl-review-draft \
+  --canonical-commit d034d6babef4ea5bcac256d26c47dcd802bb39ba
+```
+
+The combined draft deduplicates the shared SBST agency and the `DT12` (Little
+India) and `DT19` (Chinatown) station parents. It contains 195 proposed matches:
+one agency, ten routes, 50 parents,
+104 platform stops and 30 patterns. Those patterns contain 3,194 trip records
+and 3,441 pattern-date pairs. The full document still accounts for all 1,124
+entries, with 929 unresolved and no inferred exclusions or ignores. Its focused
+subset omits those 929 entries and 44,950 outside-pilot pattern dates. The
+normalized combined pilot digest is
+`ef9e98368bbfca600086faa52bfec6cbe38a77f42641761f08bbbf7f15fc1192`.
+
+All five output files reproduce byte for byte with `DTL,NEL,NEL` as well as
+`NEL,DTL`. The original single-line NEL draft and summary also reproduce unchanged.
+Combining scopes supplies no approval: full readiness remains `unresolved`,
+subset readiness remains `incomplete`, and generation stays blocked.
