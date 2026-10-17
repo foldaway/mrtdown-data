@@ -9,9 +9,13 @@ import { readOption } from '../args.js';
 import type { CliIO, GlobalOptions } from '../types.js';
 import { writeTextFile } from './manifest.js';
 
-function readRepeatedOption(args: string[], name: string): string[] {
+function readRepeatedOption(
+  args: string[],
+  name: string,
+  required = true,
+): string[] {
   const values: string[] = [];
-  let value = readOption(args, name, { required: true });
+  let value = readOption(args, name, { required });
   while (value !== undefined) {
     values.push(value);
     value = readOption(args, name);
@@ -54,7 +58,14 @@ export async function runGtfs(
   } else if (command === 'departures') {
     const file = readOption(args, '--file', { required: true });
     const capture = readOption(args, '--capture', { required: true });
-    const tripIds = readRepeatedOption(args, '--trip');
+    const tripIds = readRepeatedOption(args, '--trip', false);
+    const stopIds = readRepeatedOption(args, '--stop', false);
+    if (!tripIds.length && !stopIds.length) {
+      throw new Error('Provide --trip or --stop');
+    }
+    if (tripIds.length && stopIds.length) {
+      throw new Error('Use --trip or --stop, not both');
+    }
     const serviceDates = readRepeatedOption(args, '--service-date');
     const startInstant = readOption(args, '--from', { required: true });
     const endInstant = readOption(args, '--to', { required: true });
@@ -65,7 +76,7 @@ export async function runGtfs(
       resolve(globals.cwd, file ?? ''),
       resolve(globals.cwd, capture ?? ''),
       {
-        tripIds,
+        ...(tripIds.length ? { tripIds } : { stopIds }),
         serviceDates,
         startInstant: startInstant ?? '',
         endInstant: endInstant ?? '',
