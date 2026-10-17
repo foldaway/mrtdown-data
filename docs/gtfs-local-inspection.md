@@ -81,9 +81,11 @@ and full-record manifest; future reviewed mappings must record all three.
 
 ## Departure lookup
 
-`gtfs departures` inspects selected provider trips in a verified schedule ZIP.
-Repeat `--trip` and `--service-date` for multiple trips and dates; each trip is
-checked against its calendar on every selected date. Values are literal IDs, so
+`gtfs departures` inspects provider trips or stops in a verified schedule ZIP.
+Use repeated `--trip` flags for specific trips, or repeated `--stop` flags to find
+all trips visiting those provider stops. The two selectors are mutually exclusive.
+Repeat `--service-date` for multiple dates; each selected trip is checked against
+its calendar on every selected date. Values are literal IDs, so
 commas in a trip ID are preserved. Choose earlier service dates explicitly when
 checking trains that run past midnight. Window timestamps require UTC or an
 explicit offset; the start is included and the end excluded.
@@ -93,7 +95,18 @@ source departures. It preserves repeated visits, exact decimal stop sequences,
 boarding restrictions and exact/approximate timing. Missing departure times stay
 absent. Results follow the [departure-window rules](gtfs-scheduled-departure-windows.md).
 Trip/date argument ordering does not change the report, and duplicate selections
-fail. Unknown trips fail rather than returning a misleading empty result.
+fail. Stop argument order also leaves report bytes unchanged. Unknown trips and
+stops fail rather than returning a misleading empty result.
+
+Stop lookup includes only occurrences at the requested stop IDs, including repeat
+visits on the same trip. A trip visiting several requested stops is selected once.
+Only provider stops/platforms (`location_type` empty or `0`) are accepted; station
+parents, entrances and other location types are rejected. A known unused platform
+returns an empty list. This selects literal provider IDs without assigning a
+canonical platform or splitting grouped provider stops into physical allocations.
+
+For example, replace `--trip provider-trip-id` in the command above with
+`--stop provider-stop-id` to inspect that stop across every source trip.
 
 The full source schedule must pass the timing assembler before querying. Agency
 timezones must be `Asia/Singapore`; selected trips described by `frequencies.txt`
@@ -104,7 +117,7 @@ are rejected because this lookup does not expand frequency-based schedules.
 This is source evidence for inspection, with `generationEligible: false`.
 It does not assign canonical stations/platforms, prove mapping coverage or clear
 publication review. A successful query with no departures only describes the
-selected trips, dates and window. Failed queries leave an existing output report
+selected trips or stops, dates and window. Failed queries leave an existing output report
 untouched. Keep generated reports outside canonical `data/` and Git.
 
 ## Current implementation boundary

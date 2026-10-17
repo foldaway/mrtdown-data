@@ -539,6 +539,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Extended offline departure inspection with `--stop` lookup across
+  source trips, preserving repeated visits and filtering to the selected provider
+  stops. Unknown stops and non-platform locations fail; known unused platforms
+  produce an empty report. Trip and stop selectors remain mutually exclusive,
+  with dates validated even when no trips visit a selected stop. See
+  [departure lookup](../../gtfs-local-inspection.md#departure-lookup).
+  Canonical mapping review and publication gates remain unchanged.
+
 - 2026-10-17: Added offline `gtfs departures` inspection for selected provider
   trips and explicit service dates in an absolute time window. Reports retain
   verified capture provenance and table hashes alongside source timing and

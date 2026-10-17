@@ -11,7 +11,8 @@ async function fixture(root: string, overrides: Record<string, string> = {}) {
     'agency.txt':
       'agency_id,agency_name,agency_url,agency_timezone\nA,Test,https://example.com,Asia/Singapore\n',
     'routes.txt': 'route_id,agency_id,route_type\nR,A,1\n',
-    'stops.txt': 'stop_id,stop_name\nP,Platform\n',
+    'stops.txt':
+      'stop_id,stop_name,location_type,parent_station\nS,Station,1,\nP,Platform,0,S\nQ,Other platform,0,S\nUNUSED,Unused platform,0,S\nE,Entrance,2,S\n',
     'trips.txt': 'trip_id,route_id,service_id\n"T,late",R,C\ncurrent,R,C\n',
     'calendar_dates.txt':
       'service_id,date,exception_type\nC,20260101,1\nC,20260102,1\n',
@@ -73,6 +74,13 @@ function queryArgs(
   ];
 }
 const args = queryArgs();
+
+function stopQueryArgs(stopIds: string[], serviceDates?: string[]) {
+  return [
+    ...queryArgs([], serviceDates),
+    ...stopIds.flatMap((id) => ['--stop', id]),
+  ];
+}
 
 describe('GTFS departure inspection CLI', () => {
   it('writes a deterministic, source-bound report across trips and dates with literal provider IDs', async () => {
@@ -149,7 +157,15 @@ describe('GTFS departure inspection CLI', () => {
           root,
         ),
       ).toBe(1);
-      expect(errors.at(-1)).toContain('--trip is required');
+      expect(errors.at(-1)).toContain('Provide --trip or --stop');
+      expect(await runCli([...args, '--stop', 'P'], io, root)).toBe(1);
+      expect(errors.at(-1)).toContain('not both');
+      expect(await runCli(stopQueryArgs(['unknown']), io, root)).toBe(1);
+      expect(errors.at(-1)).toContain('Unknown GTFS stop');
+      for (const id of ['S', 'E']) {
+        expect(await runCli(stopQueryArgs([id]), io, root)).toBe(1);
+        expect(errors.at(-1)).toContain('not a stop/platform');
+      }
       const unknown = queryArgs(['unknown']);
       expect(await runCli(unknown, io, root)).toBe(1);
       expect(errors.at(-1)).toContain('Unknown GTFS trip: unknown');
@@ -165,11 +181,91 @@ describe('GTFS departure inspection CLI', () => {
       });
       expect(await runCli(args, io, root)).toBe(1);
       expect(errors.at(-1)).toContain('frequency-based trips');
+      expect(await runCli(stopQueryArgs(['P']), io, root)).toBe(1);
+      expect(errors.at(-1)).toContain('frequency-based trips');
       await fixture(root);
       await writeFile(join(root, 'schedule.zip'), 'corrupt capture');
       expect(await runCli(args, io, root)).toBe(1);
       expect(errors.at(-1)).toContain('SHA-256');
       expect(await readFile(output, 'utf8')).toBe('existing report');
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
+  it('finds trips by stop, filters other visits and preserves repeated occurrences', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'gtfs-stop-departures-'));
+    try {
+      await fixture(root, {
+        'stop_times.txt': [
+          'trip_id,stop_id,stop_sequence,arrival_time,departure_time,pickup_type,timepoint',
+          '"T,late",P,09007199254740992,25:00:00,25:00:00,1,1',
+          '"T,late",Q,9007199254740993,25:10:00,25:10:00,0,1',
+          '"T,late",P,9007199254740994,25:20:00,25:20:00,0,0',
+          'current,P,1,0:30:00,0:30:00,0,1',
+          'current,Q,2,1:00:00,1:00:00,0,1',
+          '',
+        ].join('\n'),
+      });
+      const errors: string[] = [];
+      const io = {
+        stdout: () => {},
+        stderr: (text: string) => errors.push(text),
+      };
+      expect(await runCli(stopQueryArgs(['P']), io, root)).toBe(0);
+      const report = JSON.parse(
+        await readFile(join(root, 'report.json'), 'utf8'),
+      );
+      expect(report.query.stopIds).toEqual(['P']);
+      expect(report.query.tripIds).toBeUndefined();
+      expect(report.generationEligible).toBe(false);
+      expect(
+        report.departures.map((stop: Record<string, string>) => [
+          stop.providerTripId,
+          stop.providerStopId,
+          stop.stopSequence,
+        ]),
+      ).toEqual([
+        ['current', 'P', '1'],
+        ['T,late', 'P', '09007199254740992'],
+        ['T,late', 'P', '9007199254740994'],
+      ]);
+      expect(report.departures[1].pickupType).toBe(1);
+      expect(report.departures[2].timepoint).toBe(0);
+      expect(await runCli(stopQueryArgs(['Q', 'P']), io, root)).toBe(0);
+      const combined = await readFile(join(root, 'report.json'), 'utf8');
+      expect(JSON.parse(combined).departures).toHaveLength(5);
+      expect(await runCli(stopQueryArgs(['P', 'Q']), io, root)).toBe(0);
+      expect(await readFile(join(root, 'report.json'), 'utf8')).toBe(combined);
+      expect(errors).toEqual([]);
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
+  it('reports no departures at an unused platform while still validating dates and duplicate selectors', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'gtfs-unused-stop-'));
+    try {
+      await fixture(root);
+      const io = { stdout: () => {}, stderr: () => {} };
+      expect(await runCli(stopQueryArgs(['UNUSED']), io, root)).toBe(0);
+      const output = join(root, 'report.json');
+      const report = await readFile(output, 'utf8');
+      expect(JSON.parse(report).departures).toEqual([]);
+      expect(
+        await runCli(stopQueryArgs(['UNUSED'], ['not-a-date']), io, root),
+      ).toBe(1);
+      expect(
+        await runCli(
+          stopQueryArgs(['UNUSED'], ['2026-01-01', '2026-01-01']),
+          io,
+          root,
+        ),
+      ).toBe(1);
+      expect(await runCli(stopQueryArgs(['UNUSED', 'UNUSED']), io, root)).toBe(
+        1,
+      );
+      expect(await readFile(output, 'utf8')).toBe(report);
     } finally {
       await rm(root, { recursive: true, force: true });
     }
