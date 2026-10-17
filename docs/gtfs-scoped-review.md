@@ -2,7 +2,7 @@
 
 The version-2 draft turns verified reconciliation candidates into concrete,
 reviewable mapping proposals. The checked-in pilots cover NEL, DTL, PGLRT and
-supported TEL patterns, retaining unresolved TEL patterns explicitly in the review.
+supported TEL/EWL patterns, retaining their internal gaps explicitly in the review.
 Neither the pilots nor the full generated draft is approved or eligible for
 generation. Proposal and review schemas version 1 remain unchanged.
 
@@ -266,3 +266,44 @@ draft preserves all earlier pilot decisions. Full readiness remains `unresolved`
 subset readiness remains `incomplete`, and mapping review and generation remain
 blocked. The source/calendar and lineage questions remain open independently of
 the supported mapping proposals.
+
+## EWL supported patterns and platform gaps
+
+The [EWL mapping table](gtfs-ewl-pilot-mappings.md),
+[draft](gtfs-ewl-pilot-draft.json) and
+[summary](gtfs-ewl-pilot-review-summary.json) add 165 proposed matches: one
+agency, seventeen routes, 35 station parents, 67 platform stops and 45 patterns.
+The supported patterns contain 856 source trip records and 5,893 pattern-date
+pairs. Five declared route records have no trips; their line identities do not
+establish observed service.
+
+The whole EWL input has 72 patterns and 2,292 trip records. Twenty-seven patterns
+containing 1,436 trips remain unresolved across 3,285 pattern-date pairs. Their
+dependencies include five grouped platform records: `EW24_A` (`B / C`),
+`CG_A`/`CG_B` (`D / E`) and `CG2_A`/`CG2_B` (`A / B`). The draft does not select
+one physical platform from those alternatives. Six of those patterns also have
+the Expo literal-label/service-direction conflict. These are overlapping
+blockers, not separate populations to add together.
+
+The supported paths retain their actual endpoints and ordered occurrences.
+All supplied EWL station paths fit a canonical revision, but a station-path match
+does not resolve grouped physical allocation or an explicit platform conflict.
+The matched-only focused draft omits all 27 unresolved EWL patterns and five
+grouped stops; it does not establish whole-line or airport-branch coverage.
+
+Using `NEL,DTL,PGLRT,TEL,EWL` as the pilot argument produces 583 proposed matches:
+two agencies, 43 routes, 120 station parents, 255 platform stops and 163 patterns.
+EWL shares the existing SMRT agency and the `CG1`, `DT14`, `DT32` and `EW16`
+station parents. Matched patterns contain 8,604 trip records and 20,180
+pattern-date pairs. The full document accounts for all 1,124 entries with 541
+unresolved and no exclusions or ignores. Its focused subset omits those 541
+entries and 28,211 pattern dates, including the internal TEL and EWL gaps. The
+normalized cumulative pilot digest is
+`908178e46f8a0e67079c0e700ef57616ec2a5d419618a08c70efff4a35248a83`.
+
+All five cumulative output files reproduce byte for byte with
+`EWL,TEL,PGLRT,NEL,DTL,EWL` as well as `NEL,DTL,PGLRT,TEL,EWL`, and the
+combined draft preserves all earlier pilot decisions. Full readiness remains
+`unresolved`, subset readiness remains `incomplete`, and mapping review and
+generation remain blocked. Source/calendar correctness and reviewed lineage
+remain independent open conditions.

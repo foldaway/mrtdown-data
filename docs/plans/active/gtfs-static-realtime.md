@@ -539,6 +539,18 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added a partial EWL mapping pilot: 165 proposed matches cover
+  seventeen declared routes, 35 station parents, 67 platform stops and 45
+  patterns (856 trip records; 5,893 pattern-date pairs). Five route records have
+  no trips. Five grouped platform records and 27 EWL patterns remain unresolved;
+  six of those patterns also retain the Expo label/service conflict. The five
+  pilots together propose 583 matches, leaving 541 entries unresolved without
+  exclusions or approval. See the
+  [EWL mapping table](../../gtfs-ewl-pilot-mappings.md) and
+  [remaining platform scope](../../gtfs-scoped-review.md#ewl-supported-patterns-and-platform-gaps).
+  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
+  complete and generation stays blocked.
+
 - 2026-10-16: Added a partial TEL mapping pilot: 172 proposed matches cover
   fifteen routes, 27 station parents, 54 platform stops and 75 patterns
   (1,619 trip records; 9,125 pattern-date pairs). Two TEL patterns containing
