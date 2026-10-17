@@ -1,5 +1,19 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.36
+
+### Minor Changes
+
+- c40d02c: Choose relevant source service dates automatically for departure queries, including earlier dates for trips running beyond midnight or 48 hours. Keep explicit date selection available and record derived dates in inspection reports without changing snapshot or publication review gates.
+- 4d2e44c: Add a compact source timetable contract and GTFS assembler that validate trips
+  and calendars together, preserving all definitions and rejecting duplicate or
+  missing identities.
+- bbc0927: Query source departures across explicitly selected service dates with an inclusive start and exclusive end. Preserve after-midnight offsets, repeated occurrences, access rules and precision; reject duplicate trip/date selections and sort coincident departures deterministically without changing snapshot selection or publication gates.
+- 4f6cbb3: Add compact scheduled-service calendars, a civil-date availability lookup and a GTFS calendar parser preserving inclusive weekly bounds and explicit date additions/removals. Reject duplicate or invalid source rules without changing reconciliation behavior or generation gates.
+- b5c1c1a: Add Singapore service-day instant conversion that preserves elapsed offsets beyond midnight using the GTFS time base. Share the stop-time offset validator while keeping calendar selection, source precision and generation gates separate.
+- 7b725db: Resolve validated source-trip timing on a matching calendar's enabled service date. Retain service-date and occurrence identity, access rules, precision and offsets while adding UTC instants; keep missing approximate times null and reject mismatched calendars without changing generation or publication gates.
+- 364d0fc: Add ordered source-trip timing validation and batch GTFS assembly. Preserve exact occurrence identities, repeated stops and missing approximate times while rejecting duplicate sequences, missing boundary times and chronology regressions. Keep mapping approval and generation gates unchanged.
+
 ## 2.0.0-alpha.35
 
 ### Minor Changes
