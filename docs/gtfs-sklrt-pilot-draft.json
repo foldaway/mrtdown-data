@@ -1,0 +1,1005 @@
+{
+  "schemaVersion": 2,
+  "documentKind": "gtfs-scoped-mapping-draft",
+  "identity": {
+    "sourceManifest": {
+      "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+      "calendar.txt": "bddb06a1aebe70f984f1dd3576c80ae1a72a76f58b4cd68a6af245368a72a605",
+      "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+      "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+      "routes.txt": "d81b7bb5ce975ca9ca1120dd730db79d70f908cf560533c295fcea67133bb77c",
+      "stop_times.txt": "b6d5289d1b2300531fc627fe1bd6c9b7507a1e57c9ff69358cb7a9ee93991395",
+      "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+      "trips.txt": "f72aaf61d79c25260966bfcc793802b2f8971f6c9ce5edb925b907a34b1df36f"
+    },
+    "canonicalCommit": "d034d6babef4ea5bcac256d26c47dcd802bb39ba",
+    "topology": {
+      "projectionVersion": 1,
+      "sha256": "e376c280fbd6292ed6fe03e7fa81541ad0b0b8c76a09f916f1e3898aac240ec1"
+    }
+  },
+  "preparedBy": "MRTDown deterministic scoped-review proposal tool",
+  "pilotLineIds": [
+    "SKLRT"
+  ],
+  "dateSets": [
+    {
+      "id": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "serviceDates": [
+        "2026-01-03",
+        "2026-01-10",
+        "2026-01-17",
+        "2026-01-24",
+        "2026-01-31",
+        "2026-02-07",
+        "2026-02-14",
+        "2026-02-21",
+        "2026-02-28",
+        "2026-03-07",
+        "2026-03-14",
+        "2026-03-21",
+        "2026-03-28",
+        "2026-04-04",
+        "2026-04-11",
+        "2026-04-18",
+        "2026-04-25",
+        "2026-05-02",
+        "2026-05-09",
+        "2026-05-16",
+        "2026-05-23",
+        "2026-05-30",
+        "2026-06-06",
+        "2026-06-13",
+        "2026-06-20",
+        "2026-06-27",
+        "2026-07-04",
+        "2026-07-11",
+        "2026-07-18",
+        "2026-07-25",
+        "2026-08-01",
+        "2026-08-08",
+        "2026-08-15",
+        "2026-08-22",
+        "2026-08-29",
+        "2026-09-05",
+        "2026-09-12",
+        "2026-09-19",
+        "2026-09-26",
+        "2026-10-03",
+        "2026-10-10",
+        "2026-10-17",
+        "2026-10-24",
+        "2026-10-31",
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28",
+        "2026-12-05",
+        "2026-12-12",
+        "2026-12-19",
+        "2026-12-26"
+      ]
+    },
+    {
+      "id": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "serviceDates": [
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-05",
+        "2026-01-06",
+        "2026-01-07",
+        "2026-01-08",
+        "2026-01-09",
+        "2026-01-12",
+        "2026-01-13",
+        "2026-01-14",
+        "2026-01-15",
+        "2026-01-16",
+        "2026-01-19",
+        "2026-01-20",
+        "2026-01-21",
+        "2026-01-22",
+        "2026-01-23",
+        "2026-01-26",
+        "2026-01-27",
+        "2026-01-28",
+        "2026-01-29",
+        "2026-01-30",
+        "2026-02-02",
+        "2026-02-03",
+        "2026-02-04",
+        "2026-02-05",
+        "2026-02-06",
+        "2026-02-09",
+        "2026-02-10",
+        "2026-02-11",
+        "2026-02-12",
+        "2026-02-13",
+        "2026-02-16",
+        "2026-02-17",
+        "2026-02-18",
+        "2026-02-19",
+        "2026-02-20",
+        "2026-02-23",
+        "2026-02-24",
+        "2026-02-25",
+        "2026-02-26",
+        "2026-02-27",
+        "2026-03-02",
+        "2026-03-03",
+        "2026-03-04",
+        "2026-03-05",
+        "2026-03-06",
+        "2026-03-09",
+        "2026-03-10",
+        "2026-03-11",
+        "2026-03-12",
+        "2026-03-13",
+        "2026-03-16",
+        "2026-03-17",
+        "2026-03-18",
+        "2026-03-19",
+        "2026-03-20",
+        "2026-03-23",
+        "2026-03-24",
+        "2026-03-25",
+        "2026-03-26",
+        "2026-03-27",
+        "2026-03-30",
+        "2026-03-31",
+        "2026-04-01",
+        "2026-04-02",
+        "2026-04-03",
+        "2026-04-06",
+        "2026-04-07",
+        "2026-04-08",
+        "2026-04-09",
+        "2026-04-10",
+        "2026-04-13",
+        "2026-04-14",
+        "2026-04-15",
+        "2026-04-16",
+        "2026-04-17",
+        "2026-04-20",
+        "2026-04-21",
+        "2026-04-22",
+        "2026-04-23",
+        "2026-04-24",
+        "2026-04-27",
+        "2026-04-28",
+        "2026-04-29",
+        "2026-04-30",
+        "2026-05-01",
+        "2026-05-04",
+        "2026-05-05",
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-25",
+        "2026-05-26",
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-06-01",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-04",
+        "2026-06-05",
+        "2026-06-08",
+        "2026-06-09",
+        "2026-06-10",
+        "2026-06-11",
+        "2026-06-12",
+        "2026-06-15",
+        "2026-06-16",
+        "2026-06-17",
+        "2026-06-18",
+        "2026-06-19",
+        "2026-06-22",
+        "2026-06-23",
+        "2026-06-24",
+        "2026-06-25",
+        "2026-06-26",
+        "2026-06-29",
+        "2026-06-30",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-06",
+        "2026-07-07",
+        "2026-07-08",
+        "2026-07-09",
+        "2026-07-10",
+        "2026-07-13",
+        "2026-07-14",
+        "2026-07-15",
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-20",
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29",
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-03",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25",
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-30",
+        "2026-12-01",
+        "2026-12-02",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-07",
+        "2026-12-08",
+        "2026-12-09",
+        "2026-12-10",
+        "2026-12-11",
+        "2026-12-14",
+        "2026-12-15",
+        "2026-12-16",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-21",
+        "2026-12-22",
+        "2026-12-23",
+        "2026-12-24",
+        "2026-12-25",
+        "2026-12-28",
+        "2026-12-29",
+        "2026-12-30",
+        "2026-12-31"
+      ]
+    },
+    {
+      "id": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "serviceDates": [
+        "2026-01-04",
+        "2026-01-11",
+        "2026-01-18",
+        "2026-01-25",
+        "2026-02-01",
+        "2026-02-08",
+        "2026-02-15",
+        "2026-02-22",
+        "2026-03-01",
+        "2026-03-08",
+        "2026-03-15",
+        "2026-03-22",
+        "2026-03-29",
+        "2026-04-05",
+        "2026-04-12",
+        "2026-04-19",
+        "2026-04-26",
+        "2026-05-03",
+        "2026-05-10",
+        "2026-05-17",
+        "2026-05-24",
+        "2026-05-31",
+        "2026-06-07",
+        "2026-06-14",
+        "2026-06-21",
+        "2026-06-28",
+        "2026-07-05",
+        "2026-07-12",
+        "2026-07-19",
+        "2026-07-26",
+        "2026-08-02",
+        "2026-08-09",
+        "2026-08-16",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-09-06",
+        "2026-09-13",
+        "2026-09-20",
+        "2026-09-27",
+        "2026-10-04",
+        "2026-10-11",
+        "2026-10-18",
+        "2026-10-25",
+        "2026-11-01",
+        "2026-11-08",
+        "2026-11-15",
+        "2026-11-22",
+        "2026-11-29",
+        "2026-12-06",
+        "2026-12-13",
+        "2026-12-20",
+        "2026-12-27"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "providerId": "SBST",
+      "sourceRecordSha256": "e71e98f4769386c4e15b714cf53f49f959a3de7c1130c19d36047c8b375494ae",
+      "reason": "Provider agency SBST has the explicit canonical alias SBS; selected pilot routes reference it. Proposal pending repository review.",
+      "target": {
+        "kind": "operator",
+        "id": "SBS"
+      },
+      "kind": "agency",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "6a69f7d6acf7a245153746c4bee64f7be654f4e969efbddbf41c164c09165dec",
+      "sourceRecordSha256": "50fb3de0a65fa6e076f87f0b6e3bee8592d8b9a51f9d0bc4d92f991ffeeeee39",
+      "reason": "Ordered source path STC_A to STC_A (10 occurrences) is a exact match of SKLRT_W_CW/r_2015_kupang on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "SKLRT_W_CW",
+        "revisionId": "r_2015_kupang",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "6c231863c62caa84b6d08ae75a51fc15ef679d5fad980d8ea9c14cbbeb308bcb",
+      "sourceRecordSha256": "e2b3b92a83818996cc8bb8b64ff23254faadf5312effd47cc6347a539957e801",
+      "reason": "Ordered source path STC_B to STC_B (10 occurrences) is a exact match of SKLRT_W_CCW/r_2015_kupang on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "SKLRT_W_CCW",
+        "revisionId": "r_2015_kupang",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "73ac31f3e3427448434b42bf9b2667185684777a2571a3622f52715b04222aeb",
+      "sourceRecordSha256": "a041cb13a76c91cba6ecd7442bd91be8d5bd3dcfa0c7834d0765aa701398893f",
+      "reason": "Ordered source path STC_A to STC_A (10 occurrences) is a exact match of SKLRT_W_CW/r_2015_kupang on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "SKLRT_W_CW",
+        "revisionId": "r_2015_kupang",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "7d310d46d4b5db95f23692f9252f4f767ad1cd486ca99d924ac106ab70eb0e0f",
+      "sourceRecordSha256": "e5882545ea05cf40863d8386508e25496e424dd420e3f2119890a2c5efefdcf4",
+      "reason": "Ordered source path STC_B to STC_B (10 occurrences) is a exact match of SKLRT_W_CCW/r_2015_kupang on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "SKLRT_W_CCW",
+        "revisionId": "r_2015_kupang",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "7f491d2843768b0add75fc0d67974c4863844ff4434e376ac35f38622c047d7e",
+      "sourceRecordSha256": "a2c6eefe6d3fb7f4c08ebdffdd278c2706cf7a7c94b18da1f52cfbff9cbfac68",
+      "reason": "Ordered source path STC_A to STC_A (10 occurrences) is a exact match of SKLRT_W_CW/r_2015_kupang on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "SKLRT_W_CW",
+        "revisionId": "r_2015_kupang",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "f900c26cd63ef8477a8cd8022062b11355fbb7e16db4559ba2941dc7a6c530f9",
+      "sourceRecordSha256": "9c9845ced359877447929bc8f3a30476f1f83f5e5016623182d75447980c4a6e",
+      "reason": "Ordered source path STC_B to STC_B (10 occurrences) is a exact match of SKLRT_W_CCW/r_2015_kupang on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "SKLRT_W_CCW",
+        "revisionId": "r_2015_kupang",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SK",
+      "sourceRecordSha256": "8551cea01542bc3d8031cd3cc88e3072d6fc74c0215a33461c9ec1a3e6ea3e99",
+      "reason": "Provider route SK has the explicit canonical line family SKLRT. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "SKLRT"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NE16",
+      "sourceRecordSha256": "b5a002ef3e8d6404c2a6731e3bdbc1e9d5e809ea13b1ceec44b575da7e3c645b",
+      "reason": "Source station code NE16 identifies canonical station SKG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SKG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE1",
+      "sourceRecordSha256": "572e7c77428202c390ca2360d8154bf8d427d6d66a6b391d9647b26c983f711c",
+      "reason": "Source station code SE1 identifies canonical station CPV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CPV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE1_A",
+      "sourceRecordSha256": "f049a5b2059d0370acada55d8a7c8a02b1a30cb64feee320845c60a578a9fdea",
+      "reason": "Explicit source platform label 1 with code SE1 and parent SE1 identifies CPV_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CPV_SKLRT_1",
+        "stationId": "CPV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE1_B",
+      "sourceRecordSha256": "36903f2bb2a483c961c1f9c2ff3045b364faf8e892393497bc7d8e537c545d18",
+      "reason": "Explicit source platform label 2 with code SE1 and parent SE1 identifies CPV_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CPV_SKLRT_2",
+        "stationId": "CPV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE2",
+      "sourceRecordSha256": "1c64214ac4728aa81ea73bb3a990f26ccd7523f2f0d50305cc695767709ca79f",
+      "reason": "Source station code SE2 identifies canonical station RMB. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "RMB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE2_A",
+      "sourceRecordSha256": "e51f4f83b6c259c6961d497a41a0150603a8c3a4d6864aff1b3a8cd2554be6de",
+      "reason": "Explicit source platform label 1 with code SE2 and parent SE2 identifies RMB_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RMB_SKLRT_1",
+        "stationId": "RMB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE2_B",
+      "sourceRecordSha256": "27509506ea75e380853bb450d44c9651585e1c039fd01f84ccd29d99c9e47521",
+      "reason": "Explicit source platform label 2 with code SE2 and parent SE2 identifies RMB_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RMB_SKLRT_2",
+        "stationId": "RMB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE3",
+      "sourceRecordSha256": "153031779f98496268c9abcd646899bcf4a20645b20b101b334f588559c3d0f5",
+      "reason": "Source station code SE3 identifies canonical station BAK. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BAK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE3_A",
+      "sourceRecordSha256": "d8768c8174a662087c73541a9a8f7528e7f18cbda3ed587737541cf7644f96f0",
+      "reason": "Explicit source platform label 1 with code SE3 and parent SE3 identifies BAK_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BAK_SKLRT_1",
+        "stationId": "BAK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE3_B",
+      "sourceRecordSha256": "4fdee20ebb83502a8ba4fcfdf50fe158afbacffb272020ea9541e76e32135a29",
+      "reason": "Explicit source platform label 2 with code SE3 and parent SE3 identifies BAK_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BAK_SKLRT_2",
+        "stationId": "BAK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE4",
+      "sourceRecordSha256": "bee02bb1eeba748dd6811817bcccc92774aa7dc686299ded34763a5c10778eaf",
+      "reason": "Source station code SE4 identifies canonical station KGK. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KGK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE4_A",
+      "sourceRecordSha256": "4e72ee43ef9f5ec9ac3daa74fa19011ea047a11ff032ca15fe3393379f74ce69",
+      "reason": "Explicit source platform label 1 with code SE4 and parent SE4 identifies KGK_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KGK_SKLRT_1",
+        "stationId": "KGK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE4_B",
+      "sourceRecordSha256": "f64f50d9566c7855702b62556ae10031f81f922df2075f87b4398542218412f7",
+      "reason": "Explicit source platform label 2 with code SE4 and parent SE4 identifies KGK_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KGK_SKLRT_2",
+        "stationId": "KGK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE5",
+      "sourceRecordSha256": "7e8a1eea9e0da8c0f2d5bbb5fb88b365a53aabee32e3695e7bb381a62be06b5b",
+      "reason": "Source station code SE5 identifies canonical station RNG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "RNG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE5_A",
+      "sourceRecordSha256": "f7ce14c59791b6dcd1c15cbbae75a7cf30b7a9bc4fb97bd0791b1700d02a8c39",
+      "reason": "Explicit source platform label 1 with code SE5 and parent SE5 identifies RNG_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RNG_SKLRT_1",
+        "stationId": "RNG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SE5_B",
+      "sourceRecordSha256": "130a37d2bd294ac3f8e6192b7d0e330ee546bb913f952a4216388bd0390400b9",
+      "reason": "Explicit source platform label 2 with code SE5 and parent SE5 identifies RNG_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RNG_SKLRT_2",
+        "stationId": "RNG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "STC_A",
+      "sourceRecordSha256": "fa699f66911848cea7e8f432db4f8ff4ad57ab11952ef86bcaf9322219ccb6c2",
+      "reason": "Explicit source platform label 1 with code STC and parent NE16 identifies SKG_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SKG_SKLRT_1",
+        "stationId": "SKG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "STC_B",
+      "sourceRecordSha256": "88f37f08cb18cd7e9416532f78560c80c535387ef19667adca30ffd8dde45c29",
+      "reason": "Explicit source platform label 2 with code STC and parent NE16 identifies SKG_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SKG_SKLRT_2",
+        "stationId": "SKG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW1",
+      "sourceRecordSha256": "d9674f17bedc631522abca1bf294f44874cd976aa4979bb62e7ba004e275aabe",
+      "reason": "Source station code SW1 identifies canonical station CGL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CGL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW1_A",
+      "sourceRecordSha256": "b4a622a2769b05ce991240eb52df61fbda81f82a381191b24dace2dcecb56356",
+      "reason": "Explicit source platform label 1 with code SW1 and parent SW1 identifies CGL_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CGL_SKLRT_1",
+        "stationId": "CGL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW1_B",
+      "sourceRecordSha256": "6282891dca18edb0f4c9289ece830e428cc27e77aee38126ee491a9ced88a874",
+      "reason": "Explicit source platform label 2 with code SW1 and parent SW1 identifies CGL_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CGL_SKLRT_2",
+        "stationId": "CGL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW2",
+      "sourceRecordSha256": "62e2b564772d53bead8caefae4f9b8b16a94c2eaee74e9c2cfef925d80095c47",
+      "reason": "Source station code SW2 identifies canonical station FMW. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "FMW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW2_A",
+      "sourceRecordSha256": "f371990cd36a84e26246daf0bdb7c6e5a9edd5dee68deec3cb0d535fbf65fa77",
+      "reason": "Explicit source platform label 1 with code SW2 and parent SW2 identifies FMW_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "FMW_SKLRT_1",
+        "stationId": "FMW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW2_B",
+      "sourceRecordSha256": "ee2fbc93a90ec8d687e5450bc0e725387c123067f01833c35ba7631d598143e6",
+      "reason": "Explicit source platform label 2 with code SW2 and parent SW2 identifies FMW_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "FMW_SKLRT_2",
+        "stationId": "FMW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW3",
+      "sourceRecordSha256": "3e91dc615d38312834c0d5cf4469c44e64a23f3d92ff595db3b5796ba91b0ac1",
+      "reason": "Source station code SW3 identifies canonical station KPG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KPG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW3_A",
+      "sourceRecordSha256": "1e088035bcac61c8f01189ef4e7c3c1552b306cabcb6861e17a2c41c2613ab9c",
+      "reason": "Explicit source platform label 1 with code SW3 and parent SW3 identifies KPG_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KPG_SKLRT_1",
+        "stationId": "KPG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW3_B",
+      "sourceRecordSha256": "39a0e85bc55006eeb69e4277be5b6f05bb9f14b285739c4b52661ba8189817b2",
+      "reason": "Explicit source platform label 2 with code SW3 and parent SW3 identifies KPG_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KPG_SKLRT_2",
+        "stationId": "KPG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW4",
+      "sourceRecordSha256": "2ecb69e06e8c6d64d7ce48ff8023a9aac5345ed032ce5529b77a02d5afed9abb",
+      "reason": "Source station code SW4 identifies canonical station TNG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TNG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW4_A",
+      "sourceRecordSha256": "fda5d081fa628c2a93b79544e660a1782a84100de386826589dfc51eb7b97584",
+      "reason": "Explicit source platform label 1 with code SW4 and parent SW4 identifies TNG_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TNG_SKLRT_1",
+        "stationId": "TNG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW4_B",
+      "sourceRecordSha256": "e155b809086407e9712048c4947b5c6559df48480f6a51268cdaa8bebd80bd35",
+      "reason": "Explicit source platform label 2 with code SW4 and parent SW4 identifies TNG_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TNG_SKLRT_2",
+        "stationId": "TNG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW5",
+      "sourceRecordSha256": "d4bfac421f09aad3f5f7c26f8c5697f1a73c7f3d55f4c2f4f828c7ec890bedce",
+      "reason": "Source station code SW5 identifies canonical station FNV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "FNV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW5_A",
+      "sourceRecordSha256": "65c26fb1ed377e4f72922b464d023450eb2464fa652164ac8cf4ba926ea1466a",
+      "reason": "Explicit source platform label 1 with code SW5 and parent SW5 identifies FNV_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "FNV_SKLRT_1",
+        "stationId": "FNV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW5_B",
+      "sourceRecordSha256": "82232045a2387fe8aa41f38729ff01b6a199e795132edc1f3b779f56d3420fe3",
+      "reason": "Explicit source platform label 2 with code SW5 and parent SW5 identifies FNV_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "FNV_SKLRT_2",
+        "stationId": "FNV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW6",
+      "sourceRecordSha256": "ea0f45b195e613a3a3809645116dfd07c0cb1c5037efaa1a03035b3721ce1391",
+      "reason": "Source station code SW6 identifies canonical station LYR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "LYR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW6_A",
+      "sourceRecordSha256": "3162b7a39706e03a9a0529bd080b4f35fdb2961ef3a3a1a9c84b38093910bc68",
+      "reason": "Explicit source platform label 1 with code SW6 and parent SW6 identifies LYR_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LYR_SKLRT_1",
+        "stationId": "LYR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW6_B",
+      "sourceRecordSha256": "8116ccc1f9a739ac45d802be96b62e39f8bbd4d07da637c03fe26599b0466a6a",
+      "reason": "Explicit source platform label 2 with code SW6 and parent SW6 identifies LYR_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LYR_SKLRT_2",
+        "stationId": "LYR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW7",
+      "sourceRecordSha256": "6e6397ca8868fffa821f50df9cabe3f87c132c82a5abbde30e9fda3412cb3310",
+      "reason": "Source station code SW7 identifies canonical station TKG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TKG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW7_A",
+      "sourceRecordSha256": "4c50f2d1c31f971464eb60ac437441c76c6d1c7c335d6de7394d1c693c1d32f9",
+      "reason": "Explicit source platform label 1 with code SW7 and parent SW7 identifies TKG_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TKG_SKLRT_1",
+        "stationId": "TKG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW7_B",
+      "sourceRecordSha256": "ea07edc7f3cd3fa06df14845789a0290bad9f3603e4da4f460feab31cc73db20",
+      "reason": "Explicit source platform label 2 with code SW7 and parent SW7 identifies TKG_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TKG_SKLRT_2",
+        "stationId": "TKG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW8",
+      "sourceRecordSha256": "14788ca3a6ff53d2c6b1308f08e915c2b9de327eb49cfb5a39e0bd89d9cca1ee",
+      "reason": "Source station code SW8 identifies canonical station RNJ. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "RNJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW8_A",
+      "sourceRecordSha256": "43bf80a60fc77ec51431d045d0b2b5a70196c2de0752e1b7ea4fdc465837aaa2",
+      "reason": "Explicit source platform label 1 with code SW8 and parent SW8 identifies RNJ_SKLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RNJ_SKLRT_1",
+        "stationId": "RNJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "SW8_B",
+      "sourceRecordSha256": "389ab780fa95173acfc2bc6f7392590550fcf09b6ebe472d0c2ee135f3fb1274",
+      "reason": "Explicit source platform label 2 with code SW8 and parent SW8 identifies RNJ_SKLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RNJ_SKLRT_2",
+        "stationId": "RNJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    }
+  ]
+}

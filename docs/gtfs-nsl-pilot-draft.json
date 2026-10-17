@@ -1,0 +1,1604 @@
+{
+  "schemaVersion": 2,
+  "documentKind": "gtfs-scoped-mapping-draft",
+  "identity": {
+    "sourceManifest": {
+      "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+      "calendar.txt": "bddb06a1aebe70f984f1dd3576c80ae1a72a76f58b4cd68a6af245368a72a605",
+      "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+      "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+      "routes.txt": "d81b7bb5ce975ca9ca1120dd730db79d70f908cf560533c295fcea67133bb77c",
+      "stop_times.txt": "b6d5289d1b2300531fc627fe1bd6c9b7507a1e57c9ff69358cb7a9ee93991395",
+      "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+      "trips.txt": "f72aaf61d79c25260966bfcc793802b2f8971f6c9ce5edb925b907a34b1df36f"
+    },
+    "canonicalCommit": "d034d6babef4ea5bcac256d26c47dcd802bb39ba",
+    "topology": {
+      "projectionVersion": 1,
+      "sha256": "e376c280fbd6292ed6fe03e7fa81541ad0b0b8c76a09f916f1e3898aac240ec1"
+    }
+  },
+  "preparedBy": "MRTDown deterministic scoped-review proposal tool",
+  "pilotLineIds": [
+    "NSL"
+  ],
+  "dateSets": [
+    {
+      "id": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "serviceDates": [
+        "2026-01-03",
+        "2026-01-10",
+        "2026-01-17",
+        "2026-01-24",
+        "2026-01-31",
+        "2026-02-07",
+        "2026-02-14",
+        "2026-02-21",
+        "2026-02-28",
+        "2026-03-07",
+        "2026-03-14",
+        "2026-03-21",
+        "2026-03-28",
+        "2026-04-04",
+        "2026-04-11",
+        "2026-04-18",
+        "2026-04-25",
+        "2026-05-02",
+        "2026-05-09",
+        "2026-05-16",
+        "2026-05-23",
+        "2026-05-30",
+        "2026-06-06",
+        "2026-06-13",
+        "2026-06-20",
+        "2026-06-27",
+        "2026-07-04",
+        "2026-07-11",
+        "2026-07-18",
+        "2026-07-25",
+        "2026-08-01",
+        "2026-08-08",
+        "2026-08-15",
+        "2026-08-22",
+        "2026-08-29",
+        "2026-09-05",
+        "2026-09-12",
+        "2026-09-19",
+        "2026-09-26",
+        "2026-10-03",
+        "2026-10-10",
+        "2026-10-17",
+        "2026-10-24",
+        "2026-10-31",
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28",
+        "2026-12-05",
+        "2026-12-12",
+        "2026-12-19",
+        "2026-12-26"
+      ]
+    },
+    {
+      "id": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "serviceDates": [
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-05",
+        "2026-01-06",
+        "2026-01-07",
+        "2026-01-08",
+        "2026-01-09",
+        "2026-01-12",
+        "2026-01-13",
+        "2026-01-14",
+        "2026-01-15",
+        "2026-01-16",
+        "2026-01-19",
+        "2026-01-20",
+        "2026-01-21",
+        "2026-01-22",
+        "2026-01-23",
+        "2026-01-26",
+        "2026-01-27",
+        "2026-01-28",
+        "2026-01-29",
+        "2026-01-30",
+        "2026-02-02",
+        "2026-02-03",
+        "2026-02-04",
+        "2026-02-05",
+        "2026-02-06",
+        "2026-02-09",
+        "2026-02-10",
+        "2026-02-11",
+        "2026-02-12",
+        "2026-02-13",
+        "2026-02-16",
+        "2026-02-17",
+        "2026-02-18",
+        "2026-02-19",
+        "2026-02-20",
+        "2026-02-23",
+        "2026-02-24",
+        "2026-02-25",
+        "2026-02-26",
+        "2026-02-27",
+        "2026-03-02",
+        "2026-03-03",
+        "2026-03-04",
+        "2026-03-05",
+        "2026-03-06",
+        "2026-03-09",
+        "2026-03-10",
+        "2026-03-11",
+        "2026-03-12",
+        "2026-03-13",
+        "2026-03-16",
+        "2026-03-17",
+        "2026-03-18",
+        "2026-03-19",
+        "2026-03-20",
+        "2026-03-23",
+        "2026-03-24",
+        "2026-03-25",
+        "2026-03-26",
+        "2026-03-27",
+        "2026-03-30",
+        "2026-03-31",
+        "2026-04-01",
+        "2026-04-02",
+        "2026-04-03",
+        "2026-04-06",
+        "2026-04-07",
+        "2026-04-08",
+        "2026-04-09",
+        "2026-04-10",
+        "2026-04-13",
+        "2026-04-14",
+        "2026-04-15",
+        "2026-04-16",
+        "2026-04-17",
+        "2026-04-20",
+        "2026-04-21",
+        "2026-04-22",
+        "2026-04-23",
+        "2026-04-24",
+        "2026-04-27",
+        "2026-04-28",
+        "2026-04-29",
+        "2026-04-30",
+        "2026-05-01",
+        "2026-05-04",
+        "2026-05-05",
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-25",
+        "2026-05-26",
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-06-01",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-04",
+        "2026-06-05",
+        "2026-06-08",
+        "2026-06-09",
+        "2026-06-10",
+        "2026-06-11",
+        "2026-06-12",
+        "2026-06-15",
+        "2026-06-16",
+        "2026-06-17",
+        "2026-06-18",
+        "2026-06-19",
+        "2026-06-22",
+        "2026-06-23",
+        "2026-06-24",
+        "2026-06-25",
+        "2026-06-26",
+        "2026-06-29",
+        "2026-06-30",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-06",
+        "2026-07-07",
+        "2026-07-08",
+        "2026-07-09",
+        "2026-07-10",
+        "2026-07-13",
+        "2026-07-14",
+        "2026-07-15",
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-20",
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29",
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-03",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25",
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-30",
+        "2026-12-01",
+        "2026-12-02",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-07",
+        "2026-12-08",
+        "2026-12-09",
+        "2026-12-10",
+        "2026-12-11",
+        "2026-12-14",
+        "2026-12-15",
+        "2026-12-16",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-21",
+        "2026-12-22",
+        "2026-12-23",
+        "2026-12-24",
+        "2026-12-25",
+        "2026-12-28",
+        "2026-12-29",
+        "2026-12-30",
+        "2026-12-31"
+      ]
+    },
+    {
+      "id": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "serviceDates": [
+        "2026-01-04",
+        "2026-01-11",
+        "2026-01-18",
+        "2026-01-25",
+        "2026-02-01",
+        "2026-02-08",
+        "2026-02-15",
+        "2026-02-22",
+        "2026-03-01",
+        "2026-03-08",
+        "2026-03-15",
+        "2026-03-22",
+        "2026-03-29",
+        "2026-04-05",
+        "2026-04-12",
+        "2026-04-19",
+        "2026-04-26",
+        "2026-05-03",
+        "2026-05-10",
+        "2026-05-17",
+        "2026-05-24",
+        "2026-05-31",
+        "2026-06-07",
+        "2026-06-14",
+        "2026-06-21",
+        "2026-06-28",
+        "2026-07-05",
+        "2026-07-12",
+        "2026-07-19",
+        "2026-07-26",
+        "2026-08-02",
+        "2026-08-09",
+        "2026-08-16",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-09-06",
+        "2026-09-13",
+        "2026-09-20",
+        "2026-09-27",
+        "2026-10-04",
+        "2026-10-11",
+        "2026-10-18",
+        "2026-10-25",
+        "2026-11-01",
+        "2026-11-08",
+        "2026-11-15",
+        "2026-11-22",
+        "2026-11-29",
+        "2026-12-06",
+        "2026-12-13",
+        "2026-12-20",
+        "2026-12-27"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "providerId": "SMRT",
+      "sourceRecordSha256": "b0ce46c8e2e5dfd65335d0177ef33221e949aa32d9d18fe2ea843024ee0cdb63",
+      "reason": "Provider agency SMRT has the explicit canonical alias SMRT_TRAINS; selected pilot routes reference it. Proposal pending repository review.",
+      "target": {
+        "kind": "operator",
+        "id": "SMRT_TRAINS"
+      },
+      "kind": "agency",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "11fd607f184bbc6b6098654fb0b422f1e1e17c31110a146f86fdf1cee6b3910f",
+      "sourceRecordSha256": "1f90904656cd143837bc4c483dd24057e05f5ac4f5558b3c0e4817910521039b",
+      "reason": "Ordered source path NS17_B to NS26_B (10 occurrences) is a contiguousSegment match of NSL_MAIN_S/r_2019_canberra on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NSL_MAIN_S",
+        "revisionId": "r_2019_canberra",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "2d32742323c6aa49c25e0960c07a7add8e75fbac1cfb3af5f1f93d131ac5d9b6",
+      "sourceRecordSha256": "8edfdfd7af80fd3eed71f0fc01a84607743a389dddb6453310efa8be00041c46",
+      "reason": "Ordered source path NS17_B to NS28_B (12 occurrences) is a contiguousSegment match of NSL_MAIN_S/r_2019_canberra on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NSL_MAIN_S",
+        "revisionId": "r_2019_canberra",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "2f236a0d9e021315a491b40a4e5bd4d98558f9c8c9d9218656c90a73b7992176",
+      "sourceRecordSha256": "1dcd04e1b39aae9b75e43919edf40550b74038eb5d2a54a2b7f0eeb43f4e8911",
+      "reason": "Ordered source path NS17_B to NS28_B (12 occurrences) is a contiguousSegment match of NSL_MAIN_S/r_2019_canberra on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NSL_MAIN_S",
+        "revisionId": "r_2019_canberra",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "d582ee4c900f4d6264c8581b8767c536a51ab2f00799b03b6dd26e4334abc12f",
+      "sourceRecordSha256": "77fc6d0516db73cf33b68cd52e739d2a86244b891059fda038e80b253b774ab0",
+      "reason": "Ordered source path NS17_B to NS28_B (12 occurrences) is a contiguousSegment match of NSL_MAIN_S/r_2019_canberra on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "NSL_MAIN_S",
+        "revisionId": "r_2019_canberra",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS13_NS26",
+      "sourceRecordSha256": "290797ba6b62298680f1e1ab5319673f7cb66f57cb2aea0ded382a29d5f34d39",
+      "reason": "Provider route NSL_NS13_NS26 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS13_NS28",
+      "sourceRecordSha256": "bb8d8ce30bccff6609a85b3830c940911b41b9cce3a80e4a3adf7624af3bf8cc",
+      "reason": "Provider route NSL_NS13_NS28 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS16_NS13",
+      "sourceRecordSha256": "e860e17fb5e7b9628a5c0f0c2ea7c8c3e836a5c549b5698be9a437271f2fc9b1",
+      "reason": "Provider route NSL_NS16_NS13 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS16_NS1",
+      "sourceRecordSha256": "9dc74b52bc18de550516132f7027dbdf844c1d7c282ba31b863deb5cf725f734",
+      "reason": "Provider route NSL_NS16_NS1 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS16_NS28",
+      "sourceRecordSha256": "2af2843e2f644d724c0690a921e34847424a97afd24751a9254eb70f76e7b84b",
+      "reason": "Provider route NSL_NS16_NS28 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS17_NS1",
+      "sourceRecordSha256": "2ba6385ea76fadda4e94a100321352c031cc73d6dc1fd024e37b04511c6d4f71",
+      "reason": "Provider route NSL_NS17_NS1 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS17_NS26",
+      "sourceRecordSha256": "8958da288bec0d970e1a3b09d44303e04217726698e08da89894cf97beaa1046",
+      "reason": "Provider route NSL_NS17_NS26 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS17_NS28",
+      "sourceRecordSha256": "a4ca0cdf20f3f1563007f79e4aff99975d90b6dfab57b304952dbaa88ce571df",
+      "reason": "Provider route NSL_NS17_NS28 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS1_NS16",
+      "sourceRecordSha256": "0c4f38e3618fa99a16d760f54b20f69e16fdedf3a8258bf07356085264ad0b05",
+      "reason": "Provider route NSL_NS1_NS16 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS1_NS19",
+      "sourceRecordSha256": "16db63f8f6faadae0244e8d5b22e28165ca87c2ea85135538ec84c4f208ad097",
+      "reason": "Provider route NSL_NS1_NS19 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS1_NS28",
+      "sourceRecordSha256": "c311b22076e5ba742f422ba694fc120ef53c22031f961c30f5c2d54cdc57f5e5",
+      "reason": "Provider route NSL_NS1_NS28 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS1_NS5",
+      "sourceRecordSha256": "0ef7f3e5417ce6674c2df986756b6a587dca1c6e8a1fc4e51ee6506adcc020a7",
+      "reason": "Provider route NSL_NS1_NS5 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS1_NS7",
+      "sourceRecordSha256": "4c72e36c215471108e08d6501ac447c6fc0a95d4f8ae539f1c67a5247f1a4575",
+      "reason": "Provider route NSL_NS1_NS7 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS21_NS1",
+      "sourceRecordSha256": "0705858ef820400a1bde4eb66e828fde4b9d9bd458aa2daab032f6ccee8f555e",
+      "reason": "Provider route NSL_NS21_NS1 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS27_NS1",
+      "sourceRecordSha256": "08db48a9184763d6eca6bc464fdb2c662cae09b2b11c2912cb8cc1e678b96d42",
+      "reason": "Provider route NSL_NS27_NS1 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS28_NS13",
+      "sourceRecordSha256": "93d91a5c7d70aa85296b678f799db0c1d88b580669db39191d5917a9f5b6afac",
+      "reason": "Provider route NSL_NS28_NS13 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS28_NS16",
+      "sourceRecordSha256": "14e3638aae289eb3b9e92036b3203a91b58602de05be4d786882d5221b73243c",
+      "reason": "Provider route NSL_NS28_NS16 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS28_NS1",
+      "sourceRecordSha256": "0516bc08a8249bef95a9133d4e70270a08a2e29e3c916cac957092ab1119b611",
+      "reason": "Provider route NSL_NS28_NS1 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS28_NS7",
+      "sourceRecordSha256": "b2b1f8f5366d9295999e8a0305788eb41845e605e624c2b85f939ce861a0ef37",
+      "reason": "Provider route NSL_NS28_NS7 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS5_NS1",
+      "sourceRecordSha256": "9ad5622fad5f5d22e4549cef5c824637969dea74c36cd9accfdf182ea71019f4",
+      "reason": "Provider route NSL_NS5_NS1 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NSL_NS7_NS28",
+      "sourceRecordSha256": "e202e44486424bbb36116abf485dfaaa674d2d9e8486446b90312dc9712b9f0a",
+      "reason": "Provider route NSL_NS7_NS28 has the explicit canonical line family NSL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "NSL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC15",
+      "sourceRecordSha256": "6ad1014e272d792f19b4d47ae2825dc965a3f5e4919f04361a247911adab2dd3",
+      "reason": "Source station code CC15 identifies canonical station BSH. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BSH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC33",
+      "sourceRecordSha256": "898c2e9c1ce222f2cfa74757322fac7d9d8f85068ea799f5cac56b0650703919",
+      "reason": "Source station code CC33 identifies canonical station MRB. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MRB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT11",
+      "sourceRecordSha256": "3fcbee6b0b06b9c6c96e3567530cc5443655e4af7474b6a538eb203f589bdd5e",
+      "reason": "Source station code DT11 identifies canonical station NEW. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "NEW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW13",
+      "sourceRecordSha256": "dcc74c4a7656b33ea9b13ec6bc5a2b9eb880e9cce06dc58c923de15d2c20e678",
+      "reason": "Source station code EW13 identifies canonical station CTH. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CTH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW14",
+      "sourceRecordSha256": "80427a538aa676ef80bbd93a166648cb52d7250a42d426b01b579c4174c94e88",
+      "reason": "Source station code EW14 identifies canonical station RFP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "RFP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW24",
+      "sourceRecordSha256": "8d16c735ce80b893cce97aa042905128534faadcdfd0a1bc827ecf3b1df54a43",
+      "reason": "Source station code EW24 identifies canonical station JUR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "JUR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS10",
+      "sourceRecordSha256": "f2f1b4dddc88454eb1499e35a076c6f02d16750b28b2d332115bc7b07319f575",
+      "reason": "Source station code NS10 identifies canonical station ADM. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "ADM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS10_A",
+      "sourceRecordSha256": "2311a90c03cbaf6abab55b52758f7149f7fbfb56726d6a066c2defa2bb5b138f",
+      "reason": "Explicit source platform label A with code NS10 and parent NS10 identifies ADM_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "ADM_NSL_A",
+        "stationId": "ADM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS10_B",
+      "sourceRecordSha256": "3c5a41663e22b2cc52004ee6503e60064416602627e57723b67a3fde0e6587f1",
+      "reason": "Explicit source platform label B with code NS10 and parent NS10 identifies ADM_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "ADM_NSL_B",
+        "stationId": "ADM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS11",
+      "sourceRecordSha256": "a60ac3ed85c5642f87e7647cc7cc52499089d4b5c51c32e820a5160ec3dce2b1",
+      "reason": "Source station code NS11 identifies canonical station SBW. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SBW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS11_A",
+      "sourceRecordSha256": "339fe5c46ccbce3a9c8730b0642498bb17952ae691957a9b0724e0d6fb0b5652",
+      "reason": "Explicit source platform label A with code NS11 and parent NS11 identifies SBW_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SBW_NSL_A",
+        "stationId": "SBW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS11_B",
+      "sourceRecordSha256": "c66ca790052830c29d4e5fd8c3c1eff7549def01dc410b64cdb2b520ebcc5e89",
+      "reason": "Explicit source platform label B with code NS11 and parent NS11 identifies SBW_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SBW_NSL_B",
+        "stationId": "SBW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS12",
+      "sourceRecordSha256": "35034fbe48187dc98e92581a8ca1f02071a934c69b2bf2be1d5b40146a0237c7",
+      "reason": "Source station code NS12 identifies canonical station CBR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CBR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS12_A",
+      "sourceRecordSha256": "9c97eb8d6d1d8628b5e37fa61d57605059c72325cf8a66b11b0811de0d69e699",
+      "reason": "Explicit source platform label A with code NS12 and parent NS12 identifies CBR_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CBR_NSL_A",
+        "stationId": "CBR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS12_B",
+      "sourceRecordSha256": "9be894096a7d65e9695c627a26b712b7597721b2c73e6f9af4ed43645532afb3",
+      "reason": "Explicit source platform label B with code NS12 and parent NS12 identifies CBR_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CBR_NSL_B",
+        "stationId": "CBR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS13",
+      "sourceRecordSha256": "e0b66609feda765c0b91fc06caf5e3ddf94cd56fe669cd8e2ac0ec3c4641b52d",
+      "reason": "Source station code NS13 identifies canonical station YIS. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "YIS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS13_A",
+      "sourceRecordSha256": "ec59105e32837577a9874736606936489dee76180852f5d93cfc4e84ebe36fd3",
+      "reason": "Explicit source platform label A with code NS13 and parent NS13 identifies YIS_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "YIS_NSL_A",
+        "stationId": "YIS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS13_B",
+      "sourceRecordSha256": "cf3c5859c8cecfb1f74c79b9384bab43fb15ee3898139530d19caf7e4dc0fdba",
+      "reason": "Explicit source platform label B with code NS13 and parent NS13 identifies YIS_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "YIS_NSL_B",
+        "stationId": "YIS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS14",
+      "sourceRecordSha256": "5c2560e632f0f3d479f02a8e24d880f7690dd46baffc28a4bdf3716f08812df5",
+      "reason": "Source station code NS14 identifies canonical station KTB. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KTB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS14_A",
+      "sourceRecordSha256": "3ccb1c9b55969bd5bfc9bee16082f4f03e19d023d0e8da571e9b309e6c47c265",
+      "reason": "Explicit source platform label A with code NS14 and parent NS14 identifies KTB_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KTB_NSL_A",
+        "stationId": "KTB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS14_B",
+      "sourceRecordSha256": "2bb1896b743969602876dd58eac4e9d1b4cb9f76cfbd5aa0b10e8b312aac5293",
+      "reason": "Explicit source platform label B with code NS14 and parent NS14 identifies KTB_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KTB_NSL_B",
+        "stationId": "KTB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS15",
+      "sourceRecordSha256": "d8f6afe2d19eb6b1bca02c23927d0e7a5c9c35dee9790ed0682b54b6b5ff538a",
+      "reason": "Source station code NS15 identifies canonical station YCK. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "YCK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS15_A",
+      "sourceRecordSha256": "a79402b184d99c58f5aab9560d6cbf5e51e3dbd6be41d06156276b7a1480ca2b",
+      "reason": "Explicit source platform label A with code NS15 and parent NS15 identifies YCK_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "YCK_NSL_A",
+        "stationId": "YCK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS15_B",
+      "sourceRecordSha256": "88d52d8b9106de48c5f15ba4e66ad3c7b5bdb561f4970b2f8ddc30c3c8662cfb",
+      "reason": "Explicit source platform label B with code NS15 and parent NS15 identifies YCK_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "YCK_NSL_B",
+        "stationId": "YCK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS16",
+      "sourceRecordSha256": "04364e01a1fd99de678d1e0c98340815c008f09c1916c008e5af7804a22999c5",
+      "reason": "Source station code NS16 identifies canonical station AMK. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "AMK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS17_A",
+      "sourceRecordSha256": "94be6f13c9e671c2b720d1511d3636d5bdc455522ae0075616144b966094958e",
+      "reason": "Explicit source platform label A with code NS17 and parent CC15 identifies BSH_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BSH_NSL_A",
+        "stationId": "BSH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS17_B",
+      "sourceRecordSha256": "94962adac9c8da4395328244a1c70e1dc5f042e40b6b586807706da83eb11fc8",
+      "reason": "Explicit source platform label B with code NS17 and parent CC15 identifies BSH_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BSH_NSL_B",
+        "stationId": "BSH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS18",
+      "sourceRecordSha256": "916ed10e9d070c9db3df76b88835309485980bbc372184cd130ef1a2aa167f3f",
+      "reason": "Source station code NS18 identifies canonical station BDL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BDL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS18_A",
+      "sourceRecordSha256": "687cd113f412c4535c55fce8080d37ba6ec1fd6a106969599e540ae59f297fb6",
+      "reason": "Explicit source platform label A with code NS18 and parent NS18 identifies BDL_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BDL_NSL_A",
+        "stationId": "BDL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS18_B",
+      "sourceRecordSha256": "de46eaf5d13287ac33cd457a34e152beeb29eb357979fc22fffa400cd161ac0a",
+      "reason": "Explicit source platform label B with code NS18 and parent NS18 identifies BDL_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BDL_NSL_B",
+        "stationId": "BDL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS19",
+      "sourceRecordSha256": "dc1cc52bff839fad404107ae4a82ad32e2dbef24222725587ba2fcef24639147",
+      "reason": "Source station code NS19 identifies canonical station TAP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TAP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS19_A",
+      "sourceRecordSha256": "e8bc9d992a03f6c5e0d8a65d938d1746fba9505b13418f678b1960aa585cb0f6",
+      "reason": "Explicit source platform label A with code NS19 and parent NS19 identifies TAP_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TAP_NSL_A",
+        "stationId": "TAP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS19_B",
+      "sourceRecordSha256": "36ebb8a7af5c2b5acb45272797c866761871623870c446def6d130f18df48ed3",
+      "reason": "Explicit source platform label B with code NS19 and parent NS19 identifies TAP_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TAP_NSL_B",
+        "stationId": "TAP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS20",
+      "sourceRecordSha256": "7c9184a2ccce88741ff80f0fdd47bf58f91f2195ccb8fd23006dbf2c3cc0364b",
+      "reason": "Source station code NS20 identifies canonical station NOV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "NOV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS20_A",
+      "sourceRecordSha256": "1a42214716d0bff16772b9e7994aa1b7479f68ecee0a9a7dd44a2274e3bc5594",
+      "reason": "Explicit source platform label A with code NS20 and parent NS20 identifies NOV_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "NOV_NSL_A",
+        "stationId": "NOV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS20_B",
+      "sourceRecordSha256": "81721e93cfc82f857a1beb4553c5097f76c6f48880bfef76645bac52f3c16675",
+      "reason": "Explicit source platform label B with code NS20 and parent NS20 identifies NOV_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "NOV_NSL_B",
+        "stationId": "NOV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS21_A",
+      "sourceRecordSha256": "ab5a88772d9849ed5c409fbc57f0f289e439b281fd9dce7d0790f4ae7c450a25",
+      "reason": "Explicit source platform label A with code NS21 and parent DT11 identifies NEW_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "NEW_NSL_A",
+        "stationId": "NEW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS21_B",
+      "sourceRecordSha256": "2955c50702891fe7b65ad995a8756790b9ce733c1904f1479fcaf392069f6c21",
+      "reason": "Explicit source platform label B with code NS21 and parent DT11 identifies NEW_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "NEW_NSL_B",
+        "stationId": "NEW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS22",
+      "sourceRecordSha256": "48a6ccb36712293947513f2fe1701aec5e8778814f25c46e4b3cd76c0361c29b",
+      "reason": "Source station code NS22 identifies canonical station ORC. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "ORC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS22_A",
+      "sourceRecordSha256": "630264cf820aab2aa385b6b16616afb4be08a91446c22554f90b2b20f74d796d",
+      "reason": "Explicit source platform label A with code NS22 and parent NS22 identifies ORC_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "ORC_NSL_A",
+        "stationId": "ORC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS22_B",
+      "sourceRecordSha256": "66f07ff9edd9c5118c7fa3fa251f0c611100843b9852611ca7fe1ae06290f91d",
+      "reason": "Explicit source platform label B with code NS22 and parent NS22 identifies ORC_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "ORC_NSL_B",
+        "stationId": "ORC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS23",
+      "sourceRecordSha256": "8b581de168452750aeeb3293788c0381b4f55cf88f72f2e965d958e718ac7288",
+      "reason": "Source station code NS23 identifies canonical station SOM. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SOM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS23_A",
+      "sourceRecordSha256": "fdf8024ff797913e12eb3d44127b68681e6f3d78ce58a706e5362047c66bdc3d",
+      "reason": "Explicit source platform label A with code NS23 and parent NS23 identifies SOM_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SOM_NSL_A",
+        "stationId": "SOM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS23_B",
+      "sourceRecordSha256": "28d8390a92af07a90e32a33cc7fd5b027cbc1337fc1b62b4a922b433b6087d52",
+      "reason": "Explicit source platform label B with code NS23 and parent NS23 identifies SOM_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SOM_NSL_B",
+        "stationId": "SOM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS24",
+      "sourceRecordSha256": "fa8ea7ba5116bc654891ef12c29d3481b96116d92c92e1076417afc283ea5059",
+      "reason": "Source station code NS24 identifies canonical station DBG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "DBG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS24_A",
+      "sourceRecordSha256": "fdfb7c229fa1da1fe25b0561bc8f2b719db76050438e0f490285c8bc330ea214",
+      "reason": "Explicit source platform label A with code NS24 and parent NS24 identifies DBG_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DBG_NSL_A",
+        "stationId": "DBG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS24_B",
+      "sourceRecordSha256": "4eda3cb2112e9c090eb7cc5d064f6cdac40232f8909eefe2fa60cd7f687afd0a",
+      "reason": "Explicit source platform label B with code NS24 and parent NS24 identifies DBG_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DBG_NSL_B",
+        "stationId": "DBG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS25_A",
+      "sourceRecordSha256": "d89a52cc11d17d42f82609089ed70857b3f5901d4fdb8392553990ec0848307e",
+      "reason": "Explicit source platform label A with code NS25 and parent EW13 identifies CTH_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CTH_NSL_A",
+        "stationId": "CTH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS25_B",
+      "sourceRecordSha256": "3f672d438a6fc48eb46224d021850b6aae59f5969b49618850a16b84f190a985",
+      "reason": "Explicit source platform label C with code NS25 and parent EW13 identifies CTH_NSL_C. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CTH_NSL_C",
+        "stationId": "CTH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS26_A",
+      "sourceRecordSha256": "c7a896f12039347acc190df2a0ab8f66c6f7a9106acf9b98dfc4adfb378190eb",
+      "reason": "Explicit source platform label B with code NS26 and parent EW14 identifies RFP_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RFP_NSL_B",
+        "stationId": "RFP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS26_B",
+      "sourceRecordSha256": "f9143c3396fb612f99d201d7353657ddb76e314b8765c07f95e7c9d2293b1aca",
+      "reason": "Explicit source platform label D with code NS26 and parent EW14 identifies RFP_NSL_D. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RFP_NSL_D",
+        "stationId": "RFP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS27_A",
+      "sourceRecordSha256": "1a46c175013efbd3c7e2b08ac128485b7c384dcbd91a5e191fabe18fee218d2b",
+      "reason": "Explicit source platform label A with code NS27 and parent CC33 identifies MRB_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MRB_NSL_A",
+        "stationId": "MRB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS27_B",
+      "sourceRecordSha256": "8a4b5f8ad634d7af4973c80c3eb5ba36aaaf0b79db9552eda21a10b7625d5da4",
+      "reason": "Explicit source platform label B with code NS27 and parent CC33 identifies MRB_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MRB_NSL_B",
+        "stationId": "MRB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS28",
+      "sourceRecordSha256": "82b41c0fe4f116bb0b99a73b3847d32074052c68f299552d7976682aa6c6148e",
+      "reason": "Source station code NS28 identifies canonical station MSP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MSP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS28_A",
+      "sourceRecordSha256": "a41f7c6b5e2ec92270412ed8178f08e9a24cd8455624970eadd3f3a95ee13ed3",
+      "reason": "Explicit source platform label A with code NS28 and parent NS28 identifies MSP_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MSP_NSL_A",
+        "stationId": "MSP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS28_B",
+      "sourceRecordSha256": "1568674819c82e03654263b2d2eacda729e8c2ec647afbc78546c37fab5256c3",
+      "reason": "Explicit source platform label B with code NS28 and parent NS28 identifies MSP_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MSP_NSL_B",
+        "stationId": "MSP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS2",
+      "sourceRecordSha256": "c05a5a24a5d3069d72b5701b7f5c9a9aad3d410bd11d2a0f5e705ae5a75f3d62",
+      "reason": "Source station code NS2 identifies canonical station BBT. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BBT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS2_A",
+      "sourceRecordSha256": "d0d390655a082a09dde65de9969739dfb668a91feabf369abd8e3624cd8ab6e9",
+      "reason": "Explicit source platform label A with code NS2 and parent NS2 identifies BBT_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BBT_NSL_A",
+        "stationId": "BBT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS2_B",
+      "sourceRecordSha256": "da3ec3d82f626e3ecab90fa060bf403765bb4df8333da04ef759a15f72653de0",
+      "reason": "Explicit source platform label B with code NS2 and parent NS2 identifies BBT_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BBT_NSL_B",
+        "stationId": "BBT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS3",
+      "sourceRecordSha256": "17664872996bd86c8d6a966d12c5afeb8cb88135ccc692683998a4c600fa2c85",
+      "reason": "Source station code NS3 identifies canonical station BGB. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BGB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS3_A",
+      "sourceRecordSha256": "9ac9f792e5f5245969df5047540ed7ba3e5b8976a938c596488658cfce5759bf",
+      "reason": "Explicit source platform label A with code NS3 and parent NS3 identifies BGB_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BGB_NSL_A",
+        "stationId": "BGB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS3_B",
+      "sourceRecordSha256": "24feefa6dedd241bce9a73402f5c54b492b2ccc5a58f052e241f3713b12adc90",
+      "reason": "Explicit source platform label B with code NS3 and parent NS3 identifies BGB_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BGB_NSL_B",
+        "stationId": "BGB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS4",
+      "sourceRecordSha256": "82dfecc69e267f8eb02a8cdde0603456befeeae3e83044cbd41079b8dba72c4e",
+      "reason": "Source station code NS4 identifies canonical station CCK. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CCK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS4_A",
+      "sourceRecordSha256": "97bf84d8f65b795f34964c5e102cdc9e7846d7f34dd1bfb06f0295f3bc5b63ee",
+      "reason": "Explicit source platform label A with code NS4 and parent NS4 identifies CCK_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CCK_NSL_A",
+        "stationId": "CCK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS4_B",
+      "sourceRecordSha256": "94c8fc77bb469e38f39fdebf78f12cb8d5b04a9c84b910ba877a0cdf662fe4de",
+      "reason": "Explicit source platform label B with code NS4 and parent NS4 identifies CCK_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CCK_NSL_B",
+        "stationId": "CCK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS5",
+      "sourceRecordSha256": "3d1d2efa861820793460dcf53a4ce8682919456858d343233696cd1895b38acd",
+      "reason": "Source station code NS5 identifies canonical station YWT. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "YWT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS5_A",
+      "sourceRecordSha256": "a0a74aec9dae645851e186e08a5dbdb6e1f740303ebce8859f653cc7511f0f92",
+      "reason": "Explicit source platform label A with code NS5 and parent NS5 identifies YWT_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "YWT_NSL_A",
+        "stationId": "YWT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS5_B",
+      "sourceRecordSha256": "fa6f6db628ba8125b0a41444a54face006bed543825de5ed2e16785b6afa4500",
+      "reason": "Explicit source platform label B with code NS5 and parent NS5 identifies YWT_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "YWT_NSL_B",
+        "stationId": "YWT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS7",
+      "sourceRecordSha256": "1e0ee94369b0ec99cd0457cc5e6938af90d5ae8b9679bdd1778831996b02b1ca",
+      "reason": "Source station code NS7 identifies canonical station KRJ. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KRJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS7_A",
+      "sourceRecordSha256": "f49ae027b040fc3bd0ab807d999947df62b0ae0eec9277586d43fff639ad728b",
+      "reason": "Explicit source platform label A with code NS7 and parent NS7 identifies KRJ_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KRJ_NSL_A",
+        "stationId": "KRJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS7_B",
+      "sourceRecordSha256": "7789e64221e92407f2dd5c82cd4adf78e33e0a8e255d9fd0c2a19bd7faccbed5",
+      "reason": "Explicit source platform label B with code NS7 and parent NS7 identifies KRJ_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KRJ_NSL_B",
+        "stationId": "KRJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS8",
+      "sourceRecordSha256": "940d369dfd4cbea6b81e9c056d959ea3b7e5910e741fa04d3ee9e0f203fc92ed",
+      "reason": "Source station code NS8 identifies canonical station MSL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MSL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS8_A",
+      "sourceRecordSha256": "4d4d350b667649d6e6ecb1f97e77b42022fb5851d817cc48b8ee65e8c3b38c11",
+      "reason": "Explicit source platform label A with code NS8 and parent NS8 identifies MSL_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MSL_NSL_A",
+        "stationId": "MSL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS8_B",
+      "sourceRecordSha256": "16d970162f1d537c412638382722ff58212fa3e0f5211f31d1ec7bb575409b17",
+      "reason": "Explicit source platform label B with code NS8 and parent NS8 identifies MSL_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MSL_NSL_B",
+        "stationId": "MSL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS9",
+      "sourceRecordSha256": "9a16c500d83a4deb73028a85ee0dd7abcbd157b30ac0cad386d94da066bc2d29",
+      "reason": "Source station code NS9 identifies canonical station WDL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "WDL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS9_A",
+      "sourceRecordSha256": "39aaf0ceacf611ce2e5ffec3e2ca1b363eeddf2a57a16b8177477b1303e7469e",
+      "reason": "Explicit source platform label A with code NS9 and parent NS9 identifies WDL_NSL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "WDL_NSL_A",
+        "stationId": "WDL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS9_B",
+      "sourceRecordSha256": "7cb5e1646e8ecce2bde00680ffbbf06bf0eba7325128999a45751869c3d0495b",
+      "reason": "Explicit source platform label B with code NS9 and parent NS9 identifies WDL_NSL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "WDL_NSL_B",
+        "stationId": "WDL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    }
+  ]
+}
