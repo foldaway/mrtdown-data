@@ -39,6 +39,8 @@ independently of the host timezone. It does not expand a year into date arrays,
 infer public holidays from identifiers, or choose the service day for a wall-clock
 query. The future consumer must consider the previous service day's after-midnight
 [stop-time offsets](gtfs-scheduled-stop-times.md) separately from the current day.
+The [service-day time helper](gtfs-service-day-instants.md) converts each chosen
+date/offset independently to an instant; it does not select calendar coverage.
 A valid calendar does not establish canonical allocation, reviewed semantics,
 snapshot lineage or publication eligibility. Existing reconciliation and review
 paths retain their current date logic and outputs.

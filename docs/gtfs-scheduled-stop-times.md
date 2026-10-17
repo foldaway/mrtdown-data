@@ -18,8 +18,10 @@ A record contains:
 
 For example, `24:10:00` is represented as 87,000 seconds. It retains its source
 service day; it is not reduced to a clock time or converted to a dated instant.
-Calendar, timezone and previous-service-day selection belong to the future
-consumer. The [compact service-calendar contract](gtfs-service-calendars.md)
+The [service-day time helper](gtfs-service-day-instants.md) converts a chosen
+service date and offset into a Singapore-based UTC instant. Calendar and
+previous-service-day selection remain the caller's responsibility. The
+[compact service-calendar contract](gtfs-service-calendars.md)
 provides date availability without selecting a wall-clock query's service day.
 
 The parser follows the [GTFS stop-time reference](https://gtfs.org/documentation/schedule/reference/#stop_timestxt):

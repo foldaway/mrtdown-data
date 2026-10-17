@@ -539,6 +539,16 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added Singapore service-day instant conversion as format
+  preparation. It preserves offsets beyond midnight using the GTFS noon-based
+  anchor and elapsed seconds, with explicit civil-date validation. Tests retain
+  previous-day trips independently of new-day calendar exceptions; 68,677
+  distinct October offsets round-trip in a read-only synthetic-anchor check.
+  See [service-day instants](../../gtfs-service-day-instants.md). Calendar and
+  artifact selection, Phase 2 review and generation/publication gates remain
+  unchanged.
+
+
 - 2026-10-17: Added compact service calendars and a civil-date lookup as
   arrivals-format preparation. Weekly bounds are inclusive; explicit date
   additions/removals take precedence, including outside the weekly range.
