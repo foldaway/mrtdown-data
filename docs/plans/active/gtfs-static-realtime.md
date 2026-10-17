@@ -539,6 +539,15 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added a shared scheduled-stop-time contract and a fixed-stop
+  parser as arrivals-format preparation. They retain textual source occurrence
+  identity, service-day offsets beyond midnight, pickup/drop-off codes and
+  exact/approximate precision, with missing approximate times kept explicit.
+  This does not start generation or complete Phase 2; remaining platform
+  corrections require direct review under the canonical provenance policy.
+  See [scheduled stop times](../../gtfs-scheduled-stop-times.md).
+
+
 - 2026-10-17: Added an opt-in deterministic blocker report for version-2 and
   version-3 drafts. It binds the exact draft/input identity and exposes unresolved
   dates, all candidate revisions, unmatched dependencies, literal group members
