@@ -2,11 +2,22 @@ import { resolve } from 'node:path';
 import {
   buildScheduleTopologyFingerprint,
   inspectGtfsCapture,
+  inspectGtfsDepartures,
   inspectGtfsDirectory,
 } from '@mrtdown/fs';
 import { readOption } from '../args.js';
 import type { CliIO, GlobalOptions } from '../types.js';
 import { writeTextFile } from './manifest.js';
+
+function readRepeatedOption(args: string[], name: string): string[] {
+  const values: string[] = [];
+  let value = readOption(args, name, { required: true });
+  while (value !== undefined) {
+    values.push(value);
+    value = readOption(args, name);
+  }
+  return values;
+}
 
 export async function runGtfs(
   args: string[],
@@ -40,12 +51,32 @@ export async function runGtfs(
         );
     report = result;
     if (result.schedule?.structuralErrors.length) exitCode = 1;
+  } else if (command === 'departures') {
+    const file = readOption(args, '--file', { required: true });
+    const capture = readOption(args, '--capture', { required: true });
+    const tripIds = readRepeatedOption(args, '--trip');
+    const serviceDates = readRepeatedOption(args, '--service-date');
+    const startInstant = readOption(args, '--from', { required: true });
+    const endInstant = readOption(args, '--to', { required: true });
+    if (args.length) {
+      throw new Error(`Unexpected GTFS arguments: ${args.join(' ')}`);
+    }
+    report = await inspectGtfsDepartures(
+      resolve(globals.cwd, file ?? ''),
+      resolve(globals.cwd, capture ?? ''),
+      {
+        tripIds,
+        serviceDates,
+        startInstant: startInstant ?? '',
+        endInstant: endInstant ?? '',
+      },
+    );
   } else if (command === 'topology') {
     if (args.length)
       throw new Error(`Unexpected GTFS arguments: ${args.join(' ')}`);
     report = await buildScheduleTopologyFingerprint(globals.dataDir);
   } else {
-    throw new Error('Expected gtfs inspect or gtfs topology');
+    throw new Error('Expected gtfs inspect, gtfs departures or gtfs topology');
   }
   const json = `${JSON.stringify(report, null, 2)}\n`;
   if (output) await writeTextFile(resolve(globals.cwd, output), json);

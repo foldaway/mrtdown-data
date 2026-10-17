@@ -20,6 +20,13 @@ node packages/cli/dist/index.js gtfs inspect \
   --manifest docs/gtfs-historical-schedule-manifest.json \
   --write /tmp/historical-schedule-report.json
 node packages/cli/dist/index.js --data-dir data gtfs topology
+node packages/cli/dist/index.js gtfs departures \
+  --file /absolute/path/gtfs_schedule.zip \
+  --capture /absolute/path/capture.json \
+  --trip provider-trip-id \
+  --service-date 2026-01-01 --service-date 2026-01-02 \
+  --from 2026-01-02T00:00:00+08:00 --to 2026-01-02T02:00:00+08:00 \
+  --write /tmp/departures-report.json
 ```
 
 Download an original object and its matching successful capture record from private object storage
@@ -71,6 +78,34 @@ The topology fingerprint hashes projection v1 from the GTFS plan. It includes
 identity, effective station codes, platforms and ordered service revisions,
 excluding editorial/geographic changes. It is separate from a canonical commit
 and full-record manifest; future reviewed mappings must record all three.
+
+## Departure lookup
+
+`gtfs departures` inspects selected provider trips in a verified schedule ZIP.
+Repeat `--trip` and `--service-date` for multiple trips and dates; each trip is
+checked against its calendar on every selected date. Values are literal IDs, so
+commas in a trip ID are preserved. Choose earlier service dates explicitly when
+checking trains that run past midnight. Window timestamps require UTC or an
+explicit offset; the start is included and the end excluded.
+
+The JSON report includes capture metadata, table hashes, the query and ordered
+source departures. It preserves repeated visits, exact decimal stop sequences,
+boarding restrictions and exact/approximate timing. Missing departure times stay
+absent. Results follow the [departure-window rules](gtfs-scheduled-departure-windows.md).
+Trip/date argument ordering does not change the report, and duplicate selections
+fail. Unknown trips fail rather than returning a misleading empty result.
+
+The full source schedule must pass the timing assembler before querying. Agency
+timezones must be `Asia/Singapore`; selected trips described by `frequencies.txt`
+are rejected because this lookup does not expand frequency-based schedules.
+`@mrtdown/fs` exposes the same operation as
+`inspectGtfsDepartures(file, captureFile, query)` for local tools.
+
+This is source evidence for inspection, with `generationEligible: false`.
+It does not assign canonical stations/platforms, prove mapping coverage or clear
+publication review. A successful query with no departures only describes the
+selected trips, dates and window. Failed queries leave an existing output report
+untouched. Keep generated reports outside canonical `data/` and Git.
 
 ## Current implementation boundary
 
