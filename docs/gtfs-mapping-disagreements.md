@@ -7,6 +7,11 @@ and the canonical topology identified in the
 not approved mapping decisions. No canonical correction or source repair is
 justified solely by a disagreement between these two inputs.
 
+The [consolidated review inventory](gtfs-mapping-review-inventory.md) now accounts
+for all nine observed line families and records remaining source/platform/date
+decisions. Its nine unresolved platform records include Ang Mo Kio's incomplete
+literal groups, in addition to seven ambiguous sets of existing alternatives.
+
 ## Circle Line date boundary
 
 [LTA's Circle Line 6 project page](https://www.lta.gov.sg/content/ltagov/en/upcoming_projects/rail_expansion/circle_line_6.html)

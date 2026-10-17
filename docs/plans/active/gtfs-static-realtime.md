@@ -539,6 +539,18 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added the remaining NSL, SKLRT and BPLRT review packets and the
+  [complete line inventory](../../gtfs-mapping-review-inventory.md). NSL proposes
+  four patterns; SKLRT proposes six West patterns; BPLRT has entity identities
+  only, with all six patterns unresolved. All nine source line families now have
+  concrete packets. Together they propose 930 matched decisions and retain 225
+  unresolved decisions over 1,124 source entries/1,155 date/entity cells.
+  Nine physical source stops remain unresolved, including Ang Mo Kio groups
+  whose C/D members are absent from canonical layout. The matrix separates
+  173 whole-calendar proposals, 31 partial CCL proposals and 184 wholly
+  unresolved patterns. Inventory accounting is complete; Phase 2 mapping review,
+  source/calendar/lineage acceptance and generation gates remain open.
+
 - 2026-10-17: Added exact-date CCL mapping proposals: 178 matches cover 47
   routes, 33 station parents, 66 platform stops and 31 pattern/date cells
   (1,098 recurring trip records; 1,656 pattern-date pairs). All matched dates

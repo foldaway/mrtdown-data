@@ -1,11 +1,12 @@
 # Scoped GTFS mapping draft and review contract
 
 The version-2 draft turns verified reconciliation candidates into concrete,
-reviewable mapping proposals. The checked-in pilots cover NEL, DTL, PGLRT,
-supported TEL/EWL patterns and selected CCL pattern/date cells. Internal gaps
-remain explicit in the review.
-Neither the pilots nor the full generated draft is approved or eligible for
-generation. Proposal and review schemas version 1 remain unchanged.
+reviewable mapping proposals. The checked-in packets now cover all nine observed
+line families, with unresolved cells and entity-only proposals retained explicitly.
+The [consolidated inventory](gtfs-mapping-review-inventory.md) records current
+coverage and remaining blockers. Neither the pilots nor the full generated draft
+is approved or eligible for generation. Proposal and review schemas version 1
+remain unchanged.
 
 ## Reproduce the NEL pilot
 
@@ -354,3 +355,28 @@ All five cumulative files reproduce byte for byte with
 Full readiness remains `unresolved`, focused readiness remains `incomplete`,
 and neither mapping review nor generation is enabled. Source/calendar correctness
 and reviewed lineage remain separate open conditions.
+
+## Remaining NSL/LRT packets and complete line inventory
+
+The [NSL](gtfs-nsl-pilot-mappings.md), [SKLRT](gtfs-sklrt-pilot-mappings.md) and
+[BPLRT](gtfs-bplrt-pilot-mappings.md) packets cover the remaining source line
+families. NSL proposes four patterns (18 trip records; 417 pattern-date pairs),
+retaining grouped/incomplete platform labels, terminal conflicts and three
+unmatched source paths. SKLRT proposes six West patterns (1,618 records; 730
+pairs), retaining all six East patterns as unresolved. BPLRT proposes 41 entity
+identities with zero matched patterns or departure coverage.
+
+Selecting all nine line IDs yields 930 matched decisions: two agencies, all 113
+routes, all 186 station parents, 425 physical stops and 204 pattern/date cells.
+There are 225 unresolved decisions: one unused agency, nine physical stops and
+215 pattern/date cells. Thirty-one CCL patterns occur in both categories on
+different exact dates. The full draft still has 1,155 decisions over 1,124 source
+entries; the matched-only subset omits 194 source entries entirely and 25,408
+pattern dates. Both remain ineligible for mapping review and generation.
+
+See the [complete matrix, next decisions and reproduction command](gtfs-mapping-review-inventory.md)
+for the cumulative digests and distinction between complete accounting and
+matched coverage. All nine standalone packets compose without conflicting
+decisions, and the cumulative output is byte-identical under line reordering
+and repetition. No automatic ignore, exclusion, source repair or canonical
+change is supplied.

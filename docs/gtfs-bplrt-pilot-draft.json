@@ -1,0 +1,505 @@
+{
+  "schemaVersion": 2,
+  "documentKind": "gtfs-scoped-mapping-draft",
+  "identity": {
+    "sourceManifest": {
+      "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+      "calendar.txt": "bddb06a1aebe70f984f1dd3576c80ae1a72a76f58b4cd68a6af245368a72a605",
+      "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+      "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+      "routes.txt": "d81b7bb5ce975ca9ca1120dd730db79d70f908cf560533c295fcea67133bb77c",
+      "stop_times.txt": "b6d5289d1b2300531fc627fe1bd6c9b7507a1e57c9ff69358cb7a9ee93991395",
+      "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+      "trips.txt": "f72aaf61d79c25260966bfcc793802b2f8971f6c9ce5edb925b907a34b1df36f"
+    },
+    "canonicalCommit": "d034d6babef4ea5bcac256d26c47dcd802bb39ba",
+    "topology": {
+      "projectionVersion": 1,
+      "sha256": "e376c280fbd6292ed6fe03e7fa81541ad0b0b8c76a09f916f1e3898aac240ec1"
+    }
+  },
+  "preparedBy": "MRTDown deterministic scoped-review proposal tool",
+  "pilotLineIds": [
+    "BPLRT"
+  ],
+  "dateSets": [],
+  "decisions": [
+    {
+      "providerId": "SMRT",
+      "sourceRecordSha256": "b0ce46c8e2e5dfd65335d0177ef33221e949aa32d9d18fe2ea843024ee0cdb63",
+      "reason": "Provider agency SMRT has the explicit canonical alias SMRT_TRAINS; selected pilot routes reference it. Proposal pending repository review.",
+      "target": {
+        "kind": "operator",
+        "id": "SMRT_TRAINS"
+      },
+      "kind": "agency",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP",
+      "sourceRecordSha256": "389a105941570057d33b4e205dddbae01001c0944931600ec0e64219264640f5",
+      "reason": "Provider route BP has the explicit canonical line family BPLRT. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "BPLRT"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP10",
+      "sourceRecordSha256": "d25b776afab0c1b7ec16bf32326bef643992f43ea06d2dbaa8a894381bc8c3ca",
+      "reason": "Source station code BP10 identifies canonical station FJR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "FJR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP10_A",
+      "sourceRecordSha256": "f22e8ba9aebc0e1345dfc07e7611985bfe2287a536d43e020c7bc43397de8ab0",
+      "reason": "Explicit source platform label 1 with code BP10 and parent BP10 identifies FJR_BPLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "FJR_BPLRT_1",
+        "stationId": "FJR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP10_B",
+      "sourceRecordSha256": "ea12892df3fc8458999e79ebcc530c37c2ebc987c51b0961528e82a79592b37b",
+      "reason": "Explicit source platform label 2 with code BP10 and parent BP10 identifies FJR_BPLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "FJR_BPLRT_2",
+        "stationId": "FJR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP11",
+      "sourceRecordSha256": "5921165a4ccbfea5aa355f6a88daa5086cdc4d50d8ad7ef4eb4f439236fe59de",
+      "reason": "Source station code BP11 identifies canonical station SGR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SGR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP11_A",
+      "sourceRecordSha256": "f43387c14df765cf677bfbe11cff156ac81b36387ba9f4f5ce400125758292ea",
+      "reason": "Explicit source platform label 1 with code BP11 and parent BP11 identifies SGR_BPLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SGR_BPLRT_1",
+        "stationId": "SGR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP11_B",
+      "sourceRecordSha256": "17d6df4d47d187224ca751f3e9d7148a1beebf1ee4f9813b764ea4a9ed76cbaa",
+      "reason": "Explicit source platform label 2 with code BP11 and parent BP11 identifies SGR_BPLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SGR_BPLRT_2",
+        "stationId": "SGR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP12",
+      "sourceRecordSha256": "7ec2b21ecbab41af8abfbe210e0d0e942c12067cdbb777e865b5db4a0e104249",
+      "reason": "Source station code BP12 identifies canonical station JLP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "JLP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP12_A",
+      "sourceRecordSha256": "cee700fe7687d8b3aeb5a0bc4ad582f9e6bb669c97300c27856d082132626ae6",
+      "reason": "Explicit source platform label 1 with code BP12 and parent BP12 identifies JLP_BPLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "JLP_BPLRT_1",
+        "stationId": "JLP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP12_B",
+      "sourceRecordSha256": "8f516e3e23ae5b8bccc34a5368d60bb90e81064ed3db27a3a4dc30e578f90a76",
+      "reason": "Explicit source platform label 2 with code BP12 and parent BP12 identifies JLP_BPLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "JLP_BPLRT_2",
+        "stationId": "JLP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP13",
+      "sourceRecordSha256": "0f355c77e57a330decac2555d117d2fc520a50fb9ea973884b3a83b934319983",
+      "reason": "Source station code BP13 identifies canonical station SNJ. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SNJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP13_A",
+      "sourceRecordSha256": "de7432d544ff7f727cf853654c9167c825360c9274a2b4864b46cf82ae4d29d6",
+      "reason": "Explicit source platform label 1 with code BP13 and parent BP13 identifies SNJ_BPLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SNJ_BPLRT_1",
+        "stationId": "SNJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP13_B",
+      "sourceRecordSha256": "c04ef6c58a9e4dbee87719b9df3559a0a626c09908b73548a2cb187bedc08334",
+      "reason": "Explicit source platform label 2 with code BP13 and parent BP13 identifies SNJ_BPLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SNJ_BPLRT_2",
+        "stationId": "SNJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP1",
+      "sourceRecordSha256": "ffb574f3766bb16797597bdf932178804da1914857322169b1ccf13c7c58a38f",
+      "reason": "Source station code BP1 identifies canonical station CCK. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CCK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP1_A",
+      "sourceRecordSha256": "3debd96851ee4df2e7dc64f4cb596a189710ebfe80683659fa3eecd6849adbb4",
+      "reason": "Explicit source platform label 1 with code BP1 and parent BP1 identifies CCK_BPLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CCK_BPLRT_1",
+        "stationId": "CCK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP1_B",
+      "sourceRecordSha256": "c78613a94ad00fb6ef29f02e61b92cf39446228200d8b04583ff98058aeb1db2",
+      "reason": "Explicit source platform label 2 with code BP1 and parent BP1 identifies CCK_BPLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CCK_BPLRT_2",
+        "stationId": "CCK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP2",
+      "sourceRecordSha256": "ee84756801e7a82b17d3484b056b94767745e389c45f1a0797bc9b4a73b86e41",
+      "reason": "Source station code BP2 identifies canonical station SHV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SHV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP2_A",
+      "sourceRecordSha256": "ec2f253299fd92c8d64099da60fb41a3fe55269ed5c3a18cdb7c386f15f1f8ed",
+      "reason": "Explicit source platform label 1 with code BP2 and parent BP2 identifies SHV_BPLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SHV_BPLRT_1",
+        "stationId": "SHV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP2_B",
+      "sourceRecordSha256": "2ed91b5c99936d95592b3bc18e952688df0146fddae3d3fcdec2994b5db542f9",
+      "reason": "Explicit source platform label 2 with code BP2 and parent BP2 identifies SHV_BPLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SHV_BPLRT_2",
+        "stationId": "SHV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP3",
+      "sourceRecordSha256": "3aa847320784a7cc19f61c6a71f2893f4661ef26828743e8f434b343cb68abfb",
+      "reason": "Source station code BP3 identifies canonical station KTH. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KTH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP3_A",
+      "sourceRecordSha256": "b16d7966b9e5c7c78d70f70120f2109fdd7f8f5629d170b7d8d11a6ae3db3fea",
+      "reason": "Explicit source platform label 1 with code BP3 and parent BP3 identifies KTH_BPLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KTH_BPLRT_1",
+        "stationId": "KTH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP3_B",
+      "sourceRecordSha256": "cb16fcf4ee9460f572d1b2e64952bdd0287c5e7adb934a51d95f422e159174df",
+      "reason": "Explicit source platform label 2 with code BP3 and parent BP3 identifies KTH_BPLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KTH_BPLRT_2",
+        "stationId": "KTH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP4",
+      "sourceRecordSha256": "6adb5229346d105aa404820ed756024da047c3e8775178ad1fb86c345af26d39",
+      "reason": "Source station code BP4 identifies canonical station TKW. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TKW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP4_A",
+      "sourceRecordSha256": "2ddd9ac0171f38ee23be8194a9ad0f208b14a6181c1c911d3b48d45ea5bdc80c",
+      "reason": "Explicit source platform label 1 with code BP4 and parent BP4 identifies TKW_BPLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TKW_BPLRT_1",
+        "stationId": "TKW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP4_B",
+      "sourceRecordSha256": "aef78dfd2ed87c414617e9447070752d2d9727a4babf920b78fb8079cf22a569",
+      "reason": "Explicit source platform label 2 with code BP4 and parent BP4 identifies TKW_BPLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TKW_BPLRT_2",
+        "stationId": "TKW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP5",
+      "sourceRecordSha256": "856d656a878b269362ad925b424e4adf90ae70755113d42fac34fb24c034dc83",
+      "reason": "Source station code BP5 identifies canonical station PNX. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PNX"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP5_A",
+      "sourceRecordSha256": "4d6c7b298b77ebe76868d718fe0b374d03ba7b6a6438aa74f5da939681e9de0d",
+      "reason": "Explicit source platform label 1 with code BP5 and parent BP5 identifies PNX_BPLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PNX_BPLRT_1",
+        "stationId": "PNX"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP5_B",
+      "sourceRecordSha256": "f3c5f1e4bdfef9289690dfc67171e9b30a628dbff3868d448b5da6a9f8fe9dcb",
+      "reason": "Explicit source platform label 2 with code BP5 and parent BP5 identifies PNX_BPLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PNX_BPLRT_2",
+        "stationId": "PNX"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP6",
+      "sourceRecordSha256": "a6733fc40d9eb1ad9610a1fbbb11635a46c429411f7aa91001102c146a6568a1",
+      "reason": "Source station code BP6 identifies canonical station BKP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BKP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP6_A",
+      "sourceRecordSha256": "a269ce44f713d7a58e1f48551daa8b036c7a7fd2b3cae8089401413a0204077d",
+      "reason": "Explicit source platform label 1 with code BP6 and parent BP6 identifies BKP_BPLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BKP_BPLRT_1",
+        "stationId": "BKP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP6_B",
+      "sourceRecordSha256": "b6ae02479932de30813fa66b5c9a8505a102a02f08fd662c9a110027bd78f1e4",
+      "reason": "Explicit source platform label 2 with code BP6 and parent BP6 identifies BKP_BPLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BKP_BPLRT_2",
+        "stationId": "BKP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP7",
+      "sourceRecordSha256": "effb046e21ee3258617053f36c2da23f9affed96d34cf0878a60b274169a7ee9",
+      "reason": "Source station code BP7 identifies canonical station PTR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PTR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP7_A",
+      "sourceRecordSha256": "c8d543f52970a83a58a0dff9f9a58c6391722cee1308db6507a4b2b1ce5b818f",
+      "reason": "Explicit source platform label 1 with code BP7 and parent BP7 identifies PTR_BPLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PTR_BPLRT_1",
+        "stationId": "PTR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP7_B",
+      "sourceRecordSha256": "1bca7d338b872dba6da500ebe3397fe9594e1170ae224f1ec2ee1b46ef140fdb",
+      "reason": "Explicit source platform label 2 with code BP7 and parent BP7 identifies PTR_BPLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PTR_BPLRT_2",
+        "stationId": "PTR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP8",
+      "sourceRecordSha256": "d6803edf7707155e14946a013390a4650b436620624568eb66f1a4032653300c",
+      "reason": "Source station code BP8 identifies canonical station PND. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PND"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP8_A",
+      "sourceRecordSha256": "bcc651be9bb144e0735b45bc72aba561839a2fc90a0d91ac593a13dd9088a1a8",
+      "reason": "Explicit source platform label 1 with code BP8 and parent BP8 identifies PND_BPLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PND_BPLRT_1",
+        "stationId": "PND"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP8_B",
+      "sourceRecordSha256": "78d52d09d0ba70b2db81da24e3d8fb3ac085d191a049fafe62e6c508906a8603",
+      "reason": "Explicit source platform label 2 with code BP8 and parent BP8 identifies PND_BPLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PND_BPLRT_2",
+        "stationId": "PND"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP9",
+      "sourceRecordSha256": "f73b6d4d5a5a0a0745f35876f96f63eb8c1ce0411d065a6ecc6423981244741a",
+      "reason": "Source station code BP9 identifies canonical station BKT. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BKT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP9_A",
+      "sourceRecordSha256": "c319cda75c1201d15cb21500899b0acd61ce859359b5799e48d464e5c07f4596",
+      "reason": "Explicit source platform label 1 with code BP9 and parent BP9 identifies BKT_BPLRT_1. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BKT_BPLRT_1",
+        "stationId": "BKT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "BP9_B",
+      "sourceRecordSha256": "992bd9d58c26b408a0ea86cfed5184fa83ed88fccdf002c52a2ac4b4775aad4b",
+      "reason": "Explicit source platform label 2 with code BP9 and parent BP9 identifies BKT_BPLRT_2. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BKT_BPLRT_2",
+        "stationId": "BKT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    }
+  ]
+}
