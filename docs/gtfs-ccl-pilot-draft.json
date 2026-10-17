@@ -1,0 +1,2334 @@
+{
+  "schemaVersion": 2,
+  "documentKind": "gtfs-scoped-mapping-draft",
+  "identity": {
+    "sourceManifest": {
+      "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+      "calendar.txt": "bddb06a1aebe70f984f1dd3576c80ae1a72a76f58b4cd68a6af245368a72a605",
+      "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+      "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+      "routes.txt": "d81b7bb5ce975ca9ca1120dd730db79d70f908cf560533c295fcea67133bb77c",
+      "stop_times.txt": "b6d5289d1b2300531fc627fe1bd6c9b7507a1e57c9ff69358cb7a9ee93991395",
+      "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+      "trips.txt": "f72aaf61d79c25260966bfcc793802b2f8971f6c9ce5edb925b907a34b1df36f"
+    },
+    "canonicalCommit": "d034d6babef4ea5bcac256d26c47dcd802bb39ba",
+    "topology": {
+      "projectionVersion": 1,
+      "sha256": "e376c280fbd6292ed6fe03e7fa81541ad0b0b8c76a09f916f1e3898aac240ec1"
+    }
+  },
+  "preparedBy": "MRTDown deterministic scoped-review proposal tool",
+  "pilotLineIds": [
+    "CCL"
+  ],
+  "dateSets": [
+    {
+      "id": "4cfffeb6c4c1cca842b497db769d826afe64fe8ce7831f28ff72c78f75062a45",
+      "serviceDates": [
+        "2026-07-12",
+        "2026-07-19",
+        "2026-07-26",
+        "2026-08-02",
+        "2026-08-09",
+        "2026-08-16",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-09-06",
+        "2026-09-13",
+        "2026-09-20",
+        "2026-09-27",
+        "2026-10-04",
+        "2026-10-11",
+        "2026-10-18",
+        "2026-10-25",
+        "2026-11-01",
+        "2026-11-08",
+        "2026-11-15",
+        "2026-11-22",
+        "2026-11-29",
+        "2026-12-06",
+        "2026-12-13",
+        "2026-12-20",
+        "2026-12-27"
+      ]
+    },
+    {
+      "id": "50b346a62d2864e73b1538f360a6df7fd4ed048473d50f9b89f24c4c9df25b51",
+      "serviceDates": [
+        "2026-07-13",
+        "2026-07-14",
+        "2026-07-15",
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-20",
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29",
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-03",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25",
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-30",
+        "2026-12-01",
+        "2026-12-02",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-07",
+        "2026-12-08",
+        "2026-12-09",
+        "2026-12-10",
+        "2026-12-11",
+        "2026-12-14",
+        "2026-12-15",
+        "2026-12-16",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-21",
+        "2026-12-22",
+        "2026-12-23",
+        "2026-12-24",
+        "2026-12-25",
+        "2026-12-28",
+        "2026-12-29",
+        "2026-12-30",
+        "2026-12-31"
+      ]
+    },
+    {
+      "id": "b7c66debcc945c82b9c42270e3db274c52c62ffd114e4123fee52c186861922b",
+      "serviceDates": [
+        "2026-07-18",
+        "2026-07-25",
+        "2026-08-01",
+        "2026-08-08",
+        "2026-08-15",
+        "2026-08-22",
+        "2026-08-29",
+        "2026-09-05",
+        "2026-09-12",
+        "2026-09-19",
+        "2026-09-26",
+        "2026-10-03",
+        "2026-10-10",
+        "2026-10-17",
+        "2026-10-24",
+        "2026-10-31",
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28",
+        "2026-12-05",
+        "2026-12-12",
+        "2026-12-19",
+        "2026-12-26"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "providerId": "SMRT",
+      "sourceRecordSha256": "b0ce46c8e2e5dfd65335d0177ef33221e949aa32d9d18fe2ea843024ee0cdb63",
+      "reason": "Provider agency SMRT has the explicit canonical alias SMRT_TRAINS; selected pilot routes reference it. Proposal pending repository review.",
+      "target": {
+        "kind": "operator",
+        "id": "SMRT_TRAINS"
+      },
+      "kind": "agency",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "059504478c96f776e43661f41a0c4f7c055c78fefdf22b3715fed85829dd5ec9",
+      "sourceRecordSha256": "05e654389e210a209dbfcc75ccb2c0030af949769584beb21badfdbc9be8c2bd",
+      "reason": "Ordered source path CC1_B to CC6_A (6 occurrences) is a contiguousSegment match of CCL_BRANCH_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "50b346a62d2864e73b1538f360a6df7fd4ed048473d50f9b89f24c4c9df25b51",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "0693a44c735464fa59fe244e403c17afed076d9358a641c797de750c3db57ad4",
+      "sourceRecordSha256": "7459d136947b5b484360d055ab0e2ad58e68075d07d547dc9462ff2f815afc85",
+      "reason": "Ordered source path CC1_B to CC7_A (7 occurrences) is a contiguousSegment match of CCL_BRANCH_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "b7c66debcc945c82b9c42270e3db274c52c62ffd114e4123fee52c186861922b",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "104400a56defa398c840490efb51f3c528ed66f4d841ca1ab1f21b61da2570dd",
+      "sourceRecordSha256": "bd8c7f2ac49ff86e108ad1132aacaf6f25ab124cff2d81a5e387295b45f0e41e",
+      "reason": "Ordered source path CC32_A to CC4_A (4 occurrences) is a contiguousSegment match of CCL_LOOP_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "b7c66debcc945c82b9c42270e3db274c52c62ffd114e4123fee52c186861922b",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "11fd8411e2c0710d5947d0a05bf5de242f1eb1497c5556b28a348cfa5d9128e6",
+      "sourceRecordSha256": "a7f5b226a051e3148f8477c5935206cf6ccb362c897f38e52511dcac324ce167",
+      "reason": "Ordered source path CC33_B to CC12_B (21 occurrences) is a cyclicSegment match of CCL_LOOP_CW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CW",
+        "revisionId": "r_2026_stage_6",
+        "match": "cyclicSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "b7c66debcc945c82b9c42270e3db274c52c62ffd114e4123fee52c186861922b",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "1671eed8d3e49a5fcbf8e7ef223064602884841f5219e6127a09a7ed87ca4d76",
+      "sourceRecordSha256": "52130ac43420f9b013711f58829707c86ec75b9fb8ff54e3f2ffb9edf51a6565",
+      "reason": "Ordered source path CC1_B to CC6_A (6 occurrences) is a contiguousSegment match of CCL_BRANCH_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "4cfffeb6c4c1cca842b497db769d826afe64fe8ce7831f28ff72c78f75062a45",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "1d9431840c4c8ebc04f3adb4b904af77992bef4f16a360cc338e0071079a7c0f",
+      "sourceRecordSha256": "9a0f15dfe89b195b42cb1302d04a055265b99a3dfd59e24f1c0edfce17bfef5e",
+      "reason": "Ordered source path CC12_A to CC4_A (23 occurrences) is a cyclicSegment match of CCL_LOOP_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "cyclicSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "50b346a62d2864e73b1538f360a6df7fd4ed048473d50f9b89f24c4c9df25b51",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "1df9c0dc7844902a42aa6307e9bdc4e1465a4c3ea1f874d938c8491d38652b8b",
+      "sourceRecordSha256": "bf85263801e29d64be249d37cd3a422743ee46d6b29576a0736dd92a71680498",
+      "reason": "Ordered source path CC6_B to CC1_B (6 occurrences) is a contiguousSegment match of CCL_BRANCH_CW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "50b346a62d2864e73b1538f360a6df7fd4ed048473d50f9b89f24c4c9df25b51",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "24f136d68a3e33024175dc0bcaad4bb54acbb57c712a1401cdc2dbb8ec918deb",
+      "sourceRecordSha256": "e786d1b8ee19f7b027d96d6922aea725af0fe62a209151c487e1fad628294fe0",
+      "reason": "Ordered source path CC12_A to CC4_A (23 occurrences) is a cyclicSegment match of CCL_LOOP_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "cyclicSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "b7c66debcc945c82b9c42270e3db274c52c62ffd114e4123fee52c186861922b",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "2d6be246197431b6833cc3c83f7b415d4733ff0c09412cdb49f6d183a9d12049",
+      "sourceRecordSha256": "39f61c7cb9aaf3d1cbfab120f6b0d0fd51f414680ecf3ed17dc14e4ce5f6bf5e",
+      "reason": "Ordered source path CC31_A to CC4_A (5 occurrences) is a contiguousSegment match of CCL_LOOP_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "b7c66debcc945c82b9c42270e3db274c52c62ffd114e4123fee52c186861922b",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "3775f154021cd55d048f35274d6d3b81719adcf9bb6afbad435523599788f802",
+      "sourceRecordSha256": "317580f832a6277aceecaf158bcfad3154e55e5cc71157af5d0246eb8b14eeb0",
+      "reason": "Ordered source path CC33_B to CC12_B (21 occurrences) is a cyclicSegment match of CCL_LOOP_CW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CW",
+        "revisionId": "r_2026_stage_6",
+        "match": "cyclicSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "50b346a62d2864e73b1538f360a6df7fd4ed048473d50f9b89f24c4c9df25b51",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "379d153140ab157fba76f84dd094ca272b0d026f480036989fc25ff6abf0a432",
+      "sourceRecordSha256": "ca0420673dfb714c5e927e67bf77797f5884bb4540322384e77414b06a1f6d41",
+      "reason": "Ordered source path CC1_A to CC6_A (6 occurrences) is a contiguousSegment match of CCL_BRANCH_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "b7c66debcc945c82b9c42270e3db274c52c62ffd114e4123fee52c186861922b",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "396507cc620357115aab7664cd5eb428963ab77434ca458102ee7f39dd14a531",
+      "sourceRecordSha256": "8c0ee6c2ea9290d36e032b9eb83d0115c4c8590d1c75730dc33c709fa8376569",
+      "reason": "Ordered source path CC6_B to CC1_B (6 occurrences) is a contiguousSegment match of CCL_BRANCH_CW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "4cfffeb6c4c1cca842b497db769d826afe64fe8ce7831f28ff72c78f75062a45",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "4237cfb77799afa63cbb14de93a1227937f3fbedf52816e7c036cae8cb7e2a7e",
+      "sourceRecordSha256": "ab02b25506561836907e7d99dd210f1ca3eb9d95d05af5455b702fb651cbbb6a",
+      "reason": "Ordered source path CC6_B to CC1_A (6 occurrences) is a contiguousSegment match of CCL_BRANCH_CW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "4cfffeb6c4c1cca842b497db769d826afe64fe8ce7831f28ff72c78f75062a45",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "488ecc74c7d56f4ee07ffb4625b522e276f351ccc6c7d979376a24393c92bed3",
+      "sourceRecordSha256": "ffeb30c3f086a7c9e67a2cd8235e6456bc02208681d0bc5905b0b5c94ca47094",
+      "reason": "Ordered source path CC1_A to CC6_A (6 occurrences) is a contiguousSegment match of CCL_BRANCH_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "4cfffeb6c4c1cca842b497db769d826afe64fe8ce7831f28ff72c78f75062a45",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "56001cfe949f82c4a5bd60cbeb9be30480c35f4e007c78d182dae08637664ddf",
+      "sourceRecordSha256": "6a03c62b3fa985acd81c18bdc8f822c2658b0ae9e5dfb52840a597082619a910",
+      "reason": "Ordered source path CC24_A to CC4_A (12 occurrences) is a cyclicSegment match of CCL_LOOP_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "cyclicSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "b7c66debcc945c82b9c42270e3db274c52c62ffd114e4123fee52c186861922b",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "56cc321408e2a6988334dc8216478521ac95bd3ccb4b5651aea81def2a862281",
+      "sourceRecordSha256": "312712b2d4b8962939a0f65b524167dbf9f115a1b7fc6699552e0456aeb99638",
+      "reason": "Ordered source path CC6_B to CC1_B (6 occurrences) is a contiguousSegment match of CCL_BRANCH_CW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "b7c66debcc945c82b9c42270e3db274c52c62ffd114e4123fee52c186861922b",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "5b8e313f62cdff7ab773e1cce53b950efab239b6dc523a59534b638ca610dca3",
+      "sourceRecordSha256": "bcd9c00a45136d27951410732b5a45afa15d44becb2bf973f1dd30d6707c5421",
+      "reason": "Ordered source path CC6_B to CC1_A (6 occurrences) is a contiguousSegment match of CCL_BRANCH_CW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "50b346a62d2864e73b1538f360a6df7fd4ed048473d50f9b89f24c4c9df25b51",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "66ec6331bc9ad40097d45762352fbc544d4932cec8e281d6e4261e84765a0352",
+      "sourceRecordSha256": "aac5da56f46f4eff9375bf2edcb7e060964d54bf6e2f50d0d0c3ea040b110be5",
+      "reason": "Ordered source path CC12_A to CC4_A (23 occurrences) is a cyclicSegment match of CCL_LOOP_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "cyclicSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "4cfffeb6c4c1cca842b497db769d826afe64fe8ce7831f28ff72c78f75062a45",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "9582d1289a9d3c2e05d1a7f78ec85bbf0a08f1db22ac66a986ca31052b355d72",
+      "sourceRecordSha256": "8198b037c9f2588b31fadcc6c49287a7f8c6cc8a58e3fdcd6578d92980a138c6",
+      "reason": "Ordered source path CC33_B to CC32_B (2 occurrences) is a contiguousSegment match of CCL_LOOP_CW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "4cfffeb6c4c1cca842b497db769d826afe64fe8ce7831f28ff72c78f75062a45",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "aac45d88f5a432c6810d00842279f0402d5b0bf0bbc8ab99b1f8ec89b3cd22a1",
+      "sourceRecordSha256": "d18df8826458c97f2a1ce60ac118e67dfa952f8d459ebeb7b76ad6e285d00892",
+      "reason": "Ordered source path CC1_B to CC6_A (6 occurrences) is a contiguousSegment match of CCL_BRANCH_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "b7c66debcc945c82b9c42270e3db274c52c62ffd114e4123fee52c186861922b",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b0643acabded18c841a467670f4e5d954831afed9e16111f9976f94725491cf8",
+      "sourceRecordSha256": "13c35d040072cb09abb80017fb800af2d30ff0f668c5e29dcf3cbb93868d8be8",
+      "reason": "Ordered source path CC24_A to CC4_A (12 occurrences) is a cyclicSegment match of CCL_LOOP_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "cyclicSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "4cfffeb6c4c1cca842b497db769d826afe64fe8ce7831f28ff72c78f75062a45",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b14cad8b017256bff4c58497184367e3600750e7737e78c6405b71f48d9ac5f0",
+      "sourceRecordSha256": "e548c6e6aac681fbdb9c1ca58e8662a42512b98900afba9a370c9df2da6c5a4a",
+      "reason": "Ordered source path CC32_A to CC4_A (4 occurrences) is a contiguousSegment match of CCL_LOOP_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "50b346a62d2864e73b1538f360a6df7fd4ed048473d50f9b89f24c4c9df25b51",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b18c3cc22a1d9d533dfe24348864180eb3b597e72636592e81247f7b5d274bed",
+      "sourceRecordSha256": "25fff10d27d9aea0fd72bcbc2efb1e0c6b6efb61c37c042a53d05e1a688d2a74",
+      "reason": "Ordered source path CC6_B to CC1_A (6 occurrences) is a contiguousSegment match of CCL_BRANCH_CW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "b7c66debcc945c82b9c42270e3db274c52c62ffd114e4123fee52c186861922b",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "bbf56bbe6b3abbb84e8c041e39a50b647d1c3db7cc6b9d8265ea7c23495510fd",
+      "sourceRecordSha256": "45f8d5b5d98ff85d3fb625b9620bf47bcd88791f1a588d5e748115c4911d0fe6",
+      "reason": "Ordered source path CC27_A to CC4_A (9 occurrences) is a cyclicSegment match of CCL_LOOP_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "cyclicSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "4cfffeb6c4c1cca842b497db769d826afe64fe8ce7831f28ff72c78f75062a45",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "c6f7d0872e981c16ad4523deeb357167cb53f901a1bf0f0efe6df5de26402b28",
+      "sourceRecordSha256": "08cef88c977022272e123facd435e9cb09e61687dd207faf74ce56a74046b57a",
+      "reason": "Ordered source path CC1_B to CC7_A (7 occurrences) is a contiguousSegment match of CCL_BRANCH_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "4cfffeb6c4c1cca842b497db769d826afe64fe8ce7831f28ff72c78f75062a45",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "c8b23431e73a6f1db965d07879cf1684b04c154e06839a8ae76f8b4a72c42c9d",
+      "sourceRecordSha256": "0ad06e36b81238a6e967fe06eae5f5a0dadbacde22cc8a350c0ded337c227374",
+      "reason": "Ordered source path CC33_B to CC12_B (21 occurrences) is a cyclicSegment match of CCL_LOOP_CW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CW",
+        "revisionId": "r_2026_stage_6",
+        "match": "cyclicSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "4cfffeb6c4c1cca842b497db769d826afe64fe8ce7831f28ff72c78f75062a45",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "d3f15c4517f9c85ebc84f3a442bd9dbb601d4eb6c2187b6d4943014e4b28f2a0",
+      "sourceRecordSha256": "a52b633857a92cd71107e80969b096dfdde8fcaaa7bacb91da201901b1452441",
+      "reason": "Ordered source path CC1_A to CC6_A (6 occurrences) is a contiguousSegment match of CCL_BRANCH_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "50b346a62d2864e73b1538f360a6df7fd4ed048473d50f9b89f24c4c9df25b51",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "d5db59f94bdeb6aa0f62a60dd71b979a4f190505057a8514f83c66b996f22910",
+      "sourceRecordSha256": "12d5e8f5d47547fd87ca411ebb62aa1318f98ab80a9aecb7b46f16c0b53ba954",
+      "reason": "Ordered source path CC33_A to CC4_A (3 occurrences) is a contiguousSegment match of CCL_LOOP_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "50b346a62d2864e73b1538f360a6df7fd4ed048473d50f9b89f24c4c9df25b51",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "d8dd2b654ca0fa47a228a6e7aa3d405c19c2800c06181ce83c5ce7596e4632df",
+      "sourceRecordSha256": "4edbede7754014c8cead3113010e4d587ccb17f7f6692859cfe29522c46f6c8f",
+      "reason": "Ordered source path CC24_A to CC4_A (12 occurrences) is a cyclicSegment match of CCL_LOOP_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "cyclicSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "50b346a62d2864e73b1538f360a6df7fd4ed048473d50f9b89f24c4c9df25b51",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "e4cc07b95dcfa3719a4c1fb5b70a041a798fc93db9c350fbcba93a678211da3a",
+      "sourceRecordSha256": "f15cbe8084de7ff99dca551fe2215c3cf1fd99ffcde057c2eaf20e8a27d1a080",
+      "reason": "Ordered source path CC30_A to CC4_A (6 occurrences) is a contiguousSegment match of CCL_LOOP_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_LOOP_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "4cfffeb6c4c1cca842b497db769d826afe64fe8ce7831f28ff72c78f75062a45",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "e83c235b651f50d3b763033f19bdc3a70f413926e4654dd63b505634ecaa577a",
+      "sourceRecordSha256": "1c877dcae7b7b563cd59523022c04fa7728c9d3d62aa645151dd674b04fb835e",
+      "reason": "Ordered source path CC1_A to CC7_A (7 occurrences) is a contiguousSegment match of CCL_BRANCH_CCW/r_2026_stage_6 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "CCL_BRANCH_CCW",
+        "revisionId": "r_2026_stage_6",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "4cfffeb6c4c1cca842b497db769d826afe64fe8ce7831f28ff72c78f75062a45",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC11_CC17",
+      "sourceRecordSha256": "7c6eac36563ae23344e69ee16f2e4ab67acca27f8d5c276f9d8fab099ddbfdea",
+      "reason": "Provider route CCL_CC11_CC17 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC11_CC32",
+      "sourceRecordSha256": "4b1a3da28b1b9fb9df373dbaddd09ec96cf8f6c1ec500d935c1b0d9f2d3eb8ac",
+      "reason": "Provider route CCL_CC11_CC32 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC11_CC33",
+      "sourceRecordSha256": "c41c760203fc0affb51595ed3159cd8b9c872d4a1a56cb2e2b42e05056546b78",
+      "reason": "Provider route CCL_CC11_CC33 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC12_CC17",
+      "sourceRecordSha256": "bd5b0c997816ce690644783baf85d3741ead9972ba8e20cc2a4f29031248f15e",
+      "reason": "Provider route CCL_CC12_CC17 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC12_CC26",
+      "sourceRecordSha256": "1098022ab528f5c43421b7a269b147d22af1f3f151ddb3e5cd64613edc2750bc",
+      "reason": "Provider route CCL_CC12_CC26 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC12_CC32",
+      "sourceRecordSha256": "3124372e2ce8e4f1c95542c5e335e1506ae688c752124cb1618e2ed848ed2f7a",
+      "reason": "Provider route CCL_CC12_CC32 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC12_CC33",
+      "sourceRecordSha256": "5cf86a9cff967e44a38369043676cf1043338ea7c47a03c5417d2f00bfd7692e",
+      "reason": "Provider route CCL_CC12_CC33 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC17_CC32",
+      "sourceRecordSha256": "6dfd56aa4f6bb614f1831156256bf09ce6bb7ccabbca6b2ccebe1edce7203201",
+      "reason": "Provider route CCL_CC17_CC32 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC17_CC33",
+      "sourceRecordSha256": "69e7bd1630b255e2b1815aa719efff3d2f2de4c0d46d395f4976b045253d3bcf",
+      "reason": "Provider route CCL_CC17_CC33 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC19_CC32",
+      "sourceRecordSha256": "56f10f63bf11ba8256d5a42a4b3f948d0b899c67268efca9ac79ab84b3239639",
+      "reason": "Provider route CCL_CC19_CC32 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC1_CC11",
+      "sourceRecordSha256": "826e7aee8e16158148a6373b674db913f6f6724117e39c1e0561dad842fb9651",
+      "reason": "Provider route CCL_CC1_CC11 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC1_CC17",
+      "sourceRecordSha256": "b59c8e9841ebdb8fedc83b96ebf9071921dfde30ec3d4370590178ccc41827b1",
+      "reason": "Provider route CCL_CC1_CC17 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC1_CC23",
+      "sourceRecordSha256": "6b3a0270b3ce9ff2541c8d273589b3e2fafecce94d4141c81d97b18f10ae41ad",
+      "reason": "Provider route CCL_CC1_CC23 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC1_CC26",
+      "sourceRecordSha256": "ebcb4d73f18057423a6108c4c3eac02272e08ffa76c89256b02e32a24c4f035e",
+      "reason": "Provider route CCL_CC1_CC26 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC1_CC29",
+      "sourceRecordSha256": "c60e273f453bd503377ef721b3539d74e71744a6c649eef889c321ec6c3cf31e",
+      "reason": "Provider route CCL_CC1_CC29 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC1_CC32",
+      "sourceRecordSha256": "7a4c8fa90e05c49a7e623951b30a47e3d6d51160425cf8888cd220552ba89620",
+      "reason": "Provider route CCL_CC1_CC32 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC1_CC4",
+      "sourceRecordSha256": "fdff5bec5f0967313b81e11e0fc30a42d39617a4faa70acf3ef8d299b035f350",
+      "reason": "Provider route CCL_CC1_CC4 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC1_CC6",
+      "sourceRecordSha256": "59deb2e8c15c426460b62bfa12ba156a755fa7223f8ef67d24eff87f12363600",
+      "reason": "Provider route CCL_CC1_CC6 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC1_CC7",
+      "sourceRecordSha256": "88cbec2f72a46f5fe2fed1bb6514593137eb8a0d5553e5c4f1b5e58c54445b9a",
+      "reason": "Provider route CCL_CC1_CC7 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC23_CC33",
+      "sourceRecordSha256": "8833fafffc19f1a89fe0728e5b1eb073f1b7c4df95be759d1ac0d0182bec58dd",
+      "reason": "Provider route CCL_CC23_CC33 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC26_CC32",
+      "sourceRecordSha256": "0757a5156818835566d089c24e0c0bf5d167dd7de793980f6e49f0ee49f438ab",
+      "reason": "Provider route CCL_CC26_CC32 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC26_CC33",
+      "sourceRecordSha256": "9536e64448b4d7956c1d73e0822b54ae76d47aeb5d7618bb8928021341d61e66",
+      "reason": "Provider route CCL_CC26_CC33 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC29_CC32",
+      "sourceRecordSha256": "7144e1d270dcf8aa2e5965da51ec4260f62de6e24563f2e00ab46d94cf05a933",
+      "reason": "Provider route CCL_CC29_CC32 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC30_CC32",
+      "sourceRecordSha256": "6e97e3e6006b5818f8f08b45c9a78f0a7993ebbc16becbe0604ee54ada8ae7cb",
+      "reason": "Provider route CCL_CC30_CC32 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC31_CC32",
+      "sourceRecordSha256": "f007c520aea342a2bc3b6a86308397428b9585e3b9f159c8ed6d614c98006960",
+      "reason": "Provider route CCL_CC31_CC32 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC32_CC32",
+      "sourceRecordSha256": "b4a0d21f2dcd3a72d9b895e77cb03cc908e6f6ec024c17549d4920177161e40e",
+      "reason": "Provider route CCL_CC32_CC32 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC32_CC33",
+      "sourceRecordSha256": "bee4a48ff53a5fdbf82f33f8d3ebc1f84ce5841c83b433f4259f19f2009ea0b3",
+      "reason": "Provider route CCL_CC32_CC33 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC11",
+      "sourceRecordSha256": "c42d130e53654db2a0c8726b9cd72bde5582d90ebd47bda86a263ef58bc35e0c",
+      "reason": "Provider route CCL_CC4_CC11 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC12",
+      "sourceRecordSha256": "a0ae0af4cbe7b5eca4a897473dea7b3f85764f1e052fd57ebed0110be6d29196",
+      "reason": "Provider route CCL_CC4_CC12 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC17",
+      "sourceRecordSha256": "6528216aa7ad7da221339195d3a2af30a5230e7f9cc16be617e632eeec365f80",
+      "reason": "Provider route CCL_CC4_CC17 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC23",
+      "sourceRecordSha256": "41f1fa9f8087ac43a518eed3341ea93f48a7c1218581c940e90be5049e0a3c99",
+      "reason": "Provider route CCL_CC4_CC23 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC24",
+      "sourceRecordSha256": "6f593b40ba738223f7aac85377204c1d052ddcd243059d7c4f8b716dc6d2f94f",
+      "reason": "Provider route CCL_CC4_CC24 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC26",
+      "sourceRecordSha256": "5801a8b470b50524b0e099c434c6d7a82760523c607297377241007ef3426980",
+      "reason": "Provider route CCL_CC4_CC26 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC27",
+      "sourceRecordSha256": "020b15cd1ae2888232837b7a74f0ddf09603337a750671c598d998caab10a4bf",
+      "reason": "Provider route CCL_CC4_CC27 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC29",
+      "sourceRecordSha256": "212941d75a68928f91e804ac0682f39e10108b93353f255b363fffd0e6edecf5",
+      "reason": "Provider route CCL_CC4_CC29 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC30",
+      "sourceRecordSha256": "71979873895a9107b4a23c2793354235b9217b36368700f95017bdf353d58f22",
+      "reason": "Provider route CCL_CC4_CC30 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC31",
+      "sourceRecordSha256": "46cbccf5ede4616d64a338125c7a851d22e4068634fe8d9b11a635ea1de15167",
+      "reason": "Provider route CCL_CC4_CC31 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC32",
+      "sourceRecordSha256": "2fbd48be7e17779a93a25881339e25c053a5a3a30c79956829ae089c2b6d6ecc",
+      "reason": "Provider route CCL_CC4_CC32 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC33",
+      "sourceRecordSha256": "a424f153843f511fce8bf44afddf017e4e6401e5ce33942b209c382fb014ae8c",
+      "reason": "Provider route CCL_CC4_CC33 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC4",
+      "sourceRecordSha256": "68386abf733d4bfc55eaf44bb89770f4590484b50435dcd88a9d0ee2d8bf0095",
+      "reason": "Provider route CCL_CC4_CC4 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC7",
+      "sourceRecordSha256": "80f989f23e8baa14ef05f862de15dbd803c5f8f9ba696581bfc730edbd8083bc",
+      "reason": "Provider route CCL_CC4_CC7 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC4_CC9",
+      "sourceRecordSha256": "5dff1674c6ab6edcca84d311f4e0a5aa7db5c1943b14bcc62e86d473770b403a",
+      "reason": "Provider route CCL_CC4_CC9 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC7_CC17",
+      "sourceRecordSha256": "e60b421f535ea612a2d47f25ac7691c365b01673f1cedfb32ac7295ec870728c",
+      "reason": "Provider route CCL_CC7_CC17 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC7_CC32",
+      "sourceRecordSha256": "70e6e0701c8279df0a8f76f7911fe1754fe82822c0578c9f0b302e51a657de38",
+      "reason": "Provider route CCL_CC7_CC32 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC9_CC17",
+      "sourceRecordSha256": "5bee6c937d643b87f709b340c82a5d8f215e7e380f50a099610048a25df6179b",
+      "reason": "Provider route CCL_CC9_CC17 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC9_CC23",
+      "sourceRecordSha256": "81b58bf75b0ff9f57355b60c187793c8f0d1712db2565813fb280617eabbdc33",
+      "reason": "Provider route CCL_CC9_CC23 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CCL_CC9_CC32",
+      "sourceRecordSha256": "2965917eb03f79b5d9202aa57c70730999f48d7622f2b760617e39d5b8510b63",
+      "reason": "Provider route CCL_CC9_CC32 has the explicit canonical line family CCL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "CCL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC10",
+      "sourceRecordSha256": "a834e267eaae061a0279e9dc955b52305626aa8fea3b67ae6ae887f02b93ed1e",
+      "reason": "Source station code CC10 identifies canonical station MPS. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MPS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC10_A",
+      "sourceRecordSha256": "c39925674888ab076e16a95a08589707c6b13b2899458501e8bdca78e63556e8",
+      "reason": "Explicit source platform label A with code CC10 and parent CC10 identifies MPS_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MPS_CCL_A",
+        "stationId": "MPS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC10_B",
+      "sourceRecordSha256": "8186bea3d6cf497bd1a6d002ec77c8580daca1e097ab329664b121ffacd30ca3",
+      "reason": "Explicit source platform label B with code CC10 and parent CC10 identifies MPS_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MPS_CCL_B",
+        "stationId": "MPS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC11",
+      "sourceRecordSha256": "919950be8e5ffda744860c5a4a7ac3b5fdd9d061f2015a87cc3d6a368ce47c8c",
+      "reason": "Source station code CC11 identifies canonical station TSG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TSG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC11_A",
+      "sourceRecordSha256": "e9b1e21f6d5fa82b1f5b59818563cbbc0decaa2d50a512b846cef57ca91c2f09",
+      "reason": "Explicit source platform label A with code CC11 and parent CC11 identifies TSG_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TSG_CCL_A",
+        "stationId": "TSG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC11_B",
+      "sourceRecordSha256": "6407f3dc685f5b8fa67897f28be87f9b1caf8080afa6dc1519bd18f1e15933db",
+      "reason": "Explicit source platform label B with code CC11 and parent CC11 identifies TSG_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TSG_CCL_B",
+        "stationId": "TSG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC12",
+      "sourceRecordSha256": "9f0e3caf1ed168eac68bb74814a637b986d437d6fb5f3e2ced4a59311eca6e66",
+      "reason": "Source station code CC12 identifies canonical station BLY. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BLY"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC12_A",
+      "sourceRecordSha256": "d22451a7ca4ba3b5cee4519357840441485e10d988726261d19ca26c244f272f",
+      "reason": "Explicit source platform label A with code CC12 and parent CC12 identifies BLY_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BLY_CCL_A",
+        "stationId": "BLY"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC12_B",
+      "sourceRecordSha256": "3384f1bb372e5eede1cf6bb657b869e6c8cc3e3af751ef4c8c50974bc348ea48",
+      "reason": "Explicit source platform label B with code CC12 and parent CC12 identifies BLY_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BLY_CCL_B",
+        "stationId": "BLY"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC13",
+      "sourceRecordSha256": "163e94488c8459fbcf9c4e9ad2d581a8849a1a19a77e52abadda65d11e71583b",
+      "reason": "Source station code CC13 identifies canonical station SER. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SER"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC13_A",
+      "sourceRecordSha256": "609a5e149c8d477f2855d91a0d05a3c52e82662eb231fe4b71b03eca67e28d5a",
+      "reason": "Explicit source platform label A with code CC13 and parent CC13 identifies SER_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SER_CCL_A",
+        "stationId": "SER"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC13_B",
+      "sourceRecordSha256": "bc242bf220183ed7f6696a15716955994e46759cea20c8831a5791bbdfda3554",
+      "reason": "Explicit source platform label B with code CC13 and parent CC13 identifies SER_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SER_CCL_B",
+        "stationId": "SER"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC14",
+      "sourceRecordSha256": "9af57dd971b0274ef7f62e44ea326e1c95ff489b17db031877fc64f74072e5e0",
+      "reason": "Source station code CC14 identifies canonical station LRC. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "LRC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC14_A",
+      "sourceRecordSha256": "9f5678ebe85648544e7f1c7066931054759b656a370f13b3feaac32aa98c021e",
+      "reason": "Explicit source platform label A with code CC14 and parent CC14 identifies LRC_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LRC_CCL_A",
+        "stationId": "LRC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC14_B",
+      "sourceRecordSha256": "356eb94b57425f78a1b34e9aa9e93ede7ca7a2a6a453968e01217bd4d01cfc59",
+      "reason": "Explicit source platform label B with code CC14 and parent CC14 identifies LRC_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LRC_CCL_B",
+        "stationId": "LRC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC15",
+      "sourceRecordSha256": "6ad1014e272d792f19b4d47ae2825dc965a3f5e4919f04361a247911adab2dd3",
+      "reason": "Source station code CC15 identifies canonical station BSH. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BSH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC15_A",
+      "sourceRecordSha256": "28288c0c3140188fc9ccc4c0ecdacb91309cf8bcadcb26c521adc4baff4f2064",
+      "reason": "Explicit source platform label A with code CC15 and parent CC15 identifies BSH_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BSH_CCL_A",
+        "stationId": "BSH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC15_B",
+      "sourceRecordSha256": "04fd2093ff8219d5c0cbf3cad5b8581475d7149a3adfd7c959c0b98d9040d9af",
+      "reason": "Explicit source platform label B with code CC15 and parent CC15 identifies BSH_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BSH_CCL_B",
+        "stationId": "BSH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC16",
+      "sourceRecordSha256": "0d720d17a6d891a4a706305013f2e32038024cc83deca56ff35631037192353a",
+      "reason": "Source station code CC16 identifies canonical station MRM. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MRM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC16_A",
+      "sourceRecordSha256": "e03e10bf00e0e6a32cebe6510c681da2124a3b43728fd0ebaba885ec19b0aadd",
+      "reason": "Explicit source platform label A with code CC16 and parent CC16 identifies MRM_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MRM_CCL_A",
+        "stationId": "MRM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC16_B",
+      "sourceRecordSha256": "1409bf67b5ae5461d7e2843d34166dca15ab73819948dc25d8f541e08a871b89",
+      "reason": "Explicit source platform label B with code CC16 and parent CC16 identifies MRM_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MRM_CCL_B",
+        "stationId": "MRM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC17",
+      "sourceRecordSha256": "95f2174c7a85cf70cfe54728cf0f7285394369bd97dc62f8c18558fd2ed4b6c0",
+      "reason": "Source station code CC17 identifies canonical station CDT. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CDT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC17_A",
+      "sourceRecordSha256": "1f048ff76bf33b9fbc8601637e58f52621c9873f03dd46f67c33c6f95cf5ac5b",
+      "reason": "Explicit source platform label A with code CC17 and parent CC17 identifies CDT_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CDT_CCL_A",
+        "stationId": "CDT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC17_B",
+      "sourceRecordSha256": "6a9913d3401c262a6d0ac479cbcbf0fe00afa4413df6dafb2d383fe254fcf5e5",
+      "reason": "Explicit source platform label B with code CC17 and parent CC17 identifies CDT_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CDT_CCL_B",
+        "stationId": "CDT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC19",
+      "sourceRecordSha256": "6ce4093842a0d9537cde8fbcec9a07674f1997d5d5a082a47017a3c58b7cd986",
+      "reason": "Source station code CC19 identifies canonical station BTN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC19_A",
+      "sourceRecordSha256": "d07cc049f4466206513f1604e4401f3a9ad773f49cc91e671e3f6413e7b657ed",
+      "reason": "Explicit source platform label A with code CC19 and parent CC19 identifies BTN_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BTN_CCL_A",
+        "stationId": "BTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC19_B",
+      "sourceRecordSha256": "2099c6c4efe725d03dbad07d687b157e34d01a85ddecdf8321f52ee0586ef9c7",
+      "reason": "Explicit source platform label B with code CC19 and parent CC19 identifies BTN_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BTN_CCL_B",
+        "stationId": "BTN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC1_A",
+      "sourceRecordSha256": "aa7838806e1b2f264d0171fdaa3d15b37f8e9d662efa217cf64b785390907a53",
+      "reason": "Explicit source platform label A with code CC1 and parent NS24 identifies DBG_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DBG_CCL_A",
+        "stationId": "DBG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC1_B",
+      "sourceRecordSha256": "e82f14ade207eb55f849a79cac038408f27aea332f7626c336253495fa780cfd",
+      "reason": "Explicit source platform label B with code CC1 and parent NS24 identifies DBG_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DBG_CCL_B",
+        "stationId": "DBG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC20",
+      "sourceRecordSha256": "7bbb187523abaa583ea5ebc8471416abb66cd5350b41f6e817f93d42ef4c3f7c",
+      "reason": "Source station code CC20 identifies canonical station FRR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "FRR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC20_A",
+      "sourceRecordSha256": "2d985ce400d353333447cbac8ab64dd0bd4024273bdf70c9359b2a088df54cfd",
+      "reason": "Explicit source platform label A with code CC20 and parent CC20 identifies FRR_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "FRR_CCL_A",
+        "stationId": "FRR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC20_B",
+      "sourceRecordSha256": "8a4145ac3aefab2a816cde295bf5fece04ec70ad5af9272bfcb9d93c6ed9f41f",
+      "reason": "Explicit source platform label B with code CC20 and parent CC20 identifies FRR_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "FRR_CCL_B",
+        "stationId": "FRR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC21",
+      "sourceRecordSha256": "047e0f5a266a067aac3f0ab46c03bf04820ba71ed726c752c227fb353ca328fe",
+      "reason": "Source station code CC21 identifies canonical station HLV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "HLV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC21_A",
+      "sourceRecordSha256": "2f8604b0b95d8bcb71b6cdd0dba3006b2b18db8dff79a801b31d01720e26bfa2",
+      "reason": "Explicit source platform label A with code CC21 and parent CC21 identifies HLV_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HLV_CCL_A",
+        "stationId": "HLV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC21_B",
+      "sourceRecordSha256": "ca7f87dd9580e32bb73e9e17ce7d22b26a14f08574bd142a0645b89a21afa994",
+      "reason": "Explicit source platform label B with code CC21 and parent CC21 identifies HLV_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HLV_CCL_B",
+        "stationId": "HLV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC22",
+      "sourceRecordSha256": "111cf6e273392f1f387b1364de0f5902e67634989414ab5d461ecbf8c05094a1",
+      "reason": "Source station code CC22 identifies canonical station BNV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BNV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC22_A",
+      "sourceRecordSha256": "625fef205fcd35bbc4eafbe9105424a16575ea99773bb43149fb6d1a8ac02af4",
+      "reason": "Explicit source platform label A with code CC22 and parent CC22 identifies BNV_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BNV_CCL_A",
+        "stationId": "BNV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC22_B",
+      "sourceRecordSha256": "3c27408e238c8c461352e28a9b070cb4dd0d3ce01f820bdb32b269a625e0a62d",
+      "reason": "Explicit source platform label B with code CC22 and parent CC22 identifies BNV_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BNV_CCL_B",
+        "stationId": "BNV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC23",
+      "sourceRecordSha256": "527cbe34c6c2520e4ece1e5b741e0f89cd8c6caabaf86efa640e8743c0a4aaf3",
+      "reason": "Source station code CC23 identifies canonical station ONH. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "ONH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC23_A",
+      "sourceRecordSha256": "9b156c6df1282c0a5f5cf6c3782868d106fb1c157c1d29ef2c6aa2e629dbf85e",
+      "reason": "Explicit source platform label A with code CC23 and parent CC23 identifies ONH_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "ONH_CCL_A",
+        "stationId": "ONH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC23_B",
+      "sourceRecordSha256": "d5abf9b7b02aba31302d06ff3f4307daf5d5892874dc27ce37d7694a7bf4d2d4",
+      "reason": "Explicit source platform label B with code CC23 and parent CC23 identifies ONH_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "ONH_CCL_B",
+        "stationId": "ONH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC24",
+      "sourceRecordSha256": "59217db716221b3b8e01ed78c88a896d9233f04118d3c7b195d1af14d863a309",
+      "reason": "Source station code CC24 identifies canonical station KRG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KRG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC24_A",
+      "sourceRecordSha256": "3b624b732d1218e3c6c44d04b6d96270f57e6d3b0e32742c3886c91b839b42ee",
+      "reason": "Explicit source platform label A with code CC24 and parent CC24 identifies KRG_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KRG_CCL_A",
+        "stationId": "KRG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC24_B",
+      "sourceRecordSha256": "115d1832d1d5944415e6922dc7a8bd7501e5df394c621846472dfb8e8627cd11",
+      "reason": "Explicit source platform label B with code CC24 and parent CC24 identifies KRG_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KRG_CCL_B",
+        "stationId": "KRG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC25",
+      "sourceRecordSha256": "9833fbc8faab4df90c605c9d911fdc89431b162c956fd160e592b05c50cd069e",
+      "reason": "Source station code CC25 identifies canonical station HPV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "HPV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC25_A",
+      "sourceRecordSha256": "94b0d799a48968e15f4122d63708e91ab389fb9358666ae0d0f425919fb14b87",
+      "reason": "Explicit source platform label A with code CC25 and parent CC25 identifies HPV_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HPV_CCL_A",
+        "stationId": "HPV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC25_B",
+      "sourceRecordSha256": "9dd2e96e4d633443896682522156dfef8fe30531c13340c215e0e5b0f1f71fe6",
+      "reason": "Explicit source platform label B with code CC25 and parent CC25 identifies HPV_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HPV_CCL_B",
+        "stationId": "HPV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC26",
+      "sourceRecordSha256": "969bb27de5ec8b118a4bc551f46619689fb24f91ed2c43d82f218c96e91a01b3",
+      "reason": "Source station code CC26 identifies canonical station PPJ. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PPJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC26_A",
+      "sourceRecordSha256": "6570fac3ceb19bc6fd0aef8a6e09a53de98eabe084d1766f1933dcc25fdc673f",
+      "reason": "Explicit source platform label A with code CC26 and parent CC26 identifies PPJ_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PPJ_CCL_A",
+        "stationId": "PPJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC26_B",
+      "sourceRecordSha256": "f0f20a0dbdee10d8fceca73cfeb44bb79b8c3e426fa4e7706ed37b425cd18d2d",
+      "reason": "Explicit source platform label B with code CC26 and parent CC26 identifies PPJ_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PPJ_CCL_B",
+        "stationId": "PPJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC27",
+      "sourceRecordSha256": "abc31421c2f789380c3f5807dcfba699a54e1a0ae7304812146d311bfaf86922",
+      "reason": "Source station code CC27 identifies canonical station LBD. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "LBD"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC27_A",
+      "sourceRecordSha256": "99bac27c9430fc9193a9c948337596bb588657828ab54d5db68b817358700a20",
+      "reason": "Explicit source platform label A with code CC27 and parent CC27 identifies LBD_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LBD_CCL_A",
+        "stationId": "LBD"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC27_B",
+      "sourceRecordSha256": "ad7e1a212724d32ae3ad2779a379c7d5aac95138406966d85dc003d5e5ab08d0",
+      "reason": "Explicit source platform label B with code CC27 and parent CC27 identifies LBD_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LBD_CCL_B",
+        "stationId": "LBD"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC28",
+      "sourceRecordSha256": "1b30449e4b6f4096259865099203484a18c7202661810a737bce6801c830fdcb",
+      "reason": "Source station code CC28 identifies canonical station TLB. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TLB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC28_A",
+      "sourceRecordSha256": "f3dfccb33cadf5b67085a0a3535a25add7603a89869d0423eb12184cbb5a3b70",
+      "reason": "Explicit source platform label A with code CC28 and parent CC28 identifies TLB_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TLB_CCL_A",
+        "stationId": "TLB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC28_B",
+      "sourceRecordSha256": "cfe03a130f708bede89a039cb0d661a8253c1d7f5d1f6cb4806289c94c0ce0fb",
+      "reason": "Explicit source platform label B with code CC28 and parent CC28 identifies TLB_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TLB_CCL_B",
+        "stationId": "TLB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC29",
+      "sourceRecordSha256": "49c582d0997f783330112e4c4ae1d2265b8618a22d2e88394727fe689bc9bb2a",
+      "reason": "Source station code CC29 identifies canonical station HBF. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "HBF"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC29_A",
+      "sourceRecordSha256": "360ad670ceb66fc60d35102eec722d7d4c275acf4da335b499486f10279acd4a",
+      "reason": "Explicit source platform label A with code CC29 and parent CC29 identifies HBF_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HBF_CCL_A",
+        "stationId": "HBF"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC29_B",
+      "sourceRecordSha256": "12e5d747637f879dd16c581b0c08ac6f75765d2b4a781a6c7a755237f060b425",
+      "reason": "Explicit source platform label B with code CC29 and parent CC29 identifies HBF_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HBF_CCL_B",
+        "stationId": "HBF"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC2",
+      "sourceRecordSha256": "98c72f845548213c3ee9bbb3e6d6e6dff682a3a696d8358ee515a90b6d8a8488",
+      "reason": "Source station code CC2 identifies canonical station BBS. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BBS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC2_A",
+      "sourceRecordSha256": "042f03ad7664e428dd5c71be28dd448f16f216e91de7e5028ce2725e6c580e76",
+      "reason": "Explicit source platform label A with code CC2 and parent CC2 identifies BBS_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BBS_CCL_A",
+        "stationId": "BBS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC2_B",
+      "sourceRecordSha256": "4f7d874e8f054fdbccf469fa65fefa4845c19b52973986d8c98e3d0723e339d7",
+      "reason": "Explicit source platform label B with code CC2 and parent CC2 identifies BBS_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BBS_CCL_B",
+        "stationId": "BBS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC30",
+      "sourceRecordSha256": "4f46a9051230900e6b2e42d5d275112b3910a8754e150cbd551c0f32a7bfe0df",
+      "reason": "Source station code CC30 identifies canonical station KPL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KPL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC30_A",
+      "sourceRecordSha256": "fefba43e0aae97de87abe9a4bf3dedc13605dd05a134ce6ded784466d3bc35f1",
+      "reason": "Explicit source platform label A with code CC30 and parent CC30 identifies KPL_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KPL_CCL_A",
+        "stationId": "KPL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC30_B",
+      "sourceRecordSha256": "24b4d583fe122c54cb58f3ba452b0d09402376ea9d2c2ba3663d18d78df050d6",
+      "reason": "Explicit source platform label B with code CC30 and parent CC30 identifies KPL_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KPL_CCL_B",
+        "stationId": "KPL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC31",
+      "sourceRecordSha256": "8dd568941c4d79c6b150c3bfdb0843985ef8eb884eef2a6f5df536c95c29815c",
+      "reason": "Source station code CC31 identifies canonical station CTM. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CTM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC31_A",
+      "sourceRecordSha256": "4b3c9e2f2baedb5b97fd1a8fe69649982e1d50a2fa9e2011c5dc361b2d0f8fcc",
+      "reason": "Explicit source platform label A with code CC31 and parent CC31 identifies CTM_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CTM_CCL_A",
+        "stationId": "CTM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC31_B",
+      "sourceRecordSha256": "35daabde4e3da0dc90a3bad8fbfdd049895be960146b2218bd05484924aba7b8",
+      "reason": "Explicit source platform label B with code CC31 and parent CC31 identifies CTM_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CTM_CCL_B",
+        "stationId": "CTM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC32",
+      "sourceRecordSha256": "1e0eda242ad574192c34dfca8fdd5c7b25c5888c558c72a3a6a6417538d79bbd",
+      "reason": "Source station code CC32 identifies canonical station PER. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PER"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC32_A",
+      "sourceRecordSha256": "708200927a34d915fa063b0c9ea9a29e472fa3e590f380c40932a690eb8add55",
+      "reason": "Explicit source platform label A with code CC32 and parent CC32 identifies PER_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PER_CCL_A",
+        "stationId": "PER"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC32_B",
+      "sourceRecordSha256": "28e2056d2887dc5c0c0a3c9e2bc6ced13903c13619429cef40733530606ec1af",
+      "reason": "Explicit source platform label B with code CC32 and parent CC32 identifies PER_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PER_CCL_B",
+        "stationId": "PER"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC33",
+      "sourceRecordSha256": "898c2e9c1ce222f2cfa74757322fac7d9d8f85068ea799f5cac56b0650703919",
+      "reason": "Source station code CC33 identifies canonical station MRB. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MRB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC33_A",
+      "sourceRecordSha256": "57093a3bec4349bf52a92e8bb1d209d6ee56fc2c3fb670ed281c0428630e75cd",
+      "reason": "Explicit source platform label C with code CC33 and parent CC33 identifies MRB_CCL_C. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MRB_CCL_C",
+        "stationId": "MRB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC33_B",
+      "sourceRecordSha256": "176a0cf13af24733b0951b0a41109dfa4844cc365eb91e7d4bda1f6c780c8858",
+      "reason": "Explicit source platform label D with code CC33 and parent CC33 identifies MRB_CCL_D. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MRB_CCL_D",
+        "stationId": "MRB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC34",
+      "sourceRecordSha256": "0c9dceb8baa63d8cd1e5d11f180e3fc1303e933e92fc16bfcbffa7a5b13a0f01",
+      "reason": "Source station code CC34 identifies canonical station BFT. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BFT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC34_A",
+      "sourceRecordSha256": "2165f6de9469299364d4707e0ad5d70cbbc4d2edbcf78e9ec2b7982af9d308d4",
+      "reason": "Explicit source platform label D with code CC34 and parent CC34 identifies BFT_CCL_D. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BFT_CCL_D",
+        "stationId": "BFT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC34_B",
+      "sourceRecordSha256": "319c457876a26762d8e9beb89463c678758634bc093db364702995b4403f768c",
+      "reason": "Explicit source platform label B with code CC34 and parent CC34 identifies BFT_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BFT_CCL_B",
+        "stationId": "BFT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC3",
+      "sourceRecordSha256": "103ec1e4b71a36ef10817475cef53d233c594c3101b1ca29f36c58ca0dbc4339",
+      "reason": "Source station code CC3 identifies canonical station EPN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "EPN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC3_A",
+      "sourceRecordSha256": "112ba4cf6c2bc0cfa065ae35ad3f6a979132ae967cfcfe6216b5b1a4d08ddc1e",
+      "reason": "Explicit source platform label A with code CC3 and parent CC3 identifies EPN_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "EPN_CCL_A",
+        "stationId": "EPN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC3_B",
+      "sourceRecordSha256": "d0d0e09a221a85e6edccb3dee5926aca5fcc418d70471be9ad9e8e813578c4a3",
+      "reason": "Explicit source platform label B with code CC3 and parent CC3 identifies EPN_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "EPN_CCL_B",
+        "stationId": "EPN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC4",
+      "sourceRecordSha256": "031242631532764ea2025b690a79b43d23bbdbd6061fe148d8b9a3d795208b7b",
+      "reason": "Source station code CC4 identifies canonical station PMN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PMN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC4_A",
+      "sourceRecordSha256": "d847b475597cef981e8fc58aa06abcab1b29361f0cf54cbc3a9613f11f0bb5b7",
+      "reason": "Explicit source platform label A with code CC4 and parent CC4 identifies PMN_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PMN_CCL_A",
+        "stationId": "PMN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC4_B",
+      "sourceRecordSha256": "c8998b738adda47ab86dc2b4dbc362cdfacea33ce5cb4c4d577f4c4db06039d9",
+      "reason": "Explicit source platform label B with code CC4 and parent CC4 identifies PMN_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PMN_CCL_B",
+        "stationId": "PMN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC5",
+      "sourceRecordSha256": "354cd035becc4d2eb19dea2456497a413cb171fde88c31f3354bc61c790e9f3e",
+      "reason": "Source station code CC5 identifies canonical station NCH. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "NCH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC5_A",
+      "sourceRecordSha256": "4033d69b1b65e56abe17983d495b950b593728e2262e0529d75f15a6d7cf1b8e",
+      "reason": "Explicit source platform label A with code CC5 and parent CC5 identifies NCH_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "NCH_CCL_A",
+        "stationId": "NCH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC5_B",
+      "sourceRecordSha256": "2e425ea29f13df12fd4d2f52bb30fd8f2f1eb297d2f65e5b9cf3c74517f65480",
+      "reason": "Explicit source platform label B with code CC5 and parent CC5 identifies NCH_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "NCH_CCL_B",
+        "stationId": "NCH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC6",
+      "sourceRecordSha256": "c00e080234183d9c69cde6ec909525ba223337bda8f2761fdeead8e0108f8de1",
+      "reason": "Source station code CC6 identifies canonical station SDM. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SDM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC6_A",
+      "sourceRecordSha256": "e3d0dc576f8d320a2c9fc61c70b95838eb2e9532787d6633cc44b31fcbf81b79",
+      "reason": "Explicit source platform label A with code CC6 and parent CC6 identifies SDM_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SDM_CCL_A",
+        "stationId": "SDM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC6_B",
+      "sourceRecordSha256": "ccc5d00668649c90fbbf0a32fcc8cd28b6c359c56aa308bd6d6793cf6763d01f",
+      "reason": "Explicit source platform label B with code CC6 and parent CC6 identifies SDM_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SDM_CCL_B",
+        "stationId": "SDM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC7",
+      "sourceRecordSha256": "49083d143b3eff7d6eb84bdbcdb0a206c2c6463616ceb13909e5a96dc5907427",
+      "reason": "Source station code CC7 identifies canonical station MBT. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MBT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC7_A",
+      "sourceRecordSha256": "b6948d342cbd1bdaf1f9391a440352bc92029008c11844cc75d10901fece8ee0",
+      "reason": "Explicit source platform label A with code CC7 and parent CC7 identifies MBT_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MBT_CCL_A",
+        "stationId": "MBT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC7_B",
+      "sourceRecordSha256": "4e7a0e2373fa7d33ffc3492697c4068b4995ef2c4f675a021fc1af46bcf0a98e",
+      "reason": "Explicit source platform label B with code CC7 and parent CC7 identifies MBT_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MBT_CCL_B",
+        "stationId": "MBT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC8",
+      "sourceRecordSha256": "a1ed8137483ce2618ecddf8759339d9dc0442e82ea4335747b82b9f3950132d1",
+      "reason": "Source station code CC8 identifies canonical station DKT. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "DKT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC8_A",
+      "sourceRecordSha256": "551e448b415ca7e46ddf0e94b36e1a1277bf51006199ebf2389144e652c2061b",
+      "reason": "Explicit source platform label A with code CC8 and parent CC8 identifies DKT_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DKT_CCL_A",
+        "stationId": "DKT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC8_B",
+      "sourceRecordSha256": "cc80755faf59569028615d48582ab1da6f8417159fd55a7ff0a812b2062b4b1d",
+      "reason": "Explicit source platform label B with code CC8 and parent CC8 identifies DKT_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DKT_CCL_B",
+        "stationId": "DKT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC9",
+      "sourceRecordSha256": "640e334b2bb7e8c53027c84aa2b7e66c397446842a01c13060486c75e902cda7",
+      "reason": "Source station code CC9 identifies canonical station PYL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PYL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC9_A",
+      "sourceRecordSha256": "7cc531d72a4c151dce490259174baecc6fa4d9b249eeac6fa72e55a4219ecf01",
+      "reason": "Explicit source platform label A with code CC9 and parent CC9 identifies PYL_CCL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PYL_CCL_A",
+        "stationId": "PYL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC9_B",
+      "sourceRecordSha256": "e06c40afc99b1bdf3bc98b992e826b4a13c61d536fe43c86275cf2bd419a7f59",
+      "reason": "Explicit source platform label B with code CC9 and parent CC9 identifies PYL_CCL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PYL_CCL_B",
+        "stationId": "PYL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS24",
+      "sourceRecordSha256": "fa8ea7ba5116bc654891ef12c29d3481b96116d92c92e1076417afc283ea5059",
+      "reason": "Source station code NS24 identifies canonical station DBG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "DBG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    }
+  ]
+}

@@ -1,8 +1,9 @@
 # Scoped GTFS mapping draft and review contract
 
 The version-2 draft turns verified reconciliation candidates into concrete,
-reviewable mapping proposals. The checked-in pilots cover NEL, DTL, PGLRT and
-supported TEL/EWL patterns, retaining their internal gaps explicitly in the review.
+reviewable mapping proposals. The checked-in pilots cover NEL, DTL, PGLRT,
+supported TEL/EWL patterns and selected CCL pattern/date cells. Internal gaps
+remain explicit in the review.
 Neither the pilots nor the full generated draft is approved or eligible for
 generation. Proposal and review schemas version 1 remain unchanged.
 
@@ -307,3 +308,49 @@ combined draft preserves all earlier pilot decisions. Full readiness remains
 `unresolved`, subset readiness remains `incomplete`, and mapping review and
 generation remain blocked. Source/calendar correctness and reviewed lineage
 remain independent open conditions.
+
+## Circle Line exact-date cells and accounting
+
+The [CCL mapping table](gtfs-ccl-pilot-mappings.md),
+[draft](gtfs-ccl-pilot-draft.json) and
+[summary](gtfs-ccl-pilot-review-summary.json) add 178 proposed matches: one
+agency, 47 routes, 33 station parents, 66 platform stops and 31 pattern/date
+cells. Those cells cover 31 distinct source patterns, 1,098 recurring trip
+records and 1,656 pattern-date pairs. Twenty-one cells use contiguous segments
+and ten use cyclic segments of an explicitly closed canonical path. Source
+endpoints, order and occurrences remain intact.
+
+Every matched CCL cell uses revision `r_2026_stage_6` on its exact active dates
+on or after 2026-07-12. None of the 119 CCL source patterns is matched for its
+whole calendar. The 31 partially matched patterns retain 1,837 earlier unresolved
+pattern-date pairs, while 88 wholly unresolved patterns retain 11,264 pairs.
+The matched-only draft omits both kinds of unresolved cells; it does not truncate
+or exclude the source calendars.
+
+An unresolved date can have no effective geometry/code candidate, multiple
+candidates, or a unique candidate conflicting with current undated platform
+records. Those causes remain separate in the CCL review. A platform diagnostic
+against current records does not independently establish historical invalidity,
+and a date envelope never substitutes for the exact supplied calendar dates.
+
+Using `NEL,DTL,PGLRT,TEL,EWL,CCL` as the pilot argument produces 749 proposed
+matches: two agencies, 90 routes, 142 station parents, 321 platform stops and
+194 pattern/date cells. These matched cells reference 194 distinct source
+patterns and 9,702 recurring trip records, covering 21,836 pattern-date pairs.
+All earlier pilot decisions are preserved.
+
+The source still has **1,124 unique entries**, but the full draft now has
+**1,155 decision cells**, because 31 patterns each have a matched cell and an
+unresolved cell. Its 406 unresolved cells comprise 375 wholly unmatched source
+entries and the unresolved portions of those 31 partially matched CCL patterns.
+The focused draft omits 375 source entries entirely and 26,555 pattern dates,
+including dates from patterns it partially matches. Complete input accounting
+does not mean complete matched coverage.
+
+The normalized cumulative pilot digest is
+`9ca930840c836552508609f3acde85b6e2e2ebbbd3e592f5228ad404a74a57d8`.
+All five cumulative files reproduce byte for byte with
+`CCL,EWL,TEL,PGLRT,NEL,DTL,CCL` as well as `NEL,DTL,PGLRT,TEL,EWL,CCL`.
+Full readiness remains `unresolved`, focused readiness remains `incomplete`,
+and neither mapping review nor generation is enabled. Source/calendar correctness
+and reviewed lineage remain separate open conditions.
