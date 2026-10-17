@@ -6,6 +6,9 @@ all fixed-stop source trips from parsed GTFS tables. These are format preparatio
 for scheduled arrivals. Existing reconciliation, approval and publication paths
 do not call the assembler; Phase 2 review and generation gates remain open.
 
+The [source timetable](gtfs-source-timetable.md) bundles these records with all
+calendar definitions and validates their shared identities and references.
+
 Each timing record contains nonempty `providerTripId`, `providerRouteId` and
 `providerCalendarId`, plus at least two ordered
 [`ScheduledStopTime`](gtfs-scheduled-stop-times.md) occurrences. Every occurrence

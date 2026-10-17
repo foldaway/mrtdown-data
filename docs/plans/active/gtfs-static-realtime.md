@@ -539,6 +539,13 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added a compact source timetable contract and assembler that
+  combine all trip timing and calendar definitions, including unused calendars.
+  Duplicate identities, missing calendar references and unsupported timezone or
+  frequency semantics fail. Assembly is deterministic under source row
+  reordering. See [source timetable](../../gtfs-source-timetable.md). Canonical
+  allocation, mapping review and publication gates remain open.
+
 - 2026-10-17: Added automatic service-date selection for offline departure
   queries. Candidate dates come from the query window, validated source calendars
   and relevant departure offsets, including offsets beyond 48 hours. Explicit
