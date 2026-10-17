@@ -1,5 +1,12 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.38
+
+### Minor Changes
+
+- 89d00f8: Add an opt-in version-3 GTFS mapping review contract that preserves complete physical platform alternatives and checks every member's service and boarding compatibility. Keep version-2 review behavior and digests available unchanged.
+- c3cea87: Explain unresolved GTFS mapping cells with a deterministic blocker report containing exact date scopes, unmatched dependencies, literal platform-member evidence and ordered stop occurrences. Preserve existing mapping and approval behavior.
+
 ## 2.0.0-alpha.37
 
 ### Minor Changes
