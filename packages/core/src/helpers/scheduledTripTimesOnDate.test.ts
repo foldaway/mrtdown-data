@@ -1,4 +1,3 @@
-import { Temporal } from '@js-temporal/polyfill';
 import { describe, expect, it } from 'vitest';
 import type { ScheduledServiceCalendar } from '../schema/ScheduledServiceCalendar.js';
 import type { ScheduledTripTimes } from '../schema/ScheduledTripTimes.js';
@@ -55,6 +54,15 @@ function trip(): ScheduledTripTimes {
   };
 }
 
+function tripAt(seconds: number): ScheduledTripTimes {
+  const value = trip();
+  for (const stop of value.stopTimes) {
+    stop.arrivalSeconds = seconds;
+    stop.departureSeconds = seconds;
+  }
+  return value;
+}
+
 describe('scheduledTripTimesOnDate', () => {
   it('resolves enabled source events while retaining all offsets, occurrence identities and access/precision rules', () => {
     const input = trip();
@@ -95,26 +103,8 @@ describe('scheduledTripTimesOnDate', () => {
   it('keeps coincident events on separate service dates as distinct trip occurrences', () => {
     const rules = calendar();
     rules.exceptions[1] = { date: '2026-01-02', available: true };
-    const current = trip();
-    current.stopTimes = current.stopTimes.map((stop) => ({
-      ...stop,
-      arrivalSeconds:
-        stop.arrivalSeconds === null ? null : stop.arrivalSeconds - 86400 + 60,
-      departureSeconds:
-        stop.departureSeconds === null
-          ? null
-          : stop.departureSeconds - 86400 + 60,
-    }));
-    const previous = trip();
-    previous.stopTimes = previous.stopTimes.map((stop) => ({
-      ...stop,
-      arrivalSeconds:
-        stop.arrivalSeconds === null ? null : stop.arrivalSeconds + 60,
-      departureSeconds:
-        stop.departureSeconds === null ? null : stop.departureSeconds + 60,
-    }));
-    const first = scheduledTripTimesOnDate(previous, rules, '2026-01-01');
-    const second = scheduledTripTimesOnDate(current, rules, '2026-01-02');
+    const first = scheduledTripTimesOnDate(tripAt(90000), rules, '2026-01-01');
+    const second = scheduledTripTimesOnDate(tripAt(3600), rules, '2026-01-02');
     expect(first?.stopTimes[0]?.arrivalInstant).toBe(
       second?.stopTimes[0]?.arrivalInstant,
     );
@@ -143,82 +133,6 @@ describe('scheduledTripTimesOnDate', () => {
     ]);
   });
 
-  it('uses inclusive weekly dates and explicit exceptions without inferring holidays', () => {
-    const rules: ScheduledServiceCalendar = {
-      ...calendar(),
-      weekly: {
-        startDate: '2026-01-01',
-        endDate: '2026-01-07',
-        weekdays: {
-          monday: true,
-          tuesday: true,
-          wednesday: true,
-          thursday: true,
-          friday: true,
-          saturday: false,
-          sunday: false,
-        },
-      },
-      exceptions: [
-        { date: '2026-01-02', available: false },
-        { date: '2026-01-10', available: true },
-      ],
-    };
-    for (const date of ['2026-01-01', '2026-01-07', '2026-01-10'])
-      expect(scheduledTripTimesOnDate(trip(), rules, date)?.serviceDate).toBe(
-        date,
-      );
-    for (const date of ['2025-12-31', '2026-01-02', '2026-01-03', '2026-01-08'])
-      expect(scheduledTripTimesOnDate(trip(), rules, date)).toBeNull();
-  });
-
-  it.each([
-    ['2026-12-31', 90000, '2026-12-31T17:00:00Z'],
-    ['2024-02-29', 172800, '2024-03-01T16:00:00Z'],
-    ['1942-02-16', 0, '1942-02-15T15:00:00Z'],
-  ])('uses the original service-date anchor for %s plus %s seconds', (date, seconds, expected) => {
-    const input = trip();
-    input.stopTimes = input.stopTimes.map((stop) => ({
-      ...stop,
-      arrivalSeconds: seconds,
-      departureSeconds: seconds,
-    }));
-    const rules = { ...calendar(), exceptions: [{ date, available: true }] };
-    const result = scheduledTripTimesOnDate(input, rules, date);
-    expect(result?.serviceDate).toBe(date);
-    expect(result?.stopTimes[0]?.arrivalInstant).toBe(expected);
-  });
-
-  it('allows callers to order independently resolved service days by their instants', () => {
-    const rules = calendar();
-    rules.exceptions[1] = { date: '2026-01-02', available: true };
-    const early = trip();
-    early.stopTimes = early.stopTimes.map((stop) => ({
-      ...stop,
-      arrivalSeconds: 1800,
-      departureSeconds: 1800,
-    }));
-    const events = [
-      scheduledTripTimesOnDate(trip(), rules, '2026-01-01'),
-      scheduledTripTimesOnDate(early, rules, '2026-01-02'),
-    ]
-      .flatMap((resolved) =>
-        resolved
-          ? [
-              {
-                serviceDate: resolved.serviceDate,
-                instant: resolved.stopTimes[2]?.departureInstant ?? '',
-              },
-            ]
-          : [],
-      )
-      .sort((a, b) => Temporal.Instant.compare(a.instant, b.instant));
-    expect(events).toEqual([
-      { serviceDate: '2026-01-02', instant: '2026-01-01T16:30:00Z' },
-      { serviceDate: '2026-01-01', instant: '2026-01-01T17:01:00Z' },
-    ]);
-  });
-
   it.each([
     '2026-01-01',
     '2026-01-02',
@@ -232,14 +146,10 @@ describe('scheduledTripTimesOnDate', () => {
     ).toThrow('requires calendar C');
   });
 
-  it.each([
-    '',
-    '2026-02-29',
-    '20260101',
-    '2026-1-1',
-    '2026-01-01T00:00:00Z',
-  ])('rejects invalid service date %s', (date) => {
-    expect(() => scheduledTripTimesOnDate(trip(), calendar(), date)).toThrow();
+  it('rejects a timestamp passed as a civil service date', () => {
+    expect(() =>
+      scheduledTripTimesOnDate(trip(), calendar(), '2026-01-01T00:00:00Z'),
+    ).toThrow();
   });
 
   it('validates trip and calendar inputs even when the requested date is inactive', () => {

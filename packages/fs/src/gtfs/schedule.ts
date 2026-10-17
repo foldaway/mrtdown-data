@@ -177,11 +177,8 @@ export function auditSchedule(tables: ScheduleTables) {
       stops.get(row.parent_station)?.location_type !== '1'
     )
       errors.push(`stop ${id}: parent is not a station`);
-    if (['0', '2'].includes(row.location_type ?? '0') && !row.parent_station) {
-      // Standalone boarding stops are valid GTFS; entrances require station parents.
-      if (row.location_type === '2')
-        errors.push(`entrance ${id}: missing station parent`);
-    }
+    if (row.location_type === '2' && !row.parent_station)
+      errors.push(`entrance ${id}: missing station parent`);
   }
   for (const [id, row] of trips) {
     reference(

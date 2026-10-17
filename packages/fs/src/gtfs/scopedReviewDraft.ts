@@ -90,12 +90,16 @@ function prepareDraft(
       .filter((entry) => entry.kind !== 'pattern')
       .map((entry) => [key(entry), entry]),
   );
-  const inPilot = (entry: { kind: string; providerId: string }) =>
-    entry.kind === 'agency'
-      ? pilotAgencies.has(entry.providerId)
-      : entry.kind === 'route'
-        ? pilotRoutes.has(entry.providerId)
-        : pilotStops.has(entry.providerId);
+  const inPilot = (entry: { kind: string; providerId: string }) => {
+    switch (entry.kind) {
+      case 'agency':
+        return pilotAgencies.has(entry.providerId);
+      case 'route':
+        return pilotRoutes.has(entry.providerId);
+      default:
+        return pilotStops.has(entry.providerId);
+    }
+  };
   const resolved = new Map<
     string,
     ReconciliationTarget | PlatformGroupTarget | undefined
@@ -186,26 +190,27 @@ function prepareDraft(
       const match = Boolean(candidate);
       const row =
         entry.kind === 'stop' ? stops.get(entry.providerId) : undefined;
-      const matchedReason =
-        entry.kind === 'agency'
-          ? `Provider agency ${entry.providerId} has the explicit canonical alias ${candidateId}; selected pilot routes reference it. Proposal pending repository review.`
-          : entry.kind === 'route'
-            ? `Provider route ${entry.providerId} has the explicit canonical line family ${candidateId}. This does not assign trip direction or endpoints. Proposal pending repository review.`
-            : candidate?.kind === 'platformGroup'
-              ? `Complete literal source platform group ${row?.platform_code} identifies alternatives ${candidate.platformIds.join(', ')} at ${candidate.stationId}. No individual platform allocation is proposed. Every member requires current service and boarding checks on matched pattern cells. Proposal pending repository review.`
-              : row?.location_type === '1'
-                ? `Source station code ${row.stop_code || row.stop_id} identifies canonical station ${candidateId}. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.`
-                : `Explicit source platform label ${row?.platform_code} with code ${row?.stop_code} and parent ${row?.parent_station} identifies ${candidateId}. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.`;
+      let reason: string;
+      if (!match)
+        reason = inPilot(entry)
+          ? 'Pilot identity or platform allocation remains unresolved.'
+          : 'Outside the proposal pilot; explicit disposition remains unresolved, with no exclusion inferred.';
+      else if (entry.kind === 'agency')
+        reason = `Provider agency ${entry.providerId} has the explicit canonical alias ${candidateId}; selected pilot routes reference it. Proposal pending repository review.`;
+      else if (entry.kind === 'route')
+        reason = `Provider route ${entry.providerId} has the explicit canonical line family ${candidateId}. This does not assign trip direction or endpoints. Proposal pending repository review.`;
+      else if (candidate?.kind === 'platformGroup')
+        reason = `Complete literal source platform group ${row?.platform_code} identifies alternatives ${candidate.platformIds.join(', ')} at ${candidate.stationId}. No individual platform allocation is proposed. Every member requires current service and boarding checks on matched pattern cells. Proposal pending repository review.`;
+      else if (row?.location_type === '1')
+        reason = `Source station code ${row.stop_code || row.stop_id} identifies canonical station ${candidateId}. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.`;
+      else
+        reason = `Explicit source platform label ${row?.platform_code} with code ${row?.stop_code} and parent ${row?.parent_station} identifies ${candidateId}. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.`;
       decisions.push({
         ...base,
         kind: entry.kind,
         disposition: match ? 'matched' : 'unresolved',
         ...(match ? { target: candidate } : {}),
-        reason: match
-          ? matchedReason
-          : inPilot(entry)
-            ? 'Pilot identity or platform allocation remains unresolved.'
-            : 'Outside the proposal pilot; explicit disposition remains unresolved, with no exclusion inferred.',
+        reason,
       });
       continue;
     }
