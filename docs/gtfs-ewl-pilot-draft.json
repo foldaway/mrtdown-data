@@ -1,0 +1,2426 @@
+{
+  "schemaVersion": 2,
+  "documentKind": "gtfs-scoped-mapping-draft",
+  "identity": {
+    "sourceManifest": {
+      "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+      "calendar.txt": "bddb06a1aebe70f984f1dd3576c80ae1a72a76f58b4cd68a6af245368a72a605",
+      "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+      "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+      "routes.txt": "d81b7bb5ce975ca9ca1120dd730db79d70f908cf560533c295fcea67133bb77c",
+      "stop_times.txt": "b6d5289d1b2300531fc627fe1bd6c9b7507a1e57c9ff69358cb7a9ee93991395",
+      "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+      "trips.txt": "f72aaf61d79c25260966bfcc793802b2f8971f6c9ce5edb925b907a34b1df36f"
+    },
+    "canonicalCommit": "d034d6babef4ea5bcac256d26c47dcd802bb39ba",
+    "topology": {
+      "projectionVersion": 1,
+      "sha256": "e376c280fbd6292ed6fe03e7fa81541ad0b0b8c76a09f916f1e3898aac240ec1"
+    }
+  },
+  "preparedBy": "MRTDown deterministic scoped-review proposal tool",
+  "pilotLineIds": [
+    "EWL"
+  ],
+  "dateSets": [
+    {
+      "id": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "serviceDates": [
+        "2026-01-03",
+        "2026-01-10",
+        "2026-01-17",
+        "2026-01-24",
+        "2026-01-31",
+        "2026-02-07",
+        "2026-02-14",
+        "2026-02-21",
+        "2026-02-28",
+        "2026-03-07",
+        "2026-03-14",
+        "2026-03-21",
+        "2026-03-28",
+        "2026-04-04",
+        "2026-04-11",
+        "2026-04-18",
+        "2026-04-25",
+        "2026-05-02",
+        "2026-05-09",
+        "2026-05-16",
+        "2026-05-23",
+        "2026-05-30",
+        "2026-06-06",
+        "2026-06-13",
+        "2026-06-20",
+        "2026-06-27",
+        "2026-07-04",
+        "2026-07-11",
+        "2026-07-18",
+        "2026-07-25",
+        "2026-08-01",
+        "2026-08-08",
+        "2026-08-15",
+        "2026-08-22",
+        "2026-08-29",
+        "2026-09-05",
+        "2026-09-12",
+        "2026-09-19",
+        "2026-09-26",
+        "2026-10-03",
+        "2026-10-10",
+        "2026-10-17",
+        "2026-10-24",
+        "2026-10-31",
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28",
+        "2026-12-05",
+        "2026-12-12",
+        "2026-12-19",
+        "2026-12-26"
+      ]
+    },
+    {
+      "id": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "serviceDates": [
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-05",
+        "2026-01-06",
+        "2026-01-07",
+        "2026-01-08",
+        "2026-01-09",
+        "2026-01-12",
+        "2026-01-13",
+        "2026-01-14",
+        "2026-01-15",
+        "2026-01-16",
+        "2026-01-19",
+        "2026-01-20",
+        "2026-01-21",
+        "2026-01-22",
+        "2026-01-23",
+        "2026-01-26",
+        "2026-01-27",
+        "2026-01-28",
+        "2026-01-29",
+        "2026-01-30",
+        "2026-02-02",
+        "2026-02-03",
+        "2026-02-04",
+        "2026-02-05",
+        "2026-02-06",
+        "2026-02-09",
+        "2026-02-10",
+        "2026-02-11",
+        "2026-02-12",
+        "2026-02-13",
+        "2026-02-16",
+        "2026-02-17",
+        "2026-02-18",
+        "2026-02-19",
+        "2026-02-20",
+        "2026-02-23",
+        "2026-02-24",
+        "2026-02-25",
+        "2026-02-26",
+        "2026-02-27",
+        "2026-03-02",
+        "2026-03-03",
+        "2026-03-04",
+        "2026-03-05",
+        "2026-03-06",
+        "2026-03-09",
+        "2026-03-10",
+        "2026-03-11",
+        "2026-03-12",
+        "2026-03-13",
+        "2026-03-16",
+        "2026-03-17",
+        "2026-03-18",
+        "2026-03-19",
+        "2026-03-20",
+        "2026-03-23",
+        "2026-03-24",
+        "2026-03-25",
+        "2026-03-26",
+        "2026-03-27",
+        "2026-03-30",
+        "2026-03-31",
+        "2026-04-01",
+        "2026-04-02",
+        "2026-04-03",
+        "2026-04-06",
+        "2026-04-07",
+        "2026-04-08",
+        "2026-04-09",
+        "2026-04-10",
+        "2026-04-13",
+        "2026-04-14",
+        "2026-04-15",
+        "2026-04-16",
+        "2026-04-17",
+        "2026-04-20",
+        "2026-04-21",
+        "2026-04-22",
+        "2026-04-23",
+        "2026-04-24",
+        "2026-04-27",
+        "2026-04-28",
+        "2026-04-29",
+        "2026-04-30",
+        "2026-05-01",
+        "2026-05-04",
+        "2026-05-05",
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-25",
+        "2026-05-26",
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-06-01",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-04",
+        "2026-06-05",
+        "2026-06-08",
+        "2026-06-09",
+        "2026-06-10",
+        "2026-06-11",
+        "2026-06-12",
+        "2026-06-15",
+        "2026-06-16",
+        "2026-06-17",
+        "2026-06-18",
+        "2026-06-19",
+        "2026-06-22",
+        "2026-06-23",
+        "2026-06-24",
+        "2026-06-25",
+        "2026-06-26",
+        "2026-06-29",
+        "2026-06-30",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-06",
+        "2026-07-07",
+        "2026-07-08",
+        "2026-07-09",
+        "2026-07-10",
+        "2026-07-13",
+        "2026-07-14",
+        "2026-07-15",
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-20",
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29",
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-03",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25",
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-30",
+        "2026-12-01",
+        "2026-12-02",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-07",
+        "2026-12-08",
+        "2026-12-09",
+        "2026-12-10",
+        "2026-12-11",
+        "2026-12-14",
+        "2026-12-15",
+        "2026-12-16",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-21",
+        "2026-12-22",
+        "2026-12-23",
+        "2026-12-24",
+        "2026-12-25",
+        "2026-12-28",
+        "2026-12-29",
+        "2026-12-30",
+        "2026-12-31"
+      ]
+    },
+    {
+      "id": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "serviceDates": [
+        "2026-01-04",
+        "2026-01-11",
+        "2026-01-18",
+        "2026-01-25",
+        "2026-02-01",
+        "2026-02-08",
+        "2026-02-15",
+        "2026-02-22",
+        "2026-03-01",
+        "2026-03-08",
+        "2026-03-15",
+        "2026-03-22",
+        "2026-03-29",
+        "2026-04-05",
+        "2026-04-12",
+        "2026-04-19",
+        "2026-04-26",
+        "2026-05-03",
+        "2026-05-10",
+        "2026-05-17",
+        "2026-05-24",
+        "2026-05-31",
+        "2026-06-07",
+        "2026-06-14",
+        "2026-06-21",
+        "2026-06-28",
+        "2026-07-05",
+        "2026-07-12",
+        "2026-07-19",
+        "2026-07-26",
+        "2026-08-02",
+        "2026-08-09",
+        "2026-08-16",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-09-06",
+        "2026-09-13",
+        "2026-09-20",
+        "2026-09-27",
+        "2026-10-04",
+        "2026-10-11",
+        "2026-10-18",
+        "2026-10-25",
+        "2026-11-01",
+        "2026-11-08",
+        "2026-11-15",
+        "2026-11-22",
+        "2026-11-29",
+        "2026-12-06",
+        "2026-12-13",
+        "2026-12-20",
+        "2026-12-27"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "providerId": "SMRT",
+      "sourceRecordSha256": "b0ce46c8e2e5dfd65335d0177ef33221e949aa32d9d18fe2ea843024ee0cdb63",
+      "reason": "Provider agency SMRT has the explicit canonical alias SMRT_TRAINS; selected pilot routes reference it. Proposal pending repository review.",
+      "target": {
+        "kind": "operator",
+        "id": "SMRT_TRAINS"
+      },
+      "kind": "agency",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "04b84ac58ade0500e6bc1475500db5c1cb4c96c569654cc8df7be22082f65a56",
+      "sourceRecordSha256": "8cf402c3649ebac23f514826a6e5f9f107f465205540628b0e0d535da99aaf7b",
+      "reason": "Ordered source path EW1_A to EW29_B (29 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "059677d986650ab85e49cacda82f0d2d950918ab081d7998e92f385b5295dc87",
+      "sourceRecordSha256": "f3e062f5b5807a21cffe3c4f79c9d419d5dcc70015a5064148d1897c908bd68d",
+      "reason": "Ordered source path EW1_A to EW29_B (29 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "07c5d020c5e598ec5c4f7cf9897ee6529059facb82c0d69113ae88eb8ba439a9",
+      "sourceRecordSha256": "34d386d634bbb924379b467363579d2f14c579fac2afbd3cf52ad1a4280d2a23",
+      "reason": "Ordered source path EW24_B to EW33_B (10 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "0cbdac0f71da6d183d5c6299074e19a8caf66b4675dd02fc7c7b878df2cce7dc",
+      "sourceRecordSha256": "9065306d1eb9521359a52ff52f8698c5a727279f993750dc15f41e4ae013d37f",
+      "reason": "Ordered source path EW1_A to EW33_B (33 occurrences) is a exact match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "1719b55cc6b1f35fb2cc9a1096b71e8ff98f5111bf69acc4f89518db23fa574a",
+      "sourceRecordSha256": "b8ca715c94a25e03a3f5e7171ee0cbb97285083323778bc4a99f33f8fa067fb0",
+      "reason": "Ordered source path EW1_A to EW33_A (33 occurrences) is a exact match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "1a8921ec000ed7c717e79f0d3ac127562adce7de113e0014e61d5dc1ed3bf284",
+      "sourceRecordSha256": "b090758acc929c5a9d102096a9f9d4933a1e98f1584c68d0f5ba797acff512f5",
+      "reason": "Ordered source path EW1_B to EW33_A (33 occurrences) is a exact match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "1e8eef12dcf4efc7d58a209002299e8ba326c61cf2a97904a342a06af10aad89",
+      "sourceRecordSha256": "4d5baef9cdec24d1e36efad16420334a3ca730b69592417e97fbaeaf3f12422b",
+      "reason": "Ordered source path EW23_A to EW1_A (23 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "265cde852e4134e88f50a0b33772bf8bcd7cbc80c9fec416c0bee6c3934fcbac",
+      "sourceRecordSha256": "0a0e4237dd64962845986d46daf193adf03ca7f19e47551b590ddbcd5280e773",
+      "reason": "Ordered source path EW4_B to EW29_B (26 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "266e53272c0ea805c6728c8e5b486ece1e02080e17df85bc360be6e2f9649ec9",
+      "sourceRecordSha256": "d5bee823ea1d7fb658cc2824545321dbcfb92520247eaad71ed430ed8183b9c4",
+      "reason": "Ordered source path EW4_B to EW33_A (30 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "40905c7f0c3f893d521b5de7f7cb728275fcf0a7025a0e37e43480b869b670fb",
+      "sourceRecordSha256": "cea143a695848c8edf0bc4a3bd0674fc706899bbd7d68bc475329e07b161688c",
+      "reason": "Ordered source path EW1_A to EW29_B (29 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "45463cb41467cf94e89b70417ad3d5fad8bc0b48eac9fed2f3087a34a1b713e6",
+      "sourceRecordSha256": "42d16f44aa0e38ad0ca2256699246398b7d94db5702298a064bdba05fa380b64",
+      "reason": "Ordered source path EW4_A to EW1_A (4 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "46be0a0b5e919f53366b745f5bd2a1958920cc55401cdac1125ddfa9519fa1ba",
+      "sourceRecordSha256": "6d8d9a52f6c9e1300d869cde5133db6f3e01c6b43eb49b548a1682e34f8a65d5",
+      "reason": "Ordered source path EW4_A to EW1_B (4 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "48caba29d84e9f81ab2725a62b8ce6975c72ccf86a2cdab6b620d6f3e2d321f2",
+      "sourceRecordSha256": "3293536e861fc2059f2eeec617954f9b01320db18d76e327b7bc7b9fb394007a",
+      "reason": "Ordered source path EW1_B to EW33_A (33 occurrences) is a exact match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "4e6b9bcdacb1ff3d9d0988f12fe8776e821e930a2533d8c1ec53a2fad1aaefe2",
+      "sourceRecordSha256": "62bf6905214b25d3e611d6d0a1971991631819477585d43e11b7fca679fb1329",
+      "reason": "Ordered source path EW4_A to EW1_A (4 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "51256e9f05c42ba1434a6029f9780bdc3f422be3556d4f8e92e87c4ab5f9affc",
+      "sourceRecordSha256": "3a965359adce5032810859c6f53e57fa97c317667fe2dc66eb17a7d5cd917d46",
+      "reason": "Ordered source path EW1_B to EW33_A (33 occurrences) is a exact match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "544f533ba31c2c0bff6dac880b3af4753d9e5a16022319b1f64d6098966384dd",
+      "sourceRecordSha256": "d3614d21cd3b7873e02a505be2a9a182b72a98b733f85d018b783151fa538a25",
+      "reason": "Ordered source path EW3_A to EW1_A (3 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "548dc9925131f83aa23e32e6015421fddf3f57f1118d65427ddf8c9389ccab79",
+      "sourceRecordSha256": "ee32b3a0c360f4f9271823b50d8b157b362bdac8ee4b44cdd59087b318f1a5d5",
+      "reason": "Ordered source path EW1_A to EW33_A (33 occurrences) is a exact match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "562313b6fc5f490df2405898576e364cff8f526c1480a3e74f2ebf22ab62442f",
+      "sourceRecordSha256": "be28b74a4fcc2697d1db912f3236c6bccb5536681ce1c1cd9b803df0e60cbb70",
+      "reason": "Ordered source path EW4_A to EW1_B (4 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "5cc024ef6e9f729f20786d86ae321cb46b7adb41eff8b1f71f08682bdce3b810",
+      "sourceRecordSha256": "836f59a9abd18bce391b769e8974e0031e699c84f8d66cd097f52cda088e8b3b",
+      "reason": "Ordered source path EW1_B to EW33_B (33 occurrences) is a exact match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "5d27c4c224fff3768ce13520ec0a098fecc818a6b2e71d14d4525961788c94da",
+      "sourceRecordSha256": "5998f5b52541b8955a6393df2766ea8621ae109e22898113ad3ed47e79f770aa",
+      "reason": "Ordered source path EW4_B to EW33_B (30 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "6462b83ef4796873a9ab18ccbf1e9f7cd2f2caa712370c27d5f549441a845af7",
+      "sourceRecordSha256": "b8926e02faba9127c2175e43640da2531bf23c215d3cecaca4cf1c2b220f6553",
+      "reason": "Ordered source path EW1_A to EW33_B (33 occurrences) is a exact match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "65fc8f546fba6652cfdf7e4a8d43a680a8dec1c0adbe8f3e34642f05320fa1a8",
+      "sourceRecordSha256": "b6803d68f1dd51853e58141b3cd01a08b54f8853b6e03e7bc56d4d6d808d5c9e",
+      "reason": "Ordered source path EW4_A to EW1_A (4 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "66ad00ab27a1b16373770e27314472a478650b4bb0c804b675651c14b0e5debf",
+      "sourceRecordSha256": "389c87ecd9c94d32ae642cf10a40061310ac8535685a4b63a1cf4214dfd4bb54",
+      "reason": "Ordered source path EW23_A to EW1_B (23 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "6a9cede5cab423e7483b1fbea4b77715542d6caf2cea4b012273ca233352738b",
+      "sourceRecordSha256": "30d69227518d531bea68a3adca4f5ad0b0a49a936b4592f5162344c2a6c11db9",
+      "reason": "Ordered source path EW24_B to EW33_B (10 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "6bd79ccc05dfa88d3eabaf071e64492bd57b2872f5678c813240f814e75970ea",
+      "sourceRecordSha256": "a17f5bcb8e729ab6fd671948381659f6da9e7f71ebcb04f30ef6de828f0997ff",
+      "reason": "Ordered source path EW23_A to EW1_A (23 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "7d9bd7ab9ff569e5aad652edb9c5846f8e262d73ac88c8a66d6212ba11be5ed0",
+      "sourceRecordSha256": "616ac6e834a553ae8c6be41de8ca7a5ebfaeb0569bc160657398cb9e71133d0a",
+      "reason": "Ordered source path EW1_B to EW29_B (29 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "886e5e718c35855e9ebd474f072e8b726edc0a501a7a4bec6f979987a8289c5f",
+      "sourceRecordSha256": "3d9e6cc39a8dbd637f413495a64540a9925f2fca5ec175edfaae483f198b3fe9",
+      "reason": "Ordered source path EW1_A to EW33_A (33 occurrences) is a exact match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "8fb96ad23d1d1c5f7c18a5e8e46ae6183d61a1c3f323781fa3433605f59d14f3",
+      "sourceRecordSha256": "6cd757de9f3d0a255b1d7a5100d9121eaaf6888f9aea2fac8e51090a51d84359",
+      "reason": "Ordered source path EW3_A to EW1_A (3 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "9ff4f62cca792579e070d30712eae7340a70f7581178c092c8dc8130be7ded7b",
+      "sourceRecordSha256": "162d2e91cba1b23bc8263c94a2d1f6f649fc0c2cf336f2a268f034738080af2b",
+      "reason": "Ordered source path EW3_A to EW1_B (3 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "a2ba7e7d13d73387aed3bd5a27069c310e5b3fa7802c831f3d662744978c52a2",
+      "sourceRecordSha256": "7368900443e2002dc09a0d72fe879e7b8fec381d0dcc1548f5dd17c2fa2432b9",
+      "reason": "Ordered source path EW24_B to EW33_B (10 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "afb28f7dca013eac0d0d8f0ff9edba79c7f20bf33a2258774fc2cc4c9bfdb976",
+      "sourceRecordSha256": "6f7b9e9882bd856cb837c60477c9a9742fcca7854c27ed37275517a53896c076",
+      "reason": "Ordered source path EW23_A to EW1_B (23 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b264df54465bb52cac94409ac384e2e9a7cce3a53cfe02c30e635c4da0b822d7",
+      "sourceRecordSha256": "160f5850e4bd4e430e26f24a4e007a171a574fcd64acc8bc55fc26b89d041640",
+      "reason": "Ordered source path EW1_B to EW33_B (33 occurrences) is a exact match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b40cd5dc2c056016f1c1cb1176d29edc4e1d0cb4363b8a58230c581ea8da4645",
+      "sourceRecordSha256": "cca36c8902c6770ad5b4d03c79e19d6446e9b736ea3ea27a7217f2cd7cd925a8",
+      "reason": "Ordered source path EW24_B to EW33_A (10 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b5df8b301fa3177e40b42ae3c1ae428b0cf57bfffa89a56feefec8f63ee94adc",
+      "sourceRecordSha256": "b781cc7ce29b5089987d0afbcfee2336bb82df34bd203c0fb2ca754e5063e317",
+      "reason": "Ordered source path EW1_B to EW29_B (29 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b738904873d4b2834ea94ea67b7efa565fa8b0c0548d789474557d63bc59f3ee",
+      "sourceRecordSha256": "c28217fd0626d6d4b1caeaeea19e294929fcf8af4dfbe4c56cbda074d18f8d4a",
+      "reason": "Ordered source path EW1_A to EW33_B (33 occurrences) is a exact match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b9b9a57d78ae664656c5a188f713d3cf8eb0c92cb595ffcace16172a2af9c0a5",
+      "sourceRecordSha256": "d90d5d2a337e28ee4d18ee71a571ab16b0dd1c12a62a4d11390c4e4df0a59ab6",
+      "reason": "Ordered source path EW1_B to EW33_B (33 occurrences) is a exact match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "bb10e3e4c2052d9f37d53b1c8f3acfb14449b4db46709800c5f61e4d5b40480c",
+      "sourceRecordSha256": "f72cfcd056e6f95b149019663ae7a54a0318472c693d4a860f4ee884fbadf800",
+      "reason": "Ordered source path EW23_A to EW1_B (23 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "bf716e0d3d1d85879efcc1b507b6d1c394e1e1b248ef6d6e5a7eef9864456ac0",
+      "sourceRecordSha256": "8ea39e130a12a3e511d72b923edcdf32203e489cb0ca894a89a8f0af9e9e49d5",
+      "reason": "Ordered source path EW3_A to EW1_B (3 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "d2885f8b43b2f7414b901dde0c5fc5b4925b86d5974706856974f46fa85dec08",
+      "sourceRecordSha256": "3170fcae3582c1d2086ec9a7b17e6cda0f3f29374970e33a4a3dad184bd19032",
+      "reason": "Ordered source path EW3_A to EW1_A (3 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "d408b2b7e6261d1e0fae1a182864137063f08caa478d69a30534610999d6a6ce",
+      "sourceRecordSha256": "64701fc3d3b7cfad220292c35e1bb144f67fba757cfb0a7361e335d5e4e4b377",
+      "reason": "Ordered source path EW24_B to EW33_A (10 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "dd326456b3d5c06d4e9f02eab4434319c15179a647c2236e952c5cb3c44bc5d7",
+      "sourceRecordSha256": "9e0f3f443a02ff77f38a102688ab20def4f9246b86e7e9826ecd4e1ab7ec503f",
+      "reason": "Ordered source path EW4_A to EW1_B (4 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "df7f848138da86c4a968bbd4f66be027dca47807c1748f1ed6c6b80c422cf375",
+      "sourceRecordSha256": "e2a37f529e31cd9d447eaa1017eca77829dae4f786ea230569b47be441e0e32d",
+      "reason": "Ordered source path EW24_B to EW33_A (10 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "e11562d9d73f7323703818b63b9074eec83a4e7c4ab919dad8323ad1d6d47f4f",
+      "sourceRecordSha256": "a8a1d0b040b9a50caa35f0791c5e0d4954c4ea9f7e3ea9d8afe0248d46fefc42",
+      "reason": "Ordered source path EW3_A to EW1_B (3 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "e30b11e13eb4739301199330b109100a1805f199663ddb557bd63bac7f970db5",
+      "sourceRecordSha256": "43eb8a29fa3b29e56d11632d68223059ac0e9b4049f6140c2ca01e1049837ada",
+      "reason": "Ordered source path EW1_B to EW29_B (29 occurrences) is a contiguousSegment match of EWL_MAIN_W/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_W",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "e865aae2c795db5e5ecc0b3d6fe5ffdfa1eb23e0747db201d8556ac0201fdbba",
+      "sourceRecordSha256": "7668e2ebac2c921682c8bd380fc5ab1657be6e3f822e4dcf7f4b4edada78bd7a",
+      "reason": "Ordered source path EW23_A to EW1_A (23 occurrences) is a contiguousSegment match of EWL_MAIN_E/r_2017_tuas_west_extension on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "EWL_MAIN_E",
+        "revisionId": "r_2017_tuas_west_extension",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_CGL_CG2_CG",
+      "sourceRecordSha256": "495d80b27bd016c7c4e3bf2336e889335935b7cba7c125512f9d2003078656f3",
+      "reason": "Provider route EWL_CGL_CG2_CG has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_CGL_CG_CG2",
+      "sourceRecordSha256": "a4dce38f6ac87907d9cd2972ac2e2b673d97a4a6a30caf29ad8dabc730873fb3",
+      "reason": "Provider route EWL_CGL_CG_CG2 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW1_EW29",
+      "sourceRecordSha256": "91bc97a99effcd10ff6a8d9ce71bf9a7af423bd2e05e2f26c577812cfb79e7a1",
+      "reason": "Provider route EWL_EW1_EW29 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW1_EW33",
+      "sourceRecordSha256": "87428a15217681baed3502bcf3db43ba2b1edef3478cf5bd160180fc8e5202e5",
+      "reason": "Provider route EWL_EW1_EW33 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW23_EW1",
+      "sourceRecordSha256": "a4abf4c596942218bd5f335ba48deb6ed33361f6de6e92dd7f2ab47b43671632",
+      "reason": "Provider route EWL_EW23_EW1 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW24_EW33",
+      "sourceRecordSha256": "dfa5fdac492a7395f07848ac7df3edaa959c6604e385bae27ce2702ab53e4a38",
+      "reason": "Provider route EWL_EW24_EW33 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW28_EW1",
+      "sourceRecordSha256": "c4f1c99ec6425ec4082c4749f31427a8c30a7888723354420053dcd20bfaa7ec",
+      "reason": "Provider route EWL_EW28_EW1 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW29_EW1",
+      "sourceRecordSha256": "67ef14cb40fa9bdeeab3139da76b58862eb9a94be649712dd39a5a13fc3a7be7",
+      "reason": "Provider route EWL_EW29_EW1 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW2_EW29",
+      "sourceRecordSha256": "ec0bb2b66f8f9d4201b48fdb759e4742e2bb7762069b39bd94653c717aadd936",
+      "reason": "Provider route EWL_EW2_EW29 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW2_EW33",
+      "sourceRecordSha256": "6a0244a48d714b2b29779ad9933263fd4175f6d08cd517f64cf9eb5cb399d70f",
+      "reason": "Provider route EWL_EW2_EW33 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW30_EW33",
+      "sourceRecordSha256": "0e76d1c03f4b5824da5d6e18809f1fac3d525162c81e200ddd6d058c7b7484d5",
+      "reason": "Provider route EWL_EW30_EW33 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW32_EW1",
+      "sourceRecordSha256": "d2f3364633c6782ba9aa5f39f46c01ea12433bce1339278c289b6c52432fb710",
+      "reason": "Provider route EWL_EW32_EW1 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW33_EW1",
+      "sourceRecordSha256": "744f0d60bbd24f38eaf2c8c9a6313f167ed417f06da4b72e8e96567efd698385",
+      "reason": "Provider route EWL_EW33_EW1 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW3_EW1",
+      "sourceRecordSha256": "f2e4ce13d65279c527f3ac03ce7c8603f187b2d1637686e14153123c1f8a0e1d",
+      "reason": "Provider route EWL_EW3_EW1 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW4_EW1",
+      "sourceRecordSha256": "6fdf90d9ce96e0f41d4316b3365dc84e9688bec6815fff71237f9afd5d7078a1",
+      "reason": "Provider route EWL_EW4_EW1 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW4_EW29",
+      "sourceRecordSha256": "db0c85e99c7e2f42b1d7b071faf7015bb99997a89f12b40ae63d0765d8595cfc",
+      "reason": "Provider route EWL_EW4_EW29 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EWL_EW4_EW33",
+      "sourceRecordSha256": "d1515e30f18f965b226b3e6ebd239b7a801d9c07e6473581f78b86e03d1fd765",
+      "reason": "Provider route EWL_EW4_EW33 has the explicit canonical line family EWL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "EWL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC22",
+      "sourceRecordSha256": "111cf6e273392f1f387b1364de0f5902e67634989414ab5d461ecbf8c05094a1",
+      "reason": "Source station code CC22 identifies canonical station BNV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BNV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC9",
+      "sourceRecordSha256": "640e334b2bb7e8c53027c84aa2b7e66c397446842a01c13060486c75e902cda7",
+      "reason": "Source station code CC9 identifies canonical station PYL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PYL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CG1",
+      "sourceRecordSha256": "b454eb2701f332ee48290302dfb0646eb30e16196ba690b68b43a6e423f73576",
+      "reason": "Source station code CG1 identifies canonical station XPO. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "XPO"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CG1_A",
+      "sourceRecordSha256": "caf641fa81dce2156bad3650e2f5383b37cdc576117f885aee27ef59731b4038",
+      "reason": "Explicit source platform label B with code CG1 and parent CG1 identifies XPO_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "XPO_EWL_B",
+        "stationId": "XPO"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CG1_B",
+      "sourceRecordSha256": "1ba0bb462becb8b257ca5c1e4f3127317c25f54326e5a491802553c3ebe1cd65",
+      "reason": "Explicit source platform label A with code CG1 and parent CG1 identifies XPO_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "XPO_EWL_A",
+        "stationId": "XPO"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CG2",
+      "sourceRecordSha256": "40eb6727d05f8ad7815132db83138485c60c179ef5c47f55ea1960fd2b651e29",
+      "reason": "Source station code CG2 identifies canonical station CGA. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CGA"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT14",
+      "sourceRecordSha256": "b19f450486ca17d9ebdfae9391784fa1f841b509d2b4900fb8a2ecf69ec65550",
+      "reason": "Source station code DT14 identifies canonical station BGS. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BGS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT32",
+      "sourceRecordSha256": "8f9becf3b510ccfd3ee732fc3d04c5d62daeec4305f9434cd890046eead58a90",
+      "reason": "Source station code DT32 identifies canonical station TAM. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TAM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW10",
+      "sourceRecordSha256": "ec0bc5a58e9a4818fd090723c4160e4cb2620a92a3334724a4b0210354be4974",
+      "reason": "Source station code EW10 identifies canonical station KAL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KAL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW10_A",
+      "sourceRecordSha256": "4ff95dd28a45950afa50e30c70dc2637a4482ab4f25019a940968bb1c16f96c1",
+      "reason": "Explicit source platform label A with code EW10 and parent EW10 identifies KAL_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KAL_EWL_A",
+        "stationId": "KAL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW10_B",
+      "sourceRecordSha256": "9c177ec57febd3e12815ee8c7df68a1e20b1e815e00b7e6feb25a375b4b06427",
+      "reason": "Explicit source platform label B with code EW10 and parent EW10 identifies KAL_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KAL_EWL_B",
+        "stationId": "KAL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW11",
+      "sourceRecordSha256": "9ffb245134bb503a4b9969955bfdd1a980c172f16d2a8085d2f1e04d78d01da4",
+      "reason": "Source station code EW11 identifies canonical station LVR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "LVR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW11_A",
+      "sourceRecordSha256": "83487e5b41851c7556824fcc164df52b3c3f878e3d5332cadf4a3becd09c28c1",
+      "reason": "Explicit source platform label A with code EW11 and parent EW11 identifies LVR_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LVR_EWL_A",
+        "stationId": "LVR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW11_B",
+      "sourceRecordSha256": "30e44448851d6a6bad888504ccbcaf5f104e40546275ac2a395d2d2af8d05d53",
+      "reason": "Explicit source platform label B with code EW11 and parent EW11 identifies LVR_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LVR_EWL_B",
+        "stationId": "LVR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW12_A",
+      "sourceRecordSha256": "0e30ad14384ae012c63df60d718561efce6e038374032b649921e5424a299c4b",
+      "reason": "Explicit source platform label A with code EW12 and parent DT14 identifies BGS_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BGS_EWL_A",
+        "stationId": "BGS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW12_B",
+      "sourceRecordSha256": "4d6247d60871372208738de9105eef23634f798310ba401efba6cfa9ee37a909",
+      "reason": "Explicit source platform label B with code EW12 and parent DT14 identifies BGS_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BGS_EWL_B",
+        "stationId": "BGS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW13",
+      "sourceRecordSha256": "dcc74c4a7656b33ea9b13ec6bc5a2b9eb880e9cce06dc58c923de15d2c20e678",
+      "reason": "Source station code EW13 identifies canonical station CTH. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CTH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW13_A",
+      "sourceRecordSha256": "38d01438a8162ee275bc69c5ef5e0ff085f7cffa182fdfe00b01ea3db243f052",
+      "reason": "Explicit source platform label D with code EW13 and parent EW13 identifies CTH_EWL_D. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CTH_EWL_D",
+        "stationId": "CTH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW13_B",
+      "sourceRecordSha256": "94c470ee10fc0404cf35220eaaf7ec52533c1b71cac6de2133d0505c63c1ada7",
+      "reason": "Explicit source platform label B with code EW13 and parent EW13 identifies CTH_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CTH_EWL_B",
+        "stationId": "CTH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW14",
+      "sourceRecordSha256": "80427a538aa676ef80bbd93a166648cb52d7250a42d426b01b579c4174c94e88",
+      "reason": "Source station code EW14 identifies canonical station RFP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "RFP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW14_A",
+      "sourceRecordSha256": "86d75d302f51777e0075843805cfd927652e81e381639f2f79c00079e3a7bf42",
+      "reason": "Explicit source platform label A with code EW14 and parent EW14 identifies RFP_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RFP_EWL_A",
+        "stationId": "RFP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW14_B",
+      "sourceRecordSha256": "b1c84e110bb4a1268c342185632f0383af6e144c13830828252f5205fed401b3",
+      "reason": "Explicit source platform label C with code EW14 and parent EW14 identifies RFP_EWL_C. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RFP_EWL_C",
+        "stationId": "RFP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW15",
+      "sourceRecordSha256": "6c1d400e797e610b40c9228652bad561c80a2b09d678578a8b25d4d1f70ce1ff",
+      "reason": "Source station code EW15 identifies canonical station TPG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TPG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW15_A",
+      "sourceRecordSha256": "3f6adc5a00bb06669ab15e0ff2c228b72d96613af75c83475c7afa219e3f4fb5",
+      "reason": "Explicit source platform label A with code EW15 and parent EW15 identifies TPG_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TPG_EWL_A",
+        "stationId": "TPG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW15_B",
+      "sourceRecordSha256": "874a05f5922b5991d5f57ffb867eedecd402e739688c9fdbaf589437ba95487d",
+      "reason": "Explicit source platform label B with code EW15 and parent EW15 identifies TPG_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TPG_EWL_B",
+        "stationId": "TPG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW16",
+      "sourceRecordSha256": "78eeb4dff6cfee5758de5600ba7a58307d04f91b574b5da9c58d6cb8f869f1f7",
+      "reason": "Source station code EW16 identifies canonical station OTP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "OTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW16_A",
+      "sourceRecordSha256": "42570e4ecdabb7b60a2ef56500fa79c8dd72b2b73448c0aee5a368cca0f66851",
+      "reason": "Explicit source platform label A with code EW16 and parent EW16 identifies OTP_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "OTP_EWL_A",
+        "stationId": "OTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW16_B",
+      "sourceRecordSha256": "ce28e607d64e62e58ccb39d6be1a13ebce847c6231c0f1f190584e5791285ef4",
+      "reason": "Explicit source platform label B with code EW16 and parent EW16 identifies OTP_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "OTP_EWL_B",
+        "stationId": "OTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW17",
+      "sourceRecordSha256": "5fc8605e6eac5fcd9f8a823e5c56b492c5cb83688aebd23c18a1b3fced5c87cc",
+      "reason": "Source station code EW17 identifies canonical station TIB. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TIB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW17_A",
+      "sourceRecordSha256": "7ad7baac76e2ff9e022082bb4c5657dbe805d1f9743e89bb57cd80c12f4bc1bf",
+      "reason": "Explicit source platform label A with code EW17 and parent EW17 identifies TIB_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TIB_EWL_A",
+        "stationId": "TIB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW17_B",
+      "sourceRecordSha256": "c550478a6eddbd6c77734b4315f61466b0066e80a3ab2e147d323a12197ec71d",
+      "reason": "Explicit source platform label B with code EW17 and parent EW17 identifies TIB_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TIB_EWL_B",
+        "stationId": "TIB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW18",
+      "sourceRecordSha256": "c5a4943e59da166cb676b3c9fc5339de91ae0e7ee67f65806b0c688d31f27f72",
+      "reason": "Source station code EW18 identifies canonical station RDH. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "RDH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW18_A",
+      "sourceRecordSha256": "b7305822e8e43a41fa18e8abbb6ce0d03f9520a4c9eb48713385bfcc94c59232",
+      "reason": "Explicit source platform label A with code EW18 and parent EW18 identifies RDH_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RDH_EWL_A",
+        "stationId": "RDH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW18_B",
+      "sourceRecordSha256": "74a9e411f2f63f4a79cde611530c813f151b813d3ee94cc56365933e2844411d",
+      "reason": "Explicit source platform label B with code EW18 and parent EW18 identifies RDH_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "RDH_EWL_B",
+        "stationId": "RDH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW19",
+      "sourceRecordSha256": "44f820fbc88a7f64197e04aa8ece6449e0d185d5bd0510cdfe8e77afe6f7743b",
+      "reason": "Source station code EW19 identifies canonical station QUE. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "QUE"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW19_A",
+      "sourceRecordSha256": "2b5e3fb8f35db0f53df53fd6973d42d6a104190128fd24e3ff91d1b646cbd4d9",
+      "reason": "Explicit source platform label A with code EW19 and parent EW19 identifies QUE_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "QUE_EWL_A",
+        "stationId": "QUE"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW19_B",
+      "sourceRecordSha256": "9863ee0a55ff859db50abaac175a4e2f8cc6da767964766af8ff729425e92e06",
+      "reason": "Explicit source platform label B with code EW19 and parent EW19 identifies QUE_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "QUE_EWL_B",
+        "stationId": "QUE"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW1",
+      "sourceRecordSha256": "efb170763029a9ae471475fca76b130cc518a05a3cf5fbd01f5cc4676d4ce297",
+      "reason": "Source station code EW1 identifies canonical station PSR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PSR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW1_A",
+      "sourceRecordSha256": "5beb32254db9330160688915096223d3071979e58b97a09ab4d3b64e585c39ac",
+      "reason": "Explicit source platform label A with code EW1 and parent EW1 identifies PSR_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PSR_EWL_A",
+        "stationId": "PSR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW1_B",
+      "sourceRecordSha256": "22cfb1203a9f8b531c8af310dc9c1affb47aebba712c33af4e930323dc09fa33",
+      "reason": "Explicit source platform label B with code EW1 and parent EW1 identifies PSR_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PSR_EWL_B",
+        "stationId": "PSR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW20",
+      "sourceRecordSha256": "82fc3b1c61a94c2d176b2bd9a1754b8d0028967e534f604c073693bc5c12bb75",
+      "reason": "Source station code EW20 identifies canonical station COM. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "COM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW20_A",
+      "sourceRecordSha256": "bf8c3573a2555aec4bcb8307f2eaf7430935d0214ba2d1a4e78894eb73d27622",
+      "reason": "Explicit source platform label A with code EW20 and parent EW20 identifies COM_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "COM_EWL_A",
+        "stationId": "COM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW20_B",
+      "sourceRecordSha256": "30a8cead2f6a3579930ee5c866a01da39925715b5ed0738ddb0535e6fd4a8154",
+      "reason": "Explicit source platform label B with code EW20 and parent EW20 identifies COM_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "COM_EWL_B",
+        "stationId": "COM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW21_A",
+      "sourceRecordSha256": "3622404bcd1b158d12518321258803b2c3683adf47ddf8c648f67ae363b6736d",
+      "reason": "Explicit source platform label A with code EW21 and parent CC22 identifies BNV_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BNV_EWL_A",
+        "stationId": "BNV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW21_B",
+      "sourceRecordSha256": "9f875bafc308296a89cebc7f776550589de2115725b97eb7a9f1736f209e7550",
+      "reason": "Explicit source platform label B with code EW21 and parent CC22 identifies BNV_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BNV_EWL_B",
+        "stationId": "BNV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW22",
+      "sourceRecordSha256": "1ca36850dd6dcd9b5e656195e9f303727bd77727df4534a93396a409fdcccaec",
+      "reason": "Source station code EW22 identifies canonical station DVR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "DVR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW22_A",
+      "sourceRecordSha256": "165b8411d3b61d36c26007e00f4171d3a83dcc589e9566dcac604f288a1706b0",
+      "reason": "Explicit source platform label A with code EW22 and parent EW22 identifies DVR_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DVR_EWL_A",
+        "stationId": "DVR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW22_B",
+      "sourceRecordSha256": "c41cc2616f6706a6ebfaf8466da7c83b53d98db834167fca41d3d90433425177",
+      "reason": "Explicit source platform label B with code EW22 and parent EW22 identifies DVR_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "DVR_EWL_B",
+        "stationId": "DVR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW23",
+      "sourceRecordSha256": "8cbbc7333b8b31d0fbfe245436ccd33f407e592539e9d1bff719b3eced706af8",
+      "reason": "Source station code EW23 identifies canonical station CLE. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CLE"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW23_A",
+      "sourceRecordSha256": "a65e7cd446854fc793ea751dc332117c46d69282f31f32c562c828f9a37b43a7",
+      "reason": "Explicit source platform label A with code EW23 and parent EW23 identifies CLE_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CLE_EWL_A",
+        "stationId": "CLE"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW23_B",
+      "sourceRecordSha256": "b0e20d57b42e08b2f336a1753921141c6e4974f81e91c78762c54308c0ad74b9",
+      "reason": "Explicit source platform label B with code EW23 and parent EW23 identifies CLE_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CLE_EWL_B",
+        "stationId": "CLE"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW24",
+      "sourceRecordSha256": "8d16c735ce80b893cce97aa042905128534faadcdfd0a1bc827ecf3b1df54a43",
+      "reason": "Source station code EW24 identifies canonical station JUR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "JUR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW24_B",
+      "sourceRecordSha256": "e392bd2b1bd7aabadeb541478e2b751f0997aae38cc3e07c5f46212d0997a56f",
+      "reason": "Explicit source platform label F with code EW24 and parent EW24 identifies JUR_EWL_F. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "JUR_EWL_F",
+        "stationId": "JUR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW25",
+      "sourceRecordSha256": "4a408fd1d48d1c448001a842fd2e4723f02e83ed2f399f3bf364aac39cf8e498",
+      "reason": "Source station code EW25 identifies canonical station CNG. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CNG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW25_A",
+      "sourceRecordSha256": "2917188fd034c96723e0dfc9726ee1e994222a6fd50a00064adfeaf05a78fbab",
+      "reason": "Explicit source platform label A with code EW25 and parent EW25 identifies CNG_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CNG_EWL_A",
+        "stationId": "CNG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW25_B",
+      "sourceRecordSha256": "0aace6e3b31efe4e616c2fff8f80106f61394fc021ab5549451f8440b3d8c292",
+      "reason": "Explicit source platform label B with code EW25 and parent EW25 identifies CNG_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CNG_EWL_B",
+        "stationId": "CNG"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW26",
+      "sourceRecordSha256": "4b58dc3ab01bb2e1495aeb69556d9dc5f736899e52f175cc85fc940f853ac971",
+      "reason": "Source station code EW26 identifies canonical station LKS. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "LKS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW26_A",
+      "sourceRecordSha256": "b23244d417fdb30d5982907a46550ff4a47b5d4d40ead72ace5c34370151e37e",
+      "reason": "Explicit source platform label A with code EW26 and parent EW26 identifies LKS_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LKS_EWL_A",
+        "stationId": "LKS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW26_B",
+      "sourceRecordSha256": "9ef30bf9ed44cbf964774822561291ed598db00337ed1db63db904429e78b9c2",
+      "reason": "Explicit source platform label B with code EW26 and parent EW26 identifies LKS_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LKS_EWL_B",
+        "stationId": "LKS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW27",
+      "sourceRecordSha256": "c98fa464fd5f20972f9333829492da0c9ad21aceb1149290345ebc0a535e332a",
+      "reason": "Source station code EW27 identifies canonical station BNL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BNL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW27_A",
+      "sourceRecordSha256": "c36436b75f5e8a86d91359df904f153ed988ec88b8437600411e6058bb8f0207",
+      "reason": "Explicit source platform label A with code EW27 and parent EW27 identifies BNL_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BNL_EWL_A",
+        "stationId": "BNL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW27_B",
+      "sourceRecordSha256": "71077e9e0921eb8bb1a61109fc04af23bce51a687652fc09896f4ec49e0f23e0",
+      "reason": "Explicit source platform label B with code EW27 and parent EW27 identifies BNL_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BNL_EWL_B",
+        "stationId": "BNL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW28",
+      "sourceRecordSha256": "7c6405718a8e2f933aed7f8754ec50300badfc11da8363aff241457ca8415985",
+      "reason": "Source station code EW28 identifies canonical station PNR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "PNR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW28_A",
+      "sourceRecordSha256": "6e282a8eb11805fa12e4d74621b2242e78119bd86007337ac89b8810560f64c2",
+      "reason": "Explicit source platform label A with code EW28 and parent EW28 identifies PNR_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PNR_EWL_A",
+        "stationId": "PNR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW28_B",
+      "sourceRecordSha256": "885a509d9a4a9678317ab4a712bbe2f7e0fd543afb9149bb7d81626e69008a55",
+      "reason": "Explicit source platform label B with code EW28 and parent EW28 identifies PNR_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PNR_EWL_B",
+        "stationId": "PNR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW29",
+      "sourceRecordSha256": "8d846bf79c95911ce9836de2cb6f4afe4b15839e9c918df7c917baf2c50ca1f4",
+      "reason": "Source station code EW29 identifies canonical station JKN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "JKN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW29_A",
+      "sourceRecordSha256": "57e474ba225042539cf830e737e150bfeb6e6d0f1322c88e22a4467ad731bbd9",
+      "reason": "Explicit source platform label A with code EW29 and parent EW29 identifies JKN_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "JKN_EWL_A",
+        "stationId": "JKN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW29_B",
+      "sourceRecordSha256": "4e716bf4e75404856e8b6ed0efa8cf73d2c26728825115ba23b5bf1e18b9195f",
+      "reason": "Explicit source platform label B with code EW29 and parent EW29 identifies JKN_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "JKN_EWL_B",
+        "stationId": "JKN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW2_A",
+      "sourceRecordSha256": "54f0b8d07635c991b4d38ff4dcb47a8b309e78820d4600e4343942f8f77a793d",
+      "reason": "Explicit source platform label A with code EW2 and parent DT32 identifies TAM_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TAM_EWL_A",
+        "stationId": "TAM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW2_B",
+      "sourceRecordSha256": "7bc70b2d346118539b5bb0d08db39b33a23aa0a009383cb6f13502b9b3461437",
+      "reason": "Explicit source platform label B with code EW2 and parent DT32 identifies TAM_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TAM_EWL_B",
+        "stationId": "TAM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW30",
+      "sourceRecordSha256": "5ccff9874d86ca5462bebe52550ad86975e3c3e71cc6c94bba0a1a8fb0c0b0e9",
+      "reason": "Source station code EW30 identifies canonical station GCL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "GCL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW30_A",
+      "sourceRecordSha256": "4fbc782840e1ee33749dbcbe90ca66f6e4ef93dd3cdb01bd9be4576b85f1322f",
+      "reason": "Explicit source platform label A with code EW30 and parent EW30 identifies GCL_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "GCL_EWL_A",
+        "stationId": "GCL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW30_B",
+      "sourceRecordSha256": "15405b0bd7ceabf009192e805d4f7d9d804203894fe8bb31c63f901b7bde3e8d",
+      "reason": "Explicit source platform label B with code EW30 and parent EW30 identifies GCL_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "GCL_EWL_B",
+        "stationId": "GCL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW31",
+      "sourceRecordSha256": "9524729251bdef14a8413f5163efdc72be05d9be02bba0318b475c5ed6c7ee59",
+      "reason": "Source station code EW31 identifies canonical station TCR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TCR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW31_A",
+      "sourceRecordSha256": "dd93e67c4c3205d5508164e89889342d02aa45607dacd0d535efdba2e7876cdc",
+      "reason": "Explicit source platform label A with code EW31 and parent EW31 identifies TCR_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TCR_EWL_A",
+        "stationId": "TCR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW31_B",
+      "sourceRecordSha256": "16d5be0c20dd63138702c361f5ba60f3a841d0e42c3f3585de5c762ce1d5331d",
+      "reason": "Explicit source platform label B with code EW31 and parent EW31 identifies TCR_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TCR_EWL_B",
+        "stationId": "TCR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW32",
+      "sourceRecordSha256": "09982675d5fac0abe3d4eca82fa28afcc3acd91e21e2620e4685668d359c102d",
+      "reason": "Source station code EW32 identifies canonical station TWR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TWR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW32_A",
+      "sourceRecordSha256": "9313eee5992738dfe93c6fe39e95bd59e62017d4f11df0e83cead96fdc3d3234",
+      "reason": "Explicit source platform label A with code EW32 and parent EW32 identifies TWR_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TWR_EWL_A",
+        "stationId": "TWR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW32_B",
+      "sourceRecordSha256": "20e6bb8cb5be2d091d88e41c1049d021440b2c5c990f4e0db568a1a29ca90a69",
+      "reason": "Explicit source platform label B with code EW32 and parent EW32 identifies TWR_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TWR_EWL_B",
+        "stationId": "TWR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW33",
+      "sourceRecordSha256": "e1854d471e7bb174a0a008ef046e55d5801d190716c8673d027a2744cbd3ee38",
+      "reason": "Source station code EW33 identifies canonical station TLK. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TLK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW33_A",
+      "sourceRecordSha256": "1d6859860327b084bf447f283bccfd38f7684e42e214603754ebf7dd362a62c8",
+      "reason": "Explicit source platform label A with code EW33 and parent EW33 identifies TLK_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TLK_EWL_A",
+        "stationId": "TLK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW33_B",
+      "sourceRecordSha256": "b59ce2c6e25af9bb54dcfb2dcdb2787fb40cc80c337900c84eb26a3eac2fe994",
+      "reason": "Explicit source platform label B with code EW33 and parent EW33 identifies TLK_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TLK_EWL_B",
+        "stationId": "TLK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW3",
+      "sourceRecordSha256": "a2d8277591f8a659336c4a7b91a4ea44bfa1d0178186a32ae9c624e6d5e7518e",
+      "reason": "Source station code EW3 identifies canonical station SIM. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SIM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW3_A",
+      "sourceRecordSha256": "2771ac62454014155ac9889d33b07cfd14cc4dc80cb77dbdfa43b32023eabcfe",
+      "reason": "Explicit source platform label A with code EW3 and parent EW3 identifies SIM_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SIM_EWL_A",
+        "stationId": "SIM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW3_B",
+      "sourceRecordSha256": "ee20782eee9cb4b30453a1a895035c4a2363d815b3fc19bfa95b97a92706a1e5",
+      "reason": "Explicit source platform label B with code EW3 and parent EW3 identifies SIM_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SIM_EWL_B",
+        "stationId": "SIM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW4",
+      "sourceRecordSha256": "707de28b0f0bcf3385a423d4a6acfd84b3ee6082288c89242bc7e90556da6812",
+      "reason": "Source station code EW4 identifies canonical station TNM. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TNM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW4_A",
+      "sourceRecordSha256": "65f68336494ab668ff082165d86c4fc46dd5002281f187fcae2fdec8fab69b60",
+      "reason": "Explicit source platform label A with code EW4 and parent EW4 identifies TNM_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TNM_EWL_A",
+        "stationId": "TNM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW4_B",
+      "sourceRecordSha256": "318f00520b663e94fd89d178ac7529de173315fe7cab26fb3380ca91dadeb828",
+      "reason": "Explicit source platform label F with code EW4 and parent EW4 identifies TNM_EWL_F. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TNM_EWL_F",
+        "stationId": "TNM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW5",
+      "sourceRecordSha256": "9f5f3d862e296f0c6bd6b590696d6a4c9849b76db876e4004545bb3c19c8241c",
+      "reason": "Source station code EW5 identifies canonical station BDK. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BDK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW5_A",
+      "sourceRecordSha256": "f4c9401bc5b8e8e54895deb2b0fa5fad23f9218260722d0cf1ad158753bb2638",
+      "reason": "Explicit source platform label A with code EW5 and parent EW5 identifies BDK_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BDK_EWL_A",
+        "stationId": "BDK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW5_B",
+      "sourceRecordSha256": "6ec9da63a827ece45d91d1af344a6d70fa026c64c0e1abdc6919209e05a03cdd",
+      "reason": "Explicit source platform label B with code EW5 and parent EW5 identifies BDK_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BDK_EWL_B",
+        "stationId": "BDK"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW6",
+      "sourceRecordSha256": "aeae76942966462f42b0c2dc1f143bd64b456a3d33d82be38ac07608033bbf7d",
+      "reason": "Source station code EW6 identifies canonical station KEM. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KEM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW6_A",
+      "sourceRecordSha256": "d777282cba89740d7cd1d09df01bcdbbbc2fc9985ee46aeff9a4ab0025ffd487",
+      "reason": "Explicit source platform label A with code EW6 and parent EW6 identifies KEM_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KEM_EWL_A",
+        "stationId": "KEM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW6_B",
+      "sourceRecordSha256": "dfdb1b5cfafd5ea8489a66a868f7b691e5ba5017df20ef87d0ba7e683bf59a70",
+      "reason": "Explicit source platform label B with code EW6 and parent EW6 identifies KEM_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KEM_EWL_B",
+        "stationId": "KEM"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW7",
+      "sourceRecordSha256": "6eb66cd058dd1f2a3947f07a732bf3e9e86658ed9cc04618525c06aea428ae27",
+      "reason": "Source station code EW7 identifies canonical station EUN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "EUN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW7_A",
+      "sourceRecordSha256": "8def723bb1696a9b16b9d3004db7796b180153648be0e8577e60734e81329967",
+      "reason": "Explicit source platform label A with code EW7 and parent EW7 identifies EUN_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "EUN_EWL_A",
+        "stationId": "EUN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW7_B",
+      "sourceRecordSha256": "f7b8ca2d2c3f895b29f72819ab5f70f6e0d8fe602adf8be5d836d02144d612db",
+      "reason": "Explicit source platform label B with code EW7 and parent EW7 identifies EUN_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "EUN_EWL_B",
+        "stationId": "EUN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW8_A",
+      "sourceRecordSha256": "5936311696d035a76576059f94e5a9efdb062449b8544fe831ba05ef2b2077fc",
+      "reason": "Explicit source platform label A with code EW8 and parent CC9 identifies PYL_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PYL_EWL_A",
+        "stationId": "PYL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW8_B",
+      "sourceRecordSha256": "c78c9cb2fc7aef28c743d2ebc09ccf79d5bd6fbe7a44437a77092b340dd4caac",
+      "reason": "Explicit source platform label B with code EW8 and parent CC9 identifies PYL_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "PYL_EWL_B",
+        "stationId": "PYL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW9",
+      "sourceRecordSha256": "d4a8b087bb3f7f66736e65f98fc62aa8dfa1e59bfb916c1c1f6cc04413377451",
+      "reason": "Source station code EW9 identifies canonical station ALJ. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "ALJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW9_A",
+      "sourceRecordSha256": "189166f03f0ed6edf93aac7cff9d5e2126b29dbcc9c5dcc3412b99854559630a",
+      "reason": "Explicit source platform label A with code EW9 and parent EW9 identifies ALJ_EWL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "ALJ_EWL_A",
+        "stationId": "ALJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW9_B",
+      "sourceRecordSha256": "01e82969c7020b7edd96d4f60af6c1ca507d0fcc2132a217287c6147f163044e",
+      "reason": "Explicit source platform label B with code EW9 and parent EW9 identifies ALJ_EWL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "ALJ_EWL_B",
+        "stationId": "ALJ"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    }
+  ]
+}
