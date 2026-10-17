@@ -67,7 +67,7 @@ the unresolved dates in that cell by investigation causes and candidate checks:
 | `outside-pilot` | The proposal pilot does not include this scope; this is not a source defect. |
 | `current-platform-diagnostics` | At least one temporal candidate fails current platform/date/boarding diagnostics. Per-candidate flags retain which candidates fail. |
 | `group-member-diagnostics` | A version-3 candidate fails the every-member group check even if another alternative is usable. |
-| `operator-period` | The matched route/agency identity is incompatible with its line's operator period on these dates. Missing identities are reported as dependencies, not as an asserted operator-period failure. |
+| `operator-period` | The matched route/agency identity is incompatible with its line's operator period on these dates, independently of whether any temporal path candidate exists. Missing identities are reported as dependencies, not as an asserted operator-period failure. |
 | `review-required` | The unresolved disposition remains despite no other reported cause. This does not approve it. |
 | `empty-cell-review-required` | An explicit unresolved cell claims no dates although the source calendar is active. Its unclaimed source dates remain in `missingPatternDates`. |
 | `empty-calendar-review-required` | An explicit unresolved pattern has no active dates; the report does not invent dates or silently change its disposition. |
@@ -76,6 +76,10 @@ Entity-only codes include `unused-agency`, `no-entity-candidate`,
 `ambiguous-entity`, `malformed-platform-label`,
 `incomplete-or-ambiguous-platform-group`, and `platform-group-requires-v3`.
 The last code applies only to complete alternatives left unresolved under v2.
+Absent platform codes have no literal members and are not classified as malformed
+labels. Platform evidence applies only to physical platform rows (empty or zero
+`location_type`), not entrances, generic nodes or boarding areas. Supplied labels
+with empty slash-separated members or duplicate members remain malformed.
 
 `candidateEvidence` retains every geometric candidate, including those with no
 eligible date in this cell. Its revision periods and occurrence-level platform

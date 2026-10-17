@@ -140,11 +140,11 @@ export function buildScopedReviewBlockers(
             ? [dependency('agency', route.agency_id)]
             : [],
       );
-      const labels = (row?.platform_code ?? '')
-        .split('/')
-        .map((label) => label.trim());
+      const labels = row?.platform_code
+        ? row.platform_code.split('/').map((label) => label.trim())
+        : [];
       const platformEvidence =
-        row && row.location_type !== '1'
+        row && (!row.location_type || row.location_type === '0')
           ? {
               stopCode: row.stop_code ?? null,
               parentStation: row.parent_station ?? null,
@@ -262,6 +262,10 @@ export function buildScopedReviewBlockers(
           scope.serviceDates.includes(date),
         );
         if (!temporal) throw new Error('Missing exact date evidence');
+        const operatorPeriodMatches =
+          routeId && agencyId
+            ? operatorMatchesDate(context.topology, routeId, agencyId, date)
+            : null;
         const candidates = orderTargets(
           temporal.candidates.map((target) => ({
             target,
@@ -273,10 +277,7 @@ export function buildScopedReviewBlockers(
             groupedMemberDiagnosticsPass:
               !grouped ||
               groupedPlatformDiagnosticsAllow(facts, target, groups),
-            operatorPeriodMatches:
-              routeId && agencyId
-                ? operatorMatchesDate(context.topology, routeId, agencyId, date)
-                : null,
+            operatorPeriodMatches,
           })),
         );
         const codes = [...staticCodes];
@@ -294,12 +295,7 @@ export function buildScopedReviewBlockers(
           )
         )
           codes.push('group-member-diagnostics');
-        if (
-          candidates.some(
-            (candidate) => candidate.operatorPeriodMatches === false,
-          )
-        )
-          codes.push('operator-period');
+        if (operatorPeriodMatches === false) codes.push('operator-period');
         if (!codes.length) codes.push('review-required');
         const details = {
           codes: codes.sort(compareStrings),

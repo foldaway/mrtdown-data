@@ -187,6 +187,60 @@ describe('scoped review blocker report', () => {
       patternDateCount: 3,
     });
   });
+  it.each([
+    undefined,
+    '',
+  ])('does not treat absent platform code %j as malformed source text', (platformCode) => {
+    const context = fixture();
+    const source = required(
+      context.tables['stops.txt']?.find((row) => row.stop_id === 'P'),
+    );
+    if (platformCode === undefined) delete source.platform_code;
+    else source.platform_code = platformCode;
+    const report = buildScopedReviewBlockers(context, draftFor(context));
+    const stop = required(
+      report.entities.find((item) => item.providerId === 'P'),
+    );
+    expect(stop.codes).not.toContain('malformed-platform-label');
+    expect(stop.platformEvidence).toMatchObject({
+      literalLabels: [],
+      labelsWellFormed: true,
+      stationCandidates: [{ members: [] }],
+    });
+    expect(report.countsByCode['malformed-platform-label']).toBeUndefined();
+  });
+  it.each([
+    '2',
+    '3',
+    '4',
+  ])('does not attach platform evidence to location type %s', (locationType) => {
+    const context = fixture();
+    const source = required(
+      context.tables['stops.txt']?.find((row) => row.stop_id === 'P'),
+    );
+    source.location_type = locationType;
+    delete source.platform_code;
+    const report = buildScopedReviewBlockers(context, draftFor(context));
+    const stop = required(
+      report.entities.find((item) => item.providerId === 'P'),
+    );
+    expect(stop.platformEvidence).toBeUndefined();
+    expect(stop.codes).not.toContain('malformed-platform-label');
+    expect(report.countsByCode['malformed-platform-label']).toBeUndefined();
+  });
+  it.each([
+    'A/',
+    'A/A',
+  ])('retains malformed classifications for supplied label %s', (platformCode) => {
+    const context = fixture();
+    required(
+      context.tables['stops.txt']?.find((row) => row.stop_id === 'P'),
+    ).platform_code = platformCode;
+    const report = buildScopedReviewBlockers(context, draftFor(context));
+    expect(
+      report.entities.find((item) => item.providerId === 'P')?.codes,
+    ).toContain('malformed-platform-label');
+  });
   it('distinguishes the V2 complete-group limitation from an unresolved V3 review', () => {
     const context = fixture();
     required(
@@ -375,6 +429,26 @@ describe('scoped review blocker report', () => {
         { currentPlatformDiagnosticsPass: true, operatorPeriodMatches: false },
       ],
     });
+  });
+  it('retains an operator-period failure overlapping an empty temporal candidate set', () => {
+    const context = fixture();
+    required(context.topology.services[0]?.revisions[0]).startAt = '2026-01-03';
+    required(context.topology.lines[0]?.operators[0]).startedAt = '2026-01-03';
+    const report = buildScopedReviewBlockers(context, draftFor(context));
+    expect(report.patterns[0]?.dateScopes).toEqual([
+      expect.objectContaining({
+        serviceDates: ['2026-01-01'],
+        codes: ['operator-period', 'temporal-gap'],
+        temporalStatus: 'gap',
+        candidates: [],
+      }),
+    ]);
+    expect(report.countsByCode['operator-period']).toEqual({
+      entityCount: 0,
+      patternCellCount: 1,
+      patternDateCount: 1,
+    });
+    expect(report.countsByCode['temporal-gap']?.patternDateCount).toBe(1);
   });
   it('does not call complete unresolved manual choices diagnostic failures', () => {
     const context = fixture(),
