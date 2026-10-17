@@ -191,20 +191,21 @@ function prepareDraft(
       const row =
         entry.kind === 'stop' ? stops.get(entry.providerId) : undefined;
       let reason: string;
-      if (!match)
+      if (!match) {
         reason = inPilot(entry)
           ? 'Pilot identity or platform allocation remains unresolved.'
           : 'Outside the proposal pilot; explicit disposition remains unresolved, with no exclusion inferred.';
-      else if (entry.kind === 'agency')
+      } else if (entry.kind === 'agency') {
         reason = `Provider agency ${entry.providerId} has the explicit canonical alias ${candidateId}; selected pilot routes reference it. Proposal pending repository review.`;
-      else if (entry.kind === 'route')
+      } else if (entry.kind === 'route') {
         reason = `Provider route ${entry.providerId} has the explicit canonical line family ${candidateId}. This does not assign trip direction or endpoints. Proposal pending repository review.`;
-      else if (candidate?.kind === 'platformGroup')
+      } else if (candidate?.kind === 'platformGroup') {
         reason = `Complete literal source platform group ${row?.platform_code} identifies alternatives ${candidate.platformIds.join(', ')} at ${candidate.stationId}. No individual platform allocation is proposed. Every member requires current service and boarding checks on matched pattern cells. Proposal pending repository review.`;
-      else if (row?.location_type === '1')
+      } else if (row?.location_type === '1') {
         reason = `Source station code ${row.stop_code || row.stop_id} identifies canonical station ${candidateId}. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.`;
-      else
+      } else {
         reason = `Explicit source platform label ${row?.platform_code} with code ${row?.stop_code} and parent ${row?.parent_station} identifies ${candidateId}. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.`;
+      }
       decisions.push({
         ...base,
         kind: entry.kind,

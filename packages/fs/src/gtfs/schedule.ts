@@ -177,8 +177,9 @@ export function auditSchedule(tables: ScheduleTables) {
       stops.get(row.parent_station)?.location_type !== '1'
     )
       errors.push(`stop ${id}: parent is not a station`);
-    if (row.location_type === '2' && !row.parent_station)
+    if (row.location_type === '2' && !row.parent_station) {
       errors.push(`entrance ${id}: missing station parent`);
+    }
   }
   for (const [id, row] of trips) {
     reference(
