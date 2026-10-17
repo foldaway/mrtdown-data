@@ -29,7 +29,7 @@ function normalizeRow(row: Record<string, string>) {
           const [hours, minutes, seconds] = value.split(':');
           return [
             column,
-            `${String(Number(hours)).padStart(2, '0')}:${minutes}:${seconds}`,
+            `${normalizeDecimalString(hours ?? '').padStart(2, '0')}:${minutes}:${seconds}`,
           ];
         }
         return [column, value];

@@ -676,6 +676,26 @@ describe('GTFS reconciliation evidence and pairwise drift', () => {
       drift?.normalizedAfterSha256,
     );
   });
+  it('preserves distinct hour values beyond safe integer precision in drift reports', () => {
+    const before = fixture();
+    const after = fixture();
+    for (const [tables, hours] of [
+      [before.tables, '9007199254740992'],
+      [after.tables, '9007199254740993'],
+    ] as const)
+      for (const row of tables['stop_times.txt'] ?? []) {
+        row.arrival_time = `${hours}:00:00`;
+        row.departure_time = `${hours}:00:00`;
+      }
+    const table = compareScheduleSnapshots(
+      { tables: before.tables, manifest: {} },
+      { tables: after.tables, manifest: {} },
+    ).tables.find((item) => item.name === 'stop_times.txt');
+    expect(table?.changed).toBe(2);
+    expect(table?.normalizedBeforeSha256).not.toBe(
+      table?.normalizedAfterSha256,
+    );
+  });
   it('distinguishes retained IDs with changed semantics from unchanged normalized records', () => {
     const { tables } = fixture();
     const next = structuredClone(tables);
