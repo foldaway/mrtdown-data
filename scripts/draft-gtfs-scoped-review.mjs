@@ -6,8 +6,11 @@ import {
   readSchedule,
 } from '../packages/fs/dist/gtfs/schedule.js';
 import {
+  createGroupedScopedReconciliationDraft,
   createScopedReconciliationDraft,
+  evaluateGroupedScopedReconciliation,
   evaluateScopedReconciliation,
+  groupedScopedReviewDraftSha256,
   hashBytes,
   listEntities,
   readVerifiedCapture,
@@ -17,19 +20,32 @@ import {
 
 const [file, captureFile, pilotLineList, output, ...extra] =
   process.argv.slice(2);
-if (
-  !file ||
-  !captureFile ||
-  !pilotLineList ||
-  !output ||
-  (extra.length &&
-    (extra.length !== 2 ||
-      extra[0] !== '--canonical-commit' ||
-      !/^[a-f0-9]{40}$/.test(extra[1] ?? '')))
-)
+let requestedCommit;
+let platformGroups = false;
+for (let index = 0; index < extra.length; index++) {
+  if (extra[index] === '--platform-groups' && !platformGroups)
+    platformGroups = true;
+  else if (
+    extra[index] === '--canonical-commit' &&
+    !requestedCommit &&
+    /^[a-f0-9]{40}$/.test(extra[index + 1] ?? '')
+  )
+    requestedCommit = extra[++index];
+  else throw new Error('Unknown, duplicate or invalid scoped-review option');
+}
+if (!file || !captureFile || !pilotLineList || !output)
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups]',
   );
+const createDraft = platformGroups
+  ? createGroupedScopedReconciliationDraft
+  : createScopedReconciliationDraft;
+const evaluateDraft = platformGroups
+  ? evaluateGroupedScopedReconciliation
+  : evaluateScopedReconciliation;
+const draftSha256 = platformGroups
+  ? groupedScopedReviewDraftSha256
+  : scopedReviewDraftSha256;
 const pilotLineIds = pilotLineList.split(',').map((id) => id.trim());
 if (pilotLineIds.some((id) => !id))
   throw new Error('Pilot line IDs must not be empty');
@@ -42,7 +58,11 @@ const dirty = execFileSync(
 if (dirty.trim()) throw new Error('Canonical data must match committed HEAD');
 const canonicalCommit = execFileSync(
   'git',
-  ['rev-parse', '--verify', extra[1] ? `${extra[1]}^{commit}` : 'HEAD'],
+  [
+    'rev-parse',
+    '--verify',
+    requestedCommit ? `${requestedCommit}^{commit}` : 'HEAD',
+  ],
   { cwd, encoding: 'utf8' },
 ).trim();
 execFileSync('git', ['diff', '--quiet', canonicalCommit, '--', 'data'], {
@@ -77,7 +97,7 @@ const identity = {
   },
 };
 const context = { tables, identity, topology };
-const full = createScopedReconciliationDraft(context, {
+const full = createDraft(context, {
   pilotLineIds,
   preparedBy: 'MRTDown deterministic scoped-review proposal tool',
 });
@@ -94,8 +114,8 @@ const pilot = {
   dateSets: full.dateSets.filter((set) => used.has(set.id)),
   decisions: selected,
 };
-const fullEvaluation = evaluateScopedReconciliation(context, full);
-const pilotEvaluation = evaluateScopedReconciliation(context, pilot);
+const fullEvaluation = evaluateDraft(context, full);
+const pilotEvaluation = evaluateDraft(context, pilot);
 if (
   !fullEvaluation.valid ||
   !fullEvaluation.coverageComplete ||
@@ -192,7 +212,7 @@ const patterns = selected
     };
   });
 const summary = {
-  schemaVersion: 2,
+  schemaVersion: platformGroups ? 3 : 2,
   documentKind: 'gtfs-scoped-mapping-draft-summary',
   identity,
   captureSha256: capture.sha256,
@@ -201,12 +221,12 @@ const summary = {
   approval: 'No approval metadata supplied; all matches are draft proposals',
   digests,
   fullDraft: {
-    normalizedSha256: scopedReviewDraftSha256(full),
+    normalizedSha256: draftSha256(full),
     decisionCount: full.decisions.length,
     evaluation: evaluationSummary(fullEvaluation),
   },
   pilotDraft: {
-    normalizedSha256: scopedReviewDraftSha256(pilot),
+    normalizedSha256: draftSha256(pilot),
     decisionCount: pilot.decisions.length,
     evaluation: evaluationSummary(pilotEvaluation),
   },
@@ -227,6 +247,14 @@ const summary = {
   pilotPlatformCount: selected.filter(
     (item) => item.kind === 'stop' && item.target?.kind === 'platform',
   ).length,
+  ...(platformGroups
+    ? {
+        pilotPlatformGroupCount: selected.filter(
+          (item) =>
+            item.kind === 'stop' && item.target?.kind === 'platformGroup',
+        ).length,
+      }
+    : {}),
   globalUnresolvedInventory: {
     sha256: hashBytes(Buffer.from(JSON.stringify(unresolved))),
     count: unresolved.length,

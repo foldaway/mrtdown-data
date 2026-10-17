@@ -539,6 +539,17 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added opt-in version-3 grouped-platform review. Seven complete
+  sets preserve all physical alternatives without allocating a member; every
+  member must pass current service/boarding checks on each matched occurrence.
+  This adds 27 pattern proposals (768 recurring trip records; 3,285 pattern-date
+  pairs), bringing cumulative matched dates to 26,268 with 22,123 unresolved.
+  Ang Mo Kio's missing C/D members and the six Expo conflicts remain unresolved.
+  Version-2 packets reproduce unchanged. See the
+  [grouped-platform contract and reproduction](../../gtfs-platform-group-review.md).
+  No approval or generation is enabled; Phase 2 remains open.
+
+
 - 2026-10-17: Added the remaining NSL, SKLRT and BPLRT review packets and the
   [complete line inventory](../../gtfs-mapping-review-inventory.md). NSL proposes
   four patterns; SKLRT proposes six West patterns; BPLRT has entity identities
