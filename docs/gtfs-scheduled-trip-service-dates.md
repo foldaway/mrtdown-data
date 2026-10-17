@@ -29,6 +29,10 @@ in Singapore. Removing 2 January from the calendar does not cancel this
 the same instant; service date, provider trip and stop sequence still identify
 distinct occurrences. The helper never deduplicates events by instant or stop ID.
 
+The [departure-window lookup](gtfs-scheduled-departure-windows.md) resolves an
+explicit list of trip/date selections, filters supplied departures by absolute
+window boundaries and merges them chronologically.
+
 The caller chooses each service date explicitly. Future window queries must
 resolve eligible dates independently and merge their events chronologically,
 including earlier service dates when offsets exceed 24 or 48 hours. This helper
