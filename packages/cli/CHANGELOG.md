@@ -1,5 +1,29 @@
 # @mrtdown/cli
 
+## 2.0.0-alpha.42
+
+### Minor Changes
+
+- c40d02c: Choose relevant source service dates automatically for departure queries, including earlier dates for trips running beyond midnight or 48 hours. Keep explicit date selection available and record derived dates in inspection reports without changing snapshot or publication review gates.
+- f701e40: Inspect source departures from a verified local schedule capture with the gtfs departures command. Query selected provider trips and service dates in a time window, retaining capture provenance and source timing/access rules without assigning canonical mappings or enabling publication.
+- b091eb5: Look up source departures by provider stop ID without supplying trip IDs. Preserve repeated visits and source access rules, reject unknown or non-platform locations and keep publication review gates unchanged.
+
+### Patch Changes
+
+- Updated dependencies [c40d02c]
+- Updated dependencies [f701e40]
+- Updated dependencies [620eb5d]
+- Updated dependencies [b091eb5]
+- Updated dependencies [4d2e44c]
+- Updated dependencies [bbc0927]
+- Updated dependencies [4f6cbb3]
+- Updated dependencies [b5c1c1a]
+- Updated dependencies [7b725db]
+- Updated dependencies [364d0fc]
+  - @mrtdown/core@2.0.0-alpha.36
+  - @mrtdown/fs@2.0.0-alpha.39
+  - @mrtdown/triage@2.0.0-alpha.46
+
 ## 2.0.0-alpha.41
 
 ### Patch Changes
