@@ -539,6 +539,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added automatic service-date selection for offline departure
+  queries. Candidate dates come from the query window, validated source calendars
+  and relevant departure offsets, including offsets beyond 48 hours. Explicit
+  date overrides remain available, and reports record automatic dates. Focused
+  tests cover next-day removals, outside-range additions and historical time
+  anchors. See [departure windows](../../gtfs-scheduled-departure-windows.md#finding-candidate-service-dates).
+  Snapshot eligibility, mapping review and publication gates remain unchanged.
+
 - 2026-10-17: Extended offline departure inspection with `--stop` lookup across
   source trips, preserving repeated visits and filtering to the selected provider
   stops. Unknown stops and non-platform locations fail; known unused platforms

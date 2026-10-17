@@ -43,3 +43,20 @@ snapshot lineage, establish coverage or select canonical platforms/destinations.
 This remains an in-memory source timing lookup. Reconciliation and publication
 paths do not call it; mapping review, source licence requirements and generation
 gates remain open.
+
+## Finding candidate service dates
+
+`scheduledServiceDatesForWindow(calendar, window, maximumOffsetSeconds)` finds
+enabled dates whose service-day interval from zero through the supplied maximum
+could intersect the window. The maximum must cover every departure offset being
+queried; the source inspector derives it from the selected trips or stops. The
+result is a conservative candidate list, so actual events still need the window
+lookup above. A candidate date is not proof that a trip departs in the window.
+
+The helper uses the Singapore noon-based time anchor, clips iteration to both
+the query window and calendar bounds, and includes explicit additions outside
+weekly bounds. Calendar removals remain authoritative. It supports offsets over
+48 hours and historical timezone changes without treating midnight as a fixed
+UTC offset. Invalid calendars, windows or offsets throw through the existing
+validators. It does not select an eligible source snapshot or establish mapping
+coverage.

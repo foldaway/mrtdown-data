@@ -250,8 +250,13 @@ describe('GTFS departure inspection CLI', () => {
       const io = { stdout: () => {}, stderr: () => {} };
       expect(await runCli(stopQueryArgs(['UNUSED']), io, root)).toBe(0);
       const output = join(root, 'report.json');
+      expect(JSON.parse(await readFile(output, 'utf8')).departures).toEqual([]);
+      expect(await runCli(stopQueryArgs(['UNUSED'], []), io, root)).toBe(0);
       const report = await readFile(output, 'utf8');
-      expect(JSON.parse(report).departures).toEqual([]);
+      expect(JSON.parse(report).query).toMatchObject({
+        serviceDates: [],
+        serviceDateSelection: 'automatic',
+      });
       expect(
         await runCli(stopQueryArgs(['UNUSED'], ['not-a-date']), io, root),
       ).toBe(1);
@@ -266,6 +271,60 @@ describe('GTFS departure inspection CLI', () => {
         1,
       );
       expect(await readFile(output, 'utf8')).toBe(report);
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
+  it('chooses dates automatically for trip and stop queries while retaining an explicit override', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'gtfs-auto-dates-'));
+    try {
+      await fixture(root);
+      const errors: string[] = [];
+      const io = {
+        stdout: () => {},
+        stderr: (text: string) => errors.push(text),
+      };
+      const output = join(root, 'report.json');
+      expect(await runCli(queryArgs(), io, root)).toBe(0);
+      const explicit = JSON.parse(await readFile(output, 'utf8'));
+      expect(await runCli(queryArgs(['T,late', 'current'], []), io, root)).toBe(
+        0,
+      );
+      const automatic = JSON.parse(await readFile(output, 'utf8'));
+      expect(automatic.query).toMatchObject({
+        serviceDates: ['2026-01-01', '2026-01-02'],
+        serviceDateSelection: 'automatic',
+      });
+      expect(automatic.departures).toEqual(explicit.departures);
+      expect(await runCli(stopQueryArgs(['P'], []), io, root)).toBe(0);
+      expect(JSON.parse(await readFile(output, 'utf8')).departures).toEqual(
+        explicit.departures,
+      );
+      expect(
+        await runCli(
+          queryArgs(['T,late', 'current'], ['2026-01-02']),
+          io,
+          root,
+        ),
+      ).toBe(0);
+      expect(
+        JSON.parse(await readFile(output, 'utf8')).departures,
+      ).toHaveLength(2);
+      await fixture(root, {
+        'calendar_dates.txt':
+          'service_id,date,exception_type\nC,20260101,1\nC,20260102,2\n',
+      });
+      expect(await runCli(stopQueryArgs(['P'], []), io, root)).toBe(0);
+      const removed = JSON.parse(await readFile(output, 'utf8'));
+      expect(removed.query.serviceDates).toEqual(['2026-01-01']);
+      expect(
+        removed.departures.map((stop: Record<string, string>) => [
+          stop.providerTripId,
+          stop.serviceDate,
+        ]),
+      ).toEqual([['T,late', '2026-01-01']]);
+      expect(errors).toEqual([]);
     } finally {
       await rm(root, { recursive: true, force: true });
     }

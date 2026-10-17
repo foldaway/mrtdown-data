@@ -66,7 +66,7 @@ export async function runGtfs(
     if (tripIds.length && stopIds.length) {
       throw new Error('Use --trip or --stop, not both');
     }
-    const serviceDates = readRepeatedOption(args, '--service-date');
+    const serviceDates = readRepeatedOption(args, '--service-date', false);
     const startInstant = readOption(args, '--from', { required: true });
     const endInstant = readOption(args, '--to', { required: true });
     if (args.length) {
@@ -77,7 +77,7 @@ export async function runGtfs(
       resolve(globals.cwd, capture ?? ''),
       {
         ...(tripIds.length ? { tripIds } : { stopIds }),
-        serviceDates,
+        ...(serviceDates.length ? { serviceDates } : {}),
         startInstant: startInstant ?? '',
         endInstant: endInstant ?? '',
       },
