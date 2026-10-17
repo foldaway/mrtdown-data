@@ -98,6 +98,10 @@ already supports that service. CCL dates, Sengkang East, Choa Chu Kang,
 Marina South Pier, five source-path disagreements and the unused agency retain
 the [inventory's evidence requirements](gtfs-mapping-review-inventory.md#remaining-decisions).
 
+The optional [blocker report](gtfs-review-blockers.md) locates exact unresolved
+date cells, missing group members and conflicting occurrences. Add `--blockers`
+to the command below to produce it alongside the existing outputs.
+
 ## Reproduce
 
 After materializing the [verified source and receipt](gtfs-public-handoff.md),

@@ -6,6 +6,7 @@ import {
   readSchedule,
 } from '../packages/fs/dist/gtfs/schedule.js';
 import {
+  buildScopedReviewBlockers,
   createGroupedScopedReconciliationDraft,
   createScopedReconciliationDraft,
   evaluateGroupedScopedReconciliation,
@@ -22,8 +23,10 @@ const [file, captureFile, pilotLineList, output, ...extra] =
   process.argv.slice(2);
 let requestedCommit;
 let platformGroups = false;
+let includeBlockers = false;
 for (let index = 0; index < extra.length; index++) {
-  if (extra[index] === '--platform-groups' && !platformGroups)
+  if (extra[index] === '--blockers' && !includeBlockers) includeBlockers = true;
+  else if (extra[index] === '--platform-groups' && !platformGroups)
     platformGroups = true;
   else if (
     extra[index] === '--canonical-commit' &&
@@ -35,7 +38,7 @@ for (let index = 0; index < extra.length; index++) {
 }
 if (!file || !captureFile || !pilotLineList || !output)
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers]',
   );
 const createDraft = platformGroups
   ? createGroupedScopedReconciliationDraft
@@ -130,6 +133,8 @@ const files = {
   'full-evaluation.json': fullEvaluation,
   'pilot-evaluation.json': pilotEvaluation,
 };
+if (includeBlockers)
+  files['blockers.json'] = buildScopedReviewBlockers(context, full);
 await mkdir(resolve(output));
 const digests = {};
 for (const [name, content] of Object.entries(files)) {
