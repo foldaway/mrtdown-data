@@ -539,6 +539,18 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-16: Added a partial TEL mapping pilot: 172 proposed matches cover
+  fifteen routes, 27 station parents, 54 platform stops and 75 patterns
+  (1,619 trip records; 9,125 pattern-date pairs). Two TEL patterns containing
+  fourteen trips that omit Gardens by the Bay remain explicitly unresolved;
+  the matched-only focused draft does not imply whole-line coverage. The four
+  pilots together propose 423 matches, leaving 701 entries unresolved without
+  exclusions or approval. See the
+  [TEL mapping table](../../gtfs-tel-pilot-mappings.md) and
+  [remaining scope](../../gtfs-scoped-review.md#tel-supported-patterns-and-remaining-gaps).
+  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
+  complete and generation stays blocked.
+
 - 2026-10-16: Extended the concrete mapping pilot to Punggol LRT: 60 proposed
   decisions cover one route, 15 station parents, 30 platform stops and 13
   full-loop patterns (2,935 trip records; 1,721 pattern-date pairs). Preserved

@@ -1,7 +1,8 @@
 # Scoped GTFS mapping draft and review contract
 
 The version-2 draft turns verified reconciliation candidates into concrete,
-reviewable mapping proposals. The checked-in pilots cover NEL, DTL and PGLRT.
+reviewable mapping proposals. The checked-in pilots cover NEL, DTL, PGLRT and
+supported TEL patterns, retaining unresolved TEL patterns explicitly in the review.
 Neither the pilots nor the full generated draft is approved or eligible for
 generation. Proposal and review schemas version 1 remain unchanged.
 
@@ -232,3 +233,36 @@ All five cumulative output files reproduce byte for byte with
 `unresolved`, subset readiness remains `incomplete`, and neither mapping review
 nor arrivals generation is enabled. Source/calendar correctness and reviewed
 lineage remain separate open conditions.
+
+## TEL supported patterns and remaining gaps
+
+The [TEL mapping table](gtfs-tel-pilot-mappings.md),
+[draft](gtfs-tel-pilot-draft.json) and
+[summary](gtfs-tel-pilot-review-summary.json) add 172 proposed matches: one
+agency, fifteen routes, 27 station parents, 54 platform stops and 75 patterns.
+Those patterns contain 1,619 source trip records and 9,125 pattern-date pairs.
+Full paths and short workings retain their supplied endpoints and occurrences.
+
+This is a partial TEL proposal. Two other TEL patterns contain fourteen source
+trips that omit `TE22_A` (Gardens by the Bay), jumping from `TE20_A` to `TE23_A`.
+Their 104 pattern-date pairs remain unresolved in the full draft. The focused
+matched-only draft omits these two patterns along with outside-pilot entries;
+it must not be interpreted as complete TEL coverage. Source stops and times are
+neither repaired nor excluded to force a canonical match.
+
+Using `NEL,DTL,PGLRT,TEL` as the pilot argument produces 423 proposed matches:
+two agencies, 26 routes, 89 station parents, 188 platform stops and 118 patterns.
+TEL adds the SMRT agency and shares Stevens' `DT10` and Outram Park's `EW16`
+station parents with earlier pilots. The matched patterns contain 7,748 trip
+records and 14,287 pattern-date pairs. The full document accounts for all 1,124
+entries, with 701 unresolved and no exclusions or ignores. Its focused subset
+omits those 701 entries, including the two TEL patterns, and 34,104 pattern
+dates. The normalized cumulative pilot digest is
+`fafaca6f14651c35145515adef5c31d022d94b4b81dd819f1b824ef0500816ec`.
+
+All five cumulative output files reproduce byte for byte with
+`TEL,PGLRT,NEL,DTL,TEL` as well as `NEL,DTL,PGLRT,TEL`. The combined focused
+draft preserves all earlier pilot decisions. Full readiness remains `unresolved`,
+subset readiness remains `incomplete`, and mapping review and generation remain
+blocked. The source/calendar and lineage questions remain open independently of
+the supported mapping proposals.

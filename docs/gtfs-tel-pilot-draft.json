@@ -1,0 +1,2580 @@
+{
+  "schemaVersion": 2,
+  "documentKind": "gtfs-scoped-mapping-draft",
+  "identity": {
+    "sourceManifest": {
+      "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+      "calendar.txt": "bddb06a1aebe70f984f1dd3576c80ae1a72a76f58b4cd68a6af245368a72a605",
+      "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+      "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+      "routes.txt": "d81b7bb5ce975ca9ca1120dd730db79d70f908cf560533c295fcea67133bb77c",
+      "stop_times.txt": "b6d5289d1b2300531fc627fe1bd6c9b7507a1e57c9ff69358cb7a9ee93991395",
+      "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+      "trips.txt": "f72aaf61d79c25260966bfcc793802b2f8971f6c9ce5edb925b907a34b1df36f"
+    },
+    "canonicalCommit": "d034d6babef4ea5bcac256d26c47dcd802bb39ba",
+    "topology": {
+      "projectionVersion": 1,
+      "sha256": "e376c280fbd6292ed6fe03e7fa81541ad0b0b8c76a09f916f1e3898aac240ec1"
+    }
+  },
+  "preparedBy": "MRTDown deterministic scoped-review proposal tool",
+  "pilotLineIds": [
+    "TEL"
+  ],
+  "dateSets": [
+    {
+      "id": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "serviceDates": [
+        "2026-01-03",
+        "2026-01-10",
+        "2026-01-17",
+        "2026-01-24",
+        "2026-01-31",
+        "2026-02-07",
+        "2026-02-14",
+        "2026-02-21",
+        "2026-02-28",
+        "2026-03-07",
+        "2026-03-14",
+        "2026-03-21",
+        "2026-03-28",
+        "2026-04-04",
+        "2026-04-11",
+        "2026-04-18",
+        "2026-04-25",
+        "2026-05-02",
+        "2026-05-09",
+        "2026-05-16",
+        "2026-05-23",
+        "2026-05-30",
+        "2026-06-06",
+        "2026-06-13",
+        "2026-06-20",
+        "2026-06-27",
+        "2026-07-04",
+        "2026-07-11",
+        "2026-07-18",
+        "2026-07-25",
+        "2026-08-01",
+        "2026-08-08",
+        "2026-08-15",
+        "2026-08-22",
+        "2026-08-29",
+        "2026-09-05",
+        "2026-09-12",
+        "2026-09-19",
+        "2026-09-26",
+        "2026-10-03",
+        "2026-10-10",
+        "2026-10-17",
+        "2026-10-24",
+        "2026-10-31",
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28",
+        "2026-12-05",
+        "2026-12-12",
+        "2026-12-19",
+        "2026-12-26"
+      ]
+    },
+    {
+      "id": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "serviceDates": [
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-05",
+        "2026-01-06",
+        "2026-01-07",
+        "2026-01-08",
+        "2026-01-09",
+        "2026-01-12",
+        "2026-01-13",
+        "2026-01-14",
+        "2026-01-15",
+        "2026-01-16",
+        "2026-01-19",
+        "2026-01-20",
+        "2026-01-21",
+        "2026-01-22",
+        "2026-01-23",
+        "2026-01-26",
+        "2026-01-27",
+        "2026-01-28",
+        "2026-01-29",
+        "2026-01-30",
+        "2026-02-02",
+        "2026-02-03",
+        "2026-02-04",
+        "2026-02-05",
+        "2026-02-06",
+        "2026-02-09",
+        "2026-02-10",
+        "2026-02-11",
+        "2026-02-12",
+        "2026-02-13",
+        "2026-02-16",
+        "2026-02-17",
+        "2026-02-18",
+        "2026-02-19",
+        "2026-02-20",
+        "2026-02-23",
+        "2026-02-24",
+        "2026-02-25",
+        "2026-02-26",
+        "2026-02-27",
+        "2026-03-02",
+        "2026-03-03",
+        "2026-03-04",
+        "2026-03-05",
+        "2026-03-06",
+        "2026-03-09",
+        "2026-03-10",
+        "2026-03-11",
+        "2026-03-12",
+        "2026-03-13",
+        "2026-03-16",
+        "2026-03-17",
+        "2026-03-18",
+        "2026-03-19",
+        "2026-03-20",
+        "2026-03-23",
+        "2026-03-24",
+        "2026-03-25",
+        "2026-03-26",
+        "2026-03-27",
+        "2026-03-30",
+        "2026-03-31",
+        "2026-04-01",
+        "2026-04-02",
+        "2026-04-03",
+        "2026-04-06",
+        "2026-04-07",
+        "2026-04-08",
+        "2026-04-09",
+        "2026-04-10",
+        "2026-04-13",
+        "2026-04-14",
+        "2026-04-15",
+        "2026-04-16",
+        "2026-04-17",
+        "2026-04-20",
+        "2026-04-21",
+        "2026-04-22",
+        "2026-04-23",
+        "2026-04-24",
+        "2026-04-27",
+        "2026-04-28",
+        "2026-04-29",
+        "2026-04-30",
+        "2026-05-01",
+        "2026-05-04",
+        "2026-05-05",
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-25",
+        "2026-05-26",
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-06-01",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-04",
+        "2026-06-05",
+        "2026-06-08",
+        "2026-06-09",
+        "2026-06-10",
+        "2026-06-11",
+        "2026-06-12",
+        "2026-06-15",
+        "2026-06-16",
+        "2026-06-17",
+        "2026-06-18",
+        "2026-06-19",
+        "2026-06-22",
+        "2026-06-23",
+        "2026-06-24",
+        "2026-06-25",
+        "2026-06-26",
+        "2026-06-29",
+        "2026-06-30",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-06",
+        "2026-07-07",
+        "2026-07-08",
+        "2026-07-09",
+        "2026-07-10",
+        "2026-07-13",
+        "2026-07-14",
+        "2026-07-15",
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-20",
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29",
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-03",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25",
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-30",
+        "2026-12-01",
+        "2026-12-02",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-07",
+        "2026-12-08",
+        "2026-12-09",
+        "2026-12-10",
+        "2026-12-11",
+        "2026-12-14",
+        "2026-12-15",
+        "2026-12-16",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-21",
+        "2026-12-22",
+        "2026-12-23",
+        "2026-12-24",
+        "2026-12-25",
+        "2026-12-28",
+        "2026-12-29",
+        "2026-12-30",
+        "2026-12-31"
+      ]
+    },
+    {
+      "id": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "serviceDates": [
+        "2026-01-04",
+        "2026-01-11",
+        "2026-01-18",
+        "2026-01-25",
+        "2026-02-01",
+        "2026-02-08",
+        "2026-02-15",
+        "2026-02-22",
+        "2026-03-01",
+        "2026-03-08",
+        "2026-03-15",
+        "2026-03-22",
+        "2026-03-29",
+        "2026-04-05",
+        "2026-04-12",
+        "2026-04-19",
+        "2026-04-26",
+        "2026-05-03",
+        "2026-05-10",
+        "2026-05-17",
+        "2026-05-24",
+        "2026-05-31",
+        "2026-06-07",
+        "2026-06-14",
+        "2026-06-21",
+        "2026-06-28",
+        "2026-07-05",
+        "2026-07-12",
+        "2026-07-19",
+        "2026-07-26",
+        "2026-08-02",
+        "2026-08-09",
+        "2026-08-16",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-09-06",
+        "2026-09-13",
+        "2026-09-20",
+        "2026-09-27",
+        "2026-10-04",
+        "2026-10-11",
+        "2026-10-18",
+        "2026-10-25",
+        "2026-11-01",
+        "2026-11-08",
+        "2026-11-15",
+        "2026-11-22",
+        "2026-11-29",
+        "2026-12-06",
+        "2026-12-13",
+        "2026-12-20",
+        "2026-12-27"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "providerId": "SMRT",
+      "sourceRecordSha256": "b0ce46c8e2e5dfd65335d0177ef33221e949aa32d9d18fe2ea843024ee0cdb63",
+      "reason": "Provider agency SMRT has the explicit canonical alias SMRT_TRAINS; selected pilot routes reference it. Proposal pending repository review.",
+      "target": {
+        "kind": "operator",
+        "id": "SMRT_TRAINS"
+      },
+      "kind": "agency",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "03c261838db1ebbd78ee4a96a6bf3ffbf9cb7adc6ec6a57561ae4766756f6163",
+      "sourceRecordSha256": "47c431e4d5e2a66635ad261da48ea58b14dc883616c3d14596c0190641689f23",
+      "reason": "Ordered source path TE29_B to TE14_B (15 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "06eef76d30576d7e0a4232867c2ddb1a0e0244d172104b6d89cc6cb964fec39c",
+      "sourceRecordSha256": "fea6e57503ee35851bc7787e4d241ae072ce7095e69c2a3aa018c349bd761414",
+      "reason": "Ordered source path TE1_A to TE26_A (24 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "0b0c96964580ae3affbaa5c27cbca9903ab7d5fb157105c32f38c3e3ab8f2ab5",
+      "sourceRecordSha256": "e47e5480f4c61e69455afc3c263de955018774ec4f8f16a668cca184e75ca0fe",
+      "reason": "Ordered source path TE1_A to TE26_A (24 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "11641dc960bddc5db02c72d3ecd8064bf2d168b99ac431cfb30b0eee8dc2ffd1",
+      "sourceRecordSha256": "a27a20f1f4af7999efeb93b01dd4c87d95ba0f6e28a25242c591d7d1c14be5a1",
+      "reason": "Ordered source path TE1_A to TE9_A (9 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "173283ed6b14fa3a7223b58ac8fbe2a828754c7f2ad2d164c25118b3798d0820",
+      "sourceRecordSha256": "a6bd3a8a6b65c5daec7c030db16218f2967545d7caaf7556ffa3f60fcc026b3e",
+      "reason": "Ordered source path TE14_A to TE29_A (15 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "1a087259a3fdfa12054da65731bdc8e6ecd4240978c5fc62daa79bd9c7384546",
+      "sourceRecordSha256": "fd3a9f953952ca670e56e258776b845020e4c111206fc5841d650adbf7f5a4c5",
+      "reason": "Ordered source path TE27_A to TE29_A (3 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "1ce05794e394ad78ccfedb238b684be68ebfbc334658b1b41688e21a0cf54a94",
+      "sourceRecordSha256": "bc1dd2d90cb9fdfb8db36b9795584c2bf3a5be185438a9562966c6a618539f32",
+      "reason": "Ordered source path TE17_A to TE29_A (12 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "21af40ba6042087a2834d8d74fe06032ec2a0784aa7c8ef1637047fb5fd403b6",
+      "sourceRecordSha256": "794ce417c5d6037722cbc51b30c915094aabab70e00e84ce2556ba4e5ee22105",
+      "reason": "Ordered source path TE9_A to TE29_A (19 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "22c7fcdfdc74d52000af5c76dc5550c98595053c0e93de287fa0c8c4483245c3",
+      "sourceRecordSha256": "59c9272bfdcb99f8b75d36ca98f36ace318d8f9f3e5f3c3e9d2cf7dc019838cf",
+      "reason": "Ordered source path TE1_A to TE27_A (25 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "28e433522aeb562bdac608ca8d8ad96addfe485e8db3197c73ec52954a28ed2c",
+      "sourceRecordSha256": "27cd8910f657692d1af3a1cdcf8f9697c05c995aacade7c404229658634cee91",
+      "reason": "Ordered source path TE9_B to TE1_B (9 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "2a7c264835fe0c8db4fee7572f51eb7bab6fba397821baaa18d07500317057fe",
+      "sourceRecordSha256": "6106918d6bed3153a88823ff64063202bf4b87c0d920b3b1bc7f072002d3cbed",
+      "reason": "Ordered source path TE27_A to TE29_A (3 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "2ca7eb44ef947aebc1f3a27d883ca9f0232f98aeec7bee5249885151fda77f04",
+      "sourceRecordSha256": "68943c9275f6b6dbddab7a61611bce62f393c3cba2fbb69303be931fb590a95c",
+      "reason": "Ordered source path TE1_A to TE29_A (27 occurrences) is a exact match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "2cc1d291e7c1a18015772cc4683a23c24a927d76d0081ba64c9b67057bc9cf06",
+      "sourceRecordSha256": "09e9d2ce4b7f4b977d9e022691fcd71ca446305274c989b641a530dc4403af70",
+      "reason": "Ordered source path TE29_B to TE27_B (3 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "2f528a7ece455f02fe602605a8eaa4c9d5d78d6922d2e0e74cad1e58ff1be4dc",
+      "sourceRecordSha256": "513c9038654dcc545cde3e9b995666438d5c3db64bda8d144044ef530fed9e1a",
+      "reason": "Ordered source path TE22_A to TE29_A (8 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "2fdf3968146924af4efafd50a17f25b2e8be8b963d335c1198ba412f7ae24afb",
+      "sourceRecordSha256": "9d00f9796c6396f960c17b08e0a7961dcdbd78514ea41c7f108ce25dbaf3fc79",
+      "reason": "Ordered source path TE1_A to TE29_A (27 occurrences) is a exact match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "30e0248856e017205c549005656f7a973ada33dfb5ecc00cdfb3e56e323b8a5e",
+      "sourceRecordSha256": "bd11d9225127320235e659a52c1cfb854cb17ba904dc065f2fb9eb16ed786a50",
+      "reason": "Ordered source path TE3_B to TE1_B (3 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "3763ed1ecdece8fedce058cc7019096b4b3d69a93ef7c2aa7f4cf16c71d006c9",
+      "sourceRecordSha256": "604a20860c7b96ae0c52dbd0f0ef237cdf93e2d424d22f1366d4d24b28f54ae8",
+      "reason": "Ordered source path TE1_A to TE22_A (20 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "3bd8589a876eee71ab32162d777a074e59b579521c3c6d784add1d7173d52079",
+      "sourceRecordSha256": "c6e90fb4d520ef4c172872eca50409a4d0549ecc70e38b8dc49fc2666e7ae555",
+      "reason": "Ordered source path TE29_B to TE3_B (25 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "3edac27519897ff99286b78d9521fe889eca5217de03055619a500051838adc6",
+      "sourceRecordSha256": "687049a42519965d08d129bb3dfe89af28be53570d09de21e47549be00f856f4",
+      "reason": "Ordered source path TE1_A to TE17_A (16 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "3f153ae6bd8bdf4a9a09064812605702bc3dc33fc8b1fa0572b8ddbda401939e",
+      "sourceRecordSha256": "604ec45a7e7009022eb9536816ba1047188c797739de32a941b029fc0dd65b61",
+      "reason": "Ordered source path TE1_A to TE17_A (16 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "40cccf6db11b89d26c25b0bdf9fda3eb5121716e26da3e3a27b60d5cd096cfd1",
+      "sourceRecordSha256": "0545afe7c692f3a38184a919e2d771051e2ae80ceb089006f11101322b586f9a",
+      "reason": "Ordered source path TE17_A to TE29_A (12 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "473814e41987be427fa0bb461415e4504773418a39087b72feea75ad38802de2",
+      "sourceRecordSha256": "aa3a534c736eb2283f34b3d00aabf58de43e14bc234a29b8c1a246110275dc8d",
+      "reason": "Ordered source path TE27_B to TE1_B (25 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "4922a4c66a35e114052fbea0cde826d78a370a5d35a9186021a06b9b60227850",
+      "sourceRecordSha256": "37f3e916f05467b374578f28ec91eb39686aa334f3fa43ef0299d0d84955051f",
+      "reason": "Ordered source path TE1_A to TE29_A (27 occurrences) is a exact match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "49afd2ee04a8cdbc92b6c853f74215543b205e499867547b6f2127a392280962",
+      "sourceRecordSha256": "758a7682b94e069c743c7b0117094ab91ad764ea1fed423ee1180be6e847411b",
+      "reason": "Ordered source path TE29_B to TE9_B (19 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "4c582ac13fbf06310a0b98470cca3a5f6f030417e66e46f33a29cfc8da300289",
+      "sourceRecordSha256": "fb030e3b37be03e6aec727527cd3953b80646998969726f1948eb3c3aa64b8ed",
+      "reason": "Ordered source path TE27_B to TE1_B (25 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "574183024ebf6afd1fcd65fddff83d1a39125706ac622f3ae4a2c6bf61ebe0b9",
+      "sourceRecordSha256": "0891224430713251cdb621b5edab96fe87a152cec9553e340531a930d9e471b6",
+      "reason": "Ordered source path TE29_B to TE9_B (19 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "59b58e93be1e211c62668f0fed89043bb1ead982669a3af2afd5a184bac33b6a",
+      "sourceRecordSha256": "0fbf9b2f4101b1d726e5a57df33cf918a7ecdd07867f9780fbadc73155034d97",
+      "reason": "Ordered source path TE3_A to TE29_A (25 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "5a5303fba05d52e245dbeef651cfff13a940e5cf80566f6677403e87bf89ef3d",
+      "sourceRecordSha256": "90dae1cb32311f9b992dd9b1fab87369e60f8c19f0da962fe09446c64f16b021",
+      "reason": "Ordered source path TE29_B to TE27_B (3 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "5b7d2e9e79f755f163a183a64aa39dd959d84d9bce7094148eef8b0815f45127",
+      "sourceRecordSha256": "d66f4bbc1eb7b8d2c69af2ad06adad2ee99408e7923db68c92796d4a1daa0480",
+      "reason": "Ordered source path TE3_A to TE29_A (25 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "5cae8dffe1faa70d1784c6a75757e010530382034202b574a6f316be066eb7ef",
+      "sourceRecordSha256": "179937a1213762793d55df28f13f1c4522b3957d28624472c62ca3a992a64778",
+      "reason": "Ordered source path TE22_B to TE1_B (20 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "5d1ad050b2d6bfdf72869fe434c85bee3d6f44ba6b4faaf67da77b97e075dc14",
+      "sourceRecordSha256": "e141bd250e50157aee4c11fadd587c2f7ed8933b001c0352a0423c371b804e48",
+      "reason": "Ordered source path TE29_B to TE14_B (15 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "5d6c665e1c0e4467f3e17197127d9d2a248c96b3378bc8e41248e89f78366e2e",
+      "sourceRecordSha256": "c6bc58882ab79511e9f676a07f4cf236d817f617cb18bced0f84c7f9de73bece",
+      "reason": "Ordered source path TE3_B to TE1_B (3 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "65d204973df9c8ba0cd8703cd60bdad1c2ef07cecde1fc6d571004d88a0c5ab5",
+      "sourceRecordSha256": "fea1ed6b2db6e3853605e7a051d77c0b29419accd8531eb935e5d0a93b68caa4",
+      "reason": "Ordered source path TE1_A to TE9_A (9 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "67046fd43d41544b8226e4054c76de781c54305f4ee11d6d80eb69eeb344ad72",
+      "sourceRecordSha256": "cf74e8b973b3dabb9c559881e94f56484944d7c954d24267855a8f7fdea2cf64",
+      "reason": "Ordered source path TE29_B to TE1_B (27 occurrences) is a exact match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "6857740d7b733a13db43e4a47b3056dfc8d783b614ad4869b92969f26215dc31",
+      "sourceRecordSha256": "2e2900ab7849df782e5f9a799ddde6ead4c7d57c4527d0160f8f95d62e9f852e",
+      "reason": "Ordered source path TE1_A to TE27_A (25 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "6a6d0f100fac3974c90dd02f6c849dcaeaabfbc1eacdb62a9b3e21df3d96271c",
+      "sourceRecordSha256": "95766a07260b75d08f6fad2db89b6beb4a085fa52dabadb21f71303311bf36b3",
+      "reason": "Ordered source path TE26_B to TE1_B (24 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "6e9751136ef25a329f55d0772e5fe979d36cec37915c62087f1d1c6b1238fdee",
+      "sourceRecordSha256": "10b77a08e3625ed879125c1ed2e93e46713b92ce75862123950dc4c917be5aab",
+      "reason": "Ordered source path TE27_B to TE1_B (25 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "71d1b49ff62851fb03f88f20b39b44627d2c533ddb739ace87792dca9e1e1f3b",
+      "sourceRecordSha256": "95cb37e3489def4801d9a9325fbcb38d300815b18d9f48ce1d8180f110059240",
+      "reason": "Ordered source path TE1_A to TE22_A (20 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "824c34b603544a72f3a169d24111d9774fefc2dddce13aab86ea03659bc256e8",
+      "sourceRecordSha256": "2001797172134b6b160b753c080b6286a65834d396b371a8993df7317f5f1f75",
+      "reason": "Ordered source path TE1_A to TE14_A (13 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "82ae01d64b2709ef939f81de7f5686bbb7cf084b69db6342cb622ec0fa5fb0cb",
+      "sourceRecordSha256": "7f91e54c2f93f1667502dc4cdec0b4bc21bee589a10eeaa35d64d82c3bf1340b",
+      "reason": "Ordered source path TE29_B to TE22_B (8 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "82cf668c389c0127e3576b7e24af96fd8665da189290b91c4b534364afe7de5c",
+      "sourceRecordSha256": "eebc08b68841ff1c068a8cfbf8ebae7e9632d26cae677c4f69c216922ceddcf6",
+      "reason": "Ordered source path TE1_A to TE14_A (13 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "8b4e0e6b22b4fb1a7189c5bce163340b830e76f28b5991563ccf189d9800b69a",
+      "sourceRecordSha256": "172de70665a9771e610d59b08882b4842b7de5b9d935dbd5bbbf344c711cc641",
+      "reason": "Ordered source path TE29_B to TE22_B (8 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "8c7c0dcb5b3691f0bfeeb17f28ef03a9613cf3659aca8aee09bf4e52f4838161",
+      "sourceRecordSha256": "ac2e149b1ebac61f1a986309feeed45df7308d7ff73d0a1d81c708e66e6f00fd",
+      "reason": "Ordered source path TE29_B to TE14_B (15 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "9523298cda3e93715918c9e64a52b283210532e749d0ae233d4de6a93194c6b0",
+      "sourceRecordSha256": "bc63c9fae4fa1c4bf6437ae39dbe22a2462732bb13bb7854b94d1e0fe3baa858",
+      "reason": "Ordered source path TE9_B to TE1_B (9 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "96b4c96286b6176b5740609a9fc1888be151b3050cfd2de3a8c63caa5613f46f",
+      "sourceRecordSha256": "b1d360d66752d735ebfe88ee1baea2773d381767612c79eb4256b04e439bed22",
+      "reason": "Ordered source path TE29_B to TE3_B (25 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "9bd80b3aae2f8077e1f655cd2aedfca5ff59289dbe09658531f22deb84a09e9d",
+      "sourceRecordSha256": "1f9c70ef2579686399a5508232f80101e80a5b1bad8c8e9fd482b1065fb6216f",
+      "reason": "Ordered source path TE1_A to TE27_A (25 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "a1f4c097d2cf637e32a3f5085f92d205a5af13c4e21cbfc97d414a6abdf76341",
+      "sourceRecordSha256": "55df15cef24149e2cc0d2715e513f1358e0caa3bc4d8141359950555d39fcc7c",
+      "reason": "Ordered source path TE9_A to TE29_A (19 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "a41a81c5a9001bbb2770f968e4aa75086753f950f2aa36e186eb3817e84c527f",
+      "sourceRecordSha256": "413ab724e171ad7b000ef2106346123fb484c2b300901b536d919f73b1bab872",
+      "reason": "Ordered source path TE22_A to TE29_A (8 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "a79996ac1ab8633670297feacb603ecb9a6eb44a51443b8356e09d135171d10d",
+      "sourceRecordSha256": "49b2592a24b0a4f43e3fa8a6fb7e3096f2d5690c4d491bec1b4f8552674179a9",
+      "reason": "Ordered source path TE14_B to TE1_B (13 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "a9176feea6078cab84c73adafc990b6a8b9ae207fac9b2436fd74d419bd2ce48",
+      "sourceRecordSha256": "642fea25d0b3cfe6b9091b4bf1398ce607c461fb495743a8c225f46b67a052e3",
+      "reason": "Ordered source path TE1_A to TE17_A (16 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "a99f42ed577b6b07f50b408240b8c597e28942d1d83caa9f179084b98bddc1f9",
+      "sourceRecordSha256": "ca1769c072bcf060dbb34ad0118266fa52886e42227bbdfc44bbb5174b62eaaa",
+      "reason": "Ordered source path TE3_A to TE29_A (25 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "ab8a5323a5b2704f85c6dc45523c7773a31e50a5dfea99644286abe7e460ec9a",
+      "sourceRecordSha256": "6eddc80ca96855fdace112f38dd6ffff915368aa192d15063c132b1e7c5ec04a",
+      "reason": "Ordered source path TE3_B to TE1_B (3 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "ab9007ffca4d977331816ecdb34bae57d728c340a9c1df9c7890a14c4394d701",
+      "sourceRecordSha256": "5a799720fcdf5a531cf85e72a532926ec912055eb374a9ee3685f927c2c3ccf4",
+      "reason": "Ordered source path TE29_B to TE1_B (27 occurrences) is a exact match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "aba6a95818c99b5393c7cdf7413c9b5440c24025bf530865bd5092cbf002c1d6",
+      "sourceRecordSha256": "fa1d82277c7146bf27b9298761fff248d686c5e4579018925008f7d75a693e26",
+      "reason": "Ordered source path TE1_A to TE14_A (13 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "ad82ed0a65c68c687262abb8c5edd062791e9b47cf22ca0e25ed5a971ae24903",
+      "sourceRecordSha256": "ef894954b4b9b49da57589f20466dd03587987e1afbf50a97b5e899e720179b3",
+      "reason": "Ordered source path TE9_B to TE1_B (9 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "aee47f0dbf65d3452d1021b72148d260344e67b81c0e26dc3b55a11a012638f9",
+      "sourceRecordSha256": "1785475602a017eb3c4bb669fe18670456c6e4f9bb2f2a6bd11afab8d592913b",
+      "reason": "Ordered source path TE14_A to TE29_A (15 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b07397daedb01836d7129f8c60db6d094d81ae282151968ff360f9251458bc00",
+      "sourceRecordSha256": "188eb8f88eff1bf5472c7a853e13a26a1e2e0dba01a9f19d671592586e4df0f8",
+      "reason": "Ordered source path TE22_B to TE1_B (20 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b0d680936393b5c1af0f1298b6022e6a7adf901200795346074ab809ba0d384e",
+      "sourceRecordSha256": "9870218c5afeb013be8b122d6c6a7c0633308685f9c878e6f36d5fd2874e47d8",
+      "reason": "Ordered source path TE26_B to TE1_B (24 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b4a4e0f9541353e89f521cf86dc89a74bed16de2779feb18c9ec55d4c5648487",
+      "sourceRecordSha256": "0c50d55d9eb509ecd553ba22049f8ec3c02a498df2bcf7db56376d9085e0ac3b",
+      "reason": "Ordered source path TE1_A to TE22_A (20 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b5ff04a4ab5166786e94e4780e9645b80340b734ea8a8c4f86619d21f5b95f2a",
+      "sourceRecordSha256": "86ecda9632d250cdff865e6a91fd07675b449672450a0af2634be8892226c52e",
+      "reason": "Ordered source path TE22_B to TE1_B (20 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "b84dbfe52ec0fe8e94b30b886197084b143958c4cd79b0572b2d3d41f59b9f1d",
+      "sourceRecordSha256": "2f34176cce6a25a9b5fef209e3a4dc422bef880a703e11edcdae5a98f7956a7d",
+      "reason": "Ordered source path TE1_A to TE9_A (9 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "bb2fe02007b286cb8554172ae659fd00f025fab12f231cde547056efd6244d4b",
+      "sourceRecordSha256": "396ecd6c24cec2192540fcaf4fb2f162ca5aa5f22b0db9ea6392531497299c8b",
+      "reason": "Ordered source path TE29_B to TE1_B (27 occurrences) is a exact match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "exact"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "bbbfc34f2c6a48d40b5162501056df16b32b2728075cdf07be06873f7b372513",
+      "sourceRecordSha256": "7f54dffe6db2ade0d562cd4eaff1773cdcc08fa7b8805d23d1651066e08d9314",
+      "reason": "Ordered source path TE14_A to TE29_A (15 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "cba26d221f3af7007f402384e1d73008f715e8473f938a537ef6f796d2e821fa",
+      "sourceRecordSha256": "7660ca4fced09653917b3c49c8555607d4c7bfef4b7c3591d5b82cd85db3bc3c",
+      "reason": "Ordered source path TE29_B to TE27_B (3 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "cbe5655a8dc2ccd0da6c91660809ecdc8ccc4799868b1c4261adda29c104aed2",
+      "sourceRecordSha256": "ac2c1f3665bdfe82ec9a7b2b234df0cb4ca0ee006fba159f23602d81329ceb68",
+      "reason": "Ordered source path TE27_A to TE29_A (3 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "d05756a59aefb70169c2028a072a10d7d9445ca43dca946d44c0d7f7c26fa5ce",
+      "sourceRecordSha256": "82cff0d65afac73974ae10e17e5c9dd6a7fd78b9a0a9aeb084f7066c08776507",
+      "reason": "Ordered source path TE17_A to TE29_A (12 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "d10d6a342a336c7c2d980e69328ef55c0c9ade7b3057457df0aed1f73a07ee33",
+      "sourceRecordSha256": "6795a97e7df9092e86126b0e91adf9a9107de768d7177884efc0269eef84a478",
+      "reason": "Ordered source path TE14_B to TE1_B (13 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "d771149e6e324658b51f88510e238c16adf76c4a7a08c01f5d2c6a6ee0148f52",
+      "sourceRecordSha256": "0139adfdaf044a989ede501f3b42164af10a4ee7296ed6c54ad5b8e9172ead43",
+      "reason": "Ordered source path TE14_B to TE1_B (13 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "db47e4fcbc380b4a5c7aabe45916505ce9febe865045781f57531bce6a1f7452",
+      "sourceRecordSha256": "b947f128b57a276d46fbfe6a1adadf6c65dc700037e766a9361d8bc0e2aa6246",
+      "reason": "Ordered source path TE29_B to TE3_B (25 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "dc74db1eb81b81f09801fc4add5548a1ef1aa08942fc00392ace09c10165da5d",
+      "sourceRecordSha256": "7c24b08d5f2c3a8c764c9eac4fd46ad3eec03d7b1a394b2886c83f4666df9132",
+      "reason": "Ordered source path TE3_A to TE26_A (22 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "9a53ff769a14653ad803b2d799a5cff88d4079a5c2fb1f93b62347d623363fdd",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "de43b412196f4485c4d31ac601696fd060b191303ebf0b63a2e48eb1682e99df",
+      "sourceRecordSha256": "168d4adeaf52f6217d07fd9e96c7d697238b844ddfb5eee2e2340a9c0b0f0737",
+      "reason": "Ordered source path TE29_B to TE22_B (8 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "de568452639cf1227d57d68c103f9c22522051086a8dcd7979ecf1cae34c02b0",
+      "sourceRecordSha256": "84c0d6429574fec094672ff97354d342f0cd5c0b3696e65628a3e793cefc08aa",
+      "reason": "Ordered source path TE29_B to TE9_B (19 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "e09eadcc1afb480c536445c9602fe5eb18f7b8f301e32c6540641f421a1d2c91",
+      "sourceRecordSha256": "e31cedac00d6a21b782441d9c9d5999008b0951de0a9e7f22a948d1983cbdcf9",
+      "reason": "Ordered source path TE9_A to TE29_A (19 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "e0e0a99e4dae3e6bfc170c2255cfebc2049581804417b616b8a8f87254041c02",
+      "sourceRecordSha256": "cc1dbff85bd81902bd327b3239cd5026d1bb520bae8fbcc896cc55ed0e8261b8",
+      "reason": "Ordered source path TE22_A to TE29_A (8 occurrences) is a contiguousSegment match of TEL_MAIN_S/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_S",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "f77de5cd37fa8ef443ebdd00a5d4a805468bcbec0d679411094f1035405e0364",
+      "sourceRecordSha256": "f9b46b1f887499f6e327b49bf6793b1751442c878d99836ad367a9f63f8fa265",
+      "reason": "Ordered source path TE26_B to TE1_B (24 occurrences) is a contiguousSegment match of TEL_MAIN_N/r_2024_stage_4 on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.",
+      "target": {
+        "kind": "serviceRevision",
+        "id": "TEL_MAIN_N",
+        "revisionId": "r_2024_stage_4",
+        "match": "contiguousSegment"
+      },
+      "kind": "pattern",
+      "dateSetId": "eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE14_TE29",
+      "sourceRecordSha256": "42e51739bcd5587a68f000b9f6306c32f66fcc109e5c8bc400da06b0f26ffe34",
+      "reason": "Provider route TEL_TE14_TE29 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE17_TE29",
+      "sourceRecordSha256": "5fe50e098dfffcf5de63d49b8286b569fdb8cf9bd6634f455594069e1534cb5a",
+      "reason": "Provider route TEL_TE17_TE29 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE1_TE14",
+      "sourceRecordSha256": "4c22245972a7f07faf49f4a4228019d8a958ac04ef217ed876e8b0c3f823b388",
+      "reason": "Provider route TEL_TE1_TE14 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE1_TE17",
+      "sourceRecordSha256": "06b8d68fe989d037eb433e9979c1a54fa3969ad53a42f242a3168fcfe0555712",
+      "reason": "Provider route TEL_TE1_TE17 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE1_TE22",
+      "sourceRecordSha256": "81d79887cac4d6d437949d3ac357697ce9cc61c27d8be91498c579d005d162dd",
+      "reason": "Provider route TEL_TE1_TE22 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE1_TE26",
+      "sourceRecordSha256": "3b0dd0a7e630eb5558beb0caed68e0c4bd087c28d3c9496fafccf323b4ce2410",
+      "reason": "Provider route TEL_TE1_TE26 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE1_TE27",
+      "sourceRecordSha256": "15828e29808d164a1b20be2c365674f94d0640ae71049090784cfc74c30469f6",
+      "reason": "Provider route TEL_TE1_TE27 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE1_TE29",
+      "sourceRecordSha256": "11b651a151f595977f6f6fbfc43780fe857df706b6f06f44b04bcf3b8dd0d0a7",
+      "reason": "Provider route TEL_TE1_TE29 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE1_TE3",
+      "sourceRecordSha256": "8179c41d04597cebe2c8cb1b1ee385d51123cba98ef1cc34b39656639a85f25c",
+      "reason": "Provider route TEL_TE1_TE3 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE1_TE9",
+      "sourceRecordSha256": "9f254f45fac5b2dcea1e7e98d7c9e8b5be108279021559f346229a5530e8497b",
+      "reason": "Provider route TEL_TE1_TE9 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE22_TE29",
+      "sourceRecordSha256": "9736258d25f447fef1bf12cd9962f3478e764d123138d73ab7f36e634bbd6467",
+      "reason": "Provider route TEL_TE22_TE29 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE27_TE29",
+      "sourceRecordSha256": "8ce6072b453162fc48b04e311861bf0c290dacd18f8621c59ce4655b5db4717c",
+      "reason": "Provider route TEL_TE27_TE29 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE3_TE26",
+      "sourceRecordSha256": "62ee1970b8c4a48331fe910d831833e2fb3445bd690ec36c6050b6b9c3fcde8d",
+      "reason": "Provider route TEL_TE3_TE26 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE3_TE29",
+      "sourceRecordSha256": "cf64af44d9a9f568a49d9d829c604fdab1d5a856b6eacb4fa9007512b32fe5bf",
+      "reason": "Provider route TEL_TE3_TE29 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TEL_TE9_TE29",
+      "sourceRecordSha256": "d40951eb2392d1de62147a75b84605246ac1c6b2bee9928c79fcc2e49ff20713",
+      "reason": "Provider route TEL_TE9_TE29 has the explicit canonical line family TEL. This does not assign trip direction or endpoints. Proposal pending repository review.",
+      "target": {
+        "kind": "line",
+        "id": "TEL"
+      },
+      "kind": "route",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC17",
+      "sourceRecordSha256": "95f2174c7a85cf70cfe54728cf0f7285394369bd97dc62f8c18558fd2ed4b6c0",
+      "reason": "Source station code CC17 identifies canonical station CDT. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "CDT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "CC33",
+      "sourceRecordSha256": "898c2e9c1ce222f2cfa74757322fac7d9d8f85068ea799f5cac56b0650703919",
+      "reason": "Source station code CC33 identifies canonical station MRB. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MRB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "DT10",
+      "sourceRecordSha256": "ef33d032cbbc77819a2f9a80a40180cf16b94f8d8a8dffd1794c12d05965523e",
+      "reason": "Source station code DT10 identifies canonical station STV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "STV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "EW16",
+      "sourceRecordSha256": "78eeb4dff6cfee5758de5600ba7a58307d04f91b574b5da9c58d6cb8f869f1f7",
+      "reason": "Source station code EW16 identifies canonical station OTP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "OTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS22",
+      "sourceRecordSha256": "48a6ccb36712293947513f2fe1701aec5e8778814f25c46e4b3cd76c0361c29b",
+      "reason": "Source station code NS22 identifies canonical station ORC. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "ORC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "NS9",
+      "sourceRecordSha256": "9a16c500d83a4deb73028a85ee0dd7abcbd157b30ac0cad386d94da066bc2d29",
+      "reason": "Source station code NS9 identifies canonical station WDL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "WDL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE11_A",
+      "sourceRecordSha256": "9c062f97c38b9948e1f3a3c2b984d86e16fc651dabd5436f3f5e833ab3184309",
+      "reason": "Explicit source platform label C with code TE11 and parent DT10 identifies STV_TEL_C. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "STV_TEL_C",
+        "stationId": "STV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE11_B",
+      "sourceRecordSha256": "923434430b24b46edcc06c86891a078189bb79afbda5a4844b07cedb38bb9a46",
+      "reason": "Explicit source platform label D with code TE11 and parent DT10 identifies STV_TEL_D. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "STV_TEL_D",
+        "stationId": "STV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE12",
+      "sourceRecordSha256": "1832f851ee10cd07d3cbbe94c83abd9720138df3622ce404ed25d397d6ec9503",
+      "reason": "Source station code TE12 identifies canonical station NPR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "NPR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE12_A",
+      "sourceRecordSha256": "8ab2e47f1a95549eff6b2be654ceb2f21243a1629925724bbf5f6bf6d95d1928",
+      "reason": "Explicit source platform label A with code TE12 and parent TE12 identifies NPR_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "NPR_TEL_A",
+        "stationId": "NPR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE12_B",
+      "sourceRecordSha256": "684dd2ead725d22307075eb6a9335ae056b27e6a1e3ac761bfec28b08baccbbf",
+      "reason": "Explicit source platform label B with code TE12 and parent TE12 identifies NPR_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "NPR_TEL_B",
+        "stationId": "NPR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE13",
+      "sourceRecordSha256": "e493f125dc4472f77a4c8cd1f1624c281ab31a7857dde563ad7b64002f5f9fc2",
+      "reason": "Source station code TE13 identifies canonical station OBV. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "OBV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE13_A",
+      "sourceRecordSha256": "03ac22a7d66b0cc27c6ac85b6d52441984fcf014d9d6317d1bfd5abd4909a38c",
+      "reason": "Explicit source platform label A with code TE13 and parent TE13 identifies OBV_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "OBV_TEL_A",
+        "stationId": "OBV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE13_B",
+      "sourceRecordSha256": "a4940cc6689d19189e2abaec4bd0bc40baf55a0fcadc59290e6f8553a9b31392",
+      "reason": "Explicit source platform label B with code TE13 and parent TE13 identifies OBV_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "OBV_TEL_B",
+        "stationId": "OBV"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE14_A",
+      "sourceRecordSha256": "63f9b05f1c8197cff19b03dede435e3609580887b72cd00c0022ecba4f8b4265",
+      "reason": "Explicit source platform label C with code TE14 and parent NS22 identifies ORC_TEL_C. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "ORC_TEL_C",
+        "stationId": "ORC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE14_B",
+      "sourceRecordSha256": "e105f3ba4eb8c99197f49815b6388b187a73f793e6f7a54a8cc30991ea01ab95",
+      "reason": "Explicit source platform label D with code TE14 and parent NS22 identifies ORC_TEL_D. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "ORC_TEL_D",
+        "stationId": "ORC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE15",
+      "sourceRecordSha256": "ab3a2e3f9f93c20191c3ae1ea88befe0fb7f3536620274639c4557179166b98c",
+      "reason": "Source station code TE15 identifies canonical station GRW. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "GRW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE15_A",
+      "sourceRecordSha256": "0838873919ddf01539c3a998f1d7a57b0c276ba02af4b29d1099c2ca835890fb",
+      "reason": "Explicit source platform label A with code TE15 and parent TE15 identifies GRW_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "GRW_TEL_A",
+        "stationId": "GRW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE15_B",
+      "sourceRecordSha256": "c928b3e0534b0171365292da5ede6c26855bac635cb093c45abe96456ad43627",
+      "reason": "Explicit source platform label B with code TE15 and parent TE15 identifies GRW_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "GRW_TEL_B",
+        "stationId": "GRW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE16",
+      "sourceRecordSha256": "2f48ec998a3f22efbc62744693d4bcc64ab789d45db3699fd82d5f2b84512efe",
+      "reason": "Source station code TE16 identifies canonical station HVL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "HVL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE16_A",
+      "sourceRecordSha256": "8b8be963b5b2ea5142c0269469df88fb8404138c02974135685ddeef9694ff0c",
+      "reason": "Explicit source platform label A with code TE16 and parent TE16 identifies HVL_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HVL_TEL_A",
+        "stationId": "HVL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE16_B",
+      "sourceRecordSha256": "8b5deff34a10590aaf9550f16374bc69a357becaa74c0b08216c5f8571e8407b",
+      "reason": "Explicit source platform label B with code TE16 and parent TE16 identifies HVL_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "HVL_TEL_B",
+        "stationId": "HVL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE17_A",
+      "sourceRecordSha256": "983447bd8008ef133afde59c3f16f0b2f33a3ddddc2af911ed99c5c275bdab16",
+      "reason": "Explicit source platform label E with code TE17 and parent EW16 identifies OTP_TEL_E. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "OTP_TEL_E",
+        "stationId": "OTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE17_B",
+      "sourceRecordSha256": "ced4215bf4a5f2f085b551a39cf3906d854b856450f0bfc81aec3ea6cfd0f183",
+      "reason": "Explicit source platform label F with code TE17 and parent EW16 identifies OTP_TEL_F. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "OTP_TEL_F",
+        "stationId": "OTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE18",
+      "sourceRecordSha256": "fa6ea311d0057abec7349767b2cab761a97c34548cc7cfac9f87ae768631e753",
+      "reason": "Source station code TE18 identifies canonical station MAX. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MAX"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE18_A",
+      "sourceRecordSha256": "00c419bfbde766723962a892feb931a159e935df2d4a526efb847f55569c3fc7",
+      "reason": "Explicit source platform label A with code TE18 and parent TE18 identifies MAX_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MAX_TEL_A",
+        "stationId": "MAX"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE18_B",
+      "sourceRecordSha256": "ace929d656f69c4a0301b2b6ce30e4cd955b41612c64c4a82d653c132b6e97a5",
+      "reason": "Explicit source platform label B with code TE18 and parent TE18 identifies MAX_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MAX_TEL_B",
+        "stationId": "MAX"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE19",
+      "sourceRecordSha256": "44163f1fd13577df30a96edd6c846d11a74b7ca675fc987070fcd5cb3fa4c642",
+      "reason": "Source station code TE19 identifies canonical station SHW. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SHW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE19_A",
+      "sourceRecordSha256": "71f861946b03ac9755987ff253f191dad60fd34498c5a925fbf14c96abe9a2d7",
+      "reason": "Explicit source platform label A with code TE19 and parent TE19 identifies SHW_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SHW_TEL_A",
+        "stationId": "SHW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE19_B",
+      "sourceRecordSha256": "e081b8f2cb1933619d23ddb9c82ca8030da9956d96388cd58174fcb3e4ebab6c",
+      "reason": "Explicit source platform label B with code TE19 and parent TE19 identifies SHW_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SHW_TEL_B",
+        "stationId": "SHW"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE1",
+      "sourceRecordSha256": "27fbf7281e222d6ebc880363079055d42d04330049ec2ee62df259bd4e5c8c45",
+      "reason": "Source station code TE1 identifies canonical station WDN. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "WDN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE1_A",
+      "sourceRecordSha256": "56ee66f331c033d835dd6054de7df635ca7865c072149d1a5aaa33a80d63a320",
+      "reason": "Explicit source platform label A with code TE1 and parent TE1 identifies WDN_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "WDN_TEL_A",
+        "stationId": "WDN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE1_B",
+      "sourceRecordSha256": "338aa9c9eaf8f67dadcc70e2ec88f402a68d78c313edd47b83e51836971ac0b1",
+      "reason": "Explicit source platform label B with code TE1 and parent TE1 identifies WDN_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "WDN_TEL_B",
+        "stationId": "WDN"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE20_A",
+      "sourceRecordSha256": "6466042c605385efaeaa0acbe957336eac097af3f5d28ae5a3954f6b80c1c3de",
+      "reason": "Explicit source platform label E with code TE20 and parent CC33 identifies MRB_TEL_E. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MRB_TEL_E",
+        "stationId": "MRB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE20_B",
+      "sourceRecordSha256": "dd6250bbaf2132c72fcd50d4e7aafaea0fcc66aa0e946a93145e2e28cf74a2e5",
+      "reason": "Explicit source platform label F with code TE20 and parent CC33 identifies MRB_TEL_F. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MRB_TEL_F",
+        "stationId": "MRB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE22",
+      "sourceRecordSha256": "4e061279e8bc063e38617e68991a06607422a9d8bf258ee8f464625309d70e77",
+      "reason": "Source station code TE22 identifies canonical station GRB. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "GRB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE22_A",
+      "sourceRecordSha256": "845f58242340ca555af2abd448af24874080f7eacdfac06d2bf299c749536a06",
+      "reason": "Explicit source platform label A with code TE22 and parent TE22 identifies GRB_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "GRB_TEL_A",
+        "stationId": "GRB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE22_B",
+      "sourceRecordSha256": "09829aa4286192018657769effdfbf8f6c29b25615696ab44809d24fc101e92f",
+      "reason": "Explicit source platform label B with code TE22 and parent TE22 identifies GRB_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "GRB_TEL_B",
+        "stationId": "GRB"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE23",
+      "sourceRecordSha256": "a285bdc7dea372ca43793f8f3d24a4b723803670acf4923f8f90aa22fdb6aee6",
+      "reason": "Source station code TE23 identifies canonical station TRH. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TRH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE23_A",
+      "sourceRecordSha256": "3cd013a33279fb11369e9024880f873c051fe843f5fe9ad6136010bc9291f9e0",
+      "reason": "Explicit source platform label A with code TE23 and parent TE23 identifies TRH_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TRH_TEL_A",
+        "stationId": "TRH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE23_B",
+      "sourceRecordSha256": "239148583eadd48eb1363287c25c856bceb04cd9cee67592b47299c8baca2fe2",
+      "reason": "Explicit source platform label B with code TE23 and parent TE23 identifies TRH_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TRH_TEL_B",
+        "stationId": "TRH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE24",
+      "sourceRecordSha256": "5dbd1f3f39cca0dc1b5864e4d37735c46232964141c22920883bfcc097ab96fb",
+      "reason": "Source station code TE24 identifies canonical station KTP. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "KTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE24_A",
+      "sourceRecordSha256": "3830338d88cedc59c61b7bc6d9415ef7815ab0cb3cf01256d8e02506e526657d",
+      "reason": "Explicit source platform label A with code TE24 and parent TE24 identifies KTP_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KTP_TEL_A",
+        "stationId": "KTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE24_B",
+      "sourceRecordSha256": "e2f9433d8908cc0e955a319e5cf80d7425faa7fc637d42e804185ad4e3554c2a",
+      "reason": "Explicit source platform label B with code TE24 and parent TE24 identifies KTP_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "KTP_TEL_B",
+        "stationId": "KTP"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE25",
+      "sourceRecordSha256": "c6dd26e4ef2ca128f25033f40726d91b5d0d8e579d81066a8dbea98de4dde9d8",
+      "reason": "Source station code TE25 identifies canonical station TKT. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "TKT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE25_A",
+      "sourceRecordSha256": "d4cb86cdf4062ab81bd0abc14404b60b1cecd6fe9826e442456e6b5c6705142d",
+      "reason": "Explicit source platform label A with code TE25 and parent TE25 identifies TKT_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TKT_TEL_A",
+        "stationId": "TKT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE25_B",
+      "sourceRecordSha256": "0fbbca2978e6408886dea7684f0abf0fc7fc2f5bf997043324fe27fc06fcedbb",
+      "reason": "Explicit source platform label B with code TE25 and parent TE25 identifies TKT_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "TKT_TEL_B",
+        "stationId": "TKT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE26",
+      "sourceRecordSha256": "d84cffc053c8479960bbbd0ee14762b774a436f18652f219571c1f7d4b6e2b8f",
+      "reason": "Source station code TE26 identifies canonical station MPR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MPR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE26_A",
+      "sourceRecordSha256": "1044c21236a95e7459ef3a937a22e0441ccb4fb8ad24b7a953e85d7ed47b476f",
+      "reason": "Explicit source platform label A with code TE26 and parent TE26 identifies MPR_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MPR_TEL_A",
+        "stationId": "MPR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE26_B",
+      "sourceRecordSha256": "060e4291082026a4e5e9fea1e547628d4b328c497d170d624b663cdef1948aff",
+      "reason": "Explicit source platform label B with code TE26 and parent TE26 identifies MPR_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MPR_TEL_B",
+        "stationId": "MPR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE27",
+      "sourceRecordSha256": "d77d22a3ba9a48ea295aa4dfa31b7ca3cb58df0ca8ec49051b8818a63f7ea267",
+      "reason": "Source station code TE27 identifies canonical station MTC. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MTC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE27_A",
+      "sourceRecordSha256": "d5816ed3b9b9bb19121773277567df5831c4a261f5d3da1b61ffa48041d36602",
+      "reason": "Explicit source platform label A with code TE27 and parent TE27 identifies MTC_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MTC_TEL_A",
+        "stationId": "MTC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE27_B",
+      "sourceRecordSha256": "508ec54782b8968455b8e785474f67ad9e951cb10ad60e116363fa3d95b4cf6c",
+      "reason": "Explicit source platform label B with code TE27 and parent TE27 identifies MTC_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MTC_TEL_B",
+        "stationId": "MTC"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE28",
+      "sourceRecordSha256": "7a14b0a7412a48904e4126f0ba7f54b878da0d878fbda8b96a5e3804decdcbae",
+      "reason": "Source station code TE28 identifies canonical station SGL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SGL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE28_A",
+      "sourceRecordSha256": "ea1cff8f25da9132b5e19f225c3a4220f71056b5a0fdab6f2dbb7d101749f195",
+      "reason": "Explicit source platform label A with code TE28 and parent TE28 identifies SGL_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SGL_TEL_A",
+        "stationId": "SGL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE28_B",
+      "sourceRecordSha256": "5dafefc6cac85258e9d509708d62e1b594fe9856b823dda8b284df2d303fdd23",
+      "reason": "Explicit source platform label B with code TE28 and parent TE28 identifies SGL_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SGL_TEL_B",
+        "stationId": "SGL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE29",
+      "sourceRecordSha256": "387cfa615c30d88011a697f0cc902c851be822aafd2b267a51d39c18bc38bd66",
+      "reason": "Source station code TE29 identifies canonical station BSR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BSR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE29_A",
+      "sourceRecordSha256": "842346a6545601a48ca9553f9b1d1911ce87893188a232896f8b10d45d28079a",
+      "reason": "Explicit source platform label A with code TE29 and parent TE29 identifies BSR_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BSR_TEL_A",
+        "stationId": "BSR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE29_B",
+      "sourceRecordSha256": "8efa6fadbc9b00cdafdbfdd74513cd67d5671b416f5e247b500d072280d7526f",
+      "reason": "Explicit source platform label B with code TE29 and parent TE29 identifies BSR_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BSR_TEL_B",
+        "stationId": "BSR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE2_A",
+      "sourceRecordSha256": "6f4858bce657fbf2aa17d0288fd807473d45136d0fcb8de1a3f51ce49a19014e",
+      "reason": "Explicit source platform label C with code TE2 and parent NS9 identifies WDL_TEL_C. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "WDL_TEL_C",
+        "stationId": "WDL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE2_B",
+      "sourceRecordSha256": "aba96b46e1765a325f5d8946b35c14576ec595b9b5f64e117db8d5fe8c641776",
+      "reason": "Explicit source platform label D with code TE2 and parent NS9 identifies WDL_TEL_D. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "WDL_TEL_D",
+        "stationId": "WDL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE3",
+      "sourceRecordSha256": "8afe9f05d50aab42a4d5d534c2d129b6d5e6fb2cd998fd1d9decfc483967b0c6",
+      "reason": "Source station code TE3 identifies canonical station WDS. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "WDS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE3_A",
+      "sourceRecordSha256": "45402edc028cc5fbc0f48adc82801530c86206ecd782d64aafa75fccb3aa8fae",
+      "reason": "Explicit source platform label A with code TE3 and parent TE3 identifies WDS_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "WDS_TEL_A",
+        "stationId": "WDS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE3_B",
+      "sourceRecordSha256": "7ee5bc5ee6814f723712c359995c5acf87a85ef7a9bb81fc1ac80f18cfbfe91b",
+      "reason": "Explicit source platform label B with code TE3 and parent TE3 identifies WDS_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "WDS_TEL_B",
+        "stationId": "WDS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE4",
+      "sourceRecordSha256": "3af88d5dd4f0d3b294397a51b963042675b70c5005573a7a11e05b5d823a0f13",
+      "reason": "Source station code TE4 identifies canonical station SPL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "SPL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE4_A",
+      "sourceRecordSha256": "e999c21e778c5b7f734334e76d16ba5338d5dc88759fab35cbecfb0e83b5b113",
+      "reason": "Explicit source platform label A with code TE4 and parent TE4 identifies SPL_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SPL_TEL_A",
+        "stationId": "SPL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE4_B",
+      "sourceRecordSha256": "b4e36abe8385a128aa874cabb80ab6d0bef78418b1d2c64df6f714cfb116e7fe",
+      "reason": "Explicit source platform label B with code TE4 and parent TE4 identifies SPL_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "SPL_TEL_B",
+        "stationId": "SPL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE5",
+      "sourceRecordSha256": "ee69e5468a08870cc6e3b30b21a90082b75fd343b5e2c3c7023d70b534385112",
+      "reason": "Source station code TE5 identifies canonical station LTR. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "LTR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE5_A",
+      "sourceRecordSha256": "a5451d138052ede11abf6250d572414e52b358a788650381e394507196c0ee4f",
+      "reason": "Explicit source platform label A with code TE5 and parent TE5 identifies LTR_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LTR_TEL_A",
+        "stationId": "LTR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE5_B",
+      "sourceRecordSha256": "c3236e8ae397e9674fab36709e32709a92fed544e09ea8270d6a7698e87d68b0",
+      "reason": "Explicit source platform label B with code TE5 and parent TE5 identifies LTR_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "LTR_TEL_B",
+        "stationId": "LTR"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE6",
+      "sourceRecordSha256": "311af9a55b1032a121be4c63af55c62442c22aa13b199598c69a35b9b30cd0a7",
+      "reason": "Source station code TE6 identifies canonical station MFL. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "MFL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE6_A",
+      "sourceRecordSha256": "d4f47f3fc8bb13ca3b29b82903e57d01013cb7a3ea204342cacf88dcdcb1235e",
+      "reason": "Explicit source platform label A with code TE6 and parent TE6 identifies MFL_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MFL_TEL_A",
+        "stationId": "MFL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE6_B",
+      "sourceRecordSha256": "b8db7508fd1cd794283910038d1875bb293134c86184a7e3413d40332c57cadb",
+      "reason": "Explicit source platform label B with code TE6 and parent TE6 identifies MFL_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "MFL_TEL_B",
+        "stationId": "MFL"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE7",
+      "sourceRecordSha256": "0b8851f3411fea71f39846009b8fcf2c92aabb081652ca6496aa848cf93a4ddf",
+      "reason": "Source station code TE7 identifies canonical station BRH. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "BRH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE7_A",
+      "sourceRecordSha256": "6262fc35142a8b264c8fe8c916dd8b9d152291d593cb04130efadedd3589d302",
+      "reason": "Explicit source platform label A with code TE7 and parent TE7 identifies BRH_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BRH_TEL_A",
+        "stationId": "BRH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE7_B",
+      "sourceRecordSha256": "447ee5d3361d8a86a22acd61f6b393ec186f8154aa3abd8b8becd39d8b8abc26",
+      "reason": "Explicit source platform label B with code TE7 and parent TE7 identifies BRH_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "BRH_TEL_B",
+        "stationId": "BRH"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE8",
+      "sourceRecordSha256": "2f8db3ed893c47b8f31cddb526c19eec7d49fc894c5ff18fdba5efbe97737f3e",
+      "reason": "Source station code TE8 identifies canonical station UTS. Parent consistency is preserved; service-date validity is checked on pattern cells. Proposal pending repository review.",
+      "target": {
+        "kind": "station",
+        "id": "UTS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE8_A",
+      "sourceRecordSha256": "4c3f005db89783b8957613293feffad8142b6811772ea6b105502bcae2430ebd",
+      "reason": "Explicit source platform label A with code TE8 and parent TE8 identifies UTS_TEL_A. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "UTS_TEL_A",
+        "stationId": "UTS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE8_B",
+      "sourceRecordSha256": "cc5ca0c1732bd89d37a35bdaf7a857df5bf773adc5288f5d6bfe6161ea9f8c4d",
+      "reason": "Explicit source platform label B with code TE8 and parent TE8 identifies UTS_TEL_B. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "UTS_TEL_B",
+        "stationId": "UTS"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE9_A",
+      "sourceRecordSha256": "51dab0d5ef6459833fac2c2ebc9a40b2c15a79c78773b5345c3a152449ab014e",
+      "reason": "Explicit source platform label C with code TE9 and parent CC17 identifies CDT_TEL_C. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CDT_TEL_C",
+        "stationId": "CDT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    },
+    {
+      "providerId": "TE9_B",
+      "sourceRecordSha256": "fc0571bc8f0f5bd5ce74c127ebabdb4ac0f3444fd2933620266ed92326161ada",
+      "reason": "Explicit source platform label D with code TE9 and parent CC17 identifies CDT_TEL_D. The provider stop-ID suffix is not allocation evidence. Proposal pending repository review.",
+      "target": {
+        "kind": "platform",
+        "id": "CDT_TEL_D",
+        "stationId": "CDT"
+      },
+      "kind": "stop",
+      "disposition": "matched"
+    }
+  ]
+}
