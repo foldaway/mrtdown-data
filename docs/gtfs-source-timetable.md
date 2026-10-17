@@ -40,6 +40,39 @@ provenance when constructing a surrounding artifact. Passing this schema does
 not establish source correctness, reviewed mapping coverage or publication
 eligibility. No generation or Pages publication path calls the assembler.
 
+## Verified local export
+
+```sh
+npm run build:cli
+node packages/cli/dist/index.js gtfs timetable \
+  --file /absolute/path/schedule.zip \
+  --capture /absolute/path/capture.json \
+  --write /tmp/source-timetable.json
+```
+
+The command verifies the capture's source endpoint, byte count and SHA-256 before
+parsing the schedule and assembling the complete timetable. It accepts only a
+schedule capture. Omit `--write` to print the same compact JSON to stdout; a saved
+file ends with one newline. Invalid arguments, capture failures and invalid
+schedules fail before output writing, leaving an existing output file untouched.
+
+The report contains `reportVersion: 1`,
+`documentKind: "gtfs-source-timetable"`, the original `capture`, raw-table hash
+`manifest`, validated `timetable`, `timetableSha256` and
+`generationEligible: false`. The timetable hash covers UTF-8
+`JSON.stringify(report.timetable)` without a trailing newline. It excludes
+capture metadata and table hashes: reordered source rows can produce the same
+normalized timetable while the archive and raw-table hashes still identify the
+distinct source bytes. Repeating the export with the same archive and capture
+record produces byte-identical reports.
+
+`@mrtdown/fs` exposes the same read-only operation as
+`inspectGtfsTimetable(file, captureFile)`. It returns the report without writing
+files or fetching the archive reference. Pending-review captures are permitted
+for local inspection, with their attribution and rights metadata retained as
+supplied. The export does not grant publication rights or approve canonical
+mappings. Keep these generated files outside canonical `data/` and Git.
+
 A read-only check against verified October source
 `e459a22be6c99a3728ee97770c02c4edbaee6c9293e48017e8ec28139962fa19`
 assembled all 19,150 trips, three calendars and 349,768 occurrences. The trip
@@ -47,3 +80,5 @@ timing digest matches the prior standalone assembler check. Reversing all source
 rows produced identical output, with source tables unchanged. Serializing the
 complete result using `JSON.stringify` without a trailing newline gives SHA-256
 `20d37fad21a1ff5a655f168cc57595b8dad8beb08f98f1ecf49fa3bb6d95273d`.
+Two verified CLI exports of this retained capture also produced byte-identical
+reports with that timetable hash, preserving the archive and capture record.

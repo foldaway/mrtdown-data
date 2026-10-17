@@ -20,6 +20,10 @@ node packages/cli/dist/index.js gtfs inspect \
   --manifest docs/gtfs-historical-schedule-manifest.json \
   --write /tmp/historical-schedule-report.json
 node packages/cli/dist/index.js --data-dir data gtfs topology
+node packages/cli/dist/index.js gtfs timetable \
+  --file /absolute/path/gtfs_schedule.zip \
+  --capture /absolute/path/capture.json \
+  --write /tmp/source-timetable.json
 node packages/cli/dist/index.js gtfs departures \
   --file /absolute/path/gtfs_schedule.zip \
   --capture /absolute/path/capture.json \
@@ -78,6 +82,16 @@ The topology fingerprint hashes projection v1 from the GTFS plan. It includes
 identity, effective station codes, platforms and ordered service revisions,
 excluding editorial/geographic changes. It is separate from a canonical commit
 and full-record manifest; future reviewed mappings must record all three.
+
+## Timetable export
+
+`gtfs timetable` exports all source trip timing and calendars from a verified
+schedule ZIP. Its compact JSON contains capture provenance, raw-table hashes and
+a separate normalized timetable hash. Invalid captures or schedules fail before
+writing. See the [timetable contract and export format](gtfs-source-timetable.md#verified-local-export)
+for the hash definition and complete contents. This local inspection output
+retains `generationEligible: false`; canonical mappings and publication remain
+subject to review.
 
 ## Departure lookup
 

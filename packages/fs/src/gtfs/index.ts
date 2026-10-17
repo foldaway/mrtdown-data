@@ -30,4 +30,5 @@ export {
   scopedReviewDraftSha256,
 } from './scopedReviewContract.js';
 export * from './scopedReviewDraft.js';
+export * from './timetable.js';
 export * from './topology.js';
