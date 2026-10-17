@@ -1,6 +1,10 @@
 import z from 'zod';
 
-const serviceDaySeconds = z.number().int().min(0).max(Number.MAX_SAFE_INTEGER);
+export const ScheduledServiceDaySecondsSchema = z
+  .number()
+  .int()
+  .min(0)
+  .max(Number.MAX_SAFE_INTEGER);
 export const ScheduledStopAccessSchema = z.union([
   z.literal(0),
   z.literal(1),
@@ -15,8 +19,8 @@ export const ScheduledStopTimeSchema = z
     providerTripId: z.string().min(1),
     providerStopId: z.string().min(1),
     stopSequence: z.string().regex(/^\d+$/),
-    arrivalSeconds: serviceDaySeconds.nullable(),
-    departureSeconds: serviceDaySeconds.nullable(),
+    arrivalSeconds: ScheduledServiceDaySecondsSchema.nullable(),
+    departureSeconds: ScheduledServiceDaySecondsSchema.nullable(),
     pickupType: ScheduledStopAccessSchema,
     dropOffType: ScheduledStopAccessSchema,
     timepoint: z.union([z.literal(0), z.literal(1)]),

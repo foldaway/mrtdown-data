@@ -2,6 +2,7 @@ export * from './helpers/generateEstimatedStationFrequencySchedules.js';
 export * from './helpers/isScheduledServiceDate.js';
 export * from './helpers/normalizeRecurringPeriod.js';
 export * from './helpers/resolvePeriods.js';
+export * from './helpers/scheduledServiceDayInstant.js';
 export * from './schema/common.js';
 export * from './schema/IsoCountryCode.js';
 export * from './schema/issue/bundle.js';
