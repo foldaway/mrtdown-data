@@ -539,6 +539,18 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-16: Extended the concrete mapping pilot to Punggol LRT: 60 proposed
+  decisions cover one route, 15 station parents, 30 platform stops and 13
+  full-loop patterns (2,935 trip records; 1,721 pattern-date pairs). Preserved
+  repeated town-centre occurrences and separate weekday source patterns that
+  share a clockwise path despite differing direction IDs. NEL/DTL/PGLRT together
+  propose 253 matches, leaving 871 entries unresolved without automatic
+  exclusions or approval. See the
+  [Punggol LRT mapping table](../../gtfs-pglrt-pilot-mappings.md) and
+  [cumulative review scope](../../gtfs-scoped-review.md#punggol-lrt-and-cumulative-pilot-scope).
+  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
+  complete and generation stays blocked.
+
 - 2026-10-15: Extended the concrete mapping pilot to DTL: 129 proposed
   decisions cover seven declared routes, 35 station parents, 70 platform stops
   and 16 patterns (1,511 trip records; 1,877 pattern-date pairs). Two route

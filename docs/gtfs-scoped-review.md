@@ -1,9 +1,9 @@
 # Scoped GTFS mapping draft and review contract
 
 The version-2 draft turns verified reconciliation candidates into concrete,
-reviewable mapping proposals. The checked-in pilots cover NEL and DTL. Neither
-the pilots nor the full generated draft is approved or eligible for generation.
-Proposal and review schemas version 1 remain unchanged.
+reviewable mapping proposals. The checked-in pilots cover NEL, DTL and PGLRT.
+Neither the pilots nor the full generated draft is approved or eligible for
+generation. Proposal and review schemas version 1 remain unchanged.
 
 ## Reproduce the NEL pilot
 
@@ -199,3 +199,36 @@ All five output files reproduce byte for byte with `DTL,NEL,NEL` as well as
 `NEL,DTL`. The original single-line NEL draft and summary also reproduce unchanged.
 Combining scopes supplies no approval: full readiness remains `unresolved`,
 subset readiness remains `incomplete`, and generation stays blocked.
+
+## Punggol LRT and cumulative pilot scope
+
+The [Punggol LRT mapping table](gtfs-pglrt-pilot-mappings.md),
+[draft](gtfs-pglrt-pilot-draft.json) and
+[summary](gtfs-pglrt-pilot-review-summary.json) add the provider route `PG` to
+canonical `PGLRT`. Its 60 proposed decisions cover one agency, one route,
+15 station parents, 30 platform stops and 13 patterns: 2,935 trip records and
+1,721 pattern-date pairs. All patterns preserve nine ordered occurrences,
+including the separate departure and return at the same Punggol platform stop.
+They are exact full loops, with no short workings or rotated matches.
+
+The weekday East Loop clockwise path occurs with both source direction IDs.
+Both source patterns remain separate; station order and explicit platform labels
+determine their common service target. No direction ID or platform suffix is
+promoted into a general mapping rule.
+
+Regenerate the cumulative pilot from the same verified inputs and canonical
+commit using `NEL,DTL,PGLRT` as the pilot argument. It contains 253 proposed
+matches: one agency, eleven routes, 64 parents, 134 platform stops and 43
+patterns. Shared dependencies include the existing SBST agency and Punggol's
+`NE17` station parent. The patterns contain 6,129 trip records and 5,162
+pattern-date pairs. The full document still accounts for all 1,124 entries,
+with 871 unresolved and no exclusions or ignores. Its focused subset omits
+those 871 entries and 43,229 outside-pilot pattern dates. The normalized
+combined pilot digest is
+`9a4c35f381249d44338597ab9ceb08f4be4057592ceba9ac7c3b069c2b9e22b4`.
+
+All five cumulative output files reproduce byte for byte with
+`PGLRT,NEL,DTL,PGLRT` as well as `NEL,DTL,PGLRT`. Full readiness remains
+`unresolved`, subset readiness remains `incomplete`, and neither mapping review
+nor arrivals generation is enabled. Source/calendar correctness and reviewed
+lineage remain separate open conditions.
