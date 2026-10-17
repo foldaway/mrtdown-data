@@ -539,6 +539,16 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added an opt-in deterministic blocker report for version-2 and
+  version-3 drafts. It binds the exact draft/input identity and exposes unresolved
+  dates, all candidate revisions, unmatched dependencies, literal group members
+  and ordered occurrence evidence. The all-line v3 report accounts for all 191
+  unresolved cells and 22,123 pattern-date pairs, with overlapping causes counted
+  explicitly. Existing mapping/evaluation outputs and generation gates remain
+  unchanged. See [review blockers](../../gtfs-review-blockers.md). Phase 2 remains
+  open pending evidence and human review.
+
+
 - 2026-10-17: Added opt-in version-3 grouped-platform review. Seven complete
   sets preserve all physical alternatives without allocating a member; every
   member must pass current service/boarding checks on each matched occurrence.

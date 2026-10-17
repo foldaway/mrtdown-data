@@ -54,6 +54,10 @@ from the pinned source receipt/manifest and canonical commit. The input is the
 same public schedule and topology audited in
 [reconciliation evidence](gtfs-reconciliation.md).
 
+Add `--blockers` to generate the optional [blocker report](gtfs-review-blockers.md)
+with exact unresolved dates, dependency chains and occurrence evidence. It works
+with both draft versions and does not alter mapping/evaluation files.
+
 ## Draft decisions and exact dates
 
 `ScopedReconciliationDraftSchema` records `documentKind`, schema version 2,

@@ -12,6 +12,7 @@ export * from './reconciliation.js';
 export * from './reconciliationEvidence.js';
 export * from './scopedCandidates.js';
 export * from './scopedReview.js';
+export * from './scopedReviewBlockers.js';
 export type {
   ScopedReconciliationDraft,
   ScopedReviewContext,
