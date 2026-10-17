@@ -539,6 +539,18 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added exact-date CCL mapping proposals: 178 matches cover 47
+  routes, 33 station parents, 66 platform stops and 31 pattern/date cells
+  (1,098 recurring trip records; 1,656 pattern-date pairs). All matched dates
+  are on or after July 12; each selected pattern retains earlier unresolved
+  dates, and no CCL pattern is matched for its whole calendar. The six pilots
+  together have 749 matched cells and 406 unresolved cells. Splitting 31
+  patterns makes 1,155 decision cells over the unchanged 1,124 source entries.
+  See the [CCL mapping table](../../gtfs-ccl-pilot-mappings.md) and
+  [exact-date accounting](../../gtfs-scoped-review.md#circle-line-exact-date-cells-and-accounting).
+  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
+  complete and generation stays blocked.
+
 - 2026-10-17: Added a partial EWL mapping pilot: 165 proposed matches cover
   seventeen declared routes, 35 station parents, 67 platform stops and 45
   patterns (856 trip records; 5,893 pattern-date pairs). Five route records have
