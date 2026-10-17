@@ -40,11 +40,12 @@ all source columns: headsigns, continuous access, booking details and other fiel
 still belong to the retained source and future surrounding artifact. On-demand
 location/window records are rejected rather than converted into fixed-stop times.
 
-Per-trip ordering, duplicate decimal sequence identity, first/last-stop timing,
-route inheritance, calendar correctness and reference validation require the
-surrounding schedule audit/assembler. The existing source audit and mapping
-review paths remain unchanged. A parsed stop time is not proof of a reviewed
-canonical allocation or permission to publish scheduled arrivals.
+The [source-trip timing assembler](gtfs-scheduled-trip-times.md) validates
+per-trip ordering, duplicate decimal sequence identity, first/last-stop timing,
+source route/calendar references and calendar syntax across the surrounding
+schedule. Source validity in the real world and canonical allocation still require
+review. The existing source audit and mapping review paths remain unchanged.
+A parsed stop time is not permission to publish scheduled arrivals.
 
 The read-only compatibility check of the verified October source
 `e459a22be6c99a3728ee97770c02c4edbaee6c9293e48017e8ec28139962fa19`

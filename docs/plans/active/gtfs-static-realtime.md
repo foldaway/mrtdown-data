@@ -539,6 +539,15 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added ordered source-trip timing validation and batch assembly as
+  arrivals-format preparation. It preserves exact decimal occurrence identities,
+  repeated stops and missing approximate times while rejecting duplicate
+  sequences, missing boundary times and chronology regressions across gaps.
+  All 19,150 October trips and 349,768 occurrences pass a read-only compatibility
+  check with source tables unchanged. See
+  [source-trip timing](../../gtfs-scheduled-trip-times.md). Phase 2 review and
+  generation/publication gates remain unchanged.
+
 - 2026-10-17: Added Singapore service-day instant conversion as format
   preparation. It preserves offsets beyond midnight using the GTFS noon-based
   anchor and elapsed seconds, with explicit civil-date validation. Tests retain
