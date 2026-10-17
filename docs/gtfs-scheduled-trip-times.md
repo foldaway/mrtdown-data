@@ -12,6 +12,10 @@ Each timing record contains nonempty `providerTripId`, `providerRouteId` and
 must belong to the containing trip. The schema validates the supplied order;
 it does not sort or repair an invalid record.
 
+The [service-date resolver](gtfs-scheduled-trip-service-dates.md) combines one
+validated trip with its matching calendar and an explicit service date, adding
+UTC event instants only when that date is enabled.
+
 Sequences must strictly increase as decimal integers. Comparison retains exact
 precision beyond JavaScript's safe integer range, while output keeps the original
 text, including leading zeroes. Decimal aliases such as `1` and `01` are duplicate
