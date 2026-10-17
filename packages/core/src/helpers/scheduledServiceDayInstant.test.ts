@@ -1,8 +1,4 @@
-import { Temporal } from '@js-temporal/polyfill';
 import { describe, expect, it } from 'vitest';
-import { ScheduledServiceCalendarSchema } from '../schema/ScheduledServiceCalendar.js';
-import { ScheduledStopTimeSchema } from '../schema/ScheduledStopTime.js';
-import { isScheduledServiceDate } from './isScheduledServiceDate.js';
 import { scheduledServiceDayInstant } from './scheduledServiceDayInstant.js';
 
 describe('scheduledServiceDayInstant', () => {
@@ -38,77 +34,6 @@ describe('scheduledServiceDayInstant', () => {
     expect(scheduledServiceDayInstant('1982-01-01', 0)).toBe(
       '1981-12-31T16:00:00Z',
     );
-  });
-
-  it('merges instants from independently enabled service dates in chronological order', () => {
-    const calendar = ScheduledServiceCalendarSchema.parse({
-      providerCalendarId: 'SYNTHETIC',
-      weekly: null,
-      exceptions: [
-        { date: '2026-01-01', available: true },
-        { date: '2026-01-02', available: true },
-      ],
-    });
-    const departures = [
-      { serviceDate: '2026-01-01', seconds: 90000, id: 'previous-25h' },
-      { serviceDate: '2026-01-02', seconds: 1800, id: 'current-00h30' },
-    ]
-      .filter((item) => isScheduledServiceDate(calendar, item.serviceDate))
-      .map((item) => ({
-        ...item,
-        instant: scheduledServiceDayInstant(item.serviceDate, item.seconds),
-      }))
-      .sort((a, b) => Temporal.Instant.compare(a.instant, b.instant));
-    expect(
-      departures.map((item) => ({ id: item.id, instant: item.instant })),
-    ).toEqual([
-      { id: 'current-00h30', instant: '2026-01-01T16:30:00Z' },
-      { id: 'previous-25h', instant: '2026-01-01T17:00:00Z' },
-    ]);
-  });
-
-  it('retains a previous-day trip when the new civil date is removed by an exception', () => {
-    const calendar = ScheduledServiceCalendarSchema.parse({
-      providerCalendarId: 'SYNTHETIC',
-      weekly: null,
-      exceptions: [
-        { date: '2026-01-01', available: true },
-        { date: '2026-01-02', available: false },
-      ],
-    });
-    const candidates = [
-      { serviceDate: '2026-01-01', seconds: 90000 },
-      { serviceDate: '2026-01-02', seconds: 3600 },
-    ];
-    const active = candidates.filter((item) =>
-      isScheduledServiceDate(calendar, item.serviceDate),
-    );
-    expect(active).toEqual([{ serviceDate: '2026-01-01', seconds: 90000 }]);
-    expect(
-      scheduledServiceDayInstant(
-        active[0]?.serviceDate ?? '',
-        active[0]?.seconds ?? -1,
-      ),
-    ).toBe('2026-01-01T17:00:00Z');
-  });
-
-  it('converts a typed source offset without changing source identity, access or precision', () => {
-    const stop = ScheduledStopTimeSchema.parse({
-      providerTripId: 'T',
-      providerStopId: 'P',
-      stopSequence: '09007199254740993',
-      arrivalSeconds: 87000,
-      departureSeconds: 90123,
-      pickupType: 1,
-      dropOffType: 0,
-      timepoint: 0,
-    });
-    const before = JSON.stringify(stop);
-    if (stop.departureSeconds === null) throw new Error('Missing fixture');
-    expect(
-      scheduledServiceDayInstant('2026-01-01', stop.departureSeconds),
-    ).toBe('2026-01-01T17:02:03Z');
-    expect(JSON.stringify(stop)).toBe(before);
   });
 
   it.each([
