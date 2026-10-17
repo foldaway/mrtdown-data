@@ -10,6 +10,7 @@ export * from './inspect.js';
 export * from './reconcileCapture.js';
 export * from './reconciliation.js';
 export * from './reconciliationEvidence.js';
+export * from './scheduledServiceCalendar.js';
 export * from './scheduledStopTime.js';
 export * from './scopedCandidates.js';
 export * from './scopedReview.js';
