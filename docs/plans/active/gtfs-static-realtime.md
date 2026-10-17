@@ -539,6 +539,15 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added source departure-window lookup across explicitly selected
+  trip/service-date pairs. It merges enabled events chronologically with inclusive
+  start and exclusive end boundaries, preserving coincident occurrence identity,
+  source precision and access restrictions. Missing departures remain absent and
+  duplicate trip/date selections fail. See
+  [departure windows](../../gtfs-scheduled-departure-windows.md). Snapshot/date
+  selection, Phase 2 mapping review and generation/publication gates remain
+  unchanged.
+
 - 2026-10-17: Added source-trip service-date resolution, combining complete
   timing, matching calendar rules and Singapore instant conversion. Inactive
   dates return no trip; enabled dates retain source offsets, occurrence identity,
