@@ -539,6 +539,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added offline `gtfs departures` inspection for selected provider
+  trips and explicit service dates in an absolute time window. Reports retain
+  verified capture provenance and table hashes alongside source timing and
+  access rules. Unknown trips and invalid captures fail before report writing;
+  unsupported timezones and frequency-based selections fail explicitly. See
+  [local inspection](../../gtfs-local-inspection.md#departure-lookup).
+  Canonical mapping review and generation/publication gates remain unchanged.
+
 - 2026-10-17: Added source departure-window lookup across explicitly selected
   trip/service-date pairs. It merges enabled events chronologically with inclusive
   start and exclusive end boundaries, preserving coincident occurrence identity,

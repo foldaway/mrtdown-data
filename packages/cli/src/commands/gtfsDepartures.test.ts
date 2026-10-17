@@ -1,0 +1,177 @@
+import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { hashBytes } from '@mrtdown/fs';
+import { strToU8, zipSync } from 'fflate';
+import { describe, expect, it } from 'vitest';
+import { runCli } from '../index.js';
+
+async function fixture(root: string, overrides: Record<string, string> = {}) {
+  const tables = {
+    'agency.txt':
+      'agency_id,agency_name,agency_url,agency_timezone\nA,Test,https://example.com,Asia/Singapore\n',
+    'routes.txt': 'route_id,agency_id,route_type\nR,A,1\n',
+    'stops.txt': 'stop_id,stop_name\nP,Platform\n',
+    'trips.txt': 'trip_id,route_id,service_id\n"T,late",R,C\ncurrent,R,C\n',
+    'calendar_dates.txt':
+      'service_id,date,exception_type\nC,20260101,1\nC,20260102,1\n',
+    'stop_times.txt': [
+      'trip_id,stop_id,stop_sequence,arrival_time,departure_time,pickup_type,timepoint',
+      '"T,late",P,09007199254740992,25:00:00,25:00:00,1,1',
+      '"T,late",P,9007199254740993,25:30:00,25:30:00,0,1',
+      'current,P,1,0:30:00,0:30:00,0,0',
+      'current,P,2,1:00:00,1:00:00,0,1',
+      '',
+    ].join('\n'),
+    ...overrides,
+  };
+  const bytes = zipSync(
+    Object.fromEntries(
+      Object.entries(tables).map(([name, text]) => [name, strToU8(text)]),
+    ),
+    { mtime: new Date(2000, 0, 1, 0, 0, 0) },
+  );
+  const capture = {
+    schema_version: 1,
+    capture_id: 'synthetic',
+    feed_kind: 'schedule',
+    source:
+      'https://datamall2.mytransport.sg/ltaodataservice/GTFSScheduleTrain',
+    retrieved_at: '2026-01-01T00:00:00Z',
+    provider_timestamp: null,
+    sha256: hashBytes(bytes),
+    byte_length: bytes.length,
+    archive_ref: 'synthetic/schedule.zip',
+    attribution: 'Synthetic fixture',
+    rights_status: 'pending_review',
+    licence_reference: 'https://example.com/terms',
+  };
+  await writeFile(join(root, 'schedule.zip'), bytes);
+  await writeFile(join(root, 'capture.json'), JSON.stringify(capture));
+  return capture;
+}
+
+function queryArgs(
+  tripIds = ['T,late', 'current'],
+  serviceDates = ['2026-01-02', '2026-01-01'],
+) {
+  return [
+    'gtfs',
+    'departures',
+    '--file',
+    'schedule.zip',
+    '--capture',
+    'capture.json',
+    ...tripIds.flatMap((id) => ['--trip', id]),
+    ...serviceDates.flatMap((date) => ['--service-date', date]),
+    '--from',
+    '2026-01-02T00:30:00+08:00',
+    '--to',
+    '2026-01-01T17:30:00Z',
+    '--write',
+    'report.json',
+  ];
+}
+const args = queryArgs();
+
+describe('GTFS departure inspection CLI', () => {
+  it('writes a deterministic, source-bound report across trips and dates with literal provider IDs', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'gtfs-departures-'));
+    try {
+      const capture = await fixture(root);
+      const errors: string[] = [];
+      const io = {
+        stdout: () => {},
+        stderr: (text: string) => errors.push(text),
+      };
+      expect(await runCli(args, io, root)).toBe(0);
+      expect(errors).toEqual([]);
+      const first = await readFile(join(root, 'report.json'), 'utf8');
+      const report = JSON.parse(first);
+      expect(report).toMatchObject({
+        documentKind: 'gtfs-source-departures',
+        capture,
+        generationEligible: false,
+        query: {
+          tripIds: ['T,late', 'current'],
+          serviceDates: ['2026-01-01', '2026-01-02'],
+        },
+      });
+      expect(
+        report.departures.map((stop: Record<string, string>) => [
+          stop.providerTripId,
+          stop.serviceDate,
+          stop.stopSequence,
+          stop.departureInstant,
+        ]),
+      ).toEqual([
+        ['current', '2026-01-02', '1', '2026-01-01T16:30:00Z'],
+        ['T,late', '2026-01-01', '09007199254740992', '2026-01-01T17:00:00Z'],
+        ['current', '2026-01-02', '2', '2026-01-01T17:00:00Z'],
+      ]);
+      expect(report.departures[0].timepoint).toBe(0);
+      expect(report.departures[1].pickupType).toBe(1);
+      const reordered = queryArgs(
+        ['current', 'T,late'],
+        ['2026-01-01', '2026-01-02'],
+      );
+      expect(await runCli(reordered, io, root)).toBe(0);
+      expect(await readFile(join(root, 'report.json'), 'utf8')).toBe(first);
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
+  it('leaves an existing report untouched when arguments, requested trips or capture verification fail', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'gtfs-departure-errors-'));
+    try {
+      await fixture(root);
+      const output = join(root, 'report.json');
+      await writeFile(output, 'existing report');
+      const errors: string[] = [];
+      const io = {
+        stdout: () => {},
+        stderr: (text: string) => errors.push(text),
+      };
+      expect(await runCli([...args, '--unexpected'], io, root)).toBe(1);
+      expect(errors.at(-1)).toContain('Unexpected GTFS');
+      expect(
+        await runCli(
+          [
+            'gtfs',
+            'departures',
+            '--file',
+            'schedule.zip',
+            '--capture',
+            'capture.json',
+          ],
+          io,
+          root,
+        ),
+      ).toBe(1);
+      expect(errors.at(-1)).toContain('--trip is required');
+      const unknown = queryArgs(['unknown']);
+      expect(await runCli(unknown, io, root)).toBe(1);
+      expect(errors.at(-1)).toContain('Unknown GTFS trip: unknown');
+      await fixture(root, {
+        'agency.txt':
+          'agency_id,agency_name,agency_url,agency_timezone\nA,Test,https://example.com,Europe/London\n',
+      });
+      expect(await runCli(args, io, root)).toBe(1);
+      expect(errors.at(-1)).toContain('Asia/Singapore');
+      await fixture(root, {
+        'frequencies.txt':
+          'trip_id,start_time,end_time,headway_secs\ncurrent,00:00:00,02:00:00,300\n',
+      });
+      expect(await runCli(args, io, root)).toBe(1);
+      expect(errors.at(-1)).toContain('frequency-based trips');
+      await fixture(root);
+      await writeFile(join(root, 'schedule.zip'), 'corrupt capture');
+      expect(await runCli(args, io, root)).toBe(1);
+      expect(errors.at(-1)).toContain('SHA-256');
+      expect(await readFile(output, 'utf8')).toBe('existing report');
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+});

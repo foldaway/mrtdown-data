@@ -1,4 +1,5 @@
 export * from './capture.js';
+export * from './departures.js';
 export * from './directory.js';
 export * from './drift.js';
 export {
