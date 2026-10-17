@@ -13,6 +13,11 @@ projection 1 digest
 See the [scoped contract](gtfs-scoped-review.md) for verification and readiness
 semantics and the [source handoff](gtfs-public-handoff.md) for attribution.
 
+This page records the version-2 baseline. The opt-in
+[version-3 grouped-platform review](gtfs-platform-group-review.md) proposes seven
+complete alternative sets and 27 additional patterns while preserving this
+baseline and its artifacts. Its remaining evidence and approval gates stay open.
+
 ## Pattern coverage proposals
 
 Counts below describe proposed matches, not accepted operation. A source pattern

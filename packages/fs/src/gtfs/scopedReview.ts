@@ -1,3 +1,14 @@
+import {
+  derivePlatformGroup,
+  groupedPlatformDiagnosticsAllow,
+  type PlatformGroupTarget,
+} from './groupedPlatforms.js';
+import {
+  GroupedScopedReconciliationApprovalSchema,
+  GroupedScopedReconciliationDraftSchema,
+  type GroupedScopedReviewDecision,
+  groupedScopedReviewDraftSha256,
+} from './groupedReviewContract.js';
 import { compareStrings } from './order.js';
 import { activeServiceDates } from './reconciliationEvidence.js';
 import { partitionScopedCandidates } from './scopedCandidates.js';
@@ -13,7 +24,6 @@ import {
   ScopedReconciliationApprovalSchema,
   ScopedReconciliationDraftSchema,
   type ScopedReviewContext,
-  type ScopedReviewDecision,
   scopedReviewDateSetId,
   scopedReviewDraftSha256,
 } from './scopedReviewContract.js';
@@ -24,7 +34,27 @@ export function evaluateScopedReconciliation(
   input: unknown,
   approvalInput?: unknown,
 ) {
-  const draft = ScopedReconciliationDraftSchema.parse(input);
+  return evaluate(context, input, approvalInput, false);
+}
+
+/** Verify version-3 alternatives without assigning an individual platform. */
+export function evaluateGroupedScopedReconciliation(
+  context: ScopedReviewContext,
+  input: unknown,
+  approvalInput?: unknown,
+) {
+  return evaluate(context, input, approvalInput, true);
+}
+
+function evaluate(
+  context: ScopedReviewContext,
+  input: unknown,
+  approvalInput: unknown,
+  allowGroups: boolean,
+) {
+  const draft = allowGroups
+    ? GroupedScopedReconciliationDraftSchema.parse(input)
+    : ScopedReconciliationDraftSchema.parse(input);
   const { report, evidence, audit } = derive(context);
   const errors: string[] = [];
   if (fingerprint(draft.identity) !== fingerprint(report.identity))
@@ -49,7 +79,17 @@ export function evaluateScopedReconciliation(
   const entries = new Map(report.entries.map((entry) => [key(entry), entry]));
   const seen = new Set<string>();
   const sourceCovered = new Set<string>();
-  const entityDecisions = new Map<string, ScopedReviewDecision>();
+  const entityDecisions = new Map<string, GroupedScopedReviewDecision>();
+  const groups = new Map<string, PlatformGroupTarget>();
+  for (const item of draft.decisions)
+    if (
+      item.kind === 'stop' &&
+      item.disposition === 'matched' &&
+      item.target?.kind === 'platformGroup'
+    )
+      groups.set(item.providerId, item.target);
+  const entityId = (item: GroupedScopedReviewDecision | undefined) =>
+    item?.target && 'id' in item.target ? item.target.id : undefined;
   const coveredDates = new Map<string, Set<string>>();
   const usedDateSets = new Set<string>();
   const missingEntries: string[] = [];
@@ -72,14 +112,27 @@ export function evaluateScopedReconciliation(
       seen.add(sourceKey);
       entityDecisions.set(sourceKey, item);
     }
-    if (
-      item.disposition === 'matched' &&
-      !source?.candidates.some((candidate) =>
-        sameTarget(candidate, item.target),
+    if (item.disposition === 'matched') {
+      const target = item.target;
+      if (target?.kind === 'platformGroup') {
+        const expected =
+          allowGroups && item.kind === 'stop'
+            ? derivePlatformGroup(context, item.providerId)
+            : undefined;
+        if (!expected || fingerprint(expected) !== fingerprint(item.target))
+          errors.push(
+            `Target outside complete source platform group: ${sourceKey}`,
+          );
+      } else if (
+        !source?.candidates.some((candidate) => sameTarget(candidate, target))
       )
-    )
-      errors.push(`Target outside source candidates: ${sourceKey}`);
-    if (item.kind === 'stop' && item.disposition === 'matched') {
+        errors.push(`Target outside source candidates: ${sourceKey}`);
+    }
+    if (
+      item.kind === 'stop' &&
+      item.disposition === 'matched' &&
+      item.target?.kind !== 'platformGroup'
+    ) {
       if (source?.candidates.length !== 1)
         errors.push(
           `Physical platform or station allocation is not unique: ${sourceKey}`,
@@ -87,6 +140,10 @@ export function evaluateScopedReconciliation(
       const row = context.tables['stops.txt']?.find(
         (row) => row.stop_id === item.providerId,
       );
+      if (allowGroups && row?.platform_code?.includes('/'))
+        errors.push(
+          `Grouped label requires a complete platform group: ${sourceKey}`,
+        );
       if (
         row?.location_type !== '1' &&
         new Set(
@@ -134,6 +191,14 @@ export function evaluateScopedReconciliation(
       covered.add(date);
       if (item.disposition === 'matched') {
         matchedPatternDates++;
+        if (
+          allowGroups &&
+          item.target &&
+          !groupedPlatformDiagnosticsAllow(facts, item.target, groups)
+        )
+          errors.push(
+            `Unresolved grouped platform diagnostics: ${sourceKey}:${date}`,
+          );
         if (item.target && !targetOnDate(facts.dateScopes, date, item.target))
           errors.push(
             `Target outside temporal candidates: ${sourceKey}:${date}`,
@@ -174,7 +239,8 @@ export function evaluateScopedReconciliation(
         const ancestor = requireMatch('stop', parent, key(item));
         if (
           item.target?.stationId &&
-          ancestor?.target?.id !== item.target.stationId
+          (ancestor?.target?.kind !== 'station' ||
+            ancestor.target.id !== item.target.stationId)
         )
           errors.push(`Child/parent station target mismatch: ${key(item)}`);
       }
@@ -185,7 +251,7 @@ export function evaluateScopedReconciliation(
     );
     if (!pattern) continue;
     const route = requireMatch('route', pattern.routeId, key(item));
-    if (route?.target && !draft.pilotLineIds.includes(route.target.id))
+    if (route?.target && !draft.pilotLineIds.includes(entityId(route) ?? ''))
       errors.push(`Matched pattern outside declared pilot: ${key(item)}`);
     for (const id of new Set(pattern.stopIds))
       requireMatch('stop', id, key(item));
@@ -199,8 +265,8 @@ export function evaluateScopedReconciliation(
       if (
         !operatorMatchesDate(
           context.topology,
-          route?.target?.id,
-          agency?.target?.id,
+          entityId(route),
+          entityId(agency),
           date,
         )
       )
@@ -226,9 +292,16 @@ export function evaluateScopedReconciliation(
     if (!usedDateSets.has(set)) errors.push(`Unused date set: ${set}`);
   let approvalMatches = false;
   if (approvalInput !== undefined) {
-    const approval = ScopedReconciliationApprovalSchema.parse(approvalInput);
+    const approval = (
+      allowGroups
+        ? GroupedScopedReconciliationApprovalSchema
+        : ScopedReconciliationApprovalSchema
+    ).parse(approvalInput);
     approvalMatches =
-      approval.draftSha256 === scopedReviewDraftSha256(draft) &&
+      approval.draftSha256 ===
+        (allowGroups
+          ? groupedScopedReviewDraftSha256(draft)
+          : scopedReviewDraftSha256(draft)) &&
       fingerprint(approval.identity) === fingerprint(report.identity);
     if (!approvalMatches)
       errors.push('Approval does not bind this draft and input identity');

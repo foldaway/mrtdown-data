@@ -23,14 +23,14 @@ const fields = {
   reason: z.string().min(1),
   target: target.optional(),
 };
-const entityDecision = z
+export const entityDecision = z
   .object({
     ...fields,
     kind: z.enum(['agency', 'route', 'stop']),
     disposition: z.enum(['matched', 'ignored', 'unresolved']),
   })
   .strict();
-const patternDecision = z
+export const patternDecision = z
   .object({
     ...fields,
     kind: z.literal('pattern'),
@@ -97,7 +97,19 @@ export function scopedReviewDateSetId(serviceDates: readonly string[]) {
 }
 /** Digest binds exact text and decisions, independent of unordered input ordering. */
 export function scopedReviewDraftSha256(input: unknown) {
-  const draft = ScopedReconciliationDraftSchema.parse(input);
+  return scopedReviewDraftFingerprint(
+    ScopedReconciliationDraftSchema.parse(input),
+  );
+}
+
+/** Shared normalization after a version-specific schema has checked the draft. */
+export function scopedReviewDraftFingerprint<
+  T extends {
+    pilotLineIds: string[];
+    dateSets: { id: string; serviceDates: string[] }[];
+    decisions: unknown[];
+  },
+>(draft: T) {
   return fingerprint({
     ...draft,
     pilotLineIds: [...draft.pilotLineIds].sort(compareStrings),

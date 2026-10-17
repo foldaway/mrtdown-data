@@ -8,6 +8,10 @@ coverage and remaining blockers. Neither the pilots nor the full generated draft
 is approved or eligible for generation. Proposal and review schemas version 1
 remain unchanged.
 
+The opt-in [version-3 grouped-platform contract](gtfs-platform-group-review.md)
+adds complete alternatives without individual allocation. Existing version-2
+packets and approval metadata retain their original contract.
+
 ## Reproduce the NEL pilot
 
 Materialize the verified October ZIP and receipt using the

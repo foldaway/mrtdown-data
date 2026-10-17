@@ -1,6 +1,11 @@
 export * from './capture.js';
 export * from './directory.js';
 export * from './drift.js';
+export {
+  type PlatformGroupTarget,
+  PlatformGroupTargetSchema,
+} from './groupedPlatforms.js';
+export * from './groupedReviewContract.js';
 export * from './inspect.js';
 export * from './reconcileCapture.js';
 export * from './reconciliation.js';
