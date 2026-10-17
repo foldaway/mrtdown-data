@@ -539,6 +539,16 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added compact service calendars and a civil-date lookup as
+  arrivals-format preparation. Weekly bounds are inclusive; explicit date
+  additions/removals take precedence, including outside the weekly range.
+  Date-only schedules and inactive rules remain explicit, and duplicate or
+  malformed definitions fail. All three October calendars match the existing
+  evidence over 1,101 date checks. See
+  [scheduled service calendars](../../gtfs-service-calendars.md). Reconciliation
+  outputs, Phase 2 review requirements and generation gates remain unchanged.
+
+
 - 2026-10-17: Added a shared scheduled-stop-time contract and a fixed-stop
   parser as arrivals-format preparation. They retain textual source occurrence
   identity, service-day offsets beyond midnight, pickup/drop-off codes and
