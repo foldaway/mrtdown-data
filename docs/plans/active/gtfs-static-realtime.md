@@ -539,6 +539,15 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added source-trip service-date resolution, combining complete
+  timing, matching calendar rules and Singapore instant conversion. Inactive
+  dates return no trip; enabled dates retain source offsets, occurrence identity,
+  access restrictions and precision alongside UTC instants. Tests preserve
+  previous-service-day events across next-day removals and coincident instants
+  across distinct service dates. See
+  [service-date resolution](../../gtfs-scheduled-trip-service-dates.md).
+  Phase 2 review and generation/publication gates remain unchanged.
+
 - 2026-10-17: Added ordered source-trip timing validation and batch assembly as
   arrivals-format preparation. It preserves exact decimal occurrence identities,
   repeated stops and missing approximate times while rejecting duplicate
