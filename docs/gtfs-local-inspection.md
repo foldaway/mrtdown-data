@@ -84,10 +84,17 @@ and full-record manifest; future reviewed mappings must record all three.
 `gtfs departures` inspects provider trips or stops in a verified schedule ZIP.
 Use repeated `--trip` flags for specific trips, or repeated `--stop` flags to find
 all trips visiting those provider stops. The two selectors are mutually exclusive.
-Repeat `--service-date` for multiple dates; each selected trip is checked against
-its calendar on every selected date. Values are literal IDs, so
-commas in a trip ID are preserved. Choose earlier service dates explicitly when
-checking trains that run past midnight. Window timestamps require UTC or an
+Without `--service-date`, relevant dates are chosen from the window, source
+calendars and maximum supplied departure offset at the selected trips or stops.
+This includes earlier service dates for trains running after midnight or beyond
+48 hours, without assuming that yesterday is the oldest possible date. Calendar
+removals still apply to their own service dates. The report records the derived
+dates and `query.serviceDateSelection: "automatic"`.
+
+Use repeated `--service-date` flags to restrict the query to explicit dates;
+each trip is checked against its calendar on every selected date. Explicit query
+reports retain their existing shape. Values are literal IDs, so commas in a trip
+ID are preserved. Window timestamps require UTC or an
 explicit offset; the start is included and the end excluded.
 
 The JSON report includes capture metadata, table hashes, the query and ordered
@@ -113,6 +120,8 @@ timezones must be `Asia/Singapore`; selected trips described by `frequencies.txt
 are rejected because this lookup does not expand frequency-based schedules.
 `@mrtdown/fs` exposes the same operation as
 `inspectGtfsDepartures(file, captureFile, query)` for local tools.
+Omit `query.serviceDates` for automatic selection; an explicitly empty list is
+invalid. A known unused platform produces no derived dates or departures.
 
 This is source evidence for inspection, with `generationEligible: false`.
 It does not assign canonical stations/platforms, prove mapping coverage or clear
