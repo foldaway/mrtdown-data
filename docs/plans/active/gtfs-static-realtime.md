@@ -539,6 +539,13 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added explicit source-occurrence binding for canonical trip
+  patterns. The structural join checks literal trip, stop and sequence identity
+  and equal occurrence counts before combining timing and canonical references.
+  Repeated visits, large raw sequences, missing times and platform alternatives
+  remain intact. See [trip bindings](../../gtfs-scheduled-trip-bindings.md).
+  Semantic mapping review, date validity and publication gates remain open.
+
 - 2026-10-17: Added canonical scheduled-trip pattern references and a topology
   checker for stations, lines, services, revisions and every platform alternative.
   Ordered repeated visits and short-working destinations remain explicit; missing,

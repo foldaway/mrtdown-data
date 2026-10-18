@@ -1,3 +1,4 @@
+export * from './helpers/bindScheduledTripPattern.js';
 export * from './helpers/generateEstimatedStationFrequencySchedules.js';
 export * from './helpers/isScheduledServiceDate.js';
 export * from './helpers/normalizeRecurringPeriod.js';
@@ -30,6 +31,7 @@ export * from './schema/ScheduledServiceCalendar.js';
 export * from './schema/ScheduledStopTime.js';
 export * from './schema/ScheduledTimetable.js';
 export * from './schema/ScheduledTripPattern.js';
+export * from './schema/ScheduledTripPatternBinding.js';
 export * from './schema/ScheduledTripTimes.js';
 export * from './schema/SchematicMap.js';
 export * from './schema/Service.js';
