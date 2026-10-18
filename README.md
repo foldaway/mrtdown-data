@@ -8,7 +8,8 @@ build data exports for applications.
 
 ## Get started
 
-Use Node.js 24, as in CI, then install dependencies and validate the data:
+Use the Node.js version in [.nvmrc](.nvmrc), then install dependencies and
+validate the data:
 
 ```bash
 npm ci
