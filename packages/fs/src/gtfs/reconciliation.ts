@@ -2,6 +2,7 @@ import z from 'zod';
 import { hashBytes } from './capture.js';
 import { compareStrings } from './order.js';
 import { auditSchedule, type ScheduleTables } from './schedule.js';
+import { matchServicePath } from './servicePath.js';
 import { resolveStationCandidates } from './stationMatch.js';
 import type { scheduleTopologyProjection } from './topology.js';
 
@@ -244,38 +245,15 @@ export function proposeScheduleReconciliation(
         (service) => service.lineId === line,
       ))
         for (const revision of service.revisions) {
-          const path = revision.stations.map(({ stationId }) => stationId);
-          const matches = path.some(
-            (_, start) =>
-              start + sequence.length <= path.length &&
-              sequence.every((id, offset) => id === path[start + offset]),
-          );
-          // Only an explicitly closed canonical path permits rotation. Preserve
-          // repeated occurrences and permit at most the canonical single circuit.
-          const cyclic =
-            !matches &&
-            path.length > 2 &&
-            path[0] === path.at(-1) &&
-            sequence.length <= path.length &&
-            path
-              .slice(0, -1)
-              .some((_, start) =>
-                sequence.every(
-                  (id, offset) =>
-                    id === path[(start + offset) % (path.length - 1)],
-                ),
-              );
-          if (matches || cyclic)
+          const path = matchServicePath(revision.stations, sequence);
+          if (path) {
             candidates.push({
               kind: 'serviceRevision',
               id: service.id,
               revisionId: revision.id,
-              match: cyclic
-                ? 'cyclicSegment'
-                : sequence.length === path.length
-                  ? 'exact'
-                  : 'contiguousSegment',
+              match: path.match,
             });
+          }
         }
     entries.push(
       entry(

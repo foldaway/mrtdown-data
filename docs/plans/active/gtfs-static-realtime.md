@@ -539,6 +539,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added canonical path/date checks for supplied binding scopes.
+  Ordered full paths, short workings and bounded closed-loop rotations must fit
+  the selected revision, and every scoped date must have revision coverage and
+  one complete alignment of active canonical display codes. Conflicting path
+  evidence cannot be combined. Shared path matching preserves reconciliation's
+  existing rules. See [canonical scope validity](../../gtfs-scheduled-trip-patterns.md#canonical-path-and-date-validity).
+  Source matching, mapping approval and publication remain gated.
+
 - 2026-10-17: Added departure-window lookup with date-scoped canonical patterns.
   Results retain station, service, destination and every platform alternative
   alongside source timing and access rules. Scope errors fail before window

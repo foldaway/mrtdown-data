@@ -53,8 +53,8 @@ export type EstimatedFrequencyProfile = z.infer<
 
 export const ServiceRevisionSchema = z.object({
   id: z.string(),
-  startAt: z.string(),
-  endAt: z.string().nullable(),
+  startAt: z.iso.date(),
+  endAt: z.iso.date().nullable(),
   path: z.object({
     /**
      * The station IDs in the order they are visited by the service.
