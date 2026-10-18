@@ -90,3 +90,40 @@ left untouched. The command does not download files or change source/canonical d
 Programmatic callers can use
 `inspectGtfsTripAssignments(file, handoff, { dataDir, canonicalCommit, assignments })`
 with the same document and validation behavior.
+
+## Report unassigned source dates
+
+Add `--coverage` to `gtfs validate-assignments` to include coverage after every
+supplied assignment passes validation. Programmatic callers can set `coverage: true`
+in `inspectGtfsTripAssignments` options. Without this option, the existing report
+and validation behavior are unchanged.
+
+The additional `coverage` object records source trip and active trip/date totals,
+assigned and missing trip/date counts, inactive trip count, and
+`tripDateCoverageComplete`. It also lists `gaps`, grouping source trips with the
+same calendar and exact missing service dates. Each group contains
+`providerCalendarId`, sorted `providerTripIds` and sorted `serviceDates`.
+Trips omitted from the assignment file retain all their active dates as gaps;
+partially assigned trips retain just the uncovered dates.
+
+Coverage follows each trip's source calendar: weekly bounds are inclusive,
+exceptions override weekday rules, and additions outside the weekly range count.
+Dates remain service dates for trips running beyond midnight. Inactive trips
+contribute no required dates. Calendars are expanded once per used source calendar,
+using the existing 100-year reconciliation audit limit; dated departures are not
+expanded.
+
+Gap groups and counts are deterministic regardless of source row or assignment
+order. Assignment order still participates in the existing assignment hash.
+Partial coverage is informational and returns status 0 when the supplied assignments
+are valid. Even complete active trip/date coverage leaves `generationEligible: false`:
+agency/route/stop dispositions, source semantics, human approval, licensing and
+publication remain separate requirements. No missing date is assigned or excluded
+by the report.
+
+For the existing NEL/CCL-only input, the verified October report counts 2,492,240
+active source trip/date pairs: 291,967 assigned and 2,200,273 missing. The missing
+dates group into six records covering 17,467 source trips. This includes other
+unassigned lines and uncovered CCL dates; it describes the supplied pilot's coverage
+against the full capture. Its assignment hash is unchanged and generation remains
+ineligible.

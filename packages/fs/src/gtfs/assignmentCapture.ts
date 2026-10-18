@@ -1,4 +1,5 @@
 import z from 'zod';
+import { scheduledTripAssignmentCoverage } from './assignmentCoverage.js';
 import { hashBytes, readVerifiedCapture } from './capture.js';
 import { ReconciliationIdentitySchema } from './reconciliation.js';
 import { readSchedule } from './schedule.js';
@@ -25,7 +26,12 @@ export type ScheduledTripAssignmentDocument = z.infer<
 export async function inspectGtfsTripAssignments(
   file: string,
   handoff: string,
-  options: { dataDir: string; canonicalCommit: string; assignments: unknown },
+  options: {
+    dataDir: string;
+    canonicalCommit: string;
+    assignments: unknown;
+    coverage?: boolean;
+  },
 ) {
   const document = ScheduledTripAssignmentDocumentSchema.parse(
     options.assignments,
@@ -85,5 +91,8 @@ export async function inspectGtfsTripAssignments(
       0,
     ),
     generationEligible: false as const,
+    ...(options.coverage
+      ? { coverage: scheduledTripAssignmentCoverage(tables, assignments) }
+      : {}),
   };
 }

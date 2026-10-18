@@ -539,6 +539,13 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added optional assignment coverage with `gtfs validate-assignments
+  --coverage`. Reports count active source trip dates, retain exact unassigned
+  dates grouped by calendar and trip set, and distinguish inactive trips from
+  complete active coverage. Calendar exceptions and previous-service-day identity
+  remain intact. See [assignment coverage](../../gtfs-trip-assignment-validation.md#report-unassigned-source-dates).
+  Coverage is informational; human mapping approval and publication remain gated.
+
 - 2026-10-18: Added offline `gtfs validate-assignments` inspection. It verifies
   capture and table hashes, checks the supplied canonical commit and actual topology
   fingerprint, then runs combined assignment validation. Reports retain provenance,
