@@ -21,6 +21,34 @@ boundary. It does not authenticate each all-year provider calendar or prove that
 a post-opening loop pattern operated before the boundary. Date-scoped evidence
 must preserve a gap when no valid revision covers a supplied service date.
 
+## Interchange parent identity
+
+The verified October snapshot uses station parent `CC33` for Marina Bay's NSL
+and TEL platforms, and `CC34` for Bayfront's DTL platforms. The parent rows have
+matching `stop_code` values, `location_type=1` and no parent. Their child rows
+explicitly retain `NS27`, `TE20` and `DT16`, respectively. Canonical code history
+maps `CC33` uniquely to MRB and `CC34` uniquely to BFT; those CCL codes begin on
+2026-07-12, while the child codes already cover the proposed dates.
+
+The [GTFS reference](https://gtfs.org/documentation/schedule/reference/#stopstxt)
+defines `parent_station` as location hierarchy and `stop_code` as a rider-facing
+location identifier. It does not attach a separate service calendar to station
+parents. We therefore treat the snapshot parent's code as identity evidence,
+independent of the dated service represented by its child. This is the repository's
+mapping rule; the specification does not itself approve the LTA-to-MRTDown mapping.
+
+The earlier source-stop checker applied service-date validity to the parent too,
+rejecting 3,456 NSL/DTL/TEL pattern-date pairs across 54 scopes. The corrected rule
+requires one well-formed parent row and one consistent canonical station across
+code history. Unknown, conflicting or ambiguous parent identities still fail.
+Each child's explicit code must remain valid on the actual line and every scoped
+date, alongside canonical path, revision, platform and boarding checks.
+
+This resolves the parent identity mismatch without changing source rows or
+canonical history. It does not authorize pre-opening CCL service or accept the
+source calendars as historical operating evidence. Human mapping review and
+publication requirements remain open. Sources rechecked on 2026-10-18.
+
 ## Platform evidence
 
 | Scope | Established evidence | Disposition and evidence still needed |

@@ -108,14 +108,17 @@ the canonical path/date checks above, then checks every bound occurrence:
   station on the pattern's line. If a parent is declared, it must identify exactly
   one station row (`location_type=1`) without its own parent. Its `stop_code`, or
   literal `stop_id` when the code is absent, must uniquely identify the same
-  canonical station on every date. Interchange parents may use another line's code.
+  canonical station across canonical code history. Interchange parents may use
+  another line's code, including a code introduced after a trip's service date.
 - Every slash-separated `platform_code` label must be distinct and nonempty after
   trimming. Each label must identify exactly one canonical platform at that station
   and line. The supplied platform alternatives must equal the entire resulting
   set; missing members, extra members and ambiguous labels fail.
 
-Code periods use inclusive starts and exclusive ends. Relevant malformed periods
-fail, including competing code records that could make station identity ambiguous.
+Child-code periods use inclusive starts and exclusive ends. Relevant malformed
+periods fail, including competing code records that could make dated child identity
+ambiguous. Parent identity uses the existing undated station resolver; a parent
+code shared by different canonical stations fails even if their periods differ.
 Missing codes or labels are left for review rather than inferred from names. A
 parent is optional when the child code itself identifies the station. The returned
 scope retains all occurrences and alternatives; neither input nor topology changes.
@@ -127,26 +130,33 @@ operator periods, pickup compatibility, historical platform allocation, capture 
 topology identity, human approval and publication remain separate. No query,
 generator or publication path calls this checker.
 
-The read-only audit used the verified October capture, pinned canonical topology
-and full version-3 draft identified in the
-[grouped-platform review](gtfs-platform-group-review.md#october-snapshot-proposals).
-Of its 26,268 proposed pattern-date pairs, 22,812 pass this additional check.
-The other 3,456 pairs span 54 scopes and fail before 2026-07-12 because the source
-parent uses the not-yet-active `CC33` at Marina Bay or `CC34` at Bayfront:
+The parent is snapshot hierarchy rather than a dated claim of service on its
+code's line. This distinction follows the
+[GTFS hierarchy fields](https://gtfs.org/documentation/schedule/reference/#stopstxt)
+and the [parent-code investigation](gtfs-mapping-disagreements.md#interchange-parent-identity).
+Child codes, canonical paths, service revisions and platform sets still pass their
+own checks; a newer parent code cannot make an inactive child code valid.
 
-| Line | Affected scopes | Failing pattern-date pairs |
+The original October audit incorrectly treated parent codes as dated service
+codes. It rejected 3,456 proposed pattern-date pairs across 54 scopes before
+2026-07-12 because the source uses `CC33` at Marina Bay or `CC34` at Bayfront:
+
+| Line | Affected scopes | Previously rejected pattern-date pairs |
 | --- | ---: | ---: |
 | NSL | 3 | 192 |
 | DTL | 6 | 384 |
 | TEL | 45 | 2,880 |
 
-Child codes on those lines do not substitute for the parent's own code period.
-These failures require source/parent-date review; the checker does not rewrite
-parents, extend canonical code periods or remove dates from the draft. The NEL
-and CCL pilot scopes still pass all 3,220 pairs. Existing reconciliation proposals
-remain byte-identical and the canonical projection is unchanged. The existing
-review evaluator does not yet call this checker, so its proposal counts are not
-an assertion that this additional gate has passed.
+The corrected check uses each parent's unique station identity, and retains the
+NSL, DTL and TEL children's dated codes. It does not rewrite source rows, extend
+canonical code periods or remove dates from the draft. The canonical CCL July 12
+boundary continues to apply to actual CCL paths and child stops.
+
+After this correction, all 231 matched version-3 scopes pass the combined checks
+across 26,268 proposed pattern-date pairs. Expanding every matched scope produces
+12,106 trip assignments covering 1,502,097 trip/date pairs. Source tables,
+canonical topology and reconciliation proposals remain unchanged. Unresolved
+mapping cells remain outside these proposals, and human review is still required.
 
 ## Current platform boarding checks
 
@@ -177,7 +187,7 @@ passes all 231 matched proposal patterns: 12,106 source trips, 218,207 occurrenc
 and 771 occurrences with grouped platform alternatives. Removing the added canonical
 fields reproduces every original timing/access record; reconciliation proposals
 and canonical topology remain unchanged. This establishes current boarding
-compatibility only. The 3,456 parent-code/date gaps recorded above remain unresolved.
+compatibility only; human mapping review remains separate.
 
 ## Source route and operator periods
 
@@ -211,5 +221,5 @@ A read-only check uses the October version-3 draft's explicit route and agency
 decisions, one representative source trip per matched scope, and its pinned
 canonical topology. All 231 scopes pass across 26,268 pattern/date pairs. Source
 tables, canonical topology and the complete reconciliation proposal JSON remain
-unchanged. This checks alias and operator-period compatibility only; the parent-code
-gaps recorded above and human review requirements remain open.
+unchanged. This checks alias and operator-period compatibility only; human review
+requirements remain open.

@@ -539,6 +539,15 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Corrected interchange parent checks to validate snapshot station
+  identity independently of a child's service date. This removes the artificial
+  Marina Bay/Bayfront parent-code blocker while preserving dated child codes,
+  canonical paths and the CCL July 12 boundary. Source rows and canonical data
+  remain unchanged. All 12,106 proposed trip assignments now pass, covering
+  1,502,097 trip/date pairs with 990,143 source pairs still unassigned. Human
+  mapping review and publication remain gated. See the
+  [parent identity investigation](../../gtfs-mapping-disagreements.md#interchange-parent-identity).
+
 - 2026-10-18: Added assignment proposals from version-2/3 scoped mapping drafts.
   Matched cells expand to all their source trips, preserving literal occurrences
   and complete platform alternatives. Draft review and combined assignment checks
@@ -583,8 +592,9 @@ Exit criteria:
   mapping approval and publication remain separate gates.
 
 - 2026-10-18: Added source-stop correspondence checks for supplied binding scopes.
-  Child and parent codes must identify the supplied station on every scoped date;
-  literal platform labels must match the complete canonical alternative set.
+  Initially required child and parent codes to identify the station on every
+  scoped date; the later parent identity correction above supersedes that parent rule.
+  Literal platform labels must match the complete canonical alternative set.
   Ambiguous identity, partial groups and malformed source references fail. See
   [source stop correspondence](../../gtfs-scheduled-trip-patterns.md#source-stop-correspondence).
   Literal trip/calendar binding, agency/operator review, pickup compatibility,
