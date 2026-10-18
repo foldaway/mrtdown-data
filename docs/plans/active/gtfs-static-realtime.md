@@ -539,6 +539,13 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added batch validation for supplied trip assignments. One source
+  timetable supplies literal occurrence and calendar checks; every assignment
+  must also pass canonical path/date, source-stop, complete-platform, boarding
+  and route/operator checks. Overlapping scopes fail across each trip's complete
+  supplied assignment set. See [combined assignment validation](../../gtfs-trip-assignment-validation.md).
+  Whole-snapshot coverage, provenance, human approval and publication remain gated.
+
 - 2026-10-18: Added source route and operator-period checks for supplied binding
   scopes and explicit aliases. The source trip/route/agency chain must be unique,
   the mapped line must match the canonical pattern, and the selected operator must
