@@ -539,6 +539,13 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added departure-window lookup with date-scoped canonical patterns.
+  Results retain station, service, destination and every platform alternative
+  alongside source timing and access rules. Scope errors fail before window
+  filtering. Source and patterned lookups share boundary, ordering and duplicate
+  checks. See [canonical departure windows](../../gtfs-scheduled-departure-windows.md#departures-with-canonical-patterns).
+  Mapping approval and publication gates remain open.
+
 - 2026-10-17: Added service-date scopes for source-trip pattern bindings. Active
   dates require exactly one applicable scope; gaps, overlaps, duplicate dates and
   inactive scoped dates fail. All bindings validate before an inactive result can
