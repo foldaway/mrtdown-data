@@ -43,6 +43,11 @@ and the canonical commit/topology fingerprint through the reviewed mapping
 workflow. The helper creates no approval or eligibility metadata. Existing
 mapping review and publication gates remain open.
 
+For a date-scoped binding,
+[`validateScheduledTripPatternSourceStops`](gtfs-scheduled-trip-patterns.md#source-stop-correspondence)
+adds canonical path/date checks and verifies station codes, parent identity and the
+complete source platform-label set against the supplied capture's stop rows.
+
 A read-only compatibility check used the verified October capture and the
 canonical commit/topology recorded in the existing NEL proposal packet. All 14
 proposed patterns and 1,683 source trips bind successfully, preserving 27,054

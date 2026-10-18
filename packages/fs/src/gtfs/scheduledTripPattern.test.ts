@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
+import type { CsvRow } from './schedule.js';
 import {
   validateScheduledTripPatternDateScope,
   validateScheduledTripPatternReferences,
+  validateScheduledTripPatternSourceStops,
 } from './scheduledTripPattern.js';
 import type { scheduleTopologyProjection } from './topology.js';
 
@@ -96,6 +98,160 @@ function scope(
     },
   };
 }
+
+function sourceFixture() {
+  const stops: CsvRow[] = ['S', 'D'].flatMap((id) => [
+    { stop_id: `parent-${id}`, stop_code: id, location_type: '1' },
+    {
+      stop_id: `source-${id}`,
+      stop_code: id,
+      parent_station: `parent-${id}`,
+      platform_code: id === 'S' ? ' B / A ' : 'Q',
+    },
+  ]);
+  return { input: scope(), canonical: datedTopology(), stops };
+}
+
+describe('validateScheduledTripPatternSourceStops', () => {
+  it('retains complete platform sets and repeated visits, including interchange parents identified through another line', () => {
+    const { input, canonical, stops } = sourceFixture();
+    canonical.stations[0].stationCodes.push({
+      lineId: 'INTERCHANGE',
+      code: 'I1',
+      startedAt: '2020-01-01',
+      endedAt: null,
+    });
+    stops[0].stop_code = '';
+    stops[0].stop_id = 'I1';
+    stops[1].parent_station = 'I1';
+    const before = JSON.stringify({ input, canonical, stops });
+    const result = validateScheduledTripPatternSourceStops(
+      input,
+      stops,
+      canonical,
+    );
+    expect(result.binding.pattern.stops).toEqual([
+      { stationId: 'S', platformIds: ['A', 'B'] },
+      { stationId: 'D', platformIds: ['Q'] },
+      { stationId: 'S', platformIds: ['A', 'B'] },
+    ]);
+    expect(result.binding.occurrences).toEqual(input.binding.occurrences);
+    expect(JSON.stringify({ input, canonical, stops })).toBe(before);
+    stops[1].parent_station = '';
+    expect(() =>
+      validateScheduledTripPatternSourceStops(input, stops, canonical),
+    ).not.toThrow();
+  });
+
+  it('requires child and parent codes to identify the supplied station on every date, with the child on the pattern line', () => {
+    const { input, canonical, stops } = sourceFixture();
+    const code = {
+      lineId: 'L',
+      code: 'SOURCE-S',
+      startedAt: '2026-01-01',
+      endedAt: '2026-01-03',
+    };
+    canonical.stations[0].stationCodes.push(code);
+    stops[1].stop_code = code.code;
+    expect(() =>
+      validateScheduledTripPatternSourceStops(input, stops, canonical),
+    ).toThrow('on 2026-01-03');
+    code.endedAt = '2026-01-04';
+    expect(() =>
+      validateScheduledTripPatternSourceStops(input, stops, canonical),
+    ).not.toThrow();
+    code.lineId = 'OTHER';
+    expect(() =>
+      validateScheduledTripPatternSourceStops(input, stops, canonical),
+    ).toThrow('does not uniquely identify S');
+    code.lineId = 'L';
+    stops[0].stop_code = 'D';
+    expect(() =>
+      validateScheduledTripPatternSourceStops(input, stops, canonical),
+    ).toThrow('Source station code D');
+    stops[0].stop_code = code.code;
+    code.startedAt = '2026-01-02';
+    stops[1].stop_code = 'S';
+    expect(() =>
+      validateScheduledTripPatternSourceStops(input, stops, canonical),
+    ).toThrow('on 2026-01-01');
+  });
+
+  it('rejects ambiguous or malformed code periods rather than choosing a convenient match', () => {
+    const { input, canonical, stops } = sourceFixture();
+    const duplicateCode = { ...canonical.stations[0].stationCodes[0] };
+    canonical.stations[2].stationCodes.push(duplicateCode);
+    expect(() =>
+      validateScheduledTripPatternSourceStops(input, stops, canonical),
+    ).toThrow('does not uniquely identify S');
+    duplicateCode.lineId = 'OTHER';
+    stops[1].parent_station = '';
+    expect(() =>
+      validateScheduledTripPatternSourceStops(input, stops, canonical),
+    ).not.toThrow();
+    stops[1].parent_station = 'parent-S';
+    expect(() =>
+      validateScheduledTripPatternSourceStops(input, stops, canonical),
+    ).toThrow('does not uniquely identify S');
+    duplicateCode.endedAt = '2026-02-30';
+    expect(() =>
+      validateScheduledTripPatternSourceStops(input, stops, canonical),
+    ).toThrow();
+  });
+
+  it('requires unique source platforms and well-formed station parents', () => {
+    const changes = [
+      (rows: CsvRow[]) => rows.splice(1, 1),
+      (rows: CsvRow[]) => rows.push({ ...rows[1] }),
+      (rows: CsvRow[]) => {
+        rows[1].location_type = '1';
+      },
+      (rows: CsvRow[]) => {
+        rows[1].stop_code = '';
+      },
+      (rows: CsvRow[]) => {
+        rows[1].parent_station = 'missing';
+      },
+      (rows: CsvRow[]) => rows.push({ ...rows[0] }),
+      (rows: CsvRow[]) => {
+        rows[0].location_type = '0';
+      },
+      (rows: CsvRow[]) => {
+        rows[0].parent_station = 'parent-D';
+      },
+    ];
+    for (const change of changes) {
+      const { input, canonical, stops } = sourceFixture();
+      change(stops);
+      expect(() =>
+        validateScheduledTripPatternSourceStops(input, stops, canonical),
+      ).toThrow();
+    }
+  });
+
+  it('rejects missing, duplicated or partial platform alternatives and ambiguous canonical labels', () => {
+    for (const label of ['', 'A', 'A/', 'A//B', 'A/A', 'A/B/Q', 'UNKNOWN']) {
+      const { input, canonical, stops } = sourceFixture();
+      stops[1].platform_code = label;
+      expect(() =>
+        validateScheduledTripPatternSourceStops(input, stops, canonical),
+      ).toThrow();
+    }
+    const { input, canonical, stops } = sourceFixture();
+    input.binding.pattern.stops[0].platformIds = ['A'];
+    expect(() =>
+      validateScheduledTripPatternSourceStops(input, stops, canonical),
+    ).toThrow('complete canonical platform set');
+    input.binding.pattern.stops[0].platformIds = ['A', 'B'];
+    canonical.stations[0].platforms.push({
+      ...canonical.stations[0].platforms[0],
+      id: 'DUPLICATE-LABEL',
+    });
+    expect(() =>
+      validateScheduledTripPatternSourceStops(input, stops, canonical),
+    ).toThrow('expected one platform for label A');
+  });
+});
 
 describe('validateScheduledTripPatternDateScope', () => {
   it('accepts full paths, short workings and single-circuit loop rotations without changing identity or inputs', () => {
