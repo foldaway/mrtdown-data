@@ -2,11 +2,16 @@ import type { ScheduledServiceCalendar } from '../schema/ScheduledServiceCalenda
 import type { ScheduledTripTimes } from '../schema/ScheduledTripTimes.js';
 import {
   collectScheduledDeparturesInWindow,
+  departureOccurrences,
   type ScheduledDeparture,
+  type ScheduledDepartureOptions,
 } from './scheduledDepartureWindow.js';
 import { scheduledTripTimesOnDate } from './scheduledTripTimesOnDate.js';
 
-export type { ScheduledDeparture } from './scheduledDepartureWindow.js';
+export type {
+  ScheduledDeparture,
+  ScheduledDepartureOptions,
+} from './scheduledDepartureWindow.js';
 
 export interface ScheduledTripDateSelection {
   trip: ScheduledTripTimes;
@@ -18,6 +23,7 @@ export interface ScheduledTripDateSelection {
 export function scheduledDeparturesInWindow(
   selections: readonly ScheduledTripDateSelection[],
   window: { startInstant: string; endInstant: string },
+  options: ScheduledDepartureOptions = {},
 ): ScheduledDeparture[] {
   return collectScheduledDeparturesInWindow(selections, window, (selection) => {
     const resolved = scheduledTripTimesOnDate(
@@ -28,19 +34,14 @@ export function scheduledDeparturesInWindow(
     if (!resolved) {
       return [];
     }
-    return resolved.stopTimes.flatMap((stop): ScheduledDeparture[] => {
-      if (stop.departureInstant === null) {
-        return [];
-      }
-      return [
-        {
-          ...stop,
-          providerRouteId: resolved.providerRouteId,
-          providerCalendarId: resolved.providerCalendarId,
-          serviceDate: resolved.serviceDate,
-          departureInstant: stop.departureInstant,
-        },
-      ];
-    });
+    return departureOccurrences(resolved.stopTimes, options.boardingOnly).map(
+      (stop): ScheduledDeparture => ({
+        ...stop,
+        providerRouteId: resolved.providerRouteId,
+        providerCalendarId: resolved.providerCalendarId,
+        serviceDate: resolved.serviceDate,
+        departureInstant: stop.departureInstant,
+      }),
+    );
   });
 }

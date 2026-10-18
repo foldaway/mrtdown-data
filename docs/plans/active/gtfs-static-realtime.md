@@ -539,6 +539,13 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added opt-in boarding-only departure queries in core and the source
+  CLI (`gtfs departures --boarding-only`). Candidates require pickup permission
+  and a later permitted alighting occurrence within the same trip; final timestamps
+  do not become onward boarding options. Raw access rules and default inspection
+  output remain intact. Mapping coverage, terminal platform evidence and approval
+  gates remain unchanged. See [boarding queries](../../gtfs-scheduled-departure-windows.md#boarding-candidates-with-onward-travel).
+
 - 2026-10-18: Added optional `--assignments` output to the scoped-review command.
   A packet now includes the matched trip assignment document, verified coverage
   report and summary binding to its mapping-draft digest. Existing mapping outputs

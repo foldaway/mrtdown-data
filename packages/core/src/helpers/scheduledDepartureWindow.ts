@@ -9,6 +9,33 @@ export type ScheduledDeparture =
     departureInstant: string;
   };
 
+export interface ScheduledDepartureOptions {
+  boardingOnly?: boolean;
+}
+
+export function departureOccurrences<
+  Stop extends {
+    departureInstant: string | null;
+    pickupType: number;
+    dropOffType: number;
+  },
+>(stops: readonly Stop[], boardingOnly = false) {
+  let lastAlightingIndex = -1;
+  if (boardingOnly) {
+    for (let index = stops.length - 1; index >= 0; index--) {
+      if (stops[index].dropOffType !== 1) {
+        lastAlightingIndex = index;
+        break;
+      }
+    }
+  }
+  return stops.filter(
+    (stop, index): stop is Stop & { departureInstant: string } =>
+      stop.departureInstant !== null &&
+      (!boardingOnly || (stop.pickupType !== 1 && index < lastAlightingIndex)),
+  );
+}
+
 function compareText(left: string, right: string) {
   return left < right ? -1 : left > right ? 1 : 0;
 }

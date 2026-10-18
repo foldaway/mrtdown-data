@@ -44,6 +44,49 @@ This remains an in-memory source timing lookup. Reconciliation and publication
 paths do not call it; mapping review, source licence requirements and generation
 gates remain open.
 
+## Boarding candidates with onward travel
+
+Both departure helpers accept a third argument, `ScheduledDepartureOptions`:
+
+```ts
+scheduledDeparturesInWindow(selections, window, { boardingOnly: true });
+scheduledDeparturesWithPatternsInWindow(selections, window, { boardingOnly: true });
+```
+
+This mode retains an occurrence only when it has a supplied departure, pickup is
+allowed, and at least one later occurrence in the same trip permits alighting.
+Pickup/drop-off code `1` prohibits the corresponding action; codes `0`, `2` and
+`3` remain eligible with their original regular or arranged-access restrictions.
+An arranged pickup or drop-off must still be presented with that restriction.
+
+The [GTFS stop-time reference](https://gtfs.org/documentation/schedule/reference/#stop_timestxt)
+defines travel between an occurrence and later stops, subject to pickup/drop-off
+rules. MRTDown uses that ordering to filter boarding candidates. A trip's final
+timestamp supplies no later stop within that trip, even when its source pickup
+code is the default `0`. The source value is preserved; no pickup rule is rewritten.
+Linked trips or vehicle turnarounds are not inferred as continuations.
+
+Onward alighting is checked against the entire trip before filtering by time or
+provider stop. A destination outside the requested window or stop selection can
+still support a boarding occurrence inside it. Repeated visits to the same station
+remain distinct: an earlier visit may permit boarding while the last one does not.
+Missing approximate times are not interpolated, and a missing boarding departure
+still produces no candidate.
+
+The default lookup retains its existing raw-event results. Calendar, binding and
+duplicate-selection checks run before either mode returns results, including when
+boarding filtering would remove every event. Source access rules, platform
+alternatives and canonical identities remain unchanged. This option does not
+validate physical platform suitability, resolve terminal platform/service
+disagreements or approve a mapping.
+
+On the verified October capture's 12,106 matched trip proposals, querying each
+trip's first assigned service date returns 218,207 raw departure events. The
+boarding-only lookup returns 206,101, excluding exactly the 12,106 final
+occurrences. Source pickup/drop-off defaults, assignment documents and mapping
+coverage remain unchanged. This is a read-only compatibility check against the
+[pinned assignment packet](gtfs-trip-assignment-validation.md#prepare-assignments-from-mapping-decisions).
+
 ## Finding candidate service dates
 
 `scheduledServiceDatesForWindow(calendar, window, maximumOffsetSeconds)` finds

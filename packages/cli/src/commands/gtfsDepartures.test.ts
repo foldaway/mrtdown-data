@@ -190,6 +190,41 @@ describe('GTFS departure inspection CLI', () => {
       expect(JSON.parse(combined).departures).toHaveLength(5);
       expect(await runCli(stopQueryArgs(['P', 'Q']), io, root)).toBe(0);
       expect(await readFile(join(root, 'report.json'), 'utf8')).toBe(combined);
+      expect(
+        await runCli(
+          [...stopQueryArgs(['P', 'Q']), '--boarding-only'],
+          io,
+          root,
+        ),
+      ).toBe(0);
+      const boarding = JSON.parse(
+        await readFile(join(root, 'report.json'), 'utf8'),
+      );
+      expect(boarding.query.boardingOnly).toBe(true);
+      expect(
+        boarding.departures.map((stop: Record<string, string>) => [
+          stop.providerTripId,
+          stop.providerStopId,
+          stop.stopSequence,
+        ]),
+      ).toEqual([
+        ['current', 'P', '1'],
+        ['T,late', 'Q', '9007199254740993'],
+      ]);
+      expect(
+        await runCli([...stopQueryArgs(['P']), '--boarding-only'], io, root),
+      ).toBe(0);
+      const selectedStop = JSON.parse(
+        await readFile(join(root, 'report.json'), 'utf8'),
+      );
+      expect(
+        selectedStop.departures.map(
+          (stop: Record<string, string>) => stop.providerTripId,
+        ),
+      ).toEqual(['current']);
+      expect(selectedStop.generationEligible).toBe(false);
+      expect(await runCli(stopQueryArgs(['P', 'Q']), io, root)).toBe(0);
+      expect(await readFile(join(root, 'report.json'), 'utf8')).toBe(combined);
       expect(errors).toEqual([]);
     } finally {
       await rm(root, { recursive: true, force: true });

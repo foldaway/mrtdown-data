@@ -15,6 +15,7 @@ export interface GtfsDepartureQuery {
   serviceDates?: string[];
   startInstant: string;
   endInstant: string;
+  boardingOnly?: boolean;
 }
 
 export async function inspectGtfsDepartures(
@@ -128,7 +129,9 @@ export async function inspectGtfsDepartures(
     }
     return serviceDates.map((serviceDate) => ({ trip, calendar, serviceDate }));
   });
-  const departures = scheduledDeparturesInWindow(selections, query);
+  const departures = scheduledDeparturesInWindow(selections, query, {
+    boardingOnly: query.boardingOnly,
+  });
   return {
     reportVersion: 1 as const,
     documentKind: 'gtfs-source-departures' as const,
@@ -140,6 +143,7 @@ export async function inspectGtfsDepartures(
       ...(automaticDates ? { serviceDateSelection: 'automatic' as const } : {}),
       startInstant: query.startInstant,
       endInstant: query.endInstant,
+      ...(query.boardingOnly ? { boardingOnly: true as const } : {}),
     },
     departures: stopIds.length
       ? departures.filter((stop) => stopSet.has(stop.providerStopId))
