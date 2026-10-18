@@ -147,3 +147,34 @@ and CCL pilot scopes still pass all 3,220 pairs. Existing reconciliation proposa
 remain byte-identical and the canonical projection is unchanged. The existing
 review evaluator does not yet call this checker, so its proposal counts are not
 an assertion that this additional gate has passed.
+
+## Current platform boarding checks
+
+`validateScheduledTripPatternBoarding(trip, binding, topology)` checks every
+proposed platform against the bound source occurrence's pickup rule. It validates
+canonical references and the literal source-occurrence binding first, then rejects:
+
+- Any `not_in_service` platform, including a final occurrence or one with no pickup.
+- Any `alighting_only` platform before the final occurrence when source pickup is
+  allowed (`pickupType` 0, 2 or 3). Pickup by arrangement still counts as pickup.
+
+Every member of a platform set must pass. Repeated visits are checked independently,
+so an earlier pickup cannot be hidden by the same station's final alighting visit.
+The final-occurrence exception matches the existing
+[grouped-platform review](gtfs-platform-group-review.md#contract) rule. Null boarding
+status and unspecified platform service scope retain their existing meaning.
+
+The returned bound trip preserves source timing, raw occurrence identities,
+pickup/drop-off rules, precision and all canonical alternatives. Inputs are unchanged.
+This is a check against current, undated platform metadata; it does not establish
+historical allocation or change source access rules. Source stop correspondence,
+canonical date validity, active calendars, agency/operator mapping, capture identity,
+human approval and publication still require their own checks. No departure query,
+generator or publication path calls this checker.
+
+A read-only check against the October version-3 draft and its pinned topology
+passes all 231 matched proposal patterns: 12,106 source trips, 218,207 occurrences
+and 771 occurrences with grouped platform alternatives. Removing the added canonical
+fields reproduces every original timing/access record; reconciliation proposals
+and canonical topology remain unchanged. This establishes current boarding
+compatibility only. The 3,456 parent-code/date gaps recorded above remain unresolved.

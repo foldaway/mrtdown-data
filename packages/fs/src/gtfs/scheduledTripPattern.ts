@@ -1,4 +1,6 @@
 import {
+  bindScheduledTripPattern,
+  ScheduledTripPatternBindingSchema,
   ScheduledTripPatternDateScopeSchema,
   ScheduledTripPatternSchema,
 } from '@mrtdown/core';
@@ -154,6 +156,41 @@ export function validateScheduledTripPatternDateScope(
     }
   }
   return scope;
+}
+
+export function validateScheduledTripPatternBoarding(
+  tripInput: unknown,
+  bindingInput: unknown,
+  topology: ReturnType<typeof scheduleTopologyProjection>,
+) {
+  const binding = ScheduledTripPatternBindingSchema.parse(bindingInput);
+  validateScheduledTripPatternReferences(binding.pattern, topology);
+  const trip = bindScheduledTripPattern(tripInput, binding);
+  for (const [index, stop] of trip.stopTimes.entries()) {
+    const station = uniqueReference(
+      topology.stations,
+      stop.stationId,
+      'station',
+    );
+    for (const id of stop.platformIds) {
+      const platform = uniqueReference(
+        station.platforms,
+        id,
+        `platform at station ${station.id}`,
+      );
+      if (
+        platform.boardingStatus === 'not_in_service' ||
+        (platform.boardingStatus === 'alighting_only' &&
+          index < trip.stopTimes.length - 1 &&
+          stop.pickupType !== 1)
+      ) {
+        throw new Error(
+          `Trip ${trip.providerTripId}: occurrence ${index} conflicts with platform ${id} boarding status ${platform.boardingStatus}`,
+        );
+      }
+    }
+  }
+  return trip;
 }
 
 function requireSourceStop(rows: readonly CsvRow[], id: string) {
