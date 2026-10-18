@@ -93,6 +93,48 @@ Verified capture inspection with coverage reports 990,143 unassigned trip/date
 pairs out of 2,492,240 active source pairs, grouped into six gap records. The
 draft remains unresolved and unapproved; `generationEligible` stays `false`.
 
+## Export assignments with a review packet
+
+Add `--assignments` to the existing scoped-review command to save assignment
+proposals and their verified coverage report alongside the mapping drafts:
+
+```sh
+npm run build:fs
+node scripts/draft-gtfs-scoped-review.mjs \
+  /absolute/path/schedule.zip /absolute/path/capture.json \
+  NSL,EWL,NEL,CCL,DTL,TEL,BPLRT,SKLRT,PGLRT \
+  /tmp/new-review-with-assignments \
+  --canonical-commit d034d6babef4ea5bcac256d26c47dcd802bb39ba \
+  --platform-groups --assignments
+```
+
+Use the verified October inputs and pinned canonical data described in
+[grouped-platform review](gtfs-platform-group-review.md#reproduce) to reproduce
+the counts above. Other pilot selections export only their matched cells while
+reporting coverage against the whole supplied capture. Version-2 drafts work too;
+omit `--platform-groups` to retain their individual-platform rules.
+
+The new files are:
+
+- `assignments.json`: the assignment document accepted by `gtfs validate-assignments`.
+- `assignment-validation.json`: capture provenance, normalized assignment hash,
+  supplied counts and complete source-date coverage, including unassigned gaps.
+
+`summary.json` adds file digests and `assignmentProposals`, which binds the full
+draft's normalized digest to the assignment hash and coverage counts. The original
+mapping drafts and evaluations remain byte-identical. Without `--assignments`,
+the existing files and summary remain unchanged. Combine it with `--blockers`
+to include the separate [investigation report](gtfs-review-blockers.md).
+
+All draft, assignment and capture checks finish before the output directory is
+created. Validation failures leave no review packet; an existing output directory
+is rejected rather than overwritten. Use a fresh directory for each run and keep
+these large generated files outside Git.
+
+The assignments contain compatibility proposals from the full draft's matched
+cells. Unresolved cells remain in that draft and in the coverage report; creating
+these files supplies no approval and leaves `generationEligible: false`.
+
 ## Check a verified local capture
 
 After materializing the [capture and receipt](gtfs-public-handoff.md), run:

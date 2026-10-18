@@ -539,6 +539,13 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added optional `--assignments` output to the scoped-review command.
+  A packet now includes the matched trip assignment document, verified coverage
+  report and summary binding to its mapping-draft digest. Existing mapping outputs
+  remain unchanged. This makes the full 12,106-trip compatibility check reproducible
+  through the review command; unresolved coverage and approval gates remain open.
+  See [review packet export](../../gtfs-trip-assignment-validation.md#export-assignments-with-a-review-packet).
+
 - 2026-10-18: Corrected interchange parent checks to validate snapshot station
   identity independently of a child's service date. This removes the artificial
   Marina Bay/Bayfront parent-code blocker while preserving dated child codes,
