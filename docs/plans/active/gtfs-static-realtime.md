@@ -539,6 +539,13 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added canonical scheduled-trip pattern references and a topology
+  checker for stations, lines, services, revisions and every platform alternative.
+  Ordered repeated visits and short-working destinations remain explicit; missing,
+  ambiguous or incompatible references fail. See
+  [trip-pattern references](../../gtfs-scheduled-trip-patterns.md). Source/path/date
+  binding, mapping approval and publication gates remain open.
+
 - 2026-10-17: Added local `gtfs timetable` export, binding the complete source
   timetable to a hash-verified capture, raw-table manifest and normalized content
   hash. Reports are compact and reproducible; failed inputs leave existing output

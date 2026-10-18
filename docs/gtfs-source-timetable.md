@@ -40,6 +40,10 @@ provenance when constructing a surrounding artifact. Passing this schema does
 not establish source correctness, reviewed mapping coverage or publication
 eligibility. No generation or Pages publication path calls the assembler.
 
+The separate [canonical trip-pattern contract](gtfs-scheduled-trip-patterns.md)
+defines identity references and checks them against canonical topology. Binding
+those patterns to source trips and service dates still requires reviewed mappings.
+
 ## Verified local export
 
 ```sh
