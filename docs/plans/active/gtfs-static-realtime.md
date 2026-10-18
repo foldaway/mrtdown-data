@@ -539,6 +539,13 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added local `gtfs timetable` export, binding the complete source
+  timetable to a hash-verified capture, raw-table manifest and normalized content
+  hash. Reports are compact and reproducible; failed inputs leave existing output
+  untouched. Capture rights metadata remains explicit. See
+  [verified export](../../gtfs-source-timetable.md#verified-local-export).
+  Canonical allocation, mapping approval and publication gates remain open.
+
 - 2026-10-17: Added a compact source timetable contract and assembler that
   combine all trip timing and calendar definitions, including unused calendars.
   Duplicate identities, missing calendar references and unsupported timezone or

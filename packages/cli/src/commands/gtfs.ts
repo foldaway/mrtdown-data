@@ -4,6 +4,7 @@ import {
   inspectGtfsCapture,
   inspectGtfsDepartures,
   inspectGtfsDirectory,
+  inspectGtfsTimetable,
 } from '@mrtdown/fs';
 import { readOption } from '../args.js';
 import type { CliIO, GlobalOptions } from '../types.js';
@@ -82,15 +83,30 @@ export async function runGtfs(
         endInstant: endInstant ?? '',
       },
     );
+  } else if (command === 'timetable') {
+    const file = readOption(args, '--file', { required: true });
+    const capture = readOption(args, '--capture', { required: true });
+    if (args.length) {
+      throw new Error(`Unexpected GTFS arguments: ${args.join(' ')}`);
+    }
+    report = await inspectGtfsTimetable(
+      resolve(globals.cwd, file ?? ''),
+      resolve(globals.cwd, capture ?? ''),
+    );
   } else if (command === 'topology') {
     if (args.length)
       throw new Error(`Unexpected GTFS arguments: ${args.join(' ')}`);
     report = await buildScheduleTopologyFingerprint(globals.dataDir);
   } else {
-    throw new Error('Expected gtfs inspect, gtfs departures or gtfs topology');
+    throw new Error(
+      'Expected gtfs inspect, gtfs departures, gtfs timetable or gtfs topology',
+    );
   }
-  const json = `${JSON.stringify(report, null, 2)}\n`;
-  if (output) await writeTextFile(resolve(globals.cwd, output), json);
-  else io.stdout(json.trimEnd());
+  const json = `${JSON.stringify(report, null, command === 'timetable' ? undefined : 2)}\n`;
+  if (output) {
+    await writeTextFile(resolve(globals.cwd, output), json);
+  } else {
+    io.stdout(json.trimEnd());
+  }
   return exitCode;
 }
