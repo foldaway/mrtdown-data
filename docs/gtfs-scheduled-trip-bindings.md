@@ -50,6 +50,9 @@ complete source platform-label set against the supplied capture's stop rows.
 [`validateScheduledTripPatternBoarding`](gtfs-scheduled-trip-patterns.md#current-platform-boarding-checks)
 checks the bound source pickup rules against every proposed platform's current
 boarding status without changing source access rules or inferring historical allocation.
+[`validateScheduledTripPatternSourceRoute`](gtfs-scheduled-trip-patterns.md#source-route-and-operator-periods)
+traces explicit route/agency aliases and checks the canonical operator's line periods
+on every scoped service date.
 
 A read-only compatibility check used the verified October capture and the
 canonical commit/topology recorded in the existing NEL proposal packet. All 14
