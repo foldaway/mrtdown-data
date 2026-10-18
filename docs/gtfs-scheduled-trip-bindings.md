@@ -54,6 +54,10 @@ boarding status without changing source access rules or inferring historical all
 traces explicit route/agency aliases and checks the canonical operator's line periods
 on every scoped service date.
 
+[`validateScheduledTripPatternAssignments`](gtfs-trip-assignment-validation.md)
+runs these checks together against one source table set and canonical topology,
+including calendar activity and overlapping date scopes across each trip's assignments.
+
 A read-only compatibility check used the verified October capture and the
 canonical commit/topology recorded in the existing NEL proposal packet. All 14
 proposed patterns and 1,683 source trips bind successfully, preserving 27,054
