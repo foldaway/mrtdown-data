@@ -539,6 +539,13 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added source route and operator-period checks for supplied binding
+  scopes and explicit aliases. The source trip/route/agency chain must be unique,
+  the mapped line must match the canonical pattern, and the selected operator must
+  cover every scoped service date on that line. Missing or conflicting references,
+  period gaps and malformed bounds fail. See [route/operator checks](../../gtfs-scheduled-trip-patterns.md#source-route-and-operator-periods).
+  Source/calendar/stop checks, alias approval and publication remain separate gates.
+
 - 2026-10-18: Added per-trip current boarding checks for supplied canonical
   bindings. Every platform alternative must support the occurrence's pickup rule;
   repeated visits are checked separately and the existing final alighting rule

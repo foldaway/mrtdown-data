@@ -178,3 +178,38 @@ and 771 occurrences with grouped platform alternatives. Removing the added canon
 fields reproduces every original timing/access record; reconciliation proposals
 and canonical topology remain unchanged. This establishes current boarding
 compatibility only. The 3,456 parent-code/date gaps recorded above remain unresolved.
+
+## Source route and operator periods
+
+`validateScheduledTripPatternSourceRoute(scope, tables, mapping, topology)` traces
+a supplied binding from its source trip through the source route and agency. The
+`ScheduledRouteMappingSchema` lookup input contains four nonempty literal IDs:
+`providerRouteId`, `lineId`, `providerAgencyId` and `operatorId`. It rejects unknown
+fields and carries no approval metadata. The caller supplies the aliases; the
+checker does not derive them from route families, agency names or ID spelling.
+
+The checker runs canonical path/date validation, then requires exactly one source
+trip, route and agency at each link. The trip must use the supplied route and the
+route must explicitly name the supplied agency. Missing agency IDs require review;
+the checker does not infer an agency from a single-row table. The mapped line must
+equal the pattern's line, and the canonical operator must exist exactly once.
+
+On every scoped service date, that operator must have a covering period on the
+line. Starts are inclusive, ends exclusive and null bounds open. Multiple periods
+may cover separate dates, but a gap cannot borrow coverage from another operator.
+All matching periods must contain real civil dates and, when both bounds exist,
+end after their start; a malformed matching period fails even if another period
+would cover the requested dates.
+
+The returned scope retains its binding and normalized dates without modifying the
+source tables, aliases or topology. Source occurrence/calendar binding, stop and
+platform correspondence, boarding checks, route semantics, capture identity and
+mapping approval remain separate. No query, generator or publication path calls
+this checker.
+
+A read-only check uses the October version-3 draft's explicit route and agency
+decisions, one representative source trip per matched scope, and its pinned
+canonical topology. All 231 scopes pass across 26,268 pattern/date pairs. Source
+tables, canonical topology and the complete reconciliation proposal JSON remain
+unchanged. This checks alias and operator-period compatibility only; the parent-code
+gaps recorded above and human review requirements remain open.
