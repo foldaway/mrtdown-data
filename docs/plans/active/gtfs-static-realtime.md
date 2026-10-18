@@ -539,6 +539,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added offline `gtfs validate-assignments` inspection. It verifies
+  capture and table hashes, checks the supplied canonical commit and actual topology
+  fingerprint, then runs combined assignment validation. Reports retain provenance,
+  normalized assignment hashes and supplied counts; failures preserve existing
+  output. See [verified local assignment checks](../../gtfs-trip-assignment-validation.md#check-a-verified-local-capture).
+  Whole-snapshot coverage, Git-tree provenance, human approval and publication remain
+  separate gates; generation eligibility stays false.
+
 - 2026-10-18: Added batch validation for supplied trip assignments. One source
   timetable supplies literal occurrence and calendar checks; every assignment
   must also pass canonical path/date, source-stop, complete-platform, boarding

@@ -40,6 +40,10 @@ resolves the archive reference or fetches a URL.
 
 ## Checks and reports
 
+Use [`gtfs validate-assignments`](gtfs-trip-assignment-validation.md#check-a-verified-local-capture)
+to check supplied canonical trip assignments against the verified source capture
+and its pinned canonical topology.
+
 Capture schema v1 matches the crawler: kind, source endpoint, retrieval time,
 byte count, SHA-256, archive reference, attribution and publication rights status.
 Both original pending-review and public redistribution-permitted records validate.
