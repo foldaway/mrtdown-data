@@ -4,6 +4,7 @@ export * from './helpers/isScheduledServiceDate.js';
 export * from './helpers/normalizeRecurringPeriod.js';
 export * from './helpers/resolvePeriods.js';
 export * from './helpers/scheduledDeparturesInWindow.js';
+export * from './helpers/scheduledDeparturesWithPatternsInWindow.js';
 export * from './helpers/scheduledServiceDatesForWindow.js';
 export * from './helpers/scheduledServiceDayInstant.js';
 export * from './helpers/scheduledTripTimesOnDate.js';

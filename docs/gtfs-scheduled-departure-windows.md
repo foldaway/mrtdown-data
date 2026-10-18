@@ -60,3 +60,42 @@ weekly bounds. Calendar removals remain authoritative. It supports offsets over
 UTC offset. Invalid calendars, windows or offsets throw through the existing
 validators. It does not select an eligible source snapshot or establish mapping
 coverage.
+
+## Departures with canonical patterns
+
+`scheduledDeparturesWithPatternsInWindow(selections, window)` accepts
+`ScheduledTripPatternDateSelection` records: the same source `trip`, `calendar`
+and explicit `serviceDate`, plus all supplied binding `scopes` for that trip.
+It applies the [date-scoped binding rules](gtfs-scheduled-trip-bindings.md#service-date-scopes)
+before filtering departures. An active trip without one applicable binding,
+overlapping scopes or invalid bindings fails even when its events fall outside
+the window. Valid inactive selections produce no events but still participate in
+duplicate trip/date checks.
+
+Each `ScheduledDepartureWithPattern` retains all source departure fields and
+adds `lineId`, `serviceId`, `revisionId`, `destinationStationId`, `stationId` and
+the complete `platformIds` alternatives. Date-specific identities remain attached
+to their own source occurrences, including previous-day trains after midnight.
+Coincident events and repeated visits remain distinct. Missing departures are
+filtered after binding, so later visits cannot inherit an earlier visit's
+canonical identity. Pickup/drop-off restrictions remain present; consumers must
+honor them before presenting boarding options.
+
+Both lookup helpers share inclusive-start/exclusive-end filtering, chronological
+ordering, deterministic tie-breaking and duplicate-selection checks. Empty
+selections still require a valid absolute window. Invalid inputs throw without
+returning partial results. The source-only helper retains its existing API and
+output, and source inspection commands continue to use it.
+
+The caller must supply eligible source snapshots, relevant service dates and
+binding scopes. This helper does not establish canonical reference/path/effective
+date validity, complete platform-group membership, mapping approval or publication
+rights. No CLI, generator or publication path calls it.
+
+A read-only check of the existing NEL proposal packet queries all 1,683 trips
+on their source calendars' first active dates in a January 1–6 window. The 27,054
+departures exactly match the source-only lookup after removing the added
+canonical fields, with source tables and pinned topology unchanged. Separately,
+the retained October `PTC_B` January 4 00:00–02:00 inspection still returns the
+same 28 departures and byte-identical JSON after the shared-window refactor.
+These compatibility checks create no mapping approval or published artifact.
