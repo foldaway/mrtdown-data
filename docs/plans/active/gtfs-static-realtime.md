@@ -539,6 +539,13 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-17: Added service-date scopes for source-trip pattern bindings. Active
+  dates require exactly one applicable scope; gaps, overlaps, duplicate dates and
+  inactive scoped dates fail. All bindings validate before an inactive result can
+  return. Enabled trips retain canonical references alongside Singapore-derived
+  UTC instants. See [date scopes](../../gtfs-scheduled-trip-bindings.md#service-date-scopes).
+  Canonical effective-date review, mapping approval and publication remain gated.
+
 - 2026-10-17: Added explicit source-occurrence binding for canonical trip
   patterns. The structural join checks literal trip, stop and sequence identity
   and equal occurrence counts before combining timing and canonical references.

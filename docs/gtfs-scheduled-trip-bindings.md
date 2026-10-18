@@ -50,3 +50,46 @@ occurrences and 114 short workings with their actual scheduled endpoints.
 Stripping the added canonical fields reproduces every original timing record.
 The source tables and pinned canonical projection remain unchanged. This checks
 proposal compatibility only; it creates no reviewed mapping or published output.
+
+## Service-date scopes
+
+`ScheduledTripPatternDateScopeSchema` and its inferred
+`ScheduledTripPatternDateScope` type pair a `binding` with a nonempty set of
+distinct ISO `serviceDates`. Dates normalize into ascending order without
+modifying the input. They describe supplied applicability, not mapping approval.
+These lookup inputs do not replace the compact source calendar rules.
+
+`scheduledTripWithPatternOnDate(trip, calendar, scopes, serviceDate)` resolves
+one source trip against all its supplied scopes. It validates the source timing,
+matching calendar and requested civil date, then every scope and its literal
+source-occurrence binding. Every scoped date must be active in that source
+calendar. Scopes must be disjoint, even when the overlap is outside the requested
+date or the proposed patterns are identical. Invalid or conflicting scopes cannot
+disappear behind an inactive query date.
+
+For an active source date, exactly one scope must apply. A gap throws instead of
+returning a misleading empty result or extending another scope. The helper does
+not choose the latest revision or prefer an input's position. Dates not requested
+may remain uncovered; whole-snapshot mapping coverage is still checked separately.
+An empty scope list is allowed for an inactive source date and fails for an active
+one. A valid inactive source date returns `null` after input validation.
+
+An enabled result is a `ScheduledTripWithPatternOnDate`: the bound trip plus
+`serviceDate` and UTC `arrivalInstant`/`departureInstant` on each occurrence.
+Existing Singapore service-day rules apply, including elapsed offsets beyond
+midnight and explicit missing times. A removal on the next civil date does not
+cancel an earlier enabled service day's late train or change its binding.
+Source timing, access restrictions, canonical references and all platform
+alternatives remain intact; inputs are unchanged.
+
+Scope selection proves only that one supplied binding applies to the requested
+source service date. Canonical reference/path/effective-date checks, complete
+platform-group review, snapshot identity, human approval and publication remain
+separate gates. No export, departure query or generator calls this resolver.
+
+The NEL proposal compatibility check also resolves all 1,683 trips on the first
+supplied active date of each source calendar: 2026-01-01, 2026-01-03 and
+2026-01-04. All 27,054 occurrences match the source-only resolver's UTC events,
+with canonical references and all 114 short-working endpoints retained. Source
+tables and the pinned canonical projection remain unchanged; no approval or
+publication is inferred.
