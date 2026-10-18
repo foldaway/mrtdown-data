@@ -1,196 +1,151 @@
 # mrtdown-data
 
-Canonical MRTDown data for Singapore rail entities, issue records, and the
-package tooling that validates and publishes them.
+This repository maintains MRTDown's reviewed data for Singapore's rail
+network: stations, services, station layouts, and records of disruptions,
+maintenance, and infrastructure issues.
+Use the tools here to inspect records, validate changes, process evidence, and
+build data exports for applications. [mrtdown-site](https://github.com/foldaway/mrtdown-site)
+imports the published exports and serves the runtime API.
 
-This repository is the source of truth for reviewed data. It does not serve the
-runtime API; downstream apps consume the generated static GitHub Pages artifact.
+## Get started
 
-## Quick Start
+Use Node.js 24, as in CI, then install dependencies and validate the data:
 
 ```bash
 npm ci
 npm run build:packages
 npm run data:validate
-npm test
 ```
 
-For linting and formatting checks:
+The CLI can list records, show an individual record, or inspect an issue's state:
 
 ```bash
-npm run lint
+node packages/cli/dist/index.js --data-dir data list station
+node packages/cli/dist/index.js --data-dir data show station <id>
+node packages/cli/dist/index.js --data-dir data issue state <id>
 ```
 
-## Repository Layout
+See the [CLI command reference](packages/cli/src/usage.ts) for creation commands
+and other tools.
 
-- `data/station`, `data/line`, `data/service`, `data/operator`, `data/town`,
-  and `data/landmark`: canonical static entities.
-- the `layout` property in `data/station/*.json`: station exits imported
-  exclusively from LTA's MRT Station Exit GeoJSON dataset and optional
-  observed or same-line-inferred platform facts.
-- `data/issue/YYYY/MM/<issue_id>/`: canonical issue bundles.
-- `data/rights/source-registry.json`: source rights and attribution rules used
-  for evidence classification.
-- `fixtures/generated/data`: on-demand generated fixture data for tests and
-  examples.
-- `fixtures/triage-regressions`: checked-in historical ingestion cases and
-  semantic expectations.
-- `packages/core`: shared schemas, period helpers, and state helpers.
-- `packages/ingest-contracts`: webhook payload schemas shared with external
-  evidence producers.
-- `packages/fs`: file-backed repositories, validation, manifest, and Pages
-  export helpers.
-- `packages/triage`: LLM-assisted evidence triage and replay utilities.
-- `packages/cli`: command-line entry point for validating, inspecting, and
-  creating target-layout data.
-- `docs/plans`: active plans, completed migration reports, and durable tech
-  debt.
+## Explore the data
 
-## Common Commands
+The reviewed dataset lives in `data/`:
+
+- `station/`, `line/`, `service/`, `operator/`, `town/`, and `landmark/` describe
+  the network and nearby places. Station records include exits and optional
+  platform information.
+- `issue/YYYY/MM/<issue_id>/` groups each issue's metadata (`issue.json`),
+  source evidence (`evidence.ndjson`), and append-only impact events
+  (`impact.ndjson`). Issue types are `disruption`, `maintenance`, and `infra`;
+  ongoing issues use open-ended periods.
+- `schematic-map/system/` holds map rules and design constraints; see the
+  [map plan](docs/plans/active/schematic-system-map.md).
+- `rights/source-registry.json` records source rights and attribution rules.
+
+Validate every data change with `npm run data:validate`. For station layout
+updates, follow the [exit and platform source policy](docs/plans/active/station-layout-data.md).
+These commands import LTA exits and report possible platform labels inferred
+from reviewed observations:
 
 ```bash
-npm run build:packages     # Build all workspace packages
-npm run typecheck          # Compile-check workspace packages
-npm test                   # Run deterministic Vitest tests
-npm run lint               # Run Biome checks
-npm run check              # Run lint, boundary checks, and docs link checks
-npm run data:validate      # Validate canonical data
 npm run data:import:lta-station-exits -- /path/to/exits.geojson
 npm run data:platforms:infer -- --write /tmp/platform-inference.json
-npm run fixtures:validate  # Generate and validate fixture data
-npm run triage:regressions -- --list  # List historical ingestion cases
-npm run pages:build        # Build the GitHub Pages static data artifact
 ```
 
-Package-specific build and test commands are available in `package.json` when a
-change only touches one package.
+## Build and publish exports
 
-## Static Pages Export
-
-`npm run pages:build` writes the static artifact to `pages-dist/`.
-
-The artifact publishes the canonical export at the root:
-
-- `index.html`
-- `manifest.json`
-- `archive.tar.gz`
-- `archive.zip`
-- `station/`, `line/`, `service/`, `operator/`, `town/`, `landmark/`, and
-  `issue/`
-
-It also includes the deterministic fixture export under `fixtures/`:
-
-- `fixtures/index.html`
-- `fixtures/manifest.json`
-- `fixtures/archive.tar.gz`
-- `fixtures/archive.zip`
-- the fixture data files used to build the fixture manifest
-
-Preview branches and pull requests build the same bundle in CI and upload it as
-a short-lived artifact. Only `main` deploys the bundle to GitHub Pages.
-
-After a successful `main` Pages deployment, CI triggers the `mrtdown-site`
-internal pull endpoint so the site can import the newly published archive. The
-deploy workflow expects these repository secrets:
-
-- `MRTDOWN_SITE_PULL_URL`: the full `mrtdown-site`
-  `/internal/api/tasks/pull` URL.
-- `MRTDOWN_SITE_INTERNAL_API_TOKEN`: a bearer token present in the site's
-  `INTERNAL_API_TOKENS`.
-
-## Data Model
-
-### Static Entities
-
-Static data records describe rail lines, services, stations, operators, towns,
-and landmarks. Records are JSON files validated by the schemas in
-`@mrtdown/core`.
-
-### Issues
-
-Issue records live in date-partitioned bundles:
-
-```text
-data/issue/YYYY/MM/<issue_id>/
-  issue.json
-  evidence.ndjson
-  impact.ndjson
+```bash
+npm run pages:build
 ```
 
-- `issue.json` stores the issue identity, type, and translated title.
-- `evidence.ndjson` stores source evidence used to understand the issue.
-- `impact.ndjson` stores append-only impact events derived from evidence.
+This writes `pages-dist/` with browsable JSON records, a manifest, and ZIP and
+TAR archives. It validates the exported data and redacts source text and
+rendered content when the source registry disallows public export. Generated
+test data appears under `fixtures/` in the same bundle.
 
-Supported issue types are `disruption`, `maintenance`, and `infra`.
+For relevant changes, CI builds branch and pull request previews as temporary
+artifacts. The [Pages deployment workflow](.github/workflows/pages-deploy.yml)
+publishes from `main`, then asks `mrtdown-site` to import the new archive. See
+the workflow for the required site URL and token secrets.
 
-Use open-ended periods for ongoing issues. CLI validation is required whenever
-canonical data changes.
+## Process evidence
 
-## Data Licensing
-
-MRTDown-authored canonical data and generated data exports are covered by
-`CC-BY-4.0` as described in `LICENSE-DATA.md`. Package source code, scripts,
-tooling, and associated documentation are licensed under the MIT License as
-described in `LICENSE-CODE.md`.
-
-Station layout exit records contain LTA data under the Singapore Open Data
-Licence v1.0. Observed and provenance-linked inferred platform records are
-MRTDown-authored factual data under `CC-BY-4.0`. The source policy and
-attribution notice are in `docs/plans/active/station-layout-data.md` and
-`LICENSE-DATA.md`.
-
-Evidence may contain or link to third-party posts, articles, source text,
-government source material, or direct report text. Those upstream materials are
-not licensed by MRTDown. Recurring evidence source classes are recorded in
-`data/rights/source-registry.json` so generated attribution artifacts can
-preserve source-specific notices.
-
-## Evidence Ingest
-
-Webhook evidence payloads use the shared schemas in `@mrtdown/ingest-contracts`
-and can be processed through `@mrtdown/triage`:
+The triage tools use AI models to turn source evidence into issue records. Set
+`MESSAGE` to a JSON payload matching the
+[shared webhook schemas](packages/ingest-contracts/README.md), then run:
 
 ```bash
 npm run ingest:webhook
 ```
 
-Set `MESSAGE` to an `IngestPayload` JSON string before running the command.
-`fixtures/ingest/crowd-report.json` is a valid crowd-report sample for manual
-workflow dispatch testing.
+[The triage guide](packages/triage/README.md) covers crowd reports, targeted
+repairs, and model setup. `fixtures/ingest/crowd-report.json` is a sample payload.
 
-Model-dependent triage evals are intentionally separate from the deterministic
-test suite:
-
-```bash
-npm run test:eval
-```
-
-Run evals only when the package's documented environment variables are set and
-the paid model calls are intentional.
-
-Historical corrected, rejected, and successful ingestion outcomes are captured
-as a deterministic regression corpus:
+Inspect past ingestion outcomes without model calls or changes to `data/`:
 
 ```bash
 npm run triage:regressions -- --list
-npm run triage:regressions -- --case pr-346-sklrt-reingest-effect
 ```
 
-The corpus command validates and inspects cases without calling a model or
-writing canonical data. Adding `--replay` makes explicit paid model calls and
-runs semantic replay against a temporary copy of the recorded base revision;
-canonical `data/` remains untouched.
+Model evaluations (`npm run test:eval`) and regression `--replay` make paid API
+calls and require `OPENAI_API_KEY`. Regression replay uses a temporary copy of
+the recorded data revision. These checks are separate from deterministic tests.
 
-## Contributing Notes
+## Inspect GTFS schedules
 
-- Keep generated `pages-dist/`, package `dist/`, and local migration scratch
-  files out of commits unless a change explicitly updates artifact policy.
-- Keep generated data and hand-authored code in separate pull requests whenever
-  practical.
-- If documentation and code disagree, update the documentation in the same
-  change.
+Local tools can verify captured GTFS files, inspect schedules and realtime
+messages, export source timetables, and look up departures by provider trip or
+stop. See [local GTFS inspection](docs/gtfs-local-inspection.md) for commands
+and the [capture handoff](docs/gtfs-public-handoff.md) for acquiring inputs.
 
-Agent-specific repository guidance lives in `AGENTS.md`.
+Inspection preserves provider IDs and leaves canonical data unchanged.
+Generating and publishing scheduled arrival data still requires approved
+mappings, verified source coverage, checks for changes between captures, and
+licensing and publication review. Keep raw captures and generated reports
+outside `data/` and Git pending that review.
 
-GTFS snapshot inspection and source departure lookup are available locally; see
-[local GTFS inspection](docs/gtfs-local-inspection.md).
+## Work on the tools
+
+The packages separate data definitions, file access, and evidence processing:
+
+| Package | Purpose and dependencies |
+| --- | --- |
+| `core` | Schemas, time helpers, and state helpers; independent of the other packages. |
+| `ingest-contracts` | Webhook payload schemas; independent of the other packages. |
+| `fs` | Read, write, validate, and export files; depends on `core`. |
+| `triage` | Process evidence and replay outcomes; depends on `core`, `fs`, and `ingest-contracts`. |
+| `cli` | Provide command-line access to the tools; depends on `core`, `fs`, and `triage`. |
+
+Run the repository checks and deterministic tests before committing:
+
+```bash
+npm run check  # Lint, package boundaries, and documentation links
+npm test       # Deterministic tests; generates fixtures first
+```
+
+`npm run lint` runs lint checks alone. Package-specific build and test commands
+are listed in [package.json](package.json). Tests and examples use generated
+data in `fixtures/generated/data`; recorded ingestion cases live in
+`fixtures/triage-regressions`.
+
+Keep generated output out of commits and separate bulk data changes from code
+changes where practical. See [AGENTS.md](AGENTS.md) for contribution rules and
+[the plans index](docs/plans/README.md) for active work and migration history.
+
+## Licenses and sources
+
+MRTDown-authored data and export metadata use
+[CC-BY-4.0](LICENSE-DATA.md). Code, scripts, tooling, and documentation use the
+[MIT License](LICENSE-CODE.md).
+
+Station exits contain LTA data under the Singapore Open Data Licence v1.0.
+Observed platform facts and recorded inferences follow the
+[station layout source policy](docs/plans/active/station-layout-data.md);
+MRTDown's own curation and metadata use CC-BY-4.0. The
+[data license](LICENSE-DATA.md) contains the attribution notices and scope.
+
+Third-party evidence retains its upstream rights and terms. The
+[source registry](data/rights/source-registry.json) records recurring source
+classes and attribution requirements; MRTDown's license does not relicense
+those materials.
