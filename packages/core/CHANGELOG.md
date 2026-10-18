@@ -1,5 +1,12 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.38
+
+### Minor Changes
+
+- f4ea68c: Add optional boarding-only departure queries that require pickup permission and a
+  later permitted alighting stop, while preserving raw source inspection by default.
+
 ## 2.0.0-alpha.37
 
 ### Minor Changes

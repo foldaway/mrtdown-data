@@ -1,5 +1,29 @@
 # @mrtdown/cli
 
+## 2.0.0-alpha.45
+
+### Minor Changes
+
+- f4ea68c: Add optional boarding-only departure queries that require pickup permission and a
+  later permitted alighting stop, while preserving raw source inspection by default.
+- 8592931: Optionally report exact unassigned active source trip dates after assignment
+  validation, preserving calendar exceptions and keeping publication eligibility off.
+- c58e23b: Check supplied trip assignments against a verified local capture and canonical
+  topology, producing reproducible provenance and count reports while keeping
+  publication gated.
+
+### Patch Changes
+
+- Updated dependencies [f4ea68c]
+- Updated dependencies [01a0639]
+- Updated dependencies [e632cfd]
+- Updated dependencies [7b1a02c]
+- Updated dependencies [8592931]
+- Updated dependencies [c58e23b]
+  - @mrtdown/core@2.0.0-alpha.38
+  - @mrtdown/fs@2.0.0-alpha.42
+  - @mrtdown/triage@2.0.0-alpha.49
+
 ## 2.0.0-alpha.44
 
 ### Patch Changes

@@ -9,6 +9,7 @@
     "@mrtdown/ingest-contracts": "2.0.0-alpha.23"
   },
   "changesets": [
+    "boarding-departure-queries",
     "bright-crowds-share",
     "bright-dates-connect",
     "calm-crowds-report",
@@ -18,6 +19,7 @@
     "clear-patterns-connect",
     "clear-stops-correspond",
     "closed-exits-update",
+    "combined-trip-assignments",
     "current-platforms-board",
     "free-crowd-report-hosts",
     "fresh-crowd-arrivals",
@@ -26,6 +28,7 @@
     "gtfs-departure-inspection",
     "gtfs-drift-hour-precision",
     "gtfs-stop-departures",
+    "interchange-parent-identity",
     "local-gtfs-inspector",
     "neat-platforms-observe",
     "platform-inference-provenance",
@@ -43,11 +46,13 @@
     "scheduled-stop-times",
     "scheduled-trip-service-dates",
     "scheduled-trip-times",
+    "scoped-assignment-proposals",
     "scoped-gtfs-candidate-dates",
     "scoped-gtfs-review-draft",
     "scoped-review-blockers",
     "silly-doors-count",
     "soft-articles-reflect",
+    "source-trip-date-coverage",
     "station-code-date-boundaries",
     "station-discovery-metadata",
     "station-first-last-trains",
@@ -57,6 +62,7 @@
     "steady-routes-operate",
     "tame-cycles-smile",
     "tough-reports-check",
+    "verified-trip-assignments",
     "wise-trains-arrive"
   ]
 }
