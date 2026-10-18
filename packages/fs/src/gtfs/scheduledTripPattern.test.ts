@@ -1,6 +1,11 @@
+import {
+  bindScheduledTripPattern,
+  type ScheduledTripTimes,
+} from '@mrtdown/core';
 import { describe, expect, it } from 'vitest';
 import type { CsvRow } from './schedule.js';
 import {
+  validateScheduledTripPatternBoarding,
   validateScheduledTripPatternDateScope,
   validateScheduledTripPatternReferences,
   validateScheduledTripPatternSourceStops,
@@ -111,6 +116,70 @@ function sourceFixture() {
   ]);
   return { input: scope(), canonical: datedTopology(), stops };
 }
+
+function boardingFixture() {
+  const binding = scope().binding;
+  const trip: ScheduledTripTimes = {
+    providerTripId: 'T',
+    providerRouteId: 'R',
+    providerCalendarId: 'C',
+    stopTimes: binding.occurrences.map((occurrence, index) => ({
+      ...occurrence,
+      providerTripId: 'T',
+      arrivalSeconds: index === 1 ? null : 86400 + index * 1800,
+      departureSeconds: index === 1 ? null : 86400 + index * 1800,
+      pickupType: index === 0 ? 1 : 0,
+      dropOffType: 3,
+      timepoint: index === 1 ? 0 : 1,
+    })),
+  };
+  return { trip, binding, canonical: topology() };
+}
+
+describe('validateScheduledTripPatternBoarding', () => {
+  it('preserves source timing and access rules, allowing no-pickup visits and final alighting-only alternatives', () => {
+    const { trip, binding, canonical } = boardingFixture();
+    canonical.stations[0].platforms[1].boardingStatus = 'alighting_only';
+    const before = JSON.stringify({ trip, binding, canonical });
+    expect(
+      validateScheduledTripPatternBoarding(trip, binding, canonical),
+    ).toEqual(bindScheduledTripPattern(trip, binding));
+    expect(JSON.stringify({ trip, binding, canonical })).toBe(before);
+  });
+
+  it('checks every platform alternative and repeated occurrence, including pickup by arrangement', () => {
+    const { trip, binding, canonical } = boardingFixture();
+    canonical.stations[0].platforms[1].boardingStatus = 'alighting_only';
+    for (const pickup of [0, 2, 3] as const) {
+      trip.stopTimes[0].pickupType = pickup;
+      expect(() =>
+        validateScheduledTripPatternBoarding(trip, binding, canonical),
+      ).toThrow('occurrence 0 conflicts with platform B');
+    }
+    trip.stopTimes[0].pickupType = 1;
+    canonical.stations[0].platforms[1].boardingStatus = 'not_in_service';
+    expect(() =>
+      validateScheduledTripPatternBoarding(trip, binding, canonical),
+    ).toThrow('occurrence 0 conflicts with platform B');
+    binding.pattern.stops[0].platformIds = ['A'];
+    expect(() =>
+      validateScheduledTripPatternBoarding(trip, binding, canonical),
+    ).toThrow('occurrence 2 conflicts with platform B');
+  });
+
+  it('rejects invalid canonical references and mismatched literal source occurrences before returning a result', () => {
+    const { trip, binding, canonical } = boardingFixture();
+    binding.occurrences[0].stopSequence = '01';
+    expect(() =>
+      validateScheduledTripPatternBoarding(trip, binding, canonical),
+    ).toThrow('source occurrence 0 differs');
+    binding.occurrences[0].stopSequence = trip.stopTimes[0].stopSequence;
+    canonical.stations[0].platforms[1].serviceIds = ['OTHER'];
+    expect(() =>
+      validateScheduledTripPatternBoarding(trip, binding, canonical),
+    ).toThrow('excludes service');
+  });
+});
 
 describe('validateScheduledTripPatternSourceStops', () => {
   it('retains complete platform sets and repeated visits, including interchange parents identified through another line', () => {

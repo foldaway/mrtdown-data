@@ -539,6 +539,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added per-trip current boarding checks for supplied canonical
+  bindings. Every platform alternative must support the occurrence's pickup rule;
+  repeated visits are checked separately and the existing final alighting rule
+  remains intact. Literal source keys and canonical references validate before a
+  bound trip returns. See [boarding checks](../../gtfs-scheduled-trip-patterns.md#current-platform-boarding-checks).
+  Historical allocation, date/source/calendar checks, agency/operator review,
+  mapping approval and publication remain separate gates.
+
 - 2026-10-18: Added source-stop correspondence checks for supplied binding scopes.
   Child and parent codes must identify the supplied station on every scoped date;
   literal platform labels must match the complete canonical alternative set.

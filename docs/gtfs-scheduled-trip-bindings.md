@@ -47,6 +47,9 @@ For a date-scoped binding,
 [`validateScheduledTripPatternSourceStops`](gtfs-scheduled-trip-patterns.md#source-stop-correspondence)
 adds canonical path/date checks and verifies station codes, parent identity and the
 complete source platform-label set against the supplied capture's stop rows.
+[`validateScheduledTripPatternBoarding`](gtfs-scheduled-trip-patterns.md#current-platform-boarding-checks)
+checks the bound source pickup rules against every proposed platform's current
+boarding status without changing source access rules or inferring historical allocation.
 
 A read-only compatibility check used the verified October capture and the
 canonical commit/topology recorded in the existing NEL proposal packet. All 14
