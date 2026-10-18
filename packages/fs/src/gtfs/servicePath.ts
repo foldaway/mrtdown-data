@@ -31,15 +31,10 @@ export function matchServicePath(
     return undefined;
   }
   for (let start = 0; start < path.length - 1; start++) {
-    if (
-      sequence.every(
-        (id, index) =>
-          id === path[(start + index) % (path.length - 1)].stationId,
-      )
-    ) {
-      segments.push(
-        sequence.map((_, index) => path[(start + index) % (path.length - 1)]),
-      );
+    const rotatedPath = [...path.slice(start), ...path.slice(1, start + 1)];
+    const segment = rotatedPath.slice(0, sequence.length);
+    if (sequence.every((id, index) => id === segment[index].stationId)) {
+      segments.push(segment);
     }
   }
   if (segments.length) {

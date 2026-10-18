@@ -143,6 +143,31 @@ describe('validateScheduledTripPatternDateScope', () => {
     }
   });
 
+  it('preserves the closing occurrence display code when a loop rotation crosses the boundary', () => {
+    const canonical = datedTopology();
+    canonical.services[0].revisions[0].stations[2].displayCode = 'S2';
+    canonical.stations[0].stationCodes[0].endedAt = '2026-01-02';
+    canonical.stations[0].stationCodes.push({
+      lineId: 'L',
+      code: 'S2',
+      startedAt: '2026-01-02',
+      endedAt: null,
+    });
+
+    expect(() =>
+      validateScheduledTripPatternDateScope(
+        scope(['D', 'S', 'D'], ['2026-01-01']),
+        canonical,
+      ),
+    ).toThrow('has active station codes');
+    expect(
+      validateScheduledTripPatternDateScope(
+        scope(['D', 'S', 'D'], ['2026-01-02']),
+        canonical,
+      ).serviceDates,
+    ).toEqual(['2026-01-02']);
+  });
+
   it('rejects unordered paths, rotation of open paths and more than one canonical circuit', () => {
     expect(() =>
       validateScheduledTripPatternDateScope(scope(['S', 'S']), datedTopology()),

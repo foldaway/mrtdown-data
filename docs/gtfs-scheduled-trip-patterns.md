@@ -65,6 +65,8 @@ contiguous short working, or a bounded rotation of an explicitly closed loop.
 Open paths cannot rotate, repeated occurrences are preserved, and trips cannot
 exceed the canonical single circuit. Exact/contiguous matches take precedence
 over rotations, using the same matching rules as reconciliation.
+Rotations keep the explicit closing occurrence and its display code when crossing
+the loop boundary before continuing with the next station.
 
 Every supplied service date must fall within the selected revision's period.
 On each date, at least one complete matching segment must have active canonical
