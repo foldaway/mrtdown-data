@@ -1,5 +1,18 @@
 # @mrtdown/triage
 
+## 2.0.0-alpha.49
+
+### Patch Changes
+
+- Updated dependencies [f4ea68c]
+- Updated dependencies [01a0639]
+- Updated dependencies [e632cfd]
+- Updated dependencies [7b1a02c]
+- Updated dependencies [8592931]
+- Updated dependencies [c58e23b]
+  - @mrtdown/core@2.0.0-alpha.38
+  - @mrtdown/fs@2.0.0-alpha.42
+
 ## 2.0.0-alpha.48
 
 ### Patch Changes

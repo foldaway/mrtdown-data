@@ -1,5 +1,29 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.42
+
+### Minor Changes
+
+- f4ea68c: Add optional boarding-only departure queries that require pickup permission and a
+  later permitted alighting stop, while preserving raw source inspection by default.
+- 01a0639: Validate supplied trip assignments together against one source timetable and
+  canonical topology, including calendar activity, disjoint dates, source stops,
+  platform boarding rules and route/operator coverage.
+- 7b1a02c: Prepare validated trip assignment proposals from matched scoped mapping decisions,
+  preserving source occurrences, platform alternatives and unresolved coverage.
+- 8592931: Optionally report exact unassigned active source trip dates after assignment
+  validation, preserving calendar exceptions and keeping publication eligibility off.
+- c58e23b: Check supplied trip assignments against a verified local capture and canonical
+  topology, producing reproducible provenance and count reports while keeping
+  publication gated.
+
+### Patch Changes
+
+- e632cfd: Validate interchange parent station identity independently of the child's service
+  date, while retaining dated child-code and canonical service checks.
+- Updated dependencies [f4ea68c]
+  - @mrtdown/core@2.0.0-alpha.38
+
 ## 2.0.0-alpha.41
 
 ### Minor Changes
