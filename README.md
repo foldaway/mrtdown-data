@@ -1,11 +1,10 @@
 # mrtdown-data
 
-This repository maintains MRTDown's reviewed data for Singapore's rail
-network: stations, services, station layouts, and records of disruptions,
-maintenance, and infrastructure issues.
+Station, service, and layout data for Singapore's rail network, plus records
+of disruptions, maintenance, and infrastructure issues.
+
 Use the tools here to inspect records, validate changes, process evidence, and
-build data exports for applications. [mrtdown-site](https://github.com/foldaway/mrtdown-site)
-imports the published exports and serves the runtime API.
+build data exports for applications.
 
 ## Get started
 
@@ -66,8 +65,9 @@ test data appears under `fixtures/` in the same bundle.
 
 For relevant changes, CI builds branch and pull request previews as temporary
 artifacts. The [Pages deployment workflow](.github/workflows/pages-deploy.yml)
-publishes from `main`, then asks `mrtdown-site` to import the new archive. See
-the workflow for the required site URL and token secrets.
+publishes from `main`, then asks [mrtdown-site](https://github.com/foldaway/mrtdown-site)
+to import the new archive. The site serves the runtime API. See the workflow
+for the required site URL and token secrets.
 
 ## Process evidence
 
