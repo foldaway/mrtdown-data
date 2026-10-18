@@ -76,7 +76,7 @@ export function scheduleTopologyProjection(input: {
   };
 }
 
-export async function buildScheduleTopologyFingerprint(dataDir: string) {
+export async function readScheduleTopology(dataDir: string) {
   const [operators, lines, stations, services] = await Promise.all([
     listEntities(dataDir, 'operator'),
     listEntities(dataDir, 'line'),
@@ -93,12 +93,16 @@ export async function buildScheduleTopologyFingerprint(dataDir: string) {
       'Canonical topology requires operators, lines, stations and services',
     );
   }
-  const projection = scheduleTopologyProjection({
+  return scheduleTopologyProjection({
     operators: operators.map((record) => record.value),
     lines: lines.map((record) => record.value),
     stations: stations.map((record) => record.value),
     services: services.map((record) => record.value),
   });
+}
+
+export async function buildScheduleTopologyFingerprint(dataDir: string) {
+  const projection = await readScheduleTopology(dataDir);
   return {
     projectionVersion: projection.projectionVersion,
     sha256: hashBytes(Buffer.from(JSON.stringify(projection))),

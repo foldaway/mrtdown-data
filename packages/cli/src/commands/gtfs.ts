@@ -1,3 +1,4 @@
+import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import {
   buildScheduleTopologyFingerprint,
@@ -5,6 +6,7 @@ import {
   inspectGtfsDepartures,
   inspectGtfsDirectory,
   inspectGtfsTimetable,
+  inspectGtfsTripAssignments,
 } from '@mrtdown/fs';
 import { readOption } from '../args.js';
 import type { CliIO, GlobalOptions } from '../types.js';
@@ -93,13 +95,34 @@ export async function runGtfs(
       resolve(globals.cwd, file ?? ''),
       resolve(globals.cwd, capture ?? ''),
     );
+  } else if (command === 'validate-assignments') {
+    const file = readOption(args, '--file', { required: true });
+    const capture = readOption(args, '--capture', { required: true });
+    const assignments = readOption(args, '--assignments', { required: true });
+    const canonicalCommit = readOption(args, '--canonical-commit', {
+      required: true,
+    });
+    if (args.length) {
+      throw new Error(`Unexpected GTFS arguments: ${args.join(' ')}`);
+    }
+    report = await inspectGtfsTripAssignments(
+      resolve(globals.cwd, file ?? ''),
+      resolve(globals.cwd, capture ?? ''),
+      {
+        dataDir: globals.dataDir,
+        canonicalCommit: canonicalCommit ?? '',
+        assignments: JSON.parse(
+          await readFile(resolve(globals.cwd, assignments ?? ''), 'utf8'),
+        ),
+      },
+    );
   } else if (command === 'topology') {
     if (args.length)
       throw new Error(`Unexpected GTFS arguments: ${args.join(' ')}`);
     report = await buildScheduleTopologyFingerprint(globals.dataDir);
   } else {
     throw new Error(
-      'Expected gtfs inspect, gtfs departures, gtfs timetable or gtfs topology',
+      'Expected gtfs inspect, gtfs departures, gtfs timetable, gtfs validate-assignments or gtfs topology',
     );
   }
   const json = `${JSON.stringify(report, null, command === 'timetable' ? undefined : 2)}\n`;
