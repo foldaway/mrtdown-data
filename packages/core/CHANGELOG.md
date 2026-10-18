@@ -1,5 +1,25 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.37
+
+### Minor Changes
+
+- 6f9f2d8: Resolve source-trip pattern bindings on explicit service dates, rejecting active
+  mapping gaps and overlapping or invalid scopes while retaining canonical
+  identities and source timing.
+- 666afa7: Add canonical scheduled-trip pattern references and a topology checker that
+  validates station, line, service, revision and every platform alternative.
+- 9ca6d16: Query departure windows with date-scoped canonical trip patterns, retaining source
+  occurrence identities and platform alternatives while rejecting mapping gaps or
+  conflicts before filtering.
+- 2cdf063: Bind canonical trip patterns to exact source occurrences while preserving source
+  timing, access restrictions and platform alternatives.
+
+### Patch Changes
+
+- 76e42fb: Require real ISO civil dates for service revision boundaries so canonical data
+  validation agrees with scheduled-trip date checks.
+
 ## 2.0.0-alpha.36
 
 ### Minor Changes
