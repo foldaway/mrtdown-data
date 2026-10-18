@@ -8,7 +8,7 @@ import {
   inspectGtfsTimetable,
   inspectGtfsTripAssignments,
 } from '@mrtdown/fs';
-import { readOption } from '../args.js';
+import { hasFlag, readOption } from '../args.js';
 import type { CliIO, GlobalOptions } from '../types.js';
 import { writeTextFile } from './manifest.js';
 
@@ -96,6 +96,7 @@ export async function runGtfs(
       resolve(globals.cwd, capture ?? ''),
     );
   } else if (command === 'validate-assignments') {
+    const coverage = hasFlag(args, '--coverage');
     const file = readOption(args, '--file', { required: true });
     const capture = readOption(args, '--capture', { required: true });
     const assignments = readOption(args, '--assignments', { required: true });
@@ -110,6 +111,7 @@ export async function runGtfs(
       resolve(globals.cwd, capture ?? ''),
       {
         dataDir: globals.dataDir,
+        coverage,
         canonicalCommit: canonicalCommit ?? '',
         assignments: JSON.parse(
           await readFile(resolve(globals.cwd, assignments ?? ''), 'utf8'),

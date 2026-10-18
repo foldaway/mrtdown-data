@@ -26,10 +26,11 @@ const args = [
   commit,
 ];
 
-async function fixture(root: string) {
+async function fixture(root: string, overrides: Record<string, string> = {}) {
   const capture = await gtfsFixture(root, {
     'stops.txt':
       'stop_id,stop_name,stop_code,location_type,parent_station,platform_code\nS,Station,S,1,,\nP,Platform,S,0,S,B / A\n',
+    ...overrides,
   });
   const name = { 'en-SG': 'Synthetic', 'zh-Hans': null, ms: null, ta: null };
   const records = {
@@ -183,6 +184,7 @@ describe('GTFS assignment validation CLI', () => {
         tripDateCount: 2,
         generationEligible: false,
       });
+      expect(report).not.toHaveProperty('coverage');
       const normalized = ScheduledTripAssignmentDocumentSchema.parse(document);
       expect(report.assignmentsSha256).toBe(
         hashBytes(Buffer.from(JSON.stringify(normalized.assignments))),
@@ -219,7 +221,7 @@ describe('GTFS assignment validation CLI', () => {
         stdout: (text: string) => output.push(text),
         stderr: (text: string) => errors.push(text),
       };
-      const writingArgs = [...args, '--write', 'report.json'];
+      const writingArgs = [...args, '--coverage', '--write', 'report.json'];
       await fixture(root);
       expect(await runCli([...writingArgs, '--unexpected'], io, root)).toBe(1);
       expect(errors.at(-1)).toContain('Unexpected GTFS');
@@ -322,6 +324,88 @@ describe('GTFS assignment validation CLI', () => {
         );
       }
       expect(output).toEqual([]);
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
+  it('reports exact grouped date gaps with exceptions, and separates complete active coverage from inactive trips and publication', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'gtfs-assignment-coverage-'));
+    try {
+      const weekly =
+        'service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date\nC,0,0,0,1,1,1,0,20260101,20260103\n';
+      const exceptions =
+        'service_id,date,exception_type\nC,20260102,2\nC,20260104,1\n';
+      const { document } = await fixture(root, {
+        'calendar.txt': weekly,
+        'calendar_dates.txt': exceptions,
+      });
+      document.assignments[0].scope.serviceDates = ['2026-01-01'];
+      const current = structuredClone(document.assignments[0]);
+      current.scope.binding.providerTripId = 'current';
+      current.scope.binding.occurrences = [
+        { providerStopId: 'P', stopSequence: '1' },
+        { providerStopId: 'P', stopSequence: '2' },
+      ];
+      document.assignments.push(current);
+      await writeFile(join(root, 'assignments.json'), JSON.stringify(document));
+      const output: string[] = [],
+        errors: string[] = [];
+      const io = {
+        stdout: (text: string) => output.push(text),
+        stderr: (text: string) => errors.push(text),
+      };
+      expect(await runCli([...args, '--coverage'], io, root)).toBe(0);
+      const partial = JSON.parse(output[0]);
+      expect(partial.coverage).toEqual({
+        sourceTripCount: 2,
+        inactiveTripCount: 0,
+        sourceTripDateCount: 6,
+        assignedTripDateCount: 2,
+        missingTripDateCount: 4,
+        tripDateCoverageComplete: false,
+        gaps: [
+          {
+            providerCalendarId: 'C',
+            providerTripIds: ['T,late', 'current'],
+            serviceDates: ['2026-01-03', '2026-01-04'],
+          },
+        ],
+      });
+      document.assignments.reverse();
+      await writeFile(join(root, 'assignments.json'), JSON.stringify(document));
+      expect(await runCli([...args, '--coverage'], io, root)).toBe(0);
+      expect(JSON.parse(output[1]).coverage).toEqual(partial.coverage);
+
+      const complete = await fixture(root, {
+        'calendar.txt': weekly,
+        'calendar_dates.txt': `${exceptions}C0,20260101,2\n`,
+        'trips.txt':
+          'trip_id,route_id,service_id\n"T,late",R,C\ncurrent,R,C0\n',
+      });
+      complete.document.assignments[0].scope.serviceDates = [
+        '2026-01-01',
+        '2026-01-03',
+        '2026-01-04',
+      ];
+      await writeFile(
+        join(root, 'assignments.json'),
+        JSON.stringify(complete.document),
+      );
+      expect(await runCli([...args, '--coverage'], io, root)).toBe(0);
+      expect(JSON.parse(output[2])).toMatchObject({
+        generationEligible: false,
+        coverage: {
+          sourceTripCount: 2,
+          inactiveTripCount: 1,
+          sourceTripDateCount: 3,
+          assignedTripDateCount: 3,
+          missingTripDateCount: 0,
+          tripDateCoverageComplete: true,
+          gaps: [],
+        },
+      });
+      expect(errors).toEqual([]);
     } finally {
       await rm(root, { recursive: true, force: true });
     }
