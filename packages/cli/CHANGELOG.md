@@ -1,5 +1,25 @@
 # @mrtdown/cli
 
+## 2.0.0-alpha.43
+
+### Minor Changes
+
+- 9be8340: Export a complete source timetable from a verified local GTFS capture, retaining
+  capture provenance, table hashes and a reproducible timetable hash.
+
+### Patch Changes
+
+- Updated dependencies [6f9f2d8]
+- Updated dependencies [9be8340]
+- Updated dependencies [76e42fb]
+- Updated dependencies [666afa7]
+- Updated dependencies [9ca6d16]
+- Updated dependencies [2cdf063]
+- Updated dependencies [76e42fb]
+  - @mrtdown/core@2.0.0-alpha.37
+  - @mrtdown/fs@2.0.0-alpha.40
+  - @mrtdown/triage@2.0.0-alpha.47
+
 ## 2.0.0-alpha.42
 
 ### Minor Changes

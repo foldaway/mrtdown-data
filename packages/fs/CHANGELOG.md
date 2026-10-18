@@ -1,5 +1,26 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.40
+
+### Minor Changes
+
+- 9be8340: Export a complete source timetable from a verified local GTFS capture, retaining
+  capture provenance, table hashes and a reproducible timetable hash.
+- 666afa7: Add canonical scheduled-trip pattern references and a topology checker that
+  validates station, line, service, revision and every platform alternative.
+- 76e42fb: Validate canonical trip-pattern paths and every binding service date against
+  service-revision and station-code periods, preserving short workings and bounded
+  loop rotations without mixing evidence from different alignments.
+
+### Patch Changes
+
+- Updated dependencies [6f9f2d8]
+- Updated dependencies [76e42fb]
+- Updated dependencies [666afa7]
+- Updated dependencies [9ca6d16]
+- Updated dependencies [2cdf063]
+  - @mrtdown/core@2.0.0-alpha.37
+
 ## 2.0.0-alpha.39
 
 ### Minor Changes
