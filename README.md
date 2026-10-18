@@ -72,7 +72,8 @@ for the required site URL and token secrets.
 
 ## Process evidence
 
-The triage tools use AI models to turn source evidence into issue records. Set
+The triage tools use AI models to turn source evidence into issue records.
+Webhook ingestion requires `OPENAI_API_KEY` and makes paid model calls. Set
 `MESSAGE` to a JSON payload matching the
 [shared webhook schemas](packages/ingest-contracts/README.md), then run:
 
