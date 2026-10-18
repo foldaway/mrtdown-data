@@ -16,7 +16,9 @@
     "civil-revision-dates",
     "clear-exit-sources",
     "clear-patterns-connect",
+    "clear-stops-correspond",
     "closed-exits-update",
+    "current-platforms-board",
     "free-crowd-report-hosts",
     "fresh-crowd-arrivals",
     "grouped-platform-review",
@@ -52,6 +54,7 @@
     "steady-lines-update",
     "steady-occurrences-connect",
     "steady-paths-apply",
+    "steady-routes-operate",
     "tame-cycles-smile",
     "tough-reports-check",
     "wise-trains-arrive"

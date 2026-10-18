@@ -1,5 +1,16 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.41
+
+### Minor Changes
+
+- bdd5f75: Validate date-scoped source stops against canonical station codes, parent identity
+  and complete platform alternatives without inferring mapping approval.
+- fe22a1b: Check source pickup rules against every proposed canonical platform's current
+  boarding status while preserving timing, access rules and platform alternatives.
+- ce4cc7b: Validate supplied source route and agency aliases against canonical trip patterns
+  and line operator periods on every scoped service date.
+
 ## 2.0.0-alpha.40
 
 ### Minor Changes
