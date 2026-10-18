@@ -3,6 +3,7 @@ import {
   ScheduledTripPatternSchema,
 } from '@mrtdown/core';
 import z from 'zod';
+import type { CsvRow } from './schedule.js';
 import { matchServicePath } from './servicePath.js';
 import type { scheduleTopologyProjection } from './topology.js';
 
@@ -149,6 +150,124 @@ export function validateScheduledTripPatternDateScope(
     if (!supported) {
       throw new Error(
         `No complete path of service revision ${service.id}/${revision.id} has active station codes on ${date}`,
+      );
+    }
+  }
+  return scope;
+}
+
+function requireSourceStop(rows: readonly CsvRow[], id: string) {
+  const matches = rows.filter((row) => row.stop_id === id);
+  if (matches.length !== 1) {
+    throw new Error(`Expected one source stop: ${id}; found ${matches.length}`);
+  }
+  return matches[0];
+}
+
+function validateSourceStationCode(
+  code: string,
+  stationId: string,
+  dates: readonly string[],
+  topology: ReturnType<typeof scheduleTopologyProjection>,
+  lineId?: string,
+) {
+  const candidates = topology.stations.map((station) => ({
+    id: station.id,
+    periods: station.stationCodes
+      .filter(
+        (item) => item.code === code && (!lineId || item.lineId === lineId),
+      )
+      .map((item) =>
+        canonicalPeriod.parse({ start: item.startedAt, end: item.endedAt }),
+      ),
+  }));
+  for (const date of dates) {
+    const active = candidates.filter((candidate) =>
+      candidate.periods.some((period) => effective(date, period)),
+    );
+    if (active.length !== 1 || active[0].id !== stationId) {
+      throw new Error(
+        `Source station code ${code} does not uniquely identify ${stationId} on ${date}`,
+      );
+    }
+  }
+}
+
+/** Check supplied stop correspondence; literal trip binding and approval remain separate. */
+export function validateScheduledTripPatternSourceStops(
+  input: unknown,
+  sourceStops: readonly CsvRow[],
+  topology: ReturnType<typeof scheduleTopologyProjection>,
+) {
+  const scope = validateScheduledTripPatternDateScope(input, topology);
+  const { pattern, occurrences } = scope.binding;
+  for (const [index, occurrence] of occurrences.entries()) {
+    const source = requireSourceStop(sourceStops, occurrence.providerStopId);
+    if (
+      (source.location_type && source.location_type !== '0') ||
+      !source.stop_code
+    ) {
+      throw new Error(
+        `Source stop ${source.stop_id} requires a platform and station code`,
+      );
+    }
+    const stop = pattern.stops[index];
+    validateSourceStationCode(
+      source.stop_code,
+      stop.stationId,
+      scope.serviceDates,
+      topology,
+      pattern.lineId,
+    );
+    if (source.parent_station) {
+      const parent = requireSourceStop(sourceStops, source.parent_station);
+      if (parent.location_type !== '1' || parent.parent_station) {
+        throw new Error(`Source parent ${parent.stop_id} must be a station`);
+      }
+      // Interchange parents can identify the same station through another line's code.
+      validateSourceStationCode(
+        parent.stop_code || parent.stop_id,
+        stop.stationId,
+        scope.serviceDates,
+        topology,
+      );
+    }
+    const labels = (source.platform_code ?? '')
+      .split('/')
+      .map((label) => label.trim());
+    if (
+      labels.some((label) => !label) ||
+      new Set(labels).size !== labels.length
+    ) {
+      throw new Error(
+        `Source stop ${source.stop_id} requires distinct nonempty platform labels`,
+      );
+    }
+    const station = uniqueReference(
+      topology.stations,
+      stop.stationId,
+      'station',
+    );
+    const platformIds = labels
+      .map((label) => {
+        const matches = station.platforms.filter(
+          (platform) =>
+            platform.lineId === pattern.lineId && platform.label === label,
+        );
+        if (matches.length !== 1) {
+          throw new Error(
+            `Source stop ${source.stop_id}: expected one platform for label ${label}; found ${matches.length}`,
+          );
+        }
+        return matches[0].id;
+      })
+      .sort();
+    if (
+      platformIds.length !== stop.platformIds.length ||
+      platformIds.some((id, index) => id !== stop.platformIds[index])
+    ) {
+      throw new Error(
+        `Source stop ${source.stop_id} does not match the complete canonical platform set`,
       );
     }
   }

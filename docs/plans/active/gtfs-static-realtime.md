@@ -539,6 +539,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added source-stop correspondence checks for supplied binding scopes.
+  Child and parent codes must identify the supplied station on every scoped date;
+  literal platform labels must match the complete canonical alternative set.
+  Ambiguous identity, partial groups and malformed source references fail. See
+  [source stop correspondence](../../gtfs-scheduled-trip-patterns.md#source-stop-correspondence).
+  Literal trip/calendar binding, agency/operator review, pickup compatibility,
+  mapping approval and publication remain separate gates.
+
 - 2026-10-18: Added canonical path/date checks for supplied binding scopes.
   Ordered full paths, short workings and bounded closed-loop rotations must fit
   the selected revision, and every scoped date must have revision coverage and
