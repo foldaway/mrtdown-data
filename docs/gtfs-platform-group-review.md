@@ -102,6 +102,10 @@ The optional [blocker report](gtfs-review-blockers.md) locates exact unresolved
 date cells, missing group members and conflicting occurrences. Add `--blockers`
 to the command below to produce it alongside the existing outputs.
 
+Add `--assignments` to also export the matched trip assignment document and a
+verified coverage report. See [assignment export](gtfs-trip-assignment-validation.md#export-assignments-with-a-review-packet)
+for the files, validation behavior and remaining approval gates.
+
 ## Reproduce
 
 After materializing the [verified source and receipt](gtfs-public-handoff.md),

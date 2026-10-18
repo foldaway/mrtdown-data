@@ -8,11 +8,13 @@ import {
 import {
   buildScopedReviewBlockers,
   createGroupedScopedReconciliationDraft,
+  createScheduledTripAssignmentProposals,
   createScopedReconciliationDraft,
   evaluateGroupedScopedReconciliation,
   evaluateScopedReconciliation,
   groupedScopedReviewDraftSha256,
   hashBytes,
+  inspectGtfsTripAssignments,
   listEntities,
   readVerifiedCapture,
   scheduleTopologyProjection,
@@ -24,22 +26,29 @@ const [file, captureFile, pilotLineList, output, ...extra] =
 let requestedCommit;
 let platformGroups = false;
 let includeBlockers = false;
+let includeAssignments = false;
 for (let index = 0; index < extra.length; index++) {
-  if (extra[index] === '--blockers' && !includeBlockers) includeBlockers = true;
-  else if (extra[index] === '--platform-groups' && !platformGroups)
+  if (extra[index] === '--blockers' && !includeBlockers) {
+    includeBlockers = true;
+  } else if (extra[index] === '--assignments' && !includeAssignments) {
+    includeAssignments = true;
+  } else if (extra[index] === '--platform-groups' && !platformGroups) {
     platformGroups = true;
-  else if (
+  } else if (
     extra[index] === '--canonical-commit' &&
     !requestedCommit &&
     /^[a-f0-9]{40}$/.test(extra[index + 1] ?? '')
-  )
+  ) {
     requestedCommit = extra[++index];
-  else throw new Error('Unknown, duplicate or invalid scoped-review option');
+  } else {
+    throw new Error('Unknown, duplicate or invalid scoped-review option');
+  }
 }
-if (!file || !captureFile || !pilotLineList || !output)
+if (!file || !captureFile || !pilotLineList || !output) {
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments]',
   );
+}
 const createDraft = platformGroups
   ? createGroupedScopedReconciliationDraft
   : createScopedReconciliationDraft;
@@ -135,6 +144,33 @@ const files = {
 };
 if (includeBlockers)
   files['blockers.json'] = buildScopedReviewBlockers(context, full);
+let assignmentSummary;
+if (includeAssignments) {
+  const proposals = createScheduledTripAssignmentProposals(context, full);
+  const validation = await inspectGtfsTripAssignments(
+    resolve(file),
+    resolve(captureFile),
+    {
+      dataDir: join(cwd, 'data'),
+      canonicalCommit,
+      assignments: proposals.document,
+      coverage: true,
+    },
+  );
+  files['assignments.json'] = proposals.document;
+  files['assignment-validation.json'] = validation;
+  assignmentSummary = {
+    draftSha256: proposals.draftSha256,
+    assignmentsSha256: validation.assignmentsSha256,
+    assignmentCount: validation.assignmentCount,
+    tripCount: validation.tripCount,
+    tripDateCount: validation.tripDateCount,
+    sourceTripDateCount: validation.coverage.sourceTripDateCount,
+    missingTripDateCount: validation.coverage.missingTripDateCount,
+    tripDateCoverageComplete: validation.coverage.tripDateCoverageComplete,
+    generationEligible: false,
+  };
+}
 await mkdir(resolve(output));
 const digests = {};
 for (const [name, content] of Object.entries(files)) {
@@ -266,6 +302,7 @@ const summary = {
     entities,
     patternsByDateSet,
   },
+  ...(assignmentSummary ? { assignmentProposals: assignmentSummary } : {}),
   generationEligible: false,
 };
 await writeFile(
@@ -280,6 +317,7 @@ console.log(
       pilotDecisionCounts: summary.pilotDecisionCounts,
       fullEvaluation: summary.fullDraft.evaluation,
       pilotEvaluation: summary.pilotDraft.evaluation,
+      ...(assignmentSummary ? { assignmentProposals: assignmentSummary } : {}),
     },
     null,
     2,
