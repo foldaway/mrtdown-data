@@ -1,6 +1,12 @@
 import type { ScheduledTripPatternDateScope } from '../schema/ScheduledTripPatternDateScope.js';
-import type { ScheduledTripDateSelection } from './scheduledDeparturesInWindow.js';
-import { collectScheduledDeparturesInWindow } from './scheduledDepartureWindow.js';
+import type {
+  ScheduledDepartureOptions,
+  ScheduledTripDateSelection,
+} from './scheduledDeparturesInWindow.js';
+import {
+  collectScheduledDeparturesInWindow,
+  departureOccurrences,
+} from './scheduledDepartureWindow.js';
 import {
   type ScheduledTripWithPatternOnDate,
   scheduledTripWithPatternOnDate,
@@ -27,6 +33,7 @@ export type ScheduledDepartureWithPattern =
 export function scheduledDeparturesWithPatternsInWindow(
   selections: readonly ScheduledTripPatternDateSelection[],
   window: { startInstant: string; endInstant: string },
+  options: ScheduledDepartureOptions = {},
 ): ScheduledDepartureWithPattern[] {
   return collectScheduledDeparturesInWindow(selections, window, (selection) => {
     const resolved = scheduledTripWithPatternOnDate(
@@ -38,25 +45,18 @@ export function scheduledDeparturesWithPatternsInWindow(
     if (!resolved) {
       return [];
     }
-    return resolved.stopTimes.flatMap(
-      (stop): ScheduledDepartureWithPattern[] => {
-        if (stop.departureInstant === null) {
-          return [];
-        }
-        return [
-          {
-            ...stop,
-            providerRouteId: resolved.providerRouteId,
-            providerCalendarId: resolved.providerCalendarId,
-            serviceDate: resolved.serviceDate,
-            lineId: resolved.lineId,
-            serviceId: resolved.serviceId,
-            revisionId: resolved.revisionId,
-            destinationStationId: resolved.destinationStationId,
-            departureInstant: stop.departureInstant,
-          },
-        ];
-      },
+    return departureOccurrences(resolved.stopTimes, options.boardingOnly).map(
+      (stop): ScheduledDepartureWithPattern => ({
+        ...stop,
+        providerRouteId: resolved.providerRouteId,
+        providerCalendarId: resolved.providerCalendarId,
+        serviceDate: resolved.serviceDate,
+        lineId: resolved.lineId,
+        serviceId: resolved.serviceId,
+        revisionId: resolved.revisionId,
+        destinationStationId: resolved.destinationStationId,
+        departureInstant: stop.departureInstant,
+      }),
     );
   });
 }

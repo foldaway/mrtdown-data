@@ -133,6 +133,15 @@ canonical platform or splitting grouped provider stops into physical allocations
 For example, replace `--trip provider-trip-id` in the command above with
 `--stop provider-stop-id` to inspect that stop across every source trip.
 
+Add `--boarding-only` to retain only pickup occurrences with a later permitted
+alighting stop in the same trip. The full trip is checked before stop/window
+filtering, so a destination outside either selection can still support boarding.
+Final timestamps and no-pickup visits are omitted; arranged access remains explicit.
+The report records `query.boardingOnly: true`. Programmatic callers can set
+`query.boardingOnly` in `inspectGtfsDepartures`. Without this option, the report
+retains its existing raw-event shape and contents. See
+[boarding candidate rules](gtfs-scheduled-departure-windows.md#boarding-candidates-with-onward-travel).
+
 The full source schedule must pass the timing assembler before querying. Agency
 timezones must be `Asia/Singapore`; selected trips described by `frequencies.txt`
 are rejected because this lookup does not expand frequency-based schedules.

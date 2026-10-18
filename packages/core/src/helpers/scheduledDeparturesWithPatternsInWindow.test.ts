@@ -64,6 +64,28 @@ const window = {
 };
 
 describe('scheduledDeparturesWithPatternsInWindow', () => {
+  it('distinguishes an earlier boarding visit from the same station at the trip end without changing source rules', () => {
+    const input = selection('2026-01-01', [90000, 90000], 'loop');
+    input.trip.stopTimes[0].pickupType = 3;
+    const before = JSON.stringify(input);
+    const result = scheduledDeparturesWithPatternsInWindow([input], window, {
+      boardingOnly: true,
+    });
+    expect(result).toHaveLength(1);
+    expect(result[0]).toMatchObject({
+      providerTripId: 'loop',
+      stopSequence: '09007199254740992',
+      pickupType: 3,
+      stationId: 'S',
+      destinationStationId: 'S',
+      platformIds: ['A', 'B'],
+    });
+    expect(
+      scheduledDeparturesWithPatternsInWindow([input], window),
+    ).toHaveLength(2);
+    expect(JSON.stringify(input)).toBe(before);
+  });
+
   it('merges service dates with their own canonical identities, preserving coincident visits and half-open boundaries', () => {
     const selections = [
       selection('2026-01-01', [90000, 90000], 'late', 'previous'),
@@ -157,7 +179,9 @@ describe('scheduledDeparturesWithPatternsInWindow', () => {
     const scopes = outside.scopes;
     outside.scopes = [];
     expect(() =>
-      scheduledDeparturesWithPatternsInWindow([outside], window),
+      scheduledDeparturesWithPatternsInWindow([outside], window, {
+        boardingOnly: true,
+      }),
     ).toThrow('has no binding');
     outside.scopes = [...scopes, ...scopes];
     expect(() =>

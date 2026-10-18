@@ -17,7 +17,10 @@ function selection(
     stopTimes: seconds.map((time, index) => ({
       providerTripId,
       providerStopId: 'REPEATED',
-      stopSequence: index === 0 ? '09007199254740992' : '9007199254740993',
+      stopSequence:
+        index === 0
+          ? '09007199254740992'
+          : String(9007199254740992n + BigInt(index)),
       arrivalSeconds: time,
       departureSeconds: time,
       pickupType: 0,
@@ -42,6 +45,36 @@ const window = {
 };
 
 describe('scheduledDeparturesInWindow', () => {
+  it('keeps regular and arranged pickups only when a later alighting occurrence exists, even outside the window', () => {
+    const input = selection(
+      '2026-01-01',
+      [90000, 90060, 90120, 90180, 90240, 90300],
+    );
+    input.trip.stopTimes[1].pickupType = 1;
+    input.trip.stopTimes[2].pickupType = 2;
+    input.trip.stopTimes[3].pickupType = 3;
+    input.trip.stopTimes[4].dropOffType = 2;
+    input.trip.stopTimes[5].dropOffType = 1;
+    const before = JSON.stringify(input);
+    const query = { ...window, endInstant: '2026-01-01T17:03:30Z' };
+    const result = scheduledDeparturesInWindow([input], query, {
+      boardingOnly: true,
+    });
+    expect(result.map((stop) => [stop.stopSequence, stop.pickupType])).toEqual([
+      ['09007199254740992', 0],
+      ['9007199254740994', 2],
+      ['9007199254740995', 3],
+    ]);
+    expect(scheduledDeparturesInWindow([input], query)).toHaveLength(4);
+    expect(JSON.stringify(input)).toBe(before);
+    for (const stop of input.trip.stopTimes) {
+      stop.dropOffType = 1;
+    }
+    expect(
+      scheduledDeparturesInWindow([input], query, { boardingOnly: true }),
+    ).toEqual([]);
+  });
+
   it('merges previous-day and current-day departures chronologically using instant boundaries', () => {
     const previous = selection('2026-01-01', [90000, 93600], 'previous');
     const current = selection('2026-01-02', [1800, 5400], 'current');
@@ -125,9 +158,11 @@ describe('scheduledDeparturesInWindow', () => {
 
   it('rejects duplicate selections and invalid source inputs even when events fall outside the window', () => {
     const input = selection('2026-01-02', [0, 60]);
-    expect(() => scheduledDeparturesInWindow([input, input], window)).toThrow(
-      'Duplicate trip/service-date',
-    );
+    expect(() =>
+      scheduledDeparturesInWindow([input, input], window, {
+        boardingOnly: true,
+      }),
+    ).toThrow('Duplicate trip/service-date');
     input.calendar.providerCalendarId = 'OTHER';
     expect(() => scheduledDeparturesInWindow([input], window)).toThrow(
       'requires calendar C',

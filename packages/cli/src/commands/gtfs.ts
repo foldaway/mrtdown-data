@@ -59,6 +59,7 @@ export async function runGtfs(
     report = result;
     if (result.schedule?.structuralErrors.length) exitCode = 1;
   } else if (command === 'departures') {
+    const boardingOnly = hasFlag(args, '--boarding-only');
     const file = readOption(args, '--file', { required: true });
     const capture = readOption(args, '--capture', { required: true });
     const tripIds = readRepeatedOption(args, '--trip', false);
@@ -81,6 +82,7 @@ export async function runGtfs(
       {
         ...(tripIds.length ? { tripIds } : { stopIds }),
         ...(serviceDates.length ? { serviceDates } : {}),
+        boardingOnly,
         startInstant: startInstant ?? '',
         endInstant: endInstant ?? '',
       },
