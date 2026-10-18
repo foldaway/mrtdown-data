@@ -52,6 +52,19 @@ npm run data:import:lta-station-exits -- /path/to/exits.geojson
 npm run data:platforms:infer -- --write /tmp/platform-inference.json
 ```
 
+### Inspect external GTFS files
+
+Local tools can verify captured GTFS files, inspect schedules and realtime
+messages, export source timetables, and look up departures by provider trip or
+stop. See [local GTFS inspection](docs/gtfs-local-inspection.md) for commands
+and the [capture handoff](docs/gtfs-public-handoff.md) for acquiring inputs.
+
+Inspection preserves provider IDs and leaves canonical data unchanged.
+Generating and publishing scheduled arrival data still requires approved
+mappings, verified source coverage, checks for changes between captures, and
+licensing and publication review. Keep raw captures and generated reports
+outside `data/` and Git pending that review.
+
 ## Build and publish exports
 
 ```bash
@@ -91,19 +104,6 @@ npm run triage:regressions -- --list
 Model evaluations (`npm run test:eval`) and regression `--replay` make paid API
 calls and require `OPENAI_API_KEY`. Regression replay uses a temporary copy of
 the recorded data revision. These checks are separate from deterministic tests.
-
-## Inspect GTFS schedules
-
-Local tools can verify captured GTFS files, inspect schedules and realtime
-messages, export source timetables, and look up departures by provider trip or
-stop. See [local GTFS inspection](docs/gtfs-local-inspection.md) for commands
-and the [capture handoff](docs/gtfs-public-handoff.md) for acquiring inputs.
-
-Inspection preserves provider IDs and leaves canonical data unchanged.
-Generating and publishing scheduled arrival data still requires approved
-mappings, verified source coverage, checks for changes between captures, and
-licensing and publication review. Keep raw captures and generated reports
-outside `data/` and Git pending that review.
 
 ## Work on the tools
 
