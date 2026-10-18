@@ -135,17 +135,14 @@ changes where practical. See [AGENTS.md](AGENTS.md) for contribution rules and
 
 ## Licenses and sources
 
-MRTDown-authored data and export metadata use
-[CC-BY-4.0](LICENSE-DATA.md). Code, scripts, tooling, and documentation use the
-[MIT License](LICENSE-CODE.md).
+| Material | License or terms |
+| --- | --- |
+| MRTDown-authored data, curation, and export metadata | [CC-BY-4.0](LICENSE-DATA.md). |
+| Code, scripts, tooling, and documentation | [MIT License](LICENSE-CODE.md). |
+| LTA data in station exits | [Singapore Open Data Licence v1.0](LICENSE-DATA.md#singapore-open-data). |
+| Third-party evidence | Upstream rights and terms apply; MRTDown does not relicense these materials. |
 
-Station exits contain LTA data under the Singapore Open Data Licence v1.0.
 Observed platform facts and recorded inferences follow the
-[station layout source policy](docs/plans/active/station-layout-data.md);
-MRTDown's own curation and metadata use CC-BY-4.0. The
-[data license](LICENSE-DATA.md) contains the attribution notices and scope.
-
-Third-party evidence retains its upstream rights and terms. The
-[source registry](data/rights/source-registry.json) records recurring source
-classes and attribution requirements; MRTDown's license does not relicense
-those materials.
+[station layout source policy](docs/plans/active/station-layout-data.md).
+The [source registry](data/rights/source-registry.json) records recurring source
+classes and attribution requirements.
