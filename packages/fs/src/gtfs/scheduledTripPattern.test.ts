@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { validateScheduledTripPatternReferences } from './scheduledTripPattern.js';
+import {
+  validateScheduledTripPatternDateScope,
+  validateScheduledTripPatternReferences,
+} from './scheduledTripPattern.js';
 import type { scheduleTopologyProjection } from './topology.js';
 
 function topology(): ReturnType<typeof scheduleTopologyProjection> {
@@ -51,6 +54,149 @@ function pattern() {
     ],
   };
 }
+
+function datedTopology() {
+  const canonical = topology();
+  const revision = canonical.services[0].revisions[0];
+  revision.startAt = '2026-01-01';
+  revision.endAt = '2026-01-04';
+  for (const station of canonical.stations) {
+    station.stationCodes = [
+      {
+        lineId: 'L',
+        code: station.id,
+        startedAt: '2026-01-01',
+        endedAt: '2026-01-04',
+      },
+    ];
+  }
+  return canonical;
+}
+
+function scope(
+  stationIds = ['S', 'D', 'S'],
+  serviceDates = ['2026-01-01', '2026-01-03'],
+) {
+  return {
+    serviceDates,
+    binding: {
+      providerTripId: 'T',
+      pattern: {
+        ...pattern(),
+        destinationStationId: stationIds.at(-1),
+        stops: stationIds.map((stationId) => ({
+          stationId,
+          platformIds: stationId === 'S' ? ['B', 'A'] : ['Q'],
+        })),
+      },
+      occurrences: stationIds.map((stationId, index) => ({
+        providerStopId: `source-${stationId}`,
+        stopSequence: String(index + 1),
+      })),
+    },
+  };
+}
+
+describe('validateScheduledTripPatternDateScope', () => {
+  it('accepts full paths, short workings and single-circuit loop rotations without changing identity or inputs', () => {
+    const canonical = datedTopology();
+    const before = JSON.stringify(canonical);
+    for (const stations of [
+      ['S', 'D', 'S'],
+      ['S', 'D'],
+      ['D', 'S', 'D'],
+    ]) {
+      const input = scope(stations);
+      const original = JSON.stringify(input);
+      const result = validateScheduledTripPatternDateScope(input, canonical);
+      expect(
+        result.binding.pattern.stops.map((stop) => stop.stationId),
+      ).toEqual(stations);
+      expect(
+        result.binding.pattern.stops.find((stop) => stop.stationId === 'S')
+          ?.platformIds,
+      ).toEqual(['A', 'B']);
+      expect(JSON.stringify(input)).toBe(original);
+    }
+    expect(JSON.stringify(canonical)).toBe(before);
+  });
+
+  it('checks every date against inclusive starts, exclusive ends and the revision display codes on the correct line', () => {
+    for (const date of ['2025-12-31', '2026-01-04']) {
+      expect(() =>
+        validateScheduledTripPatternDateScope(
+          scope(['S', 'D'], [date]),
+          datedTopology(),
+        ),
+      ).toThrow('is inactive');
+    }
+    for (const change of [
+      { endedAt: '2026-01-03' },
+      { code: 'OTHER' },
+      { lineId: 'OTHER' },
+    ]) {
+      const canonical = datedTopology();
+      Object.assign(canonical.stations[0].stationCodes[0], change);
+      expect(() =>
+        validateScheduledTripPatternDateScope(scope(), canonical),
+      ).toThrow('has active station codes');
+    }
+  });
+
+  it('rejects unordered paths, rotation of open paths and more than one canonical circuit', () => {
+    expect(() =>
+      validateScheduledTripPatternDateScope(scope(['S', 'S']), datedTopology()),
+    ).toThrow('outside the ordered path');
+    expect(() =>
+      validateScheduledTripPatternDateScope(
+        scope(['S', 'D', 'S', 'D', 'S']),
+        datedTopology(),
+      ),
+    ).toThrow('outside the ordered path');
+    const canonical = datedTopology();
+    canonical.services[0].revisions[0].stations = ['S', 'D', 'UNUSED'].map(
+      (stationId) => ({ stationId, displayCode: stationId }),
+    );
+    expect(() =>
+      validateScheduledTripPatternDateScope(scope(['D', 'S']), canonical),
+    ).toThrow('outside the ordered path');
+  });
+
+  it('requires one whole alignment per date rather than mixing code evidence from different repeated-station segments', () => {
+    const canonical = datedTopology();
+    canonical.services[0].revisions[0].stations = [
+      { stationId: 'S', displayCode: 'S1' },
+      { stationId: 'D', displayCode: 'D1' },
+      { stationId: 'S', displayCode: 'S2' },
+      { stationId: 'D', displayCode: 'D2' },
+    ];
+    canonical.stations[0].stationCodes = [
+      { lineId: 'L', code: 'S1', startedAt: '2026-01-01', endedAt: null },
+      { lineId: 'L', code: 'S2', startedAt: '2026-01-03', endedAt: null },
+    ];
+    canonical.stations[1].stationCodes = [
+      {
+        lineId: 'L',
+        code: 'D1',
+        startedAt: '2026-01-01',
+        endedAt: '2026-01-02',
+      },
+      { lineId: 'L', code: 'D2', startedAt: '2026-01-01', endedAt: null },
+    ];
+    const input = scope(['S', 'D'], ['2026-01-02']);
+    expect(() =>
+      validateScheduledTripPatternDateScope(input, canonical),
+    ).toThrow('has active station codes');
+    canonical.stations[0].stationCodes[1].startedAt = '2026-01-02';
+    expect(
+      validateScheduledTripPatternDateScope(input, canonical).serviceDates,
+    ).toEqual(['2026-01-02']);
+    canonical.stations[0].stationCodes[0].startedAt = '2026-02-30';
+    expect(() =>
+      validateScheduledTripPatternDateScope(input, canonical),
+    ).toThrow();
+  });
+});
 
 describe('validateScheduledTripPatternReferences', () => {
   it('retains every platform alternative and repeated station visit without modifying the canonical projection', () => {
