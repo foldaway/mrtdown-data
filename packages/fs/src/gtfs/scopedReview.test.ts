@@ -259,7 +259,7 @@ describe('trip assignment proposals from scoped decisions', () => {
     expect(empty.review.unresolvedPatternDates).toBe(3);
   });
 
-  it('rejects stale decisions and enforces the stronger source-parent date checks', () => {
+  it('rejects stale decisions and accepts a consistent parent whose other-line code starts later', () => {
     const context = fixture();
     const stale = draftFor(context);
     stale.decisions[0].sourceRecordSha256 = 'c'.repeat(64);
@@ -277,9 +277,15 @@ describe('trip assignment proposals from scoped decisions', () => {
     rehash(context);
     const draft = draftFor(context);
     expect(evaluateScopedReconciliation(context, draft).valid).toBe(true);
-    expect(() =>
-      createScheduledTripAssignmentProposals(context, draft),
-    ).toThrow(/Source station code EW1 does not uniquely identify S/);
+    const result = createScheduledTripAssignmentProposals(context, draft);
+    expect(result.document.assignments).toHaveLength(1);
+    expect(result.document.assignments[0].scope.serviceDates).toEqual([
+      '2026-01-01',
+      '2026-01-02',
+      '2026-01-03',
+    ]);
+    expect(result.review.approvalMatches).toBe(false);
+    expect(result.generationEligible).toBe(false);
   });
 });
 

@@ -7,6 +7,7 @@ import {
 import z from 'zod';
 import type { CsvRow } from './schedule.js';
 import { matchServicePath } from './servicePath.js';
+import { resolveStationCandidates } from './stationMatch.js';
 import type { scheduleTopologyProjection } from './topology.js';
 
 function uniqueReference<T extends { id: string }>(
@@ -261,13 +262,20 @@ export function validateScheduledTripPatternSourceStops(
       if (parent.location_type !== '1' || parent.parent_station) {
         throw new Error(`Source parent ${parent.stop_id} must be a station`);
       }
-      // Interchange parents can identify the same station through another line's code.
-      validateSourceStationCode(
-        parent.stop_code || parent.stop_id,
-        stop.stationId,
-        scope.serviceDates,
-        topology,
+      // A snapshot's interchange parent identifies the station, not dated service on that code's line.
+      const candidates = resolveStationCandidates(
+        parent,
+        undefined,
+        topology.stations,
       );
+      if (
+        candidates.length !== 1 ||
+        candidates[0].station.id !== stop.stationId
+      ) {
+        throw new Error(
+          `Source parent ${parent.stop_id} does not uniquely identify ${stop.stationId}`,
+        );
+      }
     }
     const labels = (source.platform_code ?? '')
       .split('/')

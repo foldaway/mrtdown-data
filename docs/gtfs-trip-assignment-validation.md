@@ -44,9 +44,10 @@ generator or publication path.
 A read-only check uses the verified October capture and the version-3 proposal
 draft's [pinned canonical topology](gtfs-platform-group-review.md#october-snapshot-proposals).
 All 2,781 proposed NEL/CCL trip assignments pass, covering 291,967 supplied trip/date
-pairs. The full proposal set still fails at the recorded Marina Bay parent-code
-period gap. Source tables, canonical topology and reconciliation output remain
-unchanged; passing this check creates no human approval or published artifact.
+pairs. The [parent identity correction](gtfs-mapping-disagreements.md#interchange-parent-identity)
+also permits snapshot interchange parents whose other-line code starts later than
+the child's service date. Source tables, canonical topology and reconciliation
+output remain unchanged; passing creates no human approval or published artifact.
 
 ## Prepare assignments from mapping decisions
 
@@ -78,9 +79,19 @@ it does not record human approval or make a publishable schedule.
 
 Against the verified October capture and pinned topology, the helper reproduces
 all 2,781 NEL/CCL assignments and 291,967 trip/date pairs from the earlier manual
-compatibility check. The full version-3 draft still fails at the recorded Marina
-Bay parent-code gap. Source tables, topology and reconciliation proposals remain
-unchanged.
+compatibility check. Snapshot parent identity is checked independently of the
+child's dated service code. Source tables, topology and reconciliation proposals
+remain unchanged.
+
+With the parent identity correction, the full version-3 draft's matched cells
+also pass: 12,106 trip assignments covering 1,502,097 trip/date pairs. This uses
+the same verified October capture, pinned topology and full-draft digest recorded
+in [grouped-platform review](gtfs-platform-group-review.md#october-snapshot-proposals).
+The normalized assignment SHA-256 is
+`22d05a49f00f1a444bd2bdf88b0b5403f2ed694e4aa2adc086b405eb907f0d78`.
+Verified capture inspection with coverage reports 990,143 unassigned trip/date
+pairs out of 2,492,240 active source pairs, grouped into six gap records. The
+draft remains unresolved and unapproved; `generationEligible` stays `false`.
 
 ## Check a verified local capture
 

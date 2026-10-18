@@ -204,7 +204,7 @@ describe('validateScheduledTripPatternAssignments', () => {
   it('requires the same assignments to pass source-stop, canonical-date, boarding and operator checks', () => {
     const changes: [string, (input: ReturnType<typeof fixture>) => void][] = [
       [
-        'Source station code D',
+        'Source parent parent-S does not uniquely identify S',
         ({ tables }) => {
           tables['stops.txt'][0].stop_code = 'D';
         },

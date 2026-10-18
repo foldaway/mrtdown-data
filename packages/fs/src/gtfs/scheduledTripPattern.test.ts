@@ -182,12 +182,12 @@ describe('validateScheduledTripPatternBoarding', () => {
 });
 
 describe('validateScheduledTripPatternSourceStops', () => {
-  it('retains complete platform sets and repeated visits, including interchange parents identified through another line', () => {
+  it('retains platform sets and repeated visits when a snapshot parent uses a later interchange code', () => {
     const { input, canonical, stops } = sourceFixture();
     canonical.stations[0].stationCodes.push({
       lineId: 'INTERCHANGE',
       code: 'I1',
-      startedAt: '2020-01-01',
+      startedAt: '2026-07-12',
       endedAt: null,
     });
     stops[0].stop_code = '';
@@ -212,7 +212,7 @@ describe('validateScheduledTripPatternSourceStops', () => {
     ).not.toThrow();
   });
 
-  it('requires child and parent codes to identify the supplied station on every date, with the child on the pattern line', () => {
+  it('checks child codes on every service date and line while requiring a consistent parent identity', () => {
     const { input, canonical, stops } = sourceFixture();
     const code = {
       lineId: 'L',
@@ -237,16 +237,16 @@ describe('validateScheduledTripPatternSourceStops', () => {
     stops[0].stop_code = 'D';
     expect(() =>
       validateScheduledTripPatternSourceStops(input, stops, canonical),
-    ).toThrow('Source station code D');
+    ).toThrow('Source parent parent-S does not uniquely identify S');
     stops[0].stop_code = code.code;
     code.startedAt = '2026-01-02';
     stops[1].stop_code = 'S';
     expect(() =>
       validateScheduledTripPatternSourceStops(input, stops, canonical),
-    ).toThrow('on 2026-01-01');
+    ).not.toThrow();
   });
 
-  it('rejects ambiguous or malformed code periods rather than choosing a convenient match', () => {
+  it('rejects ambiguous parent identities across code histories and malformed child-code periods', () => {
     const { input, canonical, stops } = sourceFixture();
     const duplicateCode = { ...canonical.stations[0].stationCodes[0] };
     canonical.stations[2].stationCodes.push(duplicateCode);
@@ -254,6 +254,8 @@ describe('validateScheduledTripPatternSourceStops', () => {
       validateScheduledTripPatternSourceStops(input, stops, canonical),
     ).toThrow('does not uniquely identify S');
     duplicateCode.lineId = 'OTHER';
+    duplicateCode.startedAt = '2030-01-01';
+    duplicateCode.endedAt = null;
     stops[1].parent_station = '';
     expect(() =>
       validateScheduledTripPatternSourceStops(input, stops, canonical),
@@ -262,7 +264,8 @@ describe('validateScheduledTripPatternSourceStops', () => {
     expect(() =>
       validateScheduledTripPatternSourceStops(input, stops, canonical),
     ).toThrow('does not uniquely identify S');
-    duplicateCode.endedAt = '2026-02-30';
+    canonical.stations[2].stationCodes.pop();
+    canonical.stations[0].stationCodes[0].endedAt = '2026-02-30';
     expect(() =>
       validateScheduledTripPatternSourceStops(input, stops, canonical),
     ).toThrow();
@@ -287,6 +290,9 @@ describe('validateScheduledTripPatternSourceStops', () => {
       },
       (rows: CsvRow[]) => {
         rows[0].parent_station = 'parent-D';
+      },
+      (rows: CsvRow[]) => {
+        rows[0].stop_code = 'UNKNOWN';
       },
     ];
     for (const change of changes) {
