@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { createScheduledTripAssignmentProposals } from './assignmentProposals.js';
 import { hashBytes } from './capture.js';
 import {
   GroupedScopedReconciliationApprovalSchema,
@@ -20,7 +21,7 @@ import {
 
 function fixture(): ScopedReviewContext {
   const tables = {
-    'agency.txt': [{ agency_id: 'SMRT' }],
+    'agency.txt': [{ agency_id: 'SMRT', agency_timezone: 'Asia/Singapore' }],
     'routes.txt': [
       { route_id: 'NSL_TEST', agency_id: 'SMRT', route_type: '1' },
     ],
@@ -217,6 +218,46 @@ function unresolvedOrigin(context: ScopedReviewContext) {
 }
 
 describe('opt-in grouped-platform scoped review', () => {
+  it('expands complete platform alternatives at repeated station occurrences', () => {
+    const context = fixture();
+    const rows = context.tables['stop_times.txt'];
+    rows.push({
+      ...rows[0],
+      stop_sequence: '3',
+      arrival_time: '08:04:00',
+      departure_time: '08:04:00',
+    });
+    context.topology.services[0].revisions[0].stations.push({
+      stationId: 'S',
+      displayCode: 'NS1',
+    });
+    context.identity.topology.sha256 = hashBytes(
+      Buffer.from(JSON.stringify(context.topology)),
+    );
+    const draft = draftFor(context);
+    const before = JSON.stringify({ context, draft });
+    const result = createScheduledTripAssignmentProposals(context, draft);
+    expect(result.document.assignments).toHaveLength(1);
+    expect(result.document.assignments[0].scope.binding).toMatchObject({
+      pattern: {
+        destinationStationId: 'S',
+        stops: [
+          { stationId: 'S', platformIds: ['platform-S-A', 'platform-S-C'] },
+          { stationId: 'D', platformIds: ['platform-D-B'] },
+          { stationId: 'S', platformIds: ['platform-S-A', 'platform-S-C'] },
+        ],
+      },
+      occurrences: [
+        { providerStopId: 'P', stopSequence: '1' },
+        { providerStopId: 'Q', stopSequence: '2' },
+        { providerStopId: 'P', stopSequence: '3' },
+      ],
+    });
+    expect(result.draftSha256).toBe(groupedScopedReviewDraftSha256(draft));
+    expect(result.generationEligible).toBe(false);
+    expect(JSON.stringify({ context, draft })).toBe(before);
+  });
+
   it('retains a complete physical group without selecting one member and leaves version 2 unchanged', () => {
     const context = fixture(),
       draft = draftFor(context);

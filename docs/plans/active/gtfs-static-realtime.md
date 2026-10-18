@@ -539,6 +539,12 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added assignment proposals from version-2/3 scoped mapping drafts.
+  Matched cells expand to all their source trips, preserving literal occurrences
+  and complete platform alternatives. Draft review and combined assignment checks
+  must pass before a document returns; unresolved coverage stays unassigned and
+  generation remains gated. See [assignment preparation](../../gtfs-trip-assignment-validation.md#prepare-assignments-from-mapping-decisions).
+
 - 2026-10-18: Added optional assignment coverage with `gtfs validate-assignments
   --coverage`. Reports count active source trip dates, retain exact unassigned
   dates grouped by calendar and trip set, and distinguish inactive trips from
