@@ -32,16 +32,16 @@ and other tools.
 
 The reviewed dataset lives in `data/`:
 
-- `station/`, `line/`, `service/`, `operator/`, `town/`, and `landmark/` describe
-  the network and nearby places. Station records include exits and optional
-  platform information.
-- `issue/YYYY/MM/<issue_id>/` groups each issue's metadata (`issue.json`),
-  source evidence (`evidence.ndjson`), and append-only impact events
-  (`impact.ndjson`). Issue types are `disruption`, `maintenance`, and `infra`;
-  ongoing issues use open-ended periods.
-- `schematic-map/system/` holds map rules and design constraints; see the
-  [map plan](docs/plans/active/schematic-system-map.md).
-- `rights/source-registry.json` records source rights and attribution rules.
+| Path | Contents |
+| --- | --- |
+| `station/` | Stations, including exits and optional platform information. |
+| `line/`, `service/`, `operator/`, `town/`, `landmark/` | The rail network and nearby places. |
+| `issue/YYYY/MM/<issue_id>/` | Issue metadata (`issue.json`), source evidence (`evidence.ndjson`), and append-only impact events (`impact.ndjson`). |
+| `schematic-map/system/` | Map rules and design constraints; see the [map plan](docs/plans/active/schematic-system-map.md). |
+| `rights/source-registry.json` | Source rights and attribution rules. |
+
+Issue types are `disruption`, `maintenance`, and `infra`; ongoing issues use
+open-ended periods.
 
 Validate every data change with `npm run data:validate`. For station layout
 updates, follow the [exit and platform source policy](docs/plans/active/station-layout-data.md).
