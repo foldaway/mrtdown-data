@@ -43,7 +43,9 @@ completeness of a provider's grouped platform labels. The existing
 [grouped-platform review](gtfs-platform-group-review.md) must still verify the
 complete source set; a reference-valid subset does not replace that review.
 Source occurrence binding and the canonical commit/topology fingerprint must
-also be checked by the surrounding artifact workflow. No generator, departure
+also be checked by the surrounding artifact workflow. The
+[occurrence binder](gtfs-scheduled-trip-bindings.md) checks literal source keys
+before joining a supplied pattern to trip timing. No generator, departure
 query or publication path calls this checker; mapping and publication gates
 remain open.
 
