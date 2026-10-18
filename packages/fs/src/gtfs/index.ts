@@ -1,4 +1,5 @@
 export * from './assignmentCapture.js';
+export * from './assignmentProposals.js';
 export * from './capture.js';
 export * from './departures.js';
 export * from './directory.js';

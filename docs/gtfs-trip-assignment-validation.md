@@ -48,6 +48,40 @@ pairs. The full proposal set still fails at the recorded Marina Bay parent-code
 period gap. Source tables, canonical topology and reconciliation output remain
 unchanged; passing this check creates no human approval or published artifact.
 
+## Prepare assignments from mapping decisions
+
+`createScheduledTripAssignmentProposals(context, draft)` turns the matched cells
+in a version-2 or version-3 scoped mapping draft into a trip assignment document.
+The context contains the verified source tables, reconciliation identity and pinned
+canonical topology, as in [scoped review](gtfs-scoped-review.md). Callers must verify
+the capture and construct that context from the declared inputs before calling this
+in-memory helper.
+
+Each matched pattern/date cell expands to every source trip in that pattern.
+Route and agency decisions supply the line and operator; stop decisions supply
+stations and complete platform alternatives. Every trip retains its own literal
+stop IDs and stop sequences, including repeated stations and identifiers too large
+for JavaScript numbers. Dates remain service dates for trips running after midnight.
+
+The helper re-evaluates the entire draft and rejects invalid or stale decisions,
+then runs combined assignment validation before returning anything. A valid draft
+may still be incomplete, unresolved or unapproved. Only its matched cells become
+proposals; omitted, excluded, inactive and unresolved cells add no assignments.
+No dates are filled automatically, and a failing matched cell is never skipped.
+
+The result contains `document`, suitable for `gtfs validate-assignments`, together
+with `draftSha256`, the full `review` evaluation and `generationEligible: false`.
+Assignments are sorted by literal trip ID and first service date, with normalized
+date and platform sets. Reordering decisions, date sets or source rows does not
+change the result. Inputs remain unchanged. This prepares compatibility proposals;
+it does not record human approval or make a publishable schedule.
+
+Against the verified October capture and pinned topology, the helper reproduces
+all 2,781 NEL/CCL assignments and 291,967 trip/date pairs from the earlier manual
+compatibility check. The full version-3 draft still fails at the recorded Marina
+Bay parent-code gap. Source tables, topology and reconciliation proposals remain
+unchanged.
+
 ## Check a verified local capture
 
 After materializing the [capture and receipt](gtfs-public-handoff.md), run:

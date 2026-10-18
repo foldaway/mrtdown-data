@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { createScheduledTripAssignmentProposals } from './assignmentProposals.js';
 import { hashBytes } from './capture.js';
 import { evaluateScopedReconciliation } from './scopedReview.js';
 import {
@@ -11,7 +12,10 @@ import { createScopedReconciliationDraft } from './scopedReviewDraft.js';
 
 function fixture(): ScopedReviewContext {
   const tables = {
-    'agency.txt': [{ agency_id: 'SMRT' }, { agency_id: 'LTA' }],
+    'agency.txt': [
+      { agency_id: 'SMRT', agency_timezone: 'Asia/Singapore' },
+      { agency_id: 'LTA', agency_timezone: 'Asia/Singapore' },
+    ],
     'routes.txt': [
       { route_id: 'NSL_TEST', agency_id: 'SMRT', route_type: '1' },
     ],
@@ -166,6 +170,118 @@ function rehash(context: ScopedReviewContext) {
     Buffer.from(JSON.stringify(context.topology)),
   );
 }
+
+describe('trip assignment proposals from scoped decisions', () => {
+  it('expands only matched dates for every trip with its own literal occurrence sequences', () => {
+    const context = fixture();
+    context.tables['calendar.txt'][0].end_date = '20260104';
+    context.tables['trips.txt'].push({
+      ...context.tables['trips.txt'][0],
+      trip_id: '0009007199254740993',
+    });
+    context.tables['stop_times.txt'].push(
+      ...context.tables['stop_times.txt'].map((row, index) => ({
+        ...row,
+        trip_id: '0009007199254740993',
+        stop_sequence: index ? '9007199254740994' : '0009007199254740993',
+        arrival_time: index ? '25:02:00' : '25:00:00',
+        departure_time: index ? '25:02:00' : '25:00:00',
+      })),
+    );
+    const draft = draftFor(context);
+    const cell = draft.decisions.find((item) => item.kind === 'pattern');
+    if (cell?.kind !== 'pattern') {
+      throw new Error('Missing fixture pattern');
+    }
+    const set = (serviceDates: string[]) => ({
+      id: scopedReviewDateSetId(serviceDates),
+      serviceDates,
+    });
+    draft.dateSets = [
+      set(['2026-01-03', '2026-01-01']),
+      set(['2026-01-02']),
+      set(['2026-01-04']),
+    ];
+    cell.dateSetId = draft.dateSets[0].id;
+    draft.decisions.push({ ...cell, dateSetId: draft.dateSets[1].id });
+    draft.decisions.push({
+      ...cell,
+      dateSetId: draft.dateSets[2].id,
+      disposition: 'excluded',
+      target: undefined,
+      reason: 'Explicit synthetic exclusion.',
+    });
+    const before = JSON.stringify({ context, draft });
+    const result = createScheduledTripAssignmentProposals(context, draft);
+    expect(result.document.assignments.map(({ scope }) => scope)).toMatchObject(
+      [
+        {
+          serviceDates: ['2026-01-01', '2026-01-03'],
+          binding: {
+            providerTripId: '0009007199254740993',
+            occurrences: [
+              { providerStopId: 'P', stopSequence: '0009007199254740993' },
+              { providerStopId: 'Q', stopSequence: '9007199254740994' },
+            ],
+          },
+        },
+        {
+          serviceDates: ['2026-01-02'],
+          binding: { providerTripId: '0009007199254740993' },
+        },
+        { binding: { providerTripId: 'T' } },
+        { serviceDates: ['2026-01-02'], binding: { providerTripId: 'T' } },
+      ],
+    );
+    expect(result.draftSha256).toBe(scopedReviewDraftSha256(draft));
+    expect(result.review).toMatchObject({
+      valid: true,
+      approvalMatches: false,
+      reviewComplete: false,
+    });
+    expect(result.generationEligible).toBe(false);
+    expect(JSON.stringify({ context, draft })).toBe(before);
+    draft.decisions.reverse();
+    draft.dateSets.reverse();
+    context.tables['stop_times.txt'].reverse();
+    expect(createScheduledTripAssignmentProposals(context, draft)).toEqual(
+      result,
+    );
+
+    for (const matched of draft.decisions) {
+      if (matched.kind === 'pattern' && matched.disposition === 'matched') {
+        matched.disposition = 'unresolved';
+        matched.target = undefined;
+      }
+    }
+    const empty = createScheduledTripAssignmentProposals(context, draft);
+    expect(empty.document.assignments).toEqual([]);
+    expect(empty.review.unresolvedPatternDates).toBe(3);
+  });
+
+  it('rejects stale decisions and enforces the stronger source-parent date checks', () => {
+    const context = fixture();
+    const stale = draftFor(context);
+    stale.decisions[0].sourceRecordSha256 = 'c'.repeat(64);
+    expect(() =>
+      createScheduledTripAssignmentProposals(context, stale),
+    ).toThrow(/Unknown or changed source record/);
+
+    context.tables['stops.txt'][0].stop_code = 'EW1';
+    context.topology.stations[0].stationCodes.push({
+      lineId: 'EWL',
+      code: 'EW1',
+      startedAt: '2026-01-03',
+      endedAt: null,
+    });
+    rehash(context);
+    const draft = draftFor(context);
+    expect(evaluateScopedReconciliation(context, draft).valid).toBe(true);
+    expect(() =>
+      createScheduledTripAssignmentProposals(context, draft),
+    ).toThrow(/Source station code EW1 does not uniquely identify S/);
+  });
+});
 
 describe('version-2 scoped mapping drafts and review gate', () => {
   it('prepares concrete matches, retains unsupported inputs and never approves or auto-excludes', () => {
