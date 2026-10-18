@@ -29,15 +29,16 @@ and other tools.
 
 ## Explore the data
 
-The reviewed dataset lives in `data/`:
+The dataset lives in `data/`. External GTFS files can be inspected locally.
 
-| Path | Contents |
+| Data | Contents |
 | --- | --- |
 | `station/` | Stations, including exits and optional platform information. |
 | `line/`, `service/`, `operator/`, `town/`, `landmark/` | The rail network and nearby places. |
 | `issue/YYYY/MM/<issue_id>/` | Issue metadata (`issue.json`), source evidence (`evidence.ndjson`), and append-only impact events (`impact.ndjson`). |
 | `schematic-map/system/` | Map rules and design constraints; see the [map plan](docs/plans/active/schematic-system-map.md). |
 | `rights/source-registry.json` | Source rights and attribution rules. |
+| External GTFS files | [Schedule, realtime, and departure inspection](docs/gtfs-local-inspection.md); arrival generation and publication require mapping and licensing review. |
 
 Issue types are `disruption`, `maintenance`, and `infra`; ongoing issues use
 open-ended periods.
@@ -51,19 +52,6 @@ from reviewed observations:
 npm run data:import:lta-station-exits -- /path/to/exits.geojson
 npm run data:platforms:infer -- --write /tmp/platform-inference.json
 ```
-
-### Inspect external GTFS files
-
-Local tools can verify captured GTFS files, inspect schedules and realtime
-messages, export source timetables, and look up departures by provider trip or
-stop. See [local GTFS inspection](docs/gtfs-local-inspection.md) for commands
-and the [capture handoff](docs/gtfs-public-handoff.md) for acquiring inputs.
-
-Inspection preserves provider IDs and leaves canonical data unchanged.
-Generating and publishing scheduled arrival data still requires approved
-mappings, verified source coverage, checks for changes between captures, and
-licensing and publication review. Keep raw captures and generated reports
-outside `data/` and Git pending that review.
 
 ## Build and publish exports
 
