@@ -95,13 +95,67 @@ prove that a supplied terms digest is fresh. Passing caller-controlled copies
 of those inputs would bypass that trust boundary.
 
 `generationEligible` remains `false`: readiness inspection does not publish or
-enable the Pages exporter. That future integration must require `release.eligible`,
-retain review and exclusion/coverage information, and provide the conspicuous
-attribution required by the [publication policy](gtfs-schedule-publication.md).
+enable Pages output. The local exporter below enforces readiness and retains
+review and exclusion/coverage information. A public download interface must also
+provide the conspicuous attribution required by the
+[publication policy](gtfs-schedule-publication.md).
 Consumer import still needs the separate source-lineage and correction-revision
 checks in the [GTFS plan](plans/active/gtfs-static-realtime.md#phase-4-consume-scheduled-arrivals-in-mrtdown-site).
+
+## Exporting a reviewed bundle
+
+`@mrtdown/fs` exports `exportGtfsTimetableRelease` with the same trusted inputs
+as the inspector and a new output directory:
+
+```ts
+const result = await exportGtfsTimetableRelease(zip, captureFile, outputDir, {
+  ...preparationOptions,
+  mappingApproval,
+  releaseReview,
+  currentTerms,
+  releaseInstant,
+});
+```
+
+It rebuilds the artifact and runs all release checks before writing anything.
+A blocked release returns `exported: false` with its manifest digest, release
+blockers, mapping review and coverage. Invalid inputs throw. Neither case creates
+an output directory or changes an existing destination.
+
+A successful export returns `exported: true`, the same report and
+`outputDirectory`. The directory contains:
+
+| File | Contents |
+| --- | --- |
+| `manifest.json` | Source provenance and exact timetable/notice hashes |
+| `timetable.json` | Compact assigned timetable |
+| `NOTICE.txt` | Attribution, licence links and schedule-snapshot notice |
+| `mapping-draft.json` | Checked mapping decisions, including exclusions |
+| `mapping-approval.json` | Approval bound to that draft and source identity |
+| `release-review.json` | Release decision bound to the manifest and approval |
+| `release.json` | Manifest digest, release checks, current terms identities, mapping review and full trip/date coverage |
+
+The three artifact files retain the preparer's exact bytes. The review files
+contain the parsed input records as readable JSON. `release.json` is written
+last; its review digests use the normalization described above, rather than
+hashing the pretty-printed review files.
+
+The parent directory must exist. The exporter requires a new destination and
+refuses an existing file, directory or symlink. It also refuses output inside the
+canonical data directory, including through a parent symlink. A failed write
+removes the directory it created; a cleanup failure is reported with the original
+error. Keep the output private until the call succeeds: writing the bundle is
+not an atomic public deployment, and a terminated process can leave partial files.
+
+This is an offline file writer. The caller still obtains trusted review records
+and freshly retrieved terms independently, supplies the recorded canonical tree,
+and retains the original capture separately. No CLI or Pages publishing path is
+enabled by this API. A download page and consuming site still need conspicuous
+source attribution before public release.
 
 Against the retained October capture and full version-3 draft, inspection
 preserved the existing artifact digests and 1,502,097 assigned / 990,143 unassigned
 trip/date pairs. Release remained blocked by incomplete mapping review, missing
 current terms and a missing release review. No approval assertions were created.
+Running the exporter against those same inputs returned `exported: false`,
+preserved the manifest digest and coverage counts, and created no output files.

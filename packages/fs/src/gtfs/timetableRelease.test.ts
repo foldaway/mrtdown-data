@@ -1,88 +1,18 @@
-import { mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { artifactFixture } from './__tests__/artifactFixture.js';
-import { groupedScopedReviewDraftSha256 } from './groupedReviewContract.js';
-import {
-  scopedReviewDateSetId,
-  scopedReviewDraftSha256,
-} from './scopedReviewContract.js';
-import {
-  GtfsTimetableReleaseReviewSchema,
-  gtfsTimetableMappingApprovalSha256,
-  inspectGtfsTimetableRelease,
-} from './timetableRelease.js';
-import { prepareVerifiedGtfsTimetableArtifact } from './verifiedTimetableArtifact.js';
-
-type Draft = Awaited<ReturnType<typeof artifactFixture>>['options']['draft'];
-async function reviewed(
-  root: string,
-  grouped = false,
-  edit?: (draft: Draft) => void,
-) {
-  const { capture, options } = await artifactFixture(root, grouped);
-  if (edit) {
-    edit(options.draft);
-  }
-  capture.rights_status = 'redistribution_permitted';
-  await writeFile(join(root, 'capture.json'), JSON.stringify(capture));
-  const mappingApproval = {
-    schemaVersion: options.draft.schemaVersion,
-    documentKind: 'gtfs-scoped-mapping-approval',
-    identity: options.draft.identity,
-    draftSha256: grouped
-      ? groupedScopedReviewDraftSha256(options.draft)
-      : scopedReviewDraftSha256(options.draft),
-    reviewer: 'Synthetic mapping reviewer',
-    reason: 'Synthetic approval for release gate tests only.',
-  };
-  const artifact = await prepareVerifiedGtfsTimetableArtifact(
-    join(root, 'schedule.zip'),
-    join(root, 'capture.json'),
-    { ...options, mappingApproval },
-  );
-  const currentTerms = {
-    licence: {
-      reference: options.currentLicenceReference,
-      sha256: '1'.repeat(64),
-    },
-    apiTerms: {
-      reference:
-        'https://datamall.lta.gov.sg/content/datamall/en/api-terms-of-service.html',
-      sha256: '2'.repeat(64),
-    },
-  };
-  const releaseReview = GtfsTimetableReleaseReviewSchema.parse({
-    schemaVersion: 1,
-    documentKind: 'gtfs-timetable-release-review',
-    manifestSha256: artifact.manifestSha256,
-    mappingApprovalSha256: gtfsTimetableMappingApprovalSha256(mappingApproval),
-    reviewer: 'Synthetic release reviewer',
-    reviewedAt: '2026-01-16T00:00:00Z',
-    decision: 'release-permitted',
-    terms: structuredClone(currentTerms),
-    licenceVersion: 'synthetic-v1',
-    obligations: 'Synthetic source acknowledgement and licence link.',
-    captureConditions:
-      'Synthetic review found no additional release conditions.',
-    effectiveAt: null,
-  });
-  return {
-    ...options,
-    mappingApproval,
-    currentTerms,
-    releaseReview,
-    releaseInstant: '2026-01-20T00:00:00Z',
-  };
-}
+import { reviewedReleaseFixture } from './__tests__/releaseFixture.js';
+import { scopedReviewDateSetId } from './scopedReviewContract.js';
+import { inspectGtfsTimetableRelease } from './timetableRelease.js';
 
 describe('timetable release readiness', () => {
   it('requires complete mapping and exact release review for both draft formats without publishing or changing preview eligibility', async () => {
     const root = await mkdtemp(join(tmpdir(), 'gtfs-release-'));
     try {
       for (const grouped of [false, true]) {
-        const options = await reviewed(root, grouped);
+        const options = await reviewedReleaseFixture(root, grouped);
         const result = await inspectGtfsTimetableRelease(
           join(root, 'schedule.zip'),
           join(root, 'capture.json'),
@@ -120,7 +50,7 @@ describe('timetable release readiness', () => {
           'Release review is missing',
         ],
       });
-      const ready = await reviewed(root);
+      const ready = await reviewedReleaseFixture(root);
       const run = (input: typeof ready) =>
         inspectGtfsTimetableRelease(
           join(root, 'schedule.zip'),
@@ -157,7 +87,7 @@ describe('timetable release readiness', () => {
   it('invalidates release review after artifact or approval edits and rejects stale mapping approvals', async () => {
     const root = await mkdtemp(join(tmpdir(), 'gtfs-release-binding-'));
     try {
-      const ready = await reviewed(root);
+      const ready = await reviewedReleaseFixture(root);
       const run = (input: typeof ready) =>
         inspectGtfsTimetableRelease(
           join(root, 'schedule.zip'),
@@ -191,7 +121,7 @@ describe('timetable release readiness', () => {
   it('preserves reviewed exclusions as explicit coverage gaps while blocking unresolved decisions', async () => {
     const root = await mkdtemp(join(tmpdir(), 'gtfs-release-coverage-'));
     try {
-      const unresolved = await reviewed(root, true, (draft) => {
+      const unresolved = await reviewedReleaseFixture(root, true, (draft) => {
         for (const decision of draft.decisions) {
           if (decision.kind === 'pattern') {
             decision.disposition = 'unresolved';
@@ -208,7 +138,7 @@ describe('timetable release readiness', () => {
       expect((await run(unresolved)).release.blockers).toContain(
         'Mapping review is not complete',
       );
-      const excluded = await reviewed(root, true, (draft) => {
+      const excluded = await reviewedReleaseFixture(root, true, (draft) => {
         const pattern = draft.decisions.find((item) => item.kind === 'pattern');
         if (pattern?.kind !== 'pattern') {
           throw new Error('Missing synthetic pattern');

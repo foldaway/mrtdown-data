@@ -361,8 +361,10 @@ Exit criteria:
 - Apply the [schedule publication policy](../../gtfs-schedule-publication.md) for
   fixture retention, attribution and capture-specific release conditions. The
   standard-terms review is recorded; capture-specific conditions still need to
-  be confirmed and exporter enforcement remains to be built. Review and record
-  any changed licence or API terms before publishing another artifact.
+  be confirmed. Offline bundle export enforces supplied review records and terms
+  identities; public publishing still needs trusted input acquisition and
+  conspicuous attribution. Review and record any changed licence or API terms
+  before publishing another artifact.
 - Consume only the locally materialized schedule and handoff record supplied by
   the authorized acquisition step, and verify their manifest before generation.
 - Require the reviewed mapping's recorded schedule-topology fingerprint to
@@ -543,6 +545,14 @@ Exit criteria:
   separate community estimate alongside the LTA schedule?
 
 ## Progress Log
+
+- 2026-10-18: Added local bundle export that rebuilds verified source inputs and
+  writes only after the release checks pass. The bundle retains the exact
+  timetable, manifest and notice bytes alongside mapping decisions, approvals,
+  release review and complete coverage, including deliberate exclusions. Blocked
+  releases write nothing; existing destinations and canonical-data paths are
+  refused. Pages publishing remains disabled and real mapping/release reviews
+  remain outstanding. See [reviewed export](../../gtfs-timetable-release.md#exporting-a-reviewed-bundle).
 
 - 2026-10-18: Added offline release-readiness checks for complete mapping
   approval, an exact-artifact release review, redistribution status, current
