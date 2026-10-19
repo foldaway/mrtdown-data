@@ -69,9 +69,10 @@ assignments remain explicit in the [coverage report](gtfs-trip-assignment-valida
 they are not filled or silently discarded. The report can be incomplete and
 unapproved, and pending-review captures remain valid for private inspection.
 
-This is the content foundation for the scheduled-arrivals exporter. It does not
-add an artifact correction revision, approve mappings, confirm capture-specific
-release conditions, publish to Pages or enable a site import. Those steps must
+The [artifact file helpers](gtfs-timetable-artifact.md) can wrap this content with
+provenance, correction metadata and an attribution notice. This preview does not
+approve mappings, confirm capture-specific release conditions, publish to Pages
+or enable a site import. Those steps must
 apply the [publication policy](gtfs-schedule-publication.md). Keep generated
 previews outside canonical `data/` and Git.
 

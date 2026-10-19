@@ -1,3 +1,7 @@
+import {
+  type GtfsReconciliationIdentity as ReconciliationIdentity,
+  GtfsReconciliationIdentitySchema as ReconciliationIdentitySchema,
+} from '@mrtdown/core';
 import z from 'zod';
 import { hashBytes } from './capture.js';
 import { compareStrings } from './order.js';
@@ -8,18 +12,11 @@ import type { scheduleTopologyProjection } from './topology.js';
 
 type Topology = ReturnType<typeof scheduleTopologyProjection>;
 const digest = z.string().regex(/^[a-f0-9]{64}$/);
-export const ReconciliationIdentitySchema = z
-  .object({
-    sourceManifest: z.record(z.string(), digest),
-    canonicalCommit: z.string().regex(/^[a-f0-9]{40}$/),
-    topology: z
-      .object({ projectionVersion: z.literal(1), sha256: digest })
-      .strict(),
-  })
-  .strict();
-export type ReconciliationIdentity = z.infer<
-  typeof ReconciliationIdentitySchema
->;
+
+export {
+  type GtfsReconciliationIdentity as ReconciliationIdentity,
+  GtfsReconciliationIdentitySchema as ReconciliationIdentitySchema,
+} from '@mrtdown/core';
 
 const targetSchema = z
   .object({

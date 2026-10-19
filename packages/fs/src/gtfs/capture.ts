@@ -1,24 +1,11 @@
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
-import z from 'zod';
+import { GtfsCaptureSchema as CaptureSchema } from '@mrtdown/core';
 
-export const CaptureSchema = z
-  .object({
-    schema_version: z.literal(1),
-    capture_id: z.string().min(1),
-    feed_kind: z.enum(['schedule', 'service_alerts', 'trip_updates']),
-    source: z.url(),
-    retrieved_at: z.iso.datetime({ offset: true }),
-    provider_timestamp: z.null(),
-    sha256: z.string().regex(/^[a-f0-9]{64}$/),
-    byte_length: z.number().int().positive(),
-    archive_ref: z.string().min(1),
-    attribution: z.string().min(1),
-    rights_status: z.enum(['pending_review', 'redistribution_permitted']),
-    licence_reference: z.url(),
-  })
-  .strict();
-export type GtfsCapture = z.infer<typeof CaptureSchema>;
+export {
+  type GtfsCapture,
+  GtfsCaptureSchema as CaptureSchema,
+} from '@mrtdown/core';
 
 const endpoints = {
   schedule: 'GTFSScheduleTrain',

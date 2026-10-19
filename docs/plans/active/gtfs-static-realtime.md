@@ -544,6 +544,15 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added shared scheduled-timetable artifact metadata and exact-byte
+  preparation/verification helpers. Manifests bind the compact timetable and
+  attribution notice to hashes and sizes, preserving capture, mapping, canonical
+  topology, feed and correction metadata. Verification requires a trusted
+  manifest digest. Existing capture/reconciliation contracts now also live in
+  `core`, retaining their `fs` exports. Publication approval, source/metadata
+  consistency checks and importer lineage rules remain separate gates. See
+  [artifact files](../../gtfs-timetable-artifact.md).
+
 - 2026-10-18: Added a compact assigned-timetable content schema and optional
   `gtfs timetable --assignments ... --canonical-commit ...` preview. The verified
   bundle shares canonical patterns, compresses assignment dates into exact ranges
