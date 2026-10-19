@@ -1,7 +1,7 @@
 export const usage = `Usage:
   mrtdown gtfs inspect --file <ZIP|protobuf> --capture <JSON> [--write <report.json>]
   mrtdown gtfs inspect --directory <schedule-dir> --manifest <table-hashes.json> [--write <report.json>]
-  mrtdown gtfs departures --file <ZIP> --capture <JSON> (--trip <id> | --stop <id>) [--service-date <YYYY-MM-DD>] --from <instant> --to <instant> [--boarding-only] [--write <report.json>]
+  mrtdown gtfs departures --file <ZIP> --capture <JSON> (--trip <id> | --stop <id>) [--service-date <YYYY-MM-DD>] --from <instant> --to <instant> [--boarding-only] [--assignments <JSON> --canonical-commit <SHA>] [--write <report.json>]
   mrtdown gtfs timetable --file <ZIP> --capture <JSON> [--write <timetable.json>]
   mrtdown [--data-dir <path>] gtfs validate-assignments --file <ZIP> --capture <JSON> --assignments <JSON> --canonical-commit <SHA> [--coverage] [--write <report.json>]
   mrtdown [--data-dir <path>] gtfs topology [--write <fingerprint.json>]

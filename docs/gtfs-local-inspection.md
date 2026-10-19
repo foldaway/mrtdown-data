@@ -150,6 +150,13 @@ are rejected because this lookup does not expand frequency-based schedules.
 Omit `query.serviceDates` for automatic selection; an explicitly empty list is
 invalid. A known unused platform produces no derived dates or departures.
 
+Pair `--assignments <JSON>` with `--canonical-commit <SHA>` and supply the pinned
+canonical `--data-dir` to preview [assigned departures](gtfs-trip-assignment-validation.md#preview-departures-with-canonical-identities).
+That mode verifies the assignment document and returns MRTDown identities alongside
+source timing. Missing bindings on selected active dates fail instead of being
+omitted. Without the paired flags, source-only inspection retains its existing
+report format.
+
 This is source evidence for inspection, with `generationEligible: false`.
 It does not assign canonical stations/platforms, prove mapping coverage or clear
 publication review. A successful query with no departures only describes the

@@ -153,6 +153,182 @@ async function fixture(root: string, overrides: Record<string, string> = {}) {
 }
 
 describe('GTFS assignment validation CLI', () => {
+  it('previews verified assignments with canonical identities, source timing and boarding selection', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'gtfs-assigned-departures-'));
+    try {
+      const { document } = await fixture(root);
+      const template = document.assignments[0];
+      document.assignments.push({
+        ...template,
+        scope: {
+          ...template.scope,
+          binding: {
+            ...template.scope.binding,
+            providerTripId: 'current',
+            occurrences: [
+              { providerStopId: 'P', stopSequence: '1' },
+              { providerStopId: 'P', stopSequence: '2' },
+            ],
+          },
+        },
+      });
+      await writeFile(join(root, 'assignments.json'), JSON.stringify(document));
+      const inputBefore = await readFile(
+        join(root, 'assignments.json'),
+        'utf8',
+      );
+      const base = [
+        'gtfs',
+        'departures',
+        '--file',
+        'schedule.zip',
+        '--capture',
+        'capture.json',
+        '--stop',
+        'P',
+        '--service-date',
+        '2026-01-01',
+        '--service-date',
+        '2026-01-02',
+        '--from',
+        '2026-01-02T00:30:00+08:00',
+        '--to',
+        '2026-01-02T01:30:00+08:00',
+      ];
+      const mappedArgs = [
+        ...base,
+        '--assignments',
+        'assignments.json',
+        '--canonical-commit',
+        commit,
+      ];
+      const output: string[] = [],
+        errors: string[] = [];
+      const io = {
+        stdout: (text: string) => output.push(text),
+        stderr: (text: string) => errors.push(text),
+      };
+      expect(await runCli(base, io, root)).toBe(0);
+      const source = JSON.parse(output.pop() ?? '');
+      expect(await runCli(mappedArgs, io, root)).toBe(0);
+      const mapped = JSON.parse(output.pop() ?? '');
+      expect(mapped).toMatchObject({
+        documentKind: 'gtfs-assigned-departures',
+        identity: document.identity,
+        generationEligible: false,
+        assignmentsSha256: hashBytes(
+          Buffer.from(
+            JSON.stringify(
+              ScheduledTripAssignmentDocumentSchema.parse(document).assignments,
+            ),
+          ),
+        ),
+      });
+      expect(mapped).not.toHaveProperty('manifest');
+      expect(mapped.departures).toHaveLength(3);
+      for (const departure of mapped.departures) {
+        expect(departure).toMatchObject({
+          lineId: 'L',
+          serviceId: 'SVC',
+          revisionId: 'r1',
+          destinationStationId: 'S',
+          stationId: 'S',
+          platformIds: ['A', 'B'],
+        });
+      }
+      const stripped = mapped.departures.map(
+        (departure: Record<string, unknown>) =>
+          Object.fromEntries(
+            Object.entries(departure).filter(
+              ([key]) =>
+                ![
+                  'lineId',
+                  'serviceId',
+                  'revisionId',
+                  'destinationStationId',
+                  'stationId',
+                  'platformIds',
+                ].includes(key),
+            ),
+          ),
+      );
+      expect(stripped).toEqual(source.departures);
+      expect(await runCli([...mappedArgs, '--boarding-only'], io, root)).toBe(
+        0,
+      );
+      const boarding = JSON.parse(output.pop() ?? '');
+      expect(boarding.departures).toHaveLength(1);
+      expect(boarding.departures[0]).toMatchObject({
+        providerTripId: 'current',
+        serviceDate: '2026-01-02',
+        stopSequence: '1',
+        stationId: 'S',
+      });
+      expect(await readFile(join(root, 'assignments.json'), 'utf8')).toBe(
+        inputBefore,
+      );
+      expect(errors).toEqual([]);
+
+      const outputFile = join(root, 'preview.json');
+      await writeFile(outputFile, 'existing preview');
+      for (const invalid of [
+        [...base, '--assignments', 'assignments.json'],
+        [...base, '--canonical-commit', commit],
+        [
+          ...base,
+          '--assignments',
+          'assignments.json',
+          '--canonical-commit',
+          'b'.repeat(40),
+        ],
+      ]) {
+        expect(
+          await runCli([...invalid, '--write', 'preview.json'], io, root),
+        ).toBe(1);
+      }
+      document.assignments.pop();
+      await writeFile(join(root, 'assignments.json'), JSON.stringify(document));
+      expect(
+        await runCli(
+          [...mappedArgs, '--boarding-only', '--write', 'preview.json'],
+          io,
+          root,
+        ),
+      ).toBe(1);
+      expect(errors.at(-1)).toContain('has no binding');
+      document.assignments[0].scope.serviceDates = ['2026-01-01'];
+      await writeFile(join(root, 'assignments.json'), JSON.stringify(document));
+      const tripOnly = base
+        .slice(0, base.indexOf('--stop'))
+        .concat(
+          ['--trip', 'T,late'],
+          base.slice(base.indexOf('--service-date')),
+        );
+      expect(
+        await runCli(
+          [
+            ...tripOnly,
+            '--assignments',
+            'assignments.json',
+            '--canonical-commit',
+            commit,
+            '--boarding-only',
+            '--write',
+            'preview.json',
+          ],
+          io,
+          root,
+        ),
+      ).toBe(1);
+      expect(errors.at(-1)).toContain(
+        'has no binding for service date 2026-01-02',
+      );
+      expect(await readFile(outputFile, 'utf8')).toBe('existing preview');
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
   it('writes a reproducible report bound to capture, canonical identity and normalized assignments without altering inputs', async () => {
     const root = await mkdtemp(join(tmpdir(), 'gtfs-assignment-cli-'));
     try {

@@ -1,9 +1,15 @@
 import {
+  type ScheduledTripPatternDateScope,
   scheduledDeparturesInWindow,
+  scheduledDeparturesWithPatternsInWindow,
   scheduledServiceDatesForWindow,
 } from '@mrtdown/core';
 import z from 'zod';
-import { readVerifiedCapture } from './capture.js';
+import {
+  readVerifiedTripAssignments,
+  type ScheduledTripAssignmentInputOptions,
+} from './assignmentInput.js';
+import { hashBytes, readVerifiedCapture } from './capture.js';
 import { compareStrings } from './order.js';
 import { readSchedule } from './schedule.js';
 import { scheduledServiceCalendarFromGtfs } from './scheduledServiceCalendar.js';
@@ -18,10 +24,29 @@ export interface GtfsDepartureQuery {
   boardingOnly?: boolean;
 }
 
-export async function inspectGtfsDepartures(
+export type GtfsDepartureAssignmentOptions =
+  ScheduledTripAssignmentInputOptions;
+
+async function readDepartureInput(
+  file: string,
+  handoff: string,
+  options?: GtfsDepartureAssignmentOptions,
+) {
+  if (options) {
+    return readVerifiedTripAssignments(file, handoff, options);
+  }
+  const { capture, bytes } = await readVerifiedCapture(file, handoff);
+  if (capture.feed_kind !== 'schedule') {
+    throw new Error('Departure inspection requires a schedule capture');
+  }
+  return { capture, ...readSchedule(bytes), document: undefined };
+}
+
+async function inspectDepartureQuery(
   file: string,
   handoff: string,
   query: GtfsDepartureQuery,
+  assignmentOptions?: GtfsDepartureAssignmentOptions,
 ) {
   const tripIds = [...(query.tripIds ?? [])].sort(compareStrings);
   const stopIds = [...(query.stopIds ?? [])].sort(compareStrings);
@@ -48,11 +73,11 @@ export async function inspectGtfsDepartures(
       throw new Error(`Duplicate ${name} selection`);
     }
   }
-  const { capture, bytes } = await readVerifiedCapture(file, handoff);
-  if (capture.feed_kind !== 'schedule') {
-    throw new Error('Departure inspection requires a schedule capture');
-  }
-  const { tables, manifest } = readSchedule(bytes);
+  const { capture, tables, manifest, document } = await readDepartureInput(
+    file,
+    handoff,
+    assignmentOptions,
+  );
   if (
     tables['agency.txt']?.some(
       (agency) => agency.agency_timezone !== 'Asia/Singapore',
@@ -129,6 +154,45 @@ export async function inspectGtfsDepartures(
     }
     return serviceDates.map((serviceDate) => ({ trip, calendar, serviceDate }));
   });
+  const inspectedQuery = {
+    ...(tripIds.length ? { tripIds } : { stopIds }),
+    serviceDates,
+    ...(automaticDates ? { serviceDateSelection: 'automatic' as const } : {}),
+    startInstant: query.startInstant,
+    endInstant: query.endInstant,
+    ...(query.boardingOnly ? { boardingOnly: true as const } : {}),
+  };
+  if (document) {
+    const scopes = new Map<string, ScheduledTripPatternDateScope[]>();
+    for (const { scope } of document.assignments) {
+      const id = scope.binding.providerTripId;
+      const group = scopes.get(id) ?? [];
+      group.push(scope);
+      scopes.set(id, group);
+    }
+    const departures = scheduledDeparturesWithPatternsInWindow(
+      selections.map((selection) => ({
+        ...selection,
+        scopes: scopes.get(selection.trip.providerTripId) ?? [],
+      })),
+      query,
+      { boardingOnly: query.boardingOnly },
+    );
+    return {
+      reportVersion: 1 as const,
+      documentKind: 'gtfs-assigned-departures' as const,
+      capture,
+      identity: document.identity,
+      assignmentsSha256: hashBytes(
+        Buffer.from(JSON.stringify(document.assignments)),
+      ),
+      query: inspectedQuery,
+      departures: stopIds.length
+        ? departures.filter((stop) => stopSet.has(stop.providerStopId))
+        : departures,
+      generationEligible: false as const,
+    };
+  }
   const departures = scheduledDeparturesInWindow(selections, query, {
     boardingOnly: query.boardingOnly,
   });
@@ -137,17 +201,42 @@ export async function inspectGtfsDepartures(
     documentKind: 'gtfs-source-departures' as const,
     capture,
     manifest,
-    query: {
-      ...(tripIds.length ? { tripIds } : { stopIds }),
-      serviceDates,
-      ...(automaticDates ? { serviceDateSelection: 'automatic' as const } : {}),
-      startInstant: query.startInstant,
-      endInstant: query.endInstant,
-      ...(query.boardingOnly ? { boardingOnly: true as const } : {}),
-    },
+    query: inspectedQuery,
     departures: stopIds.length
       ? departures.filter((stop) => stopSet.has(stop.providerStopId))
       : departures,
     generationEligible: false as const,
   };
+}
+
+type DepartureReport = Awaited<ReturnType<typeof inspectDepartureQuery>>;
+export function inspectGtfsDepartures(
+  file: string,
+  handoff: string,
+  query: GtfsDepartureQuery,
+  assignmentOptions?: undefined,
+): Promise<
+  Extract<DepartureReport, { documentKind: 'gtfs-source-departures' }>
+>;
+export function inspectGtfsDepartures(
+  file: string,
+  handoff: string,
+  query: GtfsDepartureQuery,
+  assignmentOptions: GtfsDepartureAssignmentOptions,
+): Promise<
+  Extract<DepartureReport, { documentKind: 'gtfs-assigned-departures' }>
+>;
+export function inspectGtfsDepartures(
+  file: string,
+  handoff: string,
+  query: GtfsDepartureQuery,
+  assignmentOptions?: GtfsDepartureAssignmentOptions,
+): Promise<DepartureReport>;
+export function inspectGtfsDepartures(
+  file: string,
+  handoff: string,
+  query: GtfsDepartureQuery,
+  assignmentOptions?: GtfsDepartureAssignmentOptions,
+) {
+  return inspectDepartureQuery(file, handoff, query, assignmentOptions);
 }
