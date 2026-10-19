@@ -77,3 +77,8 @@ topology described in the [GTFS plan](plans/active/gtfs-static-realtime.md#phase
 These are requirements for the future exporter. Local departure previews and
 assignment proposals remain `generationEligible: false`; this policy adds no
 exporter, retained provider fixture, or schedule publication.
+
+The [release-readiness inspector](gtfs-timetable-release.md) now checks supplied
+mapping and artifact review records, current terms identities, redistribution
+status and the reviewed Effective Date. Export integration must obtain those
+records from the trusted review workflow and freshly retrieve the current terms.

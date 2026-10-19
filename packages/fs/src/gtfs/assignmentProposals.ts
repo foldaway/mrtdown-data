@@ -23,6 +23,7 @@ import {
 export function createScheduledTripAssignmentProposals(
   context: ScopedReviewContext,
   draftInput: unknown,
+  approvalInput?: unknown,
 ) {
   const draft = z
     .union([
@@ -32,8 +33,8 @@ export function createScheduledTripAssignmentProposals(
     .parse(draftInput);
   const review =
     draft.schemaVersion === 3
-      ? evaluateGroupedScopedReconciliation(context, draft)
-      : evaluateScopedReconciliation(context, draft);
+      ? evaluateGroupedScopedReconciliation(context, draft, approvalInput)
+      : evaluateScopedReconciliation(context, draft, approvalInput);
   if (!review.valid) {
     throw new Error(`Invalid mapping draft: ${review.errors.join('; ')}`);
   }

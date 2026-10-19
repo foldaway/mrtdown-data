@@ -65,6 +65,7 @@ stop IDs and stop sequences, including repeated stations and identifiers too lar
 for JavaScript numbers. Dates remain service dates for trips running after midnight.
 
 The helper re-evaluates the entire draft and rejects invalid or stale decisions,
+optionally checking a third `approval` argument against that draft and identity,
 then runs combined assignment validation before returning anything. A valid draft
 may still be incomplete, unresolved or unapproved. Only its matched cells become
 proposals; omitted, excluded, inactive and unresolved cells add no assignments.
@@ -75,7 +76,9 @@ with `draftSha256`, the full `review` evaluation and `generationEligible: false`
 Assignments are sorted by literal trip ID and first service date, with normalized
 date and platform sets. Reordering decisions, date sets or source rows does not
 change the result. Inputs remain unchanged. This prepares compatibility proposals;
-it does not record human approval or make a publishable schedule.
+it does not create human approval or make a publishable schedule. When supplied,
+the approval affects the returned review evaluation; generation eligibility
+remains false.
 
 Against the verified October capture and pinned topology, the helper reproduces
 all 2,781 NEL/CCL assignments and 291,967 trip/date pairs from the earlier manual

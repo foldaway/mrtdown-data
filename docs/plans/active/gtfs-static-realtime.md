@@ -544,6 +544,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added offline release-readiness checks for complete mapping
+  approval, an exact-artifact release review, redistribution status, current
+  terms identities and reviewed release timing. Changed terms or edited review
+  inputs require a new release review. Deliberate reviewed exclusions remain
+  visible coverage gaps; unresolved decisions still block. Inspection creates
+  no approval or publication, and current real inputs remain unapproved.
+  See [release readiness](../../gtfs-timetable-release.md).
+
 - 2026-10-18: Added source-backed artifact preparation from a verified capture,
   canonical topology and version-2/3 mapping draft. Source and mapping hashes,
   capture provenance, provider fields and explicit feed dates are derived before
