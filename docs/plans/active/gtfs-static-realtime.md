@@ -203,8 +203,10 @@ value alone.
 
 Publish it as a generated, versioned Pages/archive artifact with its own
 manifest hash. It is derived from LTA data and must carry the applicable
-attribution and licence notice. Confirm that the LTA terms permit this derived
-publication before releasing it publicly. Unchanged-feed redistribution may be
+attribution and licence notice. The [schedule publication policy](../../gtfs-schedule-publication.md)
+records the reviewed standard terms and requires capture-specific release
+conditions to be confirmed before publication.
+Unchanged-feed redistribution may be
 added separately if useful and permitted, but it is not required for the first
 consumer.
 
@@ -356,8 +358,11 @@ Exit criteria:
 
 ### Phase 3: Generate the scheduled-arrivals artifact
 
-- Confirm the licence and attribution requirements for retaining fixtures and
-  publishing data derived from the downloaded schedule.
+- Apply the [schedule publication policy](../../gtfs-schedule-publication.md) for
+  fixture retention, attribution and capture-specific release conditions. The
+  standard-terms review is recorded; capture-specific conditions still need to
+  be confirmed and exporter enforcement remains to be built. Review and record
+  any changed licence or API terms before publishing another artifact.
 - Consume only the locally materialized schedule and handoff record supplied by
   the authorized acquisition step, and verify their manifest before generation.
 - Require the reviewed mapping's recorded schedule-topology fingerprint to
@@ -538,6 +543,13 @@ Exit criteria:
   separate community estimate alongside the LTA schedule?
 
 ## Progress Log
+
+- 2026-10-18: Recorded the standard LTA terms permitting derived schedules and
+  retained licensed fixtures, with a separate upstream notice in `LICENSE-DATA.md`.
+  Defined required source attribution, capture provenance and retention policy
+  for the future exporter. Capture-specific conditions and reviewed mappings
+  remain release requirements; no schedule artifact or provider fixture was
+  added. See [publication policy](../../gtfs-schedule-publication.md).
 
 - 2026-10-18: Added local assigned-departure previews through `gtfs departures
   --assignments ... --canonical-commit ...`. The preview verifies the full supplied

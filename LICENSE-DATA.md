@@ -28,6 +28,18 @@ upstream Singapore Open Data Licence notices continue to apply to the upstream
 material. MRTDown licenses only its own curation, normalization, and derived
 metadata under `CC-BY-4.0`.
 
+### LTA GTFS Schedule
+
+LTA `GTFSScheduleTrain` source data and the schedule content of derived exports
+remain subject to the [Singapore Open Data Licence v1.0](https://datamall.lta.gov.sg/content/datamall/en/SingaporeOpenDataLicence.html).
+MRTDown's `CC-BY-4.0` licence covers its own canonical mappings and export
+metadata. It does not replace the upstream licence.
+
+Each published schedule must identify its source capture and access date and
+carry the LTA attribution and licence link. See the
+[schedule publication policy](https://github.com/foldaway/mrtdown-data/blob/main/docs/gtfs-schedule-publication.md) for required
+notices, fixture retention, and release conditions.
+
 ### LTA MRT Station Exit
 
 Station `layout.exits` records contain information from the Land Transport

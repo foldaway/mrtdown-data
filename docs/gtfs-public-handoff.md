@@ -15,6 +15,11 @@ conditions/effective release dates. This design is for the standard GTFS terms
 reviewed on 2026-10-12; honor additional conditions received with API access or
 source files. A service-calendar start date is not automatically a release embargo.
 
+The [schedule publication policy](gtfs-schedule-publication.md) records the
+derived-schedule terms reviewed on 2026-10-18, required notices, and retention
+policy. Public source delivery does not approve canonical mappings or enable
+derived schedule publication.
+
 ## Public objects
 
 - `blobs/<kind>/<sha256>.zip|pb`: original bytes.
