@@ -204,7 +204,8 @@ value alone.
 Publish it as a generated, versioned Pages/archive artifact with its own
 manifest hash. It is derived from LTA data and must carry the applicable
 attribution and licence notice. The [schedule publication policy](../../gtfs-schedule-publication.md)
-records the reviewed standard terms and the capture-specific release conditions.
+records the reviewed standard terms and requires capture-specific release
+conditions to be confirmed before publication.
 Unchanged-feed redistribution may be
 added separately if useful and permitted, but it is not required for the first
 consumer.
@@ -359,7 +360,9 @@ Exit criteria:
 
 - Apply the [schedule publication policy](../../gtfs-schedule-publication.md) for
   fixture retention, attribution and capture-specific release conditions. The
-  standard-terms review is recorded; exporter enforcement remains to be built.
+  standard-terms review is recorded; capture-specific conditions still need to
+  be confirmed and exporter enforcement remains to be built. Review and record
+  any changed licence or API terms before publishing another artifact.
 - Consume only the locally materialized schedule and handoff record supplied by
   the authorized acquisition step, and verify their manifest before generation.
 - Require the reviewed mapping's recorded schedule-topology fingerprint to

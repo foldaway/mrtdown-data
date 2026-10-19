@@ -19,6 +19,12 @@ These standard terms support retaining licensed schedule fixtures and publishing
 derived schedules. This records the standard-terms review, not a claim that
 every privately supplied file has been cleared for public release.
 
+Before each publication, check the current licence and API terms against this
+review. If their version or terms have changed, hold publication until the new
+terms have been reviewed and recorded here with the review date, version and
+applicable obligations. Updating the licence link alone does not satisfy this
+review. The licence states that continued use accepts a new version.
+
 ## Notices in a derived schedule
 
 The future scheduled-arrivals exporter must include a human-readable notice
@@ -26,8 +32,8 @@ with the artifact and expose the same source information in its manifest:
 
 - LTA DataMall and the dataset name `GTFSScheduleTrain`;
 - the source URL and access time from the verified capture;
-- the capture's attribution and licence reference, with a link to the current
-  licence if it has changed;
+- the capture's attribution and licence reference, plus the current licence link
+  after completing the terms review above if it has changed;
 - the capture ID, SHA-256 and immutable archive reference; and
 - a separate notice identifying MRTDown's mappings and export metadata under
   `CC-BY-4.0`, as described in [LICENSE-DATA.md](../LICENSE-DATA.md).
