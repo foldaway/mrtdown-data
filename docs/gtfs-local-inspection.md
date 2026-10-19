@@ -97,6 +97,10 @@ for the hash definition and complete contents. This local inspection output
 retains `generationEligible: false`; canonical mappings and publication remain
 subject to review.
 
+Supply `--assignments` with `--canonical-commit` to preview the
+[compact assigned timetable](gtfs-assigned-timetable.md), including shared
+canonical patterns, date ranges and explicit coverage gaps.
+
 ## Departure lookup
 
 `gtfs departures` inspects provider trips or stops in a verified schedule ZIP.

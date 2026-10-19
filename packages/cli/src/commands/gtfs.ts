@@ -102,6 +102,11 @@ export async function runGtfs(
         : undefined,
     );
   } else if (command === 'timetable') {
+    const assignments = readOption(args, '--assignments');
+    const canonicalCommit = readOption(args, '--canonical-commit');
+    if (Boolean(assignments) !== Boolean(canonicalCommit)) {
+      throw new Error('Use --assignments and --canonical-commit together');
+    }
     const file = readOption(args, '--file', { required: true });
     const capture = readOption(args, '--capture', { required: true });
     if (args.length) {
@@ -110,6 +115,15 @@ export async function runGtfs(
     report = await inspectGtfsTimetable(
       resolve(globals.cwd, file ?? ''),
       resolve(globals.cwd, capture ?? ''),
+      assignments
+        ? {
+            dataDir: globals.dataDir,
+            canonicalCommit: canonicalCommit ?? '',
+            assignments: JSON.parse(
+              await readFile(resolve(globals.cwd, assignments), 'utf8'),
+            ),
+          }
+        : undefined,
     );
   } else if (command === 'validate-assignments') {
     const coverage = hasFlag(args, '--coverage');

@@ -77,6 +77,11 @@ for local inspection, with their attribution and rights metadata retained as
 supplied. The export does not grant publication rights or approve canonical
 mappings. Keep these generated files outside canonical `data/` and Git.
 
+For a compact preview that also includes supplied canonical allocations, use
+the optional assignment inputs described in the
+[assigned timetable format](gtfs-assigned-timetable.md). The source-only report
+above remains the default.
+
 A read-only check against verified October source
 `e459a22be6c99a3728ee97770c02c4edbaee6c9293e48017e8ec28139962fa19`
 assembled all 19,150 trips, three calendars and 349,768 occurrences. The trip
