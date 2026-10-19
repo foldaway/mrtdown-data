@@ -544,6 +544,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added source-backed artifact preparation from a verified capture,
+  canonical topology and version-2/3 mapping draft. Source and mapping hashes,
+  capture provenance, provider fields and explicit feed dates are derived before
+  serialization. Invalid inputs fail; unresolved/unapproved mappings and
+  trip/date gaps remain visible in the preparation result. This closes the
+  producer's source-consistency step while publication review and release
+  conditions remain open. See [artifact files](../../gtfs-timetable-artifact.md).
+
 - 2026-10-18: Added shared scheduled-timetable artifact metadata and exact-byte
   preparation/verification helpers. Manifests bind the compact timetable and
   attribution notice to hashes and sizes, preserving capture, mapping, canonical

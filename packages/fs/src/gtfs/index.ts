@@ -38,3 +38,4 @@ export * from './scopedReviewDraft.js';
 export * from './timetable.js';
 export * from './timetableArtifact.js';
 export * from './topology.js';
+export * from './verifiedTimetableArtifact.js';
