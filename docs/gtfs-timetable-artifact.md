@@ -65,7 +65,12 @@ The result also includes the draft's `review` evaluation, complete trip/date
 `coverage` and `generationEligible: false`. Valid incomplete, unresolved and
 unapproved drafts can produce a local preparation result; only matched cells
 become assignments and gaps remain visible. Invalid or stale drafts fail. The
-helper performs no file writes or network calls and records no mapping approval.
+helper performs no file writes or network calls and creates no new mapping approval.
+
+An optional `mappingApproval` is checked against the exact draft and identity;
+its review result may become complete while `generationEligible` stays `false`.
+Use the [release-readiness inspector](gtfs-timetable-release.md) to also check
+the separate artifact release review, current terms and release conditions.
 
 For callers that already verified their inputs, `@mrtdown/fs` also exports the
 lower-level helpers:

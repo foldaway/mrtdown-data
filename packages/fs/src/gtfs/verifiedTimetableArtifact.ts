@@ -21,6 +21,7 @@ export interface VerifiedGtfsTimetableArtifactOptions
   dataDir: string;
   canonicalCommit: string;
   draft: unknown;
+  mappingApproval?: unknown;
 }
 
 function providerDate(value: string | undefined, field: string) {
@@ -38,7 +39,8 @@ export async function prepareVerifiedGtfsTimetableArtifact(
   handoff: string,
   options: VerifiedGtfsTimetableArtifactOptions,
 ) {
-  const { dataDir, canonicalCommit, draft, ...inputSettings } = options;
+  const { dataDir, canonicalCommit, draft, mappingApproval, ...inputSettings } =
+    options;
   const settings = settingsSchema.parse(inputSettings);
   const commit =
     GtfsReconciliationIdentitySchema.shape.canonicalCommit.parse(
@@ -75,6 +77,7 @@ export async function prepareVerifiedGtfsTimetableArtifact(
   const proposals = createScheduledTripAssignmentProposals(
     { tables, topology, identity },
     draft,
+    mappingApproval,
   );
   const assignments = proposals.document.assignments;
   const timetable = compactAssignedTimetable(tables, assignments);
