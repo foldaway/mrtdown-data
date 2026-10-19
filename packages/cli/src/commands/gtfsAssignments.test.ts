@@ -1,6 +1,7 @@
 import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { ScheduledAssignedTimetableSchema } from '@mrtdown/core';
 import {
   buildScheduleTopologyFingerprint,
   hashBytes,
@@ -153,6 +154,146 @@ async function fixture(root: string, overrides: Record<string, string> = {}) {
 }
 
 describe('GTFS assignment validation CLI', () => {
+  it('previews compact canonical allocations without changing source timing or filling date gaps', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'gtfs-assigned-timetable-'));
+    try {
+      const { document } = await fixture(root, {
+        'calendar_dates.txt':
+          'service_id,date,exception_type\nC,20260101,1\nC,20260102,1\nC,20260104,1\nC,20260106,1\nC,20260107,1\n',
+      });
+      document.assignments[0].scope.serviceDates = [
+        '2026-01-07',
+        '2026-01-04',
+        '2026-01-01',
+      ];
+      const secondScope = structuredClone(document.assignments[0]);
+      secondScope.scope.serviceDates = ['2026-01-02'];
+      document.assignments.push(secondScope);
+      const current = structuredClone(secondScope);
+      current.scope.binding.providerTripId = 'current';
+      current.scope.binding.occurrences = [
+        { providerStopId: 'P', stopSequence: '1' },
+        { providerStopId: 'P', stopSequence: '2' },
+      ];
+      document.assignments.push(current);
+      await writeFile(join(root, 'assignments.json'), JSON.stringify(document));
+      const input = await readFile(join(root, 'assignments.json'));
+      const output: string[] = [],
+        errors: string[] = [];
+      const io = {
+        stdout: (text: string) => output.push(text),
+        stderr: (text: string) => errors.push(text),
+      };
+      const base = [
+        'gtfs',
+        'timetable',
+        '--file',
+        'schedule.zip',
+        '--capture',
+        'capture.json',
+      ];
+      expect(await runCli(base, io, root)).toBe(0);
+      const source = JSON.parse(output[0]);
+      const assigned = [
+        ...base,
+        '--assignments',
+        'assignments.json',
+        '--canonical-commit',
+        commit,
+      ];
+      expect(await runCli(assigned, io, root)).toBe(0);
+      const report = JSON.parse(output[1]);
+      expect(report).toMatchObject({
+        documentKind: 'gtfs-assigned-timetable',
+        generationEligible: false,
+        capture: source.capture,
+        identity: document.identity,
+        coverage: {
+          sourceTripDateCount: 10,
+          assignedTripDateCount: 5,
+          missingTripDateCount: 5,
+          tripDateCoverageComplete: false,
+        },
+      });
+      expect(ScheduledAssignedTimetableSchema.parse(report.timetable)).toEqual(
+        report.timetable,
+      );
+      expect(report.timetable.timetable).toEqual(source.timetable);
+      expect(report.timetable.patterns).toHaveLength(1);
+      expect(report.timetable.assignments).toEqual([
+        {
+          providerTripId: 'T,late',
+          patternId: report.timetable.patterns[0].id,
+          dateRanges: [
+            { startDate: '2026-01-01', endDate: '2026-01-04' },
+            { startDate: '2026-01-07', endDate: '2026-01-07' },
+          ],
+        },
+        {
+          providerTripId: 'current',
+          patternId: report.timetable.patterns[0].id,
+          dateRanges: [{ startDate: '2026-01-02', endDate: '2026-01-02' }],
+        },
+      ]);
+      expect(report.timetableSha256).toBe(
+        hashBytes(Buffer.from(JSON.stringify(report.timetable))),
+      );
+      expect(report.assignmentsSha256).toBe(
+        hashBytes(
+          Buffer.from(
+            JSON.stringify(
+              ScheduledTripAssignmentDocumentSchema.parse(document).assignments,
+            ),
+          ),
+        ),
+      );
+      expect(await readFile(join(root, 'assignments.json'))).toEqual(input);
+      expect(
+        await runCli([...assigned, '--write', 'timetable.json'], io, root),
+      ).toBe(0);
+      expect(await readFile(join(root, 'timetable.json'), 'utf8')).toBe(
+        `${output[1]}\n`,
+      );
+      document.assignments.reverse();
+      for (const { scope } of document.assignments) {
+        scope.serviceDates.reverse();
+      }
+      await writeFile(join(root, 'assignments.json'), JSON.stringify(document));
+      expect(await runCli(assigned, io, root)).toBe(0);
+      expect(JSON.parse(output[2]).timetableSha256).toBe(
+        report.timetableSha256,
+      );
+      expect(errors).toEqual([]);
+
+      await writeFile(join(root, 'timetable.json'), 'existing');
+      document.identity.topology.sha256 = '0'.repeat(64);
+      await writeFile(join(root, 'assignments.json'), JSON.stringify(document));
+      expect(
+        await runCli([...assigned, '--write', 'timetable.json'], io, root),
+      ).toBe(1);
+      expect(errors.at(-1)).toContain('topology fingerprint');
+      expect(
+        await runCli(
+          [
+            ...base,
+            '--assignments',
+            'assignments.json',
+            '--write',
+            'timetable.json',
+          ],
+          io,
+          root,
+        ),
+      ).toBe(1);
+      expect(errors.at(-1)).toContain('together');
+      expect(await readFile(join(root, 'timetable.json'), 'utf8')).toBe(
+        'existing',
+      );
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
   it('previews verified assignments with canonical identities, source timing and boarding selection', async () => {
     const root = await mkdtemp(join(tmpdir(), 'gtfs-assigned-departures-'));
     try {

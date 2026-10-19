@@ -29,6 +29,7 @@ export * from './schema/Line.js';
 export * from './schema/Manifest.js';
 export * from './schema/Operator.js';
 export * from './schema/Rights.js';
+export * from './schema/ScheduledAssignedTimetable.js';
 export * from './schema/ScheduledServiceCalendar.js';
 export * from './schema/ScheduledStopTime.js';
 export * from './schema/ScheduledTimetable.js';

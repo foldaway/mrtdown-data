@@ -544,6 +544,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added a compact assigned-timetable content schema and optional
+  `gtfs timetable --assignments ... --canonical-commit ...` preview. The verified
+  bundle shares canonical patterns, compresses assignment dates into exact ranges
+  and retains every source trip/calendar with explicit coverage gaps. All supplied
+  assignments pass combined validation before assembly. Mapping approval,
+  capture-specific release conditions and the publication envelope remain open;
+  generation remains blocked. See [assigned timetable](../../gtfs-assigned-timetable.md).
+
 - 2026-10-18: Recorded the standard LTA terms permitting derived schedules and
   retained licensed fixtures, with a separate upstream notice in `LICENSE-DATA.md`.
   Defined required source attribution, capture provenance and retention policy
