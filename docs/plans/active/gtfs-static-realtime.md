@@ -539,6 +539,13 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-18: Added local assigned-departure previews through `gtfs departures
+  --assignments ... --canonical-commit ...`. The preview verifies the full supplied
+  assignment set and pinned inputs, then returns canonical station, service,
+  destination and platform identities with source timing. Missing active-date
+  bindings fail; source-only inspection remains unchanged. Mapping coverage and
+  approval/publication gates remain open. See [assigned previews](../../gtfs-trip-assignment-validation.md#preview-departures-with-canonical-identities).
+
 - 2026-10-18: Added opt-in boarding-only departure queries in core and the source
   CLI (`gtfs departures --boarding-only`). Candidates require pickup permission
   and a later permitted alighting occurrence within the same trip; final timestamps

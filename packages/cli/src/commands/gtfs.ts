@@ -60,6 +60,11 @@ export async function runGtfs(
     if (result.schedule?.structuralErrors.length) exitCode = 1;
   } else if (command === 'departures') {
     const boardingOnly = hasFlag(args, '--boarding-only');
+    const assignments = readOption(args, '--assignments');
+    const canonicalCommit = readOption(args, '--canonical-commit');
+    if (Boolean(assignments) !== Boolean(canonicalCommit)) {
+      throw new Error('Use --assignments and --canonical-commit together');
+    }
     const file = readOption(args, '--file', { required: true });
     const capture = readOption(args, '--capture', { required: true });
     const tripIds = readRepeatedOption(args, '--trip', false);
@@ -86,6 +91,15 @@ export async function runGtfs(
         startInstant: startInstant ?? '',
         endInstant: endInstant ?? '',
       },
+      assignments
+        ? {
+            dataDir: globals.dataDir,
+            canonicalCommit: canonicalCommit ?? '',
+            assignments: JSON.parse(
+              await readFile(resolve(globals.cwd, assignments), 'utf8'),
+            ),
+          }
+        : undefined,
     );
   } else if (command === 'timetable') {
     const file = readOption(args, '--file', { required: true });

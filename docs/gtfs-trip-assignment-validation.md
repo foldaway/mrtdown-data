@@ -178,6 +178,59 @@ Programmatic callers can use
 `inspectGtfsTripAssignments(file, handoff, { dataDir, canonicalCommit, assignments })`
 with the same document and validation behavior.
 
+## Preview departures with canonical identities
+
+Use the exported assignment document with `gtfs departures` to inspect dated
+departures carrying MRTDown identities:
+
+```sh
+npm run build:cli
+node packages/cli/dist/index.js --data-dir /absolute/path/to/pinned/data \
+  gtfs departures \
+  --file /absolute/path/schedule.zip \
+  --capture /absolute/path/capture.json \
+  --assignments /absolute/path/assignments.json \
+  --canonical-commit <40-character-commit> \
+  --stop NE6_A \
+  --from 2026-10-18T00:00:00+08:00 \
+  --to 2026-10-19T00:00:00+08:00 \
+  --boarding-only \
+  --write /absolute/path/assigned-departures.json
+```
+
+`--assignments` and `--canonical-commit` must appear together. The command verifies
+the capture, complete source manifest, supplied commit and actual topology, then
+runs combined validation on every supplied assignment, including unselected trips.
+It shares those checks with `gtfs validate-assignments`. Supply the exact pinned
+data tree; the commit flag remains an assertion checked against the document,
+not proof of Git-tree membership.
+
+Trip and stop selectors still use literal provider IDs. The result's
+`documentKind` is `gtfs-assigned-departures`; it includes the verified `identity`
+and normalized `assignmentsSha256`. Each departure adds canonical `stationId`,
+`lineId`, `serviceId`, `revisionId`, `destinationStationId` and complete `platformIds`
+to the original timing, occurrence identities and pickup/drop-off rules.
+
+The existing [window, calendar and boarding rules](gtfs-scheduled-departure-windows.md)
+apply. Every selected active trip/date requires exactly one supplied binding.
+A missing binding fails even if its events fall outside the window or boarding
+filtering would remove them. Automatic date selection is conservative; all its
+selected active dates must be assigned. Use `--service-date` for an explicit date
+selection. Inactive dates produce no departures after validation. Missing dates
+are never filled or silently skipped, and failures leave an existing output
+untouched.
+
+Programmatic callers pass a fourth argument to `inspectGtfsDepartures`:
+`{ dataDir, canonicalCommit, assignments }`. Without that argument or the paired
+CLI flags, the existing source-only report and lookup behavior remain unchanged.
+Both modes retain `generationEligible: false`. This is a local compatibility
+preview; it provides no mapping approval, publication artifact or live serving.
+
+Using the pinned October assignment packet, the example query returns 221 boarding
+candidates for source stop `NE6_A`, identified as canonical Dhoby Ghaut (`DBG`) on
+NEL with service, destination and platform identities. Removing the added canonical
+fields reproduces source-only inspection's timing and access records exactly.
+
 ## Report unassigned source dates
 
 Add `--coverage` to `gtfs validate-assignments` to include coverage after every
