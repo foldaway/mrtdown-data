@@ -1,0 +1,13 @@
+{
+  "id": "2026-10-21-ewl-minor-delay-buona-vista-to-outram-park-pasir-ris",
+  "type": "disruption",
+  "title": {
+    "en-SG": "EWL Minor Delay - Buona Vista to Outram Park (towards Pasir Ris)",
+    "zh-Hans": "EWL 轻微延误 - Buona Vista 至 Outram Park（往 Pasir Ris 方向）",
+    "ms": "EWL Kelewatan Kecil - Buona Vista ke Outram Park (ke arah Pasir Ris)",
+    "ta": "EWL சிறிய தாமதம் - Buona Vista முதல் Outram Park வரை (Pasir Ris நோக்கி)"
+  },
+  "titleMeta": {
+    "source": "@openai/gpt-6-luna"
+  }
+}
