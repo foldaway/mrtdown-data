@@ -126,9 +126,10 @@ attribution in download and consuming interfaces. These helpers do not enable re
 
 An importer must also verify canonical references/topology, source lineage and
 revision conflicts as described in the [GTFS plan](plans/active/gtfs-static-realtime.md#phase-4-consume-scheduled-arrivals-in-mrtdown-site).
-A positive revision alone does not establish that it supersedes another
-artifact. Retrieval time and an opaque provider version string do not establish
-source ordering. Existing previews, coverage and publication eligibility remain
+The shared [source-admission helper](gtfs-timetable-import.md) implements the
+pairwise lineage and correction checks. A positive revision alone does not
+establish that it supersedes another artifact. Retrieval time and an opaque
+provider version string do not establish source ordering. Existing previews, coverage and publication eligibility remain
 unchanged.
 
 A local check wrapped the retained October preview twice and produced identical

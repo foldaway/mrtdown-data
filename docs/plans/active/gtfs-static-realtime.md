@@ -547,6 +547,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-22: Added shared, pure source-admission checks for byte-verified
+  timetable artifacts. Baselines, successor lineage, equal-version conflicts
+  and increasing same-source corrections require exact reviewed identities.
+  Retrieval times never establish ordering. This begins the import policy;
+  canonical validation, retained history, atomic installation and site queries
+  remain ahead. Real mapping and release approvals remain outstanding. See
+  [import checks](../../gtfs-timetable-import.md).
+
 - 2026-10-21: Added opt-in Pages/archive integration through the release CLI.
   It checks the source and reviews against the canonical data actually being
   packaged, includes all seven bundle files in both root archives, and binds
