@@ -10,6 +10,7 @@ import {
 } from '@mrtdown/fs';
 import { hasFlag, readOption } from '../args.js';
 import type { CliIO, GlobalOptions } from '../types.js';
+import { runGtfsRelease } from './gtfsRelease.js';
 import { writeTextFile } from './manifest.js';
 
 function readRepeatedOption(
@@ -32,6 +33,9 @@ export async function runGtfs(
   io: CliIO,
 ): Promise<number> {
   const command = args.shift();
+  if (command === 'release') {
+    return runGtfsRelease(args, globals, io);
+  }
   const output = readOption(args, '--write');
   let report: unknown;
   let exitCode = 0;
@@ -154,7 +158,7 @@ export async function runGtfs(
     report = await buildScheduleTopologyFingerprint(globals.dataDir);
   } else {
     throw new Error(
-      'Expected gtfs inspect, gtfs departures, gtfs timetable, gtfs validate-assignments or gtfs topology',
+      'Expected gtfs inspect, gtfs departures, gtfs timetable, gtfs release, gtfs validate-assignments or gtfs topology',
     );
   }
   const json = `${JSON.stringify(report, null, command === 'timetable' ? undefined : 2)}\n`;

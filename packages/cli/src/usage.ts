@@ -3,6 +3,7 @@ export const usage = `Usage:
   mrtdown gtfs inspect --directory <schedule-dir> --manifest <table-hashes.json> [--write <report.json>]
   mrtdown gtfs departures --file <ZIP> --capture <JSON> (--trip <id> | --stop <id>) [--service-date <YYYY-MM-DD>] --from <instant> --to <instant> [--boarding-only] [--assignments <JSON> --canonical-commit <SHA>] [--write <report.json>]
   mrtdown gtfs timetable --file <ZIP> --capture <JSON> [--assignments <JSON> --canonical-commit <SHA>] [--write <timetable.json>]
+  mrtdown [--data-dir <path>] gtfs release --file <ZIP> --capture <JSON> --config <release.json> [--out <new-directory>]
   mrtdown [--data-dir <path>] gtfs validate-assignments --file <ZIP> --capture <JSON> --assignments <JSON> --canonical-commit <SHA> [--coverage] [--write <report.json>]
   mrtdown [--data-dir <path>] gtfs topology [--write <fingerprint.json>]
   mrtdown [--data-dir <path>] validate [--scope <scope>]

@@ -89,6 +89,11 @@ and full-record manifest; future reviewed mappings must record all three.
 
 ## Timetable export
 
+For the online reviewed-bundle check and optional local export, use
+[`gtfs release`](gtfs-timetable-release.md#checking-and-exporting-from-the-cli).
+It freshly downloads the current terms and enforces the mapping and release
+review gates. The inspection commands below remain offline.
+
 `gtfs timetable` exports all source trip timing and calendars from a verified
 schedule ZIP. Its compact JSON contains capture provenance, raw-table hashes and
 a separate normalized timetable hash. Invalid captures or schedules fail before

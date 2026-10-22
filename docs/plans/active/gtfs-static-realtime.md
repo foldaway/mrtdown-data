@@ -546,6 +546,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-21: Added `gtfs release` for checking a release or writing a reviewed
+  bundle locally. Each attempt fetches current terms independently from the
+  fixed official LTA URLs, uses the command's clock and rejects configuration
+  overrides for either. Missing or mismatched reviews block export with a
+  failing exit status. Pages and site integration remain ahead; real mapping
+  and release approvals are still outstanding. See
+  [release CLI](../../gtfs-timetable-release.md#checking-and-exporting-from-the-cli).
+
 - 2026-10-18: Added local bundle export that rebuilds verified source inputs and
   writes only after the release checks pass. The bundle retains the exact
   timetable, manifest and notice bytes alongside mapping decisions, approvals,
