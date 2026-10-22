@@ -27,7 +27,7 @@ review. The licence states that continued use accepts a new version.
 
 ## Notices in a derived schedule
 
-The future scheduled-arrivals exporter must include a human-readable notice
+The scheduled-arrivals exporter must include a human-readable notice
 with the artifact and expose the same source information in its manifest:
 
 - LTA DataMall and the dataset name `GTFSScheduleTrain`;
@@ -74,11 +74,14 @@ private inspection without becoming publication inputs.
 
 Publication also requires complete, reviewed mappings and the matching canonical
 topology described in the [GTFS plan](plans/active/gtfs-static-realtime.md#phase-3-generate-the-scheduled-arrivals-artifact).
-These are requirements for the future exporter. Local departure previews and
-assignment proposals remain `generationEligible: false`; this policy adds no
-exporter, retained provider fixture, or schedule publication.
+Local departure previews and assignment proposals remain
+`generationEligible: false`. The offline
+[reviewed bundle exporter](gtfs-timetable-release.md#exporting-a-reviewed-bundle)
+now enforces these checks for local file output and retains review and coverage
+evidence. Public download and consuming interfaces remain to be built.
 
 The [release-readiness inspector](gtfs-timetable-release.md) now checks supplied
 mapping and artifact review records, current terms identities, redistribution
-status and the reviewed Effective Date. Export integration must obtain those
-records from the trusted review workflow and freshly retrieve the current terms.
+status and the reviewed Effective Date. The exporter uses the same checks.
+Its caller must obtain those records from the trusted review workflow and
+freshly retrieve the current terms.

@@ -71,6 +71,8 @@ An optional `mappingApproval` is checked against the exact draft and identity;
 its review result may become complete while `generationEligible` stays `false`.
 Use the [release-readiness inspector](gtfs-timetable-release.md) to also check
 the separate artifact release review, current terms and release conditions.
+The [reviewed bundle exporter](gtfs-timetable-release.md#exporting-a-reviewed-bundle)
+writes these files and their review evidence only after those checks pass.
 
 For callers that already verified their inputs, `@mrtdown/fs` also exports the
 lower-level helpers:
