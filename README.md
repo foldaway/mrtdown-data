@@ -85,6 +85,16 @@ npm run ingest:webhook
 [The triage guide](packages/triage/README.md) covers crowd reports, targeted
 repairs, and model setup. `fixtures/ingest/crowd-report.json` is a sample payload.
 
+The [ingest workflow](.github/workflows/ingest.yml) processes one event at a
+time and queues up to 100 pending runs. It rebases reused automated PR branches
+onto current `main` before ingestion and protects pushes with explicit leases.
+Existing PRs are validated even when ingestion adds no data. If main advances
+before merge, it retries up to three times, rebasing and rerunning
+[deterministic validation](scripts/validate-ingest.sh) without repeating paid
+ingestion. Conflicts and concurrent PR edits stop the run for manual resolution.
+The base check and GitHub merge are separate requests; strict up-to-date branch
+protection or a merge queue is needed to enforce the base atomically on GitHub.
+
 Inspect past ingestion outcomes without model calls or changes to `data/`:
 
 ```bash

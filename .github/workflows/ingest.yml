@@ -12,6 +12,8 @@ on:
 
 concurrency:
   group: ingestion
+  cancel-in-progress: false
+  queue: max
 
 permissions:
   actions: write
@@ -43,7 +45,19 @@ jobs:
             BRANCH_NAME=$LATEST_BRANCH
           fi
           echo "Latest updated branch: $BRANCH_NAME"
-          git checkout $BRANCH_NAME
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git fetch origin main
+          REMOTE_HEAD=""
+          if [[ "$BRANCH_NAME" = "main" ]]; then
+            git checkout -B main origin/main
+          else
+            git fetch origin "$BRANCH_NAME"
+            REMOTE_HEAD=$(git rev-parse "origin/$BRANCH_NAME")
+            git checkout -B "$BRANCH_NAME" "origin/$BRANCH_NAME"
+            git rebase origin/main
+          fi
+          echo "remote-head=$REMOTE_HEAD" >> "$GITHUB_OUTPUT"
           echo "latest-branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
       - uses: actions/setup-node@v6
         with:
@@ -75,9 +89,11 @@ jobs:
       - run: npm run data:validate
       - name: Check for changes
         id: make-changes
+        env:
+          LATEST_BRANCH: ${{ steps.brancher.outputs.latest-branch }}
         run: |-
-          if [[ -n $(git status --porcelain) ]]; then
-            echo "There are uncommitted changes"
+          if [[ -n $(git status --porcelain) || "$LATEST_BRANCH" != "main" ]]; then
+            echo "Validate new data or the existing automated PR, including a rebase-only update"
             echo "has_changes=true" >> $GITHUB_OUTPUT
           else
             echo "Working directory is clean"
@@ -85,13 +101,7 @@ jobs:
           fi
       - name: Validate automated changes before merging
         if: steps.make-changes.outputs.has_changes == 'true'
-        run: |
-          npm run check
-          npm run build:packages
-          npm run fixtures:validate
-          npm test
-          npm run test:packages
-          npm run pages:build
+        run: bash scripts/validate-ingest.sh
       - name: Target branch
         if: steps.make-changes.outputs.has_changes == 'true'
         id: target-branch
@@ -105,18 +115,20 @@ jobs:
       - name: Push changes
         if: steps.make-changes.outputs.has_changes == 'true'
         id: push-changes
+        env:
+          BRANCH_NAME: ${{ steps.target-branch.outputs.branch-name }}
+          LATEST_BRANCH: ${{ steps.brancher.outputs.latest-branch }}
+          REMOTE_HEAD: ${{ steps.brancher.outputs.remote-head }}
         run: |-
-          BRANCH_NAME="${{ steps.target-branch.outputs.branch-name }}"
-          if [[ "${{ steps.brancher.outputs.latest-branch }}" = "main" ]]; then
-            git checkout -b $BRANCH_NAME
-          else
-            git checkout $BRANCH_NAME
+          if [[ "$LATEST_BRANCH" = "main" ]]; then
+            git checkout -b "$BRANCH_NAME"
+            REMOTE_HEAD=""
           fi
           git add -A
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
-          git commit -m "chore(data): automated changes"
-          git push origin $BRANCH_NAME
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(data): automated changes"
+          fi
+          git push --force-with-lease="refs/heads/$BRANCH_NAME:$REMOTE_HEAD" origin "HEAD:refs/heads/$BRANCH_NAME"
           echo "head-sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - name: Create Pull Request
         if: steps.make-changes.outputs.has_changes == 'true' && steps.brancher.outputs.latest-branch == 'main'
@@ -146,7 +158,36 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           BRANCH_NAME: ${{ steps.target-branch.outputs.branch-name }}
           HEAD_SHA: ${{ steps.push-changes.outputs.head-sha }}
-        run: gh pr merge "$BRANCH_NAME" --repo "$GITHUB_REPOSITORY" --squash --match-head-commit "$HEAD_SHA"
+        run: |
+          for attempt in 1 2 3; do
+            git fetch origin main "$BRANCH_NAME"
+            if [[ $(git rev-parse "origin/$BRANCH_NAME") != "$HEAD_SHA" ]]; then
+              echo "Remote PR head changed; stopping to preserve concurrent edits."
+              exit 1
+            fi
+            BASE_SHA=$(git rev-parse origin/main)
+            git rebase origin/main
+            REBASED_HEAD=$(git rev-parse HEAD)
+            if [[ "$REBASED_HEAD" != "$HEAD_SHA" ]]; then
+              npm ci
+              bash scripts/validate-ingest.sh
+              test -z "$(git status --porcelain)"
+              git push --force-with-lease="refs/heads/$BRANCH_NAME:$HEAD_SHA" origin "HEAD:refs/heads/$BRANCH_NAME"
+              HEAD_SHA=$REBASED_HEAD
+            fi
+            if [[ $(git ls-remote origin refs/heads/main | cut -f1) != "$BASE_SHA" ]]; then
+              continue
+            fi
+            if gh pr merge "$BRANCH_NAME" --repo "$GITHUB_REPOSITORY" --squash --match-head-commit "$HEAD_SHA"; then
+              exit 0
+            fi
+            # Retry only a moving base, not permissions or required-check failures.
+            if [[ $(git ls-remote origin refs/heads/main | cut -f1) = "$BASE_SHA" ]]; then
+              exit 1
+            fi
+          done
+          echo "Main kept advancing; stopping after 3 attempts."
+          exit 1
       - name: Deploy merged data to Pages
         if: steps.make-changes.outputs.has_changes == 'true'
         env:
