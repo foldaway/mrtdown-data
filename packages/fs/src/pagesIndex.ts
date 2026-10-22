@@ -1,4 +1,8 @@
-import type { Manifest } from '@mrtdown/core';
+import {
+  type Manifest,
+  type ScheduledTimetablePagesEntry,
+  ScheduledTimetablePagesEntrySchema,
+} from '@mrtdown/core';
 import type { Element, Root } from 'hast';
 import { toHtml } from 'hast-util-to-html';
 
@@ -311,6 +315,7 @@ function buildFilesTable(
   title: string,
   id: string,
   rows: FileLinkRow[],
+  notice?: Element,
 ): Element[] {
   return [
     {
@@ -319,6 +324,7 @@ function buildFilesTable(
       properties: { id },
       children: [{ type: 'text', value: title }],
     },
+    ...(notice ? [notice] : []),
     {
       type: 'element',
       tagName: 'table',
@@ -391,6 +397,88 @@ function buildExportRows(options: PagesIndexOptions): FileLinkRow[] {
   return rows;
 }
 
+function buildTimetableAttribution(
+  entry: ScheduledTimetablePagesEntry,
+): Element {
+  return paragraph([
+    {
+      type: 'text',
+      value: `${entry.capture.attribution}. Source: LTA DataMall `,
+    },
+    linkElement(entry.capture.source, 'GTFSScheduleTrain'),
+    { type: 'text', value: '. Upstream data is subject to the ' },
+    linkElement(entry.currentLicenceReference, 'current LTA licence'),
+    {
+      type: 'text',
+      value:
+        '. MRTDown’s independent mappings and export metadata are under CC-BY-4.0. This is an independently mapped schedule snapshot, not an official service or live predictions.',
+    },
+  ]);
+}
+
+function buildScheduledTimetable(
+  entry: ScheduledTimetablePagesEntry,
+): Element[] {
+  return [
+    {
+      type: 'element',
+      tagName: 'h2',
+      properties: { id: 'scheduled-timetable' },
+      children: [{ type: 'text', value: 'LTA-derived scheduled timetable' }],
+    },
+    buildTimetableAttribution(entry),
+    paragraph([
+      {
+        type: 'text',
+        value: `Retrieved ${entry.capture.retrieved_at}. Provider-declared calendar coverage: ${entry.feedRange.startDate} to ${entry.feedRange.endDate}. `,
+      },
+      {
+        type: 'text',
+        value: `${entry.coverage.assignedTripDateCount} assigned and ${entry.coverage.missingTripDateCount} unassigned trip/date pairs. Reviewed exclusions remain coverage gaps.`,
+      },
+    ]),
+    paragraph([
+      {
+        type: 'text',
+        value: `Timetable manifest SHA-256: ${entry.manifestSha256}. Release report SHA-256: ${entry.releaseSha256}.`,
+      },
+    ]),
+    ...buildFilesTable('Timetable files', 'timetable-files', [
+      {
+        href: 'scheduled-timetable/manifest.json',
+        description: 'Timetable manifest and source provenance.',
+      },
+      {
+        href: 'scheduled-timetable/timetable.json',
+        description:
+          'Compact assigned timetable; scheduled times, not live predictions.',
+      },
+      {
+        href: 'scheduled-timetable/NOTICE.txt',
+        description:
+          'Source attribution and separate upstream and MRTDown licence notices.',
+      },
+      {
+        href: 'scheduled-timetable/release.json',
+        description:
+          'Release checks, mapping review and full trip/date coverage.',
+      },
+      {
+        href: 'scheduled-timetable/mapping-draft.json',
+        description: 'Reviewed mapping decisions, including exclusions.',
+      },
+      {
+        href: 'scheduled-timetable/mapping-approval.json',
+        description: 'Mapping approval bound to the source and draft.',
+      },
+      {
+        href: 'scheduled-timetable/release-review.json',
+        description: 'Release decision and applicable terms review.',
+      },
+    ]),
+  ];
+}
+
 export function renderPagesRootIndex(
   options: PagesRootIndexOptions = {},
 ): string {
@@ -457,6 +545,9 @@ export function renderPagesIndex(
   manifest: Manifest,
   options: PagesIndexOptions = {},
 ): string {
+  const timetable = manifest.scheduledTimetable
+    ? ScheduledTimetablePagesEntrySchema.parse(manifest.scheduledTimetable)
+    : undefined;
   const sections = [
     {
       id: 'lines',
@@ -525,13 +616,22 @@ export function renderPagesIndex(
         buildRepositoryParagraph(),
         ...buildTableOfContents([
           { href: '#exports', label: 'Exports' },
+          ...(timetable
+            ? [{ href: '#scheduled-timetable', label: 'Scheduled timetable' }]
+            : []),
           ...sections.map((section) => ({
             href: `#${section.id}`,
             label: section.title,
             count: Object.keys(section.records).length,
           })),
         ]),
-        ...buildFilesTable('Exports', 'exports', buildExportRows(options)),
+        ...buildFilesTable(
+          'Exports',
+          'exports',
+          buildExportRows(options),
+          timetable ? buildTimetableAttribution(timetable) : undefined,
+        ),
+        ...(timetable ? buildScheduledTimetable(timetable) : []),
         ...tables,
         buildFooter(generatedAt, manifest.generatedAt),
       ],

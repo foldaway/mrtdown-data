@@ -78,10 +78,14 @@ Local departure previews and assignment proposals remain
 `generationEligible: false`. The offline
 [reviewed bundle exporter](gtfs-timetable-release.md#exporting-a-reviewed-bundle)
 now enforces these checks for local file output and retains review and coverage
-evidence. Public download and consuming interfaces remain to be built.
+evidence. The opt-in [Pages integration](gtfs-timetable-release.md#packaging-a-release-for-pages)
+adds download-page attribution and includes the reviewed files in both archives.
+The consuming site's schedule view still needs its own conspicuous source notice.
 
 The [release-readiness inspector](gtfs-timetable-release.md) now checks supplied
 mapping and artifact review records, current terms identities, redistribution
 status and the reviewed Effective Date. The exporter uses the same checks.
 Its caller must obtain those records from the trusted review workflow and
-freshly retrieve the current terms.
+freshly retrieve the current terms. The Pages builder uses `gtfs release` to
+fetch those terms and recheck the original source against the concurrently
+packaged canonical data. Default deployment remains without a timetable.
