@@ -37,7 +37,8 @@
     "@mrtdown/core": "2.0.0-alpha.38",
     "@mrtdown/fs": "2.0.0-alpha.42",
     "@mrtdown/triage": "2.0.0-alpha.49",
-    "hast-util-to-html": "^9.0.5"
+    "hast-util-to-html": "^9.0.5",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.0",

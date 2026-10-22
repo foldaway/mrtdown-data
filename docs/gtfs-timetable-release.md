@@ -149,9 +149,63 @@ not an atomic public deployment, and a terminated process can leave partial file
 
 This is an offline file writer. The caller still obtains trusted review records
 and freshly retrieved terms independently, supplies the recorded canonical tree,
-and retains the original capture separately. No CLI or Pages publishing path is
-enabled by this API. A download page and consuming site still need conspicuous
+and retains the original capture separately. Pages publishing remains disabled.
+A download page and consuming site still need conspicuous
 source attribution before public release.
+
+## Checking and exporting from the CLI
+
+The CLI provides an online release check:
+
+```sh
+node packages/cli/dist/index.js --data-dir /path/to/canonical/data \
+  gtfs release --file /path/to/schedule.zip --capture /path/to/capture.json \
+  --config /path/to/review/config.json
+```
+
+Build it first with `npm run build:cli`. The configuration is strict JSON;
+replace the commit placeholder with the full commit for the supplied canonical
+tree and use the reviewed mapping's version and correction revision:
+
+```json
+{
+  "schemaVersion": 1,
+  "canonicalCommit": "<40-character canonical Git commit>",
+  "mappingVersion": "review-v1",
+  "correctionRevision": 1,
+  "currentLicenceReference": "https://datamall.lta.gov.sg/content/datamall/en/SingaporeOpenDataLicence.html",
+  "draft": "mapping-draft.json",
+  "mappingApproval": "mapping-approval.json",
+  "releaseReview": "release-review.json"
+}
+```
+
+Review-file paths resolve relative to the configuration file; command-line paths
+resolve relative to the working directory. The approval and release-review paths
+are optional for a preflight check, which reports their absence as blockers. The
+command creates no approvals and does not authenticate the supplied records.
+Obtain them from the trusted review workflow described above.
+
+Each attempt downloads both terms documents from the fixed official LTA URLs,
+requests cache bypass, rejects redirects, and hashes the received bytes. A
+download failure, empty document, response over 2 MiB or 30-second acquisition
+timeout stops the attempt. The CLI accepts only the licence reference shown
+above; changed references require an explicit implementation and review update.
+Configuration cannot supply `currentTerms` or `releaseInstant`: the command uses
+the newly acquired identities and its clock. The JSON report includes both terms
+identities for comparison with the reviewed records. Downloaded terms bodies
+are not stored by this command, and matching hashes alone do not approve terms.
+
+Without `--out`, the command writes only a JSON report to stdout. Add
+`--out /path/to/new-bundle` to request the seven-file bundle described above. Both
+modes exit 1 when release is blocked and exit 0 when eligible. Invalid input or
+download failures exit 1 with an error on stderr. `exported` becomes `true` only
+after the complete bundle is written; a successful check without `--out` reports
+`exported: false`. The command rejects `--write` and never saves a report file
+implicitly. Its output-directory rules are the same as the offline exporter.
+
+Existing GTFS inspection and timetable commands remain offline. This command
+provides local release tooling; it does not publish to Pages or the consuming site.
 
 Against the retained October capture and full version-3 draft, inspection
 preserved the existing artifact digests and 1,502,097 assigned / 990,143 unassigned
@@ -159,3 +213,9 @@ trip/date pairs. Release remained blocked by incomplete mapping review, missing
 current terms and a missing release review. No approval assertions were created.
 Running the exporter against those same inputs returned `exported: false`,
 preserved the manifest digest and coverage counts, and created no output files.
+
+On 2026-10-21, the CLI reacquired that same hash-verified public capture and
+fetched both current terms documents. It preserved the manifest digest and
+coverage counts, reported incomplete mapping review and a missing release review,
+and created no bundle when invoked with `--out`. Fetching current terms did not
+create a release approval.
