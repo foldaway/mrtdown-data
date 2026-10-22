@@ -65,6 +65,10 @@ TAR archives. It validates the exported data and redacts source text and
 rendered content when the source registry disallows public export. Generated
 test data appears under `fixtures/` in the same bundle.
 
+The build can also include a reviewed GTFS timetable with source attribution
+and release checks. See [timetable Pages packaging](docs/gtfs-timetable-release.md#packaging-a-release-for-pages).
+Default builds omit the timetable.
+
 For relevant changes, CI builds branch and pull request previews as temporary
 artifacts. The [Pages deployment workflow](.github/workflows/pages-deploy.yml)
 publishes from `main`, then asks [mrtdown-site](https://github.com/foldaway/mrtdown-site)

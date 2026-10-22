@@ -149,9 +149,8 @@ not an atomic public deployment, and a terminated process can leave partial file
 
 This is an offline file writer. The caller still obtains trusted review records
 and freshly retrieved terms independently, supplies the recorded canonical tree,
-and retains the original capture separately. Pages publishing remains disabled.
-A download page and consuming site still need conspicuous
-source attribution before public release.
+and retains the original capture separately. The optional Pages build below adds
+download-page attribution; a consuming site still needs its own source notice.
 
 ## Checking and exporting from the CLI
 
@@ -207,6 +206,61 @@ implicitly. Its output-directory rules are the same as the offline exporter.
 Existing GTFS inspection and timetable commands remain offline. This command
 provides local release tooling; it does not publish to Pages or the consuming site.
 
+## Packaging a release for Pages
+
+The Pages builder can include a reviewed timetable alongside the canonical
+archive. Supply all three GTFS inputs explicitly, using the same configuration
+as `gtfs release`:
+
+```sh
+npm run pages:build -- \
+  --data-dir /path/to/canonical/data --out-dir /path/to/pages-output \
+  --gtfs-file /path/to/schedule.zip --gtfs-capture /path/to/capture.json \
+  --gtfs-config /path/to/review/config.json
+```
+
+Builder paths resolve relative to the repository root. Keep the ZIP, capture,
+configuration and referenced review files outside the output directory. The
+builder stages a copy of the canonical data, validates and applies the existing
+public-export rules, then runs the release command against that exact copy.
+The mapping's topology fingerprint and references must therefore match the
+canonical data being archived. Current terms are fetched for this attempt;
+existing bundle files or earlier readiness reports cannot authorize it.
+
+A missing approval, mismatched topology, changed terms or invalid source blocks
+the build. Failed staging is removed and the previous output is preserved. The
+completed build replaces the output only after canonical and fixture exports,
+timetable files and archives have been prepared. This is a local artifact build;
+deployment still uses the separate Pages workflow.
+
+The reviewed seven-file bundle appears under `scheduled-timetable/` in the
+Pages output and both root archives. The root version-2 `manifest.json` gains an
+optional `scheduledTimetable` entry, validated by
+`ScheduledTimetablePagesEntrySchema` from `@mrtdown/core`. It contains:
+
+- `manifestSha256`, the exact digest of `scheduled-timetable/manifest.json`;
+- `releaseSha256`, the exact digest of `scheduled-timetable/release.json`;
+- the verified `capture`, provider-declared `feedRange` and current licence link;
+- `coverage`: source, assigned and missing trip/date counts.
+
+The release report retains the full review and exclusion/coverage information;
+the timetable manifest binds the timetable and notice bytes and records the
+source, mapping and canonical topology identity. Consumers need a trusted root
+index before relying on its digests. These hashes do not establish source
+ordering or replace the import checks in the GTFS plan. Artifact bytes remain
+deterministic; the release-attempt report records the current check time.
+
+The download page shows LTA attribution and the current licence beside archive
+and timetable links. It also shows retrieval time, declared calendar bounds,
+coverage gaps and MRTDown's separate contribution licence, and labels the output
+as an independently mapped schedule rather than live predictions.
+
+Without GTFS flags, the build stays offline and omits timetable files, index
+entries and links. The fixture export never receives the real timetable. A stray
+`scheduled-timetable/` directory under source data is excluded from copying; only
+the checked exporter creates that reserved output. Current deployment workflows
+do not pass GTFS inputs, and real mapping and release approvals remain outstanding.
+
 Against the retained October capture and full version-3 draft, inspection
 preserved the existing artifact digests and 1,502,097 assigned / 990,143 unassigned
 trip/date pairs. Release remained blocked by incomplete mapping review, missing
@@ -219,3 +273,6 @@ fetched both current terms documents. It preserved the manifest digest and
 coverage counts, reported incomplete mapping review and a missing release review,
 and created no bundle when invoked with `--out`. Fetching current terms did not
 create a release approval.
+
+The Pages build was also checked with these real inputs. It refused the release,
+preserved the previous output and removed its temporary staging directory.

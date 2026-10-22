@@ -51,7 +51,7 @@ function collectionManifestKey(
   collection: EntityCollection,
 ): Exclude<
   keyof Manifest,
-  'generatedAt' | 'issues' | 'manifestVersion' | 'rights'
+  'generatedAt' | 'issues' | 'manifestVersion' | 'rights' | 'scheduledTimetable'
 > {
   switch (collection) {
     case 'landmark':

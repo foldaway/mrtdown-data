@@ -362,8 +362,9 @@ Exit criteria:
   fixture retention, attribution and capture-specific release conditions. The
   standard-terms review is recorded; capture-specific conditions still need to
   be confirmed. Offline bundle export enforces supplied review records and terms
-  identities; public publishing still needs trusted input acquisition and
-  conspicuous attribution. Review and record any changed licence or API terms
+  identities. The opt-in Pages build fetches current terms and adds conspicuous
+  download attribution; trusted approval records and source inputs are still
+  required. Review and record any changed licence or API terms
   before publishing another artifact.
 - Consume only the locally materialized schedule and handoff record supplied by
   the authorized acquisition step, and verify their manifest before generation.
@@ -545,6 +546,15 @@ Exit criteria:
   separate community estimate alongside the LTA schedule?
 
 ## Progress Log
+
+- 2026-10-21: Added opt-in Pages/archive integration through the release CLI.
+  It checks the source and reviews against the canonical data actually being
+  packaged, includes all seven bundle files in both root archives, and binds
+  timetable and release-report digests into the root manifest. Download links
+  show source attribution, licence, retrieval time and coverage. Blocked builds
+  preserve existing output. Default builds remain offline without a timetable;
+  real approvals and site import are still outstanding. See
+  [Pages packaging](../../gtfs-timetable-release.md#packaging-a-release-for-pages).
 
 - 2026-10-21: Added `gtfs release` for checking a release or writing a reviewed
   bundle locally. Each attempt fetches current terms independently from the

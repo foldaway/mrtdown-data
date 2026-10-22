@@ -1,5 +1,13 @@
 import { execFile } from 'node:child_process';
-import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
+import {
+  cp,
+  mkdir,
+  mkdtemp,
+  readFile,
+  rename,
+  rm,
+  writeFile,
+} from 'node:fs/promises';
 import { dirname, isAbsolute, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
@@ -13,6 +21,7 @@ const generatedIndexPattern = /[\\/](?:manifest\.json|index\.html)$/;
 function usage() {
   return `Usage:
   node scripts/build-pages-artifact.mjs [--data-dir <path>] [--out-dir <path>]
+    [--gtfs-file <ZIP> --gtfs-capture <JSON> --gtfs-config <JSON>]
 
 Defaults:
   --data-dir data
@@ -34,7 +43,14 @@ function parseArgs(argv) {
       return { ...options, help: true };
     }
 
-    if (arg !== '--data-dir' && arg !== '--out-dir') {
+    const key = {
+      '--data-dir': 'dataDir',
+      '--out-dir': 'outDir',
+      '--gtfs-file': 'gtfsFile',
+      '--gtfs-capture': 'gtfsCapture',
+      '--gtfs-config': 'gtfsConfig',
+    }[arg];
+    if (!key) {
       throw new Error(`Unknown option: ${arg}`);
     }
 
@@ -43,11 +59,7 @@ function parseArgs(argv) {
       throw new Error(`${arg} requires a value`);
     }
 
-    if (arg === '--data-dir') {
-      options.dataDir = resolve(repoRoot, value);
-    } else {
-      options.outDir = resolve(repoRoot, value);
-    }
+    options[key] = resolve(repoRoot, value);
   }
 
   return options;
@@ -110,7 +122,84 @@ function assertArtifactPaths(options) {
 function isExcludedDataSourcePath(sourceDataDir, source) {
   const relativeSource = relative(sourceDataDir, source);
   const [firstSegment] = relativeSource.split(/[\\/]/);
-  return firstSegment === 'source';
+  return firstSegment === 'source' || firstSegment === 'scheduled-timetable';
+}
+
+async function exportTimetable(exportDir, fsPackage, options) {
+  const { runCli } = await import('../packages/cli/dist/index.js');
+  const output = [],
+    errors = [];
+  const bundleDir = resolve(exportDir, '..', 'scheduled-timetable');
+  const exitCode = await runCli(
+    [
+      '--data-dir',
+      exportDir,
+      'gtfs',
+      'release',
+      '--file',
+      options.gtfsFile,
+      '--capture',
+      options.gtfsCapture,
+      '--config',
+      options.gtfsConfig,
+      '--out',
+      bundleDir,
+    ],
+    {
+      stdout: (text) => output.push(text),
+      stderr: (text) => errors.push(text),
+    },
+  );
+  if (exitCode !== 0) {
+    const blockers = output.length
+      ? JSON.parse(output[0]).release.blockers
+      : errors;
+    throw new Error(`Timetable publication blocked: ${blockers.join('; ')}`);
+  }
+  const report = JSON.parse(output[0]);
+  if (!report.exported || !report.release.eligible) {
+    throw new Error('Timetable publication did not produce an eligible bundle');
+  }
+  const manifestBytes = await readFile(resolve(bundleDir, 'manifest.json'));
+  if (fsPackage.hashBytes(manifestBytes) !== report.manifestSha256) {
+    throw new Error('Timetable manifest changed after export');
+  }
+  const { capture, feedRange, currentLicenceReference } = JSON.parse(
+    manifestBytes.toString('utf8'),
+  );
+  const { sourceTripDateCount, assignedTripDateCount, missingTripDateCount } =
+    report.coverage;
+  const entry = {
+    manifestSha256: report.manifestSha256,
+    releaseSha256: fsPackage.hashBytes(
+      await readFile(resolve(bundleDir, 'release.json')),
+    ),
+    capture,
+    feedRange,
+    currentLicenceReference,
+    coverage: {
+      sourceTripDateCount,
+      assignedTripDateCount,
+      missingTripDateCount,
+    },
+  };
+  await rename(bundleDir, resolve(exportDir, 'scheduled-timetable'));
+  return entry;
+}
+
+async function assertTimetableInputPaths(options) {
+  const config = JSON.parse(await readFile(options.gtfsConfig, 'utf8'));
+  const inputs = [options.gtfsFile, options.gtfsCapture, options.gtfsConfig];
+  for (const field of ['draft', 'mappingApproval', 'releaseReview']) {
+    if (typeof config?.[field] === 'string') {
+      inputs.push(resolve(dirname(options.gtfsConfig), config[field]));
+    }
+  }
+  for (const input of inputs) {
+    if (input === options.outDir || isSubpath(options.outDir, input)) {
+      throw new Error('--out-dir must not contain timetable inputs');
+    }
+  }
 }
 
 function isGeneratedSchematicMapArtifactPath(sourceDataDir, source) {
@@ -151,6 +240,13 @@ async function buildDataExport(
     resolve(exportDir, 'LICENSE-DATA.md'),
   );
   const manifest = await fsPackage.buildManifest(exportDir);
+  if (options.gtfsConfig) {
+    manifest.scheduledTimetable = await exportTimetable(
+      exportDir,
+      fsPackage,
+      options,
+    );
+  }
   await writeFile(
     resolve(exportDir, 'manifest.json'),
     `${JSON.stringify(manifest, null, 2)}\n`,
@@ -165,6 +261,46 @@ async function buildDataExport(
   await createArchives(exportDir);
 }
 
+export async function buildPagesArtifact(options) {
+  assertArtifactPaths(options);
+  const gtfsInputs = [
+    options.gtfsFile,
+    options.gtfsCapture,
+    options.gtfsConfig,
+  ];
+  if (gtfsInputs.some(Boolean) && !gtfsInputs.every(Boolean)) {
+    throw new Error(
+      'Use --gtfs-file, --gtfs-capture and --gtfs-config together',
+    );
+  }
+  if (options.gtfsConfig) {
+    await assertTimetableInputPaths(options);
+  }
+  const fsPackage = await loadFsPackage();
+  await mkdir(dirname(options.outDir), { recursive: true });
+  const stage = await mkdtemp(
+    resolve(dirname(options.outDir), '.pages-build-'),
+  );
+  const exportDir = resolve(stage, 'data');
+  try {
+    await mkdir(exportDir);
+    await writeFile(resolve(exportDir, '.nojekyll'), '');
+    await buildDataExport(options.dataDir, exportDir, fsPackage, {
+      ...options,
+      includeFixtureExportLinks: true,
+    });
+    await buildDataExport(
+      options.fixtureDataDir,
+      resolve(exportDir, 'fixtures'),
+      fsPackage,
+    );
+    await rm(options.outDir, { recursive: true, force: true });
+    await rename(exportDir, options.outDir);
+  } finally {
+    await rm(stage, { recursive: true, force: true });
+  }
+}
+
 async function main() {
   const options = parseArgs(process.argv.slice(2));
   if (options.help) {
@@ -172,26 +308,13 @@ async function main() {
     return;
   }
   await generateFixtures({ dataDir: options.fixtureDataDir });
-  assertArtifactPaths(options);
-
-  const fsPackage = await loadFsPackage();
-
-  await rm(options.outDir, { recursive: true, force: true });
-  await mkdir(options.outDir, { recursive: true });
-  await writeFile(resolve(options.outDir, '.nojekyll'), '');
-  await buildDataExport(options.dataDir, options.outDir, fsPackage, {
-    includeFixtureExportLinks: true,
-  });
-  await buildDataExport(
-    options.fixtureDataDir,
-    resolve(options.outDir, 'fixtures'),
-    fsPackage,
-  );
-
+  await buildPagesArtifact(options);
   console.log(`Built Pages artifact at ${options.outDir}`);
 }
 
-main().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exitCode = 1;
-});
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exitCode = 1;
+  });
+}
