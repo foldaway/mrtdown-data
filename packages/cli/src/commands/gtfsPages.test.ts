@@ -9,7 +9,8 @@ import {
   writeFile,
 } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join, resolve } from 'node:path';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 import { ManifestSchema } from '@mrtdown/core';
 import {
@@ -24,7 +25,11 @@ import { reviewedReleaseFixture } from '../../../fs/src/gtfs/__tests__/releaseFi
 import { gtfsLicenceReference } from '../gtfsTerms.js';
 
 const execFileAsync = promisify(execFile);
-const fixtureDataDir = resolve('fixtures/generated/data');
+const fixtureDataDir =
+  process.env.MRTDOWN_FIXTURE_DATA_DIR ??
+  fileURLToPath(
+    new URL('../../../../fixtures/generated/data', import.meta.url),
+  );
 const termsText = 'Synthetic terms for Pages integration tests only.';
 
 async function fixture(root: string) {
