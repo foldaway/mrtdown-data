@@ -1,5 +1,35 @@
 # @mrtdown/cli
 
+## 2.0.0-alpha.46
+
+### Minor Changes
+
+- 912e734: Preview departures from verified trip assignments with canonical identities,
+  preserving source timing and rejecting missing active-date bindings.
+- cbb1480: Preview a compact timetable with shared canonical patterns, date-range assignments
+  and explicit coverage gaps while preserving all source timing and calendars.
+- 1046d23: Check and export reviewed timetable bundles from the CLI, fetching current LTA
+  terms for each attempt and reporting release blockers without writing output.
+
+### Patch Changes
+
+- Updated dependencies [912e734]
+- Updated dependencies [cbb1480]
+- Updated dependencies [0c1229d]
+- Updated dependencies [c3c2822]
+- Updated dependencies [2a95864]
+- Updated dependencies [ecd7aac]
+- Updated dependencies [9352dac]
+- Updated dependencies [46a4992]
+- Updated dependencies [e2281e6]
+- Updated dependencies [a073567]
+- Updated dependencies [74fc1e7]
+- Updated dependencies [2805937]
+- Updated dependencies [92a907f]
+  - @mrtdown/fs@2.0.0-alpha.43
+  - @mrtdown/core@2.0.0-alpha.39
+  - @mrtdown/triage@2.0.0-alpha.50
+
 ## 2.0.0-alpha.45
 
 ### Minor Changes

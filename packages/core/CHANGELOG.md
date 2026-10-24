@@ -1,5 +1,17 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.39
+
+### Minor Changes
+
+- cbb1480: Preview a compact timetable with shared canonical patterns, date-range assignments
+  and explicit coverage gaps while preserving all source timing and calendars.
+- 46a4992: Add reviewed timetable source admission checks so later downloads, opaque provider versions and unreviewed corrections cannot automatically replace an installed timetable.
+- e2281e6: Prepare and verify scheduled timetable files with a shared provenance manifest,
+  source attribution notice and exact file hashes.
+- a073567: Describe reviewed timetable files in the Pages manifest and show source
+  attribution, licence and coverage beside the download links.
+
 ## 2.0.0-alpha.38
 
 ### Minor Changes
