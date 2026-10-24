@@ -9,6 +9,10 @@ import { DateTime } from 'luxon';
 import z from 'zod';
 import { compareStrings } from './order.js';
 import {
+  type ScheduledTimetableRollbackOptions,
+  ScheduledTimetableRollbackOptionsSchema,
+} from './timetableRollback.js';
+import {
   type ScheduledTimetableRequestScope,
   ScheduledTimetableRequestScopeSchema,
   selectFromRetainedTimetableHistory,
@@ -158,10 +162,14 @@ export async function queryRetainedScheduledDepartures(options: {
   startInstant: string;
   endInstant: string;
   limit?: number;
+  rollback?: ScheduledTimetableRollbackOptions;
 }) {
   const { storeDir, dataDir, startInstant, endInstant } = options;
   const scope = ScheduledTimetableRequestScopeSchema.parse(options.scope);
   const limit = z.number().int().positive().optional().parse(options.limit);
+  const rollback = ScheduledTimetableRollbackOptionsSchema.optional().parse(
+    options.rollback,
+  );
   const window = { startInstant, endInstant };
   // Share the resolver's instant validation before reading any files.
   scheduledDeparturesWithPatternsInWindow([], window);
@@ -222,6 +230,9 @@ export async function queryRetainedScheduledDepartures(options: {
     attempts: Awaited<
       ReturnType<typeof selectRetainedScheduledTimetable>
     >['attempts'];
+    rollback: Awaited<
+      ReturnType<typeof selectRetainedScheduledTimetable>
+    >['rollback'];
   }[] = [];
   const departures: RetainedScheduledDeparture[] = [];
   let untimedDepartures = 0;
@@ -232,6 +243,7 @@ export async function queryRetainedScheduledDepartures(options: {
         dataDir,
         serviceDate,
         scope,
+        rollback,
       },
       history,
     );
@@ -240,6 +252,7 @@ export async function queryRetainedScheduledDepartures(options: {
       serviceDate,
       manifestSha256: selected?.manifestSha256 ?? null,
       attempts: selection.attempts,
+      rollback: selection.rollback,
     });
     if (!selected) {
       continue;

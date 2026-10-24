@@ -547,6 +547,16 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-23: Added reviewed rollback for an inclusive service-date range and
+  exact canonical request scope. It binds current and older retained artifact
+  and source hashes, checks review timing, revalidates target eligibility and
+  exposes per-date audit results without changing source lineage or correction
+  revisions. Invalid applicable overrides make that date unavailable. The site
+  pull/database/API/UI and producer-backed partial-scope coverage remain ahead;
+  site adoption also needs the pending package release. Real mapping/release
+  approvals are still outstanding. See
+  [reviewed rollback](../../gtfs-timetable-import.md#reviewed-rollback-for-a-date-and-scope).
+
 - 2026-10-23: Added a consumer reader for the optional Pages timetable bundle.
   It verifies advertised artifact/release hashes, companion files and bound
   mapping/release reviews before returning bytes for canonical import. An

@@ -258,13 +258,68 @@ snapshot; an atomic import committed afterward is considered on the next call.
 Keep canonical data stable throughout selection. Recheck eligibility on each
 request or invalidate consumer caches when the canonical data or history changes.
 
+## Reviewed rollback for a date and scope
+
+Selection and departure queries accept an optional `rollback` containing a
+trusted `review` and an offset-bearing `selectionInstant`. The review follows
+`ScheduledTimetableRollbackReviewSchema` from `@mrtdown/fs`:
+
+```ts
+const rollback = {
+  selectionInstant: "2026-01-21T00:00:00Z",
+  review: {
+    schemaVersion: 1,
+    documentKind: "scheduled-timetable-rollback-review",
+    from: { manifestSha256: currentManifestHash, snapshotSha256: currentZipHash },
+    to: { manifestSha256: olderManifestHash, snapshotSha256: olderZipHash },
+    dateRange: { startDate: "2026-01-01", endDate: "2026-01-02" },
+    scope,
+    reviewer: "Reviewer identity from the trusted workflow",
+    reviewedAt: "2026-01-20T01:00:00Z",
+    reason: "Recorded reason for using the older retained timetable",
+  },
+};
+const result = await selectRetainedScheduledTimetable({
+  storeDir, dataDir, serviceDate, scope, rollback,
+});
+```
+
+The inclusive date range and every scope field must match the request. An
+omitted platform matches only a request that also omits it; neither form acts
+as a wildcard for the other. Outside that date range or exact scope, ordinary
+selection continues and the review is reported as `not-applicable`.
+
+Within the reviewed scope, `from` must name the version ordinary selection would
+currently choose. Both identities must match the validated retained lineage,
+and `to` must precede `from` in that lineage. This can select an earlier source
+or an earlier correction without changing either one's metadata. The review
+must be no earlier than the `from` import and no later than the trusted
+selection instant. A later import that changes ordinary selection makes the
+override stale; it needs a new review rather than automatically following the
+new version.
+
+The target still passes the ordinary byte, canonical, feed-range, scope and
+coverage checks. An applicable but invalid review or ineligible target returns
+`selected: null` and a `rejected` rollback with explicit blockers. It does not
+silently select the current version or another older version. Malformed review
+schemas and timestamps throw. The `attempts` include ordinary selection and,
+when checked, the rollback target's eligibility result.
+
+The selector's `rollback` result is `null` when no override was supplied;
+otherwise it contains `status` (`applied`, `not-applicable` or `rejected`), the
+review, selection instant and blockers. Keep that result in the consuming
+workflow's audit log and include the override identity in its cache key. These
+read helpers write no audit files or store mutations. Reviews and the clock
+must come from a trusted workflow; reviewer names in arbitrary request JSON do
+not confer authority. Retained receipts, source order and correction revisions
+remain unchanged, and omitting the override restores ordinary selection.
+
 ## Remaining import work
 
 A positive source result is only one prerequisite. The consumer still needs
 release/provenance checks and precise scoped-coverage evidence for partial
-artifacts. Explicitly scoped rollback decisions also remain ahead. Calling the
-lower-level source-admission helper with an arbitrarily chosen incumbent does
-not validate a complete lineage or authorize a rollback.
+artifacts. Calling the lower-level source-admission helper with an arbitrarily
+chosen incumbent does not validate a complete lineage or authorize a rollback.
 
 The [local departure query](gtfs-retained-departures.md) merges independently
 selected service days. Site archive integration and API/UI provenance remain in

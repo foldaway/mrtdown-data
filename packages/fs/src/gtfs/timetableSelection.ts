@@ -5,24 +5,26 @@ import {
 import z from 'zod';
 import { hashBytes } from './capture.js';
 import {
+  assessRetainedTimetableRollback,
+  type ScheduledTimetableRollbackAssessment,
+  type ScheduledTimetableRollbackOptions,
+  ScheduledTimetableRollbackOptionsSchema,
+} from './timetableRollback.js';
+import {
+  type ScheduledTimetableRequestScope,
+  ScheduledTimetableRequestScopeSchema,
+} from './timetableScope.js';
+import {
   type RetainedScheduledTimetable,
   readRetainedScheduledTimetable,
   readScheduledTimetableHistory,
 } from './timetableStore.js';
 import { readScheduleTopology } from './topology.js';
 
-export const ScheduledTimetableRequestScopeSchema = z
-  .object({
-    stationId: z.string().min(1),
-    lineId: z.string().min(1),
-    serviceId: z.string().min(1),
-    destinationStationId: z.string().min(1),
-    platformId: z.string().min(1).optional(),
-  })
-  .strict();
-export type ScheduledTimetableRequestScope = z.infer<
-  typeof ScheduledTimetableRequestScopeSchema
->;
+export {
+  type ScheduledTimetableRequestScope,
+  ScheduledTimetableRequestScopeSchema,
+} from './timetableScope.js';
 
 type Topology = Awaited<ReturnType<typeof readScheduleTopology>>;
 function validateScope(
@@ -158,6 +160,7 @@ type SelectionOptions = {
   dataDir: string;
   serviceDate: string;
   scope: ScheduledTimetableRequestScope;
+  rollback?: ScheduledTimetableRollbackOptions;
 };
 
 /** Canonical data and the private store must remain stable apart from atomic appends. */
@@ -177,8 +180,52 @@ export async function selectFromRetainedTimetableHistory(
   const { storeDir, dataDir } = options;
   const serviceDate = z.iso.date().parse(options.serviceDate);
   const scope = ScheduledTimetableRequestScopeSchema.parse(options.scope);
+  const rollback = ScheduledTimetableRollbackOptionsSchema.optional().parse(
+    options.rollback,
+  );
   const topology = await readScheduleTopology(dataDir);
   validateScope(scope, topology);
+  const request = { storeDir, dataDir, serviceDate, scope };
+  const normal = await selectEligibleVersion(request, history, topology);
+  if (!rollback) {
+    return { ...normal, rollback: null };
+  }
+  const assessment = assessRetainedTimetableRollback(
+    rollback,
+    request,
+    normal.selected,
+    history,
+  );
+  if (assessment.status === 'not-applicable') {
+    return { ...normal, rollback: assessment };
+  }
+  if (assessment.status === 'rejected') {
+    return { ...normal, selected: null, patternIds: [], rollback: assessment };
+  }
+  const target = history.filter(
+    (version) => version.manifestSha256 === rollback.review.to.manifestSha256,
+  );
+  const overridden = await selectEligibleVersion(request, target, topology);
+  const result: ScheduledTimetableRollbackAssessment = overridden.selected
+    ? assessment
+    : {
+        ...assessment,
+        status: 'rejected',
+        blockers: ['rollback-target-is-not-eligible'],
+      };
+  return {
+    ...overridden,
+    attempts: [...normal.attempts, ...overridden.attempts],
+    rollback: result,
+  };
+}
+
+async function selectEligibleVersion(
+  options: SelectionOptions,
+  history: readonly RetainedScheduledTimetable[],
+  topology: Topology,
+) {
+  const { storeDir, dataDir, serviceDate, scope } = options;
   const fingerprint = hashBytes(Buffer.from(JSON.stringify(topology)));
   const attempts: ScheduledTimetableSelectionAttempt[] = [];
   for (const version of [...history].reverse()) {
