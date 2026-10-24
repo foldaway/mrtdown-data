@@ -57,6 +57,7 @@
     "scoped-gtfs-candidate-dates",
     "scoped-gtfs-review-draft",
     "scoped-review-blockers",
+    "scoped-timetable-rollback",
     "silly-doors-count",
     "soft-articles-reflect",
     "source-trip-date-coverage",
