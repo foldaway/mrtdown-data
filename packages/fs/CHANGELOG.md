@@ -1,5 +1,38 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.43
+
+### Minor Changes
+
+- 912e734: Preview departures from verified trip assignments with canonical identities,
+  preserving source timing and rejecting missing active-date bindings.
+- cbb1480: Preview a compact timetable with shared canonical patterns, date-range assignments
+  and explicit coverage gaps while preserving all source timing and calendars.
+- 0c1229d: Select retained timetables by service date and canonical request scope, falling back to older eligible versions when newer versions have gaps, damaged files or incompatible topology.
+- c3c2822: Retain verified timetable versions and source reviews in an append-only local store, committing complete imports atomically while preserving earlier versions when replacements fail.
+- 2a95864: Query retained scheduled departures across service days, selecting each day's eligible snapshot before merging results and preserving timing precision, platform alternatives and source provenance.
+- ecd7aac: Verify downloaded timetable artifacts against installed canonical topology, service paths, effective dates and platform boarding rules before import.
+- 9352dac: Export a reviewed timetable bundle only after release checks pass, preserving
+  attribution, mapping decisions and coverage alongside the exact artifact files.
+- e2281e6: Prepare and verify scheduled timetable files with a shared provenance manifest,
+  source attribution notice and exact file hashes.
+- a073567: Describe reviewed timetable files in the Pages manifest and show source
+  attribution, licence and coverage beside the download links.
+- 74fc1e7: Check timetable release readiness against complete mapping approval, exact
+  artifact review, redistribution status, current terms and release timing.
+- 2805937: Read optional Pages timetable bundles with verified artifact, release and review
+  identities before handing their bytes to the retained importer.
+- 92a907f: Prepare timetable artifacts directly from a verified GTFS capture, canonical data
+  and mapping draft, deriving source metadata and retaining review and coverage gaps.
+
+### Patch Changes
+
+- Updated dependencies [cbb1480]
+- Updated dependencies [46a4992]
+- Updated dependencies [e2281e6]
+- Updated dependencies [a073567]
+  - @mrtdown/core@2.0.0-alpha.39
+
 ## 2.0.0-alpha.42
 
 ### Minor Changes
