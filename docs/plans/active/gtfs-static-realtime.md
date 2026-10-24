@@ -547,6 +547,16 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-23: Added retained-version selection for a Singapore service date and
+  canonical station/service/destination/platform scope. Selection follows
+  reviewed lineage, checks feed range, installed topology, bytes and canonical
+  references, and falls back to older eligible versions with recorded reasons.
+  Completeness currently requires all active source trips to be assigned on the
+  date; partial artifacts need finer producer-backed scope evidence. Inactive
+  calendars remain distinct from missing coverage. Scoped rollback and site
+  departure queries remain ahead. See
+  [version selection](../../gtfs-timetable-import.md#selecting-a-version-for-a-request).
+
 - 2026-10-23: Added a private append-only timetable store that composes byte and
   canonical verification with source admission against its actual retained
   predecessor. Complete versions and import reviews commit with one rename;

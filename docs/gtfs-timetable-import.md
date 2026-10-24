@@ -148,8 +148,9 @@ order. It verifies manifest digests, import records and source decisions, reject
 forked, cyclic, incomplete or inconsistent history. It does not load all timetable
 bodies. `readRetainedScheduledTimetable(storeDir, manifestSha256)` additionally
 checks that version's companion bytes and content schema before returning its
-timetable. Neither read chooses a service date, rechecks current topology or
-repairs damaged files. Committed directories are never overwritten or deleted by
+timetable. Pass a third argument `{ dataDir }` to also recheck canonical
+compatibility when loading a retained version. Neither read chooses a service
+date or repairs damaged files. Committed directories are never overwritten or deleted by
 these helpers.
 
 The store and its receipts are trusted local workflow state, not an authenticated
@@ -158,16 +159,78 @@ release bundle and its evidence separately. Retention does not establish release
 permission or complete mapping coverage, and the last appended version is not
 a global selection for all service dates and request scopes.
 
+## Selecting a version for a request
+
+`selectRetainedScheduledTimetable` from `@mrtdown/fs` chooses a version for one
+Singapore service date and canonical request scope:
+
+```ts
+const result = await selectRetainedScheduledTimetable({
+  storeDir,
+  dataDir,
+  serviceDate: "2026-01-02",
+  scope: {
+    stationId: "S",
+    lineId: "NSL",
+    serviceId: "SVC",
+    destinationStationId: "D",
+    platformId: "C", // Optional; grouped alternatives remain intact.
+  },
+});
+```
+
+The scope must reference known canonical entities and an appropriate service and
+platform. Direction is expressed by the canonical service and destination.
+Malformed dates, unknown references and invalid retained lineage throw; they
+cannot authorize a fallback or bypass a source review.
+
+The selector scans the validated history from newest to oldest in reviewed
+lineage order. It skips versions outside the inclusive feed range or with a
+fingerprint that differs from the installed canonical topology. Candidate bytes,
+content and canonical references are rechecked before selection. A missing or
+damaged timetable/notice skips that candidate. Damaged manifest or review history
+still fails the history check rather than inventing an order.
+
+A candidate must contain an assigned pattern for the requested station, line,
+service, destination and optional platform, using a revision effective on the
+service date. The requested station must precede the pattern's final occurrence.
+A pattern containing a platform group may match any member; its complete
+alternatives are preserved, without assigning a physical platform arbitrarily.
+
+Coverage is deliberately conservative. Every active source trip must have an
+assignment on that service date. Source calendar exceptions override weekly
+rules, and an inactive trip is not a missing assignment. The compact artifact
+cannot prove whether an unassigned trip belongs to another scope, so even a gap
+elsewhere blocks this proof of completeness. Precise scoped coverage for partial
+artifacts needs evidence from the reviewed producer; this selector does not infer
+it from the presence of one matching trip. Deliberate exclusions remain gaps.
+
+The result contains `serviceDate`, normalized `scope`, `selected`, `patternIds`
+and `attempts`. `selected` is the retained manifest, import record and verified
+timetable, or null when none is eligible. `patternIds` identifies the matching
+canonical patterns for later departure queries. `attempts` records each inspected
+manifest digest and its eligibility or rejection reason, including active and
+unassigned trip counts when coverage was checked. A newer ineligible version
+never hides an older eligible one, and neither retrieval time nor the requested
+date changes the retained order.
+
+An eligible timetable with zero active source trips is an explicit empty schedule
+for that date. It remains distinct from `selected: null`; absence of departures
+does not authorize frequency estimates. The selector itself computes no arrivals
+or frequency fallback and creates no publication approval. Its history read is a
+snapshot; an atomic import committed afterward is considered on the next call.
+Keep canonical data stable throughout selection. Recheck eligibility on each
+request or invalidate consumer caches when the canonical data or history changes.
+
 ## Remaining import work
 
 A positive source result is only one prerequisite. The consumer still needs
-release/provenance checks, complete mapping coverage for the requested scope
-and date eligibility. It must select from retained history for each
-service date and scope, including older eligible versions and explicitly scoped
-rollback decisions. Calling this pairwise helper with an arbitrarily chosen
-incumbent does not validate a complete lineage or authorize a rollback.
+release/provenance checks and precise scoped-coverage evidence for partial
+artifacts. Explicitly scoped rollback decisions also remain ahead. Calling the
+lower-level source-admission helper with an arbitrarily chosen incumbent does
+not validate a complete lineage or authorize a rollback.
 
 Site archive integration, departure selection and API/UI provenance remain in
 [Phase 4 of the GTFS plan](plans/active/gtfs-static-realtime.md#phase-4-consume-scheduled-arrivals-in-mrtdown-site).
-This check creates no real mapping, source or release approvals and does not
+These helpers create no real mapping, source or release approvals and do not
 enable GTFS in the default Pages build.

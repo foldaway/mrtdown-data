@@ -40,6 +40,7 @@ export * from './timetable.js';
 export * from './timetableArtifact.js';
 export * from './timetableExport.js';
 export * from './timetableRelease.js';
+export * from './timetableSelection.js';
 export * from './timetableStore.js';
 export * from './topology.js';
 export * from './verifiedTimetableArtifact.js';

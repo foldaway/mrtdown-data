@@ -159,6 +159,7 @@ export async function readScheduledTimetableHistory(storeDir: string) {
 export async function readRetainedScheduledTimetable(
   storeDir: string,
   manifestSha256: string,
+  options?: { dataDir: string },
 ) {
   const hash = digest.parse(manifestSha256);
   const version = (await readScheduledTimetableHistory(storeDir)).find(
@@ -168,10 +169,15 @@ export async function readRetainedScheduledTimetable(
     throw new Error(`Timetable version is not retained: ${hash}`);
   }
   const files = await readArtifact(join(storeDir, hash));
-  return {
-    ...version,
-    ...verifyScheduledTimetableArtifact(files.manifestBytes, hash, files),
-  };
+  const verified = options
+    ? await verifyScheduledTimetableForCanonicalData(
+        files.manifestBytes,
+        hash,
+        files,
+        options,
+      )
+    : verifyScheduledTimetableArtifact(files.manifestBytes, hash, files);
+  return { ...version, ...verified };
 }
 
 /** Callers supply a stable canonical tree, private existing store and trusted review/clock. */
