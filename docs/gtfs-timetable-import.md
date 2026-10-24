@@ -17,6 +17,42 @@ The result contains `sourceEligible`, `action`, `blockers`, `providerVersion`,
 caller preserves its incumbent. Malformed inputs throw. The helper is pure and
 cannot change either artifact or the installed selection.
 
+## Reading a Pages bundle
+
+For the optional timetable in a Pages archive, use
+`readScheduledTimetablePagesBundle` from `@mrtdown/fs`. Supply the
+`scheduledTimetable` entry from an independently trusted root manifest and a
+callback that reads exact bytes at repository-relative archive paths:
+
+```ts
+const bundle = await readScheduledTimetablePagesBundle(
+  rootManifest.scheduledTimetable,
+  (path) => readArchiveBytes(path),
+);
+```
+
+An absent entry returns `null` without reading files. An advertised bundle must
+contain all seven published files under `scheduled-timetable/`. Missing files,
+invalid UTF-8/JSON, damaged bytes or inconsistent review records throw. Keep the
+archive stable while reading it; do not decode and re-encode its JSON files
+before verification.
+
+The reader checks the manifest and release report against their root-manifest
+digests, verifies timetable and notice bytes, and compares capture, feed range,
+licence and coverage with the advertised entry. It verifies the draft and
+approval identities, normalized review digests, reviewed terms and review timing.
+The authenticated release report must record eligible publication, completed
+mapping review and no blockers. Both supported mapping formats are accepted.
+
+The result includes parsed timetable, manifest and reviews, plus exact
+`manifestBytes`, `timetableBytes` and `noticeBytes` for the retained importer.
+It does not install anything, fetch fresh terms or repeat the original ZIP's
+producer checks. Trust comes from the root manifest's authenticated publication
+channel, not from reviewer names inside the archive. A deployment must still
+validate installed canonical data and supply its separate source-lineage review
+to `importScheduledTimetableArtifact`; release permission does not establish
+source order. The site pull and database read model are not wired yet.
+
 ## Establishing source order
 
 No monotonic LTA version semantics are configured. The helper retains the raw

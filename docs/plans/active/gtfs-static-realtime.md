@@ -547,6 +547,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-23: Added a consumer reader for the optional Pages timetable bundle.
+  It verifies advertised artifact/release hashes, companion files and bound
+  mapping/release reviews before returning bytes for canonical import. An
+  absent entry stays optional; an invalid advertised bundle fails. Synthetic
+  ZIP-to-import-to-overnight-query tests cover both mapping formats. The site
+  pull/database integration, scoped rollback and real mapping/release approvals
+  remain ahead. See [Pages bundle reading](../../gtfs-timetable-import.md#reading-a-pages-bundle).
+
 - 2026-10-23: Added local boarding-departure queries over a fixed retained-history
   snapshot. Each Singapore service date selects its own eligible artifact;
   overnight and current-day trips merge before limiting results, including
