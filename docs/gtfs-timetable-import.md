@@ -75,9 +75,9 @@ required even when the source manifest records a different canonical commit;
 unrelated canonical edits do not require rebuilding the timetable.
 
 Every stored pattern must reference an existing line, service, revision,
-station and every declared platform alternative. Each assignment must follow the service's
-ordered path, use an effective revision and station codes on every assigned
-service date, and respect platform boarding restrictions. All existing
+station and every declared platform alternative. Each assignment must follow
+the service's ordered path, use an effective revision and station codes on every
+assigned service date, and respect platform boarding restrictions. All existing
 reference and path validators are reused. Exact source timing, textual ids,
 platform alternatives and timing precision remain unchanged.
 
@@ -95,12 +95,74 @@ Pass the verified manifest and its trusted digest to the source-admission helper
 above before considering installation. Neither helper supplies review authority
 or turns a local proposal into an approved public release.
 
+## Retaining imported versions
+
+`importScheduledTimetableArtifact` from `@mrtdown/fs` combines byte verification,
+canonical compatibility and reviewed source admission with an append-only local
+store. Create a dedicated, private store directory first. It must already exist
+and must neither contain nor sit inside the canonical data tree; real paths are
+checked so aliases do not bypass this boundary.
+
+```ts
+const result = await importScheduledTimetableArtifact(
+  { manifestBytes, timetableBytes, noticeBytes },
+  trustedManifestSha256,
+  { storeDir, dataDir, importInstant, sourceReview },
+);
+```
+
+The workflow supplies the trusted manifest digest, current import time and
+authenticated source review. Inputs are copied before asynchronous work. The
+canonical tree must remain stable throughout the attempt. The importer chooses
+the predecessor from its recorded history; callers cannot substitute an older
+incumbent to bypass source ordering. A new import time cannot precede that predecessor.
+
+A committed version is a directory named by its manifest digest, containing the
+exact `manifest.json`, `timetable.json` and `NOTICE.txt` bytes plus `import.json`.
+The strict `ScheduledTimetableImportRecordSchema` records the manifest digest,
+predecessor digest (null for the baseline), trusted import time and source review.
+It does not change capture timestamps, provider versions or correction revisions.
+
+The importer holds an exclusive `.import-lock` while reading history and writing.
+Another writer receives `EEXIST` and must retry later. All four files are written
+in a unique `.pending-` directory on the same filesystem. One rename to the
+manifest digest commits the version; readers ignore pending directories and see
+only complete commits. There is no separate mutable head pointer. A normal write
+failure removes that attempt's staging and lock while preserving older versions.
+This provides atomic visibility, not a guarantee against power-loss data loss.
+After a process crash, an operator must inspect leftover staging/locks before
+removing them; the importer never guesses that another writer is dead. If cleanup
+fails after the commit rename, inspect history to determine the committed outcome.
+
+Successful imports return `imported: true`, the source-admission `action` and
+`version`. A blocked source returns `imported: false`, `action: null` and
+`blockers`; malformed input, damaged bytes, canonical mismatch, invalid stored
+history and filesystem failures throw. These attempts do not replace committed
+versions. Reimporting an already retained digest checks compatibility and stored
+bytes, returns `action: "already-retained"`, and leaves its original receipt and
+the history order unchanged. Returning to an earlier source ZIP with a different
+artifact is blocked; an older timetable cannot be appended as a fresh successor.
+
+`readScheduledTimetableHistory(storeDir)` returns metadata in reviewed lineage
+order. It verifies manifest digests, import records and source decisions, rejecting
+forked, cyclic, incomplete or inconsistent history. It does not load all timetable
+bodies. `readRetainedScheduledTimetable(storeDir, manifestSha256)` additionally
+checks that version's companion bytes and content schema before returning its
+timetable. Neither read chooses a service date, rechecks current topology or
+repairs damaged files. Committed directories are never overwritten or deleted by
+these helpers.
+
+The store and its receipts are trusted local workflow state, not an authenticated
+format for importing an externally supplied history. Keep the original reviewed
+release bundle and its evidence separately. Retention does not establish release
+permission or complete mapping coverage, and the last appended version is not
+a global selection for all service dates and request scopes.
+
 ## Remaining import work
 
 A positive source result is only one prerequisite. The consumer still needs
-release/provenance checks,
-complete mapping coverage for the requested scope, date eligibility, atomic
-storage and retained version history. It must select from that history for each
+release/provenance checks, complete mapping coverage for the requested scope
+and date eligibility. It must select from retained history for each
 service date and scope, including older eligible versions and explicitly scoped
 rollback decisions. Calling this pairwise helper with an arbitrarily chosen
 incumbent does not validate a complete lineage or authorize a rollback.
