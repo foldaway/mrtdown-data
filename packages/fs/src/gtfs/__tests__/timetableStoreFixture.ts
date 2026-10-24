@@ -30,8 +30,11 @@ export function sourceReview(
     reason: 'Synthetic source-order review; no real release is approved.',
   };
 }
-export async function timetableStoreFixture(root: string) {
-  const { options } = await artifactFixture(root, true);
+export async function timetableStoreFixture(
+  root: string,
+  overrides: Record<string, string> = {},
+) {
+  const { options } = await artifactFixture(root, true, overrides);
   const first = await prepareVerifiedGtfsTimetableArtifact(
     join(root, 'schedule.zip'),
     join(root, 'capture.json'),

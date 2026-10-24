@@ -14,6 +14,7 @@ export * from './inspect.js';
 export * from './reconcileCapture.js';
 export * from './reconciliation.js';
 export * from './reconciliationEvidence.js';
+export * from './retainedDepartures.js';
 export * from './scheduledServiceCalendar.js';
 export * from './scheduledStopTime.js';
 export * from './scheduledTimetable.js';
@@ -40,7 +41,12 @@ export * from './timetable.js';
 export * from './timetableArtifact.js';
 export * from './timetableExport.js';
 export * from './timetableRelease.js';
-export * from './timetableSelection.js';
+export {
+  type ScheduledTimetableRequestScope,
+  ScheduledTimetableRequestScopeSchema,
+  type ScheduledTimetableSelectionAttempt,
+  selectRetainedScheduledTimetable,
+} from './timetableSelection.js';
 export * from './timetableStore.js';
 export * from './topology.js';
 export * from './verifiedTimetableArtifact.js';

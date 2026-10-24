@@ -5,6 +5,7 @@ import {
 import z from 'zod';
 import { hashBytes } from './capture.js';
 import {
+  type RetainedScheduledTimetable,
   readRetainedScheduledTimetable,
   readScheduledTimetableHistory,
 } from './timetableStore.js';
@@ -152,20 +153,33 @@ export interface ScheduledTimetableSelectionAttempt {
   unassignedActiveTripCount?: number;
 }
 
-/** Canonical data and the private store must remain stable apart from atomic appends. */
-export async function selectRetainedScheduledTimetable(options: {
+type SelectionOptions = {
   storeDir: string;
   dataDir: string;
   serviceDate: string;
   scope: ScheduledTimetableRequestScope;
-}) {
+};
+
+/** Canonical data and the private store must remain stable apart from atomic appends. */
+export async function selectRetainedScheduledTimetable(
+  options: SelectionOptions,
+) {
+  const input = structuredClone(options);
+  const history = await readScheduledTimetableHistory(input.storeDir);
+  return selectFromRetainedTimetableHistory(input, history);
+}
+
+/** Internal composition for a window query's already validated history snapshot. */
+export async function selectFromRetainedTimetableHistory(
+  options: SelectionOptions,
+  history: readonly RetainedScheduledTimetable[],
+) {
   const { storeDir, dataDir } = options;
   const serviceDate = z.iso.date().parse(options.serviceDate);
   const scope = ScheduledTimetableRequestScopeSchema.parse(options.scope);
   const topology = await readScheduleTopology(dataDir);
   validateScope(scope, topology);
   const fingerprint = hashBytes(Buffer.from(JSON.stringify(topology)));
-  const history = await readScheduledTimetableHistory(storeDir);
   const attempts: ScheduledTimetableSelectionAttempt[] = [];
   for (const version of [...history].reverse()) {
     const { manifest, manifestSha256 } = version;

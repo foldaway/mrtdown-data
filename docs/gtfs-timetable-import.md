@@ -230,7 +230,8 @@ artifacts. Explicitly scoped rollback decisions also remain ahead. Calling the
 lower-level source-admission helper with an arbitrarily chosen incumbent does
 not validate a complete lineage or authorize a rollback.
 
-Site archive integration, departure selection and API/UI provenance remain in
+The [local departure query](gtfs-retained-departures.md) merges independently
+selected service days. Site archive integration and API/UI provenance remain in
 [Phase 4 of the GTFS plan](plans/active/gtfs-static-realtime.md#phase-4-consume-scheduled-arrivals-in-mrtdown-site).
 These helpers create no real mapping, source or release approvals and do not
 enable GTFS in the default Pages build.

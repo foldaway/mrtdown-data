@@ -547,6 +547,15 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-23: Added local boarding-departure queries over a fixed retained-history
+  snapshot. Each Singapore service date selects its own eligible artifact;
+  overnight and current-day trips merge before limiting results, including
+  source offsets beyond 48 hours. Results retain precision, platform groups,
+  source occurrence ids and artifact provenance. Missing files, unavailable
+  dates and untimed boardable stops remain explicit. Site integration, scoped
+  rollback and real mapping/release approvals remain ahead. See
+  [retained departures](../../gtfs-retained-departures.md).
+
 - 2026-10-23: Added retained-version selection for a Singapore service date and
   canonical station/service/destination/platform scope. Selection follows
   reviewed lineage, checks feed range, installed topology, bytes and canonical
