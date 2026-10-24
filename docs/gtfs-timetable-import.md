@@ -52,10 +52,53 @@ later than import time. There is no static capture-age cutoff. The current
 capture contract has no provider publication timestamp; a future extension
 requires its own validation and documented ordering semantics.
 
+## Checking installed canonical data
+
+`verifyScheduledTimetableForCanonicalData` from `@mrtdown/fs` verifies the
+manifest, timetable and notice bytes against an independently trusted manifest
+digest, then checks them against `{ dataDir }`. The canonical tree must remain
+stable for the duration of the read.
+
+```ts
+const verified = await verifyScheduledTimetableForCanonicalData(
+  manifestBytes,
+  trustedManifestSha256,
+  { timetableBytes, noticeBytes },
+  { dataDir },
+);
+```
+
+The result contains `manifest`, `timetable` and the installed `topology`
+fingerprint. Invalid bytes, schemas, fingerprints or canonical allocations throw
+before any result is returned. The helper writes no files. Matching topology is
+required even when the source manifest records a different canonical commit;
+unrelated canonical edits do not require rebuilding the timetable.
+
+Every stored pattern must reference an existing line, service, revision,
+station and every declared platform alternative. Each assignment must follow the service's
+ordered path, use an effective revision and station codes on every assigned
+service date, and respect platform boarding restrictions. All existing
+reference and path validators are reused. Exact source timing, textual ids,
+platform alternatives and timing precision remain unchanged.
+
+Assignment range bounds are inclusive and must lie within the manifest's feed
+range. Both endpoints must be active source dates. The importer intersects each
+range with its trip's own calendar, applying added and removed dates before
+validating canonical periods. An inactive day between the endpoints is not an
+assigned date. Calendar expansion is cached once per source calendar; weekly
+spans over 100 years are rejected, matching the existing reconciliation limit.
+
+This is canonical compatibility checking. The compact artifact lacks the raw
+source stop/route tables needed to repeat the producer's source correspondence
+checks, so trusted provenance and release review remain separate requirements.
+Pass the verified manifest and its trusted digest to the source-admission helper
+above before considering installation. Neither helper supplies review authority
+or turns a local proposal into an approved public release.
+
 ## Remaining import work
 
 A positive source result is only one prerequisite. The consumer still needs
-release/provenance checks, validation of canonical references and topology,
+release/provenance checks,
 complete mapping coverage for the requested scope, date eligibility, atomic
 storage and retained version history. It must select from that history for each
 service date and scope, including older eligible versions and explicitly scoped

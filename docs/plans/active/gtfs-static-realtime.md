@@ -547,6 +547,14 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-23: Added read-only artifact verification against installed canonical
+  topology, references, ordered paths, effective dates and boarding rules.
+  Compact assignment ranges are checked against their source calendars, with
+  inactive dates skipped and invalid endpoints or feed bounds rejected. This
+  complements source admission; atomic storage, retained history, scope
+  selection and site queries remain ahead. See
+  [canonical import checks](../../gtfs-timetable-import.md#checking-installed-canonical-data).
+
 - 2026-10-22: Added shared, pure source-admission checks for byte-verified
   timetable artifacts. Baselines, successor lineage, equal-version conflicts
   and increasing same-source corrections require exact reviewed identities.
