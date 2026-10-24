@@ -200,7 +200,8 @@ export async function queryRetainedScheduledDepartures(options: {
     }
   }
   const firstDate = civilDate(start.minus({ seconds: maximumOffset }));
-  const lastDate = civilDate(end);
+  // A noon-based service day can start on the preceding civil date.
+  const lastDate = civilDate(end.plus({ hours: 12 }));
   const serviceDates = [
     ...new Set([
       ...scheduledServiceDatesForWindow(

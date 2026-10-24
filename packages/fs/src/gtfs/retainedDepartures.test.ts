@@ -178,6 +178,13 @@ describe('retained scheduled departure queries', () => {
         'trip_id,stop_id,stop_sequence,arrival_time,departure_time,pickup_type\n0009007199254740993,P,09007199254740992,25:00:00,25:00:00,1\n0009007199254740993,Q,9007199254740993,25:30:00,25:30:00,0\n',
     });
     expect(await query()).toMatchObject({ complete: false, departures: [] });
+    const historical = await query({
+      startInstant: '1932-12-31T23:45:00+07:00',
+      endInstant: '1932-12-31T23:55:00+07:00',
+    });
+    expect(historical.serviceDays.map((day) => day.serviceDate)).toContain(
+      '1933-01-01',
+    );
     await run(first, sourceReview('baseline', first));
     expect(await query()).toMatchObject({
       complete: true,
