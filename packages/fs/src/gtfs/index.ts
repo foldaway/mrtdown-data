@@ -43,6 +43,13 @@ export * from './timetableArtifact.js';
 export * from './timetableExport.js';
 export * from './timetableRelease.js';
 export {
+  type ScheduledTimetableRollbackAssessment,
+  type ScheduledTimetableRollbackOptions,
+  ScheduledTimetableRollbackOptionsSchema,
+  type ScheduledTimetableRollbackReview,
+  ScheduledTimetableRollbackReviewSchema,
+} from './timetableRollback.js';
+export {
   type ScheduledTimetableRequestScope,
   ScheduledTimetableRequestScopeSchema,
   type ScheduledTimetableSelectionAttempt,

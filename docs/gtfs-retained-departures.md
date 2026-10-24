@@ -47,6 +47,15 @@ while today's `00:45` trip uses its reviewed successor. The query builds absolut
 UTC instants, merges all service days, sorts them and only then applies the limit.
 A provider trip id reused on different service dates remains two distinct trips.
 
+Pass the optional [reviewed rollback](gtfs-timetable-import.md#reviewed-rollback-for-a-date-and-scope)
+as `rollback` to override selection only for its inclusive service-date range
+and exact request scope. Each `serviceDays` entry includes its own `rollback`
+assessment, so an overnight query can use an older reviewed version for the
+previous service date and ordinary selection for today. An applicable rejected
+rollback leaves that date unavailable and makes the query incomplete; departures
+from other eligible service dates remain available. The review and trusted
+selection clock are captured before reading retained history.
+
 Only occurrences at the requested station and platform are returned. The shared
 boarding rules exclude no-pickup stops and occurrences without a later alighting
 opportunity. Conditional pickup rules remain in the result. Repeated station
@@ -89,6 +98,6 @@ This is a local file-backed query helper. It reads retained files and repeats
 canonical validation; a consuming service still needs its import/read-model and
 cache integration. Scoped completeness for partial artifacts remains conservative
 as described in the selector documentation. Release permission, current terms,
-real mapping approvals, scoped rollback, API/UI presentation and the crowd-report
+real mapping approvals, rollback review authority, API/UI presentation and the crowd-report
 overlay remain separate requirements. These helpers do not enable default GTFS
 publication or mark a local proposal as an approved release.
