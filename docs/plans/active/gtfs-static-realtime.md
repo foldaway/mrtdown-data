@@ -547,6 +547,15 @@ Exit criteria:
 
 ## Progress Log
 
+- 2026-10-23: Added a private append-only timetable store that composes byte and
+  canonical verification with source admission against its actual retained
+  predecessor. Complete versions and import reviews commit with one rename;
+  concurrent writers are refused and failed staging leaves history intact.
+  Reimports preserve original receipts, and older source snapshots cannot be
+  appended as fresh successors. Service-date/scope selection, rollback overrides
+  and site integration remain ahead. See
+  [retained imports](../../gtfs-timetable-import.md#retaining-imported-versions).
+
 - 2026-10-23: Added read-only artifact verification against installed canonical
   topology, references, ordered paths, effective dates and boarding rules.
   Compact assignment ranges are checked against their source calendars, with
