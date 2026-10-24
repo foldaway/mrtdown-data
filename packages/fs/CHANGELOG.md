@@ -1,5 +1,13 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.44
+
+### Minor Changes
+
+- 90d9fa5: Allow trusted, reviewed timetable rollback for specific service dates and an
+  exact canonical request scope, preserving retained lineage and per-date audit
+  results while rechecking the older version's eligibility.
+
 ## 2.0.0-alpha.43
 
 ### Minor Changes
