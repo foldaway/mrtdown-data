@@ -67,7 +67,9 @@ test data appears under `fixtures/` in the same bundle.
 
 The build can also include a reviewed GTFS timetable with source attribution
 and release checks. See [timetable Pages packaging](docs/gtfs-timetable-release.md#packaging-a-release-for-pages).
-Default builds omit the timetable.
+Default builds omit the timetable. Local consumers can query
+[retained scheduled departures](docs/gtfs-retained-departures.md) across service
+days, with source provenance and explicit missing coverage.
 
 For relevant changes, CI builds branch and pull request previews as temporary
 artifacts. The [Pages deployment workflow](.github/workflows/pages-deploy.yml)
