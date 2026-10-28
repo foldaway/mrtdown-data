@@ -8,8 +8,9 @@ canonical tree: one agency, three routes, 17 recursive station parents,
 checks on every source-active date: **1,683 recurring trips, 1,564 pattern/date
 pairs and 238,205 trip/date pairs**, with every NEL cell mechanically matched
 and no missing NEL assignment. These are proposals, not approval or proof of actual operation.
-Two mechanically matched southbound short-working cells need explicit semantic
-review: their final listed stop is Sengkang but their source headsign is HarbourFront.
+The review discussion accepts Sengkang as the last served station represented
+by the two southbound short-working cells. Their HarbourFront source headsign
+remains an unexplained discrepancy in the evidence.
 
 A reviewer should accept or correct the identity/platform table, the three route
 families and their literal calendars. Record objections with the full pattern ID
@@ -28,7 +29,7 @@ The user reviewed the packet step by step and selected these outcomes:
 | Platforms | Accept same-label correspondences at the other 16 stations; assume Outram Park C/D mappings, with independent verification unconfirmed. |
 | Holidays | Assume the Sunday timetable on public holidays, replacing the ordinary weekday/Saturday selection; implementation and validation remain pending. |
 | After midnight | Preserve the recorded service date and times beyond 24:00. Apply the prospective holiday rule to that service date. |
-| Short-working destinations | Keep the two southbound Sengkang endpoint / HarbourFront headsign disagreements pending. |
+| Short-working destinations | Accept Sengkang as the last served station represented by the 36 source trips; retain the unexplained HarbourFront headsign in the evidence. |
 
 This is a prose recap of the discussion, not a digest-bound mapping approval.
 The source calendar evidence and generated proposals below remain unchanged;
@@ -89,7 +90,7 @@ Do not append the canonical path to HarbourFront. Provider direction `1` is
 northbound and `0` southbound in these rows; those numbers have no universal
 meaning. Source stop IDs and sequence strings remain literal at every occurrence.
 
-**Open destination question:** Sengkang is the last listed stop, not an
+**Reviewed destination interpretation:** Sengkang is the last listed stop, not an
 independently confirmed operating destination. All 36 southbound short-working
 trip rows have `trip_headsign: HarbourFront`, with no populated `stop_headsign`
 override. This affects `56bb3839f6f45314637c8f1e3eee1fe2501d822cdf1176235484630dce3c9602`
@@ -103,10 +104,10 @@ For example, `NEL_SB_WE_308_2222` declares HarbourFront but lists only
 `NE18_A` at 23:06:00, `NE17_A` arriving 23:08:06/departing 23:08:41, and
 `NE16_A` at 23:10:57. Its `block_id` is empty. The proposal uses the final
 listed stop (`SKG`); it does not establish whether the headsign is generic,
-the stop list is incomplete, or an operational continuation exists. Keep
-destination acceptance pending until source-backed evidence resolves that
-question. No continuation, extra stop, source correction or changed machine
-disposition is supplied here.
+the stop list is incomplete, or an operational continuation exists. The user
+accepted Sengkang as the last served station represented by these source trips,
+with the headsign discrepancy retained. No continuation, extra stop, source
+correction or changed machine disposition is supplied here.
 
 ### Follow-up: evidence for a scheduled short working
 
@@ -129,13 +130,14 @@ The inspected operator material did not explicitly explain the 36 trips or the
 HarbourFront headsign. A generic direction headsign is a plausible interpretation,
 not an established explanation. No depot movement is inferred.
 
-**Recommendation for the pending review decision:** accept Sengkang as the last
+**Discussion decision accepted on 28 October:** use Sengkang as the last
 served station represented by these source trips, preserve all three occurrences
 and the original HarbourFront headsign as source evidence, and do not infer travel
 beyond Sengkang. This supports a source-faithful short-working mapping without
-claiming independent confirmation of the actual operating destination. The
-recommendation remains pending user review; no approval record or source edit is
-created by this investigation.
+claiming independent confirmation of the actual operating destination. Acceptance
+confirms the existing generated proposal, so assignment coverage and source
+identities do not change. No digest-bound approval record or source edit is
+created by this discussion decision.
 
 To reproduce the comparison from the pinned ZIP, filter `trips.txt` to
 `route_id == NEL_NE16_NE18` and `direction_id == 0`, join all `stop_times.txt`
@@ -328,8 +330,9 @@ interchange parents, literal platform labels, and sufficiency of the source's
 calendar/platform evidence. Independent dated operational confirmation and
 holiday correctness are not established by compatible current topology.
 A reviewer can leave a particular cell pending rather than invent an allocation
-or repair a calendar. The two source headsign/endpoint disagreements above remain
-explicitly pending human review despite their mechanically matched dispositions.
+or repair a calendar. For the two source headsign/endpoint disagreements above,
+the discussion accepted the final listed station as the represented destination;
+the reason for the conflicting headsign remains unconfirmed.
 
 The all-line draft still has **191 unresolved decisions**. Its assignments cover
 1,494,006 of 2,484,149 active source trip/date pairs; **990,143 remain unassigned
