@@ -1,5 +1,9 @@
 # NEL mapping pilot: proposed identities
 
+For the newer source capture, use the
+[28 October candidate review packet](gtfs-nel-mapping-review-2026-10-28.md).
+The input-bound proposals below remain the 14 October baseline.
+
 These are concrete mapping proposals for the verified October schedule
 `e459a22be6c99a3728ee97770c02c4edbaee6c9293e48017e8ec28139962fa19`.
 The [machine-readable draft](gtfs-nel-pilot-draft.json) and
