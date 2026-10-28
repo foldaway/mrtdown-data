@@ -108,6 +108,43 @@ destination acceptance pending until source-backed evidence resolves that
 question. No continuation, extra stop, source correction or changed machine
 disposition is supplied here.
 
+### Follow-up: evidence for a scheduled short working
+
+Inspection of every affected source trip supports the interpretation that the
+published timetable intentionally contains a shorter journey:
+
+| Check | Verified source result |
+| --- | --- |
+| Route and stop order | All 36 trips use the dedicated `NEL_NE16_NE18` route and exactly `NE18_A` → `NE17_A` → `NE16_A`. |
+| Calendars | 18 Saturday and 18 Sunday trips; both sets have the same 18 Punggol Coast departure times. No weekday southbound short working is supplied. |
+| Time span | First short departure 23:06:00; last 24:36:00, reaching Sengkang at 24:40:57. These retain their source service date. |
+| Full-route comparison | The last full HarbourFront-bound departure from Punggol Coast is 23:25:30 in both calendars. Fifteen of the 18 short departures in each calendar occur later. |
+| Continuation evidence | All 36 `block_id` values are empty; no NEL southbound trip starts at `NE16_A`, and the ZIP contains no `transfers.txt`. No explicit onward link is supplied. |
+
+[SBS Transit's first/last-train page](https://www.sbstransit.com.sg/first-train-last-train),
+checked on 28 October, lists the last Punggol Coast → HarbourFront train at
+23:25. This corroborates the full-route cutoff at minute precision; it does not
+independently confirm these individual short workings or their exact times.
+The inspected operator material did not explicitly explain the 36 trips or the
+HarbourFront headsign. A generic direction headsign is a plausible interpretation,
+not an established explanation. No depot movement is inferred.
+
+**Recommendation for the pending review decision:** accept Sengkang as the last
+served station represented by these source trips, preserve all three occurrences
+and the original HarbourFront headsign as source evidence, and do not infer travel
+beyond Sengkang. This supports a source-faithful short-working mapping without
+claiming independent confirmation of the actual operating destination. The
+recommendation remains pending user review; no approval record or source edit is
+created by this investigation.
+
+To reproduce the comparison from the pinned ZIP, filter `trips.txt` to
+`route_id == NEL_NE16_NE18` and `direction_id == 0`, join all `stop_times.txt`
+rows by literal `trip_id`, and sort each trip by numeric `stop_sequence`.
+For each source calendar, compare first-stop departures with the maximum
+first-stop departure among `NEL_NE1_NE18`, direction `0`, trips. The private
+joined detail is `/tmp/nel-shortworking-evidence-2026-10-28.json`; the pinned
+original tables remain the evidence authority.
+
 ## Actual date sets and all 14 cells
 
 All three NEL calendars span 2026-01-01 through 2026-12-31 inclusively, with
