@@ -6,8 +6,8 @@ Review the 69 proposed NEL dispositions below against this exact capture and
 canonical tree: one agency, three routes, 17 recursive station parents,
 34 physical stops and 14 pattern/date cells. All 14 cells pass compatibility
 checks on every source-active date: **1,683 recurring trips, 1,564 pattern/date
-pairs and 238,205 trip/date pairs**, with no unresolved NEL cell or missing NEL
-assignment. These are proposals, not approval or proof of actual operation.
+pairs and 238,205 trip/date pairs**, with every NEL cell mechanically matched
+and no missing NEL assignment. These are proposals, not approval or proof of actual operation.
 Two mechanically matched southbound short-working cells need explicit semantic
 review: their final listed stop is Sengkang but their source headsign is HarbourFront.
 
@@ -15,6 +15,24 @@ A reviewer should accept or correct the identity/platform table, the three route
 families and their literal calendars. Record objections with the full pattern ID
 and date-set ID from the detail queries below. There is no approval record in
 this packet. NEL review alone cannot make any public service date eligible.
+
+## Review discussion — 28 October
+
+The user reviewed the packet step by step and selected these outcomes:
+
+| Scope | Discussion outcome |
+| --- | --- |
+| Operator and line | Accept `SBST` → `SBS` and all three source route IDs → `NEL`. |
+| Service paths | Accept both complete 17-station paths, the northbound Sengkang and Outram Park starts, and the southbound three-stop path correspondence. |
+| Station identities | Accept the six interchange-parent correspondences. |
+| Platforms | Accept same-label correspondences at the other 16 stations; assume Outram Park C/D mappings, with independent verification unconfirmed. |
+| Holidays | Assume the Sunday timetable on public holidays, replacing the ordinary weekday/Saturday selection; implementation and validation remain pending. |
+| After midnight | Preserve the recorded service date and times beyond 24:00. Apply the prospective holiday rule to that service date. |
+| Short-working destinations | Keep the two southbound Sengkang endpoint / HarbourFront headsign disagreements pending. |
+
+This is a prose recap of the discussion, not a digest-bound mapping approval.
+The source calendar evidence and generated proposals below remain unchanged;
+the selected assumptions do not establish operational correctness or publication eligibility.
 
 ## Pinned evidence
 
