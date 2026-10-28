@@ -97,6 +97,12 @@ Model dependency:
 - title/slug generation uses `gpt-6-luna`.
 - translation uses `gpt-6-luna`.
 
-These evals make paid API calls. The local cost estimator does not yet have
-GPT-6 Luna pricing, so its calls log token usage without a dollar estimate.
-Check current API pricing before running or expanding the eval set.
+These evals make paid API calls. The local cost estimator includes GPT-6 Luna's
+Standard base token rates: $0.10 input, $0.01 cached input, and $0.50 output per
+million tokens, verified against [OpenAI API pricing](https://developers.openai.com/api/docs/pricing)
+on 2026-10-28. The existing GPT-5.4 rates were also rechecked.
+
+Estimates exclude cache-write charges, premiums for prompts above 272K input
+tokens, regional processing, other processing tiers, and tool charges. Actual
+billed costs can differ. Check current API pricing before running or expanding
+the eval set, and recheck the pricing table when changing models.

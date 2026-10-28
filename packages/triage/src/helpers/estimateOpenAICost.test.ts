@@ -35,11 +35,11 @@ describe('estimateOpenAICostFromUsage', () => {
 });
 
 describe('OpenAIUsageCostTracker', () => {
-  it('sums usage and cost across multiple responses', () => {
+  it('sums usage and cost across current and legacy model responses', () => {
     const tracker = new OpenAIUsageCostTracker();
 
     tracker.add({
-      model: 'gpt-5.4-mini',
+      model: 'gpt-6-luna',
       usage: {
         inputTokens: 1000,
         cachedInputTokens: 100,
@@ -59,7 +59,7 @@ describe('OpenAIUsageCostTracker', () => {
 
     const summary = tracker.summary();
 
-    expect(summary.estimatedCostUsd).toBeCloseTo(0.0291975);
+    expect(summary.estimatedCostUsd).toBeCloseTo(0.020606);
     expect(summary).toEqual({
       usage: {
         inputTokens: 4000,

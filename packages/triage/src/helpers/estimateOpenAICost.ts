@@ -41,7 +41,15 @@ export type OpenAIUsageCostSummary = {
   modelsWithoutPricing: string[];
 };
 
+// Standard base token rates in USD per 1M tokens, verified 2026-10-28.
+// Source: https://developers.openai.com/api/docs/pricing
+// Excludes cache writes, long-context premiums, and other processing tiers.
 export const OPENAI_MODEL_PRICING: Record<string, OpenAIModelPricing> = {
+  'gpt-6-luna': {
+    inputUsdPer1MTokens: 0.1,
+    cachedInputUsdPer1MTokens: 0.01,
+    outputUsdPer1MTokens: 0.5,
+  },
   'gpt-5.4': {
     inputUsdPer1MTokens: 2.5,
     cachedInputUsdPer1MTokens: 0.25,
