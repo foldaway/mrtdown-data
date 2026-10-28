@@ -151,16 +151,99 @@ holiday-eve or engineering-adjustment exception rows.
 | NSL, EWL, airport branch | [SMRT Jurong East first/last trains](https://journey.smrt.com.sg/journey/station_info/jurong-east/first-and-last-train/) and [Changi Airport's rail information](https://www.changiairport.com/en/at-changi/transport-and-directions/leaving-the-airport.html) group Sunday/PH | Supports the same day-type rationale; another operator and full-day use require the consolidated assumption below. |
 | TEL | [SMRT Marine Terrace first/last trains](https://journey.smrt.com.sg/journey/station_info/marine-terrace/first-and-last-train/) groups Sunday/PH, with separate holiday-eve last trains | Supports ordinary holiday day type; it does not supply the extra eve trips. |
 | CCL | [SMRT Marymount first/last trains](https://journey.smrt.com.sg/journey/station_info/marymount/first-and-last-train/) groups Sunday/PH for full-loop and short workings | Supports current day-type rationale, using `SERVICE_PH_CCL`. It cannot validate pre-opening loop dates or resolve ambiguous services. |
-| BPLRT | [SMRT's first/last-train appendix effective 13 January 2019](https://www.smrt.com.sg/getmedia/fb89c6fd-e872-4ddb-8aa2-244869762cd7/bplrt-jan19-annex-a-revised.pdf) groups Sun/PH at both platforms | Supports historical first-train grouping only; this is weaker evidence for a full-day 2026 assumption. It does not assign Service A/B to Choa Chu Kang platforms. |
+| BPLRT | Live SMRT Journeys tables for [Choa Chu Kang](https://journey.smrt.com.sg/journey/station_info/choa-chu-kang/first-and-last-train/) and [Bukit Panjang](https://journey.smrt.com.sg/journey/station_info/bukit-panjang/first-and-last-train/) group Sunday/PH. A [joint LTA/SMRT release](https://www.lta.gov.sg/content/ltagov/en/newsroom/2024/11/news-releases/service_adjustments_for_bukit_panjang_LRT.html) confirms full dual-loop availability throughout weekends and PH from 28 September 2024. | Stronger support than the 2019 appendix alone. Full-day availability does not prove identical departure times, and dated engineering exceptions remain separate. No Service A/B platform allocation is established at Choa Chu Kang. |
 
 **H1 — the additional policy choice:** extend NEL's prospective full-day
 Sunday-on-PH assumption to NSL, EWL (including airport), TEL, CCL and BPLRT, or
 hold those holiday substitutions pending stronger operator evidence. The
-recommendation is the same prospective assumption, explicitly labelled as such,
-with BPLRT's evidence age retained. Do not describe it as operator-confirmed
+recommendation is the same prospective assumption for ordinary public holidays,
+explicitly labelled as such, with dated exceptions reviewed separately. Do not
+describe it as operator-confirmed
 full-day equality. The SBS evidence supports carrying the NEL reasoning to
 DTL/SKLRT/PGLRT as the same review recommendation; no additional line-by-line
 question is needed. This packet records no newly selected holiday policy.
+
+### SMRT investigation: stronger baseline evidence, separate dated exceptions
+
+Direct retrieval on 28 October at 19:01 Singapore confirmed the Sunday/PH grouping
+in all six sampled live tables: Jurong East, Marine Terrace, Marymount, Choa Chu
+Kang, Bukit Panjang and Changi Airport. SMRT Journeys loads these from
+`https://connect-cdn.smrt.wwprojects.com/autoupdate/mrt-timing/<station name>.html`.
+This address is declared by its public `helpers/common.js` and used by
+`views/mrt/station_info.js`; it is the website's own displayed source. The plain
+station-page response is only a JavaScript shell, so it was not counted as a
+freshly retrieved timetable. Private originals and their URL/time/byte/hash
+manifest are in `/tmp/smrt-holiday-investigation-2026-10-28/`.
+
+| Retrieved timetable | SHA-256 of original HTML bytes |
+| --- | --- |
+| Jurong East | `5101fa62296549530b98ccf52c584dec8215391bb9de479948b21871247ed372` |
+| Marine Terrace | `5a402b027db52598b6db5db42bd29a609a4bf09a4f8f34aaed3ab1df2d5e256f` |
+| Marymount | `b882f8ddae8297714bada76732f8508a4714c83acdd23f452e1126e59457587b` |
+| Choa Chu Kang | `5f5dc6fb7a047732819f994a01cea3da1950411980bf30814ea905129e1b07cc` |
+| Bukit Panjang | `9be65e4a5ed1ab100987261bebc06c489baaf3eab7aa85c6a262a46d33098dbc` |
+| Changi Airport | `a015a7ca9b19390e7bedfdaeb1eef59ea112fee79c1e13ab2f99667c1ff994f7` |
+
+To re-fetch, substitute the lowercase station name with spaces percent-encoded
+in the CDN URL above; keep later observations separate if bytes change. To
+reproduce the source comparison, filter `trips.txt` by each literal trip ID,
+join `stop_times.txt`, and inspect `NS1_B`, `EW24_B`, `CC16_A`, `TE27_B` and
+the initial `BP1_A` occurrence respectively. Confirm the WD equivalents by
+substituting `_WD_` in these sample trip IDs, with the CCL WD ID given below.
+
+These sampled first departures compare the pinned ZIP's WD/PH trips with the
+live operator's published Sunday/PH first train. Source seconds remain literal;
+agreement is at the published minute precision and does not prove full-day equality.
+
+| Line / represented journey | Source WD departure | Source PH departure / exact trip ID | Published Sunday/PH first train |
+| --- | --- | --- | --- |
+| NSL, Jurong East → Marina South Pier | 05:16:15 | 05:35:18, `NSL_SB_PH_403_217` | 05:35 |
+| EWL, Jurong East → Tuas Link | 05:14:02 | 05:44:23, `EWL_MAIN_WB_PH_111_323` | 05:44 |
+| CCL, Marymount anticlockwise | 05:26:35 | 05:49:25, `CCL_Anticlockwise_PH_0002_0001` | 05:49 |
+| TEL, Marine Terrace → Woodlands North | 05:56:15 | 06:16:00, `TEL_WB_PH_113_0479` | 06:16 |
+| BPLRT, Choa Chu Kang departure | 05:13:40 | 05:32:40, `BPLRT_A_PH_1` | 05:32 at both listed platforms |
+
+The CCL WD comparison uses `CCL_Anticlockwise_WD_0004_0001`, sequence `5`;
+the PH comparison is also sequence `5`. Other table examples are sequence `1`.
+TEL's WD equivalent is `TEL_WB_WD_126_1178`, rather than the PH trip's suffix.
+
+For example, [MOM lists 1 January 2026 as a Thursday public holiday](https://www.mom.gov.sg/employment-practices/public-holidays).
+The literal source enables WD that day, so it selects the earlier WD examples;
+the prospective policy would select the PH examples. Their platform/path blockers
+still apply. All five families exhibit the same need for an explicit holiday
+date rule; changing operators alone does not establish a different baseline.
+No published comparison of every Sunday and holiday departure was found.
+
+The BPLRT release also supplies a concrete counterexample to unconditional
+Sunday/PH equality: from **14 November 2024 through 31 October 2025**, ordinary
+Thursday–Sunday services closed early, while PH were exempt. That finite period
+is outside this source's 2026 calendars and must not be extended into 2026.
+The live BPLRT tables still display rows explicitly ending on 31 October 2025;
+retrieval today does not renew their applicability. Separately,
+[LTA's 2026 service-adjustment notice](https://www.lta.gov.sg/content/ltagov/en/map/announcement.html/1000)
+records BPLRT closures on **20 and 27 September 2026**. The literal source still
+activates 394 BPLRT trips on each of those Sundays, without exceptions. Ordinary
+calendar recurrence therefore does not establish actual historical operation.
+
+[SMRT's 27 October announcement for Deepavali Eve](https://www.smrt.com.sg/news-publications/newsroom/service-announcements/last-bus-train-timings-extension-for-deepavali-eve-2026/)
+provides a current example of a separate dated extension: NSL/EWL/CCL/TEL run
+later on **7 November 2026**, while BPLRT and the airport service receive no
+extension. Those after-midnight runs belong to the 7 November service day;
+they must not be replaced merely because the wall clock reaches the 8 November
+holiday. The 21 October capture predates this announcement, which does not
+supply a complete extended trip list.
+
+One additional source-versus-operator discrepancy needs reconciliation separately
+from H1: at Marine Terrace, the live operator table lists Saturday's first
+Woodlands North train at **05:56**, but the earliest supplied northbound Saturday
+occurrence is **06:16:00**, `TEL_WB_WE_113_0479`, sequence `1`, `TE27_B`.
+Its pattern is `473814e41987be427fa0bb461415e4504773418a39087b72feea75ad38802de2`,
+WE date set `71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989`.
+The complete Saturday stop-time scan found no earlier occurrence in that direction.
+The cell remains mechanically compatible; the disagreement does not establish
+which publication is operationally correct. Preserve both sources for semantic
+review rather than inserting a missing trip or changing the calendar. The
+holiday assumption cannot resolve this ordinary-Saturday disagreement.
 
 A separate implementation must preserve source calendars, bind authoritative
 holiday dates and a policy revision, replace the ordinary WD/WE family on each
