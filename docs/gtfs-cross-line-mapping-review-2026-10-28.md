@@ -12,9 +12,9 @@ pairs remain unassigned**, and **191 decisions remain mechanically unresolved**.
 
 The transfers below record the reasoning applied under the user's instruction;
 they are not an all-line approval, reviewer signature or operational verification.
-Only one further policy choice is proposed: extending NEL's full-day Sunday-on-PH
-assumption to the five SMRT line families. The remaining exceptions require
-specific evidence, rather than another vote on NEL's general rules.
+The user accepted extending NEL's ordinary Sunday-on-PH assumption to the five
+SMRT line families on 28 October. Implementation remains pending. The remaining
+exceptions require specific evidence, rather than another vote on NEL's general rules.
 
 ## Exact evidence and scope
 
@@ -148,20 +148,22 @@ holiday-eve or engineering-adjustment exception rows.
 | --- | --- | --- |
 | NEL | [SBS first/last trains](https://www.sbstransit.com.sg/first-train-last-train), NEL table updated 10 December 2024 | The user already selected full Sunday-on-PH substitution as a **Foldaway assumption**. Full-day equivalence is unproven. |
 | DTL, SKLRT, PGLRT | Same SBS page explicitly groups Sunday/PH first trains for each; DTL table updated 28 February 2025, LRT tables 2 June 2020 | Carry the same rationale and proposed assumption within SBS, with the older LRT evidence date visible. This does not establish every 2026 departure or settle East-loop platforms. |
-| NSL, EWL, airport branch | [SMRT Jurong East first/last trains](https://journey.smrt.com.sg/journey/station_info/jurong-east/first-and-last-train/) and [Changi Airport's rail information](https://www.changiairport.com/en/at-changi/transport-and-directions/leaving-the-airport.html) group Sunday/PH | Supports the same day-type rationale; another operator and full-day use require the consolidated assumption below. |
+| NSL, EWL, airport branch | [SMRT Jurong East first/last trains](https://journey.smrt.com.sg/journey/station_info/jurong-east/first-and-last-train/) and [Changi Airport's rail information](https://www.changiairport.com/en/at-changi/transport-and-directions/leaving-the-airport.html) group Sunday/PH | Supports the same day-type rationale and the recorded assumption below; full-day departure equality remains unproven. |
 | TEL | [SMRT Marine Terrace first/last trains](https://journey.smrt.com.sg/journey/station_info/marine-terrace/first-and-last-train/) groups Sunday/PH, with separate holiday-eve last trains | Supports ordinary holiday day type; it does not supply the extra eve trips. |
 | CCL | [SMRT Marymount first/last trains](https://journey.smrt.com.sg/journey/station_info/marymount/first-and-last-train/) groups Sunday/PH for full-loop and short workings | Supports current day-type rationale, using `SERVICE_PH_CCL`. It cannot validate pre-opening loop dates or resolve ambiguous services. |
 | BPLRT | Live SMRT Journeys tables for [Choa Chu Kang](https://journey.smrt.com.sg/journey/station_info/choa-chu-kang/first-and-last-train/) and [Bukit Panjang](https://journey.smrt.com.sg/journey/station_info/bukit-panjang/first-and-last-train/) group Sunday/PH. A [joint LTA/SMRT release](https://www.lta.gov.sg/content/ltagov/en/newsroom/2024/11/news-releases/service_adjustments_for_bukit_panjang_LRT.html) confirms full dual-loop availability throughout weekends and PH from 28 September 2024. | Stronger support than the 2019 appendix alone. Full-day availability does not prove identical departure times, and dated engineering exceptions remain separate. No Service A/B platform allocation is established at Choa Chu Kang. |
 
-**H1 — the additional policy choice:** extend NEL's prospective full-day
-Sunday-on-PH assumption to NSL, EWL (including airport), TEL, CCL and BPLRT, or
-hold those holiday substitutions pending stronger operator evidence. The
-recommendation is the same prospective assumption for ordinary public holidays,
-explicitly labelled as such, with dated exceptions reviewed separately. Do not
-describe it as operator-confirmed
-full-day equality. The SBS evidence supports carrying the NEL reasoning to
-DTL/SKLRT/PGLRT as the same review recommendation; no additional line-by-line
-question is needed. This packet records no newly selected holiday policy.
+**H1 — discussion decision accepted on 28 October:** the user agreed to carry
+NEL's ordinary Sunday-on-PH assumption to NSL, EWL (including airport), TEL, CCL
+and BPLRT. Prospectively use the corresponding Sunday/PH timetable on official
+public holidays, replacing ordinary WD/WE selection, with explicit dated
+adjustments reviewed separately. Preserve original service dates for 24+ times
+and holiday-eve extensions. This remains a Foldaway assumption; do not describe
+it as operator-confirmed full-day equality. The SBS evidence supports carrying
+the NEL reasoning to DTL/SKLRT/PGLRT as the same review recommendation; no
+additional line-by-line question is needed. This prose decision creates no
+digest-bound mapping/release/source approval or implementation. Original source
+calendars, date sets, proposal digests and coverage counts remain unchanged.
 
 ### SMRT investigation: stronger baseline evidence, separate dated exceptions
 
@@ -447,8 +449,14 @@ to inspect source headsigns, labels and literal occurrence times.
 
 ## Next prerequisite and validation
 
-The next concrete review work is the single H1 policy scope decision plus dated
-platform/service and source-path evidence for the grouped exceptions. Evidence
+With H1 settled as a discussion assumption, the next concrete review work is
+dated platform/service and source-path evidence for the grouped exceptions.
+Start with Ang Mo Kio's missing C/D members, which affect 46 NSL pattern cells,
+then review the Expo, Choa Chu Kang and Sengkang East allocation conflicts as a
+batch. Overlapping terminal/path blockers mean those counts are not a promise
+of recovered assignments. CCL's dated service/revision conflicts and the source
+omission/Marine Terrace Saturday discrepancies remain separate evidence work.
+Evidence
 may justify a focused canonical correction or a source-bound proposal change;
 prepare that separately, with honest before/after coverage. This packet supplies
 neither. Holiday override implementation is also a separate coding task.
