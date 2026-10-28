@@ -290,11 +290,11 @@ node packages/cli/dist/index.js gtfs inspect \
   --write /tmp/nel-review-source-20261028.json
 ```
 
-Using the existing output directory, these queries retain every NEL cell and
+Using the reproduced output directory, these queries retain every NEL cell and
 assignment rather than selecting a convenient example:
 
 ```sh
-cd /tmp/mrtdown-investigation-latest-review
+cd /tmp/nel-review-all-lines-20261028
 jq '.pilotPatterns[] | select(.routeId | startswith("NEL"))' summary.json
 jq --slurpfile s summary.json '
   ($s[0].pilotPatterns | map(select(.routeId | startswith("NEL")) |
