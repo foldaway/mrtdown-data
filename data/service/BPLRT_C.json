@@ -3,9 +3,9 @@
     "lineId": "BPLRT",
     "name": {
         "en-SG": "Service C",
-        "zh-Hans": "主线 - 服务C",
-        "ms": "Layanan Utama - Perkhidmatan C",
-        "ta": "முக்கிய சேவை - சேவை C"
+        "zh-Hans": "主线（服务C）",
+        "ms": "Layanan Utama (Perkhidmatan C)",
+        "ta": "முக்கிய சேவை (சேவை C)"
     },
     "revisions": [
         {

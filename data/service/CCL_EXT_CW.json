@@ -2,10 +2,10 @@
     "id": "CCL_EXT_CW",
     "lineId": "CCL",
     "name": {
-        "en-SG": "Extension Service - Clockwise",
-        "zh-Hans": "延伸线 - 顺时针方向",
-        "ms": "Cawangan Pengembangan - Arah Jam",
-        "ta": "நெடுவரிசை - காலம் திசை"
+        "en-SG": "Extension Service (Clockwise)",
+        "zh-Hans": "延伸线（顺时针方向）",
+        "ms": "Cawangan Pengembangan (Arah Jam)",
+        "ta": "நெடுவரிசை (காலம் திசை)"
     },
     "revisions": [
         {

@@ -2,10 +2,10 @@
     "id": "CCL_MAIN_CCW",
     "lineId": "CCL",
     "name": {
-        "en-SG": "Main Service - Counter-Clockwise",
-        "zh-Hans": "主线 - 逆时针方向",
-        "ms": "Layanan Utama - Arah Lawan Jam",
-        "ta": "முக்கிய சேவை - எதிர் காலம் திசை"
+        "en-SG": "Main Service (Counter-Clockwise)",
+        "zh-Hans": "主线（逆时针方向）",
+        "ms": "Layanan Utama (Arah Lawan Jam)",
+        "ta": "முக்கிய சேவை (எதிர் காலம் திசை)"
     },
     "revisions": [
         {

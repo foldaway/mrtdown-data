@@ -3472,7 +3472,7 @@ describe('@mrtdown/fs', () => {
       `${JSON.stringify({
         id: 'NSL_MAIN_S',
         name: {
-          'en-SG': 'Main Service - Southbound',
+          'en-SG': 'Main Service (Southbound)',
           'zh-Hans': null,
           ms: null,
           ta: null,

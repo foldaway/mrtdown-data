@@ -2,10 +2,10 @@
     "id": "NSL_MAIN_N",
     "lineId": "NSL",
     "name": {
-        "en-SG": "Main Service - Northbound",
-        "zh-Hans": "主线 - 往北方向",
-        "ms": "Layanan Utama - Arah Utara",
-        "ta": "முக்கிய சேவை - தெற்கு திசை"
+        "en-SG": "Main Service (Northbound)",
+        "zh-Hans": "主线（往北方向）",
+        "ms": "Layanan Utama (Arah Utara)",
+        "ta": "முக்கிய சேவை (தெற்கு திசை)"
     },
     "revisions": [
         {

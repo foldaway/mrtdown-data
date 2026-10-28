@@ -2,10 +2,10 @@
     "id": "CCL_LOOP_CCW",
     "lineId": "CCL",
     "name": {
-        "en-SG": "Loop Service - Anticlockwise",
-        "zh-Hans": "环状服务 - 逆时针方向",
-        "ms": "Perkhidmatan Gelung - Arah Lawan Jam",
-        "ta": "சுற்று சேவை - எதிர் கடிகார திசை"
+        "en-SG": "Loop Service (Anticlockwise)",
+        "zh-Hans": "环状服务（逆时针方向）",
+        "ms": "Perkhidmatan Gelung (Arah Lawan Jam)",
+        "ta": "சுற்று சேவை (எதிர் கடிகார திசை)"
     },
     "revisions": [
         {

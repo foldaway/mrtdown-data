@@ -44,6 +44,10 @@ The dataset lives in `data/`. External GTFS files can be inspected locally.
 Issue types are `disruption`, `maintenance`, and `infra`; ongoing issues use
 open-ended periods.
 
+Service names put secondary specifiers in parentheses, for example
+`Main Service (Northbound)` or `East Loop (Inner)`. Chinese names use full-width
+parentheses, for example `主线（北向）`.
+
 Validate every data change with `npm run data:validate`. For station layout
 updates, follow the [exit and platform source policy](docs/plans/active/station-layout-data.md).
 These commands import LTA exits and report possible platform labels inferred

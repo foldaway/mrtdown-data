@@ -2,10 +2,10 @@
     "id": "JRL_EAST_S",
     "lineId": "JRL",
     "name": {
-        "en-SG": "East Branch - Southbound",
-        "zh-Hans": "东部支线 - 南向",
-        "ms": "Cawangan Timur - Arah Selatan",
-        "ta": "கிழக்கு கிளை - தென்னை திசை"
+        "en-SG": "East Branch (Southbound)",
+        "zh-Hans": "东部支线（南向）",
+        "ms": "Cawangan Timur (Arah Selatan)",
+        "ta": "கிழக்கு கிளை (தென்னை திசை)"
     },
     "revisions": [
         {

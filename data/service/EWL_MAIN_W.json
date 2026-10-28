@@ -2,10 +2,10 @@
     "id": "EWL_MAIN_W",
     "lineId": "EWL",
     "name": {
-        "en-SG": "Main Branch - Westbound",
-        "zh-Hans": "主干线 - 往西方向",
-        "ms": "Cawangan Utama - Arah Barat",
-        "ta": "முதன்மை கிளை - மேற்கு திசை"
+        "en-SG": "Main Branch (Westbound)",
+        "zh-Hans": "主干线（往西方向）",
+        "ms": "Cawangan Utama (Arah Barat)",
+        "ta": "முதன்மை கிளை (மேற்கு திசை)"
     },
     "revisions": [
         {
