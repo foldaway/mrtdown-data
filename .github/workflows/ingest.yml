@@ -59,7 +59,7 @@ jobs:
           fi
           echo "remote-head=$REMOTE_HEAD" >> "$GITHUB_OUTPUT"
           echo "latest-branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
