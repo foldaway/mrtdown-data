@@ -102,9 +102,24 @@ NEL active dates in 2025. The exact sets are:
 | WE | Every Saturday, 2026-01-03 to 2026-12-26 | 52 | `71dc7758992ac07e70ceea437989e7ecc4f74a78d4ca15adaf04647a857eb989` |
 | PH | Every Sunday, 2026-01-04 to 2026-12-27 | 52 | `eefec8dbd582ca6ff9402c99277ad1aab040300d7e1e5b991970ee3a43e0f946` |
 
-`PH` is not permission to add public holidays. Whether these literal rules are
-operationally correct, including holidays, remains a source-semantic review
-question. Service dates remain attached to after-midnight GTFS times.
+The `PH` identifier alone does not activate public holidays. Whether the source's
+literal rules are operationally correct remains a source-semantic review question.
+Service dates remain attached to after-midnight GTFS times.
+
+**Review assumption selected on 28 October:** for NEL, use the Sunday
+`SERVICE_PH` timetable on official Singapore public holidays, replacing the
+ordinary weekday/Saturday selection. Ordinary weekdays retain `SERVICE_WD`,
+ordinary Saturdays retain `SERVICE_WE`, and Sundays retain `SERVICE_PH`.
+The user selected this as a Foldaway policy assumption.
+[SBS Transit's published NEL first-train timings](https://www.sbstransit.com.sg/first-train-last-train)
+group Sundays and public holidays together; that supports the choice but does not
+establish that every departure throughout the day is identical.
+
+This prospective override needs a separately reviewed implementation, authoritative
+holiday dates and validation before serving. The original source calendars and
+generated proposals remain unchanged. All counts, date-set IDs and digests in this
+packet describe the literal source, without the override. This discussion decision
+does not create mapping/release approval or clear whole-feed eligibility.
 
 Pattern prefixes below are unique in the full draft. Retrieve full IDs, source
 record hashes, exact date arrays and trip lists using the detail queries.
@@ -165,6 +180,11 @@ have exactly one binding on their complete active date set. `pickup_type`,
 defaults 0, 0 and 1, including endpoints. No terminal exception or boarding
 restriction is invented. Combined validation found no current canonical conflict;
 undated platform layouts do not independently prove historical allocations.
+
+In the 28 October review discussion, the user chose to assume the Outram Park
+correspondences `NE3_A` → `OTP_NEL_C` and `NE3_B` → `OTP_NEL_D`.
+Independent physical-platform verification remains unconfirmed; this assumption
+does not establish dated historical allocation.
 
 ## Difference from the 14 October packet
 
