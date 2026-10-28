@@ -8,6 +8,8 @@ canonical tree: one agency, three routes, 17 recursive station parents,
 checks on every source-active date: **1,683 recurring trips, 1,564 pattern/date
 pairs and 238,205 trip/date pairs**, with no unresolved NEL cell or missing NEL
 assignment. These are proposals, not approval or proof of actual operation.
+Two mechanically matched southbound short-working cells need explicit semantic
+review: their final listed stop is Sengkang but their source headsign is HarbourFront.
 
 A reviewer should accept or correct the identity/platform table, the three route
 families and their literal calendars. Record objections with the full pattern ID
@@ -64,10 +66,29 @@ No other candidate is substituted merely because it is current.
 | `NEL_NE16_NE18` | Punggol Coast → Punggol → Sengkang, 3 stops | `NEL_MAIN_S` / `SKG` | Contiguous segment; WE/PH only, **no WD trip supplied** |
 | `NEL_NE3_NE18` | Outram Park → Punggol Coast, 16 stops | `NEL_MAIN_N` / `PGC` | Contiguous segment; WD/WE/PH |
 
-Southbound shuttles end at **Sengkang**, despite matching `NEL_MAIN_S`.
+Southbound short-working stop lists end at **Sengkang**, despite matching `NEL_MAIN_S`.
 Do not append the canonical path to HarbourFront. Provider direction `1` is
 northbound and `0` southbound in these rows; those numbers have no universal
 meaning. Source stop IDs and sequence strings remain literal at every occurrence.
+
+**Open destination question:** Sengkang is the last listed stop, not an
+independently confirmed operating destination. All 36 southbound short-working
+trip rows have `trip_headsign: HarbourFront`, with no populated `stop_headsign`
+override. This affects `56bb3839f6f45314637c8f1e3eee1fe2501d822cdf1176235484630dce3c9602`
+(WE, 18 trips) and `fe06007fb37e46782ff475f710174428af16687f9d2bd6e624e4bf412180e0ca`
+(PH, 18 trips), totaling 1,872 trip/date pairs under the exact sets below.
+The [GTFS definition](https://gtfs.org/documentation/schedule/reference/#tripstxt)
+describes the headsign as rider-facing destination text. The stop list and text
+therefore need reconciliation; passing path checks does not settle this.
+
+For example, `NEL_SB_WE_308_2222` declares HarbourFront but lists only
+`NE18_A` at 23:06:00, `NE17_A` arriving 23:08:06/departing 23:08:41, and
+`NE16_A` at 23:10:57. Its `block_id` is empty. The proposal uses the final
+listed stop (`SKG`); it does not establish whether the headsign is generic,
+the stop list is incomplete, or an operational continuation exists. Keep
+destination acceptance pending until source-backed evidence resolves that
+question. No continuation, extra stop, source correction or changed machine
+disposition is supplied here.
 
 ## Actual date sets and all 14 cells
 
@@ -232,7 +253,8 @@ interchange parents, literal platform labels, and sufficiency of the source's
 calendar/platform evidence. Independent dated operational confirmation and
 holiday correctness are not established by compatible current topology.
 A reviewer can leave a particular cell pending rather than invent an allocation
-or repair a calendar. There is no newly discovered NEL mismatch to resolve here.
+or repair a calendar. The two source headsign/endpoint disagreements above remain
+explicitly pending human review despite their mechanically matched dispositions.
 
 The all-line draft still has **191 unresolved decisions**. Its assignments cover
 1,494,006 of 2,484,149 active source trip/date pairs; **990,143 remain unassigned
