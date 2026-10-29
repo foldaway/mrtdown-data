@@ -23,14 +23,38 @@ approval records change in this evidence PR.
 | [HagenPapa2014 photograph, 12 July 2016](https://commons.wikimedia.org/wiki/File:Ang_Mo_Kio_MRT_Station_(NSL)_-_New_Signage_and_Platforms_C_and_D.jpg) | Ang Mo Kio station signage and a physical D label are visible. | The photograph does not establish a 2026 service allocation. |
 | [ZKang123 photograph, 5 November 2020](https://commons.wikimedia.org/wiki/File:NS16_Ang_Mo_Kio_MRT_Platform_C_20201105_131506.jpg) | A C label is visible on the inner platform edge; A is labeled on the other edge of the same island. | An empty platform in one photograph establishes no boarding rule. |
 | [ZKang123 photograph, 21 October 2020](https://commons.wikimedia.org/wiki/File:NS16_Ang_Mo_Kio_MRT_Platform_D_Kawasaki_C151A_20201021_200829.jpg) | A D direction sign and a platform passenger display saying “Do not board” are visible. | This records that display at one observation, not a permanent alighting-only or out-of-service status. |
+| [ZKang123 concourse photograph, 19 October 2020](https://commons.wikimedia.org/wiki/File:NS16_Ang_Mo_Kio_MRT_concourse_level_20201019_203929.jpg) | Passenger wayfinding identifies A towards Jurong East via Woodlands and B towards Marina South Pier. | It establishes the advertised A/B directions at that observation; omission of C/D from this sign does not establish a permanent passenger prohibition. |
+| [ZKang123 / zhenkang middle-platform photograph, 9 June 2020](https://commons.wikimedia.org/wiki/File:NS16_Ang_Mo_Kio_MRT_middle_platform.jpg) | Opposing platform edges face one shared central track. | The physical arrangement alone establishes neither the track's depot connection nor its permitted passenger movements. |
 | [SMRT Ang Mo Kio map](https://journey.smrt.com.sg/journey/station_info/ang-mo-kio/map/) | The operator's linked locality map identifies the station, surrounding streets and exits A–D. | Its letters are **exit labels**; it supplies no platform-level C/D allocation. |
 
 The photographs are first-hand observations of operator signage, not operator
 statements about the complete timetable. Dates are the photographers' recorded
-dates. All three originals are CC BY-SA 4.0; the linked file pages identify
+dates. All five originals are CC BY-SA 4.0; the linked file pages identify
 their authors and metadata. Images remain outside Git and are not republished
 here. No independently dated SMRT/LTA allocation notice was found in the
 official station resources inspected for this review.
+
+### Central track and depot operations — 29 October follow-up
+
+The user identified the concourse photograph and the third track's operational
+role. Taken together, the platform photographs support C/D as the two physical
+faces of that central track, distinct from the regularly advertised A/B
+directions. A physical inventory should retain those faces even when a train
+using the track is not carrying passengers.
+
+The reviewer reports that the central track is used for Bishan Depot operations
+and does not serve passengers. This is supplied review context, distinct from
+the dated photographic observations above. The photographs establish physical
+platform faces and advertised A/B directions; they do not by themselves supply
+a dated operator allocation for every trip in the 2026 source calendar.
+
+The two newly inspected originals are pinned by SHA-256 and byte length below;
+the file pages supply their dates, authors and CC BY-SA 4.0 licensing:
+
+| Original | SHA-256 | Bytes |
+| --- | --- | ---: |
+| Concourse, 19 October 2020 | `3886822793be5b3eafaf942da2aa723696968c7d91c40e73d7699ccd08d3cf87` | 3,221,711 |
+| Middle platform, 9 June 2020 | `762fa208652df40120dac1c519e544b3d7d251407baaa3c1ef472f232916f600` | 3,416,683 |
 
 ## Canonical provenance and the outstanding decision
 
