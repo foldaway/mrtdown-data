@@ -16,6 +16,12 @@ The user accepted extending NEL's ordinary Sunday-on-PH assumption to the five
 SMRT line families on 28 October. Implementation remains pending. The remaining
 exceptions require specific evidence, rather than another vote on NEL's general rules.
 
+**29 October AMK follow-up:** the [platform correction and regeneration](gtfs-amk-platform-evidence-2026-10-28.md)
+adds physical C/D with reviewed non-passenger status. The missing-member
+descriptions, counts and identities below retain this packet's original canonical
+tree; consult that follow-up for the corrected topology and remaining boarding
+conflicts.
+
 ## Exact evidence and scope
 
 Contains information from LTA DataMall's `GTFSScheduleTrain`, accessed
