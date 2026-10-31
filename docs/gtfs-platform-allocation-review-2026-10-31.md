@@ -101,24 +101,34 @@ shows platform 2; its small route diagram is insufficient here to authenticate
 the complete direction and date allocation. Both photographs are by
 ZKang123 / zhenkang. Their titles alone cannot supply the missing directions.
 
-**Recommendation:** recheck the Bakau 1 and Rumbia 2 observation roots with
-readable station-specific signs, then verify the inferred members at Compassvale,
-Kangkar and Ranggung. Sengkang town-centre changes do not establish these
-allocations. Keep all five intermediate conflicts and both town-centre visits;
-neither a blanket label swap nor a town-centre platform rule is supported.
+The maintainer subsequently supplied a crop identified as Bakau's platform board.
+It shows both platform headings and opposite highlighted arms of the East Loop.
+Reading those arms against the canonical station order supports platform 1 via
+Kangkar and Ranggung (`SKLRT_E_CW`), and platform 2 via Rumbia and Compassvale
+(`SKLRT_E_CCW`). This is an interpretation of the route highlighting; the small
+station text is blurred. The crop's capture date, author and original URL were
+not supplied, and its station identity comes from the maintainer's description.
+It supports retaining Bakau's current binding, without authenticating every
+2026 date or the other stations' allocations.
+
+**Recommendation:** retain Bakau's current direction binding on this evidence,
+and resolve Rumbia's direction before revisiting its platform 2 observation root
+and the inferred members at Compassvale, Kangkar and Ranggung. Keep all five
+source conflicts and both town-centre visits. Sengkang town-centre changes and
+the Bakau crop do not establish other stations' allocations.
 
 ## Maintainer input — 31 October
 
 | Scope | Supplied review input | Effect on this review |
 | --- | --- | --- |
 | Choa Chu Kang | “I believe so” in response to both services boarding at either 1/2 and 3/4 being alighting-only. | Tentative recollection of that arrangement, retained for a later canonical correction review. It does not establish an exclusive service allocation or historical validity over all 2026 dates. |
-| Bakau | “Platform 1 is East Loop.” | Confirms the loop association as supplied review context; the next station/direction remains unspecified. |
+| Bakau | “Platform 1 is East Loop,” followed by a crop identified as Bakau's platform board. | The opposite highlighted route arms support the existing 1/clockwise and 2/counterclockwise bindings, with the image limits above. |
 | Rumbia | “same, Platform 1 is East Loop.” | Same limit: both canonical directions serve the East Loop. It does not yet select clockwise versus counterclockwise or revise the platform 2 observation root. |
 | Expo | “I think so?” about A toward Changi Airport and B toward Tanah Merah. | Tentative agreement, alongside the independent photographs above; the source conflict remains unresolved. |
 
 These are maintainer statements, with their expressed uncertainty preserved.
-For Sengkang East the remaining clarification is the next station from platform 1:
-Bakau toward Kangkar or Rumbia, and Rumbia toward Bakau or Compassvale.
+For Sengkang East the remaining clarification is Rumbia's next station from
+platform 1: Bakau or Compassvale.
 No canonical allocation or digest-bound mapping approval is supplied here.
 
 ## Reproduction and evidence integrity
@@ -127,6 +137,11 @@ All seven cited photographs were downloaded and their pixels inspected.
 Dates are author-recorded metadata; they are observations, not operator-issued
 all-year allocation statements. Each linked file page identifies its author
 and CC BY-SA 4.0 licence. Originals and inspection crops remain outside Git.
+The separately supplied Bakau board crop is identified by SHA-256
+`2bd25076506e474759caf36b5d2b4d20ef2cccbcf8fe1a4af6134dece972abab`
+(2,098,446 bytes), filename
+`codex-clipboard-8d0224f1-01f0-410e-b4eb-a4eaded682a8.png`.
+Its licence is unspecified; the image remains outside Git and is not republished.
 Newer Choa Chu Kang/Rumbia originals returned HTTP 429 and were not inspected;
 no conclusion relies on their captions or thumbnails.
 
