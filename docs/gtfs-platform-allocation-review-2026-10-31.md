@@ -3,8 +3,9 @@
 The next 18 unresolved pattern/date cells cover Expo, both Choa Chu Kang
 occurrences and Sengkang East's five intermediate stations. Photographs support
 Expo's existing canonical directions. The LRT evidence has narrower limits:
-Choa Chu Kang's signs distinguish boarding from alighting, while the inspected
-Sengkang East photos do not establish all five stations' directions.
+Choa Chu Kang's signs distinguish boarding from alighting. Maintainer-supplied
+boards support Bakau's and Rumbia's existing directions; the remaining Sengkang
+East bindings retain their recorded same-line inference.
 
 This packet records evidence and the remaining decisions. It changes no source
 rows, canonical platforms, mappings, calendars or eligibility rules.
@@ -85,7 +86,7 @@ occurrence cannot resolve that initial conflict, and the feed's repeated 1/2
 must not be silently changed to 3/4. Any subsequent correction must preserve
 the complete 19-occurrence path and assess pickup/drop-off at both ends.
 
-## Sengkang East: revisit the two observation roots
+## Sengkang East: supplied boards support the two observation roots
 
 The canonical clockwise service runs
 `SKG → CPV → RMB → BAK → KGK → RNG → SKG`; counterclockwise reverses it.
@@ -108,14 +109,22 @@ Kangkar and Ranggung (`SKLRT_E_CW`), and platform 2 via Rumbia and Compassvale
 (`SKLRT_E_CCW`). This is an interpretation of the route highlighting; the small
 station text is blurred. The crop's capture date, author and original URL were
 not supplied, and its station identity comes from the maintainer's description.
-It supports retaining Bakau's current binding, without authenticating every
-2026 date or the other stations' allocations.
+It supports retaining Bakau's current binding.
 
-**Recommendation:** retain Bakau's current direction binding on this evidence,
-and resolve Rumbia's direction before revisiting its platform 2 observation root
-and the inferred members at Compassvale, Kangkar and Ranggung. Keep all five
-source conflicts and both town-centre visits. Sengkang town-centre changes and
-the Bakau crop do not establish other stations' allocations.
+The second supplied crop, identified as Rumbia's board, supports platform 1
+via Bakau, Kangkar and Ranggung (`SKLRT_E_CW`), and platform 2 via Compassvale
+(`SKLRT_E_CCW`). Platform 1's highlighted path continues around the longer arm;
+platform 2 highlights the shorter arm through Compassvale to Sengkang. This is
+also a route-diagram interpretation, with blurred text and part of platform 2's
+board obscured. Its capture date, author and original URL were not supplied;
+station identity again comes from the maintainer.
+
+**Recommendation:** retain both stations' existing direction bindings. These
+boards support the two directly maintained observation roots; the eight inferred
+bindings retain their existing provenance, including those at Compassvale,
+Kangkar and Ranggung. The supplied images do not independently verify those
+three stations or every 2026 date. Keep all five source conflicts and both
+town-centre visits; no source label swap is authorized by this evidence review.
 
 ## Maintainer input — 31 October
 
@@ -123,12 +132,12 @@ the Bakau crop do not establish other stations' allocations.
 | --- | --- | --- |
 | Choa Chu Kang | “I believe so” in response to both services boarding at either 1/2 and 3/4 being alighting-only. | Tentative recollection of that arrangement, retained for a later canonical correction review. It does not establish an exclusive service allocation or historical validity over all 2026 dates. |
 | Bakau | “Platform 1 is East Loop,” followed by a crop identified as Bakau's platform board. | The opposite highlighted route arms support the existing 1/clockwise and 2/counterclockwise bindings, with the image limits above. |
-| Rumbia | “same, Platform 1 is East Loop.” | Same limit: both canonical directions serve the East Loop. It does not yet select clockwise versus counterclockwise or revise the platform 2 observation root. |
+| Rumbia | “same, Platform 1 is East Loop,” followed by a crop identified as Rumbia's platform board. | The highlighted routes support 1 via Bakau (clockwise) and 2 via Compassvale (counterclockwise), retaining the existing platform 2 observation root and the image limits above. |
 | Expo | “I think so?” about A toward Changi Airport and B toward Tanah Merah. | Tentative agreement, alongside the independent photographs above; the source conflict remains unresolved. |
 
 These are maintainer statements, with their expressed uncertainty preserved.
-For Sengkang East the remaining clarification is Rumbia's next station from
-platform 1: Bakau or Compassvale.
+Both supplied boards answer the requested direction clarification at their
+identified stations; the other bindings remain recorded inferences.
 No canonical allocation or digest-bound mapping approval is supplied here.
 
 ## Reproduction and evidence integrity
@@ -141,7 +150,11 @@ The separately supplied Bakau board crop is identified by SHA-256
 `2bd25076506e474759caf36b5d2b4d20ef2cccbcf8fe1a4af6134dece972abab`
 (2,098,446 bytes), filename
 `codex-clipboard-8d0224f1-01f0-410e-b4eb-a4eaded682a8.png`.
-Its licence is unspecified; the image remains outside Git and is not republished.
+The supplied Rumbia board crop hashes to
+`2cae51cd9a544537e6442eb024fa1de8bbd14af53d543a5f3da0cd439af194ec`
+(1,740,092 bytes), filename
+`codex-clipboard-5b15a8e2-6671-4b14-9032-cd0416dcd10b.png`.
+Both crops have unspecified licences; they remain outside Git and are not republished.
 Newer Choa Chu Kang/Rumbia originals returned HTTP 429 and were not inspected;
 no conclusion relies on their captions or thumbnails.
 
