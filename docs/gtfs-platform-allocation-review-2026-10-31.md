@@ -10,6 +10,12 @@ East bindings retain their recorded same-line inference.
 This packet records evidence and the remaining decisions. It changes no source
 rows, canonical platforms, mappings, calendars or eligibility rules.
 
+Subsequent [CCK canonical correction and before/after diagnostics](gtfs-cck-platform-correction-2026-10-31.md)
+adopt shared A/B boarding at 1/2 as a MRTDown assumption from the tentative
+maintainer recollection, and restrict 3/4 to alighting with independent support
+for each outer face from LTA's archived commissioning annex. The original
+packet's counts and identities below remain its pre-correction baseline.
+
 ## Exact affected population
 
 Regenerated against merged [PR #444](https://github.com/foldaway/mrtdown-data/pull/444),
