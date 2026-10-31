@@ -150,6 +150,20 @@
             }
           ]
         }
+      },
+      {
+        "id": "AMK_NSL_C",
+        "label": "C",
+        "lastUpdated": "2026-10-29",
+        "lineId": "NSL",
+        "boardingStatus": "not_in_service"
+      },
+      {
+        "id": "AMK_NSL_D",
+        "label": "D",
+        "lastUpdated": "2026-10-29",
+        "lineId": "NSL",
+        "boardingStatus": "not_in_service"
       }
     ]
   }

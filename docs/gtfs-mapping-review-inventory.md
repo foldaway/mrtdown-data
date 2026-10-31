@@ -94,7 +94,7 @@ dates, trip records and literal platform evidence.
 | Jurong East NSL `NS1_A`/`NS1_B` | Both source labels contain A / D / E. Existing canonical members do not establish a single allocation. | Define and review truthful platform alternatives without selecting one member. |
 | Jurong East EWL `EW24_A` | Source label B / C; both candidates support the direction. | Preserve the alternatives rather than infer an allocation from direction. |
 | Tanah Merah `CG_A`/`CG_B` and Changi Airport `CG2_A`/`CG2_B` | Literal D / E and A / B groups. | Review complete alternative sets and resulting occurrence semantics. |
-| Ang Mo Kio `NS16_A`/`NS16_B` | Source groups A / C and B / D; canonical layout contains only A and B. | Obtain independent evidence for missing C/D members. Choosing the known member would hide incomplete representation. |
+| Ang Mo Kio `NS16_A`/`NS16_B` | Source groups A / C and B / D. The 29 October correction adds physical C/D with `not_in_service` status following review of their depot role. | Complete physical groups still need every member to pass passenger boarding checks; see the [AMK correction and regenerated diagnostics](gtfs-amk-platform-evidence-2026-10-28.md). Choosing A/B alone would hide the source alternatives. |
 | Expo airport services | Six patterns conflict with current literal-label/service scopes, overlapping grouped endpoint blockers. | Resolve dated allocation evidence or a source correction; grouped-platform support alone does not resolve these conflicts. |
 | CCL | Revision/code gaps, multiple candidates and conflicts with undated current platform scopes, including unresolved dates in all 119 patterns. | Review these causes separately; do not choose the latest revision or use current records as historical proof. |
 | Sengkang East | Six patterns conflict at the five intermediate stations. West patterns have supported proposals. | Verify intermediate-station labels and service allocations without applying town-centre evidence to other stations. |
@@ -103,10 +103,13 @@ dates, trip records and literal platform evidence.
 | Five source-path disagreements | Three NSL patterns contain skipped/excursion occurrences; two TEL patterns omit Gardens by the Bay. | Obtain service-specific evidence or a provider correction. No interpolation, reversal, deleted occurrence or implicit exclusion is supplied. |
 | Unused `LTA` agency | The source declares it but no route references it. | Record a reviewed explicit disposition rather than infer an operator alias or automatic ignore. |
 
-Seven unresolved physical records have complete sets of existing canonical
-alternatives; the two Ang Mo Kio records have incomplete sets. This distinguishes
-the original seven ambiguous candidate sets from the **nine** unresolved source
-platform records under the literal-label review contract.
+In the original baseline, seven unresolved physical records had complete sets
+of existing canonical alternatives; the two Ang Mo Kio records had incomplete
+sets. This distinguishes the original seven ambiguous candidate sets from the
+**nine** unresolved source
+platform records under the literal-label review contract. The linked AMK
+follow-up records the correction under a new topology; it does not relabel these
+baseline artifacts or approve their mappings.
 
 The [disagreement queue](gtfs-mapping-disagreements.md) retains station-specific
 evidence limits. Source calendar correctness, authoritative snapshot lineage,
