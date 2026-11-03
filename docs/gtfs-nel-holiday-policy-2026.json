@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "revision": "foldaway-nel-sunday-public-holidays-2026-v1",
+  "rule": "sunday-on-public-holidays",
+  "sourceManifest": {
+    "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+    "calendar.txt": "50ddaf51ea641fd4fc58695972b317555d7dfbc2503ee3d1bb7b101fd00c669b",
+    "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+    "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+    "routes.txt": "a88aad9d2a2a79a47a88c4cf69cf6da6812cb2dcf9d6a72e500c5ea392b5c605",
+    "stop_times.txt": "857c9484302739c08e5d1274ec1f8cae15d58daca1a06ae48a822c3e16f4511e",
+    "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+    "trips.txt": "1b2ee851e6538d7c73f85a1757cfc6a9029684e57330938ae99d39da7dab8791"
+  },
+  "holidayCalendarSha256": "cee1c9522576bfc6cf4b500cc151723f691f338e08daf2ca79b1fb12717a9f0c",
+  "families": [
+    {
+      "lineId": "NEL",
+      "providerRouteIds": [
+        "NEL_NE1_NE18",
+        "NEL_NE3_NE18",
+        "NEL_NE16_NE18"
+      ],
+      "weekdayCalendarId": "SERVICE_WD",
+      "saturdayCalendarId": "SERVICE_WE",
+      "sundayCalendarId": "SERVICE_PH"
+    }
+  ]
+}

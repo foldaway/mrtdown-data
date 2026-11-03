@@ -92,6 +92,16 @@ export function buildReconciliationEvidence(
   identity: ReconciliationIdentity,
   topology: Topology,
 ) {
+  return buildDateScopedReconciliationEvidence(tables, identity, topology);
+}
+
+/** Internal inspection boundary; overrides never change source calendars or approvals. */
+export function buildDateScopedReconciliationEvidence(
+  tables: ScheduleTables,
+  identity: ReconciliationIdentity,
+  topology: Topology,
+  patternServiceDates?: ReadonlyMap<string, string[]>,
+) {
   const report = proposeScheduleReconciliation(tables, identity, topology);
   const audit = auditSchedule(tables);
   const stops = new Map(
@@ -117,7 +127,9 @@ export function buildReconciliationEvidence(
     );
   const patterns = audit.patterns.map((pattern) => {
     const entry = required(entries.get(`pattern:${pattern.id}`));
-    const activeDates = required(dates.get(pattern.calendarId));
+    const activeDates =
+      patternServiceDates?.get(pattern.id) ??
+      required(dates.get(pattern.calendarId));
     const restrictions = pickupDropOff(
       pattern.tripIds.flatMap((id) => stopTimes.get(id) ?? []),
     );

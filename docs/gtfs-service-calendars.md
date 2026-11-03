@@ -61,3 +61,8 @@ coverage. Serializing each compact calendar with `JSON.stringify` plus a newline
 sorted by provider ID, gives SHA-256
 `67b8776fb9f53c1ee1c9a712d320bd7f48f5bab474472efb6b4e242d4a07ca8d`.
 The audit does not publish or approve scheduled departures.
+
+The separate [NEL holiday date review](gtfs-nel-holiday-date-review.md) now
+resolves explicitly bound Sunday-family dates for public holidays and drafts
+canonical date checks. Literal source calendars and existing assignment consumers
+retain the behavior described here.
