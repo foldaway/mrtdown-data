@@ -1,0 +1,78 @@
+{
+  "id": "SG-2021",
+  "countryCode": "SG",
+  "schemaVersion": 1,
+  "revision": "mom-sg-public-holidays-2021-2026-11-04",
+  "checkedOn": "2026-11-04",
+  "startDate": "2021-01-01",
+  "endDate": "2021-12-31",
+  "source": {
+    "publisher": "Singapore Ministry of Manpower",
+    "datasetId": "d_8ef23381f9417e4d4254ee8b4dcdb176",
+    "datasetUrl": "https://data.gov.sg/datasets/d_8ef23381f9417e4d4254ee8b4dcdb176/view",
+    "datasetUpdatedOn": "2026-07-03",
+    "licenceUrl": "https://data.gov.sg/open-data-licence",
+    "retrievedUrl": "https://data.gov.sg/api/action/datastore_search?resource_id=d_8ef23381f9417e4d4254ee8b4dcdb176&limit=500",
+    "retrievedBytesSha256": "de9572cad1548159b805cff8086d48195a01826e399e366a0ba9cdc7db0e2d03",
+    "retrievedByteLength": 8139,
+    "retrievedRecordCount": 104,
+    "recordCount": 11
+  },
+  "dates": [
+    {
+      "date": "2021-01-01",
+      "name": "New Year's Day",
+      "observed": false
+    },
+    {
+      "date": "2021-02-12",
+      "name": "Chinese New Year",
+      "observed": false
+    },
+    {
+      "date": "2021-02-13",
+      "name": "Chinese New Year",
+      "observed": false
+    },
+    {
+      "date": "2021-04-02",
+      "name": "Good Friday",
+      "observed": false
+    },
+    {
+      "date": "2021-05-01",
+      "name": "Labour Day",
+      "observed": false
+    },
+    {
+      "date": "2021-05-13",
+      "name": "Hari Raya Puasa",
+      "observed": false
+    },
+    {
+      "date": "2021-05-26",
+      "name": "Vesak Day",
+      "observed": false
+    },
+    {
+      "date": "2021-07-20",
+      "name": "Hari Raya Haji",
+      "observed": false
+    },
+    {
+      "date": "2021-08-09",
+      "name": "National Day",
+      "observed": false
+    },
+    {
+      "date": "2021-11-04",
+      "name": "Deepavali",
+      "observed": false
+    },
+    {
+      "date": "2021-12-25",
+      "name": "Christmas Day",
+      "observed": false
+    }
+  ]
+}

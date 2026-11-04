@@ -1,0 +1,83 @@
+{
+  "id": "SG-2024",
+  "countryCode": "SG",
+  "schemaVersion": 1,
+  "revision": "mom-sg-public-holidays-2024-2026-11-04",
+  "checkedOn": "2026-11-04",
+  "startDate": "2024-01-01",
+  "endDate": "2024-12-31",
+  "source": {
+    "publisher": "Singapore Ministry of Manpower",
+    "datasetId": "d_8ef23381f9417e4d4254ee8b4dcdb176",
+    "datasetUrl": "https://data.gov.sg/datasets/d_8ef23381f9417e4d4254ee8b4dcdb176/view",
+    "datasetUpdatedOn": "2026-07-03",
+    "licenceUrl": "https://data.gov.sg/open-data-licence",
+    "retrievedUrl": "https://data.gov.sg/api/action/datastore_search?resource_id=d_8ef23381f9417e4d4254ee8b4dcdb176&limit=500",
+    "retrievedBytesSha256": "de9572cad1548159b805cff8086d48195a01826e399e366a0ba9cdc7db0e2d03",
+    "retrievedByteLength": 8139,
+    "retrievedRecordCount": 104,
+    "recordCount": 12
+  },
+  "dates": [
+    {
+      "date": "2024-01-01",
+      "name": "New Year's Day",
+      "observed": false
+    },
+    {
+      "date": "2024-02-10",
+      "name": "Chinese New Year",
+      "observed": false
+    },
+    {
+      "date": "2024-02-11",
+      "name": "Chinese New Year",
+      "observed": false
+    },
+    {
+      "date": "2024-02-12",
+      "name": "Chinese New Year (Observed)",
+      "observed": true
+    },
+    {
+      "date": "2024-03-29",
+      "name": "Good Friday",
+      "observed": false
+    },
+    {
+      "date": "2024-04-10",
+      "name": "Hari Raya Puasa",
+      "observed": false
+    },
+    {
+      "date": "2024-05-01",
+      "name": "Labour Day",
+      "observed": false
+    },
+    {
+      "date": "2024-05-22",
+      "name": "Vesak Day",
+      "observed": false
+    },
+    {
+      "date": "2024-06-17",
+      "name": "Hari Raya Haji",
+      "observed": false
+    },
+    {
+      "date": "2024-08-09",
+      "name": "National Day",
+      "observed": false
+    },
+    {
+      "date": "2024-10-31",
+      "name": "Deepavali",
+      "observed": false
+    },
+    {
+      "date": "2024-12-25",
+      "name": "Christmas Day",
+      "observed": false
+    }
+  ]
+}

@@ -28,6 +28,15 @@ upstream Singapore Open Data Licence notices continue to apply to the upstream
 material. MRTDown licenses only its own curation, normalization, and derived
 metadata under `CC-BY-4.0`.
 
+### MOM Public Holidays
+
+The shared `data/public-holiday/` calendars contain information from the Ministry
+of Manpower’s [Singapore Public Holidays (consolidated) dataset](https://data.gov.sg/datasets/d_8ef23381f9417e4d4254ee8b4dcdb176/view),
+accessed on 4 November 2026. The upstream dates and names remain subject to the
+[Singapore Open Data Licence v1.0](https://data.gov.sg/open-data-licence).
+MRTDown’s own normalization and provenance metadata are licensed under
+`CC-BY-4.0`; no government endorsement is implied.
+
 ### LTA GTFS Schedule
 
 LTA `GTFSScheduleTrain` source data and the schedule content of derived exports

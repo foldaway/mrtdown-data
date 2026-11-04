@@ -5,6 +5,7 @@ export const entityCollections = [
   'operator',
   'town',
   'landmark',
+  'public-holiday',
 ] as const;
 
 export type EntityCollection = (typeof entityCollections)[number];
@@ -13,6 +14,7 @@ export const entityCollectionDirectories: Record<EntityCollection, string> = {
   landmark: 'landmark',
   line: 'line',
   operator: 'operator',
+  'public-holiday': 'public-holiday',
   service: 'service',
   station: 'station',
   town: 'town',
@@ -43,6 +45,7 @@ export const DIR_SCHEMATIC_MAP_VERSION = schematicMapVersionDirectory;
 export const DIR_LINE = entityCollectionDirectories.line;
 export const DIR_LANDMARK = entityCollectionDirectories.landmark;
 export const DIR_OPERATOR = entityCollectionDirectories.operator;
+export const DIR_PUBLIC_HOLIDAY = entityCollectionDirectories['public-holiday'];
 export const DIR_SERVICE = entityCollectionDirectories.service;
 export const DIR_STATION = entityCollectionDirectories.station;
 export const DIR_TOWN = entityCollectionDirectories.town;

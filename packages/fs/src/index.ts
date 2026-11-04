@@ -8,6 +8,7 @@ export * from './manifest.js';
 export * from './pagesIndex.js';
 export * from './paths.js';
 export * from './publicExport.js';
+export * from './publicHolidays.js';
 export * from './repo/common/dirEntries.js';
 export * from './repo/common/FileStore.js';
 export * from './repo/common/StandardRepository.js';

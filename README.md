@@ -36,6 +36,7 @@ The dataset lives in `data/`. External GTFS files can be inspected locally.
 | --- | --- |
 | `station/` | Stations, including exits and optional platform information. |
 | `line/`, `service/`, `operator/`, `town/`, `landmark/` | The rail network and nearby places. |
+| `public-holiday/` | Shared Singapore holiday calendars by year; see [public holidays](docs/public-holidays.md). |
 | `issue/YYYY/MM/<issue_id>/` | Issue metadata (`issue.json`), source evidence (`evidence.ndjson`), and append-only impact events (`impact.ndjson`). |
 | `schematic-map/system/` | Map rules and design constraints; see the [map plan](docs/plans/active/schematic-system-map.md). |
 | `rights/source-registry.json` | Source rights and attribution rules. |

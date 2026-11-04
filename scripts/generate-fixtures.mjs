@@ -1083,6 +1083,7 @@ export async function generateFixtures(options = {}) {
       service: staticEntities.services.length,
       station: staticEntities.stations.length,
       town: staticEntities.towns.length,
+      'public-holiday': 0,
     },
   };
   await writeJson(metaPath, fullMeta);

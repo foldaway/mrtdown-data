@@ -60,6 +60,8 @@ function collectionManifestKey(
       return 'lines';
     case 'operator':
       return 'operators';
+    case 'public-holiday':
+      return 'publicHolidays';
     case 'service':
       return 'services';
     case 'station':
@@ -81,6 +83,7 @@ export async function buildManifest(
     towns: {},
     landmarks: {},
     operators: {},
+    publicHolidays: {},
     services: {},
     issues: {},
     rights: {
@@ -91,9 +94,11 @@ export async function buildManifest(
 
   for (const collection of entityCollections) {
     const key = collectionManifestKey(collection);
+    const collectionEntries = manifest[key] ?? {};
+    manifest[key] = collectionEntries;
     const records = await listEntities(dataDir, collection);
     for (const record of records) {
-      manifest[key][record.id] = sha256(record.value);
+      collectionEntries[record.id] = sha256(record.value);
     }
   }
 

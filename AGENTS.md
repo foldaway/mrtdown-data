@@ -9,7 +9,7 @@ This repository is the canonical target-layout MRTDown data repository. The
 legacy runtime, API, DuckDB generator, and Fly deploy surfaces have been removed
 from this repo.
 
-- `data/{station,line,service,operator,town,landmark,issue}` contains the
+- `data/{station,line,service,operator,town,landmark,public-holiday,issue}` contains the
   canonical target-layout data.
 - `packages/core` contains shared schemas and pure period helpers.
 - `packages/ingest-contracts` contains the published webhook payload schemas
@@ -38,7 +38,7 @@ The target architecture is a package/data repository:
 - `packages/triage`: LLM-assisted evidence triage and replay utilities. It may
   depend on `core`, `fs`, and `ingest-contracts`.
 - `packages/cli`: command-line entry point that wires packages together.
-- `data/{station,line,service,operator,town,landmark}`: canonical static
+- `data/{station,line,service,operator,town,landmark,public-holiday}`: canonical static
   entities.
 - `data/issue/YYYY/MM/<issue_id>/`: append-only issue records with
   `issue.json`, `evidence.ndjson`, and `impact.ndjson`.
@@ -75,6 +75,9 @@ The target architecture is a package/data repository:
 - `npm run data:validate`: validate canonical `data` with the target CLI.
 - `npm run data:import:lta-station-exits -- <geojson>`: replace station layouts
   with the supplied LTA MRT Station Exit GeoJSON dataset.
+- `npm run data:import:public-holidays -- <complete-api-response.json> --checked-on <date> --source-updated-on <date> [--apply]`:
+  review or import shared public-holiday year calendars. See
+  `docs/public-holidays.md`.
 - `npm run data:platforms:infer -- [--apply] [--write <report>]`: report or
   conservatively apply same-line platform label inference from reviewed
   observations.

@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import {
   auditSchedule,
@@ -8,6 +8,7 @@ import {
 import {
   buildScopedReviewBlockers,
   createGroupedScopedReconciliationDraft,
+  createScheduledHolidayReviewDraft,
   createScheduledTripAssignmentProposals,
   createScopedReconciliationDraft,
   evaluateGroupedScopedReconciliation,
@@ -16,6 +17,7 @@ import {
   hashBytes,
   inspectGtfsTripAssignments,
   listEntities,
+  readEntity,
   readVerifiedCapture,
   scheduleTopologyProjection,
   scopedReviewDraftSha256,
@@ -27,8 +29,22 @@ let requestedCommit;
 let platformGroups = false;
 let includeBlockers = false;
 let includeAssignments = false;
+let holidayPolicyFile;
+let holidayCalendarId;
 for (let index = 0; index < extra.length; index++) {
-  if (extra[index] === '--blockers' && !includeBlockers) {
+  if (
+    extra[index] === '--holiday-policy' &&
+    !holidayPolicyFile &&
+    extra[index + 1]
+  ) {
+    holidayPolicyFile = extra[++index];
+  } else if (
+    extra[index] === '--holiday-calendar' &&
+    !holidayCalendarId &&
+    extra[index + 1]
+  ) {
+    holidayCalendarId = extra[++index];
+  } else if (extra[index] === '--blockers' && !includeBlockers) {
     includeBlockers = true;
   } else if (extra[index] === '--assignments' && !includeAssignments) {
     includeAssignments = true;
@@ -46,7 +62,16 @@ for (let index = 0; index < extra.length; index++) {
 }
 if (!file || !captureFile || !pilotLineList || !output) {
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id>]',
+  );
+}
+if (
+  Boolean(holidayPolicyFile) !== Boolean(holidayCalendarId) ||
+  (holidayPolicyFile &&
+    (platformGroups || includeBlockers || includeAssignments))
+) {
+  throw new Error(
+    'Holiday date review requires both policy and calendar; mapping/assignment options are separate',
   );
 }
 const createDraft = platformGroups
@@ -109,6 +134,70 @@ const identity = {
   },
 };
 const context = { tables, identity, topology };
+if (holidayPolicyFile) {
+  const policy = JSON.parse(await readFile(resolve(holidayPolicyFile), 'utf8'));
+  const { value: holidays } = await readEntity(
+    join(cwd, 'data'),
+    'public-holiday',
+    holidayCalendarId,
+  );
+  const review = createScheduledHolidayReviewDraft(context, policy, holidays);
+  const policyLines = [
+    ...new Set(review.policy.families.map((family) => family.lineId)),
+  ].sort();
+  if (
+    JSON.stringify([...new Set(pilotLineIds)].sort()) !==
+    JSON.stringify(policyLines)
+  ) {
+    throw new Error(
+      'Holiday review pilot must match the explicitly bound policy families',
+    );
+  }
+  const reviewBytes = Buffer.from(`${JSON.stringify(review, null, 2)}\n`);
+  const tripDateCount = (field) =>
+    review.patterns.reduce(
+      (total, pattern) =>
+        total + pattern.tripIds.length * pattern[field].length,
+      0,
+    );
+  const summary = {
+    schemaVersion: 1,
+    documentKind: 'gtfs-holiday-date-review-summary',
+    identity: review.identity,
+    captureSha256: capture.sha256,
+    draftSha256: review.draftSha256,
+    reviewFile: {
+      sha256: hashBytes(reviewBytes),
+      byteLength: reviewBytes.length,
+    },
+    patternCount: review.patterns.length,
+    sourceTripDateCount: tripDateCount('sourceServiceDates'),
+    effectiveTripDateCount: tripDateCount('serviceDates'),
+    addedTripDateCount: tripDateCount('addedServiceDates'),
+    removedTripDateCount: tripDateCount('removedServiceDates'),
+    unresolvedPatternDateCount: review.patterns.reduce(
+      (total, pattern) =>
+        total +
+        pattern.reviewCells
+          .filter((cell) => cell.disposition === 'unresolved')
+          .reduce((count, cell) => count + cell.serviceDates.length, 0),
+      0,
+    ),
+    mappingReviewEligible: false,
+    generationEligible: false,
+  };
+  await mkdir(resolve(output));
+  await writeFile(join(output, 'holiday-date-review.json'), reviewBytes, {
+    flag: 'wx',
+  });
+  await writeFile(
+    join(output, 'summary.json'),
+    `${JSON.stringify(summary, null, 2)}\n`,
+    { flag: 'wx' },
+  );
+  console.log(JSON.stringify({ output: resolve(output), ...summary }, null, 2));
+  process.exit(0);
+}
 const full = createDraft(context, {
   pilotLineIds,
   preparedBy: 'MRTDown deterministic scoped-review proposal tool',

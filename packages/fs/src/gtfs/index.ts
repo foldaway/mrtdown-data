@@ -14,8 +14,13 @@ export * from './inspect.js';
 export * from './pagesTimetableBundle.js';
 export * from './reconcileCapture.js';
 export * from './reconciliation.js';
-export * from './reconciliationEvidence.js';
+export {
+  activeServiceDates,
+  buildReconciliationEvidence,
+} from './reconciliationEvidence.js';
 export * from './retainedDepartures.js';
+export * from './scheduledHolidayPolicy.js';
+export * from './scheduledHolidayReview.js';
 export * from './scheduledServiceCalendar.js';
 export * from './scheduledStopTime.js';
 export * from './scheduledTimetable.js';

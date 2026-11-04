@@ -591,6 +591,12 @@ export function renderPagesIndex(
       records: manifest.issues,
       pathForId: issuePathFromManifestId,
     },
+    {
+      id: 'public-holidays',
+      title: 'Public holidays',
+      records: manifest.publicHolidays ?? {},
+      pathForId: (id: string) => `public-holiday/${id}.json`,
+    },
   ];
   const tables = sections.flatMap((section) =>
     buildTable(section.title, section.id, section.records, section.pathForId),

@@ -2,6 +2,7 @@ import type {
   Landmark,
   Line,
   Operator,
+  PublicHolidayCalendar,
   Service,
   Station,
   Town,
@@ -10,6 +11,7 @@ import {
   DIR_LANDMARK,
   DIR_LINE,
   DIR_OPERATOR,
+  DIR_PUBLIC_HOLIDAY,
   DIR_SERVICE,
   DIR_STATION,
   DIR_TOWN,
@@ -32,6 +34,7 @@ export class MRTDownWriter {
   readonly stations: StandardWriter<Station>;
   readonly lines: StandardWriter<Line>;
   readonly operators: StandardWriter<Operator>;
+  readonly publicHolidays: StandardWriter<PublicHolidayCalendar>;
   readonly services: StandardWriter<Service>;
   readonly landmarks: StandardWriter<Landmark>;
   readonly towns: StandardWriter<Town>;
@@ -43,6 +46,7 @@ export class MRTDownWriter {
     this.stations = new StandardWriter(this.store, DIR_STATION);
     this.lines = new StandardWriter(this.store, DIR_LINE);
     this.operators = new StandardWriter(this.store, DIR_OPERATOR);
+    this.publicHolidays = new StandardWriter(this.store, DIR_PUBLIC_HOLIDAY);
     this.services = new StandardWriter(this.store, DIR_SERVICE);
     this.landmarks = new StandardWriter(this.store, DIR_LANDMARK);
     this.towns = new StandardWriter(this.store, DIR_TOWN);
