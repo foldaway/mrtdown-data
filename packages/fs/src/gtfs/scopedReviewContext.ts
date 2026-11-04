@@ -2,7 +2,7 @@ import {
   proposeScheduleReconciliation,
   type ReconciliationTarget,
 } from './reconciliation.js';
-import { buildReconciliationEvidence } from './reconciliationEvidence.js';
+import { buildDateScopedReconciliationEvidence } from './reconciliationEvidence.js';
 import { auditSchedule } from './schedule.js';
 import type { partitionScopedCandidates } from './scopedCandidates.js';
 import {
@@ -10,16 +10,20 @@ import {
   type ScopedReviewContext,
 } from './scopedReviewContract.js';
 
-export function derive(context: ScopedReviewContext) {
+export function derive(
+  context: ScopedReviewContext,
+  patternServiceDates?: ReadonlyMap<string, string[]>,
+) {
   const report = proposeScheduleReconciliation(
     context.tables,
     context.identity,
     context.topology,
   );
-  const evidence = buildReconciliationEvidence(
+  const evidence = buildDateScopedReconciliationEvidence(
     context.tables,
     context.identity,
     context.topology,
+    patternServiceDates,
   );
   const audit = auditSchedule(context.tables);
   return { report, evidence, audit };

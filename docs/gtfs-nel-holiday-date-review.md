@@ -1,10 +1,12 @@
 # NEL public-holiday date review
 
-The NEL holiday policy now has a usable date resolver and inspection draft.
+The NEL pilot introduced a usable date resolver and inspection draft.
 It replaces weekday or Saturday service dates with the reviewed Sunday family
 on Singapore public holidays. It implements the
 [28 October review assumption](gtfs-nel-mapping-review-2026-10-28.md#actual-date-sets-and-all-14-cells)
-for NEL only. This is a Foldaway assumption, not operator confirmation that every
+for NEL only. The [shared holiday mapping gate](gtfs-holiday-mapping-review.md)
+and [nine-family review](gtfs-shared-holiday-family-review.md) extend this boundary.
+This is a Foldaway assumption, not operator confirmation that every
 full-day Sunday and public-holiday departure is identical.
 
 ## Pinned inputs
@@ -20,7 +22,7 @@ The [policy](gtfs-nel-holiday-policy-2026.json) pins the complete original sourc
 manifest and the normalized holiday-calendar digest. It explicitly binds the
 three NEL route IDs and `SERVICE_WD`, `SERVICE_WE`, `SERVICE_PH` to NEL. Other
 routes sharing those IDs retain their literal dates; CCL's separate families
-remain deferred. The policy revision is
+are covered by the separate shared policy. The pilot policy revision is
 `foldaway-nel-sunday-public-holidays-2026-v2`.
 
 ## Resolve and inspect
@@ -35,7 +37,9 @@ trip IDs, stop IDs, timings, capture bytes or manifests.
 
 The supported rule is intentionally narrow: three distinct, ordinary
 Monday–Friday/Saturday/Sunday calendars with equal bounds inside the known
-holiday date range, and trips in each calendar for each bound route. Any explicit
+holiday date range, and trips in each calendar across each explicit route family.
+Individual short workings may be absent for a day type; no absent trip is
+invented. Any explicit
 `calendar_dates.txt` row in a bound calendar fails closed, including additions,
 removals and dates outside the holiday list. No precedence over such exceptions
 is inferred; they need a separately reviewed policy before substitution can run.
@@ -84,11 +88,13 @@ explicit `--canonical-commit` must have the same data tree, including the shared
 holiday calendars. `--holiday-calendar` selects a canonical calendar ID; an
 arbitrary external calendar file is not accepted. The pilot must match the
 policy's explicit lines.
-Holiday mode writes `holiday-date-review.json` and `summary.json`; it cannot be
-combined with mapping, blocker or assignment options. Ordinary invocation keeps
+Holiday mode also writes a separate mapping draft and evaluation alongside
+`holiday-date-review.json` and `summary.json`; see the
+[shared mapping guide](gtfs-holiday-mapping-review.md). It cannot combine with
+literal platform-group, blocker or assignment options. Ordinary invocation keeps
 the literal-source behavior. Large generated reports stay outside Git.
 
-## October capture result
+## Original NEL pilot result
 
 The [public receipt and ZIP](gtfs-public-handoff.md) have capture SHA-256
 `9a4271536f4bee1d690b10c887fcd0063875a36f3918543d2e32e21ac4dc7e4a`
@@ -113,11 +119,12 @@ alongside the committed canonical identity.
 
 ## Remaining consumers and gates
 
-Policy-aware mapping approvals, exact-date assignments, assigned timetable
-bundles and departure queries are deferred. Their current contracts deliberately
+Policy-aware mapping approval evaluation is now available through the separate
+[shared gate](gtfs-holiday-mapping-review.md). Exact-date assignments, assigned
+timetable bundles and departure queries are deferred. Their current contracts
 remain literal-source contracts; adding a holiday date to an existing assignment
-does not become valid through this inspection feature. Other line activation,
-source-platform corrections and dated engineering exceptions are separate work.
+does not become valid through this inspection feature. Source-platform
+corrections and dated engineering exceptions are separate work.
 
 Source admission, digest-bound mapping/source reviews, release approval,
 whole-feed assignment coverage and public publication still require their

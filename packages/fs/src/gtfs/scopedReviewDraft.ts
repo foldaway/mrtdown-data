@@ -42,12 +42,24 @@ export function createGroupedScopedReconciliationDraft(
   );
 }
 
+/** Internal: callers must verify and bind the complete derived population. */
+export function createGroupedScopedDraftForDates(
+  context: ScopedReviewContext,
+  options: { pilotLineIds: string[]; preparedBy: string },
+  patternServiceDates: ReadonlyMap<string, string[]>,
+) {
+  return GroupedScopedReconciliationDraftSchema.parse(
+    prepareDraft(context, options, true, patternServiceDates),
+  );
+}
+
 function prepareDraft(
   context: ScopedReviewContext,
   options: { pilotLineIds: string[]; preparedBy: string },
   allowGroups: boolean,
+  patternServiceDates?: ReadonlyMap<string, string[]>,
 ) {
-  const { report, evidence, audit } = derive(context);
+  const { report, evidence, audit } = derive(context, patternServiceDates);
   const selected = new Set(options.pilotLineIds);
   for (const id of selected)
     if (!context.topology.lines.some((line) => line.id === id))

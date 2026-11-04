@@ -46,17 +46,46 @@ export function evaluateGroupedScopedReconciliation(
   return evaluate(context, input, approvalInput, true);
 }
 
+/** Internal: derived populations and approval bindings must be verified by their owning contract. */
+export function evaluateGroupedScopedDates(
+  context: ScopedReviewContext,
+  input: unknown,
+  patternServiceDates: ReadonlyMap<string, string[]>,
+  approvalBinding: { matches: boolean; errors: string[] },
+) {
+  return evaluate(
+    context,
+    input,
+    undefined,
+    true,
+    patternServiceDates,
+    approvalBinding,
+  );
+}
+
 function evaluate(
   context: ScopedReviewContext,
   input: unknown,
   approvalInput: unknown,
   allowGroups: boolean,
+  patternServiceDates?: ReadonlyMap<string, string[]>,
+  approvalBinding?: { matches: boolean; errors: string[] },
 ) {
   const draft = allowGroups
     ? GroupedScopedReconciliationDraftSchema.parse(input)
     : ScopedReconciliationDraftSchema.parse(input);
-  const { report, evidence, audit } = derive(context);
-  const errors: string[] = [];
+  const { report, evidence, audit } = derive(context, patternServiceDates);
+  const errors: string[] = [...(approvalBinding?.errors ?? [])];
+  const datesFor = (pattern: (typeof audit.patterns)[number]) => {
+    if (!patternServiceDates) {
+      return activeServiceDates(context.tables, pattern.calendarId);
+    }
+    const dates = patternServiceDates.get(pattern.id);
+    if (!dates) {
+      throw new Error('Missing derived pattern date population');
+    }
+    return dates;
+  };
   if (fingerprint(draft.identity) !== fingerprint(report.identity))
     errors.push('Draft input identity differs from verified context');
   if (new Set(draft.pilotLineIds).size !== draft.pilotLineIds.length)
@@ -175,9 +204,7 @@ function evaluate(
       (pattern) => pattern.providerId === item.providerId,
     );
     if (!pattern || !facts) continue;
-    const active = new Set(
-      activeServiceDates(context.tables, pattern.calendarId),
-    );
+    const active = new Set(datesFor(pattern));
     const covered = coveredDates.get(item.providerId) ?? new Set<string>();
     if (item.disposition === 'matched' && !dates.size)
       errors.push(`Matched cell has no active dates: ${sourceKey}`);
@@ -185,7 +212,9 @@ function evaluate(
       errors.push(`Inactive disposition has active dates: ${sourceKey}`);
     for (const date of dates) {
       if (!active.has(date))
-        errors.push(`Date outside source calendar: ${sourceKey}:${date}`);
+        errors.push(
+          `Date outside ${patternServiceDates ? 'effective population' : 'source calendar'}: ${sourceKey}:${date}`,
+        );
       if (covered.has(date))
         errors.push(`Overlapping pattern decisions: ${sourceKey}:${date}`);
       covered.add(date);
@@ -278,10 +307,7 @@ function evaluate(
     if (!sourceCovered.has(key(entry))) missingEntries.push(key(entry));
   for (const pattern of audit.patterns) {
     const covered = coveredDates.get(pattern.id) ?? new Set<string>();
-    const missing = activeServiceDates(
-      context.tables,
-      pattern.calendarId,
-    ).filter((date) => !covered.has(date));
+    const missing = datesFor(pattern).filter((date) => !covered.has(date));
     if (missing.length)
       missingPatternDates.push({
         providerId: pattern.id,
@@ -290,7 +316,7 @@ function evaluate(
   }
   for (const set of dateSets.keys())
     if (!usedDateSets.has(set)) errors.push(`Unused date set: ${set}`);
-  let approvalMatches = false;
+  let approvalMatches = approvalBinding?.matches ?? false;
   if (approvalInput !== undefined) {
     const approval = (
       allowGroups
