@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "foldaway-nel-sunday-public-holidays-2026-v1",
+  "revision": "foldaway-nel-sunday-public-holidays-2026-v2",
   "rule": "sunday-on-public-holidays",
   "sourceManifest": {
     "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
@@ -12,7 +12,7 @@
     "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
     "trips.txt": "1b2ee851e6538d7c73f85a1757cfc6a9029684e57330938ae99d39da7dab8791"
   },
-  "holidayCalendarSha256": "cee1c9522576bfc6cf4b500cc151723f691f338e08daf2ca79b1fb12717a9f0c",
+  "holidayCalendarSha256": "c1c3a740b0c17944e7d879bf7050b264ec28cf08ee146de3e039cae022b46ee6",
   "families": [
     {
       "lineId": "NEL",
