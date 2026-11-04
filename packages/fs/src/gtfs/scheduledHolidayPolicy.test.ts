@@ -293,7 +293,7 @@ describe('reviewed holiday service dates', () => {
     }
   });
 
-  it('checks canonical coverage on added dates and rejects stale draft provenance', () => {
+  it('checks canonical coverage on added and retained dates and rejects stale drafts', () => {
     const { context, policy, calendar } = fixture();
     const draft = createScheduledHolidayReviewDraft(context, policy, calendar);
     const sunday = draft.patterns.find(
@@ -304,6 +304,12 @@ describe('reviewed holiday service dates', () => {
       sunday?.reviewCells.find((cell) =>
         cell.serviceDates.includes('2026-01-01'),
       )?.disposition,
+    ).toBe('proposed');
+    expect(
+      draft.patterns
+        .find((pattern) => pattern.providerCalendarId === 'WD')
+        ?.reviewCells.find((cell) => cell.serviceDates.includes('2026-01-02'))
+        ?.disposition,
     ).toBe('proposed');
     expect(
       verifyScheduledHolidayReviewDraft(context, policy, calendar, draft).valid,
@@ -328,6 +334,29 @@ describe('reviewed holiday service dates', () => {
     expect(() =>
       verifyScheduledHolidayReviewDraft(context, policy, calendar, tampered),
     ).toThrow(/differs/);
+
+    const shortened = structuredClone(context);
+    shortened.topology.services[0].revisions[0].endAt = '2026-01-02';
+    shortened.identity.topology.sha256 = hashBytes(
+      Buffer.from(JSON.stringify(shortened.topology)),
+    );
+    const shortenedDraft = createScheduledHolidayReviewDraft(
+      shortened,
+      policy,
+      calendar,
+    );
+    expect(
+      shortenedDraft.patterns
+        .find((pattern) => pattern.providerCalendarId === 'WD')
+        ?.reviewCells.find((cell) => cell.serviceDates.includes('2026-01-02'))
+        ?.disposition,
+    ).toBe('unresolved');
+    expect(
+      shortenedDraft.patterns
+        .find((pattern) => pattern.providerCalendarId === 'SU')
+        ?.reviewCells.find((cell) => cell.serviceDates.includes('2026-01-01'))
+        ?.disposition,
+    ).toBe('proposed');
 
     const cases = [
       {

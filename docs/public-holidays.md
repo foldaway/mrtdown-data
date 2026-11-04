@@ -37,6 +37,10 @@ resource ID. It rejects partial pages, invalid civil dates and duplicate dates
 before writing anything. If the source grows beyond the requested page limit,
 obtain a complete capture before importing. `--apply` writes the represented
 years; it does not delete older canonical years absent from the response.
+All year files are staged before canonical replacements begin, so a staging
+failure leaves existing calendars untouched. The final replacements are per-file
+renames, not one atomic transaction; a failure during that phase can leave a
+partially applied import. Rerun the complete import after resolving the failure.
 Review the data diff and commit it separately from implementation changes.
 There is no automatic refresh or publication in this change.
 

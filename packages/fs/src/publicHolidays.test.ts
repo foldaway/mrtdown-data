@@ -1,4 +1,4 @@
-import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import {
@@ -11,6 +11,7 @@ import { hashBytes } from './gtfs/capture.js';
 import { buildManifest } from './manifest.js';
 import { renderPagesIndex } from './pagesIndex.js';
 import {
+  applyPublicHolidayCalendars,
   publicHolidayCalendarsFromDataGov,
   singaporePublicHolidaysDatasetId,
 } from './publicHolidays.js';
@@ -55,6 +56,7 @@ it('roundtrips a shared holiday year, validates it and lists it in public export
     });
     const writer = new MRTDownWriter({ store: new FileWriteStore(dataDir) });
     writer.publicHolidays.create(calendar);
+    expect(olderRepository.publicHolidays.get('SG-2026')).toEqual(calendar);
     expect(await listEntityIds(dataDir, 'public-holiday')).toEqual(['SG-2026']);
     expect(
       (await readEntity(dataDir, 'public-holiday', 'SG-2026')).value,
@@ -186,4 +188,54 @@ it('imports complete consolidated captures by year and rejects partial or malfor
   expect(() =>
     PublicHolidayCalendarSchema.parse({ ...calendars[0], id: 'SG-2027' }),
   ).toThrow();
+});
+
+it('stages every year before replacing calendars and preserves unimported years', async () => {
+  const dataDir = await mkdtemp(join(tmpdir(), 'mrtdown-holiday-import-'));
+  try {
+    const calendars = publicHolidayCalendarsFromDataGov(
+      Buffer.from(
+        JSON.stringify({
+          success: true,
+          result: {
+            resource_id: singaporePublicHolidaysDatasetId,
+            total: 2,
+            records: [
+              { date: '2026-01-01', holiday: 'New Year’s Day' },
+              { date: '2027-01-01', holiday: 'New Year’s Day' },
+            ],
+          },
+        }),
+      ),
+      { checkedOn: '2026-11-04', datasetUpdatedOn: '2026-07-03' },
+    );
+    for (const calendar of calendars) {
+      await writeUnknownEntity(dataDir, 'public-holiday', calendar);
+    }
+    const updated = { ...calendars[0], revision: 'updated-2026' };
+    const invalid = {
+      ...calendars[1],
+      dates: [...calendars[1].dates, ...calendars[1].dates],
+    };
+    await expect(
+      applyPublicHolidayCalendars(dataDir, [updated, invalid]),
+    ).rejects.toThrow();
+    for (const calendar of calendars) {
+      expect(
+        (await readEntity(dataDir, 'public-holiday', calendar.id)).value,
+      ).toEqual(calendar);
+    }
+    expect(await readdir(dataDir)).toEqual(['public-holiday']);
+
+    await applyPublicHolidayCalendars(dataDir, [updated]);
+    expect(
+      (await readEntity(dataDir, 'public-holiday', updated.id)).value,
+    ).toEqual(updated);
+    expect(
+      (await readEntity(dataDir, 'public-holiday', calendars[1].id)).value,
+    ).toEqual(calendars[1]);
+    expect(await readdir(dataDir)).toEqual(['public-holiday']);
+  } finally {
+    await rm(dataDir, { recursive: true, force: true });
+  }
 });

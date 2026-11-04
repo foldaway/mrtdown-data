@@ -14,7 +14,6 @@ export class PublicHolidayRepository extends StandardRepository<PublicHolidayCal
   protected loadAll(): void {
     // Older exports predate this optional collection.
     if (!this.store.exists(this.dirPath)) {
-      this.loaded = true;
       return;
     }
     super.loadAll();

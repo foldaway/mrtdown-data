@@ -1,5 +1,11 @@
-import { PublicHolidayCalendarSchema } from '@mrtdown/core';
+import { mkdir, mkdtemp, rename, rm } from 'node:fs/promises';
+import { join } from 'node:path';
+import {
+  type PublicHolidayCalendar,
+  PublicHolidayCalendarSchema,
+} from '@mrtdown/core';
 import z from 'zod';
+import { entityPath, writeEntity } from './entities.js';
 import { hashBytes } from './gtfs/capture.js';
 
 export const singaporePublicHolidaysDatasetId =
@@ -73,4 +79,32 @@ export function publicHolidayCalendarsFromDataGov(
         dates: yearDates,
       });
     });
+}
+
+/** Stage all years before replacing files. Final renames are per file, not a transaction. */
+export async function applyPublicHolidayCalendars(
+  dataDir: string,
+  calendars: readonly PublicHolidayCalendar[],
+) {
+  if (
+    new Set(calendars.map((calendar) => calendar.id)).size !== calendars.length
+  ) {
+    throw new Error('Duplicate public-holiday calendar ID');
+  }
+  await mkdir(dataDir, { recursive: true });
+  const staging = await mkdtemp(join(dataDir, '.public-holiday-import-'));
+  try {
+    for (const calendar of calendars) {
+      await writeEntity(staging, 'public-holiday', calendar);
+    }
+    await mkdir(join(dataDir, 'public-holiday'), { recursive: true });
+    for (const calendar of calendars) {
+      await rename(
+        entityPath(staging, 'public-holiday', calendar.id),
+        entityPath(dataDir, 'public-holiday', calendar.id),
+      );
+    }
+  } finally {
+    await rm(staging, { recursive: true, force: true });
+  }
 }

@@ -2,8 +2,8 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
+  applyPublicHolidayCalendars,
   publicHolidayCalendarsFromDataGov,
-  writeEntity,
 } from '../packages/fs/dist/index.js';
 
 const [file, ...args] = process.argv.slice(2);
@@ -36,13 +36,7 @@ const calendars = publicHolidayCalendarsFromDataGov(
   options,
 );
 if (options.apply) {
-  for (const calendar of calendars) {
-    await writeEntity(
-      resolve(root, options.dataDir),
-      'public-holiday',
-      calendar,
-    );
-  }
+  await applyPublicHolidayCalendars(resolve(root, options.dataDir), calendars);
 }
 console.log(
   JSON.stringify(
