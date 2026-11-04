@@ -17,6 +17,7 @@ import {
   hashBytes,
   inspectGtfsTripAssignments,
   listEntities,
+  readEntity,
   readVerifiedCapture,
   scheduleTopologyProjection,
   scopedReviewDraftSha256,
@@ -29,7 +30,7 @@ let platformGroups = false;
 let includeBlockers = false;
 let includeAssignments = false;
 let holidayPolicyFile;
-let holidayCalendarFile;
+let holidayCalendarId;
 for (let index = 0; index < extra.length; index++) {
   if (
     extra[index] === '--holiday-policy' &&
@@ -39,10 +40,10 @@ for (let index = 0; index < extra.length; index++) {
     holidayPolicyFile = extra[++index];
   } else if (
     extra[index] === '--holiday-calendar' &&
-    !holidayCalendarFile &&
+    !holidayCalendarId &&
     extra[index + 1]
   ) {
-    holidayCalendarFile = extra[++index];
+    holidayCalendarId = extra[++index];
   } else if (extra[index] === '--blockers' && !includeBlockers) {
     includeBlockers = true;
   } else if (extra[index] === '--assignments' && !includeAssignments) {
@@ -61,11 +62,11 @@ for (let index = 0; index < extra.length; index++) {
 }
 if (!file || !captureFile || !pilotLineList || !output) {
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <json>]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id>]',
   );
 }
 if (
-  Boolean(holidayPolicyFile) !== Boolean(holidayCalendarFile) ||
+  Boolean(holidayPolicyFile) !== Boolean(holidayCalendarId) ||
   (holidayPolicyFile &&
     (platformGroups || includeBlockers || includeAssignments))
 ) {
@@ -135,8 +136,10 @@ const identity = {
 const context = { tables, identity, topology };
 if (holidayPolicyFile) {
   const policy = JSON.parse(await readFile(resolve(holidayPolicyFile), 'utf8'));
-  const holidays = JSON.parse(
-    await readFile(resolve(holidayCalendarFile), 'utf8'),
+  const { value: holidays } = await readEntity(
+    join(cwd, 'data'),
+    'public-holiday',
+    holidayCalendarId,
   );
   const review = createScheduledHolidayReviewDraft(context, policy, holidays);
   const policyLines = [

@@ -79,6 +79,7 @@ type ValidationRecords = Partial<{
   landmark: EntityRecord<'landmark'>[];
   line: EntityRecord<'line'>[];
   operator: EntityRecord<'operator'>[];
+  'public-holiday': EntityRecord<'public-holiday'>[];
   service: EntityRecord<'service'>[];
   station: EntityRecord<'station'>[];
   town: EntityRecord<'town'>[];

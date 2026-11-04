@@ -1,4 +1,7 @@
-import { ScheduledWeekdaysSchema } from '@mrtdown/core';
+import {
+  PublicHolidayCalendarSchema,
+  ScheduledWeekdaysSchema,
+} from '@mrtdown/core';
 import z from 'zod';
 import { compareStrings } from './order.js';
 import { ReconciliationIdentitySchema } from './reconciliation.js';
@@ -11,55 +14,7 @@ import {
 } from './scopedReviewContract.js';
 
 const digest = z.string().regex(/^[a-f0-9]{64}$/);
-export const ScheduledHolidayCalendarSchema = z
-  .object({
-    schemaVersion: z.literal(1),
-    revision: z.string().min(1),
-    checkedOn: z.iso.date(),
-    startDate: z.iso.date(),
-    endDate: z.iso.date(),
-    source: z
-      .object({
-        publisher: z.string().min(1),
-        datasetId: z.string().min(1),
-        datasetUrl: z.url(),
-        datasetUpdatedOn: z.iso.date(),
-        retrievedUrl: z.url(),
-        retrievedBytesSha256: digest,
-        retrievedByteLength: z.number().int().positive(),
-        recordCount: z.number().int().positive(),
-        announcementUrl: z.url(),
-      })
-      .strict(),
-    dates: z
-      .array(
-        z
-          .object({
-            date: z.iso.date(),
-            name: z.string().min(1),
-            observed: z.boolean(),
-          })
-          .strict(),
-      )
-      .min(1),
-  })
-  .strict()
-  .superRefine((calendar, context) => {
-    if (
-      calendar.startDate > calendar.endDate ||
-      new Set(calendar.dates.map(({ date }) => date)).size !==
-        calendar.dates.length ||
-      calendar.source.recordCount !== calendar.dates.length ||
-      calendar.dates.some(
-        ({ date }) => date < calendar.startDate || date > calendar.endDate,
-      )
-    ) {
-      context.addIssue({
-        code: 'custom',
-        message: 'Invalid holiday date population',
-      });
-    }
-  });
+export const ScheduledHolidayCalendarSchema = PublicHolidayCalendarSchema;
 
 export const ScheduledHolidayPolicySchema = z
   .object({

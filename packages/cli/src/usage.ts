@@ -7,8 +7,8 @@ export const usage = `Usage:
   mrtdown [--data-dir <path>] gtfs validate-assignments --file <ZIP> --capture <JSON> --assignments <JSON> --canonical-commit <SHA> [--coverage] [--write <report.json>]
   mrtdown [--data-dir <path>] gtfs topology [--write <fingerprint.json>]
   mrtdown [--data-dir <path>] validate [--scope <scope>]
-  mrtdown [--data-dir <path>] list <station|line|service|operator|town|landmark|issue>
-  mrtdown [--data-dir <path>] show <station|line|service|operator|town|landmark|issue> <id>
+  mrtdown [--data-dir <path>] list <station|line|service|operator|town|landmark|public-holiday|issue>
+  mrtdown [--data-dir <path>] show <station|line|service|operator|town|landmark|public-holiday|issue> <id>
   mrtdown [--data-dir <path>] issue state <id>
   mrtdown [--data-dir <path>] schematic-map list <constraint|version>
   mrtdown [--data-dir <path>] schematic-map show <manifest|rules|constraint|version> [id]
@@ -22,7 +22,7 @@ export const usage = `Usage:
   mrtdown [--data-dir <path>] schematic-map generate <YYYY-MM> [--generated-at <timestamp>] [--write]
   mrtdown [--data-dir <path>] schematic-map preview <YYYY-MM> [--out <path>]
   mrtdown [--data-dir <path>] create issue --date <YYYY-MM-DD> --title <title> [--slug <slug>] [--type <type>] [--source <source>]
-  mrtdown [--data-dir <path>] create <station|line|service|operator|town|landmark> --file <path>
+  mrtdown [--data-dir <path>] create <station|line|service|operator|town|landmark|public-holiday> --file <path>
   mrtdown id issue --date <YYYY-MM-DD> --title <title>
   mrtdown [--data-dir <path>] manifest [--write]
   mrtdown [--data-dir <path>] pages-index [--write]

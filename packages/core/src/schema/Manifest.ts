@@ -40,6 +40,7 @@ export const ManifestSchema = z.object({
   operators: z.record(z.string(), z.string()),
   services: z.record(z.string(), z.string()),
   issues: z.record(z.string(), z.string()),
+  publicHolidays: z.record(z.string(), z.string()).optional(),
   rights: z.object({
     licenseData: z.string(),
     sourceRegistry: z.string(),

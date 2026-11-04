@@ -9,22 +9,19 @@ full-day Sunday and public-holiday departure is identical.
 
 ## Pinned inputs
 
-The [holiday calendar](gtfs-singapore-public-holidays-2026.json) records the
-Ministry of Manpower's [2026 dataset](https://data.gov.sg/datasets/d_149b61ad0a22f61c09dc80f2df5bbec8/view),
-updated 3 July 2026 and checked 3 November 2026. Its 14 dates include the
-observed Mondays on 1 June, 10 August and 9 November. The
-[original announcement](https://www.mom.gov.sg/newsroom/press-releases/2025/0616-public-holidays-for-2026)
-also identifies those observed holidays. The dataset supplies the later date
-list without the announcement's provisional markers for the two Hari Raya dates.
-The recorded API response is 1,482 bytes with SHA-256
-`ba447d97a42fab69a3c2592080df902138131952f9f3f09d4a1c56e36a59226c`.
+The [shared canonical holiday calendar](../data/public-holiday/SG-2026.json)
+comes from the same consolidated MOM dataset used by the site's existing sync.
+The [public-holidays guide](public-holidays.md) describes the schema, import and
+shared export contract. Its 14 dates include the observed Mondays on 1 June,
+10 August and 9 November. All 2026 dates and names match the earlier standalone
+review snapshot; that duplicate file has been removed.
 
 The [policy](gtfs-nel-holiday-policy-2026.json) pins the complete original source
 manifest and the normalized holiday-calendar digest. It explicitly binds the
 three NEL route IDs and `SERVICE_WD`, `SERVICE_WE`, `SERVICE_PH` to NEL. Other
 routes sharing those IDs retain their literal dates; CCL's separate families
 remain deferred. The policy revision is
-`foldaway-nel-sunday-public-holidays-2026-v1`.
+`foldaway-nel-sunday-public-holidays-2026-v2`.
 
 ## Resolve and inspect
 
@@ -77,14 +74,16 @@ node scripts/draft-gtfs-scoped-review.mjs \
   /tmp/amk-correction-input-20261029/schedule.zip \
   /tmp/amk-correction-input-20261029/capture.json \
   NEL /tmp/new-nel-holiday-review \
-  --canonical-commit d778e6568b596dc0fd50487fe4a4942cd6d1ded1 \
   --holiday-policy docs/gtfs-nel-holiday-policy-2026.json \
-  --holiday-calendar docs/gtfs-singapore-public-holidays-2026.json
+  --holiday-calendar SG-2026
 ```
 
 Run comparisons under Node 24 with `TZ=UTC`. The runner checks the capture hash
-and size, requires committed canonical data, and checks that the selected commit
-has the same data tree. The pilot must match the policy's explicit lines.
+and size, requires committed canonical data, and records HEAD by default. An
+explicit `--canonical-commit` must have the same data tree, including the shared
+holiday calendars. `--holiday-calendar` selects a canonical calendar ID; an
+arbitrary external calendar file is not accepted. The pilot must match the
+policy's explicit lines.
 Holiday mode writes `holiday-date-review.json` and `summary.json`; it cannot be
 combined with mapping, blocker or assignment options. Ordinary invocation keeps
 the literal-source behavior. Large generated reports stay outside Git.
@@ -93,8 +92,7 @@ the literal-source behavior. Large generated reports stay outside Git.
 
 The [public receipt and ZIP](gtfs-public-handoff.md) have capture SHA-256
 `9a4271536f4bee1d690b10c887fcd0063875a36f3918543d2e32e21ac4dc7e4a`
-and ZIP size 2,981,645 bytes. The run above uses merged canonical commit
-`d778e6568b596dc0fd50487fe4a4942cd6d1ded1`, topology projection version 1,
+and ZIP size 2,981,645 bytes. The rail topology remains projection version 1,
 digest `11c4859f99d75c66aebe93f05e7e4e140c9b8842df02d250a904d69311e0921f`.
 
 All 14 NEL patterns pass the current effective-date candidate checks. Weekday
@@ -110,10 +108,8 @@ on Sundays add no duplicate dates.
 | Effective derived population | 235,757 |
 
 These are date-review populations, not new assignments or a coverage gain. The
-policy digest is
-`170531b13d89a20a2018edc685dc33394483ac00b9bacd8d3c639221ebf80943`;
-the date-population digest is
-`5398b5e94594421cfebc7e3aa09cfa2106d5ddc507b7a316f75048cc1c0bff91`.
+generated summary records the current policy and full date-population digests
+alongside the committed canonical identity.
 
 ## Remaining consumers and gates
 

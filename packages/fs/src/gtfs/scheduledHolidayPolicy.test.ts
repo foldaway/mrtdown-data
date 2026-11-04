@@ -13,6 +13,8 @@ import type { ScopedReviewContext } from './scopedReviewContract.js';
 
 function fixture() {
   const calendar = {
+    id: 'SG-2026',
+    countryCode: 'SG',
     schemaVersion: 1,
     revision: 'synthetic-2026-v1',
     checkedOn: '2026-11-03',
@@ -27,7 +29,8 @@ function fixture() {
       retrievedBytesSha256: 'a'.repeat(64),
       retrievedByteLength: 100,
       recordCount: 4,
-      announcementUrl: 'https://example.com/announcement',
+      licenceUrl: 'https://example.com/licence',
+      retrievedRecordCount: 4,
     },
     dates: [
       { date: '2026-01-01', name: 'Weekday holiday', observed: false },

@@ -7,6 +7,8 @@ import {
   LineSchema,
   type Operator,
   OperatorSchema,
+  type PublicHolidayCalendar,
+  PublicHolidayCalendarSchema,
   type Service,
   ServiceSchema,
   type Station,
@@ -26,6 +28,7 @@ export type EntityByCollection = {
   landmark: Landmark;
   line: Line;
   operator: Operator;
+  'public-holiday': PublicHolidayCalendar;
   service: Service;
   station: Station;
   town: Town;
@@ -37,6 +40,7 @@ const entitySchemas: {
   landmark: LandmarkSchema,
   line: LineSchema,
   operator: OperatorSchema,
+  'public-holiday': PublicHolidayCalendarSchema,
   service: ServiceSchema,
   station: StationSchema,
   town: TownSchema,
