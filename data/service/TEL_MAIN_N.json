@@ -196,9 +196,169 @@
         {
             "id": "r_2024_stage_4",
             "startAt": "2024-06-23",
+            "endAt": "2026-12-26",
+            "path": {
+                "stations": [
+                    {
+                        "stationId": "BSR",
+                        "displayCode": "TE29"
+                    },
+                    {
+                        "stationId": "SGL",
+                        "displayCode": "TE28"
+                    },
+                    {
+                        "stationId": "MTC",
+                        "displayCode": "TE27"
+                    },
+                    {
+                        "stationId": "MPR",
+                        "displayCode": "TE26"
+                    },
+                    {
+                        "stationId": "TKT",
+                        "displayCode": "TE25"
+                    },
+                    {
+                        "stationId": "KTP",
+                        "displayCode": "TE24"
+                    },
+                    {
+                        "stationId": "TRH",
+                        "displayCode": "TE23"
+                    },
+                    {
+                        "stationId": "GRB",
+                        "displayCode": "TE22"
+                    },
+                    {
+                        "stationId": "MRB",
+                        "displayCode": "TE20"
+                    },
+                    {
+                        "stationId": "SHW",
+                        "displayCode": "TE19"
+                    },
+                    {
+                        "stationId": "MAX",
+                        "displayCode": "TE18"
+                    },
+                    {
+                        "stationId": "OTP",
+                        "displayCode": "TE17"
+                    },
+                    {
+                        "stationId": "HVL",
+                        "displayCode": "TE16"
+                    },
+                    {
+                        "stationId": "GRW",
+                        "displayCode": "TE15"
+                    },
+                    {
+                        "stationId": "ORC",
+                        "displayCode": "TE14"
+                    },
+                    {
+                        "stationId": "OBV",
+                        "displayCode": "TE13"
+                    },
+                    {
+                        "stationId": "NPR",
+                        "displayCode": "TE12"
+                    },
+                    {
+                        "stationId": "STV",
+                        "displayCode": "TE11"
+                    },
+                    {
+                        "stationId": "CDT",
+                        "displayCode": "TE9"
+                    },
+                    {
+                        "stationId": "UTS",
+                        "displayCode": "TE8"
+                    },
+                    {
+                        "stationId": "BRH",
+                        "displayCode": "TE7"
+                    },
+                    {
+                        "stationId": "MFL",
+                        "displayCode": "TE6"
+                    },
+                    {
+                        "stationId": "LTR",
+                        "displayCode": "TE5"
+                    },
+                    {
+                        "stationId": "SPL",
+                        "displayCode": "TE4"
+                    },
+                    {
+                        "stationId": "WDS",
+                        "displayCode": "TE3"
+                    },
+                    {
+                        "stationId": "WDL",
+                        "displayCode": "TE2"
+                    },
+                    {
+                        "stationId": "WDN",
+                        "displayCode": "TE1"
+                    }
+                ]
+            },
+            "operatingHours": {
+                "weekdays": {
+                    "start": "05:36",
+                    "end": "00:42"
+                },
+                "weekends": {
+                    "start": "05:56",
+                    "end": "00:42"
+                }
+            },
+            "estimatedFrequency": {
+                "source": {
+                    "url": "https://www.lta.gov.sg/content/ltagov/en/getting_around/public_transport/rail_network.html",
+                    "description": "LTA system-wide train frequency guidance; 07:00-09:00 peak applied to weekdays for estimation",
+                    "retrievedAt": "2026-07-16"
+                },
+                "defaultHeadway": {
+                    "minSeconds": 300,
+                    "maxSeconds": 420,
+                    "representativeSeconds": 360
+                },
+                "periods": [
+                    {
+                        "id": "weekday_morning_peak",
+                        "dayType": "weekdays",
+                        "start": "07:00",
+                        "end": "09:00",
+                        "headway": {
+                            "minSeconds": 120,
+                            "maxSeconds": 180,
+                            "representativeSeconds": 150
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "r_2026_stage_5",
+            "startAt": "2026-12-26",
             "endAt": null,
             "path": {
                 "stations": [
+                    {
+                        "stationId": "SGB",
+                        "displayCode": "TE31"
+                    },
+                    {
+                        "stationId": "BDS",
+                        "displayCode": "TE30"
+                    },
                     {
                         "stationId": "BSR",
                         "displayCode": "TE29"
