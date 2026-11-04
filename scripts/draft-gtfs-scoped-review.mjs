@@ -8,10 +8,12 @@ import {
 import {
   buildScopedReviewBlockers,
   createGroupedScopedReconciliationDraft,
+  createScheduledHolidayMappingDraft,
   createScheduledHolidayReviewDraft,
   createScheduledTripAssignmentProposals,
   createScopedReconciliationDraft,
   evaluateGroupedScopedReconciliation,
+  evaluateScheduledHolidayMapping,
   evaluateScopedReconciliation,
   groupedScopedReviewDraftSha256,
   hashBytes,
@@ -19,6 +21,7 @@ import {
   listEntities,
   readEntity,
   readVerifiedCapture,
+  scheduledHolidayMappingDraftSha256,
   scheduleTopologyProjection,
   scopedReviewDraftSha256,
 } from '../packages/fs/dist/index.js';
@@ -31,6 +34,9 @@ let includeBlockers = false;
 let includeAssignments = false;
 let holidayPolicyFile;
 let holidayCalendarId;
+let holidayReviewFile;
+let holidayMappingFile;
+let holidayApprovalFile;
 for (let index = 0; index < extra.length; index++) {
   if (
     extra[index] === '--holiday-policy' &&
@@ -44,6 +50,24 @@ for (let index = 0; index < extra.length; index++) {
     extra[index + 1]
   ) {
     holidayCalendarId = extra[++index];
+  } else if (
+    extra[index] === '--holiday-date-review' &&
+    !holidayReviewFile &&
+    extra[index + 1]
+  ) {
+    holidayReviewFile = extra[++index];
+  } else if (
+    extra[index] === '--holiday-mapping' &&
+    !holidayMappingFile &&
+    extra[index + 1]
+  ) {
+    holidayMappingFile = extra[++index];
+  } else if (
+    extra[index] === '--holiday-approval' &&
+    !holidayApprovalFile &&
+    extra[index + 1]
+  ) {
+    holidayApprovalFile = extra[++index];
   } else if (extra[index] === '--blockers' && !includeBlockers) {
     includeBlockers = true;
   } else if (extra[index] === '--assignments' && !includeAssignments) {
@@ -62,11 +86,13 @@ for (let index = 0; index < extra.length; index++) {
 }
 if (!file || !captureFile || !pilotLineList || !output) {
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id>]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>]]',
   );
 }
 if (
   Boolean(holidayPolicyFile) !== Boolean(holidayCalendarId) ||
+  (!holidayPolicyFile &&
+    (holidayReviewFile || holidayMappingFile || holidayApprovalFile)) ||
   (holidayPolicyFile &&
     (platformGroups || includeBlockers || includeAssignments))
 ) {
@@ -141,7 +167,27 @@ if (holidayPolicyFile) {
     'public-holiday',
     holidayCalendarId,
   );
-  const review = createScheduledHolidayReviewDraft(context, policy, holidays);
+  const readJson = async (path) =>
+    JSON.parse(await readFile(resolve(path), 'utf8'));
+  const review = holidayReviewFile
+    ? await readJson(holidayReviewFile)
+    : createScheduledHolidayReviewDraft(context, policy, holidays);
+  const mapping = holidayMappingFile
+    ? await readJson(holidayMappingFile)
+    : createScheduledHolidayMappingDraft(context, policy, holidays, review, {
+        preparedBy: 'MRTDown deterministic holiday-mapping proposal tool',
+      });
+  const approval = holidayApprovalFile
+    ? await readJson(holidayApprovalFile)
+    : undefined;
+  const evaluation = evaluateScheduledHolidayMapping(
+    context,
+    policy,
+    holidays,
+    review,
+    mapping,
+    approval,
+  );
   const policyLines = [
     ...new Set(review.policy.families.map((family) => family.lineId)),
   ].sort();
@@ -183,20 +229,37 @@ if (holidayPolicyFile) {
           .reduce((count, cell) => count + cell.serviceDates.length, 0),
       0,
     ),
-    mappingReviewEligible: false,
+    mapping: {
+      draftSha256: scheduledHolidayMappingDraftSha256(mapping),
+      approval: approval
+        ? 'Supplied repository-review metadata evaluated'
+        : 'No approval metadata supplied; all matches are draft proposals',
+      evaluation,
+    },
+    mappingReviewEligible: evaluation.mappingReviewEligible,
     generationEligible: false,
   };
   await mkdir(resolve(output));
   await writeFile(join(output, 'holiday-date-review.json'), reviewBytes, {
     flag: 'wx',
   });
+  for (const [name, content] of Object.entries({
+    'holiday-mapping-draft.json': mapping,
+    'holiday-mapping-evaluation.json': evaluation,
+  })) {
+    await writeFile(
+      join(output, name),
+      `${JSON.stringify(content, null, 2)}\n`,
+      { flag: 'wx' },
+    );
+  }
   await writeFile(
     join(output, 'summary.json'),
     `${JSON.stringify(summary, null, 2)}\n`,
     { flag: 'wx' },
   );
   console.log(JSON.stringify({ output: resolve(output), ...summary }, null, 2));
-  process.exit(0);
+  process.exit(evaluation.valid ? 0 : 1);
 }
 const full = createDraft(context, {
   pilotLineIds,

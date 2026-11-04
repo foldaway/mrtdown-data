@@ -116,6 +116,11 @@ Model evaluations (`npm run test:eval`) and regression `--replay` make paid API
 calls and require `OPENAI_API_KEY`. Regression replay uses a temporary copy of
 the recorded data revision. These checks are separate from deterministic tests.
 
+Holiday-derived GTFS mapping review uses the
+[shared policy-aware gate](docs/gtfs-holiday-mapping-review.md). The
+[nine-family capture review](docs/gtfs-shared-holiday-family-review.md) records
+its current scope and unresolved evidence.
+
 ## Work on the tools
 
 The packages separate data definitions, file access, and evidence processing:

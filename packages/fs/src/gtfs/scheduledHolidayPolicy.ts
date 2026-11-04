@@ -144,16 +144,26 @@ export function resolveScheduledHolidayDates(
         );
         if (
           !patterns.length ||
-          patterns.some((pattern) => !ids.includes(pattern.calendarId)) ||
-          ids.some(
-            (id) => !patterns.some((pattern) => pattern.calendarId === id),
-          )
+          patterns.some((pattern) => !ids.includes(pattern.calendarId))
         ) {
           throw new Error(
-            'Holiday family requires reviewed route trips in all three calendars',
+            'Holiday family route requires trips only in its bound calendars',
           );
         }
         familiesByRoute.set(route, family);
+      }
+      // A short working can be absent on Sundays; the complete family supplies each day type.
+      if (
+        ids.some(
+          (id) =>
+            !audit.patterns.some(
+              (pattern) =>
+                family.providerRouteIds.includes(pattern.routeId) &&
+                pattern.calendarId === id,
+            ),
+        )
+      ) {
+        throw new Error('Holiday family requires trips in all three calendars');
       }
     }
   }

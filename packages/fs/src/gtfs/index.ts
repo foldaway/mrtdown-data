@@ -19,6 +19,7 @@ export {
   buildReconciliationEvidence,
 } from './reconciliationEvidence.js';
 export * from './retainedDepartures.js';
+export * from './scheduledHolidayMapping.js';
 export * from './scheduledHolidayPolicy.js';
 export * from './scheduledHolidayReview.js';
 export * from './scheduledServiceCalendar.js';
@@ -29,7 +30,10 @@ export * from './scheduledTripPattern.js';
 export * from './scheduledTripRoute.js';
 export * from './scheduledTripTimes.js';
 export * from './scopedCandidates.js';
-export * from './scopedReview.js';
+export {
+  evaluateGroupedScopedReconciliation,
+  evaluateScopedReconciliation,
+} from './scopedReview.js';
 export * from './scopedReviewBlockers.js';
 export type {
   ScopedReconciliationDraft,
@@ -42,7 +46,10 @@ export {
   scopedReviewDateSetId,
   scopedReviewDraftSha256,
 } from './scopedReviewContract.js';
-export * from './scopedReviewDraft.js';
+export {
+  createGroupedScopedReconciliationDraft,
+  createScopedReconciliationDraft,
+} from './scopedReviewDraft.js';
 export * from './timetable.js';
 export * from './timetableArtifact.js';
 export * from './timetableExport.js';
