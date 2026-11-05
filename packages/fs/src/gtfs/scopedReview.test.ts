@@ -303,12 +303,17 @@ describe('version-2 scoped mapping drafts and review gate', () => {
           item.disposition === 'excluded' || item.disposition === 'ignored',
       ),
     ).toEqual([]);
+    expect(
+      draft.decisions.find(
+        (item) => item.kind === 'agency' && item.providerId === 'LTA',
+      ),
+    ).toMatchObject({ disposition: 'unreferenced' });
     expect(result).toMatchObject({
       valid: true,
       coverageComplete: true,
-      unresolvedDecisions: 1,
+      unresolvedDecisions: 0,
       matchedPatternDates: 3,
-      readiness: 'unresolved',
+      readiness: 'unapproved',
       approvalMatches: false,
       mappingReviewEligible: false,
       generationEligible: false,

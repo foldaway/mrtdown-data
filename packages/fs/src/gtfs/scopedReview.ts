@@ -134,6 +134,15 @@ function evaluate(
     if (!source || source.sourceRecordSha256 !== item.sourceRecordSha256)
       errors.push(`Unknown or changed source record: ${sourceKey}`);
     sourceCovered.add(sourceKey);
+    if (
+      item.disposition === 'unreferenced' &&
+      (item.kind !== 'agency' ||
+        audit.routes.some((route) => route.agency_id === item.providerId))
+    ) {
+      errors.push(
+        `Only an agency with no declared route references can be unreferenced: ${sourceKey}`,
+      );
+    }
     if (item.disposition === 'unresolved') unresolvedDecisions++;
     if (item.kind !== 'pattern') {
       if (seen.has(sourceKey))

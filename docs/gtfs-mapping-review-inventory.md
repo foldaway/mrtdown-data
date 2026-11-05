@@ -4,6 +4,8 @@ For the 21 October capture, use the
 [cross-line review based on the NEL decisions](gtfs-cross-line-mapping-review-2026-10-28.md).
 It records reusable reasoning and consolidated exceptions with refreshed source
 identities and counts; the inventory below remains the earlier baseline.
+For the fresh post-#456 cause groups and the unused-agency accounting fix, see
+the [shared blocker triage](gtfs-shared-blocker-triage.md).
 
 All nine observed line families now have concrete proposal packets. The inventory
 is complete; the mappings are not approved or fully resolved, and Phase 2 remains

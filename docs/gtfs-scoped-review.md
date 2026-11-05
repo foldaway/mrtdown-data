@@ -69,7 +69,17 @@ it is not a reviewer or an approval. Each decision binds `kind`, `providerId`,
 | Entry | Dispositions | Target and date scope |
 | --- | --- | --- |
 | Agency, route or referenced stop/parent | `matched`, `ignored`, `unresolved` | Match requires one reported canonical target; other dispositions prohibit a target. |
+| Agency with no declared route references | `unreferenced` | Retains the declaration, source-record digest and reason without an operator target. |
 | Trip pattern | `matched`, `excluded`, `unresolved`, `inactive` | Every cell names a shared exact date set. Match requires one reported service-revision target valid on every date. |
+
+An `unreferenced` agency is checked against **all** source routes, including
+routes outside the pilot and routes without trips. A referenced agency, route
+or stop cannot use this disposition. Missing or changed source records still
+fail validation, and the declaration remains part of the exact draft approval.
+The proposal tool emits this disposition when the absence of references is
+provable; it supplies no approval. Existing version-2 and version-3 decisions
+remain valid; older validators reject the added disposition rather than silently
+treating it as an ignored record.
 
 Each date-set ID is the SHA-256 of its sorted exact ISO civil-date list. The
 checker validates all declared lists, including unreferenced ones, and rejects

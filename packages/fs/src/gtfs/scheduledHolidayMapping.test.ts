@@ -71,6 +71,82 @@ function evaluate(input: Prepared, suppliedApproval?: unknown) {
 }
 
 describe('policy-aware holiday mapping gate', () => {
+  it('retains unreferenced agencies without inventing operator targets or approval', () => {
+    const source = inputs();
+    source.context.tables['agency.txt'].push({
+      agency_id: 'LTA',
+      agency_timezone: 'Asia/Singapore',
+    });
+    const input = prepare(source);
+    const before = structuredClone(input);
+    const declaration = input.draft.mapping.decisions.find(
+      (item) => item.kind === 'agency' && item.providerId === 'LTA',
+    );
+    expect(declaration).toMatchObject({
+      kind: 'agency',
+      providerId: 'LTA',
+      disposition: 'unreferenced',
+      sourceRecordSha256: expect.stringMatching(/^[a-f0-9]{64}$/),
+      reason: expect.stringContaining('no declared route references it'),
+    });
+    expect(declaration).not.toHaveProperty('target');
+    expect(evaluate(input)).toMatchObject({
+      valid: true,
+      coverageComplete: true,
+      unresolvedDecisions: 0,
+      readiness: 'unapproved',
+      mappingReviewEligible: false,
+    });
+    expect(evaluate(input, approval(input.draft))).toMatchObject({
+      valid: true,
+      mappingReviewEligible: true,
+      generationEligible: false,
+    });
+    expect(input).toEqual(before);
+  });
+
+  it('rejects unreferenced claims for any used agency, including a route without trips or outside the pilot', () => {
+    const source = inputs();
+    source.context.tables['agency.txt'].push({
+      agency_id: 'LTA',
+      agency_timezone: 'Asia/Singapore',
+    });
+    source.context.tables['routes.txt'].push({
+      route_id: 'NSL_DECLARED',
+      agency_id: 'LTA',
+      route_type: '1',
+    });
+    const input = prepare(source);
+    const declaration = input.draft.mapping.decisions.find(
+      (item) => item.kind === 'agency' && item.providerId === 'LTA',
+    );
+    if (!declaration) throw new Error('Missing agency declaration');
+    expect(declaration.disposition).toBe('unresolved');
+    declaration.disposition = 'unreferenced';
+    const result = evaluate(input, approval(input.draft));
+    expect(result).toMatchObject({
+      valid: false,
+      mappingReviewEligible: false,
+    });
+    expect(result.errors).toContain(
+      'Only an agency with no declared route references can be unreferenced: agency:LTA',
+    );
+
+    for (const kind of ['agency', 'route', 'stop'] as const) {
+      const used = prepare();
+      const decision = used.draft.mapping.decisions.find(
+        (item) => item.kind === kind,
+      );
+      if (!decision) throw new Error('Missing mapped entity');
+      decision.disposition = 'unreferenced';
+      delete decision.target;
+      expect(evaluate(used, approval(used.draft))).toMatchObject({
+        valid: false,
+        mappingReviewEligible: false,
+      });
+    }
+  });
+
   it('requires exact explicit approval and complete global evidence, while keeping generation gated', () => {
     const input = prepare();
     const before = structuredClone(input);
