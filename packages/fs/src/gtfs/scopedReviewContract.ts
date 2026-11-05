@@ -27,7 +27,7 @@ export const entityDecision = z
   .object({
     ...fields,
     kind: z.enum(['agency', 'route', 'stop']),
-    disposition: z.enum(['matched', 'ignored', 'unresolved']),
+    disposition: z.enum(['matched', 'ignored', 'unresolved', 'unreferenced']),
   })
   .strict();
 export const patternDecision = z

@@ -196,6 +196,18 @@ function prepareDraft(
       sourceRecordSha256: entry.sourceRecordSha256,
     };
     if (entry.kind !== 'pattern') {
+      if (
+        entry.kind === 'agency' &&
+        !audit.routes.some((route) => route.agency_id === entry.providerId)
+      ) {
+        decisions.push({
+          ...base,
+          kind: 'agency',
+          disposition: 'unreferenced',
+          reason: `Source agency ${entry.providerId} is retained without an operator target because no declared route references it. Proposal pending repository review.`,
+        });
+        continue;
+      }
       const candidate = resolveEntity(key(entry));
       const candidateId =
         candidate && 'id' in candidate ? candidate.id : undefined;

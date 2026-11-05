@@ -55,6 +55,14 @@ coverage. Holiday evaluation rejects `ignored` entities and `excluded` pattern
 cells; these cannot turn unresolved source evidence into approved coverage.
 The mapping pilot must equal the explicit policy line families.
 
+An agency declaration with no references from **any** declared route can carry
+the `unreferenced` disposition. Its original identity, source-record digest and
+review reason remain in the mapping, without an invented operator target.
+Evaluation checks routes outside the pilot and routes without trips too; an
+agency used by either cannot carry this disposition. Routes and stops cannot
+use it. This accounts for unused publisher metadata without waiving unresolved
+service evidence, and it still requires the draft's normal exact approval.
+
 Without approval, a valid complete population remains `unapproved` or
 `unresolved`. Only valid, complete, fully resolved mapping with a matching approval
 and at least one matched date becomes `reviewed-mapping-only`, with

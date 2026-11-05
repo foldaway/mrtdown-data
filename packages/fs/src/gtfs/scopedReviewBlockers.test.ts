@@ -144,8 +144,13 @@ function unresolvedPattern(context: ScopedReviewContext) {
 describe('scoped review blocker report', () => {
   it('reports unused agencies without turning investigation into approval or changing inputs', () => {
     const context = fixture(),
-      draft = draftFor(context),
-      before = JSON.stringify({ context, draft });
+      draft = draftFor(context);
+    required(
+      draft.decisions.find(
+        (item) => item.kind === 'agency' && item.providerId === 'LTA',
+      ),
+    ).disposition = 'unresolved';
+    const before = JSON.stringify({ context, draft });
     const report = buildScopedReviewBlockers(context, draft);
     expect(report).toMatchObject({
       draftSchemaVersion: 3,
@@ -457,7 +462,7 @@ describe('scoped review blocker report', () => {
       codes: ['review-required'],
       serviceDates: ['2026-01-01', '2026-01-03', '2026-01-05'],
     });
-    expect(report.unresolvedDecisionCount).toBe(2);
+    expect(report.unresolvedDecisionCount).toBe(1);
   });
   it('keeps empty-calendar unresolved cells visible without inventing dates', () => {
     const context = fixture();
