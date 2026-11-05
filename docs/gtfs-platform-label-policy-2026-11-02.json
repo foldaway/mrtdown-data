@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "revision": "foldaway-expo-sengkang-east-platform-labels-ceb07f9c-v1",
+  "sourceManifest": {
+    "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+    "calendar.txt": "50ddaf51ea641fd4fc58695972b317555d7dfbc2503ee3d1bb7b101fd00c669b",
+    "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+    "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+    "routes.txt": "ef14e523194470a09de94d18b7c920f516657e41aee0bc9493978568f13abd85",
+    "stop_times.txt": "6c42607dfeb68ee07d241f9970ed5c7e2df06ef2b3f4ce237c2923a517e33ee9",
+    "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+    "trips.txt": "b448e1d05564801ecb579fc0e5ed82f56d30d977fa87158882326b9e134f0ff8"
+  },
+  "corrections": [
+    {
+      "providerStopId": "CG1_A",
+      "stationId": "XPO",
+      "lineId": "EWL",
+      "expectedPlatformCode": "B",
+      "platformCode": "A",
+      "reason": "Proposed Foldaway interpretation: Expo photographs support A toward Changi Airport and B toward Tanah Merah. See docs/gtfs-platform-allocation-review-2026-10-31.md. This does not establish operator approval or unchanged allocation on every 2026 date."
+    },
+    {
+      "providerStopId": "CG1_B",
+      "stationId": "XPO",
+      "lineId": "EWL",
+      "expectedPlatformCode": "A",
+      "platformCode": "B",
+      "reason": "Proposed Foldaway interpretation: Expo photographs support A toward Changi Airport and B toward Tanah Merah. See docs/gtfs-platform-allocation-review-2026-10-31.md. This does not establish operator approval or unchanged allocation on every 2026 date."
+    },
+    {
+      "providerStopId": "SE1_A",
+      "stationId": "CPV",
+      "lineId": "SKLRT",
+      "expectedPlatformCode": "1",
+      "platformCode": "2",
+      "reason": "Proposed Foldaway interpretation: maintainer-supplied Bakau and Rumbia boards support 1 clockwise and 2 counterclockwise. Other bindings retain recorded same-line inference. See docs/gtfs-platform-allocation-review-2026-10-31.md. Image dates and all-date allocation are unverified."
+    },
+    {
+      "providerStopId": "SE1_B",
+      "stationId": "CPV",
+      "lineId": "SKLRT",
+      "expectedPlatformCode": "2",
+      "platformCode": "1",
+      "reason": "Proposed Foldaway interpretation: maintainer-supplied Bakau and Rumbia boards support 1 clockwise and 2 counterclockwise. Other bindings retain recorded same-line inference. See docs/gtfs-platform-allocation-review-2026-10-31.md. Image dates and all-date allocation are unverified."
+    },
+    {
+      "providerStopId": "SE2_A",
+      "stationId": "RMB",
+      "lineId": "SKLRT",
+      "expectedPlatformCode": "1",
+      "platformCode": "2",
+      "reason": "Proposed Foldaway interpretation: maintainer-supplied Bakau and Rumbia boards support 1 clockwise and 2 counterclockwise. Other bindings retain recorded same-line inference. See docs/gtfs-platform-allocation-review-2026-10-31.md. Image dates and all-date allocation are unverified."
+    },
+    {
+      "providerStopId": "SE2_B",
+      "stationId": "RMB",
+      "lineId": "SKLRT",
+      "expectedPlatformCode": "2",
+      "platformCode": "1",
+      "reason": "Proposed Foldaway interpretation: maintainer-supplied Bakau and Rumbia boards support 1 clockwise and 2 counterclockwise. Other bindings retain recorded same-line inference. See docs/gtfs-platform-allocation-review-2026-10-31.md. Image dates and all-date allocation are unverified."
+    },
+    {
+      "providerStopId": "SE3_A",
+      "stationId": "BAK",
+      "lineId": "SKLRT",
+      "expectedPlatformCode": "1",
+      "platformCode": "2",
+      "reason": "Proposed Foldaway interpretation: maintainer-supplied Bakau and Rumbia boards support 1 clockwise and 2 counterclockwise. Other bindings retain recorded same-line inference. See docs/gtfs-platform-allocation-review-2026-10-31.md. Image dates and all-date allocation are unverified."
+    },
+    {
+      "providerStopId": "SE3_B",
+      "stationId": "BAK",
+      "lineId": "SKLRT",
+      "expectedPlatformCode": "2",
+      "platformCode": "1",
+      "reason": "Proposed Foldaway interpretation: maintainer-supplied Bakau and Rumbia boards support 1 clockwise and 2 counterclockwise. Other bindings retain recorded same-line inference. See docs/gtfs-platform-allocation-review-2026-10-31.md. Image dates and all-date allocation are unverified."
+    },
+    {
+      "providerStopId": "SE4_A",
+      "stationId": "KGK",
+      "lineId": "SKLRT",
+      "expectedPlatformCode": "1",
+      "platformCode": "2",
+      "reason": "Proposed Foldaway interpretation: maintainer-supplied Bakau and Rumbia boards support 1 clockwise and 2 counterclockwise. Other bindings retain recorded same-line inference. See docs/gtfs-platform-allocation-review-2026-10-31.md. Image dates and all-date allocation are unverified."
+    },
+    {
+      "providerStopId": "SE4_B",
+      "stationId": "KGK",
+      "lineId": "SKLRT",
+      "expectedPlatformCode": "2",
+      "platformCode": "1",
+      "reason": "Proposed Foldaway interpretation: maintainer-supplied Bakau and Rumbia boards support 1 clockwise and 2 counterclockwise. Other bindings retain recorded same-line inference. See docs/gtfs-platform-allocation-review-2026-10-31.md. Image dates and all-date allocation are unverified."
+    },
+    {
+      "providerStopId": "SE5_A",
+      "stationId": "RNG",
+      "lineId": "SKLRT",
+      "expectedPlatformCode": "1",
+      "platformCode": "2",
+      "reason": "Proposed Foldaway interpretation: maintainer-supplied Bakau and Rumbia boards support 1 clockwise and 2 counterclockwise. Other bindings retain recorded same-line inference. See docs/gtfs-platform-allocation-review-2026-10-31.md. Image dates and all-date allocation are unverified."
+    },
+    {
+      "providerStopId": "SE5_B",
+      "stationId": "RNG",
+      "lineId": "SKLRT",
+      "expectedPlatformCode": "2",
+      "platformCode": "1",
+      "reason": "Proposed Foldaway interpretation: maintainer-supplied Bakau and Rumbia boards support 1 clockwise and 2 counterclockwise. Other bindings retain recorded same-line inference. See docs/gtfs-platform-allocation-review-2026-10-31.md. Image dates and all-date allocation are unverified."
+    }
+  ]
+}

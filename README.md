@@ -119,7 +119,9 @@ the recorded data revision. These checks are separate from deterministic tests.
 Holiday-derived GTFS mapping review uses the
 [shared policy-aware gate](docs/gtfs-holiday-mapping-review.md). The
 [nine-family capture review](docs/gtfs-shared-holiday-family-review.md) records
-its current scope and unresolved evidence.
+the earlier capture's scope and unresolved evidence.
+An [explicit platform-label review](docs/gtfs-platform-label-review.md) compares
+proposed interpretations with the original feed and keeps conflicting trips visible.
 
 ## Work on the tools
 
