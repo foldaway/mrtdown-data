@@ -61,16 +61,25 @@ passing pairs are mapping proposals, not published departures.
 | **Total** | **834,984** | **574,607** |
 
 NEL, DTL, BPLRT and PGLRT have no unresolved mapping dates in either run.
-Twelve pattern cells gain passing candidates, but three airport short-working
+Twelve pattern cells gain passing candidates, but three first-morning airport
 cells lose theirs: unresolved decisions move **184 → 175**, and unresolved
 pattern/date pairs **21,815 → 20,720**. The net gain is 260,377 trip/date pairs.
 
-**Expo is not fully resolved.** These three reverse-platform short workings
+**Expo is not fully resolved.** These three first Tanah Merah-bound trips
 pass under the original labels and conflict after the proposed swap:
 
 - `EWL_CGL_WB_WD_102_3066`: 251 effective dates.
 - `EWL_CGL_WB_WE_102_4513`: 51 effective dates.
 - `EWL_CGL_WB_PH_102_4556`: 63 effective dates.
+
+Each runs the full `Changi Airport → Expo → Tanah Merah` route; these are not
+short workings. The weekday and Saturday variants call at Expo at 05:36
+(departure 05:36:59), and the Sunday/public-holiday variant at 06:04
+(departure 06:04:58). Each is the earliest westbound Expo departure in its
+source day-type timetable. They use `CG1_A`, the same Expo stop used by ordinary
+Changi Airport-bound trips, while subsequent westbound trips use `CG1_B`.
+This might describe a special early-morning platform allocation or an incorrect
+stop reference. The feed alone cannot distinguish those explanations.
 
 All 365 occurrences stay unresolved. This is evidence against treating a
 blanket swap as a complete fix; it does not justify an undocumented trip-specific

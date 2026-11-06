@@ -224,7 +224,7 @@ describe('explicit source platform-label review', () => {
     ).not.toContain('2026-01-01');
   });
 
-  it('retains newly conflicting short workings when a label swap helps the main service', () => {
+  it('retains newly conflicting trips when a label swap helps the main service', () => {
     const source = fixture();
     source.context.topology.services.push({
       id: 'REVERSE',
