@@ -120,8 +120,8 @@ Holiday-derived GTFS mapping review uses the
 [shared policy-aware gate](docs/gtfs-holiday-mapping-review.md). The
 [nine-family capture review](docs/gtfs-shared-holiday-family-review.md) records
 the earlier capture's scope and unresolved evidence.
-An [explicit platform-label review](docs/gtfs-platform-label-review.md) compares
-proposed interpretations with the original feed and keeps conflicting trips visible.
+A [source platform allocation review](docs/gtfs-source-platform-allocation-review.md)
+accepts explicitly reviewed GTFS allocations while retaining canonical direction defaults.
 
 ## Work on the tools
 

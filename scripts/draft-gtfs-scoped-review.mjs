@@ -10,12 +10,12 @@ import {
   createGroupedScopedReconciliationDraft,
   createScheduledHolidayMappingDraft,
   createScheduledHolidayReviewDraft,
-  createScheduledPlatformLabelMappingDraft,
+  createScheduledPlatformAllocationMappingDraft,
   createScheduledTripAssignmentProposals,
   createScopedReconciliationDraft,
   evaluateGroupedScopedReconciliation,
   evaluateScheduledHolidayMapping,
-  evaluateScheduledPlatformLabelMapping,
+  evaluateScheduledPlatformAllocationMapping,
   evaluateScopedReconciliation,
   groupedScopedReviewDraftSha256,
   hashBytes,
@@ -24,7 +24,7 @@ import {
   readEntity,
   readVerifiedCapture,
   scheduledHolidayMappingDraftSha256,
-  scheduledPlatformLabelMappingDraftSha256,
+  scheduledPlatformAllocationMappingDraftSha256,
   scheduleTopologyProjection,
   scopedReviewDraftSha256,
 } from '../packages/fs/dist/index.js';
@@ -40,9 +40,9 @@ let holidayCalendarId;
 let holidayReviewFile;
 let holidayMappingFile;
 let holidayApprovalFile;
-let platformLabelPolicyFile;
-let platformLabelReviewFile;
-let platformLabelApprovalFile;
+let platformAllocationPolicyFile;
+let platformAllocationReviewFile;
+let platformAllocationApprovalFile;
 for (let index = 0; index < extra.length; index++) {
   if (
     extra[index] === '--holiday-policy' &&
@@ -75,23 +75,23 @@ for (let index = 0; index < extra.length; index++) {
   ) {
     holidayApprovalFile = extra[++index];
   } else if (
-    extra[index] === '--platform-label-policy' &&
-    !platformLabelPolicyFile &&
+    extra[index] === '--platform-allocation-policy' &&
+    !platformAllocationPolicyFile &&
     extra[index + 1]
   ) {
-    platformLabelPolicyFile = extra[++index];
+    platformAllocationPolicyFile = extra[++index];
   } else if (
-    extra[index] === '--platform-label-review' &&
-    !platformLabelReviewFile &&
+    extra[index] === '--platform-allocation-review' &&
+    !platformAllocationReviewFile &&
     extra[index + 1]
   ) {
-    platformLabelReviewFile = extra[++index];
+    platformAllocationReviewFile = extra[++index];
   } else if (
-    extra[index] === '--platform-label-approval' &&
-    !platformLabelApprovalFile &&
+    extra[index] === '--platform-allocation-approval' &&
+    !platformAllocationApprovalFile &&
     extra[index + 1]
   ) {
-    platformLabelApprovalFile = extra[++index];
+    platformAllocationApprovalFile = extra[++index];
   } else if (extra[index] === '--blockers' && !includeBlockers) {
     includeBlockers = true;
   } else if (extra[index] === '--assignments' && !includeAssignments) {
@@ -110,7 +110,7 @@ for (let index = 0; index < extra.length; index++) {
 }
 if (!file || !captureFile || !pilotLineList || !output) {
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-label-policy <json> [--platform-label-review <json>] [--platform-label-approval <json>]]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>]]',
   );
 }
 if (
@@ -125,16 +125,16 @@ if (
   );
 }
 if (
-  (platformLabelPolicyFile &&
+  (platformAllocationPolicyFile &&
     (!holidayPolicyFile ||
       holidayReviewFile ||
       holidayMappingFile ||
       holidayApprovalFile)) ||
-  (!platformLabelPolicyFile &&
-    (platformLabelReviewFile || platformLabelApprovalFile))
+  (!platformAllocationPolicyFile &&
+    (platformAllocationReviewFile || platformAllocationApprovalFile))
 ) {
   throw new Error(
-    'Platform-label review requires a holiday policy and its own review and approval records',
+    'Platform allocation review requires a holiday policy and its own review and approval records',
   );
 }
 const createDraft = platformGroups
@@ -197,11 +197,11 @@ const identity = {
   },
 };
 const context = { tables, identity, topology };
-if (platformLabelPolicyFile) {
+if (platformAllocationPolicyFile) {
   const readJson = async (path) =>
     JSON.parse(await readFile(resolve(path), 'utf8'));
   const [policy, holidayPolicy, { value: holidays }] = await Promise.all([
-    readJson(platformLabelPolicyFile),
+    readJson(platformAllocationPolicyFile),
     readJson(holidayPolicyFile),
     readEntity(join(cwd, 'data'), 'public-holiday', holidayCalendarId),
   ]);
@@ -213,21 +213,21 @@ if (platformLabelPolicyFile) {
     JSON.stringify(policyLines)
   ) {
     throw new Error(
-      'Platform-label review pilot must match the bound holiday policy families',
+      'Platform allocation review pilot must match the bound holiday policy families',
     );
   }
-  const review = platformLabelReviewFile
-    ? await readJson(platformLabelReviewFile)
-    : createScheduledPlatformLabelMappingDraft(
+  const review = platformAllocationReviewFile
+    ? await readJson(platformAllocationReviewFile)
+    : createScheduledPlatformAllocationMappingDraft(
         context,
         policy,
         holidayPolicy,
         holidays,
       );
-  const approval = platformLabelApprovalFile
-    ? await readJson(platformLabelApprovalFile)
+  const approval = platformAllocationApprovalFile
+    ? await readJson(platformAllocationApprovalFile)
     : undefined;
-  const evaluation = evaluateScheduledPlatformLabelMapping(
+  const evaluation = evaluateScheduledPlatformAllocationMapping(
     context,
     policy,
     holidayPolicy,
@@ -237,10 +237,10 @@ if (platformLabelPolicyFile) {
   );
   const summary = {
     schemaVersion: 1,
-    documentKind: 'gtfs-platform-label-review-summary',
+    documentKind: 'gtfs-platform-allocation-review-summary',
     captureSha256: capture.sha256,
     identity: review.identity,
-    draftSha256: scheduledPlatformLabelMappingDraftSha256(review),
+    draftSha256: scheduledPlatformAllocationMappingDraftSha256(review),
     changes: review.changes,
     patternCount: review.dateReview.patterns.length,
     effectiveTripDateCount: review.dateReview.patterns.reduce(
@@ -256,8 +256,8 @@ if (platformLabelPolicyFile) {
   };
   await mkdir(resolve(output));
   for (const [name, content] of Object.entries({
-    'platform-label-review.json': review,
-    'platform-label-evaluation.json': evaluation,
+    'platform-allocation-review.json': review,
+    'platform-allocation-evaluation.json': evaluation,
     'summary.json': summary,
   })) {
     await writeFile(

@@ -22,23 +22,26 @@ const singleLabel = z
   .min(1)
   .refine(
     (label) => label.trim() === label && !label.includes('/'),
-    'Platform interpretation requires one literal label',
+    'Platform allocation requires one literal label',
   );
 
-export const ScheduledPlatformLabelPolicySchema = z
+export const ScheduledPlatformAllocationPolicySchema = z
   .object({
     schemaVersion: z.literal(1),
     revision: z.string().min(1),
     sourceManifest: ReconciliationIdentitySchema.shape.sourceManifest,
-    corrections: z
+    allocations: z
       .array(
         z
           .object({
             providerStopId: z.string().min(1),
             stationId: z.string().min(1),
             lineId: z.string().min(1),
-            expectedPlatformCode: singleLabel,
             platformCode: singleLabel,
+            serviceIds: z
+              .array(z.string().min(1))
+              .min(1)
+              .refine((ids) => new Set(ids).size === ids.length),
             reason: z.string().min(1),
           })
           .strict(),
@@ -52,38 +55,37 @@ const identitySchema = z
     source: ReconciliationIdentitySchema,
     platformPolicySha256: digest,
     holidayPolicySha256: digest,
-    interpretedSourceManifest:
-      ReconciliationIdentitySchema.shape.sourceManifest,
+    reviewTopologySha256: digest,
   })
   .strict();
 
 const changeSchema = z
   .object({
-    providerStopId: z.string(),
-    originalRecordSha256: digest,
-    interpretedRecordSha256: digest,
-    originalPlatformCode: singleLabel,
+    providerStopId: z.string().min(1),
+    sourceRecordSha256: digest,
+    platformId: z.string().min(1),
     platformCode: singleLabel,
-    platformId: z.string(),
+    canonicalServiceIds: z.array(z.string()),
+    reviewedServiceIds: z.array(z.string()),
   })
   .strict();
 
-export const ScheduledPlatformLabelMappingDraftSchema = z
+export const ScheduledPlatformAllocationMappingDraftSchema = z
   .object({
     schemaVersion: z.literal(1),
-    documentKind: z.literal('gtfs-platform-label-mapping-draft'),
+    documentKind: z.literal('gtfs-platform-allocation-mapping-draft'),
     identity: identitySchema,
-    policy: ScheduledPlatformLabelPolicySchema,
+    policy: ScheduledPlatformAllocationPolicySchema,
     changes: z.array(changeSchema),
     dateReview: z.unknown(),
     mapping: ScheduledHolidayMappingDraftSchema,
   })
   .strict();
 
-export const ScheduledPlatformLabelMappingApprovalSchema = z
+export const ScheduledPlatformAllocationMappingApprovalSchema = z
   .object({
     schemaVersion: z.literal(1),
-    documentKind: z.literal('gtfs-platform-label-mapping-approval'),
+    documentKind: z.literal('gtfs-platform-allocation-mapping-approval'),
     identity: identitySchema,
     draftSha256: digest,
     reviewer: z.string().min(1),
@@ -91,23 +93,19 @@ export const ScheduledPlatformLabelMappingApprovalSchema = z
   })
   .strict();
 
-export type ScheduledPlatformLabelMappingDraft = z.infer<
-  typeof ScheduledPlatformLabelMappingDraftSchema
+export type ScheduledPlatformAllocationMappingDraft = z.infer<
+  typeof ScheduledPlatformAllocationMappingDraftSchema
 >;
-export type ScheduledPlatformLabelMappingApproval = z.infer<
-  typeof ScheduledPlatformLabelMappingApprovalSchema
+export type ScheduledPlatformAllocationMappingApproval = z.infer<
+  typeof ScheduledPlatformAllocationMappingApprovalSchema
 >;
 
-function csvCell(value: string) {
-  return /[",\r\n]/.test(value) ? `"${value.replaceAll('"', '""')}"` : value;
-}
-
-function interpretPlatforms(
+function reviewAllocations(
   context: ScopedReviewContext,
   policyInput: unknown,
   holidayPolicyInput: unknown,
 ) {
-  const policy = ScheduledPlatformLabelPolicySchema.parse(policyInput);
+  const policy = ScheduledPlatformAllocationPolicySchema.parse(policyInput);
   const holidayPolicy = ScheduledHolidayPolicySchema.parse(holidayPolicyInput);
   if (
     fingerprint(policy.sourceManifest) !==
@@ -119,39 +117,37 @@ function interpretPlatforms(
       'Platform and holiday policies must bind the original verified source manifest',
     );
   }
+  const topology = structuredClone(context.topology);
   const stops = context.tables['stops.txt'] ?? [];
-  const interpreted = stops.map((row) => ({ ...row }));
-  const seen = new Set<string>();
+  const seenStops = new Set<string>();
+  const seenPlatforms = new Set<string>();
   const changes: z.infer<typeof changeSchema>[] = [];
-  for (const correction of policy.corrections) {
-    if (seen.has(correction.providerStopId)) {
-      throw new Error('Duplicate platform interpretation');
+  for (const allocation of policy.allocations) {
+    if (seenStops.has(allocation.providerStopId)) {
+      throw new Error('Duplicate source platform allocation');
     }
-    seen.add(correction.providerStopId);
-    const matches = stops.flatMap((row, index) =>
-      row.stop_id === correction.providerStopId ? [index] : [],
+    seenStops.add(allocation.providerStopId);
+    const rows = stops.filter(
+      (row) => row.stop_id === allocation.providerStopId,
     );
-    const index = matches[0];
-    const row = index === undefined ? undefined : stops[index];
+    const row = rows[0];
     if (
-      matches.length !== 1 ||
-      index === undefined ||
+      rows.length !== 1 ||
       !row ||
       (row.location_type && row.location_type !== '0') ||
-      row.platform_code !== correction.expectedPlatformCode ||
-      correction.platformCode === correction.expectedPlatformCode
+      row.platform_code !== allocation.platformCode
     ) {
       throw new Error(
-        `Missing, changed or non-platform source stop: ${correction.providerStopId}`,
+        `Missing, changed or non-platform source stop: ${allocation.providerStopId}`,
       );
     }
     if (
       !holidayPolicy.families.some(
-        (family) => family.lineId === correction.lineId,
+        (family) => family.lineId === allocation.lineId,
       )
     ) {
       throw new Error(
-        'Platform interpretation is outside the holiday review families',
+        'Platform allocation is outside the holiday review families',
       );
     }
     const parents = row.parent_station
@@ -164,122 +160,138 @@ function interpretPlatforms(
         parents[0].parent_station)
     ) {
       throw new Error(
-        'Platform interpretation requires a well-formed source parent',
+        'Platform allocation requires a well-formed source parent',
       );
     }
     const stations = resolveStationCandidates(
       row,
       parents[0],
-      context.topology.stations,
+      topology.stations,
     );
     const station = stations[0]?.station;
     const platforms =
       station?.platforms.filter(
         (platform) =>
-          platform.lineId === correction.lineId &&
-          platform.label === correction.platformCode,
+          platform.lineId === allocation.lineId &&
+          platform.label === allocation.platformCode,
       ) ?? [];
     if (
       stations.length !== 1 ||
-      station?.id !== correction.stationId ||
+      station?.id !== allocation.stationId ||
       !station.stationCodes.some(
         (code) =>
-          code.lineId === correction.lineId && code.code === row.stop_code,
+          code.lineId === allocation.lineId && code.code === row.stop_code,
       ) ||
       platforms.length !== 1
     ) {
       throw new Error(
-        'Platform interpretation must retain the uniquely identified station and line',
+        'Platform allocation must retain the uniquely identified literal station, line and platform',
       );
     }
-    const replacement = { ...row, platform_code: correction.platformCode };
-    interpreted[index] = replacement;
+    const platform = platforms[0];
+    if (seenPlatforms.has(platform.id)) {
+      throw new Error('Multiple source rules for the same physical platform');
+    }
+    seenPlatforms.add(platform.id);
+    if (
+      !platform.serviceIds.length ||
+      allocation.serviceIds.some(
+        (id) =>
+          platform.serviceIds.includes(id) ||
+          !topology.services.some(
+            (service) =>
+              service.id === id && service.lineId === allocation.lineId,
+          ) ||
+          !topology.lines.some(
+            (line) =>
+              line.id === allocation.lineId && line.serviceIds.includes(id),
+          ),
+      )
+    ) {
+      throw new Error(
+        'Allocation must add known same-line services to an explicit canonical default',
+      );
+    }
+    const canonicalServiceIds = [...platform.serviceIds];
+    platform.serviceIds = [
+      ...canonicalServiceIds,
+      ...allocation.serviceIds,
+    ].sort();
     changes.push({
-      providerStopId: correction.providerStopId,
-      originalRecordSha256: fingerprint(row),
-      interpretedRecordSha256: fingerprint(replacement),
-      originalPlatformCode: correction.expectedPlatformCode,
-      platformCode: correction.platformCode,
-      platformId: platforms[0].id,
+      providerStopId: allocation.providerStopId,
+      sourceRecordSha256: fingerprint(row),
+      platformId: platform.id,
+      platformCode: allocation.platformCode,
+      canonicalServiceIds,
+      reviewedServiceIds: [...platform.serviceIds],
     });
   }
-  // Hash an actual derived CSV, rather than claiming the original table bytes changed.
-  const columns = [...new Set(stops.flatMap((row) => Object.keys(row)))];
-  const csv = `${[
-    columns.map(csvCell).join(','),
-    ...interpreted.map((row) =>
-      columns.map((column) => csvCell(row[column] ?? '')).join(','),
-    ),
-  ].join('\n')}\n`;
-  const sourceManifest = {
-    ...context.identity.sourceManifest,
-    'stops.txt': hashBytes(Buffer.from(csv)),
-  };
+  const reviewTopologySha256 = hashBytes(Buffer.from(JSON.stringify(topology)));
   return {
     policy,
     changes,
     context: {
       ...context,
-      tables: { ...context.tables, 'stops.txt': interpreted },
-      identity: { ...context.identity, sourceManifest },
+      topology,
+      identity: {
+        ...context.identity,
+        topology: {
+          ...context.identity.topology,
+          sha256: reviewTopologySha256,
+        },
+      },
     },
-    holidayPolicy: { ...holidayPolicy, sourceManifest },
     identity: {
       source: context.identity,
       platformPolicySha256: fingerprint(policy),
       holidayPolicySha256: fingerprint(holidayPolicy),
-      interpretedSourceManifest: sourceManifest,
+      reviewTopologySha256,
     },
   };
 }
 
-export function scheduledPlatformLabelMappingDraftSha256(input: unknown) {
-  const draft = ScheduledPlatformLabelMappingDraftSchema.parse(input);
+export function scheduledPlatformAllocationMappingDraftSha256(input: unknown) {
+  const draft = ScheduledPlatformAllocationMappingDraftSchema.parse(input);
   return fingerprint({
     ...draft,
     mapping: scheduledHolidayMappingDraftSha256(draft.mapping),
   });
 }
 
-export function createScheduledPlatformLabelMappingDraft(
+export function createScheduledPlatformAllocationMappingDraft(
   context: ScopedReviewContext,
   policyInput: unknown,
   holidayPolicyInput: unknown,
   calendarInput: unknown,
 ) {
-  const interpreted = interpretPlatforms(
-    context,
-    policyInput,
-    holidayPolicyInput,
-  );
+  const reviewed = reviewAllocations(context, policyInput, holidayPolicyInput);
   const dateReview = createScheduledHolidayReviewDraft(
-    interpreted.context,
-    interpreted.holidayPolicy,
+    reviewed.context,
+    holidayPolicyInput,
     calendarInput,
   );
   const mapping = createScheduledHolidayMappingDraft(
-    interpreted.context,
-    interpreted.holidayPolicy,
+    reviewed.context,
+    holidayPolicyInput,
     calendarInput,
     dateReview,
     {
-      preparedBy:
-        'MRTDown explicit source-platform interpretation proposal tool',
+      preparedBy: 'MRTDown explicit source-platform allocation proposal tool',
     },
   );
-  const draft = ScheduledPlatformLabelMappingDraftSchema.parse({
+  const draft = ScheduledPlatformAllocationMappingDraftSchema.parse({
     schemaVersion: 1,
-    documentKind: 'gtfs-platform-label-mapping-draft',
-    identity: interpreted.identity,
-    policy: interpreted.policy,
-    changes: interpreted.changes,
+    documentKind: 'gtfs-platform-allocation-mapping-draft',
+    identity: reviewed.identity,
+    policy: reviewed.policy,
+    changes: reviewed.changes,
     dateReview,
     mapping,
   });
   return { ...draft, dateReview };
 }
 
-export function evaluateScheduledPlatformLabelMapping(
+export function evaluateScheduledPlatformAllocationMapping(
   context: ScopedReviewContext,
   policyInput: unknown,
   holidayPolicyInput: unknown,
@@ -287,35 +299,32 @@ export function evaluateScheduledPlatformLabelMapping(
   input: unknown,
   approvalInput?: unknown,
 ) {
-  const interpreted = interpretPlatforms(
-    context,
-    policyInput,
-    holidayPolicyInput,
-  );
-  const draft = ScheduledPlatformLabelMappingDraftSchema.parse(input);
+  const reviewed = reviewAllocations(context, policyInput, holidayPolicyInput);
+  const draft = ScheduledPlatformAllocationMappingDraftSchema.parse(input);
   const errors: string[] = [];
   if (
-    fingerprint(draft.identity) !== fingerprint(interpreted.identity) ||
-    fingerprint(draft.policy) !== fingerprint(interpreted.policy) ||
-    fingerprint(draft.changes) !== fingerprint(interpreted.changes)
+    fingerprint(draft.identity) !== fingerprint(reviewed.identity) ||
+    fingerprint(draft.policy) !== fingerprint(reviewed.policy) ||
+    fingerprint(draft.changes) !== fingerprint(reviewed.changes)
   ) {
     errors.push(
-      'Platform interpretation identity, policy or change evidence differs from verified inputs',
+      'Platform allocation identity, policy or change evidence differs from verified inputs',
     );
   }
   let nestedApproval: ScheduledHolidayMappingApproval | undefined;
   let approvalMatches = false;
   if (approvalInput !== undefined) {
     const approval =
-      ScheduledPlatformLabelMappingApprovalSchema.parse(approvalInput);
+      ScheduledPlatformAllocationMappingApprovalSchema.parse(approvalInput);
     approvalMatches =
-      fingerprint(approval.identity) === fingerprint(interpreted.identity) &&
-      approval.draftSha256 === scheduledPlatformLabelMappingDraftSha256(draft);
+      fingerprint(approval.identity) === fingerprint(reviewed.identity) &&
+      approval.draftSha256 ===
+        scheduledPlatformAllocationMappingDraftSha256(draft);
     if (!approvalMatches) {
-      errors.push('Approval does not bind this platform interpretation draft');
+      errors.push('Approval does not bind this platform allocation draft');
     }
     if (approvalMatches && !errors.length) {
-      // The outer approval covers the interpretation too; pass only that verified review to the shared gate.
+      // The outer approval covers source precedence too; pass only that verified review to the shared gate.
       nestedApproval = {
         schemaVersion: 1,
         documentKind: 'gtfs-holiday-mapping-approval',
@@ -327,8 +336,8 @@ export function evaluateScheduledPlatformLabelMapping(
     }
   }
   const result = evaluateScheduledHolidayMapping(
-    interpreted.context,
-    interpreted.holidayPolicy,
+    reviewed.context,
+    holidayPolicyInput,
     calendarInput,
     draft.dateReview,
     draft.mapping,
