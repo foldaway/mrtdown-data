@@ -137,7 +137,7 @@
       "stationId": "PYL",
       "lineId": "CCL",
       "platformCode": "A",
-      "reason": "Maintainer source-precedence decision, 5 November 2026, applied to equivalent Paya Lebar physical-platform evidence: assume LTA GTFS allocations are correct for this capture while canonical service directions remain logical defaults. Temporary re-routing is possible, not verified. Keep exact service revision/code dates, service ambiguity and boarding restrictions; see docs/gtfs-ccl-platform-allocation-review-2026-11-06.md.",
+      "reason": "Maintainer source-precedence decision, 5 November 2026, applied to equivalent Paya Lebar physical-platform evidence: assume LTA GTFS allocations are correct for this capture while canonical service directions remain logical defaults. Temporary re-routing is possible, not verified. Keep exact service revision/code dates, service ambiguity and boarding restrictions; see docs/gtfs-source-platform-allocation-review.md#paya-lebar-extension--6-november-2026.",
       "serviceIds": [
         "CCL_BRANCH_CCW",
         "CCL_LOOP_CCW"
@@ -148,7 +148,7 @@
       "stationId": "PYL",
       "lineId": "CCL",
       "platformCode": "B",
-      "reason": "Maintainer source-precedence decision, 5 November 2026, applied to equivalent Paya Lebar physical-platform evidence: assume LTA GTFS allocations are correct for this capture while canonical service directions remain logical defaults. Temporary re-routing is possible, not verified. Keep exact service revision/code dates, service ambiguity and boarding restrictions; see docs/gtfs-ccl-platform-allocation-review-2026-11-06.md.",
+      "reason": "Maintainer source-precedence decision, 5 November 2026, applied to equivalent Paya Lebar physical-platform evidence: assume LTA GTFS allocations are correct for this capture while canonical service directions remain logical defaults. Temporary re-routing is possible, not verified. Keep exact service revision/code dates, service ambiguity and boarding restrictions; see docs/gtfs-source-platform-allocation-review.md#paya-lebar-extension--6-november-2026.",
       "serviceIds": [
         "CCL_BRANCH_CW",
         "CCL_LOOP_CW"
