@@ -112,3 +112,170 @@ The default disposition for these 17 trips is unresolved. Any later reviewed
 exclusion must record its affected scope and resulting coverage gap. Neither
 silently deleting supplied occurrences nor adding unobserved scheduled stops is
 an acceptable way to make the sequence matcher succeed.
+
+## November source-journey model
+
+The maintainer subsequently accepted two capture-specific Foldaway assumptions:
+use the supplied LTA journeys as authoritative, including reversals and repeated
+visits, and treat each supplied station timing as a passenger-service call.
+Possible AMK turnaround or “DO NOT BOARD” movements no longer justify withholding
+the station-level passenger-call interpretation. This is a modelling decision,
+not first-party confirmation of why a movement occurs or which physical member
+of A/C or B/D a train uses.
+
+The [source-journey policy](gtfs-source-journey-policy-2026-11-02.json) binds the
+November ZIP's original table manifest, five exact pattern IDs, explicit
+same-line service associations, review reasons and exact effective service dates.
+The associations follow source route/destination evidence: `NSL_NS13_NS28` to
+`NSL_MAIN_S`, `NSL_NS16_NS1` to `NSL_MAIN_N`, and `TEL_TE1_TE29` to `TEL_MAIN_S`.
+An association does not assert that every leg travels in the service's nominal
+direction, and platform preferences never select it.
+
+The scope is **November 1–30, 2026 service dates**, an explicit diagnostic cohort
+under the accepted November-download applicability assumption. These are not
+provider-confirmed validity bounds. The existing holiday policy derives the
+November 9 substitution. The literal source calendars, the complete effective
+date population and all out-of-cohort dates remain present; no date is excluded
+or silently approved. The wider applicability contract and assignment/release
+consumers remain separate work.
+
+| Source pattern group | All-year effective trip/date pairs | November cohort |
+| --- | ---: | ---: |
+| Yishun–Braddell omission, WD | 251 | 20 |
+| Yishun–Braddell omission, WE | 51 | 4 |
+| Reversing NSL PH journey | 63 | 6 |
+| Seven TEL WE trips omitting Gardens by the Bay | 357 | 28 |
+| Seven TEL PH trips omitting Gardens by the Bay | 441 | 42 |
+| **Total** | **1,163** | **100** |
+
+The 100 November trip/date pairs occupy 40 pattern/date pairs. Literal November
+calendars supply 93 trip/date pairs before holiday substitution. All 1,063
+effective pairs outside November remain accounted for without gaining a
+source-order association from this policy. Service dates are in Asia/Singapore:
+a `25:00` call belongs to the previous civil day's service date, including at
+month and holiday boundaries. None of these 17 source trips has a `24+` time.
+
+`createScheduledSourceJourneyMappingDraft` composes this policy with the existing
+[platform-allocation review](gtfs-source-platform-allocation-review.md) and
+holiday policy. It retains raw trip/stop-time rows, source stop IDs, original
+stop-sequence strings, normalized times, explicit/default access rules, every
+ordered/repeated occurrence and complete literal platform alternatives. Each
+timed occurrence carries `passengerService: true`. Missing stations gain no call
+or interpolated time. A Yishun–Braddell or Marina Bay–Tanjong Rhu association
+can follow the ordinary route without claiming an unlisted intermediate call.
+
+The `sourceJourney` match distinguishes this association from exact, contiguous
+and cyclic canonical paths. No source or canonical path is rewritten, and the
+strict canonical assignment path validator still rejects these journeys.
+Known same-line service references, revision periods, station-code dates,
+operators and platform diagnostics remain checked. Duplicate/unknown patterns,
+dates outside the effective population, changed source manifests, cross-line
+or unknown services and attempts to replace existing ordered-path candidates
+are rejected. Timed calls retain source access fields; the passenger assumption
+does not turn an explicit no-pickup rule into permission to board. A station
+passenger call does not select an A/C member or establish C as boardable.
+
+The distinct `gtfs-source-journey-mapping-draft` and
+`gtfs-source-journey-mapping-approval` bind original canonical/source identity,
+all three policies, reviewed platform topology and bound journey rules, raw
+occurrence evidence, date
+review and editable mapping text. Evaluation reconstructs those claims from the
+verified inputs. Older literal/holiday/allocation approvals do not approve this
+wrapper. Approval never bypasses unresolved platform evidence or missing dates;
+no approval is emitted and generation remains false. Existing assignment and
+release consumers do not accept this wrapper.
+
+Run with Node 24 and `TZ=UTC` after `npm run build:fs`, using a new output folder:
+
+```sh
+node scripts/draft-gtfs-scoped-review.mjs \
+  /tmp/gtfs-current-capture-20261105/schedule.zip \
+  /tmp/gtfs-current-capture-20261105/capture.json \
+  NSL,EWL,NEL,CCL,DTL,TEL,BPLRT,SKLRT,PGLRT \
+  /tmp/new-source-journey-review \
+  --canonical-commit 6ea959633e5a0f2db0c087d17075a461c8f933f9 \
+  --holiday-policy docs/gtfs-shared-holiday-policy-2026-11-02.json \
+  --holiday-calendar SG-2026 \
+  --platform-allocation-policy docs/gtfs-platform-allocation-policy-2026-11-02.json \
+  --source-journey-policy docs/gtfs-source-journey-policy-2026-11-02.json
+```
+
+The output contains `source-journey-review.json`, `source-journey-evaluation.json`
+and `summary.json`. To evaluate saved edits, add `--source-journey-review <json>`;
+actual separately reviewed metadata uses `--source-journey-approval <json>`.
+These cannot mix with holiday-only or platform-only review/approval files.
+The original receipt/ZIP identity and LTA attribution are retained in the
+[platform review](gtfs-source-platform-allocation-review.md#capture-comparison)
+and [public handoff](gtfs-public-handoff.md). No claim that this is the latest
+capture, permanent platform correction or release approval follows.
+
+`applyScheduledSourceJourneyServiceMemberships` adopts #461's explicit
+shared-service claims within this wrapper. The claim's `baseDraftSha256` binds
+the exact nested grouped mapping. The complete independently resolved date
+population is passed to validation, including literal dates for patterns outside
+the holiday-policy families. Existing source-journey evidence, unrelated mapping
+decisions and source/effective dates remain intact. Claims still require every
+member's complete ordered canonical path; a reversing source journey cannot be
+recast as several canonical shared paths. Single-service assignments and #461's
+deduplicated multi-service departure queries retain their existing contracts.
+The runner also retains #463’s independent platform-association mode; mixed
+source-journey/association policy or review inputs are rejected before any mode
+can silently ignore the other’s arguments.
+
+Use `--shared-service-memberships <claims.json>` together with the source-journey
+policy to adopt such claims before evaluating the new wrapper. Saved mappings
+retain their shared targets when replayed with `--source-journey-review`; no
+membership is automatically selected and no approval is generated.
+
+### November model verification
+
+Fresh runs use the pinned November ZIP and canonical data at merged #463
+(`6ea959633e5a0f2db0c087d17075a461c8f933f9`).
+The model supplies a unique dated source-order association for all 100 cohort
+trip/date pairs. The 70 TEL pairs gain passing mapping proposals. The 24 NSL
+southbound pairs retain the separately reviewed MSP terminal-platform conflict;
+the six reversing NSL pairs retain AMK's complete A/C physical-platform checks.
+The station passenger-call assumption is represented for all supplied timings,
+including both AMK visits, without selecting a physical alternative.
+
+The complete population stays 2,478,348 effective trip/date pairs; unresolved
+pairs fall 462,756 → 462,686. All 387 non-policy pattern reviews, every previously
+passing per-date target, all source pattern/row hashes, original/effective dates,
+trip memberships and source stop orders remain unchanged. Original stop-time
+rows for all 17 affected trips compare exactly with the pinned ZIP. No calls or
+times are interpolated. All 1,063 out-of-cohort pairs remain unresolved.
+The review has complete accounting, zero exclusions, no approval, unresolved
+readiness and mapping/generation eligibility false.
+
+The normalized source-journey wrapper digest is
+`f61b5b53daa9c9bbc7afd82ace989c55f044a208af3a87f470fa0026b96eab69`;
+the separately bound review topology digest is
+`9310411c737278e0599c5d53704631b7a4d87ea65b317274daf59f6f5748bb27`.
+The original canonical topology digest remains
+`16f1700e9a37fedb3c08adeb762f4cf1832968d0acfd773a9a027f2ea80a7297`.
+The source-allocation baseline wrapper digest for the same canonical commit and
+implementation is `0b4816962bf7056b5c986384dd953f26362f6ad5b295c97d18a91c372f145576`.
+Fresh packets are under `/tmp/gtfs-source-journey-rebase-463-20261107-u3KEOl/`;
+the earlier #460- and #461-bound packets remain historical. Large generated packets remain
+outside Git.
+
+A separate combined run regenerates #461's 34 explicit CCL membership claims
+against the current source-journey draft: 382 pattern/date pairs and 3,960
+trip/date pairs. Applying them changes exactly those CCL cells, preserves the
+source-journey and holiday-date evidence, and retains every unrelated mapping
+claim. The combined wrapper digest is
+`d1072933d34a91ce2ca8fd7aac9c08194b407aa7b91e177b635518e8487e2db6`;
+all-year unresolved pairs become 458,726, with complete accounting, zero
+exclusions and no mapping/generation eligibility. This combined result is
+separate from the 70-pair source-journey gain above.
+
+Validation uses Node 24 with `TZ=UTC`: all 411 filesystem-package tests and 214
+core tests pass,
+including 19 source-journey tests covering reversals, omissions, repeated calls,
+access fields, 25-hour service dates, holiday substitution, revision/code
+boundaries, overlapping candidates, complete platform alternatives, stale
+identities/evidence, approval separation, strict assignment rejection and shared
+service membership claims with patterns outside the holiday policy.
+Package builds, lint, package boundaries and documentation links also pass.
+Saved-review replay reproduces the review, evaluation and summary byte for byte;
+four invalid CLI mode combinations are rejected before input/output access.

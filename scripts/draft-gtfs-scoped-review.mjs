@@ -7,17 +7,20 @@ import {
 } from '../packages/fs/dist/gtfs/schedule.js';
 import {
   applyScheduledPlatformAllocationServiceMemberships,
+  applyScheduledSourceJourneyServiceMemberships,
   buildScopedReviewBlockers,
   createGroupedScopedReconciliationDraft,
   createScheduledHolidayMappingDraft,
   createScheduledHolidayReviewDraft,
   createScheduledPlatformAllocationMappingDraft,
   createScheduledPlatformAssociationReview,
+  createScheduledSourceJourneyMappingDraft,
   createScheduledTripAssignmentProposals,
   createScopedReconciliationDraft,
   evaluateGroupedScopedReconciliation,
   evaluateScheduledHolidayMapping,
   evaluateScheduledPlatformAllocationMapping,
+  evaluateScheduledSourceJourneyMapping,
   evaluateScopedReconciliation,
   groupedScopedReviewDraftSha256,
   hashBytes,
@@ -27,6 +30,7 @@ import {
   readVerifiedCapture,
   scheduledHolidayMappingDraftSha256,
   scheduledPlatformAllocationMappingDraftSha256,
+  scheduledSourceJourneyMappingDraftSha256,
   scheduleTopologyProjection,
   scopedReviewDraftSha256,
   verifyScheduledPlatformAssociationReview,
@@ -49,6 +53,9 @@ let platformAllocationApprovalFile;
 let sharedServiceMembershipsFile;
 let platformAssociationPolicyFile;
 let platformAssociationReviewFile;
+let sourceJourneyPolicyFile;
+let sourceJourneyReviewFile;
+let sourceJourneyApprovalFile;
 for (let index = 0; index < extra.length; index++) {
   if (
     extra[index] === '--shared-service-memberships' &&
@@ -116,6 +123,24 @@ for (let index = 0; index < extra.length; index++) {
     extra[index + 1]
   ) {
     platformAssociationReviewFile = extra[++index];
+  } else if (
+    extra[index] === '--source-journey-policy' &&
+    !sourceJourneyPolicyFile &&
+    extra[index + 1]
+  ) {
+    sourceJourneyPolicyFile = extra[++index];
+  } else if (
+    extra[index] === '--source-journey-review' &&
+    !sourceJourneyReviewFile &&
+    extra[index + 1]
+  ) {
+    sourceJourneyReviewFile = extra[++index];
+  } else if (
+    extra[index] === '--source-journey-approval' &&
+    !sourceJourneyApprovalFile &&
+    extra[index + 1]
+  ) {
+    sourceJourneyApprovalFile = extra[++index];
   } else if (extra[index] === '--blockers' && !includeBlockers) {
     includeBlockers = true;
   } else if (extra[index] === '--assignments' && !includeAssignments) {
@@ -134,7 +159,7 @@ for (let index = 0; index < extra.length; index++) {
 }
 if (!file || !captureFile || !pilotLineList || !output) {
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>] [--shared-service-memberships <json>] [--platform-association-policy <json> [--platform-association-review <json>]]]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--shared-service-memberships <json>] [--platform-association-policy <json> [--platform-association-review <json>]] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>] | --source-journey-policy <json> [--source-journey-review <json>] [--source-journey-approval <json>]]',
   );
 }
 if (
@@ -142,11 +167,14 @@ if (
     (!platformAllocationPolicyFile ||
       platformAllocationReviewFile ||
       platformAllocationApprovalFile ||
-      sharedServiceMembershipsFile)) ||
+      sharedServiceMembershipsFile ||
+      sourceJourneyPolicyFile ||
+      sourceJourneyReviewFile ||
+      sourceJourneyApprovalFile)) ||
   (platformAssociationReviewFile && !platformAssociationPolicyFile)
 ) {
   throw new Error(
-    'Platform associations require allocation and holiday policies and cannot combine with mapping, approval or shared-service inputs',
+    'Platform associations require allocation and holiday policies and cannot combine with mapping, approval, shared-service or source-journey inputs',
   );
 }
 if (
@@ -173,6 +201,18 @@ if (
 ) {
   throw new Error(
     'Platform allocation review requires a holiday policy and its own review and approval records',
+  );
+}
+if (
+  (sourceJourneyPolicyFile &&
+    (!platformAllocationPolicyFile ||
+      platformAllocationReviewFile ||
+      platformAllocationApprovalFile)) ||
+  (!sourceJourneyPolicyFile &&
+    (sourceJourneyReviewFile || sourceJourneyApprovalFile))
+) {
+  throw new Error(
+    'Source journey review requires platform and holiday policies and its own review/approval files',
   );
 }
 const createDraft = platformGroups
@@ -303,41 +343,84 @@ if (platformAllocationPolicyFile) {
     );
     process.exit(0);
   }
-  let review = platformAllocationReviewFile
-    ? await readJson(platformAllocationReviewFile)
-    : createScheduledPlatformAllocationMappingDraft(
+  const journeyPolicy = sourceJourneyPolicyFile
+    ? await readJson(sourceJourneyPolicyFile)
+    : undefined;
+  const reviewFile = journeyPolicy
+    ? sourceJourneyReviewFile
+    : platformAllocationReviewFile;
+  const approvalFile = journeyPolicy
+    ? sourceJourneyApprovalFile
+    : platformAllocationApprovalFile;
+  let review = reviewFile
+    ? await readJson(reviewFile)
+    : journeyPolicy
+      ? createScheduledSourceJourneyMappingDraft(
+          context,
+          journeyPolicy,
+          policy,
+          holidayPolicy,
+          holidays,
+        )
+      : createScheduledPlatformAllocationMappingDraft(
+          context,
+          policy,
+          holidayPolicy,
+          holidays,
+        );
+  if (sharedServiceMembershipsFile) {
+    const claims = await readJson(sharedServiceMembershipsFile);
+    review = journeyPolicy
+      ? applyScheduledSourceJourneyServiceMemberships(
+          context,
+          journeyPolicy,
+          policy,
+          holidayPolicy,
+          holidays,
+          review,
+          claims,
+        )
+      : applyScheduledPlatformAllocationServiceMemberships(
+          context,
+          policy,
+          holidayPolicy,
+          holidays,
+          review,
+          claims,
+        );
+  }
+  const approval = approvalFile ? await readJson(approvalFile) : undefined;
+  const evaluation = journeyPolicy
+    ? evaluateScheduledSourceJourneyMapping(
+        context,
+        journeyPolicy,
+        policy,
+        holidayPolicy,
+        holidays,
+        review,
+        approval,
+      )
+    : evaluateScheduledPlatformAllocationMapping(
         context,
         policy,
         holidayPolicy,
         holidays,
+        review,
+        approval,
       );
-  if (sharedServiceMembershipsFile)
-    review = applyScheduledPlatformAllocationServiceMemberships(
-      context,
-      policy,
-      holidayPolicy,
-      holidays,
-      review,
-      await readJson(sharedServiceMembershipsFile),
-    );
-  const approval = platformAllocationApprovalFile
-    ? await readJson(platformAllocationApprovalFile)
-    : undefined;
-  const evaluation = evaluateScheduledPlatformAllocationMapping(
-    context,
-    policy,
-    holidayPolicy,
-    holidays,
-    review,
-    approval,
-  );
+  const outputStem = journeyPolicy ? 'source-journey' : 'platform-allocation';
   const summary = {
     schemaVersion: 1,
-    documentKind: 'gtfs-platform-allocation-review-summary',
+    documentKind: `gtfs-${outputStem}-review-summary`,
     captureSha256: capture.sha256,
     identity: review.identity,
-    draftSha256: scheduledPlatformAllocationMappingDraftSha256(review),
-    changes: review.changes,
+    draftSha256: journeyPolicy
+      ? scheduledSourceJourneyMappingDraftSha256(review)
+      : scheduledPlatformAllocationMappingDraftSha256(review),
+    changes: journeyPolicy ? review.platformChanges : review.changes,
+    ...(journeyPolicy
+      ? { sourceJourneyCount: journeyPolicy.journeys.length }
+      : {}),
     patternCount: review.dateReview.patterns.length,
     effectiveTripDateCount: review.dateReview.patterns.reduce(
       (total, pattern) =>
@@ -352,8 +435,8 @@ if (platformAllocationPolicyFile) {
   };
   await mkdir(resolve(output));
   for (const [name, content] of Object.entries({
-    'platform-allocation-review.json': review,
-    'platform-allocation-evaluation.json': evaluation,
+    [`${outputStem}-review.json`]: review,
+    [`${outputStem}-evaluation.json`]: evaluation,
     'summary.json': summary,
   })) {
     await writeFile(

@@ -35,6 +35,7 @@ export {
 } from './scheduledPlatformAllocations.js';
 export * from './scheduledPlatformAssociations.js';
 export * from './scheduledServiceCalendar.js';
+export * from './scheduledSourceJourneys.js';
 export * from './scheduledStopTime.js';
 export * from './scheduledTimetable.js';
 export * from './scheduledTripAssignment.js';

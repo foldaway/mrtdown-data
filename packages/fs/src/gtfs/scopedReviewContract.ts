@@ -10,10 +10,18 @@ import type { ScheduleTables } from './schedule.js';
 import type { scheduleTopologyProjection } from './topology.js';
 
 type Topology = ReturnType<typeof scheduleTopologyProjection>;
+/** Explicit source-order associations, admitted only by a capture-bound review. */
+export interface SourceJourneyRule {
+  providerPatternId: string;
+  lineId: string;
+  serviceId: string;
+  serviceDates: string[];
+}
 export interface ScopedReviewContext {
   tables: ScheduleTables;
   identity: ReconciliationIdentity;
   topology: Topology;
+  sourceJourneyRules?: readonly SourceJourneyRule[];
 }
 const digest = z.string().regex(/^[a-f0-9]{64}$/);
 const target = ReconciliationEntrySchema.shape.candidates.element;

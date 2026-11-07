@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "revision": "foldaway-november-source-journeys-ceb07f9c-v1",
+  "sourceManifest": {
+    "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+    "calendar.txt": "50ddaf51ea641fd4fc58695972b317555d7dfbc2503ee3d1bb7b101fd00c669b",
+    "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+    "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+    "routes.txt": "ef14e523194470a09de94d18b7c920f516657e41aee0bc9493978568f13abd85",
+    "stop_times.txt": "6c42607dfeb68ee07d241f9970ed5c7e2df06ef2b3f4ce237c2923a517e33ee9",
+    "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+    "trips.txt": "b448e1d05564801ecb579fc0e5ed82f56d30d977fa87158882326b9e134f0ff8"
+  },
+  "passengerCallRule": "timed-source-occurrences",
+  "journeys": [
+    {
+      "providerPatternId": "63ebed8183bc66609a130a29023c4d4fc832369a8e7405333b06dd28cb38770f",
+      "lineId": "NSL",
+      "serviceId": "NSL_MAIN_S",
+      "serviceDates": [
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-30"
+      ],
+      "reason": "Maintainer decision: accept the supplied LTA journey order and every timed station occurrence as passenger service for this capture; preserve omissions, repeated occurrences and original times. Service association follows the source route/destination, not platform preferences. These November 1\u201330 service dates are an explicit diagnostic cohort under the Foldaway applicability assumption, not provider-confirmed validity or approval. See docs/gtfs-mapping-disagreements.md#november-source-journey-model."
+    },
+    {
+      "providerPatternId": "ca38177593d5ce418035d20b1c1bcb818985f20d6805c385e7b01918094c8329",
+      "lineId": "NSL",
+      "serviceId": "NSL_MAIN_S",
+      "serviceDates": [
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28"
+      ],
+      "reason": "Maintainer decision: accept the supplied LTA journey order and every timed station occurrence as passenger service for this capture; preserve omissions, repeated occurrences and original times. Service association follows the source route/destination, not platform preferences. These November 1\u201330 service dates are an explicit diagnostic cohort under the Foldaway applicability assumption, not provider-confirmed validity or approval. See docs/gtfs-mapping-disagreements.md#november-source-journey-model."
+    },
+    {
+      "providerPatternId": "eb2f75d6eba919e320a8d7fe748f45a9fb3bcad44d4ef11feff664822803f5c7",
+      "lineId": "NSL",
+      "serviceId": "NSL_MAIN_N",
+      "serviceDates": [
+        "2026-11-01",
+        "2026-11-08",
+        "2026-11-09",
+        "2026-11-15",
+        "2026-11-22",
+        "2026-11-29"
+      ],
+      "reason": "Maintainer decision: accept the supplied LTA journey order and every timed station occurrence as passenger service for this capture; preserve omissions, repeated occurrences and original times. Service association follows the source route/destination, not platform preferences. These November 1\u201330 service dates are an explicit diagnostic cohort under the Foldaway applicability assumption, not provider-confirmed validity or approval. See docs/gtfs-mapping-disagreements.md#november-source-journey-model."
+    },
+    {
+      "providerPatternId": "6e84f2113f0968bd922fbe5f70f3fd7236feee54f421dc20e4116e3d46c90410",
+      "lineId": "TEL",
+      "serviceId": "TEL_MAIN_S",
+      "serviceDates": [
+        "2026-11-01",
+        "2026-11-08",
+        "2026-11-09",
+        "2026-11-15",
+        "2026-11-22",
+        "2026-11-29"
+      ],
+      "reason": "Maintainer decision: accept the supplied LTA journey order and every timed station occurrence as passenger service for this capture; preserve omissions, repeated occurrences and original times. Service association follows the source route/destination, not platform preferences. These November 1\u201330 service dates are an explicit diagnostic cohort under the Foldaway applicability assumption, not provider-confirmed validity or approval. See docs/gtfs-mapping-disagreements.md#november-source-journey-model."
+    },
+    {
+      "providerPatternId": "07c0933b39e35a27d221c62f785c2dbe3764559d995155b92eb166cfddfd2740",
+      "lineId": "TEL",
+      "serviceId": "TEL_MAIN_S",
+      "serviceDates": [
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28"
+      ],
+      "reason": "Maintainer decision: accept the supplied LTA journey order and every timed station occurrence as passenger service for this capture; preserve omissions, repeated occurrences and original times. Service association follows the source route/destination, not platform preferences. These November 1\u201330 service dates are an explicit diagnostic cohort under the Foldaway applicability assumption, not provider-confirmed validity or approval. See docs/gtfs-mapping-disagreements.md#november-source-journey-model."
+    }
+  ]
+}
