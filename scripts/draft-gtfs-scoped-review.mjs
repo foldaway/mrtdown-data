@@ -12,6 +12,7 @@ import {
   createScheduledHolidayMappingDraft,
   createScheduledHolidayReviewDraft,
   createScheduledPlatformAllocationMappingDraft,
+  createScheduledPlatformAssociationReview,
   createScheduledTripAssignmentProposals,
   createScopedReconciliationDraft,
   evaluateGroupedScopedReconciliation,
@@ -28,6 +29,7 @@ import {
   scheduledPlatformAllocationMappingDraftSha256,
   scheduleTopologyProjection,
   scopedReviewDraftSha256,
+  verifyScheduledPlatformAssociationReview,
 } from '../packages/fs/dist/index.js';
 
 const [file, captureFile, pilotLineList, output, ...extra] =
@@ -45,6 +47,8 @@ let platformAllocationPolicyFile;
 let platformAllocationReviewFile;
 let platformAllocationApprovalFile;
 let sharedServiceMembershipsFile;
+let platformAssociationPolicyFile;
+let platformAssociationReviewFile;
 for (let index = 0; index < extra.length; index++) {
   if (
     extra[index] === '--shared-service-memberships' &&
@@ -100,6 +104,18 @@ for (let index = 0; index < extra.length; index++) {
     extra[index + 1]
   ) {
     platformAllocationApprovalFile = extra[++index];
+  } else if (
+    extra[index] === '--platform-association-policy' &&
+    !platformAssociationPolicyFile &&
+    extra[index + 1]
+  ) {
+    platformAssociationPolicyFile = extra[++index];
+  } else if (
+    extra[index] === '--platform-association-review' &&
+    !platformAssociationReviewFile &&
+    extra[index + 1]
+  ) {
+    platformAssociationReviewFile = extra[++index];
   } else if (extra[index] === '--blockers' && !includeBlockers) {
     includeBlockers = true;
   } else if (extra[index] === '--assignments' && !includeAssignments) {
@@ -118,7 +134,19 @@ for (let index = 0; index < extra.length; index++) {
 }
 if (!file || !captureFile || !pilotLineList || !output) {
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>] [--shared-service-memberships <json>]]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>] [--shared-service-memberships <json>] [--platform-association-policy <json> [--platform-association-review <json>]]]',
+  );
+}
+if (
+  (platformAssociationPolicyFile &&
+    (!platformAllocationPolicyFile ||
+      platformAllocationReviewFile ||
+      platformAllocationApprovalFile ||
+      sharedServiceMembershipsFile)) ||
+  (platformAssociationReviewFile && !platformAssociationPolicyFile)
+) {
+  throw new Error(
+    'Platform associations require allocation and holiday policies and cannot combine with mapping, approval or shared-service inputs',
   );
 }
 if (
@@ -225,6 +253,55 @@ if (platformAllocationPolicyFile) {
     throw new Error(
       'Platform allocation review pilot must match the bound holiday policy families',
     );
+  }
+  if (platformAssociationPolicyFile) {
+    const inputs = {
+      context,
+      captureSha256: capture.sha256,
+      policy: await readJson(platformAssociationPolicyFile),
+      allocationPolicy: policy,
+      holidayPolicy,
+      holidayCalendar: holidays,
+    };
+    const review = platformAssociationReviewFile
+      ? await readJson(platformAssociationReviewFile)
+      : createScheduledPlatformAssociationReview(inputs);
+    const evaluation = platformAssociationReviewFile
+      ? verifyScheduledPlatformAssociationReview(inputs, review)
+      : {
+          valid: true,
+          draftSha256: review.draftSha256,
+          mappingReviewEligible: false,
+          generationEligible: false,
+        };
+    const summary = {
+      schemaVersion: 1,
+      documentKind: 'gtfs-platform-association-review-summary',
+      captureSha256: capture.sha256,
+      identity: review.identity,
+      draftSha256: review.draftSha256,
+      accounting: review.accounting,
+      evaluation,
+      approval:
+        'No mapping approval; platform association is separate from passenger boarding permission',
+      generationEligible: false,
+    };
+    await mkdir(resolve(output));
+    for (const [name, content] of Object.entries({
+      'platform-association-review.json': review,
+      'platform-association-evaluation.json': evaluation,
+      'summary.json': summary,
+    })) {
+      await writeFile(
+        join(output, name),
+        `${JSON.stringify(content, null, 2)}\n`,
+        { flag: 'wx' },
+      );
+    }
+    console.log(
+      JSON.stringify({ output: resolve(output), ...summary }, null, 2),
+    );
+    process.exit(0);
   }
   let review = platformAllocationReviewFile
     ? await readJson(platformAllocationReviewFile)

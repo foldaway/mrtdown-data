@@ -269,6 +269,103 @@ service date. No previous-day journey is silently admitted or relabelled.
 
 ## Contract and safeguards
 
+### Distinct NSL platform associations on November service dates
+
+The maintainer subsequently chose to keep AMK A/C and B/D as distinct physical
+platforms and associate each source occurrence with **both** members of its
+literal label. This is a timetable association decision. It does not assert that
+a train simultaneously uses both edges or permit passenger boarding at C/D.
+The physical island arrangement supports the grouping explanation; LTA's guide
+does not specify slash-label semantics. Keep that distinction from the
+[earlier physical evidence and reviewed restrictions](gtfs-amk-platform-evidence-2026-10-28.md).
+
+The opt-in [NSL association policy](gtfs-nsl-platform-association-policy-2026-11-02.json)
+binds the exact capture and source manifest, Singapore timezone, original service
+date, an explicit `2026-11-01` inclusive / `2026-12-01` exclusive range, and the
+maintainer's basis. These bounds express the November applicability assumption;
+they are not provider-confirmed effective dates or December applicability.
+The same policy adds the southbound allocation to literal MSP A only in that
+supported review. Canonical records and the earlier allocation policy stay intact.
+
+`createScheduledPlatformAssociationReview` returns a separate
+`gtfs-platform-association-review-draft`. It retains each pattern's complete
+source and effective dates, exact trip membership, source hashes and ordered
+occurrences. `supportedServiceDates` and `outsideServiceDates` partition every
+effective date. Outside dates retain their original all-year review cells,
+candidates and date/platform diagnostics; they are not matched, inactive or
+approved exclusions. The original `serviceDates` field remains the complete
+effective population; only this wrapper's `reviewCells` describe supported dates.
+
+An association proposal still needs one unique dated service/path candidate,
+valid source codes, resolved identities and an active operator. Platform preference
+never chooses a service. Every group member must exist and be service-compatible;
+at least one must pass the current occurrence diagnostics. Only the explicitly
+listed complete groups use distinct association semantics. Other groups retain
+the strict every-member rule. Source labels, pickups and drop-offs are unchanged.
+
+`platformAssociations` retains every member and reports passenger access separately
+for each source pickup/drop-off combination. `not_in_service` members permit no
+passenger action; `alighting_only` members permit no boarding. Regular or arranged
+pickup also requires onward alighting within the same trip. The grouped report
+marks boarding eligible only where a later source occurrence permits alighting
+for every represented rule; trip-specific consumers must retain the exact rules.
+Final MSP timestamps therefore remain raw source events without becoming onward
+southbound boarding options. Matching northbound timestamps suggest a turnaround,
+but no vehicle continuity or linked continuation is inferred.
+
+For the pinned capture on canonical `ac28ebfa5f864f6c9fc15d0c6f8ceccba7a85775`:
+
+| Trip/date accounting | Count |
+| --- | ---: |
+| Literal all-year source | 2,488,794 |
+| Effective all-year after holiday policy | 2,478,348 |
+| Supported November service dates | 203,064 |
+| Outside the explicit range | 2,275,284 |
+| November proposals after AMK/MSP association review | 199,004 |
+| November unresolved | 4,060 |
+
+This packet was regenerated on merged #461, rather than relabelled from the
+earlier #460 run. Its normalized review digest is
+`b2c200ccae1d4cf9a1ab3e6b7b50ab377ac5b1cad48ddb4fc36b014290c0c2fc`.
+The source inventory, pattern evidence and measured counts are unchanged.
+
+The review resolves the assigned 19,122 November pairs: AMK-only 19,072,
+AMK/MSP overlap 30 and MSP-only 20. Remaining diagnostics are CCL ambiguity 3,960,
+NSL no-path 30 and TEL no-path 70. No other supported per-date outcome changes,
+and no all-year diagnostic changes. Counts describe recurring trips on service
+dates, rather than independent errors or approved departures.
+
+Service-date bounds apply before conversion to event instants: October 31's
+`24:40:42` AMK event stays outside even though it occurs on November 1; November
+30's `24:49:14` AMK event stays inside even though it occurs on December 1.
+Neither source admission nor release `effectiveAt` establishes these bounds.
+This opt-in review does not implement the broader assignment/artifact/serving
+applicability contract proposed in the [holiday mapping review](gtfs-holiday-mapping-review.md).
+
+`verifyScheduledPlatformAssociationReview` reconstructs every saved claim and
+binds the policies, capture, canonical identity, reviewed topology and supported
+date population. Collapsed groups, changed access decisions, stale policies or
+edited dates fail verification. Existing literal/holiday mapping, assignment,
+artifact and release contracts do not accept this new document kind. No approval
+is manufactured; mapping-review and generation eligibility stay false.
+
+With Node 24, `TZ=UTC`, and `npm run build:fs`, use the all-family reproduction
+command above with current canonical commit `ac28ebfa5f864f6c9fc15d0c6f8ceccba7a85775`,
+the checked-in v2 allocation policy and a fresh output directory, adding:
+
+```sh
+--platform-association-policy docs/gtfs-nsl-platform-association-policy-2026-11-02.json
+```
+
+This writes `platform-association-review.json`,
+`platform-association-evaluation.json` and `summary.json`. To verify saved output,
+also supply `--platform-association-review <review.json>` with the same inputs
+and a fresh directory. Mapping, approval, assignment and shared-service claim options cannot be mixed
+with association review. The existing shared-service allocation path remains
+available separately, including its complete resolved date population for
+patterns outside holiday-policy families. This wrapper still requires unique
+dated service candidates; it does not silently discard shared-service claims.
+
 `createScheduledPlatformAllocationMappingDraft` takes the original verified
 context, explicit platform policy, holiday policy and canonical holiday calendar.
 Each allocation names a source stop, its exact literal platform label, canonical

@@ -104,7 +104,8 @@ export type ScheduledPlatformAllocationMappingApproval = z.infer<
   typeof ScheduledPlatformAllocationMappingApprovalSchema
 >;
 
-function reviewAllocations(
+/** Internal composition helper; callers must bind and verify any derived review contract. */
+export function reviewScheduledPlatformAllocations(
   context: ScopedReviewContext,
   policyInput: unknown,
   holidayPolicyInput: unknown,
@@ -268,7 +269,11 @@ export function createScheduledPlatformAllocationMappingDraft(
   holidayPolicyInput: unknown,
   calendarInput: unknown,
 ) {
-  const reviewed = reviewAllocations(context, policyInput, holidayPolicyInput);
+  const reviewed = reviewScheduledPlatformAllocations(
+    context,
+    policyInput,
+    holidayPolicyInput,
+  );
   const dateReview = createScheduledHolidayReviewDraft(
     reviewed.context,
     holidayPolicyInput,
@@ -304,7 +309,11 @@ export function applyScheduledPlatformAllocationServiceMemberships(
   input: unknown,
   claimsInput: unknown,
 ) {
-  const reviewed = reviewAllocations(context, policyInput, holidayPolicyInput);
+  const reviewed = reviewScheduledPlatformAllocations(
+    context,
+    policyInput,
+    holidayPolicyInput,
+  );
   const draft = ScheduledPlatformAllocationMappingDraftSchema.parse(input);
   const existing = evaluateScheduledPlatformAllocationMapping(
     context,
@@ -343,7 +352,11 @@ export function evaluateScheduledPlatformAllocationMapping(
   input: unknown,
   approvalInput?: unknown,
 ) {
-  const reviewed = reviewAllocations(context, policyInput, holidayPolicyInput);
+  const reviewed = reviewScheduledPlatformAllocations(
+    context,
+    policyInput,
+    holidayPolicyInput,
+  );
   const draft = ScheduledPlatformAllocationMappingDraftSchema.parse(input);
   const errors: string[] = [];
   if (

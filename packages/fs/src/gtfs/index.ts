@@ -22,7 +22,18 @@ export * from './retainedDepartures.js';
 export * from './scheduledHolidayMapping.js';
 export * from './scheduledHolidayPolicy.js';
 export * from './scheduledHolidayReview.js';
-export * from './scheduledPlatformAllocations.js';
+export {
+  applyScheduledPlatformAllocationServiceMemberships,
+  createScheduledPlatformAllocationMappingDraft,
+  evaluateScheduledPlatformAllocationMapping,
+  type ScheduledPlatformAllocationMappingApproval,
+  ScheduledPlatformAllocationMappingApprovalSchema,
+  type ScheduledPlatformAllocationMappingDraft,
+  ScheduledPlatformAllocationMappingDraftSchema,
+  ScheduledPlatformAllocationPolicySchema,
+  scheduledPlatformAllocationMappingDraftSha256,
+} from './scheduledPlatformAllocations.js';
+export * from './scheduledPlatformAssociations.js';
 export * from './scheduledServiceCalendar.js';
 export * from './scheduledStopTime.js';
 export * from './scheduledTimetable.js';
