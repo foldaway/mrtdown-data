@@ -1,6 +1,6 @@
 {
   "name": "@mrtdown/cli",
-  "version": "2.0.0-alpha.47",
+  "version": "2.0.0-alpha.48",
   "description": "Command-line tools for MRTDown data",
   "private": true,
   "homepage": "https://github.com/foldaway/mrtdown-data#readme",
@@ -34,9 +34,9 @@
     "test": "node ../../scripts/run-fixture-command.mjs --build @mrtdown/core --build @mrtdown/fs --build @mrtdown/ingest-contracts --build @mrtdown/triage -- npm exec -- vitest --run"
   },
   "dependencies": {
-    "@mrtdown/core": "2.0.0-alpha.39",
-    "@mrtdown/fs": "2.0.0-alpha.44",
-    "@mrtdown/triage": "2.0.0-alpha.51",
+    "@mrtdown/core": "2.0.0-alpha.40",
+    "@mrtdown/fs": "2.0.0-alpha.45",
+    "@mrtdown/triage": "2.0.0-alpha.52",
     "hast-util-to-html": "^9.0.5",
     "zod": "^4.4.3"
   },

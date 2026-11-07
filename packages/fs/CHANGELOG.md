@@ -1,5 +1,31 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.45
+
+### Minor Changes
+
+- 1a6859a: Add an explicit family-scoped Sunday-on-public-holidays date resolver and a separate
+  holiday date-review draft. Preserve literal provider calendars, validate newly
+  effective dates against canonical evidence, and bind drafts to the pinned policy
+  and holiday date identity. Assignment and publication consumers remain separate.
+- 4b11717: Add policy-bound holiday mapping drafts and approval evaluation using the shared
+  strict grouped review checks on effective service dates. Bind source, canonical,
+  holiday policy, calendar and date-review identities, retain unresolved coverage,
+  and keep timetable generation gated. Validate day-type trip presence across a
+  complete explicit route family so absent Sunday short workings stay absent.
+- 1a6859a: Restore shared Singapore public-holiday year calendars as canonical data, with
+  schema validation, repository APIs, manifest hashes and public export links.
+  Import complete consolidated MOM captures and use the canonical calendar in
+  GTFS holiday-date reviews.
+- e9fb643: Review capture-specific GTFS platform allocations against canonical direction
+  defaults. Preserve literal source labels and canonical data, bind review approval
+  to the source-precedence policy, and retain boarding and temporal checks.
+
+### Patch Changes
+
+- Updated dependencies [1a6859a]
+  - @mrtdown/core@2.0.0-alpha.40
+
 ## 2.0.0-alpha.44
 
 ### Minor Changes
