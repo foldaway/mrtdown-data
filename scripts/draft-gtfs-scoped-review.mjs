@@ -10,6 +10,7 @@ import {
   applyScheduledSourceJourneyServiceMemberships,
   buildScopedReviewBlockers,
   createGroupedScopedReconciliationDraft,
+  createScheduledCombinedReview,
   createScheduledHolidayMappingDraft,
   createScheduledHolidayReviewDraft,
   createScheduledPlatformAllocationMappingDraft,
@@ -33,12 +34,15 @@ import {
   scheduledSourceJourneyMappingDraftSha256,
   scheduleTopologyProjection,
   scopedReviewDraftSha256,
+  verifyScheduledCombinedReview,
   verifyScheduledPlatformAssociationReview,
 } from '../packages/fs/dist/index.js';
 
 const [file, captureFile, pilotLineList, output, ...extra] =
   process.argv.slice(2);
 let requestedCommit;
+let applicabilityPolicyFile;
+let combinedReviewFile;
 let platformGroups = false;
 let includeBlockers = false;
 let includeAssignments = false;
@@ -58,6 +62,18 @@ let sourceJourneyReviewFile;
 let sourceJourneyApprovalFile;
 for (let index = 0; index < extra.length; index++) {
   if (
+    extra[index] === '--applicability-policy' &&
+    !applicabilityPolicyFile &&
+    extra[index + 1]
+  ) {
+    applicabilityPolicyFile = extra[++index];
+  } else if (
+    extra[index] === '--combined-review' &&
+    !combinedReviewFile &&
+    extra[index + 1]
+  ) {
+    combinedReviewFile = extra[++index];
+  } else if (
     extra[index] === '--shared-service-memberships' &&
     !sharedServiceMembershipsFile &&
     extra[index + 1]
@@ -159,11 +175,29 @@ for (let index = 0; index < extra.length; index++) {
 }
 if (!file || !captureFile || !pilotLineList || !output) {
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--shared-service-memberships <json>] [--platform-association-policy <json> [--platform-association-review <json>]] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>] | --source-journey-policy <json> [--source-journey-review <json>] [--source-journey-approval <json>]]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--applicability-policy <json> [--combined-review <json>]] [--shared-service-memberships <json>] [--platform-association-policy <json> [--platform-association-review <json>]] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>] | --source-journey-policy <json> [--source-journey-review <json>] [--source-journey-approval <json>]]',
+  );
+}
+if (
+  (applicabilityPolicyFile &&
+    (!platformAssociationPolicyFile ||
+      !sourceJourneyPolicyFile ||
+      !platformAllocationPolicyFile ||
+      !holidayPolicyFile ||
+      platformAssociationReviewFile ||
+      platformAllocationReviewFile ||
+      platformAllocationApprovalFile ||
+      sourceJourneyReviewFile ||
+      sourceJourneyApprovalFile)) ||
+  (combinedReviewFile && !applicabilityPolicyFile)
+) {
+  throw new Error(
+    'Combined review requires explicit applicability, association, journey, allocation and holiday policies and its own saved review',
   );
 }
 if (
   (platformAssociationPolicyFile &&
+    !applicabilityPolicyFile &&
     (!platformAllocationPolicyFile ||
       platformAllocationReviewFile ||
       platformAllocationApprovalFile ||
@@ -293,6 +327,67 @@ if (platformAllocationPolicyFile) {
     throw new Error(
       'Platform allocation review pilot must match the bound holiday policy families',
     );
+  }
+  if (applicabilityPolicyFile) {
+    const inputs = {
+      context,
+      captureSha256: capture.sha256,
+      applicabilityPolicy: await readJson(applicabilityPolicyFile),
+      associationPolicy: await readJson(platformAssociationPolicyFile),
+      sourceJourneyPolicy: await readJson(sourceJourneyPolicyFile),
+      allocationPolicy: policy,
+      holidayPolicy,
+      holidayCalendar: holidays,
+      ...(sharedServiceMembershipsFile
+        ? {
+            sharedServiceMemberships: await readJson(
+              sharedServiceMembershipsFile,
+            ),
+          }
+        : {}),
+    };
+    const review = combinedReviewFile
+      ? await readJson(combinedReviewFile)
+      : createScheduledCombinedReview(inputs);
+    const evaluation = combinedReviewFile
+      ? verifyScheduledCombinedReview(inputs, review)
+      : {
+          valid: true,
+          draftSha256: review.draftSha256,
+          coverageComplete: review.coverageComplete,
+          readiness: review.readiness,
+          mappingReviewEligible: false,
+          generationEligible: false,
+        };
+    const summary = {
+      schemaVersion: 1,
+      documentKind: 'gtfs-combined-schedule-review-summary',
+      captureSha256: capture.sha256,
+      identity: review.identity,
+      draftSha256: review.draftSha256,
+      accounting: review.accounting,
+      unresolvedEntities: review.unresolvedEntities,
+      evaluation,
+      approval:
+        'No approval; combined review is separate from passenger access and publication',
+      generationEligible: false,
+    };
+    await mkdir(resolve(output));
+    for (const [name, content] of Object.entries({
+      'combined-review.json': review,
+      'combined-evaluation.json': evaluation,
+      'summary.json': summary,
+    })) {
+      await writeFile(
+        join(output, name),
+        `${JSON.stringify(content, null, 2)}\n`,
+        { flag: 'wx' },
+      );
+    }
+    console.log(
+      JSON.stringify({ output: resolve(output), ...summary }, null, 2),
+    );
+    process.exit(0);
   }
   if (platformAssociationPolicyFile) {
     const inputs = {

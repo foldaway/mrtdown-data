@@ -1,4 +1,5 @@
 import z from 'zod';
+import { hashBytes } from './capture.js';
 import {
   derivePlatformGroup,
   groupedPlatformDiagnosticsAllow,
@@ -13,6 +14,12 @@ import {
   ScheduledPlatformAllocationPolicySchema,
 } from './scheduledPlatformAllocations.js';
 import {
+  applyScheduledSourceJourneyServiceMemberships,
+  createScheduledSourceJourneyMappingDraft,
+  reviewScheduledSourceJourneys,
+  type ScheduledSourceJourneyMappingDraft,
+} from './scheduledSourceJourneys.js';
+import {
   operatorMatchesDate,
   sameTarget,
   targetOnDate,
@@ -21,6 +28,8 @@ import {
   fingerprint,
   type ScopedReviewContext,
 } from './scopedReviewContract.js';
+import { ScheduledSharedServiceMembershipClaimsSchema } from './sharedServiceMemberships.js';
+import { validateSharedServiceSegment } from './sharedServiceTarget.js';
 
 /** Explicit timetable associations, distinct from permission to board every associated platform. */
 export const ScheduledPlatformAssociationPolicySchema = z
@@ -105,6 +114,17 @@ export function scheduledPlatformAssociationAccess(
 export function createScheduledPlatformAssociationReview(
   inputs: ScheduledPlatformAssociationInputs,
 ) {
+  return buildScheduledPlatformAssociationReview(inputs).review;
+}
+
+/** Internal composition boundary: source journeys and memberships are independently reconstructed. */
+export function buildScheduledPlatformAssociationReview(
+  inputs: ScheduledPlatformAssociationInputs,
+  composition?: {
+    sourceJourneyPolicy: unknown;
+    sharedServiceMemberships?: unknown;
+  },
+) {
   const { context } = inputs;
   const policy = ScheduledPlatformAssociationPolicySchema.parse(inputs.policy);
   if (
@@ -143,6 +163,57 @@ export function createScheduledPlatformAssociationReview(
     },
     inputs.holidayPolicy,
   );
+  let reviewContext = additional.context;
+  let sourceJourneyReview: ScheduledSourceJourneyMappingDraft | undefined;
+  const memberships =
+    composition?.sharedServiceMemberships === undefined
+      ? undefined
+      : ScheduledSharedServiceMembershipClaimsSchema.parse(
+          composition.sharedServiceMemberships,
+        );
+  if (composition) {
+    const prepared = reviewScheduledSourceJourneys(
+      context,
+      composition.sourceJourneyPolicy,
+      inputs.allocationPolicy,
+      inputs.holidayPolicy,
+      inputs.holidayCalendar,
+    );
+    sourceJourneyReview = createScheduledSourceJourneyMappingDraft(
+      context,
+      composition.sourceJourneyPolicy,
+      inputs.allocationPolicy,
+      inputs.holidayPolicy,
+      inputs.holidayCalendar,
+    );
+    if (memberships) {
+      sourceJourneyReview = applyScheduledSourceJourneyServiceMemberships(
+        context,
+        composition.sourceJourneyPolicy,
+        inputs.allocationPolicy,
+        inputs.holidayPolicy,
+        inputs.holidayCalendar,
+        sourceJourneyReview,
+        memberships,
+      );
+    }
+    const topology = {
+      ...additional.context.topology,
+      sourceJourneyRules: prepared.context.sourceJourneyRules,
+    };
+    reviewContext = {
+      ...additional.context,
+      topology,
+      sourceJourneyRules: prepared.context.sourceJourneyRules,
+      identity: {
+        ...additional.context.identity,
+        topology: {
+          projectionVersion: 1,
+          sha256: hashBytes(Buffer.from(JSON.stringify(topology))),
+        },
+      },
+    };
+  }
   const associatedGroups = new Map<string, PlatformGroupTarget>();
   const seenPlatforms = new Set<string>();
   for (const rule of policy.groups) {
@@ -191,9 +262,10 @@ export function createScheduledPlatformAssociationReview(
   );
   const evidence = buildDateScopedReconciliationEvidence(
     context.tables,
-    additional.context.identity,
-    additional.context.topology,
+    reviewContext.identity,
+    reviewContext.topology,
     dates,
+    reviewContext.sourceJourneyRules,
   );
   const strictGroups = new Map<string, PlatformGroupTarget>();
   for (const item of allYear.entities) {
@@ -230,7 +302,9 @@ export function createScheduledPlatformAssociationReview(
           item.disposition === 'matched',
       ),
     );
-    type Target = (typeof facts.candidates)[number]['target'];
+    type Target =
+      | (typeof facts.candidates)[number]['target']
+      | NonNullable<typeof memberships>['claims'][number]['target'];
     const cells = new Map<
       string,
       {
@@ -242,11 +316,43 @@ export function createScheduledPlatformAssociationReview(
     >();
     for (const scope of facts.dateScopes.scopes) {
       for (const date of scope.serviceDates) {
+        const membership = memberships?.claims.find(
+          (claim) =>
+            claim.providerPatternId === original.providerPatternId &&
+            claim.serviceDates.includes(date),
+        );
+        if (membership) {
+          if (
+            scope.candidates.length !== membership.target.members.length ||
+            scope.candidates.some(
+              (candidate) =>
+                !membership.target.members.some((member) =>
+                  sameTarget(candidate, member),
+                ),
+            )
+          ) {
+            throw new Error(
+              'Combined memberships must retain every dated candidate',
+            );
+          }
+          validateSharedServiceSegment(
+            reviewContext,
+            original.stopIds,
+            membership.target.members,
+          );
+        }
         const target =
-          scope.candidates.length === 1 ? scope.candidates[0] : undefined;
-        const candidate =
-          target &&
-          facts.candidates.find((item) => sameTarget(item.target, target));
+          membership?.target ??
+          (scope.candidates.length === 1 ? scope.candidates[0] : undefined);
+        const targets =
+          target?.kind === 'sharedServiceRevisions'
+            ? target.members
+            : target
+              ? [target]
+              : [];
+        const candidates = targets.map((target) =>
+          facts.candidates.find((item) => sameTarget(item.target, target)),
+        );
         const blockers: string[] = [];
         if (!target)
           blockers.push(
@@ -263,8 +369,8 @@ export function createScheduledPlatformAssociationReview(
           )
         )
           blockers.push('operator-period');
-        const associationsCompatible = candidate?.occurrences.every(
-          (occurrence) => {
+        const associationsCompatible = candidates.every((candidate) =>
+          candidate?.occurrences.every((occurrence) => {
             const group = associatedGroups.get(occurrence.stopId);
             return (
               !group ||
@@ -276,12 +382,15 @@ export function createScheduledPlatformAssociationReview(
                 ),
               )
             );
-          },
+          }),
         );
         if (
           target &&
-          (!targetOnDate(facts.platformDiagnosticScopes, date, target) ||
-            !groupedPlatformDiagnosticsAllow(facts, target, strictGroups) ||
+          (targets.some(
+            (member) =>
+              !targetOnDate(facts.platformDiagnosticScopes, date, member) ||
+              !groupedPlatformDiagnosticsAllow(facts, member, strictGroups),
+          ) ||
             !associationsCompatible)
         ) {
           blockers.push('platform-or-boarding');
@@ -370,7 +479,7 @@ export function createScheduledPlatformAssociationReview(
       policySha256: fingerprint(policy),
       allocationPolicySha256: fingerprint(baseline.policy),
       holidayPolicySha256: allYear.identity.policySha256,
-      reviewTopologySha256: additional.identity.reviewTopologySha256,
+      reviewTopologySha256: reviewContext.identity.topology.sha256,
       supportedDatePopulationSha256: fingerprint(
         patterns.map((pattern) => ({
           providerPatternId: pattern.providerPatternId,
@@ -398,7 +507,10 @@ export function createScheduledPlatformAssociationReview(
     mappingReviewEligible: false,
     generationEligible: false,
   } as const;
-  return { ...draft, draftSha256: fingerprint(draft) };
+  return {
+    review: { ...draft, draftSha256: fingerprint(draft) },
+    sourceJourneyReview,
+  };
 }
 
 /** Every saved claim is reconstructed; edited, stale or differently scoped reviews fail closed. */
