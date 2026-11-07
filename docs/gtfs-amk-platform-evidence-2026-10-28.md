@@ -17,6 +17,15 @@ literal A/C and B/D; no member is dropped to make a passenger mapping pass.
 
 ## What each source establishes
 
+Later maintainer decision: keep A/C and B/D as distinct physical platforms and
+associate the timetable with both members of each literal group, while retaining
+C/D's passenger restrictions. The opt-in November
+[association review](gtfs-source-platform-allocation-review.md#distinct-nsl-platform-associations-on-november-service-dates)
+separates timetable association from passenger boarding permission. This replaces
+the every-member boarding requirement only for those explicitly reviewed source
+groups in that new review contract. The original strict mapping/assignment
+contracts and the historical results below remain unchanged.
+
 | Evidence | Observation | Limit |
 | --- | --- | --- |
 | Pinned LTA `stops.txt` | `NS16_A` has literal `platform_code: A / C`; `NS16_B` has `B / D`. Both physical-stop rows reference station parent `NS16`. | These are grouped alternatives, not a per-trip physical-platform selection. |

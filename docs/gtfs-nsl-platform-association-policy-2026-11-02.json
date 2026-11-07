@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "revision": "foldaway-nsl-distinct-platform-associations-november-2026-ceb07f9c-v1",
+  "captureSha256": "ceb07f9c91de86559212eb48c1feac6455452900fad49cf009414a66c2f17efe",
+  "sourceManifest": {
+    "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+    "calendar.txt": "50ddaf51ea641fd4fc58695972b317555d7dfbc2503ee3d1bb7b101fd00c669b",
+    "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+    "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+    "routes.txt": "ef14e523194470a09de94d18b7c920f516657e41aee0bc9493978568f13abd85",
+    "stop_times.txt": "6c42607dfeb68ee07d241f9970ed5c7e2df06ef2b3f4ce237c2923a517e33ee9",
+    "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+    "trips.txt": "b448e1d05564801ecb579fc0e5ed82f56d30d977fa87158882326b9e134f0ff8"
+  },
+  "dateBasis": "service-date",
+  "timezone": "Asia/Singapore",
+  "serviceDateRange": {
+    "startDate": "2026-11-01",
+    "endDateExclusive": "2026-12-01"
+  },
+  "basis": "Maintainer November applicability assumption: review November service dates in this November capture. Bounds are not provider-confirmed effective dates and establish no December service-date applicability. Outside dates remain in the source and effective populations. This is independent of source admission and release embargo.",
+  "groups": [
+    {
+      "providerStopId": "NS16_A",
+      "stationId": "AMK",
+      "lineId": "NSL",
+      "platformCode": "A / C",
+      "reason": "Maintainer decision: retain distinct physical platforms and associate the source timetable occurrence with both members of its literal label. Preserve C/D not_in_service and all source pickup/drop-off rules; association does not authorize passenger boarding or assert simultaneous physical use."
+    },
+    {
+      "providerStopId": "NS16_B",
+      "stationId": "AMK",
+      "lineId": "NSL",
+      "platformCode": "B / D",
+      "reason": "Maintainer decision: retain distinct physical platforms and associate the source timetable occurrence with both members of its literal label. Preserve C/D not_in_service and all source pickup/drop-off rules; association does not authorize passenger boarding or assert simultaneous physical use."
+    }
+  ],
+  "allocations": [
+    {
+      "providerStopId": "NS28_A",
+      "stationId": "MSP",
+      "lineId": "NSL",
+      "platformCode": "A",
+      "serviceIds": [
+        "NSL_MAIN_S"
+      ],
+      "reason": "Apply accepted source-precedence reasoning to known operational MSP A on the supported service dates. Keep its northbound canonical default, source access fields and final occurrence. Matching northbound timestamps suggest turnaround but do not establish vehicle continuity."
+    }
+  ]
+}
