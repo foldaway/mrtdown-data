@@ -39,12 +39,10 @@ export const ScheduledSharedServiceMembershipClaimsSchema = z
   })
   .strict();
 
-/** Explicit dated memberships, bound to an exact base draft; never infer applicability or approval. */
-function applyMemberships(
-  context: ScopedReviewContext,
+/** Internal: bind claim shape and dates; the owning review must validate service and platform semantics. */
+export function prepareSharedServiceMembershipClaims(
   draftInput: unknown,
   claimsInput: unknown,
-  patternServiceDates?: ReadonlyMap<string, string[]>,
 ) {
   const draft = GroupedScopedReconciliationDraftSchema.parse(draftInput);
   const claims =
@@ -111,6 +109,17 @@ function applyMemberships(
     .filter(([id]) => used.has(id))
     .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))
     .map(([id, serviceDates]) => ({ id, serviceDates }));
+  return draft;
+}
+
+/** Standalone mappings retain their strict canonical, date and complete-platform checks. */
+function applyMemberships(
+  context: ScopedReviewContext,
+  draftInput: unknown,
+  claimsInput: unknown,
+  patternServiceDates?: ReadonlyMap<string, string[]>,
+) {
+  const draft = prepareSharedServiceMembershipClaims(draftInput, claimsInput);
   const evaluated = patternServiceDates
     ? evaluateGroupedScopedDates(context, draft, patternServiceDates, {
         matches: false,

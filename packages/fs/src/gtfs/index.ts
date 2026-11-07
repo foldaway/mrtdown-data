@@ -19,6 +19,7 @@ export {
   buildReconciliationEvidence,
 } from './reconciliationEvidence.js';
 export * from './retainedDepartures.js';
+export * from './scheduledCombinedReview.js';
 export * from './scheduledHolidayMapping.js';
 export * from './scheduledHolidayPolicy.js';
 export * from './scheduledHolidayReview.js';
@@ -33,9 +34,32 @@ export {
   ScheduledPlatformAllocationPolicySchema,
   scheduledPlatformAllocationMappingDraftSha256,
 } from './scheduledPlatformAllocations.js';
-export * from './scheduledPlatformAssociations.js';
+export {
+  createScheduledPlatformAssociationReview,
+  type ScheduledPlatformAssociationInputs,
+  type ScheduledPlatformAssociationPolicy,
+  ScheduledPlatformAssociationPolicySchema,
+  type ScheduledPlatformAssociationReview,
+  scheduledPlatformAssociationAccess,
+  verifyScheduledPlatformAssociationReview,
+} from './scheduledPlatformAssociations.js';
 export * from './scheduledServiceCalendar.js';
-export * from './scheduledSourceJourneys.js';
+export {
+  applyScheduledSourceJourneyServiceMemberships,
+  createScheduledSourceJourneyMappingDraft,
+  evaluateScheduledSourceJourneyMapping,
+  type ScheduledSourceJourneyCall,
+  ScheduledSourceJourneyCallSchema,
+  type ScheduledSourceJourneyEvidence,
+  ScheduledSourceJourneyEvidenceSchema,
+  type ScheduledSourceJourneyMappingApproval,
+  ScheduledSourceJourneyMappingApprovalSchema,
+  type ScheduledSourceJourneyMappingDraft,
+  ScheduledSourceJourneyMappingDraftSchema,
+  type ScheduledSourceJourneyPolicy,
+  ScheduledSourceJourneyPolicySchema,
+  scheduledSourceJourneyMappingDraftSha256,
+} from './scheduledSourceJourneys.js';
 export * from './scheduledStopTime.js';
 export * from './scheduledTimetable.js';
 export * from './scheduledTripAssignment.js';

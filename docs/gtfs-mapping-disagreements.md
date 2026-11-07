@@ -219,8 +219,9 @@ member's complete ordered canonical path; a reversing source journey cannot be
 recast as several canonical shared paths. Single-service assignments and #461's
 deduplicated multi-service departure queries retain their existing contracts.
 The runner also retains #463’s independent platform-association mode; mixed
-source-journey/association policy or review inputs are rejected before any mode
-can silently ignore the other’s arguments.
+source-journey/association inputs require the explicit
+[combined applicability review](gtfs-holiday-mapping-review.md#combined-review-on-supported-service-dates).
+Without that mode they are rejected before either policy can be ignored.
 
 Use `--shared-service-memberships <claims.json>` together with the source-journey
 policy to adopt such claims before evaluating the new wrapper. Saved mappings

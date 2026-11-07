@@ -363,7 +363,9 @@ also supply `--platform-association-review <review.json>` with the same inputs
 and a fresh directory. Mapping, approval, assignment and shared-service claim options cannot be mixed
 with association review. The existing shared-service allocation path remains
 available separately, including its complete resolved date population for
-patterns outside holiday-policy families. This wrapper still requires unique
+patterns outside holiday-policy families. The explicit
+[combined applicability review](gtfs-holiday-mapping-review.md#combined-review-on-supported-service-dates)
+composes these associations with source journeys and shared memberships. This wrapper still requires unique
 dated service candidates; it does not silently discard shared-service claims.
 
 `createScheduledPlatformAllocationMappingDraft` takes the original verified

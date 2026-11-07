@@ -139,7 +139,8 @@ export type ScheduledSourceJourneyMappingDraft = z.infer<
   typeof ScheduledSourceJourneyMappingDraftSchema
 >;
 
-function prepare(
+/** Internal: verify source-order rules and original calls before composing a separately bound topology. */
+export function reviewScheduledSourceJourneys(
   context: ScopedReviewContext,
   policyInput: unknown,
   platformPolicyInput: unknown,
@@ -342,7 +343,7 @@ export function createScheduledSourceJourneyMappingDraft(
   holidayPolicyInput: unknown,
   calendarInput: unknown,
 ) {
-  const reviewed = prepare(
+  const reviewed = reviewScheduledSourceJourneys(
     context,
     policyInput,
     platformPolicyInput,
@@ -390,7 +391,7 @@ export function applyScheduledSourceJourneyServiceMemberships(
   input: unknown,
   claimsInput: unknown,
 ) {
-  const reviewed = prepare(
+  const reviewed = reviewScheduledSourceJourneys(
     context,
     policyInput,
     platformPolicyInput,
@@ -437,7 +438,7 @@ export function evaluateScheduledSourceJourneyMapping(
   input: unknown,
   approvalInput?: unknown,
 ) {
-  const reviewed = prepare(
+  const reviewed = reviewScheduledSourceJourneys(
     context,
     policyInput,
     platformPolicyInput,
