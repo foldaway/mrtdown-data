@@ -7,6 +7,13 @@ import {
   ScopedReconciliationDraftSchema,
   scopedReviewDraftFingerprint,
 } from './scopedReviewContract.js';
+import { SharedServiceTargetSchema } from './sharedServiceTarget.js';
+
+const sharedPatternDecision = patternDecision.extend({
+  target: z
+    .union([patternDecision.shape.target.unwrap(), SharedServiceTargetSchema])
+    .optional(),
+});
 
 const groupedEntityDecision = entityDecision.extend({
   target: z
@@ -19,7 +26,7 @@ export const GroupedScopedReconciliationDraftSchema =
     schemaVersion: z.literal(3),
     decisions: z.array(
       z
-        .union([groupedEntityDecision, patternDecision])
+        .union([groupedEntityDecision, sharedPatternDecision])
         .superRefine((value, context) => {
           if ((value.disposition === 'matched') !== Boolean(value.target))
             context.addIssue({

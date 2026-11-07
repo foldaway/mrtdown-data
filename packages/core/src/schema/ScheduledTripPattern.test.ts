@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { ScheduledTripPatternSchema } from './ScheduledTripPattern.js';
+import {
+  ScheduledTripPatternSchema,
+  scheduledServiceMemberships,
+} from './ScheduledTripPattern.js';
 
 function pattern() {
   return {
@@ -43,5 +46,45 @@ describe('ScheduledTripPatternSchema', () => {
         ScheduledTripPatternSchema.safeParse({ ...value, ...change }).success,
       ).toBe(false);
     }
+  });
+  it('represents both memberships on one journey, with no preferred service or duplicated occurrences', () => {
+    const { serviceId: _service, revisionId: _revision, ...common } = pattern();
+    const input = {
+      ...common,
+      serviceMemberships: [
+        { serviceId: 'LOOP', revisionId: 'r1' },
+        { serviceId: 'BRANCH', revisionId: 'r2' },
+      ],
+    };
+    const before = structuredClone(input);
+    const parsed = ScheduledTripPatternSchema.parse(input);
+    expect(scheduledServiceMemberships(parsed)).toEqual([
+      { serviceId: 'BRANCH', revisionId: 'r2' },
+      { serviceId: 'LOOP', revisionId: 'r1' },
+    ]);
+    expect(parsed.stops.map((stop) => stop.stationId)).toEqual(['S', 'D', 'S']);
+    expect(parsed).not.toHaveProperty('serviceId');
+    expect(input).toEqual(before);
+    for (const serviceMemberships of [
+      [],
+      [input.serviceMemberships[0]],
+      [input.serviceMemberships[0], input.serviceMemberships[0]],
+    ]) {
+      expect(
+        ScheduledTripPatternSchema.safeParse({ ...common, serviceMemberships })
+          .success,
+      ).toBe(false);
+    }
+    expect(
+      ScheduledTripPatternSchema.safeParse({
+        ...input,
+        serviceId: 'LOOP',
+        revisionId: 'r1',
+      }).success,
+    ).toBe(false);
+    const legacy = pattern();
+    expect(Object.keys(ScheduledTripPatternSchema.parse(legacy))).toEqual(
+      Object.keys(legacy),
+    );
   });
 });

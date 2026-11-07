@@ -6,8 +6,12 @@ planned arrivals format, separate from the
 [source timetable](gtfs-source-timetable.md). It does not assign provider trips
 to canonical services or create mapping approvals.
 
-Each record contains `lineId`, `serviceId`, `revisionId`,
-`destinationStationId` and at least two ordered `stops`. Each stop contains a
+Each record contains `lineId`, `destinationStationId` and at least two ordered
+`stops`. A single-service record retains `serviceId` and `revisionId`. A shared
+journey instead contains `serviceMemberships`, with at least two distinct
+`{ serviceId, revisionId }` memberships and no preferred singular service.
+Memberships sort by service ID; mixing the two forms is rejected.
+`scheduledServiceMemberships(pattern)` returns the memberships for either form. Each stop contains a
 `stationId` and a nonempty set of distinct `platformIds` at that station. One
 member represents one platform; several members preserve alternatives without
 selecting an individual physical platform. Members sort by literal ID, while
@@ -23,13 +27,13 @@ the passenger-facing destination text.
 projection returned by `scheduleTopologyProjection`. The checker returns the
 parsed pattern or throws before returning a partial result. It requires:
 
-- Exactly one referenced line, service and service revision. The service must
-  belong to the line, and the line must list the service.
+- Exactly one referenced line and exactly one service/revision record for each
+  membership. Every service must belong to the line, which must list it.
 - Exactly one station for every occurrence, including the destination. Each
-  station must appear in the referenced service revision.
+  station must appear in every referenced service revision.
 - Exactly one platform for every supplied alternative at its stated station.
   Every member must belong to the pattern's line and permit the service when
-  the canonical platform declares a service scope.
+  the canonical platform declares a service scope. Every membership is checked.
 
 Unscoped platforms retain their current meaning; an empty service scope in the
 projection does not become an exclusion. Duplicate canonical identities fail
@@ -68,7 +72,13 @@ over rotations, using the same matching rules as reconciliation.
 Rotations keep the explicit closing occurrence and its display code when crossing
 the loop boundary before continuing with the next station.
 
-Every supplied service date must fall within the selected revision's period.
+For a shared journey, every membership independently passes these checks on
+all supplied dates. Each must have one complete alignment, and all alignments
+must describe the identical ordered station/display-code segment. A valid
+membership cannot supply missing path, date or platform evidence for another.
+Source timing and occurrences are stored once, including repeated visits.
+
+Every supplied service date must fall within every selected revision's period.
 On each date, at least one complete matching segment must have active canonical
 station codes matching its revision display codes and line. All occurrences must
 be supported by that same segment; evidence from different alignments cannot be

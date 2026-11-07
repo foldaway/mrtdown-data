@@ -221,6 +221,52 @@ boundaries and documentation links. Real-capture before/after comparison checks
 the invariants above; saved-review replay reproduces the review and evaluation
 byte for byte. No model calls, approval, publication or canonical write occurs.
 
+## CCL shared journeys — November diagnostic cohort
+
+The maintainer decided that a complete journey shared by CCL branch and loop
+services should belong to **both**. It remains one scheduled source trip/date
+occurrence, visible under either service and returned once when both are queried.
+This is a Foldaway service-membership decision; it does not prove continuation
+beyond the final supplied stop or approve a timetable release.
+
+A fresh #460 run at `d60a4960ba6383f7d0c6272f74c72942f7ffccac` uses the pinned
+capture and unchanged v2 allocation/holiday policies. November 1–30, 2026 service
+dates form an explicitly chosen diagnostic cohort under the maintainer's current
+applicability assumption. These are not provider-confirmed validity bounds, and
+this comparison establishes no December service-date applicability. Earlier
+main/extension ties remain source diagnostics outside the cohort; no legacy
+platform allocation or station code is extended to reconcile them.
+
+Explicit claims cover 34 patterns, 386 recurring trip IDs and 382 pattern/date
+pairs: 1,976 clockwise and 1,984 anticlockwise trip/date pairs, **3,960** total.
+All are branch/loop ties, with the identical complete station/code projection
+and passing platform/boarding checks for both memberships. The November CCL
+population is 31,966 trip/date pairs. All its ambiguity pairs gain shared targets.
+The full-year source ambiguity diagnostic remains 34,007 pairs; no original
+calendar, date-review evidence or other per-date mapping claim changes.
+
+All-year unresolved mapping pairs move **462,756 → 458,796**, and unresolved
+pattern/date pairs **17,003 → 16,621**. Unresolved decisions remain 172 because
+the affected patterns retain other unresolved dates. Source/date accounting stays
+complete, excluded dates stay zero, and approval, mapping and generation
+eligibility remain false. This is membership validation, not an implemented
+end-to-end applicability policy or wrapper-to-release integration.
+
+The base wrapper digest is
+`6f0e1bf940b8bc7de4944d975a4ae94747c889cd9e77681279cc76ff442a96ea`;
+the mapping with the explicit November membership claims is
+`087f1da83efe073794461390a4d3ea07c9697d389150673512ba13419bba32fa`.
+Temporary claim and review artifacts are in
+`/tmp/gtfs-ccl-identity-20261106-H4RFl9/`; use a fresh output directory to rerun
+with the existing reproduction command, the #460 canonical commit and
+`--shared-service-memberships <claims.json>`. The exact-base claim contract and
+consumer behavior are documented in the [scoped review](gtfs-scoped-review.md#shared-service-memberships).
+
+Service-date boundaries remain intact: October 31 trips with 24+ hour events on
+November 1 fall outside this cohort; November 30 trips with events on December 1
+remain November 30 trips. Each service membership is checked on the originating
+service date. No previous-day journey is silently admitted or relabelled.
+
 ## Contract and safeguards
 
 `createScheduledPlatformAllocationMappingDraft` takes the original verified

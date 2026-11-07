@@ -73,8 +73,9 @@ export function createScheduledTripAssignmentProposals(
     const serviceDates = dateSets.get(decision.dateSetId);
     if (
       !source ||
-      target?.kind !== 'serviceRevision' ||
-      !target.revisionId ||
+      (target?.kind !== 'serviceRevision' &&
+        target?.kind !== 'sharedServiceRevisions') ||
+      (target.kind === 'serviceRevision' && !target.revisionId) ||
       !serviceDates
     ) {
       throw new Error(`Missing matched pattern inputs: ${decision.providerId}`);
@@ -92,8 +93,9 @@ export function createScheduledTripAssignmentProposals(
     const stops = source.stopIds.map((id) => {
       const stop = targets.get(`stop:${id}`);
       if (
-        !stop?.stationId ||
-        (stop.kind !== 'platform' && stop.kind !== 'platformGroup')
+        !stop ||
+        (stop.kind !== 'platform' && stop.kind !== 'platformGroup') ||
+        !stop.stationId
       ) {
         throw new Error(`Missing matched platform: ${id}`);
       }
@@ -119,8 +121,17 @@ export function createScheduledTripAssignmentProposals(
             providerTripId: tripId,
             pattern: {
               lineId: routeTarget.id,
-              serviceId: target.id,
-              revisionId: target.revisionId,
+              ...(target.kind === 'sharedServiceRevisions'
+                ? {
+                    serviceMemberships: target.members.map((member) => ({
+                      serviceId: member.id,
+                      revisionId: member.revisionId,
+                    })),
+                  }
+                : {
+                    serviceId: target.id,
+                    revisionId: z.string().min(1).parse(target.revisionId),
+                  }),
               destinationStationId: destination.stationId,
               stops,
             },

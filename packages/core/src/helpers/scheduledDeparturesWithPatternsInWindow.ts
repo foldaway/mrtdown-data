@@ -27,6 +27,7 @@ export type ScheduledDepartureWithPattern =
       | 'lineId'
       | 'serviceId'
       | 'revisionId'
+      | 'serviceMemberships'
       | 'destinationStationId'
     > & { departureInstant: string };
 
@@ -52,8 +53,9 @@ export function scheduledDeparturesWithPatternsInWindow(
         providerCalendarId: resolved.providerCalendarId,
         serviceDate: resolved.serviceDate,
         lineId: resolved.lineId,
-        serviceId: resolved.serviceId,
-        revisionId: resolved.revisionId,
+        ...(resolved.serviceMemberships
+          ? { serviceMemberships: resolved.serviceMemberships }
+          : { serviceId: resolved.serviceId, revisionId: resolved.revisionId }),
         destinationStationId: resolved.destinationStationId,
         departureInstant: stop.departureInstant,
       }),

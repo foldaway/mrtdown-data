@@ -116,8 +116,9 @@ the window. Valid inactive selections produce no events but still participate in
 duplicate trip/date checks.
 
 Each `ScheduledDepartureWithPattern` retains all source departure fields and
-adds `lineId`, `serviceId`, `revisionId`, `destinationStationId`, `stationId` and
-the complete `platformIds` alternatives. Date-specific identities remain attached
+adds `lineId`, `destinationStationId`, `stationId`, the complete `platformIds`
+alternatives and either `serviceId`/`revisionId` or `serviceMemberships`. A shared
+journey emits one event per source occurrence carrying both memberships. Date-specific identities remain attached
 to their own source occurrences, including previous-day trains after midnight.
 Coincident events and repeated visits remain distinct. Missing departures are
 filtered after binding, so later visits cannot inherit an earlier visit's

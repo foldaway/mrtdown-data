@@ -51,6 +51,11 @@ export {
   createGroupedScopedReconciliationDraft,
   createScopedReconciliationDraft,
 } from './scopedReviewDraft.js';
+export {
+  applyScheduledSharedServiceMemberships,
+  ScheduledSharedServiceMembershipClaimsSchema,
+} from './sharedServiceMemberships.js';
+export { SharedServiceTargetSchema } from './sharedServiceTarget.js';
 export * from './timetable.js';
 export * from './timetableArtifact.js';
 export * from './timetableExport.js';
