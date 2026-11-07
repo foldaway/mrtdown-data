@@ -239,7 +239,22 @@ export function createScheduledCombinedTripAssignmentProposals(
   if (!review.valid) {
     throw new Error(review.errors.join('; '));
   }
-  const sourceTrips = scheduledTripTimesFromGtfs(inputs.context.tables);
+  const proposedTripIds = new Set(
+    checked.associationReview.patterns
+      .filter((pattern) =>
+        pattern.reviewCells.some((cell) => cell.disposition === 'proposed'),
+      )
+      .flatMap((pattern) => pattern.tripIds),
+  );
+  const sourceTrips = scheduledTripTimesFromGtfs({
+    ...inputs.context.tables,
+    'trips.txt': inputs.context.tables['trips.txt'].filter((trip) =>
+      proposedTripIds.has(trip.trip_id),
+    ),
+    'stop_times.txt': inputs.context.tables['stop_times.txt'].filter((time) =>
+      proposedTripIds.has(time.trip_id),
+    ),
+  });
   const trips = new Map(sourceTrips.map((trip) => [trip.providerTripId, trip]));
   const entities = new Map(
     checked.associationReview.entities.map((entity) => [
@@ -454,7 +469,7 @@ export function createScheduledCombinedTripAssignmentProposals(
     applicabilityPolicy: checked.applicabilityPolicy,
     assignments,
     coverage: {
-      sourceTripCount: sourceTrips.length,
+      sourceTripCount: inputs.context.tables['trips.txt'].length,
       assignedTripCount: assigned.size,
       literalTripDateCount: checked.accounting.literalTripDateCount,
       effectiveTripDateCount: checked.accounting.effectiveTripDateCount,

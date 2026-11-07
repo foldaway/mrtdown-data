@@ -222,6 +222,88 @@ describe('combined mapping approval and assignment proposals', () => {
     expect(result.document.coverage.assignedTripDateCount).toBe(90);
   });
 
+  it('returns valid proposals and whole-feed coverage when an unresolved trip has incomplete timing', () => {
+    const { inputs } = fixture(false);
+    const time = inputs.context.tables['stop_times.txt'].find(
+      (row) => row.trip_id === 'SHARED',
+    );
+    if (!time) throw new Error('Missing synthetic shared stop time');
+    time.arrival_time = '';
+    const review = createScheduledCombinedReview(inputs);
+    const result = createScheduledCombinedTripAssignmentProposals(
+      inputs,
+      review,
+    );
+    expect(result.document.coverage).toMatchObject({
+      sourceTripCount: inputs.context.tables['trips.txt'].length,
+      assignedTripCount: inputs.context.tables['trips.txt'].length - 1,
+      supportedTripDateCount: 70,
+      assignedTripDateCount: 50,
+      unassignedTripDateCount: 20,
+      tripDateCoverageComplete: false,
+      gaps: [{ providerTripIds: ['SHARED'] }],
+    });
+    expect(
+      result.document.assignments.some(
+        (row) => row.providerTripId === 'SHARED',
+      ),
+    ).toBe(false);
+    expect(
+      verifyScheduledCombinedTripAssignments(inputs, review, result.document)
+        .valid,
+    ).toBe(true);
+    // The same timing remains invalid when the trip is proposed.
+    const complete = fixture();
+    const proposedTime = complete.inputs.context.tables['stop_times.txt'].find(
+      (row) => row.trip_id === 'SHARED',
+    );
+    if (!proposedTime) throw new Error('Missing synthetic shared stop time');
+    proposedTime.arrival_time = '';
+    expect(() =>
+      createScheduledCombinedTripAssignmentProposals(
+        complete.inputs,
+        createScheduledCombinedReview(complete.inputs),
+      ),
+    ).toThrow(/exact timepoint requires/);
+  });
+
+  it('does not allow boarding when later calls prohibit alighting', () => {
+    const { inputs } = fixture();
+    for (const time of inputs.context.tables['stop_times.txt']) {
+      if (time.trip_id === 'UNUSUAL' && time.stop_sequence !== '1') {
+        time.drop_off_type = '1';
+      }
+    }
+    const result = createScheduledCombinedTripAssignmentProposals(
+      inputs,
+      createScheduledCombinedReview(inputs),
+    );
+    const trip = result.document.assignments.find(
+      (row) => row.providerTripId === 'UNUSUAL',
+    );
+    expect(trip?.calls[0].pickupType).toBe(0);
+    const access = trip?.calls[0].platforms.find(
+      (platform) => platform.platformId === 'platform-S',
+    )?.accessByService;
+    expect(access).toEqual([
+      expect.objectContaining({
+        passengerBoardingEligible: false,
+        passengerAlightingEligible: true,
+      }),
+    ]);
+    expect(
+      trip?.calls
+        .slice(1)
+        .every((call) =>
+          call.platforms.every((platform) =>
+            platform.accessByService.every(
+              (member) => !member.passengerAlightingEligible,
+            ),
+          ),
+        ),
+    ).toBe(true);
+  });
+
   it('rejects persisted assignment edits to dates, timing, physical access or coverage', () => {
     const { inputs, review } = fixture();
     const { document } = createScheduledCombinedTripAssignmentProposals(
