@@ -10,9 +10,13 @@ import {
   verifyScheduledCombinedReview,
 } from './scheduledCombinedReview.js';
 import { resolveScheduledHolidayDates } from './scheduledHolidayPolicy.js';
-import { createScheduledSourceJourneyMappingDraft } from './scheduledSourceJourneys.js';
+import {
+  applyScheduledSourceJourneyServiceMemberships,
+  createScheduledSourceJourneyMappingDraft,
+} from './scheduledSourceJourneys.js';
 
-function fixture() {
+/** Synthetic composition of a shared segment, restricted group and repeated source journey. */
+function fixture(sharedGroup = false) {
   const { policy: associationPolicy, ...base } = platformAssociationFixture();
   const { context } = base;
   context.tables['routes.txt'].push({
@@ -70,7 +74,7 @@ function fixture() {
   }
   for (const [trip_id, route_id, stops] of [
     ['UNUSUAL', 'NEL_TEST', ['P', 'Q', 'P', 'Q']],
-    ['SHARED', 'NEL_SHARED', ['P_SINGLE', 'R']],
+    ['SHARED', 'NEL_SHARED', [sharedGroup ? 'P' : 'P_SINGLE', 'R']],
   ] as const) {
     context.tables['trips.txt'].push({
       trip_id,
@@ -244,6 +248,82 @@ describe('combined review on explicit service-date applicability', () => {
     expect(
       ScheduledTripAssignmentDocumentSchema.safeParse(review).success,
     ).toBe(false);
+  });
+
+  it('validates shared journeys through associated groups using composed access while standalone mapping stays strict', () => {
+    const { inputs, sharedServiceMemberships, sharedId } = fixture(true);
+    const source = createScheduledSourceJourneyMappingDraft(
+      inputs.context,
+      inputs.sourceJourneyPolicy,
+      inputs.allocationPolicy,
+      inputs.holidayPolicy,
+      inputs.holidayCalendar,
+    );
+    expect(() =>
+      applyScheduledSourceJourneyServiceMemberships(
+        inputs.context,
+        inputs.sourceJourneyPolicy,
+        inputs.allocationPolicy,
+        inputs.holidayPolicy,
+        inputs.holidayCalendar,
+        source,
+        sharedServiceMemberships,
+      ),
+    ).toThrow(/grouped platform diagnostics/);
+    const review = createScheduledCombinedReview({
+      ...inputs,
+      sharedServiceMemberships,
+    });
+    expect(review.accounting.unresolvedTripDateCount).toBe(0);
+    const shared = review.associationReview.patterns.find(
+      (pattern) => pattern.providerPatternId === sharedId,
+    );
+    expect(shared?.reviewCells[0].target?.kind).toBe('sharedServiceRevisions');
+    for (const candidate of shared?.platformAssociations ?? []) {
+      const platforms = candidate.occurrences[0].platforms;
+      expect(platforms).toHaveLength(2);
+      expect(
+        platforms.find((platform) => platform.platformId === 'S_C')
+          ?.accessBySourceRule[0],
+      ).toMatchObject({
+        boardingStatus: 'not_in_service',
+        passengerBoardingEligible: false,
+        passengerAlightingEligible: false,
+      });
+      expect(
+        platforms.find((platform) => platform.platformId === 'platform-S')
+          ?.accessBySourceRule[0].passengerBoardingEligible,
+      ).toBe(true);
+    }
+    inputs.context.topology.stations[0].platforms[0].boardingStatus =
+      'not_in_service';
+    inputs.context.identity.topology.sha256 = hashBytes(
+      Buffer.from(JSON.stringify(inputs.context.topology)),
+    );
+    const restrictedSource = createScheduledSourceJourneyMappingDraft(
+      inputs.context,
+      inputs.sourceJourneyPolicy,
+      inputs.allocationPolicy,
+      inputs.holidayPolicy,
+      inputs.holidayCalendar,
+    );
+    sharedServiceMemberships.baseDraftSha256 = groupedScopedReviewDraftSha256(
+      restrictedSource.mapping.mapping,
+    );
+    const restricted = createScheduledCombinedReview({
+      ...inputs,
+      sharedServiceMemberships,
+    });
+    const blocked = restricted.associationReview.patterns.find(
+      (pattern) => pattern.providerPatternId === sharedId,
+    );
+    expect(
+      blocked?.reviewCells.every(
+        (cell) =>
+          cell.disposition === 'unresolved' &&
+          cell.blockers.includes('platform-or-boarding'),
+      ),
+    ).toBe(true);
   });
 
   it('keeps original service-date boundaries for 25-hour calls without approving outside dates', () => {

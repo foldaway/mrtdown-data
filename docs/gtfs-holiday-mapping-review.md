@@ -155,7 +155,13 @@ trip on one date is counted once regardless of its service memberships.
 
 Shared memberships remain explicit claims using the existing exact-base contract.
 Their `baseDraftSha256` binds the nested **source-journey grouped mapping**, before
-membership application, not the combined wrapper. The combined digest additionally
+membership application, not the combined wrapper. That source-journey component
+remains the strict baseline. Claim structure, exact base identity and date coverage
+are checked first; service/path and platform validity are then checked under the
+composed association semantics. A shared journey can therefore retain both A/C
+members without making restricted C boardable. Standalone mapping checks remain
+strict, and a group with no usable member remains unresolved.
+The combined digest additionally
 binds all input policies, claims, composed topology, source evidence and full
 source/effective/supported/outside population. Edited dates, access restrictions,
 physical members or identities invalidate saved-review verification. No approval
@@ -251,16 +257,17 @@ unusual trips' original stop-time rows compare exactly with the ZIP. All 47
 restricted platform association records retain false passenger access.
 
 The combined wrapper digest is
-`0c6fd1793eaa9d20a9fd7f2b2fb35aacd7221dfd96ba0e6e461a50835955353a`;
+`12ce071a566026da1bcc1369d160557f5dc4b44a201b6b34ffb086b4d473b7e9`;
 the complete population digest is
 `a0b5c914625b50e9f59fc2211928a5a5ada0b574cca0046c031f397c9e7fd3b8`.
 These bind exact policy/claim text and canonical identity; regenerate after edits.
 Local base, complete, replay and association-baseline packets are under
-`/tmp/gtfs-combined-main-20261107-*`, with explicit claims at
+`/tmp/gtfs-combined-main-20261107-*`; the corrected complete/replay packets are
+`/tmp/gtfs-combined-review-fix-20261107-*`, with explicit claims at
 `/tmp/gtfs-combined-memberships-20261107.json`. All large outputs remain outside Git.
 
-Validation: all 860 deterministic tests, package builds, lint, package boundaries
-and documentation links pass under Node 24 with `TZ=UTC`. Four combined scenarios
+Validation: all 861 deterministic tests, package builds, lint, package boundaries
+and documentation links pass under Node 24 with `TZ=UTC`. Five combined scenarios
 cover repeated calls and restricted groups, explicit shared memberships, 25-hour
 service-date boundaries and stale/unsupported edits. Saved-review replay reproduces
 all three output files byte for byte. Six invalid CLI combinations fail before

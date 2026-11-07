@@ -6,6 +6,7 @@ function required<T>(value: T | undefined): T {
   return value;
 }
 
+/** A complete A/C group with a restricted C member and an opposite terminal default. */
 export function platformAssociationFixture() {
   const {
     context,

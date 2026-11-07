@@ -139,6 +139,7 @@ export type ScheduledSourceJourneyMappingDraft = z.infer<
   typeof ScheduledSourceJourneyMappingDraftSchema
 >;
 
+/** Internal: verify source-order rules and original calls before composing a separately bound topology. */
 export function reviewScheduledSourceJourneys(
   context: ScopedReviewContext,
   policyInput: unknown,

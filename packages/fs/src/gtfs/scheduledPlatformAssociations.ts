@@ -14,7 +14,6 @@ import {
   ScheduledPlatformAllocationPolicySchema,
 } from './scheduledPlatformAllocations.js';
 import {
-  applyScheduledSourceJourneyServiceMemberships,
   createScheduledSourceJourneyMappingDraft,
   reviewScheduledSourceJourneys,
   type ScheduledSourceJourneyMappingDraft,
@@ -28,7 +27,10 @@ import {
   fingerprint,
   type ScopedReviewContext,
 } from './scopedReviewContract.js';
-import { ScheduledSharedServiceMembershipClaimsSchema } from './sharedServiceMemberships.js';
+import {
+  prepareSharedServiceMembershipClaims,
+  ScheduledSharedServiceMembershipClaimsSchema,
+} from './sharedServiceMemberships.js';
 import { validateSharedServiceSegment } from './sharedServiceTarget.js';
 
 /** Explicit timetable associations, distinct from permission to board every associated platform. */
@@ -171,6 +173,10 @@ export function buildScheduledPlatformAssociationReview(
       : ScheduledSharedServiceMembershipClaimsSchema.parse(
           composition.sharedServiceMemberships,
         );
+  const sharedTargets = new Map<
+    string,
+    NonNullable<typeof memberships>['claims'][number]['target']
+  >();
   if (composition) {
     const prepared = reviewScheduledSourceJourneys(
       context,
@@ -187,15 +193,27 @@ export function buildScheduledPlatformAssociationReview(
       inputs.holidayCalendar,
     );
     if (memberships) {
-      sourceJourneyReview = applyScheduledSourceJourneyServiceMemberships(
-        context,
-        composition.sourceJourneyPolicy,
-        inputs.allocationPolicy,
-        inputs.holidayPolicy,
-        inputs.holidayCalendar,
-        sourceJourneyReview,
+      const mapping = prepareSharedServiceMembershipClaims(
+        sourceJourneyReview.mapping.mapping,
         memberships,
       );
+      const dateSets = new Map(
+        mapping.dateSets.map((set) => [set.id, set.serviceDates]),
+      );
+      for (const decision of mapping.decisions) {
+        if (
+          decision.kind !== 'pattern' ||
+          decision.target?.kind !== 'sharedServiceRevisions'
+        ) {
+          continue;
+        }
+        for (const date of dateSets.get(decision.dateSetId) ?? []) {
+          sharedTargets.set(
+            JSON.stringify([decision.providerId, date]),
+            decision.target,
+          );
+        }
+      }
     }
     const topology = {
       ...additional.context.topology,
@@ -316,17 +334,15 @@ export function buildScheduledPlatformAssociationReview(
     >();
     for (const scope of facts.dateScopes.scopes) {
       for (const date of scope.serviceDates) {
-        const membership = memberships?.claims.find(
-          (claim) =>
-            claim.providerPatternId === original.providerPatternId &&
-            claim.serviceDates.includes(date),
+        const membership = sharedTargets.get(
+          JSON.stringify([original.providerPatternId, date]),
         );
         if (membership) {
           if (
-            scope.candidates.length !== membership.target.members.length ||
+            scope.candidates.length !== membership.members.length ||
             scope.candidates.some(
               (candidate) =>
-                !membership.target.members.some((member) =>
+                !membership.members.some((member) =>
                   sameTarget(candidate, member),
                 ),
             )
@@ -338,11 +354,11 @@ export function buildScheduledPlatformAssociationReview(
           validateSharedServiceSegment(
             reviewContext,
             original.stopIds,
-            membership.target.members,
+            membership.members,
           );
         }
         const target =
-          membership?.target ??
+          membership ??
           (scope.candidates.length === 1 ? scope.candidates[0] : undefined);
         const targets =
           target?.kind === 'sharedServiceRevisions'
