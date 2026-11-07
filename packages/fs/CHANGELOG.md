@@ -1,5 +1,27 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.46
+
+### Minor Changes
+
+- 6d634f8: Compose capture-bound service-date applicability, platform associations, unusual
+  source journeys and explicit shared-service memberships in one verified review.
+  Retain complete outside-date accounting and passenger restrictions without
+  making assignment, serving or publication consumers eligible.
+- 6ea9596: Add capture-bound service-date reviews that associate complete source groups with
+  distinct physical platforms while keeping passenger access restrictions separate.
+- ac28ebf: Represent one scheduled journey as belonging to multiple dated services. Validate every membership against the complete path, station codes, platforms and boarding rules, and retain one trip/date occurrence through assignments, artifacts and queries for either or both services. Existing single-service records remain supported; consumers must handle the new serviceMemberships form.
+- 1755d90: Add capture-bound source-journey reviews that preserve unusual stop orders and
+  represent timed station occurrences as passenger calls without changing source
+  rows or canonical paths. Bind explicit service associations and exact dates to a
+  separate review and approval contract while retaining platform diagnostics and
+  explicit shared-service claims across the complete effective date population.
+
+### Patch Changes
+
+- Updated dependencies [ac28ebf]
+  - @mrtdown/core@2.0.0-alpha.41
+
 ## 2.0.0-alpha.45
 
 ### Minor Changes
