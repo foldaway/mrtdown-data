@@ -308,7 +308,9 @@ function prepareDraft(
             ? candidate
             : undefined;
         const reason = match
-          ? `Ordered source path ${facts.stopIds[0]} to ${facts.stopIds.at(-1)} (${facts.stopIds.length} occurrences) is a ${match.match} match of ${match.id}/${match.revisionId} on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.`
+          ? match.match === 'sourceJourney'
+            ? `Explicit source-order association with ${match.id}/${match.revisionId} on the policy's exact service dates. Preserve all supplied occurrences and times; no contiguous canonical path or omitted passenger call is inferred. Current platform diagnostics have no explicit conflict; final semantics require repository review.`
+            : `Ordered source path ${facts.stopIds[0]} to ${facts.stopIds.at(-1)} (${facts.stopIds.length} occurrences) is a ${match.match} match of ${match.id}/${match.revisionId} on these exact active dates. Source endpoints, short workings and occurrence rules are preserved. Current platform diagnostics have no explicit conflict; final semantics require repository review.`
           : 'Temporal ambiguity/gap, unresolved identity or current platform diagnostic remains; no latest revision or exclusion is inferred.';
         const groupKey = fingerprint(match ?? null);
         const group = groups.get(groupKey) ?? {

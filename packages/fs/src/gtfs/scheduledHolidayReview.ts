@@ -59,6 +59,7 @@ export function createScheduledHolidayReviewDraft(
     context.identity,
     context.topology,
     datesByPattern,
+    context.sourceJourneyRules,
   );
   const groups = new Map<string, PlatformGroupTarget>();
   for (const item of entities) {
@@ -106,6 +107,7 @@ export function createScheduledHolidayReviewDraft(
           const candidate =
             scope.candidates.length === 1 ? scope.candidates[0] : undefined;
           const blockers: string[] = [];
+          if (!facts.candidates.length) blockers.push('no-path-candidate');
           if (!candidate) {
             blockers.push(
               scope.candidates.length ? 'temporal-ambiguity' : 'temporal-gap',

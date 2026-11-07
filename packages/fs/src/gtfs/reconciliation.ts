@@ -6,6 +6,7 @@ import z from 'zod';
 import { hashBytes } from './capture.js';
 import { compareStrings } from './order.js';
 import { auditSchedule, type ScheduleTables } from './schedule.js';
+import type { SourceJourneyRule } from './scopedReviewContract.js';
 import { matchServicePath } from './servicePath.js';
 import { resolveStationCandidates } from './stationMatch.js';
 import type { scheduleTopologyProjection } from './topology.js';
@@ -30,7 +31,9 @@ const targetSchema = z
     id: z.string().min(1),
     stationId: z.string().min(1).optional(),
     revisionId: z.string().min(1).optional(),
-    match: z.enum(['exact', 'contiguousSegment', 'cyclicSegment']).optional(),
+    match: z
+      .enum(['exact', 'contiguousSegment', 'cyclicSegment', 'sourceJourney'])
+      .optional(),
   })
   .strict();
 export type ReconciliationTarget = z.infer<typeof targetSchema>;
@@ -117,6 +120,7 @@ export function proposeScheduleReconciliation(
   tables: ScheduleTables,
   identity: ReconciliationIdentity,
   topology: Topology,
+  sourceJourneyRules: readonly SourceJourneyRule[] = [],
 ): ReconciliationReport {
   ReconciliationIdentitySchema.parse(identity);
   if (
@@ -124,6 +128,13 @@ export function proposeScheduleReconciliation(
     hashBytes(Buffer.from(JSON.stringify(topology)))
   )
     throw new Error('Topology fingerprint does not match reconciliation input');
+  const boundJourneys =
+    'sourceJourneyRules' in topology ? topology.sourceJourneyRules : [];
+  if (fingerprint(sourceJourneyRules) !== fingerprint(boundJourneys)) {
+    throw new Error(
+      'Source journey rules must match the rules bound into the review topology fingerprint',
+    );
+  }
   const audit = auditSchedule(tables);
   if (audit.structuralErrors.length)
     throw new Error('Structurally invalid schedule cannot be reconciled');
@@ -237,18 +248,33 @@ export function proposeScheduleReconciliation(
     const unique = stationIds.every((ids) => ids.length === 1);
     const sequence = stationIds.map((ids) => ids[0]);
     const candidates: ReconciliationTarget[] = [];
+    const journey = sourceJourneyRules.find(
+      (rule) => rule.providerPatternId === pattern.id,
+    );
     if (unique)
       for (const service of topology.services.filter(
         (service) => service.lineId === line,
       ))
         for (const revision of service.revisions) {
           const path = matchServicePath(revision.stations, sequence);
-          if (path) {
+          const sourceJourney =
+            journey &&
+            journey.lineId === line &&
+            journey.serviceId === service.id &&
+            sequence.every((stationId, index) =>
+              revision.stations.some(
+                (stop) =>
+                  stop.stationId === stationId &&
+                  stop.displayCode ===
+                    stops.get(pattern.stopIds[index])?.stop_code,
+              ),
+            );
+          if (path || sourceJourney) {
             candidates.push({
               kind: 'serviceRevision',
               id: service.id,
               revisionId: revision.id,
-              match: path.match,
+              match: path?.match ?? 'sourceJourney',
             });
           }
         }
@@ -258,7 +284,9 @@ export function proposeScheduleReconciliation(
         pattern.id,
         pattern,
         candidates,
-        'Ordered station sequence including repeated stops; exact, contiguous or single-circuit cyclic service-revision path. Calendar/revision validity, direction and platform service scope require review.',
+        journey
+          ? 'Explicit source-order service association for the policy dates, preserving repeated occurrences and omitted calls. This does not assert a contiguous canonical path; revision, station-code, operator and physical-platform checks still apply.'
+          : 'Ordered station sequence including repeated stops; exact, contiguous or single-circuit cyclic service-revision path. Calendar/revision validity, direction and platform service scope require review.',
       ),
     );
   }

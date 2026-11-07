@@ -8,6 +8,7 @@ import {
   partitionScopedCandidates,
   type ScopedCandidate,
 } from './scopedCandidates.js';
+import type { SourceJourneyRule } from './scopedReviewContract.js';
 import { resolveStationCandidates } from './stationMatch.js';
 import type { scheduleTopologyProjection } from './topology.js';
 
@@ -101,8 +102,14 @@ export function buildDateScopedReconciliationEvidence(
   identity: ReconciliationIdentity,
   topology: Topology,
   patternServiceDates?: ReadonlyMap<string, string[]>,
+  sourceJourneyRules: readonly SourceJourneyRule[] = [],
 ) {
-  const report = proposeScheduleReconciliation(tables, identity, topology);
+  const report = proposeScheduleReconciliation(
+    tables,
+    identity,
+    topology,
+    sourceJourneyRules,
+  );
   const audit = auditSchedule(tables);
   const stops = new Map(
     (tables['stops.txt'] ?? []).map((row) => [row.stop_id, row]),
@@ -147,8 +154,16 @@ export function buildDateScopedReconciliationEvidence(
       const revision = required(
         service.revisions.find((revision) => revision.id === target.revisionId),
       );
-      const revisionDates = activeDates.filter((date) =>
-        effective(date, revision.startAt, revision.endAt),
+      const revisionDates = activeDates.filter(
+        (date) =>
+          effective(date, revision.startAt, revision.endAt) &&
+          (target.match !== 'sourceJourney' ||
+            sourceJourneyRules.some(
+              (rule) =>
+                rule.providerPatternId === pattern.id &&
+                rule.serviceId === service.id &&
+                rule.serviceDates.includes(date),
+            )),
       );
       const occurrenceDates: Set<string>[] = [];
       const occurrenceDiagnosticDates: Set<string>[] = [];
@@ -170,6 +185,8 @@ export function buildDateScopedReconciliationEvidence(
                 station.stationCodes.some(
                   (code) =>
                     code.code === supportingCode &&
+                    (target.match !== 'sourceJourney' ||
+                      code.lineId === service.lineId) &&
                     effective(date, code.startedAt, code.endedAt),
                 ) &&
                 station.stationCodes.some(

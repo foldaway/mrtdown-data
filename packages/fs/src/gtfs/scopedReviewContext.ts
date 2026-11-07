@@ -18,12 +18,14 @@ export function derive(
     context.tables,
     context.identity,
     context.topology,
+    context.sourceJourneyRules,
   );
   const evidence = buildDateScopedReconciliationEvidence(
     context.tables,
     context.identity,
     context.topology,
     patternServiceDates,
+    context.sourceJourneyRules,
   );
   const audit = auditSchedule(context.tables);
   return { report, evidence, audit };
