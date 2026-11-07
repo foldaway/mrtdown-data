@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "revision": "foldaway-shared-sunday-public-holidays-2026-ceb07f9c-v1",
+  "rule": "sunday-on-public-holidays",
+  "sourceManifest": {
+    "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+    "calendar.txt": "50ddaf51ea641fd4fc58695972b317555d7dfbc2503ee3d1bb7b101fd00c669b",
+    "calendar_dates.txt": "6c513a05c52753763f12f26bb53ae5c5a290d5fee63b08cc006540d2082fdf58",
+    "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+    "routes.txt": "ef14e523194470a09de94d18b7c920f516657e41aee0bc9493978568f13abd85",
+    "stop_times.txt": "6c42607dfeb68ee07d241f9970ed5c7e2df06ef2b3f4ce237c2923a517e33ee9",
+    "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+    "trips.txt": "b448e1d05564801ecb579fc0e5ed82f56d30d977fa87158882326b9e134f0ff8"
+  },
+  "holidayCalendarSha256": "c1c3a740b0c17944e7d879bf7050b264ec28cf08ee146de3e039cae022b46ee6",
+  "families": [
+    {
+      "lineId": "NEL",
+      "providerRouteIds": [
+        "NEL_NE16_NE18",
+        "NEL_NE1_NE18",
+        "NEL_NE3_NE18"
+      ],
+      "weekdayCalendarId": "SERVICE_WD",
+      "saturdayCalendarId": "SERVICE_WE",
+      "sundayCalendarId": "SERVICE_PH"
+    },
+    {
+      "lineId": "NSL",
+      "providerRouteIds": [
+        "NSL_NS13_NS26",
+        "NSL_NS13_NS28",
+        "NSL_NS16_NS1",
+        "NSL_NS16_NS13",
+        "NSL_NS16_NS28",
+        "NSL_NS17_NS1",
+        "NSL_NS17_NS26",
+        "NSL_NS17_NS28",
+        "NSL_NS1_NS16",
+        "NSL_NS1_NS19",
+        "NSL_NS1_NS28",
+        "NSL_NS1_NS5",
+        "NSL_NS21_NS1",
+        "NSL_NS27_NS1",
+        "NSL_NS28_NS1",
+        "NSL_NS28_NS13",
+        "NSL_NS28_NS16",
+        "NSL_NS28_NS7",
+        "NSL_NS5_NS1",
+        "NSL_NS7_NS28"
+      ],
+      "weekdayCalendarId": "SERVICE_WD",
+      "saturdayCalendarId": "SERVICE_WE",
+      "sundayCalendarId": "SERVICE_PH"
+    },
+    {
+      "lineId": "EWL",
+      "providerRouteIds": [
+        "EWL_CGL_CG2_CG",
+        "EWL_CGL_CG_CG2",
+        "EWL_EW1_EW29",
+        "EWL_EW1_EW33",
+        "EWL_EW23_EW1",
+        "EWL_EW24_EW33",
+        "EWL_EW29_EW1",
+        "EWL_EW33_EW1",
+        "EWL_EW3_EW1",
+        "EWL_EW4_EW1",
+        "EWL_EW4_EW29",
+        "EWL_EW4_EW33"
+      ],
+      "weekdayCalendarId": "SERVICE_WD",
+      "saturdayCalendarId": "SERVICE_WE",
+      "sundayCalendarId": "SERVICE_PH"
+    },
+    {
+      "lineId": "TEL",
+      "providerRouteIds": [
+        "TEL_TE14_TE29",
+        "TEL_TE17_TE29",
+        "TEL_TE1_TE14",
+        "TEL_TE1_TE17",
+        "TEL_TE1_TE22",
+        "TEL_TE1_TE26",
+        "TEL_TE1_TE27",
+        "TEL_TE1_TE29",
+        "TEL_TE1_TE3",
+        "TEL_TE1_TE9",
+        "TEL_TE22_TE29",
+        "TEL_TE27_TE29",
+        "TEL_TE3_TE26",
+        "TEL_TE3_TE29",
+        "TEL_TE9_TE29"
+      ],
+      "weekdayCalendarId": "SERVICE_WD",
+      "saturdayCalendarId": "SERVICE_WE",
+      "sundayCalendarId": "SERVICE_PH"
+    },
+    {
+      "lineId": "CCL",
+      "providerRouteIds": [
+        "CCL_CC11_CC17",
+        "CCL_CC11_CC32",
+        "CCL_CC11_CC33",
+        "CCL_CC12_CC17",
+        "CCL_CC12_CC26",
+        "CCL_CC12_CC32",
+        "CCL_CC12_CC33",
+        "CCL_CC17_CC32",
+        "CCL_CC17_CC33",
+        "CCL_CC1_CC11",
+        "CCL_CC1_CC17",
+        "CCL_CC1_CC29",
+        "CCL_CC1_CC32",
+        "CCL_CC1_CC4",
+        "CCL_CC1_CC6",
+        "CCL_CC1_CC7",
+        "CCL_CC23_CC33",
+        "CCL_CC26_CC32",
+        "CCL_CC26_CC33",
+        "CCL_CC29_CC32",
+        "CCL_CC30_CC32",
+        "CCL_CC32_CC32",
+        "CCL_CC32_CC33",
+        "CCL_CC4_CC11",
+        "CCL_CC4_CC12",
+        "CCL_CC4_CC17",
+        "CCL_CC4_CC23",
+        "CCL_CC4_CC24",
+        "CCL_CC4_CC26",
+        "CCL_CC4_CC27",
+        "CCL_CC4_CC29",
+        "CCL_CC4_CC30",
+        "CCL_CC4_CC31",
+        "CCL_CC4_CC32",
+        "CCL_CC4_CC33",
+        "CCL_CC4_CC4",
+        "CCL_CC4_CC6",
+        "CCL_CC4_CC7",
+        "CCL_CC4_CC9",
+        "CCL_CC6_CC9",
+        "CCL_CC7_CC32",
+        "CCL_CC9_CC17",
+        "CCL_CC9_CC23",
+        "CCL_CC9_CC32"
+      ],
+      "weekdayCalendarId": "SERVICE_WD_CCL",
+      "saturdayCalendarId": "SERVICE_WE_CCL",
+      "sundayCalendarId": "SERVICE_PH_CCL"
+    },
+    {
+      "lineId": "BPLRT",
+      "providerRouteIds": [
+        "BP"
+      ],
+      "weekdayCalendarId": "SERVICE_WD",
+      "saturdayCalendarId": "SERVICE_WE",
+      "sundayCalendarId": "SERVICE_PH"
+    },
+    {
+      "lineId": "DTL",
+      "providerRouteIds": [
+        "DTL_DT19_DT35",
+        "DTL_DT1_DT11",
+        "DTL_DT1_DT12",
+        "DTL_DT1_DT14",
+        "DTL_DT1_DT35",
+        "DTL_DT24_DT35"
+      ],
+      "weekdayCalendarId": "SERVICE_WD",
+      "saturdayCalendarId": "SERVICE_WE",
+      "sundayCalendarId": "SERVICE_PH"
+    },
+    {
+      "lineId": "SKLRT",
+      "providerRouteIds": [
+        "SK"
+      ],
+      "weekdayCalendarId": "SERVICE_WD",
+      "saturdayCalendarId": "SERVICE_WE",
+      "sundayCalendarId": "SERVICE_PH"
+    },
+    {
+      "lineId": "PGLRT",
+      "providerRouteIds": [
+        "PG"
+      ],
+      "weekdayCalendarId": "SERVICE_WD",
+      "saturdayCalendarId": "SERVICE_WE",
+      "sundayCalendarId": "SERVICE_PH"
+    }
+  ]
+}

@@ -22,6 +22,7 @@ export * from './retainedDepartures.js';
 export * from './scheduledHolidayMapping.js';
 export * from './scheduledHolidayPolicy.js';
 export * from './scheduledHolidayReview.js';
+export * from './scheduledPlatformAllocations.js';
 export * from './scheduledServiceCalendar.js';
 export * from './scheduledStopTime.js';
 export * from './scheduledTimetable.js';

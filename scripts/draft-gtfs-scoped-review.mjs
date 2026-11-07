@@ -10,10 +10,12 @@ import {
   createGroupedScopedReconciliationDraft,
   createScheduledHolidayMappingDraft,
   createScheduledHolidayReviewDraft,
+  createScheduledPlatformAllocationMappingDraft,
   createScheduledTripAssignmentProposals,
   createScopedReconciliationDraft,
   evaluateGroupedScopedReconciliation,
   evaluateScheduledHolidayMapping,
+  evaluateScheduledPlatformAllocationMapping,
   evaluateScopedReconciliation,
   groupedScopedReviewDraftSha256,
   hashBytes,
@@ -22,6 +24,7 @@ import {
   readEntity,
   readVerifiedCapture,
   scheduledHolidayMappingDraftSha256,
+  scheduledPlatformAllocationMappingDraftSha256,
   scheduleTopologyProjection,
   scopedReviewDraftSha256,
 } from '../packages/fs/dist/index.js';
@@ -37,6 +40,9 @@ let holidayCalendarId;
 let holidayReviewFile;
 let holidayMappingFile;
 let holidayApprovalFile;
+let platformAllocationPolicyFile;
+let platformAllocationReviewFile;
+let platformAllocationApprovalFile;
 for (let index = 0; index < extra.length; index++) {
   if (
     extra[index] === '--holiday-policy' &&
@@ -68,6 +74,24 @@ for (let index = 0; index < extra.length; index++) {
     extra[index + 1]
   ) {
     holidayApprovalFile = extra[++index];
+  } else if (
+    extra[index] === '--platform-allocation-policy' &&
+    !platformAllocationPolicyFile &&
+    extra[index + 1]
+  ) {
+    platformAllocationPolicyFile = extra[++index];
+  } else if (
+    extra[index] === '--platform-allocation-review' &&
+    !platformAllocationReviewFile &&
+    extra[index + 1]
+  ) {
+    platformAllocationReviewFile = extra[++index];
+  } else if (
+    extra[index] === '--platform-allocation-approval' &&
+    !platformAllocationApprovalFile &&
+    extra[index + 1]
+  ) {
+    platformAllocationApprovalFile = extra[++index];
   } else if (extra[index] === '--blockers' && !includeBlockers) {
     includeBlockers = true;
   } else if (extra[index] === '--assignments' && !includeAssignments) {
@@ -86,7 +110,7 @@ for (let index = 0; index < extra.length; index++) {
 }
 if (!file || !captureFile || !pilotLineList || !output) {
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>]]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>]]',
   );
 }
 if (
@@ -98,6 +122,19 @@ if (
 ) {
   throw new Error(
     'Holiday date review requires both policy and calendar; mapping/assignment options are separate',
+  );
+}
+if (
+  (platformAllocationPolicyFile &&
+    (!holidayPolicyFile ||
+      holidayReviewFile ||
+      holidayMappingFile ||
+      holidayApprovalFile)) ||
+  (!platformAllocationPolicyFile &&
+    (platformAllocationReviewFile || platformAllocationApprovalFile))
+) {
+  throw new Error(
+    'Platform allocation review requires a holiday policy and its own review and approval records',
   );
 }
 const createDraft = platformGroups
@@ -160,6 +197,78 @@ const identity = {
   },
 };
 const context = { tables, identity, topology };
+if (platformAllocationPolicyFile) {
+  const readJson = async (path) =>
+    JSON.parse(await readFile(resolve(path), 'utf8'));
+  const [policy, holidayPolicy, { value: holidays }] = await Promise.all([
+    readJson(platformAllocationPolicyFile),
+    readJson(holidayPolicyFile),
+    readEntity(join(cwd, 'data'), 'public-holiday', holidayCalendarId),
+  ]);
+  const policyLines = [
+    ...new Set(holidayPolicy.families.map((family) => family.lineId)),
+  ].sort();
+  if (
+    JSON.stringify([...new Set(pilotLineIds)].sort()) !==
+    JSON.stringify(policyLines)
+  ) {
+    throw new Error(
+      'Platform allocation review pilot must match the bound holiday policy families',
+    );
+  }
+  const review = platformAllocationReviewFile
+    ? await readJson(platformAllocationReviewFile)
+    : createScheduledPlatformAllocationMappingDraft(
+        context,
+        policy,
+        holidayPolicy,
+        holidays,
+      );
+  const approval = platformAllocationApprovalFile
+    ? await readJson(platformAllocationApprovalFile)
+    : undefined;
+  const evaluation = evaluateScheduledPlatformAllocationMapping(
+    context,
+    policy,
+    holidayPolicy,
+    holidays,
+    review,
+    approval,
+  );
+  const summary = {
+    schemaVersion: 1,
+    documentKind: 'gtfs-platform-allocation-review-summary',
+    captureSha256: capture.sha256,
+    identity: review.identity,
+    draftSha256: scheduledPlatformAllocationMappingDraftSha256(review),
+    changes: review.changes,
+    patternCount: review.dateReview.patterns.length,
+    effectiveTripDateCount: review.dateReview.patterns.reduce(
+      (total, pattern) =>
+        total + pattern.tripIds.length * pattern.serviceDates.length,
+      0,
+    ),
+    approval: approval
+      ? 'Supplied repository-review metadata evaluated'
+      : 'No approval metadata supplied; all matches are draft proposals',
+    evaluation,
+    generationEligible: false,
+  };
+  await mkdir(resolve(output));
+  for (const [name, content] of Object.entries({
+    'platform-allocation-review.json': review,
+    'platform-allocation-evaluation.json': evaluation,
+    'summary.json': summary,
+  })) {
+    await writeFile(
+      join(output, name),
+      `${JSON.stringify(content, null, 2)}\n`,
+      { flag: 'wx' },
+    );
+  }
+  console.log(JSON.stringify({ output: resolve(output), ...summary }, null, 2));
+  process.exit(evaluation.valid ? 0 : 1);
+}
 if (holidayPolicyFile) {
   const policy = JSON.parse(await readFile(resolve(holidayPolicyFile), 'utf8'));
   const { value: holidays } = await readEntity(
