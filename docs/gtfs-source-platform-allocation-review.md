@@ -4,6 +4,10 @@ GTFS names the platform for a scheduled trip. Canonical platform/service binding
 provide Foldaway's usual direction defaults. For the reviewed Expo and Sengkang
 East stops, an explicit capture-specific policy now lets the GTFS allocation take
 precedence over that default. Source labels and canonical records stay intact.
+The subsequent
+[Paya Lebar review](gtfs-ccl-platform-allocation-review-2026-11-06.md) extends
+the policy to two CCL platforms; the comparison below records the original
+Expo/Sengkang-only revision.
 
 ## Maintainer decision — 5 November 2026
 
@@ -129,8 +133,14 @@ synthetic fully resolved, approved review.
 
 ## Reproduce
 
-Acquire the exact receipt and ZIP above. Use Node 24 with `TZ=UTC`, after
-`npm run build:fs`:
+Acquire the exact receipt and ZIP above. To reproduce this historical comparison,
+first extract its original policy (the checked-in policy now includes Paya Lebar):
+
+```sh
+git show e9fb6439d1349d5482cea639e9045fff8a9de1c6:docs/gtfs-platform-allocation-policy-2026-11-02.json > /tmp/expo-sengkang-allocation-policy-v1.json
+```
+
+Use Node 24 with `TZ=UTC`, after `npm run build:fs`:
 
 ```sh
 node scripts/draft-gtfs-scoped-review.mjs \
@@ -141,7 +151,7 @@ node scripts/draft-gtfs-scoped-review.mjs \
   --canonical-commit 987147261a35eb771bcae223f50cdbf6174a1899 \
   --holiday-policy docs/gtfs-shared-holiday-policy-2026-11-02.json \
   --holiday-calendar SG-2026 \
-  --platform-allocation-policy docs/gtfs-platform-allocation-policy-2026-11-02.json
+  --platform-allocation-policy /tmp/expo-sengkang-allocation-policy-v1.json
 ```
 
 The runner writes `platform-allocation-review.json`,

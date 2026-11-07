@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "foldaway-expo-sengkang-east-source-platforms-ceb07f9c-v1",
+  "revision": "foldaway-expo-sengkang-east-paya-lebar-source-platforms-ceb07f9c-v2",
   "sourceManifest": {
     "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
     "calendar.txt": "50ddaf51ea641fd4fc58695972b317555d7dfbc2503ee3d1bb7b101fd00c669b",
@@ -130,6 +130,28 @@
       "reason": "Maintainer decision, 5 November 2026: assume LTA GTFS platform allocations are correct for this capture; canonical service directions remain logical defaults. Temporary re-routing is a possible explanation, not a verified event. Preserve the explicit source label and all boarding restrictions.",
       "serviceIds": [
         "SKLRT_E_CW"
+      ]
+    },
+    {
+      "providerStopId": "CC9_A",
+      "stationId": "PYL",
+      "lineId": "CCL",
+      "platformCode": "A",
+      "reason": "Maintainer source-precedence decision, 5 November 2026, applied to equivalent Paya Lebar physical-platform evidence: assume LTA GTFS allocations are correct for this capture while canonical service directions remain logical defaults. Temporary re-routing is possible, not verified. Keep exact service revision/code dates, service ambiguity and boarding restrictions; see docs/gtfs-ccl-platform-allocation-review-2026-11-06.md.",
+      "serviceIds": [
+        "CCL_BRANCH_CCW",
+        "CCL_LOOP_CCW"
+      ]
+    },
+    {
+      "providerStopId": "CC9_B",
+      "stationId": "PYL",
+      "lineId": "CCL",
+      "platformCode": "B",
+      "reason": "Maintainer source-precedence decision, 5 November 2026, applied to equivalent Paya Lebar physical-platform evidence: assume LTA GTFS allocations are correct for this capture while canonical service directions remain logical defaults. Temporary re-routing is possible, not verified. Keep exact service revision/code dates, service ambiguity and boarding restrictions; see docs/gtfs-ccl-platform-allocation-review-2026-11-06.md.",
+      "serviceIds": [
+        "CCL_BRANCH_CW",
+        "CCL_LOOP_CW"
       ]
     }
   ]
