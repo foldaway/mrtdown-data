@@ -1,5 +1,24 @@
 # @mrtdown/cli
 
+## 2.0.0-alpha.48
+
+### Minor Changes
+
+- 1a6859a: Restore shared Singapore public-holiday year calendars as canonical data, with
+  schema validation, repository APIs, manifest hashes and public export links.
+  Import complete consolidated MOM captures and use the canonical calendar in
+  GTFS holiday-date reviews.
+
+### Patch Changes
+
+- Updated dependencies [1a6859a]
+- Updated dependencies [4b11717]
+- Updated dependencies [1a6859a]
+- Updated dependencies [e9fb643]
+  - @mrtdown/fs@2.0.0-alpha.45
+  - @mrtdown/core@2.0.0-alpha.40
+  - @mrtdown/triage@2.0.0-alpha.52
+
 ## 2.0.0-alpha.47
 
 ### Patch Changes
