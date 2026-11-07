@@ -270,3 +270,134 @@ dates group into six records covering 17,467 source trips. This includes other
 unassigned lines and uncovered CCL dates; it describes the supplied pilot's coverage
 against the full capture. Its assignment hash is unchanged and generation remains
 ineligible.
+
+## Assignments from combined mappings
+
+`createScheduledCombinedTripAssignmentProposals(inputs, report, approval?)`
+rebuilds the [combined mapping report](gtfs-holiday-mapping-review.md#combined-review-on-supported-service-dates)
+from the verified capture context and exact policies before expanding proposed
+cells into trip assignments. It preserves each source trip, route, calendar,
+ordered occurrence and final represented destination. Reversals, omitted stops,
+repeated visits, 24+ times, pickup/drop-off fields and timepoint precision remain
+as supplied. No stop or time is interpolated.
+
+The distinct `gtfs-combined-trip-assignments` format binds the original canonical
+and source identity, all policy/date-population identities, exact report digest,
+optional approval digest and explicit applicability. Each assignment has one
+source trip, exact supported service dates, one or more service memberships,
+route/operator mapping, ordered calls and a declared path basis. A shared trip
+has one call per source occurrence, with per-service access on every physical
+platform. Its memberships do not duplicate its trip/date coverage.
+
+A/C and B/D remain complete distinct associations. Restricted platforms retain
+false passenger boarding and alighting eligibility. Access is derived from each
+trip's actual pickup/drop-off fields, rather than the pattern's aggregated access
+alternatives. Boarding additionally requires a later eligible alighting occurrence
+on that service, so the final occurrence cannot become an onward departure.
+Source timing and precision accompany every call. Group association never selects
+one actual platform or establishes simultaneous physical use.
+
+`ScheduledCombinedTripAssignmentDocumentSchema` checks the persisted structure.
+`verifyScheduledCombinedTripAssignments(inputs, report, document, approval?)`
+reconstructs the entire document against original inputs; schema parsing alone
+is not semantic validation. Missing assignments, changed dates/times/service
+memberships, collapsed physical groups, altered access or false coverage fail.
+The normalized `assignmentsSha256` covers the complete parsed document, including
+its policy, approval and coverage metadata, rather than only assignment rows.
+Existing literal assignment readers and artifact/release consumers reject this
+new document kind. Their invariants are unchanged; consumer integration follows
+separately.
+
+### Exact combined mapping approval
+
+`ScheduledCombinedMappingApprovalSchema` defines a separate record:
+
+```ts
+{
+  schemaVersion: 1,
+  documentKind: 'gtfs-combined-mapping-approval',
+  identity: report.identity,
+  draftSha256: report.draftSha256,
+  reviewer: 'Actual reviewer',
+  reason: 'Actual review decision',
+}
+```
+
+This describes the contract, not an issued approval. Tooling never creates a
+reviewer record. `evaluateScheduledCombinedMapping(inputs, report, approval?)`
+reconstructs the report before checking its exact identity and digest. The
+normalized approval digest also binds the supplied reviewer and reason text. Missing approval leaves readiness `unapproved`; stale identity/digest is
+invalid. Other mapping approval kinds cannot approve the combined report.
+A matching approval with unresolved entities or supported dates remains
+`unresolved`. Only valid, fully resolved supported coverage with matching
+approval reaches `reviewed-mapping-only`, with `mappingReviewEligible: true`.
+Generation eligibility remains false. Mapping approval is review metadata, not
+authentication, release approval, source admission or permission to publish.
+
+Proposal preparation permits valid unapproved or unresolved reports for inspection.
+Only proposed cells expand; unresolved supported dates remain explicit gaps with
+trip IDs, exact dates and blockers. Coverage distinguishes literal, effective,
+supported, outside-applicability, assigned and unassigned populations. Outside
+dates are preserved as unsupported source diagnostics, not inactive dates,
+approved exclusions or unassigned supported dates. A matching approval cannot
+remove a gap. Incomplete proposals remain unsuitable for generation.
+
+### Prepare and replay from the runner
+
+Use Node 24 with `TZ=UTC` after `npm run build:fs`. Run the
+[combined reproduction](gtfs-holiday-mapping-review.md#reproduce-the-combined-november-review)
+with canonical commit `6d634f8db415252f5bcbbe5b1dc807607816f2ac` (merged #465),
+regenerating the exact-base CCL claims for that commit and choosing new output
+directories. Add `--combined-assignments` to prepare `combined-assignments.json`
+alongside the mapping report, evaluation and summary. The assignment file uses
+compact JSON; large generated files remain outside Git.
+
+Actual reviewer metadata, if supplied, uses `--combined-approval <json>`.
+This option and `--combined-assignments` require the combined applicability mode;
+legacy mapping/approval/assignment flags cannot substitute for them. The summary
+records the evaluated approval, assignment digest and supported coverage, without
+manufacturing a reviewer record or granting generation eligibility. Saved report
+replay uses `--combined-review <json>` with the same original inputs, policies,
+exact-base shared claims and optional approval. Persisted assignment validation
+uses the reconstruction API above.
+
+October 31 trips remain outside November applicability even when their 24+ events
+fall on November 1. November 30 trips retain their December 1 tails, without
+establishing December 1 service-date coverage. Artifact and serving integration
+must carry these same bounds; early November 1 still needs another applicable
+source or an explicit availability gap.
+
+### November assignment verification
+
+Using the pinned November capture, canonical data at merged #465 and freshly
+bound explicit CCL claims, the unapproved proposals contain **19,140 recurring
+trips and 203,064 assigned supported trip/date pairs**, with zero supported gaps
+or exclusions. All 2,275,284 outside-applicability effective pairs remain
+separately accounted for. Shared memberships account for 3,960 pairs once;
+all 17 unusual source trips retain their complete supplied journeys.
+
+An independent raw-ZIP comparison checks all **349,581 source calls**: original
+trip/route/calendar IDs, stop IDs, arbitrary-size sequence strings, exact parsed
+arrival/departure seconds, access fields, precision and complete literal physical
+platform labels. All 1,709 restricted per-service platform access entries remain
+false for boarding and alighting. Each assigned date/membership is checked against
+the exact reconstructed mapping cell. No actual approval record was generated;
+readiness remains `unapproved`, mapping-review eligibility false and generation
+eligibility false.
+
+The canonical/report-bound normalized document digest is
+`d741fcb65ff2fff4998379592e120ad8d602ba14b96202b4870612c65331f865`;
+the regenerated combined report digest is
+`56d12f77b96b311879b6b7c0c3f982d6e0ab5cf4963e9b1505f178328ae08e4d`.
+These refer to the exact policies and claim text used for this run, rather than
+transferring an earlier report identity. Generated packets are under
+`/tmp/gtfs-assignment-integration-20261107-{base,complete,replay}`, with exact-main
+membership claims at `/tmp/gtfs-assignment-integration-20261107-memberships.json`.
+Large generated files remain outside Git; compact artifact packaging is separate.
+
+Validation under Node 24 with `TZ=UTC`: all 866 deterministic tests, package
+builds, lint, package boundaries and documentation links pass. Five assignment
+scenarios cover complete and incomplete approvals, shared/repeated physical
+occurrences, per-trip access differences, precision, 25-hour times, large sequence
+strings, old-format rejection and persisted tampering. Saved-report replay
+reproduces the mapping report, evaluation, assignments and summary byte for byte.

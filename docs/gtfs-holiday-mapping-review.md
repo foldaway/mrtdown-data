@@ -172,7 +172,9 @@ Service dates control overnight bounds: October 31 trips reaching November 1
 remain outside this November cohort, and November 30 trips retain their December 1
 tails. The latter supplies no December 1 service-date applicability. Early
 November 1 serving still needs another applicable source or an explicit gap.
-Assignment, artifact, import and serving support for this contract remain separate.
+The [combined assignment contract](gtfs-trip-assignment-validation.md#assignments-from-combined-mappings)
+now prepares policy-bound proposals and checks exact-report approval metadata.
+Artifact, import and serving support remain separate.
 
 ### Reproduce the combined November review
 
@@ -274,7 +276,9 @@ all three output files byte for byte. Six invalid CLI combinations fail before
 source reads or output creation.
 
 Readiness is **unapproved**, with mapping-review and generation eligibility false.
-This resolves the supported mapping proposals; assignment, artifact and serving
-integration, operational source-condition review, exact mapping/release/source
+This resolves the supported mapping proposals. The subsequent
+[assignment and approval contract](gtfs-trip-assignment-validation.md#assignments-from-combined-mappings)
+prepares proposals without creating actual reviewer records. Artifact and serving
+integration, operational source-condition review, actual mapping/release/source
 approvals and publication wiring remain ahead. BPLRT closures, holiday-eve extras
 and the Marine Terrace Saturday discrepancy are separate source-condition work.
