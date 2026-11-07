@@ -22,8 +22,8 @@ Even a numerically equivalent spelling is rejected when it differs from the
 retained source text; occurrence binding does not normalize IDs across captures.
 
 The returned `ScheduledTripWithPattern` retains the original source trip, route
-and calendar IDs. It adds `lineId`, `serviceId`, `revisionId` and
-`destinationStationId`; each `stopTimes` entry gains its corresponding `stationId`
+and calendar IDs. It adds `lineId`, `destinationStationId` and either the single `serviceId`/
+`revisionId` or the complete `serviceMemberships` set; each `stopTimes` entry gains its corresponding `stationId`
 and complete `platformIds` set. Source offsets beyond midnight, missing
 approximate times, pickup/drop-off restrictions, precision and raw occurrence
 identity remain unchanged. Platform alternatives are normalized by the pattern

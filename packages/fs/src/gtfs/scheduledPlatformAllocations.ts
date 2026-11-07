@@ -8,12 +8,16 @@ import {
   ScheduledHolidayMappingDraftSchema,
   scheduledHolidayMappingDraftSha256,
 } from './scheduledHolidayMapping.js';
-import { ScheduledHolidayPolicySchema } from './scheduledHolidayPolicy.js';
+import {
+  resolveScheduledHolidayDates,
+  ScheduledHolidayPolicySchema,
+} from './scheduledHolidayPolicy.js';
 import { createScheduledHolidayReviewDraft } from './scheduledHolidayReview.js';
 import {
   fingerprint,
   type ScopedReviewContext,
 } from './scopedReviewContract.js';
+import { applySharedServiceMembershipsForDates } from './sharedServiceMemberships.js';
 import { resolveStationCandidates } from './stationMatch.js';
 
 const digest = z.string().regex(/^[a-f0-9]{64}$/);
@@ -289,6 +293,46 @@ export function createScheduledPlatformAllocationMappingDraft(
     mapping,
   });
   return { ...draft, dateReview };
+}
+
+/** Adopt explicit memberships within the existing population; applicability and approval remain separate. */
+export function applyScheduledPlatformAllocationServiceMemberships(
+  context: ScopedReviewContext,
+  policyInput: unknown,
+  holidayPolicyInput: unknown,
+  calendarInput: unknown,
+  input: unknown,
+  claimsInput: unknown,
+) {
+  const reviewed = reviewAllocations(context, policyInput, holidayPolicyInput);
+  const draft = ScheduledPlatformAllocationMappingDraftSchema.parse(input);
+  const existing = evaluateScheduledPlatformAllocationMapping(
+    context,
+    policyInput,
+    holidayPolicyInput,
+    calendarInput,
+    draft,
+  );
+  if (!existing.valid)
+    throw new Error(
+      `Invalid base allocation mapping: ${existing.errors.join('; ')}`,
+    );
+  const mapping = applySharedServiceMembershipsForDates(
+    reviewed.context,
+    draft.mapping.mapping,
+    claimsInput,
+    new Map(
+      resolveScheduledHolidayDates(
+        reviewed.context,
+        holidayPolicyInput,
+        calendarInput,
+      ).patterns.map((pattern) => [
+        pattern.providerPatternId,
+        pattern.serviceDates,
+      ]),
+    ),
+  );
+  return { ...draft, mapping: { ...draft.mapping, mapping } };
 }
 
 export function evaluateScheduledPlatformAllocationMapping(

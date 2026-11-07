@@ -398,3 +398,38 @@ matched coverage. All nine standalone packets compose without conflicting
 decisions, and the cumulative output is byte-identical under line reordering
 and repetition. No automatic ignore, exclusion, source repair or canonical
 change is supplied.
+
+## Shared service memberships
+
+An explicit v3 pattern target can be `sharedServiceRevisions`, with a `members`
+array of complete `{ kind: "serviceRevision", id, revisionId, match }` targets.
+This means the one supplied journey belongs to every member service. It is not
+an unresolved choice or several source trips. The default drafter still leaves
+multiple candidates unresolved; it does not infer this decision for other routes.
+
+The evaluator requires the complete dated candidate set on every claimed date,
+one complete alignment per member, identical ordered station/display-code
+segments and agreement with literal source codes. It applies the existing
+revision, station-code, operator, complete platform-group and boarding checks to
+every member. Platform preference cannot remove a candidate. Assignments carry
+one binding with `serviceMemberships`, so compact artifacts and departure queries
+retain one source trip/date occurrence and all its memberships.
+
+`applyScheduledSharedServiceMemberships(context, draft, claims)` adopts explicit
+claims in a grouped mapping. Its `gtfs-shared-service-membership-claims` input has
+`schemaVersion: 1`, `baseDraftSha256` and `claims`. Each claim contains
+`providerPatternId`, exact `serviceDates`, a shared `target` and a `reason`.
+The digest binds the complete base mapping. Claims may resolve only existing
+unresolved dates; unknown dates, overlaps, stale drafts and incomplete or invalid
+member sets fail. Other dates and decisions remain unchanged. The helper creates
+no approval and does not infer operational applicability.
+
+For an allocation/holiday wrapper, use
+`applyScheduledPlatformAllocationServiceMemberships` or the runner's
+`--shared-service-memberships <claims.json>` option alongside
+`--platform-allocation-policy`. It reconstructs the reviewed topology and uses
+the verified holiday population. The original date-review evidence keeps its
+multiple candidates; the editable mapping records the explicit both-services
+decision. The changed wrapper needs its own exact approval. Assignment/release
+consumers still do not accept that wrapper; the new representation does not
+bypass their existing input or eligibility gates.

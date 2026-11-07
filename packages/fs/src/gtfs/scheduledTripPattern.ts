@@ -3,6 +3,7 @@ import {
   ScheduledTripPatternBindingSchema,
   ScheduledTripPatternDateScopeSchema,
   ScheduledTripPatternSchema,
+  scheduledServiceMemberships,
 } from '@mrtdown/core';
 import z from 'zod';
 import type { CsvRow } from './schedule.js';
@@ -25,11 +26,13 @@ function uniqueReference<T extends { id: string }>(
 }
 
 /** Check reference integrity only; source matching, effective dates and approval are separate. */
-export function validateScheduledTripPatternReferences(
+function validateSinglePatternReferences(
   input: unknown,
   topology: ReturnType<typeof scheduleTopologyProjection>,
 ) {
   const pattern = ScheduledTripPatternSchema.parse(input);
+  if (!pattern.serviceId || !pattern.revisionId)
+    throw new Error('Expected a single service membership');
   const line = uniqueReference(topology.lines, pattern.lineId, 'line');
   const service = uniqueReference(
     topology.services,
@@ -84,6 +87,19 @@ export function validateScheduledTripPatternReferences(
   return pattern;
 }
 
+/** Validate every service membership and its complete platform alternatives against the same canonical topology. */
+export function validateScheduledTripPatternReferences(
+  input: unknown,
+  topology: ReturnType<typeof scheduleTopologyProjection>,
+) {
+  const pattern = ScheduledTripPatternSchema.parse(input);
+  for (const membership of scheduledServiceMemberships(pattern)) {
+    const { serviceMemberships: _members, ...common } = pattern;
+    validateSinglePatternReferences({ ...common, ...membership }, topology);
+  }
+  return pattern;
+}
+
 const canonicalPeriod = z
   .object({ start: z.iso.date(), end: z.iso.date().nullable() })
   .refine(({ start, end }) => end === null || end > start, {
@@ -94,12 +110,13 @@ function effective(date: string, period: z.infer<typeof canonicalPeriod>) {
   return date >= period.start && (period.end === null || date < period.end);
 }
 
-export function validateScheduledTripPatternDateScope(
+/** Prove one revision covers the complete ordered journey and all station-code dates in the supplied scope. */
+function validateSinglePatternDateScope(
   input: unknown,
   topology: ReturnType<typeof scheduleTopologyProjection>,
 ) {
   const scope = ScheduledTripPatternDateScopeSchema.parse(input);
-  const pattern = validateScheduledTripPatternReferences(
+  const pattern = validateSinglePatternReferences(
     scope.binding.pattern,
     topology,
   );
@@ -154,6 +171,56 @@ export function validateScheduledTripPatternDateScope(
       throw new Error(
         `No complete path of service revision ${service.id}/${revision.id} has active station codes on ${date}`,
       );
+    }
+  }
+  return scope;
+}
+
+/** Validate all memberships on every scoped date and require one identical complete alignment for a shared journey. */
+export function validateScheduledTripPatternDateScope(
+  input: unknown,
+  topology: ReturnType<typeof scheduleTopologyProjection>,
+) {
+  const scope = ScheduledTripPatternDateScopeSchema.parse(input);
+  const pattern = validateScheduledTripPatternReferences(
+    scope.binding.pattern,
+    topology,
+  );
+  let sharedSegment: string | undefined;
+  for (const membership of scheduledServiceMemberships(pattern)) {
+    const { serviceMemberships: _members, ...common } = pattern;
+    validateSinglePatternDateScope(
+      {
+        ...scope,
+        binding: { ...scope.binding, pattern: { ...common, ...membership } },
+      },
+      topology,
+    );
+    if (pattern.serviceMemberships) {
+      const service = uniqueReference(
+        topology.services,
+        membership.serviceId,
+        'service',
+      );
+      const revision = uniqueReference(
+        service.revisions,
+        membership.revisionId,
+        'service revision',
+      );
+      const path = matchServicePath(
+        revision.stations,
+        pattern.stops.map((stop) => stop.stationId),
+      );
+      if (path?.segments.length !== 1)
+        throw new Error(
+          'Shared service membership requires one complete path alignment',
+        );
+      const segment = JSON.stringify(path.segments[0]);
+      if (sharedSegment !== undefined && sharedSegment !== segment)
+        throw new Error(
+          'Service memberships disagree on the complete station/code segment',
+        );
+      sharedSegment = segment;
     }
   }
   return scope;

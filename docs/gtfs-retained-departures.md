@@ -22,6 +22,16 @@ const result = await queryRetainedScheduledDepartures({
 });
 ```
 
+For a union query, replace `serviceId` with `serviceIds`, for example
+`serviceIds: ["CCL_BRANCH_CW", "CCL_LOOP_CW"]`. Supply one form only. IDs must
+be distinct and normalize into sorted order. Every requested service is validated
+against the line, stations and optional platform. Selection requires coverage for
+each requested service in the same eligible artifact. A shared pattern is selected
+once, so querying either membership or both returns one departure per source
+occurrence. Shared departures retain their complete `serviceMemberships`; they
+do not acquire a preferred service from the query. Rollback review matches the
+complete requested service set, independent of its order.
+
 Supply offset-bearing instants with an end after the start and a window of at
 most 24 hours. The optional limit must be a positive integer; omitting it returns
 all matching timed departures. The interval includes its start and excludes its

@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { holidayFixture } from './__tests__/holidayFixture.js';
 import { hashBytes } from './capture.js';
+import { groupedScopedReviewDraftSha256 } from './groupedReviewContract.js';
 import { evaluateScheduledHolidayMapping } from './scheduledHolidayMapping.js';
 import { createScheduledHolidayReviewDraft } from './scheduledHolidayReview.js';
 import {
+  applyScheduledPlatformAllocationServiceMemberships,
   createScheduledPlatformAllocationMappingDraft,
   evaluateScheduledPlatformAllocationMapping,
   scheduledPlatformAllocationMappingDraftSha256,
@@ -128,6 +130,121 @@ function evaluate(input: Prepared, review?: unknown) {
 }
 
 describe('source platform allocation review', () => {
+  it('applies shared memberships while retaining source dates for patterns outside the holiday policy', () => {
+    const source = fixture();
+    const outside = holidayFixture().context.tables;
+    source.context.tables['routes.txt'].push(
+      ...outside['routes.txt'].filter((row) => row.route_id === 'NSL_TEST'),
+    );
+    source.context.tables['trips.txt'].push(
+      ...outside['trips.txt'].filter((row) => row.route_id === 'NSL_TEST'),
+    );
+    source.context.tables['stop_times.txt'].push(
+      ...outside['stop_times.txt'].filter((row) =>
+        row.trip_id.startsWith('NSL_TEST_'),
+      ),
+    );
+    const shared = structuredClone(source.context.topology.services[0]);
+    shared.id = 'SHARED';
+    shared.revisions[0].id = 'SHARED_R';
+    source.context.topology.services.push(shared);
+    source.context.topology.lines[0].serviceIds.push(shared.id);
+    for (const allocation of source.policy.allocations)
+      allocation.serviceIds.push(shared.id);
+    source.context.identity.topology.sha256 = hashBytes(
+      Buffer.from(JSON.stringify(source.context.topology)),
+    );
+    const { draft } = prepare(source);
+    const pattern = draft.dateReview.patterns.find((pattern) =>
+      pattern.tripIds.includes('NEL_TEST_SU'),
+    );
+    if (!pattern) throw new Error('Missing synthetic Sunday pattern');
+    const before = structuredClone({ source, draft });
+    const updated = applyScheduledPlatformAllocationServiceMemberships(
+      source.context,
+      source.policy,
+      source.holidayPolicy,
+      source.calendar,
+      draft,
+      {
+        schemaVersion: 1,
+        documentKind: 'gtfs-shared-service-membership-claims',
+        baseDraftSha256: groupedScopedReviewDraftSha256(draft.mapping.mapping),
+        claims: [
+          {
+            providerPatternId: pattern.providerPatternId,
+            serviceDates: ['2026-11-09'],
+            reason:
+              'Synthetic both-services claim on an added public-holiday date',
+            target: {
+              kind: 'sharedServiceRevisions',
+              members: [
+                {
+                  kind: 'serviceRevision',
+                  id: 'SVC',
+                  revisionId: 'R',
+                  match: 'exact',
+                },
+                {
+                  kind: 'serviceRevision',
+                  id: 'SHARED',
+                  revisionId: 'SHARED_R',
+                  match: 'exact',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    );
+    expect(
+      evaluateScheduledPlatformAllocationMapping(
+        source.context,
+        source.policy,
+        source.holidayPolicy,
+        source.calendar,
+        updated,
+      ),
+    ).toMatchObject({
+      valid: true,
+      coverageComplete: true,
+      excludedPatternDates: 0,
+      approvalMatches: false,
+      mappingReviewEligible: false,
+      generationEligible: false,
+    });
+    expect(updated.dateReview).toEqual(draft.dateReview);
+    const unchanged = (mapping: typeof draft.mapping.mapping) =>
+      mapping.decisions.filter(
+        (decision) =>
+          decision.kind !== 'pattern' ||
+          decision.providerId !== pattern.providerPatternId,
+      );
+    expect(unchanged(updated.mapping.mapping)).toEqual(
+      unchanged(draft.mapping.mapping),
+    );
+    expect(
+      updated.mapping.mapping.decisions.filter(
+        (decision) =>
+          decision.kind === 'pattern' &&
+          decision.providerId !== pattern.providerPatternId,
+      ),
+    ).toHaveLength(6);
+    const selected = updated.mapping.mapping.decisions.find(
+      (decision) =>
+        decision.kind === 'pattern' &&
+        decision.target?.kind === 'sharedServiceRevisions',
+    );
+    if (selected?.kind !== 'pattern')
+      throw new Error('Missing shared membership decision');
+    expect(
+      updated.mapping.mapping.dateSets.find(
+        (set) => set.id === selected.dateSetId,
+      )?.serviceDates,
+    ).toEqual(['2026-11-09']);
+    expect({ source, draft }).toEqual(before);
+  });
+
   it('honors source labels for ordinary and first-morning variants while retaining canonical defaults and original evidence', () => {
     const source = fixture();
     const original = structuredClone(source);

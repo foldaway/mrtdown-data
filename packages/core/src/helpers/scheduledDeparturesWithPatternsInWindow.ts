@@ -27,9 +27,11 @@ export type ScheduledDepartureWithPattern =
       | 'lineId'
       | 'serviceId'
       | 'revisionId'
+      | 'serviceMemberships'
       | 'destinationStationId'
     > & { departureInstant: string };
 
+/** Resolve one dated binding per source trip and emit each occurrence once with all service memberships. */
 export function scheduledDeparturesWithPatternsInWindow(
   selections: readonly ScheduledTripPatternDateSelection[],
   window: { startInstant: string; endInstant: string },
@@ -52,8 +54,9 @@ export function scheduledDeparturesWithPatternsInWindow(
         providerCalendarId: resolved.providerCalendarId,
         serviceDate: resolved.serviceDate,
         lineId: resolved.lineId,
-        serviceId: resolved.serviceId,
-        revisionId: resolved.revisionId,
+        ...(resolved.serviceMemberships
+          ? { serviceMemberships: resolved.serviceMemberships }
+          : { serviceId: resolved.serviceId, revisionId: resolved.revisionId }),
         destinationStationId: resolved.destinationStationId,
         departureInstant: stop.departureInstant,
       }),

@@ -1,11 +1,12 @@
 import z from 'zod';
 
-/** Canonical occurrence identities, independent of source timing and mapping approval. */
-export const ScheduledTripPatternSchema = z
+export const ScheduledServiceMembershipSchema = z
+  .object({ serviceId: z.string().min(1), revisionId: z.string().min(1) })
+  .strict();
+
+const occurrences = z
   .object({
     lineId: z.string().min(1),
-    serviceId: z.string().min(1),
-    revisionId: z.string().min(1),
     destinationStationId: z.string().min(1),
     stops: z
       .array(
@@ -24,7 +25,40 @@ export const ScheduledTripPatternSchema = z
       )
       .min(2),
   })
-  .strict()
+  .strict();
+
+/** One source journey, with one or several independently validated service memberships. */
+export const ScheduledTripPatternSchema = z
+  .union([
+    z
+      .object({
+        lineId: occurrences.shape.lineId,
+        serviceId: z.string().min(1),
+        revisionId: z.string().min(1),
+        destinationStationId: occurrences.shape.destinationStationId,
+        stops: occurrences.shape.stops,
+        serviceMemberships: z.never().optional(),
+      })
+      .strict(),
+    occurrences.extend({
+      serviceId: z.never().optional(),
+      revisionId: z.never().optional(),
+      serviceMemberships: z
+        .array(ScheduledServiceMembershipSchema)
+        .min(2)
+        .refine(
+          (members) =>
+            new Set(members.map((member) => member.serviceId)).size ===
+            members.length,
+          'Service memberships must name distinct services',
+        )
+        .transform((members) =>
+          [...members].sort((a, b) =>
+            a.serviceId < b.serviceId ? -1 : a.serviceId > b.serviceId ? 1 : 0,
+          ),
+        ),
+    }),
+  ])
   .superRefine((value, context) => {
     if (value.stops.at(-1)?.stationId !== value.destinationStationId) {
       context.addIssue({
@@ -36,3 +70,20 @@ export const ScheduledTripPatternSchema = z
   });
 
 export type ScheduledTripPattern = z.infer<typeof ScheduledTripPatternSchema>;
+
+export type ScheduledServiceMembership = z.infer<
+  typeof ScheduledServiceMembershipSchema
+>;
+
+/** Read every membership from a parsed pattern, preserving the legacy single-service form. */
+export function scheduledServiceMemberships(
+  pattern: Pick<
+    ScheduledTripPattern,
+    'serviceId' | 'revisionId' | 'serviceMemberships'
+  >,
+): readonly ScheduledServiceMembership[] {
+  if (pattern.serviceMemberships) return pattern.serviceMemberships;
+  if (!pattern.serviceId || !pattern.revisionId)
+    throw new Error('Missing scheduled service membership');
+  return [{ serviceId: pattern.serviceId, revisionId: pattern.revisionId }];
+}

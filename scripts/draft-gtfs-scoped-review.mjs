@@ -6,6 +6,7 @@ import {
   readSchedule,
 } from '../packages/fs/dist/gtfs/schedule.js';
 import {
+  applyScheduledPlatformAllocationServiceMemberships,
   buildScopedReviewBlockers,
   createGroupedScopedReconciliationDraft,
   createScheduledHolidayMappingDraft,
@@ -43,8 +44,15 @@ let holidayApprovalFile;
 let platformAllocationPolicyFile;
 let platformAllocationReviewFile;
 let platformAllocationApprovalFile;
+let sharedServiceMembershipsFile;
 for (let index = 0; index < extra.length; index++) {
   if (
+    extra[index] === '--shared-service-memberships' &&
+    !sharedServiceMembershipsFile &&
+    extra[index + 1]
+  ) {
+    sharedServiceMembershipsFile = extra[++index];
+  } else if (
     extra[index] === '--holiday-policy' &&
     !holidayPolicyFile &&
     extra[index + 1]
@@ -110,7 +118,7 @@ for (let index = 0; index < extra.length; index++) {
 }
 if (!file || !captureFile || !pilotLineList || !output) {
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>]]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>] [--shared-service-memberships <json>]]',
   );
 }
 if (
@@ -131,7 +139,9 @@ if (
       holidayMappingFile ||
       holidayApprovalFile)) ||
   (!platformAllocationPolicyFile &&
-    (platformAllocationReviewFile || platformAllocationApprovalFile))
+    (platformAllocationReviewFile ||
+      platformAllocationApprovalFile ||
+      sharedServiceMembershipsFile))
 ) {
   throw new Error(
     'Platform allocation review requires a holiday policy and its own review and approval records',
@@ -216,7 +226,7 @@ if (platformAllocationPolicyFile) {
       'Platform allocation review pilot must match the bound holiday policy families',
     );
   }
-  const review = platformAllocationReviewFile
+  let review = platformAllocationReviewFile
     ? await readJson(platformAllocationReviewFile)
     : createScheduledPlatformAllocationMappingDraft(
         context,
@@ -224,6 +234,15 @@ if (platformAllocationPolicyFile) {
         holidayPolicy,
         holidays,
       );
+  if (sharedServiceMembershipsFile)
+    review = applyScheduledPlatformAllocationServiceMemberships(
+      context,
+      policy,
+      holidayPolicy,
+      holidays,
+      review,
+      await readJson(sharedServiceMembershipsFile),
+    );
   const approval = platformAllocationApprovalFile
     ? await readJson(platformAllocationApprovalFile)
     : undefined;

@@ -1,5 +1,6 @@
 import z from 'zod';
 import {
+  requestedServiceIds,
   type ScheduledTimetableRequestScope,
   ScheduledTimetableRequestScopeSchema,
 } from './timetableScope.js';
@@ -59,7 +60,8 @@ export function assessRetainedTimetableRollback(
     request.serviceDate > review.dateRange.endDate ||
     request.scope.stationId !== review.scope.stationId ||
     request.scope.lineId !== review.scope.lineId ||
-    request.scope.serviceId !== review.scope.serviceId ||
+    JSON.stringify(requestedServiceIds(request.scope).sort()) !==
+      JSON.stringify(requestedServiceIds(review.scope).sort()) ||
     request.scope.destinationStationId !== review.scope.destinationStationId ||
     request.scope.platformId !== review.scope.platformId
   ) {

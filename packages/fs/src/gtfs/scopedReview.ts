@@ -27,6 +27,7 @@ import {
   scopedReviewDateSetId,
   scopedReviewDraftSha256,
 } from './scopedReviewContract.js';
+import { validateSharedServiceSegment } from './sharedServiceTarget.js';
 
 /** Verify claims and complete coverage; approval is repository-review metadata, not authentication. */
 export function evaluateScopedReconciliation(
@@ -63,6 +64,7 @@ export function evaluateGroupedScopedDates(
   );
 }
 
+/** Validate all source/date claims and membership proofs before assessing complete coverage and exact approval. */
 function evaluate(
   context: ScopedReviewContext,
   input: unknown,
@@ -161,6 +163,17 @@ function evaluate(
           errors.push(
             `Target outside complete source platform group: ${sourceKey}`,
           );
+      } else if (target?.kind === 'sharedServiceRevisions') {
+        if (
+          item.kind !== 'pattern' ||
+          target.members.some(
+            (member) =>
+              !source?.candidates.some((candidate) =>
+                sameTarget(candidate, member),
+              ),
+          )
+        )
+          errors.push(`Shared target outside source candidates: ${sourceKey}`);
       } else if (
         !source?.candidates.some((candidate) => sameTarget(candidate, target))
       )
@@ -213,6 +226,22 @@ function evaluate(
       (pattern) => pattern.providerId === item.providerId,
     );
     if (!pattern || !facts) continue;
+    if (
+      item.disposition === 'matched' &&
+      item.target?.kind === 'sharedServiceRevisions'
+    ) {
+      try {
+        validateSharedServiceSegment(
+          context,
+          pattern.stopIds,
+          item.target.members,
+        );
+      } catch (error) {
+        errors.push(
+          `Invalid shared service segment: ${sourceKey}: ${error instanceof Error ? error.message : String(error)}`,
+        );
+      }
+    }
     const active = new Set(datesFor(pattern));
     const covered = coveredDates.get(item.providerId) ?? new Set<string>();
     if (item.disposition === 'matched' && !dates.size)
@@ -229,25 +258,45 @@ function evaluate(
       covered.add(date);
       if (item.disposition === 'matched') {
         matchedPatternDates++;
-        if (
-          allowGroups &&
-          item.target &&
-          !groupedPlatformDiagnosticsAllow(facts, item.target, groups)
-        )
-          errors.push(
-            `Unresolved grouped platform diagnostics: ${sourceKey}:${date}`,
+        const targets =
+          item.target?.kind === 'sharedServiceRevisions'
+            ? item.target.members
+            : item.target
+              ? [item.target]
+              : [];
+        if (item.target?.kind === 'sharedServiceRevisions') {
+          const scope = facts.dateScopes.scopes.find((scope) =>
+            scope.serviceDates.includes(date),
           );
-        if (item.target && !targetOnDate(facts.dateScopes, date, item.target))
-          errors.push(
-            `Target outside temporal candidates: ${sourceKey}:${date}`,
-          );
-        if (
-          item.target &&
-          !targetOnDate(facts.platformDiagnosticScopes, date, item.target)
-        )
-          errors.push(
-            `Unresolved current platform diagnostics: ${sourceKey}:${date}`,
-          );
+          if (
+            !scope ||
+            scope.candidates.length !== targets.length ||
+            scope.candidates.some(
+              (candidate) =>
+                !targets.some((target) => sameTarget(candidate, target)),
+            )
+          )
+            errors.push(
+              `Shared target must retain every dated candidate: ${sourceKey}:${date}`,
+            );
+        }
+        for (const target of targets) {
+          if (
+            allowGroups &&
+            !groupedPlatformDiagnosticsAllow(facts, target, groups)
+          )
+            errors.push(
+              `Unresolved grouped platform diagnostics: ${sourceKey}:${date}`,
+            );
+          if (!targetOnDate(facts.dateScopes, date, target))
+            errors.push(
+              `Target outside temporal candidates: ${sourceKey}:${date}`,
+            );
+          if (!targetOnDate(facts.platformDiagnosticScopes, date, target))
+            errors.push(
+              `Unresolved current platform diagnostics: ${sourceKey}:${date}`,
+            );
+        }
       } else if (item.disposition === 'excluded') excludedPatternDates++;
       else if (item.disposition === 'unresolved') unresolvedPatternDates++;
     }
@@ -276,7 +325,9 @@ function evaluate(
       if (parent) {
         const ancestor = requireMatch('stop', parent, key(item));
         if (
-          item.target?.stationId &&
+          item.target &&
+          'stationId' in item.target &&
+          item.target.stationId &&
           (ancestor?.target?.kind !== 'station' ||
             ancestor.target.id !== item.target.stationId)
         )

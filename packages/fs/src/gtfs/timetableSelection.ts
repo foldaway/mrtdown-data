@@ -1,6 +1,7 @@
 import {
   isScheduledServiceDate,
   type ScheduledAssignedTimetable,
+  scheduledServiceMemberships,
 } from '@mrtdown/core';
 import z from 'zod';
 import { hashBytes } from './capture.js';
@@ -11,6 +12,7 @@ import {
   ScheduledTimetableRollbackOptionsSchema,
 } from './timetableRollback.js';
 import {
+  requestedServiceIds,
   type ScheduledTimetableRequestScope,
   ScheduledTimetableRequestScopeSchema,
 } from './timetableScope.js';
@@ -27,46 +29,55 @@ export {
 } from './timetableScope.js';
 
 type Topology = Awaited<ReturnType<typeof readScheduleTopology>>;
+/** Require every requested service to belong to the line, stations and optional platform. */
 function validateScope(
   scope: ScheduledTimetableRequestScope,
   topology: Topology,
 ) {
   const line = topology.lines.find((item) => item.id === scope.lineId);
-  const service = topology.services.find((item) => item.id === scope.serviceId);
   const station = topology.stations.find((item) => item.id === scope.stationId);
   const destination = topology.stations.find(
     (item) => item.id === scope.destinationStationId,
   );
-  if (!line || !service || !station || !destination) {
+  if (!line || !station || !destination) {
     throw new Error(
       'Timetable request references an unknown canonical station, line or service',
     );
   }
-  if (service.lineId !== line.id || !line.serviceIds.includes(service.id)) {
-    throw new Error('Timetable request service does not belong to its line');
-  }
-  if (
-    !service.revisions.some(
-      (revision) =>
-        revision.stations.some((stop) => stop.stationId === station.id) &&
-        revision.stations.some((stop) => stop.stationId === destination.id),
-    )
-  ) {
-    throw new Error('Timetable request stations do not belong to its service');
-  }
-  if (scope.platformId !== undefined) {
-    const platforms = station.platforms.filter(
-      (platform) => platform.id === scope.platformId,
-    );
+  for (const serviceId of requestedServiceIds(scope)) {
+    const service = topology.services.find((item) => item.id === serviceId);
+    if (!service)
+      throw new Error(
+        'Timetable request references an unknown canonical service',
+      );
+    if (service.lineId !== line.id || !line.serviceIds.includes(service.id)) {
+      throw new Error('Timetable request service does not belong to its line');
+    }
     if (
-      platforms.length !== 1 ||
-      platforms[0].lineId !== line.id ||
-      (platforms[0].serviceIds.length &&
-        !platforms[0].serviceIds.includes(service.id))
+      !service.revisions.some(
+        (revision) =>
+          revision.stations.some((stop) => stop.stationId === station.id) &&
+          revision.stations.some((stop) => stop.stationId === destination.id),
+      )
     ) {
       throw new Error(
-        'Timetable request platform does not belong to its station, line and service',
+        'Timetable request stations do not belong to its service',
       );
+    }
+    if (scope.platformId !== undefined) {
+      const platforms = station.platforms.filter(
+        (platform) => platform.id === scope.platformId,
+      );
+      if (
+        platforms.length !== 1 ||
+        platforms[0].lineId !== line.id ||
+        (platforms[0].serviceIds.length &&
+          !platforms[0].serviceIds.includes(service.id))
+      ) {
+        throw new Error(
+          'Timetable request platform does not belong to its station, line and service',
+        );
+      }
     }
   }
 }
@@ -103,42 +114,57 @@ function dateCoverage(
   return { activeTripCount, unassignedActiveTripCount };
 }
 
+/** Select shared patterns once and require coverage for every service in the requested set. */
 function scopePatternIds(
   timetable: ScheduledAssignedTimetable,
   scope: ScheduledTimetableRequestScope,
   serviceDate: string,
   topology: Topology,
 ) {
-  const service = topology.services.find((item) => item.id === scope.serviceId);
-  const revisions = new Set(
-    service?.revisions
-      .filter(
+  const requested = new Set(requestedServiceIds(scope));
+  const eligibleMembership = (member: {
+    serviceId: string;
+    revisionId: string;
+  }) =>
+    requested.has(member.serviceId) &&
+    topology.services
+      .find((service) => service.id === member.serviceId)
+      ?.revisions.some(
         (revision) =>
+          revision.id === member.revisionId &&
           serviceDate >= revision.startAt &&
           (revision.endAt === null || serviceDate < revision.endAt),
-      )
-      .map((revision) => revision.id),
-  );
+      );
   const usedPatterns = new Set(
     timetable.assignments.map((assignment) => assignment.patternId),
   );
-  return timetable.patterns
-    .filter(
-      ({ id, pattern }) =>
-        usedPatterns.has(id) &&
-        pattern.lineId === scope.lineId &&
-        pattern.serviceId === scope.serviceId &&
-        pattern.destinationStationId === scope.destinationStationId &&
-        revisions.has(pattern.revisionId) &&
-        pattern.stops.some(
-          (stop, index) =>
-            index < pattern.stops.length - 1 &&
-            stop.stationId === scope.stationId &&
-            (scope.platformId === undefined ||
-              stop.platformIds.includes(scope.platformId)),
+  const patterns = timetable.patterns.filter(
+    ({ id, pattern }) =>
+      usedPatterns.has(id) &&
+      pattern.lineId === scope.lineId &&
+      scheduledServiceMemberships(pattern).some(eligibleMembership) &&
+      pattern.destinationStationId === scope.destinationStationId &&
+      pattern.stops.some(
+        (stop, index) =>
+          index < pattern.stops.length - 1 &&
+          stop.stationId === scope.stationId &&
+          (scope.platformId === undefined ||
+            stop.platformIds.includes(scope.platformId)),
+      ),
+  );
+  if (
+    [...requested].some(
+      (serviceId) =>
+        !patterns.some(({ pattern }) =>
+          scheduledServiceMemberships(pattern).some(
+            (member) =>
+              member.serviceId === serviceId && eligibleMembership(member),
+          ),
         ),
     )
-    .map(({ id }) => id);
+  )
+    return [];
+  return patterns.map(({ id }) => id);
 }
 
 export interface ScheduledTimetableSelectionAttempt {
