@@ -29,6 +29,7 @@ export type ScheduledTimetableRequestScope = z.infer<
   typeof ScheduledTimetableRequestScopeSchema
 >;
 
+/** Return an independent service list so scope comparisons cannot mutate the request. */
 export function requestedServiceIds(scope: ScheduledTimetableRequestScope) {
   if (scope.serviceIds) return [...scope.serviceIds];
   if (!scope.serviceId) throw new Error('Missing requested service');

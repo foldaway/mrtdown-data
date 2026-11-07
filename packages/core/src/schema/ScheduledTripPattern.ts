@@ -75,6 +75,7 @@ export type ScheduledServiceMembership = z.infer<
   typeof ScheduledServiceMembershipSchema
 >;
 
+/** Read every membership from a parsed pattern, preserving the legacy single-service form. */
 export function scheduledServiceMemberships(
   pattern: Pick<
     ScheduledTripPattern,

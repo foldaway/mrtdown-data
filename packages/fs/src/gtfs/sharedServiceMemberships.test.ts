@@ -32,9 +32,11 @@ async function fixture() {
   const { options } = await artifactFixture(root, true);
   const json = async (path: string) => JSON.parse(await readFile(path, 'utf8'));
   const service = await json(join(root, 'data/service/SVC.json'));
+  service.id = 'OTHER';
+  service.revisions[0].id = 'other-r2';
   await writeFile(
     join(root, 'data/service/OTHER.json'),
-    JSON.stringify({ ...service, id: 'OTHER' }),
+    JSON.stringify(service),
   );
   const linePath = join(root, 'data/line/NSL.json');
   const line = await json(linePath);
@@ -75,7 +77,7 @@ async function fixture() {
           members: ['SVC', 'OTHER'].map((id) => ({
             kind: 'serviceRevision',
             id,
-            revisionId: 'r1',
+            revisionId: id === 'OTHER' ? 'other-r2' : 'r1',
             match: 'exact',
           })),
         },
@@ -113,7 +115,7 @@ describe('shared scheduled service memberships', () => {
     const pattern = proposals.document.assignments[0].scope.binding.pattern;
     expect(pattern).not.toHaveProperty('serviceId');
     expect(pattern.serviceMemberships).toEqual([
-      { serviceId: 'OTHER', revisionId: 'r1' },
+      { serviceId: 'OTHER', revisionId: 'other-r2' },
       { serviceId: 'SVC', revisionId: 'r1' },
     ]);
     expect(pattern.stops[0].platformIds).toEqual(['A', 'C']);
@@ -185,7 +187,7 @@ describe('shared scheduled service memberships', () => {
       serviceDate: '2026-01-01',
       departureInstant: '2026-01-01T17:00:00Z',
       serviceMemberships: [
-        { serviceId: 'OTHER', revisionId: 'r1' },
+        { serviceId: 'OTHER', revisionId: 'other-r2' },
         { serviceId: 'SVC', revisionId: 'r1' },
       ],
     });

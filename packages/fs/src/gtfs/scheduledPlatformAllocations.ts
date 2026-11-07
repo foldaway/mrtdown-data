@@ -8,7 +8,10 @@ import {
   ScheduledHolidayMappingDraftSchema,
   scheduledHolidayMappingDraftSha256,
 } from './scheduledHolidayMapping.js';
-import { ScheduledHolidayPolicySchema } from './scheduledHolidayPolicy.js';
+import {
+  resolveScheduledHolidayDates,
+  ScheduledHolidayPolicySchema,
+} from './scheduledHolidayPolicy.js';
 import { createScheduledHolidayReviewDraft } from './scheduledHolidayReview.js';
 import {
   fingerprint,
@@ -319,7 +322,7 @@ export function applyScheduledPlatformAllocationServiceMemberships(
     draft.mapping.mapping,
     claimsInput,
     new Map(
-      createScheduledHolidayReviewDraft(
+      resolveScheduledHolidayDates(
         reviewed.context,
         holidayPolicyInput,
         calendarInput,

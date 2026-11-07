@@ -64,6 +64,7 @@ export function evaluateGroupedScopedDates(
   );
 }
 
+/** Validate all source/date claims and membership proofs before assessing complete coverage and exact approval. */
 function evaluate(
   context: ScopedReviewContext,
   input: unknown,

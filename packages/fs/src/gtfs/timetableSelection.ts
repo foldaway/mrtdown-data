@@ -29,6 +29,7 @@ export {
 } from './timetableScope.js';
 
 type Topology = Awaited<ReturnType<typeof readScheduleTopology>>;
+/** Require every requested service to belong to the line, stations and optional platform. */
 function validateScope(
   scope: ScheduledTimetableRequestScope,
   topology: Topology,
@@ -113,6 +114,7 @@ function dateCoverage(
   return { activeTripCount, unassignedActiveTripCount };
 }
 
+/** Select shared patterns once and require coverage for every service in the requested set. */
 function scopePatternIds(
   timetable: ScheduledAssignedTimetable,
   scope: ScheduledTimetableRequestScope,

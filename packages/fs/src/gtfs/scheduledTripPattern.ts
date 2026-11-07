@@ -87,6 +87,7 @@ function validateSinglePatternReferences(
   return pattern;
 }
 
+/** Validate every service membership and its complete platform alternatives against the same canonical topology. */
 export function validateScheduledTripPatternReferences(
   input: unknown,
   topology: ReturnType<typeof scheduleTopologyProjection>,
@@ -109,6 +110,7 @@ function effective(date: string, period: z.infer<typeof canonicalPeriod>) {
   return date >= period.start && (period.end === null || date < period.end);
 }
 
+/** Prove one revision covers the complete ordered journey and all station-code dates in the supplied scope. */
 function validateSinglePatternDateScope(
   input: unknown,
   topology: ReturnType<typeof scheduleTopologyProjection>,
@@ -174,6 +176,7 @@ function validateSinglePatternDateScope(
   return scope;
 }
 
+/** Validate all memberships on every scoped date and require one identical complete alignment for a shared journey. */
 export function validateScheduledTripPatternDateScope(
   input: unknown,
   topology: ReturnType<typeof scheduleTopologyProjection>,

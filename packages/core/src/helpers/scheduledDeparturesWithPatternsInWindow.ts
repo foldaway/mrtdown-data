@@ -31,6 +31,7 @@ export type ScheduledDepartureWithPattern =
       | 'destinationStationId'
     > & { departureInstant: string };
 
+/** Resolve one dated binding per source trip and emit each occurrence once with all service memberships. */
 export function scheduledDeparturesWithPatternsInWindow(
   selections: readonly ScheduledTripPatternDateSelection[],
   window: { startInstant: string; endInstant: string },
