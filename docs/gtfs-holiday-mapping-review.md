@@ -275,7 +275,36 @@ all three output files byte for byte. Six invalid CLI combinations fail before
 source reads or output creation.
 
 Readiness is **unapproved**, with mapping-review and generation eligibility false.
-This resolves the supported mapping proposals; artifact and serving integration,
-operational source-condition review, actual mapping/release/source
-approvals and publication wiring remain ahead. BPLRT closures, holiday-eve extras
-and the Marine Terrace Saturday discrepancy are separate source-condition work.
+
+### November operating conditions
+
+The pinned LTA capture was retrieved on 2 November 2026 at 20:00 UTC. Its
+`calendar_dates.txt` has no exceptions. The raw ZIP and compact timetable agree
+on all 5,910 trips for each of the four November Saturdays.
+
+- **Deepavali Eve, 7 November.** [SMRT](https://www.smrt.com.sg/news-publications/newsroom/service-announcements/last-bus-train-timings-extension-for-deepavali-eve-2026/)
+  announced extensions on NSL, EWL, CCL and TEL. [SBS Transit](https://sbstransit.com.sg/news/extension-of-operational-hours-for-train-and-selected-bus-services-on-eve-of-deepavali-5)
+  announced extensions on NEL, DTL and both Sengkang and Punggol LRT. For
+  example, the capture's last Bayshore departure to Woodlands North is `23:42`
+  versus `24:12` in SMRT's notice. [SBS's poster](https://www.sbstransit.com.sg/Uploads/Posters%20-%20Extension%20of%20Operational%20Hours%20for%20Train%20and%20Selected%20Bus%20Services%20on%20Eve%20of%20Deepavali%20-%20Copy%201.pdf)
+  gives `25:06` from Sengkang and `25:09` from Punggol versus `24:32:10` and
+  `24:31:10` in the capture. The departures after midnight belong to the
+  7 November service date.
+- **Marine Terrace Saturdays.** [SMRT's station table](https://journey.smrt.com.sg/journey/station_info/marine-terrace/first-and-last-train/)
+  gives first trains at `05:56` to Woodlands North and `06:03` to Bayshore.
+  The capture and compact timetable give `06:16` and `06:23` on 7, 14, 21 and
+  28 November (`TEL_WB_WE_113_0479` and `TEL_CB_WE_115_0582`). These match
+  SMRT's Sunday/public holiday times. The weekday values in the capture agree
+  with the operator table to the displayed minute.
+- **BPLRT closures.** [LTA's dated notice](https://www.lta.gov.sg/content/ltagov/en/map/announcement.html/1000)
+  closed BPLRT on 20 and 27 September. The raw capture still lists 394 trips on
+  each date, outside the November window. [LTA's 3 November listing](https://www.lta.gov.sg/content/ltagov/en/map/announcement.html)
+  shows no planned rail adjustments at that update. SMRT also explicitly
+  excludes BPLRT and the Changi Airport service from the Deepavali Eve extension.
+
+The extensions are missing from this capture, and Marine Terrace's Saturday
+start times conflict with the operator table. Full mapping coverage counts the
+trips supplied by LTA within the supported dates. A release decision still
+needs dated source evidence for the missing service and conflicting times,
+or a serving policy that exposes those gaps. The notices do not provide a
+complete trip list to reconstruct.
