@@ -6,6 +6,7 @@ import {
   prepareCombinedTimetableArtifact,
   verifyCombinedTimetableArtifact,
 } from './combinedTimetableArtifact.js';
+import { projectCombinedTimetableServiceDay } from './combinedTimetableDepartures.js';
 import { createScheduledCombinedReview } from './scheduledCombinedReview.js';
 
 function fixture() {
@@ -136,6 +137,67 @@ describe('combined timetable artifact', () => {
     ).toThrow(/generationEligible/);
   });
 
+  it('projects effective dates, shared boarding access and repeated overnight calls from verified bytes', () => {
+    const { inputs, capture } = fixture();
+    const result = prepareCombinedTimetableArtifact(
+      inputs,
+      createScheduledCombinedReview(inputs),
+      capture,
+    );
+    const artifact = verifyCombinedTimetableArtifact(
+      result.artifactBytes,
+      result.artifactSha256,
+    );
+    const day = projectCombinedTimetableServiceDay(artifact, '2026-11-30');
+    expect(day).toMatchObject({
+      serviceDate: '2026-11-30',
+      activeTripCount: 4,
+      unassignedActiveTripCount: 0,
+    });
+    const departures = [...(day?.departures ?? [])];
+    expect(departures.filter((row) => row.providerTripId === 'SHARED')).toEqual(
+      [
+        expect.objectContaining({
+          departureInstant: '2026-11-30T17:00:00Z',
+          serviceDate: '2026-11-30',
+          boardingByService: [
+            {
+              serviceId: 'SHARED_A',
+              revisionId: 'R',
+              platformIds: ['platform-S'],
+            },
+            {
+              serviceId: 'SHARED_B',
+              revisionId: 'R',
+              platformIds: ['platform-S'],
+            },
+          ],
+        }),
+      ],
+    );
+    expect(
+      departures.filter((row) => row.providerTripId === 'SHARED_NO_PICKUP'),
+    ).toEqual([]);
+    expect(
+      departures
+        .filter(
+          (row) => row.providerTripId === 'UNUSUAL' && row.stationId === 'S',
+        )
+        .map((row) => row.occurrenceIndex),
+    ).toEqual([0, 2]);
+
+    const holiday = projectCombinedTimetableServiceDay(artifact, '2026-11-09');
+    expect(
+      [...(holiday?.departures ?? [])].map((row) => row.providerTripId),
+    ).toEqual(['NEL_TEST_SU']);
+    expect(
+      projectCombinedTimetableServiceDay(artifact, '2026-10-31'),
+    ).toBeNull();
+    expect(
+      projectCombinedTimetableServiceDay(artifact, '2026-12-01'),
+    ).toBeNull();
+  });
+
   it('keeps unresolved dates visible without packing those trips', () => {
     const {
       inputs: { sharedServiceMemberships: _, ...inputs },
@@ -155,6 +217,11 @@ describe('combined timetable artifact', () => {
     expect(
       artifact.trips.some((trip) => trip.providerTripId.startsWith('SHARED')),
     ).toBe(false);
+    const day = projectCombinedTimetableServiceDay(artifact, '2026-11-30');
+    expect(day).toMatchObject({
+      activeTripCount: 4,
+      unassignedActiveTripCount: 2,
+    });
     expect(() =>
       prepareCombinedTimetableArtifact(inputs, review, {
         ...capture,

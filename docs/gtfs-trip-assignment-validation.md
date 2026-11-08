@@ -315,3 +315,8 @@ These options require combined applicability mode. Valid unapproved or incomplet
 reports can produce inspection proposals, with gaps explicit and generation
 ineligible. Large generated files stay outside Git. Release and serving support
 remain separate work and must preserve the same overnight service-date bounds.
+
+`projectCombinedTimetableServiceDay(artifact, date)` reads a verified compact
+artifact and returns coverage counts and boardable occurrences for that service
+date. Shared trips yield one row per stop call with boarding platforms by service.
+Dates outside the applicability window return `null`.
