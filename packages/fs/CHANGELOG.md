@@ -1,5 +1,18 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.47
+
+### Minor Changes
+
+- 1fb1a40: Allow combined GTFS reviews to require service revisions active on the Singapore
+  capture date while preserving recurring trip calendars and dated coverage gaps.
+
+### Patch Changes
+
+- 719cd21: Verify reviewed boarding allocations in combined timetable releases. Allow
+  explicitly mapped services beyond canonical platform defaults while preserving
+  physical platform identity and boarding restrictions.
+
 ## 2.0.0-alpha.46
 
 ### Minor Changes
