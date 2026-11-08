@@ -5,6 +5,7 @@ import {
   auditSchedule,
   readSchedule,
 } from '../packages/fs/dist/gtfs/schedule.js';
+import { writeGtfsTimetableReleaseFiles } from '../packages/fs/dist/gtfs/timetableExport.js';
 import {
   applyScheduledPlatformAllocationServiceMemberships,
   applyScheduledSourceJourneyServiceMemberships,
@@ -27,6 +28,7 @@ import {
   evaluateScopedReconciliation,
   groupedScopedReviewDraftSha256,
   hashBytes,
+  inspectCombinedTimetableRelease,
   inspectGtfsTripAssignments,
   listEntities,
   prepareCombinedTimetableArtifact,
@@ -48,6 +50,7 @@ let combinedReviewFile;
 let combinedApprovalFile;
 let combinedAssignments = false;
 let combinedArtifact = false;
+let combinedReleaseFile;
 let platformGroups = false;
 let includeBlockers = false;
 let includeAssignments = false;
@@ -70,6 +73,12 @@ for (let index = 0; index < extra.length; index++) {
     combinedAssignments = true;
   } else if (extra[index] === '--combined-artifact' && !combinedArtifact) {
     combinedArtifact = true;
+  } else if (
+    extra[index] === '--combined-release' &&
+    !combinedReleaseFile &&
+    extra[index + 1]
+  ) {
+    combinedReleaseFile = extra[++index];
   } else if (
     extra[index] === '--combined-approval' &&
     !combinedApprovalFile &&
@@ -190,7 +199,7 @@ for (let index = 0; index < extra.length; index++) {
 }
 if (!file || !captureFile || !pilotLineList || !output) {
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--applicability-policy <json> [--combined-review <json>] [--combined-approval <json>] [--combined-assignments] [--combined-artifact]] [--shared-service-memberships <json>] [--platform-association-policy <json> [--platform-association-review <json>]] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>] | --source-journey-policy <json> [--source-journey-review <json>] [--source-journey-approval <json>]]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--applicability-policy <json> [--combined-review <json>] [--combined-approval <json>] [--combined-assignments] [--combined-artifact] | --combined-release <settings.json>] [--shared-service-memberships <json>] [--platform-association-policy <json> [--platform-association-review <json>]] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>] | --source-journey-policy <json> [--source-journey-review <json>] [--source-journey-approval <json>]]',
   );
 }
 if (
@@ -207,11 +216,17 @@ if (
   ((combinedReviewFile ||
     combinedApprovalFile ||
     combinedAssignments ||
-    combinedArtifact) &&
+    combinedArtifact ||
+    combinedReleaseFile) &&
     !applicabilityPolicyFile)
 ) {
   throw new Error(
     'Combined review requires explicit applicability, association, journey, allocation and holiday policies and its own saved review',
+  );
+}
+if (combinedReleaseFile && (combinedAssignments || combinedArtifact)) {
+  throw new Error(
+    'Combined release cannot be combined with inspection artifact or assignment output',
   );
 }
 if (
@@ -371,6 +386,36 @@ if (platformAllocationPolicyFile) {
     const approval = combinedApprovalFile
       ? await readJson(combinedApprovalFile)
       : undefined;
+    if (combinedReleaseFile) {
+      const settings = await readJson(combinedReleaseFile);
+      const { bundle, ...candidate } = inspectCombinedTimetableRelease(
+        inputs,
+        review,
+        capture,
+        {
+          ...settings,
+          mappingApproval: approval,
+        },
+      );
+      const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
+      const directory = await writeGtfsTimetableReleaseFiles(
+        output,
+        join(cwd, 'data'),
+        {
+          'summary.json': json(candidate),
+          ...(bundle
+            ? {
+                'manifest.json': bundle.files.manifestBytes,
+                'timetable.json': bundle.files.timetableBytes,
+                'release.json': bundle.files.releaseBytes,
+                'release-index.json': json(bundle.index),
+              }
+            : {}),
+        },
+      );
+      console.log(json({ output: directory, ...candidate }));
+      process.exit(candidate.release.eligible ? 0 : 1);
+    }
     const artifact = combinedArtifact
       ? prepareCombinedTimetableArtifact(inputs, review, capture, approval)
       : undefined;

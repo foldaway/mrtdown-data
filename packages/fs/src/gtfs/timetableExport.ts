@@ -65,12 +65,35 @@ export async function exportGtfsTimetableRelease(
     input.releaseReview,
   );
   const currentTerms = GtfsTimetableTermsSchema.parse(input.currentTerms);
+  const files = {
+    'manifest.json': artifact.manifestBytes,
+    'timetable.json': artifact.timetableBytes,
+    'NOTICE.txt': artifact.noticeBytes,
+    'mapping-draft.json': json(draft),
+    'mapping-approval.json': json(mappingApproval),
+    'release-review.json': json(releaseReview),
+    'release.json': json({ ...report, currentTerms }),
+  };
+  const directory = await writeGtfsTimetableReleaseFiles(
+    outputDirectory,
+    input.dataDir,
+    files,
+  );
+  return { exported: true as const, outputDirectory: directory, ...report };
+}
+
+/** Materialize a release in a new directory outside canonical data. */
+export async function writeGtfsTimetableReleaseFiles(
+  outputDirectory: string,
+  dataDir: string,
+  files: Record<string, string | Uint8Array>,
+) {
   const requested = resolve(outputDirectory);
   const directory = join(
     await realpath(dirname(requested)),
     basename(requested),
   );
-  const fromData = relative(await realpath(input.dataDir), directory);
+  const fromData = relative(await realpath(dataDir), directory);
   if (
     fromData === '' ||
     (!isAbsolute(fromData) &&
@@ -81,16 +104,6 @@ export async function exportGtfsTimetableRelease(
       'Timetable export must be outside the canonical data directory',
     );
   }
-  const files = {
-    'manifest.json': artifact.manifestBytes,
-    'timetable.json': artifact.timetableBytes,
-    'NOTICE.txt': artifact.noticeBytes,
-    'mapping-draft.json': json(draft),
-    'mapping-approval.json': json(mappingApproval),
-    'release-review.json': json(releaseReview),
-    'release.json': json({ ...report, currentTerms }),
-  };
-
   await mkdir(directory);
   try {
     for (const [name, bytes] of Object.entries(files)) {
@@ -107,5 +120,5 @@ export async function exportGtfsTimetableRelease(
     }
     throw error;
   }
-  return { exported: true as const, outputDirectory: directory, ...report };
+  return directory;
 }

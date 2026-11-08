@@ -1,6 +1,6 @@
 import { ScheduledAssignedTimetableSchema } from '@mrtdown/core';
 import { describe, expect, it } from 'vitest';
-import { combinedReviewFixture } from './__tests__/combinedReviewFixture.js';
+import { combinedArtifactFixture as fixture } from './__tests__/combinedArtifactFixture.js';
 import { hashBytes } from './capture.js';
 import {
   prepareCombinedTimetableArtifact,
@@ -8,31 +8,6 @@ import {
 } from './combinedTimetableArtifact.js';
 import { projectCombinedTimetableServiceDay } from './combinedTimetableDepartures.js';
 import { createScheduledCombinedReview } from './scheduledCombinedReview.js';
-
-function fixture() {
-  const { inputs, sharedServiceMemberships } = combinedReviewFixture(
-    true,
-    true,
-  );
-  return {
-    inputs: { ...inputs, sharedServiceMemberships },
-    capture: {
-      schema_version: 1,
-      capture_id: 'synthetic',
-      feed_kind: 'schedule',
-      source:
-        'https://datamall2.mytransport.sg/ltaodataservice/GTFSScheduleTrain',
-      retrieved_at: '2026-11-02T20:00:00Z',
-      provider_timestamp: null,
-      sha256: inputs.captureSha256,
-      byte_length: 1,
-      archive_ref: 'synthetic/schedule.zip',
-      attribution: 'Synthetic fixture',
-      rights_status: 'pending_review',
-      licence_reference: 'https://example.org/licence',
-    },
-  };
-}
 
 describe('combined timetable artifact', () => {
   it('replays byte for byte and round-trips every proposed trip, date and call', () => {
