@@ -4,6 +4,7 @@ export * from './canonicalTimetableArtifact.js';
 export * from './capture.js';
 export * from './combinedTimetableArtifact.js';
 export * from './combinedTimetableDepartures.js';
+export * from './combinedTimetableRelease.js';
 export * from './departures.js';
 export * from './directory.js';
 export * from './drift.js';
@@ -97,8 +98,16 @@ export {
 export { SharedServiceTargetSchema } from './sharedServiceTarget.js';
 export * from './timetable.js';
 export * from './timetableArtifact.js';
-export * from './timetableExport.js';
-export * from './timetableRelease.js';
+export { exportGtfsTimetableRelease } from './timetableExport.js';
+export {
+  type GtfsTimetableReleaseOptions,
+  type GtfsTimetableReleaseReview,
+  GtfsTimetableReleaseReviewSchema,
+  type GtfsTimetableTerms,
+  GtfsTimetableTermsSchema,
+  gtfsTimetableMappingApprovalSha256,
+  inspectGtfsTimetableRelease,
+} from './timetableRelease.js';
 export {
   type ScheduledTimetableRollbackAssessment,
   type ScheduledTimetableRollbackOptions,

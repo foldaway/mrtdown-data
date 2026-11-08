@@ -206,6 +206,17 @@ implicitly. Its output-directory rules are the same as the offline exporter.
 Existing GTFS inspection and timetable commands remain offline. This command
 provides local release tooling; it does not publish to Pages or the consuming site.
 
+## Combined timetable releases
+
+In the [combined runner](gtfs-trip-assignment-validation.md#runner), use
+`--combined-release <settings.json>` with `correctionRevision`,
+`currentLicenceReference`, `releaseInstant` and optional `currentTerms` and
+`releaseReview` records. Supply mapping approval through `--combined-approval`.
+The summary contains the candidate manifest hash and any blockers. An eligible
+run also writes the compact timetable, manifest, release evidence and release index.
+`verifyCombinedTimetableReleaseBundle` checks those files against an independently
+trusted index and the installed canonical topology. Pages and site wiring are separate.
+
 ## Packaging a release for Pages
 
 The Pages builder can include a reviewed timetable alongside the canonical
