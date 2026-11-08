@@ -183,6 +183,121 @@ describe('combined review on explicit service-date applicability', () => {
     }
   });
 
+  it('keeps weekend trips across month boundaries until the captured revision ends', () => {
+    const { inputs } = fixture();
+    const service = inputs.context.topology.services.find(
+      ({ id }) => id === 'SVC',
+    );
+    const revision = service?.revisions[0];
+    if (!revision || !service) throw new Error('Missing fixture service');
+    revision.endAt = '2026-12-07';
+    service.revisions.push({
+      ...revision,
+      id: 'R-next',
+      startAt: '2026-12-07',
+      endAt: null,
+    });
+    inputs.context.identity.topology.sha256 = hashBytes(
+      Buffer.from(JSON.stringify(inputs.context.topology)),
+    );
+    const serviceDateRange = {
+      startDate: '2026-11-01',
+      endDateExclusive: '2026-12-14',
+    };
+    const scoped = {
+      ...inputs,
+      captureRetrievedAt: '2026-11-02T20:00:00Z',
+      associationPolicy: { ...inputs.associationPolicy, serviceDateRange },
+      applicabilityPolicy: {
+        ...inputs.applicabilityPolicy,
+        captureServiceDate: '2026-11-03',
+        serviceDateRange,
+      },
+    };
+    const review = createScheduledCombinedReview(scoped);
+    const saturday = review.associationReview.patterns.find(
+      ({ providerCalendarId }) => providerCalendarId === 'SA',
+    );
+    expect(saturday?.reviewCells).toEqual([
+      expect.objectContaining({
+        disposition: 'proposed',
+        target: expect.objectContaining({ id: 'SVC', revisionId: 'R' }),
+        serviceDates: [
+          '2026-11-07',
+          '2026-11-14',
+          '2026-11-21',
+          '2026-11-28',
+          '2026-12-05',
+        ],
+      }),
+      {
+        disposition: 'unresolved',
+        blockers: ['service-revision-inactive-at-capture'],
+        serviceDates: ['2026-12-12'],
+      },
+    ]);
+    expect(saturday?.supportedServiceDates).toHaveLength(6);
+    expect(() =>
+      createScheduledCombinedReview({
+        ...scoped,
+        captureRetrievedAt: undefined,
+      }),
+    ).toThrow(/verified receipt in Singapore time/);
+    expect(() =>
+      createScheduledCombinedReview({
+        ...scoped,
+        captureRetrievedAt: '2026-11-02T15:59:59Z',
+      }),
+    ).toThrow(/verified receipt in Singapore time/);
+  });
+
+  it('keeps an entire shared assignment unresolved when any member starts after capture', () => {
+    const { inputs, sharedServiceMemberships, sharedId } = fixture(true);
+    const revision = inputs.context.topology.services.find(
+      ({ id }) => id === 'SHARED_B',
+    )?.revisions[0];
+    if (!revision) throw new Error('Missing fixture shared service');
+    revision.startAt = '2026-11-01';
+    inputs.context.identity.topology.sha256 = hashBytes(
+      Buffer.from(JSON.stringify(inputs.context.topology)),
+    );
+    const source = createScheduledSourceJourneyMappingDraft(
+      inputs.context,
+      inputs.sourceJourneyPolicy,
+      inputs.allocationPolicy,
+      inputs.holidayPolicy,
+      inputs.holidayCalendar,
+    );
+    sharedServiceMemberships.baseDraftSha256 = groupedScopedReviewDraftSha256(
+      source.mapping.mapping,
+    );
+    const review = createScheduledCombinedReview({
+      ...inputs,
+      sharedServiceMemberships,
+      captureRetrievedAt: '2026-10-31T15:59:59Z',
+      applicabilityPolicy: {
+        ...inputs.applicabilityPolicy,
+        captureServiceDate: '2026-10-31',
+      },
+    });
+    expect(
+      review.associationReview.patterns.find(
+        ({ providerPatternId }) => providerPatternId === sharedId,
+      )?.reviewCells,
+    ).toEqual([
+      expect.objectContaining({
+        disposition: 'unresolved',
+        blockers: ['service-revision-inactive-at-capture'],
+      }),
+    ]);
+    expect(review.accounting).toMatchObject({
+      supportedTripDateCount: 70,
+      proposedTripDateCount: 50,
+      unresolvedTripDateCount: 20,
+      excludedTripDateCount: 0,
+    });
+  });
+
   it('rejects incompatible capture or date scope, stale memberships and unsupported claim dates', () => {
     const { inputs, sharedServiceMemberships } = fixture();
     expect(() =>

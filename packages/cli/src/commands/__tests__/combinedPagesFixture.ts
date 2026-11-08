@@ -163,7 +163,11 @@ export async function combinedPagesFixture(
   );
   const binding = { sourceManifest, captureSha256: capture.sha256 };
   const policies = {
-    applicabilityPolicy: { ...inputs.applicabilityPolicy, ...binding },
+    applicabilityPolicy: {
+      ...inputs.applicabilityPolicy,
+      ...binding,
+      captureServiceDate: '2026-11-03',
+    },
     associationPolicy: { ...inputs.associationPolicy, ...binding },
     sourceJourneyPolicy,
     allocationPolicy,
@@ -179,6 +183,7 @@ export async function combinedPagesFixture(
     ...policies,
     context,
     captureSha256: capture.sha256,
+    captureRetrievedAt: capture.retrieved_at,
     holidayCalendar: inputs.holidayCalendar,
   };
   const draft = createScheduledCombinedReview(boundInputs);

@@ -125,9 +125,27 @@ export function buildScheduledPlatformAssociationReview(
   composition?: {
     sourceJourneyPolicy: unknown;
     sharedServiceMemberships?: unknown;
+    captureServiceDate?: string;
   },
 ) {
   const { context } = inputs;
+  const captureDate = composition?.captureServiceDate;
+  const captureRevisions = captureDate
+    ? new Map(
+        context.topology.services.map((service) => [
+          service.id,
+          new Set(
+            service.revisions
+              .filter(
+                (revision) =>
+                  revision.startAt <= captureDate &&
+                  (revision.endAt === null || captureDate < revision.endAt),
+              )
+              .map((revision) => revision.id),
+          ),
+        ]),
+      )
+    : undefined;
   const policy = ScheduledPlatformAssociationPolicySchema.parse(inputs.policy);
   if (
     policy.captureSha256 !== inputs.captureSha256 ||
@@ -374,6 +392,16 @@ export function buildScheduledPlatformAssociationReview(
           blockers.push(
             scope.candidates.length ? 'temporal-ambiguity' : 'temporal-gap',
           );
+        if (
+          captureRevisions &&
+          targets.some(
+            (member) =>
+              member.revisionId === undefined ||
+              !captureRevisions.get(member.id)?.has(member.revisionId),
+          )
+        ) {
+          blockers.push('service-revision-inactive-at-capture');
+        }
         if (!dependenciesResolved)
           blockers.push('unresolved-identity-or-platform');
         if (

@@ -175,6 +175,12 @@ November 1 serving still needs another applicable source or an explicit gap.
 See [combined assignments and approval](gtfs-trip-assignment-validation.md#assignments-from-combined-mappings)
 for the next stage. Artifact, import and serving support remain separate.
 
+For capture-scoped review, set `captureServiceDate` to the receipt's retrieval
+date in Singapore. The selected revision of every service in an assignment must
+be active on both the capture date and the trip's service date. Trips using a
+later revision remain explicit gaps. The policy's serving bounds, source
+calendars and dated operational exceptions are evaluated separately.
+
 ### Reproduce the combined November review
 
 Use Node 24 with `TZ=UTC` after `npm run build:fs`. Use the pinned original

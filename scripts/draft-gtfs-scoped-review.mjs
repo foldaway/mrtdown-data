@@ -366,6 +366,7 @@ if (platformAllocationPolicyFile) {
     const inputs = {
       context,
       captureSha256: capture.sha256,
+      captureRetrievedAt: capture.retrieved_at,
       applicabilityPolicy: await readJson(applicabilityPolicyFile),
       associationPolicy: await readJson(platformAssociationPolicyFile),
       sourceJourneyPolicy: await readJson(sourceJourneyPolicyFile),

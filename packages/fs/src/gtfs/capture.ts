@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { GtfsCaptureSchema as CaptureSchema } from '@mrtdown/core';
+import { DateTime } from 'luxon';
 
 export {
   type GtfsCapture,
@@ -15,6 +16,15 @@ const endpoints = {
 
 export function hashBytes(bytes: Uint8Array): string {
   return createHash('sha256').update(bytes).digest('hex');
+}
+
+export function singaporeCaptureDate(retrievedAt: string) {
+  const date = DateTime.fromISO(
+    CaptureSchema.shape.retrieved_at.parse(retrievedAt),
+    { zone: 'Asia/Singapore' },
+  ).toISODate();
+  if (!date) throw new Error('Invalid Singapore capture date');
+  return date;
 }
 
 export async function readVerifiedCapture(file: string, handoff: string) {
