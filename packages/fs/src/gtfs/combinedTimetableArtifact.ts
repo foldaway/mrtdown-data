@@ -3,7 +3,7 @@ import {
   ScheduledTripTimesSchema,
 } from '@mrtdown/core';
 import z from 'zod';
-import { hashBytes } from './capture.js';
+import { hashBytes, singaporeCaptureDate } from './capture.js';
 import {
   createScheduledCombinedTripAssignmentProposals,
   ScheduledCombinedTripAssignmentDocumentSchema,
@@ -61,6 +61,19 @@ export const CombinedTimetableArtifactSchema =
       generationEligible: z.literal(false),
     })
     .superRefine((artifact, context) => {
+      const { captureServiceDate } = artifact.applicabilityPolicy;
+      if (
+        captureServiceDate !== undefined &&
+        captureServiceDate !==
+          singaporeCaptureDate(artifact.capture.retrieved_at)
+      ) {
+        context.addIssue({
+          code: 'custom',
+          path: ['applicabilityPolicy', 'captureServiceDate'],
+          message:
+            'Capture service date must match the receipt in Singapore time',
+        });
+      }
       const tripIds = new Set(
         artifact.trips.map((trip) => trip.providerTripId),
       );
@@ -104,7 +117,7 @@ export function prepareCombinedTimetableArtifact(
     );
   }
   const proposals = createScheduledCombinedTripAssignmentProposals(
-    inputs,
+    { ...inputs, captureRetrievedAt: capture.retrieved_at },
     review,
     approval,
   );

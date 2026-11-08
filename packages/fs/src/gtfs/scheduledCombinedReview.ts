@@ -1,4 +1,5 @@
 import z from 'zod';
+import { singaporeCaptureDate } from './capture.js';
 import { ReconciliationIdentitySchema } from './reconciliation.js';
 import {
   buildScheduledPlatformAssociationReview,
@@ -18,6 +19,7 @@ export const ScheduledServiceDateApplicabilityPolicySchema = z
     sourceManifest: ReconciliationIdentitySchema.shape.sourceManifest,
     dateBasis: z.literal('service-date'),
     timezone: z.literal('Asia/Singapore'),
+    captureServiceDate: z.iso.date().optional(),
     serviceDateRange:
       ScheduledPlatformAssociationPolicySchema.shape.serviceDateRange,
     basis: z.string().min(1),
@@ -27,6 +29,8 @@ export const ScheduledServiceDateApplicabilityPolicySchema = z
 export interface ScheduledCombinedReviewInputs
   extends Omit<ScheduledPlatformAssociationInputs, 'policy'> {
   applicabilityPolicy: unknown;
+  /** Retrieval timestamp from the verified receipt for capture-scoped revisions. */
+  captureRetrievedAt?: string;
   associationPolicy: unknown;
   sourceJourneyPolicy: unknown;
   sharedServiceMemberships?: unknown;
@@ -39,6 +43,16 @@ export function createScheduledCombinedReview(
   const applicability = ScheduledServiceDateApplicabilityPolicySchema.parse(
     inputs.applicabilityPolicy,
   );
+  const { captureServiceDate } = applicability;
+  if (
+    captureServiceDate !== undefined &&
+    (inputs.captureRetrievedAt === undefined ||
+      singaporeCaptureDate(inputs.captureRetrievedAt) !== captureServiceDate)
+  ) {
+    throw new Error(
+      'Combined review capture service date must match the verified receipt in Singapore time',
+    );
+  }
   const association = ScheduledPlatformAssociationPolicySchema.parse(
     inputs.associationPolicy,
   );
@@ -83,6 +97,7 @@ export function createScheduledCombinedReview(
       {
         sourceJourneyPolicy: journeys,
         sharedServiceMemberships: memberships ?? undefined,
+        captureServiceDate,
       },
     );
   if (!sourceJourneyReview || !review.accounting.supportedTripDateCount) {

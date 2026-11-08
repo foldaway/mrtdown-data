@@ -81,8 +81,16 @@ describe('combined timetable artifact', () => {
     ).toThrow(/expected SHA-256/);
   });
 
-  it('rejects missing records and invalid eligibility even with a matching digest', () => {
-    const { inputs, capture } = fixture();
+  it('rejects missing records, a mismatched capture date and invalid eligibility even with a matching digest', () => {
+    const { inputs: base, capture } = fixture();
+    const inputs = {
+      ...base,
+      captureRetrievedAt: capture.retrieved_at,
+      applicabilityPolicy: {
+        ...base.applicabilityPolicy,
+        captureServiceDate: '2026-11-03',
+      },
+    };
     const result = prepareCombinedTimetableArtifact(
       inputs,
       createScheduledCombinedReview(inputs),
@@ -110,6 +118,15 @@ describe('combined timetable artifact', () => {
     expect(() =>
       verifyCombinedTimetableArtifact(bytes, hashBytes(bytes)),
     ).toThrow(/generationEligible/);
+    const editedReceipt = Buffer.from(
+      JSON.stringify({
+        ...artifact,
+        capture: { ...artifact.capture, retrieved_at: '2026-11-02T15:59:59Z' },
+      }),
+    );
+    expect(() =>
+      verifyCombinedTimetableArtifact(editedReceipt, hashBytes(editedReceipt)),
+    ).toThrow(/receipt in Singapore time/);
   });
 
   it('projects effective dates, shared boarding access and repeated overnight calls from verified bytes', () => {
