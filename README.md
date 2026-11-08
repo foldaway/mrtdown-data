@@ -71,7 +71,8 @@ rendered content when the source registry disallows public export. Generated
 test data appears under `fixtures/` in the same bundle.
 
 The build can also include a reviewed GTFS timetable with source attribution
-and release checks. See [timetable Pages packaging](docs/gtfs-timetable-release.md#packaging-a-release-for-pages).
+and release checks. See [combined timetable packaging](docs/gtfs-timetable-release.md#packaging-an-approved-combined-release-for-pages)
+and [legacy timetable packaging](docs/gtfs-timetable-release.md#packaging-a-release-for-pages).
 Default builds omit the timetable. Local consumers can query
 [retained scheduled departures](docs/gtfs-retained-departures.md) across service
 days, with source provenance and explicit missing coverage.

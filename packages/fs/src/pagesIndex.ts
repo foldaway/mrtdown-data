@@ -5,10 +5,17 @@ import {
 } from '@mrtdown/core';
 import type { Element, Root } from 'hast';
 import { toHtml } from 'hast-util-to-html';
+import type { verifyCombinedTimetableReleaseBundle } from './gtfs/combinedTimetableRelease.js';
+
+type CombinedTimetableNotice = Pick<
+  ReturnType<typeof verifyCombinedTimetableReleaseBundle>['manifest'],
+  'capture' | 'currentLicenceReference' | 'serviceDateRange'
+>;
 
 export type PagesIndexOptions = {
   includeArchiveLinks?: boolean;
   includeFixtureExportLinks?: boolean;
+  combinedTimetable?: CombinedTimetableNotice;
 };
 
 export type PagesRootIndexOptions = {
@@ -398,7 +405,8 @@ function buildExportRows(options: PagesIndexOptions): FileLinkRow[] {
 }
 
 function buildTimetableAttribution(
-  entry: ScheduledTimetablePagesEntry,
+  entry: Pick<CombinedTimetableNotice, 'capture' | 'currentLicenceReference'>,
+  suffix = '',
 ): Element {
   return paragraph([
     {
@@ -410,8 +418,7 @@ function buildTimetableAttribution(
     linkElement(entry.currentLicenceReference, 'current LTA licence'),
     {
       type: 'text',
-      value:
-        '. MRTDown’s independent mappings and export metadata are under CC-BY-4.0. This is an independently mapped schedule snapshot, not an official service or live predictions.',
+      value: `. MRTDown’s independent mappings and export metadata are under CC-BY-4.0. This is an independently mapped schedule snapshot, not an official service or live predictions.${suffix}`,
     },
   ]);
 }
@@ -548,6 +555,13 @@ export function renderPagesIndex(
   const timetable = manifest.scheduledTimetable
     ? ScheduledTimetablePagesEntrySchema.parse(manifest.scheduledTimetable)
     : undefined;
+  const combined = options.combinedTimetable;
+  const attribution = combined
+    ? buildTimetableAttribution(
+        combined,
+        ` Retrieved ${combined.capture.retrieved_at}. Supported Singapore service dates run from ${combined.serviceDateRange.startDate} up to ${combined.serviceDateRange.endDateExclusive} (exclusive).`,
+      )
+    : timetable && buildTimetableAttribution(timetable);
   const sections = [
     {
       id: 'lines',
@@ -625,6 +639,9 @@ export function renderPagesIndex(
           ...(timetable
             ? [{ href: '#scheduled-timetable', label: 'Scheduled timetable' }]
             : []),
+          ...(combined
+            ? [{ href: '#combined-timetable', label: 'Combined timetable' }]
+            : []),
           ...sections.map((section) => ({
             href: `#${section.id}`,
             label: section.title,
@@ -635,9 +652,32 @@ export function renderPagesIndex(
           'Exports',
           'exports',
           buildExportRows(options),
-          timetable ? buildTimetableAttribution(timetable) : undefined,
+          attribution,
         ),
         ...(timetable ? buildScheduledTimetable(timetable) : []),
+        ...(combined
+          ? buildFilesTable(
+              'LTA-derived combined timetable',
+              'combined-timetable',
+              [
+                {
+                  href: 'combined-timetable/manifest.json',
+                  description:
+                    'Source provenance, attribution and supported service dates.',
+                },
+                {
+                  href: 'combined-timetable/timetable.json',
+                  description:
+                    'Compact timetable covering the approved service dates.',
+                },
+                {
+                  href: 'combined-timetable/release.json',
+                  description:
+                    'Mapping approval, release review and checked terms.',
+                },
+              ],
+            )
+          : []),
         ...tables,
         buildFooter(generatedAt, manifest.generatedAt),
       ],

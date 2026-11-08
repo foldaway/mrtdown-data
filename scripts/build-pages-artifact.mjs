@@ -17,11 +17,13 @@ const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const execFileAsync = promisify(execFile);
 const generatedArchivePattern = /[\\/]archive\.(?:tar\.gz|zip)$/;
 const generatedIndexPattern = /[\\/](?:manifest\.json|index\.html)$/;
+const combinedReleaseIndexName = 'combined-timetable-release-index.json';
 
 function usage() {
   return `Usage:
   node scripts/build-pages-artifact.mjs [--data-dir <path>] [--out-dir <path>]
     [--gtfs-file <ZIP> --gtfs-capture <JSON> --gtfs-config <JSON>]
+    [--gtfs-file <ZIP> --gtfs-capture <JSON> --gtfs-combined-config <JSON>]
 
 Defaults:
   --data-dir data
@@ -49,6 +51,7 @@ function parseArgs(argv) {
       '--gtfs-file': 'gtfsFile',
       '--gtfs-capture': 'gtfsCapture',
       '--gtfs-config': 'gtfsConfig',
+      '--gtfs-combined-config': 'gtfsCombinedConfig',
     }[arg];
     if (!key) {
       throw new Error(`Unknown option: ${arg}`);
@@ -122,7 +125,12 @@ function assertArtifactPaths(options) {
 function isExcludedDataSourcePath(sourceDataDir, source) {
   const relativeSource = relative(sourceDataDir, source);
   const [firstSegment] = relativeSource.split(/[\\/]/);
-  return firstSegment === 'source' || firstSegment === 'scheduled-timetable';
+  return [
+    'source',
+    'scheduled-timetable',
+    'combined-timetable',
+    combinedReleaseIndexName,
+  ].includes(firstSegment);
 }
 
 async function exportTimetable(exportDir, fsPackage, options) {
@@ -222,6 +230,7 @@ async function buildDataExport(
   await mkdir(exportDir, { recursive: true });
   await cp(sourceDataDir, exportDir, {
     recursive: true,
+    dereference: Boolean(options.exportCombinedTimetable),
     filter: (source) =>
       !generatedIndexPattern.test(source) &&
       !isExcludedDataSourcePath(sourceDataDir, source) &&
@@ -247,6 +256,7 @@ async function buildDataExport(
       options,
     );
   }
+  const combined = await options.exportCombinedTimetable?.(exportDir);
   await writeFile(
     resolve(exportDir, 'manifest.json'),
     `${JSON.stringify(manifest, null, 2)}\n`,
@@ -256,21 +266,32 @@ async function buildDataExport(
     fsPackage.renderPagesIndex(manifest, {
       includeArchiveLinks: true,
       includeFixtureExportLinks: options.includeFixtureExportLinks ?? false,
+      combinedTimetable: combined?.manifest,
     }),
   );
   await createArchives(exportDir);
+  // The pull workflow takes this index from the publisher, outside either archive.
+  if (combined) {
+    await writeFile(
+      resolve(exportDir, combinedReleaseIndexName),
+      `${JSON.stringify(combined.index, null, 2)}\n`,
+    );
+  }
 }
 
 export async function buildPagesArtifact(options) {
   assertArtifactPaths(options);
+  if (options.gtfsConfig && options.gtfsCombinedConfig) {
+    throw new Error('Choose one of --gtfs-config or --gtfs-combined-config');
+  }
   const gtfsInputs = [
     options.gtfsFile,
     options.gtfsCapture,
-    options.gtfsConfig,
+    options.gtfsConfig ?? options.gtfsCombinedConfig,
   ];
   if (gtfsInputs.some(Boolean) && !gtfsInputs.every(Boolean)) {
     throw new Error(
-      'Use --gtfs-file, --gtfs-capture and --gtfs-config together',
+      'Use --gtfs-file, --gtfs-capture and one GTFS configuration flag together',
     );
   }
   if (options.gtfsConfig) {
@@ -278,6 +299,11 @@ export async function buildPagesArtifact(options) {
   }
   const fsPackage = await loadFsPackage();
   await mkdir(dirname(options.outDir), { recursive: true });
+  const exportCombinedTimetable = options.gtfsCombinedConfig
+    ? await (
+        await import('./export-pages-combined-timetable.mjs')
+      ).prepareCombinedTimetableExport(options)
+    : undefined;
   const stage = await mkdtemp(
     resolve(dirname(options.outDir), '.pages-build-'),
   );
@@ -288,6 +314,7 @@ export async function buildPagesArtifact(options) {
     await buildDataExport(options.dataDir, exportDir, fsPackage, {
       ...options,
       includeFixtureExportLinks: true,
+      exportCombinedTimetable,
     });
     await buildDataExport(
       options.fixtureDataDir,
