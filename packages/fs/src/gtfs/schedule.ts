@@ -1,3 +1,4 @@
+import { ScheduledTimetableArtifactMetadataSchema } from '@mrtdown/core';
 import { parse } from 'csv-parse/sync';
 import { unzipSync } from 'fflate';
 import { hashBytes } from './capture.js';
@@ -96,6 +97,29 @@ export function readScheduleFiles(files: Record<string, Uint8Array>) {
     throw new Error('Schedule requires calendar.txt or calendar_dates.txt');
   }
   return { tables, manifest };
+}
+
+/** Provider-declared bounds used for source ordering, separate from supported service dates. */
+export function readScheduleFeedRange(sourceFeedInfo: CsvRow[]) {
+  if (sourceFeedInfo.length !== 1) {
+    throw new Error(
+      'Artifact preparation requires exactly one feed_info.txt record',
+    );
+  }
+  /** Convert a provider YYYYMMDD field to an ISO date for range validation. */
+  function providerDate(field: string) {
+    const value = sourceFeedInfo[0][field];
+    if (!value || !/^\d{8}$/.test(value)) {
+      throw new Error(
+        `Artifact preparation requires a dated feed_info.txt ${field}`,
+      );
+    }
+    return `${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6)}`;
+  }
+  return ScheduledTimetableArtifactMetadataSchema.shape.feedRange.parse({
+    startDate: providerDate('feed_start_date'),
+    endDate: providerDate('feed_end_date'),
+  });
 }
 
 export function gtfsTimeSeconds(value: string): number | null {

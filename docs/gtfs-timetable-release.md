@@ -215,7 +215,63 @@ In the [combined runner](gtfs-trip-assignment-validation.md#runner), use
 The summary contains the candidate manifest hash and any blockers. An eligible
 run also writes the compact timetable, manifest, release evidence and release index.
 `verifyCombinedTimetableReleaseBundle` checks those files against an independently
-trusted index and the installed canonical topology. Pages and site wiring are separate.
+trusted index and the installed canonical topology.
+
+### Packaging an approved combined release for Pages
+
+```sh
+npm run pages:build -- \
+  --data-dir /path/to/canonical/data --out-dir /path/to/pages-output \
+  --gtfs-file /path/to/schedule.zip --gtfs-capture /path/to/capture.json \
+  --gtfs-combined-config /path/to/review/combined-pages.json
+```
+
+Use the commit recorded in the combined review for the supplied canonical data
+and the correction revision used to prepare the reviewed release manifest.
+The configuration references the saved combined runner inputs and approvals.
+Paths in the configuration resolve relative to that file. Keep all inputs
+outside the output directory. Omit `sharedServiceMemberships` when the review
+has no explicit shared service claims.
+
+```json
+{
+  "schemaVersion": 1,
+  "canonicalCommit": "<40-character canonical Git commit>",
+  "correctionRevision": 1,
+  "holidayCalendarId": "SG-2026",
+  "applicabilityPolicy": "applicability-policy.json",
+  "associationPolicy": "platform-association-policy.json",
+  "sourceJourneyPolicy": "source-journey-policy.json",
+  "allocationPolicy": "platform-allocation-policy.json",
+  "holidayPolicy": "holiday-policy.json",
+  "sharedServiceMemberships": "shared-service-memberships.json",
+  "draft": "combined-review.json",
+  "mappingApproval": "combined-approval.json",
+  "releaseReview": "release-review.json"
+}
+```
+
+The builder rebuilds and verifies the approved release using the staged topology
+and holiday calendar that go into the archive. Combined builds reject symbolic
+links in the staged data before any reader or archiver can follow them. The
+builder requires one `feed_info.txt` record with valid declared bounds for site
+source-order checks. It reacquires
+the official LTA licence and API terms for this attempt and uses the build
+clock to check the review and any embargo. Boarding marked eligible in the
+release must also be allowed by the staged canonical topology, as required
+by the site's departure index. A blocked release preserves the previous output.
+
+Both archives contain `data/combined-timetable/{manifest,timetable,release}.json`.
+The download page and release manifest carry LTA attribution and the approved
+Singapore service-date interval with an exclusive end. The Pages root also
+contains `combined-timetable-release-index.json`, outside both archives and
+separate from the canonical `manifest.json`. Supply its two digests as
+`combinedReleaseIndex` in the site's signed pull payload. Obtain the
+index through the trusted publisher handoff independently of the archive. The
+site applies its own source-order and canonical compatibility checks at import.
+
+Combined and legacy timetable packaging are mutually exclusive. Default builds
+and the fixture export omit combined timetable output.
 
 ## Packaging a release for Pages
 

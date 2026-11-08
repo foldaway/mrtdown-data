@@ -41,7 +41,7 @@
     "changeset": "changeset",
     "release:version": "changeset version && npm install --package-lock-only --ignore-scripts",
     "release:publish": "npm run build:packages && changeset publish",
-    "pretest": "npm run fixtures:generate",
+    "pretest": "npm run build:cli && npm run fixtures:generate",
     "test": "vitest --run",
     "ingest:webhook": "npm run build:triage && node packages/triage/dist/scripts/ingestViaWebhook.js"
   },

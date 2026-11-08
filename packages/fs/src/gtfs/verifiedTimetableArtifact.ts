@@ -7,7 +7,7 @@ import { compactAssignedTimetable } from './assignedTimetable.js';
 import { scheduledTripAssignmentCoverage } from './assignmentCoverage.js';
 import { createScheduledTripAssignmentProposals } from './assignmentProposals.js';
 import { hashBytes, readVerifiedCapture } from './capture.js';
-import { readSchedule } from './schedule.js';
+import { readSchedule, readScheduleFeedRange } from './schedule.js';
 import { prepareScheduledTimetableArtifact } from './timetableArtifact.js';
 import { readScheduleTopology } from './topology.js';
 
@@ -22,15 +22,6 @@ export interface VerifiedGtfsTimetableArtifactOptions
   canonicalCommit: string;
   draft: unknown;
   mappingApproval?: unknown;
-}
-
-function providerDate(value: string | undefined, field: string) {
-  if (!value || !/^\d{8}$/.test(value)) {
-    throw new Error(
-      `Artifact preparation requires a dated feed_info.txt ${field}`,
-    );
-  }
-  return `${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6)}`;
 }
 
 /** The caller supplies the exact canonical data tree for the recorded commit. */
@@ -52,19 +43,7 @@ export async function prepareVerifiedGtfsTimetableArtifact(
   }
   const { tables, manifest } = readSchedule(bytes);
   const sourceFeedInfo = tables['feed_info.txt'] ?? [];
-  if (sourceFeedInfo.length !== 1) {
-    throw new Error(
-      'Artifact preparation requires exactly one feed_info.txt record',
-    );
-  }
-  const feedRange =
-    ScheduledTimetableArtifactMetadataSchema.shape.feedRange.parse({
-      startDate: providerDate(
-        sourceFeedInfo[0].feed_start_date,
-        'feed_start_date',
-      ),
-      endDate: providerDate(sourceFeedInfo[0].feed_end_date, 'feed_end_date'),
-    });
+  const feedRange = readScheduleFeedRange(sourceFeedInfo);
   const topology = await readScheduleTopology(dataDir);
   const identity = GtfsReconciliationIdentitySchema.parse({
     sourceManifest: manifest,
