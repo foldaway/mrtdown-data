@@ -90,11 +90,14 @@ describe('Pages combined timetable integration', () => {
     expect(fetcher).not.toHaveBeenCalled();
   });
 
-  it('rejects approved source allocations that the site cannot index for boarding', async () => {
+  it('keeps the previous export when the site cannot index a reviewed boarding allocation', async () => {
     const { options } = await fixture({ conflictingBoarding: true });
+    await mkdir(options.outDir);
+    await writeFile(join(options.outDir, 'keep.txt'), 'Previous output');
     await expect(buildPagesArtifact(options)).rejects.toThrow(
       'Combined timetable boarding access differs from canonical topology for SVC at D/platform-D',
     );
+    expect(await readdir(options.outDir)).toEqual(['keep.txt']);
   });
 
   it('packages the approved service dates and emits the release index outside both archives', async () => {

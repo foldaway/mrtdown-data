@@ -60,6 +60,35 @@ function fixture(complete = true) {
   return { inputs: context, draft, capture, options, candidate, releaseReview };
 }
 
+// Rebind synthetic metadata to exercise structural checks after hash verification.
+function verifyEditedArtifact(
+  verified: ReturnType<typeof verifyCombinedTimetableReleaseBundle>,
+  topology: Parameters<typeof verifyCombinedTimetableReleaseBundle>[2],
+) {
+  const timetableBytes = Buffer.from(JSON.stringify(verified.artifact));
+  const manifestBytes = Buffer.from(
+    JSON.stringify({
+      ...verified.manifest,
+      timetable: {
+        sha256: hashBytes(timetableBytes),
+        byteLength: timetableBytes.byteLength,
+      },
+    }),
+  );
+  const manifestSha256 = hashBytes(manifestBytes);
+  const releaseBytes = Buffer.from(
+    JSON.stringify({
+      ...verified.evidence,
+      releaseReview: { ...verified.evidence.releaseReview, manifestSha256 },
+    }),
+  );
+  return verifyCombinedTimetableReleaseBundle(
+    { manifestSha256, releaseSha256: hashBytes(releaseBytes) },
+    { manifestBytes, timetableBytes, releaseBytes },
+    topology,
+  );
+}
+
 describe('combined timetable release', () => {
   it('packages and verifies exact approved bytes for the installed canonical topology', () => {
     const { inputs, draft, capture, options, candidate, releaseReview } =
@@ -113,30 +142,52 @@ describe('combined timetable release', () => {
 
     // Even matching digests and synthetic reviews cannot make missing rows complete.
     verified.artifact.assignments.pop();
-    const timetableBytes = Buffer.from(JSON.stringify(verified.artifact));
-    const manifestBytes = Buffer.from(
-      JSON.stringify({
-        ...verified.manifest,
-        timetable: {
-          sha256: hashBytes(timetableBytes),
-          byteLength: timetableBytes.byteLength,
-        },
-      }),
+    expect(() => verifyEditedArtifact(verified, topology)).toThrow(
+      /complete supported coverage/,
     );
-    const manifestSha256 = hashBytes(manifestBytes);
-    const releaseBytes = Buffer.from(
-      JSON.stringify({
-        ...verified.evidence,
-        releaseReview: { ...verified.evidence.releaseReview, manifestSha256 },
-      }),
+  });
+
+  it('rejects boardable calls without a reviewed allocation or at a restricted platform', () => {
+    const { inputs, draft, capture, options, releaseReview } = fixture();
+    const { bundle } = inspectCombinedTimetableRelease(inputs, draft, capture, {
+      ...options,
+      releaseReview,
+    });
+    if (!bundle) throw new Error('Missing synthetic release bundle');
+    const topology = inputs.context.topology;
+    const verified = verifyCombinedTimetableReleaseBundle(
+      bundle.index,
+      bundle.files,
+      topology,
     );
-    expect(() =>
-      verifyCombinedTimetableReleaseBundle(
-        { manifestSha256, releaseSha256: hashBytes(releaseBytes) },
-        { manifestBytes, timetableBytes, releaseBytes },
-        topology,
-      ),
-    ).toThrow(/complete supported coverage/);
+    const unusual = verified.artifact.assignments.find(
+      ({ providerTripId }) => providerTripId === 'UNUSUAL',
+    );
+    if (!unusual) throw new Error('Missing unusual fixture trip');
+    const [origin, terminal] =
+      verified.artifact.patterns[unusual.patternId].calls;
+    const [access] = terminal.platforms[0].accessByService;
+    expect(access).toMatchObject({
+      serviceId: 'SVC',
+      serviceScope: 'listed',
+      passengerBoardingEligible: true,
+    });
+
+    access.serviceScope = 'unspecified';
+    expect(() => verifyEditedArtifact(verified, topology)).toThrow(
+      'Combined timetable boarding access differs from canonical topology for SVC at D/platform-D',
+    );
+
+    access.serviceScope = 'listed';
+    const restricted = origin.platforms.find(
+      ({ platformId }) => platformId === 'S_C',
+    );
+    if (!restricted) throw new Error('Missing restricted fixture platform');
+    restricted.boardingStatus = null;
+    restricted.accessByService[0].passengerBoardingEligible = true;
+    expect(() => verifyEditedArtifact(verified, topology)).toThrow(
+      'Combined timetable boarding access differs from canonical topology for SVC at S/S_C',
+    );
   });
 
   it('withholds a bundle when mapping, rights, terms or the release decision are stale or incomplete', () => {
