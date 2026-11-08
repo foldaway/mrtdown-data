@@ -2,6 +2,7 @@ export * from './assignmentCapture.js';
 export * from './assignmentProposals.js';
 export * from './canonicalTimetableArtifact.js';
 export * from './capture.js';
+export * from './combinedTimetableArtifact.js';
 export * from './departures.js';
 export * from './directory.js';
 export * from './drift.js';

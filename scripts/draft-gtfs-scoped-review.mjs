@@ -29,6 +29,7 @@ import {
   hashBytes,
   inspectGtfsTripAssignments,
   listEntities,
+  prepareCombinedTimetableArtifact,
   readEntity,
   readVerifiedCapture,
   scheduledHolidayMappingDraftSha256,
@@ -46,6 +47,7 @@ let applicabilityPolicyFile;
 let combinedReviewFile;
 let combinedApprovalFile;
 let combinedAssignments = false;
+let combinedArtifact = false;
 let platformGroups = false;
 let includeBlockers = false;
 let includeAssignments = false;
@@ -66,6 +68,8 @@ let sourceJourneyApprovalFile;
 for (let index = 0; index < extra.length; index++) {
   if (extra[index] === '--combined-assignments' && !combinedAssignments) {
     combinedAssignments = true;
+  } else if (extra[index] === '--combined-artifact' && !combinedArtifact) {
+    combinedArtifact = true;
   } else if (
     extra[index] === '--combined-approval' &&
     !combinedApprovalFile &&
@@ -186,7 +190,7 @@ for (let index = 0; index < extra.length; index++) {
 }
 if (!file || !captureFile || !pilotLineList || !output) {
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--applicability-policy <json> [--combined-review <json>] [--combined-approval <json>] [--combined-assignments]] [--shared-service-memberships <json>] [--platform-association-policy <json> [--platform-association-review <json>]] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>] | --source-journey-policy <json> [--source-journey-review <json>] [--source-journey-approval <json>]]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--applicability-policy <json> [--combined-review <json>] [--combined-approval <json>] [--combined-assignments] [--combined-artifact]] [--shared-service-memberships <json>] [--platform-association-policy <json> [--platform-association-review <json>]] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>] | --source-journey-policy <json> [--source-journey-review <json>] [--source-journey-approval <json>]]',
   );
 }
 if (
@@ -200,7 +204,10 @@ if (
       platformAllocationApprovalFile ||
       sourceJourneyReviewFile ||
       sourceJourneyApprovalFile)) ||
-  ((combinedReviewFile || combinedApprovalFile || combinedAssignments) &&
+  ((combinedReviewFile ||
+    combinedApprovalFile ||
+    combinedAssignments ||
+    combinedArtifact) &&
     !applicabilityPolicyFile)
 ) {
   throw new Error(
@@ -364,9 +371,18 @@ if (platformAllocationPolicyFile) {
     const approval = combinedApprovalFile
       ? await readJson(combinedApprovalFile)
       : undefined;
-    const proposals = combinedAssignments
-      ? createScheduledCombinedTripAssignmentProposals(inputs, review, approval)
+    const artifact = combinedArtifact
+      ? prepareCombinedTimetableArtifact(inputs, review, capture, approval)
       : undefined;
+    const proposals =
+      artifact?.proposals ??
+      (combinedAssignments
+        ? createScheduledCombinedTripAssignmentProposals(
+            inputs,
+            review,
+            approval,
+          )
+        : undefined);
     const evaluation = proposals
       ? proposals.review
       : evaluateScheduledCombinedMapping(inputs, review, approval);
@@ -388,6 +404,15 @@ if (platformAllocationPolicyFile) {
             assignmentCoverage: proposals.document.coverage,
           }
         : {}),
+      ...(artifact
+        ? {
+            artifact: {
+              file: 'combined-timetable.json',
+              sha256: artifact.artifactSha256,
+              byteLength: artifact.artifactBytes.byteLength,
+            },
+          }
+        : {}),
       generationEligible: false,
     };
     await mkdir(resolve(output));
@@ -395,11 +420,20 @@ if (platformAllocationPolicyFile) {
       'combined-review.json': review,
       'combined-evaluation.json': evaluation,
       'summary.json': summary,
-      ...(proposals ? { 'combined-assignments.json': proposals.document } : {}),
+      ...(combinedAssignments && proposals
+        ? { 'combined-assignments.json': proposals.document }
+        : {}),
     })) {
       await writeFile(
         join(output, name),
         `${JSON.stringify(content, null, name === 'combined-assignments.json' ? undefined : 2)}\n`,
+        { flag: 'wx' },
+      );
+    }
+    if (artifact) {
+      await writeFile(
+        join(output, 'combined-timetable.json'),
+        artifact.artifactBytes,
         { flag: 'wx' },
       );
     }

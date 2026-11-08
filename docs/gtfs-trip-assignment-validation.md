@@ -305,10 +305,13 @@ with canonical commit `6d634f8db415252f5bcbbe5b1dc807607816f2ac` (merged #465),
 regenerating the exact-base CCL claims for that commit. Add:
 
 - `--combined-assignments` to write compact `combined-assignments.json`.
+- `--combined-artifact` to write `combined-timetable.json` and record its byte
+  length and SHA-256 in the summary. It stores source timing once per trip and
+  shares identical mapping patterns and explicit effective date sets across trips.
 - `--combined-approval <json>` to evaluate actual reviewer metadata, if supplied.
 - `--combined-review <json>` to replay a saved report with the same inputs.
 
 These options require combined applicability mode. Valid unapproved or incomplete
 reports can produce inspection proposals, with gaps explicit and generation
-ineligible. Large generated files stay outside Git. Artifact and serving support
+ineligible. Large generated files stay outside Git. Release and serving support
 remain separate work and must preserve the same overnight service-date bounds.
