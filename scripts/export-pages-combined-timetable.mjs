@@ -42,6 +42,7 @@ const configSchema = ScheduledTimetableArtifactMetadataSchema.pick({
   })
   .strict();
 
+/** Include the directory itself and distinguish parent traversal from names beginning with dots. */
 function contains(directory, path) {
   const rel = relative(directory, path);
   return rel !== '..' && !rel.startsWith(`..${sep}`) && !isAbsolute(rel);
@@ -51,7 +52,7 @@ async function readJson(path) {
   return JSON.parse(await readFile(path, 'utf8'));
 }
 
-// The site index enforces canonical boarding access even for approved source allocations.
+/** Enforce the site index's canonical boarding rules for approved source allocations. */
 function assertIndexableBoarding(artifact, topology) {
   const stations = new Map(
     topology.stations.map((station) => [station.id, station]),
@@ -88,6 +89,7 @@ function assertIndexableBoarding(artifact, topology) {
   }
 }
 
+/** Read the review inputs and return an exporter that binds them to the staged data. */
 export async function prepareCombinedTimetableExport({
   gtfsFile,
   gtfsCapture,
@@ -98,6 +100,7 @@ export async function prepareCombinedTimetableExport({
     await realpath(dirname(outDir)),
     relative(dirname(outDir), outDir),
   );
+  /** Keep inputs outside the directory the successful build replaces. */
   async function assertInputPath(path) {
     if (
       contains(outDir, path) ||
@@ -128,6 +131,7 @@ export async function prepareCombinedTimetableExport({
   );
   const { draft, mappingApproval, releaseReview, ...policies } = records;
 
+  /** Rebuild and verify the release before writing the site's three bundle files. */
   return async (dataDir) => {
     const [{ capture, bytes }, topology, { value: holidayCalendar }] =
       await Promise.all([

@@ -404,6 +404,7 @@ function buildExportRows(options: PagesIndexOptions): FileLinkRow[] {
   return rows;
 }
 
+/** Share the source and licence notice across both timetable formats. */
 function buildTimetableAttribution(
   entry: Pick<CombinedTimetableNotice, 'capture' | 'currentLicenceReference'>,
   suffix = '',
@@ -548,6 +549,7 @@ export function renderPagesRootIndex(
   );
 }
 
+/** Render the canonical download index with attribution for any included timetable. */
 export function renderPagesIndex(
   manifest: Manifest,
   options: PagesIndexOptions = {},

@@ -106,6 +106,7 @@ export function readScheduleFeedRange(sourceFeedInfo: CsvRow[]) {
       'Artifact preparation requires exactly one feed_info.txt record',
     );
   }
+  /** Convert a provider YYYYMMDD field to an ISO date for range validation. */
   function providerDate(field: string) {
     const value = sourceFeedInfo[0][field];
     if (!value || !/^\d{8}$/.test(value)) {

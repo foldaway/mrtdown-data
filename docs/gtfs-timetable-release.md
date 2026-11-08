@@ -252,8 +252,10 @@ has no explicit shared service claims.
 ```
 
 The builder rebuilds and verifies the approved release using the staged topology
-and holiday calendar that go into the archive. It requires one `feed_info.txt`
-record with valid declared bounds for site source-order checks. It reacquires
+and holiday calendar that go into the archive. Combined builds reject symbolic
+links in the staged data before any reader or archiver can follow them. The
+builder requires one `feed_info.txt` record with valid declared bounds for site
+source-order checks. It reacquires
 the official LTA licence and API terms for this attempt and uses the build
 clock to check the review and any embargo. Boarding marked eligible in the
 release must also be allowed by the staged canonical topology, as required

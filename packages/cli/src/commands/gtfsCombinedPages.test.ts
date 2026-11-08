@@ -6,6 +6,7 @@ import {
   readdir,
   readFile,
   rm,
+  symlink,
   writeFile,
 } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -14,10 +15,11 @@ import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 import { verifyCombinedTimetableReleaseBundle } from '@mrtdown/fs';
 import { unzipSync } from 'fflate';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildPagesArtifact } from '../../../../scripts/build-pages-artifact.mjs';
 import {
   combinedPagesFixture,
+  combinedReleaseInstant,
   combinedTermsText,
 } from './__tests__/combinedPagesFixture.js';
 
@@ -29,6 +31,7 @@ const fixtureDataDir =
   );
 const indexName = 'combined-timetable-release-index.json';
 
+/** Serve the synthetic terms through the production terms acquisition path. */
 async function fixture(settings?: Parameters<typeof combinedPagesFixture>[2]) {
   const root = await mkdtemp(join(tmpdir(), 'gtfs-combined-pages-'));
   roots.push(root);
@@ -45,7 +48,13 @@ async function fixture(settings?: Parameters<typeof combinedPagesFixture>[2]) {
 }
 
 const roots: string[] = [];
+beforeEach(() => {
+  vi.useFakeTimers({ toFake: ['Date'] });
+  vi.setSystemTime(new Date(combinedReleaseInstant));
+});
+
 afterEach(async () => {
+  vi.useRealTimers();
   vi.unstubAllGlobals();
   await Promise.all(
     roots.splice(0).map((path) => rm(path, { recursive: true, force: true })),
@@ -53,6 +62,26 @@ afterEach(async () => {
 });
 
 describe('Pages combined timetable integration', () => {
+  it('rejects aliases to excluded source files before replacing the Pages export', async () => {
+    const { options, fetcher } = await fixture();
+    await mkdir(join(options.dataDir, 'source'));
+    await writeFile(
+      join(options.dataDir, 'source', 'private.txt'),
+      'Private source data',
+    );
+    await symlink(
+      join('source', 'private.txt'),
+      join(options.dataDir, 'alias.txt'),
+    );
+    await mkdir(options.outDir);
+    await writeFile(join(options.outDir, 'keep.txt'), 'Previous output');
+    await expect(buildPagesArtifact(options)).rejects.toThrow(
+      'Combined timetable export requires data without symbolic links: alias.txt',
+    );
+    expect(fetcher).not.toHaveBeenCalled();
+    expect(await readdir(options.outDir)).toEqual(['keep.txt']);
+  });
+
   it('requires declared source feed bounds for the site source-order checks', async () => {
     const { options, fetcher } = await fixture({ includeFeedInfo: false });
     await expect(buildPagesArtifact(options)).rejects.toThrow(

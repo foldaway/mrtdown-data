@@ -14,12 +14,14 @@ import { readSchedule } from '../../../../fs/src/gtfs/schedule.js';
 import { gtfsLicenceReference } from '../../gtfsTerms.js';
 
 export const combinedTermsText = 'Synthetic combined timetable terms';
+export const combinedReleaseInstant = '2026-11-07T20:00:00Z';
 
 async function writeJson(path: string, value: unknown) {
   await mkdir(dirname(path), { recursive: true });
   await writeFile(path, JSON.stringify(value));
 }
 
+/** Materialize a synthetic capture and reviews bound to the test canonical tree. */
 export async function combinedPagesFixture(
   root: string,
   fixtureDataDir: string,
@@ -204,7 +206,7 @@ export async function combinedPagesFixture(
     {
       correctionRevision: 1,
       currentLicenceReference: gtfsLicenceReference,
-      releaseInstant: '2026-11-07T20:00:00Z',
+      releaseInstant: combinedReleaseInstant,
       currentTerms: terms,
       mappingApproval,
     },

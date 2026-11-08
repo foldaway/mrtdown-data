@@ -3,6 +3,7 @@ import {
   cp,
   mkdir,
   mkdtemp,
+  readdir,
   readFile,
   rename,
   rm,
@@ -31,6 +32,7 @@ Defaults:
 `;
 }
 
+/** Resolve CLI paths from the repository root. */
 function parseArgs(argv) {
   const options = {
     dataDir: resolve(repoRoot, 'data'),
@@ -122,6 +124,7 @@ function assertArtifactPaths(options) {
   assertOutputPath(options.fixtureDataDir, resolve(options.outDir, 'fixtures'));
 }
 
+/** Keep source captures and reserved timetable output paths out of the copy. */
 function isExcludedDataSourcePath(sourceDataDir, source) {
   const relativeSource = relative(sourceDataDir, source);
   const [firstSegment] = relativeSource.split(/[\\/]/);
@@ -219,6 +222,7 @@ function isGeneratedSchematicMapArtifactPath(sourceDataDir, source) {
   );
 }
 
+/** Apply the export rules before verifying any timetable against the staged data. */
 async function buildDataExport(
   sourceDataDir,
   exportDir,
@@ -230,12 +234,29 @@ async function buildDataExport(
   await mkdir(exportDir, { recursive: true });
   await cp(sourceDataDir, exportDir, {
     recursive: true,
-    dereference: Boolean(options.exportCombinedTimetable),
     filter: (source) =>
       !generatedIndexPattern.test(source) &&
       !isExcludedDataSourcePath(sourceDataDir, source) &&
       !isGeneratedSchematicMapArtifactPath(sourceDataDir, source),
   });
+
+  if (options.exportCombinedTimetable) {
+    // The copy preserves links. Reject them before any reader or archiver can follow them.
+    const entries = await readdir(exportDir, {
+      recursive: true,
+      withFileTypes: true,
+    });
+    const symlink = entries.find((entry) => entry.isSymbolicLink());
+    if (symlink) {
+      const path = relative(
+        exportDir,
+        resolve(symlink.parentPath, symlink.name),
+      );
+      throw new Error(
+        `Combined timetable export requires data without symbolic links: ${path}`,
+      );
+    }
+  }
 
   await fsPackage.generateSchematicMapPublishedArtifacts(exportDir);
   await fsPackage.redactNonPublicEvidenceForExport(exportDir);
@@ -279,6 +300,7 @@ async function buildDataExport(
   }
 }
 
+/** Build both exports in staging and replace the output after they succeed. */
 export async function buildPagesArtifact(options) {
   assertArtifactPaths(options);
   if (options.gtfsConfig && options.gtfsCombinedConfig) {
