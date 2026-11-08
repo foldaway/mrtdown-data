@@ -25,7 +25,7 @@ async function writeJson(path: string, value: unknown) {
 export async function combinedPagesFixture(
   root: string,
   fixtureDataDir: string,
-  { includeFeedInfo = true } = {},
+  { includeFeedInfo = true, conflictingBoarding = false } = {},
 ) {
   const { inputs, capture } = combinedArtifactFixture();
   const dataDir = join(root, 'data');
@@ -93,6 +93,14 @@ export async function combinedPagesFixture(
   }
 
   const sourceTables = inputs.context.tables;
+  if (!conflictingBoarding) {
+    for (const call of sourceTables['stop_times.txt']) {
+      // The synthetic source allocation at D only needs alighting access.
+      if (call.trip_id === 'UNUSUAL' && call.stop_id === 'Q') {
+        call.pickup_type = '1';
+      }
+    }
+  }
   if (includeFeedInfo) {
     sourceTables['feed_info.txt'] = [
       {

@@ -149,6 +149,8 @@ export async function prepareCombinedTimetableExport({
       index,
       files,
       topology,
+      // The site index still requires canonical platform service lists.
+      { requireCanonicalBoarding: true },
     );
     const directory = resolve(dataDir, 'combined-timetable');
     await mkdir(directory);

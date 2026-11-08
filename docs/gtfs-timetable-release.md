@@ -259,10 +259,11 @@ source-order checks. It reacquires
 the official LTA licence and API terms for this attempt and uses the build
 clock to check the review and any embargo. Release verification checks that each
 boardable platform exists at the mapped station and line and has no boarding
-restriction. A service outside the platform's canonical defaults must be listed
-in the approved mapping for that platform. The site's departure index must
-support reviewed allocations before it can serve those releases. A blocked
-release preserves the previous output.
+restriction. The shared verifier accepts a service outside the platform's
+canonical defaults when the approved mapping lists it for that platform. Pages
+requires boardable services to match explicit canonical platform service lists
+until the site's departure index supports reviewed allocations. A blocked build
+preserves the previous output.
 
 Both archives contain `data/combined-timetable/{manifest,timetable,release}.json`.
 The download page and release manifest carry LTA attribution and the approved

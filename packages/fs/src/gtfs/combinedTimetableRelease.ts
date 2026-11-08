@@ -199,6 +199,7 @@ function assertCompleteCoverage(
 function assertReviewedBoarding(
   artifact: z.infer<typeof CombinedTimetableArtifactSchema>,
   topology: ScopedReviewContext['topology'],
+  requireCanonicalBoarding: boolean,
 ) {
   const stations = new Map(
     topology.stations.map((station) => [station.id, station]),
@@ -231,7 +232,7 @@ function assertReviewedBoarding(
               serviceScope === 'excluded' ||
               (canonical.serviceIds.length &&
                 !canonical.serviceIds.includes(serviceId) &&
-                serviceScope !== 'listed'))
+                (requireCanonicalBoarding || serviceScope !== 'listed')))
           ) {
             throw new Error(
               `Combined timetable boarding access differs from canonical topology for ${serviceId} at ${stationId}/${platformId}`,
@@ -248,6 +249,9 @@ export function verifyCombinedTimetableReleaseBundle(
   indexInput: unknown,
   files: BundleFiles,
   topology: ScopedReviewContext['topology'],
+  {
+    requireCanonicalBoarding = false,
+  }: { requireCanonicalBoarding?: boolean } = {},
 ) {
   const index = CombinedTimetableReleaseIndexSchema.parse(indexInput);
   if (
@@ -310,6 +314,6 @@ export function verifyCombinedTimetableReleaseBundle(
     );
   }
   assertCompleteCoverage(artifact);
-  assertReviewedBoarding(artifact, topology);
+  assertReviewedBoarding(artifact, topology, requireCanonicalBoarding);
   return { index, manifest, evidence, artifact };
 }
