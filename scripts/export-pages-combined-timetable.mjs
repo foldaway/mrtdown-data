@@ -52,43 +52,6 @@ async function readJson(path) {
   return JSON.parse(await readFile(path, 'utf8'));
 }
 
-/** Enforce the site index's canonical boarding rules for approved source allocations. */
-function assertIndexableBoarding(artifact, topology) {
-  const stations = new Map(
-    topology.stations.map((station) => [station.id, station]),
-  );
-  const usedPatterns = new Set(
-    artifact.assignments.map(({ patternId }) => patternId),
-  );
-  for (const patternId of usedPatterns) {
-    const { lineId, calls } = artifact.patterns[patternId];
-    for (const { stationId, platforms } of calls) {
-      for (const { platformId, accessByService } of platforms) {
-        const canonical = stations
-          .get(stationId)
-          ?.platforms.find(({ id }) => id === platformId);
-        for (const {
-          serviceId,
-          passengerBoardingEligible,
-        } of accessByService) {
-          if (
-            passengerBoardingEligible &&
-            (!canonical ||
-              canonical.lineId !== lineId ||
-              canonical.boardingStatus ||
-              (canonical.serviceIds.length &&
-                !canonical.serviceIds.includes(serviceId)))
-          ) {
-            throw new Error(
-              `Combined timetable boarding access differs from canonical topology for ${serviceId} at ${stationId}/${platformId}`,
-            );
-          }
-        }
-      }
-    }
-  }
-}
-
 /** Read the review inputs and return an exporter that binds them to the staged data. */
 export async function prepareCombinedTimetableExport({
   gtfsFile,
@@ -182,12 +145,11 @@ export async function prepareCombinedTimetableExport({
       );
     }
     const { index, files } = bundle;
-    const { manifest, artifact } = verifyCombinedTimetableReleaseBundle(
+    const { manifest } = verifyCombinedTimetableReleaseBundle(
       index,
       files,
       topology,
     );
-    assertIndexableBoarding(artifact, topology);
     const directory = resolve(dataDir, 'combined-timetable');
     await mkdir(directory);
     await writeFile(resolve(directory, 'manifest.json'), files.manifestBytes);

@@ -257,9 +257,12 @@ links in the staged data before any reader or archiver can follow them. The
 builder requires one `feed_info.txt` record with valid declared bounds for site
 source-order checks. It reacquires
 the official LTA licence and API terms for this attempt and uses the build
-clock to check the review and any embargo. Boarding marked eligible in the
-release must also be allowed by the staged canonical topology, as required
-by the site's departure index. A blocked release preserves the previous output.
+clock to check the review and any embargo. Release verification checks that each
+boardable platform exists at the mapped station and line and has no boarding
+restriction. A service outside the platform's canonical defaults must be listed
+in the approved mapping for that platform. The site's departure index must
+support reviewed allocations before it can serve those releases. A blocked
+release preserves the previous output.
 
 Both archives contain `data/combined-timetable/{manifest,timetable,release}.json`.
 The download page and release manifest carry LTA attribution and the approved

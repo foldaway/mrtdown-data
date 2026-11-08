@@ -195,6 +195,54 @@ function assertCompleteCoverage(
   }
 }
 
+/** A reviewed source allocation can add a service to a physical platform. */
+function assertReviewedBoarding(
+  artifact: z.infer<typeof CombinedTimetableArtifactSchema>,
+  topology: ScopedReviewContext['topology'],
+) {
+  const stations = new Map(
+    topology.stations.map((station) => [station.id, station]),
+  );
+  const lineByService = new Map(
+    topology.services.map(({ id, lineId }) => [id, lineId]),
+  );
+  const usedPatterns = new Set(
+    artifact.assignments.map(({ patternId }) => patternId),
+  );
+  for (const patternId of usedPatterns) {
+    const { lineId, calls } = artifact.patterns[patternId];
+    for (const { stationId, platforms } of calls) {
+      for (const { platformId, boardingStatus, accessByService } of platforms) {
+        const canonical = stations
+          .get(stationId)
+          ?.platforms.find(({ id }) => id === platformId);
+        for (const {
+          serviceId,
+          serviceScope,
+          passengerBoardingEligible,
+        } of accessByService) {
+          if (
+            passengerBoardingEligible &&
+            (!canonical ||
+              canonical.lineId !== lineId ||
+              lineByService.get(serviceId) !== lineId ||
+              canonical.boardingStatus ||
+              boardingStatus ||
+              serviceScope === 'excluded' ||
+              (canonical.serviceIds.length &&
+                !canonical.serviceIds.includes(serviceId) &&
+                serviceScope !== 'listed'))
+          ) {
+            throw new Error(
+              `Combined timetable boarding access differs from canonical topology for ${serviceId} at ${stationId}/${platformId}`,
+            );
+          }
+        }
+      }
+    }
+  }
+}
+
 /** The index and installed canonical topology must come from independently trusted inputs. */
 export function verifyCombinedTimetableReleaseBundle(
   indexInput: unknown,
@@ -262,5 +310,6 @@ export function verifyCombinedTimetableReleaseBundle(
     );
   }
   assertCompleteCoverage(artifact);
+  assertReviewedBoarding(artifact, topology);
   return { index, manifest, evidence, artifact };
 }

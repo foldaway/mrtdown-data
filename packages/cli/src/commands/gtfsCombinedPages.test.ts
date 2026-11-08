@@ -13,7 +13,10 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
-import { verifyCombinedTimetableReleaseBundle } from '@mrtdown/fs';
+import {
+  projectCombinedTimetableServiceDay,
+  verifyCombinedTimetableReleaseBundle,
+} from '@mrtdown/fs';
 import { unzipSync } from 'fflate';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildPagesArtifact } from '../../../../scripts/build-pages-artifact.mjs';
@@ -90,13 +93,6 @@ describe('Pages combined timetable integration', () => {
     expect(fetcher).not.toHaveBeenCalled();
   });
 
-  it('rejects approved source allocations that the site cannot index for boarding', async () => {
-    const { options } = await fixture({ conflictingBoarding: true });
-    await expect(buildPagesArtifact(options)).rejects.toThrow(
-      'Combined timetable boarding access differs from canonical topology for SVC at D/platform-D',
-    );
-  });
-
   it('packages the approved service dates and emits the release index outside both archives', async () => {
     const { options, topology, manifestSha256, fetcher } = await fixture();
     await buildPagesArtifact(options);
@@ -114,6 +110,24 @@ describe('Pages combined timetable integration', () => {
       files,
       topology,
     );
+    const canonical = JSON.parse(
+      await readFile(join(options.dataDir, 'station/D.json'), 'utf8'),
+    );
+    expect(canonical.layout.platforms[0].serviceIds).toEqual(['REVERSE']);
+    const day = projectCombinedTimetableServiceDay(
+      verified.artifact,
+      '2026-11-30',
+    );
+    const departure = [...(day?.departures ?? [])].find(
+      (call) =>
+        call.providerTripId === 'UNUSUAL' && call.providerStopId === 'Q',
+    );
+    expect(departure?.boardingByService).toEqual([
+      expect.objectContaining({
+        serviceId: 'SVC',
+        platformIds: ['platform-D'],
+      }),
+    ]);
     expect(verified.manifest.serviceDateRange).toEqual({
       startDate: '2026-11-01',
       endDateExclusive: '2026-12-01',
