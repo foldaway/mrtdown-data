@@ -19,6 +19,7 @@ export {
   buildReconciliationEvidence,
 } from './reconciliationEvidence.js';
 export * from './retainedDepartures.js';
+export * from './scheduledCombinedAssignments.js';
 export * from './scheduledCombinedReview.js';
 export * from './scheduledHolidayMapping.js';
 export * from './scheduledHolidayPolicy.js';

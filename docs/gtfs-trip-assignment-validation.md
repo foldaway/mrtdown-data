@@ -270,3 +270,45 @@ dates group into six records covering 17,467 source trips. This includes other
 unassigned lines and uncovered CCL dates; it describes the supplied pilot's coverage
 against the full capture. Its assignment hash is unchanged and generation remains
 ineligible.
+
+## Assignments from combined mappings
+
+`createScheduledCombinedTripAssignmentProposals(inputs, report, approval?)`
+reconstructs the [combined mapping report](gtfs-holiday-mapping-review.md#combined-review-on-supported-service-dates)
+and expands proposed cells into `gtfs-combined-trip-assignments`. Assignments
+preserve supported service dates, shared memberships, complete source call order,
+times, precision and per-platform passenger access. Repeated calls stay distinct;
+restricted platforms stay non-boardable. Unresolved supported dates remain gaps,
+and outside-applicability dates remain separately accounted for.
+
+`ScheduledCombinedTripAssignmentDocumentSchema` checks structure;
+`verifyScheduledCombinedTripAssignments(inputs, report, document, approval?)`
+reconstructs and compares the full document. Its normalized `assignmentsSha256`
+binds the assignments, policy, approval and coverage metadata. Existing literal
+assignment and release consumers reject this format until explicitly integrated.
+
+### Approval
+
+`ScheduledCombinedMappingApprovalSchema` requires document kind
+`gtfs-combined-mapping-approval`, schema version 1, the report's exact `identity`
+and `draftSha256`, plus a reviewer and reason. Tooling does not issue approvals.
+`evaluateScheduledCombinedMapping(inputs, report, approval?)` checks this record
+against the reconstructed report. Only complete supported coverage with matching
+approval reaches `reviewed-mapping-only`; unresolved coverage cannot be approved
+away. Mapping approval does not authorize generation, release or publication.
+
+### Runner
+
+Use Node 24 with `TZ=UTC` after `npm run build:fs`. Follow the
+[combined reproduction](gtfs-holiday-mapping-review.md#reproduce-the-combined-november-review)
+with canonical commit `6d634f8db415252f5bcbbe5b1dc807607816f2ac` (merged #465),
+regenerating the exact-base CCL claims for that commit. Add:
+
+- `--combined-assignments` to write compact `combined-assignments.json`.
+- `--combined-approval <json>` to evaluate actual reviewer metadata, if supplied.
+- `--combined-review <json>` to replay a saved report with the same inputs.
+
+These options require combined applicability mode. Valid unapproved or incomplete
+reports can produce inspection proposals, with gaps explicit and generation
+ineligible. Large generated files stay outside Git. Artifact and serving support
+remain separate work and must preserve the same overnight service-date bounds.

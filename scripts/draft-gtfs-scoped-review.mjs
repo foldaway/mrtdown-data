@@ -11,6 +11,7 @@ import {
   buildScopedReviewBlockers,
   createGroupedScopedReconciliationDraft,
   createScheduledCombinedReview,
+  createScheduledCombinedTripAssignmentProposals,
   createScheduledHolidayMappingDraft,
   createScheduledHolidayReviewDraft,
   createScheduledPlatformAllocationMappingDraft,
@@ -19,6 +20,7 @@ import {
   createScheduledTripAssignmentProposals,
   createScopedReconciliationDraft,
   evaluateGroupedScopedReconciliation,
+  evaluateScheduledCombinedMapping,
   evaluateScheduledHolidayMapping,
   evaluateScheduledPlatformAllocationMapping,
   evaluateScheduledSourceJourneyMapping,
@@ -34,7 +36,6 @@ import {
   scheduledSourceJourneyMappingDraftSha256,
   scheduleTopologyProjection,
   scopedReviewDraftSha256,
-  verifyScheduledCombinedReview,
   verifyScheduledPlatformAssociationReview,
 } from '../packages/fs/dist/index.js';
 
@@ -43,6 +44,8 @@ const [file, captureFile, pilotLineList, output, ...extra] =
 let requestedCommit;
 let applicabilityPolicyFile;
 let combinedReviewFile;
+let combinedApprovalFile;
+let combinedAssignments = false;
 let platformGroups = false;
 let includeBlockers = false;
 let includeAssignments = false;
@@ -61,7 +64,15 @@ let sourceJourneyPolicyFile;
 let sourceJourneyReviewFile;
 let sourceJourneyApprovalFile;
 for (let index = 0; index < extra.length; index++) {
-  if (
+  if (extra[index] === '--combined-assignments' && !combinedAssignments) {
+    combinedAssignments = true;
+  } else if (
+    extra[index] === '--combined-approval' &&
+    !combinedApprovalFile &&
+    extra[index + 1]
+  ) {
+    combinedApprovalFile = extra[++index];
+  } else if (
     extra[index] === '--applicability-policy' &&
     !applicabilityPolicyFile &&
     extra[index + 1]
@@ -175,7 +186,7 @@ for (let index = 0; index < extra.length; index++) {
 }
 if (!file || !captureFile || !pilotLineList || !output) {
   throw new Error(
-    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--applicability-policy <json> [--combined-review <json>]] [--shared-service-memberships <json>] [--platform-association-policy <json> [--platform-association-review <json>]] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>] | --source-journey-policy <json> [--source-journey-review <json>] [--source-journey-approval <json>]]',
+    'Usage: node scripts/draft-gtfs-scoped-review.mjs <schedule.zip> <capture.json> <pilot-line-id[,pilot-line-id...]> <new-output-directory> [--canonical-commit <full-sha>] [--applicability-policy <json> [--combined-review <json>] [--combined-approval <json>] [--combined-assignments]] [--shared-service-memberships <json>] [--platform-association-policy <json> [--platform-association-review <json>]] [--platform-groups] [--blockers] [--assignments] [--holiday-policy <json> --holiday-calendar <canonical-id> [--holiday-date-review <json>] [--holiday-mapping <json>] [--holiday-approval <json>] | --platform-allocation-policy <json> [--platform-allocation-review <json>] [--platform-allocation-approval <json>] | --source-journey-policy <json> [--source-journey-review <json>] [--source-journey-approval <json>]]',
   );
 }
 if (
@@ -189,7 +200,8 @@ if (
       platformAllocationApprovalFile ||
       sourceJourneyReviewFile ||
       sourceJourneyApprovalFile)) ||
-  (combinedReviewFile && !applicabilityPolicyFile)
+  ((combinedReviewFile || combinedApprovalFile || combinedAssignments) &&
+    !applicabilityPolicyFile)
 ) {
   throw new Error(
     'Combined review requires explicit applicability, association, journey, allocation and holiday policies and its own saved review',
@@ -349,16 +361,15 @@ if (platformAllocationPolicyFile) {
     const review = combinedReviewFile
       ? await readJson(combinedReviewFile)
       : createScheduledCombinedReview(inputs);
-    const evaluation = combinedReviewFile
-      ? verifyScheduledCombinedReview(inputs, review)
-      : {
-          valid: true,
-          draftSha256: review.draftSha256,
-          coverageComplete: review.coverageComplete,
-          readiness: review.readiness,
-          mappingReviewEligible: false,
-          generationEligible: false,
-        };
+    const approval = combinedApprovalFile
+      ? await readJson(combinedApprovalFile)
+      : undefined;
+    const proposals = combinedAssignments
+      ? createScheduledCombinedTripAssignmentProposals(inputs, review, approval)
+      : undefined;
+    const evaluation = proposals
+      ? proposals.review
+      : evaluateScheduledCombinedMapping(inputs, review, approval);
     const summary = {
       schemaVersion: 1,
       documentKind: 'gtfs-combined-schedule-review-summary',
@@ -368,8 +379,15 @@ if (platformAllocationPolicyFile) {
       accounting: review.accounting,
       unresolvedEntities: review.unresolvedEntities,
       evaluation,
-      approval:
-        'No approval; combined review is separate from passenger access and publication',
+      approval: approval
+        ? 'Supplied exact-report mapping approval evaluated; generation remains ineligible'
+        : 'No approval; combined review is separate from passenger access and publication',
+      ...(proposals
+        ? {
+            assignmentsSha256: proposals.assignmentsSha256,
+            assignmentCoverage: proposals.document.coverage,
+          }
+        : {}),
       generationEligible: false,
     };
     await mkdir(resolve(output));
@@ -377,17 +395,18 @@ if (platformAllocationPolicyFile) {
       'combined-review.json': review,
       'combined-evaluation.json': evaluation,
       'summary.json': summary,
+      ...(proposals ? { 'combined-assignments.json': proposals.document } : {}),
     })) {
       await writeFile(
         join(output, name),
-        `${JSON.stringify(content, null, 2)}\n`,
+        `${JSON.stringify(content, null, name === 'combined-assignments.json' ? undefined : 2)}\n`,
         { flag: 'wx' },
       );
     }
     console.log(
       JSON.stringify({ output: resolve(output), ...summary }, null, 2),
     );
-    process.exit(0);
+    process.exit(evaluation.valid ? 0 : 1);
   }
   if (platformAssociationPolicyFile) {
     const inputs = {
