@@ -39,26 +39,55 @@ const patternSchema = ScheduledCombinedTripAssignmentSchema.pick({
 export const CombinedTimetableArtifactSchema =
   ScheduledCombinedTripAssignmentDocumentSchema.omit({
     assignments: true,
-  }).extend({
-    documentKind: z.literal('gtfs-combined-timetable-artifact'),
-    capture: ScheduledTimetableArtifactMetadataSchema.shape.capture,
-    sourceFeedInfo:
-      ScheduledTimetableArtifactMetadataSchema.shape.sourceFeedInfo,
-    assignmentsSha256: digest,
-    trips: z.array(ScheduledTripTimesSchema),
-    patterns: z.record(digest, patternSchema),
-    dateSets: z.record(digest, assignment.serviceDates),
-    assignments: z.array(
-      z
-        .object({
-          providerTripId: assignment.providerTripId,
-          patternId: digest,
-          dateSetId: digest,
-        })
-        .strict(),
-    ),
-    generationEligible: z.literal(false),
-  });
+  })
+    .extend({
+      documentKind: z.literal('gtfs-combined-timetable-artifact'),
+      capture: ScheduledTimetableArtifactMetadataSchema.shape.capture,
+      sourceFeedInfo:
+        ScheduledTimetableArtifactMetadataSchema.shape.sourceFeedInfo,
+      assignmentsSha256: digest,
+      trips: z.array(ScheduledTripTimesSchema),
+      patterns: z.record(digest, patternSchema),
+      dateSets: z.record(digest, assignment.serviceDates),
+      assignments: z.array(
+        z
+          .object({
+            providerTripId: assignment.providerTripId,
+            patternId: digest,
+            dateSetId: digest,
+          })
+          .strict(),
+      ),
+      generationEligible: z.literal(false),
+    })
+    .superRefine((artifact, context) => {
+      const tripIds = new Set(
+        artifact.trips.map((trip) => trip.providerTripId),
+      );
+      for (const [index, row] of artifact.assignments.entries()) {
+        const issue = (field: string, message: string) =>
+          context.addIssue({
+            code: 'custom',
+            path: ['assignments', index, field],
+            message,
+          });
+        if (!tripIds.has(row.providerTripId)) {
+          issue(
+            'providerTripId',
+            'Assignment references a missing source trip',
+          );
+        }
+        if (!Object.hasOwn(artifact.patterns, row.patternId)) {
+          issue('patternId', 'Assignment references a missing mapping pattern');
+        }
+        if (!Object.hasOwn(artifact.dateSets, row.dateSetId)) {
+          issue(
+            'dateSetId',
+            'Assignment references a missing service date set',
+          );
+        }
+      }
+    });
 
 /** The caller supplies the verified capture and its matching source and canonical context. */
 export function prepareCombinedTimetableArtifact(

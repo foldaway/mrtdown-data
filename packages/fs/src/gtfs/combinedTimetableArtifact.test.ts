@@ -1,6 +1,7 @@
 import { ScheduledAssignedTimetableSchema } from '@mrtdown/core';
 import { describe, expect, it } from 'vitest';
 import { combinedReviewFixture } from './__tests__/combinedReviewFixture.js';
+import { hashBytes } from './capture.js';
 import {
   prepareCombinedTimetableArtifact,
   verifyCombinedTimetableArtifact,
@@ -102,6 +103,37 @@ describe('combined timetable artifact', () => {
         result.artifactSha256,
       ),
     ).toThrow(/expected SHA-256/);
+  });
+
+  it('rejects missing records and invalid eligibility even with a matching digest', () => {
+    const { inputs, capture } = fixture();
+    const result = prepareCombinedTimetableArtifact(
+      inputs,
+      createScheduledCombinedReview(inputs),
+      capture,
+    );
+    const artifact = verifyCombinedTimetableArtifact(
+      result.artifactBytes,
+      result.artifactSha256,
+    );
+    for (const [field, value, message] of [
+      ['providerTripId', 'missing-trip', 'missing source trip'],
+      ['patternId', '0'.repeat(64), 'missing mapping pattern'],
+      ['dateSetId', '0'.repeat(64), 'missing service date set'],
+    ] as const) {
+      const edited = structuredClone(artifact);
+      edited.assignments[0][field] = value;
+      const bytes = Buffer.from(JSON.stringify(edited));
+      expect(() =>
+        verifyCombinedTimetableArtifact(bytes, hashBytes(bytes)),
+      ).toThrow(message);
+    }
+    const bytes = Buffer.from(
+      JSON.stringify({ ...artifact, generationEligible: true }),
+    );
+    expect(() =>
+      verifyCombinedTimetableArtifact(bytes, hashBytes(bytes)),
+    ).toThrow(/generationEligible/);
   });
 
   it('keeps unresolved dates visible without packing those trips', () => {
