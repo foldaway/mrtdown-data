@@ -84,7 +84,8 @@ jobs:
             echo "::error::Private release download must return HTTP 200 directly"
             exit 1
           fi
-          if ! printf '%s  %s\n' "$RELEASE_SHA256" "$archive" | sha256sum --check --status; then
+          actual_sha256=$(sha256sum "$archive")
+          if [[ "${actual_sha256%% *}" != "$RELEASE_SHA256" ]]; then
             echo "::error::Private release archive does not match the pinned SHA-256"
             exit 1
           fi
