@@ -15,6 +15,8 @@ on:
       - 'package*.json'
       - 'packages/**'
       - 'scripts/build-pages-artifact.mjs'
+      - 'scripts/export-pages-combined-timetable.mjs'
+      - 'scripts/prepare-pages-site-pull.mjs'
       - 'turbo.json'
   workflow_dispatch:
 
@@ -28,10 +30,21 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    env:
+      COMBINED_TIMETABLE_ENABLED: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_ENABLED }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@v7
         with:
@@ -41,8 +54,68 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check combined timetable gate
+        run: |
+          case "$COMBINED_TIMETABLE_ENABLED" in
+            ""|false|true) ;;
+            *) echo "::error::Expected MRTDOWN_COMBINED_TIMETABLE_ENABLED to be true, false or unset"; exit 1 ;;
+          esac
+
+      - name: Acquire approved combined timetable inputs
+        if: env.COMBINED_TIMETABLE_ENABLED == 'true'
+        env:
+          RELEASE_URL: ${{ secrets.MRTDOWN_COMBINED_TIMETABLE_INPUT_URL }}
+          RELEASE_TOKEN: ${{ secrets.MRTDOWN_COMBINED_TIMETABLE_INPUT_TOKEN }}
+          RELEASE_SHA256: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_INPUT_SHA256 }}
+        run: |
+          umask 077
+          if [[ "$RELEASE_URL" != https://* || -z "$RELEASE_TOKEN" || ! "$RELEASE_SHA256" =~ ^[a-f0-9]{64}$ ]]; then
+            echo "::error::A private HTTPS release URL, bearer token and pinned archive SHA-256 are required"
+            exit 1
+          fi
+          input_dir="$RUNNER_TEMP/combined-release"
+          archive="$RUNNER_TEMP/combined-release-inputs.tar.gz"
+          mkdir "$input_dir"
+          status=$(curl --fail --show-error --silent --proto '=https' \
+            --max-time 120 --max-filesize 67108864 \
+            --header "Authorization: Bearer ${RELEASE_TOKEN}" \
+            --output "$archive" --write-out '%{http_code}' "$RELEASE_URL")
+          if [[ "$status" != 200 ]]; then
+            echo "::error::Private release download must return HTTP 200 directly"
+            exit 1
+          fi
+          if ! printf '%s  %s\n' "$RELEASE_SHA256" "$archive" | sha256sum --check --status; then
+            echo "::error::Private release archive does not match the pinned SHA-256"
+            exit 1
+          fi
+          tar -xzf "$archive" --no-same-owner --no-same-permissions -C "$input_dir"
+
       - name: Build Pages artifact
-        run: npm run pages:build
+        run: |
+          if [[ "$COMBINED_TIMETABLE_ENABLED" == true ]]; then
+            input_dir="$RUNNER_TEMP/combined-release"
+            npm run pages:build -- \
+              --gtfs-file "$input_dir/schedule.zip" \
+              --gtfs-capture "$input_dir/capture.json" \
+              --gtfs-combined-config "$input_dir/combined-pages.json"
+          else
+            npm run pages:build
+          fi
+
+      - name: Prepare authenticated site pull
+        if: env.COMBINED_TIMETABLE_ENABLED == 'true'
+        env:
+          MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW: ${{ secrets.MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW }}
+          MRTDOWN_SITE_PULL_URL: ${{ secrets.MRTDOWN_SITE_PULL_URL }}
+          MRTDOWN_SITE_INTERNAL_API_TOKEN: ${{ secrets.MRTDOWN_SITE_INTERNAL_API_TOKEN }}
+        run: |
+          if [[ "$MRTDOWN_SITE_PULL_URL" != https://* || -z "$MRTDOWN_SITE_INTERNAL_API_TOKEN" ]]; then
+            echo "::error::An HTTPS site pull URL and internal API token are required"
+            exit 1
+          fi
+          node scripts/prepare-pages-site-pull.mjs pages-dist \
+            "$RUNNER_TEMP/combined-release/release-index.json" \
+            "$RUNNER_TEMP/pages-site-pull.json"
 
       - uses: actions/configure-pages@v6
 
@@ -51,22 +124,33 @@ jobs:
         with:
           path: pages-dist
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
 
-  trigger-site-pull:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    needs: deploy
-    steps:
+      - name: Verify the public release before triggering the site pull
+        if: env.COMBINED_TIMETABLE_ENABLED == 'true'
+        env:
+          PAGES_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          for attempt in {1..12}; do
+            ready=true
+            for name in manifest.json combined-timetable-release-index.json archive.zip; do
+              if ! curl --fail --silent --max-time 10 --proto '=https' \
+                --output "$RUNNER_TEMP/live-$name" "${PAGES_URL%/}/$name" ||
+                ! cmp -s "pages-dist/$name" "$RUNNER_TEMP/live-$name"; then
+                ready=false
+                break
+              fi
+            done
+            if [[ "$ready" == true ]]; then
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::The deployed Pages release is not yet visible at the public URL"
+          exit 1
+
       - name: Trigger mrtdown-site pull workflow
         env:
           MRTDOWN_SITE_PULL_URL: ${{ secrets.MRTDOWN_SITE_PULL_URL }}
@@ -82,9 +166,19 @@ jobs:
             exit 1
           fi
 
-          curl --fail-with-body --show-error --silent \
+          payload=()
+          if [[ "$COMBINED_TIMETABLE_ENABLED" == true ]]; then
+            payload=(--json "@$RUNNER_TEMP/pages-site-pull.json")
+          fi
+          status=$(curl --fail --show-error --silent --max-time 30 \
             --user-agent "mrtdown-data-pages-deploy/1.0" \
             --request POST \
             --header "Accept: application/json" \
             --header "Authorization: Bearer ${MRTDOWN_SITE_INTERNAL_API_TOKEN}" \
-            "$MRTDOWN_SITE_PULL_URL"
+            --output "$RUNNER_TEMP/site-pull-response.json" --write-out '%{http_code}' \
+            "${payload[@]}" "$MRTDOWN_SITE_PULL_URL")
+          if [[ "$status" != 202 ]]; then
+            echo "::error::Site pull did not return HTTP 202"
+            exit 1
+          fi
+          jq -er '.workflowRunId | strings | select(length > 0)' "$RUNNER_TEMP/site-pull-response.json"

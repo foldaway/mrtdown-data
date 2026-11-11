@@ -259,11 +259,10 @@ source-order checks. It reacquires
 the official LTA licence and API terms for this attempt and uses the build
 clock to check the review and any embargo. Release verification checks that each
 boardable platform exists at the mapped station and line and has no boarding
-restriction. The shared verifier accepts a service outside the platform's
-canonical defaults when the approved mapping lists it for that platform. Pages
-requires boardable services to match explicit canonical platform service lists
-until the site's departure index supports reviewed allocations. A blocked build
-preserves the previous output.
+restriction. Pages and the site's departure index use the shared verifier,
+which accepts a service outside the platform's canonical defaults when the
+approved mapping lists it for that platform. A blocked build preserves the
+previous output.
 
 Both archives contain `data/combined-timetable/{manifest,timetable,release}.json`.
 The download page and release manifest carry LTA attribution and the approved
@@ -276,6 +275,87 @@ site applies its own source-order and canonical compatibility checks at import.
 
 Combined and legacy timetable packaging are mutually exclusive. Default builds
 and the fixture export omit combined timetable output.
+
+### Deploying the combined release through GitHub Actions
+
+The main-branch Pages workflow uses the repository variable
+`MRTDOWN_COMBINED_TIMETABLE_ENABLED`. Leave it unset or set to `false` until
+publication and production import are authorized. When set to `true`, every
+routine deployment rebuilds the pinned release against the canonical data it
+ships. A missing input, changed terms, incompatible topology or mismatched
+release digest stops the job before upload. Keep the variable enabled and the
+inputs available for subsequent deployments. Clearing the variable publishes a
+GTFS-free archive on the next successful deploy.
+
+Prepare a `tar.gz` archive of regular files at its root, outside Git and the
+Pages tree. Include `schedule.zip`, the licence-reviewed `capture.json`,
+`combined-pages.json` and its referenced review inputs. Include the trusted
+`release-index.json` and the exact approved `release.json` as
+`release-evidence.json`, and add this field to the configuration:
+
+```json
+{
+  "approvedRelease": {
+    "index": "release-index.json",
+    "evidence": "release-evidence.json"
+  }
+}
+```
+
+The builder checks fresh terms and release eligibility, then verifies and
+preserves the original evidence bytes. This keeps both index digests stable
+across deployments of the same release. Use an immutable private HTTPS object
+that serves the archive directly with bearer authentication. Keep the raw
+archive, review inputs and source review in private storage. PR checks use
+synthetic timetables and Pages previews use the default build.
+
+Restrict the `github-pages` environment to `main` before storing the release
+credentials. Configure the following on that environment while the gate is off.
+
+| Setting | Value |
+| --- | --- |
+| Secret `MRTDOWN_COMBINED_TIMETABLE_INPUT_URL` | Private archive URL |
+| Secret `MRTDOWN_COMBINED_TIMETABLE_INPUT_TOKEN` | Read-only bearer token for that archive |
+| Variable `MRTDOWN_COMBINED_TIMETABLE_INPUT_SHA256` | SHA-256 of the exact compressed archive |
+| Secret `MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW` | Production-approved `scheduled-timetable-source-review` JSON |
+
+The workflow continues to use `MRTDOWN_SITE_PULL_URL` and
+`MRTDOWN_SITE_INTERNAL_API_TOKEN` for the site's authenticated task endpoint.
+Before uploading, it checks that the exact release index and source review bind
+the generated artifact. After deploying, it waits for the public manifest,
+release index and ZIP to match the build. The endpoint forwards
+`{ combinedReleaseIndex, sourceReview }` to the signed workflow. Its HTTP 202
+and workflow ID confirm queueing. Later deployments can reuse that review for
+the same retained release.
+
+Before enabling the gate:
+
+1. Deploy the compatible site and database migrations. Query production's
+   `scheduled_timetables` read-only and bind the review to the retained lineage
+   and exact candidate manifest and capture digests. An empty chain needs a
+   production baseline approval with a null predecessor. For an existing chain,
+   use the exact incumbent and the applicable source-order decision. Record
+   the actual approver and approval time.
+2. Account for the production and staging QStash pull schedules and any preview
+   consumers that use the public archive. A pull carrying an empty body cannot
+   import a combined ZIP. Pause affected scheduled pulls for the cutover if
+   needed, and verify the durable schedule configuration supplies the trusted
+   index before resuming. Check that the site's schedule sync preserves that
+   configuration on redeploy.
+3. Rehearse the production callback path with this bundle and the deployed
+   timeout configuration. Staging recorded two 15-minute parse callback
+   timeouts while PostgreSQL continued building the index. Confirm that the
+   projection completes within the callback deadline with headroom, or verify
+   that a retry can complete after a timeout without duplicate or partial
+   promotion. Hold cutover if neither behavior is verified.
+
+After dispatch, follow the returned signed workflow run through canonical
+promotion and lease release. For a timed-out parse step, inspect its retry
+state and the database's active projection transaction and pull lease before
+submitting another request. Verify the exact retained receipt, a completed
+projector v2 row, expected trip/date coverage, Expo platform A with LTA
+attribution, and a departure after midnight on the final service date.
+Queueing and a retained receipt alone do not establish completion.
 
 ## Packaging a release for Pages
 
@@ -329,8 +409,8 @@ as an independently mapped schedule rather than live predictions.
 Without GTFS flags, the build stays offline and omits timetable files, index
 entries and links. The fixture export never receives the real timetable. A stray
 `scheduled-timetable/` directory under source data is excluded from copying; only
-the checked exporter creates that reserved output. Current deployment workflows
-do not pass GTFS inputs, and real mapping and release approvals remain outstanding.
+the checked exporter creates that reserved output. The Pages deployment workflow
+supports the gated combined release path described above.
 
 Against the retained October capture and full version-3 draft, inspection
 preserved the existing artifact digests and 1,502,097 assigned / 990,143 unassigned
