@@ -134,7 +134,7 @@ jobs:
         env:
           PAGES_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
-          for attempt in {1..12}; do
+          for _ in {1..12}; do
             ready=true
             for name in manifest.json combined-timetable-release-index.json archive.zip; do
               if ! curl --fail --silent --max-time 10 --proto '=https' \
