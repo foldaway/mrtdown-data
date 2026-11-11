@@ -90,18 +90,9 @@ describe('Pages combined timetable integration', () => {
     expect(fetcher).not.toHaveBeenCalled();
   });
 
-  it('keeps the previous export when the site cannot index a reviewed boarding allocation', async () => {
-    const { options } = await fixture({ conflictingBoarding: true });
-    await mkdir(options.outDir);
-    await writeFile(join(options.outDir, 'keep.txt'), 'Previous output');
-    await expect(buildPagesArtifact(options)).rejects.toThrow(
-      'Combined timetable boarding access differs from canonical topology for SVC at D/platform-D',
-    );
-    expect(await readdir(options.outDir)).toEqual(['keep.txt']);
-  });
-
   it('packages the approved service dates and emits the release index outside both archives', async () => {
-    const { options, topology, manifestSha256, fetcher } = await fixture();
+    const { root, options, topology, manifestSha256, config, fetcher } =
+      await fixture({ reviewedBoarding: true });
     await buildPagesArtifact(options);
     const read = (path: string) => readFile(join(options.outDir, path));
     const index = JSON.parse((await read(indexName)).toString('utf8'));
@@ -121,6 +112,21 @@ describe('Pages combined timetable integration', () => {
       startDate: '2026-11-01',
       endDateExclusive: '2026-12-01',
     });
+    const allocatedPlatforms = Object.values(verified.artifact.patterns)
+      .flatMap(({ calls }) => calls)
+      .filter(({ stationId }) => stationId === 'D')
+      .flatMap(({ platforms }) => platforms);
+    expect(allocatedPlatforms).toContainEqual(
+      expect.objectContaining({
+        platformId: 'platform-D',
+        accessByService: expect.arrayContaining([
+          expect.objectContaining({
+            serviceId: 'SVC',
+            passengerBoardingEligible: true,
+          }),
+        ]),
+      }),
+    );
     expect(
       Object.keys(zip)
         .filter((name) => name.startsWith('data/combined-timetable/'))
@@ -158,6 +164,86 @@ describe('Pages combined timetable integration', () => {
       'combined-timetable',
     );
     expect(fetcher).toHaveBeenCalledTimes(2);
+
+    const approvedIndex = join(root, 'release-index.json');
+    const approvedEvidence = join(root, 'release-evidence.json');
+    await copyFile(join(options.outDir, indexName), approvedIndex);
+    await copyFile(
+      join(options.outDir, 'combined-timetable/release.json'),
+      approvedEvidence,
+    );
+    await writeFile(
+      options.gtfsCombinedConfig,
+      JSON.stringify({
+        ...config,
+        approvedRelease: {
+          index: 'release-index.json',
+          evidence: 'release-evidence.json',
+        },
+      }),
+    );
+    vi.setSystemTime(new Date('2026-11-12T00:00:00Z'));
+    await buildPagesArtifact(options);
+    expect(await read(indexName)).toEqual(await readFile(approvedIndex));
+    expect(await read('combined-timetable/release.json')).toEqual(
+      await readFile(approvedEvidence),
+    );
+    expect(fetcher).toHaveBeenCalledTimes(4);
+
+    const sourceReview = {
+      schemaVersion: 1,
+      documentKind: 'scheduled-timetable-source-review',
+      decision: 'baseline',
+      predecessor: null,
+      successor: {
+        manifestSha256,
+        snapshotSha256: verified.manifest.capture.sha256,
+      },
+      reviewer: 'Synthetic production reviewer',
+      reviewedAt: combinedReleaseInstant,
+      reason: 'Synthetic baseline against an empty history',
+    };
+    const payloadPath = join(root, 'pull.json');
+    const preparePull = (review: unknown) =>
+      execFileAsync(
+        process.execPath,
+        [
+          '--import',
+          'data:text/javascript,Date.now=()=>Date.parse("2026-11-12T00:00:00Z")',
+          fileURLToPath(
+            new URL(
+              '../../../../scripts/prepare-pages-site-pull.mjs',
+              import.meta.url,
+            ),
+          ),
+          options.outDir,
+          approvedIndex,
+          payloadPath,
+        ],
+        {
+          env: {
+            ...process.env,
+            MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW: JSON.stringify(review),
+          },
+        },
+      );
+    await expect(
+      preparePull({
+        ...sourceReview,
+        successor: { manifestSha256, snapshotSha256: '0'.repeat(64) },
+      }),
+    ).rejects.toThrow('Production source review does not bind this release');
+    await preparePull(sourceReview);
+    expect(JSON.parse(await readFile(payloadPath, 'utf8'))).toEqual({
+      combinedReleaseIndex: index,
+      sourceReview,
+    });
+
+    fetcher.mockImplementation(async () => new Response('Changed terms'));
+    await expect(buildPagesArtifact(options)).rejects.toThrow(
+      'Release review does not match current terms',
+    );
+    expect(await read(indexName)).toEqual(await readFile(approvedIndex));
 
     fetcher.mockClear();
     await buildPagesArtifact({

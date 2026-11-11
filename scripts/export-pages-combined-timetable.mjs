@@ -1,10 +1,12 @@
 import { mkdir, readFile, realpath, writeFile } from 'node:fs/promises';
 import { dirname, isAbsolute, relative, resolve, sep } from 'node:path';
+import { isDeepStrictEqual } from 'node:util';
 import {
   GtfsReconciliationIdentitySchema,
   ScheduledTimetableArtifactMetadataSchema,
 } from '@mrtdown/core';
 import {
+  CombinedTimetableReleaseIndexSchema,
   hashBytes,
   inspectCombinedTimetableRelease,
   readEntity,
@@ -39,6 +41,10 @@ const configSchema = ScheduledTimetableArtifactMetadataSchema.pick({
     draft: recordPath,
     mappingApproval: recordPath,
     releaseReview: recordPath,
+    approvedRelease: z
+      .object({ index: recordPath, evidence: recordPath })
+      .strict()
+      .optional(),
   })
   .strict();
 
@@ -81,18 +87,31 @@ export async function prepareCombinedTimetableExport({
     canonicalCommit,
     correctionRevision,
     holidayCalendarId,
+    approvedRelease,
     ...recordPaths
   } = configSchema.parse(await readJson(gtfsCombinedConfig));
+  const resolveInput = async (name) => {
+    const path = resolve(dirname(gtfsCombinedConfig), name);
+    await assertInputPath(path);
+    return path;
+  };
   const records = Object.fromEntries(
     await Promise.all(
-      Object.entries(recordPaths).map(async ([key, name]) => {
-        const path = resolve(dirname(gtfsCombinedConfig), name);
-        await assertInputPath(path);
-        return [key, await readJson(path)];
-      }),
+      Object.entries(recordPaths).map(async ([key, name]) => [
+        key,
+        await readJson(await resolveInput(name)),
+      ]),
     ),
   );
   const { draft, mappingApproval, releaseReview, ...policies } = records;
+  const approvedIndex = approvedRelease
+    ? CombinedTimetableReleaseIndexSchema.parse(
+        await readJson(await resolveInput(approvedRelease.index)),
+      )
+    : undefined;
+  const approvedEvidence = approvedRelease
+    ? await readFile(await resolveInput(approvedRelease.evidence))
+    : undefined;
 
   /** Rebuild and verify the release before writing the site's three bundle files. */
   return async (dataDir) => {
@@ -144,13 +163,30 @@ export async function prepareCombinedTimetableExport({
         `Combined timetable publication blocked: ${release.blockers.join('; ')}`,
       );
     }
-    const { index, files } = bundle;
+    // Recheck current eligibility above, then publish the exact reviewed evidence.
+    if (approvedEvidence) {
+      const fresh = JSON.parse(bundle.files.releaseBytes.toString('utf8'));
+      const approved = JSON.parse(approvedEvidence.toString('utf8'));
+      if (
+        !isDeepStrictEqual(approved, {
+          ...fresh,
+          releaseInstant: approved.releaseInstant,
+        })
+      ) {
+        throw new Error(
+          'Approved release evidence differs from the fresh check',
+        );
+      }
+    }
+    const index = approvedIndex ?? bundle.index;
+    const files = {
+      ...bundle.files,
+      releaseBytes: approvedEvidence ?? bundle.files.releaseBytes,
+    };
     const { manifest } = verifyCombinedTimetableReleaseBundle(
       index,
       files,
       topology,
-      // The site index still requires canonical platform service lists.
-      { requireCanonicalBoarding: true },
     );
     const directory = resolve(dataDir, 'combined-timetable');
     await mkdir(directory);
