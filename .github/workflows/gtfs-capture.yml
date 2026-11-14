@@ -1,4 +1,4 @@
-name: Inspect public GTFS schedule capture
+name: Inspect and open review for public GTFS schedule capture
 
 on:
   repository_dispatch:
@@ -16,8 +16,16 @@ permissions:
 jobs:
   inspect:
     runs-on: ubuntu-latest
+    outputs:
+      sha256: ${{ steps.acquire.outputs.sha256 }}
+      retrieved-at: ${{ steps.acquire.outputs.retrieved-at }}
+      independent-outcome: ${{ steps.validate.outcome }}
+      inspection-outcome: ${{ steps.report.outcome }}
+      artifact-url: ${{ steps.artifact.outputs.artifact-url }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -30,7 +38,10 @@ jobs:
           GTFS_SNAPSHOT_BASE_URL: ${{ vars.GTFS_SNAPSHOT_BASE_URL }}
           GTFS_CAPTURE_KEY: ${{ github.event.client_payload.capture_key || inputs.capture_key }}
           GTFS_INPUT_DIR: ${{ runner.temp }}/gtfs-input
-        run: node scripts/acquire-gtfs-capture.mjs
+        run: |
+          node scripts/acquire-gtfs-capture.mjs
+          jq -r '"sha256=\(.sha256)", "retrieved-at=\(.retrieved_at)"' \
+            "$GTFS_INPUT_DIR/capture.json" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
@@ -40,6 +51,7 @@ jobs:
           url=$(node -p "JSON.parse(require('fs').readFileSync('scripts/gtfs-validator-lock.json')).url")
           curl --fail --location --max-time 120 "$url" -o "$RUNNER_TEMP/gtfs-validator.jar"
       - name: Independently validate verified snapshot
+        id: validate
         if: ${{ !cancelled() && steps.acquire.outcome == 'success' }}
         run: >-
           node scripts/validate-gtfs-independent.mjs
@@ -47,6 +59,7 @@ jobs:
           "$RUNNER_TEMP/gtfs-input/schedule.zip"
           "$RUNNER_TEMP/gtfs-independent"
       - name: Inspect verified local snapshot
+        id: report
         if: ${{ !cancelled() && steps.acquire.outcome == 'success' }}
         run: >-
           node packages/cli/dist/index.js gtfs inspect
@@ -54,6 +67,7 @@ jobs:
           --capture "$RUNNER_TEMP/gtfs-input/capture.json"
           --write "$RUNNER_TEMP/gtfs-report.json"
       - uses: actions/upload-artifact@v7
+        id: artifact
         if: always()
         with:
           name: gtfs-inspection-${{ github.run_id }}
@@ -61,3 +75,71 @@ jobs:
             ${{ runner.temp }}/gtfs-report.json
             ${{ runner.temp }}/gtfs-independent/
           if-no-files-found: ignore
+
+  review:
+    needs: inspect
+    if: >-
+      ${{ !cancelled() && needs.inspect.outputs.sha256 != '' &&
+          github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    concurrency:
+      group: gtfs-review-${{ needs.inspect.outputs.sha256 }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - name: Open snapshot review
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          SNAPSHOT_ORIGIN: ${{ vars.GTFS_SNAPSHOT_BASE_URL }}
+          SHA256: ${{ needs.inspect.outputs.sha256 }}
+          RETRIEVED_AT: ${{ needs.inspect.outputs.retrieved-at }}
+          INDEPENDENT_OUTCOME: ${{ needs.inspect.outputs.independent-outcome }}
+          INSPECTION_OUTCOME: ${{ needs.inspect.outputs.inspection-outcome }}
+          ARTIFACT_URL: ${{ needs.inspect.outputs.artifact-url }}
+        run: |
+          branch="gtfs-review/$SHA256"
+          ref="refs/heads/$branch"
+          existing_pr=$(gh api --method GET "repos/$GITHUB_REPOSITORY/pulls" \
+            -f state=all -f head="$GITHUB_REPOSITORY_OWNER:$branch" \
+            --jq '.[0].html_url // empty')
+          if [[ -n "$existing_pr" ]]; then
+            echo "Snapshot review already exists at $existing_pr"
+            exit 0
+          fi
+
+          title="chore(gtfs): review schedule snapshot ${SHA256:0:12}"
+          remote_ref=$(git ls-remote --refs origin "$ref")
+          if [[ -z "$remote_ref" ]]; then
+            run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            origin="${SNAPSHOT_ORIGIN%/}"
+            file="docs/gtfs-captures/$SHA256.md"
+            mkdir -p docs/gtfs-captures
+            cat > "$file" <<EOF
+          # LTA train GTFS snapshot
+
+          - Retrieved at: $RETRIEVED_AT
+          - ZIP SHA-256: \`$SHA256\`
+          - Source files: [Capture receipt]($origin/captures/schedule/$SHA256.json) · [GTFS ZIP]($origin/blobs/schedule/$SHA256.zip)
+          - Independent validator: $INDEPENDENT_OUTCOME
+          - MRTDown inspection: $INSPECTION_OUTCOME
+          - [GitHub Actions run]($run_url)
+          EOF
+            if [[ -n "$ARTIFACT_URL" ]]; then
+              printf '%s\n' "- [Download inspection and validation reports]($ARTIFACT_URL)" >> "$file"
+            fi
+            git add -- "$file"
+            git -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -m "$title" -m 'Co-Authored-By: Codex <noreply@openai.com>'
+            git push origin "HEAD:$ref"
+          fi
+
+          gh pr create --repo "$GITHUB_REPOSITORY" --base "$BASE_BRANCH" \
+            --head "$branch" --title "$title" \
+            --body "Review the new LTA train GTFS capture. The added record links the source ZIP and inspection results. Check validation findings, service-date coverage, and mapping changes before preparing a timetable release."

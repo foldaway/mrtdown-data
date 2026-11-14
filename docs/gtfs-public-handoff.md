@@ -48,8 +48,8 @@ Only schedule hashes trigger GitHub `repository_dispatch` event `gtfs_capture`:
 The crawler records notification state only in private Tigris. Failed notifications
 remain pending and are retried on subsequent enabled DataMall polling runs.
 A bounded batch of 20 avoids unbounded catch-up. Successful hashes are not
-notified again. A crash after dispatch can cause duplicate delivery; the receiver
-only inspects and uploads a report, so replay performs no canonical writes.
+notified again. A crash after dispatch can cause duplicate delivery. The
+receiver may repeat inspection, but opens at most one review PR per ZIP hash.
 Published alerts/trip updates do not dispatch to the schedule workflow.
 
 ## Provisioning
@@ -75,12 +75,17 @@ then downloads the ZIP without following redirects. Transfers have byte limits
 and request timeouts. Both files are hash/size verified before materialization
 in a fresh temporary directory.
 
-Acquisition is in the CLI layer, separate from the offline `@mrtdown/fs`
-inspector. The workflow invokes that inspector and retains its JSON report as
-a GitHub Actions artifact, including reports with structural errors. It has
-read-only repository permissions. It does not commit, merge, run models or
-publish a scheduled-arrivals artifact. Trusted delivery does not replace
-independent GTFS validation or reviewed canonical mappings.
+The read-only inspection job runs the independent validator and the offline
+`@mrtdown/fs` inspector and uploads their available reports as a GitHub Actions
+artifact, including findings with errors.
+
+After the receipt and ZIP are verified, a separate job on the default branch
+opens a review PR for that ZIP hash even if validation reports errors. The PR
+adds `docs/gtfs-captures/<sha256>.md` with the capture time, source links,
+validation outcomes, and links to the run and available reports. Existing PRs,
+including closed ones, are reused on replay. The job uses the repository's
+GitHub Actions permission to create PRs. Canonical mapping review and timetable
+release approval remain separate steps.
 
 For a local smoke test after publication:
 
