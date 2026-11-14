@@ -1,4 +1,4 @@
-name: Inspect and open review for public GTFS schedule capture
+name: Inspect public GTFS schedule capture
 
 on:
   repository_dispatch:
@@ -70,7 +70,8 @@ jobs:
         id: artifact
         if: always()
         with:
-          name: gtfs-inspection-${{ github.run_id }}
+          # Reruns keep their own reports and preserve links from earlier attempts.
+          name: gtfs-inspection-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             ${{ runner.temp }}/gtfs-report.json
             ${{ runner.temp }}/gtfs-independent/
@@ -97,49 +98,50 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           BASE_BRANCH: ${{ github.event.repository.default_branch }}
           SNAPSHOT_ORIGIN: ${{ vars.GTFS_SNAPSHOT_BASE_URL }}
-          SHA256: ${{ needs.inspect.outputs.sha256 }}
+          SNAPSHOT_SHA256: ${{ needs.inspect.outputs.sha256 }}
           RETRIEVED_AT: ${{ needs.inspect.outputs.retrieved-at }}
           INDEPENDENT_OUTCOME: ${{ needs.inspect.outputs.independent-outcome }}
           INSPECTION_OUTCOME: ${{ needs.inspect.outputs.inspection-outcome }}
           ARTIFACT_URL: ${{ needs.inspect.outputs.artifact-url }}
         run: |
-          branch="gtfs-review/$SHA256"
-          ref="refs/heads/$branch"
+          review_branch="gtfs-review/$SNAPSHOT_SHA256"
+          review_ref="refs/heads/$review_branch"
           existing_pr=$(gh api --method GET "repos/$GITHUB_REPOSITORY/pulls" \
-            -f state=all -f head="$GITHUB_REPOSITORY_OWNER:$branch" \
+            -f state=all -f head="$GITHUB_REPOSITORY_OWNER:$review_branch" \
             --jq '.[0].html_url // empty')
           if [[ -n "$existing_pr" ]]; then
             echo "Snapshot review already exists at $existing_pr"
             exit 0
           fi
 
-          title="chore(gtfs): review schedule snapshot ${SHA256:0:12}"
-          remote_ref=$(git ls-remote --refs origin "$ref")
-          if [[ -z "$remote_ref" ]]; then
+          title="chore(gtfs): review schedule snapshot ${SNAPSHOT_SHA256:0:12}"
+          # A previous attempt may have pushed the branch before PR creation failed.
+          existing_ref=$(git ls-remote --refs origin "$review_ref")
+          if [[ -z "$existing_ref" ]]; then
             run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
             origin="${SNAPSHOT_ORIGIN%/}"
-            file="docs/gtfs-captures/$SHA256.md"
+            record_path="docs/gtfs-captures/$SNAPSHOT_SHA256.md"
             mkdir -p docs/gtfs-captures
-            cat > "$file" <<EOF
+            cat > "$record_path" <<EOF
           # LTA train GTFS snapshot
 
-          - Retrieved at: $RETRIEVED_AT
-          - ZIP SHA-256: \`$SHA256\`
-          - Source files: [Capture receipt]($origin/captures/schedule/$SHA256.json) · [GTFS ZIP]($origin/blobs/schedule/$SHA256.zip)
-          - Independent validator: $INDEPENDENT_OUTCOME
-          - MRTDown inspection: $INSPECTION_OUTCOME
+          - Retrieved at $RETRIEVED_AT
+          - ZIP SHA-256 \`$SNAPSHOT_SHA256\`
+          - [Capture receipt]($origin/captures/schedule/$SNAPSHOT_SHA256.json) and [source ZIP]($origin/blobs/schedule/$SNAPSHOT_SHA256.zip)
+          - Independent validator result \`$INDEPENDENT_OUTCOME\`
+          - MRTDown inspection result \`$INSPECTION_OUTCOME\`
           - [GitHub Actions run]($run_url)
           EOF
             if [[ -n "$ARTIFACT_URL" ]]; then
-              printf '%s\n' "- [Download inspection and validation reports]($ARTIFACT_URL)" >> "$file"
+              printf '%s\n' "- [Download available reports]($ARTIFACT_URL)" >> "$record_path"
             fi
-            git add -- "$file"
+            git add -- "$record_path"
             git -c user.name='github-actions[bot]' \
               -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
               commit -m "$title" -m 'Co-Authored-By: Codex <noreply@openai.com>'
-            git push origin "HEAD:$ref"
+            git push --force-with-lease="$review_ref:" origin "HEAD:$review_ref"
           fi
 
           gh pr create --repo "$GITHUB_REPOSITORY" --base "$BASE_BRANCH" \
-            --head "$branch" --title "$title" \
+            --head "$review_branch" --title "$title" \
             --body "Review the new LTA train GTFS capture. The added record links the source ZIP and inspection results. Check validation findings, service-date coverage, and mapping changes before preparing a timetable release."
