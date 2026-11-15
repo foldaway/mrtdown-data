@@ -1,104 +1,25 @@
 # Agent Map
 
-This file is the entry point for coding agents. Keep it short. Put durable details
-in `docs/` and link to them from here.
+[README](README.md) covers setup, dataset layout, and package ownership. Start
+with the [documentation index](docs/README.md) for operating guides and review
+evidence. See the [data overhaul split](docs/plans/completed/data-overhaul-split.md)
+for the history of the package, data, workflow, and deployment boundaries.
 
-## Current State
+## Checks and operations
 
-This repository is the canonical target-layout MRTDown data repository. The
-legacy runtime, API, DuckDB generator, and Fly deploy surfaces have been removed
-from this repo.
+- Run `npm run check` for lint, dependency boundaries, and documentation checks.
+- Run `npm test` for deterministic tests and `npm run data:validate` for canonical
+  data changes. See [package scripts](package.json) for scoped builds and tests.
+- Paid model evaluations and semantic replay need an intentional run with
+  `OPENAI_API_KEY`. See the [triage guide](packages/triage/README.md).
+- Follow the [station layout](docs/data/station-layout.md) and
+  [public holiday](docs/data/public-holidays.md) guides for canonical imports.
 
-- `data/{station,line,service,operator,town,landmark,public-holiday,issue}` contains the
-  canonical target-layout data.
-- `packages/core` contains shared schemas and pure period helpers.
-- `packages/ingest-contracts` contains the published webhook payload schemas
-  shared by external evidence producers and the triage ingester.
-- `packages/fs` contains file-backed repositories and writers for the target
-  data layout.
-- `packages/triage` contains LLM-assisted evidence triage and replay utilities.
-- `packages/cli` contains the command-line entry point for validating,
-  inspecting, creating, and generating target-layout data artifacts.
-- `fixtures/generated/data` is generated on demand for package and CLI tests.
-- `fixtures/triage-regressions` contains checked-in historical ingestion
-  outcomes for deterministic corpus inspection and isolated semantic replay.
+## Proposals and plans
 
-The data-overhaul split sequence is complete. Keep
-`docs/plans/completed/data-overhaul-split.md` as historical context when
-changing package, data, workflow, or deploy surfaces.
-
-## Target Layout
-
-The target architecture is a package/data repository:
-
-- `packages/core`: schemas, shared period helpers, and state helpers.
-- `packages/ingest-contracts`: external ingest webhook payload schemas and
-  inferred TypeScript types.
-- `packages/fs`: file-backed repositories and writers. It depends on `core`.
-- `packages/triage`: LLM-assisted evidence triage and replay utilities. It may
-  depend on `core`, `fs`, and `ingest-contracts`.
-- `packages/cli`: command-line entry point that wires packages together.
-- `data/{station,line,service,operator,town,landmark,public-holiday}`: canonical static
-  entities.
-- `data/issue/YYYY/MM/<issue_id>/`: append-only issue records with
-  `issue.json`, `evidence.ndjson`, and `impact.ndjson`.
-- `fixtures/generated/data`: on-demand generated fixture data for tests and
-  examples.
-- `fixtures/triage-regressions`: checked-in historical ingestion cases and
-  semantic expectations.
-
-## Commands
-
-- `npm ci`: install dependencies from the lockfile.
-- `npm run typecheck`: compile-check target packages.
-- `npm run build`: build all target packages with Turborepo.
-- `npm run build:packages`: build all target packages with Turborepo.
-- `npm run build:core`: compile the target `@mrtdown/core` package.
-- `npm run build:ingest-contracts`: compile the target
-  `@mrtdown/ingest-contracts` package.
-- `npm run build:fs`: compile the target `@mrtdown/fs` package.
-- `npm run build:triage`: compile the target `@mrtdown/triage` package.
-- `npm run build:cli`: compile the target `@mrtdown/cli` package.
-- `npm test`: run deterministic tests.
-- `npm run test:packages`: run all target package tests with Turborepo.
-- `npm run test:core`: run `@mrtdown/core` deterministic tests.
-- `npm run test:ingest-contracts`: run `@mrtdown/ingest-contracts`
-  deterministic tests.
-- `npm run test:fs`: run `@mrtdown/fs` deterministic tests.
-- `npm run test:triage`: run `@mrtdown/triage` deterministic tests.
-- `npm run test:eval`: run model-dependent `@mrtdown/triage` evals. This is
-  paid and must be run intentionally with the package's documented environment
-  variables.
-- `npm run test:cli`: run `@mrtdown/cli` deterministic tests.
-- `npm run lint`: run Biome formatting and lint checks across repository source
-  and documentation.
-- `npm run data:validate`: validate canonical `data` with the target CLI.
-- `npm run data:import:lta-station-exits -- <geojson>`: replace station layouts
-  with the supplied LTA MRT Station Exit GeoJSON dataset.
-- `npm run data:import:public-holidays -- <complete-api-response.json> --checked-on <date> --source-updated-on <date> [--apply]`:
-  review or import shared public-holiday year calendars. See
-  `docs/public-holidays.md`.
-- `npm run data:platforms:infer -- [--apply] [--write <report>]`: report or
-  conservatively apply same-line platform label inference from reviewed
-  observations.
-- `npm run fixtures:validate`: generate and validate fixture data with the
-  target CLI.
-- `npm run pages:build`: build the static GitHub Pages data artifact.
-- `npm run ingest:webhook`: process incoming webhook evidence with
-  `@mrtdown/triage`.
-- `npm run triage:regressions -- --list`: validate and list the historical
-  ingestion regression corpus without model calls or canonical writes.
-- `npm run triage:regressions -- --case <id> --replay`: run paid semantic
-  replay against a temporary copy of the recorded base revision. Requires
-  `OPENAI_API_KEY`.
-- `npm run check`: run harness checks that should stay fast and deterministic.
-- `npm run check:boundaries`: enforce package import boundaries when packages
-  exist.
-- `npm run check:docs`: verify repo-relative documentation links.
-
-For the target package architecture, each split PR should keep these commands
-truthful in its own branch and update this file only when the branch changes
-the repository shape.
+Follow the [writing guidance](docs/README.md#writing-docs-and-proposals).
+Use a checklist for routine work and the [execution plan template](docs/plans/template.md)
+when the [planning guide](docs/plans/README.md) calls for a versioned plan.
 
 ## Review Rules
 
@@ -122,19 +43,3 @@ the repository shape.
   existing co-author trailers and add trailers for any other contributors.
 - Do not merge temporary branch names, one-off deploy triggers, or local
   generated artifacts.
-
-## Deeper Docs
-
-- `README.md`: repository overview and commands.
-- `docs/plans/README.md`: active plans, completed reports, and durable tech
-  debt.
-- `docs/plans/completed/data-overhaul-split.md`: completed split sequence for
-  the data overhaul.
-- `docs/plans/completed/ingest-contracts-package.md`: completed ingest
-  contracts package plan.
-- `docs/plans/completed/legacy-source-data-removal.md`: Step 7.5 source-data
-  removal report.
-- `docs/plans/completed/runtime-removal-deploy-cleanup.md`: Step 8 runtime and
-  deploy cleanup report.
-- `CLAUDE.md`: Claude-specific compatibility entry point.
-- `.github/copilot-instructions.md`: Copilot compatibility entry point.

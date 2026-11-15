@@ -46,7 +46,7 @@ metadata. It does not replace the upstream licence.
 
 Each published schedule must identify its source capture and access date and
 carry the LTA attribution and licence link. See the
-[schedule publication policy](https://github.com/foldaway/mrtdown-data/blob/main/docs/gtfs-schedule-publication.md) for required
+[schedule publication policy](https://github.com/foldaway/mrtdown-data/blob/main/docs/gtfs/operations/schedule-publication.md) for required
 notices, fixture retention, and release conditions.
 
 ### LTA MRT Station Exit
@@ -78,8 +78,7 @@ Git history preserves contribution and review context.
 
 Photographs, Google Maps, Google Street View, Google-hosted user photos,
 proprietary operator maps, and website material are not permitted canonical
-platform-data sources. The complete source policy is documented in
-`docs/plans/active/station-layout-data.md`.
+platform-data sources. See the [station layout source policy](https://github.com/foldaway/mrtdown-data/blob/main/docs/data/station-layout.md) for details.
 
 ## Source Code
 

@@ -14,7 +14,10 @@ if (!schedule || !alerts || !updates || !output) {
 await mkdir(output);
 const scheduleReport = await inspectGtfsDirectory(
   schedule,
-  new URL('../docs/gtfs-historical-schedule-manifest.json', import.meta.url),
+  new URL(
+    '../docs/gtfs/reviews/audits/gtfs-historical-schedule-manifest.json',
+    import.meta.url,
+  ),
 );
 await writeFile(
   join(output, 'schedule-report.json'),

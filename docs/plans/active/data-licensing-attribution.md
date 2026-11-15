@@ -1,5 +1,57 @@
 # Data Licensing And Attribution Plan
 
+## Purpose
+
+- Publish a clear top-level license for MRTDown-authored data.
+- Keep code licensing separate from data licensing.
+- Preserve upstream attribution and rights for third-party evidence sources.
+- Avoid touching every historical evidence row when rights can be inferred from
+  `sourceUrl` or source class.
+- Add validation that every evidence row resolves to exactly one rights rule.
+- Generate attribution notices for the Pages/archive artifact.
+- Make source-specific rights explicit for LTA/DataMall, X/Twitter, Reddit,
+  CNA/Mediacorp, Straits Times/SPH, direct crowd reports, and other recurring
+  evidence sources.
+- Keep deterministic tests separate from any live network or platform checks.
+
+### Non-Goals
+
+- This plan does not provide legal advice or decide final counsel-approved
+  wording.
+- This plan does not relicense third-party text, posts, article bodies,
+  screenshots, trademarks, or upstream datasets that MRTDown does not own.
+- This plan does not require per-row rights metadata for rows that can be
+  resolved through a source registry.
+- This plan does not fetch live platform terms during validation.
+- This plan does not remove evidence text from historical records unless a
+  later legal review requires it.
+
+## Progress
+
+- [x] (2026-06-29) Add separate data and code licenses and a versioned source
+  registry in [PR #337](https://github.com/foldaway/mrtdown-data/pull/337).
+- [ ] Reconcile the validation and attribution milestones below with the
+  current export and manifest, then identify the remaining coverage gaps.
+- [ ] Resolve inbound terms for crowd reports and verify the public export
+  policy for their text.
+
+## Surprises & Discoveries
+
+Pages already redacts source text and rendered content when the registry
+forbids public export. See the [Pages export overview](../../../README.md#build-and-publish-exports).
+
+## Decision Log
+
+- **2026-06-29** — Use separate [data](../../../LICENSE-DATA.md) and
+  [code](../../../LICENSE-CODE.md) licenses alongside the source registry so
+  canonical data, code, and third-party material have explicit terms.
+
+## Outcomes & Retrospective
+
+The [source registry](../../../data/rights/source-registry.json) and license
+notices are tracked in the repository. Recheck the proposed attribution files
+and acceptance criteria against a built Pages artifact before closing the plan.
+
 ## Context
 
 `mrtdown-data` publishes reviewed Singapore rail data, issue records, evidence,
@@ -25,33 +77,9 @@ Related references:
 - `scripts/build-pages-artifact.mjs`
 - `docs/plans/completed/crowdsourced-reports.md`
 
-## Goals
+## Plan of Work
 
-- Publish a clear top-level license for MRTDown-authored data.
-- Keep code licensing separate from data licensing.
-- Preserve upstream attribution and rights for third-party evidence sources.
-- Avoid touching every historical evidence row when rights can be inferred from
-  `sourceUrl` or source class.
-- Add validation that every evidence row resolves to exactly one rights rule.
-- Generate attribution notices for the Pages/archive artifact.
-- Make source-specific rights explicit for LTA/DataMall, X/Twitter, Reddit,
-  CNA/Mediacorp, Straits Times/SPH, direct crowd reports, and other recurring
-  evidence sources.
-- Keep deterministic tests separate from any live network or platform checks.
-
-## Non-Goals
-
-- This plan does not provide legal advice or decide final counsel-approved
-  wording.
-- This plan does not relicense third-party text, posts, article bodies,
-  screenshots, trademarks, or upstream datasets that MRTDown does not own.
-- This plan does not require per-row rights metadata for rows that can be
-  resolved through a source registry.
-- This plan does not fetch live platform terms during validation.
-- This plan does not remove evidence text from historical records unless a
-  later legal review requires it.
-
-## Licensing Policy
+### Licensing Policy
 
 Use separate licensing layers:
 
@@ -70,7 +98,7 @@ The top-level repository license should state that `CC-BY-4.0` applies to
 MRTDown-authored canonical data and generated data exports, except where a file
 or generated notice identifies third-party material or upstream terms.
 
-## Source Registry
+### Source Registry
 
 Add a canonical registry for source classes:
 
@@ -136,7 +164,7 @@ them to validate the published machine-readable attribution file. Keep matching
 and filesystem behavior outside `core`; `core` should define the data contract,
 not repository I/O.
 
-## Rights Categories
+### Rights Categories
 
 Start with these recurring categories:
 
@@ -160,7 +188,7 @@ article URL should classify the article text as third-party publisher content,
 while allowing MRTDown-authored factual summaries or normalized claims to be
 licensed separately.
 
-## Evidence Row Boundary
+### Evidence Row Boundary
 
 Do not make `evidence.ndjson` one licensed blob. Treat each line as an evidence
 record whose rights are resolved at validation/export time.
@@ -196,7 +224,7 @@ If a future schema separates quoted source text from MRTDown-authored claims,
 license claims under MRTDown's data license and mark quoted source text under
 the upstream source rule.
 
-## Generated Attribution
+### Generated Attribution
 
 Add generated attribution artifacts to the Pages/archive build:
 
@@ -233,26 +261,6 @@ near the existing manifest/archive links. If the generated HTML later grows
 source summaries, keep it concise: show the data license, a third-party material
 notice, and links to the machine-readable and human-readable attribution
 artifacts. Do not duplicate the full attribution index in HTML.
-
-## Validation
-
-Validation should fail when:
-
-- an evidence row has no `sourceUrl` and no allowed source override;
-- an evidence row matches no source registry rule;
-- an evidence row matches multiple source registry rules without a priority or
-  explicit disambiguation;
-- a source registry rule references an unknown rights id;
-- a rule with an open-data rights id lacks an attribution template;
-- a public export would include `unknown-third-party` content.
-
-Validation should warn, not fail, when:
-
-- a source URL host is known but the path pattern is more general than ideal;
-- attribution templates cannot fill optional values such as author or publisher;
-- historical rows use legacy hosts that resolve to the same source class.
-
-## Phases
 
 ### Phase 1: Policy And Registry
 
@@ -322,7 +330,7 @@ Exit criteria:
   classification.
 - Direct user submissions have an explicit rights path.
 
-## Open Questions
+### Open Questions
 
 - Should the repository license use a single `LICENSE` file with carve-outs, or
   a `LICENSE-DATA.md` plus separate package code license?
@@ -336,7 +344,7 @@ Exit criteria:
 - Should counsel review happen before Phase 1 lands or before Pages
   publication changes?
 
-## Review Notes
+### Review Notes
 
 - Keep legal wording changes separate from mechanical source-registry and
   generator implementation when practical.
@@ -345,3 +353,21 @@ Exit criteria:
 - Prefer conservative third-party classifications over broad reuse claims.
 - Keep generated attribution and hand-authored registry changes in separate
   commits or PRs when review volume becomes large.
+
+## Validation and Acceptance
+
+Validation should fail when:
+
+- an evidence row has no `sourceUrl` and no allowed source override;
+- an evidence row matches no source registry rule;
+- an evidence row matches multiple source registry rules without a priority or
+  explicit disambiguation;
+- a source registry rule references an unknown rights id;
+- a rule with an open-data rights id lacks an attribution template;
+- a public export would include `unknown-third-party` content.
+
+Validation should warn, not fail, when:
+
+- a source URL host is known but the path pattern is more general than ideal;
+- attribution templates cannot fill optional values such as author or publisher;
+- historical rows use legacy hosts that resolve to the same source class.

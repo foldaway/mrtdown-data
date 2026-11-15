@@ -1,44 +1,31 @@
 # LTA GTFS Schedule And Realtime Reconciliation Plan
 
-## Context
+## Purpose
 
-GitHub issue [#157](https://github.com/foldaway/mrtdown-data/issues/157) asks
-for GTFS Static and Realtime support. LTA now supplies first-party train data as
-downloaded files:
+Use LTA schedule files to provide exact scheduled arrivals keyed to canonical
+MRTDown stations and services. Evaluate service alerts as operational evidence
+and collect trip-update samples before designing live arrival behavior.
 
-- a GTFS Schedule archive;
-- a GTFS Realtime Trip Updates protobuf; and
-- a GTFS Realtime Service Alerts protobuf.
+## Progress
 
-The supplied 2026-08-13 captures remove the need to design this work from the
-endpoint documentation alone. The schedule is already a detailed timetable,
-the alert feed contains useful canonical-evidence candidates, and the trip
-update capture contains no entities. This plan therefore starts with offline
-file inspection and reconciliation. It does not start with a synthetic
-timetable generator or a live realtime runtime.
+- [x] (2026-10-14) Add read-only snapshot inspection, independent validation,
+  and historical audit tooling.
+- [x] (2026-11-10) Add reviewed combined timetable packaging and Pages publication
+  in [PR #475](https://github.com/foldaway/mrtdown-data/pull/475).
+- [x] (2026-11-14) Open a review PR for each newly seen verified snapshot hash
+  in [PR #476](https://github.com/foldaway/mrtdown-data/pull/476).
+- [ ] Prove the service-alert evidence ingestion path with captured alerts.
+- [ ] Record normal-service trip-update behavior and collect nonempty captures
+  during disruptions or planned adjustments to assess matching and freshness.
 
-`mrtdown-data` remains the reviewed data and schema repository. It can own
-snapshot inspection, stable mappings, validation, canonical alert evidence,
-and static archive outputs. Account keys, temporary download URLs, polling,
-freshness guarantees, and live consumer serving belong in an external producer
-or runtime.
+## Surprises & Discoveries
 
-Related references:
-
-- `README.md`
-- `docs/plans/active/data-licensing-attribution.md`
-- `docs/plans/completed/data-overhaul-split.md`
-- `packages/core/src/schema/Station.ts`
-- `packages/core/src/schema/Service.ts`
-- `packages/fs/src/manifest.ts`
-- `scripts/build-pages-artifact.mjs`
-
-## Observed 2026-08-13 Captures
+### Observed 2026-08-13 Captures
 
 This is a structural audit of the supplied files, not a claim about every LTA
 publication or the live endpoints' cadence.
 
-### GTFS Schedule
+#### GTFS Schedule
 
 `feed_info.txt` identifies LTA as the publisher, version `0.1`, with a feed
 range of 2025-01-01 through 2026-12-31. The archive contains:
@@ -81,7 +68,7 @@ stops.txt           5b61242c71b3274d3c218519582c3f255fb61ffb42548a4c51394c2a136d
 trips.txt           9a0ba496df57fa0ca13a43690e827d7119c655c0223849cbff80fc6f38be2e54
 ```
 
-### GTFS Realtime Service Alerts
+#### GTFS Realtime Service Alerts
 
 The supplied `gtfs_realtime.pb` has SHA-256
 `63f054a690fa6d0358487af32572d68141cb091683ab193586e55d4638915e02`.
@@ -106,7 +93,7 @@ range, not necessarily the same range described in prose. Preserve the
 provider range and source text independently; do not infer or overwrite one
 from the other before triage.
 
-### GTFS Realtime Trip Updates
+#### GTFS Realtime Trip Updates
 
 The supplied `gtfs_trip_update.pb` has SHA-256
 `198dbfb4d4a9cdb537d83862b940e93f549a3f3d9d7f26d5f12952537709e597`.
@@ -118,191 +105,590 @@ feed is always empty, nor does it provide enough evidence to design trip
 matching, delay propagation, cancellation, freshness, or caching behavior.
 Those details are deferred until non-empty captures exist.
 
-## Reconciliation Decisions
+## Decision Log
 
-### Static schedule role
+- Keep authenticated download, polling, and live serving outside this
+  repository.
+- Use LTA's exact schedule as the candidate timetable source; do not build an
+  MRTDown frequency-derived feed in the initial scope.
+- Keep provider ids separate from canonical MRTDown ids through versioned
+  mappings.
+- Publish a compact LTA-derived scheduled-arrivals artifact keyed by canonical
+  MRTDown identities, while retaining provider trip and stop identities for
+  later realtime joins.
+- Start canonical realtime work with service alerts because the supplied sample
+  maps to the existing evidence model.
+- Defer trip-update runtime semantics until non-empty provider captures exist.
+- Keep vehicle positions out of scope.
 
-Treat the LTA schedule as the candidate source for exact scheduled trips,
-calendars, platforms, and stop times. Keep canonical MRTDown entities as the
-reviewed identity and topology model. Reconcile the two; do not import provider
-ids as canonical ids and do not generate an approximate timetable in parallel.
+## Outcomes & Retrospective
 
-The initial route mapping is many-to-one:
+The repository can package an approved combined timetable for Pages using
+[private Tigris inputs](../../gtfs/operations/timetable-release.md#deploying-the-combined-release-through-github-actions).
+Use the [GTFS guides](../../gtfs/README.md) for current capture, release, and
+import procedures. The entries below record what was known at each date.
 
-| LTA route ids | MRTDown line id |
-| --- | --- |
-| `NSL` | `NSL` |
-| `EWL`, `EWL_CGL` | `EWL` |
-| `NEL` | `NEL` |
-| all `CCL_*` routes | `CCL` |
-| `DTL` | `DTL` |
-| `TEL` | `TEL` |
-| `BP` | `BPLRT` |
-| `SK` | `SKLRT` |
-| `PG` | `PGLRT` |
+### Progress Log
 
-CRL and JRL are canonical future lines and are absent from this capture.
-Provider agencies `SMRT` and `SBST` map explicitly to canonical operators
-`SMRT_TRAINS` and `SBS`.
+<details>
+<summary>Historical milestones through October 2026</summary>
 
-Map station parents and platform children using reviewed station codes and
-sequence context. Do not assume names alone are unique or stable. Treat LTA
-`service_id` as calendar identity, not as a canonical MRTDown service id.
-Derive service-pattern matches from the ordered stop sequence, route,
-direction, and applicable calendar, then review ambiguous or unmatched cases.
+- 2026-10-23: Added reviewed rollback for an inclusive service-date range and
+  exact canonical request scope. It binds current and older retained artifact
+  and source hashes, checks review timing, revalidates target eligibility and
+  exposes per-date audit results without changing source lineage or correction
+  revisions. Invalid applicable overrides make that date unavailable. The site
+  pull/database/API/UI and producer-backed partial-scope coverage remain ahead;
+  site adoption also needs the pending package release. Real mapping/release
+  approvals are still outstanding. See
+  [reviewed rollback](../../gtfs/operations/timetable-import.md#reviewed-rollback-for-a-date-and-scope).
 
-Mappings must record the static snapshot manifest, the exact canonical
-repository commit, and a schedule-topology fingerprint used for reconciliation.
-Compute that fingerprint from a versioned normalized projection rather than the
-full-record hashes in `manifest.json`:
+- 2026-10-23: Added a consumer reader for the optional Pages timetable bundle.
+  It verifies advertised artifact/release hashes, companion files and bound
+  mapping/release reviews before returning bytes for canonical import. An
+  absent entry stays optional; an invalid advertised bundle fails. Synthetic
+  ZIP-to-import-to-overnight-query tests cover both mapping formats. The site
+  pull/database integration, scoped rollback and real mapping/release approvals
+  remain ahead. See [Pages bundle reading](../../gtfs/operations/timetable-import.md#reading-a-pages-bundle).
 
-- operators: `id`;
-- lines: `id`, `type`, `serviceIds`, and operator ids with their effective
-  dates;
-- stations: `id`, station-code line/code/effective-date tuples, and platform
-  `id`, `label`, `lineId`, `serviceIds`, and `boardingStatus`; and
-- services: `id`, `lineId`, and revision ids/effective dates with each ordered
-  station id and display code.
+- 2026-10-23: Added local boarding-departure queries over a fixed retained-history
+  snapshot. Each Singapore service date selects its own eligible artifact;
+  overnight and current-day trips merge before limiting results, including
+  source offsets beyond 48 hours. Results retain precision, platform groups,
+  source occurrence ids and artifact provenance. Missing files, unavailable
+  dates and untimed boardable stops remain explicit. Site integration, scoped
+  rollback and real mapping/release approvals remain ahead. See
+  [retained departures](../../gtfs/reference/retained-departures.md).
 
-Sort records and unordered identifier arrays before hashing, while preserving
-service-path order. Exclude names, colors, addresses, geography, exits, aliases,
-first/last-train data, frequency estimates, operating hours, source metadata,
-issues, towns, landmarks, rights metadata, and `generatedAt`. Increment the
-fingerprint projection version when reconciliation begins to depend on another
-field. A new snapshot may reuse provider ids with changed content, and
-canonical topology may change while the same snapshot is reused, so reports
-must compare normalized records and identify both input revisions.
+- 2026-10-23: Added retained-version selection for a Singapore service date and
+  canonical station/service/destination/platform scope. Selection follows
+  reviewed lineage, checks feed range, installed topology, bytes and canonical
+  references, and falls back to older eligible versions with recorded reasons.
+  Completeness currently requires all active source trips to be assigned on the
+  date; partial artifacts need finer producer-backed scope evidence. Inactive
+  calendars remain distinct from missing coverage. Scoped rollback and site
+  departure queries remain ahead. See
+  [version selection](../../gtfs/operations/timetable-import.md#selecting-a-version-for-a-request).
 
-### Static publication role
+- 2026-10-23: Added a private append-only timetable store that composes byte and
+  canonical verification with source admission against its actual retained
+  predecessor. Complete versions and import reviews commit with one rename;
+  concurrent writers are refused and failed staging leaves history intact.
+  Reimports preserve original receipts, and older source snapshots cannot be
+  appended as fresh successors. Service-date/scope selection, rollback overrides
+  and site integration remain ahead. See
+  [retained imports](../../gtfs/operations/timetable-import.md#retaining-imported-versions).
 
-Use a hybrid model: keep canonical MRTDown identity and topology, map the LTA
-schedule back to those entities, and publish a compact scheduled-arrivals
-artifact for consumers such as `mrtdown-site`. Apply source-backed corrections
-to canonical data when reconciliation reveals a genuine canonical error, but
-do not rename or reshape canonical entities merely to mirror provider ids.
+- 2026-10-23: Added read-only artifact verification against installed canonical
+  topology, references, ordered paths, effective dates and boarding rules.
+  Compact assignment ranges are checked against their source calendars, with
+  inactive dates skipped and invalid endpoints or feed bounds rejected. This
+  complements source admission; atomic storage, retained history, scope
+  selection and site queries remain ahead. See
+  [canonical import checks](../../gtfs/operations/timetable-import.md#checking-installed-canonical-data).
 
-The scheduled-arrivals artifact contains:
+- 2026-10-22: Added shared, pure source-admission checks for byte-verified
+  timetable artifacts. Baselines, successor lineage, equal-version conflicts
+  and increasing same-source corrections require exact reviewed identities.
+  Retrieval times never establish ordering. This begins the import policy;
+  canonical validation, retained history, atomic installation and site queries
+  remain ahead. Real mapping and release approvals remain outstanding. See
+  [import checks](../../gtfs/operations/timetable-import.md).
 
-- the LTA snapshot manifest, exact canonical repository commit,
-  schedule-topology fingerprint, mapping version, monotonically increasing
-  artifact correction revision, feed range, and `Asia/Singapore` timezone;
-- LTA calendars and exceptions without expanding every service date;
-- canonical station, line, service, platform, and destination identities;
-- scheduled arrival and departure times, preserving GTFS times beyond 24:00,
-  plus each stop occurrence's GTFS pickup, drop-off, and `timepoint` precision
-  behavior; and
-- provider route, trip, stop, stop-sequence, and calendar identities needed to
-  reconcile later Trip Updates.
+- 2026-10-21: Added opt-in Pages/archive integration through the release CLI.
+  It checks the source and reviews against the canonical data actually being
+  packaged, includes all seven bundle files in both root archives, and binds
+  timetable and release-report digests into the root manifest. Download links
+  show source attribution, licence, retrieval time and coverage. Blocked builds
+  preserve existing output. Default builds remain offline without a timetable;
+  real approvals and site import are still outstanding. See
+  [Pages packaging](../../gtfs/operations/timetable-release.md#packaging-a-release-for-pages).
 
-The supplied `stop_times.txt` does not include `pickup_type` or
-`drop_off_type`, or `timepoint`, so this snapshot uses the GTFS defaults. The
-inspector and artifact schema must nevertheless preserve those columns when
-later snapshots provide them; they are occurrence-level rules and cannot be
-inferred from a canonical platform's general boarding status or from the time
-value alone.
+- 2026-10-21: Added `gtfs release` for checking a release or writing a reviewed
+  bundle locally. Each attempt fetches current terms independently from the
+  fixed official LTA URLs, uses the command's clock and rejects configuration
+  overrides for either. Missing or mismatched reviews block export with a
+  failing exit status. Pages and site integration remain ahead; real mapping
+  and release approvals are still outstanding. See
+  [release CLI](../../gtfs/operations/timetable-release.md#checking-and-exporting-from-the-cli).
 
-Publish it as a generated, versioned Pages/archive artifact with its own
-manifest hash. It is derived from LTA data and must carry the applicable
-attribution and licence notice. The [schedule publication policy](../../gtfs-schedule-publication.md)
-records the reviewed standard terms and requires capture-specific release
-conditions to be confirmed before publication.
-Unchanged-feed redistribution may be
-added separately if useful and permitted, but it is not required for the first
-consumer.
+- 2026-10-18: Added local bundle export that rebuilds verified source inputs and
+  writes only after the release checks pass. The bundle retains the exact
+  timetable, manifest and notice bytes alongside mapping decisions, approvals,
+  release review and complete coverage, including deliberate exclusions. Blocked
+  releases write nothing; existing destinations and canonical-data paths are
+  refused. Pages publishing remains disabled and real mapping/release reviews
+  remain outstanding. See [reviewed export](../../gtfs/operations/timetable-release.md#exporting-a-reviewed-bundle).
 
-An MRTDown frequency-derived GTFS feed is not an initial outcome. Reconsider it
-only if a later audit identifies a concrete schedule gap that neither the LTA
-feed nor the scheduled-arrivals artifact can meet.
+- 2026-10-18: Added offline release-readiness checks for complete mapping
+  approval, an exact-artifact release review, redistribution status, current
+  terms identities and reviewed release timing. Changed terms or edited review
+  inputs require a new release review. Deliberate reviewed exclusions remain
+  visible coverage gaps; unresolved decisions still block. Inspection creates
+  no approval or publication, and current real inputs remain unapproved.
+  See [release readiness](../../gtfs/operations/timetable-release.md).
 
-### Service alerts role
+- 2026-10-18: Added source-backed artifact preparation from a verified capture,
+  canonical topology and version-2/3 mapping draft. Source and mapping hashes,
+  capture provenance, provider fields and explicit feed dates are derived before
+  serialization. Invalid inputs fail; unresolved/unapproved mappings and
+  trip/date gaps remain visible in the preparation result. This closes the
+  producer's source-consistency step while publication review and release
+  conditions remain open. See [artifact files](../../gtfs/reference/timetable-artifact.md).
 
-Service alerts are candidates for the existing issue/evidence/impact path. The
-first contract should cover only fields observed in the supplied sample plus
-the required GTFS Realtime envelope:
+- 2026-10-18: Added shared scheduled-timetable artifact metadata and exact-byte
+  preparation/verification helpers. Manifests bind the compact timetable and
+  attribution notice to hashes and sizes, preserving capture, mapping, canonical
+  topology, feed and correction metadata. Verification requires a trusted
+  manifest digest. Existing capture/reconciliation contracts now also live in
+  `core`, retaining their `fs` exports. Publication approval, source/metadata
+  consistency checks and importer lineage rules remain separate gates. See
+  [artifact files](../../gtfs/reference/timetable-artifact.md).
 
-- feed version, incrementality, optional feed timestamp, and retrieval time;
-- entity id, selected static snapshot manifest, and mapping version;
-- all populated selectors;
-- all active periods, preserving open bounds;
-- cause, effect, translations, and rider-facing URL; and
-- the exact normalized source text used by triage.
+- 2026-10-18: Added a compact assigned-timetable content schema and optional
+  `gtfs timetable --assignments ... --canonical-commit ...` preview. The verified
+  bundle shares canonical patterns, compresses assignment dates into exact ranges
+  and retains every source trip/calendar with explicit coverage gaps. All supplied
+  assignments pass combined validation before assembly. Mapping approval,
+  capture-specific release conditions and the publication envelope remain open;
+  generation remains blocked. See [assigned timetable](../../gtfs/reference/assigned-timetable.md).
 
-Whitespace-only headers fall back to the description for evidence formatting.
-The original fields remain in provenance. Route and agency selectors must map
-through the versioned static reconciliation; unmatched selectors are retained
-for diagnosis and are not guessed.
+- 2026-10-18: Recorded the standard LTA terms permitting derived schedules and
+  retained licensed fixtures, with a separate upstream notice in `LICENSE-DATA.md`.
+  Defined required source attribution, capture provenance and retention policy
+  for the future exporter. Capture-specific conditions and reviewed mappings
+  remain release requirements; no schedule artifact or provider fixture was
+  added. See [publication policy](../../gtfs/operations/schedule-publication.md).
 
-Use two separate idempotency identities. The processing/remap key contains the
-provider, feed type, selected static snapshot manifest, mapping version, entity
-id, and normalized source-payload digest, so a reconciliation change reruns
-selector matching. After mapping, compute a canonical-write key from provider,
-feed type, entity id, and a digest of the normalized alert semantics plus mapped
-canonical scope. If remapping produces the same canonical-write key, record the
-processing result as a reference to the existing evidence and append no evidence
-or impact events. Append an update only when the mapped canonical semantics
-change. Do not design disappearance-as-resolution behavior until at least two
-ordered captures demonstrate the provider's entity lifecycle. Do not accept
-`DIFFERENTIAL` feeds until an actual sample and ordering contract are audited.
+- 2026-10-18: Added local assigned-departure previews through `gtfs departures
+  --assignments ... --canonical-commit ...`. The preview verifies the full supplied
+  assignment set and pinned inputs, then returns canonical station, service,
+  destination and platform identities with source timing. Missing active-date
+  bindings fail; source-only inspection remains unchanged. Mapping coverage and
+  approval/publication gates remain open. See [assigned previews](../../gtfs/reference/trip-assignment-validation.md#preview-departures-with-canonical-identities).
 
-### Trip updates role
+- 2026-10-18: Added opt-in boarding-only departure queries in core and the source
+  CLI (`gtfs departures --boarding-only`). Candidates require pickup permission
+  and a later permitted alighting occurrence within the same trip; final timestamps
+  do not become onward boarding options. Raw access rules and default inspection
+  output remain intact. Mapping coverage, terminal platform evidence and approval
+  gates remain unchanged. See [boarding queries](../../gtfs/reference/scheduled-departure-windows.md#boarding-candidates-with-onward-travel).
 
-Trip updates remain a runtime concern, not canonical historical evidence. The
-only repository work before a non-empty sample is:
+- 2026-10-18: Added optional `--assignments` output to the scoped-review command.
+  A packet now includes the matched trip assignment document, verified coverage
+  report and summary binding to its mapping-draft digest. Existing mapping outputs
+  remain unchanged. This makes the full 12,106-trip compatibility check reproducible
+  through the review command; unresolved coverage and approval gates remain open.
+  See [review packet export](../../gtfs/reference/trip-assignment-validation.md#export-assignments-with-a-review-packet).
 
-- validate the GTFS Realtime envelope;
-- record capture and selected-static-snapshot provenance; and
-- report entity counts and timestamps without treating an empty feed as an
-  error.
+- 2026-10-18: Corrected interchange parent checks to validate snapshot station
+  identity independently of a child's service date. This removes the artificial
+  Marina Bay/Bayfront parent-code blocker while preserving dated child codes,
+  canonical paths and the CCL July 12 boundary. Source rows and canonical data
+  remain unchanged. All 12,106 proposed trip assignments now pass, covering
+  1,502,097 trip/date pairs with 990,143 source pairs still unassigned. Human
+  mapping review and publication remain gated. See the
+  [parent identity investigation](../../gtfs/reviews/mapping-disagreements.md#interchange-parent-identity).
 
-Collect non-empty captures during normal service and a disruption or planned
-adjustment. Once those exist, write a separate implementation plan from the
-observed combinations of trip descriptors, stop-time updates, schedule
-relationships, timestamps, and static-feed references. That later plan owns
-freshness, precedence, suppression, and cache semantics.
+- 2026-10-18: Added assignment proposals from version-2/3 scoped mapping drafts.
+  Matched cells expand to all their source trips, preserving literal occurrences
+  and complete platform alternatives. Draft review and combined assignment checks
+  must pass before a document returns; unresolved coverage stays unassigned and
+  generation remains gated. See [assignment preparation](../../gtfs/reference/trip-assignment-validation.md#prepare-assignments-from-mapping-decisions).
 
-Vehicle positions are out of scope unless LTA publishes them and a consumer
-need is identified.
+- 2026-10-18: Added optional assignment coverage with `gtfs validate-assignments
+  --coverage`. Reports count active source trip dates, retain exact unassigned
+  dates grouped by calendar and trip set, and distinguish inactive trips from
+  complete active coverage. Calendar exceptions and previous-service-day identity
+  remain intact. See [assignment coverage](../../gtfs/reference/trip-assignment-validation.md#report-unassigned-source-dates).
+  Coverage is informational; human mapping approval and publication remain gated.
 
-## Ownership Boundary
+- 2026-10-18: Added offline `gtfs validate-assignments` inspection. It verifies
+  capture and table hashes, checks the supplied canonical commit and actual topology
+  fingerprint, then runs combined assignment validation. Reports retain provenance,
+  normalized assignment hashes and supplied counts; failures preserve existing
+  output. See [verified local assignment checks](../../gtfs/reference/trip-assignment-validation.md#check-a-verified-local-capture).
+  Whole-snapshot coverage, Git-tree provenance, human approval and publication remain
+  separate gates; generation eligibility stays false.
 
-This repository owns:
+- 2026-10-18: Added batch validation for supplied trip assignments. One source
+  timetable supplies literal occurrence and calendar checks; every assignment
+  must also pass canonical path/date, source-stop, complete-platform, boarding
+  and route/operator checks. Overlapping scopes fail across each trip's complete
+  supplied assignment set. See [combined assignment validation](../../gtfs/reference/trip-assignment-validation.md).
+  Whole-snapshot coverage, provenance, human approval and publication remain gated.
 
-- deterministic offline inspection of supplied GTFS files;
-- versioned LTA-to-MRTDown mappings and reconciliation reports;
-- validation of references, coverage, and mapping drift;
-- generation and licensed publication of the scheduled-arrivals artifact;
-- the trusted service-alert ingest contract and canonical provenance; and
-- deterministic fixtures derived or retained under the applicable licence.
+- 2026-10-18: Added source route and operator-period checks for supplied binding
+  scopes and explicit aliases. The source trip/route/agency chain must be unique,
+  the mapped line must match the canonical pattern, and the selected operator must
+  cover every scoped service date on that line. Missing or conflicting references,
+  period gaps and malformed bounds fail. See [route/operator checks](../../gtfs/reference/scheduled-trip-patterns.md#source-route-and-operator-periods).
+  Source/calendar/stop checks, alias approval and publication remain separate gates.
 
-`mrtdown-data-crawler` is the external acquisition producer. Its DataMall
-pipeline retains originals and capture records in private Tigris; deployment is
-separate from this repository.
+- 2026-10-18: Added per-trip current boarding checks for supplied canonical
+  bindings. Every platform alternative must support the occurrence's pickup rule;
+  repeated visits are checked separately and the existing final alighting rule
+  remains intact. Literal source keys and canonical references validate before a
+  bound trip returns. See [boarding checks](../../gtfs/reference/scheduled-trip-patterns.md#current-platform-boarding-checks).
+  Historical allocation, date/source/calendar checks, agency/operator review,
+  mapping approval and publication remain separate gates.
 
-An external producer or runtime owns:
+- 2026-10-18: Added source-stop correspondence checks for supplied binding scopes.
+  Initially required child and parent codes to identify the station on every
+  scoped date; the later parent identity correction above supersedes that parent rule.
+  Literal platform labels must match the complete canonical alternative set.
+  Ambiguous identity, partial groups and malformed source references fail. See
+  [source stop correspondence](../../gtfs/reference/scheduled-trip-patterns.md#source-stop-correspondence).
+  Literal trip/calendar binding, agency/operator review, pickup compatibility,
+  mapping approval and publication remain separate gates.
 
-- DataMall account keys and authenticated dataset-link requests;
-- prompt download and durable storage of temporary linked files;
-- retrieval cadence, retries, and freshness monitoring;
-- live trip-update matching and consumer serving; and
-- alert polling and ordered delivery to the canonical ingester.
+- 2026-10-18: Added canonical path/date checks for supplied binding scopes.
+  Ordered full paths, short workings and bounded closed-loop rotations must fit
+  the selected revision, and every scoped date must have revision coverage and
+  one complete alignment of active canonical display codes. Conflicting path
+  evidence cannot be combined. Shared path matching preserves reconciliation's
+  existing rules. See [canonical scope validity](../../gtfs/reference/scheduled-trip-patterns.md#canonical-path-and-date-validity).
+  Source matching, mapping approval and publication remain gated.
 
-The producer handoff records the LTA dataset or endpoint identity, a
-discriminated feed kind (`schedule`, `trip_updates`, or `service_alerts`),
-`retrieved_at`, any provider publication timestamp, the file manifest or
-digest, an immutable archive reference, and licence attribution. Feed kind is
-required even when a realtime file has no entities because its header does not
-identify the originating dataset. The handoff never records the account key or
-temporary URL.
+- 2026-10-17: Added departure-window lookup with date-scoped canonical patterns.
+  Results retain station, service, destination and every platform alternative
+  alongside source timing and access rules. Scope errors fail before window
+  filtering. Source and patterned lookups share boundary, ordering and duplicate
+  checks. See [canonical departure windows](../../gtfs/reference/scheduled-departure-windows.md#departures-with-canonical-patterns).
+  Mapping approval and publication gates remain open.
 
-Before artifact generation, an authorized acquisition step must materialize the
-exact schedule snapshot and its handoff record in the build workspace. The
-offline generator accepts those local paths, verifies the recorded digest, and
-refuses to build when either input is missing or mismatched. The Pages build
-does not download LTA data; the acquisition system passes the verified input as
-a retained licensed file or a protected pre-build artifact according to the
-confirmed terms.
+- 2026-10-17: Added service-date scopes for source-trip pattern bindings. Active
+  dates require exactly one applicable scope; gaps, overlaps, duplicate dates and
+  inactive scoped dates fail. All bindings validate before an inactive result can
+  return. Enabled trips retain canonical references alongside Singapore-derived
+  UTC instants. See [date scopes](../../gtfs/reference/scheduled-trip-bindings.md#service-date-scopes).
+  Canonical effective-date review, mapping approval and publication remain gated.
 
-## Phases
+- 2026-10-17: Added explicit source-occurrence binding for canonical trip
+  patterns. The structural join checks literal trip, stop and sequence identity
+  and equal occurrence counts before combining timing and canonical references.
+  Repeated visits, large raw sequences, missing times and platform alternatives
+  remain intact. See [trip bindings](../../gtfs/reference/scheduled-trip-bindings.md).
+  Semantic mapping review, date validity and publication gates remain open.
+
+- 2026-10-17: Added canonical scheduled-trip pattern references and a topology
+  checker for stations, lines, services, revisions and every platform alternative.
+  Ordered repeated visits and short-working destinations remain explicit; missing,
+  ambiguous or incompatible references fail. See
+  [trip-pattern references](../../gtfs/reference/scheduled-trip-patterns.md). Source/path/date
+  binding, mapping approval and publication gates remain open.
+
+- 2026-10-17: Added local `gtfs timetable` export, binding the complete source
+  timetable to a hash-verified capture, raw-table manifest and normalized content
+  hash. Reports are compact and reproducible; failed inputs leave existing output
+  untouched. Capture rights metadata remains explicit. See
+  [verified export](../../gtfs/reference/source-timetable.md#verified-local-export).
+  Canonical allocation, mapping approval and publication gates remain open.
+
+- 2026-10-17: Added a compact source timetable contract and assembler that
+  combine all trip timing and calendar definitions, including unused calendars.
+  Duplicate identities, missing calendar references and unsupported timezone or
+  frequency semantics fail. Assembly is deterministic under source row
+  reordering. See [source timetable](../../gtfs/reference/source-timetable.md). Canonical
+  allocation, mapping review and publication gates remain open.
+
+- 2026-10-17: Added automatic service-date selection for offline departure
+  queries. Candidate dates come from the query window, validated source calendars
+  and relevant departure offsets, including offsets beyond 48 hours. Explicit
+  date overrides remain available, and reports record automatic dates. Focused
+  tests cover next-day removals, outside-range additions and historical time
+  anchors. See [departure windows](../../gtfs/reference/scheduled-departure-windows.md#finding-candidate-service-dates).
+  Snapshot eligibility, mapping review and publication gates remain unchanged.
+
+- 2026-10-17: Extended offline departure inspection with `--stop` lookup across
+  source trips, preserving repeated visits and filtering to the selected provider
+  stops. Unknown stops and non-platform locations fail; known unused platforms
+  produce an empty report. Trip and stop selectors remain mutually exclusive,
+  with dates validated even when no trips visit a selected stop. See
+  [departure lookup](../../gtfs/operations/local-inspection.md#departure-lookup).
+  Canonical mapping review and publication gates remain unchanged.
+
+- 2026-10-17: Added offline `gtfs departures` inspection for selected provider
+  trips and explicit service dates in an absolute time window. Reports retain
+  verified capture provenance and table hashes alongside source timing and
+  access rules. Unknown trips and invalid captures fail before report writing;
+  unsupported timezones and frequency-based selections fail explicitly. See
+  [local inspection](../../gtfs/operations/local-inspection.md#departure-lookup).
+  Canonical mapping review and generation/publication gates remain unchanged.
+
+- 2026-10-17: Added source departure-window lookup across explicitly selected
+  trip/service-date pairs. It merges enabled events chronologically with inclusive
+  start and exclusive end boundaries, preserving coincident occurrence identity,
+  source precision and access restrictions. Missing departures remain absent and
+  duplicate trip/date selections fail. See
+  [departure windows](../../gtfs/reference/scheduled-departure-windows.md). Snapshot/date
+  selection, Phase 2 mapping review and generation/publication gates remain
+  unchanged.
+
+- 2026-10-17: Added source-trip service-date resolution, combining complete
+  timing, matching calendar rules and Singapore instant conversion. Inactive
+  dates return no trip; enabled dates retain source offsets, occurrence identity,
+  access restrictions and precision alongside UTC instants. Tests preserve
+  previous-service-day events across next-day removals and coincident instants
+  across distinct service dates. See
+  [service-date resolution](../../gtfs/reference/service-day-timing.md#service-dates-and-clock-time).
+  Phase 2 review and generation/publication gates remain unchanged.
+
+- 2026-10-17: Added ordered source-trip timing validation and batch assembly as
+  arrivals-format preparation. It preserves exact decimal occurrence identities,
+  repeated stops and missing approximate times while rejecting duplicate
+  sequences, missing boundary times and chronology regressions across gaps.
+  All 19,150 October trips and 349,768 occurrences pass a read-only compatibility
+  check with source tables unchanged. See
+  [source-trip timing](../../gtfs/reference/service-day-timing.md#stop-occurrences). Phase 2 review and
+  generation/publication gates remain unchanged.
+
+- 2026-10-17: Added Singapore service-day instant conversion as format
+  preparation. It preserves offsets beyond midnight using the GTFS noon-based
+  anchor and elapsed seconds, with explicit civil-date validation. Tests retain
+  previous-day trips independently of new-day calendar exceptions; 68,677
+  distinct October offsets round-trip in a read-only synthetic-anchor check.
+  See [service-day instants](../../gtfs/reference/service-day-timing.md#service-dates-and-clock-time). Calendar and
+  artifact selection, Phase 2 review and generation/publication gates remain
+  unchanged.
+
+
+- 2026-10-17: Added compact service calendars and a civil-date lookup as
+  arrivals-format preparation. Weekly bounds are inclusive; explicit date
+  additions/removals take precedence, including outside the weekly range.
+  Date-only schedules and inactive rules remain explicit, and duplicate or
+  malformed definitions fail. All three October calendars match the existing
+  evidence over 1,101 date checks. See
+  [scheduled service calendars](../../gtfs/reference/service-day-timing.md#calendar-availability). Reconciliation
+  outputs, Phase 2 review requirements and generation gates remain unchanged.
+
+
+- 2026-10-17: Added a shared scheduled-stop-time contract and a fixed-stop
+  parser as arrivals-format preparation. They retain textual source occurrence
+  identity, service-day offsets beyond midnight, pickup/drop-off codes and
+  exact/approximate precision, with missing approximate times kept explicit.
+  This does not start generation or complete Phase 2; remaining platform
+  corrections require direct review under the canonical provenance policy.
+  See [scheduled stop times](../../gtfs/reference/service-day-timing.md#stop-occurrences).
+
+
+- 2026-10-17: Added an opt-in deterministic blocker report for version-2 and
+  version-3 drafts. It binds the exact draft/input identity and exposes unresolved
+  dates, all candidate revisions, unmatched dependencies, literal group members
+  and ordered occurrence evidence. The all-line v3 report accounts for all 191
+  unresolved cells and 22,123 pattern-date pairs, with overlapping causes counted
+  explicitly. Existing mapping/evaluation outputs and generation gates remain
+  unchanged. See [review blockers](../../gtfs/reviews/review-blockers.md). Phase 2 remains
+  open pending evidence and human review.
+
+
+- 2026-10-17: Added opt-in version-3 grouped-platform review. Seven complete
+  sets preserve all physical alternatives without allocating a member; every
+  member must pass current service/boarding checks on each matched occurrence.
+  This adds 27 pattern proposals (768 recurring trip records; 3,285 pattern-date
+  pairs), bringing cumulative matched dates to 26,268 with 22,123 unresolved.
+  Ang Mo Kio's missing C/D members and the six Expo conflicts remain unresolved.
+  Version-2 packets reproduce unchanged. See the
+  [grouped-platform contract and reproduction](../../gtfs/reviews/platform-group-review.md).
+  No approval or generation is enabled; Phase 2 remains open.
+
+
+- 2026-10-17: Added the remaining NSL, SKLRT and BPLRT review packets and the
+  [complete line inventory](../../gtfs/reviews/mapping-review-inventory.md). NSL proposes
+  four patterns; SKLRT proposes six West patterns; BPLRT has entity identities
+  only, with all six patterns unresolved. All nine source line families now have
+  concrete packets. Together they propose 930 matched decisions and retain 225
+  unresolved decisions over 1,124 source entries/1,155 date/entity cells.
+  Nine physical source stops remain unresolved, including Ang Mo Kio groups
+  whose C/D members are absent from canonical layout. The matrix separates
+  173 whole-calendar proposals, 31 partial CCL proposals and 184 wholly
+  unresolved patterns. Inventory accounting is complete; Phase 2 mapping review,
+  source/calendar/lineage acceptance and generation gates remain open.
+
+- 2026-10-17: Added exact-date CCL mapping proposals: 178 matches cover 47
+  routes, 33 station parents, 66 platform stops and 31 pattern/date cells
+  (1,098 recurring trip records; 1,656 pattern-date pairs). All matched dates
+  are on or after July 12; each selected pattern retains earlier unresolved
+  dates, and no CCL pattern is matched for its whole calendar. The six pilots
+  together have 749 matched cells and 406 unresolved cells. Splitting 31
+  patterns makes 1,155 decision cells over the unchanged 1,124 source entries.
+  See the [CCL mapping table](../../gtfs/reviews/pilots/ccl/mappings.md) and
+  [exact-date accounting](../../gtfs/reviews/scoped-review.md#circle-line-exact-date-cells-and-accounting).
+  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
+  complete and generation stays blocked.
+
+- 2026-10-17: Added a partial EWL mapping pilot: 165 proposed matches cover
+  seventeen declared routes, 35 station parents, 67 platform stops and 45
+  patterns (856 trip records; 5,893 pattern-date pairs). Five route records have
+  no trips. Five grouped platform records and 27 EWL patterns remain unresolved;
+  six of those patterns also retain the Expo label/service conflict. The five
+  pilots together propose 583 matches, leaving 541 entries unresolved without
+  exclusions or approval. See the
+  [EWL mapping table](../../gtfs/reviews/pilots/ewl/mappings.md) and
+  [remaining platform scope](../../gtfs/reviews/scoped-review.md#ewl-supported-patterns-and-platform-gaps).
+  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
+  complete and generation stays blocked.
+
+- 2026-10-16: Added a partial TEL mapping pilot: 172 proposed matches cover
+  fifteen routes, 27 station parents, 54 platform stops and 75 patterns
+  (1,619 trip records; 9,125 pattern-date pairs). Two TEL patterns containing
+  fourteen trips that omit Gardens by the Bay remain explicitly unresolved;
+  the matched-only focused draft does not imply whole-line coverage. The four
+  pilots together propose 423 matches, leaving 701 entries unresolved without
+  exclusions or approval. See the
+  [TEL mapping table](../../gtfs/reviews/pilots/tel/mappings.md) and
+  [remaining scope](../../gtfs/reviews/scoped-review.md#tel-supported-patterns-and-remaining-gaps).
+  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
+  complete and generation stays blocked.
+
+- 2026-10-16: Extended the concrete mapping pilot to Punggol LRT: 60 proposed
+  decisions cover one route, 15 station parents, 30 platform stops and 13
+  full-loop patterns (2,935 trip records; 1,721 pattern-date pairs). Preserved
+  repeated town-centre occurrences and separate weekday source patterns that
+  share a clockwise path despite differing direction IDs. NEL/DTL/PGLRT together
+  propose 253 matches, leaving 871 entries unresolved without automatic
+  exclusions or approval. See the
+  [Punggol LRT mapping table](../../gtfs/reviews/pilots/pglrt/mappings.md) and
+  [cumulative review scope](../../gtfs/reviews/scoped-review.md#punggol-lrt-and-cumulative-pilot-scope).
+  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
+  complete and generation stays blocked.
+
+- 2026-10-15: Extended the concrete mapping pilot to DTL: 129 proposed
+  decisions cover seven declared routes, 35 station parents, 70 platform stops
+  and 16 patterns (1,511 trip records; 1,877 pattern-date pairs). Two route
+  declarations have no trips in the capture. Independently checked the platform
+  labels and ordered paths, and reproduced both pilots deterministically.
+  The draft runner now accepts multiple pilot lines and deduplicates their
+  shared dependencies: NEL/DTL together propose 195 matches, leaving 929 entries
+  unresolved without automatic exclusions or approval. See the
+  [DTL mapping table](../../gtfs/reviews/pilots/dtl/mappings.md) and
+  [cumulative review scope](../../gtfs/reviews/scoped-review.md#dtl-and-cumulative-pilot-scope).
+  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
+  complete and generation stays blocked.
+
+- 2026-10-15: Added a separate version-2 scoped mapping draft/review contract
+  and a concrete NEL pilot: 69 proposed decisions cover one agency, three
+  routes, 17 station parents, 34 platform stops and 14 patterns (1,683 trip
+  records; 1,564 pattern-date pairs). The full draft retains all 1,055 other
+  records as unresolved; the checked-in pilot is explicitly incomplete globally.
+  No exclusions or approvals are generated, and source/calendar/lineage and
+  publication gates remain separate. See the
+  [scoped review contract](../../gtfs/reviews/scoped-review.md) and
+  [NEL mapping table](../../gtfs/reviews/pilots/nel/mappings.md). Phase 2 is not complete.
+
+- 2026-10-14: Added service-date candidate partitions to distinguish unique,
+  ambiguous and uncovered active dates across revision boundaries. For the
+  119 CCL whole-pattern date gaps, 26 now have one temporal candidate on every
+  active date; 76 retain uncovered dates and 30 have overlapping candidates
+  (the latter categories overlap). Platform checks use the same candidate
+  option for date validity and current restrictions, but do not establish
+  historical platform assignments. Reports remain unapproved and generation
+  remains blocked. See [mapping disagreements](../../gtfs/reviews/mapping-disagreements.md)
+  for the exact unmatched trips and scoped operator-source investigation;
+  neither source records nor canonical topology have been silently repaired.
+
+- 2026-10-14: Added bounded closed-loop matching, active-calendar/revision/code
+  and per-occurrence platform evidence, and a normalized August–October drift
+  audit. Sequence-unmatched patterns fall from 32 to five. Of 388 patterns, 242
+  have one candidate covering all active dates without explicit platform scope
+  conflicts, 119 CCL patterns require date-scoped reconciliation and 22 need
+  platform/terminal review. Seven grouped platforms remain ambiguous; the unused
+  LTA publisher can be proposed for an explicit ignore disposition. All evidence
+  remains agent-proposed, without human approval; generation stays blocked.
+  The two captures reuse Expo stop IDs with swapped platform labels, change 837
+  retained trip calendars, and retain version `0.1` despite extensive route-ID
+  churn. Pairwise drift is now measured, not a future stability or lineage claim.
+  See [reconciliation evidence](../../gtfs/reviews/reconciliation.md#calendar-platform-and-drift-evidence).
+
+- 2026-10-14: Added hash-verified unpacked-directory inspection using the shared
+  ZIP/CSV audit. Located all original August tables and protobufs and matched
+  every recorded hash. Reproduced zero structural errors, two alerts and empty
+  trip updates. Pinned independent validation found zero errors/system errors,
+  14 warnings and two informational notices, including a fast-travel warning.
+  See [historical audit](../../gtfs/operations/local-inspection.md#historical-august-audit).
+  Phase 1's audit/tooling criteria are met using retained local copies. The
+  original ZIP/receipt and a remote immutable archive remain unavailable; exact
+  table/protobuf hashes and reproduction instructions are retained instead.
+- 2026-10-14: Added deterministic Phase 2 proposal and review schemas, verified
+  capture reconciliation and a complete-review gate. The current public capture
+  yields 1,124 unreviewed entries: seven ambiguous stops, 148 ambiguous patterns,
+  32 unresolved patterns and one unresolved publisher agency. All proposals
+  remain unreviewed; generation is blocked. See
+  [reconciliation](../../gtfs/reviews/reconciliation.md). At this point human-reviewed dispositions, calendar/direction/platform
+  semantics and a distinct-capture drift comparison remained open. The later
+  evidence audit above completes the drift comparison; Phase 2 is not complete.
+
+- 2026-10-14: Added MobilityData validator 8.0.1 with a SHA-256 executable
+  lock, fixed SG/date/thread/update-check configuration and separate CI findings.
+  Audited public schedule `e459a22be6c99a3728ee97770c02c4edbaee6c9293e48017e8ec28139962fa19`
+  (2,991,884 bytes): 113 routes, 1,211 stops, 19,150 trips, 349,768 stop times.
+  Both validators found zero errors; independent warnings/information are recorded
+  in [local inspection](../../gtfs/operations/local-inspection.md). This initial pass left the historical August audit and unpacked-directory
+  support open; the subsequent Phase 1 audit above completed them. Reviewed
+  mappings remain required, with pairwise drift now recorded above.
+- 2026-10-14: Acquisition now runs on Fly.io with signed QStash schedules and
+  separate private/public Tigris buckets. Public handoff succeeded in receiver
+  run 38525057872 after PR #370 fixed valid single-digit-hour parsing. Recent
+  realtime captures do not yet establish useful nonempty trip-update behavior.
+
+- 2026-10-12: Added opt-in public GTFS snapshot handoff from the crawler,
+  hash-verified acquisition and a read-only schedule inspection workflow.
+  See [public handoff](../../gtfs/operations/public-handoff.md). No canonical mappings
+  or publication of derived arrivals are enabled by this workflow.
+
+- 2026-10-12: Added local capture/hash verification, ZIP/CSV and realtime
+  inspection, and a versioned schedule-topology fingerprint. See
+  [local inspection](../../gtfs/operations/local-inspection.md). Synthetic tests pass
+  independently of provider acquisition; historical capture audit, unpacked
+  input and pinned independent validation remain open. Phase 1 is not complete.
+
+- 2026-05-27: Created the initial plan from issue #157.
+- 2026-08-12: Reoriented the plan around LTA's documented train GTFS download
+  endpoints and an external credentialed producer.
+- 2026-08-13: Audited supplied schedule, service-alert, and trip-update files.
+  Replaced speculative synthetic-timetable and trip-update runtime design with
+  measured static reconciliation, a narrow alert-ingest proof, and a non-empty
+  trip-update capture gate.
+- 2026-08-14: Selected a concrete first consumer: map the LTA schedule to
+  canonical MRTDown identities, publish a scheduled-arrivals artifact, and use
+  it as `mrtdown-site`'s exact schedule baseline.
+
+</details>
+
+## Context
+
+GitHub issue [#157](https://github.com/foldaway/mrtdown-data/issues/157) asks
+for GTFS Static and Realtime support. LTA now supplies first-party train data as
+downloaded files:
+
+- a GTFS Schedule archive;
+- a GTFS Realtime Trip Updates protobuf; and
+- a GTFS Realtime Service Alerts protobuf.
+
+The supplied 2026-08-13 captures remove the need to design this work from the
+endpoint documentation alone. The schedule is already a detailed timetable,
+the alert feed contains useful canonical-evidence candidates, and the trip
+update capture contains no entities. This plan therefore starts with offline
+file inspection and reconciliation. It does not start with a synthetic
+timetable generator or a live realtime runtime.
+
+`mrtdown-data` remains the reviewed data and schema repository. It can own
+snapshot inspection, stable mappings, validation, canonical alert evidence,
+and static archive outputs. Account keys, temporary download URLs, polling,
+freshness guarantees, and live consumer serving belong in an external producer
+or runtime.
+
+Related references:
+
+- `README.md`
+- `docs/plans/active/data-licensing-attribution.md`
+- `docs/plans/completed/data-overhaul-split.md`
+- `packages/core/src/schema/Station.ts`
+- `packages/core/src/schema/Service.ts`
+- `packages/fs/src/manifest.ts`
+- `scripts/build-pages-artifact.mjs`
+
+## Plan of Work
 
 ### Phase 1: Make the snapshot audit reproducible
 
@@ -358,7 +744,7 @@ Exit criteria:
 
 ### Phase 3: Generate the scheduled-arrivals artifact
 
-- Apply the [schedule publication policy](../../gtfs-schedule-publication.md) for
+- Apply the [schedule publication policy](../../gtfs/operations/schedule-publication.md) for
   fixture retention, attribution and capture-specific release conditions. The
   standard-terms review is recorded; capture-specific conditions still need to
   be confirmed. Offline bundle export enforces supplied review records and terms
@@ -515,8 +901,8 @@ Exit criteria:
 ### Phase 6: Observe trip updates before designing runtime behavior
 
 - Record the empty supplied capture as a valid zero-entity fixture.
-- Collect multiple non-empty captures paired with the exact static schedule
-  version used by LTA at that time.
+- Collect multiple non-empty captures during disruptions or planned adjustments.
+  Pair each with the exact static schedule version used by LTA at that time.
 - Measure update cadence and enumerate the fields and enum values LTA actually
   emits.
 - Open a focused implementation plan for live trip updates only after this
@@ -524,13 +910,198 @@ Exit criteria:
 
 Exit criteria:
 
-- Multiple non-empty disruption captures can be reconciled to an identified
-  static snapshot. Record normal-service behavior as observed, including empty
-  captures; the disruption-focused API does not promise normal-service entities.
+- Multiple non-empty disruption or planned-adjustment captures can be reconciled
+  to identified static snapshots. Empty captures are valid evidence of observed
+  normal-service behavior.
 - Freshness, matching, cancellation, and fallback rules are based on observed
   provider behavior rather than hypothetical GTFS Realtime combinations.
 
-## Open Questions
+### Reconciliation Decisions
+
+#### Static schedule role
+
+Treat the LTA schedule as the candidate source for exact scheduled trips,
+calendars, platforms, and stop times. Keep canonical MRTDown entities as the
+reviewed identity and topology model. Reconcile the two; do not import provider
+ids as canonical ids and do not generate an approximate timetable in parallel.
+
+The initial route mapping is many-to-one:
+
+| LTA route ids | MRTDown line id |
+| --- | --- |
+| `NSL` | `NSL` |
+| `EWL`, `EWL_CGL` | `EWL` |
+| `NEL` | `NEL` |
+| all `CCL_*` routes | `CCL` |
+| `DTL` | `DTL` |
+| `TEL` | `TEL` |
+| `BP` | `BPLRT` |
+| `SK` | `SKLRT` |
+| `PG` | `PGLRT` |
+
+CRL and JRL are canonical future lines and are absent from this capture.
+Provider agencies `SMRT` and `SBST` map explicitly to canonical operators
+`SMRT_TRAINS` and `SBS`.
+
+Map station parents and platform children using reviewed station codes and
+sequence context. Do not assume names alone are unique or stable. Treat LTA
+`service_id` as calendar identity, not as a canonical MRTDown service id.
+Derive service-pattern matches from the ordered stop sequence, route,
+direction, and applicable calendar, then review ambiguous or unmatched cases.
+
+Mappings must record the static snapshot manifest, the exact canonical
+repository commit, and a schedule-topology fingerprint used for reconciliation.
+Compute that fingerprint from a versioned normalized projection rather than the
+full-record hashes in `manifest.json`:
+
+- operators: `id`;
+- lines: `id`, `type`, `serviceIds`, and operator ids with their effective
+  dates;
+- stations: `id`, station-code line/code/effective-date tuples, and platform
+  `id`, `label`, `lineId`, `serviceIds`, and `boardingStatus`; and
+- services: `id`, `lineId`, and revision ids/effective dates with each ordered
+  station id and display code.
+
+Sort records and unordered identifier arrays before hashing, while preserving
+service-path order. Exclude names, colors, addresses, geography, exits, aliases,
+first/last-train data, frequency estimates, operating hours, source metadata,
+issues, towns, landmarks, rights metadata, and `generatedAt`. Increment the
+fingerprint projection version when reconciliation begins to depend on another
+field. A new snapshot may reuse provider ids with changed content, and
+canonical topology may change while the same snapshot is reused, so reports
+must compare normalized records and identify both input revisions.
+
+#### Static publication role
+
+Use a hybrid model: keep canonical MRTDown identity and topology, map the LTA
+schedule back to those entities, and publish a compact scheduled-arrivals
+artifact for consumers such as `mrtdown-site`. Apply source-backed corrections
+to canonical data when reconciliation reveals a genuine canonical error, but
+do not rename or reshape canonical entities merely to mirror provider ids.
+
+The scheduled-arrivals artifact contains:
+
+- the LTA snapshot manifest, exact canonical repository commit,
+  schedule-topology fingerprint, mapping version, monotonically increasing
+  artifact correction revision, feed range, and `Asia/Singapore` timezone;
+- LTA calendars and exceptions without expanding every service date;
+- canonical station, line, service, platform, and destination identities;
+- scheduled arrival and departure times, preserving GTFS times beyond 24:00,
+  plus each stop occurrence's GTFS pickup, drop-off, and `timepoint` precision
+  behavior; and
+- provider route, trip, stop, stop-sequence, and calendar identities needed to
+  reconcile later Trip Updates.
+
+The supplied `stop_times.txt` does not include `pickup_type` or
+`drop_off_type`, or `timepoint`, so this snapshot uses the GTFS defaults. The
+inspector and artifact schema must nevertheless preserve those columns when
+later snapshots provide them; they are occurrence-level rules and cannot be
+inferred from a canonical platform's general boarding status or from the time
+value alone.
+
+Publish it as a generated, versioned Pages/archive artifact with its own
+manifest hash. It is derived from LTA data and must carry the applicable
+attribution and licence notice. The [schedule publication policy](../../gtfs/operations/schedule-publication.md)
+records the reviewed standard terms and requires capture-specific release
+conditions to be confirmed before publication.
+Unchanged-feed redistribution may be
+added separately if useful and permitted, but it is not required for the first
+consumer.
+
+An MRTDown frequency-derived GTFS feed is not an initial outcome. Reconsider it
+only if a later audit identifies a concrete schedule gap that neither the LTA
+feed nor the scheduled-arrivals artifact can meet.
+
+#### Service alerts role
+
+Service alerts are candidates for the existing issue/evidence/impact path. The
+first contract should cover only fields observed in the supplied sample plus
+the required GTFS Realtime envelope:
+
+- feed version, incrementality, optional feed timestamp, and retrieval time;
+- entity id, selected static snapshot manifest, and mapping version;
+- all populated selectors;
+- all active periods, preserving open bounds;
+- cause, effect, translations, and rider-facing URL; and
+- the exact normalized source text used by triage.
+
+Whitespace-only headers fall back to the description for evidence formatting.
+The original fields remain in provenance. Route and agency selectors must map
+through the versioned static reconciliation; unmatched selectors are retained
+for diagnosis and are not guessed.
+
+Use two separate idempotency identities. The processing/remap key contains the
+provider, feed type, selected static snapshot manifest, mapping version, entity
+id, and normalized source-payload digest, so a reconciliation change reruns
+selector matching. After mapping, compute a canonical-write key from provider,
+feed type, entity id, and a digest of the normalized alert semantics plus mapped
+canonical scope. If remapping produces the same canonical-write key, record the
+processing result as a reference to the existing evidence and append no evidence
+or impact events. Append an update only when the mapped canonical semantics
+change. Do not design disappearance-as-resolution behavior until at least two
+ordered captures demonstrate the provider's entity lifecycle. Do not accept
+`DIFFERENTIAL` feeds until an actual sample and ordering contract are audited.
+
+#### Trip updates role
+
+Trip updates remain a runtime concern, not canonical historical evidence. The
+only repository work before a non-empty sample is:
+
+- validate the GTFS Realtime envelope;
+- record capture and selected-static-snapshot provenance; and
+- report entity counts and timestamps without treating an empty feed as an
+  error.
+
+Record normal-service behavior as observed, including empty feeds. Once the
+Phase 6 corpus includes multiple non-empty captures during disruptions or
+planned adjustments, write a separate implementation plan from the observed
+combinations of trip descriptors, stop-time updates, schedule relationships,
+timestamps, and static-feed references. That later plan owns freshness,
+precedence, suppression, and cache semantics.
+
+Vehicle positions are out of scope unless LTA publishes them and a consumer
+need is identified.
+
+### Ownership Boundary
+
+This repository owns:
+
+- deterministic offline inspection of supplied GTFS files;
+- versioned LTA-to-MRTDown mappings and reconciliation reports;
+- validation of references, coverage, and mapping drift;
+- generation and licensed publication of the scheduled-arrivals artifact;
+- the trusted service-alert ingest contract and canonical provenance; and
+- deterministic fixtures derived or retained under the applicable licence.
+
+`mrtdown-data-crawler` is the external acquisition producer. Its DataMall
+pipeline retains originals and capture records in private Tigris; deployment is
+separate from this repository.
+
+An external producer or runtime owns:
+
+- DataMall account keys and authenticated dataset-link requests;
+- prompt download and durable storage of temporary linked files;
+- retrieval cadence, retries, and freshness monitoring;
+- live trip-update matching and consumer serving; and
+- alert polling and ordered delivery to the canonical ingester.
+
+The producer handoff records the LTA dataset or endpoint identity, a
+discriminated feed kind (`schedule`, `trip_updates`, or `service_alerts`),
+`retrieved_at`, any provider publication timestamp, the file manifest or
+digest, an immutable archive reference, and licence attribution. Feed kind is
+required even when a realtime file has no entities because its header does not
+identify the originating dataset. The handoff never records the account key or
+temporary URL.
+
+Before artifact generation, an authorized acquisition step must materialize the
+exact schedule snapshot and its handoff record in the build workspace. The
+offline generator accepts those local paths, verifies the recorded digest, and
+refuses to build when either input is missing or mismatched. The Pages build
+does not download LTA data; the acquisition system passes the verified input as
+a retained licensed file or a protected pre-build artifact according to the
+confirmed terms.
+
+### Open Questions
 
 - What LTA terms apply specifically to retaining the downloaded train files and
   publishing a mapped scheduled-arrivals artifact?
@@ -545,545 +1116,7 @@ Exit criteria:
 - Should fresh crowd reports replace one scheduled departure, or remain a
   separate community estimate alongside the LTA schedule?
 
-## Progress Log
-
-- 2026-10-23: Added reviewed rollback for an inclusive service-date range and
-  exact canonical request scope. It binds current and older retained artifact
-  and source hashes, checks review timing, revalidates target eligibility and
-  exposes per-date audit results without changing source lineage or correction
-  revisions. Invalid applicable overrides make that date unavailable. The site
-  pull/database/API/UI and producer-backed partial-scope coverage remain ahead;
-  site adoption also needs the pending package release. Real mapping/release
-  approvals are still outstanding. See
-  [reviewed rollback](../../gtfs-timetable-import.md#reviewed-rollback-for-a-date-and-scope).
-
-- 2026-10-23: Added a consumer reader for the optional Pages timetable bundle.
-  It verifies advertised artifact/release hashes, companion files and bound
-  mapping/release reviews before returning bytes for canonical import. An
-  absent entry stays optional; an invalid advertised bundle fails. Synthetic
-  ZIP-to-import-to-overnight-query tests cover both mapping formats. The site
-  pull/database integration, scoped rollback and real mapping/release approvals
-  remain ahead. See [Pages bundle reading](../../gtfs-timetable-import.md#reading-a-pages-bundle).
-
-- 2026-10-23: Added local boarding-departure queries over a fixed retained-history
-  snapshot. Each Singapore service date selects its own eligible artifact;
-  overnight and current-day trips merge before limiting results, including
-  source offsets beyond 48 hours. Results retain precision, platform groups,
-  source occurrence ids and artifact provenance. Missing files, unavailable
-  dates and untimed boardable stops remain explicit. Site integration, scoped
-  rollback and real mapping/release approvals remain ahead. See
-  [retained departures](../../gtfs-retained-departures.md).
-
-- 2026-10-23: Added retained-version selection for a Singapore service date and
-  canonical station/service/destination/platform scope. Selection follows
-  reviewed lineage, checks feed range, installed topology, bytes and canonical
-  references, and falls back to older eligible versions with recorded reasons.
-  Completeness currently requires all active source trips to be assigned on the
-  date; partial artifacts need finer producer-backed scope evidence. Inactive
-  calendars remain distinct from missing coverage. Scoped rollback and site
-  departure queries remain ahead. See
-  [version selection](../../gtfs-timetable-import.md#selecting-a-version-for-a-request).
-
-- 2026-10-23: Added a private append-only timetable store that composes byte and
-  canonical verification with source admission against its actual retained
-  predecessor. Complete versions and import reviews commit with one rename;
-  concurrent writers are refused and failed staging leaves history intact.
-  Reimports preserve original receipts, and older source snapshots cannot be
-  appended as fresh successors. Service-date/scope selection, rollback overrides
-  and site integration remain ahead. See
-  [retained imports](../../gtfs-timetable-import.md#retaining-imported-versions).
-
-- 2026-10-23: Added read-only artifact verification against installed canonical
-  topology, references, ordered paths, effective dates and boarding rules.
-  Compact assignment ranges are checked against their source calendars, with
-  inactive dates skipped and invalid endpoints or feed bounds rejected. This
-  complements source admission; atomic storage, retained history, scope
-  selection and site queries remain ahead. See
-  [canonical import checks](../../gtfs-timetable-import.md#checking-installed-canonical-data).
-
-- 2026-10-22: Added shared, pure source-admission checks for byte-verified
-  timetable artifacts. Baselines, successor lineage, equal-version conflicts
-  and increasing same-source corrections require exact reviewed identities.
-  Retrieval times never establish ordering. This begins the import policy;
-  canonical validation, retained history, atomic installation and site queries
-  remain ahead. Real mapping and release approvals remain outstanding. See
-  [import checks](../../gtfs-timetable-import.md).
-
-- 2026-10-21: Added opt-in Pages/archive integration through the release CLI.
-  It checks the source and reviews against the canonical data actually being
-  packaged, includes all seven bundle files in both root archives, and binds
-  timetable and release-report digests into the root manifest. Download links
-  show source attribution, licence, retrieval time and coverage. Blocked builds
-  preserve existing output. Default builds remain offline without a timetable;
-  real approvals and site import are still outstanding. See
-  [Pages packaging](../../gtfs-timetable-release.md#packaging-a-release-for-pages).
-
-- 2026-10-21: Added `gtfs release` for checking a release or writing a reviewed
-  bundle locally. Each attempt fetches current terms independently from the
-  fixed official LTA URLs, uses the command's clock and rejects configuration
-  overrides for either. Missing or mismatched reviews block export with a
-  failing exit status. Pages and site integration remain ahead; real mapping
-  and release approvals are still outstanding. See
-  [release CLI](../../gtfs-timetable-release.md#checking-and-exporting-from-the-cli).
-
-- 2026-10-18: Added local bundle export that rebuilds verified source inputs and
-  writes only after the release checks pass. The bundle retains the exact
-  timetable, manifest and notice bytes alongside mapping decisions, approvals,
-  release review and complete coverage, including deliberate exclusions. Blocked
-  releases write nothing; existing destinations and canonical-data paths are
-  refused. Pages publishing remains disabled and real mapping/release reviews
-  remain outstanding. See [reviewed export](../../gtfs-timetable-release.md#exporting-a-reviewed-bundle).
-
-- 2026-10-18: Added offline release-readiness checks for complete mapping
-  approval, an exact-artifact release review, redistribution status, current
-  terms identities and reviewed release timing. Changed terms or edited review
-  inputs require a new release review. Deliberate reviewed exclusions remain
-  visible coverage gaps; unresolved decisions still block. Inspection creates
-  no approval or publication, and current real inputs remain unapproved.
-  See [release readiness](../../gtfs-timetable-release.md).
-
-- 2026-10-18: Added source-backed artifact preparation from a verified capture,
-  canonical topology and version-2/3 mapping draft. Source and mapping hashes,
-  capture provenance, provider fields and explicit feed dates are derived before
-  serialization. Invalid inputs fail; unresolved/unapproved mappings and
-  trip/date gaps remain visible in the preparation result. This closes the
-  producer's source-consistency step while publication review and release
-  conditions remain open. See [artifact files](../../gtfs-timetable-artifact.md).
-
-- 2026-10-18: Added shared scheduled-timetable artifact metadata and exact-byte
-  preparation/verification helpers. Manifests bind the compact timetable and
-  attribution notice to hashes and sizes, preserving capture, mapping, canonical
-  topology, feed and correction metadata. Verification requires a trusted
-  manifest digest. Existing capture/reconciliation contracts now also live in
-  `core`, retaining their `fs` exports. Publication approval, source/metadata
-  consistency checks and importer lineage rules remain separate gates. See
-  [artifact files](../../gtfs-timetable-artifact.md).
-
-- 2026-10-18: Added a compact assigned-timetable content schema and optional
-  `gtfs timetable --assignments ... --canonical-commit ...` preview. The verified
-  bundle shares canonical patterns, compresses assignment dates into exact ranges
-  and retains every source trip/calendar with explicit coverage gaps. All supplied
-  assignments pass combined validation before assembly. Mapping approval,
-  capture-specific release conditions and the publication envelope remain open;
-  generation remains blocked. See [assigned timetable](../../gtfs-assigned-timetable.md).
-
-- 2026-10-18: Recorded the standard LTA terms permitting derived schedules and
-  retained licensed fixtures, with a separate upstream notice in `LICENSE-DATA.md`.
-  Defined required source attribution, capture provenance and retention policy
-  for the future exporter. Capture-specific conditions and reviewed mappings
-  remain release requirements; no schedule artifact or provider fixture was
-  added. See [publication policy](../../gtfs-schedule-publication.md).
-
-- 2026-10-18: Added local assigned-departure previews through `gtfs departures
-  --assignments ... --canonical-commit ...`. The preview verifies the full supplied
-  assignment set and pinned inputs, then returns canonical station, service,
-  destination and platform identities with source timing. Missing active-date
-  bindings fail; source-only inspection remains unchanged. Mapping coverage and
-  approval/publication gates remain open. See [assigned previews](../../gtfs-trip-assignment-validation.md#preview-departures-with-canonical-identities).
-
-- 2026-10-18: Added opt-in boarding-only departure queries in core and the source
-  CLI (`gtfs departures --boarding-only`). Candidates require pickup permission
-  and a later permitted alighting occurrence within the same trip; final timestamps
-  do not become onward boarding options. Raw access rules and default inspection
-  output remain intact. Mapping coverage, terminal platform evidence and approval
-  gates remain unchanged. See [boarding queries](../../gtfs-scheduled-departure-windows.md#boarding-candidates-with-onward-travel).
-
-- 2026-10-18: Added optional `--assignments` output to the scoped-review command.
-  A packet now includes the matched trip assignment document, verified coverage
-  report and summary binding to its mapping-draft digest. Existing mapping outputs
-  remain unchanged. This makes the full 12,106-trip compatibility check reproducible
-  through the review command; unresolved coverage and approval gates remain open.
-  See [review packet export](../../gtfs-trip-assignment-validation.md#export-assignments-with-a-review-packet).
-
-- 2026-10-18: Corrected interchange parent checks to validate snapshot station
-  identity independently of a child's service date. This removes the artificial
-  Marina Bay/Bayfront parent-code blocker while preserving dated child codes,
-  canonical paths and the CCL July 12 boundary. Source rows and canonical data
-  remain unchanged. All 12,106 proposed trip assignments now pass, covering
-  1,502,097 trip/date pairs with 990,143 source pairs still unassigned. Human
-  mapping review and publication remain gated. See the
-  [parent identity investigation](../../gtfs-mapping-disagreements.md#interchange-parent-identity).
-
-- 2026-10-18: Added assignment proposals from version-2/3 scoped mapping drafts.
-  Matched cells expand to all their source trips, preserving literal occurrences
-  and complete platform alternatives. Draft review and combined assignment checks
-  must pass before a document returns; unresolved coverage stays unassigned and
-  generation remains gated. See [assignment preparation](../../gtfs-trip-assignment-validation.md#prepare-assignments-from-mapping-decisions).
-
-- 2026-10-18: Added optional assignment coverage with `gtfs validate-assignments
-  --coverage`. Reports count active source trip dates, retain exact unassigned
-  dates grouped by calendar and trip set, and distinguish inactive trips from
-  complete active coverage. Calendar exceptions and previous-service-day identity
-  remain intact. See [assignment coverage](../../gtfs-trip-assignment-validation.md#report-unassigned-source-dates).
-  Coverage is informational; human mapping approval and publication remain gated.
-
-- 2026-10-18: Added offline `gtfs validate-assignments` inspection. It verifies
-  capture and table hashes, checks the supplied canonical commit and actual topology
-  fingerprint, then runs combined assignment validation. Reports retain provenance,
-  normalized assignment hashes and supplied counts; failures preserve existing
-  output. See [verified local assignment checks](../../gtfs-trip-assignment-validation.md#check-a-verified-local-capture).
-  Whole-snapshot coverage, Git-tree provenance, human approval and publication remain
-  separate gates; generation eligibility stays false.
-
-- 2026-10-18: Added batch validation for supplied trip assignments. One source
-  timetable supplies literal occurrence and calendar checks; every assignment
-  must also pass canonical path/date, source-stop, complete-platform, boarding
-  and route/operator checks. Overlapping scopes fail across each trip's complete
-  supplied assignment set. See [combined assignment validation](../../gtfs-trip-assignment-validation.md).
-  Whole-snapshot coverage, provenance, human approval and publication remain gated.
-
-- 2026-10-18: Added source route and operator-period checks for supplied binding
-  scopes and explicit aliases. The source trip/route/agency chain must be unique,
-  the mapped line must match the canonical pattern, and the selected operator must
-  cover every scoped service date on that line. Missing or conflicting references,
-  period gaps and malformed bounds fail. See [route/operator checks](../../gtfs-scheduled-trip-patterns.md#source-route-and-operator-periods).
-  Source/calendar/stop checks, alias approval and publication remain separate gates.
-
-- 2026-10-18: Added per-trip current boarding checks for supplied canonical
-  bindings. Every platform alternative must support the occurrence's pickup rule;
-  repeated visits are checked separately and the existing final alighting rule
-  remains intact. Literal source keys and canonical references validate before a
-  bound trip returns. See [boarding checks](../../gtfs-scheduled-trip-patterns.md#current-platform-boarding-checks).
-  Historical allocation, date/source/calendar checks, agency/operator review,
-  mapping approval and publication remain separate gates.
-
-- 2026-10-18: Added source-stop correspondence checks for supplied binding scopes.
-  Initially required child and parent codes to identify the station on every
-  scoped date; the later parent identity correction above supersedes that parent rule.
-  Literal platform labels must match the complete canonical alternative set.
-  Ambiguous identity, partial groups and malformed source references fail. See
-  [source stop correspondence](../../gtfs-scheduled-trip-patterns.md#source-stop-correspondence).
-  Literal trip/calendar binding, agency/operator review, pickup compatibility,
-  mapping approval and publication remain separate gates.
-
-- 2026-10-18: Added canonical path/date checks for supplied binding scopes.
-  Ordered full paths, short workings and bounded closed-loop rotations must fit
-  the selected revision, and every scoped date must have revision coverage and
-  one complete alignment of active canonical display codes. Conflicting path
-  evidence cannot be combined. Shared path matching preserves reconciliation's
-  existing rules. See [canonical scope validity](../../gtfs-scheduled-trip-patterns.md#canonical-path-and-date-validity).
-  Source matching, mapping approval and publication remain gated.
-
-- 2026-10-17: Added departure-window lookup with date-scoped canonical patterns.
-  Results retain station, service, destination and every platform alternative
-  alongside source timing and access rules. Scope errors fail before window
-  filtering. Source and patterned lookups share boundary, ordering and duplicate
-  checks. See [canonical departure windows](../../gtfs-scheduled-departure-windows.md#departures-with-canonical-patterns).
-  Mapping approval and publication gates remain open.
-
-- 2026-10-17: Added service-date scopes for source-trip pattern bindings. Active
-  dates require exactly one applicable scope; gaps, overlaps, duplicate dates and
-  inactive scoped dates fail. All bindings validate before an inactive result can
-  return. Enabled trips retain canonical references alongside Singapore-derived
-  UTC instants. See [date scopes](../../gtfs-scheduled-trip-bindings.md#service-date-scopes).
-  Canonical effective-date review, mapping approval and publication remain gated.
-
-- 2026-10-17: Added explicit source-occurrence binding for canonical trip
-  patterns. The structural join checks literal trip, stop and sequence identity
-  and equal occurrence counts before combining timing and canonical references.
-  Repeated visits, large raw sequences, missing times and platform alternatives
-  remain intact. See [trip bindings](../../gtfs-scheduled-trip-bindings.md).
-  Semantic mapping review, date validity and publication gates remain open.
-
-- 2026-10-17: Added canonical scheduled-trip pattern references and a topology
-  checker for stations, lines, services, revisions and every platform alternative.
-  Ordered repeated visits and short-working destinations remain explicit; missing,
-  ambiguous or incompatible references fail. See
-  [trip-pattern references](../../gtfs-scheduled-trip-patterns.md). Source/path/date
-  binding, mapping approval and publication gates remain open.
-
-- 2026-10-17: Added local `gtfs timetable` export, binding the complete source
-  timetable to a hash-verified capture, raw-table manifest and normalized content
-  hash. Reports are compact and reproducible; failed inputs leave existing output
-  untouched. Capture rights metadata remains explicit. See
-  [verified export](../../gtfs-source-timetable.md#verified-local-export).
-  Canonical allocation, mapping approval and publication gates remain open.
-
-- 2026-10-17: Added a compact source timetable contract and assembler that
-  combine all trip timing and calendar definitions, including unused calendars.
-  Duplicate identities, missing calendar references and unsupported timezone or
-  frequency semantics fail. Assembly is deterministic under source row
-  reordering. See [source timetable](../../gtfs-source-timetable.md). Canonical
-  allocation, mapping review and publication gates remain open.
-
-- 2026-10-17: Added automatic service-date selection for offline departure
-  queries. Candidate dates come from the query window, validated source calendars
-  and relevant departure offsets, including offsets beyond 48 hours. Explicit
-  date overrides remain available, and reports record automatic dates. Focused
-  tests cover next-day removals, outside-range additions and historical time
-  anchors. See [departure windows](../../gtfs-scheduled-departure-windows.md#finding-candidate-service-dates).
-  Snapshot eligibility, mapping review and publication gates remain unchanged.
-
-- 2026-10-17: Extended offline departure inspection with `--stop` lookup across
-  source trips, preserving repeated visits and filtering to the selected provider
-  stops. Unknown stops and non-platform locations fail; known unused platforms
-  produce an empty report. Trip and stop selectors remain mutually exclusive,
-  with dates validated even when no trips visit a selected stop. See
-  [departure lookup](../../gtfs-local-inspection.md#departure-lookup).
-  Canonical mapping review and publication gates remain unchanged.
-
-- 2026-10-17: Added offline `gtfs departures` inspection for selected provider
-  trips and explicit service dates in an absolute time window. Reports retain
-  verified capture provenance and table hashes alongside source timing and
-  access rules. Unknown trips and invalid captures fail before report writing;
-  unsupported timezones and frequency-based selections fail explicitly. See
-  [local inspection](../../gtfs-local-inspection.md#departure-lookup).
-  Canonical mapping review and generation/publication gates remain unchanged.
-
-- 2026-10-17: Added source departure-window lookup across explicitly selected
-  trip/service-date pairs. It merges enabled events chronologically with inclusive
-  start and exclusive end boundaries, preserving coincident occurrence identity,
-  source precision and access restrictions. Missing departures remain absent and
-  duplicate trip/date selections fail. See
-  [departure windows](../../gtfs-scheduled-departure-windows.md). Snapshot/date
-  selection, Phase 2 mapping review and generation/publication gates remain
-  unchanged.
-
-- 2026-10-17: Added source-trip service-date resolution, combining complete
-  timing, matching calendar rules and Singapore instant conversion. Inactive
-  dates return no trip; enabled dates retain source offsets, occurrence identity,
-  access restrictions and precision alongside UTC instants. Tests preserve
-  previous-service-day events across next-day removals and coincident instants
-  across distinct service dates. See
-  [service-date resolution](../../gtfs-scheduled-trip-service-dates.md).
-  Phase 2 review and generation/publication gates remain unchanged.
-
-- 2026-10-17: Added ordered source-trip timing validation and batch assembly as
-  arrivals-format preparation. It preserves exact decimal occurrence identities,
-  repeated stops and missing approximate times while rejecting duplicate
-  sequences, missing boundary times and chronology regressions across gaps.
-  All 19,150 October trips and 349,768 occurrences pass a read-only compatibility
-  check with source tables unchanged. See
-  [source-trip timing](../../gtfs-scheduled-trip-times.md). Phase 2 review and
-  generation/publication gates remain unchanged.
-
-- 2026-10-17: Added Singapore service-day instant conversion as format
-  preparation. It preserves offsets beyond midnight using the GTFS noon-based
-  anchor and elapsed seconds, with explicit civil-date validation. Tests retain
-  previous-day trips independently of new-day calendar exceptions; 68,677
-  distinct October offsets round-trip in a read-only synthetic-anchor check.
-  See [service-day instants](../../gtfs-service-day-instants.md). Calendar and
-  artifact selection, Phase 2 review and generation/publication gates remain
-  unchanged.
-
-
-- 2026-10-17: Added compact service calendars and a civil-date lookup as
-  arrivals-format preparation. Weekly bounds are inclusive; explicit date
-  additions/removals take precedence, including outside the weekly range.
-  Date-only schedules and inactive rules remain explicit, and duplicate or
-  malformed definitions fail. All three October calendars match the existing
-  evidence over 1,101 date checks. See
-  [scheduled service calendars](../../gtfs-service-calendars.md). Reconciliation
-  outputs, Phase 2 review requirements and generation gates remain unchanged.
-
-
-- 2026-10-17: Added a shared scheduled-stop-time contract and a fixed-stop
-  parser as arrivals-format preparation. They retain textual source occurrence
-  identity, service-day offsets beyond midnight, pickup/drop-off codes and
-  exact/approximate precision, with missing approximate times kept explicit.
-  This does not start generation or complete Phase 2; remaining platform
-  corrections require direct review under the canonical provenance policy.
-  See [scheduled stop times](../../gtfs-scheduled-stop-times.md).
-
-
-- 2026-10-17: Added an opt-in deterministic blocker report for version-2 and
-  version-3 drafts. It binds the exact draft/input identity and exposes unresolved
-  dates, all candidate revisions, unmatched dependencies, literal group members
-  and ordered occurrence evidence. The all-line v3 report accounts for all 191
-  unresolved cells and 22,123 pattern-date pairs, with overlapping causes counted
-  explicitly. Existing mapping/evaluation outputs and generation gates remain
-  unchanged. See [review blockers](../../gtfs-review-blockers.md). Phase 2 remains
-  open pending evidence and human review.
-
-
-- 2026-10-17: Added opt-in version-3 grouped-platform review. Seven complete
-  sets preserve all physical alternatives without allocating a member; every
-  member must pass current service/boarding checks on each matched occurrence.
-  This adds 27 pattern proposals (768 recurring trip records; 3,285 pattern-date
-  pairs), bringing cumulative matched dates to 26,268 with 22,123 unresolved.
-  Ang Mo Kio's missing C/D members and the six Expo conflicts remain unresolved.
-  Version-2 packets reproduce unchanged. See the
-  [grouped-platform contract and reproduction](../../gtfs-platform-group-review.md).
-  No approval or generation is enabled; Phase 2 remains open.
-
-
-- 2026-10-17: Added the remaining NSL, SKLRT and BPLRT review packets and the
-  [complete line inventory](../../gtfs-mapping-review-inventory.md). NSL proposes
-  four patterns; SKLRT proposes six West patterns; BPLRT has entity identities
-  only, with all six patterns unresolved. All nine source line families now have
-  concrete packets. Together they propose 930 matched decisions and retain 225
-  unresolved decisions over 1,124 source entries/1,155 date/entity cells.
-  Nine physical source stops remain unresolved, including Ang Mo Kio groups
-  whose C/D members are absent from canonical layout. The matrix separates
-  173 whole-calendar proposals, 31 partial CCL proposals and 184 wholly
-  unresolved patterns. Inventory accounting is complete; Phase 2 mapping review,
-  source/calendar/lineage acceptance and generation gates remain open.
-
-- 2026-10-17: Added exact-date CCL mapping proposals: 178 matches cover 47
-  routes, 33 station parents, 66 platform stops and 31 pattern/date cells
-  (1,098 recurring trip records; 1,656 pattern-date pairs). All matched dates
-  are on or after July 12; each selected pattern retains earlier unresolved
-  dates, and no CCL pattern is matched for its whole calendar. The six pilots
-  together have 749 matched cells and 406 unresolved cells. Splitting 31
-  patterns makes 1,155 decision cells over the unchanged 1,124 source entries.
-  See the [CCL mapping table](../../gtfs-ccl-pilot-mappings.md) and
-  [exact-date accounting](../../gtfs-scoped-review.md#circle-line-exact-date-cells-and-accounting).
-  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
-  complete and generation stays blocked.
-
-- 2026-10-17: Added a partial EWL mapping pilot: 165 proposed matches cover
-  seventeen declared routes, 35 station parents, 67 platform stops and 45
-  patterns (856 trip records; 5,893 pattern-date pairs). Five route records have
-  no trips. Five grouped platform records and 27 EWL patterns remain unresolved;
-  six of those patterns also retain the Expo label/service conflict. The five
-  pilots together propose 583 matches, leaving 541 entries unresolved without
-  exclusions or approval. See the
-  [EWL mapping table](../../gtfs-ewl-pilot-mappings.md) and
-  [remaining platform scope](../../gtfs-scoped-review.md#ewl-supported-patterns-and-platform-gaps).
-  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
-  complete and generation stays blocked.
-
-- 2026-10-16: Added a partial TEL mapping pilot: 172 proposed matches cover
-  fifteen routes, 27 station parents, 54 platform stops and 75 patterns
-  (1,619 trip records; 9,125 pattern-date pairs). Two TEL patterns containing
-  fourteen trips that omit Gardens by the Bay remain explicitly unresolved;
-  the matched-only focused draft does not imply whole-line coverage. The four
-  pilots together propose 423 matches, leaving 701 entries unresolved without
-  exclusions or approval. See the
-  [TEL mapping table](../../gtfs-tel-pilot-mappings.md) and
-  [remaining scope](../../gtfs-scoped-review.md#tel-supported-patterns-and-remaining-gaps).
-  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
-  complete and generation stays blocked.
-
-- 2026-10-16: Extended the concrete mapping pilot to Punggol LRT: 60 proposed
-  decisions cover one route, 15 station parents, 30 platform stops and 13
-  full-loop patterns (2,935 trip records; 1,721 pattern-date pairs). Preserved
-  repeated town-centre occurrences and separate weekday source patterns that
-  share a clockwise path despite differing direction IDs. NEL/DTL/PGLRT together
-  propose 253 matches, leaving 871 entries unresolved without automatic
-  exclusions or approval. See the
-  [Punggol LRT mapping table](../../gtfs-pglrt-pilot-mappings.md) and
-  [cumulative review scope](../../gtfs-scoped-review.md#punggol-lrt-and-cumulative-pilot-scope).
-  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
-  complete and generation stays blocked.
-
-- 2026-10-15: Extended the concrete mapping pilot to DTL: 129 proposed
-  decisions cover seven declared routes, 35 station parents, 70 platform stops
-  and 16 patterns (1,511 trip records; 1,877 pattern-date pairs). Two route
-  declarations have no trips in the capture. Independently checked the platform
-  labels and ordered paths, and reproduced both pilots deterministically.
-  The draft runner now accepts multiple pilot lines and deduplicates their
-  shared dependencies: NEL/DTL together propose 195 matches, leaving 929 entries
-  unresolved without automatic exclusions or approval. See the
-  [DTL mapping table](../../gtfs-dtl-pilot-mappings.md) and
-  [cumulative review scope](../../gtfs-scoped-review.md#dtl-and-cumulative-pilot-scope).
-  Source/calendar correctness and reviewed lineage remain open; Phase 2 is not
-  complete and generation stays blocked.
-
-- 2026-10-15: Added a separate version-2 scoped mapping draft/review contract
-  and a concrete NEL pilot: 69 proposed decisions cover one agency, three
-  routes, 17 station parents, 34 platform stops and 14 patterns (1,683 trip
-  records; 1,564 pattern-date pairs). The full draft retains all 1,055 other
-  records as unresolved; the checked-in pilot is explicitly incomplete globally.
-  No exclusions or approvals are generated, and source/calendar/lineage and
-  publication gates remain separate. See the
-  [scoped review contract](../../gtfs-scoped-review.md) and
-  [NEL mapping table](../../gtfs-nel-pilot-mappings.md). Phase 2 is not complete.
-
-- 2026-10-14: Added service-date candidate partitions to distinguish unique,
-  ambiguous and uncovered active dates across revision boundaries. For the
-  119 CCL whole-pattern date gaps, 26 now have one temporal candidate on every
-  active date; 76 retain uncovered dates and 30 have overlapping candidates
-  (the latter categories overlap). Platform checks use the same candidate
-  option for date validity and current restrictions, but do not establish
-  historical platform assignments. Reports remain unapproved and generation
-  remains blocked. See [mapping disagreements](../../gtfs-mapping-disagreements.md)
-  for the exact unmatched trips and scoped operator-source investigation;
-  neither source records nor canonical topology have been silently repaired.
-
-- 2026-10-14: Added bounded closed-loop matching, active-calendar/revision/code
-  and per-occurrence platform evidence, and a normalized August–October drift
-  audit. Sequence-unmatched patterns fall from 32 to five. Of 388 patterns, 242
-  have one candidate covering all active dates without explicit platform scope
-  conflicts, 119 CCL patterns require date-scoped reconciliation and 22 need
-  platform/terminal review. Seven grouped platforms remain ambiguous; the unused
-  LTA publisher can be proposed for an explicit ignore disposition. All evidence
-  remains agent-proposed, without human approval; generation stays blocked.
-  The two captures reuse Expo stop IDs with swapped platform labels, change 837
-  retained trip calendars, and retain version `0.1` despite extensive route-ID
-  churn. Pairwise drift is now measured, not a future stability or lineage claim.
-  See [reconciliation evidence](../../gtfs-reconciliation.md#calendar-platform-and-drift-evidence).
-
-- 2026-10-14: Added hash-verified unpacked-directory inspection using the shared
-  ZIP/CSV audit. Located all original August tables and protobufs and matched
-  every recorded hash. Reproduced zero structural errors, two alerts and empty
-  trip updates. Pinned independent validation found zero errors/system errors,
-  14 warnings and two informational notices, including a fast-travel warning.
-  See [historical audit](../../gtfs-local-inspection.md#historical-august-audit).
-  Phase 1's audit/tooling criteria are met using retained local copies. The
-  original ZIP/receipt and a remote immutable archive remain unavailable; exact
-  table/protobuf hashes and reproduction instructions are retained instead.
-- 2026-10-14: Added deterministic Phase 2 proposal and review schemas, verified
-  capture reconciliation and a complete-review gate. The current public capture
-  yields 1,124 unreviewed entries: seven ambiguous stops, 148 ambiguous patterns,
-  32 unresolved patterns and one unresolved publisher agency. All proposals
-  remain unreviewed; generation is blocked. See
-  [reconciliation](../../gtfs-reconciliation.md). At this point human-reviewed dispositions, calendar/direction/platform
-  semantics and a distinct-capture drift comparison remained open. The later
-  evidence audit above completes the drift comparison; Phase 2 is not complete.
-
-- 2026-10-14: Added MobilityData validator 8.0.1 with a SHA-256 executable
-  lock, fixed SG/date/thread/update-check configuration and separate CI findings.
-  Audited public schedule `e459a22be6c99a3728ee97770c02c4edbaee6c9293e48017e8ec28139962fa19`
-  (2,991,884 bytes): 113 routes, 1,211 stops, 19,150 trips, 349,768 stop times.
-  Both validators found zero errors; independent warnings/information are recorded
-  in [local inspection](../../gtfs-local-inspection.md). This initial pass left the historical August audit and unpacked-directory
-  support open; the subsequent Phase 1 audit above completed them. Reviewed
-  mappings remain required, with pairwise drift now recorded above.
-- 2026-10-14: Acquisition now runs on Fly.io with signed QStash schedules and
-  separate private/public Tigris buckets. Public handoff succeeded in receiver
-  run 38525057872 after PR #370 fixed valid single-digit-hour parsing. Recent
-  realtime captures do not yet establish useful nonempty trip-update behavior.
-
-- 2026-10-12: Added opt-in public GTFS snapshot handoff from the crawler,
-  hash-verified acquisition and a read-only schedule inspection workflow.
-  See [public handoff](../../gtfs-public-handoff.md). No canonical mappings
-  or publication of derived arrivals are enabled by this workflow.
-
-- 2026-10-12: Added local capture/hash verification, ZIP/CSV and realtime
-  inspection, and a versioned schedule-topology fingerprint. See
-  [local inspection](../../gtfs-local-inspection.md). Synthetic tests pass
-  independently of provider acquisition; historical capture audit, unpacked
-  input and pinned independent validation remain open. Phase 1 is not complete.
-
-- 2026-05-27: Created the initial plan from issue #157.
-- 2026-08-12: Reoriented the plan around LTA's documented train GTFS download
-  endpoints and an external credentialed producer.
-- 2026-08-13: Audited supplied schedule, service-alert, and trip-update files.
-  Replaced speculative synthetic-timetable and trip-update runtime design with
-  measured static reconciliation, a narrow alert-ingest proof, and a non-empty
-  trip-update capture gate.
-- 2026-08-14: Selected a concrete first consumer: map the LTA schedule to
-  canonical MRTDown identities, publish a scheduled-arrivals artifact, and use
-  it as `mrtdown-site`'s exact schedule baseline.
-
-## Decision Log
-
-- Keep authenticated download, polling, and live serving outside this
-  repository.
-- Use LTA's exact schedule as the candidate timetable source; do not build an
-  MRTDown frequency-derived feed in the initial scope.
-- Keep provider ids separate from canonical MRTDown ids through versioned
-  mappings.
-- Publish a compact LTA-derived scheduled-arrivals artifact keyed by canonical
-  MRTDown identities, while retaining provider trip and stop identities for
-  later realtime joins.
-- Start canonical realtime work with service alerts because the supplied sample
-  maps to the existing evidence model.
-- Defer trip-update runtime semantics until non-empty provider captures exist.
-- Keep vehicle positions out of scope.
-
-## Validation
+## Validation and Acceptance
 
 Implementation phases must keep these deterministic checks truthful:
 

@@ -36,11 +36,11 @@ The dataset lives in `data/`. External GTFS files can be inspected locally.
 | --- | --- |
 | `station/` | Stations, including exits and optional platform information. |
 | `line/`, `service/`, `operator/`, `town/`, `landmark/` | The rail network and nearby places. |
-| `public-holiday/` | Shared Singapore holiday calendars by year; see [public holidays](docs/public-holidays.md). |
+| `public-holiday/` | Shared Singapore holiday calendars by year; see [public holidays](docs/data/public-holidays.md). |
 | `issue/YYYY/MM/<issue_id>/` | Issue metadata (`issue.json`), source evidence (`evidence.ndjson`), and append-only impact events (`impact.ndjson`). |
-| `schematic-map/system/` | Map rules and design constraints; see the [map plan](docs/plans/active/schematic-system-map.md). |
+| `schematic-map/system/` | Map rules and design constraints; see the [map reference inventory](docs/schematic-map/reference-inventory.md). |
 | `rights/source-registry.json` | Source rights and attribution rules. |
-| External GTFS files | [Schedule, realtime, and departure inspection](docs/gtfs-local-inspection.md); arrival generation and publication require mapping and licensing review. |
+| External GTFS files | [GTFS guides](docs/gtfs/README.md) cover local inspection, mapping review, and timetable publication. |
 
 Issue types are `disruption`, `maintenance`, and `infra`; ongoing issues use
 open-ended periods.
@@ -50,7 +50,7 @@ Service names put secondary specifiers in parentheses, for example
 parentheses, for example `主线（北向）`.
 
 Validate every data change with `npm run data:validate`. For station layout
-updates, follow the [exit and platform source policy](docs/plans/active/station-layout-data.md).
+updates, follow the [exit and platform source policy](docs/data/station-layout.md).
 These commands import LTA exits and report possible platform labels inferred
 from reviewed observations:
 
@@ -71,10 +71,10 @@ rendered content when the source registry disallows public export. Generated
 test data appears under `fixtures/` in the same bundle.
 
 The build can also include a reviewed GTFS timetable with source attribution
-and release checks. See [combined timetable packaging](docs/gtfs-timetable-release.md#packaging-an-approved-combined-release-for-pages)
-and [legacy timetable packaging](docs/gtfs-timetable-release.md#packaging-a-release-for-pages).
+and release checks. See [combined timetable packaging](docs/gtfs/operations/timetable-release.md#packaging-an-approved-combined-release-for-pages)
+and [legacy timetable packaging](docs/gtfs/operations/timetable-release.md#packaging-a-release-for-pages).
 Default builds omit the timetable. Local consumers can query
-[retained scheduled departures](docs/gtfs-retained-departures.md) across service
+[retained scheduled departures](docs/gtfs/reference/retained-departures.md) across service
 days, with source provenance and explicit missing coverage.
 
 For relevant changes, CI builds branch and pull request previews as temporary
@@ -117,13 +117,6 @@ Model evaluations (`npm run test:eval`) and regression `--replay` make paid API
 calls and require `OPENAI_API_KEY`. Regression replay uses a temporary copy of
 the recorded data revision. These checks are separate from deterministic tests.
 
-Holiday-derived GTFS mapping review uses the
-[shared policy-aware gate](docs/gtfs-holiday-mapping-review.md). The
-[nine-family capture review](docs/gtfs-shared-holiday-family-review.md) records
-the earlier capture's scope and unresolved evidence.
-A [source platform allocation review](docs/gtfs-source-platform-allocation-review.md)
-accepts explicitly reviewed GTFS allocations while retaining canonical direction defaults.
-
 ## Work on the tools
 
 The packages separate data definitions, file access, and evidence processing:
@@ -139,7 +132,7 @@ The packages separate data definitions, file access, and evidence processing:
 Run the repository checks and deterministic tests before committing:
 
 ```bash
-npm run check  # Lint, package boundaries, and documentation links
+npm run check  # Lint, package boundaries, links, and active plan structure
 npm test       # Deterministic tests; generates fixtures first
 ```
 
@@ -150,7 +143,8 @@ data in `fixtures/generated/data`; recorded ingestion cases live in
 
 Keep generated output out of commits and separate bulk data changes from code
 changes where practical. See [AGENTS.md](AGENTS.md) for contribution rules and
-[the plans index](docs/plans/README.md) for active work and migration history.
+[the documentation index](docs/README.md) for operating guides,
+execution plans, and migration history.
 
 ## Licenses and sources
 
@@ -162,6 +156,6 @@ changes where practical. See [AGENTS.md](AGENTS.md) for contribution rules and
 | Third-party evidence | Upstream rights and terms apply; MRTDown does not relicense these materials. |
 
 Observed platform facts and recorded inferences follow the
-[station layout source policy](docs/plans/active/station-layout-data.md).
+[station layout source policy](docs/data/station-layout.md).
 The [source registry](data/rights/source-registry.json) records recurring source
 classes and attribution requirements.

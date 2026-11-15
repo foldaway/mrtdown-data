@@ -1,268 +1,69 @@
-# Station First And Last Train Data Plan
+# Maintain published first and last train timings
+
+## Purpose
+
+Keep official first and last train timings available by station and service
+pattern for passenger display and frequency-based estimates.
+
+## Progress
+
+- [x] (2026-06-09) Add optional timing records and validation in
+  [PR #298](https://github.com/foldaway/mrtdown-data/pull/298).
+- [x] (2026-07-16) Backfill operating hours and add estimated departures in
+  [PR #347](https://github.com/foldaway/mrtdown-data/pull/347).
+- [ ] Decide whether consumers need a timing coverage report or Pages index,
+  and whether these timings have a validation role alongside exact LTA GTFS.
+
+## Surprises & Discoveries
+
+The exit dataset has no service-to-platform assignments. Timing references
+validate against service paths independently of station layouts. See
+[repository validation](../../../packages/fs/src/validate.ts).
+
+## Decision Log
+
+- **2026-06-09** — Reference the full stopping pattern by `serviceId` so its
+  path defines direction and destination. Use a separate service for a
+  recurring short working that ends before the usual terminal.
+
+## Outcomes & Retrospective
+
+The timing records are available in canonical station data and feed the
+[frequency-based departure helper](../../../packages/core/src/helpers/generateEstimatedStationFrequencySchedules.ts).
+See [Caldecott](../../../data/station/CDT.json) for SMRT examples and
+[Little India](../../../data/station/LTI.json) for SBS Transit examples.
+The [GTFS plan](gtfs-static-realtime.md) tracks exact schedules separately.
 
 ## Context
 
-Station records currently do not store published first and last train timings.
-Service records already describe ordered station paths and operating windows,
-but the service catalog is intentionally incomplete: it does not yet include
-every full scheduled stopping pattern, including short workings that appear in
-first and last train tables.
+Use the [station schema](../../../packages/core/src/schema/Station.ts) for
+field definitions and calendar categories. Store local Singapore clock times
+as published, including after-midnight values such as `00:25`. Derive service-day
+offsets at the timetable boundary if a downstream use needs them.
 
-This plan adds current first/last train timing data directly to
-`data/station/*.json`. Timing rows reference `serviceId`, where a service is the
-full scheduled stopping pattern. A last-train short working should therefore be
-represented as a distinct service rather than as a destination override on the
-timing row.
+### Source policy
 
-Related references:
+Use official passenger timing tables from the operator or agency. When official
+sources differ, prefer the table that directly describes the operator's service.
+Use third-party sites only to cross-check the reviewed values. Document a stable
+source contract and maintenance process before introducing automated imports.
 
-- `packages/core/src/schema/Station.ts`
-- `packages/core/src/schema/Service.ts`
-- `packages/fs/src/validate.ts`
-- `docs/plans/active/station-layout-data.md`
-- `docs/plans/active/gtfs-static-realtime.md`
+Record recurring published timings here, including recurring holiday categories
+where applicable. Record one-off early closures, late openings, and extensions
+as issue evidence.
 
-## Goals
+## Plan of Work
 
-- Store current published first and last train timings in station records.
-- Reference full scheduled stopping patterns through `serviceId`.
-- Support rows that have only a first train, only a last train, or both.
-- Support calendar categories used by operator timing tables.
-- Validate that the station appears in every referenced service path.
-- Validate platform coverage when station layout data exists.
-- Keep the shape compatible with later GTFS timetable or frequency generation.
+1. Check how the site and other Pages consumers discover `firstLastTrain` today.
+   Add coverage metadata only if a concrete consumer needs it to find records.
+2. Decide whether a coverage report or cross-check against reviewed GTFS would
+   catch meaningful gaps. If needed, define the evidence and service-date rules
+   for the cross-check before implementing it.
 
-## Non-Goals
+## Validation and Acceptance
 
-- This plan does not store source or provenance fields on timing data.
-- This plan does not introduce timing revision history in the first
-  implementation.
-- This plan does not model temporary early closures, late openings, or holiday
-  extensions as baseline first/last train data.
-- This plan does not require the full scheduled service catalog to be completed
-  before one station or one line slice can be seeded.
-- This plan does not generate complete stop-by-stop timetables.
-
-## Service Semantics
-
-For first/last train data, `serviceId` must mean a full scheduled stopping
-pattern:
-
-- direction;
-- branch;
-- stopping sequence;
-- terminal;
-- recurring public short working, when relevant.
-
-Do not add `terminatingAtStationId` to timing rows. If a first or last train
-terminates before the normal line terminal, add or reference a service whose
-path ends at that station.
-
-Example services:
-
-- `TEL_MAIN_N`: northbound main TEL stopping pattern to the normal terminal.
-- `TEL_MAIN_N_TO_ORC`: northbound short-working pattern ending at Orchard.
-
-The exact naming convention can be settled when the expanded service catalog is
-implemented, but the semantic boundary should be documented before timing data
-lands.
-
-## Station Record Shape
-
-Add an optional `firstLastTrain` object to `StationSchema`:
-
-```json
-{
-  "firstLastTrain": {
-    "services": [
-      {
-        "serviceId": "TEL_MAIN_N",
-        "times": {
-          "weekday": {
-            "firstTrain": "06:07",
-            "lastTrain": "00:07"
-          },
-          "saturday": {
-            "firstTrain": "06:07",
-            "lastTrain": "00:07"
-          },
-          "sunday_public_holiday": {
-            "firstTrain": "06:27",
-            "lastTrain": "00:07"
-          }
-        },
-        "specialTimes": {
-          "eve_public_holiday": {
-            "firstTrain": null,
-            "lastTrain": "00:35"
-          }
-        }
-      },
-      {
-        "serviceId": "TEL_MAIN_N_TO_ORC",
-        "times": {
-          "weekday": {
-            "firstTrain": null,
-            "lastTrain": "00:25"
-          },
-          "saturday": {
-            "firstTrain": null,
-            "lastTrain": "00:25"
-          },
-          "sunday_public_holiday": {
-            "firstTrain": null,
-            "lastTrain": "00:25"
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
-Rules:
-
-- `serviceId` is required.
-- `times` is keyed by normal calendar category.
-- `specialTimes` is keyed by recurring special calendar category.
-- Timing values always use the same shape:
-  `{ "firstTrain": "HH:mm" | null, "lastTrain": "HH:mm" | null }`.
-- At least one of `times` or `specialTimes` must be present for each service.
-- In every timing value, `firstTrain` and `lastTrain` are nullable, but at
-  least one must be non-null.
-- Times are local operating-day times in Singapore time. Values after midnight
-  should use the displayed clock time, such as `00:25`, unless GTFS generation
-  later needs a derived service-day offset.
-
-## Calendar Categories
-
-Start with the categories used by published operator tables:
-
-- `weekday`
-- `saturday`
-- `sunday_public_holiday`
-- `weekday_saturday`
-- `daily`
-
-Add more normal categories only when a published table requires them. Candidate
-future categories:
-
-- `school_holiday`
-- `special`
-
-Start with these recurring special categories:
-
-- `eve_public_holiday`
-
-Calendar categories should be data categories first. Any mapping to GTFS
-`calendar.txt` or `calendar_dates.txt` can happen in generator metadata later.
-
-## Source Policy
-
-Seed first/last train timings from official operator or agency sources, such as
-SMRT, SBS Transit, LTA, or published operator station pages. Transport
-enthusiast sites, wiki pages, blogs, and route guides can be useful for manual
-sanity checks, but they should not be the authoritative source for canonical
-timing values.
-
-When official sources disagree or expose different levels of detail, prefer the
-source that directly represents the operator-published passenger timing table.
-Keep the first implementation hand-reviewed from published passenger-facing
-sources. Add reusable import tooling only after a later plan defines a stable
-public source contract and its maintenance expectations.
-
-## Seeded Data Notes
-
-The first narrow seeds are intentionally hand-reviewed station records rather
-than outputs from a reusable operator ingest script:
-
-- `CDT` seeds one SMRT-operated CCL/TEL platform relationship slice at an
-  interchange station, including current pre-CCL6 CCL main-service timings.
-- `LTI` seeds one SBS Transit-operated interchange slice from the public SBS
-  Transit first/last train page, covering both NEL and DTL timing table shapes.
-
-## Layout Relationship
-
-The LTA station-exit dataset contains no platform or service-assignment data.
-First/last train timings therefore have no cross-validation relationship with
-`station.layout`; their service references are validated against the service
-catalog and station path instead.
-
-## Validation
-
-Add validation that catches:
-
-- timing `serviceId` values that do not exist;
-- timing rows where the station is not in the referenced service path;
-- rows with both `firstTrain` and `lastTrain` set to `null`;
-- invalid local time values;
-- duplicate rows for the same `serviceId`;
-- stations with no `firstLastTrain` continuing to validate.
-
-## Phases
-
-### Phase 1: Schema
-
-- Add `firstLastTrain` schemas to `packages/core/src/schema/Station.ts`.
-- Add a reusable enum or schema for first/last train calendar categories.
-- Keep the field optional so existing station data validates unchanged.
-
-Exit criteria:
-
-- Existing station JSON validates unchanged.
-- Fixture station records can include first-only, last-only, and first-plus-last
-  rows.
-
-### Phase 2: Service Catalog Semantics
-
-- Document that service records represent full scheduled stopping patterns.
-- Add naming guidance for short workings and branch-specific patterns.
-- Add fixture services for at least one normal through service and one short
-  working.
-
-Exit criteria:
-
-- First/last timing examples do not need destination fields.
-- Validation can derive terminal and direction from the referenced service.
-
-### Phase 3: Repository Validation
-
-- Add timing validation in `packages/fs/src/validate.ts`.
-- Validate service existence and station membership.
-- Add deterministic tests for invalid references, invalid time rows, and
-  duplicate rows.
-
-Exit criteria:
-
-- Broken first/last train rows fail `npm run data:validate`.
-- Stations without timing data remain valid.
-
-### Phase 4: Seed One Slice
-
-- Seed one small reviewed slice first, such as one station across all current
-  services or one line across several representative stations.
-- Include at least one short-working service if the published table has a
-  last-train row for it.
-- Keep the first data PR small enough for manual timetable review.
-
-Exit criteria:
-
-- The seeded slice demonstrates normal through service and short-working timing
-  rows.
-- The service catalog contains the stopping patterns needed by that slice.
-
-### Phase 5: GTFS And Publication
-
-- Decide whether first/last train data feeds timetable-like GTFS trips, a
-  validation report, or both.
-- Keep baseline first/last timings separate from temporary service-change issue
-  evidence.
-- Include timing coverage in generated Pages metadata once enough stations are
-  populated for consumers.
-
-Exit criteria:
-
-- Downstream consumers can discover which station records include first/last
-  train data.
-- GTFS generation can use timing data without inventing destination semantics
-  outside `serviceId`.
+From the repository root, run `npm run data:validate` and `npm test` for timing
+changes. Check that each affected station resolves to the intended stopping
+pattern and that the timing matches the official table. If coverage metadata is
+added, build with `npm run pages:build` and verify it matches the station records
+in the archive.
