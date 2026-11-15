@@ -3,7 +3,7 @@
 `@mrtdown/core` exports `ScheduledTripPatternBindingSchema`, its inferred
 `ScheduledTripPatternBinding` type and
 `bindScheduledTripPattern(trip, binding)`. The helper joins
-[source-trip timing](scheduled-trip-times.md) to a supplied
+[source-trip timing](service-day-timing.md#stop-occurrences) to a supplied
 [canonical pattern](scheduled-trip-patterns.md) without selecting a mapping.
 
 A binding contains:

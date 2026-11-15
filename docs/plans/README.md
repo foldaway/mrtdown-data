@@ -20,10 +20,11 @@ and broader deferred work in [tech debt](tech-debt.md).
 1. Copy the [template](template.md) into `active/<topic>.md` and link it in the
    active index. Keep the template's level-two headings in order and use
    subheadings for project-specific detail. `npm run check:docs` checks the
-   headings in active plans.
+   headings in active plans. Follow the [proposal writing guidance](../README.md#writing-docs-and-proposals).
 2. Make the next step executable from a fresh checkout. Name the relevant files
    and commands, distinguish verified facts from assumptions, and state the
    expected results. Link to supporting evidence and durable subject guides.
+   Summarize any fact or decision from outside the repo that execution depends on.
 3. Update the progress checklist when a milestone changes or work stops. Date
    completed items and record remaining steps and blockers. Record discoveries
    with evidence and decisions with their rationale.

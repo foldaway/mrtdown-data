@@ -33,6 +33,8 @@ or [Paya Lebar platform decision](source-platform-allocation-review.md#paya-leba
   manifest, independent validator findings, and reconciliation outputs. To
   reproduce an audit, see [local inspection](../operations/local-inspection.md#historical-august-audit)
   and [reconciliation](reconciliation.md).
+- [October timing compatibility checks](timing-compatibility-2026-10.md) record
+  parser results, service date checks, and artifact digests for one capture.
 
 ## Line pilots
 

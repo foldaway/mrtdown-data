@@ -17,7 +17,17 @@ Start with the [repository README](../README.md) for setup, commands, and
 package boundaries. The [triage guide](../packages/triage/README.md) and
 [ingest contracts](../packages/ingest-contracts/README.md) live with their packages.
 
-Put new material with its subject and link it from the nearest index. Update the
-existing guide when behavior changes. Retain dated evidence with the capture or
-review it supports. Keep implementation history in the plan and put operating
-instructions in the subject guide so they stay easy to find after the plan closes.
+## Writing docs and proposals
+
+- Write for a busy reader. Lead with what changes, why it matters, and what
+  decision or action is needed. Give enough context for a reader to act.
+- Use descriptive headings, short paragraphs, and bullets for independent
+  points. Use numbered steps when order matters.
+- Say each thing once. Link to nearby schemas, tests, CLI help, or existing
+  guides for details they already explain. Write down the rationale, policies,
+  failure modes, and evidence a reader would otherwise have to reconstruct.
+- For a proposal with open choices, state the recommendation, its tradeoff,
+  and what evidence would change it. Record the decision in the relevant plan
+  or subject guide.
+- Update the existing subject guide when behavior changes. Keep dated evidence
+  with the review it supports and implementation history with the plan.

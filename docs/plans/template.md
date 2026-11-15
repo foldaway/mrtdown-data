@@ -1,40 +1,49 @@
-# <Action-oriented title>
+# Outcome to deliver
 
 ## Purpose
 
-Describe the outcome, who benefits, and what is in scope.
+State what someone will be able to do and how they can tell it works. Name
+scope limits that affect the decision or implementation.
 
 ## Progress
 
-- [ ] Name a verifiable next step and any dependency or blocker.
+- [ ] Name the next verifiable step and its blocker, if any.
+
+Date completed items and link to the change or verification result. At each
+handoff, split partial work into completed and remaining steps.
 
 ## Surprises & Discoveries
 
-Record findings that affect the work and link to the evidence. Use “None
-recorded” until there is a finding.
+Record discoveries that change the work. Give the observation and a short
+piece of evidence or a link. Use “None recorded” until there is a finding.
 
 ## Decision Log
 
-Record the date, decision, and rationale. Link to evidence or approval when
-it matters. Use “None recorded” until there is a decision.
+Record the date, decision maker, choice, and reason. Link any approval or
+evidence the choice depends on. Use “None recorded” until there is a decision.
 
 ## Outcomes & Retrospective
 
-Summarize verified results, remaining gaps, and lessons as milestones land.
-Link to the resulting implementation and operating docs.
+At a milestone or at closeout, compare the observed result with the purpose.
+Link the verification, remaining work, and any operating guidance that changed.
 
 ## Context
 
-Describe the relevant current behavior, key paths, assumptions, and dependencies
-so a contributor can resume from the repository.
+Give a reader with a fresh checkout the context to resume. Name the current
+behavior, repository-relative paths, dependencies, and assumptions that affect
+the work. Explain unfamiliar terms and summarize decisions from outside the repo.
+Link to the schemas, tests, and guides that own the details.
 
 ## Plan of Work
 
-Describe the work in order. For each milestone, name the affected paths,
-commands, and expected result. Include any applicable rollout, retry, or
-rollback steps.
+Order milestones by dependency. For each milestone, explain the change, name
+the files or interfaces it affects, and give commands with their working
+directory and expected results. Make each milestone verifiable on its own.
+For risky steps, state the rollout conditions and how to retry or roll back.
 
 ## Validation and Acceptance
 
-List the commands to run, where to run them, and what observable results show
-that the work is done.
+Describe a concrete scenario and the result a reader should observe. Give the
+command or procedure and its expected output. Link the actual results as work
+lands. For internal changes, name the regression or invariant that proves the
+intended behavior.

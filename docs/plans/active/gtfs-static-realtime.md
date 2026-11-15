@@ -431,7 +431,7 @@ import procedures. The entries below record what was known at each date.
   access restrictions and precision alongside UTC instants. Tests preserve
   previous-service-day events across next-day removals and coincident instants
   across distinct service dates. See
-  [service-date resolution](../../gtfs/reference/scheduled-trip-service-dates.md).
+  [service-date resolution](../../gtfs/reference/service-day-timing.md#service-dates-and-clock-time).
   Phase 2 review and generation/publication gates remain unchanged.
 
 - 2026-10-17: Added ordered source-trip timing validation and batch assembly as
@@ -440,7 +440,7 @@ import procedures. The entries below record what was known at each date.
   sequences, missing boundary times and chronology regressions across gaps.
   All 19,150 October trips and 349,768 occurrences pass a read-only compatibility
   check with source tables unchanged. See
-  [source-trip timing](../../gtfs/reference/scheduled-trip-times.md). Phase 2 review and
+  [source-trip timing](../../gtfs/reference/service-day-timing.md#stop-occurrences). Phase 2 review and
   generation/publication gates remain unchanged.
 
 - 2026-10-17: Added Singapore service-day instant conversion as format
@@ -448,7 +448,7 @@ import procedures. The entries below record what was known at each date.
   anchor and elapsed seconds, with explicit civil-date validation. Tests retain
   previous-day trips independently of new-day calendar exceptions; 68,677
   distinct October offsets round-trip in a read-only synthetic-anchor check.
-  See [service-day instants](../../gtfs/reference/service-day-instants.md). Calendar and
+  See [service-day instants](../../gtfs/reference/service-day-timing.md#service-dates-and-clock-time). Calendar and
   artifact selection, Phase 2 review and generation/publication gates remain
   unchanged.
 
@@ -459,7 +459,7 @@ import procedures. The entries below record what was known at each date.
   Date-only schedules and inactive rules remain explicit, and duplicate or
   malformed definitions fail. All three October calendars match the existing
   evidence over 1,101 date checks. See
-  [scheduled service calendars](../../gtfs/reference/service-calendars.md). Reconciliation
+  [scheduled service calendars](../../gtfs/reference/service-day-timing.md#calendar-availability). Reconciliation
   outputs, Phase 2 review requirements and generation gates remain unchanged.
 
 
@@ -469,7 +469,7 @@ import procedures. The entries below record what was known at each date.
   exact/approximate precision, with missing approximate times kept explicit.
   This does not start generation or complete Phase 2; remaining platform
   corrections require direct review under the canonical provenance policy.
-  See [scheduled stop times](../../gtfs/reference/scheduled-stop-times.md).
+  See [scheduled stop times](../../gtfs/reference/service-day-timing.md#stop-occurrences).
 
 
 - 2026-10-17: Added an opt-in deterministic blocker report for version-2 and

@@ -6,9 +6,9 @@ into one validated content document:
 
 - `schemaVersion: 1` and `timeZone: "Asia/Singapore"`;
 - a nonempty `calendars` array of
-  [source calendar rules](service-calendars.md), without expanding dates;
+  [source calendar rules](service-day-timing.md#calendar-availability), without expanding dates;
 - a nonempty `trips` array of
-  [ordered source-trip timing](scheduled-trip-times.md).
+  [ordered source-trip timing](service-day-timing.md#stop-occurrences).
 
 Calendar IDs and trip IDs must each be unique. Every trip must reference a
 calendar in the document. IDs are case-sensitive source text; calendars may be

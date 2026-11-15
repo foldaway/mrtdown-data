@@ -24,9 +24,8 @@ required to publish a timetable.
 
 ## Timetable reference
 
-- Source fields and time semantics are in [stop times](reference/scheduled-stop-times.md),
-  [calendars](reference/service-calendars.md), [service day instants](reference/service-day-instants.md),
-  [trip timing](reference/scheduled-trip-times.md), and [service date resolution](reference/scheduled-trip-service-dates.md).
+- [Service-day timing](reference/service-day-timing.md) covers calendar rules,
+  overnight events, and stop occurrence identity.
 - Canonical matching is described in [trip patterns](reference/scheduled-trip-patterns.md),
   [trip bindings](reference/scheduled-trip-bindings.md), and [assignment validation](reference/trip-assignment-validation.md).
 - File formats are described in [source timetable](reference/source-timetable.md),

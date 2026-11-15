@@ -3,7 +3,7 @@
 `@mrtdown/core` exports `scheduledDeparturesInWindow(selections, window)`,
 `ScheduledTripDateSelection` and `ScheduledDeparture`. Each selection supplies a
 source trip, its matching calendar and an explicit civil service date. The helper
-uses [service-date resolution](scheduled-trip-service-dates.md) to combine
+uses [service-date resolution](service-day-timing.md#service-dates-and-clock-time) to combine
 enabled events across those dates.
 
 The window contains `startInstant` and `endInstant` as absolute ISO timestamps

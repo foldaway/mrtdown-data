@@ -50,8 +50,8 @@ It does not install anything, fetch fresh terms or repeat the original ZIP's
 producer checks. Trust comes from the root manifest's authenticated publication
 channel, not from reviewer names inside the archive. A deployment must still
 validate installed canonical data and supply its separate source-lineage review
-to `importScheduledTimetableArtifact`; release permission does not establish
-source order. The site pull and database read model are not wired yet.
+to `importScheduledTimetableArtifact`. Use the separate source review to
+establish source order.
 
 ## Establishing source order
 
@@ -314,15 +314,10 @@ must come from a trusted workflow; reviewer names in arbitrary request JSON do
 not confer authority. Retained receipts, source order and correction revisions
 remain unchanged, and omitting the override restores ordinary selection.
 
-## Remaining import work
+## Site archive import
 
-A positive source result is only one prerequisite. The consumer still needs
-release/provenance checks and precise scoped-coverage evidence for partial
-artifacts. Calling the lower-level source-admission helper with an arbitrarily
-chosen incumbent does not validate a complete lineage or authorize a rollback.
-
-The [local departure query](../reference/retained-departures.md) merges independently
-selected service days. Site archive integration and API/UI provenance remain in
-[Phase 4 of the GTFS plan](../../plans/active/gtfs-static-realtime.md#phase-4-consume-scheduled-arrivals-in-mrtdown-site).
-These helpers create no real mapping, source or release approvals and do not
-enable GTFS in the default Pages build.
+The `mrtdown-site` pull workflow verifies, retains, and projects the timetable
+from the Pages archive. Follow the [combined release runbook](timetable-release.md#deploying-the-combined-release-through-github-actions)
+to supply the trusted release index and check import results. For local
+queries, [retained departures](../reference/retained-departures.md) merges
+independently selected service days.
