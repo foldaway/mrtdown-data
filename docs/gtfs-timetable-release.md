@@ -278,7 +278,7 @@ and the fixture export omit combined timetable output.
 
 ### Deploying the combined release through GitHub Actions
 
-The main-branch Pages workflow uses the repository variable
+The main-branch Pages workflow uses the `github-pages` environment variable
 `MRTDOWN_COMBINED_TIMETABLE_ENABLED`. Leave it unset or set to `false` until
 publication and production import are authorized. When set to `true`, every
 routine deployment rebuilds the pinned release against the canonical data it
@@ -304,18 +304,22 @@ Pages tree. Include `schedule.zip`, the licence-reviewed `capture.json`,
 
 The builder checks fresh terms and release eligibility, then verifies and
 preserves the original evidence bytes. This keeps both index digests stable
-across deployments of the same release. Use an immutable private HTTPS object
-that serves the archive directly with bearer authentication. Keep the raw
-archive, review inputs and source review in private storage. PR checks use
-synthetic timetables and Pages previews use the default build.
+across deployments of the same release. In the private Tigris bucket, store the
+archive at `pages-release-inputs/<archive-sha256>.tar.gz`. The workflow signs an
+S3 GET request to Tigris and checks the downloaded archive against the pinned
+digest. Give the workflow its own credentials scoped to `s3:GetObject` under
+`pages-release-inputs/`. Keep the raw archive, review inputs and source review in
+private storage. PR checks use synthetic timetables and Pages previews use the
+default build.
 
 Restrict the `github-pages` environment to `main` before storing the release
 credentials. Configure the following on that environment while the gate is off.
 
 | Setting | Value |
 | --- | --- |
-| Secret `MRTDOWN_COMBINED_TIMETABLE_INPUT_URL` | Private archive URL |
-| Secret `MRTDOWN_COMBINED_TIMETABLE_INPUT_TOKEN` | Read-only bearer token for that archive |
+| Variable `MRTDOWN_COMBINED_TIMETABLE_INPUT_BUCKET` | Private Tigris bucket name |
+| Secret `MRTDOWN_COMBINED_TIMETABLE_INPUT_ACCESS_KEY_ID` | Scoped Tigris S3 access key ID |
+| Secret `MRTDOWN_COMBINED_TIMETABLE_INPUT_SECRET_ACCESS_KEY` | Scoped Tigris S3 secret access key |
 | Variable `MRTDOWN_COMBINED_TIMETABLE_INPUT_SHA256` | SHA-256 of the exact compressed archive |
 | Secret `MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW` | Production-approved `scheduled-timetable-source-review` JSON |
 
