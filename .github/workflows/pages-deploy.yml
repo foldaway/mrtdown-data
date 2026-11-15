@@ -64,22 +64,25 @@ jobs:
       - name: Acquire approved combined timetable inputs
         if: env.COMBINED_TIMETABLE_ENABLED == 'true'
         env:
-          RELEASE_URL: ${{ secrets.MRTDOWN_COMBINED_TIMETABLE_INPUT_URL }}
-          RELEASE_TOKEN: ${{ secrets.MRTDOWN_COMBINED_TIMETABLE_INPUT_TOKEN }}
+          RELEASE_BUCKET: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_INPUT_BUCKET }}
           RELEASE_SHA256: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_INPUT_SHA256 }}
+          RELEASE_ACCESS_KEY_ID: ${{ secrets.MRTDOWN_COMBINED_TIMETABLE_INPUT_ACCESS_KEY_ID }}
+          RELEASE_SECRET_ACCESS_KEY: ${{ secrets.MRTDOWN_COMBINED_TIMETABLE_INPUT_SECRET_ACCESS_KEY }}
         run: |
           umask 077
-          if [[ "$RELEASE_URL" != https://* || -z "$RELEASE_TOKEN" || ! "$RELEASE_SHA256" =~ ^[a-f0-9]{64}$ ]]; then
-            echo "::error::A private HTTPS release URL, bearer token and pinned archive SHA-256 are required"
+          if [[ ! "$RELEASE_BUCKET" =~ ^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$ || ! "$RELEASE_SHA256" =~ ^[a-f0-9]{64}$ || -z "$RELEASE_ACCESS_KEY_ID" || -z "$RELEASE_SECRET_ACCESS_KEY" ]]; then
+            echo "::error::A private Tigris bucket, S3 read credentials and pinned archive SHA-256 are required"
             exit 1
           fi
           input_dir="$RUNNER_TEMP/combined-release"
           archive="$RUNNER_TEMP/combined-release-inputs.tar.gz"
+          release_url="https://t3.storage.dev/$RELEASE_BUCKET/pages-release-inputs/$RELEASE_SHA256.tar.gz"
           mkdir "$input_dir"
           status=$(curl --fail --show-error --silent --proto '=https' \
             --max-time 120 --max-filesize 67108864 \
-            --header "Authorization: Bearer ${RELEASE_TOKEN}" \
-            --output "$archive" --write-out '%{http_code}' "$RELEASE_URL")
+            --aws-sigv4 'aws:amz:auto:s3' \
+            --user "$RELEASE_ACCESS_KEY_ID:$RELEASE_SECRET_ACCESS_KEY" \
+            --output "$archive" --write-out '%{http_code}' "$release_url")
           if [[ "$status" != 200 ]]; then
             echo "::error::Private release download must return HTTP 200 directly"
             exit 1
