@@ -59,7 +59,7 @@ if (capture.feed_kind !== 'schedule')
 const current = readSchedule(bytes);
 const historical = await inspectGtfsDirectory(
   resolve(historicalDirectory),
-  join(cwd, 'docs/gtfs-historical-schedule-manifest.json'),
+  join(cwd, 'docs/gtfs/reviews/audits/gtfs-historical-schedule-manifest.json'),
 );
 const files = {};
 for (const [name, digest] of Object.entries(historical.manifest)) {

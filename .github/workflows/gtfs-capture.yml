@@ -120,8 +120,8 @@ jobs:
           if [[ -z "$existing_ref" ]]; then
             run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
             origin="${SNAPSHOT_ORIGIN%/}"
-            record_path="docs/gtfs-captures/$SNAPSHOT_SHA256.md"
-            mkdir -p docs/gtfs-captures
+            record_path="docs/gtfs/captures/$SNAPSHOT_SHA256.md"
+            mkdir -p docs/gtfs/captures
             cat > "$record_path" <<EOF
           # LTA train GTFS snapshot
 

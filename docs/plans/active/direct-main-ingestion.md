@@ -1,6 +1,6 @@
 # Direct-to-Main Ingestion Reliability
 
-## Goal
+## Purpose
 
 Remove the automated ingestion pull-request queue and allow trusted ingestion
 runs to commit canonical issue data directly to `main`.
@@ -9,7 +9,50 @@ The target is unattended ingestion, not unconditional ingestion. Ambiguous,
 unsupported, or failed inputs should leave canonical data unchanged and produce
 an inspectable rejection record.
 
-## Current State
+### Non-Goals
+
+- Guarantee that every submitted payload creates or updates an issue.
+- Correct the entire historical issue dataset in the workflow-cutover change.
+- Make translations authoritative for operational scope, effect, or timing.
+- Run paid model evaluation as part of the normal deterministic test suite.
+
+## Progress
+
+- [x] (2026-07-16) Add the historical corpus and replay tooling in
+  [PR #349](https://github.com/foldaway/mrtdown-data/pull/349).
+- [x] (2026-10-21) Harden the existing PR workflow with queuing, rebasing,
+  and bounded retries. See the [current ingest workflow](../../../.github/workflows/ingest.yml).
+- [ ] Recheck remaining semantic guard and canonical audit gaps against the
+  corpus and current pipeline.
+- [ ] Implement and measure candidate gating in shadow mode before evaluating
+  readiness for a direct-to-main rollout.
+
+## Surprises & Discoveries
+
+The baseline review found that generic clearance messages could widen a
+specific service scope to `service.whole`. The historical example and its
+implications are documented in [the baseline](#original-baseline) and the
+[failure taxonomy](#failure-taxonomy).
+
+## Decision Log
+
+- **2026-10-21** — Serialize and rebase the existing PR path and cap merge
+  retries so deterministic validation can re-run when `main` advances, with
+  the paid ingestion step run once per event.
+
+## Outcomes & Retrospective
+
+The review PR can now merge after deterministic checks pass. The workflow
+still uses a PR, so direct-write eligibility, shadow results, and end-to-end
+publication remain open.
+
+## Context
+
+The [repository README](../../../README.md#process-evidence) describes the
+current PR-based ingest workflow. The original baseline below records the
+workflow and detector coverage at the time this plan was drafted.
+
+### Original baseline
 
 `.github/workflows/ingest.yml` currently serializes ingestion runs onto an
 `automated-*` branch, validates the resulting data, and opens one accumulating
@@ -60,7 +103,7 @@ clearance-like evidence item changes a previously specific service scope to
 `service.whole`. These are candidates, not automatically confirmed defects, but
 they show that the PR #319 pattern is broader than one recent ingestion.
 
-## Safety Principles
+### Safety Principles
 
 1. Evidence remains append-only and attributable.
 2. Operational state changes must be reproducible from evidence and explicit
@@ -74,14 +117,7 @@ they show that the PR #319 pattern is broader than one recent ingestion.
 7. Human repair remains possible through ordinary focused data changes, but
    ingestion must not depend on a standing review PR.
 
-## Non-Goals
-
-- Guarantee that every submitted payload creates or updates an issue.
-- Correct the entire historical issue dataset in the workflow-cutover change.
-- Make translations authoritative for operational scope, effect, or timing.
-- Run paid model evaluation as part of the normal deterministic test suite.
-
-## Failure Taxonomy
+### Failure Taxonomy
 
 Every observed correction or rejection should be assigned to one of these
 classes:
@@ -126,12 +162,14 @@ classes:
    - ingestion based on stale `main`;
    - a bot push that does not trigger required downstream publication.
 
-## Phase 1: Build a Historical Regression Corpus
+## Plan of Work
+
+### Phase 1: Build a Historical Regression Corpus
 
 Create a checked-in corpus from real ingestion outcomes rather than synthetic
 examples alone.
 
-### Sources
+#### Sources
 
 - Automated PRs with manual commits, beginning with #301, #316, and #319.
 - Automated PRs closed without merge, including the reason they should have
@@ -141,7 +179,7 @@ examples alone.
 - Confirmed incorrect canonical issues found by the audit selectors below.
 - A representative sample of untouched automated PRs as positive controls.
 
-### Case Format
+#### Case Format
 
 Each case should preserve:
 
@@ -155,7 +193,7 @@ Each case should preserve:
 Expected results should compare semantic state, not generated IDs or harmless
 serialization differences.
 
-### Deliverable
+#### Deliverable
 
 Add a command that lists the corpus and can replay one case or a filtered group
 without writing to canonical `data/`.
@@ -173,7 +211,7 @@ Implementation status:
 - title generation, translation, persistence, repeated stability runs, and
   workflow replay remain Phase 2 work.
 
-## Phase 2: Add Full-Pipeline Historical Replay
+### Phase 2: Add Full-Pipeline Historical Replay
 
 The existing replay tools operate after issue triage and mostly reconstruct
 claims from committed impact events. Add an end-to-end replay harness that can:
@@ -196,9 +234,9 @@ Keep two test layers:
 Model-backed regression cases should run on demand and when the relevant prompt,
 model, tool, or normalization code changes.
 
-## Phase 3: Fix Known Systemic Behaviors
+### Phase 3: Fix Known Systemic Behaviors
 
-### Preserve Scope on Generic Updates
+#### Preserve Scope on Generic Updates
 
 The claim model already permits `scopes.service` to be null. Use that to
 distinguish:
@@ -214,7 +252,7 @@ Add a deterministic guard that rejects a changed bundle when evidence without
 an explicit whole-service assertion widens a specific scope to
 `service.whole`.
 
-### Constrain Severe Effects
+#### Constrain Severe Effects
 
 Require explicit suspension, closure, or no-train language before accepting
 `no-service`. Degraded operation, longer waits, shuttle operation, a single
@@ -224,7 +262,7 @@ Keep prompt guidance, but also add a post-extraction contradiction guard for
 high-confidence patterns. The guard should reject the candidate rather than
 silently rewrite an uncertain claim.
 
-### Validate Operational Period Semantics
+#### Validate Operational Period Semantics
 
 Add deterministic checks for:
 
@@ -238,7 +276,7 @@ Add deterministic checks for:
 Some checks will be hard failures; others should produce a quarantine reason
 until their false-positive rate is known.
 
-### Strengthen the Operational Impact Gate
+#### Strengthen the Operational Impact Gate
 
 For a new issue, `claims.length > 0` is not a sufficient acceptance rule.
 Define the minimum canonical impact by issue type and reject new issues that
@@ -252,13 +290,13 @@ Expand relevance evals with the abandoned-PR examples:
 - station-opening coverage without a temporary operational impact;
 - personal incidents reported after the fact without stated rail impact.
 
-### Make Delivery Idempotent
+#### Make Delivery Idempotent
 
 Before direct commits, define a stable ingest identity using the producer
 identifier and/or normalized source URL plus source timestamp. A retried
 dispatch must not append duplicate evidence or create a duplicate issue.
 
-## Phase 4: Audit and Repair Canonical Issue Data
+### Phase 4: Audit and Repair Canonical Issue Data
 
 Add dry-run audit selectors that output issue and evidence IDs for:
 
@@ -282,7 +320,7 @@ For each selector:
 Do not bulk rewrite impact IDs or formatting unless required by a semantic
 repair.
 
-## Phase 5: Introduce a Candidate-and-Gate Ingest Transaction
+### Phase 5: Introduce a Candidate-and-Gate Ingest Transaction
 
 Refactor ingestion so an entire webhook payload is processed in a temporary data
 root before any canonical commit.
@@ -317,7 +355,7 @@ Translation should not control operational acceptance. Decide and document a
 safe fallback, such as retaining only verified source text and deferring failed
 non-English enrichment.
 
-## Phase 6: Shadow Direct-to-Main Decisions
+### Phase 6: Shadow Direct-to-Main Decisions
 
 Keep the current PR workflow temporarily, but run the candidate-and-gate
 decision in parallel.
@@ -336,7 +374,7 @@ The shadow report must make it easy to compare:
 - fields changed manually;
 - whether a guard should have caught the correction.
 
-### Cutover Readiness
+#### Cutover Readiness
 
 Before enabling direct commits:
 
@@ -353,7 +391,7 @@ Use a minimum observation window of 20 eligible ingestions. If volume is too
 low, also require enough elapsed time to include both live disruptions and
 planned-work evidence.
 
-## Phase 7: Staged Direct-to-Main Rollout
+### Phase 7: Staged Direct-to-Main Rollout
 
 Expand eligibility in risk order:
 
@@ -383,7 +421,7 @@ workflows after the commit, and test the complete Pages publication path.
 Keep ingestion concurrency serialized and do not cancel an in-progress
 transaction.
 
-## Rollback and Incident Response
+### Rollback and Incident Response
 
 - Keep each accepted payload in one revertible commit.
 - Retain the payload and decision report long enough to reproduce the run.
@@ -393,7 +431,7 @@ transaction.
 - Repair bad canonical data with a focused revert or correction commit; do not
   resurrect the ingestion PR queue as the normal path.
 
-## Metrics
+### Metrics
 
 Track at least:
 
@@ -407,7 +445,7 @@ Track at least:
 - model usage and cost;
 - post-commit validation and publication success.
 
-## Suggested Change Sequence
+### Suggested Change Sequence
 
 1. **Corpus and replay reporting**
    - add historical cases and semantic comparison;
@@ -423,7 +461,7 @@ Track at least:
    - add bot credentials, explicit publication triggering, quarantine, and
      rollback documentation.
 
-## Open Decisions
+### Open Decisions
 
 - Which source classes are eligible at each rollout stage?
 - What repeated-run stability threshold is acceptable for model-backed cases?
@@ -433,9 +471,10 @@ Track at least:
 - What observation duration supplements the 20-ingestion minimum when incident
   volume is low?
 
-## Completion Criteria
+## Validation and Acceptance
 
-This plan is complete when:
+Run `npm run check`, `npm test`, and `npm run data:validate` from the
+repository root. Validate the following workflow outcomes in the staged rollout.
 
 - `.github/workflows/ingest.yml` no longer creates or updates automated PRs;
 - eligible ingestion commits directly to `main`;

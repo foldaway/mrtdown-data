@@ -1,5 +1,172 @@
 # Schematic System Map Generation Plan
 
+## Purpose
+
+- Add a canonical schematic system map generator to this repository.
+- Define shared schemas in `packages/core` for generator inputs, rule
+  configuration, generated map manifests, and generated map version snapshots.
+- Add file-backed read/write support in `packages/fs`.
+- Add CLI generation, validation, and inspection support for schematic maps.
+- Publish generated schematic map data in the Pages/archive artifact consumed by
+  `mrtdown-site`.
+- Encode LTA-style schematic rules: line ordering, octilinear routing,
+  interchange composition, branch spacing, label placement, terminal treatment,
+  and layer order.
+- Minimize hard-coded coordinates by deriving geometry from canonical topology,
+  station ordering, interchange constraints, and reusable design rules.
+- Preserve explicit escape hatches for reviewed one-off visual exceptions.
+- Use complete generated version snapshots as the published storage contract.
+- Keep generated version snapshots out of source control by default; publish
+  them from deterministic generator output instead.
+- Support reviewed schematic edit submissions from trusted authoring clients,
+  such as a protected `mrtdown-site` map designer.
+
+### Non-Goals
+
+- This plan does not move site rendering or interaction code into
+  `mrtdown-data`.
+- This plan does not require an `extends` or delta system for published
+  snapshot storage.
+- This plan does not require generating acceptable maps from station and service
+  topology alone; rule configuration and reviewed constraints are expected.
+- This plan does not aim to exactly reproduce every coordinate from the current
+  `mrtdown-site` maps when a rule-derived layout is simpler and visually
+  acceptable.
+- This plan does not allow runtime consumers to mutate canonical schematic data
+  directly without review.
+- This plan does not require removing existing `mrtdown-site` map snapshots
+  before the canonical schema and publication path are proven.
+
+## Progress
+
+- [x] (2026-05-26) Record the [reference inventory](../../schematic-map/reference-inventory.md).
+- [x] (2026-05-27) Add the initial schema, generator, preview, and `2025-04`
+  constraints in [PR #275](https://github.com/foldaway/mrtdown-data/pull/275).
+- [x] (2026-05-31) Add copy-forward tooling and a
+  [designer submission contract](../../schematic-map/designer-submissions.md).
+- [ ] Finish review of the first generated map against the renderer and
+  migration criteria, then migrate the remaining versions.
+
+## Surprises & Discoveries
+
+The reference inventory distinguishes reusable layout rules from individual
+coordinate constraints. Use the [inventory findings](../../schematic-map/reference-inventory.md)
+when reviewing which exceptions the generator needs.
+
+## Decision Log
+
+- 2026-05-24: Store map versions as complete snapshots because schematic maps
+  can reflow substantially when new lines are introduced.
+- 2026-05-24: Keep raw SVG path geometry available so artistically driven line
+  bends and curves are preserved.
+- 2026-05-27: Prefer structured generated geometry from the first schema draft;
+  raw SVG path geometry is only a reviewed last-resort exception.
+- 2026-05-24: Keep rendering and interactive behavior out of canonical data;
+  consumers own presentation and UI behavior.
+- 2026-05-24: Accept designer-originated schematic edits only through normal
+  branch, validation, and PR review paths.
+- 2026-05-25: The canonical source of future schematic maps should be reusable
+  generator rules plus reviewed constraints, not wholesale copied coordinates
+  from existing TSX snapshots.
+- 2026-05-25: Current hard-coded `mrtdown-site` maps are approved reference
+  material for inventory, parity, and exception discovery.
+- 2026-05-25: The generator implementation plus rule and constraint inputs are
+  canonical.
+- 2026-05-27: Generated snapshots are published artifacts produced by the
+  deterministic generator, not committed source files by default. This
+  supersedes the earlier assumption that generated snapshots would be committed.
+- 2026-05-25: Coordinate review distinguishes generated coordinates, reusable
+  constraints, explained exceptions, and generated artifact coordinates.
+- 2026-05-25: Use `2025-04` as the first generated baseline.
+- 2026-05-25: Parity means coherent LTA-style output with compatible ids,
+  visible network coverage, reasonable label placement, and no major visual
+  regression; it does not mean exact coordinate reproduction.
+- 2026-05-25: Preserve the current `mrtdown-site` SVG id interaction contract
+  until the site deliberately replaces it.
+- 2026-05-25: Name the initial layout engine so future variants can coexist,
+  while the first implementation uses shared general constraints across
+  timeline versions.
+- 2026-05-25: Use `lta-system-map-2011` as the first layout engine id.
+- 2026-05-25: Start constraints at station and line-segment scope; avoid
+  per-station absolute coordinates except map-frame anchors and explained
+  exceptions.
+- 2026-05-25: Parse current `mrtdown-site` hard-coded maps into reference
+  fixtures, starting with `MapApr2025.tsx`.
+- 2026-05-25: Treat LTA-style rules as inferred from reference maps and
+  observed conventions because no formal spec is assumed.
+- 2026-05-25: Generated snapshots store structured map primitives for
+  `mrtdown-site` to render, not TSX.
+- 2026-05-25: Validate structure and freshness first; defer visual pixel
+  thresholds until a renderer exists.
+- 2026-05-25: Model interchange node composition early because overlays depend
+  on line-specific station node parts.
+- 2026-05-25: Canonical station and service data is expected to be enough to
+  determine which stations and service edges are open at a target timestamp.
+
+## Outcomes & Retrospective
+
+The generator and archive path can produce a map from tracked constraints.
+The [2025-04 constraints](../../../data/schematic-map/system/generator/constraint/2025-04.json)
+are the baseline for the review and migration phases.
+
+### Progress Log
+
+- 2026-05-24: Created cross-repo plan from the `mrtdown-site` dynamic system map
+  investigation and planning discussion.
+- 2026-05-24: Added reviewed designer-submission path for trusted visual editing
+  clients such as a protected `mrtdown-site` map designer.
+- 2026-05-25: Reframed the plan around a canonical generator that references
+  current `mrtdown-site` hard-coded maps as baselines while minimizing copied
+  coordinates.
+- 2026-05-26: Added the Phase 1 rule-discovery handoff to
+  `docs/schematic-map/reference-inventory.md`, covering renderer invariants,
+  initial line-family rules, coordinate classes, and unresolved coverage review
+  items for the `2025-04` baseline.
+- 2026-05-27: Clarified that generated schematic snapshots are publication
+  artifacts produced by the generator, not source-controlled data files by
+  default.
+- 2026-05-27: Began Phase 2 with a narrow `packages/core` schema draft for
+  renderer-neutral snapshots, manifests, rule sets, and first-pass constraints;
+  raw SVG path geometry remains unsupported until proven necessary.
+- 2026-05-27: Added `packages/fs` schematic map path helpers, typed
+  read/write functions, and repository/writer facades for generator rule sets,
+  per-version constraints, manifests, and generated snapshot artifacts.
+- 2026-05-27: Began Phase 4 CLI and validation integration with
+  `schematic-map` validation scope plus CLI inspection for schematic
+  constraints, generated versions, manifests, and rule sets.
+- 2026-05-27: Extended Phase 4 CLI inspection with manifest version selection
+  for a target date plus generated snapshot coordinate-class and constraint-type
+  counts for schematic map review.
+- 2026-05-27: Began Phase 3 generator foundation with deterministic topology
+  snapshot generation from active service revisions, initial source-controlled
+  `lta-system-map-2011` rule configuration, a `2025-04` map-frame constraint,
+  and `schematic-map generate` CLI support for writing generated snapshots and
+  updating the schematic map manifest.
+- 2026-05-27: Added a lightweight `schematic-map preview` SVG renderer so
+  generated snapshots can be inspected locally before `mrtdown-site` has a
+  full data-driven renderer. This is review tooling, not the canonical public
+  renderer.
+- 2026-05-27: Added archive publication foundation by generating schematic map
+  manifests and version snapshots inside `pages:build` from tracked generator
+  constraints, without treating generated version files as source-controlled
+  canonical data.
+- 2026-05-28: Began Phase 5 review tooling with `schematic-map diff` for
+  semantic snapshot comparison across layers, line groups, stations, segments,
+  labels, station-code labels, and coordinate-class deltas.
+- 2026-05-30: Extended Phase 5 review tooling with
+  `schematic-map generator-diff` for comparing source generator inputs across
+  two constraint effective dates, including rule-set identity, line-order
+  changes, added/removed/changed constraints, and constraint-type deltas.
+- 2026-05-31: Added Phase 5 copy-forward authoring support with
+  `schematic-map copy-constraints`, allowing reviewers to preview or write a
+  new effective-date constraint set from an existing one while keeping generated
+  snapshots artifact-only.
+- 2026-05-31: Began Phase 6 designer submission support with
+  `docs/schematic-map/designer-submissions.md` and
+  `schematic-map validate-submission`, so trusted designer output can be
+  validated against canonical constraints and reviewer-facing diffs before PR
+  review.
+
 ## Context
 
 `mrtdown-site` currently ships large hard-coded TSX system map snapshots and
@@ -21,44 +188,7 @@ with as little hard-coded coordinate data as possible. Hard-coded geometry
 should be treated as a fallback for true exceptions, not as the primary source
 of the map.
 
-## Goals
-
-- Add a canonical schematic system map generator to this repository.
-- Define shared schemas in `packages/core` for generator inputs, rule
-  configuration, generated map manifests, and generated map version snapshots.
-- Add file-backed read/write support in `packages/fs`.
-- Add CLI generation, validation, and inspection support for schematic maps.
-- Publish generated schematic map data in the Pages/archive artifact consumed by
-  `mrtdown-site`.
-- Encode LTA-style schematic rules: line ordering, octilinear routing,
-  interchange composition, branch spacing, label placement, terminal treatment,
-  and layer order.
-- Minimize hard-coded coordinates by deriving geometry from canonical topology,
-  station ordering, interchange constraints, and reusable design rules.
-- Preserve explicit escape hatches for reviewed one-off visual exceptions.
-- Use complete generated version snapshots as the published storage contract.
-- Keep generated version snapshots out of source control by default; publish
-  them from deterministic generator output instead.
-- Support reviewed schematic edit submissions from trusted authoring clients,
-  such as a protected `mrtdown-site` map designer.
-
-## Non-Goals
-
-- This plan does not move site rendering or interaction code into
-  `mrtdown-data`.
-- This plan does not require an `extends` or delta system for published
-  snapshot storage.
-- This plan does not require generating acceptable maps from station and service
-  topology alone; rule configuration and reviewed constraints are expected.
-- This plan does not aim to exactly reproduce every coordinate from the current
-  `mrtdown-site` maps when a rule-derived layout is simpler and visually
-  acceptable.
-- This plan does not allow runtime consumers to mutate canonical schematic data
-  directly without review.
-- This plan does not require removing existing `mrtdown-site` map snapshots
-  before the canonical schema and publication path are proven.
-
-## Data Ownership Boundary
+### Data Ownership Boundary
 
 This repository should own:
 
@@ -82,7 +212,7 @@ Consumers such as `mrtdown-site` should own:
 - any visual map designer/editor UI used to author generator constraints or
   schematic exceptions.
 
-## Canonical Shape
+### Canonical Shape
 
 Schematic map versions should be generated as complete snapshots keyed by
 effective date. Large map reflows are normal, so mandatory deltas would make
@@ -166,7 +296,7 @@ timeline versions, visual review baselines, and renderer ids, but their
 coordinates should not be copied wholesale unless a reviewed exception explains
 why a rule cannot derive the layout.
 
-## Phases
+## Plan of Work
 
 ### Phase 1: Reference Inventory And Rule Discovery
 
@@ -309,7 +439,7 @@ repository. The first expected client is a protected `mrtdown-site` map designer
 that uses the site renderer for visual editing and preview.
 
 Submission bundle details are documented in
-`docs/schematic-map-designer-submissions.md`.
+`docs/schematic-map/designer-submissions.md`.
 
 - Define an edit bundle or branch layout that contains updated generator
   constraints, generator validation output or semantic diffs, and metadata about
@@ -379,115 +509,7 @@ Exit criteria:
 - The amount of per-version hard-coded coordinate data is small, explained, and
   trends downward as reusable rules improve.
 
-## Progress Log
-
-- 2026-05-24: Created cross-repo plan from the `mrtdown-site` dynamic system map
-  investigation and planning discussion.
-- 2026-05-24: Added reviewed designer-submission path for trusted visual editing
-  clients such as a protected `mrtdown-site` map designer.
-- 2026-05-25: Reframed the plan around a canonical generator that references
-  current `mrtdown-site` hard-coded maps as baselines while minimizing copied
-  coordinates.
-- 2026-05-26: Added the Phase 1 rule-discovery handoff to
-  `docs/schematic-map-reference-inventory.md`, covering renderer invariants,
-  initial line-family rules, coordinate classes, and unresolved coverage review
-  items for the `2025-04` baseline.
-- 2026-05-27: Clarified that generated schematic snapshots are publication
-  artifacts produced by the generator, not source-controlled data files by
-  default.
-- 2026-05-27: Began Phase 2 with a narrow `packages/core` schema draft for
-  renderer-neutral snapshots, manifests, rule sets, and first-pass constraints;
-  raw SVG path geometry remains unsupported until proven necessary.
-- 2026-05-27: Added `packages/fs` schematic map path helpers, typed
-  read/write functions, and repository/writer facades for generator rule sets,
-  per-version constraints, manifests, and generated snapshot artifacts.
-- 2026-05-27: Began Phase 4 CLI and validation integration with
-  `schematic-map` validation scope plus CLI inspection for schematic
-  constraints, generated versions, manifests, and rule sets.
-- 2026-05-27: Extended Phase 4 CLI inspection with manifest version selection
-  for a target date plus generated snapshot coordinate-class and constraint-type
-  counts for schematic map review.
-- 2026-05-27: Began Phase 3 generator foundation with deterministic topology
-  snapshot generation from active service revisions, initial source-controlled
-  `lta-system-map-2011` rule configuration, a `2025-04` map-frame constraint,
-  and `schematic-map generate` CLI support for writing generated snapshots and
-  updating the schematic map manifest.
-- 2026-05-27: Added a lightweight `schematic-map preview` SVG renderer so
-  generated snapshots can be inspected locally before `mrtdown-site` has a
-  full data-driven renderer. This is review tooling, not the canonical public
-  renderer.
-- 2026-05-27: Added archive publication foundation by generating schematic map
-  manifests and version snapshots inside `pages:build` from tracked generator
-  constraints, without treating generated version files as source-controlled
-  canonical data.
-- 2026-05-28: Began Phase 5 review tooling with `schematic-map diff` for
-  semantic snapshot comparison across layers, line groups, stations, segments,
-  labels, station-code labels, and coordinate-class deltas.
-- 2026-05-30: Extended Phase 5 review tooling with
-  `schematic-map generator-diff` for comparing source generator inputs across
-  two constraint effective dates, including rule-set identity, line-order
-  changes, added/removed/changed constraints, and constraint-type deltas.
-- 2026-05-31: Added Phase 5 copy-forward authoring support with
-  `schematic-map copy-constraints`, allowing reviewers to preview or write a
-  new effective-date constraint set from an existing one while keeping generated
-  snapshots artifact-only.
-- 2026-05-31: Began Phase 6 designer submission support with
-  `docs/schematic-map-designer-submissions.md` and
-  `schematic-map validate-submission`, so trusted designer output can be
-  validated against canonical constraints and reviewer-facing diffs before PR
-  review.
-
-## Decision Log
-
-- 2026-05-24: Store map versions as complete snapshots because schematic maps
-  can reflow substantially when new lines are introduced.
-- 2026-05-24: Keep raw SVG path geometry available so artistically driven line
-  bends and curves are preserved.
-- 2026-05-27: Prefer structured generated geometry from the first schema draft;
-  raw SVG path geometry is only a reviewed last-resort exception.
-- 2026-05-24: Keep rendering and interactive behavior out of canonical data;
-  consumers own presentation and UI behavior.
-- 2026-05-24: Accept designer-originated schematic edits only through normal
-  branch, validation, and PR review paths.
-- 2026-05-25: The canonical source of future schematic maps should be reusable
-  generator rules plus reviewed constraints, not wholesale copied coordinates
-  from existing TSX snapshots.
-- 2026-05-25: Current hard-coded `mrtdown-site` maps are approved reference
-  material for inventory, parity, and exception discovery.
-- 2026-05-25: The generator implementation plus rule and constraint inputs are
-  canonical.
-- 2026-05-27: Generated snapshots are published artifacts produced by the
-  deterministic generator, not committed source files by default. This
-  supersedes the earlier assumption that generated snapshots would be committed.
-- 2026-05-25: Coordinate review distinguishes generated coordinates, reusable
-  constraints, explained exceptions, and generated artifact coordinates.
-- 2026-05-25: Use `2025-04` as the first generated baseline.
-- 2026-05-25: Parity means coherent LTA-style output with compatible ids,
-  visible network coverage, reasonable label placement, and no major visual
-  regression; it does not mean exact coordinate reproduction.
-- 2026-05-25: Preserve the current `mrtdown-site` SVG id interaction contract
-  until the site deliberately replaces it.
-- 2026-05-25: Name the initial layout engine so future variants can coexist,
-  while the first implementation uses shared general constraints across
-  timeline versions.
-- 2026-05-25: Use `lta-system-map-2011` as the first layout engine id.
-- 2026-05-25: Start constraints at station and line-segment scope; avoid
-  per-station absolute coordinates except map-frame anchors and explained
-  exceptions.
-- 2026-05-25: Parse current `mrtdown-site` hard-coded maps into reference
-  fixtures, starting with `MapApr2025.tsx`.
-- 2026-05-25: Treat LTA-style rules as inferred from reference maps and
-  observed conventions because no formal spec is assumed.
-- 2026-05-25: Generated snapshots store structured map primitives for
-  `mrtdown-site` to render, not TSX.
-- 2026-05-25: Validate structure and freshness first; defer visual pixel
-  thresholds until a renderer exists.
-- 2026-05-25: Model interchange node composition early because overlays depend
-  on line-specific station node parts.
-- 2026-05-25: Canonical station and service data is expected to be enough to
-  determine which stations and service edges are open at a target timestamp.
-
-## Validation
+## Validation and Acceptance
 
 - Run `npm run check`.
 - Run `npm run typecheck`.

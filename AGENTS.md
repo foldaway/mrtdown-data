@@ -24,8 +24,8 @@ from this repo.
   outcomes for deterministic corpus inspection and isolated semantic replay.
 
 The data-overhaul split sequence is complete. Keep
-`docs/plans/completed/data-overhaul-split.md` as historical context when
-changing package, data, workflow, or deploy surfaces.
+the [data overhaul split](docs/plans/completed/data-overhaul-split.md) as
+historical context when changing package, data, workflow, or deploy surfaces.
 
 ## Target Layout
 
@@ -77,7 +77,7 @@ The target architecture is a package/data repository:
   with the supplied LTA MRT Station Exit GeoJSON dataset.
 - `npm run data:import:public-holidays -- <complete-api-response.json> --checked-on <date> --source-updated-on <date> [--apply]`:
   review or import shared public-holiday year calendars. See
-  `docs/public-holidays.md`.
+  the [public holiday guide](docs/data/public-holidays.md).
 - `npm run data:platforms:infer -- [--apply] [--write <report>]`: report or
   conservatively apply same-line platform label inference from reviewed
   observations.
@@ -94,7 +94,7 @@ The target architecture is a package/data repository:
 - `npm run check`: run harness checks that should stay fast and deterministic.
 - `npm run check:boundaries`: enforce package import boundaries when packages
   exist.
-- `npm run check:docs`: verify repo-relative documentation links.
+- `npm run check:docs`: verify documentation links and active plan structure.
 
 For the target package architecture, each split PR should keep these commands
 truthful in its own branch and update this file only when the branch changes
@@ -125,16 +125,11 @@ the repository shape.
 
 ## Deeper Docs
 
-- `README.md`: repository overview and commands.
-- `docs/plans/README.md`: active plans, completed reports, and durable tech
-  debt.
-- `docs/plans/completed/data-overhaul-split.md`: completed split sequence for
-  the data overhaul.
-- `docs/plans/completed/ingest-contracts-package.md`: completed ingest
-  contracts package plan.
-- `docs/plans/completed/legacy-source-data-removal.md`: Step 7.5 source-data
-  removal report.
-- `docs/plans/completed/runtime-removal-deploy-cleanup.md`: Step 8 runtime and
-  deploy cleanup report.
-- `CLAUDE.md`: Claude-specific compatibility entry point.
-- `.github/copilot-instructions.md`: Copilot compatibility entry point.
+- [README](README.md) covers repository setup, commands, and package boundaries.
+- [Documentation index](docs/README.md) leads to subject guides, references, and
+  review evidence.
+- [Execution plans](docs/plans/README.md) explains when work needs a versioned
+  plan and how to keep it current. Use the linked template for multi-phase work
+  and keep routine changes lightweight.
+- [CLAUDE.md](CLAUDE.md) and the [Copilot instructions](.github/copilot-instructions.md)
+  are compatibility entry points.
