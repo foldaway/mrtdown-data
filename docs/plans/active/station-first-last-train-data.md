@@ -6,8 +6,7 @@
 - Reference full scheduled stopping patterns through `serviceId`.
 - Support rows that have only a first train, only a last train, or both.
 - Support calendar categories used by operator timing tables.
-- Validate that the station appears in every referenced service path.
-- Validate platform coverage when station layout data exists.
+- Validate that each referenced service has a path that includes the station.
 - Keep the shape compatible with later GTFS timetable or frequency generation.
 
 ### Non-Goals
@@ -209,9 +208,8 @@ than outputs from a reusable operator ingest script:
 ### Layout Relationship
 
 The LTA station-exit dataset contains no platform or service-assignment data.
-First/last train timings therefore have no cross-validation relationship with
-`station.layout`; their service references are validated against the service
-catalog and station path instead.
+Validate first and last train timing references against the service catalog
+and station paths, independently of `station.layout`.
 
 ## Plan of Work
 

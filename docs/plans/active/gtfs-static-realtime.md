@@ -15,8 +15,8 @@ and collect trip-update samples before designing live arrival behavior.
 - [x] (2026-11-14) Open a review PR for each newly seen verified snapshot hash
   in [PR #476](https://github.com/foldaway/mrtdown-data/pull/476).
 - [ ] Prove the service-alert evidence ingestion path with captured alerts.
-- [ ] Collect a nonempty trip-update capture and assess whether it supports
-  matching and freshness rules.
+- [ ] Record normal-service trip-update behavior and collect nonempty captures
+  during disruptions or planned adjustments to assess matching and freshness.
 
 ## Surprises & Discoveries
 
@@ -901,8 +901,8 @@ Exit criteria:
 ### Phase 6: Observe trip updates before designing runtime behavior
 
 - Record the empty supplied capture as a valid zero-entity fixture.
-- Collect multiple non-empty captures paired with the exact static schedule
-  version used by LTA at that time.
+- Collect multiple non-empty captures during disruptions or planned adjustments.
+  Pair each with the exact static schedule version used by LTA at that time.
 - Measure update cadence and enumerate the fields and enum values LTA actually
   emits.
 - Open a focused implementation plan for live trip updates only after this
@@ -910,9 +910,9 @@ Exit criteria:
 
 Exit criteria:
 
-- Multiple non-empty disruption captures can be reconciled to an identified
-  static snapshot. Record normal-service behavior as observed, including empty
-  captures; the disruption-focused API does not promise normal-service entities.
+- Multiple non-empty disruption or planned-adjustment captures can be reconciled
+  to identified static snapshots. Empty captures are valid evidence of observed
+  normal-service behavior.
 - Freshness, matching, cancellation, and fallback rules are based on observed
   provider behavior rather than hypothetical GTFS Realtime combinations.
 
@@ -1052,11 +1052,12 @@ only repository work before a non-empty sample is:
 - report entity counts and timestamps without treating an empty feed as an
   error.
 
-Collect non-empty captures during normal service and a disruption or planned
-adjustment. Once those exist, write a separate implementation plan from the
-observed combinations of trip descriptors, stop-time updates, schedule
-relationships, timestamps, and static-feed references. That later plan owns
-freshness, precedence, suppression, and cache semantics.
+Record normal-service behavior as observed, including empty feeds. Once the
+Phase 6 corpus includes multiple non-empty captures during disruptions or
+planned adjustments, write a separate implementation plan from the observed
+combinations of trip descriptors, stop-time updates, schedule relationships,
+timestamps, and static-feed references. That later plan owns freshness,
+precedence, suppression, and cache semantics.
 
 Vehicle positions are out of scope unless LTA publishes them and a consumer
 need is identified.
