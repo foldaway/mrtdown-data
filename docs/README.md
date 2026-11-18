@@ -1,5 +1,11 @@
 # Documentation
 
+- [Canonical data](data/overview.md) describes record layout, naming, and
+  licenses and sources.
+- [Packages and checks](development/packages.md) covers package ownership,
+  dependency boundaries, and deterministic verification.
+- [Pages exports](operations/pages-exports.md) covers local builds, timetable
+  packaging, and the deployment handoff to `mrtdown-site`.
 - [GTFS](gtfs/README.md) covers capture, mapping review, timetable publication,
   and consumer contracts.
 - [Station layouts](data/station-layout.md) and [public holidays](data/public-holidays.md)
@@ -13,8 +19,8 @@
   third-party material. The [source registry](../data/rights/source-registry.json)
   contains the machine-readable rules for recurring sources.
 
-Start with the [repository README](../README.md) for setup, commands, and
-package boundaries. The [triage guide](../packages/triage/README.md) and
+Start with the [repository README](../README.md) for setup and common workflows.
+The [triage guide](../packages/triage/README.md) and
 [ingest contracts](../packages/ingest-contracts/README.md) live with their packages.
 
 ## Writing docs and proposals

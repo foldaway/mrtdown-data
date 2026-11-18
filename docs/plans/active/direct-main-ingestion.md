@@ -48,9 +48,9 @@ publication remain open.
 
 ## Context
 
-The [repository README](../../../README.md#process-evidence) describes the
-current PR-based ingest workflow. The original baseline below records the
-workflow and detector coverage at the time this plan was drafted.
+The [triage guide](../../../packages/triage/README.md#automated-ingestion)
+describes the current PR-based ingest workflow. The original baseline below
+records the workflow and detector coverage at the time this plan was drafted.
 
 ### Original baseline
 

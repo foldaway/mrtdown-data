@@ -13,6 +13,31 @@ npm run test:triage
 npm run triage:regressions -- --list
 ```
 
+## Webhook ingestion
+
+The triage tools use AI models to turn source evidence into issue records.
+Webhook ingestion requires `OPENAI_API_KEY` and makes paid model calls. Set
+`MESSAGE` to a JSON payload matching the
+[shared webhook schemas](../ingest-contracts/README.md), then run:
+
+```bash
+npm run ingest:webhook
+```
+
+`fixtures/ingest/crowd-report.json` is a sample payload.
+
+## Automated ingestion
+
+The [ingest workflow](../../.github/workflows/ingest.yml) processes one event at a
+time and queues up to 100 pending runs. It rebases reused automated PR branches
+onto current `main` before ingestion and protects pushes with explicit leases.
+Existing PRs are validated even when ingestion adds no data. If main advances
+before merge, it retries up to three times, rebasing and rerunning
+[deterministic validation](../../scripts/validate-ingest.sh) without repeating paid
+ingestion. Conflicts and concurrent PR edits stop the run for manual resolution.
+The base check and GitHub merge are separate requests; strict up-to-date branch
+protection or a merge queue is needed to enforce the base atomically on GitHub.
+
 ## Historical Regression Corpus
 
 `fixtures/triage-regressions` contains checked-in cases derived from corrected,

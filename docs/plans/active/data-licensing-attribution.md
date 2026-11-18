@@ -38,7 +38,7 @@
 ## Surprises & Discoveries
 
 Pages already redacts source text and rendered content when the registry
-forbids public export. See the [Pages export overview](../../../README.md#build-and-publish-exports).
+forbids public export. See the [Pages export overview](../../operations/pages-exports.md).
 
 ## Decision Log
 

@@ -1,9 +1,10 @@
 # Agent Map
 
-[README](README.md) covers setup, dataset layout, and package ownership. Start
-with the [documentation index](docs/README.md) for operating guides and review
-evidence. See the [data overhaul split](docs/plans/completed/data-overhaul-split.md)
-for the history of the package, data, workflow, and deployment boundaries.
+[README](README.md) covers setup and common workflows. Start with the
+[documentation index](docs/README.md) for dataset layout, package ownership,
+operating guides, and review evidence. See the
+[data overhaul split](docs/plans/completed/data-overhaul-split.md) for the history
+of the package, data, workflow, and deployment boundaries.
 
 ## Checks and operations
 
