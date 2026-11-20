@@ -12,6 +12,10 @@ import {
   compareScheduleSnapshots,
   readVerifiedCapture,
 } from '../packages/fs/dist/index.js';
+import {
+  compareJourneySchedules,
+  renderJourneyChanges,
+} from './gtfs-schedule-changes.mjs';
 
 const json = async (file) => JSON.parse(await readFile(file, 'utf8'));
 const message = (error) =>
@@ -197,7 +201,8 @@ export function renderReview(report) {
   const lines = [
     '# LTA train GTFS snapshot',
     '',
-    'Review source changes and findings before preparing a timetable release.',
+    ...renderJourneyChanges(report.comparison.journeys, cell),
+    '## Capture and comparison evidence',
     '',
     `- Retrieved at ${cell(report.capture.retrieved_at)}`,
     `- ZIP SHA-256 \`${report.capture.sha256}\``,
@@ -446,6 +451,19 @@ export async function buildSnapshotReview(options) {
         baseline.summary.coverage,
         current.summary.coverage,
       );
+      try {
+        report.comparison.journeys = compareJourneySchedules(
+          baseline.input.tables,
+          current.input.tables,
+          baseline.summary.coverage,
+          current.summary.coverage,
+        );
+      } catch (error) {
+        report.comparison.journeys = {
+          status: 'unavailable',
+          reason: message(error),
+        };
+      }
     }
   } catch (error) {
     report.comparison = { status: 'unavailable', reason: message(error) };
