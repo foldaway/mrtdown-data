@@ -160,6 +160,16 @@ test('coverage applies exceptions, excludes unused calendars and retains service
     },
     removed: { count: 0 },
     shared: { count: 3 },
+    services: expect.arrayContaining([
+      {
+        serviceId: 'C',
+        added: {
+          count: 1,
+          ranges: [{ startDate: '2026-11-20', endDate: '2026-11-20' }],
+        },
+        removed: { count: 0, ranges: [] },
+      },
+    ]),
   });
 });
 

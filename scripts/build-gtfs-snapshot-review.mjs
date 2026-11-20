@@ -67,7 +67,7 @@ export function serviceCoverage(tables) {
     dates,
     count: dates.length,
     ranges: dateRanges(dates),
-    services: services.map(({ dates: _dates, ...service }) => service),
+    services,
   };
 }
 
@@ -78,10 +78,36 @@ export function compareCoverage(before, after) {
     count: dates.length,
     ranges: dateRanges(dates),
   });
+  const previousServices = new Map(
+    before.services.map((service) => [service.serviceId, service]),
+  );
+  const nextServices = new Map(
+    after.services.map((service) => [service.serviceId, service]),
+  );
+  const services = [
+    ...new Set([...previousServices.keys(), ...nextServices.keys()]),
+  ]
+    .sort()
+    .map((serviceId) => {
+      const previousDates = new Set(
+        previousServices.get(serviceId)?.dates ?? [],
+      );
+      const nextDates = new Set(nextServices.get(serviceId)?.dates ?? []);
+      return {
+        serviceId,
+        added: summarize(
+          [...nextDates].filter((date) => !previousDates.has(date)),
+        ),
+        removed: summarize(
+          [...previousDates].filter((date) => !nextDates.has(date)),
+        ),
+      };
+    });
   return {
     added: summarize(after.dates.filter((date) => !previous.has(date))),
     removed: summarize(before.dates.filter((date) => !next.has(date))),
     shared: summarize(after.dates.filter((date) => previous.has(date))),
+    services,
   };
 }
 
@@ -272,8 +298,8 @@ export function renderReview(report) {
       '',
       'Calendar details (referenced by trips):',
       '',
-      '| Service ID | Baseline active dates | Candidate active dates | Candidate date ranges |',
-      '| --- | ---: | ---: | --- |',
+      '| Service ID | Baseline active dates | Candidate active dates | Added dates | Removed dates |',
+      '| --- | ---: | ---: | --- | --- |',
     );
     for (const id of ids.slice(0, 12)) {
       const service = next.get(id);
@@ -281,8 +307,11 @@ export function renderReview(report) {
         report.baseline.summary?.coverage.status === 'available'
           ? (previous.get(id)?.count ?? 0)
           : 'unavailable';
+      const change = report.comparison.coverage?.services.find(
+        (item) => item.serviceId === id,
+      );
       lines.push(
-        `| ${cell(id)} | ${beforeCount} | ${service?.count ?? 0} | ${service ? rangeText(service) || 'none' : 'removed'} |`,
+        `| ${cell(id)} | ${beforeCount} | ${service?.count ?? 0} | ${change ? rangeText(change.added) || 'none' : 'unavailable'} | ${change ? rangeText(change.removed) || 'none' : 'unavailable'} |`,
       );
     }
     if (ids.length > 12)
