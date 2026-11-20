@@ -1,0 +1,26 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": [
+        "arn:aws:s3:::mrtdown-datamall-snapshots/blobs/schedule/*",
+        "arn:aws:s3:::mrtdown-datamall-snapshots/gtfs-release-history/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::mrtdown-datamall-snapshots/gtfs-release-history/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "s3:DeleteObject",
+      "Resource": [
+        "arn:aws:s3:::mrtdown-datamall-snapshots/gtfs-release-history/bundles/*",
+        "arn:aws:s3:::mrtdown-datamall-snapshots/gtfs-release-history/writer-lock.json"
+      ]
+    }
+  ]
+}

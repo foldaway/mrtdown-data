@@ -7,6 +7,7 @@ import {
 } from '@mrtdown/core';
 import {
   CombinedTimetableReleaseIndexSchema,
+  createScheduledCombinedReview,
   hashBytes,
   inspectCombinedTimetableRelease,
   readEntity,
@@ -25,28 +26,37 @@ import {
 } from '../packages/fs/dist/gtfs/schedule.js';
 
 const recordPath = z.string().trim().min(1);
-const configSchema = ScheduledTimetableArtifactMetadataSchema.pick({
-  correctionRevision: true,
-})
-  .extend({
-    schemaVersion: z.literal(1),
-    canonicalCommit: GtfsReconciliationIdentitySchema.shape.canonicalCommit,
-    holidayCalendarId: z.string().trim().min(1),
-    applicabilityPolicy: recordPath,
-    associationPolicy: recordPath,
-    sourceJourneyPolicy: recordPath,
-    allocationPolicy: recordPath,
-    holidayPolicy: recordPath,
-    sharedServiceMemberships: recordPath.optional(),
-    draft: recordPath,
-    mappingApproval: recordPath,
-    releaseReview: recordPath,
-    approvedRelease: z
-      .object({ index: recordPath, evidence: recordPath })
-      .strict()
-      .optional(),
+export const combinedPagesConfigSchema =
+  ScheduledTimetableArtifactMetadataSchema.pick({
+    correctionRevision: true,
   })
-  .strict();
+    .extend({
+      schemaVersion: z.literal(1),
+      canonicalCommit: GtfsReconciliationIdentitySchema.shape.canonicalCommit,
+      holidayCalendarId: z.string().trim().min(1),
+      applicabilityPolicy: recordPath,
+      associationPolicy: recordPath,
+      sourceJourneyPolicy: recordPath,
+      allocationPolicy: recordPath,
+      holidayPolicy: recordPath,
+      sharedServiceMemberships: recordPath.optional(),
+      draft: recordPath.optional(),
+      draftSha256: z
+        .string()
+        .regex(/^[a-f0-9]{64}$/)
+        .optional(),
+      mappingApproval: recordPath,
+      releaseReview: recordPath,
+      approvedRelease: z
+        .object({ index: recordPath, evidence: recordPath })
+        .strict()
+        .optional(),
+    })
+    .strict()
+    .refine(
+      (value) => Boolean(value.draft) !== Boolean(value.draftSha256),
+      'Supply exactly one of draft or draftSha256',
+    );
 
 /** Include the directory itself and distinguish parent traversal from names beginning with dots. */
 function contains(directory, path) {
@@ -65,6 +75,21 @@ export async function prepareCombinedTimetableExport({
   gtfsCombinedConfig,
   outDir,
 }) {
+  return prepareExporter(
+    { gtfsFile, gtfsCapture, gtfsCombinedConfig, outDir },
+    false,
+  );
+}
+
+/** Offline historical replay only. Pages never calls this entry point. */
+export async function prepareHistoricalCombinedTimetableReplay(options) {
+  return prepareExporter(options, true);
+}
+
+async function prepareExporter(
+  { gtfsFile, gtfsCapture, gtfsCombinedConfig, outDir },
+  historical,
+) {
   const actualOutDir = resolve(
     await realpath(dirname(outDir)),
     relative(dirname(outDir), outDir),
@@ -88,8 +113,14 @@ export async function prepareCombinedTimetableExport({
     correctionRevision,
     holidayCalendarId,
     approvedRelease,
+    draft: draftPath,
+    draftSha256,
     ...recordPaths
-  } = configSchema.parse(await readJson(gtfsCombinedConfig));
+  } = combinedPagesConfigSchema.parse(await readJson(gtfsCombinedConfig));
+  if (historical && !approvedRelease)
+    throw new Error(
+      'Historical replay requires the approved release index and exact evidence',
+    );
   const resolveInput = async (name) => {
     const path = resolve(dirname(gtfsCombinedConfig), name);
     await assertInputPath(path);
@@ -103,7 +134,10 @@ export async function prepareCombinedTimetableExport({
       ]),
     ),
   );
-  const { draft, mappingApproval, releaseReview, ...policies } = records;
+  const { mappingApproval, releaseReview, ...policies } = records;
+  const savedDraft = draftPath
+    ? await readJson(await resolveInput(draftPath))
+    : undefined;
   const approvedIndex = approvedRelease
     ? CombinedTimetableReleaseIndexSchema.parse(
         await readJson(await resolveInput(approvedRelease.index)),
@@ -128,25 +162,37 @@ export async function prepareCombinedTimetableExport({
     }
     const { tables, manifest: sourceManifest } = readSchedule(bytes);
     readScheduleFeedRange(tables['feed_info.txt'] ?? []);
-    const currentTerms = await acquireGtfsTerms();
-    const { bundle, release } = inspectCombinedTimetableRelease(
-      {
-        ...policies,
-        context: {
-          tables,
-          topology,
-          identity: {
-            sourceManifest,
-            canonicalCommit,
-            topology: {
-              projectionVersion: topology.projectionVersion,
-              sha256: hashBytes(Buffer.from(JSON.stringify(topology))),
-            },
+    const approved = approvedEvidence
+      ? JSON.parse(approvedEvidence.toString('utf8'))
+      : undefined;
+    const currentTerms = historical
+      ? approved.currentTerms
+      : await acquireGtfsTerms();
+    const inputs = {
+      ...policies,
+      context: {
+        tables,
+        topology,
+        identity: {
+          sourceManifest,
+          canonicalCommit,
+          topology: {
+            projectionVersion: topology.projectionVersion,
+            sha256: hashBytes(Buffer.from(JSON.stringify(topology))),
           },
         },
-        captureSha256: capture.sha256,
-        holidayCalendar,
       },
+      captureSha256: capture.sha256,
+      captureRetrievedAt: capture.retrieved_at,
+      holidayCalendar,
+    };
+    const draft = savedDraft ?? createScheduledCombinedReview(inputs);
+    if (draftSha256 && draft.draftSha256 !== draftSha256)
+      throw new Error(
+        'Regenerated combined review differs from its approved draft digest',
+      );
+    const { bundle, release } = inspectCombinedTimetableRelease(
+      inputs,
       draft,
       capture,
       {
@@ -155,7 +201,9 @@ export async function prepareCombinedTimetableExport({
         mappingApproval,
         releaseReview,
         currentTerms,
-        releaseInstant: new Date().toISOString(),
+        releaseInstant: historical
+          ? approved.releaseInstant
+          : new Date().toISOString(),
       },
     );
     if (!bundle) {
