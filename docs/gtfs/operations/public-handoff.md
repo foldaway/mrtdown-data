@@ -81,11 +81,60 @@ artifact, including findings with errors.
 
 After the receipt and ZIP are verified, a separate job on the default branch
 opens a review PR for that ZIP hash even if validation reports errors. The PR
-adds `docs/gtfs/captures/<sha256>.md` with the capture time, source links,
-validation outcomes, and links to the run and available reports. Existing PRs,
+adds `docs/gtfs/captures/<sha256>.md` and compact JSON evidence with the capture
+time, source links, table changes, effective service-date coverage, validation
+findings, and links to the run and full reports. The Markdown record also becomes
+the PR body. Reports are generated in the read-only job; the write job copies
+only the exact hash-named Markdown and JSON files. Existing PRs,
 including closed ones, are reused on replay. The job uses the repository's
 GitHub Actions permission to create PRs. Canonical mapping review and timetable
 release approval remain separate steps.
+
+### Comparison baseline and review scope
+
+[`baseline.json`](../captures/baseline.json) explicitly identifies the source
+capture used for comparison. Its initial value is the source of the approved
+November 9–30 timetable, verified against the public manifest and release index.
+To accept another comparison baseline, change its `captureKey` and evidence in a
+reviewed PR. Merging a capture record does not advance this pointer or publish a
+timetable. A later public deployment also does not silently change the pointer.
+
+The generator downloads the baseline from the same trusted origin and verifies
+both receipts and ZIP hashes before comparing. It reuses
+`compareScheduleSnapshots`: provider IDs identify records, row order and limited
+numeric/time formatting are normalized, and all other cell changes remain exact.
+Trip ID churn is not proof of added or removed train services. This first pass
+does not compare departures by line/pattern or verify mapping-approval reuse.
+
+Service coverage includes only calendars referenced by trips, with calendar
+exceptions applied. Counts and compact date ranges include internal gaps rather
+than implying continuous service between the earliest and latest date. Overnight
+times remain attached to their source service day. These dates do not establish
+approved publication coverage or public-holiday policy.
+
+Independent notice counts and bounded examples come from reports whose invocation
+identifies the candidate ZIP hash. Missing findings, invalid candidates, and
+unavailable baselines are reported explicitly. If summary generation or artifact
+transfer fails, the write job still creates a receipt-only PR identifying the
+missing evidence. Full Actions artifacts expire; the committed Markdown and JSON
+retain the compact review evidence. Replays preserve existing PRs and their
+evidence, including closed PRs, rather than replacing a review's baseline.
+
+After building the CLI, generate the same review locally with:
+
+```sh
+GTFS_SNAPSHOT_BASE_URL=https://sources.mrtdown.org \
+INDEPENDENT_OUTCOME=success INSPECTION_OUTCOME=success \
+node scripts/build-gtfs-snapshot-review.mjs \
+  /tmp/new-gtfs-input /tmp/gtfs-independent /tmp/gtfs-review
+```
+
+The second argument is the independent validator output directory, including
+`invocation.json`, `report.json`, and `system_errors.json`. Step outcomes describe
+the supplied execution; they do not replace findings. Optional `REVIEW_RUN_URL`
+and `ARTIFACT_URL` preserve links when regenerating an existing capture review.
+Inspect the outputs before updating that PR's record and body; do not add the
+downloaded `baseline-input` directory to Git.
 
 For a local smoke test after publication:
 

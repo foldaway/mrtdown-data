@@ -77,6 +77,29 @@ jobs:
             ${{ runner.temp }}/gtfs-independent/
           if-no-files-found: ignore
 
+      - name: Build durable snapshot review
+        id: review-report
+        if: ${{ !cancelled() && steps.acquire.outcome == 'success' }}
+        env:
+          GTFS_SNAPSHOT_BASE_URL: ${{ vars.GTFS_SNAPSHOT_BASE_URL }}
+          INDEPENDENT_OUTCOME: ${{ steps.validate.outcome }}
+          INSPECTION_OUTCOME: ${{ steps.report.outcome }}
+          REVIEW_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ARTIFACT_URL: ${{ steps.artifact.outputs.artifact-url }}
+        run: >-
+          node scripts/build-gtfs-snapshot-review.mjs
+          "$RUNNER_TEMP/gtfs-input"
+          "$RUNNER_TEMP/gtfs-independent"
+          "$RUNNER_TEMP/gtfs-review"
+      - uses: actions/upload-artifact@v7
+        if: ${{ !cancelled() && steps.review-report.outcome == 'success' }}
+        with:
+          name: gtfs-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/gtfs-review/*.md
+            ${{ runner.temp }}/gtfs-review/*.json
+          if-no-files-found: error
+
   review:
     needs: inspect
     if: >-
@@ -93,6 +116,11 @@ jobs:
       - uses: actions/checkout@v6
         with:
           ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/download-artifact@v8
+        continue-on-error: true
+        with:
+          name: gtfs-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/gtfs-review
       - name: Open snapshot review
         env:
           GH_TOKEN: ${{ github.token }}
@@ -103,6 +131,7 @@ jobs:
           INDEPENDENT_OUTCOME: ${{ needs.inspect.outputs.independent-outcome }}
           INSPECTION_OUTCOME: ${{ needs.inspect.outputs.inspection-outcome }}
           ARTIFACT_URL: ${{ needs.inspect.outputs.artifact-url }}
+          REVIEW_DIR: ${{ runner.temp }}/gtfs-review
         run: |
           review_branch="gtfs-review/$SNAPSHOT_SHA256"
           review_ref="refs/heads/$review_branch"
@@ -115,14 +144,19 @@ jobs:
           fi
 
           title="chore(gtfs): review schedule snapshot ${SNAPSHOT_SHA256:0:12}"
+          record_path="docs/gtfs/captures/$SNAPSHOT_SHA256.md"
+          body_path="$RUNNER_TEMP/gtfs-review-body.md"
           # A previous attempt may have pushed the branch before PR creation failed.
           existing_ref=$(git ls-remote --refs origin "$review_ref")
           if [[ -z "$existing_ref" ]]; then
             run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
             origin="${SNAPSHOT_ORIGIN%/}"
-            record_path="docs/gtfs/captures/$SNAPSHOT_SHA256.md"
             mkdir -p docs/gtfs/captures
-            cat > "$record_path" <<EOF
+            if [[ -f "$REVIEW_DIR/$SNAPSHOT_SHA256.md" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.json" ]]; then
+              cp "$REVIEW_DIR/$SNAPSHOT_SHA256.md" "$record_path"
+              cp "$REVIEW_DIR/$SNAPSHOT_SHA256.json" "docs/gtfs/captures/$SNAPSHOT_SHA256.json"
+            else
+              cat > "$record_path" <<EOF
           # LTA train GTFS snapshot
 
           - Retrieved at $RETRIEVED_AT
@@ -131,17 +165,29 @@ jobs:
           - Independent validator result \`$INDEPENDENT_OUTCOME\`
           - MRTDown inspection result \`$INSPECTION_OUTCOME\`
           - [GitHub Actions run]($run_url)
+
+          **Comparison and findings summary unavailable:** review report generation or artifact transfer failed. Inspect the linked run and full reports before accepting this capture.
+
+          Merging this record retains evidence only. Baseline acceptance, mapping approval and timetable publication remain separate decisions.
           EOF
-            if [[ -n "$ARTIFACT_URL" ]]; then
-              printf '%s\n' "- [Download available reports]($ARTIFACT_URL)" >> "$record_path"
+              if [[ -n "$ARTIFACT_URL" ]]; then
+                printf '%s\n' "- [Download available reports]($ARTIFACT_URL)" >> "$record_path"
+              fi
             fi
             git add -- "$record_path"
+            if [[ -f "docs/gtfs/captures/$SNAPSHOT_SHA256.json" ]]; then
+              git add -- "docs/gtfs/captures/$SNAPSHOT_SHA256.json"
+            fi
             git -c user.name='github-actions[bot]' \
               -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
               commit -m "$title" -m 'Co-Authored-By: Codex <noreply@openai.com>'
             git push --force-with-lease="$review_ref:" origin "HEAD:$review_ref"
           fi
 
+          # Use the committed report on retries, rather than an unrelated run's output.
+          git fetch origin "$review_ref"
+          git show "FETCH_HEAD:$record_path" > "$body_path"
+
           gh pr create --repo "$GITHUB_REPOSITORY" --base "$BASE_BRANCH" \
             --head "$review_branch" --title "$title" \
-            --body "Review the new LTA train GTFS capture. The added record links the source ZIP and inspection results. Check validation findings, service-date coverage, and mapping changes before preparing a timetable release."
+            --body-file "$body_path"

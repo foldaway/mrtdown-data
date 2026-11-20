@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "captureKey": "captures/schedule/ceb07f9c91de86559212eb48c1feac6455452900fad49cf009414a66c2f17efe.json",
+  "evidence": {
+    "description": "Source of the approved November 9–30 combined timetable; public manifest verified against its release index on 2026-11-20 UTC.",
+    "manifestUrl": "https://data.mrtdown.org/combined-timetable/manifest.json",
+    "manifestSha256": "d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb"
+  }
+}
