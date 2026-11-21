@@ -68,13 +68,17 @@ function model(tables, coverage) {
     const calls = [...(stopTimes.get(trip.trip_id) ?? [])].sort((a, b) =>
       compareStopSequences(a.stop_sequence, b.stop_sequence),
     );
-    const pattern = calls.map((call) => [
+    if (!calls.length)
+      throw new Error(`Trip ${trip.trip_id} has no stop times`);
+    const segmentRule = (call, index, field) =>
+      index < calls.length - 1 ? continuousRule(call, route, field) : '1';
+    const pattern = calls.map((call, index) => [
       call.stop_id,
       stops.get(call.stop_id).platform_code || '',
       call.pickup_type || '0',
       call.drop_off_type || '0',
-      continuousRule(call, route, 'continuous_pickup'),
-      continuousRule(call, route, 'continuous_drop_off'),
+      segmentRule(call, index, 'continuous_pickup'),
+      segmentRule(call, index, 'continuous_drop_off'),
     ]);
     const patternKey = digest([trip.direction_id || '', pattern]);
     const times = calls.map((call, index) => {
@@ -108,7 +112,7 @@ function model(tables, coverage) {
       departure: times[0]?.[1] ?? null,
       // Endpoint display includes platform labels where supplied. Repeated stop
       // occurrences remain in both the pattern identity and ordered evidence.
-      stops: calls.map((call) => {
+      stops: calls.map((call, index) => {
         const stop = stops.get(call.stop_id);
         return {
           id: call.stop_id,
@@ -116,8 +120,8 @@ function model(tables, coverage) {
           platform: stop.platform_code || '',
           pickup: call.pickup_type || '0',
           dropOff: call.drop_off_type || '0',
-          continuousPickup: continuousRule(call, route, 'continuous_pickup'),
-          continuousDropOff: continuousRule(call, route, 'continuous_drop_off'),
+          continuousPickup: segmentRule(call, index, 'continuous_pickup'),
+          continuousDropOff: segmentRule(call, index, 'continuous_drop_off'),
         };
       }),
     };
@@ -338,6 +342,29 @@ function change(before, after) {
   };
 }
 
+// Keep the usual line name, qualifying only names shared by distinct identities.
+function labelsForLines(before, after) {
+  const keys = [...new Set([...before.keys(), ...after.keys()])].sort();
+  const names = keys.map((key) => (after.get(key) ?? before.get(key)).label);
+  const occurrences = counts(names);
+  const labels = keys.map((key, index) => {
+    const name = names[index];
+    const [agency, , shortName] = JSON.parse(key);
+    return occurrences.get(name) > 1
+      ? `${name} (${shortName || agency || 'unnamed route'})`
+      : name;
+  });
+  const qualified = counts(labels);
+  return new Map(
+    keys.map((key, index) => [
+      key,
+      qualified.get(labels[index]) > 1
+        ? `${labels[index]} [${digest(key).slice(0, 12)}]`
+        : labels[index],
+    ]),
+  );
+}
+
 export function compareJourneySchedules(
   beforeTables,
   afterTables,
@@ -346,6 +373,7 @@ export function compareJourneySchedules(
 ) {
   const before = model(beforeTables, beforeCoverage);
   const after = model(afterTables, afterCoverage);
+  const lineLabels = labelsForLines(before, after);
   const changes = [];
   const unchangedLines = [];
   const unchangedDates = [];
@@ -353,7 +381,7 @@ export function compareJourneySchedules(
   const sourceDates = [
     ...new Set([...beforeCoverage.dates, ...afterCoverage.dates]),
   ].sort();
-  for (const key of [...new Set([...before.keys(), ...after.keys()])].sort()) {
+  for (const [key, label] of lineLabels) {
     const previous = before.get(key);
     const next = after.get(key);
     const grouped = new Map();
@@ -373,7 +401,8 @@ export function compareJourneySchedules(
       const pair = `${a.sha256}:${b.sha256}`;
       if (!grouped.has(pair))
         grouped.set(pair, {
-          line: (next ?? previous).label,
+          line: label,
+          lineKey: key,
           dates: [],
           beforeSha256: a.sha256,
           afterSha256: b.sha256,
@@ -381,10 +410,11 @@ export function compareJourneySchedules(
         });
       grouped.get(pair).dates.push(date);
     }
-    if (!grouped.size) unchangedLines.push((next ?? previous).label);
+    if (!grouped.size) unchangedLines.push(label);
     else if (matchingDates.length)
       unchangedDates.push({
-        line: (next ?? previous).label,
+        line: label,
+        lineKey: key,
         dates: matchingDates,
       });
     for (const group of grouped.values()) {
@@ -404,11 +434,10 @@ export function compareJourneySchedules(
   return {
     status: 'available',
     basis:
-      'Source-calendar daily multisets of ordered stop/platform IDs, boarding/alighting rules, direction, all arrival/departure times, timepoints, headsigns and passenger accessibility fields; trip/service/block IDs ignored. Identically named routes within the same agency/type form a line. No fuzzy trip pairing or canonical mapping reuse.',
+      'Source-calendar daily multisets of ordered stop/platform IDs, boarding/alighting rules, direction, all arrival/departure times, timepoints, headsigns and trip-level wheelchair_accessible/bikes_allowed fields; trip/service/block IDs ignored. Stop-level accessibility changes appear in table drift. Identically named routes within the same agency/type form a line. No fuzzy trip pairing or canonical mapping reuse.',
     sourceDates,
-    unchangedLines: unchangedLines.filter(
-      (line) => !changes.some((change) => change.line === line),
-    ),
+    lineLabels: Object.fromEntries(lineLabels),
+    unchangedLines,
     unchangedDates,
     patternDefinitions,
     changes,
@@ -566,10 +595,12 @@ export function renderJourneyChanges(summary, markdownText) {
       '',
     );
     for (const change of summary.changes.slice(0, 12)) {
+      const countStatus = (status) =>
+        change.patterns.filter((pattern) => pattern.status === status).length;
       lines.push(
         `**${markdownText(change.line)} — ${dateText(change.dates, summary.sourceDates)}**`,
         '',
-        `${change.unchangedJourneyCount} journey schedules match exactly; ${change.patterns.length} stopping patterns differ.`,
+        `${change.unchangedJourneyCount} journey schedules match exactly. Stopping patterns: ${countStatus('new-pattern')} added, ${countStatus('removed-pattern')} removed, ${countStatus('changed-pattern')} retained with changed journey details.`,
         '',
       );
       for (const pattern of change.patterns.slice(0, 5)) {
@@ -618,7 +649,7 @@ export function renderJourneyChanges(summary, markdownText) {
       }
       if (change.patterns.length > 5)
         lines.push(
-          `- ${change.patterns.length} stopping patterns differ in total; the five above have the most origin departure changes. All patterns are retained in JSON.`,
+          `- Details for ${change.patterns.length} patterns are retained in JSON; the five above have the most origin departure changes.`,
         );
       lines.push('');
     }
@@ -632,7 +663,7 @@ export function renderJourneyChanges(summary, markdownText) {
       '',
     );
   lines.push(
-    'Counts describe source trip records, including short turns and non-boarding calls. Pattern time windows describe that exact pattern, not a station’s first/last passenger train. Times from 24:00 onward remain on their source service day. Mapping approval and publication coverage require separate review.',
+    'Counts describe source trip records, including short turns and non-boarding calls. Stop-level accessibility changes appear in the table comparison, outside these journey counts. Pattern time windows describe that exact pattern, not a station’s first/last passenger train. Times from 24:00 onward remain on their source service day. Mapping approval and publication coverage require separate review.',
     '',
   );
   return lines;
