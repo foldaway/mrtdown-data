@@ -115,12 +115,17 @@ counts and notable first/last origin times for exact stopping patterns. Expandab
 details show named stops/platforms, stopping patterns that appear or disappear,
 and examples of exact departure times. Unchanged lines and dates are identified
 separately. All date groups and pattern comparisons are retained in JSON.
+Details label non-default boarding/alighting rules at each call, including
+repeated stops. Removed patterns retain baseline stop names; retained and new
+patterns use candidate names without treating a rename as a service change.
 Origin-time highlights come from the five changed patterns with the most
 origin-departure differences, rather than emphasizing rare positioning trips.
 
 This comparison ignores trip, calendar and block IDs. A journey's identity uses
 the ordered source stop IDs (including repetitions), direction, boarding rules,
 arrival/departure times, timepoints, headsigns and passenger accessibility fields.
+Continuous boarding/alighting rules resolve call overrides, route defaults, and
+GTFS defaults before comparison.
 Identically named routes within the same agency/type form a line. Timetable
 entries are compared as multisets, retaining duplicate journeys. Changed origin
 times are listed independently rather than guessing which individual train moved.
@@ -130,6 +135,9 @@ stopping pattern; display examples require an unambiguous shared timing sequence
 Counts include short turns and non-boarding source calls. A pattern's origin-time
 window is not a station's first/last passenger train. Frequency-based schedules
 and flexible pickup/drop-off windows produce an explicit unavailable result.
+Missing required times or an unknown origin departure also make the journey
+comparison unavailable while preserving table and calendar evidence. Optional
+intermediate times remain unknown and are never interpolated.
 Source date scope, stop IDs and supplied platform labels remain observations;
 the summary does not verify mapping-approval reuse or infer a reason for changes.
 

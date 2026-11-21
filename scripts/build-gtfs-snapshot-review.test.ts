@@ -252,6 +252,36 @@ test('rejects tampered captures and malformed baseline keys', async () => {
   ).toThrow('baseline');
 });
 
+test('missing required times make journey evidence unavailable while retaining other comparisons', async () => {
+  const before = tables();
+  before['stop_times.txt'][0].arrival_time = '';
+  before['stop_times.txt'][0].departure_time = '';
+  const after = structuredClone(before);
+  after['stop_times.txt'][1].arrival_time = '24:21:00';
+  after['stop_times.txt'][1].departure_time = '24:21:00';
+  const { options, current } = await setup(before, after);
+  const report = await buildSnapshotReview(options);
+  expect(report.comparison.status).toBe('available');
+  expect(report.comparison.coverage).toBeDefined();
+  expect(report.comparison.drift).toBeDefined();
+  expect(report.comparison.journeys).toMatchObject({
+    status: 'unavailable',
+    reason: expect.stringContaining('Missing required'),
+  });
+  const markdown = await readFile(
+    join(options.outputDir, `${current.sha256}.md`),
+    'utf8',
+  );
+  expect(markdown).toContain(
+    'A plain-language timetable comparison is unavailable',
+  );
+  expect(markdown).not.toContain('Origin departure times are retained');
+  const evidence = JSON.parse(
+    await readFile(join(options.outputDir, `${current.sha256}.json`), 'utf8'),
+  );
+  expect(evidence.comparison.journeys.status).toBe('unavailable');
+});
+
 test.each([
   { captureKey: [`captures/schedule/${'a'.repeat(64)}.json`] },
   { captureKey: null },

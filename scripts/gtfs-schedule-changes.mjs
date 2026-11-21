@@ -4,6 +4,8 @@ import { hashBytes } from '../packages/fs/dist/index.js';
 
 const digest = (value) => hashBytes(Buffer.from(JSON.stringify(value)));
 const compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
+const continuousRule = (call, route, field) =>
+  call[field] || route[field] || '1';
 const counts = (values) => {
   const result = new Map();
   for (const value of values) result.set(value, (result.get(value) ?? 0) + 1);
@@ -71,16 +73,25 @@ function model(tables, coverage) {
       stops.get(call.stop_id).platform_code || '',
       call.pickup_type || '0',
       call.drop_off_type || '0',
-      call.continuous_pickup || '',
-      call.continuous_drop_off || '',
-      route.continuous_pickup || '',
-      route.continuous_drop_off || '',
+      continuousRule(call, route, 'continuous_pickup'),
+      continuousRule(call, route, 'continuous_drop_off'),
     ]);
     const patternKey = digest([trip.direction_id || '', pattern]);
-    const times = calls.map((call) => [
-      gtfsTimeSeconds(call.arrival_time),
-      gtfsTimeSeconds(call.departure_time),
-    ]);
+    const times = calls.map((call, index) => {
+      const arrival = gtfsTimeSeconds(call.arrival_time);
+      const departure = gtfsTimeSeconds(call.departure_time);
+      const exact = (call.timepoint || '1') === '1';
+      if (
+        ((exact || index === 0 || index === calls.length - 1) &&
+          arrival === null) ||
+        ((exact || index === 0) && departure === null)
+      ) {
+        throw new Error(
+          `Missing required arrival/departure time for trip ${trip.trip_id}, call ${index + 1}; origin departure times must be supplied for comparison`,
+        );
+      }
+      return [arrival, departure];
+    });
     const labels = [
       trip.trip_headsign || '',
       trip.trip_short_name || '',
@@ -105,6 +116,8 @@ function model(tables, coverage) {
           platform: stop.platform_code || '',
           pickup: call.pickup_type || '0',
           dropOff: call.drop_off_type || '0',
+          continuousPickup: continuousRule(call, route, 'continuous_pickup'),
+          continuousDropOff: continuousRule(call, route, 'continuous_drop_off'),
         };
       }),
     };
@@ -254,6 +267,9 @@ function change(before, after) {
     );
     patterns.push({
       patternSha256: key,
+      // Display names belong to this snapshot; shared service identities must
+      // not overwrite another change's baseline names.
+      definitionSha256: digest((next ?? previous).stops),
       stops: (next ?? previous).stops,
       before: window(previous),
       after: window(next),
@@ -294,6 +310,7 @@ function change(before, after) {
         return [
           {
             patternSha256: pattern.patternSha256,
+            definitionSha256: pattern.definitionSha256,
             kind,
             before: previous,
             after: next,
@@ -372,7 +389,7 @@ export function compareJourneySchedules(
       });
     for (const group of grouped.values()) {
       group.patterns = group.patterns.map(({ stops, ...pattern }) => {
-        patternDefinitions[pattern.patternSha256] = stops;
+        patternDefinitions[pattern.definitionSha256] = stops;
         return pattern;
       });
     }
@@ -469,6 +486,38 @@ function pathText(stops) {
   const via = stops.slice(1, -1).slice(0, 2).map(stopText).join(', ');
   return `${endpoints}${via ? ` via ${via}${stops.length > 4 ? ', …' : ''}` : ''} (${stops.length} calls)`;
 }
+function boardingRules(stops) {
+  const pickup = {
+    1: 'no boarding',
+    2: 'phone the agency to arrange boarding',
+    3: 'coordinate with the driver to board',
+  };
+  const dropOff = {
+    1: 'no alighting',
+    2: 'phone the agency to arrange alighting',
+    3: 'coordinate with the driver to alight',
+  };
+  const continuous = (value, action) =>
+    ({
+      0: `continuous ${action} permitted`,
+      2: `phone the agency to arrange continuous ${action}`,
+      3: `coordinate with the driver for continuous ${action}`,
+    })[value];
+  return stops.flatMap((stop, index) => {
+    const rules = [pickup[stop.pickup], dropOff[stop.dropOff]];
+    if (index < stops.length - 1) {
+      for (const [value, action] of [
+        [stop.continuousPickup, 'boarding'],
+        [stop.continuousDropOff, 'alighting'],
+      ]) {
+        const rule = continuous(value, action);
+        if (rule) rules.push(`${rule} until the next call`);
+      }
+    }
+    const text = rules.filter(Boolean).join('; ');
+    return text ? [`${stopText(stop)} (call ${index + 1}): ${text}`] : [];
+  });
+}
 function windowText(window) {
   return `${window.count} journeys${window.first ? `; origin times ${window.first}–${window.last}` : ''}`;
 }
@@ -501,7 +550,7 @@ export function renderJourneyChanges(summary, markdownText) {
       );
       for (const highlight of change.highlights) {
         lines.push(
-          `  - For ${markdownText(pathText(summary.patternDefinitions[highlight.patternSha256]))}, the ${highlight.kind === 'first' ? 'earliest' : 'latest'} listed origin time changes from ${highlight.before} to **${highlight.after}**.`,
+          `  - For ${markdownText(pathText(summary.patternDefinitions[highlight.definitionSha256]))}, the ${highlight.kind === 'first' ? 'earliest' : 'latest'} listed origin time changes from ${highlight.before} to **${highlight.after}**.`,
         );
       }
     }
@@ -524,9 +573,8 @@ export function renderJourneyChanges(summary, markdownText) {
         '',
       );
       for (const pattern of change.patterns.slice(0, 5)) {
-        const path = markdownText(
-          pathText(summary.patternDefinitions[pattern.patternSha256]),
-        );
+        const stops = summary.patternDefinitions[pattern.definitionSha256];
+        const path = markdownText(pathText(stops));
         if (pattern.status === 'new-pattern')
           lines.push(
             `- Newly listed stopping pattern: ${path}. ${windowText(pattern.after)}.`,
@@ -565,6 +613,8 @@ export function renderJourneyChanges(summary, markdownText) {
             );
           }
         }
+        for (const rule of boardingRules(stops))
+          lines.push(`  - ${markdownText(rule)}.`);
       }
       if (change.patterns.length > 5)
         lines.push(

@@ -216,13 +216,149 @@ test('preserves platforms, repeated stop occurrences, and boarding rules as dist
     (pattern: { status: string }) => pattern.status === 'new-pattern',
   );
   expect(
-    report.patternDefinitions[added.patternSha256].map(
+    report.patternDefinitions[added.definitionSha256].map(
       (stop: { id: string }) => stop.id,
     ),
   ).toEqual(['A2', 'B', 'A2']);
   expect(renderJourneyChanges(report, String).join('\n')).toContain(
     'Alpha (platform B)',
   );
+});
+
+test.each([
+  'continuous_pickup',
+  'continuous_drop_off',
+])('compares effective %s defaults and overrides rather than their source placement', (field) => {
+  const before = fixture();
+  const after = fixture();
+  after['routes.txt'][0][field] = '1';
+  expect(run(before, after).changes).toEqual([]);
+
+  before['routes.txt'][0][field] = '0';
+  after['routes.txt'][0][field] = '0';
+  for (const call of after['stop_times.txt']) call[field] = '0';
+  expect(run(before, after).changes).toEqual([]);
+
+  // An explicit override wins even when the route default changes.
+  for (const call of before['stop_times.txt']) call[field] = '2';
+  for (const call of after['stop_times.txt']) call[field] = '2';
+  after['routes.txt'][0][field] = '3';
+  expect(run(before, after).changes).toEqual([]);
+
+  after['stop_times.txt'][0][field] = '1';
+  expect(run(before, after).changes[0].patterns).toHaveLength(2);
+});
+
+test.each([
+  { index: 0, field: 'arrival_time', timepoint: '1' },
+  { index: 0, field: 'departure_time', timepoint: '0' },
+  { index: 1, field: 'arrival_time', timepoint: '0' },
+  { index: 1, field: 'departure_time', timepoint: '1' },
+])('rejects missing required $field at call $index (timepoint $timepoint)', ({
+  index,
+  field,
+  timepoint,
+}) => {
+  const after = fixture();
+  Object.assign(after['stop_times.txt'][index], { [field]: '', timepoint });
+  expect(() => run(fixture(), after)).toThrow('Missing required');
+  expect(() => run(after, fixture())).toThrow('Missing required');
+});
+
+test('retains valid blank intermediate times and rejects blanks at exact intermediate timepoints', () => {
+  const before = fixture();
+  before['stop_times.txt'][1].stop_sequence = '3';
+  before['stop_times.txt'].splice(1, 0, {
+    trip_id: 'T',
+    stop_id: 'A',
+    stop_sequence: '2',
+    timepoint: '0',
+    arrival_time: '',
+    departure_time: '',
+  });
+  const after = structuredClone(before);
+  after['stop_times.txt'][2].arrival_time = '24:21:00';
+  expect(
+    run(before, after).changes[0].patterns[0].exactExamples.callTimes,
+  ).toMatchObject([{ occurrence: 3, before: ['24:20:00', '24:20:00'] }]);
+  // A final departure can be absent when the final call is not an exact timepoint.
+  after['stop_times.txt'][2].timepoint = '0';
+  after['stop_times.txt'][2].departure_time = '';
+  expect(() => run(before, after)).not.toThrow();
+  for (const timepoint of ['1', '']) {
+    after['stop_times.txt'][1].timepoint = timepoint;
+    expect(() => run(before, after)).toThrow('Missing required');
+  }
+});
+
+test('keeps baseline stop names on removed shared patterns without treating renames as new service', () => {
+  const before = fixture();
+  before['routes.txt'][0].route_long_name = 'A Line';
+  before['routes.txt'].push({
+    ...before['routes.txt'][0],
+    route_id: 'R2',
+    route_long_name: 'B Line',
+  });
+  addTrip(before, 'second');
+  before['trips.txt'][1].route_id = 'R2';
+  const after = structuredClone(before);
+  after['stops.txt'][0].stop_name = 'New Alpha';
+  expect(run(before, after).changes).toEqual([]);
+  after['trips.txt'] = after['trips.txt'].filter(
+    (trip) => trip.trip_id !== 'T',
+  );
+  after['stop_times.txt'] = after['stop_times.txt']
+    .filter((call) => call.trip_id !== 'T')
+    .map((call) => ({
+      ...call,
+      arrival_time: call.arrival_time.replace('24:', '25:'),
+      departure_time: call.departure_time.replace('24:', '25:'),
+    }));
+  const report = run(before, after);
+  const removed = report.changes.find((change) => change.line === 'A Line')
+    .patterns[0];
+  const retained = report.changes.find((change) => change.line === 'B Line')
+    .patterns[0];
+  expect(removed.patternSha256).toBe(retained.patternSha256);
+  expect(removed.definitionSha256).not.toBe(retained.definitionSha256);
+  expect(report.patternDefinitions[removed.definitionSha256][0].name).toBe(
+    'Alpha',
+  );
+  expect(report.patternDefinitions[retained.definitionSha256][0].name).toBe(
+    'New Alpha',
+  );
+  const text = renderJourneyChanges(report, String).join('\n');
+  expect(text).toContain('no longer listed: Alpha (platform A)');
+  expect(text).toContain('For New Alpha (platform A)');
+  before['trips.txt'].reverse();
+  after['trips.txt'].reverse();
+  expect(run(before, after)).toEqual(report);
+});
+
+test('explains boarding restrictions at each occurrence, including calls omitted from the short path', () => {
+  const before = fixture();
+  for (let i = 3; i <= 6; i++) {
+    before['stop_times.txt'].push({
+      ...before['stop_times.txt'][1],
+      stop_sequence: String(i),
+    });
+  }
+  const after = structuredClone(before);
+  after['stop_times.txt'][0].pickup_type = '1';
+  after['stop_times.txt'][4].pickup_type = '2';
+  after['stop_times.txt'][4].continuous_drop_off = '0';
+  after['stop_times.txt'][5].drop_off_type = '3';
+  const report = run(before, after);
+  const text = renderJourneyChanges(report, String).join('\n');
+  expect(text).toContain('Alpha (platform A) (call 1): no boarding');
+  expect(text).toContain(
+    'Beta (platform B) (call 5): phone the agency to arrange boarding; continuous alighting permitted until the next call',
+  );
+  expect(text).toContain(
+    'Beta (platform B) (call 6): coordinate with the driver to alight',
+  );
+  expect(text).toContain('Stopping pattern no longer listed:');
+  expect(text).toContain('Newly listed stopping pattern:');
 });
 
 test('distinguishes changes within a journey from unchanged origin departures and from display-only changes', () => {
