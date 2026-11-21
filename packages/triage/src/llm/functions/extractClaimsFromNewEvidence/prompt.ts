@@ -135,6 +135,15 @@ For facility entities:
   evening" -> scopes.service: null.
 - Example: "[ISL] CLEARED: Fault has been cleared. Train service has resumed."
   -> scopes.service: null.
+- A service opening/closing time is a temporal assertion, not a geographic
+  assertion. Creating claims for every named directional service does not mean
+  the evidence explicitly covers each entire service.
+- Example: "The Island & Tsuen Wan Lines train service will start at 10am on
+  18 Feb" -> service-hours-adjustment claims with scopes.service: null for
+  each affected service. Do not infer service.whole from the start time.
+- "Train service across the entire Island Line and the entire Tsuen Wan Line
+  will start at 10am on 18 Feb" explicitly asserts whole-line coverage:
+  use service.whole for each affected service.
 - service.segment is directional: fromStationId -> toStationId is an ordered path, not an unordered pair.
 - Validate segment orientation against the specific service path returned by findServices.
 - For bidirectional output, create one claim per directional service and set segment endpoints to match each service direction (reverse endpoints for reverse direction service).

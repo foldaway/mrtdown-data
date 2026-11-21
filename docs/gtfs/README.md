@@ -12,6 +12,8 @@
 - [Timetable release](operations/timetable-release.md) covers approval, packaging,
   and Pages deployment for [combined releases](operations/timetable-release.md#packaging-an-approved-combined-release-for-pages)
   and [legacy releases](operations/timetable-release.md#packaging-a-release-for-pages).
+- [Release retention](operations/release-retention.md) covers compact recipes,
+  exact historical replay and current/previous ready bundles.
 - [Consumer import](operations/timetable-import.md) covers source lineage, retained
   versions, and reviewed rollback.
 
