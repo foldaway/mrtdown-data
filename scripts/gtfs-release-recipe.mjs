@@ -1,6 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { lstat, readFile, realpath } from 'node:fs/promises';
 import { isAbsolute, join, relative, resolve } from 'node:path';
+import { ScheduledTimetableSourceReviewSchema } from '@mrtdown/core';
 import { hashBytes, readVerifiedCapture } from '../packages/fs/dist/index.js';
 import { combinedPagesConfigSchema } from './export-pages-combined-timetable.mjs';
 import {
@@ -69,6 +70,24 @@ export async function prepareReleaseRecipe({
     return target;
   }
   const compact = { ...config };
+  // Preserve the exact lineage authorization for later redeployments. Older
+  // manual recipes continue to use the protected environment's review.
+  try {
+    await retainFile('source-review.json', 'source-review.json');
+    const review = ScheduledTimetableSourceReviewSchema.parse(
+      JSON.parse(files['source-review.json'].toString()),
+    );
+    const index = await json(await inputPath(config.approvedRelease.index));
+    if (
+      review.successor.snapshotSha256 !== capture.sha256 ||
+      review.successor.manifestSha256 !== index.manifestSha256
+    )
+      throw new Error(
+        'Retained source review differs from the approved release',
+      );
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
   if (config.draft) {
     const saved = await json(await inputPath(config.draft));
     compact.draftSha256 = sha256Schema.parse(saved.draftSha256);

@@ -183,6 +183,21 @@ export async function alreadyRetainedRelease(store, publishedIndex) {
   };
 }
 
+/** A successful retained release is the sole baseline for unattended successors. */
+export async function currentRetainedRelease(store) {
+  const state = validateIndex(
+    decode((await required(store, 'index.json')).bytes),
+  );
+  const record = await storedRecord(store, state.current);
+  if (!record) throw new Error('Current retained release record is missing');
+  const current = await alreadyRetainedRelease(store, record.releaseIndex);
+  if (!current)
+    throw new Error(
+      'Current release is incomplete or retention cleanup is pending',
+    );
+  return current;
+}
+
 /** Called under the writer lock; every deletion is replay-checked and conditional. */
 async function finishCleanup(store, index, replay) {
   const staged = await stagedCandidates(store);

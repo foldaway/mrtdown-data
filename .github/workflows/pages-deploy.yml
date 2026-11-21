@@ -20,8 +20,29 @@ on:
       - 'scripts/retain-gtfs-release.mjs'
       - 'scripts/materialize-gtfs-release-recipe.mjs'
       - 'scripts/prepare-pages-site-pull.mjs'
+      - 'scripts/*gtfs*automatic*.mjs'
+      - 'scripts/acquire-current-gtfs-release.mjs'
+      - 'scripts/wait-pages-site-pull.mjs'
+      - 'docs/gtfs/operations/automatic-publication-policy.json'
       - 'turbo.json'
   workflow_dispatch:
+    inputs:
+      capture_key:
+        description: Optional capture to assess under the automatic publication policy
+        type: string
+        default: ''
+  workflow_call:
+    inputs:
+      capture_key:
+        type: string
+        required: true
+      validated_capture_sha256:
+        type: string
+        required: true
+    outputs:
+      decision:
+        description: published, unchanged, hold or disabled
+        value: ${{ jobs.deploy.outputs.decision }}
 
 permissions:
   contents: read
@@ -35,15 +56,20 @@ concurrency:
 jobs:
   deploy:
     if: github.ref == 'refs/heads/main'
+    outputs:
+      decision: ${{ steps.completion.outcome == 'success' && inputs.capture_key != '' && 'published' || steps.candidate.outputs.decision || 'disabled' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     defaults:
       run:
         shell: bash
     env:
       COMBINED_TIMETABLE_ENABLED: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_ENABLED }}
+      AUTOMATIC_PUBLICATION_ENABLED: ${{ vars.MRTDOWN_GTFS_AUTOMATIC_PUBLICATION_ENABLED }}
+      CAPTURE_KEY: ${{ inputs.capture_key }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -65,8 +91,45 @@ jobs:
             *) echo "::error::Expected MRTDOWN_COMBINED_TIMETABLE_ENABLED to be true, false or unset"; exit 1 ;;
           esac
 
+      - name: Select publication mode
+        id: mode
+        env:
+          RETENTION_ENABLED: ${{ vars.MRTDOWN_GTFS_RELEASE_RETENTION_ENABLED }}
+        run: |
+          case "$AUTOMATIC_PUBLICATION_ENABLED" in
+            ""|false|true|paused) ;;
+            *) echo "::error::Invalid automatic publication flag"; exit 1 ;;
+          esac
+          if [[ -n "$CAPTURE_KEY" && "$AUTOMATIC_PUBLICATION_ENABLED" != true ]]; then
+            echo 'run=false' >> "$GITHUB_OUTPUT"
+            echo 'Automatic publication is not enabled; retaining the review PR flow.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if [[ ( "$AUTOMATIC_PUBLICATION_ENABLED" == true || "$AUTOMATIC_PUBLICATION_ENABLED" == paused ) && ( "$COMBINED_TIMETABLE_ENABLED" != true || "$RETENTION_ENABLED" != true ) ]]; then
+            echo '::error::Automatic publication requires combined timetables and verified retention'
+            exit 1
+          fi
+          if [[ "$AUTOMATIC_PUBLICATION_ENABLED" == true || "$AUTOMATIC_PUBLICATION_ENABLED" == paused ]]; then
+            echo 'retained=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'retained=false' >> "$GITHUB_OUTPUT"
+          fi
+          echo 'run=true' >> "$GITHUB_OUTPUT"
+
+      - name: Acquire last completed release
+        if: steps.mode.outputs.run == 'true' && steps.mode.outputs.retained == 'true'
+        env:
+          GTFS_RELEASE_RETENTION_BUCKET: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_INPUT_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.MRTDOWN_GTFS_RELEASE_RETENTION_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.MRTDOWN_GTFS_RELEASE_RETENTION_SECRET_ACCESS_KEY }}
+          GTFS_SNAPSHOT_BASE_URL: ${{ vars.GTFS_SNAPSHOT_BASE_URL }}
+          MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW: ${{ secrets.MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW }}
+        run: |
+          npm run build:cli
+          node scripts/acquire-current-gtfs-release.mjs "$RUNNER_TEMP/combined-release"
+
       - name: Acquire approved combined timetable inputs
-        if: env.COMBINED_TIMETABLE_ENABLED == 'true'
+        if: steps.mode.outputs.run == 'true' && env.COMBINED_TIMETABLE_ENABLED == 'true' && steps.mode.outputs.retained != 'true'
         env:
           RELEASE_BUCKET: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_INPUT_BUCKET }}
           RELEASE_SHA256: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_INPUT_SHA256 }}
@@ -110,7 +173,49 @@ jobs:
             tar -xzf "$archive" --no-same-owner --no-same-permissions -C "$input_dir"
           fi
 
+      - name: Check site completion API before publication
+        if: steps.mode.outputs.run == 'true' && steps.mode.outputs.retained == 'true'
+        env:
+          MRTDOWN_SITE_PULL_URL: ${{ secrets.MRTDOWN_SITE_PULL_URL }}
+          MRTDOWN_SITE_INTERNAL_API_TOKEN: ${{ secrets.MRTDOWN_SITE_INTERNAL_API_TOKEN }}
+        run: node scripts/wait-pages-site-pull.mjs --preflight
+
+      - name: Prepare checked automatic successor
+        id: candidate
+        if: steps.mode.outputs.run == 'true' && env.CAPTURE_KEY != ''
+        env:
+          GTFS_SNAPSHOT_BASE_URL: ${{ vars.GTFS_SNAPSHOT_BASE_URL }}
+          GTFS_CAPTURE_KEY: ${{ inputs.capture_key }}
+          GTFS_INPUT_DIR: ${{ runner.temp }}/gtfs-candidate
+          REVIEW_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          VALIDATED_CAPTURE_SHA256: ${{ inputs.validated_capture_sha256 }}
+        run: |
+          if [[ ! "$VALIDATED_CAPTURE_SHA256" =~ ^[a-f0-9]{64}$ ]]; then
+            echo '::error::Use the capture inspection workflow to qualify an automatic successor'
+            exit 1
+          fi
+          node scripts/acquire-gtfs-capture.mjs
+          test "$(jq -r .sha256 "$GTFS_INPUT_DIR/capture.json")" = "$VALIDATED_CAPTURE_SHA256"
+          npm run check
+          TZ=UTC npm test
+          node scripts/prepare-gtfs-automatic-release.mjs \
+            "$RUNNER_TEMP/combined-release" "$GTFS_INPUT_DIR" \
+            "$RUNNER_TEMP/automatic-release" "$RUNNER_TEMP/automatic-report"
+          if [[ -d "$RUNNER_TEMP/automatic-release" ]]; then
+            mv "$RUNNER_TEMP/combined-release" "$RUNNER_TEMP/previous-release"
+            mv "$RUNNER_TEMP/automatic-release" "$RUNNER_TEMP/combined-release"
+          fi
+
+      - name: Save automatic publication decision
+        if: always() && env.CAPTURE_KEY != '' && steps.mode.outputs.run == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: gtfs-automatic-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/automatic-report/
+          if-no-files-found: ignore
+
       - name: Build Pages artifact
+        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false'
         run: |
           if [[ "$COMBINED_TIMETABLE_ENABLED" == true ]]; then
             input_dir="$RUNNER_TEMP/combined-release"
@@ -123,7 +228,7 @@ jobs:
           fi
 
       - name: Prepare authenticated site pull
-        if: env.COMBINED_TIMETABLE_ENABLED == 'true'
+        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false' && env.COMBINED_TIMETABLE_ENABLED == 'true'
         env:
           MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW: ${{ secrets.MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW }}
           MRTDOWN_SITE_PULL_URL: ${{ secrets.MRTDOWN_SITE_PULL_URL }}
@@ -133,23 +238,30 @@ jobs:
             echo "::error::An HTTPS site pull URL and internal API token are required"
             exit 1
           fi
+          review=()
+          if [[ "$AUTOMATIC_PUBLICATION_ENABLED" == true || "$AUTOMATIC_PUBLICATION_ENABLED" == paused ]]; then
+            review=("$RUNNER_TEMP/combined-release/source-review.json")
+          fi
           node scripts/prepare-pages-site-pull.mjs pages-dist \
             "$RUNNER_TEMP/combined-release/release-index.json" \
-            "$RUNNER_TEMP/pages-site-pull.json"
+            "$RUNNER_TEMP/pages-site-pull.json" "${review[@]}"
 
       - uses: actions/configure-pages@v6
+        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false'
 
       - name: Upload Pages artifact
+        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false'
         uses: actions/upload-pages-artifact@v5
         with:
           path: pages-dist
 
       - name: Deploy to GitHub Pages
+        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false'
         id: deployment
         uses: actions/deploy-pages@v5
 
       - name: Verify the public release before triggering the site pull
-        if: env.COMBINED_TIMETABLE_ENABLED == 'true'
+        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false' && env.COMBINED_TIMETABLE_ENABLED == 'true'
         env:
           PAGES_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
@@ -172,6 +284,7 @@ jobs:
           exit 1
 
       - name: Trigger mrtdown-site pull workflow
+        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false'
         env:
           MRTDOWN_SITE_PULL_URL: ${{ secrets.MRTDOWN_SITE_PULL_URL }}
           MRTDOWN_SITE_INTERNAL_API_TOKEN: ${{ secrets.MRTDOWN_SITE_INTERNAL_API_TOKEN }}
@@ -203,8 +316,17 @@ jobs:
           fi
           jq -er '.workflowRunId | strings | select(length > 0)' "$RUNNER_TEMP/site-pull-response.json"
 
+      - name: Wait for the exact site import to complete
+        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false' && steps.mode.outputs.retained == 'true'
+        env:
+          MRTDOWN_SITE_PULL_URL: ${{ secrets.MRTDOWN_SITE_PULL_URL }}
+          MRTDOWN_SITE_INTERNAL_API_TOKEN: ${{ secrets.MRTDOWN_SITE_INTERNAL_API_TOKEN }}
+        run: >-
+          node scripts/wait-pages-site-pull.mjs
+          "$RUNNER_TEMP/site-pull-response.json" "$RUNNER_TEMP/pages-site-pull.json"
+
       - name: Retain reproducible current and previous releases
-        if: env.COMBINED_TIMETABLE_ENABLED == 'true' && vars.MRTDOWN_GTFS_RELEASE_RETENTION_ENABLED == 'true'
+        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false' && env.COMBINED_TIMETABLE_ENABLED == 'true' && vars.MRTDOWN_GTFS_RELEASE_RETENTION_ENABLED == 'true'
         env:
           GTFS_RELEASE_RETENTION_BUCKET: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_INPUT_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.MRTDOWN_GTFS_RELEASE_RETENTION_ACCESS_KEY_ID }}
@@ -216,3 +338,8 @@ jobs:
           fi
           node scripts/retain-gtfs-release.mjs "$RUNNER_TEMP/combined-release" \
             pages-dist/combined-timetable-release-index.json "$RUNNER_TEMP/retention-receipt"
+
+      - name: Record completed automatic publication
+        id: completion
+        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish == 'true'
+        run: echo 'Published the verified release, completed its site import, and advanced the retained baseline.' >> "$GITHUB_STEP_SUMMARY"
