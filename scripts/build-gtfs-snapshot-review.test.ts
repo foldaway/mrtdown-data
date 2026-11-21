@@ -252,6 +252,37 @@ test('rejects tampered captures and malformed baseline keys', async () => {
   ).toThrow('baseline');
 });
 
+test.each([
+  { captureKey: [`captures/schedule/${'a'.repeat(64)}.json`] },
+  { captureKey: null },
+  { captureKey: 42 },
+])('non-string baseline keys retain an unavailable-comparison report: %j', async ({
+  captureKey,
+}) => {
+  const { options, current } = await setup();
+  await writeFile(
+    options.baselinePath,
+    JSON.stringify({
+      schemaVersion: 1,
+      captureKey,
+      evidence: { description: 'Malformed baseline' },
+    }),
+  );
+  const report = await buildSnapshotReview(options);
+  expect(report.comparison).toEqual({
+    status: 'unavailable',
+    reason: 'Invalid explicit GTFS comparison baseline',
+  });
+  expect(
+    await readFile(join(options.outputDir, `${current.sha256}.md`), 'utf8'),
+  ).toContain('**Comparison unavailable:**');
+  expect(
+    JSON.parse(
+      await readFile(join(options.outputDir, `${current.sha256}.json`), 'utf8'),
+    ).comparison.status,
+  ).toBe('unavailable');
+});
+
 test('retains warning counts and bounded examples, escaping feed text and verifying validator provenance', async () => {
   const { options, current } = await setup();
   await mkdir(options.independentDir);

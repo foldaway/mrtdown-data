@@ -34,6 +34,11 @@ function model(tables, coverage) {
   );
   const stopTimes = new Map();
   for (const row of tables['stop_times.txt']) {
+    if (row.start_pickup_drop_off_window || row.end_pickup_drop_off_window) {
+      throw new Error(
+        'Flexible pickup/drop-off windows require a separate comparison',
+      );
+    }
     const rows = stopTimes.get(row.trip_id) ?? [];
     rows.push(row);
     stopTimes.set(row.trip_id, rows);
@@ -61,16 +66,6 @@ function model(tables, coverage) {
     const calls = [...(stopTimes.get(trip.trip_id) ?? [])].sort((a, b) =>
       compareStopSequences(a.stop_sequence, b.stop_sequence),
     );
-    if (
-      tables['stop_times.txt'].some(
-        (call) =>
-          call.start_pickup_drop_off_window || call.end_pickup_drop_off_window,
-      )
-    ) {
-      throw new Error(
-        'Flexible pickup/drop-off windows require a separate comparison',
-      );
-    }
     const pattern = calls.map((call) => [
       call.stop_id,
       stops.get(call.stop_id).platform_code || '',
@@ -433,11 +428,22 @@ function dateText(dates, sourceDates) {
     'Fridays',
     'Saturdays',
   ];
-  const weeklyDates = sourceDates.filter((date) =>
-    weekdays.includes(new Date(`${date}T00:00:00Z`).getUTCDay()),
-  );
   const actual = new Set(dates);
-  const excluded = weeklyDates.filter((date) => !actual.has(date));
+  // A date absent from both feeds still breaks a weekly recurrence. Check the
+  // displayed interval, stopping as soon as the exact-date fallback is needed.
+  const excluded = [];
+  const end = Date.parse(`${sourceDates.at(-1)}T00:00:00Z`);
+  for (
+    let instant = Date.parse(`${sourceDates[0]}T00:00:00Z`);
+    instant <= end;
+    instant += 86_400_000
+  ) {
+    const day = new Date(instant);
+    if (!weekdays.includes(day.getUTCDay())) continue;
+    const date = day.toISOString().slice(0, 10);
+    if (!actual.has(date)) excluded.push(date);
+    if (excluded.length > 5) break;
+  }
   if (weekdays.length <= 5 && excluded.length <= 5) {
     const label =
       JSON.stringify(weekdays) === '[1,2,3,4,5]'

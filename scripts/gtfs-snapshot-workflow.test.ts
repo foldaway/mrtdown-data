@@ -1,6 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import {
   chmod,
+  copyFile,
   mkdir,
   mkdtemp,
   readFile,
@@ -38,7 +39,12 @@ async function harness() {
   git('config', 'user.name', 'Test');
   git('config', 'user.email', 'test@example.com');
   await writeFile(join(repo, 'README.md'), 'Test repository\n');
-  git('add', 'README.md');
+  await mkdir(join(repo, 'scripts'));
+  await copyFile(
+    resolve('scripts/gtfs-review-pr-body.mjs'),
+    join(repo, 'scripts/gtfs-review-pr-body.mjs'),
+  );
+  git('add', 'README.md', 'scripts/gtfs-review-pr-body.mjs');
   git('commit', '-m', 'test: seed');
   git('remote', 'add', 'origin', join(root, 'remote.git'));
   const sha256 = 'a'.repeat(64);
@@ -105,8 +111,10 @@ test('publishes the durable report, retries from committed evidence, and preserv
   await writeFile(join(h.reviewDir, `${h.sha256}.md`), markdown);
   await writeFile(join(h.reviewDir, `${h.sha256}.json`), '{}\n');
   h.run();
-  expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toBe(
-    markdown,
+  const firstBody = await readFile(join(h.runner, 'created-body.md'), 'utf8');
+  expect(firstBody).toContain(markdown);
+  expect(firstBody).toContain(
+    `https://github.com/example/repo/blob/${h.git('rev-parse', 'HEAD').trim()}/${h.record}`,
   );
   expect(h.git('show', `HEAD:${h.record}`)).toBe(markdown);
   expect(h.git('show', '--format=%B', '--no-patch', 'HEAD')).toContain(
@@ -116,13 +124,31 @@ test('publishes the durable report, retries from committed evidence, and preserv
   await writeFile(join(h.reviewDir, `${h.sha256}.md`), '# Different attempt\n');
   h.run();
   expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toBe(
-    markdown,
+    firstBody,
   );
   await writeFile(
     join(h.runner, 'existing-pr'),
     'https://github.com/example/repo/pull/1\n',
   );
   expect(h.run()).toContain('Snapshot review already exists');
+});
+
+test('oversized committed reports create bounded PR bodies and remain recoverable on retry', async () => {
+  const h = await harness();
+  const markdown = `# Snapshot\n\n${'Detailed retained evidence.\n'.repeat(5000)}End of the complete report.\n`;
+  await writeFile(join(h.reviewDir, `${h.sha256}.md`), markdown);
+  await writeFile(join(h.reviewDir, `${h.sha256}.json`), '{}\n');
+  h.run();
+  const body = await readFile(join(h.runner, 'created-body.md'), 'utf8');
+  expect(Array.from(body).length).toBeLessThanOrEqual(60_000);
+  expect(body).toContain('description is shortened');
+  expect(body).toContain(
+    `https://github.com/example/repo/blob/${h.git('rev-parse', 'HEAD').trim()}/${h.record}`,
+  );
+  expect(h.git('show', `HEAD:${h.record}`)).toBe(markdown);
+  await writeFile(join(h.reviewDir, `${h.sha256}.md`), '# Different retry\n');
+  h.run();
+  expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toBe(body);
 });
 
 test('missing summary artifacts still produce a PR explaining the missing comparison', async () => {

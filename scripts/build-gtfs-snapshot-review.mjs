@@ -30,6 +30,7 @@ const cell = (value) =>
 export function validateBaseline(value) {
   if (
     value?.schemaVersion !== 1 ||
+    typeof value.captureKey !== 'string' ||
     !/^captures\/schedule\/[a-f0-9]{64}\.json$/.test(value.captureKey ?? '') ||
     typeof value.evidence?.description !== 'string' ||
     !value.evidence.description

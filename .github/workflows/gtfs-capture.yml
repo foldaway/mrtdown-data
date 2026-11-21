@@ -116,6 +116,9 @@ jobs:
       - uses: actions/checkout@v6
         with:
           ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
       - uses: actions/download-artifact@v8
         continue-on-error: true
         with:
@@ -146,6 +149,7 @@ jobs:
           title="chore(gtfs): review schedule snapshot ${SNAPSHOT_SHA256:0:12}"
           record_path="docs/gtfs/captures/$SNAPSHOT_SHA256.md"
           body_path="$RUNNER_TEMP/gtfs-review-body.md"
+          report_path="$RUNNER_TEMP/gtfs-review-report.md"
           # A previous attempt may have pushed the branch before PR creation failed.
           existing_ref=$(git ls-remote --refs origin "$review_ref")
           if [[ -z "$existing_ref" ]]; then
@@ -186,7 +190,10 @@ jobs:
 
           # Use the committed report on retries, rather than an unrelated run's output.
           git fetch origin "$review_ref"
-          git show "FETCH_HEAD:$record_path" > "$body_path"
+          git show "FETCH_HEAD:$record_path" > "$report_path"
+          report_commit=$(git rev-parse FETCH_HEAD)
+          report_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$report_commit/$record_path"
+          node scripts/gtfs-review-pr-body.mjs "$report_path" "$report_url" > "$body_path"
 
           gh pr create --repo "$GITHUB_REPOSITORY" --base "$BASE_BRANCH" \
             --head "$review_branch" --title "$title" \

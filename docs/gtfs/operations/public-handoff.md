@@ -84,7 +84,11 @@ opens a review PR for that ZIP hash even if validation reports errors. The PR
 adds `docs/gtfs/captures/<sha256>.md` and compact JSON evidence with the capture
 time, source links, table changes, effective service-date coverage, validation
 findings, and links to the run and full reports. The Markdown record also becomes
-the PR body. Reports are generated in the read-only job; the write job copies
+the PR body when it fits the size budget. The description is capped at 60,000
+Unicode characters and links to the exact committed report. Large reports keep
+their complete Markdown/JSON evidence; only the description omits detailed
+examples or shortens the overview. Reports are generated in the read-only job;
+the write job copies
 only the exact hash-named Markdown and JSON files. Existing PRs,
 including closed ones, are reused on replay. The job uses the repository's
 GitHub Actions permission to create PRs. Canonical mapping review and timetable

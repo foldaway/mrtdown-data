@@ -319,3 +319,71 @@ test('renders full-year weekly schedules with their exact excluded dates', () =>
     'Saturdays in 2026, except 14 Nov 2026',
   );
 });
+
+test('inspects flexible windows once per source row regardless of trip count', () => {
+  const data = fixture();
+  for (let i = 1; i < 100; i++) addTrip(data, `T${i}`);
+  let inspections = 0;
+  for (const row of data['stop_times.txt']) {
+    Object.defineProperty(row, 'start_pickup_drop_off_window', {
+      get() {
+        inspections++;
+        return '';
+      },
+    });
+  }
+  expect(run(data, data).changes).toEqual([]);
+  expect(inspections).toBeLessThanOrEqual(data['stop_times.txt'].length * 2);
+
+  const unsupported = fixture();
+  unsupported['stop_times.txt'][0].end_pickup_drop_off_window = '25:00:00';
+  expect(() => run(fixture(), unsupported)).toThrow(
+    'Flexible pickup/drop-off windows',
+  );
+});
+
+test.each([
+  {
+    dates: [
+      '2026-01-05',
+      '2026-01-12',
+      '2026-01-19',
+      '2026-11-02',
+      '2026-11-09',
+      '2026-11-16',
+    ],
+    expected:
+      '6 service dates from 5 Jan 2026 to 16 Nov 2026 (exact dates in JSON)',
+  },
+  {
+    dates: [
+      '2026-01-05',
+      '2026-01-12',
+      '2026-01-19',
+      '2026-02-02',
+      '2026-02-09',
+      '2026-02-16',
+      '2026-02-23',
+    ],
+    expected: 'Mondays within 5 Jan 2026–23 Feb 2026, except 26 Jan 2026',
+  },
+])('accounts for source-calendar gaps before describing weekly changes: $expected', ({
+  dates,
+  expected,
+}) => {
+  const before = fixture();
+  const after = fixture();
+  for (const data of [before, after]) {
+    delete data['calendar.txt'];
+    data['calendar_dates.txt'] = dates.map((date) => ({
+      service_id: 'C',
+      date: date.replaceAll('-', ''),
+      exception_type: '1',
+    }));
+  }
+  after['stop_times.txt'][0].arrival_time = '24:11:00';
+  after['stop_times.txt'][0].departure_time = '24:11:00';
+  const report = run(before, after);
+  expect(report.changes[0].dates).toEqual(dates);
+  expect(renderJourneyChanges(report, String).join('\n')).toContain(expected);
+});
