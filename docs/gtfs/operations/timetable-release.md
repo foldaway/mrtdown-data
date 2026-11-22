@@ -228,7 +228,11 @@ npm run pages:build -- \
 
 Use the commit recorded in the combined review for the supplied canonical data
 and the correction revision used to prepare the reviewed release manifest.
-The configuration references the saved combined runner inputs and approvals.
+The configuration references the combined runner inputs and approvals. Supply
+either `draft` for a saved review or `draftSha256` for its approved digest. With
+the digest form, Pages regenerates the review from the same policies and source
+and rejects a mismatch, so the input archive can omit generated review JSON.
+The saved-draft form remains compatible; fresh terms and release checks still apply.
 Paths in the configuration resolve relative to that file. Keep all inputs
 outside the output directory. Omit `sharedServiceMemberships` when the review
 has no explicit shared service claims.

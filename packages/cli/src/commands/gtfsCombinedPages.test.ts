@@ -62,6 +62,42 @@ afterEach(async () => {
 });
 
 describe('Pages combined timetable integration', () => {
+  it('regenerates digest-bound reviews and preserves the exact approved release', async () => {
+    const { root, options, fetcher } = await fixture();
+    await buildPagesArtifact(options);
+    const index = await readFile(join(options.outDir, indexName));
+    const evidence = await readFile(
+      join(options.outDir, 'combined-timetable/release.json'),
+    );
+    const timetable = await readFile(
+      join(options.outDir, 'combined-timetable/timetable.json'),
+    );
+    await writeFile(join(root, 'release-index.json'), index);
+    await writeFile(join(root, 'release-evidence.json'), evidence);
+    const config = JSON.parse(
+      await readFile(options.gtfsCombinedConfig, 'utf8'),
+    );
+    const draft = JSON.parse(await readFile(join(root, config.draft), 'utf8'));
+    delete config.draft;
+    config.draftSha256 = draft.draftSha256;
+    config.approvedRelease = {
+      index: 'release-index.json',
+      evidence: 'release-evidence.json',
+    };
+    await writeFile(options.gtfsCombinedConfig, JSON.stringify(config));
+    await rm(join(root, 'draft.json'));
+    await buildPagesArtifact(options);
+    expect(
+      await readFile(join(options.outDir, 'combined-timetable/timetable.json')),
+    ).toEqual(timetable);
+    expect(fetcher).toHaveBeenCalledTimes(4);
+
+    config.draftSha256 = '0'.repeat(64);
+    await writeFile(options.gtfsCombinedConfig, JSON.stringify(config));
+    await expect(buildPagesArtifact(options)).rejects.toThrow(
+      'approved draft digest',
+    );
+  }, 30_000);
   it('rejects aliases to excluded source files before replacing the Pages export', async () => {
     const { options, fetcher } = await fixture();
     await mkdir(join(options.dataDir, 'source'));
