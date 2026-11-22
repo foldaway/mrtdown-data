@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "documentKind": "gtfs-automatic-publication-verification",
+  "mode": "offline",
+  "recordedAt": "2026-11-22T10:14:25.185345+00:00",
+  "snapshotSha256": "0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf",
+  "retrievedAt": "2026-11-21T20:00:03.469Z",
+  "captureKey": "captures/schedule/0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf.json",
+  "baselineManifestSha256": "d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb",
+  "policyRevision": "canonical-schedule-v2",
+  "decision": "ready",
+  "checks": [
+    "verified-capture-bytes",
+    "exact-baseline-reconstruction",
+    "dated-canonical-mappings",
+    "distinct-timing-counterparts",
+    "timed-boarding-profiles",
+    "complete-bundle-verification"
+  ],
+  "coverage": {
+    "sourceTripCount": 21744,
+    "assignedTripCount": 21744,
+    "literalTripDateCount": 2488175,
+    "effectiveTripDateCount": 2477415,
+    "supportedTripDateCount": 149100,
+    "outsideTripDateCount": 2328315,
+    "assignedTripDateCount": 149100,
+    "unassignedTripDateCount": 0,
+    "excludedTripDateCount": 0,
+    "tripDateCoverageComplete": true,
+    "gaps": []
+  },
+  "serviceDateRange": {
+    "startDate": "2026-11-09",
+    "endDateExclusive": "2026-12-01"
+  },
+  "termsEvidence": "Retained baseline terms supplied for offline verification. The live workflow must fetch current terms before publication.",
+  "publicationAttempted": false
+}

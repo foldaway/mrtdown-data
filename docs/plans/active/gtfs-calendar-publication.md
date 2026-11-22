@@ -11,10 +11,11 @@ in the existing review flow. Retain the approved November applicability window.
 
 - [x] 2026-11-22: Added backward-compatible holiday exception support,
   deterministic mapping planning and completed-review closure.
-- [ ] Reverify the exact #483 source after review tightened distinct timing
-  counterparts and timed boarding permissions. The initial offline verification
-  assigned all 149,100 supported trip/date pairs with zero gaps and exclusions.
-  The repeated-successor regression also passes.
+- [x] 2026-11-22: Reverified the exact #483 source with distinct timing
+  counterparts and timed boarding permissions: all 149,100 supported trip/date
+  pairs assigned, zero gaps and exclusions. The [compact offline proof](../../gtfs/reviews/automatic-publication-483.json)
+  binds the input identity, checked baseline, coverage and service-date window.
+  All 985 tests pass, including repeated automatic successors.
 - [ ] Merge checked implementation and observe capture-to-site publication and retention.
 
 ## Surprises & Discoveries
