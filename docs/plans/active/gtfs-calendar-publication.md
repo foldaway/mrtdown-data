@@ -37,6 +37,13 @@ the daily line total rises only 16 journeys. Bound station losses separately
 from additions. Count unmatched early/late calls as additions or cancellations
 within 10%; do not misclassify one removed trip as a whole timetable time shift.
 
+The first live import exceeded the gateway's request timeout while its database
+transaction continued inserting projection rows. Read-only diagnostics found
+active batched inserts and no five-minute statement. The new manifest was
+retained by the site, while the previous completed projection remained available.
+Allow a bounded hour for an exact completion receipt and two hours for the full
+Pages job; never treat a gateway timeout as proof of success or failure.
+
 ## Decision Log
 
 2026-11-22: The user requested automatic end-to-end publication. Extend the

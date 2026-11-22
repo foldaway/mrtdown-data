@@ -11,7 +11,9 @@ export async function waitForSitePull({
   expectedIndex,
   fetcher = fetch,
   sleep = (ms) => new Promise((done) => setTimeout(done, ms)),
-  attempts = 90,
+  attempts = 360,
+  timeoutMs = 60 * 60 * 1000,
+  now = Date.now,
 }) {
   const endpoint = new URL(url);
   if (
@@ -22,7 +24,9 @@ export async function waitForSitePull({
   )
     throw new Error('Expected an HTTPS task URL and a workflow run ID');
   endpoint.searchParams.set('workflowRunId', workflowRunId);
-  for (let attempt = 0; attempt < attempts; attempt++) {
+  const deadline = now() + timeoutMs;
+  const pause = () => sleep(Math.max(0, Math.min(10000, deadline - now())));
+  for (let attempt = 0; attempt < attempts && now() < deadline; attempt++) {
     let response;
     let status;
     try {
@@ -32,7 +36,9 @@ export async function waitForSitePull({
           Accept: 'application/json',
         },
         redirect: 'error',
-        signal: AbortSignal.timeout(10000),
+        signal: AbortSignal.timeout(
+          Math.max(1, Math.min(10000, deadline - now())),
+        ),
       });
       if (response.ok) status = await response.json();
     } catch (error) {
@@ -51,7 +57,7 @@ export async function waitForSitePull({
     )
       throw new Error(`Site import status returned HTTP ${response.status}`);
     if (status === undefined) {
-      if (attempt + 1 < attempts) await sleep(10000);
+      if (attempt + 1 < attempts) await pause();
       continue;
     }
     if (!status || typeof status !== 'object' || Array.isArray(status))
@@ -71,7 +77,7 @@ export async function waitForSitePull({
     }
     if (!['RUN_STARTED', 'PENDING'].includes(status.state))
       throw new Error('Unknown site import status');
-    if (attempt + 1 < attempts) await sleep(10000);
+    if (attempt + 1 < attempts) await pause();
   }
   throw new Error(
     'Timed out waiting for the site import to complete; the approved baseline was not advanced',

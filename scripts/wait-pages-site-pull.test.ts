@@ -13,6 +13,28 @@ const options = {
 };
 
 describe('publication completion', () => {
+  it('bounds request polling and sleeps by the elapsed-time deadline', async () => {
+    let time = 0;
+    const fetcher = vi
+      .fn()
+      .mockImplementation(async () =>
+        response({ workflowRunId: 'wfr_test', state: 'RUN_STARTED' }),
+      );
+    await expect(
+      waitForSitePull({
+        ...options,
+        fetcher,
+        timeoutMs: 15000,
+        now: () => time,
+        sleep: async (ms: number) => {
+          time += ms;
+        },
+      }),
+    ).rejects.toThrow(/Timed out/);
+    expect(fetcher).toHaveBeenCalledTimes(2);
+    expect(time).toBe(15000);
+  });
+
   it('retries transient transport and server failures without accepting an unverified completion', async () => {
     const fetcher = vi
       .fn()
