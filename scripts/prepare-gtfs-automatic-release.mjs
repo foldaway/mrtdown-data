@@ -28,6 +28,10 @@ import {
   assessAutomaticUpdate,
   automaticPublicationPolicySchema,
 } from './gtfs-automatic-eligibility.mjs';
+import {
+  checkAutomaticDailyChanges,
+  planAutomaticMappings,
+} from './gtfs-automatic-mapping.mjs';
 
 const json = async (path) => JSON.parse(await readFile(path, 'utf8'));
 const encode = (value) => `${JSON.stringify(value, null, 2)}\n`;
@@ -146,7 +150,7 @@ export function prepareAutomaticRelease({
     captureSha256: capture.sha256,
     captureRetrievedAt: capture.retrieved_at,
   };
-  const provenance = `Automatic policy ${policy.revision} (${fingerprint(policy)}); ${runUrl}. Carry forward the verified predecessor ${baselineIndex.manifestSha256}; no new calendar, path, access, terms or applicability decision.`;
+  const provenance = `Automatic policy ${policy.revision} (${fingerprint(policy)}); ${runUrl}. Verified predecessor ${baselineIndex.manifestSha256}; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability.`;
   for (const name of policyNames) {
     if (!baselineInputs[name]) continue;
     inputs[name] = structuredClone(baselineInputs[name]);
@@ -160,7 +164,16 @@ export function prepareAutomaticRelease({
       capture.retrieved_at,
     );
   inputs.applicabilityPolicy.basis = provenance;
-  if (inputs.sharedServiceMemberships) {
+  if (policy.scope === 'canonical-schedule') {
+    progress('Planning source calendars and canonical memberships');
+    try {
+      planAutomaticMappings(baselineInputs, inputs, provenance, requireCheck);
+    } catch (error) {
+      throw new AutomaticPublicationHold(
+        `Calendar or mapping planning requires review: ${error.message}`,
+      );
+    }
+  } else if (inputs.sharedServiceMemberships) {
     progress('Reconstructing shared memberships');
     const grouped = createScheduledSourceJourneyMappingDraft(
       inputs.context,
@@ -180,10 +193,25 @@ export function prepareAutomaticRelease({
       draft.accounting.excludedTripDateCount === 0,
     'Mappings contain unresolved or excluded trip/date pairs.',
   );
-  requireCheck(
-    isDeepStrictEqual(mappingSemantics(baselineDraft), mappingSemantics(draft)),
-    'Reconstructed memberships, service dates or passenger access changed.',
-  );
+  if (policy.scope === 'canonical-schedule') {
+    progress('Checking daily counts and station timing changes');
+    checkAutomaticDailyChanges(
+      baselineInputs,
+      baselineDraft,
+      inputs,
+      draft,
+      policy,
+      requireCheck,
+    );
+  } else {
+    requireCheck(
+      isDeepStrictEqual(
+        mappingSemantics(baselineDraft),
+        mappingSemantics(draft),
+      ),
+      'Reconstructed memberships, service dates or passenger access changed.',
+    );
+  }
   const reviewer = `GTFS automatic publication (${policy.revision})`;
   const mappingApproval = {
     schemaVersion: 1,
@@ -436,6 +464,7 @@ if (
       policyPath: 'docs/gtfs/operations/automatic-publication-policy.json',
       now: new Date().toISOString(),
       runUrl: env.REVIEW_RUN_URL,
+      progress: (message) => console.log(message),
     });
   } catch (error) {
     if (!(error instanceof AutomaticPublicationHold)) throw error;

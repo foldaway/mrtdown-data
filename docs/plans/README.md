@@ -40,6 +40,8 @@ and its companion [execution plan guide](https://developers.openai.com/cookbook/
 
 ## Active
 
+- [GTFS calendar publication](active/gtfs-calendar-publication.md) extends checked
+  automatic publication to source exceptions and canonical stopping patterns.
 - [Direct-to-main ingestion reliability](active/direct-main-ingestion.md) covers
   historical replay, semantic guards, canonical issue audits, shadow mode, and
   staged removal of the automated ingestion PR queue.

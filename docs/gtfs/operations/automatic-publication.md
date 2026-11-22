@@ -3,7 +3,7 @@
 The capture workflow can publish routine updates without a merge. Exceptions
 keep the existing readable snapshot review PR. No LLM makes release decisions.
 The checked-in [policy](automatic-publication-policy.json) authorizes the
-`timing-only-v1` scope; generated approvals name that policy and the actual
+`canonical-schedule-v2` scope; generated approvals name that policy and the actual
 Actions run, rather than claiming a maintainer reviewed the candidate.
 
 ## What qualifies
@@ -14,22 +14,43 @@ tests, then requires:
 
 - A newer capture, no more than 72 hours old, with unchanged source endpoint,
   licence reference, provider timestamp and redistribution permission.
-- Identical calendars, exceptions, stops, routes, feed information and other
-  source tables, ignoring row/column order.
-- The same journey groups, including ordered calls, pickup/drop-off rules,
-  timepoints and all other trip/call metadata. Only trip IDs and times may vary.
-  Each group's trip count can change by at most 10%; every old/new journey
-  must have a corresponding journey whose call times differ by at most 30 minutes.
+- Identical stops, routes, feed information and other source tables, ignoring
+  row/column order. Calendars and explicit exceptions may change. Each family's
+  weekday, Saturday and Sunday calendar must have a unique successor with the
+  same weekly rules and bounds. Explicit supplemental calendars remain within
+  those bounds. Exceptions or supplemental service on public holidays require
+  review; the standing Sunday substitution remains unchanged.
+- Unique dated canonical paths, or the complete set of shared services that
+  agree on every station occurrence and display code. Short workings can qualify.
+  Conflicting candidates, skipped calls and new repeated journeys need review.
+  Existing unusual source-order assumptions carry forward only to identical
+  ordered physical stops and previously approved service dates.
+- Source trip IDs, block IDs, headsigns and valid directions may change; source
+  labels stay literal and never select a canonical mapping. New pickup/drop-off,
+  timing-presence, timepoint and unknown metadata combinations require review.
+- Each line's trip count on each supported service date changes by at most 10%.
+  Each physical stop, source direction and arrival/departure kind loses at most
+  10% of its calls. Additional calls from proved short workings can increase a
+  station's frequency beyond that bound while the line total stays within 10%.
+  Matched calls have a counterpart within 30 minutes;
+  up to 10% may be unmatched additions or cancellations, checked in both
+  directions. First/last times can therefore change when a small number of
+  services are removed or added. Missing station coverage, larger changes and
+  entire cancelled service dates require review.
 - Unchanged current licence/API terms; an approved baseline without an embargo;
   and the existing service-date window, which must include today's Singapore date.
 - Exact reconstruction of the approved baseline against current canonical
-  topology and holidays. Independently reconstructed candidate memberships,
-  service dates and passenger access must match the baseline. The complete
-  bundle verifier must find zero unassigned supported trip/date pairs.
+  topology and holidays. Candidate mappings independently verify operators,
+  service revisions, all physical platforms and boarding restrictions. The
+  complete bundle verifier must find zero excluded or unassigned supported
+  trip/date pairs.
 
-Calendar exceptions, new short workings, changed access, stale sources, expired
-windows, changed terms and uncertain mappings require review. A duplicate source
+Changed access, stale sources, expired windows, changed terms and uncertain
+mappings require review. A duplicate source
 ZIP is a no-op. The policy does not extend November's approval into December.
+
+Holiday policy v1 remains strict and unchanged for retained historical recipes.
+New automated recipes use v2 and bind each supplemental calendar explicitly.
 
 LTA's unchanged `feed_version` is handled deliberately: a qualified newer capture
 gets an exact `resolve-version-conflict` admission record binding the completed
@@ -50,6 +71,9 @@ and polls its completion receipt for the exact run and release index. Only then
 does retention advance current/previous. Source admission reviews are retained
 in compact recipes for future redeployments. Large generated review JSON stays
 out of Git and out of recipe history; ready bundles follow the retention policy.
+If that snapshot already has an open exception PR, a successful publication or
+verified already-current result closes it with a receipt in the description.
+Its branch and original report remain available; no evidence-only merge is needed.
 
 A failed import or retention write leaves the baseline unchanged. If public
 Pages already differs from that baseline, further automated deployments stop.

@@ -8,15 +8,21 @@ import {
 export const automaticPublicationPolicySchema = z
   .object({
     schemaVersion: z.literal(1),
-    revision: z.literal('timing-only-v1'),
-    scope: z.literal('timing-only'),
+    revision: z.enum(['timing-only-v1', 'canonical-schedule-v2']),
+    scope: z.enum(['timing-only', 'canonical-schedule']),
     maximumCaptureAgeHours: z.number().positive().max(72),
     maximumTripCountChangeFraction: z.number().nonnegative().max(0.1),
     maximumDepartureShiftSeconds: z.number().nonnegative().max(1800),
     sameProviderVersion: z.literal('allow-checked-successor'),
     captureConditions: z.string().trim().min(1),
   })
-  .strict();
+  .strict()
+  .refine(
+    (policy) =>
+      (policy.revision === 'timing-only-v1') ===
+      (policy.scope === 'timing-only'),
+    'Policy revision and scope disagree',
+  );
 
 const encode = (row) =>
   JSON.stringify(
@@ -122,6 +128,11 @@ export function assessAutomaticUpdate({
   ].sort();
   for (const name of names) {
     if (['trips.txt', 'stop_times.txt'].includes(name)) continue;
+    if (
+      policy.scope === 'canonical-schedule' &&
+      ['calendar.txt', 'calendar_dates.txt'].includes(name)
+    )
+      continue;
     const normalize = (rows) => rows?.map(encode).sort();
     if (
       !isDeepStrictEqual(normalize(baseline[name]), normalize(candidate[name]))
@@ -129,6 +140,52 @@ export function assessAutomaticUpdate({
       hold(
         `${name} changed; calendars, stops, routes and other source tables require review.`,
       );
+  }
+  if (policy.scope === 'canonical-schedule') {
+    // Permit new paths and calendar IDs, but never new access, timepoint or unknown metadata.
+    for (const [name, ignored] of [
+      [
+        'trips.txt',
+        [
+          'trip_id',
+          'service_id',
+          'block_id',
+          'trip_headsign',
+          'direction_id',
+          'route_id',
+        ],
+      ],
+      [
+        'stop_times.txt',
+        ['trip_id', 'stop_sequence', 'arrival_time', 'departure_time'],
+      ],
+    ]) {
+      const signature = (row) =>
+        encode({
+          ...omit(row, ignored),
+          ...(name === 'stop_times.txt'
+            ? {
+                hasArrival: Boolean(row.arrival_time),
+                hasDeparture: Boolean(row.departure_time),
+              }
+            : {}),
+        });
+      const allowed = new Set((baseline[name] ?? []).map(signature));
+      if ((candidate[name] ?? []).some((row) => !allowed.has(signature(row))))
+        hold(
+          `New ${name} boarding, timing-presence or other metadata requires review.`,
+        );
+    }
+    if (
+      candidate['trips.txt'].some(
+        (trip) => !['', '0', '1'].includes(trip.direction_id ?? ''),
+      )
+    )
+      hold('An unsupported source direction needs review.');
+    return {
+      decision: reasons.length ? 'hold' : 'eligible',
+      reasons: [...new Set(reasons)],
+    };
   }
   const oldGroups = journeys(baseline);
   const newGroups = journeys(candidate);

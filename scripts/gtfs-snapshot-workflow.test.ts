@@ -57,7 +57,10 @@ async function harness() {
     `#!/bin/bash
 set -euo pipefail
 if [[ "$1" == api ]]; then
-  if [[ -f "$RUNNER_TEMP/existing-pr" ]]; then cat "$RUNNER_TEMP/existing-pr"; fi
+  if [[ "$2" == --method && "$3" == PATCH ]]; then
+    cat > "$RUNNER_TEMP/patch-request.json"
+    echo '{}'
+  elif [[ -f "$RUNNER_TEMP/existing-pr" ]]; then cat "$RUNNER_TEMP/existing-pr"; fi
 elif [[ "$1" == pr && "$2" == view ]]; then
   if [[ -f "$RUNNER_TEMP/pr-state" ]]; then cat "$RUNNER_TEMP/pr-state"; else echo CLOSED; fi
 elif [[ "$1" == pr && ( "$2" == create || "$2" == edit ) ]]; then
@@ -76,6 +79,7 @@ fi
   const step = yaml.split('      - name: Open snapshot review\n')[1];
   const script = step
     .split('        run: |\n')[1]
+    .split(/\n(?= {0,9}\S)/)[0]
     .split('\n')
     .map((line) => line.replace(/^ {10}/, ''))
     .join('\n');
@@ -106,8 +110,53 @@ fi
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'pipe'],
     });
-  return { root, runner, repo, sha256, record, reviewDir, git, run };
+  return { root, runner, repo, sha256, record, reviewDir, git, run, env };
 }
+
+test('closes only the exact completed snapshot review and replaces the stale hold with a receipt', async () => {
+  const h = await harness();
+  const review = {
+    number: 483,
+    head: {
+      repo: { full_name: 'foldaway/mrtdown-data' },
+      ref: `gtfs-review/${h.sha256}`,
+    },
+    body: '## Automatic publication\n\nDecision: **hold**.\n\n# LTA train GTFS snapshot\n\nOriginal evidence\n',
+  };
+  const run = (decision: string) =>
+    execFileSync(
+      process.execPath,
+      [resolve('scripts/close-published-gtfs-review.mjs')],
+      {
+        env: {
+          ...h.env,
+          GITHUB_REPOSITORY: 'foldaway/mrtdown-data',
+          AUTOMATIC_DECISION: decision,
+        },
+        stdio: ['ignore', 'pipe', 'pipe'],
+      },
+    );
+  await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
+  expect(() => run('hold')).toThrow();
+  review.head.repo.full_name = 'someone/fork';
+  await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
+  expect(() => run('published')).toThrow();
+  expect(
+    await readFile(join(h.runner, 'patch-request.json'), 'utf8').catch(
+      () => null,
+    ),
+  ).toBeNull();
+  review.head.repo.full_name = 'foldaway/mrtdown-data';
+  await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
+  run('published');
+  const patch = JSON.parse(
+    await readFile(join(h.runner, 'patch-request.json'), 'utf8'),
+  );
+  expect(patch.state).toBe('closed');
+  expect(patch.body).toContain('Original evidence');
+  expect(patch.body).toContain('actions/runs/123');
+  expect(patch.body).not.toContain('**hold**');
+});
 
 test('publishes the durable report, retries from committed evidence, and preserves closed PRs', async () => {
   const h = await harness();
