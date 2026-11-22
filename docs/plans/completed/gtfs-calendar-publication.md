@@ -20,10 +20,15 @@ in the existing review flow. Retain the approved November applicability window.
   [Capture run](https://github.com/foldaway/mrtdown-data/actions/runs/45011780846)
   passed live source and rights checks, published and verified the candidate,
   and started site import `wfr_xlxwqGcECOkEui6FEclx6`.
-- [ ] Complete the exact import and retention after a transient status timeout,
-  then close #483 with the recovery receipt and verify ordinary redeployment.
-- [ ] Land bounded status-request retries so transient failures do not interrupt
-  future publications after their public bytes have changed.
+- [x] 2026-11-22: Completed exact recovery import `wfr_YYvm_nOVZ6nCepuq9XfqH`,
+  replay-verified retention and closed #483 with its truthful recovery receipt.
+  [Ordinary redeployment](https://github.com/foldaway/mrtdown-data/actions/runs/45019547316)
+  passed with the same recipe and `already-current` retention.
+- [x] 2026-11-22: Merged bounded producer retries in [#492](https://github.com/foldaway/mrtdown-data/pull/492).
+  Released bounded instant caching in [#493](https://github.com/foldaway/mrtdown-data/pull/493)
+  and deployed direct signed workflow delivery plus those packages in
+  [site #317](https://github.com/foldaway/mrtdown-site/pull/317). A signed direct-origin
+  pull completed as `wfr_4Pa5QKNS4VoruuF1WOCf3` with the exact published index.
 
 ## Surprises & Discoveries
 
@@ -41,6 +46,11 @@ The first live import exceeded the gateway's request timeout while its database
 transaction continued inserting projection rows. Read-only diagnostics found
 active batched inserts and no five-minute statement. The new manifest was
 retained by the site, while the previous completed projection remained available.
+The original workflow exhausted its gateway retries and reported `RUN_FAILED`.
+A fresh exact import reused the completed projection and succeeded. Production
+now delivers signed pulls through its direct Fly origin, with bounded service-date
+and offset conversion caches reducing repeated projection work.
+
 Allow a bounded hour for an exact completion receipt and two hours for the full
 Pages job; never treat a gateway timeout as proof of success or failure.
 
@@ -52,7 +62,14 @@ Preserve v1 policy parsing and historical bundle replay.
 
 ## Outcomes & Retrospective
 
-Implementation and production verification pending.
+Automatic calendar and stopping-pattern publication is active in production.
+The [live proof](../../gtfs/reviews/automatic-publication-483-live.json) records
+public identities, successful recovery, current/previous retention, ordinary
+redeployment and the deployed direct-origin receipt. The initial capture run
+remains failed; its published bytes were recovered by a separate successful
+workflow. No approval window was extended. Repository checks and deterministic
+tests passed; site verification passed with 648 tests and 70 optional database
+integration tests skipped without a disposable database URL.
 
 ## Context
 
@@ -81,7 +98,7 @@ Regression cases cover nonholiday exceptions, holiday conflicts, unmapped
 stopping patterns, changed access, cancellations and timing anomalies. The real
 source must have zero excluded/unassigned supported trip/date pairs. Production
 acceptance requires successful independent validation, bundle verification,
-site `RUN_SUCCESS` for the exact index, and retention advancement.
+site `RUN_SUCCESS` for the exact index, and retention advancement. All passed.
 
 The acceptance input is ZIP SHA-256
 `0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf`,
