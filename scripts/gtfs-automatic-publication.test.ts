@@ -165,6 +165,40 @@ function fixture(feedVersion: string | null = '0.1', extendPath = false) {
 }
 
 describe('automatic GTFS publication', () => {
+  it('uses the completed v2 release as the baseline for the next automatic successor', () => {
+    const args = fixture();
+    args.policy = extendedPolicy;
+    const first = prepareAutomaticRelease(args);
+    const second = prepareAutomaticRelease({
+      ...args,
+      baselineInputs: first.inputs,
+      baselineConfig: {
+        correctionRevision: 1,
+        draftSha256: first.draft.draftSha256,
+      },
+      baselineEvidence: JSON.parse(
+        Buffer.from(first.bundle.files.releaseBytes).toString(),
+      ),
+      baselineIndex: first.bundle.index,
+      previousCapture: args.capture,
+      capture: {
+        ...args.capture,
+        sha256: 'f'.repeat(64),
+        retrieved_at: '2026-11-08T02:00:00Z',
+      },
+      now: '2026-11-08T03:00:00Z',
+      sourceManifest: {
+        ...args.sourceManifest,
+        'stop_times.txt': 'd'.repeat(64),
+      },
+    });
+    expect(second.decision).toBe('ready');
+    expect(second.sourceReview.predecessor.manifestSha256).toBe(
+      first.bundle.index.manifestSha256,
+    );
+    expect(second.coverage.unassignedTripDateCount).toBe(0);
+  });
+
   it('publishes a new contiguous short working against the dated canonical service', () => {
     const args = fixture('0.1', true);
     args.policy = extendedPolicy;

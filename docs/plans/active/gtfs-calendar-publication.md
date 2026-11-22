@@ -11,7 +11,10 @@ in the existing review flow. Retain the approved November applicability window.
 
 - [x] 2026-11-22: Added backward-compatible holiday exception support,
   deterministic mapping planning and completed-review closure.
-- [ ] Prove the real #483 source and regression cases locally.
+- [x] 2026-11-22: The exact #483 source passed full-size bundle verification:
+  149,100 supported trip/date pairs assigned, zero gaps and exclusions. All 982
+  existing tests passed; an additional regression verifies the next automatic
+  successor can use the generated v2 release as its baseline.
 - [ ] Merge checked implementation and observe capture-to-site publication and retention.
 
 ## Surprises & Discoveries
