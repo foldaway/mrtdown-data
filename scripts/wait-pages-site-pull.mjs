@@ -23,14 +23,39 @@ export async function waitForSitePull({
     throw new Error('Expected an HTTPS task URL and a workflow run ID');
   endpoint.searchParams.set('workflowRunId', workflowRunId);
   for (let attempt = 0; attempt < attempts; attempt++) {
-    const response = await fetcher(endpoint, {
-      headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' },
-      redirect: 'error',
-      signal: AbortSignal.timeout(10000),
-    });
-    if (!response.ok)
+    let response;
+    let status;
+    try {
+      response = await fetcher(endpoint, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
+        },
+        redirect: 'error',
+        signal: AbortSignal.timeout(10000),
+      });
+      if (response.ok) status = await response.json();
+    } catch (error) {
+      if (
+        !(error instanceof TypeError) &&
+        !['AbortError', 'TimeoutError'].includes(error?.name)
+      )
+        throw error;
+      // A transport timeout says nothing about the running import. Consume a
+      // bounded polling attempt; never accept it as a completion receipt.
+    }
+    if (
+      response &&
+      !response.ok &&
+      ![429, 500, 502, 503, 504].includes(response.status)
+    )
       throw new Error(`Site import status returned HTTP ${response.status}`);
-    const status = await response.json();
+    if (status === undefined) {
+      if (attempt + 1 < attempts) await sleep(10000);
+      continue;
+    }
+    if (!status || typeof status !== 'object' || Array.isArray(status))
+      throw new Error('Malformed site import status');
     if (status.workflowRunId !== workflowRunId)
       throw new Error('Site returned a different workflow run');
     if (['RUN_FAILED', 'RUN_CANCELED'].includes(status.state))

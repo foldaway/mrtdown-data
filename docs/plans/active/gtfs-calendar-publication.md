@@ -16,7 +16,14 @@ in the existing review flow. Retain the approved November applicability window.
   pairs assigned, zero gaps and exclusions. The [compact offline proof](../../gtfs/reviews/automatic-publication-483.json)
   binds the input identity, checked baseline, coverage and service-date window.
   All 985 tests pass, including repeated automatic successors.
-- [ ] Merge checked implementation and observe capture-to-site publication and retention.
+- [x] 2026-11-22: Merged [#491](https://github.com/foldaway/mrtdown-data/pull/491).
+  [Capture run](https://github.com/foldaway/mrtdown-data/actions/runs/45011780846)
+  passed live source and rights checks, published and verified the candidate,
+  and started site import `wfr_xlxwqGcECOkEui6FEclx6`.
+- [ ] Complete the exact import and retention after a transient status timeout,
+  then close #483 with the recovery receipt and verify ordinary redeployment.
+- [ ] Land bounded status-request retries so transient failures do not interrupt
+  future publications after their public bytes have changed.
 
 ## Surprises & Discoveries
 

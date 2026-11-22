@@ -13,6 +13,48 @@ const options = {
 };
 
 describe('publication completion', () => {
+  it('retries transient transport and server failures without accepting an unverified completion', async () => {
+    const fetcher = vi
+      .fn()
+      .mockRejectedValueOnce(new DOMException('Timed out', 'TimeoutError'))
+      .mockRejectedValueOnce(new TypeError('fetch failed'))
+      .mockResolvedValueOnce(new Response('', { status: 503 }))
+      .mockResolvedValueOnce(
+        response({ workflowRunId: 'wfr_test', state: 'RUN_STARTED' }),
+      )
+      .mockResolvedValueOnce(
+        response({
+          workflowRunId: 'wfr_test',
+          state: 'RUN_SUCCESS',
+          combinedReleaseIndex: index,
+        }),
+      );
+    await expect(
+      waitForSitePull({ ...options, fetcher }),
+    ).resolves.toMatchObject({
+      state: 'RUN_SUCCESS',
+      combinedReleaseIndex: index,
+    });
+    expect(fetcher).toHaveBeenCalledTimes(5);
+    await expect(
+      waitForSitePull({
+        ...options,
+        attempts: 2,
+        fetcher: async () => {
+          throw new DOMException('Timed out', 'TimeoutError');
+        },
+      }),
+    ).rejects.toThrow(/Timed out/);
+  });
+
+  it('fails closed on malformed status even after a retryable response', async () => {
+    const fetcher = vi
+      .fn()
+      .mockResolvedValueOnce(new Response('', { status: 502 }))
+      .mockResolvedValueOnce(new Response('not JSON'));
+    await expect(waitForSitePull({ ...options, fetcher })).rejects.toThrow();
+    expect(fetcher).toHaveBeenCalledTimes(2);
+  });
   it('waits past enqueueing and processing until the exact import succeeds', async () => {
     const fetcher = vi
       .fn()
