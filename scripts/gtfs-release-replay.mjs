@@ -18,17 +18,7 @@ const jsonBytes = (value) => Buffer.from(`${JSON.stringify(value, null, 2)}\n`);
 const json = async (file) => JSON.parse(await readFile(file, 'utf8'));
 
 /** Build and execute only the verified generator, without publisher credentials. */
-export function runRetainedGenerator({
-  code,
-  inputs,
-  canonical,
-  root,
-  nodeVersion,
-}) {
-  if (nodeVersion.split('.')[0] !== process.version.split('.')[0])
-    throw new Error(
-      `Historical replay requires Node ${nodeVersion.split('.')[0].slice(1)}`,
-    );
+export function runRetainedGenerator({ code, inputs, canonical, root }) {
   const inherited = process.env;
   const env = Object.fromEntries(
     ['HOME', 'TMPDIR', 'TEMP', 'SystemRoot']
@@ -107,7 +97,6 @@ export async function replayReleaseRecipe(recipeBytes, getObject) {
       inputs,
       canonical,
       root,
-      nodeVersion: recipe.nodeVersion,
     });
     const { index: generatedIndex } = await json(
       join(root, 'generator-result.json'),

@@ -181,7 +181,7 @@ async function fixture({
   };
 }
 
-test('compact recipes omit generated reviews/source copies and run the retained generator without fetching terms', async () => {
+test('compact recipes replay across Node majors when approved output hashes match without fetching terms', async () => {
   const { options, fetcher, index } = await fixture();
   const prepared = await prepareReleaseRecipe(options);
   expect(prepared.record.releaseIndex).toEqual(index);
@@ -191,11 +191,16 @@ test('compact recipes omit generated reviews/source copies and run the retained 
   expect(
     JSON.parse(Buffer.from(files['combined-pages.json']).toString()),
   ).toMatchObject({ draftSha256: expect.stringMatching(/^[a-f0-9]{64}$/) });
+  recipe.nodeVersion = process.version.startsWith('v24.')
+    ? 'v22.0.0'
+    : 'v24.0.0';
+  files['recipe.json'] = Buffer.from(JSON.stringify(recipe));
   const replay = await replayReleaseRecipe(
-    prepared.recipeBytes,
+    deterministicZip(files),
     async (key: string) => prepared.objects.get(key),
   );
   expect(replay.outputs).toEqual(prepared.record.outputs);
+  expect(replay.recipe.nodeVersion).toBe(recipe.nodeVersion);
   expect(hashBytes(replay.bundleFiles['manifest.json'])).toBe(
     recipe.releaseIndex.manifestSha256,
   );
@@ -203,6 +208,38 @@ test('compact recipes omit generated reviews/source copies and run the retained 
     recipe.releaseIndex.releaseSha256,
   );
   expect(fetcher).not.toHaveBeenCalled();
+}, 30_000);
+
+test.each([
+  'manifest.json',
+  'timetable.json',
+  'release.json',
+])('refuses a replay proof when rebuilt %s bytes differ from the approved hashes', async (name) => {
+  const { root, options } = await fixture();
+  const output = join(root, 'code', 'approved-output', name);
+  // Whitespace preserves valid JSON while changing the approved bytes.
+  await writeFile(output, `${await readFile(output, 'utf8')}\n`);
+  const generator = gzipSync(
+    execFileSync('tar', [
+      '--format=ustar',
+      '--no-xattrs',
+      '-cf',
+      '-',
+      '-C',
+      join(root, 'code'),
+      '.',
+    ]),
+  );
+  await expect(
+    prepareReleaseRecipe({
+      ...options,
+      snapshots: { ...options.snapshots, generator },
+    }),
+  ).rejects.toThrow(
+    name === 'timetable.json'
+      ? 'Retained generator timetable differs from its approved manifest'
+      : 'Retained generator output differs from the approved index',
+  );
 }, 30_000);
 
 test('executes the archived exporter when the current exporter cannot reproduce the approved draft', async () => {
