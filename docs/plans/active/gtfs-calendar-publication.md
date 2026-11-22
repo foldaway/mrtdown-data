@@ -16,7 +16,14 @@ in the existing review flow. Retain the approved November applicability window.
   pairs assigned, zero gaps and exclusions. The [compact offline proof](../../gtfs/reviews/automatic-publication-483.json)
   binds the input identity, checked baseline, coverage and service-date window.
   All 985 tests pass, including repeated automatic successors.
-- [ ] Merge checked implementation and observe capture-to-site publication and retention.
+- [x] 2026-11-22: Merged [#491](https://github.com/foldaway/mrtdown-data/pull/491).
+  [Capture run](https://github.com/foldaway/mrtdown-data/actions/runs/45011780846)
+  passed live source and rights checks, published and verified the candidate,
+  and started site import `wfr_xlxwqGcECOkEui6FEclx6`.
+- [ ] Complete the exact import and retention after a transient status timeout,
+  then close #483 with the recovery receipt and verify ordinary redeployment.
+- [ ] Land bounded status-request retries so transient failures do not interrupt
+  future publications after their public bytes have changed.
 
 ## Surprises & Discoveries
 
@@ -29,6 +36,13 @@ CCL's special Saturday increases some platform call counts by 15–19%, while
 the daily line total rises only 16 journeys. Bound station losses separately
 from additions. Count unmatched early/late calls as additions or cancellations
 within 10%; do not misclassify one removed trip as a whole timetable time shift.
+
+The first live import exceeded the gateway's request timeout while its database
+transaction continued inserting projection rows. Read-only diagnostics found
+active batched inserts and no five-minute statement. The new manifest was
+retained by the site, while the previous completed projection remained available.
+Allow a bounded hour for an exact completion receipt and two hours for the full
+Pages job; never treat a gateway timeout as proof of success or failure.
 
 ## Decision Log
 

@@ -80,6 +80,13 @@ closes it with a receipt in the description. Duplicate-source no-ops keep
 existing reviews open because they do not verify a new completed import.
 Its branch and original report remain available; no evidence-only merge is needed.
 
+Status polling retries transport timeouts, connection failures, HTTP 429 and
+temporary server errors for at most one hour and 360 requests. The Pages job
+allows two hours for preparation, a full site projection build and retention.
+Authentication
+errors, malformed receipts, wrong identities and terminal import failures still
+stop immediately. A retry never substitutes for an exact successful receipt.
+
 A failed import or retention write leaves the baseline unchanged. If public
 Pages already differs from that baseline, further automated deployments stop.
 Recover by completing the failed exact import and retention, or by a reviewed
