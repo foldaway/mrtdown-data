@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "documentKind": "gtfs-automatic-publication-live-proof",
+  "snapshotPullRequest": 483,
+  "sourceSha256": "0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf",
+  "captureRun": "https://github.com/foldaway/mrtdown-data/actions/runs/45011780846",
+  "captureOutcome": "published-verified-bytes-then-status-wait-failed",
+  "recovery": {
+    "siteCompletion": {
+      "workflowRunId": "wfr_YYvm_nOVZ6nCepuq9XfqH",
+      "state": "RUN_SUCCESS",
+      "combinedReleaseIndex": {
+        "manifestSha256": "8aece4578b324d12076a97730a62f678390e1f525b0612d69ff3d1c310ddf847",
+        "releaseSha256": "c5e00a0bb0b0e702b599b64780d9276a0663f52524536a9fef375be2d77183ea"
+      }
+    },
+    "projection": {
+      "id": 8,
+      "completedAt": "2026-11-22T11:41:51.260Z"
+    },
+    "retention": {
+      "current": "f96a3cafaa59b138cb057c8a800c3caf2c16779590cc38e7c657f859be13fe3d",
+      "previous": "ac2786e3a0853a8dd42c6caf45ec2259c8821f8958ca0ef15ed5d12bd8509c2e",
+      "replayVerified": true,
+      "writerLockPresent": false
+    }
+  },
+  "releaseIndex": {
+    "manifestSha256": "8aece4578b324d12076a97730a62f678390e1f525b0612d69ff3d1c310ddf847",
+    "releaseSha256": "c5e00a0bb0b0e702b599b64780d9276a0663f52524536a9fef375be2d77183ea"
+  },
+  "coverage": {
+    "assignedSupportedTripDatePairs": 149100,
+    "unassignedSupportedTripDatePairs": 0,
+    "excludedSupportedTripDatePairs": 0
+  },
+  "applicability": {
+    "startDate": "2026-11-09",
+    "endDateExclusive": "2026-12-01"
+  },
+  "recipeBytes": 18889,
+  "readyBundleBytes": 5465377,
+  "ordinaryRedeployment": {
+    "run": "https://github.com/foldaway/mrtdown-data/actions/runs/45019547316",
+    "outcome": "success",
+    "siteWorkflowRunId": "wfr_P8hMlGjqW4mYy8uKS48WV",
+    "retentionAction": "already-current",
+    "recipeSha256": "8160c735ece84e8464350c74dee7d7a161426db3cbc723e31928dc770a4c0975"
+  },
+  "siteDeployment": {
+    "commit": "2eaef9e438c63144d0c52ec209aec1295d7df4dc",
+    "stagingRun": "https://github.com/foldaway/mrtdown-site/actions/runs/45019335793",
+    "productionRun": "https://github.com/foldaway/mrtdown-site/actions/runs/45019668494",
+    "outcome": "success",
+    "workflowUrl": "https://mrtdown-site.fly.dev/internal/api/workflows/pull",
+    "coreVersion": "2.0.0-alpha.42",
+    "fsVersion": "2.0.0-alpha.48",
+    "directCompletion": {
+      "workflowRunId": "wfr_4Pa5QKNS4VoruuF1WOCf3",
+      "state": "RUN_SUCCESS",
+      "combinedReleaseIndex": {
+        "manifestSha256": "8aece4578b324d12076a97730a62f678390e1f525b0612d69ff3d1c310ddf847",
+        "releaseSha256": "c5e00a0bb0b0e702b599b64780d9276a0663f52524536a9fef375be2d77183ea"
+      }
+    }
+  }
+}
