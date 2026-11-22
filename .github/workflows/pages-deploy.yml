@@ -8,6 +8,7 @@ on:
     branches:
       - main
     paths:
+      - '.nvmrc'
       - '.github/workflows/pages-deploy.yml'
       - 'LICENSE-DATA.md'
       - 'data/**'
@@ -78,7 +79,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version-file: .nvmrc
           cache: npm
 
       - name: Install dependencies
