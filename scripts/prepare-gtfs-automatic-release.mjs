@@ -406,7 +406,10 @@ export async function prepareAutomaticReleaseFiles({
   };
   delete compact.draft;
   for (const name of policyNames) {
-    if (!result.inputs[name]) continue;
+    if (!result.inputs[name]) {
+      delete compact[name];
+      continue;
+    }
     compact[name] = `${name}.json`;
     await writeFile(
       join(outputDir, compact[name]),
