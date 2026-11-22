@@ -40,6 +40,8 @@ and its companion [execution plan guide](https://developers.openai.com/cookbook/
 
 ## Active
 
+- [GTFS release retention](active/gtfs-release-retention.md) covers reproducible
+  release inputs and bounded current/previous ready bundles.
 - [Direct-to-main ingestion reliability](active/direct-main-ingestion.md) covers
   historical replay, semantic guards, canonical issue audits, shadow mode, and
   staged removal of the automated ingestion PR queue.

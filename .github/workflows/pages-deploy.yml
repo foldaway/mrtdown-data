@@ -16,6 +16,9 @@ on:
       - 'packages/**'
       - 'scripts/build-pages-artifact.mjs'
       - 'scripts/export-pages-combined-timetable.mjs'
+      - 'scripts/gtfs-release-*.mjs'
+      - 'scripts/retain-gtfs-release.mjs'
+      - 'scripts/materialize-gtfs-release-recipe.mjs'
       - 'scripts/prepare-pages-site-pull.mjs'
       - 'turbo.json'
   workflow_dispatch:
@@ -45,6 +48,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
+          fetch-depth: 0
 
       - uses: actions/setup-node@v7
         with:
@@ -66,6 +70,8 @@ jobs:
         env:
           RELEASE_BUCKET: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_INPUT_BUCKET }}
           RELEASE_SHA256: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_INPUT_SHA256 }}
+          RELEASE_FORMAT: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_INPUT_FORMAT || 'tar-gz' }}
+          GTFS_SNAPSHOT_BASE_URL: ${{ vars.GTFS_SNAPSHOT_BASE_URL }}
           RELEASE_ACCESS_KEY_ID: ${{ secrets.MRTDOWN_COMBINED_TIMETABLE_INPUT_ACCESS_KEY_ID }}
           RELEASE_SECRET_ACCESS_KEY: ${{ secrets.MRTDOWN_COMBINED_TIMETABLE_INPUT_SECRET_ACCESS_KEY }}
         run: |
@@ -75,9 +81,13 @@ jobs:
             exit 1
           fi
           input_dir="$RUNNER_TEMP/combined-release"
-          archive="$RUNNER_TEMP/combined-release-inputs.tar.gz"
-          release_url="https://t3.storage.dev/$RELEASE_BUCKET/pages-release-inputs/$RELEASE_SHA256.tar.gz"
-          mkdir "$input_dir"
+          case "$RELEASE_FORMAT" in
+            tar-gz) extension=tar.gz ;;
+            recipe-zip) extension=zip ;;
+            *) echo "::error::Unsupported combined input format"; exit 1 ;;
+          esac
+          archive="$RUNNER_TEMP/combined-release-inputs.$extension"
+          release_url="https://t3.storage.dev/$RELEASE_BUCKET/pages-release-inputs/$RELEASE_SHA256.$extension"
           status=$(curl --fail --show-error --silent --proto '=https' \
             --max-time 120 --max-filesize 67108864 \
             --aws-sigv4 'aws:amz:auto:s3' \
@@ -92,7 +102,13 @@ jobs:
             echo "::error::Private release archive does not match the pinned SHA-256"
             exit 1
           fi
-          tar -xzf "$archive" --no-same-owner --no-same-permissions -C "$input_dir"
+          if [[ "$RELEASE_FORMAT" == recipe-zip ]]; then
+            npm run build:cli
+            node scripts/materialize-gtfs-release-recipe.mjs "$archive" "$input_dir"
+          else
+            mkdir "$input_dir"
+            tar -xzf "$archive" --no-same-owner --no-same-permissions -C "$input_dir"
+          fi
 
       - name: Build Pages artifact
         run: |
@@ -186,3 +202,17 @@ jobs:
             exit 1
           fi
           jq -er '.workflowRunId | strings | select(length > 0)' "$RUNNER_TEMP/site-pull-response.json"
+
+      - name: Retain reproducible current and previous releases
+        if: env.COMBINED_TIMETABLE_ENABLED == 'true' && vars.MRTDOWN_GTFS_RELEASE_RETENTION_ENABLED == 'true'
+        env:
+          GTFS_RELEASE_RETENTION_BUCKET: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_INPUT_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.MRTDOWN_GTFS_RELEASE_RETENTION_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.MRTDOWN_GTFS_RELEASE_RETENTION_SECRET_ACCESS_KEY }}
+        run: |
+          if [[ -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" ]]; then
+            echo "::error::Scoped release-retention credentials are required"
+            exit 1
+          fi
+          node scripts/retain-gtfs-release.mjs "$RUNNER_TEMP/combined-release" \
+            pages-dist/combined-timetable-release-index.json "$RUNNER_TEMP/retention-receipt"

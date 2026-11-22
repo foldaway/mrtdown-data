@@ -76,6 +76,38 @@ The source must already exist in the crawler's private bucket. Missing or damage
 shared bytes stop retention; fix source retention through the capture pipeline.
 Pruned ready bundles are restored by replay, not by editing manifests or hashes.
 
+## Pages adoption
+
+1. Merge the compatible exporter/workflow before changing the active input pin.
+2. Provision a separate key with default permissions disabled: read
+   `blobs/schedule/*` and `gtfs-release-history/*`; write only
+   `gtfs-release-history/*`; delete only `gtfs-release-history/bundles/*` and
+   `gtfs-release-history/writer-lock.json`. Do not broaden the existing Pages
+   input-read key. Keep the bucket private and the environment restricted to main.
+   The [scoped policy document](release-retention-policy.json) records these permissions.
+3. Store the key in the `github-pages` environment as
+   `MRTDOWN_GTFS_RELEASE_RETENTION_ACCESS_KEY_ID` and
+   `MRTDOWN_GTFS_RELEASE_RETENTION_SECRET_ACCESS_KEY`. Set
+   `MRTDOWN_GTFS_RELEASE_RETENTION_ENABLED=true` to archive after successful
+   public-release verification and site-pull queueing. The workflow's Pages
+   concurrency group and the storage writer lock serialize retention.
+4. Configure the Actions variable `GTFS_SNAPSHOT_BASE_URL` as the trusted HTTPS
+   origin serving both `captures/schedule/<sha256>.json` and
+   `blobs/schedule/<sha256>.zip`. Recipe materialization needs both endpoints.
+5. With an operator credential, upload the verified recipe ZIP to
+   `pages-release-inputs/<recipe-sha256>.zip`. After the compatible workflow has
+   merged, set `MRTDOWN_COMBINED_TIMETABLE_INPUT_FORMAT=recipe-zip` and pin its
+   hash in `MRTDOWN_COMBINED_TIMETABLE_INPUT_SHA256`. The reader verifies the ZIP,
+   materializes policies, and downloads only the referenced source ZIP from the
+   configured trusted public origin. It preserves the original approved receipt.
+6. Run Pages and verify acquisition, publication, public digests and the site-pull
+   handoff. When retention is enabled, also require the retention step to succeed
+   and verify that `gtfs-release-history/index.json` names the retained release
+   whose `records/<release-id>.json` release index matches the deployed
+   `combined-timetable-release-index.json`. Keep the legacy archive and its old
+   pin until all these checks pass. Roll back input materialization by restoring
+   the old hash and format `tar-gz`; release digests and source review stay unchanged.
+
 An interrupted writer can leave a lock. Confirm that the owning workflow/process
 has ended, inspect the lock and current index, then remove only that observed lock
 with its ETag precondition and retry. Do not steal a live lock or delete historical
