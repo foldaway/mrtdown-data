@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import type { Claim } from '@mrtdown/core';
 import { FileStore, MRTDownRepository } from '@mrtdown/fs';
 import { config as loadDotEnv } from 'dotenv';
 import { describe } from 'vitest';
@@ -45,6 +46,30 @@ const optionalTrackWorkCause = ((actual: unknown) =>
 const hkFixtureTimeZone = ((actual: unknown) =>
   actual === 'Asia/Hong_Kong' ||
   actual === 'Asia/Singapore') as unknown as 'Asia/Hong_Kong';
+
+function serviceHourAdjustmentExpected(
+  serviceScope: Claim['scopes']['service'],
+): ExtractClaimsFromNewEvidenceResult {
+  return {
+    claims: ['ISL_MAIN_E', 'ISL_MAIN_W', 'TWL_MAIN_S', 'TWL_MAIN_N'].map<Claim>(
+      (serviceId) => ({
+        entity: { type: 'service', serviceId },
+        effect: {
+          service: { kind: 'service-hours-adjustment' },
+          facility: null,
+        },
+        statusSignal: 'planned',
+        scopes: { service: serviceScope },
+        timeHints: {
+          kind: 'fixed',
+          startAt: '2026-02-18T00:00:00+08:00',
+          endAt: '2026-02-18T10:00:00+08:00',
+        },
+        causes: null,
+      }),
+    ),
+  };
+}
 
 const extractClaimsHarness = createHarness<
   ExtractClaimsFromNewEvidenceParams,
@@ -495,93 +520,24 @@ describe('extractClaimsFromNewEvidence', () => {
             repo,
             // This is used by vitest-evals as the test name, as the library expects `input` to be a string.
             toString() {
-              return '[MAINTENANCE] Service hour adjustments';
+              return '[MAINTENANCE] Service hour adjustments without geographic scope';
             },
           },
-          expected: {
-            claims: [
-              {
-                entity: {
-                  type: 'service',
-                  serviceId: 'ISL_MAIN_E',
-                },
-                effect: {
-                  service: { kind: 'service-hours-adjustment' },
-                  facility: null,
-                },
-                statusSignal: 'planned',
-                scopes: {
-                  service: [{ type: 'service.whole' }],
-                },
-                timeHints: {
-                  kind: 'fixed',
-                  startAt: '2026-02-18T00:00:00+08:00',
-                  endAt: '2026-02-18T10:00:00+08:00',
-                },
-                causes: null,
-              },
-              {
-                entity: {
-                  type: 'service',
-                  serviceId: 'ISL_MAIN_W',
-                },
-                effect: {
-                  service: { kind: 'service-hours-adjustment' },
-                  facility: null,
-                },
-                statusSignal: 'planned',
-                scopes: {
-                  service: [{ type: 'service.whole' }],
-                },
-                timeHints: {
-                  kind: 'fixed',
-                  startAt: '2026-02-18T00:00:00+08:00',
-                  endAt: '2026-02-18T10:00:00+08:00',
-                },
-                causes: null,
-              },
-              {
-                entity: {
-                  type: 'service',
-                  serviceId: 'TWL_MAIN_S',
-                },
-                effect: {
-                  service: { kind: 'service-hours-adjustment' },
-                  facility: null,
-                },
-                scopes: {
-                  service: [{ type: 'service.whole' }],
-                },
-                timeHints: {
-                  kind: 'fixed',
-                  startAt: '2026-02-18T00:00:00+08:00',
-                  endAt: '2026-02-18T10:00:00+08:00',
-                },
-                statusSignal: 'planned',
-                causes: null,
-              },
-              {
-                entity: {
-                  type: 'service',
-                  serviceId: 'TWL_MAIN_N',
-                },
-                effect: {
-                  service: { kind: 'service-hours-adjustment' },
-                  facility: null,
-                },
-                scopes: {
-                  service: [{ type: 'service.whole' }],
-                },
-                timeHints: {
-                  kind: 'fixed',
-                  startAt: '2026-02-18T00:00:00+08:00',
-                  endAt: '2026-02-18T10:00:00+08:00',
-                },
-                statusSignal: 'planned',
-                causes: null,
-              },
-            ],
+          // Naming lines does not assert the geographic extent of the impact.
+          expected: serviceHourAdjustmentExpected(null),
+        },
+        {
+          input: {
+            newEvidence: {
+              ts: '2026-01-10T22:00:00+08:00',
+              text: 'Train service across the entire Island Line and the entire Tsuen Wan Line will start at 10am on 18 Feb. For replacement bus pick-up points, visit http://t.co/fwb2wOqI',
+            },
+            repo,
+            toString() {
+              return '[MAINTENANCE] Explicit whole-line service hour adjustments';
+            },
           },
+          expected: serviceHourAdjustmentExpected([{ type: 'service.whole' }]),
         },
       ] satisfies {
         input: ExtractClaimsFromNewEvidenceParams & { toString(): string };
