@@ -1,7 +1,26 @@
+import { Temporal } from '@js-temporal/polyfill';
 import { describe, expect, it } from 'vitest';
 import { scheduledServiceDayInstant } from './scheduledServiceDayInstant.js';
 
 describe('scheduledServiceDayInstant', () => {
+  it('preserves elapsed-time semantics when calls alternate dates and repeat offsets', () => {
+    for (const date of [
+      '1942-02-16',
+      '1981-12-31',
+      '2026-11-22',
+      '1942-02-16',
+    ]) {
+      const start = Temporal.PlainDate.from(date)
+        .toZonedDateTime({ timeZone: 'Asia/Singapore', plainTime: '12:00' })
+        .subtract({ hours: 12 });
+      for (const seconds of [0, 43200, 86400, 90123, 0, 90123]) {
+        expect(scheduledServiceDayInstant(date, seconds)).toBe(
+          start.add({ seconds }).toInstant().toString(),
+        );
+      }
+    }
+  });
+
   it.each([
     ['2026-01-01', 0, '2025-12-31T16:00:00Z'],
     ['2026-01-01', 22890, '2025-12-31T22:21:30Z'],
