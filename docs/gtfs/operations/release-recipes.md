@@ -15,8 +15,10 @@ release index, so corrected mappings of the same source remain distinct releases
 Replay verifies every retained object, extracts the archived generator, installs
 its locked dependencies with lifecycle install scripts disabled, builds its
 packages and executes its historical exporter in a separate process. Publisher
-credentials are excluded. The recorded Node major version is required; dependency
-installation may need the package registry or a populated npm cache.
+credentials are excluded. Replay uses the current Node runtime; the recorded
+Node version is provenance. A rebuild succeeds only when its release index and
+output hashes match the approved release. Dependency installation may need the
+package registry or a populated npm cache.
 
 The historical exporter uses the approved release instant and terms identities,
 requires the independently approved release index and evidence, and compares the
@@ -26,7 +28,7 @@ terms and current publication eligibility.
 
 ## Materializing compact inputs
 
-After `npm ci` and `npm run build:cli`, use Node 24:
+After `npm ci` and `npm run build:cli`, use the Node version in `.nvmrc`:
 
 ```sh
 node scripts/materialize-gtfs-release-recipe.mjs /path/to/recipe.zip /tmp/new-inputs

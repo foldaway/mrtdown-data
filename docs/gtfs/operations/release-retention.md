@@ -56,10 +56,12 @@ fields; replay restores that metadata only when the complete recorded ZIP digest
 matches. Immutable records and raw release bytes stay unchanged. Unsupported
 container differences preserve the existing bundle for investigation.
 
-Use Node 24 and the recorded dependency lock. The rebuild command automatically
-uses the retained generator instead of the newer running checkout. Keep a
-byte-for-byte replay proof before discarding expanded
-local JSON. No age or calendar-end rule deletes source material.
+Use the Node version in `.nvmrc` and the retained generator's recorded dependency
+lock. The recorded Node version is provenance, rather than a runtime requirement:
+the rebuilt release index, output hashes and ready ZIP digest must match before
+cleanup can delete a bundle. A build failure or byte difference preserves the
+existing bundle for investigation. Keep a byte-for-byte replay proof before
+discarding expanded local JSON. No age or calendar-end rule deletes source material.
 
 ## Commands
 

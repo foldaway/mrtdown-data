@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - '.nvmrc'
       - '.changeset/**'
       - '.github/workflows/package-publish.yml'
       - 'package*.json'
@@ -33,7 +34,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version-file: .nvmrc
           registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
