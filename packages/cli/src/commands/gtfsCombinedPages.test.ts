@@ -17,6 +17,7 @@ import { verifyCombinedTimetableReleaseBundle } from '@mrtdown/fs';
 import { unzipSync } from 'fflate';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { buildPagesArtifact } from '../../../../scripts/build-pages-artifact.mjs';
+import { prepareHistoricalCombinedTimetableReplay } from '../../../../scripts/export-pages-combined-timetable.mjs';
 import {
   combinedPagesFixture,
   combinedReleaseInstant,
@@ -62,7 +63,7 @@ afterEach(async () => {
 });
 
 describe('Pages combined timetable integration', () => {
-  it('regenerates digest-bound reviews and preserves the exact approved release', async () => {
+  it('regenerates digest-bound reviews and separates historical replay from fresh publication terms', async () => {
     const { root, options, fetcher } = await fixture();
     await buildPagesArtifact(options);
     const index = await readFile(join(options.outDir, indexName));
@@ -92,11 +93,33 @@ describe('Pages combined timetable integration', () => {
     ).toEqual(timetable);
     expect(fetcher).toHaveBeenCalledTimes(4);
 
+    const replayData = join(root, 'replay-data');
+    await import('node:fs/promises').then(({ cp }) =>
+      cp(options.dataDir, replayData, { recursive: true }),
+    );
+    await rm(join(replayData, 'combined-timetable'), { recursive: true });
+    fetcher.mockClear();
+    fetcher.mockImplementation(
+      async () => new Response('Changed current terms'),
+    );
+    vi.setSystemTime(new Date('2027-03-01T00:00:00Z'));
+    const replay = await prepareHistoricalCombinedTimetableReplay(options);
+    await replay(replayData);
+    expect(fetcher).not.toHaveBeenCalled();
+    expect(
+      await readFile(join(replayData, 'combined-timetable/release.json')),
+    ).toEqual(evidence);
+    expect(
+      await readFile(join(replayData, 'combined-timetable/timetable.json')),
+    ).toEqual(timetable);
+    await expect(buildPagesArtifact(options)).rejects.toThrow(
+      'publication blocked',
+    );
+
     config.draftSha256 = '0'.repeat(64);
     await writeFile(options.gtfsCombinedConfig, JSON.stringify(config));
-    await expect(buildPagesArtifact(options)).rejects.toThrow(
-      'approved draft digest',
-    );
+    const stale = await prepareHistoricalCombinedTimetableReplay(options);
+    await expect(stale(replayData)).rejects.toThrow('approved draft digest');
   }, 30_000);
   it('rejects aliases to excluded source files before replacing the Pages export', async () => {
     const { options, fetcher } = await fixture();

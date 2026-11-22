@@ -75,6 +75,21 @@ export async function prepareCombinedTimetableExport({
   gtfsCombinedConfig,
   outDir,
 }) {
+  return prepareExporter(
+    { gtfsFile, gtfsCapture, gtfsCombinedConfig, outDir },
+    false,
+  );
+}
+
+/** Offline historical replay only. Pages never calls this entry point. */
+export async function prepareHistoricalCombinedTimetableReplay(options) {
+  return prepareExporter(options, true);
+}
+
+async function prepareExporter(
+  { gtfsFile, gtfsCapture, gtfsCombinedConfig, outDir },
+  historical,
+) {
   const actualOutDir = resolve(
     await realpath(dirname(outDir)),
     relative(dirname(outDir), outDir),
@@ -102,6 +117,10 @@ export async function prepareCombinedTimetableExport({
     draftSha256,
     ...recordPaths
   } = combinedPagesConfigSchema.parse(await readJson(gtfsCombinedConfig));
+  if (historical && !approvedRelease)
+    throw new Error(
+      'Historical replay requires the approved release index and exact evidence',
+    );
   const resolveInput = async (name) => {
     const path = resolve(dirname(gtfsCombinedConfig), name);
     await assertInputPath(path);
@@ -143,7 +162,12 @@ export async function prepareCombinedTimetableExport({
     }
     const { tables, manifest: sourceManifest } = readSchedule(bytes);
     readScheduleFeedRange(tables['feed_info.txt'] ?? []);
-    const currentTerms = await acquireGtfsTerms();
+    const approved = approvedEvidence
+      ? JSON.parse(approvedEvidence.toString('utf8'))
+      : undefined;
+    const currentTerms = historical
+      ? approved.currentTerms
+      : await acquireGtfsTerms();
     const inputs = {
       ...policies,
       context: {
@@ -177,7 +201,9 @@ export async function prepareCombinedTimetableExport({
         mappingApproval,
         releaseReview,
         currentTerms,
-        releaseInstant: new Date().toISOString(),
+        releaseInstant: historical
+          ? approved.releaseInstant
+          : new Date().toISOString(),
       },
     );
     if (!bundle) {
