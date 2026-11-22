@@ -50,6 +50,12 @@ current-release retry replay-checks and removes abandoned ready bundles while
 protecting current/previous. Immutable records for those attempts remain retained.
 No recipe, source, code snapshot, canonical snapshot or approval is pruned.
 
+Cleanup also proves that the ready ZIP itself can be reconstructed with its
+recorded digest. Older bundles encoded the fixed epoch through local timezone
+fields; replay restores that metadata only when the complete recorded ZIP digest
+matches. Immutable records and raw release bytes stay unchanged. Unsupported
+container differences preserve the existing bundle for investigation.
+
 Use Node 24 and the recorded dependency lock. The rebuild command automatically
 uses the retained generator instead of the newer running checkout. Keep a
 byte-for-byte replay proof before discarding expanded
