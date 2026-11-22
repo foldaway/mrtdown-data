@@ -57,6 +57,12 @@ pointing to an expired shared blob. The calendar's end date does not by itself
 trigger deletion. Private and public storage remain separate decisions, as
 described in the [public handoff](public-handoff.md).
 
+For approved combined releases, retain compact policies, approvals, output hashes
+and exact code/canonical snapshots as described in [release retention](release-retention.md).
+Only current/previous compressed bundles need to stay ready. An older generated
+review or timetable is disposable after a verified rebuild reproduces its hashes;
+its original source and recipe remain retained.
+
 Use synthetic data for ordinary deterministic tests. Add a real schedule subset
 only when it exercises a provider behaviour that synthetic data cannot adequately
 demonstrate. Keep it small, retain the source hash, access date, licence notice

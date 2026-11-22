@@ -14,6 +14,8 @@
   and [legacy releases](operations/timetable-release.md#packaging-a-release-for-pages).
 - [Release recipes](operations/release-recipes.md) covers compact reviewed inputs
   and exact replay using the archived generator.
+- [Release retention](operations/release-retention.md) covers storage promotion,
+  recovery and current/previous ready bundles.
 - [Consumer import](operations/timetable-import.md) covers source lineage, retained
   versions, and reviewed rollback.
 
