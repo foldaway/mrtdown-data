@@ -7,6 +7,7 @@ import { groupedScopedReviewDraftSha256 } from '../packages/fs/src/gtfs/groupedR
 import { createScheduledCombinedReview } from '../packages/fs/src/gtfs/scheduledCombinedReview.js';
 import { createScheduledSourceJourneyMappingDraft } from '../packages/fs/src/gtfs/scheduledSourceJourneys.js';
 import { assessAutomaticUpdate } from './gtfs-automatic-eligibility.mjs';
+import { checkAutomaticDailyChanges } from './gtfs-automatic-mapping.mjs';
 import { prepareAutomaticRelease } from './prepare-gtfs-automatic-release.mjs';
 
 const extendedPolicy = JSON.parse(
@@ -24,9 +25,36 @@ const policy = {
   scope: 'timing-only',
 };
 
-function fixture(feedVersion: string | null = '0.1', extendPath = false) {
+function fixture(
+  feedVersion: string | null = '0.1',
+  extendPath = false,
+  staggerAccess = false,
+) {
   const { inputs, capture: receipt } = combinedArtifactFixture();
+  if (staggerAccess) {
+    for (const row of inputs.context.tables['stop_times.txt'].filter(
+      (row) => row.trip_id === 'SHARED_NO_PICKUP',
+    )) {
+      row.arrival_time = row.arrival_time.replace('25:0', '25:1');
+      row.departure_time = row.departure_time.replace('25:0', '25:1');
+    }
+    const grouped = createScheduledSourceJourneyMappingDraft(
+      inputs.context,
+      inputs.sourceJourneyPolicy,
+      inputs.allocationPolicy,
+      inputs.holidayPolicy,
+      inputs.holidayCalendar,
+    );
+    inputs.sharedServiceMemberships.baseDraftSha256 =
+      groupedScopedReviewDraftSha256(grouped.mapping.mapping);
+  }
   if (extendPath) {
+    inputs.context.tables['trips.txt'] = inputs.context.tables[
+      'trips.txt'
+    ].filter((trip) => trip.trip_id !== 'SHARED_NO_PICKUP');
+    inputs.context.tables['stop_times.txt'] = inputs.context.tables[
+      'stop_times.txt'
+    ].filter((row) => row.trip_id !== 'SHARED_NO_PICKUP');
     const service = inputs.context.topology.services.find(
       (service) => service.id === 'SVC',
     );
@@ -165,6 +193,91 @@ function fixture(feedVersion: string | null = '0.1', extendPath = false) {
 }
 
 describe('automatic GTFS publication', () => {
+  it('holds a redistribution that reuses a few nearby calls, while accepting a uniform time shift', () => {
+    const ids = Array.from({ length: 10 }, (_, i) => `trip-${i}`);
+    const inputs = (morning: number, minutes = '00') => ({
+      context: {
+        tables: {
+          'trips.txt': ids.map((trip_id) => ({ trip_id, direction_id: '0' })),
+          'stop_times.txt': ids.map((trip_id, i) => ({
+            trip_id,
+            stop_id: 'P',
+            arrival_time: `${i < morning ? '08' : '12'}:${minutes}:00`,
+            departure_time: `${i < morning ? '08' : '12'}:${minutes}:00`,
+          })),
+        },
+      },
+    });
+    const draft = {
+      associationReview: {
+        patterns: [
+          {
+            lineId: 'NEL',
+            supportedServiceDates: ['2026-11-10'],
+            tripIds: ids,
+          },
+        ],
+      },
+    };
+    const requireCheck = (condition: boolean, reason: string) => {
+      if (!condition) throw new Error(reason);
+    };
+    expect(() =>
+      checkAutomaticDailyChanges(
+        inputs(9),
+        draft,
+        inputs(1),
+        draft,
+        extendedPolicy,
+        requireCheck,
+      ),
+    ).toThrow(/distinct timing counterparts/);
+    expect(() =>
+      checkAutomaticDailyChanges(
+        inputs(9),
+        draft,
+        inputs(9, '10'),
+        draft,
+        extendedPolicy,
+        requireCheck,
+      ),
+    ).not.toThrow();
+  });
+
+  it('holds when known boarding permissions move between differently timed trips', () => {
+    const args = fixture('0.1', false, true);
+    args.policy = extendedPolicy;
+    const a = args.tables['stop_times.txt'].filter(
+      (row) => row.trip_id === 'SHARED',
+    );
+    const b = args.tables['stop_times.txt'].filter(
+      (row) => row.trip_id === 'SHARED_NO_PICKUP',
+    );
+    for (let i = 0; i < a.length; i++) {
+      for (const key of ['pickup_type', 'drop_off_type', 'timepoint']) {
+        const x = a[i][key];
+        const y = b[i][key];
+        if (y === undefined) delete a[i][key];
+        else a[i][key] = y;
+        if (x === undefined) delete b[i][key];
+        else b[i][key] = x;
+      }
+    }
+    expect(
+      assessAutomaticUpdate({
+        baseline: args.baselineInputs.context.tables,
+        candidate: args.tables,
+        previousCapture: args.previousCapture,
+        capture: args.capture,
+        policy: args.policy,
+        now: args.now,
+      }).decision,
+    ).toBe('eligible');
+    expect(() => prepareAutomaticRelease(args)).toThrow(
+      /boarding\/access profiles/,
+    );
+  });
+
   it('uses the completed v2 release as the baseline for the next automatic successor', () => {
     const args = fixture();
     args.policy = extendedPolicy;
@@ -204,7 +317,7 @@ describe('automatic GTFS publication', () => {
     args.policy = extendedPolicy;
     for (const trip of args.tables['trips.txt']
       .filter((trip) => trip.trip_id.startsWith('NEL_TEST_WD'))
-      .slice(0, 10)) {
+      .slice(0, 8)) {
       const calls = args.tables['stop_times.txt'].filter(
         (row) => row.trip_id === trip.trip_id,
       );
@@ -297,7 +410,9 @@ describe('automatic GTFS publication', () => {
       for (const field of ['arrival_time', 'departure_time'])
         row[field] = row[field].replace(/^25:/, '27:');
     }
-    expect(() => prepareAutomaticRelease(later)).toThrow(/over 30 minutes/);
+    expect(() => prepareAutomaticRelease(later)).toThrow(
+      /distinct timing counterparts/,
+    );
   });
   it('generates exact automated approvals only after reconstructing a complete equivalent mapping', () => {
     const args = fixture();

@@ -1,4 +1,5 @@
 import { isDeepStrictEqual } from 'node:util';
+import { compareStopSequences } from '../packages/fs/dist/gtfs/order.js';
 import {
   auditSchedule,
   gtfsTimeSeconds,
@@ -190,25 +191,71 @@ export function planAutomaticMappings(
     : undefined;
 }
 
-function dailySchedule(inputs, draft) {
+function accessProfile(row) {
+  const fields = Object.entries(row).filter(
+    ([key]) =>
+      ![
+        'trip_id',
+        'stop_id',
+        'stop_sequence',
+        'arrival_time',
+        'departure_time',
+        'stop_headsign',
+      ].includes(key),
+  );
+  return JSON.stringify(
+    Object.fromEntries(fields.sort(([a], [b]) => a.localeCompare(b))),
+  );
+}
+
+function mixedAccessStops(...tables) {
+  const profiles = new Map();
+  for (const table of tables) {
+    for (const row of table['stop_times.txt']) {
+      const set = profiles.get(row.stop_id) ?? new Set();
+      set.add(accessProfile(row));
+      profiles.set(row.stop_id, set);
+    }
+  }
+  return new Set(
+    [...profiles].filter(([, profiles]) => profiles.size > 1).map(([id]) => id),
+  );
+}
+
+function dailySchedule(inputs, draft, mixedStops) {
   const trips = new Map(
     inputs.context.tables['trips.txt'].map((trip) => [trip.trip_id, trip]),
   );
   const calls = new Map();
   for (const row of inputs.context.tables['stop_times.txt']) {
     const list = calls.get(row.trip_id) ?? [];
-    list.push(row);
+    list.push({
+      row,
+      profile: mixedStops.has(row.stop_id) ? accessProfile(row) : null,
+    });
     calls.set(row.trip_id, list);
+  }
+  for (const list of calls.values()) {
+    if (!list.some((call) => call.profile !== null)) continue;
+    list.sort((a, b) =>
+      compareStopSequences(a.row.stop_sequence, b.row.stop_sequence),
+    );
+    const path = JSON.stringify(list.map(({ row }) => row.stop_id));
+    for (const [index, call] of list.entries()) call.occurrence = [path, index];
   }
   const days = new Map();
   for (const pattern of draft.associationReview.patterns) {
     for (const date of pattern.supportedServiceDates) {
       const key = JSON.stringify([pattern.lineId, date]);
-      const day = days.get(key) ?? { count: 0, times: new Map() };
+      const day = days.get(key) ?? {
+        count: 0,
+        times: new Map(),
+        access: new Map(),
+      };
       day.count += pattern.tripIds.length;
       for (const id of pattern.tripIds) {
         const trip = trips.get(id);
-        for (const row of calls.get(id)) {
+        for (const { row, profile, occurrence } of calls.get(id)) {
           for (const field of ['arrival_time', 'departure_time']) {
             if (!row[field]) continue;
             const key = JSON.stringify([
@@ -219,6 +266,16 @@ function dailySchedule(inputs, draft) {
             const times = day.times.get(key) ?? [];
             times.push(gtfsTimeSeconds(row[field]));
             day.times.set(key, times);
+            if (profile !== null) {
+              const accessKey = JSON.stringify([
+                trip.route_id ?? '',
+                occurrence,
+                key,
+              ]);
+              const access = day.access.get(accessKey) ?? [];
+              access.push([gtfsTimeSeconds(row[field]), profile]);
+              day.access.set(accessKey, access);
+            }
           }
         }
       }
@@ -226,6 +283,13 @@ function dailySchedule(inputs, draft) {
     }
   }
   for (const day of days.values()) {
+    for (const [key, access] of day.access) {
+      access.sort(([a, x], [b, y]) => a - b || x.localeCompare(y));
+      day.access.set(
+        key,
+        access.map(([, profile]) => profile),
+      );
+    }
     for (const [key, times] of day.times)
       day.times.set(
         key,
@@ -233,6 +297,22 @@ function dailySchedule(inputs, draft) {
       );
   }
   return days;
+}
+
+/** Maximum cardinality pairing of sorted calls; a counterpart is consumed once. */
+function matchedCallCount(left, right, limit) {
+  let i = 0;
+  let j = 0;
+  let matched = 0;
+  while (i < left.length && j < right.length) {
+    if (Math.abs(left[i] - right[j]) <= limit) {
+      matched++;
+      i++;
+      j++;
+    } else if (left[i] < right[j]) i++;
+    else j++;
+  }
+  return matched;
 }
 
 function unmatchedFraction(times, others, limit) {
@@ -259,8 +339,12 @@ export function checkAutomaticDailyChanges(
   policy,
   requireCheck,
 ) {
-  const before = dailySchedule(baselineInputs, baselineDraft);
-  const after = dailySchedule(inputs, draft);
+  const mixedStops = mixedAccessStops(
+    baselineInputs.context.tables,
+    inputs.context.tables,
+  );
+  const before = dailySchedule(baselineInputs, baselineDraft, mixedStops);
+  const after = dailySchedule(inputs, draft, mixedStops);
   requireCheck(
     isDeepStrictEqual([...before.keys()].sort(), [...after.keys()].sort()),
     'A line gained or lost an entire supported service date.',
@@ -272,6 +356,23 @@ export function checkAutomaticDailyChanges(
         policy.maximumTripCountChangeFraction,
       `${key} changed its daily trip count by more than 10%.`,
     );
+    requireCheck(
+      isDeepStrictEqual(old.access, current.access),
+      `${key} changed the order or number of timed boarding/access profiles. Mixed permissions require review.`,
+    );
+    for (const [stop, times] of old.times) {
+      const others = current.times.get(stop) ?? [];
+      const matched = matchedCallCount(
+        times,
+        others,
+        policy.maximumDepartureShiftSeconds,
+      );
+      requireCheck(
+        (times.length - matched) / times.length <=
+          policy.maximumTripCountChangeFraction,
+        `${key} ${stop} lost distinct timing counterparts for more than 10% of its calls.`,
+      );
+    }
     for (const [left, right] of [
       [old, current],
       [current, old],
