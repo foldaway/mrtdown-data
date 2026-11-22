@@ -16,6 +16,8 @@
   and exact replay using the archived generator.
 - [Release retention](operations/release-retention.md) covers storage promotion,
   recovery and current/previous ready bundles.
+- [Automatic publication](operations/automatic-publication.md) defines routine
+  update checks, exception review and the ordered activation procedure.
 - [Consumer import](operations/timetable-import.md) covers source lineage, retained
   versions, and reviewed rollback.
 

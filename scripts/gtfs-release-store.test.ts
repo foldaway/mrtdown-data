@@ -6,6 +6,7 @@ import { hashBytes } from '../packages/fs/src/gtfs/capture.js';
 import { objectDescriptor, releaseId } from './gtfs-release-recipe.mjs';
 import {
   alreadyRetainedRelease,
+  currentRetainedRelease,
   resumeCurrentRetainedRelease,
   retainPreparedRelease,
 } from './gtfs-release-store.mjs';
@@ -90,6 +91,35 @@ const replay = async (bytes: Buffer) => ({
   outputs: {
     'timetable.json': { sha256: hashBytes(bytes), byteLength: bytes.length },
   },
+});
+
+test('requires a complete current release for automatic publication', async () => {
+  const store = memoryStore();
+  await expect(currentRetainedRelease(store)).rejects.toThrow(/Missing/);
+  const current = prepared('current');
+  await retainPreparedRelease(store, current, null, { replay });
+  expect((await currentRetainedRelease(store)).record.releaseIndex).toEqual(
+    current.record.releaseIndex,
+  );
+  const staged = await store.read('staged.json');
+  await store.write(
+    'staged.json',
+    Buffer.from(
+      JSON.stringify({ schemaVersion: 1, candidates: ['f'.repeat(64)] }),
+    ),
+    staged?.etag ?? null,
+  );
+  await expect(currentRetainedRelease(store)).rejects.toThrow(
+    /cleanup is pending/,
+  );
+  const pending = await store.read('staged.json');
+  await store.write(
+    'staged.json',
+    Buffer.from(JSON.stringify({ schemaVersion: 1, candidates: [] })),
+    pending?.etag ?? null,
+  );
+  store.objects.delete(current.record.bundle.key);
+  await expect(currentRetainedRelease(store)).rejects.toThrow(/incomplete/);
 });
 
 test('rotates current/previous, deduplicates shared inputs, and prunes only replayable older ready bundles', async () => {

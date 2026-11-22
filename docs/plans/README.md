@@ -40,6 +40,8 @@ and its companion [execution plan guide](https://developers.openai.com/cookbook/
 
 ## Active
 
+- [Automatic GTFS publication](active/gtfs-automatic-publication.md) covers
+  checked routine successors, exception review and the site completion handoff.
 - [GTFS release retention](active/gtfs-release-retention.md) covers reproducible
   release inputs and bounded current/previous ready bundles.
 - [Direct-to-main ingestion reliability](active/direct-main-ingestion.md) covers

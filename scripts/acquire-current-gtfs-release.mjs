@@ -1,0 +1,62 @@
+import { readFile, writeFile } from 'node:fs/promises';
+import { join, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { isDeepStrictEqual } from 'node:util';
+import { CombinedTimetableReleaseIndexSchema } from '../packages/fs/dist/index.js';
+import {
+  currentRetainedRelease,
+  s3ReleaseStore,
+} from './gtfs-release-store.mjs';
+import { materializeReleaseRecipe } from './materialize-gtfs-release-recipe.mjs';
+
+/** Never deploy an older retained baseline over an unfinished or externally changed release. */
+export async function assertPublishedBaseline(index, fetcher = fetch) {
+  const response = await fetcher(
+    'https://data.mrtdown.org/combined-timetable-release-index.json',
+    {
+      redirect: 'error',
+      signal: AbortSignal.timeout(30000),
+      cache: 'no-store',
+    },
+  );
+  if (!response.ok)
+    throw new Error('Cannot verify the currently public release');
+  const published = CombinedTimetableReleaseIndexSchema.parse(
+    await response.json(),
+  );
+  if (!isDeepStrictEqual(published, index))
+    throw new Error(
+      'Public release differs from the last completed release. Resolve the unfinished publication before proceeding.',
+    );
+}
+
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(resolve(process.argv[1])).href
+) {
+  const [outputDir] = process.argv.slice(2);
+  if (!outputDir) throw new Error('Expected a new input directory');
+  const env = process.env;
+  const current = await currentRetainedRelease(
+    s3ReleaseStore({ bucket: env.GTFS_RELEASE_RETENTION_BUCKET }),
+  );
+  await assertPublishedBaseline(current.record.releaseIndex);
+  await materializeReleaseRecipe(
+    current.recipeBytes,
+    outputDir,
+    env.GTFS_SNAPSHOT_BASE_URL,
+  );
+  // Bootstrap recipes predate automatic source reviews.
+  try {
+    await readFile(join(outputDir, 'source-review.json'));
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+    if (!env.MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW)
+      throw new Error('The bootstrap source review is required');
+    await writeFile(
+      join(outputDir, 'source-review.json'),
+      env.MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW,
+      { flag: 'wx', mode: 0o600 },
+    );
+  }
+}

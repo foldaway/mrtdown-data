@@ -58,7 +58,9 @@ async function harness() {
 set -euo pipefail
 if [[ "$1" == api ]]; then
   if [[ -f "$RUNNER_TEMP/existing-pr" ]]; then cat "$RUNNER_TEMP/existing-pr"; fi
-elif [[ "$1" == pr && "$2" == create ]]; then
+elif [[ "$1" == pr && "$2" == view ]]; then
+  if [[ -f "$RUNNER_TEMP/pr-state" ]]; then cat "$RUNNER_TEMP/pr-state"; else echo CLOSED; fi
+elif [[ "$1" == pr && ( "$2" == create || "$2" == edit ) ]]; then
   for body in "$@"; do :; done
   cp "$body" "$RUNNER_TEMP/created-body.md"
 else
@@ -94,6 +96,8 @@ fi
     INSPECTION_OUTCOME: 'success',
     ARTIFACT_URL: '',
     REVIEW_DIR: reviewDir,
+    AUTOMATIC_REPORT: join(runner, 'automatic-publication.md'),
+    AUTOMATIC_RESULT: 'skipped',
   };
   const run = () =>
     execFileSync('bash', ['-e', '-o', 'pipefail', '-c', script], {
@@ -105,7 +109,7 @@ fi
   return { root, runner, repo, sha256, record, reviewDir, git, run };
 }
 
-test('publishes the durable report, retries from committed evidence, and preserves existing closed or open PRs', async () => {
+test('publishes the durable report, retries from committed evidence, and preserves closed PRs', async () => {
   const h = await harness();
   const markdown = '# Snapshot\n\nReviewed evidence\n';
   await writeFile(join(h.reviewDir, `${h.sha256}.md`), markdown);
@@ -130,7 +134,31 @@ test('publishes the durable report, retries from committed evidence, and preserv
     join(h.runner, 'existing-pr'),
     'https://github.com/example/repo/pull/1\n',
   );
-  expect(h.run()).toContain('Snapshot review already exists');
+  expect(h.run()).toContain('Snapshot review already closed');
+});
+
+test('updates an open exception PR with the current automatic hold while preserving source evidence', async () => {
+  const h = await harness();
+  const markdown = '# Snapshot\n\nOriginal evidence\n';
+  await writeFile(join(h.reviewDir, `${h.sha256}.md`), markdown);
+  await writeFile(join(h.reviewDir, `${h.sha256}.json`), '{}\n');
+  h.run();
+  const commit = h.git('rev-parse', 'HEAD');
+  await writeFile(
+    join(h.runner, 'existing-pr'),
+    'https://github.com/example/repo/pull/1\n',
+  );
+  await writeFile(join(h.runner, 'pr-state'), 'OPEN\n');
+  await writeFile(
+    join(h.runner, 'automatic-publication.md'),
+    '## Automatic publication\n\nDecision: **hold**. Calendar exceptions changed.\n',
+  );
+  h.run();
+  const body = await readFile(join(h.runner, 'created-body.md'), 'utf8');
+  expect(body).toContain('Decision: **hold**');
+  expect(body).toContain('Original evidence');
+  expect(body).toContain('https://github.com/example/repo/actions/runs/123');
+  expect(h.git('rev-parse', 'HEAD')).toBe(commit);
 });
 
 test('oversized committed reports create bounded PR bodies and remain recoverable on retry', async () => {

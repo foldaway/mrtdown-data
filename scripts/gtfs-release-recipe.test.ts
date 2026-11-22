@@ -290,6 +290,34 @@ test('ZIP bytes are identical across UTC, Singapore and Los Angeles and preserve
   );
 });
 
+test('preserves the exact source admission review in future automatic redeployments', async () => {
+  const { root, options, index } = await fixture();
+  const sourceReview = {
+    schemaVersion: 1,
+    documentKind: 'scheduled-timetable-source-review',
+    decision: 'baseline',
+    predecessor: null,
+    successor: {
+      manifestSha256: index.manifestSha256,
+      snapshotSha256: JSON.parse(
+        await readFile(join(root, 'capture.json'), 'utf8'),
+      ).sha256,
+    },
+    reviewer: 'Fixture reviewer',
+    reviewedAt: combinedReleaseInstant,
+    reason: 'Synthetic source admission',
+  };
+  await writeFile(
+    join(root, 'source-review.json'),
+    JSON.stringify(sourceReview),
+  );
+  const prepared = await prepareReleaseRecipe(options);
+  const { files } = decodeRecipe(prepared.recipeBytes);
+  expect(
+    JSON.parse(Buffer.from(files['source-review.json']).toString()),
+  ).toEqual(sourceReview);
+});
+
 test('tampered source and recipe bytes cannot acquire a successful replay proof', async () => {
   const { options } = await fixture();
   const prepared = await prepareReleaseRecipe(options);

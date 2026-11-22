@@ -1,5 +1,9 @@
 # Timetable release readiness
 
+For unattended routine successors, see [automatic publication](automatic-publication.md).
+Its standing policy generates exact automation approvals only after the checks
+below; exceptions continue through the manual release procedure.
+
 `@mrtdown/fs` exports `inspectGtfsTimetableRelease(file, captureFile, options)`.
 It rebuilds the artifact from verified source inputs and checks the review
 records required for release. It performs no network calls or file writes.

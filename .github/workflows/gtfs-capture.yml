@@ -100,10 +100,27 @@ jobs:
             ${{ runner.temp }}/gtfs-review/*.json
           if-no-files-found: error
 
-  review:
+  automatic:
     needs: inspect
     if: >-
+      ${{ !cancelled() && needs.inspect.outputs.independent-outcome == 'success' &&
+          needs.inspect.outputs.inspection-outcome == 'success' &&
+          github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages-deploy.yml
+    with:
+      capture_key: ${{ github.event.client_payload.capture_key || inputs.capture_key }}
+      validated_capture_sha256: ${{ needs.inspect.outputs.sha256 }}
+    secrets: inherit
+
+  review:
+    needs: [inspect, automatic]
+    if: >-
       ${{ !cancelled() && needs.inspect.outputs.sha256 != '' &&
+          needs.automatic.outputs.decision != 'published' && needs.automatic.outputs.decision != 'unchanged' &&
           github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
     runs-on: ubuntu-latest
     permissions:
@@ -124,6 +141,11 @@ jobs:
         with:
           name: gtfs-review-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/gtfs-review
+      - uses: actions/download-artifact@v8
+        continue-on-error: true
+        with:
+          name: gtfs-automatic-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/gtfs-automatic
       - name: Open snapshot review
         env:
           GH_TOKEN: ${{ github.token }}
@@ -135,6 +157,8 @@ jobs:
           INSPECTION_OUTCOME: ${{ needs.inspect.outputs.inspection-outcome }}
           ARTIFACT_URL: ${{ needs.inspect.outputs.artifact-url }}
           REVIEW_DIR: ${{ runner.temp }}/gtfs-review
+          AUTOMATIC_REPORT: ${{ runner.temp }}/gtfs-automatic/automatic-publication.md
+          AUTOMATIC_RESULT: ${{ needs.automatic.result }}
         run: |
           review_branch="gtfs-review/$SNAPSHOT_SHA256"
           review_ref="refs/heads/$review_branch"
@@ -142,8 +166,10 @@ jobs:
             -f state=all -f head="$GITHUB_REPOSITORY_OWNER:$review_branch" \
             --jq '.[0].html_url // empty')
           if [[ -n "$existing_pr" ]]; then
-            echo "Snapshot review already exists at $existing_pr"
-            exit 0
+            if [[ "$(gh pr view "$existing_pr" --json state --jq .state)" != OPEN ]]; then
+              echo "Snapshot review already closed at $existing_pr; retaining this run's decision in Actions"
+              exit 0
+            fi
           fi
 
           title="chore(gtfs): review schedule snapshot ${SNAPSHOT_SHA256:0:12}"
@@ -178,6 +204,10 @@ jobs:
                 printf '%s\n' "- [Download available reports]($ARTIFACT_URL)" >> "$record_path"
               fi
             fi
+            if [[ -f "$AUTOMATIC_REPORT" ]]; then
+              printf '\n' >> "$record_path"
+              cat "$AUTOMATIC_REPORT" >> "$record_path"
+            fi
             git add -- "$record_path"
             if [[ -f "docs/gtfs/captures/$SNAPSHOT_SHA256.json" ]]; then
               git add -- "docs/gtfs/captures/$SNAPSHOT_SHA256.json"
@@ -193,7 +223,18 @@ jobs:
           git show "FETCH_HEAD:$record_path" > "$report_path"
           report_commit=$(git rev-parse FETCH_HEAD)
           report_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$report_commit/$record_path"
+          if [[ -f "$AUTOMATIC_REPORT" ]]; then
+            cp "$report_path" "$RUNNER_TEMP/committed-capture-report.md"
+            cat "$AUTOMATIC_REPORT" > "$report_path"
+            printf '\nPublication workflow: **%s**. [Inspect this attempt](%s/%s/actions/runs/%s).\n\n' \
+              "$AUTOMATIC_RESULT" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" >> "$report_path"
+            cat "$RUNNER_TEMP/committed-capture-report.md" >> "$report_path"
+          fi
           node scripts/gtfs-review-pr-body.mjs "$report_path" "$report_url" > "$body_path"
+          if [[ -n "$existing_pr" ]]; then
+            gh pr edit "$existing_pr" --body-file "$body_path"
+            exit 0
+          fi
 
           gh pr create --repo "$GITHUB_REPOSITORY" --base "$BASE_BRANCH" \
             --head "$review_branch" --title "$title" \

@@ -11,7 +11,12 @@ async function readIndex(path) {
   );
 }
 
-async function preparePull(pagesDir, approvedIndexPath, payloadPath) {
+async function preparePull(
+  pagesDir,
+  approvedIndexPath,
+  payloadPath,
+  sourceReviewPath,
+) {
   const [combinedReleaseIndex, approvedIndex, manifestBytes, releaseBytes] =
     await Promise.all([
       readIndex(join(pagesDir, indexName)),
@@ -28,8 +33,10 @@ async function preparePull(pagesDir, approvedIndexPath, payloadPath) {
     throw new Error('Pages release does not match the approved release index');
   }
 
-  // biome-ignore lint/suspicious/noUndeclaredEnvVars: protected Actions environment secret.
-  const reviewJson = process.env.MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW;
+  const env = process.env;
+  const reviewJson = sourceReviewPath
+    ? await readFile(sourceReviewPath, 'utf8')
+    : env.MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW;
   let sourceReview;
   try {
     sourceReview = ScheduledTimetableSourceReviewSchema.parse(
