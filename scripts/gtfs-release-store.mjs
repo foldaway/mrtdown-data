@@ -1,8 +1,8 @@
 import { randomUUID } from 'node:crypto';
 import { isDeepStrictEqual } from 'node:util';
 import { hashBytes } from '../packages/fs/dist/index.js';
+import { rebuildRetainedBundle } from './gtfs-release-bundle.mjs';
 import {
-  deterministicZip,
   releaseId,
   replayReleaseRecipe,
   verifyObject,
@@ -141,7 +141,7 @@ export async function readPreparedRetainedRelease(
       async (key) => (await required(store, key)).bytes,
     );
     checkReplay(rebuilt, record);
-    bundleBytes = deterministicZip(rebuilt.bundleFiles);
+    bundleBytes = rebuildRetainedBundle(rebuilt.bundleFiles, record.bundle);
   }
   verifyObject(bundleBytes, record.bundle);
   const objects = new Map(
@@ -236,6 +236,8 @@ async function finishCleanup(store, index, replay) {
       async (key) => (await required(store, key)).bytes,
     );
     checkReplay(rebuilt, old);
+    // Raw output parity alone cannot prove that the recorded ZIP is restorable.
+    rebuildRetainedBundle(rebuilt.bundleFiles, old.bundle);
     const incumbent = validateIndex(
       decode((await required(store, 'index.json')).bytes),
     );

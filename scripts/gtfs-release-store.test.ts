@@ -1,12 +1,18 @@
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { zipSync } from 'fflate';
 import { afterEach, expect, test } from 'vitest';
 import { hashBytes } from '../packages/fs/src/gtfs/capture.js';
-import { objectDescriptor, releaseId } from './gtfs-release-recipe.mjs';
+import {
+  deterministicZip,
+  objectDescriptor,
+  releaseId,
+} from './gtfs-release-recipe.mjs';
 import {
   alreadyRetainedRelease,
   currentRetainedRelease,
+  readPreparedRetainedRelease,
   resumeCurrentRetainedRelease,
   retainPreparedRelease,
 } from './gtfs-release-store.mjs';
@@ -70,7 +76,11 @@ function prepared(name: string) {
     'timetable.json': { sha256: hashBytes(bytes), byteLength: bytes.length },
   };
   const bundle = {
-    ...objectDescriptor('bundles', bytes, 'zip'),
+    ...objectDescriptor(
+      'bundles',
+      deterministicZip({ 'timetable.json': bytes }),
+      'zip',
+    ),
     key: `bundles/${id}.zip`,
   };
   const record = {
@@ -84,13 +94,66 @@ function prepared(name: string) {
     bundle,
     replay: { releaseId: id, recipeSha256: recipe.sha256 },
   };
-  return { record, objects, bundleBytes: bytes };
+  return {
+    record,
+    objects,
+    bundleBytes: deterministicZip({ 'timetable.json': bytes }),
+  };
 }
 const replay = async (bytes: Buffer) => ({
+  bundleFiles: { 'timetable.json': bytes },
   replay: { releaseId: prepared(bytes.toString()).record.releaseId },
   outputs: {
     'timetable.json': { sha256: hashBytes(bytes), byteLength: bytes.length },
   },
+});
+
+test('restores a missing legacy ready ZIP without changing its immutable record', async () => {
+  const store = memoryStore();
+  const a = prepared('a');
+  a.bundleBytes = Buffer.from(
+    zipSync(
+      { 'timetable.json': Buffer.from('a') },
+      { level: 9, mtime: new Date(1999, 11, 31, 16) },
+    ),
+  );
+  a.record.bundle = {
+    ...objectDescriptor('bundles', a.bundleBytes, 'zip'),
+    key: a.record.bundle.key,
+  };
+  await retainPreparedRelease(store, a, null, { replay });
+  store.objects.delete(a.record.bundle.key);
+  const restored = await readPreparedRetainedRelease(
+    store,
+    a.record.releaseId,
+    { replay },
+  );
+  expect(restored.bundleBytes).toEqual(a.bundleBytes);
+  expect(restored.record).toEqual(a.record);
+});
+
+test('preserves a ready ZIP whose exact container cannot be rebuilt despite raw output parity', async () => {
+  const store = memoryStore();
+  const a = prepared('a'),
+    b = prepared('b'),
+    c = prepared('c');
+  a.bundleBytes = Buffer.from(
+    zipSync(
+      { 'timetable.json': Buffer.from('a') },
+      { level: 9, mtime: new Date(2026, 0, 1) },
+    ),
+  );
+  a.record.bundle = {
+    ...objectDescriptor('bundles', a.bundleBytes, 'zip'),
+    key: a.record.bundle.key,
+  };
+  await retainPreparedRelease(store, a, null, { replay });
+  await retainPreparedRelease(store, b, a.record.releaseId, { replay });
+  await expect(
+    retainPreparedRelease(store, c, b.record.releaseId, { replay }),
+  ).rejects.toThrow(/cannot be reproduced/);
+  expect(store.objects.has(a.record.bundle.key)).toBe(true);
+  expect(store.deleted).not.toContain(a.record.bundle.key);
 });
 
 test('requires a complete current release for automatic publication', async () => {
