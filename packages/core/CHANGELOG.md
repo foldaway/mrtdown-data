@@ -1,5 +1,11 @@
 # @mrtdown/core
 
+## 2.0.0-alpha.42
+
+### Patch Changes
+
+- c9797e7: Reuse bounded service-date and offset conversions when projecting timetable departures, preserving Singapore GTFS elapsed-time semantics.
+
 ## 2.0.0-alpha.41
 
 ### Minor Changes
