@@ -291,7 +291,12 @@ release digest stops the job before upload. Keep the variable enabled and the
 inputs available for subsequent deployments. Clearing the variable publishes a
 GTFS-free archive on the next successful deploy.
 
-Prepare a `tar.gz` archive of regular files at its root, outside Git and the
+Prefer the verified compact ZIP recipe described in [release retention](release-retention.md#pages-adoption).
+It keeps policies and approvals, references the shared source ZIP, and omits the
+large generated review. Set input format `recipe-zip` only after the compatible
+workflow has merged; the existing read key can read the same input prefix.
+
+For the legacy format, prepare a `tar.gz` archive of regular files at its root, outside Git and the
 Pages tree. Include `schedule.zip`, the licence-reviewed `capture.json`,
 `combined-pages.json` and its referenced review inputs. Include the trusted
 `release-index.json` and the exact approved `release.json` as
@@ -325,7 +330,12 @@ credentials. Configure the following on that environment while the gate is off.
 | Secret `MRTDOWN_COMBINED_TIMETABLE_INPUT_ACCESS_KEY_ID` | Scoped Tigris S3 access key ID |
 | Secret `MRTDOWN_COMBINED_TIMETABLE_INPUT_SECRET_ACCESS_KEY` | Scoped Tigris S3 secret access key |
 | Variable `MRTDOWN_COMBINED_TIMETABLE_INPUT_SHA256` | SHA-256 of the exact compressed archive |
+| Variable `MRTDOWN_COMBINED_TIMETABLE_INPUT_FORMAT` | `tar-gz` (default) or verified `recipe-zip` |
 | Secret `MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW` | Production-approved `scheduled-timetable-source-review` JSON |
+
+Current/previous ready-bundle retention uses its own scoped key and opt-in flag;
+see [retention configuration](release-retention.md#pages-adoption). It does not
+broaden the Pages input-read credential or change source-review requirements.
 
 The workflow continues to use `MRTDOWN_SITE_PULL_URL` and
 `MRTDOWN_SITE_INTERNAL_API_TOKEN` for the site's authenticated task endpoint.
