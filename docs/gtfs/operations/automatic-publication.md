@@ -32,9 +32,13 @@ tests, then requires:
   Each physical stop, source direction and arrival/departure kind loses at most
   10% of its calls. Additional calls from proved short workings can increase a
   station's frequency beyond that bound while the line total stays within 10%.
-  Matched calls have a counterpart within 30 minutes;
-  up to 10% may be unmatched additions or cancellations, checked in both
-  directions. First/last times can therefore change when a small number of
+  At least 90% of old calls retain distinct counterparts within 30 minutes.
+  Additional station calls may exceed the old count, but at least 90% of new
+  calls must also remain within 30 minutes of an old station call. This permits
+  proved frequency increases without allowing wholesale redistribution of the
+  old timetable. Mixed boarding/access profiles must retain their chronological
+  order and counts; moving permissions between timed calls requires review.
+  First/last times can therefore change when a small number of
   services are removed or added. Missing station coverage, larger changes and
   entire cancelled service dates require review.
 - Unchanged current licence/API terms; an approved baseline without an embargo;
@@ -71,8 +75,9 @@ and polls its completion receipt for the exact run and release index. Only then
 does retention advance current/previous. Source admission reviews are retained
 in compact recipes for future redeployments. Large generated review JSON stays
 out of Git and out of recipe history; ready bundles follow the retention policy.
-If that snapshot already has an open exception PR, a successful publication or
-verified already-current result closes it with a receipt in the description.
+If that snapshot already has an open exception PR, a successful publication
+closes it with a receipt in the description. Duplicate-source no-ops keep
+existing reviews open because they do not verify a new completed import.
 Its branch and original report remain available; no evidence-only merge is needed.
 
 A failed import or retention write leaves the baseline unchanged. If public

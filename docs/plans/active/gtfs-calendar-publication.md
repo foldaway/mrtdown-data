@@ -11,10 +11,10 @@ in the existing review flow. Retain the approved November applicability window.
 
 - [x] 2026-11-22: Added backward-compatible holiday exception support,
   deterministic mapping planning and completed-review closure.
-- [x] 2026-11-22: The exact #483 source passed full-size bundle verification:
-  149,100 supported trip/date pairs assigned, zero gaps and exclusions. All 982
-  existing tests passed; an additional regression verifies the next automatic
-  successor can use the generated v2 release as its baseline.
+- [ ] Reverify the exact #483 source after review tightened distinct timing
+  counterparts and timed boarding permissions. The initial offline verification
+  assigned all 149,100 supported trip/date pairs with zero gaps and exclusions.
+  The repeated-successor regression also passes.
 - [ ] Merge checked implementation and observe capture-to-site publication and retention.
 
 ## Surprises & Discoveries
@@ -67,3 +67,22 @@ stopping patterns, changed access, cancellations and timing anomalies. The real
 source must have zero excluded/unassigned supported trip/date pairs. Production
 acceptance requires successful independent validation, bundle verification,
 site `RUN_SUCCESS` for the exact index, and retention advancement.
+
+The acceptance input is ZIP SHA-256
+`0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf`,
+retrieved on 2026-11-21 at 20:00:03.469Z. Its
+[receipt](https://sources.mrtdown.org/captures/schedule/0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf.json)
+binds the public source bytes. Dispatch from a fresh checkout after merge:
+
+```sh
+gh workflow run gtfs-capture.yml --ref main \
+  -f capture_key=captures/schedule/0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf.json
+```
+
+The workflow calls `scripts/prepare-gtfs-automatic-release.mjs` with its verified
+retained baseline, acquired candidate, new output directory and report directory.
+Its `gtfs-automatic-<run>-<attempt>` artifact retains the decision, coverage and
+exact release identities. Link that production run here when observed. If the
+capture becomes stale, the service window expires, or any gate holds, preserve
+that decision and investigate the actual newer capture; do not alter timestamps
+or skip a gate to reuse this acceptance input.

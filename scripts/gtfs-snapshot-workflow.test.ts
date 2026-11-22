@@ -120,6 +120,7 @@ test('closes only the exact completed snapshot review and replaces the stale hol
     head: {
       repo: { full_name: 'foldaway/mrtdown-data' },
       ref: `gtfs-review/${h.sha256}`,
+      sha: 'c'.repeat(40),
     },
     body: '## Automatic publication\n\nDecision: **hold**.\n\n# LTA train GTFS snapshot\n\nOriginal evidence\n',
   };
@@ -138,6 +139,7 @@ test('closes only the exact completed snapshot review and replaces the stale hol
     );
   await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
   expect(() => run('hold')).toThrow();
+  expect(() => run('unchanged')).toThrow();
   review.head.repo.full_name = 'someone/fork';
   await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
   expect(() => run('published')).toThrow();
@@ -156,6 +158,16 @@ test('closes only the exact completed snapshot review and replaces the stale hol
   expect(patch.body).toContain('Original evidence');
   expect(patch.body).toContain('actions/runs/123');
   expect(patch.body).not.toContain('**hold**');
+  review.body = `# LTA train GTFS snapshot\n\n${'Detailed source evidence.\n'.repeat(3000)}`;
+  await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
+  run('published');
+  const large = JSON.parse(
+    await readFile(join(h.runner, 'patch-request.json'), 'utf8'),
+  );
+  expect(Array.from(large.body).length).toBeLessThanOrEqual(60_000);
+  expect(large.body).toContain(
+    `[Read the complete capture report](https://github.com/foldaway/mrtdown-data/blob/${review.head.sha}/docs/gtfs/captures/${h.sha256}.md).`,
+  );
 });
 
 test('publishes the durable report, retries from committed evidence, and preserves closed PRs', async () => {

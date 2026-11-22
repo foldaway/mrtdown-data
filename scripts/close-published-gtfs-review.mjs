@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process';
+import { prBodyCharacterLimit, renderPrBody } from './gtfs-review-pr-body.mjs';
 
 const {
   GITHUB_REPOSITORY: repo,
@@ -10,7 +11,7 @@ if (
   repo !== 'foldaway/mrtdown-data' ||
   !/^\d+$/.test(run ?? '') ||
   !/^[a-f0-9]{64}$/.test(sha ?? '') ||
-  !['published', 'unchanged'].includes(decision)
+  decision !== 'published'
 )
   throw new Error('Expected a completed trusted GTFS publication run');
 const gh = (args, input) =>
@@ -43,10 +44,14 @@ for (const review of reviews) {
   const oldBody = review.body ?? '';
   const reportStart = oldBody.indexOf('# LTA train GTFS snapshot');
   const report = reportStart >= 0 ? oldBody.slice(reportStart) : oldBody;
-  const prefix = `## Automatic publication\n\n**Completed.** This exact snapshot is the verified published release${decision === 'unchanged' ? ' (already current)' : ''}. The publication flow checked the bundle, completed the site import and retained the release. [Publication receipt](${url}).\n\nThis review is closed automatically; no evidence-only merge is needed. The source report below records the original comparison.\n\n`;
-  const body = Array.from(prefix + report)
-    .slice(0, 60_000)
-    .join('');
+  const prefix = `## Automatic publication\n\n**Completed.** This exact snapshot is the verified published release. The publication flow checked the bundle, completed the site import and retained the release. [Publication receipt](${url}).\n\nThis review is closed automatically; no evidence-only merge is needed. The source report below records the original comparison.\n\n`;
+  if (!/^[a-f0-9]{40}$/.test(review.head.sha ?? ''))
+    throw new Error('Expected the immutable report commit');
+  const reportUrl = `https://github.com/${repo}/blob/${review.head.sha}/docs/gtfs/captures/${sha}.md`;
+  const body =
+    Array.from(prefix + report).length <= prBodyCharacterLimit
+      ? prefix + report
+      : renderPrBody(prefix + report, reportUrl);
   gh(
     [
       'api',

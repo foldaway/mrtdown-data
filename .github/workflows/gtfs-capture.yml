@@ -244,7 +244,7 @@ jobs:
     needs: [inspect, automatic]
     if: >-
       ${{ !cancelled() && needs.automatic.result == 'success' &&
-          (needs.automatic.outputs.decision == 'published' || needs.automatic.outputs.decision == 'unchanged') &&
+          needs.automatic.outputs.decision == 'published' &&
           github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
     runs-on: ubuntu-latest
     permissions:
