@@ -18,7 +18,7 @@ export const ScheduledHolidayCalendarSchema = PublicHolidayCalendarSchema;
 
 export const ScheduledHolidayPolicySchema = z
   .object({
-    schemaVersion: z.literal(1),
+    schemaVersion: z.union([z.literal(1), z.literal(2)]),
     revision: z.string().min(1),
     rule: z.literal('sunday-on-public-holidays'),
     sourceManifest: ReconciliationIdentitySchema.shape.sourceManifest,
@@ -32,12 +32,25 @@ export const ScheduledHolidayPolicySchema = z
             weekdayCalendarId: z.string().min(1),
             saturdayCalendarId: z.string().min(1),
             sundayCalendarId: z.string().min(1),
+            supplementalCalendarIds: z.array(z.string().min(1)).optional(),
           })
           .strict(),
       )
       .min(1),
   })
-  .strict();
+  .strict()
+  .superRefine((policy, context) => {
+    if (
+      policy.schemaVersion === 1 &&
+      policy.families.some(
+        (family) => family.supplementalCalendarIds !== undefined,
+      )
+    )
+      context.addIssue({
+        code: 'custom',
+        message: 'Supplemental calendars require holiday policy v2',
+      });
+  });
 export type ScheduledHolidayPolicy = z.infer<
   typeof ScheduledHolidayPolicySchema
 >;
@@ -106,11 +119,15 @@ export function resolveScheduledHolidayDates(
         scheduledServiceCalendarFromGtfs(context.tables, id),
       );
       for (const [index, source] of calendars.entries()) {
-        if (source.exceptions.length) {
+        if (source.exceptions.length && policy.schemaVersion === 1) {
           throw new Error(
             'Holiday substitution does not support explicit source exceptions in a bound calendar',
           );
         }
+        if (source.exceptions.some((exception) => holidays.has(exception.date)))
+          throw new Error(
+            'Explicit source exceptions on public holidays require review',
+          );
         const weekly = source.weekly;
         if (
           !weekly ||
@@ -123,6 +140,16 @@ export function resolveScheduledHolidayDates(
             'Holiday family requires equal weekly bounds within the known holiday date range',
           );
         }
+        if (
+          source.exceptions.some(
+            (exception) =>
+              exception.date < weekly.startDate ||
+              exception.date > weekly.endDate,
+          )
+        )
+          throw new Error(
+            'Source exception exceeds the primary calendar bounds',
+          );
         const expected = Object.fromEntries(
           Object.keys(ScheduledWeekdaysSchema.shape).map((day) => [
             day,
@@ -135,6 +162,37 @@ export function resolveScheduledHolidayDates(
           throw new Error('Unsupported holiday family weekly calendar');
         }
       }
+      const supplemental = family.supplementalCalendarIds ?? [];
+      const primaryBounds = calendars[0].weekly;
+      if (!primaryBounds) throw new Error('Missing primary calendar bounds');
+      if (
+        new Set([...ids, ...supplemental]).size !==
+        ids.length + supplemental.length
+      )
+        throw new Error('Duplicate family calendar binding');
+      for (const id of supplemental) {
+        const source = scheduledServiceCalendarFromGtfs(context.tables, id);
+        if (
+          !source.weekly ||
+          source.weekly.startDate < primaryBounds.startDate ||
+          source.weekly.endDate > primaryBounds.endDate ||
+          source.exceptions.some(
+            (exception) =>
+              exception.date < primaryBounds.startDate ||
+              exception.date > primaryBounds.endDate,
+          )
+        )
+          throw new Error(
+            'Supplemental calendar exceeds the primary family bounds',
+          );
+        if (
+          source.exceptions.some((exception) => holidays.has(exception.date)) ||
+          sourceDates.get(id)?.some((date) => holidays.has(date))
+        )
+          throw new Error(
+            'Supplemental service on public holidays requires review',
+          );
+      }
       for (const route of family.providerRouteIds) {
         if (familiesByRoute.has(route)) {
           throw new Error('Duplicate holiday family route');
@@ -143,8 +201,11 @@ export function resolveScheduledHolidayDates(
           (pattern) => pattern.routeId === route,
         );
         if (
-          !patterns.length ||
-          patterns.some((pattern) => !ids.includes(pattern.calendarId))
+          (!patterns.length && policy.schemaVersion === 1) ||
+          patterns.some(
+            (pattern) =>
+              ![...ids, ...supplemental].includes(pattern.calendarId),
+          )
         ) {
           throw new Error(
             'Holiday family route requires trips only in its bound calendars',
