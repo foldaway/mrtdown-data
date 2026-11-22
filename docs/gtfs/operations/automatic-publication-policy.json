@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": "timing-only-v1",
-  "scope": "timing-only",
+  "revision": "canonical-schedule-v2",
+  "scope": "canonical-schedule",
   "maximumCaptureAgeHours": 72,
   "maximumTripCountChangeFraction": 0.1,
   "maximumDepartureShiftSeconds": 1800,

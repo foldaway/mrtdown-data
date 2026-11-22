@@ -1,12 +1,16 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { combinedArtifactFixture } from '../packages/fs/src/gtfs/__tests__/combinedArtifactFixture.js';
+import { hashBytes } from '../packages/fs/src/gtfs/capture.js';
 import { inspectCombinedTimetableRelease } from '../packages/fs/src/gtfs/combinedTimetableRelease.js';
+import { groupedScopedReviewDraftSha256 } from '../packages/fs/src/gtfs/groupedReviewContract.js';
 import { createScheduledCombinedReview } from '../packages/fs/src/gtfs/scheduledCombinedReview.js';
+import { createScheduledSourceJourneyMappingDraft } from '../packages/fs/src/gtfs/scheduledSourceJourneys.js';
 import { assessAutomaticUpdate } from './gtfs-automatic-eligibility.mjs';
+import { checkAutomaticDailyChanges } from './gtfs-automatic-mapping.mjs';
 import { prepareAutomaticRelease } from './prepare-gtfs-automatic-release.mjs';
 
-const policy = JSON.parse(
+const extendedPolicy = JSON.parse(
   readFileSync(
     new URL(
       '../docs/gtfs/operations/automatic-publication-policy.json',
@@ -15,9 +19,76 @@ const policy = JSON.parse(
     'utf8',
   ),
 );
+const policy = {
+  ...extendedPolicy,
+  revision: 'timing-only-v1',
+  scope: 'timing-only',
+};
 
-function fixture(feedVersion: string | null = '0.1') {
+function fixture(
+  feedVersion: string | null = '0.1',
+  extendPath = false,
+  staggerAccess = false,
+) {
   const { inputs, capture: receipt } = combinedArtifactFixture();
+  if (staggerAccess) {
+    for (const row of inputs.context.tables['stop_times.txt'].filter(
+      (row) => row.trip_id === 'SHARED_NO_PICKUP',
+    )) {
+      row.arrival_time = row.arrival_time.replace('25:0', '25:1');
+      row.departure_time = row.departure_time.replace('25:0', '25:1');
+    }
+    const grouped = createScheduledSourceJourneyMappingDraft(
+      inputs.context,
+      inputs.sourceJourneyPolicy,
+      inputs.allocationPolicy,
+      inputs.holidayPolicy,
+      inputs.holidayCalendar,
+    );
+    inputs.sharedServiceMemberships.baseDraftSha256 =
+      groupedScopedReviewDraftSha256(grouped.mapping.mapping);
+  }
+  if (extendPath) {
+    inputs.context.tables['trips.txt'] = inputs.context.tables[
+      'trips.txt'
+    ].filter((trip) => trip.trip_id !== 'SHARED_NO_PICKUP');
+    inputs.context.tables['stop_times.txt'] = inputs.context.tables[
+      'stop_times.txt'
+    ].filter((row) => row.trip_id !== 'SHARED_NO_PICKUP');
+    const service = inputs.context.topology.services.find(
+      (service) => service.id === 'SVC',
+    );
+    const station = inputs.context.topology.stations.find(
+      (station) => station.id === 'T',
+    );
+    if (!service || !station) throw new Error('Missing fixture topology');
+    service.revisions[0].stations.push({ stationId: 'T', displayCode: 'NE4' });
+    station.platforms[0].serviceIds.push('SVC');
+    for (const trip of [...inputs.context.tables['trips.txt']]) {
+      const rows = inputs.context.tables['stop_times.txt'].filter(
+        (row) => row.trip_id === trip.trip_id,
+      );
+      for (let i = 1; i < 20; i++) {
+        const tripId = `${trip.trip_id}-${i}`;
+        inputs.context.tables['trips.txt'].push({ ...trip, trip_id: tripId });
+        inputs.context.tables['stop_times.txt'].push(
+          ...rows.map((row) => ({ ...row, trip_id: tripId })),
+        );
+      }
+    }
+    inputs.context.identity.topology.sha256 = hashBytes(
+      Buffer.from(JSON.stringify(inputs.context.topology)),
+    );
+    const grouped = createScheduledSourceJourneyMappingDraft(
+      inputs.context,
+      inputs.sourceJourneyPolicy,
+      inputs.allocationPolicy,
+      inputs.holidayPolicy,
+      inputs.holidayCalendar,
+    );
+    inputs.sharedServiceMemberships.baseDraftSha256 =
+      groupedScopedReviewDraftSha256(grouped.mapping.mapping);
+  }
   inputs.context.tables['feed_info.txt'] = [
     {
       feed_publisher_name: 'Synthetic fixture',
@@ -122,6 +193,227 @@ function fixture(feedVersion: string | null = '0.1') {
 }
 
 describe('automatic GTFS publication', () => {
+  it('holds a redistribution that reuses a few nearby calls, while accepting a uniform time shift', () => {
+    const ids = Array.from({ length: 10 }, (_, i) => `trip-${i}`);
+    const inputs = (morning: number, minutes = '00') => ({
+      context: {
+        tables: {
+          'trips.txt': ids.map((trip_id) => ({ trip_id, direction_id: '0' })),
+          'stop_times.txt': ids.map((trip_id, i) => ({
+            trip_id,
+            stop_id: 'P',
+            arrival_time: `${i < morning ? '08' : '12'}:${minutes}:00`,
+            departure_time: `${i < morning ? '08' : '12'}:${minutes}:00`,
+          })),
+        },
+      },
+    });
+    const draft = {
+      associationReview: {
+        patterns: [
+          {
+            lineId: 'NEL',
+            supportedServiceDates: ['2026-11-10'],
+            tripIds: ids,
+          },
+        ],
+      },
+    };
+    const requireCheck = (condition: boolean, reason: string) => {
+      if (!condition) throw new Error(reason);
+    };
+    expect(() =>
+      checkAutomaticDailyChanges(
+        inputs(9),
+        draft,
+        inputs(1),
+        draft,
+        extendedPolicy,
+        requireCheck,
+      ),
+    ).toThrow(/distinct timing counterparts/);
+    expect(() =>
+      checkAutomaticDailyChanges(
+        inputs(9),
+        draft,
+        inputs(9, '10'),
+        draft,
+        extendedPolicy,
+        requireCheck,
+      ),
+    ).not.toThrow();
+  });
+
+  it('holds when known boarding permissions move between differently timed trips', () => {
+    const args = fixture('0.1', false, true);
+    args.policy = extendedPolicy;
+    const a = args.tables['stop_times.txt'].filter(
+      (row) => row.trip_id === 'SHARED',
+    );
+    const b = args.tables['stop_times.txt'].filter(
+      (row) => row.trip_id === 'SHARED_NO_PICKUP',
+    );
+    for (let i = 0; i < a.length; i++) {
+      for (const key of ['pickup_type', 'drop_off_type', 'timepoint']) {
+        const x = a[i][key];
+        const y = b[i][key];
+        if (y === undefined) delete a[i][key];
+        else a[i][key] = y;
+        if (x === undefined) delete b[i][key];
+        else b[i][key] = x;
+      }
+    }
+    expect(
+      assessAutomaticUpdate({
+        baseline: args.baselineInputs.context.tables,
+        candidate: args.tables,
+        previousCapture: args.previousCapture,
+        capture: args.capture,
+        policy: args.policy,
+        now: args.now,
+      }).decision,
+    ).toBe('eligible');
+    expect(() => prepareAutomaticRelease(args)).toThrow(
+      /boarding\/access profiles/,
+    );
+  });
+
+  it('uses the completed v2 release as the baseline for the next automatic successor', () => {
+    const args = fixture();
+    args.policy = extendedPolicy;
+    const first = prepareAutomaticRelease(args);
+    const second = prepareAutomaticRelease({
+      ...args,
+      baselineInputs: first.inputs,
+      baselineConfig: {
+        correctionRevision: 1,
+        draftSha256: first.draft.draftSha256,
+      },
+      baselineEvidence: JSON.parse(
+        Buffer.from(first.bundle.files.releaseBytes).toString(),
+      ),
+      baselineIndex: first.bundle.index,
+      previousCapture: args.capture,
+      capture: {
+        ...args.capture,
+        sha256: 'f'.repeat(64),
+        retrieved_at: '2026-11-08T02:00:00Z',
+      },
+      now: '2026-11-08T03:00:00Z',
+      sourceManifest: {
+        ...args.sourceManifest,
+        'stop_times.txt': 'd'.repeat(64),
+      },
+    });
+    expect(second.decision).toBe('ready');
+    expect(second.sourceReview.predecessor.manifestSha256).toBe(
+      first.bundle.index.manifestSha256,
+    );
+    expect(second.coverage.unassignedTripDateCount).toBe(0);
+  });
+
+  it('publishes a new contiguous short working against the dated canonical service', () => {
+    const args = fixture('0.1', true);
+    args.policy = extendedPolicy;
+    for (const trip of args.tables['trips.txt']
+      .filter((trip) => trip.trip_id.startsWith('NEL_TEST_WD'))
+      .slice(0, 8)) {
+      const calls = args.tables['stop_times.txt'].filter(
+        (row) => row.trip_id === trip.trip_id,
+      );
+      calls[0].stop_id = 'Q';
+      calls[1].stop_id = 'R';
+    }
+    const result = prepareAutomaticRelease(args);
+    expect(result.decision).toBe('ready');
+    expect(result.coverage.unassignedTripDateCount).toBe(0);
+  });
+
+  it('publishes a literal special calendar with rebuilt pattern IDs and complete shared memberships', () => {
+    const args = fixture();
+    args.policy = extendedPolicy;
+    const original = args.tables['trips.txt'].filter(
+      (trip) => trip.service_id === 'WD',
+    );
+    args.tables['calendar.txt'].push({
+      ...args.tables['calendar.txt'].find((row) => row.service_id === 'WD'),
+      service_id: 'SPECIAL',
+      start_date: '20261110',
+      end_date: '20261110',
+    });
+    args.tables['calendar_dates.txt'] = [
+      { service_id: 'WD', date: '20261110', exception_type: '2' },
+    ];
+    for (const trip of original) {
+      args.tables['trips.txt'].push({
+        ...trip,
+        trip_id: `special-${trip.trip_id}`,
+        service_id: 'SPECIAL',
+        block_id: 'operational-block',
+      });
+      args.tables['stop_times.txt'].push(
+        ...args.tables['stop_times.txt']
+          .filter((row) => row.trip_id === trip.trip_id)
+          .map((row) => ({ ...row, trip_id: `special-${trip.trip_id}` })),
+      );
+    }
+    const result = prepareAutomaticRelease(args);
+    expect(result.decision).toBe('ready');
+    expect(result.inputs.holidayPolicy.schemaVersion).toBe(2);
+    expect(
+      result.inputs.sharedServiceMemberships.claims.some((claim) =>
+        claim.serviceDates.includes('2026-11-10'),
+      ),
+    ).toBe(true);
+    expect(result.coverage.unassignedTripDateCount).toBe(0);
+    expect(result.coverage.assignedTripDateCount).toBeGreaterThan(0);
+  });
+
+  it('holds special service on a public holiday, changed access and unknown paths', () => {
+    const holiday = fixture();
+    holiday.policy = extendedPolicy;
+    holiday.tables['calendar_dates.txt'] = [
+      { service_id: 'WD', date: '20261109', exception_type: '2' },
+    ];
+    expect(() => prepareAutomaticRelease(holiday)).toThrow(/public holidays/);
+    const access = fixture();
+    access.policy = extendedPolicy;
+    access.tables['stop_times.txt'][0].pickup_type = '3';
+    expect(prepareAutomaticRelease(access).decision).toBe('hold');
+    const path = fixture();
+    path.policy = extendedPolicy;
+    const call = path.tables['stop_times.txt'].find(
+      (row) => row.trip_id === 'NEL_TEST_WD',
+    );
+    if (!call) throw new Error('Missing fixture call');
+    call.stop_id = 'R';
+    expect(() => prepareAutomaticRelease(path)).toThrow(/unresolved/);
+  });
+
+  it('holds date-specific cancellations and timing anomalies under the extended policy', () => {
+    const cancelled = fixture();
+    cancelled.policy = extendedPolicy;
+    cancelled.tables['calendar_dates.txt'] = [
+      { service_id: 'WD', date: '20261110', exception_type: '2' },
+    ];
+    expect(() => prepareAutomaticRelease(cancelled)).toThrow(
+      /entire supported service date/,
+    );
+    const shifted = fixture();
+    shifted.policy = extendedPolicy;
+    shifted.tables['stop_times.txt'][0].arrival_time = '40:00:00';
+    shifted.tables['stop_times.txt'][0].departure_time = '40:00:00';
+    expect(prepareAutomaticRelease(shifted).decision).toBe('hold');
+    const later = fixture();
+    later.policy = extendedPolicy;
+    for (const row of later.tables['stop_times.txt']) {
+      for (const field of ['arrival_time', 'departure_time'])
+        row[field] = row[field].replace(/^25:/, '27:');
+    }
+    expect(() => prepareAutomaticRelease(later)).toThrow(
+      /distinct timing counterparts/,
+    );
+  });
   it('generates exact automated approvals only after reconstructing a complete equivalent mapping', () => {
     const args = fixture();
     const before = structuredClone(args.baselineInputs);

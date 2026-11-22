@@ -10,6 +10,41 @@ import {
 import type { ScopedReviewContext } from './scopedReviewContract.js';
 
 describe('reviewed holiday service dates', () => {
+  it('preserves explicit nonholiday exceptions in v2 while keeping v1 strict', () => {
+    const { context, policy, calendar } = holidayFixture();
+    context.tables['calendar_dates.txt'] = [
+      { service_id: 'WD', date: '20261110', exception_type: '2' },
+      { service_id: 'WD', date: '20261114', exception_type: '1' },
+    ];
+    expect(() =>
+      resolveScheduledHolidayDates(context, policy, calendar),
+    ).toThrow(/explicit source exceptions/);
+    const resolved = resolveScheduledHolidayDates(
+      context,
+      { ...policy, schemaVersion: 2 },
+      calendar,
+    );
+    const weekday = resolved.patterns.find(
+      (pattern) =>
+        pattern.routeId === 'NEL_TEST' && pattern.providerCalendarId === 'WD',
+    );
+    expect(weekday?.serviceDates).not.toContain('2026-11-10');
+    expect(weekday?.serviceDates).toContain('2026-11-14');
+    expect(weekday?.serviceDates).not.toContain('2026-11-09');
+    context.tables['calendar_dates.txt'].push({
+      service_id: 'WD',
+      date: '20261109',
+      exception_type: '2',
+    });
+    expect(() =>
+      resolveScheduledHolidayDates(
+        context,
+        { ...policy, schemaVersion: 2 },
+        calendar,
+      ),
+    ).toThrow(/public holidays/);
+  });
+
   it('allows explicit short-working routes to share a complete family without inventing missing trips', () => {
     const { context, policy, calendar } = holidayFixture();
     context.tables['routes.txt'].push({
