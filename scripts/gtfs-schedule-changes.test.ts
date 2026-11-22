@@ -412,6 +412,81 @@ test('surfaces changed source platform labels even when stop IDs are retained', 
   ).toEqual(['A', 'B']);
 });
 
+test('ignores terminal continuous rules but preserves rules on actual segments', () => {
+  const before = fixture();
+  before['routes.txt'][0].continuous_pickup = '0';
+  before['routes.txt'][0].continuous_drop_off = '0';
+  const after = structuredClone(before);
+  after['stop_times.txt'][1].continuous_pickup = '1';
+  after['stop_times.txt'][1].continuous_drop_off = '1';
+  expect(run(before, after).changes).toEqual([]);
+  after['stop_times.txt'][0].continuous_pickup = '1';
+  const changed = run(before, after);
+  expect(
+    changed.changes[0].patterns.map((pattern) => pattern.status).sort(),
+  ).toEqual(['new-pattern', 'removed-pattern']);
+  expect(
+    Object.values(changed.patternDefinitions).every(
+      (stops) =>
+        stops.at(-1).continuousPickup === '1' &&
+        stops.at(-1).continuousDropOff === '1',
+    ),
+  ).toBe(true);
+});
+
+test('preserves identities and unchanged lines when distinct routes share a display name', () => {
+  const before = fixture();
+  before['routes.txt'][0].route_short_name = 'A';
+  before['routes.txt'].push({
+    ...before['routes.txt'][0],
+    route_id: 'OTHER',
+    route_short_name: 'B',
+  });
+  addTrip(before, 'T2');
+  before['trips.txt'][1].route_id = 'OTHER';
+  const after = structuredClone(before);
+  after['stop_times.txt'][1].arrival_time = '24:19:00';
+  const report = run(before, after);
+  expect(report.changes[0].line).toBe('Test Line (A)');
+  expect(JSON.parse(report.changes[0].lineKey)).toContain('A');
+  expect(report.unchangedLines).toEqual(['Test Line (B)']);
+  expect(Object.keys(report.lineLabels)).toHaveLength(2);
+  const text = renderJourneyChanges(report, String).join('\n');
+  expect(text).toContain('Test Line (A)');
+  expect(text).toContain('Test Line (B) are unchanged');
+});
+
+test('counts arrival-time edits as journey detail changes within retained patterns', () => {
+  const before = fixture();
+  const after = fixture();
+  after['stop_times.txt'][1].arrival_time = '24:19:00';
+  const text = renderJourneyChanges(run(before, after), String).join('\n');
+  expect(text).toContain(
+    'Stopping patterns: 0 added, 0 removed, 1 retained with changed journey details',
+  );
+  expect(text).not.toContain('stopping patterns differ');
+});
+
+test('limits accessibility claims to trip fields and directs stop-level changes to table evidence', () => {
+  const before = fixture();
+  const after = fixture();
+  after['stops.txt'][0].wheelchair_boarding = '2';
+  const report = run(before, after);
+  expect(report.changes).toEqual([]);
+  expect(report.basis).toContain(
+    'trip-level wheelchair_accessible/bikes_allowed',
+  );
+  expect(renderJourneyChanges(report, String).join('\n')).toContain(
+    'Stop-level accessibility changes appear in the table comparison',
+  );
+});
+
+test('rejects trips without stop times before building empty pattern definitions', () => {
+  const after = fixture();
+  after['stop_times.txt'] = [];
+  expect(() => run(fixture(), after)).toThrow('Trip T has no stop times');
+});
+
 test('does not turn missing calendars, frequency schedules, or unavailable evidence into unchanged claims', () => {
   const before = fixture();
   const after = fixture();
