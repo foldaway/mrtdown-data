@@ -34,9 +34,13 @@ advance the baseline only after the exact site import completes.
 - [x] 2026-11-22: Rebased automation onto the merged retention implementation,
   preserving archived-generator execution, cleanup retries and staged-candidate
   recovery. Corrected unversioned source admission; all 962 tests pass.
-- [ ] Merge automation code, deploy the site completion endpoint,
-  then follow the ordered activation and recovery guide. Verify a held capture
-  through the production workflow before allowing the first eligible successor.
+- [x] 2026-11-22: Merged #482, deployed site #315 to staging and production,
+  and completed the user-authorized cutover. Compact inputs, scoped retention
+  and automatic publication are enabled. The live exception run held #479 and
+  skipped deployment; the published and retained baseline stayed identical.
+- [x] 2026-11-22: Fixed pre-seeded ZIP timestamp compatibility in #490 before
+  enabling automatic pruning. All 971 tests pass; the actual legacy ready ZIP
+  reconstructs byte-for-byte without changing its immutable record.
 
 ## Surprises & Discoveries
 
@@ -51,6 +55,10 @@ advance the baseline only after the exact site import completes.
   exact manifest. The source-admission review also binds predecessor/successor
   identities. Replacing old hashes or reusing an old approval unchanged is not
   sufficient to admit the new source.
+- Activation found older ready ZIPs encoded the fixed epoch in local time.
+  Raw output parity was insufficient to prove exact container recovery. #490
+  restores metadata only when the complete recorded ZIP digest matches, and
+  cleanup now verifies that digest before deleting a ready bundle.
 - The November applicability policy expires on December 1. An automated builder
   must explicitly establish and report each candidate's service-date window;
   it must not silently extend the old assumption into December.
@@ -70,11 +78,41 @@ advance the baseline only after the exact site import completes.
 
 ## Outcomes & Retrospective
 
-Implementation and local validation are complete. The site completion API is
-[site PR #315](https://github.com/foldaway/mrtdown-site/pull/315). Production
-activation follows compatible workflow/site merges and the
-[activation guide](../../gtfs/operations/automatic-publication.md#activation). No new source has been published and no live input
-pin, mapping approval or production source-admission record has changed.
+Automatic publication and release retention were activated on 2026-11-22 at the
+user's request. The standing policy remains `timing-only-v1`; uncertain mappings,
+calendar changes, terms changes and unsupported service dates require review.
+No new source was promoted during the cutover.
+
+- [Site #315](https://github.com/foldaway/mrtdown-site/pull/315) is deployed to
+  both production Machines at `bc12feeb50ea28b1bf57c1fe8fe3069305b7bf4c`.
+  [Production deployment](https://github.com/foldaway/mrtdown-site/actions/runs/44998584919)
+  succeeded. The fixed production release pin is cleared; authenticated status
+  requests work and unauthenticated requests return 401.
+- The protected `github-pages` environment has
+  `MRTDOWN_GTFS_RELEASE_RETENTION_ENABLED=true` and
+  `MRTDOWN_GTFS_AUTOMATIC_PUBLICATION_ENABLED=true`. A dedicated key has default
+  permissions disabled and exactly the documented retention policy. Conditional
+  lock write/read/delete was verified without changing release pointers.
+- Inputs use `recipe-zip`, pinned to
+  `54eeaf3ee7c8482be825b0f79b6a035acfa9e97f2978deb4c9a451333f23e297`.
+  [Compact deployment](https://github.com/foldaway/mrtdown-data/actions/runs/44999548086)
+  verified public bytes and retention. Its site pull
+  `wfr_yN1g7ng3R8gPS3InV_amf` finished `RUN_SUCCESS` with the exact approved index.
+  Current retained release is
+  `ac2786e3a0853a8dd42c6caf45ec2259c8821f8958ca0ef15ed5d12bd8509c2e`;
+  there is no previous release yet. The old private archive remains a rollback input.
+- [Live exception verification](https://github.com/foldaway/mrtdown-data/actions/runs/45000028129)
+  passed both inspections, retained-baseline acquisition and authenticated site
+  preflight. Automatic preparation held changed calendars and journey metadata;
+  Pages deployment and site pull were skipped. The existing #479 review PR now
+  displays that explanation. Final checks found the same public/retained index
+  and no writer lock.
+
+The existing November 9–30 service-date window remains enforced. December
+coverage and the #479 calendar/path decisions remain separate reviewed data work.
+Use the [activation and recovery guide](../../gtfs/operations/automatic-publication.md)
+for operations; set the automatic flag to `paused` to stop successors while
+preserving the latest completed release for normal deployments.
 
 ## Context
 

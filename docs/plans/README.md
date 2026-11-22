@@ -40,10 +40,6 @@ and its companion [execution plan guide](https://developers.openai.com/cookbook/
 
 ## Active
 
-- [Automatic GTFS publication](active/gtfs-automatic-publication.md) covers
-  checked routine successors, exception review and the site completion handoff.
-- [GTFS release retention](active/gtfs-release-retention.md) covers reproducible
-  release inputs and bounded current/previous ready bundles.
 - [Direct-to-main ingestion reliability](active/direct-main-ingestion.md) covers
   historical replay, semantic guards, canonical issue audits, shadow mode, and
   staged removal of the automated ingestion PR queue.
@@ -60,6 +56,10 @@ and its companion [execution plan guide](https://developers.openai.com/cookbook/
 
 ## Completed
 
+- [Automatic GTFS publication](completed/gtfs-automatic-publication.md):
+  checked routine successors, exception review and verified production activation.
+- [GTFS release retention](completed/gtfs-release-retention.md): compact reviewed
+  inputs, exact replay and bounded current/previous ready bundles.
 - [Crowdsourced reports canonical ingest](completed/crowdsourced-reports.md):
   public report payload contract and canonical evidence ingestion path.
 - [Data overhaul split](completed/data-overhaul-split.md): historical split

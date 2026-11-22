@@ -16,7 +16,9 @@ production activation after compatible workflows merge.
   and abandoned staged bundles; deterministic regression checks pass.
 - [x] Split claim scope, compact inputs, recipe/replay, storage and Pages integration
   into focused PRs based on current main, preserving the reviewed behavior.
-- [ ] Merge prerequisites in order and complete the documented production adoption.
+- [x] 2026-11-22: Prerequisites and #481 are merged. The user authorized
+  activation; compact inputs and scoped retention passed production adoption.
+  Exact legacy ZIP reconstruction was fixed in #490; all 971 tests pass.
 
 ## Surprises & Discoveries
 
@@ -47,12 +49,15 @@ production activation after compatible workflows merge.
 The [original validation record](https://github.com/foldaway/mrtdown-data/blob/aa118599d480f190f50414c9bc6afe069ffd7ba7/docs/plans/active/gtfs-release-retention.md)
 contains the exact release hashes, object sizes, scoped-key checks and staged
 recipe pin. The recipe is 16,017 bytes and the ready bundle is 4,583,289 bytes.
-Private history is seeded with the approved November release. This plan does not
-claim that opt-in retention or automatic publication has been activated.
+Private history is seeded with the approved November release. Scoped retention
+was activated on 2026-11-22 and verified against the deployed release index.
+The [automatic publication cutover record](gtfs-automatic-publication.md#outcomes--retrospective)
+links the deployment, completed site import and live exception hold. The original
+legacy archive remains available for rollback.
 
 ## Context
 
-The existing input pin is the legacy `a0fc771a...` archive. The staged recipe SHA-256
+At planning start the input pin was the legacy `a0fc771a...` archive. The active recipe SHA-256
 is `54eeaf3ee7c8482be825b0f79b6a035acfa9e97f2978deb4c9a451333f23e297`.
 The private bucket is `mrtdown-datamall-snapshots`; sources remain crawler-owned.
 
