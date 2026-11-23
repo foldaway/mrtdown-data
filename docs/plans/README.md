@@ -40,6 +40,9 @@ and its companion [execution plan guide](https://developers.openai.com/cookbook/
 
 ## Active
 
+- [LTA facilities maintenance ingestion](active/datamall-facilities-maintenance.md)
+  covers crawler-owned lift maintenance acquisition, source change detection,
+  canonical infra issues, and staged activation.
 - [Direct-to-main ingestion reliability](active/direct-main-ingestion.md) covers
   historical replay, semantic guards, canonical issue audits, shadow mode, and
   staged removal of the automated ingestion PR queue.
