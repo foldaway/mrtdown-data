@@ -13,7 +13,7 @@
     "check": "npm run lint && npm run check:boundaries && npm run check:docs",
     "check:boundaries": "node scripts/check-package-boundaries.mjs",
     "check:docs": "node scripts/check-docs.mjs",
-    "lint": "biome check AGENTS.md CLAUDE.md README.md docs fixtures .changeset .github/copilot-instructions.md biome.json package.json turbo.json vitest.config.ts packages scripts",
+    "lint": "biome check AGENTS.md CLAUDE.md README.md docs releases fixtures .changeset .github/copilot-instructions.md biome.json package.json turbo.json vitest.config.ts packages scripts",
     "data:import:lta-station-exits": "node scripts/import-lta-station-exits.mjs",
     "data:import:public-holidays": "npm run build:fs && node scripts/import-public-holidays.mjs",
     "data:platforms:infer": "node scripts/infer-station-platforms.mjs",

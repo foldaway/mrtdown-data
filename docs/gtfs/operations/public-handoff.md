@@ -88,11 +88,13 @@ the PR body when it fits the size budget. The description is capped at 60,000
 Unicode characters and links to the exact committed report. Large reports keep
 their complete Markdown/JSON evidence; only the description omits detailed
 examples or shortens the overview. Reports are generated in the read-only job;
-the write job copies
-only the exact hash-named Markdown and JSON files. Existing PRs,
-including closed ones, are reused on replay. The job uses the repository's
-GitHub Actions permission to create PRs. Canonical mapping review and timetable
-release approval remain separate steps.
+the write job copies the exact hash-named Markdown and JSON files. A qualifying
+preparation also proposes `releases/gtfs.json`, containing the checked mapping and
+release inputs. Existing open PRs are updated on replay; a new run after a closed
+review uses a separate branch and preserves its original evidence. The job uses
+the repository's GitHub Actions permission to create PRs. See
+[Git-defined publication](automatic-publication.md) for qualification, merge and
+the standard Pages deployment.
 
 ### Comparison baseline and review scope
 
@@ -100,8 +102,9 @@ release approval remain separate steps.
 capture used for comparison. Its initial value is the source of the approved
 November 9–30 timetable, verified against the public manifest and release index.
 To accept another comparison baseline, change its `captureKey` and evidence in a
-reviewed PR. Merging a capture record does not advance this pointer or publish a
-timetable. A later public deployment also does not silently change the pointer.
+reviewed PR. Merging a capture record does not advance this comparison pointer.
+Publication follows a separately reviewed `releases/gtfs.json` change; a later
+public deployment does not silently change the comparison pointer.
 
 The generator downloads the baseline from the same trusted origin and verifies
 both receipts and ZIP hashes before comparing. It reuses
@@ -159,8 +162,9 @@ identifies the candidate ZIP hash. Missing findings, invalid candidates, and
 unavailable baselines are reported explicitly. If summary generation or artifact
 transfer fails, the write job still creates a receipt-only PR identifying the
 missing evidence. Full Actions artifacts expire; the committed Markdown and JSON
-retain the compact review evidence. Replays preserve existing PRs and their
-evidence, including closed PRs, rather than replacing a review's baseline.
+retain the compact review evidence. Replays retain the original source comparison
+and refresh only the proposed desired release on an open PR. Closed reviews remain
+unchanged; a later attempt can open a fresh review.
 
 After building the CLI, generate the same review locally with:
 

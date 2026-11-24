@@ -44,13 +44,10 @@ async function harness() {
     resolve('scripts/gtfs-review-pr-body.mjs'),
     join(repo, 'scripts/gtfs-review-pr-body.mjs'),
   );
-  await copyFile(
-    resolve('scripts/gtfs-publication-review.mjs'),
-    join(repo, 'scripts/gtfs-publication-review.mjs'),
-  );
   git('add', 'README.md', 'scripts');
   git('commit', '-m', 'test: seed');
   git('remote', 'add', 'origin', join(root, 'remote.git'));
+  git('push', 'origin', 'main');
   const sha256 = 'a'.repeat(64);
   const record = `docs/gtfs/captures/${sha256}.md`;
   const reviewDir = join(runner, 'gtfs-review');
@@ -61,13 +58,10 @@ async function harness() {
     `#!/bin/bash
 set -euo pipefail
 if [[ "$1" == api ]]; then
-  if [[ "$2" == */files ]]; then
-    cat "$RUNNER_TEMP/pr-files"
-  elif [[ "$2" == */runs/* ]]; then
-    cat "$RUNNER_TEMP/preparation-run.json"
-  elif [[ "$2" == */artifacts/* ]]; then
-    cat "$RUNNER_TEMP/preparation-artifact.json"
-  elif [[ -f "$RUNNER_TEMP/existing-pr" ]]; then cat "$RUNNER_TEMP/existing-pr"; fi
+  if [[ -f "$RUNNER_TEMP/existing-pr" ]]; then
+    if [[ "$*" == *state=open* && ! -f "$RUNNER_TEMP/pr-state" ]]; then exit 0; fi
+    cat "$RUNNER_TEMP/existing-pr"
+  fi
 elif [[ "$1" == pr && "$2" == view ]]; then
   if [[ -f "$RUNNER_TEMP/pr-state" ]]; then cat "$RUNNER_TEMP/pr-state"; else echo CLOSED; fi
 elif [[ "$1" == pr && ( "$2" == create || "$2" == edit ) ]]; then
@@ -99,6 +93,7 @@ fi
     GITHUB_REPOSITORY_OWNER: 'example',
     GITHUB_SERVER_URL: 'https://github.com',
     GITHUB_RUN_ID: '123',
+    GITHUB_RUN_ATTEMPT: '1',
     BASE_BRANCH: 'main',
     SNAPSHOT_ORIGIN: 'https://sources.example.com',
     SNAPSHOT_SHA256: sha256,
@@ -109,7 +104,7 @@ fi
     REVIEW_DIR: reviewDir,
     AUTOMATIC_REPORT: join(runner, 'automatic-publication.md'),
     AUTOMATIC_RESULT: 'skipped',
-    PREPARED_ARTIFACT_ID: '',
+    PREPARATION_DECISION: 'disabled',
   };
   const run = () =>
     execFileSync('bash', ['-e', '-o', 'pipefail', '-c', script], {
@@ -146,7 +141,11 @@ test('publishes the durable report, retries from committed evidence, and preserv
     join(h.runner, 'existing-pr'),
     'https://github.com/example/repo/pull/1\n',
   );
-  expect(h.run()).toContain('Snapshot review already closed');
+  h.run();
+  // The closed review branch keeps its immutable source report.
+  expect(h.git('show', `origin/gtfs-review/${h.sha256}:${h.record}`)).toBe(
+    markdown,
+  );
 });
 
 test('updates an open exception PR with the current automatic hold while preserving source evidence', async () => {
@@ -203,7 +202,7 @@ test('missing summary artifacts still produce a PR explaining the missing compar
   );
 });
 
-test('ready reviews commit the exact request, refresh it on rerun and remove it when preparation is held', async () => {
+test('ready reviews commit the desired definition, refresh it and restore main on holds', async () => {
   const h = await harness();
   await writeFile(
     join(h.reviewDir, `${h.sha256}.md`),
@@ -212,141 +211,66 @@ test('ready reviews commit the exact request, refresh it on rerun and remove it 
   await writeFile(join(h.reviewDir, `${h.sha256}.json`), '{}\n');
   const automatic = join(h.runner, 'gtfs-automatic');
   await mkdir(automatic);
-  const candidate = {
+  const definition = {
     schemaVersion: 1,
-    captureSha256: h.sha256,
-    manifestSha256: 'b'.repeat(64),
-    predecessorManifestSha256: 'c'.repeat(64),
-    contentSha256: 'd'.repeat(64),
-    policySha256: 'e'.repeat(64),
-    runId: '123',
+    documentKind: 'gtfs-release-definition',
+    capture: { sha256: h.sha256 },
+    releaseIndex: { manifestSha256: 'b'.repeat(64) },
   };
-  const candidatePath = join(automatic, 'publication-candidate.json');
-  await writeFile(candidatePath, JSON.stringify(candidate));
-  h.env.PREPARED_ARTIFACT_ID = '456';
+  const candidatePath = join(automatic, 'release-definition.json');
+  await writeFile(candidatePath, JSON.stringify(definition));
+  h.env.PREPARATION_DECISION = 'ready';
   h.run();
-  const requestPath = `docs/gtfs/captures/${h.sha256}.publication.json`;
-  expect(JSON.parse(h.git('show', `HEAD:${requestPath}`))).toEqual({
-    ...candidate,
-    artifactId: '456',
-  });
+  const path = 'releases/gtfs.json';
+  expect(JSON.parse(h.git('show', `HEAD:${path}`))).toEqual(definition);
   expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toContain(
-    'Merging this PR authorizes deployment',
+    'standard Pages workflow',
   );
-  candidate.runId = '124';
-  await writeFile(candidatePath, JSON.stringify(candidate));
-  h.env.PREPARED_ARTIFACT_ID = '457';
+  definition.releaseIndex.manifestSha256 = 'c'.repeat(64);
+  await writeFile(candidatePath, JSON.stringify(definition));
   h.run();
-  expect(JSON.parse(h.git('show', `HEAD:${requestPath}`))).toEqual({
-    ...candidate,
-    artifactId: '457',
-  });
-  h.env.PREPARED_ARTIFACT_ID = '';
+  expect(JSON.parse(h.git('show', `HEAD:${path}`))).toEqual(definition);
+  // A failed/held refresh cannot merge an older candidate.
+  h.env.PREPARATION_DECISION = 'hold';
   await rm(candidatePath);
   h.run();
-  expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(
-    requestPath,
-  );
+  expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(path);
   expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toContain(
     'Publication is held',
   );
+  // After adoption a hold restores main's desired timetable instead of removing it.
+  const branch = h.git('rev-parse', 'HEAD').trim();
+  h.git('checkout', 'main');
+  await mkdir(join(h.repo, 'releases'), { recursive: true });
+  await writeFile(join(h.repo, path), '{"completed":"main"}\n');
+  h.git('add', path);
+  h.git('commit', '-m', 'test: adopt a definition');
+  h.git('push', 'origin', 'main');
+  h.git('checkout', '--detach', branch);
+  await writeFile(candidatePath, JSON.stringify(definition));
+  h.env.PREPARATION_DECISION = 'ready';
+  h.run();
+  h.env.PREPARATION_DECISION = 'hold';
+  await rm(candidatePath);
+  h.run();
+  expect(JSON.parse(h.git('show', `HEAD:${path}`))).toEqual({
+    completed: 'main',
+  });
 });
 
-test('merged publication reads the request at the merge commit, supports rebase merges and skips evidence-only PRs', async () => {
+test('missing comparisons never change the desired release even when preparation produced a definition', async () => {
   const h = await harness();
-  const request = {
-    schemaVersion: 1,
-    captureSha256: h.sha256,
-    manifestSha256: 'b'.repeat(64),
-    predecessorManifestSha256: 'c'.repeat(64),
-    contentSha256: 'd'.repeat(64),
-    policySha256: 'e'.repeat(64),
-    runId: '123',
-    artifactId: '456',
-  };
-  const path = `docs/gtfs/captures/${h.sha256}.publication.json`;
-  await mkdir(join(h.repo, 'docs/gtfs/captures'), { recursive: true });
-  await writeFile(join(h.repo, path), JSON.stringify(request));
-  h.git('add', path);
-  h.git('commit', '-m', 'test: prepared request');
-  // A rebase merge's last commit need not change the publication request.
-  await writeFile(join(h.repo, 'README.md'), 'Changed by the last PR commit\n');
-  h.git('add', 'README.md');
-  h.git('commit', '-m', 'test: final rebased commit');
-  const event = {
-    action: 'closed',
-    number: 1,
-    pull_request: {
-      merged: true,
-      merge_commit_sha: h.git('rev-parse', 'HEAD').trim(),
-      head: {
-        ref: `gtfs-review/${h.sha256}`,
-        repo: { full_name: 'foldaway/mrtdown-data' },
-      },
-      base: { ref: 'main', repo: { full_name: 'foldaway/mrtdown-data' } },
-    },
-  };
-  await writeFile(join(h.runner, 'event.json'), JSON.stringify(event));
-  await writeFile(join(h.runner, 'pr-files'), `${path}\nREADME.md\n`);
+  await mkdir(join(h.runner, 'gtfs-automatic'));
   await writeFile(
-    join(h.runner, 'preparation-run.json'),
+    join(h.runner, 'gtfs-automatic/release-definition.json'),
     JSON.stringify({
-      id: 123,
-      path: '.github/workflows/gtfs-capture.yml',
-      event: 'workflow_dispatch',
-      head_branch: 'main',
-      head_repository: { full_name: 'foldaway/mrtdown-data' },
-      conclusion: 'success',
-      run_attempt: 1,
+      documentKind: 'gtfs-release-definition',
+      capture: { sha256: h.sha256 },
     }),
   );
-  const artifact = {
-    id: 456,
-    name: 'gtfs-prepared-123-1',
-    expired: false,
-    workflow_run: { id: 123 },
-  };
-  await writeFile(
-    join(h.runner, 'preparation-artifact.json'),
-    JSON.stringify(artifact),
-  );
-  const output = join(h.runner, 'publication-output');
-  const run = () =>
-    execFileSync(
-      process.execPath,
-      [resolve('scripts/gtfs-publication-review.mjs'), 'merged'],
-      {
-        cwd: h.repo,
-        env: {
-          ...h.env,
-          GITHUB_REPOSITORY: 'foldaway/mrtdown-data',
-          GITHUB_EVENT_PATH: join(h.runner, 'event.json'),
-          GITHUB_OUTPUT: output,
-          GITHUB_STEP_SUMMARY: join(h.runner, 'summary'),
-        },
-        stdio: ['ignore', 'pipe', 'pipe'],
-      },
-    );
-  // Working-tree edits cannot replace the request actually approved by the merge.
-  await writeFile(
-    join(h.repo, path),
-    JSON.stringify({ ...request, artifactId: '999' }),
-  );
-  run();
-  expect(await readFile(output, 'utf8')).toBe(
-    `request=${JSON.stringify(request)}\n`,
-  );
-  await rm(output);
-  await writeFile(
-    join(h.runner, 'preparation-artifact.json'),
-    JSON.stringify({ ...artifact, expired: true }),
-  );
-  expect(run).toThrow();
-  expect(await readFile(output, 'utf8').catch(() => null)).toBeNull();
-  await writeFile(join(h.runner, 'pr-files'), 'README.md\n');
-  run();
-  expect(await readFile(output, 'utf8').catch(() => null)).toBeNull();
-  expect(await readFile(join(h.runner, 'summary'), 'utf8')).toContain(
-    'no prepared publication request',
+  h.env.PREPARATION_DECISION = 'ready';
+  h.run();
+  expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(
+    'releases/gtfs.json',
   );
 });

@@ -289,8 +289,10 @@ and the fixture export omit combined timetable output.
 The main-branch Pages workflow uses the `github-pages` environment variable
 `MRTDOWN_COMBINED_TIMETABLE_ENABLED`. Leave it unset or set to `false` until
 publication and production import are authorized. When set to `true`, every
-routine deployment rebuilds the pinned release against the canonical data it
-ships. A missing input, changed terms, incompatible topology or mismatched
+routine deployment rebuilds the desired release in `releases/gtfs.json` against
+the canonical data it ships. Before the first definition is adopted, the verified
+completed retained release or legacy pin provides bootstrap inputs. See
+[Git-defined publication](automatic-publication.md#publication-and-failure-handling). A missing input, changed terms, incompatible topology or mismatched
 release digest stops the job before upload. Keep the variable enabled and the
 inputs available for subsequent deployments. Clearing the variable publishes a
 GTFS-free archive on the next successful deploy.
