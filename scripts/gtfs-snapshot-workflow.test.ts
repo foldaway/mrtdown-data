@@ -44,7 +44,11 @@ async function harness() {
     resolve('scripts/gtfs-review-pr-body.mjs'),
     join(repo, 'scripts/gtfs-review-pr-body.mjs'),
   );
-  git('add', 'README.md', 'scripts/gtfs-review-pr-body.mjs');
+  await copyFile(
+    resolve('scripts/gtfs-publication-review.mjs'),
+    join(repo, 'scripts/gtfs-publication-review.mjs'),
+  );
+  git('add', 'README.md', 'scripts');
   git('commit', '-m', 'test: seed');
   git('remote', 'add', 'origin', join(root, 'remote.git'));
   const sha256 = 'a'.repeat(64);
@@ -57,9 +61,12 @@ async function harness() {
     `#!/bin/bash
 set -euo pipefail
 if [[ "$1" == api ]]; then
-  if [[ "$2" == --method && "$3" == PATCH ]]; then
-    cat > "$RUNNER_TEMP/patch-request.json"
-    echo '{}'
+  if [[ "$2" == */files ]]; then
+    cat "$RUNNER_TEMP/pr-files"
+  elif [[ "$2" == */runs/* ]]; then
+    cat "$RUNNER_TEMP/preparation-run.json"
+  elif [[ "$2" == */artifacts/* ]]; then
+    cat "$RUNNER_TEMP/preparation-artifact.json"
   elif [[ -f "$RUNNER_TEMP/existing-pr" ]]; then cat "$RUNNER_TEMP/existing-pr"; fi
 elif [[ "$1" == pr && "$2" == view ]]; then
   if [[ -f "$RUNNER_TEMP/pr-state" ]]; then cat "$RUNNER_TEMP/pr-state"; else echo CLOSED; fi
@@ -102,6 +109,7 @@ fi
     REVIEW_DIR: reviewDir,
     AUTOMATIC_REPORT: join(runner, 'automatic-publication.md'),
     AUTOMATIC_RESULT: 'skipped',
+    PREPARED_ARTIFACT_ID: '',
   };
   const run = () =>
     execFileSync('bash', ['-e', '-o', 'pipefail', '-c', script], {
@@ -112,63 +120,6 @@ fi
     });
   return { root, runner, repo, sha256, record, reviewDir, git, run, env };
 }
-
-test('closes only the exact completed snapshot review and replaces the stale hold with a receipt', async () => {
-  const h = await harness();
-  const review = {
-    number: 483,
-    head: {
-      repo: { full_name: 'foldaway/mrtdown-data' },
-      ref: `gtfs-review/${h.sha256}`,
-      sha: 'c'.repeat(40),
-    },
-    body: '## Automatic publication\n\nDecision: **hold**.\n\n# LTA train GTFS snapshot\n\nOriginal evidence\n',
-  };
-  const run = (decision: string) =>
-    execFileSync(
-      process.execPath,
-      [resolve('scripts/close-published-gtfs-review.mjs')],
-      {
-        env: {
-          ...h.env,
-          GITHUB_REPOSITORY: 'foldaway/mrtdown-data',
-          AUTOMATIC_DECISION: decision,
-        },
-        stdio: ['ignore', 'pipe', 'pipe'],
-      },
-    );
-  await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
-  expect(() => run('hold')).toThrow();
-  expect(() => run('unchanged')).toThrow();
-  review.head.repo.full_name = 'someone/fork';
-  await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
-  expect(() => run('published')).toThrow();
-  expect(
-    await readFile(join(h.runner, 'patch-request.json'), 'utf8').catch(
-      () => null,
-    ),
-  ).toBeNull();
-  review.head.repo.full_name = 'foldaway/mrtdown-data';
-  await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
-  run('published');
-  const patch = JSON.parse(
-    await readFile(join(h.runner, 'patch-request.json'), 'utf8'),
-  );
-  expect(patch.state).toBe('closed');
-  expect(patch.body).toContain('Original evidence');
-  expect(patch.body).toContain('actions/runs/123');
-  expect(patch.body).not.toContain('**hold**');
-  review.body = `# LTA train GTFS snapshot\n\n${'Detailed source evidence.\n'.repeat(3000)}`;
-  await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
-  run('published');
-  const large = JSON.parse(
-    await readFile(join(h.runner, 'patch-request.json'), 'utf8'),
-  );
-  expect(Array.from(large.body).length).toBeLessThanOrEqual(60_000);
-  expect(large.body).toContain(
-    `[Read the complete capture report](https://github.com/foldaway/mrtdown-data/blob/${review.head.sha}/docs/gtfs/captures/${h.sha256}.md).`,
-  );
-});
 
 test('publishes the durable report, retries from committed evidence, and preserves closed PRs', async () => {
   const h = await harness();
@@ -246,10 +197,156 @@ test('missing summary artifacts still produce a PR explaining the missing compar
   const body = await readFile(join(h.runner, 'created-body.md'), 'utf8');
   expect(body).toContain('**Comparison and findings summary unavailable:**');
   expect(body).toContain('Independent validator result `failure`');
-  expect(body).toContain(
-    'mapping approval and timetable publication remain separate',
-  );
+  expect(body).toContain('Merging this record retains evidence only');
   expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(
     `${h.sha256}.json`,
+  );
+});
+
+test('ready reviews commit the exact request, refresh it on rerun and remove it when preparation is held', async () => {
+  const h = await harness();
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.md`),
+    '# Snapshot\n\nSource changes\n',
+  );
+  await writeFile(join(h.reviewDir, `${h.sha256}.json`), '{}\n');
+  const automatic = join(h.runner, 'gtfs-automatic');
+  await mkdir(automatic);
+  const candidate = {
+    schemaVersion: 1,
+    captureSha256: h.sha256,
+    manifestSha256: 'b'.repeat(64),
+    predecessorManifestSha256: 'c'.repeat(64),
+    contentSha256: 'd'.repeat(64),
+    policySha256: 'e'.repeat(64),
+    runId: '123',
+  };
+  const candidatePath = join(automatic, 'publication-candidate.json');
+  await writeFile(candidatePath, JSON.stringify(candidate));
+  h.env.PREPARED_ARTIFACT_ID = '456';
+  h.run();
+  const requestPath = `docs/gtfs/captures/${h.sha256}.publication.json`;
+  expect(JSON.parse(h.git('show', `HEAD:${requestPath}`))).toEqual({
+    ...candidate,
+    artifactId: '456',
+  });
+  expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toContain(
+    'Merging this PR authorizes deployment',
+  );
+  candidate.runId = '124';
+  await writeFile(candidatePath, JSON.stringify(candidate));
+  h.env.PREPARED_ARTIFACT_ID = '457';
+  h.run();
+  expect(JSON.parse(h.git('show', `HEAD:${requestPath}`))).toEqual({
+    ...candidate,
+    artifactId: '457',
+  });
+  h.env.PREPARED_ARTIFACT_ID = '';
+  await rm(candidatePath);
+  h.run();
+  expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(
+    requestPath,
+  );
+  expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toContain(
+    'Publication is held',
+  );
+});
+
+test('merged publication reads the request at the merge commit, supports rebase merges and skips evidence-only PRs', async () => {
+  const h = await harness();
+  const request = {
+    schemaVersion: 1,
+    captureSha256: h.sha256,
+    manifestSha256: 'b'.repeat(64),
+    predecessorManifestSha256: 'c'.repeat(64),
+    contentSha256: 'd'.repeat(64),
+    policySha256: 'e'.repeat(64),
+    runId: '123',
+    artifactId: '456',
+  };
+  const path = `docs/gtfs/captures/${h.sha256}.publication.json`;
+  await mkdir(join(h.repo, 'docs/gtfs/captures'), { recursive: true });
+  await writeFile(join(h.repo, path), JSON.stringify(request));
+  h.git('add', path);
+  h.git('commit', '-m', 'test: prepared request');
+  // A rebase merge's last commit need not change the publication request.
+  await writeFile(join(h.repo, 'README.md'), 'Changed by the last PR commit\n');
+  h.git('add', 'README.md');
+  h.git('commit', '-m', 'test: final rebased commit');
+  const event = {
+    action: 'closed',
+    number: 1,
+    pull_request: {
+      merged: true,
+      merge_commit_sha: h.git('rev-parse', 'HEAD').trim(),
+      head: {
+        ref: `gtfs-review/${h.sha256}`,
+        repo: { full_name: 'foldaway/mrtdown-data' },
+      },
+      base: { ref: 'main', repo: { full_name: 'foldaway/mrtdown-data' } },
+    },
+  };
+  await writeFile(join(h.runner, 'event.json'), JSON.stringify(event));
+  await writeFile(join(h.runner, 'pr-files'), `${path}\nREADME.md\n`);
+  await writeFile(
+    join(h.runner, 'preparation-run.json'),
+    JSON.stringify({
+      id: 123,
+      path: '.github/workflows/gtfs-capture.yml',
+      event: 'workflow_dispatch',
+      head_branch: 'main',
+      head_repository: { full_name: 'foldaway/mrtdown-data' },
+      conclusion: 'success',
+      run_attempt: 1,
+    }),
+  );
+  const artifact = {
+    id: 456,
+    name: 'gtfs-prepared-123-1',
+    expired: false,
+    workflow_run: { id: 123 },
+  };
+  await writeFile(
+    join(h.runner, 'preparation-artifact.json'),
+    JSON.stringify(artifact),
+  );
+  const output = join(h.runner, 'publication-output');
+  const run = () =>
+    execFileSync(
+      process.execPath,
+      [resolve('scripts/gtfs-publication-review.mjs'), 'merged'],
+      {
+        cwd: h.repo,
+        env: {
+          ...h.env,
+          GITHUB_REPOSITORY: 'foldaway/mrtdown-data',
+          GITHUB_EVENT_PATH: join(h.runner, 'event.json'),
+          GITHUB_OUTPUT: output,
+          GITHUB_STEP_SUMMARY: join(h.runner, 'summary'),
+        },
+        stdio: ['ignore', 'pipe', 'pipe'],
+      },
+    );
+  // Working-tree edits cannot replace the request actually approved by the merge.
+  await writeFile(
+    join(h.repo, path),
+    JSON.stringify({ ...request, artifactId: '999' }),
+  );
+  run();
+  expect(await readFile(output, 'utf8')).toBe(
+    `request=${JSON.stringify(request)}\n`,
+  );
+  await rm(output);
+  await writeFile(
+    join(h.runner, 'preparation-artifact.json'),
+    JSON.stringify({ ...artifact, expired: true }),
+  );
+  expect(run).toThrow();
+  expect(await readFile(output, 'utf8').catch(() => null)).toBeNull();
+  await writeFile(join(h.runner, 'pr-files'), 'README.md\n');
+  run();
+  expect(await readFile(output, 'utf8').catch(() => null)).toBeNull();
+  expect(await readFile(join(h.runner, 'summary'), 'utf8')).toContain(
+    'no prepared publication request',
   );
 });

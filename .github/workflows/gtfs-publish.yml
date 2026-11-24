@@ -1,0 +1,50 @@
+name: Publish merged GTFS review
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  authorize:
+    if: >-
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      startsWith(github.event.pull_request.head.ref, 'gtfs-review/')
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+    outputs:
+      request: ${{ steps.review.outputs.request }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+      - name: Read the exact merged publication request
+        id: review
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/gtfs-publication-review.mjs merged
+
+  publish:
+    needs: authorize
+    if: needs.authorize.outputs.request != ''
+    permissions:
+      actions: read
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages-deploy.yml
+    with:
+      reviewed_request: ${{ needs.authorize.outputs.request }}
+      validated_capture_sha256: ${{ fromJSON(needs.authorize.outputs.request).captureSha256 }}
+    secrets: inherit

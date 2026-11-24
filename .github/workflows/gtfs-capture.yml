@@ -100,27 +100,29 @@ jobs:
             ${{ runner.temp }}/gtfs-review/*.json
           if-no-files-found: error
 
-  automatic:
+  prepare:
     needs: inspect
     if: >-
       ${{ !cancelled() && needs.inspect.outputs.independent-outcome == 'success' &&
           needs.inspect.outputs.inspection-outcome == 'success' &&
           github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
     permissions:
+      actions: read
       contents: read
       pages: write
       id-token: write
     uses: ./.github/workflows/pages-deploy.yml
     with:
+      prepare_only: true
       capture_key: ${{ github.event.client_payload.capture_key || inputs.capture_key }}
       validated_capture_sha256: ${{ needs.inspect.outputs.sha256 }}
     secrets: inherit
 
   review:
-    needs: [inspect, automatic]
+    needs: [inspect, prepare]
     if: >-
       ${{ !cancelled() && needs.inspect.outputs.sha256 != '' &&
-          needs.automatic.outputs.decision != 'published' && needs.automatic.outputs.decision != 'unchanged' &&
+          needs.prepare.outputs.decision != 'unchanged' &&
           github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
     runs-on: ubuntu-latest
     permissions:
@@ -158,7 +160,8 @@ jobs:
           ARTIFACT_URL: ${{ needs.inspect.outputs.artifact-url }}
           REVIEW_DIR: ${{ runner.temp }}/gtfs-review
           AUTOMATIC_REPORT: ${{ runner.temp }}/gtfs-automatic/automatic-publication.md
-          AUTOMATIC_RESULT: ${{ needs.automatic.result }}
+          AUTOMATIC_RESULT: ${{ needs.prepare.result }}
+          PREPARED_ARTIFACT_ID: ${{ needs.prepare.outputs.prepared_artifact_id }}
         run: |
           review_branch="gtfs-review/$SNAPSHOT_SHA256"
           review_ref="refs/heads/$review_branch"
@@ -198,7 +201,7 @@ jobs:
 
           **Comparison and findings summary unavailable:** review report generation or artifact transfer failed. Inspect the linked run and full reports before accepting this capture.
 
-          Merging this record retains evidence only. Baseline acceptance, mapping approval and timetable publication remain separate decisions.
+          This capture has no prepared publication request. Merging this record retains evidence only; publication requires the exception release procedure.
           EOF
               if [[ -n "$ARTIFACT_URL" ]]; then
                 printf '%s\n' "- [Download available reports]($ARTIFACT_URL)" >> "$record_path"
@@ -218,19 +221,60 @@ jobs:
             git push --force-with-lease="$review_ref:" origin "HEAD:$review_ref"
           fi
 
-          # Use the committed report on retries, rather than an unrelated run's output.
+          # Refresh the request on every preparation. A failed/held attempt removes
+          # any previous request so merging cannot publish an obsolete candidate.
+          cp scripts/gtfs-publication-review.mjs "$RUNNER_TEMP/gtfs-publication-review.mjs"
+          cp scripts/gtfs-review-pr-body.mjs "$RUNNER_TEMP/gtfs-review-pr-body.mjs"
+          git fetch origin "$review_ref"
+          previous_commit=$(git rev-parse FETCH_HEAD)
+          git checkout --detach "$previous_commit"
+          request_path="docs/gtfs/captures/$SNAPSHOT_SHA256.publication.json"
+          candidate="$RUNNER_TEMP/gtfs-automatic/publication-candidate.json"
+          export PUBLICATION_READY=false
+          if [[ -f "$candidate" && -n "$PREPARED_ARTIFACT_ID" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.md" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.json" ]]; then
+            node "$RUNNER_TEMP/gtfs-publication-review.mjs" request "$candidate" "$request_path"
+            git add -- "$request_path"
+            export PUBLICATION_READY=true
+          elif [[ -f "$request_path" ]]; then
+            git rm -- "$request_path"
+          fi
+          if ! git diff --cached --quiet; then
+            # Keep source evidence and replace only the current publication decision.
+            node --input-type=module - "$record_path" <<'NODE'
+          import { readFile, writeFile } from 'node:fs/promises';
+          const path = process.argv[2];
+          let report = await readFile(path, 'utf8');
+          report = report.split('\n## Publication approval\n')[0];
+          report = report.split('\n## Automatic publication\n')[0];
+          try { report += '\n' + await readFile(process.env.AUTOMATIC_REPORT, 'utf8'); }
+          catch (error) { if (error.code !== 'ENOENT') throw error; }
+          const ready = process.env.PUBLICATION_READY === 'true';
+          report += ready
+            ? '\n## Publication approval\n\nMerging this PR authorizes deployment of the exact prepared release in the adjacent publication request. Deployment rechecks its predecessor, source terms, service dates and content.\n'
+            : '\n## Publication approval\n\nPublication is held. No prepared publication request remains; merging retains evidence only. Follow the exception release procedure.\n';
+          await writeFile(path, report);
+          NODE
+            git add -- "$record_path"
+            git -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -m "chore(gtfs): refresh prepared publication request" \
+              -m 'Co-Authored-By: Codex <noreply@openai.com>'
+            git push --force-with-lease="$review_ref:$previous_commit" origin "HEAD:$review_ref"
+          fi
+
+          # The PR body must describe the committed request and original source report.
           git fetch origin "$review_ref"
           git show "FETCH_HEAD:$record_path" > "$report_path"
           report_commit=$(git rev-parse FETCH_HEAD)
           report_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$report_commit/$record_path"
-          if [[ -f "$AUTOMATIC_REPORT" ]]; then
+          if [[ -f "$AUTOMATIC_REPORT" && -z "$PREPARED_ARTIFACT_ID" ]]; then
             cp "$report_path" "$RUNNER_TEMP/committed-capture-report.md"
             cat "$AUTOMATIC_REPORT" > "$report_path"
-            printf '\nPublication workflow: **%s**. [Inspect this attempt](%s/%s/actions/runs/%s).\n\n' \
+            printf '\nPreparation workflow: **%s**. [Inspect this attempt](%s/%s/actions/runs/%s).\n\n' \
               "$AUTOMATIC_RESULT" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" >> "$report_path"
             cat "$RUNNER_TEMP/committed-capture-report.md" >> "$report_path"
           fi
-          node scripts/gtfs-review-pr-body.mjs "$report_path" "$report_url" > "$body_path"
+          node "$RUNNER_TEMP/gtfs-review-pr-body.mjs" "$report_path" "$report_url" > "$body_path"
           if [[ -n "$existing_pr" ]]; then
             gh pr edit "$existing_pr" --body-file "$body_path"
             exit 0
@@ -239,30 +283,3 @@ jobs:
           gh pr create --repo "$GITHUB_REPOSITORY" --base "$BASE_BRANCH" \
             --head "$review_branch" --title "$title" \
             --body-file "$body_path"
-
-  complete-review:
-    needs: [inspect, automatic]
-    if: >-
-      ${{ !cancelled() && needs.automatic.result == 'success' &&
-          needs.automatic.outputs.decision == 'published' &&
-          github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-    concurrency:
-      group: gtfs-review-${{ needs.inspect.outputs.sha256 }}
-      cancel-in-progress: false
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@v6
-        with:
-          node-version-file: .nvmrc
-      - name: Close completed snapshot review
-        env:
-          GH_TOKEN: ${{ github.token }}
-          SNAPSHOT_SHA256: ${{ needs.inspect.outputs.sha256 }}
-          AUTOMATIC_DECISION: ${{ needs.automatic.outputs.decision }}
-        run: node scripts/close-published-gtfs-review.mjs

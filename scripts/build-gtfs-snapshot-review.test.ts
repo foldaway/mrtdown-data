@@ -193,7 +193,9 @@ test('reordered rows compare identically and provider renumbering is described w
   expect(markdown).toContain('No normalized table content changes');
   expect(markdown).toContain('Independent findings unavailable');
   expect(markdown).toContain('do not establish added/removed train services');
-  expect(markdown).toContain('does not accept a baseline');
+  expect(markdown).toContain(
+    'comparison baseline remains an explicit separate update',
+  );
   expect(
     await buildSnapshotReview({
       ...options,

@@ -1,7 +1,10 @@
 # Automatic timetable publication
 
-The capture workflow can publish routine updates without a merge. Exceptions
-keep the existing readable snapshot review PR. No LLM makes release decisions.
+The capture workflow prepares routine updates and opens a readable review PR.
+Merging a PR with a prepared publication request triggers deployment of that
+exact release. Preparation never deploys to Pages or imports into the site.
+Exceptions keep an evidence-only review PR and require the existing explicit
+release procedure. No LLM makes release decisions.
 The checked-in [policy](automatic-publication-policy.json) authorizes the
 `canonical-schedule-v2` scope; generated approvals name that policy and the actual
 Actions run, rather than claiming a maintainer reviewed the candidate.
@@ -64,21 +67,47 @@ New account/capture restrictions must disable automation until reviewed.
 
 ## Publication and failure handling
 
-The reusable Pages workflow serializes preparation, deployment, import and
-retention under the existing `pages` concurrency group. Inputs come from the
-verified current [retained recipe](release-retention.md), never a capture PR's
-code or approvals. Ordinary Pages deployments also use that completed release,
-so the old environment archive pin cannot silently revert an automatic update.
+The reusable Pages workflow serializes preparation and publication under the
+existing `pages` concurrency group. Preparation uses the verified current
+[retained recipe](release-retention.md) and runs the qualification checks above.
+A ready candidate is saved as an immutable Actions artifact for 30 days. The
+review PR commits a `<capture-sha256>.publication.json` request beside its source
+report, binding the capture, predecessor, exact prepared content, publication
+policy, preparation run and artifact ID. The PR describes merging as publication
+approval. No automatic merge is enabled by this workflow.
+
+The merged-review workflow accepts only merged, same-repository `gtfs-review/`
+PRs targeting `main`. It reads the request introduced or changed by that merge,
+verifies its successful capture workflow and unexpired artifact, then downloads
+and checks the exact prepared inputs. A changed predecessor, changed policy or
+terms, stale capture, or expired service-date window blocks deployment and
+requires a fresh preparation and review. A retry of an already completed exact
+release is a no-op. Pages packaging rechecks current topology and holidays and
+must reproduce the reviewed release index before deployment. PR code never
+supplies the generator used for preparation.
+
+Ordinary Pages deployments keep using the latest completed retained release,
+so the old environment archive pin cannot silently revert an approved update.
+A manual Pages dispatch redeploys that completed release; it cannot publish a
+new capture. Closing a review without merging never publishes it.
 
 The workflow verifies public release bytes, requests an authenticated site pull,
 and polls its completion receipt for the exact run and release index. Only then
 does retention advance current/previous. Source admission reviews are retained
 in compact recipes for future redeployments. Large generated review JSON stays
 out of Git and out of recipe history; ready bundles follow the retention policy.
-If that snapshot already has an open exception PR, a successful publication
-closes it with a receipt in the description. Duplicate-source no-ops keep
-existing reviews open because they do not verify a new completed import.
-Its branch and original report remain available; no evidence-only merge is needed.
+The merged PR remains the publication approval record; Actions records the
+publication, exact import and retention outcome. Duplicate-source preparation
+is a no-op and does not create a publication PR. An open review's preparation
+can be rerun to refresh its artifact and request. A held or failed preparation
+removes an older request from that open branch. Never merge a review whose
+current preparation is held or whose source comparison is missing.
+
+Existing evidence-only PRs do not authorize deployment. Rerun capture inspection
+to prepare a request before merging. If a review was already merged or closed,
+use the explicit release procedure; the capture workflow preserves closed PRs.
+Expired artifacts require fresh preparation rather than rebuilding a different
+release after approval.
 
 Status polling retries transport timeouts, connection failures, HTTP 429 and
 temporary server errors for at most one hour and 360 requests. The Pages job
@@ -113,11 +142,13 @@ cutover, not a per-capture permission step:
    identity for a completed new run.
 4. Set `MRTDOWN_GTFS_AUTOMATIC_PUBLICATION_ENABLED=true` in `github-pages`.
    Dispatch the **capture inspection** workflow for a known exception and verify
-   it holds without deploying. The manual Pages workflow cannot bypass the
-   independent validation gate by supplying a capture key.
+   it holds without deploying. For a routine candidate, verify preparation
+   creates a publication request without changing live Pages; merge its PR and
+   verify the exact site import and retention in the merged-review run. Manual
+   Pages dispatch cannot bypass the review gate by supplying a capture key.
 
 Leave both flags unset until compatible code and credentials are present. To
-disable successor generation, set the automatic flag to `paused`. Ordinary Pages
+pause preparation and merged-review publication, set the automatic flag to `paused`. Ordinary Pages
 deployments keep using the latest completed retained release in that mode.
 Unsetting the flag selects legacy mode: first update its protected archive pin
 and source review to the current approved release, since the bootstrap pin may

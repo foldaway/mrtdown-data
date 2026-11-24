@@ -23,29 +23,35 @@ on:
       - 'scripts/prepare-pages-site-pull.mjs'
       - 'scripts/*gtfs*automatic*.mjs'
       - 'scripts/acquire-current-gtfs-release.mjs'
+      - 'scripts/gtfs-publication-review.mjs'
       - 'scripts/wait-pages-site-pull.mjs'
       - 'docs/gtfs/operations/automatic-publication-policy.json'
       - 'turbo.json'
   workflow_dispatch:
-    inputs:
-      capture_key:
-        description: Optional capture to assess under the automatic publication policy
-        type: string
-        default: ''
   workflow_call:
     inputs:
+      prepare_only:
+        type: boolean
+        default: false
+      reviewed_request:
+        type: string
+        default: ''
       capture_key:
         type: string
-        required: true
+        default: ''
       validated_capture_sha256:
         type: string
         required: true
     outputs:
       decision:
-        description: published, unchanged, hold or disabled
+        description: ready, published, unchanged, hold or disabled
         value: ${{ jobs.deploy.outputs.decision }}
+      prepared_artifact_id:
+        description: Immutable artifact containing the prepared release for review
+        value: ${{ jobs.deploy.outputs.prepared_artifact_id }}
 
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
@@ -58,7 +64,8 @@ jobs:
   deploy:
     if: github.ref == 'refs/heads/main'
     outputs:
-      decision: ${{ steps.completion.outcome == 'success' && inputs.capture_key != '' && 'published' || steps.candidate.outputs.decision || 'disabled' }}
+      decision: ${{ steps.completion.outcome == 'success' && inputs.reviewed_request != '' && 'published' || steps.reviewed.outputs.decision || steps.candidate.outputs.decision || 'disabled' }}
+      prepared_artifact_id: ${{ steps.prepared.outputs.artifact-id }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -71,6 +78,9 @@ jobs:
       COMBINED_TIMETABLE_ENABLED: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_ENABLED }}
       AUTOMATIC_PUBLICATION_ENABLED: ${{ vars.MRTDOWN_GTFS_AUTOMATIC_PUBLICATION_ENABLED }}
       CAPTURE_KEY: ${{ inputs.capture_key }}
+      PREPARE_ONLY: ${{ inputs.prepare_only || false }}
+      REVIEWED_REQUEST: ${{ inputs.reviewed_request }}
+      MERGED_REVIEW: ${{ github.event_name == 'pull_request' && github.event.pull_request.merged == true }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -97,11 +107,20 @@ jobs:
         env:
           RETENTION_ENABLED: ${{ vars.MRTDOWN_GTFS_RELEASE_RETENTION_ENABLED }}
         run: |
+          if [[ -n "$REVIEWED_REQUEST" && "$MERGED_REVIEW" != true ]]; then
+            echo '::error::A successor can only be published by merging its review PR'; exit 1
+          fi
+          if [[ -n "$CAPTURE_KEY" && "$PREPARE_ONLY" != true ]]; then
+            echo '::error::Capture keys can only prepare a review'; exit 1
+          fi
+          if [[ "$PREPARE_ONLY" == true && -z "$CAPTURE_KEY" ]]; then
+            echo '::error::Preparation requires a capture key'; exit 1
+          fi
           case "$AUTOMATIC_PUBLICATION_ENABLED" in
             ""|false|true|paused) ;;
             *) echo "::error::Invalid automatic publication flag"; exit 1 ;;
           esac
-          if [[ -n "$CAPTURE_KEY" && "$AUTOMATIC_PUBLICATION_ENABLED" != true ]]; then
+          if [[ ( -n "$CAPTURE_KEY" || -n "$REVIEWED_REQUEST" ) && "$AUTOMATIC_PUBLICATION_ENABLED" != true ]]; then
             echo 'run=false' >> "$GITHUB_OUTPUT"
             echo 'Automatic publication is not enabled; retaining the review PR flow.' >> "$GITHUB_STEP_SUMMARY"
             exit 0
@@ -183,7 +202,7 @@ jobs:
 
       - name: Prepare checked automatic successor
         id: candidate
-        if: steps.mode.outputs.run == 'true' && env.CAPTURE_KEY != ''
+        if: steps.mode.outputs.run == 'true' && env.PREPARE_ONLY == 'true' && env.CAPTURE_KEY != ''
         env:
           GTFS_SNAPSHOT_BASE_URL: ${{ vars.GTFS_SNAPSHOT_BASE_URL }}
           GTFS_CAPTURE_KEY: ${{ inputs.capture_key }}
@@ -191,6 +210,9 @@ jobs:
           REVIEW_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           VALIDATED_CAPTURE_SHA256: ${{ inputs.validated_capture_sha256 }}
         run: |
+          if [[ -n "$REVIEWED_REQUEST" ]]; then
+            echo '::error::Preparation cannot accept a merged release request'; exit 1
+          fi
           if [[ ! "$VALIDATED_CAPTURE_SHA256" =~ ^[a-f0-9]{64}$ ]]; then
             echo '::error::Use the capture inspection workflow to qualify an automatic successor'
             exit 1
@@ -205,7 +227,37 @@ jobs:
           if [[ -d "$RUNNER_TEMP/automatic-release" ]]; then
             mv "$RUNNER_TEMP/combined-release" "$RUNNER_TEMP/previous-release"
             mv "$RUNNER_TEMP/automatic-release" "$RUNNER_TEMP/combined-release"
+            node scripts/gtfs-publication-review.mjs describe \
+              "$RUNNER_TEMP/combined-release" "$RUNNER_TEMP/automatic-report/publication-candidate.json"
           fi
+
+      - name: Save exact prepared release for review
+        id: prepared
+        if: steps.candidate.outputs.decision == 'ready' && env.PREPARE_ONLY == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: gtfs-prepared-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/combined-release/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Download merged review's prepared release
+        if: steps.mode.outputs.run == 'true' && env.REVIEWED_REQUEST != '' && env.PREPARE_ONLY != 'true'
+        uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ fromJSON(inputs.reviewed_request).artifactId }}
+          run-id: ${{ fromJSON(inputs.reviewed_request).runId }}
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/reviewed-release
+
+      - name: Verify merged review against the completed baseline
+        id: reviewed
+        if: steps.mode.outputs.run == 'true' && env.REVIEWED_REQUEST != '' && env.PREPARE_ONLY != 'true'
+        run: |
+          node scripts/gtfs-publication-review.mjs verify \
+            "$RUNNER_TEMP/reviewed-release" "$RUNNER_TEMP/combined-release"
+          mv "$RUNNER_TEMP/combined-release" "$RUNNER_TEMP/previous-release"
+          mv "$RUNNER_TEMP/reviewed-release" "$RUNNER_TEMP/combined-release"
 
       - name: Save automatic publication decision
         if: always() && env.CAPTURE_KEY != '' && steps.mode.outputs.run == 'true'
@@ -216,7 +268,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Build Pages artifact
-        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false'
+        if: steps.mode.outputs.run == 'true' && env.PREPARE_ONLY != 'true' && steps.reviewed.outputs.publish != 'false'
         run: |
           if [[ "$COMBINED_TIMETABLE_ENABLED" == true ]]; then
             input_dir="$RUNNER_TEMP/combined-release"
@@ -227,9 +279,12 @@ jobs:
           else
             npm run pages:build
           fi
+          if [[ -n "$REVIEWED_REQUEST" ]]; then
+            cmp pages-dist/combined-timetable-release-index.json "$RUNNER_TEMP/combined-release/release-index.json"
+          fi
 
       - name: Prepare authenticated site pull
-        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false' && env.COMBINED_TIMETABLE_ENABLED == 'true'
+        if: steps.mode.outputs.run == 'true' && env.PREPARE_ONLY != 'true' && steps.reviewed.outputs.publish != 'false' && env.COMBINED_TIMETABLE_ENABLED == 'true'
         env:
           MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW: ${{ secrets.MRTDOWN_COMBINED_TIMETABLE_SOURCE_REVIEW }}
           MRTDOWN_SITE_PULL_URL: ${{ secrets.MRTDOWN_SITE_PULL_URL }}
@@ -248,21 +303,21 @@ jobs:
             "$RUNNER_TEMP/pages-site-pull.json" "${review[@]}"
 
       - uses: actions/configure-pages@v6
-        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false'
+        if: steps.mode.outputs.run == 'true' && env.PREPARE_ONLY != 'true' && steps.reviewed.outputs.publish != 'false'
 
       - name: Upload Pages artifact
-        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false'
+        if: steps.mode.outputs.run == 'true' && env.PREPARE_ONLY != 'true' && steps.reviewed.outputs.publish != 'false'
         uses: actions/upload-pages-artifact@v5
         with:
           path: pages-dist
 
       - name: Deploy to GitHub Pages
-        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false'
+        if: steps.mode.outputs.run == 'true' && env.PREPARE_ONLY != 'true' && steps.reviewed.outputs.publish != 'false'
         id: deployment
         uses: actions/deploy-pages@v5
 
       - name: Verify the public release before triggering the site pull
-        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false' && env.COMBINED_TIMETABLE_ENABLED == 'true'
+        if: steps.mode.outputs.run == 'true' && env.PREPARE_ONLY != 'true' && steps.reviewed.outputs.publish != 'false' && env.COMBINED_TIMETABLE_ENABLED == 'true'
         env:
           PAGES_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
@@ -285,7 +340,7 @@ jobs:
           exit 1
 
       - name: Trigger mrtdown-site pull workflow
-        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false'
+        if: steps.mode.outputs.run == 'true' && env.PREPARE_ONLY != 'true' && steps.reviewed.outputs.publish != 'false'
         env:
           MRTDOWN_SITE_PULL_URL: ${{ secrets.MRTDOWN_SITE_PULL_URL }}
           MRTDOWN_SITE_INTERNAL_API_TOKEN: ${{ secrets.MRTDOWN_SITE_INTERNAL_API_TOKEN }}
@@ -318,7 +373,7 @@ jobs:
           jq -er '.workflowRunId | strings | select(length > 0)' "$RUNNER_TEMP/site-pull-response.json"
 
       - name: Wait for the exact site import to complete
-        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false' && steps.mode.outputs.retained == 'true'
+        if: steps.mode.outputs.run == 'true' && env.PREPARE_ONLY != 'true' && steps.reviewed.outputs.publish != 'false' && steps.mode.outputs.retained == 'true'
         env:
           MRTDOWN_SITE_PULL_URL: ${{ secrets.MRTDOWN_SITE_PULL_URL }}
           MRTDOWN_SITE_INTERNAL_API_TOKEN: ${{ secrets.MRTDOWN_SITE_INTERNAL_API_TOKEN }}
@@ -327,7 +382,7 @@ jobs:
           "$RUNNER_TEMP/site-pull-response.json" "$RUNNER_TEMP/pages-site-pull.json"
 
       - name: Retain reproducible current and previous releases
-        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish != 'false' && env.COMBINED_TIMETABLE_ENABLED == 'true' && vars.MRTDOWN_GTFS_RELEASE_RETENTION_ENABLED == 'true'
+        if: steps.mode.outputs.run == 'true' && env.PREPARE_ONLY != 'true' && steps.reviewed.outputs.publish != 'false' && env.COMBINED_TIMETABLE_ENABLED == 'true' && vars.MRTDOWN_GTFS_RELEASE_RETENTION_ENABLED == 'true'
         env:
           GTFS_RELEASE_RETENTION_BUCKET: ${{ vars.MRTDOWN_COMBINED_TIMETABLE_INPUT_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.MRTDOWN_GTFS_RELEASE_RETENTION_ACCESS_KEY_ID }}
@@ -342,5 +397,5 @@ jobs:
 
       - name: Record completed automatic publication
         id: completion
-        if: steps.mode.outputs.run == 'true' && steps.candidate.outputs.publish == 'true'
+        if: steps.mode.outputs.run == 'true' && env.PREPARE_ONLY != 'true' && steps.reviewed.outputs.publish == 'true'
         run: echo 'Published the verified release, completed its site import, and advanced the retained baseline.' >> "$GITHUB_STEP_SUMMARY"
