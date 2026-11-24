@@ -152,6 +152,11 @@ jobs:
           fi
           node scripts/acquire-current-gtfs-release.mjs "$RUNNER_TEMP/combined-release"
           node scripts/gtfs-release-definition.mjs assert-current releases/gtfs.json "$RUNNER_TEMP/combined-release"
+          mkdir -p "$RUNNER_TEMP/automatic-report"
+          # Bind the candidate to the exact desired definition in this preparation checkout.
+          if ! git rev-parse --verify --quiet HEAD:releases/gtfs.json > "$RUNNER_TEMP/automatic-report/preparation-base.txt"; then
+            printf 'absent\n' > "$RUNNER_TEMP/automatic-report/preparation-base.txt"
+          fi
           node scripts/acquire-gtfs-capture.mjs
           test "$(jq -r .sha256 "$GTFS_INPUT_DIR/capture.json")" = "$VALIDATED_CAPTURE_SHA256"
           npm run check
@@ -293,8 +298,10 @@ jobs:
           base_commit=$(git rev-parse FETCH_HEAD)
           definition_path="releases/gtfs.json"
           base_definition="$RUNNER_TEMP/base-gtfs-definition.json"
+          base_identity=absent
           if git cat-file -e "$base_commit:$definition_path" 2>/dev/null; then
             git show "$base_commit:$definition_path" > "$base_definition"
+            base_identity=$(git rev-parse "$base_commit:$definition_path")
           else
             rm -f "$base_definition"
           fi
@@ -302,8 +309,27 @@ jobs:
           previous_commit=$(git rev-parse FETCH_HEAD)
           git checkout --detach "$previous_commit"
           candidate="$RUNNER_TEMP/gtfs-automatic/release-definition.json"
+          record_json="docs/gtfs/captures/$SNAPSHOT_SHA256.json"
+          # Upgrade an earlier receipt-only branch, while preserving complete original comparisons.
+          if [[ -f "$REVIEW_DIR/$SNAPSHOT_SHA256.md" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.json" ]] &&
+             { [[ ! -f "$record_json" ]] || grep -Fq '**Comparison and findings summary unavailable:**' "$record_path"; }; then
+            cp "$REVIEW_DIR/$SNAPSHOT_SHA256.md" "$record_path"
+            cp "$REVIEW_DIR/$SNAPSHOT_SHA256.json" "$record_json"
+            git add -- "$record_path" "$record_json"
+          fi
+          prepared_base="$RUNNER_TEMP/gtfs-automatic/preparation-base.txt"
           export PUBLICATION_READY=false
-          if [[ "$PREPARATION_DECISION" == ready && -f "$candidate" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.md" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.json" ]]; then
+          export PUBLICATION_HOLD_REASON='Follow the exception release procedure.'
+          if [[ "$PREPARATION_DECISION" == ready ]]; then
+            if [[ ! -f "$prepared_base" || "$(cat "$prepared_base")" != "$base_identity" ]]; then
+              export PUBLICATION_HOLD_REASON='The desired definition on main changed since preparation, or its preparation record is missing. Prepare this capture again.'
+            else
+              export PUBLICATION_HOLD_REASON='A complete source comparison and checked definition must be committed before publication.'
+            fi
+          fi
+          if [[ "$PREPARATION_DECISION" == ready && -f "$candidate" && -f "$prepared_base" && "$(cat "$prepared_base")" == "$base_identity" &&
+                -f "$REVIEW_DIR/$SNAPSHOT_SHA256.md" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.json" && -f "$record_json" ]] &&
+             ! grep -Fq '**Comparison and findings summary unavailable:**' "$record_path"; then
             node --input-type=module - "$candidate" <<'NODE'
           import { readFile } from 'node:fs/promises';
           const definition = JSON.parse(await readFile(process.argv[2], 'utf8'));
@@ -321,7 +347,7 @@ jobs:
           elif [[ -f "$definition_path" ]]; then
             git rm -- "$definition_path"
           fi
-          if ! git diff --cached --quiet; then
+          if [[ "$PREPARATION_DECISION" != disabled ]] || ! git diff --cached --quiet; then
             node --input-type=module - "$record_path" <<'NODE'
           import { readFile, writeFile } from 'node:fs/promises';
           const path = process.argv[2];
@@ -332,10 +358,12 @@ jobs:
           catch (error) { if (error.code !== 'ENOENT') throw error; }
           report += process.env.PUBLICATION_READY === 'true'
             ? '\n## Publication approval\n\nThis PR updates releases/gtfs.json. Merging makes this the desired timetable; the standard Pages workflow builds and publishes its exact reviewed release alongside the other data.\n'
-            : '\n## Publication approval\n\nPublication is held. The desired timetable matches main; merging retains capture evidence only. Follow the exception release procedure.\n';
+            : `\n## Publication approval\n\nPublication is held. The desired timetable matches main; merging retains capture evidence only. ${process.env.PUBLICATION_HOLD_REASON}\n`;
           await writeFile(path, report);
           NODE
             git add -- "$record_path"
+          fi
+          if ! git diff --cached --quiet; then
             git -c user.name='github-actions[bot]' \
               -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
               commit -m "chore(gtfs): update desired release definition" \
@@ -348,7 +376,7 @@ jobs:
           git show "FETCH_HEAD:$record_path" > "$report_path"
           report_commit=$(git rev-parse FETCH_HEAD)
           report_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$report_commit/$record_path"
-          if [[ -f "$AUTOMATIC_REPORT" && "$PUBLICATION_READY" != true ]]; then
+          if [[ -f "$AUTOMATIC_REPORT" && "$PREPARATION_DECISION" == disabled ]]; then
             cp "$report_path" "$RUNNER_TEMP/committed-capture-report.md"
             cat "$AUTOMATIC_REPORT" > "$report_path"
             printf '\nPreparation workflow: **%s**. [Inspect this attempt](%s/%s/actions/runs/%s).\n\n' \

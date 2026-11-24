@@ -260,7 +260,7 @@ test('missing definition is allowed only before adoption; invalid JSON and delet
   await expect(readReleaseDefinition(join(root, 'bad.json'))).rejects.toThrow();
 });
 
-test('definition generation rejects policies that escape the prepared directory', async () => {
+test('definition generation rejects policy symlinks inside the prepared directory', async () => {
   const h = await fixture();
   const config = await json(join(h.root, 'combined-pages.json'));
   const outside = join(h.root, 'outside');
@@ -272,5 +272,20 @@ test('definition generation rejects policies that escape the prepared directory'
   await symlink(join(outside, 'policy.json'), real);
   await expect(createReleaseDefinition(h.root)).rejects.toThrow(
     'regular files',
+  );
+});
+
+test('definition generation rejects a regular policy file outside the prepared directory', async () => {
+  const h = await fixture();
+  const configPath = join(h.root, 'combined-pages.json');
+  const config = await json(configPath);
+  const outside = await mkdtemp(join(tmpdir(), 'gtfs-external-policy-'));
+  roots.push(outside);
+  const externalPolicy = join(outside, 'policy.json');
+  await cp(join(h.root, config.applicabilityPolicy), externalPolicy);
+  config.applicabilityPolicy = externalPolicy;
+  await writeFile(configPath, JSON.stringify(config));
+  await expect(createReleaseDefinition(h.root)).rejects.toThrow(
+    'regular files inside the input directory',
   );
 });

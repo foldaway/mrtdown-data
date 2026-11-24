@@ -219,6 +219,7 @@ test('ready reviews commit the desired definition, refresh it and restore main o
   };
   const candidatePath = join(automatic, 'release-definition.json');
   await writeFile(candidatePath, JSON.stringify(definition));
+  await writeFile(join(automatic, 'preparation-base.txt'), 'absent\n');
   h.env.PREPARATION_DECISION = 'ready';
   h.run();
   const path = 'releases/gtfs.json';
@@ -248,6 +249,10 @@ test('ready reviews commit the desired definition, refresh it and restore main o
   h.git('push', 'origin', 'main');
   h.git('checkout', '--detach', branch);
   await writeFile(candidatePath, JSON.stringify(definition));
+  await writeFile(
+    join(automatic, 'preparation-base.txt'),
+    h.git('rev-parse', 'main:releases/gtfs.json'),
+  );
   h.env.PREPARATION_DECISION = 'ready';
   h.run();
   h.env.PREPARATION_DECISION = 'hold';
@@ -262,6 +267,10 @@ test('missing comparisons never change the desired release even when preparation
   const h = await harness();
   await mkdir(join(h.runner, 'gtfs-automatic'));
   await writeFile(
+    join(h.runner, 'gtfs-automatic/preparation-base.txt'),
+    'absent\n',
+  );
+  await writeFile(
     join(h.runner, 'gtfs-automatic/release-definition.json'),
     JSON.stringify({
       documentKind: 'gtfs-release-definition',
@@ -273,4 +282,103 @@ test('missing comparisons never change the desired release even when preparation
   expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(
     'releases/gtfs.json',
   );
+});
+
+test('a ready retry upgrades receipt-only evidence before committing the desired release', async () => {
+  const h = await harness();
+  h.run();
+  expect(h.git('show', `HEAD:${h.record}`)).toContain(
+    'Comparison and findings summary unavailable',
+  );
+  const markdown = '# Snapshot\n\nRecovered source comparison\n';
+  const evidence = '{"comparison":"recovered"}\n';
+  await writeFile(join(h.reviewDir, `${h.sha256}.md`), markdown);
+  await writeFile(join(h.reviewDir, `${h.sha256}.json`), evidence);
+  const automatic = join(h.runner, 'gtfs-automatic');
+  await mkdir(automatic);
+  const definition = {
+    documentKind: 'gtfs-release-definition',
+    capture: { sha256: h.sha256 },
+  };
+  await writeFile(
+    join(automatic, 'release-definition.json'),
+    JSON.stringify(definition),
+  );
+  await writeFile(join(automatic, 'preparation-base.txt'), 'absent\n');
+  h.env.PREPARATION_DECISION = 'ready';
+  h.run();
+  const report = h.git('show', `HEAD:${h.record}`);
+  expect(report).toContain('Recovered source comparison');
+  expect(report).not.toContain('Comparison and findings summary unavailable');
+  expect(report).not.toContain('Merging this record retains evidence only');
+  expect(h.git('show', `HEAD:docs/gtfs/captures/${h.sha256}.json`)).toBe(
+    evidence,
+  );
+  expect(JSON.parse(h.git('show', 'HEAD:releases/gtfs.json'))).toEqual(
+    definition,
+  );
+  // A later complete report does not replace an existing complete source comparison.
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.md`),
+    '# Another comparison\n',
+  );
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.json`),
+    '{"comparison":"different"}\n',
+  );
+  h.run();
+  expect(h.git('show', `HEAD:${h.record}`)).toContain(
+    'Recovered source comparison',
+  );
+  expect(h.git('show', `HEAD:docs/gtfs/captures/${h.sha256}.json`)).toBe(
+    evidence,
+  );
+});
+
+test.each([
+  false,
+  true,
+])('holds a ready candidate if main changed since preparation (already adopted: %s)', async (adopted) => {
+  const h = await harness();
+  const path = 'releases/gtfs.json';
+  await mkdir(join(h.repo, 'releases'));
+  if (adopted) {
+    await writeFile(join(h.repo, path), '{"release":"original"}\n');
+    h.git('add', path);
+    h.git('commit', '-m', 'test: original definition');
+    h.git('push', 'origin', 'main');
+  }
+  const preparedBase = adopted
+    ? h.git('rev-parse', `HEAD:${path}`)
+    : 'absent\n';
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.md`),
+    '# Snapshot\n\nSource changes\n',
+  );
+  await writeFile(join(h.reviewDir, `${h.sha256}.json`), '{}\n');
+  const automatic = join(h.runner, 'gtfs-automatic');
+  await mkdir(automatic);
+  await writeFile(join(automatic, 'preparation-base.txt'), preparedBase);
+  await writeFile(
+    join(automatic, 'release-definition.json'),
+    JSON.stringify({
+      documentKind: 'gtfs-release-definition',
+      capture: { sha256: h.sha256 },
+      release: 'stale candidate',
+    }),
+  );
+  // A different release lands between the preparation checkout and the review checkout.
+  await writeFile(join(h.repo, path), '{"release":"newer main"}\n');
+  h.git('add', path);
+  h.git('commit', '-m', 'test: main advances');
+  h.git('push', 'origin', 'main');
+  h.env.PREPARATION_DECISION = 'ready';
+  h.run();
+  expect(JSON.parse(h.git('show', `HEAD:${path}`))).toEqual({
+    release: 'newer main',
+  });
+  const body = await readFile(join(h.runner, 'created-body.md'), 'utf8');
+  expect(body).toContain('Publication is held');
+  expect(body).toContain('changed since preparation');
+  expect(body).not.toContain('Merging makes this the desired timetable');
 });

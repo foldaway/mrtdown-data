@@ -324,8 +324,11 @@ archive at `pages-release-inputs/<archive-sha256>.tar.gz`. The workflow signs an
 S3 GET request to Tigris and checks the downloaded archive against the pinned
 digest. Give the workflow its own credentials scoped to `s3:GetObject` under
 `pages-release-inputs/`. Keep the raw archive, review inputs and source review in
-private storage. PR checks use synthetic timetables and Pages previews use the
-default build.
+private storage. Deterministic tests use synthetic timetables. When a branch
+contains `releases/gtfs.json`, its Pages preview materializes that definition and
+passes the referenced GTFS inputs to `pages:build`, including the branch's
+reviewed timetable. Without a definition, the preview uses the default build and
+omits GTFS timetable output.
 
 Restrict the `github-pages` environment to `main` before storing the release
 credentials. Configure the following on that environment while the gate is off.

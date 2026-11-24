@@ -77,7 +77,10 @@ and is not copied into the public export. The schema and materializer are in
 
 Preparation uses the verified completed [retained release](release-retention.md)
 for comparison and runs the qualification checks above. It stops if Git already
-names a different desired release whose deployment is pending. A ready update
+names a different desired release whose deployment is pending. Preparation records
+the Git identity of its base definition (or its absence); review acceptance compares
+that identity with the fetched default branch and holds a candidate if the base
+changed, requiring fresh preparation. A ready update
 commits the complete compact definition in the capture PR. Actions artifacts only
 transport reports and the proposed JSON between jobs of that same run; later
 publication and redeployment have no dependency on those temporary artifacts.
@@ -104,7 +107,9 @@ it does not override Git's desired release.
 An open review can be prepared again. A held or failed attempt restores `main`'s
 definition on its branch, removing a stale proposed successor without deleting an
 adopted timetable. A new run after a closed or merged review creates a separate
-review branch and preserves the original report. Missing source comparisons
+review branch and preserves the original report. A receipt-only branch is upgraded with the
+available complete Markdown/JSON comparison on retry before a definition can be
+accepted. Complete original comparisons remain preserved. Missing source comparisons
 never qualify a definition change. Merging an evidence-only PR leaves the desired
 release unchanged.
 
