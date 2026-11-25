@@ -175,7 +175,6 @@ jobs:
               --gtfs-file "$input_dir/schedule.zip" \
               --gtfs-capture "$input_dir/capture.json" \
               --gtfs-combined-config "$input_dir/combined-pages.json"
-            cmp pages-dist/combined-timetable-release-index.json "$input_dir/release-index.json"
           else
             npm run pages:build
           fi

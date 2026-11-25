@@ -17,6 +17,9 @@ schedule rows outside Git, and preserve mapping, import and retention checks.
 - [x] 2026-11-24: Address review findings with receipt-only comparison recovery,
   preparation-base identity checks, preview documentation and containment coverage;
   verify all 1,003 tests, repository checks and actionlint pass.
+- [x] 2026-11-24: Remove the serialization-sensitive release-index comparison;
+  verify compact/pretty indexes through existing pre-upload identity and
+  file-hash checks.
 - [ ] After code merges, prepare and review the first definition, then verify
   its ordinary Pages deployment, exact site import and retention.
 
@@ -38,10 +41,10 @@ schedule rows outside Git, and preserve mapping, import and retention checks.
 ## Outcomes & Retrospective
 
 Implementation is isolated in [PR #499](https://github.com/foldaway/mrtdown-data/pull/499).
-All 1,003 deterministic tests pass, including exact definition-to-timetable replay,
-held-review restoration, receipt-only retry recovery, changed preparation bases
-and bootstrap deletion guards. Repository checks and
-actionlint pass. Production behavior remains unverified until the first
+All 1,008 deterministic tests pass, including exact definition-to-timetable replay,
+held-review restoration, receipt-only retry recovery, changed preparation bases,
+bootstrap deletion guards, and serialization-independent release-index handoff.
+Repository checks and actionlint pass. Production behavior remains unverified until the first
 definition is merged.
 
 ## Context
