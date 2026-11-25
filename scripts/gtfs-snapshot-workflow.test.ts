@@ -44,9 +44,10 @@ async function harness() {
     resolve('scripts/gtfs-review-pr-body.mjs'),
     join(repo, 'scripts/gtfs-review-pr-body.mjs'),
   );
-  git('add', 'README.md', 'scripts/gtfs-review-pr-body.mjs');
+  git('add', 'README.md', 'scripts');
   git('commit', '-m', 'test: seed');
   git('remote', 'add', 'origin', join(root, 'remote.git'));
+  git('push', 'origin', 'main');
   const sha256 = 'a'.repeat(64);
   const record = `docs/gtfs/captures/${sha256}.md`;
   const reviewDir = join(runner, 'gtfs-review');
@@ -57,10 +58,10 @@ async function harness() {
     `#!/bin/bash
 set -euo pipefail
 if [[ "$1" == api ]]; then
-  if [[ "$2" == --method && "$3" == PATCH ]]; then
-    cat > "$RUNNER_TEMP/patch-request.json"
-    echo '{}'
-  elif [[ -f "$RUNNER_TEMP/existing-pr" ]]; then cat "$RUNNER_TEMP/existing-pr"; fi
+  if [[ -f "$RUNNER_TEMP/existing-pr" ]]; then
+    if [[ "$*" == *state=open* && ! -f "$RUNNER_TEMP/pr-state" ]]; then exit 0; fi
+    cat "$RUNNER_TEMP/existing-pr"
+  fi
 elif [[ "$1" == pr && "$2" == view ]]; then
   if [[ -f "$RUNNER_TEMP/pr-state" ]]; then cat "$RUNNER_TEMP/pr-state"; else echo CLOSED; fi
 elif [[ "$1" == pr && ( "$2" == create || "$2" == edit ) ]]; then
@@ -92,6 +93,7 @@ fi
     GITHUB_REPOSITORY_OWNER: 'example',
     GITHUB_SERVER_URL: 'https://github.com',
     GITHUB_RUN_ID: '123',
+    GITHUB_RUN_ATTEMPT: '1',
     BASE_BRANCH: 'main',
     SNAPSHOT_ORIGIN: 'https://sources.example.com',
     SNAPSHOT_SHA256: sha256,
@@ -102,6 +104,7 @@ fi
     REVIEW_DIR: reviewDir,
     AUTOMATIC_REPORT: join(runner, 'automatic-publication.md'),
     AUTOMATIC_RESULT: 'skipped',
+    PREPARATION_DECISION: 'disabled',
   };
   const run = () =>
     execFileSync('bash', ['-e', '-o', 'pipefail', '-c', script], {
@@ -112,63 +115,6 @@ fi
     });
   return { root, runner, repo, sha256, record, reviewDir, git, run, env };
 }
-
-test('closes only the exact completed snapshot review and replaces the stale hold with a receipt', async () => {
-  const h = await harness();
-  const review = {
-    number: 483,
-    head: {
-      repo: { full_name: 'foldaway/mrtdown-data' },
-      ref: `gtfs-review/${h.sha256}`,
-      sha: 'c'.repeat(40),
-    },
-    body: '## Automatic publication\n\nDecision: **hold**.\n\n# LTA train GTFS snapshot\n\nOriginal evidence\n',
-  };
-  const run = (decision: string) =>
-    execFileSync(
-      process.execPath,
-      [resolve('scripts/close-published-gtfs-review.mjs')],
-      {
-        env: {
-          ...h.env,
-          GITHUB_REPOSITORY: 'foldaway/mrtdown-data',
-          AUTOMATIC_DECISION: decision,
-        },
-        stdio: ['ignore', 'pipe', 'pipe'],
-      },
-    );
-  await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
-  expect(() => run('hold')).toThrow();
-  expect(() => run('unchanged')).toThrow();
-  review.head.repo.full_name = 'someone/fork';
-  await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
-  expect(() => run('published')).toThrow();
-  expect(
-    await readFile(join(h.runner, 'patch-request.json'), 'utf8').catch(
-      () => null,
-    ),
-  ).toBeNull();
-  review.head.repo.full_name = 'foldaway/mrtdown-data';
-  await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
-  run('published');
-  const patch = JSON.parse(
-    await readFile(join(h.runner, 'patch-request.json'), 'utf8'),
-  );
-  expect(patch.state).toBe('closed');
-  expect(patch.body).toContain('Original evidence');
-  expect(patch.body).toContain('actions/runs/123');
-  expect(patch.body).not.toContain('**hold**');
-  review.body = `# LTA train GTFS snapshot\n\n${'Detailed source evidence.\n'.repeat(3000)}`;
-  await writeFile(join(h.runner, 'existing-pr'), JSON.stringify([review]));
-  run('published');
-  const large = JSON.parse(
-    await readFile(join(h.runner, 'patch-request.json'), 'utf8'),
-  );
-  expect(Array.from(large.body).length).toBeLessThanOrEqual(60_000);
-  expect(large.body).toContain(
-    `[Read the complete capture report](https://github.com/foldaway/mrtdown-data/blob/${review.head.sha}/docs/gtfs/captures/${h.sha256}.md).`,
-  );
-});
 
 test('publishes the durable report, retries from committed evidence, and preserves closed PRs', async () => {
   const h = await harness();
@@ -195,7 +141,11 @@ test('publishes the durable report, retries from committed evidence, and preserv
     join(h.runner, 'existing-pr'),
     'https://github.com/example/repo/pull/1\n',
   );
-  expect(h.run()).toContain('Snapshot review already closed');
+  h.run();
+  // The closed review branch keeps its immutable source report.
+  expect(h.git('show', `origin/gtfs-review/${h.sha256}:${h.record}`)).toBe(
+    markdown,
+  );
 });
 
 test('updates an open exception PR with the current automatic hold while preserving source evidence', async () => {
@@ -246,10 +196,189 @@ test('missing summary artifacts still produce a PR explaining the missing compar
   const body = await readFile(join(h.runner, 'created-body.md'), 'utf8');
   expect(body).toContain('**Comparison and findings summary unavailable:**');
   expect(body).toContain('Independent validator result `failure`');
-  expect(body).toContain(
-    'mapping approval and timetable publication remain separate',
-  );
+  expect(body).toContain('Merging this record retains evidence only');
   expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(
     `${h.sha256}.json`,
   );
+});
+
+test('ready reviews commit the desired definition, refresh it and restore main on holds', async () => {
+  const h = await harness();
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.md`),
+    '# Snapshot\n\nSource changes\n',
+  );
+  await writeFile(join(h.reviewDir, `${h.sha256}.json`), '{}\n');
+  const automatic = join(h.runner, 'gtfs-automatic');
+  await mkdir(automatic);
+  const definition = {
+    schemaVersion: 1,
+    documentKind: 'gtfs-release-definition',
+    capture: { sha256: h.sha256 },
+    releaseIndex: { manifestSha256: 'b'.repeat(64) },
+  };
+  const candidatePath = join(automatic, 'release-definition.json');
+  await writeFile(candidatePath, JSON.stringify(definition));
+  await writeFile(join(automatic, 'preparation-base.txt'), 'absent\n');
+  h.env.PREPARATION_DECISION = 'ready';
+  h.run();
+  const path = 'releases/gtfs.json';
+  expect(JSON.parse(h.git('show', `HEAD:${path}`))).toEqual(definition);
+  expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toContain(
+    'standard Pages workflow',
+  );
+  definition.releaseIndex.manifestSha256 = 'c'.repeat(64);
+  await writeFile(candidatePath, JSON.stringify(definition));
+  h.run();
+  expect(JSON.parse(h.git('show', `HEAD:${path}`))).toEqual(definition);
+  // A failed/held refresh cannot merge an older candidate.
+  h.env.PREPARATION_DECISION = 'hold';
+  await rm(candidatePath);
+  h.run();
+  expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(path);
+  expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toContain(
+    'Publication is held',
+  );
+  // After adoption a hold restores main's desired timetable instead of removing it.
+  const branch = h.git('rev-parse', 'HEAD').trim();
+  h.git('checkout', 'main');
+  await mkdir(join(h.repo, 'releases'), { recursive: true });
+  await writeFile(join(h.repo, path), '{"completed":"main"}\n');
+  h.git('add', path);
+  h.git('commit', '-m', 'test: adopt a definition');
+  h.git('push', 'origin', 'main');
+  h.git('checkout', '--detach', branch);
+  await writeFile(candidatePath, JSON.stringify(definition));
+  await writeFile(
+    join(automatic, 'preparation-base.txt'),
+    h.git('rev-parse', 'main:releases/gtfs.json'),
+  );
+  h.env.PREPARATION_DECISION = 'ready';
+  h.run();
+  h.env.PREPARATION_DECISION = 'hold';
+  await rm(candidatePath);
+  h.run();
+  expect(JSON.parse(h.git('show', `HEAD:${path}`))).toEqual({
+    completed: 'main',
+  });
+});
+
+test('missing comparisons never change the desired release even when preparation produced a definition', async () => {
+  const h = await harness();
+  await mkdir(join(h.runner, 'gtfs-automatic'));
+  await writeFile(
+    join(h.runner, 'gtfs-automatic/preparation-base.txt'),
+    'absent\n',
+  );
+  await writeFile(
+    join(h.runner, 'gtfs-automatic/release-definition.json'),
+    JSON.stringify({
+      documentKind: 'gtfs-release-definition',
+      capture: { sha256: h.sha256 },
+    }),
+  );
+  h.env.PREPARATION_DECISION = 'ready';
+  h.run();
+  expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(
+    'releases/gtfs.json',
+  );
+});
+
+test('a ready retry upgrades receipt-only evidence before committing the desired release', async () => {
+  const h = await harness();
+  h.run();
+  expect(h.git('show', `HEAD:${h.record}`)).toContain(
+    'Comparison and findings summary unavailable',
+  );
+  const markdown = '# Snapshot\n\nRecovered source comparison\n';
+  const evidence = '{"comparison":"recovered"}\n';
+  await writeFile(join(h.reviewDir, `${h.sha256}.md`), markdown);
+  await writeFile(join(h.reviewDir, `${h.sha256}.json`), evidence);
+  const automatic = join(h.runner, 'gtfs-automatic');
+  await mkdir(automatic);
+  const definition = {
+    documentKind: 'gtfs-release-definition',
+    capture: { sha256: h.sha256 },
+  };
+  await writeFile(
+    join(automatic, 'release-definition.json'),
+    JSON.stringify(definition),
+  );
+  await writeFile(join(automatic, 'preparation-base.txt'), 'absent\n');
+  h.env.PREPARATION_DECISION = 'ready';
+  h.run();
+  const report = h.git('show', `HEAD:${h.record}`);
+  expect(report).toContain('Recovered source comparison');
+  expect(report).not.toContain('Comparison and findings summary unavailable');
+  expect(report).not.toContain('Merging this record retains evidence only');
+  expect(h.git('show', `HEAD:docs/gtfs/captures/${h.sha256}.json`)).toBe(
+    evidence,
+  );
+  expect(JSON.parse(h.git('show', 'HEAD:releases/gtfs.json'))).toEqual(
+    definition,
+  );
+  // A later complete report does not replace an existing complete source comparison.
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.md`),
+    '# Another comparison\n',
+  );
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.json`),
+    '{"comparison":"different"}\n',
+  );
+  h.run();
+  expect(h.git('show', `HEAD:${h.record}`)).toContain(
+    'Recovered source comparison',
+  );
+  expect(h.git('show', `HEAD:docs/gtfs/captures/${h.sha256}.json`)).toBe(
+    evidence,
+  );
+});
+
+test.each([
+  false,
+  true,
+])('holds a ready candidate if main changed since preparation (already adopted: %s)', async (adopted) => {
+  const h = await harness();
+  const path = 'releases/gtfs.json';
+  await mkdir(join(h.repo, 'releases'));
+  if (adopted) {
+    await writeFile(join(h.repo, path), '{"release":"original"}\n');
+    h.git('add', path);
+    h.git('commit', '-m', 'test: original definition');
+    h.git('push', 'origin', 'main');
+  }
+  const preparedBase = adopted
+    ? h.git('rev-parse', `HEAD:${path}`)
+    : 'absent\n';
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.md`),
+    '# Snapshot\n\nSource changes\n',
+  );
+  await writeFile(join(h.reviewDir, `${h.sha256}.json`), '{}\n');
+  const automatic = join(h.runner, 'gtfs-automatic');
+  await mkdir(automatic);
+  await writeFile(join(automatic, 'preparation-base.txt'), preparedBase);
+  await writeFile(
+    join(automatic, 'release-definition.json'),
+    JSON.stringify({
+      documentKind: 'gtfs-release-definition',
+      capture: { sha256: h.sha256 },
+      release: 'stale candidate',
+    }),
+  );
+  // A different release lands between the preparation checkout and the review checkout.
+  await writeFile(join(h.repo, path), '{"release":"newer main"}\n');
+  h.git('add', path);
+  h.git('commit', '-m', 'test: main advances');
+  h.git('push', 'origin', 'main');
+  h.env.PREPARATION_DECISION = 'ready';
+  h.run();
+  expect(JSON.parse(h.git('show', `HEAD:${path}`))).toEqual({
+    release: 'newer main',
+  });
+  const body = await readFile(join(h.runner, 'created-body.md'), 'utf8');
+  expect(body).toContain('Publication is held');
+  expect(body).toContain('changed since preparation');
+  expect(body).not.toContain('Merging makes this the desired timetable');
 });

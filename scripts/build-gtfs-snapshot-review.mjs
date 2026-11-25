@@ -371,7 +371,7 @@ export function renderReview(report) {
     '- [ ] Review mapping impact separately, including platform, pattern, and holiday policy changes. Existing approvals have not been verified against this capture.',
     '- [ ] If accepting this source as the next comparison baseline, update baseline.json explicitly in a reviewed change.',
     '',
-    'Merging this record retains review evidence. It does not accept a baseline, approve mappings, or publish a timetable. Compact JSON evidence is committed beside this record; detailed reports remain linked above.',
+    'When the PR updates releases/gtfs.json, merging selects that exact reviewed timetable for the standard Pages deployment. Without a release-definition change, merging retains evidence only; mapping approval and timetable publication require the exception release procedure. The comparison baseline remains an explicit separate update. Compact JSON evidence is committed beside this record; detailed reports remain linked above.',
     '',
   );
   return lines.join('\n');

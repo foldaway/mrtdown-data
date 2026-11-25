@@ -84,6 +84,15 @@ The source must already exist in the crawler's private bucket. Missing or damage
 shared bytes stop retention; fix source retention through the capture pipeline.
 Pruned ready bundles are restored by replay, not by editing manifests or hashes.
 
+## Git-defined desired release
+
+After `releases/gtfs.json` is adopted, ordinary Pages deployments materialize that
+reviewed definition from `main`. Retained current/previous state checks source
+lineage and incomplete publications, and advances only after the exact site
+import completes. It does not choose the next timetable. Existing archive pins
+remain bootstrap inputs only; they cannot override an adopted definition.
+See [publication and bootstrap](automatic-publication.md#first-definition-and-recovery).
+
 ## Pages adoption
 
 1. Merge the compatible exporter/workflow before changing the active input pin.

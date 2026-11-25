@@ -9,6 +9,8 @@ on:
       - '.github/workflows/pages-preview.yml'
       - 'LICENSE-DATA.md'
       - 'data/**'
+      - 'releases/**'
+      - 'scripts/gtfs-release-definition.mjs'
       - 'fixtures/data/**'
       - 'package*.json'
       - 'packages/**'
@@ -22,6 +24,8 @@ on:
       - '.github/workflows/pages-preview.yml'
       - 'LICENSE-DATA.md'
       - 'data/**'
+      - 'releases/**'
+      - 'scripts/gtfs-release-definition.mjs'
       - 'fixtures/data/**'
       - 'package*.json'
       - 'packages/**'
@@ -51,7 +55,19 @@ jobs:
         run: npm ci
 
       - name: Build Pages artifact
-        run: npm run pages:build
+        env:
+          GTFS_SNAPSHOT_BASE_URL: ${{ vars.GTFS_SNAPSHOT_BASE_URL }}
+        run: |
+          if [[ -f releases/gtfs.json ]]; then
+            npm run build:cli
+            node scripts/gtfs-release-definition.mjs materialize releases/gtfs.json "$RUNNER_TEMP/gtfs-release"
+            npm run pages:build -- \
+              --gtfs-file "$RUNNER_TEMP/gtfs-release/schedule.zip" \
+              --gtfs-capture "$RUNNER_TEMP/gtfs-release/capture.json" \
+              --gtfs-combined-config "$RUNNER_TEMP/gtfs-release/combined-pages.json"
+          else
+            npm run pages:build
+          fi
 
       - name: Upload preview artifact
         uses: actions/upload-artifact@v7

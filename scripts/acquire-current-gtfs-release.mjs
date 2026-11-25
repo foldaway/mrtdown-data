@@ -4,6 +4,12 @@ import { pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { CombinedTimetableReleaseIndexSchema } from '../packages/fs/dist/index.js';
 import {
+  assertBootstrapAllowed,
+  checkReleaseTransition,
+  materializeReleaseDefinition,
+  readReleaseDefinition,
+} from './gtfs-release-definition.mjs';
+import {
   currentRetainedRelease,
   s3ReleaseStore,
 } from './gtfs-release-store.mjs';
@@ -34,18 +40,41 @@ if (
   process.argv[1] &&
   import.meta.url === pathToFileURL(resolve(process.argv[1])).href
 ) {
-  const [outputDir] = process.argv.slice(2);
+  const [outputDir, definitionPath] = process.argv.slice(2);
   if (!outputDir) throw new Error('Expected a new input directory');
   const env = process.env;
   const current = await currentRetainedRelease(
     s3ReleaseStore({ bucket: env.GTFS_RELEASE_RETENTION_BUCKET }),
   );
   await assertPublishedBaseline(current.record.releaseIndex);
-  await materializeReleaseRecipe(
-    current.recipeBytes,
-    outputDir,
-    env.GTFS_SNAPSHOT_BASE_URL,
-  );
+  const desired = definitionPath
+    ? await readReleaseDefinition(definitionPath)
+    : null;
+  if (desired) {
+    checkReleaseTransition(desired, current.record.releaseIndex, {
+      policyBytes: await readFile(
+        'docs/gtfs/operations/automatic-publication-policy.json',
+      ),
+    });
+    await materializeReleaseDefinition(
+      desired,
+      outputDir,
+      env.GTFS_SNAPSHOT_BASE_URL,
+    );
+  } else {
+    if (definitionPath) assertBootstrapAllowed('.', definitionPath);
+    await materializeReleaseRecipe(
+      current.recipeBytes,
+      outputDir,
+      env.GTFS_SNAPSHOT_BASE_URL,
+    );
+    if (definitionPath && env.GITHUB_STEP_SUMMARY)
+      await writeFile(
+        env.GITHUB_STEP_SUMMARY,
+        'GTFS bootstrap: no release definition has been merged yet. Reusing the completed release; the next qualifying capture review will establish releases/gtfs.json.\n',
+        { flag: 'a' },
+      );
+  }
   // Bootstrap recipes predate automatic source reviews.
   try {
     await readFile(join(outputDir, 'source-review.json'));

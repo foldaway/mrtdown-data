@@ -40,6 +40,9 @@ and its companion [execution plan guide](https://developers.openai.com/cookbook/
 
 ## Active
 
+- [Git-defined GTFS publication](active/gtfs-git-release-definition.md) covers
+  reviewed desired state, standard Pages deployment and first-definition bootstrap.
+
 - [Direct-to-main ingestion reliability](active/direct-main-ingestion.md) covers
   historical replay, semantic guards, canonical issue audits, shadow mode, and
   staged removal of the automated ingestion PR queue.

@@ -20,6 +20,7 @@ days, with source provenance and explicit missing coverage.
 
 For relevant changes, CI builds branch and pull request previews as temporary
 artifacts. The [Pages deployment workflow](../../.github/workflows/pages-deploy.yml)
-publishes from `main`, then asks [mrtdown-site](https://github.com/foldaway/mrtdown-site)
+publishes from `main`, reading the reviewed desired GTFS definition from
+`releases/gtfs.json` when present, then asks [mrtdown-site](https://github.com/foldaway/mrtdown-site)
 to import the new archive. The site serves the runtime API. See the workflow
 for the required site URL and token secrets.

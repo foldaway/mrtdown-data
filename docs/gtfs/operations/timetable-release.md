@@ -289,8 +289,10 @@ and the fixture export omit combined timetable output.
 The main-branch Pages workflow uses the `github-pages` environment variable
 `MRTDOWN_COMBINED_TIMETABLE_ENABLED`. Leave it unset or set to `false` until
 publication and production import are authorized. When set to `true`, every
-routine deployment rebuilds the pinned release against the canonical data it
-ships. A missing input, changed terms, incompatible topology or mismatched
+routine deployment rebuilds the desired release in `releases/gtfs.json` against
+the canonical data it ships. Before the first definition is adopted, the verified
+completed retained release or legacy pin provides bootstrap inputs. See
+[Git-defined publication](automatic-publication.md#publication-and-failure-handling). A missing input, changed terms, incompatible topology or mismatched
 release digest stops the job before upload. Keep the variable enabled and the
 inputs available for subsequent deployments. Clearing the variable publishes a
 GTFS-free archive on the next successful deploy.
@@ -322,8 +324,11 @@ archive at `pages-release-inputs/<archive-sha256>.tar.gz`. The workflow signs an
 S3 GET request to Tigris and checks the downloaded archive against the pinned
 digest. Give the workflow its own credentials scoped to `s3:GetObject` under
 `pages-release-inputs/`. Keep the raw archive, review inputs and source review in
-private storage. PR checks use synthetic timetables and Pages previews use the
-default build.
+private storage. Deterministic tests use synthetic timetables. When a branch
+contains `releases/gtfs.json`, its Pages preview materializes that definition and
+passes the referenced GTFS inputs to `pages:build`, including the branch's
+reviewed timetable. Without a definition, the preview uses the default build and
+omits GTFS timetable output.
 
 Restrict the `github-pages` environment to `main` before storing the release
 credentials. Configure the following on that environment while the gate is off.

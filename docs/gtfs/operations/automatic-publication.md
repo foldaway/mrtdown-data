@@ -1,10 +1,14 @@
 # Automatic timetable publication
 
-The capture workflow can publish routine updates without a merge. Exceptions
-keep the existing readable snapshot review PR. No LLM makes release decisions.
-The checked-in [policy](automatic-publication-policy.json) authorizes the
-`canonical-schedule-v2` scope; generated approvals name that policy and the actual
-Actions run, rather than claiming a maintainer reviewed the candidate.
+The capture workflow prepares routine updates and proposes a reviewed desired
+release in `releases/gtfs.json`. Merging that definition into `main` triggers the
+standard Pages deployment, which builds the referenced timetable alongside the
+other data. Preparation never deploys or imports a timetable. Exceptions remain
+evidence-only PRs until the explicit release procedure supplies reviewed inputs.
+No LLM makes release decisions and this workflow does not enable automatic merge.
+The checked-in [policy](automatic-publication-policy.json) defines routine
+qualification; generated approvals name that policy and the actual preparation
+run rather than claiming a maintainer reviewed the candidate.
 
 ## What qualifies
 
@@ -64,25 +68,77 @@ New account/capture restrictions must disable automation until reviewed.
 
 ## Publication and failure handling
 
-The reusable Pages workflow serializes preparation, deployment, import and
-retention under the existing `pages` concurrency group. Inputs come from the
-verified current [retained recipe](release-retention.md), never a capture PR's
-code or approvals. Ordinary Pages deployments also use that completed release,
-so the old environment archive pin cannot silently revert an automatic update.
+`main` describes the timetable intended for publication. The text definition
+contains the original capture receipt and source ZIP hash, mapping and service-date
+policies, approval evidence, source admission review and expected release index.
+It contains no source ZIP or generated timetable rows. It lives outside `data/`
+and is not copied into the public export. The schema and materializer are in
+[gtfs-release-definition.mjs](../../../scripts/gtfs-release-definition.mjs).
 
-The workflow verifies public release bytes, requests an authenticated site pull,
-and polls its completion receipt for the exact run and release index. Only then
-does retention advance current/previous. Source admission reviews are retained
-in compact recipes for future redeployments. Large generated review JSON stays
-out of Git and out of recipe history; ready bundles follow the retention policy.
-If that snapshot already has an open exception PR, a successful publication
-closes it with a receipt in the description. Duplicate-source no-ops keep
-existing reviews open because they do not verify a new completed import.
-Its branch and original report remain available; no evidence-only merge is needed.
+Preparation uses the verified completed [retained release](release-retention.md)
+for comparison and runs the qualification checks above. It stops if Git already
+names a different desired release whose deployment is pending. Preparation records
+the Git identity of its base definition (or its absence); review acceptance compares
+that identity with the fetched default branch and holds a candidate if the base
+changed, requiring fresh preparation. A ready update
+commits the complete compact definition in the capture PR. Actions artifacts only
+transport reports and the proposed JSON between jobs of that same run; later
+publication and redeployment have no dependency on those temporary artifacts.
+The PR's readable report explains what changed and that merging updates the
+desired timetable.
+
+The normal Pages `push` trigger includes `releases/**`. Each deployment reads the
+definition from its checked-out `main` commit, downloads the exact source by hash,
+and rebuilds against the canonical data it ships. Source terms, mappings, topology,
+holidays and expected release hashes must verify before upload. A new automatic
+release must also follow the completed predecessor, retain its preparation policy,
+be within the capture-age limit, and have an active Singapore service-date window.
+Ordinary redeployments of an already completed release do not reapply its original
+capture-age limit. Missing sources, invalid definitions and mismatched builds stop;
+they never select a different retained timetable. A manual Pages dispatch follows
+the same definition and cannot choose an arbitrary capture.
+
+Preparation and Pages deployments serialize under the `pages` concurrency group.
+After deployment the publisher verifies public bytes, requests an authenticated
+site pull, and waits for the exact release's completed import receipt. Only then
+does retention advance current/previous. Retention records completed deployments;
+it does not override Git's desired release.
+
+An open review can be prepared again. A held or failed attempt restores `main`'s
+definition on its branch, removing a stale proposed successor without deleting an
+adopted timetable. A new run after a closed or merged review creates a separate
+review branch and preserves the original report. A receipt-only branch is upgraded with the
+available complete Markdown/JSON comparison on retry before a definition can be
+accepted. Complete original comparisons remain preserved. Missing source comparisons
+never qualify a definition change. Merging an evidence-only PR leaves the desired
+release unchanged.
+
+### First definition and recovery
+
+The code change does not invent a new approval or change the live timetable.
+Before the first definition is merged, Pages keeps using the verified completed
+retained release and records that bootstrap selection in its summary. Inspection
+of the same source can propose a definition of that completed release, preserving
+its approvals and output hashes; a qualifying successor can also establish the
+first definition. After adoption, deleting `releases/gtfs.json` fails publication
+rather than re-enabling a retained or legacy fallback.
+
+For an explicit manual release, prepare the approved compact inputs with the
+[release procedure](timetable-release.md), then write a definition using:
+
+```sh
+node scripts/gtfs-release-definition.mjs create /path/to/approved-inputs /tmp/gtfs.json
+```
+
+Review that JSON as `releases/gtfs.json` in a PR together with its source-change
+report. The command verifies source bytes and expected evidence identities;
+Pages still performs the full current mapping/release verification. The definition
+must carry the consumer's exact source admission review. Rolling Git back alone
+does not bypass the site's reviewed rollback requirements.
 
 Status polling retries transport timeouts, connection failures, HTTP 429 and
 temporary server errors for at most one hour and 360 requests. The Pages job
-allows two hours for preparation, a full site projection build and retention.
+allows two hours for build, a full site projection build and retention.
 Authentication
 errors, malformed receipts, wrong identities and terminal import failures still
 stop immediately. A retry never substitutes for an exact successful receipt.
@@ -113,12 +169,17 @@ cutover, not a per-capture permission step:
    identity for a completed new run.
 4. Set `MRTDOWN_GTFS_AUTOMATIC_PUBLICATION_ENABLED=true` in `github-pages`.
    Dispatch the **capture inspection** workflow for a known exception and verify
-   it holds without deploying. The manual Pages workflow cannot bypass the
-   independent validation gate by supplying a capture key.
+   it holds without changing the desired release. Prepare the completed source
+   to bootstrap `releases/gtfs.json`, or use a qualified successor. Verify the PR
+   changes the definition and explains the timetable changes without deploying.
+   Merge it and verify the ordinary Pages run publishes that exact release,
+   completes the site import and records retention. Check an ordinary data-only
+   deployment continues to build the same Git-defined timetable.
 
 Leave both flags unset until compatible code and credentials are present. To
-disable successor generation, set the automatic flag to `paused`. Ordinary Pages
-deployments keep using the latest completed retained release in that mode.
-Unsetting the flag selects legacy mode: first update its protected archive pin
-and source review to the current approved release, since the bootstrap pin may
-be stale after an automatic update.
+pause automatic preparation, set the automatic flag to `paused`. Pages continues
+to honor the definition on `main`, including a previously merged successor. Stop
+or repair that deployment explicitly if required. Before adoption, unsetting the
+flag selects legacy mode; first bring its protected archive pin and source review
+up to date. After adoption the definition remains authoritative even when
+automatic preparation is disabled.

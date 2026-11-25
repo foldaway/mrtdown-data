@@ -10,6 +10,16 @@ the generator's dependency lock, then requires an exact historical replay before
 returning a recipe and ready bundle. The release ID hashes the approved two-digest
 release index, so corrected mappings of the same source remain distinct releases.
 
+## Desired release in Git
+
+The [publication workflow](automatic-publication.md) commits a readable compact
+definition at `releases/gtfs.json`. It holds policies and approval evidence as JSON,
+references the source ZIP by hash, and identifies the expected generated release.
+The standard Pages builder materializes those inputs from its Git checkout.
+Unlike archived retention recipes, this definition expresses the desired next
+release; retention's current/previous pointers describe successful deployments.
+Generated timetable rows and source ZIPs remain outside Git in both formats.
+
 ## Historical replay
 
 Replay verifies every retained object, extracts the archived generator, installs

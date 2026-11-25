@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { readFile, realpath } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -30,7 +30,8 @@ export function renderPrBody(markdown, reportUrl) {
 
 if (
   process.argv[1] &&
-  import.meta.url === pathToFileURL(resolve(process.argv[1])).href
+  import.meta.url ===
+    pathToFileURL(await realpath(resolve(process.argv[1]))).href
 ) {
   const [file, reportUrl] = process.argv.slice(2);
   if (!file || !reportUrl) {
