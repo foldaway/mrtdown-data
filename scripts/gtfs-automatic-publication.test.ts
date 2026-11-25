@@ -193,6 +193,41 @@ function fixture(
 }
 
 describe('automatic GTFS publication', () => {
+  it('treats expired-only calendar cleanup as a no-op after baseline verification without generating approvals', () => {
+    const args = fixture();
+    args.policy = extendedPolicy;
+    args.tables = structuredClone(args.baselineInputs.context.tables);
+    args.tables['calendar_dates.txt'] = [
+      { service_id: 'WD', date: '20261106', exception_type: '2' },
+    ];
+    const baseline = structuredClone(args.baselineInputs);
+    const result = prepareAutomaticRelease(args);
+    expect(result.decision).toBe('no-op');
+    expect(result.retainedManifestSha256).toBe(
+      args.baselineIndex.manifestSha256,
+    );
+    expect(result.historicalChanges.serviceDates).toEqual(['2026-11-06']);
+    expect(result.mappingApproval).toBeUndefined();
+    expect(result.sourceReview).toBeUndefined();
+    expect(result.bundle).toBeUndefined();
+    expect(args.baselineInputs).toEqual(baseline);
+    args.currentTerms.licence.sha256 = 'f'.repeat(64);
+    expect(() => prepareAutomaticRelease(args)).toThrow(/terms changed/);
+  });
+
+  it('still holds a future cancellation even when the same capture contains expired-only cleanup', () => {
+    const args = fixture();
+    args.policy = extendedPolicy;
+    args.tables = structuredClone(args.baselineInputs.context.tables);
+    args.tables['calendar_dates.txt'] = [
+      { service_id: 'WD', date: '20261106', exception_type: '2' },
+      { service_id: 'WD', date: '20261110', exception_type: '2' },
+    ];
+    expect(() => prepareAutomaticRelease(args)).toThrow(
+      /entire supported service date/,
+    );
+  });
+
   it('holds a redistribution that reuses a few nearby calls, while accepting a uniform time shift', () => {
     const ids = Array.from({ length: 10 }, (_, i) => `trip-${i}`);
     const inputs = (morning: number, minutes = '00') => ({

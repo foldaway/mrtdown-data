@@ -66,6 +66,32 @@ predecessor and candidate. Feeds with an absent or empty version instead use the
 consumer's `successor` decision; declared source bounds remain mandatory. This does not waive any mapping or release check.
 New account/capture restrictions must disable automation until reviewed.
 
+## Expired-service cleanup
+
+A capture can be a **no-op** when its only trip or calendar changes belong to
+fully expired service dates. The publisher keeps the completed source, approvals,
+release index and historical schedules unchanged; it creates no successor release
+or desired-definition proposal. This is distinct from an identical-ZIP result and
+cannot trigger the first-definition bootstrap.
+
+The conservative proof requires unchanged stops, routes, feed information and
+other source tables. Any changed or removed trip must belong to a fully expired
+calendar; calendar bounds and all explicit exceptions count, including non-running
+weekdays that a holiday substitution might still use. For unchanged trips, changed
+calendar exceptions must be before today's Singapore service date. All affected
+arrival/departure times, including extended-hour overnight tails, must have
+finished. Missing times or a possible current/future effect use the normal review
+path. Source acquisition, freshness, rights, terms and exact completed-baseline
+verification still run before this decision.
+
+The preparation report identifies the affected past dates and retained manifest.
+A capture review with complete comparison evidence and an unchanged preparation
+base is marked **No publication needed**. Its desired definition is restored to
+main, and the PR can be closed as evidence-only. A stale base or missing comparison
+still holds the review. This does not waive the 10% or 30-minute guards: a capture
+that also changes current/future service follows the existing successor checks
+across the approved window, including historical dates.
+
 ## Publication and failure handling
 
 `main` describes the timetable intended for publication. The text definition

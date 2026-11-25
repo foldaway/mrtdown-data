@@ -319,17 +319,25 @@ jobs:
           fi
           prepared_base="$RUNNER_TEMP/gtfs-automatic/preparation-base.txt"
           export PUBLICATION_READY=false
+          export PUBLICATION_NOOP=false
           export PUBLICATION_HOLD_REASON='Follow the exception release procedure.'
-          if [[ "$PREPARATION_DECISION" == ready ]]; then
+          if [[ "$PREPARATION_DECISION" == ready || "$PREPARATION_DECISION" == no-op ]]; then
             if [[ ! -f "$prepared_base" || "$(cat "$prepared_base")" != "$base_identity" ]]; then
               export PUBLICATION_HOLD_REASON='The desired definition on main changed since preparation, or its preparation record is missing. Prepare this capture again.'
             else
               export PUBLICATION_HOLD_REASON='A complete source comparison and checked definition must be committed before publication.'
             fi
           fi
-          if [[ "$PREPARATION_DECISION" == ready && -f "$candidate" && -f "$prepared_base" && "$(cat "$prepared_base")" == "$base_identity" &&
+          checked_comparison=false
+          if [[ -f "$prepared_base" && "$(cat "$prepared_base")" == "$base_identity" &&
                 -f "$REVIEW_DIR/$SNAPSHOT_SHA256.md" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.json" && -f "$record_json" ]] &&
              ! grep -Fq '**Comparison and findings summary unavailable:**' "$record_path"; then
+            checked_comparison=true
+          fi
+          if [[ "$PREPARATION_DECISION" == no-op && "$checked_comparison" == true ]]; then
+            export PUBLICATION_NOOP=true
+          fi
+          if [[ "$PREPARATION_DECISION" == ready && -f "$candidate" && "$checked_comparison" == true ]]; then
             node --input-type=module - "$candidate" <<'NODE'
           import { readFile } from 'node:fs/promises';
           const definition = JSON.parse(await readFile(process.argv[2], 'utf8'));
@@ -358,7 +366,9 @@ jobs:
           catch (error) { if (error.code !== 'ENOENT') throw error; }
           report += process.env.PUBLICATION_READY === 'true'
             ? '\n## Publication approval\n\nThis PR updates releases/gtfs.json. Merging makes this the desired timetable; the standard Pages workflow builds and publishes its exact reviewed release alongside the other data.\n'
-            : `\n## Publication approval\n\nPublication is held. The desired timetable matches main; merging retains capture evidence only. ${process.env.PUBLICATION_HOLD_REASON}\n`;
+            : process.env.PUBLICATION_NOOP === 'true'
+              ? '\n## Publication approval\n\nNo publication needed. The completed timetable and desired definition remain unchanged. This PR records capture evidence only.\n'
+              : `\n## Publication approval\n\nPublication is held. The desired timetable matches main; merging retains capture evidence only. ${process.env.PUBLICATION_HOLD_REASON}\n`;
           await writeFile(path, report);
           NODE
             git add -- "$record_path"

@@ -382,3 +382,63 @@ test.each([
   expect(body).toContain('changed since preparation');
   expect(body).not.toContain('Merging makes this the desired timetable');
 });
+
+test.each([
+  false,
+  true,
+])('no-op preparation preserves main and removes a stale proposed release (adopted: %s)', async (adopted) => {
+  const h = await harness();
+  const path = 'releases/gtfs.json';
+  if (adopted) {
+    await mkdir(join(h.repo, 'releases'));
+    await writeFile(join(h.repo, path), '{"release":"completed"}\n');
+    h.git('add', path);
+    h.git('commit', '-m', 'test: completed desired release');
+    h.git('push', 'origin', 'main');
+  }
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.md`),
+    '# Snapshot\n\nSource comparison\n',
+  );
+  await writeFile(join(h.reviewDir, `${h.sha256}.json`), '{}\n');
+  const automatic = join(h.runner, 'gtfs-automatic');
+  await mkdir(automatic);
+  await writeFile(
+    join(automatic, 'preparation-base.txt'),
+    adopted ? h.git('rev-parse', `main:${path}`) : 'absent\n',
+  );
+  const candidate = join(automatic, 'release-definition.json');
+  await writeFile(
+    candidate,
+    JSON.stringify({
+      documentKind: 'gtfs-release-definition',
+      capture: { sha256: h.sha256 },
+      release: 'old proposal',
+    }),
+  );
+  h.env.PREPARATION_DECISION = 'ready';
+  h.run();
+  h.env.PREPARATION_DECISION = 'no-op';
+  await rm(candidate);
+  await writeFile(
+    h.env.AUTOMATIC_REPORT,
+    '## Automatic publication\n\nDecision: **no-op**. Only expired service dates changed.\n',
+  );
+  h.run();
+  if (adopted)
+    expect(JSON.parse(h.git('show', `HEAD:${path}`))).toEqual({
+      release: 'completed',
+    });
+  else
+    expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(path);
+  const body = await readFile(join(h.runner, 'created-body.md'), 'utf8');
+  expect(body).toContain('No publication needed');
+  expect(body).toContain('Only expired service dates changed');
+  expect(body).not.toContain('Publication is held');
+  // A no-op proof based on another desired definition must not be accepted.
+  await writeFile(join(automatic, 'preparation-base.txt'), 'different-base\n');
+  h.run();
+  expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toContain(
+    'Publication is held',
+  );
+});
