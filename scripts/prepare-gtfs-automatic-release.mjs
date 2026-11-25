@@ -32,6 +32,7 @@ import {
   checkAutomaticDailyChanges,
   planAutomaticMappings,
 } from './gtfs-automatic-mapping.mjs';
+import { assessExpiredServiceCleanup } from './gtfs-expired-service-cleanup.mjs';
 
 const json = async (path) => JSON.parse(await readFile(path, 'utf8'));
 const encode = (value) => `${JSON.stringify(value, null, 2)}\n`;
@@ -139,6 +140,23 @@ export function prepareAutomaticRelease({
     baseline.bundle.files,
     baselineInputs.context.topology,
   );
+
+  if (policy.scope === 'canonical-schedule') {
+    const cleanup = assessExpiredServiceCleanup(
+      baselineInputs.context.tables,
+      tables,
+      now,
+    );
+    if (cleanup)
+      return {
+        decision: 'no-op',
+        reasons: [
+          `Only expired service dates changed (${cleanup.serviceDates.join(', ')}); keep the completed timetable and its historical schedules unchanged.`,
+        ],
+        retainedManifestSha256: baselineIndex.manifestSha256,
+        historicalChanges: cleanup,
+      };
+  }
 
   const inputs = {
     ...baselineInputs,
