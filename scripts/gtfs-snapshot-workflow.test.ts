@@ -11,6 +11,7 @@ import {
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { afterEach, expect, test } from 'vitest';
+import { renderAutomaticPublicationReport } from './prepare-gtfs-automatic-release.mjs';
 
 const directories: string[] = [];
 afterEach(async () => {
@@ -67,6 +68,7 @@ elif [[ "$1" == pr && "$2" == view ]]; then
 elif [[ "$1" == pr && ( "$2" == create || "$2" == edit ) ]]; then
   for body in "$@"; do :; done
   cp "$body" "$RUNNER_TEMP/created-body.md"
+  if [[ "$2" == create ]]; then echo https://github.com/example/repo/pull/1; fi
 else
   exit 1
 fi
@@ -145,6 +147,137 @@ test('publishes the durable report, retries from committed evidence, and preserv
   // The closed review branch keeps its immutable source report.
   expect(h.git('show', `origin/gtfs-review/${h.sha256}:${h.record}`)).toBe(
     markdown,
+  );
+});
+
+test('the final merge step runs trusted copied code and sends only the verified evidence head', async () => {
+  const h = await harness();
+  const baseSha = h.git('rev-parse', 'main').trim();
+  const runUrl = 'https://github.com/example/repo/actions/runs/123';
+  const artifactUrl = `${runUrl}/artifacts/456`;
+  const comparison = {
+    capture: { sha256: h.sha256 },
+    canonicalCommit: baseSha,
+    runUrl,
+    artifactUrl,
+    comparison: { status: 'available' },
+    inspectionOutcome: 'success',
+    validation: { outcome: 'success' },
+    current: { structuralErrors: [] },
+  };
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.json`),
+    JSON.stringify(comparison),
+  );
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.md`),
+    `# Capture\n\n${baseSha}\n${runUrl}\n${artifactUrl}\n`,
+  );
+  const automatic = join(h.runner, 'gtfs-automatic');
+  await mkdir(automatic);
+  const index = {
+    manifestSha256: 'd'.repeat(64),
+    releaseSha256: 'e'.repeat(64),
+  };
+  const report = {
+    decision: 'no-op',
+    reasons: ['Only completed service changed.'],
+    retainedManifestSha256: index.manifestSha256,
+    historicalChanges: { serviceDates: ['2026-11-14'] },
+    preparation: {
+      captureSha256: h.sha256,
+      captureRetrievedAt: '2026-11-25T20:00:00Z',
+      baselineCaptureSha256: 'f'.repeat(64),
+      baselineReleaseIndex: index,
+      serviceDateRange: {
+        startDate: '2026-11-09',
+        endDateExclusive: '2026-12-01',
+      },
+      checkedAt: '2026-11-26T17:59:00Z',
+      runUrl,
+    },
+  };
+  await writeFile(
+    join(automatic, 'automatic-publication.json'),
+    JSON.stringify(report),
+  );
+  await writeFile(
+    join(automatic, 'automatic-publication.md'),
+    renderAutomaticPublicationReport(report),
+  );
+  await writeFile(join(automatic, 'preparation-base.txt'), 'absent\n');
+  await writeFile(join(automatic, 'preparation-commit.txt'), `${baseSha}\n`);
+  h.env.AUTOMATIC_REPORT = join(automatic, 'automatic-publication.md');
+  h.env.PREPARATION_DECISION = 'no-op';
+  Object.assign(h.env, {
+    INDEPENDENT_OUTCOME: 'success',
+    AUTOMATIC_RESULT: 'success',
+    GITHUB_OUTPUT: join(h.runner, 'outputs'),
+  });
+  const copied = join(h.runner, 'merge-gtfs-noop-review.mjs');
+  await copyFile(resolve('scripts/merge-gtfs-noop-review.mjs'), copied);
+  h.run();
+  const outputs = Object.fromEntries(
+    (await readFile(h.env.GITHUB_OUTPUT, 'utf8'))
+      .trim()
+      .split('\n')
+      .map((line) => line.split('=')),
+  );
+  expect(outputs['publication-noop']).toBe('true');
+  const head = h.git('rev-parse', 'HEAD').trim();
+  expect(outputs['head-sha']).toBe(head);
+  expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toContain(
+    'No-op preparation receipt',
+  );
+  // This working-tree file must never be loaded by the final workflow step.
+  await writeFile(
+    join(h.repo, 'scripts/merge-gtfs-noop-review.mjs'),
+    'throw new Error("Untrusted PR code executed");\n',
+  );
+  const mock = join(h.runner, 'mock-fetch.mjs');
+  const mergeRequest = join(h.runner, 'merge-request.json');
+  await writeFile(
+    mock,
+    `import { writeFileSync } from 'node:fs';
+Date.now = () => Date.parse('2026-11-26T18:00:00Z');
+globalThis.fetch = async (url, options = {}) => {
+  let value;
+  if (options.method === 'PUT') { writeFileSync(${JSON.stringify(mergeRequest)}, options.body); value = { merged: true, message: 'Merged' }; }
+  else if (url.includes('data.mrtdown.org')) value = ${JSON.stringify(index)};
+  else if (url.includes('/check-runs')) value = { total_count: 0, check_runs: [] };
+  else if (url.includes('/status?')) value = { total_count: 0, statuses: [] };
+  else if (url.includes('/reviews?')) value = [];
+  else value = { state: 'open', draft: false, user: { login: 'github-actions[bot]' }, changed_files: 2,
+    head: { sha: ${JSON.stringify(head)}, ref: ${JSON.stringify(outputs.branch)}, repo: { full_name: 'example/repo' } },
+    base: { ref: 'main', sha: ${JSON.stringify(baseSha)}, repo: { full_name: 'example/repo' } } };
+  return new Response(JSON.stringify(value), { status: 200 });
+};\n`,
+  );
+  const result = execFileSync(process.execPath, ['--import', mock, copied], {
+    cwd: h.repo,
+    encoding: 'utf8',
+    env: {
+      ...h.env,
+      REVIEW_PR_URL: outputs['pr-url'],
+      REVIEW_HEAD_SHA: head,
+      REVIEW_BRANCH: outputs.branch,
+      GITHUB_SHA: baseSha,
+      GITHUB_REF: 'refs/heads/main',
+      GITHUB_EVENT_NAME: 'workflow_dispatch',
+    },
+  });
+  expect(result).toContain('GTFS no-op evidence merged');
+  expect(JSON.parse(await readFile(mergeRequest, 'utf8'))).toMatchObject({
+    sha: head,
+    merge_method: 'squash',
+  });
+  const workflow = await readFile('.github/workflows/gtfs-capture.yml', 'utf8');
+  expect(workflow).toContain(
+    "needs.inspect.outputs.independent-outcome == 'success'",
+  );
+  expect(workflow).toContain("steps.review.outputs.publication-noop == 'true'");
+  expect(workflow.indexOf('Preserve trusted no-op merge code')).toBeLessThan(
+    workflow.indexOf('Open snapshot review'),
   );
 });
 

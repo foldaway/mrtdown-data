@@ -157,6 +157,7 @@ jobs:
           if ! git rev-parse --verify --quiet HEAD:releases/gtfs.json > "$RUNNER_TEMP/automatic-report/preparation-base.txt"; then
             printf 'absent\n' > "$RUNNER_TEMP/automatic-report/preparation-base.txt"
           fi
+          git rev-parse HEAD > "$RUNNER_TEMP/automatic-report/preparation-commit.txt"
           node scripts/acquire-gtfs-capture.mjs
           test "$(jq -r .sha256 "$GTFS_INPUT_DIR/capture.json")" = "$VALIDATED_CAPTURE_SHA256"
           npm run check
@@ -193,6 +194,8 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      checks: read
+      statuses: read
     concurrency:
       group: gtfs-review-${{ needs.inspect.outputs.sha256 }}
       cancel-in-progress: false
@@ -200,6 +203,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
@@ -213,7 +217,10 @@ jobs:
         with:
           name: gtfs-automatic-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/gtfs-automatic
+      - name: Preserve trusted no-op merge code
+        run: cp scripts/merge-gtfs-noop-review.mjs "$RUNNER_TEMP/merge-gtfs-noop-review.mjs"
       - name: Open snapshot review
+        id: review
         env:
           GH_TOKEN: ${{ github.token }}
           BASE_BRANCH: ${{ github.event.repository.default_branch }}
@@ -396,9 +403,27 @@ jobs:
           node "$RUNNER_TEMP/gtfs-review-pr-body.mjs" "$report_path" "$report_url" > "$body_path"
           if [[ -n "$existing_pr" ]]; then
             gh pr edit "$existing_pr" --body-file "$body_path"
-            exit 0
+            review_pr="$existing_pr"
+          else
+            review_pr=$(gh pr create --repo "$GITHUB_REPOSITORY" --base "$BASE_BRANCH" \
+              --head "$review_branch" --title "$title" \
+              --body-file "$body_path")
           fi
-
-          gh pr create --repo "$GITHUB_REPOSITORY" --base "$BASE_BRANCH" \
-            --head "$review_branch" --title "$title" \
-            --body-file "$body_path"
+          if [[ -n "${GITHUB_OUTPUT:-}" ]]; then
+            printf 'pr-url=%s\nhead-sha=%s\nbranch=%s\npublication-noop=%s\n' \
+              "$review_pr" "$report_commit" "$review_branch" "$PUBLICATION_NOOP" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Merge verified no-op evidence
+        if: >-
+          ${{ needs.inspect.result == 'success' && needs.prepare.result == 'success' &&
+              needs.inspect.outputs.independent-outcome == 'success' &&
+              needs.inspect.outputs.inspection-outcome == 'success' &&
+              steps.review.outputs.publication-noop == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          REVIEW_PR_URL: ${{ steps.review.outputs.pr-url }}
+          REVIEW_HEAD_SHA: ${{ steps.review.outputs.head-sha }}
+          REVIEW_BRANCH: ${{ steps.review.outputs.branch }}
+          SNAPSHOT_SHA256: ${{ needs.inspect.outputs.sha256 }}
+        run: node "$RUNNER_TEMP/merge-gtfs-noop-review.mjs"

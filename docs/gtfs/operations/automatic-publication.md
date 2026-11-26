@@ -5,7 +5,8 @@ release in `releases/gtfs.json`. Merging that definition into `main` triggers th
 standard Pages deployment, which builds the referenced timetable alongside the
 other data. Preparation never deploys or imports a timetable. Exceptions remain
 evidence-only PRs until the explicit release procedure supplies reviewed inputs.
-No LLM makes release decisions and this workflow does not enable automatic merge.
+No LLM makes release decisions. Only proved no-op capture evidence can merge
+automatically; timetable proposals and held captures retain their review process.
 The checked-in [policy](automatic-publication-policy.json) defines routine
 qualification; generated approvals name that policy and the actual preparation
 run rather than claiming a maintainer reviewed the candidate.
@@ -144,6 +145,47 @@ The normal evidence-only review handling still requires complete comparison
 evidence and an unchanged preparation base before marking **No publication needed**.
 
 ## Publication and failure handling
+
+### Automatic merging of no-op evidence
+
+The trusted capture workflow can squash-merge its own no-op review after successful
+independent validation, inspection, preparation and review recording. The final
+step uses code copied from the default branch before checking out the capture
+branch, with the existing workflow token and no administrator override. It does
+not queue a merge for later: GitHub must accept the exact checked head immediately.
+
+The merge gate requires:
+
+- A same-run preparation receipt binding the exact capture, completed baseline,
+  approval range and complete no-op proof. Preparation must be at most one hour
+  old, the source at most 72 hours old, and the approval window still active.
+  The receipt is retained in the capture Markdown alongside the proof.
+- The same default-branch commit and desired-definition identity as preparation,
+  plus the same public release index immediately before the merge attempt.
+- An open, non-draft, same-repository PR created by the capture bot, with the exact
+  expected head and branch. Its diff may only add or modify regular, non-executable
+  Markdown/JSON files for that capture under `docs/gtfs/captures/`.
+- Committed comparison JSON and prose matching the trusted fresh inspection and
+  no-op report. An original comparison's canonical commit and Actions links may
+  remain preserved; edited findings, missing proof or incomplete comparison cannot
+  qualify.
+- No pending or failed head checks/statuses, requested manual review or
+  changes-requested review. Required GitHub protections still apply.
+
+Bot-created PRs may lack a completed ordinary PR validation run. The successful
+trusted inspection's checks and exact evidence validation supply this gate's
+validation; a missing PR check does not bypass any required GitHub check. The
+workflow does not grant itself review approval or use a separate elevated token.
+
+A stale base, changed head or baseline, unsupported proof, unexpected diff or merge
+refusal leaves the review open and records the reason in the Actions summary.
+Prepare the capture again after resolving it; no delayed merge can outlive its
+proof. `ready`, held, disabled and failed results are never auto-merged. No-op
+merges archive evidence without selecting a new comparison baseline, changing
+`releases/gtfs.json` or publishing a timetable. Capture-only paths are outside the
+Pages deployment trigger.
+
+### Desired state and deployment
 
 `main` describes the timetable intended for publication. The text definition
 contains the original capture receipt and source ZIP hash, mapping and service-date
