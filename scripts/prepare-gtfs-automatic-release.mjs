@@ -437,6 +437,19 @@ export async function prepareAutomaticReleaseFiles({
     now,
     runUrl,
   });
+  if (result.decision === 'no-op')
+    return {
+      ...result,
+      preparation: {
+        captureSha256: candidate.capture.sha256,
+        captureRetrievedAt: candidate.capture.retrieved_at,
+        baselineCaptureSha256: previous.capture.sha256,
+        baselineReleaseIndex: baselineIndex,
+        serviceDateRange: baselineInputs.applicabilityPolicy.serviceDateRange,
+        checkedAt: now,
+        runUrl,
+      },
+    };
   if (result.decision !== 'ready') return result;
   await mkdir(outputDir);
   const compact = {
@@ -495,7 +508,11 @@ export function renderAutomaticPublicationReport(result) {
   const proof = result.retainedTimetableProof
     ? `\n<details>\n<summary>Retained timetable proof</summary>\n\n\`\`\`json\n${JSON.stringify(result.retainedTimetableProof, null, 2)}\n\`\`\`\n\n</details>\n`
     : '';
-  return `## Automatic publication\n\nDecision: **${result.decision}**.\n\n${result.reasons.map((reason) => `- ${reason}`).join('\n')}\n${result.serviceDateRange ? `\nApproved service dates: ${result.serviceDateRange.startDate} through ${result.serviceDateRange.endDateExclusive} (exclusive). Zero unassigned supported trip/date pairs.\n` : ''}${proof}`;
+  const receipt =
+    result.decision === 'no-op' && result.preparation
+      ? `\n<details>\n<summary>No-op preparation receipt</summary>\n\n\`\`\`json\n${JSON.stringify({ preparation: result.preparation, ...(result.historicalChanges ? { historicalChanges: result.historicalChanges } : {}) }, null, 2)}\n\`\`\`\n\n</details>\n`
+      : '';
+  return `## Automatic publication\n\nDecision: **${result.decision}**.\n\n${result.reasons.map((reason) => `- ${reason}`).join('\n')}\n${result.serviceDateRange ? `\nApproved service dates: ${result.serviceDateRange.startDate} through ${result.serviceDateRange.endDateExclusive} (exclusive). Zero unassigned supported trip/date pairs.\n` : ''}${proof}${receipt}`;
 }
 
 if (

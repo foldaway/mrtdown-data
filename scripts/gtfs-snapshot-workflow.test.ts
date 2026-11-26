@@ -11,6 +11,7 @@ import {
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { afterEach, expect, test } from 'vitest';
+import { renderAutomaticPublicationReport } from './prepare-gtfs-automatic-release.mjs';
 
 const directories: string[] = [];
 afterEach(async () => {
@@ -44,6 +45,10 @@ async function harness() {
     resolve('scripts/gtfs-review-pr-body.mjs'),
     join(repo, 'scripts/gtfs-review-pr-body.mjs'),
   );
+  await copyFile(
+    resolve('scripts/merge-gtfs-noop-review.mjs'),
+    join(repo, 'scripts/merge-gtfs-noop-review.mjs'),
+  );
   git('add', 'README.md', 'scripts');
   git('commit', '-m', 'test: seed');
   git('remote', 'add', 'origin', join(root, 'remote.git'));
@@ -67,6 +72,7 @@ elif [[ "$1" == pr && "$2" == view ]]; then
 elif [[ "$1" == pr && ( "$2" == create || "$2" == edit ) ]]; then
   for body in "$@"; do :; done
   cp "$body" "$RUNNER_TEMP/created-body.md"
+  if [[ "$2" == create ]]; then echo https://github.com/example/repo/pull/1; fi
 else
   exit 1
 fi
@@ -113,7 +119,29 @@ fi
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'pipe'],
     });
-  return { root, runner, repo, sha256, record, reviewDir, git, run, env };
+  const preserveCommand = yaml
+    .split('      - name: Preserve trusted no-op merge code\n')[1]
+    .split('\n')[0]
+    .trim()
+    .replace(/^run: /, '');
+  const preserve = (sha: string) =>
+    execFileSync('bash', ['-e', '-c', preserveCommand], {
+      cwd: repo,
+      env: { ...env, GITHUB_SHA: sha },
+      encoding: 'utf8',
+    });
+  return {
+    root,
+    runner,
+    repo,
+    sha256,
+    record,
+    reviewDir,
+    git,
+    run,
+    env,
+    preserve,
+  };
 }
 
 test('publishes the durable report, retries from committed evidence, and preserves closed PRs', async () => {
@@ -145,6 +173,201 @@ test('publishes the durable report, retries from committed evidence, and preserv
   // The closed review branch keeps its immutable source report.
   expect(h.git('show', `origin/gtfs-review/${h.sha256}:${h.record}`)).toBe(
     markdown,
+  );
+});
+
+test('the pinned helper remains available when the moving default branch removes it, and manual review continues', async () => {
+  const h = await harness();
+  const runSha = h.git('rev-parse', 'HEAD').trim();
+  const expected = h.git(
+    'show',
+    `${runSha}:scripts/merge-gtfs-noop-review.mjs`,
+  );
+  h.git('rm', 'scripts/merge-gtfs-noop-review.mjs');
+  h.git('commit', '-m', 'test: main removes helper');
+  h.git('push', 'origin', 'main');
+  h.preserve(runSha);
+  expect(
+    (
+      await readFile(join(h.runner, 'merge-gtfs-noop-review.mjs'), 'utf8')
+    ).trimEnd(),
+  ).toBe(expected.trimEnd());
+  h.env.PREPARATION_DECISION = 'hold';
+  h.run();
+  expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toContain(
+    'Publication is held',
+  );
+});
+
+test.each([
+  false,
+  true,
+])('the final merge step runs pinned code and reports malformed evidence (malformed: %s)', async (malformed) => {
+  const h = await harness();
+  const baseSha = h.git('rev-parse', 'main').trim();
+  const runUrl = 'https://github.com/example/repo/actions/runs/123';
+  const artifactUrl = `${runUrl}/artifacts/456`;
+  const comparison = {
+    capture: { sha256: h.sha256 },
+    canonicalCommit: baseSha,
+    runUrl,
+    artifactUrl,
+    comparison: { status: 'available' },
+    inspectionOutcome: 'success',
+    validation: { outcome: 'success' },
+    current: { structuralErrors: [] },
+  };
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.json`),
+    JSON.stringify(comparison),
+  );
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.md`),
+    `# Capture\n\n${baseSha}\n${runUrl}\n${artifactUrl}\n`,
+  );
+  const automatic = join(h.runner, 'gtfs-automatic');
+  await mkdir(automatic);
+  const index = {
+    manifestSha256: 'd'.repeat(64),
+    releaseSha256: 'e'.repeat(64),
+  };
+  const report = {
+    decision: 'no-op',
+    reasons: ['Only completed service changed.'],
+    retainedManifestSha256: index.manifestSha256,
+    historicalChanges: { serviceDates: ['2026-11-14'] },
+    preparation: {
+      captureSha256: h.sha256,
+      captureRetrievedAt: '2026-11-25T20:00:00Z',
+      baselineCaptureSha256: 'f'.repeat(64),
+      baselineReleaseIndex: index,
+      serviceDateRange: {
+        startDate: '2026-11-09',
+        endDateExclusive: '2026-12-01',
+      },
+      checkedAt: '2026-11-26T17:59:00Z',
+      runUrl,
+    },
+  };
+  await writeFile(
+    join(automatic, 'automatic-publication.json'),
+    JSON.stringify(report),
+  );
+  await writeFile(
+    join(automatic, 'automatic-publication.md'),
+    renderAutomaticPublicationReport(report),
+  );
+  await writeFile(join(automatic, 'preparation-base.txt'), 'absent\n');
+  await writeFile(join(automatic, 'preparation-commit.txt'), `${baseSha}\n`);
+  h.env.AUTOMATIC_REPORT = join(automatic, 'automatic-publication.md');
+  h.env.PREPARATION_DECISION = 'no-op';
+  Object.assign(h.env, {
+    INDEPENDENT_OUTCOME: 'success',
+    AUTOMATIC_RESULT: 'success',
+    GITHUB_OUTPUT: join(h.runner, 'outputs'),
+  });
+  const copied = join(h.runner, 'merge-gtfs-noop-review.mjs');
+  h.preserve(baseSha);
+  h.run();
+  const outputs = Object.fromEntries(
+    (await readFile(h.env.GITHUB_OUTPUT, 'utf8'))
+      .trim()
+      .split('\n')
+      .map((line) => line.split('=')),
+  );
+  expect(outputs['publication-noop']).toBe('true');
+  let head = h.git('rev-parse', 'HEAD').trim();
+  expect(outputs['head-sha']).toBe(head);
+  expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toContain(
+    'No-op preparation receipt',
+  );
+  if (malformed) {
+    await writeFile(
+      join(h.repo, `docs/gtfs/captures/${h.sha256}.json`),
+      '{malformed',
+    );
+    h.git('add', `docs/gtfs/captures/${h.sha256}.json`);
+    h.git('commit', '-m', 'test: malformed committed comparison');
+    h.git('push', 'origin', `HEAD:${outputs.branch}`);
+    head = h.git('rev-parse', 'HEAD').trim();
+  }
+  // This working-tree file must never be loaded by the final workflow step.
+  await writeFile(
+    join(h.repo, 'scripts/merge-gtfs-noop-review.mjs'),
+    'throw new Error("Untrusted PR code executed");\n',
+  );
+  const mock = join(h.runner, 'mock-fetch.mjs');
+  const mergeRequest = join(h.runner, 'merge-request.json');
+  await writeFile(
+    mock,
+    `import { writeFileSync } from 'node:fs';
+Date.now = () => Date.parse('2026-11-26T18:00:00Z');
+globalThis.fetch = async (url, options = {}) => {
+  let value;
+  if (options.method === 'PUT') { writeFileSync(${JSON.stringify(mergeRequest)}, options.body); value = { merged: true, message: 'Merged' }; }
+  else if (url.includes('data.mrtdown.org')) value = ${JSON.stringify(index)};
+  else if (url.includes('/check-runs')) value = { total_count: 0, check_runs: [] };
+  else if (url.includes('/status?')) value = { total_count: 0, statuses: [] };
+  else if (url.includes('/reviews?')) value = [];
+  else value = { state: 'open', draft: false, user: { login: 'github-actions[bot]' }, changed_files: 2,
+    head: { sha: ${JSON.stringify(head)}, ref: ${JSON.stringify(outputs.branch)}, repo: { full_name: 'example/repo' } },
+    base: { ref: 'main', sha: ${JSON.stringify(baseSha)}, repo: { full_name: 'example/repo' } } };
+  return new Response(JSON.stringify(value), { status: 200 });
+};\n`,
+  );
+  const result = execFileSync(process.execPath, ['--import', mock, copied], {
+    cwd: h.repo,
+    encoding: 'utf8',
+    env: {
+      ...h.env,
+      REVIEW_PR_URL: outputs['pr-url'],
+      REVIEW_HEAD_SHA: head,
+      REVIEW_BRANCH: outputs.branch,
+      GITHUB_SHA: baseSha,
+      GITHUB_REF: 'refs/heads/main',
+      GITHUB_EVENT_NAME: 'workflow_dispatch',
+      GITHUB_STEP_SUMMARY: join(h.runner, 'summary.md'),
+    },
+  });
+  if (malformed) {
+    expect(result).toContain(
+      'GTFS no-op evidence left open: Committed comparison JSON is malformed.',
+    );
+    expect(await readFile(join(h.runner, 'summary.md'), 'utf8')).toContain(
+      'Committed comparison JSON is malformed.',
+    );
+    await expect(readFile(mergeRequest)).rejects.toMatchObject({
+      code: 'ENOENT',
+    });
+  } else {
+    expect(result).toContain('GTFS no-op evidence merged');
+    expect(JSON.parse(await readFile(mergeRequest, 'utf8'))).toMatchObject({
+      sha: head,
+      merge_method: 'squash',
+    });
+  }
+  const workflow = await readFile('.github/workflows/gtfs-capture.yml', 'utf8');
+  const mergeStep = workflow.split(
+    '      - name: Merge verified no-op evidence\n',
+  )[1];
+  expect(mergeStep).toMatch(
+    /^\s+run: node "\$RUNNER_TEMP\/merge-gtfs-noop-review\.mjs"\s*$/m,
+  );
+  expect(mergeStep).toMatch(
+    /^\s+REVIEW_HEAD_SHA: \$\{\{ steps\.review\.outputs\.head-sha \}\}\s*$/m,
+  );
+  expect(mergeStep).toMatch(
+    /^\s+REVIEW_PR_URL: \$\{\{ steps\.review\.outputs\.pr-url \}\}\s*$/m,
+  );
+  expect(mergeStep).toMatch(
+    /^\s+REVIEW_BRANCH: \$\{\{ steps\.review\.outputs\.branch \}\}\s*$/m,
+  );
+  expect(workflow).toContain(
+    "needs.inspect.outputs.independent-outcome == 'success'",
+  );
+  expect(workflow).toContain("steps.review.outputs.publication-noop == 'true'");
+  expect(workflow.indexOf('Preserve trusted no-op merge code')).toBeLessThan(
+    workflow.indexOf('Open snapshot review'),
   );
 });
 
