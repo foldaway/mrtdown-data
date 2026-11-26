@@ -41,7 +41,22 @@ function fixture() {
     },
   };
   const freshJson = {
-    capture: { sha256: captureSha256 },
+    schemaVersion: 2,
+    documentKind: 'gtfs-capture-review-receipt',
+    capture: { sha256: captureSha256, retrieved_at: '2026-11-25T20:00:00Z' },
+    reports: Object.fromEntries(
+      [
+        ['json', 'json'],
+        ['markdown', 'md'],
+      ].map(([format, extension]) => [
+        format,
+        {
+          sha256: '1'.repeat(64),
+          byteLength: 100,
+          url: `https://github.com/example/repo/releases/download/gtfs-capture-reports-2026-11/${'1'.repeat(64)}.${extension}`,
+        },
+      ]),
+    ),
     canonicalCommit: baseSha,
     runUrl: 'https://github.com/example/repo/actions/runs/123',
     artifactUrl:
@@ -49,7 +64,7 @@ function fixture() {
     comparison: { status: 'available' },
     inspectionOutcome: 'success',
     validation: { outcome: 'success' },
-    current: { structuralErrors: [] },
+    current: { structuralErrorCount: 0 },
   };
   const freshMarkdown = `# Capture\n\n${freshJson.canonicalCommit}\n${freshJson.runUrl}\n${freshJson.artifactUrl}\n`;
   const automaticMarkdown =
@@ -245,7 +260,7 @@ describe('automatic merge of trusted no-op capture evidence', () => {
     );
   });
 
-  it('accepts original comparison context from an earlier inspection and checks artifact links before run prefixes', async () => {
+  it('rejects an earlier inspection receipt until refreshed from the trusted run', async () => {
     const { args } = fixture();
     const old = {
       canonicalCommit: 'f'.repeat(40),
@@ -259,8 +274,34 @@ describe('automatic merge of trusted no-op capture evidence', () => {
       );
       args.evidence.actualJson[field] = old[field];
     }
-    // The current no-op proof is still taken from this run's preparation artifact.
-    expect(await mergeNoopReview(args)).toMatchObject({ merged: true });
+    expect(await mergeNoopReview(args)).toMatchObject({ merged: false });
+  });
+
+  it.each([
+    'json',
+    'markdown',
+    'archive URL',
+    'archive hash',
+    'legacy receipt',
+  ])('refuses unbounded or invalid %s evidence', async (change) => {
+    const { args, merges } = fixture();
+    if (change === 'json')
+      args.evidence.actualJson = JSON.stringify({
+        padding: 'x'.repeat(16 * 1024),
+      });
+    if (change === 'markdown')
+      args.evidence.actualMarkdown += 'x'.repeat(32 * 1024);
+    if (change === 'archive URL') {
+      args.evidence.actualJson.reports.json.url =
+        'https://example.com/report.json';
+      args.evidence.freshJson.reports.json.url =
+        'https://example.com/report.json';
+    }
+    if (change === 'archive hash')
+      args.evidence.actualJson.reports.json.sha256 = '2'.repeat(64);
+    if (change === 'legacy receipt') args.evidence.actualJson.schemaVersion = 1;
+    expect(await mergeNoopReview(args)).toMatchObject({ merged: false });
+    expect(merges).toHaveLength(0);
   });
 
   it('accepts a complete retained-timetable proof and binds it to both captures and the retained release', async () => {

@@ -167,10 +167,12 @@ The merge gate requires:
 - An open, non-draft, same-repository PR created by the capture bot, with the exact
   expected head and branch. Its diff may only add or modify regular, non-executable
   Markdown/JSON files for that capture under `docs/gtfs/captures/`.
-- Committed comparison JSON and prose matching the trusted fresh inspection and
-  no-op report. An original comparison's canonical commit and Actions links may
-  remain preserved; edited findings, missing proof or incomplete comparison cannot
-  qualify.
+- A bounded version 2 capture receipt and prose matching the exact trusted same-run
+  receipt and no-op report. The detailed JSON/Markdown must first be archived as
+  hash-verified Release assets; their URLs, digests and lengths are bound in the
+  receipt. Legacy full comparisons, edited findings, missing proof, failed archives
+  and incomplete comparisons cannot qualify. See [snapshot records](../captures/README.md)
+  for byte budgets and archive retention.
 - No pending or failed head checks/statuses, requested manual review or
   changes-requested review. Required GitHub protections still apply.
 
@@ -236,11 +238,12 @@ it does not override Git's desired release.
 An open review can be prepared again. A held or failed attempt restores `main`'s
 definition on its branch, removing a stale proposed successor without deleting an
 adopted timetable. A new run after a closed or merged review creates a separate
-review branch and preserves the original report. A receipt-only branch is upgraded with the
-available complete Markdown/JSON comparison on retry before a definition can be
-accepted. Complete original comparisons remain preserved. Missing source comparisons
-never qualify a definition change. Merging an evidence-only PR leaves the desired
-release unchanged.
+review branch and preserves the closed review. A successful archive refreshes the
+bounded Markdown/JSON receipt on retry before a definition can be accepted; this
+also upgrades legacy full reports and unavailable-comparison branches. Earlier
+receipts remain in Git history and detailed reports remain in Release assets.
+Missing comparisons or failed archives never qualify a definition change. Merging
+an evidence-only PR leaves the desired release unchanged.
 
 ### First definition and recovery
 

@@ -81,15 +81,17 @@ artifact, including findings with errors.
 
 After the receipt and ZIP are verified, a separate job on the default branch
 opens a review PR for that ZIP hash even if validation reports errors. The PR
-adds `docs/gtfs/captures/<sha256>.md` and compact JSON evidence with the capture
-time, source links, table changes, effective service-date coverage, validation
-findings, and links to the run and full reports. The Markdown record also becomes
-the PR body when it fits the size budget. The description is capped at 60,000
-Unicode characters and links to the exact committed report. Large reports keep
-their complete Markdown/JSON evidence; only the description omits detailed
-examples or shortens the overview. Reports are generated in the read-only job;
-the write job copies the exact hash-named Markdown and JSON files. A qualifying
-preparation also proposes `releases/gtfs.json`, containing the checked mapping and
+adds a bounded Markdown summary and JSON receipt under `docs/gtfs/captures/`, with
+capture identity, validation outcomes, baseline and table counts. Detailed
+Markdown/JSON reports are archived as content-addressed assets in monthly GitHub
+Releases before the write job produces a receipt. The receipt binds their public
+URLs, SHA-256 digests and byte lengths, verified against GitHub's stored metadata.
+The archive uses the existing workflow permission, never replaces assets and is
+never marked latest. See [snapshot records](../captures/README.md) for size limits
+and retention. The summary becomes the PR body, linking to full reports and the
+exact committed record. Reports are generated in the read-only inspection job;
+archival and receipt generation use code pinned to the trusted workflow commit.
+A qualifying preparation also proposes `releases/gtfs.json`, containing the checked mapping and
 release inputs. Existing open PRs are updated on replay; a new run after a closed
 review uses a separate branch and preserves its original evidence. The job uses
 the repository's GitHub Actions permission to create PRs. See
@@ -160,11 +162,14 @@ approved publication coverage or public-holiday policy.
 Independent notice counts and bounded examples come from reports whose invocation
 identifies the candidate ZIP hash. Missing findings, invalid candidates, and
 unavailable baselines are reported explicitly. If summary generation or artifact
-transfer fails, the write job still creates a receipt-only PR identifying the
-missing evidence. Full Actions artifacts expire; the committed Markdown and JSON
-retain the compact review evidence. Replays retain the original source comparison
-and refresh only the proposed desired release on an open PR. Closed reviews remain
-unchanged; a later attempt can open a fresh review.
+transfer or durable archival fails, the write job still creates a receipt-only PR
+identifying the missing evidence. A failed archive cannot qualify publication or
+an automatic no-op merge, even if partial output exists. Full Actions artifacts
+expire; Release assets retain the detailed evidence while Git retains the bounded
+receipt, summary and publication proof. Replays refresh compact receipts and the
+proposed desired release on an open PR; earlier evidence remains in history and
+the archive. Closed reviews remain unchanged; a later attempt can open a fresh
+review.
 
 After building the CLI, generate the same review locally with:
 

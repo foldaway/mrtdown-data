@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
 import {
   chmod,
   copyFile,
@@ -49,13 +50,17 @@ async function harness() {
     resolve('scripts/merge-gtfs-noop-review.mjs'),
     join(repo, 'scripts/merge-gtfs-noop-review.mjs'),
   );
+  await copyFile(
+    resolve('scripts/archive-gtfs-capture-review.mjs'),
+    join(repo, 'scripts/archive-gtfs-capture-review.mjs'),
+  );
   git('add', 'README.md', 'scripts');
   git('commit', '-m', 'test: seed');
   git('remote', 'add', 'origin', join(root, 'remote.git'));
   git('push', 'origin', 'main');
   const sha256 = 'a'.repeat(64);
   const record = `docs/gtfs/captures/${sha256}.md`;
-  const reviewDir = join(runner, 'gtfs-review');
+  const reviewDir = join(runner, 'gtfs-capture-receipt');
   await mkdir(reviewDir);
   const gh = join(bin, 'gh');
   await writeFile(
@@ -108,6 +113,7 @@ fi
     INSPECTION_OUTCOME: 'success',
     ARTIFACT_URL: '',
     REVIEW_DIR: reviewDir,
+    ARCHIVE_OUTCOME: 'success',
     AUTOMATIC_REPORT: join(runner, 'automatic-publication.md'),
     AUTOMATIC_RESULT: 'skipped',
     PREPARATION_DECISION: 'disabled',
@@ -115,7 +121,16 @@ fi
   const run = () =>
     execFileSync('bash', ['-e', '-o', 'pipefail', '-c', script], {
       cwd: repo,
-      env,
+      env: {
+        ...env,
+        ARCHIVE_OUTCOME:
+          env.ARCHIVE_OUTCOME === 'failure'
+            ? 'failure'
+            : existsSync(join(reviewDir, `${sha256}.json`)) &&
+                existsSync(join(reviewDir, `${sha256}.md`))
+              ? 'success'
+              : 'failure',
+      },
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'pipe'],
     });
@@ -144,7 +159,80 @@ fi
   };
 }
 
-test('publishes the durable report, retries from committed evidence, and preserves closed PRs', async () => {
+test('archives with pinned standalone code and verifies GitHub upload metadata before writing receipts', async () => {
+  const h = await harness();
+  const sha = h.git('rev-parse', 'HEAD').trim();
+  await rm(h.reviewDir, { recursive: true });
+  const full = join(h.runner, 'gtfs-review');
+  await mkdir(full);
+  const report = {
+    schemaVersion: 1,
+    capture: { sha256: h.sha256, retrieved_at: '2026-11-25T20:00:00Z' },
+    origin: 'https://sources.example.com',
+    canonicalCommit: sha,
+    runUrl: 'https://github.com/example/repo/actions/runs/123',
+    inspectionOutcome: 'success',
+    validation: { outcome: 'success' },
+    current: {
+      structuralErrors: [],
+      coverage: { status: 'available', count: 365 },
+    },
+    comparison: { status: 'available' },
+  };
+  await writeFile(join(full, `${h.sha256}.json`), JSON.stringify(report));
+  await writeFile(
+    join(full, `${h.sha256}.md`),
+    '# Snapshot\n\nOverview\n\n## Capture and comparison evidence\n\nExpanded evidence\n',
+  );
+  const mock = join(h.runner, 'mock-archive-fetch.mjs');
+  await writeFile(
+    mock,
+    `import {createHash} from 'node:crypto';
+const assets = [];
+globalThis.fetch = async (input, options) => {
+  const url = new URL(input);
+  if (!['api.github.com', 'uploads.github.com'].includes(url.hostname) || options.headers.Authorization !== 'Bearer test' || options.redirect !== 'error') throw new Error('Unsafe archive request');
+  if (url.pathname.includes('/tags/')) return Response.json({id: 7, tag_name: 'gtfs-capture-reports-2026-11', draft: false});
+  if (url.hostname === 'uploads.github.com') {
+    if (options.method !== 'POST' || !Buffer.isBuffer(options.body)) throw new Error('Expected exact binary upload');
+    const name = url.searchParams.get('name');
+    assets.push({name, size: options.body.length, state: 'uploaded', digest: 'sha256:' + createHash('sha256').update(options.body).digest('hex'), browser_download_url: 'https://github.com/example/repo/releases/download/gtfs-capture-reports-2026-11/' + name});
+    return Response.json({}, {status: 201});
+  }
+  return Response.json(assets);
+};\n`,
+  );
+  await writeFile(
+    join(h.repo, 'scripts/archive-gtfs-capture-review.mjs'),
+    'throw new Error("Untrusted PR archiver executed");\n',
+  );
+  const yaml = await readFile('.github/workflows/gtfs-capture.yml', 'utf8');
+  const script = yaml
+    .split('      - name: Archive detailed capture reports\n')[1]
+    .split('        run: |\n')[1]
+    .split(/\n(?= {0,9}\S)/)[0]
+    .split('\n')
+    .map((line) => line.replace(/^ {10}/, ''))
+    .join('\n');
+  execFileSync('bash', ['-e', '-o', 'pipefail', '-c', script], {
+    cwd: h.repo,
+    env: { ...h.env, GITHUB_SHA: sha, NODE_OPTIONS: `--import=${mock}` },
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+  const receipt = JSON.parse(
+    await readFile(join(h.reviewDir, `${h.sha256}.json`), 'utf8'),
+  );
+  expect(receipt.documentKind).toBe('gtfs-capture-review-receipt');
+  expect(receipt.reports.json.url).toContain(
+    '/releases/download/gtfs-capture-reports-2026-11/',
+  );
+  expect(
+    await readFile(join(h.reviewDir, `${h.sha256}.md`), 'utf8'),
+  ).not.toContain('Expanded evidence');
+  expect(yaml).toMatch(/ARCHIVE_OUTCOME: \$\{\{ steps\.archive\.outcome \}\}/);
+});
+
+test('refreshes compact receipts on retry and preserves closed PRs', async () => {
   const h = await harness();
   const markdown = '# Snapshot\n\nReviewed evidence\n';
   await writeFile(join(h.reviewDir, `${h.sha256}.md`), markdown);
@@ -159,20 +247,25 @@ test('publishes the durable report, retries from committed evidence, and preserv
   expect(h.git('show', '--format=%B', '--no-patch', 'HEAD')).toContain(
     'Co-Authored-By: Codex <noreply@openai.com>',
   );
-  // A pushed branch with no PR is recovered using its original committed report.
-  await writeFile(join(h.reviewDir, `${h.sha256}.md`), '# Different attempt\n');
+  // A pushed branch with no PR is recovered with the current receipt.
+  const refreshed = '# Different attempt\n';
+  const firstCommit = h.git('rev-parse', 'HEAD').trim();
+  await writeFile(join(h.reviewDir, `${h.sha256}.md`), refreshed);
   h.run();
-  expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toBe(
-    firstBody,
-  );
+  const refreshedRecord = h.git('show', `HEAD:${h.record}`);
+  expect(refreshedRecord).toContain(refreshed);
+  expect(h.git('show', `${firstCommit}:${h.record}`)).toBe(markdown);
   await writeFile(
     join(h.runner, 'existing-pr'),
     'https://github.com/example/repo/pull/1\n',
   );
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.md`),
+    '# New review after closure\n',
+  );
   h.run();
-  // The closed review branch keeps its immutable source report.
   expect(h.git('show', `origin/gtfs-review/${h.sha256}:${h.record}`)).toBe(
-    markdown,
+    refreshedRecord,
   );
 });
 
@@ -202,20 +295,36 @@ test('the pinned helper remains available when the moving default branch removes
 test.each([
   false,
   true,
-])('the final merge step runs pinned code and reports malformed evidence (malformed: %s)', async (malformed) => {
+  'padding',
+])('the final merge step runs pinned code and refuses invalid evidence (%s)', async (malformed) => {
   const h = await harness();
   const baseSha = h.git('rev-parse', 'main').trim();
   const runUrl = 'https://github.com/example/repo/actions/runs/123';
   const artifactUrl = `${runUrl}/artifacts/456`;
   const comparison = {
-    capture: { sha256: h.sha256 },
+    schemaVersion: 2,
+    documentKind: 'gtfs-capture-review-receipt',
+    capture: { sha256: h.sha256, retrieved_at: '2026-11-25T20:00:00Z' },
+    reports: Object.fromEntries(
+      [
+        ['json', 'json'],
+        ['markdown', 'md'],
+      ].map(([format, extension]) => [
+        format,
+        {
+          sha256: '1'.repeat(64),
+          byteLength: 100,
+          url: `https://github.com/example/repo/releases/download/gtfs-capture-reports-2026-11/${'1'.repeat(64)}.${extension}`,
+        },
+      ]),
+    ),
     canonicalCommit: baseSha,
     runUrl,
     artifactUrl,
     comparison: { status: 'available' },
     inspectionOutcome: 'success',
     validation: { outcome: 'success' },
-    current: { structuralErrors: [] },
+    current: { structuralErrorCount: 0 },
   };
   await writeFile(
     join(h.reviewDir, `${h.sha256}.json`),
@@ -284,7 +393,9 @@ test.each([
   if (malformed) {
     await writeFile(
       join(h.repo, `docs/gtfs/captures/${h.sha256}.json`),
-      '{malformed',
+      malformed === 'padding'
+        ? JSON.stringify(comparison) + ' '.repeat(20000)
+        : '{malformed',
     );
     h.git('add', `docs/gtfs/captures/${h.sha256}.json`);
     h.git('commit', '-m', 'test: malformed committed comparison');
@@ -330,11 +441,13 @@ globalThis.fetch = async (url, options = {}) => {
     },
   });
   if (malformed) {
-    expect(result).toContain(
-      'GTFS no-op evidence left open: Committed comparison JSON is malformed.',
-    );
+    const reason =
+      malformed === 'padding'
+        ? 'Committed capture evidence exceeds its byte budget.'
+        : 'Committed comparison JSON is malformed.';
+    expect(result).toContain(`GTFS no-op evidence left open: ${reason}`);
     expect(await readFile(join(h.runner, 'summary.md'), 'utf8')).toContain(
-      'Committed comparison JSON is malformed.',
+      reason,
     );
     await expect(readFile(mergeRequest)).rejects.toMatchObject({
       code: 'ENOENT',
@@ -395,22 +508,26 @@ test('updates an open exception PR with the current automatic hold while preserv
   expect(h.git('rev-parse', 'HEAD')).toBe(commit);
 });
 
-test('oversized committed reports create bounded PR bodies and remain recoverable on retry', async () => {
+test.each([
+  'md',
+  'json',
+])('rejects an oversized %s receipt before pushing a branch', async (extension) => {
   const h = await harness();
-  const markdown = `# Snapshot\n\n${'Detailed retained evidence.\n'.repeat(5000)}End of the complete report.\n`;
-  await writeFile(join(h.reviewDir, `${h.sha256}.md`), markdown);
+  await writeFile(join(h.reviewDir, `${h.sha256}.md`), '# Snapshot\n');
   await writeFile(join(h.reviewDir, `${h.sha256}.json`), '{}\n');
-  h.run();
-  const body = await readFile(join(h.runner, 'created-body.md'), 'utf8');
-  expect(Array.from(body).length).toBeLessThanOrEqual(60_000);
-  expect(body).toContain('description is shortened');
-  expect(body).toContain(
-    `https://github.com/example/repo/blob/${h.git('rev-parse', 'HEAD').trim()}/${h.record}`,
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.${extension}`),
+    'x'.repeat(33000),
   );
-  expect(h.git('show', `HEAD:${h.record}`)).toBe(markdown);
-  await writeFile(join(h.reviewDir, `${h.sha256}.md`), '# Different retry\n');
-  h.run();
-  expect(await readFile(join(h.runner, 'created-body.md'), 'utf8')).toBe(body);
+  expect(h.run).toThrow();
+  expect(
+    h.git(
+      'ls-remote',
+      '--heads',
+      'origin',
+      `refs/heads/gtfs-review/${h.sha256}`,
+    ),
+  ).toBe('');
 });
 
 test('missing summary artifacts still produce a PR explaining the missing comparison', async () => {
@@ -422,6 +539,43 @@ test('missing summary artifacts still produce a PR explaining the missing compar
   expect(body).toContain('Merging this record retains evidence only');
   expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(
     `${h.sha256}.json`,
+  );
+});
+
+test.each([
+  'ready',
+  'no-op',
+])('a failed archive ignores partial receipts and holds %s preparation', async (decision) => {
+  const h = await harness();
+  await writeFile(
+    join(h.reviewDir, `${h.sha256}.md`),
+    '# Partial archive output\n',
+  );
+  await writeFile(join(h.reviewDir, `${h.sha256}.json`), '{}\n');
+  await mkdir(join(h.runner, 'gtfs-automatic'));
+  await writeFile(
+    join(h.runner, 'gtfs-automatic/preparation-base.txt'),
+    'absent\n',
+  );
+  await writeFile(
+    join(h.runner, 'gtfs-automatic/release-definition.json'),
+    JSON.stringify({
+      documentKind: 'gtfs-release-definition',
+      capture: { sha256: h.sha256 },
+    }),
+  );
+  h.env.PREPARATION_DECISION = decision;
+  h.env.ARCHIVE_OUTCOME = 'failure';
+  h.run();
+  const record = h.git('show', `HEAD:${h.record}`);
+  expect(record).toContain('durable archival failed');
+  expect(record).toContain('Publication is held');
+  expect(record).not.toContain('Partial archive output');
+  expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(
+    `${h.sha256}.json`,
+  );
+  expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(
+    'releases/gtfs.json',
   );
 });
 
@@ -540,7 +694,7 @@ test('a ready retry upgrades receipt-only evidence before committing the desired
   expect(JSON.parse(h.git('show', 'HEAD:releases/gtfs.json'))).toEqual(
     definition,
   );
-  // A later complete report does not replace an existing complete source comparison.
+  const recoveredCommit = h.git('rev-parse', 'HEAD').trim();
   await writeFile(
     join(h.reviewDir, `${h.sha256}.md`),
     '# Another comparison\n',
@@ -550,12 +704,10 @@ test('a ready retry upgrades receipt-only evidence before committing the desired
     '{"comparison":"different"}\n',
   );
   h.run();
-  expect(h.git('show', `HEAD:${h.record}`)).toContain(
-    'Recovered source comparison',
-  );
-  expect(h.git('show', `HEAD:docs/gtfs/captures/${h.sha256}.json`)).toBe(
-    evidence,
-  );
+  expect(h.git('show', `HEAD:${h.record}`)).toContain('Another comparison');
+  expect(
+    h.git('show', `${recoveredCommit}:docs/gtfs/captures/${h.sha256}.json`),
+  ).toBe(evidence);
 });
 
 test.each([

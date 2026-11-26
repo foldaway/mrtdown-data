@@ -217,6 +217,16 @@ jobs:
         with:
           name: gtfs-automatic-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/gtfs-automatic
+      - name: Archive detailed capture reports
+        id: archive
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SNAPSHOT_SHA256: ${{ needs.inspect.outputs.sha256 }}
+        run: |
+          git show "$GITHUB_SHA:scripts/archive-gtfs-capture-review.mjs" > "$RUNNER_TEMP/archive-gtfs-capture-review.mjs"
+          node "$RUNNER_TEMP/archive-gtfs-capture-review.mjs" \
+            "$RUNNER_TEMP/gtfs-review" "$RUNNER_TEMP/gtfs-capture-receipt" "$SNAPSHOT_SHA256"
       - name: Preserve trusted no-op merge code
         run: git show "$GITHUB_SHA:scripts/merge-gtfs-noop-review.mjs" > "$RUNNER_TEMP/merge-gtfs-noop-review.mjs"
       - name: Open snapshot review
@@ -230,7 +240,8 @@ jobs:
           INDEPENDENT_OUTCOME: ${{ needs.inspect.outputs.independent-outcome }}
           INSPECTION_OUTCOME: ${{ needs.inspect.outputs.inspection-outcome }}
           ARTIFACT_URL: ${{ needs.inspect.outputs.artifact-url }}
-          REVIEW_DIR: ${{ runner.temp }}/gtfs-review
+          REVIEW_DIR: ${{ runner.temp }}/gtfs-capture-receipt
+          ARCHIVE_OUTCOME: ${{ steps.archive.outcome }}
           AUTOMATIC_REPORT: ${{ runner.temp }}/gtfs-automatic/automatic-publication.md
           AUTOMATIC_RESULT: ${{ needs.prepare.result }}
           PREPARATION_DECISION: ${{ needs.prepare.result == 'success' && needs.prepare.outputs.decision || 'hold' }}
@@ -255,13 +266,23 @@ jobs:
           record_path="docs/gtfs/captures/$SNAPSHOT_SHA256.md"
           body_path="$RUNNER_TEMP/gtfs-review-body.md"
           report_path="$RUNNER_TEMP/gtfs-review-report.md"
+          # Never copy a full report into Git, even if an artifact is misrouted.
+          if [[ "$ARCHIVE_OUTCOME" == success ]]; then
+            node --input-type=module <<'NODE'
+          import { readFile } from 'node:fs/promises';
+          for (const [extension, limit] of [['json', 16 * 1024], ['md', 12 * 1024]]) {
+            const bytes = await readFile(`${process.env.REVIEW_DIR}/${process.env.SNAPSHOT_SHA256}.${extension}`);
+            if (bytes.length > limit) throw new Error('Capture receipt exceeds its byte budget');
+          }
+          NODE
+          fi
           # A previous attempt may have pushed the branch before PR creation failed.
           existing_ref=$(git ls-remote --refs origin "$review_ref")
           if [[ -z "$existing_ref" ]]; then
             run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
             origin="${SNAPSHOT_ORIGIN%/}"
             mkdir -p docs/gtfs/captures
-            if [[ -f "$REVIEW_DIR/$SNAPSHOT_SHA256.md" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.json" ]]; then
+            if [[ "$ARCHIVE_OUTCOME" == success && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.md" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.json" ]]; then
               cp "$REVIEW_DIR/$SNAPSHOT_SHA256.md" "$record_path"
               cp "$REVIEW_DIR/$SNAPSHOT_SHA256.json" "docs/gtfs/captures/$SNAPSHOT_SHA256.json"
             else
@@ -275,17 +296,13 @@ jobs:
           - MRTDown inspection result \`$INSPECTION_OUTCOME\`
           - [GitHub Actions run]($run_url)
 
-          **Comparison and findings summary unavailable:** review report generation or artifact transfer failed. Inspect the linked run and full reports before accepting this capture.
+          **Comparison and findings summary unavailable:** review report generation, artifact transfer or durable archival failed. Inspect the linked run and full reports before accepting this capture.
 
           This capture has no checked release definition. Merging this record retains evidence only; publication requires the exception release procedure.
           EOF
               if [[ -n "$ARTIFACT_URL" ]]; then
                 printf '%s\n' "- [Download available reports]($ARTIFACT_URL)" >> "$record_path"
               fi
-            fi
-            if [[ -f "$AUTOMATIC_REPORT" ]]; then
-              printf '\n' >> "$record_path"
-              cat "$AUTOMATIC_REPORT" >> "$record_path"
             fi
             git add -- "$record_path"
             if [[ -f "docs/gtfs/captures/$SNAPSHOT_SHA256.json" ]]; then
@@ -317,9 +334,8 @@ jobs:
           git checkout --detach "$previous_commit"
           candidate="$RUNNER_TEMP/gtfs-automatic/release-definition.json"
           record_json="docs/gtfs/captures/$SNAPSHOT_SHA256.json"
-          # Upgrade an earlier receipt-only branch, while preserving complete original comparisons.
-          if [[ -f "$REVIEW_DIR/$SNAPSHOT_SHA256.md" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.json" ]] &&
-             { [[ ! -f "$record_json" ]] || grep -Fq '**Comparison and findings summary unavailable:**' "$record_path"; }; then
+          # Refresh the bounded receipt; earlier receipts remain in Git history and full reports in Release assets.
+          if [[ "$ARCHIVE_OUTCOME" == success && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.md" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.json" ]]; then
             cp "$REVIEW_DIR/$SNAPSHOT_SHA256.md" "$record_path"
             cp "$REVIEW_DIR/$SNAPSHOT_SHA256.json" "$record_json"
             git add -- "$record_path" "$record_json"
@@ -336,7 +352,7 @@ jobs:
             fi
           fi
           checked_comparison=false
-          if [[ -f "$prepared_base" && "$(cat "$prepared_base")" == "$base_identity" &&
+          if [[ "$ARCHIVE_OUTCOME" == success && -f "$prepared_base" && "$(cat "$prepared_base")" == "$base_identity" &&
                 -f "$REVIEW_DIR/$SNAPSHOT_SHA256.md" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.json" && -f "$record_json" ]] &&
              ! grep -Fq '**Comparison and findings summary unavailable:**' "$record_path"; then
             checked_comparison=true
@@ -376,6 +392,7 @@ jobs:
             : process.env.PUBLICATION_NOOP === 'true'
               ? '\n## Publication approval\n\nNo publication needed. The completed timetable and desired definition remain unchanged. This PR records capture evidence only.\n'
               : `\n## Publication approval\n\nPublication is held. The desired timetable matches main; merging retains capture evidence only. ${process.env.PUBLICATION_HOLD_REASON}\n`;
+          if (Buffer.byteLength(report) > 32 * 1024) throw new Error('Capture Markdown exceeds its byte budget');
           await writeFile(path, report);
           NODE
             git add -- "$record_path"
@@ -388,7 +405,7 @@ jobs:
             git push --force-with-lease="$review_ref:$previous_commit" origin "HEAD:$review_ref"
           fi
 
-          # The PR body describes the committed desired release and original source report.
+          # The PR body describes the committed desired release and current capture receipt.
           git fetch origin "$review_ref"
           git show "FETCH_HEAD:$record_path" > "$report_path"
           report_commit=$(git rev-parse FETCH_HEAD)
