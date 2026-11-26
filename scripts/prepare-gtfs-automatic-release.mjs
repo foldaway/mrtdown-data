@@ -33,6 +33,7 @@ import {
   planAutomaticMappings,
 } from './gtfs-automatic-mapping.mjs';
 import { assessExpiredServiceCleanup } from './gtfs-expired-service-cleanup.mjs';
+import { assessRetainedTimetableNoop } from './gtfs-retained-timetable-noop.mjs';
 
 const json = async (path) => JSON.parse(await readFile(path, 'utf8'));
 const encode = (value) => `${JSON.stringify(value, null, 2)}\n`;
@@ -185,7 +186,13 @@ export function prepareAutomaticRelease({
   if (policy.scope === 'canonical-schedule') {
     progress('Planning source calendars and canonical memberships');
     try {
-      planAutomaticMappings(baselineInputs, inputs, provenance, requireCheck);
+      planAutomaticMappings(
+        baselineInputs,
+        inputs,
+        provenance,
+        requireCheck,
+        policy.revision === 'canonical-schedule-v3',
+      );
     } catch (error) {
       throw new AutomaticPublicationHold(
         `Calendar or mapping planning requires review: ${error.message}`,
@@ -202,6 +209,26 @@ export function prepareAutomaticRelease({
     );
     inputs.sharedServiceMemberships.baseDraftSha256 =
       groupedScopedReviewDraftSha256(grouped.mapping.mapping);
+  }
+  if (policy.revision === 'canonical-schedule-v3') {
+    progress('Proving whether the published timetable can remain unchanged');
+    const proof = assessRetainedTimetableNoop(baselineInputs, inputs, now);
+    if (proof)
+      return {
+        decision: 'no-op',
+        reasons: [
+          `All remaining approved service is unchanged. Differences affect ${proof.expiredServiceDates.length} completed service date(s) within the approved window and ${proof.outsideApprovedServiceDates.length} date(s) outside it; retain the published source, timetable and historical schedules unchanged. No service-date approval is extended.`,
+        ],
+        retainedManifestSha256: baselineIndex.manifestSha256,
+        retainedTimetableProof: {
+          ...proof,
+          baselineCaptureSha256: previousCapture.sha256,
+          candidateCaptureSha256: capture.sha256,
+          retainedManifestSha256: baselineIndex.manifestSha256,
+          policyRevision: policy.revision,
+          policySha256: fingerprint(policy),
+        },
+      };
   }
   progress('Reconstructing candidate mappings');
   const draft = createScheduledCombinedReview(inputs);
@@ -464,6 +491,13 @@ export async function prepareAutomaticReleaseFiles({
   };
 }
 
+export function renderAutomaticPublicationReport(result) {
+  const proof = result.retainedTimetableProof
+    ? `\n<details>\n<summary>Retained timetable proof</summary>\n\n\`\`\`json\n${JSON.stringify(result.retainedTimetableProof, null, 2)}\n\`\`\`\n\n</details>\n`
+    : '';
+  return `## Automatic publication\n\nDecision: **${result.decision}**.\n\n${result.reasons.map((reason) => `- ${reason}`).join('\n')}\n${result.serviceDateRange ? `\nApproved service dates: ${result.serviceDateRange.startDate} through ${result.serviceDateRange.endDateExclusive} (exclusive). Zero unassigned supported trip/date pairs.\n` : ''}${proof}`;
+}
+
 if (
   process.argv[1] &&
   import.meta.url === pathToFileURL(resolve(process.argv[1])).href
@@ -496,7 +530,7 @@ if (
     join(reportDir, 'automatic-publication.json'),
     encode(result),
   );
-  const message = `## Automatic publication\n\nDecision: **${result.decision}**.\n\n${result.reasons.map((reason) => `- ${reason}`).join('\n')}\n${result.serviceDateRange ? `\nApproved service dates: ${result.serviceDateRange.startDate} through ${result.serviceDateRange.endDateExclusive} (exclusive). Zero unassigned supported trip/date pairs.\n` : ''}`;
+  const message = renderAutomaticPublicationReport(result);
   await writeFile(join(reportDir, 'automatic-publication.md'), message);
   if (env.GITHUB_OUTPUT)
     await writeFile(

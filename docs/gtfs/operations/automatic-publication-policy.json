@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "canonical-schedule-v2",
+  "revision": "canonical-schedule-v3",
   "scope": "canonical-schedule",
   "maximumCaptureAgeHours": 72,
   "maximumTripCountChangeFraction": 0.1,

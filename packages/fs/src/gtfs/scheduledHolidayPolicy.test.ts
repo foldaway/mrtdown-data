@@ -2,7 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { holidayFixture } from './__tests__/holidayFixture.js';
 import { createScheduledTripAssignmentProposals } from './assignmentProposals.js';
 import { hashBytes } from './capture.js';
-import { resolveScheduledHolidayDates } from './scheduledHolidayPolicy.js';
+import {
+  resolveScheduledHolidayDates,
+  ScheduledHolidayPolicySchema,
+} from './scheduledHolidayPolicy.js';
 import {
   createScheduledHolidayReviewDraft,
   verifyScheduledHolidayReviewDraft,
@@ -10,6 +13,112 @@ import {
 import type { ScopedReviewContext } from './scopedReviewContract.js';
 
 describe('reviewed holiday service dates', () => {
+  function segmentedFixture() {
+    const input = holidayFixture();
+    const { context, policy } = input;
+    for (const id of ['WD', 'SA', 'SU']) {
+      const row = context.tables['calendar.txt'].find(
+        (row) => row.service_id === id,
+      );
+      if (!row) throw new Error('Missing primary calendar');
+      context.tables['calendar.txt'].push({
+        ...row,
+        service_id: `${id}_NEW`,
+        start_date: '20261109',
+      });
+      row.end_date = '20261108';
+      const trip = context.tables['trips.txt'].find(
+        (trip) => trip.trip_id === `NEL_TEST_${id}`,
+      );
+      if (!trip) throw new Error('Missing primary trip');
+      context.tables['trips.txt'].push({
+        ...trip,
+        trip_id: `${trip.trip_id}_NEW`,
+        service_id: `${id}_NEW`,
+      });
+      context.tables['stop_times.txt'].push(
+        ...context.tables['stop_times.txt']
+          .filter((call) => call.trip_id === trip.trip_id)
+          .map((call) => ({ ...call, trip_id: `${call.trip_id}_NEW` })),
+      );
+    }
+    return {
+      ...input,
+      policy: {
+        ...policy,
+        schemaVersion: 3,
+        families: [
+          {
+            ...policy.families[0],
+            additionalWeekdayCalendarIds: ['WD_NEW'],
+            additionalSaturdayCalendarIds: ['SA_NEW'],
+            additionalSundayCalendarIds: ['SU_NEW'],
+          },
+        ],
+      },
+    };
+  }
+
+  it('substitutes each holiday using only its Sunday segment, including at segment boundaries', () => {
+    const { context, policy, calendar } = segmentedFixture();
+    const before = structuredClone(context);
+    const resolved = resolveScheduledHolidayDates(context, policy, calendar);
+    const dates = (id: string) =>
+      resolved.patterns.find(
+        (pattern) =>
+          pattern.routeId === 'NEL_TEST' && pattern.providerCalendarId === id,
+      )?.serviceDates;
+    expect(dates('SU')).toContain('2026-11-08');
+    expect(dates('SU')).not.toContain('2026-11-09');
+    expect(dates('SU_NEW')).toContain('2026-11-09');
+    expect(dates('SU_NEW')).not.toContain('2026-11-08');
+    expect(dates('WD_NEW')).not.toContain('2026-11-09');
+    expect(dates('WD_NEW')).toContain('2026-11-10');
+    expect(context).toEqual(before);
+    for (const schemaVersion of [1, 2])
+      expect(
+        ScheduledHolidayPolicySchema.safeParse({ ...policy, schemaVersion })
+          .success,
+      ).toBe(false);
+  });
+
+  it.each([
+    'gap',
+    'overlap',
+    'weekdays',
+    'exceptions',
+    'duplicate',
+    'unused',
+    'bounds',
+  ])('rejects invalid primary segments: %s', (scenario) => {
+    const { context, policy, calendar } = segmentedFixture();
+    const segment = context.tables['calendar.txt'].find(
+      (row) => row.service_id === 'WD_NEW',
+    );
+    if (!segment) throw new Error('Missing primary segment');
+    if (scenario === 'gap') segment.start_date = '20261110';
+    if (scenario === 'overlap') segment.start_date = '20261108';
+    if (scenario === 'weekdays') segment.saturday = '1';
+    if (scenario === 'bounds') segment.end_date = '20261230';
+    if (scenario === 'exceptions')
+      context.tables['calendar_dates.txt'] = [
+        { service_id: 'WD_NEW', date: '20261109', exception_type: '2' },
+      ];
+    if (scenario === 'duplicate')
+      policy.families[0].additionalWeekdayCalendarIds = ['WD'];
+    if (scenario === 'unused') {
+      context.tables['trips.txt'] = context.tables['trips.txt'].filter(
+        (trip) => trip.service_id !== 'WD_NEW',
+      );
+      context.tables['stop_times.txt'] = context.tables[
+        'stop_times.txt'
+      ].filter((row) => row.trip_id !== 'NEL_TEST_WD_NEW');
+    }
+    expect(() =>
+      resolveScheduledHolidayDates(context, policy, calendar),
+    ).toThrow();
+  });
+
   it('preserves explicit nonholiday exceptions in v2 while keeping v1 strict', () => {
     const { context, policy, calendar } = holidayFixture();
     context.tables['calendar_dates.txt'] = [

@@ -21,7 +21,10 @@ tests, then requires:
 - Identical stops, routes, feed information and other source tables, ignoring
   row/column order. Calendars and explicit exceptions may change. Each family's
   weekday, Saturday and Sunday calendar must have a unique successor with the
-  same weekly rules and bounds. Explicit supplemental calendars remain within
+  same weekly rules and bounds, or a complete ordered partition with identical
+  weekday flags. Segment bounds must be contiguous and preserve the predecessor's
+  full bounds; gaps, overlaps and competing exact successors require review.
+  Explicit supplemental calendars remain within
   those bounds. Exceptions or supplemental service on public holidays require
   review; the standing Sunday substitution remains unchanged.
 - Unique dated canonical paths, or the complete set of shared services that
@@ -57,8 +60,22 @@ Changed access, stale sources, expired windows, changed terms and uncertain
 mappings require review. A duplicate source
 ZIP is a no-op. The policy does not extend November's approval into December.
 
-Holiday policy v1 remains strict and unchanged for retained historical recipes.
-New automated recipes use v2 and bind each supplemental calendar explicitly.
+Holiday policies v1 and v2 retain their existing behavior for historical recipes.
+New automated recipes use v2 for single primary calendars and v3 when a day type
+is split into segments. In v3 the existing primary ID names the first segment;
+`additionalWeekdayCalendarIds`, `additionalSaturdayCalendarIds` and
+`additionalSundayCalendarIds` list any later segments in date order. Every segment
+must have trips in its family, and each day type must cover the same overall bounds.
+Sunday substitution uses only the Sunday segment containing each holiday; weekday
+and Saturday segments suppress holiday service as before. Explicit exceptions on
+holidays and supplemental holiday service still require review.
+
+For example, splitting DTL weekdays into January 1–December 1 and December 2–31
+can qualify without changing November's approved window. The original source
+calendars remain literal, all mapping/count/timing checks still run, and no December
+trip/date pairs are approved or published by the November release. A future-only
+change is not treated as expired-service cleanup; the retained-timetable proof
+below can instead establish that publication is unnecessary.
 
 LTA's unchanged `feed_version` is handled deliberately: a qualified newer capture
 gets an exact `resolve-version-conflict` admission record binding the completed
@@ -89,8 +106,42 @@ A capture review with complete comparison evidence and an unchanged preparation
 base is marked **No publication needed**. Its desired definition is restored to
 main, and the PR can be closed as evidence-only. A stale base or missing comparison
 still holds the review. This does not waive the 10% or 30-minute guards: a capture
-that also changes current/future service follows the existing successor checks
-across the approved window, including historical dates.
+that also changes current/future **approved** service follows the existing
+successor checks across the approved window, including historical dates.
+
+## Retaining published history across out-of-window changes
+
+Policy `canonical-schedule-v3` also permits a no-op when expired differences are
+combined with changes outside the existing approval window. For example, a capture
+can remove November 14's special service and introduce a December 2 timetable
+without replacing either the published November history or its remaining service.
+This proof runs after the completed baseline verifies and candidate calendar
+bindings, segment coverage and holiday rules have been checked.
+
+The proof compares exact effective journeys on every service date after holiday
+substitution. It preserves duplicate trip counts, stops and order, all arrival and
+departure times, boarding rules and other trip/call metadata. Only provider trip
+and calendar identifiers are disregarded. Source declarations and other tables
+must remain unchanged. Every difference must either:
+
+- Be outside the original approved service-date window, which remains fixed; or
+- Belong to a prior approved service date whose last arrival/departure has finished
+  in both sources, including extended-hour overnight tails in Singapore time.
+
+Today's and future approved service must match exactly. An unfinished overnight
+change or unknown expiry timing cannot qualify. If this proof fails, preparation
+continues through the normal candidate mapping and full-window count/timing checks;
+it does not exempt historical dates from a replacement release's guards.
+
+A passing proof retains the completed source, manifest, release index, approvals
+and timetable bytes. It creates no successor bundle, mapping approval, source
+admission or release definition, and cannot bootstrap the first definition. The
+report records both capture hashes, the retained manifest, the policy identity,
+the unchanged approval range and exact completed/outside-window difference dates.
+The proof JSON is also included in the capture Markdown so the reviewed evidence
+survives Actions artifact retention.
+The normal evidence-only review handling still requires complete comparison
+evidence and an unchanged preparation base before marking **No publication needed**.
 
 ## Publication and failure handling
 

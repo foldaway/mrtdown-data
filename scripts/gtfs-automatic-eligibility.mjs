@@ -8,7 +8,11 @@ import {
 export const automaticPublicationPolicySchema = z
   .object({
     schemaVersion: z.literal(1),
-    revision: z.enum(['timing-only-v1', 'canonical-schedule-v2']),
+    revision: z.enum([
+      'timing-only-v1',
+      'canonical-schedule-v2',
+      'canonical-schedule-v3',
+    ]),
     scope: z.enum(['timing-only', 'canonical-schedule']),
     maximumCaptureAgeHours: z.number().positive().max(72),
     maximumTripCountChangeFraction: z.number().nonnegative().max(0.1),
