@@ -233,6 +233,7 @@ export async function mergeNoopReview({
     );
     validateNoopEvidence(evidence, context);
     const prPath = `/repos/${context.repository}/pulls/${context.prNumber}`;
+    // The PR API may retain its original base.sha. Live main is checked via Git.
     const checkPr = (pr) => {
       requireCheck(
         pr.state === 'open' &&
@@ -242,7 +243,6 @@ export async function mergeNoopReview({
           pr.head.ref === context.branch &&
           pr.head.repo?.full_name === context.repository &&
           pr.base?.ref === context.baseBranch &&
-          pr.base.sha === snapshot.baseSha &&
           pr.base.repo?.full_name === context.repository &&
           pr.changed_files === snapshot.files.length,
         'PR identity or scope changed.',
