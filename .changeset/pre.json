@@ -68,6 +68,7 @@
     "scoped-gtfs-review-draft",
     "scoped-review-blockers",
     "scoped-timetable-rollback",
+    "segmented-holiday-calendars",
     "shared-holiday-mapping-review",
     "shared-public-holidays",
     "shared-service-memberships",

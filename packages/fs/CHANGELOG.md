@@ -1,5 +1,12 @@
 # @mrtdown/fs
 
+## 2.0.0-alpha.49
+
+### Minor Changes
+
+- 7463591: Support holiday policy v3 with contiguous primary calendar segments, preserving
+  Sunday substitution and the existing approval window when source calendars split.
+
 ## 2.0.0-alpha.48
 
 ### Patch Changes
