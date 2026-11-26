@@ -1,13 +1,17 @@
 # GTFS mapping reviews
 
+Use the procedures below to review a capture. The history and pilot packets
+record decisions within their original capture and service-date scopes; use
+[publication procedures](../README.md#publish-or-recover-a-timetable) for release
+checks and approval.
+
 ## Review workflow
 
 - [Reconciliation](reconciliation.md) explains candidate identities and drift.
 - [Scoped review](scoped-review.md) explains how reviewed mappings apply to
   particular captures, line families, and service dates.
 - [Holiday-aware mapping](holiday-mapping-review.md) explains the policy-aware
-  gate. The [nine-family review](shared-holiday-family-review.md) records the
-  capture scope and unresolved evidence for an earlier review.
+  gate.
 - [Source platform allocations](source-platform-allocation-review.md) explains
   when reviewed GTFS allocations take precedence while retaining canonical
   direction defaults. The [policy inputs](policies/) are bound to specific
@@ -20,6 +24,8 @@ or [Paya Lebar platform decision](source-platform-allocation-review.md#paya-leba
 
 ## Review history
 
+- [Nine-family holiday review](shared-holiday-family-review.md) records capture
+  scope and unresolved evidence for an earlier review.
 - [Inventory](mapping-review-inventory.md), [disagreements](mapping-disagreements.md),
   [review blockers](review-blockers.md), and [shared blocker triage](shared-blocker-triage.md)
   record candidate identities and unresolved evidence.

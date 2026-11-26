@@ -1,5 +1,9 @@
 # Publish checked GTFS calendar and stopping-pattern updates
 
+Historical implementation and activation record through 2026-11-22. Policy,
+workflow shape, flags, pins, and receipts below describe that checkpoint; use
+the [current operating guide](../../gtfs/operations/automatic-publication.md) before acting.
+
 ## Purpose
 
 Publish source calendar exceptions and new canonical stopping patterns without a

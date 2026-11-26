@@ -1,248 +1,50 @@
-# Crowdsourced Reports Canonical Ingest Plan
+# Crowdsourced reports canonical ingestion
 
-Status: completed. The shared ingest contract, triage formatting, canonical
-`report.public` evidence mapping, checked-in manual fixture, workflow path, and
-deterministic validation coverage are in place.
+Completed implementation record, verified on 2026-06-17. Current producer
+payloads live in the [ingest contract guide](../../../packages/ingest-contracts/README.md#crowd-reports);
+current processing and workflow behavior live in the
+[triage guide](../../../packages/triage/README.md#crowd-reports).
 
-## Context
+## Delivered outcome
 
-`mrtdown-data` is the canonical reviewed data repository. It owns target-layout
-issue bundles under `data/issue/YYYY/MM/<issue_id>/`, public ingest webhook
-schemas in `packages/ingest-contracts`, and LLM-assisted evidence triage in
-`packages/triage`.
+Accepted reports and clusters use the shared `crowd-report` payload and ordinary
+triage path to create canonical `report.public` evidence. The checked-in
+`fixtures/ingest/crowd-report.json` supports producer and manual workflow testing.
+The data repository does not own report collection, moderation, abuse controls,
+submitter identity, or short-lived community signals; those remain site-local.
 
-Crowdsourced reports should not write canonical issues directly. Runtime
-collection, abuse controls, moderation state, and short-lived community signals
-belong in `mrtdown-site`. This repo should only accept crowd reports once they
-are ready to become canonical evidence through the same ingest path used by
-other external evidence producers.
+The [original plan](https://github.com/foldaway/mrtdown-data/blob/f4f0412c23d56207f60929f4c06b605cf1974295/docs/plans/completed/crowdsourced-reports.md)
+retains the cross-repository diagram and initial payload/phase design. Use the
+package guides and schemas for the maintained contract, not that historical copy.
 
-Paired site-side plan:
+## Decisions retained
 
-- `mrtdown-site/docs/plans/active/crowdsourced-reports.md`
+- 2026-05-24: Only accepted reports enter canonical evidence. Reuse the ingest
+  contract and triage pipeline instead of adding a separate canonical writer.
+- 2026-06-15: Keep confidence and cluster context in evidence text through
+  `reportCount`, effect, delay, and the supplied text. Do not add a separate
+  canonical confidence field without a demonstrated need.
+- Keep personal details, moderation state, abuse scores, and challenge tokens
+  out of the public contract. Public URLs must be safe to retain as source evidence.
+- Paid evals remain intentional; extend them when observed behavior justifies it.
 
-Related references:
+## Verification history
 
-- `docs/plans/completed/ingest-contracts-package.md`
-- `packages/ingest-contracts/README.md`
-- `packages/triage/README.md`
-- `.github/workflows/ingest.yml`
+- 2026-05-24: Added shared payload schemas, deterministic formatting, and public
+  report evidence mapping.
+- 2026-06-13: Added the manual fixture and deterministic `ingestContent` coverage
+  proving canonical evidence and impacts through the existing path.
+- 2026-06-15: Documented single-report and accepted-cluster handling, including
+  required `reportCount` semantics.
+- 2026-06-16: Required offset-bearing timestamps, observation no later than
+  acceptance, and HTTP(S) source URLs.
+- 2026-06-17: Verified package builds/tests for ingest contracts and triage,
+  `npm run data:validate`, and `npm run check`.
 
-## System Flow
+## Follow-ups and current boundaries
 
-Keep this diagram in sync with the paired `mrtdown-site` plan.
-
-```mermaid
-flowchart LR
-  commuter["Commuter"]
-  externalProducer["Other external evidence producer"]
-  moderator["Moderator or operator"]
-  reviewer["Data reviewer"]
-
-  subgraph site["mrtdown-site runtime"]
-    reportForm["Public report form"]
-    abuseGate["Validation, Turnstile, and rate limits"]
-    crowdQueue["Site-local crowd report tables"]
-    moderation["Moderation and clustering"]
-    communitySignal["Short-lived site-local community signal"]
-    dispatch["Dispatch accepted report or cluster"]
-    pullWorkflow["Canonical archive pull workflow"]
-    readModel["Postgres/PostGIS read model"]
-    publicUi["Canonical status, history, and statistics"]
-  end
-
-  subgraph github["GitHub automation boundary"]
-    repositoryDispatch["repository_dispatch ingest event"]
-    dataPr["Automated data PR"]
-    reviewedMerge["Reviewed merge to main"]
-  end
-
-  subgraph data["mrtdown-data canonical repository"]
-    ingestContract["@mrtdown/ingest-contracts crowd-report payload"]
-    ingestWorkflow[".github/workflows/ingest.yml"]
-    triage["@mrtdown/triage LLM-assisted ingest"]
-    canonicalEvidence["data/issue/... report.public evidence"]
-    validation["data validation and review"]
-    publishedArchive["Published canonical data archive"]
-  end
-
-  commuter --> reportForm --> abuseGate --> crowdQueue --> moderation
-  moderator --> moderation
-  moderation --> communitySignal
-  moderation --> dispatch --> repositoryDispatch --> ingestContract
-  externalProducer --> repositoryDispatch
-  ingestContract --> ingestWorkflow --> triage --> canonicalEvidence
-  canonicalEvidence --> validation --> dataPr --> reviewer
-  reviewer --> reviewedMerge --> publishedArchive
-  communitySignal --> publicUi
-  publishedArchive --> pullWorkflow --> readModel --> publicUi
-```
-
-## Goals
-
-- Add a public `crowd-report` ingest content type that external producers can
-  validate without depending on triage internals.
-- Preserve canonical issue/evidence layout and validation rules.
-- Convert accepted crowd reports into `report.public` evidence.
-- Keep submitter identity, abuse signals, moderation notes, and raw operational
-  queue state out of canonical data.
-- Keep deterministic package tests separate from paid/model-dependent evals.
-
-## Non-Goals
-
-- This plan does not build the public report form.
-- This plan does not add site-local moderation tables, rate limits, or
-  aggregation logic.
-- This plan does not make unreviewed public reports part of canonical uptime,
-  statistics, or issue history.
-- This plan does not bypass pull-based publication from `mrtdown-data` to
-  `mrtdown-site`.
-
-## Handoff Contract
-
-`mrtdown-site` should submit accepted reports or accepted report clusters to the
-existing `repository_dispatch` ingest workflow using `IngestPayload`.
-
-Candidate content shape:
-
-```ts
-{
-  source: 'crowd-report',
-  reportId: string,
-  text: string,
-  createdAt: string,
-  observedAt: string,
-  lineIds?: string[],
-  stationIds?: string[],
-  directionText?: string,
-  effect?: 'delay' | 'no-service' | 'crowding' | 'skipped-stop' | 'unknown',
-  delayMinutes?: number,
-  reportCount: number,
-  url: string
-}
-```
-
-Contract rules:
-
-- `reportId` must be stable and non-PII. Site-local database IDs are acceptable
-  if they cannot reveal user identity.
-- `createdAt` is an ISO 8601 datetime with timezone offset for when the site
-  accepted the report or cluster for dispatch.
-- `observedAt` is an ISO 8601 datetime with timezone offset for when the
-  reporter observed the condition. It must not be later than `createdAt`.
-- `text` is the natural-language evidence passed to triage.
-- `lineIds` and `stationIds` may contain one or more affected entities. At
-  least one line or station should be present.
-- `reportCount` is required; use `1` for a single accepted report and a larger
-  count for an accepted cluster.
-- `url` is required because canonical evidence stores a `sourceUrl`. Use a
-  stable, non-PII HTTP(S) public report URL or moderation URL that is safe to
-  publish in canonical evidence.
-- Personal details, IP addresses, user-agent strings, contact fields,
-  moderation notes, abuse scores, and Turnstile tokens must remain site-local.
-
-## Phases
-
-### Phase 1: Contract
-
-- Add `IngestContentCrowdReportSchema` and `IngestContentCrowdReport` in
-  `packages/ingest-contracts`.
-- Include the new schema in `IngestContentSchema`.
-- Document the producer payload and privacy boundary in
-  `packages/ingest-contracts/README.md`.
-- Add deterministic schema tests covering valid payloads, optional fields, and
-  invalid PII-like fields if the contract chooses to reject unknown keys.
-
-Exit criteria:
-
-- `@mrtdown/ingest-contracts` exports the new content type.
-- External producers can validate a crowd-report payload with only
-  `@mrtdown/ingest-contracts`.
-
-### Phase 2: Triage Formatting
-
-- Extend `packages/triage/src/util/ingestContent/types.ts` if needed so triage
-  consumes the shared contract type.
-- Teach `formatContentTextForIngest` to produce a concise, structured evidence
-  prompt from crowd-report fields.
-- Map `crowd-report` to canonical `EvidenceTypeSchema.enum['report.public']`.
-- Persist the crowd-report `url` through the existing evidence `sourceUrl`
-  field.
-- Add deterministic tests for formatting, evidence type mapping, and source URL
-  propagation.
-
-Exit criteria:
-
-- Crowd reports run through `ingestContent` without a special persistence path.
-- Generated evidence remains ordinary canonical `report.public` evidence.
-
-### Phase 3: Ingest Workflow Hardening
-
-- Keep `.github/workflows/ingest.yml` as the canonical automation entrypoint.
-- Ensure accepted crowd-report payloads can be processed through
-  `npm run ingest:webhook`, `npm run data:validate`, and automated PR creation.
-- Keep `fixtures/ingest/crowd-report.json` valid as the lightweight manual
-  dispatch fixture for workflow and producer testing.
-
-Exit criteria:
-
-- A manually supplied crowd-report payload creates or appends canonical evidence
-  in a validation-clean branch.
-- The automated PR remains reviewable as data changes, not runtime state.
-
-### Phase 4: Confidence And Replay Support
-
-- Keep `reportCount` as a required contract field and render it into canonical
-  evidence text. Use `1` for a single accepted report, and do not add a separate
-  canonical confidence field for crowd reports unless review discovers a
-  consumer that needs structured confidence.
-- Add eval fixtures only if deterministic tests or manual replay show that the
-  current prompt cannot reliably distinguish irrelevant reports, existing
-  issues, and new issues.
-- Update `packages/triage/README.md` cost expectations when expanding evals.
-
-Exit criteria:
-
-- Triage behavior for single reports and aggregated clusters is documented.
-- Paid evals remain intentional and outside normal CI.
-
-## Progress Log
-
-- 2026-05-24: Drafted paired canonical ingest plan for crowdsourced reports.
-- 2026-05-24: Added the `crowd-report` ingest contract, deterministic contract
-  tests, triage text formatting, and public-report evidence type mapping.
-- 2026-06-13: Added a checked-in crowd-report ingest fixture for manual
-  workflow dispatch and deterministic contract validation.
-- 2026-06-13: Added deterministic `ingestContent` coverage proving the checked-in
-  crowd-report fixture can create canonical `report.public` evidence and impact
-  events without a special persistence path.
-- 2026-06-15: Documented single-report and cluster handling in
-  `packages/triage/README.md`; `reportCount` is a required contract field
-  rendered into evidence text, not a separate canonical confidence field.
-- 2026-06-16: Hardened the crowd-report contract to require offset-bearing ISO
-  datetimes, reject reports observed after producer acceptance, and require
-  HTTP(S) source URLs.
-- 2026-06-17: Verified the completed canonical ingest path with
-  `npm run build:ingest-contracts`, `npm run test:ingest-contracts`,
-  `npm run build:triage`, `npm run test:triage`, `npm run data:validate`, and
-  `npm run check`.
-
-## Decision Log
-
-- 2026-05-24: Keep crowd-report collection and moderation in `mrtdown-site`;
-  only accepted reports enter this repo as canonical public evidence.
-- 2026-05-24: Use the existing ingest contract and triage package instead of
-  adding a separate crowd-report writer to canonical data.
-- 2026-06-15: Store crowd-report confidence and clustering context in evidence
-  text using the accepted payload fields (`reportCount`, `effect`,
-  `delayMinutes`, and `text`) rather than adding new canonical issue or evidence
-  state.
-
-## Validation
-
-- `npm run build:ingest-contracts`
-- `npm run test:ingest-contracts`
-- `npm run build:triage`
-- `npm run test:triage`
-- `npm run data:validate`
-- `npm run check`
+The [licensing plan](../active/data-licensing-attribution.md) retains the unresolved
+inbound-terms/public-text decision; completed ingestion is not a reuse-rights
+approval. The [direct-ingestion plan](../active/direct-main-ingestion.md) owns any
+future workflow cutover. The original paired site work must be checked in its
+own repository before asserting current runtime or deployment status.

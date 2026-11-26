@@ -1,487 +1,265 @@
-# Direct-to-Main Ingestion Reliability
+# Prove safe direct-to-main evidence ingestion
+
+Maintain this living plan using the [planning standard](../README.md#standard-layout).
 
 ## Purpose
 
-Remove the automated ingestion pull-request queue and allow trusted ingestion
-runs to commit canonical issue data directly to `main`.
-
-The target is unattended ingestion, not unconditional ingestion. Ambiguous,
-unsupported, or failed inputs should leave canonical data unchanged and produce
-an inspectable rejection record.
-
-### Non-Goals
-
-- Guarantee that every submitted payload creates or updates an issue.
-- Correct the entire historical issue dataset in the workflow-cutover change.
-- Make translations authoritative for operational scope, effect, or timing.
-- Run paid model evaluation as part of the normal deterministic test suite.
+Allow trusted evidence ingestion to commit canonical issue data without an
+automated PR queue. Eligible payloads must pass semantic and transactional checks;
+ambiguous, irrelevant, unsupported, or failed payloads leave canonical data
+unchanged and produce an inspectable decision record.
 
 ## Progress
 
-- [x] (2026-07-16) Add the historical corpus and replay tooling in
+- [x] (2026-07-16) Add the historical corpus and partial replay tooling in
   [PR #349](https://github.com/foldaway/mrtdown-data/pull/349).
-- [x] (2026-10-21) Harden the existing PR workflow with queuing, rebasing,
-  and bounded retries. See the [current ingest workflow](../../../.github/workflows/ingest.yml).
-- [ ] Recheck remaining semantic guard and canonical audit gaps against the
-  corpus and current pipeline.
-- [ ] Implement and measure candidate gating in shadow mode before evaluating
-  readiness for a direct-to-main rollout.
+- [x] (2026-10-21) Serialize, rebase, and bound retries in the existing PR path.
+- [x] (2026-11-26) Recheck the workflow and replay guide: ingestion still uses
+  automated PRs; replay does not yet cover title generation, translation,
+  persistence, or the complete workflow.
+- [ ] Audit current semantic guards against confirmed historical regressions.
+- [ ] Complete replay, candidate isolation, guards, and dry-run canonical audits.
+- [ ] Measure candidate decisions in shadow mode and record cutover readiness.
+- [ ] Prove staged direct commits, rejection, retry, rollback, and publication.
 
 ## Surprises & Discoveries
 
-The baseline review found that generic clearance messages could widen a
-specific service scope to `service.whole`. The historical example and its
-implications are documented in [the baseline](#original-baseline) and the
-[failure taxonomy](#failure-taxonomy).
+Generic clearance messages historically widened a specific scope to
+`service.whole`; [PR #319](https://github.com/foldaway/mrtdown-data/pull/319)
+removed such setters. Schema-valid output can still be operationally wrong.
+A manual edit is not automatically ground truth: the correction in
+[PR #301](https://github.com/foldaway/mrtdown-data/pull/301) was later found
+incorrect because the closed and available LRT loops are separate services.
+
+The [original baseline](https://github.com/foldaway/mrtdown-data/blob/f4f0412c23d56207f60929f4c06b605cf1974295/docs/plans/active/direct-main-ingestion.md#original-baseline)
+retains the July PR sample, detector observations, and proposed audit categories.
+Those counts are historical evidence; rerun selectors before asserting current
+coverage or defects. Candidate matches are not confirmed canonical errors.
 
 ## Decision Log
 
-- **2026-10-21** — Serialize and rebase the existing PR path and cap merge
-  retries so deterministic validation can re-run when `main` advances, with
-  the paid ingestion step run once per event.
+- 2026-10-21: Serialize and rebase the existing PR path, cap merge retries,
+  and rerun deterministic validation when `main` advances without repeating paid
+  ingestion. This improves the PR path without authorizing direct writes.
+- 2026-11-26: Consolidate the earlier phases and repeated rollout checklist into
+  the milestones below. Preserve the agreed 20-ingestion shadow minimum and
+  source eligibility sequence; numeric model-stability thresholds remain open.
 
 ## Outcomes & Retrospective
 
-The review PR can now merge after deterministic checks pass. The workflow
-still uses a PR, so direct-write eligibility, shadow results, and end-to-end
-publication remain open.
+Read-only corpus inspection and paid partial replay exist. Automated PRs can
+merge after deterministic checks. Semantic eligibility, complete replay,
+shadow results, and direct-write publication acceptance remain unfinished.
+This docs review changed no ingestion behavior or credentials.
 
-## Context
+## Context and Orientation
 
-The [triage guide](../../../packages/triage/README.md#automated-ingestion)
-describes the current PR-based ingest workflow. The original baseline below
-records the workflow and detector coverage at the time this plan was drafted.
+The [triage guide](../../../packages/triage/README.md) owns current commands,
+paid-call boundaries, repair tools, and automated workflow behavior. Read
+`.github/workflows/ingest.yml`, `packages/triage/src/regression`,
+`packages/triage/src/util/ingestContent`, and `scripts/validate-ingest.sh`
+before implementation. Historical cases live in `fixtures/triage-regressions`.
 
-### Original baseline
+A candidate is a payload's proposed changes in an isolated temporary data root.
+A guard rejects a suspicious semantic result before canonical persistence.
+Quarantine means retaining a diagnostic decision without changing canonical
+data. Shadow mode records what direct ingestion would decide while the existing
+workflow remains responsible for publication.
 
-`.github/workflows/ingest.yml` currently serializes ingestion runs onto an
-`automated-*` branch, validates the resulting data, and opens one accumulating
-pull request for review.
+Evidence stays append-only and attributable. State changes must be reproducible
+from evidence and explicit decisions. Do not hide uncertain model output through
+silent deterministic rewrites, treat translations as scope/effect authority,
+or repair the whole issue dataset inside the workflow cutover.
 
-That review step is still catching material errors, but manual edits are not
-automatically semantic ground truth:
+Use these failure classes consistently in corpus cases, guards, audits, and
+shadow reports:
 
-- [PR #301](https://github.com/foldaway/mrtdown-data/pull/301) was manually
-  changed from `no-service` to `reduced-service`. A later service-model review
-  found the generated result was correct: the closed inner and available outer
-  loops are separate services.
-- Sengkang and Punggol LRT service display names now use the operator's
-  Inner/Outer Loop terminology while retaining the stable clockwise and
-  counter-clockwise service IDs.
-- [PR #319](https://github.com/foldaway/mrtdown-data/pull/319) removed
-  `service.whole` scope setters emitted by a generic clearance update.
-- [PR #316](https://github.com/foldaway/mrtdown-data/pull/316) needed a
-  translation rerun.
-- Several post-migration data fixes corrected recurring service-adjustment
-  periods, issue boundaries, duplicate setters, and same-timestamp state
-  transitions.
-
-The closed automated PR sample from the target-layout migration through
-2026-07-16 contains:
-
-- 12 merged automated PRs;
-- 3 merged PRs with manual commits before merge;
-- 7 automated PRs closed without merging.
-
-The abandoned PRs include bus-only content, non-operational news, evidence with
-no canonical impact, and future station-opening coverage incorrectly treated as
-an operational maintenance issue.
-
-The repository already has targeted re-extraction and replay utilities, but the
-current detectors only cover:
-
-- invalid period ordering or future open-ended periods;
-- a known degraded-service versus future `no-service` pattern;
-- issue bundles with evidence but no impact events.
-
-All three detectors currently return zero targets. They do not detect the known
-scope broadening, wrong-but-schema-valid effects, plausible-but-wrong recurring
-windows, issue matching errors, or irrelevant issue creation.
-
-A preliminary canonical-data audit also finds a large candidate class where a
-clearance-like evidence item changes a previously specific service scope to
-`service.whole`. These are candidates, not automatically confirmed defects, but
-they show that the PR #319 pattern is broader than one recent ingestion.
-
-### Safety Principles
-
-1. Evidence remains append-only and attributable.
-2. Operational state changes must be reproducible from evidence and explicit
-   pipeline decisions.
-3. Schema validation is necessary but not sufficient; semantic guards must
-   reject suspicious but schema-valid output.
-4. A rejected ingestion is safer than a speculative canonical commit.
-5. Model uncertainty must not be hidden by deterministic post-processing.
-6. Direct-to-main eligibility should expand by demonstrated reliability, not
-   switch on for every source and issue type at once.
-7. Human repair remains possible through ordinary focused data changes, but
-   ingestion must not depend on a standing review PR.
-
-### Failure Taxonomy
-
-Every observed correction or rejection should be assigned to one of these
-classes:
-
-1. **Relevance**
-   - bus-only or road incidents;
-   - general rail news without operational impact;
-   - incidents that mention a train or station but do not state a canonical
-     service or facility impact.
-2. **Issue triage**
-   - new issue versus existing issue;
-   - separate planned windows incorrectly combined;
-   - one event split into duplicate issues;
-   - follow-up evidence attached to the wrong issue.
-3. **Entity selection**
-   - wrong service direction;
-   - inactive or unrelated sibling services;
-   - incorrect facility line scope.
-4. **Effect**
-   - `no-service` versus `reduced-service`;
-   - delay versus reduced service;
-   - operating-hours adjustment encoded as ordinary disruption.
-5. **Scope**
-   - a segment or point widened to `service.whole`;
-   - directionally reversed segments;
-   - a generic update changing scope without an explicit geographic claim.
-6. **Period**
-   - service-running hours stored instead of impact hours;
-   - wrong recurrence days or overnight anchors;
-   - unrelated planned windows merged;
-   - future open-ended or reversed intervals.
-7. **State transition**
-   - duplicate setters;
-   - same-timestamp evidence applied in the wrong order;
-   - a clearance update overwriting unrelated state.
-8. **Presentation**
-   - poor translation;
-   - incorrect title, slug, or issue date.
-9. **Workflow integrity**
-   - duplicate delivery;
-   - partial multi-item persistence;
-   - ingestion based on stale `main`;
-   - a bot push that does not trigger required downstream publication.
+| Class | Examples to preserve |
+| --- | --- |
+| Relevance | Bus-only content, general news, no operational rail impact |
+| Issue triage | Wrong existing issue, merged planned windows, duplicate issues |
+| Entity selection | Wrong direction, inactive sibling service, wrong facility line |
+| Effect | Suspension versus reduced service/delay, service-hours adjustment |
+| Scope | Specific scope widened to whole service, reversed segment, unsupported geography |
+| Period | Service hours mistaken for impact hours, recurrence/overnight errors, invalid bounds |
+| State transition | Duplicate setters, same-timestamp ordering, unrelated clearance |
+| Presentation | Translation, title, slug, or issue date |
+| Workflow integrity | Duplicate delivery, partial persistence, stale base, missing publication |
 
 ## Plan of Work
 
-### Phase 1: Build a Historical Regression Corpus
-
-Create a checked-in corpus from real ingestion outcomes rather than synthetic
-examples alone.
-
-#### Sources
-
-- Automated PRs with manual commits, beginning with #301, #316, and #319.
-- Automated PRs closed without merge, including the reason they should have
-  produced no canonical change.
-- Focused post-migration correction commits for effects, scopes, periods,
-  issue splitting, and duplicate state setters.
-- Confirmed incorrect canonical issues found by the audit selectors below.
-- A representative sample of untouched automated PRs as positive controls.
-
-#### Case Format
-
-Each case should preserve:
-
-- the original webhook payload or normalized ingest content;
-- the repository base revision used by the original run;
-- the original pipeline output;
-- the accepted final semantic outcome;
-- the failure-taxonomy labels;
-- whether the expected outcome is create, update, ignore, or quarantine.
-
-Expected results should compare semantic state, not generated IDs or harmless
-serialization differences.
-
-#### Deliverable
-
-Add a command that lists the corpus and can replay one case or a filtered group
-without writing to canonical `data/`.
-
-Implementation status:
-
-- the checked-in case schema and initial historical corpus are present;
-- deterministic list, case-filter, and taxonomy-label-filter commands are
-  available through `npm run triage:regressions`;
-- the command validates and inspects cases without model calls or canonical
-  writes;
-- explicit `--replay` runs paid issue triage, claim extraction, normalization,
-  and impact computation against a temporary copy of the recorded base
-  revision;
-- title generation, translation, persistence, repeated stability runs, and
-  workflow replay remain Phase 2 work.
-
-### Phase 2: Add Full-Pipeline Historical Replay
-
-The existing replay tools operate after issue triage and mostly reconstruct
-claims from committed impact events. Add an end-to-end replay harness that can:
-
-1. materialize the repository at a recorded base revision;
-2. ingest the recorded payload into a temporary data root;
-3. capture triage, extraction, normalization, impact computation, and
-   translation outputs separately;
-4. compare the resulting issue state with the accepted semantic expectation;
-5. repeat model-backed cases to measure output stability;
-6. emit a machine-readable report without modifying canonical data.
-
-Keep two test layers:
-
-- deterministic tests for normalization, state transitions, validation, and
-  semantic guards;
-- paid model evals for relevance, issue matching, effect, scope, and period
-  extraction.
-
-Model-backed regression cases should run on demand and when the relevant prompt,
-model, tool, or normalization code changes.
-
-### Phase 3: Fix Known Systemic Behaviors
-
-#### Preserve Scope on Generic Updates
-
-The claim model already permits `scopes.service` to be null. Use that to
-distinguish:
-
-- an explicit whole-service claim; from
-- an update that does not provide new geographic scope.
-
-Clearance and generic status updates should normally close or change the effect
-for the existing entity while preserving its current scope. Update the current
-eval that expects `service.whole` for a generic cleared message.
-
-Add a deterministic guard that rejects a changed bundle when evidence without
-an explicit whole-service assertion widens a specific scope to
-`service.whole`.
-
-#### Constrain Severe Effects
-
-Require explicit suspension, closure, or no-train language before accepting
-`no-service`. Degraded operation, longer waits, shuttle operation, a single
-platform, or partial availability should not become `no-service`.
-
-Keep prompt guidance, but also add a post-extraction contradiction guard for
-high-confidence patterns. The guard should reject the candidate rather than
-silently rewrite an uncertain claim.
-
-#### Validate Operational Period Semantics
-
-Add deterministic checks for:
-
-- recurring anchor time matching `timeWindow.startAt`;
-- overnight windows using the correct recurrence day;
-- service-hours adjustments representing the unavailable window;
-- suspicious all-day periods inferred from evidence that states exact hours;
-- unrelated planned windows being combined into one issue;
-- recurring periods that extend outside the evidence-stated date range.
-
-Some checks will be hard failures; others should produce a quarantine reason
-until their false-positive rate is known.
-
-#### Strengthen the Operational Impact Gate
-
-For a new issue, `claims.length > 0` is not a sufficient acceptance rule.
-Define the minimum canonical impact by issue type and reject new issues that
-only produce metadata, scope, or cause setters without a meaningful operational
-effect and period.
-
-Expand relevance evals with the abandoned-PR examples:
-
-- bus-only diversion;
-- pest-control or general operator news;
-- station-opening coverage without a temporary operational impact;
-- personal incidents reported after the fact without stated rail impact.
-
-#### Make Delivery Idempotent
-
-Before direct commits, define a stable ingest identity using the producer
-identifier and/or normalized source URL plus source timestamp. A retried
-dispatch must not append duplicate evidence or create a duplicate issue.
-
-### Phase 4: Audit and Repair Canonical Issue Data
-
-Add dry-run audit selectors that output issue and evidence IDs for:
-
-- clearance evidence that widens a specific scope to `service.whole`;
-- effect and evidence-text contradictions;
-- suspicious service-hours and recurring periods;
-- duplicate source URLs or equivalent evidence;
-- duplicate or immediately superseded setters;
-- metadata-only issues with no meaningful operational impact;
-- planned issues containing non-overlapping windows that likely need splitting.
-
-For each selector:
-
-1. review a sample and estimate precision;
-2. refine it until it is useful as an automated guard;
-3. classify all remaining matches;
-4. re-extract and replay confirmed defects with the fixed pipeline;
-5. inspect semantic diffs;
-6. commit canonical repairs separately from pipeline code.
-
-Do not bulk rewrite impact IDs or formatting unless required by a semantic
-repair.
-
-### Phase 5: Introduce a Candidate-and-Gate Ingest Transaction
-
-Refactor ingestion so an entire webhook payload is processed in a temporary data
-root before any canonical commit.
-
-The transaction must:
-
-1. start from the current `main` SHA;
-2. process every payload item;
-3. run data validation;
-4. run semantic guards on every changed issue;
-5. verify append-only evidence behavior and allowed file paths;
-6. enforce idempotency;
-7. produce a concise change manifest;
-8. either accept the whole transaction or leave `main` unchanged.
-
-If `main` changes while the model calls are running, discard the candidate and
-rerun from the new SHA. Rebasing an old triage decision is insufficient because
-the set and state of candidate issues may have changed.
-
-Store a workflow artifact or action summary containing:
-
-- payload identity;
-- base SHA;
-- model and prompt versions;
-- triage result;
-- normalized claims;
-- guard results;
-- estimated model cost;
-- accepted commit SHA or quarantine reason.
-
-Translation should not control operational acceptance. Decide and document a
-safe fallback, such as retaining only verified source text and deferring failed
-non-English enrichment.
-
-### Phase 6: Shadow Direct-to-Main Decisions
-
-Keep the current PR workflow temporarily, but run the candidate-and-gate
-decision in parallel.
-
-For each ingestion, record whether the future direct-to-main system would:
-
-- accept;
-- ignore as irrelevant or duplicate;
-- quarantine for ambiguity or a failed guard.
-
-Reviewers should record any semantic correction using the failure taxonomy.
-The shadow report must make it easy to compare:
-
-- candidate output;
-- final merged output;
-- fields changed manually;
-- whether a guard should have caught the correction.
-
-#### Cutover Readiness
-
-Before enabling direct commits:
-
-- every confirmed historical regression case passes;
-- repeated model evals meet an agreed stability threshold;
-- all high-confidence audit defects are resolved or explicitly waived;
-- no shadow-accepted ingestion requires a manual effect, scope, period, issue
-  matching, or relevance correction during the observation window;
-- quarantine behavior is tested and leaves canonical data unchanged;
-- duplicate delivery and stale-main retries are tested;
-- rollback and publication triggering are tested.
-
-Use a minimum observation window of 20 eligible ingestions. If volume is too
-low, also require enough elapsed time to include both live disruptions and
-planned-work evidence.
-
-### Phase 7: Staged Direct-to-Main Rollout
-
-Expand eligibility in risk order:
-
-1. official operational updates to an existing issue;
-2. official reports creating a new live disruption;
-3. trusted crowd-report clusters;
-4. planned maintenance and service-hour adjustments;
-5. media reports and infrastructure evidence.
-
-Ineligible or ambiguous inputs should be quarantined, not routed into a
-replacement review PR.
-
-The direct workflow should:
-
-1. check out `main`;
-2. build and validate the candidate transaction;
-3. confirm `main` has not changed;
-4. create one focused conventional commit;
-5. push directly to `main`;
-6. explicitly trigger required validation/publication workflows.
-
-The last step needs deliberate implementation. GitHub Actions events created
-with the repository `GITHUB_TOKEN` may not trigger other workflows. Use an
-appropriate GitHub App or scoped token, or explicitly dispatch downstream
-workflows after the commit, and test the complete Pages publication path.
-
-Keep ingestion concurrency serialized and do not cancel an in-progress
-transaction.
-
-### Rollback and Incident Response
-
-- Keep each accepted payload in one revertible commit.
-- Retain the payload and decision report long enough to reproduce the run.
-- Provide a documented command to re-run one payload against a chosen revision.
-- If a post-commit invariant fails, stop subsequent ingestion and alert rather
-  than continuing to write.
-- Repair bad canonical data with a focused revert or correction commit; do not
-  resurrect the ingestion PR queue as the normal path.
-
-### Metrics
-
-Track at least:
-
-- accepted, ignored, quarantined, and failed payload counts;
-- manual semantic correction rate during shadow mode;
-- regression pass and repeated-run stability rates;
-- duplicate-delivery suppression;
-- stale-main retries;
-- guard failures by taxonomy;
-- time from evidence receipt to canonical commit;
-- model usage and cost;
-- post-commit validation and publication success.
-
-### Suggested Change Sequence
-
-1. **Corpus and replay reporting**
-   - add historical cases and semantic comparison;
-   - no canonical data changes.
-2. **Scope, effect, period, and relevance fixes**
-   - add deterministic guards and focused evals.
-3. **Canonical audit and repairs**
-   - data-only changes based on confirmed findings.
-4. **Transactional candidate workflow and shadow reports**
-   - retain PR creation while gathering readiness metrics.
-5. **Direct-to-main cutover**
-   - remove automated branch and PR creation;
-   - add bot credentials, explicit publication triggering, quarantine, and
-     rollback documentation.
-
-### Open Decisions
-
-- Which source classes are eligible at each rollout stage?
-- What repeated-run stability threshold is acceptable for model-backed cases?
-- Which semantic warnings are hard failures versus quarantine reasons?
-- What is the translation fallback when enrichment quality is unacceptable?
-- Where should quarantine records and operational alerts live?
-- What observation duration supplements the 20-ingestion minimum when incident
-  volume is low?
+### 1. Reconcile corpus coverage and finish end-to-end replay
+
+Use the read-only corpus inspection in Concrete Steps. Review corrected PRs
+(#301, #316, #319), rejected PRs, confirmed post-migration
+repairs, and untouched positive controls. Each case must retain payload, source
+base, observed output, accepted semantic expectation, failure labels, and the
+expected create/update/ignore/quarantine result. Compare semantics rather than
+generated ids or serialization.
+
+Extend replay to materialize a recorded base into temporary data, capture each
+pipeline stage including title, translation, persistence, and final issue state,
+and compare against accepted semantics. Add explicit repeated model runs for
+stability measurement. Keep model-backed replay intentional and separate from
+deterministic tests; `--replay` makes paid calls. Do not write to canonical data.
+
+Acceptance: stage-specific failures and final semantic diffs are inspectable;
+replay can cover a complete payload and repeat without contaminating another case.
+Record the model/prompt revision and paid-run results before claiming reliability.
+
+### 2. Prove guards and audit confirmed canonical defects
+
+First inspect current prompts, normalization, guards, and evals so this milestone
+does not reimplement a shipped fix. Add regressions for remaining gaps:
+
+| Invariant | Required outcome |
+| --- | --- |
+| Generic clearance has no new geography | Preserve specific scope; reject unsupported widening to `service.whole` |
+| No explicit suspension/closure/no-train evidence | Do not accept `no-service` from delay, partial availability, shuttle or single-platform operation |
+| Recurring and overnight periods | Anchor recurrence to the stated impact window and day; reject unsupported all-day or out-of-range periods |
+| New issue has operational meaning | Metadata, cause, or scope setters alone do not establish an effect and period |
+| Repeated source delivery | Stable producer/source identity prevents duplicate evidence or issues |
+
+An absent service scope is distinct from an explicit whole-service claim. Reject
+contradictions rather than silently choosing an effect. Measure uncertain rules
+before deciding whether they are hard failures or quarantine reasons.
+
+Add dry-run canonical selectors for unsupported widening, effect/text conflicts,
+period errors, duplicate sources/setters, metadata-only issues, and unrelated
+planned windows. Review samples, estimate precision, classify remaining matches,
+and repair confirmed defects using the corrected pipeline and semantic diffs.
+Keep data repairs separate from pipeline code; preserve unchanged impact ids and
+formatting. Do not bulk-rewrite a candidate class as if it were confirmed wrong.
+
+Acceptance: confirmed regressions pass, selector precision and guard decisions
+are recorded, and high-confidence defects in the covered classes are resolved or
+explicitly waived. Focused triage and canonical validation checks must pass;
+paid relevance, issue-matching, scope, effect, and period evals remain separate.
+
+### 3. Isolate and gate one complete payload
+
+Refactor the existing ingestion entry point so every payload item is processed
+in temporary data based on the current `main` SHA. Before acceptance, require:
+
+1. Complete payload processing and canonical validation.
+2. Semantic guards on every changed issue.
+3. Append-only evidence and an allowed-path check.
+4. Stable ingest identity and duplicate suppression.
+5. A concise change manifest and all-or-nothing acceptance.
+6. A final base-SHA check. If `main` changed during model work, discard and rerun
+   from the new base; rebasing an old semantic decision is insufficient.
+
+Retain the decision record specified in Artifacts and Notes.
+Translation failure needs a documented fallback and must not determine whether
+operational claims are accepted. Record where quarantine and alerts belong.
+
+Acceptance: malformed, ambiguous, partial, duplicate, and stale-base attempts
+have deterministic outcomes and cannot partly persist. A retry is safe; a
+failed candidate leaves canonical data unchanged. Add temporary-root integration
+coverage rather than relying only on schema validation.
+
+### 4. Measure shadow readiness
+
+Keep the PR workflow and compare each candidate's accept/ignore/quarantine
+decision with the final reviewed result. Record manual semantic corrections by
+failure class, including whether a guard should have caught them. Track correction
+and regression rates, repeated-run stability, duplicate suppression, stale-base
+retries, quarantine/guard counts, latency, model cost, and publication outcomes.
+
+Require at least 20 eligible ingestions, plus enough elapsed time to include live
+disruptions and planned work if volume is low. Before cutover, confirmed historical
+regressions must pass, repeated evals must meet an explicitly agreed stability
+threshold, and no shadow-accepted item may need a manual scope/effect/period,
+issue-matching, or relevance correction in the observation window. Quarantine,
+duplicate, stale-base, rollback, and publication tests must pass.
+
+Acceptance: record the actual observation window, results, threshold decision,
+and unresolved classes. Choose source eligibility, translation fallback, storage,
+and alert destination explicitly. Insufficient evidence keeps direct writes closed.
+
+### 5. Roll out by source class and prove recovery
+
+Expand eligibility in the recorded order: official updates to existing issues;
+new official live disruptions; trusted crowd clusters; planned maintenance/hours
+changes; then media and infrastructure evidence. Hold ineligible or ambiguous
+payloads in quarantine rather than creating a replacement review queue.
+
+For eligible input, check out current `main`, build and validate the isolated
+candidate, recheck the base, commit one focused conventional change, and publish.
+Serialize ingestion without cancelling an active transaction. Prove the downstream
+validation and Pages trigger: ordinary `GITHUB_TOKEN` pushes may not start other
+workflows, so choose a suitable scoped identity or explicit dispatch and test it.
+
+Acceptance: the eligible staged case commits directly and reaches verified
+publication; rejected inputs change nothing; duplicate/stale-base retries and
+rollback behave as recorded. Update the triage runbook with the implemented
+operating procedure before completing the cutover.
+
+## Concrete Steps
+
+With repository dependencies installed, inspect the corpus from the repo root:
+
+```sh
+npm run triage:regressions -- --list
+npm run triage:regressions -- --label scope --json
+```
+
+Expect validated case listings and a filtered JSON report. These commands build
+ignored package output and read historical cases; they do not call models or
+write canonical data. For implementation checks, run from the same directory:
+
+```sh
+npm run test:triage
+npm run check
+TZ=UTC npm test
+npm run data:validate
+```
+
+Expect passing regressions and valid canonical records. Model replay requires
+an intentional paid run using the triage guide's explicit `--replay` option.
+No complete candidate/shadow/cutover CLI exists yet: record those concrete
+invocations and expected receipts as their milestones implement the interfaces.
 
 ## Validation and Acceptance
 
-Run `npm run check`, `npm test`, and `npm run data:validate` from the
-repository root. Validate the following workflow outcomes in the staged rollout.
+The implementation checks in Concrete Steps must pass. The deterministic suite
+must not require a model key. Model-dependent semantic replay and evals require an intentional
+run and recorded results when prompts, models, tools, or normalization change.
 
-- `.github/workflows/ingest.yml` no longer creates or updates automated PRs;
-- eligible ingestion commits directly to `main`;
-- rejected and quarantined inputs leave canonical data unchanged;
-- the historical regression corpus and semantic guards pass;
-- canonical issue audits have no unresolved high-confidence defects in the
-  covered classes;
-- duplicate, stale-main, rollback, validation, and publication paths are
-  verified;
-- repository documentation describes the direct-to-main operating model.
+Close the plan only after complete replay, measured guards and audits, the
+shadow window, staged direct commits, rejection, stale-base/duplicate recovery,
+and downstream publication have evidence. Current PR hardening alone does not
+satisfy direct-to-main acceptance. Record remaining eligibility exclusions and
+recovery instructions in the maintained triage guide.
+
+## Idempotence and Recovery
+
+The candidate invariants in milestone 3 govern duplicate suppression and
+all-or-nothing persistence. If `main` changes during model work, discard and
+reprocess the candidate from the new base; a rebase does not refresh triage.
+Failed and quarantined candidates leave canonical data unchanged.
+
+Keep each payload in one revertible commit and retain enough input/report context
+to rerun it against a chosen revision. A post-commit invariant failure stops
+subsequent ingestion. Repair with a focused revert/correction and document the
+response; do not restore the PR queue as the normal operating path.
+
+## Artifacts and Notes
+
+Retain payload identity, base SHA, model/prompt revisions, triage and normalized
+claims, guard results, model usage/cost, and accepted commit or quarantine reason.
+
+The historical corpus is obtained evidence. Still required: complete replay
+results, guard/audit reports, the measured shadow window and agreed thresholds,
+and staged publication/recovery receipts. Label planned checks separately from
+actual results; retain manual semantic corrections by failure class.
+
+## Interfaces and Dependencies
+
+Keep the external webhook boundary compatible with the shared `IngestPayload`
+contract and the existing triage pipeline. Define the isolated candidate result,
+semantic guard decisions, and quarantine storage before workflow cutover. The
+transaction must cover every item, not expose partial acceptance to persistence.
+The translation fallback, alert destination, source eligibility, model-stability
+threshold, and GitHub publication identity remain explicit milestone decisions.
+Paid model access and downstream Pages delivery are separate dependencies.

@@ -1,5 +1,9 @@
 # Rebuildable GTFS releases with bounded ready bundles
 
+Historical implementation and activation record through 2026-11-22. Policy,
+workflow shape, flags, pins, and receipts below describe that checkpoint; use
+the [current operating guide](../../gtfs/operations/release-retention.md) before acting.
+
 ## Purpose
 
 Retain compact approved inputs and exact code/data snapshots for each release.

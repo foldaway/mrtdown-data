@@ -1,5 +1,10 @@
 # Maintain published first and last train timings
 
+Completed implementation record. The optional coverage and GTFS cross-check
+decision is tracked in [tech debt](../tech-debt.md#station-timing-coverage).
+Current source and maintenance policy lives in the
+[data guide](../../data/overview.md#first-and-last-train-timings).
+
 ## Purpose
 
 Keep official first and last train timings available by station and service
@@ -11,8 +16,8 @@ pattern for passenger display and frequency-based estimates.
   [PR #298](https://github.com/foldaway/mrtdown-data/pull/298).
 - [x] (2026-07-16) Backfill operating hours and add estimated departures in
   [PR #347](https://github.com/foldaway/mrtdown-data/pull/347).
-- [ ] Decide whether consumers need a timing coverage report or Pages index,
-  and whether these timings have a validation role alongside exact LTA GTFS.
+- [x] (2026-11-26) Separate the shipped timing data from the optional coverage
+  and GTFS cross-check follow-up, now tracked in tech debt.
 
 ## Surprises & Discoveries
 
@@ -32,33 +37,19 @@ The timing records are available in canonical station data and feed the
 [frequency-based departure helper](../../../packages/core/src/helpers/generateEstimatedStationFrequencySchedules.ts).
 See [Caldecott](../../../data/station/CDT.json) for SMRT examples and
 [Little India](../../../data/station/LTI.json) for SBS Transit examples.
-The [GTFS plan](gtfs-static-realtime.md) tracks exact schedules separately.
+Exact schedules are documented in the [GTFS guides](../../gtfs/README.md).
 
 ## Context
 
-Use the [station schema](../../../packages/core/src/schema/Station.ts) for
-field definitions and calendar categories. Store local Singapore clock times
-as published, including after-midnight values such as `00:25`. Derive service-day
-offsets at the timetable boundary if a downstream use needs them.
-
-### Source policy
-
-Use official passenger timing tables from the operator or agency. When official
-sources differ, prefer the table that directly describes the operator's service.
-Use third-party sites only to cross-check the reviewed values. Document a stable
-source contract and maintenance process before introducing automated imports.
-
-Record recurring published timings here, including recurring holiday categories
-where applicable. Record one-off early closures, late openings, and extensions
-as issue evidence.
+The [station schema](../../../packages/core/src/schema/Station.ts) owns the field
+definitions. The [data guide](../../data/overview.md#first-and-last-train-timings)
+owns timing source policy and service-pattern conventions.
 
 ## Plan of Work
 
-1. Check how the site and other Pages consumers discover `firstLastTrain` today.
-   Add coverage metadata only if a concrete consumer needs it to find records.
-2. Decide whether a coverage report or cross-check against reviewed GTFS would
-   catch meaningful gaps. If needed, define the evidence and service-date rules
-   for the cross-check before implementing it.
+The optional coverage investigation is deferred. It does not block the timing
+records or frequency helper already delivered. Start with the tech debt entry
+if a consumer establishes a need.
 
 ## Validation and Acceptance
 

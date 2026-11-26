@@ -104,7 +104,7 @@ review and exclusion/coverage information. A public download interface must also
 provide the conspicuous attribution required by the
 [publication policy](schedule-publication.md).
 Consumer import still needs the separate source-lineage and correction-revision
-checks in the [GTFS plan](../../plans/active/gtfs-static-realtime.md#phase-4-consume-scheduled-arrivals-in-mrtdown-site).
+checks in the [consumer import guide](timetable-import.md).
 
 ## Exporting a reviewed bundle
 
