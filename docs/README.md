@@ -1,39 +1,38 @@
 # Documentation
 
-- [Canonical data](data/overview.md) describes record layout, naming, and
-  licenses and sources.
-- [Packages and checks](development/packages.md) covers package ownership,
-  dependency boundaries, and deterministic verification.
-- [Pages exports](operations/pages-exports.md) covers local builds, timetable
-  packaging, and the deployment handoff to `mrtdown-site`.
-- [GTFS](gtfs/README.md) covers capture, mapping review, timetable publication,
-  and consumer contracts.
-- [Station layouts](data/station-layout.md) and [public holidays](data/public-holidays.md)
-  describe canonical data, source policy, and import commands.
-- [Schematic map reference inventory](schematic-map/reference-inventory.md) and
-  [designer submissions](schematic-map/designer-submissions.md) cover map
-  generation inputs and review.
-- [Execution plans](plans/README.md) explains when to write a plan and lists
-  active work, completed work, and technical debt.
-- [Data license and attribution](../LICENSE-DATA.md) covers canonical and
-  third-party material. The [source registry](../data/rights/source-registry.json)
-  contains the machine-readable rules for recurring sources.
+Start with the [repository README](../README.md) for setup and common commands.
 
-Start with the [repository README](../README.md) for setup and common workflows.
-The [triage guide](../packages/triage/README.md) and
-[ingest contracts](../packages/ingest-contracts/README.md) live with their packages.
+## Find a guide
+
+| Task | Start here |
+| --- | --- |
+| Edit canonical records | [Data conventions and sources](data/overview.md) |
+| Import station exits or review platforms | [Station layouts](data/station-layout.md) |
+| Import holiday calendars | [Public holidays](data/public-holidays.md) |
+| Develop packages or run checks | [Packages and checks](development/packages.md) |
+| Ingest evidence, repair issues, or replay regressions | [Triage guide](../packages/triage/README.md) |
+| Integrate an evidence producer | [Ingest contracts](../packages/ingest-contracts/README.md) |
+| Build exports or deploy to Pages | [Pages exports](operations/pages-exports.md) |
+| Inspect, review, publish, or consume timetables | [GTFS guide](gtfs/README.md) |
+| Submit schematic map edits | [Designer submissions](schematic-map/designer-submissions.md) |
+| Compare schematic map generation with the renderer | [Map reference inventory](schematic-map/reference-inventory.md) |
+| Check data rights and attribution | [Data license](../LICENSE-DATA.md) and [source registry](../data/rights/source-registry.json) |
+| Write docs or a PR description | [Documentation guidance](development/writing.md) |
+
+## Find work and evidence
+
+- The [plan index](plans/README.md) tracks active work, completed outcomes,
+  and technical debt. It also explains when a change needs a versioned plan.
+- The [GTFS capture guide](gtfs/captures/README.md) describes snapshot receipts
+  and archived reports.
+- The [GTFS review index](gtfs/reviews/README.md) separates review procedures
+  from historical audits, decisions, and line pilots.
+
+Use subject guides for maintained behavior and procedures, plans for work in
+progress, and dated evidence for what a particular review established.
 
 ## Writing docs and proposals
 
-- Write for a busy reader. Lead with what changes, why it matters, and what
-  decision or action is needed. Give enough context for a reader to act.
-- Use descriptive headings, short paragraphs, and bullets for independent
-  points. Use numbered steps when order matters.
-- Say each thing once. Link to nearby schemas, tests, CLI help, or existing
-  guides for details they already explain. Write down the rationale, policies,
-  failure modes, and evidence a reader would otherwise have to reconstruct.
-- For a proposal with open choices, state the recommendation, its tradeoff,
-  and what evidence would change it. Record the decision in the relevant plan
-  or subject guide.
-- Update the existing subject guide when behavior changes. Keep dated evidence
-  with the review it supports and implementation history with the plan.
+Follow the [documentation guidance](development/writing.md) for when to write,
+where to put it, and how to keep docs and PR descriptions concise. Update the
+existing guide first; create a new document when a distinct reader task needs one.

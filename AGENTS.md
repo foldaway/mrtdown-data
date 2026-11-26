@@ -18,9 +18,11 @@ of the package, data, workflow, and deployment boundaries.
 
 ## Proposals and plans
 
-Follow the [writing guidance](docs/README.md#writing-docs-and-proposals).
+Follow the [documentation guidance](docs/development/writing.md) for when to
+write docs, where they belong, and concise docs and PR descriptions.
 Use a checklist for routine work and the [execution plan template](docs/plans/template.md)
 when the [planning guide](docs/plans/README.md) calls for a versioned plan.
+New and active plans must follow the [standard layout](docs/plans/README.md#standard-layout).
 
 ## Review Rules
 

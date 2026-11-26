@@ -1,5 +1,9 @@
 # Automatic preparation and publication of GTFS updates
 
+Historical implementation and activation record through 2026-11-22. Policy,
+workflow shape, flags, pins, and receipts below describe that checkpoint; use
+the [current operating guide](../../gtfs/operations/automatic-publication.md) before acting.
+
 ## Purpose
 
 Publish routine timetable successors automatically when every check passes.

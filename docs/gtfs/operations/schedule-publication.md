@@ -79,7 +79,7 @@ and Effective Date before release. Pending-review captures remain usable for
 private inspection without becoming publication inputs.
 
 Publication also requires complete, reviewed mappings and the matching canonical
-topology described in the [GTFS plan](../../plans/active/gtfs-static-realtime.md#phase-3-generate-the-scheduled-arrivals-artifact).
+topology described in the [artifact preparation contract](../reference/timetable-artifact.md#preparing-and-verifying-bytes).
 Local departure previews and assignment proposals remain
 `generationEligible: false`. The offline
 [reviewed bundle exporter](timetable-release.md#exporting-a-reviewed-bundle)

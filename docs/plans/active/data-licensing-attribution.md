@@ -1,373 +1,197 @@
-# Data Licensing And Attribution Plan
+# Finish evidence attribution and public export coverage
+
+Maintain this living plan using the [planning standard](../README.md#standard-layout).
 
 ## Purpose
 
-- Publish a clear top-level license for MRTDown-authored data.
-- Keep code licensing separate from data licensing.
-- Preserve upstream attribution and rights for third-party evidence sources.
-- Avoid touching every historical evidence row when rights can be inferred from
-  `sourceUrl` or source class.
-- Add validation that every evidence row resolves to exactly one rights rule.
-- Generate attribution notices for the Pages/archive artifact.
-- Make source-specific rights explicit for LTA/DataMall, X/Twitter, Reddit,
-  CNA/Mediacorp, Straits Times/SPH, direct crowd reports, and other recurring
-  evidence sources.
-- Keep deterministic tests separate from any live network or platform checks.
-
-### Non-Goals
-
-- This plan does not provide legal advice or decide final counsel-approved
-  wording.
-- This plan does not relicense third-party text, posts, article bodies,
-  screenshots, trademarks, or upstream datasets that MRTDown does not own.
-- This plan does not require per-row rights metadata for rows that can be
-  resolved through a source registry.
-- This plan does not fetch live platform terms during validation.
-- This plan does not remove evidence text from historical records unless a
-  later legal review requires it.
+Make exported evidence rights and source attribution understandable to consumers
+without relabeling third-party content as MRTDown-owned. Finish the attribution
+and crowd-report gaps around the existing registry, validation, and redaction.
+Current licensing policy belongs in [the data guide](../../data/overview.md#licenses-and-sources)
+and [LICENSE-DATA.md](../../../LICENSE-DATA.md).
 
 ## Progress
 
-- [x] (2026-06-29) Add separate data and code licenses and a versioned source
+- [x] (2026-06-29) Add separate data/code licenses and the versioned source
   registry in [PR #337](https://github.com/foldaway/mrtdown-data/pull/337).
-- [ ] Reconcile the validation and attribution milestones below with the
-  current export and manifest, then identify the remaining coverage gaps.
-- [ ] Resolve inbound terms for crowd reports and verify the public export
-  policy for their text.
+- [x] (2026-11-26) Inspect registry matching, evidence-rights validation, Pages
+  redaction, and manifest hashes in the current checkout. These already exist;
+  their implementation is not future work.
+- [ ] Build and inspect an export, then record the remaining attribution and
+  discoverability gaps against the acceptance criteria below.
+- [ ] Specify and implement the missing deterministic attribution artifacts and
+  consumer pointers, if the artifact audit confirms they are absent.
+- [ ] Resolve crowd-report inbound terms and verify the public text policy.
 
 ## Surprises & Discoveries
 
-Pages already redacts source text and rendered content when the registry
-forbids public export. See the [Pages export overview](../../operations/pages-exports.md).
+`packages/fs/src/rights.ts` resolves source rules by URL, original archive host,
+path, and evidence type, using priority to select a unique highest-priority rule.
+`validateEvidenceRights` in `packages/fs/src/validate.ts` rejects unresolved rows.
+Do not replace this with the original proposal's simpler matching model.
+
+`scripts/build-pages-artifact.mjs` generates schematic artifacts, redacts
+nonpublic evidence, validates the staged data, copies the data license, and
+builds the manifest before creating archives. `packages/fs/src/manifest.ts`
+hashes the license and source registry. The inspected build does not generate
+the general `attribution.json` and `ATTRIBUTION.md` proposed earlier; confirm
+this in a built artifact before implementing the remaining output.
+
+The direct crowd-report registry rule has `publicExportAllowed: false` and
+identifies inbound terms as required. A valid ingest contract does not itself
+grant public reuse rights.
 
 ## Decision Log
 
-- **2026-06-29** — Use separate [data](../../../LICENSE-DATA.md) and
-  [code](../../../LICENSE-CODE.md) licenses alongside the source registry so
-  canonical data, code, and third-party material have explicit terms.
+- 2026-06-29: Separate MRTDown's CC-BY-4.0 data license, MIT code license, and
+  upstream rights through a versioned registry instead of repetitive per-row
+  licensing fields.
+- Earlier design: put shared rights and attribution schemas/types in `core`,
+  file matching and export behavior in `fs`, and commands in `cli`. Generate a
+  JSON attribution index and human-readable notices without network calls.
+- 2026-11-26: Replace implemented scaffold phases and speculative schema examples
+  with the remaining artifact audit, attribution, and inbound-terms milestones.
+  The [original design](https://github.com/foldaway/mrtdown-data/blob/f4f0412c23d56207f60929f4c06b605cf1974295/docs/plans/active/data-licensing-attribution.md)
+  retains the earlier options and rationale. This cleanup changes no rights rule.
 
 ## Outcomes & Retrospective
 
-The [source registry](../../../data/rights/source-registry.json) and license
-notices are tracked in the repository. Recheck the proposed attribution files
-and acceptance criteria against a built Pages artifact before closing the plan.
+Source classification, validation, and export redaction are implemented. General
+attribution output and the crowd-report rights decision remain open. No terms
+review, new reuse permission, or production export verification is claimed here.
 
-## Context
+## Context and Orientation
 
-`mrtdown-data` publishes reviewed Singapore rail data, issue records, evidence,
-impact events, schemas, and static Pages/archive artifacts. The repository owns
-the canonical data model, validation rules, curated issue history, normalized
-facts, generated fixture data, and export tooling.
+The registry maps an evidence source to upstream content rights, MRTDown's
+separate contribution, attribution, and public-export policy. The owning schema
+is `packages/core/src/schema/Rights.ts`; actual examples are in
+`data/rights/source-registry.json`. Avoid copying a second schema into this plan.
 
-Not every value in the repository has the same rights position. Static rail
-entities and MRTDown-authored issue metadata can be licensed by this project.
-Evidence rows may also contain third-party source text, platform content,
-government open data, news metadata, or user-submitted reports. Those upstream
-rights should not be flattened into a single repository license.
+Evidence provenance remains in `data/issue/YYYY/MM/<issue_id>/evidence.ndjson`.
+Rights are resolved at validation/export time. Do not bulk-rewrite historical
+rows unless the audit identifies a specific missing provenance record. A future
+separation of quoted source text and authored claims needs its own reviewed
+contract, not an assumption that the whole evidence row has one license.
 
-This plan defines a rights model that keeps canonical data maintainable without
-adding repetitive license metadata to every `evidence.ndjson` line.
-
-Related references:
-
-- `README.md`
-- `data/issue/YYYY/MM/<issue_id>/evidence.ndjson`
-- `packages/core/src/schema/Issue.ts`
-- `packages/fs/src/manifest.ts`
-- `scripts/build-pages-artifact.mjs`
-- `docs/plans/completed/crowdsourced-reports.md`
+This work covers repository-authored data and recurring government, platform,
+publisher, archived-web, generic-web, and crowd-report sources. Source-specific
+schedule obligations remain in the [GTFS publication guide](../../gtfs/operations/schedule-publication.md).
+The [completed crowd-report implementation](../completed/crowdsourced-reports.md)
+records ingestion, not inbound licensing approval.
 
 ## Plan of Work
 
-### Licensing Policy
+### 1. Audit the actual artifact
 
-Use separate licensing layers:
+Build the local export with Concrete Steps. Compare the staged records, root HTML,
+manifest, and archives with the current license and registry. Record which
+notices are already shipped, which text is redacted, and which consumer links
+or attribution entries are missing. Use representative government, publisher,
+platform, archive, and direct crowd-report fixtures.
 
-- MRTDown-authored data: Creative Commons Attribution 4.0 International
-  (`CC-BY-4.0`).
-- Package source code: keep separate from data licensing under the MIT License.
-- Third-party source text and linked material: not licensed by MRTDown.
-- Government open data mirrored or derived from Singapore open data sources:
-  preserve the upstream Singapore Open Data Licence notice while licensing only
-  MRTDown-authored curation, normalization, and derived metadata under
-  `CC-BY-4.0`.
-- Direct crowd reports: require inbound submitter terms before treating report
-  text as MRTDown-licensable public content.
+Acceptance: the plan identifies concrete gaps with paths or tests, distinguishes
+implemented controls from proposed output, and keeps unknown source rights
+visible. Record whether missing metadata needs a small code change or a separate
+source-policy decision before proceeding.
 
-The top-level repository license should state that `CC-BY-4.0` applies to
-MRTDown-authored canonical data and generated data exports, except where a file
-or generated notice identifies third-party material or upstream terms.
+### 2. Finish deterministic attribution output
 
-### Source Registry
+For confirmed gaps, add shared schemas in `core`, deterministic generation in
+`fs`, and build/index wiring in the existing Pages pipeline. The intended outputs
+are `attribution.json`, `ATTRIBUTION.md`, and the required upstream notices.
+Decide whether the index groups by evidence or by source URL with evidence
+back-references before freezing the contract. Prefer JSON; revisit streaming
+only if measured size justifies it.
 
-Add a canonical registry for source classes:
+Include the MRTDown data notice, source-rule summaries, upstream notices, and
+an explicit third-party boundary. Make them discoverable from root HTML and
+machine-readable manifest pointers. Do not duplicate the full attribution index
+in HTML. Match the published schema to what is actually emitted.
 
-```text
-data/rights/source-registry.json
+Acceptance: repeated generation from identical inputs yields identical bytes;
+exported evidence can be traced to its applicable rule and source; required
+notices survive archive creation; the public index links to them. Add focused
+matching, redaction, generation, and manifest tests in their owning packages.
+Run the focused checks in Concrete Steps and inspect emitted files and links.
+
+### 3. Resolve crowd-report terms and remaining source gaps
+
+Identify the producer's submitter terms and the rights they actually grant.
+Record the reviewed decision in the owning license/source guide before changing
+registry policy. Keep report text nonpublic under the existing rule until a
+reviewed change permits reuse. A generic source URL or successful ingestion is
+insufficient. Record whether wording needs further legal review as an explicit
+open decision; deterministic validation must not fetch live terms.
+
+Acceptance: crowd-report treatment is explicit, testable, and consistent between
+producer provenance, registry, notices, and exported text. Add new recurring
+source rules before publishing their evidence. Separate policy changes, code,
+and any confirmed canonical repairs into focused changes.
+
+## Concrete Steps
+
+With repository dependencies installed, run from the repo root:
+
+```sh
+npm run pages:build
 ```
 
-The registry should map URL/source patterns to rights and attribution rules.
-Evidence rows keep ordinary provenance fields such as `sourceUrl`, `ts`, and
-`type`; the registry supplies the rights classification.
+Expect ignored `pages-dist/` output containing staged records, root HTML,
+manifest, and archives. This also writes fixture/build output and does not
+deploy. Inspect these files before deciding which attribution outputs are missing.
+After implementation, run:
 
-Example shape:
-
-```json
-{
-  "schemaVersion": 1,
-  "rules": [
-    {
-      "id": "x-post",
-      "match": {
-        "sourceUrlHost": ["x.com", "twitter.com"]
-      },
-      "contentRights": "LicenseRef-X-Content",
-      "mrtdownRights": "CC-BY-4.0",
-      "policy": "third-party-content-not-licensed-by-mrtdown",
-      "attributionTemplate": "{sourceUrl}"
-    },
-    {
-      "id": "lta-datamall",
-      "match": {
-        "sourceUrlHost": ["datamall.lta.gov.sg"]
-      },
-      "contentRights": "Singapore-Open-Data-Licence-1.0",
-      "mrtdownRights": "CC-BY-4.0",
-      "policy": "preserve-upstream-open-data-notice",
-      "attributionTemplate": "Contains information from LTA DataMall accessed via {sourceUrl}, made available under the Singapore Open Data Licence version 1.0."
-    }
-  ]
-}
+```sh
+npm run test:core
+npm run test:fs
+npm run check
+TZ=UTC npm test
+npm run data:validate
+npm run pages:build
 ```
 
-Rules should support at least:
-
-- URL host matching;
-- optional path prefix matching;
-- optional evidence type matching;
-- a stable rule id;
-- upstream content rights id;
-- MRTDown rights id;
-- attribution template;
-- publication policy.
-
-Avoid per-row overrides at first. Add overrides only for ambiguous archive URLs,
-missing `sourceUrl`, direct crowd reports, or mixed-source records that cannot
-be resolved from the normal rule set.
-
-`packages/core` should own and export the Zod schemas and inferred TypeScript
-types for the source registry, rights ids, resolved attribution entries, and
-generated attribution index. These shapes are shared contracts: `packages/fs`
-needs them for validation and artifact writing, `packages/cli` needs them for
-inspection or generation commands, and downstream consumers may eventually use
-them to validate the published machine-readable attribution file. Keep matching
-and filesystem behavior outside `core`; `core` should define the data contract,
-not repository I/O.
-
-### Rights Categories
-
-Start with these recurring categories:
-
-- `mrtdown-authored`: static entities, issue metadata, normalized claims,
-  impact events, generated fixture records, and generated export metadata owned
-  by MRTDown.
-- `sg-open-data`: Singapore government or agency open data, including
-  LTA/DataMall-derived data where applicable.
-- `platform-post`: X/Twitter, Reddit, or similar third-party platform content.
-- `news-publication`: CNA/Mediacorp, Straits Times/SPH, and other publisher
-  articles.
-- `crowd-report`: reports submitted directly to MRTDown under explicit inbound
-  terms.
-- `generic-web`: linked web pages and archived snapshots that are not covered
-  by a more specific open-data, platform, publisher, or crowd-report rule.
-- `unknown-third-party`: temporary classification that should fail publication
-  until resolved or explicitly suppressed from public export.
-
-The registry should prefer conservative classifications. For example, a CNA
-article URL should classify the article text as third-party publisher content,
-while allowing MRTDown-authored factual summaries or normalized claims to be
-licensed separately.
-
-### Evidence Row Boundary
-
-Do not make `evidence.ndjson` one licensed blob. Treat each line as an evidence
-record whose rights are resolved at validation/export time.
-
-The canonical evidence row should continue to carry stable provenance:
-
-```json
-{
-  "id": "ev_...",
-  "ts": "2026-05-24T12:00:00+08:00",
-  "type": "statement.official",
-  "text": "...",
-  "sourceUrl": "https://example.com/source"
-}
-```
-
-The resolved publication metadata can be generated:
-
-```json
-{
-  "evidenceId": "ev_...",
-  "issueId": "2026-05-24-example",
-  "sourceUrl": "https://example.com/source",
-  "sourceRuleId": "news-publication",
-  "contentRights": "LicenseRef-Publisher-All-Rights-Reserved",
-  "mrtdownRights": "CC-BY-4.0",
-  "policy": "third-party-content-not-licensed-by-mrtdown",
-  "attribution": "..."
-}
-```
-
-If a future schema separates quoted source text from MRTDown-authored claims,
-license claims under MRTDown's data license and mark quoted source text under
-the upstream source rule.
-
-### Generated Attribution
-
-Add generated attribution artifacts to the Pages/archive build:
-
-```text
-attribution.json
-ATTRIBUTION.md
-licenses/
-  CC-BY-4.0.txt
-  Singapore-Open-Data-Licence-1.0.txt
-  THIRD-PARTY-NOTICES.md
-```
-
-Use JSON instead of NDJSON for the public attribution index. The attribution
-payload is metadata that consumers are likely to inspect as one document, and
-grouping by source rule or source URL is easier to represent as structured
-JSON. NDJSON is only worth revisiting if the attribution output becomes large
-enough that streaming reads matter.
-
-The generated artifacts should include:
-
-- repository-level MRTDown data license notice;
-- source-rule summaries;
-- one resolved attribution row per evidence row or per distinct source URL;
-- upstream open-data notices where required;
-- a clear statement that third-party source text is not licensed by MRTDown.
-
-The generated artifacts should be deterministic so CI can snapshot or validate
-them without network access.
-
-The generated Pages HTML should expose these artifacts visibly instead of only
-placing files in the archive. The root `index.html` should link to
-`ATTRIBUTION.md`, `attribution.json`, and the license/third-party notice files
-near the existing manifest/archive links. If the generated HTML later grows
-source summaries, keep it concise: show the data license, a third-party material
-notice, and links to the machine-readable and human-readable attribution
-artifacts. Do not duplicate the full attribution index in HTML.
-
-### Phase 1: Policy And Registry
-
-- Add top-level data licensing text and third-party carve-outs.
-- Keep package source code under its separate MIT software license.
-- Add durable definitions for MRTDown-authored data, third-party source text,
-  upstream open data, and generated artifacts.
-- Document the preferred attribution format for downstream consumers.
-- Add and export Zod schemas and inferred TypeScript types for
-  `source-registry.json`, rights ids, resolved attribution entries, and the
-  generated attribution index in `packages/core`.
-- Add initial rights ids and source rules for X/Twitter, Reddit, LTA/DataMall,
-  CNA/Mediacorp, Straits Times/SPH, direct crowd reports, and generic web
-  sources.
-- Add deterministic tests for rule matching and ambiguous matches.
-- Keep the initial registry hand-authored and small enough to review.
-
-Exit criteria:
-
-- Repository license wording clearly separates MRTDown-authored data from
-  third-party material.
-- Downstream consumers can understand what they may reuse under `CC-BY-4.0`.
-- Every known recurring source class has a registry rule.
-- Rule matching is deterministic and covered by tests.
-
-### Phase 2: Validation And Attribution
-
-- Teach file-backed validation to load the source registry.
-- Resolve each evidence row's `sourceUrl` to exactly one rule.
-- Add fixture coverage for matched, unmatched, ambiguous, and override cases.
-- Decide how to handle historical rows that lack source URLs.
-- Add a deterministic attribution generator in the package or CLI layer.
-- Generate `attribution.json` and human-readable `ATTRIBUTION.md`.
-- Include source-rule summaries and per-source or per-evidence attribution.
-- Add tests that normalize generated output for snapshot comparison.
-
-Exit criteria:
-
-- `npm run data:validate` catches unresolved evidence rights.
-- No historical data row needs repetitive rights metadata just to pass.
-- Attribution artifacts can be generated without network access.
-- Generated output is stable across repeated runs.
-
-### Phase 3: Publication And Ingest Guardrails
-
-- Include license and attribution artifacts in `npm run pages:build`.
-- Link the generated Pages HTML to `ATTRIBUTION.md`, `attribution.json`, and
-  license/third-party notice files.
-- Add manifest metadata that advertises license, attribution, and third-party
-  notice paths.
-- Document the public artifact licensing boundary in `README.md`.
-- Update ingest contracts or triage code so new evidence keeps enough
-  provenance to resolve rights automatically.
-- For direct crowd reports, require inbound terms before public text is treated
-  as MRTDown-licensable content.
-- For new source classes, require adding a registry rule before evidence can be
-  published.
-
-Exit criteria:
-
-- The Pages/archive artifact contains enough attribution context for
-  downstream reuse.
-- The generated `index.html` makes attribution and licensing discoverable
-  without requiring users to inspect the archive manually.
-- The manifest exposes machine-readable license and attribution pointers.
-- New evidence cannot silently enter the canonical archive without a rights
-  classification.
-- Direct user submissions have an explicit rights path.
-
-### Open Questions
-
-- Should the repository license use a single `LICENSE` file with carve-outs, or
-  a `LICENSE-DATA.md` plus separate package code license?
-- Should `evidence.ndjson` continue storing third-party source text verbatim in
-  public archives, or should public exports eventually publish only normalized
-  claims plus source links for some source classes?
-- Should generated attribution be one row per evidence record or one row per
-  distinct source URL with back-references to evidence ids?
-- What inbound terms should apply to direct crowd reports before report text is
-  made public?
-- Should counsel review happen before Phase 1 lands or before Pages
-  publication changes?
-
-### Review Notes
-
-- Keep legal wording changes separate from mechanical source-registry and
-  generator implementation when practical.
-- Do not bulk-edit historical evidence rows unless validation proves specific
-  rows lack resolvable provenance.
-- Prefer conservative third-party classifications over broad reuse claims.
-- Keep generated attribution and hand-authored registry changes in separate
-  commits or PRs when review volume becomes large.
+Expect passing tests/checks, valid canonical records, and the reviewed notices
+and manifest pointers in the rebuilt artifact. No new attribution CLI is assumed;
+settle its contract before documenting any additional command.
 
 ## Validation and Acceptance
 
-Validation should fail when:
+The checks in Concrete Steps must pass and the exported notices must be
+inspectable. These commands do not prove live publication or legal permission.
 
-- an evidence row has no `sourceUrl` and no allowed source override;
-- an evidence row matches no source registry rule;
-- an evidence row matches multiple source registry rules without a priority or
-  explicit disambiguation;
-- a source registry rule references an unknown rights id;
-- a rule with an open-data rights id lacks an attribution template;
-- a public export would include `unknown-third-party` content.
+Regression coverage must reject invalid URLs, unmatched or equally prioritized
+ambiguous rules, unknown rights ids, missing required attribution, and unresolved
+public reuse. Preserve existing original-host and priority matching. Test known
+but broad hosts and missing optional attribution values separately so a proposed
+warning is not mistaken for implemented behavior.
 
-Validation should warn, not fail, when:
+Close the plan only when artifact coverage is verified and remaining rights
+decisions are resolved or explicitly
+scoped out with a durable follow-up.
 
-- a source URL host is known but the path pattern is more general than ideal;
-- attribution templates cannot fill optional values such as author or publisher;
-- historical rows use legacy hosts that resolve to the same source class.
+## Idempotence and Recovery
+
+Build into staged output and keep canonical evidence intact. If output generation
+fails, fix and repeat the local build; do not relax classification or publish a
+partial artifact. Any later schema or policy rollout must specify consumer
+compatibility and recovery before publication.
+
+Repeated attribution generation from identical inputs must produce identical
+bytes. Policy retries retain the current nonpublic crowd-report setting until
+reviewed terms justify a change; a failed audit must not rewrite source evidence.
+
+## Artifacts and Notes
+
+Still required: an artifact inventory, representative redaction/matching proofs,
+repeat-generation comparisons, and the reviewed inbound-terms decision. Keep
+small evidence with the relevant change and link exact built-file identities
+where needed. The source inspection in Surprises & Discoveries is not a built
+artifact or legal review receipt.
+
+## Interfaces and Dependencies
+
+Reuse `packages/core/src/schema/Rights.ts` and the existing registry resolver.
+The attribution grouping and any new manifest pointers remain contract decisions
+to settle before dependent implementation. Shared types belong in `core`,
+filesystem/export logic in `fs`, and Pages wiring in the existing build. Preserve
+consumer compatibility and the distinction between ingestion and reuse rights.

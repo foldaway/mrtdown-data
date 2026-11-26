@@ -18,21 +18,13 @@ without depending on triage's LLM/runtime implementation.
 - `@mrtdown/core` remains limited to canonical target-layout MRTDown data
   schemas and shared helpers.
 
-## Public API
+## Current contract
 
-The contract package exports:
+Use the [package guide](../../../packages/ingest-contracts/README.md) and exported
+schemas for payload fields and aliases. The initial API inventory is preserved
+in the [original implementation record](https://github.com/foldaway/mrtdown-data/blob/f4f0412c23d56207f60929f4c06b605cf1974295/docs/plans/completed/ingest-contracts-package.md).
 
-- `IngestContentTwitterSchema` and `IngestContentTwitter`
-- `IngestContentRedditSchema` and `IngestContentReddit`
-- `IngestContentNewsArticleSchema` and `IngestContentNewsArticle`
-- `IngestContentSchema` and `IngestContent`
-- `IngestPayloadSchema` and `IngestPayload`
-
-`IngestMessageSchema` and `IngestMessage` remain aliases for the initial
-transition from the older internal name. New consumers should use
-`IngestPayload`.
-
-## Execution Plan
+## Historical implementation sequence
 
 1. Add `packages/ingest-contracts` with only Zod payload schemas and types.
 2. Make `@mrtdown/triage` depend on `@mrtdown/ingest-contracts` for webhook
