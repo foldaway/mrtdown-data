@@ -8,7 +8,10 @@ import { createScheduledCombinedReview } from '../packages/fs/src/gtfs/scheduled
 import { createScheduledSourceJourneyMappingDraft } from '../packages/fs/src/gtfs/scheduledSourceJourneys.js';
 import { assessAutomaticUpdate } from './gtfs-automatic-eligibility.mjs';
 import { checkAutomaticDailyChanges } from './gtfs-automatic-mapping.mjs';
-import { prepareAutomaticRelease } from './prepare-gtfs-automatic-release.mjs';
+import {
+  prepareAutomaticRelease,
+  renderAutomaticPublicationReport,
+} from './prepare-gtfs-automatic-release.mjs';
 
 const extendedPolicy = JSON.parse(
   readFileSync(
@@ -192,7 +195,215 @@ function fixture(
   };
 }
 
+function splitWeekdayCalendar(
+  args: ReturnType<typeof fixture>,
+  start = '20261202',
+  end = '20261201',
+) {
+  const original = args.tables['calendar.txt'].find(
+    (row) => row.service_id === 'WD',
+  );
+  if (!original) throw new Error('Missing weekday calendar');
+  args.tables['calendar.txt'].push({
+    ...original,
+    service_id: 'WD_NEW',
+    start_date: start,
+  });
+  original.end_date = end;
+  for (const trip of args.tables['trips.txt'].filter(
+    (trip) => trip.service_id === 'WD',
+  )) {
+    const tripId = `new-${trip.trip_id}`;
+    args.tables['trips.txt'].push({
+      ...trip,
+      trip_id: tripId,
+      service_id: 'WD_NEW',
+    });
+    args.tables['stop_times.txt'].push(
+      ...args.tables['stop_times.txt']
+        .filter((row) => row.trip_id === trip.trip_id)
+        .map((row) => ({ ...row, trip_id: tripId })),
+    );
+  }
+}
+
 describe('automatic GTFS publication', () => {
+  it('handles a future weekday split without approving or checking timings outside the existing window', () => {
+    const args = fixture();
+    args.policy = extendedPolicy;
+    splitWeekdayCalendar(args);
+    for (const row of args.tables['stop_times.txt'].filter((row) =>
+      row.trip_id.startsWith('new-'),
+    )) {
+      row.arrival_time = row.arrival_time.replace(/^25:/, '27:');
+      row.departure_time = row.departure_time.replace(/^25:/, '27:');
+    }
+    const result = prepareAutomaticRelease(args);
+    expect(result.decision).toBe('ready');
+    expect(result.inputs.holidayPolicy).toMatchObject({
+      schemaVersion: 3,
+      families: [
+        expect.objectContaining({
+          weekdayCalendarId: 'WD',
+          additionalWeekdayCalendarIds: ['WD_NEW'],
+        }),
+      ],
+    });
+    expect(result.inputs.applicabilityPolicy.serviceDateRange).toEqual(
+      args.baselineInputs.applicabilityPolicy.serviceDateRange,
+    );
+    expect(
+      JSON.parse(Buffer.from(result.bundle.files.manifestBytes).toString())
+        .serviceDateRange.endDateExclusive,
+    ).toBe('2026-12-01');
+    expect(
+      result.draft.associationReview.patterns
+        .flatMap((pattern) => pattern.supportedServiceDates)
+        .every((date) => date < '2026-12-01'),
+    ).toBe(true);
+    expect(result.coverage.unassignedTripDateCount).toBe(0);
+    expect(() =>
+      prepareAutomaticRelease({
+        ...args,
+        policy: { ...extendedPolicy, revision: 'canonical-schedule-v2' },
+      }),
+    ).toThrow(/unique successor/);
+  });
+
+  it('reconstructs a segmented predecessor for another checked successor', () => {
+    const args = fixture();
+    args.policy = extendedPolicy;
+    const unsplit = structuredClone(args.tables);
+    splitWeekdayCalendar(args, '20261110', '20261109');
+    const first = prepareAutomaticRelease(args);
+    const nextTables = structuredClone(args.tables);
+    for (const tables of [nextTables, unsplit])
+      for (const row of tables['stop_times.txt'])
+        for (const field of ['arrival_time', 'departure_time'])
+          row[field] = row[field].replace(/:10$/, ':20');
+    const successor = {
+      ...args,
+      tables: nextTables,
+      baselineInputs: first.inputs,
+      baselineConfig: {
+        correctionRevision: 1,
+        draftSha256: first.draft.draftSha256,
+      },
+      baselineEvidence: JSON.parse(
+        Buffer.from(first.bundle.files.releaseBytes).toString(),
+      ),
+      baselineIndex: first.bundle.index,
+      previousCapture: args.capture,
+      capture: {
+        ...args.capture,
+        sha256: 'f'.repeat(64),
+        retrieved_at: '2026-11-08T02:00:00Z',
+      },
+      now: '2026-11-08T03:00:00Z',
+    };
+    const second = prepareAutomaticRelease(successor);
+    expect(second.decision).toBe('ready');
+    expect(second.inputs.holidayPolicy.schemaVersion).toBe(3);
+    expect(second.coverage.unassignedTripDateCount).toBe(0);
+    const merged = prepareAutomaticRelease({
+      ...successor,
+      tables: unsplit,
+    });
+    expect(merged.decision).toBe('ready');
+    expect(merged.inputs.holidayPolicy.schemaVersion).toBe(2);
+    expect(
+      merged.inputs.holidayPolicy.families[0].additionalWeekdayCalendarIds,
+    ).toBeUndefined();
+  });
+
+  it.each([
+    ['20261203', '20261201'],
+    ['20261201', '20261201'],
+    ['20261109', '20261106'],
+  ])('holds a calendar partition with a gap or overlap (%s, %s)', (start, end) => {
+    const args = fixture();
+    args.policy = extendedPolicy;
+    splitWeekdayCalendar(args, start, end);
+    expect(() => prepareAutomaticRelease(args)).toThrow(/gap|overlap/);
+  });
+
+  it('still holds timing changes inside the approved window after a calendar split', () => {
+    const args = fixture();
+    args.policy = extendedPolicy;
+    splitWeekdayCalendar(args, '20261110', '20261109');
+    for (const row of args.tables['stop_times.txt'].filter((row) =>
+      row.trip_id.startsWith('new-'),
+    )) {
+      row.arrival_time = row.arrival_time.replace(/^25:/, '27:');
+      row.departure_time = row.departure_time.replace(/^25:/, '27:');
+    }
+    expect(() => prepareAutomaticRelease(args)).toThrow(
+      /distinct timing counterparts/,
+    );
+  });
+
+  it('preserves historical daily guards when a capture combines past cleanup and a future split', () => {
+    const args = fixture();
+    args.policy = extendedPolicy;
+    splitWeekdayCalendar(args);
+    args.tables['calendar_dates.txt'] = [
+      { service_id: 'WD', date: '20261106', exception_type: '2' },
+    ];
+    expect(() => prepareAutomaticRelease(args)).toThrow(
+      /entire supported service date/,
+    );
+  });
+
+  it('retains the exact published release for completed cleanup plus changes only outside its approval window', () => {
+    const args = fixture();
+    args.policy = extendedPolicy;
+    args.tables = structuredClone(args.baselineInputs.context.tables);
+    splitWeekdayCalendar(args);
+    args.tables['calendar_dates.txt'] = [
+      { service_id: 'WD', date: '20261106', exception_type: '2' },
+    ];
+    for (const row of args.tables['stop_times.txt'].filter((row) =>
+      row.trip_id.startsWith('new-'),
+    )) {
+      row.arrival_time = row.arrival_time.replace(/^25:/, '27:');
+      row.departure_time = row.departure_time.replace(/^25:/, '27:');
+    }
+    const original = structuredClone(args.baselineInputs);
+    const result = prepareAutomaticRelease(args);
+    expect(result.decision).toBe('no-op');
+    expect(result.retainedManifestSha256).toBe(
+      args.baselineIndex.manifestSha256,
+    );
+    expect(result.retainedTimetableProof).toMatchObject({
+      expiredServiceDates: ['2026-11-06'],
+      baselineCaptureSha256: args.previousCapture.sha256,
+      candidateCaptureSha256: args.capture.sha256,
+      serviceDateRange:
+        args.baselineInputs.applicabilityPolicy.serviceDateRange,
+      policyRevision: 'canonical-schedule-v3',
+    });
+    expect(
+      result.retainedTimetableProof.outsideApprovedServiceDates,
+    ).toHaveLength(22);
+    expect(result.retainedTimetableProof.outsideApprovedServiceDates[0]).toBe(
+      '2026-12-02',
+    );
+    expect(result.bundle).toBeUndefined();
+    expect(result.mappingApproval).toBeUndefined();
+    expect(result.releaseReview).toBeUndefined();
+    expect(result.sourceReview).toBeUndefined();
+    const report = renderAutomaticPublicationReport(result);
+    expect(report).toContain('Decision: **no-op**');
+    expect(report).toContain(args.baselineIndex.manifestSha256);
+    expect(report).toContain(args.capture.sha256);
+    expect(report).toContain('2026-11-06');
+    expect(report).toContain('2026-12-02');
+    expect(report).not.toContain('Zero unassigned');
+    expect(args.baselineInputs).toEqual(original);
+    args.currentTerms.licence.sha256 = 'f'.repeat(64);
+    expect(() => prepareAutomaticRelease(args)).toThrow(/terms changed/);
+  });
+
   it('treats expired-only calendar cleanup as a no-op after baseline verification without generating approvals', () => {
     const args = fixture();
     args.policy = extendedPolicy;
@@ -317,8 +528,13 @@ describe('automatic GTFS publication', () => {
     const args = fixture();
     args.policy = extendedPolicy;
     const first = prepareAutomaticRelease(args);
+    const nextTables = structuredClone(args.tables);
+    for (const row of nextTables['stop_times.txt'])
+      for (const field of ['arrival_time', 'departure_time'])
+        row[field] = row[field].replace(/:10$/, ':20');
     const second = prepareAutomaticRelease({
       ...args,
+      tables: nextTables,
       baselineInputs: first.inputs,
       baselineConfig: {
         correctionRevision: 1,

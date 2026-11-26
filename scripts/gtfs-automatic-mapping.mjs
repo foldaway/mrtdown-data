@@ -4,7 +4,11 @@ import {
   auditSchedule,
   gtfsTimeSeconds,
 } from '../packages/fs/dist/gtfs/schedule.js';
-import { resolveScheduledHolidayDates } from '../packages/fs/dist/gtfs/scheduledHolidayPolicy.js';
+import {
+  resolveScheduledHolidayDates,
+  scheduledCalendarPartitionBounds,
+  scheduledHolidayPrimaryCalendarIds,
+} from '../packages/fs/dist/gtfs/scheduledHolidayPolicy.js';
 import { scheduledServiceCalendarFromGtfs } from '../packages/fs/dist/gtfs/scheduledServiceCalendar.js';
 import { validateSharedServiceSegment } from '../packages/fs/dist/gtfs/sharedServiceTarget.js';
 import {
@@ -24,6 +28,7 @@ export function planAutomaticMappings(
   inputs,
   provenance,
   requireCheck,
+  allowCalendarSegments = false,
 ) {
   const oldPatterns = auditSchedule(baselineInputs.context.tables).patterns;
   const patterns = auditSchedule(inputs.context.tables).patterns;
@@ -32,6 +37,11 @@ export function planAutomaticMappings(
     'weekdayCalendarId',
     'saturdayCalendarId',
     'sundayCalendarId',
+  ];
+  const additionalFields = [
+    'additionalWeekdayCalendarIds',
+    'additionalSaturdayCalendarIds',
+    'additionalSundayCalendarIds',
   ];
   inputs.holidayPolicy.schemaVersion = 2;
   inputs.holidayPolicy.revision = 'automatic-source-calendars-v2';
@@ -64,25 +74,71 @@ export function planAutomaticMappings(
           .map((pattern) => pattern.calendarId),
       ),
     ];
-    for (const field of primaryFields) {
-      const old = scheduledServiceCalendarFromGtfs(
-        baselineInputs.context.tables,
-        family[field],
+    const previousGroups = scheduledHolidayPrimaryCalendarIds(family);
+    for (const [index, field] of primaryFields.entries()) {
+      const oldSegments = previousGroups[index].map(
+        (id) =>
+          scheduledServiceCalendarFromGtfs(baselineInputs.context.tables, id)
+            .weekly,
       );
+      const oldWeekly = {
+        ...oldSegments[0],
+        ...scheduledCalendarPartitionBounds(oldSegments),
+      };
       const matches = used.filter((id) =>
         isDeepStrictEqual(
           scheduledServiceCalendarFromGtfs(inputs.context.tables, id).weekly,
-          old.weekly,
+          oldWeekly,
         ),
       );
-      requireCheck(
-        matches.length === 1,
-        `The ${family.lineId} ${field} calendar has no unique successor.`,
-      );
-      family[field] = matches[0];
+      let successors = matches;
+      if (!matches.length && allowCalendarSegments) {
+        const segments = used
+          .map((id) => ({
+            id,
+            weekly: scheduledServiceCalendarFromGtfs(inputs.context.tables, id)
+              .weekly,
+          }))
+          .filter(
+            ({ weekly }) =>
+              weekly &&
+              isDeepStrictEqual(weekly.weekdays, oldWeekly.weekdays) &&
+              weekly.startDate >= oldWeekly.startDate &&
+              weekly.endDate <= oldWeekly.endDate,
+          )
+          .sort(
+            (a, b) =>
+              a.weekly.startDate.localeCompare(b.weekly.startDate) ||
+              a.id.localeCompare(b.id),
+          );
+        requireCheck(
+          segments.length > 1 &&
+            isDeepStrictEqual(
+              scheduledCalendarPartitionBounds(
+                segments.map(({ weekly }) => weekly),
+              ),
+              { startDate: oldWeekly.startDate, endDate: oldWeekly.endDate },
+            ),
+          `The ${family.lineId} ${field} calendar has no complete successor partition.`,
+        );
+        successors = segments.map(({ id }) => id);
+      } else {
+        requireCheck(
+          matches.length === 1,
+          `The ${family.lineId} ${field} calendar has no unique successor.`,
+        );
+      }
+      family[field] = successors[0];
+      delete family[additionalFields[index]];
+      if (successors.length > 1) {
+        family[additionalFields[index]] = successors.slice(1);
+        inputs.holidayPolicy.schemaVersion = 3;
+        inputs.holidayPolicy.revision = 'automatic-source-calendar-segments-v3';
+      }
     }
+    const primaryIds = scheduledHolidayPrimaryCalendarIds(family).flat();
     family.supplementalCalendarIds = used
-      .filter((id) => !primaryFields.some((field) => family[field] === id))
+      .filter((id) => !primaryIds.includes(id))
       .sort();
   }
   const resolved = resolveScheduledHolidayDates(

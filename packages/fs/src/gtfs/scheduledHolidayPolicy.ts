@@ -2,6 +2,7 @@ import {
   PublicHolidayCalendarSchema,
   ScheduledWeekdaysSchema,
 } from '@mrtdown/core';
+import { DateTime } from 'luxon';
 import z from 'zod';
 import { compareStrings } from './order.js';
 import { ReconciliationIdentitySchema } from './reconciliation.js';
@@ -18,7 +19,7 @@ export const ScheduledHolidayCalendarSchema = PublicHolidayCalendarSchema;
 
 export const ScheduledHolidayPolicySchema = z
   .object({
-    schemaVersion: z.union([z.literal(1), z.literal(2)]),
+    schemaVersion: z.union([z.literal(1), z.literal(2), z.literal(3)]),
     revision: z.string().min(1),
     rule: z.literal('sunday-on-public-holidays'),
     sourceManifest: ReconciliationIdentitySchema.shape.sourceManifest,
@@ -32,6 +33,18 @@ export const ScheduledHolidayPolicySchema = z
             weekdayCalendarId: z.string().min(1),
             saturdayCalendarId: z.string().min(1),
             sundayCalendarId: z.string().min(1),
+            additionalWeekdayCalendarIds: z
+              .array(z.string().min(1))
+              .min(1)
+              .optional(),
+            additionalSaturdayCalendarIds: z
+              .array(z.string().min(1))
+              .min(1)
+              .optional(),
+            additionalSundayCalendarIds: z
+              .array(z.string().min(1))
+              .min(1)
+              .optional(),
             supplementalCalendarIds: z.array(z.string().min(1)).optional(),
           })
           .strict(),
@@ -40,6 +53,20 @@ export const ScheduledHolidayPolicySchema = z
   })
   .strict()
   .superRefine((policy, context) => {
+    if (
+      policy.schemaVersion !== 3 &&
+      policy.families.some((family) =>
+        [
+          family.additionalWeekdayCalendarIds,
+          family.additionalSaturdayCalendarIds,
+          family.additionalSundayCalendarIds,
+        ].some((ids) => ids !== undefined),
+      )
+    )
+      context.addIssue({
+        code: 'custom',
+        message: 'Primary calendar segments require holiday policy v3',
+      });
     if (
       policy.schemaVersion === 1 &&
       policy.families.some(
@@ -54,6 +81,41 @@ export const ScheduledHolidayPolicySchema = z
 export type ScheduledHolidayPolicy = z.infer<
   typeof ScheduledHolidayPolicySchema
 >;
+
+export function scheduledHolidayPrimaryCalendarIds(
+  family: ScheduledHolidayPolicy['families'][number],
+) {
+  return [
+    [family.weekdayCalendarId, ...(family.additionalWeekdayCalendarIds ?? [])],
+    [
+      family.saturdayCalendarId,
+      ...(family.additionalSaturdayCalendarIds ?? []),
+    ],
+    [family.sundayCalendarId, ...(family.additionalSundayCalendarIds ?? [])],
+  ];
+}
+
+/** Prove coverage on every calendar date, including days holiday substitution may use. */
+export function scheduledCalendarPartitionBounds(
+  segments: { startDate: string; endDate: string }[],
+) {
+  if (!segments.length) throw new Error('Missing primary calendar segments');
+  for (const [index, segment] of segments.entries()) {
+    if (
+      index &&
+      DateTime.fromISO(segments[index - 1].endDate, { zone: 'UTC' })
+        .plus({ days: 1 })
+        .toISODate() !== segment.startDate
+    )
+      throw new Error(
+        'Primary calendar segments have a gap, overlap or incorrect order',
+      );
+  }
+  return {
+    startDate: segments[0].startDate,
+    endDate: segments[segments.length - 1].endDate,
+  };
+}
 
 export function scheduledHolidayCalendarSha256(input: unknown) {
   return fingerprint(ScheduledHolidayCalendarSchema.parse(input));
@@ -105,12 +167,9 @@ export function resolveScheduledHolidayDates(
     }
     holidays = new Set(calendar.dates.map(({ date }) => date));
     for (const family of policy.families) {
-      const ids = [
-        family.weekdayCalendarId,
-        family.saturdayCalendarId,
-        family.sundayCalendarId,
-      ];
-      if (new Set(ids).size !== 3) {
+      const groups = scheduledHolidayPrimaryCalendarIds(family);
+      const ids = groups.flat();
+      if (new Set(ids).size !== ids.length) {
         throw new Error(
           'Holiday family requires distinct weekday, Saturday and Sunday calendars',
         );
@@ -118,6 +177,27 @@ export function resolveScheduledHolidayDates(
       const calendars = ids.map((id) =>
         scheduledServiceCalendarFromGtfs(context.tables, id),
       );
+      const groupBounds = groups.map((group) =>
+        scheduledCalendarPartitionBounds(
+          group.map((id) => {
+            const weekly = scheduledServiceCalendarFromGtfs(
+              context.tables,
+              id,
+            ).weekly;
+            if (!weekly) throw new Error('Missing primary weekly calendar');
+            return weekly;
+          }),
+        ),
+      );
+      const primaryBounds = groupBounds[0];
+      if (
+        groupBounds.some(
+          (bounds) => fingerprint(bounds) !== fingerprint(primaryBounds),
+        )
+      )
+        throw new Error(
+          'Holiday family requires equal weekly bounds within the known holiday date range',
+        );
       for (const [index, source] of calendars.entries()) {
         if (source.exceptions.length && policy.schemaVersion === 1) {
           throw new Error(
@@ -133,8 +213,8 @@ export function resolveScheduledHolidayDates(
           !weekly ||
           weekly.startDate < calendar.startDate ||
           weekly.endDate > calendar.endDate ||
-          weekly.startDate !== calendars[0].weekly?.startDate ||
-          weekly.endDate !== calendars[0].weekly?.endDate
+          weekly.startDate < primaryBounds.startDate ||
+          weekly.endDate > primaryBounds.endDate
         ) {
           throw new Error(
             'Holiday family requires equal weekly bounds within the known holiday date range',
@@ -153,9 +233,10 @@ export function resolveScheduledHolidayDates(
         const expected = Object.fromEntries(
           Object.keys(ScheduledWeekdaysSchema.shape).map((day) => [
             day,
-            index === 0
+            groups[0].includes(ids[index])
               ? day !== 'saturday' && day !== 'sunday'
-              : day === (index === 1 ? 'saturday' : 'sunday'),
+              : day ===
+                (groups[1].includes(ids[index]) ? 'saturday' : 'sunday'),
           ]),
         );
         if (fingerprint(weekly.weekdays) !== fingerprint(expected)) {
@@ -163,8 +244,6 @@ export function resolveScheduledHolidayDates(
         }
       }
       const supplemental = family.supplementalCalendarIds ?? [];
-      const primaryBounds = calendars[0].weekly;
-      if (!primaryBounds) throw new Error('Missing primary calendar bounds');
       if (
         new Set([...ids, ...supplemental]).size !==
         ids.length + supplemental.length
@@ -247,7 +326,11 @@ export function resolveScheduledHolidayDates(
         if (date < weekly.startDate || date > weekly.endDate) {
           continue;
         }
-        if (pattern.calendarId === family.sundayCalendarId) {
+        if (
+          scheduledHolidayPrimaryCalendarIds(family)[2].includes(
+            pattern.calendarId,
+          )
+        ) {
           dates.add(date);
         } else {
           dates.delete(date);

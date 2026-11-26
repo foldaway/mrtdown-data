@@ -420,10 +420,10 @@ test.each([
   h.run();
   h.env.PREPARATION_DECISION = 'no-op';
   await rm(candidate);
-  await writeFile(
-    h.env.AUTOMATIC_REPORT,
-    '## Automatic publication\n\nDecision: **no-op**. Only expired service dates changed.\n',
-  );
+  const noopReport = adopted
+    ? '## Automatic publication\n\nDecision: **no-op**. All remaining approved service is unchanged.\n\n<details>\n<summary>Retained timetable proof</summary>\n\n```json\n{"expiredServiceDates":["2026-11-14"],"outsideApprovedServiceDates":["2026-12-02"]}\n```\n\n</details>\n'
+    : '## Automatic publication\n\nDecision: **no-op**. Only expired service dates changed.\n';
+  await writeFile(h.env.AUTOMATIC_REPORT, noopReport);
   h.run();
   if (adopted)
     expect(JSON.parse(h.git('show', `HEAD:${path}`))).toEqual({
@@ -433,7 +433,10 @@ test.each([
     expect(h.git('ls-tree', '-r', '--name-only', 'HEAD')).not.toContain(path);
   const body = await readFile(join(h.runner, 'created-body.md'), 'utf8');
   expect(body).toContain('No publication needed');
-  expect(body).toContain('Only expired service dates changed');
+  expect(body).toContain(noopReport);
+  expect(h.git('show', `HEAD:docs/gtfs/captures/${h.sha256}.md`)).toContain(
+    noopReport,
+  );
   expect(body).not.toContain('Publication is held');
   // A no-op proof based on another desired definition must not be accepted.
   await writeFile(join(automatic, 'preparation-base.txt'), 'different-base\n');
