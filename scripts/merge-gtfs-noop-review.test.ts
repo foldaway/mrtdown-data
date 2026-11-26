@@ -285,10 +285,6 @@ describe('automatic merge of trusted no-op capture evidence', () => {
     'legacy receipt',
   ])('refuses unbounded or invalid %s evidence', async (change) => {
     const { args, merges } = fixture();
-    if (change === 'json')
-      args.evidence.actualJson = JSON.stringify({
-        padding: 'x'.repeat(16 * 1024),
-      });
     if (change === 'markdown')
       args.evidence.actualMarkdown += 'x'.repeat(32 * 1024);
     if (change === 'archive URL') {
@@ -300,7 +296,16 @@ describe('automatic merge of trusted no-op capture evidence', () => {
     if (change === 'archive hash')
       args.evidence.actualJson.reports.json.sha256 = '2'.repeat(64);
     if (change === 'legacy receipt') args.evidence.actualJson.schemaVersion = 1;
-    expect(await mergeNoopReview(args)).toMatchObject({ merged: false });
+    const actualJson =
+      change === 'json'
+        ? JSON.stringify({ padding: 'x'.repeat(16 * 1024) })
+        : args.evidence.actualJson;
+    expect(
+      await mergeNoopReview({
+        ...args,
+        evidence: { ...args.evidence, actualJson },
+      }),
+    ).toMatchObject({ merged: false });
     expect(merges).toHaveLength(0);
   });
 

@@ -19,9 +19,10 @@ JSON receipts are limited to 16 KiB, summaries to 12 KiB, and final Markdown wit
 publication evidence to 32 KiB. Larger evidence stays in the archive. Archive
 failures produce an unavailable-comparison Markdown record and cannot qualify a
 release definition or automatic no-op merge. Partial archive outputs are ignored.
-Retries refresh compact receipts; earlier receipts stay in Git history and full
-reports stay in the archive. Existing large records are not bulk-migrated and no
-Git history is rewritten. A successful replay replaces that capture's current
+Retries refresh compact receipts; failed retries refresh the unavailable summary
+and restore the desired definition from main, even for oversized legacy records.
+Earlier evidence stays in Git history and full reports stay in the archive.
+Existing large records are not bulk-migrated and no Git history is rewritten. A successful replay replaces that capture's current
 record with the compact format.
 
 A qualifying review also changes `releases/gtfs.json`; merging that definition

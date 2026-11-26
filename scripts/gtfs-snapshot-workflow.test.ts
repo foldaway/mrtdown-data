@@ -579,6 +579,54 @@ test.each([
   );
 });
 
+test('a failed archive refreshes a legacy oversized report and restores the adopted definition', async () => {
+  const h = await harness();
+  const definitionPath = 'releases/gtfs.json';
+  await mkdir(join(h.repo, 'releases'));
+  const adopted = '{"completed":"published"}\n';
+  await writeFile(join(h.repo, definitionPath), adopted);
+  h.git('add', definitionPath);
+  h.git('commit', '-m', 'test: adopt the published timetable');
+  h.git('push', 'origin', 'main');
+  await writeFile(join(h.reviewDir, `${h.sha256}.md`), '# Snapshot\n');
+  await writeFile(join(h.reviewDir, `${h.sha256}.json`), '{}\n');
+  const automatic = join(h.runner, 'gtfs-automatic');
+  await mkdir(automatic);
+  await writeFile(
+    join(automatic, 'preparation-base.txt'),
+    h.git('rev-parse', `main:${definitionPath}`),
+  );
+  await writeFile(
+    join(automatic, 'release-definition.json'),
+    JSON.stringify({
+      documentKind: 'gtfs-release-definition',
+      capture: { sha256: h.sha256 },
+    }),
+  );
+  h.env.PREPARATION_DECISION = 'ready';
+  h.run();
+  const legacy = `# Legacy capture\n\n${'Expanded journey details.\n'.repeat(5_000)}`;
+  await writeFile(join(h.repo, h.record), legacy);
+  h.git('add', h.record);
+  h.git('commit', '-m', 'test: legacy full report');
+  h.git('push', 'origin', `HEAD:gtfs-review/${h.sha256}`);
+  const previous = h.git('rev-parse', 'HEAD').trim();
+  await writeFile(
+    join(h.runner, 'existing-pr'),
+    'https://github.com/example/repo/pull/1\n',
+  );
+  await writeFile(join(h.runner, 'pr-state'), 'OPEN\n');
+  h.env.ARCHIVE_OUTCOME = 'failure';
+  h.run();
+  const refreshed = h.git('show', `HEAD:${h.record}`);
+  expect(Buffer.byteLength(refreshed)).toBeLessThanOrEqual(32 * 1024);
+  expect(refreshed).toContain('durable archival failed');
+  expect(refreshed).toContain('Publication is held');
+  expect(h.git('show', `HEAD:${definitionPath}`)).toBe(adopted);
+  expect(h.git('show', `${previous}:${h.record}`)).toBe(legacy);
+  expect(h.git('show', `main:${definitionPath}`)).toBe(adopted);
+});
+
 test('ready reviews commit the desired definition, refresh it and restore main on holds', async () => {
   const h = await harness();
   await writeFile(

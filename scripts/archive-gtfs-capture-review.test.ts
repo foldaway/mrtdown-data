@@ -213,7 +213,7 @@ describe('durable capture evidence outside Git', () => {
     expect(Buffer.byteLength(result.json)).toBeLessThanOrEqual(16 * 1024);
     expect(result.markdown).toContain('Further details');
     expect(result.markdown).not.toContain('�');
-    args.report.capture = { ...args.report.capture, huge: 'x'.repeat(20000) };
+    Object.assign(args.report.capture, { huge: 'x'.repeat(20000) });
     expect(() => compactReview(args.report, overview, refs)).toThrow(
       'byte budget',
     );
@@ -227,5 +227,12 @@ describe('durable capture evidence outside Git', () => {
     expect(() => reportArchive(args.report, 'bad/repo/extra')).toThrow(
       'repository',
     );
+  });
+
+  it('rejects an oversized receipt before creating a release or uploading reports', async () => {
+    const { args, requests } = fixture();
+    Object.assign(args.report.capture, { detail: 'x'.repeat(20_000) });
+    await expect(archiveReview(args)).rejects.toThrow('byte budget');
+    expect(requests).toHaveLength(0);
   });
 });

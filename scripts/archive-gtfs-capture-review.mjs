@@ -129,6 +129,27 @@ export async function archiveReview({
   request,
 }) {
   const tag = reportArchive(report, repository);
+  const files = [
+    { format: 'json', extension: 'json', bytes: Buffer.from(json) },
+    { format: 'markdown', extension: 'md', bytes: Buffer.from(markdown) },
+  ].map((file) => {
+    const sha256 = hash(file.bytes);
+    const name = `${sha256}.${file.extension}`;
+    return {
+      ...file,
+      name,
+      reference: {
+        url: `https://github.com/${repository}/releases/download/${tag}/${name}`,
+        sha256,
+        byteLength: file.bytes.length,
+      },
+    };
+  });
+  const reports = Object.fromEntries(
+    files.map((file) => [file.format, file.reference]),
+  );
+  // Check the complete receipt before creating a release or uploading any asset.
+  const result = compactReview(report, markdown, reports);
   const root = `/repos/${repository}/releases`;
   const lookup = () => request('GET', `${root}/tags/${tag}`);
   let response = await lookup();
@@ -165,13 +186,7 @@ export async function archiveReview({
       if (result.data.length < 100) return undefined;
     }
   };
-  const reports = {};
-  for (const [format, extension, bytes] of [
-    ['json', 'json', Buffer.from(json)],
-    ['markdown', 'md', Buffer.from(markdown)],
-  ]) {
-    const sha256 = hash(bytes);
-    const name = `${sha256}.${extension}`;
+  for (const { format, extension, bytes, name, reference } of files) {
     let asset = await findAsset(name);
     if (!asset) {
       const uploaded = await request(
@@ -185,17 +200,15 @@ export async function archiveReview({
       // Read the stored metadata rather than trusting an upload response alone.
       asset = await findAsset(name);
     }
-    const url = `https://github.com/${repository}/releases/download/${tag}/${name}`;
     if (
       asset?.state !== 'uploaded' ||
       asset.size !== bytes.length ||
-      asset.digest !== `sha256:${sha256}` ||
-      asset.browser_download_url !== url
+      asset.digest !== `sha256:${reference.sha256}` ||
+      asset.browser_download_url !== reference.url
     )
       throw new Error(`Archived ${format} report identity differs`);
-    reports[format] = { url, sha256, byteLength: bytes.length };
   }
-  return compactReview(report, markdown, reports);
+  return result;
 }
 
 if (

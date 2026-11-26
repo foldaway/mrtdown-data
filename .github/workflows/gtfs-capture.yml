@@ -276,17 +276,12 @@ jobs:
           }
           NODE
           fi
-          # A previous attempt may have pushed the branch before PR creation failed.
-          existing_ref=$(git ls-remote --refs origin "$review_ref")
-          if [[ -z "$existing_ref" ]]; then
+          capture_report="$REVIEW_DIR/$SNAPSHOT_SHA256.md"
+          if [[ "$ARCHIVE_OUTCOME" != success ]]; then
+            capture_report="$RUNNER_TEMP/gtfs-unavailable-capture.md"
             run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
             origin="${SNAPSHOT_ORIGIN%/}"
-            mkdir -p docs/gtfs/captures
-            if [[ "$ARCHIVE_OUTCOME" == success && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.md" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.json" ]]; then
-              cp "$REVIEW_DIR/$SNAPSHOT_SHA256.md" "$record_path"
-              cp "$REVIEW_DIR/$SNAPSHOT_SHA256.json" "docs/gtfs/captures/$SNAPSHOT_SHA256.json"
-            else
-              cat > "$record_path" <<EOF
+            cat > "$capture_report" <<EOF
           # LTA train GTFS snapshot
 
           - Retrieved at $RETRIEVED_AT
@@ -300,9 +295,17 @@ jobs:
 
           This capture has no checked release definition. Merging this record retains evidence only; publication requires the exception release procedure.
           EOF
-              if [[ -n "$ARTIFACT_URL" ]]; then
-                printf '%s\n' "- [Download available reports]($ARTIFACT_URL)" >> "$record_path"
-              fi
+            if [[ -n "$ARTIFACT_URL" ]]; then
+              printf '%s\n' "- [Download available reports]($ARTIFACT_URL)" >> "$capture_report"
+            fi
+          fi
+          # A previous attempt may have pushed the branch before PR creation failed.
+          existing_ref=$(git ls-remote --refs origin "$review_ref")
+          if [[ -z "$existing_ref" ]]; then
+            mkdir -p docs/gtfs/captures
+            cp "$capture_report" "$record_path"
+            if [[ "$ARCHIVE_OUTCOME" == success ]]; then
+              cp "$REVIEW_DIR/$SNAPSHOT_SHA256.json" "docs/gtfs/captures/$SNAPSHOT_SHA256.json"
             fi
             git add -- "$record_path"
             if [[ -f "docs/gtfs/captures/$SNAPSHOT_SHA256.json" ]]; then
@@ -334,11 +337,12 @@ jobs:
           git checkout --detach "$previous_commit"
           candidate="$RUNNER_TEMP/gtfs-automatic/release-definition.json"
           record_json="docs/gtfs/captures/$SNAPSHOT_SHA256.json"
-          # Refresh the bounded receipt; earlier receipts remain in Git history and full reports in Release assets.
-          if [[ "$ARCHIVE_OUTCOME" == success && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.md" && -f "$REVIEW_DIR/$SNAPSHOT_SHA256.json" ]]; then
-            cp "$REVIEW_DIR/$SNAPSHOT_SHA256.md" "$record_path"
+          # Refresh the summary even on failed retries so the current hold remains reviewable.
+          cp "$capture_report" "$record_path"
+          git add -- "$record_path"
+          if [[ "$ARCHIVE_OUTCOME" == success ]]; then
             cp "$REVIEW_DIR/$SNAPSHOT_SHA256.json" "$record_json"
-            git add -- "$record_path" "$record_json"
+            git add -- "$record_json"
           fi
           prepared_base="$RUNNER_TEMP/gtfs-automatic/preparation-base.txt"
           export PUBLICATION_READY=false
