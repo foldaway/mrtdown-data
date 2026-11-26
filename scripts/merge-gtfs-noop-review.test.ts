@@ -122,6 +122,19 @@ function fixture() {
 }
 
 describe('automatic merge of trusted no-op capture evidence', () => {
+  it('accepts original PR base metadata while still rejecting a changed live main', async () => {
+    const { args, pr, merges } = fixture();
+    pr.base.sha = '0'.repeat(40);
+    expect(await mergeNoopReview(args)).toMatchObject({ merged: true });
+    merges.splice(0);
+    args.refreshBase = async () => 'f'.repeat(40);
+    expect(await mergeNoopReview(args)).toMatchObject({
+      merged: false,
+      reason: 'Main advanced before merging; prepare this capture again.',
+    });
+    expect(merges).toHaveLength(0);
+  });
+
   it.each([
     'preparation age',
     'capture age',

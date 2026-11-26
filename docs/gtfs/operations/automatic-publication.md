@@ -162,6 +162,8 @@ The merge gate requires:
   The receipt is retained in the capture Markdown alongside the proof.
 - The same default-branch commit and desired-definition identity as preparation,
   plus the same public release index immediately before the merge attempt.
+  Current `main` is fetched and checked through Git; the PR API's `base.sha` can
+  retain its original base commit and is not used as the current branch tip.
 - An open, non-draft, same-repository PR created by the capture bot, with the exact
   expected head and branch. Its diff may only add or modify regular, non-executable
   Markdown/JSON files for that capture under `docs/gtfs/captures/`.

@@ -311,7 +311,7 @@ globalThis.fetch = async (url, options = {}) => {
   else if (url.includes('/reviews?')) value = [];
   else value = { state: 'open', draft: false, user: { login: 'github-actions[bot]' }, changed_files: 2,
     head: { sha: ${JSON.stringify(head)}, ref: ${JSON.stringify(outputs.branch)}, repo: { full_name: 'example/repo' } },
-    base: { ref: 'main', sha: ${JSON.stringify(baseSha)}, repo: { full_name: 'example/repo' } } };
+    base: { ref: 'main', sha: ${JSON.stringify('0'.repeat(40))}, repo: { full_name: 'example/repo' } } };
   return new Response(JSON.stringify(value), { status: 200 });
 };\n`,
   );
