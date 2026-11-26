@@ -218,7 +218,7 @@ jobs:
           name: gtfs-automatic-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/gtfs-automatic
       - name: Preserve trusted no-op merge code
-        run: cp scripts/merge-gtfs-noop-review.mjs "$RUNNER_TEMP/merge-gtfs-noop-review.mjs"
+        run: git show "$GITHUB_SHA:scripts/merge-gtfs-noop-review.mjs" > "$RUNNER_TEMP/merge-gtfs-noop-review.mjs"
       - name: Open snapshot review
         id: review
         env:

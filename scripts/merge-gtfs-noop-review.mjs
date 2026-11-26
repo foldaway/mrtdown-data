@@ -105,6 +105,21 @@ export function validateNoopEvidence(
   { actualJson, freshJson, actualMarkdown, freshMarkdown, automaticMarkdown },
   context,
 ) {
+  if (typeof actualJson === 'string') {
+    try {
+      actualJson = JSON.parse(actualJson);
+    } catch (error) {
+      if (error instanceof SyntaxError)
+        throw new Ineligible('Committed comparison JSON is malformed.');
+      throw error;
+    }
+  }
+  requireCheck(
+    actualJson !== null &&
+      typeof actualJson === 'object' &&
+      !Array.isArray(actualJson),
+    'Committed comparison JSON must be an object.',
+  );
   requireCheck(
     actualJson.capture?.sha256 === context.captureSha256 &&
       freshJson.capture?.sha256 === context.captureSha256 &&
@@ -168,7 +183,7 @@ export async function mergeNoopReview({
   refreshBase,
   api,
   publicIndex,
-  now = Date.now(),
+  clock = Date.now,
 }) {
   try {
     requireCheck(
@@ -191,7 +206,7 @@ export async function mergeNoopReview({
         new RegExp(`^${prefix}-\\d+-\\d+$`).test(context.branch),
       'Unexpected review branch.',
     );
-    const preparation = validateNoopPreparation(report, context, now);
+    const preparation = validateNoopPreparation(report, context, clock());
     requireCheck(
       preparedCommit === context.workflowSha &&
         snapshot.baseSha === preparedCommit &&
@@ -218,31 +233,35 @@ export async function mergeNoopReview({
     );
     validateNoopEvidence(evidence, context);
     const prPath = `/repos/${context.repository}/pulls/${context.prNumber}`;
-    const pr = await api(prPath);
-    requireCheck(
-      pr.state === 'open' &&
-        !pr.draft &&
-        pr.user?.login === 'github-actions[bot]' &&
-        pr.head?.sha === context.headSha &&
-        pr.head.ref === context.branch &&
-        pr.head.repo?.full_name === context.repository &&
-        pr.base?.ref === context.baseBranch &&
-        pr.base.sha === snapshot.baseSha &&
-        pr.base.repo?.full_name === context.repository &&
-        pr.changed_files === snapshot.files.length,
-      'PR identity or scope changed.',
-    );
-    requireCheck(!pr.auto_merge, 'A queued merge request already exists.');
-    requireCheck(
-      !pr.requested_reviewers?.length && !pr.requested_teams?.length,
-      'A maintainer requested manual review.',
-    );
-    const reviews = await api(`${prPath}/reviews?per_page=100`);
-    requireCheck(
-      reviews.length < 100 &&
-        !reviews.some((review) => review.state === 'CHANGES_REQUESTED'),
-      'A review requires maintainer attention.',
-    );
+    const checkPr = (pr) => {
+      requireCheck(
+        pr.state === 'open' &&
+          !pr.draft &&
+          pr.user?.login === 'github-actions[bot]' &&
+          pr.head?.sha === context.headSha &&
+          pr.head.ref === context.branch &&
+          pr.head.repo?.full_name === context.repository &&
+          pr.base?.ref === context.baseBranch &&
+          pr.base.sha === snapshot.baseSha &&
+          pr.base.repo?.full_name === context.repository &&
+          pr.changed_files === snapshot.files.length,
+        'PR identity or scope changed.',
+      );
+      requireCheck(!pr.auto_merge, 'A queued merge request already exists.');
+      requireCheck(
+        !pr.requested_reviewers?.length && !pr.requested_teams?.length,
+        'A maintainer requested manual review.',
+      );
+    };
+    checkPr(await api(prPath));
+    const reviewsPath = `${prPath}/reviews?per_page=100`;
+    const checkReviews = (reviews) =>
+      requireCheck(
+        reviews.length < 100 &&
+          !reviews.some((review) => review.state === 'CHANGES_REQUESTED'),
+        'A review requires maintainer attention.',
+      );
+    checkReviews(await api(reviewsPath));
     const checks = await api(
       `/repos/${context.repository}/commits/${context.headSha}/check-runs?per_page=100`,
     );
@@ -271,6 +290,10 @@ export async function mergeNoopReview({
       (await refreshBase()) === preparedCommit,
       'Main advanced before merging; prepare this capture again.',
     );
+    // GitHub only atomically guards the head; refresh manual-review signals last.
+    checkReviews(await api(reviewsPath));
+    checkPr(await api(prPath));
+    validateNoopPreparation(report, context, clock());
     const result = await api(`${prPath}/merge`, {
       sha: context.headSha,
       merge_method: 'squash',
@@ -385,7 +408,7 @@ if (
       await readFile(join(automatic, 'preparation-base.txt'), 'utf8')
     ).trim(),
     evidence: {
-      actualJson: JSON.parse(read('json')),
+      actualJson: read('json'),
       actualMarkdown: read('md'),
       freshJson: await json(`${fresh}.json`),
       freshMarkdown: await readFile(`${fresh}.md`, 'utf8'),

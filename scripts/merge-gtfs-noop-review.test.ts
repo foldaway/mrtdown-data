@@ -88,7 +88,7 @@ function fixture() {
     },
     changed_files: 2,
     requested_reviewers: [] as { login: string }[],
-    requested_teams: [],
+    requested_teams: [] as { slug: string }[],
   };
   const checks = {
     total_count: 1,
@@ -104,7 +104,7 @@ function fixture() {
     preparedDefinition: 'absent',
     evidence,
     snapshot,
-    now,
+    clock: () => now,
     refreshBase: async () => baseSha,
     publicIndex: async () => structuredClone(index),
     api: async (path: string, body?: unknown) => {
@@ -122,6 +122,99 @@ function fixture() {
 }
 
 describe('automatic merge of trusted no-op capture evidence', () => {
+  it.each([
+    'preparation age',
+    'capture age',
+    'approval window',
+  ])('rechecks %s after the awaited checks', async (boundary) => {
+    const { args, merges } = fixture();
+    let first = Date.parse('2026-11-26T18:00:00Z');
+    if (boundary === 'preparation age')
+      args.report.preparation.checkedAt = '2026-11-26T17:00:01Z';
+    if (boundary === 'capture age')
+      args.report.preparation.captureRetrievedAt = '2026-11-23T18:00:01Z';
+    if (boundary === 'approval window') {
+      first = Date.parse('2026-11-30T15:59:59Z');
+      args.report.preparation.checkedAt = '2026-11-30T15:59:00Z';
+      args.report.preparation.captureRetrievedAt = '2026-11-30T00:00:00Z';
+    }
+    let calls = 0;
+    args.clock = () => (calls++ === 0 ? first : first + 2000);
+    expect(await mergeNoopReview(args)).toMatchObject({
+      merged: false,
+      reason:
+        boundary === 'approval window'
+          ? 'The approved service-date window is inactive.'
+          : 'No-op preparation or capture is stale.',
+    });
+    expect(calls).toBe(2);
+    expect(merges).toHaveLength(0);
+  });
+
+  it('still merges when the second clock sample remains fresh', async () => {
+    const { args, merges } = fixture();
+    let calls = 0;
+    args.clock = () => Date.parse('2026-11-26T18:00:00Z') + calls++ * 2000;
+    expect(await mergeNoopReview(args)).toMatchObject({ merged: true });
+    expect(calls).toBe(2);
+    expect(merges).toHaveLength(1);
+  });
+
+  it.each([
+    'reviewers',
+    'teams',
+    'changes requested',
+    'head',
+  ])('refreshes late %s changes before merging', async (change) => {
+    const { args, pr, reviews, merges } = fixture();
+    args.refreshBase = async () => {
+      if (change === 'reviewers')
+        pr.requested_reviewers.push({ login: 'maintainer' });
+      if (change === 'teams') pr.requested_teams.push({ slug: 'maintainers' });
+      if (change === 'changes requested')
+        reviews.push({ state: 'CHANGES_REQUESTED' });
+      if (change === 'head') pr.head.sha = '0'.repeat(40);
+      return args.preparedCommit;
+    };
+    expect(await mergeNoopReview(args)).toMatchObject({ merged: false });
+    expect(merges).toHaveLength(0);
+  });
+
+  it.each([
+    '{malformed',
+    'null',
+    '[]',
+    '"not an object"',
+  ])('refuses malformed or non-object committed JSON: %s', async (actualJson) => {
+    const { args, merges } = fixture();
+    expect(
+      await mergeNoopReview({
+        ...args,
+        evidence: { ...args.evidence, actualJson },
+      }),
+    ).toMatchObject({ merged: false });
+    expect(merges).toHaveLength(0);
+  });
+
+  it('accepts valid committed JSON text and keeps infrastructure errors distinct', async () => {
+    const { args, merges } = fixture();
+    expect(
+      await mergeNoopReview({
+        ...args,
+        evidence: {
+          ...args.evidence,
+          actualJson: JSON.stringify(args.evidence.actualJson),
+        },
+      }),
+    ).toMatchObject({ merged: true });
+    merges.splice(0);
+    args.api = async () => {
+      throw new Error('Network failed');
+    };
+    await expect(mergeNoopReview(args)).rejects.toThrow('Network failed');
+    expect(merges).toHaveLength(0);
+  });
+
   it('merges the exact verified head without requiring a nonexistent bot PR Validate check', async () => {
     const { args, merges } = fixture();
     expect(await mergeNoopReview(args)).toMatchObject({ merged: true });
