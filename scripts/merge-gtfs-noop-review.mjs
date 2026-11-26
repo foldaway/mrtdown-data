@@ -100,11 +100,20 @@ export function validateNoopPreparation(report, context, now) {
   return preparation;
 }
 
-/** Preserve original comparison context, but accept no edited comparison or prose. */
+/** Require the exact bounded receipt produced after this run verified durable assets. */
 export function validateNoopEvidence(
   { actualJson, freshJson, actualMarkdown, freshMarkdown, automaticMarkdown },
   context,
 ) {
+  requireCheck(
+    Buffer.byteLength(
+      typeof actualJson === 'string'
+        ? actualJson
+        : (JSON.stringify(actualJson) ?? ''),
+    ) <=
+      16 * 1024 && Buffer.byteLength(actualMarkdown) <= 32 * 1024,
+    'Committed capture evidence exceeds its byte budget.',
+  );
   if (typeof actualJson === 'string') {
     try {
       actualJson = JSON.parse(actualJson);
@@ -121,45 +130,46 @@ export function validateNoopEvidence(
     'Committed comparison JSON must be an object.',
   );
   requireCheck(
-    actualJson.capture?.sha256 === context.captureSha256 &&
+    actualJson.schemaVersion === 2 &&
+      actualJson.documentKind === 'gtfs-capture-review-receipt' &&
+      actualJson.capture?.sha256 === context.captureSha256 &&
       freshJson.capture?.sha256 === context.captureSha256 &&
       actualJson.comparison?.status === 'available' &&
       actualJson.inspectionOutcome === 'success' &&
       actualJson.validation?.outcome === 'success' &&
-      actualJson.current?.structuralErrors?.length === 0,
+      actualJson.current?.structuralErrorCount === 0,
     'Capture comparison or validation is incomplete.',
   );
-  const comparable = (value) => {
-    const copy = { ...value };
-    for (const field of ['canonicalCommit', 'runUrl', 'artifactUrl'])
-      delete copy[field];
-    return copy;
-  };
   requireCheck(
-    isDeepStrictEqual(comparable(actualJson), comparable(freshJson)),
+    isDeepStrictEqual(actualJson, freshJson),
     'Committed comparison differs from the trusted inspection.',
   );
   requireCheck(
-    commit.test(actualJson.canonicalCommit) &&
-      actualJson.runUrl?.startsWith(
-        `https://github.com/${context.repository}/actions/runs/`,
-      ) &&
-      actualJson.artifactUrl?.startsWith(
-        `https://github.com/${context.repository}/actions/runs/`,
-      ),
-    'Original comparison context is invalid.',
+    actualJson.canonicalCommit === context.workflowSha &&
+      actualJson.runUrl ===
+        `https://github.com/${context.repository}/actions/runs/${context.runId}`,
+    'Capture receipt belongs to another commit or run.',
   );
-  let expectedPrefix = freshMarkdown.split('\n## Automatic publication\n')[0];
-  for (const field of ['artifactUrl', 'runUrl', 'canonicalCommit']) {
+  for (const [format, extension] of [
+    ['json', 'json'],
+    ['markdown', 'md'],
+  ]) {
+    const ref = actualJson.reports?.[format];
+    const capturedAt = Date.parse(actualJson.capture.retrieved_at);
+    const tag = Number.isFinite(capturedAt)
+      ? `gtfs-capture-reports-${new Date(capturedAt).toISOString().slice(0, 7)}`
+      : '';
     requireCheck(
-      typeof freshJson[field] === 'string' && freshJson[field].length > 0,
-      'Fresh comparison context is missing.',
-    );
-    expectedPrefix = expectedPrefix.replaceAll(
-      freshJson[field],
-      actualJson[field],
+      tag &&
+        digest.test(ref?.sha256) &&
+        Number.isSafeInteger(ref?.byteLength) &&
+        ref.byteLength > 0 &&
+        ref.url ===
+          `https://github.com/${context.repository}/releases/download/${tag}/${ref.sha256}.${extension}`,
+      'Durable report reference is missing or invalid.',
     );
   }
+  const expectedPrefix = freshMarkdown.split('\n## Automatic publication\n')[0];
   const parts = actualMarkdown.split('\n## Automatic publication\n');
   requireCheck(
     parts.length === 2 && parts[0].trimEnd() === expectedPrefix.trimEnd(),
@@ -375,9 +385,18 @@ if (
     };
   });
   const prefix = `docs/gtfs/captures/${context.captureSha256}`;
-  const read = (suffix) => git('show', `${headSha}:${prefix}.${suffix}`);
+  // Preserve blob bytes for size checks; trimming could hide oversized whitespace.
+  const read = (suffix) =>
+    execFileSync('git', ['show', `${headSha}:${prefix}.${suffix}`], {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
   const automatic = join(env.RUNNER_TEMP, 'gtfs-automatic');
-  const fresh = join(env.RUNNER_TEMP, 'gtfs-review', context.captureSha256);
+  const fresh = join(
+    env.RUNNER_TEMP,
+    'gtfs-capture-receipt',
+    context.captureSha256,
+  );
   const api = async (path, body) => {
     const response = await fetch(`https://api.github.com${path}`, {
       method: body ? 'PUT' : 'GET',
