@@ -20,8 +20,14 @@ The code is merged; the remaining work is an observed adoption proof.
 - [x] (2026-11-26) Confirm [PR #499](https://github.com/foldaway/mrtdown-data/pull/499)
   is present in local history as `1b7da591`. The inspected checkout has no
   `releases/gtfs.json`; code presence does not establish live adoption.
-- [ ] Prepare and review the first definition of the completed release or a
-  qualified successor using current source evidence and approvals.
+- [x] (2026-11-27) Trace the [failed Pages run](https://github.com/foldaway/mrtdown-data/actions/runs/45976035917)
+  after PR #510 to the retained shared-claim digest. The new Joo Koon service
+  makes eight source patterns ambiguous across 2,709 November trip/date pairs.
+- [ ] Review the [proposed single-service selections](../../gtfs/reviews/joo-koon-service-selection-2026-11-27.md)
+  for those eight Joo Koon patterns, then prepare new mapping, release and
+  `correction` source admission approvals with correction revision 2.
+- [ ] Prepare and review the first definition of the newly approved release
+  using current source evidence and approvals.
 - [ ] Observe the exact ordinary Pages deployment, site completion receipt,
   and retained baseline, then verify an ordinary data-only redeployment.
 
@@ -31,6 +37,10 @@ Retention already holds compact policies and evidence reusable in a definition.
 Bootstrap can name the same completed release without changing its hashes or
 inventing a new approval. An evidence-only/no-op capture does not itself establish
 the first definition; inspect the actual review result before treating it as one.
+The bootstrap reader rebuilds the completed release against the canonical data
+being shipped, so a canonical service change also needs a newly reviewed release.
+The PR preview did not exercise this bootstrap path because no desired definition
+exists yet.
 
 ## Decision Log
 
@@ -42,6 +52,9 @@ the first definition; inspect the actual review result before treating it as one
   an implicit fallback.
 - 2026-11-26: Keep this plan active for adoption evidence after the implementation
   merge. Current procedures live in the runbooks, not a second design proposal.
+- 2026-11-27: Keep PR #510's Joo Koon service. Resolve its source patterns through
+  explicit dated single-service selections and a new reviewed GTFS release; do not
+  reuse the old mapping or release approval.
 
 ## Outcomes & Retrospective
 

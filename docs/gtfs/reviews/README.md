@@ -24,6 +24,9 @@ or [Paya Lebar platform decision](source-platform-allocation-review.md#paya-leba
 
 ## Review history
 
+- [Joo Koon service selection proposal](joo-koon-service-selection-2026-11-27.md)
+  records the proposed eight dated short-working mappings after the canonical
+  service was added. It is not a release approval.
 - [Nine-family holiday review](shared-holiday-family-review.md) records capture
   scope and unresolved evidence for an earlier review.
 - [Inventory](mapping-review-inventory.md), [disagreements](mapping-disagreements.md),
