@@ -424,6 +424,16 @@ unresolved dates; unknown dates, overlaps, stale drafts and incomplete or invali
 member sets fail. Other dates and decisions remain unchanged. The helper creates
 no approval and does not infer operational applicability.
 
+The same claim document may include `serviceSelections` for reviewed dates where
+one source journey belongs to exactly one canonical service despite multiple
+path candidates. Each selection names an exact `serviceRevision` target, its
+pattern and dates, and a reason. Selection dates cannot overlap shared claims or
+other selections. The selected target must be a candidate on every named date;
+the complete platform and boarding checks still apply. A destination-specific
+short working can use this when its source path is also a segment of a longer
+service. Regenerate the base digest and review every new selection after a
+canonical topology change; changing the digest alone does not approve it.
+
 For an allocation/holiday wrapper, use
 `applyScheduledPlatformAllocationServiceMemberships` or the runner's
 `--shared-service-memberships <claims.json>` option alongside

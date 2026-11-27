@@ -14,6 +14,65 @@ import {
 } from './scheduledSourceJourneys.js';
 
 describe('combined review on explicit service-date applicability', () => {
+  it('resolves a dated single-service selection while retaining shared dates', () => {
+    const { inputs, sharedServiceMemberships, sharedId } = fixture();
+    const claim = sharedServiceMemberships.claims[0];
+    const selectedDate = claim.serviceDates.at(-1);
+    if (!selectedDate) throw new Error('Missing shared service date');
+    claim.serviceDates = claim.serviceDates.filter(
+      (date) => date !== selectedDate,
+    );
+    const memberships = {
+      ...sharedServiceMemberships,
+      serviceSelections: [
+        {
+          providerPatternId: sharedId,
+          serviceDates: [selectedDate],
+          target: {
+            kind: 'serviceRevision',
+            id: 'SHARED_A',
+            revisionId: 'R',
+            match: 'exact',
+          },
+          reason: 'Reviewed destination selects this service',
+        },
+      ],
+    };
+    const review = createScheduledCombinedReview({
+      ...inputs,
+      sharedServiceMemberships: memberships,
+    });
+    expect(review.accounting.unresolvedTripDateCount).toBe(0);
+    const pattern = review.associationReview.patterns.find(
+      (item) => item.providerPatternId === sharedId,
+    );
+    expect(
+      pattern?.reviewCells.find((cell) =>
+        cell.serviceDates.includes(selectedDate),
+      )?.target,
+    ).toMatchObject({ kind: 'serviceRevision', id: 'SHARED_A' });
+    expect(
+      pattern?.reviewCells.some(
+        (cell) => cell.target?.kind === 'sharedServiceRevisions',
+      ),
+    ).toBe(true);
+    const wrongTarget = structuredClone(memberships);
+    wrongTarget.serviceSelections[0].target.id = 'MISSING';
+    expect(() =>
+      createScheduledCombinedReview({
+        ...inputs,
+        sharedServiceMemberships: wrongTarget,
+      }),
+    ).toThrow('Combined service selection must be a dated candidate');
+    memberships.serviceSelections[0].serviceDates = ['2027-01-01'];
+    expect(() =>
+      createScheduledCombinedReview({
+        ...inputs,
+        sharedServiceMemberships: memberships,
+      }),
+    ).toThrow('inside supported applicability');
+  });
+
   it('composes shared memberships, repeated source calls and restricted physical associations without duplicate trip accounting', () => {
     const { inputs, sharedServiceMemberships, unusualId, sharedId } = fixture();
     const before = structuredClone(inputs);

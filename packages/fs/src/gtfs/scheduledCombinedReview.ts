@@ -85,6 +85,9 @@ export function createScheduledCombinedReview(
     ) ||
     memberships?.claims.some((claim) =>
       claim.serviceDates.some((date) => !supported(date)),
+    ) ||
+    memberships?.serviceSelections?.some((selection) =>
+      selection.serviceDates.some((date) => !supported(date)),
     )
   ) {
     throw new Error(

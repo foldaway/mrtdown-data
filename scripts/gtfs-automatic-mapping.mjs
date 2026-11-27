@@ -30,6 +30,10 @@ export function planAutomaticMappings(
   requireCheck,
   allowCalendarSegments = false,
 ) {
+  requireCheck(
+    !baselineInputs.sharedServiceMemberships?.serviceSelections?.length,
+    'Explicit single-service selections require a new mapping review.',
+  );
   const oldPatterns = auditSchedule(baselineInputs.context.tables).patterns;
   const patterns = auditSchedule(inputs.context.tables).patterns;
   const range = inputs.applicabilityPolicy.serviceDateRange;

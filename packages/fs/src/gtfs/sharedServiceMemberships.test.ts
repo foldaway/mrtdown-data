@@ -88,6 +88,61 @@ async function fixture() {
 }
 
 describe('shared scheduled service memberships', () => {
+  it('selects one dated candidate without changing shared claims on other dates', async () => {
+    const f = await fixture();
+    f.claims.claims[0].serviceDates = ['2026-01-01'];
+    const selection = {
+      providerPatternId: f.claims.claims[0].providerPatternId,
+      serviceDates: ['2026-01-02'],
+      target: {
+        kind: 'serviceRevision' as const,
+        id: 'OTHER',
+        revisionId: 'other-r2',
+        match: 'exact' as const,
+      },
+      reason: 'Reviewed single-service destination',
+    };
+    const claims = { ...f.claims, serviceSelections: [selection] };
+    const draft = applyScheduledSharedServiceMemberships(
+      f.context,
+      f.draft,
+      claims,
+    );
+    const proposals = createScheduledTripAssignmentProposals(f.context, draft);
+    expect(proposals.review).toMatchObject({
+      valid: true,
+      matchedPatternDates: 2,
+      unresolvedPatternDates: 0,
+    });
+    expect(
+      draft.decisions.find(
+        (decision) =>
+          decision.kind === 'pattern' &&
+          decision.target?.kind === 'serviceRevision',
+      )?.target,
+    ).toEqual(selection.target);
+    expect(
+      proposals.document.assignments.map(
+        (assignment) => assignment.scope.binding.pattern,
+      ),
+    ).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ serviceId: 'OTHER' }),
+        expect.objectContaining({
+          serviceMemberships: expect.arrayContaining([
+            expect.objectContaining({ serviceId: 'SVC' }),
+          ]),
+        }),
+      ]),
+    );
+    expect(() =>
+      applyScheduledSharedServiceMemberships(f.context, f.draft, {
+        ...claims,
+        serviceSelections: [{ ...selection, serviceDates: ['2026-01-01'] }],
+      }),
+    ).toThrow('Overlapping');
+  });
+
   it('preserves source/date accounting and requires exact claims without inventing approval', async () => {
     const f = await fixture();
     f.claims.claims[0].serviceDates = ['2026-01-01'];
