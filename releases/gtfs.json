@@ -1,0 +1,2381 @@
+{
+  "schemaVersion": 1,
+  "documentKind": "gtfs-release-definition",
+  "capture": {
+    "schema_version": 1,
+    "capture_id": "47951e8e-7a60-40c1-bd48-086ee0943a41",
+    "feed_kind": "schedule",
+    "source": "https://datamall2.mytransport.sg/ltaodataservice/GTFSScheduleTrain",
+    "retrieved_at": "2026-11-21T20:00:03.469Z",
+    "provider_timestamp": null,
+    "sha256": "0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf",
+    "byte_length": 3672964,
+    "archive_ref": "blobs/schedule/0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf.zip",
+    "attribution": "Contains information from GTFSScheduleTrain accessed on 2026-11-21T20:00:03.469Z from LTA DataMall, under the Singapore Open Data Licence version 1.0 (https://datamall.lta.gov.sg/content/datamall/en/SingaporeOpenDataLicence.html).",
+    "rights_status": "redistribution_permitted",
+    "licence_reference": "https://datamall.lta.gov.sg/content/datamall/en/SingaporeOpenDataLicence.html"
+  },
+  "canonicalCommit": "fa304182d193d8845a39bc38b8bf728d515a8f78",
+  "holidayCalendarId": "SG-2026",
+  "correctionRevision": 2,
+  "draftSha256": "37173de8c16b2ef59a78d0b40619f79fc4c662f784f2119bdf81bebe15a20d36",
+  "policies": {
+    "applicabilityPolicy": {
+      "schemaVersion": 1,
+      "revision": "foldaway-november-2026-combined-rc2-applicability",
+      "captureSha256": "0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf",
+      "sourceManifest": {
+        "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+        "calendar.txt": "f698e091da579472407de731601bb5edcb6d2a3a1129ef4fca6d86f54ebe02c7",
+        "calendar_dates.txt": "1464027caa42fef985934281b0573a211b90b2dc51e49989f68cbacb2bd0b2e9",
+        "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+        "routes.txt": "ef14e523194470a09de94d18b7c920f516657e41aee0bc9493978568f13abd85",
+        "stop_times.txt": "b62ae145babad114342cf229049e00a2471852ee8018b9bbea02f8007eff9415",
+        "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+        "trips.txt": "0568dfa52d0b5cda08f364323dbb89921f393e9535521e5e629cf59b6557e0a1"
+      },
+      "dateBasis": "service-date",
+      "timezone": "Asia/Singapore",
+      "serviceDateRange": {
+        "startDate": "2026-11-09",
+        "endDateExclusive": "2026-12-01"
+      },
+      "basis": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability.",
+      "captureServiceDate": "2026-11-22"
+    },
+    "associationPolicy": {
+      "schemaVersion": 1,
+      "revision": "foldaway-november-2026-combined-rc2-nsl-associations",
+      "captureSha256": "0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf",
+      "sourceManifest": {
+        "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+        "calendar.txt": "f698e091da579472407de731601bb5edcb6d2a3a1129ef4fca6d86f54ebe02c7",
+        "calendar_dates.txt": "1464027caa42fef985934281b0573a211b90b2dc51e49989f68cbacb2bd0b2e9",
+        "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+        "routes.txt": "ef14e523194470a09de94d18b7c920f516657e41aee0bc9493978568f13abd85",
+        "stop_times.txt": "b62ae145babad114342cf229049e00a2471852ee8018b9bbea02f8007eff9415",
+        "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+        "trips.txt": "0568dfa52d0b5cda08f364323dbb89921f393e9535521e5e629cf59b6557e0a1"
+      },
+      "dateBasis": "service-date",
+      "timezone": "Asia/Singapore",
+      "serviceDateRange": {
+        "startDate": "2026-11-09",
+        "endDateExclusive": "2026-12-01"
+      },
+      "basis": "Proposed first combined timetable window under the maintainer November applicability assumption. Use Singapore service dates November 9 through November 30. November 9 is the capture service date and supplies overnight carry-in for November 10. November 7 and its uncovered Deepavali Eve extensions stay outside scope. December service dates remain outside reviewed applicability.",
+      "groups": [
+        {
+          "providerStopId": "NS16_A",
+          "stationId": "AMK",
+          "lineId": "NSL",
+          "platformCode": "A / C",
+          "reason": "Maintainer decision: retain distinct physical platforms and associate the source timetable occurrence with both members of its literal label. Preserve C/D not_in_service and all source pickup/drop-off rules; association does not authorize passenger boarding or assert simultaneous physical use."
+        },
+        {
+          "providerStopId": "NS16_B",
+          "stationId": "AMK",
+          "lineId": "NSL",
+          "platformCode": "B / D",
+          "reason": "Maintainer decision: retain distinct physical platforms and associate the source timetable occurrence with both members of its literal label. Preserve C/D not_in_service and all source pickup/drop-off rules; association does not authorize passenger boarding or assert simultaneous physical use."
+        }
+      ],
+      "allocations": [
+        {
+          "providerStopId": "NS28_A",
+          "stationId": "MSP",
+          "lineId": "NSL",
+          "platformCode": "A",
+          "serviceIds": [
+            "NSL_MAIN_S"
+          ],
+          "reason": "Apply accepted source-precedence reasoning to known operational MSP A on the supported service dates. Keep its northbound canonical default, source access fields and final occurrence. Matching northbound timestamps suggest turnaround but do not establish vehicle continuity."
+        }
+      ]
+    },
+    "sourceJourneyPolicy": {
+      "schemaVersion": 1,
+      "revision": "foldaway-november-2026-combined-rc2-source-journeys",
+      "sourceManifest": {
+        "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+        "calendar.txt": "f698e091da579472407de731601bb5edcb6d2a3a1129ef4fca6d86f54ebe02c7",
+        "calendar_dates.txt": "1464027caa42fef985934281b0573a211b90b2dc51e49989f68cbacb2bd0b2e9",
+        "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+        "routes.txt": "ef14e523194470a09de94d18b7c920f516657e41aee0bc9493978568f13abd85",
+        "stop_times.txt": "b62ae145babad114342cf229049e00a2471852ee8018b9bbea02f8007eff9415",
+        "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+        "trips.txt": "0568dfa52d0b5cda08f364323dbb89921f393e9535521e5e629cf59b6557e0a1"
+      },
+      "passengerCallRule": "timed-source-occurrences",
+      "journeys": [
+        {
+          "providerPatternId": "63ebed8183bc66609a130a29023c4d4fc832369a8e7405333b06dd28cb38770f",
+          "lineId": "NSL",
+          "serviceId": "NSL_MAIN_S",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-13",
+            "2026-11-16",
+            "2026-11-17",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-25",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "ca38177593d5ce418035d20b1c1bcb818985f20d6805c385e7b01918094c8329",
+          "lineId": "NSL",
+          "serviceId": "NSL_MAIN_S",
+          "serviceDates": [
+            "2026-11-14",
+            "2026-11-21",
+            "2026-11-28"
+          ],
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "eb2f75d6eba919e320a8d7fe748f45a9fb3bcad44d4ef11feff664822803f5c7",
+          "lineId": "NSL",
+          "serviceId": "NSL_MAIN_N",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "6e84f2113f0968bd922fbe5f70f3fd7236feee54f421dc20e4116e3d46c90410",
+          "lineId": "TEL",
+          "serviceId": "TEL_MAIN_S",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "07c0933b39e35a27d221c62f785c2dbe3764559d995155b92eb166cfddfd2740",
+          "lineId": "TEL",
+          "serviceId": "TEL_MAIN_S",
+          "serviceDates": [
+            "2026-11-14",
+            "2026-11-21",
+            "2026-11-28"
+          ],
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        }
+      ]
+    },
+    "allocationPolicy": {
+      "schemaVersion": 1,
+      "revision": "foldaway-expo-sengkang-east-paya-lebar-source-platforms-ceb07f9c-v2",
+      "sourceManifest": {
+        "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+        "calendar.txt": "f698e091da579472407de731601bb5edcb6d2a3a1129ef4fca6d86f54ebe02c7",
+        "calendar_dates.txt": "1464027caa42fef985934281b0573a211b90b2dc51e49989f68cbacb2bd0b2e9",
+        "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+        "routes.txt": "ef14e523194470a09de94d18b7c920f516657e41aee0bc9493978568f13abd85",
+        "stop_times.txt": "b62ae145babad114342cf229049e00a2471852ee8018b9bbea02f8007eff9415",
+        "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+        "trips.txt": "0568dfa52d0b5cda08f364323dbb89921f393e9535521e5e629cf59b6557e0a1"
+      },
+      "allocations": [
+        {
+          "providerStopId": "CG1_A",
+          "stationId": "XPO",
+          "lineId": "EWL",
+          "platformCode": "B",
+          "reason": "Maintainer decision, 5 November 2026: assume LTA GTFS platform allocations are correct for this capture; canonical service directions remain logical defaults. Temporary re-routing is a possible explanation, not a verified event. Preserve the explicit source label and all boarding restrictions.",
+          "serviceIds": [
+            "EWL_CG_E"
+          ]
+        },
+        {
+          "providerStopId": "CG1_B",
+          "stationId": "XPO",
+          "lineId": "EWL",
+          "platformCode": "A",
+          "reason": "Maintainer decision, 5 November 2026: assume LTA GTFS platform allocations are correct for this capture; canonical service directions remain logical defaults. Temporary re-routing is a possible explanation, not a verified event. Preserve the explicit source label and all boarding restrictions.",
+          "serviceIds": [
+            "EWL_CG_W"
+          ]
+        },
+        {
+          "providerStopId": "SE1_A",
+          "stationId": "CPV",
+          "lineId": "SKLRT",
+          "platformCode": "1",
+          "reason": "Maintainer decision, 5 November 2026: assume LTA GTFS platform allocations are correct for this capture; canonical service directions remain logical defaults. Temporary re-routing is a possible explanation, not a verified event. Preserve the explicit source label and all boarding restrictions.",
+          "serviceIds": [
+            "SKLRT_E_CCW"
+          ]
+        },
+        {
+          "providerStopId": "SE1_B",
+          "stationId": "CPV",
+          "lineId": "SKLRT",
+          "platformCode": "2",
+          "reason": "Maintainer decision, 5 November 2026: assume LTA GTFS platform allocations are correct for this capture; canonical service directions remain logical defaults. Temporary re-routing is a possible explanation, not a verified event. Preserve the explicit source label and all boarding restrictions.",
+          "serviceIds": [
+            "SKLRT_E_CW"
+          ]
+        },
+        {
+          "providerStopId": "SE2_A",
+          "stationId": "RMB",
+          "lineId": "SKLRT",
+          "platformCode": "1",
+          "reason": "Maintainer decision, 5 November 2026: assume LTA GTFS platform allocations are correct for this capture; canonical service directions remain logical defaults. Temporary re-routing is a possible explanation, not a verified event. Preserve the explicit source label and all boarding restrictions.",
+          "serviceIds": [
+            "SKLRT_E_CCW"
+          ]
+        },
+        {
+          "providerStopId": "SE2_B",
+          "stationId": "RMB",
+          "lineId": "SKLRT",
+          "platformCode": "2",
+          "reason": "Maintainer decision, 5 November 2026: assume LTA GTFS platform allocations are correct for this capture; canonical service directions remain logical defaults. Temporary re-routing is a possible explanation, not a verified event. Preserve the explicit source label and all boarding restrictions.",
+          "serviceIds": [
+            "SKLRT_E_CW"
+          ]
+        },
+        {
+          "providerStopId": "SE3_A",
+          "stationId": "BAK",
+          "lineId": "SKLRT",
+          "platformCode": "1",
+          "reason": "Maintainer decision, 5 November 2026: assume LTA GTFS platform allocations are correct for this capture; canonical service directions remain logical defaults. Temporary re-routing is a possible explanation, not a verified event. Preserve the explicit source label and all boarding restrictions.",
+          "serviceIds": [
+            "SKLRT_E_CCW"
+          ]
+        },
+        {
+          "providerStopId": "SE3_B",
+          "stationId": "BAK",
+          "lineId": "SKLRT",
+          "platformCode": "2",
+          "reason": "Maintainer decision, 5 November 2026: assume LTA GTFS platform allocations are correct for this capture; canonical service directions remain logical defaults. Temporary re-routing is a possible explanation, not a verified event. Preserve the explicit source label and all boarding restrictions.",
+          "serviceIds": [
+            "SKLRT_E_CW"
+          ]
+        },
+        {
+          "providerStopId": "SE4_A",
+          "stationId": "KGK",
+          "lineId": "SKLRT",
+          "platformCode": "1",
+          "reason": "Maintainer decision, 5 November 2026: assume LTA GTFS platform allocations are correct for this capture; canonical service directions remain logical defaults. Temporary re-routing is a possible explanation, not a verified event. Preserve the explicit source label and all boarding restrictions.",
+          "serviceIds": [
+            "SKLRT_E_CCW"
+          ]
+        },
+        {
+          "providerStopId": "SE4_B",
+          "stationId": "KGK",
+          "lineId": "SKLRT",
+          "platformCode": "2",
+          "reason": "Maintainer decision, 5 November 2026: assume LTA GTFS platform allocations are correct for this capture; canonical service directions remain logical defaults. Temporary re-routing is a possible explanation, not a verified event. Preserve the explicit source label and all boarding restrictions.",
+          "serviceIds": [
+            "SKLRT_E_CW"
+          ]
+        },
+        {
+          "providerStopId": "SE5_A",
+          "stationId": "RNG",
+          "lineId": "SKLRT",
+          "platformCode": "1",
+          "reason": "Maintainer decision, 5 November 2026: assume LTA GTFS platform allocations are correct for this capture; canonical service directions remain logical defaults. Temporary re-routing is a possible explanation, not a verified event. Preserve the explicit source label and all boarding restrictions.",
+          "serviceIds": [
+            "SKLRT_E_CCW"
+          ]
+        },
+        {
+          "providerStopId": "SE5_B",
+          "stationId": "RNG",
+          "lineId": "SKLRT",
+          "platformCode": "2",
+          "reason": "Maintainer decision, 5 November 2026: assume LTA GTFS platform allocations are correct for this capture; canonical service directions remain logical defaults. Temporary re-routing is a possible explanation, not a verified event. Preserve the explicit source label and all boarding restrictions.",
+          "serviceIds": [
+            "SKLRT_E_CW"
+          ]
+        },
+        {
+          "providerStopId": "CC9_A",
+          "stationId": "PYL",
+          "lineId": "CCL",
+          "platformCode": "A",
+          "reason": "Maintainer source-precedence decision, 5 November 2026, applied to equivalent Paya Lebar physical-platform evidence: assume LTA GTFS allocations are correct for this capture while canonical service directions remain logical defaults. Temporary re-routing is possible, not verified. Keep exact service revision/code dates, service ambiguity and boarding restrictions; see docs/gtfs-source-platform-allocation-review.md#paya-lebar-extension--6-november-2026.",
+          "serviceIds": [
+            "CCL_BRANCH_CCW",
+            "CCL_LOOP_CCW"
+          ]
+        },
+        {
+          "providerStopId": "CC9_B",
+          "stationId": "PYL",
+          "lineId": "CCL",
+          "platformCode": "B",
+          "reason": "Maintainer source-precedence decision, 5 November 2026, applied to equivalent Paya Lebar physical-platform evidence: assume LTA GTFS allocations are correct for this capture while canonical service directions remain logical defaults. Temporary re-routing is possible, not verified. Keep exact service revision/code dates, service ambiguity and boarding restrictions; see docs/gtfs-source-platform-allocation-review.md#paya-lebar-extension--6-november-2026.",
+          "serviceIds": [
+            "CCL_BRANCH_CW",
+            "CCL_LOOP_CW"
+          ]
+        }
+      ]
+    },
+    "holidayPolicy": {
+      "schemaVersion": 2,
+      "revision": "automatic-source-calendars-v2",
+      "rule": "sunday-on-public-holidays",
+      "sourceManifest": {
+        "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+        "calendar.txt": "f698e091da579472407de731601bb5edcb6d2a3a1129ef4fca6d86f54ebe02c7",
+        "calendar_dates.txt": "1464027caa42fef985934281b0573a211b90b2dc51e49989f68cbacb2bd0b2e9",
+        "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+        "routes.txt": "ef14e523194470a09de94d18b7c920f516657e41aee0bc9493978568f13abd85",
+        "stop_times.txt": "b62ae145babad114342cf229049e00a2471852ee8018b9bbea02f8007eff9415",
+        "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+        "trips.txt": "0568dfa52d0b5cda08f364323dbb89921f393e9535521e5e629cf59b6557e0a1"
+      },
+      "holidayCalendarSha256": "c1c3a740b0c17944e7d879bf7050b264ec28cf08ee146de3e039cae022b46ee6",
+      "families": [
+        {
+          "lineId": "NEL",
+          "providerRouteIds": [
+            "NEL_NE16_NE18",
+            "NEL_NE1_NE18",
+            "NEL_NE3_NE18"
+          ],
+          "weekdayCalendarId": "SERVICE_WD",
+          "saturdayCalendarId": "SERVICE_WE",
+          "sundayCalendarId": "SERVICE_PH",
+          "supplementalCalendarIds": []
+        },
+        {
+          "lineId": "NSL",
+          "providerRouteIds": [
+            "NSL_NS13_NS26",
+            "NSL_NS13_NS28",
+            "NSL_NS16_NS1",
+            "NSL_NS16_NS13",
+            "NSL_NS16_NS28",
+            "NSL_NS17_NS1",
+            "NSL_NS17_NS26",
+            "NSL_NS17_NS28",
+            "NSL_NS1_NS16",
+            "NSL_NS1_NS19",
+            "NSL_NS1_NS28",
+            "NSL_NS1_NS5",
+            "NSL_NS1_NS7",
+            "NSL_NS21_NS1",
+            "NSL_NS27_NS1",
+            "NSL_NS28_NS1",
+            "NSL_NS28_NS13",
+            "NSL_NS28_NS16",
+            "NSL_NS28_NS7",
+            "NSL_NS5_NS1",
+            "NSL_NS7_NS28"
+          ],
+          "weekdayCalendarId": "SERVICE_WD",
+          "saturdayCalendarId": "SERVICE_WE",
+          "sundayCalendarId": "SERVICE_PH",
+          "supplementalCalendarIds": []
+        },
+        {
+          "lineId": "EWL",
+          "providerRouteIds": [
+            "EWL_CGL_CG2_CG",
+            "EWL_CGL_CG_CG2",
+            "EWL_EW1_EW29",
+            "EWL_EW1_EW33",
+            "EWL_EW23_EW1",
+            "EWL_EW24_EW33",
+            "EWL_EW29_EW1",
+            "EWL_EW33_EW1",
+            "EWL_EW3_EW1",
+            "EWL_EW4_EW1",
+            "EWL_EW4_EW29",
+            "EWL_EW4_EW33"
+          ],
+          "weekdayCalendarId": "SERVICE_WD",
+          "saturdayCalendarId": "SERVICE_WE",
+          "sundayCalendarId": "SERVICE_PH",
+          "supplementalCalendarIds": []
+        },
+        {
+          "lineId": "TEL",
+          "providerRouteIds": [
+            "TEL_TE14_TE29",
+            "TEL_TE17_TE29",
+            "TEL_TE1_TE14",
+            "TEL_TE1_TE17",
+            "TEL_TE1_TE22",
+            "TEL_TE1_TE26",
+            "TEL_TE1_TE27",
+            "TEL_TE1_TE29",
+            "TEL_TE1_TE3",
+            "TEL_TE1_TE9",
+            "TEL_TE22_TE29",
+            "TEL_TE27_TE29",
+            "TEL_TE3_TE26",
+            "TEL_TE3_TE29",
+            "TEL_TE9_TE29"
+          ],
+          "weekdayCalendarId": "SERVICE_WD",
+          "saturdayCalendarId": "SERVICE_WE",
+          "sundayCalendarId": "SERVICE_PH",
+          "supplementalCalendarIds": []
+        },
+        {
+          "lineId": "CCL",
+          "providerRouteIds": [
+            "CCL_CC11_CC17",
+            "CCL_CC11_CC32",
+            "CCL_CC11_CC33",
+            "CCL_CC12_CC17",
+            "CCL_CC12_CC26",
+            "CCL_CC12_CC32",
+            "CCL_CC12_CC33",
+            "CCL_CC17_CC32",
+            "CCL_CC17_CC33",
+            "CCL_CC19_CC32",
+            "CCL_CC1_CC11",
+            "CCL_CC1_CC17",
+            "CCL_CC1_CC23",
+            "CCL_CC1_CC26",
+            "CCL_CC1_CC29",
+            "CCL_CC1_CC32",
+            "CCL_CC1_CC4",
+            "CCL_CC1_CC6",
+            "CCL_CC1_CC7",
+            "CCL_CC23_CC33",
+            "CCL_CC26_CC32",
+            "CCL_CC26_CC33",
+            "CCL_CC29_CC32",
+            "CCL_CC30_CC32",
+            "CCL_CC31_CC32",
+            "CCL_CC32_CC32",
+            "CCL_CC32_CC33",
+            "CCL_CC4_CC11",
+            "CCL_CC4_CC12",
+            "CCL_CC4_CC17",
+            "CCL_CC4_CC23",
+            "CCL_CC4_CC24",
+            "CCL_CC4_CC26",
+            "CCL_CC4_CC27",
+            "CCL_CC4_CC29",
+            "CCL_CC4_CC30",
+            "CCL_CC4_CC31",
+            "CCL_CC4_CC32",
+            "CCL_CC4_CC33",
+            "CCL_CC4_CC4",
+            "CCL_CC4_CC6",
+            "CCL_CC4_CC7",
+            "CCL_CC4_CC9",
+            "CCL_CC6_CC9",
+            "CCL_CC7_CC17",
+            "CCL_CC7_CC23",
+            "CCL_CC7_CC32",
+            "CCL_CC9_CC17",
+            "CCL_CC9_CC23",
+            "CCL_CC9_CC32"
+          ],
+          "weekdayCalendarId": "SERVICE_WD_CCL",
+          "saturdayCalendarId": "SERVICE_WE_CCL",
+          "sundayCalendarId": "SERVICE_PH_CCL",
+          "supplementalCalendarIds": [
+            "SERVICE_WD_CCL_SPECIAL",
+            "SERVICE_WE_CCL_SPECIAL"
+          ]
+        },
+        {
+          "lineId": "BPLRT",
+          "providerRouteIds": [
+            "BP"
+          ],
+          "weekdayCalendarId": "SERVICE_WD",
+          "saturdayCalendarId": "SERVICE_WE",
+          "sundayCalendarId": "SERVICE_PH",
+          "supplementalCalendarIds": []
+        },
+        {
+          "lineId": "DTL",
+          "providerRouteIds": [
+            "DTL_DT19_DT35",
+            "DTL_DT1_DT11",
+            "DTL_DT1_DT12",
+            "DTL_DT1_DT14",
+            "DTL_DT1_DT19",
+            "DTL_DT1_DT35",
+            "DTL_DT24_DT35"
+          ],
+          "weekdayCalendarId": "SERVICE_WD_DTL",
+          "saturdayCalendarId": "SERVICE_WE",
+          "sundayCalendarId": "SERVICE_PH",
+          "supplementalCalendarIds": [
+            "SERVICE_WD_DTL_SPECIAL"
+          ]
+        },
+        {
+          "lineId": "SKLRT",
+          "providerRouteIds": [
+            "SK"
+          ],
+          "weekdayCalendarId": "SERVICE_WD",
+          "saturdayCalendarId": "SERVICE_WE",
+          "sundayCalendarId": "SERVICE_PH",
+          "supplementalCalendarIds": []
+        },
+        {
+          "lineId": "PGLRT",
+          "providerRouteIds": [
+            "PG"
+          ],
+          "weekdayCalendarId": "SERVICE_WD",
+          "saturdayCalendarId": "SERVICE_WE",
+          "sundayCalendarId": "SERVICE_PH",
+          "supplementalCalendarIds": []
+        }
+      ]
+    },
+    "sharedServiceMemberships": {
+      "schemaVersion": 1,
+      "documentKind": "gtfs-shared-service-membership-claims",
+      "baseDraftSha256": "f02c3a1384e906f68e7a0a3e7ce142df036119aab17de1e546a2cd244accc3fd",
+      "claims": [
+        {
+          "providerPatternId": "1ce9a1c063f49066dc7f1fe2056693b5cd1388f393bf31420dbffa57e997662f",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "5899cd4bc20ac05869c3ad7171528b68882b333702542c368b0c00fe6de20e1b",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "0f43eed7dc304befc9ad7488a7c982c0c718829b34008107842940617303e369",
+          "serviceDates": [
+            "2026-11-14"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "67b339e26ed13c9d8244b112435b381256eb52643ba9dc5e1a0a1dead47e1fd9",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "1b7f45efe71761b9ab709088d8e45b7d5f74a9953c287afcb980929979fbc0d9",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "c3cd6ec7bb40af7c3f11f85ad577f747ff70ec3e310957e1ec0665613e438b8a",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "44030675a0bd5ec01cac75814fad34caa4c496e301355b9fabda60eedbb7b7c6",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "938192608ac5f6f66c37edfd46c3b9fa331734d211d3dccfe06f705626c865cb",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "e00a0b5d202e7c44bb26d5e32ab29181cc38dbe67ca8150c2855cea6cb0fddd4",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "632d8adfb65529eb1e6f10406c443dc5cc3e68be616d153517092439bd76a557",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "456077c4c6ad7a7e74935cd31a48cf64d16a2da05712b063a880f0dd6d826a71",
+          "serviceDates": [
+            "2026-11-21",
+            "2026-11-28"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "4a920575ff039976a03a96996712ba4ed7b5f157aec00a3556ac8181113ca273",
+          "serviceDates": [
+            "2026-11-14"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "196009f32654bc32ac5eba4630243f52ebec5fc755bb0c68ea1ab7bf821a1667",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "a9d6f5ac60f621765e0bf0345aee0d8c4afbdc5ee20e0f87c02b6cb202701da6",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "404d17487b6e460693cc93cbab57e24246b450cd68a2277103c3ed03648800d0",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "7e39a7d89ee6d2b54019f230f4332c76a0e9faedcc2cf1285db790fe2976e915",
+          "serviceDates": [
+            "2026-11-21",
+            "2026-11-28"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "dddc06327762891e2d1c8a71b3b6ee4ce2d5801eb1c56bb002cde29b143fd223",
+          "serviceDates": [
+            "2026-11-14"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "000127124977c15464ea576ab14c3c96da07de5eafdf03dd53dd0a84a5eaebc4",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "f9f1c42fd24f4e39967129d3f67bcbcfdb82369e6f15a3d36254722da67e593e",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "6e078d2875cd40f9e1e8be13d04a43ab2160cc94977982a00e0a1bf2e7bcc2ae",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "57a1004687a072928e9e523689d3686370178ae4a6da2bcc74611e43cbfb2669",
+          "serviceDates": [
+            "2026-11-21",
+            "2026-11-28"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "d679f7cb8ffeb43a0071315339d9afdac9413782ec840a47605f817def51801f",
+          "serviceDates": [
+            "2026-11-14"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "e445775accce8f0c998901b2e4bd1968d4f9edb4ba02bfeddb3de4cd2f4b1251",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "a577ffbe8707339970347bd3129d91190d25b4e180c1470d58d996564a7e07e4",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "6ed6d708862c2d2b22d1e134b804ba69328c2cc3f24b42fc63f679f22ade53fc",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "84b838936ffc81f90823faf36a1f9ac69097afab1c6304afdc8acc6eb3168ec5",
+          "serviceDates": [
+            "2026-11-21",
+            "2026-11-28"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "f1b9040d1eb339e47d3be927aed0e0a687ca72bc83e8d95f1b650ddae73c0cce",
+          "serviceDates": [
+            "2026-11-14"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "e5863a14e3dfe1a20ccf52b5e1132f7be9172380f3144bd72e2cb79b16046960",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "668289ca50fdc1d4131c94ee622eee5b61b502c85d081b32b15931a8b1281d0b",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "6bfb2f175be2f827e8e699da81ed10acde35eda5f903d45a5a96b86dfa0819ba",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "55edbb963361ea1e24bec9d972b7a20dffe66c5ff4387effd1c57800e4ed8b3e",
+          "serviceDates": [
+            "2026-11-21",
+            "2026-11-28"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "b38c3fe1c87dee59455d8f92481b2330933bf292455a79bb3c08dbbaae60d3e0",
+          "serviceDates": [
+            "2026-11-14"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "c4686d11ab71b16fe31b3f58ff41bea573e3b08ceced63e46ee582e8f47dea89",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "22af38a4590e73eb4ad6cee6b8c91866ce43dd5769d8d1873cfa05b8725c8c47",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "a74acc528905c820e769d9f944630da69b1d63d516e21095e4d7419a212f47c5",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "cca7de681050e74e8535d2587e908d6b4dc3022fa3e06fe912f0f532d2bdb6b8",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "4095c4bb4dcdd310d2db88b2aa04f72d6bfad0d8a77a78a2950d964dec590a1a",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "84087debc117684628e28ee5b0e0de1fb34498f1596f4de20e3c1be587468a71",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "6e35ef28e0592f1e8d67c014b5e1eb8b4a078cee42008b7d7a46a016d7d7f396",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "033d7f8864ed157ca7966af9d0d893d4823659305f36f2f4dfdaafcc1b1a35a5",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "92c2ec15b12d5820b9b4f21c16b550c74fda5a1ee85c93966ec7f0c7dfb44319",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "18f6c18411bedd47883378b4f107b1f5c5a3f983cf72dd5843ee3644b92bffdb",
+          "serviceDates": [
+            "2026-11-21",
+            "2026-11-28"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "decbeca7fb1cbb79db2d48e5d757ccadd2344f29a9fc2c2d867c1bc950425e96",
+          "serviceDates": [
+            "2026-11-14"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "ff6f0c919b6cccc51a6a34a826223e910019fc5126f1156de06e1e90666e476c",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "5c2a674327364cb136fa5a9920de87be92b23c356981f568f067994c2d9ffce6",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "e9942c9cf584e95d7389fe481070897ce61c7cb4b0ce12766116f45fe03e1fb2",
+          "serviceDates": [
+            "2026-11-21",
+            "2026-11-28"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "652ddbf76c0e9ffc54f0736543d136b66346e88c6562c3cafe05901c4d165b46",
+          "serviceDates": [
+            "2026-11-21",
+            "2026-11-28"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "19c6db5111808310157c457f5d5286507776f44554693f877d26c949460a8910",
+          "serviceDates": [
+            "2026-11-14"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "2ad3d81ef264c14b19f3fea2d0771b8ba024c8d87c676a51aa2c055bb52b4e46",
+          "serviceDates": [
+            "2026-11-14"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "5ee20d08e859786c0188639b1173661493c1d8cbffdaf59b7223fee5d5c55d15",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "675243d359b7cdad3cf363478f0774ca77a34a94b9badcbc7c147abc6893f7a2",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "c1b8e37cd4a69d4f6b482226b2cac7c01d12808116e18968c80d75b6df15f487",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-16",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "786402d2fa464a013e649d89aaea1c0e655f1d9e5f27c495e70420fd8a49dbfe",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CCW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CCW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "a81709c3cdd1919bb4e8d24176515424c18447146b8d05aea089ab822100ae5d",
+          "serviceDates": [
+            "2026-11-13",
+            "2026-11-17",
+            "2026-11-25"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "c2fd9a2ed73147f2bd93003ea3ccd71f8f64e226e7354c4facfa80aae3aeaec7",
+          "serviceDates": [
+            "2026-11-21",
+            "2026-11-28"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        },
+        {
+          "providerPatternId": "3475c97b7943c0591464142ca9c4e7dd73217b7a9682a6a44c7328e2bfdc3334",
+          "serviceDates": [
+            "2026-11-14"
+          ],
+          "target": {
+            "kind": "sharedServiceRevisions",
+            "members": [
+              {
+                "id": "CCL_BRANCH_CW",
+                "kind": "serviceRevision",
+                "match": "contiguousSegment",
+                "revisionId": "r_2026_stage_6"
+              },
+              {
+                "id": "CCL_LOOP_CW",
+                "kind": "serviceRevision",
+                "match": "cyclicSegment",
+                "revisionId": "r_2026_stage_6"
+              }
+            ]
+          },
+          "reason": "Automatic policy canonical-schedule-v2 (4e6d4e29cbb73802b947a9ca2606d61bed68aa39c4ad6e98b58a435412002954); https://github.com/foldaway/mrtdown-data/actions/runs/45011780846. Verified predecessor d37dd2f02e6c3057eaaa63308d5d49939357a1abd2d28751a564d3a78eceb2eb; source dates and canonical paths checked under this standing policy. Preserve reviewed access, terms and applicability."
+        }
+      ],
+      "serviceSelections": [
+        {
+          "providerPatternId": "059677d986650ab85e49cacda82f0d2d950918ab081d7998e92f385b5295dc87",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "target": {
+            "id": "EWL_MAIN_W_JKN",
+            "kind": "serviceRevision",
+            "match": "exact",
+            "revisionId": "r_2017_joo_koon_short_working"
+          },
+          "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+        },
+        {
+          "providerPatternId": "b5df8b301fa3177e40b42ae3c1ae428b0cf57bfffa89a56feefec8f63ee94adc",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "target": {
+            "id": "EWL_MAIN_W_JKN",
+            "kind": "serviceRevision",
+            "match": "exact",
+            "revisionId": "r_2017_joo_koon_short_working"
+          },
+          "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+        },
+        {
+          "providerPatternId": "04b84ac58ade0500e6bc1475500db5c1cb4c96c569654cc8df7be22082f65a56",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-13",
+            "2026-11-16",
+            "2026-11-17",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-25",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "id": "EWL_MAIN_W_JKN",
+            "kind": "serviceRevision",
+            "match": "exact",
+            "revisionId": "r_2017_joo_koon_short_working"
+          },
+          "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+        },
+        {
+          "providerPatternId": "7d9bd7ab9ff569e5aad652edb9c5846f8e262d73ac88c8a66d6212ba11be5ed0",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-13",
+            "2026-11-16",
+            "2026-11-17",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-25",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "id": "EWL_MAIN_W_JKN",
+            "kind": "serviceRevision",
+            "match": "exact",
+            "revisionId": "r_2017_joo_koon_short_working"
+          },
+          "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+        },
+        {
+          "providerPatternId": "40905c7f0c3f893d521b5de7f7cb728275fcf0a7025a0e37e43480b869b670fb",
+          "serviceDates": [
+            "2026-11-14",
+            "2026-11-21",
+            "2026-11-28"
+          ],
+          "target": {
+            "id": "EWL_MAIN_W_JKN",
+            "kind": "serviceRevision",
+            "match": "exact",
+            "revisionId": "r_2017_joo_koon_short_working"
+          },
+          "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+        },
+        {
+          "providerPatternId": "e30b11e13eb4739301199330b109100a1805f199663ddb557bd63bac7f970db5",
+          "serviceDates": [
+            "2026-11-14",
+            "2026-11-21",
+            "2026-11-28"
+          ],
+          "target": {
+            "id": "EWL_MAIN_W_JKN",
+            "kind": "serviceRevision",
+            "match": "exact",
+            "revisionId": "r_2017_joo_koon_short_working"
+          },
+          "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+        },
+        {
+          "providerPatternId": "c0d19b2aa1711f66b3f41c36e72a8202024f5a57a5a938421cedc0d462a26a83",
+          "serviceDates": [
+            "2026-11-09",
+            "2026-11-15",
+            "2026-11-22",
+            "2026-11-29"
+          ],
+          "target": {
+            "id": "EWL_MAIN_W_JKN",
+            "kind": "serviceRevision",
+            "match": "contiguousSegment",
+            "revisionId": "r_2017_joo_koon_short_working"
+          },
+          "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+        },
+        {
+          "providerPatternId": "265cde852e4134e88f50a0b33772bf8bcd7cbc80c9fec416c0bee6c3934fcbac",
+          "serviceDates": [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+            "2026-11-13",
+            "2026-11-16",
+            "2026-11-17",
+            "2026-11-18",
+            "2026-11-19",
+            "2026-11-20",
+            "2026-11-23",
+            "2026-11-24",
+            "2026-11-25",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-30"
+          ],
+          "target": {
+            "id": "EWL_MAIN_W_JKN",
+            "kind": "serviceRevision",
+            "match": "contiguousSegment",
+            "revisionId": "r_2017_joo_koon_short_working"
+          },
+          "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+        }
+      ]
+    }
+  },
+  "releaseEvidence": {
+    "schemaVersion": 1,
+    "documentKind": "gtfs-combined-timetable-release-evidence",
+    "releaseInstant": "2026-11-27T18:01:22.645Z",
+    "mappingApproval": {
+      "schemaVersion": 1,
+      "documentKind": "gtfs-combined-mapping-approval",
+      "identity": {
+        "source": {
+          "sourceManifest": {
+            "agency.txt": "4eeb1ce0bbc2d3c6fc3236fdbff216e09de31ef3137f23b93d2a8bd144a3cb39",
+            "calendar.txt": "f698e091da579472407de731601bb5edcb6d2a3a1129ef4fca6d86f54ebe02c7",
+            "calendar_dates.txt": "1464027caa42fef985934281b0573a211b90b2dc51e49989f68cbacb2bd0b2e9",
+            "feed_info.txt": "a22a98f993a3a7e36db57ed63d73fb1db396c872658a27dd68cb78ffdca81199",
+            "routes.txt": "ef14e523194470a09de94d18b7c920f516657e41aee0bc9493978568f13abd85",
+            "stop_times.txt": "b62ae145babad114342cf229049e00a2471852ee8018b9bbea02f8007eff9415",
+            "stops.txt": "577caf2542dc4ea6ba2a90c3333138c82a8580e6c280c9dfe8ff253faa3453e2",
+            "trips.txt": "0568dfa52d0b5cda08f364323dbb89921f393e9535521e5e629cf59b6557e0a1"
+          },
+          "canonicalCommit": "fa304182d193d8845a39bc38b8bf728d515a8f78",
+          "topology": {
+            "projectionVersion": 1,
+            "sha256": "8c39ec390ab2c4ae978442aac8f09cb6752719282e49203bef4cacd7aafe8245"
+          }
+        },
+        "captureSha256": "0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf",
+        "policySha256": "ff8f43b035385d1e49029b171f1385a5f801ce09d7635382e0090a2a096dc065",
+        "allocationPolicySha256": "f053aa0dad91be60acee10c2a707ef286a29a94327ab82050d05484a3eda17c0",
+        "holidayPolicySha256": "f1f2e508b0716958910dbaaf309a12536dca1fafd64e5ea7545f42d5bb858af1",
+        "reviewTopologySha256": "d010e452658dbdd42715ed0efb9aca7b6213cadb3e94d306bf8f3db155cd456e",
+        "supportedDatePopulationSha256": "20f154c548759c69074e1cfb17839368d4ce78de87881b44aa80ce5ecc74544f",
+        "applicabilityPolicySha256": "39bb67a3d770bafc8a1befb8bf6e6213d31f3ccd499802210b580d722ddfd0f5",
+        "sourceJourneyPolicySha256": "51c415029749627db2f965dc66d6236f5ae84610dcdecbba85177c55d055c5ae",
+        "sharedServiceMembershipsSha256": "7df992504aa398b0fd4a478a3f8fefb78be2e823a2c599fb184be4423d0b45aa",
+        "datePopulationSha256": "e62bf1094b046c7861d834a2bb690e2e762177499b0ac325e3ea98ff8b760de4"
+      },
+      "draftSha256": "37173de8c16b2ef59a78d0b40619f79fc4c662f784f2119bdf81bebe15a20d36",
+      "reviewer": "Duncan Leo",
+      "reason": "Maintainer approval on 2026-11-27 of the eight exact Joo Koon-ending pattern/date selections in docs/gtfs/reviews/joo-koon-service-selection-2026-11-27.md. The source route and stop sequence terminate at EW29; assign these 2,709 trip/date pairs solely to EWL_MAIN_W_JKN while retaining the 56 separately reviewed shared memberships and November applicability."
+    },
+    "releaseReview": {
+      "schemaVersion": 1,
+      "documentKind": "gtfs-timetable-release-review",
+      "manifestSha256": "8de88834536757d97f8b2f484e4497cc3fd9af83120e40f3bde7bc0450c4bebc",
+      "mappingApprovalSha256": "2cf6ac3a2ed5b1cb9cea01321e42ca00b92c64ec72dcf9ee44cf30a07dc7028c",
+      "reviewer": "Duncan Leo",
+      "reviewedAt": "2026-11-27T18:00:44.463Z",
+      "decision": "release-permitted",
+      "terms": {
+        "licence": {
+          "reference": "https://datamall.lta.gov.sg/content/datamall/en/SingaporeOpenDataLicence.html",
+          "sha256": "837c008a702a6e11c2cea5884bc39d07e9758cf10efe0c0e4389956e5f20f7d2"
+        },
+        "apiTerms": {
+          "reference": "https://datamall.lta.gov.sg/content/datamall/en/api-terms-of-service.html",
+          "sha256": "6769fd5f94090b3c20ae2ee5754c2408a645c97d699e329189dbed4be672bfc8"
+        }
+      },
+      "licenceVersion": "Singapore Open Data Licence v1.0",
+      "obligations": "Conspicuously attribute LTA DataMall and GTFSScheduleTrain, include the access date or time and source, and link to the current Singapore Open Data Licence v1.0.\nIdentify MRTDown mappings separately under CC-BY-4.0 and identify the export as an independently mapped scheduled snapshot. Avoid implied LTA endorsement or official status.\nKeep account credentials confidential and honor any confirmed endpoint, account or capture-specific conditions, including a release embargo if specified.",
+      "captureConditions": "Same verified LTA DataMall GTFSScheduleTrain endpoint and source ZIP as the completed release, with redistribution permission and unchanged licence/API terms. The maintainer confirms no newly communicated endpoint, account or capture-specific restriction and no release embargo for this capture. Any changed condition requires a new review.",
+      "effectiveAt": null
+    },
+    "currentTerms": {
+      "licence": {
+        "reference": "https://datamall.lta.gov.sg/content/datamall/en/SingaporeOpenDataLicence.html",
+        "sha256": "837c008a702a6e11c2cea5884bc39d07e9758cf10efe0c0e4389956e5f20f7d2"
+      },
+      "apiTerms": {
+        "reference": "https://datamall.lta.gov.sg/content/datamall/en/api-terms-of-service.html",
+        "sha256": "6769fd5f94090b3c20ae2ee5754c2408a645c97d699e329189dbed4be672bfc8"
+      }
+    }
+  },
+  "sourceReview": {
+    "schemaVersion": 1,
+    "documentKind": "scheduled-timetable-source-review",
+    "decision": "correction",
+    "predecessor": {
+      "manifestSha256": "8aece4578b324d12076a97730a62f678390e1f525b0612d69ff3d1c310ddf847",
+      "snapshotSha256": "0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf"
+    },
+    "successor": {
+      "manifestSha256": "8de88834536757d97f8b2f484e4497cc3fd9af83120e40f3bde7bc0450c4bebc",
+      "snapshotSha256": "0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf"
+    },
+    "reviewer": "Duncan Leo",
+    "reviewedAt": "2026-11-27T18:00:44.463Z",
+    "reason": "The unchanged verified November 2026 LTA schedule is rebound to the approved EWL Joo Koon short-working mapping after the canonical topology changed. Eight exact source patterns select EWL_MAIN_W_JKN for 2,709 trip/date pairs, with complete supported trip/date coverage. Correction revision increases from 1 to 2."
+  },
+  "releaseIndex": {
+    "manifestSha256": "8de88834536757d97f8b2f484e4497cc3fd9af83120e40f3bde7bc0450c4bebc",
+    "releaseSha256": "bc69dc3123e58f8bb770c113c1900f1eb0bc7d233b8f851972237cea143d9665"
+  },
+  "preparationPolicySha256": null
+}
