@@ -279,9 +279,11 @@ Authentication
 errors, malformed receipts, wrong identities and terminal import failures still
 stop immediately. A retry never substitutes for an exact successful receipt.
 
-A failed import or retention write leaves the baseline unchanged. If public
-Pages already differs from that baseline, further automated deployments stop.
-Recover by completing the failed exact import and retention, or by a reviewed
+A failed import or retention write leaves the baseline unchanged. When public
+Pages already shows the exact reviewed desired index in `releases/gtfs.json`, a
+retry can rebuild and redeploy that same release, then complete the site import
+and retention. A different public index still blocks deployment. Recover by
+completing the failed exact import and retention, or by a reviewed
 rollback using the [release](timetable-release.md) and
 [import](timetable-import.md) procedures. Do not just reset a hash or rerun a
 different capture over unfinished publication. Inspect Actions artifacts and

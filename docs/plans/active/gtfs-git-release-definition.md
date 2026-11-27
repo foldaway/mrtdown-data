@@ -32,6 +32,9 @@ The code is merged; the remaining work is an observed adoption proof.
 - [x] (2026-11-27) Prepare and review the first definition of the newly
   approved release. The local Pages build completed and the definition validates
   as a successor to the completed retained release.
+- [x] (2026-11-27) PR #511 merged. Pages published the exact approved index;
+  the site pull failed because production still pinned the predecessor. Retention
+  therefore stayed on the predecessor.
 - [ ] Observe the exact ordinary Pages deployment, site completion receipt,
   and retained baseline, then verify an ordinary data-only redeployment.
 
@@ -45,6 +48,9 @@ The bootstrap reader rebuilds the completed release against the canonical data
 being shipped, so a canonical service change also needs a newly reviewed release.
 The PR preview did not exercise this bootstrap path because no desired definition
 exists yet.
+The first published definition exposed a stale site deployment pin. The
+authenticated pull rejected the new release before import; the publication
+workflow needs an exact desired-release retry after that pin is corrected.
 
 ## Decision Log
 

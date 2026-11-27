@@ -15,8 +15,12 @@ import {
 } from './gtfs-release-store.mjs';
 import { materializeReleaseRecipe } from './materialize-gtfs-release-recipe.mjs';
 
-/** Never deploy an older retained baseline over an unfinished or externally changed release. */
-export async function assertPublishedBaseline(index, fetcher = fetch) {
+/** Permit retrying only the exact reviewed desired release after an interrupted handoff. */
+export async function assertPublishedBaseline(
+  index,
+  fetcher = fetch,
+  desiredIndex = null,
+) {
   const response = await fetcher(
     'https://data.mrtdown.org/combined-timetable-release-index.json',
     {
@@ -30,10 +34,14 @@ export async function assertPublishedBaseline(index, fetcher = fetch) {
   const published = CombinedTimetableReleaseIndexSchema.parse(
     await response.json(),
   );
-  if (!isDeepStrictEqual(published, index))
+  if (
+    !isDeepStrictEqual(published, index) &&
+    !isDeepStrictEqual(published, desiredIndex)
+  )
     throw new Error(
-      'Public release differs from the last completed release. Resolve the unfinished publication before proceeding.',
+      'Public release differs from the completed and reviewed desired releases. Resolve the unfinished publication before proceeding.',
     );
+  return isDeepStrictEqual(published, index) ? 'completed' : 'desired-pending';
 }
 
 if (
@@ -46,7 +54,6 @@ if (
   const current = await currentRetainedRelease(
     s3ReleaseStore({ bucket: env.GTFS_RELEASE_RETENTION_BUCKET }),
   );
-  await assertPublishedBaseline(current.record.releaseIndex);
   const desired = definitionPath
     ? await readReleaseDefinition(definitionPath)
     : null;
@@ -56,12 +63,22 @@ if (
         'docs/gtfs/operations/automatic-publication-policy.json',
       ),
     });
+    const publicState = await assertPublishedBaseline(
+      current.record.releaseIndex,
+      fetch,
+      desired.releaseIndex,
+    );
+    if (publicState === 'desired-pending')
+      console.log(
+        'Retrying the exact reviewed release already visible on Pages',
+      );
     await materializeReleaseDefinition(
       desired,
       outputDir,
       env.GTFS_SNAPSHOT_BASE_URL,
     );
   } else {
+    await assertPublishedBaseline(current.record.releaseIndex);
     if (definitionPath) assertBootstrapAllowed('.', definitionPath);
     await materializeReleaseRecipe(
       current.recipeBytes,

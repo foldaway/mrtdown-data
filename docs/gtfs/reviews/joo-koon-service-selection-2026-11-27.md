@@ -1,7 +1,8 @@
 # Joo Koon service selection and release review (27 November 2026)
 
 **Status: mapping, release, and source correction approved by Duncan Leo on 27
-November 2026; publication pending.** Keep the canonical
+November 2026. Pages published the reviewed bytes; site import and retention are
+pending recovery.** Keep the canonical
 `EWL_MAIN_W_JKN` service added by PR #510. The [Pages deployment](https://github.com/foldaway/mrtdown-data/actions/runs/45976035917)
 stopped before upload because the retained release's shared claims bind an older
 base mapping. The existing release approval cannot authorize a timetable built
@@ -80,6 +81,10 @@ whose SHA-256 is
 `bc69dc3123e58f8bb770c113c1900f1eb0bc7d233b8f851972237cea143d9665`.
 Its local Pages build completed with freshly fetched matching terms and a
 release instant of `2026-11-27T18:01:22.645Z`.
-Next, run the Pages preview against that definition,
-merge it, and verify public deployment, site import and retention. Updating the
-old approval hashes alone would not review the new service bindings.
+PR #511 passed its Pages preview and merged. The [main deployment](https://github.com/foldaway/mrtdown-data/actions/runs/46053925481)
+published and verified the exact release index, but its site pull failed because
+the production site still pinned the predecessor index. The site import rejected
+the request before changing timetable data; retention remained on the predecessor.
+Update the site's durable production pin to this approved index, then retry the
+exact release and require a completed site receipt before advancing retention.
+Updating old approval hashes alone would not review the new service bindings.
