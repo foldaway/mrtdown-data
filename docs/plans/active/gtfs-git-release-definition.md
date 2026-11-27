@@ -26,10 +26,12 @@ The code is merged; the remaining work is an observed adoption proof.
 - [x] (2026-11-27) Duncan Leo approved the [eight single-service selections](../../gtfs/reviews/joo-koon-service-selection-2026-11-27.md)
   for the Joo Koon patterns. The bound mapping approval produces candidate
   manifest `8de88834536757d97f8b2f484e4497cc3fd9af83120e40f3bde7bc0450c4bebc`.
-- [ ] Complete the release and `correction` source admission reviews with
-  correction revision 2.
-- [ ] Prepare and review the first definition of the newly approved release
-  using current source evidence and approvals.
+- [x] (2026-11-27) Duncan Leo approved the release and `correction` source
+  admission reviews with correction revision 2; freshly fetched LTA terms
+  matched the reviewed identities.
+- [x] (2026-11-27) Prepare and review the first definition of the newly
+  approved release. The local Pages build completed and the definition validates
+  as a successor to the completed retained release.
 - [ ] Observe the exact ordinary Pages deployment, site completion receipt,
   and retained baseline, then verify an ordinary data-only redeployment.
 

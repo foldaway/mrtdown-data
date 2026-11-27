@@ -1,7 +1,7 @@
-# Joo Koon service selection proposal (27 November 2026)
+# Joo Koon service selection and release review (27 November 2026)
 
-**Status: mapping approved by Duncan Leo on 27 November 2026; release review
-pending, not published.** Keep the canonical
+**Status: mapping, release, and source correction approved by Duncan Leo on 27
+November 2026; publication pending.** Keep the canonical
 `EWL_MAIN_W_JKN` service added by PR #510. The [Pages deployment](https://github.com/foldaway/mrtdown-data/actions/runs/45976035917)
 stopped before upload because the retained release's shared claims bind an older
 base mapping. The existing release approval cannot authorize a timetable built
@@ -54,7 +54,7 @@ The official LTA licence and API terms fetched at 17:56 UTC on 27 November
 matched the completed release's recorded hashes. Publication must fetch them
 again.
 
-The proposed release review names Duncan Leo as reviewer, the candidate manifest
+The approved release review names Duncan Leo as reviewer, the candidate manifest
 above, mapping approval SHA-256 above, and decision `release-permitted`. It records
 Singapore Open Data Licence v1.0 and the current official term hashes:
 `837c008a702a6e11c2cea5884bc39d07e9758cf10efe0c0e4389956e5f20f7d2`
@@ -63,19 +63,23 @@ for the licence and
 for API terms. It carries the prior attribution obligations: credit LTA DataMall
 and GTFSScheduleTrain with source access time and licence link; identify MRTDown
 mappings separately under CC-BY-4.0, avoid implied LTA endorsement, and protect
-account credentials. The proposed capture condition is that this is the same
+account credentials. The confirmed capture condition is that this is the same
 verified LTA train endpoint and ZIP with redistribution permission, unchanged
 terms, no newly communicated restriction and no release embargo (`effectiveAt:
-null`). The reviewer must confirm that condition before release.
+null`). Duncan Leo confirmed these conditions for this exact release.
 
-The proposed source admission review names Duncan Leo as reviewer and decision
+The approved source admission review names Duncan Leo as reviewer and decision
 `correction`, increasing correction revision 1 to 2. Its reason is that the
 unchanged verified source is rebound to the newly approved canonical Joo Koon
 mapping with full trip/date coverage. The predecessor manifest is
 `8aece4578b324d12076a97730a62f678390e1f525b0612d69ff3d1c310ddf847`;
 the successor is the candidate manifest above, with the same verified source
-SHA-256. The review timestamps will be set from the actual maintainer decision.
-After those reviews, create the first
-reviewed `releases/gtfs.json`, run the Pages preview against that definition,
+SHA-256. Both reviews were recorded at `2026-11-27T18:00:44.463Z`. The first
+reviewed `releases/gtfs.json` contains the exact approved release evidence,
+whose SHA-256 is
+`bc69dc3123e58f8bb770c113c1900f1eb0bc7d233b8f851972237cea143d9665`.
+Its local Pages build completed with freshly fetched matching terms and a
+release instant of `2026-11-27T18:01:22.645Z`.
+Next, run the Pages preview against that definition,
 merge it, and verify public deployment, site import and retention. Updating the
 old approval hashes alone would not review the new service bindings.
