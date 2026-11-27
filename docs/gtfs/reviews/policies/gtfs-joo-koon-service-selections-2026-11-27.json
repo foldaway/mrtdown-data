@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "documentKind": "gtfs-service-selection-proposal",
+  "sourceCaptureSha256": "0a5cf996038a088933b35d3ba81c76258b986946eed6ac628be4724d4f6e48bf",
+  "canonicalCommit": "fa304182d193d8845a39bc38b8bf728d515a8f78",
+  "baseDraftSha256": "f02c3a1384e906f68e7a0a3e7ce142df036119aab17de1e546a2cd244accc3fd",
+  "serviceSelections": [
+    {
+      "providerPatternId": "059677d986650ab85e49cacda82f0d2d950918ab081d7998e92f385b5295dc87",
+      "serviceDates": [
+        "2026-11-09",
+        "2026-11-15",
+        "2026-11-22",
+        "2026-11-29"
+      ],
+      "target": {
+        "id": "EWL_MAIN_W_JKN",
+        "kind": "serviceRevision",
+        "match": "exact",
+        "revisionId": "r_2017_joo_koon_short_working"
+      },
+      "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+    },
+    {
+      "providerPatternId": "b5df8b301fa3177e40b42ae3c1ae428b0cf57bfffa89a56feefec8f63ee94adc",
+      "serviceDates": [
+        "2026-11-09",
+        "2026-11-15",
+        "2026-11-22",
+        "2026-11-29"
+      ],
+      "target": {
+        "id": "EWL_MAIN_W_JKN",
+        "kind": "serviceRevision",
+        "match": "exact",
+        "revisionId": "r_2017_joo_koon_short_working"
+      },
+      "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+    },
+    {
+      "providerPatternId": "04b84ac58ade0500e6bc1475500db5c1cb4c96c569654cc8df7be22082f65a56",
+      "serviceDates": [
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-30"
+      ],
+      "target": {
+        "id": "EWL_MAIN_W_JKN",
+        "kind": "serviceRevision",
+        "match": "exact",
+        "revisionId": "r_2017_joo_koon_short_working"
+      },
+      "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+    },
+    {
+      "providerPatternId": "7d9bd7ab9ff569e5aad652edb9c5846f8e262d73ac88c8a66d6212ba11be5ed0",
+      "serviceDates": [
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-30"
+      ],
+      "target": {
+        "id": "EWL_MAIN_W_JKN",
+        "kind": "serviceRevision",
+        "match": "exact",
+        "revisionId": "r_2017_joo_koon_short_working"
+      },
+      "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+    },
+    {
+      "providerPatternId": "40905c7f0c3f893d521b5de7f7cb728275fcf0a7025a0e37e43480b869b670fb",
+      "serviceDates": [
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28"
+      ],
+      "target": {
+        "id": "EWL_MAIN_W_JKN",
+        "kind": "serviceRevision",
+        "match": "exact",
+        "revisionId": "r_2017_joo_koon_short_working"
+      },
+      "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+    },
+    {
+      "providerPatternId": "e30b11e13eb4739301199330b109100a1805f199663ddb557bd63bac7f970db5",
+      "serviceDates": [
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28"
+      ],
+      "target": {
+        "id": "EWL_MAIN_W_JKN",
+        "kind": "serviceRevision",
+        "match": "exact",
+        "revisionId": "r_2017_joo_koon_short_working"
+      },
+      "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+    },
+    {
+      "providerPatternId": "c0d19b2aa1711f66b3f41c36e72a8202024f5a57a5a938421cedc0d462a26a83",
+      "serviceDates": [
+        "2026-11-09",
+        "2026-11-15",
+        "2026-11-22",
+        "2026-11-29"
+      ],
+      "target": {
+        "id": "EWL_MAIN_W_JKN",
+        "kind": "serviceRevision",
+        "match": "contiguousSegment",
+        "revisionId": "r_2017_joo_koon_short_working"
+      },
+      "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+    },
+    {
+      "providerPatternId": "265cde852e4134e88f50a0b33772bf8bcd7cbc80c9fec416c0bee6c3934fcbac",
+      "serviceDates": [
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-30"
+      ],
+      "target": {
+        "id": "EWL_MAIN_W_JKN",
+        "kind": "serviceRevision",
+        "match": "contiguousSegment",
+        "revisionId": "r_2017_joo_koon_short_working"
+      },
+      "reason": "The supplied source journey terminates at Joo Koon (EW29), with Joo Koon as its headsign. Select the canonical westbound Joo Koon short working for these exact service dates."
+    }
+  ],
+  "correctionRevision": 2
+}
