@@ -154,14 +154,27 @@ describe('publication completion', () => {
     ).rejects.toThrow(/Timed out/);
   });
 
-  it('halts after an unfinished or external publication instead of deploying the old baseline', async () => {
+  it('retries only the reviewed desired release after an unfinished publication', async () => {
+    const desiredIndex = { ...index, releaseSha256: 'c'.repeat(64) };
     await expect(
-      assertPublishedBaseline(index, async () =>
-        response({ ...index, releaseSha256: 'c'.repeat(64) }),
+      assertPublishedBaseline(
+        index,
+        async () => response({ ...index, releaseSha256: 'd'.repeat(64) }),
+        desiredIndex,
       ),
     ).rejects.toThrow(/unfinished/);
     await expect(
-      assertPublishedBaseline(index, async () => response(index)),
-    ).resolves.toBeUndefined();
+      assertPublishedBaseline(index, async () => response(index), desiredIndex),
+    ).resolves.toBe('completed');
+    await expect(
+      assertPublishedBaseline(
+        index,
+        async () => response(desiredIndex),
+        desiredIndex,
+      ),
+    ).resolves.toBe('desired-pending');
+    await expect(
+      assertPublishedBaseline(index, async () => response(desiredIndex)),
+    ).rejects.toThrow(/unfinished/);
   });
 });
