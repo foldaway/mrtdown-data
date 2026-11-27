@@ -191,10 +191,12 @@ export function buildScheduledPlatformAssociationReview(
       : ScheduledSharedServiceMembershipClaimsSchema.parse(
           composition.sharedServiceMemberships,
         );
-  const sharedTargets = new Map<
-    string,
-    NonNullable<typeof memberships>['claims'][number]['target']
-  >();
+  type ClaimedTarget =
+    | NonNullable<typeof memberships>['claims'][number]['target']
+    | NonNullable<
+        NonNullable<typeof memberships>['serviceSelections']
+      >[number]['target'];
+  const claimedTargets = new Map<string, ClaimedTarget>();
   if (composition) {
     const prepared = reviewScheduledSourceJourneys(
       context,
@@ -211,26 +213,19 @@ export function buildScheduledPlatformAssociationReview(
       inputs.holidayCalendar,
     );
     if (memberships) {
-      const mapping = prepareSharedServiceMembershipClaims(
+      prepareSharedServiceMembershipClaims(
         sourceJourneyReview.mapping.mapping,
         memberships,
       );
-      const dateSets = new Map(
-        mapping.dateSets.map((set) => [set.id, set.serviceDates]),
-      );
-      for (const decision of mapping.decisions) {
-        if (
-          decision.kind !== 'pattern' ||
-          decision.target?.kind !== 'sharedServiceRevisions'
-        ) {
-          continue;
-        }
-        for (const date of dateSets.get(decision.dateSetId) ?? []) {
-          sharedTargets.set(
-            JSON.stringify([decision.providerId, date]),
-            decision.target,
+      for (const claim of [
+        ...memberships.claims,
+        ...(memberships.serviceSelections ?? []),
+      ]) {
+        for (const date of claim.serviceDates)
+          claimedTargets.set(
+            JSON.stringify([claim.providerPatternId, date]),
+            claim.target,
           );
-        }
       }
     }
     const topology = {
@@ -338,9 +333,7 @@ export function buildScheduledPlatformAssociationReview(
           item.disposition === 'matched',
       ),
     );
-    type Target =
-      | (typeof facts.candidates)[number]['target']
-      | NonNullable<typeof memberships>['claims'][number]['target'];
+    type Target = (typeof facts.candidates)[number]['target'] | ClaimedTarget;
     const cells = new Map<
       string,
       {
@@ -352,10 +345,10 @@ export function buildScheduledPlatformAssociationReview(
     >();
     for (const scope of facts.dateScopes.scopes) {
       for (const date of scope.serviceDates) {
-        const membership = sharedTargets.get(
+        const membership = claimedTargets.get(
           JSON.stringify([original.providerPatternId, date]),
         );
-        if (membership) {
+        if (membership?.kind === 'sharedServiceRevisions') {
           if (
             scope.candidates.length !== membership.members.length ||
             scope.candidates.some(
@@ -373,6 +366,15 @@ export function buildScheduledPlatformAssociationReview(
             reviewContext,
             original.stopIds,
             membership.members,
+          );
+        } else if (
+          membership &&
+          !scope.candidates.some((candidate) =>
+            sameTarget(candidate, membership),
+          )
+        ) {
+          throw new Error(
+            'Combined service selection must be a dated candidate',
           );
         }
         const target =

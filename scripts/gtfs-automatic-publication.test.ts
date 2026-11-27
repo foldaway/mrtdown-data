@@ -7,7 +7,10 @@ import { groupedScopedReviewDraftSha256 } from '../packages/fs/src/gtfs/groupedR
 import { createScheduledCombinedReview } from '../packages/fs/src/gtfs/scheduledCombinedReview.js';
 import { createScheduledSourceJourneyMappingDraft } from '../packages/fs/src/gtfs/scheduledSourceJourneys.js';
 import { assessAutomaticUpdate } from './gtfs-automatic-eligibility.mjs';
-import { checkAutomaticDailyChanges } from './gtfs-automatic-mapping.mjs';
+import {
+  checkAutomaticDailyChanges,
+  planAutomaticMappings,
+} from './gtfs-automatic-mapping.mjs';
 import {
   prepareAutomaticRelease,
   renderAutomaticPublicationReport,
@@ -228,6 +231,37 @@ function splitWeekdayCalendar(
 }
 
 describe('automatic GTFS publication', () => {
+  it('holds source successors that carry an explicit single-service selection', () => {
+    const args = fixture();
+    args.baselineInputs.sharedServiceMemberships.serviceSelections = [
+      {
+        providerPatternId:
+          args.baselineInputs.sharedServiceMemberships.claims[0]
+            .providerPatternId,
+        serviceDates: ['2026-01-01'],
+        target: {
+          kind: 'serviceRevision',
+          id: 'SVC',
+          revisionId: 'R',
+          match: 'exact',
+        },
+        reason: 'Reviewed single-service selection',
+      },
+    ];
+    expect(() =>
+      planAutomaticMappings(
+        args.baselineInputs,
+        structuredClone(args.baselineInputs),
+        'Synthetic successor',
+        (condition, reason) => {
+          if (!condition) throw new Error(reason);
+        },
+      ),
+    ).toThrow(
+      'Explicit single-service selections require a new mapping review',
+    );
+  });
+
   it('handles a future weekday split without approving or checking timings outside the existing window', () => {
     const args = fixture();
     args.policy = extendedPolicy;

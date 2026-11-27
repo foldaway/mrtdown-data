@@ -13,6 +13,15 @@ import {
 } from './scopedReviewContract.js';
 import { SharedServiceTargetSchema } from './sharedServiceTarget.js';
 
+const SelectedServiceRevisionTargetSchema = z
+  .object({
+    kind: z.literal('serviceRevision'),
+    id: z.string().min(1),
+    revisionId: z.string().min(1),
+    match: z.enum(['exact', 'contiguousSegment', 'cyclicSegment']),
+  })
+  .strict();
+
 export const ScheduledSharedServiceMembershipClaimsSchema = z
   .object({
     schemaVersion: z.literal(1),
@@ -36,6 +45,25 @@ export const ScheduledSharedServiceMembershipClaimsSchema = z
           .strict(),
       )
       .min(1),
+    serviceSelections: z
+      .array(
+        z
+          .object({
+            providerPatternId: z.string().min(1),
+            serviceDates: z
+              .array(z.iso.date())
+              .min(1)
+              .refine(
+                (dates) => new Set(dates).size === dates.length,
+                'Selection dates must be distinct',
+              ),
+            target: SelectedServiceRevisionTargetSchema,
+            reason: z.string().trim().min(1),
+          })
+          .strict(),
+      )
+      .min(1)
+      .optional(),
   })
   .strict();
 
@@ -55,7 +83,7 @@ export function prepareSharedServiceMembershipClaims(
     draft.dateSets.map((set) => [set.id, set.serviceDates]),
   );
   const seen = new Set<string>();
-  for (const claim of claims.claims) {
+  for (const claim of [...claims.claims, ...(claims.serviceSelections ?? [])]) {
     const remaining = new Set(claim.serviceDates);
     for (const date of claim.serviceDates) {
       const key = JSON.stringify([claim.providerPatternId, date]);

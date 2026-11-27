@@ -57,6 +57,10 @@ tests, then requires:
   complete bundle verifier must find zero excluded or unassigned supported
   trip/date pairs.
 
+An approved release with explicit single-service selections requires a new
+mapping review for a source successor. Automatic preparation holds it rather than
+turning a selected short working into a shared service membership.
+
 Changed access, stale sources, expired windows, changed terms and uncertain
 mappings require review. A duplicate source
 ZIP is a no-op. The policy does not extend November's approval into December.
