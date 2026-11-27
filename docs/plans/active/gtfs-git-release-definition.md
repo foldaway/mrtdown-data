@@ -23,9 +23,11 @@ The code is merged; the remaining work is an observed adoption proof.
 - [x] (2026-11-27) Trace the [failed Pages run](https://github.com/foldaway/mrtdown-data/actions/runs/45976035917)
   after PR #510 to the retained shared-claim digest. The new Joo Koon service
   makes eight source patterns ambiguous across 2,709 November trip/date pairs.
-- [ ] Review the [proposed single-service selections](../../gtfs/reviews/joo-koon-service-selection-2026-11-27.md)
-  for those eight Joo Koon patterns, then prepare new mapping, release and
-  `correction` source admission approvals with correction revision 2.
+- [x] (2026-11-27) Duncan Leo approved the [eight single-service selections](../../gtfs/reviews/joo-koon-service-selection-2026-11-27.md)
+  for the Joo Koon patterns. The bound mapping approval produces candidate
+  manifest `8de88834536757d97f8b2f484e4497cc3fd9af83120e40f3bde7bc0450c4bebc`.
+- [ ] Complete the release and `correction` source admission reviews with
+  correction revision 2.
 - [ ] Prepare and review the first definition of the newly approved release
   using current source evidence and approvals.
 - [ ] Observe the exact ordinary Pages deployment, site completion receipt,

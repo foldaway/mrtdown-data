@@ -1,6 +1,7 @@
 # Joo Koon service selection proposal (27 November 2026)
 
-**Status: proposed, not approved or published.** Keep the canonical
+**Status: mapping approved by Duncan Leo on 27 November 2026; release review
+pending, not published.** Keep the canonical
 `EWL_MAIN_W_JKN` service added by PR #510. The [Pages deployment](https://github.com/foldaway/mrtdown-data/actions/runs/45976035917)
 stopped before upload because the retained release's shared claims bind an older
 base mapping. The existing release approval cannot authorize a timetable built
@@ -41,15 +42,40 @@ It has 149,100 supported trip/date pairs, zero unresolved pairs and zero
 exclusions. The full assignment artifact accounts for all 149,100 pairs with
 zero gaps; 2,709 pairs belong to `EWL_MAIN_W_JKN`. Its inspection artifact is
 `e5e3ae7f4c59f45c78d46441012e79a2f6db480febf5e1c3358152d8135ed3a4`.
-That digest is **not** a publishable release identity because no new mapping
-approval was supplied. The official LTA licence and API terms fetched on
-27 November matched the completed release's recorded hashes; publication must
-fetch them again.
+That digest preceded mapping approval and is **not** the approved release
+identity. The maintainer approved the eight exact selections on 27 November.
+The bound mapping approval has SHA-256
+`2cf6ac3a2ed5b1cb9cea01321e42ca00b92c64ec72dcf9ee44cf30a07dc7028c`.
+Its candidate manifest is
+`8de88834536757d97f8b2f484e4497cc3fd9af83120e40f3bde7bc0450c4bebc`,
+with correction revision 2 and timetable SHA-256
+`512f81584b9d89aa4cce2d6db8912330efa81bf74b9ccd431a8c69353f8bef23`.
+The official LTA licence and API terms fetched at 17:56 UTC on 27 November
+matched the completed release's recorded hashes. Publication must fetch them
+again.
 
-Review the eight exact selections and scope before recording a new mapping
-approval and release review. Because the source ZIP is unchanged while the
-mapping changes, source admission also requires a `correction` review and an
-increase from correction revision 1 to 2. Then create the first
+The proposed release review names Duncan Leo as reviewer, the candidate manifest
+above, mapping approval SHA-256 above, and decision `release-permitted`. It records
+Singapore Open Data Licence v1.0 and the current official term hashes:
+`837c008a702a6e11c2cea5884bc39d07e9758cf10efe0c0e4389956e5f20f7d2`
+for the licence and
+`6769fd5f94090b3c20ae2ee5754c2408a645c97d699e329189dbed4be672bfc8`
+for API terms. It carries the prior attribution obligations: credit LTA DataMall
+and GTFSScheduleTrain with source access time and licence link; identify MRTDown
+mappings separately under CC-BY-4.0, avoid implied LTA endorsement, and protect
+account credentials. The proposed capture condition is that this is the same
+verified LTA train endpoint and ZIP with redistribution permission, unchanged
+terms, no newly communicated restriction and no release embargo (`effectiveAt:
+null`). The reviewer must confirm that condition before release.
+
+The proposed source admission review names Duncan Leo as reviewer and decision
+`correction`, increasing correction revision 1 to 2. Its reason is that the
+unchanged verified source is rebound to the newly approved canonical Joo Koon
+mapping with full trip/date coverage. The predecessor manifest is
+`8aece4578b324d12076a97730a62f678390e1f525b0612d69ff3d1c310ddf847`;
+the successor is the candidate manifest above, with the same verified source
+SHA-256. The review timestamps will be set from the actual maintainer decision.
+After those reviews, create the first
 reviewed `releases/gtfs.json`, run the Pages preview against that definition,
 merge it, and verify public deployment, site import and retention. Updating the
 old approval hashes alone would not review the new service bindings.
