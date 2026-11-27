@@ -41,6 +41,27 @@ Timing validation checks service paths independently of station layouts; it does
 not establish service-to-platform assignments. Optional coverage reporting and
 comparison with exact GTFS remain [follow-up work](../plans/tech-debt.md#station-timing-coverage).
 
+## EWL westbound destinations
+
+`EWL_MAIN_W` keeps its historical revisions and current Pasir Ris–Tuas Link
+path. `EWL_MAIN_W_JKN` represents recurring westbound trips terminating at Joo
+Koon. The short working began with passenger service on the Tuas West Extension
+on 2017-06-18: the [opening speech](https://www.nas.gov.sg/archivesonline/data/pdfdoc/20170616003/2M%20Ng%20Chee%20Meng%20Speech%20for%20TWE%20Opening%20Ceremony.pdf)
+dates the opening, [contemporary reporting of SMRT's service announcement](https://www.straitstimes.com/singapore/transport/trains-at-4-new-stations-on-east-west-lines-tuas-west-extension-to-start-plying)
+describes alternate trains continuing past Joo Koon, and a
+[June 2017 on-site account](https://railtravelstation.com/tuas-west-extension-gul-circle-tuas-crescent-tuas-west-road-and-tuas-link/)
+observes the two destinations. The checked
+[25 November 2026 LTA GTFS capture](../gtfs/captures/b7b98314655137f0c499897d17a734abe42b76d15a47f5104db32778583fac4c.md)
+also contains distinct Joo Koon and Tuas Link headsigns and stopping paths.
+The Joo Koon operating hours enclose the 2026 capture's first origin departure
+and last terminal arrival; the weekend range covers both Saturday and Sunday.
+They do not establish exact hours for earlier years.
+
+Existing `firstLastTrain` entries are retained under `EWL_MAIN_W`; they have not
+been reclassified by destination. Confirm destination-specific passenger timing
+sources before adding `EWL_MAIN_W_JKN` entries. GTFS mapping proposals from
+earlier canonical commits also need reassessment against the new service ID.
+
 ## Licenses and sources
 
 | Material | License or terms |

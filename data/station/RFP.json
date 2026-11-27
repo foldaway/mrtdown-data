@@ -240,10 +240,11 @@
       {
         "id": "RFP_EWL_C",
         "label": "C",
-        "lastUpdated": "2026-07-21",
+        "lastUpdated": "2026-11-27",
         "lineId": "EWL",
         "serviceIds": [
-          "EWL_MAIN_W"
+          "EWL_MAIN_W",
+          "EWL_MAIN_W_JKN"
         ]
       }
     ]
