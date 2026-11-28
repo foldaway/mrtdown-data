@@ -19,6 +19,7 @@ const execFileAsync = promisify(execFile);
 const generatedArchivePattern = /[\\/]archive\.(?:tar\.gz|zip)$/;
 const generatedIndexPattern = /[\\/](?:manifest\.json|index\.html)$/;
 const combinedReleaseIndexName = 'combined-timetable-release-index.json';
+const combinedPublicationName = 'combined-timetable-publication.json';
 
 function usage() {
   return `Usage:
@@ -133,6 +134,7 @@ function isExcludedDataSourcePath(sourceDataDir, source) {
     'scheduled-timetable',
     'combined-timetable',
     combinedReleaseIndexName,
+    combinedPublicationName,
   ].includes(firstSegment);
 }
 

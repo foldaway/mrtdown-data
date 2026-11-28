@@ -24,3 +24,11 @@ publishes from `main`, reading the reviewed desired GTFS definition from
 `releases/gtfs.json` when present, then asks [mrtdown-site](https://github.com/foldaway/mrtdown-site)
 to import the new archive. The site serves the runtime API. See the workflow
 for the required site URL and token secrets.
+
+For a combined timetable, Pages also publishes
+`combined-timetable-release-index.json` and
+`combined-timetable-publication.json` at its root. The second file pairs the
+verified index with its exact source admission review. Both are outside
+`archive.zip`, so a site pull can discover the current release independently
+of the archive. The deployment checks the public files before requesting an
+import and advances retention only after the site reports that exact release.

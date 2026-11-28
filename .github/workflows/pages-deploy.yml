@@ -196,7 +196,7 @@ jobs:
           fi
           node scripts/prepare-pages-site-pull.mjs pages-dist \
             "$RUNNER_TEMP/combined-release/release-index.json" \
-            "$RUNNER_TEMP/pages-site-pull.json" "${review[@]}"
+            "pages-dist/combined-timetable-publication.json" "${review[@]}"
 
       - uses: actions/configure-pages@v6
         if: steps.mode.outputs.run == 'true'
@@ -219,7 +219,7 @@ jobs:
         run: |
           for _ in {1..12}; do
             ready=true
-            for name in manifest.json combined-timetable-release-index.json archive.zip; do
+            for name in manifest.json combined-timetable-release-index.json combined-timetable-publication.json archive.zip; do
               if ! curl --fail --silent --max-time 10 --proto '=https' \
                 --output "$RUNNER_TEMP/live-$name" "${PAGES_URL%/}/$name" ||
                 ! cmp -s "pages-dist/$name" "$RUNNER_TEMP/live-$name"; then
@@ -253,7 +253,7 @@ jobs:
 
           payload=()
           if [[ "$COMBINED_TIMETABLE_ENABLED" == true ]]; then
-            payload=(--json "@$RUNNER_TEMP/pages-site-pull.json")
+            payload=(--json "@pages-dist/combined-timetable-publication.json")
           fi
           status=$(curl --fail --show-error --silent --max-time 30 \
             --user-agent "mrtdown-data-pages-deploy/1.0" \
@@ -275,7 +275,7 @@ jobs:
           MRTDOWN_SITE_INTERNAL_API_TOKEN: ${{ secrets.MRTDOWN_SITE_INTERNAL_API_TOKEN }}
         run: >-
           node scripts/wait-pages-site-pull.mjs
-          "$RUNNER_TEMP/site-pull-response.json" "$RUNNER_TEMP/pages-site-pull.json"
+          "$RUNNER_TEMP/site-pull-response.json" "pages-dist/combined-timetable-publication.json"
 
       - name: Retain reproducible current and previous releases
         if: steps.mode.outputs.run == 'true' && env.COMBINED_TIMETABLE_ENABLED == 'true' && vars.MRTDOWN_GTFS_RELEASE_RETENTION_ENABLED == 'true'

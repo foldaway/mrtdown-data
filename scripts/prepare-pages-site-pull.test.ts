@@ -27,7 +27,7 @@ async function fixture() {
   const pages = join(root, 'pages-dist');
   const approved = join(root, 'combined-release/release-index.json');
   const sourceReview = join(root, 'source-review.json');
-  const payload = join(root, 'pull.json');
+  const payload = join(pages, 'combined-timetable-publication.json');
   const bin = join(root, 'bin');
   await Promise.all([
     mkdir(join(pages, 'combined-timetable'), { recursive: true }),
@@ -124,6 +124,12 @@ test('bootstrap packaging and site handoff accept equivalent compact and pretty 
   expect(
     JSON.parse(await readFile(h.payload, 'utf8')).combinedReleaseIndex,
   ).toEqual(h.index);
+  expect(
+    JSON.parse(await readFile(h.payload, 'utf8')).sourceReview.successor,
+  ).toEqual({
+    manifestSha256: h.index.manifestSha256,
+    snapshotSha256: 'a'.repeat(64),
+  });
 });
 
 test.each([

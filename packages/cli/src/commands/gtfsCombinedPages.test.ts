@@ -152,6 +152,10 @@ describe('Pages combined timetable integration', () => {
   it('packages the approved service dates and emits the release index outside both archives', async () => {
     const { root, options, topology, manifestSha256, config, fetcher } =
       await fixture({ reviewedBoarding: true });
+    await writeFile(
+      join(options.dataDir, 'combined-timetable-publication.json'),
+      '{"untrusted":true}',
+    );
     await buildPagesArtifact(options);
     const read = (path: string) => readFile(join(options.outDir, path));
     const index = JSON.parse((await read(indexName)).toString('utf8'));
@@ -197,6 +201,12 @@ describe('Pages combined timetable integration', () => {
       'data/combined-timetable/timetable.json',
     ]);
     expect(zip[`data/${indexName}`]).toBeUndefined();
+    expect(zip['data/combined-timetable-publication.json']).toBeUndefined();
+    await expect(
+      read('combined-timetable-publication.json'),
+    ).rejects.toMatchObject({
+      code: 'ENOENT',
+    });
     expect((await read('manifest.json')).toString('utf8')).not.toContain(
       index.releaseSha256,
     );
