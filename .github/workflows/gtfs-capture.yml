@@ -227,7 +227,7 @@ jobs:
           git show "$GITHUB_SHA:scripts/archive-gtfs-capture-review.mjs" > "$RUNNER_TEMP/archive-gtfs-capture-review.mjs"
           node "$RUNNER_TEMP/archive-gtfs-capture-review.mjs" \
             "$RUNNER_TEMP/gtfs-review" "$RUNNER_TEMP/gtfs-capture-receipt" "$SNAPSHOT_SHA256"
-      - name: Preserve trusted capture merge code
+      - name: Preserve trusted no-op merge code
         run: git show "$GITHUB_SHA:scripts/merge-gtfs-noop-review.mjs" > "$RUNNER_TEMP/merge-gtfs-noop-review.mjs"
       - name: Open snapshot review
         id: review
