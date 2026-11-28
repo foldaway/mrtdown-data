@@ -501,6 +501,15 @@ export async function prepareAutomaticReleaseFiles({
     coverage: result.coverage,
     serviceDateRange: result.serviceDateRange,
     provenance: result.provenance,
+    preparation: {
+      captureSha256: candidate.capture.sha256,
+      captureRetrievedAt: candidate.capture.retrieved_at,
+      baselineCaptureSha256: previous.capture.sha256,
+      baselineReleaseIndex: baselineIndex,
+      serviceDateRange: baselineInputs.applicabilityPolicy.serviceDateRange,
+      checkedAt: now,
+      runUrl,
+    },
   };
 }
 

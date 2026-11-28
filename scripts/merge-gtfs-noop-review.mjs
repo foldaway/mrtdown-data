@@ -8,6 +8,8 @@ const digest = /^[a-f0-9]{64}$/;
 const commit = /^[a-f0-9]{40}$/;
 const publication =
   '## Publication approval\n\nNo publication needed. The completed timetable and desired definition remain unchanged. This PR records capture evidence only.';
+const readyPublication =
+  '## Publication approval\n\nThis PR updates releases/gtfs.json. Merging makes this the desired timetable; the standard Pages workflow builds and publishes its exact reviewed release alongside the other data.';
 class Ineligible extends Error {}
 function requireCheck(condition, reason) {
   if (!condition) throw new Ineligible(reason);
@@ -25,8 +27,36 @@ const singaporeDate = (now) => {
 };
 
 /** The input is the preparation artifact of this trusted run, never the PR body. */
-export function validateNoopPreparation(report, context, now) {
+function validateBasePreparation(report, context, now) {
   const preparation = report.preparation;
+  requireCheck(
+    preparation?.captureSha256 === context.captureSha256 &&
+      digest.test(preparation.baselineCaptureSha256) &&
+      preparation.runUrl ===
+        `https://github.com/${context.repository}/actions/runs/${context.runId}`,
+    'Preparation belongs to another capture or run.',
+  );
+  const checkedAt = Date.parse(preparation.checkedAt);
+  const capturedAt = Date.parse(preparation.captureRetrievedAt);
+  requireCheck(
+    Number.isFinite(checkedAt) &&
+      checkedAt <= now &&
+      now - checkedAt <= 3600000 &&
+      Number.isFinite(capturedAt) &&
+      capturedAt <= checkedAt &&
+      now - capturedAt <= 72 * 3600000,
+    'Preparation or capture is stale.',
+  );
+  const range = preparation.serviceDateRange;
+  const today = singaporeDate(now);
+  requireCheck(
+    range && today >= range.startDate && today < range.endDateExclusive,
+    'The approved service-date window is inactive.',
+  );
+  return preparation;
+}
+
+export function validateNoopPreparation(report, context, now) {
   requireCheck(
     report.decision === 'no-op' &&
       digest.test(report.retainedManifestSha256) &&
@@ -44,34 +74,13 @@ export function validateNoopPreparation(report, context, now) {
     ].some((key) => key in report),
     'A successor release cannot be auto-merged.',
   );
-  requireCheck(
-    preparation?.captureSha256 === context.captureSha256 &&
-      digest.test(preparation.baselineCaptureSha256) &&
-      preparation.runUrl ===
-        `https://github.com/${context.repository}/actions/runs/${context.runId}`,
-    'Preparation belongs to another capture or run.',
-  );
+  const preparation = validateBasePreparation(report, context, now);
+  const checkedAt = Date.parse(preparation.checkedAt);
+  const range = preparation.serviceDateRange;
   requireCheck(
     preparation.baselineReleaseIndex?.manifestSha256 ===
       report.retainedManifestSha256,
     'Retained release identity differs.',
-  );
-  const checkedAt = Date.parse(preparation.checkedAt);
-  const capturedAt = Date.parse(preparation.captureRetrievedAt);
-  requireCheck(
-    Number.isFinite(checkedAt) &&
-      checkedAt <= now &&
-      now - checkedAt <= 3600000 &&
-      Number.isFinite(capturedAt) &&
-      capturedAt <= checkedAt &&
-      now - capturedAt <= 72 * 3600000,
-    'No-op preparation or capture is stale.',
-  );
-  const range = preparation.serviceDateRange;
-  const today = singaporeDate(now);
-  requireCheck(
-    range && today >= range.startDate && today < range.endDateExclusive,
-    'The approved service-date window is inactive.',
   );
   const proof = report.retainedTimetableProof;
   if (proof) {
@@ -100,10 +109,33 @@ export function validateNoopPreparation(report, context, now) {
   return preparation;
 }
 
+export function validateReadyPreparation(report, context, now) {
+  requireCheck(
+    report.decision === 'ready' &&
+      digest.test(report.releaseIndex?.manifestSha256) &&
+      digest.test(report.releaseIndex?.releaseSha256) &&
+      report.coverage?.unassignedTripDateCount === 0 &&
+      Array.isArray(report.coverage?.gaps) &&
+      report.coverage.gaps.length === 0 &&
+      report.coverage?.assignedTripDateCount > 0 &&
+      Array.isArray(report.reasons) &&
+      report.reasons.length === 0,
+    'No complete ready release result.',
+  );
+  const preparation = validateBasePreparation(report, context, now);
+  requireCheck(
+    isDeepStrictEqual(report.serviceDateRange, preparation.serviceDateRange) &&
+      !isDeepStrictEqual(report.releaseIndex, preparation.baselineReleaseIndex),
+    'Ready release identity or service-date range differs.',
+  );
+  return preparation;
+}
+
 /** Require the exact bounded receipt produced after this run verified durable assets. */
 export function validateNoopEvidence(
   { actualJson, freshJson, actualMarkdown, freshMarkdown, automaticMarkdown },
   context,
+  expectedPublication = publication,
 ) {
   requireCheck(
     Buffer.byteLength(
@@ -177,15 +209,16 @@ export function validateNoopEvidence(
   );
   requireCheck(
     `## Automatic publication\n${parts[1]}`.trim() ===
-      `${automaticMarkdown.trim()}\n\n${publication}`,
+      `${automaticMarkdown.trim()}\n\n${expectedPublication}`,
     'Committed no-op report differs from the preparation artifact.',
   );
 }
 
 /** Immediate expected-head merge only; no queued auto-merge or protection bypass. */
-export async function mergeNoopReview({
+export async function mergeVerifiedCaptureReview({
   context,
   report,
+  readyDefinition,
   preparedCommit,
   preparedDefinition,
   evidence,
@@ -216,7 +249,10 @@ export async function mergeNoopReview({
         new RegExp(`^${prefix}-\\d+-\\d+$`).test(context.branch),
       'Unexpected review branch.',
     );
-    const preparation = validateNoopPreparation(report, context, clock());
+    const ready = readyDefinition !== undefined;
+    const preparation = ready
+      ? validateReadyPreparation(report, context, clock())
+      : validateNoopPreparation(report, context, clock());
     requireCheck(
       preparedCommit === context.workflowSha &&
         snapshot.baseSha === preparedCommit &&
@@ -227,12 +263,14 @@ export async function mergeNoopReview({
     const allowed = new Set([
       `docs/gtfs/captures/${context.captureSha256}.md`,
       `docs/gtfs/captures/${context.captureSha256}.json`,
+      ...(ready ? ['releases/gtfs.json'] : []),
     ]);
     requireCheck(
       snapshot.files.length > 0 &&
-        snapshot.files.length <= 2 &&
+        snapshot.files.length <= (ready ? 3 : 2) &&
         new Set(snapshot.files.map(({ path }) => path)).size ===
           snapshot.files.length &&
+        (!ready || allowed.size === snapshot.files.length) &&
         snapshot.files.every(
           ({ path, status, mode }) =>
             allowed.has(path) &&
@@ -241,7 +279,38 @@ export async function mergeNoopReview({
         ),
       'The PR contains changes outside its capture evidence.',
     );
-    validateNoopEvidence(evidence, context);
+    if (ready) {
+      requireCheck(
+        typeof readyDefinition.actual === 'string' &&
+          readyDefinition.actual === readyDefinition.prepared,
+        'Committed release definition differs from the trusted preparation.',
+      );
+      let definition;
+      try {
+        definition = JSON.parse(readyDefinition.prepared);
+      } catch {
+        throw new Ineligible('Prepared release definition is malformed.');
+      }
+      requireCheck(
+        definition.documentKind === 'gtfs-release-definition' &&
+          definition.capture?.sha256 === context.captureSha256 &&
+          definition.sourceReview?.successor?.snapshotSha256 ===
+            context.captureSha256 &&
+          definition.sourceReview?.successor?.manifestSha256 ===
+            report.releaseIndex.manifestSha256 &&
+          definition.sourceReview?.predecessor?.manifestSha256 ===
+            preparation.baselineReleaseIndex?.manifestSha256 &&
+          definition.sourceReview?.predecessor?.snapshotSha256 ===
+            preparation.baselineCaptureSha256 &&
+          isDeepStrictEqual(definition.releaseIndex, report.releaseIndex),
+        'Prepared release definition differs from the checked release.',
+      );
+    }
+    validateNoopEvidence(
+      evidence,
+      context,
+      ready ? readyPublication : publication,
+    );
     const prPath = `/repos/${context.repository}/pulls/${context.prNumber}`;
     // The PR API may retain its original base.sha. Live main is checked via Git.
     const checkPr = (pr) => {
@@ -303,12 +372,15 @@ export async function mergeNoopReview({
     // GitHub only atomically guards the head; refresh manual-review signals last.
     checkReviews(await api(reviewsPath));
     checkPr(await api(prPath));
-    validateNoopPreparation(report, context, clock());
+    if (ready) validateReadyPreparation(report, context, clock());
+    else validateNoopPreparation(report, context, clock());
     const result = await api(`${prPath}/merge`, {
       sha: context.headSha,
       merge_method: 'squash',
-      commit_title: `chore(gtfs): retain no-op capture ${context.captureSha256.slice(0, 12)}`,
-      commit_message: `Verified evidence only; preserve the published timetable and history.\n\nInspection: https://github.com/${context.repository}/actions/runs/${context.runId}\n\nCo-Authored-By: Codex <noreply@openai.com>`,
+      commit_title: ready
+        ? `chore(gtfs): publish checked capture ${context.captureSha256.slice(0, 12)}`
+        : `chore(gtfs): retain no-op capture ${context.captureSha256.slice(0, 12)}`,
+      commit_message: `${ready ? 'Verified routine timetable release.' : 'Verified evidence only; preserve the published timetable and history.'}\n\nInspection: https://github.com/${context.repository}/actions/runs/${context.runId}\n\nCo-Authored-By: Codex <noreply@openai.com>`,
     });
     return {
       merged: result.merged === true,
@@ -320,6 +392,8 @@ export async function mergeNoopReview({
     throw error;
   }
 }
+
+export const mergeNoopReview = mergeVerifiedCaptureReview;
 
 if (
   process.argv[1] &&
@@ -417,9 +491,25 @@ if (
     if (!response.ok) throw new Error(`GitHub API failed (${response.status})`);
     return response.json();
   };
-  const result = await mergeNoopReview({
+  const ready = env.AUTO_MERGE_READY === 'true';
+  const result = await mergeVerifiedCaptureReview({
     context,
     report: await json(join(automatic, 'automatic-publication.json')),
+    ...(ready
+      ? {
+          readyDefinition: {
+            actual: execFileSync(
+              'git',
+              ['show', `${headSha}:releases/gtfs.json`],
+              { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] },
+            ),
+            prepared: await readFile(
+              join(automatic, 'release-definition.json'),
+              'utf8',
+            ),
+          },
+        }
+      : {}),
     preparedCommit: (
       await readFile(join(automatic, 'preparation-commit.txt'), 'utf8')
     ).trim(),
@@ -458,7 +548,7 @@ if (
       return response.json();
     },
   });
-  const summary = `GTFS no-op evidence ${result.merged ? 'merged' : 'left open'}: ${result.reason}`;
+  const summary = `GTFS ${ready ? 'routine release' : 'no-op evidence'} ${result.merged ? 'merged' : 'left open'}: ${result.reason}`;
   console.log(summary);
   if (env.GITHUB_STEP_SUMMARY)
     await appendFile(env.GITHUB_STEP_SUMMARY, `${summary}\n`);
