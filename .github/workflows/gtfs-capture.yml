@@ -227,7 +227,7 @@ jobs:
           git show "$GITHUB_SHA:scripts/archive-gtfs-capture-review.mjs" > "$RUNNER_TEMP/archive-gtfs-capture-review.mjs"
           node "$RUNNER_TEMP/archive-gtfs-capture-review.mjs" \
             "$RUNNER_TEMP/gtfs-review" "$RUNNER_TEMP/gtfs-capture-receipt" "$SNAPSHOT_SHA256"
-      - name: Preserve trusted no-op merge code
+      - name: Preserve trusted capture merge code
         run: git show "$GITHUB_SHA:scripts/merge-gtfs-noop-review.mjs" > "$RUNNER_TEMP/merge-gtfs-noop-review.mjs"
       - name: Open snapshot review
         id: review
@@ -430,9 +430,14 @@ jobs:
               --head "$review_branch" --title "$title" \
               --body-file "$body_path")
           fi
+          publication_automerge=false
+          if [[ "$PUBLICATION_READY" == true && -f "$RUNNER_TEMP/gtfs-automatic/automatic-publication.json" ]] &&
+             jq -e '.decision == "ready"' "$RUNNER_TEMP/gtfs-automatic/automatic-publication.json" >/dev/null; then
+            publication_automerge=true
+          fi
           if [[ -n "${GITHUB_OUTPUT:-}" ]]; then
-            printf 'pr-url=%s\nhead-sha=%s\nbranch=%s\npublication-noop=%s\n' \
-              "$review_pr" "$report_commit" "$review_branch" "$PUBLICATION_NOOP" >> "$GITHUB_OUTPUT"
+            printf 'pr-url=%s\nhead-sha=%s\nbranch=%s\npublication-noop=%s\npublication-ready=%s\n' \
+              "$review_pr" "$report_commit" "$review_branch" "$PUBLICATION_NOOP" "$publication_automerge" >> "$GITHUB_OUTPUT"
           fi
       - name: Merge verified no-op evidence
         if: >-
@@ -447,4 +452,21 @@ jobs:
           REVIEW_HEAD_SHA: ${{ steps.review.outputs.head-sha }}
           REVIEW_BRANCH: ${{ steps.review.outputs.branch }}
           SNAPSHOT_SHA256: ${{ needs.inspect.outputs.sha256 }}
+        run: node "$RUNNER_TEMP/merge-gtfs-noop-review.mjs"
+      - name: Merge verified routine timetable release
+        if: >-
+          ${{ vars.MRTDOWN_GTFS_READY_AUTOMERGE_ENABLED == 'true' &&
+              needs.inspect.result == 'success' && needs.prepare.result == 'success' &&
+              needs.prepare.outputs.decision == 'ready' &&
+              needs.inspect.outputs.independent-outcome == 'success' &&
+              needs.inspect.outputs.inspection-outcome == 'success' &&
+              steps.review.outputs.publication-ready == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          REVIEW_PR_URL: ${{ steps.review.outputs.pr-url }}
+          REVIEW_HEAD_SHA: ${{ steps.review.outputs.head-sha }}
+          REVIEW_BRANCH: ${{ steps.review.outputs.branch }}
+          SNAPSHOT_SHA256: ${{ needs.inspect.outputs.sha256 }}
+          AUTO_MERGE_READY: 'true'
         run: node "$RUNNER_TEMP/merge-gtfs-noop-review.mjs"

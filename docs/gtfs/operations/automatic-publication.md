@@ -5,8 +5,11 @@ release in `releases/gtfs.json`. Merging that definition into `main` triggers th
 standard Pages deployment, which builds the referenced timetable alongside the
 other data. Preparation never deploys or imports a timetable. Exceptions remain
 evidence-only PRs until the explicit release procedure supplies reviewed inputs.
-No LLM makes release decisions. Only proved no-op capture evidence can merge
-automatically; timetable proposals and held captures retain their review process.
+No LLM makes release decisions. A routine timetable proposal can merge
+automatically only after its exact regenerated definition and complete capture
+evidence pass the trusted same-run merge gate. Ambiguous mappings, changed
+rights or terms, stale sources, expired coverage and other held captures remain
+open for human review.
 The checked-in [policy](automatic-publication-policy.json) defines routine
 qualification; generated approvals name that policy and the actual preparation
 run rather than claiming a maintainer reviewed the candidate.
@@ -150,10 +153,11 @@ evidence and an unchanged preparation base before marking **No publication neede
 
 ## Publication and failure handling
 
-### Automatic merging of no-op evidence
+### Automatic merging of checked routine releases and no-op evidence
 
-The trusted capture workflow can squash-merge its own no-op review after successful
-independent validation, inspection, preparation and review recording. The final
+The trusted capture workflow can squash-merge its own checked routine release or
+no-op review after successful independent validation, inspection, preparation
+and review recording. The final
 step uses code copied from the run's trusted commit before checking out the capture
 branch, with the existing workflow token and no administrator override. It does
 not queue a merge for later: GitHub must accept the exact checked head immediately.
@@ -161,7 +165,8 @@ not queue a merge for later: GitHub must accept the exact checked head immediate
 The merge gate requires:
 
 - A same-run preparation receipt binding the exact capture, completed baseline,
-  approval range and complete no-op proof. Preparation must be at most one hour
+  approval range and either complete no-op proof or checked successor index.
+  Preparation must be at most one hour
   old, the source at most 72 hours old, and the approval window still active.
   The receipt is retained in the capture Markdown alongside the proof.
 - The same default-branch commit and desired-definition identity as preparation,
@@ -169,8 +174,13 @@ The merge gate requires:
   Current `main` is fetched and checked through Git; the PR API's `base.sha` can
   retain its original base commit and is not used as the current branch tip.
 - An open, non-draft, same-repository PR created by the capture bot, with the exact
-  expected head and branch. Its diff may only add or modify regular, non-executable
-  Markdown/JSON files for that capture under `docs/gtfs/captures/`.
+  expected head and branch. A no-op diff may only add or modify the two
+  capture receipt files. A ready diff must contain exactly those files and
+  `releases/gtfs.json`, all regular and non-executable.
+- For a ready release, the committed definition must match the trusted
+  preparation byte for byte, bind the inspected capture and checked release
+  index, and report zero unassigned supported trip/date pairs. The normal
+  Pages build verifies the complete mapping and release again before upload.
 - A bounded version 2 capture receipt and prose matching the exact trusted same-run
   receipt and no-op report. The detailed JSON/Markdown must first be archived as
   hash-verified Release assets; their URLs, digests and lengths are bound in the
@@ -196,10 +206,10 @@ way to require approval at merge time.
 A stale base, changed head or baseline, unsupported proof, unexpected diff or merge
 refusal leaves the review open and records the reason in the Actions summary.
 Prepare the capture again after resolving it; no delayed merge can outlive its
-proof. `ready`, held, disabled and failed results are never auto-merged. No-op
-merges archive evidence without selecting a new comparison baseline, changing
-`releases/gtfs.json` or publishing a timetable. Capture-only paths are outside the
-Pages deployment trigger.
+proof. Held, disabled and failed results are never auto-merged. A ready merge
+selects the exact desired release and triggers the ordinary Pages publication;
+a no-op merge only archives evidence. Capture-only paths are outside the Pages
+deployment trigger.
 
 ### Desired state and deployment
 
@@ -288,6 +298,12 @@ rollback using the [release](timetable-release.md) and
 [import](timetable-import.md) procedures. Do not just reset a hash or rerun a
 different capture over unfinished publication. Inspect Actions artifacts and
 the exception PR for the reason. Missing reports never imply approval.
+
+Routine release auto-merge has a separate activation flag,
+`MRTDOWN_GTFS_READY_AUTOMERGE_ENABLED=true`. Keep it unset until Pages publishes
+the public admission receipt, mrtdown-site reads that receipt on ordinary pulls,
+and an exact completed import has been verified. The flag affects only qualified
+`ready` proposals; no-op evidence keeps its existing merge gate.
 
 ## Activation
 

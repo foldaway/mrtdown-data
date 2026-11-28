@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { mergeNoopReview } from './merge-gtfs-noop-review.mjs';
+import {
+  mergeNoopReview,
+  mergeVerifiedCaptureReview,
+} from './merge-gtfs-noop-review.mjs';
 
 function fixture() {
   const captureSha256 = 'a'.repeat(64);
@@ -136,6 +139,107 @@ function fixture() {
   return { args, pr, checks, statuses, reviews, merges };
 }
 
+function readyFixture() {
+  const result = fixture();
+  const { args } = result;
+  const releaseIndex = {
+    manifestSha256: '2'.repeat(64),
+    releaseSha256: '3'.repeat(64),
+  };
+  Object.assign(args.report, {
+    decision: 'ready',
+    reasons: [],
+    releaseIndex,
+    coverage: {
+      assignedTripDateCount: 100,
+      unassignedTripDateCount: 0,
+      gaps: [],
+    },
+    serviceDateRange: args.report.preparation.serviceDateRange,
+  });
+  const definition = `${JSON.stringify({
+    documentKind: 'gtfs-release-definition',
+    capture: { sha256: args.context.captureSha256 },
+    sourceReview: {
+      predecessor: {
+        manifestSha256:
+          args.report.preparation.baselineReleaseIndex.manifestSha256,
+        snapshotSha256: args.report.preparation.baselineCaptureSha256,
+      },
+      successor: {
+        manifestSha256: releaseIndex.manifestSha256,
+        snapshotSha256: args.context.captureSha256,
+      },
+    },
+    releaseIndex,
+  })}\n`;
+  const readyDefinition = { actual: definition, prepared: definition };
+  args.snapshot.files.push({
+    path: 'releases/gtfs.json',
+    status: 'A',
+    mode: '100644',
+  });
+  result.pr.changed_files = 3;
+  args.evidence.automaticMarkdown =
+    '## Automatic publication\n\nDecision: **ready**.\n\nApproved service is fully assigned.\n';
+  args.evidence.actualMarkdown = `${args.evidence.freshMarkdown}\n${args.evidence.automaticMarkdown}\n## Publication approval\n\nThis PR updates releases/gtfs.json. Merging makes this the desired timetable; the standard Pages workflow builds and publishes its exact reviewed release alongside the other data.\n`;
+  return { ...result, readyDefinition };
+}
+
+describe('automatic merge of checked routine releases', () => {
+  it('merges the exact prepared definition after the same-run checks', async () => {
+    const { args, readyDefinition, merges } = readyFixture();
+    expect(
+      await mergeVerifiedCaptureReview({ ...args, readyDefinition }),
+    ).toMatchObject({ merged: true });
+    expect(merges).toHaveLength(1);
+    expect(JSON.stringify(merges)).toContain('publish checked capture');
+  });
+
+  it.each([
+    'definition bytes',
+    'release index',
+    'unassigned trips',
+    'extra file',
+    'public baseline',
+    'stale preparation',
+    'review requested',
+  ])('leaves a %s exception open', async (change) => {
+    const { args, readyDefinition, pr, merges } = readyFixture();
+    if (change === 'definition bytes') readyDefinition.actual += ' ';
+    if (change === 'release index')
+      Object.assign(args.report, {
+        releaseIndex: {
+          manifestSha256: '4'.repeat(64),
+          releaseSha256: '3'.repeat(64),
+        },
+      });
+    if (change === 'unassigned trips')
+      Object.assign(args.report, {
+        coverage: {
+          assignedTripDateCount: 99,
+          unassignedTripDateCount: 1,
+          gaps: [],
+        },
+      });
+    if (change === 'extra file')
+      args.snapshot.files[0].path = 'scripts/other.mjs';
+    if (change === 'public baseline')
+      args.publicIndex = async () => ({
+        manifestSha256: '5'.repeat(64),
+        releaseSha256: '6'.repeat(64),
+      });
+    if (change === 'stale preparation')
+      args.report.preparation.checkedAt = '2026-11-26T16:00:00Z';
+    if (change === 'review requested')
+      pr.requested_reviewers.push({ login: 'maintainer' });
+    expect(
+      await mergeVerifiedCaptureReview({ ...args, readyDefinition }),
+    ).toMatchObject({ merged: false });
+    expect(merges).toHaveLength(0);
+  });
+});
+
 describe('automatic merge of trusted no-op capture evidence', () => {
   it('accepts original PR base metadata while still rejecting a changed live main', async () => {
     const { args, pr, merges } = fixture();
@@ -173,7 +277,7 @@ describe('automatic merge of trusted no-op capture evidence', () => {
       reason:
         boundary === 'approval window'
           ? 'The approved service-date window is inactive.'
-          : 'No-op preparation or capture is stale.',
+          : 'Preparation or capture is stale.',
     });
     expect(calls).toBe(2);
     expect(merges).toHaveLength(0);
